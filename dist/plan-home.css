@@ -1,0 +1,61 @@
+/* The degree plan is home; the next action stays small enough to keep it in view. */
+.plan-next-win { display:flex; align-items:center; gap:13px; margin:0; padding:15px 22px; border-bottom:1px solid #e1e9f5; background:linear-gradient(100deg,var(--ds-soft-blue),#f8fbff 70%); color:#182b4c; }
+.plan-next-icon { display:grid; place-items:center; flex-shrink:0; width:33px; height:33px; border:1px solid #d4e2ff; border-radius:10px; background:#fff; color:#2764df; }
+.plan-next-icon svg { width:19px; height:19px; transform:rotate(-35deg); }
+.plan-next-copy { min-width:0; flex:1; }
+.plan-next-kicker { display:block; margin-bottom:2px; font-size:14px; font-weight:700; color:#3268c5; letter-spacing:.4px; }
+.plan-next-copy h2 { margin:0; color:#23395b; font-size:14px; font-weight:650; line-height:1.45; letter-spacing:-.2px; }
+.plan-next-copy p { margin:3px 0 0; font-size:14px; line-height:1.45; color:#697c98; }
+.plan-next-actions { display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.plan-next-button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:40px; padding:8px 13px; border:1px solid #d2dffa; border-radius:7px; background:white; color:#245ed7; font:inherit; font-size:14px; font-weight:650; text-decoration:none; }
+.plan-next-button svg { width:14px; height:14px; }
+.plan-next-button:hover { background:#245ed7; border-color:#245ed7; color:white; }
+.plan-next-actions > button { min-height:40px; padding:5px 7px; border:0; background:transparent; color:#667b9d; font:inherit; font-size:14px; cursor:pointer; }
+.plan-next-actions :focus-visible { outline:3px solid #8badf6; outline-offset:3px; }
+@media (max-width:1100px) { .plan-next-actions { flex-direction:column; gap:0; } .plan-next-actions > button { min-height:28px; } }
+@media (max-width:700px) {
+  .plan-next-win { align-items:flex-start; flex-wrap:wrap; gap:5px 10px; padding:11px 14px; }
+  .plan-next-icon { display:none; }
+  .plan-next-copy { flex-basis:100%; }
+  .plan-next-copy h2 { font-size:14px; }
+  .plan-next-copy p { display:block; font-size:14px; }
+  .plan-next-kicker { font-size:14px; margin-bottom:1px; }
+  .plan-next-actions { flex-direction:row; justify-content:space-between; width:100%; gap:8px; }
+  .plan-next-button { min-height:38px; padding:5px 0; border:0; background:transparent; font-size:14px; }
+  .plan-next-actions > button { min-height:38px; padding:4px; }
+}
+@media print { #sheet-home { display:none !important; } }
+@media (max-width:700px) {
+  .plan-next-win { padding-block:7px; gap:1px 10px; }
+  .plan-next-kicker { display:none; }
+  .plan-next-copy h2 { font-size:14px; }
+  .plan-next-button { min-height:44px; }
+  .plan-next-actions > button { min-height:44px; }
+}
+
+.sheet-unmapped-task { max-width:600px; padding:32px 24px; }
+.sheet-unmapped-task h2 { font-size:19px; margin:0 0 8px; }
+.sheet-unmapped-task p { font-size:14px; line-height:1.6; color:#65738a; }
+.sheet-unmapped-task a { color:#205cdb; font-size:14px; }
+@media (max-width:700px) {
+  #sheet-titlebar { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:4px 8px; }
+  #sheet-titlebar > div:first-child { display:contents; }
+  #sheet-titlebar .sheet-title { grid-column:1; grid-row:1; white-space:nowrap; }
+  #sheet-titlebar .sheet-actions { grid-column:2; grid-row:1; }
+  #sheet-titlebar .sheet-actions > a[href="courses.html"] { display:none; }
+  #sheet-titlebar .sheet-subtitle { grid-column:1/-1; grid-row:2; display:block; overflow:visible; -webkit-line-clamp:unset; margin-top:0; }
+}
+
+/* The alternate home view uses the same readable next-step treatment. */
+.plan-next-copy h2 { font-size:18px; }
+.plan-next-copy p { font-size:14px; color:#526984; }
+.plan-next-kicker { font-size:14px; }
+.plan-next-button { min-height:48px; padding:12px 18px; border-color:var(--ds-cobalt); background:var(--ds-cobalt); color:#fff; font-size:16px; }
+.plan-next-button:hover { border-color:#174ac4; background:#174ac4; }
+.plan-next-actions > button { min-height:44px; font-size:14px; }
+@media (max-width:700px) {
+ .plan-next-kicker { display:block; }
+ .plan-next-copy h2 { font-size:18px; }
+ .plan-next-actions { flex-wrap:wrap; }
+ .plan-next-button { width:100%; min-height:48px; padding:12px 18px; border:1px solid var(--ds-cobalt); background:var(--ds-cobalt); font-size:16px; }
+}

@@ -1,0 +1,1 @@
+CREATE INDEX `degree_template_source` ON `degree_templates` (`source_url`,`updated_at`,`id`);

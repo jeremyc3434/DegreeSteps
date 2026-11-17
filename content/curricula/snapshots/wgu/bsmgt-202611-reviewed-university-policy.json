@@ -1,0 +1,478 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-17",
+  "scope": {
+    "school": "Western Governors University",
+    "program": "Bachelor of Science, Business Management",
+    "programVersion": "BSMGT 202605",
+    "modality": "online",
+    "creditSystem": "competency-unit"
+  },
+  "sources": [
+    {
+      "id": "wgu-current-catalog",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+      "title": "WGU Institutional Catalog November 2026",
+      "retrieval": "full PDF opened via web tool",
+      "publicationDate": "2026-10-27",
+      "currentEditionConfirmedBy": "https://www.wgu.edu/about/institutional-catalog.html",
+      "printedPages": {
+        "pricing": 27,
+        "transferPolicy": 35,
+        "calendar": 11,
+        "CUDefinition": 40,
+        "curriculum": [
+          73,
+          74
+        ]
+      }
+    },
+    {
+      "id": "wgu-program-page",
+      "url": "https://www.wgu.edu/online-business-degrees/business-management-bachelors-program.html",
+      "retrieval": "full page opened via web tool"
+    },
+    {
+      "id": "wgu-business-tuition",
+      "url": "https://www.wgu.edu/financial-aid-tuition/tuition-business-degrees.html",
+      "retrieval": "full page opened via web tool"
+    },
+    {
+      "id": "wgu-transfer-page",
+      "url": "https://www.wgu.edu/admissions/transfers/transfer-to-wgu.html",
+      "retrieval": "full page opened via web tool"
+    },
+    {
+      "id": "wgu-general-business-guide",
+      "url": "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
+      "retrieval": "official indexed search result; direct open dynamic page returned no readable lines",
+      "catalogLabel": "05-2026"
+    },
+    {
+      "id": "wgu-current-program-partner-corroboration",
+      "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=BU&instId=17&programId=240&uniqueId=BSMGT25073",
+      "retrieval": "official indexed search result",
+      "scope": "Metropolitan Community College AAS Accounting agreement; use only for version/total corroboration, not generic course mappings."
+    }
+  ],
+  "pricing": {
+    "currency": "USD",
+    "basis": "six-month term",
+    "tuitionPerTerm": 3850,
+    "resourceFeePerTerm": 200,
+    "applicationFeeOneTime": 65,
+    "effectiveTermsBeginning": "2026-10-01",
+    "sourceIds": [
+      "wgu-current-catalog",
+      "wgu-business-tuition",
+      "wgu-program-page"
+    ],
+    "derivedBaseTuitionAndResourcePerTerm": 4050,
+    "derivation": "3850+200; excludes application fee, outside learning, optional costs, aid and discounts."
+  },
+  "curriculum": {
+    "totalCUs": 110,
+    "courseCount": 36,
+    "capstoneCode": "QGT1",
+    "capstoneCUs": 4,
+    "rows": [
+      {
+        "id": "bsmgt-organizational-behavior",
+        "code": "C715",
+        "title": "Organizational Behavior",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-emotional-and-cultural-intelligence",
+        "code": "D082",
+        "title": "Emotional and Cultural Intelligence",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-business-communication",
+        "code": "C716",
+        "title": "Business Communication",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-principles-of-management",
+        "code": "C483",
+        "title": "Principles of Management",
+        "awardedCUs": 4
+      },
+      {
+        "id": "bsmgt-functions-of-human-resource-management",
+        "code": "D351",
+        "title": "Functions of Human Resource Management",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-health-fitness-and-wellness",
+        "code": "C458",
+        "title": "Health, Fitness, and Wellness",
+        "awardedCUs": 4
+      },
+      {
+        "id": "bsmgt-innovative-and-strategic-thinking",
+        "code": "D081",
+        "title": "Innovative and Strategic Thinking",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-business-environment-applications-i-business-structures-and-legal-environment",
+        "code": "D078",
+        "title": "Business Environment Applications I: Business Structures and Legal Environment",
+        "awardedCUs": 2
+      },
+      {
+        "id": "bsmgt-introduction-to-communication-connecting-with-others",
+        "code": "D268",
+        "title": "Introduction to Communication: Connecting with Others",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-concepts-in-marketing-sales-and-customer-contact",
+        "code": "D077",
+        "title": "Concepts in Marketing, Sales, and Customer Contact",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-introduction-to-business-accounting",
+        "code": "D774",
+        "title": "Introduction to Business Accounting",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-critical-thinking-reason-and-evidence",
+        "code": "D265",
+        "title": "Critical Thinking: Reason and Evidence",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-composition-successful-self-expression",
+        "code": "D270",
+        "title": "Composition: Successful Self-Expression",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-introduction-to-business-finance",
+        "code": "D775",
+        "title": "Introduction to Business Finance",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-introduction-to-sociology",
+        "code": "C273",
+        "title": "Introduction to Sociology",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-business-management-tasks",
+        "code": "QHT1",
+        "title": "Business Management Tasks",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-talent-acquisition",
+        "code": "D354",
+        "title": "Talent Acquisition",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-applied-probability-and-statistics",
+        "code": "C955",
+        "title": "Applied Probability and Statistics",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-fundamentals-of-spreadsheets-and-data-presentations",
+        "code": "D388",
+        "title": "Fundamentals of Spreadsheets and Data Presentations",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-values-based-leadership",
+        "code": "D253",
+        "title": "Values-Based Leadership",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-strategic-training-and-development",
+        "code": "D353",
+        "title": "Strategic Training and Development",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-consumer-behavior",
+        "code": "D175",
+        "title": "Consumer Behavior",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-sales-management",
+        "code": "D099",
+        "title": "Sales Management",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-design-thinking-for-business",
+        "code": "D428",
+        "title": "Design Thinking for Business",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-business-ethics",
+        "code": "C717",
+        "title": "Business Ethics",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-quantitative-analysis-for-business",
+        "code": "C723",
+        "title": "Quantitative Analysis For Business",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-principles-of-economics",
+        "code": "D089",
+        "title": "Principles of Economics",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-world-history-diverse-cultures-and-global-connections",
+        "code": "D266",
+        "title": "World History: Diverse Cultures and Global Connections",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-business-environment-applications-ii-process-logistics-and-operations",
+        "code": "D079",
+        "title": "Business Environment Applications II: Process, Logistics, and Operations",
+        "awardedCUs": 2
+      },
+      {
+        "id": "bsmgt-integrated-physical-sciences",
+        "code": "C165",
+        "title": "Integrated Physical Sciences",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-managing-in-a-global-business-environment",
+        "code": "D080",
+        "title": "Managing in a Global Business Environment",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-business-simulation",
+        "code": "D361",
+        "title": "Business Simulation",
+        "awardedCUs": 4
+      },
+      {
+        "id": "bsmgt-change-management",
+        "code": "C721",
+        "title": "Change Management",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-project-management",
+        "code": "C722",
+        "title": "Project Management",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-ethics-in-technology",
+        "code": "D333",
+        "title": "Ethics in Technology",
+        "awardedCUs": 3
+      },
+      {
+        "id": "bsmgt-business-management-capstone-written-project",
+        "code": "QGT1",
+        "title": "Business Management Capstone Written Project",
+        "awardedCUs": 4
+      }
+    ],
+    "sourceIds": [
+      "wgu-current-catalog"
+    ],
+    "caution": "This is the current published receiving degree ledger; source semester credit quantities are separate."
+  },
+  "verifiedRules": [
+    {
+      "rule": "terms",
+      "value": {
+        "months": 6,
+        "startDayOfEveryMonth": 1
+      },
+      "sourceIds": [
+        "wgu-current-catalog",
+        "wgu-program-page"
+      ]
+    },
+    {
+      "rule": "fullTimeMinimumCU",
+      "value": 12,
+      "sourceIds": [
+        "wgu-current-catalog",
+        "wgu-program-page"
+      ]
+    },
+    {
+      "rule": "acceleration",
+      "value": "After original term courses are completed, additional courses may be added with the Program Mentor. Completion speed depends on mastery and assessment completion.",
+      "sourceIds": [
+        "wgu-current-catalog"
+      ]
+    },
+    {
+      "rule": "overallTransferMaximumFraction",
+      "value": 0.75,
+      "sourceIds": [
+        "wgu-current-catalog"
+      ],
+      "caution": "Programmatic limits and actual eligible course mappings may be lower. Do not treat 75 percent as a guaranteed course award."
+    },
+    {
+      "rule": "transferCutoff",
+      "value": "No transfer awards after the initial WGU term starts.",
+      "sourceIds": [
+        "wgu-current-catalog",
+        "wgu-transfer-page"
+      ]
+    },
+    {
+      "rule": "transcriptDeadline",
+      "value": "Official transcripts should arrive by the fifth day of the month before the intended start.",
+      "sourceIds": [
+        "wgu-current-catalog",
+        "wgu-transfer-page"
+      ]
+    },
+    {
+      "rule": "originalIssuerRequired",
+      "value": "Each original issuing institution must send its own official record; transfer credit merely copied onto another transcript is not accepted as original evidence.",
+      "sourceIds": [
+        "wgu-transfer-page"
+      ]
+    },
+    {
+      "rule": "CUEquivalence",
+      "value": {
+        "wguCU": 1,
+        "semesterCreditOfLearning": 1
+      },
+      "sourceIds": [
+        "wgu-current-catalog"
+      ],
+      "caution": "Keep actual source SH and awarded receiving CU separate; this general equivalence does not establish an individual course mapping."
+    },
+    {
+      "rule": "noDuplicateTransferAllocation",
+      "value": "A transferred source course cannot fulfill more than one WGU course of study.",
+      "sourceIds": [
+        "wgu-general-business-guide"
+      ],
+      "retrievalCaution": "Official indexed primary content; dynamic page not fully readable on direct open."
+    },
+    {
+      "rule": "transferGradeForBusiness",
+      "value": "Business coursework requires C or better; the general baseline for other courses is C- unless a program-specific rule applies.",
+      "sourceIds": [
+        "wgu-general-business-guide"
+      ],
+      "retrievalCaution": "Use the receiving-program rule; do not reuse a provider pass score as this grade policy."
+    },
+    {
+      "rule": "recency",
+      "value": {
+        "D388": "Must have been taken within5years.",
+        "C722": "Course or listed certification must be completed within5years of WGU start."
+      },
+      "sourceIds": [
+        "wgu-general-business-guide"
+      ],
+      "retrievalCaution": "Do not turn these course-specific limits into a blanket five-year limit for the entire degree."
+    }
+  ],
+  "unresolvedOrScoped": [
+    {
+      "issue": "Exact residency capstone basis",
+      "sourceIds": [
+        "wgu-general-business-guide"
+      ],
+      "observed": "The current official indexed BS Business Management guide says at least25percent of required Degree Competency Units excluding the capstone must be completed at WGU. Neither full handbook retrieval nor a primary worked formula was available.",
+      "action": "Do not infer a flat minimum: excluding the4CU capstone from a110CU denominator produces30.5CU including capstone, while excluding capstone only from the eligible numerator produces31.5CU. These are mathematical interpretations, not asserted WGU decisions. A proposed route retaining at least32WGUCU satisfies both readings; retain the exact policy ambiguity for maximum-transfer optimization."
+    },
+    {
+      "issue": "Source-page deadline summary conflict",
+      "sourceIds": [
+        "wgu-transfer-page"
+      ],
+      "observed": "The transfer marketing page includes a first-of-month summary but detailed deadline and November catalog specify the fifth.",
+      "action": "Use the catalog fifth-day deadline; advise earlier receipt rather than presenting the summary discrepancy as a later deadline."
+    },
+    {
+      "issue": "Tuition migration",
+      "sourceIds": [
+        "wgu-business-tuition",
+        "wgu-program-page"
+      ],
+      "observed": "Some WGU degree listing cards still show3830 and the business tuition page links a2026-2027 tuition page that returned404. CurrentNovember catalog and directprogram page show3850.",
+      "action": "Bind pricing to currentNovember catalog effectiveOct1,2026; do not use stale directory cards."
+    },
+    {
+      "issue": "Personal completion time",
+      "sourceIds": [
+        "wgu-current-catalog",
+        "wgu-program-page"
+      ],
+      "observed": "Six months is the billing term, not a guaranteed degree duration.",
+      "action": "Show one-term completion only as an explicit student-pace scenario."
+    }
+  ],
+  "reviewedResidencyPolicy": {
+    "type": "institution-fraction-with-capstone-exclusion",
+    "creditSystem": "competency-unit",
+    "fraction": 0.25,
+    "capstoneRequirementIds": [
+      "bsmgt-business-management-capstone-written-project"
+    ],
+    "capstoneCredits": 4,
+    "sourceIds": [
+      "wgu-bsmgt-transfer-guideline-202605",
+      "wgu-bsmgt-catalog-202611"
+    ],
+    "publishedWording": "at least 25% of the required Degree Competency Units (excluding the capstone course) at WGU",
+    "interpretationStatus": "exact-floor-unresolved",
+    "conservativeSufficientCondition": {
+      "minimumNonCapstoneInstitutionCUs": 27.5,
+      "basisCredits": 110,
+      "derivation": "0.25 \u00d7 110 = 27.5 noncapstone WGU competency units; the required 4-CU capstone is additional. This is a sufficient planning check under both identified readings, not a claim that WGU publishes a 31.5-CU minimum."
+    },
+    "notes": [
+      "The indexed university transfer guideline excludes the capstone but does not provide a worked numerator/denominator example. Do not substitute a guessed institutionalMinCredits or a 30-semester-credit residency rule.",
+      "A plan satisfying this sufficient condition and completing QGT1 at WGU meets both identified interpretations; the precise maximum-transfer floor remains unresolved."
+    ]
+  },
+  "reviewedAggregatePolicyResolution": {
+    "field": "upperMinCredits",
+    "status": "resolved",
+    "resolution": "covered-by-complete-named-curriculum",
+    "sourceIds": [
+      "wgu-bsmgt-catalog-202611",
+      "wgu-bsmgt-guide"
+    ],
+    "sourcePages": {
+      "wgu-bsmgt-catalog-202611": [
+        65,
+        73,
+        74
+      ],
+      "wgu-bsmgt-guide": [
+        4
+      ]
+    },
+    "message": "The complete 36-course, 110-CU BSMGT 202605 curriculum is enforced through named receiving requirements. A separate semester upper-level aggregate is not assumed; this does not remove named-course eligibility, current transfer restrictions or required WGU coursework."
+  }
+}

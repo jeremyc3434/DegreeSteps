@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+  <title>Your degree requirements — DegreeSteps</title>
+  <link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="degree-audit.css">
+  <script src="planner.js" defer></script><script src="guide-engine.js" defer></script><script src="sheet-state.js" defer></script><script src="program-catalog.js" defer></script><script src="audit-curriculum.js" defer></script><script src="degree-audit.js" defer></script>
+<link rel="stylesheet" href="/brand.css"></head>
+<body class="audit-import-page">
+  <header class="audit-top"><a href="plan.html" aria-label="DegreeSteps — My plan"><span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span></a><a href="plan.html">Back to my plan</a></header>
+  <main id="audit-app">
+    <div class="audit-intro"><p class="audit-eyebrow">YOUR DEGREE REQUIREMENTS</p><h1>Your degree. Your course list.</h1><p>Add what you know from your degree audit or catalog. Save your progress and finish the details later.</p></div>
+    <div id="audit-message" role="alert" hidden></div>
+    <p id="audit-directory-status" class="audit-private" role="status" hidden></p>
+    <section id="audit-start">
+      <form id="audit-import-form" novalidate>
+        <div class="audit-card">
+          <h2>1. Your degree</h2>
+          <div class="audit-fields">
+            <input type="hidden" name="programId">
+            <label>School<input name="school" required maxlength="120" autocomplete="organization"></label>
+            <label>Degree name<input name="title" required maxlength="200"></label>
+            <label>Degree level<select name="level"><option value="">Still confirming</option><option value="bachelor">Bachelor’s</option><option value="associate">Associate</option><option value="master">Master’s</option><option value="doctorate">Doctoral</option><option value="specialist">Specialist</option></select></label>
+            <label>Study format<select name="modality"><option value="">Still confirming</option><option value="online">Online</option><option value="campus">On campus</option></select></label>
+            <label>Required degree credits<input name="totalCredits" type="number" min="0.1" max="500" step="any" placeholder="Leave blank if unsure"><small>Use the exact total from your degree audit.</small></label>
+            <label>Credit units<select name="creditSystem"><option value="">Still confirming</option><option value="semester">Semester credits</option><option value="quarter">Quarter credits</option><option value="competency-unit">Competency units</option></select></label>
+            <label class="audit-wide">Official program or catalog link<input name="sourceUrl" type="url" maxlength="1500" placeholder="https://your-school.edu/degree-requirements"><small>You can add this later. A public https link is required to build a proposed plan.</small></label>
+          </div>
+          <details><summary>Catalog year and credit rules (optional)</summary><div class="audit-fields"><label>Catalog year<input name="catalog" maxlength="80" placeholder="For example, 2026–2027"></label><label>Credits required at this university<input name="institutionMinCredits" type="number" min="0" max="500" step="any" placeholder="Leave blank if unsure"></label><label>Upper-level credits required<input name="upperMinCredits" type="number" min="0" max="500" step="any" placeholder="Leave blank if unsure"></label></div><p>Use the rules shown in your degree audit. Unknown rules stay flagged for confirmation.</p></details>
+        </div>
+        <div class="audit-card">
+          <div class="audit-review-heading"><div><h2>2. Your requirements</h2><p>Enter each course or requirement. Course codes are optional.</p></div><span id="audit-row-count" class="audit-row-count"></span></div>
+          <div id="audit-editor-rows" class="audit-editor-rows" aria-label="Requirement rows"></div>
+          <button id="audit-add-row" class="audit-secondary" type="button">+ Add a requirement</button>
+          <p class="audit-private">Leave unknown credits blank. For “choose N” groups, enter only the courses you choose; do not add group totals as extra courses.</p>
+          <details id="audit-paste"><summary>Paste or import a spreadsheet (optional)</summary><p>Paste CSV or tab-separated rows with column labels. Importing replaces the rows above.</p><a id="audit-template" class="audit-secondary" download="degreepath-requirements-template.csv">Download CSV template</a><label class="audit-upload">Choose a CSV or TSV file<input id="audit-file" type="file" accept=".csv,.tsv,text/csv,text/tab-separated-values,text/plain"></label><label class="audit-wide">Spreadsheet rows<textarea id="audit-csv" rows="7" spellcheck="false" placeholder="Section,Course code,Requirement,Credits,At university"></textarea></label><button id="audit-import-rows" type="button" class="audit-secondary">Import these rows</button><p id="audit-import-status" role="status" hidden></p></details>
+          <p class="audit-private">Use Save progress to keep these requirements on this device. Importing a file does not upload it.</p>
+          <div class="audit-actions"><button id="audit-save" class="audit-secondary" type="button">Save progress</button><button class="audit-primary" type="submit">Review my requirements →</button></div>
+          <p id="audit-save-status" class="audit-save-status" role="status">Not saved yet.</p>
+          <p class="audit-notice">Work in progress. These rows become a proposed degree plan only after you add the official source, confirm the full credit total, and review the requirements.</p>
+        </div>
+      </form>
+    </section>
+    <section id="audit-review" hidden>
+      <div class="audit-card">
+        <div class="audit-review-heading"><div><h2>Review your requirements</h2><p id="audit-degree-summary"></p></div><button type="button" id="audit-back" class="audit-secondary">Edit requirements</button></div>
+        <p class="audit-notice">These are student-provided requirements. The university still needs to confirm the catalog, credit rules, and transfer placements.</p>
+        <div class="audit-table-wrap"><table><thead><tr><th>Section</th><th>Course code</th><th>Requirement</th><th>Credits</th><th>At university</th></tr></thead><tbody id="audit-preview-rows"></tbody><tfoot><tr><th colspan="3">Total</th><td id="audit-total"></td><td></td></tr></tfoot></table></div>
+        <label class="audit-confirm"><input type="checkbox" id="audit-confirm">I reviewed these rows and confirmed that their credit units and total match my degree audit.</label>
+        <p class="audit-private">Your saved courses and private notes stay with you. Your current degree is kept as a previous plan when you switch.</p>
+        <button type="button" id="audit-build" class="audit-primary" disabled>Build my proposed plan →</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

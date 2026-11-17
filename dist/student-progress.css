@@ -1,0 +1,53 @@
+/* Milestones stay quiet until opened or newly earned. */
+#portal-momentum[hidden], #sheet-momentum[hidden] { display:none; }
+#portal-momentum, #sheet-momentum { min-width:0; }
+.momentum-panel { border:1px solid #e4e9f2; border-radius:12px; background:#fff; color:#172844; font-size:14px; line-height:1.5; }
+.momentum-summary { display:flex; align-items:center; min-height:44px; gap:9px; padding:8px 14px; cursor:pointer; list-style:none; }
+.momentum-summary::-webkit-details-marker { display:none; }
+.momentum-summary-icon { display:inline-flex; color:#9c6d17; }
+.momentum-summary-icon svg { width:18px; height:18px; }
+.momentum-summary > strong { font-size:14px; font-weight:650; white-space:nowrap; }
+.momentum-count { padding:2px 7px; border-radius:20px; background:#f3f6fb; color:#607089; font-size:14px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.momentum-summary-next { margin-left:auto; color:#718096; font-size:14px; }
+.momentum-chevron { color:#718096; margin-left:auto; }
+.momentum-summary-next + .momentum-chevron { margin-left:3px; }
+.momentum-panel[open] .momentum-chevron { transform:rotate(180deg); }
+.momentum-body { border-top:1px solid #edf0f6; padding:18px 14px 12px; }
+.momentum-milestones { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; margin:0; padding:0; list-style:none; }
+.momentum-milestones li { display:flex; flex-direction:column; gap:11px; min-width:0; color:#6c7a90; }
+.momentum-milestones li > div { min-width:0; }
+.momentum-milestones strong { display:block; font-size:14px; font-weight:650; line-height:1.45; }
+.momentum-milestones p { margin:5px 0 7px; font-size:14px; line-height:1.6; color:#748196; }
+.momentum-milestones a { font-size:14px; color:#205bd6; text-underline-offset:3px; }
+.momentum-badge { position:relative; display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border:1px dashed #ccd5e3; border-radius:11px; color:#a0acc0; background:#f8faff; }
+.momentum-badge svg { width:23px; height:23px; }
+.momentum-milestones [data-earned="true"] { color:#243b60; }
+.momentum-milestones [data-earned="true"] .momentum-badge { border:1px solid #eedba8; background:#fff7df; color:#9d721e; }
+.momentum-check { position:absolute; bottom:-4px; right:-4px; display:flex; align-items:center; justify-content:center; width:15px; height:15px; border:2px solid #fff; border-radius:50%; background:#205bd6; color:#fff; font-size:9px; line-height:1; }
+.momentum-earned-label { color:#697b94; font-size:14px; }
+.momentum-body .momentum-note { margin:15px 0 0; padding-top:10px; border-top:1px solid #edf0f6; color:#7a879a; font-size:14px; line-height:1.5; }
+.momentum-announcement { color:#385b30; font-size:14px; line-height:1.5; }
+.momentum-announcement:not(:empty) { position:fixed; z-index:180; right:24px; bottom:24px; box-sizing:border-box; width:max-content; max-width:min(400px,calc(100vw - 48px)); padding:12px 16px; border:1px solid #d7e9cd; border-radius:12px; margin:0; background:#f5faef; box-shadow:0 8px 30px #2032521c; pointer-events:none; }
+.momentum-announcement.is-celebrating { animation:momentum-reveal .25s ease-out; }
+.momentum-summary:focus-visible, .momentum-panel a:focus-visible { outline:3px solid #9dbdf8; outline-offset:3px; }
+.momentum-compact .momentum-summary { min-height:34px; padding:5px 12px; }
+.momentum-compact .momentum-summary > strong { font-size:14px; }
+.momentum-compact .momentum-summary-next { display:none; }
+@keyframes momentum-reveal { from { opacity:0; transform:translateY(3px); } to { opacity:1; transform:translateY(0); } }
+@media (max-width:700px) {
+  .momentum-summary { min-height:36px; padding:6px 12px; }
+  .momentum-summary-next { display:none; }
+  .momentum-summary > strong { font-size:14px; }
+  .momentum-summary-icon svg { width:16px; height:16px; }
+  .momentum-milestones { grid-template-columns:1fr 1fr; gap:18px 14px; }
+  .momentum-milestones li { flex-direction:row; align-items:flex-start; gap:9px; }
+  .momentum-badge { flex:0 0 29px; width:29px; height:29px; border-radius:9px; }
+  .momentum-badge svg { width:20px; height:20px; }
+  .momentum-count { margin-left:auto; }
+  .momentum-chevron { margin-left:2px; }
+  .momentum-compact .momentum-summary { min-height:30px; padding-block:4px; }
+  .momentum-announcement:not(:empty) { right:16px; bottom:calc(82px + env(safe-area-inset-bottom,0px)); max-width:calc(100vw - 32px); padding:11px 14px; font-size:14px; }
+}
+@media (max-width:380px) { .momentum-milestones { grid-template-columns:1fr; } }
+@media (prefers-reduced-motion:reduce) { .momentum-announcement.is-celebrating { animation:none; } }
+@media print { #portal-momentum, #sheet-momentum { display:none !important; } }

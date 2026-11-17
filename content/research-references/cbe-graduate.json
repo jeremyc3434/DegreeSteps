@@ -1,0 +1,336 @@
+{
+  "version": 1,
+  "packets": [
+    {
+      "id": "south-college-dba-cbe",
+      "schoolName": "South College",
+      "programName": "Doctor of Business Administration (Competency-Based)",
+      "level": "doctorate",
+      "modality": "online",
+      "degreeUrls": [
+        "https://www.south.edu/program/doctor-of-business-administration-dba-program/",
+        "https://www.south.edu/doctor-of-business-administration-program-overview/"
+      ],
+      "catalogYear": null,
+      "checkedOn": "2026-11-17",
+      "sources": [
+        {
+          "id": "south-dba-overview",
+          "url": "https://www.south.edu/doctor-of-business-administration-program-overview/",
+          "title": "South College DBA program overview",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "south-dba-program",
+          "url": "https://www.south.edu/program/doctor-of-business-administration-dba-program/",
+          "title": "South College competency-based DBA",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "south-catalog-index",
+          "url": "https://www.south.edu/academics/catalog-calendars/",
+          "title": "South College catalog and academic calendars",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        }
+      ],
+      "facts": [
+        {
+          "id": "south-dba-total",
+          "field": "totalCredits",
+          "value": 90,
+          "creditSystem": "quarter",
+          "sourceIds": [
+            "south-dba-overview"
+          ]
+        }
+      ],
+      "studentCautions": [
+        {
+          "text": "The DBA uses quarter credits; do not relabel its 90-credit total as semester credits.",
+          "sourceIds": [
+            "south-dba-overview"
+          ]
+        },
+        {
+          "text": "The program advertises six-month subscription terms. One term is a billing period, not a guaranteed time or total price for the degree.",
+          "sourceIds": [
+            "south-dba-program"
+          ]
+        },
+        {
+          "text": "Mastery assessments and a doctoral capstone or dissertation remain required; prior experience does not automatically waive them.",
+          "sourceIds": [
+            "south-dba-program"
+          ]
+        },
+        {
+          "text": "Use South College program policies for this doctorate. Undergraduate alternative-credit acceptance and similarly named institutions do not establish doctoral transfer approval.",
+          "sourceIds": [
+            "south-dba-program"
+          ]
+        }
+      ],
+      "ambiguities": [
+        {
+          "text": "Official pages disagree on the course count: the overview lists 11 while the program page lists 10. Check the assigned catalog and specialization before constructing the ledger.",
+          "sourceIds": [
+            "south-dba-overview",
+            "south-dba-program"
+          ],
+          "affects": [
+            "courseCount"
+          ]
+        },
+        {
+          "text": "The catalog index labels the current catalog 2026-2028, but the detailed DBA catalog could not be retrieved. This packet does not establish the student’s program catalog year or transfer limits.",
+          "sourceIds": [
+            "south-catalog-index"
+          ],
+          "affects": [
+            "catalogYear",
+            "externalMaxCredits",
+            "alternativeMaxCredits",
+            "institutionMinCredits"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "umass-global-bba-mypath",
+      "schoolName": "University of Massachusetts Global",
+      "programName": "Bachelor of Business Administration (MyPath Self-Paced)",
+      "level": "bachelor",
+      "modality": "online",
+      "degreeUrls": [
+        "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+        "https://www.umassglobal.edu/academic-programs/bba-business-administration-general-business-self-paced"
+      ],
+      "catalogYear": null,
+      "checkedOn": "2026-11-17",
+      "sources": [
+        {
+          "id": "umg-bba-mypath",
+          "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+          "title": "UMass Global self-paced BBA",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "umg-bba-cbe-catalog",
+          "url": "https://catalog.umassglobal.edu/business-professional-studies/bba-competency-based/bba-competency-based.pdf",
+          "title": "UMass Global competency-based BBA catalog PDF; indexed content requires current-catalog confirmation",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        }
+      ],
+      "facts": [
+        {
+          "id": "umg-bba-total",
+          "field": "totalCredits",
+          "value": 120,
+          "creditSystem": null,
+          "sourceIds": [
+            "umg-bba-mypath"
+          ]
+        },
+        {
+          "id": "umg-bba-college-transfer-ceiling",
+          "field": "externalMaxCredits",
+          "value": 90,
+          "creditSystem": null,
+          "sourceIds": [
+            "umg-bba-mypath"
+          ]
+        }
+      ],
+      "studentCautions": [
+        {
+          "text": "The published transfer ceiling concerns previous college coursework. It does not establish acceptance of 90 Sophia, Study.com, or other alternative credits.",
+          "sourceIds": [
+            "umg-bba-mypath"
+          ]
+        },
+        {
+          "text": "The self-paced page lists $3,500 for six-month access. Total tuition depends on the number of terms and any other charges.",
+          "sourceIds": [
+            "umg-bba-mypath"
+          ]
+        },
+        {
+          "text": "MyPath advances through demonstrated mastery without weekly assignment deadlines; do not describe the instructor-led BBA as the same learning model.",
+          "sourceIds": [
+            "umg-bba-mypath"
+          ]
+        },
+        {
+          "text": "The page states credit quantities without explicitly labeling their unit. Confirm the credit-hour equivalence before combining them with quarter or competency-unit records.",
+          "sourceIds": [
+            "umg-bba-mypath"
+          ]
+        }
+      ],
+      "ambiguities": [
+        {
+          "text": "The older general-business self-paced URL redirects to the current BBA self-paced page; resolve this verified redirect instead of treating the URLs as different programs.",
+          "sourceIds": [
+            "umg-bba-mypath"
+          ],
+          "affects": [
+            "degreeUrls"
+          ]
+        },
+        {
+          "text": "The indexed CBE catalog describes emphasis options, but direct catalog retrieval returned a verification challenge. Confirm the current admitted catalog and complete requirements before using an emphasis or course ledger.",
+          "sourceIds": [
+            "umg-bba-cbe-catalog"
+          ],
+          "affects": [
+            "catalogYear"
+          ]
+        },
+        {
+          "text": "The program page does not explicitly label the credit unit. Confirm the MyPath credit-hour equivalence before applying rules across different credit systems.",
+          "sourceIds": [
+            "umg-bba-mypath"
+          ],
+          "affects": [
+            "creditSystem"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "walden-mba-learning-format-choice",
+      "schoolName": "Walden University",
+      "programName": "Master of Business Administration (Learning Format Not Yet Selected)",
+      "level": "master",
+      "modality": "online",
+      "degreeUrls": [
+        "https://www.waldenu.edu/online-masters-programs/master-of-business-administration",
+        "https://academics.waldenu.edu/catalog/management-human-potential/masters-programs/master/business-administration-quarter"
+      ],
+      "catalogYear": null,
+      "checkedOn": "2026-11-17",
+      "sources": [
+        {
+          "id": "walden-mba-page",
+          "url": "https://www.waldenu.edu/online-masters-programs/master-of-business-administration",
+          "title": "Walden MBA program and learning-format options",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "walden-mba-catalog",
+          "url": "https://academics.waldenu.edu/catalog/management-human-potential/masters-programs/master/business-administration-quarter",
+          "title": "Walden MBA course-based quarter and Tempo competency-based catalog sections",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "walden-tempo-tuition",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "title": "Walden Tempo Learning tuition by program",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        }
+      ],
+      "facts": [],
+      "studentCautions": [
+        {
+          "text": "Choose course-based or Tempo Learning before assigning a curriculum, transfer rule, or tuition model. Both are online options for an MBA.",
+          "sourceIds": [
+            "walden-mba-page",
+            "walden-mba-catalog"
+          ]
+        },
+        {
+          "text": "The course-based MBA page presents 50 quarter credits; indexed catalog content describes the Tempo MBA as 30 semester credits. These are different scoped ledgers, not interchangeable units.",
+          "sourceIds": [
+            "walden-mba-page",
+            "walden-mba-catalog"
+          ]
+        },
+        {
+          "text": "The tuition handbook lists the Tempo MBA at $3,100 per three-month subscription period. Do not apply course-based per-credit tuition or assume one subscription covers the whole degree.",
+          "sourceIds": [
+            "walden-tempo-tuition"
+          ]
+        },
+        {
+          "text": "Graduate transfer choices require MBA-specific approval. Undergraduate ACE acceptance cannot establish an MBA equivalency.",
+          "sourceIds": [
+            "walden-mba-catalog"
+          ]
+        }
+      ],
+      "ambiguities": [
+        {
+          "text": "The same degree and catalog URLs contain course-based and competency-based sections. This packet intentionally has no numeric degree facts until the student’s learning format is selected.",
+          "sourceIds": [
+            "walden-mba-page",
+            "walden-mba-catalog"
+          ],
+          "affects": [
+            "learningFormat",
+            "totalCredits",
+            "creditSystem",
+            "externalMaxCredits",
+            "pricing"
+          ]
+        },
+        {
+          "text": "Detailed Tempo requirements appeared in indexed catalog content but not the rendered accordion text. Retrieve the full relevant catalog section before treating the 30-semester-credit description as a complete reviewed ledger.",
+          "sourceIds": [
+            "walden-mba-catalog"
+          ],
+          "affects": [
+            "totalCredits",
+            "creditSystem",
+            "requirements"
+          ]
+        },
+        {
+          "text": "The current course-based quarter section applies to students beginning on or after May 27, 2024; older semester-based cohorts need their own catalog check.",
+          "sourceIds": [
+            "walden-mba-catalog"
+          ],
+          "affects": [
+            "catalogYear",
+            "learningFormat",
+            "totalCredits",
+            "creditSystem",
+            "externalMaxCredits",
+            "pricing"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "course-based",
+          "label": "Online courses with weekly deadlines",
+          "programName": "Master of Business Administration (Course-Based)",
+          "learningFormat": "course-based",
+          "modality": "online",
+          "sourceIds": [
+            "walden-mba-catalog",
+            "walden-mba-page"
+          ]
+        },
+        {
+          "id": "tempo",
+          "label": "Self-paced Tempo Learning",
+          "programName": "Master of Business Administration (Tempo Learning)",
+          "learningFormat": "competency-based",
+          "modality": "online",
+          "sourceIds": [
+            "walden-mba-catalog",
+            "walden-mba-page"
+          ]
+        }
+      ]
+    }
+  ]
+}

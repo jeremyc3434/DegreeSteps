@@ -1,0 +1,647 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-09",
+  "sources": [
+    {
+      "id": "odu-psychology-guide",
+      "title": "ODU Psychology BS official degree program guide",
+      "url": "https://catalog.odu.edu/undergraduate/sciences/psychology/psychology-bs/psychology-bs_degreeprogramguidetext.pdf",
+      "checked": "2026-11-09",
+      "catalog": "2026\u20132027"
+    },
+    {
+      "id": "odu-psychology-requirements",
+      "title": "ODU Psychology BS 2026\u20132027 catalog requirements",
+      "url": "https://catalog.odu.edu/undergraduate/sciences/psychology/psychology-bs/psychology-bs.pdf",
+      "checked": "2026-11-09",
+      "catalog": "2026\u20132027"
+    },
+    {
+      "id": "odu-psychology-format",
+      "title": "ODU Psychology BS delivery modes and admissions",
+      "url": "https://www.odu.edu/academics/programs/undergraduate/psychology",
+      "checked": "2026-11-09",
+      "catalog": "2026\u20132027"
+    }
+  ],
+  "models": [
+    {
+      "id": "curriculum-odu-95aa066744a33cad",
+      "routeIds": [
+        "odu-95aa066744a33cad"
+      ],
+      "school": "Old Dominion University",
+      "title": "Psychology, BS",
+      "format": "Online / On campus",
+      "modalities": [
+        "online",
+        "campus"
+      ],
+      "level": "bachelor",
+      "catalog": "2026\u20132027",
+      "totalCredits": 120,
+      "creditSystem": "semester",
+      "institutionMinCredits": null,
+      "upperMinCredits": null,
+      "majorMinInstitutionCredits": null,
+      "coverage": "complete",
+      "completeExecutablePathway": false,
+      "coverageLabel": "University-published degree program guide; specific category courses and transfer approval remain to be chosen",
+      "requirements": [
+        {
+          "id": "psyc-201s",
+          "code": "PSYC 201S",
+          "title": "Introduction to Psychology",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-core",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": false
+        },
+        {
+          "id": "engl-110c",
+          "code": "ENGL 110C",
+          "title": "English Composition",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "notes": "Grade C or better required."
+        },
+        {
+          "id": "information-literacy-and-research",
+          "code": "",
+          "title": "Information Literacy and Research",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "elective-or-language-and-culture-i",
+          "code": "",
+          "title": "Elective or Language and Culture I",
+          "credits": 3,
+          "category": "electives",
+          "group": "language-or-elective",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "notes": "Use an approved language course if Language and Culture has not been met by prior preparation.",
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "math-102m",
+          "code": "MATH 102M",
+          "title": "College Algebra or approved mathematics alternative",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [
+            {
+              "id": "odu-math-102m",
+              "provider": "University",
+              "code": "MATH 102M",
+              "title": "College Algebra",
+              "credits": 3,
+              "upper": false,
+              "sourceIds": [
+                "odu-psychology-guide"
+              ],
+              "evidence": "published",
+              "creditOrigin": "institutional",
+              "creditSystem": "semester",
+              "url": "https://catalog.odu.edu/undergraduate/sciences/psychology/psychology-bs/psychology-bs_degreeprogramguidetext.pdf"
+            },
+            {
+              "id": "odu-math-103m",
+              "provider": "University",
+              "code": "MATH 103M",
+              "title": "College Algebra with Supplemental Instruction",
+              "credits": 3,
+              "upper": false,
+              "sourceIds": [
+                "odu-psychology-guide"
+              ],
+              "evidence": "published",
+              "creditOrigin": "institutional",
+              "creditSystem": "semester",
+              "url": "https://catalog.odu.edu/undergraduate/sciences/psychology/psychology-bs/psychology-bs_degreeprogramguidetext.pdf"
+            }
+          ]
+        },
+        {
+          "id": "literature",
+          "code": "",
+          "title": "Literature",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "oral-communication",
+          "code": "",
+          "title": "Oral Communication",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "engl-211c",
+          "code": "ENGL 211C",
+          "title": "Second composition course",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [
+            {
+              "id": "odu-engl-211c",
+              "provider": "University",
+              "code": "ENGL 211C",
+              "title": "Writing, Rhetoric, and Research",
+              "credits": 3,
+              "upper": false,
+              "sourceIds": [
+                "odu-psychology-guide"
+              ],
+              "evidence": "published",
+              "creditOrigin": "institutional",
+              "creditSystem": "semester",
+              "url": "https://catalog.odu.edu/undergraduate/sciences/psychology/psychology-bs/psychology-bs_degreeprogramguidetext.pdf"
+            },
+            {
+              "id": "odu-engl-231c",
+              "provider": "University",
+              "code": "ENGL 231C",
+              "title": "Writing, Rhetoric, and Research: Special Topics",
+              "credits": 3,
+              "upper": false,
+              "sourceIds": [
+                "odu-psychology-guide"
+              ],
+              "evidence": "published",
+              "creditOrigin": "institutional",
+              "creditSystem": "semester",
+              "url": "https://catalog.odu.edu/undergraduate/sciences/psychology/psychology-bs/psychology-bs_degreeprogramguidetext.pdf"
+            }
+          ]
+        },
+        {
+          "id": "elective-or-language-and-culture-ii",
+          "code": "",
+          "title": "Elective or Language and Culture II",
+          "credits": 3,
+          "category": "electives",
+          "group": "language-or-elective",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "notes": "Language credits replace elective credit if Language and Culture has not been met.",
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psychology-elective-1",
+          "code": "",
+          "title": "Psychology Elective 1",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psyc-317",
+          "code": "PSYC 317",
+          "title": "Quantitative Methods",
+          "credits": 4,
+          "category": "major",
+          "group": "psychology-core",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true
+        },
+        {
+          "id": "psychology-area-1-biological-bases-and-cognition",
+          "code": "",
+          "title": "Psychology Area 1: Biological Bases and Cognition",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-areas",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "nature-of-science-i",
+          "code": "",
+          "title": "Nature of Science I",
+          "credits": 4,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psychology-elective-2",
+          "code": "",
+          "title": "Psychology Elective 2",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "human-creativity",
+          "code": "",
+          "title": "Human Creativity",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psyc-318w",
+          "code": "PSYC 318W",
+          "title": "Research Methods in Psychology",
+          "credits": 4,
+          "category": "major",
+          "group": "psychology-core",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "institutionalOnly": true,
+          "notes": "Writing-intensive major course; grade C or better and the university writing-intensive residency policy apply."
+        },
+        {
+          "id": "psychology-area-2-personality-and-social-processes",
+          "code": "",
+          "title": "Psychology Area 2: Personality and Social Processes",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-areas",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "nature-of-science-ii",
+          "code": "",
+          "title": "Nature of Science II",
+          "credits": 4,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "interpreting-the-past",
+          "code": "",
+          "title": "Interpreting the Past",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "impact-of-technology",
+          "code": "",
+          "title": "Impact of Technology",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psychology-area-3",
+          "code": "",
+          "title": "Psychology Area 3",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-areas",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "human-behavior-outside-psyc-201s-and-psyc-203s",
+          "code": "",
+          "title": "Human Behavior outside PSYC 201S and PSYC 203S",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "notes": "The catalog excludes PSYC 201S and PSYC 203S from this additional Human Behavior category.",
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psychology-elective-3",
+          "code": "",
+          "title": "Psychology Elective 3",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psychology-elective-4",
+          "code": "",
+          "title": "Psychology Elective 4",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "upper-division-general-education-1",
+          "code": "",
+          "title": "Upper-Division General Education 1",
+          "credits": 3,
+          "category": "general",
+          "group": "upper-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psychology-area-4",
+          "code": "",
+          "title": "Psychology Area 4",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-areas",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "philosophy-and-ethics",
+          "code": "",
+          "title": "Philosophy and Ethics",
+          "credits": 3,
+          "category": "general",
+          "group": "lower-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "psychology-elective-5",
+          "code": "",
+          "title": "Psychology Elective 5",
+          "credits": 3,
+          "category": "major",
+          "group": "psychology-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "upper-division-general-education-2",
+          "code": "",
+          "title": "Upper-Division General Education 2",
+          "credits": 3,
+          "category": "general",
+          "group": "upper-general",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "upper": true,
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "minor-or-elective-1",
+          "code": "",
+          "title": "Minor or Elective 1",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "minor-or-elective-2",
+          "code": "",
+          "title": "Minor or Elective 2",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "senior-electives-first-block",
+          "code": "",
+          "title": "Senior Electives, first block",
+          "credits": 9,
+          "category": "electives",
+          "group": "free-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        },
+        {
+          "id": "senior-electives-final-block",
+          "code": "",
+          "title": "Senior Electives, final block",
+          "credits": 14,
+          "category": "electives",
+          "group": "free-electives",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ],
+          "options": [],
+          "bucket": true,
+          "selectionRequired": true
+        }
+      ],
+      "sources": [
+        {
+          "id": "odu-psychology-guide",
+          "title": "ODU Psychology BS official degree program guide",
+          "url": "https://catalog.odu.edu/undergraduate/sciences/psychology/psychology-bs/psychology-bs_degreeprogramguidetext.pdf",
+          "checked": "2026-11-09",
+          "catalog": "2026\u20132027"
+        },
+        {
+          "id": "odu-psychology-requirements",
+          "title": "ODU Psychology BS 2026\u20132027 catalog requirements",
+          "url": "https://catalog.odu.edu/undergraduate/sciences/psychology/psychology-bs/psychology-bs.pdf",
+          "checked": "2026-11-09",
+          "catalog": "2026\u20132027"
+        },
+        {
+          "id": "odu-psychology-format",
+          "title": "ODU Psychology BS delivery modes and admissions",
+          "url": "https://www.odu.edu/academics/programs/undergraduate/psychology",
+          "checked": "2026-11-09",
+          "catalog": "2026\u20132027"
+        }
+      ],
+      "rulesNotes": [
+        "This ledger follows the university\u2019s published sample degree program guide. The university describes it as one of several valid curricula and requires an individualized advisor/degree audit.",
+        "Named alternative courses are choices, not additional required courses. Credits used for multiple general-education and major categories are counted once.",
+        "University fallback placement does not establish that an outside course is prohibited; no unsourced transfer equivalencies have been invented."
+      ],
+      "policyReview": [
+        {
+          "field": "upperMinCredits",
+          "status": "unverified",
+          "message": "Confirm the current university-wide upper-division credit minimum and the individual degree audit."
+        }
+      ],
+      "unresolved": [
+        "Confirm exact approved courses for each general-education, major-elective and free-elective category before enrolling.",
+        "Outside course and exam equivalencies require an exact receiving-school evaluation; this initial ledger does not infer Sophia or Study.com acceptance.",
+        "Academic prerequisites, current course offerings, grades, senior assessment and graduation application must be reconciled with the official degree audit."
+      ],
+      "obligations": [
+        {
+          "title": "Major declaration",
+          "notes": "Complete 30 earned credits, PSYC 201S, college algebra or higher math, and both composition courses with the specified minimum grades; overall and psychology GPA of at least 2.0 and a Major Declaration Session are required.",
+          "sourceIds": [
+            "odu-psychology-format"
+          ]
+        },
+        {
+          "title": "Language and Culture placement",
+          "notes": "The guide assumes language preparation has been met in high school. If not, use the two elective-or-language slots for the required language work; do not treat a waiver as earned credits.",
+          "sourceIds": [
+            "odu-psychology-guide"
+          ]
+        }
+      ],
+      "evidenceCheckedOn": "2026-11-09"
+    }
+  ],
+  "coverage": {
+    "scope": "Bounded reviewed degree-program guides, not the full ODU inventory. No unsourced provider acceptance or coursework prices are assumed.",
+    "modelCount": 1
+  }
+}

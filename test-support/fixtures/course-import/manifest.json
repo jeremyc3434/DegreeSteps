@@ -1,0 +1,56 @@
+{
+  "synthetic": true,
+  "containsPersonalData": false,
+  "purpose": "Browser-local bulk course import acceptance. Source totals and degree requirements must never become earned course records.",
+  "expectedMixedRows": 6,
+  "expectedMixedEarnedRows": 4,
+  "pdfPassword": "qa-only-password",
+  "expectedReadablePdfCourseRows": 2,
+  "expectedReadablePdfText": "SYNTHETIC TEST TRANSCRIPT - NOT A STUDENT RECORD\nInstitution: Example Semester College\nCredit system: Semester credits\nCourse code | Course title | Earned credits | Grade | Completed on\nENG101 | English Composition I | 3 | A | 2025-05-01\nMAT120 | College Algebra | 3 | B+ | 2025-12-15\nTerm total: 6\nCumulative earned credits: 6\nGrade point average: 3.65",
+  "files": {
+    "degree-audit-is-not-a-transcript.csv": {
+      "bytes": 205,
+      "sha256": "e11028b6cff7d36665e26e44223a6f99a1973b6122ab3615817d0eb6c0779440"
+    },
+    "duplicate-and-conflicting-courses.csv": {
+      "bytes": 369,
+      "sha256": "51c1b6e757b10b3e924a607b489182917526b34cd5d9d02f793d3910866de526"
+    },
+    "image-only-transcript.pdf": {
+      "bytes": 1443,
+      "sha256": "3152334e27f99dc57eb338a9d7161e6cc612b32e5685b17caace628dde407813"
+    },
+    "mixed-original-course-units.csv": {
+      "bytes": 592,
+      "sha256": "b131f6cc58624d832d99257bede5c79281594103e2fc24d32dcaafad695c0939"
+    },
+    "mixed-original-course-units.tsv": {
+      "bytes": 592,
+      "sha256": "512cb34c40d6e31fd20424f9dd696f199285e230fe166d28d6a11a35b4dc7882"
+    },
+    "mixed-original-course-units.xlsx": {
+      "bytes": 5449,
+      "sha256": "fb49a55839df53864013740b24994493d2f1c0da27f1f43496aae46eaf961287"
+    },
+    "password-protected-transcript.pdf": {
+      "bytes": 1662,
+      "sha256": "714db38ad62ddd3b7e2bcdae244e315a3f8f677099925fd10d32e2ae266942cc"
+    },
+    "synthetic-transcript.pdf": {
+      "bytes": 1672,
+      "sha256": "0ed3f2673c8e7e4ccbf79f461cdd9c9c8acee5932b53d25ce0e6fc06e12ba879"
+    },
+    "synthetic-transcript.txt": {
+      "bytes": 354,
+      "sha256": "50759fb02fe98e3d344db50ce1f79a27bb918db82961152848df847158233fa5"
+    },
+    "totals-are-not-courses.csv": {
+      "bytes": 385,
+      "sha256": "c8a5da58c898ce5d19b4801d25dbdb9d843176bf8e0cdc3582082d8dea02d96f"
+    },
+    "untrusted-destination-claims.csv": {
+      "bytes": 443,
+      "sha256": "fbebb59c2f9eaa2fd00d9950b788c9da3505b0bd513b5e14eb3056a585612f49"
+    }
+  }
+}

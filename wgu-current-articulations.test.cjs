@@ -1,0 +1,26 @@
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
+const read=path=>JSON.parse(fs.readFileSync(path,'utf8'));
+const review=read('content/curricula/snapshots/wgu/bsmgt-202611-current-partner-api-reviewed-evidence.json'),patch=read('content/curricula/overlays/wgu-bsmgt-verified-articulations-20261117.json'),provider=read('content/curricula/snapshots/wgu/bsmgt-202611-sophia-provider-identities.json');
+test('current approved public agreements have exact program, record and receiving-unit identities',async()=>{
+ const {validateWguBusinessReview}=await import('./scripts/wgu-bsmgt-articulations.mjs');assert.doesNotThrow(()=>validateWguBusinessReview(review));
+ for(const mutate of [value=>value.scope.catalog='202503',value=>value.agreements[0].published=false,value=>value.receivingClaims[0].programId=187,value=>value.receivingClaims[0].creditSystem='semester',value=>value.receivingClaims[0].agreementRecordVersion=185,value=>value.requirements[0].credits=4,value=>value.program.modifiedBy='staff']){const value=structuredClone(review);mutate(value);assert.throws(()=>validateWguBusinessReview(value));}
+});
+test('every executable outside option is present in the exact current university map and unsupported old options are held',()=>{
+ const model=read('content/curricula/wgu.json').models.find(row=>row.id===review.scope.modelId),sources=new Map(read('content/curricula/wgu.json').sources.map(row=>[row.id,row]));
+ const options=model.requirements.flatMap(row=>row.options.map(option=>({row,option})));assert.equal(options.length,36);assert.equal(options.filter(({option})=>option.evidence==='conditional').length,0);
+ for(const {row,option}of options){const claim=review.receivingClaims.find(value=>value.provider===option.provider&&value.receivingCode===row.code);assert(claim);assert(claim.approvedSourceCodes.includes(option.code));assert.equal(option.universityMapRecord.mappingId,claim.mappingId);assert.equal(option.universityMapRecord.programId,240);assert.equal(option.mappingEvidence.catalogYear,'202605');assert.equal(option.mappingEvidence.providerCourseCode,option.code);assert.equal(option.credits,row.credits);assert.equal(option.creditSystem,'competency-unit');assert.equal(option.sourceCredits,3);assert.equal(option.sourceCreditSystem,'semester');assert.equal(option.evidence,'published');for(const id of option.sourceIds){const source=sources.get(id);assert.equal(source.kind,'university');assert(source.roles.includes('receiving-map'));assert.equal(source.scope.catalogYear,'202605');assert.equal(source.agreementRecordVersion,claim.agreementRecordVersion);}}
+ assert(!model.requirements.find(row=>row.code==='D270').options.some(option=>['SOPH-0030','SOPH-0049'].includes(option.code)));assert.equal(review.heldLegacyExecutableCandidates.length,2);assert.deepEqual(model.unresolved,[]);
+});
+test('current provider syllabi retain original source units, dates and levels independently of WGU CU awards',()=>{
+ const model=read('content/curricula/wgu.json').models.find(row=>row.id===review.scope.modelId),finance=provider.courses.find(row=>row.aceId==='SOPH-0033'),accounting=provider.courses.find(row=>row.aceId==='SOPH-0079');assert.equal(finance.providerCourseCode,'BUSI1015');assert.equal(finance.providerPublishedCourseEffectiveDates,'June 2026 - Present');assert.equal(accounting.providerPublishedCourseEffectiveDates,'November 2026 - Present');
+ for(const course of provider.courses){assert.equal(course.activeOffering,true);assert.equal(course.sourceCredits,3);assert.equal(course.sourceCreditSystem,'semester');assert.match(course.syllabusSHA256,/^[a-f0-9]{64}$/);}
+ const operations=model.requirements.find(row=>row.code==='D079').options.find(option=>option.code==='SOPH-0086');assert.equal(operations.sourceCredits,3);assert.equal(operations.credits,2);assert.equal(operations.sourceUpper,true);assert.equal(operations.upper,undefined);
+ const management=model.requirements.find(row=>row.code==='C483').options.find(option=>option.code==='SOPH-0054');assert.equal(management.sourceCredits,3);assert.equal(management.credits,4);
+ assert.equal(patch.modelUpdates.residencyPolicy.interpretationStatus,'verified-additional-capstone');assert.equal(patch.modelUpdates.residencyPolicy.calculatedMinimumInstitutionCUs,31.5);
+});
+test('the actual solver follows published maps and prevents the same Sophia action serving two requirements',()=>{
+ const Planner=require('./dist/planner.js'),pack=read('dist/data/curricula/wgu.json'),model=pack.models.find(row=>row.id===review.scope.modelId),plan=Planner.generate(model,{providers:['Sophia','Study.com'],allowConditional:false,priority:'transfer'});
+ assert.equal(plan.totals.external,69);assert.equal(plan.totals.institutional,41);assert.equal(plan.totals.confirmed,0);assert.equal(plan.validation.academicCountsValid,true);assert(plan.rows.every(row=>row.option&&row.option.evidence==='published'));
+ const actions=plan.rows.filter(row=>row.option.provider!=='University').map(row=>row.option.provider+':'+row.option.code);assert.equal(new Set(actions).size,actions.length);
+ const sophia=Planner.generate(model,{providers:['Sophia'],allowConditional:false,priority:'transfer'});assert.equal(sophia.totals.external,60);assert.equal(sophia.rows.filter(row=>row.option.code==='SOPH-0083').length,1);
+});

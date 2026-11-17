@@ -1,0 +1,36 @@
+node_modules/
+.local-community/
+outputs/
+
+# Local secrets and provider tooling state.
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+.wrangler/
+.projects/
+.vercel/
+supabase/.temp/
+supabase/.branches/
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Generated build, test, and source-sharing artifacts.
+coverage/
+.cache/
+*.log
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.bundle
+/*.png
+publish-source.py
+
+# Local editor, operating-system, and Python state.
+.DS_Store
+__pycache__/
+*.py[cod]

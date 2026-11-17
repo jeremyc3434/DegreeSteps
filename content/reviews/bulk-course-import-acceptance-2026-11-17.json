@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "asOf": "2026-11-17",
+  "status": "52 checks passing: production engine, academic guards, actual local files, storage transactions and real upload-page handlers.",
+  "scope": "Original student-course records imported from browser-local files. Requirement ledgers and proposed degree plans are separate information.",
+  "privacy": "All fixtures are synthetic. No real student documents, accounts or external uploads are used.",
+  "fixtures": "test-support/fixtures/course-import/manifest.json",
+  "legacyGuardsReviewed": {
+    "Sheet.parseCSV": "Requires provider/title/credits, defaults absent status to earned and absent units to semester. The new upload review must not carry these defaults into ambiguous transcript or spreadsheet rows.",
+    "Sheet.mergeLearning": "Deduplicates normalized provider+code or title. Changed matching facts replace the record and clear its evaluations, so the new review/apply boundary needs explicit conflict choices and acknowledgment.",
+    "Sheet.updateLearning": "Validates original quantities/units/dates/grades, discards incoming evaluation claims and preserves existing evaluations only when academic source facts are unchanged. It is not a collection concurrency guard."
+  },
+  "cases": [
+    {
+      "id": "mixed-original-units",
+      "fixture": ["mixed-original-course-units.csv", "mixed-original-course-units.tsv", "mixed-original-course-units.xlsx"],
+      "expected": "Six editable course proposals: four completed, one saved with unknown credits/units and one in progress. Preserve the original 4 quarter credits and 3 competency units without conversion; retain A-, B+, Pass, CLEP score 63 and exact completion dates. XLSX dates are true spreadsheet date cells."
+    },
+    {
+      "id": "no-pre-review-mutation",
+      "expected": "Choosing a file, parsing it, correcting a proposal or changing selection does not write private course records. The final review identifies how many courses will be added, left unchanged or require conflict resolution before explicit import."
+    },
+    {
+      "id": "identical-and-conflicting-duplicates",
+      "fixture": "duplicate-and-conflicting-courses.csv",
+      "expected": "Identical copies do not create additional original actions. Contradictory quantities for the same original identity remain a visible conflict; no arbitrary row wins and no partially merged collection is saved after failure. Same-code retakes with changed dates or grades require explicit review."
+    },
+    {
+      "id": "existing-school-evaluation",
+      "expected": "An unchanged existing course keeps its record ID and school evaluations. A changed existing source requires a specific replacement choice and consent before its old evaluations are cleared. Imported evaluations or destination selections never establish official school credit."
+    },
+    {
+      "id": "keep-existing-and-continue",
+      "expected": "A saved-interest completion update may be an explicit conflict. The student can keep or unselect that row and import the genuinely new courses without losing the existing source or the original review proposals. A blocked conflict must have an understandable recovery action."
+    },
+    {
+      "id": "stale-review",
+      "expected": "If the course collection changes after preview, final import blocks before writing and retains the reviewed proposals for refresh. A concurrently added school evaluation is never silently removed. Concurrent changes outside the course collection are preserved by applying to the newest whole state."
+    },
+    {
+      "id": "untrusted-destination-claims",
+      "fixture": "untrusted-destination-claims.csv",
+      "expected": "Whitelist original course fields. Ignore imported evaluation JSON, catalog IDs, trusted code bases, aliases, receiving-program IDs and other executable provenance. These fields must not create school approval, activate curated identity aliases or claim the current degree's institutional residency."
+    },
+    {
+      "id": "totals-and-gpa",
+      "fixture": "totals-are-not-courses.csv",
+      "expected": "Term totals, cumulative earned-credit summaries and GPA rows are excluded or explicitly flagged as noncourses; they never become earned course records or inflate degree progress."
+    },
+    {
+      "id": "requirements-are-not-earned-courses",
+      "fixture": "degree-audit-is-not-a-transcript.csv",
+      "expected": "Required/unmet degree rows and elective-credit totals are not treated as completed courses. Explain the document mismatch and preserve a path to requirement import or source mapping."
+    },
+    {
+      "id": "readable-transcript",
+      "fixture": ["synthetic-transcript.pdf", "synthetic-transcript.txt"],
+      "expected": "Extract two course proposals under Example Semester College with 3 semester credits each, grades A and B+, and exact ISO completion dates. Skip the term/cumulative/GPA lines and require review before saving."
+    },
+    {
+      "id": "protected-and-scanned-documents",
+      "fixture": ["password-protected-transcript.pdf", "image-only-transcript.pdf"],
+      "expected": "A real password-protected PDF and a PDF with zero text layer produce specific actionable messages, no empty-success state and no records. Offer an unprotected text PDF, spreadsheet, pasted rows or manual entry; do not imply that OCR ran."
+    },
+    {
+      "id": "uncertain-and-invalid-cells",
+      "expected": "Blank original credits/units stay unknown. Missing status, unrecognized grades, ambiguous dates and failed/incomplete/withdrawn attempts remain visible for review and do not silently become earned credit. Invalid rows do not hide otherwise readable rows; counts identify every excluded or unresolved proposal."
+    },
+    {
+      "id": "origin-and-private-plan-preservation",
+      "expected": "Import does not replace original course providers with the selected receiving university, change the active degree, reset preferences, lose private notes, restore an old checklist or grant destination approval. No network call contains source-file bytes or extracted student text."
+    }
+  ],
+  "verification": {
+    "productionEngineTest": "bulk-record-import-acceptance.test.cjs",
+    "productionEngineChecksPassing": 20,
+    "lowerLevelAcademicGuardTest": "bulk-import-edge-cases.test.cjs",
+    "lowerLevelAcademicChecksPassing": 6,
+    "actualFileIntegrationTest": "bulk-import-file-integration.test.cjs",
+    "actualFileIntegrationChecksPassing": 4,
+    "storageTransactionTest": "course-import-workflow.test.cjs",
+    "storageTransactionChecksPassing": 12,
+    "actualUiHandlerTest": "import-courses-ui.test.cjs",
+    "actualUiHandlerChecksPassing": 10,
+    "actualFilesVerified": ["CSV", "TSV", "Typed-date XLSX", "Readable native-text PDF", "Password-protected PDF", "Image-only PDF"],
+    "networkBoundary": "Actual-file integration replaces fetch with a throwing recorder and confirms zero source-file or extracted-text requests during local reading, parsing and reviewed commit.",
+    "fixedDuringAcceptance": [
+      "Cumulative earned-credit summaries no longer become completed course rows.",
+      "Clean pipe-delimited readable transcript tables now produce complete course proposals while partially understood lines remain visible and unchecked.",
+      "Cancel during AI availability checking now aborts the request and cannot resume source-page image preparation. Old file/AI completions cannot unlock or replace a newer local upload."
+    ],
+    "uiAcceptance": "The actual page handlers preview without writing, require explicit Add, recover from conflicts/stale storage/save failures, preserve private plan data and evaluations, allow batch correction, and require PDF document intent plus consent plus an explicit AI button before any model request.",
+    "pending": []
+  },
+  "verificationLimitations": "Node tests exercise the real production engine and actual file decoders. Upload handlers run through a bounded VM/DOM/storage harness with a substituted file-reader boundary; real file decoding is covered separately. No visual browser or actual-student study is available in this environment."
+}

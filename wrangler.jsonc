@@ -1,0 +1,44 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "degreesteps",
+  "main": "outputs/cloudflare/worker.mjs",
+  "compatibility_date": "2026-11-17",
+  // Replace these with resources in YOUR Cloudflare account. Sites' DB is not portable by ID.
+  "account_id": "REPLACE_WITH_YOUR_CLOUDFLARE_ACCOUNT_ID",
+  "workers_dev": true,
+  "build": {"command": "npm run build"},
+  "limits": {"cpu_ms": 60000},
+  "observability": {"enabled": true, "head_sampling_rate": 0.1},
+  "assets": {
+    "directory": "./outputs/cloudflare/public",
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "not_found_handling": "none",
+    // All routes pass through the same privacy/security policy before asset delivery.
+    "run_worker_first": true
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "degreesteps-public",
+    "database_id": "REPLACE_WITH_ACCOUNT_OWNED_D1_ID",
+    "migrations_dir": "drizzle"
+  }],
+  "queues": {
+    "producers": [
+      {"binding": "RESEARCH_QUEUE", "queue": "degreesteps-research"},
+      {"binding": "RESEARCH_DEAD_LETTER_QUEUE", "queue": "degreesteps-research-dlq"}
+    ],
+    "consumers": [{
+      "queue": "degreesteps-research",
+      "max_batch_size": 1,
+      "max_batch_timeout": 1,
+      "max_retries": 3,
+      "retry_delay": 120,
+      "dead_letter_queue": "degreesteps-research-dlq",
+      "max_concurrency": 2
+    }]
+  },
+  // Replays committed outbox messages after a failed send. This is inactive until deployed.
+  "triggers": {"crons": ["*/2 * * * *"]},
+  "vars": {"PORTAL_STORAGE_BACKEND": "supabase"}
+}

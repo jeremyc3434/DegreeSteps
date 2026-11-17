@@ -1,0 +1,12 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const defaults={required:'120',pace:'3',rate:'0',fees:'0',planned:'0',destination:'tesu',priority:'Balance cost and time',units:'Semester'};
+const nodes={};const get=id=>nodes[id]??=( {value:defaults[id]||'',innerHTML:'',textContent:'',addEventListener(){},click(){},files:[]} );
+const context={document:{getElementById:get,querySelectorAll:()=>[],createElement:()=>({click(){}})},localStorage:{getItem:()=>null,setItem(){}},location:{},window:{},console,Blob,URL};
+vm.createContext(context);vm.runInContext(fs.readFileSync('dist/app.js','utf8'),context);
+vm.runInContext("state.inventory=[{name:'A',credits:30,status:'approved'},{name:'B',credits:60,status:'pending'}]",context);
+let c=vm.runInContext('calculate()',context);assert.equal(c.remaining,90);assert.equal(c.pending,60);
+get('rate').value='300';get('planned').value='60';c=vm.runInContext('calculate()',context);assert.equal(c.scenario,30);assert.equal(c.cost,9000);assert.equal(c.months,10);
+get('planned').value='200';c=vm.runInContext('calculate()',context);assert.equal(c.scenario,6);
+assert.equal(vm.runInContext('csvRows(\'"Composition, I",College,3,pending\\nMath,College,3,pending\').length',context),2);
+assert.equal(vm.runInContext('policies.every(p=>p.pct>=50 && p.url.startsWith("https://"))',context),true);
+console.log('Passed: scenario arithmetic, pending-credit exclusion, ceiling limit, CSV parsing, policy source coverage.');

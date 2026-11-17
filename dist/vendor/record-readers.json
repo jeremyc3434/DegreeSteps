@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "scope": "Pinned browser-local PDF and XLSX readers. Uploaded file contents are not sent to a CDN.",
+  "dependencies": {
+    "pdfjs-dist": "6.5.438",
+    "xlsx": "0.20.3",
+    "fflate": "0.8.3"
+  },
+  "files": [
+    {
+      "path": "vendor/pdfjs/pdf.mjs",
+      "package": "pdfjs-dist",
+      "version": "6.5.438",
+      "bytes": 537769,
+      "sha256": "522ad2c83bc8a0010e7f0cc60d0892b77c8d2bf2c9702dc12288311d94270f42"
+    },
+    {
+      "path": "vendor/pdfjs/pdf.worker.mjs",
+      "package": "pdfjs-dist",
+      "version": "6.5.438",
+      "bytes": 1327591,
+      "sha256": "b4c8353ded0d88d2e2009574a29eb4e0c3ff7e942ecdf51ef5f71566a9667f31"
+    },
+    {
+      "path": "vendor/pdfjs/LICENSE.txt",
+      "package": "pdfjs-dist",
+      "version": "6.5.438",
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    {
+      "path": "vendor/xlsx/xlsx.min.js",
+      "package": "xlsx",
+      "version": "0.20.3",
+      "bytes": 279523,
+      "sha256": "0cb353f830d7288385492c83d277b058ddeac664ca51cf1393aa1fd3e2b70939"
+    },
+    {
+      "path": "vendor/xlsx/LICENSE.txt",
+      "package": "xlsx",
+      "version": "0.20.3",
+      "bytes": 11355,
+      "sha256": "4d2a38ac35cda06a555c84074a819d413339cd3691b822cae50f8f322fe01f64"
+    },
+    {
+      "path": "vendor/fflate/fflate.js",
+      "package": "fflate",
+      "version": "0.8.3",
+      "bytes": 33044,
+      "sha256": "462ef8041fc970e3615a20a9dd2b2e3047a073b2da729ef4f02b634bba8b7b83"
+    },
+    {
+      "path": "vendor/fflate/LICENSE.txt",
+      "package": "fflate",
+      "version": "0.8.3",
+      "bytes": 1069,
+      "sha256": "0a1df3a083d0c010560aa342e87959c8c1070e6fd54545741f083f22d0c8b551"
+    }
+  ]
+}

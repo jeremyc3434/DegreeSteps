@@ -1,0 +1,428 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-17",
+  "school": "Liberty University",
+  "provider": "Christian Leaders Institute",
+  "scope": "Five fixed, single, named undergraduate receiving awards from the current public registrar calculator, independently matched to current coded provider identities. No wildcard, ranged, OR-list, graduate, source-credit-unit or individual-approval claim. Delivery-format and exact-degree use remain conditional.",
+  "calculatorRequest": {
+    "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+    "institution": "M12424",
+    "state": "FL",
+    "term": "NULL",
+    "sourceSnapshot": "content/transfer-awards/snapshots/liberty-cli-calculator-2026-11-17.json",
+    "sha256": "4fe1b9dba704f03d80aef7f02bba50d222d2db66223479f0a72c1c67640eec85",
+    "rowCount": 124
+  },
+  "sources": [
+    {
+      "id": "liberty-cli-calculator-current",
+      "title": "Liberty public registrar transfer calculator \u2014 Christian Leaders Institute Florida M12424",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "checked": "2026-11-17",
+      "evidenceType": "official-receiving-school-calculator",
+      "scope": "Undergraduate institutional receiving-course equivalencies. Query has no program or delivery-format parameter."
+    },
+    {
+      "id": "cli-transcript-issuer-current",
+      "title": "CLI academic transcript pathways and outgoing processing fees",
+      "url": "https://www.christianleadersinstitute.org/transfer-information/",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "provider-identity"
+      ],
+      "checked": "2026-11-17",
+      "courseCodes": [
+        "BUS 310",
+        "BUS 320",
+        "BUS 330",
+        "BUS 415",
+        "ECN 301"
+      ]
+    },
+    {
+      "id": "cli-accreditation-status-current",
+      "title": "CLI disclosure of ABHE candidate/pre-accreditation status",
+      "url": "https://help.christianleaders.org/helpdesk/accreditation-status",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "recognition"
+      ],
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "cli-original-bus-310-current",
+      "title": "Christian Leaders Institute BUS 310 current coded course identity",
+      "url": "https://christianleaders.org/course/view.php?id=758",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "provider-identity"
+      ],
+      "courseCodes": [
+        "BUS 310"
+      ],
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "cli-original-bus-320-current",
+      "title": "Christian Leaders Institute BUS 320 current coded course identity",
+      "url": "https://christianleaders.org/course/view.php?id=748",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "provider-identity"
+      ],
+      "courseCodes": [
+        "BUS 320"
+      ],
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "cli-original-bus-330-current",
+      "title": "Christian Leaders Institute BUS 330 current coded course identity",
+      "url": "https://christianleaders.org/course/index.php?categoryid=131",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "provider-identity"
+      ],
+      "courseCodes": [
+        "BUS 330"
+      ],
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "cli-original-bus-415-current",
+      "title": "Christian Leaders Institute BUS 415 current coded course identity",
+      "url": "https://christianleaders.org/course/index.php?categoryid=131",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "provider-identity"
+      ],
+      "courseCodes": [
+        "BUS 415"
+      ],
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "cli-original-ecn-301-current",
+      "title": "Christian Leaders Institute ECN 301 current coded course identity",
+      "url": "https://christianleaders.org/course/view.php?id=779",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "provider-identity"
+      ],
+      "courseCodes": [
+        "ECN 301"
+      ],
+      "checked": "2026-11-17"
+    }
+  ],
+  "awards": [
+    {
+      "id": "liberty-cli-bus-310-to-busi-310",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christian-leaders",
+      "code": "BUS 310",
+      "title": "Business Management for Every Enterprise",
+      "credits": 3,
+      "creditSystem": "semester",
+      "receivingCode": "BUSI 310",
+      "upper": true,
+      "creditOrigin": "institutional",
+      "sourceCreditStatus": "unknown",
+      "providerListedCreditQuantity": 4,
+      "providerListedCreditUnit": "credits",
+      "providerCourseUrl": "https://christianleaders.org/course/view.php?id=758",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "evidence": "conditional",
+      "evidenceType": "official-receiving-school-calculator",
+      "mappingScope": "Current university registrar receiving award; exact undergraduate degree placement is conditional. The public query has no delivery-format or program parameter.",
+      "degreeLevels": [
+        "associate",
+        "bachelor"
+      ],
+      "modalities": [
+        "online",
+        "campus"
+      ],
+      "sourceIds": [
+        "liberty-cli-calculator-current"
+      ],
+      "identitySourceIds": [
+        "cli-original-bus-310-current",
+        "cli-transcript-issuer-current"
+      ],
+      "calculatorInstitutionCode": "M12424",
+      "calculatorAwardRange": {
+        "low": 3,
+        "high": 3
+      },
+      "costStatus": "unpriced-academic-pathway",
+      "paceStatus": "provider-limits-known-course-duration-not-promised",
+      "conditions": [
+        "Use the eligible CLI academic-transcript pathway; free course access alone is not an academic transcript.",
+        "CLI currently discloses ABHE candidate/pre-accreditation status; no regional-accreditation claim is made.",
+        "The named Liberty receiving course must satisfy this degree requirement, grade rules and residency allocation.",
+        "Credit source quantity and the Liberty receiving award are separate: this option counts only the published three-credit Liberty award.",
+        "CLI academic-pathway fees and the outgoing transcript charge are separate from free learning access. No zero-price route or finish date is assumed."
+      ]
+    },
+    {
+      "id": "liberty-cli-bus-320-to-busi-320",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christian-leaders",
+      "code": "BUS 320",
+      "title": "Business Finance For Every Enterprise",
+      "credits": 3,
+      "creditSystem": "semester",
+      "receivingCode": "BUSI 320",
+      "upper": true,
+      "creditOrigin": "institutional",
+      "sourceCreditStatus": "unknown",
+      "providerListedCreditQuantity": 4,
+      "providerListedCreditUnit": "credits",
+      "providerCourseUrl": "https://christianleaders.org/course/view.php?id=748",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "evidence": "conditional",
+      "evidenceType": "official-receiving-school-calculator",
+      "mappingScope": "Current university registrar receiving award; exact undergraduate degree placement is conditional. The public query has no delivery-format or program parameter.",
+      "degreeLevels": [
+        "associate",
+        "bachelor"
+      ],
+      "modalities": [
+        "online",
+        "campus"
+      ],
+      "sourceIds": [
+        "liberty-cli-calculator-current"
+      ],
+      "identitySourceIds": [
+        "cli-original-bus-320-current",
+        "cli-transcript-issuer-current"
+      ],
+      "calculatorInstitutionCode": "M12424",
+      "calculatorAwardRange": {
+        "low": 3,
+        "high": 3
+      },
+      "costStatus": "unpriced-academic-pathway",
+      "paceStatus": "provider-limits-known-course-duration-not-promised",
+      "conditions": [
+        "Use the eligible CLI academic-transcript pathway; free course access alone is not an academic transcript.",
+        "CLI currently discloses ABHE candidate/pre-accreditation status; no regional-accreditation claim is made.",
+        "The named Liberty receiving course must satisfy this degree requirement, grade rules and residency allocation.",
+        "Credit source quantity and the Liberty receiving award are separate: this option counts only the published three-credit Liberty award.",
+        "CLI academic-pathway fees and the outgoing transcript charge are separate from free learning access. No zero-price route or finish date is assumed."
+      ]
+    },
+    {
+      "id": "liberty-cli-bus-330-to-busi-330",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christian-leaders",
+      "code": "BUS 330",
+      "title": "Enterprise Marketing",
+      "credits": 3,
+      "creditSystem": "semester",
+      "receivingCode": "BUSI 330",
+      "upper": true,
+      "creditOrigin": "institutional",
+      "sourceCreditStatus": "unknown",
+      "providerListedCreditQuantity": 4,
+      "providerListedCreditUnit": "credits",
+      "providerCourseUrl": "https://christianleaders.org/course/index.php?categoryid=131",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "evidence": "conditional",
+      "evidenceType": "official-receiving-school-calculator",
+      "mappingScope": "Current university registrar receiving award; exact undergraduate degree placement is conditional. The public query has no delivery-format or program parameter.",
+      "degreeLevels": [
+        "associate",
+        "bachelor"
+      ],
+      "modalities": [
+        "online",
+        "campus"
+      ],
+      "sourceIds": [
+        "liberty-cli-calculator-current"
+      ],
+      "identitySourceIds": [
+        "cli-original-bus-330-current",
+        "cli-transcript-issuer-current"
+      ],
+      "calculatorInstitutionCode": "M12424",
+      "calculatorAwardRange": {
+        "low": 3,
+        "high": 3
+      },
+      "costStatus": "unpriced-academic-pathway",
+      "paceStatus": "provider-limits-known-course-duration-not-promised",
+      "conditions": [
+        "Use the eligible CLI academic-transcript pathway; free course access alone is not an academic transcript.",
+        "CLI currently discloses ABHE candidate/pre-accreditation status; no regional-accreditation claim is made.",
+        "The named Liberty receiving course must satisfy this degree requirement, grade rules and residency allocation.",
+        "Credit source quantity and the Liberty receiving award are separate: this option counts only the published three-credit Liberty award.",
+        "CLI academic-pathway fees and the outgoing transcript charge are separate from free learning access. No zero-price route or finish date is assumed."
+      ]
+    },
+    {
+      "id": "liberty-cli-bus-415-to-busi-411",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christian-leaders",
+      "code": "BUS 415",
+      "title": "Strategic Management",
+      "credits": 3,
+      "creditSystem": "semester",
+      "receivingCode": "BUSI 411",
+      "upper": true,
+      "creditOrigin": "institutional",
+      "sourceCreditStatus": "unknown",
+      "providerListedCreditQuantity": 3,
+      "providerListedCreditUnit": "credits",
+      "providerCourseUrl": "https://christianleaders.org/course/index.php?categoryid=131",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "evidence": "conditional",
+      "evidenceType": "official-receiving-school-calculator",
+      "mappingScope": "Current university registrar receiving award; exact undergraduate degree placement is conditional. The public query has no delivery-format or program parameter.",
+      "degreeLevels": [
+        "associate",
+        "bachelor"
+      ],
+      "modalities": [
+        "online",
+        "campus"
+      ],
+      "sourceIds": [
+        "liberty-cli-calculator-current"
+      ],
+      "identitySourceIds": [
+        "cli-original-bus-415-current",
+        "cli-transcript-issuer-current"
+      ],
+      "calculatorInstitutionCode": "M12424",
+      "calculatorAwardRange": {
+        "low": 3,
+        "high": 3
+      },
+      "costStatus": "unpriced-academic-pathway",
+      "paceStatus": "provider-limits-known-course-duration-not-promised",
+      "conditions": [
+        "Use the eligible CLI academic-transcript pathway; free course access alone is not an academic transcript.",
+        "CLI currently discloses ABHE candidate/pre-accreditation status; no regional-accreditation claim is made.",
+        "The named Liberty receiving course must satisfy this degree requirement, grade rules and residency allocation.",
+        "Credit source quantity and the Liberty receiving award are separate: this option counts only the published three-credit Liberty award.",
+        "CLI academic-pathway fees and the outgoing transcript charge are separate from free learning access. No zero-price route or finish date is assumed."
+      ]
+    },
+    {
+      "id": "liberty-cli-ecn-301-to-econ-213",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christian-leaders",
+      "code": "ECN 301",
+      "title": "Microeconomics",
+      "credits": 3,
+      "creditSystem": "semester",
+      "receivingCode": "ECON 213",
+      "upper": false,
+      "creditOrigin": "institutional",
+      "sourceCreditStatus": "unknown",
+      "providerListedCreditQuantity": 3,
+      "providerListedCreditUnit": "credits",
+      "providerCourseUrl": "https://christianleaders.org/course/view.php?id=779",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "evidence": "conditional",
+      "evidenceType": "official-receiving-school-calculator",
+      "mappingScope": "Current university registrar receiving award; exact undergraduate degree placement is conditional. The public query has no delivery-format or program parameter.",
+      "degreeLevels": [
+        "associate",
+        "bachelor"
+      ],
+      "modalities": [
+        "online",
+        "campus"
+      ],
+      "sourceIds": [
+        "liberty-cli-calculator-current"
+      ],
+      "identitySourceIds": [
+        "cli-original-ecn-301-current",
+        "cli-transcript-issuer-current"
+      ],
+      "calculatorInstitutionCode": "M12424",
+      "calculatorAwardRange": {
+        "low": 3,
+        "high": 3
+      },
+      "costStatus": "unpriced-academic-pathway",
+      "paceStatus": "provider-limits-known-course-duration-not-promised",
+      "conditions": [
+        "Use the eligible CLI academic-transcript pathway; free course access alone is not an academic transcript.",
+        "CLI currently discloses ABHE candidate/pre-accreditation status; no regional-accreditation claim is made.",
+        "The named Liberty receiving course must satisfy this degree requirement, grade rules and residency allocation.",
+        "Credit source quantity and the Liberty receiving award are separate: this option counts only the published three-credit Liberty award.",
+        "CLI academic-pathway fees and the outgoing transcript charge are separate from free learning access. No zero-price route or finish date is assumed."
+      ]
+    }
+  ],
+  "issuerReview": {
+    "issuer": "Christian Leaders Institute",
+    "creditRoute": "cli-academic-transcript",
+    "origin": "institutional",
+    "routeStatus": "candidate",
+    "accreditation": "ABHE candidate/pre-accreditation; not a regional-accreditation claim.",
+    "freeLearningAloneIsCredit": false,
+    "outgoingTranscriptFeeNonGraduateUSD": 75,
+    "outgoingTranscriptFeeGraduateUSD": 30,
+    "totalAcademicPathwayCostUSD": null
+  },
+  "paceReview": {
+    "maximumActiveCredits": 18,
+    "maximumCompletedCreditsPerTerm": 21,
+    "termMonths": 4,
+    "courseEnrollmentDays": 180,
+    "sourceUrl": "https://christianleaders.org/mod/page/view.php?id=114819&lang=en_us"
+  },
+  "excludedExamples": [
+    {
+      "code": "MAT 201",
+      "receivingCode": "MATH1XX",
+      "low": 0,
+      "high": 3,
+      "reason": "Wildcard and variable receiving quantity; not a named MATH 121 equivalency."
+    },
+    {
+      "code": "BUS 360",
+      "receivingCodes": [
+        "BUSI303",
+        "BUSI307"
+      ],
+      "low": 3,
+      "high": 3,
+      "reason": "Multiple receiving alternatives; no one option chosen by this review."
+    },
+    {
+      "code": "BUS 420",
+      "receivingCodes": [
+        "BUSI4XX",
+        "BUSI320"
+      ],
+      "low": 0,
+      "high": 3,
+      "reason": "Both an OR-list and a variable receiving award."
+    }
+  ],
+  "notes": [
+    "The current calculator returns BUS 310 and BUS 320 as three-credit Liberty courses, replacing the four-credit receiving quantities in the archived July 2022 guide.",
+    "Provider LMS entries list BUS 310/BUS 320/BUS 330 as four credits. Those quantities do not turn into four applied Liberty credits; source credit units remain explicitly unconfirmed here.",
+    "Do not add this provider automatically to a returning student\u2019s selected providers or infer a zero total cost."
+  ]
+}

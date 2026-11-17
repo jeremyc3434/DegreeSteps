@@ -1,0 +1,57 @@
+.account-page { background: #fff; }
+.account-page #account-main { min-height: 65vh; }
+.account-shell { width: calc(100% - 48px); max-width: 1040px; margin: 52px auto 72px; min-width: 0; }
+.account-auth { max-width: 480px; margin-top: 56px; }
+.account-shell h1 { margin-bottom: 14px; font-size: clamp(30px, 4vw, 42px); letter-spacing: -1.1px; }
+.account-lede { max-width: 650px; margin-bottom: 28px; color: var(--portal-muted); font-size: 16px; line-height: 1.75; }
+.account-loading { width: calc(100% - 48px); max-width: 680px; margin: 70px auto; color: var(--portal-muted); }
+#account-status:empty { display: none; }
+#account-status:not(:empty), #account-error { width: calc(100% - 48px); max-width: 1040px; margin: 24px auto 0; padding: 14px 18px; border-radius: 9px; border: 1px solid #dbe6fa; background: var(--portal-soft); color: #365b91; font-size: 14px; line-height: 1.65; }
+#account-error { border-color: #f0c9c3; background: #fff9f8; color: #942b21; }
+.account-tabs { display: flex; gap: 8px; padding: 5px; margin-bottom: 24px; border-radius: 10px; background: #f3f6fb; }
+.account-tabs button { flex: 1; min-height: 44px; padding: 10px 18px; border: 0; border-radius: 7px; background: transparent; color: var(--portal-muted); font-size: 14px; font-weight: 600; }
+.account-tabs button[aria-pressed="true"] { background: #fff; color: var(--portal-ink); box-shadow: 0 1px 4px rgb(20 33 58 / 8%); }
+.account-auth form { margin: 25px 0; }
+.account-auth .portal-primary, .account-auth .portal-secondary { width: 100%; }
+.account-google { margin-top: 24px; }
+.account-divider { display: flex; align-items: center; gap: 15px; margin: 26px 0; color: var(--portal-muted); font-size:14px; }
+.account-divider::before, .account-divider::after { flex: 1; height: 1px; background: var(--portal-line); content: ""; }
+.account-meta { color: var(--portal-muted); font-size:14px; line-height: 1.75; }
+.account-layout { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.account-panel { min-width: 0; padding: 28px; border: 1px solid var(--portal-line); border-radius: 13px; background: #fff; }
+.account-panel h2 { margin-bottom: 12px; font-size: 22px; letter-spacing: -.45px; }
+.account-panel > p { color: var(--portal-muted); font-size: 14px; line-height: 1.7; }
+.account-panel + .account-panel { margin-top: 24px; }
+.account-panel .portal-field { margin-bottom: 18px; }
+.account-panel .portal-field > span:first-child { font-size:14px; }
+.account-panel .portal-field input:not([type="checkbox"]):not([type="radio"]) { min-height: 50px; padding: 11px 13px; }
+.account-plan-list { padding: 0; margin: 22px 0 0; list-style: none; }
+.account-plan { padding: 21px 0; border-top: 1px solid var(--portal-line); }
+.account-plan h3 { margin-bottom: 6px; font-size: 16px; line-height: 1.5; overflow-wrap: anywhere; }
+.account-plan p { margin-bottom: 8px; color: var(--portal-muted); font-size:14px; line-height: 1.65; overflow-wrap: anywhere; }
+.account-plan .portal-actions { margin-top: 16px; gap: 8px; }
+.account-plan .portal-primary, .account-plan .portal-secondary { min-height: 44px; padding: 9px 15px; font-size:14px; }
+.account-text-button { min-height: 44px; padding: 8px 0; border: 0; background: transparent; color: var(--portal-blue); font-size:14px; text-align: left; }
+.account-text-button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.account-consent { display: flex; gap: 10px; align-items: flex-start; margin: 22px 0; color: #4f5f76; font-size:14px; line-height: 1.7; }
+.account-consent input { width: 20px; height: 20px; flex-shrink: 0; margin: 2px 0 0; accent-color: var(--portal-blue); }
+.account-inline-confirm { margin-top: 17px; padding: 18px; border: 1px solid #eaddc4; border-radius: 9px; background: #fffcf6; }
+.account-inline-confirm p { margin-bottom: 14px; color: #705d3c; font-size:14px; line-height: 1.7; }
+.account-inline-confirm .portal-actions { margin-top: 15px; }
+.account-danger { color: #a53228; }
+.account-current { display: inline-flex; margin: 0 0 8px; padding: 3px 8px; border-radius: 5px; background: var(--portal-soft); color: var(--portal-blue); font-size:14px; font-weight: 600; }
+.account-settings { margin-top: 32px; border-top: 1px solid var(--portal-line); }
+.account-settings > summary { padding: 20px 0; color: var(--portal-muted); font-size: 14px; cursor: pointer; }
+.account-settings .portal-links { margin-top: 12px; }
+.account-form-error { color: #942b21; font-size:14px; line-height: 1.7; }
+.account-form-error:empty { display: none; }
+.account-page .portal-primary[disabled], .account-page .portal-secondary[disabled] { opacity: .5; cursor: default; }
+@media (max-width: 800px) { .account-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; } .account-shell { max-width: 680px; margin-top: 36px; } .account-auth { max-width: 480px; } }
+@media (max-width: 480px) { .account-shell { width: calc(100% - 40px); margin-top: 30px; } .account-panel { padding: 23px 20px; } .account-shell h1 { font-size: 31px; } .account-lede { font-size: 14px; } .account-auth .portal-links { gap: 4px 18px; } .account-plan .portal-actions { align-items: stretch; } .account-panel .portal-actions > button { flex: 1 1 auto; } #account-status:not(:empty), #account-error { width: calc(100% - 40px); } }
+@media (max-width: 360px) { .account-shell { width: calc(100% - 32px); } .account-panel { padding: 21px 17px; } }
+
+/* Account decisions stay readable beside the plan workspace. */
+.account-page .account-panel, .account-page .account-auth { font-size:16px; }
+.account-page .portal-primary, .account-page .portal-secondary { min-height:48px; font-size:16px; }
+.account-page :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea) { font-size:16px; }
+.account-page .account-text-button, .account-page .account-settings > summary { min-height:44px; }

@@ -1,0 +1,13 @@
+# Catalog integration — November 10, 2026
+
+The degree finder, guided setup, worksheet and comparisons now share the reviewed curriculum registry. The release adds 39 curricula to the four established curricula: Liberty (10), WGU (20), Phoenix (6), SNHU (2) and Old Dominion (1). These are requirement ledgers and proposed course assignments, not university transfer awards. Thirty-seven have complete imported requirement coverage; two Phoenix bachelor models still need elective-choice research. All 39 reconcile their allocated credit totals.
+
+School packs load on demand. Saved and in-progress source courses influence proposed choices without becoming earned credits. Changes of school retain original records, notes, prices and earlier plan choices. Semester credits and competency units remain distinct unless a sourced conversion applies. Borrowed same-school equivalencies remain conditional for the exact degree.
+
+For other indexed Liberty and ODU programs, `/api/curriculum` reads only allowlisted university pages. The parser requires an identified whole degree and a balanced, unambiguous ledger. Ambiguous totals, overlapping groups and unsupported catalogs lead to an explicit private degree-audit import. It never substitutes a generic 120-credit plan. Public facts use a monthly cache; saved imports retain immutable semantic revision IDs. This is a bounded adapter, not universal program coverage.
+
+Imported requirements are reviewed before they replace a target. Previewing a new route does not overwrite an active plan. Malformed saved state, full version lists and workspace size limits stop a change without replacing course records. Private CSV files are read locally and never published as community evidence.
+
+Program tuition or student quotes can populate comparisons without a marketing cost-table entry. Subscription tuition needs an explicit estimated paid-term count. Unknown prices remain unknown; scheduling assumptions do not establish a promised graduation date or a verified paid-term count. The older savings comparison models remain separate from these program-specific tuition estimates.
+
+Validation includes compiler consistency, all 39 real curricula through the Journey API, real Liberty/SNHU/WGU switches, pricing and elective classification, the four established curricula, Worker/D1/cache/evidence boundaries, and browser journeys for preview/build/switch/restore/import. Browser network requests are intercepted locally; server behavior uses separate SQLite and mocked-source tests. These checks are not a real-student usability study or a production load test.

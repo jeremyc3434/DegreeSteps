@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "id": "sophia-business-law-current-provider-identity-2026-11-17",
+  "checkedOn": "2026-11-17",
+  "scope": "Exact active primary-provider listing and linked syllabus identity. No receiving-school award or independent ACE recommendation window is inferred.",
+  "sources": [
+    {
+      "id": "sophia-soph-0032-current-offer",
+      "kind": "provider",
+      "title": "Sophia current Business Law offering",
+      "url": "https://www.sophia.org/online-courses/business/business-law/",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Primary course page verified by research agent; explicitly lists3.0semestercredits and links this syllabus."
+    },
+    {
+      "id": "sophia-soph-0032-current-offer-syllabus",
+      "kind": "provider",
+      "title": "Sophia Business Law linked current syllabus: BUSI1050 / SOPH-0032",
+      "url": "https://cdn2.sophia.org/spcc_courses/360/syllabus_pdf/6b61edd10d803b8636c326958612952e.pdf",
+      "checkedOn": "2026-11-17",
+      "sha256": "fb21da4f78c5839afb412e9e1b9817f6e7bb7d701b99e157151fd6493769ab08",
+      "sourcePage": 1,
+      "retrieval": "Public PDF captured, pdftotext inspected; exact provider code, ACE course ID, lower-division and3semesterhours stated."
+    }
+  ],
+  "courses": [
+    {
+      "expectedAceId": "SOPH-0032",
+      "aceId": "SOPH-0032",
+      "title": "Business Law",
+      "courseUrl": "https://www.sophia.org/online-courses/business/business-law/",
+      "activeOffering": true,
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceCreditStatus": "verified-from-current-linked-provider-syllabus",
+      "currentLinkedSyllabus": "https://cdn2.sophia.org/spcc_courses/360/syllabus_pdf/6b61edd10d803b8636c326958612952e.pdf",
+      "providerCourseRecordId": "360",
+      "identityVerificationStatus": "verified-from-current-linked-provider-syllabus-and-current-offering",
+      "sourceIds": [
+        "sophia-soph-0032-current-offer",
+        "sophia-soph-0032-current-offer-syllabus"
+      ],
+      "providerCourseCode": "BUSI1050",
+      "currentAliases": [
+        "BUSI1050"
+      ],
+      "sourceUpper": false,
+      "sourceRecommendationLevel": "lower-division",
+      "providerPublishedCourseEffectiveDates": "June2026-Present",
+      "recommendationWindowStatus": "No independent ACE National Guide period was verified by this provider-identity audit; Present is provider syllabus wording.",
+      "syllabusSHA256": "fb21da4f78c5839afb412e9e1b9817f6e7bb7d701b99e157151fd6493769ab08"
+    }
+  ]
+}

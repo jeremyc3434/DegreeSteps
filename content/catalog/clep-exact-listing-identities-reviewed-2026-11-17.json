@@ -1,0 +1,345 @@
+{
+  "version": 1,
+  "id": "clep-exact-listing-identity-bridges-2026-11-17",
+  "checkedOn": "2026-11-17",
+  "provider": "CLEP",
+  "scope": "Four reviewed exact official listing URL-to-canonical-exam-code bridges for catalog deduplication. This is not a general title-based merge rule, new transfer equivalency, recommendation-window approval or personal credit award.",
+  "sources": [
+    {
+      "id": "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+      "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+      "kind": "official-receiving-school",
+      "title": "Liberty CLEP Transfer Equivalency Guide, updated August 25, 2025",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Public PDF body, two pages, reviewed named rows on page1.",
+      "scope": "The four specific ACE-number/exam-title pairs below corroborate provider identities. Receiving awards and other guide rows are not changed by this artifact."
+    },
+    {
+      "id": "collegeboard-clep-introductory-psychology-identity-2026-11-17",
+      "url": "https://clep.collegeboard.org/clep-exams/introductory-psychology",
+      "kind": "official-provider",
+      "title": "College Board CLEP: Introductory Psychology",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Public official exam page body.",
+      "observed": {
+        "provider": "College Board CLEP",
+        "examTitle": "Introductory Psychology",
+        "isExamPage": true
+      }
+    },
+    {
+      "id": "ace-clep-0020-v5-identity-2026-11-17",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=217562ba-ba8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+      "kind": "official-recommendation-identity",
+      "title": "ACE National Guide: CLEP-0020 version5",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Indexed full official exhibit body opened from the public National Guide result; page dropdown recommendation dates were not extracted.",
+      "observed": {
+        "aceId": "CLEP-0020",
+        "organizationId": "CLEP-0020",
+        "organization": "College Board's College-Level Examination Program (CLEP)",
+        "creditType": "Exam",
+        "version": 5,
+        "examIdentity": "Introductory Psychology"
+      },
+      "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+    },
+    {
+      "id": "collegeboard-clep-calculus-identity-2026-11-17",
+      "url": "https://clep.collegeboard.org/clep-exams/calculus",
+      "kind": "official-provider",
+      "title": "College Board CLEP: Calculus",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Public official exam page body.",
+      "observed": {
+        "provider": "College Board CLEP",
+        "examTitle": "Calculus",
+        "isExamPage": true
+      }
+    },
+    {
+      "id": "ace-clep-0038-v5-identity-2026-11-17",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=bc65ffb8-bd8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+      "kind": "official-recommendation-identity",
+      "title": "ACE National Guide: CLEP-0038 version5",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Indexed full official exhibit body opened from the public National Guide result; page dropdown recommendation dates were not extracted.",
+      "observed": {
+        "aceId": "CLEP-0038",
+        "organizationId": "CLEP-0038",
+        "organization": "College Board's College-Level Examination Program (CLEP)",
+        "creditType": "Exam",
+        "version": 5,
+        "examIdentity": "Calculus"
+      },
+      "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+    },
+    {
+      "id": "collegeboard-clep-humanities-identity-2026-11-17",
+      "url": "https://clep.collegeboard.org/clep-exams/humanities",
+      "kind": "official-provider",
+      "title": "College Board CLEP: Humanities",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Public official exam page body.",
+      "observed": {
+        "provider": "College Board CLEP",
+        "examTitle": "Humanities",
+        "isExamPage": true
+      }
+    },
+    {
+      "id": "ace-clep-0003-v5-identity-2026-11-17",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+      "kind": "official-recommendation-identity",
+      "title": "ACE National Guide: CLEP-0003 version5",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Indexed full official exhibit body opened from the public National Guide result; page dropdown recommendation dates were not extracted.",
+      "observed": {
+        "aceId": "CLEP-0003",
+        "organizationId": "CLEP-0003",
+        "organization": "College Board's College-Level Examination Program (CLEP)",
+        "creditType": "Exam",
+        "version": 5,
+        "examIdentity": "Humanities"
+      },
+      "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+    },
+    {
+      "id": "collegeboard-clep-human-growth-development-identity-2026-11-17",
+      "url": "https://clep.collegeboard.org/clep-exams/human-growth-development",
+      "kind": "official-provider",
+      "title": "College Board CLEP: Human Growth and Development",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Public official exam page body.",
+      "observed": {
+        "provider": "College Board CLEP",
+        "examTitle": "Human Growth and Development",
+        "isExamPage": true
+      }
+    },
+    {
+      "id": "ace-clep-0021-v5-identity-2026-11-17",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5f4a3709-bb8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+      "kind": "official-recommendation-identity",
+      "title": "ACE National Guide: CLEP-0021 version5",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Indexed full official exhibit body opened from the public National Guide result; page dropdown recommendation dates were not extracted.",
+      "observed": {
+        "aceId": "CLEP-0021",
+        "organizationId": "CLEP-0021",
+        "organization": "College Board's College-Level Examination Program (CLEP)",
+        "creditType": "Exam",
+        "version": 5,
+        "examIdentity": "Human Growth and Development"
+      },
+      "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+    }
+  ],
+  "bridges": [
+    {
+      "id": "clep-identity-clep-0020",
+      "provider": "CLEP",
+      "providerId": "clep",
+      "status": "reviewed-identity-only",
+      "primaryListingId": "clep-e416608e010e04bec3",
+      "primaryListingUrl": "https://clep.collegeboard.org/clep-exams/introductory-psychology",
+      "primaryListingTitle": "Introductory Psychology",
+      "canonicalCode": "CLEP-0020",
+      "mappedListingId": "mapped-a747c4c3076449adfa0e",
+      "retainedCatalogCourseId": "clep-e416608e010e04bec3",
+      "explicitIdentityAliases": [
+        "clep-e416608e010e04bec3",
+        "mapped-a747c4c3076449adfa0e",
+        "CLEP-0020",
+        "https://clep.collegeboard.org/clep-exams/introductory-psychology"
+      ],
+      "sourceIds": [
+        "collegeboard-clep-introductory-psychology-identity-2026-11-17",
+        "ace-clep-0020-v5-identity-2026-11-17",
+        "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17"
+      ],
+      "evidenceChain": [
+        {
+          "sourceId": "collegeboard-clep-introductory-psychology-identity-2026-11-17",
+          "observation": "The exact provider exam URL identifies Introductory Psychology."
+        },
+        {
+          "sourceId": "ace-clep-0020-v5-identity-2026-11-17",
+          "observation": "The official ACE exhibit identifies College Board CLEP exam family CLEP-0020; its objective identifies Introductory Psychology."
+        },
+        {
+          "sourceId": "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+          "page": 1,
+          "observation": "The named guide row pairs CLEP-0020 with Introductory Psychology and receiving course PSYC 101."
+        }
+      ],
+      "creditQuantityAction": "preserve-existing-values",
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "schoolAwardAction": "unchanged",
+      "recommendationVersionAction": "unchanged",
+      "personalRecordsAction": "do-not-merge-or-rewrite",
+      "notes": [
+        "Only these explicit listing IDs, exact provider URLs and canonical codes are linked. Exam title similarity is not an identity rule.",
+        "The existing receiving-school credit amount remains distinct from the original source-credit quantity.",
+        "Personal completed records with differing grades, dates, quantities or evaluations must be preserved separately."
+      ]
+    },
+    {
+      "id": "clep-identity-clep-0038",
+      "provider": "CLEP",
+      "providerId": "clep",
+      "status": "reviewed-identity-only",
+      "primaryListingId": "clep-33748f51818c0f0c4a",
+      "primaryListingUrl": "https://clep.collegeboard.org/clep-exams/calculus",
+      "primaryListingTitle": "Calculus",
+      "canonicalCode": "CLEP-0038",
+      "mappedListingId": "mapped-235ea1beed5e6ed6309c",
+      "retainedCatalogCourseId": "clep-33748f51818c0f0c4a",
+      "explicitIdentityAliases": [
+        "clep-33748f51818c0f0c4a",
+        "mapped-235ea1beed5e6ed6309c",
+        "CLEP-0038",
+        "https://clep.collegeboard.org/clep-exams/calculus"
+      ],
+      "sourceIds": [
+        "collegeboard-clep-calculus-identity-2026-11-17",
+        "ace-clep-0038-v5-identity-2026-11-17",
+        "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17"
+      ],
+      "evidenceChain": [
+        {
+          "sourceId": "collegeboard-clep-calculus-identity-2026-11-17",
+          "observation": "The exact provider exam URL identifies Calculus."
+        },
+        {
+          "sourceId": "ace-clep-0038-v5-identity-2026-11-17",
+          "observation": "The official ACE exhibit identifies College Board CLEP exam family CLEP-0038; its objective identifies Calculus."
+        },
+        {
+          "sourceId": "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+          "page": 1,
+          "observation": "The named guide row pairs CLEP-0038 with Calculus and receiving course MATH 131."
+        }
+      ],
+      "creditQuantityAction": "preserve-existing-values",
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "schoolAwardAction": "unchanged",
+      "recommendationVersionAction": "unchanged",
+      "personalRecordsAction": "do-not-merge-or-rewrite",
+      "notes": [
+        "Only these explicit listing IDs, exact provider URLs and canonical codes are linked. Exam title similarity is not an identity rule.",
+        "The existing receiving-school credit amount remains distinct from the original source-credit quantity.",
+        "Personal completed records with differing grades, dates, quantities or evaluations must be preserved separately."
+      ]
+    },
+    {
+      "id": "clep-identity-clep-0003",
+      "provider": "CLEP",
+      "providerId": "clep",
+      "status": "reviewed-identity-only",
+      "primaryListingId": "clep-a05a0058a290c83fa7",
+      "primaryListingUrl": "https://clep.collegeboard.org/clep-exams/humanities",
+      "primaryListingTitle": "Humanities",
+      "canonicalCode": "CLEP-0003",
+      "mappedListingId": "mapped-8b6a16d3233567a1619e",
+      "retainedCatalogCourseId": "clep-a05a0058a290c83fa7",
+      "explicitIdentityAliases": [
+        "clep-a05a0058a290c83fa7",
+        "mapped-8b6a16d3233567a1619e",
+        "CLEP-0003",
+        "https://clep.collegeboard.org/clep-exams/humanities"
+      ],
+      "sourceIds": [
+        "collegeboard-clep-humanities-identity-2026-11-17",
+        "ace-clep-0003-v5-identity-2026-11-17",
+        "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17"
+      ],
+      "evidenceChain": [
+        {
+          "sourceId": "collegeboard-clep-humanities-identity-2026-11-17",
+          "observation": "The exact provider exam URL identifies Humanities."
+        },
+        {
+          "sourceId": "ace-clep-0003-v5-identity-2026-11-17",
+          "observation": "The official ACE exhibit identifies College Board CLEP exam family CLEP-0003; its objective identifies Humanities."
+        },
+        {
+          "sourceId": "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+          "page": 1,
+          "observation": "The named guide row pairs CLEP-0003 with Humanities and receiving course CSTU 101."
+        }
+      ],
+      "creditQuantityAction": "preserve-existing-values",
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "schoolAwardAction": "unchanged",
+      "recommendationVersionAction": "unchanged",
+      "personalRecordsAction": "do-not-merge-or-rewrite",
+      "notes": [
+        "Only these explicit listing IDs, exact provider URLs and canonical codes are linked. Exam title similarity is not an identity rule.",
+        "The existing receiving-school credit amount remains distinct from the original source-credit quantity.",
+        "Personal completed records with differing grades, dates, quantities or evaluations must be preserved separately."
+      ]
+    },
+    {
+      "id": "clep-identity-clep-0021",
+      "provider": "CLEP",
+      "providerId": "clep",
+      "status": "reviewed-identity-only",
+      "primaryListingId": "clep-9f011e6110da799aae",
+      "primaryListingUrl": "https://clep.collegeboard.org/clep-exams/human-growth-development",
+      "primaryListingTitle": "Human Growth and Development",
+      "canonicalCode": "CLEP-0021",
+      "mappedListingId": "mapped-1b864039574d96064763",
+      "retainedCatalogCourseId": "clep-9f011e6110da799aae",
+      "explicitIdentityAliases": [
+        "clep-9f011e6110da799aae",
+        "mapped-1b864039574d96064763",
+        "CLEP-0021",
+        "https://clep.collegeboard.org/clep-exams/human-growth-development"
+      ],
+      "sourceIds": [
+        "collegeboard-clep-human-growth-development-identity-2026-11-17",
+        "ace-clep-0021-v5-identity-2026-11-17",
+        "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17"
+      ],
+      "evidenceChain": [
+        {
+          "sourceId": "collegeboard-clep-human-growth-development-identity-2026-11-17",
+          "observation": "The exact provider exam URL identifies Human Growth and Development."
+        },
+        {
+          "sourceId": "ace-clep-0021-v5-identity-2026-11-17",
+          "observation": "The official ACE exhibit identifies College Board CLEP exam family CLEP-0021; its objective identifies Human Growth and Development."
+        },
+        {
+          "sourceId": "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+          "page": 1,
+          "observation": "The named guide row pairs CLEP-0021 with Human Growth and Development and receiving course PSYC 210."
+        }
+      ],
+      "creditQuantityAction": "preserve-existing-values",
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "schoolAwardAction": "unchanged",
+      "recommendationVersionAction": "unchanged",
+      "personalRecordsAction": "do-not-merge-or-rewrite",
+      "notes": [
+        "Only these explicit listing IDs, exact provider URLs and canonical codes are linked. Exam title similarity is not an identity rule.",
+        "The existing receiving-school credit amount remains distinct from the original source-credit quantity.",
+        "Personal completed records with differing grades, dates, quantities or evaluations must be preserved separately."
+      ]
+    }
+  ],
+  "heldPairs": [],
+  "integrationConstraints": [
+    "Retain the College Board primary listing ID and official course URL.",
+    "Carry the canonical CLEP code and exact retired mapped listing ID as explicit aliases.",
+    "Preserve mapping evidence and source IDs; do not upgrade conditional receiving maps to published.",
+    "Do not set original source credits or units from receiving-school awards. Existing null quantities stay null in this identity-only integration.",
+    "Do not merge user records solely because these catalog aliases match. Different completion versions and private evaluations remain separate.",
+    "Do not join Introduction to Educational Psychology, Precalculus or any other similar title to these exams."
+  ]
+}

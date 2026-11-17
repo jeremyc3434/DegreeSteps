@@ -1,0 +1,58 @@
+{
+  "checkedOn":"2026-11-09",
+  "catalogUrl":"https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf",
+  "partnerUrl":"https://phoenix.sophia.org/",
+  "creditConversion":{"from":"semester","to":"competency-unit","ratio":1,"pdfPage":453},
+  "pacing":{"universityTermWeeks":12,"maximumCoursesPerTerm":4,"maximumUniversityCreditsPer12Months":48,"pdfPage":458},
+  "partnerCategories":{
+    "communication":[["SOPH-0015","English Composition I",3],["SOPH-0030","English Composition II",3],["SOPH-0024","Public Speaking",3],["SOPH-0034","Workplace Communication",3],["SOPH-0057","Spanish I",3]],
+    "humanities":[["SOPH-0027","Ancient Greek Philosophers",3],["SOPH-0008","Approaches to Studying Religions",3],["SOPH-0006","Art History I",3],["SOPH-0029","Art History II",3],["SOPH-0065","Critical Thinking",3],["SOPH-0020","Introduction to Ethics",3]],
+    "interdisciplinary":[["SOPH-0059","Business Communication",3],["SOPH-0091","Business Data Analytics",3],["SOPH-0076","Business Ethics",3],["SOPH-0032","Business Law",3],["SOPH-0007","Conflict Resolution",3],["SOPH-0010","Financial Accounting",3],["SOPH-0092","Healthcare Management",3],["SOPH-0089","Human Resource Management",3],["SOPH-0014","Introduction to Business",3],["SOPH-0079","Managerial Accounting",3],["SOPH-0094","Medical Terminology",3],["SOPH-0086","Operations Management",3],["SOPH-0083","Organizational Behavior",3],["SOPH-0044","Personal Finance",3],["SOPH-0033","Principles of Finance",3],["SOPH-0096","Principles of Leadership",3],["SOPH-0054","Principles of Management",3],["SOPH-0085","Principles of Marketing",3],["SOPH-0013","Project Management",3],["SOPH-0087","Public and Community Health",3],["SOPH-0009","Visual Communications",3]],
+    "math":[["SOPH-0001","College Algebra",3],["SOPH-0055","Introduction to College Mathematics",3],["SOPH-0005","Introduction to Statistics",3],["SOPH-0069","Precalculus",3]],
+    "physical-biological-science":[["SOPH-0073","Anatomy and Physiology I",3],["SOPH-0081","Anatomy and Physiology II",3],["SOPH-0016","Environmental Science",3],["SOPH-0080","Health, Fitness, and Wellness",3],["SOPH-0002","Human Biology",3],["SOPH-0056","Introduction to Chemistry",3],["SOPH-0063","Introduction to Nutrition",3],["SOPH-0095","Introduction to Physics",3],["SOPH-0074","Microbiology",3]],
+    "technology":[["SOPH-0023","Introduction to Information Technology",3],["SOPH-0062","Introduction to Java Programming",3],["SOPH-0068","Introduction to Networking",3],["SOPH-0058","Introduction to Python Programming",3],["SOPH-0047","Introduction to Relational Databases",3],["SOPH-0043","Introduction to Web Development",3]],
+    "social-science":[["SOPH-0084","Criminology",3],["SOPH-0090","Introduction to Criminal Justice",3],["SOPH-0048","Introduction to Psychology",3],["SOPH-0051","Introduction to Sociology",3],["SOPH-0078","Lifespan Development",3],["SOPH-0012","Macroeconomics",3],["SOPH-0011","Microeconomics",3],["SOPH-0071","U.S. Government",3],["SOPH-0022","U.S. History I",3],["SOPH-0025","U.S. History II",3]]
+  },
+  "programs":[
+    {
+      "routeId":"phoenix-da-bs-information-technology",
+      "pdfPage":460,
+      "totalCredits":120,
+      "upperMinCredits":30,
+      "requiredInstitutionCourses":39,
+      "groups":[
+        ["Information Technology",[["CISDA 207","Information Systems Fundamentals",3],["BSADA 385","Intro to Software Engineering",3]]],
+        ["Business Systems and Implementation",[["BSADA 375","Fundamentals of Business Systems Development",3],["CMGTDA 410","Project Planning and Implementation",3]]],
+        ["Networking",[["CYBDA 205","Infrastructure Administration",3],["NTCDA 362","Fundamentals of Networking",3]]],
+        ["Data",[["DATDA 210","Data Programming Languages",3],["DATDA 305","Data Structures for Problem Solving",3]]],
+        ["Cybersecurity",[["CYBDA 100","Cyber Domain",3],["CYBDA 110","Foundations of Security",3]]],
+        ["Programming",[["CYBDA 130","Object-Oriented Scripting Language",3],["PRGDA 211","Algorithms and Logic for Computer Programming",3]]],
+        ["Capstone",[["BSADA 425","BSIT Capstone",3]]]
+      ],
+      "generalEducation":[["college-composition","College composition",3,"composition"],["communication-arts","Other communication arts",3,"communication"],["mathematics","Mathematics",6,"math"],["physical-biological-science","Physical or biological science",3,"physical-biological-science"],["genda-201","Foundations for University Success",3,"institutional"],["humanities","Other humanities",3,"humanities"],["social-science","Social science",6,"social-science"],["additional-liberal-arts","Additional liberal arts",6,"liberal-arts"],["interdisciplinary-component","Interdisciplinary component",12,"interdisciplinary"]],
+      "buckets":[["lower-division-electives","Lower-division electives",18,"interdisciplinary",false],["ist-electives","Information systems and technology electives",6,null,false],["upper-ist-electives","Upper-division information systems and technology electives",12,null,true]],
+      "admissionNotes":["Requires at least 30 applicable college-level credits OR at least three years of full-time IT-related work experience, plus high-school completion or accepted equivalent.","A previously completed qualifying AA/AS degree can satisfy listed general education/lower-division block requirements; GENDA 201, the 6-CU IS&T elective requirement, and 12-CU upper-division IS&T elective requirement remain subject to the catalog's conditions.","IS&T transfer electives are subject to five-year recency rules measured from the original program Enrollment Agreement sign date; exact upper-level award and departmental applicability require evaluation."]
+    },
+    {
+      "routeId":"phoenix-da-bs-health-management",
+      "pdfPage":463,
+      "totalCredits":120,
+      "upperMinCredits":36,
+      "requiredInstitutionCourses":36,
+      "groups":[
+        ["Health Care Business Communications",[["HCSDA 321","Business Communication for Health Care Managers",3]]],
+        ["Management",[["HCSDA 325","Health Care Management",3],["HCSDA 341","Human Resources in Health Care",3],["HCSDA 370","Organizational Behavior",3],["HCSDA 412","Project Management for Health Care Professionals",3]]],
+        ["Ethics and Social Responsibility",[["HCSDA 335","Health Care Ethics and Social Responsibility",3]]],
+        ["Technology",[["HCSDA 487","Technology and Systems Approach for Health Care Managers",3]]],
+        ["Data",[["HCSDA 493","Data Analytics for Health Care Managers",3]]],
+        ["Regulatory",[["HCSDA 468","Regulatory and Compliance within the Health Care Industry",3]]],
+        ["Marketing",[["HCSDA 472","Marketing in the Health Care Industry",3]]],
+        ["Finance",[["HCSDA 385","Health Care Finance",3]]],
+        ["Strategy",[["HCSDA 498","Strategic Decision Making for Health Care Managers",3]]]
+      ],
+      "generalEducation":[["college-composition","College composition",3,"composition"],["communication-arts","Other communication arts",3,"communication"],["mathematics","Mathematics",6,"math"],["physical-biological-science","Physical or biological science",6,"physical-biological-science"],["genda-201","Foundations for University Success",3,"institutional"],["humanities","Other humanities",3,"humanities"],["social-science","Social science",6,"social-science"],["additional-liberal-arts","Additional liberal arts",6,"liberal-arts"],["interdisciplinary-component","Interdisciplinary component",9,"interdisciplinary"]],
+      "buckets":[["lower-division-electives","Lower-division electives",27,"interdisciplinary",false],["health-care-electives","Health care electives",12,null,false]],
+      "admissionNotes":["Requires at least 30 applicable college-level credits AND at least three years of full-time healthcare-related leadership experience, plus high-school completion or accepted equivalent.","Health-care electives may use eligible transfer, approved testing or ACE-recommended activities completed within ten years from the original program Enrollment Agreement sign date. Transfer coursework requires at least C-. Exact degree placement remains subject to university evaluation."]
+    }
+  ]
+}

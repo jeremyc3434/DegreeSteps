@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+  <title>Build a degree plan from a link — DegreeSteps</title>
+  <link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="template-workspace.css"><link rel="stylesheet" href="request-plan.css">
+  <script src="sheet-state.js" defer></script><script src="program-catalog.js" defer></script><script src="audit-curriculum.js" defer></script><script src="planner.js" defer></script><script src="account-client.js" defer></script><script src="template-workspace-client.js" defer></script><script src="request-plan.js" defer></script><script src="app-shell.js" defer></script>
+<link rel="stylesheet" href="/brand.css"></head>
+<body class="template-workspace link-plan-page">
+<a class="tw-skip" href="#request-main">Skip to degree builder</a>
+<main id="request-main" class="tw-main link-plan-main">
+  <a class="tw-back" href="programs.html">← Explore degree plans</a>
+  <header class="link-plan-intro" id="request-intro">
+    <p class="tw-eyebrow">BUILD YOUR DEGREE PLAN</p>
+    <h1>Paste a degree link.<br>Get a course plan.</h1>
+    <p>We’ll find the requirements and supported transfer courses, then build a plan you can edit.</p>
+  </header>
+  <section id="request-entry" class="tw-card link-entry" aria-labelledby="request-heading">
+    <form id="degree-request-form">
+      <label for="degree-url" id="request-heading">Link to the degree you want</label>
+      <div class="link-entry-row">
+        <input id="degree-url" name="url" type="url" required maxlength="1500" inputmode="url" autocomplete="url" placeholder="https://your-college.edu/your-degree" aria-describedby="degree-url-help">
+        <button class="tw-button" type="submit" id="request-submit">Build my degree plan <span aria-hidden="true">→</span></button>
+      </div>
+      <p id="degree-url-help" class="link-help">Use the college’s degree or catalog page. That’s all you need to start.</p>
+      <div id="request-account-note" class="link-account-note"></div>
+    </form>
+  </section>
+  <div id="request-message" class="tw-notice" role="status" aria-live="polite" hidden></div>
+  <section id="request-progress" class="link-progress" role="status" aria-live="polite" hidden>
+    <span class="link-spinner" aria-hidden="true"></span>
+    <div><h2 id="research-stage-label">Starting your degree research…</h2><p id="research-stage-detail">We’ll check the college’s requirements and transfer rules before showing your plan. Careful research can take a few minutes.</p><p id="research-progress-counts" class="link-progress-counts"></p><p id="research-elapsed" class="link-elapsed"></p><p class="link-progress-note">Your link and saved findings stay here. If you leave, return to check or continue.</p></div>
+  </section>
+  <section id="request-result" class="link-result" tabindex="-1" aria-label="Your degree plan result" hidden></section>
+  <details id="request-history-panel" class="link-history">
+    <summary>My recent degree plans <span id="request-history-count"></span></summary>
+    <div class="tw-row"><h2 id="requests-heading">Pick up where you left off</h2><button id="refresh-requests" type="button" class="tw-button tw-secondary">Refresh</button></div>
+    <div id="request-history">Loading your plans…</div>
+  </details>
+  <p id="request-alternatives" class="link-alternatives"><a href="programs.html">Explore available plans</a><span aria-hidden="true">·</span><a href="degree-audit.html">Build a plan yourself</a></p>
+</main>
+</body></html>

@@ -1,0 +1,254 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "sophia",
+      "provider": "Sophia",
+      "url": "https://www.sophia.org/online-courses/all-courses/",
+      "minimum": 70,
+      "checkedAt": "2026-11-02T20:58:22+00:00",
+      "count": 86,
+      "status": "imported",
+      "scope": "Source-linked provider directory entries. Credit recommendations and individual degree applicability require review.",
+      "contentHash": "sha256:3e5b40428be8dea44b9f9e5b4a877ae1a731cb2a865095e4d0af898491a9fd28"
+    },
+    {
+      "id": "straighterline",
+      "provider": "StraighterLine",
+      "url": "https://www.straighterline.com/online-college-courses/",
+      "minimum": 45,
+      "checkedAt": "2026-11-02T20:58:22+00:00",
+      "count": 82,
+      "status": "imported",
+      "scope": "Source-linked provider directory entries. Credit recommendations and individual degree applicability require review.",
+      "contentHash": "sha256:76e84ae9984009f0bf09704dc2c71781074fc01a0d57a9c174717b2d266719d9"
+    },
+    {
+      "id": "clep",
+      "provider": "CLEP",
+      "url": "https://clep.collegeboard.org/clep-exams",
+      "minimum": 30,
+      "checkedAt": "2026-11-02T20:58:22+00:00",
+      "count": 34,
+      "status": "imported",
+      "scope": "Source-linked provider directory entries. Credit recommendations and individual degree applicability require review.",
+      "contentHash": "sha256:e759fb5d83572e53613ecbffa17dce240fcbbcf282a8c9e83b37f600843a7184"
+    },
+    {
+      "id": "study-mapped",
+      "provider": "Study.com",
+      "url": "https://study.com/college/online-college-courses.html",
+      "checkedAt": "2026-11-02T21:03:48+00:00",
+      "count": 16,
+      "status": "mapping-reference",
+      "scope": "Exact source-course references in the two existing degree maps; current availability and recommendation dates still require provider review."
+    },
+    {
+      "id": "directory-sophia",
+      "provider": "Sophia Learning",
+      "url": "https://www.sophia.org/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-saylor",
+      "provider": "Saylor Direct Credit",
+      "url": "https://www.saylor.org/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-clep",
+      "provider": "CLEP examinations",
+      "url": "https://clep.collegeboard.org/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-modern-states",
+      "provider": "Modern States CLEP preparation and vouchers",
+      "url": "https://modernstates.org/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-dsst",
+      "provider": "DSST examinations",
+      "url": "https://getcollegecredit.com/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-tecep",
+      "provider": "TESU TECEP examinations",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/tecep/index.php",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-coopersmith",
+      "provider": "Coopersmith Career Consulting",
+      "url": "https://www.coopersmithcc.net/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-davar",
+      "provider": "Davar Academy",
+      "url": "https://www.davaracademy.com/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-tel",
+      "provider": "TEL Education partner-university courses",
+      "url": "https://www.tel-education.org/start-now/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-asu-ulc",
+      "provider": "ASU Universal Learner Courses",
+      "url": "https://ulc.asu.edu/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-outlier",
+      "provider": "Outlier by Savvas",
+      "url": "https://www.savvas.com/solutions/dual-enrollment",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-google-certificates",
+      "provider": "Google Career Certificates through Coursera",
+      "url": "https://grow.google/certificates/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-coursera-certificates",
+      "provider": "IBM and other designated Coursera certificates",
+      "url": "https://www.coursera.org/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-actfl",
+      "provider": "ACTFL language proficiency assessments through LTI",
+      "url": "https://www.actfl.org/assessments/college-credit",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-microsoft-exams",
+      "provider": "Selected Microsoft certification examinations",
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/college-credit",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-teex",
+      "provider": "TEEX training",
+      "url": "https://teex.org/program/dhs-cybersecurity/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-fema",
+      "provider": "FEMA Independent Study and optional college conversion",
+      "url": "https://training.fema.gov/programs/independent-study/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-lawshelf",
+      "provider": "LawShelf",
+      "url": "https://www.lawshelf.com/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-total-testing",
+      "provider": "Total Testing Education / CIS",
+      "url": "https://totaltestingeducation.com/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-cpa-credits",
+      "provider": "CPA Credits / Upper Iowa University courses",
+      "url": "https://www.cpacredits.com/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-military-jst",
+      "provider": "Military training and Joint Services Transcript",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Seeking-Credit.aspx/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-onlinedegree",
+      "provider": "OnlineDegree.com historical courses",
+      "url": "https://www.onlinedegree.com/contact-us/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    },
+    {
+      "id": "directory-uexcel",
+      "provider": "UExcel historical examinations",
+      "url": "https://www.excelsior.edu/start-with-more-credit/transfer-your-uexcel-credit/",
+      "checkedAt": "2026-11-01",
+      "count": 0,
+      "status": "directory-link",
+      "scope": "Provider research directory; individual courses are not imported in this snapshot."
+    }
+  ]
+}

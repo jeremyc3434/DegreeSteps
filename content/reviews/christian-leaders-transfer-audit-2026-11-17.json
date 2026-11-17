@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-17",
+  "provider": "Christian Leaders Institute",
+  "historicalAliases": ["Christian Leaders College", "CLC", "CLI"],
+  "scope": "Research evidence only. No current actionable degree template or current course-equivalency approval is established by this packet.",
+  "summary": {
+    "catalogCoverage": "Absent from the inspected DegreePath credit-sources list and course-source inventory.",
+    "creditOrigin": "Institution-issued collegiate credit pathway; an ACE recommendation has not been verified.",
+    "accreditationStatus": "ABHE candidate/pre-accreditation on the current official help center, not verified full institutional accreditation and not regional accreditation.",
+    "currentExactReceivingMappingsVerified": 0,
+    "historicalReceivingMappingEvidence": "Official Liberty receiving-school guide updated July 2022; HFCC explicitly says its guide is outdated as of 2024.",
+    "criticalModelNeed": "Keep free learning, transcript eligibility, institutional origin, current receiving-school equivalency, and degree application as separate records."
+  },
+  "sources": [
+    {"id":"hfcc-cli","url":"https://homeschoolingforcollegecredit.org/christian-leaders-college/","title":"HFCC Christian Leaders Institute entry","kind":"community-research","retrieval":"opened","caution":"The page labels the linked transfer guide outdated as of 2024; its historical fee and only-Liberty statements are not current policy."},
+    {"id":"cli-help-status","url":"https://help.christianleaders.org/helpdesk/accreditation-status","title":"CLI: Is CLI fully accredited?","kind":"provider-policy","retrieval":"opened"},
+    {"id":"cli-status","url":"https://www.christianleadersinstitute.org/accreditation-status/","title":"CLI accreditation status","kind":"provider-policy","retrieval":"opened"},
+    {"id":"cli-transfers","url":"https://www.christianleadersinstitute.org/transfer-information/","title":"CLI transfer information","kind":"provider-policy","retrieval":"opened"},
+    {"id":"cli-degree-admission","url":"https://www.christianleadersinstitute.org/degree-admission/","title":"CLI degree admission and fees","kind":"provider-policy","retrieval":"opened"},
+    {"id":"cli-partners","url":"https://www.christianleadersinstitute.org/academic-partners/","title":"CLI academic partners","kind":"sending-institution-partner-policy","retrieval":"opened"},
+    {"id":"cli-public-catalog","url":"https://www.christianleadersinstitute.org/christian-leaders-institute-course-catalogue/","title":"CLI public course catalog","kind":"provider-course-list","retrieval":"opened","caution":"No current assigned academic catalog year is established by this marketing catalog; use for discovery, not silent version matching."},
+    {"id":"cli-free-courses","url":"https://www.christianleadersinstitute.org/free-christian-courses/","title":"CLI free Christian courses","kind":"provider-offering","retrieval":"indexed-search","caution":"The current indexed page advertises over 200 free, online, self-paced courses; do not infer that every listed course awards transcript credit."},
+    {"id":"lu-cli-guide-2022","url":"https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLC-Transfer-Equivalency-Guide-Finalized-7.7.22.pdf","title":"Liberty transfer equivalency guide for Christian Leaders College/Institute, updated July 2022","kind":"historical-receiving-university-equivalency","retrieval":"opened","caution":"Historical exact pairs, not current enrollment recommendations."},
+    {"id":"lu-current-calculator","url":"https://www.liberty.edu/registrar/course-transfer-equivalency/","title":"Liberty current course transfer equivalency calculator","kind":"receiving-university-policy","retrieval":"opened","caution":"The embedded public calculator must be queried to recertify current CLI pairs; the static page alone does not return them."},
+    {"id":"cli-handbook-2026","url":"https://christianleaders.org/pluginfile.php/505028/mod_resource/content/6/2026%20CLI%20Student%20Handbook_Second_Edition.pdf?forcedownload=1","title":"2026 CLI Student Handbook, second edition","kind":"provider-handbook","retrieval":"indexed-only-403-on-open","caution":"Do not promote indexed snippets to fully reviewed current catalog rules."},
+    {"id":"abhe-cli-factsheet","url":"https://app.weaveaccreditation.com/publicFiles/institutionprofilepdfs/Christian_Leaders_Institute-ABHE_-_Association_for_Biblical_Higher_Education-1r73Nzex-Fact_Sheet.pdf?v=1359789690","title":"ABHE accreditation fact sheet for CLI","kind":"accreditor-primary","retrieval":"redirect-target-inaccessible","caution":"Current status supported here by CLI official disclosure; accreditor PDF itself was not fully retrievable."},
+    {"id":"cli-city-vision","url":"https://degrees.christianleaders.org/citiy-vision-partnership/","title":"CLI partnership with City Vision","kind":"sending-institution-partner-policy","retrieval":"opened","caution":"Sending-school description; not a current receiving-school course equivalency table or verified current City Vision tuition."}
+  ],
+  "verifiedFacts": [
+    {"field":"accreditationStatus","value":"ABHE candidate; pre-accreditation","sourceIds":["cli-help-status","cli-status"],"scope":"Institutional current published disclosure. Candidate status must not be relabeled full or regional accreditation."},
+    {"field":"institutionStructure","value":"Christian Development School and Leadership Excellence School have different educational and credential pathways.","sourceIds":["cli-partners","cli-transfers"],"scope":"Free developmental course completion alone is not proof of an eligible collegiate transcript."},
+    {"field":"transcriptEligibilityPathway","value":"Leadership Excellence admissions or Institute Verification, depending on the student's program pathway.","sourceIds":["cli-transfers"],"scope":"The transfer page refers students to the applicable admissions/verification course for outgoing instructions. Exact current verification fee and all collegiate eligibility steps remain to be reviewed."},
+    {"field":"outboundTranscriptProcessingFee","value":75,"currency":"USD","feeScope":"Students who have not completed a CLI degree","sourceIds":["cli-transfers"],"scope":"Published processing fee only; do not call this the complete cost of earning transcript credit."},
+    {"field":"outboundTranscriptProcessingFee","value":30,"currency":"USD","feeScope":"CLI degree graduates","sourceIds":["cli-transfers"]},
+    {"field":"degreeApplicationFee","value":75,"currency":"USD","feeScope":"Degree admission; do not silently apply to a transfer-only student","sourceIds":["cli-degree-admission"]},
+    {"field":"associateDegreeServiceFee","value":2000,"currency":"USD","feeScope":"Published degree program fee, not a per-course transfer fee","sourceIds":["cli-degree-admission"]},
+    {"field":"bachelorDegreeServiceFee","value":4000,"currency":"USD","feeScope":"Published degree program fee; discounts/tiered pricing may apply. Exact all-in price is not derived here.","sourceIds":["cli-degree-admission"]},
+    {"field":"incomingCLIMinimumGrade","value":"C-","sourceIds":["cli-transfers"],"scope":"Incoming credit accepted by CLI; never reuse as Liberty, TESU, or UMPI's minimum grade."},
+    {"field":"currentLibertySourceOfTruth","value":"Current transferable-credit calculator; semester credit conversion and individual degree applicability apply.","sourceIds":["lu-current-calculator"],"scope":"A course equivalency is not the same as degree-requirement placement."},
+    {"field":"LibertyAcceptanceClaim","value":"CLI says Liberty accepts its records as accredited due to ABHE candidacy, regardless of attendance date, subject to Liberty's grade/content/credit/applicability rules.","sourceIds":["cli-partners"],"scope":"Sending-school description. Current receiving calculator or official policy must support any recommended exact course."}
+  ],
+  "historicalLibertyPairs": {
+    "status":"historical-exact-equivalency-needs-current-recertification",
+    "sourceIds":["lu-cli-guide-2022"],
+    "publishedPeriod":"July 2022",
+    "degreeApplicability":"Not established by the guide alone",
+    "pairs":[
+      {"sourceCode":"BIB 111","sourceCredits":3,"receivingCode":"BIBL 105","receivingCredits":3},
+      {"sourceCode":"BIB 112","sourceCredits":3,"receivingCode":"BIBL 110","receivingCredits":3},
+      {"sourceCode":"ENG 121","sourceCredits":3,"receivingCode":"ENGL 101","receivingCredits":3},
+      {"sourceCode":"BUS 230","sourceCredits":3,"receivingCode":"ACCT 211","receivingCredits":3},
+      {"sourceCode":"ECN 301","sourceCredits":3,"receivingCode":"ECON 213","receivingCredits":3},
+      {"sourceCode":"ECN 302","sourceCredits":3,"receivingCode":"ECON 214","receivingCredits":3},
+      {"sourceCode":"PSY 121","sourceCredits":3,"receivingCode":"PSYC 101","receivingCredits":3},
+      {"sourceCode":"SCI 210","sourceCredits":3,"receivingCode":"BIOL 101","receivingCredits":3},
+      {"sourceCode":"MAT 201","sourceCredits":3,"receivingCode":"MATH 1XX","receivingCredits":3,"caution":"Department elective; not proof of a named college algebra or quantitative requirement."}
+    ]
+  },
+  "criticalAmbiguities": [
+    {"id":"version-credit-mismatch","text":"The public CLI catalog lists business management and business finance at 3 credits, while the 2022 Liberty guide lists BUS310/BUS320 at 4 source and 4 receiving credits. Do not match a current course to an archived award by title alone.","sourceIds":["cli-public-catalog","lu-cli-guide-2022"],"affects":["courseVersion","sourceCredits","receivingCredits","equivalency"]},
+    {"id":"ace-not-established","text":"No CLI course ACE recommendation was established from National Guide or Credly primary records. Treat this route as institution-issued where documented, not as assumed ACE credit.","sourceIds":["cli-help-status","cli-transfers"],"affects":["creditBasis","acceptanceEligibility"]},
+    {"id":"tesu-umpi-unverified","text":"No receiving-school official CLI equivalency or acceptance evidence was located for TESU or UMPI in this bounded research. This is an evidence gap, not a demonstrated rejection.","sourceIds":[],"affects":["receivingInstitutionEligibility","equivalency"]},
+    {"id":"partners-not-pairs","text":"Several listed partners recognize CLI bachelor's graduates for graduate admission. That cannot be represented as graduate transfer credits or a bachelor's exact course map.","sourceIds":["cli-partners","cli-city-vision"],"affects":["partnershipType","degreeLevel","equivalency"]},
+    {"id":"full-transcript-cost","text":"Outgoing transcript processing is verified, but current transfer-only verification cost, required enrollments, course assessment/proctoring, and collegiate source-credit versions are not yet fully documented.","sourceIds":["cli-transfers","cli-handbook-2026"],"affects":["totalCost","transcriptEligibility","assessment","courseVersion"]}
+  ],
+  "appFieldRecommendations": [
+    {"field":"creditIssuerEntity + issuerAliases","reason":"Canonicalize CLI/CLC and preserve who actually issues the transcript, separately from a course platform or marketing brand."},
+    {"field":"creditPathway + transcriptEligibilityRules","reason":"Distinguish free developmental learning, Institute Verification, and degree-seeking LES admission."},
+    {"field":"accreditationStatus + accreditor + validFrom/validTo + verifiedOn","reason":"Candidate/pre-accreditation and receiving-school treatment are time-dependent; neither implies regional accreditation."},
+    {"field":"recommendationAuthority + recommendationId + recommendationWindow","reason":"Only populate ACE when supported by an actual recommendation; issuer credit and ACE credit must not collapse into one provider flag."},
+    {"field":"feeComponents[{amount,scope,billingBasis,requiredForPathway,sourceId}]","reason":"Represent free course access alongside verification/transcript/degree fees without hiding required costs or charging a degree fee per transfer course."},
+    {"field":"courseVersion + sourceCreditQuantity + sourceCreditUnit + receivingAwardQuantity + receivingAwardUnit","reason":"Maintain historical original vs receiving values and avoid the current 3-credit vs archived 4-credit mismatch. Some underlying curricula already preserve origin and source quantities; enforce these at catalog/provider ingestion too."},
+    {"field":"partnershipType + degreeLevel + campusScope + effectivePeriod","reason":"Course equivalency, transcript recognition, graduate admission, and tuition offers are different claims."},
+    {"field":"mappingValidityStatus + lastRevalidatedAt + historicalSourceDate","reason":"A source checked today can still publish a July 2022 mapping; checked date is not effective date."},
+    {"field":"requiredAssessment + enrollmentWindow + currentEligibility","reason":"Self-paced and low-cost alone do not establish nonproctored exams, adult/minor access, or a completion deadline."}
+  ],
+  "researchTasksWeCanDoWithoutStudentHomework": [
+    {"priority":1,"task":"Query current Liberty public calculator, Florida → Christian Leaders Institute; save source course code/version, awarded credits, and effective date for each named pair before enabling course recommendations."},
+    {"priority":2,"task":"Obtain the current public academic catalog/verification syllabus and review exact collegiate transcript pathway, required fees, assessments, deadlines, and current source-credit ledger. Current handbook direct fetch returned 403; keep that retrieval gap internal."},
+    {"priority":3,"task":"Bind revalidated courses to actual Liberty program requirements and residency/major/upper-level rules, including no-duplicate constraints. Do not stop at a broad acceptance statement."},
+    {"priority":4,"task":"Find receiving-school City Vision/Kairos exact course maps or articulation text; classify other partners by admission versus transfer benefit."},
+    {"priority":5,"task":"Check TESU/UMPI receiving policies specifically for candidate-status institutional origin; only show eligible earning options when current exact evidence supports them."}
+  ]
+}

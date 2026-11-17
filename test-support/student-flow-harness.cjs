@@ -1,0 +1,24 @@
+/* UI actions against production closures; no real student storage or network. */
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const base=path.resolve(__dirname,'..'),KEY='degreepath-guide-v3',copy=value=>JSON.parse(JSON.stringify(value));
+function worksheet(initial,data){
+  const values=new Map([[KEY,JSON.stringify(initial)]]),handlers=new Map(),nodes=new Map(),writes=[];
+  const node=id=>{if(!nodes.has(id))nodes.set(id,{id,innerHTML:'',textContent:'',hidden:true,open:false,isConnected:true,dataset:{},classList:{add(){},remove(){},toggle(){}},addEventListener(){},setAttribute(){},querySelector(){return null;},querySelectorAll(){return[];},focus(){},showModal(){this.open=true;},close(){this.open=false;},insertAdjacentHTML(){}});return nodes.get(id);};
+  const document={body:node('body'),activeElement:null,getElementById:node,querySelector(){return null;},querySelectorAll(){return[];},dispatchEvent(){},addEventListener(type,handler){if(!handlers.has(type))handlers.set(type,[]);handlers.get(type).push(handler);},createElement(){return{setAttribute(){},textContent:'',id:'',role:'',className:''};}};
+  const context={console,URL,URLSearchParams,Intl,TextEncoder,TextDecoder,document,location:{pathname:'/plan.html',search:'',assign(value){context.__destination=value;},replace(value){context.__destination=value;}},history:{replaceState(){}},navigator:{},CSS:{escape:value=>String(value)},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options?.detail;}},FormData:class extends Map{constructor(form){super(Object.entries(form.values||{}));}getAll(name){return this.has(name)?[this.get(name)]:[];}},setTimeout(){},clearTimeout(){},requestAnimationFrame(){},addEventListener(){},dispatchEvent(){},scrollTo(){},localStorage:{getItem:key=>values.get(key)||null,setItem(key,value){values.set(key,value);writes.push({key,value});}},fetch(){throw Error('Student flow tests must not use the network.');},__fixtureJSON:JSON.stringify({state:initial,...data})};context.window=context;
+  vm.createContext(context);
+  const html=fs.readFileSync(path.join(base,'dist/plan.html'),'utf8');
+  for(const match of html.matchAll(/<script\b[^>]*\bsrc="([A-Za-z0-9_-]+\.js)"[^>]*>/g)){const source=fs.readFileSync(path.join(base,'dist',match[1]),'utf8');if(source.includes('module.exports'))vm.runInContext(source,context,{filename:match[1]});}
+  const hooks=`const fixture=JSON.parse(__fixtureJSON);state=fixture.state;catalog=fixture.catalog;models=fixture.models;
+    render=function(){generate();save();};
+    openDialog=function(html,label){window.__dialog={html,label};$('sheet-dialog').open=true;$('sheet-dialog-content').innerHTML=html;};
+    closeDialog=function(){$('sheet-dialog').open=false;};
+    generate();window.__flow={edit:creditsDialog,row:function(id){courseView=projection();rowDialog(id);},graduation:function(q='',filter='all'){progressFilter=filter;return graduationRequirementsHTML(q);},choose,getState:()=>state,getDraft:()=>({state,pathway,program,plan,match,input,guidance})};`;
+  const source=fs.readFileSync(path.join(base,'dist/sheet.js'),'utf8'),instrumented=source.replace(/  boot\(\);\s*\}\(\)\);\s*$/,hooks+'\n}());');if(source===instrumented)throw Error('Production sheet boot boundary changed.');
+  vm.runInContext(instrumented,context,{filename:'sheet.js'});
+  return{writes,edit(id){context.__flow.edit(id);return context.__dialog;},row(id){context.__flow.row(id);return context.__dialog;},graduation(...args){return context.__flow.graduation(...args);},choose(...args){return context.__flow.choose(...args);},state:()=>copy(context.__flow.getState()),draft:()=>context.__flow.getDraft(),saved:()=>JSON.parse(values.get(KEY)),notice:()=>node('sheet-notice').textContent,destination:()=>context.__destination,
+    async submitRecord(id,fields){const form={id:'sheet-learning-form',dataset:{recordId:id},values:fields,querySelector(){return null;},append(){}};for(const handler of handlers.get('submit')||[])await handler({target:form,preventDefault(){}});},
+    async progress(requirementId,status){const target={id:'',dataset:{progress:requirementId},value:status,closest(){return null;}};for(const handler of handlers.get('change')||[])await handler({target});}
+  };
+}
+module.exports={worksheet};

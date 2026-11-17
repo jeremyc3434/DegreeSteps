@@ -1,0 +1,280 @@
+{
+  "version": 1,
+  "packets": [
+    {
+      "id": "liberty-residential-criminal-justice-military",
+      "schoolName": "Liberty University",
+      "programName": "Bachelor of Science in Criminal Justice (General, Residential)",
+      "level": "bachelor",
+      "modality": "campus",
+      "degreeUrls": [
+        "https://www.liberty.edu/government/bachelors/criminal-justice/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-resident/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-resident/criminal-justice-resident.pdf"
+      ],
+      "catalogYear": "2026-2027",
+      "checkedOn": "2026-11-17",
+      "sources": [
+        {
+          "id": "liberty-cj-residential-degree-page",
+          "url": "https://www.liberty.edu/government/bachelors/criminal-justice/",
+          "title": "Liberty residential B.S. in Criminal Justice",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "liberty-cj-residential-dcp-2026",
+          "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-resident/criminal-justice-resident.pdf",
+          "title": "Criminal Justice (B.S.) — Resident, 2026-2027 degree completion plan",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "liberty-residential-transfer-policy",
+          "url": "https://www.liberty.edu/residential/undergraduate/transfer-students/policies-and-guidelines/",
+          "title": "Liberty residential transfer policies and guidelines",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "liberty-military-credit-and-degree-plans",
+          "url": "https://www.liberty.edu/military/benefits/transfer-credit-and-degree-plans/",
+          "title": "Liberty military transfer credit evaluation and degree plans",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        }
+      ],
+      "facts": [
+        {
+          "id": "liberty-cj-residential-total",
+          "field": "totalCredits",
+          "value": 120,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-cj-residential-dcp-2026"
+          ]
+        },
+        {
+          "id": "liberty-cj-residential-institution-minimum",
+          "field": "institutionMinCredits",
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-cj-residential-dcp-2026"
+          ]
+        },
+        {
+          "id": "liberty-cj-residential-upper-minimum",
+          "field": "upperMinCredits",
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-cj-residential-dcp-2026"
+          ]
+        },
+        {
+          "id": "liberty-cj-residential-overall-transfer-ceiling",
+          "field": "externalMaxCredits",
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-residential-transfer-policy",
+            "liberty-cj-residential-dcp-2026"
+          ]
+        }
+      ],
+      "studentCautions": [
+        {
+          "text": "This packet concerns the general residential major. The separately listed concentrations and online degree need their own requirements review.",
+          "sourceIds": [
+            "liberty-cj-residential-degree-page",
+            "liberty-cj-residential-dcp-2026"
+          ]
+        },
+        {
+          "text": "The 90-credit ceiling is an overall transfer limit, not approval for 90 Sophia, Study.com, or other ACE-recommended credits. Verify each provider course and its degree placement separately.",
+          "sourceIds": [
+            "liberty-residential-transfer-policy"
+          ]
+        },
+        {
+          "text": "The standard plan requires 25% of the major through Liberty. Do not turn that percentage into a credit quantity until the school confirms which requirements form its basis.",
+          "sourceIds": [
+            "liberty-cj-residential-dcp-2026"
+          ]
+        },
+        {
+          "text": "Liberty's military policy describes a one-major-course minimum for eligible, verified undergraduates and links both campuses. Ask Military Affairs to confirm its application to this residential catalog before replacing the standard major rule. Overall residency and upper-level requirements still apply.",
+          "sourceIds": [
+            "liberty-military-credit-and-degree-plans"
+          ]
+        },
+        {
+          "text": "Military training credit requires evaluation of the student's own official military transcript, such as JST or CCAF. Service, rank, medals, and awards do not independently establish degree-credit awards. A spouse's eligibility for academic benefits does not transfer the service member's training credits.",
+          "sourceIds": [
+            "liberty-military-credit-and-degree-plans"
+          ]
+        },
+        {
+          "text": "Liberty limits its AU-ABC and College of the American Soldier transfer programs to online degrees; do not advertise those arrangements as residential pathways.",
+          "sourceIds": [
+            "liberty-military-credit-and-degree-plans"
+          ]
+        },
+        {
+          "text": "The residential plan waives RLGN 105 and EVAN 101 at 45 transferred hours, then THEO 201 and THEO 202 at 60. A waiver removes a requirement, not the minimum total; preserve enough nonduplicated credits to graduate.",
+          "sourceIds": [
+            "liberty-cj-residential-dcp-2026"
+          ]
+        },
+        {
+          "text": "Law-enforcement personnel who document successful completion of an accredited police officer school in their state may receive up to 14 degree credits. This is conditional individual review, not an automatic award for every academy or officer.",
+          "sourceIds": [
+            "liberty-cj-residential-degree-page"
+          ]
+        },
+        {
+          "text": "CSER obligations, applicable prerequisites, and the technology competency remain part of the residential requirements review.",
+          "sourceIds": [
+            "liberty-cj-residential-dcp-2026"
+          ]
+        }
+      ],
+      "ambiguities": [
+        {
+          "text": "The major-residency denominator and application of the verified military exception need confirmation for the individual student. This uncertainty does not change the documented overall residency, transfer ceiling, or degree total.",
+          "affects": [
+            "majorInstitutionFraction",
+            "majorResidencyBasisCredits",
+            "majorMinInstitutionCredits"
+          ],
+          "sourceIds": [
+            "liberty-cj-residential-dcp-2026",
+            "liberty-military-credit-and-degree-plans"
+          ]
+        },
+        {
+          "text": "This packet does not establish an aggregate alternative-credit allowance. The documented overall transfer ceiling must not be reused as an ACE-credit cap.",
+          "affects": [
+            "alternativeMaxCredits"
+          ],
+          "sourceIds": [
+            "liberty-residential-transfer-policy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bellevue-online-leadership-bs-military",
+      "schoolName": "Bellevue University",
+      "programName": "Bachelor of Science in Leadership (Online)",
+      "level": "bachelor",
+      "modality": "online",
+      "degreeUrls": [
+        "https://www.bellevue.edu/programs/bachelors-degrees/leadership/online/"
+      ],
+      "catalogYear": "2025-2027",
+      "checkedOn": "2026-11-17",
+      "sources": [
+        {
+          "id": "bellevue-online-leadership-program",
+          "url": "https://www.bellevue.edu/programs/bachelors-degrees/leadership/online/",
+          "title": "Bellevue accelerated online Leadership bachelor's program",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "bellevue-catalog-2025-2027",
+          "url": "https://www.bellevue.edu/degrees/academic-catalog/pdfs/25-27-catalog.pdf",
+          "title": "Bellevue University 2025-2027 academic catalog",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "bellevue-military-credit-transfer",
+          "url": "https://www.bellevue.edu/military-students/military-credit-transfer/",
+          "title": "Bellevue military credit transfer and transcript evaluation",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        }
+      ],
+      "facts": [
+        {
+          "id": "bellevue-online-leadership-total",
+          "field": "totalCredits",
+          "value": 127,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "bellevue-online-leadership-program",
+            "bellevue-catalog-2025-2027"
+          ]
+        }
+      ],
+      "studentCautions": [
+        {
+          "text": "This is an accelerated cohort with sequential courses, not an unrestricted self-paced subscription. Entry requires an associate degree or 60 transferred credits; students below that threshold must first complete the required credits.",
+          "sourceIds": [
+            "bellevue-online-leadership-program"
+          ]
+        },
+        {
+          "text": "The published total is 37 general-education, 40 major, and 50 elective semester credits. The Kirkpatrick Signature Series also remains required; do not add it again on top of the published total without reviewing its allocation.",
+          "sourceIds": [
+            "bellevue-online-leadership-program",
+            "bellevue-catalog-2025-2027"
+          ]
+        },
+        {
+          "text": "The named Leadership major courses carry four credits each. Preserve those quantities instead of forcing every course into a three-credit template.",
+          "sourceIds": [
+            "bellevue-online-leadership-program"
+          ]
+        },
+        {
+          "text": "Bellevue evaluates ACE-recommended training recorded on official military transcripts and accepts CLEP and DSST for evaluation. The award and its degree placement still depend on individual review; military experience alone is not a fixed credit award.",
+          "sourceIds": [
+            "bellevue-military-credit-transfer"
+          ]
+        },
+        {
+          "text": "Military transcript acceptance does not establish an equivalency for Sophia or Study.com. The program page requires transfer evaluation and makes no advance promise about examination, prior-learning, or transfer awards.",
+          "sourceIds": [
+            "bellevue-online-leadership-program",
+            "bellevue-military-credit-transfer"
+          ]
+        },
+        {
+          "text": "Bellevue advertises an on-campus version separately. This packet covers the online program only and does not establish identical campus scheduling or transfer arrangements.",
+          "sourceIds": [
+            "bellevue-online-leadership-program"
+          ]
+        }
+      ],
+      "ambiguities": [
+        {
+          "text": "The exact overall transfer ceiling and institution or major residency rules remain unverified. Do not derive a transfer allowance by subtracting an assumed residency from the documented degree total.",
+          "affects": [
+            "externalMaxCredits",
+            "institutionMinCredits",
+            "majorInstitutionFraction",
+            "majorResidencyBasisCredits",
+            "majorMinInstitutionCredits"
+          ],
+          "sourceIds": [
+            "bellevue-online-leadership-program",
+            "bellevue-catalog-2025-2027"
+          ]
+        },
+        {
+          "text": "An aggregate alternative-credit allowance for this degree is not established by the military transcript policy.",
+          "affects": [
+            "alternativeMaxCredits"
+          ],
+          "sourceIds": [
+            "bellevue-military-credit-transfer"
+          ]
+        }
+      ]
+    }
+  ]
+}

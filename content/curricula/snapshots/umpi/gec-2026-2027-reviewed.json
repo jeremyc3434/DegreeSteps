@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-17",
+  "school": "University of Maine at Presque Isle",
+  "catalogYear": "2026\u20132027",
+  "status": "internal-reviewed-framework-only; not an executable degree plan",
+  "sources": [
+    {
+      "id": "umpi-gec-2026-one-page",
+      "url": "https://www.umpi.edu/academics/wp-content/uploads/sites/19/2026/06/GenEd_Student_OnePage.docx",
+      "title": "UMPI general education student one-page overview",
+      "checked": "2026-11-17",
+      "sha256": "1b6c6488bdbcc16b9ec1f2264ff4864763267bc4647d3d0cd56dc68d8644d014",
+      "retrieval": "Root downloaded DOCX and parsed its text; reviewed locally."
+    },
+    {
+      "id": "umpi-gec-transition",
+      "url": "https://www.umpi.edu/academics/general-education-curriculum/",
+      "title": "GEC2026\u20132027 transition and continuing-catalog rules",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "umpi-gec-catalog-2026",
+      "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1783",
+      "title": "Current catalog GEC course approvals",
+      "checked": "2026-11-17",
+      "retrieval": "403; course-level approvals not reviewed"
+    }
+  ],
+  "totalGecCredits": 40,
+  "creditSystem": "semester",
+  "generalLearningOutcomeCount": 8,
+  "learningOutcomes": [
+    {
+      "id": "writing",
+      "title": "Writing as critical thought",
+      "minimumCredits": 6,
+      "sourceIds": [
+        "umpi-gec-2026-one-page"
+      ]
+    },
+    {
+      "id": "oral",
+      "title": "Oral communication",
+      "minimumCredits": 3,
+      "sourceIds": [
+        "umpi-gec-2026-one-page"
+      ]
+    },
+    {
+      "id": "inquiry",
+      "title": "Inquiry and analysis",
+      "minimumCredits": 10,
+      "sourceIds": [
+        "umpi-gec-2026-one-page"
+      ],
+      "waysOfKnowing": [
+        "Arts and humanities",
+        "Social sciences",
+        "Natural sciences"
+      ],
+      "creditAllocationWithinWaysConfirmed": false
+    },
+    {
+      "id": "creative",
+      "title": "Creative and innovative thinking",
+      "minimumCredits": 3,
+      "sourceIds": [
+        "umpi-gec-2026-one-page"
+      ]
+    },
+    {
+      "id": "quantitative",
+      "title": "Quantitative literacy",
+      "minimumCredits": 3,
+      "sourceIds": [
+        "umpi-gec-2026-one-page"
+      ]
+    },
+    {
+      "id": "global",
+      "title": "Global learning",
+      "minimumCredits": 3,
+      "sourceIds": [
+        "umpi-gec-2026-one-page"
+      ]
+    },
+    {
+      "id": "intercultural",
+      "title": "Intercultural analysis",
+      "minimumCredits": 3,
+      "sourceIds": [
+        "umpi-gec-2026-one-page"
+      ]
+    },
+    {
+      "id": "integrative",
+      "title": "Integrative learning",
+      "minimumCredits": 6,
+      "sourceIds": [
+        "umpi-gec-2026-one-page"
+      ]
+    }
+  ],
+  "arithmetic": {
+    "sumOfPublishedAreaMinimums": 37,
+    "totalGecMinimum": 40,
+    "catalogOverlapRulesConfirmed": false,
+    "note": "The eight area minimums sum to37; the degree still needs40GECcredits. Approved course selections and any allowed cross-fulfillment determine the additional courses. No second counting of the same course credits is asserted."
+  },
+  "applicability": {
+    "newlyAccepted2026_2027": "New curriculum applies to newly accepted2026\u20132027students and later years.",
+    "continuingStudents": "Students already enrolled retain their incoming-catalog GEC requirements.",
+    "priorAccreditedBachelor": "Specific GEC requirements are waived for entrants holding a completed accredited bachelor degree; program requirements remain.",
+    "sourceIds": [
+      "umpi-gec-transition"
+    ]
+  },
+  "notEstablished": [
+    "Exact approved course lists for each2026\u201327YourPace GLO.",
+    "Whether each Inquiry way requires a specific credit subtotal or laboratory.",
+    "Which courses are approved for six Integrative Learning credits.",
+    "Allowed overlap across GLO areas and minor/degree requirements.",
+    "Current BLS minor availability and the exact BLS upper-level elective rule from the governing catalog."
+  ],
+  "doNotPromoteReasons": [
+    "A proposed120-credit model would need invented course-to-GLO placements without the catalog approvals.",
+    "A current Management minor cannot be assumed from a live marketing description when its governing-catalog availability is unresolved.",
+    "Some current provider pages still publish the obsolete37-credit,5-GLO curriculum; those allocation summaries must not override this primary2026framework."
+  ]
+}

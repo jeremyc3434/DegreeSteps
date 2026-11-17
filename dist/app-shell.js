@@ -1,0 +1,89 @@
+/* A shared student workspace. Private drafts never leave the device from this shell. */
+(function () {
+  'use strict';
+  const page = location.pathname.split('/').pop() || 'portal.html';
+  const task = new URLSearchParams(location.search).get('task');
+  const labels = {'programs.html':'Find a degree','courses.html':'My courses','import-courses.html':'Add my courses','compare-plans.html':'Compare plans','portal.html':'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps'};
+  if (!labels[page]) return;
+  const paths = {
+    plan:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    credits:'<path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10v6c3 3 9 3 12 0v-6M22 8v7"/>',
+    explore:'<circle cx="11" cy="11" r="7"/><path d="m16 16 5 5M8 11h6M11 8v6"/>',
+    community:'<circle cx="9" cy="8" r="3"/><path d="M3 21v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6M17 15a5 5 0 0 1 4 5"/>',
+    person:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',
+    arrow:'<path d="M7 17 17 7M7 7h10v10"/>',
+    spark:'<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/>',
+    check:'<path d="m5 12 4 4L19 6"/>'
+  };
+  const icon = name => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[name]+'</svg>';
+  const wordmark = '<span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span>';
+  const active = ['courses.html','import-courses.html'].includes(page) ? 'credits' : page === 'community.html' ? 'community' : ['programs.html','school.html','request-plan.html'].includes(page) ? 'programs' : page === 'library.html' ? 'explore' : task === 'credits' ? 'credits' : page === 'account.html' ? 'account' : page === 'admin.html' ? 'admin' : 'plan';
+  const links = [
+    {id:'plan',title:'My plan',href:'plan.html',icon:'plan'},
+    {id:'credits',title:'My courses',href:'courses.html',icon:'credits'},
+    {id:'programs',title:'Find a degree',href:'programs.html',icon:'explore'},
+    {id:'community',title:'Community',href:'community.html?tab=feed',icon:'community'}
+  ];
+  const nav = mobile => links.map(link => '<a href="'+link.href+'"'+(active === link.id ? ' aria-current="page"' : '')+' data-shell-nav="'+link.id+'">'+icon(link.icon)+'<span>'+link.title+'</span></a>').join('');
+  const shell = document.createElement('div');
+  shell.id = 'degree-app-shell';
+  shell.innerHTML = '<aside class="dp-shell-sidebar" aria-label="DegreeSteps workspace"><a class="dp-shell-brand" href="plan.html" aria-label="DegreeSteps — My plan">'+wordmark+'</a><div class="dp-shell-nav-label">YOUR WORKSPACE</div><nav class="dp-shell-nav" aria-label="Main navigation">'+nav(false)+'</nav><div class="dp-shell-sidebar-bottom"><a class="dp-shell-account" href="account.html"'+(active === 'account' ? ' aria-current="page"' : '')+'><span class="dp-shell-avatar">'+icon('person')+'</span><span><strong data-shell-account-label>My account</strong><small data-shell-account-detail>Sign in to keep a private copy</small></span>'+icon('arrow')+'</a><a class="dp-shell-website" href="library.html">Schools & resources '+icon('arrow')+'</a><a class="dp-shell-website" href="index.html">Visit DegreeSteps website '+icon('arrow')+'</a></div></aside><header class="dp-shell-header"><a class="dp-shell-mobile-brand" href="plan.html" aria-label="DegreeSteps — My plan">'+wordmark+'</a><div class="dp-shell-page-title" id="dp-shell-page-title">'+labels[page]+'</div><div class="dp-shell-header-actions"><a class="dp-shell-save-account" href="account.html#account-save-form" title="Choose to save or update a private account copy" hidden>Back up plan</a><span class="dp-shell-save" role="status" aria-live="polite" hidden>'+icon('check')+'<span></span></span><a class="dp-shell-account-button" href="account.html" aria-label="My account">'+icon('person')+'</a></div></header><nav class="dp-shell-bottom" aria-label="Mobile main navigation">'+nav(true)+'</nav>';
+  document.body.prepend(shell);
+  document.body.classList.add('dp-app-shell');
+  if (page === 'library.html') {
+    document.body.classList.add('dp-explore-page');
+    const heading = document.querySelector('#explore .section-head h2');
+    if (heading) heading.textContent = 'Find a school that fits.';
+    const eyebrow = document.querySelector('#explore .section-head .eyebrow');
+    if (eyebrow) eyebrow.textContent = 'EXPLORE SCHOOLS';
+    const intro = document.querySelector('#explore .section-head p');
+    if (intro) intro.textContent = 'Compare transfer policies, then build your personal plan.';
+  }
+  function setPage(title) {
+    if (typeof title === 'string' && title.trim()) document.getElementById('dp-shell-page-title').textContent = title.slice(0,80);
+  }
+  let signedIn=false;
+  function accountSaveAction() {const link=shell.querySelector('.dp-shell-save-account');if(link)link.hidden=!signedIn||!['plan.html','portal.html','courses.html','import-courses.html','compare-plans.html'].includes(page)||!window.DegreeAccount?.deviceDraft?.();}
+  function saved(deviceSaved) {
+    if (typeof deviceSaved !== 'boolean' || page === 'account.html' || page === 'community.html' || page === 'library.html') return;
+    const target = shell.querySelector('.dp-shell-save');
+    const text = target.querySelector('span');
+    const label = deviceSaved ? 'Saved on this device' : 'Device save unavailable';
+    if (text.textContent !== label) text.textContent = label;
+    target.hidden = false;accountSaveAction();
+    target.classList.toggle('dp-shell-save-warning', !deviceSaved);
+  }
+  const saveEvent = event => saved(event.detail?.deviceSaved);
+  window.addEventListener('degreepath:save',saveEvent);
+  document.addEventListener('degreepath:save',saveEvent);
+  const existingSave = document.getElementById('portal-saved');
+  if (existingSave) {
+    const reflect = () => {
+      if (/saved on this device/i.test(existingSave.textContent)) saved(true);
+      else if (/unavailable/i.test(existingSave.textContent)) saved(false);
+    };
+    reflect();new MutationObserver(reflect).observe(existingSave,{childList:true,characterData:true,subtree:true});
+  }
+  let lastAccountRefresh = 0;
+  async function account(refresh) {
+    if (!window.DegreeAccount?.session) return;
+    lastAccountRefresh = Date.now();
+    try {
+      const session = await window.DegreeAccount.session(Boolean(refresh));
+      const user = session?.user;signedIn=Boolean(user);accountSaveAction();
+      const label = shell.querySelector('[data-shell-account-label]');
+      const detail = shell.querySelector('[data-shell-account-detail]');
+      const avatar = shell.querySelector('.dp-shell-avatar');
+      label.textContent = user ? (user.alias || 'My account') : 'My account';
+      detail.textContent = user ? 'Manage private saved plans' : 'Sign in to keep a private copy';
+      if (user?.alias) {avatar.textContent = user.alias.trim().slice(0,1).toUpperCase();avatar.classList.add('dp-shell-avatar-initial');}
+      else {avatar.innerHTML = icon('person');avatar.classList.remove('dp-shell-avatar-initial');}
+    } catch { /* The account page presents authentication and connection errors. */ }
+  }
+  account(false);
+  const accountContent = document.getElementById('account-content');
+  if (accountContent) new MutationObserver(() => account(false)).observe(accountContent,{childList:true});
+  window.addEventListener('focus',() => {if (Date.now()-lastAccountRefresh>30000) account(true);});
+  window.addEventListener('degreepath:account',() => account(true));
+  window.DegreeAppShell = Object.freeze({setPage,setSaved:saved});
+}());

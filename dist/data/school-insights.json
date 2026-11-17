@@ -1,0 +1,1455 @@
+{
+  "version": 1,
+  "compiledOn": "2026-11-16",
+  "scope": "School research summaries, not ready-to-use degree templates. Use exact reviewed degree plans for enrollment decisions.",
+  "methodology": {
+    "summary": "Short summaries of the linked official sources, with separately identified learner discussions.",
+    "rankings": "Compare only the same degree level, delivery mode, units and credit-origin policy basis. Unknown metrics receive no rank.",
+    "cost": "School prices use different billing units and are not a degree-cost ranking. Use your course plan for comparable remaining-cost estimates.",
+    "speed": "Self-paced availability is a format fact, not a finish-time estimate or an ease rating.",
+    "recognition": "Institutional accreditation is reported as a sourced fact. Employer recognition, professional licensing and programmatic accreditation are not inferred.",
+    "reviews": "No external discussion is counted as a DegreeSteps review or a verified transfer outcome."
+  },
+  "schools": [
+    {
+      "id": "liberty",
+      "name": "Liberty University",
+      "shortName": "Liberty",
+      "summary": "Transfer options with a choice of online study or a campus experience.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor"
+        ],
+        "modalities": [
+          "online",
+          "campus"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "Online and residential routes are available.",
+          "sourceIds": [
+            "liberty-source-1",
+            "liberty-source-3"
+          ]
+        },
+        {
+          "text": "Eligible transfer credit can cover up to 75% of a bachelor’s degree.",
+          "sourceIds": [
+            "liberty-source-2"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "Major and minor residency can limit how many outside courses apply.",
+          "sourceIds": [
+            "liberty-source-2"
+          ]
+        },
+        {
+          "text": "Housing and required fees add to residential tuition.",
+          "sourceIds": [
+            "liberty-source-3"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": false,
+        "label": "Scheduled courses; online subterms vary",
+        "sourceIds": [
+          "liberty-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "Up to 75% eligible transfer credit",
+        "note": "At least 25% of the degree and major/minor remains with Liberty. Actual outside-credit placement depends on the exact online program.",
+        "sourceIds": [
+          "liberty-source-2"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "campusPrice",
+          "label": "Residential full-time tuition",
+          "amount": 12695,
+          "currency": "USD",
+          "unit": "semester (12–18 credits)",
+          "scope": "Illustrative 120-credit residential bachelor’s degree",
+          "conditions": "Tuition only: the example excludes the $460 activity fee and $170 health fee per semester, the $100 degree-completion fee, housing, dining, books, and other personal/program charges. Financial aid and discounts can change the comparison.",
+          "sourceIds": [
+            "liberty-source-3"
+          ]
+        },
+        {
+          "key": "price",
+          "label": "Online full-time tuition",
+          "amount": 410,
+          "currency": "USD",
+          "unit": "credit; at least 12 credits per billed semester",
+          "scope": "Illustrative 120-credit online undergraduate bachelor’s degree",
+          "conditions": "The $410 rate requires at least 12 credits in each billed semester; semesters of 11 or fewer credits use $475 per credit. The example excludes the $349 technology fee per semester, the $100 degree-completion fee, and other applicable charges. The catalog’s $38/credit Inclusive Access charge is waived for online undergraduates and is not added here.",
+          "sourceIds": [
+            "liberty-source-4"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "Southern Association of Colleges and Schools Commission on Colleges (SACSCOC)",
+        "sourceIds": [
+          "liberty-source-5"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [],
+      "metrics": {
+        "transferAllowance": {
+          "value": 75,
+          "unit": "percent",
+          "comparisonGroup": "bachelor-semester-overall-policy-ceiling",
+          "label": "Up to 75% eligible transfer credit",
+          "note": "At least 25% of the degree and major/minor remains with Liberty. Actual outside-credit placement depends on the exact online program.",
+          "sourceIds": [
+            "liberty-source-2"
+          ],
+          "scope": {
+            "levels": [
+              "bachelor"
+            ],
+            "modalities": [
+              "online",
+              "campus"
+            ]
+          },
+          "higherIsBetter": true
+        },
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "liberty-source-1",
+          "title": "Liberty online academic calendar and subterms",
+          "url": "https://www.liberty.edu/online/important-dates-and-deadlines/",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "liberty-source-2",
+          "title": "Liberty transfer-credit policy and 75% degree limit",
+          "url": "https://www.liberty.edu/online/transfer-to-liberty-university/",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "liberty-source-3",
+          "title": "Liberty 2026–27 residential tuition and full-time band",
+          "url": "https://www.liberty.edu/residential/tuition-and-fees/",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "liberty-source-4",
+          "title": "Liberty 2026–27 online undergraduate tuition and fees",
+          "url": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "liberty-source-5",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.liberty.edu/about/accreditation/",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        }
+      ]
+    },
+    {
+      "id": "tesu",
+      "name": "Thomas Edison State University",
+      "shortName": "TESU",
+      "summary": "A transfer-focused option with separate rules for alternative courses and college credit.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "ACE- and NCCRS-recommended learning can be evaluated.",
+          "sourceIds": [
+            "tesu-source-2"
+          ]
+        },
+        {
+          "text": "The conditional Edison Accelerate route can reduce university coursework.",
+          "sourceIds": [
+            "tesu-source-1"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "The combined ACE/NCCRS limit is 90 credits.",
+          "sourceIds": [
+            "tesu-source-2"
+          ]
+        },
+        {
+          "text": "A 114-credit outside route needs eligible credit types and extra conditions.",
+          "sourceIds": [
+            "tesu-source-1"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": false,
+        "label": "Scheduled online courses and other approved formats",
+        "sourceIds": [
+          "tesu-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "Up to 90 ACE/NCCRS credits in a 120-credit degree",
+        "note": "The separate 114-credit mixed-credit possibility is conditional and must not be treated as 114 Sophia or Study.com credits.",
+        "sourceIds": [
+          "tesu-source-2"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Nonresident flat-rate tuition",
+          "amount": 4652,
+          "currency": "USD",
+          "unit": "12-week term (9–18 credits)",
+          "scope": "Illustrative 120-credit bachelor’s; nonresident standard tuition route",
+          "conditions": "Nonresident pricing is used. Registration for 9–18 credits receives the $4,652 flat term rate; smaller term loads use $584 per credit. The example excludes the $50 application fee, $98 graduation audit, books, and other charges. It does not include an Edison Accelerate fee because this is the standard tuition scenario. NJ/PA resident prices differ.",
+          "sourceIds": [
+            "tesu-source-3"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "Middle States Commission on Higher Education (MSCHE)",
+        "sourceIds": [
+          "tesu-source-4"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [],
+      "metrics": {
+        "transferAllowance": {
+          "value": 75,
+          "unit": "percent",
+          "comparisonGroup": "bachelor-online-semester-course-provider-policy-ceiling",
+          "label": "Up to 90 ACE/NCCRS credits in a 120-credit degree",
+          "note": "The separate 114-credit mixed-credit possibility is conditional and must not be treated as 114 Sophia or Study.com credits.",
+          "sourceIds": [
+            "tesu-source-2"
+          ],
+          "scope": {
+            "levels": [
+              "bachelor"
+            ],
+            "modalities": [
+              "online"
+            ]
+          },
+          "higherIsBetter": true
+        },
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "tesu-source-1",
+          "title": "Conditional Edison Accelerate route and fee",
+          "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/university-fees/edison-accelerate.php",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "tesu-source-2",
+          "title": "TESU combined ACE/NCCRS limit",
+          "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/credit-for-training.php",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "tesu-source-3",
+          "title": "TESU tuition effective August 2026: nonresident flat-rate and per-credit prices",
+          "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "tesu-source-4",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.tesu.edu/why-tesu/accreditations.php",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        }
+      ]
+    },
+    {
+      "id": "umpi",
+      "name": "University of Maine at Presque Isle",
+      "shortName": "UMPI",
+      "summary": "YourPace lets students work through competencies within paid eight-week sessions.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "Tuition is charged by session rather than by individual course.",
+          "sourceIds": [
+            "umpi-source-2"
+          ]
+        },
+        {
+          "text": "Prior coursework can be evaluated against the selected degree.",
+          "sourceIds": [
+            "umpi-source-1"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "At least 30 credits must be completed through UMPI, including major requirements.",
+          "sourceIds": [
+            "umpi-source-1"
+          ]
+        },
+        {
+          "text": "The number of paid sessions depends on your pace and remaining work.",
+          "sourceIds": [
+            "umpi-source-2"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "label": "Self-paced work within eight-week sessions",
+        "sourceIds": [
+          "umpi-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "30 UMPI credits required for a 120-credit bachelor’s",
+        "note": "UMPI states no fixed incoming-credit limit. Ninety possible outside credits is arithmetic for a 120-credit degree with 30 required UMPI credits, not a published universal transfer cap. Major and upper-level requirements still apply.",
+        "sourceIds": [
+          "umpi-source-1"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Undergraduate YourPace tuition",
+          "amount": 1800,
+          "currency": "USD",
+          "unit": "eight-week session",
+          "scope": "Illustrative 120-credit YourPace business bachelor’s degree",
+          "conditions": "The $1,800 rate buys an eight-week undergraduate YourPace session; it is not a per-credit price. Basic materials are generally included, but the comparison excludes any applicable extra supplies, personal costs, and other fees. Campus YourPace options can have additional charges and are not modeled.",
+          "sourceIds": [
+            "umpi-source-2"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "New England Commission of Higher Education (NECHE), through the University of Maine System",
+        "sourceIds": [
+          "umpi-source-3"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [
+        {
+          "text": "Participants describe writing and project work and different completion paces. Preview the assessment style rather than assuming a Sophia-like experience.",
+          "sourceIds": [
+            "umpi-source-4"
+          ],
+          "scope": "One public discussion; individual accounts, not a representative review sample",
+          "communityVerified": false
+        }
+      ],
+      "metrics": {
+        "transferAllowance": {
+          "value": 75,
+          "unit": "percent",
+          "comparisonGroup": "bachelor-online-semester-residency-arithmetic-bound",
+          "label": "30 UMPI credits required for a 120-credit bachelor’s",
+          "note": "UMPI states no fixed incoming-credit limit. Ninety possible outside credits is arithmetic for a 120-credit degree with 30 required UMPI credits, not a published universal transfer cap. Major and upper-level requirements still apply.",
+          "sourceIds": [
+            "umpi-source-1"
+          ],
+          "scope": {
+            "levels": [
+              "bachelor"
+            ],
+            "modalities": [
+              "online"
+            ]
+          },
+          "higherIsBetter": true
+        },
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "umpi-source-1",
+          "title": "UMPI YourPace degree totals, residency and flexible pacing",
+          "url": "https://www.umpi.edu/yourpace/faqs/",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "umpi-source-2",
+          "title": "UMPI YourPace 2026–27 undergraduate tuition",
+          "url": "https://www.umpi.edu/yourpace/tuition/",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "umpi-source-3",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.umpi.edu/about/accreditation/",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        },
+        {
+          "id": "umpi-source-4",
+          "title": "r/UMPI: Similar to Sophia?",
+          "url": "https://www.reddit.com/r/UMPI/comments/1kc9u6e/similar_to_sophia/",
+          "kind": "community",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Public discussion read; individual self-reports are not verified or representative"
+        }
+      ]
+    },
+    {
+      "id": "snhu",
+      "name": "Southern New Hampshire University",
+      "shortName": "SNHU",
+      "summary": "A structured online route for students who prefer a regular course calendar.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "Online undergraduate courses run in eight-week terms.",
+          "sourceIds": [
+            "snhu-source-1"
+          ]
+        },
+        {
+          "text": "Up to 90 credits can transfer toward a 120-credit bachelor’s.",
+          "sourceIds": [
+            "snhu-source-2"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "Course deadlines and prerequisites still shape the finish schedule.",
+          "sourceIds": [
+            "snhu-source-1"
+          ]
+        },
+        {
+          "text": "Accepted credit must also satisfy the requirements of your exact degree.",
+          "sourceIds": [
+            "snhu-source-2"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": false,
+        "label": "Scheduled eight-week online terms",
+        "sourceIds": [
+          "snhu-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "Up to 90 of 120 credits",
+        "note": "Eligible college credit and approved prior learning can combine toward the transfer limit. The university decides which requirements they meet.",
+        "sourceIds": [
+          "snhu-source-2"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Online undergraduate tuition",
+          "amount": 354,
+          "currency": "USD",
+          "unit": "credit",
+          "scope": "Illustrative 120-credit online bachelor’s degree",
+          "conditions": "The example excludes the $100 conferral fee, books/materials, and other applicable costs. No application fee is added. Aid, employer support, and discounts are not modeled.",
+          "sourceIds": [
+            "snhu-source-3"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "New England Commission of Higher Education (NECHE)",
+        "sourceIds": [
+          "snhu-source-4"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [],
+      "metrics": {
+        "transferAllowance": {
+          "value": 75,
+          "unit": "percent",
+          "comparisonGroup": "bachelor-semester-overall-policy-ceiling",
+          "label": "Up to 90 of 120 credits",
+          "note": "Eligible college credit and approved prior learning can combine toward the transfer limit. The university decides which requirements they meet.",
+          "sourceIds": [
+            "snhu-source-2"
+          ],
+          "scope": {
+            "levels": [
+              "bachelor"
+            ],
+            "modalities": [
+              "online"
+            ]
+          },
+          "higherIsBetter": true
+        },
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "snhu-source-1",
+          "title": "SNHU online term lengths and start dates",
+          "url": "https://www.snhu.edu/admission/online/term-start-dates",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "snhu-source-2",
+          "title": "SNHU bachelor’s transfer-credit limit",
+          "url": "https://www.snhu.edu/admission/transferring-credits",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "snhu-source-3",
+          "title": "SNHU 2026–27 online undergraduate tuition",
+          "url": "https://www.snhu.edu/tuition-and-financial-aid/online",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "snhu-source-4",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.snhu.edu/about-us/accreditations",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        }
+      ]
+    },
+    {
+      "id": "charter-oak",
+      "name": "Charter Oak State College",
+      "shortName": "Charter Oak",
+      "summary": "An online completion college with explicit rules for college and non-collegiate credit.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "Approved non-collegiate course providers are part of the credit policy.",
+          "sourceIds": [
+            "charter-oak-source-2"
+          ]
+        },
+        {
+          "text": "Eligible college credit has separate source-specific transfer limits.",
+          "sourceIds": [
+            "charter-oak-source-1"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "Course-provider credit has a 90-credit bachelor’s limit.",
+          "sourceIds": [
+            "charter-oak-source-2"
+          ]
+        },
+        {
+          "text": "The Cornerstone and Capstone must be completed through Charter Oak.",
+          "sourceIds": [
+            "charter-oak-source-residency"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": false,
+        "label": "Scheduled online course formats",
+        "sourceIds": [
+          "charter-oak-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "Up to 90 approved course-provider credits",
+        "note": "Approved course-provider learning is limited to 90 bachelor’s credits and requires an eligible provider agreement. The separate 114-credit four-year-college maximum cannot be priced as 114 Sophia/ACE credits. The three-credit Cornerstone and three-credit Capstone must be taken through Charter Oak.",
+        "sourceIds": [
+          "charter-oak-source-2"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Undergraduate tuition",
+          "amount": 329,
+          "currency": "USD",
+          "unit": "credit",
+          "scope": "Illustrative 120-credit online bachelor’s degree",
+          "conditions": "The example includes tuition at $329 per credit but excludes $18.75 materials per credit, $230 student services and $75 technology per semester, the $50 application fee, and other charges. A $150 enrollment deposit is credited toward tuition and must not be counted a second time.",
+          "sourceIds": [
+            "charter-oak-source-3"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "New England Commission of Higher Education (NECHE)",
+        "sourceIds": [
+          "charter-oak-source-4"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [],
+      "metrics": {
+        "transferAllowance": {
+          "value": 75,
+          "unit": "percent",
+          "comparisonGroup": "bachelor-online-semester-course-provider-policy-ceiling",
+          "label": "Up to 90 approved course-provider credits",
+          "note": "Approved course-provider learning is limited to 90 bachelor’s credits and requires an eligible provider agreement. The separate 114-credit four-year-college maximum cannot be priced as 114 Sophia/ACE credits. The three-credit Cornerstone and three-credit Capstone must be taken through Charter Oak.",
+          "sourceIds": [
+            "charter-oak-source-2"
+          ],
+          "scope": {
+            "levels": [
+              "bachelor"
+            ],
+            "modalities": [
+              "online"
+            ]
+          },
+          "higherIsBetter": true
+        },
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "charter-oak-source-1",
+          "title": "Charter Oak institutional transfer-credit limits",
+          "url": "https://www.charteroak.edu/prospective/admissions/transfer-students/",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "charter-oak-source-2",
+          "title": "Charter Oak non-collegiate course-provider cap and agreements",
+          "url": "https://www.charteroak.edu/catalog/current/sources_credit/non_collegiate_course_prov.php",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "charter-oak-source-3",
+          "title": "Charter Oak 2026–27 undergraduate tuition and fees",
+          "url": "https://www.charteroak.edu/catalog/current/fees_financial_aid_scholarships/undergraduate-current-fees.php",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "charter-oak-source-4",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.charteroak.edu/",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        },
+        {
+          "id": "charter-oak-source-residency",
+          "title": "Charter Oak Cornerstone and Capstone residency requirements",
+          "url": "https://www.charteroak.edu/catalog/current/undergraduate-degree-requirements/ug_academic_residency_requirements.php",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        }
+      ]
+    },
+    {
+      "id": "wgu",
+      "name": "Western Governors University",
+      "shortName": "WGU",
+      "summary": "Competency-based study with six-month terms and program-specific transfer rules.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "Students advance by demonstrating competency.",
+          "sourceIds": [
+            "wgu-source-1"
+          ]
+        },
+        {
+          "text": "Flat-rate terms support completing additional eligible work in a term.",
+          "sourceIds": [
+            "wgu-source-3"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "Transfer work must be evaluated before the initial term begins.",
+          "sourceIds": [
+            "wgu-source-2"
+          ]
+        },
+        {
+          "text": "Some competencies remain nontransferable in each degree.",
+          "sourceIds": [
+            "wgu-source-1"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "label": "Self-paced competency assessments within six-month terms",
+        "sourceIds": [
+          "wgu-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "32 of 120 CUs remain nontransferable in the example degree",
+        "note": "WGU’s institutional ceiling is 75%, but the current Project Management pathway lists 32 nontransferable CUs. Eighty-eight is therefore a theoretical program upper bound, not an established 88-CU ACE basket. This degree’s actual evaluated transfer amount can be lower.",
+        "sourceIds": [
+          "wgu-source-2",
+          "wgu-program-pathway"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Project Management tuition and resource fee",
+          "amount": 4030,
+          "currency": "USD",
+          "unit": "six-month term",
+          "scope": "B.S. Project Management, 120 CUs; October 2026 reference program",
+          "conditions": "Each modeled six-month term includes $3,830 tuition plus the required $200 e-books/resource fee, totaling $4,030. Unlike the other tuition-only rows, this known resource fee is included in the term price. The $65 application fee and any other applicable costs are excluded; possible waivers are not assumed.",
+          "sourceIds": [
+            "wgu-source-3"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "Northwest Commission on Colleges and Universities (NWCCU)",
+        "sourceIds": [
+          "wgu-source-4"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [
+        {
+          "text": "A learner discusses finishing Sophia coursework after applying but before enrollment. Confirm current transcript deadlines directly with WGU.",
+          "sourceIds": [
+            "wgu-source-5"
+          ],
+          "scope": "One public discussion; individual accounts, not a representative review sample",
+          "communityVerified": false
+        }
+      ],
+      "metrics": {
+        "transferAllowance": {
+          "value": 73.33333333333333,
+          "unit": "percent",
+          "comparisonGroup": "bachelor-online-competency-unit-project-management-theoretical-bound",
+          "label": "32 of 120 CUs remain nontransferable in the example degree",
+          "note": "WGU’s institutional ceiling is 75%, but the current Project Management pathway lists 32 nontransferable CUs. Eighty-eight is therefore a theoretical program upper bound, not an established 88-CU ACE basket. This degree’s actual evaluated transfer amount can be lower.",
+          "sourceIds": [
+            "wgu-program-pathway"
+          ],
+          "scope": {
+            "levels": [
+              "bachelor"
+            ],
+            "modalities": [
+              "online"
+            ]
+          },
+          "higherIsBetter": true
+        },
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "wgu-source-1",
+          "title": "WGU October 2026 catalog: BSPM 120 CUs and transfer policy",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-october-2026.pdf",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "wgu-source-2",
+          "title": "WGU pre-enrollment transcript and transfer timing",
+          "url": "https://www.wgu.edu/admissions/transfers/transfer-to-wgu.html",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "wgu-source-3",
+          "title": "WGU B.S. Project Management tuition and resource fee",
+          "url": "https://www.wgu.edu/online-business-degrees/project-management-bachelors-program.html",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "wgu-source-4",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.wgu.edu/student-experience/how-you-learn/accreditation.html",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        },
+        {
+          "id": "wgu-source-5",
+          "title": "r/WGU: Transfer after applying but before enrolling?",
+          "url": "https://www.reddit.com/r/WGU/comments/1n0zjbo/can_i_transfer_credits_from_sophia_to_wgu_after_i/",
+          "kind": "community",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Public discussion read; individual self-reports are not verified or representative"
+        },
+        {
+          "id": "wgu-program-pathway",
+          "title": "Current Project Management pathway: 32 nontransferable CUs",
+          "url": "https://partners.wgu.edu/transfer-pathway-agreement?collegeCode=BU&instId=3&programId=243&uniqueId=BSPM29434",
+          "kind": "official",
+          "checkedOn": "2026-11-02",
+          "reviewBasis": "Previously reviewed exact-program transfer pathway"
+        }
+      ]
+    },
+    {
+      "id": "south-college",
+      "name": "South College",
+      "shortName": "South College",
+      "summary": "Self-paced graduate CBE options; transfer and price checks stay specific to the program.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "master",
+          "doctorate",
+          "specialist"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "CBE offers graduate study with subscription billing.",
+          "sourceIds": [
+            "south-college-source-1"
+          ]
+        },
+        {
+          "text": "The university evaluates eligible prior college coursework.",
+          "sourceIds": [
+            "south-college-source-2"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "No common CBE transfer cap was established in this review.",
+          "sourceIds": [
+            "south-college-source-2"
+          ]
+        },
+        {
+          "text": "Confirm your program’s current tuition and additional fees.",
+          "sourceIds": [
+            "south-college-source-1"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "label": "Self-paced CBE with six-month subscriptions",
+        "sourceIds": [
+          "south-college-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "Program-specific evaluation",
+        "note": "General policy evaluates equivalent coursework from accredited collegiate institutions; graduate CBE transfer decisions require program review. No common CBE transfer cap was verified.",
+        "sourceIds": [
+          "south-college-source-2"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Subscription pricing",
+          "amount": null,
+          "currency": "USD",
+          "unit": "6 months",
+          "scope": "Selected South College self-paced programs; exact degree rates vary",
+          "conditions": "Flat six-month CBE tuition is confirmed. An indexed 2025–2026 schedule quotes $7,000 but its linked PDF was inaccessible; leave the current numeric amount unverified. Nursing and other fees may apply.",
+          "sourceIds": [
+            "south-college-source-1"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "Southern Association of Colleges and Schools Commission on Colleges (SACSCOC)",
+        "sourceIds": [
+          "south-college-source-3"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [],
+      "metrics": {
+        "transferAllowance": null,
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "south-college-source-1",
+          "title": "Official self-paced program overview",
+          "url": "https://www.south.edu/location/cbe-competency-based-education/",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "south-college-source-2",
+          "title": "Official transfer and prior-learning policy",
+          "url": "https://www.south.edu/academics/transfer-information/",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "south-college-source-3",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.south.edu/about/accreditations-and-approvals/",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        }
+      ]
+    },
+    {
+      "id": "umass-global",
+      "name": "University of Massachusetts Global",
+      "shortName": "UMass Global",
+      "summary": "MyPath offers self-paced programs with program-specific transfer and tuition rules.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor",
+          "master"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "MyPath uses competency-based, self-paced study.",
+          "sourceIds": [
+            "umass-global-source-1"
+          ]
+        },
+        {
+          "text": "The BBA can accept up to 90 previous college credits.",
+          "sourceIds": [
+            "umass-global-source-1"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "MBA and other program transfer limits differ from the BBA.",
+          "sourceIds": [
+            "umass-global-source-2"
+          ]
+        },
+        {
+          "text": "Military pricing can use a different billing basis.",
+          "sourceIds": [
+            "umass-global-source-3"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "label": "Self-paced MyPath with 24-week billing periods",
+        "sourceIds": [
+          "umass-global-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "BBA: up to 90 previous college credits; other degrees vary",
+        "note": "Credits must be evaluated for course equivalency and then competency applicability. The MyPath BBA specifically permits up to 90 previous college credits; other programs have different limits.",
+        "sourceIds": [
+          "umass-global-source-2",
+          "umass-global-source-transfer-overall"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Subscription pricing",
+          "amount": null,
+          "currency": "USD",
+          "unit": "24 weeks",
+          "scope": "Selected UMass Global self-paced programs; exact degree rates vary",
+          "conditions": "$3,500 undergraduate and $4,030 graduate civilian tuition per 24-week billing period. Active-duty military per-credit billing differs; use a program-level rate.",
+          "sourceIds": [
+            "umass-global-source-3"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "WASC Senior College and University Commission (WSCUC)",
+        "sourceIds": [
+          "umass-global-source-4"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [],
+      "metrics": {
+        "transferAllowance": null,
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "umass-global-source-1",
+          "title": "Official self-paced program overview",
+          "url": "https://www.umassglobal.edu/student-experience/why-umassglobal/flexible-ways-to-learn/self-paced",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "umass-global-source-2",
+          "title": "MyPath MBA transfer policy",
+          "url": "https://www.umassglobal.edu/academic-programs/mba-business-administration-self-paced",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "umass-global-source-3",
+          "title": "Official self-paced tuition source",
+          "url": "https://www.umassglobal.edu/tuition-and-aid/tuition",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "umass-global-source-4",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.umassglobal.edu/about/accreditations",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        },
+        {
+          "id": "umass-global-source-transfer-overall",
+          "title": "Self-Paced MyPath Programs",
+          "url": "https://www.umassglobal.edu/student-experience/why-umassglobal/flexible-ways-to-learn/self-paced",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official transfer policy; original review date retained"
+        }
+      ]
+    },
+    {
+      "id": "walden-university",
+      "name": "Walden University",
+      "shortName": "Walden",
+      "summary": "Tempo offers selected degrees with self-paced study and three-month subscriptions.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor",
+          "master"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "Tempo offers flat tuition within each subscription period.",
+          "sourceIds": [
+            "walden-university-source-3"
+          ]
+        },
+        {
+          "text": "Eligible undergraduate prior learning can be evaluated.",
+          "sourceIds": [
+            "walden-university-source-2"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "Quarter-credit limits cannot be read as semester-credit limits.",
+          "sourceIds": [
+            "walden-university-source-2"
+          ]
+        },
+        {
+          "text": "Tuition and additional program fees vary by degree.",
+          "sourceIds": [
+            "walden-university-source-3"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "label": "Self-paced Tempo with three-month subscriptions",
+        "sourceIds": [
+          "walden-university-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "Undergraduate: up to 135 quarter credits overall",
+        "note": "Maximum 135 quarter credits toward an undergraduate degree; program rules apply. Virginia residents must complete at least 55 credits through Walden. Quarter credits must not be treated as semester credits.",
+        "sourceIds": [
+          "walden-university-source-2",
+          "walden-university-source-transfer-overall"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Subscription pricing",
+          "amount": null,
+          "currency": "USD",
+          "unit": "3 months",
+          "scope": "Selected Walden self-paced programs; exact degree rates vary",
+          "conditions": "Program-specific flat tuition, plus a per-term program fee. Current published new-starter tuition ranges from $1,650 to $4,000 across the degree entries in this inventory.",
+          "sourceIds": [
+            "walden-university-source-3"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "Higher Learning Commission (HLC)",
+        "sourceIds": [
+          "walden-university-source-4"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [],
+      "metrics": {
+        "transferAllowance": null,
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "walden-university-source-1",
+          "title": "Official self-paced program overview",
+          "url": "https://www.waldenu.edu/why-walden/flexibility",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "walden-university-source-2",
+          "title": "Official prior-learning policy",
+          "url": "https://academicguides.waldenu.edu/degreeacceleration/prior-learning-credit-policies",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "walden-university-source-3",
+          "title": "Official self-paced tuition source",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "walden-university-source-4",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.waldenu.edu/about/accreditation",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        },
+        {
+          "id": "walden-university-source-transfer-overall",
+          "title": "Transfer maxima by program",
+          "url": "https://academics.waldenu.edu/handbook/transfer-credit-program",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official transfer policy; original review date retained"
+        }
+      ]
+    },
+    {
+      "id": "winthrop-university",
+      "name": "Winthrop University",
+      "shortName": "Winthrop",
+      "summary": "Elevate provides a self-paced BPS completion route for students bringing prior credit.",
+      "summaryMethod": "Preloaded synthesis of the linked sources",
+      "scope": {
+        "levels": [
+          "bachelor"
+        ],
+        "modalities": [
+          "online"
+        ],
+        "catalog": "See each source and exact degree; school-wide facts do not establish a course plan"
+      },
+      "pros": [
+        {
+          "text": "Elevate uses self-paced work within subscription periods.",
+          "sourceIds": [
+            "winthrop-university-source-1"
+          ]
+        },
+        {
+          "text": "The BPS FAQ includes approved Sophia and StraighterLine learning.",
+          "sourceIds": [
+            "winthrop-university-source-2"
+          ]
+        }
+      ],
+      "tradeoffs": [
+        {
+          "text": "Applicants need at least 30 accepted incoming credits.",
+          "sourceIds": [
+            "winthrop-university-source-2"
+          ]
+        },
+        {
+          "text": "The approval-pending BSBA is not an active Elevate degree template.",
+          "sourceIds": [
+            "winthrop-university-source-1"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "label": "Self-paced Elevate with 14-week subscriptions",
+        "sourceIds": [
+          "winthrop-university-source-1"
+        ]
+      },
+      "transferPolicy": {
+        "label": "Elevate BPS: up to 90 combined transfer credits",
+        "note": "Elevate BPS permits up to 90 combined credits from previous college coursework and approved alternative/prior-learning sources. Minimum 30 incoming credits required; no age limit on undergraduate coursework stated.",
+        "sourceIds": [
+          "winthrop-university-source-2"
+        ]
+      },
+      "pricing": [
+        {
+          "key": "price",
+          "label": "Subscription pricing",
+          "amount": 3500,
+          "currency": "USD",
+          "unit": "14 weeks",
+          "scope": "Selected Winthrop self-paced programs; exact degree rates vary",
+          "conditions": "Full-time subscription covers 12 or more credit hours, with no stated course-count limit. Part-time costs $1,750 for up to 11 credits. Subscription-type changes allowed between periods once per year.",
+          "sourceIds": [
+            "winthrop-university-source-2"
+          ]
+        }
+      ],
+      "recognition": {
+        "status": "verified-institutional",
+        "accreditor": "Southern Association of Colleges and Schools Commission on Colleges (SACSCOC)",
+        "sourceIds": [
+          "winthrop-university-source-3"
+        ],
+        "note": "Institutional accreditation is not an employer rating or a guarantee of licensure or program-specific approval."
+      },
+      "reviews": {
+        "status": "awaiting-reviews",
+        "count": 0,
+        "ratings": null
+      },
+      "communityPerspectives": [],
+      "metrics": {
+        "transferAllowance": null,
+        "cost": null,
+        "speed": null,
+        "ease": null
+      },
+      "sources": [
+        {
+          "id": "winthrop-university-source-1",
+          "title": "Official self-paced program overview",
+          "url": "https://www.winthrop.edu/elevate/",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "winthrop-university-source-2",
+          "title": "Official transfer and prior-learning policy",
+          "url": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx",
+          "kind": "official",
+          "checkedOn": "2026-11-03",
+          "reviewBasis": "Previously reviewed official source; original review date retained"
+        },
+        {
+          "id": "winthrop-university-source-3",
+          "title": "Official institutional accreditation statement",
+          "url": "https://www.winthrop.edu/institutional-effectiveness/accreditation.aspx",
+          "kind": "official",
+          "checkedOn": "2026-11-16",
+          "reviewBasis": "Indexed official accreditation statement reviewed on this date"
+        }
+      ]
+    }
+  ]
+}

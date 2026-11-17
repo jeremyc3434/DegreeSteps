@@ -1,0 +1,2780 @@
+{
+  "version": 1,
+  "asOf": "2026-11-17",
+  "scope": "A fully specified proposed plan is not university approval or an awarded degree. These checks distinguish a usable course route from a directory listing.",
+  "summary": {
+    "schools": 4,
+    "fullySpecifiedProposedPlans": 3,
+    "directoryOnly": 1,
+    "schoolApprovedPlans": 0
+  },
+  "pathways": [
+    {
+      "school": "Liberty University",
+      "routeId": "liberty-business-residential",
+      "modelId": "liberty-business-residential",
+      "title": "Residential B.S. Business Administration & Data Analysis — Interdisciplinary Business",
+      "status": "fully-specified-proposed-plan",
+      "proposedPlanFullySpecified": true,
+      "checks": {
+        "hasRequirementLedger": true,
+        "academicCreditRules": true,
+        "namedCourseChoices": true,
+        "sourceBoundOutsideCourses": true,
+        "knownCreditPolicies": true,
+        "freshExplicitPolicySources": true,
+        "truthfulCostUncertainty": true,
+        "truthfulTimingUncertainty": true
+      },
+      "issues": [],
+      "degreeCredits": 120,
+      "creditSystem": "semester",
+      "catalog": "2026–2027",
+      "requirementCount": 44,
+      "accountedCredits": 120,
+      "proposedOutsideCredits": 83,
+      "proposedAlternativeCredits": 83,
+      "selectedPublishedOutsideCredits": 83,
+      "selectedConditionalOutsideCredits": 0,
+      "selectedOutsideMappings": [
+        {
+          "requirementId": "engl-101",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0015",
+          "title": "English Composition I",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "engl-102",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0030",
+          "title": "English Composition II",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "arts-209",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0009",
+          "title": "Visual Communications",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "math-115",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0055",
+          "title": "Introduction to College Mathematics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "govt-220",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0071",
+          "title": "U.S. Government",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "envr-215",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0016",
+          "title": "Environmental Science",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "published",
+          "sourceIds": [
+            "sophia"
+          ],
+          "sources": [
+            {
+              "id": "sophia",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-105",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0014",
+          "title": "Introduction to Business",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-223",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0044",
+          "title": "Personal Finance",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-240",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0083",
+          "title": "Organizational Behavior",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "econ-213",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0011",
+          "title": "Microeconomics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "acct-211",
+          "provider": "CLEP",
+          "courseCode": "CLEP-0039",
+          "title": "Financial Accounting",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-clep-residential-2025-08"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-clep-residential-2025-08",
+              "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-320",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0153",
+          "title": "Corporate Finance",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-study-com-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-study-com-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-330",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0085",
+          "title": "Principles of Marketing",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-342",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0071",
+          "title": "Strategic Human Resources Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-study-com-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-study-com-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-411",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0086",
+          "title": "Operations Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "econ-214",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0012",
+          "title": "Macroeconomics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-313",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0073",
+          "title": "Project Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-study-com-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-study-com-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-336",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0147",
+          "title": "Small Business Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-study-com-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-study-com-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-371",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0086",
+          "title": "Logistics and Supply Chain Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-study-com-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-study-com-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "busi-343",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0120",
+          "title": "Union & Labor Relations",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-study-com-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-study-com-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "hius-221",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0022",
+          "title": "US History I",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "published",
+          "sourceIds": [
+            "sophia"
+          ],
+          "sources": [
+            {
+              "id": "sophia",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "hius-222",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0025",
+          "title": "US History II",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "published",
+          "sourceIds": [
+            "sophia"
+          ],
+          "sources": [
+            {
+              "id": "sophia",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "psyc-101",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0048",
+          "title": "Intro to Psychology",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "psyc-210",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0078",
+          "title": "Lifespan Development",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "soci-200",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0051",
+          "title": "Introduction to Sociology",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "liberty-official-sophia-residential-2026-05"
+          ],
+          "sources": [
+            {
+              "id": "liberty-official-sophia-residential-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-11-10",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "phil-201",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0027",
+          "title": "Ancient Greek Philosophers",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "published",
+          "sourceIds": [
+            "sophia"
+          ],
+          "sources": [
+            {
+              "id": "sophia",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "phil-210",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0065",
+          "title": "Critical Thinking",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "published",
+          "sourceIds": [
+            "sophia"
+          ],
+          "sources": [
+            {
+              "id": "sophia",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "free-teams-1",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0021",
+          "title": "Developing Effective Teams",
+          "receivingCredits": 1,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "published",
+          "sourceIds": [
+            "sophia"
+          ],
+          "sources": [
+            {
+              "id": "sophia",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "free-it-career-1",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0041",
+          "title": "IT Career Exploration",
+          "receivingCredits": 1,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "published",
+          "sourceIds": [
+            "sophia"
+          ],
+          "sources": [
+            {
+              "id": "sophia",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": null
+            }
+          ]
+        }
+      ],
+      "evidenceScope": "Published and conditional describe the selected mapping evidence. Source links do not establish individual receiving-school approval, current catalog applicability or awarded credit.",
+      "universityCredits": 37,
+      "upperCredits": 39,
+      "majorUniversityCredits": 24,
+      "limits": {
+        "institutionMinCredits": 30,
+        "derivedInstitutionMinimum": null,
+        "conservativeInstitutionSufficientBound": null,
+        "residencyInterpretationStatus": null,
+        "residencyCalculationBasis": "Published absolute institutional minimum",
+        "residencyAndOverallPolicyCeiling": null,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30
+      },
+      "policySourceFreshness": {
+        "sourceIds": [
+          "liberty-residential-academic-policy-2026-2027-reviewed",
+          "liberty-interdisciplinary-degree-2026-2027-reviewed"
+        ],
+        "staleSourceIds": [],
+        "undatedSourceIds": [],
+        "unboundSourceIds": []
+      },
+      "openCourseChoices": [],
+      "conditionalCourseChoices": [],
+      "schoolConfirmationRequired": true,
+      "sourceUrls": [
+        "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf"
+      ],
+      "costs": {
+        "tuition": null,
+        "knownSubtotal": 431,
+        "total": null,
+        "complete": false,
+        "missing": [
+          "Your planned university course load per billing semester, within the published tuition limits",
+          "University and transcript fees verified against your quote",
+          "CLEP administration/proctoring charges",
+          "Provider taxes and checkout price",
+          "Housing, meals and campus expenses"
+        ]
+      },
+      "timing": {
+        "weeks": null,
+        "verified": false,
+        "assumptions": [
+          "Durations and course load are your estimates, not verified provider or university completion times.",
+          "External learning is completed before university coursework; at most 1 external action(s) run at once.",
+          "University prerequisites occupy separate terms. Courses are assumed available every term without enrollment gaps.",
+          "Admissions, evaluation, transcript processing, grading delays, breaks and retakes are not included."
+        ],
+        "missing": [
+          "Your estimated weeks per Sophia course/exam preparation",
+          "Your estimated weeks per CLEP course/exam preparation",
+          "Your estimated weeks per Study.com course/exam preparation",
+          "Your planned university credits per term",
+          "Your assumed university term length in weeks",
+          "Your intended start date, actual course availability and time needed for your remaining work"
+        ]
+      }
+    },
+    {
+      "school": "Thomas Edison State University",
+      "routeId": "tesu-general-management",
+      "modelId": "tesu-general-management",
+      "title": "B.S. in General Management",
+      "status": "fully-specified-proposed-plan",
+      "proposedPlanFullySpecified": true,
+      "checks": {
+        "hasRequirementLedger": true,
+        "academicCreditRules": true,
+        "namedCourseChoices": true,
+        "sourceBoundOutsideCourses": true,
+        "knownCreditPolicies": true,
+        "freshExplicitPolicySources": true,
+        "truthfulCostUncertainty": true,
+        "truthfulTimingUncertainty": true
+      },
+      "issues": [],
+      "degreeCredits": 120,
+      "creditSystem": "semester",
+      "catalog": "Current undergraduate catalog · checked October 28, 2026",
+      "requirementCount": 40,
+      "accountedCredits": 120,
+      "proposedOutsideCredits": 90,
+      "proposedAlternativeCredits": 90,
+      "selectedPublishedOutsideCredits": 0,
+      "selectedConditionalOutsideCredits": 90,
+      "selectedOutsideMappings": [
+        {
+          "requirementId": "enc1010",
+          "provider": "Sophia",
+          "courseCode": "English Composition I",
+          "title": "English Composition I",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "conditional",
+          "sourceIds": [
+            "tesu-receiving-review-sophia-composition-one-ace-record-2026-11-17",
+            "tesu-receiving-review-current-general-management-2026-11-17",
+            "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+            "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+            "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+            "tesu-receiving-review-keyword-composition-one-2026-11-17"
+          ],
+          "sources": [
+            {
+              "id": "tesu-receiving-review-sophia-composition-one-ace-record-2026-11-17",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-current-general-management-2026-11-17",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-keyword-composition-one-2026-11-17",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "enc1020",
+          "provider": "Sophia",
+          "courseCode": "English Composition II",
+          "title": "English Composition II",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "conditional",
+          "sourceIds": [
+            "tesu-receiving-review-sophia-composition-two-ace-record-2026-11-17",
+            "tesu-receiving-review-current-general-management-2026-11-17",
+            "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+            "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+            "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17"
+          ],
+          "sources": [
+            {
+              "id": "tesu-receiving-review-sophia-composition-two-ace-record-2026-11-17",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-current-general-management-2026-11-17",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "com2090",
+          "provider": "Sophia",
+          "courseCode": "Public Speaking",
+          "title": "Public Speaking",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "mat1210",
+          "provider": "Sophia",
+          "courseCode": "MATH1001",
+          "title": "College Algebra",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "conditional",
+          "sourceIds": [
+            "tesu-receiving-review-sophia-algebra-ace-record-2026-11-17",
+            "tesu-receiving-review-current-general-management-2026-11-17",
+            "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+            "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+            "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+            "tesu-receiving-review-keyword-algebra-2026-11-17"
+          ],
+          "sources": [
+            {
+              "id": "tesu-receiving-review-sophia-algebra-ace-record-2026-11-17",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=f56ec0dc-e1be-ef11-b8e8-000d3a3ad719&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-current-general-management-2026-11-17",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-keyword-algebra-2026-11-17",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0001",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "soc1010",
+          "provider": "Sophia",
+          "courseCode": "Introduction to Sociology",
+          "title": "Introduction to Sociology",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "liberty-sophia-provider-identifiers-2026-05",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "liberty-sophia-provider-identifiers-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": "official-provider-identity-reference"
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "pos1100",
+          "provider": "Sophia",
+          "courseCode": "U.S. Government",
+          "title": "U.S. Government",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "liberty-sophia-provider-identifiers-2026-05",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "liberty-sophia-provider-identifiers-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": "official-provider-identity-reference"
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "his1130",
+          "provider": "Sophia",
+          "courseCode": "US History I",
+          "title": "US History I",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "liberty-sophia-provider-identifiers-2026-05",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "liberty-sophia-provider-identifiers-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": "official-provider-identity-reference"
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "his1140",
+          "provider": "Sophia",
+          "courseCode": "US History II",
+          "title": "US History II",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "liberty-sophia-provider-identifiers-2026-05",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "liberty-sophia-provider-identifiers-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": "official-provider-identity-reference"
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "phi1300",
+          "provider": "Sophia",
+          "courseCode": "Critical Thinking",
+          "title": "Critical Thinking",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "conditional",
+          "sourceIds": [
+            "tesu-receiving-review-sophia-critical-thinking-ace-record-2026-11-17",
+            "tesu-receiving-review-current-general-management-2026-11-17",
+            "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+            "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+            "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17"
+          ],
+          "sources": [
+            {
+              "id": "tesu-receiving-review-sophia-critical-thinking-ace-record-2026-11-17",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-current-general-management-2026-11-17",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "eas1010",
+          "provider": "Sophia",
+          "courseCode": "Human Biology",
+          "title": "Human Biology",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-degree",
+            "df-ge-tesu-6573",
+            "tesu-directory",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-degree",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "df-ge-tesu-6573",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_General_Education_Requirements_Roadmap",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "bio2080",
+          "provider": "Sophia",
+          "courseCode": "Introduction to Nutrition",
+          "title": "Introduction to Nutrition",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-degree",
+            "df-ge-tesu-6573",
+            "tesu-directory",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-degree",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "df-ge-tesu-6573",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_General_Education_Requirements_Roadmap",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "acc1010",
+          "provider": "Sophia",
+          "courseCode": "BUSI1010",
+          "title": "Financial Accounting",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "conditional",
+          "sourceIds": [
+            "tesu-receiving-review-sophia-accounting-ace-record-2026-11-17",
+            "tesu-receiving-review-current-general-management-2026-11-17",
+            "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+            "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+            "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17"
+          ],
+          "sources": [
+            {
+              "id": "tesu-receiving-review-sophia-accounting-ace-record-2026-11-17",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=8d77efdd-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-current-general-management-2026-11-17",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-directory-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-17",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "acc1020",
+          "provider": "Study.com",
+          "courseCode": "Accounting 102",
+          "title": "Accounting 102: Intro to Managerial Accounting",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-certificates-tesu-5984",
+            "tesu-directory"
+          ],
+          "sources": [
+            {
+              "id": "df-certificates-tesu-5984",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_Certificate_Plans",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "cis1070",
+          "provider": "Sophia",
+          "courseCode": "Introduction to Information Technology",
+          "title": "Introduction to Information Technology",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "law2010",
+          "provider": "Sophia",
+          "courseCode": "Business Law",
+          "title": "Business Law",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "man2100",
+          "provider": "Sophia",
+          "courseCode": "Principles of Management",
+          "title": "Principles of Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "eco1110",
+          "provider": "Sophia",
+          "courseCode": "Macroeconomics",
+          "title": "Macroeconomics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "liberty-sophia-provider-identifiers-2026-05",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "liberty-sophia-provider-identifiers-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": "official-provider-identity-reference"
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "eco1120",
+          "provider": "Sophia",
+          "courseCode": "Microeconomics",
+          "title": "Microeconomics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "liberty-sophia-provider-identifiers-2026-05",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "liberty-sophia-provider-identifiers-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": "official-provider-identity-reference"
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "sta2010",
+          "provider": "Sophia",
+          "courseCode": "Introduction to Statistics",
+          "title": "Introduction to Statistics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-directory",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "man3730",
+          "provider": "Study.com",
+          "courseCode": "Business 324",
+          "title": "Business 324: Managerial Communication",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-orglead-tesu-5982",
+            "tesu-directory"
+          ],
+          "sources": [
+            {
+              "id": "df-orglead-tesu-5982",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BS_Organizational_Leadership_Degree_Plan",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "man3720",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0054",
+          "title": "Business 308: Globalization & International Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "conditional",
+          "sourceIds": [
+            "tesu-study-man3720-current",
+            "tesu-study-general-management-current",
+            "tesu-study-business308-ace-current",
+            "tesu-study-course-passing-current",
+            "tesu-degree",
+            "tesu-directory",
+            "tesu-transcripts-current"
+          ],
+          "sources": [
+            {
+              "id": "tesu-study-man3720-current",
+              "url": "https://study.com/college/thomas-edison-state-university/degrees/tesu-man-3720-international-management-overview-course-equivalency-guide.html",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            },
+            {
+              "id": "tesu-study-general-management-current",
+              "url": "https://study.com/college/thomas-edison-state-university/degrees/tesu-bachelor-of-science-in-general-management.html",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            },
+            {
+              "id": "tesu-study-business308-ace-current",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5b5554f0-7ff1-f011-8406-6045bd02b4cc&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com,+LLC",
+              "checked": "2026-11-11",
+              "evidenceType": "official-recommendation"
+            },
+            {
+              "id": "tesu-study-course-passing-current",
+              "url": "https://study.com/support/solutions/articles/11000134479-what-do-i-need-to-score-on-my-final-exam-to-pass-my-study-com-course-",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            },
+            {
+              "id": "tesu-degree",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-transcripts-current",
+              "url": "https://www.tesu.edu/student-resources/transfer-credits/send-transcripts.php",
+              "checked": "2026-11-11",
+              "evidenceType": "official-university-policy"
+            }
+          ]
+        },
+        {
+          "requirementId": "acc3030",
+          "provider": "Study.com",
+          "courseCode": "Accounting 303",
+          "title": "Accounting 303: Cost Accounting",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-accounting-tesu-6620",
+            "tesu-directory"
+          ],
+          "sources": [
+            {
+              "id": "df-accounting-tesu-6620",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "acc4010",
+          "provider": "Study.com",
+          "courseCode": "Accounting 302",
+          "title": "Accounting 302: Advanced Accounting",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-accounting-tesu-6620",
+            "tesu-directory"
+          ],
+          "sources": [
+            {
+              "id": "df-accounting-tesu-6620",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "fin3310",
+          "provider": "Study.com",
+          "courseCode": "Finance 303",
+          "title": "Finance 303: Financial Institutions & Markets",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-finance-tesu-6587",
+            "tesu-directory"
+          ],
+          "sources": [
+            {
+              "id": "df-finance-tesu-6587",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Finance_Degree_Plan",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "fin3340",
+          "provider": "Study.com",
+          "courseCode": "Finance 302",
+          "title": "Finance 302: International Finance",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-finance-tesu-6587",
+            "tesu-directory"
+          ],
+          "sources": [
+            {
+              "id": "df-finance-tesu-6587",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Finance_Degree_Plan",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "man3310",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0071",
+          "title": "Business 306: Strategic Human Resource Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "conditional",
+          "sourceIds": [
+            "tesu-study-general-management-current",
+            "tesu-study-business306-ace-current",
+            "tesu-study-ace-organization-current",
+            "tesu-study-course-passing-current",
+            "tesu-degree",
+            "tesu-directory",
+            "tesu-transcripts-current"
+          ],
+          "sources": [
+            {
+              "id": "tesu-study-general-management-current",
+              "url": "https://study.com/college/thomas-edison-state-university/degrees/tesu-bachelor-of-science-in-general-management.html",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            },
+            {
+              "id": "tesu-study-business306-ace-current",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=bfff03d6-7b42-f111-88b5-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com,+LLC",
+              "checked": "2026-11-11",
+              "evidenceType": "official-recommendation"
+            },
+            {
+              "id": "tesu-study-ace-organization-current",
+              "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=82099b28-9016-e811-810f-5065f38bf0e1",
+              "checked": "2026-11-11",
+              "evidenceType": "official-recommendation"
+            },
+            {
+              "id": "tesu-study-course-passing-current",
+              "url": "https://study.com/support/solutions/articles/11000134479-what-do-i-need-to-score-on-my-final-exam-to-pass-my-study-com-course-",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            },
+            {
+              "id": "tesu-degree",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-transcripts-current",
+              "url": "https://www.tesu.edu/student-resources/transfer-credits/send-transcripts.php",
+              "checked": "2026-11-11",
+              "evidenceType": "official-university-policy"
+            }
+          ]
+        },
+        {
+          "requirementId": "man3110",
+          "provider": "Study.com",
+          "courseCode": "Business 307",
+          "title": "Business 307: Leadership and Organizational Behavior",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-orglead-tesu-5982",
+            "tesu-directory"
+          ],
+          "sources": [
+            {
+              "id": "df-orglead-tesu-5982",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BS_Organizational_Leadership_Degree_Plan",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "elective1",
+          "provider": "Study.com",
+          "courseCode": "Accounting 201",
+          "title": "Accounting 201: Intermediate Accounting I",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-accounting-tesu-6620",
+            "tesu-directory"
+          ],
+          "sources": [
+            {
+              "id": "df-accounting-tesu-6620",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            }
+          ]
+        },
+        {
+          "requirementId": "elective2",
+          "provider": "Sophia",
+          "courseCode": "Introduction to Business",
+          "title": "Introduction to Business",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-degree",
+            "df-ge-tesu-6573",
+            "tesu-directory",
+            "liberty-sophia-provider-identifiers-2026-05",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-degree",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "df-ge-tesu-6573",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_General_Education_Requirements_Roadmap",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "liberty-sophia-provider-identifiers-2026-05",
+              "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+              "checked": "2026-10-28",
+              "evidenceType": "official-provider-identity-reference"
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        },
+        {
+          "requirementId": "elective3",
+          "provider": "Sophia",
+          "courseCode": "Project Management",
+          "title": "Project Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "semester",
+          "sourceCredits": null,
+          "sourceCreditSystem": null,
+          "evidence": "conditional",
+          "sourceIds": [
+            "df-sophia-tesu-6816",
+            "tesu-degree",
+            "df-ge-tesu-6573",
+            "tesu-directory",
+            "tesu-sophia-partner-current"
+          ],
+          "sources": [
+            {
+              "id": "df-sophia-tesu-6816",
+              "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-degree",
+              "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "df-ge-tesu-6573",
+              "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_General_Education_Requirements_Roadmap",
+              "checked": "2026-10-30",
+              "evidenceType": "community-reported"
+            },
+            {
+              "id": "tesu-directory",
+              "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+              "checked": "2026-11-11",
+              "evidenceType": null
+            },
+            {
+              "id": "tesu-sophia-partner-current",
+              "url": "https://tesu.sophia.org/",
+              "checked": "2026-11-11",
+              "evidenceType": "provider-published"
+            }
+          ]
+        }
+      ],
+      "evidenceScope": "Published and conditional describe the selected mapping evidence. Source links do not establish individual receiving-school approval, current catalog applicability or awarded credit.",
+      "universityCredits": 30,
+      "upperCredits": 30,
+      "majorUniversityCredits": 12,
+      "limits": {
+        "institutionMinCredits": 15,
+        "derivedInstitutionMinimum": null,
+        "conservativeInstitutionSufficientBound": null,
+        "residencyInterpretationStatus": null,
+        "residencyCalculationBasis": "Published absolute institutional minimum",
+        "residencyAndOverallPolicyCeiling": null,
+        "externalMaxCredits": 105,
+        "alternativeMaxCredits": 90,
+        "upperMinCredits": 18
+      },
+      "policySourceFreshness": {
+        "sourceIds": [
+          "tesu-tuition-current-2026-11-17",
+          "tesu-gm-current-program-2026-11-17",
+          "tesu-transfer-policy-current",
+          "tesu-transfer-faq"
+        ],
+        "staleSourceIds": [],
+        "undatedSourceIds": [],
+        "unboundSourceIds": []
+      },
+      "openCourseChoices": [],
+      "conditionalCourseChoices": [
+        "enc1010",
+        "enc1020",
+        "com2090",
+        "mat1210",
+        "soc1010",
+        "pos1100",
+        "his1130",
+        "his1140",
+        "phi1300",
+        "eas1010",
+        "bio2080",
+        "acc1010",
+        "acc1020",
+        "cis1070",
+        "law2010",
+        "man2100",
+        "eco1110",
+        "eco1120",
+        "sta2010",
+        "man3730",
+        "man3720",
+        "acc3030",
+        "acc4010",
+        "fin3310",
+        "fin3340",
+        "man3310",
+        "man3110",
+        "elective1",
+        "elective2",
+        "elective3"
+      ],
+      "schoolConfirmationRequired": true,
+      "sourceUrls": [
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+        "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+        "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+        "https://tesu.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=f56ec0dc-e1be-ef11-b8e8-000d3a3ad719&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0001",
+        "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://degreeforum.miraheze.org/wiki/Sample_TESU_General_Education_Requirements_Roadmap",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=8d77efdd-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://degreeforum.miraheze.org/wiki/Sample_TESU_Certificate_Plans",
+        "https://degreeforum.miraheze.org/wiki/Sample_TESU_BS_Organizational_Leadership_Degree_Plan",
+        "https://study.com/college/thomas-edison-state-university/degrees/tesu-man-3720-international-management-overview-course-equivalency-guide.html",
+        "https://study.com/college/thomas-edison-state-university/degrees/tesu-bachelor-of-science-in-general-management.html",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5b5554f0-7ff1-f011-8406-6045bd02b4cc&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com,+LLC",
+        "https://study.com/support/solutions/articles/11000134479-what-do-i-need-to-score-on-my-final-exam-to-pass-my-study-com-course-",
+        "https://www.tesu.edu/student-resources/transfer-credits/send-transcripts.php",
+        "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan",
+        "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Finance_Degree_Plan",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=bfff03d6-7b42-f111-88b5-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com,+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=82099b28-9016-e811-810f-5065f38bf0e1"
+      ],
+      "costs": {
+        "tuition": null,
+        "knownSubtotal": 334,
+        "total": null,
+        "complete": false,
+        "missing": [
+          "Current university tuition quote",
+          "University and transcript fees verified against your quote",
+          "Provider taxes and checkout price"
+        ]
+      },
+      "timing": {
+        "weeks": null,
+        "verified": false,
+        "assumptions": [
+          "Durations and course load are your estimates, not verified provider or university completion times.",
+          "External learning is completed before university coursework; at most 1 external action(s) run at once.",
+          "University prerequisites occupy separate terms. Courses are assumed available every term without enrollment gaps.",
+          "Admissions, evaluation, transcript processing, grading delays, breaks and retakes are not included."
+        ],
+        "missing": [
+          "Your estimated weeks per Sophia course/exam preparation",
+          "Your estimated weeks per Study.com course/exam preparation",
+          "Your planned university credits per term",
+          "Your assumed university term length in weeks",
+          "Your intended start date, actual course availability and time needed for your remaining work"
+        ]
+      }
+    },
+    {
+      "school": "Western Governors University",
+      "routeId": "wgu-catalog-ecceaa488637ac83",
+      "modelId": "curriculum-wgu-catalog-ecceaa488637ac83",
+      "title": "Business Management – B.S.",
+      "status": "fully-specified-proposed-plan",
+      "proposedPlanFullySpecified": true,
+      "checks": {
+        "hasRequirementLedger": true,
+        "academicCreditRules": true,
+        "namedCourseChoices": true,
+        "sourceBoundOutsideCourses": true,
+        "knownCreditPolicies": true,
+        "freshExplicitPolicySources": true,
+        "truthfulCostUncertainty": true,
+        "truthfulTimingUncertainty": true
+      },
+      "issues": [],
+      "degreeCredits": 110,
+      "creditSystem": "competency-unit",
+      "catalog": "202605",
+      "requirementCount": 36,
+      "accountedCredits": 110,
+      "proposedOutsideCredits": 69,
+      "proposedAlternativeCredits": 69,
+      "selectedPublishedOutsideCredits": 69,
+      "selectedConditionalOutsideCredits": 0,
+      "selectedOutsideMappings": [
+        {
+          "requirementId": "bsmgt-organizational-behavior",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0009",
+          "title": "Business 107: Organizational Behavior",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-emotional-and-cultural-intelligence",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0187",
+          "title": "Communications 301: Diversity and Intercultural Communication",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-business-communication",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0059",
+          "title": "Business Communication",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-principles-of-management",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0054",
+          "title": "Principles of Management",
+          "receivingCredits": 4,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-functions-of-human-resource-management",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0026",
+          "title": "Business 106: Human Resource Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-health-fitness-and-wellness",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0063",
+          "title": "Introduction to Nutrition",
+          "receivingCredits": 4,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-business-environment-applications-i-business-structures-and-legal-environment",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0032",
+          "title": "Business Law",
+          "receivingCredits": 2,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-introduction-to-communication-connecting-with-others",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0024",
+          "title": "Public Speaking",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-concepts-in-marketing-sales-and-customer-contact",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0007",
+          "title": "Business 102: Principles of Marketing",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-introduction-to-business-accounting",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0076",
+          "title": "Accounting 102: Intro to Managerial Accounting",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-critical-thinking-reason-and-evidence",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0065",
+          "title": "Critical Thinking",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-composition-successful-self-expression",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0015",
+          "title": "English Composition I",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-introduction-to-business-finance",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0033",
+          "title": "Principles of Finance",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-introduction-to-sociology",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0051",
+          "title": "Introduction to Sociology",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-applied-probability-and-statistics",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0005",
+          "title": "Introduction to Statistics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-quantitative-analysis-for-business",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0225",
+          "title": "Business 212: Business Statistics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-principles-of-economics",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0012",
+          "title": "Macroeconomics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-world-history-diverse-cultures-and-global-connections",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0022",
+          "title": "U.S. History I",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-business-environment-applications-ii-process-logistics-and-operations",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0050",
+          "title": "Business 312: Advanced Operations Management",
+          "receivingCredits": 2,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-integrated-physical-sciences",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0016",
+          "title": "Environmental Science",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-managing-in-a-global-business-environment",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0115",
+          "title": "Business 120: International Business",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-project-management",
+          "provider": "Sophia",
+          "courseCode": "SOPH-0013",
+          "title": "Project Management",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-sophia-approved-7112-v186"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-sophia-approved-7112-v186",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        },
+        {
+          "requirementId": "bsmgt-ethics-in-technology",
+          "provider": "Study.com",
+          "courseCode": "SDCM-0265",
+          "title": "Philosophy 104: Contemporary Trends in Technology and Ethics",
+          "receivingCredits": 3,
+          "receivingCreditSystem": "competency-unit",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "evidence": "published",
+          "sourceIds": [
+            "wgu-bsmgt-study-approved-4429-v114"
+          ],
+          "sources": [
+            {
+              "id": "wgu-bsmgt-study-approved-4429-v114",
+              "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+              "checked": "2026-11-17",
+              "evidenceType": "official-receiving-school-equivalency"
+            }
+          ]
+        }
+      ],
+      "evidenceScope": "Published and conditional describe the selected mapping evidence. Source links do not establish individual receiving-school approval, current catalog applicability or awarded credit.",
+      "universityCredits": 41,
+      "upperCredits": 0,
+      "majorUniversityCredits": 0,
+      "limits": {
+        "institutionMinCredits": null,
+        "derivedInstitutionMinimum": 31.5,
+        "conservativeInstitutionSufficientBound": null,
+        "residencyInterpretationStatus": "verified-additional-capstone",
+        "residencyCalculationBasis": "Derived from the source-verified institutional fraction in addition to the required capstone. The calculated result is not a separately quoted numeric minimum.",
+        "residencyAndOverallPolicyCeiling": 78.5,
+        "externalMaxCredits": 82.5,
+        "alternativeMaxCredits": 82.5,
+        "upperMinCredits": null
+      },
+      "policySourceFreshness": {
+        "sourceIds": [
+          "wgu-bsmgt-catalog-202611",
+          "wgu-bsmgt-transfer-guideline-202605",
+          "wgu-bsmgt-transfer-guidelines-api-240-reviewed",
+          "wgu-residency-policy-23797-20260918",
+          "wgu-sophia-business-current"
+        ],
+        "staleSourceIds": [],
+        "undatedSourceIds": [],
+        "unboundSourceIds": []
+      },
+      "openCourseChoices": [],
+      "conditionalCourseChoices": [],
+      "schoolConfirmationRequired": true,
+      "sourceUrls": [
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112"
+      ],
+      "costs": {
+        "tuition": null,
+        "knownSubtotal": 334,
+        "total": null,
+        "complete": false,
+        "missing": [
+          "Your expected number of university subscription terms and the program’s included-course limits",
+          "University and transcript fees verified against your quote",
+          "Provider taxes and checkout price"
+        ]
+      },
+      "timing": {
+        "weeks": null,
+        "verified": false,
+        "assumptions": [
+          "Durations and course load are your estimates, not verified provider or university completion times.",
+          "External learning is completed before university coursework; at most 1 external action(s) run at once.",
+          "University prerequisites occupy separate terms. Courses are assumed available every term without enrollment gaps.",
+          "Admissions, evaluation, transcript processing, grading delays, breaks and retakes are not included."
+        ],
+        "missing": [
+          "Your estimated weeks per Study.com course/exam preparation",
+          "Your estimated weeks per Sophia course/exam preparation",
+          "Your planned university credits per term",
+          "Your assumed university term length in weeks",
+          "Your intended start date, actual course availability and time needed for your remaining work"
+        ]
+      }
+    },
+    {
+      "school": "University of Maine at Presque Isle",
+      "routeId": "umpi-baba-project-management",
+      "modelId": null,
+      "title": "BABA with a Project Management concentration",
+      "status": "directory-only",
+      "proposedPlanFullySpecified": false,
+      "checks": {
+        "hasRequirementLedger": false
+      },
+      "issues": [
+        {
+          "code": "no-course-model",
+          "message": "The program is listed, but its exact requirements and transfer choices have not been loaded."
+        }
+      ],
+      "costs": {
+        "tuition": null,
+        "total": null
+      },
+      "timing": {
+        "weeks": null
+      }
+    }
+  ]
+}

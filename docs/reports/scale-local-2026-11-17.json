@@ -1,0 +1,525 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-17T19:47:05.056Z",
+  "scope": "LOCAL SYNTHETIC MEASUREMENT ONLY — not Cloudflare, D1, Supabase or production capacity",
+  "method": {
+    "builtWorker": true,
+    "database": "Node DatabaseSync SQLite in memory through a D1-shaped adapter",
+    "http": "In-process Request/Response; no sockets or external HTTP",
+    "identity": "Synthetic Supabase user verifier; no remote provider latency",
+    "ai": "Not invoked and not configured",
+    "cache": "Warm process; no Cloudflare cache or geographic distribution",
+    "concurrency": "Interleaved Promise.all save pairs on one serial SQLite connection",
+    "warmupRequests": 20,
+    "sqliteStatistics": "ANALYZE after synthetic seeding",
+    "timing": "performance.now wall time including JSON parsing and mock identity",
+    "readMetric": "SQL rows returned; not rows scanned or D1 billed rows",
+    "garbageCollection": "Not forced"
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "cpuCount": 3,
+    "cpuModel": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "sqlite": "3.53.3"
+  },
+  "worker": {
+    "path": "outputs/site/dist/server/index.js",
+    "sha256": "42c8b01a12f978fc4cb9ec0c5114f668fe17497ad34530cab09c25d9eb1eb2a7",
+    "bytes": 7892691
+  },
+  "config": {
+    "students": 1000,
+    "plansPerStudent": 10,
+    "posts": 5000,
+    "reactionsPerPost": 10,
+    "commentsPerPost": 2,
+    "samples": 100,
+    "warmup": 10,
+    "saveRaces": 24,
+    "reactionCycles": 20
+  },
+  "dataset": {
+    "durationMs": 1651.1372249999997,
+    "seedTimestamp": "2026-10-18T19:47:01.427Z",
+    "students": 1000,
+    "privatePlans": 10000,
+    "communityPosts": 5001,
+    "publicPlansAndTemplates": 3333,
+    "publicPlanBytes": {
+      "samples": 3333,
+      "min": 4589,
+      "median": 4589,
+      "p95": 4589,
+      "max": 4589
+    },
+    "communityReactions": 50000,
+    "communityComments": 10000,
+    "planStateBytes": {
+      "samples": 10000,
+      "min": 4331,
+      "median": 4335,
+      "p95": 4335,
+      "max": 4335
+    },
+    "sqliteAllocatedBytes": 80588800
+  },
+  "workloads": {
+    "privateReads": {
+      "requestCount": 200,
+      "latencyMs": {
+        "samples": 200,
+        "min": 0.24532399999998233,
+        "median": 0.9407049999999799,
+        "p95": 3.4614810000002763,
+        "max": 12.461762999999792
+      },
+      "queriesPerRequest": {
+        "samples": 200,
+        "min": 2,
+        "median": 2,
+        "p95": 2,
+        "max": 2
+      },
+      "responseBytes": {
+        "samples": 200,
+        "min": 2111,
+        "median": 2111,
+        "p95": 4562,
+        "max": 4562
+      },
+      "mockIdentityCalls": 200,
+      "sql": {
+        "statements": 400,
+        "readStatements": 400,
+        "writeStatements": 0,
+        "insertStatements": 0,
+        "returnedRows": 1300,
+        "maxRowsReturnedByOneStatement": 10,
+        "sqlExecutionMs": {
+          "samples": 400,
+          "min": 0.009176000000024942,
+          "median": 0.022074999999858846,
+          "p95": 0.4605490000003556,
+          "max": 3.2459630000003017
+        },
+        "queries": [
+          {
+            "sql": "SELECT id,alias,created_at,updated_at FROM portal_profiles WHERE id=?",
+            "executions": 200,
+            "returnedRows": 200,
+            "changes": 0,
+            "write": false,
+            "queryPlan": [
+              "SEARCH portal_profiles USING INDEX sqlite_autoindex_portal_profiles_1 (id=?)"
+            ]
+          },
+          {
+            "sql": "SELECT id,title,school,degree,revision,created_at,updated_at FROM portal_plans WHERE user_id=? ORDER BY updated_at DESC,id DESC LIMIT 10",
+            "executions": 100,
+            "returnedRows": 1000,
+            "changes": 0,
+            "write": false,
+            "queryPlan": [
+              "SEARCH portal_plans USING INDEX portal_plans_owner (user_id=?)"
+            ]
+          },
+          {
+            "sql": "SELECT * FROM portal_plans WHERE id=? AND user_id=?",
+            "executions": 100,
+            "returnedRows": 100,
+            "changes": 0,
+            "write": false,
+            "queryPlan": [
+              "SEARCH portal_plans USING INDEX sqlite_autoindex_portal_plans_1 (id=?)"
+            ]
+          }
+        ]
+      },
+      "checks": {
+        "ownerResultsIsolated": true,
+        "listLimitedToTen": true,
+        "listOmitsStatePayload": true,
+        "existingOwnerReadsPerformNoWrites": true
+      }
+    },
+    "saveRaces": {
+      "requestCount": 48,
+      "latencyMs": {
+        "samples": 48,
+        "min": 1.3403440000001865,
+        "median": 4.670561999999791,
+        "p95": 10.354733000000124,
+        "max": 12.371377999999822
+      },
+      "queriesPerRequest": {
+        "samples": 48,
+        "min": 4,
+        "median": 4,
+        "p95": 5,
+        "max": 5
+      },
+      "responseBytes": {
+        "samples": 48,
+        "min": 121,
+        "median": 121,
+        "p95": 4568,
+        "max": 4568
+      },
+      "mockIdentityCalls": 48,
+      "sql": {
+        "statements": 216,
+        "readStatements": 120,
+        "writeStatements": 96,
+        "insertStatements": 48,
+        "returnedRows": 120,
+        "maxRowsReturnedByOneStatement": 1,
+        "sqlExecutionMs": {
+          "samples": 216,
+          "min": 0.003964999999880092,
+          "median": 0.01805899999999383,
+          "p95": 0.2753939999997783,
+          "max": 1.8967830000001413
+        },
+        "queries": [
+          {
+            "sql": "SELECT id,alias,created_at,updated_at FROM portal_profiles WHERE id=?",
+            "executions": 48,
+            "returnedRows": 48,
+            "changes": 0,
+            "write": false,
+            "queryPlan": [
+              "SEARCH portal_profiles USING INDEX sqlite_autoindex_portal_profiles_1 (id=?)"
+            ]
+          },
+          {
+            "sql": "SELECT * FROM portal_plans WHERE id=? AND user_id=?",
+            "executions": 72,
+            "returnedRows": 72,
+            "changes": 0,
+            "write": false,
+            "queryPlan": [
+              "SEARCH portal_plans USING INDEX sqlite_autoindex_portal_plans_1 (id=?)"
+            ]
+          },
+          {
+            "sql": "INSERT INTO portal_rate_limits (user_id,action,window_start,count) VALUES (?,?,?,1) ON CONFLICT(user_id,action) DO UPDATE SET count=CASE WHEN window_start=excluded.window_start THEN count+1 ELSE 1 END, window_start=excluded.window_start WHERE portal_rate_limits.window_start!=excluded.window_start OR portal_rate_limits.count<?",
+            "executions": 48,
+            "returnedRows": 0,
+            "changes": 48,
+            "write": true,
+            "queryPlan": []
+          },
+          {
+            "sql": "UPDATE portal_plans SET title=?,school=?,degree=?,state_json=?,revision=revision+1,updated_at=? WHERE id=? AND user_id=? AND revision=?",
+            "executions": 48,
+            "returnedRows": 0,
+            "changes": 24,
+            "write": true,
+            "queryPlan": []
+          }
+        ]
+      },
+      "pairedSaveLatencyMs": {
+        "samples": 24,
+        "min": 2.2532209999999395,
+        "median": 5.256155000000035,
+        "p95": 12.392644999999902,
+        "max": 12.497575000000325
+      },
+      "note": "Two interleaved in-process callers, one serial SQLite connection; this proves compare-and-swap behavior, not distributed write throughput.",
+      "checks": {
+        "sameRevisionWinners": 24,
+        "sameRevisionConflicts": 24,
+        "noLostWinningPayload": true,
+        "revisionAdvancedExactlyOnce": true
+      }
+    },
+    "community": {
+      "reads": {
+        "requestCount": 225,
+        "latencyMs": {
+          "samples": 225,
+          "min": 1.079728000000614,
+          "median": 3.1616640000002008,
+          "p95": 10.914489000000685,
+          "max": 51.200088000000505
+        },
+        "queriesPerRequest": {
+          "samples": 225,
+          "min": 2,
+          "median": 2,
+          "p95": 2,
+          "max": 2
+        },
+        "responseBytes": {
+          "samples": 225,
+          "min": 16789,
+          "median": 71792,
+          "p95": 76373,
+          "max": 76373
+        },
+        "mockIdentityCalls": 225,
+        "sql": {
+          "statements": 450,
+          "readStatements": 450,
+          "writeStatements": 0,
+          "insertStatements": 0,
+          "returnedRows": 4551,
+          "maxRowsReturnedByOneStatement": 21,
+          "sqlExecutionMs": {
+            "samples": 450,
+            "min": 0.012467999999898893,
+            "median": 0.4042380000000776,
+            "p95": 2.862888000000112,
+            "max": 7.206396000000041
+          },
+          "queries": [
+            {
+              "sql": "SELECT id, alias, role FROM community_users WHERE id = ?",
+              "executions": 225,
+              "returnedRows": 225,
+              "changes": 0,
+              "write": false,
+              "queryPlan": [
+                "SEARCH community_users USING INDEX sqlite_autoindex_community_users_1 (id=?)"
+              ]
+            },
+            {
+              "sql": "WITH post_page AS MATERIALIZED ( SELECT p.* FROM community_posts p WHERE p.deleted_at IS NULL AND p.context = ? ORDER BY p.created_at DESC,p.id DESC LIMIT ? ), reaction_totals AS MATERIALIZED ( SELECT r.post_id, SUM(CASE WHEN r.reaction='like' THEN 1 ELSE 0 END) AS likes, SUM(CASE WHEN r.reaction='upvote' THEN 1 ELSE 0 END) AS upvotes, MAX(CASE WHEN r.user_id=? AND r.reaction='like' THEN 1 ELSE 0 END) AS liked, MAX(CASE WHEN r.user_id=? AND r.reaction='upvote' THEN 1 ELSE 0 END) AS upvoted FROM community_reactions r WHERE r.post_id IN (SELECT id FROM post_page) GROUP BY r.post_id ), comment_totals AS MATERIALIZED ( SELECT c.context,COUNT(*) AS comments FROM community_comments c WHERE c.deleted_at IS NULL AND c.context IN (SELECT 'post:' || id FROM post_page) GROUP BY c.context ) SELECT p.*,u.alias,COALESCE(r.likes,0) AS likes,COALESCE(r.upvotes,0) AS upvotes, COALESCE(c.comments,0) AS comments,COALESCE(r.liked,0) AS liked,COALESCE(r.upvoted,0) AS upvoted FROM post_page p JOIN community_users u ON u.id=p.user_id LEFT JOIN reaction_totals r ON r.post_id=p.id LEFT JOIN comment_totals c ON c.context='post:' || p.id ORDER BY p.created_at DESC,p.id DESC",
+              "executions": 100,
+              "returnedRows": 2100,
+              "changes": 0,
+              "write": false,
+              "queryPlan": [
+                "MATERIALIZE post_page",
+                "SEARCH p USING INDEX community_posts_context (context=? AND deleted_at=?)",
+                "MATERIALIZE reaction_totals",
+                "SEARCH r USING COVERING INDEX sqlite_autoindex_community_reactions_1 (post_id=?)",
+                "LIST SUBQUERY 2",
+                "SCAN post_page",
+                "MATERIALIZE comment_totals",
+                "SEARCH c USING COVERING INDEX community_comments_context (context=? AND deleted_at=?)",
+                "LIST SUBQUERY 4",
+                "SCAN post_page",
+                "SCAN p",
+                "SEARCH u USING INDEX sqlite_autoindex_community_users_1 (id=?)",
+                "SEARCH r USING AUTOMATIC COVERING INDEX (post_id=?) LEFT-JOIN",
+                "SEARCH c USING AUTOMATIC COVERING INDEX (context=?) LEFT-JOIN"
+              ]
+            },
+            {
+              "sql": "WITH post_page AS MATERIALIZED ( SELECT p.* FROM community_posts p WHERE p.deleted_at IS NULL AND p.context = ? AND (p.created_at < ? OR (p.created_at = ? AND p.id < ?)) ORDER BY p.created_at DESC,p.id DESC LIMIT ? ), reaction_totals AS MATERIALIZED ( SELECT r.post_id, SUM(CASE WHEN r.reaction='like' THEN 1 ELSE 0 END) AS likes, SUM(CASE WHEN r.reaction='upvote' THEN 1 ELSE 0 END) AS upvotes, MAX(CASE WHEN r.user_id=? AND r.reaction='like' THEN 1 ELSE 0 END) AS liked, MAX(CASE WHEN r.user_id=? AND r.reaction='upvote' THEN 1 ELSE 0 END) AS upvoted FROM community_reactions r WHERE r.post_id IN (SELECT id FROM post_page) GROUP BY r.post_id ), comment_totals AS MATERIALIZED ( SELECT c.context,COUNT(*) AS comments FROM community_comments c WHERE c.deleted_at IS NULL AND c.context IN (SELECT 'post:' || id FROM post_page) GROUP BY c.context ) SELECT p.*,u.alias,COALESCE(r.likes,0) AS likes,COALESCE(r.upvotes,0) AS upvotes, COALESCE(c.comments,0) AS comments,COALESCE(r.liked,0) AS liked,COALESCE(r.upvoted,0) AS upvoted FROM post_page p JOIN community_users u ON u.id=p.user_id LEFT JOIN reaction_totals r ON r.post_id=p.id LEFT JOIN comment_totals c ON c.context='post:' || p.id ORDER BY p.created_at DESC,p.id DESC",
+              "executions": 100,
+              "returnedRows": 2100,
+              "changes": 0,
+              "write": false,
+              "queryPlan": [
+                "MATERIALIZE post_page",
+                "SEARCH p USING INDEX community_posts_context (context=? AND deleted_at=?)",
+                "MATERIALIZE reaction_totals",
+                "SEARCH r USING COVERING INDEX sqlite_autoindex_community_reactions_1 (post_id=?)",
+                "LIST SUBQUERY 2",
+                "SCAN post_page",
+                "MATERIALIZE comment_totals",
+                "SEARCH c USING COVERING INDEX community_comments_context (context=? AND deleted_at=?)",
+                "LIST SUBQUERY 4",
+                "SCAN post_page",
+                "SCAN p",
+                "SEARCH u USING INDEX sqlite_autoindex_community_users_1 (id=?)",
+                "SEARCH r USING AUTOMATIC COVERING INDEX (post_id=?) LEFT-JOIN",
+                "SEARCH c USING AUTOMATIC COVERING INDEX (context=?) LEFT-JOIN"
+              ]
+            },
+            {
+              "sql": "WITH post_page AS MATERIALIZED ( SELECT p.* FROM community_posts p WHERE p.deleted_at IS NULL AND p.user_id = ? ORDER BY p.created_at DESC,p.id DESC LIMIT ? ), reaction_totals AS MATERIALIZED ( SELECT r.post_id, SUM(CASE WHEN r.reaction='like' THEN 1 ELSE 0 END) AS likes, SUM(CASE WHEN r.reaction='upvote' THEN 1 ELSE 0 END) AS upvotes, MAX(CASE WHEN r.user_id=? AND r.reaction='like' THEN 1 ELSE 0 END) AS liked, MAX(CASE WHEN r.user_id=? AND r.reaction='upvote' THEN 1 ELSE 0 END) AS upvoted FROM community_reactions r WHERE r.post_id IN (SELECT id FROM post_page) GROUP BY r.post_id ), comment_totals AS MATERIALIZED ( SELECT c.context,COUNT(*) AS comments FROM community_comments c WHERE c.deleted_at IS NULL AND c.context IN (SELECT 'post:' || id FROM post_page) GROUP BY c.context ) SELECT p.*,u.alias,COALESCE(r.likes,0) AS likes,COALESCE(r.upvotes,0) AS upvotes, COALESCE(c.comments,0) AS comments,COALESCE(r.liked,0) AS liked,COALESCE(r.upvoted,0) AS upvoted FROM post_page p JOIN community_users u ON u.id=p.user_id LEFT JOIN reaction_totals r ON r.post_id=p.id LEFT JOIN comment_totals c ON c.context='post:' || p.id ORDER BY p.created_at DESC,p.id DESC",
+              "executions": 25,
+              "returnedRows": 126,
+              "changes": 0,
+              "write": false,
+              "queryPlan": [
+                "MATERIALIZE post_page",
+                "SEARCH p USING INDEX community_posts_author (user_id=? AND deleted_at=?)",
+                "MATERIALIZE reaction_totals",
+                "SEARCH r USING COVERING INDEX sqlite_autoindex_community_reactions_1 (post_id=?)",
+                "LIST SUBQUERY 2",
+                "SCAN post_page",
+                "MATERIALIZE comment_totals",
+                "SEARCH c USING COVERING INDEX community_comments_context (context=? AND deleted_at=?)",
+                "LIST SUBQUERY 4",
+                "SCAN post_page",
+                "SCAN p",
+                "SEARCH u USING INDEX sqlite_autoindex_community_users_1 (id=?)",
+                "SEARCH r USING AUTOMATIC COVERING INDEX (post_id=?) LEFT-JOIN",
+                "SEARCH c USING AUTOMATIC COVERING INDEX (context=?) LEFT-JOIN"
+              ]
+            }
+          ]
+        }
+      },
+      "reactions": {
+        "requestCount": 60,
+        "latencyMs": {
+          "samples": 60,
+          "min": 1.0756499999997686,
+          "median": 1.7403290000002016,
+          "p95": 3.6889240000000427,
+          "max": 15.589131000000634
+        },
+        "queriesPerRequest": {
+          "samples": 60,
+          "min": 5,
+          "median": 5,
+          "p95": 5,
+          "max": 5
+        },
+        "responseBytes": {
+          "samples": 60,
+          "min": 430,
+          "median": 433,
+          "p95": 434,
+          "max": 434
+        },
+        "mockIdentityCalls": 60,
+        "sql": {
+          "statements": 300,
+          "readStatements": 180,
+          "writeStatements": 120,
+          "insertStatements": 100,
+          "returnedRows": 180,
+          "maxRowsReturnedByOneStatement": 1,
+          "sqlExecutionMs": {
+            "samples": 300,
+            "min": 0.009391999999934342,
+            "median": 0.02812400000038906,
+            "p95": 0.44697199999973236,
+            "max": 1.5966189999999187
+          },
+          "queries": [
+            {
+              "sql": "SELECT id, alias, role FROM community_users WHERE id = ?",
+              "executions": 60,
+              "returnedRows": 60,
+              "changes": 0,
+              "write": false,
+              "queryPlan": [
+                "SEARCH community_users USING INDEX sqlite_autoindex_community_users_1 (id=?)"
+              ]
+            },
+            {
+              "sql": "SELECT * FROM community_posts WHERE id = ? AND deleted_at IS NULL",
+              "executions": 60,
+              "returnedRows": 60,
+              "changes": 0,
+              "write": false,
+              "queryPlan": [
+                "SEARCH community_posts USING INDEX sqlite_autoindex_community_posts_1 (id=?)"
+              ]
+            },
+            {
+              "sql": "INSERT INTO community_rate_limits (user_id, action, window_start, count) VALUES (?, ?, ?, 1) ON CONFLICT(user_id, action) DO UPDATE SET count = CASE WHEN window_start = excluded.window_start THEN count + 1 ELSE 1 END, window_start = excluded.window_start WHERE community_rate_limits.window_start != excluded.window_start OR community_rate_limits.count < ?",
+              "executions": 60,
+              "returnedRows": 0,
+              "changes": 60,
+              "write": true,
+              "queryPlan": []
+            },
+            {
+              "sql": "INSERT INTO community_reactions (post_id,user_id,reaction,created_at) SELECT ?,?,?,? WHERE EXISTS (SELECT 1 FROM community_posts WHERE id=? AND deleted_at IS NULL) ON CONFLICT(post_id,user_id,reaction) DO NOTHING",
+              "executions": 40,
+              "returnedRows": 0,
+              "changes": 20,
+              "write": true,
+              "queryPlan": []
+            },
+            {
+              "sql": "WITH post_page AS MATERIALIZED ( SELECT p.* FROM community_posts p WHERE p.id = ? AND p.deleted_at IS NULL ORDER BY p.created_at DESC,p.id DESC LIMIT ? ), reaction_totals AS MATERIALIZED ( SELECT r.post_id, SUM(CASE WHEN r.reaction='like' THEN 1 ELSE 0 END) AS likes, SUM(CASE WHEN r.reaction='upvote' THEN 1 ELSE 0 END) AS upvotes, MAX(CASE WHEN r.user_id=? AND r.reaction='like' THEN 1 ELSE 0 END) AS liked, MAX(CASE WHEN r.user_id=? AND r.reaction='upvote' THEN 1 ELSE 0 END) AS upvoted FROM community_reactions r WHERE r.post_id IN (SELECT id FROM post_page) GROUP BY r.post_id ), comment_totals AS MATERIALIZED ( SELECT c.context,COUNT(*) AS comments FROM community_comments c WHERE c.deleted_at IS NULL AND c.context IN (SELECT 'post:' || id FROM post_page) GROUP BY c.context ) SELECT p.*,u.alias,COALESCE(r.likes,0) AS likes,COALESCE(r.upvotes,0) AS upvotes, COALESCE(c.comments,0) AS comments,COALESCE(r.liked,0) AS liked,COALESCE(r.upvoted,0) AS upvoted FROM post_page p JOIN community_users u ON u.id=p.user_id LEFT JOIN reaction_totals r ON r.post_id=p.id LEFT JOIN comment_totals c ON c.context='post:' || p.id ORDER BY p.created_at DESC,p.id DESC",
+              "executions": 60,
+              "returnedRows": 60,
+              "changes": 0,
+              "write": false,
+              "queryPlan": [
+                "MATERIALIZE post_page",
+                "SEARCH p USING INDEX sqlite_autoindex_community_posts_1 (id=?)",
+                "MATERIALIZE reaction_totals",
+                "SEARCH r USING COVERING INDEX sqlite_autoindex_community_reactions_1 (post_id=?)",
+                "LIST SUBQUERY 2",
+                "SCAN post_page",
+                "MATERIALIZE comment_totals",
+                "SEARCH c USING COVERING INDEX community_comments_context (context=? AND deleted_at=?)",
+                "LIST SUBQUERY 4",
+                "SCAN post_page",
+                "SCAN p",
+                "SEARCH u USING INDEX sqlite_autoindex_community_users_1 (id=?)",
+                "SCAN r LEFT-JOIN",
+                "SEARCH c USING AUTOMATIC COVERING INDEX (context=?) LEFT-JOIN"
+              ]
+            },
+            {
+              "sql": "DELETE FROM community_reactions WHERE post_id=? AND user_id=? AND reaction=?",
+              "executions": 20,
+              "returnedRows": 0,
+              "changes": 20,
+              "write": true,
+              "queryPlan": []
+            }
+          ]
+        }
+      },
+      "checks": {
+        "cursorPagesDoNotOverlap": true,
+        "pageSizeTwenty": true,
+        "ownerFeedOnlyIncludesOwnPosts": true,
+        "ownerFeedUsesUserIndex": true,
+        "reactionAndCommentCountsAccurate": true,
+        "repeatedReactionIsIdempotent": true,
+        "existingMemberReadsPerformNoWrites": true
+      }
+    }
+  },
+  "checks": {
+    "crossOwnerReadDenied": true,
+    "crossOwnerWriteDenied": true,
+    "crossOwnerDeleteDenied": true,
+    "staleDeletePreservesLatestSave": true,
+    "forgedIdentityHeadersDenied": true,
+    "planLimitIsClearConflict": true,
+    "concurrentCreateCannotExceedPlanLimit": true,
+    "crossSiteWriteDenied": true,
+    "oversizedStateRejected": true,
+    "authOutageFailsClosedBeforeDatabase": true,
+    "authOutagePreservesSessionCookies": true,
+    "databaseFailureIsClearAndPreservesData": true,
+    "externalHttpRequests": 0
+  },
+  "memory": {
+    "beforeImport": {
+      "rssBytes": 32501760,
+      "heapUsedBytes": 6120864,
+      "heapTotalBytes": 7860224,
+      "externalBytes": 2310485,
+      "arrayBuffersBytes": 143647
+    },
+    "afterSeed": {
+      "rssBytes": 291508224,
+      "heapUsedBytes": 87054384,
+      "heapTotalBytes": 120008704,
+      "externalBytes": 36503261,
+      "arrayBuffersBytes": 18559973
+    },
+    "afterWorkloads": {
+      "rssBytes": 330829824,
+      "heapUsedBytes": 105081128,
+      "heapTotalBytes": 159875072,
+      "externalBytes": 39948028,
+      "arrayBuffersBytes": 20390964
+    }
+  },
+  "durationMs": 5066.801133000001,
+  "limits": [
+    "Local SQLite, CPU, memory, storage and identity mocks do not model Cloudflare queues, D1 limits, network round trips, Supabase RLS or connection pooling.",
+    "These observations cannot establish a supported number of concurrent students or requests per second.",
+    "Use a separately authorized staging deployment, real backend telemetry and a graduated load test before publishing a production capacity target."
+  ]
+}

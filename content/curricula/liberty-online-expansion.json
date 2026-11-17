@@ -1,0 +1,739 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-16",
+  "routes": [
+    {
+      "id": "liberty-catalog-cf514fa45da62116-online",
+      "parentId": "liberty-catalog-cf514fa45da62116",
+      "school": "Liberty University",
+      "title": "Healthcare Administration (B.S.) — Online",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/",
+      "field": "health",
+      "fields": [
+        "health",
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "id": "curriculum-liberty-healthcare-administration-bs-online",
+      "routeIds": [
+        "liberty-catalog-cf514fa45da62116-online"
+      ],
+      "school": "Liberty University",
+      "title": "Healthcare Administration (B.S.) — Online",
+      "level": "bachelor",
+      "format": "Online",
+      "modalities": [
+        "online"
+      ],
+      "defaultProviders": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "catalog": "2026–2027",
+      "catalogYear": "2026-2027",
+      "creditSystem": "semester",
+      "totalCredits": 120,
+      "institutionMinCredits": 30,
+      "externalMaxCredits": 90,
+      "upperMinCredits": 30,
+      "majorInstitutionFraction": 0.25,
+      "majorResidencyBasisCredits": 66,
+      "catalogParentId": "liberty-catalog-cf514fa45da62116",
+      "coverage": "complete",
+      "completeExecutablePathway": false,
+      "coverageLabel": "Published complete requirement ledger with proposed approved-course choices; transfer placements require separate evidence.",
+      "requirements": [
+        {
+          "id": "engl-101",
+          "code": "ENGL 101",
+          "title": "Composition and Rhetoric",
+          "credits": 3,
+          "category": "general",
+          "group": "writing",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "coms-101",
+          "code": "COMS 101",
+          "title": "Speech Communication",
+          "credits": 3,
+          "category": "general",
+          "group": "communication",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "engl-102",
+          "code": "ENGL 102",
+          "title": "Composition and Literature",
+          "credits": 3,
+          "category": "general",
+          "group": "information-literacy",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "arts-209",
+          "code": "ARTS 209",
+          "title": "Art as Communication",
+          "credits": 3,
+          "category": "general",
+          "group": "information-literacy",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "math-121",
+          "code": "MATH 121",
+          "title": "College Algebra",
+          "credits": 3,
+          "category": "general",
+          "group": "quantitative-reasoning",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "rlgn-104",
+          "code": "RLGN 104",
+          "title": "Christian Life and Biblical Worldview",
+          "credits": 4,
+          "category": "general",
+          "group": "biblical-worldview",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "ethc-101",
+          "code": "ETHC 101",
+          "title": "Introduction to Ethics",
+          "credits": 3,
+          "category": "general",
+          "group": "critical-thinking",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "cstu-101",
+          "code": "CSTU 101",
+          "title": "Western Culture",
+          "credits": 3,
+          "category": "general",
+          "group": "cultural-studies",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "biol-102",
+          "code": "BIOL 102",
+          "title": "Principles of Human Biology",
+          "credits": 3,
+          "category": "general",
+          "group": "natural-science",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "psyc-101",
+          "code": "PSYC 101",
+          "title": "General Psychology",
+          "credits": 3,
+          "category": "general",
+          "group": "social-science",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "bibl-104",
+          "code": "BIBL 104",
+          "title": "Survey of Old and New Testament",
+          "credits": 4,
+          "category": "general",
+          "group": "christianity-contexts",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "theo-104",
+          "code": "THEO 104",
+          "title": "Introduction to Theology Survey",
+          "credits": 4,
+          "category": "general",
+          "group": "christianity-contexts",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027",
+            "liberty-online-approved-gened"
+          ],
+          "options": [],
+          "allocationBasis": "Proposed approved general-education course choice; no overlap with this baseline’s major foundations."
+        },
+        {
+          "id": "univ-104",
+          "code": "UNIV 104",
+          "title": "Instructional Technology for Successful Online Learning",
+          "credits": 3,
+          "category": "general",
+          "group": "technology",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "busi-201",
+          "code": "BUSI 201",
+          "title": "Intermediate Business Computer Applications",
+          "credits": 3,
+          "category": "major",
+          "group": "major-foundations",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "busi-230",
+          "code": "BUSI 230",
+          "title": "Introduction to Probability and Statistics",
+          "credits": 3,
+          "category": "major",
+          "group": "major-foundations",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "busi-240",
+          "code": "BUSI 240",
+          "title": "Organizational Behavior and Management",
+          "credits": 3,
+          "category": "major",
+          "group": "major-foundations",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "acct-211",
+          "code": "ACCT 211",
+          "title": "Financial Principles",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "acct-212",
+          "code": "ACCT 212",
+          "title": "Managerial Principles",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "busi-302",
+          "code": "BUSI 302",
+          "title": "Legal and Ethical Issues in Healthcare",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-304",
+          "code": "BUSI 304",
+          "title": "Introduction to Health Policy",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-311",
+          "code": "BUSI 311",
+          "title": "Introduction to Healthcare Administration",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-323",
+          "code": "BUSI 323",
+          "title": "Financial Analysis and Management in Healthcare",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-344",
+          "code": "BUSI 344",
+          "title": "Human Resource Management in Healthcare Administration",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-411",
+          "code": "BUSI 411",
+          "title": "Operations Strategy",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-418",
+          "code": "BUSI 418",
+          "title": "Research and Evidence Based Practice in Healthcare",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-419",
+          "code": "BUSI 419",
+          "title": "Management of Quality Improvement and Outcomes",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-428",
+          "code": "BUSI 428",
+          "title": "Strategic Management and Marketing in Healthcare",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-429",
+          "code": "BUSI 429",
+          "title": "Healthcare Economics",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "busi-494",
+          "code": "BUSI 494",
+          "title": "Healthcare Administration Capstone",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "econ-213",
+          "code": "ECON 213",
+          "title": "Principles of Microeconomics",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "hlth-349",
+          "code": "HLTH 349",
+          "title": "Policy and Public Health",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "hlth-485",
+          "code": "HLTH 485",
+          "title": "Applications of Biostatistics and Epidemiology",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "hlth-491",
+          "code": "HLTH 491",
+          "title": "Grantsmanship",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "info-305",
+          "code": "INFO 305",
+          "title": "Quality Management and Decision Support",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "info-320",
+          "code": "INFO 320",
+          "title": "Healthcare Informatics",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "free-electives",
+          "title": "Free electives",
+          "credits": 12,
+          "category": "electives",
+          "group": "free-electives",
+          "bucket": true,
+          "freeElective": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ],
+          "options": [],
+          "notes": "Twelve credits are the published lower end of the 12–24-credit free-elective range, under the retained three-credit UNIV 104 and no-overlap general-education scenario."
+        }
+      ],
+      "sources": [
+        {
+          "id": "liberty-healthcare-administration-online-2026-2027",
+          "title": "Healthcare Administration (B.S.) - Online official degree completion plan, 2026–27",
+          "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/",
+          "checked": "2026-11-16"
+        },
+        {
+          "id": "liberty-online-approved-gened",
+          "title": "Liberty approved general-education courses for online programs, 2026–27",
+          "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+          "checked": "2026-11-10"
+        },
+        {
+          "id": "liberty-healthcare-online-tuition-2026-2027",
+          "title": "Liberty 2026–27 standard online undergraduate tuition",
+          "url": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+          "checked": "2026-11-16",
+          "evidenceType": "official-tuition",
+          "scope": "Standard undergraduate per-credit tuition before financial aid. Fees and other expenses require separate estimates."
+        }
+      ],
+      "tuitionComparison": {
+        "entryId": "liberty-online",
+        "checkedOn": "2026-11-16",
+        "sourceUrl": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+        "catalogYear": "2026-2027"
+      },
+      "rulesNotes": [
+        "Foundation courses may fulfill select general education requirements; this baseline deliberately uses distinct approved general education courses and does not double count the nine foundational credits.",
+        "The source permits RLGN 104 waiver after 45 qualifying transfer credits and THEO 104 waiver after 60. Neither waiver is applied automatically.",
+        "The baseline selects the printed three-credit UNIV 104 case and 12 published free-elective credits. A confirmed zero-credit UNIV case can replace those three credits with additional electives within the printed range.",
+        "An internship of up to six hours is strongly recommended, not stated as a separate mandatory graduation requirement.",
+        "All applicable prerequisites must be met."
+      ],
+      "unresolved": [
+        "Confirm your catalog, home-state general-education additions, prerequisites, and individual transfer evaluation before enrolling.",
+        "Major-foundation overlap is optional in the published plan. This baseline uses no overlap; a different approved allocation can change elective quantities.",
+        "An outside course is proposed only when a separately sourced receiving-course equivalency is available; university fallback rows do not establish that outside credit is prohibited."
+      ],
+      "univ104Scenario": {
+        "baselineCredits": 3,
+        "publishedCreditsRange": [
+          0,
+          3
+        ],
+        "zeroCreditCaseRequiresIndividualConfirmation": true,
+        "replacementElectiveCreditsIfZero": 3,
+        "sourceIds": [
+          "liberty-healthcare-administration-online-2026-2027"
+        ]
+      },
+      "obligations": [
+        {
+          "title": "UNIV 104 evaluation",
+          "notes": "The source prints 0–3 credits. This ledger retains 3; only a university-confirmed zero-credit case releases 3 credits for additional electives.",
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ]
+        }
+      ],
+      "gradePolicy": {
+        "minimumGrade": "C",
+        "scope": "upper-level-major",
+        "checked": "2026-11-16",
+        "sourceIds": [
+          "liberty-healthcare-administration-online-2026-2027"
+        ],
+        "detail": "C minimum in upper-level major courses only; this statement is not extended to lower-level foundations or all general education."
+      },
+      "graduationRequirements": [
+        {
+          "id": "gpa",
+          "title": "Overall GPA",
+          "description": "At least 2.0 overall GPA.",
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ]
+        },
+        {
+          "id": "degree-application",
+          "title": "Graduation application",
+          "description": "Submit the degree completion application within the final semester of anticipated graduation.",
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ]
+        },
+        {
+          "id": "major-minimum-grade",
+          "title": "Upper-level major course grades",
+          "description": "At least C in upper-level major courses.",
+          "sourceIds": [
+            "liberty-healthcare-administration-online-2026-2027"
+          ]
+        }
+      ],
+      "curriculumSections": [
+        {
+          "id": "general-education",
+          "title": "General education / foundational skills",
+          "parentId": "general",
+          "requirementIds": [
+            "engl-101",
+            "coms-101",
+            "engl-102",
+            "arts-209",
+            "math-121",
+            "rlgn-104",
+            "ethc-101",
+            "cstu-101",
+            "biol-102",
+            "psyc-101",
+            "bibl-104",
+            "theo-104",
+            "univ-104"
+          ],
+          "sourceId": "liberty-healthcare-administration-online-2026-2027"
+        },
+        {
+          "id": "major-foundations",
+          "title": "Major foundational courses",
+          "parentId": "major",
+          "requirementIds": [
+            "busi-201",
+            "busi-230",
+            "busi-240"
+          ],
+          "sourceId": "liberty-healthcare-administration-online-2026-2027"
+        },
+        {
+          "id": "major-core",
+          "title": "Healthcare administration major core",
+          "parentId": "major",
+          "requirementIds": [
+            "acct-211",
+            "acct-212",
+            "busi-302",
+            "busi-304",
+            "busi-311",
+            "busi-323",
+            "busi-344",
+            "busi-411",
+            "busi-418",
+            "busi-419",
+            "busi-428",
+            "busi-429",
+            "busi-494",
+            "econ-213",
+            "hlth-349",
+            "hlth-485",
+            "hlth-491",
+            "info-305",
+            "info-320"
+          ],
+          "sourceId": "liberty-healthcare-administration-online-2026-2027"
+        },
+        {
+          "id": "free-electives",
+          "title": "Free electives",
+          "parentId": "elective",
+          "requirementIds": [
+            "free-electives"
+          ],
+          "sourceId": "liberty-healthcare-administration-online-2026-2027"
+        }
+      ]
+    }
+  ]
+}

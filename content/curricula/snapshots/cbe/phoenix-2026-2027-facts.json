@@ -1,0 +1,72 @@
+{
+  "catalogUrl": "https://www.phoenix.edu/content/dam/edu/degrees/doc/academic-catalog/online.pdf",
+  "catalogEffective": "2026-07-01 through 2027-06-30; updates 2026-11-01",
+  "checkedOn": "2026-11-09",
+  "method": "Named course identifiers, titles, credit values, domain headings and exact residency rules reviewed in the university's official PDF. Descriptive course prose omitted.",
+  "programs": [
+    {
+      "routeId": "phoenix-cb-mba",
+      "award": "Master of Business Administration (Competency Based-CB)",
+      "pdfPage": 442,
+      "totalCredits": 33,
+      "creditSystem": "semester",
+      "capstoneCode": "STRCB 581",
+      "capstoneMinimumCredits": 21,
+      "pricing": {"model":"per-credit","amount":300,"period":"credit","currency":"USD","sourceUrl":"https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html"},
+      "pricingNotes": ["The programme page lists $300 per credit with no additional fees. This is a per-credit faculty-supported CB programme, not an unlimited subscription.", "Courses are scheduled in groups of three to four within 16-week periods; completion within a period depends on mastery and the university's scheduling rules."],
+      "groups": [
+        ["Management and Leadership Skills", [["MGTCB 526","Managing in a Changing Environment",3],["ORGCB 535","People and Organizations",3],["LDRCB 535","Leading Change",3]]],
+        ["Business Functional Skills", [["ECOCB 535","The Digital Economy",3],["ACCCB 543","Managerial Accounting & Legal Aspects of Business",3],["FINCB 571","Corporate Finance",3],["MKTCB 574","Marketing: Social, Mobile, and Analytics",3]]],
+        ["Business Technical Skills", [["DATCB 565","Data Analysis and Business Analytics",3],["OPSCB 574","Creating Value Through Operations",3]]],
+        ["Business Strategic Skills", [["MGTCB 576","Opportunity Evaluation and Value Creation",3],["STRCB 581","Strategic Planning & Implementation",3]]]
+      ]
+    },
+    {
+      "routeId": "phoenix-cb-mis",
+      "award": "Master of Information Systems (Competency Based-CB)",
+      "pdfPage": 444,
+      "totalCredits": 36,
+      "creditSystem": "semester",
+      "capstoneCode": "CMGTCB 583",
+      "capstoneMinimumCredits": 21,
+      "pricing": {"model":"per-credit","amount":300,"period":"credit","currency":"USD","sourceUrl":"https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html"},
+      "pricingNotes": ["The reviewed programme pricing is per credit. Confirm the applicable enrollment quote; this is not an unlimited-course subscription.", "University CB scheduling and the 21-credit capstone prerequisite constrain the completion sequence."],
+      "groups": [
+        ["IT Systems Architecture", [["CMGTCB 554","IT Infrastructure",3],["CMGTCB 555","Systems Analysis and Development",3],["CMGTCB 556","Enterprise Models",3],["BSACB 531","IT Architecture in the Age of Cloud",3]]],
+        ["IT Leadership and Management", [["CMGTCB 545","Influence and Leadership in Technology",3],["CMGTCB 575","CIS Project Management",3],["CMGTCB 558","Strategic Management of Technology and Innovation",3],["CMGTCB 578","CIS Strategic Planning",3]]],
+        ["IT Security and Integration", [["CMGTCB 582","Security and Ethics",3],["DATCB 565","Data Analysis and Business Analytics",3],["CMGTCB 559","Managing Risk and Security vs. Opportunity",3],["CMGTCB 583","IS Integration",3]]]
+      ]
+    },
+    {
+      "routeId": "phoenix-cb-mha",
+      "award": "Master of Health Administration (Competency Based-CB)",
+      "pdfPage": 446,
+      "totalCredits": 36,
+      "creditSystem": "semester",
+      "capstoneCode": "MHACB 599",
+      "capstoneMinimumCredits": 21,
+      "pricing": {"model":"per-credit","amount":300,"period":"credit","currency":"USD","sourceUrl":"https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html"},
+      "pricingNotes": ["The reviewed programme pricing is per credit. Confirm the applicable enrollment quote; this is not an unlimited-course subscription.", "University CB scheduling and the 21-credit capstone prerequisite constrain the completion sequence."],
+      "groups": [
+        ["Health Care Industry Analysis", [["MHACB 505","Systems Thinking in Health Care Environments",3],["MHACB 506","Ethical Marketing: The New Health Care Economics",3],["MHACB 507","Leveraging Informatics in the Health Sector",3],["MHACB 508","Navigating the Regulatory Environment in Health Care",3],["MHACB 598","Leveraging Results to Build Brand in The Health Sector",3]]],
+        ["Health Care Industry Planning", [["MHACB 515","Scanning the Health Sector as an Industry Expert",3],["MHACB 516","Operating in Structure: Health Sector Policy and Governance",3],["MHACB 520","Sector Stakeholders: Identifying and Cultivating Alliances",3]]],
+        ["Health Care Industry Leadership", [["MHACB 542","Leading with Authenticity in the Health Sector",3],["MHACB 543","Tackling the Talent War in the Health Sector",3],["MHACB 560","Creating a Sustainable Legacy: Healthy Communities",3]]],
+        ["Health Care Industry Transformation", [["MHACB 599","Capstone: Leading the Organization Through Change",3]]]
+      ]
+    },
+    {
+      "routeId": "phoenix-da-ms-psychology",
+      "award": "Master of Science in Psychology (Competency Based-DA)",
+      "pdfPage": 465,
+      "totalCredits": 36,
+      "creditSystem": "competency-unit",
+      "capstoneCode": "PSYDA 694",
+      "capstoneMinimumCredits": 24,
+      "pricing": {"model":"subscription","amount":2749,"period":"12 weeks","currency":"USD","sourceUrl":"https://www.phoenix.edu/online-psychology-degrees/psych-masters-competency-based-degree.html"},
+      "pricingNotes": ["Direct Assessment tuition is a 12-week subscription; the reviewed programme price is $2,749 per term. Confirm the current quote and maximum course load before enrolling.", "The 2026–2027 catalog expresses degree requirements as competency units, not semester-hour transfer awards. All required courses must be completed in this exact Direct Assessment programme.", "The official catalog states that the MSP-DA is not eligible for Title IV financial aid."],
+      "groups": [
+        ["Required Psychology Competencies", [["PSYDA 599","Foundations of Graduate Study in Psychology",3],["PSYDA 600","Developmental Psychology",3],["PSYDA 645","Personality Theories",3],["PSYDA 614","Social Psychology",3],["PSYDA 620","Multicultural and Social Issues in Psychology",3],["PSYDA 634","Biological Basis of Behavior",3],["PSYDA 664","Research Methods and Statistics in Psychology",3],["PSYDA 660","Ethics and Professional Issues",3],["PSYDA 644","Psychology of Learning and Cognition",3],["PSYDA 655","Psychometrics",3],["PSYDA 650","Psychopathology",3],["PSYDA 694","Specialty Areas in Applied Psychology",3]]]
+      ]
+    }
+  ]
+}

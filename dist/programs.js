@@ -1,0 +1,41 @@
+(function(){'use strict';
+const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),norm=v=>String(v||'').toLowerCase(),P=window.DegreeProgramOpportunities;
+let catalog,data,rows=[],limit=30,preset='all',restoreFocus=null;
+const levels={associate:'Associate',bachelor:'Bachelor’s',master:'Master’s',doctorate:'Doctoral',specialist:'Specialist'};
+const schoolFor=p=>P.schoolFor(data,p),price=p=>P.priceText(p,schoolFor(p)),pace=p=>P.paceText(p),isSelf=p=>['competency-subscription','self-paced'].includes(p.paceModel);
+function matches(p){const q=norm($('program-search').value).trim(),policy=p.effectiveTransferPolicy||schoolFor(p)?.transferPolicy||{},credit=$('program-credit').value;return(!$('program-school').value||p.school===$('program-school').value)&&(!$('program-level').value||p.level===$('program-level').value)&&(!q||norm([p.school,p.title,p.id,pace(p)].join(' ')).includes(q))&&(preset==='all'||preset==='self-paced'&&isSelf(p)||['online','campus'].includes(preset)&&p.modalities?.includes(preset))&&(!credit||['accepted','case-by-case'].includes(policy[credit]?.status));}
+function render(){
+ $('program-college-tip').hidden=$('program-credit').value!=='institutional'||['master','doctorate','specialist'].includes($('program-level').value);
+ const filtered=rows.filter(matches);
+ $('program-count').textContent=filtered.length+' course plan'+(filtered.length===1?'':'s')+' · '+new Set(filtered.map(p=>p.school)).size+' schools';
+ document.querySelectorAll('[data-preset]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.preset===preset)));
+ $('program-results').innerHTML=filtered.slice(0,limit).map(p=>{
+  const choiceCount=DegreeProgramCatalog.planChoiceCount(p,catalog),formats=p.modalities.map(m=>m==='campus'?'On campus':'Online').join(' · ');
+  return '<article class="pf-program" data-program="'+esc(p.id)+'"><div><span class="pf-school">'+esc(p.school)+'</span><h2>'+esc(p.title)+'</h2><p class="pf-meta">'+esc(levels[p.level]||p.level)+' · '+esc(formats)+'</p><div class="pf-badges"><span class="pf-badge">'+esc(pace(p))+'</span><span class="pf-badge pf-badge-ready">Full requirement plan</span>'+(choiceCount>0?'<span class="pf-badge">'+choiceCount+' course choice'+(choiceCount===1?'':'s')+' to make</span>':'')+'</div></div><div class="pf-side"><div class="pf-price">'+esc(price(p))+'<small>Course-level evidence inside</small></div><button type="button" data-program-details="'+esc(p.id)+'">See plan & transfer rules →</button></div></article>';
+ }).join('')||'<div class="pf-empty"><h2>No course plan matches these filters.</h2><p>Try different choices, or create a plan for your exact degree.</p><button type="button" id="program-reset">Clear filters</button><a class="pf-plan-link" href="request-plan.html">Build from a degree link →</a></div>';
+ $('program-more').hidden=filtered.length<=limit;
+}
+function details(id){
+ const p=rows.find(p=>p.id===id);if(!p)return;
+ restoreFocus=document.activeElement;const choices=DegreeProgramCatalog.planChoiceCount(p,catalog),school=schoolFor(p),href='portal.html?school='+encodeURIComponent(p.school)+'&program='+encodeURIComponent(p.id)+'&level='+encodeURIComponent(p.level);
+ $('program-dialog-content').innerHTML='<div class="pf-dialog-heading"><span class="pf-school">'+esc(p.school)+'</span><h2>'+esc(p.title)+'</h2><p>'+esc(levels[p.level]||p.level)+' · '+esc(pace(p))+'</p></div>'+P.detailsHTML(p,school)+'<p class="pf-map-note">Includes the full degree requirements. '+(choices>0?choices+' course choice'+(choices===1?'':'s')+' to make. ':'')+'Each course shows its degree placement and any specific conditions. Your college records the final credit award.</p><div class="pf-dialog-actions"><a class="pf-button pf-button-primary" data-choose-program href="'+esc(href)+'">Build this degree plan →</a><a href="school.html?school='+encodeURIComponent(p.school)+'">Read about this school →</a><a href="'+esc(p.url||school?.url)+'" target="_blank" rel="noopener">Official program source ↗</a></div>';
+ $('program-dialog').showModal();
+}
+function reset(){for(const id of['program-search','program-school','program-level','program-credit'])$(id).value='';preset='all';limit=30;render();}
+$('program-filters').addEventListener('submit',e=>{e.preventDefault();limit=30;render();});
+for(const type of ['input','change'])$('program-filters').addEventListener(type,()=>{limit=30;render();});
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.preset){preset=b.dataset.preset;limit=30;render();}else if(b.dataset.programDetails)details(b.dataset.programDetails);else if(b.id==='program-more'){limit+=30;render();}else if(b.id==='program-reset')reset();else if(b.id==='program-dialog-close')$('program-dialog').close();});
+$('program-dialog').addEventListener('close',()=>restoreFocus?.isConnected&&restoreFocus.focus({preventScroll:true}));
+(async()=>{try{
+ const loaded=await Promise.all(['data/pathways.json','data/program-catalog.json','data/opportunity-catalog.json','data/credit-sources.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('The degree plans could not load. Please reload.');return r.json();}));
+ data=loaded[2];const sources=loaded[3];
+ $('program-college-tip').querySelector('div').innerHTML=sources.sources.filter(source=>['asu-ulc','tel','cpa-credits','outlier'].includes(source.id)).map(source=>'<p><a href="credit-sources/'+encodeURIComponent(source.id)+'/">'+esc(source.name)+'</a><small>'+esc(source.creditBasis)+'</small></p>').join('');
+ catalog=await DegreeProgramCatalog.loadIndex(DegreeProgramCatalog.merge(loaded[0],loaded[1]));
+ rows=DegreeProgramCatalog.availablePlans(catalog).filter(p=>P.availability(p).canChoose).sort((a,b)=>Number(isSelf(b))-Number(isSelf(a))||a.school.localeCompare(b.school)||a.title.localeCompare(b.title));
+ const schools=[...new Set(rows.map(p=>p.school))].sort();
+ $('program-school').innerHTML='<option value="">All schools</option>'+schools.map(s=>'<option value="'+esc(s)+'">'+esc(s)+'</option>').join('');
+ const params=new URLSearchParams(location.search);if(schools.includes(params.get('school')))$('program-school').value=params.get('school');if(params.has('q'))$('program-search').value=params.get('q');if(['self-paced','campus','online'].includes(params.get('type')))preset=params.get('type');
+ $('program-coverage').querySelector('div').innerHTML='<p>'+rows.length+' course plans from '+schools.length+' schools. Each includes a full requirement list. The plans distinguish published transfer matches, conditional choices and university courses; the amount of reviewed transfer coverage varies by degree.</p><p>Need a different degree? <a href="request-plan.html">Build a plan from its degree link</a>.</p>';
+ render();
+}catch(e){$('program-count').textContent='';$('program-error').hidden=false;$('program-error').textContent=e.message;}})();
+}());

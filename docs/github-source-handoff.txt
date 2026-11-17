@@ -1,0 +1,32 @@
+DegreeSteps source handoff
+
+Repository: https://github.com/jeremyc3434/DegreeSteps
+
+The source archive contains the reviewed current source snapshot, CI workflow,
+migrations, tests, contributor guide and deployment configuration. It excludes
+Git history, runtime credentials, production databases and transcript uploads.
+
+If the connected GitHub writer is unavailable, a contributor with write access
+can publish from their own authenticated computer:
+
+  git clone https://github.com/jeremyc3434/DegreeSteps.git
+  tar -xzf /path/to/DegreeSteps-source.tar.gz -C DegreeSteps --strip-components=1
+  cd DegreeSteps
+  npm ci --ignore-scripts
+  npm run check:source
+  npm run build
+  npm test
+  git add .
+  git commit -m "Add reviewed DegreeSteps application and scale foundations"
+  git push origin main
+
+Use your normal GitHub sign-in or GitHub Desktop. Do not put an access token in
+this file, the repository, a command-line URL or chat.
+
+The repository was created public by its owner. No code license is added by this
+handoff; existing third-party licenses remain with their components. Decide the
+project's license separately before describing the application code as open source.
+
+Cloudflare deployment is a separate operation. The checked-in account/database
+IDs are placeholders. Read README.md and complete the data, credential, staging,
+DNS and authentication cutover gates before changing production traffic.

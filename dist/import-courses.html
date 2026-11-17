@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#4054f4">
+  <title>Add my courses — DegreeSteps</title>
+  <link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="import-courses.css"><link rel="stylesheet" href="credit-import.css">
+  <script src="guide-engine.js" defer></script><script src="sheet-state.js" defer></script><script src="course-library-engine.js" defer></script>
+  <script src="account-client.js" defer></script><script src="app-shell.js" defer></script>
+  <script src="record-import-engine.js" defer></script><script src="course-import-workflow.js" defer></script><script src="record-file-reader.js" defer></script><script src="credit-import.js" defer></script><script src="import-courses.js" defer></script>
+<link rel="stylesheet" href="/brand.css"></head>
+<body>
+<a class="skip-link" href="#import-app">Skip to course upload</a>
+<main id="import-app">
+  <a class="import-back" href="courses.html?tab=mine">← My courses</a>
+  <header class="import-heading"><div><p class="import-eyebrow">Bring your progress with you</p><h1>Add your courses in one upload.</h1><p>Upload your transcripts or a spreadsheet. Review the courses together, then add them to your plan.</p></div></header>
+  <ol class="import-steps" aria-label="Import progress"><li aria-current="step" id="step-upload"><span>1</span> Upload</li><li id="step-review"><span>2</span> Review courses</li><li id="step-done"><span>3</span> See your options</li></ol>
+  <p id="import-status" class="import-status" role="status" aria-live="polite"></p>
+  <div id="import-error" class="import-alert" role="alert" hidden></div>
+  <section id="import-start" class="import-start">
+    <div class="import-upload-card" id="import-dropzone">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="5" y="5" width="38" height="38" rx="12" fill="#eff5ff"/><path d="M24 30V16m-6 6 6-6 6 6M15 29v5h18v-5" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h2>Your courses. All in one place.</h2><p>Drop files here, or choose them below.</p>
+      <label class="import-button import-file-label" for="import-files">Choose transcripts or spreadsheets<input id="import-files" type="file" accept=".pdf,.xlsx,.csv,.tsv,.txt" multiple></label>
+      <p class="import-small">PDF, Excel (.xlsx), or CSV · Up to 10 MB per file</p>
+      <p class="import-local">Text-readable files are read on your device. Nothing is added until you review.</p>
+    </div>
+    <aside class="import-template-card"><span class="import-eyebrow">Prefer a spreadsheet?</span><h2>Start with our template.</h2><p>One course per row. Keep the school, course name, and credit details from the original record.</p><a class="import-secondary" href="data/credit-import-template.xlsx" download>Download Excel template ↓</a><a class="import-text-link" href="data/credit-import-template.csv" download>Download CSV template</a><a class="import-text-link" href="#import-column-guide">See the column guide →</a></aside>
+  </section>
+  <section id="import-files-panel" class="import-panel" aria-label="Uploaded files" hidden><div class="import-panel-heading"><h2>Your files</h2><button type="button" class="import-secondary" id="import-add-files">Add another file</button></div><div id="import-file-list"></div><button type="button" class="import-text-button" id="import-cancel" hidden>Cancel reading</button></section>
+  <section id="import-review" hidden aria-labelledby="import-review-title">
+    <div class="import-review-heading"><div><h2 id="import-review-title">Check your courses.</h2><p id="import-review-count"></p></div><div class="import-review-tools"><button type="button" class="import-secondary" id="import-select-valid">Select ready courses</button><button type="button" class="import-text-button" id="import-skip-conflicts" hidden>Keep my saved versions</button></div></div>
+    <details class="import-batch"><summary>Fill in missing details for several courses at once</summary><div class="import-batch-fields"><label>Original school or provider<input id="batch-provider" maxlength="120" placeholder="Only fills empty cells"></label><label>Credit units<select id="batch-units"><option value="">Leave as shown</option><option value="semester">Semester credits</option><option value="quarter">Quarter credits</option><option value="competency-unit">Competency units</option></select></label><label>Course progress<select id="batch-status"><option value="">Leave as shown</option><option value="earned">Finished</option><option value="in-progress">Taking now</option><option value="planned">Not started</option></select></label><button type="button" class="import-secondary" id="import-fill-missing">Fill empty cells</button></div><p class="import-small">Existing details stay as shown. Degree-audit requirements stay planned; transfer awards need the original course record.</p></details>
+    <div class="import-table-tools"><label><input id="import-attention-only" type="checkbox"> Show courses needing attention</label><span>Click a cell to edit it.</span></div>
+    <div class="import-table-wrap" tabindex="0" role="region" aria-label="Review imported courses, scroll horizontally for more columns"><table class="import-table"><thead><tr><th scope="col">Add</th><th scope="col">School / provider</th><th scope="col">Course code</th><th scope="col">Course name</th><th scope="col">Credits</th><th scope="col">Credit units</th><th scope="col">Progress</th><th scope="col">Grade</th><th scope="col">Exam score</th><th scope="col">Completed</th><th scope="col">Review</th></tr></thead><tbody id="import-rows"></tbody></table></div>
+    <p class="import-small">These are your original course records. Each degree applies its own transfer rules; adding a course does not declare a college has accepted it.</p>
+    <div class="import-action-bar"><div><strong id="import-selection-count">0 courses selected</strong><p>Existing courses and degree plans stay saved.</p></div><button class="import-button" id="import-apply" type="button">Add selected courses →</button></div>
+  </section>
+  <section id="import-success" class="import-success" hidden aria-labelledby="import-success-title"><span class="import-success-check" aria-hidden="true">✓</span><h2 id="import-success-title">Your courses are ready.</h2><p id="import-success-message"></p><a id="import-next" class="import-button" href="compare-plans.html?from=courses">Find degrees for my courses →</a><a class="import-text-link" href="courses.html?tab=mine">View My courses</a><button type="button" class="import-text-button" id="import-start-over">Upload more courses</button></section>
+  <details class="import-help"><summary>How do I get a transcript from Sophia or Study.com?</summary><div><p><strong>Study.com:</strong> Request a transcript from your account. Study.com can email you a PDF after final grades are posted. <a href="https://study.com/support/solutions/articles/11000060215-how-do-i-request-a-transcript-from-study-com-" target="_blank" rel="noopener noreferrer">Transcript instructions ↗</a></p><p><strong>Sophia:</strong> Check transcript options in your Sophia account. For an ACE transcript, accept your issued badges in Credly, then choose Send Transcripts → View Transcript to download a copy. <a href="https://support.credly.com/hc/en-us/articles/360054195272-How-can-I-send-my-ACE-Transcript" target="_blank" rel="noopener noreferrer">ACE / Credly instructions ↗</a></p><p>You can upload unofficial copies here. DegreeSteps does not send official transcripts to colleges.</p></div></details>
+  <details id="import-column-guide" class="import-help"><summary>Spreadsheet column guide and examples</summary><div id="import-template-help"></div></details>
+  <p class="import-manual">Only adding one course? <a href="plan.html?task=credits&amp;manual=1&amp;from=courses">Enter it manually</a>.</p>
+</main>
+<noscript><p>Enable JavaScript to review files privately on this device. You can download the spreadsheet template above without JavaScript.</p></noscript>
+</body></html>

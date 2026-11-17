@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "id": "tesu-general-management-named-course-completion-2026-11-17",
+  "checkedOn": "2026-11-17",
+  "modelId": "tesu-general-management",
+  "school": "Thomas Edison State University",
+  "program": "B.S. in General Management",
+  "scope": "Current published curriculum and named TESU elective selections for the existing standard 15-credit residency route. This review creates no new outside-course equivalency and no individual credit award.",
+  "sources": [
+    {
+      "id": "tesu-gm-current-program-2026-11-17",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+      "title": "TESU current General Management curriculum: 120 credits and 15 free-elective credits",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-gm-elective-course-list-2026-11-17",
+      "url": "https://www2.tesu.edu/listall.php",
+      "title": "TESU undergraduate course list linked from the General Management elective block",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-art1000-current-2026-11-17",
+      "url": "https://www2.tesu.edu/ucourse.php?CourseCode=ART-1000&sem=",
+      "title": "TESU ART-1000 A World of Art: three credits and monthly online offerings",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-ant1010-current-2026-11-17",
+      "url": "https://www2.tesu.edu/ucourse.php?CourseCode=ANT-1010&sem=",
+      "title": "TESU ANT-1010 Introduction to Anthropology: three credits and monthly online offerings",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-psy1010-current-2026-11-17",
+      "url": "https://www2.tesu.edu/ucourse.php?CourseCode=PSY-1010&sem=",
+      "title": "TESU PSY-1010 Introduction to Psychology: three credits, OL/GS/AC offerings",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-his1210-current-2026-11-17",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/his-history/1000/his-1210",
+      "title": "TESU HIS-1210 Introduction to World History I: three-credit online course",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-tuition-current-2026-11-17",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "title": "TESU tuition effective August 2026: standard rates, flat-rate eligibility and qualifying residency methods",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-fees-current-2026-11-17",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/university-fees/index.php",
+      "title": "TESU application, graduation, transcript and Edison Accelerate fees effective August 2026",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-accelerated-courses-current-2026-11-17",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/about-accelerated-courses",
+      "title": "TESU accelerated courses: four-week sessions with self-paced coursework within the session",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-edx-degree-restriction-2026-11-17",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/edx-credit/program-credit.php",
+      "title": "TESU current edX evaluated programs and explicit degree restrictions",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-institution-transfer-current-2026-11-17",
+      "url": "https://www.tesu.edu/student-resources/transfer-credits/index.php",
+      "title": "TESU institutional transfer policy: original accepted accreditation and individual program placement",
+      "kind": "university",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "tesu-edison-accelerate-current-2026-11-17",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/university-fees/edison-accelerate.php",
+      "title": "TESU Edison Accelerate: $3468 residency waiver and two required TESU courses",
+      "kind": "university",
+      "checked": "2026-11-17"
+    }
+  ],
+  "electiveChoices": [
+    {
+      "requirementId": "elective2",
+      "code": "ART-1000",
+      "title": "A World of Art",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "methods": [
+        "OL"
+      ],
+      "sourceIds": [
+        "tesu-art1000-current-2026-11-17"
+      ]
+    },
+    {
+      "requirementId": "elective3",
+      "code": "ANT-1010",
+      "title": "Introduction to Anthropology",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "methods": [
+        "OL"
+      ],
+      "sourceIds": [
+        "tesu-ant1010-current-2026-11-17"
+      ]
+    },
+    {
+      "requirementId": "elective4",
+      "code": "PSY-1010",
+      "title": "Introduction to Psychology",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "methods": [
+        "OL",
+        "GS",
+        "AC"
+      ],
+      "acceleratedSessionWeeks": 4,
+      "sourceIds": [
+        "tesu-psy1010-current-2026-11-17",
+        "tesu-accelerated-courses-current-2026-11-17"
+      ]
+    },
+    {
+      "requirementId": "elective5",
+      "code": "HIS-1210",
+      "title": "Introduction to World History I",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "methods": [
+        "OL"
+      ],
+      "sourceIds": [
+        "tesu-his1210-current-2026-11-17"
+      ]
+    }
+  ],
+  "tuition": {
+    "currency": "USD",
+    "effectiveFromTerm": "2026-08",
+    "sourceIds": [
+      "tesu-tuition-current-2026-11-17"
+    ],
+    "standardPerCredit": {
+      "newJerseyAndPennsylvania": 449,
+      "otherUSStates": 584
+    },
+    "flatRatePerTerm": {
+      "minimumRegisteredCredits": 9,
+      "maximumIncludedCredits": 18,
+      "eligibleMethods": [
+        "OL",
+        "GS",
+        "AC",
+        "EP"
+      ],
+      "newJerseyResidents": 3595,
+      "outOfStateResidents": 4652,
+      "residencyLabelScope": "The flat-rate source table explicitly names New Jersey and out-of-state residents. Do not infer a special-population rate without its applicable policy."
+    },
+    "exclusions": [
+      "Textbooks and course materials are separate.",
+      "TECEP and PLA registrations are excluded from flat-rate tuition and from the standard residency course requirement.",
+      "Military, international, nursing, corporate-partner and other population-specific rates require their own selection.",
+      "These are published rate options, not a complete degree quote; total depends on course load, terms, provider subscriptions and applicable fees."
+    ]
+  },
+  "fees": {
+    "currency": "USD",
+    "sourceIds": [
+      "tesu-fees-current-2026-11-17"
+    ],
+    "application": 50,
+    "graduationAudit": 98,
+    "transcript": 18,
+    "edisonAccelerateResidencyWaiver": 3468,
+    "includedInDegreeTotal": false
+  },
+  "residency": {
+    "modeledStandardCredits": 15,
+    "standardQualifyingMethods": [
+      "OL",
+      "GS",
+      "AC",
+      "EP"
+    ],
+    "sourceIds": [
+      "tesu-tuition-current-2026-11-17"
+    ],
+    "separateWaiverOption": {
+      "requiredTESUCredits": 6,
+      "fee": 3468,
+      "requiredCodes": [
+        "SOS-1100",
+        "BUS-4210"
+      ],
+      "sourceIds": [
+        "tesu-edison-accelerate-current-2026-11-17"
+      ],
+      "modeled": false,
+      "reason": "A residency waiver does not waive the combined alternative-source cap or establish a remaining outside course pathway; do not reduce the existing route to six TESU credits without those mappings."
+    }
+  },
+  "timing": {
+    "acceleratedSessionWeeks": 4,
+    "sourceIds": [
+      "tesu-accelerated-courses-current-2026-11-17"
+    ],
+    "scope": "Only courses with a separately documented AC offering can use the four-week format. This is not a four-week degree completion claim.",
+    "wholeDegreeWeeks": null,
+    "prerequisitesAndStudentWorkloadRemainRelevant": true
+  },
+  "internalResearch": [
+    {
+      "id": "tesu-institution-issued-outside-courses",
+      "status": "not-established",
+      "owner": "DegreePath",
+      "finding": "The university accepts eligible original institutional credit, but this review did not establish current exact TESU General Management receiving awards for ASU Universal Learner, TEL partner institutions, Outlier or Upper Iowa/CPA Credits. No speculative options were added.",
+      "sourceIds": [
+        "tesu-institution-transfer-current-2026-11-17"
+      ]
+    },
+    {
+      "id": "tesu-edx-not-general-management",
+      "status": "excluded",
+      "owner": "DegreePath",
+      "finding": "The current TESU edX page restricts use by TESU students to its AAS Computer Studies and BA Computer Science programs. It also lists expired ASU and Doane reviews. These tables cannot be used to fill this business degree.",
+      "sourceIds": [
+        "tesu-edx-degree-restriction-2026-11-17"
+      ]
+    },
+    {
+      "id": "tesu-tecep-accounting",
+      "status": "engine-modeling-required",
+      "owner": "DegreePath",
+      "finding": "TESU-issued exams and courses must keep separate residency eligibility. An exam cannot be added as an ordinary University course merely to satisfy the 15-credit residency requirement.",
+      "sourceIds": [
+        "tesu-tuition-current-2026-11-17"
+      ]
+    }
+  ]
+}

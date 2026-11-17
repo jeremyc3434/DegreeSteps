@@ -1,0 +1,1925 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "66522914-371f-46d7-be95-232dfc9b93e0",
+  "prevId": "2ca5f970-a059-420f-ab7c-b1bfc116013c",
+  "tables": {
+    "community_comments": {
+      "name": "community_comments",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "context": {
+          "name": "context",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "community_comments_context": {
+          "name": "community_comments_context",
+          "columns": [
+            "context",
+            "deleted_at",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "community_comments_user_id_community_users_id_fk": {
+          "name": "community_comments_user_id_community_users_id_fk",
+          "tableFrom": "community_comments",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "community_comments_parent_id_community_comments_id_fk": {
+          "name": "community_comments_parent_id_community_comments_id_fk",
+          "tableFrom": "community_comments",
+          "tableTo": "community_comments",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_comment_context_length": {
+          "name": "community_comment_context_length",
+          "value": "length(\"community_comments\".\"context\") BETWEEN 3 AND 180"
+        },
+        "community_comment_body_length": {
+          "name": "community_comment_body_length",
+          "value": "length(\"community_comments\".\"body\") BETWEEN 1 AND 3000"
+        }
+      }
+    },
+    "community_context_reactions": {
+      "name": "community_context_reactions",
+      "columns": {
+        "context": {
+          "name": "context",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "reaction": {
+          "name": "reaction",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "community_context_reactions_user_id_community_users_id_fk": {
+          "name": "community_context_reactions_user_id_community_users_id_fk",
+          "tableFrom": "community_context_reactions",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "community_context_reactions_context_user_id_reaction_pk": {
+          "columns": [
+            "context",
+            "user_id",
+            "reaction"
+          ],
+          "name": "community_context_reactions_context_user_id_reaction_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_context_reaction_context_length": {
+          "name": "community_context_reaction_context_length",
+          "value": "length(\"community_context_reactions\".\"context\") BETWEEN 3 AND 180"
+        },
+        "community_context_reaction_kind": {
+          "name": "community_context_reaction_kind",
+          "value": "\"community_context_reactions\".\"reaction\" IN ('like','upvote')"
+        }
+      }
+    },
+    "community_evidence": {
+      "name": "community_evidence",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_kind": {
+          "name": "target_kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_key": {
+          "name": "target_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "program_id": {
+          "name": "program_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "requirement_id": {
+          "name": "requirement_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "course_id": {
+          "name": "course_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "post_id": {
+          "name": "post_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "catalog_year": {
+          "name": "catalog_year",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "curriculum_fingerprint": {
+          "name": "curriculum_fingerprint",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "outcome": {
+          "name": "outcome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "evaluated_on": {
+          "name": "evaluated_on",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "details": {
+          "name": "details",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "evidence_url": {
+          "name": "evidence_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "consent_at": {
+          "name": "consent_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "review_status": {
+          "name": "review_status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'pending'"
+        },
+        "review_note": {
+          "name": "review_note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "reviewed_at": {
+          "name": "reviewed_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "reviewed_by": {
+          "name": "reviewed_by",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "community_evidence_scope": {
+          "name": "community_evidence_scope",
+          "columns": [
+            "target_key",
+            "catalog_year",
+            "curriculum_fingerprint",
+            "deleted_at"
+          ],
+          "isUnique": false
+        },
+        "community_evidence_program": {
+          "name": "community_evidence_program",
+          "columns": [
+            "program_id",
+            "catalog_year",
+            "deleted_at"
+          ],
+          "isUnique": false
+        },
+        "community_evidence_queue": {
+          "name": "community_evidence_queue",
+          "columns": [
+            "review_status",
+            "deleted_at",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false
+        },
+        "community_evidence_user_scope": {
+          "name": "community_evidence_user_scope",
+          "columns": [
+            "user_id",
+            "target_key",
+            "catalog_year",
+            "curriculum_fingerprint"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "community_evidence_user_id_community_users_id_fk": {
+          "name": "community_evidence_user_id_community_users_id_fk",
+          "tableFrom": "community_evidence",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "community_evidence_post_id_community_posts_id_fk": {
+          "name": "community_evidence_post_id_community_posts_id_fk",
+          "tableFrom": "community_evidence",
+          "tableTo": "community_posts",
+          "columnsFrom": [
+            "post_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "community_evidence_reviewed_by_community_users_id_fk": {
+          "name": "community_evidence_reviewed_by_community_users_id_fk",
+          "tableFrom": "community_evidence",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "reviewed_by"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_evidence_target": {
+          "name": "community_evidence_target",
+          "value": "(\"community_evidence\".\"target_kind\" = 'course' AND \"community_evidence\".\"program_id\" IS NOT NULL AND \"community_evidence\".\"requirement_id\" IS NOT NULL AND \"community_evidence\".\"course_id\" IS NOT NULL AND \"community_evidence\".\"post_id\" IS NULL AND \"community_evidence\".\"curriculum_fingerprint\" = '') OR (\"community_evidence\".\"target_kind\" = 'plan' AND \"community_evidence\".\"program_id\" IS NULL AND \"community_evidence\".\"requirement_id\" IS NULL AND \"community_evidence\".\"course_id\" IS NULL AND \"community_evidence\".\"post_id\" IS NOT NULL AND length(\"community_evidence\".\"curriculum_fingerprint\") = 64)"
+        },
+        "community_evidence_outcome": {
+          "name": "community_evidence_outcome",
+          "value": "\"community_evidence\".\"outcome\" IN ('success','changed','rejected')"
+        },
+        "community_evidence_date_length": {
+          "name": "community_evidence_date_length",
+          "value": "length(\"community_evidence\".\"evaluated_on\") = 10"
+        },
+        "community_evidence_catalog_length": {
+          "name": "community_evidence_catalog_length",
+          "value": "length(\"community_evidence\".\"catalog_year\") IN (4,9)"
+        },
+        "community_evidence_details_length": {
+          "name": "community_evidence_details_length",
+          "value": "length(\"community_evidence\".\"details\") BETWEEN 1 AND 1000"
+        },
+        "community_evidence_review_status": {
+          "name": "community_evidence_review_status",
+          "value": "\"community_evidence\".\"review_status\" IN ('pending','reviewed','dismissed')"
+        },
+        "community_evidence_review_note_length": {
+          "name": "community_evidence_review_note_length",
+          "value": "\"community_evidence\".\"review_note\" IS NULL OR length(\"community_evidence\".\"review_note\") BETWEEN 1 AND 1000"
+        }
+      }
+    },
+    "community_evidence_flags": {
+      "name": "community_evidence_flags",
+      "columns": {
+        "evidence_id": {
+          "name": "evidence_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "reason": {
+          "name": "reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "resolved_at": {
+          "name": "resolved_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "community_evidence_flags_queue": {
+          "name": "community_evidence_flags_queue",
+          "columns": [
+            "resolved_at",
+            "evidence_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "community_evidence_flags_evidence_id_community_evidence_id_fk": {
+          "name": "community_evidence_flags_evidence_id_community_evidence_id_fk",
+          "tableFrom": "community_evidence_flags",
+          "tableTo": "community_evidence",
+          "columnsFrom": [
+            "evidence_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "community_evidence_flags_user_id_community_users_id_fk": {
+          "name": "community_evidence_flags_user_id_community_users_id_fk",
+          "tableFrom": "community_evidence_flags",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "community_evidence_flags_evidence_id_user_id_pk": {
+          "columns": [
+            "evidence_id",
+            "user_id"
+          ],
+          "name": "community_evidence_flags_evidence_id_user_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_evidence_flag_reason_length": {
+          "name": "community_evidence_flag_reason_length",
+          "value": "length(\"community_evidence_flags\".\"reason\") BETWEEN 3 AND 1000"
+        }
+      }
+    },
+    "community_posts": {
+      "name": "community_posts",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "context": {
+          "name": "context",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "kind": {
+          "name": "kind",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "plan_json": {
+          "name": "plan_json",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "deleted_at": {
+          "name": "deleted_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "community_posts_feed": {
+          "name": "community_posts_feed",
+          "columns": [
+            "deleted_at",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false
+        },
+        "community_posts_context": {
+          "name": "community_posts_context",
+          "columns": [
+            "context",
+            "deleted_at",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false
+        },
+        "community_posts_kind": {
+          "name": "community_posts_kind",
+          "columns": [
+            "kind",
+            "deleted_at",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "community_posts_user_id_community_users_id_fk": {
+          "name": "community_posts_user_id_community_users_id_fk",
+          "tableFrom": "community_posts",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_post_context_length": {
+          "name": "community_post_context_length",
+          "value": "length(\"community_posts\".\"context\") BETWEEN 3 AND 180"
+        },
+        "community_post_kind": {
+          "name": "community_post_kind",
+          "value": "\"community_posts\".\"kind\" IN ('question','plan','template')"
+        },
+        "community_post_title_length": {
+          "name": "community_post_title_length",
+          "value": "length(\"community_posts\".\"title\") BETWEEN 3 AND 160"
+        },
+        "community_post_body_length": {
+          "name": "community_post_body_length",
+          "value": "length(\"community_posts\".\"body\") BETWEEN 1 AND 6000"
+        }
+      }
+    },
+    "community_rate_limits": {
+      "name": "community_rate_limits",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "action": {
+          "name": "action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "window_start": {
+          "name": "window_start",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "count": {
+          "name": "count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "community_rate_limits_user_id_community_users_id_fk": {
+          "name": "community_rate_limits_user_id_community_users_id_fk",
+          "tableFrom": "community_rate_limits",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "community_rate_limits_user_id_action_pk": {
+          "columns": [
+            "user_id",
+            "action"
+          ],
+          "name": "community_rate_limits_user_id_action_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_rate_action": {
+          "name": "community_rate_action",
+          "value": "\"community_rate_limits\".\"action\" IN ('publish','comment','reaction','report','profile','moderation')"
+        },
+        "community_rate_positive": {
+          "name": "community_rate_positive",
+          "value": "\"community_rate_limits\".\"count\">0"
+        }
+      }
+    },
+    "community_reactions": {
+      "name": "community_reactions",
+      "columns": {
+        "post_id": {
+          "name": "post_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "reaction": {
+          "name": "reaction",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "community_reactions_user": {
+          "name": "community_reactions_user",
+          "columns": [
+            "user_id",
+            "created_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "community_reactions_post_id_community_posts_id_fk": {
+          "name": "community_reactions_post_id_community_posts_id_fk",
+          "tableFrom": "community_reactions",
+          "tableTo": "community_posts",
+          "columnsFrom": [
+            "post_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "community_reactions_user_id_community_users_id_fk": {
+          "name": "community_reactions_user_id_community_users_id_fk",
+          "tableFrom": "community_reactions",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "community_reactions_post_id_user_id_reaction_pk": {
+          "columns": [
+            "post_id",
+            "user_id",
+            "reaction"
+          ],
+          "name": "community_reactions_post_id_user_id_reaction_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_reaction_kind": {
+          "name": "community_reaction_kind",
+          "value": "\"community_reactions\".\"reaction\" IN ('like','upvote')"
+        }
+      }
+    },
+    "community_reports": {
+      "name": "community_reports",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_type": {
+          "name": "target_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_id": {
+          "name": "target_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "reason": {
+          "name": "reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'open'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "reviewed_at": {
+          "name": "reviewed_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "reviewed_by": {
+          "name": "reviewed_by",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "community_reports_queue": {
+          "name": "community_reports_queue",
+          "columns": [
+            "status",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false
+        },
+        "community_reports_user_target": {
+          "name": "community_reports_user_target",
+          "columns": [
+            "user_id",
+            "target_type",
+            "target_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "community_reports_user_id_community_users_id_fk": {
+          "name": "community_reports_user_id_community_users_id_fk",
+          "tableFrom": "community_reports",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "community_reports_reviewed_by_community_users_id_fk": {
+          "name": "community_reports_reviewed_by_community_users_id_fk",
+          "tableFrom": "community_reports",
+          "tableTo": "community_users",
+          "columnsFrom": [
+            "reviewed_by"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_report_target_type": {
+          "name": "community_report_target_type",
+          "value": "\"community_reports\".\"target_type\" IN ('post','comment')"
+        },
+        "community_report_reason_length": {
+          "name": "community_report_reason_length",
+          "value": "length(\"community_reports\".\"reason\") BETWEEN 3 AND 1000"
+        },
+        "community_report_status": {
+          "name": "community_report_status",
+          "value": "\"community_reports\".\"status\" IN ('open','reviewed','dismissed')"
+        }
+      }
+    },
+    "community_users": {
+      "name": "community_users",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "alias": {
+          "name": "alias",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Community member'"
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'member'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "community_user_alias_length": {
+          "name": "community_user_alias_length",
+          "value": "length(\"community_users\".\"alias\") BETWEEN 2 AND 40"
+        },
+        "community_user_role": {
+          "name": "community_user_role",
+          "value": "\"community_users\".\"role\" IN ('member','moderator','owner')"
+        }
+      }
+    },
+    "portal_plans": {
+      "name": "portal_plans",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "school": {
+          "name": "school",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "degree": {
+          "name": "degree",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "state_json": {
+          "name": "state_json",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "portal_plans_owner": {
+          "name": "portal_plans_owner",
+          "columns": [
+            "user_id",
+            "updated_at",
+            "id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "portal_plans_user_id_portal_profiles_id_fk": {
+          "name": "portal_plans_user_id_portal_profiles_id_fk",
+          "tableFrom": "portal_plans",
+          "tableTo": "portal_profiles",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "portal_plan_title_length": {
+          "name": "portal_plan_title_length",
+          "value": "length(\"portal_plans\".\"title\") BETWEEN 1 AND 120"
+        },
+        "portal_plan_school_length": {
+          "name": "portal_plan_school_length",
+          "value": "length(\"portal_plans\".\"school\") <= 120"
+        },
+        "portal_plan_degree_length": {
+          "name": "portal_plan_degree_length",
+          "value": "length(\"portal_plans\".\"degree\") <= 200"
+        },
+        "portal_plan_state_limit": {
+          "name": "portal_plan_state_limit",
+          "value": "length(CAST(\"portal_plans\".\"state_json\" AS BLOB)) <= 524288 AND json_valid(\"portal_plans\".\"state_json\")"
+        },
+        "portal_plan_revision_positive": {
+          "name": "portal_plan_revision_positive",
+          "value": "\"portal_plans\".\"revision\" > 0"
+        }
+      }
+    },
+    "portal_profiles": {
+      "name": "portal_profiles",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "alias": {
+          "name": "alias",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'Student'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "portal_profile_alias_length": {
+          "name": "portal_profile_alias_length",
+          "value": "length(\"portal_profiles\".\"alias\") BETWEEN 2 AND 60"
+        }
+      }
+    },
+    "portal_rate_limits": {
+      "name": "portal_rate_limits",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "action": {
+          "name": "action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "window_start": {
+          "name": "window_start",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "count": {
+          "name": "count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "portal_rate_limits_user_id_portal_profiles_id_fk": {
+          "name": "portal_rate_limits_user_id_portal_profiles_id_fk",
+          "tableFrom": "portal_rate_limits",
+          "tableTo": "portal_profiles",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "portal_rate_limits_user_id_action_pk": {
+          "columns": [
+            "user_id",
+            "action"
+          ],
+          "name": "portal_rate_limits_user_id_action_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "portal_rate_action": {
+          "name": "portal_rate_action",
+          "value": "\"portal_rate_limits\".\"action\" IN ('save','profile','delete')"
+        },
+        "portal_rate_positive": {
+          "name": "portal_rate_positive",
+          "value": "\"portal_rate_limits\".\"count\" > 0"
+        }
+      }
+    },
+    "curriculum_source_cache": {
+      "name": "curriculum_source_cache",
+      "columns": {
+        "cache_key": {
+          "name": "cache_key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "program_id": {
+          "name": "program_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "source_url": {
+          "name": "source_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "payload_json": {
+          "name": "payload_json",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "source_hash": {
+          "name": "source_hash",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "checked_at": {
+          "name": "checked_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "curriculum_source_cache_program": {
+          "name": "curriculum_source_cache_program",
+          "columns": [
+            "program_id"
+          ],
+          "isUnique": false
+        },
+        "curriculum_source_cache_expiry": {
+          "name": "curriculum_source_cache_expiry",
+          "columns": [
+            "expires_at"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "curriculum_source_cache_payload": {
+          "name": "curriculum_source_cache_payload",
+          "value": "json_valid(\"curriculum_source_cache\".\"payload_json\") AND length(CAST(\"curriculum_source_cache\".\"payload_json\" AS BLOB)) <= 1048576"
+        },
+        "curriculum_source_cache_key": {
+          "name": "curriculum_source_cache_key",
+          "value": "length(\"curriculum_source_cache\".\"cache_key\") BETWEEN 1 AND 500"
+        },
+        "curriculum_source_cache_hash": {
+          "name": "curriculum_source_cache_hash",
+          "value": "\"curriculum_source_cache\".\"source_hash\" IS NULL OR length(\"curriculum_source_cache\".\"source_hash\") = 64"
+        }
+      }
+    },
+    "college_access_audit": {
+      "name": "college_access_audit",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "actor_id": {
+          "name": "actor_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "action": {
+          "name": "action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "target_id": {
+          "name": "target_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "college_access_audit_org": {
+          "name": "college_access_audit_org",
+          "columns": [
+            "organization_id",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "college_access_audit_organization_id_college_organizations_id_fk": {
+          "name": "college_access_audit_organization_id_college_organizations_id_fk",
+          "tableFrom": "college_access_audit",
+          "tableTo": "college_organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "college_access_audit_note_length": {
+          "name": "college_access_audit_note_length",
+          "value": "length(\"college_access_audit\".\"note\") <= 500"
+        },
+        "college_access_audit_action": {
+          "name": "college_access_audit_action",
+          "value": "\"college_access_audit\".\"action\" IN ('create','verify','revoke','grant-member','revoke-member','consent','withdraw','read-leads')"
+        }
+      }
+    },
+    "college_access_rate_limits": {
+      "name": "college_access_rate_limits",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "action": {
+          "name": "action",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "window_start": {
+          "name": "window_start",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "count": {
+          "name": "count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "college_access_rate_limits_user_id_action_pk": {
+          "columns": [
+            "user_id",
+            "action"
+          ],
+          "name": "college_access_rate_limits_user_id_action_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "college_access_rate_action": {
+          "name": "college_access_rate_action",
+          "value": "\"college_access_rate_limits\".\"action\" IN ('interest','admin','read')"
+        },
+        "college_access_rate_count": {
+          "name": "college_access_rate_count",
+          "value": "\"college_access_rate_limits\".\"count\">0"
+        }
+      }
+    },
+    "college_interest_requests": {
+      "name": "college_interest_requests",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "organization_id": {
+          "name": "organization_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "contact_name": {
+          "name": "contact_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "contact_email": {
+          "name": "contact_email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "program_interest": {
+          "name": "program_interest",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "study_format": {
+          "name": "study_format",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'either'"
+        },
+        "start_timing": {
+          "name": "start_timing",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "''"
+        },
+        "consent_version": {
+          "name": "consent_version",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "consent_text": {
+          "name": "consent_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "consented_at": {
+          "name": "consented_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "withdrawn_at": {
+          "name": "withdrawn_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "college_interest_lead_scope": {
+          "name": "college_interest_lead_scope",
+          "columns": [
+            "organization_id",
+            "withdrawn_at",
+            "consented_at",
+            "id"
+          ],
+          "isUnique": false
+        },
+        "college_interest_student": {
+          "name": "college_interest_student",
+          "columns": [
+            "user_id",
+            "updated_at",
+            "id"
+          ],
+          "isUnique": false
+        },
+        "college_interest_student_org": {
+          "name": "college_interest_student_org",
+          "columns": [
+            "user_id",
+            "organization_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "college_interest_requests_organization_id_college_organizations_id_fk": {
+          "name": "college_interest_requests_organization_id_college_organizations_id_fk",
+          "tableFrom": "college_interest_requests",
+          "tableTo": "college_organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "college_interest_name_length": {
+          "name": "college_interest_name_length",
+          "value": "length(\"college_interest_requests\".\"contact_name\") BETWEEN 2 AND 100"
+        },
+        "college_interest_email_length": {
+          "name": "college_interest_email_length",
+          "value": "length(\"college_interest_requests\".\"contact_email\") BETWEEN 3 AND 254"
+        },
+        "college_interest_program_length": {
+          "name": "college_interest_program_length",
+          "value": "length(\"college_interest_requests\".\"program_interest\") <= 200"
+        },
+        "college_interest_start_length": {
+          "name": "college_interest_start_length",
+          "value": "length(\"college_interest_requests\".\"start_timing\") <= 120"
+        },
+        "college_interest_format": {
+          "name": "college_interest_format",
+          "value": "\"college_interest_requests\".\"study_format\" IN ('online','campus','either')"
+        },
+        "college_interest_consent_version": {
+          "name": "college_interest_consent_version",
+          "value": "length(\"college_interest_requests\".\"consent_version\") BETWEEN 1 AND 80"
+        },
+        "college_interest_consent_text": {
+          "name": "college_interest_consent_text",
+          "value": "length(\"college_interest_requests\".\"consent_text\") BETWEEN 1 AND 2000"
+        }
+      }
+    },
+    "college_memberships": {
+      "name": "college_memberships",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'active'"
+        },
+        "granted_by": {
+          "name": "granted_by",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "college_memberships_user": {
+          "name": "college_memberships_user",
+          "columns": [
+            "user_id",
+            "status",
+            "organization_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "college_memberships_organization_id_college_organizations_id_fk": {
+          "name": "college_memberships_organization_id_college_organizations_id_fk",
+          "tableFrom": "college_memberships",
+          "tableTo": "college_organizations",
+          "columnsFrom": [
+            "organization_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "college_memberships_organization_id_user_id_pk": {
+          "columns": [
+            "organization_id",
+            "user_id"
+          ],
+          "name": "college_memberships_organization_id_user_id_pk"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "college_member_role": {
+          "name": "college_member_role",
+          "value": "\"college_memberships\".\"role\" IN ('advisor','admin')"
+        },
+        "college_member_status": {
+          "name": "college_member_status",
+          "value": "\"college_memberships\".\"status\" IN ('active','revoked')"
+        }
+      }
+    },
+    "college_organizations": {
+      "name": "college_organizations",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "website": {
+          "name": "website",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'pending'"
+        },
+        "revision": {
+          "name": "revision",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 1
+        },
+        "created_by": {
+          "name": "created_by",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "verified_by": {
+          "name": "verified_by",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "verified_at": {
+          "name": "verified_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "college_organizations_status": {
+          "name": "college_organizations_status",
+          "columns": [
+            "status",
+            "created_at",
+            "id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {
+        "college_org_name_length": {
+          "name": "college_org_name_length",
+          "value": "length(\"college_organizations\".\"name\") BETWEEN 2 AND 160"
+        },
+        "college_org_website_length": {
+          "name": "college_org_website_length",
+          "value": "length(\"college_organizations\".\"website\") BETWEEN 8 AND 1500"
+        },
+        "college_org_status": {
+          "name": "college_org_status",
+          "value": "\"college_organizations\".\"status\" IN ('pending','verified','revoked')"
+        },
+        "college_org_revision": {
+          "name": "college_org_revision",
+          "value": "\"college_organizations\".\"revision\" > 0"
+        }
+      }
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}

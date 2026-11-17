@@ -1,0 +1,559 @@
+{
+  "version": 1,
+  "asOf": "2026-11-17",
+  "scope": "Read-only product coverage review of current repository during v47 preparation. Counts describe source at review time, not independently tested live browser behavior. This artifact does not approve academic mappings.",
+  "method": [
+    "Read production UI and pure engines, current source catalogs, ready-template registry and service boundaries.",
+    "Trace principal links and state transitions by code; do not infer completeness from directory or marketing counts.",
+    "Separate implemented workflows from coverage gaps and production-operational evidence."
+  ],
+  "summary": {
+    "featuresAudited": 27,
+    "implemented": 12,
+    "partial": 15,
+    "missing": 0,
+    "allIdeasComplete": false,
+    "mainFinding": "Most requested workflow primitives exist; consistency, discoverability and verified mapping coverage are the main gaps. Build one cohesive student journey before adding more feature surfaces."
+  },
+  "sourceCoverage": {
+    "readyRequirementLedgers": 38,
+    "readySchools": 4,
+    "readyBySchool": {
+      "Liberty University": 13,
+      "Western Governors University": 20,
+      "University of Phoenix": 4,
+      "Thomas Edison State University": 1
+    },
+    "officialProgramListings": 1630,
+    "opportunityListings": 1122,
+    "providerProfiles": 31,
+    "mergedCourseListings": 354,
+    "mappedCourseProviders": 6,
+    "mergedCoursesWithUnknownSourceQuantityOrUnits": 114,
+    "publishedCostComparisonEntries": 7,
+    "schoolInsightProfiles": 10,
+    "structuredStudentReviewCounts": 0,
+    "priorityUMPIHasExecutablePlan": false
+  },
+  "priorityFixes": [
+    {
+      "priority": 0,
+      "id": "compare-and-savings-evidence-consistency",
+      "problem": "What-if and savings still relabel named university coursework as missing course research and append generic approval wording to published matches.",
+      "files": [
+        "dist/compare-plans.js",
+        "dist/savings-tracker.js"
+      ],
+      "proposedChange": "Use actual selected course completeness and specific conditional/personal research states. Show published placements without blanket reapproval gates.",
+      "acceptance": [
+        "Fresh WGU69/41 and Liberty83/37 have zero invented missing-course warnings across compare and savings.",
+        "An actual conditional or unmatched personal course retains a precise exception."
+      ]
+    },
+    {
+      "priority": 0,
+      "id": "community-catalog-identity",
+      "problem": "The current WGU catalog202605 is not a valid outcome catalogYear and Sheet uses a year-range default instead.",
+      "files": [
+        "dist/verification.js",
+        "dist/sheet.js",
+        "server/community.mjs"
+      ],
+      "proposedChange": "Support valid YYYYMM alongside academic years/ranges end to end, preserving exact source catalog as the default.",
+      "acceptance": [
+        "202605 is accepted and202600/202613 rejected.",
+        "A202605 outcome cannot verify a2026-2027 or another monthly catalog."
+      ]
+    },
+    {
+      "priority": 1,
+      "id": "visible-learning-and-military-intake",
+      "problem": "Main portal bypasses prior-credit and military questions; military opportunities remain hidden in course preferences.",
+      "files": [
+        "dist/portal.js",
+        "dist/journey-engine.js"
+      ],
+      "proposedChange": "Offer a compact clear course-history step and optional military intake from main setup/Myplan, without requiring transcripts to generate a provisional plan.",
+      "acceptance": [
+        "Startingfromzero does not produce prior-record homework.",
+        "A veteran can choose JST/CCAF before the plan checklist is generated.",
+        "An exact school/degree path remains short."
+      ]
+    },
+    {
+      "priority": 1,
+      "id": "account-save-state-discoverability",
+      "problem": "Signed-in students may assume local worksheet changes update their account but account copies require manual consented save.",
+      "files": [
+        "dist/account.js",
+        "dist/app-shell.js",
+        "dist/account-client.js"
+      ],
+      "proposedChange": "Make account-save state and a direct update action visible from the workspace; preserve explicit consent and conflict checks.",
+      "acceptance": [
+        "A signed-in change clearly indicates device-only or account saved.",
+        "A stale revision never overwrites another device silently."
+      ]
+    },
+    {
+      "priority": 1,
+      "id": "honest-plan-readiness-cards",
+      "problem": "All38full requirement ledgers are called ready-to-use even though many have limited reviewed outside options and missing policies.",
+      "files": [
+        "dist/programs.js",
+        "dist/ready-templates.js",
+        "dist/program-catalog.js"
+      ],
+      "proposedChange": "Use plan-specific evidence and optimized outside coverage in the selection card; keep a full requirement plan distinct from a thoroughly researched accelerated route.",
+      "acceptance": [
+        "A school-wide ceiling is not displayed as usable planned transfer.",
+        "A heavily conditional route does not read like verified WGU69.",
+        "Students can request another degree directly from an empty result."
+      ]
+    }
+  ],
+  "features": [
+    {
+      "id": "public-website",
+      "status": "implemented",
+      "currentBehavior": "A separate public explainer site routes to the portal and course browser.",
+      "evidence": [
+        {
+          "file": "scripts/build-public-site.mjs",
+          "symbolOrData": "page/header/footer; build emits68publicpages"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Home makes one primary start action available on mobile and desktop.",
+        "All public navigation reaches a useful page and private portal pages stay outside the sitemap."
+      ]
+    },
+    {
+      "id": "seo-resources",
+      "status": "implemented",
+      "currentBehavior": "Guides, journal posts, school/source profiles, canonical URLs, structured metadata, sitemap and robots rules are generated.",
+      "evidence": [
+        {
+          "file": "scripts/build-public-site.mjs",
+          "symbolOrData": "articles/page/schema/sitemap;14articles,10schoolprofiles,31sourceprofiles"
+        }
+      ],
+      "acceptanceCriteria": [
+        "SEO pages distinguish researched policy examples from a personalized executable plan.",
+        "Changing official domain updates canonical/sitemap/OAuth settings together."
+      ]
+    },
+    {
+      "id": "ready-plan-library",
+      "status": "partial",
+      "currentBehavior": "38full requirement ledgers are presented across4schools; this does not establish complete outside-transfer coverage or verified policies for all38.",
+      "evidence": [
+        {
+          "file": "dist/programs.js",
+          "symbolOrData": "render/details; dist/data/curriculum-registry.json"
+        }
+      ],
+      "acceptanceCriteria": [
+        "A plan card discloses actual outside-course coverage and unresolved policy conditions.",
+        "No degree with missing requirement choices is advertised as ready.",
+        "Ready templates expand by reviewed curriculum/version/format, not by degree title alone."
+      ]
+    },
+    {
+      "id": "broad-program-discovery",
+      "status": "partial",
+      "currentBehavior": "1630official listing entries and1122opportunity entries exist, but most are directory research rather than usable plans.",
+      "evidence": [
+        {
+          "file": "dist/data/program-catalog.json",
+          "symbolOrData": "scope; dist/data/opportunity-catalog.json coverage"
+        }
+      ],
+      "acceptanceCriteria": [
+        "A student can request an unsupported degree using its official URL without replacing a usable active plan.",
+        "Directory-only entries never become executable recommendations or claim course equivalencies."
+      ]
+    },
+    {
+      "id": "course-first-library",
+      "status": "implemented",
+      "currentBehavior": "Students can browse, filter, save, edit and mark courses in progress/finished without choosing a degree, then compare degree fits.",
+      "evidence": [
+        {
+          "file": "dist/courses.js",
+          "symbolOrData": "save/persist/render/details/recordDetails and boot merge"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Saving a course does not award completed credit.",
+        "Find degree fits uses the entire private collection and preserves original provider credits/units.",
+        "Removing a saved record updates fit without silently altering unrelated records."
+      ]
+    },
+    {
+      "id": "complete-credit-source-coverage",
+      "status": "partial",
+      "currentBehavior": "31provider profiles are available, while the merged executable course browser has354listings from6providers;114listings have unknown original credits/units.",
+      "evidence": [
+        {
+          "file": "dist/courses.js",
+          "symbolOrData": "boot merge; dist/data/course-catalog.json; dist/data/curriculum-course-index.json"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Provider directory count is never shown as mapped provider coverage.",
+        "Each course differentiates source credit quantity from receiving-school award.",
+        "Add additional providers only through reviewed identities, actual receiving maps and course-level conditions."
+      ]
+    },
+    {
+      "id": "guided-setup",
+      "status": "partial",
+      "currentBehavior": "The main portal exposes target/explore/course-first starts, school and degree choices plus a compact goal/level/subject/format/priority form. It bypasses several detailed Journey questions.",
+      "evidence": [
+        {
+          "file": "dist/portal.js",
+          "symbolOrData": "questionBody/answer/openPlan/portal-explore-form"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Known-degree students can open that exact plan with a short setup.",
+        "New students explicitly choose no past credits versus add records later.",
+        "A student can revise goals without losing current courses, notes or previous plan versions."
+      ]
+    },
+    {
+      "id": "student-motivations-and-accessibility",
+      "status": "partial",
+      "currentBehavior": "Career intent, online/campus preferences and cost/speed priority affect recommendations. Budget/study hours/exam preferences mostly live in legacy wizard or advanced controls.",
+      "evidence": [
+        {
+          "file": "dist/portal.js",
+          "symbolOrData": "exploreBody; dist/wizard.js render preference questions"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Main consumer flow exposes only the few inputs that change recommendations.",
+        "Optional details remain discoverable from My plan with understandable labels.",
+        "A missing study pace is an optional estimate input, not missing school policy."
+      ]
+    },
+    {
+      "id": "military-pathway",
+      "status": "partial",
+      "currentBehavior": "JST/CCAF and military policy/checklist logic exist, but the main portal never renders its Journey military steps. Entry is buried in Course preferences.",
+      "evidence": [
+        {
+          "file": "dist/journey-engine.js",
+          "symbolOrData": "questions/applyAnswer; dist/sheet.js optionsDialog; dist/student-checklist.js military-records"
+        }
+      ],
+      "acceptanceCriteria": [
+        "An active-duty/veteran/reserve learner can identify service status from the main setup.",
+        "CCAF versus JST selection changes the records action without converting training into awarded credit.",
+        "Military benefits and residency exceptions remain sourced and eligibility-specific."
+      ]
+    },
+    {
+      "id": "regulated-career-fit",
+      "status": "partial",
+      "currentBehavior": "Protected teacher/lawyer/pilot/health goals influence eligibility and add professional-entry checks; the app does not model all jurisdictional licensing requirements.",
+      "evidence": [
+        {
+          "file": "dist/guide-engine.js",
+          "symbolOrData": "eligibility; dist/student-checklist.js professional-entry"
+        }
+      ],
+      "acceptanceCriteria": [
+        "A general degree recommendation is not labeled a complete licensed-career route.",
+        "Jurisdiction/program-accreditation uncertainty remains specific and does not disappear when a student chooses speed."
+      ]
+    },
+    {
+      "id": "degree-spreadsheet-and-sections",
+      "status": "implemented",
+      "currentBehavior": "The default plan groups named course rows into university-specific requirement sections, with expandable details and an optional detailed worksheet.",
+      "evidence": [
+        {
+          "file": "dist/sheet.js",
+          "symbolOrData": "renderCoursePlan/renderCourseGrid/curriculumSectionHTML; dist/course-plan-view.js curriculumHierarchy"
+        }
+      ],
+      "acceptanceCriteria": [
+        "A first-time student sees course, provider, requirement and credits without opening advanced tools.",
+        "General education, foundational/core, major, cognate/concentration, electives and noncourse obligations follow the actual degree.",
+        "Shared requirements count once in the degree total."
+      ]
+    },
+    {
+      "id": "course-progress",
+      "status": "implemented",
+      "currentBehavior": "Red/yellow/green progress comes from missing/not-started, in-progress and finished records. Degree totals distinguish finished versus school-confirmed credits.",
+      "evidence": [
+        {
+          "file": "dist/course-plan-view.js",
+          "symbolOrData": "progress/progressState; dist/sheet.js degreeProgressHTML/simpleCourseDialog"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Named university courses can become in progress and finished even without an outside alternative.",
+        "No school approval is inferred from saving a course or checking a generic task.",
+        "Changing the degree recomputes the same course records against the new ledger."
+      ]
+    },
+    {
+      "id": "next-actions-checklist",
+      "status": "implemented",
+      "currentBehavior": "Private plan-scoped tasks support statuses, due dates, notes and custom tasks; completion-sensitive steps reopen after academic changes.",
+      "evidence": [
+        {
+          "file": "dist/student-checklist.js",
+          "symbolOrData": "build/apply; dist/sheet.js renderChecklist"
+        }
+      ],
+      "acceptanceCriteria": [
+        "A returning student sees one meaningful next action.",
+        "Known published policies do not become generic school-reapproval homework.",
+        "Private tasks persist across plan switches and cannot manufacture academic credit."
+      ]
+    },
+    {
+      "id": "optimized-course-mix",
+      "status": "partial",
+      "currentBehavior": "The solver respects residency, upper-level rules, source action deduplication, grades and conditional placements. Only a subset of models has strong reviewed provider maps and exact policy evidence.",
+      "evidence": [
+        {
+          "file": "dist/planner.js",
+          "symbolOrData": "optimize/validate/sourceUseErrors; content/reviews/priority-pathway-acceptance-2026-11-17.json"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Every recommended action belongs to a degree requirement and an allowed source.",
+        "The solver never maximizes raw transfer credits at the expense of residency or source-credit limits.",
+        "Course/version/format-specific evidence is required before promoting conditional maps."
+      ]
+    },
+    {
+      "id": "what-if-and-credit-reuse",
+      "status": "implemented",
+      "currentBehavior": "Students compare up to3routes using the same completed/in-progress/saved pool, see individual placements, save versions and switch plans with history preservation.",
+      "evidence": [
+        {
+          "file": "dist/plan-comparison-engine.js",
+          "symbolOrData": "build/collectionFit/courseMatrix/applyScenario; dist/compare-plans.js previewUse"
+        }
+      ],
+      "acceptanceCriteria": [
+        "The same source course cannot earn duplicate awards across multiple requirements without an explicit reviewed bundle.",
+        "Changing school preserves source records and separates unused/potential/finished credits.",
+        "Known university coursework is not called missing source research."
+      ]
+    },
+    {
+      "id": "cost-speed-and-savings",
+      "status": "partial",
+      "currentBehavior": "Seven published comparison models and a persistent savings strip exist, plus remaining-cost estimates and per-plan quotes/pace. Some real degree models have no comparable savings model and hide the strip in simple view.",
+      "evidence": [
+        {
+          "file": "dist/savings-tracker.js",
+          "symbolOrData": "update/detailsHTML; dist/data/cost-comparisons.json; dist/cost-assumptions.js render"
+        }
+      ],
+      "acceptanceCriteria": [
+        "The strip remains useful when tuition is known but personal pace/fees are missing.",
+        "Savings are explicitly tuition plus modeled outside costs; unknown fees are not zero.",
+        "Named university courses are not labeled missing research in savings details.",
+        "Subscription term count and completion time are separate assumptions."
+      ]
+    },
+    {
+      "id": "community-engagement",
+      "status": "implemented",
+      "currentBehavior": "Public browsing plus signed-in posts, plan sharing, likes, upvotes, contextual comments/replies, reports, soft deletion and moderation are implemented.",
+      "evidence": [
+        {
+          "file": "dist/community-client.js",
+          "symbolOrData": "mountContext/sharePlan/openPost; server/community.mjs routes"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Students can discuss a specific plan/course/school in context without leaving their private records exposed.",
+        "Public plan preview excludes completed/in-progress records and private notes.",
+        "Reports and moderation remain available on user-generated content."
+      ]
+    },
+    {
+      "id": "reusable-community-templates",
+      "status": "implemented",
+      "currentBehavior": "Ready catalog templates and reviewed community templates can be browsed and copied; research is reused rather than always regenerated.",
+      "evidence": [
+        {
+          "file": "dist/community.js",
+          "symbolOrData": "loadTemplates/loadCommunityTemplates/openTemplate; dist/ready-templates.js"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Copying a template preserves the current course collection.",
+        "Unreviewed forum posts remain distinct from approved reusable templates.",
+        "A published revision is immutable enough for evidence to stay attached to its exact scope."
+      ]
+    },
+    {
+      "id": "community-verified-badges",
+      "status": "partial",
+      "currentBehavior": "Outcome reports and moderated proof-based badges exist. Current community catalog identifier validation accepts years/ranges only, while WGU uses a monthly catalog identifier.",
+      "evidence": [
+        {
+          "file": "dist/verification.js",
+          "symbolOrData": "catalogYear/normalizeTarget/badgeHTML; server/community.mjs evidence aggregate"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Exact program/course/catalog scope is preserved for semester-year and monthly catalog IDs.",
+        "Two different recent moderator-reviewed positive outcomes with proof are needed for Community verified.",
+        "Conflicting recent reports downgrade the badge; votes alone do not verify academic transfer."
+      ]
+    },
+    {
+      "id": "url-driven-ai-research",
+      "status": "partial",
+      "currentBehavior": "A single degree URL can resolve existing source plans or start bounded server-side Claude research with status, recovery and reuse. Quality gates reject incomplete plans; arbitrary universities cannot be guaranteed a complete answer.",
+      "evidence": [
+        {
+          "file": "dist/request-plan.js",
+          "symbolOrData": "showResearch/showSourcePlan; server/template-research.mjs"
+        }
+      ],
+      "acceptanceCriteria": [
+        "A previously reviewed degree opens without paid AI research.",
+        "A new request shows honest progress and survives interrupted networking.",
+        "Incomplete source research is owned by DegreePath and cannot be marketed as a fully loaded plan.",
+        "Program/catalog/format differences do not share incorrect cached results."
+      ]
+    },
+    {
+      "id": "custom-plan-builder",
+      "status": "implemented",
+      "currentBehavior": "A student can create/import a requirement ledger, edit source-bound options and save a private curriculum without waiting for a curated template.",
+      "evidence": [
+        {
+          "file": "dist/degree-audit.js",
+          "symbolOrData": "form/preview/import; dist/audit-curriculum.js model creation"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Blank and CSV paths explain required columns and preview the exact credit ledger.",
+        "An imported requirement is not treated as a completed course or a reviewed university equivalency.",
+        "Replacing the active degree preserves prior versions and private records."
+      ]
+    },
+    {
+      "id": "csv-course-template",
+      "status": "implemented",
+      "currentBehavior": "A headers-only CSV download has column definitions and numbered example rows; preview occurs before adding records.",
+      "evidence": [
+        {
+          "file": "dist/credit-import.js",
+          "symbolOrData": "helpHTML; dist/data/credit-import-template.csv"
+        }
+      ],
+      "acceptanceCriteria": [
+        "The template has stable columns and no example credits that could be imported as real coursework.",
+        "Invalid units/status/date/credit rows are shown before import.",
+        "Duplicate records and edits do not silently duplicate earned credits."
+      ]
+    },
+    {
+      "id": "student-accounts",
+      "status": "partial",
+      "currentBehavior": "Email/Google, password reset, private account plan copies, conflict-aware restore and deletion exist. Device edits do not automatically update the account copy.",
+      "evidence": [
+        {
+          "file": "dist/account.js",
+          "symbolOrData": "uploadForm/dashboard/open-plan handling; dist/account-client.js"
+        }
+      ],
+      "acceptanceCriteria": [
+        "A signed-in student understands whether changes are saved locally or to the account.",
+        "Cross-device continuation is reachable without guessing a hidden manual-save workflow.",
+        "Autosave, if added, is explicit consent with revision conflict protection and no loss of private records."
+      ]
+    },
+    {
+      "id": "admin-and-college-access",
+      "status": "implemented",
+      "currentBehavior": "Owner/admin research review, encrypted AI connection management, verified college teams and consented student information requests exist. Lead purchasing/billing is not implemented.",
+      "evidence": [
+        {
+          "file": "dist/admin.js",
+          "symbolOrData": "loadTemplates/loadOrganizations/loadLeads; dist/school.js loadCollegeContact"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Only authorized admins publish reviewed templates.",
+        "Verified institution membership is separate from platform administration.",
+        "Colleges see only opt-in contact fields; course records and plans are not bundled into leads.",
+        "Student withdrawal blocks future access and is reflected in college views."
+      ]
+    },
+    {
+      "id": "school-insights-and-rankings",
+      "status": "partial",
+      "currentBehavior": "Ten schools have source-linked pros/tradeoffs/accreditation/tuition/community perspectives; comparable transfer limits can be ranked. There is no submitted structured rating aggregation for ease/speed/cost/recognition.",
+      "evidence": [
+        {
+          "file": "dist/school.js",
+          "symbolOrData": "renderBrowse/renderProfile; dist/school-insights-engine.js validate/rank"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Policy comparisons use like-for-like credits and source scope.",
+        "Externally sourced anecdotes are not fabricated DegreePath reviews.",
+        "Review scores require real ratings, count/date/scope and moderation before a composite ranking is shown."
+      ]
+    },
+    {
+      "id": "gamification",
+      "status": "partial",
+      "currentBehavior": "Private milestones celebrate actual saved choices and finished/accepted records; no public competitive leagues, scoring or leaderboards are implemented.",
+      "evidence": [
+        {
+          "file": "dist/student-progress.js",
+          "symbolOrData": "summarize/advance/update"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Milestones reflect actual records and can be corrected after data changes.",
+        "A social competition feature is not required to complete a degree or encourage unverified rushing."
+      ]
+    },
+    {
+      "id": "policy-refresh-and-scale",
+      "status": "partial",
+      "currentBehavior": "Static reviewed data, D1 schemas, indexes, auth boundaries and bounded research exist. A monthly institutional review operation, production load test, SLO/observability and backup/restore exercise are not established by code alone.",
+      "evidence": [
+        {
+          "file": "scripts/build-community.mjs",
+          "symbolOrData": "source checks; db/*.mjs; worker/index.mjs"
+        }
+      ],
+      "acceptanceCriteria": [
+        "Each publish verifies source/compiler consistency and protects private API boundaries.",
+        "A scheduled review queue identifies stale facts without silently promoting updated data.",
+        "Measured production load and recovery tests precede any claim of readiness for millions."
+      ]
+    }
+  ],
+  "intentionallyNotAdded": [
+    "Fabricated student reviews, rankings or outcomes.",
+    "New public leaderboards before clear educational purpose and privacy design.",
+    "Unverified course awards or universal automatic degree plans for every university.",
+    "Payments/lead billing before institutional demand and explicit commercial terms."
+  ],
+  "releaseRecommendation": "First deploy the current known-facts cleanup. Next correct comparison and savings consistency, exact community catalog identity, visible personal intake and account-save clarity; keep broad academic mapping expansion as a sourced data program rather than a UI completeness claim.",
+  "followUpReview": {
+    "releaseCandidate": 48,
+    "workflowRemediations": "content/reviews/end-to-end-release-audit-2026-11-17.json",
+    "note": "Baseline feature classification is preserved. Cohesion and correctness fixes do not imply complete institutional mapping coverage."
+  }
+}

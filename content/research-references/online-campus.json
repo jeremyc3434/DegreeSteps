@@ -1,0 +1,297 @@
+{
+  "version": 1,
+  "packets": [
+    {
+      "id": "odu-online-psychology-bs",
+      "schoolName": "Old Dominion University",
+      "programName": "Bachelor of Science in Psychology",
+      "level": "bachelor",
+      "modality": "online",
+      "degreeUrls": [
+        "https://online.odu.edu/academics/programs/online-psychology-degree"
+      ],
+      "catalogYear": null,
+      "checkedOn": "2026-11-17",
+      "sources": [
+        {
+          "id": "odu-psychology-program",
+          "url": "https://online.odu.edu/academics/programs/online-psychology-degree",
+          "title": "ODUGlobal online Psychology bachelor's program",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        }
+      ],
+      "facts": [
+        {
+          "id": "odu-psychology-total",
+          "field": "totalCredits",
+          "value": 120,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "odu-psychology-program"
+          ]
+        },
+        {
+          "id": "odu-psychology-residency",
+          "field": "institutionMinCredits",
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "odu-psychology-program"
+          ]
+        },
+        {
+          "id": "odu-psychology-transfer",
+          "field": "externalMaxCredits",
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "odu-psychology-program"
+          ]
+        }
+      ],
+      "studentCautions": [
+        {
+          "text": "The overall transfer ceiling does not establish approval for Sophia, Study.com, StraighterLine, or any other particular source or placement.",
+          "sourceIds": [
+            "odu-psychology-program"
+          ]
+        },
+        {
+          "text": "The program uses accelerated eight-week courses with deadlines; it is not unrestricted self-paced competency study.",
+          "sourceIds": [
+            "odu-psychology-program"
+          ]
+        },
+        {
+          "text": "Military training may be evaluated through the program's military pathway, but a service record does not itself establish a degree credit award.",
+          "sourceIds": [
+            "odu-psychology-program"
+          ]
+        },
+        {
+          "text": "The program page links the official catalog. Retrieve the full current major and general-education requirements before presenting a complete course plan; this packet does not establish those course rows or their catalog year.",
+          "sourceIds": [
+            "odu-psychology-program"
+          ]
+        }
+      ],
+      "ambiguities": []
+    },
+    {
+      "id": "troy-psychology-bs-formats",
+      "schoolName": "Troy University",
+      "programName": "Bachelor of Science in Psychology",
+      "level": "bachelor",
+      "modality": null,
+      "degreeUrls": [
+        "https://www.troy.edu/academics/academic-programs/bachelors-degree-in-psychology.html"
+      ],
+      "catalogYear": null,
+      "checkedOn": "2026-11-17",
+      "sources": [
+        {
+          "id": "troy-psychology-program",
+          "url": "https://www.troy.edu/academics/academic-programs/bachelors-degree-in-psychology.html",
+          "title": "Troy University Bachelor of Science in Psychology",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "troy-transfer-acceptance",
+          "url": "https://www.troy.edu/academics/academic-resources/records-office/academic-evaluation-center/what-transfer-credits-are-accepted.html",
+          "title": "Troy University transfer credit acceptance and residency distinction",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        }
+      ],
+      "facts": [
+        {
+          "id": "troy-psychology-total",
+          "field": "totalCredits",
+          "value": 120,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "troy-psychology-program"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "online",
+          "label": "Online classes",
+          "programName": "Bachelor of Science in Psychology — Online",
+          "learningFormat": "course-based",
+          "modality": "online",
+          "sourceIds": [
+            "troy-psychology-program"
+          ]
+        },
+        {
+          "id": "campus",
+          "label": "Classes on campus",
+          "programName": "Bachelor of Science in Psychology — Residential",
+          "learningFormat": "course-based",
+          "modality": "campus",
+          "sourceIds": [
+            "troy-psychology-program"
+          ]
+        }
+      ],
+      "studentCautions": [
+        {
+          "text": "Troy's transfer page says it does not limit the number of credits accepted for transfer; degree residency and course applicability still govern what completes the degree. Do not invent a blanket 90-credit institutional acceptance cap.",
+          "sourceIds": [
+            "troy-transfer-acceptance"
+          ]
+        },
+        {
+          "text": "Accredited institutional graded coursework receives transfer priority. This does not establish a particular ACE course equivalency or an alternative-credit cap.",
+          "sourceIds": [
+            "troy-transfer-acceptance"
+          ]
+        },
+        {
+          "text": "The major is offered online, on the Troy campus, and through a blend. Ask which format the student wants and check that format's requirements before building the plan.",
+          "sourceIds": [
+            "troy-psychology-program"
+          ]
+        }
+      ],
+      "ambiguities": [
+        {
+          "text": "The degree page offers online, campus, and blended delivery. The online and campus choices do not represent a complete list of possible schedules.",
+          "sourceIds": [
+            "troy-psychology-program"
+          ],
+          "affects": [
+            "modality",
+            "learningFormat"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "regent-psychology-bs-formats",
+      "schoolName": "Regent University",
+      "programName": "Bachelor of Science in Psychology",
+      "level": "bachelor",
+      "modality": null,
+      "degreeUrls": [
+        "https://www.regent.edu/program/bs-in-psychology/"
+      ],
+      "catalogYear": null,
+      "checkedOn": "2026-11-17",
+      "sources": [
+        {
+          "id": "regent-psychology-program",
+          "url": "https://www.regent.edu/program/bs-in-psychology/",
+          "title": "Regent University Bachelor of Science in Psychology",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "regent-transfer-policy",
+          "url": "https://www.regent.edu/admissions-aid/transfer-credits/",
+          "title": "Regent University undergraduate transfer and prior learning policies",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        },
+        {
+          "id": "regent-2026-undergraduate-catalog",
+          "url": "https://www.regent.edu/academics/catalogs/UNDERGRAD_catalog_2026_FA.pdf",
+          "title": "Regent University 2026 fall undergraduate catalog",
+          "kind": "university",
+          "checkedOn": "2026-11-17"
+        }
+      ],
+      "facts": [
+        {
+          "id": "regent-bachelor-transfer",
+          "field": "externalMaxCredits",
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "regent-transfer-policy"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "online",
+          "label": "Online classes",
+          "programName": "Bachelor of Science in Psychology — Online",
+          "learningFormat": "course-based",
+          "modality": "online",
+          "sourceIds": [
+            "regent-psychology-program"
+          ]
+        },
+        {
+          "id": "campus",
+          "label": "Classes on campus",
+          "programName": "Bachelor of Science in Psychology — Residential",
+          "learningFormat": "course-based",
+          "modality": "campus",
+          "sourceIds": [
+            "regent-psychology-program"
+          ]
+        }
+      ],
+      "studentCautions": [
+        {
+          "text": "The program page publishes 120 or more credits. This packet does not turn that lower bound into an exact completed degree ledger or a confirmed catalog year.",
+          "sourceIds": [
+            "regent-psychology-program"
+          ]
+        },
+        {
+          "text": "The published 30-semester-credit examination limit concerns approved credit-by-examination. Do not apply that number to all ACE or other alternative learning without separately establishing its scope.",
+          "sourceIds": [
+            "regent-transfer-policy"
+          ]
+        },
+        {
+          "text": "ACE participation and prior-learning opportunities are conditional. They do not establish that every Sophia, Study.com, or StraighterLine course is accepted or fulfills this major.",
+          "sourceIds": [
+            "regent-transfer-policy"
+          ]
+        },
+        {
+          "text": "A qualifying regionally accredited associate degree can waive some general education requirements, with exceptions for major-specific requirements and prerequisites. Applicability requires an individual evaluation.",
+          "sourceIds": [
+            "regent-transfer-policy"
+          ]
+        },
+        {
+          "text": "An official catalog search excerpt indicates 30 Regent credits; verify the current assigned catalog before using that residency number. The full catalog was not retrieved in this source review.",
+          "sourceIds": [
+            "regent-2026-undergraduate-catalog"
+          ]
+        }
+      ],
+      "ambiguities": [
+        {
+          "text": "The degree is offered online and on campus in Virginia Beach; the program link alone does not select a delivery format.",
+          "sourceIds": [
+            "regent-psychology-program"
+          ],
+          "affects": [
+            "modality",
+            "learningFormat"
+          ]
+        },
+        {
+          "text": "The institutional credit minimum and assigned catalog year require full current catalog verification.",
+          "affects": [
+            "institutionMinCredits",
+            "catalogYear"
+          ],
+          "sourceIds": [
+            "regent-2026-undergraduate-catalog"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "degreepath",
+  "version": "0.6.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-community.mjs",
+    "test": "node scripts/test-core.mjs",
+    "test:core": "node scripts/test-core.mjs",
+    "check:source": "node scripts/check-source-safety.mjs",
+    "check:production": "node scripts/check-production-config.mjs",
+    "benchmark:scale": "node scripts/benchmark-scale.mjs",
+    "deploy:cloudflare": "node scripts/check-production-config.mjs && npm exec --yes --package=wrangler@4.164.0 -- wrangler deploy",
+    "deploy:staging": "npm exec --yes --package=wrangler@4.164.0 -- wrangler deploy --config wrangler.staging.jsonc",
+    "review:pathways": "node scripts/review-pathways.mjs",
+    "review:pathways:snapshot": "node scripts/review-pathways.mjs --write",
+    "db:generate": "drizzle-kit generate --config drizzle.config.mjs",
+    "test:community": "node --test server/community.test.mjs"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2"
+  },
+  "dependencies": {
+    "fflate": "0.8.3",
+    "pdfjs-dist": "6.5.438",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  }
+}

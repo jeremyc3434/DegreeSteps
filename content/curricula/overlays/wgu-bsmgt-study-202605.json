@@ -1,0 +1,528 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-10",
+  "modelId": "curriculum-wgu-catalog-ecceaa488637ac83",
+  "catalog": "202605",
+  "sources": [
+    {
+      "id": "wgu-bsmgt-study-provider-2026-11",
+      "title": "Study.com provider-reported Business Management degree table (catalog unspecified)",
+      "url": "https://study.com/college/western-governors-university/degrees/wgu-bachelor-of-science-in-business-management.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "wgu-bsmgt-transfer-guideline-202605",
+      "title": "WGU Business Management transfer evaluation guidelines, Catalog 05-2026 (requirement codes and CUs; not a Study.com articulation)",
+      "url": "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0009-2026-11",
+      "title": "Study.com Business 107: Organizational Behavior source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/organizational-behavior-course.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0187-2026-11",
+      "title": "Study.com Communications 301: Diversity and Intercultural Communication source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/communications-301-diversity-and-intercultural-communication.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0026-2026-11",
+      "title": "Study.com Business 106: Human Resource Management source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/human-resource-management-course.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0025-2026-11",
+      "title": "Study.com Business 103: Introductory Business Law source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/business-law-course.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0007-2026-11",
+      "title": "Study.com Business 102: Principles of Marketing source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/principles-of-marketing-course.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0076-2026-11",
+      "title": "Study.com Accounting 102: Intro to Managerial Accounting source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/accounting-102-intro-to-managerial-accounting.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0225-2026-11",
+      "title": "Study.com Business 212: Business Statistics source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/business-114-business-statistics.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0050-2026-11",
+      "title": "Study.com Business 312: Advanced Operations Management source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/business-312-advanced-operations-management.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0115-2026-11",
+      "title": "Study.com Business 120: International Business source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/business-120-international-business.html",
+      "checked": "2026-11-10"
+    },
+    {
+      "id": "study-course-sdcm-0265-2026-11",
+      "title": "Study.com Philosophy 104: Contemporary Trends in Technology and Ethics source identity and semester-credit recommendation",
+      "url": "https://study.com/academy/course/philosophy-104-contemporary-trends-in-technology-and-ethics.html",
+      "checked": "2026-11-10"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "bsmgt-organizational-behavior",
+      "title": "Organizational Behavior",
+      "credits": 3,
+      "code": "C715",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0009-bsmgt-organizational-behavior",
+          "provider": "Study.com",
+          "title": "Business 107: Organizational Behavior",
+          "code": "SDCM-0009",
+          "codeAliases": [
+            "Business 107"
+          ],
+          "credits": 3,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Organizational Behavior",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0009-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 3 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/organizational-behavior-course.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-emotional-and-cultural-intelligence",
+      "title": "Emotional and Cultural Intelligence",
+      "credits": 3,
+      "code": "D082",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0187-bsmgt-emotional-and-cultural-intelligence",
+          "provider": "Study.com",
+          "title": "Communications 301: Diversity and Intercultural Communication",
+          "code": "SDCM-0187",
+          "codeAliases": [
+            "Communications 301"
+          ],
+          "credits": 3,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Emotional and Cultural Intelligence",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0187-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 3 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts.",
+            "The current Study.com course page contradicts itself on lower- versus upper-division credit. Confirm the current credit level and applicable WGU acceptance; no receiving or source level is inferred here."
+          ],
+          "url": "https://study.com/academy/course/communications-301-diversity-and-intercultural-communication.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-functions-of-human-resource-management",
+      "title": "Functions of Human Resource Management",
+      "credits": 3,
+      "code": "D351",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0026-bsmgt-functions-of-human-resource-management",
+          "provider": "Study.com",
+          "title": "Business 106: Human Resource Management",
+          "code": "SDCM-0026",
+          "codeAliases": [
+            "Business 106"
+          ],
+          "credits": 3,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Functions of Human Resource Management",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0026-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 3 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/human-resource-management-course.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-business-environment-applications-i-business-structures-and-legal-environment",
+      "title": "Business Environment Applications I: Business Structures and Legal Environment",
+      "credits": 2,
+      "code": "D078",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0025-bsmgt-business-environment-applications-i-business-structures-and-legal-environment",
+          "provider": "Study.com",
+          "title": "Business 103: Introductory Business Law",
+          "code": "SDCM-0025",
+          "codeAliases": [
+            "Business 103"
+          ],
+          "credits": 2,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Business Environment Applications I: Business Structures and Legal Environment",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0025-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 2 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/business-law-course.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-concepts-in-marketing-sales-and-customer-contact",
+      "title": "Concepts in Marketing, Sales, and Customer Contact",
+      "credits": 3,
+      "code": "D077",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0007-bsmgt-concepts-in-marketing-sales-and-customer-contact",
+          "provider": "Study.com",
+          "title": "Business 102: Principles of Marketing",
+          "code": "SDCM-0007",
+          "codeAliases": [
+            "Business 102"
+          ],
+          "credits": 3,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Concepts in Marketing, Sales, and Customer Contact",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0007-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 3 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/principles-of-marketing-course.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-introduction-to-business-accounting",
+      "title": "Introduction to Business Accounting",
+      "credits": 3,
+      "code": "D774",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0076-bsmgt-introduction-to-business-accounting",
+          "provider": "Study.com",
+          "title": "Accounting 102: Intro to Managerial Accounting",
+          "code": "SDCM-0076",
+          "codeAliases": [
+            "Accounting 102"
+          ],
+          "credits": 3,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Introduction to Business Accounting",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0076-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 3 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/accounting-102-intro-to-managerial-accounting.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-quantitative-analysis-for-business",
+      "title": "Quantitative Analysis For Business",
+      "credits": 3,
+      "code": "C723",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0225-bsmgt-quantitative-analysis-for-business",
+          "provider": "Study.com",
+          "title": "Business 212: Business Statistics",
+          "code": "SDCM-0225",
+          "codeAliases": [
+            "Business 212"
+          ],
+          "credits": 3,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Quantitative Analysis For Business",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0225-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 3 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/business-114-business-statistics.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-business-environment-applications-ii-process-logistics-and-operations",
+      "title": "Business Environment Applications II: Process, Logistics, and Operations",
+      "credits": 2,
+      "code": "D079",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0050-bsmgt-business-environment-applications-ii-process-logistics-and-operations",
+          "provider": "Study.com",
+          "title": "Business 312: Advanced Operations Management",
+          "code": "SDCM-0050",
+          "codeAliases": [
+            "Business 312"
+          ],
+          "credits": 2,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Business Environment Applications II: Process, Logistics, and Operations",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0050-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 2 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/business-312-advanced-operations-management.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-managing-in-a-global-business-environment",
+      "title": "Managing in a Global Business Environment",
+      "credits": 3,
+      "code": "D080",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0115-bsmgt-managing-in-a-global-business-environment",
+          "provider": "Study.com",
+          "title": "Business 120: International Business",
+          "code": "SDCM-0115",
+          "codeAliases": [
+            "Business 120"
+          ],
+          "credits": 3,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Managing in a Global Business Environment",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0115-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 3 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/business-120-international-business.html"
+        }
+      ]
+    },
+    {
+      "id": "bsmgt-ethics-in-technology",
+      "title": "Ethics in Technology",
+      "credits": 3,
+      "code": "D333",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "study-sdcm-0265-bsmgt-ethics-in-technology",
+          "provider": "Study.com",
+          "title": "Philosophy 104: Contemporary Trends in Technology and Ethics",
+          "code": "SDCM-0265",
+          "codeAliases": [
+            "Philosophy 104"
+          ],
+          "credits": 3,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Ethics in Technology",
+          "sourceIds": [
+            "wgu-bsmgt-study-provider-2026-11",
+            "wgu-bsmgt-guide",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "study-course-sdcm-0265-2026-11"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Provider-reported conditional match: Study.com lists this exact WGU receiving-course title and competency-unit value, but its program table does not state an applicable catalog or cohort. This is not a WGU-certified articulation.",
+            "Obtain WGU adviser approval for this exact Study.com course, WGU Business Management catalog 202605, and your start date before purchase. WGU makes the final credit decision.",
+            "The source course carries 3 semester credits; the proposed receiving requirement carries 3 WGU competency units. These are separate credit systems; WGU evaluation decides the award.",
+            "Complete all transfer coursework and have official transcripts evaluated before the WGU program starts."
+          ],
+          "url": "https://study.com/academy/course/philosophy-104-contemporary-trends-in-technology-and-ethics.html"
+        }
+      ]
+    }
+  ],
+  "replaceUnresolved": {
+    "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.": "WGU course identifiers are populated only where the official Business Management Catalog 05-2026 transfer guideline prints the exact code, title and competency-unit value; other identifiers remain unresolved."
+  },
+  "appendUnresolved": [
+    "The ten Study.com options added on 2026-11-10 are provider-reported conditional matches to exact 202605 requirement titles and CUs. Study.com does not state a catalog/cohort; obtain WGU adviser approval before purchase. Introduction to Business Finance remains unresolved because the university guideline excludes general finance."
+  ],
+  "mappingCheckedOn": "2026-11-10",
+  "refreshSources": [
+    {
+      "id": "wgu-bsmgt-guide",
+      "title": "Business Management \u2013 B.S. official standard path",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSMGT.pdf",
+      "checked": "2026-11-10"
+    }
+  ]
+}

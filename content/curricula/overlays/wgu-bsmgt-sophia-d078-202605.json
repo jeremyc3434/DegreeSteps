@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-15",
+  "modelId": "curriculum-wgu-catalog-ecceaa488637ac83",
+  "catalog": "202605",
+  "sources": [
+    {
+      "id": "wgu-sophia-business-law-2026-11",
+      "title": "Sophia Business Law named WGU receiving requirement and source credits (catalog unspecified)",
+      "url": "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+      "checked": "2026-11-15"
+    },
+    {
+      "id": "wgu-bsmgt-transfer-guideline-202605",
+      "title": "WGU Business Management transfer evaluation guidelines, Catalog 05-2026 (requirement codes and CUs; not a Study.com articulation)",
+      "url": "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
+      "checked": "2026-11-10"
+    }
+  ],
+  "requirements": [
+    {
+      "id": "bsmgt-business-environment-applications-i-business-structures-and-legal-environment",
+      "title": "Business Environment Applications I: Business Structures and Legal Environment",
+      "credits": 2,
+      "code": "D078",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "options": [
+        {
+          "id": "sophia-soph-0032-bsmgt-business-environment-applications-i-reviewed",
+          "provider": "Sophia",
+          "title": "Business Law",
+          "code": "SOPH-0032",
+          "codeAliases": [
+            "BUSI1050"
+          ],
+          "credits": 2,
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "creditSystem": "competency-unit",
+          "receivingTitle": "Business Environment Applications I: Business Structures and Legal Environment",
+          "sourceIds": [
+            "wgu-sophia-business-current",
+            "wgu-sophia-business-law-2026-11",
+            "wgu-bsmgt-transfer-guideline-202605",
+            "wgu-bsmgt-guide"
+          ],
+          "evidence": "conditional",
+          "evidenceType": "provider-partnership",
+          "creditOrigin": "ace",
+          "sourceType": "alternative",
+          "conditions": [
+            "Sophia explicitly publishes Business Law / BUSI1050 / SOPH-0032 for the WGU Business Environment Applications I receiving requirement. Its page uses singular Structure; this reviewed row is specific to that named requirement, not a general rule for matching similar course titles.",
+            "The provider page does not identify the applicable WGU catalog. Obtain WGU adviser confirmation for Business Management catalog 202605 and your intended start date before purchase.",
+            "Sophia describes three source semester credits. The retained WGU 202605 requirement is D078 with two competency units. The quantities are kept separate; the provider wording does not establish a three-CU WGU award.",
+            "Sophia warns that WGU articulations changed after March 2026 and degree-specific acceptance must be checked on the WGU Transfer Pathways site. This is a conditional provider-published candidate, not an individual university approval.",
+            "Complete transfer coursework and have official transcripts evaluated before beginning the WGU program."
+          ],
+          "url": "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3"
+        }
+      ]
+    }
+  ],
+  "replaceUnresolved": {},
+  "appendUnresolved": [
+    "The Sophia Business Law alternative reviewed on 2026-11-15 is limited to D078 in the retained Business Management 202605 ledger. The provider does not state its applicable catalog; three source semester credits do not establish three receiving competency units. Obtain WGU confirmation before enrollment."
+  ],
+  "mappingCheckedOn": "2026-11-15",
+  "refreshSources": [
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15"
+    }
+  ]
+}

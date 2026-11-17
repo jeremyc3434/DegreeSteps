@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "auditedAt": "2026-11-17T02:18:42.743Z",
+  "owner": "DegreePath internal research, not student homework",
+  "items": [
+    {
+      "priority": 0,
+      "id": "readiness-semantics",
+      "scope": "All 45 models; 37 ready flags",
+      "evidence": {
+        "academicValidReady": 37,
+        "fullValidReady": 0,
+        "readyStillOpenSelections": 4
+      },
+      "action": "Separate ledgerComplete, placementEvidenceComplete, policyComplete, executableCourseChoice, and personalEvaluationPending. Admission/student-specific confirmation is a checklist state, not blanket program research. Do not mark research complete just because a University fallback fills a credit slot."
+    },
+    {
+      "priority": 0,
+      "id": "ready-open-choices",
+      "scope": [
+        {
+          "modelId": "curriculum-liberty-psychology-bs-residential",
+          "requirementIds": [
+            "free-electives-11"
+          ]
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-aa-online",
+          "requirementIds": [
+            "psychology-elective-2",
+            "psychology-elective-3"
+          ]
+        },
+        {
+          "modelId": "curriculum-liberty-interdisciplinary-aa-online",
+          "requirementIds": [
+            "interdisciplinary-general-electives-7",
+            "interdisciplinary-general-electives-8"
+          ]
+        },
+        {
+          "modelId": "tesu-general-management",
+          "requirementIds": [
+            "elective4",
+            "elective5"
+          ]
+        }
+      ],
+      "action": "Preselect documented nonduplicating named courses inside each elective/restriction block, or withhold ready-to-follow status until those exact options exist. Preserve genuine student choice as optional variation."
+    },
+    {
+      "priority": 0,
+      "id": "cross-program-and-format-inheritance",
+      "evidence": {
+        "inheritedOptionPlacements": 4599,
+        "file": "scripts/build-curriculum-registry.mjs",
+        "guard": "sharedAwardApplies returns true for legacy matches without .award"
+      },
+      "action": "Use source-version+receiving-school+delivery-format+degree-level scope before inheritance. Keep cross-program candidates in an internal candidate graph until requirement placement and course version are independently established; do not count them as ready approved placements."
+    },
+    {
+      "priority": 0,
+      "id": "wgu-policy-and-receiving-evidence",
+      "modelIds": [
+        "curriculum-wgu-catalog-ecceaa488637ac83",
+        "curriculum-wgu-catalog-358f1e10651bf3d8",
+        "curriculum-wgu-catalog-2e49db64c32dfc79",
+        "curriculum-wgu-catalog-689e417cff765fc9",
+        "curriculum-wgu-catalog-d6925a8fbb6e8d9a",
+        "curriculum-wgu-catalog-995901539a30b649",
+        "curriculum-wgu-catalog-1d1cb06c2d479685",
+        "curriculum-wgu-catalog-b2a8a37d4fbedabd",
+        "curriculum-wgu-catalog-94e68cf7b91dec17",
+        "curriculum-wgu-catalog-bf14bd14e87ae7aa",
+        "curriculum-wgu-catalog-4431e5205a7d441a",
+        "curriculum-wgu-catalog-93e0bd6d0c7171ac",
+        "curriculum-wgu-catalog-c023977432f945c3",
+        "curriculum-wgu-catalog-3a9fedcacbfcccae",
+        "curriculum-wgu-catalog-d734fb4b04eded7c",
+        "curriculum-wgu-catalog-19be0ad2d1922f49",
+        "curriculum-wgu-catalog-a4bbd78b1b3233b7",
+        "curriculum-wgu-bs-computer-science-reviewed",
+        "curriculum-wgu-catalog-f5987d0b65c06f56",
+        "curriculum-wgu-catalog-bc26f6f5019c6ee3"
+      ],
+      "evidence": {
+        "readyModels": 20,
+        "publishedOnlySelectedOutsideCredits": 0,
+        "institutionMinCreditsMissing": 20
+      },
+      "action": "Ingest current exact WGU program/cohort transfer guidelines and residency calculations. Resolve CU receiving awards independently of source semester credits; resolve upper-division rules. Provider partner tables lacking catalog dates remain candidates."
+    },
+    {
+      "priority": 0,
+      "id": "liberty-specific-policy-and-expansion",
+      "modelIds": [
+        "curriculum-liberty-healthcare-administration-bs-online",
+        "curriculum-liberty-psychology-bs-residential",
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-psychology-aa-online",
+        "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-psychology-addictions-online",
+        "curriculum-liberty-business-aa-online",
+        "curriculum-liberty-interdisciplinary-aa-online",
+        "curriculum-liberty-business-bs-online",
+        "liberty-business-residential",
+        "liberty-criminal-justice-residential",
+        "liberty-criminal-justice-online"
+      ],
+      "action": "Resolve exact alternative-source policy, transfer-triggered waiver replacement hours, named one-credit/elective choices and relevant upper/major residency. Preserve already sourced exact receiving maps. Research remaining major/GenEd mappings before claiming overall 75% transfer ceiling can be reached. Pilot the 74-credit CJ residential,72-credit CJ online,83-credit business residential named routes."
+    },
+    {
+      "priority": 0,
+      "id": "tesu-current-award-versions",
+      "modelIds": [
+        "tesu-general-management"
+      ],
+      "evidence": {
+        "outsideOptions": 60,
+        "conditionalOptions": 60,
+        "selectedAlternativeCredits": 90,
+        "selectedOpenCredits": 6,
+        "outsideOverallCeiling": 105,
+        "alternativeCeiling": 90
+      },
+      "action": "Resolve provisional provider status, exact official receiving awards, disputed Finance credit amount, missing exam scores and original recommendation versions; pick concrete replacement TESU courses for open slots. Add institution-issued outside sources for remaining 15 credits rather than implying more ACE credit can pass the90 cap."
+    },
+    {
+      "priority": 1,
+      "id": "institution-issued-pathways",
+      "evidence": {
+        "outsideInstitutionIssuedOptions": 0,
+        "mappedProviderCount": 4,
+        "directoryEntries": 25
+      },
+      "channels": [
+        "tel",
+        "asu-ulc",
+        "outlier",
+        "cpa-credits",
+        "tecep"
+      ],
+      "action": "Model actual transcript issuer, accreditation, term availability, transfer institution/department restrictions, residency eligibility, per-course costs and original action provenance. Never relabel ACE credit through a pass-through transcript as original institutional learning. This gap prevents meaningful optimization for programs accepting mainly accredited-college transfer."
+    },
+    {
+      "priority": 1,
+      "id": "provider-breadth",
+      "channels": [
+        "saylor",
+        "dsst",
+        "tecep",
+        "coopersmith",
+        "davar",
+        "tel",
+        "asu-ulc",
+        "outlier",
+        "google-certificates",
+        "coursera-certificates",
+        "actfl",
+        "microsoft-exams",
+        "teex",
+        "fema",
+        "lawshelf",
+        "total-testing",
+        "cpa-credits",
+        "military-jst"
+      ],
+      "action": "Ingest current active course identities/versions then exact receiving awards program by program. Separate credit issuer from preparation, certificate host and transcript service. Do not claim source support from directory presence alone."
+    },
+    {
+      "priority": 1,
+      "id": "cost-and-speed-baskets",
+      "evidence": {
+        "readyDefaultCostComplete": 0,
+        "readyDefaultTimingWeeksPresent": 0
+      },
+      "action": "Supply researched program rates, mandatory fees, provider basket prices/subscription rules, prerequisites, transfer-before-enrollment deadlines and documented cadence. Only pace/workload remains a student input; report sourced ranges where elapsed time is genuinely variable."
+    },
+    {
+      "priority": 1,
+      "id": "claim-normalization-and-dedup",
+      "evidence": {
+        "rawPlacements": 10652,
+        "electivePlacements": 8171,
+        "literalProviderCodes": 235,
+        "explicitAliasConnectedActions": 210
+      },
+      "action": "Store source course identity/version separately from receiving award and degree requirement placement. Deduplicate research claims, expand permitted placement edges only when scoped rules allow, and measure coverage using reachable distinct degree credits, not duplicated option count."
+    }
+  ]
+}

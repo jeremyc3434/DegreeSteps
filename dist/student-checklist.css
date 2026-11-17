@@ -1,0 +1,154 @@
+/* A quiet next action, with the working checklist one click away. */
+.student-checklist { min-width:0; color:#172844; background:#fff; font-size:14px; line-height:1.5; }
+.student-checklist *, .student-checklist *::before, .student-checklist *::after { box-sizing:border-box; }
+.student-checklist button, .student-checklist input, .student-checklist select, .student-checklist textarea { font:inherit; }
+.student-checklist button, .student-checklist summary { cursor:pointer; }
+.student-checklist a { color:#205bd6; text-underline-offset:3px; }
+.student-checklist :is(button,a,input,select,textarea,summary):focus-visible { outline:3px solid #9dbcf6; outline-offset:3px; }
+.student-checklist details { min-width:0; padding:0; margin:0; border:0; border-radius:0; background:transparent; }
+.student-checklist summary { display:flex; align-items:center; min-height:44px; gap:10px; color:#334967; list-style:none; font-size:14px; font-weight:550; }
+.student-checklist summary::-webkit-details-marker { display:none; }
+.student-checklist summary > svg { flex:0 0 16px; width:16px; height:16px; margin-left:auto; color:#718299; transition:transform .15s ease; }
+.student-checklist details[open] > summary > svg { transform:rotate(180deg); }
+.student-checklist .dc-next { display:flex; align-items:center; gap:13px; min-width:0; padding:16px 22px; background:linear-gradient(100deg,#f1f6ff,#fbfcff 80%); border-bottom:1px solid #e1e9f5; }
+.dc-next-icon { display:grid; place-items:center; flex:0 0 32px; width:32px; height:32px; border:1px solid #d6e3fc; border-radius:10px; background:#fff; color:#2861d5; }
+.dc-next-icon svg { width:18px; height:18px; }
+.dc-next-copy { flex:1; min-width:0; }
+.dc-next-kicker { display:block; margin-bottom:2px; color:#3264bb; font-size:14px; font-weight:650; }
+.dc-next-copy h2 { margin:0; color:#1e3556; font-size:14px; font-weight:650; line-height:1.45; letter-spacing:-.2px; overflow-wrap:anywhere; }
+.dc-next-copy p { margin:4px 0 0; color:#63758f; font-size:14px; line-height:1.55; overflow-wrap:anywhere; }
+.dc-next-copy > .dc-status { display:inline-block; margin-top:5px; }
+.student-checklist .dc-next-button { display:inline-flex; flex:0 0 auto; justify-content:center; align-items:center; gap:9px; min-height:40px; max-width:100%; padding:9px 13px; border:1px solid #d0def8; border-radius:7px; background:#fff; color:#245ed7; font-size:14px; font-weight:650; line-height:1.5; text-align:center; text-decoration:none; }
+.student-checklist .dc-next-button svg { width:14px; height:14px; flex:0 0 14px; }
+.student-checklist .dc-next-button:hover { border-color:#245ed7; background:#245ed7; color:#fff; }
+.student-checklist .dc-checklist > summary { padding:8px 22px; border-bottom:1px solid #e6ebf3; }
+.dc-checklist > summary > strong { color:#314563; font-size:14px; font-weight:650; }
+.dc-checklist > summary .dc-progress-copy { margin-left:auto; color:#63758f; font-size:14px; white-space:nowrap; }
+.dc-checklist > summary > svg { margin-left:0; }
+.dc-checklist progress { display:block; width:95px; height:5px; border:0; border-radius:10px; overflow:hidden; background:#e8eef7; color:#4677d6; }
+.dc-checklist progress::-webkit-progress-bar { background:#e8eef7; border-radius:10px; }
+.dc-checklist progress::-webkit-progress-value { background:#4677d6; border-radius:10px; }
+.dc-checklist progress::-moz-progress-bar { background:#4677d6; border-radius:10px; }
+.dc-checklist-body { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; padding:18px 22px 20px; border-bottom:1px solid #e1e7f0; background:#fbfcfe; }
+.student-checklist .dc-group { min-width:0; border:1px solid #e0e7f1; border-radius:8px; background:#fff; }
+.student-checklist .dc-group > summary { padding:9px 14px; color:#233b5d; font-size:14px; font-weight:650; }
+.dc-group > summary > span { overflow-wrap:anywhere; }
+.dc-group > summary small { margin-left:auto; color:#718096; font-size:14px; font-weight:400; white-space:nowrap; }
+.dc-group > summary > svg { margin-left:0; }
+.dc-group[open] > summary { border-bottom:1px solid #eaf0f6; }
+.dc-group-body { padding:0 14px; }
+.dc-task-list { padding:0; margin:0; list-style:none; }
+.dc-task { position:relative; min-width:0; padding:14px 0 11px; }
+.dc-task + .dc-task { border-top:1px solid #edf0f5; }
+.dc-task-top { display:flex; min-width:0; gap:12px; align-items:flex-start; }
+.dc-task-copy { flex:1; min-width:0; }
+.student-checklist .dc-check { display:flex; align-items:flex-start; gap:9px; margin:0; color:#243955; font-size:14px; font-weight:550; line-height:1.5; cursor:pointer; }
+.student-checklist .dc-check input[type="checkbox"] { display:block; flex:0 0 17px; width:17px; height:17px; min-height:0; margin:1px 0 0; padding:0; accent-color:var(--ds-cobalt); cursor:pointer; }
+.dc-check > span { min-width:0; overflow-wrap:anywhere; }
+.dc-readonly-title { display:flex; align-items:flex-start; gap:9px; }
+.dc-readonly-title strong { min-width:0; font-size:14px; font-weight:550; line-height:1.5; overflow-wrap:anywhere; }
+.dc-auto-mark { display:inline-flex; justify-content:center; align-items:center; flex:0 0 17px; height:17px; margin-top:1px; border:1px solid #dae3ef; border-radius:50%; background:#f5f8fc; color:#6b81a0; font-size:14px; line-height:1; }
+.dc-task[data-status="done"] .dc-auto-mark { border-color:#d7e3f8; color:#3266c0; background:#edf4ff; font-size:14px; }
+.dc-task-detail { margin:5px 0 0 26px; color:#6b7a90; font-size:14px; line-height:1.55; overflow-wrap:anywhere; }
+.dc-task-meta { display:flex; align-items:center; flex-wrap:wrap; gap:7px 12px; margin:7px 0 0 26px; color:#728096; font-size:14px; }
+.dc-status { padding:2px 7px; border-radius:4px; background:#f0f3f8; color:#5f6d82; font-size:14px; line-height:1.5; white-space:nowrap; }
+.dc-status-doing { background:var(--ds-soft-blue); color:#3260a9; }
+.dc-status-waiting { background:#faf4e7; color:#8a672b; }
+.dc-status-done { background:#eef4ef; color:#4e7356; }
+.dc-task-tools { display:flex; align-items:flex-start; flex-wrap:wrap; gap:0 16px; margin:4px 0 0 26px; }
+.dc-task-tools > a { display:inline-flex; align-items:center; gap:5px; min-height:36px; color:#2f61b8; font-size:14px; text-decoration:none; }
+.dc-task-tools > a:hover { text-decoration:underline; }
+.dc-task-tools > a svg { width:13px; height:13px; }
+.student-checklist .dc-task-details { min-width:0; flex:0 0 auto; }
+.student-checklist .dc-task-details[open] { flex-basis:100%; }
+.student-checklist .dc-task-details > summary { display:inline-flex; justify-content:flex-start; min-height:36px; gap:3px; color:#728097; font-size:14px; font-weight:400; }
+.dc-task-details > summary > svg { width:13px; height:13px; flex-basis:13px; margin-left:0; }
+.dc-edit-form { width:100%; min-width:0; padding:12px; margin:2px 0 3px; border:1px solid #e1e7f0; border-radius:7px; background:#f8fafd; }
+.student-checklist .dc-edit-form label, .student-checklist .dc-add-form label { display:block; min-width:0; margin:0; color:#53657f; font-size:14px; font-weight:550; }
+.student-checklist label > span, .dc-add-options > summary > span { color:#8290a3; font-size:14px; font-weight:400; }
+.student-checklist :is(.dc-edit-form,.dc-add-form) :is(input,select,textarea) { display:block; width:100%; min-width:0; min-height:40px; margin:5px 0 0; padding:8px 10px; border:1px solid #d2dce9; border-radius:5px; background:#fff; color:#233854; font-size:14px; line-height:1.5; }
+.student-checklist :is(.dc-edit-form,.dc-add-form) textarea { resize:vertical; min-height:66px; }
+.dc-form-row { display:flex; flex-wrap:wrap; gap:12px; margin:0 0 12px; }
+.dc-form-row > label { flex:1 1 140px; }
+.dc-edit-form > label:first-child { margin-bottom:12px; }
+.dc-form-actions { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.student-checklist .dc-save { display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:8px 13px; border:1px solid #cddcf7; border-radius:6px; color:#245dd0; background:#fff; font-size:14px; font-weight:600; white-space:nowrap; }
+.student-checklist .dc-save:hover { border-color:var(--ds-cobalt); background:#edf4ff; }
+.student-checklist .dc-delete { min-height:40px; padding:7px 3px; border:0; background:transparent; color:#976256; font-size:14px; }
+.dc-auto-note { margin:0 0 12px; color:#728097; font-size:14px; line-height:1.55; }
+.student-checklist .dc-done { border-top:1px solid #edf0f5; }
+.student-checklist .dc-done > summary { min-height:42px; padding:5px 0; color:#79889b; font-size:14px; font-weight:400; }
+.dc-done > summary > svg { margin-left:0; width:13px; height:13px; flex-basis:13px; }
+.dc-done .dc-task-detail { color:#8994a5; }
+.dc-group-complete { margin:12px 0; color:#718096; font-size:14px; }
+.dc-add-form { min-width:0; padding:4px 0 0; }
+.dc-add-form h3 { margin:0 0 10px; color:#3f526f; font-size:14px; font-weight:600; }
+.dc-add-row { display:flex; align-items:flex-end; gap:9px; }
+.dc-add-row > label { flex:1; }
+.dc-add-row .dc-save { min-height:40px; }
+.student-checklist .dc-add-options { margin-top:3px; }
+.student-checklist .dc-add-options > summary { justify-content:flex-start; min-height:40px; gap:4px; color:#708099; font-size:14px; font-weight:400; }
+.dc-add-options > summary > svg { margin-left:0; width:13px; height:13px; flex-basis:13px; }
+.dc-add-options .dc-form-row { max-width:240px; margin:4px 0 10px; }
+.student-checklist .dc-live { margin:0; color:#526d8f; font-size:14px; line-height:1.5; }
+.dc-live:not(:empty) { padding:9px 22px; border-bottom:1px solid #e7edf6; background:#f8faff; }
+.student-checklist .dc-live.dc-error { color:#9d463b; background:#fff8f6; }
+.dc-unavailable { padding:14px 22px; border-bottom:1px solid #ecddd5; background:#fffaf7; color:#876449; }
+.dc-unavailable strong { display:block; font-size:14px; font-weight:600; }
+.dc-unavailable p { margin:4px 0 0; font-size:14px; line-height:1.55; overflow-wrap:anywhere; }
+.dc-sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media (max-width:700px) {
+  .student-checklist .dc-next { flex-wrap:wrap; align-items:flex-start; gap:9px; padding:13px 14px; }
+  .dc-next-icon { display:none; }
+  .dc-next-copy { flex-basis:100%; }
+  .dc-next-copy h2 { font-size:14px; }
+  .student-checklist .dc-next-button { min-height:44px; padding:9px 10px; }
+  .student-checklist .dc-checklist > summary { gap:8px; padding:8px 14px; }
+  .dc-checklist progress { width:55px; }
+  .dc-checklist-body { gap:11px; padding:13px 12px 17px; }
+  .student-checklist .dc-group > summary { gap:7px; padding:8px 11px; }
+  .dc-group-body { padding-inline:11px; }
+  .dc-task-tools { gap:0 12px; }
+  .dc-task-tools > a, .student-checklist .dc-task-details > summary { min-height:44px; }
+  .student-checklist :is(.dc-edit-form,.dc-add-form) :is(input,select), .student-checklist :is(.dc-save,.dc-delete) { min-height:44px; }
+  .dc-edit-form { margin-left:-26px; width:calc(100% + 26px); }
+  .dc-live:not(:empty) { padding-inline:14px; }
+  .dc-unavailable { padding-inline:14px; }
+}
+@media (max-width:380px) {
+  .dc-checklist progress { display:none; }
+  .dc-next-kicker { font-size:14px; }
+  .dc-add-row { flex-wrap:wrap; }
+  .dc-add-row > label { flex-basis:100%; }
+  .dc-form-row { gap:9px; }
+  .dc-form-row > label { flex-basis:100%; }
+  .dc-add-options > summary > span { display:none; }
+}
+@media (prefers-reduced-motion:reduce) { .student-checklist summary > svg { transition:none; } }
+@media print { .student-checklist { display:none !important; } }
+
+/* One prominent next step; the full checklist stays optional. */
+.student-checklist { font-size:16px; }
+.student-checklist .dc-next { padding-block:20px; }
+.dc-next-copy h2 { font-size:18px; line-height:1.45; }
+.dc-next-copy p { font-size:14px; color:#526984; }
+.dc-next-kicker { font-size:14px; }
+.student-checklist .dc-next-button { min-height:48px; padding:12px 18px; border-color:var(--ds-cobalt); background:var(--ds-cobalt); color:#fff; font-size:16px; }
+.student-checklist .dc-next-button:hover { border-color:#174ac4; background:#174ac4; color:#fff; }
+.student-checklist :is(.dc-save,.dc-delete), .student-checklist summary, .dc-task-tools > a { min-height:44px; }
+.student-checklist :is(.dc-edit-form,.dc-add-form) :is(input,select,textarea) { min-height:44px; font-size:16px; }
+.student-checklist .dc-check { min-height:44px; align-items:center; }
+.student-checklist .dc-check input[type="checkbox"] { width:20px; height:20px; flex-basis:20px; margin:0; }
+.dc-task-tools > a { text-decoration:underline; text-underline-offset:3px; }
+.dc-checklist > summary > strong { font-size:16px; }
+@media (max-width:700px) {
+  .student-checklist .dc-next { gap:14px; }
+  .dc-next-copy h2 { font-size:18px; }
+  .student-checklist .dc-next-button { width:100%; min-height:48px; }
+  .student-checklist .dc-checklist > summary { flex-wrap:wrap; padding-block:12px; }
+  .dc-checklist > summary .dc-progress-copy { margin-left:0; }
+  .dc-checklist progress { margin-left:auto; }
+  .student-checklist .dc-group > summary { flex-wrap:wrap; }
+  .dc-group > summary small { white-space:normal; }
+}
+.dc-task-detail, .dc-task-meta, .dc-auto-note, .dc-group-complete, .dc-task-details > summary, .dc-group > summary small, .dc-checklist > summary .dc-progress-copy { color:#596b83; }

@@ -1,0 +1,2506 @@
+{
+  "version": 1,
+  "auditedAt": "2026-11-17T02:18:42.743Z",
+  "registrySha256": "fb03700f8d021f1259bebc122ec4cc5ea17b95b4aa6b8399227d8f75b4092b79",
+  "scope": "Read-only current registry + all 45 native planner simulations, with/without conditional options. No fresh external research. Production files not changed for this census.",
+  "summary": {
+    "models": 45,
+    "readyTemplates": 37,
+    "readySchools": 4,
+    "allSchools": 6,
+    "completeExecutableFlagTrue": 0,
+    "readyAcademicCountsValid": 37,
+    "readyValidationValid": 0,
+    "readyCostComplete": 0,
+    "readyTimingWeeksPresent": 0,
+    "readyOptimizationProven": 35,
+    "readyWithProgramResearch": 37,
+    "readyWithUnknownNumericPolicy": 32,
+    "readyWithPolicyReview": 29,
+    "readyWithSelectedOpenCourses": 4,
+    "readyWithResearchGapAssignedCredits": 33,
+    "readyWithSelectedConditionalCredits": 28,
+    "readyNoOutsideOptions": 5,
+    "readyNoPublishedOutsideSelected": 26,
+    "outsideOptionPlacements": 10652,
+    "outsideUniqueSchoolFormatReceivingAwards": 507,
+    "mappedProviderNames": [
+      "Sophia",
+      "Study.com",
+      "StraighterLine",
+      "CLEP"
+    ],
+    "listedCreditSources": 25,
+    "allUnknownPolicyFields": {
+      "alternativeMaxCredits": 19,
+      "upperMinCredits": 26,
+      "institutionMinCredits": 21,
+      "externalMaxCredits": 21
+    },
+    "readyUnknownPolicyFields": {
+      "alternativeMaxCredits": 13,
+      "upperMinCredits": 23,
+      "institutionMinCredits": 20,
+      "externalMaxCredits": 20
+    },
+    "outsideEvidence": {
+      "conditional": 10056,
+      "published": 596
+    },
+    "outsideEvidenceTypes": {
+      "partner-published-category": 705,
+      "unspecified": 5059,
+      "official-receiving-school-equivalency": 4479,
+      "provider-partnership": 365,
+      "community-reported": 42,
+      "provider-published": 2
+    },
+    "outsidePlacementTypes": {
+      "category": 705,
+      "named": 1776,
+      "elective": 8171
+    },
+    "outsideScopes": {
+      "missing": 1810,
+      "Same-school receiving-course award researched in another degree; exact degree and delivery-format application require confirmation.": 4599,
+      "Exact named undergraduate receiving-course award, scoped to separately reviewed delivery guides; not an individual transfer decision.": 3612,
+      "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.": 568,
+      "Exact provider-published SNHU receiving-course award. Degree placement is limited to the separately sourced named requirement or its existing published category allocation.": 61,
+      "Provider-published exact named TESU course match; TESU must confirm individual catalog applicability and the receiving award.": 2
+    },
+    "bySchool": [
+      {
+        "school": "University of Phoenix",
+        "models": 6,
+        "ready": 4,
+        "providers": [
+          "Sophia"
+        ],
+        "outsideOptions": 705,
+        "selectedConditionalCredits": 129,
+        "selectedPublishedCredits": 0
+      },
+      {
+        "school": "Liberty University",
+        "models": 15,
+        "ready": 12,
+        "providers": [
+          "Sophia",
+          "Study.com",
+          "StraighterLine",
+          "CLEP"
+        ],
+        "outsideOptions": 8821,
+        "selectedConditionalCredits": 259,
+        "selectedPublishedCredits": 612
+      },
+      {
+        "school": "Old Dominion University",
+        "models": 1,
+        "ready": 0,
+        "providers": [],
+        "outsideOptions": 0,
+        "selectedConditionalCredits": 0,
+        "selectedPublishedCredits": 0
+      },
+      {
+        "school": "Southern New Hampshire University",
+        "models": 2,
+        "ready": 0,
+        "providers": [
+          "Sophia",
+          "Study.com"
+        ],
+        "outsideOptions": 701,
+        "selectedConditionalCredits": 156,
+        "selectedPublishedCredits": 0
+      },
+      {
+        "school": "Western Governors University",
+        "models": 20,
+        "ready": 20,
+        "providers": [
+          "Study.com",
+          "Sophia"
+        ],
+        "outsideOptions": 365,
+        "selectedConditionalCredits": 659,
+        "selectedPublishedCredits": 0
+      },
+      {
+        "school": "Thomas Edison State University",
+        "models": 1,
+        "ready": 1,
+        "providers": [
+          "Sophia",
+          "CLEP",
+          "Study.com"
+        ],
+        "outsideOptions": 60,
+        "selectedConditionalCredits": 90,
+        "selectedPublishedCredits": 0
+      }
+    ],
+    "outsideLiteralProviderOptionCodes": 235,
+    "outsideExplicitAliasConnectedActions": 210,
+    "courseLibraryBaseListings": 221,
+    "courseLibraryCurriculumIndexEntries": 197,
+    "modeledOptionsMissingFromCoursePickerAfterAliases": 0,
+    "outsideInstitutionIssuedOptions": 0
+  },
+  "interpretationNotes": [
+    "Every ready template passes native academic credit/count validation; this is stronger than mere title coverage. Zero full validations does not mean zero useful degree plans: personal-admission notes and blanket program.unresolved text are also hard errors.",
+    "Compiler sets completeExecutablePathway=false for every generated model by design, citing individual admission/transfer approval. That flag is not an independent completeness test.",
+    "Planner coverage.researchGapCredits means University-assigned credit without a mapped outside option and without institutionalOnly. Those rows can be actual named university courses; they are not necessarily missing degree requirements. They cannot prove that maximum transfer has been reached.",
+    "No sums of semester credits, quarter credits and WGU competency units are used to quantify cross-school totals.",
+    "Outside evidence published means modeled publication provenance, not personal acceptance, provider-version validity or exact placement assurance. Conditional can mean documented personal conditions, provider-reported award, community report, category proposal or unresearched program scope; these meanings currently share one flag.",
+    "235 counts literal provider+option.code; 210 merges explicitly supplied aliases only. Neither count establishes current availability or a university-approved course version.",
+    "The native simulation used all modeled providers, no existing credits, transfer priority and a 12000-node budget. Costs/terms lack student assumptions; that absence must not be presented as a verified zero cost or duration."
+  ],
+  "unmappedAvailableOrConditionalCreditChannels": [
+    "saylor",
+    "dsst",
+    "tecep",
+    "coopersmith",
+    "davar",
+    "tel",
+    "asu-ulc",
+    "outlier",
+    "google-certificates",
+    "coursera-certificates",
+    "actfl",
+    "microsoft-exams",
+    "teex",
+    "fema",
+    "lawshelf",
+    "total-testing",
+    "cpa-credits",
+    "military-jst"
+  ],
+  "excludedFromNewCourseSourceCount": {
+    "modern-states": "CLEP preparation/voucher enabler, not a distinct transcript issuer",
+    "onlinedegree": "Historical source",
+    "uexcel": "Historical source"
+  },
+  "models": [
+    {
+      "id": "curriculum-phoenix-cb-mba",
+      "school": "University of Phoenix",
+      "title": "Master of Business Administration (Competency Based-CB)",
+      "format": "Online",
+      "ready": true,
+      "total": 33,
+      "units": "semester",
+      "requirementRows": 11,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 0,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 33,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 0,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [],
+      "policyFacts": {
+        "institutionMinCredits": 33,
+        "externalMaxCredits": 0,
+        "alternativeMaxCredits": 0,
+        "upperMinCredits": 0,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 0,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {},
+      "officialNamedMapPlacements": 0,
+      "providers": [],
+      "validationCodes": {
+        "program_research": 1
+      },
+      "sourceCeiling": 0,
+      "unmappedToKnownCeiling": 0,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-phoenix-cb-mis",
+      "school": "University of Phoenix",
+      "title": "Master of Information Systems (Competency Based-CB)",
+      "format": "Online",
+      "ready": true,
+      "total": 36,
+      "units": "semester",
+      "requirementRows": 12,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 0,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 36,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 0,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [],
+      "policyFacts": {
+        "institutionMinCredits": 36,
+        "externalMaxCredits": 0,
+        "alternativeMaxCredits": 0,
+        "upperMinCredits": 0,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 0,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {},
+      "officialNamedMapPlacements": 0,
+      "providers": [],
+      "validationCodes": {
+        "program_research": 1
+      },
+      "sourceCeiling": 0,
+      "unmappedToKnownCeiling": 0,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-phoenix-cb-mha",
+      "school": "University of Phoenix",
+      "title": "Master of Health Administration (Competency Based-CB)",
+      "format": "Online",
+      "ready": true,
+      "total": 36,
+      "units": "semester",
+      "requirementRows": 12,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 0,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 36,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 0,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [],
+      "policyFacts": {
+        "institutionMinCredits": 36,
+        "externalMaxCredits": 0,
+        "alternativeMaxCredits": 0,
+        "upperMinCredits": 0,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 0,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {},
+      "officialNamedMapPlacements": 0,
+      "providers": [],
+      "validationCodes": {
+        "program_research": 1
+      },
+      "sourceCeiling": 0,
+      "unmappedToKnownCeiling": 0,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-phoenix-da-ms-psychology",
+      "school": "University of Phoenix",
+      "title": "Master of Science in Psychology (Direct Assessment)",
+      "format": "Online",
+      "ready": true,
+      "total": 36,
+      "units": "competency-unit",
+      "requirementRows": 12,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 0,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 36,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 0,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [],
+      "policyFacts": {
+        "institutionMinCredits": 36,
+        "externalMaxCredits": 0,
+        "alternativeMaxCredits": 0,
+        "upperMinCredits": 0,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 0,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {},
+      "officialNamedMapPlacements": 0,
+      "providers": [],
+      "validationCodes": {
+        "program_research": 1
+      },
+      "sourceCeiling": 0,
+      "unmappedToKnownCeiling": 0,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-phoenix-da-bs-information-technology",
+      "school": "University of Phoenix",
+      "title": "Bachelor of Science in Information Technology (Direct Assessment)",
+      "format": "Online",
+      "ready": false,
+      "total": 120,
+      "units": "competency-unit",
+      "requirementRows": 40,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 60,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 60,
+      "universityCredits": 60,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 18,
+      "openSelectionCredits": 18,
+      "openSelectionRows": [
+        "ist-electives-1",
+        "ist-electives-2",
+        "upper-ist-electives-1",
+        "upper-ist-electives-2",
+        "upper-ist-electives-3",
+        "upper-ist-electives-4"
+      ],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 42,
+        "externalMaxCredits": 78,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 327,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "partner-published-category": 327
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 20,
+        "selection_required": 6,
+        "program_research": 3,
+        "policy_review": 2
+      },
+      "sourceCeiling": 78,
+      "unmappedToKnownCeiling": 18,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-phoenix-da-bs-health-management",
+      "school": "University of Phoenix",
+      "title": "Bachelor of Science in Health Management (Direct Assessment)",
+      "format": "Online",
+      "ready": false,
+      "total": 120,
+      "units": "competency-unit",
+      "requirementRows": 40,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 69,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 69,
+      "universityCredits": 51,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 12,
+      "openSelectionCredits": 12,
+      "openSelectionRows": [
+        "health-care-electives-1",
+        "health-care-electives-2",
+        "health-care-electives-3",
+        "health-care-electives-4"
+      ],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 39,
+        "externalMaxCredits": 81,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 36,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 378,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "partner-published-category": 378
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 23,
+        "selection_required": 4,
+        "program_research": 3,
+        "policy_review": 2
+      },
+      "sourceCeiling": 81,
+      "unmappedToKnownCeiling": 12,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-healthcare-administration-bs-online",
+      "school": "Liberty University",
+      "title": "Healthcare Administration (B.S.) \u2014 Online",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 45,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 45,
+      "universityCredits": 75,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 75,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 66
+      },
+      "outsideOptionPlacements": 473,
+      "inheritedProgramScopeCandidates": 269,
+      "evidenceTypes": {
+        "unspecified": 221,
+        "official-receiving-school-equivalency": 252
+      },
+      "officialNamedMapPlacements": 204,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 15,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 45,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-psychology-bs-residential",
+      "school": "Liberty University",
+      "title": "Psychology (B.S.) \u2014 Residential",
+      "format": "Residential",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 43,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 78,
+      "outsideCreditsPublishedOnly": 45,
+      "conditionalSelectedCredits": 33,
+      "universityCredits": 42,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 42,
+      "openSelectionCredits": 2,
+      "openSelectionRows": [
+        "free-electives-11"
+      ],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 51
+      },
+      "outsideOptionPlacements": 1165,
+      "inheritedProgramScopeCandidates": 631,
+      "evidenceTypes": {
+        "unspecified": 563,
+        "official-receiving-school-equivalency": 602
+      },
+      "officialNamedMapPlacements": 534,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 11,
+        "selection_required": 1,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 12,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-psychology-bs-online",
+      "school": "Liberty University",
+      "title": "Psychology (B.S.) \u2014 Online",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 81,
+      "outsideCreditsPublishedOnly": 45,
+      "conditionalSelectedCredits": 36,
+      "universityCredits": 39,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 39,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 51
+      },
+      "outsideOptionPlacements": 1423,
+      "inheritedProgramScopeCandidates": 768,
+      "evidenceTypes": {
+        "unspecified": 667,
+        "official-receiving-school-equivalency": 756
+      },
+      "officialNamedMapPlacements": 655,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 12,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 9,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-psychology-aa-online",
+      "school": "Liberty University",
+      "title": "Psychology (A.A.) \u2014 Online",
+      "format": "Online",
+      "ready": true,
+      "total": 60,
+      "units": "semester",
+      "requirementRows": 19,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 39,
+      "outsideCreditsPublishedOnly": 33,
+      "conditionalSelectedCredits": 6,
+      "universityCredits": 21,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 15,
+      "openSelectionCredits": 6,
+      "openSelectionRows": [
+        "psychology-elective-2",
+        "psychology-elective-3"
+      ],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 15,
+        "externalMaxCredits": 45,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 27
+      },
+      "outsideOptionPlacements": 46,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "unspecified": 42,
+        "official-receiving-school-equivalency": 4
+      },
+      "officialNamedMapPlacements": 46,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 2,
+        "selection_required": 2,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 45,
+      "unmappedToKnownCeiling": 6,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-accounting-bs-online",
+      "school": "Liberty University",
+      "title": "Accounting & Data Analysis (B.S.) \u2014 Online",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 54,
+      "outsideCreditsPublishedOnly": 36,
+      "conditionalSelectedCredits": 18,
+      "universityCredits": 66,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 66,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 69
+      },
+      "outsideOptionPlacements": 733,
+      "inheritedProgramScopeCandidates": 390,
+      "evidenceTypes": {
+        "unspecified": 355,
+        "official-receiving-school-equivalency": 378
+      },
+      "officialNamedMapPlacements": 343,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 6,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 36,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-accounting-bs-residential",
+      "school": "Liberty University",
+      "title": "Accounting & Data Analysis (B.S.) \u2014 Residential",
+      "format": "Residential",
+      "ready": false,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 43,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 30,
+      "outsideCreditsPublishedOnly": 18,
+      "conditionalSelectedCredits": 12,
+      "universityCredits": 90,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 90,
+      "openSelectionCredits": 23,
+      "openSelectionRows": [
+        "general-choice-1",
+        "general-choice-2",
+        "general-choice-3",
+        "general-choice-4",
+        "general-choice-5",
+        "general-choice-6",
+        "general-choice-7",
+        "free-electives-5"
+      ],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 69
+      },
+      "outsideOptionPlacements": 538,
+      "inheritedProgramScopeCandidates": 324,
+      "evidenceTypes": {
+        "unspecified": 290,
+        "official-receiving-school-equivalency": 248
+      },
+      "officialNamedMapPlacements": 214,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "selection_required": 8,
+        "conditional_mapping": 4,
+        "program_research": 2,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 60,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-psychology-addictions-online",
+      "school": "Liberty University",
+      "title": "Psychology (B.S.) \u2014 Addictions & Recovery \u2014 Online",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 72,
+      "outsideCreditsPublishedOnly": 45,
+      "conditionalSelectedCredits": 27,
+      "universityCredits": 48,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 48,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 60
+      },
+      "outsideOptionPlacements": 1078,
+      "inheritedProgramScopeCandidates": 576,
+      "evidenceTypes": {
+        "unspecified": 511,
+        "official-receiving-school-equivalency": 567
+      },
+      "officialNamedMapPlacements": 502,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 9,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 18,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-computer-science-general-residential",
+      "school": "Liberty University",
+      "title": "Computer Science (B.S.) \u2014 General \u2014 Residential",
+      "format": "Residential",
+      "ready": false,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 42,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 24,
+      "outsideCreditsPublishedOnly": 23,
+      "conditionalSelectedCredits": 1,
+      "universityCredits": 96,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 39,
+      "openSelectionCredits": 9,
+      "openSelectionRows": [
+        "quantitative-math-elective",
+        "computer-science-upper-elective-1",
+        "computer-science-upper-elective-2"
+      ],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 97
+      },
+      "outsideOptionPlacements": 21,
+      "inheritedProgramScopeCandidates": 2,
+      "evidenceTypes": {
+        "unspecified": 21
+      },
+      "officialNamedMapPlacements": 19,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "selection_required": 3,
+        "conditional_mapping": 1,
+        "program_research": 2,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 66,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-business-aa-online",
+      "school": "Liberty University",
+      "title": "Business (A.A.) \u2014 Online",
+      "format": "Online",
+      "ready": true,
+      "total": 60,
+      "units": "semester",
+      "requirementRows": 19,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 33,
+      "outsideCreditsPublishedOnly": 33,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 27,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 27,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 15,
+        "externalMaxCredits": 45,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 27
+      },
+      "outsideOptionPlacements": 37,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "unspecified": 37
+      },
+      "officialNamedMapPlacements": 37,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 45,
+      "unmappedToKnownCeiling": 12,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-human-services-bs-online",
+      "school": "Liberty University",
+      "title": "Human Services (B.S.) \u2014 Online",
+      "format": "Online",
+      "ready": false,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 60,
+      "outsideCreditsPublishedOnly": 36,
+      "conditionalSelectedCredits": 24,
+      "universityCredits": 60,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 51,
+      "openSelectionCredits": 12,
+      "openSelectionRows": [
+        "human-services-social-work-elective",
+        "human-services-mixed-elective-1",
+        "human-services-mixed-elective-2",
+        "human-services-mixed-elective-3"
+      ],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 72
+      },
+      "outsideOptionPlacements": 849,
+      "inheritedProgramScopeCandidates": 448,
+      "evidenceTypes": {
+        "unspecified": 404,
+        "official-receiving-school-equivalency": 445
+      },
+      "officialNamedMapPlacements": 401,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 8,
+        "selection_required": 4,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 30,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-liberty-interdisciplinary-aa-online",
+      "school": "Liberty University",
+      "title": "Interdisciplinary Studies (A.A.) \u2014 Online",
+      "format": "Online",
+      "ready": true,
+      "total": 60,
+      "units": "semester",
+      "requirementRows": 20,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 42,
+      "outsideCreditsPublishedOnly": 24,
+      "conditionalSelectedCredits": 18,
+      "universityCredits": 18,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 15,
+      "openSelectionCredits": 5,
+      "openSelectionRows": [
+        "interdisciplinary-general-electives-7",
+        "interdisciplinary-general-electives-8"
+      ],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 15,
+        "externalMaxCredits": 45,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 24
+      },
+      "outsideOptionPlacements": 879,
+      "inheritedProgramScopeCandidates": 490,
+      "evidenceTypes": {
+        "unspecified": 438,
+        "official-receiving-school-equivalency": 441
+      },
+      "officialNamedMapPlacements": 389,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 6,
+        "selection_required": 2,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 45,
+      "unmappedToKnownCeiling": 3,
+      "optimization": "best-found"
+    },
+    {
+      "id": "curriculum-liberty-business-bs-online",
+      "school": "Liberty University",
+      "title": "Business Administration & Data Analysis (B.S.) \u2014 Online",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 84,
+      "outsideCreditsPublishedOnly": 45,
+      "conditionalSelectedCredits": 39,
+      "universityCredits": 36,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 33,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 51
+      },
+      "outsideOptionPlacements": 1364,
+      "inheritedProgramScopeCandidates": 701,
+      "evidenceTypes": {
+        "unspecified": 602,
+        "official-receiving-school-equivalency": 762
+      },
+      "officialNamedMapPlacements": 663,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 13,
+        "program_research": 3,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 6,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-odu-95aa066744a33cad",
+      "school": "Old Dominion University",
+      "title": "Psychology, BS",
+      "format": "Online / On campus",
+      "ready": false,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 41,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 0,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 120,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 116,
+      "openSelectionCredits": 100,
+      "openSelectionRows": [
+        "information-literacy-and-research",
+        "elective-or-language-and-culture-i",
+        "literature",
+        "oral-communication",
+        "elective-or-language-and-culture-ii",
+        "psychology-elective-1",
+        "psychology-area-1-biological-bases-and-cognition",
+        "nature-of-science-i-1",
+        "nature-of-science-i-2",
+        "psychology-elective-2",
+        "human-creativity",
+        "psychology-area-2-personality-and-social-processes",
+        "nature-of-science-ii-1",
+        "nature-of-science-ii-2",
+        "interpreting-the-past",
+        "impact-of-technology",
+        "psychology-area-3",
+        "human-behavior-outside-psyc-201s-and-psyc-203s",
+        "psychology-elective-3",
+        "psychology-elective-4",
+        "upper-division-general-education-1",
+        "psychology-area-4",
+        "philosophy-and-ethics",
+        "psychology-elective-5",
+        "upper-division-general-education-2",
+        "minor-or-elective-1",
+        "minor-or-elective-2",
+        "senior-electives-first-block-1",
+        "senior-electives-first-block-2",
+        "senior-electives-first-block-3",
+        "senior-electives-final-block-1",
+        "senior-electives-final-block-2",
+        "senior-electives-final-block-3",
+        "senior-electives-final-block-4",
+        "senior-electives-final-block-5"
+      ],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "alternativeMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 0,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {},
+      "officialNamedMapPlacements": 0,
+      "providers": [],
+      "validationCodes": {
+        "selection_required": 35,
+        "program_research": 3,
+        "policy_review": 3
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-snhu-catalog-8919d742796348bd",
+      "school": "Southern New Hampshire University",
+      "title": "B.S. Business Administration \u2014 General Track",
+      "format": "Online",
+      "ready": false,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 40,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 90,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 90,
+      "universityCredits": 30,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 30,
+      "openSelectionCredits": 12,
+      "openSelectionRows": [
+        "commons-upper",
+        "commons-justice-sustainability",
+        "commons-cornerstone-1",
+        "commons-cornerstone-2"
+      ],
+      "policyFieldsMissingNumeric": [
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": 90,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": 12,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 401,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "unspecified": 401
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia",
+        "Study.com"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 30,
+        "selection_required": 4,
+        "program_research": 6,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 0,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-snhu-catalog-41b14c88648c21f7",
+      "school": "Southern New Hampshire University",
+      "title": "B.S. Data Analytics \u2014 General Track",
+      "format": "Online",
+      "ready": false,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 40,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 66,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 66,
+      "universityCredits": 54,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 54,
+      "openSelectionCredits": 12,
+      "openSelectionRows": [
+        "commons-upper",
+        "commons-justice-sustainability",
+        "commons-cornerstone-1",
+        "commons-cornerstone-2"
+      ],
+      "policyFieldsMissingNumeric": [
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": 90,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": 12,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 300,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "unspecified": 300
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia",
+        "Study.com"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 22,
+        "selection_required": 4,
+        "program_research": 6,
+        "policy_review": 1
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 24,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-ecceaa488637ac83",
+      "school": "Western Governors University",
+      "title": "Business Management \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 110,
+      "units": "competency-unit",
+      "requirementRows": 36,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 66,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 66,
+      "universityCredits": 44,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 40,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 82.5,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 30,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 30
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Study.com",
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 22,
+        "program_research": 7,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-358f1e10651bf3d8",
+      "school": "Western Governors University",
+      "title": "Accounting \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 121,
+      "units": "competency-unit",
+      "requirementRows": 40,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 47,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 47,
+      "universityCredits": 74,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 74,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 90.75,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 28,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 28
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 15,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-2e49db64c32dfc79",
+      "school": "Western Governors University",
+      "title": "Human Resource Management \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 117,
+      "units": "competency-unit",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 47,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 47,
+      "universityCredits": 70,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 67,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 87.75,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 25,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 25
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 15,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-689e417cff765fc9",
+      "school": "Western Governors University",
+      "title": "Marketing \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 112,
+      "units": "competency-unit",
+      "requirementRows": 37,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 41,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 41,
+      "universityCredits": 71,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 71,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 84,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 25,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 25
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 13,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-d6925a8fbb6e8d9a",
+      "school": "Western Governors University",
+      "title": "Finance \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 121,
+      "units": "competency-unit",
+      "requirementRows": 40,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 41,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 41,
+      "universityCredits": 80,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 77,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 90.75,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 25,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 25
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 13,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-995901539a30b649",
+      "school": "Western Governors University",
+      "title": "Health Science \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 91,
+      "units": "competency-unit",
+      "requirementRows": 28,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 31,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 31,
+      "universityCredits": 60,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 57,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 68.25,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 22,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 22
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 10,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-1d1cb06c2d479685",
+      "school": "Western Governors University",
+      "title": "Public Health \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 104,
+      "units": "competency-unit",
+      "requirementRows": 33,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 25,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 25,
+      "universityCredits": 79,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 76,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 78,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 13,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 13
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 8,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-b2a8a37d4fbedabd",
+      "school": "Western Governors University",
+      "title": "Master of Business Administration (MBA)",
+      "format": "Online",
+      "ready": true,
+      "total": 34,
+      "units": "competency-unit",
+      "requirementRows": 11,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 0,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 34,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 30,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "alternativeMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 0,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {},
+      "officialNamedMapPlacements": 0,
+      "providers": [],
+      "validationCodes": {
+        "program_research": 4,
+        "policy_review": 1
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-94e68cf7b91dec17",
+      "school": "Western Governors University",
+      "title": "Healthcare Administration \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 110,
+      "units": "competency-unit",
+      "requirementRows": 34,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 38,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 38,
+      "universityCredits": 72,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 68,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 82.5,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 19,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 19
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 12,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-bf14bd14e87ae7aa",
+      "school": "Western Governors University",
+      "title": "Information Technology Management \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 112,
+      "units": "competency-unit",
+      "requirementRows": 37,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 32,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 32,
+      "universityCredits": 80,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 80,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 84,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 18,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 18
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 10,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-4431e5205a7d441a",
+      "school": "Western Governors University",
+      "title": "Supply Chain and Operations Management \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 110,
+      "units": "competency-unit",
+      "requirementRows": 36,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 38,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 38,
+      "universityCredits": 72,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 69,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 82.5,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 20,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 20
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 12,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-93e0bd6d0c7171ac",
+      "school": "Western Governors University",
+      "title": "Project Management \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "competency-unit",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 32,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 32,
+      "universityCredits": 88,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 84,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 90,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 16,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 16
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 10,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-c023977432f945c3",
+      "school": "Western Governors University",
+      "title": "User Experience Design \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 115,
+      "units": "competency-unit",
+      "requirementRows": 38,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 35,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 35,
+      "universityCredits": 80,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 77,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 86.25,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 16,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 16
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 11,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-3a9fedcacbfcccae",
+      "school": "Western Governors University",
+      "title": "Software Engineering",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "competency-unit",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 19,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 19,
+      "universityCredits": 101,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 101,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 90,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 13,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 13
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 6,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-d734fb4b04eded7c",
+      "school": "Western Governors University",
+      "title": "Information Technology",
+      "format": "Online",
+      "ready": true,
+      "total": 110,
+      "units": "competency-unit",
+      "requirementRows": 35,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 31,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 31,
+      "universityCredits": 79,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 79,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 82.5,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 19,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 19
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 10,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-19be0ad2d1922f49",
+      "school": "Western Governors University",
+      "title": "Psychology \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 106,
+      "units": "competency-unit",
+      "requirementRows": 34,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 31,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 31,
+      "universityCredits": 75,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 71,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 79.5,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 16,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 16
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 10,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-a4bbd78b1b3233b7",
+      "school": "Western Governors University",
+      "title": "Cybersecurity and Information Assurance",
+      "format": "Online",
+      "ready": true,
+      "total": 122,
+      "units": "competency-unit",
+      "requirementRows": 37,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 31,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 31,
+      "universityCredits": 91,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 87,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 91.5,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 17,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 17
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 10,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-bs-computer-science-reviewed",
+      "school": "Western Governors University",
+      "title": "Computer Science \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 121,
+      "units": "competency-unit",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 18,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 18,
+      "universityCredits": 103,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 103,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 90.75,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 11,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 11
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 6,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-f5987d0b65c06f56",
+      "school": "Western Governors University",
+      "title": "Communications \u2013 B.S.",
+      "format": "Online",
+      "ready": true,
+      "total": 115,
+      "units": "competency-unit",
+      "requirementRows": 38,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 35,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 35,
+      "universityCredits": 80,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 77,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 86.25,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 16,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 16
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 11,
+        "program_research": 5,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "curriculum-wgu-catalog-bc26f6f5019c6ee3",
+      "school": "Western Governors University",
+      "title": "Health Information Management \u2013 B.S. (from the Leavitt School of Health)",
+      "format": "Online",
+      "ready": true,
+      "total": 122,
+      "units": "competency-unit",
+      "requirementRows": 36,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 21,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 21,
+      "universityCredits": 101,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 97,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "upperMinCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": null,
+        "externalMaxCredits": null,
+        "alternativeMaxCredits": 91.5,
+        "upperMinCredits": null,
+        "majorMinInstitutionCredits": null,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 16,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "provider-partnership": 16
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 7,
+        "program_research": 6,
+        "policy_review": 2
+      },
+      "sourceCeiling": null,
+      "unmappedToKnownCeiling": null,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "tesu-general-management",
+      "school": "Thomas Edison State University",
+      "title": "B.S. in General Management",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 40,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 90,
+      "outsideCreditsPublishedOnly": 0,
+      "conditionalSelectedCredits": 90,
+      "universityCredits": 30,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 15,
+      "openSelectionCredits": 6,
+      "openSelectionRows": [
+        "elective4",
+        "elective5"
+      ],
+      "policyFieldsMissingNumeric": [],
+      "policyFacts": {
+        "institutionMinCredits": 15,
+        "externalMaxCredits": 105,
+        "alternativeMaxCredits": 90,
+        "upperMinCredits": 18,
+        "majorMinInstitutionCredits": 0,
+        "majorInstitutionFraction": null,
+        "majorResidencyBasisCredits": null
+      },
+      "outsideOptionPlacements": 60,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "community-reported": 42,
+        "unspecified": 16,
+        "provider-published": 2
+      },
+      "officialNamedMapPlacements": 0,
+      "providers": [
+        "Sophia",
+        "CLEP",
+        "Study.com"
+      ],
+      "validationCodes": {
+        "conditional_mapping": 30,
+        "selection_required": 2,
+        "program_research": 12
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 0,
+      "optimization": "best-found"
+    },
+    {
+      "id": "liberty-business-residential",
+      "school": "Liberty University",
+      "title": "B.S. Business Administration & Data Analysis \u2014 Interdisciplinary Business",
+      "format": "Residential",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 44,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 83,
+      "outsideCreditsPublishedOnly": 83,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 37,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 34,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": 18,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 66
+      },
+      "outsideOptionPlacements": 74,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "unspecified": 70,
+        "official-receiving-school-equivalency": 4
+      },
+      "officialNamedMapPlacements": 63,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "program_research": 4
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 7,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "liberty-criminal-justice-residential",
+      "school": "Liberty University",
+      "title": "B.S. Criminal Justice \u2014 General",
+      "format": "Residential",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 44,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 74,
+      "outsideCreditsPublishedOnly": 74,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 46,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 46,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": 12,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 45
+      },
+      "outsideOptionPlacements": 70,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "unspecified": 60,
+        "official-receiving-school-equivalency": 10
+      },
+      "officialNamedMapPlacements": 53,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "program_research": 5
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 16,
+      "optimization": "optimal-for-model"
+    },
+    {
+      "id": "liberty-criminal-justice-online",
+      "school": "Liberty University",
+      "title": "B.S. Criminal Justice \u2014 General",
+      "format": "Online",
+      "ready": true,
+      "total": 120,
+      "units": "semester",
+      "requirementRows": 39,
+      "academicCountsValid": true,
+      "fullValidationValid": false,
+      "outsideCreditsWithCandidates": 72,
+      "outsideCreditsPublishedOnly": 72,
+      "conditionalSelectedCredits": 0,
+      "universityCredits": 48,
+      "universityCreditsWithoutOutsideMapOrMandatoryProof": 48,
+      "openSelectionCredits": 0,
+      "openSelectionRows": [],
+      "policyFieldsMissingNumeric": [
+        "alternativeMaxCredits"
+      ],
+      "policyFacts": {
+        "institutionMinCredits": 30,
+        "externalMaxCredits": 90,
+        "alternativeMaxCredits": null,
+        "upperMinCredits": 30,
+        "majorMinInstitutionCredits": 12,
+        "majorInstitutionFraction": 0.25,
+        "majorResidencyBasisCredits": 45
+      },
+      "outsideOptionPlacements": 71,
+      "inheritedProgramScopeCandidates": 0,
+      "evidenceTypes": {
+        "unspecified": 61,
+        "official-receiving-school-equivalency": 10
+      },
+      "officialNamedMapPlacements": 57,
+      "providers": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "validationCodes": {
+        "program_research": 4
+      },
+      "sourceCeiling": 90,
+      "unmappedToKnownCeiling": 18,
+      "optimization": "optimal-for-model"
+    }
+  ]
+}

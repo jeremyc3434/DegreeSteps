@@ -1,0 +1,43 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Isolated owner-account test deployment. No production domain or data cutover.
+  "name": "degreesteps-staging",
+  "main": "worker/staging.mjs",
+  "compatibility_date": "2026-11-17",
+  "account_id": "d215df9a813c0d7a292613373dfa9cb0",
+  "workers_dev": true,
+  "preview_urls": false,
+  "build": {"command": "npm run build"},
+  // Keep paid CPU allowances out of the free staging configuration.
+  "observability": {"enabled": true, "head_sampling_rate": 0.1},
+  "assets": {
+    "directory": "./outputs/cloudflare/public",
+    "binding": "ASSETS",
+    "html_handling": "none",
+    "not_found_handling": "none",
+    "run_worker_first": true
+  },
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "degreesteps-staging-public",
+    "database_id": "d36e472c-0fbd-4b32-ab04-81f96110cec6",
+    "migrations_dir": "drizzle"
+  }],
+  "queues": {
+    "producers": [
+      {"binding": "RESEARCH_QUEUE", "queue": "degreesteps-staging-research"},
+      {"binding": "RESEARCH_DEAD_LETTER_QUEUE", "queue": "degreesteps-staging-research-dlq"}
+    ],
+    "consumers": [{
+      "queue": "degreesteps-staging-research",
+      "max_batch_size": 1,
+      "max_batch_timeout": 1,
+      "max_retries": 3,
+      "retry_delay": 120,
+      "dead_letter_queue": "degreesteps-staging-research-dlq",
+      "max_concurrency": 2
+    }]
+  },
+  // No unattended research dispatch until staging credentials/recovery are verified.
+  "vars": {"PORTAL_STORAGE_BACKEND": "supabase"}
+}

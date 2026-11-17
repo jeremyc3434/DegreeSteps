@@ -1,0 +1,1646 @@
+{
+  "checkedOn": "2026-11-03",
+  "scope": "Bounded official-source inventory for five requested competency-based/self-paced schools. Listed program discovery and transfer-policy evidence are separate from verified course-by-course degree maps.",
+  "coverage": {
+    "schoolCount": 5,
+    "programEntryCount": 45,
+    "availableOrListedEntryCount": 44,
+    "upcomingEntryCount": 1,
+    "approvalPendingEntryCount": 1,
+    "notes": [
+      "Program count includes four concentrations of one Winthrop BPS and one South Educational Specialist award.",
+      "Walden's fifteen tuition-listed degrees require program-level intake checks; inventory is not a claim that every advertised option has been mapped.",
+      "Unknown transfer caps, tuition or curricular details are null rather than estimated."
+    ]
+  },
+  "schools": [
+    {
+      "id": "south-college",
+      "name": "South College",
+      "url": "https://www.south.edu/location/cbe-competency-based-education/",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "competency-subscription"
+      ],
+      "pricing": {
+        "model": "subscription",
+        "amount": null,
+        "currency": "USD",
+        "period": "6 months",
+        "notes": "Flat six-month CBE tuition is confirmed. An indexed 2025\u20132026 schedule quotes $7,000 but its linked PDF was inaccessible; leave the current numeric amount unverified. Nursing and other fees may apply.",
+        "sourceUrl": "https://www.south.edu/location/cbe-competency-based-education/"
+      },
+      "transferPolicy": {
+        "institutional": {
+          "status": "case-by-case",
+          "notes": "General policy evaluates equivalent coursework from accredited collegiate institutions; graduate CBE transfer decisions require program review. No common CBE transfer cap was verified.",
+          "sourceUrl": "https://www.south.edu/academics/transfer-information/",
+          "maximumCredits": null,
+          "minimumInstitutionalCredits": null
+        },
+        "ace": {
+          "status": "not-verified",
+          "notes": "No official acceptance policy for ACE-recommended alternative courses into these graduate CBE programs was verified. Do not imply undergraduate Sophia or Study.com courses satisfy graduate degree requirements.",
+          "sourceUrl": "https://www.south.edu/academics/transfer-information/"
+        },
+        "nccrs": {
+          "status": "not-verified",
+          "notes": "No graduate CBE NCCRS policy verified.",
+          "sourceUrl": "https://www.south.edu/academics/transfer-information/"
+        },
+        "graduate": {
+          "status": "case-by-case",
+          "notes": "Graduate transfer credit is evaluated by program faculty; no universal graduate transfer allowance or cap verified.",
+          "sourceUrl": "https://www.south.edu/academics/transfer-information/"
+        }
+      },
+      "sources": [
+        {
+          "id": "south-cbe",
+          "title": "Competency-Based Education program inventory",
+          "url": "https://www.south.edu/location/cbe-competency-based-education/"
+        },
+        {
+          "id": "south-transfer",
+          "title": "Transfer Information",
+          "url": "https://www.south.edu/academics/transfer-information/"
+        },
+        {
+          "id": "south-new-masters",
+          "title": "New CBE master's programs and launch dates",
+          "url": "https://www.south.edu/south-college-expands-flexible-competency-based-education-offerings-with-three-masters-programs/"
+        },
+        {
+          "id": "south-tuition-indexed",
+          "title": "2025\u20132026 tuition schedule, indexed but download unavailable",
+          "url": "https://cdn.south.edu/wp-content/uploads/2026/05/26tuition-Online-Programs-Rev.-March-2026_a11y.pdf"
+        }
+      ],
+      "coverage": {
+        "degreeEntries": 14,
+        "activeOrListedEntries": 13,
+        "upcomingEntries": 1,
+        "completeFor": "Degree and specialist titles listed on the CBE location page, as distinct from the university-wide navigation.",
+        "gaps": [
+          "Postdoctoral certificates and all concentration variants excluded from this degree inventory.",
+          "Current numeric tuition and program-by-program transfer/residency limits need confirmation.",
+          "No undergraduate South College CBE degree was identified on the scoped official page."
+        ]
+      },
+      "programs": [
+        {
+          "id": "south-cbe-dba",
+          "title": "Doctor of Business Administration",
+          "level": "doctorate",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/doctor-of-business-administration-dba-program/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific.",
+            "Doctoral research/capstone and defense requirements must be modeled separately from transferable coursework."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-executive-mba",
+          "title": "Master of Business Administration (Executive)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/executive-master-of-business-administration/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-ms-accounting",
+          "title": "Master of Science in Accounting",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/ms-accounting/",
+          "sourceId": "south-new-masters",
+          "degreeCredits": 48,
+          "prerequisites": [],
+          "notes": [
+            "Official announcement gives an October 1, 2026 launch and a maximum completion window of 36 months."
+          ],
+          "creditUnit": null,
+          "availableFrom": "2026-10-01",
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-ms-human-resources",
+          "title": "Master of Science in Human Resources",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/master-of-science-in-human-resources/",
+          "sourceId": "south-new-masters",
+          "degreeCredits": 45,
+          "prerequisites": [],
+          "notes": [
+            "Announced to launch December 1, 2026; do not present as already available on the checked date."
+          ],
+          "creditUnit": null,
+          "availableFrom": "2026-12-01",
+          "status": "upcoming"
+        },
+        {
+          "id": "south-cbe-edd",
+          "title": "Doctor of Education",
+          "level": "doctorate",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/doctor-of-education/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific.",
+            "Doctoral research/capstone and defense requirements must be modeled separately from transferable coursework."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-eds",
+          "title": "Educational Specialist",
+          "level": "specialist",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/educational-specialist/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-med-curriculum-instruction",
+          "title": "Master of Education in Curriculum and Instruction",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/master-of-education-in-curriculum-and-instruction/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-ms-instructional-design-technology",
+          "title": "Master of Science in Instructional Design & Technology",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/master-of-science-in-instructional-design-technology/",
+          "sourceId": "south-new-masters",
+          "degreeCredits": 45,
+          "prerequisites": [],
+          "notes": [
+            "Official announcement confirms August 1, 2026 launch and a maximum completion window of 36 months."
+          ],
+          "creditUnit": null,
+          "availableFrom": "2026-08-01",
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-ms-criminal-justice",
+          "title": "Master of Science in Criminal Justice",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/master-of-science-in-criminal-justice/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-dmin",
+          "title": "Doctor of Ministry",
+          "level": "doctorate",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/doctor-of-ministry/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific.",
+            "Doctoral research/capstone and defense requirements must be modeled separately from transferable coursework."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-ma-ministry",
+          "title": "Master of Arts in Ministry",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/master-of-ministry/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-dnp-bsn",
+          "title": "Doctor of Nursing Practice (BSN/DNP)",
+          "level": "doctorate",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/doctor-of-nursing-practice-bsn-dnp/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific.",
+            "Advanced clinical degree: prior professional education, licensure, clinical requirements and state eligibility require program-specific screening."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-dnp-post-masters",
+          "title": "Doctor of Nursing Practice (Post-Master's)",
+          "level": "doctorate",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/doctor-of-nursing-practice/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific.",
+            "Advanced clinical degree: prior professional education, licensure, clinical requirements and state eligibility require program-specific screening."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        },
+        {
+          "id": "south-cbe-dmsc",
+          "title": "Doctor of Medical Science",
+          "level": "doctorate",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.south.edu/program/doctor-of-medical-science/",
+          "sourceId": "south-cbe",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Six-month subscription; advance by demonstrating mastery. Admission and state authorization are program specific.",
+            "Advanced clinical degree: prior professional education, licensure, clinical requirements and state eligibility require program-specific screening."
+          ],
+          "creditUnit": null,
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "id": "umass-global",
+      "name": "University of Massachusetts Global",
+      "url": "https://www.umassglobal.edu/student-experience/why-umassglobal/flexible-ways-to-learn/self-paced",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "competency-subscription"
+      ],
+      "pricing": {
+        "model": "subscription",
+        "amount": null,
+        "currency": "USD",
+        "period": "24 weeks",
+        "notes": "$3,500 undergraduate and $4,030 graduate civilian tuition per 24-week billing period. Active-duty military per-credit billing differs; use a program-level rate.",
+        "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+      },
+      "transferPolicy": {
+        "institutional": {
+          "status": "case-by-case",
+          "notes": "Credits must be evaluated for course equivalency and then competency applicability. The MyPath BBA specifically permits up to 90 previous college credits; other programs have different limits.",
+          "sourceUrl": "https://www.umassglobal.edu/student-experience/why-umassglobal/flexible-ways-to-learn/self-paced",
+          "maximumCredits": null,
+          "minimumInstitutionalCredits": null
+        },
+        "ace": {
+          "status": "accepted",
+          "notes": "Eligible ACE-recommended learning may receive credit under prior-learning policy; program requirements and exact competency applicability govern. Do not extrapolate undergraduate alternatives to graduate credit.",
+          "sourceUrl": "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        },
+        "nccrs": {
+          "status": "not-verified",
+          "notes": "No explicit NCCRS acceptance rule verified for this MyPath inventory.",
+          "sourceUrl": "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        },
+        "graduate": {
+          "status": "case-by-case",
+          "notes": "MyPath graduate limits vary by program. MBA permits up to 12 credits including up to 6 qualifying certification credits; not a universal master's allowance.",
+          "sourceUrl": "https://www.umassglobal.edu/academic-programs/mba-business-administration-self-paced"
+        }
+      },
+      "sources": [
+        {
+          "id": "umass-mypath",
+          "title": "Self-Paced MyPath Programs",
+          "url": "https://www.umassglobal.edu/student-experience/why-umassglobal/flexible-ways-to-learn/self-paced"
+        },
+        {
+          "id": "umass-tuition",
+          "title": "Tuition and billing-period rates",
+          "url": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+        },
+        {
+          "id": "umass-prior-learning",
+          "title": "Credit for Prior Learning",
+          "url": "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        },
+        {
+          "id": "umass-bba",
+          "title": "MyPath BBA degree details",
+          "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced"
+        },
+        {
+          "id": "umass-mba",
+          "title": "MyPath MBA degree details",
+          "url": "https://www.umassglobal.edu/academic-programs/mba-business-administration-self-paced"
+        }
+      ],
+      "coverage": {
+        "degreeEntries": 5,
+        "completeFor": "Five self-paced degree programs listed on the official MyPath directory.",
+        "gaps": [
+          "Individual concentration variants and every course-to-competency equivalency are not expanded.",
+          "Program-specific transfer caps outside the BBA and MBA need separate catalog verification."
+        ]
+      },
+      "programs": [
+        {
+          "id": "umass-mypath-aa-general-business",
+          "title": "Associate of Arts in General Business (MyPath)",
+          "level": "associate",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.umassglobal.edu/academic-programs/aa-general-business-self-paced",
+          "sourceId": "umass-mypath",
+          "degreeCredits": 60,
+          "prerequisites": [],
+          "notes": [
+            "Flexible pacing within 24-week terms, with mastery requirements and academic support; completion speed depends on the learner."
+          ],
+          "pricing": {
+            "model": "subscription",
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+          },
+          "creditUnit": "semester",
+          "status": "available"
+        },
+        {
+          "id": "umass-mypath-bba",
+          "title": "Bachelor of Business Administration (MyPath)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+          "sourceId": "umass-mypath",
+          "degreeCredits": 120,
+          "prerequisites": [],
+          "notes": [
+            "Flexible pacing within 24-week terms, with mastery requirements and academic support; completion speed depends on the learner."
+          ],
+          "pricing": {
+            "model": "subscription",
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+          },
+          "transferPolicy": {
+            "maximumCredits": 90,
+            "creditUnit": "semester",
+            "sourceUrl": "https://www.umassglobal.edu/academic-programs/bba-business-administration-self-paced",
+            "notes": "BBA page permits up to 90 previous college credits, subject to applicability; not a blanket limit for other degrees."
+          },
+          "creditUnit": "semester",
+          "status": "available"
+        },
+        {
+          "id": "umass-mypath-bs-information-technology",
+          "title": "Bachelor of Science in Information Technology (MyPath)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.umassglobal.edu/academic-programs/bs-in-information-technology-self-paced",
+          "sourceId": "umass-mypath",
+          "degreeCredits": 120,
+          "prerequisites": [],
+          "notes": [
+            "Eligible embedded certification preparation and exam attempts are included; prior qualifying certifications may earn credit.",
+            "Flexible pacing within 24-week terms, with mastery requirements and academic support; completion speed depends on the learner."
+          ],
+          "pricing": {
+            "model": "subscription",
+            "amount": 3500,
+            "currency": "USD",
+            "period": "24 weeks",
+            "notes": "Undergraduate civilian MyPath subscription; minimum 12 units per billing period. Do not treat the directory card's '/Credit' label as per-credit tuition.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+          },
+          "creditUnit": "semester",
+          "status": "available"
+        },
+        {
+          "id": "umass-mypath-mba",
+          "title": "Master of Business Administration (MyPath)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.umassglobal.edu/academic-programs/mba-business-administration-self-paced",
+          "sourceId": "umass-mypath",
+          "degreeCredits": 30,
+          "prerequisites": [
+            "Qualifying bachelor's degree and graduate admissions requirements."
+          ],
+          "notes": [
+            "Flexible pacing within 24-week terms, with mastery requirements and academic support; completion speed depends on the learner."
+          ],
+          "pricing": {
+            "model": "subscription",
+            "amount": 4030,
+            "currency": "USD",
+            "period": "24 weeks",
+            "notes": "Graduate civilian MyPath subscription; minimum 9 units per billing period.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+          },
+          "transferPolicy": {
+            "maximumCredits": 12,
+            "maximumCertificationCredits": 6,
+            "creditUnit": "semester",
+            "sourceUrl": "https://www.umassglobal.edu/academic-programs/mba-business-administration-self-paced",
+            "notes": "MBA page states up to 12 transfer credits including up to 6 qualifying certification credits; evaluate exact competencies."
+          },
+          "creditUnit": "semester",
+          "status": "available"
+        },
+        {
+          "id": "umass-mypath-ma-organizational-leadership",
+          "title": "Master of Arts in Organizational Leadership (MyPath)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.umassglobal.edu/academic-programs/ma-organizational-leadership-self-paced",
+          "sourceId": "umass-mypath",
+          "degreeCredits": 36,
+          "prerequisites": [
+            "Qualifying bachelor's degree and graduate admissions requirements."
+          ],
+          "notes": [
+            "Military graduate credit options are advertised; eligible prior coursework and training must be evaluated for this program.",
+            "Flexible pacing within 24-week terms, with mastery requirements and academic support; completion speed depends on the learner."
+          ],
+          "pricing": {
+            "model": "subscription",
+            "amount": 4030,
+            "currency": "USD",
+            "period": "24 weeks",
+            "notes": "Graduate civilian MyPath subscription; minimum 9 units per billing period.",
+            "sourceUrl": "https://www.umassglobal.edu/tuition-and-aid/tuition"
+          },
+          "creditUnit": "semester",
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "id": "university-of-phoenix",
+      "name": "University of Phoenix",
+      "url": "https://www.phoenix.edu/competency-based-degrees.html",
+      "deliveryModes": [
+        "online",
+        "in-person-clinical"
+      ],
+      "paceModels": [
+        "self-paced",
+        "competency-subscription"
+      ],
+      "pricing": {
+        "model": "varies-by-model",
+        "amount": null,
+        "currency": "USD",
+        "period": null,
+        "notes": "Faculty-supported credit-based CBE uses $300/credit and 16-week blocks. Direct Assessment uses 12-week subscriptions: $2,500 undergraduate or $2,749 MS Psychology; maximum four courses per term. Use exact program pricing.",
+        "sourceUrl": "https://www.phoenix.edu/competency-based-degrees.html"
+      },
+      "transferPolicy": {
+        "institutional": {
+          "status": "case-by-case",
+          "notes": "University calculator states a typical bachelor transfer limit of 90 credits; program-specific rules and direct-assessment core requirements govern. RN-BSN uses a conditional 87-credit nursing block.",
+          "sourceUrl": "https://www.phoenix.edu/cost-savings/results",
+          "maximumCredits": null,
+          "minimumInstitutionalCredits": null
+        },
+        "ace": {
+          "status": "accepted",
+          "notes": "Pre-evaluated eligible undergraduate/general education courses from Sophia, Study.com and StraighterLine may transfer when they meet degree requirements. This is not blanket graduate acceptance.",
+          "sourceUrl": "https://www.phoenix.edu/tuition-financial-aid/alternative-credit-options.html"
+        },
+        "nccrs": {
+          "status": "accepted",
+          "notes": "University explicitly recognizes NCCRS recommendations for eligible alternative general education courses; exact program applicability still required.",
+          "sourceUrl": "https://www.phoenix.edu/tuition-financial-aid/alternative-credit-options.html"
+        },
+        "graduate": {
+          "status": "not-accepted",
+          "notes": "University master's FAQ permits eligible transfer to traditional master's degrees except competency-based education programs. Do not promise graduate transfer savings on the CBE master's options.",
+          "sourceUrl": "https://www.phoenix.edu/online-masters-degrees.html",
+          "scope": "competency-based master's programs"
+        }
+      },
+      "sources": [
+        {
+          "id": "phoenix-cbe",
+          "title": "Competency-based degrees and separate delivery models",
+          "url": "https://www.phoenix.edu/competency-based-degrees.html"
+        },
+        {
+          "id": "phoenix-da",
+          "title": "Direct Assessment 12-week delivery model",
+          "url": "https://www.phoenix.edu/competency-based-degrees/term-based.html"
+        },
+        {
+          "id": "phoenix-alternative-credit",
+          "title": "Official alternative credit providers and ACE/NCCRS recognition",
+          "url": "https://www.phoenix.edu/tuition-financial-aid/alternative-credit-options.html"
+        },
+        {
+          "id": "phoenix-masters-transfer",
+          "title": "Master's FAQ including CBE transfer exception",
+          "url": "https://www.phoenix.edu/online-masters-degrees.html"
+        },
+        {
+          "id": "phoenix-typical-transfer",
+          "title": "Typical undergraduate transfer limits",
+          "url": "https://www.phoenix.edu/cost-savings/results"
+        },
+        {
+          "id": "phoenix-rn-bsn",
+          "title": "RN-BSN CBE clinical and transfer requirements",
+          "url": "https://www.phoenix.edu/online-nursing-degrees/rn-to-bsn-competency-based-bachelors.html"
+        }
+      ],
+      "coverage": {
+        "degreeEntries": 7,
+        "completeFor": "Four faculty-supported credit-based CBE degrees and three Direct Assessment degrees identified in official university listings.",
+        "gaps": [
+          "Bachelor Direct Assessment transfer-core restrictions need exact catalog mapping before constructing approved course plans.",
+          "Financial aid eligibility verified explicitly for BSIT-DA only; do not infer aid eligibility for other Direct Assessment programs."
+        ]
+      },
+      "programs": [
+        {
+          "id": "phoenix-cb-mba",
+          "title": "Master of Business Administration (Competency Based-CB)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "self-paced",
+          "url": "https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html",
+          "sourceId": "phoenix-cbe",
+          "degreeCredits": 33,
+          "prerequisites": [
+            "Undergraduate degree or higher in business or business management.",
+            "Cumulative GPA of 2.5.",
+            "Three years of experience in a business environment within the past ten years."
+          ],
+          "notes": [
+            "University lists estimated program tuition of $9,900 ($300 \u00d7 33 credits).",
+            "CBE master's transfer credit is excluded by the university master's FAQ."
+          ],
+          "status": "available",
+          "creditUnit": "semester",
+          "pricing": {
+            "model": "per-credit",
+            "amount": 300,
+            "currency": "USD",
+            "period": "credit",
+            "notes": "Credit-based CBE; 3\u20134 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
+            "sourceUrl": "https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html"
+          },
+          "blockWeeks": 16
+        },
+        {
+          "id": "phoenix-cb-mis",
+          "title": "Master of Information Systems (Competency Based-CB)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "self-paced",
+          "url": "https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html",
+          "sourceId": "phoenix-cbe",
+          "degreeCredits": 36,
+          "prerequisites": [
+            "Undergraduate degree or higher in business, computer science, IT or a related field.",
+            "Cumulative GPA of 2.5.",
+            "Three years of experience in an IT/business environment within the past ten years."
+          ],
+          "notes": [
+            "University lists estimated program tuition of $10,800 ($300 \u00d7 36 credits).",
+            "CBE master's transfer credit is excluded by the university master's FAQ."
+          ],
+          "status": "available",
+          "creditUnit": "semester",
+          "pricing": {
+            "model": "per-credit",
+            "amount": 300,
+            "currency": "USD",
+            "period": "credit",
+            "notes": "Credit-based CBE; 3\u20134 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
+            "sourceUrl": "https://www.phoenix.edu/online-information-technology-degrees/information-systems-competency-based-degree.html"
+          },
+          "blockWeeks": 16
+        },
+        {
+          "id": "phoenix-cb-mha",
+          "title": "Master of Health Administration (Competency Based-CB)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "self-paced",
+          "url": "https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html",
+          "sourceId": "phoenix-cbe",
+          "degreeCredits": 36,
+          "prerequisites": [
+            "Undergraduate degree or higher from an accredited college/university or candidate for accreditation.",
+            "Cumulative GPA of 2.5.",
+            "Three years of leadership or management experience in a healthcare environment within the past ten years."
+          ],
+          "notes": [
+            "University lists estimated program tuition of $10,800 ($300 \u00d7 36 credits).",
+            "CBE master's transfer credit is excluded by the university master's FAQ."
+          ],
+          "status": "available",
+          "creditUnit": "semester",
+          "pricing": {
+            "model": "per-credit",
+            "amount": 300,
+            "currency": "USD",
+            "period": "credit",
+            "notes": "Credit-based CBE; 3\u20134 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
+            "sourceUrl": "https://www.phoenix.edu/online-healthcare-degrees/health-administration-competency-based-masters.html"
+          },
+          "blockWeeks": 16
+        },
+        {
+          "id": "phoenix-cb-rn-bsn",
+          "title": "RN to Bachelor of Science in Nursing (Competency Based-CB)",
+          "level": "bachelor",
+          "modalities": [
+            "online",
+            "in-person-clinical"
+          ],
+          "paceModel": "self-paced",
+          "url": "https://www.phoenix.edu/online-nursing-degrees/rn-to-bsn-competency-based-bachelors.html",
+          "sourceId": "phoenix-rn-bsn",
+          "degreeCredits": 120,
+          "prerequisites": [
+            "Active, unencumbered RN license.",
+            "Nursing associate degree from an eligible institution.",
+            "One year of professional nursing experience."
+          ],
+          "notes": [
+            "87 credits awarded for eligible RN/ADN background, leaving 33 credits; this is a conditional nursing block, not 87 free electives.",
+            "Includes 90 direct-care in-person clinical hours in approved settings.",
+            "University example: $300 \u00d7 33 credits = $9,900 tuition, no resource fees; additional clinical/state requirements may apply."
+          ],
+          "status": "available",
+          "creditUnit": "semester",
+          "pricing": {
+            "model": "per-credit",
+            "amount": 300,
+            "currency": "USD",
+            "period": "credit",
+            "notes": "Credit-based CBE; 3\u20134 courses scheduled in 16-week blocks. Faster completion does not convert this to unlimited subscription tuition.",
+            "sourceUrl": "https://www.phoenix.edu/online-nursing-degrees/rn-to-bsn-competency-based-bachelors.html"
+          },
+          "blockWeeks": 16
+        },
+        {
+          "id": "phoenix-da-bs-health-management",
+          "title": "Bachelor of Science in Health Management (Direct Assessment)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.phoenix.edu/online-healthcare-degrees/health-management-competency-based-bachelors-degree.html",
+          "sourceId": "phoenix-da",
+          "degreeCredits": 120,
+          "prerequisites": [
+            "Minimum 30 program-applicable college-level credits.",
+            "Three years of leadership experience in a healthcare-related field.",
+            "High school diploma or accepted equivalent."
+          ],
+          "notes": [
+            "The program page equates one competency unit to one credit for this program; transferred coursework still needs program evaluation."
+          ],
+          "status": "available",
+          "creditUnit": "competency-unit",
+          "pricing": {
+            "model": "subscription",
+            "amount": 2500,
+            "currency": "USD",
+            "period": "12 weeks",
+            "notes": "Choose 2, 3 or 4 courses each 12-week term. This is not unlimited-course subscription pricing; completion speed changes the number of terms.",
+            "sourceUrl": "https://www.phoenix.edu/online-healthcare-degrees/health-management-competency-based-bachelors-degree.html"
+          }
+        },
+        {
+          "id": "phoenix-da-bs-information-technology",
+          "title": "Bachelor of Science in Information Technology (Direct Assessment)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.phoenix.edu/online-information-technology-degrees/information-technology-competency-based-bachelors-degree.html",
+          "sourceId": "phoenix-da",
+          "degreeCredits": 120,
+          "prerequisites": [
+            "30 applied transfer credits OR three years of IT work experience."
+          ],
+          "notes": [
+            "Program page explicitly says this program is not eligible for federal financial aid.",
+            "The program page equates one competency unit to one credit for this program."
+          ],
+          "status": "available",
+          "creditUnit": "competency-unit",
+          "pricing": {
+            "model": "subscription",
+            "amount": 2500,
+            "currency": "USD",
+            "period": "12 weeks",
+            "notes": "Choose 2, 3 or 4 courses each 12-week term. This is not unlimited-course subscription pricing; completion speed changes the number of terms.",
+            "sourceUrl": "https://www.phoenix.edu/online-information-technology-degrees/information-technology-competency-based-bachelors-degree.html"
+          },
+          "financialAid": {
+            "federalAidEligible": false,
+            "sourceUrl": "https://www.phoenix.edu/online-information-technology-degrees/information-technology-competency-based-bachelors-degree.html"
+          }
+        },
+        {
+          "id": "phoenix-da-ms-psychology",
+          "title": "Master of Science in Psychology (Direct Assessment)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.phoenix.edu/online-psychology-degrees/psych-masters-competency-based-degree.html",
+          "sourceId": "phoenix-da",
+          "degreeCredits": 36,
+          "prerequisites": [
+            "Undergraduate degree or higher.",
+            "Cumulative GPA of 2.5.",
+            "Three years of work experience within the past ten years."
+          ],
+          "notes": [
+            "Does not prepare a student for psychologist licensure or professional certification.",
+            "Advertised under-one-year / under-$11K outcome assumes at least three courses per term; not a guaranteed individual completion cost.",
+            "CBE master's transfer credit is excluded by the university master's FAQ."
+          ],
+          "status": "available",
+          "creditUnit": "competency-unit",
+          "pricing": {
+            "model": "subscription",
+            "amount": 2749,
+            "currency": "USD",
+            "period": "12 weeks",
+            "notes": "Choose 2, 3 or 4 courses each 12-week term. This is not unlimited-course subscription pricing; completion speed changes the number of terms.",
+            "sourceUrl": "https://www.phoenix.edu/online-psychology-degrees/psych-masters-competency-based-degree.html"
+          }
+        }
+      ]
+    },
+    {
+      "id": "walden-university",
+      "name": "Walden University",
+      "url": "https://www.waldenu.edu/why-walden/flexibility",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "competency-subscription"
+      ],
+      "pricing": {
+        "model": "subscription",
+        "amount": null,
+        "currency": "USD",
+        "period": "3 months",
+        "notes": "Program-specific flat tuition, plus a per-term program fee. Current published new-starter tuition ranges from $1,650 to $4,000 across the degree entries in this inventory.",
+        "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+      },
+      "transferPolicy": {
+        "institutional": {
+          "status": "case-by-case",
+          "notes": "Maximum 135 quarter credits toward an undergraduate degree; program rules apply. Virginia residents must complete at least 55 credits through Walden. Quarter credits must not be treated as semester credits.",
+          "sourceUrl": "https://academics.waldenu.edu/handbook/transfer-credit-program",
+          "maximumCredits": 135,
+          "creditUnit": "quarter",
+          "minimumInstitutionalCredits": null
+        },
+        "ace": {
+          "status": "accepted",
+          "notes": "Eligible ACE-approved prior learning and alternative courses may apply to undergraduate programs. Prior-learning categories have a combined 90-quarter-credit ceiling, within the overall 135-quarter-credit transfer ceiling. Exact course/competency applicability requires advisor confirmation.",
+          "sourceUrl": "https://academicguides.waldenu.edu/degreeacceleration/prior-learning-credit-policies",
+          "maximumCredits": 90,
+          "creditUnit": "quarter"
+        },
+        "nccrs": {
+          "status": "case-by-case",
+          "notes": "Official policy includes portfolios recommended by NCCRS or Walden's Office of Degree Acceleration in the combined 90-quarter-credit prior-learning limit; this is not a blanket NCCRS course guarantee.",
+          "sourceUrl": "https://academicguides.waldenu.edu/degreeacceleration/prior-learning-credit-policies"
+        },
+        "graduate": {
+          "status": "case-by-case",
+          "notes": "Maximum varies by program and generally cannot exceed 50% of overall or embedded requirements, with specified nursing certificate exceptions. Internships, practica, dissertations, doctoral studies and theses are not transferable. Tempo maps eligible transferred courses to aligned competencies.",
+          "sourceUrl": "https://academics.waldenu.edu/handbook/transfer-credit-program",
+          "maximumPercent": 50
+        }
+      },
+      "sources": [
+        {
+          "id": "walden-tempo",
+          "title": "Flexible learning and Tempo overview",
+          "url": "https://www.waldenu.edu/why-walden/flexibility"
+        },
+        {
+          "id": "walden-tempo-tuition",
+          "title": "Official Tempo Learning tuition schedule",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo"
+        },
+        {
+          "id": "walden-transfer",
+          "title": "Transfer policy and Tempo competency alignment",
+          "url": "https://academics.waldenu.edu/handbook/registration-admission-enrollment/transfer-credit"
+        },
+        {
+          "id": "walden-transfer-caps",
+          "title": "Transfer maxima by program",
+          "url": "https://academics.waldenu.edu/handbook/transfer-credit-program"
+        },
+        {
+          "id": "walden-prior-learning",
+          "title": "Prior-learning categories and combined limits",
+          "url": "https://academicguides.waldenu.edu/degreeacceleration/prior-learning-credit-policies"
+        },
+        {
+          "id": "walden-alt-instructions",
+          "title": "Official alternative credit confirmation instructions for Sophia and StraighterLine",
+          "url": "https://academicguides.waldenu.edu/degreeacceleration/alternatecredit/sign-up"
+        }
+      ],
+      "coverage": {
+        "degreeEntries": 15,
+        "certificateEntriesExcluded": 2,
+        "completeFor": "Fifteen degree titles named in the current official Tempo tuition schedule, not an assertion of exhaustive current intake inventory.",
+        "gaps": [
+          "Marketing references 17 programs; directory pagination and program/specialization counting were not fully reconciled.",
+          "Program-specific current intake, credit totals and exact specializations remain unverified unless separately stated.",
+          "Tuition schedule also lists two graduate certificates, excluded from degree count.",
+          "No doctorate was verified as a current Tempo offering; do not infer Tempo availability from the site-wide navigation or filters."
+        ]
+      },
+      "programs": [
+        {
+          "id": "walden-tempo-rn-bsn",
+          "title": "Bachelor of Science in Nursing (RN to BSN Completion) (Tempo Learning)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support.",
+            "Nursing background, active licensure, state authorization and any clinical/practicum requirements must be verified for the selected track."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 3750,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-bs-business-administration",
+          "title": "BS in Business Administration (Tempo Learning)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.waldenu.edu/online-bachelors-programs/bs-in-business-administration",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 2900,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-bs-criminal-justice",
+          "title": "BS in Criminal Justice (Tempo Learning)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 2900,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-bs-early-childhood-studies",
+          "title": "BS in Early Childhood Studies (Tempo Learning)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support.",
+            "Do not imply this degree is an initial teacher licensure route; verify state/licensure purpose separately."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 1650,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-bs-health-studies",
+          "title": "BS in Health Studies (Tempo Learning)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 2900,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-bs-healthcare-management",
+          "title": "BS in Healthcare Management (Tempo Learning)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 2900,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-bs-public-health",
+          "title": "BS in Public Health (Tempo Learning)",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 2900,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-mba",
+          "title": "Master of Business Administration (Tempo Learning)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.waldenu.edu/online-masters-programs/master-of-business-administration",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 3100,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-mha",
+          "title": "Master of Healthcare Administration (Tempo Learning)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.waldenu.edu/online-masters-programs/master-of-healthcare-administration",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 4000,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-msn",
+          "title": "Master of Science in Nursing (Tempo Learning)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.waldenu.edu/online-masters-programs/master-of-science-in-nursing",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support.",
+            "Nursing background, active licensure, state authorization and any clinical/practicum requirements must be verified for the selected track."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 3750,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-ms-criminal-justice",
+          "title": "MS in Criminal Justice (Tempo Learning)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.waldenu.edu/online-masters-programs/ms-in-criminal-justice",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 4000,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-ms-early-childhood-studies",
+          "title": "MS in Early Childhood Studies (Tempo Learning)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.waldenu.edu/online-masters-programs/ms-in-early-childhood-studies",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support.",
+            "Do not imply this degree is an initial teacher licensure route; verify state/licensure purpose separately."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 3000,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-ms-human-resource-management",
+          "title": "MS in Human Resource Management (Tempo Learning)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.waldenu.edu/online-masters-programs/ms-in-human-resource-management",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 4000,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-ms-industrial-organizational-psychology",
+          "title": "MS in Industrial and Organizational (I/O) Psychology (Tempo Learning)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support.",
+            "Do not imply psychologist or counseling licensure eligibility from this academic degree."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 4000,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        },
+        {
+          "id": "walden-tempo-ms-psychology",
+          "title": "MS in Psychology (Tempo Learning)",
+          "level": "master",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://academics.waldenu.edu/handbook/tuition/tempo",
+          "sourceId": "walden-tempo-tuition",
+          "degreeCredits": null,
+          "prerequisites": [],
+          "notes": [
+            "Named in current official Tempo tuition schedule; exact new-enrollment availability and specializations must be checked on the program page.",
+            "Self-paced mastery within three-month subscription periods, with academic coach and faculty support.",
+            "Do not imply psychologist or counseling licensure eligibility from this academic degree."
+          ],
+          "status": "available",
+          "creditUnit": "quarter",
+          "intakeVerified": false,
+          "pricing": {
+            "model": "subscription",
+            "amount": 4000,
+            "currency": "USD",
+            "period": "3 months",
+            "notes": "Official tuition schedule, rates effective on/after March 2, 2026. For rates differentiated by starting cohort, use the rate for new starters. Per-term program fee is additional; do not present as all-in cost.",
+            "sourceUrl": "https://academics.waldenu.edu/handbook/tuition/tempo"
+          }
+        }
+      ]
+    },
+    {
+      "id": "winthrop-university",
+      "name": "Winthrop University",
+      "url": "https://www.winthrop.edu/elevate/",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "competency-subscription"
+      ],
+      "pricing": {
+        "model": "subscription",
+        "amount": 3500,
+        "currency": "USD",
+        "period": "14 weeks",
+        "notes": "Full-time subscription covers 12 or more credit hours, with no stated course-count limit. Part-time costs $1,750 for up to 11 credits. Subscription-type changes allowed between periods once per year.",
+        "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+      },
+      "transferPolicy": {
+        "institutional": {
+          "status": "case-by-case",
+          "notes": "Elevate BPS permits up to 90 combined credits from previous college coursework and approved alternative/prior-learning sources. Minimum 30 incoming credits required; no age limit on undergraduate coursework stated.",
+          "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx",
+          "maximumCredits": 90,
+          "creditUnit": "semester",
+          "minimumInstitutionalCredits": null
+        },
+        "ace": {
+          "status": "accepted",
+          "notes": "BPS FAQ explicitly includes ACE National Guide recommendations and names Sophia and StraighterLine. All sources share the combined 90-credit maximum; applicability remains subject to evaluation.",
+          "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+        },
+        "nccrs": {
+          "status": "not-verified",
+          "notes": "NCCRS recognition was not verified for Elevate BPS. Do not treat ACE recognition as automatic NCCRS acceptance.",
+          "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+        },
+        "graduate": {
+          "status": "not-verified",
+          "notes": "No current graduate Elevate CBE degree identified in the scoped inventory.",
+          "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+        }
+      },
+      "sources": [
+        {
+          "id": "winthrop-elevate",
+          "title": "Winthrop Elevate and pending program approval",
+          "url": "https://www.winthrop.edu/elevate/"
+        },
+        {
+          "id": "winthrop-elevate-faq",
+          "title": "Elevate FAQ: pacing, pricing, transfer, admissions and aid",
+          "url": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+        },
+        {
+          "id": "winthrop-bps",
+          "title": "BPS and four concentration options",
+          "url": "https://www.winthrop.edu/sgco/bps/"
+        }
+      ],
+      "coverage": {
+        "degreeEntries": 4,
+        "distinctDegrees": 1,
+        "completeFor": "Current Elevate BPS and all four named concentrations.",
+        "gaps": [
+          "Exact 120-credit curriculum total and course maps require catalog confirmation; left null rather than inferred.",
+          "BSBA is advertised as pending approval and must not be presented as an active degree."
+        ]
+      },
+      "plannedPrograms": [
+        {
+          "id": "winthrop-elevate-bsba",
+          "title": "Bachelor of Science in Business Administration (Elevate)",
+          "level": "bachelor",
+          "status": "approval-pending",
+          "url": "https://www.winthrop.edu/elevate/",
+          "sourceId": "winthrop-elevate",
+          "notes": [
+            "Pending South Carolina Commission on Higher Education approval; not listed as currently available in the Elevate FAQ."
+          ]
+        }
+      ],
+      "programs": [
+        {
+          "id": "winthrop-elevate-bps-health-informatics",
+          "title": "Bachelor of Professional Studies \u2014 Health Informatics",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.winthrop.edu/sgco/bps/",
+          "sourceId": "winthrop-elevate-faq",
+          "degreeCredits": null,
+          "prerequisites": [
+            "Minimum 30 incoming transfer credits.",
+            "General Education requirements must be completed as advised before beginning the BPS program."
+          ],
+          "notes": [
+            "Degree-completion program: up to 90 combined credits from prior coursework, approved alternative credit and prior learning.",
+            "Same BPS degree with four concentrations; these are concentration options, not four independent degree awards.",
+            "Federal financial aid and veterans benefits are not currently available for the CBE option according to the FAQ. Conventional online BPS has a separate aid-eligible track."
+          ],
+          "status": "available",
+          "creditUnit": "semester",
+          "pricing": {
+            "model": "subscription",
+            "amount": 3500,
+            "currency": "USD",
+            "period": "14 weeks",
+            "notes": "Full-time subscription covers 12 or more credit hours, with no stated course-count limit. Part-time costs $1,750 for up to 11 credits. Subscription-type changes allowed between periods once per year.",
+            "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+          },
+          "financialAid": {
+            "federalAidEligible": false,
+            "veteransBenefitsEligible": false,
+            "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+          }
+        },
+        {
+          "id": "winthrop-elevate-bps-organizational-leadership",
+          "title": "Bachelor of Professional Studies \u2014 Organizational Leadership",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.winthrop.edu/sgco/bps/",
+          "sourceId": "winthrop-elevate-faq",
+          "degreeCredits": null,
+          "prerequisites": [
+            "Minimum 30 incoming transfer credits.",
+            "General Education requirements must be completed as advised before beginning the BPS program."
+          ],
+          "notes": [
+            "Degree-completion program: up to 90 combined credits from prior coursework, approved alternative credit and prior learning.",
+            "Same BPS degree with four concentrations; these are concentration options, not four independent degree awards.",
+            "Federal financial aid and veterans benefits are not currently available for the CBE option according to the FAQ. Conventional online BPS has a separate aid-eligible track."
+          ],
+          "status": "available",
+          "creditUnit": "semester",
+          "pricing": {
+            "model": "subscription",
+            "amount": 3500,
+            "currency": "USD",
+            "period": "14 weeks",
+            "notes": "Full-time subscription covers 12 or more credit hours, with no stated course-count limit. Part-time costs $1,750 for up to 11 credits. Subscription-type changes allowed between periods once per year.",
+            "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+          },
+          "financialAid": {
+            "federalAidEligible": false,
+            "veteransBenefitsEligible": false,
+            "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+          }
+        },
+        {
+          "id": "winthrop-elevate-bps-organizational-operations",
+          "title": "Bachelor of Professional Studies \u2014 Organizational Operations",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.winthrop.edu/sgco/bps/",
+          "sourceId": "winthrop-elevate-faq",
+          "degreeCredits": null,
+          "prerequisites": [
+            "Minimum 30 incoming transfer credits.",
+            "General Education requirements must be completed as advised before beginning the BPS program."
+          ],
+          "notes": [
+            "Degree-completion program: up to 90 combined credits from prior coursework, approved alternative credit and prior learning.",
+            "Same BPS degree with four concentrations; these are concentration options, not four independent degree awards.",
+            "Federal financial aid and veterans benefits are not currently available for the CBE option according to the FAQ. Conventional online BPS has a separate aid-eligible track."
+          ],
+          "status": "available",
+          "creditUnit": "semester",
+          "pricing": {
+            "model": "subscription",
+            "amount": 3500,
+            "currency": "USD",
+            "period": "14 weeks",
+            "notes": "Full-time subscription covers 12 or more credit hours, with no stated course-count limit. Part-time costs $1,750 for up to 11 credits. Subscription-type changes allowed between periods once per year.",
+            "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+          },
+          "financialAid": {
+            "federalAidEligible": false,
+            "veteransBenefitsEligible": false,
+            "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+          }
+        },
+        {
+          "id": "winthrop-elevate-bps-community-health-services",
+          "title": "Bachelor of Professional Studies \u2014 Community and Health Services",
+          "level": "bachelor",
+          "modalities": [
+            "online"
+          ],
+          "paceModel": "competency-subscription",
+          "url": "https://www.winthrop.edu/sgco/bps/",
+          "sourceId": "winthrop-elevate-faq",
+          "degreeCredits": null,
+          "prerequisites": [
+            "Minimum 30 incoming transfer credits.",
+            "General Education requirements must be completed as advised before beginning the BPS program."
+          ],
+          "notes": [
+            "Degree-completion program: up to 90 combined credits from prior coursework, approved alternative credit and prior learning.",
+            "Same BPS degree with four concentrations; these are concentration options, not four independent degree awards.",
+            "Federal financial aid and veterans benefits are not currently available for the CBE option according to the FAQ. Conventional online BPS has a separate aid-eligible track."
+          ],
+          "status": "available",
+          "creditUnit": "semester",
+          "pricing": {
+            "model": "subscription",
+            "amount": 3500,
+            "currency": "USD",
+            "period": "14 weeks",
+            "notes": "Full-time subscription covers 12 or more credit hours, with no stated course-count limit. Part-time costs $1,750 for up to 11 credits. Subscription-type changes allowed between periods once per year.",
+            "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+          },
+          "financialAid": {
+            "federalAidEligible": false,
+            "veteransBenefitsEligible": false,
+            "sourceUrl": "https://www.winthrop.edu/elevate/frequently-asked-questions.aspx"
+          }
+        }
+      ]
+    }
+  ]
+}

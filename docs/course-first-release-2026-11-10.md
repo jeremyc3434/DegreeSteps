@@ -1,0 +1,11 @@
+# Course-first planning — November 10, 2026
+
+Recommendations show up to three relevant degree options together. The learner specifies the degree level, goal, subject and format. Each card separates completed matches, in-progress work and saved-course potential, shows remaining requirements and scoped university tuition, and offers an explicit path into the plan or estimate editor. Original records and notes stay unchanged while comparing or adopting a route.
+
+The course matcher now considers alternative placements so a flexible course does not strand another usable course. Confirmed evaluations and explicit choices stay fixed. Search and validation work are bounded; metadata distinguishes an exhausted search from an optimum. Degree planning validates original earned placements against residency and source limits. If no feasible assignment can be found, researched original records remain visible with the unresolved policy rather than being silently erased.
+
+Card totals use simultaneous placements in the actual plan. The individual-course matrix remains a separate, one-course-at-a-time check and loads when opened. Rankings compare the fraction of a degree covered, including across different credit systems. Unknown prices and study times are not zero. University tuition is not the full cost of the degree.
+
+Ten new provider-reported Study.com choices cover 28 receiving CUs in WGU Business Management catalog 202605. All remain conditional on WGU approval. Source semester credits remain separate from receiving CUs. Contested Finance and mismatched Computer Science catalog options were excluded. A retained supplement and importer identity checks preserve the reviewed additions during regeneration.
+
+Validation includes assignment and workflow regressions, original-record guards, all reviewed curricula, source regeneration, academic planner checks, and Worker/build checks. Six offline browser journeys passed for intent, fit breakdown, plan adoption with concurrent records, estimate entry and phone widths. A later browser retry with an additional expanded-table assertion was blocked by workspace restarts; the deferred matrix API is covered by the workflow test. These are automated and synthetic learner checks, not interviews with real students or a production load test.

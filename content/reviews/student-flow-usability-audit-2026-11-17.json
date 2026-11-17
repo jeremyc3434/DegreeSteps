@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "asOf": "2026-11-17",
+  "phase": "Initial main-flow audit before remediation",
+  "scope": "Production workflow closures, real local degree models and synthetic private student records. This is not a visual browser pass or a study with actual students.",
+  "sourceBaselineCommit": "f54ef630b0bf5fe75c44bbe29f6e5dfd69fef9dc",
+  "sourceIncludesWorkingChanges": true,
+  "personas": [
+    {
+      "student": "Starting from zero with an exact online degree",
+      "verifiedBehavior": "The current WGU Business Management route proposes 69 published outside competency units and 41 university units. The refreshed plan and school portal distinguish published facts from the student's eventual official credit award.",
+      "remainingFriction": "The comparison screen still turns published matches into blanket school-approval homework and describes named university coursework as unresolved degree research."
+    },
+    {
+      "student": "Returning with old college records",
+      "verifiedBehavior": "Unmatched original records remain saved and receive an individual evaluation action instead of an invented transfer award.",
+      "remainingFriction": "The degree-fit explanation can request a missing course code, but My courses' edit-details form cannot edit the course code, title or provider."
+    },
+    {
+      "student": "Taking university competency courses",
+      "verifiedBehavior": "Starting and finishing a named WGU university course updates real saved progress and never sets school-confirmed credit automatically.",
+      "remainingFriction": "The worksheet record editor has no competency-unit option and incorrectly labels known competency units as needing unit checks. An ordinary edit can therefore lose known source units."
+    },
+    {
+      "student": "Changing school after finishing coursework",
+      "verifiedBehavior": "The actual worksheet school-change handler preserves the original WGU competency-unit record, remembers the previous degree, and does not silently convert the record into Liberty semester credit.",
+      "remainingFriction": "The next evaluation must remain specific to the new destination. Both worksheet finished-course pickers hide known competency-unit records, so the student cannot select one even when they have an exact school evaluation."
+    },
+    {
+      "student": "Keeping a course repository while exploring degrees",
+      "verifiedBehavior": "Saved courses remain unfinished potential, recommendations reuse the original collection, and the large per-course applicability matrix remains deferred until opened.",
+      "remainingFriction": "A single saved general-education course can drive three low-total-CU, conditionally mapped degrees ahead of more thoroughly documented accelerated pathways. Existing-degree users also have a less visible way to change recommendation preferences."
+    },
+    {
+      "student": "Using multiple browser tabs to correct records",
+      "verifiedBehavior": "Explicit consent to change an already evaluated source record clears the affected placement as intended.",
+      "remainingFriction": "A stale edit dialog does not detect another tab's corrected quantities, score or newly confirmed evaluation. Saving the old form can overwrite those newer facts and clear an evaluation without newly visible consent."
+    },
+    {
+      "student": "An exact degree not yet in the ready-plan set",
+      "verifiedBehavior": "The student's exact goal can remain saved without invented degree credits or progress.",
+      "remainingFriction": "The ready-plan picker hides unready catalog entries. Students are sent to find a degree URL themselves even though the catalog already contains official program links and the research page accepts a prefilled source parameter."
+    }
+  ],
+  "prioritizedFindings": [
+    {
+      "id": "receiving-course-recency",
+      "priority": "high",
+      "kind": "academic-eligibility",
+      "evidence": "The current WGU C722 Project Management requirement and transferRules both record a five-year receiving-course recency limit. Guide.courseRecordEligible checks grades and source recommendation windows but does not check this receiving-course age rule.",
+      "reproduction": "A Sophia SOPH-0013 Project Management record completed on 2018-01-15 with grade A and no school evaluation is matched to C722 as reported credit in November 2026.",
+      "acceptance": "Apply only the exact source-bound receiving-course recency rule, keep the original old record intact, provide a specific personal eligibility reason, and preserve a recent-course provisional match. Do not expire unrelated old coursework globally.",
+      "test": "student-flow-recency.test.cjs"
+    },
+    {
+      "id": "stale-course-edit",
+      "priority": "high",
+      "kind": "data-loss",
+      "evidence": "courses.js editStatus captures form fields at open; submit reads fresh storage but reapplies all older fields. Storage refresh is suppressed while a dialog is open.",
+      "reproduction": "Open a 3-semester-credit course; another tab changes it to 4 quarter credits, adds score 95 and a school-confirmed evaluation; save the old dialog. New facts and approval are overwritten.",
+      "acceptance": "Detect that the source record changed before writing. Preserve the newer source facts and evaluation, show a targeted refresh/review action and keep the student's pending form input reviewable.",
+      "test": "course-repository-journey-regressions.test.cjs"
+    },
+    {
+      "id": "competency-unit-editor",
+      "priority": "high",
+      "kind": "data-loss-risk",
+      "evidence": "sheet.js creditsDialog renders only blank, semester and quarter options; sourceCreditLabel omits competency-unit despite backend support. Both finished-course placement pickers likewise restrict original records to semester and quarter units.",
+      "reproduction": "Edit an existing 3-CU WGU university course. No option matches its stored units, so the form falls back to blank. After changing to Liberty, open a degree row: the preserved completed CU record is absent from the school-evaluated-placement picker.",
+      "acceptance": "The actual form selects and saves competency-unit without losing source institution, source program, credits or evaluations. The exact original record is available for explicit school-evaluated placement; cross-unit placement retains the acknowledgment and keeps original units separate from receiving units.",
+      "test": "student-flow-records.test.cjs"
+    },
+    {
+      "id": "missing-course-identity-correction",
+      "priority": "high",
+      "kind": "dead-end",
+      "evidence": "The comparison explains that the original course code is required. The My courses edit-details form edits only quantities, units, date, grade and score.",
+      "reproduction": "Add an old course without its optional code, open its degree-fit review, follow the correction link and open Edit course details. There is no code field.",
+      "acceptance": "The correction action reaches a complete record editor. Identity changes clear or rebind stale catalog provenance and school evaluations; editing must not borrow old approval for a new source course.",
+      "test": "course-repository-journey-regressions.test.cjs"
+    },
+    {
+      "id": "comparison-school-facts-homework",
+      "priority": "high",
+      "kind": "contradictory-guidance",
+      "evidence": "compare-plans.js estimateHTML/card still displays blanket school approval and research-gap language on real WGU and Liberty scenarios, while actual CoursePlan groups.unmapped is empty and all selected outside choices are published.",
+      "acceptance": "Keep researched school facts, platform-owned additional-option research and personal record evaluation distinct in the degree cards. Preserve grade, version, deadline and genuine conditional-source eligibility requirements.",
+      "test": "comparison-student-language.test.cjs"
+    },
+    {
+      "id": "indexed-program-to-research",
+      "priority": "medium",
+      "kind": "unnecessary-work",
+      "evidence": "portal.renderDegreeOptions searches availablePlans only. request-plan.js already accepts source or url parameters, while the catalog includes the official links for programs outside the ready set.",
+      "acceptance": "An exact indexed program without a ready plan can hand its known official URL to the existing research flow, with honest readiness and no automatic unapproved research run."
+    },
+    {
+      "id": "course-first-recommendation-quality",
+      "priority": "medium",
+      "kind": "recommendation-design",
+      "evidence": "One saved Sophia composition course with any online bachelor's goal checked 26 programs and recommended WGU Health Science, Public Health and Psychology by covered-degree fraction; the more documented Business Management route was outside the first three.",
+      "acceptance": "Decide how current source evidence and remaining university work should inform suggestions when a tiny generic collection cannot meaningfully distinguish majors. Keep explicit career and study-format preferences authoritative.",
+      "requiresProductJudgment": true
+    },
+    {
+      "id": "completion-review-churn",
+      "priority": "medium",
+      "kind": "workflow-design",
+      "evidence": "After the student completes Review plan, finishing one documented course reopens the review signature and moves the default next task backward from Plan your start month to Gather your learning records.",
+      "acceptance": "Consider separating routine completion milestones from changes that actually invalidate course choices, source facts, policy applicability or destination evaluations. Preserve safeguards on meaningful academic changes.",
+      "requiresProductJudgment": true
+    }
+  ],
+  "remediation": [
+    {
+      "findingIds": ["stale-course-edit", "missing-course-identity-correction"],
+      "status": "Implemented in the working tree after v47; awaiting integration and publication",
+      "baseCommit": "c9138d0e5de8c5f9b32c0678ea2cd39a6c96f287",
+      "files": ["dist/courses.js", "dist/courses.html", "dist/courses.css"],
+      "behavior": "The course editor exposes original provider, course code and title. Identity corrections remove stale catalog aliases, links, recommendation metadata and degree placements. Academic edits require visible consent to clear existing placements. A complete opened-record comparison blocks stale writes, preserves unsaved input for review and requires loading the newest facts before saving. Removed records are never recreated by the old editor. Unrelated concurrent plan changes remain intact.",
+      "verification": {
+        "actualHandlerTests": "course-repository-journey-regressions.test.cjs",
+        "passingChecks": 10,
+        "existingPassingSuites": ["course-library-engine.test.cjs", "course-fit-assignment.test.cjs"],
+        "preservedGuards": "No-op saves preserve original grade formatting and evaluations. Unchanged mapped quantities remain estimates; unknown source quantities remain unknown. Correcting a saved interest never marks it finished or school confirmed. All interactions use device-local synthetic records and send no network requests.",
+        "limitations": "Production handlers tested through a VM and DOM form harness; no visual browser test or actual-student study was available in this environment."
+      }
+    }
+  ],
+  "measuredCourseFirstRun": {
+    "readyCatalogRoutes": 38,
+    "loadedRequirementModels": 45,
+    "programsChecked": 26,
+    "durationMs": 3812,
+    "matrixDeferred": true,
+    "originalStudentStatePreserved": true,
+    "limitations": "One local Node run during active development, not a browser latency benchmark or a production load test."
+  },
+  "positiveAcceptanceChecks": [
+    "Actual WGU progress handler records in-progress then finished without granting school confirmation.",
+    "Actual WGU-to-Liberty change preserves original competency-unit records and previous-plan history.",
+    "Actual comparison cards keep reported completed credit distinct from school-confirmed credit.",
+    "An unmapped comparison has no invented progress bar or remaining degree price.",
+    "The comparison cost-priority override now affects shortlist selection; the earlier ignored-selector issue was fixed during this audit."
+  ]
+}

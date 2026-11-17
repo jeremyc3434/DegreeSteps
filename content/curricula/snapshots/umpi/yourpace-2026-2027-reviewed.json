@@ -1,0 +1,1498 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-17",
+  "school": "University of Maine at Presque Isle",
+  "programCandidate": "Bachelor of Liberal Studies \u2014 exact current YourPace minor and course ledger remain unconfirmed.",
+  "status": "Internal review only:60 provider award identities and verified policy facts; no complete degree model or executable plan promoted.",
+  "sources": [
+    {
+      "id": "umpi-faq-current",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "title": "UMPI YourPace FAQ: residency, transfer and eligibility",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "umpi-gec-transition",
+      "url": "https://www.umpi.edu/academics/general-education-curriculum/",
+      "title": "UMPI GEC catalog transition beginning September1,2026",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "umpi-tuition-2026-2027",
+      "url": "https://www.umpi.edu/yourpace/tuition/",
+      "title": "UMPI2026\u20132027YourPace tuition",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "umpi-sophia-current",
+      "url": "https://umpi.sophia.org/",
+      "title": "UMPI official Sophia partner transfer table",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "umpi-bls-marketing",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/liberal-studies/",
+      "title": "UMPI YourPace Liberal Studies offerings and session dates",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "umpi-study-current-indexed",
+      "url": "https://study.com/college/school/umpi.html?adkey=eda9847cda664406840db845f2a02f6b",
+      "title": "Study.com official UMPI transfer-equivalency table",
+      "checked": "2026-11-17",
+      "retrieval": "Official indexed full equivalency rows recovered by domain-filtered search; live renderer shows a newer layout without the table. Not an independent university recertification."
+    },
+    {
+      "id": "study-upper-level-course-list",
+      "url": "https://study.com/support/solutions/articles/11000108349-upper-division-credit-or-lower-division-credit-at-study-com-",
+      "title": "Study.com upper-division course identities and recommended credits",
+      "checked": "2026-11-17",
+      "retrieval": "Official table includes mixed article update timestamps; exact recommendation periods still require recommendation exhibits."
+    },
+    {
+      "id": "umpi-handbook-2025-2026",
+      "url": "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf",
+      "title": "YourPace2025\u20132026Student Handbook",
+      "checked": "2026-11-17",
+      "retrieval": "Official70-pagePDF reviewed; applies2025\u201326, not silently current2026\u201327."
+    },
+    {
+      "id": "umpi-gec-2026-one-page",
+      "url": "https://www.umpi.edu/academics/wp-content/uploads/sites/19/2026/06/GenEd_Student_OnePage.docx",
+      "title": "UMPI general education student one-page overview",
+      "checked": "2026-11-17",
+      "sha256": "1b6c6488bdbcc16b9ec1f2264ff4864763267bc4647d3d0cd56dc68d8644d014",
+      "retrieval": "Root downloaded DOCX and parsed its text; reviewed locally."
+    }
+  ],
+  "policyFacts": {
+    "totalCredits": 120,
+    "creditSystem": "semester",
+    "institutionMinCredits": 30,
+    "majorMinInstitutionCredits": 12,
+    "majorUpperMinInstitutionCredits": 9,
+    "institutionSubsetRule": "At least12 of30 UMPI credits must be in the major, including9 upper-level credits among those12. The exact minor-based BLS application needs the governing catalog.",
+    "incomingTransferLimit": null,
+    "maxOutsideCreditsAppliedArithmetic": 90,
+    "alternativeMaxCredits": null,
+    "transferScope": "No fixed incoming-transfer limit is published in the current FAQ. Ninety outside credits is the arithmetic remainder within120 after30 UMPI residency; it is not a separately verified ACE cap.",
+    "minimumApplicantAge": 20,
+    "ageException": "Previously earned accredited associate or bachelor degree",
+    "minimumMostRecentCollegeGpa": 1.75,
+    "sessionWeeks": 8,
+    "sessionsPerYear": 6,
+    "tuition": {
+      "amount": 1800,
+      "currency": "USD",
+      "period": "8-week undergraduate session",
+      "academicYear": "2026\u20132027",
+      "tuitionOnly": true,
+      "guaranteedTotalDegreeCost": false
+    },
+    "sourceIds": [
+      "umpi-faq-current",
+      "umpi-tuition-2026-2027"
+    ]
+  },
+  "catalogApplicability": {
+    "newIncomingStudents": "New GEC applies to newly accepted2026\u20132027students, effective September1,2026.",
+    "continuingStudents": "Existing incoming-catalog requirements continue.",
+    "priorBachelorGecExemption": "A completed accredited bachelor degree exempts the specific GEC requirements; program requirements remain.",
+    "sourceIds": [
+      "umpi-gec-transition"
+    ]
+  },
+  "providerMappings": [
+    {
+      "id": "umpi-sophia-soph-0015",
+      "provider": "Sophia",
+      "title": "English Composition I",
+      "code": "SOPH-0015",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "College Composition",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0030",
+      "provider": "Sophia",
+      "title": "English Composition II",
+      "code": "SOPH-0030",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "English Composition II",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": "sophia-composition-ii",
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0049",
+      "provider": "Sophia",
+      "title": "Workplace Writing II",
+      "code": "SOPH-0049",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "College Composition II",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": "sophia-composition-ii",
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0009",
+      "provider": "Sophia",
+      "title": "Visual Communications",
+      "code": "SOPH-0009",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Experience of the Arts",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0006",
+      "provider": "Sophia",
+      "title": "Art History I",
+      "code": "SOPH-0006",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Art History I",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0029",
+      "provider": "Sophia",
+      "title": "Art History II",
+      "code": "SOPH-0029",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Art History II",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0065",
+      "provider": "Sophia",
+      "title": "Critical Thinking",
+      "code": "SOPH-0065",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Creative Decision Making",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0020",
+      "provider": "Sophia",
+      "title": "Introduction to Ethics",
+      "code": "SOPH-0020",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Introduction to Ethics",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0077",
+      "provider": "Sophia",
+      "title": "French I",
+      "code": "SOPH-0077",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Elementary French I",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0057",
+      "provider": "Sophia",
+      "title": "Spanish I",
+      "code": "SOPH-0057",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Elementary Spanish I",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0064",
+      "provider": "Sophia",
+      "title": "Spanish II",
+      "code": "SOPH-0064",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Elementary Spanish II",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0060",
+      "provider": "Sophia",
+      "title": "Calculus I",
+      "code": "SOPH-0060",
+      "sourceCredits": 4,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Calculus I",
+      "receivingCredits": 4,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0001",
+      "provider": "Sophia",
+      "title": "College Algebra",
+      "code": "SOPH-0001",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "College Algebra",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0005",
+      "provider": "Sophia",
+      "title": "Introduction to Statistics",
+      "code": "SOPH-0005",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Probability & Statistics I",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0069",
+      "provider": "Sophia",
+      "title": "Precalculus",
+      "code": "SOPH-0069",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Pre-Calculus",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0016",
+      "provider": "Sophia",
+      "title": "Environmental Science",
+      "code": "SOPH-0016",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Intro to Environmental Science",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0080",
+      "provider": "Sophia",
+      "title": "Health, Fitness, and Wellness",
+      "code": "SOPH-0080",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Lifelong Wellness",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0063",
+      "provider": "Sophia",
+      "title": "Introduction to Nutrition",
+      "code": "SOPH-0063",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Intro to Human Nutrition",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0074",
+      "provider": "Sophia",
+      "title": "Microbiology",
+      "code": "SOPH-0074",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "General Microbiology",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0048",
+      "provider": "Sophia",
+      "title": "Introduction to Psychology",
+      "code": "SOPH-0048",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "General Psychology",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0051",
+      "provider": "Sophia",
+      "title": "Introduction to Sociology",
+      "code": "SOPH-0051",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Introduction to Sociology",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0078",
+      "provider": "Sophia",
+      "title": "Lifespan Development",
+      "code": "SOPH-0078",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Lifespan Development",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0071",
+      "provider": "Sophia",
+      "title": "U.S. Government",
+      "code": "SOPH-0071",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "American Government",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0022",
+      "provider": "Sophia",
+      "title": "U.S. History I",
+      "code": "SOPH-0022",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "United States History I",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0025",
+      "provider": "Sophia",
+      "title": "U.S. History II",
+      "code": "SOPH-0025",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "United States History II",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0014",
+      "provider": "Sophia",
+      "title": "Introduction to Business",
+      "code": "SOPH-0014",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Introduction to Business",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": "sophia-intro-business",
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0054",
+      "provider": "Sophia",
+      "title": "Principles of Management",
+      "code": "SOPH-0054",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Introduction to Business",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": "sophia-intro-business",
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0059",
+      "provider": "Sophia",
+      "title": "Business Communication",
+      "code": "SOPH-0059",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Communications",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0044",
+      "provider": "Sophia",
+      "title": "Personal Finance",
+      "code": "SOPH-0044",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Personal Finance",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0043",
+      "provider": "Sophia",
+      "title": "Introduction to Web Development",
+      "code": "SOPH-0043",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Introduction to Web Design",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0066",
+      "provider": "Sophia",
+      "title": "Career Readiness",
+      "code": "SOPH-0066",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "General Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0031",
+      "provider": "Sophia",
+      "title": "College Readiness",
+      "code": "SOPH-0031",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "General Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0024",
+      "provider": "Sophia",
+      "title": "Public Speaking",
+      "code": "SOPH-0024",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "General Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0010",
+      "provider": "Sophia",
+      "title": "Financial Accounting",
+      "code": "SOPH-0010",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0079",
+      "provider": "Sophia",
+      "title": "Managerial Accounting",
+      "code": "SOPH-0079",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0032",
+      "provider": "Sophia",
+      "title": "Business Law",
+      "code": "SOPH-0032",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0076",
+      "provider": "Sophia",
+      "title": "Business Ethics",
+      "code": "SOPH-0076",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0089",
+      "provider": "Sophia",
+      "title": "Human Resource Management",
+      "code": "SOPH-0089",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0086",
+      "provider": "Sophia",
+      "title": "Operations Management",
+      "code": "SOPH-0086",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0083",
+      "provider": "Sophia",
+      "title": "Organizational Behavior",
+      "code": "SOPH-0083",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0033",
+      "provider": "Sophia",
+      "title": "Principles of Finance",
+      "code": "SOPH-0033",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0085",
+      "provider": "Sophia",
+      "title": "Principles of Marketing",
+      "code": "SOPH-0085",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0013",
+      "provider": "Sophia",
+      "title": "Project Management",
+      "code": "SOPH-0013",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0007",
+      "provider": "Sophia",
+      "title": "Conflict Resolution",
+      "code": "SOPH-0007",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0034",
+      "provider": "Sophia",
+      "title": "Workplace Communication",
+      "code": "SOPH-0034",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0023",
+      "provider": "Sophia",
+      "title": "Introduction to Information Technology",
+      "code": "SOPH-0023",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Computer Science Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0062",
+      "provider": "Sophia",
+      "title": "Introduction to Java Programming",
+      "code": "SOPH-0062",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Computer Science Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0068",
+      "provider": "Sophia",
+      "title": "Introduction to Networking",
+      "code": "SOPH-0068",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Computer Science Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0058",
+      "provider": "Sophia",
+      "title": "Introduction to Python Programming",
+      "code": "SOPH-0058",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Computer Science Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0047",
+      "provider": "Sophia",
+      "title": "Introduction to Relational Databases",
+      "code": "SOPH-0047",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Computer Science Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0027",
+      "provider": "Sophia",
+      "title": "Ancient Greek Philosophers",
+      "code": "SOPH-0027",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Philosophy Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-sophia-soph-0008",
+      "provider": "Sophia",
+      "title": "Approaches to Studying Religions",
+      "code": "SOPH-0008",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "receivingTitle": "Philosophy Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "creditOrigin": "ace",
+      "upper": null,
+      "sourceIds": [
+        "umpi-sophia-current"
+      ],
+      "mappingStatus": "published-school-award-needs-degree-allocation",
+      "duplicateGroup": null,
+      "sourceUpper": false,
+      "receivingUpper": null,
+      "creditLevelNote": "Partner table does not identify the receiving course level; do not infer upper division from a generic award title."
+    },
+    {
+      "id": "umpi-study-accounting301",
+      "provider": "Study.com",
+      "title": "Accounting 301: Applied Managerial Accounting",
+      "code": "Accounting301",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "receivingCode": "BUS3XX",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingUpper": true,
+      "upper": true,
+      "creditOrigin": "ace",
+      "sourceIds": [
+        "umpi-study-current-indexed",
+        "study-upper-level-course-list"
+      ],
+      "mappingStatus": "published-provider-school-award-needs-current-catalog-allocation",
+      "usableForNamedMajorCourse": false,
+      "conditions": [
+        "A generic upper-level elective award is not a named major or minor equivalency.",
+        "Keep eight distinct original courses even when several awards share BUS3XX or HTY3XX generic codes.",
+        "Current official catalog and transfer evaluation must establish degree allocation and any duplicate-content exclusions."
+      ]
+    },
+    {
+      "id": "umpi-study-accounting303",
+      "provider": "Study.com",
+      "title": "Accounting 303: Cost Accounting",
+      "code": "Accounting303",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "receivingCode": "BUS3XX",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingUpper": true,
+      "upper": true,
+      "creditOrigin": "ace",
+      "sourceIds": [
+        "umpi-study-current-indexed",
+        "study-upper-level-course-list"
+      ],
+      "mappingStatus": "published-provider-school-award-needs-current-catalog-allocation",
+      "usableForNamedMajorCourse": false,
+      "conditions": [
+        "A generic upper-level elective award is not a named major or minor equivalency.",
+        "Keep eight distinct original courses even when several awards share BUS3XX or HTY3XX generic codes.",
+        "Current official catalog and transfer evaluation must establish degree allocation and any duplicate-content exclusions."
+      ]
+    },
+    {
+      "id": "umpi-study-finance301",
+      "provider": "Study.com",
+      "title": "Finance 301: Corporate Finance",
+      "code": "Finance301",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "receivingCode": "BUS3XX",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingUpper": true,
+      "upper": true,
+      "creditOrigin": "ace",
+      "sourceIds": [
+        "umpi-study-current-indexed",
+        "study-upper-level-course-list"
+      ],
+      "mappingStatus": "published-provider-school-award-needs-current-catalog-allocation",
+      "usableForNamedMajorCourse": false,
+      "conditions": [
+        "A generic upper-level elective award is not a named major or minor equivalency.",
+        "Keep eight distinct original courses even when several awards share BUS3XX or HTY3XX generic codes.",
+        "Current official catalog and transfer evaluation must establish degree allocation and any duplicate-content exclusions."
+      ]
+    },
+    {
+      "id": "umpi-study-finance303",
+      "provider": "Study.com",
+      "title": "Finance 303: Financial Institutions & Markets",
+      "code": "Finance303",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "receivingCode": "BUS3XX",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingUpper": true,
+      "upper": true,
+      "creditOrigin": "ace",
+      "sourceIds": [
+        "umpi-study-current-indexed",
+        "study-upper-level-course-list"
+      ],
+      "mappingStatus": "published-provider-school-award-needs-current-catalog-allocation",
+      "usableForNamedMajorCourse": false,
+      "conditions": [
+        "A generic upper-level elective award is not a named major or minor equivalency.",
+        "Keep eight distinct original courses even when several awards share BUS3XX or HTY3XX generic codes.",
+        "Current official catalog and transfer evaluation must establish degree allocation and any duplicate-content exclusions."
+      ]
+    },
+    {
+      "id": "umpi-study-marketing301",
+      "provider": "Study.com",
+      "title": "Marketing 301: Marketing Research",
+      "code": "Marketing301",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "receivingCode": "BUS3XX",
+      "receivingTitle": "Business Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingUpper": true,
+      "upper": true,
+      "creditOrigin": "ace",
+      "sourceIds": [
+        "umpi-study-current-indexed",
+        "study-upper-level-course-list"
+      ],
+      "mappingStatus": "published-provider-school-award-needs-current-catalog-allocation",
+      "usableForNamedMajorCourse": false,
+      "conditions": [
+        "A generic upper-level elective award is not a named major or minor equivalency.",
+        "Keep eight distinct original courses even when several awards share BUS3XX or HTY3XX generic codes.",
+        "Current official catalog and transfer evaluation must establish degree allocation and any duplicate-content exclusions."
+      ]
+    },
+    {
+      "id": "umpi-study-history301",
+      "provider": "Study.com",
+      "title": "History 301: Historiography & Historical Methods",
+      "code": "History301",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "receivingCode": "HTY3XX",
+      "receivingTitle": "History Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingUpper": true,
+      "upper": true,
+      "creditOrigin": "ace",
+      "sourceIds": [
+        "umpi-study-current-indexed",
+        "study-upper-level-course-list"
+      ],
+      "mappingStatus": "published-provider-school-award-needs-current-catalog-allocation",
+      "usableForNamedMajorCourse": false,
+      "conditions": [
+        "A generic upper-level elective award is not a named major or minor equivalency.",
+        "Keep eight distinct original courses even when several awards share BUS3XX or HTY3XX generic codes.",
+        "Current official catalog and transfer evaluation must establish degree allocation and any duplicate-content exclusions."
+      ]
+    },
+    {
+      "id": "umpi-study-history307",
+      "provider": "Study.com",
+      "title": "History 307: American Civil Rights Movement",
+      "code": "History307",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "receivingCode": "HTY3XX",
+      "receivingTitle": "History Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingUpper": true,
+      "upper": true,
+      "creditOrigin": "ace",
+      "sourceIds": [
+        "umpi-study-current-indexed",
+        "study-upper-level-course-list"
+      ],
+      "mappingStatus": "published-provider-school-award-needs-current-catalog-allocation",
+      "usableForNamedMajorCourse": false,
+      "conditions": [
+        "A generic upper-level elective award is not a named major or minor equivalency.",
+        "Keep eight distinct original courses even when several awards share BUS3XX or HTY3XX generic codes.",
+        "Current official catalog and transfer evaluation must establish degree allocation and any duplicate-content exclusions."
+      ]
+    },
+    {
+      "id": "umpi-study-history311",
+      "provider": "Study.com",
+      "title": "History 311: The Holocaust & World War II",
+      "code": "History311",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "receivingCode": "HTY3XX",
+      "receivingTitle": "History Elective",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingUpper": true,
+      "upper": true,
+      "creditOrigin": "ace",
+      "sourceIds": [
+        "umpi-study-current-indexed",
+        "study-upper-level-course-list"
+      ],
+      "mappingStatus": "published-provider-school-award-needs-current-catalog-allocation",
+      "usableForNamedMajorCourse": false,
+      "conditions": [
+        "A generic upper-level elective award is not a named major or minor equivalency.",
+        "Keep eight distinct original courses even when several awards share BUS3XX or HTY3XX generic codes.",
+        "Current official catalog and transfer evaluation must establish degree allocation and any duplicate-content exclusions."
+      ]
+    }
+  ],
+  "excludedFromEstablishedSophiaAgreement": [
+    "SOPH-0091 Business Data Analytics",
+    "SOPH-0093 Computer Applications",
+    "SOPH-0095 Introduction to Physics",
+    "SOPH-0096 Principles of Leadership",
+    "SOPH-0098 Introduction to Education",
+    "SOPH-0101 Social Psychology"
+  ],
+  "criticalConstraints": [
+    "No title-only replacements of generic Business Elective awards for named minor/core courses.",
+    "No assumption that Sophia Public Speaking fulfills oral communication: table now awardsGeneralElective.",
+    "No guess that one GEC course meets two distinct required credits or generallearningoutcomes withoutcatalog rule.",
+    "Managementminor marketing remains live but2026\u201327eligibility not yetcertified; need currentcatalog offering,notarchivedrecipe.",
+    "Minors and major/residency/upper-level requirements are distinctconstraints; BLS-specific upper elective rule pendingexactcatalog.",
+    "Current Study.com gen-ed marketing still describes the obsolete37-credit,5-GLO curriculum. Course awards can be researched separately; that article cannot supply the new2026\u201327GEC allocation.",
+    "Official2026\u201327minor/course/GEC source bodies remain inaccessible through the current public-web tool; no complete curriculum model is promoted from inferred categories."
+  ],
+  "blockedSourceUrls": [
+    {
+      "url": "https://catalog.umpi.edu/content.php?catoid=12&navoid=621",
+      "purpose": "CurrentYourPaceofferingindex;403inwebtool"
+    },
+    {
+      "url": "https://www.umpi.edu/academics/wp-content/uploads/sites/19/2026/06/GenEd_Student_OnePage.docx",
+      "purpose": "CurrentGECone-pageofficialdocument;unsupportedDOCXwebtool"
+    }
+  ],
+  "policyReview": [
+    {
+      "id": "cpl-maximum-scope-conflict",
+      "status": "unresolved-primary-policy-scope",
+      "affects": [
+        "alternativeMaxCredits",
+        "externalMaxCredits",
+        "catalogApplicability"
+      ],
+      "sourceIds": [
+        "umpi-handbook-2025-2026",
+        "umpi-faq-current"
+      ],
+      "text": "The2025\u201326handbook pp8\u20139 lists ACE under CPL, then states a combined bachelor CPL maximum of30. It also says up to90 outside credits may apply. The current FAQ gives no incoming limit and requires30 UMPI credits but does not resolve how the older30-CPL statement applies to evaluated ACE coursework. The governing2026\u201327catalog must resolve that scope before a90-ACE plan is asserted."
+    }
+  ],
+  "operationalFacts": {
+    "sourceId": "umpi-handbook-2025-2026",
+    "catalogYear": "2025\u20132026",
+    "maximumActiveUndergraduateCourses": 4,
+    "normalInitialCourses": 2,
+    "courseAccessAdds": "After final submission, request another course through enrollment team; published add deadline applies.",
+    "courseRollover": "Ordinary courses do not roll over; the handbook distinguishes formal incomplete/NP exceptions.",
+    "assessmentPassThreshold": 80,
+    "courseWork": "Milestones must be proficient to unlock final assessment.",
+    "noGuaranteedOneTermFinish": true
+  },
+  "currentGecFramework": {
+    "sourceArtifact": "content/curricula/snapshots/umpi/gec-2026-2027-reviewed.json",
+    "totalCredits": 40,
+    "learningOutcomes": 8,
+    "integrativeMinimumCredits": 6,
+    "exactCourseApprovalsReviewed": false
+  },
+  "remainingImplementationGates": [
+    {
+      "id": "current-catalog-identity",
+      "needed": "Confirm an eligible current YourPace BLS minor and complete its required-course ledger.",
+      "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1813&returnto=621"
+    },
+    {
+      "id": "gec-approved-course-bindings",
+      "needed": "Bind each proposed course to an approved GLO and satisfy40 unique GEC credits, including6 Integrative Learning credits.",
+      "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1783"
+    },
+    {
+      "id": "bls-upper-and-residency",
+      "needed": "Confirm the separate BLS upper-elective block, exact non-overlap rules, and major/minor application of the30/12/9institutional subsets.",
+      "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1813&returnto=621"
+    },
+    {
+      "id": "ace-cpl-cap-scope",
+      "needed": "Resolve the30-CPL statement against evaluated alternative coursework and the current governing catalog.",
+      "url": "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf"
+    }
+  ]
+}

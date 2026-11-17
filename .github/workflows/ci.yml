@@ -1,0 +1,40 @@
+name: Core checks
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: core-checks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Use Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Check tracked source safety
+        run: node scripts/check-source-safety.mjs
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Verify local file readers and blank template
+        run: |
+          node scripts/vendor-record-readers.mjs --check
+          node scripts/build-credit-import-template.mjs --check
+      - name: Build and validate generated sources
+        run: npm run build
+      - name: Run non-browser core tests
+        run: node scripts/test-core.mjs

@@ -1,0 +1,98 @@
+/** Real SQLite queue/outbox tests; all queue/provider calls are synthetic. */
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {DatabaseSync} from 'node:sqlite';
+import {readFileSync} from 'node:fs';
+import {enqueueResearchJob,dispatchResearchOutbox,processResearchJobs} from './research-jobs.mjs';
+import {handleTemplateResearch,runTemplateResearchJob} from './template-research.mjs';
+const origin='https://degreesteps.example',user='sb-11111111-1111-4111-8111-111111111111',other='sb-22222222-2222-4222-8222-222222222222',template='tpl-'+'a'.repeat(32);
+const draftTable=`CREATE TABLE IF NOT EXISTS degree_research_jobs(id TEXT PRIMARY KEY,template_id TEXT NOT NULL REFERENCES degree_templates(id),active_template_id TEXT UNIQUE,user_id TEXT NOT NULL,authorized_admin INTEGER NOT NULL DEFAULT 0,requested_revision INTEGER NOT NULL,options_json TEXT NOT NULL DEFAULT '{}',status TEXT NOT NULL DEFAULT 'queued',attempts INTEGER NOT NULL DEFAULT 0,available_at INTEGER NOT NULL,lease_token TEXT,lease_until INTEGER,provider_started_at INTEGER,dispatched_at INTEGER,finished_at INTEGER,error_code TEXT,created_at INTEGER NOT NULL,updated_at INTEGER NOT NULL);`;
+function fixture(t,extra={}){
+ const sqlite=new DatabaseSync(':memory:');sqlite.exec('PRAGMA foreign_keys=ON');const journal=JSON.parse(readFileSync(new URL('../drizzle/meta/_journal.json',import.meta.url),'utf8'));for(const migration of journal.entries)sqlite.exec(readFileSync(new URL('../drizzle/'+migration.tag+'.sql',import.meta.url),'utf8'));sqlite.exec(draftTable);t.after(()=>sqlite.close());
+ const DB={prepare(sql){const query=sqlite.prepare(sql);return{bind(...values){return{first:()=>query.get(...values)||null,all:()=>({results:query.all(...values)}),run:()=>({meta:{changes:Number(query.run(...values).changes)}})};}};},async batch(statements){sqlite.exec('BEGIN');try{const out=[];for(const statement of statements)out.push(statement.run());sqlite.exec('COMMIT');return out;}catch(error){sqlite.exec('ROLLBACK');throw error;}}};
+ let stamp=Date.now();const sent=[],dead=[];const env={DB,RESEARCH_JOB_NOW:()=>stamp,RESEARCH_QUEUE:{async send(body,options){sent.push({body,options});}},RESEARCH_DEAD_LETTER_QUEUE:{async send(body){dead.push(body);}},...extra};
+ sqlite.prepare("INSERT INTO community_users(id,alias,role,created_at,updated_at)VALUES(?,?,'member',?,?)").run(user,'Synthetic student',stamp,stamp);
+ sqlite.prepare("INSERT INTO degree_templates(id,canonical_key,school_name,program_name,level,modality,catalog_year,source_url,status,unresolved_json,revision,created_at,updated_at)VALUES(?,?,?,?,?,?,?,?,'queued','[]',1,?,?)").run(template,'test-template','Example University','Business B.S.','bachelor','online','2026-2027','https://catalog.example.edu/business/',stamp,stamp);
+ sqlite.prepare('INSERT INTO template_requests(id,user_id,template_id,details,created_at)VALUES(?,?,?,?,?)').run('request-synthetic',user,template,'Private goals must never appear in a queue message',stamp);
+ const enqueue=(options={})=>enqueueResearchJob(env,{templateId:template,userId:user,revision:1,...options});
+ const job=id=>sqlite.prepare('SELECT * FROM degree_research_jobs WHERE id=?').get(id),target=()=>sqlite.prepare('SELECT * FROM degree_templates WHERE id=?').get(template);
+ const message=id=>({body:{jobId:id},acks:0,retries:[],ack(){this.acks++;},retry(options){this.retries.push(options);}});
+ return{sqlite,DB,env,sent,dead,enqueue,job,target,message,advance:ms=>{stamp+=ms;}};
+}
+async function run(f,message){return processResearchJobs({messages:[message]},f.env,{});}
+
+test('enqueue persists one durable job before dispatch, with only an opaque ID in the queue',async t=>{
+ const f=fixture(t);let inspected=false;f.env.RESEARCH_QUEUE.send=async body=>{assert(f.job(body.jobId));assert.equal(f.target().revision,2);assert.equal(f.target().status,'queued');assert.deepEqual(Object.keys(body),['jobId']);assert.doesNotMatch(JSON.stringify(body),/example|student|Private|token|key|url/i);inspected=true;};
+ const result=await f.enqueue();assert.equal(inspected,true);assert.equal(result.status,'dispatched');assert.equal(result.dispatchPending,false);assert.equal(f.job(result.id).user_id,user);assert.equal(f.job(result.id).requested_revision,2);
+});
+test('concurrent duplicate requests share one active job and one dispatch',async t=>{
+ const f=fixture(t),jobs=await Promise.all(Array.from({length:8},()=>f.enqueue()));assert.equal(new Set(jobs.map(job=>job.id)).size,1);assert.equal(f.sent.length,1);assert.equal(f.sqlite.prepare('SELECT COUNT(*) n FROM degree_research_jobs').get().n,1);
+});
+test('a second authorized requester reuses public research without seeing the original actor or private details',async t=>{
+ const f=fixture(t),first=await f.enqueue();f.sqlite.prepare('INSERT INTO template_requests(id,user_id,template_id,details,created_at)VALUES(?,?,?,?,?)').run('request-other',other,template,'Different private notes',Date.now());const second=await f.enqueue({userId:other,revision:2});assert.equal(second.id,first.id);assert.doesNotMatch(JSON.stringify(second),/user_id|11111111|Private|notes/i);assert.equal(f.sent.length,1);
+});
+test('a missing owner request, spoofed admin role or malformed identity cannot enqueue work',async t=>{
+ const f=fixture(t);await assert.rejects(f.enqueue({userId:other}),error=>error.status===404);await assert.rejects(f.enqueue({authorizedAdmin:true}),error=>error.status===403);await assert.rejects(f.enqueue({userId:'owner'}),error=>error.status===401);assert.equal(f.sent.length,0);assert.equal(f.sqlite.prepare('SELECT COUNT(*) n FROM degree_research_jobs').get().n,0);
+});
+test('an enqueue racing a newer reviewed template cannot reset the new version',async t=>{
+ const f=fixture(t);f.sqlite.prepare("UPDATE degree_templates SET revision=2,status='ready' WHERE id=?").run(template);await assert.rejects(f.enqueue(),error=>error.status===409);assert.equal(f.target().status,'ready');assert.equal(f.sent.length,0);
+});
+test('send failures leave a retryable outbox record instead of losing or starting paid work',async t=>{
+ const f=fixture(t);f.env.RESEARCH_QUEUE.send=async()=>{throw Error('Queue disconnected');};const queued=await f.enqueue();assert.equal(queued.status,'queued');assert.equal(queued.dispatchPending,true);assert.equal(f.job(queued.id).error_code,'dispatch_pending');let called=0;f.env.RESEARCH_QUEUE.send=async body=>{called++;assert.deepEqual(body,{jobId:queued.id});};const report=await dispatchResearchOutbox(f.env);assert.equal(called,1);assert.equal(report.dispatched,1);assert.equal(f.job(queued.id).status,'dispatched');
+});
+test('a stalled queue dispatch is bounded and returns the saved job instead of hanging the student request',async t=>{
+ const f=fixture(t,{RESEARCH_QUEUE_SEND_TIMEOUT_MS:10});f.env.RESEARCH_QUEUE.send=()=>new Promise(()=>{});const queued=await f.enqueue();assert.equal(queued.status,'queued');assert.equal(queued.dispatchPending,true);assert.equal(f.job(queued.id).error_code,'dispatch_pending');
+});
+test('dispatch recovery safely resends an unclaimed old delivery and excludes running jobs',async t=>{
+ const f=fixture(t),queued=await f.enqueue();f.advance(61000);assert.equal((await dispatchResearchOutbox(f.env)).dispatched,1);f.sqlite.prepare("UPDATE degree_research_jobs SET status='running',lease_until=? WHERE id=?").run(Date.now()+999999,queued.id);f.advance(61000);assert.equal((await dispatchResearchOutbox(f.env)).dispatched,0);
+});
+test('valid work receives one atomic lease and completed redelivery never invokes it twice',async t=>{
+ const f=fixture(t),queued=await f.enqueue();let calls=0;f.env.RESEARCH_EXECUTE_JOB=async(job,execution)=>{calls++;assert.equal(job.template_id,template);await execution.guard();await execution.beforeProvider();return{status:'draft'};};const message=f.message(queued.id);assert.equal((await run(f,message)).completed,1);assert.equal(message.acks,1);assert.equal(f.job(queued.id).active_template_id,null);assert.equal(f.job(queued.id).status,'completed');assert.equal((await run(f,f.message(queued.id))).ignored,1);assert.equal(calls,1);
+});
+test('simultaneous duplicate deliveries do not acquire the same research lease',async t=>{
+ const f=fixture(t),queued=await f.enqueue();let release,entered,calls=0;const started=new Promise(resolve=>entered=resolve),hold=new Promise(resolve=>release=resolve);f.env.RESEARCH_EXECUTE_JOB=async()=>{calls++;entered();await hold;return{status:'draft'};};const first=f.message(queued.id),running=run(f,first);await started;const second=f.message(queued.id),report=await run(f,second);assert.equal(report.deferred,1);assert.equal(second.retries.length,1);assert(Number.isInteger(second.retries[0].delaySeconds));release();await running;assert.equal(calls,1);
+});
+test('only pre-provider failures retry automatically and attempts are bounded',async t=>{
+ const f=fixture(t),queued=await f.enqueue();let calls=0;f.env.RESEARCH_EXECUTE_JOB=async()=>{calls++;throw Error('Temporary executor failure');};for(let attempt=1;attempt<=3;attempt++){const message=f.message(queued.id);await run(f,message);if(attempt<3){assert.equal(message.retries.length,1);assert.equal(f.job(queued.id).status,'retry');f.advance(901000);}else{assert.equal(message.acks,1);assert.equal(f.job(queued.id).status,'dead');}}assert.equal(calls,3);assert.equal(f.dead.length,1);assert.deepEqual(f.dead[0],{jobId:queued.id});assert.equal(f.job(queued.id).active_template_id,null);
+});
+test('daily budget rejection defers one day without pretending a provider result exists',async t=>{
+ const f=fixture(t),queued=await f.enqueue();f.env.RESEARCH_EXECUTE_JOB=async()=>{throw Object.assign(Error('Daily budget'),{status:429});};const message=f.message(queued.id);await run(f,message);assert.equal(message.retries[0].delaySeconds,86400);assert.equal(f.job(queued.id).error_code,'budget_deferred');assert.equal(f.job(queued.id).provider_started_at,null);
+});
+test('an uncertain provider outcome becomes durable manual attention rather than another automatic paid call',async t=>{
+ const f=fixture(t),queued=await f.enqueue();let calls=0;f.env.RESEARCH_EXECUTE_JOB=async(job,execution)=>{calls++;await execution.beforeProvider();throw Error('Connection failed after sending');};const message=f.message(queued.id);await run(f,message);assert.equal(f.job(queued.id).status,'dead');assert.equal(f.job(queued.id).error_code,'provider_outcome_unknown');assert.equal(f.target().status,'failed');assert.equal(message.retries.length,0);await run(f,f.message(queued.id));assert.equal(calls,1);
+});
+test('expired pre-provider leases recover with a fresh template revision and fence an earlier attempt',async t=>{
+ const f=fixture(t),queued=await f.enqueue();f.sqlite.prepare("UPDATE degree_research_jobs SET status='running',lease_token='old',lease_until=?,attempts=1 WHERE id=?").run(0,queued.id);f.sqlite.prepare("UPDATE degree_templates SET status='researching' WHERE id=?").run(template);let called=0;f.env.RESEARCH_EXECUTE_JOB=async job=>{called++;assert.equal(job.requested_revision,3);assert.equal(f.target().revision,3);assert.equal(f.target().status,'queued');return{status:'draft'};};await run(f,f.message(queued.id));assert.equal(called,1);assert.equal(f.job(queued.id).attempts,2);
+});
+test('expired leases with a started provider do not launch a second possibly charged request',async t=>{
+ const f=fixture(t),queued=await f.enqueue();f.sqlite.prepare("UPDATE degree_research_jobs SET status='running',lease_token='old',lease_until=?,attempts=1,provider_started_at=? WHERE id=?").run(0,1,queued.id);f.sqlite.prepare("UPDATE degree_templates SET status='researching' WHERE id=?").run(template);let calls=0;f.env.RESEARCH_EXECUTE_JOB=async()=>{calls++;};await run(f,f.message(queued.id));assert.equal(calls,0);assert.equal(f.job(queued.id).status,'dead');assert.equal(f.job(queued.id).error_code,'provider_outcome_unknown');assert.equal(f.target().revision,3);
+});
+test('the executor deadline also bounds an uncooperative operation and fences late mutation',async t=>{
+ const f=fixture(t,{RESEARCH_JOB_TIMEOUT_MS:10}),queued=await f.enqueue();let lease;f.env.RESEARCH_EXECUTE_JOB=async(job,execution)=>{lease=execution;await execution.beforeProvider();return new Promise(()=>{});};await run(f,f.message(queued.id));assert.equal(lease.signal.aborted,true);assert.equal(f.job(queued.id).status,'dead');await assert.rejects(lease.guard(),error=>error.code==='lease_lost');await assert.rejects(lease.beforeProvider(),error=>error.code==='lease_lost');
+});
+test('unsupported messages are acknowledged without reading private rows or invoking paid work',async t=>{
+ const f=fixture(t);let calls=0;f.env.RESEARCH_EXECUTE_JOB=async()=>{calls++;};for(const body of [null,[],{jobId:'bad'},{jobId:crypto.randomUUID(),apiKey:'not-allowed'},{jobId:crypto.randomUUID(),url:'https://evil.invalid'}]){const message={body,acks:0,ack(){this.acks++;}};assert.equal((await run(f,message)).invalid,1);assert.equal(message.acks,1);}assert.equal(calls,0);
+});
+test('unexpected larger queue batches retry every unprocessed message instead of implicitly acknowledging them',async t=>{
+ const f=fixture(t),queued=await f.enqueue();let calls=0;f.env.RESEARCH_EXECUTE_JOB=async()=>{calls++;return{status:'draft'};};const messages=[f.message(queued.id),f.message(crypto.randomUUID()),f.message(crypto.randomUUID())],report=await processResearchJobs({messages},f.env);assert.equal(calls,1);assert.equal(report.completed,1);assert.equal(report.deferred,2);for(const message of messages.slice(1)){assert.equal(message.acks,0);assert.deepEqual(message.retries,[{delaySeconds:30}]);}
+});
+
+function artifact(){const scope={schoolName:'Example University',programName:'Business B.S.',level:'bachelor',modality:'online',catalogYear:'2026-2027'},a={...scope,officialUniversityUrl:'https://catalog.example.edu/business/',creditSystem:'semester',totalCredits:12,institutionMinCredits:3,externalMaxCredits:9,upperMinCredits:3,majorInstitutionFraction:.25,majorResidencyBasisCredits:6,policySourceIds:['policies'],requirements:[1,2,3,4].map(n=>({id:'course-'+n,code:'BUSI '+(n===4?'401':'10'+n),title:'Named course '+n,section:n>2?'major':'general',credits:3,requiredAtUniversity:n===4,upper:n===4,prerequisites:[],sourceIds:['catalog'],options:[{id:'university-'+n,provider:'University',code:'BUSI '+(n===4?'401':'10'+n),title:'Named course '+n,credits:3,creditSystem:'semester',upper:n===4,sourceIds:['catalog'],url:'https://catalog.example.edu/course-'+n+'/',evidence:'published'}]})),sources:[{id:'catalog',url:'https://catalog.example.edu/business/',title:'Published degree',kind:'university',roles:['curriculum'],scope,checked:'2026-11-16'},{id:'policies',url:'https://catalog.example.edu/policies/',title:'Published policy',kind:'university',roles:['policy'],scope,checked:'2026-11-16'}],unresolved:[]};a.policyEvidence=Object.fromEntries(['institutionMinCredits','externalMaxCredits','upperMinCredits','majorInstitutionFraction','majorResidencyBasisCredits'].map(field=>[field,{value:a[field],sourceIds:['policies']}]));return a;}
+function provider(){const a=artifact();return Response.json({stop_reason:'end_turn',usage:{input_tokens:10,output_tokens:20},content:[{type:'web_search_tool_result',content:a.sources.map(s=>({type:'web_search_result',url:s.url,title:s.title}))},{type:'web_fetch_tool_result',tool_use_id:'srvtoolu-test',content:{type:'web_fetch_result',url:a.officialUniversityUrl,content:{type:'document',source:{type:'text',media_type:'text/plain',data:'Synthetic complete official requirements'},title:'Published degree',citations:{enabled:true}}}},{type:'text',text:JSON.stringify(a)}]});}
+function call(f,path,body){return handleTemplateResearch(new Request(origin+path,{method:body?'POST':'GET',headers:body?{Origin:origin,'X-Portal-Request':'1','Content-Type':'application/json',Accept:'text/event-stream'}:{},...(body?{body:JSON.stringify(body)}:{})}),{...f.env,PORTAL_USER:{id:user}},{});}
+test('real template API enqueue returns JSON immediately, preserves private request ownership, and reloads its active marker',async t=>{
+ const f=fixture(t,{ANTHROPIC_API_KEY:'synthetic-server-key-only'});let calls=0;f.env.TEMPLATE_RESEARCH_FETCH=async()=>{calls++;return provider();};const response=await call(f,'/api/templates/requests',{schoolName:'Example University',programName:'Different B.S.',level:'bachelor',modality:'online',catalogYear:'2026-2027',url:'https://catalog.example.edu/different/'}),data=await response.json();assert.equal(response.status,202);assert.match(response.headers.get('Content-Type'),/application\/json/);assert.equal(data.queued,true);assert.equal(data.template.status,'queued');assert.equal(data.researchJob.status,'dispatched');assert.equal(calls,0);const history=await(await call(f,'/api/templates/requests')).json(),item=history.items.find(item=>item.templateId===data.template.id);assert.equal(item.template.researchJob.id,data.researchJob.id);const status=await(await call(f,'/api/templates/research-status?url='+encodeURIComponent('https://catalog.example.edu/different/'))).json();assert.equal(status.items[0].researchJob.id,data.researchJob.id);
+});
+test('real queue execution reuses academic checks and provider budgets, and reconnecting only reads the saved result',async t=>{
+ const f=fixture(t,{ANTHROPIC_API_KEY:'synthetic-server-key-only'});let calls=0;f.env.TEMPLATE_RESEARCH_FETCH=async()=>{calls++;return provider();};const queued=await f.enqueue();f.env.RESEARCH_EXECUTE_JOB=(job,execution)=>runTemplateResearchJob(f.env,job,execution);await run(f,f.message(queued.id));assert.equal(calls,1);assert.equal(f.job(queued.id).status,'completed');assert.equal(f.target().status,'draft');assert.equal(f.sqlite.prepare('SELECT COUNT(*) n FROM template_research_runs').get().n,1);const history=await(await call(f,'/api/templates/requests')).json();assert.equal(history.items[0].template.status,'draft');assert.equal(history.items[0].template.researchJob,undefined);await run(f,f.message(queued.id));assert.equal(calls,1);assert.equal(history.items[0].template.sourcesReviewed,false);
+});
+test('the actual pipeline refuses an expired or replaced job lease before any provider invocation',async t=>{
+ const f=fixture(t,{ANTHROPIC_API_KEY:'synthetic-server-key-only'}),queued=await f.enqueue();let calls=0;f.env.TEMPLATE_RESEARCH_FETCH=async()=>{calls++;return provider();};const job=f.job(queued.id);await assert.rejects(runTemplateResearchJob(f.env,job,{lease:{id:queued.id,token:'wrong'},guard:async()=>{throw Object.assign(Error('Lease lost'),{code:'lease_lost'});}}));assert.equal(calls,0);assert.equal(f.target().status,'queued');
+});
+test('SQL fencing rejects a late provider result even when a lease check races a newer owner',async t=>{
+ const f=fixture(t,{ANTHROPIC_API_KEY:'synthetic-server-key-only'}),queued=await f.enqueue(),token=crypto.randomUUID();
+ f.sqlite.prepare("UPDATE degree_research_jobs SET status='running',lease_token=?,lease_until=? WHERE id=?").run(token,Date.now()+600000,queued.id);
+ let calls=0;f.env.TEMPLATE_RESEARCH_FETCH=async()=>{calls++;f.sqlite.prepare('UPDATE degree_research_jobs SET lease_token=? WHERE id=?').run('newer-owner',queued.id);return provider();};
+ await runTemplateResearchJob(f.env,f.job(queued.id),{lease:{id:queued.id,token},guard:async()=>true,beforeProvider:async()=>{}});
+ assert.equal(calls,1);assert.equal(f.target().artifact_json,null);assert.equal(f.target().revision,2);assert.equal(f.target().status,'researching');assert.equal(f.sqlite.prepare('SELECT COUNT(*) n FROM template_research_progress WHERE stage IN (\'complete\',\'needs-attention\')').get().n,0);
+});

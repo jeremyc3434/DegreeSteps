@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4054f4">
+  <meta name="description" content="Explore degree plan templates, share your route, and learn from the DegreeSteps community.">
+  <title>Templates &amp; Community — DegreeSteps</title>
+  <link rel="stylesheet" href="wizard.css">
+  <link rel="stylesheet" href="community.css">
+  <link rel="stylesheet" href="verification.css">
+  <script src="account-return.js" defer></script>
+  <script src="community-client.js" defer></script>
+  <script src="verification.js" defer></script>
+  <script src="program-catalog.js" defer></script>
+  <script src="community-template-catalog.js" defer></script>
+  <script src="community.js" defer></script>
+  <link rel="stylesheet" href="app-shell.css">
+  <link rel="stylesheet" href="school.css">
+  <script src="account-client.js" defer></script>
+  <script src="app-shell.js" defer></script>
+<link rel="stylesheet" href="/brand.css"></head>
+<body class="community-page">
+  <a class="skip-link" href="#community-app">Skip to templates and community</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="DegreeSteps home"><span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span></a>
+    <nav class="workspace-nav" aria-label="Main navigation"><a href="index.html">Build a plan</a><a href="community.html?tab=templates" id="nav-templates" aria-current="page">Ready-to-use plans</a><a href="community.html?tab=feed" id="nav-community">Community</a></nav>
+    <a class="header-library" href="library.html">Policy library <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+  </header>
+  <main class="community-main">
+    <section class="intro community-intro" aria-labelledby="community-title"><div class="intro-copy"><p class="intro-eyebrow">BUILT TOGETHER</p><h1 id="community-title">A useful plan. A helpful community.</h1><p>Start with a complete course plan, or learn from other students.</p></div><div class="community-primary-actions"><a class="button secondary" id="community-signin" hidden style="display:none" href="/account.html" target="_top">Sign in</a><button type="button" class="button" id="new-community-plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Share a plan</button></div></section>
+    <div id="community-app" tabindex="-1">
+      <div class="community-workspace-top"><div class="community-tabs" role="tablist" aria-label="Browse templates or community plans"><button class="community-tab active" id="community-tab-templates" type="button" role="tab" aria-selected="true" aria-controls="community-results" data-community-tab="templates">Ready-to-use plans</button><button class="community-tab" id="community-tab-feed" type="button" role="tab" aria-selected="false" aria-controls="community-results" data-community-tab="feed">Student discussions</button></div><div id="community-user-area"></div></div>
+      <div id="community-toolbar" class="community-toolbar"></div>
+      <div id="community-status" class="community-status" role="status" aria-live="polite">Loading available plans…</div>
+      <section id="community-results" aria-label="Plans and templates"><div id="community-featured"></div><div id="community-feed"></div><div id="community-empty" class="empty-community" hidden></div></section>
+      <section id="community-detail" class="template-detail" aria-label="Plan details" hidden></section>
+      <noscript><div class="notice"><strong>Enable JavaScript to explore templates and community plans.</strong><p>You can still <a href="library.html">browse the policy library</a>.</p></div></noscript>
+    </div>
+    <aside class="community-footnote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6"/></svg><p>Course plans include the full degree requirements. Confirm your individual transfer placements with the university before enrolling.</p></aside>
+  </main>
+  <footer class="site-footer"><a class="brand" href="index.html"><span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span></a><p>A clearer path from where you are to what’s next.</p><div class="footer-links"><a href="index.html">Build a plan</a><a href="community.html?tab=feed">Community</a><a href="library.html">Policies &amp; research</a></div></footer>
+  <dialog id="publish-dialog" aria-label="Share a degree plan"><div class="dialog-topline"><span class="step-eyebrow">SHARE WITH THE COMMUNITY</span><button class="dialog-close" id="close-publish" type="button" aria-label="Close share plan">×</button></div><div id="publish-dialog-content"></div></dialog>
+  <dialog id="thread-dialog" aria-label="Community plan and discussion"><div class="dialog-topline"><span class="step-eyebrow">PLAN &amp; DISCUSSION</span><button class="dialog-close" id="close-thread" type="button" aria-label="Close plan discussion">×</button></div><div id="thread-dialog-content"></div></dialog>
+</body>
+</html>

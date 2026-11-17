@@ -1,0 +1,1097 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-17",
+  "scope": "Reviewed provider-directory expansion only. Course examples are source identities for the next mapping task, not executable receiving-school equivalencies or new ready degree templates.",
+  "priorSourceCount": 25,
+  "newSourceCount": 31,
+  "addedSourceIds": [
+    "aleks",
+    "westcott",
+    "portage",
+    "upi-study",
+    "csm",
+    "christian-leaders"
+  ],
+  "providers": [
+    {
+      "id": "upi-study",
+      "name": "UPI Study",
+      "priority": 1,
+      "why": "Broad missing alternative-credit catalog with active exact ACE exhibits and separate NCCRS courses.",
+      "creditOrigin": "noncollegiate",
+      "creditBasis": [
+        "ACE",
+        "NCCRS"
+      ],
+      "degreeLevels": [
+        "undergraduate"
+      ],
+      "transcriptIssuer": "ACE/Credly for applicable ACE badges; provider handles NCCRS transcript requests. Confirm exact record route per course.",
+      "pricing": [
+        {
+          "amount": 99,
+          "currency": "USD",
+          "unit": "month",
+          "scope": "US citizens and military personnel subscription; catalog states all courses included",
+          "sourceIds": [
+            "upi-catalog"
+          ]
+        },
+        {
+          "amount": 250,
+          "currency": "USD",
+          "unit": "individual course",
+          "scope": "Catalog general single-course rate; some lab course cards show different prices",
+          "sourceIds": [
+            "upi-catalog"
+          ]
+        },
+        {
+          "amount": 599,
+          "currency": "USD",
+          "unit": "one-time lifetime access",
+          "scope": "US citizens and military personnel; do not import temporary Halloween promotion",
+          "sourceIds": [
+            "upi-catalog"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "minimumDays": null,
+        "proctoredFinal": true,
+        "notes": "No fixed completion deadline in catalog; course quizzes, assignment and remote proctored final. Do not turn student testimonials into completion estimates.",
+        "sourceIds": [
+          "upi-catalog",
+          "upi-lessons"
+        ]
+      },
+      "courseExamples": [
+        {
+          "name": "Principles of Statistics",
+          "providerCourseCode": null,
+          "recommendationId": "UPIS-0003",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "upi-ace"
+          ]
+        },
+        {
+          "name": "Database Fundamentals",
+          "providerCourseCode": "Computer Science 281",
+          "recommendationId": "UPIS-0010",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "upi-ace"
+          ]
+        },
+        {
+          "name": "Advanced Technical Writing",
+          "providerCourseCode": "English 120",
+          "recommendationId": "UPIS-0014",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "upi-ace"
+          ]
+        },
+        {
+          "name": "Entrepreneurship",
+          "providerCourseCode": "Business 310",
+          "recommendationId": "UPIS-0019",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "upi-ace"
+          ]
+        },
+        {
+          "name": "English Composition I: English 101",
+          "providerCourseCode": "ENG 101",
+          "recommendationId": null,
+          "recommendedCredits": null,
+          "creditSystem": null,
+          "sourceIds": [
+            "upi-nccrs-eng101",
+            "upi-catalog"
+          ]
+        }
+      ],
+      "acceptanceCautions": [
+        "ACE/NCCRS recommendation is not institutional college credit or a guarantee that a target school accepts it.",
+        "Match each exact course, version, recommendation period, level and credit quantity; do not label all 90+ catalog courses as ACE.",
+        "Catalog says Environmental Science UPIS-0025 has a one-credit ACE recommendation; do not automatically force every course into three credits.",
+        "Do not repeat provider claims of 2100+ cooperating institutions as 2100 exact transfer approvals.",
+        "No graduate acceptance was established."
+      ],
+      "sources": [
+        {
+          "id": "upi-catalog",
+          "kind": "provider",
+          "url": "https://www.upistudy.com/collections/nccrs-courses",
+          "title": "UPI course catalog and pricing"
+        },
+        {
+          "id": "upi-ace",
+          "kind": "recommender",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=ef9a8446-5e28-ef11-840b-6045bd089f77",
+          "title": "ACE National Guide: UPI Study"
+        },
+        {
+          "id": "upi-nccrs-eng101",
+          "kind": "recommender",
+          "url": "https://www.nationalccrs.org/upi-study-inc/english-composition-i-english",
+          "title": "NCCRS: English Composition I, UPI Study",
+          "retrievalNote": "Official indexed text retrieved; direct page returned502"
+        },
+        {
+          "id": "upi-lessons",
+          "kind": "provider",
+          "url": "https://www.upistudy.com/learn",
+          "title": "Free course lessons and course assessment format"
+        },
+        {
+          "id": "upi-transcript",
+          "kind": "provider",
+          "url": "https://www.upistudy.com/blog/transfer/step-by-step-guide-to-transferring-upi-study-credits-to-a-transcript",
+          "title": "UPI transcript guidance"
+        }
+      ]
+    },
+    {
+      "id": "aleks",
+      "name": "ALEKS Independent Use: ACE-recommended Higher Ed courses",
+      "priority": 2,
+      "why": "Very low monthly price for seven current math/statistics options; exact knowledge-check and duplication constraints matter.",
+      "creditOrigin": "noncollegiate",
+      "creditBasis": [
+        "ACE"
+      ],
+      "degreeLevels": [
+        "undergraduate"
+      ],
+      "transcriptIssuer": "ACE credit badge through Credly; send Credly transcript directly to receiving institution.",
+      "pricing": [
+        {
+          "amount": 19.95,
+          "currency": "USD",
+          "unit": "month",
+          "scope": "Independent Use; one active course at a time; renews until cancelled; other longer subscription terms available",
+          "sourceIds": [
+            "aleks-price"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "minimumDays": null,
+        "assessment": "Reach70% in learning mode and70% on ACE Knowledge Check; Knowledge Check has3-hour limit and ALEKS Respondus LockDown Browser requirement; provider review usually about3 business days.",
+        "sourceIds": [
+          "aleks-credit"
+        ]
+      },
+      "courseExamples": [
+        {
+          "name": "College Algebra",
+          "recommendationId": "ALEK-0003",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "aleks-ace"
+          ]
+        },
+        {
+          "name": "College Algebra with Trigonometry",
+          "recommendationId": "ALEK-0004",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "aleks-ace"
+          ]
+        },
+        {
+          "name": "PreCalculus",
+          "recommendationId": "ALEK-0005",
+          "recommendedCredits": 4,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "aleks-ace"
+          ]
+        },
+        {
+          "name": "Trigonometry",
+          "recommendationId": "ALEK-0006",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "aleks-ace"
+          ]
+        },
+        {
+          "name": "Introduction to Statistics",
+          "recommendationId": "ALEK-0007",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "aleks-ace"
+          ]
+        },
+        {
+          "name": "Business Statistics",
+          "recommendationId": "ALEK-0008",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "aleks-ace"
+          ]
+        },
+        {
+          "name": "Statistics for the Behavioral Sciences",
+          "recommendationId": "ALEK-0009",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-09-01",
+          "recommendationEnd": "2027-08-31",
+          "sourceIds": [
+            "aleks-ace"
+          ]
+        }
+      ],
+      "acceptanceCautions": [
+        "Only listed Higher Ed course versions qualify; ALEKS placement testing and general remediation products are not equivalent credit routes.",
+        "Overlapping algebra/precalculus options and the three statistics variants have explicit duplicate-credit exclusions; model these as exclusions rather than summing all seven.",
+        "Current ACE exhibit gives PreCalculus4 semester hours, despite generic provider page saying up to3; receiving school's actual award remains separate.",
+        "Beginning Algebra and Intermediate Algebra ACE exhibits shown in the organization directory expired in2017; exclude from current enrollable credit catalog.",
+        "No receiving-school equivalency or graduate acceptance established."
+      ],
+      "sources": [
+        {
+          "id": "aleks-ace",
+          "kind": "recommender",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=b8089b28-9016-e811-810f-5065f38bf0e1",
+          "title": "ACE National Guide: ALEKS Corporation"
+        },
+        {
+          "id": "aleks-credit",
+          "kind": "provider",
+          "url": "https://www.aleks.com/about_aleks/ace_credit",
+          "title": "ACE Credit Courses: requirements and eligible course versions"
+        },
+        {
+          "id": "aleks-price",
+          "kind": "provider",
+          "url": "https://www.aleks.com/buy_aleks_now",
+          "title": "Purchase ALEKS subscription"
+        }
+      ]
+    },
+    {
+      "id": "westcott",
+      "name": "Westcott Courses / UMass Global credit option",
+      "priority": 3,
+      "why": "Missing institutional-credit route for students whose receiving school requires accredited-college coursework; includes math and laboratory prerequisites.",
+      "creditOrigin": "institutional",
+      "creditBasis": [
+        "UMass Global academic semester credit"
+      ],
+      "degreeLevels": [
+        "undergraduate"
+      ],
+      "transcriptIssuer": "University of Massachusetts Global; the university itself confirms partner course delivery, faculty review, proctored finals and transcript.",
+      "pricing": [
+        {
+          "amount": 594,
+          "currency": "USD",
+          "unit": "course",
+          "scope": "MATU204 Introduction to Statistics and Probability; proctor costs additional; catalog prices vary by course",
+          "sourceIds": [
+            "westcott-stats"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "rollingEnrollment": true,
+        "minimumDays": 28,
+        "notes": "MATU204 page specifies at least4 weeks,5months access plus possible30-day extension; payment plan can delay transcript availability. Do not promise this minimum for every course without checking its page.",
+        "proctoredFinal": true,
+        "sourceIds": [
+          "westcott-stats",
+          "umg-partner"
+        ]
+      },
+      "courseExamples": [
+        {
+          "name": "Introduction to Statistics and Probability",
+          "providerCourseCode": "MATU204",
+          "credits": 3,
+          "creditSystem": "semester",
+          "price": 594,
+          "sourceIds": [
+            "westcott-stats"
+          ]
+        },
+        {
+          "name": "Methods of Proof in Mathematics",
+          "credits": null,
+          "creditSystem": null,
+          "price": 973,
+          "priceUnit": "credit-bearing course",
+          "sourceIds": [
+            "westcott-catalog"
+          ]
+        },
+        {
+          "name": "Abstract Algebra",
+          "credits": null,
+          "creditSystem": null,
+          "price": 973,
+          "priceUnit": "credit-bearing course",
+          "sourceIds": [
+            "westcott-catalog"
+          ]
+        },
+        {
+          "name": "Introduction to Biology",
+          "credits": null,
+          "creditSystem": null,
+          "price": 526,
+          "priceUnit": "credit-bearing course",
+          "sourceIds": [
+            "westcott-catalog"
+          ]
+        },
+        {
+          "name": "College Reading and Composition",
+          "credits": null,
+          "creditSystem": null,
+          "price": 559,
+          "priceUnit": "credit-bearing course",
+          "sourceIds": [
+            "westcott-catalog"
+          ]
+        }
+      ],
+      "acceptanceCautions": [
+        "Choose credit-bearing version; noncredit/remedial options also appear in catalog.",
+        "MATU204 requires qualifying intermediate algebra or higher with gradeC or better from a US regionally accredited institution within10years; course-specific prerequisites must be preserved.",
+        "UMass Global transcript is evidence of origin, not automatic receiving-school acceptance.",
+        "Do not import suspicious decimal lab prices from list view without checking course checkout/detail.",
+        "Institutional residency rules may exclude partner or extension coursework even when same university issues transcript; do not count as residency automatically."
+      ],
+      "sources": [
+        {
+          "id": "umg-partner",
+          "kind": "university",
+          "url": "https://www.umassglobal.edu/partner-organizations/partner-organizations/current-partnerships/westcott-courses",
+          "title": "UMass Global: Westcott Courses partnership"
+        },
+        {
+          "id": "westcott-catalog",
+          "kind": "provider",
+          "url": "https://westcottcourses.com/courses/",
+          "title": "Available Courses and course-based prices"
+        },
+        {
+          "id": "westcott-stats",
+          "kind": "provider",
+          "url": "https://westcottcourses.com/course/introduction-to-statistics-and-probability/UM",
+          "title": "MATU204: credits, prerequisites, price, pacing and transcript"
+        }
+      ]
+    },
+    {
+      "id": "portage",
+      "name": "Portage Learning / Geneva College or Bushnell University",
+      "priority": 4,
+      "why": "Missing institutionally transcripted science/lab and healthcare prerequisite route with open enrollment.",
+      "creditOrigin": "institutional",
+      "creditBasis": [
+        "Geneva College or Bushnell University credit"
+      ],
+      "degreeLevels": [
+        "undergraduate"
+      ],
+      "transcriptIssuer": "Geneva College for most students; Bushnell University for six western states. Determined by residence when registering; request through Portage portal, not directly from registrar/Parchment.",
+      "pricing": [
+        {
+          "amount": 230,
+          "currency": "USD",
+          "unit": "credit",
+          "scope": "Current general rate includes required materials, transcript, technology and application fees; payment due at enrollment. Eligibility-specific military pricing exists separately.",
+          "sourceIds": [
+            "portage-cost"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "rollingEnrollment": true,
+        "minimumDays": 28,
+        "minimumScope": "Official BIOD171 syllabus says provider policy minimum28days and48hours between module/final exams; verify current syllabus per course.",
+        "notes": "Grading can take up to72 weekday hours; do not use old21-day claims.",
+        "sourceIds": [
+          "portage-micro-syllabus"
+        ]
+      },
+      "courseExamples": [
+        {
+          "name": "Essential Microbiology w/ Lab",
+          "providerCourseCode": "BIOD171",
+          "credits": 4,
+          "creditSystem": null,
+          "prerequisites": "General biology and chemistry",
+          "sourceIds": [
+            "portage-micro-syllabus"
+          ]
+        },
+        {
+          "name": "Essential Human Anatomy & Physiology I w/ Lab",
+          "providerCourseCode": "BIOD151",
+          "credits": 4,
+          "creditSystem": null,
+          "prerequisites": "General biology and chemistry",
+          "sourceIds": [
+            "portage-anatomy-syllabus"
+          ]
+        },
+        {
+          "name": "Introduction to Statistics",
+          "credits": null,
+          "creditSystem": null,
+          "sourceIds": [
+            "portage-cost"
+          ]
+        },
+        {
+          "name": "General Psychology",
+          "credits": null,
+          "creditSystem": null,
+          "sourceIds": [
+            "portage-cost"
+          ]
+        }
+      ],
+      "acceptanceCautions": [
+        "Healthcare programs may restrict online labs or prerequisites; require actual program approval.",
+        "A catalog location in a graduate/professional department does not make these undergraduate prerequisites graduate credit.",
+        "Portage Prep courses are separate; do not assume the same college-credit award.",
+        "Transcript issuer varies by residence; provenance needs course issuer, not only delivery-provider name.",
+        "Do not claim every school that has received a transcript accepted every course."
+      ],
+      "sources": [
+        {
+          "id": "portage-cost",
+          "kind": "provider",
+          "url": "https://waves.portagelearning.edu/blog/does-portage-learning-offer-a-discount",
+          "title": "Portage current costs and popular courses"
+        },
+        {
+          "id": "portage-transcripts",
+          "kind": "provider",
+          "url": "https://portagelearning.edu/faq/transcripts",
+          "title": "Who issues transcripts and how to request them",
+          "retrievalNote": "Official indexed FAQ text retrieved; rendered route only exposed shell"
+        },
+        {
+          "id": "portage-delivery",
+          "kind": "provider",
+          "url": "https://portagelearning.edu/faq/course-information-delivery",
+          "title": "Portage course award and delivery FAQ",
+          "retrievalNote": "Official indexed FAQ text retrieved; rendered route only exposed shell"
+        },
+        {
+          "id": "portage-micro-syllabus",
+          "kind": "provider",
+          "url": "https://portagelearning.edu/resources/syllabi/portage/biod171.pdf",
+          "title": "BIOD171 syllabus:4credits, prerequisites,28days and48-hour exam spacing"
+        },
+        {
+          "id": "portage-anatomy-syllabus",
+          "kind": "provider",
+          "url": "https://portagelearning.edu/resources/syllabi/portage/biod151.pdf",
+          "title": "BIOD151 syllabus"
+        },
+        {
+          "id": "geneva-portage",
+          "kind": "university",
+          "url": "https://www.geneva.edu/academics/registrar/geneva-portage-courses",
+          "title": "Geneva College: Geneva Portage courses"
+        }
+      ]
+    },
+    {
+      "id": "csm",
+      "name": "SeeMore Impact Labs: Core Strategies for Mathematics",
+      "priority": 5,
+      "why": "A narrow but inexpensive, fast quantitative-reasoning option missing from provider library.",
+      "creditOrigin": "noncollegiate",
+      "creditBasis": [
+        "ACE"
+      ],
+      "degreeLevels": [
+        "undergraduate"
+      ],
+      "transcriptIssuer": "ACE/Credly transcript for CSM certificate",
+      "pricing": [
+        {
+          "amount": 54,
+          "currency": "USD",
+          "unit": "course",
+          "scope": "CSM course; optional personal coach costs115additional",
+          "sourceIds": [
+            "csm-credit"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "estimatedStudyHours": "10–60+ provider estimate; ACE exhibit specifies up to120hours",
+        "minimumDays": null,
+        "sourceIds": [
+          "csm-credit",
+          "csm-ace-course"
+        ]
+      },
+      "courseExamples": [
+        {
+          "name": "Core Strategies for Mathematics (CSM)",
+          "recommendationId": "CSML-0001",
+          "recommendedCredits": 3,
+          "creditSystem": "semester",
+          "recommendationStart": "2024-12-01",
+          "recommendationEnd": "2027-11-30",
+          "sourceIds": [
+            "csm-ace",
+            "csm-ace-course"
+          ]
+        }
+      ],
+      "acceptanceCautions": [
+        "Quantitative reasoning is not automatically equivalent to required college algebra, statistics, calculus or a specific major math course.",
+        "Provider lists transfer partners, but several names/links are historical; exact current receiving-school equivalencies need fresh institutional evidence.",
+        "Model only this current credit-bearing certificate; do not assume all SeeMore products receive ACE credit.",
+        "No graduate acceptance established."
+      ],
+      "sources": [
+        {
+          "id": "csm-credit",
+          "kind": "provider",
+          "url": "https://www.smilabs.org/products/collegecredit",
+          "title": "CSM college credit: price, transcript and pace"
+        },
+        {
+          "id": "csm-ace",
+          "kind": "recommender",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=9457165c-75c4-ea11-a812-000d3a33232a",
+          "title": "ACE National Guide: SeeMore Impact Labs active recommendation"
+        },
+        {
+          "id": "csm-ace-course",
+          "kind": "recommender",
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fbde0c05-27ad-ef11-b8e9-6045bd043849&oid=9457165c-75c4-ea11-a812-000d3a33232a&org=SeeMore+Impact+Labs",
+          "title": "ACE CSML-0001 version3 recommendation"
+        }
+      ]
+    },
+    {
+      "id": "christian-leaders",
+      "name": "Christian Leaders Institute / College",
+      "creditOrigin": "institutional-candidate",
+      "creditBasis": [
+        "CLI institution-issued transcript pathway; no ACE or NCCRS recommendation established"
+      ],
+      "degreeLevels": [
+        "undergraduate"
+      ],
+      "transcriptIssuer": "Christian Leaders Institute / historical Christian Leaders College",
+      "pricing": [
+        {
+          "amount": 0,
+          "currency": "USD",
+          "unit": "learning access",
+          "scope": "Free learning; not the complete cost of eligible transcript credit",
+          "sourceIds": [
+            "cli-free-courses"
+          ]
+        },
+        {
+          "amount": 75,
+          "currency": "USD",
+          "unit": "outgoing transcript processing",
+          "scope": "Students without a completed CLI degree; not the full transfer-only pathway price",
+          "sourceIds": [
+            "cli-transfers"
+          ]
+        },
+        {
+          "amount": 30,
+          "currency": "USD",
+          "unit": "outgoing transcript processing",
+          "scope": "CLI degree graduates",
+          "sourceIds": [
+            "cli-transfers"
+          ]
+        }
+      ],
+      "pace": {
+        "selfPaced": true,
+        "minimumDays": null,
+        "assessment": "Academic pathway and course requirements were not fully reviewed; no nonproctored or instant-completion claim.",
+        "sourceIds": [
+          "cli-free-courses",
+          "cli-transfers"
+        ]
+      },
+      "courseExamples": [
+        {
+          "name": "College Algebra",
+          "sourceCourseCode": null,
+          "credits": 3,
+          "creditSystem": null,
+          "status": "discovery-only",
+          "sourceIds": [
+            "cli-public-catalog"
+          ]
+        },
+        {
+          "name": "Introduction to Psychology",
+          "sourceCourseCode": null,
+          "credits": 3,
+          "creditSystem": null,
+          "status": "discovery-only",
+          "sourceIds": [
+            "cli-public-catalog"
+          ]
+        },
+        {
+          "name": "Science: Introduction to Biology",
+          "sourceCourseCode": null,
+          "credits": 3,
+          "creditSystem": null,
+          "status": "discovery-only",
+          "sourceIds": [
+            "cli-public-catalog"
+          ]
+        },
+        {
+          "name": "Old Testament Survey",
+          "sourceCourseCode": null,
+          "credits": 3,
+          "creditSystem": null,
+          "status": "discovery-only",
+          "sourceIds": [
+            "cli-public-catalog"
+          ]
+        }
+      ],
+      "acceptanceCautions": [
+        "Free developmental learning is distinct from collegiate transcript eligibility.",
+        "ABHE candidate/pre-accreditation status must not be represented as full or regional accreditation.",
+        "July 2022 Liberty pairs are archival and not current automatic recommendations.",
+        "Incoming CLI minimum grade is not a receiving school transfer rule.",
+        "Graduate admission partnerships do not establish graduate course-transfer awards.",
+        "Current source-course credits may differ from the archived Liberty award; do not match by title alone."
+      ],
+      "sources": [
+        {
+          "id": "cli-help-status",
+          "url": "https://help.christianleaders.org/helpdesk/accreditation-status",
+          "title": "CLI: Is CLI fully accredited?",
+          "kind": "provider-policy",
+          "retrieval": "opened"
+        },
+        {
+          "id": "cli-status",
+          "url": "https://www.christianleadersinstitute.org/accreditation-status/",
+          "title": "CLI accreditation status",
+          "kind": "provider-policy",
+          "retrieval": "opened"
+        },
+        {
+          "id": "cli-transfers",
+          "url": "https://www.christianleadersinstitute.org/transfer-information/",
+          "title": "CLI transfer information",
+          "kind": "provider-policy",
+          "retrieval": "opened"
+        },
+        {
+          "id": "cli-degree-admission",
+          "url": "https://www.christianleadersinstitute.org/degree-admission/",
+          "title": "CLI degree admission and fees",
+          "kind": "provider-policy",
+          "retrieval": "opened"
+        },
+        {
+          "id": "cli-partners",
+          "url": "https://www.christianleadersinstitute.org/academic-partners/",
+          "title": "CLI academic partners",
+          "kind": "sending-institution-partner-policy",
+          "retrieval": "opened"
+        },
+        {
+          "id": "cli-public-catalog",
+          "url": "https://www.christianleadersinstitute.org/christian-leaders-institute-course-catalogue/",
+          "title": "CLI public course catalog",
+          "kind": "provider-course-list",
+          "retrieval": "opened",
+          "caution": "No current assigned academic catalog year is established by this marketing catalog; use for discovery, not silent version matching."
+        },
+        {
+          "id": "cli-free-courses",
+          "url": "https://www.christianleadersinstitute.org/free-christian-courses/",
+          "title": "CLI free Christian courses",
+          "kind": "provider-offering",
+          "retrieval": "indexed-search",
+          "caution": "The current indexed page advertises over 200 free, online, self-paced courses; do not infer that every listed course awards transcript credit."
+        },
+        {
+          "id": "lu-cli-guide-2022",
+          "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLC-Transfer-Equivalency-Guide-Finalized-7.7.22.pdf",
+          "title": "Liberty transfer equivalency guide for Christian Leaders College/Institute, updated July 2022",
+          "kind": "historical-receiving-university-equivalency",
+          "retrieval": "opened",
+          "caution": "Historical exact pairs, not current enrollment recommendations."
+        },
+        {
+          "id": "lu-current-calculator",
+          "url": "https://www.liberty.edu/registrar/course-transfer-equivalency/",
+          "title": "Liberty current course transfer equivalency calculator",
+          "kind": "receiving-university-policy",
+          "retrieval": "opened",
+          "caution": "The embedded public calculator must be queried to recertify current CLI pairs; the static page alone does not return them."
+        },
+        {
+          "id": "cli-handbook-2026",
+          "url": "https://christianleaders.org/pluginfile.php/505028/mod_resource/content/6/2026%20CLI%20Student%20Handbook_Second_Edition.pdf?forcedownload=1",
+          "title": "2026 CLI Student Handbook, second edition",
+          "kind": "provider-handbook",
+          "retrieval": "indexed-only-403-on-open",
+          "caution": "Do not promote indexed snippets to fully reviewed current catalog rules."
+        },
+        {
+          "id": "abhe-cli-factsheet",
+          "url": "https://app.weaveaccreditation.com/publicFiles/institutionprofilepdfs/Christian_Leaders_Institute-ABHE_-_Association_for_Biblical_Higher_Education-1r73Nzex-Fact_Sheet.pdf?v=1359789690",
+          "title": "ABHE accreditation fact sheet for CLI",
+          "kind": "accreditor-primary",
+          "retrieval": "redirect-target-inaccessible",
+          "caution": "Current status supported here by CLI official disclosure; accreditor PDF itself was not fully retrievable."
+        },
+        {
+          "id": "cli-city-vision",
+          "url": "https://degrees.christianleaders.org/citiy-vision-partnership/",
+          "title": "CLI partnership with City Vision",
+          "kind": "sending-institution-partner-policy",
+          "retrieval": "opened",
+          "caution": "Sending-school description; not a current receiving-school course equivalency table or verified current City Vision tuition."
+        }
+      ],
+      "verifiedFacts": [
+        {
+          "field": "accreditationStatus",
+          "value": "ABHE candidate; pre-accreditation",
+          "sourceIds": [
+            "cli-help-status",
+            "cli-status"
+          ],
+          "scope": "Institutional current published disclosure. Candidate status must not be relabeled full or regional accreditation."
+        },
+        {
+          "field": "institutionStructure",
+          "value": "Christian Development School and Leadership Excellence School have different educational and credential pathways.",
+          "sourceIds": [
+            "cli-partners",
+            "cli-transfers"
+          ],
+          "scope": "Free developmental course completion alone is not proof of an eligible collegiate transcript."
+        },
+        {
+          "field": "transcriptEligibilityPathway",
+          "value": "Leadership Excellence admissions or Institute Verification, depending on the student's program pathway.",
+          "sourceIds": [
+            "cli-transfers"
+          ],
+          "scope": "The transfer page refers students to the applicable admissions/verification course for outgoing instructions. Exact current verification fee and all collegiate eligibility steps remain to be reviewed."
+        },
+        {
+          "field": "outboundTranscriptProcessingFee",
+          "value": 75,
+          "currency": "USD",
+          "feeScope": "Students who have not completed a CLI degree",
+          "sourceIds": [
+            "cli-transfers"
+          ],
+          "scope": "Published processing fee only; do not call this the complete cost of earning transcript credit."
+        },
+        {
+          "field": "outboundTranscriptProcessingFee",
+          "value": 30,
+          "currency": "USD",
+          "feeScope": "CLI degree graduates",
+          "sourceIds": [
+            "cli-transfers"
+          ]
+        },
+        {
+          "field": "degreeApplicationFee",
+          "value": 75,
+          "currency": "USD",
+          "feeScope": "Degree admission; do not silently apply to a transfer-only student",
+          "sourceIds": [
+            "cli-degree-admission"
+          ]
+        },
+        {
+          "field": "associateDegreeServiceFee",
+          "value": 2000,
+          "currency": "USD",
+          "feeScope": "Published degree program fee, not a per-course transfer fee",
+          "sourceIds": [
+            "cli-degree-admission"
+          ]
+        },
+        {
+          "field": "bachelorDegreeServiceFee",
+          "value": 4000,
+          "currency": "USD",
+          "feeScope": "Published degree program fee; discounts/tiered pricing may apply. Exact all-in price is not derived here.",
+          "sourceIds": [
+            "cli-degree-admission"
+          ]
+        },
+        {
+          "field": "incomingCLIMinimumGrade",
+          "value": "C-",
+          "sourceIds": [
+            "cli-transfers"
+          ],
+          "scope": "Incoming credit accepted by CLI; never reuse as Liberty, TESU, or UMPI's minimum grade."
+        },
+        {
+          "field": "currentLibertySourceOfTruth",
+          "value": "Current transferable-credit calculator; semester credit conversion and individual degree applicability apply.",
+          "sourceIds": [
+            "lu-current-calculator"
+          ],
+          "scope": "A course equivalency is not the same as degree-requirement placement."
+        },
+        {
+          "field": "LibertyAcceptanceClaim",
+          "value": "CLI says Liberty accepts its records as accredited due to ABHE candidacy, regardless of attendance date, subject to Liberty's grade/content/credit/applicability rules.",
+          "sourceIds": [
+            "cli-partners"
+          ],
+          "scope": "Sending-school description. Current receiving calculator or official policy must support any recommended exact course."
+        }
+      ],
+      "historicalLibertyPairs": {
+        "status": "historical-exact-equivalency-needs-current-recertification",
+        "sourceIds": [
+          "lu-cli-guide-2022"
+        ],
+        "publishedPeriod": "July 2022",
+        "degreeApplicability": "Not established by the guide alone",
+        "pairs": [
+          {
+            "sourceCode": "BIB 111",
+            "sourceCredits": 3,
+            "receivingCode": "BIBL 105",
+            "receivingCredits": 3
+          },
+          {
+            "sourceCode": "BIB 112",
+            "sourceCredits": 3,
+            "receivingCode": "BIBL 110",
+            "receivingCredits": 3
+          },
+          {
+            "sourceCode": "ENG 121",
+            "sourceCredits": 3,
+            "receivingCode": "ENGL 101",
+            "receivingCredits": 3
+          },
+          {
+            "sourceCode": "BUS 230",
+            "sourceCredits": 3,
+            "receivingCode": "ACCT 211",
+            "receivingCredits": 3
+          },
+          {
+            "sourceCode": "ECN 301",
+            "sourceCredits": 3,
+            "receivingCode": "ECON 213",
+            "receivingCredits": 3
+          },
+          {
+            "sourceCode": "ECN 302",
+            "sourceCredits": 3,
+            "receivingCode": "ECON 214",
+            "receivingCredits": 3
+          },
+          {
+            "sourceCode": "PSY 121",
+            "sourceCredits": 3,
+            "receivingCode": "PSYC 101",
+            "receivingCredits": 3
+          },
+          {
+            "sourceCode": "SCI 210",
+            "sourceCredits": 3,
+            "receivingCode": "BIOL 101",
+            "receivingCredits": 3
+          },
+          {
+            "sourceCode": "MAT 201",
+            "sourceCredits": 3,
+            "receivingCode": "MATH 1XX",
+            "receivingCredits": 3,
+            "caution": "Department elective; not proof of a named college algebra or quantitative requirement."
+          }
+        ]
+      },
+      "ambiguities": [
+        {
+          "id": "version-credit-mismatch",
+          "text": "The public CLI catalog lists business management and business finance at 3 credits, while the 2022 Liberty guide lists BUS310/BUS320 at 4 source and 4 receiving credits. Do not match a current course to an archived award by title alone.",
+          "sourceIds": [
+            "cli-public-catalog",
+            "lu-cli-guide-2022"
+          ],
+          "affects": [
+            "courseVersion",
+            "sourceCredits",
+            "receivingCredits",
+            "equivalency"
+          ]
+        },
+        {
+          "id": "ace-not-established",
+          "text": "No CLI course ACE recommendation was established from National Guide or Credly primary records. Treat this route as institution-issued where documented, not as assumed ACE credit.",
+          "sourceIds": [
+            "cli-help-status",
+            "cli-transfers"
+          ],
+          "affects": [
+            "creditBasis",
+            "acceptanceEligibility"
+          ]
+        },
+        {
+          "id": "tesu-umpi-unverified",
+          "text": "No receiving-school official CLI equivalency or acceptance evidence was located for TESU or UMPI in this bounded research. This is an evidence gap, not a demonstrated rejection.",
+          "sourceIds": [],
+          "affects": [
+            "receivingInstitutionEligibility",
+            "equivalency"
+          ]
+        },
+        {
+          "id": "partners-not-pairs",
+          "text": "Several listed partners recognize CLI bachelor's graduates for graduate admission. That cannot be represented as graduate transfer credits or a bachelor's exact course map.",
+          "sourceIds": [
+            "cli-partners",
+            "cli-city-vision"
+          ],
+          "affects": [
+            "partnershipType",
+            "degreeLevel",
+            "equivalency"
+          ]
+        },
+        {
+          "id": "full-transcript-cost",
+          "text": "Outgoing transcript processing is verified, but current transfer-only verification cost, required enrollments, course assessment/proctoring, and collegiate source-credit versions are not yet fully documented.",
+          "sourceIds": [
+            "cli-transfers",
+            "cli-handbook-2026"
+          ],
+          "affects": [
+            "totalCost",
+            "transcriptEligibility",
+            "assessment",
+            "courseVersion"
+          ]
+        }
+      ]
+    }
+  ],
+  "schemaNotes": {
+    "creditRoutes": "Navigation and research hints. Route identity, original credit origin, transcript issuer and recommendation authority are separate. A source card does not supply receiving-school acceptance.",
+    "status": "current-offer means enrollment currently advertised; candidate means material academic-route or eligibility evidence still needs confirmation. Neither status means mapped.",
+    "creditQuantities": "source or recommendation quantities must remain separate from receiving-school awards. Unknown units stay null.",
+    "pricing": "Currency and billing unit are required; no temporary promotional prices or inferred whole-degree totals.",
+    "mappingStatus": "Every new source remains catalog-only; no course-catalog or degree-template availability edits in this change."
+  },
+  "importantExclusions": [
+    {
+      "name": "Pearson Accelerated Pathways Global Digital Classroom",
+      "decision": "Do not add as enrollable source",
+      "reason": "Current official support FAQ explicitly says Global Digital Classroom courses have now closed; older sales pages remain indexed. Retain only historical transcript guidance if needed.",
+      "sourceUrl": "https://www.pearsonaccelerated.com/Support-faq.html"
+    },
+    {
+      "name": "CSU Global Learn vs CSU Global Direct",
+      "decision": "Keep products distinct; not a missing cheap self-paced credit route established here",
+      "reason": "Current self-paced CSU Global Learn ProgrammingI page says it does not appear on academic transcript or satisfy degree requirements. Separate CSU Global Direct is actual academic non-degree enrollment, but institutional FAQ says courses follow schedules and deadlines; not equivalent to unrestricted self-paced coursework.",
+      "sourceUrls": [
+        "https://csugloballearn.catalog.instructure.com/courses/csc320g---programming-i",
+        "https://csuglobal.edu/admissions/non-degree-students",
+        "https://csuglobal.edu/about"
+      ]
+    }
+  ],
+  "recommendedNextMappingFields": [
+    "deliveryProviderId",
+    "originalCreditOrigin",
+    "transcriptIssuerId",
+    "creditBasis",
+    "recommenderCourseId",
+    "recommendationVersion",
+    "recommendationStart",
+    "recommendationEnd",
+    "sourceCredits",
+    "sourceCreditSystem",
+    "courseAcademicLevel",
+    "receivingAwardCredits",
+    "receivingCourseId",
+    "receivingRequirementId",
+    "receivingSchoolEvidenceUrl",
+    "duplicateCreditGroup",
+    "prerequisites",
+    "proctoringRequired",
+    "minimumElapsedDays",
+    "maximumAccessMonths",
+    "weeklySubmissionLimit",
+    "gradingTurnaroundDays",
+    "transcriptTurnaroundDays",
+    "priceAmount",
+    "priceCurrency",
+    "priceUnit",
+    "additionalFees",
+    "eligibilityRestrictions",
+    "checkedOn",
+    "sourceUrls"
+  ]
+}

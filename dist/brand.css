@@ -1,0 +1,40 @@
+/* DegreeSteps v1. Semantic tokens from the supplied November 17, 2026 brand package. */
+:root {
+  --ds-navy:#192c43; --ds-cobalt:#4054f4; --ds-ink:#182230; --ds-muted:#526174;
+  --ds-surface:#fff; --ds-canvas:#f7f9fc; --ds-soft-blue:#eef1ff;
+  --ds-border:#d9e1ea; --ds-control-border:#7b899b;
+  --ds-success:#166534; --ds-warning:#92400e; --ds-error:#b42318;
+  --ds-font:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ds-space-1:4px; --ds-space-2:8px; --ds-space-3:12px; --ds-space-4:16px;
+  --ds-space-6:24px; --ds-space-8:32px; --ds-space-12:48px; --ds-space-16:64px; --ds-space-24:96px;
+  --ds-radius-control:10px; --ds-radius-card:16px; --ds-content-width:1200px;
+  --ds-duration-fast:120ms; --ds-duration-normal:180ms;
+}
+body { font-family:var(--ds-font); color:var(--ds-ink); font-size:16px; line-height:1.6; }
+body.dp-app-shell {
+  --dp-ink:var(--ds-navy); --dp-muted:var(--ds-muted); --dp-blue:var(--ds-cobalt); --dp-line:var(--ds-border);
+  color:var(--ds-ink); background:var(--ds-canvas);
+}
+/* Temporary text treatment. This does not reproduce or replace the approved raster logo. */
+.ds-wordmark { display:inline-flex; align-items:baseline; gap:0; color:var(--ds-navy); font-family:var(--ds-font); font-size:27px; font-weight:750; letter-spacing:-1.2px; line-height:1.2; white-space:nowrap; text-decoration:none; }
+.ds-wordmark-steps { color:var(--ds-cobalt); }
+.ds-wordmark img { display:block; width:100%; height:auto; object-fit:contain; }
+.public-page .ds-wordmark { color:var(--ds-navy); }
+#degree-app-shell .dp-shell-brand.ds-wordmark { gap:0; color:var(--ds-navy); font-size:25px; }
+#degree-app-shell .dp-shell-brand.ds-wordmark .ds-wordmark-steps { color:var(--ds-cobalt); }
+body.dp-app-shell :is(h1,h2,h3) { color:var(--ds-navy); }
+body.dp-app-shell :is(button,input,select,textarea) { font-family:var(--ds-font); }
+body.dp-app-shell :is(input,select,textarea):not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]):not([type=hidden]) { border-color:var(--ds-control-border); border-radius:var(--ds-radius-control); font-size:16px; }
+body.dp-app-shell :is(button,.button,.portal-primary,.portal-secondary,.courses-primary,.courses-secondary,.import-button,.import-secondary) { min-height:44px; }
+body.dp-app-shell :is(.button,.portal-primary,.portal-secondary,.courses-primary,.courses-secondary,.import-button,.import-secondary) { border-radius:var(--ds-radius-control); }
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible { outline:3px solid var(--ds-cobalt); outline-offset:3px; }
+:where(button,a,input,select,textarea) { transition-duration:var(--ds-duration-fast); }
+:where([role=alert],.course-inline-error,.sheet-error,.courses-error) { color:var(--ds-error); }
+.ds-focus:focus-visible { outline:3px solid var(--ds-cobalt); outline-offset:3px; }
+@media(max-width:760px) {
+  .ds-wordmark { font-size:25px; }
+  #degree-app-shell .dp-shell-mobile-brand.ds-wordmark { min-width:145px; color:var(--ds-navy); font-size:25px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:0ms!important; }
+}

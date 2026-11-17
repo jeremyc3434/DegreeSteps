@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "id": "liberty-accounting-residential-named-choices-2026-2027",
+  "checkedOn": "2026-11-17",
+  "modelId": "curriculum-liberty-accounting-bs-residential",
+  "school": "Liberty University",
+  "format": "Residential",
+  "catalogYear": "2026-2027",
+  "totalCredits": 120,
+  "scope": "Proposed named selections within published general-education categories and the existing free-elective allocation. These are editable planning choices, not newly mandatory courses or new transfer equivalencies.",
+  "sources": [
+    {
+      "id": "liberty-accounting-bs-residential-2026",
+      "title": "Accounting & Data Analysis B.S. residential 2026\u201327 degree requirements",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-data-analysis-major-bs/accounting-data-analysis-bs-resident/",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "liberty-residential-approved-gened",
+      "title": "2026\u201327 approved residential general-education courses",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-residential-programs/",
+      "checked": "2026-11-17"
+    },
+    {
+      "id": "liberty-rmgt-courses-2026-2027",
+      "title": "2026\u201327 Recreation Management course catalog",
+      "url": "https://catalog.liberty.edu/undergraduate/courses/rmgt/",
+      "checked": "2026-11-17"
+    }
+  ],
+  "choices": [
+    {
+      "requirementId": "general-choice-1",
+      "publishedRequirementTitle": "Communications elective",
+      "selectedCode": "COMS 101",
+      "selectedTitle": "Speech Communication",
+      "credits": 3,
+      "sourceId": "liberty-residential-approved-gened"
+    },
+    {
+      "requirementId": "general-choice-2",
+      "publishedRequirementTitle": "Information literacy elective",
+      "selectedCode": "ENGL 102",
+      "selectedTitle": "Composition and Literature",
+      "credits": 3,
+      "sourceId": "liberty-residential-approved-gened"
+    },
+    {
+      "requirementId": "general-choice-3",
+      "publishedRequirementTitle": "Information literacy elective",
+      "selectedCode": "HIUS 221",
+      "selectedTitle": "Survey of American History I",
+      "credits": 3,
+      "sourceId": "liberty-residential-approved-gened"
+    },
+    {
+      "requirementId": "general-choice-4",
+      "publishedRequirementTitle": "Math elective \u2014 MATH 114 or higher",
+      "selectedCode": "MATH 121",
+      "selectedTitle": "College Algebra",
+      "credits": 3,
+      "sourceId": "liberty-residential-approved-gened"
+    },
+    {
+      "requirementId": "general-choice-5",
+      "publishedRequirementTitle": "Critical thinking elective",
+      "selectedCode": "PHIL 201",
+      "selectedTitle": "Philosophy and Contemporary Ideas",
+      "credits": 3,
+      "sourceId": "liberty-residential-approved-gened"
+    },
+    {
+      "requirementId": "general-choice-6",
+      "publishedRequirementTitle": "Cultural studies elective",
+      "selectedCode": "CSTU 101",
+      "selectedTitle": "Western Culture",
+      "credits": 3,
+      "sourceId": "liberty-residential-approved-gened"
+    },
+    {
+      "requirementId": "general-choice-7",
+      "publishedRequirementTitle": "Natural science elective",
+      "selectedCode": "BIOL 101",
+      "selectedTitle": "Principles of Biology",
+      "credits": 3,
+      "sourceId": "liberty-residential-approved-gened"
+    }
+  ],
+  "freeElective": {
+    "code": "RMGT 210",
+    "title": "Introduction to Paddling",
+    "credits": 2,
+    "sourceId": "liberty-rmgt-courses-2026-2027",
+    "publishedOffering": "Residential",
+    "publishedPrerequisites": [],
+    "publishedRegistrationRestrictions": [],
+    "notes": "Proposed editable free elective. The catalog lists a residential two-credit course without a prerequisite or registration restriction. No section availability, added fee or completion date is asserted."
+  },
+  "preservedRules": {
+    "institutionMinCredits": 30,
+    "majorInstitutionFraction": 0.25,
+    "majorResidencyBasisCredits": 69,
+    "upperMinCredits": 30,
+    "minimumMajorGrade": "C",
+    "freeElectiveRange": [
+      8,
+      14
+    ],
+    "religionWaiversApplied": false
+  },
+  "notes": [
+    "The two information-literacy selections are different courses. No course is counted in multiple allocations.",
+    "The 3-credit math selection meets the published MATH 114-or-higher requirement. Placement or other registration prerequisites remain course-specific.",
+    "The existing technology/major-foundation and social-science/major-foundation overlaps are preserved; this review does not alter degree totals or add another technology requirement.",
+    "An ordinary approved course choice is a student preference, not missing public degree research. Existing receiving-school maps may supply outside choices; this review itself creates none."
+  ]
+}

@@ -1,0 +1,8 @@
+
+# Retain public source snapshots byte-for-byte, including extracted whitespace.
+content/curricula/snapshots/** -whitespace
+
+# Keep upload fixtures byte-for-byte, including the CSV exports' Windows line endings.
+test-support/fixtures/course-import/*.csv -text whitespace=cr-at-eol
+test-support/fixtures/course-import/*.tsv -text -whitespace
+test-support/fixtures/course-import/*.pdf binary

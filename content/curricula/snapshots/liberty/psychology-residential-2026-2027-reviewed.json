@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-16",
+  "catalog": "2026-2027",
+  "reviewMethod": "Official catalog facts recovered from indexed university pages; direct native-web opens timed out. Older catalog PDFs were not substituted.",
+  "sources": [
+    {"id":"liberty-psychology-bs-residential-2026","title":"Psychology B.S. Resident degree completion plan, 2026–2027","url":"https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-resident/","checked":"2026-11-16"},
+    {"id":"liberty-residential-approved-gened-expansion-2026","title":"Approved residential general-education courses, 2026–2027","url":"https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-residential-programs/","checked":"2026-11-16"},
+    {"id":"liberty-psychology-course-prerequisites-2026","title":"Psychology course descriptions and prerequisites, 2026–2027","url":"https://catalog.liberty.edu/undergraduate/courses/psyc/","checked":"2026-11-16"}
+  ],
+  "degree": {
+    "parentTitle":"Psychology Major (B.S.)",
+    "totalCredits":120,
+    "generalEducationRange":[40,43],
+    "technologyRange":[0,3],
+    "majorFoundationCredits":12,
+    "majorCoreCredits":39,
+    "freeElectiveRange":[32,35],
+    "institutionMinCredits":30,
+    "upperMinCredits":30,
+    "majorInstitutionFraction":0.25,
+    "majorResidencyBasisCredits":51,
+    "minimumUpperMajorGrade":"C",
+    "effectiveCohort":"Fall 2026 through summer 2027; continued enrollment and no program/concentration/cognate change are conditions of catalog retention.",
+    "technologyChoice":{"code":"INFT 110","title":"Computer Concepts and Applications","credits":3,"otherApprovedCode":"INFT 111","assessmentAlternativeRequiresPassing":true},
+    "generalFixed":[["ENGL 101","Composition and Rhetoric",3,"communication"],["UNIV 101","Foundational Skills",1,"technology"],["RLGN 105","Introduction to Biblical Worldview",2,"critical-thinking"],["EVAN 101","Evangelism and the Christian Life",2,"civic-engagement"],["BIBL 105","Old Testament Survey",2,"christianity-contexts"],["BIBL 110","New Testament Survey",2,"christianity-contexts"],["THEO 201","Theology Survey I",2,"christianity-contexts"],["THEO 202","Theology Survey II",2,"christianity-contexts"]],
+    "approvedGeneralChoices":[["COMS 101","Speech Communication",3,"communication"],["ENGL 102","Composition and Literature",3,"communication"],["ARTS 209","Art as Communication",3,"communication"],["MATH 121","College Algebra",3,"technology"],["ETHC 101","Introduction to Ethics",3,"critical-thinking"],["CSTU 101","Western Culture",3,"civic-engagement"]],
+    "majorFoundations":[["BIOL 102","Principles of Human Biology",3],["PSYC 101","General Psychology",3],["PSYC 210","Developmental Psychology",3],["PSYC 354","Statistics for the Social Sciences",3]],
+    "majorCore":[["PSYC 255","Introduction to Research",3],["PSYC 310","Cognitive Psychology",3],["PSYC 312","Social Psychology",3],["PSYC 320","Behavior Modification",3],["PSYC 341","Psychology of Personality",3],["PSYC 351","Multicultural Counseling and Research Issues",3],["PSYC 355","Statistics in Psychology",3],["PSYC 365","Psychological Foundations of Learning",3],["PSYC 380","Physiological Psychology",3],["PSYC 420","Psychology and Christianity",3],["PSYC 421","Psychological Measurement",3],["PSYC 430","Abnormal Psychology",3]],
+    "majorChoice":{"credits":3,"allowedCourseCodes":["PSYC 495","PSYC 497","PSYC 499"],"selectedCode":"PSYC 497","selectedTitle":"Special Topics in Psychology","selectedCourseFixedCredits":3},
+    "overlaps":[{"code":"BIOL 102","generalCategory":"Natural Science Elective","credits":3},{"code":"PSYC 101","generalCategory":"Social Science Elective","credits":3}],
+    "selectedPrerequisites":{"PSYC 255":["PSYC 101"],"PSYC 312":["PSYC 101","PSYC 255"],"PSYC 320":["PSYC 101","PSYC 255"],"PSYC 341":["PSYC 101","PSYC 255"],"PSYC 351":["PSYC 101","PSYC 255"],"PSYC 354":["PSYC 101","MATH 121","PSYC 255"],"PSYC 355":["PSYC 101","MATH 121","PSYC 354","PSYC 255"],"PSYC 365":["PSYC 101","PSYC 255"],"PSYC 380":["PSYC 101","PSYC 255"],"PSYC 420":["PSYC 101","PSYC 255"],"PSYC 421":["PSYC 355","PSYC 255","PSYC 101"],"PSYC 430":["PSYC 255","PSYC 101"],"PSYC 497":["PSYC 101","PSYC 255"]},
+    "waiversRetainedInBaseline":["RLGN 105 and EVAN 101 may be waived for at least 45 undergraduate transfer credits; individual university evaluation is required.","THEO 201 and THEO 202 may also be waived for at least 60 undergraduate transfer credits; individual university evaluation is required."],
+    "noncreditObligations":["Satisfy applicable CSER requirements.","Submit the degree completion application in the final anticipated semester.","Maintain at least a 2.0 overall GPA."]
+  }
+}
