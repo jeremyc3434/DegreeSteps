@@ -27,7 +27,7 @@
   const nav = mobile => links.map(link => '<a href="'+link.href+'"'+(active === link.id ? ' aria-current="page"' : '')+' data-shell-nav="'+link.id+'">'+icon(link.icon)+'<span>'+link.title+'</span></a>').join('');
   const shell = document.createElement('div');
   shell.id = 'degree-app-shell';
-  shell.innerHTML = '<aside class="dp-shell-sidebar" aria-label="DegreeSteps workspace"><a class="dp-shell-brand" href="plan.html" aria-label="DegreeSteps — My plan">'+wordmark+'</a><div class="dp-shell-nav-label">YOUR WORKSPACE</div><nav class="dp-shell-nav" aria-label="Main navigation">'+nav(false)+'</nav><div class="dp-shell-sidebar-bottom"><a class="dp-shell-account" href="account.html"'+(active === 'account' ? ' aria-current="page"' : '')+'><span class="dp-shell-avatar">'+icon('person')+'</span><span><strong data-shell-account-label>My account</strong><small data-shell-account-detail>Sign in to keep a private copy</small></span>'+icon('arrow')+'</a><a class="dp-shell-website" href="library.html">Schools & resources '+icon('arrow')+'</a><a class="dp-shell-website" href="index.html">Visit DegreeSteps website '+icon('arrow')+'</a></div></aside><header class="dp-shell-header"><a class="dp-shell-mobile-brand" href="plan.html" aria-label="DegreeSteps — My plan">'+wordmark+'</a><div class="dp-shell-page-title" id="dp-shell-page-title">'+labels[page]+'</div><div class="dp-shell-header-actions"><a class="dp-shell-save-account" href="account.html#account-save-form" title="Choose to save or update a private account copy" hidden>Back up plan</a><span class="dp-shell-save" role="status" aria-live="polite" hidden>'+icon('check')+'<span></span></span><a class="dp-shell-account-button" href="account.html" aria-label="My account">'+icon('person')+'</a></div></header><nav class="dp-shell-bottom" aria-label="Mobile main navigation">'+nav(true)+'</nav>';
+  shell.innerHTML = '<aside class="dp-shell-sidebar" aria-label="DegreeSteps workspace"><a class="dp-shell-brand" href="plan.html" aria-label="DegreeSteps — My plan">'+wordmark+'</a><div class="dp-shell-nav-label">YOUR WORKSPACE</div><nav class="dp-shell-nav" aria-label="Main navigation">'+nav(false)+'</nav><div class="dp-shell-sidebar-bottom"><a class="dp-shell-account" href="account.html"'+(active === 'account' ? ' aria-current="page"' : '')+'><span class="dp-shell-avatar">'+icon('person')+'</span><span><strong data-shell-account-label>My account</strong><small data-shell-account-detail>Open account settings</small></span>'+icon('arrow')+'</a><a class="dp-shell-website" href="library.html">Schools & resources '+icon('arrow')+'</a><a class="dp-shell-website" href="index.html">Visit DegreeSteps website '+icon('arrow')+'</a></div></aside><header class="dp-shell-header"><a class="dp-shell-mobile-brand" href="plan.html" aria-label="DegreeSteps — My plan">'+wordmark+'</a><div class="dp-shell-page-title" id="dp-shell-page-title">'+labels[page]+'</div><div class="dp-shell-header-actions"><a class="dp-shell-save-account" href="account.html#account-save-form" title="Choose to save or update a private account copy" hidden>Back up plan</a><span class="dp-shell-save" role="status" aria-live="polite" hidden>'+icon('check')+'<span></span></span><a class="dp-shell-account-button" href="account.html" aria-label="My account">'+icon('person')+'</a></div></header><nav class="dp-shell-bottom" aria-label="Mobile main navigation">'+nav(true)+'</nav>';
   document.body.prepend(shell);
   document.body.classList.add('dp-app-shell');
   if (page === 'library.html') {
@@ -64,21 +64,30 @@
     };
     reflect();new MutationObserver(reflect).observe(existingSave,{childList:true,characterData:true,subtree:true});
   }
-  let lastAccountRefresh = 0;
+  let lastAccountRefresh = 0, accountRefreshId = 0;
   async function account(refresh) {
     if (!window.DegreeAccount?.session) return;
+    const refreshId = ++accountRefreshId;
     lastAccountRefresh = Date.now();
-    try {
-      const session = await window.DegreeAccount.session(Boolean(refresh));
-      const user = session?.user;signedIn=Boolean(user);accountSaveAction();
+    let session, storageAvailable = true;
+    try {session = await window.DegreeAccount.session(Boolean(refresh));}
+    catch {
+      storageAvailable = false;
+      try {session = await window.DegreeAccount.auth('/session');}
+      catch {session = null;}
+    }
+    if (refreshId !== accountRefreshId) return;
+    {
+      const known = session && Object.prototype.hasOwnProperty.call(session,'user'), user = session?.user;
+      signedIn=Boolean(user)&&storageAvailable;accountSaveAction();
       const label = shell.querySelector('[data-shell-account-label]');
       const detail = shell.querySelector('[data-shell-account-detail]');
       const avatar = shell.querySelector('.dp-shell-avatar');
       label.textContent = user ? (user.alias || 'My account') : 'My account';
-      detail.textContent = user ? 'Manage private saved plans' : 'Sign in to keep a private copy';
+      detail.textContent = !known ? 'Account status unavailable' : user ? storageAvailable ? 'Manage private saved plans' : 'Signed in · Saved plans unavailable' : 'Sign in to keep a private copy';
       if (user?.alias) {avatar.textContent = user.alias.trim().slice(0,1).toUpperCase();avatar.classList.add('dp-shell-avatar-initial');}
       else {avatar.innerHTML = icon('person');avatar.classList.remove('dp-shell-avatar-initial');}
-    } catch { /* The account page presents authentication and connection errors. */ }
+    }
   }
   account(false);
   const accountContent = document.getElementById('account-content');

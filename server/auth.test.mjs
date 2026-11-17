@@ -21,6 +21,27 @@ function request(path,{method='GET',body,cookie,headers={}}={}) {
 const cookieJar=response=>response.headers.getSetCookie().map(value=>value.split(';')[0]).join('; ');
 async function call(env,path,options) {const response=await handleAuth(request(path,options),env);return {response,status:response.status,data:response.headers.get('Content-Type')?.includes('json')?await response.json():null};}
 
+test('sign-in identity is available independently of saved-plan storage and never returns credentials',async()=>{
+ const {env,calls}=fixture(c=>{assert.equal(c.url.pathname,'/auth/v1/user');return answer(verified);});
+ env.DB={prepare(){throw Error('Identity must not access the plan database');}};
+ env.PORTAL_DATA_FETCH=()=>{throw Error('Identity must not call the plan service');};
+ const result=await call(env,'/api/auth/session',{cookie:'__Host-degreepath_access='+tokens.access_token});
+ assert.equal(result.status,200);assert.deepEqual(result.data,{configured:true,user:{id:'sb-'+uuid,email:verified.email}});assert.equal(calls.length,1);
+ assert.equal(result.response.headers.get('Cache-Control'),'no-store, private');assert.equal(result.response.headers.get('Vary'),'Cookie');
+ assert(!JSON.stringify(result.data).includes(tokens.access_token));assert(!JSON.stringify(result.data).includes(env.PORTAL_SUPABASE_PUBLISHABLE_KEY));
+ const guest=await call(env,'/api/auth/session');assert.deepEqual(guest.data,{configured:true,user:null});assert.equal(calls.length,1);
+ assert.deepEqual((await call({},'/api/auth/session')).data,{configured:false,user:null});
+});
+
+test('independent sign-in checks rotate expired credentials and distinguish provider outages from sign-out',async()=>{
+ const refreshed=fixture(c=>c.url.pathname.endsWith('/token')?answer(tokens):c.init.headers.Authorization==='Bearer expired'?answer({},401):answer(verified));
+ const result=await call(refreshed.env,'/api/auth/session',{cookie:'__Host-degreepath_access=expired; __Host-degreepath_refresh=old-refresh'});
+ assert.equal(result.status,200);assert.equal(result.data.user.id,'sb-'+uuid);assert.equal(result.response.headers.getSetCookie().length,2);
+ const unavailable=fixture(()=>answer({error:'temporary outage'},503));
+ const failed=await call(unavailable.env,'/api/auth/session',{cookie:'__Host-degreepath_access=existing-access; __Host-degreepath_refresh=existing-refresh'});
+ assert.equal(failed.status,503);assert.equal(failed.data.code,'auth_unavailable');assert.equal(failed.response.headers.getSetCookie().length,0);assert(!Object.hasOwn(failed.data,'user'));
+});
+
 test('missing or invalid configuration advertises no enabled accounts and never invents an identity',async()=>{
  const status=await call({},'/api/auth/status');assert.equal(status.status,200);assert.deepEqual(status.data.providers,[]);assert.equal(status.data.configured,false);
  const login=await call({},'/api/auth/login',{method:'POST',body:{email:'student@example.com',password:'long-password'}});assert.equal(login.status,503);assert.equal(login.data.code,'auth_not_configured');

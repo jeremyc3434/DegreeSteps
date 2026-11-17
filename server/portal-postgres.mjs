@@ -52,7 +52,13 @@ const portalPostgresApi=(()=>{
   }
   async function rpc(env,config,user,name,body={}){
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),12000);let response;
-    try{const fetcher=typeof env.PORTAL_DATA_FETCH==='function'?env.PORTAL_DATA_FETCH:fetch;response=await fetcher(config.url+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:config.key,Authorization:'Bearer '+config.token,'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({p_actor_id:user.uuid,...body}),redirect:'error',signal:controller.signal});const data=await boundedJSON(response,MAX_RESPONSE_BYTES);if(!response.ok)storageError(response.status,data);return data;}catch(error){if(error instanceof ApiError)throw error;fail(503,'Private account storage is temporarily unavailable. Your device draft and older account copies have not been changed.','storage_unavailable');}finally{clearTimeout(timer);}
+    try{
+      const fetcher=typeof env.PORTAL_DATA_FETCH==='function'?env.PORTAL_DATA_FETCH:fetch;
+      // Workers supports manual/follow only. Never follow a redirect with the student's JWT.
+      response=await fetcher(config.url+'/rest/v1/rpc/'+name,{method:'POST',headers:{apikey:config.key,Authorization:'Bearer '+config.token,'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({p_actor_id:user.uuid,...body}),redirect:'manual',signal:controller.signal});
+      if(response.status>=300&&response.status<400){await response.body?.cancel();fail(503,'Private account storage is temporarily unavailable. Your device draft and older account copies have not been changed.','storage_unavailable');}
+      const data=await boundedJSON(response,MAX_RESPONSE_BYTES);if(!response.ok)storageError(response.status,data);return data;
+    }catch(error){if(error instanceof ApiError)throw error;fail(503,'Private account storage is temporarily unavailable. Your device draft and older account copies have not been changed.','storage_unavailable');}finally{clearTimeout(timer);}
   }
   const statement=(db,sql,...values)=>db.prepare(sql).bind(...values);
   const first=(db,sql,...values)=>statement(db,sql,...values).first();

@@ -7,7 +7,7 @@
   let returnStorage = null; try {returnStorage = window.sessionStorage;} catch { /* Sign-in works when session storage is blocked. */ }
   const returnPath = Return?.resolve(location.search,returnStorage,location.origin) || '/account.html';
   let user = null, items = [], authStatus = {configured:false,providers:[]}, mode = params.get('mode') === 'recovery' ? 'recovery' : 'login', pending = null, conflict = false;
-  let actionPending = false, migration = null, migrationNotice = '';
+  let actionPending = false, migration = null, migrationNotice = '', accountUnavailable = false, verifiedIdentity = null;
   function migrationItems() {return Array.isArray(migration?.items) ? migration.items : [];}
   async function loadMigration({keepNotice = false} = {}) {
     migration = null; if (!keepNotice) migrationNotice = '';
@@ -23,6 +23,25 @@
   function formError(form,message) {const target = form?.querySelector('.account-form-error'); if (target) target.textContent = message; else error(message);}
   function storageDraft() {return Account.deviceDraft();}
   function date(value) {const d = new Date(typeof value === 'number' && value < 1e12 ? value * 1000 : value); return Number.isNaN(d.valueOf()) ? 'Date unavailable' : d.toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'});}
+  function recoveryBody() {
+    const hasDraft = Boolean(storageDraft());
+    const explanation = verifiedIdentity ? 'You’re signed in, but we couldn’t load your saved plans. Try again, or sign out and sign back in.' : 'Try again to load your saved plans, or sign out and sign back in.';
+    return '<div class="account-shell account-auth account-recovery"><h1>We couldn’t load your saved plans.</h1><p class="account-lede">' + explanation + '</p><div class="account-recovery-actions">' + button('retry-account','Try again') + button('signout','Sign out',true) + '<a class="account-text-button" href="' + (hasDraft ? 'plan.html' : 'portal.html') + '">' + (hasDraft ? 'Open my plan' : 'Build my plan') + ' →</a></div><p class="account-meta">' + (hasDraft ? 'This does not change the plan on this device.' : 'Your saved plans have not been changed.') + '</p></div>';
+  }
+  async function recoverAccount() {
+    if (mode === 'recovery' && authStatus.recovery) {accountUnavailable = false; error(''); notice(''); render(); return;}
+    verifiedIdentity = user;
+    if (!verifiedIdentity) {
+      try {
+        const identity = await Account.auth('/session');
+        if (identity && Object.prototype.hasOwnProperty.call(identity,'user')) {
+          verifiedIdentity = identity.user;
+          if (!identity.user) {user = null; items = []; accountUnavailable = false; error(''); render(); notice('Sign in to open your saved plans.'); return;}
+        }
+      } catch { /* Recovery controls remain usable when either service is unavailable. */ }
+    }
+    accountUnavailable = true; pending = null; error(''); notice(''); render();
+  }
   function authBody() {
     if (!authStatus.configured) return '<div class="account-shell account-auth"><span class="portal-kicker">Your private portal</span><h1>Your degree plan has a home.</h1><p class="account-lede">Sign-in is being connected. You can already build a plan and save your progress on this device.</p><div class="portal-notice"><strong>Email and Google sign-in are coming.</strong><p>Account setup is not complete yet. You don’t need to wait to explore a degree path.</p></div><a class="portal-primary" href="portal.html">Build my plan</a><div class="portal-links"><a href="resources/">Explore student resources</a></div><p class="account-meta">Keep a private backup from your course plan before switching devices.</p></div>';
     const recovery = mode === 'recovery' && authStatus.recovery;
@@ -71,26 +90,28 @@
   function dashboard() {
     const deleteData = pending?.kind === 'delete-data' ? '<form id="account-delete-data-form" class="account-inline-confirm"><p>This permanently removes your saved plans and private portal nickname. It does not delete your sign-in identity, public community posts, or the draft on this device.</p>' + field('confirmation','Type DELETE MY PORTAL DATA','','autocomplete="off" required') + '<p class="account-form-error" role="alert"></p><div class="portal-actions"><button class="portal-secondary account-danger" type="submit">Delete my saved portal data</button>' + button('cancel','Cancel',true) + '</div></form>' : '';
     const clearDevice = pending?.kind === 'clear-device' ? '<div class="account-inline-confirm"><p>This removes the current draft from this browser. Your saved account plans stay in your account. Download a backup first if you need one.</p><div class="portal-actions">' + button('backup','Download backup',true) + button('confirm-clear-device','Remove device draft',true) + button('cancel','Cancel',true) + '</div></div>' : '';
-    return '<div class="account-shell"><div class="account-home-heading"><span class="portal-kicker">Your private account</span><h1>Hello, ' + esc(user.alias || 'Student') + '.</h1><p class="account-lede">Keep your degree plans together and choose which draft to work on next.</p></div><div class="account-layout"><div>' + migrationPanel() + '<section class="account-panel"><h2>My saved plans</h2><p>These account copies are private to you.</p>' + planList() + '</section>' + restoreReview() + '</div><aside><section class="account-panel"><h2>Save my device draft</h2>' + uploadForm() + '</section><section class="account-panel"><h2>My profile</h2><form id="account-profile-form">' + field('alias','What should we call you?',user.alias || 'Student','minlength="2" maxlength="40" autocomplete="nickname" required') + '<p class="account-form-error" role="alert"></p><button type="submit" class="portal-secondary">Save name</button></form><p class="account-meta">This is your private portal name. Your community alias is managed separately.</p><div class="portal-links"><button type="button" data-action="signout">Sign out</button></div><p class="account-meta">Signing out leaves the draft on this device. On a shared device, remove it below after keeping any backup you need.</p><details class="account-settings"><summary>Privacy and saved data</summary><div class="portal-links"><button type="button" data-action="clear-device">Remove draft from this device</button><button type="button" class="account-danger" data-action="delete-data">Delete my saved portal data</button></div>' + clearDevice + deleteData + '</details></section></aside></div></div>';
+    return '<div class="account-shell"><div class="account-home-heading"><div class="account-heading-row"><div><span class="portal-kicker">Your private account</span><h1>Hello, ' + esc(user.alias || 'Student') + '.</h1></div>' + button('signout','Sign out',true) + '</div><p class="account-lede">Keep your degree plans together and choose which draft to work on next.</p></div><div class="account-layout"><div>' + migrationPanel() + '<section class="account-panel"><h2>My saved plans</h2><p>These account copies are private to you.</p>' + planList() + '</section>' + restoreReview() + '</div><aside><section class="account-panel"><h2>Save my device draft</h2>' + uploadForm() + '</section><section class="account-panel"><h2>My profile</h2><form id="account-profile-form">' + field('alias','What should we call you?',user.alias || 'Student','minlength="2" maxlength="40" autocomplete="nickname" required') + '<p class="account-form-error" role="alert"></p><button type="submit" class="portal-secondary">Save name</button></form><p class="account-meta">This is your private portal name. Your community alias is managed separately.</p><p class="account-meta">Signing out leaves the draft on this device. On a shared device, remove it below after keeping any backup you need.</p><details class="account-settings"><summary>Privacy and saved data</summary><div class="portal-links"><button type="button" data-action="clear-device">Remove draft from this device</button><button type="button" class="account-danger" data-action="delete-data">Delete my saved portal data</button></div>' + clearDevice + deleteData + '</details></section></aside></div></div>';
   }
   function render(focus = false) {
-    $('account-content').innerHTML = mode === 'recovery' && authStatus.recovery ? authBody() : user ? dashboard() : authBody();
+    $('account-content').innerHTML = accountUnavailable ? recoveryBody() : mode === 'recovery' && authStatus.recovery ? authBody() : user ? dashboard() : authBody();
     if (pending?.kind === 'clear-device' || pending?.kind === 'delete-data') $('account-content').querySelector('.account-settings').open = true;
     if (focus) {$('account-content').querySelector('h1')?.setAttribute('tabindex','-1'); $('account-content').querySelector('h1')?.focus({preventScroll:true});}
     if(user&&location.hash==='#account-save-form')requestAnimationFrame(()=>{const form=$('account-save-form');form?.scrollIntoView({block:'center'});form?.querySelector('input')?.focus({preventScroll:true});});
   }
   async function load({continueToRequested = false} = {}) {
+    user = null; verifiedIdentity = null;
     const results = await Promise.allSettled([Account.auth('/status'),Account.session(true)]);
     if (results[0].status === 'fulfilled') authStatus = results[0].value;
     else if (results[1].status === 'rejected') throw results[0].reason;
     if (results[1].status === 'rejected') throw results[1].reason;
     user = results[1].value.user;
+    verifiedIdentity = user;
     if (continueToRequested && user && mode !== 'recovery' && returnPath !== '/account.html') {Return?.clear(returnStorage); location.assign(returnPath); return true;}
     if (user) {
       const results = await Promise.all([Account.api('/plans'),loadMigration()]);
       items = Array.isArray(results[0].items) ? results[0].items : [];
     } else {items = []; migration = null; migrationNotice = '';}
-    render();
+    accountUnavailable = false; render();
   }
   function download(state,name) {
     if (!state) throw new Error('There is no device draft to download yet.');
@@ -101,7 +122,7 @@
   async function run(action) {
     if (actionPending) return;
     actionPending = true; error('');
-    try {await action();} catch (e) {error(e.message);} finally {actionPending = false;}
+    try {await action();} catch (e) {if (['storage_unavailable','storage_not_configured'].includes(e.code)) await recoverAccount(); else error(e.message);} finally {actionPending = false;}
   }
   document.addEventListener('click',event => {
     const b = event.target.closest('button'); if (!b) return;
@@ -110,12 +131,18 @@
       if (['login-mode','signup-mode','forgot-mode'].includes(action)) {mode = action.split('-')[0]; if (mode === 'forgot') mode = 'forgot'; error(''); render(true);}
       else if (action === 'backup') {try {download(storageDraft());} catch(e) {error(e.message);}}
       else if (action === 'cancel') {pending = null; render();}
+      else if (action === 'retry-account') run(async () => {notice('Loading your saved plans…'); try {await load(); notice('');} catch {await recoverAccount();}});
       else if (action === 'migration-refresh') run(async () => {migrationNotice = ''; await loadMigration(); render();});
       else if (action === 'migration-backup') run(async () => {const backup = await Account.api('/migration/backup'); download(backup,'degreesteps-older-saved-plans.json');});
       else if (action === 'clear-device' || action === 'delete-data') {pending = {kind:action}; render();}
       else if (action === 'confirm-clear-device') {
         try {localStorage.removeItem(Account.DRAFT_KEY); localStorage.removeItem('degreepath-pathway-v2'); Account.clearLink(); pending = null; render(); notice('The draft was removed from this device. Your saved account plans are unchanged.');} catch (e) {error('Device storage is unavailable. Close this browser profile to protect its local data.');}
-      } else if (action === 'signout') run(async () => {await Account.signOut(); user = null; items = []; pending = null; await load(); notice('Signed out. Your device draft remains in this browser until you remove it.');});
+      } else if (action === 'signout') run(async () => {
+        try {await Account.signOut();}
+        catch {throw new Error('We couldn’t sign you out. Try again.');}
+        user = null; verifiedIdentity = null; items = []; pending = null; migration = null; migrationNotice = ''; accountUnavailable = false; mode = 'login'; authStatus.recovery = false;
+        render(); notice(storageDraft() ? 'Signed out. Your plan on this device is still here.' : 'You’re signed out.');
+      });
     } else if (b.dataset.openPlan) {pending = {kind:'open',id:b.dataset.openPlan}; render();}
     else if (b.dataset.deletePlan) {pending = {kind:'delete',id:b.dataset.deletePlan}; render();}
     else if (b.dataset.confirmOpen) run(async () => {const result = await Account.openPlan(b.dataset.confirmOpen); if (result.restore.conflicts) {pending = null; await load(); notice('Your plan is open. Your current courses and notes were kept; older differences are available below.'); $('account-restore-review')?.scrollIntoView({block:'start'});} else location.assign('portal.html');});
@@ -139,7 +166,7 @@
           const result = await Account.auth(endpoint,{method:'POST',body:{...(data.has('email') ? {email:data.get('email')} : {}),...(data.has('password') ? {password:data.get('password')} : {}),...(!recovery ? {returnTo:returnPath} : {})}});
           notice(result.message || (mode === 'forgot' ? 'If an account exists, check your email for the next step.' : 'Your account action is complete.'));
           if (recovery) {mode = 'login'; authStatus.recovery = false;}
-          if (mode !== 'forgot') {Account.invalidate(); if (await load({continueToRequested:!recovery && !result.needsConfirmation})) {form.reset(); return;}}
+          if (mode !== 'forgot') {Account.invalidate(); try {if (await load({continueToRequested:!recovery && !result.needsConfirmation})) {form.reset(); return;}} catch {await recoverAccount();}}
           form.reset();
         } else if (form.id === 'account-migration-form') {
           if (!data.has('consent')) throw new Error('Confirm that you want to move your previously saved plans.');
@@ -155,7 +182,8 @@
           await Account.api('/profile',{method:'DELETE',body:{confirmation:data.get('confirmation')}}); Account.clearLink(); pending = null; await load(); notice('Your saved portal data was deleted. Your sign-in identity and device draft were not deleted.');
         }
       } catch (e) {
-        if (form.id === 'account-migration-form' && e.status === 409) {
+        if (['storage_unavailable','storage_not_configured'].includes(e.code)) await recoverAccount();
+        else if (form.id === 'account-migration-form' && e.status === 409) {
           migrationNotice = 'Your saved plans changed while we were moving them. Nothing on this device was changed. Review the latest list and keep a backup before trying again.';
           await loadMigration({keepNotice:true}); render(); notice('The move was paused so we can keep every saved plan safe.');
         } else if (e.status === 409 && form.id === 'account-save-form') {conflict = true; render(); notice('This account plan changed on another device. Save a new copy or open the latest version.');}
@@ -171,6 +199,6 @@
       if (params.get('auth') === 'confirmed') notice('Your email has been confirmed.');
       if (params.get('mode') === 'recovery' && !authStatus.recovery) {mode = 'forgot'; render(); notice('Request a new reset link and open it in this browser.');}
       if (params.has('authError') || params.has('auth') || params.has('mode')) history.replaceState(null,'',location.pathname + (returnPath !== '/account.html' ? '?returnTo=' + encodeURIComponent(returnPath) : ''));
-    } catch(e) {error(e.message); $('account-content').innerHTML = '<div class="account-shell account-auth"><h1>We couldn’t open your account.</h1><p class="account-lede">Your device draft is still available. Reload to try again, or continue working on your plan.</p><a class="portal-primary" href="portal.html">Open my device draft</a></div>';}
+    } catch {await recoverAccount();}
   })();
 }());

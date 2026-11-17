@@ -4,6 +4,10 @@
 .account-auth { max-width: 480px; margin-top: 56px; }
 .account-shell h1 { margin-bottom: 14px; font-size: clamp(30px, 4vw, 42px); letter-spacing: -1.1px; }
 .account-lede { max-width: 650px; margin-bottom: 28px; color: var(--portal-muted); font-size: 16px; line-height: 1.75; }
+.account-heading-row { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px 20px; }
+.account-heading-row > div { flex: 1 1 280px; min-width: 0; }
+.account-heading-row h1 { overflow-wrap: anywhere; }
+.account-heading-row > button { flex: 0 0 auto; }
 .account-loading { width: calc(100% - 48px); max-width: 680px; margin: 70px auto; color: var(--portal-muted); }
 #account-status:empty { display: none; }
 #account-status:not(:empty), #account-error { width: calc(100% - 48px); max-width: 1040px; margin: 24px auto 0; padding: 14px 18px; border-radius: 9px; border: 1px solid #dbe6fa; background: var(--portal-soft); color: #365b91; font-size: 14px; line-height: 1.65; }
@@ -14,6 +18,8 @@
 .account-auth form { margin: 25px 0; }
 .account-auth .portal-primary, .account-auth .portal-secondary { width: 100%; }
 .account-google { margin-top: 24px; }
+.account-recovery-actions { display: grid; gap: 12px; margin-bottom: 22px; }
+.account-recovery-actions .account-text-button { display: block; padding: 10px 0; font-size: 16px; }
 .account-divider { display: flex; align-items: center; gap: 15px; margin: 26px 0; color: var(--portal-muted); font-size:14px; }
 .account-divider::before, .account-divider::after { flex: 1; height: 1px; background: var(--portal-line); content: ""; }
 .account-meta { color: var(--portal-muted); font-size:14px; line-height: 1.75; }

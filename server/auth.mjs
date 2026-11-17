@@ -164,6 +164,11 @@ const DegreePathAuth = (() => {
     if (!path.startsWith(PREFIX) && !['/auth/google','/auth/complete'].includes(path)) return null;
     const config = configuration(env);
     try {
+      if (path === '/api/auth/session' && request.method === 'GET') {
+        const identity = await resolvePortalIdentity(request,env);
+        if (identity.unavailable) return json({error:'We couldn’t check your sign-in. Please try again.',code:'auth_unavailable'},503,identity.setCookies);
+        return json({configured:identity.configured,user:identity.user},200,identity.setCookies);
+      }
       if (path === '/api/auth/status' && request.method === 'GET') {
         if (!config) return json({configured:false,providers:[],recovery:false,message:'Student account sign-in is being connected. You can still build a draft on this device.'});
         let providers=[]; try {providers=await enabledProviders(env,config);} catch {/* unavailable settings mean no provider is advertised */}
