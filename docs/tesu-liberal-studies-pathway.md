@@ -1,0 +1,17 @@
+# TESU Liberal Studies general option
+
+The current catalog places Liberal Studies within the B.A. in Humanities. This template models general Option A: 45 general education, 42 flexible Liberal Studies credits, a three-credit Liberal Arts capstone and 30 free electives. It does not silently award one of the separate 18-credit concentrations.
+
+The 42-credit area consists of fourteen three-credit allocations. Two can use introductory courses, seven require 2000-level or above, and five require upper-level coursework. These positions enforce at most six introductory area credits and at least fifteen upper-level credits before the upper-level capstone. Named online university options are proposed fallbacks, not fourteen mandatory Psychology courses. They have no formal course prerequisites; background advisories remain separate.
+
+LIB-4950 is the selected published capstone alternative. Its course note expressly includes general Liberal Studies. The model chooses MAT-1210 from the university's quantitative-literacy alternatives rather than incorrectly describing it as the degree page's featured MAT-1050. It selects HIS-1140 and HIS-1210 in Human Cultures; TECEP-only PHI-1300 is not represented as a university-course fallback.
+
+Traditional liberal-arts course families can supply proposed choices. Professional families are not blanket eligible. Selected MAN, BUS and CIS courses appear explicitly in the university's humanities, social-sciences or scientific-knowledge lists; only those receiving-code exceptions are admitted. Existing exact TESU outside awards for applicable exceptions preserve original source quantities, dates and conditions. Reusing them in the Liberal Studies allocation is conditional, not a new receiving-course equivalency or individual student award.
+
+The program requires coursework from at least two liberal-arts subjects. Metadata binds the fourteen non-capstone allocations to that breadth rule and treats ENG, ENC and LIT as one English discipline. A department-label change or the capstone itself cannot create artificial subject diversity. Arbitrary courses from another college are not assigned a TESU receiving subject or level from their source prefixes alone.
+
+The standard nonmilitary residency, separate 90-credit alternative-source cap, composition/area C minima and university-only SOS-1100/capstone remain distinct. Business-specific course-age rules are not applied to this humanities degree. Prices have a separately dated current-catalog tuition binding; no academic-year edition is invented.
+
+The offline importer reads reviewed facts and the established TESU/Psychology course identities. `--check` verifies deterministic output without fetching sources or advancing review dates. Compiler and student-flow checks cover the generated course alternatives. This is a proposed route, not university admission, approval of an individual transcript, or a claim that every possible BALS course has been mapped.
+
+Primary sources: [current Liberal Studies curriculum](https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/), [course discipline and general-education lists](https://www.tesu.edu/degrees-programs/courses/general-education/2021-and-after.php), and [LIB-4950](https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lib-liberal-arts/4000/lib-4950).

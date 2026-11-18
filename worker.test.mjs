@@ -338,7 +338,9 @@ test('new complete templates open directly from their exact degree links without
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/','curriculum-tesu-bsba-accounting',90,30],
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/','curriculum-liberty-history-bs-online',75,45],
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-finance/','curriculum-tesu-bsba-finance',84,36],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology','curriculum-tesu-ba-psychology',72,48]
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology','curriculum-tesu-ba-psychology',72,48],
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/english','curriculum-tesu-ba-english',60,60],
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/','curriculum-tesu-ba-liberal-studies',75,45]
  ];
  for(const [url,modelId,outside,university]of cases){
   const response=await call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json();

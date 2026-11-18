@@ -234,6 +234,7 @@
       const action = actionKey(item, sourceIdentity);
       if (usedActions.has(action)) continue;
       const declaredCredits = amount(item.credits), units = item.creditSystem === null ? null : item.creditSystem || 'semester';
+      const receivingIdentity=originalInstitutionalCourse(program,item)&&(program.liberalArtsAllocation||program.courseCreditExclusions)?{receivingCode:text(item.code)}:{};
       // Zero-credit waivers and administrative completions do not award hours.
       if (declaredCredits === 0) continue;
       const explicit = list(item.evaluations).filter(e => e.programId === programId && ['confirmed', 'reported'].includes(e.status) && byId.has(e.requirementId));
@@ -250,7 +251,7 @@
         const homeSource = providerKey(item.provider) !== 'university' || activeInstitutionalCourse(program,item) && item.sourceProgramId === programId;
         const sameSource = option && homeSource && providerKey(option.provider) === providerKey(item.provider) && (!item.code || matchesRecord(option,item));
         const provenance = !['', 'unknown', 'unknownsource', 'priorlearning'].includes(providerKey(item.provider))&&(providerKey(item.provider)!=='university'||institutionalIssuer(item));
-        placements.push({ requirementId: req.id, ...(sameSource ? { optionId: option.id } : {}), ...(provenance ? { sourceProvider: providerKey(item.provider) === 'university' && !homeSource ? 'Institutional transfer' : plannerProvider(item.provider) } : {}), code: text(item.code), title: text(item.title), status: evaluation.status, creditSystem: programUnits, learningId: item.id });
+        placements.push({ requirementId: req.id, ...(sameSource ? { optionId: option.id } : {}), ...(provenance ? { sourceProvider: providerKey(item.provider) === 'university' && !homeSource ? 'Institutional transfer' : plannerProvider(item.provider) } : {}), code: text(item.code), ...receivingIdentity, title: text(item.title), status: evaluation.status, creditSystem: programUnits, learningId: item.id });
         allocated += Number(req.credits);
       }
       if (placements.length > 1) {
@@ -270,7 +271,7 @@
         const active=activeInstitutionalCourse(program,item);
         const req=requirements.find(req=>!usedRequirements.has(req.id)&&(active||!req.institutionalOnly)&&Number(req.credits)<=declaredCredits+0.001&&eligible(req,null,item)&&list(req.options).some(option=>option.provider==='University'&&option.code&&matchesRecord(option,item)&&!option.selectionRequired&&eligible(req,option,item)));
         const option=req&&list(req.options).find(option=>option.provider==='University'&&option.code&&matchesRecord(option,item)&&!option.selectionRequired&&eligible(req,option,item));
-        if(req&&option){placements.push({requirementId:req.id,...(active?{optionId:option.id}:{}),sourceProvider:active?'University':'Institutional transfer',code:item.code,title:item.title,status:'reported',creditSystem:programUnits,learningId:item.id,...(!active?{residencyEligible:false}: {})});allocated=Number(req.credits);}
+        if(req&&option){placements.push({requirementId:req.id,...(active?{optionId:option.id}:{}),sourceProvider:active?'University':'Institutional transfer',code:item.code,...receivingIdentity,title:item.title,status:'reported',creditSystem:programUnits,learningId:item.id,...(!active?{residencyEligible:false}: {})});allocated=Number(req.credits);}
       }
       if (!placements.length && !explicit.length && key(item.code) && providerKey(item.provider) && units && declaredCredits !== null && declaredCredits > 0) {
         const matches = [];

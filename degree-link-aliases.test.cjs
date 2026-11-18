@@ -5,7 +5,7 @@ const registry=require('./dist/data/curriculum-registry.json'),aliases=require('
 const catalog=Catalog.attachRegistry(Catalog.merge(require('./dist/data/pathways.json'),require('./dist/data/program-catalog.json')),registry);
 test('new degree links carry selectable plans that the plan-opening client can preview',()=>{
  const Workspace=require('./dist/template-workspace-client.js');
- for(const modelId of ['curriculum-tesu-bsba-accounting','curriculum-liberty-history-bs-online','curriculum-tesu-bsba-finance','curriculum-tesu-ba-psychology']){
+ for(const modelId of ['curriculum-tesu-bsba-accounting','curriculum-liberty-history-bs-online','curriculum-tesu-bsba-finance','curriculum-tesu-ba-psychology','curriculum-tesu-ba-english','curriculum-tesu-ba-liberal-studies']){
   const entry=registry.models.find(entry=>entry.id===modelId),alias=aliases.aliases.find(alias=>alias.modelId===modelId),pack=JSON.parse(fs.readFileSync('dist/'+entry.path)),model=pack.models.find(model=>model.id===modelId),route=catalog.pathways.find(route=>route.id===alias.pathwayId);
   assert(alias&&route);assert(model.sources.some(source=>source.url===alias.sourceUrl));assert(Catalog.isPlanAvailable(route,catalog,[model]));
   const preview=Workspace.previewSourcePlan({route,model});assert(preview,'The user must be able to open the linked plan');assert.equal(preview.totalCredits,120);assert(preview.rows.every(row=>row.option&&!row.selectionRequired));
@@ -14,7 +14,7 @@ test('new degree links carry selectable plans that the plan-opening client can p
 test('the four established curricula remain real, available plans alongside all compiled models',()=>{
  for(const path of Catalog.modelFiles){const model=JSON.parse(fs.readFileSync('dist/'+path)),entry=registry.models.find(entry=>entry.id===model.id),route=catalog.pathways.find(route=>entry?.routeIds.includes(route.id));assert(entry&&route,path);assert.equal(entry.path,path);assert.equal(entry.level,route.level);assert(Catalog.modelReadiness(model).available);assert(Catalog.isPlanAvailable(route,catalog,[model]));}
  const availableIds=new Set(Catalog.availablePlans(catalog).map(route=>route.modelId));
- for(const id of ['curriculum-tesu-bsba-accounting','curriculum-liberty-history-bs-online','curriculum-tesu-bsba-finance','curriculum-tesu-ba-psychology'])assert(availableIds.has(id),'The complete source-backed plan must remain available: '+id);
+ for(const id of ['curriculum-tesu-bsba-accounting','curriculum-liberty-history-bs-online','curriculum-tesu-bsba-finance','curriculum-tesu-ba-psychology','curriculum-tesu-ba-english','curriculum-tesu-ba-liberal-studies'])assert(availableIds.has(id),'The complete source-backed plan must remain available: '+id);
  const reviewed=registry.models.find(entry=>entry.id==='curriculum-wgu-catalog-ecceaa488637ac83'),model=JSON.parse(fs.readFileSync('dist/'+reviewed.path)).models.find(model=>model.id===reviewed.id),route=catalog.pathways.find(route=>route.modelId===reviewed.id);
  assert.equal(reviewed.readyTemplate,true,'The additional available plan has a reviewed named curriculum');
  assert.equal(reviewed.unresolvedRequiredChoices,0);

@@ -479,7 +479,7 @@
         externalMaxCredits:draft.program.externalMaxCredits, alternativeMaxCredits:draft.program.alternativeMaxCredits,
         rulesNotes:draft.program.rulesNotes, unresolved:draft.program.unresolved, obligations:draft.program.obligations, mappingReview:draft.program.mappingReview,
         sources:list(draft.program.sources).map(source => ({id:source.id, url:source.url, checked:source.checked, checkedOn:source.checkedOn}))} : null,
-      rows:list(draft?.plan?.rows).map(row => ({requirementId:row.requirementId, code:row.code, title:row.title, credits:row.credits, status:row.status, category:row.category, subgroup:row.subgroup, upper:row.upper, placementReason:row.placementReason, selectionRequired:row.selectionRequired, conditions:row.conditions, prerequisites:row.prerequisites, prerequisiteNotes:row.prerequisiteNotes, option:row.option ? copy(row.option) : null})),
+      rows:list(draft?.plan?.rows).map(row => ({requirementId:row.requirementId, code:row.code, title:row.title, credits:row.credits, status:row.status, category:row.category, subgroup:row.subgroup, upper:row.upper, placementReason:row.placementReason, selectionRequired:row.selectionRequired, conditions:row.conditions, prerequisites:row.prerequisites, prerequisiteNotes:row.prerequisiteNotes, ...(number(row.minimumCompletedCredits)>0?{minimumCompletedCredits:row.minimumCompletedCredits}:{}), option:row.option ? copy(row.option) : null})),
       validation:draft?.plan?.validation || null,
       costs:draft?.plan?.costs || null, timing:draft?.plan?.timing || null}));
   }

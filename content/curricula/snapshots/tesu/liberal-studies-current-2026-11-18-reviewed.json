@@ -1,0 +1,448 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-18",
+  "school": "Thomas Edison State University",
+  "degree": {
+    "title": "B.A. in Humanities — Liberal Studies",
+    "generalCredits": 45,
+    "areaOfStudyCredits": 45,
+    "liberalStudiesAllocationCredits": 42,
+    "capstoneCredits": 3,
+    "freeElectiveCredits": 30,
+    "totalCredits": 120,
+    "option": "A — General Liberal Studies",
+    "generalFeaturedCodes": [
+      "ENC-1010",
+      "ENC-1020",
+      "COM-2090",
+      "MAT-1210",
+      "SOS-1100",
+      "SOC-1010",
+      "ETH-2200",
+      "POS-1100",
+      "SOC-2100",
+      "HIS-1130",
+      "FIL-1100",
+      "HIS-1140",
+      "HIS-1210",
+      "EAS-1010",
+      "BIO-2080"
+    ],
+    "featuredMathCode": "MAT-1050",
+    "selectedMathCode": "MAT-1210",
+    "capstone": [
+      "LIB-4950",
+      "Liberal Arts Capstone - Humanities",
+      3
+    ],
+    "selectedFreeElectives": [
+      [
+        "ART-1000",
+        "A World of Art",
+        3
+      ],
+      [
+        "ANT-1010",
+        "Introduction to Anthropology",
+        3
+      ],
+      [
+        "ECO-1120",
+        "Microeconomics",
+        3
+      ],
+      [
+        "BUS-1010",
+        "Introduction to Business",
+        3
+      ],
+      [
+        "CIS-1070",
+        "Computer Concepts and Applications",
+        3
+      ],
+      [
+        "ACC-1010",
+        "Principles of Financial Accounting",
+        3
+      ],
+      [
+        "LAW-2010",
+        "Business Law",
+        3
+      ],
+      [
+        "MAN-2100",
+        "Principles of Management",
+        3
+      ],
+      [
+        "MKT-2010",
+        "Introduction to Marketing",
+        3
+      ],
+      [
+        "HUM-1030",
+        "Introduction to the Humanities III: Music",
+        3
+      ]
+    ],
+    "slotFallbacks": [
+      {
+        "id": "bals-intro-1",
+        "code": "PSY-1010",
+        "minimumCourseLevel": 1000
+      },
+      {
+        "id": "bals-intro-2",
+        "code": "ECO-1110",
+        "minimumCourseLevel": 1000
+      },
+      {
+        "id": "bals-intermediate-1",
+        "code": "PSY-2110",
+        "minimumCourseLevel": 2000
+      },
+      {
+        "id": "bals-intermediate-2",
+        "code": "PSY-3000",
+        "minimumCourseLevel": 2000
+      },
+      {
+        "id": "bals-intermediate-3",
+        "code": "PSY-3220",
+        "minimumCourseLevel": 2000
+      },
+      {
+        "id": "bals-intermediate-4",
+        "code": "PSY-3520",
+        "minimumCourseLevel": 2000
+      },
+      {
+        "id": "bals-intermediate-5",
+        "code": "PSY-3600",
+        "minimumCourseLevel": 2000
+      },
+      {
+        "id": "bals-intermediate-6",
+        "code": "SOC-2910",
+        "minimumCourseLevel": 2000
+      },
+      {
+        "id": "bals-intermediate-7",
+        "code": "COM-3300",
+        "minimumCourseLevel": 2000
+      },
+      {
+        "id": "bals-upper-1",
+        "code": "PSY-3740",
+        "minimumCourseLevel": 3000
+      },
+      {
+        "id": "bals-upper-2",
+        "code": "PSY-3790",
+        "minimumCourseLevel": 3000
+      },
+      {
+        "id": "bals-upper-3",
+        "code": "PSY-4000",
+        "minimumCourseLevel": 3000
+      },
+      {
+        "id": "bals-upper-4",
+        "code": "SOS-4500",
+        "minimumCourseLevel": 3000
+      },
+      {
+        "id": "bals-upper-5",
+        "code": "COM-3350",
+        "minimumCourseLevel": 3000
+      }
+    ]
+  },
+  "policies": {
+    "institutionMinCredits": 15,
+    "externalMaxCreditsDerived": 105,
+    "alternativeMaxCredits": 90,
+    "areaOfStudyUpperMinCredits": 18,
+    "minimumCompositionAndAreaOfStudyGrade": "C",
+    "overallMinimumGPA": 2,
+    "requiredInstitutionalCourses": [
+      "SOS-1100",
+      "LIB-4950"
+    ],
+    "qualifyingResidencyMethods": [
+      "AC",
+      "OL",
+      "NU",
+      "GS",
+      "EP"
+    ],
+    "businessCurrencyRuleApplicable": false,
+    "nonCapstoneUpperMinCredits": 15,
+    "maximumArea1000Credits": 6,
+    "minimumSubjects": 2,
+    "specificLiberalStudiesCourseCurrencyRuleEstablished": false
+  },
+  "taxonomy": {
+    "sourceId": "tesu-liberal-studies-taxonomy-2026-11-18",
+    "allowedCoursePrefixes": [
+      "ANT",
+      "ART",
+      "BIO",
+      "CHE",
+      "COM",
+      "COS",
+      "EAS",
+      "ECO",
+      "ENG",
+      "ENS",
+      "FIL",
+      "GOG",
+      "HIS",
+      "HUM",
+      "JOU",
+      "LIT",
+      "MAT",
+      "PHI",
+      "PHO",
+      "PHY",
+      "POS",
+      "PSY",
+      "REL",
+      "SOC",
+      "SOS",
+      "SPA",
+      "STA"
+    ],
+    "allowedReceivingCodeExceptions": [
+      "MAN-3110",
+      "MAN-3730",
+      "MAN-3760",
+      "BUS-2100",
+      "CIS-1070",
+      "CIS-3010",
+      "CIS-3110",
+      "CIS-3200",
+      "CIS-3510"
+    ],
+    "subjectByPrefix": {
+      "ANT": "anthropology",
+      "ART": "art",
+      "BIO": "biology",
+      "CHE": "chemistry",
+      "COM": "communications",
+      "COS": "computer-science",
+      "EAS": "earth-science",
+      "ECO": "economics",
+      "ENG": "english",
+      "ENS": "environmental-science",
+      "FIL": "film",
+      "GOG": "geography",
+      "HIS": "history",
+      "HUM": "humanities",
+      "JOU": "journalism",
+      "LIT": "english",
+      "MAT": "mathematics",
+      "PHI": "philosophy",
+      "PHO": "photography",
+      "PHY": "physics",
+      "POS": "political-science",
+      "PSY": "psychology",
+      "REL": "religion",
+      "SOC": "sociology",
+      "SOS": "social-sciences",
+      "SPA": "foreign-language",
+      "STA": "statistics",
+      "ENC": "english"
+    },
+    "subjectByReceivingCode": {
+      "MAN-3110": "psychology",
+      "MAN-3730": "communications",
+      "MAN-3760": "communications",
+      "BUS-2100": "mathematics",
+      "CIS-1070": "computer-science",
+      "CIS-3010": "computer-science",
+      "CIS-3110": "computer-science",
+      "CIS-3200": "computer-science",
+      "CIS-3510": "computer-science"
+    },
+    "scope": "Traditional liberal-arts course families represented in the official humanities, social-sciences, mathematics and natural-sciences lists. Applied business/CIS families are not blanket eligible; only the specifically listed course exceptions are included."
+  },
+  "courses": {
+    "PSY-1010": {
+      "title": "Introduction to Psychology",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-psychology-course-psy1010-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "ECO-1110": {
+      "title": "Macroeconomics",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-psychology-course-eco1110-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Three credits of college-level mathematics are advised, separate from a formal prerequisite."
+    },
+    "PSY-2110": {
+      "title": "Developmental Psychology",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-psychology-course-psy2110-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-3000": {
+      "title": "Thanatology: An Understanding of Death and Dying",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3000-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Introductory psychology knowledge is advised; this is separate from a formal prerequisite."
+    },
+    "PSY-3220": {
+      "title": "Research in Experimental Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3220-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-3520": {
+      "title": "Psychology of Personality",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3520-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Introductory psychology knowledge is advised; this is separate from a formal prerequisite."
+    },
+    "PSY-3600": {
+      "title": "Organizational Theory",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3600-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Introductory psychology knowledge is advised; this is separate from a formal prerequisite."
+    },
+    "PSY-3740": {
+      "title": "Physiological Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3740-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-3790": {
+      "title": "Social Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3790-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-4000": {
+      "title": "History and Systems of Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy4000-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "SOS-4500": {
+      "title": "Ethics in the Social Sciences",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-sos4500-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "SOC-2910": {
+      "code": "SOC-2910",
+      "title": "Criminology",
+      "credits": 3,
+      "upper": false,
+      "prerequisites": [],
+      "sourceId": "tesu-liberal-studies-course-soc2910-2026-11-18",
+      "advisory": ""
+    },
+    "COM-3300": {
+      "code": "COM-3300",
+      "title": "Interpersonal Communication",
+      "credits": 3,
+      "upper": true,
+      "prerequisites": [],
+      "sourceId": "tesu-liberal-studies-course-com3300-2026-11-18",
+      "advisory": "Introductory communication knowledge is advisory, not a formal course prerequisite."
+    },
+    "COM-3350": {
+      "code": "COM-3350",
+      "title": "Intercultural Communication",
+      "credits": 3,
+      "upper": true,
+      "prerequisites": [],
+      "sourceId": "tesu-liberal-studies-course-com3350-2026-11-18",
+      "advisory": "Introductory communication knowledge is advisory, not a formal course prerequisite."
+    },
+    "LIB-4950": {
+      "code": "LIB-4950",
+      "title": "Liberal Arts Capstone - Humanities",
+      "credits": 3,
+      "upper": true,
+      "prerequisites": [],
+      "sourceId": "tesu-liberal-studies-course-lib4950-2026-11-18",
+      "advisory": "Taken near completion. No fabricated numerical completed-credit threshold; the course note explicitly includes Liberal Studies."
+    }
+  },
+  "sources": [
+    {
+      "id": "tesu-liberal-studies-current-2026-11-18",
+      "title": "TESU current Liberal Studies general Option A curriculum",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-liberal-studies-taxonomy-2026-11-18",
+      "title": "TESU current general-education discipline classification and quantitative-literacy selections",
+      "url": "https://www.tesu.edu/degrees-programs/courses/general-education/2021-and-after.php",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-liberal-studies-course-soc2910-2026-11-18",
+      "title": "SOC-2910 Criminology current official course description",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/soc-sociology/2000/soc-2910",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-liberal-studies-course-com3300-2026-11-18",
+      "title": "COM-3300 Interpersonal Communication current official course description",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/com-communications/3000/com-3300",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-liberal-studies-course-com3350-2026-11-18",
+      "title": "COM-3350 Intercultural Communication current official course description",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/com-communications/3000/com-3350",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-liberal-studies-course-lib4950-2026-11-18",
+      "title": "LIB-4950 Liberal Arts Capstone - Humanities current official course description",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lib-liberal-arts/4000/lib-4950",
+      "checked": "2026-11-18"
+    }
+  ],
+  "notes": [
+    "The current catalog describes Liberal Studies as an area of study within the B.A. in Humanities. This is the general Option A, not one of the separate 18-credit concentrations.",
+    "Named university options are editable selections inside 42 credits of liberal-arts capacity, not 14 mandatory Psychology courses.",
+    "Two flexible slots can take 1000-level courses; seven require at least 2000-level and five require upper-level coursework. With the three-credit upper-level capstone, this structure enforces the published upper-level and introductory-credit limits.",
+    "The exact receiving course and its discipline determine eligibility; source-college prefixes or source-level labels do not establish TESU receiving facts.",
+    "MAT-1210 is a proposed alternative from the official quantitative-literacy list; the degree page features MAT-1050.",
+    "LIB-4950 is the selected published capstone alternative, explicitly open to general Liberal Studies under its course note.",
+    "Course-source review dates and original provider quantities stay separate from this curriculum review; no new provider equivalency is inferred.",
+    "The two selected Human Cultures choices are HIS-1140 and HIS-1210, both featured on this degree page. PHI-1300 is not a university-course fallback because its current listed method is a TECEP examination.",
+    "English, English composition and literature share one English discipline for breadth checks; changing a departmental label does not establish a second subject.",
+    "LIB is not a blanket-eligible allocation prefix because it also contains capstones. The current taxonomy names some non-capstone LIB courses, but this preloaded menu does not infer blanket eligibility or a second subject from a LIB code. The separately fixed LIB-4950 capstone is outside the fourteen allocation positions."
+  ]
+}

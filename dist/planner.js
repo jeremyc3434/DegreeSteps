@@ -403,6 +403,64 @@
     });
   }
 
+  // Receiving identities are destination awards, never the original provider's
+  // similarly named course. University options already name destination work.
+  function receivingCourse(option) {
+    const value = option && (option.receivingCode || (option.provider === 'University' ? option.code : null));
+    if (typeof value !== 'string') return null;
+    const match = value.trim().toUpperCase().match(/^([A-Z]{2,8})[\s-]?(\d{4})$/);
+    return match ? {prefix:match[1], level:Number(match[2]), code:match[1]+'-'+match[2]} : null;
+  }
+
+  function tesuPolicySources(program, ids) {
+    if (program.school !== 'Thomas Edison State University' || !Array.isArray(ids) || !ids.length || ids.some(id=>typeof id!=='string'||!id.trim()||id!==id.trim()) || new Set(ids).size !== ids.length) return false;
+    const sources = new Map((program.sources || []).map(source=>[source.id,source]));
+    return ids.every(id=>{try {const url=new URL(sources.get(id)?.url);return url.protocol==='https:'&&!url.username&&!url.password&&['tesu.edu','www.tesu.edu','tesu.smartcatalogiq.com'].includes(url.hostname);}catch{return false;}});
+  }
+
+  function receivingPolicyErrors(program, rows) {
+    if (program.liberalArtsAllocation===undefined && program.courseCreditExclusions===undefined) return [];
+    const errors = [], requirements = new Map((program.requirements || []).map(row=>[row.id,row]));
+    const policy = program.liberalArtsAllocation;
+    if (policy !== undefined) {
+      const ids = policy?.requirementIds, prefixes = policy?.subjectByPrefix, exceptions = policy?.subjectByReceivingCode;
+      const dictionary = value => value && typeof value==='object' && !Array.isArray(value) && Object.values(value).every(subject=>typeof subject==='string'&&/^[a-z][a-z0-9-]{0,79}$/.test(subject));
+      const valid = policy?.kind==='tesu-liberal-studies-option-a' && tesuPolicySources(program,policy.sourceIds) && Array.isArray(ids) && ids.length===14 && new Set(ids).size===14 && ids.every(id=>requirements.has(id)&&requirements.get(id).category==='major'&&requirements.get(id).credits===3) && !ids.includes(policy.capstoneRequirementId) && requirements.get(policy.capstoneRequirementId)?.institutionalOnly===true && requirements.get(policy.capstoneRequirementId)?.credits===3 && policy.minimumSubjects===2 && policy.maximum1000Credits===6 && dictionary(prefixes) && Object.keys(prefixes).length>0 && Object.keys(prefixes).every(prefix=>/^[A-Z]{2,8}$/.test(prefix)) && dictionary(exceptions) && Object.keys(exceptions).every(code=>receivingCourse({provider:'University',code})?.code===code);
+      if (!valid) errors.push({code:'liberal_arts_policy',message:'The Liberal Studies allocation needs its reviewed subject, level and source rules before these choices can be relied on.'});
+      else {
+        const subjects = new Set(); let introductory = 0;
+        for (const row of rows.filter(row=>ids.includes(row.requirementId))) {
+          if (!row.option) continue;
+          const requirement=requirements.get(row.requirementId), receiving=receivingCourse(row.option);
+          const minimum=requirement.minCourseLevel ?? requirement.minimumCourseLevel, maximum=requirement.maxCourseLevel ?? requirement.maximumCourseLevel;
+          const explicit=receiving&&Object.prototype.hasOwnProperty.call(exceptions,receiving.code)&&Array.isArray(requirement.allowedReceivingCodeExceptions)&&requirement.allowedReceivingCodeExceptions.includes(receiving.code);
+          const ordinary=receiving&&Object.prototype.hasOwnProperty.call(prefixes,receiving.prefix)&&Array.isArray(requirement.allowedCoursePrefixes)&&requirement.allowedCoursePrefixes.includes(receiving.prefix);
+          if (!receiving || !ordinary&&!explicit || !finite(minimum)||!finite(maximum)||minimum<1000||maximum>4999||minimum>maximum||receiving.level<minimum||receiving.level>maximum) {
+            errors.push({code:'liberal_arts_course_scope',message:'This Liberal Studies choice needs a supported receiving-school subject and course level.',requirementId:row.requirementId}); continue;
+          }
+          if (receiving.level<2000) introductory+=row.credits;
+          let subject=explicit?exceptions[receiving.code]:prefixes[receiving.prefix];
+          // English composition, English and Literature are one discipline for
+          // this breadth check even if a malformed label tries to split them.
+          if (['ENC','ENG','LIT'].includes(receiving.prefix)) subject='english';
+          subjects.add(subject);
+        }
+        if (introductory>policy.maximum1000Credits+0.001) errors.push({code:'liberal_arts_intro_limit',message:'The Liberal Studies area may contain no more than six 1000-level credits.'});
+        if (subjects.size<policy.minimumSubjects) errors.push({code:'liberal_arts_subjects',message:'The Liberal Studies selection needs at least two distinct liberal-arts subjects; its capstone does not create a second subject.'});
+      }
+    }
+    if (program.courseCreditExclusions !== undefined) {
+      if (!Array.isArray(program.courseCreditExclusions)) errors.push({code:'credit_exclusion_policy',message:'The course overlap rule needs its reviewed receiving-course identities and sources.'});
+      else for (const rule of program.courseCreditExclusions) {
+        const codes = rule?.codes, normalized=Array.isArray(codes)?codes.map(code=>receivingCourse({provider:'University',code})?.code):[];
+        if (!tesuPolicySources(program,rule?.sourceIds)||normalized.length<2||normalized.some(code=>!code)||new Set(normalized).size!==normalized.length) {errors.push({code:'credit_exclusion_policy',message:'The course overlap rule needs its reviewed receiving-course identities and sources.'});continue;}
+        const used = new Set(rows.filter(row=>row.option).map(row=>receivingCourse(row.option)?.code).filter(code=>normalized.includes(code)));
+        if (used.size>1) errors.push({code:'excluded_course_credit',message:'These distinct courses cannot both count toward the degree: '+normalized.join(' / ')+'.'});
+      }
+    }
+    return errors;
+  }
+
   function academicErrors(program, rows) {
     const errors = [], t = totals(program, rows), ids = new Set();
     for (const row of rows) {
@@ -436,7 +494,7 @@
       const credits = sum(rows.filter(row => group.names.includes(row.subgroup) && row.upper), row => row.credits);
       if (credits + 0.001 < group.credits) errors.push({ code: 'group_upper', message: 'The ' + group.names.join(' / ') + ' group needs at least ' + group.credits + ' upper-level credits.' });
     }
-    return [...errors, ...sourceUseErrors(rows)];
+    return [...errors, ...sourceUseErrors(rows), ...receivingPolicyErrors(program,rows)];
   }
 
   function providerQuoteKeys(rows, provider) {
@@ -888,7 +946,7 @@
         const storedOption = (req.options || []).find(o => o.id === prior.optionId);
         // A confirmed degree evaluation may be stronger evidence than a current
         // generic provider mapping. Unnamed records never count as school residency.
-        const option = storedOption || Object.assign({ id: 'prior-' + req.id, provider: 'Prior learning', title: prior.title || 'Existing learning assigned to this requirement', code: prior.code || '', credits: reqCredits(req), upper: Boolean(req.upper), sourceIds: [], evidence: 'student-record' }, priorBundles.get(req.id));
+        const option = storedOption || Object.assign({ id: 'prior-' + req.id, provider: 'Prior learning', title: prior.title || 'Existing learning assigned to this requirement', code: prior.code || '', ...(typeof prior.receivingCode==='string'&&prior.receivingCode.trim()?{receivingCode:prior.receivingCode}:{}), credits: reqCredits(req), upper: Boolean(req.upper), sourceIds: [], evidence: 'student-record' }, priorBundles.get(req.id));
         const row = makeRow(req, option, prior.status);
         if (selectedOptions.has(req.id) && selectedOptions.get(req.id).id !== option.id) warnings.push('Existing learning for ' + req.title + ' takes precedence over the scenario replacement; no replacement will be purchased.');
         row.selectionRequired = false;

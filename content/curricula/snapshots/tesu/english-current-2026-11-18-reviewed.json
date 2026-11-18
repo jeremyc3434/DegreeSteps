@@ -1,0 +1,583 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-18",
+  "school": "Thomas Edison State University",
+  "degree": {
+    "title": "B.A. in English",
+    "totalCredits": 120,
+    "generalCredits": 45,
+    "areaOfStudyCredits": 45,
+    "freeElectiveCredits": 30,
+    "generalFeaturedCodes": [
+      "ENC-1010",
+      "ENC-1020",
+      "COM-2090",
+      "MAT-1050",
+      "SOS-1100",
+      "SOC-1010",
+      "ETH-2200",
+      "POS-1100",
+      "SOC-2100",
+      "HIS-1130",
+      "FIL-1100",
+      "HIS-1140",
+      "SOC-2910",
+      "EAS-1010",
+      "BIO-2080"
+    ],
+    "requiredCourses": [
+      [
+        "LIT-2050",
+        "American Literature I",
+        3
+      ],
+      [
+        "LIT-2060",
+        "American Literature II",
+        3
+      ],
+      [
+        "LIT-2910",
+        "Analysis and Interpretation of Literature",
+        3
+      ],
+      [
+        "LIT-4600",
+        "Non-Western Literature",
+        3
+      ]
+    ],
+    "englishElectiveSelections": [
+      [
+        "ENG-2010",
+        "Technical Writing",
+        3
+      ],
+      [
+        "ENG-2050",
+        "History of the English Language",
+        3
+      ],
+      [
+        "LIT-2210",
+        "Introduction to Children’s Literature",
+        3
+      ],
+      [
+        "LIT-3010",
+        "Advanced American Literature I",
+        3
+      ],
+      [
+        "LIT-3020",
+        "Advanced American Literature II",
+        3
+      ],
+      [
+        "LIT-3310",
+        "African Encounters",
+        3
+      ]
+    ],
+    "technicalWritingAlternatives": [
+      "ENG-2010",
+      "ENG-2020"
+    ],
+    "humanitiesSelections": [
+      [
+        "ART-1000",
+        "A World of Art",
+        3
+      ],
+      [
+        "HUM-1030",
+        "Introduction to the Humanities III: Music",
+        3
+      ],
+      [
+        "PHI-2860",
+        "Contemporary Ethics",
+        3
+      ],
+      [
+        "MAN-3730",
+        "Managerial Communications",
+        3
+      ]
+    ],
+    "capstone": [
+      "LIB-4950",
+      "Liberal Arts Capstone - Humanities",
+      3
+    ],
+    "selectedFreeElectives": [
+      [
+        "ANT-1010",
+        "Introduction to Anthropology",
+        3
+      ],
+      [
+        "HIS-1210",
+        "Introduction to World History I",
+        3
+      ],
+      [
+        "BUS-1010",
+        "Introduction to Business",
+        3
+      ],
+      [
+        "CIS-1070",
+        "Computer Concepts and Applications",
+        3
+      ],
+      [
+        "ACC-1010",
+        "Principles of Financial Accounting",
+        3
+      ],
+      [
+        "LAW-2010",
+        "Business Law",
+        3
+      ],
+      [
+        "MAN-2100",
+        "Principles of Management",
+        3
+      ],
+      [
+        "MKT-2010",
+        "Introduction to Marketing",
+        3
+      ],
+      [
+        "PSY-1010",
+        "Introduction to Psychology",
+        3
+      ],
+      [
+        "ECO-1110",
+        "Macroeconomics",
+        3
+      ]
+    ]
+  },
+  "policies": {
+    "institutionMinCredits": 15,
+    "externalMaxCreditsDerived": 105,
+    "alternativeMaxCredits": 90,
+    "areaOfStudyUpperMinCredits": 18,
+    "minimumCompositionAndAreaOfStudyGrade": "C",
+    "overallMinimumGPA": 2,
+    "requiredInstitutionalCourses": [
+      "SOS-1100",
+      "LIB-4950"
+    ],
+    "qualifyingResidencyMethods": [
+      "AC",
+      "OL",
+      "NU",
+      "GS",
+      "EP"
+    ],
+    "businessCurrencyRuleApplicable": false,
+    "specificEnglishCourseCurrencyRuleEstablished": false
+  },
+  "courses": {
+    "LIT-2050": {
+      "title": "American Literature I",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-lit2050-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Advisory: complete English Composition I and II before enrollment. This is advisory knowledge, not a formal prerequisite block.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "LIT-2060": {
+      "title": "American Literature II",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-lit2060-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Advisory: complete English Composition I and II before enrollment. This is advisory knowledge, not a formal prerequisite block.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "LIT-2910": {
+      "title": "Analysis and Interpretation of Literature",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-lit2910-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Literary analysis and MLA-documentation knowledge, English Composition II and introductory literature are advised. Any formal ENC-1020 prerequisite remains separately enforced.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "LIT-4600": {
+      "title": "Non-Western Literature",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-english-course-lit4600-2026-11-18",
+      "prerequisites": [
+        "ENC-1020"
+      ],
+      "advisory": "Literary analysis and MLA-documentation knowledge, English Composition II and introductory literature are advised. Any formal ENC-1020 prerequisite remains separately enforced.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "ENG-2010": {
+      "title": "Technical Writing",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-eng2010-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Advisory: complete English Composition I and II before enrollment. This is advisory knowledge, not a formal prerequisite block. The university does not award credit for both ENG-2010 and ENG-2020.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "ENG-2020": {
+      "title": "Technical Communication",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-eng2020-2026-11-18",
+      "prerequisites": [],
+      "advisory": "The university does not award credit for both ENG-2010 and ENG-2020.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "ENG-2050": {
+      "title": "History of the English Language",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-eng2050-2026-11-18",
+      "prerequisites": [],
+      "advisory": "",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "LIT-2210": {
+      "title": "Introduction to Children’s Literature",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-lit2210-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Advisory: complete English Composition I and II before enrollment. This is advisory knowledge, not a formal prerequisite block.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "LIT-3010": {
+      "title": "Advanced American Literature I",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-english-course-lit3010-2026-11-18",
+      "prerequisites": [
+        "ENC-1020"
+      ],
+      "advisory": "Literary analysis and MLA-documentation knowledge, English Composition II and introductory literature are advised. Any formal ENC-1020 prerequisite remains separately enforced.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "LIT-3020": {
+      "title": "Advanced American Literature II",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-english-course-lit3020-2026-11-18",
+      "prerequisites": [
+        "ENC-1020"
+      ],
+      "advisory": "Literary analysis and MLA-documentation knowledge, English Composition II and introductory literature are advised. Any formal ENC-1020 prerequisite remains separately enforced.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "LIT-3310": {
+      "title": "African Encounters",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-english-course-lit3310-2026-11-18",
+      "prerequisites": [
+        "ENC-1020"
+      ],
+      "advisory": "Literary analysis and MLA-documentation knowledge, English Composition II and introductory literature are advised. Any formal ENC-1020 prerequisite remains separately enforced.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "PHI-2860": {
+      "title": "Contemporary Ethics",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-phi2860-2026-11-18",
+      "prerequisites": [],
+      "advisory": "",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "LIB-4950": {
+      "title": "Liberal Arts Capstone - Humanities",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-english-course-lib4950-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Enroll after completing or nearing completion of degree requirements; the source does not supply a numeric completed-credit threshold.",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "MAT-1050": {
+      "title": "Applied Liberal Arts Mathematics",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-mat1050-2026-11-18",
+      "prerequisites": [],
+      "advisory": "",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "SOC-2910": {
+      "title": "Criminology",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-english-course-soc2910-2026-11-18",
+      "prerequisites": [],
+      "advisory": "",
+      "deliveryMethods": [
+        "Online"
+      ],
+      "tecepOnly": false
+    },
+    "MAN-3730": {
+      "title": "Managerial Communications",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-english-course-man3730-2026-11-18",
+      "prerequisites": [],
+      "advisory": "",
+      "deliveryMethods": [
+        "Online",
+        "Guided Study",
+        "Accelerated Courses"
+      ],
+      "tecepOnly": false
+    }
+  },
+  "sources": [
+    {
+      "id": "tesu-english-current-2026-11-18",
+      "title": "TESU current B.A. English requirements",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/english",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-degree-policy-2026-11-18",
+      "title": "TESU current university upper-level degree policy",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/degree-requirements",
+      "checked": "2026-11-18",
+      "scope": "Previously reviewed common TESU policy or discipline taxonomy, reused without changing its review date."
+    },
+    {
+      "id": "tesu-english-humanities-selection-2026-11-18",
+      "title": "TESU official humanities course classification and duplicate-credit rules",
+      "url": "https://www.tesu.edu/degrees-programs/courses/general-education/2021-and-after.php",
+      "checked": "2026-11-18",
+      "scope": "Previously reviewed common TESU policy or discipline taxonomy, reused without changing its review date."
+    },
+    {
+      "id": "tesu-english-residency-2026-11-18",
+      "title": "TESU current standard, military and foreign-credit residency policies",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/enrollment/residency-requirements",
+      "checked": "2026-11-18",
+      "scope": "Previously reviewed common TESU policy or discipline taxonomy, reused without changing its review date."
+    },
+    {
+      "id": "tesu-english-transfer-2026-11-18",
+      "title": "TESU current transfer limits, required university courses and grades",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit/",
+      "checked": "2026-11-18",
+      "scope": "Previously reviewed common TESU policy or discipline taxonomy, reused without changing its review date."
+    },
+    {
+      "id": "tesu-english-alternative-cap-2026-11-18",
+      "title": "TESU combined noncollegiate credit limit",
+      "url": "https://www.tesu.edu/admissions/faqs/transfer-credits.php",
+      "checked": "2026-11-18",
+      "scope": "Previously reviewed common TESU policy or discipline taxonomy, reused without changing its review date."
+    },
+    {
+      "id": "tesu-english-grades-2026-11-18",
+      "title": "TESU undergraduate grade and GPA policy",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-course-policies/policy-on-grading",
+      "checked": "2026-11-18",
+      "scope": "Previously reviewed common TESU policy or discipline taxonomy, reused without changing its review date."
+    },
+    {
+      "id": "tesu-english-tuition-2026-11-18",
+      "title": "TESU undergraduate tuition schedule effective August 2026",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "checked": "2026-11-18",
+      "scope": "Previously reviewed common TESU policy or discipline taxonomy, reused without changing its review date."
+    },
+    {
+      "id": "tesu-psychology-hum1030-2026-11-18",
+      "title": "TESU HUM-1030 named online elective",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hum-humanities/1000/hum-1030",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-acc1010-2026-11-18",
+      "title": "TESU ACC-1010 named online elective and Excel advisory",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/acc-accounting/1000/acc-1010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-accounting-bus1010-2026-11-18",
+      "title": "TESU BUS-1010 three-credit course",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/bus-business/1000/bus-1010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy1010-2026-11-18",
+      "title": "TESU current PSY-1010 Introduction to Psychology",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/1000/psy-1010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-eco1110-2026-11-18",
+      "title": "TESU current ECO-1110 Macroeconomics",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/eco-economics/1000/eco-1110",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lit2050-2026-11-18",
+      "title": "TESU LIT-2050 American Literature I course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lit-literature/2000/lit-2050",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lit2060-2026-11-18",
+      "title": "TESU LIT-2060 American Literature II course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lit-literature/2000/lit-2060",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lit2910-2026-11-18",
+      "title": "TESU LIT-2910 Analysis and Interpretation of Literature course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lit-literature/2000/lit-2910",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lit4600-2026-11-18",
+      "title": "TESU LIT-4600 Non-Western Literature course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lit-literature/4000/lit-4600",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-eng2010-2026-11-18",
+      "title": "TESU ENG-2010 Technical Writing course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/eng-english/2000/eng-2010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-eng2020-2026-11-18",
+      "title": "TESU ENG-2020 Technical Communication course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/eng-english/2000/eng-2020",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-eng2050-2026-11-18",
+      "title": "TESU ENG-2050 History of the English Language course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/eng-english/2000/eng-2050",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lit2210-2026-11-18",
+      "title": "TESU LIT-2210 Introduction to Children’s Literature course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lit-literature/2000/lit-2210",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lit3010-2026-11-18",
+      "title": "TESU LIT-3010 Advanced American Literature I course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lit-literature/3000/lit-3010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lit3020-2026-11-18",
+      "title": "TESU LIT-3020 Advanced American Literature II course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lit-literature/3000/lit-3020",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lit3310-2026-11-18",
+      "title": "TESU LIT-3310 African Encounters course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lit-literature/3000/lit-3310",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-man3730-2026-11-18",
+      "title": "TESU MAN-3730 Managerial Communications course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/3000/man-3730",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-phi2860-2026-11-18",
+      "title": "TESU PHI-2860 Contemporary Ethics course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/phi-philosophy/2000/phi-2860",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-lib4950-2026-11-18",
+      "title": "TESU LIB-4950 Liberal Arts Capstone - Humanities course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lib-liberal-arts/4000/lib-4950",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-mat1050-2026-11-18",
+      "title": "TESU MAT-1050 Applied Liberal Arts Mathematics course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mat-mathematics/1000/mat-1050",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-english-course-soc2910-2026-11-18",
+      "title": "TESU SOC-2910 Criminology course definition, credit level and delivery",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/soc-sociology/2000/soc-2910",
+      "checked": "2026-11-18"
+    }
+  ],
+  "notes": [
+    "The six English-elective courses are proposed named undergraduate ENG/LIT subject choices within the published 18-credit English-elective allowance. They are not asserted to be a university-mandated six-course list or a transfer award.",
+    "Current English and Literature catalog families establish the selected subjects, quantities, levels and online availability. No historical catalog is treated as current approval.",
+    "The baseline selects the published SOC-2910 and HIS-1140 Human Cultures options, avoiding a TECEP-only PHI-1300 fallback.",
+    "MAT-1050 is the current published featured quantitative-literacy course.",
+    "No course is counted both in general education, English, Humanities or unrestricted electives.",
+    "The degree is not represented as a teacher licensure or professional-practice qualification.",
+    "MAN-3730 is explicitly listed in the university Humanities taxonomy. It is a proposed Humanities allocation; its existing Study.com receiving award retains its original conditional evidence rather than becoming a new English-specific transfer guarantee."
+  ]
+}
