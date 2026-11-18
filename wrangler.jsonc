@@ -6,6 +6,7 @@
   // Production resources are owner controlled; traffic remains on the verified hosts until cutover.
   "account_id": "d215df9a813c0d7a292613373dfa9cb0",
   "workers_dev": true,
+  "preview_urls": false,
   "build": {"command": "npm run build"},
   "limits": {"cpu_ms": 60000},
   "observability": {"enabled": true, "head_sampling_rate": 0.1},

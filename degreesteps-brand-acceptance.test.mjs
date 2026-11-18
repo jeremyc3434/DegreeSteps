@@ -9,7 +9,7 @@ import {resolveAIConnection} from './server/ai-connections.mjs';
 import {resolvePortalIdentity} from './server/auth.mjs';
 const require=createRequire(import.meta.url),Workflow=require('./dist/course-import-workflow.js'),Account=require('./dist/account-client.js'),Returns=require('./dist/account-return.js');
 const root=import.meta.dirname,dist=resolve(root,'dist'),read=path=>readFileSync(resolve(root,path),'utf8');
-const publicHost='https://degreepath-open-2026.ccollins203.chatgpt.site';
+const publicHost='https://degreesteps.com';
 const matches=(value,pattern,message)=>assert(pattern.test(value),message||'Expected '+pattern),notMatches=(value,pattern,message)=>assert(!pattern.test(value),message||'Unexpected '+pattern);
 function walk(directory){return readdirSync(directory,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?walk(resolve(directory,entry.name)):[resolve(directory,entry.name)]);}
 function decode(value){return value.replace(/&amp;/g,'&').replace(/&#39;/g,"'").replace(/&quot;/g,'"');}
@@ -26,7 +26,7 @@ test('homepage explains the student outcome and every primary navigation destina
  for(const target of ['/portal.html','/programs.html','/courses.html','/resources/','/community.html','/account.html']){assert(html.includes('href="'+target),'Homepage should link to '+target);const file=resolve(dist,target.replace(/^\//,'')+(target.endsWith('/')?'index.html':''));assert(existsSync(file),'Navigation destination must be published: '+target);}
 });
 
-test('SEO names are DegreeSteps while canonical host and private-page search boundaries stay stable',()=>{
+test('SEO uses the official DegreeSteps domain while private-page search boundaries stay stable',()=>{
  for(const path of ['index.html','resources/index.html','about/index.html','faq/index.html','privacy/index.html','terms/index.html']){const html=read('dist/'+path);matches(html,/property="og:site_name" content="DegreeSteps"/);const canonical=html.match(/<link rel="canonical" href="([^"]+)"/);assert(canonical,path+' has a canonical URL');assert.equal(new URL(canonical[1]).origin,publicHost);}
  const home=read('dist/index.html'),schemas=[...home.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(match=>JSON.parse(match[1]));for(const type of ['Organization','WebSite']){const item=schemas.flat().find(item=>item['@type']===type);assert(item,type+' structured data missing');assert.equal(item.name,'DegreeSteps');assert.equal(new URL(item.url).origin,publicHost);assert.equal(item.aggregateRating,undefined,'The rebrand must not fabricate ratings');}
  const sitemap=read('dist/sitemap.xml');for(const path of ['plan.html','courses.html','import-courses.html','account.html','admin.html','request-plan.html'])assert(!sitemap.includes('/'+path),path+' must stay outside the public sitemap');

@@ -6,7 +6,7 @@ import {renderHome} from './home-content.mjs';
 import {renderCostWidget,renderCostMethodology} from './cost-content.mjs';
 
 const root = resolve(import.meta.dirname, '..'), dist = resolve(root, 'dist');
-const originValue = process.env.DEGREEPATH_PUBLIC_ORIGIN || 'https://degreepath-open-2026.ccollins203.chatgpt.site';
+const originValue = process.env.DEGREEPATH_PUBLIC_ORIGIN || 'https://degreesteps.com';
 const parsedOrigin = new URL(originValue);
 assert(['https:', 'http:'].includes(parsedOrigin.protocol) && !parsedOrigin.username && !parsedOrigin.password && parsedOrigin.pathname === '/', 'Set DEGREEPATH_PUBLIC_ORIGIN to the complete public origin, without a path.');
 const origin = parsedOrigin.origin;

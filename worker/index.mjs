@@ -187,6 +187,9 @@ export default {
   async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
   async fetch(request, env, ctx) {
     const target = new URL(request.url);
+    if(target.hostname==='www.degreesteps.com'||target.hostname==='degreesteps.com'&&target.protocol!=='https:'){
+      target.protocol='https:';target.hostname='degreesteps.com';return Response.redirect(target.href,308);
+    }
     const previewHost=target.hostname.endsWith('.workers.dev');
     if(previewHost&&target.pathname==='/robots.txt'&&['GET','HEAD'].includes(request.method))return new Response(request.method==='HEAD'?null:'User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'public, max-age=60, must-revalidate','X-Robots-Tag':'noindex, nofollow'}});
     // GET handlers can also upsert profiles/rate records. During a final source

@@ -6,34 +6,36 @@ Confirmed November 17, 2026: Cloudflare Workers for the website, APIs and resear
 
 The owner account, deployment authorization, staging portal, production database and research queues are set up. The owner has confirmed Google sign-in and account access on staging. A complete application-data export has been restored locally and copied to the production database with identical schema and content checksums. This is a migration rehearsal; the source remains writable.
 
-The owner confirmed the Workers Paid upgrade, and Cloudflare accepted the configured 60,000 ms CPU allowance. The domain's Free Website plan is separate. The production Worker currently runs the restricted `wrangler.bootstrap.jsonc` entry point, without research consumers, scheduled handlers or student mutations. The student runtime in `wrangler.jsonc` remains gated by final migration verification.
+The owner confirmed the Workers Paid upgrade, added the two exact Supabase callbacks and completed owner sign-in and Claude reconnection. The saved-key test audit verifies decryption with the new master. Cloudflare accepted the configured 60,000 ms CPU allowance. The domain's Free Website plan is separate.
 
-The secure setup page is <https://degreesteps.degreesteps-d215df9a.workers.dev/admin.html>. Supabase configuration and a new server-side encryption key are installed; no Claude API key has been supplied on this host. Imported encrypted credentials cannot be used with a different master key.
+The full student portal is live at <https://degreesteps.degreesteps-d215df9a.workers.dev/portal.html>. The production runtime, research consumer and two-minute outbox schedule are active. The temporary bootstrap entry point is no longer deployed. Worker preview aliases are disabled, and the temporary hostname is excluded from search. Public canonical URLs and the sitemap use `https://degreesteps.com`.
 
-The owner must complete two account actions:
+Final data verification is complete: two snapshots taken after the source API freeze matched, all source research jobs were idle, and the reviewed three-table credential overlay exactly matched the existing destination. All 27 tables are preserved, with 19 destination records including the new connection audit records. This is an intentional credential overlay, not raw source parity; another database import was unnecessary. The same destination master secret remains in place.
 
-1. In [Supabase Auth URL Configuration](https://supabase.com/dashboard/project/xajvembwdteqauwithgo/auth/url-configuration), add these exact **Redirect URLs**, preserving the existing URLs and current **Site URL**:
-   - `https://degreesteps.degreesteps-d215df9a.workers.dev/auth/complete`
-   - `https://degreesteps.com/auth/complete`
-2. Open the secure setup page, sign in with the existing DegreeSteps owner account, enter the Claude Console API key and choose **Save and test connection**. The key is encrypted server-side; the connection check does not generate degree research. Never send the key in chat.
+The remaining owner action is DNS delegation. In Namecheap, open **Domain List → Manage degreesteps.com → Nameservers → Custom DNS**, enter the two nameservers assigned to this Cloudflare zone, and save:
 
-Owner reconnection intentionally changes the three AI connection tables. Preserve this new encrypted credential and its audit history during the final source reconciliation; do not describe the changed database as having source parity. Finish source reconciliation, hosted queue tests and domain cutover before exposing the student runtime. Keep Namecheap nameservers unchanged until the destination is verified, and keep the domain registered at Namecheap.
+```text
+arch.ns.cloudflare.com
+liv.ns.cloudflare.com
+```
+
+Keep registration at Namecheap. Once Cloudflare reports the zone active, attach the apex and `www` Worker Custom Domains, verify HTTPS and the `www` redirect, and exercise the final-domain sign-in callback. Preserve DNS email and verification records. Never send account passwords or API keys in chat.
 
 ## Current state
 
 | Area | Verified on November 17, 2026 | Needed for the new host |
 | --- | --- | --- |
-| Existing website | Public Sites host at `https://degreepath-open-2026.ccollins203.chatgpt.site`; account recovery fix deployed and owner reports working | Keep available during migration and recovery; read current version from deployment history |
-| Cloudflare build | Paid CPU allowance accepted; restricted production bootstrap is deployed; staging remains available | Reconnect Claude, complete final migration and test the student runtime |
-| Private accounts | Existing Supabase Auth and deployed Postgres storage retained; bootstrap advertises email/Google and requires the stored owner role | Add the exact new callbacks and verify real owner sign-in |
-| Remaining database | All 27 application tables exported completely; local restore passed; production copy has identical schema and per-table content; hosted rollback, empty-target guard and deferred foreign-key checks passed | Reconcile any source writes after the rehearsal before routing students |
+| Existing website | Public Sites pages remain available; application APIs are frozen to prevent new source writes; operator export is disabled | Retain device-draft recovery; reconcile production activity before any rollback |
+| Cloudflare build | Full production runtime deployed; main queue consumer and recovery cron active; staging remains isolated | Activate the custom domain and verify its TLS/auth behavior |
+| Private accounts | Existing Supabase Auth/Postgres identities and plans retained; owner sign-in on the new host reported working; email/Google advertised | Verify sign-in, confirmation and reset on the final domain |
+| Remaining database | Complete source preserved with the reviewed fresh credential overlay; hosted rollback/FK checks and exact final destination checksum passed | Maintain private backups and record any later schema changes |
 | GitHub | Owner's repository is `jeremyc3434/DegreeSteps`; source publication uses its existing history | Confirm complete source and passing CI on the latest pushed commit |
 | Domain | Added to the owner's Free Cloudflare zone; activation pending; old Sites custom-domain requests remain pending | Connect the verified destination after testing; preserve imported DNS/email records |
-| Research workers | Main/dead-letter queues created; consumption and scheduled recovery are not active on production | Test recovery and enable consumption with the approved runtime |
+| Research workers | Main consumer and recovery schedule active; real delivery, missing-job lookup and duplicate acknowledgement passed without Claude generation or database changes | Controlled hosted fixtures are still needed for full execution, lease failure and dead-letter recovery checks |
 
-This is a dated status record. The production Worker serves owner setup only. Final student traffic, data cutover and DNS changes are not activated by this bootstrap. The production readiness command intentionally fails until final migration verification is asserted. The temporary source export secrets have been removed and its export route is verified disabled.
+This is a dated status record. Production application traffic can use the temporary Worker URL; the custom domain remains pending DNS delegation. The operator migration assertion is now backed by the final frozen-source and credential-overlay checks. The source freeze stays enabled; do not clear it or send writes back to the old database without reconciling newer production activity.
 
-Bootstrap verification passed: setup page and private assets return no-store/noindex, anonymous key management is denied, student/research writes are blocked before delegation, Google redirects to the exact new callback, all 141 core test files pass, and the production database still matches the rehearsal checksum before owner reconnection. These checks do not substitute for real owner sign-in, Claude acceptance or queue execution.
+All 144 core test files passed before the final canonical-domain update; focused domain, brand, production-configuration and source-freeze tests passed afterward. Live checks cover public/portal pages, sign-in configuration, private cache boundaries, canonical metadata, gzip/identity consistency and the queue smoke path. They do not establish capacity for millions or successful paid research for every degree.
 
 ## Operator sequence
 
@@ -63,7 +65,7 @@ Before routing students:
 - Confirm TLS and the chosen apex/`www` behavior. Redirect the alternate hostname after the primary works.
 - Allow exact `https://degreesteps.com/auth/complete` in Supabase, plus other hostnames actually served. Keep the old callback during transition. Google's OAuth callback remains `https://xajvembwdteqauwithgo.supabase.co/auth/v1/callback` while this project remains the provider.
 - Verify Google, email/password and confirmation/reset on the actual new host. Update Google consent branding, homepage, privacy links and authorized origins where appropriate.
-- Keep the old site available for students to explicitly save/export their drafts and open account copies. Host-only cookies and device localStorage do not move across domains automatically.
+- Device drafts remain on their original host; preserve/export them before leaving. Account copies use the retained Supabase backend on the new host. Host-only cookies and device localStorage do not move across domains automatically, and the old source API remains frozen.
 - After the domain works, build with `DEGREEPATH_PUBLIC_ORIGIN=https://degreesteps.com` to regenerate consistent canonical, Open Graph, structured-data and sitemap URLs. Preserve historical storage/cookie/encryption identifiers.
 
 ## Search, maintenance and capacity

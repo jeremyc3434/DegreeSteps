@@ -3,6 +3,13 @@ import assert from 'node:assert/strict';
 import worker from './outputs/cloudflare/worker.mjs';
 
 const env={ASSETS:{async fetch(){return new Response('<!doctype html><title>DegreeSteps fixture</title>',{headers:{'Content-Type':'text/html'}});}}};
+test('the public domain uses one secure hostname and preserves the destination',async()=>{
+  for(const origin of ['http://degreesteps.com','http://www.degreesteps.com','https://www.degreesteps.com']){
+    const response=await worker.fetch(new Request(origin+'/auth/complete?code=synthetic-callback'),{},{});
+    assert.equal(response.status,308);assert.equal(response.headers.get('Location'),'https://degreesteps.com/auth/complete?code=synthetic-callback');
+    assert.equal(response.headers.get('Set-Cookie'),null);
+  }
+});
 test('temporary Worker hosts stay out of search while the custom domain remains indexable',async()=>{
   const preview='https://degreesteps.account-fixture.workers.dev';
   const robots=await worker.fetch(new Request(preview+'/robots.txt'),env,{});
