@@ -1,41 +1,36 @@
 # DegreeSteps launch on owner-controlled Cloudflare
 
-Confirmed November 17, 2026: Cloudflare Workers for the website, APIs and research workers; the existing Supabase project for sign-in and private plans; GitHub for reviewed source and collaboration. The domain `degreesteps.com` is registered at Namecheap. No Vercel deployment is part of this launch.
+Launch verified November 18, 2026: Cloudflare Workers for the website, APIs and research workers; the existing Supabase project for sign-in and private plans; GitHub for reviewed source and collaboration. The domain `degreesteps.com` is registered at Namecheap. No Vercel deployment is part of this launch.
 
-## Remaining owner steps
+## Current launch state
 
-The owner account, deployment authorization, staging portal, production database and research queues are set up. The owner has confirmed Google sign-in and account access on staging. A complete application-data export has been restored locally and copied to the production database with identical schema and content checksums. This is a migration rehearsal; the source remains writable.
+The owner account, deployment authorization, production database and research queues are set up. Final application-data migration and credential-overlay checks are complete. The old source API is frozen to prevent new source writes, while its public pages remain available for device-draft recovery. Existing Supabase identities and private account data are retained.
 
 The owner confirmed the Workers Paid upgrade, added the two exact Supabase callbacks and completed owner sign-in and Claude reconnection. The saved-key test audit verifies decryption with the new master. Cloudflare accepted the configured 60,000 ms CPU allowance. The domain's Free Website plan is separate.
 
-The full student portal is live at <https://degreesteps.degreesteps-d215df9a.workers.dev/portal.html>. The production runtime, research consumer and two-minute outbox schedule are active. The temporary bootstrap entry point is no longer deployed. Worker preview aliases are disabled, and the temporary hostname is excluded from search. Public canonical URLs and the sitemap use `https://degreesteps.com`.
+The full student portal is live at <https://degreesteps.com/portal.html>. The temporary Worker address remains available during the transition. The production runtime, research consumer and two-minute outbox schedule are active. The temporary bootstrap entry point is no longer deployed. Worker preview aliases are disabled, and the temporary hostname is excluded from search. Public canonical URLs and the sitemap use `https://degreesteps.com`.
 
 Final data verification is complete: two snapshots taken after the source API freeze matched, all source research jobs were idle, and the reviewed three-table credential overlay exactly matched the existing destination. All 27 tables are preserved, with 19 destination records including the new connection audit records. This is an intentional credential overlay, not raw source parity; another database import was unnecessary. The same destination master secret remains in place.
 
-The remaining owner action is DNS delegation. In Namecheap, open **Domain List → Manage degreesteps.com → Nameservers → Custom DNS**, enter the two nameservers assigned to this Cloudflare zone, and save:
+DNS delegation is complete. The active Cloudflare zone uses `arch.ns.cloudflare.com` and `liv.ns.cloudflare.com`; registration stays with Namecheap. Both `degreesteps.com` and `www.degreesteps.com` are bound to the owner-controlled Worker. Nine live checks verified HTTPS, the `www` and HTTP redirects, public canonical/indexing behavior, private cache boundaries, email/Google availability and the exact Google return URL. The five Namecheap forwarding MX records and SPF record remain in public DNS. Actual mail delivery was not tested.
 
-```text
-arch.ns.cloudflare.com
-liv.ns.cloudflare.com
-```
-
-Keep registration at Namecheap. Once Cloudflare reports the zone active, attach the apex and `www` Worker Custom Domains, verify HTTPS and the `www` redirect, and exercise the final-domain sign-in callback. Preserve DNS email and verification records. Never send account passwords or API keys in chat.
+The owner reported a successful Google login on the official domain. Google consent-screen branding and its optional branded authentication hostname are separate follow-ups; see [Google sign-in branding](google-sign-in-branding.md). Email confirmation and password reset on the final domain still need an actual user-flow check. Never send account passwords or API keys in chat.
 
 ## Current state
 
-| Area | Verified on November 17, 2026 | Needed for the new host |
+| Area | Verified on November 18, 2026 | Remaining follow-up |
 | --- | --- | --- |
 | Existing website | Public Sites pages remain available; application APIs are frozen to prevent new source writes; operator export is disabled | Retain device-draft recovery; reconcile production activity before any rollback |
-| Cloudflare build | Full production runtime deployed; main queue consumer and recovery cron active; staging remains isolated | Activate the custom domain and verify its TLS/auth behavior |
-| Private accounts | Existing Supabase Auth/Postgres identities and plans retained; owner sign-in on the new host reported working; email/Google advertised | Verify sign-in, confirmation and reset on the final domain |
+| Cloudflare build | Full production runtime deployed; main queue consumer and recovery cron active; staging remains isolated | Monitor the active custom domains and runtime |
+| Private accounts | Existing Supabase Auth/Postgres identities and plans retained; owner sign-in on the new host reported working; email/Google advertised | Finish Google branding; exercise email confirmation and reset on the final domain |
 | Remaining database | Complete source preserved with the reviewed fresh credential overlay; hosted rollback/FK checks and exact final destination checksum passed | Maintain private backups and record any later schema changes |
 | GitHub | Owner's repository is `jeremyc3434/DegreeSteps`; source publication uses its existing history | Confirm complete source and passing CI on the latest pushed commit |
-| Domain | Added to the owner's Free Cloudflare zone; activation pending; old Sites custom-domain requests remain pending | Connect the verified destination after testing; preserve imported DNS/email records |
+| Domain | Active in the owner's Free Cloudflare zone; apex and www Worker bindings verified | Preserve email records and recovery hosts; old Sites requests remain unused |
 | Research workers | Main consumer and recovery schedule active; real delivery, missing-job lookup and duplicate acknowledgement passed without Claude generation or database changes | Controlled hosted fixtures are still needed for full execution, lease failure and dead-letter recovery checks |
 
-This is a dated status record. Production application traffic can use the temporary Worker URL; the custom domain remains pending DNS delegation. The operator migration assertion is now backed by the final frozen-source and credential-overlay checks. The source freeze stays enabled; do not clear it or send writes back to the old database without reconciling newer production activity.
+This is a dated status record. Production application traffic now uses the official domain; the temporary Worker URL remains available for transition and device-draft recovery. The operator migration assertion is now backed by the final frozen-source and credential-overlay checks. The source freeze stays enabled; do not clear it or send writes back to the old database without reconciling newer production activity.
 
-All 144 core test files passed before the final canonical-domain update; focused domain, brand, production-configuration and source-freeze tests passed afterward. Live checks cover public/portal pages, sign-in configuration, private cache boundaries, canonical metadata, gzip/identity consistency and the queue smoke path. They do not establish capacity for millions or successful paid research for every degree.
+The preceding recommendation release passed all 148 core test files and GitHub CI. Current release verification is recorded in the operator handoff receipts. Live checks cover public/portal pages, sign-in configuration, private cache boundaries, canonical metadata, gzip/identity consistency and the queue smoke path. They do not establish capacity for millions or successful paid research for every degree.
 
 ## Operator sequence
 

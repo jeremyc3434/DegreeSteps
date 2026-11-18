@@ -124,6 +124,33 @@ test('profiles preserve a private nickname without storing authenticated email',
   assert.equal((await call('/profile',{method:'PATCH',user:'alice',body:{alias:'x'}})).status,400);
   assert(!JSON.stringify(DB.sqlite.prepare('SELECT * FROM portal_profiles').all()).includes('@private.invalid'));
 });
+test('private provider names accompany existing D1 profiles without rewriting aliases or public identities',async t=>{
+  const{call,DB}=fixture(t),insert=DB.sqlite.prepare('INSERT INTO portal_profiles (id,alias,created_at,updated_at) VALUES (?,?,1,2)');
+  insert.run('alice','Student');insert.run('bob',"  Chosen ' & 雪  ");
+  DB.sqlite.prepare('INSERT INTO community_users (id,alias,role,created_at,updated_at) VALUES (?,?,?,?,?)').run('alice','Public pen name','member',1,2);
+  const profiles=DB.sqlite.prepare('SELECT * FROM portal_profiles ORDER BY id').all(),community=DB.sqlite.prepare('SELECT * FROM community_users').all();
+  for(const [id,alias]of [['alice','Student'],['bob',"  Chosen ' & 雪  "]])for(const path of ['/session','/profile']){
+    const result=await call(path,{authUser:{id,email:'private@example.invalid',displayName:'Zoë 李',role:'admin',user_metadata:{full_name:'Do not forward metadata'},access_token:'do-not-forward-token'},headers:{'oai-authenticated-user-id':'foreign-owner'}});
+    assert.equal(result.status,200);assert.deepEqual(result.body.user,{id,alias,createdAt:1,updatedAt:2,displayName:'Zoë 李'});
+  }
+  assert.deepEqual(DB.sqlite.prepare('SELECT * FROM portal_profiles ORDER BY id').all(),profiles);
+  assert.deepEqual(DB.sqlite.prepare('SELECT * FROM community_users').all(),community);
+  assert.equal((await call('/session',{user:'alice'})).body.user.displayName,undefined);
+  const renamed=await call('/profile',{method:'PATCH',authUser:{id:'alice',displayName:'Zoë 李'},body:{alias:'My chosen nickname'}});
+  assert.equal(renamed.body.user.alias,'My chosen nickname');assert.equal(renamed.body.user.displayName,'Zoë 李');
+  assert.deepEqual(DB.sqlite.prepare('SELECT * FROM portal_profiles WHERE id=?').get('bob'),profiles[1]);
+  assert.deepEqual(DB.sqlite.prepare('SELECT * FROM community_users').all(),community);
+});
+test('private display names never select a D1 owner or bypass the profile write contract',async t=>{
+  const{call,create,DB}=fixture(t),saved=await create('alice'),authUser={id:'bob',displayName:'alice',role:'admin',user_metadata:{id:'alice'}};
+  const ownerBefore=DB.sqlite.prepare('SELECT * FROM portal_profiles WHERE id=?').get('alice');
+  assert.deepEqual((await call('/plans',{authUser})).body.items,[]);
+  for(const [method,body]of [['GET'],['PUT',{title:'Take over',state:draft(),revision:1}],['DELETE',{revision:1}]])assert.equal((await call('/plans/'+saved.id,{method,authUser,body})).status,404);
+  assert.equal((await call('/profile',{method:'PATCH',authUser,body:{alias:'Public name',displayName:'Client name'}})).status,400);
+  for(const displayName of [42,'a'.repeat(81),'Name\u202e','Name\n',[]])assert.equal((await call('/session',{authUser:{id:'bob',displayName}})).body.user.displayName,undefined);
+  assert.deepEqual(DB.sqlite.prepare('SELECT * FROM portal_profiles WHERE id=?').get('alice'),ownerBefore);
+  assert.equal((await call('/plans/'+saved.id,{user:'alice'})).status,200);
+});
 test('deleting portal data is explicit, owner scoped, and leaves community records alone',async t=>{
   const{call,create,DB}=fixture(t);await create('alice');const bob=await create('bob');
   DB.sqlite.prepare('INSERT INTO community_users (id,alias,role,created_at,updated_at) VALUES (?,?,?,?,?)').run('alice','Community Alex','member',1,1);

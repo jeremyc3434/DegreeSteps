@@ -103,10 +103,22 @@ const DegreePathAuth = (() => {
     if (!settings.ok || !settings.data?.external) return [];
     return ['email','google'].filter(name => settings.data.external[name] === true);
   }
+  function displayName(metadata) {
+    if (!metadata || typeof metadata !== 'object' || Array.isArray(metadata)) return null;
+    for (const key of ['full_name','name','given_name']) {
+      const value = metadata[key];
+      // Provider metadata is editable presentation data, never an authorization claim.
+      if (typeof value !== 'string' || /[\p{Cc}\p{Cf}\p{Cs}\p{Zl}\p{Zp}]/u.test(value)) continue;
+      const clean = value.trim().replace(/\s+/gu,' '), length = Array.from(clean).length;
+      if (length > 0 && length <= 80) return clean;
+    }
+    return null;
+  }
   function userIdentity(value) {
     const user = value?.user || value;
     if (!user || typeof user.id !== 'string' || !UUID.test(user.id) || typeof user.email !== 'string' || user.email.length > 254 || !user.email_confirmed_at) return null;
-    return {id:'sb-' + user.id.toLowerCase(),email:user.email};
+    const name = displayName(user.user_metadata);
+    return {id:'sb-' + user.id.toLowerCase(),email:user.email,...(name ? {displayName:name} : {})};
   }
   async function validateToken(env,config,token) {
     const result = await provider(env,config,'/user',{token});

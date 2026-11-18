@@ -56,10 +56,10 @@ function fixture(t,overrides={}){
     return new Response(JSON.stringify(result),{headers:{'Content-Type':'application/json'}});
   };
   const env={DB,PORTAL_STORAGE_BACKEND:'supabase',PORTAL_AUTH_REQUIRED:true,PORTAL_AUTH_CONFIGURED:true,PORTAL_SUPABASE_URL:pgOrigin,PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_fixture_only',PORTAL_DATA_FETCH:provider,...overrides};
-  async function call(path,{method='GET',owner=alice,body,headers={},token,...requestOptions}={}){
+  async function call(path,{method='GET',owner=alice,body,headers={},token,authUser,...requestOptions}={}){
     const h={...headers};if(method!=='GET'){if(!Object.hasOwn(h,'Origin'))h.Origin=origin;if(!Object.hasOwn(h,'X-Portal-Request'))h['X-Portal-Request']='1';if(!Object.hasOwn(h,'Content-Type'))h['Content-Type']='application/json';}
     const request=new Request(origin+'/api/portal'+path,{method,headers:h,...(body===undefined?{}:{body:JSON.stringify(body)}),...requestOptions});
-    const response=await handlePortal(request,{...env,PORTAL_USER:owner?{id:'sb-'+owner,email:'private@example.invalid'}:null,PORTAL_USER_ACCESS_TOKEN:token||(owner===alice?'token-alice':'token-bob')});return{status:response.status,body:await response.json(),headers:response.headers};
+    const response=await handlePortal(request,{...env,PORTAL_USER:authUser===undefined?(owner?{id:'sb-'+owner,email:'private@example.invalid'}:null):authUser,PORTAL_USER_ACCESS_TOKEN:token||(owner===alice?'token-alice':'token-bob')});return{status:response.status,body:await response.json(),headers:response.headers};
   }
   const create=async(owner=alice,overrides={})=>{const response=await call('/plans',{method:'POST',owner,body:{title:'My degree',state:state(),consent:true,...overrides}});assert.equal(response.status,201,JSON.stringify(response.body));return response.body.item;};
   function legacy(owner=alice,{alias='Legacy Student',items=[{id:'legacy-plan-one',title:'Original degree',state:state(),revision:3}]}={}){
@@ -73,6 +73,41 @@ function fixture(t,overrides={}){
 test('Postgres selection keeps anonymous sessions read-only and never trusts native headers',async t=>{const f=fixture(t);const result=await f.call('/session',{owner:null,headers:{'oai-authenticated-user-id':'sb-'+alice}});assert.equal(result.body.user,null);assert.equal(result.body.storageBackend,'supabase');assert.equal(f.calls.length,0);assert.equal(f.DB.writes.length,0);assert.equal((await f.call('/plans',{owner:null})).status,401);});
 test('verified user JWT and publishable key reach owner-binding RPCs without leaking to responses',async t=>{const f=fixture(t);const result=await f.call('/session');assert.equal(result.body.user.id,'sb-'+alice);assert.equal(result.body.user.email,undefined);assert.equal(f.calls[0].url.origin,pgOrigin);assert.equal(f.calls[0].headers.Authorization,'Bearer token-alice');assert.equal(f.calls[0].headers.apikey,'sb_publishable_fixture_only');assert.equal(f.calls[0].body.p_actor_id,alice);assert(!JSON.stringify(result.body).includes('token-alice'));assert.equal(result.headers.get('Cache-Control'),'private, no-store');assert.equal(result.headers.get('Access-Control-Allow-Origin'),null);});
 test('profile reads write one compatibility stub and never expose private Postgres aliases to D1',async t=>{const f=fixture(t);await f.call('/session');await f.call('/session');await f.call('/profile');assert.equal(f.DB.writes.filter(sql=>sql.startsWith('INSERT INTO portal_profiles')).length,1);const result=await f.call('/profile',{method:'PATCH',body:{alias:'Private account nickname'}});assert.equal(result.body.user.alias,'Private account nickname');assert.equal(f.DB.sqlite.prepare('SELECT alias FROM portal_profiles WHERE id=?').get('sb-'+alice).alias,'Student');});
+test('private provider names accompany Postgres profiles without rewriting either storage alias or public identities',async t=>{
+  const f=fixture(t),custom="  Chosen ' & 雪  ";f.legacy(alice,{alias:'Student',items:[]});f.legacy(bob,{alias:'Legacy private alias',items:[]});
+  f.profiles.set(alice,{id:'sb-'+alice,alias:'Student',createdAt:1,updatedAt:2});f.profiles.set(bob,{id:'sb-'+bob,alias:custom,createdAt:3,updatedAt:4});
+  f.DB.sqlite.prepare('INSERT INTO community_users (id,alias,role,created_at,updated_at) VALUES (?,?,?,?,?)').run('sb-'+alice,'Public pen name','member',1,2);
+  const postgresBefore=clone([...f.profiles]),d1Before=f.DB.sqlite.prepare('SELECT * FROM portal_profiles ORDER BY id').all(),publicBefore=f.DB.sqlite.prepare('SELECT * FROM community_users').all();
+  for(const owner of [alice,bob])for(const path of ['/session','/profile']){
+    const authUser={id:'sb-'+owner,email:'private@example.invalid',displayName:'Zoë 李',role:'admin',user_metadata:{id:'sb-'+alice,private_key:'never-forward-this'}};
+    const result=await f.call(path,{owner,authUser,headers:{'oai-authenticated-user-id':'sb-'+alice}});
+    assert.equal(result.status,200);assert.deepEqual(result.body.user,{...f.profiles.get(owner),displayName:'Zoë 李'});
+    for(const secret of ['private_key','never-forward-this','private@example.invalid','role','token-alice','token-bob','sb_publishable_fixture_only'])assert(!JSON.stringify(result.body).includes(secret),secret);
+  }
+  assert.deepEqual([...f.profiles],postgresBefore);assert.deepEqual(f.DB.sqlite.prepare('SELECT * FROM portal_profiles ORDER BY id').all(),d1Before);assert.deepEqual(f.DB.sqlite.prepare('SELECT * FROM community_users').all(),publicBefore);assert.equal(f.DB.writes.length,0);
+  assert(f.calls.every(call=>call.name==='degreesteps_profile_get'&&Object.keys(call.body).join(',')==='p_actor_id'));
+  const updated=await f.call('/profile',{method:'PATCH',authUser:{id:'sb-'+alice,displayName:'Zoë 李'},body:{alias:'My chosen nickname'}});
+  assert.equal(updated.body.user.alias,'My chosen nickname');assert.equal(updated.body.user.displayName,'Zoë 李');assert.deepEqual(f.calls.at(-1).body,{p_actor_id:alice,p_alias:'My chosen nickname'});
+  assert.deepEqual(f.DB.sqlite.prepare('SELECT * FROM portal_profiles ORDER BY id').all(),d1Before);assert.deepEqual(f.profiles.get(bob),postgresBefore[1][1]);assert.deepEqual(f.DB.sqlite.prepare('SELECT * FROM community_users').all(),publicBefore);
+});
+test('provider presentation fields never select a Postgres owner or bypass the user JWT',async t=>{
+  const f=fixture(t),saved=await f.create(),authUser={id:'sb-'+bob,displayName:'sb-'+alice,role:'admin',user_metadata:{id:'sb-'+alice}};
+  const before=clone(f.plans.get(f.key(alice,saved.id)));
+  assert.deepEqual((await f.call('/plans',{owner:bob,authUser})).body.items,[]);
+  for(const [method,body]of [['GET'],['PUT',{title:'Take over',state:state(),revision:1}],['DELETE',{revision:1}]])assert.equal((await f.call('/plans/'+saved.id,{method,owner:bob,authUser,body})).status,404);
+  assert.equal((await f.call('/session',{owner:bob,authUser,token:'token-alice'})).status,403);
+  assert.equal((await f.call('/profile',{method:'PATCH',owner:bob,authUser,body:{alias:'My name',displayName:'Client name'}})).status,400);
+  for(const displayName of [42,'a'.repeat(81),'Name\u202e','Name\n',[]])assert.equal((await f.call('/session',{owner:bob,authUser:{id:'sb-'+bob,displayName}})).body.user.displayName,undefined);
+  assert.deepEqual(f.plans.get(f.key(alice,saved.id)),before);assert(f.calls.every(call=>!Object.hasOwn(call.body,'displayName')&&!Object.hasOwn(call.body,'role')));
+});
+test('foreign-owner profile responses fail closed before attaching a provider name or writing a compatibility stub',async t=>{
+  const f=fixture(t,{PORTAL_DATA_FETCH:async()=>new Response(JSON.stringify({id:'sb-'+bob,alias:'Foreign private alias',createdAt:1,updatedAt:2}),{headers:{'Content-Type':'application/json'}})});
+  for(const [path,method,body]of [['/session','GET'],['/profile','GET'],['/profile','PATCH',{alias:'My nickname'}]]){
+    const result=await f.call(path,{method,body,authUser:{id:'sb-'+alice,displayName:'Alice provider name'}});
+    assert.equal(result.status,503);assert.equal(result.body.code,'storage_unavailable');assert(!JSON.stringify(result.body).includes('Foreign private alias'));assert(!JSON.stringify(result.body).includes('Alice provider name'));
+  }
+  assert.equal(f.DB.writes.length,0);assert.equal(f.DB.sqlite.prepare('SELECT COUNT(*) AS n FROM portal_profiles').get().n,0);
+});
 test('legacy D1 profile reads also avoid repeated INSERTs',async t=>{const f=fixture(t,{PORTAL_STORAGE_BACKEND:'d1'});await f.call('/session');await f.call('/session');await f.call('/profile');assert.equal(f.DB.writes.filter(sql=>sql.startsWith('INSERT INTO portal_profiles')).length,1);});
 test('invalid backend or missing credentials fails closed without reading or writing legacy plan data',async t=>{const f=fixture(t,{PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_secret_forbidden'});f.legacy();assert.equal((await f.call('/plans')).status,503);assert.equal(f.calls.length,0);assert.equal(f.DB.writes.length,0);const other=fixture(t,{PORTAL_STORAGE_BACKEND:'typo'});assert.equal((await other.call('/plans')).body.code,'storage_not_configured');assert.equal(other.calls.length,0);});
 test('private state round-trips with notes, evaluations and per-program choices intact; lists omit snapshots',async t=>{const f=fixture(t),original=state(),saved=await f.create(alice,{state:original});assert.deepEqual(saved.state,original);assert.deepEqual((await f.call('/plans/'+saved.id)).body.item.state,original);const list=await f.call('/plans');assert.equal(list.body.items.length,1);assert.equal(list.body.items[0].state,undefined);assert(!JSON.stringify(list.body).includes('Private advising note'));assert.deepEqual(f.calls.find(c=>c.name==='degreesteps_plan_save').body.p_state,original);});

@@ -28,7 +28,9 @@ const portalPostgresApi=(()=>{
   function actor(env){
     const user=env.PORTAL_USER;if(!user?.id)return null;
     if(typeof user.id!=='string'||!user.id.startsWith('sb-')||!UUID.test(user.id.slice(3)))fail(401,'Sign in to your verified account before opening private plans.');
-    return{id:user.id,uuid:user.id.slice(3).toLowerCase()};
+    const name=user.displayName;
+    const displayName=typeof name==='string'&&name.trim()&&Array.from(name).length<=80&&!/[\p{Cc}\p{Cf}\p{Cs}\p{Zl}\p{Zp}]/u.test(name)?name:null;
+    return{id:user.id,uuid:user.id.slice(3).toLowerCase(),...(displayName?{displayName}:{})};
   }
   function configuration(env,user){
     let url;try{url=new URL(String(env.PORTAL_SUPABASE_URL||''));}catch{fail(503,'Private account storage is not configured.','storage_not_configured');}
@@ -66,7 +68,8 @@ const portalPostgresApi=(()=>{
     if(!env.DB)return;const existing=await first(env.DB,'SELECT id FROM portal_profiles WHERE id=?',user.id);if(existing)return;
     const stamp=Date.now();await statement(env.DB,'INSERT INTO portal_profiles (id,alias,created_at,updated_at) VALUES (?,?,?,?) ON CONFLICT(id) DO NOTHING',user.id,'Student',stamp,stamp).run();
   }
-  async function account(env,config,user){const value=await rpc(env,config,user,'degreesteps_profile_get');if(value?.id!==user.id)fail(503,'Private storage returned an invalid account.','storage_unavailable');await shadowIdentity(env,user);return value;}
+  function accountView(value,user){if(value?.id!==user.id)fail(503,'Private storage returned an invalid account.','storage_unavailable');return{...value,...(user.displayName?{displayName:user.displayName}:{})};}
+  async function account(env,config,user){const value=accountView(await rpc(env,config,user,'degreesteps_profile_get'),user);await shadowIdentity(env,user);return value;}
   function metadata(row){return{id:row.id,title:row.title,school:row.school||'',degree:row.degree||'',revision:row.revision,createdAt:row.createdAt??row.created_at,updatedAt:row.updatedAt??row.updated_at};}
   function cursor(value){if(!value)return null;try{if(value.length>400)throw Error();const parsed=JSON.parse(atob(value.replaceAll('-','+').replaceAll('_','/')));if(!Array.isArray(parsed)||parsed.length!==2||!Number.isSafeInteger(parsed[0])||parsed[0]<0||typeof parsed[1]!=='string'||!ID.test(parsed[1]))throw Error();return parsed;}catch{fail(400,'Choose a valid saved-plan page.');}}
   const encodeCursor=row=>btoa(JSON.stringify([row.updatedAt,row.id])).replaceAll('+','-').replaceAll('/','_').replace(/=+$/,'');
@@ -114,7 +117,7 @@ const portalPostgresApi=(()=>{
     if(path==='/migration'||path==='/migration/backup')return migration(request,env,config,user,path,body);
     if(path==='/profile'){
       if(method==='GET')return json({user:await account(env,config,user)});
-      if(method==='PATCH'){only(body,['alias']);const alias=text(body.alias,'Display name',2,60);return json({user:await rpc(env,config,user,'degreesteps_profile_update',{p_alias:alias})});}
+      if(method==='PATCH'){only(body,['alias']);const alias=text(body.alias,'Display name',2,60);return json({user:accountView(await rpc(env,config,user,'degreesteps_profile_update',{p_alias:alias}),user)});}
       if(method==='DELETE'){
         only(body,['confirmation']);if(body.confirmation!=='DELETE MY PORTAL DATA')fail(400,'Type DELETE MY PORTAL DATA to delete your private portal records.');
         await legacyDeletion(env,user);

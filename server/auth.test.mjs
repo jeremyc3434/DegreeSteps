@@ -97,6 +97,53 @@ test('existing access identity is obtained from /user rather than unsigned claim
  const noProof=await resolvePortalIdentity(request('/api/portal/session',{headers:{'oai-authenticated-user-id':'attacker'}}),env);assert.equal(noProof.user,null);assert.equal(calls.length,1);
 });
 
+test('private display names come only from the verified provider user and expose no other metadata',async()=>{
+ const metadata={full_name:'  Zoë   李  ',name:'Lower priority',given_name:'Last priority',id:'another-owner',email:'another@example.invalid',role:'admin',is_admin:true,avatar_url:'https://private.invalid/avatar',private_note:'never-forward-this'};
+ const {env,calls}=fixture(c=>{assert.equal(c.url.pathname,'/auth/v1/user');return answer({...verified,user_metadata:metadata,app_metadata:{role:'admin'},role:'service_role'});});
+ const unsigned=Buffer.from(JSON.stringify({user_metadata:{full_name:'Unsigned name'},role:'admin'})).toString('base64url');
+ const result=await call(env,'/api/auth/session',{cookie:'__Host-degreepath_access=header.'+unsigned+'.signature',headers:{'oai-authenticated-user-id':'another-owner','oai-authenticated-user-name':'Header name'}});
+ assert.equal(result.status,200);assert.deepEqual(result.data,{configured:true,user:{id:'sb-'+uuid,email:verified.email,displayName:'Zoë 李'}});
+ assert.equal(calls.length,1);assert.equal(calls[0].init.headers.Authorization,'Bearer header.'+unsigned+'.signature');
+ for(const secret of ['private_note','never-forward-this','avatar_url','another-owner','service_role','is_admin',env.PORTAL_SUPABASE_PUBLISHABLE_KEY,unsigned])assert(!JSON.stringify(result.data).includes(secret),secret);
+ const noCookie=await call(env,'/api/auth/session',{headers:{'oai-authenticated-user-id':'another-owner','oai-authenticated-user-name':'Header name'}});assert.equal(noCookie.data.user,null);assert.equal(calls.length,1);
+});
+
+test('provider display-name fallback is bounded, Unicode-aware and rejects unsafe or non-text metadata',async()=>{
+ const invalid=['','   ',null,42,false,{},['Array name'],'Ada\u0000Lovelace','Ada\tLovelace','Ada\nLovelace','Ada\u007fLovelace','Ada\u0085Lovelace','Ada\u202eLovelace','Ada\u200bLovelace','Ada\u2028Lovelace','Ada\u2029Lovelace','Ada\ud800Lovelace','a'.repeat(81),'雪'.repeat(81),'😀'.repeat(81)];
+ const cases=[
+  [{full_name:'Full Name',name:'Other Name',given_name:'Given'},'Full Name'],
+  [{name:'  María\u00a0  李  ',given_name:'Given'},'María 李'],
+  [{given_name:'Олександра'},'Олександра'],
+  [{full_name:'Jose\u0301 山田'},'Jose\u0301 山田'],
+  [{full_name:'😀'.repeat(80)},'😀'.repeat(80)],
+  ...invalid.map(full_name=>[{full_name,name:'Safe fallback',given_name:'Given'},'Safe fallback']),
+  ...invalid.map(name=>[{full_name:null,name,given_name:'Given'},'Given']),
+  ...invalid.map(given_name=>[{given_name},undefined]),
+  ...[undefined,null,42,'Plain string',['Array metadata'],{nickname:'Unused name',displayName:'Unused name',email:'email-name@example.invalid'}].map(metadata=>[metadata,undefined])
+ ];
+ for(const [metadata,expected]of cases){
+  const {env}=fixture(()=>answer({...verified,user_metadata:metadata}));
+  const result=await call(env,'/api/auth/session',{cookie:'__Host-degreepath_access=verified-access'});
+  assert.deepEqual(result.data.user,{id:'sb-'+uuid,email:verified.email,...(expected?{displayName:expected}:{})},JSON.stringify(metadata));
+ }
+ const unconfirmed=fixture(()=>answer({...verified,email_confirmed_at:null,user_metadata:{full_name:'A name does not confirm identity',email_confirmed_at:true,role:'admin'}}));
+ assert.equal((await resolvePortalIdentity(request('/api/portal/session',{cookie:'__Host-degreepath_access=unconfirmed'}),unconfirmed.env)).user,null);
+});
+
+test('login and refreshed sessions ignore token-response names and retain only the checked user display name',async()=>{
+ const malicious={...tokens,user:{...verified,user_metadata:{full_name:'Token-response name'},role:'admin'},user_metadata:{full_name:'Token-root name'},role:'admin'};
+ for(const mode of ['login','refresh']){
+  const {env,calls}=fixture(c=>c.url.pathname.endsWith('/token')?answer(malicious):c.init.headers.Authorization==='Bearer expired-access'?answer({...verified,user_metadata:{full_name:'Expired name'}},401):answer({...verified,user_metadata:{given_name:'Verified fresh name',role:'admin',private_key:'never-forward-this'}}));
+  const result=mode==='login'?await call(env,'/api/auth/login',{method:'POST',body:{email:verified.email,password:'correct password'}}):await call(env,'/api/auth/session',{cookie:'__Host-degreepath_access=expired-access; __Host-degreepath_refresh=old-refresh'});
+  assert.equal(result.status,200);assert.deepEqual(result.data.user,{id:'sb-'+uuid,email:verified.email,displayName:'Verified fresh name'});
+  assert.equal(calls.at(-1).url.pathname,'/auth/v1/user');assert.equal(calls.at(-1).init.headers.Authorization,'Bearer '+tokens.access_token);
+  assert.equal(calls.length,mode==='login'?2:3);assert.equal(result.response.headers.getSetCookie().filter(value=>value.startsWith('__Host-degreepath_access=')||value.startsWith('__Host-degreepath_refresh=')).length,2);
+  for(const secret of [tokens.access_token,tokens.refresh_token,'Token-response name','Token-root name','Expired name','private_key','never-forward-this','role',env.PORTAL_SUPABASE_PUBLISHABLE_KEY])assert(!JSON.stringify(result.data).includes(secret),mode+' '+secret);
+ }
+ const {env,calls}=fixture();
+ assert.equal((await call(env,'/api/auth/login',{method:'POST',body:{email:verified.email,password:'correct password',displayName:'Request name'}})).status,400);assert.equal(calls.length,0);
+});
+
 test('expired access refreshes through the provider, validates the new identity and rotates both cookies',async()=>{
  const {env,calls}=fixture(c=>c.url.pathname.endsWith('/token')?answer({...tokens,access_token:'fresh-access',refresh_token:'fresh-refresh'}):c.init.headers.Authorization==='Bearer expired-access'?answer({error:'expired'},401):answer(verified));
  const identity=await resolvePortalIdentity(request('/api/portal/plans',{cookie:'__Host-degreepath_access=expired-access; __Host-degreepath_refresh=old-refresh'}),env);

@@ -31,7 +31,9 @@ const portalApi = (() => {
     else raw=request.headers.get('oai-authenticated-user-id');
     if(raw===undefined||raw===null||raw==='')return null;
     if(typeof raw!=='string'||raw.length>256||raw.trim()!==raw||/[\u0000-\u001f\u007f]/.test(raw))fail(401,'Invalid sign-in identity.');
-    return {id:raw};
+    const name=env.PORTAL_USER?.displayName;
+    const displayName=typeof name==='string'&&name.trim()&&Array.from(name).length<=80&&!/[\p{Cc}\p{Cf}\p{Cs}\p{Zl}\p{Zp}]/u.test(name)?name:null;
+    return {id:raw,...(displayName?{displayName}:{})};
   }
   function protectWrite(request) {
     if(request.headers.get('origin')!==new URL(request.url).origin||request.headers.get('X-Portal-Request')!=='1')fail(403,'Use the same-origin DegreeSteps portal form.');
@@ -78,7 +80,7 @@ const portalApi = (() => {
       await run(db,'INSERT INTO portal_profiles (id,alias,created_at,updated_at) VALUES (?,?,?,?) ON CONFLICT(id) DO NOTHING',user.id,'Student',stamp,stamp);
       row=await first(db,'SELECT id,alias,created_at,updated_at FROM portal_profiles WHERE id=?',user.id);
     }
-    return {id:row.id,alias:row.alias,createdAt:row.created_at,updatedAt:row.updated_at};
+    return {id:row.id,alias:row.alias,createdAt:row.created_at,updatedAt:row.updated_at,...(user.displayName?{displayName:user.displayName}:{})};
   }
   async function rate(db,user,action) {
     const stamp=Math.floor(Date.now()/WINDOW)*WINDOW;
