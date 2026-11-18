@@ -367,6 +367,37 @@
     if(probe.validation.academicCountsValid)return true;
     return Boolean(probe.optimization?.budgetExhausted&&Planner.generate(program,input).validation.academicCountsValid);
   }
+  function applyExistingCreditCurrencyReview(program, learning, match) {
+    if (program?.id !== 'curriculum-tesu-bsba-accounting' || program.school !== 'Thomas Edison State University') return false;
+    const requirements = new Map(list(program.requirements).map(row=>[row.id,row])), originals = new Map(list(learning).map(item=>[item.id,item]));
+    const pending = list(match.completed).filter(placement=>{
+      const row=requirements.get(placement.requirementId), original=originals.get(placement.learningId);
+      return original?.status==='earned' && (row?.subgroup==='area-of-study' || row?.code==='BUS-4210') && !(placement.status==='confirmed' && list(original.evaluations).some(evaluation=>evaluation.programId===program.id && evaluation.requirementId===row.id && evaluation.status==='confirmed'));
+    });
+    if (!pending.length) return false;
+    const review=program.existingCreditReview, sources=new Map(list(program.sources).map(source=>[source.id,source]));
+    const groups=list(review?.groups), bound=list(review?.sourceIds).length && review.sourceIds.every(id=>{
+      try { const url=new URL(sources.get(id)?.url);return url.protocol==='https:'&&!url.username&&!url.password&&url.hostname==='tesu.smartcatalogiq.com'; } catch { return false; }
+    });
+    const aos=groups.find(group=>group.id==='accounting-area'), capstone=groups.find(group=>group.id==='business-capstone');
+    const validGroup=(group,ids,years,total,older)=>group&&group.maxAgeYears===years&&group.totalCredits===total&&group.maxOlderCredits===older&&Array.isArray(group.requirementIds)&&group.requirementIds.length===ids.length&&new Set(group.requirementIds).size===ids.length&&ids.every(id=>group.requirementIds.includes(id));
+    const aosIds=list(program.requirements).filter(row=>row.subgroup==='area-of-study').map(row=>row.id), capstoneIds=list(program.requirements).filter(row=>row.code==='BUS-4210').map(row=>row.id);
+    const valid=review?.kind==='tesu-accounting-course-currency'&&bound&&groups.length===2&&validGroup(aos,aosIds,10,18,9)&&validGroup(capstone,capstoneIds,5,3,0)&&aosIds.reduce((sum,id)=>sum+number(requirements.get(id).credits),0)===18&&capstoneIds.reduce((sum,id)=>sum+number(requirements.get(id).credits),0)===3;
+    program.unresolved=[...list(program.unresolved)];
+    if (!valid) {
+      program.unresolved.push({field:'existing-credit-currency',message:'DegreeSteps needs to restore the source-bound TESU Accounting course-age rule before relying on these existing course placements.'});
+      return true;
+    }
+    for (const group of groups) {
+      const placements=pending.filter(placement=>group.requirementIds.includes(placement.requirementId));
+      if (!placements.length) continue;
+      const message=group.id==='accounting-area'
+        ? 'Use your original completion dates and most recent TESU application date for the Accounting course-age review. At least 9 of the 18 Accounting area-of-study credits must be within ten years of that application date; up to 9 older credits may still apply. These existing placements remain proposed until that individual review is recorded.'
+        : 'Use your original BUS-4210 completion date and most recent TESU application date for the capstone course-age review. The business capstone must be within five years of that application date. Its existing placement remains proposed until that individual review is recorded.';
+      program.unresolved.push({id:'tesu-accounting-currency-'+group.id,field:'existing-credit-currency',owner:'student',status:'personal-task',sourceIds:[...review.sourceIds],requirementIds:placements.map(placement=>placement.requirementId),learningIds:[...new Set(placements.map(placement=>placement.learningId))],message});
+    }
+    return true;
+  }
   function buildDraft(previous, catalog, models) {
     const chosen = routeFor(previous, catalog), state = prepare(previous, chosen, models);
     const pathway = chosen || {id:text(state.selectedPathwayId)||text(state.profile.pathwayId)||'custom-target', school:text(state.profile.school) || text(state.profile.schoolChoice) || 'Your chosen school', title:text(state.profile.degree) || 'Your degree',level:state.profile.degreeLevel||'unsure',modalities:[],creditSystem:null,catalog:'',url:'',routeType:'custom',sources:[], constraints:['Obtain the current degree requirements and transfer policies for this exact program.'], proposedActions:['Get your official degree requirements and catalog year.', 'Request an evaluation of your existing learning.', 'Confirm course-to-requirement placements before buying outside courses.']};
@@ -415,7 +446,9 @@
     }) : {optionSelections:input.optionSelections, selections:{}, placements:[], matchedIds:[], unmatched:list(state.learning).filter(item => item.status !== 'earned')};
     input.optionSelections = collectionMatch.optionSelections;
     input.plannedLearning = collectionMatch.placements;
+    const existingCreditReviewPending = program ? applyExistingCreditCurrencyReview(program,state.learning,match) : false;
     const plan = program ? Planner.generate(program, input) : null;
+    if (plan && existingCreditReviewPending) {plan.provisional=true;plan.existingCreditReviewPending=true;plan.validation.warnings.push('Existing TESU Accounting coursework still needs its application-date course-age review.');}
     const guidance = Guide.buildGuidance(state.profile, pathway, state.learning, asCatalog(catalog), {program, plan});
     if (targetIssues.length) guidance.nextActions.unshift('Review this exact target against your career, degree level and study format before relying on a course plan.');
     else if (targetUnknowns.length) guidance.nextActions.unshift('Confirm the missing program information before relying on its course plan.');

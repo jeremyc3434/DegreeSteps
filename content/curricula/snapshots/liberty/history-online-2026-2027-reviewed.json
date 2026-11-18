@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-18",
+  "school": "Liberty University",
+  "catalog": "2026-2027",
+  "sourceUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/",
+  "published": {
+    "totalCredits": 120,
+    "generalEducationCredits": [39, 42],
+    "univ104Credits": [0, 3],
+    "majorFoundationCredits": 6,
+    "majorCoreCredits": 36,
+    "freeElectiveCredits": [36, 45],
+    "institutionMinCredits": 30,
+    "upperMinCredits": 30,
+    "majorInstitutionFraction": 0.25,
+    "minimumGPA": 2.0,
+    "majorGradeScope": "C minimum in upper-level major courses"
+  },
+  "generalEducationSelection": [
+    ["ENGL 101", "Composition and Rhetoric", 3, "writing"],
+    ["COMS 101", "Speech Communication", 3, "communication"],
+    ["UNIV 104", "Instructional Technology for Successful Online Learning", 3, "technology"],
+    ["MATH 121", "College Algebra", 3, "quantitative-reasoning"],
+    ["RLGN 104", "Christian Life and Biblical Worldview", 4, "biblical-worldview"],
+    ["ETHC 101", "Introduction to Ethics", 3, "critical-thinking"],
+    ["CSTU 101", "Western Culture", 3, "cultural-studies"],
+    ["BIOL 102", "Principles of Human Biology", 3, "natural-science"],
+    ["PSYC 101", "General Psychology", 3, "social-science"],
+    ["BIBL 104", "Survey of Old and New Testament", 4, "christianity-contexts"],
+    ["THEO 104", "Introduction to Theology Survey", 4, "christianity-contexts"]
+  ],
+  "generalEducationSelectionEvidence": {
+    "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+    "checkedOn": "2026-11-10",
+    "snapshot": "content/curricula/snapshots/liberty/online-approved-gened-2026-2027.txt",
+    "scope": "Previously reviewed general-education choices. The current History course sequence explicitly allocates HIUS 221 and GEOG 200 to the two information-literacy positions."
+  },
+  "foundations": [
+    ["GEOG 200", "Introduction to Geography", 3],
+    ["HIUS 221", "Survey of American History I", 3]
+  ],
+  "overlaps": [
+    {"code": "HIUS 221", "alsoSatisfies": "Information Literacy Elective", "creditsCountedOnce": 3},
+    {"code": "GEOG 200", "alsoSatisfies": "Information Literacy Elective", "creditsCountedOnce": 3}
+  ],
+  "requiredMajor": [
+    ["HIEU 201", "History of Western Civilization I", 3],
+    ["HIST 300", "Historical Methodology", 3],
+    ["HIST 491", "Senior Capstone Seminar", 3],
+    ["HIUS 222", "Survey of American History II", 3]
+  ],
+  "majorElectiveSelections": [
+    ["HIEU 322", "Roman Civilization", 3, "european-history"],
+    ["HIEU 390", "Modern Europe", 3, "european-history"],
+    ["HIUS 313", "The American Founding", 3, "us-history"],
+    ["HIUS 316", "Jacksonian America", 3, "us-history"],
+    ["HIWD 320", "History of Africa", 3, "world-history"],
+    ["HIEU 425", "The French Revolution and the Napoleonic Era", 3, "history-electives"],
+    ["HIUS 341", "History of American Politics", 3, "history-electives"],
+    ["HIWD 350", "East Asian Civilization", 3, "history-electives"]
+  ],
+  "electiveRestrictions": {
+    "european-history": {"credits": 6, "prefixes": ["HIEU"], "minLevel": 300, "maxLevel": 499},
+    "us-history": {"credits": 6, "prefixes": ["HIUS"], "minLevel": 300, "maxLevel": 499},
+    "world-history": {"credits": 3, "prefixes": ["HIWD"], "minLevel": 300, "maxLevel": 499},
+    "history-electives": {"credits": 9, "prefixes": ["HIEU", "HIST", "HIUS", "HIWD"], "minLevel": 300, "maxLevel": 499}
+  },
+  "courseCatalogEvidence": [
+    {"id": "liberty-history-hieu-courses-2026-2027", "url": "https://catalog.liberty.edu/undergraduate/courses/hieu/", "title": "European History course descriptions and delivery formats", "checked": "2026-11-18"},
+    {"id": "liberty-history-hius-courses-2026-2027", "url": "https://catalog.liberty.edu/undergraduate/courses/hius/", "title": "United States History course descriptions and delivery formats", "checked": "2026-11-18"},
+    {"id": "liberty-history-hiwd-courses-2026-2027", "url": "https://catalog.liberty.edu/undergraduate/courses/hiwd/", "title": "World History course descriptions and delivery formats", "checked": "2026-11-18"},
+    {"id": "liberty-history-hist-courses-2026-2027", "url": "https://catalog.liberty.edu/undergraduate/courses/hist/", "title": "History course descriptions and capstone prerequisites", "checked": "2026-11-18"}
+  ],
+  "capstoneSequence": {
+    "selectedPrerequisites": ["HIST 300", "HIEU 322"],
+    "sourceId": "liberty-history-hist-courses-2026-2027",
+    "minimumCompletedCredits": 72,
+    "classificationSourceUrl": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+    "scope": "The online capstone requires senior status, HIST 300 and one course from a published upper-level history list. The online academic policy defines senior status at 72 earned semester credits. This named baseline satisfies the second course prerequisite with HIEU 322; it does not require every alternative."
+  },
+  "notes": [
+    "Baseline keeps UNIV 104 at three credits and retains both conditional religion-waiver requirements.",
+    "The published course sequence uses HIUS 221 and GEOG 200 in information literacy. Each is allocated once to its foundational requirement and also fulfils the corresponding general-education position.",
+    "The eight major elective selections are distinct, three-credit upper-level courses explicitly offered online. These are proposed choices within the published department/level restrictions, not mandatory choices for every History student.",
+    "Thirty upper-level credits are carried by the major: HIST 300, HIST 491 and eight named upper-level history electives.",
+    "The complete 42-credit Major Requirements ledger is the retained major-residency basis; this does not create a separate minimum for every history subject.",
+    "Upper-level GEOG courses in free electives are strongly recommended, not required. This baseline does not turn that recommendation into a mandatory block.",
+    "This History degree is not represented as a teacher-licensure program."
+  ]
+}

@@ -1,0 +1,713 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-18",
+  "routes": [
+    {
+      "id": "liberty-catalog-5a26b73e7380bcf4-online",
+      "parentId": "liberty-catalog-5a26b73e7380bcf4",
+      "school": "Liberty University",
+      "title": "History (B.S.) — Online",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/",
+      "field": "humanities",
+      "fields": [
+        "humanities"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "id": "curriculum-liberty-history-bs-online",
+      "routeIds": [
+        "liberty-catalog-5a26b73e7380bcf4-online"
+      ],
+      "catalogParentId": "liberty-catalog-5a26b73e7380bcf4",
+      "school": "Liberty University",
+      "title": "History (B.S.) — Online",
+      "level": "bachelor",
+      "format": "Online",
+      "modalities": [
+        "online"
+      ],
+      "catalog": "2026–2027",
+      "catalogYear": "2026-2027",
+      "creditSystem": "semester",
+      "totalCredits": 120,
+      "institutionMinCredits": 30,
+      "externalMaxCredits": 90,
+      "upperMinCredits": 30,
+      "majorInstitutionFraction": 0.25,
+      "majorResidencyBasisCredits": 42,
+      "coverage": "complete",
+      "completeExecutablePathway": false,
+      "coverageLabel": "Complete 120-credit requirement ledger with named online major selections and separately sourced transfer options.",
+      "defaultProviders": [
+        "Sophia",
+        "Study.com",
+        "StraighterLine",
+        "CLEP"
+      ],
+      "tuitionComparison": {
+        "entryId": "liberty-online",
+        "checkedOn": "2026-11-17",
+        "catalogYear": "2026-2027",
+        "sourceUrl": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/"
+      },
+      "requirements": [
+        {
+          "id": "engl-101",
+          "code": "ENGL 101",
+          "title": "Composition and Rhetoric",
+          "credits": 3,
+          "category": "general",
+          "group": "writing",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "coms-101",
+          "code": "COMS 101",
+          "title": "Speech Communication",
+          "credits": 3,
+          "category": "general",
+          "group": "communication",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "univ-104",
+          "code": "UNIV 104",
+          "title": "Instructional Technology for Successful Online Learning",
+          "credits": 3,
+          "category": "general",
+          "group": "technology",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "math-121",
+          "code": "MATH 121",
+          "title": "College Algebra",
+          "credits": 3,
+          "category": "general",
+          "group": "quantitative-reasoning",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "rlgn-104",
+          "code": "RLGN 104",
+          "title": "Christian Life and Biblical Worldview",
+          "credits": 4,
+          "category": "general",
+          "group": "biblical-worldview",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "ethc-101",
+          "code": "ETHC 101",
+          "title": "Introduction to Ethics",
+          "credits": 3,
+          "category": "general",
+          "group": "critical-thinking",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "cstu-101",
+          "code": "CSTU 101",
+          "title": "Western Culture",
+          "credits": 3,
+          "category": "general",
+          "group": "cultural-studies",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "biol-102",
+          "code": "BIOL 102",
+          "title": "Principles of Human Biology",
+          "credits": 3,
+          "category": "general",
+          "group": "natural-science",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "psyc-101",
+          "code": "PSYC 101",
+          "title": "General Psychology",
+          "credits": 3,
+          "category": "general",
+          "group": "social-science",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "bibl-104",
+          "code": "BIBL 104",
+          "title": "Survey of Old and New Testament",
+          "credits": 4,
+          "category": "general",
+          "group": "christianity-contexts",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "theo-104",
+          "code": "THEO 104",
+          "title": "Introduction to Theology Survey",
+          "credits": 4,
+          "category": "general",
+          "group": "christianity-contexts",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-online-approved-gened"
+          ],
+          "options": []
+        },
+        {
+          "id": "geog-200",
+          "code": "GEOG 200",
+          "title": "Introduction to Geography",
+          "credits": 3,
+          "category": "major",
+          "group": "major-foundations",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "hius-221",
+          "code": "HIUS 221",
+          "title": "Survey of American History I",
+          "credits": 3,
+          "category": "major",
+          "group": "major-foundations",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "hieu-201",
+          "code": "HIEU 201",
+          "title": "History of Western Civilization I",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ],
+          "options": [],
+          "allowedCourseCodes": [
+            "HIEU 201",
+            "HIEU 202"
+          ]
+        },
+        {
+          "id": "hist-300",
+          "code": "HIST 300",
+          "title": "Historical Methodology",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C"
+        },
+        {
+          "id": "hist-491",
+          "code": "HIST 491",
+          "title": "Senior Capstone Seminar",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hist-courses-2026-2027",
+            "liberty-history-online-academic-policy-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "prerequisites": [
+            "hist-300",
+            "hieu-322"
+          ],
+          "prerequisiteNotes": "The online capstone requires senior status, HIST 300 and one course from a published upper-level history list. The online academic policy defines senior status at 72 earned semester credits. This named baseline satisfies the second course prerequisite with HIEU 322; it does not require every alternative.",
+          "minimumCompletedCredits": 72
+        },
+        {
+          "id": "hius-222",
+          "code": "HIUS 222",
+          "title": "Survey of American History II",
+          "credits": 3,
+          "category": "major",
+          "group": "major-core",
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ],
+          "options": []
+        },
+        {
+          "id": "hieu-322",
+          "code": "HIEU 322",
+          "title": "Roman Civilization",
+          "credits": 3,
+          "category": "major",
+          "group": "european-history",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hieu-courses-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "choiceNote": "Proposed named online course in the published european history elective block; a different eligible course may be chosen without counting the same award twice.",
+          "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
+        },
+        {
+          "id": "hieu-390",
+          "code": "HIEU 390",
+          "title": "Modern Europe",
+          "credits": 3,
+          "category": "major",
+          "group": "european-history",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hieu-courses-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "choiceNote": "Proposed named online course in the published european history elective block; a different eligible course may be chosen without counting the same award twice.",
+          "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
+        },
+        {
+          "id": "hius-313",
+          "code": "HIUS 313",
+          "title": "The American Founding",
+          "credits": 3,
+          "category": "major",
+          "group": "us-history",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hius-courses-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "choiceNote": "Proposed named online course in the published us history elective block; a different eligible course may be chosen without counting the same award twice.",
+          "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
+        },
+        {
+          "id": "hius-316",
+          "code": "HIUS 316",
+          "title": "Jacksonian America",
+          "credits": 3,
+          "category": "major",
+          "group": "us-history",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hius-courses-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "choiceNote": "Proposed named online course in the published us history elective block; a different eligible course may be chosen without counting the same award twice.",
+          "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
+        },
+        {
+          "id": "hiwd-320",
+          "code": "HIWD 320",
+          "title": "History of Africa",
+          "credits": 3,
+          "category": "major",
+          "group": "world-history",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hiwd-courses-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "choiceNote": "Proposed named online course in the published world history elective block; a different eligible course may be chosen without counting the same award twice.",
+          "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
+        },
+        {
+          "id": "hieu-425",
+          "code": "HIEU 425",
+          "title": "The French Revolution and the Napoleonic Era",
+          "credits": 3,
+          "category": "major",
+          "group": "history-electives",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hieu-courses-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "choiceNote": "Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.",
+          "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
+        },
+        {
+          "id": "hius-341",
+          "code": "HIUS 341",
+          "title": "History of American Politics",
+          "credits": 3,
+          "category": "major",
+          "group": "history-electives",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hius-courses-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "choiceNote": "Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.",
+          "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
+        },
+        {
+          "id": "hiwd-350",
+          "code": "HIWD 350",
+          "title": "East Asian Civilization",
+          "credits": 3,
+          "category": "major",
+          "group": "history-electives",
+          "upper": true,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-hiwd-courses-2026-2027"
+          ],
+          "options": [],
+          "minimumGrade": "C",
+          "choiceNote": "Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.",
+          "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
+        },
+        {
+          "id": "free-electives",
+          "title": "Free electives — courses not already counted in this degree",
+          "credits": 42,
+          "category": "electives",
+          "group": "free-electives",
+          "bucket": true,
+          "freeElective": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ],
+          "options": [],
+          "allowedCreditsRange": [
+            36,
+            45
+          ],
+          "excludeAlreadyUsed": true
+        }
+      ],
+      "sources": [
+        {
+          "id": "liberty-history-online-2026-2027",
+          "title": "History B.S. online degree completion plan, 2026–27",
+          "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-online-approved-gened",
+          "title": "Approved online general-education selections, 2026–27",
+          "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+          "checked": "2026-11-10"
+        },
+        {
+          "id": "liberty-history-online-academic-policy-2026-2027",
+          "title": "Online academic policy and earned-credit student classification",
+          "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-online-tuition-2026-2027",
+          "title": "Standard online undergraduate tuition and financial policy, 2026–27",
+          "url": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+          "checked": "2026-11-17",
+          "scope": "Existing separately reviewed standard online tuition, not a new price-source retrieval."
+        },
+        {
+          "id": "liberty-history-hieu-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/hieu/",
+          "title": "European History course descriptions and delivery formats",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-hius-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/hius/",
+          "title": "United States History course descriptions and delivery formats",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-hiwd-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/hiwd/",
+          "title": "World History course descriptions and delivery formats",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-hist-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/hist/",
+          "title": "History course descriptions and capstone prerequisites",
+          "checked": "2026-11-18"
+        }
+      ],
+      "overlaps": [
+        {
+          "requirementId": "hius-221",
+          "alsoSatisfies": "Information Literacy Elective",
+          "creditsCountedOnce": 3
+        },
+        {
+          "requirementId": "geog-200",
+          "alsoSatisfies": "Information Literacy Elective",
+          "creditsCountedOnce": 3
+        }
+      ],
+      "rulesNotes": [
+        "Baseline keeps UNIV 104 at three credits and retains both conditional religion-waiver requirements.",
+        "The published course sequence uses HIUS 221 and GEOG 200 in information literacy. Each is allocated once to its foundational requirement and also fulfils the corresponding general-education position.",
+        "The eight major elective selections are distinct, three-credit upper-level courses explicitly offered online. These are proposed choices within the published department/level restrictions, not mandatory choices for every History student.",
+        "Thirty upper-level credits are carried by the major: HIST 300, HIST 491 and eight named upper-level history electives.",
+        "The complete 42-credit Major Requirements ledger is the retained major-residency basis; this does not create a separate minimum for every history subject.",
+        "Upper-level GEOG courses in free electives are strongly recommended, not required. This baseline does not turn that recommendation into a mandatory block.",
+        "This History degree is not represented as a teacher-licensure program."
+      ],
+      "univ104Scenario": {
+        "baselineCredits": 3,
+        "publishedCreditsRange": [
+          0,
+          3
+        ],
+        "zeroCreditCaseRequiresIndividualConfirmation": true,
+        "replacementElectiveCreditsIfZero": 3,
+        "sourceIds": [
+          "liberty-history-online-2026-2027"
+        ]
+      },
+      "obligations": [
+        {
+          "title": "UNIV 104 evaluation",
+          "notes": "The baseline retains the three-credit case. An individual zero-credit evaluation can replace these credits with three more elective credits within the published range.",
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ]
+        }
+      ],
+      "graduationRequirements": [
+        {
+          "id": "overall-gpa",
+          "title": "Overall GPA",
+          "description": "At least 2.0 overall GPA.",
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ]
+        },
+        {
+          "id": "degree-application",
+          "title": "Graduation application",
+          "description": "Submit the degree completion application during the final anticipated semester.",
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ]
+        }
+      ],
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ]
+        },
+        "externalMaxCredits": {
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ],
+          "calculation": "120 published total minus 30 required Liberty credits. This overall ceiling is separate from exact source acceptance."
+        },
+        "upperMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ]
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ]
+        },
+        "majorResidencyBasisCredits": {
+          "value": 42,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-history-online-2026-2027"
+          ],
+          "calculation": "6 major-foundational plus 36 major-course credits under Major Requirements, with six shared general-education credits counted once."
+        }
+      },
+      "unresolved": [
+        "State-specific general-education additions and a student’s admission/catalog rights depend on the individual record. Published outside-course options remain separate from an individual transfer award."
+      ],
+      "curriculumSections": [
+        {
+          "id": "general-education",
+          "title": "General education / foundational skills",
+          "parentId": "general",
+          "requirementIds": [
+            "engl-101",
+            "coms-101",
+            "univ-104",
+            "math-121",
+            "rlgn-104",
+            "ethc-101",
+            "cstu-101",
+            "biol-102",
+            "psyc-101",
+            "bibl-104",
+            "theo-104"
+          ],
+          "sourceId": "liberty-history-online-2026-2027"
+        },
+        {
+          "id": "major-foundations",
+          "title": "Major foundational courses",
+          "parentId": "major",
+          "requirementIds": [
+            "geog-200",
+            "hius-221"
+          ],
+          "sourceId": "liberty-history-online-2026-2027"
+        },
+        {
+          "id": "major-core",
+          "title": "Required history courses",
+          "parentId": "major",
+          "requirementIds": [
+            "hieu-201",
+            "hist-300",
+            "hist-491",
+            "hius-222"
+          ],
+          "sourceId": "liberty-history-online-2026-2027"
+        },
+        {
+          "id": "european-history",
+          "title": "European history",
+          "parentId": "major",
+          "requirementIds": [
+            "hieu-322",
+            "hieu-390"
+          ],
+          "sourceId": "liberty-history-online-2026-2027"
+        },
+        {
+          "id": "us-history",
+          "title": "Us history",
+          "parentId": "major",
+          "requirementIds": [
+            "hius-313",
+            "hius-316"
+          ],
+          "sourceId": "liberty-history-online-2026-2027"
+        },
+        {
+          "id": "world-history",
+          "title": "World history",
+          "parentId": "major",
+          "requirementIds": [
+            "hiwd-320"
+          ],
+          "sourceId": "liberty-history-online-2026-2027"
+        },
+        {
+          "id": "history-electives",
+          "title": "History electives",
+          "parentId": "major",
+          "requirementIds": [
+            "hieu-425",
+            "hius-341",
+            "hiwd-350"
+          ],
+          "sourceId": "liberty-history-online-2026-2027"
+        },
+        {
+          "id": "free-electives",
+          "title": "Free electives",
+          "parentId": "elective",
+          "requirementIds": [
+            "free-electives"
+          ],
+          "sourceId": "liberty-history-online-2026-2027"
+        }
+      ]
+    }
+  ]
+}

@@ -332,6 +332,21 @@ test('invalid month-coded catalog versions are rejected before creating research
  for(const catalogYear of ['202600','202613','2026057']){const response=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{schoolName:'Western Governors University',programName:'Business Management – B.S.',level:'bachelor',modality:'online',catalogYear,url:'https://www.wgu.edu/online-business-degrees/business-management-bachelors-program.html',startResearch:true}});assert.equal(response.status,400);}
  assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);done();
 });
+test('new complete templates open directly from their exact degree links without AI or a guessed catalog year',async t=>{
+ const done=noNetwork(t),{call,sqlite}=fixture(t);
+ const cases=[
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/','curriculum-tesu-bsba-accounting',90,30],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/','curriculum-liberty-history-bs-online',75,45]
+ ];
+ for(const [url,modelId,outside,university]of cases){
+  const response=await call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json();
+  assert.equal(result.matched,true);assert.equal(result.sourcePlan?.qualityReady,true);assert.equal(result.sourcePlan.model.id,modelId);assert.equal(result.sourcePlan.summary.totalCredits,120);assert.equal(result.sourcePlan.summary.transferCredits,outside);assert.equal(result.sourcePlan.summary.universityCredits,university);
+  if(modelId==='curriculum-tesu-bsba-accounting'){assert.equal(result.sourcePlan.model.catalogYear,null);assert.equal(result.target.catalogYear,undefined);assert.equal(result.target.catalogLabel,result.sourcePlan.model.catalog);}
+  const reused=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url,startResearch:true}});assert.equal(reused.status,200);const reuse=await reused.json();assert.equal(reuse.reused,true);assert.equal(reuse.sourcePlan.model.id,modelId);
+  const anotherEdition=await call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=2025-2026'}));assert.equal((await anotherEdition.json()).sourcePlan,undefined);
+ }
+ assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
+});
 function referenceDoctoralArtifact(unit){
  const a=workerResearchArtifact();Object.assign(a,{schoolName:'South College',programName:'Doctor of Business Administration',level:'doctorate',modality:'online',catalogYear:'2026-2028',officialUniversityUrl:'https://www.south.edu/doctor-of-business-administration-program-overview/',creditSystem:unit,totalCredits:90,institutionMinCredits:90,externalMaxCredits:0,alternativeMaxCredits:0,upperMinCredits:0,majorInstitutionFraction:0,majorResidencyBasisCredits:0});
  const scope=Object.fromEntries(['schoolName','programName','level','modality','catalogYear'].map(field=>[field,a[field]]));a.sources=[{id:'catalog',url:a.officialUniversityUrl,title:'Synthetic doctoral curriculum fixture',kind:'university',roles:['curriculum','degree-identity'],scope,checked:new Date().toISOString().slice(0,10)},{id:'policies',url:'https://www.south.edu/academic-policies/fixture/',title:'Synthetic doctoral policy fixture',kind:'university',roles:['policy'],scope,checked:new Date().toISOString().slice(0,10)}];

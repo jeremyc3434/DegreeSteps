@@ -71,6 +71,11 @@ function catalogIdentity(value) {
   const text=String(value||'').replace(/[–—]/g,'-'),ranges=[...new Set(text.match(/20\d\d-20\d\d/g)||[])];
   return ranges.length===1?ranges[0]:/^20\d\d(?:(?:0[1-9]|1[0-2]))?$/.test(text.trim())?text.trim():null;
 }
+function reviewedCurrentCatalog(model) {
+  const identity=model?.catalogIdentity;
+  if(model?.catalogYear||!model?.id||identity?.kind!=='reviewed-current-catalog'||typeof identity.label!=='string'||!identity.label.trim()||identity.label!==model.catalog||!/^20\d\d-\d\d-\d\d$/.test(identity.checkedOn||'')||!Number.isFinite(Date.parse(identity.checkedOn))||new Date(identity.checkedOn).toISOString().slice(0,10)!==identity.checkedOn)return false;
+  try{const url=new URL(identity.sourceUrl);return url.protocol==='https:'&&!url.username&&!url.password&&(model.sources||[]).some(source=>source.url===url.href&&(source.checked||source.checkedOn)===identity.checkedOn);}catch{return false;}
+}
 async function registryModel(entry) {
   if(!curriculumPackCache.has(entry.path)){
     const asset=assets['/'+entry.path];if(!asset)return null;
@@ -133,13 +138,16 @@ async function resolveKnownDegreeLink(value) {
   const choices=[];
   for(const entry of curriculumRegistrySnapshot.models.filter(entry=>entry.readyTemplate===true&&entry.status==='reviewed'&&(aliases.length?aliases.some(alias=>alias.modelId===entry.id&&entry.routeIds?.includes(alias.pathwayId)):entry.routeIds?.some(id=>programs.some(program=>program.id===id))))){
     const model=await registryModel(entry),catalogYear=catalogIdentity(model?.catalogYear||model?.catalog);
-    if(!model||!catalogYear)continue;
+    if(!model||!catalogYear&&!reviewedCurrentCatalog(model))continue;
     for(const modality of entry.modalities||[]){
       if(!['online','campus'].includes(modality))continue;
       const alias=aliases.find(alias=>alias.modelId===entry.id&&alias.modality===modality);if(aliases.length&&!alias)continue;
       const level=entry.level||degreeLevel(model.level),pathwayId=alias?.pathwayId||entry.routeIds[0];
-      const target={schoolName:entry.school,programName:entry.title,level,modality,catalogYear,url:value};
       const sourcePlan=await knownSourcePlan(entry,pathwayId,modality,model);
+      // A reviewed mutable catalog can open its preloaded plan. It must not
+      // create a year-specific AI research target with an invented edition.
+      if(!catalogYear&&!sourcePlan)continue;
+      const target={schoolName:entry.school,programName:entry.title,level,modality,...(catalogYear?{catalogYear}:{catalogLabel:model.catalog}),url:value};
       choices.push(sourcePlan?{target,existingPlan:{pathwayId,modelId:entry.id,title:entry.title,school:entry.school,level,modality,totalCredits:model.totalCredits,institutionMinCredits:model.institutionMinCredits,externalMaxCredits:model.externalMaxCredits},sourcePlan}:{target});
     }
   }

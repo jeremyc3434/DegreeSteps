@@ -17,6 +17,8 @@ execFileSync(process.execPath,[resolve(root,'scripts/add-snhu-transfer-evidence.
 execFileSync(process.execPath,[resolve(root,'scripts/build-liberty-named-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-liberty-residential-expansion.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync('python',[resolve(root,'scripts/import-liberty-online-expansion.py'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync('python',[resolve(root,'scripts/import-liberty-history-online.py'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-accounting.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-public-site.mjs')],{cwd:root,stdio:'inherit'});

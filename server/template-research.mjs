@@ -35,7 +35,8 @@ const DegreeTemplateResearch = (() => {
   if(typeof env.TEMPLATE_RESOLVE_LINK==='function'){
    const result=await env.TEMPLATE_RESOLVE_LINK(url);
    if(result?.needsChoice===true&&Array.isArray(result.choices)&&result.choices.length)return{choices:result.choices.slice(0,24),needsChoice:true,choicesTruncated:result.choicesTruncated===true};
-   if(result?.target){const t=await target({...result.target,url});return{...t,...(result.existingPlan?{existingPlan:result.existingPlan}:{}),...(result.sourcePlan?{sourcePlan:result.sourcePlan}:{})};}if(result?.sourcePlan)return{sourcePlan:result.sourcePlan};
+   if(result?.sourcePlan)return{sourcePlan:result.sourcePlan,...(result.existingPlan?{existingPlan:result.existingPlan}:{})};
+   if(result?.target){const t=await target({...result.target,url});return{...t,...(result.existingPlan?{existingPlan:result.existingPlan}:{})};}
   }
   const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode('url-v1|'+url))),b=>b.toString(16).padStart(2,'0')).join('');
   return{url,key:'url-v1:'+hash,id:'tpl-'+hash.slice(0,32),schoolName:'',programName:'Degree details being checked',level:'unconfirmed',modality:'unconfirmed',catalogYear:'unconfirmed'};

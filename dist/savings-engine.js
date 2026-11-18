@@ -78,7 +78,19 @@
     const year = value => String(value || '').trim().replace(/[\u2013\u2014]/g,'-');
     const mode = value => /^(?:residential|on campus|campus)$/i.test(String(value || '').trim()) ? 'campus' : /^online$/i.test(String(value || '').trim()) ? 'online' : null;
     const catalogYear = year(binding.catalogYear), checked = binding.checkedOn;
-    if (!/^20\d{2}-20\d{2}$/.test(catalogYear) || Number(catalogYear.slice(5)) !== Number(catalogYear.slice(0,4)) + 1 || catalogYear !== year(program.catalogYear || program.catalog)) return false;
+    let catalogMatches = /^20\d{2}-20\d{2}$/.test(catalogYear) && Number(catalogYear.slice(5)) === Number(catalogYear.slice(0,4)) + 1 && catalogYear === year(program.catalogYear || program.catalog);
+    // Some universities publish only a mutable "current" catalog. Bind its
+    // reviewed identity explicitly rather than manufacture an academic year.
+    if (!catalogMatches && !binding.catalogYear && !program.catalogYear) {
+      const identity = binding.catalogIdentity, reviewed = program.catalogIdentity;
+      if (identity && reviewed && !Array.isArray(identity) && !Array.isArray(reviewed) && typeof program.id === 'string' && program.id.trim() && binding.modelId === program.id && identity.kind === 'reviewed-current-catalog' && reviewed.kind === identity.kind && typeof identity.label === 'string' && identity.label.trim() && identity.label === program.catalog && reviewed.label === identity.label && identity.sourceUrl === reviewed.sourceUrl && identity.checkedOn === checked && reviewed.checkedOn === checked) {
+        try {
+          const url = new URL(identity.sourceUrl);
+          catalogMatches = url.protocol === 'https:' && !url.username && !url.password && Array.isArray(program.sources) && program.sources.some(source => source.url === url.href && (source.checked || source.checkedOn) === checked);
+        } catch { /* An invalid catalog URL cannot acquire a tuition estimate. */ }
+      }
+    }
+    if (!catalogMatches) return false;
     if (typeof checked !== 'string' || !/^20\d{2}-\d{2}-\d{2}$/.test(checked) || !Number.isFinite(Date.parse(checked)) || new Date(checked).toISOString().slice(0,10) !== checked) return false;
     if (program.school !== entry.schoolName || program.level !== 'bachelor' || program.creditSystem !== 'semester' || program.totalCredits !== entry.totalUnits || !mode(program.format) || mode(program.format) !== mode(entry.format)) return false;
     let source;
