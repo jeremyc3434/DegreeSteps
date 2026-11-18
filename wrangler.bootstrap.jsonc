@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "degreesteps",
+  "main": "worker/bootstrap.mjs",
+  "compatibility_date": "2026-11-17",
+  "account_id": "d215df9a813c0d7a292613373dfa9cb0",
+  "workers_dev": true,
+  "preview_urls": false,
+  "build": {"command": "npm run build"},
+  "limits": {"cpu_ms": 60000},
+  "observability": {"enabled": true, "head_sampling_rate": 0.1},
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "degreesteps-public",
+    "database_id": "2bce4a19-cd2d-45dd-a08d-b877c806b3ad",
+    "migrations_dir": "drizzle"
+  }],
+  "vars": {"PORTAL_STORAGE_BACKEND": "supabase"}
+}
