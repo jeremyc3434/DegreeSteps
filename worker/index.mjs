@@ -169,12 +169,30 @@ async function researchEnvironment(env){
   result.RESEARCH_EXECUTE_JOB=(job,execution)=>runTemplateResearchJob(result,job,execution);
   return result;
 }
+function migrationReadOnly(env){return env?.OPERATOR_MIGRATION_READ_ONLY==='1';}
+function migrationReadOnlyResponse(request){
+  return new Response(request.method==='HEAD'?null:JSON.stringify({error:'We’re finishing a site update. Your saved work is safe. Please try again shortly.',code:'migration_readonly'}),{status:503,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','X-Content-Type-Options':'nosniff','Retry-After':'120'}});
+}
 export default {
-  async queue(batch,env,ctx){return processResearchJobs(batch,await researchEnvironment(env),ctx);},
-  async scheduled(controller,env,ctx){return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
+  async queue(batch,env,ctx){
+    if(migrationReadOnly(env)){
+      // Returning normally would implicitly acknowledge delivered messages.
+      // Keep every message pending until the source freeze is lifted.
+      if(typeof batch.retryAll==='function')batch.retryAll({delaySeconds:120});
+      else for(const message of batch.messages||[])message.retry({delaySeconds:120});
+      return;
+    }
+    return processResearchJobs(batch,await researchEnvironment(env),ctx);
+  },
+  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
   async fetch(request, env, ctx) {
-    initializePublicAssets(env);
     const target = new URL(request.url);
+    const previewHost=target.hostname.endsWith('.workers.dev');
+    if(previewHost&&target.pathname==='/robots.txt'&&['GET','HEAD'].includes(request.method))return new Response(request.method==='HEAD'?null:'User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'public, max-age=60, must-revalidate','X-Robots-Tag':'noindex, nofollow'}});
+    // GET handlers can also upsert profiles/rate records. During a final source
+    // snapshot, pause the entire application API before identity or data access.
+    if(migrationReadOnly(env)&&(target.pathname==='/api'||target.pathname.startsWith('/api/'))&&!target.pathname.startsWith('/api/auth/')&&!target.pathname.startsWith('/api/operations/'))return migrationReadOnlyResponse(request);
+    initializePublicAssets(env);
     if(target.pathname.startsWith('/api/operations/'))return await handleOperatorSnapshot(request,env)||Response.json({error:'Not found.'},{status:404,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'}});
     if(target.pathname==='/api/catalog/degree-link'){
       const headers={'Cache-Control':'public, max-age=300','X-Content-Type-Options':'nosniff'};
@@ -242,7 +260,7 @@ export default {
     if(asset.external){
       if(!env.ASSETS?.fetch)return new Response('Public assets are temporarily unavailable',{status:503,headers:{'Cache-Control':'no-store'}});
       const assetURL=new URL(request.url);assetURL.pathname=path;const delivered=await env.ASSETS.fetch(new Request(assetURL,{method:request.method,headers:request.headers}));
-      const headers=new Headers(delivered.headers);headers.set('Content-Type',asset.type);headers.set('X-Content-Type-Options','nosniff');headers.set('Referrer-Policy','strict-origin-when-cross-origin');headers.set('Cache-Control',privatePage?'no-store':path.endsWith('.html')?'public, max-age=60, must-revalidate':'public, max-age=300, must-revalidate');if(privatePage)headers.set('X-Robots-Tag','noindex, nofollow');
+      const headers=new Headers(delivered.headers);headers.set('Content-Type',asset.type);headers.set('X-Content-Type-Options','nosniff');headers.set('Referrer-Policy','strict-origin-when-cross-origin');headers.set('Cache-Control',privatePage?'no-store':path.endsWith('.html')?'public, max-age=60, must-revalidate':'public, max-age=300, must-revalidate');if(privatePage||previewHost)headers.set('X-Robots-Tag','noindex, nofollow');
       return new Response(delivered.body,{status:delivered.status,headers});
     }
     const compressed=asset.encoding==='gzip-base64',acceptGzip=compressed&&/\bgzip\b/i.test(request.headers.get('Accept-Encoding')||'');
@@ -251,7 +269,7 @@ export default {
     const headers={'Content-Type':asset.type,'Cache-Control':privatePage?'no-store':path.endsWith('.html')?'public, max-age=60, must-revalidate':'public, max-age=300, must-revalidate','ETag':etag,'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin'};
     if(compressed)headers.Vary='Accept-Encoding';
     if(acceptGzip)headers['Content-Encoding']='gzip';
-    if(privatePage)headers['X-Robots-Tag']='noindex, nofollow';
+    if(privatePage||previewHost)headers['X-Robots-Tag']='noindex, nofollow';
     if(request.headers.get('If-None-Match')===etag)return new Response(null,{status:304,headers,encodeBody:'manual'});
     let body=null;
     if(request.method!=='HEAD')body=acceptGzip||asset.encoding==='base64'?Uint8Array.from(atob(asset.body),character=>character.charCodeAt(0)):compressed?await decodeStaticAsset(asset):asset.body;
