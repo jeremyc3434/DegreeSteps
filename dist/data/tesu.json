@@ -506,6 +506,41 @@
       "checkedOn": "2026-11-17",
       "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
       "sha256": "25b1c5ad5d9182f44e640ceb4dba0348d104a3eaa89e12b3c12aa246476bdeef"
+    },
+    {
+      "id": "tesu-common-acc1020-prerequisites-2026-11-18",
+      "title": "TESU ACC-1020 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/acc-accounting/1000/acc-1020",
+      "checked": "2026-11-18",
+      "scope": "Published course prerequisite identity, not an outside-credit equivalency or degree transfer approval."
+    },
+    {
+      "id": "tesu-common-fin3010-prerequisites-2026-11-18",
+      "title": "TESU FIN-3010 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3010",
+      "checked": "2026-11-18",
+      "scope": "Published course prerequisite identity, not an outside-credit equivalency or degree transfer approval."
+    },
+    {
+      "id": "tesu-common-bus2100-prerequisites-2026-11-18",
+      "title": "TESU BUS-2100 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/bus-business/2000/bus-2100",
+      "checked": "2026-11-18",
+      "scope": "Published course prerequisite identity, not an outside-credit equivalency or degree transfer approval."
+    },
+    {
+      "id": "tesu-common-sta2010-prerequisites-2026-11-18",
+      "title": "TESU STA-2010 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/sta-statistics/2000/sta-2010",
+      "checked": "2026-11-18",
+      "scope": "Published course prerequisite identity, not an outside-credit equivalency or degree transfer approval."
+    },
+    {
+      "id": "tesu-common-man3720-prerequisites-2026-11-18",
+      "title": "TESU MAN-3720 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/3000/man-3720",
+      "checked": "2026-11-18",
+      "scope": "Published course prerequisite identity, not an outside-credit equivalency or degree transfer approval."
     }
   ],
   "requirements": [
@@ -2310,7 +2345,13 @@
         "tesu-grade-policy-current",
         "tesu-business-core-scope-current"
       ],
-      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements."
+      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements.",
+      "prerequisites": [
+        "acc1010"
+      ],
+      "prerequisiteSourceIds": [
+        "tesu-common-acc1020-prerequisites-2026-11-18"
+      ]
     },
     {
       "id": "cis1070",
@@ -2632,7 +2673,13 @@
         "tesu-grade-policy-current",
         "tesu-business-core-scope-current"
       ],
-      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements."
+      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements.",
+      "prerequisites": [
+        "acc1010"
+      ],
+      "prerequisiteSourceIds": [
+        "tesu-common-fin3010-prerequisites-2026-11-18"
+      ]
     },
     {
       "id": "eco1110",
@@ -2871,7 +2918,14 @@
         "tesu-grade-policy-current",
         "tesu-business-core-scope-current"
       ],
-      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements."
+      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements.",
+      "prerequisites": [
+        "mat1210"
+      ],
+      "prerequisiteSourceIds": [
+        "tesu-common-bus2100-prerequisites-2026-11-18"
+      ],
+      "prerequisiteNotes": "Formal prerequisite permits MAT-1050 or MAT-1210. This modeled named-course baseline selects MAT-1210, already allocated in general education, without adding duplicate math credits."
     },
     {
       "id": "sta2010",
@@ -2935,7 +2989,13 @@
         "tesu-grade-policy-current",
         "tesu-business-core-scope-current"
       ],
-      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements."
+      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements.",
+      "prerequisites": [
+        "mat1210"
+      ],
+      "prerequisiteSourceIds": [
+        "tesu-common-sta2010-prerequisites-2026-11-18"
+      ]
     },
     {
       "id": "man3730",
@@ -3093,7 +3153,14 @@
         "tesu-grade-policy-current",
         "tesu-business-core-scope-current"
       ],
-      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements."
+      "gradePolicyNote": "TESU requires C or better in composition and all area-of-study courses, including core courses. This applies to the named professional business core and selected area-of-study requirements.",
+      "prerequisites": [
+        "man2100"
+      ],
+      "prerequisiteSourceIds": [
+        "tesu-common-man3720-prerequisites-2026-11-18"
+      ],
+      "prerequisiteNotes": "The formal prerequisite prints legacy MAN-210; the same course page advisory links explicitly to current MAN-2100 Principles of Management. This baseline uses that current same-course identity, not an inferred outside equivalency."
     },
     {
       "id": "bus4210",
@@ -5108,5 +5175,23 @@
     "providerEligibilityStatus": "provisionally-approved-review-pending",
     "newOutsideOptions": 0,
     "newCompletedOrConfirmedCredits": 0
+  },
+  "commonPrerequisiteReview": {
+    "checkedOn": "2026-11-18",
+    "courseCodes": [
+      "ACC-1020",
+      "FIN-3010",
+      "BUS-2100",
+      "STA-2010",
+      "MAN-3720"
+    ],
+    "sourceIds": [
+      "tesu-common-acc1020-prerequisites-2026-11-18",
+      "tesu-common-fin3010-prerequisites-2026-11-18",
+      "tesu-common-bus2100-prerequisites-2026-11-18",
+      "tesu-common-sta2010-prerequisites-2026-11-18",
+      "tesu-common-man3720-prerequisites-2026-11-18"
+    ],
+    "scope": "Selected current same-school course sequence; provider awards and their review dates are unchanged."
   }
 }

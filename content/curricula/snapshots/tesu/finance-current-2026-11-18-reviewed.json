@@ -1,0 +1,343 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-18",
+  "method": "Current official Finance degree and all selected Finance/math course pages reviewed directly. Shared business-core course prerequisites were also rechecked. General/business blocks corroborated against the current Finance ledger. Shared institution-wide policy sources retain the November 18 review from the Accounting packet; no provider equivalencies are inferred.",
+  "catalogEdition": null,
+  "catalogEditionNote": "Retrieved current catalog pages expose no academic-year edition label. Keep the dated current-catalog identity distinct from tuition and provider versions.",
+  "degree": {
+    "totalCredits": 120,
+    "generalCredits": 45,
+    "businessCoreCredits": 42,
+    "areaOfStudyCredits": 18,
+    "freeElectiveCredits": 15,
+    "generalFeaturedCodes": [
+      "ENC-1010",
+      "ENC-1020",
+      "COM-2090",
+      "MAT-1210",
+      "SOS-1100",
+      "SOC-1010",
+      "ETH-2200",
+      "POS-1100",
+      "SOC-2100",
+      "HIS-1130",
+      "FIL-1100",
+      "HIS-1140",
+      "PHI-1300",
+      "EAS-1010",
+      "BIO-2080"
+    ],
+    "businessCoreCodes": [
+      "ACC-1010",
+      "ACC-1020",
+      "CIS-1070",
+      "LAW-2010",
+      "MAN-2100",
+      "MKT-2010",
+      "FIN-3010",
+      "ECO-1110",
+      "ECO-1120",
+      "BUS-2100",
+      "STA-2010",
+      "MAN-3730",
+      "MAN-3720",
+      "BUS-4210"
+    ],
+    "title": "B.S.B.A. in Finance",
+    "requiredFinance": [
+      [
+        "FIN-3140",
+        "Small Business Finance",
+        3
+      ],
+      [
+        "FIN-3340",
+        "International Finance",
+        3
+      ],
+      [
+        "FIN-3820",
+        "Risk Management",
+        3
+      ],
+      [
+        "FIN-3210",
+        "Security Analysis and Portfolio Management",
+        3
+      ],
+      [
+        "FIN-3310",
+        "Financial Institutions and Markets",
+        3
+      ],
+      [
+        "FDR-4400",
+        "Fundraising for Nonprofits",
+        3
+      ]
+    ],
+    "selectedMathPrerequisite": [
+      "MAT-1290",
+      "Precalculus",
+      3
+    ],
+    "selectedFreeElectives": [
+      [
+        "ART-1000",
+        "A World of Art",
+        3
+      ],
+      [
+        "ANT-1010",
+        "Introduction to Anthropology",
+        3
+      ],
+      [
+        "PSY-1010",
+        "Introduction to Psychology",
+        3
+      ],
+      [
+        "HIS-1210",
+        "Introduction to World History I",
+        3
+      ]
+    ]
+  },
+  "policies": {
+    "institutionMinCredits": 15,
+    "qualifyingResidencyMethods": [
+      "AC",
+      "OL",
+      "NU",
+      "GS",
+      "EP"
+    ],
+    "alternativeMaxCredits": 90,
+    "externalMaxCreditsDerived": 105,
+    "upperMinCredits": 18,
+    "areaOfStudyUpperMinCredits": 12,
+    "requiredInstitutionalCourses": [
+      "SOS-1100",
+      "BUS-4210"
+    ],
+    "minimumCompositionAndAreaOfStudyGrade": "C",
+    "overallMinimumGPA": 2,
+    "capstoneMaximumAgeYears": 5,
+    "militaryResidencyCreditsNotModeled": 24,
+    "edisonAccelerateModeled": false,
+    "areaOfStudyCurrency": {
+      "maximumCreditsOlderThanTenYears": 9,
+      "basis": "At least nine of the eighteen Finance area-of-study credits must be completed within ten years of the most recent application date."
+    },
+    "upperScope": "At least 12 upper-level area-of-study credits, the upper-level business capstone, and one additional three-credit upper-level course in the area of study or Professional Business Requirements. The six published Finance requirements are all upper level; the standard baseline also keeps upper-level FIN-3010 and BUS-4210 in the business core.",
+    "licensureNote": "This Finance degree is not a professional license or a guarantee of professional examination eligibility."
+  },
+  "courses": {
+    "FIN-3140": {
+      "prerequisites": [
+        "FIN-3010"
+      ],
+      "upper": true,
+      "advisoryCodes": [
+        "FIN-3010"
+      ]
+    },
+    "FIN-3340": {
+      "prerequisites": [],
+      "upper": true
+    },
+    "FIN-3820": {
+      "prerequisites": [
+        "FIN-3010",
+        "STA-2010",
+        "MAT-1290"
+      ],
+      "publishedMathAlternatives": [
+        "MAT-1190",
+        "MAT-1290"
+      ],
+      "upper": true,
+      "note": "Formal prerequisite block lists FIN-3010, STA-2010, MAT-1190 or MAT-1290. Baseline selects MAT-1290; the advisory paragraph also mentions MAT-1210, which is not substituted for the formal math prerequisite."
+    },
+    "FIN-3210": {
+      "prerequisites": [
+        "FIN-3010",
+        "STA-2010",
+        "MAT-1290"
+      ],
+      "publishedMathAlternatives": [
+        "MAT-1190",
+        "MAT-1290"
+      ],
+      "upper": true
+    },
+    "FIN-3310": {
+      "prerequisites": [],
+      "upper": true
+    },
+    "FDR-4400": {
+      "prerequisites": [],
+      "upper": true
+    },
+    "MAT-1290": {
+      "prerequisites": [
+        "MAT-1210"
+      ],
+      "upper": false,
+      "note": "A fixed three-credit selection within the fifteen-credit elective allowance, to satisfy the modeled Finance prerequisites. This is not unrestricted free-elective capacity."
+    },
+    "ACC-1020": {
+      "prerequisites": [
+        "ACC-1010"
+      ],
+      "upper": false
+    },
+    "FIN-3010": {
+      "prerequisites": [
+        "ACC-1010"
+      ],
+      "upper": true
+    },
+    "BUS-2100": {
+      "prerequisites": [
+        "MAT-1210"
+      ],
+      "upper": false,
+      "publishedMathAlternatives": [
+        "MAT-1050",
+        "MAT-1210"
+      ],
+      "note": "Formal prerequisite permits MAT-1050 or MAT-1210. This Finance baseline selects MAT-1210, already allocated in general education, without adding duplicate math credits."
+    },
+    "STA-2010": {
+      "prerequisites": [
+        "MAT-1210"
+      ],
+      "upper": false
+    },
+    "MAN-3720": {
+      "prerequisites": [
+        "MAN-2100"
+      ],
+      "upper": true,
+      "note": "The formal prerequisite prints legacy MAN-210; the same course page advisory links explicitly to current MAN-2100 Principles of Management. This baseline uses that current same-course identity, not an inferred outside equivalency."
+    }
+  },
+  "sources": [
+    {
+      "id": "tesu-finance-current-2026-11-18",
+      "title": "TESU current BSBA Finance degree requirements",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-finance/",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-business-policy-2026-11-18",
+      "title": "TESU BS/BSBA upper-level, course currency and elective policies",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bachelor-of-science-in-business-administration/",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-residency-2026-11-18",
+      "title": "TESU current standard, military and foreign-credit residency policies",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/enrollment/residency-requirements",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-transfer-2026-11-18",
+      "title": "TESU current transfer limits, required university courses and grades",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit/",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-alternative-cap-2026-11-18",
+      "title": "TESU combined noncollegiate credit limit",
+      "url": "https://www.tesu.edu/admissions/faqs/transfer-credits.php",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-grades-2026-11-18",
+      "title": "TESU undergraduate grade and GPA policy",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-course-policies/policy-on-grading",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-tuition-2026-11-18",
+      "title": "TESU undergraduate tuition schedule effective August 2026",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-fin3140-2026-11-18",
+      "title": "TESU FIN-3140 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3140",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-fin3340-2026-11-18",
+      "title": "TESU FIN-3340 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3340",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-fin3820-2026-11-18",
+      "title": "TESU FIN-3820 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3820",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-fin3210-2026-11-18",
+      "title": "TESU FIN-3210 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3210",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-fin3310-2026-11-18",
+      "title": "TESU FIN-3310 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3310",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-fdr4400-2026-11-18",
+      "title": "TESU FDR-4400 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fdr-fundraising/4000/fdr-4400",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-mat1290-2026-11-18",
+      "title": "TESU MAT-1290 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mat-mathematics/1000/mat-1290",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-acc1020-2026-11-18",
+      "title": "TESU ACC-1020 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/acc-accounting/1000/acc-1020",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-fin3010-2026-11-18",
+      "title": "TESU FIN-3010 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-bus2100-2026-11-18",
+      "title": "TESU BUS-2100 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/bus-business/2000/bus-2100",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-sta2010-2026-11-18",
+      "title": "TESU STA-2010 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/sta-statistics/2000/sta-2010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-finance-man3720-2026-11-18",
+      "title": "TESU MAN-3720 course and prerequisites",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/3000/man-3720",
+      "checked": "2026-11-18"
+    }
+  ]
+}

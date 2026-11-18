@@ -43,6 +43,20 @@ test('History importer is deterministic and checks source-model drift without ne
  assert.equal(result.status,0,result.stderr||result.stdout);
 });
 
+test('History free electives retain distinct source-reviewed online university choices without becoming required receiving courses',()=>{
+ const free=model.requirements.filter(req=>req.freeElective),fixed=new Set(model.requirements.filter(req=>!req.freeElective).map(req=>req.code));
+ assert.equal(free.length,14);assert.equal(free.reduce((sum,req)=>sum+req.credits,0),42);
+ assert.deepEqual(free.map(req=>req.id),Array.from({length:14},(_,index)=>'free-electives-'+(index+1)));
+ const codes=[];
+ for(const req of free){
+  assert.equal(req.code,undefined,'An unrestricted elective must not require its baseline university course');
+  const option=req.options.find(option=>option.provider==='University'),fact=facts.freeElectiveFallbacks.find(choice=>choice.code===option?.code);
+  assert(option&&fact);assert.equal(option.title,fact.title);assert.equal(option.credits,3);assert.equal(option.evidence,'published');assert.equal(option.creditOrigin,'institutional');assert.equal(option.receivingCode,option.code);
+  assert(fact.offered.includes('Online'));assert.deepEqual(fact.formalPrerequisites,[]);assert(option.sourceIds.includes(fact.sourceId));assert(!fixed.has(option.code));codes.push(option.code);
+ }
+ assert.equal(new Set(codes).size,14);assert(!codes.includes('BUSI 105'));assert(!codes.includes('BUSI 240'),'Current residential-only business courses must not become online fallbacks');
+});
+
 test('compiled History plan supplies real outside choices, preserves credit rules and orders the capstone',()=>{
  const Planner=require('./dist/planner.js'),Catalog=require('./dist/program-catalog.js');
  const pack=JSON.parse(fs.readFileSync('./dist/data/curricula/liberty-history-online.json'));
@@ -51,6 +65,7 @@ test('compiled History plan supplies real outside choices, preserves credit rule
  assert.equal(compiled.requirements.reduce((sum,req)=>sum+req.credits,0),120);assert.equal(compiled.requirements.some(req=>req.researchGap),false);
  const plan=Planner.generate(compiled,{providers:['Sophia','Study.com','StraighterLine','CLEP'],allowConditional:true,priority:'transfer'});
  assert.equal(plan.validation.academicCountsValid,true);assert.equal(plan.totals.accounted,120);assert(plan.totals.external>=60,'A broad-elective History pathway must have a genuinely useful accelerated allocation');assert(plan.totals.external<=90);assert(plan.totals.institutional>=30);assert(plan.totals.majorInstitutional>=10.5);assert(plan.totals.upper>=30);
+ assert.equal(plan.totals.external,75,'Named university fallbacks must not invent additional transfer coverage');
  assert.equal(plan.totals.confirmed,0,'Proposed choices are not earned or awarded credits');
  const capstone=plan.rows.find(item=>item.requirementId==='hist-491');assert.equal(capstone.option.provider,'University');assert.deepEqual(capstone.prerequisites,['hist-300','hieu-322']);
  const capstoneStep=plan.sequence.find(step=>step.requirementIds.includes('hist-491'));
@@ -60,4 +75,20 @@ test('compiled History plan supplies real outside choices, preserves credit rule
  const method=compiled.requirements.find(req=>req.code==='HIST 300');assert(method.options.some(option=>option.provider==='Study.com'&&option.receivingCode==='HIST 300'));
  const excluded=new Set(['HIEU 201','HIEU 202','HIUS 221','HIUS 222','GEOG 200']);
  for(const req of compiled.requirements.filter(req=>req.category==='electives'))assert(req.options.filter(option=>option.provider!=='University').every(option=>!excluded.has(option.receivingCode)),'Required/shared history awards must not fill free electives again');
+});
+
+test('deselecting every transfer provider still gives the student a complete named History course plan',()=>{
+ const Catalog=require('./dist/program-catalog.js'),Journey=require('./dist/journey-engine.js'),Sheet=require('./dist/sheet-state.js');
+ const compiled=require('./dist/data/curricula/liberty-history-online.json').models.find(item=>item.id===model.id),catalog=Catalog.attachRegistry(Catalog.merge(require('./dist/data/pathways.json'),require('./dist/data/program-catalog.json')),require('./dist/data/curriculum-registry.json'));
+ const route=catalog.pathways.find(route=>route.modelId===model.id);let state=Journey.selectRoute(Journey.initialize(null,null,catalog),route,catalog);state.profile.modality='online';state.scenarios[model.id]={...Sheet.scenario(state,model.id),providers:[]};
+ const before=JSON.stringify(state),draft=Journey.buildDraft(state,catalog,[compiled]);
+ assert.equal(draft.plan.validation.academicCountsValid,true);assert.equal(draft.plan.totals.accounted,120);assert.equal(draft.plan.totals.institutional,120);assert.equal(draft.plan.totals.external,0);
+ assert(draft.plan.rows.every(row=>row.option?.provider==='University'&&row.option.code&&!row.selectionRequired&&!row.option.selectionRequired),'Every row must offer a usable named course instead of sending the student back to research');
+ assert.equal(new Set(draft.plan.rows.map(row=>row.option.code)).size,draft.plan.rows.length,'The named baseline must not duplicate a course');
+ assert.equal(JSON.stringify(state),before);assert.deepEqual(draft.input.providers,[],'An explicit provider preference must not be replaced by defaults');
+ const elective=draft.plan.rows.find(row=>row.requirementId==='free-electives-1'),requirement=compiled.requirements.find(req=>req.id===elective.requirementId);
+ const updated=Sheet.recordProgress(state,compiled,requirement,elective.option,'in-progress');
+ assert.equal(updated.learning.length,1);assert.equal(updated.learning[0].code,elective.option.code);assert.equal(updated.learning[0].credits,3);assert.equal(updated.learning[0].creditSystem,'semester');
+ const refreshed=Journey.buildDraft(updated,catalog,[compiled]);
+ assert(refreshed.plan.rows.some(row=>row.plannedLearningId===updated.learning[0].id&&row.plannedLearningStatus==='in-progress'),'The fallback course must support the normal progress workflow');
 });

@@ -445,23 +445,494 @@
           "allocationBasis": "Named online-offered selection satisfying the published department/upper-level restriction."
         },
         {
-          "id": "free-electives",
-          "title": "Free electives — courses not already counted in this degree",
-          "credits": 42,
+          "id": "free-electives-1",
+          "allocationOf": "free-electives",
+          "title": "Free elective 1",
+          "credits": 3,
           "category": "electives",
           "group": "free-electives",
-          "bucket": true,
           "freeElective": true,
+          "excludeAlreadyUsed": true,
           "upper": false,
           "sourceIds": [
-            "liberty-history-online-2026-2027"
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-busi-courses-2026-2027"
           ],
-          "options": [],
-          "allowedCreditsRange": [
-            36,
-            45
+          "options": [
+            {
+              "id": "university-free-electives-1",
+              "provider": "University",
+              "code": "BUSI 101",
+              "receivingCode": "BUSI 101",
+              "title": "Introduction to Business",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-busi-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/busi/"
+            }
           ],
-          "excludeAlreadyUsed": true
+          "notes": "Named online university fallback: BUSI 101 Introduction to Business. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-2",
+          "allocationOf": "free-electives",
+          "title": "Free elective 2",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-busi-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-2",
+              "provider": "University",
+              "code": "BUSI 223",
+              "receivingCode": "BUSI 223",
+              "title": "Personal Finance",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-busi-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/busi/"
+            }
+          ],
+          "notes": "Named online university fallback: BUSI 223 Personal Finance. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-3",
+          "allocationOf": "free-electives",
+          "title": "Free elective 3",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-econ-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-3",
+              "provider": "University",
+              "code": "ECON 213",
+              "receivingCode": "ECON 213",
+              "title": "Principles of Microeconomics",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-econ-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/econ/"
+            }
+          ],
+          "notes": "Named online university fallback: ECON 213 Principles of Microeconomics. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-4",
+          "allocationOf": "free-electives",
+          "title": "Free elective 4",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-econ-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-4",
+              "provider": "University",
+              "code": "ECON 214",
+              "receivingCode": "ECON 214",
+              "title": "Principles of Macroeconomics",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-econ-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/econ/"
+            }
+          ],
+          "notes": "Named online university fallback: ECON 214 Principles of Macroeconomics. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-5",
+          "allocationOf": "free-electives",
+          "title": "Free elective 5",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-soci-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-5",
+              "provider": "University",
+              "code": "SOCI 200",
+              "receivingCode": "SOCI 200",
+              "title": "Introduction to Sociology",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-soci-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/soci/"
+            }
+          ],
+          "notes": "Named online university fallback: SOCI 200 Introduction to Sociology. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-6",
+          "allocationOf": "free-electives",
+          "title": "Free elective 6",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-soci-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-6",
+              "provider": "University",
+              "code": "SOCI 201",
+              "receivingCode": "SOCI 201",
+              "title": "Social Problems",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-soci-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/soci/"
+            }
+          ],
+          "notes": "Named online university fallback: SOCI 201 Social Problems. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-7",
+          "allocationOf": "free-electives",
+          "title": "Free elective 7",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-govt-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-7",
+              "provider": "University",
+              "code": "GOVT 200",
+              "receivingCode": "GOVT 200",
+              "title": "Constitutional Government and Free Enterprise",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-govt-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/govt/"
+            }
+          ],
+          "notes": "Named online university fallback: GOVT 200 Constitutional Government and Free Enterprise. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-8",
+          "allocationOf": "free-electives",
+          "title": "Free elective 8",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-musc-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-8",
+              "provider": "University",
+              "code": "MUSC 103",
+              "receivingCode": "MUSC 103",
+              "title": "Music Appreciation",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-musc-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/musc/"
+            }
+          ],
+          "notes": "Named online university fallback: MUSC 103 Music Appreciation. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-9",
+          "allocationOf": "free-electives",
+          "title": "Free elective 9",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-arts-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-9",
+              "provider": "University",
+              "code": "ARTS 105",
+              "receivingCode": "ARTS 105",
+              "title": "Art Appreciation",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-arts-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/arts/"
+            }
+          ],
+          "notes": "Named online university fallback: ARTS 105 Art Appreciation. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-10",
+          "allocationOf": "free-electives",
+          "title": "Free elective 10",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-hlth-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-10",
+              "provider": "University",
+              "code": "HLTH 252",
+              "receivingCode": "HLTH 252",
+              "title": "Drugs in Society",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-hlth-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/hlth/"
+            }
+          ],
+          "notes": "Named online university fallback: HLTH 252 Drugs in Society. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-11",
+          "allocationOf": "free-electives",
+          "title": "Free elective 11",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-csis-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-11",
+              "provider": "University",
+              "code": "CSIS 100",
+              "receivingCode": "CSIS 100",
+              "title": "Introduction to Information Systems and Information Technology",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-csis-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/csis/"
+            }
+          ],
+          "notes": "Named online university fallback: CSIS 100 Introduction to Information Systems and Information Technology. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-12",
+          "allocationOf": "free-electives",
+          "title": "Free elective 12",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-engl-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-12",
+              "provider": "University",
+              "code": "ENGL 201",
+              "receivingCode": "ENGL 201",
+              "title": "American Literature I",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-engl-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/engl/"
+            }
+          ],
+          "notes": "Named online university fallback: ENGL 201 American Literature I. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-13",
+          "allocationOf": "free-electives",
+          "title": "Free elective 13",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-engl-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-13",
+              "provider": "University",
+              "code": "ENGL 202",
+              "receivingCode": "ENGL 202",
+              "title": "American Literature II",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-engl-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/engl/"
+            }
+          ],
+          "notes": "Named online university fallback: ENGL 202 American Literature II. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
+        },
+        {
+          "id": "free-electives-14",
+          "allocationOf": "free-electives",
+          "title": "Free elective 14",
+          "credits": 3,
+          "category": "electives",
+          "group": "free-electives",
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "upper": false,
+          "sourceIds": [
+            "liberty-history-online-2026-2027",
+            "liberty-history-free-hlth-courses-2026-2027"
+          ],
+          "options": [
+            {
+              "id": "university-free-electives-14",
+              "provider": "University",
+              "code": "HLTH 105",
+              "receivingCode": "HLTH 105",
+              "title": "Introduction to the Health Professions",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "liberty-history-online-2026-2027",
+                "liberty-history-free-hlth-courses-2026-2027"
+              ],
+              "evidence": "published",
+              "url": "https://catalog.liberty.edu/undergraduate/courses/hlth/"
+            }
+          ],
+          "notes": "Named online university fallback: HLTH 105 Introduction to the Health Professions. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected."
         }
       ],
       "sources": [
@@ -512,6 +983,60 @@
           "id": "liberty-history-hist-courses-2026-2027",
           "url": "https://catalog.liberty.edu/undergraduate/courses/hist/",
           "title": "History course descriptions and capstone prerequisites",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-arts-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/arts/",
+          "title": "ARTS course descriptions, credit quantities and online offerings",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-busi-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/busi/",
+          "title": "BUSI course descriptions, credit quantities and online offerings",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-csis-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/csis/",
+          "title": "CSIS course descriptions, credit quantities and online offerings",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-econ-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/econ/",
+          "title": "ECON course descriptions, credit quantities and online offerings",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-engl-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/engl/",
+          "title": "ENGL course descriptions, credit quantities and online offerings",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-govt-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/govt/",
+          "title": "GOVT course descriptions, credit quantities and online offerings",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-hlth-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/hlth/",
+          "title": "HLTH course descriptions, credit quantities and online offerings",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-musc-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/musc/",
+          "title": "MUSC course descriptions, credit quantities and online offerings",
+          "checked": "2026-11-18"
+        },
+        {
+          "id": "liberty-history-free-soci-courses-2026-2027",
+          "url": "https://catalog.liberty.edu/undergraduate/courses/soci/",
+          "title": "SOCI course descriptions, credit quantities and online offerings",
           "checked": "2026-11-18"
         }
       ],
@@ -703,7 +1228,20 @@
           "title": "Free electives",
           "parentId": "elective",
           "requirementIds": [
-            "free-electives"
+            "free-electives-1",
+            "free-electives-2",
+            "free-electives-3",
+            "free-electives-4",
+            "free-electives-5",
+            "free-electives-6",
+            "free-electives-7",
+            "free-electives-8",
+            "free-electives-9",
+            "free-electives-10",
+            "free-electives-11",
+            "free-electives-12",
+            "free-electives-13",
+            "free-electives-14"
           ],
           "sourceId": "liberty-history-online-2026-2027"
         }

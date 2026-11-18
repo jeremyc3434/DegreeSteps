@@ -12,6 +12,7 @@ import {applyCourseListingIdentities} from './reviewed-course-identities.mjs';
 import {supplementModel as applyReviewedLibertyMaps} from './add-liberty-official-mappings.mjs';
 import {applyLibertyVerifiedBasics} from './liberty-verified-basics.mjs';
 import {addLibertyCLIOptions,readLibertyCLIReview} from './add-liberty-cli-awards.mjs';
+import {reviewedSourceDate} from './reviewed-source-date.mjs';
 const require=createRequire(import.meta.url),root=resolve(import.meta.dirname,'..');
 const Catalog=require('../dist/program-catalog.js');
 const Planner=require('../dist/planner.js');
@@ -126,11 +127,12 @@ for(const name of (await readdir(folder)).filter(n=>n.endsWith('.json')).sort())
       const identity=key(option.provider)+'|'+key(option.code),mapped=model.id+':'+requirement.id;
       if(courseIndex.has(identity)){const previous=courseIndex.get(identity);if(!previous.mappedCourseIds.includes(mapped))previous.mappedCourseIds.push(mapped);continue;}
       const source=model.sources.find(s=>option.sourceIds.includes(s.id));if(!source)continue;
-      courseSources.set(source.id,{...source,checkedAt:source.checked||doc.checkedOn,scope:'Original receiving-school course mapping. Provider credit recommendations and individual degree applicability require confirmation.'});
+      const evidenceCheckedAt=reviewedSourceDate(source);
+      courseSources.set(source.id,{...source,checkedAt:evidenceCheckedAt,scope:'Original receiving-school course mapping. Provider credit recommendations and individual degree applicability require confirmation.'});
       let url=null;try{const u=new URL(option.courseUrl||option.url);if(u.protocol==='https:'&&!u.username&&!u.password&&['sophia.org','study.com','straighterline.com','clep.collegeboard.org','saylor.org','getcollegecredit.com','christianleaders.org','christianleadersinstitute.org'].some(domain=>u.hostname===domain||u.hostname.endsWith('.'+domain)))url=u.href;}catch{}
       let providerDirectoryUrl=null;try{const u=new URL(option.providerDirectoryUrl);if(option.provider==='Christian Leaders Institute'&&u.protocol==='https:'&&!u.username&&!u.password&&u.hostname==='christianleaders.org'&&u.pathname==='/course/index.php'&&/^\d+$/.test(u.searchParams.get('categoryid')||''))providerDirectoryUrl=u.href;}catch{}
       const sourceCredits=positive(option.sourceCredits)?option.sourceCredits:null;
-      courseIndex.set(identity,{id:'mapped-'+createHash('sha256').update(identity).digest('hex').slice(0,20),provider:option.provider,providerId:option.providerId||slug(option.provider),title:option.title,code:option.code,codeAliases:list(option.codeAliases),url,...(providerDirectoryUrl?{providerDirectoryUrl}:{}),evidenceUrl:option.url||source.url,credits:sourceCredits,creditSystem:sourceCredits?option.sourceCreditSystem||null:null,creditBasis:sourceCredits?'curated-course-map':'not-yet-known',sourceId:source.id,checkedAt:doc.checkedOn,recommendationStatus:'requires-review',mappingStatus:option.evidence==='conditional'?'conditional-receiving-map':'published-receiving-map',mappedCourseIds:[mapped],subject:'Other'});
+      courseIndex.set(identity,{id:'mapped-'+createHash('sha256').update(identity).digest('hex').slice(0,20),provider:option.provider,providerId:option.providerId||slug(option.provider),title:option.title,code:option.code,codeAliases:list(option.codeAliases),url,...(providerDirectoryUrl?{providerDirectoryUrl}:{}),evidenceUrl:option.url||source.url,credits:sourceCredits,creditSystem:sourceCredits?option.sourceCreditSystem||null:null,creditBasis:sourceCredits?'curated-course-map':'not-yet-known',sourceId:source.id,checkedAt:evidenceCheckedAt,indexedAt:doc.checkedOn,recommendationStatus:'requires-review',mappingStatus:option.evidence==='conditional'?'conditional-receiving-map':'published-receiving-map',mappedCourseIds:[mapped],subject:'Other'});
     }
   }
   await output('dist/data/curricula/'+name,{version:1,checkedOn:doc.checkedOn,models});

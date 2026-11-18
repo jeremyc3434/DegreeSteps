@@ -1,0 +1,15 @@
+# TESU BA Psychology: a complete proposed course plan
+
+The current [Psychology degree requirements](https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology) support a complete 120-credit ledger: 45 general education, 45 area of study and 30 unrestricted electives. The source importer records one named, editable university-course baseline for every requirement. No new outside-course equivalency is inferred from a Psychology title.
+
+The area of study contains nine required courses, PSY-3520 as the social-psychology selection, the published PSY-3000 and PSY-3600 psychology electives, ECO-1110 and ECO-1120 in the six-credit social-science allowance, and LIB-4960. The economics choices are explicitly included in the [university's Social Sciences list](https://www.tesu.edu/degrees-programs/courses/general-education/2021-and-after.php). Original courses and receiving awards count once; the area-of-study introductory Psychology course cannot also fill general education.
+
+The plan enforces at least 18 upper-level credits inside the area of study, including the capstone. Upper-level free electives do not replace that requirement. C minima apply to composition and the area of study, without extending business-core rules to unrelated coursework. SOS-1100 and LIB-4960 remain university-only. The standard nonmilitary 15-credit course residency, derived 105-credit outside bound and separate 90-credit alternative-source maximum retain their different meanings.
+
+Published formal prerequisites include PSY-1010 before PSY-3500 and MAT-1210 before STA-2010. Advisory introductory knowledge, mathematics background, Microsoft Excel knowledge for the named ACC-1010 elective, and near-completion before the capstone stay advisory descriptions rather than invented prerequisite courses or completed-credit thresholds.
+
+The current catalog does not expose an academic-year edition label. The reviewed source identity and tuition binding therefore use the existing explicit current-catalog convention. Course and provider source review dates remain distinct. The BSBA business-course currency rules and Psychology certificate currency rules are not applied to this BA degree. This degree does not establish clinical licensure.
+
+The compiler attaches existing TESU receiving-code transfer evidence with its original quantities, dates, conditions and approval limits. The complete requirement ledger is separate from a personal university award or a claim that all 105 possible outside credits have been mapped. Military, foreign-credit and Edison Accelerate scenarios remain separate from this standard residency baseline.
+
+The importer reads [reviewed facts](../content/curricula/snapshots/tesu/psychology-current-2026-11-18-reviewed.json) and supports `--check` without changing review dates. Tests cover the actual compiled route, exact ledgers, scoped upper and grade rules, prerequisites, course identity, original-record preservation and tuition identity.

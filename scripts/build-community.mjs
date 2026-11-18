@@ -12,6 +12,7 @@ execFileSync(process.execPath,[resolve(root,'scripts/reviewed-course-identities.
 buildCreditSourceDiscovery(JSON.parse(await readFile(resolve(root,'dist/data/credit-sources.json'),'utf8')));
 execFileSync(process.execPath,[resolve(root,'scripts/add-liberty-official-mappings.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-tesu-official-mappings.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/add-tesu-prerequisites.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-liberty-cli-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-snhu-transfer-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-liberty-named-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
@@ -19,6 +20,8 @@ execFileSync(process.execPath,[resolve(root,'scripts/import-liberty-residential-
 execFileSync('python',[resolve(root,'scripts/import-liberty-online-expansion.py'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync('python',[resolve(root,'scripts/import-liberty-history-online.py'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-accounting.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-finance.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-psychology.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-public-site.mjs')],{cwd:root,stdio:'inherit'});

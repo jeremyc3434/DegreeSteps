@@ -55,9 +55,25 @@ def compile_document():
     capstone['minimumCompletedCredits'] = facts['capstoneSequence']['minimumCompletedCredits']
     capstone['sourceIds'].append(facts['capstoneSequence']['sourceId'])
     capstone['sourceIds'].append('liberty-history-online-academic-policy-2026-2027')
-    requirements.append({'id': 'free-electives', 'title': 'Free electives — courses not already counted in this degree', 'credits': 42,
-                         'category': 'electives', 'group': 'free-electives', 'bucket': True, 'freeElective': True,
-                         'upper': False, 'sourceIds': [sid], 'options': [], 'allowedCreditsRange': [36, 45], 'excludeAlreadyUsed': True})
+    fixed_codes = {requirement['code'] for requirement in requirements}
+    fallbacks = facts['freeElectiveFallbacks']
+    assert len(fallbacks) == len({choice['code'] for choice in fallbacks}) == 14
+    source_ids = {source['id'] for source in sources}
+    for index, choice in enumerate(fallbacks, 1):
+        code = choice['code']
+        assert code not in fixed_codes and choice['credits'] == 3
+        assert 'Online' in choice['offered'] and choice['formalPrerequisites'] == []
+        assert choice['sourceId'] in source_ids
+        identifier = 'free-electives-' + str(index)
+        evidence = [sid, choice['sourceId']]
+        requirements.append({'id': identifier, 'allocationOf': 'free-electives', 'title': 'Free elective ' + str(index), 'credits': 3,
+                             'category': 'electives', 'group': 'free-electives', 'freeElective': True, 'excludeAlreadyUsed': True,
+                             'upper': False, 'sourceIds': evidence,
+                             'options': [{'id': 'university-' + identifier, 'provider': 'University', 'code': code,
+                                          'receivingCode': code, 'title': choice['title'], 'credits': 3, 'upper': False,
+                                          'creditSystem': 'semester', 'creditOrigin': 'institutional', 'sourceIds': evidence,
+                                          'evidence': 'published', 'url': next(source['url'] for source in sources if source['id'] == choice['sourceId'])}],
+                             'notes': 'Named online university fallback: ' + code + ' ' + choice['title'] + '. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.'})
     assert sum(req['credits'] for req in requirements) == 120
     assert len({req['id'] for req in requirements}) == len(requirements)
     assert sum(req['credits'] for req in requirements if req['category'] == 'major') == 42
@@ -95,7 +111,7 @@ def compile_document():
                 ('major-core', 'Required history courses', 'major', [req['id'] for req in requirements if req['group'] == 'major-core'])]
     for group in facts['electiveRestrictions']:
         sections.append((group, group.replace('-', ' ').capitalize(), 'major', [req['id'] for req in requirements if req['group'] == group]))
-    sections.append(('free-electives', 'Free electives', 'elective', ['free-electives']))
+    sections.append(('free-electives', 'Free electives', 'elective', [req['id'] for req in requirements if req['group'] == 'free-electives']))
     model['curriculumSections'] = [{'id': ident, 'title': title, 'parentId': parent_id, 'requirementIds': ids, 'sourceId': sid} for ident, title, parent_id, ids in sections]
     route = {'id': route_id, 'parentId': parent['id'], 'school': facts['school'], 'title': model['title'], 'level': 'bachelor',
              'modalities': ['online'], 'url': facts['sourceUrl'], 'field': 'humanities', 'fields': ['humanities'],

@@ -27,19 +27,24 @@ const ready = (async () => {
 const pick = (catalog, modelId) => catalog.pathways.find(route => route.modelId === modelId);
 const seed = (catalog, route) => Journey.initialize(Sheet.selectPathway(Sheet.initialize(null, null, catalog), route), null, catalog);
 const targets = ['curriculum-liberty-psychology-bs-online', 'curriculum-snhu-catalog-8919d742796348bd', 'curriculum-wgu-bs-computer-science-reviewed'];
+const inactiveStatuses=new Set(['planned','upcoming','approval-pending','inactive']);
+const sourceModelIds=fs.readdirSync(path.join(__dirname,'content/curricula'),{withFileTypes:true}).filter(entry=>entry.isFile()&&entry.name.endsWith('.json')).flatMap(entry=>{
+ const document=JSON.parse(fs.readFileSync(path.join(__dirname,'content/curricula',entry.name),'utf8'));
+ return (document.models||document.programs||[]).filter(model=>!inactiveStatuses.has(model.status)).map(model=>model.id);
+}).sort();
+const standaloneModelIds=Catalog.modelFiles.map(file=>JSON.parse(fs.readFileSync(path.join(root,file),'utf8')).id).sort();
 
-test('all 43 compiled and four standalone curricula load once per file and preserve exact ledgers without personal awards', async () => {
+test('all active source and standalone curricula load once per file and preserve exact ledgers without personal awards', async () => {
   const {catalog, models} = await ready;
   const researchedReady=new Map([
     ['curriculum-wgu-catalog-ecceaa488637ac83',{external:69,institutional:41}],
     ['liberty-business-residential',{external:83,institutional:37}]
   ]);
   const observedReady=[];
-  assert.equal(index.models.length, 47);
-  assert.equal(index.models.filter(entry => entry.path.startsWith('data/curricula/')).length, 43, 'All 43 compiled curricula remain registered');
-  assert.equal(index.models.filter(entry => Catalog.modelFiles.includes(entry.path)).length, 4, 'Four established standalone curricula are explicitly registered');
-  assert.equal(catalog.curriculumRegistry.modelCount, 47);
-  assert.equal(models.length, 47, '43 compiled curricula and four established curricula');
+  assert.deepEqual(index.models.filter(entry=>entry.path.startsWith('data/curricula/')).map(entry=>entry.id).sort(),sourceModelIds,'Every active researched source model must be registered');
+  assert.deepEqual(index.models.filter(entry=>Catalog.modelFiles.includes(entry.path)).map(entry=>entry.id).sort(),standaloneModelIds,'Established standalone curricula must remain registered');
+  assert.equal(catalog.curriculumRegistry.modelCount,sourceModelIds.length+standaloneModelIds.length);
+  assert.deepEqual(models.map(model=>model.id).sort(),[...sourceModelIds,...standaloneModelIds].sort());
   for (const entry of index.models) {
     const route = pick(catalog, entry.id);
     assert(route, entry.id);

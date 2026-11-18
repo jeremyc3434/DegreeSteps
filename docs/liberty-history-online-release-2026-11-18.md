@@ -10,6 +10,8 @@ The degree retains 30 Liberty credits, 30 upper-level credits, a C minimum in up
 
 The selected course plan has a complete ledger, but it is not an individual transfer award or a teacher-licensure program. Prices and provider credit versions remain attached to their own reviewed evidence rather than inferred from course titles.
 
+The 42-credit free-elective allowance also has fourteen distinct, named online university fallback courses. A student who deselects all outside providers therefore retains a complete course plan rather than fourteen generic "choose a course" placeholders. These are editable selections within unrestricted elective capacity; their codes do not become mandatory receiving requirements, and the existing outside-course choices keep their actual receiving identities. The stable `free-electives-1` through `free-electives-14` IDs and original 120-credit ledger are preserved. Current official course descriptions establish the selected courses' three-credit quantities, online delivery and absence of formal prerequisites. Residential-only BUSI 105 and BUSI 240 are excluded.
+
 The broader Interdisciplinary Studies B.S. was also investigated. Its current parent page describes 51 major credits including RSCH 201, while its current online degree-completion page describes 48 without that course. No new Interdisciplinary Studies bachelor template was created from those conflicting totals.
 
 Verification covers shared-credit allocation, department/level restrictions, source bindings, conservative waiver cases, determinism, actual compiled outside options, residency, upper-level totals and capstone prerequisites. This work does not claim a browser-rendering pass or universal Liberty program coverage.

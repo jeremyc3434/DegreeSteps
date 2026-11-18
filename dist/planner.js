@@ -390,6 +390,19 @@
     return errors;
   }
 
+  function upperGroupRules(program) {
+    const raw = program.upperGroupMinimums;
+    if (raw === undefined) return [];
+    if (!Array.isArray(raw)) return [{valid:false}];
+    return raw.map(rule => {
+      if (!rule || typeof rule !== 'object' || Array.isArray(rule) || !finite(rule.credits) || rule.credits < 0) return {valid:false};
+      const single = Object.prototype.hasOwnProperty.call(rule, 'group'), union = Object.prototype.hasOwnProperty.call(rule, 'groups');
+      const names = single && !union ? [rule.group] : union && !single && Array.isArray(rule.groups) ? rule.groups : [];
+      if (!names.length || names.some(name => typeof name !== 'string' || !name.trim() || name !== name.trim()) || new Set(names).size !== names.length) return {valid:false};
+      return {valid:true, names, credits:rule.credits};
+    });
+  }
+
   function academicErrors(program, rows) {
     const errors = [], t = totals(program, rows), ids = new Set();
     for (const row of rows) {
@@ -418,9 +431,10 @@
     const waiver = program.appliedTransferWaiver;
     if (waiver && t.external + 0.001 < number(waiver.minimumQualifyingTransferCredits)) errors.push({ code: 'waiver_transfer_threshold', message: 'This proposed waiver scenario requires at least ' + waiver.minimumQualifyingTransferCredits + ' qualifying approved transfer credits; the current plan does not even reach that proposed transfer total.' });
 
-    for (const group of program.upperGroupMinimums || []) {
-      const credits = sum(rows.filter(row => row.subgroup === group.group && row.upper), row => row.credits);
-      if (credits + 0.001 < number(group.credits)) errors.push({ code: 'group_upper', message: 'The ' + group.group + ' group needs at least ' + group.credits + ' upper-level credits.' });
+    for (const group of upperGroupRules(program)) {
+      if (!group.valid) {errors.push({code:'upper_group_policy',message:'The upper-level credit rule needs a nonnegative minimum and distinct named requirement groups.'});continue;}
+      const credits = sum(rows.filter(row => group.names.includes(row.subgroup) && row.upper), row => row.credits);
+      if (credits + 0.001 < group.credits) errors.push({ code: 'group_upper', message: 'The ' + group.names.join(' / ') + ' group needs at least ' + group.credits + ' upper-level credits.' });
     }
     return [...errors, ...sourceUseErrors(rows)];
   }
@@ -571,7 +585,7 @@
   function assignmentSearch(program, input, base, menus, initial, usableErrors) {
     const requested = Number(input.optimizationNodeBudget);
     const nodeBudget = Number.isInteger(requested) && requested >= 0 ? Math.min(requested, 100000) : 12000;
-    const requirements = program.requirements || [], groups = program.upperGroupMinimums || [];
+    const requirements = program.requirements || [], groups = upperGroupRules(program);
     let best = initial, bestScore = candidateScore(program, best, input, input.priority);
     let bestUsable = !usableErrors(best).length, statesVisited = 0, budgetExhausted = false;
     const eligibleCredits = base.reduce((credits, row, index) => credits + (row.option || menus[index].length ? row.credits : 0), 0);
@@ -593,7 +607,7 @@
       return [filled && !institutional ? row.credits : 0, filled && (isAlternative(row.option) || row.unknownProvenance) ? row.credits : 0,
         institutional ? row.credits : 0, institutional && row.category === 'major' ? row.credits : 0,
         filled && row.upper ? row.credits : 0, row.status === 'planned' && institutional ? row.credits : 0,
-        ...groups.map(group => filled && row.upper && row.subgroup === group.group ? row.credits : 0)];
+        ...groups.map(group => group.valid && filled && row.upper && group.names.includes(row.subgroup) ? row.credits : 0)];
     };
     const metaFor = row => {
       const option = row.option, source = option && option.provider !== 'University' && !(option.provider === 'Prior learning' && !option.code) ? sourceActionKey(option) : null;

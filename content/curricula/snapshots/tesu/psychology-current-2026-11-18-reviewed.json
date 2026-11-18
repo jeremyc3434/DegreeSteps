@@ -1,0 +1,478 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-18",
+  "school": "Thomas Edison State University",
+  "degree": {
+    "title": "B.A. in Psychology",
+    "totalCredits": 120,
+    "generalCredits": 45,
+    "areaOfStudyCredits": 45,
+    "freeElectiveCredits": 30,
+    "generalFeaturedCodes": [
+      "ENC-1010",
+      "ENC-1020",
+      "COM-2090",
+      "MAT-1210",
+      "SOS-1100",
+      "SOC-1010",
+      "ETH-2200",
+      "POS-1100",
+      "SOC-2100",
+      "HIS-1130",
+      "FIL-1100",
+      "HIS-1140",
+      "PHI-1300",
+      "EAS-1010",
+      "BIO-2080"
+    ],
+    "requiredCourses": [
+      [
+        "PSY-1010",
+        "Introduction to Psychology",
+        3
+      ],
+      [
+        "PSY-3220",
+        "Research in Experimental Psychology",
+        3
+      ],
+      [
+        "PSY-3790",
+        "Social Psychology",
+        3
+      ],
+      [
+        "PSY-4000",
+        "History and Systems of Psychology",
+        3
+      ],
+      [
+        "PSY-3740",
+        "Physiological Psychology",
+        3
+      ],
+      [
+        "PSY-2110",
+        "Developmental Psychology",
+        3
+      ],
+      [
+        "PSY-3500",
+        "Abnormal Psychology",
+        3
+      ],
+      [
+        "STA-2010",
+        "Principles of Statistics",
+        3
+      ],
+      [
+        "SOS-4500",
+        "Ethics in the Social Sciences",
+        3
+      ]
+    ],
+    "socialPsychologySelection": [
+      [
+        "PSY-3520",
+        "Psychology of Personality",
+        3
+      ]
+    ],
+    "psychologyElectives": [
+      [
+        "PSY-3000",
+        "Thanatology: An Understanding of Death and Dying",
+        3
+      ],
+      [
+        "PSY-3600",
+        "Organizational Theory",
+        3
+      ]
+    ],
+    "socialScienceElectives": [
+      [
+        "ECO-1110",
+        "Macroeconomics",
+        3
+      ],
+      [
+        "ECO-1120",
+        "Microeconomics",
+        3
+      ]
+    ],
+    "capstone": [
+      "LIB-4960",
+      "Liberal Arts Capstone – Social Sciences",
+      3
+    ],
+    "selectedFreeElectives": [
+      [
+        "ART-1000",
+        "A World of Art",
+        3
+      ],
+      [
+        "ANT-1010",
+        "Introduction to Anthropology",
+        3
+      ],
+      [
+        "HIS-1210",
+        "Introduction to World History I",
+        3
+      ],
+      [
+        "BUS-1010",
+        "Introduction to Business",
+        3
+      ],
+      [
+        "CIS-1070",
+        "Computer Concepts and Applications",
+        3
+      ],
+      [
+        "ACC-1010",
+        "Principles of Financial Accounting",
+        3
+      ],
+      [
+        "LAW-2010",
+        "Business Law",
+        3
+      ],
+      [
+        "MAN-2100",
+        "Principles of Management",
+        3
+      ],
+      [
+        "MKT-2010",
+        "Introduction to Marketing",
+        3
+      ],
+      [
+        "HUM-1030",
+        "Introduction to the Humanities III: Music",
+        3
+      ]
+    ]
+  },
+  "policies": {
+    "institutionMinCredits": 15,
+    "externalMaxCreditsDerived": 105,
+    "alternativeMaxCredits": 90,
+    "areaOfStudyUpperMinCredits": 18,
+    "minimumCompositionAndAreaOfStudyGrade": "C",
+    "overallMinimumGPA": 2,
+    "requiredInstitutionalCourses": [
+      "SOS-1100",
+      "LIB-4960"
+    ],
+    "qualifyingResidencyMethods": [
+      "AC",
+      "OL",
+      "NU",
+      "GS",
+      "EP"
+    ],
+    "specificPsychologyCourseCurrencyRuleEstablished": false,
+    "businessCurrencyRuleApplicable": false
+  },
+  "courses": {
+    "PSY-1010": {
+      "title": "Introduction to Psychology",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-psychology-course-psy1010-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-3220": {
+      "title": "Research in Experimental Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3220-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-3790": {
+      "title": "Social Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3790-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-4000": {
+      "title": "History and Systems of Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy4000-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-3740": {
+      "title": "Physiological Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3740-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-2110": {
+      "title": "Developmental Psychology",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-psychology-course-psy2110-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-3500": {
+      "title": "Abnormal Psychology",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3500-2026-11-18",
+      "prerequisites": [
+        "PSY-1010"
+      ],
+      "advisory": ""
+    },
+    "STA-2010": {
+      "title": "Principles of Statistics",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-psychology-course-sta2010-2026-11-18",
+      "prerequisites": [
+        "MAT-1210"
+      ],
+      "advisory": "Knowledge equivalent to MAT-1210 with C or better is advised; the published formal prerequisite is MAT-1210."
+    },
+    "SOS-4500": {
+      "title": "Ethics in the Social Sciences",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-sos4500-2026-11-18",
+      "prerequisites": [],
+      "advisory": ""
+    },
+    "PSY-3520": {
+      "title": "Psychology of Personality",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3520-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Introductory psychology knowledge is advised; this is separate from a formal prerequisite."
+    },
+    "PSY-3000": {
+      "title": "Thanatology: An Understanding of Death and Dying",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3000-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Introductory psychology knowledge is advised; this is separate from a formal prerequisite."
+    },
+    "PSY-3600": {
+      "title": "Organizational Theory",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-psy3600-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Introductory psychology knowledge is advised; this is separate from a formal prerequisite."
+    },
+    "ECO-1110": {
+      "title": "Macroeconomics",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-psychology-course-eco1110-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Three credits of college-level mathematics are advised, separate from a formal prerequisite."
+    },
+    "ECO-1120": {
+      "title": "Microeconomics",
+      "credits": 3,
+      "upper": false,
+      "sourceId": "tesu-psychology-course-eco1120-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Three credits of college-level mathematics are advised, separate from a formal prerequisite."
+    },
+    "LIB-4960": {
+      "title": "Liberal Arts Capstone – Social Sciences",
+      "credits": 3,
+      "upper": true,
+      "sourceId": "tesu-psychology-course-lib4960-2026-11-18",
+      "prerequisites": [],
+      "advisory": "Near-completion of degree requirements is advised before enrolling; no numeric completed-credit threshold is stated."
+    }
+  },
+  "sources": [
+    {
+      "id": "tesu-psychology-current-2026-11-18",
+      "title": "TESU current Bachelor of Arts in Psychology complete degree requirements",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-degree-policy-2026-11-18",
+      "title": "TESU current university upper-level degree policy",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/degree-policies/degree-requirements",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-social-science-selection-2026-11-18",
+      "title": "TESU official social-science course classification and duplicate-credit rules",
+      "url": "https://www.tesu.edu/degrees-programs/courses/general-education/2021-and-after.php",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-residency-2026-11-18",
+      "title": "TESU current standard, military and foreign-credit residency policies",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-academic-policies/enrollment/residency-requirements",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-transfer-2026-11-18",
+      "title": "TESU current transfer limits, required university courses and grades",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit/",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-alternative-cap-2026-11-18",
+      "title": "TESU combined noncollegiate credit limit",
+      "url": "https://www.tesu.edu/admissions/faqs/transfer-credits.php",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-grades-2026-11-18",
+      "title": "TESU undergraduate grade and GPA policy",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/university-policies-and-procedures/undergraduate-course-policies/policy-on-grading",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-tuition-2026-11-18",
+      "title": "TESU undergraduate tuition schedule effective August 2026",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy1010-2026-11-18",
+      "title": "TESU current PSY-1010 Introduction to Psychology",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/1000/psy-1010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy3220-2026-11-18",
+      "title": "TESU current PSY-3220 Research in Experimental Psychology",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3220",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy3790-2026-11-18",
+      "title": "TESU current PSY-3790 Social Psychology",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3790",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy4000-2026-11-18",
+      "title": "TESU current PSY-4000 History and Systems of Psychology",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/4000/psy-4000",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy3740-2026-11-18",
+      "title": "TESU current PSY-3740 Physiological Psychology",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3740",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy2110-2026-11-18",
+      "title": "TESU current PSY-2110 Developmental Psychology",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/2000/psy-2110",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy3500-2026-11-18",
+      "title": "TESU current PSY-3500 Abnormal Psychology",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3500",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-sta2010-2026-11-18",
+      "title": "TESU current STA-2010 Principles of Statistics",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/sta-statistics/2000/sta-2010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-sos4500-2026-11-18",
+      "title": "TESU current SOS-4500 Ethics in the Social Sciences",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/sos-social-sciences/4000/sos-4500",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy3520-2026-11-18",
+      "title": "TESU current PSY-3520 Psychology of Personality",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3520",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy3000-2026-11-18",
+      "title": "TESU current PSY-3000 Thanatology: An Understanding of Death and Dying",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3000",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-psy3600-2026-11-18",
+      "title": "TESU current PSY-3600 Organizational Theory",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3600",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-eco1110-2026-11-18",
+      "title": "TESU current ECO-1110 Macroeconomics",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/eco-economics/1000/eco-1110",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-eco1120-2026-11-18",
+      "title": "TESU current ECO-1120 Microeconomics",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/eco-economics/1000/eco-1120",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-course-lib4960-2026-11-18",
+      "title": "TESU current LIB-4960 Liberal Arts Capstone – Social Sciences",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/lib-liberal-arts/4000/lib-4960",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-hum1030-2026-11-18",
+      "title": "TESU HUM-1030 named online elective",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hum-humanities/1000/hum-1030",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-psychology-acc1010-2026-11-18",
+      "title": "TESU ACC-1010 named online elective and Excel advisory",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/acc-accounting/1000/acc-1010",
+      "checked": "2026-11-18"
+    },
+    {
+      "id": "tesu-accounting-bus1010-2026-11-18",
+      "title": "TESU BUS-1010 three-credit course",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/bus-business/1000/bus-1010",
+      "checked": "2026-11-18"
+    }
+  ],
+  "notes": [
+    "The three-credit PSY-3520 choice is one of the published Social Psychology elective alternatives.",
+    "PSY-3000 and PSY-3600 are the two published Psychology elective examples, chosen as a named baseline.",
+    "ECO-1110 and ECO-1120 are explicitly listed as Social Sciences in the university-linked selection source, and are not repeated in this baseline general education.",
+    "Each university code and original learning action is allocated once; Psychology in the area of study cannot also fulfill a general-education row.",
+    "Current catalog does not identify an academic-year edition in retrieved text; do not infer it from provider equivalency years.",
+    "The ten-year half-area and five-year Business Capstone currency rules explicitly apply to BS/BSBA, not this BA Psychology degree. Certificate currency terms are also not borrowed.",
+    "All provider awards are inherited only from existing exact same-school receiving-code evidence, retaining their original source conditions and dates."
+  ]
+}
