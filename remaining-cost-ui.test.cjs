@@ -51,6 +51,23 @@ test('complete comparable estimates rank by total cost, including zero remaining
  const {ui,priority}=mount();priority('cost');ui.setView({scenarios:[scenario('higher',5000),scenario('lower',4500),scenario('finished',0)]});
  assert.equal(ui.bestId(),'finished');assert.equal(ui.recommendationLabel(true),'Lowest estimated cost');
 });
+test('an automatic shortlist cannot award a winner when an omitted eligible plan has no comparable estimate',()=>{
+ for(const [metric,field] of [['cost','remainingCost'],['tuition','universityTuitionRemaining'],['terms','estimatedWeeks']]){
+  const {ui,priority}=mount();priority(metric);
+  const scenarios=[scenario('one',4000,{[field]:10}),scenario('two',5000,{[field]:20}),scenario('three',6000,{[field]:30})];
+  ui.setView({scenarios,rankingScope:{mode:'eligible-routes',eligibleCount:4,comparable:false,metric:null,unestimatedCount:1}});
+  assert.equal(ui.bestId(),null,metric+' keeps the omitted route in scope');
+  ui.setView({scenarios,rankingScope:{mode:'eligible-routes',eligibleCount:4,comparable:true,metric:field,unestimatedCount:0}});
+  assert.equal(ui.bestId(),'one',metric+' can rank a completely comparable pool');
+  ui.setView({scenarios,rankingScope:{mode:'selected-plans',eligibleCount:3,comparable:true,metric:field}});
+  assert.equal(ui.bestId(),'one',metric+' retains explicit selected-plan comparison');
+ }
+});
+test('a scoped tuition-and-courses ordering cannot become a total-cost winner in the cards',()=>{
+ const {ui,priority}=mount();priority('cost');
+ ui.setView({scenarios:[scenario('one',4000),scenario('two',5000)],rankingScope:{mode:'eligible-routes',eligibleCount:4,comparable:true,metric:'estimatedBaseCost'}});
+ assert.equal(ui.bestId(),null);
+});
 test('unknown tuition or study time prevents a winner badge over the remaining eligible routes',()=>{
  for(const [metric,field] of [['tuition','universityTuitionRemaining'],['terms','estimatedWeeks']]){
   const {ui,priority}=mount();priority(metric);

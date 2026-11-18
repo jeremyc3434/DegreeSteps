@@ -54,6 +54,9 @@
  function degrees(){const rows=readyRoutes().filter(p=>p.school===$('compare-school').value&&(!$('compare-level').value||p.level===$('compare-level').value)).sort((a,b)=>a.title.localeCompare(b.title));$('compare-degree').innerHTML=rows.length?rows.map(p=>'<option value="route:'+esc(p.id)+'">'+esc(p.title)+'</option>').join(''):'<option value="">No ready-to-use plan at this level</option>';}
  function bestId(){
   const metric=$('compare-priority').value,key=metric==='collection'?'collectionFitFraction':metric==='credits'?'completedFitFraction':metric==='cost'?'remainingCost':metric==='tuition'?'universityTuitionRemaining':'estimatedWeeks';
+  // Automatic suggestions may omit eligible plans from the three visible
+  // cards. Keep their missing estimates in the engine's comparison scope.
+  if(['cost','tuition','terms'].includes(metric)&&view.rankingScope?.mode==='eligible-routes'&&(!view.rankingScope.comparable||view.rankingScope.metric!==key))return null;
   const eligible=view.scenarios.filter(s=>s.available&&s.eligible),rows=eligible.filter(s=>Number.isFinite(s.summary?.[key]));
   // A known subtotal cannot beat an unpriced route by appearing artificially cheap.
   if(['cost','tuition','terms'].includes(metric)&&rows.length!==eligible.length)return null;

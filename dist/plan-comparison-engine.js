@@ -187,7 +187,7 @@
   const draftCache=new Map(),modelIds=new Set(models.map(model=>model.id)),records=inventory(state,[],models),checkedPrograms=new Set();
   const comparisonPriority=options.priority||state.whatIf?.priority,priority=comparisonPriority==='cost'?'cost':comparisonPriority==='terms'?'speed':comparisonPriority==='tuition'?'tuition':['collection','credits'].includes(comparisonPriority)?'balanced':state.profile?.priority;
   const reuseBasis='Recommendations compare the share of each degree covered by jointly placed courses, then finished coursework and your goals. Different credit units are compared as a share of the degree. Matches remain provisional; missing maps are not rejection decisions.';
-  let rankBasis=reuseBasis;
+  let rankBasis=reuseBasis,automaticRankedRows=null;
   function priorityMetric(rows){
    const available=rows.filter(row=>row.available&&row.eligible!==false);if(!available.length||new Set(available.map(row=>row.level)).size>1)return null;
    const known=name=>available.every(row=>typeof row[name]==='number'&&Number.isFinite(row[name])&&row[name]>=0);
@@ -196,7 +196,27 @@
    if(['speed','fastest'].includes(priority))return known('estimatedWeeks')?'estimatedWeeks':null;
    return null;
   }
+  const finiteEstimate=value=>typeof value==='number'&&Number.isFinite(value)&&value>=0;
+  function availableOrderingMetric(rows){
+   const available=rows.filter(row=>row.available&&row.eligible!==false);
+   if(!available.length||new Set(available.map(row=>row.level)).size>1)return null;
+   const comparable=priorityMetric(rows);if(comparable)return comparable;
+   const metric=priority==='cost'?'estimatedBaseCost':priority==='tuition'?'universityTuitionRemaining':['speed','fastest'].includes(priority)?'estimatedWeeks':null;
+   return metric&&available.some(row=>finiteEstimate(row[metric]))?metric:null;
+  }
   function basisFor(metric){return metric==='remainingCost'?'Suggested routes compare the estimated remaining tuition, outside courses and confirmed fee assumptions. These are estimates before financial aid; university approval is still required.':metric==='estimatedBaseCost'?'Suggested routes compare remaining tuition and outside-course estimates. Unconfirmed fees and other extras are excluded, so this does not establish the lowest all-in degree cost.':metric==='universityTuitionRemaining'?'Suggested routes compare remaining university tuition only. Outside courses and other charges are shown separately.':metric==='estimatedWeeks'?'Suggested routes compare estimated completion weeks using each plan’s stated course pace and university term assumptions. These are planning estimates, not promised graduation dates.':['cost','tuition'].includes(priority)?'Some eligible plans still need tuition or outside-course prices. Suggestions use course fit until their cost estimates can be compared.': ['speed','fastest'].includes(priority)?'Some eligible plans still need course pace or university scheduling details. Suggestions use course fit until their completion estimates can be compared.':reuseBasis;}
+  function orderingBasis(rows,metric){
+   const available=rows.filter(row=>row.available&&row.eligible!==false);
+   if(new Set(available.map(row=>row.level)).size>1&&['cost','tuition','speed','fastest'].includes(priority))return 'Suggestions use course fit because these plans lead to different degree levels.';
+   if(!metric||priorityMetric(rows))return basisFor(priorityMetric(rows));
+   const missing=available.filter(row=>!finiteEstimate(row[metric])).length,subject=missing+' matching plan'+(missing===1?' still needs':'s still need');
+   return metric==='estimatedBaseCost'?'Ordered by available tuition and outside-course estimates. Fees and other extras are excluded. '+subject+' tuition or outside-course prices.':metric==='universityTuitionRemaining'?'Ordered by available university tuition estimates. Outside courses and other charges are excluded. '+subject+' a university tuition estimate.':'Ordered by available study-time estimates. '+subject+' course pace or university scheduling details.';
+  }
+  function compareEstimates(left,right,metric){
+   if(!metric||!left.available||!right.available)return 0;
+   const leftKnown=finiteEstimate(left[metric]),rightKnown=finiteEstimate(right[metric]);
+   return Number(rightKnown)-Number(leftKnown)||(leftKnown&&rightKnown?left[metric]-right[metric]:0);
+  }
   function rankedRoutes(profile,excludedId){
    const ranked=Guide.recommend(profile,{pathways:all.filter(route=>modelIds.has(route.modelId)&&route.id!==excludedId)},models,state.learning).map(fit=>{
     const id='route:'+fit.pathway.id,next=target(state,id,catalog,options),draft=Journey.buildDraft(next,catalog,models);draftCache.set(id,{next,draft});
@@ -204,8 +224,13 @@
     const available=valid(draft),collection=available?collectionFit(next,draft,records):null,cost=available?remainingCosts(draft,next,costData):null;draftCache.get(id).cost=cost;
     return{fit,id,available,level:draft.pathway.level,remainingCost:cost?.total,estimatedBaseCost:cost?.estimatedBaseCost,universityTuitionRemaining:cost?.universityTuition,estimatedWeeks:draft.plan?.timing.scenarioWeeks,credits:collection?.collectionFitCredits||0,fraction:collection?.collectionFitFraction||0,completedFraction:collection?.completedFitFraction||0,remaining:draft.program?draft.plan?.totals?.institutional/draft.program.totalCredits:Infinity};
    });
-   const metric=priorityMetric(ranked);rankBasis=basisFor(metric);
-   return ranked.sort((a,b)=>Number(b.available)-Number(a.available)||(metric&&a.available&&b.available?a[metric]-b[metric]:0)||b.fraction-a.fraction||b.completedFraction-a.completedFraction||b.fit.score-a.fit.score||a.remaining-b.remaining||a.fit.pathway.title.localeCompare(b.fit.pathway.title));
+   const scopeRows=[...ranked];
+   if(hasTarget&&excludedId){
+    const available=valid(current),cost=available?remainingCosts(current,state,costData):null,eligible=Boolean(Guide.recommend(state.profile,{pathways:[current.pathway]},models,state.learning)[0]);
+    scopeRows.push({id:'current',available,eligible,level:current.pathway.level,remainingCost:cost?.total,estimatedBaseCost:cost?.estimatedBaseCost,universityTuitionRemaining:cost?.universityTuition,estimatedWeeks:current.plan?.timing.scenarioWeeks});
+   }
+   const metric=availableOrderingMetric(scopeRows);rankBasis=orderingBasis(scopeRows,metric);automaticRankedRows=ranked;
+   return ranked.sort((a,b)=>Number(b.available)-Number(a.available)||compareEstimates(a,b,metric)||b.fraction-a.fraction||b.completedFraction-a.completedFraction||b.fit.score-a.fit.score||a.remaining-b.remaining||a.fit.pathway.title.localeCompare(b.fit.pathway.title));
   }
   const picks=options.selectedIds||state.whatIf?.selectedIds;let ids=list(picks).filter(id=>id!=='current').slice(0,hasTarget?2:3);
   if(!hasTarget&&!ids.length){
@@ -222,10 +247,20 @@
   for(const scenario of scenarios)if(scenario.draft.program)checkedPrograms.add(scenario.draft.program.id);
   const courses=inventory(state,courseFirst?[]:scenarios.filter(s=>s.available).map(s=>s.draft),models,options.candidate),matrixDeferred=options.deferMatrix===true&&!options.candidate,view={courses,scenarios};
   const matrix=matrixDeferred?[]:courseMatrix(view,catalog,models);
-  const comparable=scenarios.map(scenario=>({id:scenario.id,available:scenario.available,eligible:scenario.eligible,level:scenario.draft.pathway?.level,...scenario.summary})),metric=priorityMetric(comparable),recommended=metric?comparable.filter(row=>row.available&&row.eligible).sort((a,b)=>a[metric]-b[metric]||b.collectionFitFraction-a.collectionFitFraction)[0]:null;
-  const recommendation=recommended?{id:recommended.id,metric,reason:basisFor(metric),partial:metric==='estimatedBaseCost',provisional:true}:null;
-  if(recommendation)rankBasis=recommendation.reason;else if(['cost','tuition','speed','fastest'].includes(priority))rankBasis=basisFor(null);
-  return{scenarios,courses,matrix,matrixDeferred,courseFirst,hasTarget,selectedIds:ids,options:all.map(p=>({id:'route:'+p.id,label:p.school+' — '+p.title,pathwayId:p.id,school:p.school,title:p.title,mapped:Boolean(p.modelId)})),mappedProgramsChecked:checkedPrograms.size,mappedProgramsAvailable:new Set(all.filter(route=>route.modelId).map(route=>route.modelId)).size,saved:saved(state),rankBasis,recommendation};
+  const comparable=scenarios.map(scenario=>({id:scenario.id,available:scenario.available,eligible:scenario.eligible,level:scenario.draft.pathway?.level,...scenario.summary}));
+  // An automatic shortlist still represents every eligible route checked above.
+  // Do not silently narrow its comparison scope to three visible cards: an
+  // unpriced or unscheduled fourth route must keep a winner claim unavailable.
+  // Explicitly selected comparisons are scoped to those selected plans instead.
+  const scopeRows=automaticRankedRows?[...automaticRankedRows,...comparable.filter(row=>row.id==='current')]:comparable,metric=priorityMetric(scopeRows),scope=automaticRankedRows?'eligible-routes':'selected-plans';
+  const eligibleRows=scopeRows.filter(row=>row.available&&row.eligible!==false),orderingMetric=availableOrderingMetric(scopeRows),unestimated=orderingMetric?eligibleRows.filter(row=>!finiteEstimate(row[orderingMetric])):eligibleRows;
+  const orderedRows=automaticRankedRows?[...comparable.filter(row=>row.id==='current'),...automaticRankedRows]:comparable;
+  const rankingScope={mode:scope,eligibleCount:eligibleRows.length,metric,comparable:Boolean(metric),orderingMetric,estimatedCount:eligibleRows.length-unestimated.length,unestimatedCount:unestimated.length,unestimatedRouteIds:unestimated.map(row=>row.id),orderedRouteIds:orderedRows.map(row=>row.id),mixedLevels:new Set(eligibleRows.map(row=>row.level)).size>1};
+  const recommended=metric?comparable.filter(row=>row.available&&row.eligible).sort((a,b)=>a[metric]-b[metric]||b.collectionFitFraction-a.collectionFitFraction)[0]:null;
+  const recommendation=recommended?{id:recommended.id,metric,reason:basisFor(metric),partial:metric==='estimatedBaseCost',provisional:true,scope,comparedPlanCount:rankingScope.eligibleCount}:null;
+  if(recommendation)rankBasis=recommendation.reason;else if(['cost','tuition','speed','fastest'].includes(priority))rankBasis=orderingBasis(scopeRows,orderingMetric);
+  const rankedCandidates=list(automaticRankedRows).map(row=>({id:row.id,pathwayId:row.fit.pathway.id,available:row.available,level:row.level,remainingCost:row.remainingCost??null,estimatedBaseCost:row.estimatedBaseCost??null,universityTuitionRemaining:row.universityTuitionRemaining??null,estimatedWeeks:row.estimatedWeeks??null,collectionFitCredits:row.credits,collectionFitFraction:row.fraction,completedFitFraction:row.completedFraction}));
+  return{scenarios,courses,matrix,matrixDeferred,courseFirst,hasTarget,selectedIds:ids,options:all.map(p=>({id:'route:'+p.id,label:p.school+' — '+p.title,pathwayId:p.id,school:p.school,title:p.title,mapped:Boolean(p.modelId)})),mappedProgramsChecked:checkedPrograms.size,mappedProgramsAvailable:new Set(all.filter(route=>route.modelId).map(route=>route.modelId)).size,saved:saved(state),rankBasis,rankingScope,rankedCandidates,recommendation};
  }
  function courseMatrix(view,catalog,models){return view.courses.map(course=>({course,cells:Object.fromEntries(view.scenarios.map(scenario=>[scenario.id,cellFor(course,scenario,catalog,models)]))}));}
  function creditDescription(course){if(!Number.isFinite(course?.credits)||course.credits<=0)return 'Credit amount needs checking';return course.credits+' '+(course.creditSystem==='competency-unit'?'competency units':['semester','quarter'].includes(course.creditSystem)?course.creditSystem+' credits':'credits · units need checking');}

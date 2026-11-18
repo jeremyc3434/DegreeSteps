@@ -54,10 +54,91 @@ test('visible comparison priority overrides setup priority and unknown prices ne
  const f=rankingFixture();f.state.profile.priority='cost';f.state.whatIf={priority:'collection'};assert.equal(compare(f).scenarios[0].pathwayId,'expensive');
  f.state.profile.priority='balanced';f.state.whatIf.priority='cost';assert.equal(compare(f).scenarios[0].pathwayId,'cheap');
  const override=E.build(f.state,f.catalog,f.models,{}, {fromCourses:true,deferMatrix:true,priority:'collection'});assert.equal(override.scenarios[0].pathwayId,'expensive');
- delete f.models[1].pricing;const unknown=compare(f);assert.equal(unknown.recommendation,null);assert.equal(unknown.scenarios[0].pathwayId,'expensive');assert.match(unknown.rankBasis,/need tuition/);assert.equal(unknown.scenarios.find(row=>row.pathwayId==='cheap').summary.estimatedBaseCost,null);
+ delete f.models[1].pricing;const unknown=compare(f);assert.equal(unknown.recommendation,null);assert.equal(unknown.scenarios[0].pathwayId,'expensive');assert.match(unknown.rankBasis,/needs tuition/);assert.equal(unknown.scenarios.find(row=>row.pathwayId==='cheap').summary.estimatedBaseCost,null);
 });
 test('displayed price and adopted route use the same saved-course selections',()=>{
  const f=rankingFixture(),view=compare(f),selected=view.scenarios.find(row=>row.pathwayId==='expensive'),before=JSON.stringify(f.state.learning);
  const adopted=E.applyScenario(f.state,selected.id,f.catalog,{collectionSelections:selected.summary.collectionSelections}),d=J.buildDraft(adopted,f.catalog,f.models),cost=E.remainingCosts(d,adopted,{});
  assert.deepEqual(d.plan.rows.map(row=>[row.requirementId,row.option.id]),selected.draft.plan.rows.map(row=>[row.requirementId,row.option.id]));assert.equal(cost.estimatedBaseCost,selected.summary.estimatedBaseCost);assert.equal(JSON.stringify(adopted.learning),before);assert.equal(adopted.learning[0].status,'saved');
+});
+
+function fourRouteFixture(){
+ const f=rankingFixture();
+ for(const [id,title,rate] of [['known-a','Another course-fit degree',600],['known-b','Third course-fit degree',700]]){
+  const model=copy(f.models[0]);model.id=id;model.title=title;model.pricing.amount=rate;f.models.push(model);
+  f.catalog.pathways.push({...copy(f.catalog.pathways[0]),id,modelId:id,title});
+  f.state.scenarios[id]=copy(f.state.scenarios.expensive);
+ }
+ return f;
+}
+test('an unpriced fourth eligible route prevents an automatic cost winner outside the visible shortlist',()=>{
+ const f=fourRouteFixture();delete f.models.find(model=>model.id==='cheap').pricing;f.state.profile.priority='cost';
+ const before=JSON.stringify(f.state),view=compare(f);
+ assert.equal(view.scenarios.length,3);assert(!view.scenarios.some(row=>row.pathwayId==='cheap'),'the unknown-price route must be outside the three visible course-fit suggestions');
+ assert(view.scenarios.every(row=>Number.isFinite(row.summary.estimatedBaseCost)),'all visible cards are priced; the omitted route is the uncertainty');
+ assert.equal(view.recommendation,null);assert.match(view.rankBasis,/needs tuition/);
+ assert.equal(view.rankingScope.mode,'eligible-routes');assert.equal(view.rankingScope.eligibleCount,4);assert.equal(view.rankingScope.metric,null);assert.equal(view.rankingScope.comparable,false);
+ assert.equal(view.rankingScope.orderingMetric,'estimatedBaseCost');assert.equal(view.rankingScope.estimatedCount,3);assert.equal(view.rankingScope.unestimatedCount,1);assert.deepEqual(view.rankingScope.unestimatedRouteIds,['route:cheap']);
+ assert.equal(view.rankingScope.orderedRouteIds.length,4);assert.equal(view.rankedCandidates.length,4);
+ assert.equal(JSON.stringify(f.state),before);
+});
+test('an unscheduled fourth eligible route prevents an automatic fastest winner outside the visible shortlist',()=>{
+ const f=fourRouteFixture();delete f.state.scenarios.cheap.termWeeks;f.state.profile.priority='speed';
+ const view=compare(f);
+ assert.equal(view.scenarios.length,3);assert(!view.scenarios.some(row=>row.pathwayId==='cheap'));
+ assert(view.scenarios.every(row=>Number.isFinite(row.summary.estimatedWeeks)));
+ assert.equal(view.recommendation,null);assert.match(view.rankBasis,/needs course pace/);
+ assert.equal(view.rankingScope.mode,'eligible-routes');assert.equal(view.rankingScope.eligibleCount,4);assert.equal(view.rankingScope.comparable,false);
+});
+test('manual comparisons rank only the selected plans and identify that narrower scope',()=>{
+ const f=fourRouteFixture();delete f.models.find(model=>model.id==='cheap').pricing;f.state.profile.priority='cost';
+ const view=E.build(f.state,f.catalog,f.models,{}, {fromCourses:true,deferMatrix:true,selectedIds:['route:expensive','route:known-a','route:known-b']});
+ assert.equal(view.recommendation.id,'route:expensive');assert.equal(view.recommendation.metric,'estimatedBaseCost');assert.equal(view.recommendation.partial,true);
+ assert.equal(view.recommendation.scope,'selected-plans');assert.equal(view.recommendation.comparedPlanCount,3);
+ assert.equal(view.rankingScope.mode,'selected-plans');assert.equal(view.rankingScope.eligibleCount,3);assert.equal(view.rankingScope.metric,'estimatedBaseCost');assert.equal(view.rankingScope.comparable,true);assert.equal(view.rankingScope.unestimatedCount,0);
+});
+test('an automatic shortlist keeps its scoped cost metric when omitted routes have unconfirmed fees',()=>{
+ const f=fourRouteFixture();f.state.profile.priority='cost';
+ for(const id of ['expensive','known-a','known-b'])Object.assign(f.state.scenarios[id],{fees:20,feesConfirmed:true,taxesConfirmed:true,examFeesConfirmed:true});
+ // The omitted plan cannot share the saved course, so course-fit is a tie-break
+ // only. Its lower known tuition makes it appear on the automatic price list.
+ // Keep it dearer so all three displayed plans have full costs while it does not.
+ f.models.find(model=>model.id==='cheap').pricing.amount=1000;
+ const view=compare(f);
+ assert(!view.scenarios.some(row=>row.pathwayId==='cheap'));assert(view.scenarios.every(row=>Number.isFinite(row.summary.remainingCost)));
+ assert.equal(view.recommendation.metric,'estimatedBaseCost');assert.equal(view.recommendation.partial,true);assert.equal(view.recommendation.comparedPlanCount,4);
+ assert.match(view.rankBasis,/Unconfirmed fees/);
+});
+test('known estimates change cost and speed ordering while unknown routes stay accessible without a winner claim',()=>{
+ const f=fourRouteFixture();delete f.models.find(model=>model.id==='expensive').pricing;
+ f.state.profile.priority='cost';const before=JSON.stringify(f.state),cost=compare(f);
+ assert.equal(cost.scenarios[0].pathwayId,'cheap','an unpriced high course-fit route must not prevent ordering the priced routes');
+ assert.equal(cost.rankingScope.orderedRouteIds.at(-1),'route:expensive');assert.equal(cost.recommendation,null);
+ assert.equal(cost.rankingScope.estimatedCount,3);assert.equal(cost.rankingScope.unestimatedCount,1);assert.equal(cost.rankingScope.orderingMetric,'estimatedBaseCost');
+ assert.equal(cost.rankedCandidates.at(-1).estimatedBaseCost,null);assert.match(cost.rankBasis,/Fees and other extras are excluded/);assert.equal(JSON.stringify(f.state),before);
+ f.state.profile.priority='speed';delete f.state.scenarios.expensive.termWeeks;f.state.scenarios.cheap.termWeeks=4;Object.assign(f.state.scenarios['known-b'],{termWeeks:1,termCredits:6});
+ const speed=compare(f);assert.equal(speed.scenarios[0].pathwayId,'known-b');assert.equal(speed.rankingScope.orderedRouteIds.at(-1),'route:expensive');assert.equal(speed.recommendation,null);
+ assert.equal(speed.rankingScope.orderingMetric,'estimatedWeeks');assert.match(speed.rankBasis,/available study-time estimates/);
+});
+test('an unpriced current plan remains in the scope of automatically suggested alternatives',()=>{
+ const f=fourRouteFixture();f.state=J.selectRoute(f.state,f.catalog.pathways.find(route=>route.id==='expensive'),f.catalog);f.state.profile.priority='cost';delete f.models.find(model=>model.id==='expensive').pricing;
+ const before=JSON.stringify(f.state),view=compare(f);
+ assert.equal(view.scenarios[0].id,'current');assert.equal(view.scenarios[0].summary.estimatedBaseCost,null);assert.equal(view.recommendation,null);
+ assert.equal(view.rankingScope.mode,'eligible-routes');assert.equal(view.rankingScope.eligibleCount,4);assert.equal(view.rankingScope.estimatedCount,3);assert.equal(view.rankingScope.unestimatedCount,1);assert.deepEqual(view.rankingScope.unestimatedRouteIds,['current']);
+ assert.equal(view.rankingScope.orderedRouteIds[0],'current');assert.equal(JSON.stringify(f.state),before);
+});
+test('different degree levels do not receive a shared cost or speed ordering',()=>{
+ const f=rankingFixture();f.models[1].level='associate';f.catalog.pathways[1].level='associate';f.state.profile.degreeLevel='unsure';
+ for(const priority of ['cost','speed']){
+  f.state.profile.priority=priority;const view=compare(f);
+  assert.equal(view.scenarios.length,2);assert.equal(view.recommendation,null);assert.equal(view.rankingScope.metric,null);assert.equal(view.rankingScope.orderingMetric,null);assert.equal(view.rankingScope.mixedLevels,true);assert.match(view.rankBasis,/different degree levels/);
+ }
+});
+test('automatic alternatives use the same cost scope as the current plan before choosing their shortlist',()=>{
+ const f=fourRouteFixture();f.state=J.selectRoute(f.state,f.catalog.pathways.find(route=>route.id==='expensive'),f.catalog);f.state.profile.priority='cost';
+ for(const id of ['cheap','known-a','known-b'])Object.assign(f.state.scenarios[id],{fees:id==='cheap'?10000:20,feesConfirmed:true,taxesConfirmed:true,examFeesConfirmed:true});
+ const view=compare(f);
+ assert(view.scenarios.some(row=>row.pathwayId==='cheap'),'the lower tuition-and-courses plan must remain visible even when its known extra fees would change a full-cost ordering');
+ assert.equal(view.rankingScope.metric,'estimatedBaseCost');assert.equal(view.recommendation.metric,'estimatedBaseCost');assert.equal(view.recommendation.partial,true);assert.equal(view.recommendation.id,'route:cheap');
+ assert.match(view.rankBasis,/Unconfirmed fees and other extras are excluded/);
 });

@@ -533,9 +533,14 @@
     if (priority === 'campus') return t.external * 100000 + cost.knownSubtotal;
     if (priority === 'transfer') return [-t.external, unpricedProviders, cost.knownSubtotal, providerCount];
     if (priority === 'speed') {
-      const timing = timingModel(program, rows, input);
-      if (hasComparableTiming(program, input)) return [timing.scenarioWeeks === null ? Number.MAX_SAFE_INTEGER : timing.scenarioWeeks, timing.universityTerms || 0, timing.universityCredits, timing.externalActions, unpricedProviders, cost.knownSubtotal];
-      return [timing.universityCredits, timing.universityCriticalTerms, timing.externalActions, unpricedProviders, cost.knownSubtotal];
+      if (hasComparableTiming(program, input)) {
+        const timing = timingModel(program, rows, input);
+        return [timing.scenarioWeeks === null ? Number.MAX_SAFE_INTEGER : timing.scenarioWeeks, timing.universityTerms || 0, timing.universityCredits, timing.externalActions, unpricedProviders, cost.knownSubtotal];
+      }
+      // Without comparable duration inputs the objective uses workload only.
+      // These are the same measures returned by timingModel; constructing a
+      // full course schedule at every search node cannot change this score.
+      return [sum(rows.filter(row=>row.status==='planned'&&isUniversity(row)),row=>row.credits), universityDepth(rows), futureActions(rows).length, unpricedProviders, cost.knownSubtotal];
     }
     // Compare known native tuition, including source-bound flat-term pricing.
     // If those assumptions are absent, preserve the transfer-first fallback.
@@ -904,7 +909,15 @@
     // subscription costs without pricing every course as another membership.
     const selectedProviders = [...new Set(base.filter(row => selectedOptions.has(row.requirementId) && row.status === 'planned' && row.option && !isUniversity(row)).map(row => row.option.provider))];
     const strategies = input.priority === 'campus' ? [selectedProviders] : subsets(input.providers.filter(provider => !selectedProviders.includes(provider))).map(providers => [...selectedProviders, ...providers]);
-    let best = base, bestScore = candidateScore(program, base, input, input.priority);
+    // Greedy trials replace the rows array instead of mutating it. Reuse its
+    // objective while testing replacements, and keep this memo local: the
+    // assignment search below reuses mutable arrays and must score them afresh.
+    const greedyScores=new WeakMap();
+    const greedyScore=rows=>{
+      if(!greedyScores.has(rows))greedyScores.set(rows,candidateScore(program,rows,input,input.priority));
+      return greedyScores.get(rows);
+    };
+    let best = base, bestScore = greedyScore(base);
     let bestAcademicValid = !usableErrors(best).length;
     for (const allowed of strategies) {
       let rows = base.map(row => Object.assign({}, row));
@@ -917,7 +930,7 @@
       // degree credit and prefer shared provider memberships over extra exams.
       if (input.priority === 'speed') for (const proposal of proposals) {
         const trial = rows.slice(); trial[proposal.index] = makeRow(requirements[proposal.index], proposal.option);
-        proposal.speedScore = candidateScore(program, trial, input, 'speed');
+        proposal.speedScore = greedyScore(trial);
       }
       proposals.sort((a, b) => {
         if (input.priority === 'speed') {
@@ -947,7 +960,7 @@
         if (selectedOptions.has(rows[index].requirementId) || rows[index].status !== 'planned' || !rows[index].option || rows[index].option.provider === 'University') continue;
         const fallback = base[index]; if (!fallback.option) continue;
         const trial = rows.slice(); trial[index] = fallback;
-        if (!usableErrors(trial).length && compareScores(candidateScore(program, trial, input, input.priority), candidateScore(program, rows, input, input.priority)) < 0) rows = trial;
+        if (!usableErrors(trial).length && compareScores(greedyScore(trial), greedyScore(rows)) < 0) rows = trial;
       }
       // Speed can prefer a more expensive source for the same requirement.
       // Reconsider already-selected external options rather than keeping the
@@ -960,13 +973,13 @@
             for (const option of optionsFor(program, requirements[index], input).filter(option => option.provider === 'University' || allowed.includes(option.provider))) {
               if (rows[index].option && option.id === rows[index].option.id) continue;
               const trial = rows.slice(); trial[index] = makeRow(requirements[index], option);
-              if (!usableErrors(trial).length && compareScores(candidateScore(program, trial, input, 'speed'), candidateScore(program, rows, input, 'speed')) < 0) { rows = trial; changed = true; }
+              if (!usableErrors(trial).length && compareScores(greedyScore(trial), greedyScore(rows)) < 0) { rows = trial; changed = true; }
             }
           }
           if (!changed) break;
         }
       }
-      const score = candidateScore(program, rows, input, input.priority);
+      const score = greedyScore(rows);
       const academicValid = !usableErrors(rows).length;
       const preferValidity = academicValid !== bestAcademicValid;
       if (preferValidity ? academicValid : compareScores(score, bestScore) < 0 || (compareScores(score, bestScore) === 0 && totals(program, rows).external > totals(program, best).external && input.priority !== 'campus')) { best = rows; bestScore = score; bestAcademicValid = academicValid; }

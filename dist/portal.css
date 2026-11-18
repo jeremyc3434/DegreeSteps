@@ -381,3 +381,19 @@ a.portal-degree-option { text-decoration:none; }
 .portal-degree-option strong { font-size:16px; }
 .portal-degree-option .portal-readiness-label { font-weight:600; }
 .portal-intro { max-width:50ch; color:var(--portal-muted); }
+
+.portal-route-estimates{display:flex;flex-wrap:wrap;gap:20px 36px;margin:22px 0 10px}
+.portal-route-estimates dt{color:var(--portal-muted);font-size:16px;line-height:1.5}
+.portal-route-estimates dd{margin:5px 0 0;color:var(--portal-ink);font-size:25px;font-weight:650;line-height:1.3}
+.portal-route-card .portal-estimate-note{font-size:16px;line-height:1.6;margin:10px 0 22px}
+.portal-ranking-note,.portal-comparing p,.portal-comparison-retry p{color:var(--portal-muted);font-size:16px;line-height:1.6}
+.portal-comparing{padding:24px 0;min-height:150px}
+.portal-comparing h2{font-size:22px;line-height:1.4}
+.portal-comparison-retry{padding:18px;border:1px solid var(--portal-line);border-radius:12px;margin-top:24px}
+.portal-route-options>summary{font-size:16px;font-weight:600;color:var(--portal-ink);cursor:pointer}
+
+.portal-question .portal-route-card p,.portal-question .portal-route-facts{font-size:16px}
+
+.portal-ranking-details{margin:10px 0 20px;color:var(--portal-muted);font-size:16px;line-height:1.6}
+.portal-ranking-details>summary{min-height:44px;padding:10px 0;color:var(--portal-ink);cursor:pointer}
+.portal-ranking-details>p{margin:8px 0 18px;font-size:16px}

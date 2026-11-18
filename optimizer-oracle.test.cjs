@@ -294,6 +294,28 @@ test('speed uses the public workload measures when duration inputs are absent', 
   checkAgainstOracle(model, { timing: undefined, universityRate: 0 });
 });
 
+test('incomplete timing keeps workload scores exact for bundled actions and completed university credit', () => {
+  const bundled = id => option('clep-' + id, 'CLEP', 'ONE-EXAM', {bundleId:'one-exam',bundleCredits:6});
+  const model = program([
+    requirement('prior', [], {institutionalOnly:true}),
+    requirement('a', [option('s-a','Sophia','A'),bundled('a')]),
+    requirement('b', [option('s-b','Sophia','B'),bundled('b')]),
+    requirement('capstone', [], {institutionalOnly:true,prerequisites:['a','b']})
+  ], {institutionMinCredits:6});
+  const completed = [{requirementId:'prior',optionId:'u-prior',status:'confirmed',institution:'Example University',sourceProgramId:model.id}];
+  for (const timing of [undefined,
+    {externalWeeks:{Sophia:4,CLEP:1},universityTermWeeks:8},
+    {externalWeeks:{Sophia:4},universityTermWeeks:8,universityCreditsPerTerm:6}]) {
+    const plan = Planner.generate(model,{...defaults,priority:'speed',universityRate:100,completed,timing});
+    assert.equal(plan.validation.academicCountsValid,true);
+    assert.equal(plan.totals.confirmed,3,'completed university work is preserved and excluded from future workload');
+    assert.equal(rowFor(plan,'a').option.provider,'CLEP');assert.equal(rowFor(plan,'b').option.provider,'CLEP');
+    assert.equal(plan.timing.universityCredits,3);assert.equal(plan.timing.universityCriticalTerms,1);assert.equal(plan.timing.externalActions,1,'one six-credit exam remains one learning action');
+    assert.equal(plan.timing.scenarioWeeks,null,'missing durations do not become a finish date');
+    assert.deepEqual(plan.optimization.objectiveScore,[3,1,1,0,397]);
+  }
+});
+
 test('zero search budget reports best-found without claiming exhaustive optimality', () => {
   const plan = Planner.generate(flexibleSourceModel(), { ...defaults, priority: 'transfer', optimizationNodeBudget: 0 });
   assert(plan.optimization);
