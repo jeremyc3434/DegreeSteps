@@ -11,7 +11,7 @@ const OperatorSnapshotApi=(()=>{
   const lexical=(a,b)=>a<b?-1:a>b?1:0;
   const identifier=value=>{if(!/^[a-z][a-z0-9_]*$/.test(value))throw Error('Invalid fixed snapshot identifier');return '"'+value+'"';};
   const literal=value=>"'"+value.replaceAll("'","''")+"'";
-  class SnapshotError extends Error{constructor(status,message,code){super(message);this.status=status;this.code=code;}}
+  class SnapshotError extends Error{constructor(status,message,code,diagnostic){super(message);this.status=status;this.code=code;this.diagnostic=diagnostic;}}
   const fail=(status,message,code)=>{throw new SnapshotError(status,message,code);};
   function headers(extra={}){return{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','Pragma':'no-cache','X-Content-Type-Options':'nosniff','X-Robots-Tag':'noindex, nofollow','Referrer-Policy':'no-referrer','Vary':'X-DegreeSteps-Export-Key',...extra};}
   function response(value,status=200,extra={}){return new Response(JSON.stringify(value),{status,headers:headers(extra)});}
@@ -41,13 +41,17 @@ const OperatorSnapshotApi=(()=>{
     const raw=columns.map(column=>'COALESCE(length(CAST('+column+' AS BLOB)),0)').join('+');
     const invalid=table.columns.map(column=>'('+identifier(column.name)+' IS NOT NULL AND typeof('+identifier(column.name)+')<>'+literal(column.type)+')').join(' OR ');
     const allowed='row_count<='+MAX_ROWS+' AND raw_bytes<='+MAX_RAW_TABLE_BYTES+' AND bad_types=0';
-    return'SELECT * FROM (WITH bounded AS NOT MATERIALIZED (SELECT '+columns.join(',')+' FROM '+identifier(table.name)+' LIMIT '+(MAX_ROWS+1)+'), raw AS (SELECT count(*) AS row_count,COALESCE(sum('+raw+'),0) AS raw_bytes,COALESCE(sum(CASE WHEN '+invalid+' THEN 1 ELSE 0 END),0) AS bad_types FROM bounded) SELECT '+literal(table.name)+' AS name,row_count,raw_bytes,bad_types,CASE WHEN '+allowed+' THEN (SELECT COALESCE(sum(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END AS encoded_bytes,CASE WHEN '+allowed+' THEN (SELECT COALESCE(max(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END AS max_row_bytes FROM raw)';
+    return'(WITH bounded AS NOT MATERIALIZED (SELECT '+columns.join(',')+' FROM '+identifier(table.name)+' LIMIT '+(MAX_ROWS+1)+'), raw AS (SELECT count(*) AS row_count,COALESCE(sum('+raw+'),0) AS raw_bytes,COALESCE(sum(CASE WHEN '+invalid+' THEN 1 ELSE 0 END),0) AS bad_types FROM bounded) SELECT json_object(\'row_count\',row_count,\'raw_bytes\',raw_bytes,\'bad_types\',bad_types,\'encoded_bytes\',CASE WHEN '+allowed+' THEN (SELECT COALESCE(sum(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END,\'max_row_bytes\',CASE WHEN '+allowed+' THEN (SELECT COALESCE(max(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END) FROM raw)';
   }
-  const statsSql='WITH snapshot_stats AS ('+tables.map(tableStats).join(' UNION ALL ')+') ';
+  // D1 imposes a smaller compound-SELECT limit than local SQLite. A fixed JSON
+  // registry and CASE subqueries avoid UNION terms while keeping one read batch.
+  const tableNames=literal(JSON.stringify(tables.map(table=>table.name)));
+  const fields=['row_count','raw_bytes','bad_types','encoded_bytes','max_row_bytes'];
+  const statsSql='WITH snapshot_statistics AS MATERIALIZED (SELECT value AS name,CASE value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN '+tableStats(table)).join(' ')+' END AS metadata_json FROM json_each('+tableNames+')),snapshot_stats AS (SELECT name,'+fields.map(field=>'json_extract(metadata_json,'+literal('$.'+field)+') AS '+field).join(',')+' FROM snapshot_statistics) ';
   const valid='count(*)='+tables.length+' AND sum(row_count)<='+MAX_TOTAL_ROWS+' AND sum(COALESCE(encoded_bytes,'+(MAX_DATA_BYTES+1)+'))<='+MAX_DATA_BYTES+' AND sum(CASE WHEN row_count>'+MAX_ROWS+' OR bad_types<>0 OR encoded_bytes IS NULL OR encoded_bytes>'+MAX_TABLE_BYTES+' OR max_row_bytes>'+MAX_ROW_BYTES+' THEN 1 ELSE 0 END)=0';
   const queries=[
     statsSql+'SELECT * FROM snapshot_stats ORDER BY name',
-    statsSql+', snapshot_allowed AS (SELECT CASE WHEN '+valid+' THEN 1 ELSE 0 END AS ok FROM snapshot_stats) '+tables.map(table=>'SELECT '+literal(table.name)+' AS table_name,'+rowExpression(table)+' AS row_json FROM '+identifier(table.name)+' WHERE (SELECT ok FROM snapshot_allowed)=1').join(' UNION ALL '),
+    statsSql+', snapshot_allowed AS (SELECT CASE WHEN '+valid+' THEN 1 ELSE 0 END AS ok FROM snapshot_stats) SELECT registry.value AS table_name,packed.value AS row_json FROM json_each('+tableNames+') AS registry CROSS JOIN json_each(CASE WHEN (SELECT ok FROM snapshot_allowed)=1 THEN CASE registry.value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN (SELECT json_group_array(json('+rowExpression(table)+')) FROM '+identifier(table.name)+')').join(' ')+' ELSE \'[]\' END ELSE \'[]\' END) AS packed',
     "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE (type='table' AND name NOT GLOB 'sqlite_*' AND name NOT IN ('_cf_KV','_cf_METADATA','d1_migrations','__drizzle_migrations')) OR type='view' OR (type IN ('index','trigger') AND tbl_name IN ("+tables.map(table=>literal(table.name)).join(',')+')) ORDER BY type,name'
   ];
   function validateStats(rows){
@@ -60,11 +64,28 @@ const OperatorSnapshotApi=(()=>{
     }
     if(count>MAX_TOTAL_ROWS||bytes>MAX_DATA_BYTES)fail(413,'This database exceeds the bounded snapshot limits. Use a provider export.','snapshot_too_large');
   }
+  function databaseDiagnostic(error){
+    // Only fixed enums escape the operator boundary: never SQL, cell contents, keys or raw errors.
+    let text='',current=error;
+    for(let depth=0;current&&depth<4;depth++){
+      try{text+=' '+String(typeof current==='string'?current:current.message||'').slice(0,4096);current=typeof current==='object'?current.cause:null;}catch{break;}
+    }
+    if(/snapshot_timeout|timed?\s*out|deadline/i.test(text))return'd1_timeout';
+    if(/parser stack|stack overflow|expression tree|too many terms|too many levels|query.*complex/i.test(text))return'd1_parser_limit';
+    if(/statement.*too long|sql.*too (?:long|large)|query.*too (?:long|large)|string or blob too big|SQLITE_TOOBIG/i.test(text))return'd1_query_size_limit';
+    if(/no such column|unknown column|has no column/i.test(text))return'd1_missing_column';
+    if(/no such table|unknown table/i.test(text))return'd1_missing_table';
+    if(/too many sql|too many quer|query count|subrequest limit/i.test(text))return'd1_query_count_limit';
+    if(/not authorized|SQLITE_AUTH|not permitted|unsupported|no such function/i.test(text))return'd1_unsupported_operation';
+    if(/syntax error|incomplete input|unrecognized token|near .*syntax/i.test(text))return'd1_sql_syntax';
+    if(/binding|database.*not found|database.*unavailable|database.*does not exist/i.test(text))return'd1_binding_unavailable';
+    return'd1_unknown';
+  }
   async function snapshot(env,origin){
     if(typeof env.DB?.batch!=='function'||typeof env.DB?.prepare!=='function')fail(503,'The migration database is not available.','snapshot_unavailable');
     let answer,timer;
     try{answer=await Promise.race([env.DB.batch(queries.map(sql=>env.DB.prepare(sql))),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('snapshot_timeout')),25000);})]);}
-    catch{fail(503,'The migration snapshot could not be created.','snapshot_unavailable');}finally{clearTimeout(timer);}
+    catch(error){throw new SnapshotError(503,'The migration snapshot could not be created.','snapshot_unavailable',databaseDiagnostic(error));}finally{clearTimeout(timer);}
     if(!Array.isArray(answer)||answer.length!==3||answer.some(result=>result.success===false||!Array.isArray(result.results)))fail(503,'The migration snapshot could not be verified.','snapshot_invalid_result');
     const stats=answer[0].results;validateStats(stats);
     const schema=answer[2].results.map(row=>({type:row.type,name:row.name,tbl_name:row.tbl_name,sql:row.sql})).sort((a,b)=>lexical(a.type,b.type)||lexical(a.name,b.name));
@@ -97,7 +118,7 @@ const OperatorSnapshotApi=(()=>{
       if(request.method!=='POST')return response({error:'Use POST.'},405,{Allow:'POST'});
       if(url.search)fail(400,'No snapshot filters or SQL are accepted.','snapshot_invalid_request');
       await body(request);return await snapshot(env,config.origin);
-    }catch(error){if(error instanceof SnapshotError)return response({error:error.message,code:error.code},error.status);return response({error:'The migration snapshot could not be created.',code:'snapshot_unavailable'},503);}
+    }catch(error){if(error instanceof SnapshotError)return response({error:error.message,code:error.code,...(error.diagnostic?{operatorDiagnostic:error.diagnostic}:{})},error.status);return response({error:'The migration snapshot could not be created.',code:'snapshot_unavailable'},503);}
   };
 })();
 

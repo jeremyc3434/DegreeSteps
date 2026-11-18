@@ -50,7 +50,7 @@ test('one atomic read batch preserves complete large text, nulls, exact int64 va
   assert(Buffer.byteLength(large)>100000);seedUser(f.DB,'synthetic-user','Synthetic owner',9223372036854775807n);seedTemplate(f.DB,{artifact:large});
   f.DB.sqlite.prepare("INSERT INTO ai_service_connections(id,ciphertext,iv,revision,verified_at,updated_by,created_at,updated_at) VALUES ('anthropic',?, ?,1,1,'synthetic-user',1,2)").run('ciphertext-fixture-'.repeat(4),'a'.repeat(24));
   const before=f.DB.sqlite.prepare('SELECT total_changes() AS n').get().n,result=await call(f.env);assert.equal(result.status,200,JSON.stringify(result.data));
-  assert.equal(f.DB.batches,1);assert.equal(f.DB.prepared.length,3);assert(f.DB.prepared.every(sql=>sql.length<100000),'D1 statement text remains under its documented bound');assert.equal(f.DB.sqlite.prepare('SELECT total_changes() AS n').get().n,before);
+  assert.equal(f.DB.batches,1);assert.equal(f.DB.prepared.length,3);assert(f.DB.prepared.every(sql=>sql.length<100000),'D1 statement text remains under its documented bound');assert(f.DB.prepared.every(sql=>!(/\bUNION\b/i.test(sql))),'Avoid Cloudflare compound-SELECT limits rather than relying on local SQLite limits');assert.equal(f.DB.sqlite.prepare('SELECT total_changes() AS n').get().n,before);
   assert.equal(result.data.format,'degreesteps-d1-snapshot');assert.equal(result.data.version,1);assert.equal(result.data.integerEncoding,'decimal-string');assert.equal(result.data.tables.length,27);assert.equal(result.data.sourceOrigin,origin);assert(!Number.isNaN(Date.parse(result.data.createdAt)));
   const templates=result.data.tables.find(table=>table.name==='degree_templates');assert.equal(templates.rows[0].artifact_json,large);assert.equal(templates.rows[0].source_url,null);
   assert.equal(result.data.tables.find(table=>table.name==='community_users').rows[0].created_at,'9223372036854775807');assert.equal(result.data.tables.find(table=>table.name==='ai_service_connections').rows[0].ciphertext,'ciphertext-fixture-'.repeat(4));
@@ -98,4 +98,23 @@ test('global encoded-byte caps stop data transfer even when rows and tables indi
 test('database failures are private and never leak query text or stored source records',async t=>{
   const f=fixture(t,{DB:{prepare(sql){return{sql};},async batch(){throw Error('Sensitive stored record and SQL should not escape');}}});
   const result=await call(f.env);assert.equal(result.status,503);assert.equal(result.data.code,'snapshot_unavailable');assert(!JSON.stringify(result.data).includes('Sensitive'));assert(!JSON.stringify(result.data).includes(key));
+  assert.equal(result.data.operatorDiagnostic,'d1_unknown');
+});
+
+test('authorized D1 failure diagnostics expose fixed categories without raw SQL, values or credentials',async t=>{
+  for(const [message,expected]of [
+    ['parser stack overflow near private_sql_text','d1_parser_limit'],
+    ['D1_ERROR: SQL statement too long private_sql_text','d1_query_size_limit'],
+    ['no such column: private_column_name','d1_missing_column'],
+    ['no such table: private_table_name','d1_missing_table'],
+    ['too many SQL queries private_sql_text','d1_query_count_limit'],
+    ['not authorized: SQLITE_AUTH private_sql_text','d1_unsupported_operation'],
+    ['near private_sql_text: syntax error','d1_sql_syntax'],
+    ['database not found private_database_name','d1_binding_unavailable'],
+    ['request timed out private_sql_text','d1_timeout']
+  ]){
+    const f=fixture(t,{DB:{prepare(sql){return{sql};},async batch(){throw new Error('D1_ERROR: request failed',{cause:new Error(message+' '+key)});}}});
+    const result=await call(f.env);assert.equal(result.status,503);assert.equal(result.data.operatorDiagnostic,expected);assert(!JSON.stringify(result.data).includes('private_'));assert(!JSON.stringify(result.data).includes(key));
+    const unauthorized=await call(f.env,{headers:{'X-DegreeSteps-Export-Key':'b'.repeat(64)}});assert.equal(unauthorized.status,401);assert(!Object.hasOwn(unauthorized.data,'operatorDiagnostic'));
+  }
 });
