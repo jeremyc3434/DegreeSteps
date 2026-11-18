@@ -113,6 +113,34 @@
   const goalChoices = [['any-degree','Earn a degree'],['career-growth','Advance my career'],['change-career','Change careers'],['teacher','Become a teacher'],['lawyer','Prepare for law'],['pilot','Become a pilot'],['health-professional','Enter a health profession']];
   const fieldChoices = [['any','Any subject'],['business','Business'],['technology','Technology'],['science','Science & mathematics'],['arts','Arts & design'],['humanities','Humanities'],['social-science','Social sciences'],['education','Education'],['health','Health'],['general','General studies']];
   const protectedGoals = ['teacher','lawyer','pilot','health-professional'];
+  const searchProfileFields=['entry','goal','degreeLevel','field','school','schoolChoice','degree','pathwayId','modality','classroomImportance','priority'];
+  const searchAnswerFields=['start','school','degree','purpose','career','level','field','format','priority','routes'];
+  function explorationSearch(value=state) {
+    const saved=value.journey?.explorationSearch;
+    if(saved?.version!==1||!saved.profile||typeof saved.profile!=='object'||Array.isArray(saved.profile)||!saved.answers||typeof saved.answers!=='object'||Array.isArray(saved.answers))return null;
+    if(!['explore','target'].includes(saved.answers.start)||!goalChoices.some(([id])=>id===saved.profile.goal)||!['unsure','associate','bachelor','master','doctorate','specialist'].includes(saved.profile.degreeLevel)||!['balanced','speed','cost','transfer'].includes(saved.profile.priority))return null;
+    return saved;
+  }
+  function rememberExplorationSearch() {
+    const profile=Object.fromEntries(searchProfileFields.filter(name=>Object.hasOwn(state.profile,name)).map(name=>[name,clone(state.profile[name])])),answers=Object.fromEntries(searchAnswerFields.filter(name=>Object.hasOwn(state.journey.answers,name)).map(name=>[name,clone(state.journey.answers[name])]));
+    if(!answers.start&&['explore','target'].includes(profile.entry))answers.start=profile.entry;
+    if(answers.start==='explore'){Object.assign(profile,{school:'',schoolChoice:'',degree:'',pathwayId:''});for(const name of ['school','degree','routes'])delete answers[name];}
+    state.journey={...state.journey,explorationSearch:{version:1,profile,answers,selectedPathwayId:answers.start==='explore'?'':state.selectedPathwayId||'',targetIdentity:answers.start==='explore'?null:state.targetIdentity?clone(state.targetIdentity):null}};
+  }
+  function restoreExplorationSearch() {
+    const search=explorationSearch();
+    if(search){
+      state.profile={...state.profile,...Object.fromEntries(searchProfileFields.filter(name=>Object.hasOwn(search.profile,name)).map(name=>[name,clone(search.profile[name])]))};
+      const answers={...state.journey.answers};for(const name of searchAnswerFields){if(Object.hasOwn(search.answers,name))answers[name]=clone(search.answers[name]);else delete answers[name];}
+      state.journey={...state.journey,answers};state.selectedPathwayId=typeof search.selectedPathwayId==='string'?search.selectedPathwayId:'';
+      if(search.targetIdentity)state.targetIdentity=clone(search.targetIdentity);else delete state.targetIdentity;
+    }
+    state.journey.step='routes';
+  }
+  function preferencesAnswered() {
+    const a=state.journey.answers||{},goal=state.profile.goal;
+    return ['balanced','speed','cost','transfer'].includes(a.priority)&&a.priority===state.profile.priority&&(protectedGoals.includes(goal)?a.purpose==='licensed-career'&&a.career===goal:a.purpose===goal&&goalChoices.some(([id])=>id===goal));
+  }
   const chooseField = (name,label,items,value) => '<label class="portal-field"><span>'+esc(label)+'</span><select name="'+name+'">'+items.map(([id,title])=>'<option value="'+esc(id)+'"'+(id===value?' selected':'')+'>'+esc(title)+'</option>').join('')+'</select></label>';
   function field(name, label, value, extra = '') {
     return '<label class="portal-field"><span>' + esc(label) + '</span><input name="' + name + '" value="' + esc(value) + '" maxlength="' + (name === 'school' ? '120' : '160') + '" required ' + extra + '></label>';
@@ -131,11 +159,14 @@
   }
   function aboutBody() {
     const p=state.profile,prior=state.journey.answers?.prior||(state.learning.some(record=>record.status==='earned')?'some':'unknown');
+    const preferences=preferencesAnswered()?'<div class="portal-links"><p class="portal-hint">'+esc(goalChoices.find(([id])=>id===p.goal)?.[1]||'Earn a degree')+' · '+esc(({balanced:'Balance time and cost',speed:'Finish sooner',cost:'Spend less',transfer:'Use the most transfer credit'})[p.priority])+'</p><button type="button" data-action="edit-about-preferences">Change choices</button></div>':aboutPreferenceFields();
     return '<p class="portal-intro">A few choices help us build around you. You can add your course records later.</p><form id="portal-about-form" class="portal-quick-form">'+
-      chooseField('goal','What is the degree for?',goalChoices,p.goal||'any-degree')+
+      '<div id="portal-about-preferences">'+preferences+'</div>'+
       chooseField('prior','Have you finished any college courses?',[['unknown','I’ll add my courses later'],['none','No, I’m starting from zero'],['some','Yes, I have courses or exam credits'],['degree','Yes, I already have a degree']],prior)+
-      chooseField('priority','What matters most?',[['balanced','Balance time and cost'],['speed','Finish sooner'],['cost','Spend less'],['transfer','Use the most transfer credit']],p.priority||'balanced')+
       '<details class="portal-tip"'+(p.militaryStatus&&p.militaryStatus!=='none'?' open':'')+'><summary>Military connection (optional)</summary>'+chooseField('military','Your military connection',[['none','None'],['active','Active duty'],['veteran','Veteran'],['reserve','Reserve / National Guard'],['dependent','Military family member']],p.militaryStatus||'none')+chooseField('militaryRecords','Your service education record',[['not-sure','Help me identify my record'],['jst','Joint Services Transcript (JST)'],['ccaf','CCAF / Air University'],['other','Another service record']],p.militaryRecords||'not-sure')+'<p>We’ll include the relevant records and benefits guidance.</p></details><button class="portal-primary" type="submit">Open my course plan</button></form>';
+  }
+  function aboutPreferenceFields() {
+    return chooseField('goal','What is the degree for?',goalChoices,state.profile.goal||'any-degree')+chooseField('priority','What matters most?',[['balanced','Balance time and cost'],['speed','Finish sooner'],['cost','Spend less'],['transfer','Use the most transfer credit']],state.profile.priority||'balanced');
   }
   function questionBody(id) {
     const p = state.profile;
@@ -361,7 +392,7 @@
   }
   function openPlan(allowUnmapped=false) {
     if(activePlanState&&state.journey.view==='questions'&&!allowUnmapped&&!Journey.buildDraft(state,catalog,models).plan){throw Error('This degree has no available course plan. Review its availability before replacing your active plan.');}
-    if(!allowUnmapped&&!state.journey.intakeCompleted){degreePreview=null;state.journey={...state.journey,view:'questions',step:'about'};render();return;}
+    if(!allowUnmapped&&!state.journey.intakeCompleted){const returnStep=state.journey.step==='routes'?'routes':state.journey.step==='about'?state.journey.intakeReturnStep:'degree';degreePreview=null;state.journey={...state.journey,view:'questions',step:'about',intakeReturnStep:returnStep};render();return;}
     const a=state.journey.answers||{};
     if(!Object.hasOwn(a,'prior')){
       state.journey.creditsDeferred=true;
@@ -386,6 +417,7 @@
     render();
   }
   async function action(name) {
+    if(name==='edit-about-preferences'){const host=$('portal-about-preferences');if(host){host.innerHTML=aboutPreferenceFields();host.querySelector?.('select')?.focus();}return;}
     if(activePlanState&&state.journey.view==='questions'&&['home','keep-target','review-plan','school-review'].includes(name)){state=clone(latestStoredPlan()||activePlanState);degreePreview=null;}
     if(name==='retry-degree'){if(degreePreview?.route)await previewDegree(degreePreview.sourceRoute||degreePreview.route,{explicitFormat:degreePreview.explicitFormat,variant:degreePreview.variant,force:true});return;}
     if(name==='more-degrees'){degreeLimit+=20;renderDegreeOptions();return;}
@@ -401,7 +433,7 @@
       else {field.focus();field.select();announce('Select and copy the request below.');}
       return;
     }
-    if (name === 'back') {if(degreePreview){degreePreview=null;render();return;}state.journey.step=state.journey.step==='degree'?'school':state.journey.step==='routes'?'purpose':state.journey.step==='about'?'degree':'start';}
+    if (name === 'back') {if(degreePreview){degreePreview=null;render();return;}if(state.journey.step==='about'&&(state.journey.intakeReturnStep==='routes'||!state.journey.intakeReturnStep&&state.journey.answers?.start==='explore'))restoreExplorationSearch();else state.journey.step=state.journey.step==='degree'?'school':state.journey.step==='routes'?'purpose':state.journey.step==='about'?'degree':'start';}
     else if (name === 'home') {state.journey.view = 'home'; page = 'home';}
     else if (name === 'edit-answers') {state.journey.view = 'questions'; state.journey.step = 'start';}
     else if (name === 'keep-target') {state.journey.view='home';page='home';}
@@ -440,13 +472,13 @@
       if(event.target.id==='portal-about-form') {
         const prior=String(values.get('prior')),military=String(values.get('military'));
         let next=Journey.setPriorCredits(state,prior==='unknown'?'later':prior==='degree'?'some':prior);
-        const goal=String(values.get('goal')),licensed=protectedGoals.includes(goal);
+        const knownPreferences=preferencesAnswered(),goal=values.has('goal')?String(values.get('goal')):knownPreferences?state.profile.goal:'',priority=values.has('priority')?String(values.get('priority')):knownPreferences?state.profile.priority:'',licensed=protectedGoals.includes(goal);
         next=Journey.applyAnswer(next,'purpose',licensed?'licensed-career':goal,catalog);
         if(licensed)next=Journey.applyAnswer(next,'career',goal,catalog);
         if(prior==='degree')next=Journey.applyAnswer(next,'prior','degree',catalog);
         next=Journey.applyAnswer(next,'military',military,catalog);
         if(['active','veteran','reserve'].includes(military))next=Journey.applyAnswer(next,'military-records',String(values.get('militaryRecords')),catalog);
-        next=Journey.applyAnswer(next,'priority',String(values.get('priority')),catalog);
+        next=Journey.applyAnswer(next,'priority',priority,catalog);
         next.journey.intakeCompleted=true;state=next;openPlan();return;
       }
       if(event.target.id==='portal-explore-form') {
@@ -457,7 +489,7 @@
         state=Journey.applyAnswer(state,'level',String(values.get('degreeLevel')),catalog);
         state=Journey.applyAnswer(state,'format',{modality:format==='some-classroom'?'any':format,classroomImportance:format==='campus'?'essential':format==='some-classroom'?'preferred':'open'},catalog);
         state=Journey.applyAnswer(state,'priority',String(values.get('priority')),catalog);
-        state.journey.step='routes';degreePreview=null;announce('Finding course plans for your choices…');await prepareRecommendations();render();return;
+        rememberExplorationSearch();state.journey.step='routes';degreePreview=null;announce('Finding course plans for your choices…');await prepareRecommendations();render();return;
       }
       if(event.target.id==='portal-custom-degree-form') {
         const degree=String(values.get('unlistedDegree')||'').trim();

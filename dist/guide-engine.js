@@ -641,8 +641,15 @@
 
   function recommend(raw, catalog, programs, learning) {
     const p = normalizeProfile(raw), available = Array.isArray(programs) ? programs : Object.values(programs || {});
+    // Undecided discovery starts with undergraduate study. A prior "degree"
+    // does not establish a bachelor's qualification for graduate admission.
+    // Explicit levels and exact targets remain available for the student to review.
+    const undergraduateDiscovery = p.degreeLevel === 'unsure' && !p.pathwayId && !(p.school && p.degree);
     return list(catalog && catalog.pathways).map((pathway, index) => {
       const reasons = [], modalities = list(pathway.modalities), fields = unique([pathway.field, ...list(pathway.fields)]);
+      const undergraduate = ['associate','bachelor'].includes(level(pathway.level));
+      const undergraduateCareerStage = pathway.routeType === 'career-guide' && protectedGoals.includes(p.goal) && list(pathway.goals).includes(p.goal) && list(pathway.stageLevels).some(stage => ['associate','bachelor'].includes(level(stage)));
+      if (undergraduateDiscovery && !undergraduate && !undergraduateCareerStage) return null;
       if (p.pathwayId && pathway.id !== p.pathwayId) return null;
       if (p.school && key(pathway.school) !== key(p.school)) return null;
       if (p.degree && key(pathway.title) !== key(p.degree)) return null;
@@ -654,6 +661,7 @@
       if (!protectedGoals.includes(p.goal) && list(pathway.goals).length && !list(pathway.goals).includes(p.goal)) return null;
       const model = available.find(program => program && program.id === pathway.modelId);
       let score = 10;
+      if (undergraduateDiscovery) reasons.push(undergraduate ? 'Shows undergraduate options while you choose a degree level.' : 'Includes an undergraduate stage for your career goal.');
       if (p.pathwayId || p.school || p.degree) { score += 100; reasons.push('Keeps your selected school and degree in view.'); }
       if (protectedGoals.includes(p.goal)) { score += 30; reasons.push('Includes the academic stages and professional requirements for your stated career.'); }
       if (p.degreeLevel !== 'unsure' && level(pathway.level) !== p.degreeLevel) reasons.push('This career-stage guide covers your selected level; it is not a verified exact degree template at that level.');

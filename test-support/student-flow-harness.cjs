@@ -9,7 +9,7 @@ function worksheet(initial,data){
   vm.createContext(context);
   const html=fs.readFileSync(path.join(base,'dist/plan.html'),'utf8');
   for(const match of html.matchAll(/<script\b[^>]*\bsrc="([A-Za-z0-9_-]+\.js)"[^>]*>/g)){const source=fs.readFileSync(path.join(base,'dist',match[1]),'utf8');if(source.includes('module.exports'))vm.runInContext(source,context,{filename:match[1]});}
-  const hooks=`const fixture=JSON.parse(__fixtureJSON);state=fixture.state;catalog=fixture.catalog;models=fixture.models;
+  const hooks=`const fixture=JSON.parse(__fixtureJSON);state=fixture.state;catalog=fixture.catalog;models=fixture.models;storageBaseline=localStorage.getItem(KEY);
     render=function(){generate();save();};
     openDialog=function(html,label){window.__dialog={html,label};$('sheet-dialog').open=true;$('sheet-dialog-content').innerHTML=html;};
     closeDialog=function(){$('sheet-dialog').open=false;};

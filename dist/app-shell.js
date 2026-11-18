@@ -20,7 +20,7 @@
   const active = ['courses.html','import-courses.html'].includes(page) ? 'credits' : page === 'community.html' ? 'community' : ['programs.html','school.html','request-plan.html'].includes(page) ? 'programs' : page === 'library.html' ? 'explore' : task === 'credits' ? 'credits' : page === 'account.html' ? 'account' : page === 'admin.html' ? 'admin' : 'plan';
   const links = [
     {id:'plan',title:'My plan',href:'plan.html',icon:'plan'},
-    {id:'credits',title:'My courses',href:'courses.html',icon:'credits'},
+    {id:'credits',title:'My courses',href:'courses.html?tab=mine',icon:'credits'},
     {id:'programs',title:'Find a degree',href:'programs.html',icon:'explore'},
     {id:'community',title:'Community',href:'community.html?tab=feed',icon:'community'}
   ];
