@@ -6,23 +6,34 @@ Confirmed November 17, 2026: Cloudflare Workers for the website, APIs and resear
 
 The owner account, deployment authorization, staging portal, production database and research queues are set up. The owner has confirmed Google sign-in and account access on staging. A complete application-data export has been restored locally and copied to the production database with identical schema and content checksums. This is a migration rehearsal; the source remains writable.
 
-The configured production research runtime requires Workers Paid, currently starting at $5/month plus usage. This subscription has not been activated. The domain's Free Website plan is separate. Obtain the owner's billing approval before activating Workers Paid; do not change Namecheap nameservers yet.
+The owner confirmed the Workers Paid upgrade, and Cloudflare accepted the configured 60,000 ms CPU allowance. The domain's Free Website plan is separate. The production Worker currently runs the restricted `wrangler.bootstrap.jsonc` entry point, without research consumers, scheduled handlers or student mutations. The student runtime in `wrangler.jsonc` remains gated by final migration verification.
 
-After runtime activation, configure the production secrets and reconnect Claude through the secure owner form. Imported encrypted credentials cannot be used with a different master key. Finish the source reconciliation, hosted queue tests, exact production sign-in callback and domain cutover in that order. Keep the domain registered at Namecheap. Never send passwords, Claude keys or Cloudflare tokens in chat.
+The secure setup page is <https://degreesteps.degreesteps-d215df9a.workers.dev/admin.html>. Supabase configuration and a new server-side encryption key are installed; no Claude API key has been supplied on this host. Imported encrypted credentials cannot be used with a different master key.
+
+The owner must complete two account actions:
+
+1. In [Supabase Auth URL Configuration](https://supabase.com/dashboard/project/xajvembwdteqauwithgo/auth/url-configuration), add these exact **Redirect URLs**, preserving the existing URLs and current **Site URL**:
+   - `https://degreesteps.degreesteps-d215df9a.workers.dev/auth/complete`
+   - `https://degreesteps.com/auth/complete`
+2. Open the secure setup page, sign in with the existing DegreeSteps owner account, enter the Claude Console API key and choose **Save and test connection**. The key is encrypted server-side; the connection check does not generate degree research. Never send the key in chat.
+
+Owner reconnection intentionally changes the three AI connection tables. Preserve this new encrypted credential and its audit history during the final source reconciliation; do not describe the changed database as having source parity. Finish source reconciliation, hosted queue tests and domain cutover before exposing the student runtime. Keep Namecheap nameservers unchanged until the destination is verified, and keep the domain registered at Namecheap.
 
 ## Current state
 
 | Area | Verified on November 17, 2026 | Needed for the new host |
 | --- | --- | --- |
 | Existing website | Public Sites host at `https://degreepath-open-2026.ccollins203.chatgpt.site`; account recovery fix deployed and owner reports working | Keep available during migration and recovery; read current version from deployment history |
-| Cloudflare build | Separate Worker/assets; staging is deployed; actual production account and database IDs are configured in `wrangler.jsonc` | Approve the paid runtime, configure secrets and complete hosted production checks |
-| Private accounts | Existing Supabase Auth and deployed Postgres storage; runtime selects `supabase` | Retain project and identities; allow the exact new callback |
+| Cloudflare build | Paid CPU allowance accepted; restricted production bootstrap is deployed; staging remains available | Reconnect Claude, complete final migration and test the student runtime |
+| Private accounts | Existing Supabase Auth and deployed Postgres storage retained; bootstrap advertises email/Google and requires the stored owner role | Add the exact new callbacks and verify real owner sign-in |
 | Remaining database | All 27 application tables exported completely; local restore passed; production copy has identical schema and per-table content; hosted rollback, empty-target guard and deferred foreign-key checks passed | Reconcile any source writes after the rehearsal before routing students |
 | GitHub | Owner's repository is `jeremyc3434/DegreeSteps`; source publication uses its existing history | Confirm complete source and passing CI on the latest pushed commit |
 | Domain | Added to the owner's Free Cloudflare zone; activation pending; old Sites custom-domain requests remain pending | Connect the verified destination after testing; preserve imported DNS/email records |
 | Research workers | Main/dead-letter queues created; consumption and scheduled recovery are not active on production | Test recovery and enable consumption with the approved runtime |
 
-This is a dated status record. The production Worker, final data cutover and DNS change are not activated by the successful rehearsal. The production readiness command intentionally fails until final migration verification is asserted. The temporary source export secrets have been removed and the source redeployed with export disabled.
+This is a dated status record. The production Worker serves owner setup only. Final student traffic, data cutover and DNS changes are not activated by this bootstrap. The production readiness command intentionally fails until final migration verification is asserted. The temporary source export secrets have been removed and its export route is verified disabled.
+
+Bootstrap verification passed: setup page and private assets return no-store/noindex, anonymous key management is denied, student/research writes are blocked before delegation, Google redirects to the exact new callback, all 141 core test files pass, and the production database still matches the rehearsal checksum before owner reconnection. These checks do not substitute for real owner sign-in, Claude acceptance or queue execution.
 
 ## Operator sequence
 
