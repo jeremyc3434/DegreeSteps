@@ -3,8 +3,8 @@
   "name": "degreesteps",
   "main": "outputs/cloudflare/worker.mjs",
   "compatibility_date": "2026-11-17",
-  // Replace these with resources in YOUR Cloudflare account. Sites' DB is not portable by ID.
-  "account_id": "REPLACE_WITH_YOUR_CLOUDFLARE_ACCOUNT_ID",
+  // Production resources are owner controlled; traffic remains on the verified hosts until cutover.
+  "account_id": "d215df9a813c0d7a292613373dfa9cb0",
   "workers_dev": true,
   "build": {"command": "npm run build"},
   "limits": {"cpu_ms": 60000},
@@ -20,7 +20,7 @@
   "d1_databases": [{
     "binding": "DB",
     "database_name": "degreesteps-public",
-    "database_id": "REPLACE_WITH_ACCOUNT_OWNED_D1_ID",
+    "database_id": "2bce4a19-cd2d-45dd-a08d-b877c806b3ad",
     "migrations_dir": "drizzle"
   }],
   "queues": {

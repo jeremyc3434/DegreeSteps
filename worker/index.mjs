@@ -15,6 +15,7 @@ import { handleAuth, resolvePortalIdentity } from '../server/auth.mjs';
 import { handleCatalog } from '../server/catalog.mjs';
 import { handleCurriculumDiscovery } from '../server/curriculum-discovery.mjs';
 import { publicCommunityCache } from '../server/public-community-cache.mjs';
+import { handleOperatorSnapshot } from '../server/operator-snapshot.mjs';
 import { assets } from './assets.generated.mjs';
 
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
@@ -174,6 +175,7 @@ export default {
   async fetch(request, env, ctx) {
     initializePublicAssets(env);
     const target = new URL(request.url);
+    if(target.pathname.startsWith('/api/operations/'))return await handleOperatorSnapshot(request,env)||Response.json({error:'Not found.'},{status:404,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'}});
     if(target.pathname==='/api/catalog/degree-link'){
       const headers={'Cache-Control':'public, max-age=300','X-Content-Type-Options':'nosniff'};
       if(request.method!=='GET')return Response.json({error:'Use GET to look up a public degree link.'},{status:405,headers:{...headers,Allow:'GET'}});

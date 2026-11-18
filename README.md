@@ -86,6 +86,10 @@ This runner uses synthetic SQLite/D1 data and mocked identity without external H
 
 ## Storage migration and recovery
 
+For the move from the managed Site to the owner-controlled account, use the fixed-table operator snapshot in `server/operator-snapshot.mjs` and the offline `scripts/d1-snapshot.mjs` verifier. The export is disabled by default, read-only, bounded and protected by a short-lived server operator credential; student or community administrator sign-in does not grant export access. It preserves full text and exact integer values from all application tables. Never use the model-facing database inspection projection as a full backup: large research fields can be truncated.
+
+Keep snapshot/import files outside deployable assets and Git. Verify against the repository's immutable migrations, require an empty destination, apply one proven atomic provider batch, and compare the resulting full snapshot before treating a rehearsal as successful. A consistent snapshot alone does not freeze source writes or establish cutover readiness. Remove temporary export environment entries and redeploy immediately after use. See [the launch checklist](docs/site-launch.md) for the remaining credential, billing and domain gates.
+
 The Postgres private portal preserves the existing account API, explicit-save consent and revision conflict checks. Its functions run with the authenticated student's permissions and row-level ownership policies. A private trigger helper enforces write limits and plan caps, including direct REST writes.
 
 After activating the Postgres backend, the account page can show older D1 backups. **Move my saved plans** requires explicit consent and the reviewed source manifest/revisions. Migration is one target transaction, is idempotent for the same source, and refuses conflicting target copies. The D1 source remains available. A changed source requires reviewing and backing up both copies; it is not an instruction to overwrite a newer plan.
