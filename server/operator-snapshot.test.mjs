@@ -101,6 +101,28 @@ test('database failures are private and never leak query text or stored source r
   assert.equal(result.data.operatorDiagnostic,'d1_unknown');
 });
 
+test('schema mismatch exposes bounded operator-only DDL metadata without any stored rows',async t=>{
+  const f=fixture(t);seedUser(f.DB,'synthetic-owner','PRIVATE SOURCE RECORD');f.DB.sqlite.exec('ALTER TABLE community_users ADD COLUMN unexpected_metadata text');
+  const result=await call(f.env);assert.equal(result.status,503);assert.equal(result.data.code,'snapshot_schema_mismatch');assert(Array.isArray(result.data.operatorSchema));assert(result.data.operatorSchema.some(row=>row.name==='community_users'&&row.sql.includes('unexpected_metadata')));
+  assert(result.data.operatorSchema.every(row=>Object.keys(row).sort().join(',')==='name,sql,tbl_name,type'));assert(result.data.operatorSchema.length<=256);assert(Buffer.byteLength(JSON.stringify(result.data.operatorSchema))<=128*1024);assert(!Object.hasOwn(result.data,'tables'));assert(!JSON.stringify(result.data).includes('PRIVATE SOURCE RECORD'));assert(!JSON.stringify(result.data).includes(key));
+  const unauthorized=await call(f.env,{headers:{'X-DegreeSteps-Export-Key':'b'.repeat(64)}});assert.equal(unauthorized.status,401);assert(!Object.hasOwn(unauthorized.data,'operatorSchema'));
+  const disabled=await call({...f.env,OPERATOR_EXPORT_TOKEN_SHA256:undefined});assert.equal(disabled.status,404);assert(!Object.hasOwn(disabled.data,'operatorSchema'));
+});
+
+test('the exact managed Sites migration table is internal while other unknown tables still fail closed',async t=>{
+  const f=fixture(t);f.DB.sqlite.exec('CREATE TABLE __appgarden_migrations(id text PRIMARY KEY,metadata text)');f.DB.sqlite.prepare('INSERT INTO __appgarden_migrations(id,metadata) VALUES (?,?)').run('synthetic-platform-migration','INTERNAL PLATFORM METADATA');
+  const result=await call(f.env);assert.equal(result.status,200);assert.equal(result.data.tables.length,27);assert.equal(result.data.schema.length,91);assert(!result.data.tables.some(table=>table.name==='__appgarden_migrations'));assert(!result.data.schema.some(row=>row.name==='__appgarden_migrations'));assert(!JSON.stringify(result.data).includes('INTERNAL PLATFORM METADATA'));
+  f.DB.sqlite.exec('CREATE TABLE __appgarden_other_records(id text)');const unknown=await call(f.env);assert.equal(unknown.status,503);assert.equal(unknown.data.code,'snapshot_schema_mismatch');
+});
+
+test('oversized schema diagnostics are omitted completely rather than truncated or returned with data',async t=>{
+  for(const kind of ['entries','bytes']){
+    const f=fixture(t),batch=f.DB.batch.bind(f.DB);
+    f.DB.batch=async statements=>{const results=await batch(statements);if(kind==='entries')for(let n=0;n<256;n++)results[2].results.push({type:'index',name:'synthetic_extra_'+n,tbl_name:'community_users',sql:'CREATE INDEX synthetic_extra_'+n+' ON community_users(id)'});else results[2].results[0].sql='CREATE INDEX synthetic_extra ON community_users(id) /*'+'x'.repeat(129*1024)+'*/';return results;};
+    const result=await call(f.env);assert.equal(result.status,503);assert.equal(result.data.code,'snapshot_schema_mismatch');assert(!Object.hasOwn(result.data,'operatorSchema'));assert(!Object.hasOwn(result.data,'tables'));assert(Buffer.byteLength(JSON.stringify(result.data))<1024);
+  }
+});
+
 test('authorized D1 failure diagnostics expose fixed categories without raw SQL, values or credentials',async t=>{
   for(const [message,expected]of [
     ['parser stack overflow near private_sql_text','d1_parser_limit'],

@@ -11,7 +11,7 @@ const OperatorSnapshotApi=(()=>{
   const lexical=(a,b)=>a<b?-1:a>b?1:0;
   const identifier=value=>{if(!/^[a-z][a-z0-9_]*$/.test(value))throw Error('Invalid fixed snapshot identifier');return '"'+value+'"';};
   const literal=value=>"'"+value.replaceAll("'","''")+"'";
-  class SnapshotError extends Error{constructor(status,message,code,diagnostic){super(message);this.status=status;this.code=code;this.diagnostic=diagnostic;}}
+  class SnapshotError extends Error{constructor(status,message,code,diagnostic,operatorSchema){super(message);this.status=status;this.code=code;this.diagnostic=diagnostic;this.operatorSchema=operatorSchema;}}
   const fail=(status,message,code)=>{throw new SnapshotError(status,message,code);};
   function headers(extra={}){return{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','Pragma':'no-cache','X-Content-Type-Options':'nosniff','X-Robots-Tag':'noindex, nofollow','Referrer-Policy':'no-referrer','Vary':'X-DegreeSteps-Export-Key',...extra};}
   function response(value,status=200,extra={}){return new Response(JSON.stringify(value),{status,headers:headers(extra)});}
@@ -52,7 +52,7 @@ const OperatorSnapshotApi=(()=>{
   const queries=[
     statsSql+'SELECT * FROM snapshot_stats ORDER BY name',
     statsSql+', snapshot_allowed AS (SELECT CASE WHEN '+valid+' THEN 1 ELSE 0 END AS ok FROM snapshot_stats) SELECT registry.value AS table_name,packed.value AS row_json FROM json_each('+tableNames+') AS registry CROSS JOIN json_each(CASE WHEN (SELECT ok FROM snapshot_allowed)=1 THEN CASE registry.value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN (SELECT json_group_array(json('+rowExpression(table)+')) FROM '+identifier(table.name)+')').join(' ')+' ELSE \'[]\' END ELSE \'[]\' END) AS packed',
-    "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE (type='table' AND name NOT GLOB 'sqlite_*' AND name NOT IN ('_cf_KV','_cf_METADATA','d1_migrations','__drizzle_migrations')) OR type='view' OR (type IN ('index','trigger') AND tbl_name IN ("+tables.map(table=>literal(table.name)).join(',')+')) ORDER BY type,name'
+    "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE (type='table' AND name NOT GLOB 'sqlite_*' AND name NOT IN ('_cf_KV','_cf_METADATA','d1_migrations','__drizzle_migrations','__appgarden_migrations')) OR type='view' OR (type IN ('index','trigger') AND tbl_name IN ("+tables.map(table=>literal(table.name)).join(',')+')) ORDER BY type,name'
   ];
   function validateStats(rows){
     if(!Array.isArray(rows)||rows.length!==tables.length)fail(503,'The application schema changed. Review the export before continuing.','snapshot_schema_mismatch');
@@ -81,6 +81,14 @@ const OperatorSnapshotApi=(()=>{
     if(/binding|database.*not found|database.*unavailable|database.*does not exist/i.test(text))return'd1_binding_unavailable';
     return'd1_unknown';
   }
+  function schemaDiagnostic(schema){
+    // Only authenticated schema-mismatch responses can include this bounded DDL projection.
+    // Do not truncate: an incomplete definition would make drift review misleading.
+    if(!Array.isArray(schema)||schema.length>256||schema.some(row=>typeof row.type!=='string'||row.type.length>32||typeof row.name!=='string'||row.name.length>256||typeof row.tbl_name!=='string'||row.tbl_name.length>256||(row.sql!==null&&typeof row.sql!=='string')))return undefined;
+    const projected=schema.map(({type,name,tbl_name,sql})=>({type,name,tbl_name,sql}));
+    if(encoder.encode(JSON.stringify(projected)).byteLength>128*1024)return undefined;
+    return projected;
+  }
   async function snapshot(env,origin){
     if(typeof env.DB?.batch!=='function'||typeof env.DB?.prepare!=='function')fail(503,'The migration database is not available.','snapshot_unavailable');
     let answer,timer;
@@ -89,7 +97,7 @@ const OperatorSnapshotApi=(()=>{
     if(!Array.isArray(answer)||answer.length!==3||answer.some(result=>result.success===false||!Array.isArray(result.results)))fail(503,'The migration snapshot could not be verified.','snapshot_invalid_result');
     const stats=answer[0].results;validateStats(stats);
     const schema=answer[2].results.map(row=>({type:row.type,name:row.name,tbl_name:row.tbl_name,sql:row.sql})).sort((a,b)=>lexical(a.type,b.type)||lexical(a.name,b.name));
-    if(schema.some(row=>!['table','index','trigger'].includes(row.type)||!tables.some(table=>table.name===row.tbl_name)||typeof row.name!=='string'||(row.sql!==null&&typeof row.sql!=='string'))||canonical(schema)!==canonical(D1_SNAPSHOT_SCHEMA))fail(503,'The application schema changed. Review the export before continuing.','snapshot_schema_mismatch');
+    if(schema.some(row=>!['table','index','trigger'].includes(row.type)||!tables.some(table=>table.name===row.tbl_name)||typeof row.name!=='string'||(row.sql!==null&&typeof row.sql!=='string'))||canonical(schema)!==canonical(D1_SNAPSHOT_SCHEMA))throw new SnapshotError(503,'The application schema changed. Review the export before continuing.','snapshot_schema_mismatch',undefined,schemaDiagnostic(schema));
     const grouped=new Map(tables.map(table=>[table.name,[]]));
     for(const item of answer[1].results){
       if(!grouped.has(item.table_name)||typeof item.row_json!=='string')fail(503,'The migration snapshot could not be verified.','snapshot_invalid_result');
@@ -118,7 +126,7 @@ const OperatorSnapshotApi=(()=>{
       if(request.method!=='POST')return response({error:'Use POST.'},405,{Allow:'POST'});
       if(url.search)fail(400,'No snapshot filters or SQL are accepted.','snapshot_invalid_request');
       await body(request);return await snapshot(env,config.origin);
-    }catch(error){if(error instanceof SnapshotError)return response({error:error.message,code:error.code,...(error.diagnostic?{operatorDiagnostic:error.diagnostic}:{})},error.status);return response({error:'The migration snapshot could not be created.',code:'snapshot_unavailable'},503);}
+    }catch(error){if(error instanceof SnapshotError)return response({error:error.message,code:error.code,...(error.diagnostic?{operatorDiagnostic:error.diagnostic}:{}),...(error.code==='snapshot_schema_mismatch'&&error.operatorSchema?{operatorSchema:error.operatorSchema}:{})},error.status);return response({error:'The migration snapshot could not be created.',code:'snapshot_unavailable'},503);}
   };
 })();
 
