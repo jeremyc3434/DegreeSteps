@@ -50,7 +50,7 @@ test('native assets preserve the exact public routes, bytes, MIME types, HEAD an
 
 test('private native HTML overrides permissive asset-cache headers and API paths never fall through to assets',async t=>{
   const f=await fixture(t);
-  for(const path of['/portal.html','/plan.html','/account.html','/courses.html','/import-courses.html','/request-plan.html','/admin.html']){
+  for(const path of['/portal.html','/plan.html','/account.html','/courses.html','/import-courses.html','/request-plan.html','/admin.html','/coverage.html']){
     const response=await f.call(path);assert.equal(response.status,200);assert.equal(response.headers.get('Cache-Control'),'no-store');assert.match(response.headers.get('X-Robots-Tag'),/noindex, nofollow/);
   }
   const before=f.assetCalls.length,response=await f.call('/api/portal/plans');assert.equal(response.status,401);assert.equal(f.assetCalls.length,before,'Private API routing cannot return a successful asset page');assert.match(response.headers.get('Cache-Control'),/no-store/);assert.deepEqual(f.external,[]);
@@ -61,6 +61,49 @@ test('native public degree resolution loads only the reviewed public build data 
   const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:'https://www.liberty.edu/government/bachelors/criminal-justice/'}));assert.equal(response.status,200);
   const data=await response.json();assert.equal(data.matched,true);assert.equal(data.sourcePlan.qualityReady,true);assert.equal(data.sourcePlan.route.id,'liberty-criminal-justice-residential');assert.equal(data.sourcePlan.model.totalCredits,120);
   assert(f.assetCalls.some(call=>call.path==='/data/curriculum-registry.json'));assert(f.assetCalls.some(call=>call.path.startsWith('/data/')&&call.path.includes('liberty')));assert(f.assetCalls.every(call=>call.path.startsWith('/data/')));assert.deepEqual(f.external,[]);
+  assert(f.assetCalls.some(call=>call.path==='/data/baseline-index.json'),'Known degrees use the build-time baseline index');
+});
+
+test('missing, malformed and mismatched baseline artifacts cannot advertise a cached complete plan',async t=>{
+ for(const change of ['missing','malformed','planner-mismatch']){
+  const f=await fixture(t),original=f.env.ASSETS.fetch;
+  f.env.ASSETS.fetch=async request=>{
+    if(new URL(request.url).pathname!=='/data/baseline-index.json')return original(request);
+    if(change==='missing')return new Response('Missing',{status:404});
+    if(change==='malformed')return new Response('{invalid');
+    const index=JSON.parse(readFileSync(resolve(publicRoot,'data/baseline-index.json'),'utf8'));index.inputs['/planner.js']='0'.repeat(64);return Response.json(index);
+  };
+  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:'https://www.liberty.edu/government/bachelors/criminal-justice/'}));
+  assert.equal(response.status,200,change);const body=await response.json();assert.equal(body.sourcePlan,undefined,change);assert.equal(body.existingPlan,undefined,change);assert.deepEqual(f.external,[]);
+ }
+});
+
+test('a guest cannot load the research graph or administrative review database',async t=>{
+  const f=await fixture(t,{database:true}),before=f.assetCalls.length;
+  const response=await f.call('/api/admin/academic-coverage');assert.equal(response.status,401);assert.match(response.headers.get('Cache-Control'),/private, no-store/);assert.match(response.headers.get('X-Robots-Tag'),/noindex/);
+  assert.equal(f.assetCalls.length,before);assert.equal(f.env.DB.events.length,0);assert.deepEqual(f.external,[]);
+});
+
+test('native coverage loads compact indexes after admin authorization and hydrates only requested evidence',async t=>{
+  const f=await fixture(t,{database:true});let email='student@preview.invalid';
+  Object.assign(f.env,{COMMUNITY_ADMIN_EMAIL:'owner@preview.invalid',PORTAL_SUPABASE_URL:'https://project.supabase.co',PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_mock',PORTAL_AUTH_FETCH:async(url,options)=>{
+    assert(url.endsWith('/user'));assert.equal(options.headers.Authorization,'Bearer coverage-test-access');return Response.json({id:'11111111-1111-4111-8111-111111111111',email,email_confirmed_at:'2026-11-01T00:00:00Z'});
+  }});
+  const call=(path,body)=>f.call(path,{method:body?'POST':'GET',headers:{Cookie:'__Host-degreepath_access=coverage-test-access',...(body?{Origin:origin,'Content-Type':'application/json','X-Portal-Request':'1'}:{})},...(body?{body:JSON.stringify(body)}:{})});
+  assert.equal((await call('/api/admin/academic-coverage')).status,403);assert.equal(f.assetCalls.length,0,'A student must not load the graph');
+  email='owner@preview.invalid';const summary=await call('/api/admin/academic-coverage');assert.equal(summary.status,200);const status=await summary.json();assert(status.summary.programs>0);assert.equal(status.qualitySummary.models,status.summary.programs);
+  assert(f.assetCalls.every(call=>['/data/academic-registry.json','/data/pathway-quality-report.json'].includes(call.path)),'The overview must not hydrate any evidence');
+  const list=await(await call('/api/admin/academic-coverage/programs?limit=1')).json();assert.equal(list.items.length,1);
+  const details=await call('/api/admin/academic-coverage/programs/'+list.items[0].id);assert.equal(details.status,200);const program=await details.json();assert(program.facts.length>0);assert(program.facts.every(fact=>fact.facts&&fact.evidenceFingerprint));
+  assert(f.assetCalls.some(call=>/^\/data\/academic-evidence\/[a-f0-9]{64}\.json$/.test(call.path)));
+  const fact=program.facts[0],saved=await call('/api/admin/academic-coverage/facts/'+fact.id+'/review',{registryRevision:status.registryRevision,evidenceFingerprint:fact.evidenceFingerprint,revision:0,decision:'needs-evidence',note:'Synthetic runtime test: this fact needs further evidence.',sourceIds:[],attestation:false});
+  assert.equal(saved.status,201);assert.equal((await saved.json()).publicationChanged,false);
+  const after=await(await call('/api/admin/academic-coverage/facts/'+fact.id)).json();assert.equal(after.fact.administrativeReview.decision,'needs-evidence');assert.equal(after.history.length,1);assert.equal(after.fact.evidenceFingerprint,fact.evidenceFingerprint);assert.deepEqual(f.external,[]);
+  const index=JSON.parse(readFileSync(resolve(publicRoot,'data/academic-registry.json'),'utf8')),impact=new Map();
+  for(const item of index.facts)for(const sourceId of item.sourceIds)impact.set(sourceId,(impact.get(sourceId)||0)+1);
+  for(const [sourceId]of [...impact].sort((a,b)=>b[1]-a[1]).slice(0,5)){
+    const response=await call('/api/admin/academic-coverage/sources/'+sourceId);assert.equal(response.status,200,'A shared guide must stay within the evidence budget');const source=await response.json();assert.equal(source.factsAreSummaries,true);assert(source.facts.length);assert(source.facts.every(item=>item.label&&item.facts===undefined));
+  }
 });
 
 test('native queue and scheduled entry points preserve bounded dispatch without credentials or paid calls',async t=>{

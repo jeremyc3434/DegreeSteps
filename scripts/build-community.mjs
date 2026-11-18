@@ -26,6 +26,9 @@ execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-english.mjs'),'
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-liberal-studies.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-academic-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-pathway-quality-report.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-school-research-batch.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-public-site.mjs')],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/apply-brand-system.mjs')],{cwd:root,stdio:'inherit'});
 const assets = {};
@@ -66,6 +69,8 @@ const academicApi=(await readFile(resolve(root,'server/template-academic.mjs'),'
 assert(!/^import\s/m.test(academicApi),'Bundle academic validator imports explicitly before building');
 const aiConnectionsApiSource=(await readFile(resolve(root,'server/ai-connections.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(aiConnectionsApiSource),'Bundle AI connection imports explicitly before building');
+const coverageApi=(await readFile(resolve(root,'server/academic-coverage.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
+assert(!/^import\s/m.test(coverageApi),'Bundle academic coverage imports explicitly before building');
 const researchJobs=(await readFile(resolve(root,'server/research-jobs.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 const templateApi=(await readFile(resolve(root,'server/template-research.mjs'),'utf8')).replace(/^import .*;\n/gm,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(collegeApi+templateApi),'Bundle college and template imports explicitly before building');
@@ -76,7 +81,7 @@ const snapshotRegistry=(await readFile(resolve(root,'db/d1-snapshot-registry.mjs
 const snapshotApi=(await readFile(resolve(root,'server/operator-snapshot.mjs'),'utf8')).replace(/^import .*;\n/gm,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(snapshotRegistry+snapshotApi),'Bundle operator snapshot imports explicitly before building');
 const handler=(await readFile(resolve(root,'worker/index.mjs'),'utf8')).replace(/^import .*;\n/gm,'');
-const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi;
+const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi+'\n'+coverageApi;
 const source=core+'const assets='+JSON.stringify(assets)+';\n'+handler;
 await rm(output,{recursive:true,force:true});
 await mkdir(resolve(output,'dist/server'),{recursive:true});await mkdir(resolve(output,'.openai'),{recursive:true});
@@ -93,7 +98,7 @@ await writeFile(resolve(cloudflareOutput,'worker.mjs'),nativeSource);
 await cp(resolve(root,'dist'),resolve(cloudflareOutput,'public'),{recursive:true});
 const module=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 assert.equal(typeof module.default?.fetch,'function');
-for (const path of ['/','/portal.html','/account.html','/degree-audit.html','/resources/','/blog/','/sitemap.xml','/robots.txt','/community.html','/school.html','/request-plan.html','/admin.html','/data/school-insights.json','/data/community-templates.json','/data/curriculum-registry.json']) {
+for (const path of ['/','/portal.html','/account.html','/degree-audit.html','/resources/','/blog/','/sitemap.xml','/robots.txt','/community.html','/school.html','/request-plan.html','/admin.html','/coverage.html','/data/school-insights.json','/data/community-templates.json','/data/curriculum-registry.json']) {
   const response=await module.default.fetch(new Request('https://degreepath.test'+path),{},{});assert.equal(response.status,200,path);
 }
 const authStatus=await module.default.fetch(new Request('https://degreepath.test/api/auth/status'),{},{});assert.equal(authStatus.status,200);assert.equal((await authStatus.json()).configured,false);

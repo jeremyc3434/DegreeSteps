@@ -131,5 +131,5 @@ await writeFile(programsPath,programsHTML);
 pages.push({path:'/programs.html',date:null});
 const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+pages.map(p=>'<url><loc>'+esc(origin+p.path)+'</loc>'+(p.date?'<lastmod>'+p.date+'</lastmod>':'')+'</url>').join('\n')+'\n</urlset>\n';
 await writeFile(resolve(dist,'sitemap.xml'),sitemap);
-await writeFile(resolve(dist,'robots.txt'),'User-agent: *\nAllow: /\nDisallow: /portal.html\nDisallow: /plan.html\nDisallow: /account.html\nDisallow: /guided.html\nDisallow: /audit.html\nDisallow: /request-plan.html\nDisallow: /admin.html\nDisallow: /api/\nDisallow: /auth/\n\nSitemap: '+origin+'/sitemap.xml\n');
+await writeFile(resolve(dist,'robots.txt'),'User-agent: *\nAllow: /\nDisallow: /portal.html\nDisallow: /plan.html\nDisallow: /account.html\nDisallow: /guided.html\nDisallow: /audit.html\nDisallow: /request-plan.html\nDisallow: /admin.html\nDisallow: /coverage.html\nDisallow: /api/\nDisallow: /auth/\n\nSitemap: '+origin+'/sitemap.xml\n');
 console.log(JSON.stringify({publicPages:pages.length,articles:articles.length,schoolProfiles:schoolEntries.length,sourceProfiles:creditCatalog.sources.length,origin}));

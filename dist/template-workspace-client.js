@@ -34,7 +34,7 @@ async function researchStream(response){
  finally{try{await reader.cancel();}catch{}try{reader.releaseLock();}catch{}}
 }
 async function api(path,{method='GET',body}={}){
- if(!/^\/api\/(?:templates|admin\/(?:templates|colleges)|colleges)(?:[/?][A-Za-z0-9_/?=%&.,:+-]*)?$/.test(path)&&!/^\/api\/admin\/ai-connection(?:\/test)?$/.test(path))throw Error('Choose a valid workspace action.');
+ if(!/^\/api\/(?:templates|admin\/(?:templates|colleges|academic-coverage)|colleges)(?:[/?][A-Za-z0-9_/?=%&.,:+-]*)?$/.test(path)&&!/^\/api\/admin\/ai-connection(?:\/test)?$/.test(path))throw Error('Choose a valid workspace action.');
  const research=method==='POST'&&/^\/api\/templates\/requests(?:\/[A-Za-z0-9_-]+\/research)?$/.test(path),headers={Accept:research?'text/event-stream, application/json':'application/json'};if(method!=='GET'){headers['Content-Type']='application/json';headers['X-Portal-Request']='1';}
  let response;try{response=await root.fetch(path,{method,headers,credentials:'same-origin',cache:'no-store',redirect:'error',...(method==='GET'?{}:{body:JSON.stringify(body||{})})});}catch{throw connectionError(research);}
  if(research&&/^text\/event-stream(?:\s*;|$)/i.test(response.headers?.get?.('Content-Type')||''))return researchStream(response);

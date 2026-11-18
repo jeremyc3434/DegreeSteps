@@ -16,9 +16,12 @@ import { handleCatalog } from '../server/catalog.mjs';
 import { handleCurriculumDiscovery } from '../server/curriculum-discovery.mjs';
 import { publicCommunityCache } from '../server/public-community-cache.mjs';
 import { handleOperatorSnapshot } from '../server/operator-snapshot.mjs';
+import { handleAcademicCoverage } from '../server/academic-coverage.mjs';
 import { assets } from './assets.generated.mjs';
 
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
+let academicCoverageSnapshot, baselineSnapshot;
+let academicEvidenceCache;
 // Public versioned build assets only. Never put account data or credentials in this cache.
 let nativePublicAssets;
 function initializePublicAssets(env){if(env?.ASSETS?.fetch)nativePublicAssets=env.ASSETS;}
@@ -88,22 +91,63 @@ function degreeLevel(value) {
   return ({bachelors:'bachelor',bachelor:'bachelor',associates:'associate',associate:'associate',masters:'master',master:'master',doctoral:'doctorate',doctorate:'doctorate',specialist:'specialist'})[String(value||'').toLowerCase().replace(/[^a-z]/g,'')]||null;
 }
 async function knownSourcePlan(entry,pathwayId,modality,model) {
+  try{
   if(!basePathwaysSnapshot)basePathwaysSnapshot=JSON.parse(await decodeStaticAsset(assets['/data/pathways.json']));
   const catalog=await publicCatalogSnapshot();
   if(!resolvedPlanCatalogSnapshot)resolvedPlanCatalogSnapshot=TemplateProgramCatalog.attachRegistry(TemplateProgramCatalog.merge(basePathwaysSnapshot,catalog),curriculumRegistrySnapshot);
   const original=resolvedPlanCatalogSnapshot.pathways.find(route=>route.id===pathwayId);
-  if(!original||!entry.routeIds.includes(pathwayId)||!entry.modalities.includes(modality))return null;
+  if(!original||original.modelId!==entry.id||original.school!==model.school||!original.modalities?.includes(modality)||!entry.routeIds.includes(pathwayId)||!entry.modalities.includes(modality))return null;
   const level=entry.level||degreeLevel(model.level),route={...original,modelId:entry.id,level,modalities:[modality],readyTemplate:true,courseMapStatus:'mapped'};
-  try{
-    const normalized={...model,level},providers=[...new Set((model.requirements||[]).flatMap(row=>(row.options||[]).map(option=>option.provider)))].filter(provider=>provider!=='University');
-    const reference=original.url?await researchReferenceForURL(original.url):null;
-    const scope={...normalized,schoolName:model.school,programName:model.title,modality,catalogYear:catalogIdentity(model.catalogYear||model.catalog)};
-    if(reference&&checkResearchReference(scope,reference).length)return null;
-    const plan=TemplateAcademicPlanner.generate(normalized,{providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000});
-    if(plan.validation?.academicCountsValid!==true||plan.rows.length!==model.requirements.length||plan.rows.some(row=>!row.option||row.selectionRequired||!row.option.code||row.option.selectionRequired))return null;
-    const sum=predicate=>plan.rows.filter(predicate).reduce((total,row)=>total+row.credits,0);
-    return{route,model:normalized,summary:{totalCredits:model.totalCredits,requirementCount:model.requirements.length,sourceCount:(model.sources||[]).length,transferCredits:sum(row=>row.option.provider!=='University'),universityCredits:sum(row=>row.option.provider==='University'),upperCredits:sum(row=>row.option.upper===true),institutionMinCredits:model.institutionMinCredits,externalMaxCredits:model.externalMaxCredits,checkedOn:entry.checkedOn||model.evidenceCheckedOn||null},qualityReady:true};
+  // Build-time baselines contain no student records. A missing/stale artifact
+  // fails closed; a degree-link request never launches a fresh optimization.
+  if(!baselineSnapshot){
+    const asset=assets['/data/baseline-index.json'];if(!asset)return null;
+    const candidate=JSON.parse(await decodeStaticAsset(asset)),{revision,...content}=candidate;
+    if(candidate.schemaVersion!==1||candidate.privateRecordsIncluded!==false||!candidate.baselines||!/^academic-v1:[a-f0-9]{64}$/.test(candidate.registryRevision||'')||!/^20\d\d-\d\d-\d\d$/.test(candidate.asOf||'')||!candidate.inputs||candidate.plannerHash!==candidate.inputs['/planner.js'])return null;
+    const required=['/planner.js','/data/academic-registry.json','/data/pathways.json','/data/program-catalog.json','/data/curriculum-registry.json','/data/research-references.json',...curriculumRegistrySnapshot.models.map(entry=>'/'+entry.path)];
+    if(required.some(path=>!candidate.inputs[path]))return null;
+    for(const [path,hash]of Object.entries(candidate.inputs))if(!/^[a-f0-9]{64}$/.test(hash)||!assets[path]?.etag?.includes(hash.slice(0,24)))return null;
+    const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(content)))),byte=>byte.toString(16).padStart(2,'0')).join('');
+    if(revision!=='baselines-v1:'+digest)return null;
+    baselineSnapshot=candidate;
+  }
+  const baseline=baselineSnapshot.baselines?.[[entry.id,pathwayId,modality].join('|')];
+  if(!baseline||baseline.modelId!==model.id||baseline.validation?.academicCountsValid!==true||baseline.summary?.requirementCount!==model.requirements?.length||baseline.summary?.totalCredits!==model.totalCredits)return null;
+  if(!Array.isArray(baseline.rows)||baseline.rows.length!==model.requirements.length||new Set(baseline.rows.map(row=>row.requirementId)).size!==baseline.rows.length)return null;
+  for(const row of baseline.rows){const req=model.requirements.find(req=>req.id===row.requirementId);if(!req||row.credits!==req.credits||row.status!=='planned'||!req.options?.some(option=>option.id===row.optionId&&option.provider===row.provider&&option.code===row.code&&!option.selectionRequired))return null;}
+  const reference=original.url?await researchReferenceForURL(original.url):null;
+  if(reference&&checkResearchReference({...model,level,schoolName:model.school,programName:model.title,modality,catalogYear:catalogIdentity(model.catalogYear||model.catalog)},reference).length)return null;
+  return{route,model:{...model,level},summary:baseline.summary,qualityReady:true};
   }catch{return null;}
+}
+async function academicCoverageData(){
+  if(!academicCoverageSnapshot){
+    const registry=JSON.parse(await decodeStaticAsset(assets['/data/academic-registry.json'])),report=JSON.parse(await decodeStaticAsset(assets['/data/pathway-quality-report.json']));
+    if(report.registryRevision!==registry.revision)throw Error('Academic coverage artifacts disagree.');
+    academicCoverageSnapshot={registry,report,loadEvidence:loadAcademicEvidence};
+  }
+  return academicCoverageSnapshot;
+}
+async function loadAcademicEvidence(paths){
+  if(!Array.isArray(paths)||paths.length>32)throw Error('Choose a smaller evidence group.');
+  const facts=[],sources=[];let totalBytes=0;
+  for(const path of new Set(paths)){
+    if(typeof path!=='string'||!/^\/data\/academic-evidence\/[a-f0-9]{64}\.json$/.test(path)||!assets[path])throw Error('This evidence is not part of the current academic release.');
+    let payload;
+    if(academicEvidenceCache?.path===path){payload=academicEvidenceCache.payload;totalBytes+=academicEvidenceCache.bytes;}
+    else{
+      const body=await decodeStaticAsset(assets[path]),encoded=new TextEncoder().encode(body),bytes=encoded.byteLength;
+      if(bytes>1100*1024)throw Error('This evidence file exceeds the release size limit.');
+      totalBytes+=bytes;
+      if(totalBytes>8*1024*1024)throw Error('Choose a smaller evidence group.');
+      const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',encoded)),byte=>byte.toString(16).padStart(2,'0')).join('');
+      if(digest!==path.split('/').at(-1).slice(0,-5))throw Error('This evidence file failed its content check.');
+      payload=JSON.parse(body);academicEvidenceCache={path,payload,bytes};
+    }
+    if(totalBytes>8*1024*1024)throw Error('Choose a smaller evidence group.');
+    facts.push(...(payload.facts||[]));sources.push(...(payload.sources||[]));
+  }
+  return {facts,sources};
 }
 function checkPrivateResearchPlan(artifact) {
   const issues=[],add=message=>{if(!issues.includes(message))issues.push(message);};
@@ -233,7 +277,8 @@ export default {
     const connectionAPI=target.pathname==='/api/admin/ai-connection'||target.pathname==='/api/admin/ai-connection/test';
     const collegeAPI=target.pathname.startsWith('/api/colleges/')||target.pathname==='/api/admin/colleges';
     const transcriptAPI=target.pathname==='/api/portal/transcript-import';
-    if (target.pathname.startsWith('/api/portal/') || target.pathname.startsWith('/api/community/') || templateAPI || collegeAPI || connectionAPI) {
+    const coverageAPI=target.pathname==='/api/admin/academic-coverage'||target.pathname.startsWith('/api/admin/academic-coverage/');
+    if (target.pathname.startsWith('/api/portal/') || target.pathname.startsWith('/api/community/') || templateAPI || collegeAPI || connectionAPI || coverageAPI) {
       const publicTemplateRead=request.method==='GET'&&(target.pathname==='/api/templates'||/^\/api\/templates\/tpl-[a-z0-9-]{5,80}$/.test(target.pathname));
       const identity = publicTemplateRead ? {configured:true,user:null,setCookies:[]} : await resolvePortalIdentity(request,env);
       if(identity.unavailable)return Response.json({error:'Sign-in is temporarily unavailable. Your saved plans have not changed. Please try again.',code:'auth_unavailable'},{status:503,headers:{'Cache-Control':'private, no-store','Vary':'Cookie','X-Content-Type-Options':'nosniff','Retry-After':'15'}});
@@ -250,7 +295,10 @@ export default {
         if(identity.user){headers.set('oai-authenticated-user-id',identity.user.id);headers.set('oai-authenticated-user-email',identity.user.email || '');}
         routedRequest=new Request(request,{headers});
       }
-      const response=connectionAPI ? await handleAIConnections(routedRequest,portalEnv) : transcriptAPI ? await handleTranscriptImport(routedRequest,portalEnv) : templateAPI ? await handleTemplateResearch(routedRequest,portalEnv,ctx) : collegeAPI ? await handleCollegeAccess(routedRequest,portalEnv) : target.pathname.startsWith('/api/portal/') ? await handlePortal(routedRequest,portalEnv,ctx) : await handleCommunity(routedRequest,portalEnv,ctx);
+      // The coverage handler authorizes the platform administrator before
+      // invoking this immutable-asset loader. Student and guest traffic do not
+      // load the research graph or read administrative review records.
+      const response=coverageAPI ? await handleAcademicCoverage(routedRequest,portalEnv,academicCoverageData) : connectionAPI ? await handleAIConnections(routedRequest,portalEnv) : transcriptAPI ? await handleTranscriptImport(routedRequest,portalEnv) : templateAPI ? await handleTemplateResearch(routedRequest,portalEnv,ctx) : collegeAPI ? await handleCollegeAccess(routedRequest,portalEnv) : target.pathname.startsWith('/api/portal/') ? await handlePortal(routedRequest,portalEnv,ctx) : await handleCommunity(routedRequest,portalEnv,ctx);
       publicDiscussionCache?.store(response,ctx);
       if (!identity.setCookies?.length) return response;
       const headers=new Headers(response.headers);
@@ -267,7 +315,7 @@ export default {
     if(!assets[path] && assets[path+'/index.html'])return Response.redirect(target.origin+target.pathname+'/'+target.search,308);
     const asset=assets[path];
     if(!asset)return new Response('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"></head><body><main class="site-container" style="padding:80px 24px"><h1>Let’s find your next step.</h1><p>This page could not be found.</p><p><a href="/">DegreeSteps home</a> · <a href="/resources/">Student resources</a> · <a href="/portal.html">Build my plan</a></p></main></body></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
-    const privatePage=['/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/request-plan.html','/admin.html'].includes(path);
+    const privatePage=['/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/request-plan.html','/admin.html','/coverage.html'].includes(path);
     if(asset.external){
       if(!env.ASSETS?.fetch)return new Response('Public assets are temporarily unavailable',{status:503,headers:{'Cache-Control':'no-store'}});
       const assetURL=new URL(request.url);assetURL.pathname=path;const delivered=await env.ASSETS.fetch(new Request(assetURL,{method:request.method,headers:request.headers}));

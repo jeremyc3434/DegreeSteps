@@ -1,6 +1,108 @@
 /** Fixed operator snapshot scope. Tests enforce parity with the migration-owned schema. */
 export const D1_SNAPSHOT_TABLES = Object.freeze([
   {
+    "name": "academic_fact_review_events",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "fact_id",
+        "type": "text"
+      },
+      {
+        "name": "evidence_fingerprint",
+        "type": "text"
+      },
+      {
+        "name": "registry_revision",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "decision",
+        "type": "text"
+      },
+      {
+        "name": "note",
+        "type": "text"
+      },
+      {
+        "name": "source_ids_json",
+        "type": "text"
+      },
+      {
+        "name": "attestation",
+        "type": "integer"
+      },
+      {
+        "name": "reviewer_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "academic_fact_reviews",
+    "columns": [
+      {
+        "name": "fact_id",
+        "type": "text"
+      },
+      {
+        "name": "evidence_fingerprint",
+        "type": "text"
+      },
+      {
+        "name": "registry_revision",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "decision",
+        "type": "text"
+      },
+      {
+        "name": "note",
+        "type": "text"
+      },
+      {
+        "name": "source_ids_json",
+        "type": "text"
+      },
+      {
+        "name": "attestation",
+        "type": "integer"
+      },
+      {
+        "name": "reviewer_id",
+        "type": "text"
+      },
+      {
+        "name": "last_event_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
     "name": "ai_connection_events",
     "columns": [
       {
@@ -1013,6 +1115,30 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
 export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   {
     "type": "index",
+    "name": "academic_fact_review_event_token",
+    "tbl_name": "academic_fact_reviews",
+    "sql": "CREATE UNIQUE INDEX `academic_fact_review_event_token` ON `academic_fact_reviews` (`last_event_id`)"
+  },
+  {
+    "type": "index",
+    "name": "academic_fact_review_event_version",
+    "tbl_name": "academic_fact_review_events",
+    "sql": "CREATE UNIQUE INDEX `academic_fact_review_event_version` ON `academic_fact_review_events` (`fact_id`,`evidence_fingerprint`,`revision`)"
+  },
+  {
+    "type": "index",
+    "name": "academic_fact_review_history",
+    "tbl_name": "academic_fact_review_events",
+    "sql": "CREATE INDEX `academic_fact_review_history` ON `academic_fact_review_events` (`fact_id`,`created_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "academic_fact_review_status",
+    "tbl_name": "academic_fact_reviews",
+    "sql": "CREATE INDEX `academic_fact_review_status` ON `academic_fact_reviews` (`decision`,`updated_at`,`fact_id`)"
+  },
+  {
+    "type": "index",
     "name": "ai_connection_events_created",
     "tbl_name": "ai_connection_events",
     "sql": "CREATE INDEX `ai_connection_events_created` ON `ai_connection_events` (`created_at`,`id`)"
@@ -1190,6 +1316,18 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "portal_plans_owner",
     "tbl_name": "portal_plans",
     "sql": "CREATE INDEX `portal_plans_owner` ON `portal_plans` (`user_id`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_academic_fact_review_events_1",
+    "tbl_name": "academic_fact_review_events",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_academic_fact_reviews_1",
+    "tbl_name": "academic_fact_reviews",
+    "sql": null
   },
   {
     "type": "index",
@@ -1394,6 +1532,18 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "transcript_import_owner_window",
     "tbl_name": "transcript_import_runs",
     "sql": "CREATE INDEX `transcript_import_owner_window` ON `transcript_import_runs` (`user_id`,`started_at`)"
+  },
+  {
+    "type": "table",
+    "name": "academic_fact_review_events",
+    "tbl_name": "academic_fact_review_events",
+    "sql": "CREATE TABLE `academic_fact_review_events` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`fact_id` text NOT NULL,\n\t`evidence_fingerprint` text NOT NULL,\n\t`registry_revision` text NOT NULL,\n\t`revision` integer NOT NULL,\n\t`decision` text NOT NULL,\n\t`note` text NOT NULL,\n\t`source_ids_json` text NOT NULL,\n\t`attestation` integer NOT NULL,\n\t`reviewer_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\tCONSTRAINT \"academic_fact_event_fingerprint\" CHECK(length(\"academic_fact_review_events\".\"evidence_fingerprint\")=64 AND \"academic_fact_review_events\".\"evidence_fingerprint\" NOT GLOB '*[^a-f0-9]*'),\n\tCONSTRAINT \"academic_fact_event_registry\" CHECK(length(\"academic_fact_review_events\".\"registry_revision\") BETWEEN 1 AND 120),\n\tCONSTRAINT \"academic_fact_event_revision\" CHECK(\"academic_fact_review_events\".\"revision\">0),\n\tCONSTRAINT \"academic_fact_event_decision\" CHECK(\"academic_fact_review_events\".\"decision\" IN ('reviewed-supported','needs-evidence','conflict')),\n\tCONSTRAINT \"academic_fact_event_note\" CHECK(length(\"academic_fact_review_events\".\"note\") BETWEEN 10 AND 2000),\n\tCONSTRAINT \"academic_fact_event_sources\" CHECK(json_valid(\"academic_fact_review_events\".\"source_ids_json\") AND json_type(\"academic_fact_review_events\".\"source_ids_json\")='array' AND length(CAST(\"academic_fact_review_events\".\"source_ids_json\" AS BLOB))<=8192),\n\tCONSTRAINT \"academic_fact_event_attestation\" CHECK((\"academic_fact_review_events\".\"decision\"='reviewed-supported' AND \"academic_fact_review_events\".\"attestation\"=1 AND json_array_length(\"academic_fact_review_events\".\"source_ids_json\")>0) OR (\"academic_fact_review_events\".\"decision\"!='reviewed-supported' AND \"academic_fact_review_events\".\"attestation\"=0)),\n\tCONSTRAINT \"academic_fact_event_actor\" CHECK(length(\"academic_fact_review_events\".\"reviewer_id\") BETWEEN 1 AND 256)\n)"
+  },
+  {
+    "type": "table",
+    "name": "academic_fact_reviews",
+    "tbl_name": "academic_fact_reviews",
+    "sql": "CREATE TABLE `academic_fact_reviews` (\n\t`fact_id` text NOT NULL,\n\t`evidence_fingerprint` text NOT NULL,\n\t`registry_revision` text NOT NULL,\n\t`revision` integer NOT NULL,\n\t`decision` text NOT NULL,\n\t`note` text NOT NULL,\n\t`source_ids_json` text NOT NULL,\n\t`attestation` integer DEFAULT 0 NOT NULL,\n\t`reviewer_id` text NOT NULL,\n\t`last_event_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tPRIMARY KEY(`fact_id`, `evidence_fingerprint`),\n\tCONSTRAINT \"academic_fact_review_id\" CHECK(length(\"academic_fact_reviews\".\"fact_id\") BETWEEN 1 AND 160),\n\tCONSTRAINT \"academic_fact_review_fingerprint\" CHECK(length(\"academic_fact_reviews\".\"evidence_fingerprint\")=64 AND \"academic_fact_reviews\".\"evidence_fingerprint\" NOT GLOB '*[^a-f0-9]*'),\n\tCONSTRAINT \"academic_fact_review_registry\" CHECK(length(\"academic_fact_reviews\".\"registry_revision\") BETWEEN 1 AND 120),\n\tCONSTRAINT \"academic_fact_review_revision\" CHECK(\"academic_fact_reviews\".\"revision\">0),\n\tCONSTRAINT \"academic_fact_review_decision\" CHECK(\"academic_fact_reviews\".\"decision\" IN ('reviewed-supported','needs-evidence','conflict')),\n\tCONSTRAINT \"academic_fact_review_note\" CHECK(length(\"academic_fact_reviews\".\"note\") BETWEEN 10 AND 2000),\n\tCONSTRAINT \"academic_fact_review_sources\" CHECK(json_valid(\"academic_fact_reviews\".\"source_ids_json\") AND json_type(\"academic_fact_reviews\".\"source_ids_json\")='array' AND length(CAST(\"academic_fact_reviews\".\"source_ids_json\" AS BLOB))<=8192),\n\tCONSTRAINT \"academic_fact_review_attestation\" CHECK((\"academic_fact_reviews\".\"decision\"='reviewed-supported' AND \"academic_fact_reviews\".\"attestation\"=1 AND json_array_length(\"academic_fact_reviews\".\"source_ids_json\")>0) OR (\"academic_fact_reviews\".\"decision\"!='reviewed-supported' AND \"academic_fact_reviews\".\"attestation\"=0)),\n\tCONSTRAINT \"academic_fact_review_actor\" CHECK(length(\"academic_fact_reviews\".\"reviewer_id\") BETWEEN 1 AND 256)\n)"
   },
   {
     "type": "table",

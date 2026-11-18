@@ -8,13 +8,20 @@ const require=createRequire(import.meta.url),Catalog=require('../dist/program-ca
 const root=resolve(import.meta.dirname,'..'),day=86400000,list=v=>Array.isArray(v)?v:[];
 const prioritySchools=new Set(['Liberty University','Thomas Edison State University','Southern New Hampshire University','Western Governors University','University of Maine at Presque Isle']);
 function date(value){if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return null;const parsed=Date.parse(value+'T00:00:00Z');return Number.isFinite(parsed)&&new Date(parsed).toISOString().slice(0,10)===value?parsed:null;}
-const reviewTimestamps=new Set(['checked','checkedOn','checkedAt','evidenceCheckedOn','mappingCheckedOn','retrievedAt','updatedAt']);
+const reviewTimestamps=new Set(['checked','checkedOn','checkedAt','reviewedOn','reviewedAt','evidenceChecked','evidenceCheckedOn','evidenceCheckedAt','mappingChecked','mappingCheckedOn','mappingCheckedAt','retrievedAt','updatedAt']);
 function stable(value){if(Array.isArray(value))return value.map(stable);if(value&&typeof value==='object')return Object.fromEntries(Object.keys(value).filter(k=>!reviewTimestamps.has(k)).sort().map(k=>[k,stable(value[k])]));return value;}
 function url(value){try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null;}catch{return null;}}
 export function requirementsFingerprint(model){
   // Rechecking a URL does not create a different degree; changing its academic facts does.
   const facts={};
-  for(const name of ['id','school','title','level','catalog','creditSystem','totalCredits','institutionMinCredits','alternativeMaxCredits','externalMaxCredits','upperMinCredits','majorResidencyMinCredits','majorResidencyFraction','majorResidencyBasis','requirements','overlaps','graduationRequirements','pricing'])if(model[name]!==undefined)facts[name]=model[name];
+  for(const name of ['id','school','title','level','format','modalities','catalog','catalogYear','catalogIdentity','creditSystem','totalCredits','institutionMinCredits','alternativeMaxCredits','externalMaxCredits','upperMinCredits','majorMinInstitutionCredits','majorInstitutionFraction','majorResidencyBasisCredits','majorResidencyMinCredits','majorResidencyFraction','majorResidencyBasis','upperGroupMinimums','residencyPolicy','appliedTransferWaiver','liberalArtsAllocation','courseCreditExclusions','gradePolicy','transferGradePolicy','transferRules','transferPolicyReview','existingCreditReview','policyEvidence','requirements','overlaps','graduationRequirements','pricing','publishedFees'])if(model[name]!==undefined)facts[name]=model[name];
+  // Some catalogs expose a current URL, not an academic-year edition. A real,
+  // source-bound recheck can update its display label without changing its facts.
+  const identity=model.catalogIdentity,checked=date(identity?.checkedOn),sourceUrl=url(identity?.sourceUrl);
+  if(identity?.kind==='reviewed-current-catalog'&&typeof identity.label==='string'&&identity.label.trim()&&identity.label===model.catalog&&checked!==null&&sourceUrl&&list(model.sources).some(source=>url(source.url)===sourceUrl&&[source.checked,source.checkedOn,source.checkedAt].some(value=>date(value)===checked))){
+    facts.catalog={kind:'reviewed-current-catalog',sourceUrl};
+    facts.catalogIdentity={kind:'reviewed-current-catalog',sourceUrl};
+  }
   return createHash('sha256').update(JSON.stringify(stable(facts))).digest('hex');
 }
 export function buildReviewQueue({catalog,models,registry={models:[]},asOf}){

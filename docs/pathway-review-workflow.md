@@ -1,6 +1,10 @@
 # Monthly pathway review
 
-Run `npm run review:pathways` for a read-only coverage and review summary. Run `npm run review:pathways:snapshot -- --as-of YYYY-MM-DD` to save the detailed queue under `content/reviews/`. Both commands use the current compiled registry, the existing four degree maps and the directory. They make no network requests and never edit the registry, public course choices or student plans.
+Run `npm run review:pathways` for a read-only coverage and review summary. Run `npm run review:pathways:snapshot -- --as-of YYYY-MM-DD` to save the detailed queue under `content/reviews/`. Both commands use all models in the current compiled registry and the wider directory. They make no network requests and never edit public course choices or student plans.
+
+Run `npm run coverage:build` after changing academic inputs. This generates a shared claim registry, bounded evidence files, a quality report, and zero-record baseline plans. `npm run coverage:check` checks reproducibility; the production build also rejects stale artifacts. Build dates are never substituted for source-review dates. The report distinguishes unfinished platform research, student-specific execution tasks, and incomplete price or timing estimates. See [the quality contract](pathway-quality-contract.md).
+
+Platform administrators can open **Manage DegreeSteps → Academic coverage**. Each evidence decision binds to the exact fact fingerprint, source metadata and scope. A changed fact starts a new review. Reviews have optimistic concurrency control and an append-only event history in the public application's database, separate from private student records. A supported review does not itself publish a plan, award credit, or clear a university restriction. Incorporate supported corrections into the curated academic inputs and regenerate before a reviewed release.
 
 The queue lists:
 

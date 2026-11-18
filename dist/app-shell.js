@@ -3,7 +3,7 @@
   'use strict';
   const page = location.pathname.split('/').pop() || 'portal.html';
   const task = new URLSearchParams(location.search).get('task');
-  const labels = {'programs.html':'Find a degree','courses.html':'My courses','import-courses.html':'Add my courses','compare-plans.html':'Compare plans','portal.html':'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps'};
+  const labels = {'programs.html':'Find a degree','courses.html':'My courses','import-courses.html':'Add my courses','compare-plans.html':'Compare plans','portal.html':'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps','coverage.html':'Academic coverage'};
   if (!labels[page]) return;
   const paths = {
     plan:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/>',

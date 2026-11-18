@@ -27,18 +27,21 @@ function fixture(t){
  comments.run('synthetic-child',owner,'post:synthetic-post','synthetic-parent','AAA child sorts before its parent',2,2);
  db.prepare('INSERT INTO degree_templates(id,canonical_key,school_name,program_name,level,modality,catalog_year,status,artifact_json,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?)').run('tpl-synthetic','synthetic|degree|2026','Synthetic College','Synthetic degree','bachelor','online','2026','draft',JSON.stringify({title:'Synthetic degree',requirements:[{id:'synthetic-requirement',credits:3,notes:note}]}),1,2);
  db.prepare('INSERT INTO template_requests(id,user_id,template_id,details,created_at) VALUES(?,?,?,?,?)').run('synthetic-request',owner,'tpl-synthetic','Synthetic request',1);
+ db.prepare('INSERT INTO academic_fact_reviews(fact_id,evidence_fingerprint,registry_revision,revision,decision,note,source_ids_json,attestation,reviewer_id,last_event_id,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)').run('synthetic-fact','a'.repeat(64),'academic-v1:'+('b'.repeat(64)),2,'needs-evidence','Synthetic evidence review retains its exact source scope.','["synthetic-source"]',0,owner,'synthetic-review-event',1,2);
+ db.prepare('INSERT INTO academic_fact_review_events(id,fact_id,evidence_fingerprint,registry_revision,revision,decision,note,source_ids_json,attestation,reviewer_id,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?)').run('synthetic-review-event','synthetic-fact','a'.repeat(64),'academic-v1:'+('b'.repeat(64)),2,'needs-evidence','Synthetic evidence review retains its exact source scope.','["synthetic-source"]',0,owner,2);
  const snapshot=readDatabaseSnapshot(db,{sourceOrigin,createdAt:'2026-11-18T00:00:00.000Z'});
  return{db,snapshot,state,note};
 }
 const rejected=(fn,code)=>assert.throws(fn,error=>error instanceof SnapshotError&&(!code||error.code===code));
 
-test('full snapshot restores all 27 tables with original JSON, units, revisions and encrypted text intact',t=>{
+test('full snapshot restores all 29 tables with original JSON, units, revisions and encrypted text intact',t=>{
  const f=fixture(t),result=restoreSnapshot(f.snapshot,{expectedOrigin:sourceOrigin,expectedSha256:f.snapshot.sha256});t.after(()=>result.database.close());
- assert.equal(result.report.tableCount,27);assert.equal(result.report.integrity,'ok');assert.equal(result.report.foreignKeyViolations,0);assert.equal(result.report.cutoverVerified,false);
+ assert.equal(result.report.tableCount,29);assert.equal(result.report.integrity,'ok');assert.equal(result.report.foreignKeyViolations,0);assert.equal(result.report.cutoverVerified,false);
  const restored=result.database.prepare('SELECT state_json,revision FROM portal_plans').get();assert.equal(restored.state_json,JSON.stringify(f.state));assert.equal(restored.revision,7);
  assert.equal(JSON.parse(restored.state_json).learning[0].creditSystem,'quarter');assert.equal(JSON.parse(restored.state_json).learning[0].evaluations[0].status,'confirmed');
  assert.equal(result.database.prepare('SELECT ciphertext FROM ai_service_connections').get().ciphertext,f.db.prepare('SELECT ciphertext FROM ai_service_connections').get().ciphertext);
  assert.equal(result.database.prepare('SELECT alias FROM portal_profiles').get().alias,"'); DROP TABLE portal_plans; --");
+ assert.equal(result.database.prepare('SELECT revision,registry_revision,evidence_fingerprint FROM academic_fact_reviews').get().revision,2);assert.equal(result.database.prepare('SELECT registry_revision FROM academic_fact_review_events').get().registry_revision,'academic-v1:'+('b'.repeat(64)));
  assert(table(f.snapshot,'degree_templates').rows[0].artifact_json.length>10000,'Exercise cells larger than model projections');
  const safe=JSON.stringify(result.report);assert(!safe.includes(f.note.slice(0,80)));assert(!safe.includes(owner));assert(!safe.includes('ciphertext'));
 });
@@ -48,7 +51,7 @@ test('actual atomic exporter output verifies and restores through the independen
  const DB={prepare(sql){assert.match(sql,/^(?:WITH|SELECT)\b/);return{sql};},async batch(statements){assert.equal(statements.length,3);f.db.exec('BEGIN');try{const results=statements.map(statement=>{executed.push(statement.sql);return{success:true,results:f.db.prepare(statement.sql).all()};});f.db.exec('COMMIT');return results;}catch(error){f.db.exec('ROLLBACK');throw error;}}};
  const response=await handleOperatorSnapshot(new Request(sourceOrigin+'/api/operations/snapshot',{method:'POST',headers:{'X-DegreeSteps-Export-Key':key,'Content-Type':'application/json'},body:'{}'}),{DB,OPERATOR_EXPORT_ORIGIN:sourceOrigin,OPERATOR_EXPORT_EXPIRES_AT:new Date(Date.now()+60000).toISOString(),OPERATOR_EXPORT_TOKEN_SHA256:createHash('sha256').update(key).digest('hex')});
  assert.equal(response.status,200,await response.clone().text());const snapshot=await response.json(),verified=verifySnapshot(snapshot,{expectedOrigin:sourceOrigin,expectedSha256:f.snapshot.sha256});
- assert.equal(verified.sha256,f.snapshot.sha256);assert.equal(verified.tableCount,27);assert.equal(executed.length,3);assert.equal(table(snapshot,'portal_plans').rows[0].state_json,JSON.stringify(f.state));
+ assert.equal(verified.sha256,f.snapshot.sha256);assert.equal(verified.tableCount,29);assert.equal(executed.length,3);assert.equal(table(snapshot,'portal_plans').rows[0].state_json,JSON.stringify(f.state));
 });
 
 test('restoration defers foreign keys so canonical row order can put child comments before parents',t=>{
@@ -128,7 +131,7 @@ test('import plans contain parameterized INSERTs only and require an empty atomi
 test('CLI verification prints a safe report, writes private plans only to explicit 0600 new files, and refuses tracked paths',async t=>{
  const f=fixture(t),directory=await mkdtemp(resolve(tmpdir(),'degreesteps-snapshot-cli-'));t.after(()=>rm(directory,{recursive:true,force:true}));const input=resolve(directory,'source.json'),out=resolve(directory,'import-plan.json');await writeFile(input,JSON.stringify(f.snapshot),{mode:0o600});
  const cli=async(...args)=>{const lines=[],logger=t.mock.method(console,'log',value=>lines.push(String(value)));try{await main(args);return lines.join('\n');}finally{logger.mock.restore();}};
- const verified=await cli('--verify',input,'--expect-origin',sourceOrigin);assert.equal(JSON.parse(verified).tableCount,27);assert(!verified.includes('Synthetic private note'));
+ const verified=await cli('--verify',input,'--expect-origin',sourceOrigin);assert.equal(JSON.parse(verified).tableCount,29);assert(!verified.includes('Synthetic private note'));
  await cli('--plan',input,'--out',out);assert.equal((await stat(out)).mode&0o777,0o600);assert.equal(JSON.parse(await readFile(out,'utf8')).sourceSha256,f.snapshot.sha256);
  await assert.rejects(cli('--plan',input,'--out',out),undefined,'An existing file is not overwritten');
  const forbidden=resolve(root,'dist/must-not-write-private-plan.json');await assert.rejects(cli('--plan',input,'--out',forbidden),error=>error.code==='unsafe_output');await assert.rejects(access(forbidden));

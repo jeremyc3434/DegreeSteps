@@ -13,6 +13,9 @@
     "deploy:staging": "npm exec --yes --package=wrangler@4.164.0 -- wrangler deploy --config wrangler.staging.jsonc",
     "review:pathways": "node scripts/review-pathways.mjs",
     "review:pathways:snapshot": "node scripts/review-pathways.mjs --write",
+    "coverage:build": "node scripts/build-academic-registry.mjs && node scripts/build-pathway-quality-report.mjs",
+    "coverage:check": "node scripts/build-academic-registry.mjs --check && node scripts/build-pathway-quality-report.mjs --check",
+    "research:school": "node scripts/build-school-research-batch.mjs",
     "db:generate": "drizzle-kit generate --config drizzle.config.mjs",
     "test:community": "node --test server/community.test.mjs"
   },

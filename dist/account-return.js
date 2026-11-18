@@ -7,7 +7,7 @@
 }(typeof globalThis!=='undefined'?globalThis:this,function(){
   'use strict';
   const KEY='degreepath-auth-return-v1',TTL=24*60*60*1000;
-  const paths=new Set(['/account.html','/portal.html','/plan.html','/request-plan.html','/admin.html','/school.html','/community.html','/courses.html','/programs.html','/compare-plans.html','/degree-audit.html']);
+  const paths=new Set(['/account.html','/portal.html','/plan.html','/request-plan.html','/admin.html','/coverage.html','/school.html','/community.html','/courses.html','/programs.html','/compare-plans.html','/degree-audit.html']);
   const context=/^(school|program|course|template|post):[A-Za-z0-9][A-Za-z0-9._:/-]{0,159}$/;
   const identifier=/^[A-Za-z0-9_-]{1,120}$/;
   const bounded=value=>typeof value==='string'&&value.length>0&&value.length<=200&&!/[\\\u0000-\u001f\u007f]/.test(value);

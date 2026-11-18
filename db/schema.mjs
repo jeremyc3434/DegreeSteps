@@ -71,3 +71,4 @@ export * from './ai-connections-schema.mjs';
 export * from './research-progress-schema.mjs';
 export * from './transcript-import-schema.mjs';
 export * from './research-jobs-schema.mjs';
+export * from './academic-coverage-schema.mjs';

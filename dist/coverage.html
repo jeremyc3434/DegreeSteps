@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="same-origin">
+<title>Academic coverage | DegreeSteps</title>
+<link rel="stylesheet" href="/brand.css">
+<link rel="stylesheet" href="coverage.css">
+<script src="account-client.js" defer></script>
+<script src="template-workspace-client.js" defer></script>
+<script src="coverage.js" defer></script>
+</head>
+<body class="coverage-page">
+<a class="cv-skip" href="#coverage-main">Skip to coverage</a>
+<header class="cv-topbar">
+<a class="ds-wordmark" href="admin.html" aria-label="DegreeSteps management">Degree<span class="ds-wordmark-steps">Steps</span></a>
+<nav aria-label="Management navigation"><a href="admin.html">Management home</a><a href="account.html">My account</a></nav>
+</header>
+<main id="coverage-main" class="cv-main">
+<header class="cv-intro"><div><p class="cv-eyebrow">ACADEMIC OPERATIONS</p><h1>Make more degrees ready.</h1><p>Find the research that will help the most students.</p></div><button id="coverage-refresh" class="cv-button cv-secondary" type="button" hidden>Refresh coverage</button></header>
+<div id="coverage-message" class="cv-notice" role="status" aria-live="polite" hidden></div>
+<section id="coverage-gate" class="cv-card cv-gate" aria-labelledby="coverage-gate-heading"><h2 id="coverage-gate-heading">Checking your access…</h2><p id="coverage-gate-copy">This workspace is for DegreeSteps platform reviewers.</p><div class="cv-actions"><a id="coverage-sign-in" class="cv-button" href="account.html?returnTo=%2Fcoverage.html" hidden>Sign in</a><button id="coverage-retry" class="cv-button cv-secondary" type="button" hidden>Try again</button></div></section>
+<div id="coverage-workspace" hidden>
+<section aria-label="Coverage overview" id="coverage-summary" class="cv-summary"></section>
+<p id="coverage-snapshot" class="cv-snapshot"></p>
+<div class="cv-workgrid">
+<section class="cv-card cv-programs" aria-labelledby="coverage-programs-heading">
+<div class="cv-section-head"><div><h2 id="coverage-programs-heading">Degree programs</h2><p>Research quality is separate from a student’s own credit evaluation.</p></div><span id="coverage-program-count" class="cv-count"></span></div>
+<form id="coverage-filter-form" class="cv-filters" role="search">
+<label class="cv-search">Find a degree<input id="coverage-search" type="search" name="q" placeholder="Search degrees or schools" maxlength="120"></label>
+<label>School<select id="coverage-school" name="school"><option value="">All schools</option></select></label>
+<label>Template availability<select id="coverage-status" name="status"><option value="">All programs</option><option value="ready">Available templates</option><option value="draft">Not yet available</option></select></label>
+<button type="submit" class="cv-button cv-secondary">Apply filters</button>
+</form>
+<p id="coverage-program-status" role="status" aria-live="polite"></p>
+<div class="cv-table-wrap"><table class="cv-table"><caption class="cv-sr-only">Degree programs and research quality. Select a degree to review its evidence.</caption><thead><tr><th scope="col">Degree</th><th scope="col">Research</th><th scope="col">Open research</th><th scope="col"><span class="cv-sr-only">Action</span></th></tr></thead><tbody id="coverage-program-list"></tbody></table></div>
+<div class="cv-actions cv-pagination"><button id="coverage-more" type="button" class="cv-button cv-secondary" hidden>Load more degrees</button></div>
+</section>
+<aside class="cv-card cv-queue" aria-labelledby="coverage-queue-heading"><div class="cv-section-head"><div><p class="cv-eyebrow">HIGHEST IMPACT FIRST</p><h2 id="coverage-queue-heading">Research queue</h2></div></div><p>Shared evidence can help several degrees. A review never publishes a plan automatically.</p><p id="coverage-queue-status" role="status" aria-live="polite"></p><div id="coverage-queue-list"></div><button id="coverage-queue-retry" type="button" class="cv-button cv-secondary" hidden>Retry queue</button></aside>
+</div>
+<section id="coverage-detail" class="cv-card cv-detail" aria-labelledby="coverage-detail-title" tabindex="-1" hidden></section>
+<p class="cv-footnote">An internal evidence review supports template research. It does not award a student’s transfer credits, approve a university’s decision, or publish a template.</p>
+</div>
+<noscript><p class="cv-notice">Turn on JavaScript to check your access and open academic coverage.</p></noscript>
+</main>
+</body>
+</html>
