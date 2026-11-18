@@ -37,7 +37,7 @@ test('render and Back reuse the prepared search without rebuilding it',async()=>
 });
 
 test('cost-loading errors keep course choices visible and retry without changing the saved plan',async()=>{
- let fail=true;const f=fixture({fetcher:()=>fail?{ok:false,status:503}:{ok:true,json:async()=>({entries:[]})}}),before=f.stored();await f.api.prepare();assert.equal(f.api.pending(),false);assert.equal(f.api.view(),null);assert.match(f.api.html(),/shown by course fit/);assert.match(f.api.html(),/Try comparison again/);assert.equal((f.api.html().match(/data-degree-preview=/g)||[]).length,4);assert.deepEqual(f.stored(),before);assert.equal(f.writes(),0);
+ let fail=true;const f=fixture({fetcher:()=>fail?{ok:false,status:503}:{ok:true,json:async()=>({entries:[]})}}),before=f.stored();await f.api.prepare();assert.equal(f.api.pending(),false);assert.equal(f.api.view(),null);assert.match(f.api.html(),/shown by your preferences/);assert.match(f.api.html(),/Try comparison again/);assert.equal((f.api.html().match(/data-degree-preview=/g)||[]).length,4);assert.deepEqual(f.stored(),before);assert.equal(f.writes(),0);
  fail=false;await f.api.action('retry-recommendations');assert.equal(f.api.view().scenarios[0].pathwayId,'cheap');assert.doesNotMatch(f.api.html(),/Try comparison again/);assert.equal(f.fetches(),2);
 });
 

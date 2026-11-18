@@ -23,7 +23,7 @@ function fixture() {
 }
 
 function localWorker() {
-  const imports = [], messages = [], listeners = new Set(), networkCalls = [];
+  const imports = [], messages = [], progress = [], listeners = new Set(), networkCalls = [];
   const forbidden = name => (...args) => {networkCalls.push({name,args}); throw Error('No network is available in a comparison worker test.');};
   const sandbox = {
     console, URL, URLSearchParams, Intl,
@@ -43,13 +43,20 @@ function localWorker() {
   };
   vm.runInContext(fs.readFileSync(path.join(dist, 'degree-comparison-worker.js'), 'utf8'), context, {filename:'degree-comparison-worker.js'});
   return {
-    imports, messages, networkCalls,
+    imports, messages, progress, networkCalls,
     async dispatch(data) {
       const event = {data:structuredClone(data)};
       if (typeof sandbox.onmessage === 'function') await sandbox.onmessage(event);
       for (const listener of listeners) await listener(event);
-      assert.equal(messages.length, 1, 'one worker request produces one response');
-      return messages.shift();
+      const replies = messages.splice(0), terminal = replies.filter(message => typeof message.ok === 'boolean');
+      assert.equal(terminal.length, 1, 'one worker request produces exactly one terminal response');
+      for (const message of replies.filter(message => message.event === 'progress')) {
+        assert.equal(message.id, data.id, 'every progress update belongs to the original local request');
+        assert.equal('ok' in message, false, 'progress is nonterminal');
+        progress.push(message);
+      }
+      assert.equal(replies.at(-1), terminal[0], 'the final result follows all progress updates');
+      return terminal[0];
     }
   };
 }
@@ -64,6 +71,14 @@ test('the actual classic worker builds the production Liberty comparison using o
   assert.equal(response.id, 1);
   assert.equal(response.ok, true);
   assert.deepEqual(serializable(response.value), serializable(expected));
+  assert.equal(worker.progress[0].value.phase, 'started');
+  assert.deepEqual(worker.progress[0].value.matchingRouteIds, ['current']);
+  assert.equal(worker.progress[1].value.phase, 'candidate');
+  assert.equal(worker.progress[1].value.candidate.summary.applicableCompletedCredits, 3);
+  assert.equal(worker.progress[1].value.complete, false);
+  assert.equal(worker.progress[1].value.recommendation, null);
+  assert.equal(JSON.stringify(worker.progress).includes('Synthetic private planning note'), false);
+  assert.equal(JSON.stringify(worker.progress).includes('local-student-record'), false);
   assert.deepEqual(payload, before, 'the original student state remains unchanged');
   assert(worker.imports.includes('plan-comparison-engine.js'), 'the worker must load the production comparison engine');
   assert.equal(new Set(worker.imports).size, worker.imports.length);
@@ -161,12 +176,72 @@ test('a mismatched reply id is ignored until the current job replies', async t =
   assert.deepEqual(await result, []);
 });
 
+test('progress is nonterminal and late progress cannot survive completion or supersession', async t => {
+  const progress = [], {runner, workers} = createRunner(t);
+  const first = runner.run('build', {state:{}}, {onProgress:value => progress.push(value)}), firstRequest = await waitForMessage(workers);
+  let settled = false;
+  first.then(() => {settled = true;}, () => {settled = true;});
+  const lateFirst = workers[0].captureReply();
+  lateFirst({id:firstRequest.id+100, event:'progress', value:'mismatched'});
+  lateFirst({id:firstRequest.id, event:'progress', value:'first candidate'});
+  await Promise.resolve();
+  assert.deepEqual(progress, ['first candidate']);
+  assert.equal(settled, false);
+  assert.equal(workers[0].terminateCount, 0);
+  const rejected = assert.rejects(first, error => error.code === 'superseded');
+  const second = runner.run('build', {state:{}}, {onProgress:value => progress.push(value)}), secondRequest = await waitForMessage(workers, 1);
+  lateFirst({id:firstRequest.id, event:'progress', value:'superseded candidate'});
+  const lateSecond = workers[1].captureReply();
+  lateSecond({id:secondRequest.id, event:'progress', value:'second candidate'});
+  lateSecond({id:secondRequest.id, ok:true, value:'finished'});
+  assert.equal(await second, 'finished');
+  lateSecond({id:secondRequest.id, event:'progress', value:'after completion'});
+  assert.deepEqual(progress, ['first candidate','second candidate']);
+  await rejected;
+});
+
+test('a throwing progress callback cannot fail the authoritative result or enter the worker payload', async t => {
+  const {runner, workers} = createRunner(t);
+  let calls = 0;
+  const result = runner.run('build', {state:{}}, {onProgress() {calls++; throw Error('Presentation failed');}}), request = await waitForMessage(workers);
+  assert.deepEqual(Object.keys(request).sort(), ['id','kind','payload']);
+  workers[0].reply({id:request.id, event:'progress', value:{phase:'candidate'}});
+  workers[0].reply({id:request.id, ok:true, value:'authoritative result'});
+  assert.equal(await result, 'authoritative result');
+  assert.equal(calls, 1);
+});
+
+test('progress neither replaces nor extends the original timeout, and timed-out updates are ignored', async t => {
+  const timers = new Map(), workers = [], progress = [];
+  let sequence = 0;
+  const context = {module:{exports:{}}, setTimeout(callback, delay) {timers.set(++sequence, {callback, delay}); return sequence;}, clearTimeout(id) {timers.delete(id);}};
+  vm.runInNewContext(fs.readFileSync(path.join(dist, 'comparison-runner.js'), 'utf8'), context);
+  const runner = context.module.exports.create({delayMs:0, timeoutMs:90, workerFactory() {const worker = new FakeWorker(); workers.push(worker); return worker;}});
+  t.after(() => runner.destroy());
+  const result = runner.run('build', {state:{}}, {onProgress:value => progress.push(value)}), rejected = assert.rejects(result, error => error.code === 'timeout');
+  const launch = [...timers.entries()][0];timers.delete(launch[0]);launch[1].callback();
+  const request = workers[0].messages[0], timeout = [...timers.entries()][0], reply = workers[0].captureReply();
+  assert.equal(timeout[1].delay, 90);
+  for (let update = 0; update < 4; update++) {
+    reply({id:request.id, event:'progress', value:update});
+    assert.equal(timers.size, 1);
+    assert.equal(timers.get(timeout[0]), timeout[1], 'progress preserves the same absolute timer');
+  }
+  timers.delete(timeout[0]);timeout[1].callback();
+  await rejected;
+  reply({id:request.id, event:'progress', value:'late'});
+  assert.deepEqual(progress, [0,1,2,3]);
+  assert.equal(workers[0].terminateCount, 1);
+});
+
 test('cancel rejects pending work and terminates its worker', async t => {
-  const {runner, workers} = createRunner(t), result = runner.run('build', {state:{}});
+  const progress = [], {runner, workers} = createRunner(t), result = runner.run('build', {state:{}}, {onProgress:value => progress.push(value)});
   const rejected = assert.rejects(result);
-  await waitForMessage(workers);
+  const request = await waitForMessage(workers), lateReply = workers[0].captureReply();
   runner.cancel();
   await rejected;
+  lateReply({id:request.id, event:'progress', value:'after cancel'});
+  assert.deepEqual(progress, []);
   assert.equal(workers[0].terminateCount, 1);
 });
 
@@ -212,7 +287,8 @@ test('Worker-unavailable fallback visibly reports local execution and yields bef
   assert.equal(await result, value);
   assert.equal(calls.length, 1);
   assert.equal(calls[0][0], 'build');
-  assert.deepEqual(calls[0].slice(1), [payload.state, payload.catalog, payload.models, payload.costs, payload.options]);
+  assert.deepEqual(calls[0].slice(1,6), [payload.state, payload.catalog, payload.models, payload.costs, payload.options]);
+  assert.equal(typeof calls[0][6].onProgress, 'function');
   assert(notices.length > 0, 'the page can disclose its local main-thread fallback');
   assert.equal(runner.workerAvailable, false);
 });
@@ -231,4 +307,18 @@ test('Worker-unavailable fallback dispatches matrix work to courseMatrix', async
   for (let turns = 0; turns < 5 && !calls.length; turns++) {assert(callbacks.length); callbacks.shift()(); await Promise.resolve();}
   assert.equal(await result, value);
   assert.deepEqual(calls, [[payload.view, payload.catalog, payload.models]]);
+});
+
+test('Worker-unavailable fallback forwards synchronous progress without changing its final result', async t => {
+  const callbacks = [], progress = [], value = {scenarios:[], local:true};
+  const {runner} = createRunner(t, {
+    workerFactory() {throw Error('Worker unavailable');},
+    schedule(callback) {callbacks.push(callback); return callbacks.length;}, cancelSchedule() {},
+    engine:{build(state, catalog, models, costs, options, runtime) {runtime.onProgress({phase:'started'});runtime.onProgress({phase:'candidate'});return value;}}
+  });
+  const result = runner.run('build', {state:{}, catalog:{}, models:[], costs:{}}, {onProgress:update => progress.push(update)});
+  assert.deepEqual(progress, []);
+  for (let turn = 0; turn < 5 && callbacks.length; turn++) {callbacks.shift()();await Promise.resolve();}
+  assert.equal(await result, value);
+  assert.deepEqual(progress, [{phase:'started'},{phase:'candidate'}]);
 });

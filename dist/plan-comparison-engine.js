@@ -181,10 +181,26 @@
   const selections=Object.fromEntries(Object.entries(match.selections).filter(([id,optionId])=>selected.some(placement=>placement.requirementId===id&&placement.optionId===optionId))),canAdopt=valid(draft),credits=actual+fitBreakdown.potentialCredits;
   return{collectionFitCredits:credits,potentialCollectionCredits:fitBreakdown.potentialCredits,collectionFitFraction:credits/draft.program.totalCredits,completedFitFraction:actual/draft.program.totalCredits,collectionNeedsEvaluation:reviewCourses.length,collectionSelections:canAdopt?selections:{},collectionAdoptionNeedsReview:!canAdopt,fitBreakdown,reviewCourses,fitOptimization:{completed:draft.match.assignment||null,planned:match.assignment||null}};
  }
- function build(state,catalog,models,costData,options={}){
-  const current=Journey.buildDraft(clone(state),catalog,models),all=list(catalog.pathways);
-  const hasTarget=Boolean(!state.sheet?.isExample&&routeFor(state,catalog)),courseFirst=options.fromCourses===true||!hasTarget;
+ function build(state,catalog,models,costData,options={},runtime={}){
+  const all=list(catalog.pathways),hasTarget=Boolean(!state.sheet?.isExample&&routeFor(state,catalog)),courseFirst=options.fromCourses===true||!hasTarget;
+  // A targetless search never reads the active draft. Each matching route below
+  // gets its own unchanged whole-plan calculation instead.
+  const current=hasTarget?Journey.buildDraft(clone(state),catalog,models):null;
   const draftCache=new Map(),modelIds=new Set(models.map(model=>model.id)),records=inventory(state,[],models),checkedPrograms=new Set();
+  const onProgress=typeof runtime?.onProgress==='function'?runtime.onProgress:null,progressIds=new Set(),reportedIds=new Set();let progressStarted=false,matchingRouteCount=0;
+  // Observers receive detached summaries, never private records or solver state.
+  // A display callback cannot fail or mutate the underlying academic calculation.
+  function notify(value){if(onProgress)try{onProgress(value);}catch{/* Progress is best effort; the final calculation remains authoritative. */}}
+  function startProgress(ids){progressStarted=true;ids.forEach(id=>progressIds.add(id));matchingRouteCount=progressIds.size;notify({phase:'started',complete:false,recommendation:null,matchingRouteIds:[...progressIds],matchingRouteCount});}
+  function reportCandidate(id,draft,available,eligible,reason,cost,collection,readySummary){
+   if(!onProgress||!progressIds.has(id)||reportedIds.has(id))return;
+   reportedIds.add(id);let summary=null;
+   if(available){
+    const completed=draft.plan.rows.filter(row=>['reported','confirmed'].includes(row.status)&&!row.unknownProvenance),sum=rows=>rows.reduce((total,row)=>total+row.credits,0),fit=readySummary||collection;
+    summary={degreeCredits:draft.program.totalCredits,applicableCompletedCredits:sum(completed),confirmedCredits:sum(completed.filter(row=>row.status==='confirmed')),reportedCredits:sum(completed.filter(row=>row.status==='reported')),remainingCredits:draft.program.totalCredits-sum(completed),universityCreditsRemaining:sum(draft.plan.rows.filter(row=>row.status==='planned'&&row.institutional)),universityTuitionRemaining:readySummary?readySummary.universityTuitionRemaining:cost.universityTuition,universityTermsRemaining:readySummary?readySummary.universityTermsRemaining:cost.universityTerms,termLabel:(readySummary?readySummary.termLabel:cost.termLabel)||'term',estimatedBaseCost:readySummary?readySummary.estimatedBaseCost:cost.estimatedBaseCost,remainingCost:readySummary?readySummary.remainingCost:cost.total,estimatedWeeks:draft.plan.timing.scenarioWeeks,creditSystem:draft.program.creditSystem||'semester',mappedExternalCredits:draft.plan.coverage.mappedExternalCredits,collectionFitCredits:fit.collectionFitCredits,potentialCollectionCredits:fit.potentialCollectionCredits,collectionFitFraction:fit.collectionFitFraction,completedFitFraction:fit.completedFitFraction,collectionNeedsEvaluation:fit.collectionNeedsEvaluation,fitBreakdown:{...fit.fitBreakdown},provisional:true};
+   }
+   notify({phase:'candidate',complete:false,recommendation:null,matchingRouteCount,checkedCount:reportedIds.size,candidate:{id,pathwayId:draft.pathway?.id||null,available,eligible,reason,summary}});
+  }
   const comparisonPriority=options.priority||state.whatIf?.priority,priority=comparisonPriority==='cost'?'cost':comparisonPriority==='terms'?'speed':comparisonPriority==='tuition'?'tuition':['collection','credits'].includes(comparisonPriority)?'balanced':state.profile?.priority;
   const reuseBasis='Recommendations compare the share of each degree covered by jointly placed courses, then finished coursework and your goals. Different credit units are compared as a share of the degree. Matches remain provisional; missing maps are not rejection decisions.';
   let rankBasis=reuseBasis,automaticRankedRows=null;
@@ -218,15 +234,24 @@
    return Number(rightKnown)-Number(leftKnown)||(leftKnown&&rightKnown?left[metric]-right[metric]:0);
   }
   function rankedRoutes(profile,excludedId){
-   const ranked=Guide.recommend(profile,{pathways:all.filter(route=>modelIds.has(route.modelId)&&route.id!==excludedId)},models,state.learning).map(fit=>{
+   const routes=all.filter(route=>modelIds.has(route.modelId)&&route.id!==excludedId),eligibleRoutes=new Set(Guide.recommend(profile,{pathways:routes},[],[]).map(fit=>fit.pathway));
+   // Eligibility depends only on the profile and pathway. Publish that complete
+   // scope before matching courses, then calculate the unchanged full fit one
+   // route at a time. Catalog order retains the original full-score tie order.
+   const matches=routes.filter(route=>eligibleRoutes.has(route));
+   if(matches.length||hasTarget&&excludedId)startProgress([...(hasTarget&&excludedId?['current']:[]),...matches.map(route=>'route:'+route.id)]);
+   const ranked=matches.map(route=>{
+    const fit=Guide.recommend(profile,{pathways:[route]},models,state.learning)[0];
     const id='route:'+fit.pathway.id,next=target(state,id,catalog,options),draft=Journey.buildDraft(next,catalog,models);draftCache.set(id,{next,draft});
     if(draft.program)checkedPrograms.add(draft.program.id);
     const available=valid(draft),collection=available?collectionFit(next,draft,records):null,cost=available?remainingCosts(draft,next,costData):null;draftCache.get(id).cost=cost;
+    if(onProgress){const eligible=Boolean(Guide.recommend(next.profile,{pathways:[draft.pathway]},[],[])[0]),reason=!eligible?'Review this degree against your current career, degree level and study-format preferences.':!draft.program?'Official program listed. Its exact course and transfer map still needs research.':!available?'Resolve this plan’s credit-rule conflicts before comparing totals.':null;reportCandidate(id,draft,available,eligible,reason,cost,collection);}
     return{fit,id,available,level:draft.pathway.level,remainingCost:cost?.total,estimatedBaseCost:cost?.estimatedBaseCost,universityTuitionRemaining:cost?.universityTuition,estimatedWeeks:draft.plan?.timing.scenarioWeeks,credits:collection?.collectionFitCredits||0,fraction:collection?.collectionFitFraction||0,completedFraction:collection?.completedFitFraction||0,remaining:draft.program?draft.plan?.totals?.institutional/draft.program.totalCredits:Infinity};
    });
    const scopeRows=[...ranked];
    if(hasTarget&&excludedId){
-    const available=valid(current),cost=available?remainingCosts(current,state,costData):null,eligible=Boolean(Guide.recommend(state.profile,{pathways:[current.pathway]},models,state.learning)[0]);
+    const available=valid(current),cost=available?remainingCosts(current,state,costData):null,eligible=Boolean(Guide.recommend(state.profile,{pathways:[current.pathway]},[],[])[0]);
+    reportCandidate('current',current,available,eligible,!eligible?'Review this degree against your current career, degree level and study-format preferences.':!current.program?'Official program listed. Its exact course and transfer map still needs research.':!available?'Resolve this plan’s credit-rule conflicts before comparing totals.':null,cost,available&&onProgress?collectionFit(state,current,records):null);
     scopeRows.push({id:'current',available,eligible,level:current.pathway.level,remainingCost:cost?.total,estimatedBaseCost:cost?.estimatedBaseCost,universityTuitionRemaining:cost?.universityTuition,estimatedWeeks:current.plan?.timing.scenarioWeeks});
    }
    const metric=availableOrderingMetric(scopeRows);rankBasis=orderingBasis(scopeRows,metric);automaticRankedRows=ranked;
@@ -240,10 +265,12 @@
   }
   if(hasTarget&&!ids.length&&!Array.isArray(picks)){const profile={...state.profile,pathwayId:'',school:'',degree:'',...(options.includeOtherFormats?{modality:'any',classroomImportance:'open'}:{})};ids=rankedRoutes(profile,current.pathway.id).slice(0,2).map(item=>item.id);}
   ids=[...(hasTarget?['current']:[]),...new Set(ids)];
+  if(!progressStarted)startProgress(ids);
   const scenarios=ids.map(id=>{try{const cached=draftCache.get(id),next=cached?.next||target(state,id,catalog,options),draft=cached?.draft||Journey.buildDraft(next,catalog,models),available=valid(draft),fit=Guide.recommend(next.profile,{pathways:[draft.pathway]},models,next.learning)[0],eligible=Boolean(fit),snapshot=id.startsWith('saved:')?saved(state).find(s=>s.id===id.slice(6)):null;const reason=!eligible?'Review this degree against your current career, degree level and study-format preferences.':!draft.program?'Official program listed. Its exact course and transfer map still needs research.':!available?'Resolve this plan’s credit-rule conflicts before comparing totals.':null;
    let summary=null;if(available){const completed=draft.plan.rows.filter(r=>['reported','confirmed'].includes(r.status)&&!r.unknownProvenance),sum=rows=>rows.reduce((n,r)=>n+r.credits,0),cost=cached?.cost||remainingCosts(draft,next,costData);summary={degreeCredits:draft.program.totalCredits,applicableCompletedCredits:sum(completed),requiredCompletedCredits:sum(completed.filter(r=>!isElective(r))),electiveCompletedCredits:sum(completed.filter(isElective)),confirmedCredits:sum(completed.filter(r=>r.status==='confirmed')),reportedCredits:sum(completed.filter(r=>r.status==='reported')),remainingCredits:draft.program.totalCredits-sum(completed),universityCreditsRemaining:sum(draft.plan.rows.filter(r=>r.status==='planned'&&r.institutional)),universityTuitionRemaining:cost.universityTuition,universityTermsRemaining:cost.universityTerms,termLabel:cost.termLabel||'term',estimatedBaseCost:cost.estimatedBaseCost,remainingCost:cost.total,remainingCostReason:cost.missing.join('; ')||null,costBreakdown:cost,estimatedWeeks:draft.plan.timing.scenarioWeeks,creditSystem:draft.program.creditSystem||'semester',researchGapCredits:draft.plan.coverage.researchGapCredits,provisional:true,...collectionFit(next,draft,records)};}
+   reportCandidate(id,draft,available,eligible,reason,null,null,summary);
    return{id,label:snapshot?.label||draft.pathway.title,isCurrent:id==='current',pathwayId:draft.pathway.id,programId:draft.program?.id,state:next,draft,available,eligible,canUse:true,reason,recommendationReasons:fit?.reasons||[],summary};
-  }catch(e){return{id,label:'Unavailable saved program',isCurrent:false,available:false,eligible:false,canUse:false,reason:e.message,summary:null,state:null,draft:{}};}});
+  }catch(e){reportCandidate(id,{},false,false,e.message,null,null);return{id,label:'Unavailable saved program',isCurrent:false,available:false,eligible:false,canUse:false,reason:e.message,summary:null,state:null,draft:{}};}});
   for(const scenario of scenarios)if(scenario.draft.program)checkedPrograms.add(scenario.draft.program.id);
   const courses=inventory(state,courseFirst?[]:scenarios.filter(s=>s.available).map(s=>s.draft),models,options.candidate),matrixDeferred=options.deferMatrix===true&&!options.candidate,view={courses,scenarios};
   const matrix=matrixDeferred?[]:courseMatrix(view,catalog,models);

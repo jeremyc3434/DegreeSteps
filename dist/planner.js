@@ -35,6 +35,7 @@
   const hasInstitutionalCredit = row => isUniversity(row) && !row.institutionUnknown;
   const creditSystem = p => p.creditSystem || 'semester';
   const comparableTimingCache = new WeakMap();
+  const tuitionAssumptionsCache = new WeakMap();
 
   function normalizedInput(input) {
     return Object.assign({ completed: [], providers: ['Sophia', 'Study.com', 'CLEP'], priority: 'transfer', allowConditional: false, weeklyHours: 10, universityRate: 0, fees: 0, providerMonths: {}, examBudget: 97, modernStates: false, optionSelections: {} }, input || {});
@@ -445,6 +446,8 @@
   }
 
   function tuitionAssumptions(program, input) {
+    const cached = tuitionAssumptionsCache.get(input);
+    if (cached && cached.program === program) return cached.value;
     const pricing = program.pricing || {}, sources = new Map((program.sources || []).map(source=>[source.id,source]));
     const sourceBound = Array.isArray(pricing.sourceIds) && pricing.sourceIds.length > 0 && pricing.sourceIds.every(id=>{try {const url=new URL(sources.get(id)?.url);return url.protocol==='https:'&&!url.username&&!url.password;}catch{return false;}});
     const subscription = ['subscription','per-term','per-semester'].includes(pricing.model) && positive(pricing.amount) && (!pricing.currency || pricing.currency === 'USD');
@@ -454,7 +457,9 @@
     const semesterRates = pricing.model === 'banded-term' ? positive(pricing.termRate) && positive(pricing.partTimeRate) && positive(pricing.bandMin) && positive(pricing.bandMax) && Number(pricing.bandMin) <= Number(pricing.bandMax) : pricing.model === 'threshold-credit' && positive(pricing.fullTimeRate) && positive(pricing.partTimeRate) && positive(pricing.fullTimeMin);
     const semesterLoad = positive(input.timing?.universityCreditsPerTerm) && (pricing.model !== 'banded-term' || Number(input.timing.universityCreditsPerTerm) <= Number(pricing.bandMax));
     const comparable = number(input.universityRate) > 0 || sourceBound && subscription && paidTerms !== null || boundSemesterPricing && semesterRates && semesterLoad;
-    return {pricing,sourceBound,subscription,paidTerms,semesterModel,boundSemesterPricing,comparable:Boolean(comparable)};
+    const value = {pricing,sourceBound,subscription,paidTerms,semesterModel,boundSemesterPricing,comparable:Boolean(comparable)};
+    tuitionAssumptionsCache.set(input, {program,value});
+    return value;
   }
 
   function subscriptionTermConflict(program, rows, input, assumption) {
@@ -835,6 +840,13 @@
 
   function generate(program, inputValue) {
     const input = normalizedInput(inputValue), setupIssues = [], warnings = [], requirements = program.requirements || [];
+    // Eligibility is fixed for this generation. Preserve original option and
+    // requirement identities: published IDs need not be unique in a draft.
+    const eligibleOptions = new WeakMap();
+    const optionsForRequirement = requirement => {
+      if (!eligibleOptions.has(requirement)) eligibleOptions.set(requirement, optionsFor(program, requirement, input));
+      return eligibleOptions.get(requirement);
+    };
     // Scenario choices use exactly the same evidence and source eligibility as
     // automatic choices. Invalid requests remain explicit blockers even though
     // the ledger can still show its supported automatic fallback.
@@ -843,7 +855,7 @@
       setupIssues.push({ code: 'invalid_selection', message: 'Scenario selections must identify a supported option for each requirement.' });
     } else for (const [requirementId, optionId] of Object.entries(selections || {})) {
       const requirement = requirements.find(req => req.id === requirementId);
-      const option = requirement && typeof optionId === 'string' && optionId && optionsFor(program, requirement, input).find(option => option.id === optionId);
+      const option = requirement && typeof optionId === 'string' && optionId && optionsForRequirement(requirement).find(option => option.id === optionId);
       if (!option) setupIssues.push({ code: 'invalid_selection', message: requirement ? 'The selected option for ' + requirement.title + ' is unavailable under the enabled sources and evidence settings.' : 'A scenario selection does not match a requirement in this program.', requirementId });
       else selectedOptions.set(requirementId, option);
     }
@@ -855,7 +867,7 @@
     }
     const priorBundles = evaluatedPriorBundles(program, completed, setupIssues);
     const base = requirements.map(req => {
-      const options = optionsFor(program, req, input), university = options.find(o => o.provider === 'University');
+      const options = optionsForRequirement(req), university = options.find(o => o.provider === 'University');
       const prior = completed.get(req.id);
       if (prior && ['confirmed', 'reported'].includes(prior.status)) {
         if (prior.creditSystem && prior.creditSystem !== creditSystem(program)) setupIssues.push({ code: 'credit_system', message: 'Prior learning uses a different credit system. Normalize it before applying.', requirementId: req.id });
@@ -888,7 +900,7 @@
     }
     const optionMenus = requirements.map((req, index) => {
       if (selectedOptions.has(req.id) || ['reported', 'confirmed'].includes(base[index].status)) return [base[index]];
-      return optionsFor(program, req, input).map(option => {
+      return optionsForRequirement(req).map(option => {
         const priorAction = base.find(row => ['reported', 'confirmed'].includes(row.status) && row.option && sameLearningAction(row.option, option));
         const inferredFromBundle = option.provider !== 'University' && priorAction && option.bundleId;
         const row = makeRow(req, option, inferredFromBundle ? 'reported' : 'planned');
@@ -913,6 +925,7 @@
     // objective while testing replacements, and keep this memo local: the
     // assignment search below reuses mutable arrays and must score them afresh.
     const greedyScores=new WeakMap();
+    const baseProposalScores = requirements.map(() => new WeakMap());
     const greedyScore=rows=>{
       if(!greedyScores.has(rows))greedyScores.set(rows,candidateScore(program,rows,input,input.priority));
       return greedyScores.get(rows);
@@ -924,13 +937,19 @@
       const proposals = [];
       requirements.forEach((req, index) => {
         if (!['planned', 'unresolved'].includes(rows[index].status) || selectedOptions.has(req.id)) return;
-        for (const option of optionsFor(program, req, input).filter(o => o.provider !== 'University' && allowed.includes(o.provider))) proposals.push({ index, option });
+        for (const option of optionsForRequirement(req).filter(o => o.provider !== 'University' && allowed.includes(o.provider))) proposals.push({ index, option });
       });
       // Favor exact options with high tuition displacement; retain upper-level
       // degree credit and prefer shared provider memberships over extra exams.
       if (input.priority === 'speed') for (const proposal of proposals) {
-        const trial = rows.slice(); trial[proposal.index] = makeRow(requirements[proposal.index], proposal.option);
-        proposal.speedScore = greedyScore(trial);
+        // Every basket starts from the same base ledger. Score each original
+        // option once here; later substitutions still use their actual rows.
+        const cache = baseProposalScores[proposal.index];
+        if (!cache.has(proposal.option)) {
+          const trial = rows.slice(); trial[proposal.index] = makeRow(requirements[proposal.index], proposal.option);
+          cache.set(proposal.option, greedyScore(trial));
+        }
+        proposal.speedScore = cache.get(proposal.option);
       }
       proposals.sort((a, b) => {
         if (input.priority === 'speed') {
@@ -970,7 +989,7 @@
           let changed = false;
           for (let index = 0; index < rows.length; index++) {
             if (rows[index].status !== 'planned' || selectedOptions.has(rows[index].requirementId)) continue;
-            for (const option of optionsFor(program, requirements[index], input).filter(option => option.provider === 'University' || allowed.includes(option.provider))) {
+            for (const option of optionsForRequirement(requirements[index]).filter(option => option.provider === 'University' || allowed.includes(option.provider))) {
               if (rows[index].option && option.id === rows[index].option.id) continue;
               const trial = rows.slice(); trial[index] = makeRow(requirements[index], option);
               if (!usableErrors(trial).length && compareScores(greedyScore(trial), greedyScore(rows)) < 0) { rows = trial; changed = true; }

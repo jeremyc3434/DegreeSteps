@@ -13,12 +13,13 @@
    if(error)job.reject(error);else job.resolve(value);
   }
   function cancel(){if(active)finish(active,failure('A newer comparison replaced this request.','superseded'));}
-  function run(kind,payload){
+  function run(kind,payload,runtime={}){
    cancel();
    if(disposed)return Promise.reject(failure('This comparison screen is closed.','disposed'));
    if(!['build','matrix','draft'].includes(kind))return Promise.reject(failure('Choose a supported comparison action.','invalid-request'));
    return new Promise((resolve,reject)=>{
     const job={id:++sequence,resolve,reject,launch:null,timer:null,worker:null};active=job;
+    const progress=value=>{if(active===job&&kind==='build'&&typeof runtime?.onProgress==='function')try{runtime.onProgress(value);}catch{/* A display callback cannot fail a comparison. */}};
     job.launch=schedule(()=>{
      if(active!==job)return;job.launch=null;
      if(available){
@@ -27,7 +28,7 @@
      }
      job.timer=setTimeout(()=>finish(job,failure('This comparison took too long. Your saved plan is unchanged. Reload this page to try again.','timeout')),timeoutMs);
      if(job.worker){
-      job.worker.onmessage=event=>{const result=event.data;if(active!==job||result?.id!==job.id)return;if(result.ok===true)finish(job,null,result.value);else if(result.ok===false)finish(job,failure(result.error||'The comparison could not finish. Your plan is unchanged.','calculation-failed'));};
+      job.worker.onmessage=event=>{const result=event.data;if(active!==job||result?.id!==job.id)return;if(result.event==='progress'){progress(result.value);return;}if(result.ok===true)finish(job,null,result.value);else if(result.ok===false)finish(job,failure(result.error||'The comparison could not finish. Your plan is unchanged.','calculation-failed'));};
       job.worker.onerror=event=>{event.preventDefault?.();finish(job,failure('The comparison could not load. Reload this page to try again. Your plan is unchanged.','worker-failed'));};
       try{job.worker.postMessage({id:job.id,kind,payload});}catch{finish(job,failure('The comparison inputs could not be sent. Your plan is unchanged.','invalid-input'));}
       return;
@@ -39,7 +40,7 @@
       if(active!==job)return;job.launch=null;const started=Date.now();
       try{
        if(!engine)throw Error('The comparison engine is unavailable. Reload this page to try again.');
-       const value=kind==='build'?engine.build(payload.state,payload.catalog,payload.models,payload.costs,payload.options||{}):kind==='matrix'?engine.courseMatrix(payload.view,payload.catalog,payload.models):journey.buildDraft(payload.state,payload.catalog,payload.models);
+       const value=kind==='build'?engine.build(payload.state,payload.catalog,payload.models,payload.costs,payload.options||{},{onProgress:progress}):kind==='matrix'?engine.courseMatrix(payload.view,payload.catalog,payload.models):journey.buildDraft(payload.state,payload.catalog,payload.models);
        if(Date.now()-started>timeoutMs)finish(job,failure('This comparison took too long. Your plan is unchanged.','timeout'));else finish(job,null,value);
       }catch(error){finish(job,failure(error.message||'The comparison could not finish. Your plan is unchanged.','calculation-failed'));}
      },32);

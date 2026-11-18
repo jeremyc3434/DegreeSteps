@@ -53,7 +53,7 @@ function mount() {
     create(config) {
       const runner = {
         config, cancellations:0, workerAvailable:true,
-        run(kind, payload) {return new Promise((resolve, reject) => jobs.push({runner, kind, payload:clone(payload), resolve, reject}));},
+        run(kind, payload, callbacks={}) {return new Promise((resolve, reject) => jobs.push({runner, kind, payload:clone(payload), onProgress:callbacks.onProgress, resolve, reject}));},
         // Keep old fake jobs resolvable to check the page's own revision guard.
         cancel() {this.cancellations++;}, destroy() {this.cancel();}
       };
@@ -108,6 +108,30 @@ test('a late comparison render cannot overwrite cards from the latest priority c
   assert.match(ui.node('comparison-results').innerHTML, /Latest degree option/);
   assert.doesNotMatch(ui.node('comparison-results').innerHTML, /Outdated degree option/);
   assert.equal(ui.api.getView().scenarios[0].label, 'Latest degree option');
+});
+
+test('comparison progress reports checked plans without replacing results or saving partial choices', async () => {
+  const ui=mount();ui.node('comparison-results').innerHTML='<p>Lowest estimated cost from an older search</p>';ui.api.render();await ui.flush();const job=ui.jobs[0],before=ui.api.getView();
+  assert.doesNotMatch(ui.node('comparison-results').innerHTML,/Lowest estimated cost/);
+  assert.equal(ui.runners[0].config.timeoutMs,90000);
+  job.onProgress({phase:'started',matchingRouteCount:4,matchingRouteIds:['one','two','three','four']});
+  assert.match(ui.node('comparison-status').textContent,/0 of 4 matching plans checked/);
+  job.onProgress({phase:'candidate',matchingRouteCount:4,checkedCount:1,candidate:{pathwayId:'one',available:true,summary:{remainingCost:0}}});
+  assert.match(ui.node('comparison-status').textContent,/1 of 4 matching plans checked/);
+  assert.equal(ui.api.getView(),before);assert.equal(ui.writes.length,0);assert.doesNotMatch(ui.node('comparison-results').innerHTML,/Lowest|Shortest/);
+  const status=ui.node('comparison-status').textContent;
+  job.onProgress({phase:'candidate',matchingRouteCount:4,checkedCount:99});assert.equal(ui.node('comparison-status').textContent,status);
+  job.resolve(resultView(ui.data,'Completed option'));await ui.flush();const completed=ui.node('comparison-status').textContent;
+  job.onProgress({phase:'candidate',matchingRouteCount:4,checkedCount:2});assert.equal(ui.node('comparison-status').textContent,completed);
+});
+
+test('progress from a superseded comparison cannot change the new search status', async () => {
+  const ui=mount();ui.api.render();await ui.flush();const old=ui.jobs[0];
+  ui.api.render();await ui.flush();const fresh=ui.jobs[1];
+  fresh.onProgress({phase:'candidate',matchingRouteCount:5,checkedCount:2});const status=ui.node('comparison-status').textContent;
+  old.onProgress({phase:'candidate',matchingRouteCount:4,checkedCount:4});assert.equal(ui.node('comparison-status').textContent,status);
+  fresh.resolve(resultView(ui.data,'Fresh option'));old.resolve(resultView(ui.data,'Old option'));await ui.flush();
+  assert.match(ui.node('comparison-results').innerHTML,/Fresh option/);assert.doesNotMatch(ui.node('comparison-results').innerHTML,/Old option/);
 });
 
 test('confirming a plan never saves a comparison computed before a concurrent course edit', async () => {
