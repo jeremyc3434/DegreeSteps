@@ -125,3 +125,46 @@ test('restoring a target uses its saved settings and preserves newer settings fo
   assert.equal(opened.scenarios['degree-a'].universityRate,300); assert.equal(opened.scenarios['degree-b'].universityRate,500);
   assert.equal(opened.savings['degree-a'].outsideBudget,200); assert.equal(opened.savings['degree-b'].outsideBudget,700);
 });
+
+function withReceipts(f) {f.context.crypto=require('node:crypto').webcrypto;f.context.TextEncoder=TextEncoder;return f;}
+test('account save status starts with sign-in or save, never a local-storage success claim',async()=>{
+  const f=withReceipts(fixture(()=>ok({}),{[DRAFT]:original}));
+  assert.deepEqual(copy(await f.api.saveState(null)),{kind:'signed-out',label:'Sign in to save',action:'Save plan'});
+  assert.deepEqual(copy(await f.api.saveState({id:'account-a'})),{kind:'unsaved',label:'Not saved to your account',action:'Save plan'});
+  assert.equal(f.calls.length,0);
+});
+test('only an acknowledged exact account snapshot shows saved, then changed courses and notes require another save',async()=>{
+  const f=withReceipts(fixture((path,options)=>path.endsWith('/session')?ok({user:{id:'account-a'}}):ok({item:{id:'receipt-plan',revision:1,state:JSON.parse(options.body).state}}),{[DRAFT]:original}));
+  await f.api.uploadDraft({title:'My plan',consent:true});
+  const receipt=JSON.parse(f.store.get(LINK));assert.match(receipt.savedHash,/^[a-f0-9]{64}$/);assert(!JSON.stringify(receipt).includes('Private note'));assert(!JSON.stringify(receipt).includes('private-original'));
+  assert.equal((await f.api.saveState({id:'account-a'})).kind,'saved');
+  const changed=copy(original);changed.sheet.notes.private='A new private note';f.store.set(DRAFT,JSON.stringify(changed));
+  assert.equal((await f.api.saveState({id:'account-a'})).kind,'changed');assert.equal((await f.api.saveState({id:'account-a'})).action,'Save changes');
+  assert.equal((await f.api.saveState({id:'account-b'})).kind,'unsaved');
+  const reordered={sheet:original.sheet,learning:original.learning,profile:original.profile,version:original.version};f.store.set(DRAFT,JSON.stringify(reordered));
+  assert.equal((await f.api.saveState({id:'account-a'})).kind,'saved','JSON property ordering is not a student edit.');
+  assert.equal(f.calls.filter(call=>call.options.method==='POST').length,1,'Status checks never upload changes.');
+});
+test('failed changed-plan saves preserve the last receipt and never claim the edited plan is saved',async()=>{
+  const f=withReceipts(fixture((path,options)=>path.endsWith('/session')?ok({user:{id:'account-a'}}):options.method==='PUT'?{status:503,body:{error:'Try again later'}}:ok({item:{id:'receipt-plan',revision:1,state:JSON.parse(options.body).state}}),{[DRAFT]:original}));
+  await f.api.uploadDraft({title:'My plan',consent:true});const previous=f.store.get(LINK);
+  const changed=copy(original);changed.learning.push({id:'new-course',title:'New course'});f.store.set(DRAFT,JSON.stringify(changed));
+  await assert.rejects(f.api.uploadDraft({title:'My plan',consent:true,update:true}),/Try again/);
+  assert.equal(f.store.get(LINK),previous);assert.equal((await f.api.saveState({id:'account-a'})).kind,'changed');
+});
+test('opening an unchanged account plan on a new or identical browser draft is saved, while merged newer work remains unsaved',async()=>{
+  for(const local of [null,copy(original)]){
+    const f=withReceipts(fixture(path=>path.endsWith('/session')?ok({user:{id:'account-a'}}):ok({item:{id:'receipt-plan',revision:4,state:copy(original)}}),local?{[DRAFT]:local}:{}));
+    await f.api.openPlan('receipt-plan');assert.equal((await f.api.saveState({id:'account-a'})).kind,'saved');assert.deepEqual(JSON.parse(f.store.get(DRAFT)),original);
+  }
+  const newer=copy(original);newer.sheet.notes.private='Keep my newer note';const f=withReceipts(restoreFixture(original,newer));await f.api.openPlan('older-plan');
+  assert.equal((await f.api.saveState({id:'account-a'})).kind,'changed');assert.equal(JSON.parse(f.store.get(DRAFT)).sheet.notes.private,'Keep my newer note');
+});
+test('a late hash acknowledgement cannot replace the receipt of a newer save',async()=>{
+  const f=withReceipts(fixture((path,options)=>path.endsWith('/session')?ok({user:{id:'account-a'}}):ok({item:{id:JSON.parse(options.body).title,revision:1,state:JSON.parse(options.body).state}}),{[DRAFT]:original}));
+  const real=require('node:crypto').webcrypto;let release,hashes=0;
+  f.context.crypto={subtle:{digest(...args){if(++hashes===1)return new Promise(resolve=>{release=()=>real.subtle.digest(...args).then(resolve);});return real.subtle.digest(...args);}}};
+  const older=f.api.uploadDraft({title:'first-plan',consent:true});while(!release)await new Promise(resolve=>setImmediate(resolve));
+  const newer=copy(original);newer.learning.push({id:'later-course',title:'Later course'});f.store.set(DRAFT,JSON.stringify(newer));await f.api.uploadDraft({title:'second-plan',consent:true});
+  release();const result=await older;assert.equal(result.linkSaved,false);assert.equal(JSON.parse(f.store.get(LINK)).planId,'second-plan');assert.equal((await f.api.saveState({id:'account-a'})).kind,'saved');
+});

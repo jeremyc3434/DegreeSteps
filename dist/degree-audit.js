@@ -127,7 +127,7 @@
       const latest = current();
       store(A.saveDraft(latest, context(payload.metadata), payload));
       try { if (typeof history !== 'undefined' && history.replaceState) history.replaceState(history.state, '', A.launchURL(context(payload.metadata))); } catch { /* Saving the draft does not depend on browser history. */ }
-      $('audit-save-status').textContent = 'Saved on this device. You can return to this degree to continue.';
+      $('audit-save-status').innerHTML = 'Draft updated. <a href="account.html#account-save-form">Save to my account</a> to return from another device.';
     } catch (error) { showError(error); }
   }
   function review() {

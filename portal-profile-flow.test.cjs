@@ -12,7 +12,7 @@ function fixture({initial,stored,extraStorage={}}={}){
  const context={console,URL,URLSearchParams,Intl,TextEncoder,TextDecoder,document:{getElementById:node,querySelector(){return null;},querySelectorAll(){return[];},addEventListener(type,fn){if(!handlers.has(type))handlers.set(type,[]);handlers.get(type).push(fn);},body:node('body')},location:{pathname:'/portal.html',search:'',assign(value){context.__destination=value;},replace(value){context.__destination=value;}},history:{replaceState(){}},localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},FormData:class extends Map{constructor(form){super(Object.entries(form.values||{}));}getAll(name){const value=this.get(name);return value===undefined?[]:Array.isArray(value)?value:[value];}},CustomEvent:class{},setTimeout(){},clearTimeout(){},dispatchEvent(){},addEventListener(){},scrollTo(){},navigator:{},__fixture:JSON.stringify({state:initial,stored,...d})};context.window=context;vm.createContext(context);
  for(const match of fs.readFileSync(path.join(__dirname,'dist/portal.html'),'utf8').matchAll(/<script\b[^>]*\bsrc="([A-Za-z0-9_-]+\.js)"[^>]*>/g)){const source=fs.readFileSync(path.join(__dirname,'dist',match[1]),'utf8');if(source.includes('module.exports'))vm.runInContext(source,context,{filename:match[1]});}
  context.fetch=async()=>({ok:true,json:async()=>({templates:[{id:'example-template',pathwayId:'campus-degree',title:'Example campus plan',strategy:'balanced'}]})});
- const source=fs.readFileSync(path.join(__dirname,'dist/portal.js'),'utf8'),hooks=`const fixture=JSON.parse(__fixture);state=fixture.state;catalog=fixture.catalog;models=fixture.models;activePlanState=actualSavedTarget(fixture.stored)?clone(fixture.stored):null;render=function(){save();};prepareRecommendations=async()=>{window.__prepared=(window.__prepared||0)+1;};window.__profile={state:()=>state,answer,action,start:startProfile,body:profileBody,summary:profileSummaryHTML,resume:restoreProfileDraft,publicRoute:()=>openPublicRoute(new URLSearchParams('template=example-template')),choose:()=>{state=Journey.selectRoute(state,fixture.route,catalog);state.journey.profileFlowVersion=1;startProfile('target','degree');}};`;
+ const source=fs.readFileSync(path.join(__dirname,'dist/portal.js'),'utf8'),hooks=`const fixture=JSON.parse(__fixture);state=fixture.state;catalog=fixture.catalog;models=fixture.models;activePlanState=actualSavedTarget(fixture.stored)?clone(fixture.stored):null;render=function(){save();};prepareRecommendations=async()=>{window.__prepared=(window.__prepared||0)+1;};window.__profile={state:()=>state,answer,action,start:startProfile,body:profileBody,question:questionBody,summary:profileSummaryHTML,resume:restoreProfileDraft,publicRoute:()=>openPublicRoute(new URLSearchParams('template=example-template')),choose:()=>{state=Journey.selectRoute(state,fixture.route,catalog);state.journey.profileFlowVersion=1;startProfile('target','degree');}};`;
  vm.runInContext(source.replace(/  boot\(\);\s*\}\(\)\);\s*$/,hooks+'\n}());'),context,{filename:'portal.js'});
  return{api:context.__profile,node,context,state:()=>copy(context.__profile.state()),stored:()=>JSON.parse(storage.get(KEY)),storage:()=>Object.fromEntries(storage),replaceStored:value=>storage.set(KEY,JSON.stringify(value)),async submit(values){const form=node('portal-profile-form');form.values=values;for(const handler of handlers.get('submit')||[])await handler({target:form,preventDefault(){}});},async edit(values,type='change'){const form=node('portal-profile-form');form.values=values;for(const handler of handlers.get(type)||[])await handler({target:{closest:()=>form,matches:()=>false}});}};
 }
@@ -59,4 +59,21 @@ test('a fresh public template starts the same early profile while existing perso
 });
 test('a first selected degree can resume personalization after its initial draft is saved',async()=>{
  const f=fixture();f.api.choose();await f.submit({goal:'any-degree'});const saved=f.stored();assert.equal(saved.selectedPathwayId,'campus-degree');const next=fixture({initial:Journey.initialize(saved,null,data().catalog),stored:saved,extraStorage:f.storage()});assert.equal(next.api.resume('target'),true);assert.equal(next.state().journey.step,'prior');assert.equal(next.state().selectedPathwayId,'campus-degree');
+});
+
+
+test('the three starting choices keep existing courses and notes while advanced entry points remain optional',async()=>{
+ const initial=activeState();initial.journey.step='start';
+ const view=fixture({initial}),html=view.api.question('start'),primary=html.split('<details class="portal-tip portal-more-starts">')[0];
+ assert.deepEqual([...primary.matchAll(/data-answer="([^"]+)"/g)].map(match=>match[1]),['explore','target','audit']);
+ assert.match(html,/<details class="portal-tip portal-more-starts"><summary>More ways to start<\/summary>/);
+ assert.match(html,/href="request-plan.html"/);assert.match(html,/href="degree-audit.html"/);assert.match(html,/href="courses.html\?tab=browse"/);
+ for(const choice of ['explore','target','audit']){
+  const f=fixture({initial}),before=f.state();await f.api.answer(choice);
+  assert.deepEqual(f.state().learning,before.learning,choice+' keeps the original course collection');
+  assert.deepEqual(f.state().sheet.notes,before.sheet.notes,choice+' keeps private notes');
+  if(choice==='audit')assert.equal(f.context.__destination,'import-courses.html');
+  if(choice==='target')assert.equal(f.state().journey.step,'school');
+  if(choice==='explore')assert.equal(f.state().journey.profileFlow.mode,'explore');
+ }
 });

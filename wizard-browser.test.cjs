@@ -156,10 +156,9 @@ const target = pathway => ({ entry: 'audit', goal: 'any-degree', degreeLevel: pa
     await page.evaluate(() => localStorage.clear()); await page.goto(BUILDER + '?entry=explore', { waitUntil: 'networkidle' });
     assert.match(await page.locator('.step-title').textContent(), /make possible/);
     assert(requests.every(address => address.startsWith(BASE) || address.startsWith('data:')), 'The new wizard should use only local preloaded assets');
-    const response = await page.goto(BASE + 'audit.html', { waitUntil: 'networkidle' }); assert.equal(response.status(), 200); await page.locator('#generate:not([disabled])').waitFor();
-    await page.locator('#program').selectOption('tesu-general-management'); await page.locator('#generate').click();
-    const science = page.locator('[data-requirement="eas1010"] .mapping-line');
-    assert.match(await science.textContent(), /Scientific Knowledge choice/);
+    const response = await page.goto(BASE + 'audit.html', { waitUntil: 'networkidle' }); assert.equal(response.status(), 200);
+    await page.waitForURL('**/portal.html');
+    assert.equal(await page.locator('#generate').count(), 0, 'The superseded partial audit no longer creates a second planning workflow.');
   });
 
   await test('military family and graduate flows use their own learning and career stages', async () => {

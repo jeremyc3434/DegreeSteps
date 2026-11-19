@@ -13,3 +13,23 @@ test('a course in progress for another goal does not displace the next applicabl
 test('an applicable in-progress course links directly to its original record',()=>{const s=setup();s.learning=[{id:'taking-writing',provider:'Sophia',code:'SOPH-0015',title:'English Composition I',credits:3,creditSystem:'semester',status:'in-progress',evaluations:[]}];const w=win(s);assert.equal(w.id,'taking');assert.match(w.href,/record=taking-writing/);assert.match(w.title,/English Composition/);});
 test('known competency units need destination evaluation rather than a request for missing units',()=>{const s=setup();s.learning=[{id:'completed-cu',provider:'University',institution:'WGU',sourceProgramId:'prior-wgu-degree',code:'D123',title:'Completed competency',credits:3,creditSystem:'competency-unit',status:'earned',evaluations:[]}];const d=Journey.buildDraft(s,catalog,models),w=Home.nextWin(s,d);assert.equal(w.id,'evaluation');assert.equal(d.plan.totals.reported,0);assert.equal(s.learning[0].creditSystem,'competency-unit');});
 test('next steps prefer a documented course and keep missing map research with DegreeSteps',()=>{const s=setup(),draft=Journey.buildDraft(s,catalog,models);draft.plan.rows=[{requirementId:'candidate',status:'planned',option:{provider:'Study.com',title:'Candidate',evidence:'conditional'}},{requirementId:'documented',status:'planned',option:{provider:'Sophia',title:'Documented course',evidence:'published'}}];const next=Home.nextWin(s,draft);assert.equal(next.href,'plan.html?course=documented');assert.equal(next.label,'View this course');assert.doesNotMatch(next.detail,/Confirm|approval/);draft.plan.rows.shift();draft.plan.rows[0].option.evidence='conditional';const pending=Home.nextWin(s,draft);assert.match(pending.detail,/DegreeSteps still needs to resolve/);assert.doesNotMatch(pending.detail,/ask your school|research this/i);});
+
+
+test('an applicable taking course stays actionable while unmatched records retain their evaluation checklist',()=>{
+ const Checklist=require('./dist/student-checklist.js');
+ let state=setup();state.learning=[
+  {id:'old-english',provider:'Past college',title:'Original college English',code:'ENG101',credits:3,creditSystem:'semester',status:'earned',evaluations:[]},
+  {id:'taking-writing',provider:'Sophia',code:'SOPH-0015',title:'English Composition I',credits:3,creditSystem:'semester',status:'in-progress',evaluations:[]}
+ ];
+ const before=JSON.stringify(state),draft=Journey.buildDraft(state,catalog,models),next=Home.nextWin(state,draft);
+ assert.equal(next.id,'taking');assert.match(next.href,/record=taking-writing/);assert.equal(draft.match.unmatched.some(record=>record.id==='old-english'),true);
+ const checklist=Checklist.build(state,draft);assert(checklist.tasks.some(task=>task.id==='request-school-feedback'&&task.status==='todo'));assert(checklist.tasks.some(task=>task.id==='review-school-feedback'&&task.status==='todo'));
+ assert.equal(JSON.stringify(state),before,'A next-step recommendation cannot award, remove or rewrite course records');
+ for(const issue of [
+  {...draft,targetReviewNeeded:true},
+  {...draft,plan:{...draft.plan,validation:{...draft.plan.validation,academicCountsValid:false}}},
+  {...draft,plan:{...draft.plan,setupIssues:[{code:'invalid_selection'}]}}
+ ])assert.notEqual(Home.nextWin(state,issue).id,'taking','An actual goal or course conflict must remain ahead of routine progress');
+ const unknown={...state,learning:[{...state.learning[0],credits:null,creditSystem:null},state.learning[1]]};
+ assert.equal(Home.nextWin(unknown,Journey.buildDraft(unknown,catalog,models)).id,'credit-details');
+});

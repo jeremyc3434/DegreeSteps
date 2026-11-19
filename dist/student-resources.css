@@ -1,0 +1,72 @@
+/* Real plan examples make the student task visible before the supporting text. */
+body.public-page .student-visual-caption { margin:0 0 12px; font-size:.875rem; line-height:1.5; color:var(--public-muted); }
+body.public-page .student-credit-track { display:flex; height:18px; overflow:hidden; border-radius:6px; background:#e9eef6; }
+body.public-page .student-credit-track > span { display:block; height:100%; min-width:0; }
+body.public-page .student-credit-outside { background:var(--public-cobalt); }
+body.public-page .student-credit-college { background:var(--public-route); }
+body.public-page .student-credit-labels { display:flex; flex-wrap:wrap; gap:12px 22px; margin-top:14px; font-size:.9375rem; line-height:1.5; }
+body.public-page .student-credit-labels > span { display:inline-flex; align-items:center; gap:5px; }
+body.public-page .student-credit-labels i { width:9px; height:9px; background:var(--public-cobalt); border-radius:2px; margin-right:3px; }
+body.public-page .student-credit-labels > span:nth-child(2) i { background:var(--public-route); }
+body.public-page .student-credit-labels strong { font-size:1.125rem; color:var(--public-ink); }
+body.public-page .student-journey { padding-bottom:32px; }
+body.public-page .student-journey-list { list-style:none; padding:0; margin:0; counter-reset:journey; }
+body.public-page .student-journey-list > li { display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:65px; align-items:center; padding:36px 0; border-top:1px solid var(--public-line); }
+body.public-page .student-journey-copy h2 { font-size:clamp(1.65rem,2.7vw,2.3rem); line-height:1.2; letter-spacing:-.025em; margin:0 0 15px; max-width:22ch; }
+body.public-page .student-journey-copy p { color:var(--public-muted); font-size:1.0625rem; line-height:1.65; max-width:45ch; }
+body.public-page :is(.student-goal-example,.student-worksheet-example,.student-next-example) { border:1px solid var(--public-line); background:#fff; border-radius:14px; box-shadow:0 12px 36px #142c5109; padding:26px; min-width:0; }
+body.public-page .student-goal-example > strong { display:block; font-size:1.75rem; margin:12px 0 20px; }
+body.public-page .student-goal-example > div { display:flex; flex-wrap:wrap; gap:10px; }
+body.public-page .student-goal-example > div > span { border-radius:5px; padding:8px 12px; background:#edf1ff; color:#263bb8; font-size:1rem; }
+body.public-page .student-goal-example > p { font-size:1rem; line-height:1.6; color:var(--public-muted); margin:22px 0 0; }
+body.public-page .student-example-heading { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; margin-bottom:20px; font-size:1rem; }
+body.public-page .student-example-heading span { font-size:.875rem; color:var(--public-muted); }
+body.public-page .student-example-table { overflow:auto; margin-bottom:24px; }
+body.public-page .student-example-table table { width:100%; border-collapse:collapse; font-size:.9375rem; text-align:left; }
+body.public-page .student-example-table :is(th,td) { padding:12px 8px; border-bottom:1px solid var(--public-line); }
+body.public-page .student-example-table thead th { color:var(--public-muted); font-weight:500; }
+body.public-page .student-example-table tbody th { font-weight:600; white-space:nowrap; }
+body.public-page .student-example-table :is(th,td):last-child { text-align:right; }
+body.public-page .student-next-example ul { list-style:none; padding:0; margin:14px 0 18px; }
+body.public-page .student-next-example li { display:flex; align-items:center; gap:12px; min-height:52px; font-size:1rem; }
+body.public-page .student-next-example li > span { flex:none; width:18px; height:18px; border:2px solid #a3b2c6; border-radius:50%; }
+body.public-page .student-next-example a { display:inline-flex; min-height:44px; align-items:center; font-size:1rem; color:var(--public-cobalt); text-decoration:underline; text-underline-offset:4px; }
+body.public-page .student-example-note { color:var(--public-muted); font-size:.875rem; line-height:1.65; }
+body.public-page .student-school-plans { padding-block:8px 46px; }
+body.public-page .student-school-mix { padding-bottom:42px; }
+body.public-page .student-school-plans header h2 { font-size:2rem; margin:0 0 12px; letter-spacing:-.025em; }
+body.public-page .student-school-plans header p { color:var(--public-muted); font-size:1.0625rem; margin-bottom:26px; }
+body.public-page .student-school-plans > div { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr)); gap:22px; }
+body.public-page .student-school-plan { display:flex; flex-direction:column; align-items:flex-start; gap:25px; border:1px solid var(--public-line); border-radius:12px; padding:26px; background:#fff; }
+body.public-page .student-school-plan > div:first-child > span { color:var(--public-muted); font-size:.875rem; }
+body.public-page .student-school-plan h3 { margin:10px 0 0; font-size:1.4rem; line-height:1.3; }
+body.public-page .student-school-plan .student-credit-mix { width:100%; margin-top:auto; }
+body.public-page .student-school-plan .site-button { width:100%; text-align:center; }
+body.public-page .student-school-notes { border-top:1px solid var(--public-line); margin-bottom:50px; padding-top:12px; }
+body.public-page .student-school-notes > summary,
+body.public-page .student-school-notes > details > summary { min-height:56px; padding-block:16px; font-size:1.125rem; font-weight:600; cursor:pointer; }
+body.public-page .student-school-notes > .article-layout { margin-top:20px; }
+body.public-page .student-provider-facts { padding-bottom:35px; }
+body.public-page .student-provider-facts dl { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); margin:0; gap:20px; }
+body.public-page .student-provider-facts dl > div { border:1px solid var(--public-line); border-radius:10px; padding:24px; background:#f7f9fc; }
+body.public-page .student-provider-facts dt { font-weight:600; font-size:1.125rem; margin-bottom:12px; }
+body.public-page .student-provider-facts dd { margin:0; font-size:1rem; color:var(--public-muted); line-height:1.65; }
+body.public-page .student-provider-details { border-block:1px solid var(--public-line); margin-block:0 28px; padding-block:4px; }
+body.public-page .student-provider-details > summary { cursor:pointer; min-height:56px; padding-block:16px; font-size:1.125rem; font-weight:600; }
+body.public-page :is(.student-article-start,.student-article-action) { margin-top:28px; padding:26px; border:1px solid var(--public-line); border-radius:12px; background:#f7f9fc; display:flex; flex-wrap:wrap; align-items:center; gap:24px; }
+body.public-page :is(.student-article-start,.student-article-action) > div { flex:1 1 330px; min-width:0; }
+body.public-page .student-article-start h2 { font-size:1.35rem; line-height:1.35; margin:0 0 10px; }
+body.public-page :is(.student-article-start,.student-article-action) p { color:var(--public-muted); font-size:1rem; line-height:1.65; }
+body.public-page .student-article-start .student-example-note { font-size:.875rem; margin:12px 0 0; }
+body.public-page .student-article-start .student-credit-mix { margin-top:18px; }
+body.public-page .student-article-action strong { font-size:1.125rem; }
+body.public-page .student-record-flow { display:flex; gap:18px; flex-wrap:wrap; padding-left:20px; margin:16px 0 0; font-size:.9375rem; color:var(--public-ink); }
+body.public-page .student-record-flow li { padding-right:18px; }
+@media(max-width:760px) {
+ body.public-page .student-journey-list > li { grid-template-columns:1fr; gap:22px; padding-block:28px; }
+ body.public-page .student-journey-copy p { max-width:none; }
+ body.public-page :is(.student-goal-example,.student-worksheet-example,.student-next-example,.student-school-plan,.student-article-start,.student-article-action) { padding:20px; }
+ body.public-page .student-provider-facts dl { grid-template-columns:1fr; gap:12px; }
+ body.public-page :is(.student-article-start,.student-article-action) > .site-button { width:100%; text-align:center; }
+ body.public-page .student-credit-labels { gap:10px 15px; }
+}

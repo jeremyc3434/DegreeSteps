@@ -39,7 +39,7 @@ test('blank examples cannot be saved as a personal plan, while course-first coll
  assert.equal(Save.meaningfulDraft(original),true);
 });
 test('a guest returns from sign-in to explicit consent without uploading during authentication',async()=>{
- const s=store(),guest=fixture({user:null,sessionStore:s});await guest.api.open();assert.match(guest.dialog.innerHTML,/Sign in to continue/);assert(!guest.calls.some(c=>c.options.method==='POST'));
+ const s=store(),guest=fixture({user:null,sessionStore:s});await guest.api.open();assert.match(guest.dialog.innerHTML,/Sign in to save/);assert(!guest.calls.some(c=>c.options.method==='POST'));
  await guest.click('planSaveSignin');assert.deepEqual(guest.redirects,['/account.html?returnTo=%2Fplan.html']);assert.deepEqual(Object.keys(JSON.parse(s.getItem(Save.KEY))).sort(),['expiresAt','path','version']);
  const signed=fixture({sessionStore:s});await signed.flush();assert(signed.dialog.open);assert.match(signed.dialog.innerHTML,/Alex Student/);assert.equal(signed.consent.checked,false);assert(!signed.calls.some(c=>c.options.method==='POST'));
  await signed.submit();assert(!signed.calls.some(c=>c.options.method==='POST'));assert.match(signed.dialog.innerHTML,/Choose to save/);
@@ -53,7 +53,7 @@ test('a changed draft is re-reviewed instead of sending the old consent to new r
  const f=fixture();await f.api.open();const changed=copy(original);changed.learning.push({id:'new-private-course'});f.setDraft(changed);f.consent.checked=true;await f.submit();assert.equal(f.calls.filter(c=>c.options.method==='POST').length,0);assert.match(f.dialog.innerHTML,/Your device plan changed/);assert.equal(f.consent.checked,false);assert.match(f.dialog.innerHTML,/2 saved courses/);
 });
 test('a revision conflict keeps both copies and requires explicit new-copy consent',async()=>{
- const f=fixture({link:{ownerId:'account-a',planId:'old-plan',revision:3},conflict:true});await f.api.open();assert.match(f.dialog.innerHTML,/Update saved plan/);f.consent.checked=true;await f.submit();assert.equal(f.calls.filter(c=>c.options.method==='PUT').length,1);assert.equal(f.calls.filter(c=>c.options.method==='POST').length,0);assert.match(f.dialog.innerHTML,/Save as a new copy/);assert.equal(f.consent.checked,false);assert.deepEqual(f.stored(),original);
+ const f=fixture({link:{ownerId:'account-a',planId:'old-plan',revision:3},conflict:true});await f.api.open();assert.match(f.dialog.innerHTML,/Save changes/);f.consent.checked=true;await f.submit();assert.equal(f.calls.filter(c=>c.options.method==='PUT').length,1);assert.equal(f.calls.filter(c=>c.options.method==='POST').length,0);assert.match(f.dialog.innerHTML,/Save as a new copy/);assert.equal(f.consent.checked,false);assert.deepEqual(f.stored(),original);
  f.consent.checked=true;await f.submit();assert.equal(f.calls.filter(c=>c.options.method==='POST').length,1);assert.match(f.dialog.innerHTML,/Saved to your account/);
 });
 test('a different exact degree or catalog receives a new copy even with an identical degree title',async()=>{

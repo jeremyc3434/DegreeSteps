@@ -73,8 +73,7 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     assert(!/74,170/.test(await page.locator('#sheet-savings').innerText()));
     assert.equal(await nav(page,'plan').getAttribute('aria-current'),'page');
     assert.equal(await nav(page,'credits').getAttribute('href'),'courses.html');
-    assert.match(await page.locator('.dp-shell-save:visible').innerText(),/Saved on this device/);
-    assert(!/cloud|account/i.test(await page.locator('.dp-shell-save:visible').innerText()));
+    assert.match(await page.locator('.dp-shell-save:visible').innerText(),/Sign in to save|Not saved to your account|Saved to your account|Changes to save/);
   });
   await test('comparing a course previews a real tuition change before Apply and preserves private learning when applied',async () => {
     const original = seed(true),page = await fresh('plan.html',original);await planReady(page);

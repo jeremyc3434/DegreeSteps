@@ -9,6 +9,8 @@
 .pf-presets button, .pf-side button, .pf-more-results, .pf-more > summary, .pf-coverage > summary, .pf-college-tip > summary { min-height:44px; }
 #program-filters input[type=search], #program-filters select { min-height:48px; font-size:16px; }
 .pf-side button { min-height:48px; font-size:16px; }
+.pf-side .pf-open-plan { min-height:48px; display:inline-flex; align-items:center; justify-content:center; width:100%; font-size:1rem; font-weight:600; padding:12px 18px; }
+.pf-side button[data-program-details] { border:0; background:transparent; color:#526174; text-decoration:underline; text-underline-offset:3px; font-size:.875rem; }
 .pf-count, .pf-price small, #program-filters label > span, .pf-program p { color:#596b83; }
 .pf-program h2 { font-size:20px; line-height:1.4; }
 @media (max-width:700px) {

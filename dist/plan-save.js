@@ -90,19 +90,19 @@
     if (!dialog || !model) return;
     const cancel = '<button type="button" class="plan-save-secondary" data-plan-save-cancel'+(model.saving?' disabled':'')+'>Keep working</button>';
     let body = '';
-    if (model.loading) body = '<p role="status">Opening your private save options…</p>' + cancel;
-    else if (model.success) body = '<p class="plan-save-success" role="status">Saved to your account.</p><p>'+esc(model.review.title)+'</p>'+(model.linkWarning?'<p>This browser could not link the account copy. You can open it from My account.</p>':'')+'<div class="plan-save-actions"><button type="button" class="plan-save-primary" data-plan-save-cancel>Continue with my plan</button><a href="account.html">My saved plans</a></div>';
+    if (model.loading) body = '<p role="status">Opening your plan…</p>' + cancel;
+    else if (model.success) body = '<p class="plan-save-success" role="status">Saved to your account.</p><p>'+esc(model.review.title)+'</p>'+(model.linkWarning?'<p>This browser could not link this saved plan. You can open it from My account.</p>':'')+'<div class="plan-save-actions"><button type="button" class="plan-save-primary" data-plan-save-cancel>Continue with my plan</button><a href="account.html">My saved plans</a></div>';
     else if (!model.review || model.uncertain) body = '<p class="plan-save-error" role="alert">'+esc(model.error || 'Your private save options could not load.')+'</p><div class="plan-save-actions">'+(model.uncertain?'<a href="account.html">Check my saved plans</a>':'')+'<button type="button" class="plan-save-primary" data-plan-save-retry>'+(model.uncertain?'Reload save options':'Try again')+'</button>'+cancel+'</div>';
-    else if (!model.review.user) body = '<p>Sign in to keep this plan across devices.</p><div class="plan-save-target"><strong>'+esc(model.review.title)+'</strong>'+(model.review.draft.profile.school?'<span>'+esc(model.review.draft.profile.school)+'</span>':'')+'</div><p>Your courses and notes stay on this device until you choose to save a private account copy.</p><div class="plan-save-actions"><button type="button" class="plan-save-primary" data-plan-save-signin>Sign in to continue</button>'+cancel+'</div>';
+    else if (!model.review.user) body = '<p>Sign in to save your plan.</p><div class="plan-save-target"><strong>'+esc(model.review.title)+'</strong>'+(model.review.draft.profile.school?'<span>'+esc(model.review.draft.profile.school)+'</span>':'')+'</div><p>Your progress is here. Sign in, then choose to save your plan, courses and notes to your account.</p><div class="plan-save-actions"><button type="button" class="plan-save-primary" data-plan-save-signin>Sign in to save</button>'+cancel+'</div>';
     else {
       const review = model.review, name = review.user.displayName || review.user.alias || 'your signed-in account';
       body = '<p>Private to '+esc(name)+'.</p><div class="plan-save-target"><strong>'+esc(review.title)+'</strong>'+(review.draft.profile.school?'<span>'+esc(review.draft.profile.school)+'</span>':'')+'<span>'+review.draft.learning.length+' saved course'+(review.draft.learning.length===1?'':'s')+'</span></div>'+
-        (review.conflict?'<p class="plan-save-note">A newer account copy exists. You can keep this device plan as a new copy or review your saved plans.</p>':'')+
-        (review.metadataUnavailable?'<p class="plan-save-note">We could not check your last account copy. Saving a new copy keeps it separate.</p>':'')+
+        (review.conflict?'<p class="plan-save-note">A newer version is saved in your account. Open it, or save this plan separately.</p>':'')+
+        (review.metadataUnavailable?'<p class="plan-save-note">We could not check the latest saved version. Save a separate plan to avoid replacing it.</p>':'')+
         (model.notice?'<p class="plan-save-note" role="status">'+esc(model.notice)+'</p>':'')+
-        '<form id="plan-save-form"><label class="plan-save-consent"><input type="checkbox" name="consent" required'+(model.saving?' checked disabled':'')+'><span>Save this private plan, including my courses and notes, to my account.</span></label><p class="plan-save-error" role="alert">'+esc(model.error || '')+'</p><div class="plan-save-actions"><button type="submit" class="plan-save-primary"'+(model.saving?' disabled':'')+'>'+(model.saving?'Saving…':review.updateAllowed?'Update saved plan':review.conflict?'Save as a new copy':'Save my plan')+'</button>'+cancel+'</div></form><div class="plan-save-links">'+(review.updateAllowed?'<button type="button" data-plan-save-copy'+(model.saving?' disabled':'')+'>Save as a new copy</button>':'')+'<a href="account.html">Review my saved plans</a></div>';
+        '<form id="plan-save-form"><label class="plan-save-consent"><input type="checkbox" name="consent" required'+(model.saving?' checked disabled':'')+'><span>Save this private plan, including my courses and notes, to my account.</span></label><p class="plan-save-error" role="alert">'+esc(model.error || '')+'</p><div class="plan-save-actions"><button type="submit" class="plan-save-primary"'+(model.saving?' disabled':'')+'>'+(model.saving?'Saving…':review.updateAllowed?'Save changes':review.conflict?'Save as a new copy':'Save my plan')+'</button>'+cancel+'</div></form><div class="plan-save-links">'+(review.updateAllowed?'<button type="button" data-plan-save-copy'+(model.saving?' disabled':'')+'>Save as a new copy</button>':'')+'<a href="account.html">Review my saved plans</a></div>';
     }
-    dialog.innerHTML = '<h2 id="plan-save-title" tabindex="-1">'+(model.success?'Your plan is yours to keep.':'Keep your plan.')+'</h2>'+body;
+    dialog.innerHTML = '<h2 id="plan-save-title" tabindex="-1">'+(model.success?'Plan saved.':'Save your plan')+'</h2>'+body;
     dialog.setAttribute('aria-busy',model.saving?'true':'false');
   }
   async function open(options = {}) {
@@ -133,9 +133,9 @@
       model.saving=false;
       if (['account_changed','draft_changed'].includes(error.code)) {await open({notice:error.message});return;}
       if (error.status===401 || error.code==='owner_mismatch') {root.DegreeAccount.invalidate?.();await open({notice:'Sign in again to choose where this plan is saved.'});return;}
-      if (error.code==='revision_conflict') {model.review.updateAllowed=false;model.review.conflict=true;model.notice='Your saved account copy changed. Keep this plan as a new copy or review the newer one.';model.error='';}
-      else if (!Number.isFinite(error.status) || error.status>=500) {model.uncertain=true;model.error='We could not confirm the account save. Your device plan is still here. Check your saved plans before trying again.';}
-      else model.error=error.message || 'Your plan could not be saved. Your device draft is unchanged.';
+      if (error.code==='revision_conflict') {model.review.updateAllowed=false;model.review.conflict=true;model.notice='A newer version was saved. Save this plan separately, or open the newer version.';model.error='';}
+      else if (!Number.isFinite(error.status) || error.status>=500) {model.uncertain=true;model.error='We could not confirm the account save. Your current plan is still here. Check your saved plans before trying again.';}
+      else model.error=error.message || 'Your plan could not be saved. Your current plan is unchanged.';
       render();dialog.querySelector('.plan-save-error')?.focus?.();
     }
   }

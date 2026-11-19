@@ -33,7 +33,7 @@ test('the public homepage explains the product and offers a clear separate build
   assert(strip(home.html).split(/\s+/).length>=200,'The explanation is crawlable without client rendering');
   const headline=strip(home.html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');
   assert.match(headline,/Find a faster, more affordable path to your degree\./i,'The first message states the student outcome');
-  assert.match(home.html,/Illustrative example/,'The product preview is clearly labeled as an example');
+  assert.match(home.html,/Example degree plan/,'The proposed product preview is clearly labeled as an example');
   assert.match(home.html,/<table\b[^>]*class="home-plan-table"/,'The course-choice example retains its degree worksheet');
   const photographs=home.html.match(/<img\b[^>]*>/gi)||[];
   for(const photograph of photographs){

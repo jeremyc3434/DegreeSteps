@@ -7,9 +7,9 @@
 }(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   'use strict';
   const DRAFT_KEY = 'degreepath-guide-v3', LINK_KEY = 'degreepath-account-link-v1';
-  let cachedSession;
+  let cachedSession, receiptSequence=0;
   function read(name) {try {return JSON.parse(root.localStorage.getItem(name));} catch {return null;}}
-  function clearLink() {try {root.localStorage.removeItem(LINK_KEY);} catch { /* inaccessible storage is reported by the calling action */ }}
+  function clearLink() {receiptSequence++;try {root.localStorage.removeItem(LINK_KEY);} catch { /* inaccessible storage is reported by the calling action */ }}
   function validDraft(state) {return Boolean(state && state.version === 3 && state.profile && typeof state.profile === 'object' && !Array.isArray(state.profile) && Array.isArray(state.learning));}
   async function request(path, options = {}) {
     if (!/^\/api\/(?:portal|auth)\/[A-Za-z0-9_/?=&.-]+$/.test(path)) throw new Error('Choose a valid account action.');
@@ -36,9 +36,33 @@
   function invalidate() {cachedSession = undefined;}
   function deviceDraft() {const state = read(DRAFT_KEY); return validDraft(state) ? state : null;}
   function linkedPlan(user) {const link = read(LINK_KEY); return user && link?.ownerId === user.id && typeof link.planId === 'string' && Number.isInteger(link.revision) ? link : null;}
-  function setLink(user, item) {
+  function stateText(state) {
+    const ordered = value => Array.isArray(value) ? value.map(ordered) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key,ordered(value[key])])) : value;
+    return JSON.stringify(ordered(state));
+  }
+  async function stateDigest(state) {
+    if (!validDraft(state) || !root.crypto?.subtle || !root.TextEncoder) return null;
+    try {return Array.from(new Uint8Array(await root.crypto.subtle.digest('SHA-256',new root.TextEncoder().encode(stateText(state)))),byte => byte.toString(16).padStart(2,'0')).join('');} catch {return null;}
+  }
+  async function setLink(user, item, receiptId) {
     if (!user?.id || !item?.id || !Number.isInteger(item.revision)) throw new Error('The saved plan could not be linked to this account.');
-    root.localStorage.setItem(LINK_KEY, JSON.stringify({ownerId:user.id,planId:item.id,revision:item.revision}));
+    // This receipt describes the last acknowledged save. It is a UI hint,
+    // never authorization, and contains no duplicate course records or notes.
+    const savedHash = await stateDigest(item.state);
+    if(receiptId!==receiptSequence||cachedSession?.user?.id!==user.id)throw new Error('Your account or plan changed. Open your saved plans to continue.');
+    root.localStorage.setItem(LINK_KEY, JSON.stringify({ownerId:user.id,planId:item.id,revision:item.revision,...(savedHash?{savedHash}:{})}));
+  }
+  async function saveState(user) {
+    const draft = deviceDraft(), link = linkedPlan(user);
+    if (!user) return {kind:'signed-out',label:'Sign in to save',action:'Save plan'};
+    if (!link) return {kind:'unsaved',label:'Not saved to your account',action:'Save plan'};
+    const hash = await stateDigest(draft);
+    const current=linkedPlan(user);
+    if (hash && current?.planId===link.planId&&current.revision===link.revision&&current.savedHash===link.savedHash&&stateText(deviceDraft())===stateText(draft)&&/^[a-f0-9]{64}$/.test(link.savedHash || '') && hash === link.savedHash) return {kind:'saved',label:'Saved to your account',action:'Save plan'};
+    return {kind:'changed',label:'Changes to save',action:'Save changes'};
+  }
+  function savedEvent() {
+    try {if(root.CustomEvent&&root.dispatchEvent)root.dispatchEvent(new root.CustomEvent('degreepath:plan-saved'));} catch {}
   }
   async function uploadDraft({title, consent, update = false, expectedOwnerId, expectedDraft} = {}) {
     if (consent !== true) throw new Error('Confirm that you want to save this private device draft to your account.');
@@ -53,9 +77,11 @@
     }
     const link = update ? linkedPlan(user) : null;
     if (update && !link) throw new Error('Open a saved plan from this account before updating it.');
+    const receiptId=++receiptSequence;
     const result = await api(link ? '/plans/' + encodeURIComponent(link.planId) : '/plans', {method:link ? 'PUT' : 'POST', body:{title,state,...(link ? {revision:link.revision} : {consent:true})}});
     if (!result.item?.id || !Number.isInteger(result.item.revision)) throw new Error('The account did not return a valid saved-plan receipt. Check your account copies before trying again.');
-    try {setLink(user,result.item);} catch {return {...result,linkSaved:false};}
+    try {await setLink(user,result.item,receiptId);} catch {savedEvent();return {...result,linkSaved:false};}
+    savedEvent();
     return result;
   }
   const clone = value => JSON.parse(JSON.stringify(value));
@@ -85,6 +111,7 @@
     if((hasPrivate(saved)||hasPrivate(local))&&!audit?.validatePrivateWork)throw new Error('Refresh your account page before opening a plan with private requirements. Your device plan has not been replaced.');
     if(audit){audit.validatePrivateWork(saved);if(local)audit.validatePrivateWork(local);}
     if (!local) return {state:next,conflicts:0};
+    if(stateText(saved)===stateText(local))return {state:next,conflicts:0};
     // A degree target is a view over the student's shared source records. A
     // historical snapshot never changes newer source facts or revives an old
     // school approval on a record that is already present on this device.
@@ -181,15 +208,17 @@
   }
   async function openPlan(id) {
     const current = await session(true); if (!current.user) throw new Error('Sign in to open your saved plan.');
+    const receiptId=++receiptSequence;
     const result = await api('/plans/' + encodeURIComponent(id));
     if (!validDraft(result.item?.state)) throw new Error('This saved plan is not compatible with the current planner. Download a copy before changing it.');
     if (!result.item.id || !Number.isInteger(result.item.revision)) throw new Error('This saved plan is missing its version information. Your device draft has not been changed.');
     const local = storedDraftForRestore(), merged = mergePlan(result.item.state,local,result.item.id);
+    if(receiptId!==receiptSequence||cachedSession?.user?.id!==current.user.id)throw new Error('Your account or plan changed. Open your saved plans to continue.');
     // setItem is atomic: a quota failure leaves the original device draft intact.
     root.localStorage.setItem(DRAFT_KEY,JSON.stringify(merged.state));
-    setLink(current.user,result.item);
+    await setLink(current.user,result.item,receiptId);
     return {...result,restore:{conflicts:merged.conflicts,coursesPreserved:local?.learning.length || 0}};
   }
   async function signOut() {const result = await auth('/logout',{method:'POST'}); clearLink(); try {root.sessionStorage?.removeItem('degreesteps-plan-save-intent-v1');} catch {} invalidate(); return result;}
-  return Object.freeze({DRAFT_KEY,LINK_KEY,api,auth,session,invalidate,deviceDraft,linkedPlan,clearLink,uploadDraft,openPlan,signOut});
+  return Object.freeze({DRAFT_KEY,LINK_KEY,api,auth,session,invalidate,deviceDraft,linkedPlan,clearLink,uploadDraft,openPlan,signOut,saveState});
 }));

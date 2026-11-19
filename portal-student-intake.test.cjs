@@ -11,7 +11,7 @@ function fixture({learning=[],intakeCompleted=false}={}){
  return{api:context.__portal,node,state:()=>copy(context.__portal.state()),async submit(values){for(const handler of handlers.get('submit')||[])await handler({target:{id:'portal-about-form',values},preventDefault(){}});}};
 }
 test('an exact degree offers one short personalization step without asking for transcripts',async()=>{
- const f=fixture();f.api.open();assert.equal(f.state().journey.step,'about');assert.equal(f.state().journey.view,'questions');const html=f.api.about();assert.match(html,/Have you finished any college courses/);assert.match(html,/Military connection \(optional\)/);assert.doesNotMatch(html,/type="file"/);
+ const f=fixture();f.api.open();assert.equal(f.state().journey.step,'about');assert.equal(f.state().journey.view,'questions');const html=f.api.about();assert.match(html,/Have you finished any college courses/);assert.match(html,/Military service\? Include your training/);assert.doesNotMatch(html,/type="file"/);
  await f.submit({goal:'any-degree',prior:'none',priority:'speed',military:'none',militaryRecords:'not-sure'});const state=f.state();assert.equal(state.journey.completed,true);assert.equal(state.journey.intakeCompleted,true);assert.equal(state.profile.priority,'speed');assert.equal(state.profile.hasPrior,'none');assert.equal(state.journey.creditsDeferred,false);const d=Journey.buildDraft(state,data.catalog,data.models),tasks=Checklist.build(state,d).tasks;assert(!tasks.some(task=>task.id==='gather-records'));assert.equal(d.plan.totals.confirmed,0);
 });
 test('military and existing-credit choices customize the actual plan without entering records',async()=>{
