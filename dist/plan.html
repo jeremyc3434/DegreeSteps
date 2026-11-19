@@ -32,6 +32,7 @@
   <script src="student-progress.js" defer></script>
   <script src="plan-home.js" defer></script>
   <script src="course-plan-view.js" defer></script>
+  <script src="plan-route.js" defer></script>
   <script src="student-checklist.js" defer></script>
   <script src="student-checklist-view.js" defer></script>
   <script src="cost-assumptions.js" defer></script>
@@ -42,7 +43,7 @@
   <link rel="stylesheet" href="student-checklist.css">
   <script src="account-client.js" defer></script>
   <script src="app-shell.js" defer></script>
-<link rel="stylesheet" href="/brand.css"></head>
+<link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="plan-design.css"></head>
 <body class="sheet-page">
   <a class="skip-link" href="#sheet-app">Skip to degree worksheet</a>
   <header class="site-header">
@@ -57,14 +58,16 @@
       <div id="sheet-error" role="alert" hidden></div>
       <section id="sheet-workspace" aria-label="Degree plan worksheet" hidden>
         <div id="sheet-titlebar"></div>
-        <div id="sheet-savings" hidden></div>
-        <div id="sheet-home"></div>
-        <div id="sheet-controls"></div>
+        <div id="sheet-route"></div>
         <div id="sheet-summary"></div>
+        <div id="sheet-savings" hidden></div>
+        <div id="sheet-next"></div>
+        <div id="sheet-controls"></div>
         <div id="sheet-review-note"></div>
         <div id="sheet-toolbar"></div>
         <p id="sheet-scroll-help">Swipe across to edit courses and progress →</p>
         <div id="sheet-grid" tabindex="0" role="region" aria-label="Degree requirement table" aria-describedby="sheet-scroll-help"></div>
+        <details id="sheet-task-panel"><summary>All tasks and checklist</summary><div id="sheet-home"></div></details>
         <div id="sheet-footer"></div>
         <div id="sheet-context"></div>
         <div id="sheet-momentum" hidden></div>
