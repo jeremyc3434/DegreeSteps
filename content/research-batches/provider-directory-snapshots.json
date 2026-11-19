@@ -1,0 +1,3552 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "hfcc-provider-directory",
+      "label": "Homeschooling for College Credit provider matrix",
+      "provider": null,
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "adapter": "hfcc-matrix",
+      "official": false,
+      "checkedOn": "2026-11-19",
+      "status": "limited",
+      "note": "The table is dated April 20, 2021. Its marked provider relationships are historical third-party research leads, not current university agreements. Historical names, operating status, accreditation, program scope and exact transfer policies require current institutional evidence.",
+      "sourceDate": "2021-04-20",
+      "lastAttemptOn": "2026-11-19",
+      "lastGoodOn": "2026-11-19",
+      "httpStatus": 200,
+      "contentSha256": "3fd5de338a4cd51aac3590ddd27ec8ff267ad2f5ec73026b622a266c3b77283a"
+    },
+    {
+      "id": "saylor-credit-directory",
+      "label": "Saylor credit partners",
+      "provider": "Saylor",
+      "url": "https://www.saylor.org/Partners/Credit",
+      "adapter": "unavailable",
+      "official": true,
+      "checkedOn": "2026-11-19",
+      "status": "dynamic",
+      "note": "The official credit-partner page returned a JavaScript shell. No institution list was extractable from the cached response; no source relationships were invented.",
+      "sourceDate": null,
+      "lastAttemptOn": "2026-11-19",
+      "lastGoodOn": null,
+      "httpStatus": 200,
+      "contentSha256": "6cb849b4a2603d8f6372ad00000c69d8943370aca9722bc0e0cc227d6860d498"
+    },
+    {
+      "id": "sophia-school-directory",
+      "label": "Sophia school finder",
+      "provider": "Sophia",
+      "url": "https://www.sophia.org/find-your-school/",
+      "adapter": "unavailable",
+      "official": true,
+      "checkedOn": "2026-11-19",
+      "status": "dynamic",
+      "note": "The public page distinguishes 115+ partner institutions from 2,900+ institutions that have received transcripts for review. Its school finder is dynamic; neither group was extracted as a verified acceptance list. No static sample recipient was imported as a partner.",
+      "sourceDate": null,
+      "lastAttemptOn": "2026-11-19",
+      "lastGoodOn": null,
+      "httpStatus": 200,
+      "contentSha256": "7f9957f3750746b6ded0899926296ba93931d5ba3d078292a7409c655f4bcff4"
+    },
+    {
+      "id": "straighterline-colleges",
+      "label": "StraighterLine college directory",
+      "provider": "StraighterLine",
+      "url": "https://www.straighterline.com/colleges/",
+      "adapter": "straighterline-links",
+      "official": true,
+      "checkedOn": "2026-11-19",
+      "status": "partial",
+      "note": "Named links to individual college pages were extracted, deduplicated and retained as directory-listed research leads only. This is not an exhaustive current partnership, accreditation or transfer-acceptance inventory; decorative logos and generic links were ignored.",
+      "sourceDate": null,
+      "lastAttemptOn": "2026-11-19",
+      "lastGoodOn": "2026-11-19",
+      "httpStatus": 200,
+      "contentSha256": "de57e74198de5b75d96868c80d2174c9ca26b877b2a30f1829738ed9dbb822b0"
+    },
+    {
+      "id": "study-school-directory",
+      "label": "Study.com school directory",
+      "provider": "Study.com",
+      "url": "https://study.com/college/school/index.html",
+      "adapter": "unavailable",
+      "official": true,
+      "checkedOn": "2026-11-19",
+      "status": "blocked",
+      "note": "The official school directory returned HTTP 403. No school-level relationships were extracted; marketing totals are not treated as acceptance evidence.",
+      "sourceDate": null,
+      "lastAttemptOn": "2026-11-19",
+      "lastGoodOn": null,
+      "httpStatus": 403,
+      "contentSha256": "267d6af21790ea242e80bc27c8c4fc56d65103fb36d792e1aa523f5dcddcc3ad"
+    }
+  ],
+  "observations": [
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "American Business & Technology University (Missouri)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Bellevue University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Bethel University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Bossier Parish Community College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Brandman University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "The Catholic University of America",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Central Louisiana Technical Community College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Charter Oak State College (COSC)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "City Vision University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Colorado State University Global",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "CUNY School of Professional Studies",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Excelsior University (formerly Excelsior College)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Fayetteville State University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Florida International University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Golden Gate University (GGU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Goldey-Beacom College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Granite State College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Great Bay Community College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Greenville University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Louisiana’s Community & Technical Colleges",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Martinsburg College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Montgomery County Community College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "New England College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Paul Smith’s College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Purdue University Global",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Shenandoah University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Southern New Hampshire University (SNHU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "South Louisiana Community College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "SUNY Empire State College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Thomas Edison State University (TESU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Universitas Terbuka",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "University of Maryland Global Campus (UMGC)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "The University of Memphis",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "University of the Bahamas",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Urban College of Boston",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Western Governors University (WGU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Saylor",
+      "name": "Wilmington University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Alabama State University (Alabama)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "American Military University (West Virginia)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "American Public University (West Virginia)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "American Sentinel University (Colorado)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Art Institutes (multiple locations)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Athens State University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Bellevue University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Bennett College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Brandman University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Charter Oak State College (COSC)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Cheyney University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Colorado State University Global",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Colorado Technical University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "DeVry University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Excelsior University (formerly Excelsior College)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Franklin University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Herzing University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Houston Community College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Indiana Institute of Technology",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Indiana Wesleyan University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Jarvis Christian College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Johnson and Wales University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Lane College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Liberty University (LU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Morris Brown College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "National Paralegal College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Philander Smith College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Purdue University Global",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Regis University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Southern New Hampshire University (SNHU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "South Florida College of Nursing",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "United State Sports Academy",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "University of Arizona Global Campus",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "University of Maryland Global Campus (UMGC)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "University of Phoenix",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Upper Iowa University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Walden University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Wilberforce University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Sophia",
+      "name": "Wilmington University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Alderson Broaddus University (West Virginia)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "American College of Education (Indiana)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "American Intercontinental University (Illinois)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "American Military University (West Virginia)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "American Public University (West Virginia)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "The American Women’s College of Bay Path University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Antioch University (Ohio)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Athens State University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Baker College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Bastyr University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Bay State College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Bellevue University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Benjamin Franklin Institute of Technology",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Berkeley College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Bethel University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Bismark State College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Blue Mountain College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Brandman University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "California Southern University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Capella University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Capitol Technology University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Cecil College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Cedar Valley College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Central Penn College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Charter Oak State College (COSC)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "The Chicago School Of Professional Psychology",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Cleary University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Colorado Christian University Online",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Colorado State University Global",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Colorado Technical University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Concordia University Chicago",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Concordia University St. Paul",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Davenport University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "DeVry University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Excelsior University (formerly Excelsior College)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Fisher College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Franklin University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Goodwin College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Grace College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Grambling State University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Granite State College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Greenville University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Harrisburg University Of Science And Technology",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Herzing University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Hope College of Arts & Sciences",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Indiana Institute of Technology",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Indiana Wesleyan University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Jacksonville College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Kendall College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Lesley University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Liberty University (LU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Life Pacific University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Lipscomb University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Lynn University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Monroe College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Mount Vernon Nazarene University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "National American University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "National Louis University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "New England College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "New England Institute of Business at Cambridge College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "New York Chiropractic College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Nichols College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "North Central State College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Northcentral University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Northwestern Health Sciences University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Northwestern State University Of Louisiana",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Norwich University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Pacific Oaks College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Patten University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Paul Smith’s College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Pine Manor College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Point Loma Nazarene University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Purdue University Global",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Rasmussen University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Regis University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Rio Salado College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Saint Joseph’s College of Maine",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Saybrook University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Simpson University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "St. Catherine University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Stevenson University Online",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Strayer University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Sullivan University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "SUNY Empire State College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Tennessee State University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Thomas Edison State University (TESU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Touro University Worldwide",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Trident at AIU",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Union College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Union Institute & University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "United State Sports Academy",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University of Arizona Global Campus",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University Of Bridgeport",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University of Louisiana Monroe",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University Of Maine At Presque Isle (UMPI)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University of Maryland Global Campus (UMGC)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University of New England",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University of Phoenix",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University Of The Incarnate Word",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University Of The Potomac",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University Of Western States",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "University of Wisconsin Stout",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Upper Iowa University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Urban College of Boston",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Vanguard University School for Professional Studies",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Walden University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Westcliff University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "West Coast University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Western Governors University (WGU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Wilmington University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "Wisconsin Lutheran College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "StraighterLine",
+      "name": "York College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "American Business & Technology University (Missouri)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "American College of Education (Indiana)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "American Intercontinental University (Illinois)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "American Military University (West Virginia)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "American Public University (West Virginia)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "American Sentinel University (Colorado)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Bellevue University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Bergin Colege of Canine Studies",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "California Southern University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Champlain College Online",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Charter Oak State College (COSC)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Colorado State University Global",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Excelsior University (formerly Excelsior College)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Golden Gate University (GGU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Grand Canyon University (GCU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Herzing University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Indiana Institute of Technology",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "International College for Christian Studies",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Liberty University (LU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "New England Institute of Business at Cambridge College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Nichols College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Peirce College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Pillar College",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Post University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Purdue University Global",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Regent University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Saint Joseph’s College of Maine",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Sullivan University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Thomas Edison State University (TESU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Trident University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "United State Sports Academy",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "University of Arizona Global Campus",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "University of Maryland Global Campus (UMGC)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "University of Phoenix",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Upper Iowa University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Walden University",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "hfcc-provider-directory",
+      "provider": "Study.com",
+      "name": "Western Governors University (WGU)",
+      "relation": "matrix-listed",
+      "url": "https://homeschoolingforcollegecredit.org/partnership-colleges-by-provider/",
+      "observedOn": "2026-11-19",
+      "sourceDate": "2021-04-20"
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "1 on 1 Technical & Theological College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/1-on-1-technical-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Abraham Lincoln University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/abraham-lincoln-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "American College of Education",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/american-college-of-education/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "American Intercontinental University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/american-intercontinental-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "American Medical Academy",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/american-medical-academy/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "American Military University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/american-military-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "American Public University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/american-public-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Antioch University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/antioch-university-connected/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Athens State University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/athens-state-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Aviator College of Aeronautical Science & Technology",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/aviator-college-of-aeronautical-science-and-technology/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Baker College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/baker-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Bastyr University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/bastyr-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Bay Path University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/bay-path-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Bellevue University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/bellevue-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Berkeley College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/berkeley-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Bismarck State College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/bismarck-state-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Blessing-Rieman College of Nursing & Health Sciences",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/blessing-rieman-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Blue Mountain College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/blue-mountain-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Boise Bible College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/boise-bible-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Bottega University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/bottega-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "California Institute of Applied Technology",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/california-institute-of-applied-technology/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "California Southern University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/california-southern-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Cambridge College Global",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/new-england-college-of-business/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Capella University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/capella-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Capitol Technology University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/capitol-technology-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Capscare Academy for Health Care Education",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/capscare-academy-for-health-care-education/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Cedar Valley College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/cedar-valley-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Central New Mexico Community College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/central-new-mexico-community-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Central Penn College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/central-penn-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Charter Oak State College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/charter-oak-state-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "The Chicago School of Professional Psychology",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/the-chicago-school-of-professional-psychology/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Claremont Lincoln University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/claremont-lincoln-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Cleary University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/cleary-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Colorado Christian University Online",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/colorado-christian-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Colorado State University – Global Campus",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/colorado-state-university-global-campus/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Colorado Technical University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/colorado-technical-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Columbia Southern University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/columbia-southern-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Concordia University St. Paul",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/concordia-university-stpaul/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "The Continental States University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/the-continents-states-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "The Continents States University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/the-continents-states-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Dallas College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/dallas-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Davenport University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/davenport-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Daytona College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/daytona-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Denver College of Nursing",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/denver-college-of-nursing/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Denver College of Nursing",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/indiana-tech/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "DeVry University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/devry-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Dunlap‑Stone University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/dunlap-stone-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Eternity Bible College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/eternity-bible-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Excelsior University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/excelsior-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Fisher College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/fisher-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Florida College of Integrative Medicine",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/florida-college-of-integrative-medicine/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Florida School of Traditional Midwifery",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/florida-school-of-traditional-midwifery/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Fort Hays State University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/fort-hays-state-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Franklin Pierce University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/franklin-pierce-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Franklin University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/franklin-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Gladstone College of Nursing",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/gladstone-college-of-nursing/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Goodwin University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/goodwin-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Grace College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/grace-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Gracelyn University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/gracelyn-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Graham Hospital School of Nursing",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/graham-hospital-school-of-nursing/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Grambling State University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/grambling-state-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Greenville University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/greenville-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Harrisburg University of Science and Technology",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/harrisburg-university-of-science-and-technology/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Herzing University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/herzing-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Hope College of Arts & Sciences",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/hope-college-of-arts-and-sciences/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Indiana Institute of Technology",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/indiana-tech/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "International College of Christian Studies",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/international-college-of-christian-studies/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "International College of Health Sciences",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/international-college-of-health-sciences/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Jacksonville College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/jacksonville-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Justice University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/justice-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Kendall College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/kendall-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Kenner University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/kenner-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Lesley University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/lesley-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Liberty University – Online Programs",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/liberty-university-online/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Life Pacific University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/life-pacific-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Maryland University of Integrative Health",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/maryland-university-of-integrative-health/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "McNeese State University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/mcneese-state-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Mercy in Action College of Midwifery",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/mercy-in-action-college-of-midwifery/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Midwestern Career College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/midwestern-career-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Missouri Baptist University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/missouri-baptist-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Monroe University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/monroe-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Mount Vernon Nazarene University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/mount-vernon-nazarene-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "National American University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/national-american-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "National Louis University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/national-louis-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "National University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/national-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "New England College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/new-england-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Newlane University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/newlane-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "New Zealand College of Chiropractic",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/new-zealand-college-of-chiropractic/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Nexford University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/nexford-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Nichols College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/nichols-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Northeast College of Health Sciences",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/northeast-college-of-health-sciences/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Northeast Lakeview College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/northeast-lakeview-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Northwestern College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/northwestern-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Northwestern Health Sciences University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/northwestern-health-sciences-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Norwich University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/norwich-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Pacific College of Health and Science",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/pacific-college-health-science/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Pacific Oaks College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/pacific-oaks-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Palm Beach Career School of Nursing",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/palm-beach-career-school-of-nursing/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Pathways College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/pathways-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Paul Smith's College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/paul-smiths-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Point Loma Nazarene University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/point-loma-nazarene-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Progressive Careers Institute",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/progressive-careers-institute/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Purdue University Global",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/purdue-university-global/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Rasmussen University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/rasmussen-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Regis University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/regis-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Rio Salado College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/rio-salado-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Riverside College of Health Sciences",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/riverside-college-of-health-sciences/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Rocky Mountain College of Art & Design",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/rocky-mountain-college-art-design/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Rome Business School",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/ducere-global-business-school/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Rome Business School – by Ducere Global Business School",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/ducere-global-business-school/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Roseman University of Health Sciences",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/roseman-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Rosemont College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/rosemont-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Sacramento Ultrasound Institute",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/sacramento-ultrasound-institute/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Saint Francis Medical Center College of Nursing",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/saint-francis-medical-center-college-of-nursing/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Saint Joseph’s College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/saint-josephs-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "SANS Technology Institute",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/sans-technology-institute/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Simpson University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/simpson-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Southeastern Louisiana University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/southeastern-louisiana-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Southern California University of Health Sciences",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/california-southern-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Southern New Hampshire University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/southern-new-hampshire-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Southern Oregon University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/southern-oregon-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Stevenson University Online",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/stevenson-university-online/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "St. John's College of Nursing",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/st-johns-college-of-nursing/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Strayer University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/strayer-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Strive Community Health Institute",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/strive-community-health-institute/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Sullivan University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/sullivan-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "SUNY Empire State College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/suny-empire-state-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Tampa Medical College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/medical-prep-institute-of-tampa-bay/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "The Technical College of the Rockies",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/the-technical-college-of-the-rockies/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Tennessee State University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/tennessee-state-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Texas Health and Science University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/texas-health-and-science-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Thomas Edison State University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/thomas-edison-state-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Touro University Worldwide",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/touro-university-worldwide/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Trevecca Nazarene University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/trevecca-nazarene-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Union College",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/union-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "United States Sports Academy",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/united-states-sports-academy/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "The University of Arizona Global Campus",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/the-university-of-arizona-global-campus/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of Arkansas Grantham",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-arkansas-grantham/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of Bridgeport",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-bridgeport/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of Central Missouri",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-central-missouri/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of Maine at Presque Isle",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-maine-at-presque-isle/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of Maryland Global Campus",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-maryland-global-campus/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of Massachusetts Global",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-massachusetts-global/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of New England",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-new-england/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of Phoenix",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-phoenix/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of the Cumberlands",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-the-cumberlands/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of the Incarnate Word",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-the-incarnate-word/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of the People",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-the-people/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of the Potomac",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-the-potomac/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of the Southwest",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-the-southwest/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "University of Western States",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/university-of-western-states/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Upper Iowa University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/upper-iowa-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Urban College of Boston",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/urban-college-of-boston/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Vanguard University School for Professional Studies",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/vanguard-university-of-southern-california/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Walden University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/walden-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Westcliff University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/westcliff-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "West Coast University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/west-coast-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Western Governors University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/wgu/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "Wilmington University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/wilmington-university/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    },
+    {
+      "sourceId": "straighterline-colleges",
+      "provider": "StraighterLine",
+      "name": "York University",
+      "relation": "directory-listed",
+      "url": "https://www.straighterline.com/colleges/york-college/",
+      "observedOn": "2026-11-19",
+      "sourceDate": null
+    }
+  ]
+}

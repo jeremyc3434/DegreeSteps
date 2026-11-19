@@ -32,17 +32,31 @@ test('the public homepage explains the product and offers a clear separate build
   assert(links.some(h=>new URL(h,home.url).pathname==='/account.html'),'A real account entry is available');
   assert(strip(home.html).split(/\s+/).length>=200,'The explanation is crawlable without client rendering');
   const headline=strip(home.html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');
-  assert.match(headline,/Your degree\. Step by step\./i,'The first message introduces a manageable student journey');
-  assert.match(strip(home.html),/Find a faster, more affordable route to the degree you want\. Online or on campus\./,'The supporting sentence states the student outcome');
-  assert.equal((home.html.match(/data-home-step\s/g)||[]).length,3,'The journey has three explicit steps');
+  assert.match(headline,/^The degree you want\. A smarter way there\.$/i,'The first message connects the degree goal to a different route');
+  assert.match(strip(home.html),/Find a faster, more affordable route with flexible courses that can count toward your degree\. Online or on campus\./,'The supporting sentence states the student outcome and course flexibility');
+  const chapters=[...home.html.matchAll(/<section\b(?=[^>]*\bdata-home-step(?:\s|>))[^>]*>/gi)];
+  assert.deepEqual(chapters.map(chapter=>attr(chapter[0],'id')),['home-step-1','home-step-2','home-step-3'],'The journey has three ordered semantic chapters');
+  for(const [chapter] of chapters){
+    assert(!/\s(?:hidden|inert)(?:\s|=|>)/i.test(chapter),'Every chapter is available without a carousel interaction');
+    assert.notEqual(attr(chapter,'aria-hidden'),'true','Every chapter remains exposed to assistive technology');
+    const label=attr(chapter,'aria-labelledby');assert(label&&home.html.includes('id="'+label+'"'),'Every chapter has a readable heading');
+  }
+  assert.doesNotMatch(home.html,/data-home-step-(?:viewport|track|back|next|controls)\b/,'The student can follow the page in normal document order');
   assert.match(home.html,/<script src="\/home-steps\.js" defer><\/script>/);
   assert(home.html.indexOf('href="/home-steps.css"')>home.html.indexOf('href="/public-design.css"'),'The homepage component is styled after the shared public design');
   assert.match(home.html,/Example degree plan/,'The proposed product preview is clearly labeled as an example');
   assert.match(home.html,/<table\b[^>]*class="home-plan-table"/,'The course-choice example retains its degree worksheet');
-  const photographs=home.html.match(/<img\b[^>]*>/gi)||[];
-  for(const photograph of photographs){
-    assert((attr(photograph,'alt')||'').length>=12,'A photograph has a useful text alternative');
-    assert.equal(new URL(attr(photograph,'src'),home.url).origin,siteOrigin,'Photography is self-hosted');
+  const brandNames=new Map([['liberty',/Liberty University/i],['sophia',/Sophia/i]]);
+  for(const match of home.html.matchAll(/<img\b[^>]*>/gi)){
+    const image=match[0],source=new URL(attr(image,'src'),home.url);
+    assert.equal(source.origin,siteOrigin,'Homepage images are self-hosted');
+    const brand=source.pathname.match(/^\/images\/brands\/([a-z0-9-]+)\.svg$/i);
+    if(brand){
+      assert.match(image,/\balt\s*=\s*(["'])\1/i,'A decorative brand image has an explicit empty text alternative');
+      for(const dimension of ['width','height'])assert(/^[1-9]\d*$/.test(attr(image,dimension)),'Brand images have positive numeric '+dimension);
+      const name=brandNames.get(brand[1]);assert(name,'The example identifies a known school or course provider');
+      assert.match(strip(home.html.slice(match.index+image.length,match.index+image.length+600)),name,'The decorative logo has a nearby readable brand name');
+    }else assert(attr(image,'alt').length>=12,'A photograph has a useful text alternative');
   }
 
 });

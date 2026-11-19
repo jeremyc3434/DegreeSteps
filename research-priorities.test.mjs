@@ -1,7 +1,14 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {buildResearchPriorities} from './scripts/build-research-priorities.mjs';
+import {DIRECTORY_SOURCES,buildProviderDiscovery} from './scripts/provider-directory-discovery.mjs';
 const copy=value=>structuredClone(value);
+test('provider discovery remains a separate research stage with unchanged school, program and readiness totals',()=>{
+ const input=inputs(),baseline=buildResearchPriorities(input),definition=DIRECTORY_SOURCES.find(source=>source.id==='hfcc-provider-directory');
+ input.providerDiscovery=buildProviderDiscovery({version:1,sources:[{...definition,checkedOn:'2026-11-19',status:'limited',note:'Historical research lead.'}],observations:[{sourceId:definition.id,provider:'Sophia',name:'Unreviewed New University',relation:'matrix-listed',url:definition.url,observedOn:'2026-11-19',sourceDate:'2021-04-20'}]});
+ const queue=buildResearchPriorities(input);assert.deepEqual(queue.summary,baseline.summary);assert.deepEqual(queue.programs,baseline.programs);assert.deepEqual(queue.schools,baseline.schools);assert.deepEqual(queue.inventoryCandidates,baseline.inventoryCandidates);assert.equal(queue.providerDiscovery.summary.candidates,1);assert.equal(queue.providerDiscovery.summary.eligibleStudentPlans,0);assert.equal(queue.schools.some(row=>row.name==='Unreviewed New University'),false);assert.notEqual(queue.revision,baseline.revision);
+ input.providerDiscovery.candidates[0].studentEligible=true;assert.throws(()=>buildResearchPriorities(input),/cannot assert/);
+});
 function inputs(){return {
  programCatalog:{checkedAt:'2026-11-03',schools:[
   {id:'gcu',name:'Grand Canyon University',deliveryModes:['campus','online'],paceModels:['course-term'],transferPolicy:{institutional:{status:'accepted',maximumCredits:90,sourceUrl:'https://www.gcu.edu/admissions/college-transfer-center.php'},ace:{status:'case-by-case',maximumCredits:30,sourceUrl:'https://gcu.sophia.org/'}}},

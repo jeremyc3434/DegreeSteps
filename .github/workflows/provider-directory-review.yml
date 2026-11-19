@@ -1,0 +1,50 @@
+name: Monthly provider directory review
+
+on:
+  schedule:
+    - cron: '17 10 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: provider-directory-review
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Use Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - name: Refresh research leads without publishing
+        run: |
+          node scripts/provider-directory-discovery.mjs --refresh --as-of "$(date -u +%F)"
+          node scripts/build-research-priorities.mjs
+      - name: Record source access and pending-review summary
+        run: |
+          node --input-type=module <<'JS'
+          import {readFileSync,appendFileSync} from 'node:fs';
+          const report=JSON.parse(readFileSync('content/research-batches/provider-directory-candidates.json','utf8'));
+          if(report.publicationAllowed!==false||report.summary.eligibleStudentPlans!==0)throw Error('Research leads must remain unpublished.');
+          const lines=['## Provider research leads','',`${report.summary.candidates} candidates; zero newly verified student plans.`,'','Blocked or dynamic sources retain older observations. Inspect source dates before review.','',...report.sources.map(source=>`- ${source.id}: ${source.status}; latest attempt ${source.lastAttemptOn}; last good ${source.lastGoodOn||'none'}`),'','This workflow creates a review artifact only. It does not commit, publish, change plans or call AI.'];
+          appendFileSync(process.env.GITHUB_STEP_SUMMARY,lines.join('\n')+'\n');
+          JS
+      - name: Save research for review
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: provider-directory-review-${{ github.run_id }}
+          retention-days: 45
+          if-no-files-found: error
+          path: |
+            content/research-batches/provider-directory-snapshots.json
+            content/research-batches/provider-directory-candidates.json
+            content/research-batches/research-priorities.json

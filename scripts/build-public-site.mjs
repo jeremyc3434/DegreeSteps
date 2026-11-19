@@ -2,7 +2,7 @@
 import {readFile, writeFile, mkdir, rm} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import assert from 'node:assert/strict';
-import {renderHome,buildHomeExample} from './home-content.mjs';
+import {renderHome,buildHomeExample,buildHomeTuition} from './home-content.mjs';
 import {renderStudentJourney,renderCreditMix,renderSchoolPlanCards,renderProviderFacts,providerIntroduction,renderArticleStart} from './student-public-experience.mjs';
 import {createRequire} from 'node:module';
 import {renderCostWidget,renderCostMethodology} from './cost-content.mjs';
@@ -35,6 +35,7 @@ const costData=JSON.parse(await readFile(resolve(dist,'data/cost-comparisons.jso
 const exampleProgram=JSON.parse(await readFile(resolve(dist,'data/liberty.json'),'utf8'));
 const exampleBaselines=JSON.parse(await readFile(resolve(dist,'data/baseline-index.json'),'utf8'));
 const example=buildHomeExample({program:exampleProgram,baseline:Object.values(exampleBaselines.baselines).find(row=>row.modelId===exampleProgram.id),Planner:createRequire(import.meta.url)(resolve(dist,'planner.js'))});
+const homeTuition=buildHomeTuition({example,entry:costData.entries.find(entry=>entry.id==='liberty-residential'),Cost:createRequire(import.meta.url)(resolve(dist,'cost-engine.js'))});
 const publicPlans=await loadPublicPlans(dist);
 const pages = [];
 const brand = '<a class="site-brand ds-wordmark" href="/" aria-label="DegreeSteps home"><span>Degree</span><span class="ds-wordmark-steps">Steps</span></a>';
@@ -92,7 +93,7 @@ const faq = [
 ];
 const faqMarkup = items => '<div class="faq-list">'+items.map(([q,a])=>'<details><summary>'+esc(q)+'</summary><p>'+esc(a)+'</p></details>').join('')+'</div>';
 
-await page({path:'/',title:'College planning, credits & costs',description:'Explore affordable courses, potential transfer credits, and college options. Build a degree plan around your goals, time, and budget with DegreeSteps.',body:renderHome({cta,articleCard,guides,costSection:renderCostWidget(costData),example}),schema:[{'@context':'https://schema.org','@type':'Organization',name:'DegreeSteps',url:origin+'/',description:'DegreeSteps helps students explore affordable courses, potential transfer credits, and flexible college plans.'},{'@context':'https://schema.org','@type':'WebSite',name:'DegreeSteps',url:origin+'/'}]});
+await page({path:'/',title:'College planning, credits & costs',description:'Explore affordable courses, potential transfer credits, and college options. Build a degree plan around your goals, time, and budget with DegreeSteps.',body:renderHome({cta,articleCard,guides,costSection:renderCostWidget(costData),example,tuition:homeTuition}),schema:[{'@context':'https://schema.org','@type':'Organization',name:'DegreeSteps',url:origin+'/',description:'DegreeSteps helps students explore affordable courses, potential transfer credits, and flexible college plans.'},{'@context':'https://schema.org','@type':'WebSite',name:'DegreeSteps',url:origin+'/'}]});
 
 await page({path:'/degree-plans/',title:'Explore complete transfer-course degree plans',description:'Open a researched WGU or Liberty degree route, see the proposed outside courses and remaining university work, then customize the plan with your own courses.',section:'plans',crumbs:[{name:'Degree plan previews',path:'/degree-plans/'}],body:renderPublicPlanHub(publicPlans),schema:[{'@context':'https://schema.org','@type':'ItemList',name:'Source-backed degree plan previews',itemListElement:publicPlans.map((plan,index)=>({'@type':'ListItem',position:index+1,name:plan.title,url:origin+plan.path}))}]});
 for(const plan of publicPlans)await page({path:plan.path,title:plan.title,description:plan.description,section:'plans',date:plan.checkedOn,crumbs:[{name:'Degree plan previews',path:'/degree-plans/'},{name:plan.shortTitle,path:plan.path}],body:renderPublicPlan(plan,publicPlans),schema:[{'@context':'https://schema.org','@type':'WebPage',name:plan.title,description:plan.description,url:origin+plan.path,about:{'@type':'CollegeOrUniversity',name:plan.school},dateModified:plan.checkedOn}]});

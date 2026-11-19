@@ -4,9 +4,10 @@ import {resolve,dirname} from 'node:path';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {pathToFileURL} from 'node:url';
+import {assertProviderDiscovery} from './provider-directory-discovery.mjs';
 const require=createRequire(import.meta.url),Catalog=require('../dist/program-catalog.js');
 const root=resolve(import.meta.dirname,'..');
-const paths={programCatalog:'dist/data/program-catalog.json',pathways:'dist/data/pathways.json',registry:'dist/data/curriculum-registry.json',quality:'dist/data/pathway-quality-report.json',schoolInsights:'content/school-insights.json',inventory:'content/research-batches/ace-inventory-2026-11-18.json'};
+const paths={programCatalog:'dist/data/program-catalog.json',pathways:'dist/data/pathways.json',registry:'dist/data/curriculum-registry.json',quality:'dist/data/pathway-quality-report.json',schoolInsights:'content/school-insights.json',inventory:'content/research-batches/ace-inventory-2026-11-18.json',providerDiscovery:'dist/data/provider-directory-candidates.json'};
 const outputs=['content/research-batches/research-priorities.json','dist/data/research-priorities.json'];
 const list=v=>Array.isArray(v)?v:[],text=v=>typeof v==='string'?v.trim():'',copy=v=>JSON.parse(JSON.stringify(v)),num=v=>typeof v==='number'&&Number.isFinite(v)&&v>=0?v:null;
 const norm=v=>text(v).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
@@ -59,6 +60,7 @@ function chooseGroup({publicationReady,modelId,modalities,school,level,sourceSta
 }
 export function buildResearchPriorities(input){
  const {programCatalog={},pathways={},registry={},quality={},schoolInsights={},inventory={},models=[]}=input;
+ const providerDiscovery=input.providerDiscovery?copy(assertProviderDiscovery(input.providerDiscovery)):null;
  const fingerprints=Object.fromEntries(Object.entries(input).sort(([a],[b])=>a.localeCompare(b)).map(([name,value])=>[name,digest(JSON.stringify(value))]));
  const inputDays=[programCatalog.checkedAt,programCatalog.expandedCheckedOn,registry.checkedOn,quality.asOf,schoolInsights.compiledOn,inventory.sourceDate,inventory.stagedOn,...models.flatMap(m=>[m.checkedOn,m.mappingCheckedOn,m.evidenceCheckedOn])].map(day).filter(Boolean).sort();
  const asOf=inputDays.at(-1)||'2026-11-19';
@@ -120,6 +122,9 @@ export function buildResearchPriorities(input){
  programs.sort((a,b)=>order.get(a.groupId)-order.get(b.groupId)||a.schoolId.localeCompare(b.schoolId)||a.title.localeCompare(b.title)||a.id.localeCompare(b.id));
  const priorityGroups=groups.map(g=>({...g,schoolCount:schools.filter(s=>s.groupId===g.id).length,programCount:programs.filter(p=>p.groupId===g.id).length,inventoryCandidateCount:inventoryCandidates.filter(p=>p.groupId===g.id).length}));
  const out={schemaRevision:'research-priorities-v1',revision:'',asOf,inputFingerprints:fingerprints,academicRegistryRevision:quality.registryRevision||null,scope:'Cross-school research prioritization from the existing directory, exact model registry, recorded publication checks and sourced policy channels. This static backlog does not publish a degree map, grant student credit, establish popularity or start a research job.',summary:{schools:schools.length,programs:programs.length,directoryPrograms:list(programCatalog.programs).length,modelPrograms:programs.filter(p=>p.modelId).length,availableTemplates:list(registry.models).filter(m=>m.readyTemplate===true).length,publicationReady:list(quality.programs).filter(p=>p.publication?.ready===true).length,unmappedPrograms:programs.filter(p=>!p.modelId&&!list(p.coveredByVariantIds).length).length,inventoryCandidates:inventoryCandidates.length,priorityInventoryDegreeCandidates:list(inventory.candidatePriorities).length,careerStageGuides:careerGuides.length},methodology:{ordering:'Transparent evidence/action groups; alphabetical ties. No popularity score or invented campus ratings.',substantialInstitutionalThreshold:60,thresholdMeaning:'A research triage heuristic in the source policy’s stated units. It is not proof that half of any exact degree transfers.',policyLimits:'Institutional, ACE, NCCRS and graduate rules remain separate, with exact program limits recorded only when bound to model sources.',unknowns:'Unknown maximums, units, formats and receiving awards stay unknown. Staged inventory quantities are claims awaiting independent review.',visibility:'Owner/reviewer planning backlog; not a student degree catalog or a live job queue.'},priorityGroups,schools,programs,inventoryCandidates,careerGuides,publicationAllowed:false,privateStudentRecordsIncluded:false,runtimeAiCalls:0};
+ // Discovery is a separate, unpublished stage. It never enters the degree catalog,
+ // inventory totals, existing school counts, model readiness or transfer-cap logic.
+ if(providerDiscovery)out.providerDiscovery=providerDiscovery;
  out.revision='research-priorities-v1:'+digest(JSON.stringify(out));return out;
 }
 export async function readInputs(){

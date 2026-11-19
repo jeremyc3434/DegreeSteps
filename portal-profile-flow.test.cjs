@@ -17,12 +17,40 @@ function fixture({initial,stored,extraStorage={}}={}){
  return{api:context.__profile,node,context,state:()=>copy(context.__profile.state()),stored:()=>JSON.parse(storage.get(KEY)),storage:()=>Object.fromEntries(storage),replaceStored:value=>storage.set(KEY,JSON.stringify(value)),async submit(values){const form=node('portal-profile-form');form.values=values;for(const handler of handlers.get('submit')||[])await handler({target:form,preventDefault(){}});},async edit(values,type='change'){const form=node('portal-profile-form');form.values=values;for(const handler of handlers.get(type)||[])await handler({target:{closest:()=>form,matches:()=>false}});}};
 }
 const goal={goal:'career-growth',field:'business',degreeLevel:'bachelor'},prior={prior:'some',military:'veteran',militaryRecords:'jst'},online={format:'online',learningPace:'self-paced',campusLocation:'any',campusTime:'any'},priority={priority:'cost',budget:'6000',weeklyHours:'12',proctoringPreference:'avoid',assessmentPreference:'projects'};
+function selectedValue(html,name){
+ const options=html.match(new RegExp('<select name="'+name+'">([\\s\\S]*?)<\\/select>'))?.[1];assert(options,'The existing preference is available in the form: '+name);
+ const values=[...options.matchAll(/<option value="([^"]*)"([^>]*)>/g)];assert(values.length);return(values.find(match=>/\bselected\b/.test(match[2]))||values[0])[1];
+}
+async function exploreToPriorities(f){await f.api.answer('explore');await f.submit(goal);await f.submit({prior:'none',military:'none'});await f.submit(online);assert.equal(f.state().journey.step,'priority');}
+test('the monitored-exam choice is visible before optional details and clearly scoped to outside courses',async()=>{
+ const f=fixture();await exploreToPriorities(f);const html=f.api.body('priority'),optional=html.indexOf('<details class="portal-tip">'),preference=html.indexOf('name="proctoringPreference"');
+ assert(preference>=0&&preference<optional,'A student can see the exam preference without opening optional details');
+ assert.match(html,/Exams in outside courses/);assert.match(html,/Show all eligible courses/);assert.match(html,/Prefer courses without monitored exams/);
+ assert.match(html,/Self-paced courses can still have monitored exams\. Your university may also require exams\./);
+ assert(html.indexOf('name="budget"')>optional);assert(html.indexOf('name="weeklyHours"')>optional);assert(html.indexOf('name="assessmentPreference"')>optional);
+ assert.equal((html.match(/name="proctoringPreference"/g)||[]).length,1);assert.doesNotMatch(html,/<select name="proctoringPreference"[^>]*\brequired\b/);
+});
+test('self-paced learners can continue with the existing open-exam default without adding budget or study-time answers',async()=>{
+ const f=fixture();await exploreToPriorities(f);const html=f.api.body('priority');
+ assert.equal(selectedValue(html,'proctoringPreference'),'open');assert.equal(selectedValue(html,'assessmentPreference'),'mixed');
+ await f.submit({priority:'balanced',proctoringPreference:selectedValue(html,'proctoringPreference'),assessmentPreference:selectedValue(html,'assessmentPreference')});
+ const state=f.state();assert.equal(state.journey.step,'routes');assert.equal(state.journey.profileCompleted,true);assert.equal(state.profile.learningPace,'self-paced');assert.equal(state.profile.proctoringPreference,'open');assert.equal(state.profile.assessmentPreference,'mixed');assert.deepEqual(state.learning,[]);assert.equal(f.context.__prepared,1);assert.doesNotMatch(f.api.summary(),/without monitored exams/);
+});
+test('an existing assessment choice remains editable after Back and reload while the active plan stays saved',async()=>{
+ const initial=activeState();Object.assign(initial.profile,{proctoringPreference:'avoid',assessmentPreference:'writing'});
+ const f=fixture({initial});f.api.start('preferences');await f.submit({prior:'some',military:'none'});await f.submit({learningPace:'self-paced',campusLocation:'any',campusTime:'any'});
+ assert.equal(selectedValue(f.api.body('priority'),'proctoringPreference'),'avoid');assert.equal(selectedValue(f.api.body('priority'),'assessmentPreference'),'writing');
+ const edits={priority:'speed',proctoringPreference:'open',assessmentPreference:'exams',budget:'',weeklyHours:''};await f.edit(edits);assert.deepEqual(f.stored(),initial);
+ await f.api.action('back');assert.equal(f.state().journey.step,'format');await f.submit({learningPace:'self-paced',campusLocation:'any',campusTime:'any'});assert.equal(selectedValue(f.api.body('priority'),'proctoringPreference'),'open');
+ const saved=f.stored(),next=fixture({initial:Journey.initialize(saved,null,data().catalog),stored:saved,extraStorage:f.storage()});assert.equal(next.api.resume('preferences'),true);assert.equal(next.state().journey.step,'priority');assert.equal(selectedValue(next.api.body('priority'),'proctoringPreference'),'open');assert.equal(selectedValue(next.api.body('priority'),'assessmentPreference'),'exams');
+ await next.submit(edits);const result=next.stored();assert.equal(result.profile.proctoringPreference,'open');assert.equal(result.profile.assessmentPreference,'exams');assert.equal(result.profile.priority,'speed');assert.equal(result.profile.modality,'campus');assert.equal(result.selectedPathwayId,initial.selectedPathwayId);assert.deepEqual(result.learning,initial.learning);assert.deepEqual(result.scenarios,initial.scenarios);assert.deepEqual(result.sheet.notes,initial.sheet.notes);assert.doesNotMatch(next.api.summary(),/without monitored exams/);
+});
 test('exploration asks existing coursework and military context before personalized results',async()=>{
  const f=fixture();await f.api.answer('explore');assert.equal(f.state().journey.step,'purpose');assert.match(f.api.body('purpose'),/What would a degree help you do/);assert.doesNotMatch(f.api.body('purpose'),/name="(?:priority|format|prior)"/);
  await f.submit(goal);assert.equal(f.state().journey.step,'prior');assert.equal(f.context.__prepared,undefined);assert.doesNotMatch(f.api.body('prior'),/type="file"/);
  await f.submit(prior);assert.equal(f.state().profile.militaryStatus,'veteran');assert.equal(f.state().profile.hasPrior,'some');assert.equal(f.state().journey.step,'format');assert.equal(f.context.__prepared,undefined);
  await f.submit(online);assert.equal(f.state().journey.step,'priority');await f.submit(priority);
- const state=f.state();assert.equal(state.journey.step,'routes');assert.equal(state.journey.profileCompleted,true);assert.equal(state.journey.intakeCompleted,true);assert.equal(state.profile.budget,6000);assert.equal(state.profile.weeklyHours,12);assert.equal(state.profile.proctoringPreference,'avoid');assert.equal(f.context.__prepared,1);assert.deepEqual(state.learning,[]);assert.match(f.api.summary(),/Prefer self-paced courses/);assert.match(f.api.summary(),/Prefer no proctored exams/);
+ const state=f.state();assert.equal(state.journey.step,'routes');assert.equal(state.journey.profileCompleted,true);assert.equal(state.journey.intakeCompleted,true);assert.equal(state.profile.budget,6000);assert.equal(state.profile.weeklyHours,12);assert.equal(state.profile.proctoringPreference,'avoid');assert.equal(f.context.__prepared,1);assert.deepEqual(state.learning,[]);assert.match(f.api.summary(),/Prefer self-paced courses/);assert.match(f.api.summary(),/Prefer outside courses without monitored exams/);assert.doesNotMatch(f.api.summary(),/Prefer no proctored exams/);
 });
 test('online students skip campus fields while campus choices are retained across Back and reload',async()=>{
  const f=fixture();await f.api.answer('explore');await f.submit(goal);await f.submit(prior);await f.edit(online);await f.submit(online);assert.match(f.api.body('format'),/id="portal-profile-campus" hidden/);
