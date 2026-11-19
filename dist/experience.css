@@ -1,0 +1,48 @@
+/* Shared student experience. Family styles express each page's actual task. */
+body.ds-experience {
+  font-family:var(--ds-font);
+  color:var(--ds-ink);
+  font-size:1rem;
+  line-height:1.6;
+}
+body.ds-experience *,body.ds-experience *::before,body.ds-experience *::after { box-sizing:border-box; }
+body.ds-experience [hidden] { display:none!important; }
+body.ds-experience :where(h1,h2,h3,h4) { font-family:var(--ds-font); letter-spacing:var(--ds-title-tracking); }
+body.ds-experience :where(button,input,select,textarea) { font-family:var(--ds-font); }
+body.ds-experience :where(button,.button,.site-button,.portal-primary,.courses-primary,.import-button) { min-height:44px; }
+body.ds-experience :where(input,select,textarea):not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]) { font-size:1rem; }
+body.ds-experience :where(select):not([multiple]) {
+  appearance:none;
+  padding-right:2.4rem;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23526174' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right .75rem center;
+  background-size:18px;
+}
+/* Older page-specific background shorthands must not erase the indicator
+   after appearance:none removes the browser's native dropdown arrow. The
+   complete degree worksheet owns its existing, separate progress chevron. */
+body.ds-experience:not(.course-plan-page) select:not([multiple]) {
+  appearance:none;
+  padding-right:2.4rem!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23526174' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;
+  background-position:right .75rem center!important;
+  background-size:18px!important;
+}
+body.ds-experience :where(select option) { color:var(--ds-ink); background:var(--ds-surface); }
+body.ds-experience :where(button,a,input,select,textarea,summary) { transition-property:color,background-color,border-color,box-shadow; transition-duration:var(--ds-duration-fast); }
+body.ds-experience :is(a,button,input,select,textarea,summary,[tabindex]):focus-visible { outline:3px solid var(--ds-cobalt); outline-offset:3px; }
+body.ds-experience :where(.eyebrow,.home-eyebrow,.cost-eyebrow,.portal-eyebrow,.template-kicker) { font-size:.875rem; line-height:1.5; font-weight:550; letter-spacing:0; text-transform:none; }
+body.ds-experience :where(summary) { min-height:44px; }
+body.ds-experience :where(table) { max-width:100%; }
+body.ds-experience :where(td,th) { overflow-wrap:anywhere; }
+body.ds-experience :where(img,video) { max-width:100%; }
+body.ds-experience :where([role=alert]) { overflow-wrap:anywhere; }
+@media(prefers-reduced-motion:reduce) {
+  body.ds-experience *,body.ds-experience *::before,body.ds-experience *::after { animation-duration:.01ms!important; transition-duration:0ms!important; scroll-behavior:auto!important; }
+}
+@media print {
+  body.ds-experience { background:#fff; color:#111; }
+  body.ds-experience :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible { outline:none; }
+}

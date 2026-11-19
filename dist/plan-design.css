@@ -1,10 +1,10 @@
 /* Departure + Build. Presentation only: the complete course plan and its
    existing controls, school sections, state and validation remain in place. */
 body.course-plan-page {
-  --plan-navy:#142c51;
-  --plan-navy-line:#365173;
-  --plan-navy-muted:#c1d0e8;
-  --plan-navy-accent:#b2c2ff;
+  --plan-navy:var(--ds-route-navy,#142c51);
+  --plan-navy-line:var(--ds-route-line,#365173);
+  --plan-navy-muted:var(--ds-route-muted,#c1d0e8);
+  --plan-navy-accent:var(--ds-route-accent,#b2c2ff);
   --plan-ink:var(--ds-navy,#192c43);
   --plan-muted:var(--ds-muted,#526174);
   --plan-line:var(--ds-border,#d9e1ea);

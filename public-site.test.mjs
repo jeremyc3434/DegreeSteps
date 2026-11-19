@@ -4,6 +4,7 @@ import test from 'node:test';
 import {readFile, stat} from 'node:fs/promises';
 import {resolve, dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import vm from 'node:vm';
 
 const root=dirname(fileURLToPath(import.meta.url)), dist=resolve(root,'dist');
 const content=JSON.parse(await readFile(resolve(root,'content/public-content.json'),'utf8'));
@@ -31,9 +32,9 @@ test('the public homepage explains the product and offers a clear separate build
   assert(links.some(h=>new URL(h,home.url).pathname==='/account.html'),'A real account entry is available');
   assert(strip(home.html).split(/\s+/).length>=200,'The explanation is crawlable without client rendering');
   const headline=strip(home.html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');
-  assert.match(headline,/A clearer path to your degree\./i,'The first message states the student outcome');
+  assert.match(headline,/Find a faster, more affordable path to your degree\./i,'The first message states the student outcome');
   assert.match(home.html,/Illustrative example/,'The product preview is clearly labeled as an example');
-  assert.match(home.html,/<table\b[^>]*class="home-plan-table"/,'The first-screen product preview is a degree worksheet');
+  assert.match(home.html,/<table\b[^>]*class="home-plan-table"/,'The course-choice example retains its degree worksheet');
   const photographs=home.html.match(/<img\b[^>]*>/gi)||[];
   for(const photograph of photographs){
     assert((attr(photograph,'alt')||'').length>=12,'A photograph has a useful text alternative');
@@ -56,6 +57,40 @@ test('all sitemap pages have unique search metadata and a matching absolute cano
     assert(attr(tagWith(html,'meta','property','og:title'),'content'),`${url.pathname}: Open Graph title`);
     assert(attr(tagWith(html,'meta','property','og:description'),'content'),`${url.pathname}: Open Graph description`);
   }
+});
+
+test('the public route example matches its real preloaded degree and never represents personal awards',async()=>{
+  const home=pages.find(page=>page.url.pathname==='/').html;
+  const data=JSON.parse(home.match(/<script type="application\/json" id="home-route-example-data">([\s\S]*?)<\/script>/)[1]);
+  const baseline=JSON.parse(await readFile(resolve(dist,'data/baseline-index.json'),'utf8'));
+  const actual=Object.values(baseline.baselines).find(row=>row.modelId===data.modelId);
+  assert.equal(data.modelId,'liberty-business-residential');assert.equal(data.personalCreditsAwarded,0);assert.equal(data.total,120);
+  assert.equal(data.choices.sophia.outside,actual.summary.transferCredits);assert.equal(data.choices.sophia.university,actual.summary.universityCredits);
+  assert.deepEqual([data.choices.sophia.outside,data.choices.sophia.university],[83,37]);
+  assert.deepEqual([data.choices.university.outside,data.choices.university.university],[80,40]);
+  const target=new URL(data.planUrl,siteOrigin);assert.equal(target.pathname,'/portal.html');assert.equal(target.searchParams.get('school'),'Liberty University');assert.equal(target.searchParams.get('program'),data.modelId);assert.equal(target.searchParams.get('format'),'campus');
+  for(const choice of Object.values(data.choices))assert.equal(choice.outside+choice.university,data.total);
+});
+
+test('switching the public course example updates only its proposed mix and rejects malformed examples',async()=>{
+  const home=pages.find(page=>page.url.pathname==='/').html;
+  const data=JSON.parse(home.match(/<script type="application\/json" id="home-route-example-data">([\s\S]*?)<\/script>/)[1]);
+  const script=await readFile(resolve(dist,'site.js'),'utf8');
+  function mount(example){
+    const listeners={},select={value:'sophia',disabled:true,addEventListener(name,handler){listeners[name]=handler;}},nodes=new Map();
+    for(const selector of ['[data-home-course-provider]','[data-home-outside]','[data-home-university]','[data-home-route-feedback]'])nodes.set(selector,{textContent:''});
+    nodes.set('[data-home-course-choice]',select);
+    const route={querySelector:selector=>nodes.get(selector)||null},original=JSON.stringify(example),payload={textContent:original};
+    const document={querySelector:selector=>selector==='[data-home-route-example]'?route:null,getElementById:id=>id==='home-route-example-data'?payload:null,addEventListener(){}};
+    const context={document,matchMedia:()=>({matches:true,addEventListener(){}}),localStorage:{getItem(){throw Error('The example must not read private records');},setItem(){throw Error('The example must not change private records');}},fetch(){throw Error('The example must not make network requests');}};context.window=context;
+    vm.runInNewContext(script,context);
+    return {select,nodes,change(value){select.value=value;listeners.change?.();},payload,original};
+  }
+  const ui=mount(data);assert.equal(ui.select.disabled,false);assert.equal(ui.nodes.get('[data-home-outside]').textContent,'83');
+  ui.change('university');assert.equal(ui.nodes.get('[data-home-outside]').textContent,'80');assert.equal(ui.nodes.get('[data-home-university]').textContent,'40');assert.match(ui.nodes.get('[data-home-course-provider]').textContent,/Liberty/);
+  ui.change('sophia');assert.equal(ui.nodes.get('[data-home-outside]').textContent,'83');assert.equal(ui.nodes.get('[data-home-university]').textContent,'37');assert.equal(ui.payload.textContent,ui.original);
+  const invalid=structuredClone(data);invalid.choices.university.university=-1;assert.equal(mount(invalid).select.disabled,true);
+  const awarded=structuredClone(data);awarded.personalCreditsAwarded=3;assert.equal(mount(awarded).select.disabled,true);
 });
 
 test('structured data is valid JSON and editorial pages use factual article metadata',()=>{

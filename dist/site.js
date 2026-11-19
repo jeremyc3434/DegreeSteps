@@ -37,4 +37,21 @@
     const update = () => {const query=input.value.trim().toLowerCase();let visible=0;for(const card of cards){card.hidden=Boolean(query&&!card.dataset.resourceText.includes(query));if(!card.hidden)visible++;}if(count)count.textContent=query?visible+' matching resource'+(visible===1?'':'s'):'';};
     input.addEventListener('input',update);
   }
+  const routeExample=document.querySelector('[data-home-route-example]');
+  if(routeExample){
+    try{
+      const data=JSON.parse(document.getElementById('home-route-example-data').textContent),select=routeExample.querySelector('[data-home-course-choice]');
+      const valid=Object.values(data.choices||{}).length===2&&Object.values(data.choices).every(choice=>Number.isFinite(choice.outside)&&Number.isFinite(choice.university)&&choice.outside>=0&&choice.university>=0&&choice.outside+choice.university===data.total)&&data.personalCreditsAwarded===0;
+      if(valid&&select){
+        const update=()=>{
+          const choice=data.choices[select.value];if(!choice)return;
+          routeExample.querySelector('[data-home-course-provider]').textContent=choice.provider;
+          routeExample.querySelector('[data-home-outside]').textContent=String(choice.outside);
+          routeExample.querySelector('[data-home-university]').textContent=String(choice.university);
+          routeExample.querySelector('[data-home-route-feedback]').textContent=data.total+' credits accounted for. '+(select.value==='sophia'?'This writing choice keeps '+data.requirementCredits+' credits outside Liberty.':'This writing choice adds '+data.requirementCredits+' credits at Liberty.');
+        };
+        select.disabled=false;select.addEventListener('change',update);update();
+      }
+    }catch{/* The sourced static route remains readable without enhancement. */}
+  }
 }());

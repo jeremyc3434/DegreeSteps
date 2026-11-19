@@ -1,13 +1,15 @@
 /* DegreeSteps v1. Semantic tokens from the supplied November 17, 2026 brand package. */
 :root {
   --ds-navy:#192c43; --ds-cobalt:#4054f4; --ds-ink:#182230; --ds-muted:#526174;
+  --ds-route-navy:#142c51; --ds-route-line:#365173; --ds-route-muted:#c1d0e8; --ds-route-accent:#b2c2ff;
+  --ds-title-tracking:-.03em;
   --ds-surface:#fff; --ds-canvas:#f7f9fc; --ds-soft-blue:#eef1ff;
   --ds-border:#d9e1ea; --ds-control-border:#7b899b;
   --ds-success:#166534; --ds-warning:#92400e; --ds-error:#b42318;
   --ds-font:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --ds-space-1:4px; --ds-space-2:8px; --ds-space-3:12px; --ds-space-4:16px;
   --ds-space-6:24px; --ds-space-8:32px; --ds-space-12:48px; --ds-space-16:64px; --ds-space-24:96px;
-  --ds-radius-control:10px; --ds-radius-card:16px; --ds-content-width:1200px;
+  --ds-radius-control:6px; --ds-radius-card:8px; --ds-content-width:1200px;
   --ds-duration-fast:120ms; --ds-duration-normal:180ms;
 }
 body { font-family:var(--ds-font); color:var(--ds-ink); font-size:16px; line-height:1.6; }

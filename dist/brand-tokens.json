@@ -27,8 +27,8 @@
     96
   ],
   "radiusPx": {
-    "control": 10,
-    "card": 16
+    "control": 6,
+    "card": 8
   },
   "layout": {
     "maxWidthPx": 1200,
@@ -39,10 +39,17 @@
     "recommendedFamily": "Inter",
     "fallback": "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
     "bodyPx": 16,
-    "bodyLineHeight": 1.6
+    "bodyLineHeight": 1.6,
+    "headingTracking": "-.03em"
   },
   "motionMs": {
     "fast": 120,
     "normal": 180
+  },
+  "route": {
+    "surface": "#142C51",
+    "border": "#365173",
+    "muted": "#C1D0E8",
+    "accent": "#B2C2FF"
   }
 }

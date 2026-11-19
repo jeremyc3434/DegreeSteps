@@ -1,0 +1,364 @@
+/* Route discovery and setup. Existing inputs, research states and degree
+   eligibility rules retain their current behavior. */
+body.ds-discovery-page {
+  --discovery-ink:var(--ds-navy,#192c43);
+  --discovery-muted:var(--ds-muted,#526174);
+  --discovery-line:var(--ds-border,#d9e1ea);
+  --discovery-paper:var(--ds-surface,#fff);
+  --discovery-canvas:var(--ds-canvas,#f7f9fc);
+  --discovery-blue:var(--ds-cobalt,#4054f4);
+  --discovery-navy:var(--ds-route-navy,#142c51);
+  --discovery-navy-line:var(--ds-route-line,#365173);
+  --discovery-navy-muted:var(--ds-route-muted,#c1d0e8);
+  --discovery-navy-accent:var(--ds-route-accent,#b2c2ff);
+  --ink:var(--discovery-ink);
+  --green:var(--discovery-blue);
+  --lime:var(--ds-soft-blue,#eef1ff);
+  --paper:var(--discovery-canvas);
+  --muted:var(--discovery-muted);
+  --line:var(--discovery-line);
+  color:var(--discovery-ink);
+  background:var(--discovery-canvas);
+  font-size:1rem;
+  line-height:1.6;
+}
+body.ds-discovery-page [hidden] { display:none!important; }
+body.ds-discovery-page :is(button,input,select,textarea) { font-family:var(--ds-font,Inter,system-ui,sans-serif); }
+body.ds-discovery-page :is(button,a,input,select,textarea,summary):focus-visible { outline:3px solid var(--discovery-blue); outline-offset:3px; }
+body.ds-discovery-page :is(.portal-primary,.portal-secondary,.pf-button,.tw-button,.audit-primary,.audit-secondary) { min-height:46px; border-radius:6px; font-size:1rem; line-height:1.4; }
+body.ds-discovery-page :is(.portal-field,.portal-quick-form,.pf-search,.audit-fields,.audit-wide) :is(input:not([type=checkbox]):not([type=hidden]),select,textarea) { min-height:48px; font-size:1rem; color:var(--discovery-ink); border-color:#9eacbf; border-radius:6px; background-color:var(--discovery-paper); }
+body.ds-discovery-page :is(.portal-field>span,.portal-quick-form label,.audit-fields label,.audit-wide) { color:var(--discovery-ink); font-size:.875rem; }
+body.ds-discovery-page :is(.portal-hint,.portal-intro,.portal-school-filter,.portal-ranking-note,.portal-estimate-note,.portal-target-school,.program-policy,.program-conditions) { color:var(--discovery-muted); font-size:.875rem; line-height:1.6; }
+
+/* The setup stays a focused question, with room to make a real choice. */
+body.ds-discovery-page #portal-app { width:100%; max-width:1380px; padding:32px 32px 58px; margin-inline:auto; }
+body.ds-discovery-page .portal-question { width:100%; max-width:790px; margin:20px auto 0; padding:0 0 32px; border:0; border-radius:0; background:transparent; box-shadow:none; }
+body.ds-discovery-page .portal-question h1 { max-width:22ch; font-size:clamp(2rem,3.5vw,2.75rem); line-height:1.12; letter-spacing:-.035em; font-weight:650; margin:0 0 25px; }
+body.ds-discovery-page .portal-back { display:inline-flex; align-items:center; min-height:44px; padding:7px 0; gap:7px; margin-bottom:20px; color:var(--discovery-muted); font-size:.875rem; text-decoration:underline; text-underline-offset:4px; }
+body.ds-discovery-page .portal-question .portal-choices { gap:0; margin:24px 0; border-top:1px solid var(--discovery-line); }
+body.ds-discovery-page .portal-question .portal-choice { min-height:91px; padding:22px 20px; margin:0; border:0; border-bottom:1px solid var(--discovery-line); border-left:3px solid transparent; border-radius:0; background:var(--discovery-paper); color:var(--discovery-ink); box-shadow:none; transform:none; text-align:left; }
+body.ds-discovery-page .portal-question .portal-choice strong { display:block; font-size:1.125rem; line-height:1.4; font-weight:600; }
+body.ds-discovery-page .portal-question .portal-choice small { display:block; max-width:65ch; color:var(--discovery-muted); font-size:.9375rem; line-height:1.6; margin-top:6px; }
+body.ds-discovery-page .portal-question .portal-choice:hover { background:var(--ds-soft-blue,#eef1ff); border-left-color:var(--discovery-blue); box-shadow:none; transform:none; }
+body.ds-discovery-page .portal-question .portal-choice[aria-pressed=true] { border-left-color:var(--discovery-blue); background:var(--ds-soft-blue,#eef1ff); }
+body.ds-discovery-page .portal-choice>span[aria-hidden=true],
+body.ds-discovery-page .portal-degree-option>span[aria-hidden=true] { display:none; }
+body.ds-discovery-page .portal-question .portal-start-browse { margin:0; padding-block:5px; }
+body.ds-discovery-page .portal-start-browse a { display:inline-flex; align-items:center; min-height:44px; color:var(--discovery-blue); font-size:.9375rem; text-underline-offset:4px; }
+body.ds-discovery-page .portal-links { gap:12px 20px; margin-block:20px; }
+body.ds-discovery-page .portal-links :is(a,button) { min-height:44px; font-size:.9375rem; color:var(--discovery-blue); }
+body.ds-discovery-page .portal-quick-form { gap:20px; }
+body.ds-discovery-page .portal-quick-form>.portal-primary { min-height:50px; padding:13px 21px; }
+body.ds-discovery-page .portal-question :is(.portal-tip,.portal-degree-filter-wrap,.portal-ranking-details) { padding:15px 0; border:0; border-block:1px solid var(--discovery-line); border-radius:0; background:transparent; }
+body.ds-discovery-page :is(.portal-tip,.portal-degree-filter-wrap,.portal-ranking-details,.portal-route-options,.portal-matching-plans)>summary { min-height:44px; font-size:.9375rem; color:var(--discovery-ink); }
+body.ds-discovery-page .portal-current-target { border:0; border-left:3px solid var(--discovery-blue); border-radius:0; padding:18px 20px; background:var(--ds-soft-blue,#eef1ff); }
+body.ds-discovery-page .portal-current-target strong { font-size:1.0625rem; line-height:1.5; }
+body.ds-discovery-page .portal-current-target p { font-size:.9375rem; color:var(--discovery-muted); }
+body.ds-discovery-page #portal-degree-results { margin-top:18px; }
+body.ds-discovery-page .portal-degree-option { padding:19px 17px; margin-bottom:0; border:0; border-bottom:1px solid var(--discovery-line); border-radius:0; background:var(--discovery-paper); color:var(--discovery-ink); }
+body.ds-discovery-page .portal-degree-option strong { font-size:1rem; line-height:1.5; }
+body.ds-discovery-page .portal-degree-option small { font-size:.875rem; line-height:1.6; color:var(--discovery-muted); }
+body.ds-discovery-page .portal-degree-option:hover { background:var(--ds-soft-blue,#eef1ff); }
+body.ds-discovery-page .portal-degree-option .portal-readiness-label { color:var(--discovery-blue); font-size:.875rem; letter-spacing:0; text-transform:none; }
+body.ds-discovery-page .portal-readiness-card { padding:26px; background:var(--discovery-paper); border:1px solid var(--discovery-line); border-top:3px solid var(--discovery-blue); border-radius:6px; box-shadow:none; }
+body.ds-discovery-page .portal-readiness-card h2 { font-size:1.75rem; line-height:1.2; letter-spacing:-.025em; margin-block:12px; }
+body.ds-discovery-page .portal-readiness-card>p { color:var(--discovery-muted); font-size:1rem; line-height:1.65; }
+body.ds-discovery-page .portal-readiness-label { font-size:.875rem; line-height:1.5; letter-spacing:0; text-transform:none; }
+body.ds-discovery-page .portal-actions { gap:12px; flex-wrap:wrap; }
+body.ds-discovery-page .portal-actions :is(.portal-primary,.portal-secondary) { padding:12px 18px; }
+body.ds-discovery-page .portal-route-card { padding:24px 0 24px 22px; margin-block:0 20px; border:0; border-left:3px solid var(--discovery-blue); border-bottom:1px solid var(--discovery-line); border-radius:0; box-shadow:none; background:transparent; }
+body.ds-discovery-page .portal-route-card :is(h2,h3) { font-size:1.4rem; line-height:1.35; letter-spacing:-.02em; margin:0 0 8px; }
+body.ds-discovery-page .portal-route-facts { gap:8px 16px; margin-block:15px; font-size:.9375rem; color:var(--discovery-muted); }
+body.ds-discovery-page .portal-route-facts>strong { color:var(--discovery-ink); }
+body.ds-discovery-page .portal-route-estimates { gap:12px 22px; }
+body.ds-discovery-page .portal-route-estimates dt { font-size:.875rem; color:var(--discovery-muted); }
+body.ds-discovery-page .portal-route-estimates dd { font-size:1.4rem; color:var(--discovery-ink); }
+body.ds-discovery-page .portal-home-heading h1 { font-size:clamp(1.9rem,3.3vw,2.6rem); line-height:1.15; letter-spacing:-.035em; }
+body.ds-discovery-page .portal-home-heading p { font-size:1rem; color:var(--discovery-muted); }
+body.ds-discovery-page .portal-kicker { display:none; }
+body.ds-discovery-page :is(.portal-review-card,.portal-focused-review,.portal-comparing,.portal-empty-result) { border-color:var(--discovery-line); border-radius:7px; background:var(--discovery-paper); box-shadow:none; }
+body.ds-discovery-page .portal-comparing { padding:24px; }
+body.ds-discovery-page .portal-comparing h2 { font-size:1.5rem; letter-spacing:-.025em; }
+body.ds-discovery-page .portal-comparing p { color:var(--discovery-muted); font-size:.9375rem; }
+body.ds-discovery-page .portal-footer { color:var(--discovery-muted); font-size:.875rem; }
+
+/* Program discovery has a compact orientation area and a clear working list. */
+body.ds-discovery-page .pf-main { max-width:1400px; padding:28px 32px 60px; }
+body.ds-discovery-page .pf-heading { align-items:center; gap:24px; margin:0 0 26px; padding:26px 28px; border-radius:8px; background:var(--discovery-navy); color:#fff; }
+body.ds-discovery-page .pf-heading h1 { color:#fff; font-size:clamp(1.85rem,3.2vw,2.4rem); line-height:1.15; letter-spacing:-.035em; margin:0 0 12px; }
+body.ds-discovery-page .pf-heading p { color:var(--discovery-navy-muted); font-size:1rem; line-height:1.6; margin:0; }
+body.ds-discovery-page .pf-heading .pf-plan-link { color:var(--discovery-navy-accent); min-height:44px; font-size:.9375rem; }
+body.ds-discovery-page .pf-presets { margin-block:0 22px; gap:8px; }
+body.ds-discovery-page .pf-presets button { min-height:44px; padding:10px 17px; border:1px solid var(--discovery-line); border-radius:5px; background:var(--discovery-paper); color:var(--discovery-muted); font-size:.9375rem; }
+body.ds-discovery-page .pf-presets button[aria-pressed=true] { border-color:var(--discovery-blue); background:var(--ds-soft-blue,#eef1ff); color:var(--discovery-blue); }
+body.ds-discovery-page #program-filters { padding:0 0 23px; border:0; border-bottom:1px solid var(--discovery-line); border-radius:0; background:transparent; gap:16px; }
+body.ds-discovery-page #program-filters label>span { color:var(--discovery-muted); font-size:.875rem; }
+body.ds-discovery-page #program-filters :is(input[type=search],select) { min-height:48px; border:1px solid #9eacbf; border-radius:6px; color:var(--discovery-ink); background-color:var(--discovery-paper); font-size:1rem; }
+body.ds-discovery-page .pf-more>summary { min-height:44px; color:var(--discovery-blue); font-size:.9375rem; }
+body.ds-discovery-page .pf-count { margin-block:18px; color:var(--discovery-muted); font-size:.875rem; }
+body.ds-discovery-page .pf-build-own { color:var(--discovery-muted); font-size:.9375rem; }
+body.ds-discovery-page .pf-plan-link { color:var(--discovery-blue); text-decoration:underline; text-underline-offset:4px; }
+body.ds-discovery-page .pf-program { border:0; border-bottom:1px solid var(--discovery-line); border-radius:0; padding:25px 20px; margin:0; background:var(--discovery-paper); box-shadow:none; gap:24px; }
+body.ds-discovery-page .pf-program h2 { color:var(--discovery-ink); font-size:1.25rem; line-height:1.4; letter-spacing:-.015em; }
+body.ds-discovery-page .pf-program p { color:var(--discovery-muted); font-size:.9375rem; line-height:1.6; }
+body.ds-discovery-page .pf-school { color:var(--discovery-muted); font-size:.9375rem; }
+body.ds-discovery-page .pf-meta { color:var(--discovery-muted); gap:7px 16px; font-size:.875rem; }
+body.ds-discovery-page .pf-badge { border-radius:4px; font-size:.875rem; line-height:1.5; padding:4px 8px; }
+body.ds-discovery-page .pf-price { font-size:1rem; color:var(--discovery-ink); }
+body.ds-discovery-page .pf-price small { color:var(--discovery-muted); font-size:.875rem; }
+body.ds-discovery-page .pf-side button { min-height:48px; border-radius:5px; font-size:.9375rem; padding:12px 18px; }
+body.ds-discovery-page :is(.pf-empty,.pf-college-tip) { border-color:var(--discovery-line); border-radius:6px; background:var(--discovery-paper); color:var(--discovery-muted); font-size:.9375rem; }
+body.ds-discovery-page .pf-coverage { font-size:.875rem; color:var(--discovery-muted); }
+body.ds-discovery-page .pf-coverage>summary { min-height:44px; }
+body.ds-discovery-page #program-dialog { width:min(740px,calc(100% - 28px)); max-height:90dvh; border:1px solid var(--discovery-line); border-radius:8px; padding:28px; background:var(--discovery-paper); color:var(--discovery-ink); }
+body.ds-discovery-page #program-dialog::backdrop { background:rgb(14 28 49 / 38%); }
+body.ds-discovery-page .pf-dialog-close { min-height:44px; min-width:44px; border-radius:5px; color:var(--discovery-muted); }
+body.ds-discovery-page .pf-dialog-heading h2 { font-size:1.75rem; letter-spacing:-.025em; line-height:1.25; }
+body.ds-discovery-page .pf-dialog-heading p { color:var(--discovery-muted); font-size:.9375rem; }
+body.ds-discovery-page .program-facts :is(dt,dd),
+body.ds-discovery-page .program-policy :is(dt,dd) { font-size:.875rem; line-height:1.6; }
+body.ds-discovery-page .program-facts dt,body.ds-discovery-page .program-policy dt { color:var(--discovery-muted); }
+body.ds-discovery-page .program-facts dd,body.ds-discovery-page .program-policy dd { color:var(--discovery-ink); }
+body.ds-discovery-page .program-facts dl>div,body.ds-discovery-page .program-policy dl>div { background:var(--discovery-canvas); border-color:var(--discovery-line); border-radius:5px; }
+body.ds-discovery-page .program-facts a { color:var(--discovery-blue); }
+
+/* The degree-link front door keeps the one-field start unmistakable. */
+body.ds-discovery-page .link-plan-main { max-width:1260px; padding:28px 32px 64px; }
+body.ds-discovery-page .link-plan-intro { max-width:850px; margin:22px 0 28px; }
+body.ds-discovery-page .link-plan-intro .tw-eyebrow { display:none; }
+body.ds-discovery-page .link-plan-intro h1 { font-size:clamp(2rem,4vw,3rem); line-height:1.08; letter-spacing:-.035em; color:var(--discovery-ink); margin:0 0 19px; }
+body.ds-discovery-page .link-plan-intro>p:last-child { max-width:57ch; font-size:1.0625rem; color:var(--discovery-muted); line-height:1.65; }
+body.ds-discovery-page .link-entry { padding:27px 28px; margin-bottom:26px; border:0; border-radius:8px; background:var(--discovery-navy); color:#fff; box-shadow:none; }
+body.ds-discovery-page .link-entry label { color:#fff; font-size:1rem; font-weight:550; margin-bottom:12px; }
+body.ds-discovery-page .link-entry-row { gap:12px; }
+body.ds-discovery-page .link-entry-row input { min-height:54px!important; padding:14px!important; border:1px solid #9aaec8!important; border-radius:5px!important; background:var(--discovery-paper); color:var(--discovery-ink); font-size:1rem!important; }
+body.ds-discovery-page .link-entry-row>.tw-button { min-height:54px; padding:13px 20px; border-color:#fff; border-radius:5px; background:#fff; color:var(--discovery-navy); font-size:1rem; }
+body.ds-discovery-page .link-entry-row>.tw-button>span[aria-hidden=true] { display:none; }
+body.ds-discovery-page .link-entry .link-help,
+body.ds-discovery-page .link-entry .link-account-note { color:var(--discovery-navy-muted); font-size:.875rem; line-height:1.6; }
+body.ds-discovery-page .link-entry a:not(.tw-button) { color:var(--discovery-navy-accent); }
+body.ds-discovery-page .link-entry :is(a,button,input):focus-visible { outline-color:var(--discovery-navy-accent); }
+body.ds-discovery-page .link-progress { padding:24px; gap:17px; border:1px solid var(--discovery-line); border-left:3px solid var(--discovery-blue); border-radius:6px; background:var(--discovery-paper); }
+body.ds-discovery-page .link-progress h2 { color:var(--discovery-ink); font-size:1.4rem; letter-spacing:-.025em; }
+body.ds-discovery-page .link-progress p { color:var(--discovery-muted); font-size:1rem; line-height:1.6; }
+body.ds-discovery-page .link-progress .link-progress-note { font-size:.875rem; }
+body.ds-discovery-page .link-result { margin-block:28px; }
+body.ds-discovery-page .link-result h2 { font-size:clamp(1.65rem,3vw,2.1rem); line-height:1.2; letter-spacing:-.025em; color:var(--discovery-ink); }
+body.ds-discovery-page .link-result-school { font-size:1rem; color:var(--discovery-muted); }
+body.ds-discovery-page .link-result-lead { font-size:1rem; line-height:1.65; color:var(--discovery-muted); }
+body.ds-discovery-page :is(.link-result-callout,.link-ready-message,.link-unfinished) { padding:23px 24px; border-color:var(--discovery-line); border-radius:6px; background:var(--discovery-paper); }
+body.ds-discovery-page .link-result-callout :is(p,strong),body.ds-discovery-page .link-unfinished>p { font-size:1rem; line-height:1.6; }
+body.ds-discovery-page .link-insights { gap:0; border-block:1px solid var(--discovery-line); }
+body.ds-discovery-page .link-insight { min-height:0; padding:22px; border:0; border-right:1px solid var(--discovery-line); border-radius:0; background:var(--discovery-paper); }
+body.ds-discovery-page .link-insight:last-child { border-right:0; }
+body.ds-discovery-page .link-insight h3 { margin-bottom:11px; font-size:.875rem; color:var(--discovery-muted); }
+body.ds-discovery-page .link-insight-value { font-size:1.85rem; font-weight:650; color:var(--discovery-ink); letter-spacing:-.03em; }
+body.ds-discovery-page .link-insight p { color:var(--discovery-muted); font-size:.875rem; line-height:1.6; }
+body.ds-discovery-page .link-observations { gap:24px; }
+body.ds-discovery-page .link-observations>div { padding:0; border:0; border-top:2px solid var(--discovery-line); border-radius:0; background:transparent; }
+body.ds-discovery-page .link-observations h3 { margin-top:17px; font-size:1.125rem; color:var(--discovery-ink); }
+body.ds-discovery-page .link-observations :is(li,p) { color:var(--discovery-muted); font-size:1rem; line-height:1.65; }
+body.ds-discovery-page .link-sheet { border-color:var(--discovery-line); border-radius:6px; }
+body.ds-discovery-page .link-sheet-heading { padding:20px; border-color:var(--discovery-line); }
+body.ds-discovery-page .link-sheet-heading h3 { font-size:1.25rem; }
+body.ds-discovery-page .link-sheet-section summary { min-height:58px; padding:16px 20px; background:var(--discovery-canvas); font-size:1rem; }
+body.ds-discovery-page .link-sheet-section summary span { color:var(--discovery-muted); font-size:.875rem; }
+body.ds-discovery-page .link-sheet .tw-table-wrap { max-width:100%; overflow:auto; }
+body.ds-discovery-page .link-sheet :is(th,td) { padding:14px 18px; font-size:.9375rem; overflow-wrap:anywhere; }
+body.ds-discovery-page .link-course-title { font-size:1rem; }
+body.ds-discovery-page :is(.link-course-code,.link-course-note,.link-sheet-candidates,.link-alternative-limit) { color:var(--discovery-muted); font-size:.875rem; line-height:1.6; }
+body.ds-discovery-page :is(.link-sources,.link-gap-details,.link-findings,.link-student-notes) { border-color:var(--discovery-line); border-radius:6px; background:var(--discovery-paper); }
+body.ds-discovery-page :is(.link-sources,.link-gap-details,.link-findings)>summary { min-height:44px; color:var(--discovery-ink); font-size:1rem; }
+body.ds-discovery-page .link-review-note { border-radius:6px; font-size:.9375rem; line-height:1.6; }
+body.ds-discovery-page .link-history { margin-top:32px; border-color:var(--discovery-line); font-size:1rem; }
+body.ds-discovery-page .link-history>summary { min-height:48px; font-size:1rem; color:var(--discovery-ink); }
+body.ds-discovery-page .link-history .tw-item { padding:19px 0; border-color:var(--discovery-line); }
+body.ds-discovery-page .link-history .tw-item h3 { font-size:1.0625rem; }
+body.ds-discovery-page .link-history .tw-item p { color:var(--discovery-muted); font-size:.9375rem; }
+body.ds-discovery-page .link-choice { min-height:80px; border-color:var(--discovery-line); border-radius:5px; background:var(--discovery-paper); padding:20px; }
+body.ds-discovery-page .link-choice strong { font-size:1.0625rem; color:var(--discovery-ink); }
+body.ds-discovery-page .link-choice small { color:var(--discovery-muted); font-size:.9375rem!important; }
+
+/* The manual audit remains an exact, editable requirement ledger. */
+body.ds-discovery-page.audit-import-page #audit-app { max-width:1220px; padding:0 32px; margin:32px auto 64px; }
+body.ds-discovery-page .audit-intro { max-width:820px; margin-bottom:28px; }
+body.ds-discovery-page .audit-intro .audit-eyebrow { display:none; }
+body.ds-discovery-page .audit-intro h1 { font-size:clamp(1.9rem,3.4vw,2.65rem); letter-spacing:-.035em; line-height:1.15; margin-block:0 17px; }
+body.ds-discovery-page .audit-intro>p:last-child { color:var(--discovery-muted); font-size:1rem; line-height:1.65; }
+body.ds-discovery-page .audit-card { padding:28px; border:0; border-top:2px solid var(--discovery-line); border-radius:0; background:var(--discovery-paper); margin-bottom:24px; box-shadow:none; }
+body.ds-discovery-page .audit-card h2 { font-size:1.3rem; line-height:1.4; letter-spacing:-.02em; }
+body.ds-discovery-page .audit-fields { gap:20px; }
+body.ds-discovery-page .audit-fields label,body.ds-discovery-page .audit-wide,body.ds-discovery-page .audit-editor-row>label { color:var(--discovery-ink); font-size:.875rem; }
+body.ds-discovery-page .audit-card :is(p,small) { color:var(--discovery-muted); font-size:.875rem; line-height:1.65; }
+body.ds-discovery-page .audit-card summary { min-height:46px; color:var(--discovery-blue); font-size:.9375rem; }
+body.ds-discovery-page .audit-editor-row { padding:17px; border-color:var(--discovery-line); border-radius:5px; background:var(--discovery-canvas); }
+body.ds-discovery-page .audit-editor-row input:not([type=checkbox]) { min-height:46px; border-color:#9eacbf; font-size:1rem; }
+body.ds-discovery-page .audit-editor-row>label>span:first-child { font-size:.875rem; }
+body.ds-discovery-page .audit-checkbox { min-height:46px; font-size:.875rem; }
+body.ds-discovery-page .audit-remove-row { min-height:46px; font-size:.875rem; }
+body.ds-discovery-page .audit-private { color:var(--discovery-muted)!important; }
+body.ds-discovery-page .audit-table-wrap { border-color:var(--discovery-line); border-radius:5px; }
+body.ds-discovery-page .audit-table-wrap table { font-size:.9375rem; }
+body.ds-discovery-page .audit-table-wrap :is(th,td) { border-color:var(--discovery-line); padding:13px; }
+body.ds-discovery-page .audit-table-wrap th { background:var(--discovery-canvas); color:var(--discovery-muted); }
+body.ds-discovery-page .audit-confirm { font-size:.9375rem; line-height:1.6; }
+
+/* Retained guided and advanced builders use the same visual vocabulary. */
+body.ds-discovery-page .intro-eyebrow { display:none; }
+body.ds-discovery-page .intro { gap:30px; }
+body.ds-discovery-page .intro h1 { font-size:clamp(2rem,4vw,3rem); line-height:1.12; letter-spacing:-.035em; color:var(--discovery-ink); }
+body.ds-discovery-page .intro-copy>p:last-child { color:var(--discovery-muted); font-size:1rem; line-height:1.65; }
+body.ds-discovery-page .wizard-shell { border:1px solid var(--discovery-line); border-radius:8px; background:var(--discovery-paper); box-shadow:none; }
+body.ds-discovery-page .wizard-topline { padding:16px 24px; border-color:var(--discovery-line); }
+body.ds-discovery-page #step-panel .step-title { font-size:clamp(1.65rem,3vw,2.2rem); line-height:1.2; letter-spacing:-.025em; }
+body.ds-discovery-page #step-panel .step-description { font-size:1rem; color:var(--discovery-muted); line-height:1.65; }
+body.ds-discovery-page .step-eyebrow { font-size:.875rem; letter-spacing:0; font-weight:500; }
+body.ds-discovery-page .choice-grid { gap:12px; }
+body.ds-discovery-page .choice-grid .choice-card { min-height:80px; border-color:var(--discovery-line); border-radius:5px; box-shadow:none; }
+body.ds-discovery-page .choice-grid .choice-card.selected { border-color:var(--discovery-blue); background:var(--ds-soft-blue,#eef1ff); }
+body.ds-discovery-page .choice-copy strong { font-size:1rem; }
+body.ds-discovery-page .choice-copy :is(small,span) { color:var(--discovery-muted); font-size:.875rem; line-height:1.6; }
+body.ds-discovery-page .wizard-sidebar { border:0; border-radius:7px; background:var(--discovery-navy); color:#fff; }
+body.ds-discovery-page #wizard-progress { border-color:var(--discovery-navy-line); background:transparent; }
+body.ds-discovery-page #journey-panel>h3 { color:#fff; font-size:1.25rem; }
+body.ds-discovery-page .wizard-sidebar :is(.progress-label,.journey-note,.step-eyebrow,.summary-item,.journey-stop,.journey-line) { color:var(--discovery-navy-muted); font-size:.875rem; }
+body.ds-discovery-page .wizard-sidebar :is(.journey-stop strong,.summary-item strong) { color:#fff; }
+body.ds-discovery-page .wizard-sidebar .sidebar-community-link { color:var(--discovery-navy-accent); border-color:var(--discovery-navy-line); }
+body.ds-discovery-page #wizard-footer { border-color:var(--discovery-line); background:var(--discovery-paper); padding:18px 24px; }
+body.ds-discovery-page #wizard-footer .button { min-height:46px; font-size:.9375rem; }
+body.ds-discovery-page .builder { border-color:var(--discovery-line); border-radius:8px; background:var(--discovery-paper); }
+body.ds-discovery-page .builder-heading { border-color:var(--discovery-line); padding:20px 24px; }
+body.ds-discovery-page .builder-heading h2 { font-size:1.25rem; }
+body.ds-discovery-page .builder-preview { background:var(--ds-soft-blue,#eef1ff); }
+body.ds-discovery-page .preview-card { border-color:var(--discovery-line); border-radius:6px; box-shadow:none; }
+body.ds-discovery-page .preview-card h3 { font-size:1.3rem; line-height:1.35; }
+body.ds-discovery-page .preview-card :is(p,small) { font-size:.875rem; color:var(--discovery-muted); }
+body.ds-discovery-page .plan-sidebar { background:var(--discovery-navy); color:#fff; border-radius:7px; }
+body.ds-discovery-page .plan-sidebar :is(.sidebar-caption,.metrics label,.metric-label,.sidebar-price small) { color:var(--discovery-navy-muted); font-size:.875rem; }
+body.ds-discovery-page .how>.eyebrow { display:none; }
+body.ds-discovery-page .how h2 { font-size:clamp(1.8rem,3vw,2.3rem); line-height:1.2; letter-spacing:-.025em; }
+body.ds-discovery-page .how-grid p { font-size:1rem; color:var(--discovery-muted); }
+
+/* School insights keep evidence, practical fit and consent alongside choices. */
+body.ds-discovery-page.school-page .school-main { max-width:1400px; padding:28px 32px 64px; }
+body.ds-discovery-page .school-breadcrumb { color:var(--discovery-blue); font-size:.9375rem; }
+body.ds-discovery-page .school-hero { padding:27px 28px; margin-bottom:25px; border-radius:8px; background:var(--discovery-navy); color:#fff; }
+body.ds-discovery-page .school-hero .school-eyebrow { display:none; }
+body.ds-discovery-page .school-hero h1 { color:#fff; font-size:clamp(1.9rem,3.3vw,2.45rem); line-height:1.15; letter-spacing:-.035em; }
+body.ds-discovery-page .school-hero p { color:var(--discovery-navy-muted); font-size:1rem; line-height:1.65; }
+body.ds-discovery-page .school-hero a:not(.school-button) { color:var(--discovery-navy-accent); }
+body.ds-discovery-page .school-hero :is(a,button):focus-visible { outline-color:var(--discovery-navy-accent); }
+body.ds-discovery-page .school-button { min-height:46px; padding:11px 17px; border-radius:5px; color:var(--discovery-ink); background:var(--discovery-paper); border-color:var(--discovery-line); font-size:.9375rem; font-weight:600; }
+body.ds-discovery-page .school-button.primary { color:#fff; background:var(--discovery-blue); border-color:var(--discovery-blue); }
+body.ds-discovery-page .school-hero .school-button.primary { background:#fff; border-color:#fff; color:var(--discovery-navy); }
+body.ds-discovery-page .school-highlight-grid { gap:0; margin-block:24px; border-block:1px solid var(--discovery-line); background:var(--discovery-paper); }
+body.ds-discovery-page .school-highlight { padding:22px; border:0; border-right:1px solid var(--discovery-line); border-radius:0; background:transparent; }
+body.ds-discovery-page .school-highlight:last-child { border-right:0; }
+body.ds-discovery-page .school-highlight p { color:var(--discovery-muted); font-size:.875rem; font-weight:500; }
+body.ds-discovery-page .school-highlight strong { color:var(--discovery-ink); font-size:1.5rem; font-weight:650; letter-spacing:-.025em; }
+body.ds-discovery-page .school-highlight small { color:var(--discovery-muted); font-size:.875rem; line-height:1.65; }
+body.ds-discovery-page .school-two-columns { gap:26px; }
+body.ds-discovery-page .school-two-columns .school-card { padding:20px 0; border:0; border-top:2px solid var(--discovery-line); border-radius:0; background:transparent; }
+body.ds-discovery-page .school-card,body.ds-discovery-page .school-section.school-card { padding:24px; border-color:var(--discovery-line); border-radius:6px; box-shadow:none; }
+body.ds-discovery-page :is(.school-card,.school-section) h2 { color:var(--discovery-ink); font-size:1.4rem; line-height:1.3; letter-spacing:-.025em; }
+body.ds-discovery-page :is(.school-card,.school-section) p { color:var(--discovery-muted); font-size:1rem; line-height:1.65; }
+body.ds-discovery-page .school-points { color:var(--discovery-muted); font-size:1rem; line-height:1.65; }
+body.ds-discovery-page .school-plan-list { gap:0; }
+body.ds-discovery-page .school-plan { padding:21px 18px; border:0; border-bottom:1px solid var(--discovery-line); border-radius:0; background:var(--discovery-paper); }
+body.ds-discovery-page .school-plan h3 { font-size:1.125rem; line-height:1.4; color:var(--discovery-ink); }
+body.ds-discovery-page .school-plan p { font-size:.9375rem; color:var(--discovery-muted); }
+body.ds-discovery-page .school-sources { border-color:var(--discovery-line); border-radius:6px; }
+body.ds-discovery-page .school-sources summary { min-height:46px; font-size:1rem; font-weight:600; }
+body.ds-discovery-page .school-source-list :is(a,small) { font-size:.875rem; }
+body.ds-discovery-page .school-source-list a { color:var(--discovery-blue); }
+body.ds-discovery-page .school-source-list small,body.ds-discovery-page .school-method { color:var(--discovery-muted)!important; }
+body.ds-discovery-page .school-browse-grid { gap:20px; }
+body.ds-discovery-page .school-fields label { font-size:.9375rem; }
+body.ds-discovery-page .school-field :is(input,select),body.ds-discovery-page .school-compare select { min-height:48px; border-color:#9eacbf; border-radius:6px; background-color:var(--discovery-paper); color:var(--discovery-ink); font-size:1rem; }
+body.ds-discovery-page .school-consent { font-size:.9375rem; line-height:1.65; }
+
+@media(max-width:1000px) {
+  body.ds-discovery-page .pf-main,body.ds-discovery-page .link-plan-main,body.ds-discovery-page #portal-app { padding-inline:24px; }
+  body.ds-discovery-page .pf-heading { padding:24px; }
+  body.ds-discovery-page .link-entry-row { flex-wrap:wrap; }
+  body.ds-discovery-page .link-entry-row input { flex-basis:280px; }
+}
+@media(max-width:800px) {
+  body.ds-discovery-page .school-highlight { border-right:0; border-bottom:1px solid var(--discovery-line); }
+  body.ds-discovery-page .school-highlight:last-child { border-bottom:0; }
+}
+@media(max-width:760px) {
+  body.ds-discovery-page #portal-app { padding:24px 20px 54px; }
+  body.ds-discovery-page .portal-question { margin-top:10px; }
+  body.ds-discovery-page .portal-question h1 { font-size:2rem; margin-bottom:22px; }
+  body.ds-discovery-page .portal-question .portal-choice { min-height:88px; padding:19px 16px; }
+  body.ds-discovery-page .portal-question .portal-choice strong { font-size:1.0625rem; }
+  body.ds-discovery-page .portal-readiness-card { padding:23px 20px; }
+  body.ds-discovery-page .portal-route-card { padding:20px 0 22px 17px; }
+  body.ds-discovery-page .pf-main,body.ds-discovery-page .link-plan-main { padding:22px 20px 58px; }
+  body.ds-discovery-page .pf-heading { padding:23px 20px; }
+  body.ds-discovery-page .pf-heading h1 { font-size:1.9rem; }
+  body.ds-discovery-page .pf-program { padding:22px 17px; }
+  body.ds-discovery-page .pf-program h2 { font-size:1.125rem; }
+  body.ds-discovery-page #program-filters { gap:14px; }
+  body.ds-discovery-page .pf-side { gap:15px; }
+  body.ds-discovery-page #program-dialog { padding:22px 20px; }
+  body.ds-discovery-page .link-plan-intro { margin-top:17px; }
+  body.ds-discovery-page .link-plan-intro h1 { font-size:2.25rem; }
+  body.ds-discovery-page .link-entry { padding:23px 20px; }
+  body.ds-discovery-page .link-entry-row { flex-direction:column; }
+  body.ds-discovery-page .link-entry-row input { flex-basis:auto; }
+  body.ds-discovery-page .link-insights { grid-template-columns:1fr; }
+  body.ds-discovery-page .link-insight { border-right:0; border-bottom:1px solid var(--discovery-line); padding:20px; }
+  body.ds-discovery-page .link-insight:last-child { border-bottom:0; }
+  body.ds-discovery-page .link-observations { gap:24px; }
+  body.ds-discovery-page .link-sheet-section summary { flex-wrap:wrap; }
+  body.ds-discovery-page .link-history .tw-item { flex-wrap:wrap; }
+  body.ds-discovery-page.audit-import-page #audit-app { margin-top:25px; padding-inline:20px; }
+  body.ds-discovery-page .audit-card { padding:23px 20px; }
+  body.ds-discovery-page .wizard-sidebar { background:var(--discovery-paper); color:var(--discovery-ink); }
+  body.ds-discovery-page #wizard-progress .progress-label { color:var(--discovery-muted); }
+  body.ds-discovery-page #wizard-footer { padding:16px; }
+  body.ds-discovery-page.school-page .school-main { padding:23px 20px 56px; }
+  body.ds-discovery-page .school-hero { padding:24px 21px; }
+  body.ds-discovery-page .school-hero h1 { font-size:1.9rem; }
+  body.ds-discovery-page .school-highlight { border-right:0; border-bottom:1px solid var(--discovery-line); padding:20px; }
+  body.ds-discovery-page .school-highlight:last-child { border-bottom:0; }
+  body.ds-discovery-page .school-plan { padding:20px 17px; }
+  body.ds-discovery-page .school-card { padding:22px 20px; }
+}
+@media(max-width:1050px) {
+  body.ds-discovery-page.dp-app-shell.is-onboarding #degree-app-shell .dp-shell-bottom { display:none; }
+}
+@media(max-width:420px) {
+  body.ds-discovery-page #portal-app,body.ds-discovery-page .pf-main,body.ds-discovery-page .link-plan-main { padding-inline:16px; }
+  body.ds-discovery-page .portal-question h1,body.ds-discovery-page .link-plan-intro h1 { font-size:1.85rem; }
+  body.ds-discovery-page .portal-actions :is(.portal-primary,.portal-secondary) { width:100%; }
+  body.ds-discovery-page .portal-route-card { padding-left:14px; }
+  body.ds-discovery-page .pf-heading { padding:21px 17px; }
+  body.ds-discovery-page .pf-heading h1 { font-size:1.7rem; }
+  body.ds-discovery-page .pf-presets button { padding-inline:12px; }
+  body.ds-discovery-page .pf-program { padding-inline:14px; }
+  body.ds-discovery-page .link-entry { padding-inline:17px; }
+  body.ds-discovery-page .link-choice { flex-wrap:wrap; }
+  body.ds-discovery-page.audit-import-page #audit-app { padding-inline:16px; }
+  body.ds-discovery-page .audit-card { padding-inline:17px; }
+  body.ds-discovery-page .audit-editor-row { padding:14px; }
+  body.ds-discovery-page.school-page .school-main { padding-inline:16px; }
+  body.ds-discovery-page .school-hero { padding-inline:18px; }
+  body.ds-discovery-page .school-hero h1 { font-size:1.75rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.ds-discovery-page .portal-choice { transition:none; transform:none; }
+  body.ds-discovery-page .link-spinner { animation:none; }
+}
+@media print {
+  body.ds-discovery-page { color:#000; background:#fff; }
+  body.ds-discovery-page :is(#portal-app,.pf-main,.link-plan-main) { width:100%; max-width:none; margin:0; padding:0; }
+  body.ds-discovery-page :is(.pf-heading,.link-entry,.wizard-sidebar,.plan-sidebar,.school-hero) { color:#000; background:#fff; border-color:#aaa; box-shadow:none; }
+  body.ds-discovery-page :is(.pf-heading h1,.pf-heading p,.pf-heading a,.wizard-sidebar .progress-label,.wizard-sidebar #journey-panel>h3,.wizard-sidebar .summary-item,.wizard-sidebar .journey-stop) { color:#000; }
+  body.ds-discovery-page .link-sheet .tw-table-wrap { overflow:visible; }
+  body.ds-discovery-page .link-sheet table { min-width:0; font-size:10pt; }
+  body.ds-discovery-page :is(.pf-program,.link-insight,.link-sheet tr,.audit-editor-row) { break-inside:avoid; }
+  body.ds-discovery-page .school-hero :is(h1,p,a) { color:#000; }
+}

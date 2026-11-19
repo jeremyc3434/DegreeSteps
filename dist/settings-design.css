@@ -1,0 +1,162 @@
+/* Account choices and the existing college/research workspaces. Styles only. */
+body:is(.account-page,.template-workspace,.coverage-page) {
+  --settings-ink:var(--ds-navy,#192c43);
+  --settings-muted:var(--ds-muted,#526174);
+  --settings-paper:var(--ds-surface,#fff);
+  --settings-canvas:var(--ds-canvas,#f7f9fc);
+  --settings-line:var(--ds-border,#d9e1ea);
+  --settings-blue:var(--ds-cobalt,#4054f4);
+  background:var(--settings-canvas);
+  color:var(--settings-ink);
+  font-size:1rem;
+}
+body:is(.account-page,.template-workspace,.coverage-page) [hidden] { display:none!important; }
+body:is(.account-page,.template-workspace,.coverage-page) :is(a,button,input,select,textarea,summary,[tabindex]):focus-visible { outline:3px solid var(--settings-blue); outline-offset:3px; }
+body.account-page .account-shell { width:calc(100% - 64px); max-width:1120px; margin:34px auto 50px; }
+body.account-page .account-auth { max-width:510px; margin-top:40px; }
+body.account-page .portal-kicker { display:none; }
+body.account-page .account-shell h1 { margin-bottom:15px; color:var(--settings-ink); font-size:clamp(1.9rem,3vw,2.4rem); line-height:1.15; letter-spacing:var(--ds-title-tracking,-.03em); font-weight:650; }
+body.account-page .account-lede { max-width:61ch; color:var(--settings-muted); font-size:1rem; line-height:1.65; margin-bottom:28px; }
+body.account-page .account-heading-row { gap:18px 24px; margin-bottom:4px; }
+body.account-page .account-layout { grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:24px; }
+body.account-page .account-panel { padding:25px; border-color:var(--settings-line); border-radius:var(--ds-radius-card,8px); background:var(--settings-paper); box-shadow:none; }
+body.account-page .account-panel h2 { margin-bottom:13px; font-size:1.4rem; line-height:1.3; letter-spacing:-.025em; font-weight:650; }
+body.account-page .account-panel > p { color:var(--settings-muted); font-size:1rem; line-height:1.65; }
+body.account-page .account-panel + .account-panel { margin-top:22px; }
+body.account-page :is(.portal-field,.portal-field > span:first-child,.account-consent,.account-meta,.account-plan p,.account-current,.account-settings > summary) { font-size:.875rem; line-height:1.65; }
+body.account-page .portal-field > span:first-child { color:var(--settings-ink); font-weight:550; }
+body.account-page .portal-field :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),select,textarea) { min-height:48px; padding:11px 13px; border-color:var(--ds-control-border,#7b899b); border-radius:var(--ds-radius-control,6px); background-color:var(--settings-paper); color:var(--settings-ink); font-size:1rem; }
+body.account-page :is(.portal-primary,.portal-secondary) { min-height:46px; padding:11px 17px; border-radius:var(--ds-radius-control,6px); font-size:1rem; line-height:1.45; }
+body.account-page .portal-primary { border-color:var(--settings-blue); background:var(--settings-blue); color:#fff; }
+body.account-page .portal-secondary { border-color:#9aa9bf; background:var(--settings-paper); color:var(--settings-ink); }
+body.account-page .portal-secondary:hover { background:var(--ds-soft-blue,#eef1ff); border-color:var(--settings-blue); }
+body.account-page .account-tabs { padding:0; border-radius:0; border-bottom:1px solid var(--settings-line); background:transparent; gap:24px; }
+body.account-page .account-tabs button { flex:0 1 auto; min-height:48px; padding:10px 0; border-bottom:3px solid transparent; border-radius:0; color:var(--settings-muted); font-size:1rem; }
+body.account-page .account-tabs button[aria-pressed="true"] { color:var(--settings-blue); border-bottom-color:var(--settings-blue); background:transparent; box-shadow:none; }
+body.account-page :is(.account-text-button,.account-recovery-actions .account-text-button) { min-height:44px; color:var(--settings-blue); font-size:.9375rem; text-decoration:underline; text-underline-offset:4px; }
+body.account-page .account-plan { padding-block:22px; border-color:var(--settings-line); }
+body.account-page .account-plan h3 { font-size:1.1rem; line-height:1.45; font-weight:600; color:var(--settings-ink); }
+body.account-page .account-plan p { color:var(--settings-muted); }
+body.account-page .account-plan .portal-actions { flex-wrap:wrap; gap:10px; margin-top:17px; }
+body.account-page .account-current { border-radius:4px; background:var(--ds-soft-blue,#eef1ff); color:var(--settings-blue); }
+body.account-page .account-settings { border-color:var(--settings-line); margin-top:28px; }
+body.account-page .account-settings > summary { min-height:48px; padding-block:15px; color:var(--settings-ink); }
+body.account-page .account-inline-confirm { padding:18px; border-color:#dec694; border-radius:6px; background:#fff9e9; }
+body.account-page .account-inline-confirm p { font-size:.9375rem; color:#795617; line-height:1.65; }
+body.account-page .account-danger { color:var(--ds-error,#b42318); }
+body.account-page .portal-secondary.account-danger { border-color:#d5a6a0; color:var(--ds-error,#b42318); }
+body.account-page :is(.account-form-error,#account-error) { color:var(--ds-error,#b42318); font-size:.9375rem; line-height:1.65; }
+body.account-page :is(#account-status:not(:empty),#account-error) { max-width:1120px; width:calc(100% - 64px); padding:15px 18px; border-radius:6px; font-size:.9375rem; line-height:1.65; overflow-wrap:anywhere; }
+body.account-page .account-loading { color:var(--settings-muted); font-size:1rem; }
+
+/* One management route hosts both owner review and authorized college views. */
+body.template-workspace .tw-main { max-width:1440px; width:100%; padding:28px 32px 52px; }
+body.template-workspace .tw-intro { margin:0 0 26px; padding:24px 26px; background:var(--ds-route-navy,#142c51); color:#fff; border-radius:var(--ds-radius-card,8px); }
+body.template-workspace .tw-intro .tw-eyebrow { display:none; }
+body.template-workspace .tw-intro h1 { max-width:36ch; margin:0 0 13px; color:#fff; font-size:clamp(1.8rem,2.5vw,2.2rem); line-height:1.15; letter-spacing:var(--ds-title-tracking,-.03em); font-weight:650; }
+body.template-workspace .tw-intro p { max-width:66ch; color:var(--ds-route-muted,#c1d0e8); font-size:1rem; line-height:1.6; }
+body.template-workspace .tw-card { padding:25px; margin-block:22px; background:var(--settings-paper); border-color:var(--settings-line); border-radius:var(--ds-radius-card,8px); box-shadow:none; }
+body.template-workspace .tw-card h2 { font-size:1.4rem; line-height:1.3; letter-spacing:-.025em; font-weight:650; }
+body.template-workspace .tw-card h3 { font-size:1.15rem; line-height:1.4; font-weight:600; }
+body.template-workspace .tw-card > p { font-size:1rem; line-height:1.65; }
+body.template-workspace :is(.tw-muted,.tw-main small,.tw-connection-copy) { color:var(--settings-muted); font-size:.875rem; line-height:1.65; }
+body.template-workspace .tw-main label { color:var(--settings-ink); font-size:.9375rem; line-height:1.6; font-weight:550; }
+body.template-workspace .tw-main :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),select,textarea) { min-height:46px; border-color:var(--ds-control-border,#7b899b); border-radius:var(--ds-radius-control,6px); background-color:var(--settings-paper); color:var(--settings-ink); font-size:1rem; }
+body.template-workspace .tw-button { min-height:46px; border-color:var(--settings-blue); border-radius:var(--ds-radius-control,6px); background:var(--settings-blue); font-size:.9375rem; line-height:1.45; padding:11px 17px; }
+body.template-workspace .tw-button.tw-secondary { border-color:#9aa9bf; background:var(--settings-paper); color:var(--settings-ink)!important; }
+body.template-workspace .tw-button.tw-secondary:hover { border-color:var(--settings-blue); background:var(--ds-soft-blue,#eef1ff); }
+body.template-workspace .tw-row { flex-wrap:wrap; gap:14px 20px; }
+body.template-workspace .tw-actions { gap:10px; }
+body.template-workspace .tw-fields { gap:18px 22px; }
+body.template-workspace .tw-fields > label { min-width:0; }
+body.template-workspace .tw-notice { border-radius:6px; font-size:.9375rem; line-height:1.65; }
+body.template-workspace .tw-badge { border-radius:4px; font-size:.875rem; line-height:1.5; }
+body.template-workspace .tw-item { padding-block:22px; border-color:var(--settings-line); }
+body.template-workspace .tw-main details { padding-block:12px; }
+body.template-workspace .tw-main summary { min-height:44px; color:var(--settings-ink); font-size:.9375rem; font-weight:550; }
+body.template-workspace .tw-table-wrap { width:100%; max-width:100%; overflow:auto; overscroll-behavior-inline:contain; }
+body.template-workspace .tw-main table { min-width:660px; margin-block:18px; font-size:.9375rem; }
+body.template-workspace .tw-main :is(th,td) { padding:14px 12px; border-color:var(--settings-line); font-size:.9375rem; line-height:1.6; }
+body.template-workspace .tw-main th { background:var(--settings-canvas); color:var(--settings-muted); font-size:.875rem; font-weight:600; }
+body.template-workspace .tw-main pre { padding:18px; background:var(--settings-canvas); color:var(--settings-ink); border-radius:6px; font-size:.875rem; line-height:1.6; }
+body.template-workspace #admin-loading { font-size:.875rem; line-height:1.6; color:var(--settings-muted); overflow-wrap:anywhere; }
+
+/* Evidence operations retain dense facts, review fields, and every table column. */
+body.coverage-page .cv-main { max-width:1480px; padding:28px 32px 48px; }
+body.coverage-page .cv-intro { margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid var(--settings-line); gap:20px; }
+body.coverage-page .cv-eyebrow { display:none; }
+body.coverage-page .cv-intro h1 { color:var(--settings-ink); font-size:clamp(1.9rem,2.7vw,2.35rem); font-weight:650; line-height:1.15; letter-spacing:var(--ds-title-tracking,-.03em); }
+body.coverage-page .cv-intro p:not(.cv-eyebrow) { font-size:1rem; line-height:1.65; color:var(--settings-muted); }
+body.coverage-page .cv-card { padding:24px; border-color:var(--settings-line); border-radius:var(--ds-radius-card,8px); background:var(--settings-paper); box-shadow:none; }
+body.coverage-page .cv-card h2 { font-size:1.4rem; line-height:1.3; letter-spacing:-.025em; font-weight:650; }
+body.coverage-page .cv-card h3 { font-size:1.1rem; line-height:1.45; }
+body.coverage-page .cv-summary { gap:0; background:var(--settings-paper); border-block:1px solid var(--settings-line); }
+body.coverage-page .cv-summary article { padding:22px 24px; border:0; border-radius:0; background:transparent; }
+body.coverage-page .cv-summary article + article { border-left:1px solid var(--settings-line); }
+body.coverage-page .cv-summary h2 { color:var(--settings-muted); font-size:.875rem; font-weight:550; }
+body.coverage-page .cv-summary strong { color:var(--settings-ink); font-size:2rem; font-weight:600; letter-spacing:-.04em; }
+body.coverage-page :is(.cv-summary p,.cv-snapshot,.cv-section-head p,.cv-count,.cv-footnote,.cv-note,.cv-fact-list p,.cv-evidence p,.cv-review-form p) { color:var(--settings-muted); font-size:.875rem; line-height:1.65; }
+body.coverage-page .cv-button { min-height:46px; padding:11px 17px; border-radius:var(--ds-radius-control,6px); font-size:.9375rem; font-weight:600; }
+body.coverage-page .cv-button:not(.cv-secondary) { border-color:var(--settings-blue); background:var(--settings-blue); }
+body.coverage-page .cv-secondary { color:var(--settings-ink)!important; border-color:#9aa9bf; background:var(--settings-paper); }
+body.coverage-page .cv-secondary:hover { border-color:var(--settings-blue); background:var(--ds-soft-blue,#eef1ff); }
+body.coverage-page :is(label,legend) { font-size:.875rem; font-weight:550; color:var(--settings-ink); }
+body.coverage-page :is(input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),select,textarea) { min-height:46px; padding:10px 12px; border-color:var(--ds-control-border,#7b899b); border-radius:var(--ds-radius-control,6px); color:var(--settings-ink); background-color:var(--settings-paper); font-size:1rem; }
+body.coverage-page .cv-table-wrap { width:100%; max-width:100%; overflow-x:auto; overscroll-behavior-inline:contain; }
+body.coverage-page .cv-table { min-width:650px; }
+body.coverage-page .cv-table :is(th,td) { padding:15px 11px; border-color:var(--settings-line); line-height:1.6; }
+body.coverage-page .cv-table th { color:var(--settings-muted); font-size:.875rem; font-weight:600; }
+body.coverage-page .cv-table td { font-size:.9375rem; color:var(--settings-ink); }
+body.coverage-page .cv-table td p { color:var(--settings-muted); font-size:.875rem; }
+body.coverage-page .cv-link-button { min-height:44px; color:var(--settings-blue); font-size:.9375rem; }
+body.coverage-page .cv-badge { border-radius:4px; font-size:.875rem; line-height:1.5; }
+body.coverage-page :is(.cv-notice,.cv-inline-error) { border-radius:6px; font-size:.9375rem; line-height:1.65; }
+body.coverage-page .cv-review-form { padding:22px; border-radius:6px; background:var(--settings-canvas); }
+body.coverage-page .cv-evidence { padding:18px; border-radius:6px; }
+body.coverage-page .cv-evidence h3 { font-size:1rem; }
+body.coverage-page .cv-fact-list li { padding-block:17px; }
+body.coverage-page .cv-detail { scroll-margin-top:90px; }
+body.coverage-page .cv-detail dd { font-size:.9375rem; overflow-wrap:anywhere; }
+@media(max-width:1100px) { body.template-workspace .tw-main,body.coverage-page .cv-main { padding-inline:24px; } body.account-page .account-shell { width:calc(100% - 48px); } body.account-page :is(#account-status:not(:empty),#account-error) { width:calc(100% - 48px); } }
+@media(max-width:800px) { body.account-page .account-layout { grid-template-columns:minmax(0,1fr); } body.account-page .account-shell { margin-top:28px; } body.account-page .account-auth { max-width:510px; } }
+@media(max-width:760px) {
+  body.template-workspace .tw-main,body.coverage-page .cv-main { padding:24px 18px 38px; }
+  body.template-workspace .tw-intro { padding:22px 20px; margin-bottom:22px; }
+  body.template-workspace .tw-card,body.coverage-page .cv-card { padding:21px 18px; }
+  body.template-workspace .tw-fields { grid-template-columns:minmax(0,1fr); gap:12px; }
+  body.template-workspace .tw-wide { grid-column:auto; }
+  body.template-workspace .tw-row { align-items:start; }
+  body.coverage-page .cv-summary { grid-template-columns:minmax(0,1fr); }
+  body.coverage-page .cv-summary article { padding:18px 20px; }
+  body.coverage-page .cv-summary article + article { border-left:0; border-top:1px solid var(--settings-line); }
+  body.coverage-page .cv-filters { gap:12px; }
+  body.coverage-page .cv-filters label { min-width:calc(50% - 6px); }
+  body.coverage-page .cv-filters .cv-search { min-width:100%; }
+  body.coverage-page .cv-detail-grid { grid-template-columns:minmax(0,1fr); }
+  body.coverage-page .cv-detail-head { flex-wrap:wrap; }
+}
+@media(max-width:480px) {
+  body.account-page .account-shell { width:calc(100% - 32px); margin-top:24px; }
+  body.account-page .account-shell h1 { font-size:1.85rem; }
+  body.account-page .account-panel { padding:22px 18px; }
+  body.account-page :is(#account-status:not(:empty),#account-error) { width:calc(100% - 32px); }
+  body.account-page .account-tabs { gap:22px; }
+  body.account-page .account-plan .portal-actions > button { flex:1 1 150px; }
+  body.template-workspace .tw-main,body.coverage-page .cv-main { padding-inline:14px; }
+  body.template-workspace .tw-card,body.coverage-page .cv-card { padding:20px 15px; }
+  body.template-workspace .tw-actions .tw-button { flex:1 1 150px; }
+  body.coverage-page .cv-filters label { min-width:100%; }
+  body.coverage-page .cv-actions { gap:10px; }
+  body.coverage-page .cv-actions .cv-button { flex:1 1 auto; }
+}
+@media(prefers-reduced-motion:reduce) { body:is(.account-page,.template-workspace,.coverage-page) * { scroll-behavior:auto!important; transition:none!important; animation:none!important; } }
+@media print {
+  body:is(.account-page,.template-workspace,.coverage-page) { color:#000; background:#fff; }
+  body.account-page .account-shell,body.template-workspace .tw-main,body.coverage-page .cv-main { width:auto; max-width:none; margin:0; padding:0; }
+  body.template-workspace .tw-intro { background:#fff; color:#000; padding:0 0 18px; }
+  body.template-workspace .tw-intro :is(h1,p) { color:#000; }
+  body.account-page .account-panel,body.template-workspace .tw-card,body.coverage-page .cv-card { box-shadow:none; border-radius:0; }
+  body.template-workspace .tw-table-wrap,body.coverage-page .cv-table-wrap { overflow:visible; }
+  body.template-workspace .tw-main table,body.coverage-page .cv-table { min-width:0; width:100%; font-size:10pt; }
+  body.template-workspace .tw-main :is(th,td),body.coverage-page .cv-table :is(th,td) { padding:7px; font-size:10pt; }
+}
