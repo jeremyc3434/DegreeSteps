@@ -318,6 +318,20 @@ test('the public degree-link lookup verifies only preloaded source plans and nev
  const unknown=await worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url:'https://unlisted.example.edu/degree/'})),{},{});assert.deepEqual(await unknown.json(),{matched:false});done();
 });
 
+for(const [degreeUrl,modelId,total,outside,university,modality]of [
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/','liberty-business-residential',120,83,37,'campus'],
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,66,54,'online'],
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','curriculum-liberty-interdisciplinary-aa-online',60,42,18,'online'],
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','curriculum-liberty-psychology-aa-online',60,39,21,'online']
+])test('the exact reviewed Liberty catalog link opens its saved baseline: '+modelId,async t=>{
+ const done=noNetwork(t),lookup=url=>worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url})),{},{});
+ const response=await lookup(degreeUrl);assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,true);
+ const plan=result.sourcePlan;assert(plan,'The exact known degree must open a course plan rather than send the student to research');assert.equal(plan.model.id,modelId);assert.deepEqual(plan.route.modalities,[modality]);assert.equal(plan.model.catalog.replace(/[–—]/g,'-'),'2026-2027');
+ assert.equal(plan.summary.totalCredits,total);assert.equal(plan.summary.transferCredits,outside);assert.equal(plan.summary.universityCredits,university);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),total);assert(plan.model.sources.some(source=>source.url===degreeUrl));
+ assert.equal(result.template,undefined);assert.equal(result.user,undefined);
+ const wrongCatalog=await lookup(degreeUrl+'?catalog=2025-2026');assert.equal(wrongCatalog.status,200);const rejected=await wrongCatalog.json();assert.equal(rejected.sourcePlan,undefined,'A different catalog must not inherit this baseline');assert.equal(rejected.existingPlan,undefined);done();
+});
+
 test('public reference packets expose sourced facts without claiming additional ready degree plans',async t=>{
  const done=noNetwork(t),response=await worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url:'https://www.south.edu/doctor-of-business-administration-program-overview/'})),{},{});assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,false);assert.equal(result.referenceAvailable,true);assert.equal(result.sourcePlan,undefined);const packet=result.reference.packets[0],total=packet.facts.find(fact=>fact.field==='totalCredits');assert.equal(total.value,90);assert.equal(total.creditSystem,'quarter');assert(packet.ambiguities.some(item=>item.affects.includes('courseCount')));assert.equal(result.user,undefined);assert.equal(result.configured,undefined);done();
 });

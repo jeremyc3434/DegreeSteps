@@ -64,6 +64,20 @@ test('native public degree resolution loads only the reviewed public build data 
   assert(f.assetCalls.some(call=>call.path==='/data/baseline-index.json'),'Known degrees use the build-time baseline index');
 });
 
+for(const [degreeUrl,modelId,total,outside,university,modality]of [
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/','liberty-business-residential',120,83,37,'campus'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,66,54,'online'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','curriculum-liberty-interdisciplinary-aa-online',60,42,18,'online'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','curriculum-liberty-psychology-aa-online',60,39,21,'online']
+])test('native exact Liberty catalog resolution preserves the saved degree and credit split: '+modelId,async t=>{
+  const f=await fixture(t),lookup=url=>f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));
+  const response=await lookup(degreeUrl);assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,true);
+  const plan=result.sourcePlan;assert(plan,'The native asset-backed lookup must open the existing course plan');assert.equal(plan.model.id,modelId);assert.deepEqual(plan.route.modalities,[modality]);assert.equal(plan.model.catalog.replace(/[–—]/g,'-'),'2026-2027');
+  assert.equal(plan.summary.totalCredits,total);assert.equal(plan.summary.transferCredits,outside);assert.equal(plan.summary.universityCredits,university);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),total);assert(plan.model.sources.some(source=>source.url===degreeUrl));
+  const wrongCatalog=await lookup(degreeUrl+'?catalog=2025-2026');assert.equal(wrongCatalog.status,200);const rejected=await wrongCatalog.json();assert.equal(rejected.sourcePlan,undefined,'A different catalog must not inherit this baseline');assert.equal(rejected.existingPlan,undefined);
+  assert(f.assetCalls.some(call=>call.path==='/data/baseline-index.json'));assert(f.assetCalls.every(call=>call.path.startsWith('/data/')));assert.deepEqual(f.external,[]);
+});
+
 test('missing, malformed and mismatched baseline artifacts cannot advertise a cached complete plan',async t=>{
  for(const change of ['missing','malformed','planner-mismatch']){
   const f=await fixture(t),original=f.env.ASSETS.fetch;
