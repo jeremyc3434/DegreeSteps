@@ -150,6 +150,11 @@ body.coverage-page .cv-detail dd { font-size:.9375rem; overflow-wrap:anywhere; }
   body.coverage-page .cv-actions .cv-button { flex:1 1 auto; }
 }
 @media(prefers-reduced-motion:reduce) { body:is(.account-page,.template-workspace,.coverage-page) * { scroll-behavior:auto!important; transition:none!important; animation:none!important; } }
+body.account-page .account-next-step { margin:22px 0 0; align-items:center; gap:14px 22px; }
+body.account-page .account-next-step a { display:inline-flex; align-items:center; justify-content:center; min-height:48px; font-size:1rem; }
+body.account-page .account-next-step .portal-primary { padding:12px 20px; }
+body.account-page .account-next-step .account-text-button { color:var(--ds-blue,#4054f4); text-decoration:underline; text-underline-offset:4px; }
+@media(max-width:600px) { body.account-page .account-next-step .portal-primary { width:100%; } }
 @media print {
   body:is(.account-page,.template-workspace,.coverage-page) { color:#000; background:#fff; }
   body.account-page .account-shell,body.template-workspace .tw-main,body.coverage-page .cv-main { width:auto; max-width:none; margin:0; padding:0; }

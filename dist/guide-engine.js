@@ -42,7 +42,12 @@
       hasPrior: choose(p.hasPrior, ['none', 'some', 'degree', 'unknown'], 'unknown'),
       priorCreditEstimate: amount(p.priorCreditEstimate) || 0,
       assessmentPreference: choose(p.assessmentPreference, ['mixed', 'exams', 'writing', 'projects'], 'mixed'),
-      proctoringPreference: choose(p.proctoringPreference, ['open', 'avoid'], 'open')
+      proctoringPreference: choose(p.proctoringPreference, ['open', 'avoid'], 'open'),
+      learningPace: choose(p.learningPace, ['any', 'self-paced', 'scheduled'], 'any'),
+      campusLocation: choose(p.campusLocation, ['any', 'near-home', 'relocate'], 'any'),
+      homeState: /^(?:A[LKSZR]|C[AOT]|D[CE]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])$/.test(text(p.homeState).toUpperCase()) ? text(p.homeState).toUpperCase() : '',
+      campusInterests: unique(list(p.campusInterests).filter(value => ['sports', 'social', 'housing', 'city', 'small-campus', 'faith', 'recognition'].includes(value))),
+      campusTime: choose(p.campusTime, ['any', 'one-year', 'two-years', 'three-plus'], 'any')
     };
     if (result.weeklyHours === 0) result.weeklyHours = null;
     return result;
@@ -640,6 +645,47 @@
     return {conflicts,unknowns,modalities,formatBasis,curriculumSourced:Boolean(citedModel)};
   }
 
+  // These are personal preferences, separate from academic eligibility. Missing
+  // campus evidence stays neutral and never makes an existing degree invalid.
+  function preferenceFit(raw, pathway, model, campusFacts) {
+    const p = normalizeProfile(raw), route = pathway || {}, reasons = [], badges = [];
+    let score = 0;
+    const secure = value => {try {const url = new URL(value);return url.protocol === 'https:' && !url.username && !url.password ? url.href : '';}catch {return '';}};
+    const modelPace = text(model?.paceModel), routePace = text(route.paceModel), pace = routePace || modelPace;
+    const selfPaced = ['self-paced', 'competency-subscription'].includes(pace);
+    const scheduled = ['term-based', 'scheduled', 'traditional'].includes(pace);
+    if (p.learningPace === 'self-paced' && selfPaced) {
+      score += 8; reasons.push('Offers self-paced study, which you prefer.');
+      badges.push({label:'Self-paced option',kind:'preference'});
+    } else if (p.learningPace === 'scheduled' && scheduled) {
+      score += 8; reasons.push('Offers scheduled study, which you prefer.');
+      badges.push({label:'Scheduled study',kind:'preference'});
+    }
+    const wantsCampus = p.modality !== 'online' && list(route.modalities).includes('campus');
+    const facts = Array.isArray(campusFacts) ? campusFacts : list(campusFacts?.campuses);
+    const candidates = wantsCampus ? facts.filter(fact => key(fact.school) === key(route.school) && list(fact.routeIds).includes(route.id) && list(fact.sourceUrls).some(secure)) : [];
+    // A multi-campus institution needs an exact campus binding. A school name
+    // alone must not give every program a main-campus badge.
+    if (candidates.length === 1) {
+      const campus = candidates[0], sourceUrl = list(campus.sourceUrls).map(secure).find(Boolean);
+      if (text(campus.city) && text(campus.state)) badges.push({label:text(campus.city) + ', ' + text(campus.state),kind:'fact',sourceUrl});
+      if (p.campusLocation === 'near-home' && p.homeState && campus.state === p.homeState) {
+        score += 20; reasons.push('This campus is in your home state. Distance from home depends on your location.');
+        badges.unshift({label:'In your state',kind:'preference',sourceUrl});
+      }
+      const labels = {sports:'Division I sports',housing:'Campus housing',city:'City campus','small-campus':'Small campus',faith:'Faith-based campus'};
+      for (const interest of p.campusInterests) {
+        const evidence = campus.traitEvidence?.[interest], url = secure(evidence?.url);
+        // Recognition and social-life ratings need their own review evidence;
+        // no reputation or party-school rating is inferred from school names.
+        if (!labels[interest] || !list(campus.traits).includes(interest) || !url) continue;
+        score += 3; badges.push({label:labels[interest],kind:'preference',sourceUrl:url});
+        reasons.push(labels[interest] + ' matches one of your campus preferences.');
+      }
+    }
+    return {score,reasons:unique(reasons),badges};
+  }
+
   function recommend(raw, catalog, programs, learning) {
     const p = normalizeProfile(raw), available = Array.isArray(programs) ? programs : Object.values(programs || {});
     // Undecided discovery starts with undergraduate study. A prior "degree"
@@ -661,7 +707,10 @@
       if (protectedGoals.includes(p.goal) && !list(pathway.goals).includes(p.goal)) return null;
       if (!protectedGoals.includes(p.goal) && list(pathway.goals).length && !list(pathway.goals).includes(p.goal)) return null;
       const model = available.find(program => program && program.id === pathway.modelId);
+      const personalFit = preferenceFit(p, pathway, model, catalog?.campusFacts);
       let score = 10;
+      score += personalFit.score;
+      reasons.push(...personalFit.reasons);
       if (undergraduateDiscovery) reasons.push(undergraduate ? 'Shows undergraduate options while you choose a degree level.' : 'Includes an undergraduate stage for your career goal.');
       if (p.pathwayId || p.school || p.degree) { score += 100; reasons.push('Keeps your selected school and degree in view.'); }
       if (protectedGoals.includes(p.goal)) { score += 30; reasons.push('Includes the academic stages and professional requirements for your stated career.'); }
@@ -679,7 +728,7 @@
       if (p.priority === 'transfer' && /prior|transfer|elective|outside/.test(mechanisms)) score += 3;
       if (!reasons.length) reasons.push(pathway.summary || 'Fits your selected degree level and field.');
       reasons.push('Profile fit is provisional; admission, location and individual credit awards require confirmation.');
-      return { pathway, score, reasons: unique(reasons), eligible: true, ...(model ? { model } : {}), _order: index };
+      return { pathway, score, reasons: unique(reasons), eligible: true, preferenceFit:personalFit, ...(model ? { model } : {}), _order: index };
     }).filter(Boolean).sort((a, b) => b.score - a.score || a._order - b._order).map(({ _order, ...candidate }) => candidate);
   }
 
@@ -755,5 +804,5 @@
     return { title: route.title || 'Your degree route', summary, tips, nextActions: unique(nextActions).slice(0, 3), milestones, careerNotes: unique(careerNotes), militaryNotes: unique(militaryNotes), ...(modeled ? {researchTasks:copy(list(plan.researchTasks)),personalTasks:copy(list(plan.personalTasks)),resolvedNotes:copy(list(plan.resolvedNotes))} : {}) };
   }
 
-  return Object.freeze({ normalizeProfile, steps, matchInventory, matchCollection, migrateLegacy, assessTarget, recommend, buildGuidance, catalogCourseCode, courseReviewReason, resolveRecordIdentity });
+  return Object.freeze({ normalizeProfile, preferenceFit, steps, matchInventory, matchCollection, migrateLegacy, assessTarget, recommend, buildGuidance, catalogCourseCode, courseReviewReason, resolveRecordIdentity });
 }));

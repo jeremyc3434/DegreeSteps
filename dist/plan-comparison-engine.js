@@ -234,23 +234,23 @@
    return Number(rightKnown)-Number(leftKnown)||(leftKnown&&rightKnown?left[metric]-right[metric]:0);
   }
   function rankedRoutes(profile,excludedId){
-   const routes=all.filter(route=>modelIds.has(route.modelId)&&route.id!==excludedId),eligibleRoutes=new Set(Guide.recommend(profile,{pathways:routes},[],[]).map(fit=>fit.pathway));
+   const routes=all.filter(route=>modelIds.has(route.modelId)&&route.id!==excludedId),eligibleRoutes=new Set(Guide.recommend(profile,{campusFacts:catalog?.campusFacts,pathways:routes},[],[]).map(fit=>fit.pathway));
    // Eligibility depends only on the profile and pathway. Publish that complete
    // scope before matching courses, then calculate the unchanged full fit one
    // route at a time. Catalog order retains the original full-score tie order.
    const matches=routes.filter(route=>eligibleRoutes.has(route));
    if(matches.length||hasTarget&&excludedId)startProgress([...(hasTarget&&excludedId?['current']:[]),...matches.map(route=>'route:'+route.id)]);
    const ranked=matches.map(route=>{
-    const fit=Guide.recommend(profile,{pathways:[route]},models,state.learning)[0];
+    const fit=Guide.recommend(profile,{campusFacts:catalog?.campusFacts,pathways:[route]},models,state.learning)[0];
     const id='route:'+fit.pathway.id,next=target(state,id,catalog,options),draft=Journey.buildDraft(next,catalog,models);draftCache.set(id,{next,draft});
     if(draft.program)checkedPrograms.add(draft.program.id);
     const available=valid(draft),collection=available?collectionFit(next,draft,records):null,cost=available?remainingCosts(draft,next,costData):null;draftCache.get(id).cost=cost;
-    if(onProgress){const eligible=Boolean(Guide.recommend(next.profile,{pathways:[draft.pathway]},[],[])[0]),reason=!eligible?'Review this degree against your current career, degree level and study-format preferences.':!draft.program?'Official program listed. Its exact course and transfer map still needs research.':!available?'Resolve this plan’s credit-rule conflicts before comparing totals.':null;reportCandidate(id,draft,available,eligible,reason,cost,collection);}
+    if(onProgress){const eligible=Boolean(Guide.recommend(next.profile,{campusFacts:catalog?.campusFacts,pathways:[draft.pathway]},[],[])[0]),reason=!eligible?'Review this degree against your current career, degree level and study-format preferences.':!draft.program?'Official program listed. Its exact course and transfer map still needs research.':!available?'Resolve this plan’s credit-rule conflicts before comparing totals.':null;reportCandidate(id,draft,available,eligible,reason,cost,collection);}
     return{fit,id,available,level:draft.pathway.level,remainingCost:cost?.total,estimatedBaseCost:cost?.estimatedBaseCost,universityTuitionRemaining:cost?.universityTuition,estimatedWeeks:draft.plan?.timing.scenarioWeeks,credits:collection?.collectionFitCredits||0,fraction:collection?.collectionFitFraction||0,completedFraction:collection?.completedFitFraction||0,remaining:draft.program?draft.plan?.totals?.institutional/draft.program.totalCredits:Infinity};
    });
    const scopeRows=[...ranked];
    if(hasTarget&&excludedId){
-    const available=valid(current),cost=available?remainingCosts(current,state,costData):null,eligible=Boolean(Guide.recommend(state.profile,{pathways:[current.pathway]},[],[])[0]);
+    const available=valid(current),cost=available?remainingCosts(current,state,costData):null,eligible=Boolean(Guide.recommend(state.profile,{campusFacts:catalog?.campusFacts,pathways:[current.pathway]},[],[])[0]);
     reportCandidate('current',current,available,eligible,!eligible?'Review this degree against your current career, degree level and study-format preferences.':!current.program?'Official program listed. Its exact course and transfer map still needs research.':!available?'Resolve this plan’s credit-rule conflicts before comparing totals.':null,cost,available&&onProgress?collectionFit(state,current,records):null);
     scopeRows.push({id:'current',available,eligible,level:current.pathway.level,remainingCost:cost?.total,estimatedBaseCost:cost?.estimatedBaseCost,universityTuitionRemaining:cost?.universityTuition,estimatedWeeks:current.plan?.timing.scenarioWeeks});
    }
@@ -261,12 +261,12 @@
   if(!hasTarget&&!ids.length){
    const profile={...state.profile,pathwayId:'',school:'',degree:'',...(options.includeOtherFormats?{modality:'any',classroomImportance:'open'}:{})};
    ids=rankedRoutes(profile).slice(0,3).map(item=>item.id);
-   if(!ids.length)ids=Guide.recommend(profile,{pathways:all},models,state.learning).slice(0,3).map(x=>'route:'+x.pathway.id);
+   if(!ids.length)ids=Guide.recommend(profile,{campusFacts:catalog?.campusFacts,pathways:all},models,state.learning).slice(0,3).map(x=>'route:'+x.pathway.id);
   }
   if(hasTarget&&!ids.length&&!Array.isArray(picks)){const profile={...state.profile,pathwayId:'',school:'',degree:'',...(options.includeOtherFormats?{modality:'any',classroomImportance:'open'}:{})};ids=rankedRoutes(profile,current.pathway.id).slice(0,2).map(item=>item.id);}
   ids=[...(hasTarget?['current']:[]),...new Set(ids)];
   if(!progressStarted)startProgress(ids);
-  const scenarios=ids.map(id=>{try{const cached=draftCache.get(id),next=cached?.next||target(state,id,catalog,options),draft=cached?.draft||Journey.buildDraft(next,catalog,models),available=valid(draft),fit=Guide.recommend(next.profile,{pathways:[draft.pathway]},models,next.learning)[0],eligible=Boolean(fit),snapshot=id.startsWith('saved:')?saved(state).find(s=>s.id===id.slice(6)):null;const reason=!eligible?'Review this degree against your current career, degree level and study-format preferences.':!draft.program?'Official program listed. Its exact course and transfer map still needs research.':!available?'Resolve this plan’s credit-rule conflicts before comparing totals.':null;
+  const scenarios=ids.map(id=>{try{const cached=draftCache.get(id),next=cached?.next||target(state,id,catalog,options),draft=cached?.draft||Journey.buildDraft(next,catalog,models),available=valid(draft),fit=Guide.recommend(next.profile,{campusFacts:catalog?.campusFacts,pathways:[draft.pathway]},models,next.learning)[0],eligible=Boolean(fit),snapshot=id.startsWith('saved:')?saved(state).find(s=>s.id===id.slice(6)):null;const reason=!eligible?'Review this degree against your current career, degree level and study-format preferences.':!draft.program?'Official program listed. Its exact course and transfer map still needs research.':!available?'Resolve this plan’s credit-rule conflicts before comparing totals.':null;
    let summary=null;if(available){const completed=draft.plan.rows.filter(r=>['reported','confirmed'].includes(r.status)&&!r.unknownProvenance),sum=rows=>rows.reduce((n,r)=>n+r.credits,0),cost=cached?.cost||remainingCosts(draft,next,costData);summary={degreeCredits:draft.program.totalCredits,applicableCompletedCredits:sum(completed),requiredCompletedCredits:sum(completed.filter(r=>!isElective(r))),electiveCompletedCredits:sum(completed.filter(isElective)),confirmedCredits:sum(completed.filter(r=>r.status==='confirmed')),reportedCredits:sum(completed.filter(r=>r.status==='reported')),remainingCredits:draft.program.totalCredits-sum(completed),universityCreditsRemaining:sum(draft.plan.rows.filter(r=>r.status==='planned'&&r.institutional)),universityTuitionRemaining:cost.universityTuition,universityTermsRemaining:cost.universityTerms,termLabel:cost.termLabel||'term',estimatedBaseCost:cost.estimatedBaseCost,remainingCost:cost.total,remainingCostReason:cost.missing.join('; ')||null,costBreakdown:cost,estimatedWeeks:draft.plan.timing.scenarioWeeks,creditSystem:draft.program.creditSystem||'semester',researchGapCredits:draft.plan.coverage.researchGapCredits,provisional:true,...collectionFit(next,draft,records)};}
    reportCandidate(id,draft,available,eligible,reason,null,null,summary);
    return{id,label:snapshot?.label||draft.pathway.title,isCurrent:id==='current',pathwayId:draft.pathway.id,programId:draft.program?.id,state:next,draft,available,eligible,canUse:true,reason,recommendationReasons:fit?.reasons||[],summary};

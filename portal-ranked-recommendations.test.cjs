@@ -6,7 +6,7 @@ function data(){
  const base={id:'course-fit',school:'Test University',title:'Course-fit degree',level:'bachelor',format:'Online',creditSystem:'semester',totalCredits:6,institutionMinCredits:3,upperMinCredits:0,externalMaxCredits:3,sources:[source],pricing:{model:'per-credit',amount:500,currency:'USD',sourceUrl:'https://example.edu/tuition'},requirements:[{id:'writing',code:'writing',title:'Writing',credits:3,category:'general',options:[opt('Sophia','S1')]},{id:'capstone',code:'CAP',title:'Capstone',credits:3,category:'major',institutionalOnly:true,options:[opt('University','CAP')]}]};
  const models=[base];
  for(const [id,title,rate] of [['cheap','Lower tuition',50],['fast','Faster study',600],['unknown','Unpriced option',null]]){const p=copy(base);p.id=id;p.title=title;if(rate===null)delete p.pricing;else p.pricing.amount=rate;if(id==='cheap')p.requirements[0].options=[opt('University','UNI101')];models.push(p);}
- const pathways=models.map(model=>({id:model.id,modelId:model.id,school:model.school,title:model.title,level:'bachelor',field:'general',fields:['general'],goals:['any-degree','career-growth','change-career'],modalities:['online']}));
+ const pathways=models.map(model=>({id:model.id,modelId:model.id,school:model.school,title:model.title,level:'bachelor',field:'general',fields:['general'],goals:['any-degree','career-growth','change-career'],modalities:['online'],paceModel:model.id==='course-fit'?'self-paced':'term-based'}));
  const catalog={pathways,curriculumRegistry:{models:models.map(model=>({id:model.id,routeIds:[model.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}))}};
  let state=Journey.initialize(null,null,catalog);state=Journey.applyAnswer(state,'start','explore',catalog);Object.assign(state.profile,{goal:'any-degree',degreeLevel:'bachelor',field:'any',modality:'online',priority:'cost'});state.journey.step='routes';
  state.learning=[{id:'interest',provider:'Sophia',code:'S1',title:'Writing',credits:3,creditSystem:'semester',status:'saved',evaluations:[]}];state.scenarios={};
@@ -29,6 +29,12 @@ test('the wizard uses cost and speed estimates instead of remembered comparison 
  const f=fixture(),before=copy(f.api.state());await f.api.prepare();let view=copy(f.api.view());assert.equal(view.scenarios[0].pathwayId,'cheap');assert.equal(view.recommendation,null);assert.equal(view.rankingScope.unestimatedCount,1);assert.equal(f.writes(),0);assert.deepEqual(copy(f.api.state()),before);assert.deepEqual(f.stored(),before);
  const html=f.api.html();assert.match(html,/Tuition \+ courses estimate/);assert.match(html,/\$300/);assert.match(html,/Fees and other extras are excluded/);assert.doesNotMatch(html,/cheapest|lowest.cost|fastest/i);assert.match(html,/More matching plans \(1\)/);assert.match(html,/1 other plan has no comparable estimate/);assert.match(html,/<summary>How these plans are ordered<\/summary>/);assert.match(html,/Unpriced option/);assert.equal((html.match(/data-degree-preview=/g)||[]).length,4);
  f.api.setProfile({priority:'speed'});await f.api.prepare();view=copy(f.api.view());assert.equal(view.scenarios[0].pathwayId,'fast');assert.match(f.api.html(),/Estimated study time/);assert.match(f.api.html(),/weeks/);assert.equal(f.api.state().learning[0].status,'saved');assert.equal(f.api.state().sheet.notes.private,'My private note');
+});
+
+test('optional study preferences cannot override an explicit cost or speed priority on displayed cards',async()=>{
+ const f=fixture();f.api.setProfile({learningPace:'self-paced',priority:'cost'});await f.api.prepare();
+ let html=f.api.html();assert.match(html,/Self-paced option/);assert(html.indexOf('data-degree-preview="cheap"')<html.indexOf('data-degree-preview="course-fit"'));assert.match(html,/Available tuition \+ course estimates first/);
+ f.api.setProfile({priority:'speed'});await f.api.prepare();html=f.api.html();assert(html.indexOf('data-degree-preview="fast"')<html.indexOf('data-degree-preview="course-fit"'));assert.match(html,/Available study-time estimates first/);
 });
 
 test('render and Back reuse the prepared search without rebuilding it',async()=>{

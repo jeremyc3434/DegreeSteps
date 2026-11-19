@@ -3,6 +3,7 @@
   'use strict';
   const $ = id => document.getElementById(id), Journey = window.DegreeJourney, Sheet = window.DegreeSheet;
   const KEY = 'degreepath-guide-v3';
+  const PROFILE_DRAFT_KEY = 'degreesteps-profile-draft-v1';
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const clone = value => JSON.parse(JSON.stringify(value));
   const key = value => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -193,13 +194,16 @@
           assertPreviousPlanSaved(previous,state);const remembered=DegreeProgramCatalog.rememberPlan(previous,Journey.buildDraft(previous,catalog,models));
           if(remembered.whatIf?.snapshots)state.whatIf={...remembered.whatIf,...state.whatIf,snapshots:remembered.whatIf.snapshots};
         }
+        if(profileFlow()?.mode==='target'&&!actualSavedTarget(previous))profileFlow().baseTarget=state.selectedPathwayId||'';
         localStorage.setItem(KEY,JSON.stringify(state));
         activePlanState=actualSavedTarget(state)?clone(state):null;
+        if(profileFlow())persistProfileDraft();
       }
       saveOK=true;
     }catch{saveOK=false;}
     if(!protectedEdit||!saveOK)window.dispatchEvent(new CustomEvent('degreepath:save',{detail:{deviceSaved:saveOK}}));
     $('portal-saved').textContent=saveOK?(protectedEdit?'Your current plan stays saved while you compare degrees.':'Your progress is saved on this device.'):'Device storage is unavailable. Download a private backup from your course plan before leaving.';
+    return saveOK&&!protectedEdit;
   }
   function announce(message) {$('portal-notice').textContent = message;}
   function button(action, label, secondary = false) {return '<button type="button" class="portal-' + (secondary ? 'secondary' : 'primary') + '" data-action="' + action + '">' + esc(label) + '</button>';}
@@ -211,7 +215,8 @@
   const goalChoices = [['any-degree','Earn a degree'],['career-growth','Advance my career'],['change-career','Change careers'],['teacher','Become a teacher'],['lawyer','Prepare for law'],['pilot','Become a pilot'],['health-professional','Enter a health profession']];
   const fieldChoices = [['any','Any subject'],['business','Business'],['technology','Technology'],['science','Science & mathematics'],['arts','Arts & design'],['humanities','Humanities'],['social-science','Social sciences'],['education','Education'],['health','Health'],['general','General studies']];
   const protectedGoals = ['teacher','lawyer','pilot','health-professional'];
-  const searchProfileFields=['entry','goal','degreeLevel','field','school','schoolChoice','degree','pathwayId','modality','classroomImportance','priority'];
+  const learnerPreferenceFields=['hasPrior','militaryStatus','militaryRecords','campusLocation','homeState','campusInterests','campusTime','learningPace','assessmentPreference','proctoringPreference','budget','weeklyHours'];
+  const searchProfileFields=['entry','goal','degreeLevel','field','school','schoolChoice','degree','pathwayId','modality','classroomImportance','priority',...learnerPreferenceFields];
   const searchAnswerFields=['start','school','degree','purpose','career','level','field','format','priority','routes'];
   function explorationSearch(value=state) {
     const saved=value.journey?.explorationSearch;
@@ -266,8 +271,109 @@
   function aboutPreferenceFields() {
     return chooseField('goal','What is the degree for?',goalChoices,state.profile.goal||'any-degree')+chooseField('priority','What matters most?',[['balanced','Balance time and cost'],['speed','Finish sooner'],['cost','Spend less'],['transfer','Use the most transfer credit']],state.profile.priority||'balanced');
   }
+  const campusInterestChoices=[['sports','College sports'],['social','An active social life'],['housing','Living on campus'],['city','A city setting'],['small-campus','A smaller campus'],['faith','A faith-based community'],['recognition','A well-known school']];
+  const stateChoices=[['','Choose a state (optional)'],...('AL:Alabama|AK:Alaska|AZ:Arizona|AR:Arkansas|CA:California|CO:Colorado|CT:Connecticut|DE:Delaware|DC:District of Columbia|FL:Florida|GA:Georgia|HI:Hawaii|ID:Idaho|IL:Illinois|IN:Indiana|IA:Iowa|KS:Kansas|KY:Kentucky|LA:Louisiana|ME:Maine|MD:Maryland|MA:Massachusetts|MI:Michigan|MN:Minnesota|MS:Mississippi|MO:Missouri|MT:Montana|NE:Nebraska|NV:Nevada|NH:New Hampshire|NJ:New Jersey|NM:New Mexico|NY:New York|NC:North Carolina|ND:North Dakota|OH:Ohio|OK:Oklahoma|OR:Oregon|PA:Pennsylvania|RI:Rhode Island|SC:South Carolina|SD:South Dakota|TN:Tennessee|TX:Texas|UT:Utah|VT:Vermont|VA:Virginia|WA:Washington|WV:West Virginia|WI:Wisconsin|WY:Wyoming').split('|').map(value=>value.split(':'))];
+  const profileStepIds=['purpose','prior','format','priority'];
+  function profileFlow() {return state.journey?.profileFlow?.version===1?state.journey.profileFlow:null;}
+  function profileSteps() {return profileFlow()?.mode==='preferences'?profileStepIds.slice(1):profileStepIds;}
+  function profileValues(id=state.journey.step) {return {...state.profile,...(profileFlow()?.values?.[id]||{})};}
+  function persistProfileDraft() {
+    const flow=profileFlow();if(!flow)return;
+    const fields=Object.fromEntries(searchProfileFields.filter(name=>Object.hasOwn(state.profile,name)).map(name=>[name,clone(state.profile[name])]));
+    localStorage.setItem(PROFILE_DRAFT_KEY,JSON.stringify({version:1,baseTarget:flow.baseTarget,selectedPathwayId:state.selectedPathwayId||'',profile:fields,answers:state.journey.answers,flow:clone(flow),step:state.journey.step}));
+  }
+  function clearProfileDraft() {try{localStorage.removeItem?.(PROFILE_DRAFT_KEY);}catch{}}
+  function startProfile(mode,returnStep='routes') {
+    cancelRecommendations();degreePreview=null;
+    state.journey={...state.journey,view:'questions',profileFlow:{version:1,mode,returnStep,values:{},baseTarget:latestStoredPlan()?.selectedPathwayId||''},step:mode==='preferences'?'prior':'purpose'};
+    persistProfileDraft();render();
+  }
+  function restoreProfileDraft(mode) {
+    let saved;try{saved=JSON.parse(read(PROFILE_DRAFT_KEY));}catch{return false;}
+    const target=latestStoredPlan()?.selectedPathwayId||'';
+    if(saved?.version!==1||saved.baseTarget!==target||saved.flow?.baseTarget!==target||saved.flow?.version!==1||!['explore','target','preferences'].includes(saved.flow.mode)||mode&&saved.flow.mode!==mode||!profileStepIds.includes(saved.step)||!saved.profile||typeof saved.profile!=='object'||Array.isArray(saved.profile)||saved.flow.mode==='preferences'&&saved.selectedPathwayId!==target)return false;
+    if(saved.selectedPathwayId!==state.selectedPathwayId){if(!saved.selectedPathwayId&&saved.flow.mode==='explore')state=Journey.applyAnswer(state,'start','explore',catalog);else{const route=catalog.pathways.find(route=>route.id===saved.selectedPathwayId);if(!route||!routeHasMap(route))return false;state=Journey.selectRoute(state,route,catalog);}}
+    state.profile={...state.profile,...Object.fromEntries(searchProfileFields.filter(name=>Object.hasOwn(saved.profile,name)).map(name=>[name,clone(saved.profile[name])]))};
+    state.journey={...state.journey,view:'questions',step:saved.step,profileFlow:clone(saved.flow),answers:{...state.journey.answers,...saved.answers}};
+    return true;
+  }
+  function captureProfileValues(form) {
+    if(!profileFlow()||!form)return;
+    const values=new FormData(form),snapshot={};
+    for(const [name,value] of values.entries())if(name!=='campusInterests'&&typeof value==='string')snapshot[name]=value.slice(0,200);
+    snapshot.campusInterests=values.getAll?values.getAll('campusInterests').filter(value=>campusInterestChoices.some(([id])=>id===value)):[];
+    profileFlow().values={...profileFlow().values,[state.journey.step]:snapshot};persistProfileDraft();
+  }
+  function profileProgressHTML() {
+    const steps=profileSteps(),index=steps.indexOf(state.journey.step),labels={purpose:'Your goal',prior:'Your starting point',format:'Your experience',priority:'Your priorities'};
+    return '<nav class="portal-profile-progress" aria-label="Your preferences"><ol>'+steps.map((step,i)=>'<li'+(i===index?' aria-current="step"':'')+'><span>'+esc(labels[step])+'</span></li>').join('')+'</ol><p>Step '+(index+1)+' of '+steps.length+'</p></nav>';
+  }
+  function profileBody(id) {
+    const p=profileValues(id),flow=profileFlow(),locked=flow.mode==='preferences'||flow.mode==='target';
+    let body='';
+    if(id==='purpose')body=chooseField('goal','What would a degree help you do?',goalChoices,p.goal)+(!locked?chooseField('field','What would you like to study?',fieldChoices,p.field||'any')+chooseField('degreeLevel','Which degree are you considering?',[['unsure','Help me choose'],['associate','Associate'],['bachelor','Bachelor’s'],['master','Master’s'],['doctorate','Doctoral'],['specialist','Specialist']],p.degreeLevel||'unsure'):'<p class="portal-profile-note">'+esc(state.profile.degree)+' · '+esc(state.profile.school)+'</p>');
+    if(id==='prior')body='<p class="portal-intro">We can use what you have already learned. Course records can wait.</p>'+chooseField('prior','Have you finished any college courses?',[['unknown','I’ll add my courses later'],['none','No, I’m starting from zero'],['some','Yes, courses or exam credits'],['degree','Yes, I already have a degree']],p.prior||p.hasPrior||'unknown')+'<details class="portal-tip"'+(p.militaryStatus&&p.militaryStatus!=='none'?' open':'')+'><summary>Military connection (optional)</summary>'+chooseField('military','Your military connection',[['none','None'],['active','Active duty'],['veteran','Veteran'],['reserve','Reserve / National Guard'],['dependent','Military family member']],p.military||p.militaryStatus||'none')+'<div id="portal-profile-military-records"'+(!['active','veteran','reserve'].includes(p.military||p.militaryStatus)?' hidden':'')+'>'+chooseField('militaryRecords','Your service education record',[['not-sure','Help me identify my record'],['jst','Joint Services Transcript (JST)'],['ccaf','CCAF / Air University'],['other','Another service record']],p.militaryRecords||'not-sure')+'</div></details>';
+    if(id==='format'){
+      const format=p.format||(p.classroomImportance==='preferred'?'some-classroom':p.modality||'any'),campus=format!=='online';
+      body=(locked?'<p class="portal-profile-note">Your current degree: '+esc(state.profile.degree)+' · '+esc(state.profile.school)+'. '+esc(state.profile.modality==='campus'?'On campus':state.profile.modality==='online'?'Online':'Study format follows your selected degree')+'.</p><p class="portal-hint">Change your school or degree from My plan to explore another study format.</p>':chooseField('format','Where would you like to study?',[['any','I’m open to online or on campus'],['online','Online'],['campus','On campus'],['some-classroom','Some classroom time preferred']],format))+
+      chooseField('learningPace','How would you like courses to fit your life?',[['any','I’m flexible'],['self-paced','Let me work at my own pace'],['scheduled','I prefer a class schedule']],p.learningPace||'any')+
+      '<div id="portal-profile-campus"'+(!campus?' hidden':'')+'><details class="portal-tip"'+(format==='campus'||p.campusLocation&&p.campusLocation!=='any'||p.campusInterests?.length?' open':'')+'><summary>Your campus experience (optional)</summary>'+chooseField('campusLocation','Where would you consider a campus?',[['any','Anywhere that fits'],['near-home','I’d like to stay near home'],['relocate','I’m open to moving away']],p.campusLocation||'any')+'<div id="portal-profile-home-state"'+(p.campusLocation!=='near-home'?' hidden':'')+'>'+chooseField('homeState','Your home state',stateChoices,p.homeState||'')+'<p class="portal-hint">We can prioritize your state where campus information is available.</p></div><fieldset class="portal-profile-options"><legend>What would you enjoy? Choose any.</legend>'+campusInterestChoices.map(([value,label])=>'<label><input type="checkbox" name="campusInterests" value="'+value+'"'+(Array.isArray(p.campusInterests)&&p.campusInterests.includes(value)?' checked':'')+'><span>'+esc(label)+'</span></label>').join('')+'</fieldset>'+chooseField('campusTime','How much time would you like on campus?',[['any','I’m flexible'],['one-year','About one year'],['two-years','About two years'],['three-plus','Three years or more']],p.campusTime||'any')+'<p class="portal-hint">This is your preference. Your degree requirements determine the semesters you need.</p></details></div>';
+    }
+    if(id==='priority')body=chooseField('priority','What matters most to you?',[['balanced','Balance time and cost'],['speed','Finish sooner'],['cost','Spend less'],['transfer','Use the most of my existing courses']],p.priority||'balanced')+'<details class="portal-tip"><summary>Budget, study time and assessments (optional)</summary><div class="portal-profile-grid"><label class="portal-field"><span>Budget to finish your degree ($)</span><input type="number" name="budget" min="0" max="1000000" step="1" inputmode="numeric" value="'+esc(p.budget??'')+'" placeholder="No limit set"></label><label class="portal-field"><span>Study hours per week</span><input type="number" name="weeklyHours" min="1" max="100" step="1" inputmode="numeric" value="'+esc(p.weeklyHours??'')+'" placeholder="Not sure yet"></label></div>'+chooseField('proctoringPreference','Monitored exams',[['open','I’m open to monitored exams'],['avoid','Prefer courses without proctored exams']],p.proctoringPreference||'open')+chooseField('assessmentPreference','How do you prefer to show what you know?',[['mixed','A mix is fine'],['projects','Projects'],['writing','Written assignments'],['exams','Exams']],p.assessmentPreference||'mixed')+'</details>';
+    const last=id==='priority',label=last?(flow.mode==='preferences'?'Save my preferences':flow.mode==='target'?'Open my course plan':'Find my degree plans'):'Continue';
+    return '<form id="portal-profile-form" class="portal-quick-form" data-profile-step="'+id+'">'+body+'<button class="portal-primary" type="submit">'+label+'</button></form>'+(flow.mode==='preferences'?'<div class="portal-links">'+button('cancel-profile','Back to my plan',true)+'</div>':'');
+  }
+  function profileSummaryHTML() {
+    if(!state.journey.profileCompleted)return '';
+    const p=state.profile,summary=[p.modality==='campus'?'On campus':p.modality==='online'?'Online':'Online or on campus',({balanced:'Balance time and cost',speed:'Finish sooner',cost:'Spend less',transfer:'Use existing courses'})[p.priority],p.learningPace==='self-paced'?'Prefer self-paced courses':p.learningPace==='scheduled'?'Prefer a class schedule':'',p.modality!=='online'&&p.campusLocation==='near-home'?(p.homeState?'Prefer campuses in '+(stateChoices.find(([id])=>id===p.homeState)?.[1]||p.homeState):'Prefer staying near home'):'',p.modality!=='online'?({'one-year':'Prefer about one year on campus','two-years':'Prefer about two years on campus','three-plus':'Prefer three or more years on campus'})[p.campusTime]:'',p.proctoringPreference==='avoid'?'Prefer no proctored exams':''].filter(Boolean);
+    return '<section class="portal-profile-summary" aria-label="Your preferences"><h2>Built around your choices</h2><p>'+summary.map(esc).join(' · ')+'</p>'+(p.modality!=='online'&&p.campusInterests?.length?'<p class="portal-hint">Campus interests: '+p.campusInterests.map(id=>campusInterestChoices.find(([value])=>value===id)?.[1]).filter(Boolean).map(esc).join(', ')+'.</p>':'')+button('edit-search-profile','Edit my preferences',true)+'</section>';
+  }
+  async function submitProfileStep(form) {
+    captureProfileValues(form);
+    const id=state.journey.step,p=profileValues(),flow=profileFlow();let next=clone(state);
+    if(id==='purpose'){
+      const licensed=protectedGoals.includes(p.goal);next=Journey.applyAnswer(next,'purpose',licensed?'licensed-career':p.goal,catalog);if(licensed)next=Journey.applyAnswer(next,'career',p.goal,catalog);
+      if(flow.mode==='explore'){next=Journey.applyAnswer(next,'field',licensed?'any':p.field,catalog);next=Journey.applyAnswer(next,'level',p.degreeLevel,catalog);}
+    }
+    if(id==='prior'){
+      next=Journey.setPriorCredits(next,p.prior==='unknown'?'later':p.prior==='degree'?'some':p.prior);
+      if(p.prior==='degree')next=Journey.applyAnswer(next,'prior','degree',catalog);
+      next=Journey.applyAnswer(next,'military',p.military||p.militaryStatus||'none',catalog);
+      if(['active','veteran','reserve'].includes(next.profile.militaryStatus))next=Journey.applyAnswer(next,'military-records',p.militaryRecords||'not-sure',catalog);
+    }
+    if(id==='format'){
+      if(flow.mode==='explore')next=Journey.applyAnswer(next,'format',{modality:p.format==='some-classroom'?'any':p.format||p.modality,classroomImportance:p.format==='campus'?'essential':p.format==='some-classroom'?'preferred':'open'},catalog);
+      const normalized=DegreeGuide.normalizeProfile(p);
+      for(const name of ['campusLocation','homeState','campusInterests','campusTime','learningPace'])next.profile[name]=clone(normalized[name]);
+    }
+    if(id==='priority'){
+      next=Journey.applyAnswer(next,'priority',p.priority,catalog);
+      for(const [name,max] of [['budget',1000000],['weeklyHours',100]]){const value=p[name];if(value!==''&&value!==null&&value!==undefined&&(!Number.isFinite(Number(value))||Number(value)<(name==='budget'?0:1)||Number(value)>max))throw Error(name==='budget'?'Enter a budget between $0 and $1,000,000, or leave it blank.':'Enter between 1 and 100 study hours per week, or leave it blank.');next.profile[name]=value===''||value===null||value===undefined?null:Number(value);}
+      if(!['open','avoid'].includes(p.proctoringPreference)||!['mixed','exams','writing','projects'].includes(p.assessmentPreference))throw Error('Choose your assessment preferences.');
+      next.profile.proctoringPreference=p.proctoringPreference;next.profile.assessmentPreference=p.assessmentPreference;
+    }
+    state=next;
+    if(id!=='priority'){state.journey.step=profileSteps()[profileSteps().indexOf(id)+1];persistProfileDraft();render();return;}
+    if(state.profile.hasPrior==='none'&&latestStoredPlan()?.learning.some(record=>record.status==='earned'))throw Error('Your saved courses now include completed learning. Go back to Your starting point and choose that you have courses.');
+    if(flow.mode==='target'){
+      const target=Journey.buildDraft(state,catalog,models);
+      if(target.targetReviewNeeded){state.journey.step='purpose';persistProfileDraft();render();showError(Error('This degree does not match that career goal. Choose a goal that fits this degree, or go back to choose another degree.'));return;}
+    }
+    state.journey={...state.journey,profileCompleted:true,profileVersion:1,intakeCompleted:true};
+    if(flow.mode==='preferences'){
+      const latest=latestStoredPlan();if(!latest||(latest.selectedPathwayId||'')!==flow.baseTarget)throw Error('Your active degree changed in another tab. Reopen My preferences to update that plan.');
+      const selected=clone(latest),keys=['priority',...learnerPreferenceFields];
+      for(const name of keys)if(Object.hasOwn(state.profile,name))selected.profile[name]=clone(state.profile[name]);
+      selected.journey={...selected.journey,profileCompleted:true,profileVersion:1,intakeCompleted:true,creditsDeferred:state.journey.creditsDeferred,answers:{...selected.journey.answers,...Object.fromEntries(['prior','military','military-records','priority'].filter(name=>Object.hasOwn(state.journey.answers,name)).map(name=>[name,clone(state.journey.answers[name])]))}};
+      delete selected.journey.profileFlow;state=selected;state.journey.view='home';state.journey.completed=true;state.journey.step='review';page='home';render();if(saveOK)clearProfileDraft();return;
+    }
+    delete state.journey.profileFlow;
+    if(flow.mode==='target'){openPlan();if(saveOK)clearProfileDraft();return;}
+    rememberExplorationSearch();state.journey.step='routes';if(save())clearProfileDraft();announce('Finding course plans for your choices…');await prepareRecommendations();
+  }
   function questionBody(id) {
     const p = state.profile;
+    if(profileFlow()&&profileStepIds.includes(id))return profileBody(id);
     switch (id) {
       case 'start': return (state.journey.completed && p.school && p.degree ? '<div class="portal-current-target"><strong>'+esc(p.degree)+'</strong><p>'+esc(p.school)+'</p>'+button('keep-target','Open my plan',true)+'</div>' : '')+choices([
         ['target',state.journey.completed?'Change my degree':'I know my school or degree'],
@@ -355,7 +461,10 @@
     const timing=knownEstimate(summary?.estimatedWeeks)?'<div><dt>Estimated study time</dt><dd>'+esc(summary.estimatedWeeks)+' weeks</dd></div>':'';
     const fit=knownEstimate(summary?.collectionFitCredits)&&summary.collectionFitCredits>0?'<span>'+esc(summary.collectionFitCredits)+' '+(summary.creditSystem==='competency-unit'||scenario?.draft?.program?.creditSystem==='competency-unit'||result.model?.creditSystem==='competency-unit'?'competency units':'credits')+' fit from My courses</span>':'';
     const estimate=cost||timing?'<dl class="portal-route-estimates">'+cost+timing+'</dl><p class="portal-estimate-note">Planning estimates before financial aid.'+(rate?' Total depends on paid terms needed.':cost&&!knownEstimate(summary?.remainingCost)?' Fees and other extras are excluded.':'')+(timing?' Admissions and transfer processing are separate.':'')+'</p>':'';
-    return '<article class="portal-route-card"><'+(secondary?'h3':'h2')+'>'+esc(r.title)+'</'+(secondary?'h3':'h2')+'><p class="portal-target-school">'+esc(r.school)+'</p><div class="portal-route-facts"><span>'+esc(format)+'</span>'+(credits?'<strong>'+esc(credits)+'</strong>':'')+fit+(choiceCount>0?'<span>'+choiceCount+' course choice'+(choiceCount===1?'':'s')+' to make</span>':'')+'</div>'+estimate+'<button type="button" class="portal-primary" data-degree-preview="'+esc(r.id)+'">'+(modeled?'See course plan':'See degree')+'</button></article>';
+    const personal=DegreeGuide.preferenceFit?DegreeGuide.preferenceFit(state.profile,r,result.model,catalog.campusFacts):{badges:[],reasons:[]};
+    const badges=personal.badges.length?'<div class="portal-personal-badges" aria-label="Study and campus features">'+personal.badges.slice(0,3).map(badge=>badge.sourceUrl?'<a href="'+esc(badge.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(badge.label)+'</a>':'<span>'+esc(badge.label)+'</span>').join('')+'</div>':'';
+    const why=personal.reasons.length?'<details class="portal-fit-reasons"><summary>Why this fits your preferences</summary><ul>'+personal.reasons.map(reason=>'<li>'+esc(reason)+'</li>').join('')+'</ul></details>':'';
+    return '<article class="portal-route-card"><'+(secondary?'h3':'h2')+'>'+esc(r.title)+'</'+(secondary?'h3':'h2')+'><p class="portal-target-school">'+esc(r.school)+'</p>'+badges+'<div class="portal-route-facts"><span>'+esc(format)+'</span>'+(credits?'<strong>'+esc(credits)+'</strong>':'')+fit+(choiceCount>0?'<span>'+choiceCount+' course choice'+(choiceCount===1?'':'s')+' to make</span>':'')+'</div>'+estimate+why+'<button type="button" class="portal-primary" data-degree-preview="'+esc(r.id)+'">'+(modeled?'See course plan':'See degree')+'</button></article>';
   }
   function progressStatus(progress) {const ready=[...progress.candidates.values()].filter(candidate=>candidate.available&&candidate.eligible).length;return 'Checked '+progress.checked+' of '+progress.matchingIds.length+' matching plans. '+ready+' ready to open.';}
   function matchingStatus(candidate) {return !candidate?'Waiting to check':candidate.available&&candidate.eligible?'Checked · ready to open':'Checked · '+(candidate.reason||'Needs review before a course plan is available.');}
@@ -387,21 +496,24 @@
     if(recommendationPending)return recommendationProgressBody();
     const eligible=recommendationMatches||Journey.recommend({...state,learning:[]},availableCatalog(),[]),byId=new Map(eligible.map(result=>[result.pathway.id,result])),scenarios=new Map((recommendationView?.scenarios||[]).map(scenario=>[scenario.pathwayId,scenario])),candidates=new Map((recommendationView?.rankedCandidates||[]).map(candidate=>[candidate.pathwayId,candidate]));
     const orderedIds=[...new Set([...(recommendationView?.rankingScope?.orderedRouteIds||recommendationView?.scenarios?.map(scenario=>scenario.id)||[]).map(id=>id.replace(/^route:/,'')),...eligible.map(result=>result.pathway.id)])].filter(id=>byId.has(id)&&candidates.get(id)?.available!==false);
+    const personalScores=new Map(orderedIds.map(id=>[id,DegreeGuide.preferenceFit?DegreeGuide.preferenceFit(state.profile,byId.get(id).pathway,byId.get(id).model,catalog.campusFacts).score:0]));
+    const personalOrder=state.profile.priority==='balanced'&&(state.profile.learningPace&&state.profile.learningPace!=='any'||state.profile.campusLocation==='near-home'||state.profile.campusInterests?.length)&&[...personalScores.values()].some(score=>score>0);
+    if(personalOrder)orderedIds.sort((a,b)=>personalScores.get(b)-personalScores.get(a));
     const cards=orderedIds.map((id,index)=>routeCard(byId.get(id),scenarios.get(id)||candidates.get(id),index>=3));
     const scope=recommendationView?.rankingScope,ordering=scope?.orderingMetric,kind=ordering==='estimatedWeeks'?'study-time':ordering==='universityTuitionRemaining'?'university tuition':ordering==='remainingCost'?'remaining cost':ordering==='estimatedBaseCost'?'tuition + course':'';
-    const brief=kind?'Available '+kind+' estimates first.'+(scope.unestimatedCount?' '+scope.unestimatedCount+' other plan'+(scope.unestimatedCount===1?' has':'s have')+' no comparable estimate.':''):'Matched to your '+(state.learning.length?'courses and preferences.':'preferences.');
-    const basis=recommendationView?.rankBasis?'<p class="portal-ranking-note">'+esc(brief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>'+esc(recommendationView.rankBasis)+'</p></details>':'';
+    const brief=kind?(personalOrder?'Matching study and campus preferences first; available '+kind+' estimates within those matches.':'Available '+kind+' estimates first.')+(scope.unestimatedCount?' '+scope.unestimatedCount+' other plan'+(scope.unestimatedCount===1?' has':'s have')+' no comparable estimate.':''):'Matched to your '+(state.learning.length?'courses and preferences.':'preferences.');
+    const basis=recommendationView?.rankBasis?'<p class="portal-ranking-note">'+esc(brief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>'+esc((personalOrder?'Published study and campus features matching your preferences are prioritized. Within the same fit, ':'')+recommendationView.rankBasis)+'</p></details>':'';
     const fallback=recommendationError?'<div class="portal-comparison-retry" role="status"><p>'+esc(recommendationError)+'</p>'+button('retry-recommendations','Try comparison again',true)+'</div>':'';
     const result=cards.length?basis+cards.slice(0,3).join('')+(cards.length>3?'<details class="portal-route-options"><summary>More matching plans ('+(cards.length-3)+')</summary>'+cards.slice(3).join('')+'</details>':''):recommendationError?'':'<div class="portal-empty-result"><h2>No course plan matches yet.</h2><p>'+esc(protectedGoals.includes(state.profile.goal)?'No mapped program currently meets this career and study format.':'The matching degrees do not yet have transfer-course plans.')+'</p>'+'<a class="portal-primary" href="request-plan.html">Build from a degree link →</a>'+'</div>';
     return fallback+result;
   }
   function routesBody() {
-    return '<div id="portal-recommendation-results">'+recommendationResultsBody()+'</div><div class="portal-links">'+button('change-preferences','Change my choices',true)+'<a href="request-plan.html">Build from a degree link →</a></div>';
+    return profileSummaryHTML()+'<div id="portal-recommendation-results">'+recommendationResultsBody()+'</div><div class="portal-links">'+button('change-preferences','Change my choices',true)+'<a href="request-plan.html">Build from a degree link →</a></div>';
   }
   function renderQuestion() {
-    if(!['start','school','degree','purpose','routes','about'].includes(state.journey.step))state.journey.step='purpose';
-    const id=state.journey.step, heading=degreePreview?'':({start:'Build your course plan.',school:'Choose a school.',degree:'Choose your degree.',purpose:'Find a degree.',routes:'Choose a course plan.',about:'Make this plan yours.'}[id]);
-    $('portal-content').innerHTML='<section class="portal-question portal-simple-setup">'+(id!=='start'||degreePreview?'<button class="portal-back" type="button" data-action="back">'+backIcon+'Back</button>':'')+(heading?'<h1 id="portal-question-title" tabindex="-1">'+heading+'</h1>':'<h1 id="portal-question-title" class="screen-reader-only" tabindex="-1">Degree plan availability</h1>')+(id==='degree'&&!degreePreview?'<p class="portal-school-filter">'+esc(state.profile.school)+'</p>':'')+(degreePreview?degreeReadinessBody(degreePreview):questionBody(id))+'<p id="portal-step-error" role="alert"></p></section>';
+    if(!['start','school','degree','purpose','prior','format','priority','routes','about'].includes(state.journey.step))state.journey.step='purpose';
+    const id=state.journey.step,profiling=profileFlow()&&profileStepIds.includes(id)&&!degreePreview,heading=degreePreview?'':profiling?({purpose:'What would you like to achieve?',prior:'Where are you starting?',format:'What fits your life?',priority:'What matters most?'}[id]):({start:'Build your course plan.',school:'Choose a school.',degree:'Choose your degree.',purpose:'Find a degree.',routes:'Choose a course plan.',about:'Make this plan yours.'}[id]);
+    $('portal-content').innerHTML='<section class="portal-question portal-simple-setup">'+(id!=='start'||degreePreview?'<button class="portal-back" type="button" data-action="back">'+backIcon+'Back</button>':'')+(profiling?profileProgressHTML():'')+(heading?'<h1 id="portal-question-title" tabindex="-1">'+heading+'</h1>':'<h1 id="portal-question-title" class="screen-reader-only" tabindex="-1">Degree plan availability</h1>')+(id==='degree'&&!degreePreview?'<p class="portal-school-filter">'+esc(state.profile.school)+'</p>':'')+(degreePreview?degreeReadinessBody(degreePreview):questionBody(id))+'<p id="portal-step-error" role="alert"></p></section>';
     if(id==='degree'&&!degreePreview)renderDegreeOptions(true);
   }
   function refreshDraft() {draft = Journey.buildDraft(state,catalog,models); state = draft.state;}
@@ -562,14 +674,27 @@
     if(id==='start'&&value==='audit'){
       state.journey.step='purpose';save();if(saveOK)location.assign('import-courses.html');else showError(Error('Your courses could not be saved.'));return;
     }
+    if(['school','degree'].includes(id)&&value==='unknown'&&state.journey.profileFlowVersion===1){startProfile('explore');return;}
     if(id==='degree'&&value==='unknown'){state.journey.step='purpose';render();return;}
     if(id==='degree'||id==='routes'){openPlan();return;}
-    if(id==='start')state.journey.step=value==='target'?'school':'purpose';
+    if(id==='start'){state.journey.profileFlowVersion=1;if(value==='explore'){startProfile('explore');return;}state.journey.step=value==='target'?'school':'purpose';}
     else if(id==='school')state.journey.step=value==='unknown'?'purpose':'degree';
     else state.journey.step='purpose';
     render();
   }
   async function action(name) {
+    if(name==='edit-search-profile'){startProfile('explore');return;}
+    if(name==='cancel-profile'){
+      clearProfileDraft();const saved=latestStoredPlan();if(saved&&actualSavedTarget(saved)){state=clone(saved);state.journey.view='home';page='home';render();return;}delete state.journey.profileFlow;state.journey.step='start';render();return;
+    }
+    if(name==='back'&&profileFlow()&&!degreePreview){
+      captureProfileValues(document.getElementById('portal-profile-form'));
+      const steps=profileSteps(),index=steps.indexOf(state.journey.step);
+      if(index>0){state.journey.step=steps[index-1];persistProfileDraft();render();return;}
+      const flow=profileFlow();clearProfileDraft();delete state.journey.profileFlow;
+      if(flow.mode==='preferences'){await action('cancel-profile');return;}
+      state.journey.step=flow.mode==='target'?'degree':'start';render();return;
+    }
     if(name==='edit-about-preferences'){const host=$('portal-about-preferences');if(host){host.innerHTML=aboutPreferenceFields();host.querySelector?.('select')?.focus();}return;}
     if(activePlanState&&state.journey.view==='questions'&&['home','keep-target','review-plan','school-review'].includes(name)){state=clone(latestStoredPlan()||activePlanState);degreePreview=null;}
     if(name==='retry-recommendations'){await prepareRecommendations(true);return;}
@@ -579,8 +704,8 @@
     if(name==='keep-active-plan'){if(activePlanState){state=clone(latestStoredPlan()||activePlanState);state.journey={...state.journey,view:'home',completed:true};degreePreview=null;page='home';render();}return;}
     if(name==='request-unmapped-replacement'){if(degreePreview&&activePlanState){degreePreview={...degreePreview,confirmUnmappedReplacement:true};render();}return;}
     if(name==='confirm-unmapped-replacement'){if(degreePreview?.confirmUnmappedReplacement&&activePlanState){const next=previewSelection(degreePreview);if(next.draft.targetReviewNeeded)throw Error('Review your career and study preferences before changing this goal.');assertPreviousPlanSaved(latestStoredPlan()||activePlanState||state,next.state);state=next.state;openPlan(true);}return;}
-    if(name==='use-degree'){if(degreePreview){await ensureRouteModels(degreePreview.route);const next=previewSelection(degreePreview);if(activePlanState&&!next.draft.plan){degreePreview={...degreePreview,confirmUnmappedReplacement:true};render();return;}assertPreviousPlanSaved(latestStoredPlan()||activePlanState||state,next.state);state=next.state;openPlan(!next.draft.plan);}return;}
-    if(name==='change-preferences'){cancelRecommendations();degreePreview=null;state.journey.view='questions';state.journey.step='purpose';render();return;}
+    if(name==='use-degree'){if(degreePreview){await ensureRouteModels(degreePreview.route);const next=previewSelection(degreePreview);if(activePlanState&&!next.draft.plan){degreePreview={...degreePreview,confirmUnmappedReplacement:true};render();return;}assertPreviousPlanSaved(latestStoredPlan()||activePlanState||state,next.state);state=next.state;if(next.draft.plan&&state.journey.profileFlowVersion===1&&!state.journey.intakeCompleted){startProfile('target','degree');return;}openPlan(!next.draft.plan);}return;}
+    if(name==='change-preferences'){if(state.journey.profileFlowVersion===1||state.journey.profileCompleted){startProfile('explore');return;}cancelRecommendations();degreePreview=null;state.journey.view='questions';state.journey.step='purpose';render();return;}
     if(name==='copy-school-request'){
       const field=$('portal-school-request');
       if(navigator.clipboard?.writeText) navigator.clipboard.writeText(field.value).then(()=>announce('School-review request copied. Paste it into your school’s email or student portal.')).catch(()=>{field.focus();field.select();announce('Select and copy the request below.');});
@@ -613,6 +738,20 @@
   }
   window.addEventListener?.('storage',event=>{if(event.key===KEY||event.key===null)refreshRecommendations().catch(showError);});
   window.addEventListener?.('focus',()=>refreshRecommendations().catch(showError));
+  document.addEventListener('input',event=>{
+    const form=event.target?.closest?.('#portal-profile-form');if(!form||!profileFlow())return;
+    try{captureProfileValues(form);}catch(error){showError(error);}
+  });
+  document.addEventListener('change',event=>{
+    const form=event.target?.closest?.('#portal-profile-form');if(!form||!profileFlow())return;
+    try{
+      captureProfileValues(form);
+      const values=new FormData(form),military=$('portal-profile-military-records'),campus=$('portal-profile-campus'),home=$('portal-profile-home-state');
+      if(military)military.hidden=!['active','veteran','reserve'].includes(values.get('military'));
+      if(campus&&values.has('format'))campus.hidden=values.get('format')==='online';
+      if(home&&values.has('campusLocation'))home.hidden=values.get('campusLocation')!=='near-home';
+    }catch(error){showError(error);}
+  });
   document.addEventListener('click',async event => {
     const el = event.target.closest('button'); if (!el || !state) return;
     try {
@@ -629,9 +768,10 @@
     } catch (error) {showError(error);}
   });
   document.addEventListener('submit',async event => {
-    if (!['portal-question-form','portal-custom-degree-form','portal-explore-form','portal-about-form'].includes(event.target.id)) return;
+    if (!['portal-question-form','portal-custom-degree-form','portal-explore-form','portal-about-form','portal-profile-form'].includes(event.target.id)) return;
     event.preventDefault();
     try {
+      if(event.target.id==='portal-profile-form'){await submitProfileStep(event.target);return;}
       const values = new FormData(event.target), id = state.journey.step;
       if(event.target.id==='portal-about-form') {
         const prior=String(values.get('prior')),military=String(values.get('military'));
@@ -703,12 +843,14 @@
       }
       state.journey = {...state.journey,view:'questions',step:'purpose',completed:false,planReviewed:false,schoolContacted:false,answers:{...state.journey?.answers,start:'target',school:route.school,degree:route.id,routes:route.id}};
       state.journey.view=state.journey.intakeCompleted?'home':'questions';state.journey.step=state.journey.intakeCompleted?'review':'about';state.journey.completed=state.journey.intakeCompleted===true;state.journey.creditsDeferred=!state.journey.answers?.prior;announce('Copied “'+title+'”. Your courses stay saved.');
+      if(!state.journey.intakeCompleted){state.journey.profileFlowVersion=1;state.journey.profileFlow={version:1,mode:'target',returnStep:'degree',values:{},baseTarget:latestStoredPlan()?.selectedPathwayId||''};state.journey.step='purpose';persistProfileDraft();}
       history.replaceState(null,'',location.pathname);
     } catch (error) {state = previous; announce(error.message + ' Your saved plan is intact.');}
   }
   async function boot() {
     try {
       const response=await fetch('data/pathways.json');if(!response.ok)throw Error('We couldn’t load the degree research.');catalog=await response.json();models=[];
+      try{const response=await fetch('data/campus-facts.json');if(response.ok){const facts=await response.json();if(Array.isArray(facts.campuses))catalog.campusFacts=facts;}}catch{/* Campus facts can be absent without claiming a campus preference match. */}
       try {catalog=await DegreeProgramCatalog.load(catalog);} catch {announce('The full program directory could not load. You can still enter your exact degree.');}
       models=DegreeProgramCatalog.loadModels?await DegreeProgramCatalog.loadModels([]):await Promise.all(DegreeProgramCatalog.modelFiles.map(async url=>{const response=await fetch(url);if(!response.ok)throw Error('We couldn’t load the degree research.');return response.json();}));
       let stored;try{stored=JSON.parse(read(KEY));}catch{}attachPrivateCurricula(stored);
@@ -719,6 +861,7 @@
       await openPublicRoute(params);
       const school = (params.get('school') || '').trim();
       if (school && school.length <= 120) {
+        state.journey.profileFlowVersion=1;
         state=Journey.applyAnswer(state,'start','target',catalog);
         state=Journey.applyAnswer(state,'school',{school},catalog);
         if (['associate','bachelor','master','doctorate','specialist'].includes(params.get('level'))) state=Journey.applyAnswer(state,'level',params.get('level'),catalog);
@@ -726,7 +869,14 @@
         state.journey={...state.journey,view:'questions',step:'degree',completed:false};
         const selectedProgram=catalog.pathways.find(route=>route.id===params.get('program')&&route.school===school);if(selectedProgram){await previewDegree(selectedProgram);}
         history.replaceState(null,'',location.pathname+'?view=setup');
+      } else if(params.get('view')==='preferences'){
+        if(!restoreProfileDraft('preferences')){
+          if(actualSavedTarget(state)){startProfile('preferences','plan');return;}
+          state=Journey.applyAnswer(state,'start','explore',catalog);startProfile('explore');return;
+        }
       } else if (['edit','setup','about'].includes(params.get('view'))) {if(params.get('view')==='about')state.journey.step='about';else if(params.get('view')==='edit'||state.journey.completed)state.journey.step='start';state.journey.view='questions';}
+      if(!school&&params.get('view')!=='preferences'&&state.journey.view==='questions')restoreProfileDraft();
+      await ensureRouteModels(catalog.pathways.find(route=>route.id===(state.selectedPathwayId||state.profile?.pathwayId)));
 
       if (['review','school'].includes(params.get('view')) && state.selectedPathwayId) {state.journey.view='home';page=params.get('view')==='school'?'school-review':'review-plan';}
       if (params.get('share') === '1' && state.selectedPathwayId) {save(); location.replace('plan.html?share=1'); return;}

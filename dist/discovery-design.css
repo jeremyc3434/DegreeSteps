@@ -82,6 +82,41 @@ body.ds-discovery-page .portal-comparing h2 { font-size:1.5rem; letter-spacing:-
 body.ds-discovery-page .portal-comparing p { color:var(--discovery-muted); font-size:.9375rem; }
 body.ds-discovery-page .portal-footer { color:var(--discovery-muted); font-size:.875rem; }
 
+/* A short learner setup: readable choices, explicit progress, optional detail. */
+body.ds-discovery-page .portal-profile-progress { margin:0 0 24px; color:var(--discovery-muted); font-size:.9375rem; line-height:1.5; }
+body.ds-discovery-page .portal-profile-progress ol { display:flex; list-style:none; padding:0; margin:0 0 10px; gap:8px; }
+body.ds-discovery-page .portal-profile-progress li { flex:1; min-width:0; padding-top:10px; border-top:3px solid var(--discovery-line); font-size:.875rem; }
+body.ds-discovery-page .portal-profile-progress li[aria-current=step] { color:var(--discovery-blue); border-top-color:var(--discovery-blue); font-weight:600; }
+body.ds-discovery-page .portal-profile-progress p { margin:0; font-size:.875rem; }
+body.ds-discovery-page .portal-profile-progress progress { appearance:none; width:120px; height:6px; border:0; border-radius:3px; overflow:hidden; background:var(--discovery-line); }
+body.ds-discovery-page .portal-profile-progress progress::-webkit-progress-bar { background:var(--discovery-line); }
+body.ds-discovery-page .portal-profile-progress progress::-webkit-progress-value { background:var(--discovery-blue); }
+body.ds-discovery-page .portal-profile-progress progress::-moz-progress-bar { background:var(--discovery-blue); }
+body.ds-discovery-page .portal-profile-options { display:grid; gap:10px; border:0; padding:0; margin:12px 0 24px; min-width:0; }
+body.ds-discovery-page .portal-profile-options legend { padding:0; margin:0 0 10px; color:var(--discovery-ink); font-size:1rem; font-weight:600; }
+body.ds-discovery-page .portal-profile-options label { display:flex; align-items:center; gap:12px; min-height:52px; padding:12px 16px; border:1px solid var(--discovery-line); border-radius:6px; background:var(--discovery-paper); color:var(--discovery-ink); font-size:1rem; line-height:1.5; cursor:pointer; }
+body.ds-discovery-page .portal-profile-options label:has(input:checked) { border-color:var(--discovery-blue); background:var(--ds-soft-blue,#eef1ff); }
+body.ds-discovery-page .portal-profile-options label:has(input:focus-visible) { outline:3px solid var(--discovery-blue); outline-offset:3px; }
+body.ds-discovery-page .portal-profile-options input:is([type=radio],[type=checkbox]) { flex:0 0 auto; width:20px; height:20px; min-height:0; margin:0; accent-color:var(--discovery-blue); }
+body.ds-discovery-page .portal-profile-options label>span { flex:1; }
+body.ds-discovery-page .portal-profile-options label small { display:block; color:var(--discovery-muted); font-size:.875rem; line-height:1.6; margin-top:3px; }
+body.ds-discovery-page .portal-profile-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+body.ds-discovery-page .portal-profile-grid>* { min-width:0; }
+body.ds-discovery-page .portal-profile-note { padding:14px 18px; border-left:3px solid var(--discovery-blue); color:var(--discovery-muted); background:var(--ds-soft-blue,#eef1ff); font-size:.9375rem; line-height:1.6; }
+body.ds-discovery-page .portal-profile-summary { display:flex; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; gap:16px; padding:18px 20px; margin:0 0 24px; border:1px solid var(--discovery-line); border-radius:6px; background:var(--discovery-paper); }
+body.ds-discovery-page .portal-profile-summary h2 { margin:0 0 8px; color:var(--discovery-ink); font-size:1rem; line-height:1.5; }
+body.ds-discovery-page .portal-profile-summary :is(p,li) { margin:0; color:var(--discovery-muted); font-size:.9375rem; line-height:1.7; }
+body.ds-discovery-page .portal-profile-summary ul { list-style:none; margin:0; padding:0; }
+body.ds-discovery-page .portal-profile-summary a { display:inline-flex; align-items:center; min-height:44px; font-size:.9375rem; color:var(--discovery-blue); text-underline-offset:4px; }
+body.ds-discovery-page .portal-profile-summary>h2 { flex-basis:100%; }
+body.ds-discovery-page .portal-profile-summary>p { flex:1 1 250px; }
+body.ds-discovery-page :is(.portal-profile-badges,.portal-personal-badges) { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0; }
+body.ds-discovery-page :is(.portal-profile-badge,.portal-personal-badges>span,.portal-personal-badges>a) { display:inline-flex; align-items:center; gap:6px; min-height:30px; padding:4px 9px; border:1px solid #c4cee8; border-radius:4px; background:var(--ds-soft-blue,#eef1ff); color:var(--discovery-ink); font-size:.875rem; line-height:1.5; text-decoration:none; }
+body.ds-discovery-page :is(a.portal-profile-badge,.portal-personal-badges>a) { min-height:44px; text-decoration:underline; text-underline-offset:3px; }
+body.ds-discovery-page .portal-fit-reasons { margin:12px 0 18px; color:var(--discovery-muted); font-size:.9375rem; line-height:1.6; }
+body.ds-discovery-page .portal-fit-reasons>summary { min-height:44px; color:var(--discovery-blue); cursor:pointer; }
+@media(max-width:600px) { body.ds-discovery-page .portal-profile-grid { grid-template-columns:1fr; } body.ds-discovery-page .portal-profile-summary { padding:16px; } }
+
 /* Program discovery has a compact orientation area and a clear working list. */
 body.ds-discovery-page .pf-main { max-width:1400px; padding:28px 32px 60px; }
 body.ds-discovery-page .pf-heading { align-items:center; gap:24px; margin:0 0 26px; padding:26px 28px; border-radius:8px; background:var(--discovery-navy); color:#fff; }
