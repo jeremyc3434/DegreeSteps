@@ -38,7 +38,9 @@ test('all active source and standalone curricula load once per file and preserve
   const {catalog, models} = await ready;
   const researchedReady=new Map([
     ['curriculum-wgu-catalog-ecceaa488637ac83',{external:69,institutional:41}],
-    ['liberty-business-residential',{external:83,institutional:37}]
+    ['liberty-business-residential',{external:83,institutional:37}],
+    ['liberty-criminal-justice-online',{external:72,institutional:48}],
+    ['liberty-criminal-justice-residential',{external:74,institutional:46}]
   ]);
   const observedReady=[];
   assert.deepEqual(index.models.filter(entry=>entry.path.startsWith('data/curricula/')).map(entry=>entry.id).sort(),sourceModelIds,'Every active researched source model must be registered');

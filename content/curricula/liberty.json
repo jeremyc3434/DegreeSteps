@@ -311,6 +311,26 @@
             "examIdentity": "Human Growth and Development"
           },
           "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+        },
+        {
+          "id": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+          "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+          "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-18",
+          "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+          "scope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award.",
+          "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+          "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+          "sourcePages": [
+            30,
+            32,
+            33,
+            41
+          ]
         }
       ],
       "requirements": [
@@ -2702,6 +2722,46 @@
         "checkedOn": "2026-11-17",
         "pricingScope": "standard-undergraduate",
         "personalAwardsCreated": 0
+      },
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "25% of this published degree total must be completed at Liberty."
+        },
+        "externalMaxCredits": {
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "Published degree total less the 25% institutional minimum.",
+          "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+        }
+      },
+      "sharedOnlinePolicyReview": {
+        "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "checkedOn": "2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "fields": [
+          "institutionMinCredits",
+          "externalMaxCredits",
+          "majorInstitutionFraction"
+        ],
+        "alternativeCreditCeilingEstablished": false,
+        "personalAwardsCreated": 0
       }
     },
     {
@@ -2886,6 +2946,26 @@
             "examIdentity": "Human Growth and Development"
           },
           "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+        },
+        {
+          "id": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+          "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+          "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-18",
+          "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+          "scope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award.",
+          "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+          "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+          "sourcePages": [
+            30,
+            32,
+            33,
+            41
+          ]
         }
       ],
       "requirements": [
@@ -5088,6 +5168,46 @@
         "checkedOn": "2026-11-17",
         "pricingScope": "standard-undergraduate",
         "personalAwardsCreated": 0
+      },
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 15,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "25% of this published degree total must be completed at Liberty."
+        },
+        "externalMaxCredits": {
+          "value": 45,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "Published degree total less the 25% institutional minimum.",
+          "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+        }
+      },
+      "sharedOnlinePolicyReview": {
+        "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "checkedOn": "2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "fields": [
+          "institutionMinCredits",
+          "externalMaxCredits",
+          "majorInstitutionFraction"
+        ],
+        "alternativeCreditCeilingEstablished": false,
+        "personalAwardsCreated": 0
       }
     },
     {
@@ -5246,6 +5366,26 @@
           "checkedOn": "2026-11-17",
           "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
           "sha256": "d3b6aea422fdd0414cd0b93b34fcf8dea4f7786148f8b843c11ade7a8186e55f"
+        },
+        {
+          "id": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+          "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+          "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-18",
+          "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+          "scope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award.",
+          "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+          "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+          "sourcePages": [
+            30,
+            32,
+            33,
+            41
+          ]
         }
       ],
       "requirements": [
@@ -7515,6 +7655,46 @@
         "checkedOn": "2026-11-17",
         "pricingScope": "standard-undergraduate",
         "personalAwardsCreated": 0
+      },
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "25% of this published degree total must be completed at Liberty."
+        },
+        "externalMaxCredits": {
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "Published degree total less the 25% institutional minimum.",
+          "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+        }
+      },
+      "sharedOnlinePolicyReview": {
+        "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "checkedOn": "2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "fields": [
+          "institutionMinCredits",
+          "externalMaxCredits",
+          "majorInstitutionFraction"
+        ],
+        "alternativeCreditCeilingEstablished": false,
+        "personalAwardsCreated": 0
       }
     },
     {
@@ -9243,6 +9423,26 @@
             "examIdentity": "Human Growth and Development"
           },
           "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+        },
+        {
+          "id": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+          "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+          "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-18",
+          "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+          "scope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award.",
+          "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+          "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+          "sourcePages": [
+            30,
+            32,
+            33,
+            41
+          ]
         }
       ],
       "requirements": [
@@ -11695,6 +11895,46 @@
         "checkedOn": "2026-11-17",
         "pricingScope": "standard-undergraduate",
         "personalAwardsCreated": 0
+      },
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "25% of this published degree total must be completed at Liberty."
+        },
+        "externalMaxCredits": {
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "Published degree total less the 25% institutional minimum.",
+          "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+        }
+      },
+      "sharedOnlinePolicyReview": {
+        "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "checkedOn": "2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "fields": [
+          "institutionMinCredits",
+          "externalMaxCredits",
+          "majorInstitutionFraction"
+        ],
+        "alternativeCreditCeilingEstablished": false,
+        "personalAwardsCreated": 0
       }
     },
     {
@@ -13847,6 +14087,26 @@
             "examIdentity": "Humanities"
           },
           "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+        },
+        {
+          "id": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+          "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+          "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-18",
+          "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+          "scope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award.",
+          "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+          "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+          "sourcePages": [
+            30,
+            32,
+            33,
+            41
+          ]
         }
       ],
       "requirements": [
@@ -15814,6 +16074,46 @@
         "checkedOn": "2026-11-17",
         "pricingScope": "standard-undergraduate",
         "personalAwardsCreated": 0
+      },
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 15,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "25% of this published degree total must be completed at Liberty."
+        },
+        "externalMaxCredits": {
+          "value": 45,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "Published degree total less the 25% institutional minimum.",
+          "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+        }
+      },
+      "sharedOnlinePolicyReview": {
+        "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "checkedOn": "2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "fields": [
+          "institutionMinCredits",
+          "externalMaxCredits",
+          "majorInstitutionFraction"
+        ],
+        "alternativeCreditCeilingEstablished": false,
+        "personalAwardsCreated": 0
       }
     },
     {
@@ -15998,6 +16298,26 @@
             "examIdentity": "Human Growth and Development"
           },
           "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+        },
+        {
+          "id": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+          "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+          "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-18",
+          "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+          "scope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award.",
+          "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+          "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+          "sourcePages": [
+            30,
+            32,
+            33,
+            41
+          ]
         }
       ],
       "requirements": [
@@ -18486,6 +18806,46 @@
         "checkedOn": "2026-11-17",
         "pricingScope": "standard-undergraduate",
         "personalAwardsCreated": 0
+      },
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "25% of this published degree total must be completed at Liberty."
+        },
+        "externalMaxCredits": {
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "Published degree total less the 25% institutional minimum.",
+          "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+        }
+      },
+      "sharedOnlinePolicyReview": {
+        "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "checkedOn": "2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "fields": [
+          "institutionMinCredits",
+          "externalMaxCredits",
+          "majorInstitutionFraction"
+        ],
+        "alternativeCreditCeilingEstablished": false,
+        "personalAwardsCreated": 0
       }
     },
     {
@@ -18640,6 +19000,26 @@
             "examIdentity": "Humanities"
           },
           "scope": "Recommendation-family identity only. No recommendation window, source-credit quantity or historical-version substitution is applied."
+        },
+        {
+          "id": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+          "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+          "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-18",
+          "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+          "scope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award.",
+          "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+          "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+          "sourcePages": [
+            30,
+            32,
+            33,
+            41
+          ]
         }
       ],
       "requirements": [
@@ -20302,6 +20682,46 @@
         "checkedOn": "2026-11-17",
         "pricingScope": "standard-undergraduate",
         "personalAwardsCreated": 0
+      },
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 15,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "25% of this published degree total must be completed at Liberty."
+        },
+        "externalMaxCredits": {
+          "value": 45,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "Published degree total less the 25% institutional minimum.",
+          "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+        }
+      },
+      "sharedOnlinePolicyReview": {
+        "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "checkedOn": "2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "fields": [
+          "institutionMinCredits",
+          "externalMaxCredits",
+          "majorInstitutionFraction"
+        ],
+        "alternativeCreditCeilingEstablished": false,
+        "personalAwardsCreated": 0
       }
     },
     {
@@ -20477,6 +20897,26 @@
           "checkedOn": "2026-11-17",
           "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
           "sha256": "d3b6aea422fdd0414cd0b93b34fcf8dea4f7786148f8b843c11ade7a8186e55f"
+        },
+        {
+          "id": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+          "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+          "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-18",
+          "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+          "scope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award.",
+          "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+          "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+          "sourcePages": [
+            30,
+            32,
+            33,
+            41
+          ]
         }
       ],
       "requirements": [
@@ -22978,6 +23418,46 @@
         "id": "strong-route-known-basics-2026-11-17",
         "checkedOn": "2026-11-17",
         "pricingScope": "standard-undergraduate",
+        "personalAwardsCreated": 0
+      },
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "25% of this published degree total must be completed at Liberty."
+        },
+        "externalMaxCredits": {
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "calculation": "Published degree total less the 25% institutional minimum.",
+          "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+        },
+        "majorInstitutionFraction": {
+          "value": 0.25,
+          "sourceIds": [
+            "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+          ],
+          "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+        }
+      },
+      "sharedOnlinePolicyReview": {
+        "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "checkedOn": "2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "fields": [
+          "institutionMinCredits",
+          "externalMaxCredits",
+          "majorInstitutionFraction"
+        ],
+        "alternativeCreditCeilingEstablished": false,
         "personalAwardsCreated": 0
       }
     }

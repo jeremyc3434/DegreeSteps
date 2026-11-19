@@ -1,0 +1,13 @@
+# Criminal Justice baseline classifications
+
+`scripts/liberty-cj-reviewed-baseline.mjs` applies the exact `criminal-justice-baselines-2026-2027-reviewed.json` packet to Liberty's two existing 2026–2027 Criminal Justice B.S. models. It changes research-note ownership and source bindings without creating transfer awards. Original source dates remain unchanged; independently captured current course blocks and the residential degree receive separate source references with their actual body hashes and review dates.
+
+The existing 45-credit major ledger consists of fifteen three-credit courses. Its existing 25% Liberty major-residency fraction is 11.25 credits; the model conservatively retains at least 12 credits using whole three-credit courses. The helper fails if that ledger, policy, catalog or delivery format changes.
+
+The baseline retains all religion and introductory technology/UNIV requirements. No waiver or replacement elective is assumed. An optional personal waiver scenario remains separate from the retained baseline. Student transcript submission and actual section registration are execution tasks. Searching for more outside awards is an optional optimization opportunity; a named Liberty course is a valid baseline choice but does not prove outside credit is prohibited.
+
+Current course blocks verify every selected university course's existing prerequisite rules, including the delivery-specific CJUS 310 rule, CJUS 400/410 alternatives, CJUS 420's fall note, and the named UNIV/INFT/BIBL/THEO/RLGN/EVAN blocks. Actual section availability and personal registration eligibility remain execution tasks. Both exact General CJ degree pages were successfully retrieved and reviewed; the online page succeeded on a bounded retry after a transient failure.
+
+The two residential one-credit awards are corroborated by the current official guide. The full 2026–2027 undergraduate catalog's residential Duplicate Credit section (printed page46, physical PDF page47) establishes that the same course counts only once across Liberty, another college and standardized testing. The fresh baseline uses two distinct source identities and receiving elective subjects once each. Unknown prior learning remains an individual evaluation task; no personal duplicate-credit decision is assumed.
+
+Source-course recommendation identities/windows, any still-unreviewed optional university prerequisites and unnamed one-credit university fallbacks remain explicit selected-option research findings. Unknown existing notes are preserved. The packet does not grant research-ready status merely by changing prose.

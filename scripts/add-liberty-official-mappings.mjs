@@ -5,6 +5,7 @@ import {readFile, writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {applyCourseListingIdentities} from './reviewed-course-identities.mjs';
+import {applyLibertyCurrentEvidence} from './liberty-current-evidence.mjs';
 
 const root=resolve(import.meta.dirname,'..');
 export const checkedOn='2026-11-10';
@@ -199,7 +200,7 @@ export function supplementModel(input){
     upsertSources(model,variant.sources);
   }
   model.officialMappingCheckedOn=checkedOn;
-  return applyCourseListingIdentities(model);
+  return applyLibertyCurrentEvidence(applyCourseListingIdentities(model));
 }
 
 export function supplementDocument(input){

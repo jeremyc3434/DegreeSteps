@@ -31,11 +31,13 @@ test('Liberty facts fail closed across wrong school, catalog, degree total, form
  const repriced=structuredClone(review);repriced.liberty.pricing.Residential.termRate=410;assert.throws(()=>applyLibertyVerifiedBasics(input,repriced));
 });
 
-test('known published residency policy is bound while real one-credit and prerequisite research remains',()=>{
+test('known residency and duplicate-credit policies are bound while selected-option research and personal prerequisites stay separate',()=>{
  const model=applyLibertyVerifiedBasics(baseline(),review);
  assert.equal(model.policyEvidence.institutionMinCredits.value,30);assert.equal(model.policyEvidence.externalMaxCredits.value,90);assert.equal(model.policyEvidence.majorInstitutionFraction.value,.25);
  const texts=model.unresolved.map(item=>typeof item==='string'?item:item.message).join(' ');
- assert.match(texts,/one-credit Sophia/);assert.match(texts,/BUSI 201/);assert.match(texts,/recommendation version/);
+ assert.match(texts,/one-credit university fallback/);assert.match(texts,/BUSI 201/);assert.match(texts,/recommendation version/);
+ const duplicate=model.unresolved.find(note=>/duplicate-credit check/.test(note.message));assert.equal(duplicate.owner,'student');assert.equal(duplicate.status,'personal-task');assert(duplicate.sourceIds.includes('liberty-residential-duplicate-credit-2026-11-18'));
+ assert(!model.unresolved.some(note=>note.status==='unresolved'&&/duplicate-award exclusions/.test(note.message)),'reviewed duplicate policy is not an unresolved research task');
  const fallback=model.unresolved.find(note=>note.selectionRequiredOnly===true);assert.equal(fallback.scope,'selected-options');assert.equal(fallback.blocking,false);assert.deepEqual(fallback.requirementIds,['free-teams-1','free-it-career-1']);
  const identity=model.unresolved.find(note=>note.missingEvidence==='reviewed-source-identity');assert.equal(identity.scope,'selected-options');assert.equal(identity.blocking,false);
  assert(!texts.includes('Confirm major residency calculation,'));

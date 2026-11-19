@@ -5,6 +5,7 @@ import {mkdtemp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {resolve} from 'node:path';
 import {buildAcademicRegistry,buildAcademicRegistryArtifacts,validateAcademicRegistry,validateAcademicRegistryArtifacts,canonicalJSON,runAcademicRegistry,academicRegistryLimits} from './build-academic-registry.mjs';
+import {handleAcademicCoverage} from '../server/academic-coverage.mjs';
 
 const asOf='2026-11-18';
 function model(id='degree-a',changes={}){
@@ -77,6 +78,33 @@ test('runtime artifacts retain exact evidence in bounded content-addressed shard
  assert.equal(artifacts.index.revision,full.revision);assert(!Object.hasOwn(fact(artifacts.index,'equivalence'),'facts'));
  for(const [path,shard]of artifacts.shards){const text=canonicalJSON(shard)+'\n';assert(Buffer.byteLength(text)<=academicRegistryLimits.evidenceBytes);assert(path.includes(createHash('sha256').update(text).digest('hex')));}
  const summary=fact(artifacts.index,'equivalence'),shard=artifacts.shards.get('dist'+summary.detailPath);assert.deepEqual(shard.facts.find(fact=>fact.id===summary.id),fact(full,'equivalence'));
+});
+
+test('lean runtime indexes restore exact placement and model-local provenance on fact details',async()=>{
+ const full=build([model()]),before=canonicalJSON(full),artifacts=buildAcademicRegistryArtifacts(full),original=fact(full,'equivalence'),summary=fact(artifacts.index,'equivalence');
+ assert.deepEqual(artifacts.index.requirements,[]);
+ assert.equal(artifacts.index.programs[0].requirementCount,full.programs[0].requirementIds.length);
+ assert(!Object.hasOwn(summary,'requirementIds'));assert(!Object.hasOwn(summary,'sourceReferenceIds'));
+ for(const field of ['id','kind','sourceIds','programIds','evidenceFingerprint'])assert.deepEqual(summary[field],original[field]);
+ assert.equal(summary.sourceBinding.bound,original.sourceBinding.bound);assert.equal(summary.sourceBinding.missingReferenceCount,0);
+ assert.deepEqual([...artifacts.shards.values()].flatMap(shard=>shard.requirements),full.requirements);
+ assert.deepEqual([...artifacts.shards.values()].flatMap(shard=>shard.sourceReferences),full.sourceReferences);
+ const calls=[],context={registry:artifacts.index,loadEvidence:async paths=>{
+  calls.push(paths);
+  const shards=paths.map(path=>artifacts.shards.get('dist'+path));
+  return {facts:shards.flatMap(shard=>shard.facts),sources:shards.flatMap(shard=>shard.sources)};
+ }};
+ const DB={prepare:()=>({bind(){return this;},async all(){return {results:[]};}})};
+ const env={DB,PORTAL_USER:{id:'synthetic-reviewer',email:'reviewer@example.edu'},COMMUNITY_ADMIN_EMAIL:'reviewer@example.edu'};
+ const origin='https://degreesteps.example',prefix=origin+'/api/admin/academic-coverage';
+ const list=await handleAcademicCoverage(new Request(prefix+'/programs'),env,context);
+ assert.equal(list.status,200);assert.equal(calls.length,0,'Program lists must not hydrate provenance details');
+ const response=await handleAcademicCoverage(new Request(prefix+'/facts/'+summary.id),env,context),result=await response.json();
+ assert.equal(response.status,200);assert.equal(calls.length,1);
+ for(const field of ['requirementIds','sourceReferenceIds','sourceIds','programIds','evidenceFingerprint','scope','facts'])assert.deepEqual(result.fact[field],original[field],field);
+ assert.equal(result.fact.sourceBinding.bound,true);assert.deepEqual(result.fact.sourceBinding.missingLocalSourceIds,[]);
+ assert.equal(canonicalJSON(full),before,'Compaction and hydration cannot alter the validated academic evidence');
+ assert(!Object.hasOwn(summary,'requirementIds'));assert(!Object.hasOwn(summary,'sourceReferenceIds'));
 });
 
 test('CLI generation and --check cover every shard and remove obsolete evidence',async()=>{

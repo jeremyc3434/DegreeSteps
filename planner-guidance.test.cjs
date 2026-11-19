@@ -196,8 +196,8 @@ test('Liberty actual 83-credit transfer route does not inherit unselected fallba
   assert(!plan.validation.errors.some(issue=>/fallback|one-credit|recommendation window|major residency calculation/i.test(issue.message)));
   assert(!plan.validation.researchNotes.some(note=>note.requirementId==='engl-101'),'reviewed exact source identity is not sent back to generic research');
   const versionNotes=plan.validation.researchNotes.filter(note=>note.missingEvidence==='reviewed-source-identity');
-  assert.equal(versionNotes.length,7);
-  assert(versionNotes.every(note=>note.requirementId&&note.optionId&&note.provider==='Sophia'&&note.blocking===false));
+  assert.equal(versionNotes.length,0,'independently reviewed provider identities close the seven former source-version gaps');
+  assert.equal(plan.validation.valid,true);
   assert(!plan.validation.errors.some(issue=>issue.code==='program_research'&&/BUSI 201/.test(issue.message)));
   assert(plan.personalTasks.some(task=>/Before BUSI 201/.test(task.message)&&task.sourceIds.includes('liberty-busi-prerequisites-2026-2027-reviewed')));
   assert.equal(program.assessmentPlanningScenario.personalAssessmentStatus,'unknown');

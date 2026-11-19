@@ -2,13 +2,19 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),Planner=require('./dist/planner.js'),View=require('./dist/course-plan-view.js');
 const registry=require('./dist/data/curriculum-registry.json'),awards=require('./content/transfer-awards/liberty-named-awards-2026-11.json');
 const byId=new Map(awards.awards.map(award=>[award.id,award])),packs=new Map();
+const providerReview=require('./content/catalog/sophia-liberty-baseline-identities-reviewed-2026-11-18.json');
+const reviewedIdentities=new Map(providerReview.courses.map(course=>[course.aceId,course]));
 const modelFor=entry=>{if(!packs.has(entry.path))packs.set(entry.path,JSON.parse(fs.readFileSync('./dist/'+entry.path)));const payload=packs.get(entry.path);return(payload.models||[payload]).find(model=>model.id===entry.id);};
 test('compiled named awards keep undergraduate, delivery, quantity and source boundaries',()=>{
  let seen=0;
  for(const entry of registry.models){const model=modelFor(entry),mode=model.format==='Online'?'online':model.format==='Residential'?'campus':null;
   for(const req of model.requirements)for(const option of req.options){const award=byId.get(option.id);if(!award)continue;seen++;
    assert.equal(model.school,awards.school);assert(award.degreeLevels.includes(model.level));assert(award.modalities.includes(mode));assert.equal(req.institutionalOnly===true,false);assert.equal(option.evidence,'conditional');assert.equal(option.credits,req.credits);assert.equal(option.creditSystem,model.creditSystem);assert.equal(option.receivingCode,award.receivingCode);
-   assert.equal(option.sourceCreditStatus,'unknown');assert.equal(option.sourceCredits,undefined,'A receiving guide cannot establish independent provider credits');assert.equal(option.sourceCreditSystem,undefined);assert.match(option.sourceCreditBasis,/unknown|not-established|receiving|independent/i);
+   if(option.sourceCreditStatus==='verified-current-provider-and-ace'){
+    const identity=reviewedIdentities.get(option.code);assert(identity,'Only an independently reviewed identity can establish source credits');assert.equal(option.provider,'Sophia');assert.equal(option.sourceCredits,identity.sourceCredits);assert.equal(option.sourceCreditSystem,identity.sourceCreditSystem);assert.equal(option.sourceCreditEvidence.status,'reviewed');
+    const sourceIds=new Set(model.sources.map(source=>source.id));assert(option.sourceCreditEvidence.sourceIds.length>0&&option.sourceCreditEvidence.sourceIds.every(id=>sourceIds.has(id)));assert(option.recommendationPeriodSourceIds.length>0&&option.recommendationPeriodSourceIds.every(id=>sourceIds.has(id)));
+   }else{assert.equal(option.sourceCreditStatus,'unknown');assert.equal(option.sourceCredits,undefined,'A receiving guide alone cannot establish independent provider credits');assert.equal(option.sourceCreditSystem,undefined);}
+   assert.match(option.sourceCreditBasis,/unknown|not-established|receiving|independent/i);
    const ids=new Set(model.sources.map(source=>source.id));for(const id of option.sourceIds)assert(ids.has(id));
    const primary=awards.sources.find(source=>source.provider===option.provider&&source.modality===mode);assert.equal(option.url,primary.url);assert.equal(option.sourcePage,award.sourcePages[primary.id]);
    if(option.placementType!=='elective')assert([req.code,...(req.allowedCourseCodes||[])].includes(option.receivingCode));

@@ -13,6 +13,7 @@ import {supplementModel as applyReviewedLibertyMaps} from './add-liberty-officia
 import {applyLibertyVerifiedBasics} from './liberty-verified-basics.mjs';
 import {addLibertyCLIOptions,readLibertyCLIReview} from './add-liberty-cli-awards.mjs';
 import {reviewedSourceDate} from './reviewed-source-date.mjs';
+import {applyLibertyCurrentEvidence} from './liberty-current-evidence.mjs';
 const require=createRequire(import.meta.url),root=resolve(import.meta.dirname,'..');
 const Catalog=require('../dist/program-catalog.js');
 const Planner=require('../dist/planner.js');
@@ -27,7 +28,13 @@ const directory=await read('dist/data/program-catalog.json');
 const base=await read('dist/data/pathways.json');
 const routes=new Map([...list(base.pathways),...directory.programs].map(p=>[p.id,p]));
 const shared=new Map();
-for(const file of Catalog.modelFiles){const model=await read('dist/'+file),rename=id=>model.id+'--'+id,sources=(model.sources||[]).map(s=>({...clone(s),id:rename(s.id)}));for(const req of model.requirements||[]){if(!req.code)continue;const id=key(model.school)+'|'+key(req.code);if(!shared.has(id))shared.set(id,[]);for(const option of req.options||[]){if(option.provider==='University')continue;const copy=clone(option);copy.sourceIds=list(copy.sourceIds).map(rename);if(copy.identitySourceIds)copy.identitySourceIds=copy.identitySourceIds.map(rename);if(copy.codeAliasEvidence)copy.codeAliasEvidence=copy.codeAliasEvidence.map(item=>({...item,sourceIds:list(item.sourceIds).map(rename)}));shared.get(id).push({option:{...copy,receivingCode:copy.receivingCode||req.code,evidence:'conditional',mappingScope:'Same-school receiving-course award researched in another degree; exact degree and delivery-format application require confirmation.',conditions:[...list(copy.conditions),'This receiving-course award was researched for '+model.title+' ('+(model.format||'format requires confirmation')+'). Confirm current equivalency, course version, delivery format and application to this exact degree before purchase.']},creditSystem:model.creditSystem||'semester',degreeLevels:['associate','bachelor'],sources});}}}
+function namespaceSourceReferences(value,known,rename,name=''){
+  if(Array.isArray(value))return /sourceIds$/i.test(name)?value.map(id=>known.has(id)?rename(id):id):value.map(item=>namespaceSourceReferences(item,known,rename));
+  if(typeof value==='string'&&/sourceId$/i.test(name))return known.has(value)?rename(value):value;
+  if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[name==='sourcePages'&&known.has(key)?rename(key):key,namespaceSourceReferences(item,known,rename,key)]));
+  return value;
+}
+for(const file of Catalog.modelFiles){const model=await read('dist/'+file),rename=id=>model.id+'--'+id,sources=(model.sources||[]).map(s=>({...clone(s),id:rename(s.id)}));for(const req of model.requirements||[]){if(!req.code)continue;const id=key(model.school)+'|'+key(req.code);if(!shared.has(id))shared.set(id,[]);for(const option of req.options||[]){if(option.provider==='University')continue;const copy=namespaceSourceReferences(option,new Set((model.sources||[]).map(source=>source.id)),rename);shared.get(id).push({option:{...copy,receivingCode:copy.receivingCode||req.code,evidence:'conditional',mappingScope:'Same-school receiving-course award researched in another degree; exact degree and delivery-format application require confirmation.',conditions:[...list(copy.conditions),'This receiving-course award was researched for '+model.title+' ('+(model.format||'format requires confirmation')+'). Confirm current equivalency, course version, delivery format and application to this exact degree before purchase.']},creditSystem:model.creditSystem||'semester',degreeLevels:['associate','bachelor'],sourceModalities:modelModalities(model,list(base.pathways).filter(route=>route.modelId===model.id)),sources});}}}
 const namedAwards=validateNamedAwards(await read(namedAwardsPath));
 for(const award of namedAwards.awards){const id=key(namedAwards.school)+'|'+key(award.receivingCode);if(!shared.has(id))shared.set(id,[]);shared.get(id).push({option:clone(award),award,creditSystem:award.creditSystem,degreeLevels:award.degreeLevels,sources:namedAwards.sources.filter(source=>award.sourceIds.includes(source.id))});}
 const dsstAwards=validateDSSTAwards(await read('content/transfer-awards/liberty-dsst-reviewed-2026-11-17.json'));
@@ -39,7 +46,7 @@ function modelModalities(model,records){return /^online$/i.test(model.format||''
 function sharedAwardApplies(match,model,records){
   const levels=[...new Set([model.level,...records.map(record=>record.level)].filter(Boolean))];
   if(!levels.length||match.degreeLevels&&!levels.every(level=>match.degreeLevels.includes(level)))return false;
-  if(!match.award)return true;
+  if(!match.award){const modes=modelModalities(model,records);return modes.length>0&&Array.isArray(match.sourceModalities)&&modes.every(mode=>match.sourceModalities.includes(mode));}
   const modes=modelModalities(model,records);return modes.length>0&&levels.every(level=>modes.every(modality=>awardScopeAllows(match.award,{school:model.school,level,modality})));
 }
 function sharedOption(match,model,records){const option=clone(match.option),modes=modelModalities(model,records);if(option.sourceCredits===null){delete option.sourceCredits;delete option.sourceCreditSystem;}if(match.award&&modes.length===1){const source=match.sources.find(source=>source.modality===modes[0]);if(source){option.url=source.url;option.sourcePage=option.sourcePages?.[source.id]??option.sourcePage;}}return option;}
@@ -96,6 +103,7 @@ function compile(raw,document){
   if(requirements.some(r=>r.options.some(o=>o.provider!=='University'))&&!Number.isFinite(model.alternativeMaxCredits))model.policyReview.push({field:'alternativeMaxCredits',status:'unverified',message:'Confirm the combined limit on alternative credit sources.'});
   const sections=list(model.curriculumSections).map(s=>({...s,requirementIds:list(s.requirementIds).flatMap(id=>requirements.filter(r=>r.id===id||r.allocationOf===id).map(r=>r.id))}));
   if(sections.length)model.curriculumSections=sections;
+  Object.assign(model,applyLibertyCurrentEvidence(model,{compiled:true}));
   model.evidenceCheckedOn=model.evidenceCheckedOn||document.checkedOn;
   model.coverageLabel=model.coverageLabel||(gap>0?'Published curriculum with specific remaining research gaps':'Published degree requirements with source-linked course choices');
   model.completeExecutablePathway=false; // Individual admission and transfer approval remain necessary.
@@ -126,13 +134,14 @@ for(const name of (await readdir(folder)).filter(n=>n.endsWith('.json')).sort())
       if(option.provider==='University'||!option.code)continue;
       const identity=key(option.provider)+'|'+key(option.code),mapped=model.id+':'+requirement.id;
       if(courseIndex.has(identity)){const previous=courseIndex.get(identity);if(!previous.mappedCourseIds.includes(mapped))previous.mappedCourseIds.push(mapped);continue;}
-      const source=model.sources.find(s=>option.sourceIds.includes(s.id));if(!source)continue;
+      const independentSource=['verified-current-provider-and-ace','reviewed-independent-recommendation'].includes(option.sourceCreditStatus);
+      const source=model.sources.find(s=>(independentSource?list(option.recommendationPeriodSourceIds):option.sourceIds).includes(s.id))||model.sources.find(s=>option.sourceIds.includes(s.id));if(!source)continue;
       const evidenceCheckedAt=reviewedSourceDate(source);
-      courseSources.set(source.id,{...source,checkedAt:evidenceCheckedAt,scope:'Original receiving-school course mapping. Provider credit recommendations and individual degree applicability require confirmation.'});
-      let url=null;try{const u=new URL(option.courseUrl||option.url);if(u.protocol==='https:'&&!u.username&&!u.password&&['sophia.org','study.com','straighterline.com','clep.collegeboard.org','saylor.org','getcollegecredit.com','christianleaders.org','christianleadersinstitute.org'].some(domain=>u.hostname===domain||u.hostname.endsWith('.'+domain)))url=u.href;}catch{}
+      courseSources.set(source.id,{...source,checkedAt:evidenceCheckedAt,scope:independentSource?'Independently reviewed provider credit quantity and current ACE recommendation; degree placement remains separately sourced.':'Original receiving-school course mapping. Provider credit recommendations and individual degree applicability require confirmation.'});
+      let url=null;try{const u=new URL(option.providerCourseUrl||option.courseUrl||option.url);if(u.protocol==='https:'&&!u.username&&!u.password&&['sophia.org','study.com','straighterline.com','clep.collegeboard.org','saylor.org','getcollegecredit.com','christianleaders.org','christianleadersinstitute.org'].some(domain=>u.hostname===domain||u.hostname.endsWith('.'+domain)))url=u.href;}catch{}
       let providerDirectoryUrl=null;try{const u=new URL(option.providerDirectoryUrl);if(option.provider==='Christian Leaders Institute'&&u.protocol==='https:'&&!u.username&&!u.password&&u.hostname==='christianleaders.org'&&u.pathname==='/course/index.php'&&/^\d+$/.test(u.searchParams.get('categoryid')||''))providerDirectoryUrl=u.href;}catch{}
       const sourceCredits=positive(option.sourceCredits)?option.sourceCredits:null;
-      courseIndex.set(identity,{id:'mapped-'+createHash('sha256').update(identity).digest('hex').slice(0,20),provider:option.provider,providerId:option.providerId||slug(option.provider),title:option.title,code:option.code,codeAliases:list(option.codeAliases),url,...(providerDirectoryUrl?{providerDirectoryUrl}:{}),evidenceUrl:option.url||source.url,credits:sourceCredits,creditSystem:sourceCredits?option.sourceCreditSystem||null:null,creditBasis:sourceCredits?'curated-course-map':'not-yet-known',sourceId:source.id,checkedAt:evidenceCheckedAt,indexedAt:doc.checkedOn,recommendationStatus:'requires-review',mappingStatus:option.evidence==='conditional'?'conditional-receiving-map':'published-receiving-map',mappedCourseIds:[mapped],subject:'Other'});
+      courseIndex.set(identity,{id:'mapped-'+createHash('sha256').update(identity).digest('hex').slice(0,20),provider:option.provider,providerId:option.providerId||slug(option.provider),title:option.title,code:option.code,codeAliases:list(option.codeAliases),url,...(providerDirectoryUrl?{providerDirectoryUrl}:{}),evidenceUrl:option.url||source.url,credits:sourceCredits,creditSystem:sourceCredits?option.sourceCreditSystem||null:null,creditBasis:sourceCredits?independentSource?'reviewed-provider-and-ace':'curated-course-map':'not-yet-known',sourceId:source.id,checkedAt:evidenceCheckedAt,indexedAt:doc.checkedOn,recommendationStatus:independentSource?'reviewed-current-window':'requires-review',mappingStatus:option.evidence==='conditional'?'conditional-receiving-map':'published-receiving-map',mappedCourseIds:[mapped],subject:'Other'});
     }
   }
   await output('dist/data/curricula/'+name,{version:1,checkedOn:doc.checkedOn,models});

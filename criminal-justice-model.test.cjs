@@ -42,8 +42,11 @@ for (const {mode, program, external, general, elective} of models) {
     assert(plan.totals.external <= 90);
     const actions = plan.rows.filter(row => row.option.provider !== 'University').map(row => row.option.provider + ':' + row.option.code);
     assert.equal(new Set(actions).size, actions.length, 'one outside course must not be purchased or counted twice');
-    assert.equal(plan.readiness, 'draft');
-    assert.equal(plan.validation.valid, false, 'individual applicability and remaining research are unresolved');
+    assert.equal(plan.readiness, 'review-ready');
+    assert.equal(plan.validation.valid, true, 'source-bound named university courses complete the researched baseline');
+    assert.equal(plan.blockers.length, 0);
+    assert(plan.validation.researchNotes.every(note => note.blocking === false), 'further outside awards are optional optimizations, not baseline blockers');
+    assert.equal(program.cjBaselineClassificationReview.personalAwardsCreated, 0, 'research completion does not award personal credit');
     assert.equal(program.completeExecutablePathway, false);
     assert.equal(plan.costs.total, null, 'no total degree price from a subscription-month assumption');
     assert.equal(plan.timing.estimatedWeeks, null, 'no verified completion date');

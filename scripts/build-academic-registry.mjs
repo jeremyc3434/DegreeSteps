@@ -250,10 +250,15 @@ export function buildAcademicRegistryArtifacts(registry){
  const scopes=new Map();
  const scopeRef=scope=>{const scopeId=id('scope',scope);if(!scopes.has(scopeId))scopes.set(scopeId,{id:scopeId,...scope});return {$ref:scopeId};};
  const index={...registry,artifactType:'academic-registry-index',evidenceShards:[...shards].map(([path,value])=>({path:'/'+path.slice(5),sha256:path.split('/').at(-1).slice(0,-5),bytes:bytes(canonicalJSON(value)+'\n')}))};
- index.facts=registry.facts.map(fact=>({...omit(fact,['facts','declaredEvidence','scope','sourceBinding','optionIds']),scope:scopeRef(fact.scope),sourceBinding:{bound:fact.sourceBinding.bound,missingReferenceCount:fact.sourceBinding.missingLocalSourceIds.length},label:fact.facts.title||fact.facts.field||fact.kind,detailPath:paths.get(fact.id)}));
+ // Placement and model-local reference IDs are needed on an exact evidence
+ // detail, not on overview/queue indexes. The full records above retain them;
+ // request-local hydration restores them after checking the fact fingerprint.
+ index.facts=registry.facts.map(fact=>({...omit(fact,['facts','declaredEvidence','scope','sourceBinding','optionIds','requirementIds','sourceReferenceIds']),scope:scopeRef(fact.scope),sourceBinding:{bound:fact.sourceBinding.bound,missingReferenceCount:fact.sourceBinding.missingLocalSourceIds.length},label:fact.facts.title||fact.facts.field||fact.kind,detailPath:paths.get(fact.id)}));
  index.sources=registry.sources.map(source=>({...pick(source,['id','url','title','metadataDigest','programIds']),detailPath:paths.get(source.id)}));
  index.programs=registry.programs.map(program=>({...omit(program,['factIds','requirementIds','findingIds','sourceIds']),factCount:program.factIds.length,requirementCount:program.requirementIds.length,findingCount:program.findingIds.length}));
- index.requirements=registry.requirements.map(requirement=>({...pick(requirement,['id','modelId','localId','title']),detailPath:paths.get(requirement.id)}));
+ // Requirements have no runtime lookup endpoint. They remain complete in the
+ // content-addressed evidence files and in the validated build registry.
+ index.requirements=[];
  index.sourceReferences=[];
  index.sourceReferenceShards=unique(registry.sourceReferences.map(reference=>paths.get(reference.id)));
  index.findings=registry.findings.map(finding=>({...pick(finding,['id','modelId','programIds','factIds','category','code','message','owner','blocking','scope','field','requirementIds','optionIds']),detailPath:paths.get(finding.id)}));

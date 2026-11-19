@@ -23,12 +23,13 @@ test('an actual Liberty mixed major-elective allocation applies C to an upper aw
   assert.equal(requirement.minimumGrade, undefined);
   assert(requirement.minimumGradeSourceIds.every(id => model.sources.some(source => source.id === id)));
   const program = {...model, requirements:[requirement]};
-  const upper = requirement.options.find(option => option.provider === 'Sophia' && option.code === 'SOPH-0085');
-  const lower = requirement.options.find(option => option.provider === 'Study.com' && option.code === 'SDCM-0053');
-  assert.equal(upper.receivingCode, 'BUSI 330');
+  const upper = requirement.options.find(option => option.provider === 'Study.com' && option.code === 'SDCM-0128');
+  const lower = requirement.options.find(option => option.provider === 'DSST' && option.code === 'DANT-0066');
+  assert(upper && lower, 'Use actual online awards rather than the residential-only bank matches');
+  assert.equal(upper.receivingCode, 'CJUS 310');
   assert.equal(upper.upper, true);
   assert.equal(lower.receivingCode, 'BUSI 240');
-  assert.equal(lower.upper, false, 'the receiving award remains lower level despite the source Business 307 title');
+  assert.equal(lower.upper, false, 'the receiving award determines the level even when the saved source record is marked upper');
   for (const grade of ['D', 'C-', 'C']) {
     for (const option of [upper, lower]) {
       const record = original(option.provider, option.code, grade, {title:option.title, upper:true});

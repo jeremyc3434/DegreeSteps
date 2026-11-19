@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "id": "liberty-cj-study-identities-2026-11-18",
+  "checkedOn": "2026-11-18",
+  "school": "Liberty University",
+  "catalogYear": "2026-2027",
+  "sources": [
+    {
+      "id": "ace-study-biology101-v5-2026-11-18",
+      "kind": "ace",
+      "title": "ACE Study.com Biology101 SDCM0001 version5",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "roles": [
+        "provider-identity",
+        "recommendation-period"
+      ],
+      "checkedOn": "2026-11-18",
+      "sourceHtmlSha256": "d58d4b507c58da80182624e74f3522d766bc4071761f36f204cc1bf397925a09",
+      "capturedAt": "2026-11-18T23:29:18.262343+00:00",
+      "retrieval": "Actual official ACE exhibit body: exact ACE ID, organization course ID, version, selected recommendation period, semester quantity, level and minimum score reviewed."
+    },
+    {
+      "id": "ace-study-computer-science103-v4-2026-11-18",
+      "kind": "ace",
+      "title": "ACE Study.com ComputerScience103 SDCM0162 version4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=637022a4-f4a6-f111-b8de-002248082a42&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "roles": [
+        "provider-identity",
+        "recommendation-period"
+      ],
+      "checkedOn": "2026-11-18",
+      "sourceHtmlSha256": "965fd24b2388e45e0b02d8166c3c579f751a343ed6958d2991a9a9f1195cc660",
+      "capturedAt": "2026-11-18T23:29:18.428274+00:00",
+      "retrieval": "Actual official ACE exhibit body: exact ACE ID, organization course ID, version, selected recommendation period, semester quantity, level and minimum score reviewed."
+    },
+    {
+      "id": "provider-study-biology101-current-web-2026-11-18",
+      "kind": "provider",
+      "title": "Study.com current Biology101 IntrotoBiology offering",
+      "url": "https://study.com/academy/course/introduction-to-biology.html",
+      "roles": [
+        "provider-identity",
+        "current-offering"
+      ],
+      "checkedOn": "2026-11-18",
+      "rawBodyCaptured": false,
+      "retrieval": "Current official provider page opened and read in the web reader; provider offering and ACE ID corroborated. No local raw-body hash is claimed.",
+      "observed": {
+        "aceId": "SDCM-0001",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      }
+    },
+    {
+      "id": "provider-study-computer-science103-current-web-2026-11-18",
+      "kind": "provider",
+      "title": "Study.com current ComputerScience103 offering",
+      "url": "https://study.com/academy/course/computer-science-103-computer-concepts-applications.html",
+      "roles": [
+        "provider-identity",
+        "current-offering"
+      ],
+      "checkedOn": "2026-11-18",
+      "rawBodyCaptured": false,
+      "retrieval": "Current official provider page opened and read in the web reader; provider offering and ACE ID corroborated. No local raw-body hash is claimed.",
+      "observed": {
+        "aceId": "SDCM-0162",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      }
+    },
+    {
+      "id": "liberty-cj-study-online-named-awards-2026-11-18",
+      "kind": "university",
+      "title": "Liberty Online Study.com May2026 guide: exact CJ baseline award",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "roles": [
+        "receiving-map"
+      ],
+      "checkedOn": "2026-11-18",
+      "sha256": "c716db080bfeeaf528599f2c78b5ba913d7841cbe49d4fce886108a21bbedcb3",
+      "capturedAt": "2026-11-18T21:44:44.340Z",
+      "guideUpdated": "2026-05",
+      "sourcePage": 1,
+      "evidenceType": "official-receiving-school-equivalency",
+      "scope": {
+        "school": "Liberty University",
+        "format": "Online",
+        "catalogYear": "2026-2027"
+      },
+      "retrieval": "Actual official guide body reviewed for the exact named provider-course/receiving-course/quantity row. Online and residential URLs independently returned identical current PDF bytes."
+    },
+    {
+      "id": "liberty-cj-study-residential-named-awards-2026-11-18",
+      "kind": "university",
+      "title": "Liberty Residential Study.com May2026 guide: exact CJ baseline award",
+      "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+      "roles": [
+        "receiving-map"
+      ],
+      "checkedOn": "2026-11-18",
+      "sha256": "c716db080bfeeaf528599f2c78b5ba913d7841cbe49d4fce886108a21bbedcb3",
+      "capturedAt": "2026-11-18T23:29:19.103878+00:00",
+      "guideUpdated": "2026-05",
+      "sourcePage": 1,
+      "evidenceType": "official-receiving-school-equivalency",
+      "scope": {
+        "school": "Liberty University",
+        "format": "Residential",
+        "catalogYear": "2026-2027"
+      },
+      "retrieval": "Actual official guide body reviewed for the exact named provider-course/receiving-course/quantity row. Online and residential URLs independently returned identical current PDF bytes."
+    }
+  ],
+  "courses": [
+    {
+      "modelId": "liberty-criminal-justice-online",
+      "format": "Online",
+      "requirementId": "biol-101",
+      "receivingCode": "BIOL 101",
+      "receivingCredits": 3,
+      "aceId": "SDCM-0001",
+      "providerCourseCode": "Biology 101",
+      "aceVersion": 5,
+      "recommendationStart": "2026-05-01",
+      "recommendationEnd": "2029-04-30",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "minimumPassingScore": 70,
+      "activeOffering": true,
+      "courseUrl": "https://study.com/academy/course/introduction-to-biology.html",
+      "identitySourceIds": [
+        "ace-study-biology101-v5-2026-11-18",
+        "provider-study-biology101-current-web-2026-11-18"
+      ],
+      "recommendationPeriodSourceIds": [
+        "ace-study-biology101-v5-2026-11-18"
+      ],
+      "receivingGuideSourceId": "liberty-cj-study-online-named-awards-2026-11-18",
+      "receivingGuidePage": 1
+    },
+    {
+      "modelId": "liberty-criminal-justice-residential",
+      "format": "Residential",
+      "requirementId": "inft-110",
+      "receivingCode": "INFT 110",
+      "receivingCredits": 3,
+      "aceId": "SDCM-0162",
+      "providerCourseCode": "Computer Science 103",
+      "aceVersion": 4,
+      "recommendationStart": "2026-11-01",
+      "recommendationEnd": "2029-10-31",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "minimumPassingScore": 70,
+      "activeOffering": true,
+      "courseUrl": "https://study.com/academy/course/computer-science-103-computer-concepts-applications.html",
+      "identitySourceIds": [
+        "ace-study-computer-science103-v4-2026-11-18",
+        "provider-study-computer-science103-current-web-2026-11-18"
+      ],
+      "recommendationPeriodSourceIds": [
+        "ace-study-computer-science103-v4-2026-11-18"
+      ],
+      "receivingGuideSourceId": "liberty-cj-study-residential-named-awards-2026-11-18",
+      "receivingGuidePage": 1
+    }
+  ],
+  "personalAwardsCreated": 0,
+  "universityGradeRulesChanged": false,
+  "historicalVersionsRetargeted": false
+}
