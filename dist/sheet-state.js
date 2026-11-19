@@ -217,6 +217,21 @@
     if(Object.prototype.hasOwnProperty.call(object(state.scenarios?.[programId]?.optionSelections),requirementId))next=setCourse(next,programId,requirementId,'');
     return next;
   }
+  function correctProgress(state,recordId,progress,options={}) {
+    if(!['planned','in-progress'].includes(progress))throw new Error('Choose Not started or In progress when correcting a course.');
+    recordId=identifier(recordId,'learning record');
+    const records=list(state?.learning).filter(record=>record?.id===recordId),existing=records[0];
+    if(records.length!==1)throw new Error('Open the original course in My courses before changing its progress.');
+    if(options.expectedRecord!==undefined&&JSON.stringify(existing)!==options.expectedRecord)throw new Error('This course changed while you were reviewing it. Open its latest details and try again.');
+    if(list(existing.evaluations).some(evaluation=>evaluation?.status==='confirmed')&&options.confirmation!==true){
+      const error=new Error('This course has school-confirmed credit. Confirm the correction before changing its progress.');error.code='confirmation_required';throw error;
+    }
+    // Completion belongs to one original course or exam, including all of a
+    // bundle's placements. Keep the source record; unfinished learning cannot
+    // retain a completion date or any degree-specific credit award.
+    const next=updateLearning(state,{...existing,status:progress,completedOn:''});
+    return {...next,learning:next.learning.map(record=>record.id===recordId?{...record,evaluations:[]}:record)};
+  }
   function recordProgress(state,program,requirement,rowOption,progress,options={}) {
     if(!['in-progress','completed','confirmed'].includes(progress))throw new Error('Choose in-progress, completed, or confirmed progress.');
     const req=list(program?.requirements).find(item=>item.id===requirement?.id);
@@ -344,5 +359,5 @@
     const values={externalCredits:current?.coverage?.mappedExternalCredits,confirmedCredits:current?.totals?.confirmed,modeledSubtotal:current?.costs?.modeledSubtotal,scenarioWeeks:current?.timing?.scenarioWeeks};
     return Object.fromEntries(Object.entries(values).map(([key,value])=>[key,finite(value)&&finite(baseline[key])?value-baseline[key]:null]));
   }
-  return Object.freeze({initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog});
+  return Object.freeze({initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog});
 }));

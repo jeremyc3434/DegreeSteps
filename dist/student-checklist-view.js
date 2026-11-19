@@ -13,6 +13,7 @@
   const labels = {todo:'To do',doing:'Doing',waiting:'Waiting',done:'Done'};
   const statusOf = task => Object.hasOwn(labels,task?.status) ? task.status : 'todo';
   const taskKey = task => 'task:' + task.id;
+  const deleteSignature = (model,task) => task ? JSON.stringify([model.scope,task.id,task.title,task.status,task.dueOn,task.notes]) : null;
   const isCourse = task => task.kind === 'course' || task.group === 'courses';
   const canEditStatus = task => task.canSetStatus === true;
   const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>';
@@ -98,7 +99,8 @@
       '<div class="dc-form-row">'+(canEditStatus(task) ? '<label for="'+statusId+'">Status<select id="'+statusId+'" name="status"'+focusAttr(key+':status')+'>'+statusOptions(field(ui,task,'status'))+'</select></label>' : '')+
       '<label for="'+dueId+'">Due date <span>(optional)</span><input id="'+dueId+'" type="date" name="dueOn" value="'+esc(field(ui,task,'dueOn'))+'"'+focusAttr(key+':dueOn')+'></label></div>'+
       '<label for="'+notesId+'">Notes <span>(optional)</span><textarea id="'+notesId+'" name="notes" rows="2" maxlength="1000"'+focusAttr(key+':notes')+'>'+esc(field(ui,task,'notes'))+'</textarea></label>'+
-      '<div class="dc-form-actions"><button type="submit" class="dc-save"'+focusAttr(key+':save')+'>Save changes</button>'+(task.custom ? '<button type="button" class="dc-delete" data-dc-delete="'+esc(task.id)+'"'+focusAttr(key+':delete')+'>Delete task</button>' : '')+'</div>';
+      '<div class="dc-form-actions"><button type="submit" class="dc-save"'+focusAttr(key+':save')+'>Save changes</button>'+(task.custom ? '<button type="button" class="dc-delete" data-dc-delete="'+esc(task.id)+'"'+focusAttr(key+':delete')+'>Delete task</button>' : '')+'</div>'+
+      (task.custom&&ui.pendingDelete?.id===task.id?'<div class="dc-delete-confirm" role="group" aria-label="Confirm task deletion"><p>Delete “'+esc(field(ui,task,'title'))+'”? Its due date and notes will be removed too.</p><div class="dc-form-actions"><button type="button" class="dc-delete" data-dc-confirm-delete="'+esc(task.id)+'"'+focusAttr(key+':confirm-delete')+'>Delete task</button><button type="button" class="dc-save" data-dc-cancel-delete="'+esc(task.id)+'"'+focusAttr(key+':keep')+'>Keep task</button></div></div>':'');
   }
   function taskHTML(task,group,ui) {
     const status = statusOf(task), key = taskKey(task), href = safeHref(task.href), title = esc(task.title);
@@ -208,8 +210,29 @@
       }
       const revealButton = event.target.closest('[data-dc-reveal]');
       if (revealButton) {reveal(ui,revealButton.dataset.dcReveal);return;}
+      const keepButton = event.target.closest('[data-dc-cancel-delete]');
+      if(keepButton){
+        event.preventDefault();remember(ui);ui.pendingDelete=null;render(ui,ui.model);
+        findFocus(ui,'task:'+keepButton.dataset.dcCancelDelete+':delete')?.focus({preventScroll:true});
+        announce(ui,'Task kept.');return;
+      }
+      const confirmDelete = event.target.closest('[data-dc-confirm-delete]');
+      if(confirmDelete){
+        event.preventDefault();const id=confirmDelete.dataset.dcConfirmDelete,task=list(ui.model.tasks).find(item=>item.id===id);
+        if(!task?.custom||ui.pendingDelete?.id!==id||ui.pendingDelete.signature!==deleteSignature(ui.model,task)){
+          ui.pendingDelete=null;remember(ui);render(ui,ui.model);announce(ui,'This task changed. Review it before deleting.',true);return;
+        }
+        ui.pendingDelete=null;dispatch(ui,actionFor(ui,'delete-task',{taskId:id}),'Task deleted.','task:'+id);return;
+      }
       const deleteButton = event.target.closest('[data-dc-delete]');
-      if (deleteButton) dispatch(ui,actionFor(ui,'delete-task',{taskId:deleteButton.dataset.dcDelete}),'Task deleted.', 'task:'+deleteButton.dataset.dcDelete);
+      if(deleteButton){
+        event.preventDefault();const task=list(ui.model.tasks).find(item=>item.id===deleteButton.dataset.dcDelete);
+        if(!task?.custom)return;
+        remember(ui);ui.pendingDelete={id:task.id,signature:deleteSignature(ui.model,task)};
+        ui.open.set(taskKey(task),true);render(ui,ui.model);
+        const keep=findFocus(ui,taskKey(task)+':keep');keep?.focus({preventScroll:true});keep?.scrollIntoView?.({block:'nearest'});
+        announce(ui,'Choose Delete task to remove it, or Keep task to go back.');
+      }
     });
     ui.content.addEventListener('submit',event=>{
       const form = event.target.closest('form[data-dc-form]');
@@ -223,7 +246,7 @@
         return;
       }
       const task = list(ui.model.tasks).find(item=>item.id === form.dataset.dcEdit);
-      if (task) dispatch(ui,actionFor(ui,task.custom ? 'edit-task' : 'set-task',{taskId:task.id,...values}),'Task updated.',taskKey(task));
+      if (task) {ui.pendingDelete=null;dispatch(ui,actionFor(ui,task.custom ? 'edit-task' : 'set-task',{taskId:task.id,...values}),'Task updated.',taskKey(task));}
     });
   }
   function update(node,state,draft,options = {}) {
@@ -231,7 +254,7 @@
     let ui = views.get(node);
     if (!ui) {
       node.innerHTML = '<div class="student-checklist"><div data-dc-content></div><p class="dc-live" role="status" aria-live="polite" aria-atomic="true"></p></div>';
-      ui = {node,id:'dc'+(++sequence),content:node.querySelector('[data-dc-content]'),live:node.querySelector('.dc-live'),open:new Map(),formDrafts:new Map(),dirtyForms:new Set(),options,model:null,scope:null};
+      ui = {node,id:'dc'+(++sequence),content:node.querySelector('[data-dc-content]'),live:node.querySelector('.dc-live'),open:new Map(),formDrafts:new Map(),dirtyForms:new Set(),pendingDelete:null,options,model:null,scope:null};
       views.set(node,ui);
       attach(ui);
     }
@@ -245,8 +268,10 @@
       if (checklistOpen !== undefined) ui.open.set('checklist',checklistOpen);
       ui.formDrafts.clear();
       ui.dirtyForms.clear();
+      ui.pendingDelete=null;
       announce(ui,'');
     }
+    if(ui.pendingDelete&&(model.valid===false||ui.pendingDelete.signature!==deleteSignature(model,list(model.tasks).find(task=>task.id===ui.pendingDelete.id))))ui.pendingDelete=null;
     ui.scope = scope;
     ui.model = model;
     ui.options = options;

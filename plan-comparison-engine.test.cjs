@@ -6,10 +6,58 @@ test('in-progress and planned coursework show potential separately without earne
 test('one six-credit exam is counted once across its two required placements',()=>{const s=seed();s.learning=[earned({id:'clep1',provider:'CLEP',code:'CLEP-0040',title:'College Composition',credits:6}),earned({id:'clep-duplicate',provider:'CLEP',code:'CLEP-0040',title:'College Composition',credits:6})];const v=build(s),tesu=v.scenarios[1];assert.equal(tesu.summary.applicableCompletedCredits,6);const rows=v.matrix.filter(x=>x.course.provider==='CLEP'&&x.course.code==='CLEP-0040');assert.equal(rows.length,1);assert.equal(rows[0].cells[tesu.id].credits,6);});
 test('unknown and cross-unit records remain evaluation questions rather than wasted credits',()=>{const s=seed();s.learning=[earned({provider:'Old community college',code:'HIST-301',title:'History'}),earned({id:'quarter',creditSystem:'quarter'})];const v=build(s);for(const id of ['comp1','quarter']){const row=v.matrix.find(x=>x.course.recordIds.includes(id));assert(Object.values(row.cells).every(c=>c.status==='needs-evaluation'));}assert(v.scenarios.every(s=>s.summary.applicableCompletedCredits===0));});
 test('saved alternatives omit inventory copies and use current records when rebuilt or applied',()=>{let s=seed();s.sheet.notes={'liberty-business-residential':{'engl-101':'Private note'}};s=E.saveScenario(s,J.buildDraft(s,catalog,models),'My starting choice');const snap=s.whatIf.snapshots[0];assert(!('learning'in snap));s.learning=[earned()];const v=E.build(s,catalog,models,costs,{selectedIds:['current','saved:'+snap.id],includeOtherFormats:true});assert.equal(v.scenarios[1].summary.applicableCompletedCredits,3);const next=E.applyScenario(s,'route:tesu-general-management',catalog,{includeOtherFormats:true});assert.deepEqual(next.learning,s.learning);assert.deepEqual(next.sheet.notes,s.sheet.notes);assert.deepEqual(next.scenarios,s.scenarios);assert.equal(next.selectedPathwayId,'tesu-general-management');});
+test('saved settings cannot resurrect a Finished course after its shared record is corrected',()=>{
+ for(const correctedStatus of ['in-progress','saved']){
+  let state=seed();state.learning=[earned({evaluations:[{programId:'liberty-business-residential',requirementId:'engl-101',optionId:'sophia-soph-0015',status:'confirmed'}]})];
+  const finished=J.buildDraft(state,catalog,models);assert.equal(finished.plan.totals.confirmed+finished.plan.totals.reported,3);
+  // Older versions can retain planner fields in their settings. They are not
+  // authoritative course records when a student later corrects a mistake.
+  state.scenarios={'liberty-business-residential':{...finished.input,universityRate:432}};
+  state=E.saveScenario(state,finished,'Before correcting Finished');const snapshot=state.whatIf.snapshots[0];
+  assert.equal(snapshot.settings.completed.length,1);
+  state.learning[0].status=correctedStatus;state.learning[0].evaluations=[];const before=JSON.stringify(state);
+  const comparison=E.build(state,catalog,models,costs,{selectedIds:['current','saved:'+snapshot.id]});
+  for(const scenario of comparison.scenarios){assert.equal(scenario.summary.applicableCompletedCredits,0);assert.equal(scenario.summary.confirmedCredits,0);assert.equal(scenario.draft.input.completed.length,0);}
+  const restored=E.applyScenario(state,'saved:'+snapshot.id,catalog),draft=J.buildDraft(restored,catalog,models);
+  assert.deepEqual(restored.learning,state.learning);assert.equal(restored.scenarios['liberty-business-residential'].universityRate,432);
+  assert.equal(draft.input.completed.length,0);assert.equal(draft.plan.totals.confirmed+draft.plan.totals.reported,0);assert.equal(draft.plan.totals.confirmed,0);
+  assert.equal(JSON.stringify(state),before);
+ }
+});
 test('a different degree in the same official school gets no borrowed business course map',()=>{const s=seed(),p=catalog.pathways.find(p=>p.school==='Liberty University'&&p.title==='Psychology Major (B.S.)');const v=E.build(s,catalog,models,costs,{selectedIds:['current','route:'+p.id],includeOtherFormats:true});assert.equal(v.scenarios[1].summary,null);assert.equal(v.scenarios[1].available,false);assert.equal(v.scenarios[1].canUse,true);assert(Object.values(v.matrix[0].cells).some(c=>c.credits===null));});
 test('tuition left excludes completed receiving-university coursework and outside costs remain unknown',()=>{const s=seed(),m=models[0],r=m.requirements.find(r=>r.institutionalOnly&&r.options.some(o=>o.provider==='University'));const o=r.options.find(o=>o.provider==='University');s.learning=[earned({id:'uni',provider:'University',code:o.code,title:o.title,credits:r.credits,institution:m.school,sourceProgramId:m.id,evaluations:[{programId:m.id,requirementId:r.id,optionId:o.id,status:'confirmed'}]})];const a=build(seed()).scenarios[0].summary,b=build(s).scenarios[0].summary;assert(b.universityCreditsRemaining<a.universityCreditsRemaining);assert(b.universityTuitionRemaining<a.universityTuitionRemaining);assert.equal(b.remainingCost,null);});
 test('candidate courses preview known mappings without adding learning and invalid plans pause totals',()=>{const s=seed(),before=JSON.stringify(s),v=E.build(s,catalog,models,costs,{includeOtherFormats:true,candidate:{provider:'StraighterLine',code:'ENG101'}});assert.equal(JSON.stringify(s),before);assert(v.courses.some(c=>c.provider==='StraighterLine'));assert(v.scenarios.every(s=>s.summary.applicableCompletedCredits===0));s.scenarios={'liberty-business-residential':{optionSelections:{'engl-101':'not-a-course'}}};assert.equal(build(s).scenarios[0].summary,null);});
 test('explicit comparison removal does not silently re-add a default school',()=>{const s=seed();assert.equal(E.build(s,catalog,models,costs,{selectedIds:['current']}).scenarios.length,1);});
+test('deleting an unused saved version preserves automatic comparisons rather than explicitly clearing them',()=>{
+ let state=seed();state=E.saveScenario(state,J.buildDraft(state,catalog,models),'Unused version');
+ const id=state.whatIf.snapshots[0].id,before=JSON.stringify(state),next=E.removeScenario(state,id);
+ assert(!Object.hasOwn(next.whatIf,'selectedIds'));assert.equal(next.whatIf.snapshots.length,0);
+ assert(E.build(next,catalog,models,costs).scenarios.length>1);
+ assert.deepEqual(next.learning,state.learning);assert.equal(JSON.stringify(state),before);
+ state.whatIf.selectedIds=['saved:'+id,'route:tesu-general-management'];
+ assert.deepEqual(E.removeScenario(state,id).whatIf.selectedIds,['route:tesu-general-management']);
+});
+test('removing every targetless comparison stays empty while an absent selection still suggests degrees',()=>{
+ const s=J.initialize(null,null,catalog);s.learning=[earned({status:'saved'})];
+ const before=JSON.stringify(s),defaults=E.build(s,catalog,models,costs,{fromCourses:true});
+ assert(defaults.scenarios.length>0);assert(defaults.selectedIds.length>0);
+ const empty=E.build(s,catalog,models,costs,{fromCourses:true,selectedIds:[]});
+ assert.deepEqual(empty.selectedIds,[]);assert.equal(empty.scenarios.length,0);assert.equal(empty.recommendation,null);
+ assert(empty.courses.some(course=>course.recordIds.includes('comp1')),'Removing comparison cards must keep the student’s course collection.');
+ s.whatIf={selectedIds:[]};
+ assert.equal(E.build(s,catalog,models,costs,{fromCourses:true}).scenarios.length,0,'A stored explicit empty selection remains empty after reload.');
+ delete s.whatIf;
+ assert.equal(JSON.stringify(s),before);
+});
+test('an explicit empty option overrides stored alternatives and keeps the active plan and candidate preview',()=>{
+ const s=seed();s.whatIf={selectedIds:['route:tesu-general-management']};const before=JSON.stringify(s);
+ const empty=E.build(s,catalog,models,costs,{selectedIds:[],candidate:{provider:'StraighterLine',code:'ENG101'}});
+ assert.deepEqual(empty.selectedIds,['current']);assert.equal(empty.scenarios.length,1);assert.equal(empty.scenarios[0].isCurrent,true);
+ assert(empty.courses.some(course=>course.origin==='candidate'));
+ assert.equal(JSON.stringify(s),before);
+ const restored=E.build(s,catalog,models,costs,{selectedIds:undefined});
+ assert(restored.scenarios.some(scenario=>scenario.id==='route:tesu-general-management'),'Only an actual option array overrides the stored comparison.');
+});
 test('the same source code at different receiving institutions never becomes one original course',()=>{const s=seed();s.learning=[earned({id:'u1',provider:'University',code:'ENG101',institution:'Liberty University',sourceProgramId:'liberty-business-residential'}),earned({id:'u2',provider:'University',code:'ENG101',institution:'Another University',sourceProgramId:'another-program'})];assert.equal(build(s).courses.filter(c=>c.provider==='University').length,2);});
 test('saved course choices can be revisited within the same degree without replacing the shared records',()=>{let s=seed();s.scenarios={'liberty-business-residential':{optionSelections:{'engl-101':'university-engl-101'}}};s=E.saveScenario(s,J.buildDraft(s,catalog,models),'University version');const snap=s.whatIf.snapshots[0];s.scenarios['liberty-business-residential'].optionSelections['engl-101']='sophia-soph-0015';const v=E.build(s,catalog,models,costs,{selectedIds:['current','saved:'+snap.id]});assert(v.scenarios[0].summary.universityTuitionRemaining<v.scenarios[1].summary.universityTuitionRemaining);assert.deepEqual(s.learning,[]);});
 test('course-first recommendations respect subject and licensed career goals instead of defaulting to business maps',()=>{const s=J.initialize(null,null,catalog);s.learning=[earned({status:'saved'})];s.profile={...s.profile,field:'technology',goal:'change-career'};let v=E.build(s,catalog,models,costs,{fromCourses:true});assert(v.scenarios.every(x=>x.draft.pathway.field==='technology'||x.draft.pathway.fields?.includes('technology')));assert(v.scenarios.every(x=>x.summary===null));s.profile={...s.profile,field:'any',goal:'teacher'};v=E.build(s,catalog,models,costs,{fromCourses:true});assert(v.scenarios.length>0);assert(v.scenarios.every(x=>x.draft.pathway.goals.includes('teacher')));assert(v.scenarios.every(x=>x.summary===null));assert(v.scenarios.every(x=>x.eligible));});

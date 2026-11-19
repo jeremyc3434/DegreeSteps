@@ -10,12 +10,12 @@ function fixture(){
  const pathways=models.map(model=>({id:model.id,modelId:model.id,school:model.school,title:model.title,level:'bachelor',field:'business',fields:['business'],goals:['any-degree'],modalities:['campus']}));
  const catalog={pathways,curriculumRegistry:{models:models.map(model=>({id:model.id,routeIds:[model.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}))}};
  let state=Journey.initialize(null,null,catalog);state=Journey.applyAnswer(state,'start','explore',catalog);
- Object.assign(state.profile,{goal:'any-degree',degreeLevel:'bachelor',field:'any',modality:'campus',priority:'balanced',campusLocation:'near-home',homeState:'VA'});state.journey.step='routes';state.whatIf={selectedIds:[]};state.sheet.notes={private:'Keep this private note'};
+ Object.assign(state.profile,{goal:'any-degree',degreeLevel:'bachelor',field:'any',modality:'campus',priority:'balanced',campusLocation:'near-home',homeState:'VA'});state.journey.step='routes';state.whatIf={};state.sheet.notes={private:'Keep this private note'};
  const campus=(route,state)=>({id:route.id+'-campus',school:route.school,city:'Test City',state,routeIds:[route.id],sourceUrls:['https://example.edu/campus'],traits:[]});
  const facts={campuses:[campus(pathways[0],'AZ'),campus(pathways[1],'VA')]};
  return{state,catalog,models,facts,option};
 }
-function build(f,priority='credits',extra={}){return Comparison.build(f.state,{...f.catalog,...extra},f.models,{entries:[]},{fromCourses:true,selectedIds:[],priority,deferMatrix:true});}
+function build(f,priority='credits',extra={}){return Comparison.build(f.state,{...f.catalog,...extra},f.models,{entries:[]},{fromCourses:true,priority,deferMatrix:true});}
 test('a sourced campus preference breaks a true academic and price tie in the final comparison',()=>{
  const f=fixture(),before=JSON.stringify(f.state),plain=build(f),personal=build(f,'credits',{campusFacts:f.facts});
  assert.deepEqual(plain.scenarios.map(row=>row.pathwayId),['far','local']);

@@ -31,6 +31,19 @@ test('the wizard uses cost and speed estimates instead of remembered comparison 
  f.api.setProfile({priority:'speed'});await f.api.prepare();view=copy(f.api.view());assert.equal(view.scenarios[0].pathwayId,'fast');assert.match(f.api.html(),/Estimated study time/);assert.match(f.api.html(),/weeks/);assert.equal(f.api.state().learning[0].status,'saved');assert.equal(f.api.state().sheet.notes.private,'My private note');
 });
 
+test('fresh wizard suggestions do not inherit or overwrite an intentionally empty or manual Compare selection',async()=>{
+ for(const selectedIds of [[],['route:unknown'],['route:fast']]){
+  const initial=data().state;initial.whatIf.selectedIds=selectedIds;const before=copy(initial),payloads=[];
+  const f=fixture({initial,runner:payload=>{payloads.push(copy(payload));return Promise.resolve(Comparison.build(copy(payload.state),copy(payload.catalog),copy(payload.models),copy(payload.costs),copy(payload.options)));}});
+  await f.api.prepare();const view=copy(f.api.view());
+  assert.equal(view.scenarios.length,3);assert.equal(view.scenarios[0].pathwayId,'cheap');
+  assert.equal(view.mappedProgramsChecked,4,'A new search evaluates every eligible plan, rather than the remembered comparison.');
+  assert.equal(payloads.length,1);assert(!Object.hasOwn(payloads[0].options,'selectedIds'));
+  assert(!Object.hasOwn(payloads[0].state.whatIf,'selectedIds'));
+  assert.deepEqual(copy(f.api.state()),before);assert.deepEqual(f.stored(),before);assert.equal(f.writes(),0);
+ }
+});
+
 test('optional study preferences cannot override an explicit cost or speed priority on displayed cards',async()=>{
  const f=fixture();f.api.setProfile({learningPace:'self-paced',priority:'cost'});await f.api.prepare();
  let html=f.api.html();assert.match(html,/Self-paced option/);assert(html.indexOf('data-degree-preview="cheap"')<html.indexOf('data-degree-preview="course-fit"'));assert.match(html,/Available tuition \+ course estimates first/);

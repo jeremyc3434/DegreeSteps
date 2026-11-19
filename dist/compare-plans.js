@@ -1,6 +1,6 @@
 (function(){'use strict';
  const KEY='degreepath-guide-v3',$=id=>document.getElementById(id),Engine=window.DegreePlanComparison,esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),money=v=>v==null?'Needs estimate':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v),params=new URLSearchParams(location.search);
- let state,catalog,models,costs,view,pendingId=null,pendingDestination='plan.html',revision=0,candidate=null,sideBySide=false,comparisonJobs=null,renderTimer=null,matrixPending=null,viewPending=false,confirming=false,savingVersion=false;
+ let state,catalog,models,costs,view,pendingId=null,pendingDestination='plan.html',revision=0,candidate=null,sideBySide=false,comparisonJobs=null,renderTimer=null,matrixPending=null,viewPending=false,confirming=false,savingVersion=false,pendingDeleteSaved=null,pendingCapacityResume=null;
  function runner(){
   if(!comparisonJobs){if(!window.DegreeComparisonRunner)throw Error('The comparison tools could not load. Reload this page to try again.');comparisonJobs=window.DegreeComparisonRunner.create({engine:Engine,timeoutMs:90000,onFallback:message=>{$('comparison-status').textContent=message;}});}
   return comparisonJobs;
@@ -35,6 +35,7 @@
   render();
  }
  function routesForComparison(){
+  const explicit=options().selectedIds;if(Array.isArray(explicit)&&!explicit.length&&!state.selectedPathwayId&&!state.profile?.pathwayId&&!candidate)return [];
   const profile={...state.profile,pathwayId:'',school:'',degree:'',...(options().includeOtherFormats?{modality:'any',classroomImportance:'open'}:{})};
   // Only select public model paths here. All course matching runs in the worker.
   const routes=DegreeGuide.recommend(profile,{pathways:readyRoutes()},[],[]).map(result=>result.pathway);
@@ -153,16 +154,40 @@
   $('comparison-priority-control').hidden=false;$('comparison-intent').hidden=true;$('comparison-advanced').hidden=false;
   $('comparison-status').textContent='Comparing your courses across degree plans…';$('comparison-results').innerHTML='';$('comparison-results').setAttribute('aria-busy','true');
   renderTimer=setTimeout(async()=>{try{if(ticket!==revision)return;await ensureRouteModels(routesForComparison());if(ticket!==revision)return;const result=await runner().run('build',{state,catalog:comparisonCatalog(),models,costs,options:options()},{onProgress:packet=>comparisonProgress(packet,ticket)});if(ticket!==revision)return;view=result;viewPending=false;$('comparison-results').setAttribute('aria-busy','false');const best=bestId()||view.recommendation?.id||view.scenarios.find(s=>s.eligible&&s.available)?.id||view.scenarios.find(s=>s.eligible)?.id,primary=view.scenarios.find(s=>s.id===best)||view.scenarios[0],simple=view.courseFirst&&!view.hasTarget&&!candidate;
-   if(!view.scenarios.length){$('comparison-results').innerHTML='<div class="comparison-no-route"><h2>Your goal is saved.</h2><p>There isn’t a reviewed route matching these preferences yet. This does not mean your courses cannot transfer.</p><a href="portal.html?view=setup">Choose a school or get guidance →</a><button type="button" data-edit-goal>Change my preferences</button></div>';}
+   const explicitlyEmpty=!view.hasTarget&&!candidate&&Array.isArray(options().selectedIds)&&options().selectedIds.length===0;
+   if(!view.scenarios.length){$('comparison-results').innerHTML=explicitlyEmpty?'<div class="comparison-no-route"><h2>No plans selected.</h2><p>Your courses are still saved. Choose a degree below, or bring back the suggested plans.</p><button type="button" class="comparison-use-button" data-show-suggestions>Show suggestions</button><button type="button" data-choose-comparison>Choose a degree</button></div>':'<div class="comparison-no-route"><h2>Your goal is saved.</h2><p>There isn’t a reviewed route matching these preferences yet. This does not mean your courses cannot transfer.</p><a href="portal.html?view=setup">Choose a school or get guidance</a><button type="button" data-edit-goal>Change my preferences</button></div>';}
    else if(simple){const others=view.scenarios.filter(s=>s!==primary);$('comparison-results').innerHTML='<div class="comparison-student-grid" style="--plan-count:'+view.scenarios.length+'"><div class="comparison-recommendation">'+card(primary,view.scenarios.indexOf(primary),best)+'</div>'+others.map(s=>card(s,view.scenarios.indexOf(s),best)).join('')+'</div>';}
    else $('comparison-results').innerHTML='<div class="comparison-card-scroll" tabindex="0" role="region" aria-label="Side-by-side degree summaries"><div class="comparison-card-grid" style="--plan-count:'+view.scenarios.length+'">'+view.scenarios.map((s,i)=>card(s,i,best)).join('')+'</div></div>';
-   $('comparison-courses').hidden=false;renderSaved();if($('comparison-courses').open||candidate)renderMatrix();else{$('comparison-matrix').innerHTML='';$('comparison-library-info').textContent='Open to check the individual placements for your courses.';}
+   $('comparison-courses').hidden=!view.scenarios.length;renderSaved();if($('comparison-courses').open||candidate)renderMatrix();else{$('comparison-matrix').innerHTML='';$('comparison-library-info').textContent='Open to check the individual placements for your courses.';}
    $('compare-slot').innerHTML=(view.hasTarget?[]:['<option value="0">First option</option>']).concat(['<option value="1">Second option</option>','<option value="2">Third option</option>']).join('');
-   $('comparison-status').textContent=view.hasTarget?'Each plan uses your same saved courses. Choose Use this plan when you’re ready to switch.':candidate?'Course preview only. These checks do not choose a degree or record finished credits.':'Compare these options, then choose Use this plan to open its courses. Your degree stays unchosen until then.';
+   $('comparison-status').textContent=explicitlyEmpty?'No plans selected. Choose a degree or show suggestions.':view.hasTarget?'Each plan uses your same saved courses. Choose Use this plan when you’re ready to switch.':candidate?'Course preview only. These checks do not choose a degree or record finished credits.':'Compare these options, then choose Use this plan to open its courses. Your degree stays unchosen until then.';
    $('comparison-course-fit-note').hidden=false;$('comparison-course-fit-note').innerHTML='<span>'+($('compare-priority').value==='cost'&&view.scenarios.some(s=>s.available&&s.eligible&&!s.summary?.costBreakdown?.complete)?'Complete cost estimates are not available for every route. Compare the itemized estimates below. ':'')+'Compared '+number(view.mappedProgramsChecked)+' degree course plans using your same course collection.</span>'+(view.hasTarget?' <a href="portal.html?view=edit">Change my preferences →</a>':!candidate?' <button type="button" data-edit-goal>Change my preferences</button>':'');
   }catch(e){if(ticket!==revision||superseded(e))return;viewPending=false;fail(e);$('comparison-results').setAttribute('aria-busy','false');$('comparison-status').textContent='Your saved courses and active plan are unchanged.';}},75);
  }
- function renderSaved(){const rows=state.whatIf?.snapshots||[];$('comparison-saved-versions').innerHTML=rows.length?'<details><summary>Saved plan versions · '+rows.length+'</summary><div class="comparison-saved-list">'+rows.map(s=>'<div><span>'+esc(s.label)+'</span><button type="button" data-add-saved="'+esc(s.id)+'">Compare</button><button type="button" data-delete-saved="'+esc(s.id)+'">Remove</button></div>').join('')+'</div></details>':'';}
+ function renderSaved(){
+  const rows=state.whatIf?.snapshots||[];
+  if(pendingDeleteSaved&&!rows.some(row=>row.id===pendingDeleteSaved.id))pendingDeleteSaved=null;
+  const resume=pendingCapacityResume?'<p><button type="button" data-resume-plan-switch'+(viewPending?' disabled':'')+'>Continue switching plans</button></p>':'';
+  $('comparison-saved-versions').innerHTML=rows.length?'<details'+(pendingDeleteSaved||pendingCapacityResume?' open':'')+'><summary>Saved plan versions · '+rows.length+'</summary>'+resume+'<div class="comparison-saved-list">'+rows.map(snapshot=>'<div><span>'+esc(snapshot.label)+'</span><button type="button" data-add-saved="'+esc(snapshot.id)+'">Compare</button><button type="button" data-delete-saved="'+esc(snapshot.id)+'">Delete saved version</button>'+(pendingDeleteSaved?.id===snapshot.id?'<div class="comparison-version-confirm" role="group" aria-label="Confirm saved version deletion"><p>Delete “'+esc(snapshot.label)+'”? This removes its saved planning choices. Your active plan, courses and notes stay unchanged.</p><button type="button" data-confirm-delete-saved="'+esc(snapshot.id)+'">Delete this version</button><button type="button" data-cancel-delete-saved>Keep version</button></div>':'')+'</div>').join('')+'</div></details>':resume;
+ }
+ function preservesExistingSettings(before,after){
+  return ['scenarios','savings'].every(key=>Object.entries(before[key]||{}).every(([id,value])=>JSON.stringify(value)===JSON.stringify(after[key]?.[id])))&&JSON.stringify(before.learning||[])===JSON.stringify(after.learning||[])&&JSON.stringify(before.sheet?.notes||{})===JSON.stringify(after.sheet?.notes||{});
+ }
+ function needsVersionBackup(value,id){return id!=='current'&&Boolean(value.selectedPathwayId&&!value.sheet?.isExample);}
+ function showVersionCapacity(value,preview,id){
+  const safe=preservesExistingSettings(value,preview),node=$('comparison-use-content');
+  const old=node.querySelector?.('[data-version-capacity]');old?.remove?.();
+  const html='<section data-version-capacity role="group" aria-label="Saved version limit"><h3>Your 20 saved versions are full.</h3><p>Keep your saved versions and choose how to continue.</p><button type="button" data-manage-saved-versions>Manage saved versions</button>'+(safe?'<label><input id="comparison-skip-backup" type="checkbox"> Switch plans without saving another version of my current plan. My existing saved versions, courses, notes and per-degree settings stay unchanged.</label>':'<p>This choice changes existing planning settings. Make room for a backup before continuing.</p>')+'</section>';
+  // The capacity decision is displayed inside the existing plan confirmation.
+  if(typeof node.insertAdjacentHTML==='function')node.insertAdjacentHTML('beforeend',html);else node.innerHTML+=html;
+  const note=$('comparison-use').querySelector?.(':scope > p');if(note)note.textContent='Your courses and notes stay saved. Choose how to handle the saved-version limit above.';
+  return safe;
+ }
+ function manageSavedVersions(){
+  if(confirming){++revision;comparisonJobs?.cancel();viewPending=false;}
+  state=latest();pendingCapacityResume={id:pendingId,destination:pendingDestination};$('comparison-use').close();$('comparison-advanced').open=true;renderSaved();$('comparison-saved-versions').scrollIntoView?.({block:'center'});$('comparison-saved-versions').querySelector?.('summary')?.focus?.();
+ }
+
  function nextStepsHTML(preview,draft){
   if(!window.DegreeChecklist?.build)return '';
   const checklist=DegreeChecklist.build(preview,draft||Journey(preview));if(!checklist.valid)return '';
@@ -174,8 +199,10 @@
   const chosen=view.scenarios.find(s=>s.id===id);
   if(!chosen?.available||!chosen.canUse)throw Error('This degree needs an exact usable course map before it can become your plan.');
   pendingId=id;pendingDestination=destination;
-  const preview=Engine.applyScenario(latest(),pendingId,catalog,{...options(),...(options().fromCourses?{collectionSelections:chosen.summary?.collectionSelections||{}}:{})});
+  const stored=latest(),preview=Engine.applyScenario(stored,pendingId,catalog,{...options(),...(options().fromCourses?{collectionSelections:chosen.summary?.collectionSelections||{}}:{})});
   $('comparison-use-content').innerHTML='<strong>'+esc(chosen.draft.pathway.title)+'</strong><p>'+esc(chosen.draft.pathway.school)+'</p>'+(preview.profile.modality!==state.profile.modality?'<p>Study format changes from '+esc(state.profile.modality||'flexible')+' to '+esc(preview.profile.modality)+'.</p>':'')+(options().fromCourses?'<p>Matching unfinished courses become proposed choices. Your original course statuses and school evaluations stay the same.</p>':'')+nextStepsHTML(preview,chosen.draft)+(destination.includes('cost-time')?'<p>Choose this plan, then add your tuition quote or study pace.</p>':'');
+  const note=$('comparison-use').querySelector?.(':scope > p');if(note)note.textContent='Your course records and private notes stay saved. Your current active plan will be saved as a version.';
+  if(needsVersionBackup(stored,id)&&(stored.whatIf?.snapshots||[]).length>=20)showVersionCapacity(stored,preview,id);
   $('comparison-confirm-use').textContent=destination.includes('cost-time')?'Use plan and add estimate':'Use this plan';
   $('comparison-use').showModal();
  }
@@ -194,8 +221,10 @@
    if(!choice?.available||!choice.canUse||choice.eligible===false)throw Error('This plan no longer fits the current course choices and preferences. Nothing was saved. Review the updated comparison.');
    const current=checked.scenarios.find(s=>s.isCurrent)?.draft;
    if(fresh.selectedPathwayId&&!fresh.sheet?.isExample&&!current)throw Error('Your current plan could not be saved as a version. Nothing was changed.');
-   const backup=current&&fresh.selectedPathwayId&&!fresh.sheet?.isExample?Engine.saveScenario(fresh,current,'Previous plan · '+current.pathway.title):fresh;
-   const next=Engine.applyScenario(backup,id,catalog,{...settings,...(settings.fromCourses?{collectionSelections:choice.summary?.collectionSelections||{}}:{})});
+   const applyOptions={...settings,...(settings.fromCourses?{collectionSelections:choice.summary?.collectionSelections||{}}:{})},proposed=Engine.applyScenario(fresh,id,catalog,applyOptions),capacity=needsVersionBackup(fresh,id)&&(fresh.whatIf?.snapshots||[]).length>=20;
+   if(capacity&&(!$('comparison-skip-backup')?.checked||!preservesExistingSettings(fresh,proposed))){showVersionCapacity(fresh,proposed,id);viewPending=false;$('comparison-status').textContent='Choose how to continue at the saved-version limit. Your plans are unchanged.';return false;}
+   const backup=!capacity&&current&&needsVersionBackup(fresh,id)?Engine.saveScenario(fresh,current,'Previous plan · '+current.pathway.title):fresh;
+   const next=capacity?proposed:Engine.applyScenario(backup,id,catalog,applyOptions);
    if(store(next)){location.assign(destination);return true;}
    viewPending=false;
    return false;
@@ -208,7 +237,7 @@
   savingVersion=true;clearTimeout(renderTimer);comparisonJobs?.cancel();matrixPending=null;viewPending=true;if(button){button.disabled=true;button.textContent='Saving this version…';}
   try{
    const fresh=latest(),version=JSON.stringify(fresh);attachPrivateCurricula(fresh);
-   await ensureRouteModels(catalog.pathways.find(route=>route.id===(fresh.selectedPathwayId||fresh.profile?.pathwayId)));if(ticket!==revision)return;
+   await ensureRouteModels([catalog.pathways.find(route=>route.id===(fresh.selectedPathwayId||fresh.profile?.pathwayId))]);if(ticket!==revision)return;
    const draft=await runner().run('draft',{state:fresh,catalog,models});if(ticket!==revision||!$('comparison-save').open)return;
    if(JSON.stringify(latest())!==version)throw Error('Your plan changed while this version was being checked. Nothing was saved. Try saving the current version again.');
    if(store(Engine.saveScenario(fresh,draft,label))){$('comparison-save').close();render();}else viewPending=false;
@@ -218,7 +247,7 @@
  document.addEventListener('click',async e=>{
   const b=e.target.closest('button');if(!b)return;
   try{
-   if(b.dataset.sourceProgram){const route=catalog.pathways.find(route=>route.id===b.dataset.sourceProgram);if(route){b.disabled=true;await discoverRoute(route,b.dataset.sourceVariant||'',b.dataset.sourceForce==='true');}return;}
+   if(b.dataset.sourceProgram){const route=catalog.pathways.find(route=>route.id===b.dataset.sourceProgram);if(route){const original=b.textContent;let failed=false;b.disabled=true;b.textContent='Checking requirements…';try{await discoverRoute(route,b.dataset.sourceVariant||'',b.dataset.sourceForce==='true');}catch(error){failed=true;$('comparison-status').textContent='Requirements could not be checked. Your comparison is unchanged; try again.';throw error;}finally{b.disabled=false;b.textContent=failed?'Try checking again':original;if(failed)b.dataset.sourceForce='true';}}return;}
    if(b.hasAttribute('data-side-by-side')){sideBySide=true;render();return;}
    if(b.hasAttribute('data-edit-goal')){$('comparison-intent').hidden=false;$('comparison-goal').focus();return;}
    if(b.matches('[data-close-dialog]')){const dialog=b.closest('dialog');dialog.close();if(dialog.id==='comparison-use'&&confirming||dialog.id==='comparison-save'&&savingVersion){++revision;comparisonJobs?.cancel();state=latest();render();}return;}
@@ -226,10 +255,16 @@
    if(b.dataset.estimatePlan){previewUse(b.dataset.estimatePlan,'plan.html?task=cost-time&from=compare');return;}
    if(b.dataset.removePlan){const ids=view.selectedIds.filter((_,i)=>i!==Number(b.dataset.removePlan));if(meta({selectedIds:ids}))render();}
    if(b.dataset.addSaved)selected(Number($('compare-slot').value),'saved:'+b.dataset.addSaved);
-   if(b.dataset.deleteSaved){const next=Engine.removeScenario(latest(),b.dataset.deleteSaved);if(store(next))render();}
+   if(b.dataset.deleteSaved){const fresh=latest(),snapshot=(fresh.whatIf?.snapshots||[]).find(item=>item.id===b.dataset.deleteSaved);if(snapshot){state=fresh;pendingDeleteSaved={id:snapshot.id,revision:JSON.stringify(snapshot)};renderSaved();$('comparison-saved-versions').querySelector?.('[data-confirm-delete-saved]')?.focus?.();}return;}
+   if(b.hasAttribute('data-cancel-delete-saved')){pendingDeleteSaved=null;renderSaved();return;}
+   if(b.dataset.confirmDeleteSaved){if(pendingDeleteSaved?.id!==b.dataset.confirmDeleteSaved)return;const fresh=latest(),snapshot=(fresh.whatIf?.snapshots||[]).find(item=>item.id===pendingDeleteSaved.id);if(!snapshot||JSON.stringify(snapshot)!==pendingDeleteSaved.revision){pendingDeleteSaved=null;state=fresh;renderSaved();throw Error('That saved version changed. Review the latest version before deleting it.');}const next=Engine.removeScenario(fresh,pendingDeleteSaved.id);if(store(next)){pendingDeleteSaved=null;render();}return;}
+   if(b.hasAttribute('data-show-suggestions')){const next=latest();next.whatIf={...next.whatIf,version:1};delete next.whatIf.selectedIds;if(store(next))render();return;}
+   if(b.hasAttribute('data-choose-comparison')){$('comparison-advanced').open=true;$('compare-school').scrollIntoView?.({block:'center'});$('compare-school').focus();return;}
+   if(b.hasAttribute('data-manage-saved-versions')){manageSavedVersions();return;}
+   if(b.hasAttribute('data-resume-plan-switch')){if(pendingCapacityResume){const resume=pendingCapacityResume;previewUse(resume.id,resume.destination);pendingCapacityResume=null;}return;}
   }catch(error){fail(error);}
  });
- $('comparison-intent-form').addEventListener('submit',e=>{e.preventDefault();const next=latest(),goal=$('comparison-goal').value,licensed=['teacher','lawyer','pilot','health-professional'].includes(goal);next.profile={...next.profile,goal,degreeLevel:$('comparison-level').value,field:licensed?'any':$('comparison-field').value,modality:$('comparison-modality').value,classroomImportance:$('comparison-modality').value==='campus'?'essential':'open'};next.journey={...next.journey,answers:{...next.journey?.answers,purpose:licensed?'licensed-career':goal,level:$('comparison-level').value,...(licensed?{career:goal}:{})},planReviewed:false,schoolContacted:false};next.whatIf={...next.whatIf,version:1,goalReady:true,selectedIds:[]};if(store(next))render();});
+ $('comparison-intent-form').addEventListener('submit',e=>{e.preventDefault();const next=latest(),goal=$('comparison-goal').value,licensed=['teacher','lawyer','pilot','health-professional'].includes(goal);next.profile={...next.profile,goal,degreeLevel:$('comparison-level').value,field:licensed?'any':$('comparison-field').value,modality:$('comparison-modality').value,classroomImportance:$('comparison-modality').value==='campus'?'essential':'open'};next.journey={...next.journey,answers:{...next.journey?.answers,purpose:licensed?'licensed-career':goal,level:$('comparison-level').value,...(licensed?{career:goal}:{})},planReviewed:false,schoolContacted:false};next.whatIf={...next.whatIf,version:1,goalReady:true};delete next.whatIf.selectedIds;if(store(next))render();});
  $('comparison-goal').addEventListener('change',()=>{$('comparison-field').closest('label').hidden=['teacher','lawyer','pilot','health-professional'].includes($('comparison-goal').value);});
  $('comparison-add').addEventListener('submit',async e=>{e.preventDefault();sideBySide=true;const id=$('compare-degree').value;if(!id)return;selected(Number($('compare-slot').value),id);const route=catalog.pathways.find(route=>route.id===id.slice(6));if(route&&!route.modelId&&!DegreeProgramCatalog.variants(route,catalog).some(child=>child.modelId)){try{await discoverRoute(route);}catch(error){fail(error);}}});
  $('comparison-courses').addEventListener('toggle',()=>{if($('comparison-courses').open){$('comparison-library-info').textContent='Checking individual course placements…';setTimeout(()=>{if($('comparison-courses').open)renderMatrix();},0);}});

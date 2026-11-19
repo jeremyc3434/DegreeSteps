@@ -148,7 +148,11 @@ async function test(name,run) {
     assert.equal(await task.locator('[name=status]').inputValue(),'doing');
     assert.equal(await task.locator('[name=dueOn]').inputValue(),'');
     assert.equal(await task.locator('[name=notes]').inputValue(),'Call after work');
-    await task.getByRole('button',{name:'Delete task',exact:true}).click();
+    await task.locator('[data-dc-delete]').click();
+    await task.locator('[data-dc-cancel-delete]').click();
+    assert.equal((await saved(p)).checklist.plans[SCOPE].custom.some(task=>task.id===id),true);
+    await task.locator('[data-dc-delete]').click();
+    await task.locator('[data-dc-confirm-delete]').click();
     await p.waitForFunction(({key,id})=>!JSON.parse(localStorage.getItem(key)).checklist?.plans?.['tesu-general-management']?.custom?.some(task=>task.id===id),{key:KEY,id});
     await p.reload({waitUntil:'networkidle'});await ready(p);await checklist(p);
     assert.equal(await item(p,id).count(),0);

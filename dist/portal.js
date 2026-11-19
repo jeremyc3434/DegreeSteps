@@ -65,6 +65,9 @@
     input.selectedPathwayId='';delete input.targetIdentity;
     input.profile={...input.profile,pathwayId:'',school:'',schoolChoice:'',degree:''};
     input.sheet={...input.sheet,isExample:true};
+    // This is a fresh wizard search. Manual Compare choices, including an
+    // intentionally empty comparison, remain saved in the student's plan.
+    input.whatIf={...input.whatIf};delete input.whatIf.selectedIds;
     return input;
   }
   function recommendationKey(input) {
@@ -146,7 +149,7 @@
       if(!currentRecommendation(request,cacheKey))return;
       if(!window.DegreeComparisonRunner)throw Error('The course comparison could not load.');
       recommendationRunner ||= DegreeComparisonRunner.create({timeoutMs:90000});
-      const value=await recommendationRunner.run('build',{state:input,catalog:{...sources.catalog,pathways:eligible},models:sources.models,costs,options:{selectedIds:[],fromCourses:true,deferMatrix:true,priority:({cost:'cost',speed:'terms',transfer:'collection'})[profile.priority]||'credits'}},{onProgress:packet=>recommendationPacket(packet,request,cacheKey)});
+      const value=await recommendationRunner.run('build',{state:input,catalog:{...sources.catalog,pathways:eligible},models:sources.models,costs,options:{fromCourses:true,deferMatrix:true,priority:({cost:'cost',speed:'terms',transfer:'collection'})[profile.priority]||'credits'}},{onProgress:packet=>recommendationPacket(packet,request,cacheKey)});
       if(!currentRecommendation(request,cacheKey))return;
       recommendationView=value;recommendationCache.set(cacheKey,value);
       // Keep only a few searches in memory; nothing is written to the student's plan.

@@ -9,7 +9,7 @@
  function routeFor(state,catalog){return Sheet.targetRoute(state,catalog)||(!state.sheet?.isExample&&(state.selectedPathwayId||state.profile?.pathwayId)&&state.profile?.degree?{id:state.selectedPathwayId||state.profile.pathwayId,school:state.profile.school||state.profile.schoolChoice,title:state.profile.degree,level:state.profile.degreeLevel}:null);}
  function capture(state,draft,label,id){return Catalog.planSnapshot(state,draft,{id:id||'scenario-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7),label:label||draft.pathway.title});}
  function saveScenario(state,draft,label,id){const next=clone(state),snapshot=capture(state,draft,label,id),rows=saved(next).filter(x=>x.id!==snapshot.id);if(rows.length>=20)throw Error('Keep up to 20 saved scenarios. Remove one before saving another.');next.whatIf={...obj(next.whatIf),version:1,snapshots:[...rows,snapshot]};return next;}
- function removeScenario(state,id){const next=clone(state);next.whatIf={...obj(next.whatIf),snapshots:saved(next).filter(s=>s.id!==id),selectedIds:list(next.whatIf?.selectedIds).filter(s=>s!=='saved:'+id)};return next;}
+ function removeScenario(state,id){const next=clone(state),choices=next.whatIf?.selectedIds;next.whatIf={...obj(next.whatIf),snapshots:saved(next).filter(s=>s.id!==id),...(Array.isArray(choices)?{selectedIds:choices.filter(s=>s!=='saved:'+id)}:{})};return next;}
  function target(state,id,catalog,options={}){
   if(id==='current')return clone(state);
   const snapshot=id.startsWith('saved:')?saved(state).find(s=>s.id===id.slice(6)):null;
@@ -257,8 +257,8 @@
    const metric=availableOrderingMetric(scopeRows);rankBasis=orderingBasis(scopeRows,metric);automaticRankedRows=ranked;
    return ranked.sort((a,b)=>Number(b.available)-Number(a.available)||compareEstimates(a,b,metric)||b.fraction-a.fraction||b.completedFraction-a.completedFraction||b.fit.score-a.fit.score||a.remaining-b.remaining||a.fit.pathway.title.localeCompare(b.fit.pathway.title));
   }
-  const picks=options.selectedIds||state.whatIf?.selectedIds;let ids=list(picks).filter(id=>id!=='current').slice(0,hasTarget?2:3);
-  if(!hasTarget&&!ids.length){
+  const picks=Array.isArray(options.selectedIds)?options.selectedIds:state.whatIf?.selectedIds;let ids=list(picks).filter(id=>id!=='current').slice(0,hasTarget?2:3);
+  if(!hasTarget&&!ids.length&&!Array.isArray(picks)){
    const profile={...state.profile,pathwayId:'',school:'',degree:'',...(options.includeOtherFormats?{modality:'any',classroomImportance:'open'}:{})};
    ids=rankedRoutes(profile).slice(0,3).map(item=>item.id);
    if(!ids.length)ids=Guide.recommend(profile,{campusFacts:catalog?.campusFacts,pathways:all},models,state.learning).slice(0,3).map(x=>'route:'+x.pathway.id);
