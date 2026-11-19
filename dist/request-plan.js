@@ -7,6 +7,9 @@
   let selectedReference = null, pendingRecovery = null;
   let progressTimer = null, progressGeneration = 0, progressURL = '', progressStartedAt = 0, resumeChecked = false, operationSequence = 0;
   const activeStorageKey = 'degreepath-research-active-v1';
+  const contextStorageKey='degreesteps-degree-context-v1';
+  let requestContext=null;
+  let explicitEntry=false,entryURL='';
   const list = W.list, known = value => typeof value === 'number' && Number.isFinite(value);
   function activeResearchJob(value) {
     const template = value?.template || value, job = value?.researchJob || template?.researchJob;
@@ -340,6 +343,7 @@
     const operation = operationSequence, generation = progressGeneration;
     let saved; try { saved = JSON.parse(sessionStorage.getItem(activeStorageKey) || 'null'); } catch { return; }
     if (!saved || typeof saved.url !== 'string' || !W.safeURL(saved.url)) return;
+    if(explicitEntry&&(!entryURL||W.safeURL(saved.url)!==W.safeURL(entryURL)))return;
     const referenceChoice = referenceID(saved.referenceChoice);
     rememberReference(saved.url,referenceChoice);
     input.value = saved.url; rememberURL(saved.url);
@@ -359,6 +363,7 @@
     if (busy) return;
     const operation = ++operationSequence;
     const url = typeof target.url === 'string' ? target.url.trim() : '';
+    if(requestContext){try{sessionStorage.setItem(contextStorageKey,JSON.stringify({...requestContext,url}));}catch{}}
     const referenceChoice = referenceID(target.referenceChoice);
     let watching = false;
     rememberReference(url,referenceChoice,true); input.value = url;
@@ -367,7 +372,9 @@
       const session = await DegreeAccount.session(true); user = session.user;
       if (!user) { notice('Sign in to build and save your plan. Your degree link will be here when you return.'); $('request-account-note').innerHTML = signInHTML(); return; }
       beginProgress(url,undefined,false,referenceChoice);
-      const body = referenceChoice ? {url,referenceChoice,startResearch:true} : {...target,url,startResearch:true};
+      const contextDetails=requestContext?['Starting preference: '+(requestContext.format==='campus'?'on-campus study':requestContext.format==='online'?'online study':'the selected study format'),requestContext.school?'College of interest: '+requestContext.school:'',requestContext.campus?'Campus of interest: '+requestContext.campus:'','Use the official degree page and explicitly selected version to establish the actual program.'].filter(Boolean).join('. '):'';
+      const details=[typeof target.details==='string'?target.details:'',contextDetails].filter(Boolean).join('\n').slice(0,4000);
+      const body = referenceChoice ? {url,referenceChoice,startResearch:true,...(details?{details}:{})} : {...target,url,startResearch:true,...(details?{details}:{})};
       const data = await W.api('/api/templates/requests',{method:'POST',body});
       if (operation !== operationSequence) return;
       watching = receiveResearchResponse(data,url,referenceChoice,progressStartedAt);
@@ -450,7 +457,15 @@
     if (typeof saved?.url === 'string' && W.safeURL(saved.url)) rememberReference(saved.url,saved.referenceChoice);
   } catch {}
   const params = new URLSearchParams(location.search), source = params.get('source') || params.get('url');
+  explicitEntry=Boolean(source||params.has('school')||params.has('format')||params.has('campus'));entryURL=source||'';
   if (source) input.value = source.slice(0,1500);
+  const contextSchool=(params.get('school')||'').trim(),contextFormat=params.get('format'),contextCampus=(params.get('campus')||'').trim();
+  const campusLabel=contextCampus.length<=160&&!/[\u0000-\u001f\u007f]/.test(contextCampus)?contextCampus:'';
+  if(contextSchool&&contextSchool.length<=120&&!/[\u0000-\u001f\u007f]/.test(contextSchool)||['campus','online'].includes(contextFormat)||campusLabel){
+    requestContext={school:contextSchool.length<=120&&!/[\u0000-\u001f\u007f]/.test(contextSchool)?contextSchool:'',format:['campus','online'].includes(contextFormat)?contextFormat:'',...(campusLabel?{campus:campusLabel}:{}),createdAt:Date.now()};
+    if(!source)input.value='';
+  }else{try{const raw=sessionStorage.getItem(contextStorageKey)||'null',saved=raw.length<=4096?JSON.parse(raw):null;if(saved&&typeof saved.school==='string'&&saved.school.length<=120&&!/[\u0000-\u001f\u007f]/.test(saved.school)&&(saved.campus===undefined||typeof saved.campus==='string'&&saved.campus.length<=160&&!/[\u0000-\u001f\u007f]/.test(saved.campus))&&['','campus','online'].includes(saved.format)&&typeof saved.url==='string'&&saved.url===input.value.trim()&&typeof saved.createdAt==='number'&&saved.createdAt<=Date.now()&&Date.now()-saved.createdAt<3600000)requestContext=saved;}catch{}}
+  if(requestContext){const node=$('request-context');if(node){node.hidden=false;node.textContent=(requestContext.format==='campus'?'On-campus degree':requestContext.format==='online'?'Online degree':'Degree research')+(requestContext.school?' at '+requestContext.school:'')+(requestContext.campus?' — '+requestContext.campus:'')+'. Paste the link to the specific degree you want.';}}
   input.addEventListener('input',() => rememberURL(input.value));
   const publicId = params.get('template');
   if (publicId) {

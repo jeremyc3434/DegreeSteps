@@ -116,7 +116,8 @@ body.home-public .home-route-stops small { display:block; margin-top:7px; font-s
 body.home-public .home-route-example-note { margin:24px 0 6px; color:var(--public-route-muted); font-size:.875rem; line-height:1.6; }
 body.home-public .home-starting-points { padding-block:32px 38px; border-bottom:1px solid var(--public-line); }
 body.home-public .home-starting-points > h2 { font-size:1.35rem; font-weight:600; letter-spacing:-.02em; margin:0 0 16px; }
-body.home-public .home-starting-points > div { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:25px; }
+body.home-public .home-starting-points > div { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:25px; }
+@media(min-width:769px) and (max-width:1100px) { body.home-public .home-starting-points > div { grid-template-columns:repeat(2,minmax(0,1fr)); } }
 body.home-public .home-starting-points a { display:flex; flex-direction:column; align-items:flex-start; gap:7px; min-width:0; min-height:64px; color:var(--public-ink); text-decoration:none; }
 body.home-public .home-starting-points strong { font-size:1.125rem; font-weight:600; color:var(--public-cobalt); text-decoration:underline; text-underline-offset:4px; }
 body.home-public .home-starting-points a > span { font-size:.9375rem; color:var(--public-muted); line-height:1.6; }

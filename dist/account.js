@@ -144,7 +144,7 @@
       else if (action === 'migration-backup') run(async () => {const backup = await Account.api('/migration/backup'); download(backup,'degreesteps-older-saved-plans.json');});
       else if (action === 'clear-device' || action === 'delete-data') {pending = {kind:action}; render();}
       else if (action === 'confirm-clear-device') {
-        try {localStorage.removeItem(Account.DRAFT_KEY); localStorage.removeItem('degreepath-pathway-v2'); localStorage.removeItem('degreesteps-profile-draft-v1'); Account.clearLink(); pending = null; render(); notice('The draft was removed from this device. Your saved account plans are unchanged.');} catch (e) {error('Device storage is unavailable. Close this browser profile to protect its local data.');}
+        try {localStorage.removeItem(Account.DRAFT_KEY); localStorage.removeItem('degreepath-pathway-v2'); localStorage.removeItem('degreesteps-profile-draft-v1'); try {window.sessionStorage?.removeItem('degreesteps-plan-save-intent-v1');} catch {} Account.clearLink(); pending = null; render(); notice('The draft was removed from this device. Your saved account plans are unchanged.');} catch (e) {error('Device storage is unavailable. Close this browser profile to protect its local data.');}
       } else if (action === 'signout') run(async () => {
         try {await Account.signOut();}
         catch {throw new Error('We couldn’t sign you out. Try again.');}

@@ -153,7 +153,7 @@ test('public links, stylesheets and scripts resolve to real pages or local asset
 });
 
 test('editorial pages contain substantial readable guidance, sources, related reading and a useful next step',()=>{
-  assert.equal(content.articles.filter(a=>a.type==='guide').length,8);assert.equal(content.articles.filter(a=>a.type==='article').length,6);
+  assert(content.articles.filter(a=>a.type==='guide').length>=8);assert(content.articles.filter(a=>a.type==='article').length>=12);
   for(const article of content.articles){
     const page=pages.find(p=>p.url.pathname===articlePath(article));assert(page,article.slug);
     const main=page.html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1]||'';

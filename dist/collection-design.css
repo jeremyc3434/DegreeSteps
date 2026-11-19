@@ -387,3 +387,15 @@ body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remov
   body.dp-app-shell #courses-app .course-row h2,body.dp-app-shell #courses-app .course-row h2 button { color:#000; }
   body.dp-app-shell #import-app .import-action-bar { position:static; box-shadow:none; }
 }
+
+/* Features are reviewed facts, with the same values used by the filters. */
+body.dp-app-shell #courses-app .course-feature-badges { display:flex; flex-wrap:wrap; gap:6px; margin-top:9px; }
+body.dp-app-shell #courses-app .course-feature-badges>span { display:inline-flex; align-items:center; min-height:28px; padding:3px 8px; border:1px solid #d3dcf1; border-radius:4px; color:var(--collection-ink); background:#eef1ff; font-size:.875rem; line-height:1.5; font-weight:500; }
+body.dp-app-shell #courses-app .courses-filter-options { max-height:min(70vh,640px); overflow-y:auto; overscroll-behavior:contain; }
+body.dp-app-shell #course-details-dialog .course-feature-evidence { border-block:1px solid #d9e1ea; margin:18px 0; padding:8px 0; }
+body.dp-app-shell #course-details-dialog .course-feature-evidence>summary { min-height:44px; padding:10px 0; color:#4054f4; font-size:1rem; cursor:pointer; }
+body.dp-app-shell #course-details-dialog .course-feature-evidence h3 { font-size:1rem; line-height:1.5; margin:14px 0 6px; }
+body.dp-app-shell #course-details-dialog .course-feature-evidence p,
+body.dp-app-shell #course-details-dialog .course-feature-evidence li { color:#526174; font-size:.9375rem; line-height:1.65; }
+body.dp-app-shell #course-details-dialog .course-feature-evidence .course-feature-checked { font-size:.875rem; }
+body.dp-app-shell #course-details-dialog .course-feature-evidence a { display:inline-block; padding-block:8px; color:#4054f4; text-decoration:underline; text-underline-offset:3px; }

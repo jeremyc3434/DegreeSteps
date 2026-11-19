@@ -1,7 +1,7 @@
 {
   "version": 1,
   "checkedOn": "2026-11-19",
-  "scope": "Physical campus identity for exact residential degree routes already represented in the curriculum registry. This is not a campus ranking or a housing eligibility determination.",
+  "scope": "Evidence-backed physical campus discovery. Exact routeIds bind campus facts only to those residential degree routes. Catalog destinations without routeIds are research destinations, not available course plans. No social-life or reputation ranking is inferred.",
   "campuses": [
     {
       "id": "liberty-lynchburg",
@@ -18,11 +18,170 @@
         "liberty-catalog-d9815823d612fac8-residential",
         "liberty-catalog-1d4c76929b531364-general-residential"
       ],
-      "sourceUrls": ["https://www.liberty.edu/residential/"],
+      "sourceUrls": [
+        "https://www.liberty.edu/residential/"
+      ],
       "identityEvidence": {
         "url": "https://www.liberty.edu/residential/",
         "checkedOn": "2026-11-19",
         "excerpt": "Located near the Blue Ridge Mountains on more than 7,000 acres in Lynchburg, VA."
+      },
+      "traits": [],
+      "traitEvidence": {}
+    },
+    {
+      "id": "odu-norfolk",
+      "school": "Old Dominion University",
+      "campus": "Norfolk campus",
+      "label": "Norfolk, VA",
+      "state": "VA",
+      "city": "Norfolk",
+      "country": "US",
+      "description": "A public university with a residential campus in Norfolk. Explore the campus and its degree options before choosing a transfer route.",
+      "catalogDestination": true,
+      "routeIds": [],
+      "officialUrl": "https://www.odu.edu/about",
+      "sourceUrls": [
+        "https://www.odu.edu/about"
+      ],
+      "identityEvidence": {
+        "url": "https://www.odu.edu/about",
+        "checkedOn": "2026-11-19",
+        "excerpt": "ur own tables instead of waiting for a seat at another's.&nbsp; Old Dominion University, located in Norfolk, is Virginia's forward-focused public doctoral research university with nearly 24,000 students, rigorous academics, an energetic residential community and initiatives that contribute $3.8 billion annually to Virginia's "
+      },
+      "traits": [],
+      "traitEvidence": {}
+    },
+    {
+      "id": "cbu-riverside",
+      "school": "California Baptist University",
+      "campus": "Riverside campus",
+      "label": "Riverside, CA",
+      "state": "CA",
+      "city": "Riverside",
+      "country": "US",
+      "description": "A Christian university in Riverside with NCAA Division I athletics. Campus and online degree formats have separate requirements.",
+      "catalogDestination": true,
+      "routeIds": [],
+      "officialUrl": "https://calbaptist.edu/about/",
+      "sourceUrls": [
+        "https://calbaptist.edu/about/"
+      ],
+      "identityEvidence": {
+        "url": "https://calbaptist.edu/about/",
+        "checkedOn": "2026-11-19",
+        "excerpt": "unity Life The Center for Career and Professional Development Academic Camps Spiritual Life Explore Riverside Reserve Officers' Training Corps (ROTC) Campus Store Event Tickets Wallace Theater Life at CBU Pursue personal excellence and spiritual growth through CBU\u2019s programs, clubs and organizations and support services geared "
+      },
+      "traits": [
+        "sports",
+        "faith"
+      ],
+      "traitEvidence": {
+        "sports": {
+          "url": "https://calbaptist.edu/about/",
+          "checkedOn": "2026-11-19",
+          "excerpt": "the 5,050-seat Events Center and the four-story apartment complex, Magnolia Crossing. Tour Campus A Division I Athletics Program California Baptist University began a successful transition to NCAA Division I after winning its first-ever Learfield Directors\u2019 Cup in 2018. CBU's Lancers athletic program is gaining recognition as on"
+        },
+        "faith": {
+          "url": "https://calbaptist.edu/about/",
+          "checkedOn": "2026-11-19",
+          "excerpt": "ou realize your role as a servant leader through a combination of faith-rooted academic programs, a Christian community invested in your success and financial support. Admissions &amp; Financial Aid Overview Life at CBU Life at CBU Overview Campus Recreation Housing &amp; Dining Student Support Services Community Life The Cente"
+        }
+      }
+    },
+    {
+      "id": "gcu-phoenix",
+      "school": "Grand Canyon University",
+      "campus": "Phoenix main campus",
+      "label": "Phoenix, AZ",
+      "state": "AZ",
+      "city": "Phoenix",
+      "country": "US",
+      "description": "A main-campus experience in Phoenix with NCAA Division I athletics and university residence halls. Research the exact campus degree you want to pursue.",
+      "catalogDestination": true,
+      "routeIds": [],
+      "officialUrl": "https://www.gcu.edu/why-gcu/campus-life",
+      "sourceUrls": [
+        "https://www.gcu.edu/why-gcu/campus-life"
+      ],
+      "identityEvidence": {
+        "url": "https://www.gcu.edu/why-gcu/campus-life",
+        "checkedOn": "2026-11-19",
+        "excerpt": " Grand Canyon University Step into Grand Canyon University\u2019s main campus \u2014 an oasis in the heart of Phoenix where palm-lined walkways, modern classroom buildings and lively gathering spaces create an atmosphere filled with movement and possibility . From popular dining spots and sparkling swimming pools to athletic facilities"
+      },
+      "traits": [
+        "sports",
+        "housing",
+        "city"
+      ],
+      "traitEvidence": {
+        "sports": {
+          "url": "https://www.gcu.edu/why-gcu/campus-life",
+          "checkedOn": "2026-11-19",
+          "excerpt": " Havocs and long-standing campus traditions bring the community together. From cheering on our NCAA Division I Lopes athletics teams to taking part in spirited campus events, students can immerse themselves in a culture built around LOPE pride, passion and shared moments. Celebrate what makes GCU rich with purpose \u2014 the traditio"
+        },
+        "housing": {
+          "url": "https://www.gcu.edu/why-gcu/campus-life",
+          "checkedOn": "2026-11-19",
+          "excerpt": " of campus living steps away from classes, food venues and campus events. GCU offers 12 suite-style residence halls and 20 modern apartments for both new and returning students, featuring community lounges, outdoor courtyards, pools and study spaces that help create a vibrant living environment. Come see why GCU ranks #1 in Arizona f"
+        },
+        "city": {
+          "url": "https://www.gcu.edu/why-gcu/campus-life",
+          "checkedOn": "2026-11-19",
+          "excerpt": " Grand Canyon University Step into Grand Canyon University\u2019s main campus \u2014 an oasis in the heart of Phoenix where palm-lined walkways, modern classroom buildings and lively gathering spaces create an atmosphere filled with movement and possibility . From popular dining spots and sparkling swimming pools to athletic facilities"
+        }
+      }
+    },
+    {
+      "id": "regent-virginia-beach",
+      "school": "Regent University",
+      "campus": "Virginia Beach campus",
+      "label": "Virginia Beach, VA",
+      "state": "VA",
+      "city": "Virginia Beach",
+      "country": "US",
+      "description": "A Christian university offering on-campus study in Virginia Beach. Choose an exact degree before researching its transfer route.",
+      "catalogDestination": true,
+      "routeIds": [],
+      "officialUrl": "https://www.regent.edu/about-regent/",
+      "sourceUrls": [
+        "https://www.regent.edu/about-regent/"
+      ],
+      "identityEvidence": {
+        "url": "https://www.regent.edu/about-regent/",
+        "checkedOn": "2026-11-19",
+        "excerpt": "00:00\",\"dateModified\":\"2026-10-02T17:52:35+00:00\",\"description\":\"Top-ranked Christian university in Virginia Beach, Regent offers 150+ programs on campus and online. #1 online bachelor's programs in Virginia, 14 years.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.regent.edu\\/about-regent\\/#breadcrumb\"},\"inLanguage\":\"en-US\",\"potentialAction\":"
+      },
+      "traits": [
+        "faith"
+      ],
+      "traitEvidence": {
+        "faith": {
+          "url": "https://www.regent.edu/about-regent/",
+          "checkedOn": "2026-11-19",
+          "excerpt": "d\":\"2020-08-24T15:53:31+00:00\",\"dateModified\":\"2026-10-02T17:52:35+00:00\",\"description\":\"Top-ranked Christian university in Virginia Beach, Regent offers 150+ programs on campus and online. #1 online bachelor's programs in Virginia, 14 years.\",\"breadcrumb\":{\"@id\":\"https:\\/\\/www.regent.edu\\/about-regent\\/#breadcrumb\"},\"inLanguag"
+        }
+      }
+    },
+    {
+      "id": "asu-tempe",
+      "school": "Arizona State University",
+      "campus": "Tempe campus",
+      "label": "Tempe, Arizona",
+      "state": "AZ",
+      "city": "Tempe",
+      "country": "US",
+      "description": "Explore ASU\u2019s original Tempe campus, with its historic setting and research facilities. A transfer route must match your exact degree and campus.",
+      "catalogDestination": true,
+      "routeIds": [],
+      "officialUrl": "https://campus.asu.edu/tempe",
+      "sourceUrls": [
+        "https://campus.asu.edu/tempe"
+      ],
+      "identityEvidence": {
+        "url": "https://campus.asu.edu/tempe",
+        "checkedOn": "2026-11-19",
+        "excerpt": "Address 1151 S. Forest Ave. Tempe, AZ 85287"
       },
       "traits": [],
       "traitEvidence": {}

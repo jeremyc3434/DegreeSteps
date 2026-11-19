@@ -2,10 +2,10 @@
 (function (root, factory) {
   'use strict';
   const common = typeof module === 'object' && module.exports;
-  const api = factory(common ? require('./student-checklist.js') : root.DegreeChecklist);
+  const api = factory(common ? require('./student-checklist.js') : root.DegreeChecklist, common ? require('./task-calendar.js') : root.DegreeTaskCalendar);
   if (common) module.exports = api;
   else root.DegreeChecklistView = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function (Checklist) {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (Checklist, Calendar) {
   'use strict';
   const views = new WeakMap();
   const list = value => Array.isArray(value) ? value : [];
@@ -111,7 +111,7 @@
       (task.detail && !task.custom ? '<p class="dc-task-detail">'+esc(task.detail)+'</p>' : '')+
       '<div class="dc-task-meta"><span class="dc-status dc-status-'+status+'">'+labels[status]+'</span>'+(due ? '<span>Due <time datetime="'+esc(task.dueOn)+'">'+esc(due)+'</time></span>' : '')+'</div></div></div>'+
       '<div class="dc-task-tools">'+(href ? '<a href="'+esc(href)+'"'+externalAttrs(href)+focusAttr(key+':link')+'>'+esc(label)+externalLabel(href)+arrow+'</a>' : '')+
-      '<details class="dc-task-details" data-dc-open="'+esc(key)+'"'+openAttr(ui,key)+'><summary'+focusAttr(key+':details')+'><span>Details</span><span class="dc-sr-only"> for '+title+'</span>'+chevron+'</summary><form class="dc-edit-form" data-dc-form="'+esc(key)+'" data-dc-edit="'+esc(task.id)+'">'+readonlyNote+formFields(ui,task)+'</form></details></div></li>';
+      '<details class="dc-task-details" data-dc-open="'+esc(key)+'"'+openAttr(ui,key)+'><summary'+focusAttr(key+':details')+'><span>Details</span><span class="dc-sr-only"> for '+title+'</span>'+chevron+'</summary><form class="dc-edit-form" data-dc-form="'+esc(key)+'" data-dc-edit="'+esc(task.id)+'">'+readonlyNote+formFields(ui,task)+(Calendar?.eligible(task)?'<div class="dc-calendar"><button type="button" class="dc-save" data-dc-calendar="'+esc(task.id)+'"'+focusAttr(key+':calendar')+'>Add to calendar</button><p>After importing, choose a reminder in your calendar app.</p></div>':'')+'</form></details></div></li>';
   }
   function groupHTML(group,ui) {
     const tasks = list(group.tasks), pending = tasks.filter(task => statusOf(task) !== 'done'), done = tasks.filter(task => statusOf(task) === 'done');
@@ -196,6 +196,16 @@
       dispatch(ui,actionFor(ui,'set-task',{taskId:task.id,status:input.checked ? 'done' : 'todo'}),input.checked ? 'Task marked done.' : 'Task moved to To do.');
     });
     ui.content.addEventListener('click',event=>{
+      const calendarButton = event.target.closest('[data-dc-calendar]');
+      if (calendarButton) {
+        event.preventDefault();const task = list(ui.model.tasks).find(item=>item.id === calendarButton.dataset.dcCalendar);
+        if (!task || !Calendar?.eligible(task)) {announce(ui,'Save a due date for an unfinished task first.',true);return;}
+        const form = calendarButton.closest('form[data-dc-form]');
+        if (['title','dueOn','status'].some(name=>{const input=form?.querySelector('[name="'+name+'"]');return input && input.value !== String(task[name] ?? '');})) {announce(ui,'Save your task changes before adding it to your calendar.',true);return;}
+        try {Calendar.download(task,ui.node.ownerDocument.defaultView);announce(ui,'Calendar file downloaded. Import it and choose a reminder in your calendar app.');calendarButton.focus({preventScroll:true});}
+        catch (error) {announce(ui,error.message,true);}
+        return;
+      }
       const revealButton = event.target.closest('[data-dc-reveal]');
       if (revealButton) {reveal(ui,revealButton.dataset.dcReveal);return;}
       const deleteButton = event.target.closest('[data-dc-delete]');

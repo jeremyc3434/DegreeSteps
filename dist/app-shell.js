@@ -3,7 +3,7 @@
   'use strict';
   const page = location.pathname.split('/').pop() || 'portal.html';
   const parameters = new URLSearchParams(location.search), task = parameters.get('task'), preferenceView = page === 'portal.html' && parameters.get('view') === 'preferences';
-  const labels = {'programs.html':'Find a degree','courses.html':'My courses','import-courses.html':'Add my courses','compare-plans.html':'Compare plans','portal.html':preferenceView ? 'My preferences' : 'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps','coverage.html':'Academic coverage'};
+  const labels = {'programs.html':'Find a degree','campuses.html':'Find a campus','growth.html':'Activity overview','courses.html':'My courses','import-courses.html':'Add my courses','compare-plans.html':'Compare plans','portal.html':preferenceView ? 'My preferences' : 'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps','coverage.html':'Academic coverage'};
   if (!labels[page]) return;
   const paths = {
     plan:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/>',
@@ -17,7 +17,7 @@
   };
   const icon = name => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[name]+'</svg>';
   const wordmark = '<span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span>';
-  const active = preferenceView ? 'preferences' : ['courses.html','import-courses.html'].includes(page) ? 'credits' : page === 'community.html' ? 'community' : ['programs.html','school.html','request-plan.html'].includes(page) ? 'programs' : page === 'library.html' ? 'explore' : task === 'credits' ? 'credits' : page === 'account.html' ? 'account' : page === 'admin.html' ? 'admin' : 'plan';
+  const active = preferenceView ? 'preferences' : ['courses.html','import-courses.html'].includes(page) ? 'credits' : page === 'community.html' ? 'community' : ['programs.html','school.html','request-plan.html','campuses.html'].includes(page) ? 'programs' : page === 'library.html' ? 'explore' : task === 'credits' ? 'credits' : page === 'account.html' ? 'account' : ['admin.html','growth.html'].includes(page) ? 'admin' : 'plan';
   const links = [
     {id:'plan',title:'My plan',href:'plan.html',icon:'plan'},
     {id:'credits',title:'My courses',href:'courses.html?tab=mine',icon:'credits'},
@@ -43,7 +43,8 @@
     if (typeof title === 'string' && title.trim()) document.getElementById('dp-shell-page-title').textContent = title.slice(0,80);
   }
   let signedIn=false;
-  function accountSaveAction() {const link=shell.querySelector('.dp-shell-save-account');if(link)link.hidden=!signedIn||!['plan.html','portal.html','courses.html','import-courses.html','compare-plans.html'].includes(page)||!window.DegreeAccount?.deviceDraft?.();}
+  function accountSaveAction() {const link=shell.querySelector('.dp-shell-save-account'),draft=window.DegreeAccount?.deviceDraft?.(),meaningful=Boolean(draft&&(draft.learning?.length||!draft.sheet?.isExample&&(draft.selectedPathwayId||draft.profile?.pathwayId)));if(link){link.hidden=!['plan.html','portal.html','courses.html','compare-plans.html'].includes(page)||!meaningful;link.href='#';link.setAttribute?.('data-open-plan-save','');link.textContent='Keep my plan';link.title='Keep a private copy across devices';}}
+  accountSaveAction();
   function saved(deviceSaved) {
     if (typeof deviceSaved !== 'boolean' || page === 'account.html' || page === 'community.html' || page === 'library.html') return;
     const target = shell.querySelector('.dp-shell-save');

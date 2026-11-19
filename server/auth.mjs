@@ -4,7 +4,7 @@ const DegreePathAuth = (() => {
   const ACCESS = '__Host-degreepath_access', REFRESH = '__Host-degreepath_refresh';
   const FLOW = '__Host-degreepath_flow', RECOVERY = '__Host-degreepath_recovery';
   const PREFIX = '/api/auth/', MAX_BODY = 16384, UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
-  const allowedReturn = new Set(['/account.html', '/portal.html', '/plan.html', '/request-plan.html', '/admin.html', '/coverage.html', '/school.html', '/community.html', '/courses.html', '/programs.html', '/compare-plans.html', '/degree-audit.html']);
+  const allowedReturn = new Set(['/account.html', '/portal.html', '/plan.html', '/request-plan.html', '/admin.html', '/coverage.html', '/growth.html', '/campuses.html', '/school.html', '/community.html', '/courses.html', '/programs.html', '/compare-plans.html', '/degree-audit.html']);
   class AuthError extends Error {constructor(status, message) {super(message); this.status = status;}}
   const error = (status, message) => {throw new AuthError(status, message);};
   function configuration(env) {

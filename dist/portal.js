@@ -3,6 +3,7 @@
   'use strict';
   const $ = id => document.getElementById(id), Journey = window.DegreeJourney, Sheet = window.DegreeSheet;
   const KEY = 'degreepath-guide-v3';
+  const publicPlanIds = new Set(['wgu-catalog-ecceaa488637ac83','liberty-business-residential','liberty-criminal-justice-online','liberty-criminal-justice-residential']);
   const PROFILE_DRAFT_KEY = 'degreesteps-profile-draft-v1';
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const clone = value => JSON.parse(JSON.stringify(value));
@@ -206,6 +207,7 @@
     return saveOK&&!protectedEdit;
   }
   function announce(message) {$('portal-notice').textContent = message;}
+  function trackPlanStarted(id) {window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event:'plan_started',context:'workspace',...(publicPlanIds.has(id)?{planId:id}:{})}}));}
   function button(action, label, secondary = false) {return '<button type="button" class="portal-' + (secondary ? 'secondary' : 'primary') + '" data-action="' + action + '">' + esc(label) + '</button>';}
   function choice(value, title, detail = '') {
     const current = state.journey.answers[state.journey.step];
@@ -412,10 +414,60 @@
     let previous=selectionState();
     if(target.explicitFormat&&target.route?.modalities?.length===1){previous=clone(previous);previous.profile.modality=target.route.modalities[0];if(previous.profile.modality==='online'&&previous.profile.classroomImportance==='essential')previous.profile.classroomImportance='open';}
     if(target.discovery?.status==='ready')previous=DegreeProgramCatalog.rememberDiscovery(previous,target.discovery);
-    const selected=Journey.applyAnswer(previous,state.journey.step==='routes'?'routes':'degree',target.route?.id||{degree:target.degree,allowUnlisted:true},catalog),resolved=DegreeProgramCatalog.resolveTarget(selected,catalog).state;
+    const selected=target.allowSchoolChange&&target.route?Journey.selectRoute(previous,target.route,catalog):Journey.applyAnswer(previous,state.journey.step==='routes'?'routes':'degree',target.route?.id||{degree:target.degree,allowUnlisted:true},catalog),resolved=DegreeProgramCatalog.resolveTarget(selected,catalog).state;
     const pending=pendingDiscoveries.get(resolved.selectedPathwayId);
     const ready=pending?DegreeProgramCatalog.rememberDiscovery(resolved,pending):resolved;
     return {state:ready,draft:Journey.buildDraft(ready,catalog,models)};
+  }
+  async function usePublicPlan(id) {
+    if(typeof id!=='string'||!/^[A-Za-z0-9_-]{1,120}$/.test(id))throw Error('Choose a degree plan from the plan library.');
+    const route=catalog.pathways.find(item=>item.id===id);
+    if(!route||!routeHasMap(route))throw Error('This course plan is not available. Your existing plan is still saved.');
+    await ensureRouteModels(route);
+    const previous=selectionState(),beforeState=state;
+    state=previous;
+    let next;
+    try{
+      const selecting=clone(previous);
+      if(route.modalities?.length===1){selecting.profile.modality=route.modalities[0];if(selecting.profile.modality==='online'&&selecting.profile.classroomImportance==='essential')selecting.profile.classroomImportance='open';}
+      next=DegreeProgramCatalog.resolveTarget(Journey.selectRoute(selecting,route,catalog),catalog).state;
+    }catch(error){state=beforeState;throw error;}
+    const model=models.find(item=>item.id===route.modelId);
+    if(!model){state=beforeState;throw Error('The course requirements could not load. Your existing plan is still saved.');}
+    const hasChoices=Object.keys(next.scenarios?.[model.id]?.optionSelections||{}).length>0;
+    if(!hasChoices){
+      const response=await fetch('data/baseline-index.json');
+      if(!response.ok){state=beforeState;throw Error('The saved course choices could not load. Reload to try again.');}
+      const data=await response.json(),baseline=Object.values(data.baselines||{}).find(item=>item.modelId===model.id&&item.pathwayId===route.id);
+      if(baseline){
+        const ids=Array.isArray(baseline.rows)?baseline.rows.map(row=>row.requirementId):[];
+        if(baseline.summary?.totalCredits!==model.totalCredits||ids.length!==model.requirements.length||new Set(ids).size!==ids.length||model.requirements.some(req=>!ids.includes(req.id))||publicPlanIds.has(route.id)&&(baseline.qualityReady!==true||baseline.researchStatus!=='research-ready')){state=beforeState;throw Error('The complete saved course choices are temporarily unavailable. Your existing plan is still saved.');}
+        const selections={};
+        for(const row of baseline.rows||[]){
+          const req=model.requirements.find(item=>item.id===row.requirementId),option=req?.options.find(item=>item.id===row.optionId&&item.provider===row.provider&&item.credits===row.credits);
+          if(!option){state=beforeState;throw Error('The saved course choices have changed. Open the plan again to load its latest version.');}
+          if(next.profile.proctoringPreference==='avoid'&&['CLEP','DSST','Saylor','StraighterLine'].includes(option.provider))continue;
+          selections[req.id]=option.id;
+        }
+        next.scenarios={...next.scenarios,[model.id]:{...Sheet.scenario(next,model.id),optionSelections:selections}};
+      }else if(publicPlanIds.has(route.id)){state=beforeState;throw Error('The saved course choices are temporarily unavailable. Your current plan is still saved.');}
+    }
+    const latest=latestStoredPlan();
+    if(latest&&targetChanged(previous,latest)){state=beforeState;throw Error('Your degree changed in another tab. Open your current plan before choosing another degree.');}
+    if(latest&&JSON.stringify(DegreeGuide.normalizeProfile(previous.profile))!==JSON.stringify(DegreeGuide.normalizeProfile(latest.profile))){state=beforeState;throw Error('Your preferences changed in another tab. Open the plan again to use your latest choices.');}
+    if(latest&&JSON.stringify(previous.scenarios?.[model.id]||null)!==JSON.stringify(latest.scenarios?.[model.id]||null)){state=beforeState;throw Error('Your course choices changed in another tab. Review those choices before opening this plan again.');}
+    if(latest){next.scenarios={...next.scenarios,...latest.scenarios,[model.id]:next.scenarios?.[model.id]||{}};next.learning=clone(latest.learning);next.sheet={...next.sheet,notes:clone(latest.sheet?.notes||{})};}
+    next.profile.entry='target';
+    next.journey={...next.journey,answers:{...next.journey.answers,start:'target',school:route.school,degree:route.id,routes:route.id,format:{modality:next.profile.modality,classroomImportance:next.profile.classroomImportance}}};
+    delete next.journey.explorationSearch;
+    if(next.profile.hasPrior==='none'&&next.learning.some(item=>item.status==='earned')){next.profile.hasPrior='some';next.journey.answers.prior='some';}
+    const check=Journey.buildDraft(next,catalog,models);
+    if(check.targetReviewNeeded||!check.plan||check.plan.validation?.academicCountsValid!==true){state=clone(beforeState);state.journey={...state.journey,view:'questions',step:'degree'};await previewDegree(route,{explicitFormat:true,allowSchoolChange:true});return false;}
+    assertPreviousPlanSaved(latest||previous,check.state);
+    state=check.state;state.journey={...state.journey,view:'home',step:'review',completed:true,creditsDeferred:!state.learning.some(item=>item.status==='earned')&&state.profile.hasPrior!=='none',planReviewed:false,schoolContacted:false};
+    degreePreview=null;page='home';save();
+    if(!saveOK){render();showError(Error('This browser could not save your plan. Keep this page open and download a private backup.'));return false;}
+    clearProfileDraft();trackPlanStarted(route.id);history.replaceState(null,'',location.pathname);location.assign('plan.html');return true;
   }
   function degreeReadinessBody(target) {
     if(target.unavailable){const research=degreeResearchURL(target.route);return '<article class="portal-readiness-card"><h2>Build a plan for this degree.</h2><p>'+esc(target.route?.title||target.degree||'This degree')+' does not have a completed template yet. Your current plan and courses stay saved.</p><div class="portal-actions"><a class="portal-primary" href="'+esc(research||auditURL(target))+'">'+(research?'Research this degree →':'Build my own plan →')+'</a>'+button('degree-search','Browse available course plans',true)+'</div></article>';}
@@ -665,7 +717,7 @@
     }
     if(!a.purpose){const goal=state.profile.goal;a.purpose=protectedGoals.includes(goal)?'licensed-career':['any-degree','career-growth','change-career'].includes(goal)?goal:'any-degree';if(protectedGoals.includes(goal))a.career=goal;}
     state.journey={...state.journey,answers:a,completed:true,view:'home',step:'review',planReviewed:false,schoolContacted:false};
-    page='home';degreePreview=null;render();
+    page='home';degreePreview=null;render();if(saveOK)trackPlanStarted(state.selectedPathwayId||state.profile.pathwayId);
   }
   async function answer(value) {
     const id=state.journey.step;
@@ -858,6 +910,7 @@
       await ensureRouteModels(catalog.pathways.find(route=>route.id===(state.selectedPathwayId||state.profile?.pathwayId)));
       activePlanState=actualSavedTarget(state)&&read(KEY)?clone(state):null;
       const params = new URLSearchParams(location.search);
+      if(params.has('usePlan')){try{const used=await usePublicPlan(params.get('usePlan'));if(!used)render(false);}catch(error){state=Journey.initialize(read(KEY),read('degreepath-pathway-v2'),catalog);degreePreview=null;announce(error.message);render(false);}return;}
       await openPublicRoute(params);
       const school = (params.get('school') || '').trim();
       if (school && school.length <= 120) {

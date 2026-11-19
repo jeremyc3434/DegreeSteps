@@ -17,6 +17,7 @@ import { handleCurriculumDiscovery } from '../server/curriculum-discovery.mjs';
 import { publicCommunityCache } from '../server/public-community-cache.mjs';
 import { handleOperatorSnapshot } from '../server/operator-snapshot.mjs';
 import { handleAcademicCoverage } from '../server/academic-coverage.mjs';
+import { handleGrowthMetrics, pruneGrowthMetrics } from '../server/growth-metrics.mjs';
 import { assets } from './assets.generated.mjs';
 
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
@@ -236,7 +237,7 @@ export default {
     }
     return processResearchJobs(batch,await researchEnvironment(env),ctx);
   },
-  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
+  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;ctx?.waitUntil?.(pruneGrowthMetrics(env).catch(()=>{}));return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
   async fetch(request, env, ctx) {
     const target = new URL(request.url);
     if(target.hostname==='www.degreesteps.com'||target.hostname==='degreesteps.com'&&target.protocol!=='https:'){
@@ -248,6 +249,7 @@ export default {
     // snapshot, pause the entire application API before identity or data access.
     if(migrationReadOnly(env)&&(target.pathname==='/api'||target.pathname.startsWith('/api/'))&&!target.pathname.startsWith('/api/auth/')&&!target.pathname.startsWith('/api/operations/'))return migrationReadOnlyResponse(request);
     initializePublicAssets(env);
+    if(target.pathname==='/api/growth/events')return handleGrowthMetrics(request,env);
     if(target.pathname.startsWith('/api/operations/'))return await handleOperatorSnapshot(request,env)||Response.json({error:'Not found.'},{status:404,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'}});
     if(target.pathname==='/api/catalog/degree-link'){
       const headers={'Cache-Control':'public, max-age=300','X-Content-Type-Options':'nosniff'};
@@ -278,7 +280,8 @@ export default {
     const collegeAPI=target.pathname.startsWith('/api/colleges/')||target.pathname==='/api/admin/colleges';
     const transcriptAPI=target.pathname==='/api/portal/transcript-import';
     const coverageAPI=target.pathname==='/api/admin/academic-coverage'||target.pathname.startsWith('/api/admin/academic-coverage/');
-    if (target.pathname.startsWith('/api/portal/') || target.pathname.startsWith('/api/community/') || templateAPI || collegeAPI || connectionAPI || coverageAPI) {
+    const growthAPI=target.pathname==='/api/admin/growth-summary';
+    if (target.pathname.startsWith('/api/portal/') || target.pathname.startsWith('/api/community/') || templateAPI || collegeAPI || connectionAPI || coverageAPI || growthAPI) {
       const publicTemplateRead=request.method==='GET'&&(target.pathname==='/api/templates'||/^\/api\/templates\/tpl-[a-z0-9-]{5,80}$/.test(target.pathname));
       const identity = publicTemplateRead ? {configured:true,user:null,setCookies:[]} : await resolvePortalIdentity(request,env);
       if(identity.unavailable)return Response.json({error:'Sign-in is temporarily unavailable. Your saved plans have not changed. Please try again.',code:'auth_unavailable'},{status:503,headers:{'Cache-Control':'private, no-store','Vary':'Cookie','X-Content-Type-Options':'nosniff','Retry-After':'15'}});
@@ -298,7 +301,7 @@ export default {
       // The coverage handler authorizes the platform administrator before
       // invoking this immutable-asset loader. Student and guest traffic do not
       // load the research graph or read administrative review records.
-      const response=coverageAPI ? await handleAcademicCoverage(routedRequest,portalEnv,academicCoverageData) : connectionAPI ? await handleAIConnections(routedRequest,portalEnv) : transcriptAPI ? await handleTranscriptImport(routedRequest,portalEnv) : templateAPI ? await handleTemplateResearch(routedRequest,portalEnv,ctx) : collegeAPI ? await handleCollegeAccess(routedRequest,portalEnv) : target.pathname.startsWith('/api/portal/') ? await handlePortal(routedRequest,portalEnv,ctx) : await handleCommunity(routedRequest,portalEnv,ctx);
+      const response=growthAPI ? await handleGrowthMetrics(routedRequest,portalEnv) : coverageAPI ? await handleAcademicCoverage(routedRequest,portalEnv,academicCoverageData) : connectionAPI ? await handleAIConnections(routedRequest,portalEnv) : transcriptAPI ? await handleTranscriptImport(routedRequest,portalEnv) : templateAPI ? await handleTemplateResearch(routedRequest,portalEnv,ctx) : collegeAPI ? await handleCollegeAccess(routedRequest,portalEnv) : target.pathname.startsWith('/api/portal/') ? await handlePortal(routedRequest,portalEnv,ctx) : await handleCommunity(routedRequest,portalEnv,ctx);
       publicDiscussionCache?.store(response,ctx);
       if (!identity.setCookies?.length) return response;
       const headers=new Headers(response.headers);
@@ -315,7 +318,7 @@ export default {
     if(!assets[path] && assets[path+'/index.html'])return Response.redirect(target.origin+target.pathname+'/'+target.search,308);
     const asset=assets[path];
     if(!asset)return new Response('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"></head><body><main class="site-container" style="padding:80px 24px"><h1>Let’s find your next step.</h1><p>This page could not be found.</p><p><a href="/">DegreeSteps home</a> · <a href="/resources/">Student resources</a> · <a href="/portal.html">Build my plan</a></p></main></body></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
-    const privatePage=['/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/request-plan.html','/admin.html','/coverage.html'].includes(path);
+    const privatePage=['/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html'].includes(path);
     if(asset.external){
       if(!env.ASSETS?.fetch)return new Response('Public assets are temporarily unavailable',{status:503,headers:{'Cache-Control':'no-store'}});
       const assetURL=new URL(request.url);assetURL.pathname=path;const delivered=await env.ASSETS.fetch(new Request(assetURL,{method:request.method,headers:request.headers}));

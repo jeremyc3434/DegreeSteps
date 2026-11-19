@@ -85,8 +85,8 @@ function shellFixture({identity=owner,identityAvailable=true,storageAvailable=fa
   context.window=context;vm.createContext(context);vm.runInContext(shellSource,context,{filename:'app-shell.js'});
   return{calls,state,selectors,flush,refresh:async()=>{events['degreepath:account']();await flush();},releaseFirstRead:async result=>{release(result);await flush();}};
 }
-test('the workspace distinguishes signed-in storage trouble from being signed out and hides unavailable backup actions',async()=>{
-  const f=shellFixture();await f.flush();assert.equal(f.selectors.get('[data-shell-account-detail]').textContent,'Signed in · Saved plans unavailable');assert.equal(f.selectors.get('.dp-shell-save-account').hidden,true);assert.deepEqual(f.calls,['storage','/session']);
+test('the workspace distinguishes storage trouble while retaining the deliberate Keep my plan entry',async()=>{
+  const f=shellFixture();await f.flush();assert.equal(f.selectors.get('[data-shell-account-detail]').textContent,'Signed in · Saved plans unavailable');assert.equal(f.selectors.get('.dp-shell-save-account').hidden,false);assert.equal(f.selectors.get('.dp-shell-save-account').textContent,'Keep my plan');assert.deepEqual(f.calls,['storage','/session']);
   f.state.storageAvailable=true;await f.refresh();assert.equal(f.selectors.get('[data-shell-account-detail]').textContent,'Manage private saved plans');assert.equal(f.selectors.get('.dp-shell-save-account').hidden,false);
 });
 test('the workspace only prompts sign-in after identity has actually been checked',async()=>{
@@ -94,5 +94,5 @@ test('the workspace only prompts sign-in after identity has actually been checke
   const signedOut=shellFixture({identity:null});await signedOut.flush();assert.equal(signedOut.selectors.get('[data-shell-account-detail]').textContent,'Sign in to keep a private copy');
 });
 test('an older account response cannot overwrite a newer signed-out workspace state',async()=>{
-  const f=shellFixture({pendingFirstRead:true,storageAvailable:true});f.state.identity=null;await f.refresh();assert.equal(f.selectors.get('[data-shell-account-detail]').textContent,'Sign in to keep a private copy');await f.releaseFirstRead({user:owner});assert.equal(f.selectors.get('[data-shell-account-detail]').textContent,'Sign in to keep a private copy');assert.equal(f.selectors.get('.dp-shell-save-account').hidden,true);
+  const f=shellFixture({pendingFirstRead:true,storageAvailable:true});f.state.identity=null;await f.refresh();assert.equal(f.selectors.get('[data-shell-account-detail]').textContent,'Sign in to keep a private copy');await f.releaseFirstRead({user:owner});assert.equal(f.selectors.get('[data-shell-account-detail]').textContent,'Sign in to keep a private copy');assert.equal(f.selectors.get('.dp-shell-save-account').hidden,false);assert.equal(f.selectors.get('.dp-shell-save-account').textContent,'Keep my plan');
 });

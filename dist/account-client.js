@@ -40,15 +40,23 @@
     if (!user?.id || !item?.id || !Number.isInteger(item.revision)) throw new Error('The saved plan could not be linked to this account.');
     root.localStorage.setItem(LINK_KEY, JSON.stringify({ownerId:user.id,planId:item.id,revision:item.revision}));
   }
-  async function uploadDraft({title, consent, update = false} = {}) {
+  async function uploadDraft({title, consent, update = false, expectedOwnerId, expectedDraft} = {}) {
     if (consent !== true) throw new Error('Confirm that you want to save this private device draft to your account.');
     const current = await session(true), user = current.user;
-    if (!user) throw new Error('Sign in before saving a plan to your account.');
+    if (!user) {const cause = new Error('Sign in before saving a plan to your account.'); cause.status = 401; cause.code = 'sign_in_required'; throw cause;}
+    if (expectedOwnerId !== undefined && user.id !== expectedOwnerId) {
+      const cause = new Error('Your signed-in account changed. Review where this private plan will be saved.'); cause.code = 'account_changed'; throw cause;
+    }
     const state = deviceDraft(); if (!state) throw new Error('Build a draft before saving it to your account.');
+    if (expectedDraft !== undefined && JSON.stringify(state) !== expectedDraft) {
+      const cause = new Error('Your device plan changed. Review the updated plan before saving it.'); cause.code = 'draft_changed'; throw cause;
+    }
     const link = update ? linkedPlan(user) : null;
     if (update && !link) throw new Error('Open a saved plan from this account before updating it.');
     const result = await api(link ? '/plans/' + encodeURIComponent(link.planId) : '/plans', {method:link ? 'PUT' : 'POST', body:{title,state,...(link ? {revision:link.revision} : {consent:true})}});
-    setLink(user,result.item); return result;
+    if (!result.item?.id || !Number.isInteger(result.item.revision)) throw new Error('The account did not return a valid saved-plan receipt. Check your account copies before trying again.');
+    try {setLink(user,result.item);} catch {return {...result,linkSaved:false};}
+    return result;
   }
   const clone = value => JSON.parse(JSON.stringify(value));
   const list = value => Array.isArray(value) ? value : [];
@@ -182,6 +190,6 @@
     setLink(current.user,result.item);
     return {...result,restore:{conflicts:merged.conflicts,coursesPreserved:local?.learning.length || 0}};
   }
-  async function signOut() {const result = await auth('/logout',{method:'POST'}); clearLink(); invalidate(); return result;}
+  async function signOut() {const result = await auth('/logout',{method:'POST'}); clearLink(); try {root.sessionStorage?.removeItem('degreesteps-plan-save-intent-v1');} catch {} invalidate(); return result;}
   return Object.freeze({DRAFT_KEY,LINK_KEY,api,auth,session,invalidate,deviceDraft,linkedPlan,clearLink,uploadDraft,openPlan,signOut});
 }));

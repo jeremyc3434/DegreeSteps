@@ -188,7 +188,10 @@
       const before=current();await ensureRouteModels(catalog.pathways.find(route=>route.id===(before.selectedPathwayId||before.profile.pathwayId)));
       const fresh=current(),draft=Journey.buildDraft(DegreeProgramCatalog.resolveTarget(fresh,catalog).state,catalog,models);
       const next=DegreeChecklist.apply(draft.state,draft,action);
+      const firstCompletion=action.type==='set-task'&&action.status==='done'&&draft.state.journey?.activationTaskCompleted!==true&&DegreeChecklist.build(draft.state,draft).tasks.some(item=>item.id===action.taskId&&item.canSetStatus===true&&item.status!=='done');
+      if(firstCompletion)next.journey={...next.journey,activationTaskCompleted:true};
       const raw=JSON.stringify(next);assertCurrentDraft(currentRaw);try{localStorage.setItem(KEY,raw);storageBaseline=raw;}catch{throw Error('Your checklist could not be saved on this device. Your previous plan is unchanged.');}
+      if(firstCompletion)window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event:'first_task_completed',context:'workspace'}}));
       state=next;render();return true;
     }});
   }

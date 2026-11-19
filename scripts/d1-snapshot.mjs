@@ -8,7 +8,8 @@ import {pathToFileURL} from 'node:url';
 
 const root=resolve(import.meta.dirname,'..');
 const journal=JSON.parse(readFileSync(resolve(root,'drizzle/meta/_journal.json'),'utf8'));
-export const SNAPSHOT_LIMITS=Object.freeze({rowsPerTable:1000,totalRows:5000,rowBytes:1048576,tableBytes:2097152,totalBytes:4194304,responseBytes:8388608});
+export const SNAPSHOT_LIMITS=Object.freeze({rowsPerTable:1000,totalRows:5000,rowBytes:1048576,tableBytes:2097152,totalBytes:4194304,responseBytes:8388608,aggregateRows:20000,aggregateBytes:3145728});
+const aggregateTable='growth_daily_counts';
 const identifier=/^[a-z][a-z0-9_]*$/;
 const hashPattern=/^[a-f0-9]{64}$/;
 const decimal=/^(?:0|-[1-9][0-9]*|[1-9][0-9]*)$/;
@@ -95,13 +96,14 @@ function validateStructure(snapshot,definitions,expectedSchema,{expectedOrigin,e
   for(const item of snapshot.schema){exactKeys(item,['type','name','tbl_name','sql'],'schema object');if(!['table','index','trigger'].includes(item.type)||typeof item.name!=='string'||typeof item.tbl_name!=='string'||!(item.sql===null||typeof item.sql==='string'))fail('schema_mismatch','Snapshot contains an invalid schema object.');}
   if(!hashPattern.test(snapshot.schemaSha256)||digest(canonicalJSON(snapshot.schema))!==snapshot.schemaSha256)fail('digest_mismatch','Snapshot schema digest does not match its content.');
   if(canonicalJSON(normalizedSchema(snapshot.schema))!==canonicalJSON(normalizedSchema(expectedSchema)))fail('schema_mismatch','Snapshot schema differs from repository migrations. Supplied SQL was not executed.');
-  let totalRows=0,totalBytes=0;
+  let totalRows=0,totalBytes=0,privateRows=0,privateBytes=0,aggregateRows=0,aggregateBytes=0;
   for(let index=0;index<definitions.length;index++){
     const definition=definitions[index],table=snapshot.tables[index];
     exactKeys(table,['name','columns','rows','count','sha256'],'table');
     if(table.name!==definition.name||!Array.isArray(table.columns)||canonicalJSON(table.columns)!==canonicalJSON(definition.columns.map(column=>column.name)))fail('schema_mismatch','Snapshot table or column registry is incomplete or changed.');
     if(!Array.isArray(table.rows)||!Number.isSafeInteger(table.count)||table.count!==table.rows.length)fail('incomplete_snapshot','Snapshot row count is incomplete.');
-    if(table.count>SNAPSHOT_LIMITS.rowsPerTable)fail('snapshot_too_large','Snapshot exceeds the per-table row budget.');
+    const publicAggregate=definition.name===aggregateTable;
+    if(table.count>(publicAggregate?SNAPSHOT_LIMITS.aggregateRows:SNAPSHOT_LIMITS.rowsPerTable))fail('snapshot_too_large','Snapshot exceeds the per-table row budget.');
     let tableBytes=0;
     for(const row of table.rows){
       exactKeys(row,table.columns,'row');
@@ -115,11 +117,12 @@ function validateStructure(snapshot,definitions,expectedSchema,{expectedOrigin,e
       }
       const rowBytes=utf8(canonicalJSON(row));if(rowBytes>SNAPSHOT_LIMITS.rowBytes)fail('snapshot_too_large','Snapshot exceeds the encoded row budget.');tableBytes+=rowBytes;
     }
-    if(tableBytes>SNAPSHOT_LIMITS.tableBytes)fail('snapshot_too_large','Snapshot exceeds the encoded table budget.');
+    if(tableBytes>(publicAggregate?SNAPSHOT_LIMITS.aggregateBytes:SNAPSHOT_LIMITS.tableBytes))fail('snapshot_too_large','Snapshot exceeds the encoded table budget.');
     totalRows+=table.count;totalBytes+=tableBytes;
+    if(publicAggregate){aggregateRows+=table.count;aggregateBytes+=tableBytes;}else{privateRows+=table.count;privateBytes+=tableBytes;}
     if(!hashPattern.test(table.sha256)||tableDigest(table.rows)!==table.sha256)fail('digest_mismatch','Snapshot table digest does not match its content.');
   }
-  if(totalRows>SNAPSHOT_LIMITS.totalRows||totalBytes>SNAPSHOT_LIMITS.totalBytes||utf8(canonicalJSON(snapshot))>SNAPSHOT_LIMITS.responseBytes)fail('snapshot_too_large','Snapshot exceeds the complete export budget.');
+  if(privateRows>SNAPSHOT_LIMITS.totalRows||privateBytes>SNAPSHOT_LIMITS.totalBytes||aggregateRows>SNAPSHOT_LIMITS.aggregateRows||aggregateBytes>SNAPSHOT_LIMITS.aggregateBytes||utf8(canonicalJSON(snapshot))>SNAPSHOT_LIMITS.responseBytes)fail('snapshot_too_large','Snapshot exceeds the complete export budget.');
   if(!hashPattern.test(snapshot.sha256)||snapshotContentDigest(snapshot)!==snapshot.sha256)fail('digest_mismatch','Snapshot content digest does not match its manifest.');
   if(expectedSha256!==undefined&&(!hashPattern.test(expectedSha256)||snapshot.sha256!==expectedSha256))fail('source_mismatch','Snapshot differs from the expected authenticated-export digest.');
   return{totalRows,totalBytes};

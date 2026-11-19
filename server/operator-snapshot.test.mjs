@@ -26,7 +26,7 @@ function seedTemplate(DB,{id='tpl-'+('1'.repeat(32)),artifact=JSON.stringify({ti
 
 test('fixed registry exactly covers every migration-owned table and column type',t=>{
   const f=fixture(t),expected=Object.values(schema).map(table=>{const value=getTableConfig(table);return{name:value.name,columns:value.columns.map(column=>({name:column.name,type:column.getSQLType()}))};}).sort((a,b)=>a.name<b.name?-1:a.name>b.name?1:0);
-  assert.equal(expected.length,29);assert.deepEqual(D1_SNAPSHOT_TABLES,expected);
+  assert.equal(expected.length,30);assert.deepEqual(D1_SNAPSHOT_TABLES,expected);
   const actual=f.DB.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT GLOB 'sqlite_*' ORDER BY name").all().map(row=>row.name);assert.deepEqual(actual,expected.map(table=>table.name));
   for(const table of expected)assert.deepEqual(f.DB.sqlite.prepare('PRAGMA table_info("'+table.name+'")').all().map(column=>({name:column.name,type:column.type.toLowerCase()})),table.columns);
   assert.deepEqual(D1_SNAPSHOT_SCHEMA.map(row=>({...row})),f.DB.sqlite.prepare("SELECT type,name,tbl_name,sql FROM sqlite_master ORDER BY type,name").all().filter(row=>actual.includes(row.tbl_name)&&['table','index','trigger'].includes(row.type)).map(row=>({...row})));
@@ -51,7 +51,7 @@ test('one atomic read batch preserves complete large text, nulls, exact int64 va
   f.DB.sqlite.prepare("INSERT INTO ai_service_connections(id,ciphertext,iv,revision,verified_at,updated_by,created_at,updated_at) VALUES ('anthropic',?, ?,1,1,'synthetic-user',1,2)").run('ciphertext-fixture-'.repeat(4),'a'.repeat(24));
   const before=f.DB.sqlite.prepare('SELECT total_changes() AS n').get().n,result=await call(f.env);assert.equal(result.status,200,JSON.stringify(result.data));
   assert.equal(f.DB.batches,1);assert.equal(f.DB.prepared.length,3);assert(f.DB.prepared.every(sql=>sql.length<100000),'D1 statement text remains under its documented bound');assert(f.DB.prepared.every(sql=>!(/\bUNION\b/i.test(sql))),'Avoid Cloudflare compound-SELECT limits rather than relying on local SQLite limits');assert.equal(f.DB.sqlite.prepare('SELECT total_changes() AS n').get().n,before);
-  assert.equal(result.data.format,'degreesteps-d1-snapshot');assert.equal(result.data.version,1);assert.equal(result.data.integerEncoding,'decimal-string');assert.equal(result.data.tables.length,29);assert.equal(result.data.sourceOrigin,origin);assert(!Number.isNaN(Date.parse(result.data.createdAt)));
+  assert.equal(result.data.format,'degreesteps-d1-snapshot');assert.equal(result.data.version,1);assert.equal(result.data.integerEncoding,'decimal-string');assert.equal(result.data.tables.length,30);assert.equal(result.data.sourceOrigin,origin);assert(!Number.isNaN(Date.parse(result.data.createdAt)));
   const templates=result.data.tables.find(table=>table.name==='degree_templates');assert.equal(templates.rows[0].artifact_json,large);assert.equal(templates.rows[0].source_url,null);
   assert.equal(result.data.tables.find(table=>table.name==='community_users').rows[0].created_at,'9223372036854775807');assert.equal(result.data.tables.find(table=>table.name==='ai_service_connections').rows[0].ciphertext,'ciphertext-fixture-'.repeat(4));
   assert(result.data.schema.some(row=>row.type==='index'&&row.sql===null));assert(!result.data.schema.some(row=>row.tbl_name==='sqlite_sequence'));
@@ -68,6 +68,20 @@ test('digests and row ordering do not depend on insertion order, source origin o
 test('oversized tables refuse the entire snapshot without returning truncated rows',async t=>{
   const f=fixture(t);const insert=f.DB.sqlite.prepare("INSERT INTO community_users(id,alias,role,created_at,updated_at) VALUES (?,'Synthetic member','member',1,2)");for(let n=0;n<1001;n++)insert.run('synthetic-user-'+n);
   const result=await call(f.env);assert.equal(result.status,413);assert.equal(result.data.code,'snapshot_too_large');assert(!Object.hasOwn(result.data,'tables'));assert.deepEqual(f.DB.returnedDataRows,[]);
+});
+
+test('anonymous aggregate rows have a separate bounded allowance without expanding any private-table limit',async t=>{
+  const f=fixture(t),insert=f.DB.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,count) VALUES(?,'landing_view','home','',1)");
+  for(let n=0;n<1500;n++)insert.run(new Date(Date.UTC(2020,0,1+n)).toISOString().slice(0,10));
+  seedUser(f.DB);const ok=await call(f.env);assert.equal(ok.status,200);assert.equal(ok.data.tables.find(table=>table.name==='growth_daily_counts').count,1500);assert.equal(ok.data.tables.find(table=>table.name==='community_users').count,1);
+  const users=f.DB.sqlite.prepare("INSERT INTO community_users(id,alias,role,created_at,updated_at) VALUES (?,'Synthetic member','member',1,2)");for(let n=0;n<1000;n++)users.run('private-'+n);
+  f.DB.returnedDataRows=[];const blocked=await call(f.env);assert.equal(blocked.status,413);assert.equal(blocked.data.code,'snapshot_too_large');assert.deepEqual(f.DB.returnedDataRows,[]);
+});
+
+test('an aggregate above its fixed 20000-row cap still refuses a partial export',async t=>{
+  const f=fixture(t),insert=f.DB.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,count) VALUES(?,'landing_view','home','',1)");
+  for(let n=0;n<20001;n++)insert.run(new Date(Date.UTC(2000,0,1+n)).toISOString().slice(0,10));
+  const response=await call(f.env);assert.equal(response.status,413);assert.equal(response.data.code,'snapshot_too_large');assert.deepEqual(f.DB.returnedDataRows,[]);
 });
 
 test('row byte caps and unknown schema refuse a misleading partial export',async t=>{
@@ -111,7 +125,7 @@ test('schema mismatch exposes bounded operator-only DDL metadata without any sto
 
 test('the exact managed Sites migration table is internal while other unknown tables still fail closed',async t=>{
   const f=fixture(t);f.DB.sqlite.exec('CREATE TABLE __appgarden_migrations(id text PRIMARY KEY,metadata text)');f.DB.sqlite.prepare('INSERT INTO __appgarden_migrations(id,metadata) VALUES (?,?)').run('synthetic-platform-migration','INTERNAL PLATFORM METADATA');
-  const result=await call(f.env);assert.equal(result.status,200);assert.equal(result.data.tables.length,29);assert.equal(result.data.schema.length,99);assert(!result.data.tables.some(table=>table.name==='__appgarden_migrations'));assert(!result.data.schema.some(row=>row.name==='__appgarden_migrations'));assert(!JSON.stringify(result.data).includes('INTERNAL PLATFORM METADATA'));
+  const result=await call(f.env);assert.equal(result.status,200);assert.equal(result.data.tables.length,30);assert.equal(result.data.schema.length,101);assert(!result.data.tables.some(table=>table.name==='__appgarden_migrations'));assert(!result.data.schema.some(row=>row.name==='__appgarden_migrations'));assert(!JSON.stringify(result.data).includes('INTERNAL PLATFORM METADATA'));
   f.DB.sqlite.exec('CREATE TABLE __appgarden_other_records(id text)');const unknown=await call(f.env);assert.equal(unknown.status,503);assert.equal(unknown.data.code,'snapshot_schema_mismatch');
 });
 

@@ -5,6 +5,9 @@ const OperatorSnapshotApi=(()=>{
   'use strict';
   const PATH='/api/operations/snapshot',FORMAT='degreesteps-d1-snapshot';
   const MAX_ROWS=1000,MAX_TOTAL_ROWS=5000,MAX_RAW_TABLE_BYTES=4*1024*1024;
+  // A separate fixed allowance covers anonymous counters without relaxing any
+  // private-table or private-total budget. The final response still has 8 MiB.
+  const AGGREGATE_TABLE='growth_daily_counts',MAX_AGGREGATE_ROWS=20000,MAX_AGGREGATE_BYTES=3*1024*1024;
   const MAX_ROW_BYTES=1024*1024,MAX_TABLE_BYTES=2*1024*1024,MAX_DATA_BYTES=4*1024*1024,MAX_HTTP_BYTES=8*1024*1024;
   const TTL=60*60*1000,encoder=new TextEncoder();
   const tables=D1_SNAPSHOT_TABLES;
@@ -37,18 +40,20 @@ const OperatorSnapshotApi=(()=>{
   }
   function rowExpression(table){return'json_object('+table.columns.flatMap(column=>[literal(column.name),column.type==='integer'?'CAST('+identifier(column.name)+' AS TEXT)':identifier(column.name)]).join(',')+')';}
   function tableStats(table){
+    const limit=table.name===AGGREGATE_TABLE?MAX_AGGREGATE_ROWS:MAX_ROWS;
     const columns=table.columns.map(column=>identifier(column.name)),row=rowExpression(table);
     const raw=columns.map(column=>'COALESCE(length(CAST('+column+' AS BLOB)),0)').join('+');
     const invalid=table.columns.map(column=>'('+identifier(column.name)+' IS NOT NULL AND typeof('+identifier(column.name)+')<>'+literal(column.type)+')').join(' OR ');
-    const allowed='row_count<='+MAX_ROWS+' AND raw_bytes<='+MAX_RAW_TABLE_BYTES+' AND bad_types=0';
-    return'(WITH bounded AS NOT MATERIALIZED (SELECT '+columns.join(',')+' FROM '+identifier(table.name)+' LIMIT '+(MAX_ROWS+1)+'), raw AS (SELECT count(*) AS row_count,COALESCE(sum('+raw+'),0) AS raw_bytes,COALESCE(sum(CASE WHEN '+invalid+' THEN 1 ELSE 0 END),0) AS bad_types FROM bounded) SELECT json_object(\'row_count\',row_count,\'raw_bytes\',raw_bytes,\'bad_types\',bad_types,\'encoded_bytes\',CASE WHEN '+allowed+' THEN (SELECT COALESCE(sum(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END,\'max_row_bytes\',CASE WHEN '+allowed+' THEN (SELECT COALESCE(max(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END) FROM raw)';
+    const allowed='row_count<='+limit+' AND raw_bytes<='+MAX_RAW_TABLE_BYTES+' AND bad_types=0';
+    return'(WITH bounded AS NOT MATERIALIZED (SELECT '+columns.join(',')+' FROM '+identifier(table.name)+' LIMIT '+(limit+1)+'), raw AS (SELECT count(*) AS row_count,COALESCE(sum('+raw+'),0) AS raw_bytes,COALESCE(sum(CASE WHEN '+invalid+' THEN 1 ELSE 0 END),0) AS bad_types FROM bounded) SELECT json_object(\'row_count\',row_count,\'raw_bytes\',raw_bytes,\'bad_types\',bad_types,\'encoded_bytes\',CASE WHEN '+allowed+' THEN (SELECT COALESCE(sum(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END,\'max_row_bytes\',CASE WHEN '+allowed+' THEN (SELECT COALESCE(max(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END) FROM raw)';
   }
   // D1 imposes a smaller compound-SELECT limit than local SQLite. A fixed JSON
   // registry and CASE subqueries avoid UNION terms while keeping one read batch.
   const tableNames=literal(JSON.stringify(tables.map(table=>table.name)));
   const fields=['row_count','raw_bytes','bad_types','encoded_bytes','max_row_bytes'];
   const statsSql='WITH snapshot_statistics AS MATERIALIZED (SELECT value AS name,CASE value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN '+tableStats(table)).join(' ')+' END AS metadata_json FROM json_each('+tableNames+')),snapshot_stats AS (SELECT name,'+fields.map(field=>'json_extract(metadata_json,'+literal('$.'+field)+') AS '+field).join(',')+' FROM snapshot_statistics) ';
-  const valid='count(*)='+tables.length+' AND sum(row_count)<='+MAX_TOTAL_ROWS+' AND sum(COALESCE(encoded_bytes,'+(MAX_DATA_BYTES+1)+'))<='+MAX_DATA_BYTES+' AND sum(CASE WHEN row_count>'+MAX_ROWS+' OR bad_types<>0 OR encoded_bytes IS NULL OR encoded_bytes>'+MAX_TABLE_BYTES+' OR max_row_bytes>'+MAX_ROW_BYTES+' THEN 1 ELSE 0 END)=0';
+  const aggregate=literal(AGGREGATE_TABLE),limitRows='CASE WHEN name='+aggregate+' THEN '+MAX_AGGREGATE_ROWS+' ELSE '+MAX_ROWS+' END',limitBytes='CASE WHEN name='+aggregate+' THEN '+MAX_AGGREGATE_BYTES+' ELSE '+MAX_TABLE_BYTES+' END';
+  const valid='count(*)='+tables.length+' AND sum(CASE WHEN name='+aggregate+' THEN 0 ELSE row_count END)<='+MAX_TOTAL_ROWS+' AND sum(CASE WHEN name='+aggregate+' THEN row_count ELSE 0 END)<='+MAX_AGGREGATE_ROWS+' AND sum(CASE WHEN name='+aggregate+' THEN 0 ELSE COALESCE(encoded_bytes,'+(MAX_DATA_BYTES+1)+') END)<='+MAX_DATA_BYTES+' AND sum(CASE WHEN name='+aggregate+' THEN COALESCE(encoded_bytes,'+(MAX_AGGREGATE_BYTES+1)+') ELSE 0 END)<='+MAX_AGGREGATE_BYTES+' AND sum(CASE WHEN row_count>('+limitRows+') OR bad_types<>0 OR encoded_bytes IS NULL OR encoded_bytes>('+limitBytes+') OR max_row_bytes>'+MAX_ROW_BYTES+' THEN 1 ELSE 0 END)=0';
   const queries=[
     statsSql+'SELECT * FROM snapshot_stats ORDER BY name',
     statsSql+', snapshot_allowed AS (SELECT CASE WHEN '+valid+' THEN 1 ELSE 0 END AS ok FROM snapshot_stats) SELECT registry.value AS table_name,packed.value AS row_json FROM json_each('+tableNames+') AS registry CROSS JOIN json_each(CASE WHEN (SELECT ok FROM snapshot_allowed)=1 THEN CASE registry.value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN (SELECT json_group_array(json('+rowExpression(table)+')) FROM '+identifier(table.name)+')').join(' ')+' ELSE \'[]\' END ELSE \'[]\' END) AS packed',
@@ -56,13 +61,14 @@ const OperatorSnapshotApi=(()=>{
   ];
   function validateStats(rows){
     if(!Array.isArray(rows)||rows.length!==tables.length)fail(503,'The application schema changed. Review the export before continuing.','snapshot_schema_mismatch');
-    let count=0,bytes=0;
+    let count=0,bytes=0,aggregateCount=0,aggregateBytes=0;
     for(let i=0;i<tables.length;i++){
       const row=rows[i];if(row.name!==tables[i].name||!Number.isSafeInteger(row.row_count)||row.row_count<0||!Number.isSafeInteger(row.raw_bytes)||row.raw_bytes<0)fail(503,'The migration snapshot could not be verified.','snapshot_invalid_result');
-      if(row.row_count>MAX_ROWS||row.raw_bytes>MAX_RAW_TABLE_BYTES||row.bad_types!==0||!Number.isSafeInteger(row.encoded_bytes)||row.encoded_bytes<0||row.encoded_bytes>MAX_TABLE_BYTES||!Number.isSafeInteger(row.max_row_bytes)||row.max_row_bytes>MAX_ROW_BYTES)fail(413,'This database exceeds the bounded snapshot limits. Use a provider export.','snapshot_too_large');
-      count+=row.row_count;bytes+=row.encoded_bytes;
+      const publicAggregate=row.name===AGGREGATE_TABLE;
+      if(row.row_count>(publicAggregate?MAX_AGGREGATE_ROWS:MAX_ROWS)||row.raw_bytes>MAX_RAW_TABLE_BYTES||row.bad_types!==0||!Number.isSafeInteger(row.encoded_bytes)||row.encoded_bytes<0||row.encoded_bytes>(publicAggregate?MAX_AGGREGATE_BYTES:MAX_TABLE_BYTES)||!Number.isSafeInteger(row.max_row_bytes)||row.max_row_bytes>MAX_ROW_BYTES)fail(413,'This database exceeds the bounded snapshot limits. Use a provider export.','snapshot_too_large');
+      if(publicAggregate){aggregateCount+=row.row_count;aggregateBytes+=row.encoded_bytes;}else{count+=row.row_count;bytes+=row.encoded_bytes;}
     }
-    if(count>MAX_TOTAL_ROWS||bytes>MAX_DATA_BYTES)fail(413,'This database exceeds the bounded snapshot limits. Use a provider export.','snapshot_too_large');
+    if(count>MAX_TOTAL_ROWS||bytes>MAX_DATA_BYTES||aggregateCount>MAX_AGGREGATE_ROWS||aggregateBytes>MAX_AGGREGATE_BYTES)fail(413,'This database exceeds the bounded snapshot limits. Use a provider export.','snapshot_too_large');
   }
   function databaseDiagnostic(error){
     // Only fixed enums escape the operator boundary: never SQL, cell contents, keys or raw errors.

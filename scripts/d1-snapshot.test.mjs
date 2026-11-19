@@ -34,9 +34,9 @@ function fixture(t){
 }
 const rejected=(fn,code)=>assert.throws(fn,error=>error instanceof SnapshotError&&(!code||error.code===code));
 
-test('full snapshot restores all 29 tables with original JSON, units, revisions and encrypted text intact',t=>{
+test('full snapshot restores all 30 tables with original JSON, units, revisions and encrypted text intact',t=>{
  const f=fixture(t),result=restoreSnapshot(f.snapshot,{expectedOrigin:sourceOrigin,expectedSha256:f.snapshot.sha256});t.after(()=>result.database.close());
- assert.equal(result.report.tableCount,29);assert.equal(result.report.integrity,'ok');assert.equal(result.report.foreignKeyViolations,0);assert.equal(result.report.cutoverVerified,false);
+ assert.equal(result.report.tableCount,30);assert.equal(result.report.integrity,'ok');assert.equal(result.report.foreignKeyViolations,0);assert.equal(result.report.cutoverVerified,false);
  const restored=result.database.prepare('SELECT state_json,revision FROM portal_plans').get();assert.equal(restored.state_json,JSON.stringify(f.state));assert.equal(restored.revision,7);
  assert.equal(JSON.parse(restored.state_json).learning[0].creditSystem,'quarter');assert.equal(JSON.parse(restored.state_json).learning[0].evaluations[0].status,'confirmed');
  assert.equal(result.database.prepare('SELECT ciphertext FROM ai_service_connections').get().ciphertext,f.db.prepare('SELECT ciphertext FROM ai_service_connections').get().ciphertext);
@@ -51,7 +51,16 @@ test('actual atomic exporter output verifies and restores through the independen
  const DB={prepare(sql){assert.match(sql,/^(?:WITH|SELECT)\b/);return{sql};},async batch(statements){assert.equal(statements.length,3);f.db.exec('BEGIN');try{const results=statements.map(statement=>{executed.push(statement.sql);return{success:true,results:f.db.prepare(statement.sql).all()};});f.db.exec('COMMIT');return results;}catch(error){f.db.exec('ROLLBACK');throw error;}}};
  const response=await handleOperatorSnapshot(new Request(sourceOrigin+'/api/operations/snapshot',{method:'POST',headers:{'X-DegreeSteps-Export-Key':key,'Content-Type':'application/json'},body:'{}'}),{DB,OPERATOR_EXPORT_ORIGIN:sourceOrigin,OPERATOR_EXPORT_EXPIRES_AT:new Date(Date.now()+60000).toISOString(),OPERATOR_EXPORT_TOKEN_SHA256:createHash('sha256').update(key).digest('hex')});
  assert.equal(response.status,200,await response.clone().text());const snapshot=await response.json(),verified=verifySnapshot(snapshot,{expectedOrigin:sourceOrigin,expectedSha256:f.snapshot.sha256});
- assert.equal(verified.sha256,f.snapshot.sha256);assert.equal(verified.tableCount,29);assert.equal(executed.length,3);assert.equal(table(snapshot,'portal_plans').rows[0].state_json,JSON.stringify(f.state));
+ assert.equal(verified.sha256,f.snapshot.sha256);assert.equal(verified.tableCount,30);assert.equal(executed.length,3);assert.equal(table(snapshot,'portal_plans').rows[0].state_json,JSON.stringify(f.state));
+});
+
+test('offline restore accepts bounded anonymous aggregates while keeping the original private-table cap',t=>{
+ const f=fixture(t),insert=f.db.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,count) VALUES(?,'landing_view','home','',1)");
+ for(let n=0;n<1500;n++)insert.run(new Date(Date.UTC(2020,0,1+n)).toISOString().slice(0,10));
+ const snapshot=readDatabaseSnapshot(f.db,{sourceOrigin}),result=restoreSnapshot(snapshot);t.after(()=>result.database.close());assert.equal(result.database.prepare('SELECT count(*) AS n FROM growth_daily_counts').get().n,1500);assert.equal(result.database.prepare('SELECT state_json FROM portal_plans').get().state_json,JSON.stringify(f.state));
+ const privateOverflow=clone(snapshot),rows=table(privateOverflow,'portal_profiles').rows;
+ while(rows.length<=1000)rows.push({...rows[0],id:'private-profile-'+rows.length});rehash(privateOverflow);rejected(()=>verifySnapshot(privateOverflow),'snapshot_too_large');
+ const renamed=clone(snapshot);table(renamed,'portal_plans').name='growth_daily_counts';rehash(renamed);rejected(()=>verifySnapshot(renamed),'schema_mismatch');
 });
 
 test('restoration defers foreign keys so canonical row order can put child comments before parents',t=>{
@@ -131,7 +140,7 @@ test('import plans contain parameterized INSERTs only and require an empty atomi
 test('CLI verification prints a safe report, writes private plans only to explicit 0600 new files, and refuses tracked paths',async t=>{
  const f=fixture(t),directory=await mkdtemp(resolve(tmpdir(),'degreesteps-snapshot-cli-'));t.after(()=>rm(directory,{recursive:true,force:true}));const input=resolve(directory,'source.json'),out=resolve(directory,'import-plan.json');await writeFile(input,JSON.stringify(f.snapshot),{mode:0o600});
  const cli=async(...args)=>{const lines=[],logger=t.mock.method(console,'log',value=>lines.push(String(value)));try{await main(args);return lines.join('\n');}finally{logger.mock.restore();}};
- const verified=await cli('--verify',input,'--expect-origin',sourceOrigin);assert.equal(JSON.parse(verified).tableCount,29);assert(!verified.includes('Synthetic private note'));
+ const verified=await cli('--verify',input,'--expect-origin',sourceOrigin);assert.equal(JSON.parse(verified).tableCount,30);assert(!verified.includes('Synthetic private note'));
  await cli('--plan',input,'--out',out);assert.equal((await stat(out)).mode&0o777,0o600);assert.equal(JSON.parse(await readFile(out,'utf8')).sourceSha256,f.snapshot.sha256);
  await assert.rejects(cli('--plan',input,'--out',out),undefined,'An existing file is not overwritten');
  const forbidden=resolve(root,'dist/must-not-write-private-plan.json');await assert.rejects(cli('--plan',input,'--out',forbidden),error=>error.code==='unsafe_output');await assert.rejects(access(forbidden));

@@ -5,7 +5,7 @@
   <title>Build a degree plan from a link — DegreeSteps</title>
   <link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="template-workspace.css"><link rel="stylesheet" href="request-plan.css">
   <script src="sheet-state.js" defer></script><script src="program-catalog.js" defer></script><script src="audit-curriculum.js" defer></script><script src="planner.js" defer></script><script src="account-client.js" defer></script><script src="template-workspace-client.js" defer></script><script src="request-plan.js" defer></script><script src="app-shell.js" defer></script>
-<link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"></head>
+<link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><script src="/growth-metrics.js" defer></script></head>
 <body class="template-workspace link-plan-page ds-experience ds-workspace-page ds-discovery-page">
 <a class="tw-skip" href="#request-main">Skip to degree builder</a>
 <main id="request-main" class="tw-main link-plan-main">
@@ -16,6 +16,7 @@
     <p>We’ll find the requirements and supported transfer courses, then build a plan you can edit.</p>
   </header>
   <section id="request-entry" class="tw-card link-entry" aria-labelledby="request-heading">
+    <p id="request-context" class="portal-profile-note" hidden></p>
     <form id="degree-request-form">
       <label for="degree-url" id="request-heading">Link to the degree you want</label>
       <div class="link-entry-row">

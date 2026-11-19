@@ -8,7 +8,7 @@ test('the complete working plan retains every source control while shared styles
  const before=await readFile(new URL('../dist/plan.html',import.meta.url),'utf8'),result=applyExperience(before,'plan.html');
  const required=['sheet-grid','sheet-task-panel','sheet-home','sheet-dialog','sheet-search'];
  for(const id of required.filter(id=>before.includes('id="'+id+'"')))assert(result.html.includes('id="'+id+'"'));
- assert.deepEqual(result.styles,['brand.css','experience.css','workspace-design.css','plan-design.css']);
+ assert.deepEqual(result.styles,['brand.css','experience.css','workspace-design.css','plan-save.css','plan-design.css']);
  assert.equal(css(result.html).at(-1),'/plan-design.css');
  assert.equal(applyExperience(result.html,'plan.html').html,result.html);
  assert.deepEqual([...before.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(match=>match[1]),[...result.html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(match=>match[1]));
@@ -35,7 +35,7 @@ test('bare legacy builder bodies receive family styling without introducing a ne
 test('course, comparison, community and protected settings routes keep separate presentation families',()=>{
  const source='<html><head></head><body class="existing-page"><form id="keep-me"></form></body></html>';
  for(const [name,family]of [['courses.html','collection'],['import-courses.html','collection'],['compare-plans.html','comparison'],['community.html','community'],['account.html','settings'],['admin.html','settings'],['coverage.html','settings']]){
-  const result=applyExperience(source,name);assert.equal(result.family,family);assert.equal(result.workspace,true);assert.equal(result.styles.at(-1),family+'-design.css');assert(result.html.includes('id="keep-me"'));assert(result.html.includes('existing-page'));
+  const result=applyExperience(source,name);assert.equal(result.family,family);assert.equal(result.workspace,true);assert(result.styles.includes(family+'-design.css'));assert(result.styles.indexOf(family+'-design.css')>result.styles.indexOf('workspace-design.css'));if(['courses.html','compare-plans.html'].includes(name))assert(result.styles.indexOf('plan-save.css')>result.styles.indexOf(family+'-design.css'));assert(result.html.includes('id="keep-me"'));assert(result.html.includes('existing-page'));
  }
  const library=applyExperience(source,'library.html');assert.equal(library.family,null);assert.equal(library.styles.at(-1),'workspace-design.css');
 });

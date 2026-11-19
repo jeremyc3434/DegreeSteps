@@ -911,6 +911,31 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   },
   {
+    "name": "growth_daily_counts",
+    "columns": [
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "event",
+        "type": "text"
+      },
+      {
+        "name": "context",
+        "type": "text"
+      },
+      {
+        "name": "plan_id",
+        "type": "text"
+      },
+      {
+        "name": "count",
+        "type": "integer"
+      }
+    ]
+  },
+  {
     "name": "portal_plans",
     "columns": [
       {
@@ -1110,8 +1135,6 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   }
 ].map(table=>Object.freeze({...table,columns:Object.freeze(table.columns.map(column=>Object.freeze(column)))})));
-
-/** Exact immutable migration metadata; rejects drift that would omit unregistered columns. */
 export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   {
     "type": "index",
@@ -1451,6 +1474,12 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "index",
+    "name": "sqlite_autoindex_growth_daily_counts_1",
+    "tbl_name": "growth_daily_counts",
+    "sql": null
+  },
+  {
+    "type": "index",
     "name": "sqlite_autoindex_portal_plans_1",
     "tbl_name": "portal_plans",
     "sql": null
@@ -1664,6 +1693,12 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "degree_templates",
     "tbl_name": "degree_templates",
     "sql": "CREATE TABLE `degree_templates` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`canonical_key` text NOT NULL,\n\t`school_name` text NOT NULL,\n\t`program_name` text NOT NULL,\n\t`level` text NOT NULL,\n\t`modality` text NOT NULL,\n\t`catalog_year` text NOT NULL,\n\t`source_url` text,\n\t`status` text DEFAULT 'queued' NOT NULL,\n\t`artifact_json` text,\n\t`unresolved_json` text DEFAULT '[]' NOT NULL,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`checked_at` integer,\n\t`reviewed_by` text,\n\t`reviewed_at` integer,\n\t`review_notes` text,\n\t`sources_reviewed` integer DEFAULT 0 NOT NULL,\n\t`academic_reviewed` integer DEFAULT 0 NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"degree_template_status\" CHECK(\"degree_templates\".\"status\" IN ('queued','researching','draft','ready','rejected','failed')),\n\tCONSTRAINT \"degree_template_artifact\" CHECK(\"degree_templates\".\"artifact_json\" IS NULL OR (json_valid(\"degree_templates\".\"artifact_json\") AND length(CAST(\"degree_templates\".\"artifact_json\" AS BLOB)) <= 524288)),\n\tCONSTRAINT \"degree_template_unresolved\" CHECK(json_valid(\"degree_templates\".\"unresolved_json\")),\n\tCONSTRAINT \"degree_template_revision\" CHECK(\"degree_templates\".\"revision\">0)\n)"
+  },
+  {
+    "type": "table",
+    "name": "growth_daily_counts",
+    "tbl_name": "growth_daily_counts",
+    "sql": "CREATE TABLE `growth_daily_counts` (\n\t`day` text NOT NULL,\n\t`event` text NOT NULL,\n\t`context` text NOT NULL,\n\t`plan_id` text DEFAULT '' NOT NULL,\n\t`count` integer DEFAULT 1 NOT NULL,\n\tPRIMARY KEY(`day`, `event`, `context`, `plan_id`),\n\tCONSTRAINT \"growth_day_format\" CHECK(length(\"growth_daily_counts\".\"day\")=10 AND \"growth_daily_counts\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"growth_event_enum\" CHECK(\"growth_daily_counts\".\"event\" IN ('landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed')),\n\tCONSTRAINT \"growth_context_enum\" CHECK(\"growth_daily_counts\".\"context\" IN ('home','article','provider','school','degree-plan','workspace')),\n\tCONSTRAINT \"growth_plan_scope\" CHECK(\"growth_daily_counts\".\"plan_id\" IN ('','wgu-catalog-ecceaa488637ac83','liberty-business-residential','liberty-criminal-justice-online','liberty-criminal-justice-residential')),\n\tCONSTRAINT \"growth_count_bounds\" CHECK(\"growth_daily_counts\".\"count\" BETWEEN 1 AND 1000000)\n)"
   },
   {
     "type": "table",

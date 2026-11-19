@@ -4,14 +4,16 @@ import {resolve,relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
 
 const dist=resolve(import.meta.dirname,'../dist');
-const workspacePages=new Set(['account.html','admin.html','audit.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','request-plan.html','school.html']);
+const workspacePages=new Set(['account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','request-plan.html','school.html']);
+const savePages=new Set(['plan.html','portal.html','courses.html','compare-plans.html']);
 const families=new Map([
-  ...['portal.html','programs.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html'].map(name=>[name,'discovery']),
+  ...['portal.html','programs.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html','campuses.html'].map(name=>[name,'discovery']),
   ...['courses.html','import-courses.html'].map(name=>[name,'collection']),
   ['compare-plans.html','comparison'],['community.html','community'],
-  ...['account.html','admin.html','coverage.html'].map(name=>[name,'settings'])
+  ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
 ]);
-const managedStyles=new Set(['brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css']);
+const managedStyles=new Set(['brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-save.css']);
+const managedScripts=new Set(['growth-metrics.js','plan-save.js','task-calendar.js']);
 const managedClasses=new Set(['ds-experience','ds-public-page','ds-workspace-page','ds-discovery-page','ds-collection-page','ds-comparison-page','ds-community-page','ds-settings-page']);
 
 export function pageExperience(name,source){
@@ -23,6 +25,7 @@ export function pageExperience(name,source){
   if(publicPage)classes.push('ds-public-page');
   if(workspace){classes.push('ds-workspace-page');styles.push('workspace-design.css');}
   if(family){classes.push('ds-'+family+'-page');styles.push(family+'-design.css');}
+  if(savePages.has(name))styles.push('plan-save.css');
   if(name==='plan.html')styles.push('plan-design.css');
   return {publicPage,workspace,family,styles,classes:[...new Set(classes)]};
 }
@@ -30,12 +33,14 @@ export function pageExperience(name,source){
 export function applyExperience(source,name){
   const selected=pageExperience(name,source);
   if(!/<\/head>/i.test(source)||!/<body\b/i.test(source))throw Error('A complete HTML document is required: '+name);
-  let next=source.replace(/<head\b[\s\S]*?<\/head>/i,head=>head.replace(/<link\b[^>]*>/gi,tag=>{
+  let next=source.replace(/<head\b[\s\S]*?<\/head>/i,head=>head.replace(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>\s*<\/script>/gi,(tag,src)=>managedScripts.has(src.replace(/^\//,'').split('?')[0])?'':tag).replace(/<link\b[^>]*>/gi,tag=>{
     if(!/\brel=["']stylesheet["']/i.test(tag))return tag;
     const href=tag.match(/\bhref=["']([^"']+)["']/i)?.[1];
     return href&&managedStyles.has(href.replace(/^\//,'').split('?')[0])?'':tag;
   }));
-  next=next.replace(/<\/head>/i,selected.styles.map(name=>'<link rel="stylesheet" href="/'+name+'">').join('')+'</head>');
+  const scripts=['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[])];
+  if(/<script\b[^>]*\bsrc=["']\/?student-checklist-view\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?student-checklist-view\.js["'][^>]*>/i,tag=>'<script src="/task-calendar.js" defer></script>'+tag);
+  next=next.replace(/<\/head>/i,selected.styles.map(name=>'<link rel="stylesheet" href="/'+name+'">').join('')+scripts.map(name=>'<script src="/'+name+'" defer></script>').join('')+'</head>');
   next=next.replace(/<body\b([^>]*)>/i,(tag,attributes)=>{
     const match=attributes.match(/\bclass=(["'])(.*?)\1/i);
     const existing=match?match[2].split(/\s+/).filter(value=>value&&!managedClasses.has(value)):[];
