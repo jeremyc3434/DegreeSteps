@@ -8,6 +8,7 @@ const Journey = require('./dist/journey-engine.js');
 const Sheet = require('./dist/sheet-state.js');
 const Compare = require('./dist/plan-comparison-engine.js');
 const Facts = require('./dist/program-opportunities.js');
+const Planner = require('./dist/planner.js');
 const root = path.join(__dirname, 'dist');
 const clone = value => JSON.parse(JSON.stringify(value));
 const index = require('./dist/data/curriculum-registry.json');
@@ -40,7 +41,8 @@ test('all active source and standalone curricula load once per file and preserve
     ['curriculum-wgu-catalog-ecceaa488637ac83',{external:69,institutional:41}],
     ['liberty-business-residential',{external:83,institutional:37}],
     ['liberty-criminal-justice-online',{external:72,institutional:48}],
-    ['liberty-criminal-justice-residential',{external:74,institutional:46}]
+    ['liberty-criminal-justice-residential',{external:74,institutional:46}],
+    ['curriculum-gcu-bsba-campus',{external:26,institutional:94}]
   ]);
   const observedReady=[];
   assert.deepEqual(index.models.filter(entry=>entry.path.startsWith('data/curricula/')).map(entry=>entry.id).sort(),sourceModelIds,'Every active researched source model must be registered');
@@ -67,9 +69,12 @@ test('all active source and standalone curricula load once per file and preserve
       assert.equal(draft.plan.coverage.conditionalExternalCredits,0,entry.id);
       assert.equal(draft.plan.totals.external,researchedReady.get(entry.id).external,entry.id);
       assert.equal(draft.plan.totals.institutional,researchedReady.get(entry.id).institutional,entry.id);
-      assert(draft.plan.rows.every(row=>!row.selectionRequired&&row.option?.evidence==='published'),entry.id);
+      const balancePolicy=Planner.creditBalancePolicy(draft.program);
+      const inactiveBalance=row=>balancePolicy?.balanceRequirementIds.includes(row.requirementId)&&row.credits===0&&row.option===null;
+      assert(draft.plan.rows.every(row=>inactiveBalance(row)||(!row.selectionRequired&&row.option?.evidence==='published')),entry.id);
       const sourceIds=new Set(draft.program.sources.map(source=>source.id));
       for(const row of draft.plan.rows){
+        if(inactiveBalance(row))continue;
         assert(row.option.sourceIds.length>0&&row.option.sourceIds.every(id=>sourceIds.has(id)),entry.id+' '+row.requirementId);
         assert.equal(row.status,'planned','Source review must not turn an unfinished course into completed learning: '+entry.id);
       }

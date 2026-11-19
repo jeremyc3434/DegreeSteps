@@ -442,15 +442,42 @@
       if(baseline){
         const ids=Array.isArray(baseline.rows)?baseline.rows.map(row=>row.requirementId):[];
         if(baseline.summary?.totalCredits!==model.totalCredits||ids.length!==model.requirements.length||new Set(ids).size!==ids.length||model.requirements.some(req=>!ids.includes(req.id))||publicPlanIds.has(route.id)&&(baseline.qualityReady!==true||baseline.researchStatus!=='research-ready')){state=beforeState;throw Error('The complete saved course choices are temporarily unavailable. Your existing plan is still saved.');}
+        const gcu=route.id==='gcu-bsba-campus'&&model.id==='curriculum-gcu-bsba-campus',planner=window.DegreePlanner;
+        const creditBalance=gcu&&planner?.creditBalancePolicy(model);
+        if(gcu&&(!creditBalance||baseline.modality!=='campus'||baseline.rows.some(row=>row.status!=='planned'))){state=beforeState;throw Error('The saved course choices need an updated credit check. Your existing plan is still saved.');}
         const selections={};
         for(const row of baseline.rows||[]){
-          const req=model.requirements.find(item=>item.id===row.requirementId),option=req?.options.find(item=>item.id===row.optionId&&item.provider===row.provider&&item.credits===row.credits);
+          const req=model.requirements.find(item=>item.id===row.requirementId);
+          const inactiveBalance=creditBalance&&creditBalance.balanceRequirementIds.includes(req?.id)&&req.credits===0&&row.credits===0&&row.optionId===null&&row.provider===null&&row.code===null;
+          if(inactiveBalance)continue;
+          const option=req?.options.find(item=>item.id===row.optionId&&item.provider===row.provider&&item.credits===row.credits&&(!gcu||item.code===row.code));
           if(!option){state=beforeState;throw Error('The saved course choices have changed. Open the plan again to load its latest version.');}
+          if(creditBalance&&creditBalance.balanceRequirementIds.includes(req.id))continue;
           if(next.profile.proctoringPreference==='avoid'&&['CLEP','DSST','Saylor','StraighterLine'].includes(option.provider))continue;
           selections[req.id]=option.id;
         }
-        next.scenarios={...next.scenarios,[model.id]:{...Sheet.scenario(next,model.id),optionSelections:selections}};
-      }else if(publicPlanIds.has(route.id)){state=beforeState;throw Error('The saved course choices are temporarily unavailable. Your current plan is still saved.');}
+        if(gcu){
+          // Rebuild from canonical reviewed options, never from an uploaded
+          // credit claim. A zero-native balance row may be inactive; a selected
+          // outside content match counts its actual three-credit award.
+          const providers=[...new Set(baseline.rows.map(row=>row.provider).filter(provider=>provider&&provider!=='University'))];
+          const verified=planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optionSelections:selections});
+          const validation=planner.validate(model,verified),sources=new Set(model.sources.map(source=>source.id));
+          const sameRows=verified.rows.length===baseline.rows.length&&baseline.rows.every(row=>{
+            const actual=verified.rows.find(item=>item.requirementId===row.requirementId);
+            return actual&&actual.status==='planned'&&actual.credits===row.credits&&(actual.option?.id||null)===row.optionId&&(actual.option?.provider||null)===row.provider&&(actual.option?.code||null)===row.code&&(!actual.option||Array.isArray(actual.option.sourceIds)&&actual.option.sourceIds.length>0&&actual.option.sourceIds.every(id=>sources.has(id)));
+          });
+          if(!sameRows||validation.academicCountsValid!==true||verified.totals.accounted!==120||verified.totals.confirmed!==0||verified.totals.reported!==0||verified.totals.external!==baseline.summary.transferCredits||verified.totals.institutional!==baseline.summary.universityCredits){state=beforeState;throw Error('The saved course choices need an updated credit check. Your existing plan is still saved.');}
+        }
+        const scenario=Sheet.scenario(next,model.id);
+        if(gcu){
+          const selectedProviders=[...new Set(baseline.rows.map(row=>row.provider).filter(provider=>provider&&provider!=='University'))];
+          if(Array.isArray(next.scenarios?.[model.id]?.providers)){
+            if(selectedProviders.some(provider=>!scenario.providers.includes(provider))){state=beforeState;throw Error('The saved course choices use a source you turned off. Review your course sources before opening this plan. Your existing plan is still saved.');}
+          }else scenario.providers=[...new Set([...scenario.providers,...selectedProviders])];
+        }
+        next.scenarios={...next.scenarios,[model.id]:{...scenario,optionSelections:selections}};
+      }else if(publicPlanIds.has(route.id)||route.id==='gcu-bsba-campus'&&model.id==='curriculum-gcu-bsba-campus'){state=beforeState;throw Error('The saved course choices are temporarily unavailable. Your current plan is still saved.');}
     }
     const latest=latestStoredPlan();
     if(latest&&targetChanged(previous,latest)){state=beforeState;throw Error('Your degree changed in another tab. Open your current plan before choosing another degree.');}

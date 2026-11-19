@@ -96,7 +96,7 @@
     const documented = option.mappingResearchClosed === true && /^published-/.test(option.receivingMapStatus || '');
     const eligibility = option.eligibilityReview;
     const providerPending = eligibility?.eligibleToStart === false;
-    const target = option.provider + ' — ' + option.title + ' → ' + row.code;
+    const target = option.provider + ' — ' + option.title + ' → ' + (option.receivingCategory || row.code || row.title);
     let message = providerPending && documented ? target + ' is a documented receiving-course match. DegreeSteps is checking ' + option.provider + ' provider eligibility before recommending enrollment.' : 'DegreeSteps is reviewing the documented conditions for ' + target + '.';
     if (providerPending && eligibility.recommendationPeriodStatus === 'version-period-link-still-to-review') message += ' The exact source-course recommendation dates also remain under review.';
     return {code:'conditional_mapping', owner:'DegreePath', requirementId:row.requirementId, provider:option.provider, researchKind:providerPending ? 'provider-eligibility' : 'course-mapping', mappingDocumented:documented, message, sourceIds:[...new Set([...(option.sourceIds || []),...(eligibility?.sourceIds || [])])], details:[...(option.conditions || [])]};
@@ -130,7 +130,7 @@
             const reviewedIdentity = Boolean(String(option.code || '').trim()) && bound(option.identitySourceIds) && Boolean(String(option.mappingReviewId || '').trim()) && /^\d{4}-\d{2}-\d{2}$/.test(checked || '') && Number.isFinite(Date.parse(checked));
             if (reviewedIdentity) continue;
           }
-          const message = note.missingEvidence ? 'DegreeSteps is reviewing the exact source-course identity and recommendation version for ' + option.provider + ' — ' + option.title + ' (' + option.code + ') → ' + row.code + '.' : note.message + ' Selected option: ' + option.provider + ' — ' + option.title + ' → ' + row.code + '.';
+          const message = note.missingEvidence ? 'DegreeSteps is reviewing the exact source-course identity and recommendation version for ' + option.provider + ' — ' + option.title + ' (' + option.code + ') → ' + (option.receivingCategory || row.code || row.title) + '.' : note.message + ' Selected option: ' + option.provider + ' — ' + option.title + ' → ' + (option.receivingCategory || row.code || row.title) + '.';
           const item = {...note,code:'program_research',owner:'DegreePath',requirementId:row.requirementId,optionId:option.id,provider:option.provider,message};
           (note.blocking === false ? researchNotes : errors).push(item);
         }
@@ -262,15 +262,133 @@
     comparableTimingCache.set(input, { program, value }); return value;
   }
 
+  // A three-credit GCU content match does not award a fourth credit. This
+  // narrow, source-bound policy keeps native requirements and earned credit
+  // separate, without giving other ledgers a variable-credit exception.
+  function gcuSources(program, ids) {
+    if (!Array.isArray(ids) || !ids.length || new Set(ids).size !== ids.length) return false;
+    const sources = new Map((Array.isArray(program.sources) ? program.sources : []).filter(source => source && typeof source === 'object').map(source => [source.id,source]));
+    return ids.every(id => {
+      if (typeof id !== 'string' || !id || id !== id.trim()) return false;
+      try {const url = new URL(sources.get(id)?.url); return url.protocol === 'https:' && !url.username && !url.password && (url.hostname === 'gcu.edu' || url.hostname.endsWith('.gcu.edu'));} catch {return false;}
+    });
+  }
+  function gcuMappingSources(program, ids, provider) {
+    if (!Array.isArray(ids) || !ids.length || new Set(ids).size !== ids.length) return false;
+    const sources = new Map((Array.isArray(program.sources) ? program.sources : []).filter(source => source && typeof source === 'object').map(source => [source.id,source]));
+    return ids.every(id => {
+      if (typeof id !== 'string' || !id || id !== id.trim()) return false;
+      try {const url = new URL(sources.get(id)?.url); return url.protocol === 'https:' && !url.username && !url.password && (url.hostname === 'gcu.edu' || url.hostname.endsWith('.gcu.edu') || provider === 'Sophia' && url.hostname === 'gcu.sophia.org');} catch {return false;}
+    });
+  }
+  function generalEducationRules(program) {
+    if (!Array.isArray(program.generalEducationMinimums) || !program.generalEducationMinimums.length) return null;
+    const seen = new Set(), rules = [];
+    for (const rule of program.generalEducationMinimums) {
+      const names = rule?.group !== undefined && rule?.groups === undefined ? [rule.group] : rule?.group === undefined && Array.isArray(rule?.groups) ? rule.groups : [];
+      if (!names.length || new Set(names).size !== names.length || names.some(name => typeof name !== 'string' || !name || name !== name.trim() || seen.has(name)) || !finite(rule?.credits) || rule.credits < 0 || !gcuSources(program,rule.sourceIds)) return null;
+      if (names.some(name => !(program.requirements || []).some(req => req.category === 'general' && (req.subgroup || req.group) === name))) return null;
+      names.forEach(name => seen.add(name)); rules.push({names,credits:rule.credits});
+    }
+    if ((program.requirements || []).some(req => req.category === 'general' && !seen.has(req.subgroup || req.group))) return null;
+    return rules;
+  }
+  function creditBalancePolicy(program) {
+    const policy = program?.degreeCreditBalancePolicy, requirements = program?.requirements;
+    if (policy?.enabled !== true || policy.kind !== 'gcu-earned-credit-balance-v1' || program.school !== 'Grand Canyon University' || creditSystem(program) !== 'semester' || policy.creditSystem !== 'semester' || program.totalCredits !== 120 || policy.minimumDegreeCredits !== 120 || policy.maxBalanceCredits !== 6 || !gcuSources(program,policy.sourceIds) || !Array.isArray(requirements) || !requirements.length || requirements.some(req => !req || typeof req.id !== 'string' || !req.id || !finite(req.credits) || req.credits < 0) || new Set(requirements.map(req => req.id)).size !== requirements.length || !near(sum(requirements,reqCredits),120)) return null;
+    const ids = policy.balanceRequirementIds;
+    if (!Array.isArray(ids) || ids.length !== 3 || new Set(ids).size !== 3 || policy.automaticRepeatAllowed === true || policy.repeatabilityEstablished === true || !Array.isArray(policy.equivalencies) || !policy.equivalencies.length || !generalEducationRules(program)) return null;
+    const balances = ids.map(id => requirements.find(req => req.id === id));
+    const expected = new Map([['LDR-461',1],['LDR-462',2],['LDR-463',3]]), codes = new Set();
+    for (const req of balances) {
+      const option = req?.options?.[0], amount = expected.get(option?.code);
+      if (!req || req.credits !== 0 || req.category !== 'elective' || req.institutionalOnly !== true || req.selectionRequired || !Array.isArray(req.options) || req.options.length !== 1 || !amount || codes.has(option.code) || req.code !== option.code || option.provider !== 'University' || option.evidence !== 'published' || option.credits !== amount || option.creditSystem !== 'semester' || option.sourceCredits !== amount || option.sourceCreditSystem !== 'semester' || option.creditOrigin !== 'institutional' || option.upper !== true || option.bundleId || option.receivingCourseRepeatable || !gcuSources(program,req.sourceIds) || !gcuSources(program,option.sourceIds)) return null;
+      codes.add(option.code);
+    }
+    const boundIds = new Set();
+    for (const binding of policy.equivalencies) {
+      const req = requirements.find(req => req.id === binding?.requirementId);
+      if (!req || ids.includes(req.id) || boundIds.has(req.id) || req.credits !== 4 || binding.nativeCredits !== 4 || binding.awardedCredits !== 3 || !gcuSources(program,req.sourceIds) || req.institutionalOnly || !Array.isArray(req.options) || !Array.isArray(binding.options) || !binding.options.length) return null;
+      boundIds.add(req.id); const options = new Set();
+      for (const identity of binding.options) {
+        const option = req.options?.find(option => option.id === identity?.optionId && option.provider === identity?.provider && option.code === identity?.code);
+        if (!option || options.has(option.id) || option.provider === 'University' || typeof option.provider !== 'string' || !option.provider || typeof option.code !== 'string' || !option.code || option.credits !== 3 || option.sourceCredits !== 3 || option.creditSystem !== 'semester' || option.sourceCreditSystem !== 'semester' || identity.sourceCredits !== 3 || identity.sourceCreditSystem !== 'semester' || !['published','conditional'].includes(option.evidence) || option.bundleId || !gcuMappingSources(program,identity.sourceIds,option.provider) || !Array.isArray(option.sourceIds) || identity.sourceIds.some(id => !option.sourceIds.includes(id)) || option.sourceIds.some(id => !(program.sources || []).some(source => source.id === id))) return null;
+        if (option.upper === true && option.sourceUpper !== true) return null;
+        options.add(option.id);
+      }
+    }
+    const writingIds = policy.writingIntensiveRequirementIds;
+    const writing = requirements.filter(req => req.category === 'major' && req.writingIntensive === true || ['BUS-340','BUS-485'].includes(req.code));
+    if (!Array.isArray(writingIds) || new Set(writingIds).size !== writingIds.length || writingIds.length !== writing.length || writing.some(req => !writingIds.includes(req.id) || !gcuSources(program,req.writingIntensiveSourceIds || req.sourceIds))) return null;
+    return policy;
+  }
+  function contentCreditBinding(policy, requirement, option) {
+    if (!policy || !option) return null;
+    const binding = policy.equivalencies.find(binding => binding.requirementId === requirement.id);
+    return binding?.options.some(identity => identity.optionId === option.id && identity.provider === option.provider && identity.code === option.code) ? binding : null;
+  }
+  function reviewedCreditIdentity(option) {
+    return ['id','provider','code','credits','sourceCredits','creditSystem','sourceCreditSystem','upper','sourceUpper','creditOrigin','sourceType','receivingCode','receivingCourseRepeatable','evidence','sourceIds'].map(field => option[field] ?? null);
+  }
+  function balanceShortfall(policy, rows, requirements) {
+    return sum(rows.filter(row => !policy.balanceRequirementIds.includes(row.requirementId)), row => {
+      const req = requirements.find(req => req.id === row.requirementId);
+      return req && contentCreditBinding(policy,req,row.option) ? req.credits - row.credits : 0;
+    });
+  }
+  function normalizeCreditBalance(program, rows, suppliedPolicy, plannedLearning) {
+    const policy = suppliedPolicy || creditBalancePolicy(program);
+    if (!policy) return rows;
+    const requirements = program.requirements || [], balanceIds = policy.balanceRequirementIds;
+    const balanceRows = rows.filter(row => balanceIds.includes(row.requirementId));
+    // A completed source remains in My courses even when this particular
+    // degree no longer needs it. Remember its original row only across this
+    // in-memory search's candidate objects; never change the learning record or
+    // serialize a second completion claim into an inactive ledger row.
+    const completedAwards = normalizeCreditBalance.completedAwards || (normalizeCreditBalance.completedAwards = new WeakMap());
+    const existing = new Map(balanceRows.map(row => [row.requirementId,['reported','confirmed'].includes(row.status) && row.option ? row : completedAwards.get(row)]));
+    const taking = new Set(balanceRows.filter(row => {
+      const req = requirements.find(req => req.id === row.requirementId),option = req.options[0];
+      return (Array.isArray(plannedLearning) ? plannedLearning : []).some(item => item?.status === 'in-progress' && item.requirementId === req.id && item.optionId === option.id && item.provider === option.provider && item.code === option.code && item.credits === option.sourceCredits && item.creditSystem === option.sourceCreditSystem && item.sourceCredits === option.sourceCredits && item.sourceCreditSystem === option.sourceCreditSystem && item.institution === program.school && item.sourceProgramId === program.id && typeof item.learningId === 'string' && item.learningId.trim());
+    }).map(row => row.requirementId));
+    const needed = balanceShortfall(policy,rows,requirements);
+    let chosen = null, bestScore = null;
+    // Each named course is available once; no repeatability or generic credit
+    // is inferred. Prefer using completed awards, but do not force a surplus
+    // source into a strict 120-credit plan or repurchase a selected completion.
+    for (let mask = 0; mask < 1 << balanceRows.length; mask++) {
+      const selected = balanceRows.filter((row,index) => mask & 1 << index);
+      const amount = sum(selected,row => requirements.find(req => req.id === row.requirementId).options[0].credits);
+      if (!near(amount,needed)) continue;
+      const newRows = selected.filter(row => !existing.get(row.requirementId));
+      const score = [sum(newRows,row => requirements.find(req => req.id === row.requirementId).options[0].credits),
+        -sum(selected.filter(row => existing.get(row.requirementId)?.status === 'confirmed'),row => existing.get(row.requirementId).credits),
+        -sum(newRows.filter(row => taking.has(row.requirementId)),row => requirements.find(req => req.id === row.requirementId).options[0].credits),newRows.length,selected.length];
+      if (!chosen || compareScores(score,bestScore) < 0) {chosen = selected; bestScore = score;}
+    }
+    const selectedIds = new Set((chosen || []).map(row => row.requirementId));
+    return rows.map(row => {
+      if (!balanceIds.includes(row.requirementId)) return row;
+      const req = requirements.find(req => req.id === row.requirementId);
+      const completed = existing.get(req.id);
+      if (selectedIds.has(req.id) && completed) return completed;
+      const allocated = makeRow(req,selectedIds.has(req.id) ? req.options[0] : null,'planned',program,policy);
+      if (completed) completedAwards.set(allocated,completed);
+      return allocated;
+    });
+  }
+
   function optionsFor(program, requirement, input) {
+    const balance = creditBalancePolicy(program), derived = balance?.balanceRequirementIds.includes(requirement.id);
     const sources = new Set((program.sources || []).map(s => s.id));
     return (requirement.options || []).filter(option => {
-      if (!option || !option.provider || !finite(option.credits) || !near(option.credits, reqCredits(requirement))) return false;
+      if (!option || !option.provider || !finite(option.credits) || !near(option.credits, reqCredits(requirement)) && !derived && !contentCreditBinding(balance,requirement,option)) return false;
       if (option.creditSystem && option.creditSystem !== creditSystem(program)) return false;
       if (!['published', 'conditional'].includes(option.evidence)) return false;
       if(requirement.upperOnly===true&&option.upper!==true)return false;
       if (!Array.isArray(option.sourceIds) || !option.sourceIds.length || option.sourceIds.some(id => !sources.has(id))) return false;
       if (option.evidence === 'conditional' && !input.allowConditional) return false;
+      if (balance?.writingIntensiveRequirementIds.includes(requirement.id) && option.provider !== 'University') return false;
       if (option.provider === 'University') return true;
       if (requirement.institutionalOnly || !input.providers.includes(option.provider)) return false;
       return true;
@@ -282,9 +400,12 @@
     return requirement ? optionsFor(program, requirement, normalizedInput(input)).map(option => Object.assign({}, option)) : [];
   }
 
-  function makeRow(req, option, status = 'planned') {
+  function makeRow(req, option, status = 'planned', program, suppliedPolicy) {
+    const policy = suppliedPolicy || program && creditBalancePolicy(program), derived = policy?.balanceRequirementIds.includes(req.id);
+    const variable = contentCreditBinding(policy,req,option);
     return {
-      requirementId: req.id, code: req.code, title: req.title, credits: reqCredits(req), category: req.category,
+      requirementId: req.id, code: req.code, title: req.title, credits: derived || variable ? option ? option.credits : 0 : reqCredits(req), category: req.category,
+      ...(derived || variable ? {nativeRequirementCredits:reqCredits(req),...(derived ? {creditBalanceDerived:true} : {})} : {}),
       subgroup: req.subgroup || req.group || null, option: option ? Object.assign({}, option) : null, status,
       selectionRequired: Boolean(req.selectionRequired || (option && option.selectionRequired)),
       institutional: Boolean(option && option.provider === 'University'), upper: Boolean(option && option.upper),
@@ -462,19 +583,38 @@
   }
 
   function academicErrors(program, rows) {
-    const errors = [], t = totals(program, rows), ids = new Set();
+    const errors = [], t = totals(program, rows), ids = new Set(), balance = creditBalancePolicy(program);
+    if (program.degreeCreditBalancePolicy?.enabled === true && !balance) errors.push({code:'credit_balance_policy',message:'The earned-credit balance requires its reviewed GCU course identities, quantities, curriculum and policy sources.'});
     for (const row of rows) {
       const requirement = (program.requirements || []).find(req => req.id === row.requirementId);
+      const derived = balance?.balanceRequirementIds.includes(row.requirementId), variable = requirement && contentCreditBinding(balance,requirement,row.option);
       if (ids.has(row.requirementId)) errors.push({ code: 'duplicate_requirement', message: 'A requirement appears more than once: ' + row.requirementId });
       ids.add(row.requirementId);
-      if (!row.option) errors.push({ code: 'unfilled_requirement', message: 'No supported option fills ' + row.title, requirementId: row.requirementId });
+      if (!row.option && !(derived && row.credits === 0)) errors.push({ code: 'unfilled_requirement', message: 'No supported option fills ' + row.title, requirementId: row.requirementId });
+      if (!finite(row.credits) || row.credits < 0) errors.push({code:'credit_quantity',message:'The earned-credit quantity must be an exact nonnegative number.',requirementId:row.requirementId});
       if (row.option && !near(number(row.option.credits), row.credits)) errors.push({ code: 'credit_mismatch', message: 'Awarded credits do not match the allocated requirement.', requirementId: row.requirementId });
       if (row.option && row.option.creditSystem && row.option.creditSystem !== creditSystem(program)) errors.push({ code: 'credit_system', message: 'Credit system requires explicit normalization.', requirementId: row.requirementId });
       if (requirement && requirement.institutionalOnly && row.option && row.option.provider !== 'University') errors.push({ code: 'institution_only', message: 'This requirement must be completed through the university.', requirementId: row.requirementId });
       if(requirement?.upperOnly&&row.option&&!row.upper)errors.push({code:'requirement_level',message:'This requirement needs an upper-level course.',requirementId:row.requirementId});
-      if (requirement && !near(reqCredits(requirement), row.credits)) errors.push({ code: 'requirement_credits', message: 'The plan allocation differs from the published requirement.', requirementId: row.requirementId });
+      if (requirement && !near(reqCredits(requirement), row.credits) && !(variable && row.credits === variable.awardedCredits) && !(derived && row.option && row.option.provider === 'University' && row.option.code === requirement.code && row.credits === requirement.options[0].credits)) errors.push({ code: 'requirement_credits', message: 'The plan allocation differs from the published requirement.', requirementId: row.requirementId });
+      if (balance && (derived || variable) && (row.nativeRequirementCredits !== requirement.credits || derived && row.creditBalanceDerived !== true)) errors.push({code:'credit_balance_tampered',message:'Native requirement content and actual earned credit must retain their reviewed, separate quantities.',requirementId:row.requirementId});
+      if (balance && (derived || variable) && row.option) {
+        const canonical = requirement.options.find(option => option.id === row.option.id && option.provider === row.option.provider && option.code === row.option.code);
+        if (!canonical || JSON.stringify(reviewedCreditIdentity(canonical)) !== JSON.stringify(reviewedCreditIdentity(row.option)) || JSON.stringify(canonical.sourceIds || []) !== JSON.stringify(row.sourceIds || [])) errors.push({code:'credit_balance_tampered',message:'A content or balance award must retain its reviewed source identity, exact earned quantity, level and evidence.',requirementId:row.requirementId});
+      }
+      if (balance && variable && row.creditBalanceDerived !== undefined) errors.push({code:'credit_balance_tampered',message:'A transfer course is not derived Service Learning credit.',requirementId:row.requirementId});
+      if (balance && !derived && !variable && (row.creditBalanceDerived || row.nativeRequirementCredits !== undefined)) errors.push({code:'credit_balance_tampered',message:'A credit-balance exception cannot be applied to an unreviewed course.',requirementId:row.requirementId});
+      if (balance?.writingIntensiveRequirementIds.includes(row.requirementId) && row.option && row.option.provider !== 'University') errors.push({code:'writing_intensive',message:'Retain the university writing-intensive course; an outside content match alone does not establish this requirement.',requirementId:row.requirementId});
       if (row.option && row.upper !== Boolean(row.option.upper)) errors.push({ code: 'upper_classification', message: 'Upper-level classification differs from the destination award.', requirementId: row.requirementId });
       if (positive(requirement?.minimumCompletedCredits) && Number(requirement.minimumCompletedCredits) > number(program.totalCredits) - row.credits + 0.001) errors.push({code:'aggregate_prerequisite', message:'The completed-credit prerequisite for ' + row.title + ' exceeds the other credits in this degree ledger.', requirementId:row.requirementId});
+    }
+    if (balance) {
+      const shortfall = balanceShortfall(balance,rows,program.requirements || []), allocated = sum(rows.filter(row => balance.balanceRequirementIds.includes(row.requirementId) && row.option),row => row.credits);
+      if (!Number.isInteger(shortfall) || shortfall < 0 || shortfall > balance.maxBalanceCredits || !near(allocated,shortfall)) errors.push({code:'credit_balance',message:'The actual transfer-credit shortfall must be filled exactly by the reviewed, distinct GCU Service Learning courses; no repeat or extra credit is assumed.'});
+      for (const group of generalEducationRules(program)) {
+        const earned = sum(rows.filter(row => row.option && row.category === 'general' && group.names.includes(row.subgroup)),row => row.credits);
+        if (earned + 0.001 < group.credits) errors.push({code:'general_education_minimum',message:'The '+group.names.join(' / ')+' area needs at least '+group.credits+' actual earned general education credits; service-learning electives cannot fill it.'});
+      }
     }
     if (!near(t.accounted, t.required)) errors.push({ code: 'total_credits', message: 'The modeled requirement ledger accounts for ' + t.accounted + ' of ' + t.required + ' credits.' });
     const institutionMinimum = institutionResidencyMinimum(program);
@@ -578,6 +718,23 @@
       if(!quote.includesTaxes)missing.push(provider+' taxes and checkout charges included in your quote');
       if(['CLEP','DSST','Saylor'].includes(provider)&&!quote.includesExamFees)missing.push(provider+' administration/proctoring charges included in your quote');
     }
+    // These reviewed university courses charge per distinct source course,
+    // regardless of how many degree allocations that course satisfies.
+    if(providers.has('ASU Universal Learner')&&!quoted.has('ASU Universal Learner')){
+      const actions=futureActions(rows).filter(action=>action.provider==='ASU Universal Learner').map(action=>({...action,option:action.rows[0].option}));
+      const sources=new Map((program.sources||[]).map(source=>[source.id,source]));
+      const reviewed=actions.length>0&&actions.every(action=>{
+        const option=action.option,price=option.costEvidence;
+        return option.creditOrigin==='institutional'&&option.costVerified===true&&option.costStatus==='reviewed-provider-course-fees'&&price?.currency==='USD'&&price.basis==='per-course'&&finite(price.enrollmentFee)&&price.enrollmentFee>=0&&finite(price.creditConversionFee)&&price.creditConversionFee>=0&&positive(price.totalCourseCost)&&near(price.enrollmentFee+price.creditConversionFee,price.totalCourseCost)&&near(option.cost,price.totalCourseCost)&&Array.isArray(price.sourceIds)&&price.sourceIds.length&&price.sourceIds.every(id=>{
+          try{const url=new URL(sources.get(id)?.url);return url.protocol==='https:'&&!url.username&&!url.password&&(url.hostname==='asu.edu'||url.hostname.endsWith('.asu.edu'));}catch{return false;}
+        });
+      });
+      if(reviewed){
+        const amount=sum(actions,action=>action.option.costEvidence.totalCourseCost),first=actions[0].option.costEvidence;
+        providerCosts.push({provider:'ASU Universal Learner',amount,detail:actions.length+' distinct ASU course(s); includes published enrollment and transcript-credit fees.',source:sources.get(first.sourceIds[0]).url,basis:'published-per-course-fees',courseKeys:actions.map(action=>sourceActionKey(action.option)),includesTaxes:false});
+        subtotal+=amount;quoted.add('ASU Universal Learner');missing.push('ASU applicable taxes or additional checkout charges');
+      }
+    }
     for (const provider of ['Sophia', 'Study.com']) {
       if (!providers.has(provider)||quoted.has(provider)) continue;
       const months = Math.max(1, Math.ceil(number(input.providerMonths && input.providerMonths[provider], 1)));
@@ -641,10 +798,11 @@
   // requirements, choose another university award, and repair several minima at
   // once. A deterministic state budget bounds work independently of wall time.
   function assignmentSearch(program, input, base, menus, initial, usableErrors) {
+    const balance = creditBalancePolicy(program), normalize = rows => normalizeCreditBalance(program,rows,balance,input.plannedLearning);
     const requested = Number(input.optimizationNodeBudget);
     const nodeBudget = Number.isInteger(requested) && requested >= 0 ? Math.min(requested, 100000) : 12000;
     const requirements = program.requirements || [], groups = upperGroupRules(program);
-    let best = initial, bestScore = candidateScore(program, best, input, input.priority);
+    let best = normalize(initial), bestScore = candidateScore(program, best, input, input.priority);
     let bestUsable = !usableErrors(best).length, statesVisited = 0, budgetExhausted = false;
     const eligibleCredits = base.reduce((credits, row, index) => credits + (row.option || menus[index].length ? row.credits : 0), 0);
     const pruningTolerance = 0.00000001 * Math.max(1, Math.abs(eligibleCredits));
@@ -804,6 +962,7 @@
       return { score, maxExternal };
     }
     function consider(rows) {
+      rows = normalize(rows);
       if (usableErrors(rows).length) return;
       const score = candidateScore(program, rows, input, input.priority), order = compareScores(score, bestScore);
       if (!bestUsable || order < 0 || order === 0 && input.priority !== 'campus' && totals(program, rows).external > totals(program, best).external) {
@@ -847,12 +1006,54 @@
         if (augmentationStatesVisited >= augmentationLimit) break;
       }
     }
+    // Variable earned-credit balances can make a useful substitution require a
+    // simultaneous release elsewhere. Examine a bounded two-row neighborhood
+    // around the traversal's best incumbent: complete candidates can improve a provider
+    // mix even when either individual change would lose transfer credit or
+    // exceed the reviewed shortfall capacity. Fixed student choices are absent
+    // from decisions, and every trial uses the ordinary academic/objective checks.
+    let pairedRepairStatesVisited = 0;
+    const alternatives = balance ? decisions.map(decision => Math.max(0,decision.choices.length - 1)) : [];
+    const neighborhoodSize = alternatives.reduce((total,value,index) => total + value + value * sum(alternatives.slice(index + 1),other => other),0);
+    const pairedRepairLimit = balance && !fixedConflict ? Math.min(1024,Math.floor(nodeBudget / 4),2 * neighborhoodSize) : 0;
+    const traversalNodeBudget = nodeBudget - pairedRepairLimit;
+    function repairPairs() {
+      if (!balance || !bestUsable || fixedConflict || !pairedRepairLimit || !budgetExhausted) return;
+      for (let pass = 0; pass < 2 && pairedRepairStatesVisited < pairedRepairLimit; pass++) {
+        const incumbent = best, seed = best.slice();
+        const trial = (left,leftChoice,right,rightChoice) => {
+          if (pairedRepairStatesVisited >= pairedRepairLimit || statesVisited >= nodeBudget) return false;
+          pairedRepairStatesVisited++; statesVisited++;
+          const rows = seed.slice(); rows[left.index] = leftChoice.row;
+          if (right) rows[right.index] = rightChoice.row;
+          consider(rows); return true;
+        };
+        for (let leftIndex = 0; leftIndex < decisions.length && pairedRepairStatesVisited < pairedRepairLimit; leftIndex++) {
+          const left = decisions[leftIndex];
+          for (const leftChoice of left.choices) {
+            if (leftChoice.row.option?.id === seed[left.index].option?.id) continue;
+            if (!trial(left,leftChoice)) break;
+            for (let rightIndex = leftIndex + 1; rightIndex < decisions.length && pairedRepairStatesVisited < pairedRepairLimit; rightIndex++) {
+              const right = decisions[rightIndex];
+              for (const rightChoice of right.choices) {
+                if (rightChoice.row.option?.id === seed[right.index].option?.id) continue;
+                if (!trial(left,leftChoice,right,rightChoice)) break;
+              }
+            }
+          }
+        }
+        if (best === incumbent) break;
+      }
+    }
     function visit(depth) {
-      if (statesVisited >= nodeBudget) { budgetExhausted = true; return; }
+      if (statesVisited >= traversalNodeBudget) { budgetExhausted = true; return; }
       statesVisited++;
-      const bound = bounds(depth);
-      if (!bound) return;
-      if (bestUsable) {
+      // Derived institutional credits depend on the complete transfer basket.
+      // Fixed-credit lattice and objective bounds are not valid for this opt-in
+      // model. Preserve the deterministic node budget and exact leaf checks.
+      const bound = balance ? null : bounds(depth);
+      if (!balance && !bound) return;
+      if (!balance && bestUsable) {
         const order = compareScores(bound.score, bestScore);
         if (order > 0 || order === 0 && (input.priority === 'campus' || bound.maxExternal <= totals(program, best).external + 0.001)) return;
       }
@@ -868,9 +1069,10 @@
     // this complete deterministic assignment does not consume a search state.
     if (!count && !fixedConflict) consider(working);
     else if (!fixedConflict) visit(0);
+    repairPairs();
     const academicValid = !academicErrors(program, best).length, complete = !budgetExhausted;
     return { rows: best, optimization: { method: 'bounded-assignment-search', status: complete ? academicValid ? 'optimal-for-model' : 'infeasible-for-model' : 'best-found',
-      optimalityProven: complete && academicValid, infeasibilityProven: complete && !academicValid, statesVisited, augmentationStatesVisited, nodeBudget, budgetExhausted, objectiveScore: bestScore } };
+      optimalityProven: complete && academicValid, infeasibilityProven: complete && !academicValid, statesVisited, augmentationStatesVisited, ...(balance ? {pairedRepairStatesVisited} : {}), nodeBudget, budgetExhausted, objectiveScore: bestScore } };
   }
 
   function evaluatedPriorBundles(program, completed, setupIssues) {
@@ -912,6 +1114,12 @@
 
   function generate(program, inputValue) {
     const input = normalizedInput(inputValue), setupIssues = [], warnings = [], requirements = program.requirements || [];
+    const balance = creditBalancePolicy(program), normalizedRows = new WeakMap();
+    const normalize = rows => {
+      if (!balance) return rows;
+      if (!normalizedRows.has(rows)) normalizedRows.set(rows,normalizeCreditBalance(program,rows,balance,input.plannedLearning));
+      return normalizedRows.get(rows);
+    };
     // Eligibility is fixed for this generation. Preserve original option and
     // requirement identities: published IDs need not be unique in a draft.
     const eligibleOptions = new WeakMap();
@@ -928,7 +1136,7 @@
     } else for (const [requirementId, optionId] of Object.entries(selections || {})) {
       const requirement = requirements.find(req => req.id === requirementId);
       const option = requirement && typeof optionId === 'string' && optionId && optionsForRequirement(requirement).find(option => option.id === optionId);
-      if (!option) setupIssues.push({ code: 'invalid_selection', message: requirement ? 'The selected option for ' + requirement.title + ' is unavailable under the enabled sources and evidence settings.' : 'A scenario selection does not match a requirement in this program.', requirementId });
+      if (!option || balance?.balanceRequirementIds.includes(requirementId)) setupIssues.push({ code: 'invalid_selection', message: balance?.balanceRequirementIds.includes(requirementId) ? 'Service Learning credit is allocated automatically only for the actual transfer-credit shortfall.' : requirement ? 'The selected option for ' + requirement.title + ' is unavailable under the enabled sources and evidence settings.' : 'A scenario selection does not match a requirement in this program.', requirementId });
       else selectedOptions.set(requirementId, option);
     }
     const completed = new Map();
@@ -947,7 +1155,7 @@
         // A confirmed degree evaluation may be stronger evidence than a current
         // generic provider mapping. Unnamed records never count as school residency.
         const option = storedOption || Object.assign({ id: 'prior-' + req.id, provider: 'Prior learning', title: prior.title || 'Existing learning assigned to this requirement', code: prior.code || '', ...(typeof prior.receivingCode==='string'&&prior.receivingCode.trim()?{receivingCode:prior.receivingCode}:{}), credits: reqCredits(req), upper: Boolean(req.upper), sourceIds: [], evidence: 'student-record' }, priorBundles.get(req.id));
-        const row = makeRow(req, option, prior.status);
+        const row = makeRow(req, option, prior.status,program,balance);
         if (selectedOptions.has(req.id) && selectedOptions.get(req.id).id !== option.id) warnings.push('Existing learning for ' + req.title + ' takes precedence over the scenario replacement; no replacement will be purchased.');
         row.selectionRequired = false;
         row.priorLearning = true;
@@ -958,8 +1166,9 @@
         if (prior.status === 'reported') row.conditions.push('Awaiting university confirmation that this learning satisfies this requirement. Do not purchase a replacement yet.');
         return row;
       }
-      if (selectedOptions.has(req.id)) return makeRow(req, selectedOptions.get(req.id));
-      return makeRow(req, university || null, university ? 'planned' : 'unresolved');
+      if (selectedOptions.has(req.id)) return makeRow(req, selectedOptions.get(req.id),'planned',program,balance);
+      if (balance?.balanceRequirementIds.includes(req.id)) return makeRow(req,null,'planned',program,balance);
+      return makeRow(req, university || null, university ? 'planned' : 'unresolved',program,balance);
     });
     // Selecting an action already in the inventory requests evaluation of that
     // learning, never another purchase. Non-bundled double allocation remains a
@@ -971,11 +1180,12 @@
       row.conditions.push('This learning action already appears in your inventory. Request evaluation of its applicability here; do not purchase or repeat it.');
     }
     const optionMenus = requirements.map((req, index) => {
+      if (balance?.balanceRequirementIds.includes(req.id)) return [base[index]];
       if (selectedOptions.has(req.id) || ['reported', 'confirmed'].includes(base[index].status)) return [base[index]];
       return optionsForRequirement(req).map(option => {
         const priorAction = base.find(row => ['reported', 'confirmed'].includes(row.status) && row.option && sameLearningAction(row.option, option));
         const inferredFromBundle = option.provider !== 'University' && priorAction && option.bundleId;
-        const row = makeRow(req, option, inferredFromBundle ? 'reported' : 'planned');
+        const row = makeRow(req, option, inferredFromBundle ? 'reported' : 'planned',program,balance);
         if (inferredFromBundle) {
           row.priorLearning = true;
           row.conditions.push('This bundled learning action already appears in your inventory. Request evaluation of its remaining award; do not purchase or repeat it.');
@@ -987,7 +1197,7 @@
     const immutableCreditGap = researchGaps.size > 0 || !near(sum(requirements, reqCredits), number(program.totalCredits));
     // A known unsupported row stays a visible blocker. It must not veto every
     // otherwise eligible substitution in the supported part of the ledger.
-    const usableErrors = rows => academicErrors(program, rows).filter(error => !(error.code === 'unfilled_requirement' && researchGaps.has(error.requirementId)) && !(error.code === 'total_credits' && immutableCreditGap));
+    const usableErrors = rows => academicErrors(program, normalize(rows)).filter(error => !(error.code === 'unfilled_requirement' && researchGaps.has(error.requirementId)) && !(error.code === 'total_credits' && immutableCreditGap));
     // Start with institutional options, then choose eligible external substitutions
     // while preserving academic minima. Enumerating provider sets captures shared
     // subscription costs without pricing every course as another membership.
@@ -999,7 +1209,7 @@
     const greedyScores=new WeakMap();
     const baseProposalScores = requirements.map(() => new WeakMap());
     const greedyScore=rows=>{
-      if(!greedyScores.has(rows))greedyScores.set(rows,candidateScore(program,rows,input,input.priority));
+      if(!greedyScores.has(rows))greedyScores.set(rows,candidateScore(program,normalize(rows),input,input.priority));
       return greedyScores.get(rows);
     };
     let best = base, bestScore = greedyScore(base);
@@ -1018,7 +1228,7 @@
         // option once here; later substitutions still use their actual rows.
         const cache = baseProposalScores[proposal.index];
         if (!cache.has(proposal.option)) {
-          const trial = rows.slice(); trial[proposal.index] = makeRow(requirements[proposal.index], proposal.option);
+          const trial = rows.slice(); trial[proposal.index] = makeRow(requirements[proposal.index], proposal.option,'planned',program,balance);
           cache.set(proposal.option, greedyScore(trial));
         }
         proposal.speedScore = cache.get(proposal.option);
@@ -1037,7 +1247,7 @@
         const trial = rows.slice();
         const priorAction = rows.find(row => ['reported', 'confirmed'].includes(row.status) && row.option && sameLearningAction(row.option, proposal.option));
         const inferredFromBundle = priorAction && proposal.option.bundleId;
-        trial[proposal.index] = makeRow(requirements[proposal.index], proposal.option, inferredFromBundle ? 'reported' : 'planned');
+        trial[proposal.index] = makeRow(requirements[proposal.index], proposal.option, inferredFromBundle ? 'reported' : 'planned',program,balance);
         if (inferredFromBundle) {
           trial[proposal.index].priorLearning = true;
           trial[proposal.index].conditions.push('This bundled learning action already appears in your inventory. Request evaluation of its remaining award; do not purchase or repeat it.');
@@ -1063,7 +1273,7 @@
             if (rows[index].status !== 'planned' || selectedOptions.has(rows[index].requirementId)) continue;
             for (const option of optionsForRequirement(requirements[index]).filter(option => option.provider === 'University' || allowed.includes(option.provider))) {
               if (rows[index].option && option.id === rows[index].option.id) continue;
-              const trial = rows.slice(); trial[index] = makeRow(requirements[index], option);
+              const trial = rows.slice(); trial[index] = makeRow(requirements[index], option,'planned',program,balance);
               if (!usableErrors(trial).length && compareScores(greedyScore(trial), greedyScore(rows)) < 0) { rows = trial; changed = true; }
             }
           }
@@ -1113,8 +1323,9 @@
       const canonical = requirement && (requirement.options || []).find(option => row.option && option.id === row.option.id && option.provider === row.option.provider && option.code === row.option.code);
       if (!['planned', 'reported', 'confirmed', 'unresolved'].includes(row.status)) errors.push({ code: 'invalid_status', message: 'The requirement has an unknown completion state.', requirementId: row.requirementId });
       if (requirement && (row.category !== requirement.category || (row.subgroup || null) !== (requirement.subgroup || requirement.group || null))) errors.push({ code: 'requirement_classification', message: 'The requirement category or subgroup differs from the reviewed catalog ledger.', requirementId: row.requirementId });
-      const academicIdentity = option => ['creditSystem', 'sourceCreditSystem', 'sourceCredits', 'creditOrigin', 'sourceType', 'bundleId', 'bundleCredits'].map(field => option[field] ?? null);
+      const academicIdentity = option => ['creditSystem', 'sourceCreditSystem', 'sourceCredits', 'sourceUpper', 'creditOrigin', 'sourceType', 'bundleId', 'bundleCredits'].map(field => option[field] ?? null);
       if (canonical && (!near(number(canonical.credits), number(row.option.credits)) || Boolean(canonical.upper) !== Boolean(row.option.upper) || JSON.stringify(canonical.sourceIds || []) !== JSON.stringify(row.option.sourceIds || []) || JSON.stringify(academicIdentity(canonical)) !== JSON.stringify(academicIdentity(row.option)))) errors.push({ code: 'mapping_tampered', message: 'The selected award amount, level, source type, source quantity, bundle or evidence differs from its reviewed mapping.', requirementId: row.requirementId });
+      if (creditBalancePolicy(program) && canonical && JSON.stringify(row.sourceIds || []) !== JSON.stringify(canonical.sourceIds || [])) errors.push({code:'mapping_tampered',message:'The row evidence must retain its reviewed source identities.',requirementId:row.requirementId});
       if (requirement && number(row.minimumCompletedCredits) !== number(requirement.minimumCompletedCredits)) errors.push({code:'prerequisite_tampered', message:'The completed-credit prerequisite differs from the reviewed requirement.', requirementId:row.requirementId});
       if (row.status === 'planned' && row.option && !canonical) errors.push({ code: 'unsupported_option', message: 'The selected option is not part of this reviewed requirement mapping.', requirementId: row.requirementId });
       if (row.status === 'planned' && row.option && (!canonical || !['published', 'conditional'].includes(canonical.evidence) || !canonical.sourceIds || !canonical.sourceIds.length || canonical.sourceIds.some(id => !knownSources.has(id)))) errors.push({ code: 'missing_evidence', message: 'The course option lacks usable catalog or mapped evidence.', requirementId: row.requirementId });
@@ -1145,7 +1356,7 @@
     const orderedRows = (plan.sequence || []).flatMap(step => step.requirementIds.map(id => plan.rows.find(row => row.requirementId === id)));
     for (const row of orderedRows.filter(r => r.status === 'planned' && r.option && r.option.provider !== 'University')) {
       const key = optionKey(row.option); if (seen.has(key)) continue; seen.add(key);
-      actions.push((row.plannedLearningStatus === 'in-progress' ? 'Continue your in-progress course: ' : row.option.evidence === 'published' && row.option.preapprovalRequired !== true ? row.reusesSavedCourse ? 'Use your collected course: ' : 'Start: ' : 'After approval: ') + row.option.provider + ' — ' + row.option.title + (row.option.minScore ? ' (minimum score ' + row.option.minScore + ')' : '') + ' → ' + row.code + '.');
+      actions.push((row.plannedLearningStatus === 'in-progress' ? 'Continue your in-progress course: ' : row.option.evidence === 'published' && row.option.preapprovalRequired !== true ? row.reusesSavedCourse ? 'Use your collected course: ' : 'Start: ' : 'After approval: ') + row.option.provider + ' — ' + row.option.title + (row.option.minScore ? ' (minimum score ' + row.option.minScore + ')' : '') + ' → ' + (row.option.receivingCategory || row.code || row.title) + '.');
     }
     if (plan.coverage.researchGapCredits) actions.push('DegreeSteps is researching more outside options for ' + plan.coverage.researchGapCredits + ' credits currently assigned to university courses.');
     if (plan.coverage.conditionalGapCredits) actions.push('DegreeSteps is reviewing the conditional outside options excluded from ' + plan.coverage.conditionalGapCredits + ' credits.');
@@ -1180,7 +1391,7 @@
   function compare(program, input) {
     return ['transfer', 'speed', 'cost'].map(priority => generate(program, Object.assign({}, input || {}, { priority })));
   }
-  const api = Object.freeze({ generate, compare, validate, availableOptions, providerPricing, providerQuoteKeys, institutionResidencyMinimum });
+  const api = Object.freeze({ generate, compare, validate, availableOptions, providerPricing, providerQuoteKeys, institutionResidencyMinimum, creditBalancePolicy });
   root.DegreePlanner = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

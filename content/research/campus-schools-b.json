@@ -3478,9 +3478,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -3489,9 +3489,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         },
         "graduate": {
           "status": "not-verified",
@@ -3524,6 +3526,19 @@
           "id": "gcu-sophia",
           "title": "Grand Canyon University — Sophia partner pathway",
           "url": "https://gcu.sophia.org/"
+        },
+        {
+          "id": "gcu-handbook-fall-2026-reviewed",
+          "title": "Fall 2026 University Policy Handbook: transfer and graduation requirements",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "checkedOn": "2026-11-19",
+          "sourcePages": [
+            261,
+            262,
+            263,
+            267,
+            268
+          ]
         }
       ],
       "coverage": {
@@ -3540,10 +3555,10 @@
             "campus"
           ],
           "paceModel": "course-term",
-          "url": "https://www.gcu.edu/degree-programs/on-campus-degrees/bachelors",
+          "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration",
           "sourceId": "gcu-campus-bachelors",
-          "degreeCredits": null,
-          "notes": "Listed in GCU's official campus bachelor's directory. This record verifies campus availability only; it does not establish online availability or transfer equivalencies. Emphases are retained as separate directory options."
+          "degreeCredits": 120,
+          "notes": "Exact official BSBA program page confirms campus delivery and 120 semester credits. The separately reviewed curriculum route supplies the course plan; this directory record alone does not award transfer credit."
         },
         {
           "id": "gcu-bachelor-of-science-in-business-analytics",
@@ -4377,7 +4392,8 @@
           "degreeCredits": null,
           "notes": "Listed in GCU's official campus bachelor's directory. This record verifies campus availability only; it does not establish online availability or transfer equivalencies. Emphases are retained as separate directory options."
         }
-      ]
+      ],
+      "reviewedOn": "2026-11-19"
     }
   ]
 }

@@ -25,10 +25,12 @@ execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-finance.mjs'),'
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-psychology.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-english.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-liberal-studies.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/import-gcu-curriculum.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-academic-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-pathway-quality-report.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-research-priorities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-school-research-batch.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-public-site.mjs')],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/apply-brand-system.mjs')],{cwd:root,stdio:'inherit'});
@@ -65,7 +67,7 @@ assert(!/^import\s/m.test(creditSourceDiscoveryApi),'Bundle credit source discov
 const academicPlannerSource=await readFile(resolve(root,'dist/planner.js'),'utf8');
 const academicPlannerBundle='const TemplateAcademicPlanner=(()=>{const module={exports:{}};const exports=module.exports;\n'+academicPlannerSource+'\nreturn module.exports;})();\n';
 const programCatalogSource=await readFile(resolve(root,'dist/program-catalog.js'),'utf8');
-const programCatalogBundle='const TemplateProgramCatalog=(()=>{const module={exports:{}};const exports=module.exports;\n'+programCatalogSource+'\nreturn module.exports;})();\n';
+const programCatalogBundle='const TemplateProgramCatalog=(()=>{const module={exports:{}};const exports=module.exports;const require=name=>{if(name==="./planner.js")return TemplateAcademicPlanner;throw new Error("Unsupported catalog dependency.");};\n'+programCatalogSource+'\nreturn module.exports;})();\n';
 const academicApi=(await readFile(resolve(root,'server/template-academic.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(academicApi),'Bundle academic validator imports explicitly before building');
 const aiConnectionsApiSource=(await readFile(resolve(root,'server/ai-connections.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');

@@ -1,5 +1,5 @@
 /* Program availability is independent of verified course-transfer maps. */
-(function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.DegreeProgramCatalog=api;}(typeof globalThis!=='undefined'?globalThis:this,function(){
+(function(root,factory){const common=typeof module==='object'&&module.exports,api=factory(()=>common?require('./planner.js'):root.DegreePlanner);if(common)module.exports=api;else root.DegreeProgramCatalog=api;}(typeof globalThis!=='undefined'?globalThis:this,function(planner){
  'use strict';
  const modelFiles=Object.freeze(['data/tesu.json','data/liberty.json','data/liberty-criminal-justice-residential.json','data/liberty-criminal-justice-online.json']);
  const norm=value=>String(value||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
@@ -18,6 +18,14 @@
  }
  function search(data,query={}){let rows=(data?.programs||[]).filter(p=>(!query.school||norm(p.school)===norm(query.school)||p.schoolId===query.school)&&(!query.level||p.level===query.level)&&(!query.modality||p.modalities.includes(query.modality))&&(!query.q||norm(p.title).includes(norm(query.q))));rows=rows.sort((a,b)=>a.school.localeCompare(b.school)||a.title.localeCompare(b.title));const offset=Math.max(0,Math.min(100000,Number.parseInt(query.offset)||0)),limit=Math.max(1,Math.min(100,Number.parseInt(query.limit)||30));return{total:rows.length,offset,limit,checkedAt:data.checkedAt,programs:rows.slice(offset,offset+limit),scope:data.scope};}
  function variants(route,catalog){return(route?.planningVariants||[]).map(id=>(catalog?.pathways||[]).find(item=>item.id===id)).filter(Boolean);}
+ function reviewedCreditBalance(model){if(model?.degreeCreditBalancePolicy?.enabled!==true)return null;try{return planner()?.creditBalancePolicy?.(model)||null;}catch{return null;}}
+ function creditedOption(model,requirement,option,balance){
+  if(Math.abs(option.credits-requirement.credits)<0.001)return true;
+  if(!balance)return false;
+  if(balance.balanceRequirementIds.includes(requirement.id))return requirement.options.length===1&&requirement.options[0]===option;
+  const binding=balance.equivalencies.find(item=>item.requirementId===requirement.id);
+  return Boolean(binding&&option.credits===binding.awardedCredits&&binding.options.some(item=>item.optionId===option.id&&item.provider===option.provider&&item.code===option.code));
+ }
  function courseChoiceCounts(model){
   const rows=array(model?.requirements),sources=array(model?.sources);
   const onlyPlaceholders=row=>!array(row.options).some(option=>option&&!option.selectionRequired);
@@ -28,8 +36,10 @@
  function modelReadiness(model){
   const rows=array(model?.requirements),total=model?.totalCredits;
   if(!model||!Number.isFinite(total)||total<=0||!rows.length)return {available:false,reason:'Requirements are not available.'};
+  const balance=reviewedCreditBalance(model);
+  if(model.degreeCreditBalancePolicy?.enabled===true&&!balance)return {available:false,reason:'The earned-credit balance lacks its reviewed GCU policy and course evidence.'};
   if(model.coverage==='partial'||rows.some(row=>row?.researchGap))return {available:false,reason:'Some degree requirements still need research.'};
-  if(rows.some(row=>!identified(row?.id)||!present(row.title)||!Number.isFinite(row.credits)||row.credits<0||!array(row.options).some(option=>identified(option?.id)&&present(option.provider)&&Number.isFinite(option.credits)&&Math.abs(option.credits-row.credits)<0.001)))return {available:false,reason:'A requirement still needs a usable course choice.'};
+  if(rows.some(row=>!identified(row?.id)||!present(row.title)||!Number.isFinite(row.credits)||row.credits<0||!array(row.options).some(option=>identified(option?.id)&&present(option.provider)&&Number.isFinite(option.credits)&&creditedOption(model,row,option,balance))))return {available:false,reason:'A requirement still needs a usable course choice.'};
   if(new Set(rows.map(row=>row.id)).size!==rows.length)return {available:false,reason:'Degree requirements have duplicate identifiers.'};
   const accounted=rows.reduce((sum,row)=>sum+row.credits,0);
   if(Math.abs(accounted-total)>0.001)return {available:false,reason:'The requirements do not account for the full degree.'};
@@ -149,13 +159,15 @@
   if(entry.school&&norm(entry.school)!==norm(model.school))throw Error('A curriculum source belongs to a different school.');
   if(entry.degreeCredits!==undefined&&Math.abs(entry.degreeCredits-model.totalCredits)>0.001||entry.creditUnit&&entry.creditUnit!==(model.creditSystem||'semester'))throw Error('A curriculum credit total or unit does not match its registry entry.');
   const sourceIds=new Set();for(const source of model.sources){if(!identified(source?.id)||sourceIds.has(source.id)||!https(source.url))throw Error('A curriculum has an invalid source reference.');sourceIds.add(source.id);}
+  const balance=reviewedCreditBalance(model);
+  if(model.degreeCreditBalancePolicy?.enabled===true&&!balance)throw Error('A curriculum earned-credit balance lacks its reviewed GCU policy and course evidence.');
   const sourced=ids=>Array.isArray(ids)&&ids.length>0&&ids.every(id=>sourceIds.has(id));
   if(model.creditConversions!==undefined&&!Array.isArray(model.creditConversions))throw Error('A curriculum credit conversion lacks valid source evidence.');
   for(const conversion of array(model.creditConversions))if(!creditUnits.includes(conversion?.from)||!creditUnits.includes(conversion.to)||conversion.from===conversion.to||!Number.isFinite(conversion.ratio)||conversion.ratio<=0||!sourced(conversion.sourceIds))throw Error('A curriculum credit conversion lacks valid source evidence.');
   for(const name of ['institutionMinCredits','upperMinCredits','externalMaxCredits','alternativeMaxCredits'])if(model[name]!=null&&(!Number.isFinite(model[name])||model[name]<0||model[name]>model.totalCredits))throw Error('A curriculum has an invalid credit policy limit.');
   const requirementIds=new Set();let credits=0;
   for(const requirement of model.requirements){if(!identified(requirement?.id)||requirementIds.has(requirement.id)||!present(requirement.title)||!Number.isFinite(requirement.credits)||requirement.credits<0||!Array.isArray(requirement.options)||!requirement.options.length&&!requirement.researchGap||requirement.sourceIds!==undefined&&!sourced(requirement.sourceIds))throw Error('A curriculum has invalid requirement allocations.');requirementIds.add(requirement.id);credits+=requirement.credits;const optionIds=new Set();
-   for(const option of requirement.options){if(!identified(option?.id)||optionIds.has(option.id)||!present(option.provider)||!present(option.title)||!Number.isFinite(option.credits)||Math.abs(option.credits-requirement.credits)>0.001||!['published','conditional'].includes(option.evidence)||!sourced(option.sourceIds)||option.identitySourceIds!==undefined&&!sourced(option.identitySourceIds)||option.creditSystem!==undefined&&option.creditSystem!==(model.creditSystem||'semester')||option.sourceCredits!==undefined&&(!Number.isFinite(option.sourceCredits)||option.sourceCredits<=0||!creditUnits.includes(option.sourceCreditSystem))||option.sourceCreditSystem!==undefined&&option.sourceCredits===undefined)throw Error('A curriculum option lacks a reviewed credit award or valid evidence.');optionIds.add(option.id);}
+   for(const option of requirement.options){if(!identified(option?.id)||optionIds.has(option.id)||!present(option.provider)||!present(option.title)||!Number.isFinite(option.credits)||!creditedOption(model,requirement,option,balance)||!['published','conditional'].includes(option.evidence)||!sourced(option.sourceIds)||option.identitySourceIds!==undefined&&!sourced(option.identitySourceIds)||option.creditSystem!==undefined&&option.creditSystem!==(model.creditSystem||'semester')||option.sourceCredits!==undefined&&(!Number.isFinite(option.sourceCredits)||option.sourceCredits<=0||!creditUnits.includes(option.sourceCreditSystem))||option.sourceCreditSystem!==undefined&&option.sourceCredits===undefined)throw Error('A curriculum option lacks a reviewed credit award or valid evidence.');optionIds.add(option.id);}
   }
   if(model.residencyPolicy!==undefined){
    const rule=model.residencyPolicy,bound=rule?.conservativeSufficientCondition,ids=rule?.capstoneRequirementIds;

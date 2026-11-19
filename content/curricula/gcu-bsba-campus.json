@@ -1,0 +1,1803 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-19",
+  "routes": [
+    {
+      "id": "gcu-bsba-campus",
+      "parentId": "gcu-bachelor-of-science-in-business-administration",
+      "title": "Bachelor of Science in Business Administration",
+      "school": "Grand Canyon University",
+      "schoolId": "gcu",
+      "level": "bachelor",
+      "modalities": [
+        "campus"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration",
+      "sourceId": "gcu-bsba-program-current-2026-11-19",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-19"
+    }
+  ],
+  "models": [
+    {
+      "id": "curriculum-gcu-bsba-campus",
+      "routeIds": [
+        "gcu-bsba-campus"
+      ],
+      "school": "Grand Canyon University",
+      "title": "Bachelor of Science in Business Administration",
+      "level": "bachelor",
+      "format": "Residential",
+      "modalities": [
+        "campus"
+      ],
+      "paceModel": "course-term",
+      "defaultProviders": [],
+      "catalog": "Fall 2026 · 2026–2027",
+      "catalogYear": "2026-2027",
+      "catalogIdentity": {
+        "kind": "published-catalog-edition",
+        "label": "Fall 2026 · 2026–2027 Academic Catalog",
+        "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf",
+        "checkedOn": "2026-11-19"
+      },
+      "creditSystem": "semester",
+      "totalCredits": 120,
+      "institutionMinCredits": 30,
+      "externalMaxCredits": 90,
+      "alternativeMaxCredits": 30,
+      "upperMinCredits": 36,
+      "upperGroupMinimums": [
+        {
+          "group": "business-core",
+          "credits": 36
+        }
+      ],
+      "requirements": [
+        {
+          "id": "unv103",
+          "code": "UNV-103",
+          "title": "University Success",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-foundations",
+          "subgroup": "gcu-foundations",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-unv103",
+              "provider": "University",
+              "code": "UNV-103",
+              "title": "University Success",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum.",
+          "institutionalOnly": true,
+          "institutionalOnlySourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "notes": "The baseline retains University Success. A traditional campus student with at least 24 transferred college-level credits and a 3.0 GPA can qualify for the published foundations waiver; do not award four earned credits for a waiver."
+        },
+        {
+          "id": "unv104",
+          "code": "UNV-104",
+          "title": "21st Century Skills: Communication and Information Literacy",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-communication",
+          "subgroup": "gcu-communication",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-unv104",
+              "provider": "University",
+              "code": "UNV-104",
+              "title": "21st Century Skills: Communication and Information Literacy",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum."
+        },
+        {
+          "id": "eng105",
+          "code": "ENG-105",
+          "title": "English Composition I",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-communication",
+          "subgroup": "gcu-communication",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-eng105",
+              "provider": "University",
+              "code": "ENG-105",
+              "title": "English Composition I",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum.",
+          "writingIntensive": true,
+          "writingIntensiveSourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "prerequisiteNotes": "Campus English competency/placement or an applicable published waiver must permit direct registration in ENG-105.",
+          "prerequisiteSourceIds": [
+            "gcu-campus-placement-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "eng106",
+          "code": "ENG-106",
+          "title": "English Composition II",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-communication",
+          "subgroup": "gcu-communication",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-eng106",
+              "provider": "University",
+              "code": "ENG-106",
+              "title": "English Composition II",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum.",
+          "prerequisites": [
+            "eng105"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-eng106-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "ENG-105 is the published prerequisite to ENG-106.",
+          "writingIntensive": true,
+          "writingIntensiveSourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "cwv101",
+          "code": "CWV-101",
+          "title": "Christian Worldview",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-worldview",
+          "subgroup": "gcu-worldview",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-cwv101",
+              "provider": "University",
+              "code": "CWV-101",
+              "title": "Christian Worldview",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum.",
+          "institutionalOnly": true,
+          "institutionalOnlySourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "notes": "Christian Worldview is a required non-transferable GCU general education course. CWV-301 is the published alternative; this baseline selects CWV-101."
+        },
+        {
+          "id": "phi105",
+          "code": "PHI-105",
+          "title": "21st Century Skills: Critical Thinking and Problem Solving",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-critical-thinking",
+          "subgroup": "gcu-critical-thinking",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-phi105",
+              "provider": "University",
+              "code": "PHI-105",
+              "title": "21st Century Skills: Critical Thinking and Problem Solving",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum."
+        },
+        {
+          "id": "mat144",
+          "code": "MAT-144",
+          "title": "College Mathematics",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-critical-thinking",
+          "subgroup": "gcu-critical-thinking",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-mat144",
+              "provider": "University",
+              "code": "MAT-144",
+              "title": "College Mathematics",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum.",
+          "prerequisiteNotes": "Campus mathematics placement must permit MAT-144, or an approved prerequisite with C or better must transfer. The selected ledger does not assume a student has already met placement.",
+          "prerequisiteSourceIds": [
+            "gcu-campus-placement-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "bio220",
+          "code": "BIO-220",
+          "title": "Environmental Science",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-critical-thinking",
+          "subgroup": "gcu-critical-thinking",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-bio220",
+              "provider": "University",
+              "code": "BIO-220",
+              "title": "Environmental Science",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum."
+        },
+        {
+          "id": "his144",
+          "code": "HIS-144",
+          "title": "U.S. History Themes",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-global-awareness",
+          "subgroup": "gcu-global-awareness",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-his144",
+              "provider": "University",
+              "code": "HIS-144",
+              "title": "U.S. History Themes",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum."
+        },
+        {
+          "id": "psy102",
+          "code": "PSY-102",
+          "title": "General Psychology",
+          "credits": 4,
+          "category": "general",
+          "group": "gcu-global-awareness",
+          "subgroup": "gcu-global-awareness",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-program-current-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-psy102",
+              "provider": "University",
+              "code": "PSY-102",
+              "title": "General Psychology",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-program-current-2026-11-19",
+                "gcu-bs-general-education-fall-2026-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56"
+            }
+          ],
+          "choiceNote": "Selected GCU course within this published general education competency; approved transfer credit may change the allocation without reducing the 120-credit degree minimum."
+        },
+        {
+          "id": "bit200",
+          "code": "BIT-200",
+          "title": "Introduction to Computer Technology",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-bit200",
+              "provider": "University",
+              "code": "BIT-200",
+              "title": "Introduction to Computer Technology",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "acc240",
+          "code": "ACC-240",
+          "title": "Fundamentals of Accounting",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": false,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-acc240",
+              "provider": "University",
+              "code": "ACC-240",
+              "title": "Fundamentals of Accounting",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "mat144"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "Published alternatives: MAT-134, MAT-154, or a higher subsequent mathematics course. The selected baseline uses MAT-144."
+        },
+        {
+          "id": "mkt315",
+          "code": "MKT-315",
+          "title": "Introduction to Marketing",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-mkt315",
+              "provider": "University",
+              "code": "MKT-315",
+              "title": "Introduction to Marketing",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "bus352",
+          "code": "BUS-352",
+          "title": "Business Statistics",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-bus352",
+              "provider": "University",
+              "code": "BUS-352",
+              "title": "Business Statistics",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "mat144",
+            "bit200"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "Published alternatives: MAT-134, MAT-154, or higher subsequent mathematics; and BIT-205, CST-111, or ITT-111. The selected baseline uses MAT-144 and BIT-200."
+        },
+        {
+          "id": "bus332",
+          "code": "BUS-332",
+          "title": "Customer Engagement",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-bus332",
+              "provider": "University",
+              "code": "BUS-332",
+              "title": "Customer Engagement",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "mkt315"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ]
+        },
+        {
+          "id": "bus340",
+          "code": "BUS-340",
+          "title": "Ethical and Legal Issues in Business",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-bus340",
+              "provider": "University",
+              "code": "BUS-340",
+              "title": "Ethical and Legal Issues in Business",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "writingIntensive": true,
+          "writingIntensiveSourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ]
+        },
+        {
+          "id": "bit301",
+          "code": "BIT-301",
+          "title": "Fundamentals in Business Analytics",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-bit301",
+              "provider": "University",
+              "code": "BIT-301",
+              "title": "Fundamentals in Business Analytics",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "bit200",
+            "bus352"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "Published alternatives: BIT-205 or CST-111 for the technology prerequisite, and MAT-274 for statistics. The selected baseline uses BIT-200 and BUS-352."
+        },
+        {
+          "id": "ecn361",
+          "code": "ECN-361",
+          "title": "Microeconomics",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-ecn361",
+              "provider": "University",
+              "code": "ECN-361",
+              "title": "Microeconomics",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "acc240",
+            "bus352"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "ACC-250 is the published alternative to ACC-240. Both an accounting option and BUS-352 are required."
+        },
+        {
+          "id": "bus390",
+          "code": "BUS-390",
+          "title": "Global Business",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-bus390",
+              "provider": "University",
+              "code": "BUS-390",
+              "title": "Global Business",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "ecn362",
+          "code": "ECN-362",
+          "title": "Macroeconomics",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-ecn362",
+              "provider": "University",
+              "code": "ECN-362",
+              "title": "Macroeconomics",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "ecn361"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ]
+        },
+        {
+          "id": "fin350",
+          "code": "FIN-350",
+          "title": "Fundamentals of Business Finance",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-fin350",
+              "provider": "University",
+              "code": "FIN-350",
+              "title": "Fundamentals of Business Finance",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "ecn361",
+            "acc240"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "Published alternatives: ECN-220 or ECN-351 for economics, and ACC-250 for accounting. The selected baseline uses ECN-361 and ACC-240."
+        },
+        {
+          "id": "fin375",
+          "code": "FIN-375",
+          "title": "Introduction to Investments",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-fin375",
+              "provider": "University",
+              "code": "FIN-375",
+              "title": "Introduction to Investments",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "fin350"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ]
+        },
+        {
+          "id": "acc486",
+          "code": "ACC-486",
+          "title": "Financial Statement Analysis",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-acc486",
+              "provider": "University",
+              "code": "ACC-486",
+              "title": "Financial Statement Analysis",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "acc240",
+            "fin350"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "ACC-260 or ACC-350 are published alternatives to ACC-240; FIN-350 is also required."
+        },
+        {
+          "id": "mgt420",
+          "code": "MGT-420",
+          "title": "Organizational Behavior and Management",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-mgt420",
+              "provider": "University",
+              "code": "MGT-420",
+              "title": "Organizational Behavior and Management",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "mgt455",
+          "code": "MGT-455",
+          "title": "Production/Operations Management",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-mgt455",
+              "provider": "University",
+              "code": "MGT-455",
+              "title": "Production/Operations Management",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "bus352"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "MAT-274, MAT-374, or ESG-374 are published alternatives to BUS-352."
+        },
+        {
+          "id": "bus485",
+          "code": "BUS-485",
+          "title": "Strategic Management",
+          "credits": 4,
+          "category": "major",
+          "group": "business-core",
+          "subgroup": "business-core",
+          "upper": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-bus485",
+              "provider": "University",
+              "code": "BUS-485",
+              "title": "Strategic Management",
+              "credits": 4,
+              "upper": true,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-program-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration"
+            }
+          ],
+          "minimumGrade": "C",
+          "minimumGradeSourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "prerequisites": [
+            "mgt420",
+            "fin350",
+            "mkt315"
+          ],
+          "prerequisiteSourceIds": [
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "prerequisiteNotes": "Published alternatives: MGT-422HN; FIN-210; and MKT-245 respectively. This course is the program capstone.",
+          "writingIntensive": true,
+          "writingIntensiveSourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ],
+          "capstone": true
+        },
+        {
+          "id": "open-soc102",
+          "title": "Open elective 1",
+          "credits": 4,
+          "category": "elective",
+          "group": "open-electives",
+          "subgroup": "open-electives",
+          "upper": false,
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-named-electives-fall-2026-2026-11-19",
+            "gcu-sociology-course-identities-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-open-soc102",
+              "provider": "University",
+              "code": "SOC-102",
+              "title": "Principles of Sociology",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-named-electives-fall-2026-2026-11-19",
+                "gcu-sociology-course-identities-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-sociology"
+            }
+          ],
+          "choiceNote": "Named, nonduplicating university course selected inside the 16-credit open elective allowance. Other acceptable electives may replace it; this is not a required receiving-course equivalency."
+        },
+        {
+          "id": "open-soc220",
+          "title": "Open elective 2",
+          "credits": 4,
+          "category": "elective",
+          "group": "open-electives",
+          "subgroup": "open-electives",
+          "upper": false,
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-named-electives-fall-2026-2026-11-19",
+            "gcu-sociology-course-identities-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-open-soc220",
+              "provider": "University",
+              "code": "SOC-220",
+              "title": "Social Problems",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-named-electives-fall-2026-2026-11-19",
+                "gcu-sociology-course-identities-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-science-sociology"
+            }
+          ],
+          "choiceNote": "Named, nonduplicating university course selected inside the 16-credit open elective allowance. Other acceptable electives may replace it; this is not a required receiving-course equivalency."
+        },
+        {
+          "id": "open-com100",
+          "title": "Open elective 3",
+          "credits": 4,
+          "category": "elective",
+          "group": "open-electives",
+          "subgroup": "open-electives",
+          "upper": false,
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-named-electives-fall-2026-2026-11-19",
+            "gcu-com100-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-open-com100",
+              "provider": "University",
+              "code": "COM-100",
+              "title": "Fundamentals of Communication",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-named-electives-fall-2026-2026-11-19",
+                "gcu-com100-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-arts-communications"
+            }
+          ],
+          "choiceNote": "Named, nonduplicating university course selected inside the 16-credit open elective allowance. Other acceptable electives may replace it; this is not a required receiving-course equivalency."
+        },
+        {
+          "id": "open-int244",
+          "title": "Open elective 4",
+          "credits": 4,
+          "category": "elective",
+          "group": "open-electives",
+          "subgroup": "open-electives",
+          "upper": false,
+          "freeElective": true,
+          "excludeAlreadyUsed": true,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-named-electives-fall-2026-2026-11-19",
+            "gcu-int244-current-2026-11-19"
+          ],
+          "options": [
+            {
+              "id": "university-open-int244",
+              "provider": "University",
+              "code": "INT-244",
+              "title": "World Religions",
+              "credits": 4,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "evidence": "published",
+              "sourceIds": [
+                "gcu-bsba-catalog-fall-2026-2026-11-19",
+                "gcu-bsba-named-electives-fall-2026-2026-11-19",
+                "gcu-int244-current-2026-11-19"
+              ],
+              "url": "https://www.gcu.edu/degree-programs/bachelor-arts-christian-studies-global-ministry"
+            }
+          ],
+          "choiceNote": "Named, nonduplicating university course selected inside the 16-credit open elective allowance. Other acceptable electives may replace it; this is not a required receiving-course equivalency."
+        }
+      ],
+      "sources": [
+        {
+          "id": "gcu-bsba-program-current-2026-11-19",
+          "title": "GCU Bachelor of Science in Business Administration — current official program curriculum and course prerequisites",
+          "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "scope": "Program states campus and online availability, 120 semester credits, 64-credit major and 34–40 general education / 16–22 elective ranges. The sixteen named major courses each carry four credits. Program page academic approval date: September 15, 2026."
+        },
+        {
+          "id": "gcu-bsba-catalog-fall-2026-2026-11-19",
+          "title": "GCU Fall 2026 Academic Catalog — BS Business Administration",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=61",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "pages": [
+            61,
+            62
+          ],
+          "scope": "Printed pages 61–62: all sixteen required four-credit major courses, 64 major credits, 34–40 general education, 16–22 electives and 120 total. BUS-340 and BUS-485 carry the writing-intensive designation."
+        },
+        {
+          "id": "gcu-bs-general-education-fall-2026-2026-11-19",
+          "title": "GCU Fall 2026 Academic Catalog — Bachelor of Science general education",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf#page=56",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "pages": [
+            54,
+            55,
+            56
+          ],
+          "scope": "Printed pages 54–56 list the five general education competencies and named GCU course choices. BS ranges: foundations 4, communication 9–12, worldview 4, critical thinking 11–12, global awareness 6–8. UNV-103/303 and CWV-101/301 are marked non-transferable in the published sequence; campus students can have additional approved choices."
+        },
+        {
+          "id": "gcu-bsba-named-electives-fall-2026-2026-11-19",
+          "title": "GCU Fall 2026 Academic Catalog — named unrestricted elective selections",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/catalog/2026-27/academic-catalog-fall-2026-v4.pdf",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "pages": [
+            55,
+            61,
+            62,
+            158,
+            170,
+            171
+          ],
+          "scope": "The BSBA has an open elective allowance. INT-244, COM-100, SOC-102 and SOC-220 are actual named four-credit university courses. They are selected examples, not additional required major courses or a promise of registration availability."
+        },
+        {
+          "id": "gcu-baccalaureate-transfer-fall-2026-2026-11-19",
+          "title": "GCU Fall 2026 University Policy Handbook — baccalaureate transfer policies",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf#page=261",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "pages": [
+            261,
+            262
+          ],
+          "scope": "Printed pages 261–262: maximum 90 transfer credits, at most 84 lower-division; 30 combined alternative credits; another 30 maximum from military schools/training; all other transfer must be on an accredited GCU-approved originating college transcript. Lower-division substitutions do not become upper-division credit. Undergraduate transfer generally requires C or better; pass grades must equate to C. No duplicate/remedial credit."
+        },
+        {
+          "id": "gcu-alternative-credit-fall-2026-2026-11-19",
+          "title": "GCU Fall 2026 University Policy Handbook — alternative credit source treatment",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf#page=262",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "pages": [
+            262,
+            263
+          ],
+          "scope": "Printed pages 262–263: combined 30-credit alternative ceiling, source transcript controls testing credit quantity and level; ACE credit is applied by transcript first to matching content/general education then electives. NCCRS may apply to undergraduate lower-division general education or electives. General alternative acceptance is not an exact course equivalency."
+        },
+        {
+          "id": "gcu-degree-credit-shortfall-fall-2026-2026-11-19",
+          "title": "GCU Fall 2026 University Policy Handbook — degree credit minimum and transfer shortfalls",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf#page=267",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "pages": [
+            262,
+            267
+          ],
+          "scope": "Printed page 262 quarter-conversion example preserves 2.67 earned credits toward 120 even when English content is fulfilled. Printed page 267 allows GCU Service Learning coursework to fill a transfer-related shortfall toward 120 in the major/elective categories; Service Learning cannot fulfill general education. Content substitution never establishes a larger credit award."
+        },
+        {
+          "id": "gcu-baccalaureate-graduation-fall-2026-2026-11-19",
+          "title": "GCU Fall 2026 University Policy Handbook — bachelor graduation, residency, upper division and writing",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf#page=267",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "pages": [
+            267,
+            268
+          ],
+          "scope": "Printed pages 267–268: 120 minimum; 30 semester credits at GCU; 36 upper total and at least 36 upper credits in the major; overall and major GPA 2.0, major courses C or better. Three writing-intensive courses include ENG-105/equivalent and two major courses, at least one upper. Traditional campus foundations waiver needs 24 transferred college-level credits and 3.0 GPA."
+        },
+        {
+          "id": "gcu-campus-placement-fall-2026-2026-11-19",
+          "title": "GCU Fall 2026 University Policy Handbook — campus mathematics and English placement",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf#page=40",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "pages": [
+            40
+          ],
+          "scope": "Traditional campus freshmen must take the appropriate placement examination before math above MAT-110. Transfer students need placement unless a C-or-better approved prerequisite transfers from an approved accredited college. Direct ENG-105 registration depends on English competency/placement or the published waiver alternatives. Remedial prerequisites are not counted inside this 120-credit ledger."
+        },
+        {
+          "id": "gcu-eng106-current-2026-11-19",
+          "title": "GCU official current ENG-106 course description",
+          "url": "https://www.gcu.edu/degree-programs/bsn-pre-licensure",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "scope": "Named English Composition II course: 4 credits; formal prerequisite ENG-105. Course identity only; this is not a BSBA-specific outside transfer agreement."
+        },
+        {
+          "id": "gcu-sociology-course-identities-current-2026-11-19",
+          "title": "GCU official current SOC-102 and SOC-220 course descriptions",
+          "url": "https://www.gcu.edu/degree-programs/bachelor-science-sociology",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "scope": "SOC-102 Principles of Sociology and SOC-220 Social Problems are each four-credit university courses; no formal prerequisite appears in these current course descriptions. Selected as nonduplicating BSBA open electives, not as BSBA required major courses."
+        },
+        {
+          "id": "gcu-com100-current-2026-11-19",
+          "title": "GCU official current COM-100 course description",
+          "url": "https://www.gcu.edu/degree-programs/bachelor-arts-communications",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "scope": "COM-100 Fundamentals of Communication: 4 credits; no formal prerequisite is listed in its current description. Selected university open elective only."
+        },
+        {
+          "id": "gcu-int244-current-2026-11-19",
+          "title": "GCU official current INT-244 course description",
+          "url": "https://www.gcu.edu/degree-programs/bachelor-arts-christian-studies-global-ministry",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "scope": "INT-244 World Religions: 4 credits; no formal prerequisite is listed in its current description. Selected university open elective only."
+        },
+        {
+          "id": "gcu-ldr461-current-2026-11-19",
+          "title": "GCU official current LDR-461 course identity",
+          "url": "https://www.gcu.edu/degree-programs/bachelor-science-molecular-cellular-biology",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "scope": "LDR-461 Professional Applications in Service Learning I: one credit and ten volunteer hours in the chosen field. This source establishes course identity and quantity, not unlimited repeatability or automatic BSBA major allocation."
+        },
+        {
+          "id": "gcu-ldr462-current-2026-11-19",
+          "title": "GCU official current LDR-462 course identity",
+          "url": "https://www.gcu.edu/degree-programs/bachelor-science-biology-pre-physician-assistant",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "scope": "LDR-462 Professional Applications in Service Learning II: two credits and twenty volunteer hours in the chosen field. This source establishes course identity and quantity, not unlimited repeatability or automatic BSBA major allocation."
+        },
+        {
+          "id": "gcu-ldr463-native-catalog-api-2026-11-19",
+          "title": "GCU public Transfer Search — active native LDR-463 catalog identity",
+          "url": "https://transfersearch.gcu.edu/SSTPServices/tea/v1/get-gcu-course-by-criteria?criteria=LDR-463",
+          "checked": "2026-11-19",
+          "checkedOn": "2026-11-19",
+          "authority": "university",
+          "evidence": "published",
+          "retrievedAt": "2026-11-19T04:23:55.278990+00:00",
+          "responseSha256": "c34ea1bc64d2c59f4816f1c0925165bcecc822376626a1252fa913ce19dbb36e",
+          "publicRecord": {
+            "id": "840e874e-20ca-4f07-bd8c-d8afdbbe8990",
+            "courseCode": "LDR-463",
+            "title": "Professional Applications in Service Learning III",
+            "credits": "3.0",
+            "courseLevelId": "2",
+            "active": true,
+            "courseMappingId": null
+          },
+          "scope": "The university public catalog API returns an active non-honors LDR-463 course with three credits. This establishes current native identity and quantity only, not repeatability, a transfer award or automatic BSBA major allocation. Public response contains no student records."
+        }
+      ],
+      "evidenceCheckedOn": "2026-11-19",
+      "coverage": "complete",
+      "completeExecutablePathway": false,
+      "coverageLabel": "Complete 120-credit campus curriculum with named university choices; outside-course awards must be researched separately.",
+      "curriculumAllocation": {
+        "generalEducation": {
+          "minCredits": 34,
+          "maxCredits": 40,
+          "selectedCredits": 40,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ]
+        },
+        "major": {
+          "credits": 64,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ]
+        },
+        "openElectives": {
+          "minCredits": 16,
+          "maxCredits": 22,
+          "selectedCredits": 16,
+          "sourceIds": [
+            "gcu-bsba-catalog-fall-2026-2026-11-19",
+            "gcu-bsba-program-current-2026-11-19"
+          ]
+        },
+        "scope": "The selected native-course baseline uses 40 general education plus 64 major plus 16 open electives. Published ranges permit a different transfer-credit allocation; they do not award unearned credits or waive 120 total."
+      },
+      "generalEducationMinimums": [
+        {
+          "group": "gcu-foundations",
+          "credits": 4,
+          "sourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "group": "gcu-communication",
+          "credits": 9,
+          "sourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "group": "gcu-worldview",
+          "credits": 4,
+          "sourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "group": "gcu-critical-thinking",
+          "credits": 11,
+          "sourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "group": "gcu-global-awareness",
+          "credits": 6,
+          "sourceIds": [
+            "gcu-bs-general-education-fall-2026-2026-11-19"
+          ]
+        }
+      ],
+      "curriculumSections": [
+        {
+          "id": "gcu-foundations",
+          "title": "University Foundations",
+          "parentId": "general",
+          "requirementIds": [
+            "unv103"
+          ],
+          "sourceId": "gcu-bsba-catalog-fall-2026-2026-11-19"
+        },
+        {
+          "id": "gcu-communication",
+          "title": "Effective Communication",
+          "parentId": "general",
+          "requirementIds": [
+            "unv104",
+            "eng105",
+            "eng106"
+          ],
+          "sourceId": "gcu-bsba-catalog-fall-2026-2026-11-19"
+        },
+        {
+          "id": "gcu-worldview",
+          "title": "Christian Worldview",
+          "parentId": "general",
+          "requirementIds": [
+            "cwv101"
+          ],
+          "sourceId": "gcu-bsba-catalog-fall-2026-2026-11-19"
+        },
+        {
+          "id": "gcu-critical-thinking",
+          "title": "Critical Thinking",
+          "parentId": "general",
+          "requirementIds": [
+            "phi105",
+            "mat144",
+            "bio220"
+          ],
+          "sourceId": "gcu-bsba-catalog-fall-2026-2026-11-19"
+        },
+        {
+          "id": "gcu-global-awareness",
+          "title": "Global Awareness, Perspectives and Ethics",
+          "parentId": "general",
+          "requirementIds": [
+            "his144",
+            "psy102"
+          ],
+          "sourceId": "gcu-bsba-catalog-fall-2026-2026-11-19"
+        },
+        {
+          "id": "gcu-business-major",
+          "title": "Business Administration Major",
+          "parentId": "major",
+          "requirementIds": [
+            "bit200",
+            "acc240",
+            "mkt315",
+            "bus352",
+            "bus332",
+            "bus340",
+            "bit301",
+            "ecn361",
+            "bus390",
+            "ecn362",
+            "fin350",
+            "fin375",
+            "acc486",
+            "mgt420",
+            "mgt455",
+            "bus485"
+          ],
+          "sourceId": "gcu-bsba-catalog-fall-2026-2026-11-19"
+        },
+        {
+          "id": "gcu-open-electives",
+          "title": "Open Electives",
+          "parentId": "elective",
+          "requirementIds": [
+            "open-soc102",
+            "open-soc220",
+            "open-com100",
+            "open-int244"
+          ],
+          "sourceId": "gcu-bsba-catalog-fall-2026-2026-11-19"
+        }
+      ],
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "scope": "Explicit bachelor residency: at least 30 semester credits of coursework in a GCU program. This value is not inferred from the 90-credit transfer ceiling."
+        },
+        "externalMaxCredits": {
+          "value": 90,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "gcu-baccalaureate-transfer-fall-2026-2026-11-19"
+          ],
+          "scope": "Overall undergraduate transfer ceiling; individual applicability and the remaining graduation requirements still constrain actual use."
+        },
+        "alternativeMaxCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "gcu-baccalaureate-transfer-fall-2026-2026-11-19",
+            "gcu-alternative-credit-fall-2026-2026-11-19"
+          ],
+          "scope": "One combined ceiling across alternative sources, not 30 per provider. Military-school/training credit has its separately stated ceiling and still counts toward the overall transfer limit."
+        },
+        "upperMinCredits": {
+          "value": 36,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ],
+          "scope": "At least 36 semester credits in 300-or-higher courses; Major/Core also requires at least 36 upper-division credits in the major."
+        }
+      },
+      "policySourceIds": [
+        "gcu-baccalaureate-transfer-fall-2026-2026-11-19",
+        "gcu-alternative-credit-fall-2026-2026-11-19",
+        "gcu-baccalaureate-graduation-fall-2026-2026-11-19",
+        "gcu-degree-credit-shortfall-fall-2026-2026-11-19",
+        "gcu-campus-placement-fall-2026-2026-11-19"
+      ],
+      "gradePolicy": {
+        "minimumGrade": "C",
+        "scope": "outside-undergraduate-transfer-and-major-courses",
+        "sourceIds": [
+          "gcu-baccalaureate-transfer-fall-2026-2026-11-19",
+          "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+        ],
+        "checked": "2026-11-19",
+        "detail": "Undergraduate transfer generally requires C or better; pass grades must equate to C. Major coursework requires C or better; the student must maintain overall and major GPA 2.0. This does not assert a blanket C floor for every native elective."
+      },
+      "transferPolicyReview": {
+        "checked": "2026-11-19",
+        "alternativeMaxCredits": 30,
+        "alternativeMaxScope": "Combined alternative sources.",
+        "lowerDivisionMaxCredits": 84,
+        "militaryTrainingMaxCredits": 30,
+        "duplicatesCountOnce": true,
+        "requiredInstitutionalCourses": [
+          "CWV-101"
+        ],
+        "sourceIds": [
+          "gcu-baccalaureate-transfer-fall-2026-2026-11-19",
+          "gcu-alternative-credit-fall-2026-2026-11-19",
+          "gcu-baccalaureate-graduation-fall-2026-2026-11-19",
+          "gcu-bs-general-education-fall-2026-2026-11-19"
+        ],
+        "residencyNote": "At least 30 semester credits must be earned in a GCU program; 36 upper credits in the major must remain satisfied independently of content substitutions.",
+        "sourceTranscriptRequired": true,
+        "thirdPartyTranscriptAccepted": false
+      },
+      "degreeCreditBalancePolicy": {
+        "kind": "content-and-earned-credit-separate",
+        "sourceIds": [
+          "gcu-baccalaureate-transfer-fall-2026-2026-11-19",
+          "gcu-alternative-credit-fall-2026-2026-11-19",
+          "gcu-degree-credit-shortfall-fall-2026-2026-11-19"
+        ],
+        "minimumDegreeCredits": 120,
+        "inflateSourceCredits": false,
+        "lowerDivisionContentMatchEarnsUpperCredit": false,
+        "permittedShortfallCategories": [
+          "major",
+          "elective"
+        ],
+        "prohibitedShortfallCategories": [
+          "general"
+        ],
+        "shortfallMechanism": "GCU Service Learning coursework may fill a transfer-related credit shortfall in the major/elective category. Specific eligible service-learning course, credit amount and applicability must be independently established before generating a transfer scenario.",
+        "note": "A receiving-course content match is not evidence that a 3-credit source earns 4 degree credits. Preserve the actual transcript quantity and level; an exact transfer scenario must separately reach 120, the general education minima and 36 upper-major credits.",
+        "courseIdentityCandidates": [
+          {
+            "code": "LDR-461",
+            "title": "Professional Applications in Service Learning I",
+            "credits": 1,
+            "creditSystem": "semester",
+            "upper": true,
+            "volunteerHours": 10,
+            "sourceIds": [
+              "gcu-ldr461-current-2026-11-19"
+            ]
+          },
+          {
+            "code": "LDR-462",
+            "title": "Professional Applications in Service Learning II",
+            "credits": 2,
+            "creditSystem": "semester",
+            "upper": true,
+            "volunteerHours": 20,
+            "sourceIds": [
+              "gcu-ldr462-current-2026-11-19"
+            ]
+          },
+          {
+            "code": "LDR-463",
+            "title": "Professional Applications in Service Learning III",
+            "credits": 3,
+            "creditSystem": "semester",
+            "upper": true,
+            "sourceIds": [
+              "gcu-ldr463-native-catalog-api-2026-11-19"
+            ]
+          }
+        ],
+        "repeatabilityEstablished": false,
+        "automaticRepeatAllowed": false,
+        "noteOnCandidates": "Current official course identities are research inputs, not additional requirements inside the native 120-credit ledger. Each listed identity is distinct. No repeatable credit allowance or guaranteed simultaneous enrollment in all three was established by this review."
+      },
+      "foundationsWaiver": {
+        "modality": "campus",
+        "minimumTransferredCollegeCredits": 24,
+        "minimumGPA": 3,
+        "creditAward": 0,
+        "automatic": false,
+        "sourceIds": [
+          "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+        ],
+        "note": "Traditional campus students meeting both conditions can waive University Foundations. The waiver does not create earned credits or reduce the 120-credit degree minimum; this baseline retains the course."
+      },
+      "writingIntensiveRule": {
+        "minimumCourses": 3,
+        "minimumMajorCourses": 2,
+        "minimumUpperMajorCourses": 1,
+        "requiredCompositionRequirementId": "eng105",
+        "selectedNativeMajorRequirementIds": [
+          "bus340",
+          "bus485"
+        ],
+        "sourceIds": [
+          "gcu-baccalaureate-graduation-fall-2026-2026-11-19",
+          "gcu-bsba-catalog-fall-2026-2026-11-19"
+        ],
+        "transferTreatment": "A content-equivalent outside course must separately satisfy the writing-intensive graduation requirement; the receiving-course label alone does not establish the source designation. Retain the native major options unless a reviewed equivalent designation or a separately researched replacement meets the rule."
+      },
+      "graduationRequirements": [
+        {
+          "id": "gcu-gpa",
+          "title": "Overall and major GPA",
+          "description": "At least 2.0 overall and major GPA; no grade below C may count toward the major.",
+          "sourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "gcu-writing-intensive",
+          "title": "Writing-intensive coursework",
+          "description": "Complete at least three designated writing-intensive courses: ENG-105 or its equivalent and two in the major, at least one upper division. The selected native baseline includes ENG-105, ENG-106, BUS-340 and BUS-485.",
+          "requirementIds": [
+            "eng105",
+            "eng106",
+            "bus340",
+            "bus485"
+          ],
+          "sourceIds": [
+            "gcu-baccalaureate-graduation-fall-2026-2026-11-19",
+            "gcu-bs-general-education-fall-2026-2026-11-19",
+            "gcu-bsba-catalog-fall-2026-2026-11-19"
+          ]
+        },
+        {
+          "id": "gcu-campus-placement",
+          "title": "Campus mathematics and English placement",
+          "description": "Meet the campus placement/approved-prerequisite conditions before registering in MAT-144 and ENG-105. Any needed developmental preparation is separate from the 120 degree-credit ledger.",
+          "sourceIds": [
+            "gcu-campus-placement-fall-2026-2026-11-19"
+          ]
+        }
+      ],
+      "rulesNotes": [
+        "Selected native allocation: 40 general education + 64 required major + 16 open electives = 120 semester credits; no requirement is counted twice.",
+        "The required major is the current sixteen-course 64-credit BSBA. ACC-250/ACC-260 are not inferred substitutes for its current ACC-240 requirement.",
+        "General education course choices and open electives are selections within published competencies/allowances, not claims that every student must take these exact electives.",
+        "Lower-division transfer can satisfy the content of an upper-division course but cannot satisfy upper-division credit minima. Major upper-division credit is a separate 36-credit rule.",
+        "Published transfer ceilings are not course-level awards. No Sophia, Study.com, CLEP, NCCRS or institutional-equivalency option is fabricated by this curriculum importer.",
+        "Campus transfer foundations waivers require both 24 college-level credits and 3.0 GPA. The baseline does not assume either personal eligibility fact.",
+        "Registration offerings, individual admission/catalog assignment and personal transfer evaluation remain institution-controlled; no graduation date or tuition estimate is invented."
+      ],
+      "unresolved": []
+    }
+  ]
+}

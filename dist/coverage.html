@@ -25,6 +25,16 @@
 <div id="coverage-workspace" hidden>
 <section aria-label="Coverage overview" id="coverage-summary" class="cv-summary"></section>
 <p id="coverage-snapshot" class="cv-snapshot"></p>
+<section id="coverage-priorities" class="cv-card cv-priorities" aria-labelledby="coverage-priorities-heading" hidden>
+<div class="cv-section-head"><div><h2 id="coverage-priorities-heading">Research priorities</h2><p>Find degrees that need a course model, including schools missing from the evidence-review queue below. These entries do not launch jobs or publish plans.</p></div><button id="coverage-priorities-retry" type="button" class="cv-button cv-secondary" hidden>Reload priorities</button></div>
+<p id="coverage-priorities-status" class="cv-note" role="status" aria-live="polite"></p>
+<div id="coverage-priority-summary" class="cv-priority-summary"></div>
+<div id="coverage-priority-groups" class="cv-priority-groups"></div>
+<div class="cv-filters"><label>Research focus<select id="coverage-priority-group"><option value="">All priority groups</option></select></label><label class="cv-search">Find a school or degree<input id="coverage-priority-search" type="search" maxlength="120" placeholder="Grand Canyon, business, cybersecurity…"></label></div>
+<p id="coverage-priority-count" class="cv-note" role="status" aria-live="polite"></p>
+<div id="coverage-priority-schools"></div>
+<details id="coverage-inventory-candidates" class="cv-inventory-candidates" hidden><summary>Staged inventory candidates</summary><div id="coverage-inventory-list"></div></details>
+</section>
 <div class="cv-workgrid">
 <section class="cv-card cv-programs" aria-labelledby="coverage-programs-heading">
 <div class="cv-section-head"><div><h2 id="coverage-programs-heading">Degree programs</h2><p>Research quality is separate from a student’s own credit evaluation.</p></div><span id="coverage-program-count" class="cv-count"></span></div>

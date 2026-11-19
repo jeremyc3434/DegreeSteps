@@ -15,7 +15,7 @@ function catalogYear(model){const label=String(model.catalogYear||model.catalog|
 function modality(model){return /^(residential|campus|on campus)$/i.test(model.format)?'campus':/^online$/i.test(model.format)?'online':/^hybrid$/i.test(model.format)?'hybrid':null;}
 function templateSummary(model,entry,plan){
  const sum=predicate=>list(plan.rows).filter(predicate).reduce((total,row)=>total+row.credits,0);
- return {totalCredits:model.totalCredits,requirementCount:list(model.requirements).length,sourceCount:list(model.sources).length,transferCredits:sum(row=>row.option.provider!=='University'),universityCredits:sum(row=>row.option.provider==='University'),upperCredits:sum(row=>row.option.upper===true),institutionMinCredits:model.institutionMinCredits,externalMaxCredits:model.externalMaxCredits,checkedOn:entry.checkedOn||model.evidenceCheckedOn||null};
+ return {totalCredits:model.totalCredits,requirementCount:list(model.requirements).length,sourceCount:list(model.sources).length,transferCredits:sum(row=>row.option&&row.option.provider!=='University'),universityCredits:sum(row=>row.option?.provider==='University'),upperCredits:sum(row=>row.option?.upper===true),institutionMinCredits:model.institutionMinCredits,externalMaxCredits:model.externalMaxCredits,checkedOn:entry.checkedOn||model.evidenceCheckedOn||null};
 }
 export function compilePathwayArtifacts({models,entries,catalog,registry,references,asOf,inputHashes={},generate=Planner.generate}){
  const entryMap=new Map(entries.map(entry=>[entry.id,entry])),programs=[],baselines={};
@@ -30,14 +30,15 @@ export function compilePathwayArtifacts({models,entries,catalog,registry,referen
   programs.push({...quality,school:model.school,title:model.title,format:model.format,readyTemplate:entry.readyTemplate===true,...(error?{compileError:error}:{})});
   // Preserve the existing degree-link compatibility contract. The independent
   // research-quality report is deliberately not a silent public gate change.
-  const complete=plan.validation?.academicCountsValid===true&&list(plan.rows).length===list(model.requirements).length&&list(plan.rows).every(row=>row.option&&!row.selectionRequired&&row.option.code&&!row.option.selectionRequired);
+  const balancePolicy=Planner.creditBalancePolicy?.(model),inactiveBalance=row=>Boolean(balancePolicy?.balanceRequirementIds.includes(row.requirementId)&&row.creditBalanceDerived===true&&row.credits===0&&row.option===null);
+  const complete=plan.validation?.academicCountsValid===true&&list(plan.rows).length===list(model.requirements).length&&list(plan.rows).every(row=>inactiveBalance(row)||row.option&&!row.selectionRequired&&row.option.code&&!row.option.selectionRequired);
   for(const pathwayId of list(entry.routeIds))for(const format of list(entry.modalities)){
    const targetRoute=list(catalog.pathways).find(route=>route.id===pathwayId);
    if(!complete||!targetRoute||targetRoute.modelId!==model.id||targetRoute.school!==model.school||targetRoute.level&&targetRoute.level!==level||!list(targetRoute.modalities).includes(format)||!['online','campus'].includes(format)||mode&&format!==mode)continue;
    const reference=targetRoute.url?findResearchReference(references,targetRoute.url,{includeStaleChoiceIdentity:true,now:Date.parse(asOf+'T00:00:00Z')}):null;
    if(reference&&checkResearchReference({...model,schoolName:model.school,programName:model.title,modality:format,catalogYear:catalogYear(model)},reference).length)continue;
    const key=baselineKey(model.id,pathwayId,format);
-   baselines[key]={modelId:model.id,pathwayId,modality:format,academicFingerprint:requirementsFingerprint(model),qualityReady:true,summary:templateSummary(model,entry,plan),rows:list(plan.rows).map(row=>({requirementId:row.requirementId,optionId:row.option.id,provider:row.option.provider,code:row.option.code,credits:row.credits,status:'planned'})),validation:{academicCountsValid:true,policyChecksComplete:plan.validation.policyChecksComplete===true},researchStatus:quality.status};
+   baselines[key]={modelId:model.id,pathwayId,modality:format,academicFingerprint:requirementsFingerprint(model),qualityReady:true,summary:templateSummary(model,entry,plan),rows:list(plan.rows).map(row=>({requirementId:row.requirementId,optionId:row.option?.id??null,provider:row.option?.provider??null,code:row.option?.code??null,credits:row.credits,status:'planned'})),validation:{academicCountsValid:true,policyChecksComplete:plan.validation.policyChecksComplete===true},researchStatus:quality.status};
   }
  }
  const counts=(values,select)=>Object.fromEntries(values.map(value=>[value,programs.filter(program=>select(program)===value).length]));

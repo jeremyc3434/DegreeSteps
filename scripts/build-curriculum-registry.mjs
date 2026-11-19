@@ -14,6 +14,8 @@ import {applyLibertyVerifiedBasics} from './liberty-verified-basics.mjs';
 import {addLibertyCLIOptions,readLibertyCLIReview} from './add-liberty-cli-awards.mjs';
 import {reviewedSourceDate} from './reviewed-source-date.mjs';
 import {applyLibertyCurrentEvidence} from './liberty-current-evidence.mjs';
+import {addGCUTransferOptions} from './add-gcu-transfer-options.mjs';
+import {addGCUInstitutionalOptions} from './add-gcu-institutional-options.mjs';
 const require=createRequire(import.meta.url),root=resolve(import.meta.dirname,'..');
 const Catalog=require('../dist/program-catalog.js');
 const Planner=require('../dist/planner.js');
@@ -27,6 +29,8 @@ const check=process.argv.includes('--check');
 const directory=await read('dist/data/program-catalog.json');
 const base=await read('dist/data/pathways.json');
 const routes=new Map([...list(base.pathways),...directory.programs].map(p=>[p.id,p]));
+const gcuTransferReview=await read('content/research/gcu-sophia-review-2026-11-19.json');
+const gcuInstitutionalReview=await read('content/research/gcu-institutional-maps-2026-11-19.json');
 const shared=new Map();
 function namespaceSourceReferences(value,known,rename,name=''){
   if(Array.isArray(value))return /sourceIds$/i.test(name)?value.map(id=>known.has(id)?rename(id):id):value.map(item=>namespaceSourceReferences(item,known,rename));
@@ -65,6 +69,8 @@ function compile(raw,document){
   const records=routeIds.map(id=>{assert(routes.has(id),'Unknown catalog ID '+id);const r=routes.get(id);assert(key(r.school)===key(model.school),'Wrong school for '+id);return r;});
   assert(positive(model.totalCredits),'Published credit total required: '+model.id);
   let sources=sourceMap(document.sources||[],model.sources||[]),requirements=[];
+  const balance=Planner.creditBalancePolicy({...model,sources:[...sources.values()]});
+  assert(model.degreeCreditBalancePolicy?.enabled!==true||balance,'Unsupported earned-credit balance: '+model.id);
   const fixedCodes=new Set(list(model.requirements).flatMap(req=>[req.code,...list(req.allowedCourseCodes)]).filter(Boolean).map(key));
   const reqIds=new Set();
   for(const original of list(model.requirements)){
@@ -76,7 +82,8 @@ function compile(raw,document){
     req.category=req.category||'major';req.sourceIds=list(req.sourceIds).length?req.sourceIds:list(model.sourceIds);
     const splits=req.bucket===true&&req.credits>3?Array.from({length:Math.ceil(req.credits/3)},(_,i)=>Math.min(3,req.credits-i*3)):[req.credits];
     for(let i=0;i<splits.length;i++){
-      const row={...clone(req),id:splits.length>1?req.id+'-'+(i+1):req.id,credits:splits[i],options:list(req.options).filter(o=>o.credits===splits[i])};
+      const derived=balance?.balanceRequirementIds.includes(req.id),binding=balance?.equivalencies.find(item=>item.requirementId===req.id);
+      const row={...clone(req),id:splits.length>1?req.id+'-'+(i+1):req.id,credits:splits[i],options:list(req.options).filter(o=>o.credits===splits[i]||splits.length===1&&(derived||binding?.options.some(identity=>identity.optionId===o.id&&identity.provider===o.provider&&identity.code===o.code)))};
       if(splits.length>1){row.title=req.title+' · allocation '+(i+1);row.allocationOf=req.id;row.selectionRequired=true;delete row.code;}
       if(req.bucket||req.allocationSlot||req.researchGap)row.selectionRequired=true;
       if((req.freeElective||req.bucket||req.allocationSlot)&&req.upper||[req.minCourseLevel,req.minimumCourseLevel].some(value=>{const level=Number(value);return level>=(level>=1000?3000:300);}))row.upperOnly=true;
@@ -128,7 +135,8 @@ for(const name of (await readdir(folder)).filter(n=>n.endsWith('.json')).sort())
     const named=applyLibertyAccountingNamedChoices(raw,libertyAccountingChoices);
     const mapped=named.school==='Liberty University'&&['Online','Residential'].includes(named.format)?applyReviewedLibertyMaps(named):named;
     const scoped=applyCourseListingIdentities(addLibertyCLIOptions(applyLibertyVerifiedBasics(mapped,libertyVerifiedBasics),libertyCLIReview,list(raw.routeIds).map(id=>routes.get(id)).filter(Boolean)));
-    const {model,entry,gap}=compile(scoped,doc);assert(!ids.has(model.id),'Duplicate curriculum model '+model.id);ids.add(model.id);entry.path='data/curricula/'+name;registry.models.push(entry);models.push(model);
+    const enriched=scoped.id==='curriculum-gcu-bsba-campus'?addGCUInstitutionalOptions(addGCUTransferOptions(scoped,gcuTransferReview),gcuInstitutionalReview):scoped;
+    const {model,entry,gap}=compile(enriched,doc);assert(!ids.has(model.id),'Duplicate curriculum model '+model.id);ids.add(model.id);entry.path='data/curricula/'+name;registry.models.push(entry);models.push(model);
     report.push({id:model.id,school:model.school,title:model.title,totalCredits:model.totalCredits,importedRequirementCredits:model.totalCredits-gap,unresolvedCredits:gap,requirements:model.requirements.length,externalOptions:model.requirements.reduce((s,r)=>s+r.options.filter(o=>o.provider!=='University').length,0),coverage:entry.coverage});
     for(const requirement of model.requirements)for(const option of requirement.options){
       if(option.provider==='University'||!option.code)continue;

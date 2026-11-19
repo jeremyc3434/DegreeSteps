@@ -1,5 +1,6 @@
 /* Catalog research quality. Never awards student credit or runs the optimizer. */
 import {createHash} from 'node:crypto';
+import Planner from '../dist/planner.js';
 
 const list=value=>Array.isArray(value)?value:[];
 const finite=value=>typeof value==='number'&&Number.isFinite(value);
@@ -44,10 +45,20 @@ function selectedNote(note,plan){
  if(!plan||note.scope!=='selected-options')return true;
  return list(plan.rows).some(row=>row.status==='planned'&&row.option&&(!note.requirementIds||note.requirementIds.includes(row.requirementId))&&(!note.optionIds||note.optionIds.includes(row.option.id))&&(!note.selectionRequiredOnly||row.selectionRequired||row.option.selectionRequired));
 }
+function reviewedCategoryPlacement(model,requirement,option,sources){
+ const award=option?.mappingEvidence,placement=option?.degreePlacementEvidence;
+ return option?.categoryPlacementReviewed===true&&option.evidenceType==='official-receiving-school-equivalency'&&option.receivingMapStatus==='published-institutional-category'&&option.mappingResearchClosed===true&&
+  text(option.receivingCategory)&&award?.receivingCategory===option.receivingCategory&&placement?.receivingCategory===option.receivingCategory&&
+  award.schoolName===model.school&&award.publisher===model.school&&award.provider===option.provider&&award.providerCourseCode===option.code&&near(award.credits,option.credits)&&award.creditSystem===model.creditSystem&&bound(sources,award.sourceIds)&&
+  placement.modelId===model.id&&placement.schoolName===model.school&&placement.catalogYear===model.catalogYear&&placement.modality===format(model.format)&&placement.requirementId===requirement.id&&near(placement.actualAllocatedCredits,option.credits)&&placement.creditSystem===model.creditSystem&&bound(sources,placement.sourceIds)&&
+  (placement.placementType==='general-category'&&requirement.category==='general'||placement.placementType==='free-elective-category'&&requirement.freeElective===true);
+}
 function mappingFinding(model,requirement,option){
  const sources=sourceMap(model),details={requirementIds:[requirement?.id],optionIds:[option?.id],sourceIds:list(option?.sourceIds)};
  if(option?.provider==='University')return null;
- if(!text(option?.code)||!text(option?.receivingCode||requirement?.code)||!bound(sources,option?.sourceIds))return finding(model,'missing-research','mapping-evidence','An outside course needs its exact source identity, receiving award and usable evidence references.',details);
+ const typedCategory=['general-category','free-elective-category'].includes(option?.allocationType)&&!text(option?.receivingCode);
+ const receivingIdentity=typedCategory?reviewedCategoryPlacement(model,requirement,option,sources):text(option?.receivingCode||requirement?.code);
+ if(!text(option?.code)||!receivingIdentity||!bound(sources,option?.sourceIds))return finding(model,'missing-research','mapping-evidence','An outside course needs its exact source identity, receiving award and usable evidence references.',details);
  const eligibility=option.eligibilityReview,documented=option.mappingResearchClosed===true&&/^published-/.test(option.receivingMapStatus||'');
  if(eligibility?.eligibleToStart===false)return finding(model,'conditional-policy','provider-eligibility','The receiving match may be documented, but provider eligibility is not cleared for enrollment.',{...details,sourceIds:[...details.sourceIds,...list(eligibility.sourceIds)],mappingDocumented:documented,evidenceStrength:documented?'documented':'conditional'});
  if(/same.school.*(?:another degree|other degree)|exact degree.*require confirmation|researched in another degree/i.test(option.mappingScope||''))return finding(model,'missing-research','mapping-scope','A receiving match researched for another pathway needs an explicit applicable school, format and catalog scope.',details);
@@ -162,7 +173,23 @@ export function assessPathwayQuality({model,plan,route,asOf,studentPlan,minimumO
  if(route&&(route.modelId!==model?.id||text(route.school)!==text(model?.school)||list(route.modalities).length&&!route.modalities.includes(mode)))add('missing-research','route-identity','The available route must identify this same researched degree and study format.');
  const ledger=finite(model?.totalCredits)&&model.totalCredits>0&&required.size===requirements.length&&requirements.length>0&&requirements.every(row=>text(row.id)&&text(row.title)&&finite(row.credits)&&row.credits>=0&&!row.researchGap)&&near(requirements.reduce((sum,row)=>sum+row.credits,0),model.totalCredits);
  if(!ledger)add('missing-research','incomplete-ledger','Every published degree requirement must be allocated once and the quantities must equal the degree total.');
- const completePlan=ledger&&rows.length===requirements.length&&new Set(rows.map(row=>row.requirementId)).size===rows.length&&rows.every(row=>row.status==='planned'&&required.has(row.requirementId)&&near(row.credits,required.get(row.requirementId).credits)&&row.option&&text(row.option.code)&&!row.selectionRequired&&!row.option.selectionRequired);
+ const balance=Planner.creditBalancePolicy(model),balanceValid=model?.degreeCreditBalancePolicy?.enabled!==true||Boolean(balance);
+ if(!balanceValid)add('missing-research','earned-credit-policy','The earned-credit balance needs its exact reviewed GCU course identities and policy evidence.');
+ const completeRow=row=>{
+  const requirement=required.get(row.requirementId);
+  if(row.status!=='planned'||!requirement||row.selectionRequired)return false;
+  if(balance?.balanceRequirementIds.includes(requirement.id)){
+   if(row.creditBalanceDerived!==true||row.nativeRequirementCredits!==0)return false;
+   if(row.option===null)return row.credits===0;
+   if(!row.option)return false;
+   const option=requirement.options[0];return row.option.id===option.id&&row.option.provider===option.provider&&row.option.code===option.code&&near(row.credits,option.credits)&&near(row.option.credits,option.credits)&&!row.option.selectionRequired;
+  }
+  if(!row.option||!text(row.option.code)||row.option.selectionRequired)return false;
+  if(near(row.credits,requirement.credits))return !balance||near(row.option.credits,row.credits)&&list(requirement.options).some(option=>option.id===row.option.id&&option.provider===row.option.provider&&option.code===row.option.code&&near(option.credits,row.credits));
+  const binding=balance?.equivalencies.find(item=>item.requirementId===requirement.id);
+  return Boolean(binding&&row.nativeRequirementCredits===requirement.credits&&near(row.credits,binding.awardedCredits)&&near(row.option.credits,binding.awardedCredits)&&binding.options.some(option=>option.optionId===row.option.id&&option.provider===row.option.provider&&option.code===row.option.code));
+ };
+ const completePlan=ledger&&balanceValid&&rows.length===requirements.length&&new Set(rows.map(row=>row.requirementId)).size===rows.length&&rows.every(completeRow)&&(!balance||near(rows.reduce((sum,row)=>sum+(finite(row.credits)?row.credits:0),0),model.totalCredits));
   if(!completePlan)add('missing-research','baseline-course-choices','A complete named, solver-checked baseline course plan is required.');
  if(plan?.validation?.academicCountsValid!==true)add('missing-research','academic-feasibility','The baseline does not pass the existing academic allocation and credit-rule checks.');
  if(plan?.validation?.policyChecksComplete!==true&&!findings.some(item=>item.code==='policy-unresolved'))add('missing-research','academic-policy-scope','Required credit, residency or level policies are not fully established.');

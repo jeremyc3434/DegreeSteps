@@ -49,17 +49,20 @@
     try {
       const requirements = new Map(program.requirements.map(req => [req.id, req]));
       if (requirements.size !== program.requirements.length || plan.rows.length !== requirements.size) return empty;
+      const balance = Planner.creditBalancePolicy?.(program);
+      const variable = new Set(balance ? [...balance.balanceRequirementIds,...balance.equivalencies.map(binding => binding.requirementId)] : []);
+      if (Planner.validate(program,plan).academicCountsValid !== true) return empty;
       const seen = new Set(); let total = 0, reported = 0, confirmed = 0;
       for (const row of plan.rows) {
         const requirement = requirements.get(row?.requirementId);
-        if (!requirement || seen.has(row.requirementId) || !number(row.credits) || row.credits < 0 || Math.abs(row.credits - requirement.credits) > .000001) return empty;
+        if (!requirement || seen.has(row.requirementId) || !number(row.credits) || row.credits < 0 || Math.abs(row.credits - requirement.credits) > .000001 && !variable.has(row.requirementId)) return empty;
         seen.add(row.requirementId); total += row.credits;
         const source = provider(row.option?.provider);
         if (!source || source === 'university' || row.institutional === true || row.unknownProvenance) continue;
         if (row.status === 'reported') reported += row.credits;
         if (row.status === 'confirmed') confirmed += row.credits;
       }
-      if (!number(program.totalCredits) || Math.abs(total - program.totalCredits) > .000001 || Planner.validate(program,plan).academicCountsValid !== true) return empty;
+      if (!number(program.totalCredits) || Math.abs(total - program.totalCredits) > .000001) return empty;
       return {reported:round(reported),confirmed:round(confirmed),valid:true};
     } catch {return empty;}
   }

@@ -1,10 +1,10 @@
 /* DegreeSteps's preloaded guidance rules. No network or AI service is used. */
 (function (root, factory) {
   'use strict';
-  const api = factory();
+  const api = factory(typeof module === 'object' && module.exports ? require('./planner.js') : root.DegreePlanner);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.DegreeGuide = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (Planner) {
   'use strict';
   const list = value => Array.isArray(value) ? value : [];
   const text = value => typeof value === 'string' ? value.trim() : '';
@@ -106,7 +106,34 @@
     const receiving = Number(option.bundleId ? option.bundleCredits : option.credits);
     return Number.isFinite(receiving) && receiving > 0 ? receiving : null;
   }
-  function futureInterestMenus(program,item) {
+  // Quantity exceptions come only from the planner's complete, source-bound
+  // program policy. Subset matching carries this private context; a partial
+  // requirement array or an imported row flag cannot authorize an exception.
+  function allocationContext(program) {
+    return {program,policy:Planner?.creditBalancePolicy?.(program)||null};
+  }
+  function receivingAllocation(context,requirement,option) {
+    const fallback={credits:Number(requirement?.credits||0),reviewed:false};
+    if(!context?.policy||!option)return fallback;
+    const req=list(context.program?.requirements).find(row=>row.id===requirement.id);
+    const canonical=list(req?.options).find(item=>item.id===option.id&&item.provider===option.provider&&item.code===option.code);
+    const identity=value=>['credits','sourceCredits','creditSystem','sourceCreditSystem','upper','sourceUpper','creditOrigin','sourceType','receivingCode','receivingCourseRepeatable','evidence','sourceIds'].map(name=>value[name]??null);
+    if(!req||req.credits!==requirement.credits||!canonical||JSON.stringify(identity(canonical))!==JSON.stringify(identity(option)))return fallback;
+    if(context.policy.balanceRequirementIds.includes(req.id))return {credits:canonical.credits,reviewed:true,derived:true};
+    const binding=context.policy.equivalencies.find(binding=>binding.requirementId===req.id&&binding.options.some(item=>item.optionId===canonical.id&&item.provider===canonical.provider&&item.code===canonical.code));
+    return binding?{credits:binding.awardedCredits,reviewed:true}:fallback;
+  }
+  function placementQuantity(context,requirement,option) {return receivingAllocation(context,requirement,option).credits;}
+  function derivedLearningProvenance(context,requirement,option,item) {
+    return receivingAllocation(context,requirement,option).derived?{institution:text(item.institution),sourceProgramId:text(item.sourceProgramId),sourceCredits:amount(item.credits),sourceCreditSystem:item.creditSystem||null}:{};
+  }
+  function reviewedQuantityAllowed(context,requirement,option,item,units,declaredCredits) {
+    const allocation=receivingAllocation(context,requirement,option);
+    if(!allocation.reviewed)return true;
+    return Boolean(option&&providerKey(option.provider)===providerKey(item.provider)&&matchesRecord(option,item)&&units===option.sourceCreditSystem&&declaredCredits===option.sourceCredits&&(!allocation.derived||activeInstitutionalCourse(context.program,item)&&item.sourceProgramId===context.program.id));
+  }
+
+  function futureInterestMenus(program,item,creditContext=allocationContext(program)) {
     if (!['saved','planned'].includes(item.status)||!recordCodeKeys(item).length||amount(item.credits)===0||item.creditSystem&&!['semester','quarter','competency-unit'].includes(item.creditSystem)) return [];
     const receivingUnits=program.creditSystem||'semester',sources=new Map(list(program.sources).map(source=>[source.id,source]));
     const schoolDomains=new Set(list(program.requirements).flatMap(req=>list(req.sourceIds)).flatMap(id=>{try {const host=new URL(sources.get(id)?.url).hostname;return host.endsWith('.edu')?[host.split('.').slice(-2).join('.')]:[];}catch{return [];}}));
@@ -115,18 +142,19 @@
     const menus=[];
     for(const req of list(program.requirements))for(const option of list(req.options)){
       if(req.institutionalOnly||option.provider==='University'||option.bundleId||option.evidence!=='published'||option.preapprovalRequired===true||option.eligibilityReview?.eligibleToStart===false||providerKey(option.provider)!==providerKey(item.provider)||!matchesRecord(option,item))continue;
-      if(!(amount(req.credits)>0)||Number(option.credits)!==Number(req.credits)||(option.creditSystem||receivingUnits)!==receivingUnits||key(option.receivingCode)!==key(req.code))continue;
+      const receivingCredits=placementQuantity(creditContext,req,option);
+      if(!(receivingCredits>0)||Number(option.credits)!==receivingCredits||(option.creditSystem||receivingUnits)!==receivingUnits||key(option.receivingCode)!==key(req.code))continue;
       if(!boundSources(program,option.sourceIds)||!official(option.sourceIds)||!boundSources(program,option.identitySourceIds)||!text(option.mappingReviewId)||!current(option.mappingChecked||option.mappingCheckedOn))continue;
       if(amount(item.credits)>0&&amount(option.sourceCredits)>0&&Math.abs(Number(item.credits)-Number(option.sourceCredits))>.001||item.creditSystem&&option.sourceCreditSystem&&item.creditSystem!==option.sourceCreditSystem)continue;
       const placement={requirementId:req.id,optionId:option.id,sourceProvider:plannerProvider(item.provider),code:item.code,title:item.title,status:item.status,creditSystem:receivingUnits,learningId:item.id,projectionBasis:'published-receiving-map',sourceQuantityUnknown:!(amount(item.credits)>0&&['semester','quarter','competency-unit'].includes(item.creditSystem))};
-      menus.push({placements:[placement],credits:Number(req.credits)});
+      menus.push({placements:[placement],credits:receivingCredits});
     }
     return menus.sort((a,b)=>b.credits-a.credits);
   }
-  function collectionMenus(program,item,metadata={}) {
+  function collectionMenus(program,item,metadata={},creditContext=allocationContext(program)) {
     const knownQuantity=amount(item.credits)>0&&['semester','quarter','competency-unit'].includes(item.creditSystem);
-    const known=knownQuantity ? placementMenus(program,{...copy(item),status:'earned',evaluations:[]},metadata,{futureInterest:true}) : [];
-    return known.length ? known : futureInterestMenus(program,item);
+    const known=knownQuantity ? placementMenus(program,{...copy(item),status:'earned',evaluations:[]},metadata,{futureInterest:true},creditContext) : [];
+    return known.length ? known : futureInterestMenus(program,item,creditContext);
   }
 
   function sourceIdentities(requirements) {
@@ -222,7 +250,7 @@
     if(!confirmedDestination&&item.completedOn&&option?.recommendationEnd&&item.completedOn>option.recommendationEnd)return false;
     return true;
   }
-  function matchInventorySequential(program, learning, settings={}) {
+  function matchInventorySequential(program, learning, settings={}, creditContext=allocationContext(program)) {
     const requirements = list(program && program.requirements), programId = program && program.id;
     const byId = new Map(requirements.map(req => [req.id, req]));
     // Curated aliases describe one original action even when duplicate records
@@ -250,14 +278,16 @@
         if(!eligible(req,null,item,evaluation))continue;
         // An explicit school award is required for cross-unit placement. Keep the
         // source units on the inventory and send receiving units to the planner.
-        if (units === programUnits && declaredCredits !== null && declaredCredits > 0 && allocated + Number(req.credits) > declaredCredits + 0.001) continue;
         const option = list(req.options).find(o => o.id === evaluation.optionId) || list(req.options).find(o => providerKey(o.provider) === providerKey(item.provider) && matchesRecord(o,item));
+        const allocation=receivingAllocation(creditContext,req,option);
+        if (units === programUnits && declaredCredits !== null && declaredCredits > 0 && allocated + allocation.credits > declaredCredits + 0.001) continue;
+        if(!reviewedQuantityAllowed(creditContext,req,option,item,units,declaredCredits))continue;
         if(!eligible(req,option,item,evaluation))continue;
         const homeSource = providerKey(item.provider) !== 'university' || activeInstitutionalCourse(program,item) && item.sourceProgramId === programId;
         const sameSource = option && homeSource && providerKey(option.provider) === providerKey(item.provider) && (!item.code || matchesRecord(option,item));
         const provenance = !['', 'unknown', 'unknownsource', 'priorlearning'].includes(providerKey(item.provider))&&(providerKey(item.provider)!=='university'||institutionalIssuer(item));
-        placements.push({ requirementId: req.id, ...(sameSource ? { optionId: option.id } : {}), ...(provenance ? { sourceProvider: providerKey(item.provider) === 'university' && !homeSource ? 'Institutional transfer' : plannerProvider(item.provider) } : {}), code: text(item.code), ...receivingIdentity, title: text(item.title), status: evaluation.status, creditSystem: programUnits, learningId: item.id });
-        allocated += Number(req.credits);
+        placements.push({ requirementId: req.id, ...(sameSource ? { optionId: option.id } : {}), ...(provenance ? { sourceProvider: providerKey(item.provider) === 'university' && !homeSource ? 'Institutional transfer' : plannerProvider(item.provider) } : {}), code: text(item.code), ...receivingIdentity, title: text(item.title), status: evaluation.status, creditSystem: programUnits, learningId: item.id,...(allocation.reviewed?{credits:allocation.credits}:{}) });
+        allocated += allocation.credits;
       }
       if (placements.length > 1) {
         const options = placements.map(placement => list(byId.get(placement.requirementId).options).find(option => option.id === placement.optionId));
@@ -274,9 +304,9 @@
       }
       if(!placements.length&&!explicit.length&&originalInstitutionalCourse(program,item)&&text(item.sourceProgramId)&&key(item.code)&&units===programUnits&&declaredCredits>0){
         const active=activeInstitutionalCourse(program,item);
-        const req=requirements.find(req=>!usedRequirements.has(req.id)&&(active||!req.institutionalOnly)&&Number(req.credits)<=declaredCredits+0.001&&eligible(req,null,item)&&list(req.options).some(option=>option.provider==='University'&&option.code&&matchesRecord(option,item)&&!option.selectionRequired&&eligible(req,option,item)));
+        const req=requirements.find(req=>!usedRequirements.has(req.id)&&(active||!req.institutionalOnly)&&eligible(req,null,item)&&list(req.options).some(option=>option.provider==='University'&&option.code&&matchesRecord(option,item)&&!option.selectionRequired&&placementQuantity(creditContext,req,option)>0&&placementQuantity(creditContext,req,option)<=declaredCredits+0.001&&reviewedQuantityAllowed(creditContext,req,option,item,units,declaredCredits)&&eligible(req,option,item)));
         const option=req&&list(req.options).find(option=>option.provider==='University'&&option.code&&matchesRecord(option,item)&&!option.selectionRequired&&eligible(req,option,item));
-        if(req&&option){placements.push({requirementId:req.id,...(active?{optionId:option.id}:{}),sourceProvider:active?'University':'Institutional transfer',code:item.code,...receivingIdentity,title:item.title,status:'reported',creditSystem:programUnits,learningId:item.id,...(!active?{residencyEligible:false}: {})});allocated=Number(req.credits);}
+        if(req&&option){const allocation=receivingAllocation(creditContext,req,option);placements.push({requirementId:req.id,...(active?{optionId:option.id}:{}),sourceProvider:active?'University':'Institutional transfer',code:item.code,...receivingIdentity,title:item.title,status:'reported',creditSystem:programUnits,learningId:item.id,...(allocation.reviewed?{credits:allocation.credits}:{}),...(!active?{residencyEligible:false}: {})});allocated=allocation.credits;}
       }
       if (!placements.length && !explicit.length && key(item.code) && providerKey(item.provider) && units && declaredCredits !== null && declaredCredits > 0) {
         const matches = [];
@@ -290,9 +320,10 @@
           // repeated course in a candidate menu must not fill several slots.
           if (placements.length && (!option.bundleId || placements.some(p => p.bundleId !== option.bundleId))) continue;
           const limit = mappedSourceLimit(option, declaredCredits, units, programUnits);
-          if (allocated + Number(req.credits) > limit + 0.001) continue;
-          placements.push({ requirementId: req.id, optionId: option.id, sourceProvider: plannerProvider(item.provider), code: item.code, title: item.title, status: 'reported', creditSystem: programUnits, learningId: item.id, ...(option.bundleId ? { bundleId: option.bundleId } : {}) });
-          allocated += Number(req.credits);
+          const allocation=receivingAllocation(creditContext,req,option);
+          if (!(allocation.credits>0)||allocated + allocation.credits > limit + 0.001) continue;
+          placements.push({ requirementId: req.id, optionId: option.id, sourceProvider: plannerProvider(item.provider), code: item.code, title: item.title, status: 'reported', creditSystem: programUnits, learningId: item.id,...(allocation.reviewed?{credits:allocation.credits}:{}), ...(option.bundleId ? { bundleId: option.bundleId } : {}) });
+          allocated += allocation.credits;
         }
       }
       if (placements.length) {
@@ -308,7 +339,7 @@
   // Collected courses are preferences for future work, never completed credit.
   // The caller may test each proposed selection against the academic planner.
   function matchCollectionSequential(program, learning, settings = {}) {
-    const requirements = list(program && program.requirements), records = list(learning);
+    const requirements = list(program && program.requirements), records = list(learning), creditContext=allocationContext(program);
     const fixed = settings.optionSelections && typeof settings.optionSelections === 'object' && !Array.isArray(settings.optionSelections) ? copy(settings.optionSelections) : {};
     const optionSelections = {...fixed}, selections = {}, placements = [], matchedIds = new Set();
     const earned = settings.earnedMatch || matchInventory(program, records), occupied = new Set(earned.completed.map(item => item.requirementId));
@@ -340,16 +371,16 @@
         const identity = sourceIdentity(providerKey(option.provider) + ':' + key(option.code));
         return !(owners.get(identity) || []).some(owner => owner.requirementId !== req.id && (!option.bundleId || owner.option.bundleId !== option.bundleId));
       })}));
-      const proposed = collectionMenus({...program,requirements:eligibleRequirements},item)[0]?.placements || [];
+      const proposed = collectionMenus({...program,requirements:eligibleRequirements},item,{},creditContext)[0]?.placements || [];
       if (!proposed.length) continue;
       const trial = {...optionSelections};
-      proposed.forEach(placement => { trial[placement.requirementId] = placement.optionId; });
+      proposed.forEach(placement => {if(!receivingAllocation(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement)).derived)trial[placement.requirementId]=placement.optionId;});
       if (!accept(trial, proposed, item)) continue;
       Object.assign(optionSelections, trial);
       for (const placement of proposed) {
         occupied.add(placement.requirementId);
-        if (!Object.prototype.hasOwnProperty.call(fixed, placement.requirementId)) selections[placement.requirementId] = placement.optionId;
-        placements.push({requirementId:placement.requirementId, optionId:placement.optionId, learningId:item.id, status:item.status, provider:item.provider, code:item.code, credits:Number(requirements.find(req => req.id === placement.requirementId)?.credits || 0),creditSystem:program.creditSystem||'semester',...(placement.projectionBasis?{projectionBasis:placement.projectionBasis,sourceQuantityUnknown:placement.sourceQuantityUnknown}:{})});
+        if (!Object.prototype.hasOwnProperty.call(fixed, placement.requirementId)&&!receivingAllocation(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement)).derived) selections[placement.requirementId] = placement.optionId;
+        placements.push({requirementId:placement.requirementId, optionId:placement.optionId, learningId:item.id, status:item.status, provider:item.provider, code:item.code, credits:placementQuantity(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement)),creditSystem:program.creditSystem||'semester',...derivedLearningProvenance(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement),item),...(placement.projectionBasis?{projectionBasis:placement.projectionBasis,sourceQuantityUnknown:placement.sourceQuantityUnknown}:{})});
       }
       usedActions.add(action);
       for (const other of candidates) if (actionKey(other, sourceIdentity) === action) matchedIds.add(other.id);
@@ -378,18 +409,18 @@
     }
     return false;
   }
-  function placementMenus(program, item, metadata, settings={}) {
+  function placementMenus(program, item, metadata, settings={}, creditContext=allocationContext(program)) {
     const requirements = list(program?.requirements), singles = [], bundles = new Map();
     for (const req of requirements) {
       if (!list(req.options).some(option => providerKey(option.provider) === providerKey(item.provider) && matchesRecord(option,item))) continue;
-      const placement = matchInventorySequential({...program, requirements:[req]}, [item],settings).completed[0];
+      const placement = matchInventorySequential({...program, requirements:[req]}, [item],settings,creditContext).completed[0];
       if (!placement || !placement.optionId&&placement.sourceProvider!=='Institutional transfer') continue;
       const option = placementOption(requirements, placement);
-      const entry = {placements:[placement], credits:Number(req.credits)};
+      const entry = {placements:[placement], credits:placementQuantity(creditContext,req,option)};
       singles.push(entry);
       if (option?.bundleId) {
         if (!bundles.has(option.bundleId)) bundles.set(option.bundleId, []);
-        bundles.get(option.bundleId).push({placement, option, credits:Number(req.credits)});
+        bundles.get(option.bundleId).push({placement, option, credits:placementQuantity(creditContext,req,option)});
       }
     }
     const menus = singles.slice();
@@ -420,10 +451,10 @@
     }).sort((a,b) => b.credits-a.credits);
   }
   function assignCourses(program, groups, reserved, initial, accept, metadata) {
-    const requirements = list(program?.requirements), rank = {'in-progress':0, planned:1, saved:2};
-    const creditsById = new Map(requirements.map(req => [req.id,Number(req.credits||0)]));
+    const requirements = list(program?.requirements), rank = {'in-progress':0, planned:1, saved:2},creditContext=allocationContext(program);
+    const creditsById = new Map(requirements.map(req => [req.id,Math.max(Number(req.credits||0),...list(req.options).map(option=>placementQuantity(creditContext,req,option)))]));
     const score = placements => placements.reduce((total, placement) => {
-      const credits = creditsById.get(placement.requirementId) || 0;
+      const credits = placementQuantity(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement));
       total[0] += credits;
       if (rank[placement.status] === 0) total[1] += credits;
       if (rank[placement.status] === 1) total[2] += credits;
@@ -504,10 +535,10 @@
     return best;
   }
   function matchInventory(program, learning, settings = {}) {
-    const originals=list(learning),records=originals.map(item=>resolveRecordIdentity(program,item)), requirements = list(program?.requirements), sourceIdentity = sourceIdentities(requirements);
+    const originals=list(learning),records=originals.map(item=>resolveRecordIdentity(program,item)), requirements = list(program?.requirements), sourceIdentity = sourceIdentities(requirements), creditContext=allocationContext(program);
     const explicit = item => list(item.evaluations).some(e => e.programId === program?.id && ['confirmed','reported'].includes(e.status) && requirements.some(req => req.id === e.requirementId));
     const earned = records.filter(item => item?.status === 'earned');
-    const fixed = matchInventorySequential(program, earned.filter(explicit));
+    const fixed = matchInventorySequential(program, earned.filter(explicit),{},creditContext);
     const usedActions = new Set(fixed.completed.map(placement => actionKey(earned.find(item => item.id === placement.learningId) || {}, sourceIdentity)));
     const occupied = new Set(fixed.completed.map(placement => placement.requirementId)), groups = [], grouped = new Set(), metadata = {};
     // This rank preserves the prior preference for records originating in this
@@ -516,12 +547,12 @@
     for (const item of ordered) {
       const action = actionKey(item, sourceIdentity);
       if (usedActions.has(action) || grouped.has(action)) continue;
-      const menus = placementMenus({...program, requirements:requirements.filter(req => !occupied.has(req.id))}, item, metadata);
+      const menus = placementMenus({...program, requirements:requirements.filter(req => !occupied.has(req.id))}, item, metadata,{},creditContext);
       if (!menus.length) continue;
       groups.push({action, item, order:groups.length, menus}); grouped.add(action);
     }
     // Preserve the old deterministic choice on equal-credit assignments.
-    const baseline = matchInventorySequential(program, records).completed.filter(placement => !occupied.has(placement.requirementId) && groups.some(group => group.item.id === placement.learningId));
+    const baseline = matchInventorySequential(program, records,{},creditContext).completed.filter(placement => !occupied.has(placement.requirementId) && groups.some(group => group.item.id === placement.learningId));
     const initial = [];
     for (const placement of baseline) if (![...fixed.completed,...initial].some(other => placementConflicts(requirements, other, placement))) initial.push(placement);
     const accept = typeof settings.acceptAssignment === 'function' ? placements=>settings.acceptAssignment([...fixed.completed,...placements]) : null;
@@ -539,7 +570,7 @@
     return reasons.length&&reasons.every(Boolean)?unique(reasons).join(' '):null;
   }
   function matchCollection(program, learning, settings = {}) {
-    const originals=list(learning),records=originals.map(item=>resolveRecordIdentity(program,item)), requirements = list(program?.requirements), sourceIdentity = sourceIdentities(requirements);
+    const originals=list(learning),records=originals.map(item=>resolveRecordIdentity(program,item)), requirements = list(program?.requirements), sourceIdentity = sourceIdentities(requirements), creditContext=allocationContext(program);
     const fixed = settings.optionSelections && typeof settings.optionSelections === 'object' && !Array.isArray(settings.optionSelections) ? copy(settings.optionSelections) : {};
     const earned = settings.earnedMatch || matchInventory(program, records), occupied = new Set(earned.completed.map(placement => placement.requirementId));
     const usedActions = new Set(earned.completed.map(placement => actionKey(records.find(item => item.id === placement.learningId) || {}, sourceIdentity)));
@@ -559,7 +590,7 @@
           return id !== req.id && owner && owner.provider !== 'University' && sourceIdentity(providerKey(owner.provider)+':'+key(owner.code)) === identity && (!option.bundleId || option.bundleId !== owner.bundleId);
         });
       })}));
-      const menus = collectionMenus({...program,requirements:eligible},item,metadata);
+      const menus = collectionMenus({...program,requirements:eligible},item,metadata,creditContext);
       for (const menu of menus) menu.placements = menu.placements.map(placement => ({...placement,status:item.status}));
       if (!menus.length) continue;
       groups.push({action,item,order:groups.length,menus}); grouped.add(action);
@@ -567,13 +598,13 @@
     const baseline = matchCollectionSequential(program,records,{...settings,earnedMatch:earned});
     const initial = [];
     for (const placement of baseline.placements) if (groups.some(group => group.item.id === placement.learningId) && ![...reserved.filter(other => other.requirementId !== placement.requirementId),...initial].some(other => placementConflicts(requirements,other,placement))) initial.push(placement);
-    const trialFor = placements => Object.assign({...fixed},...placements.map(placement => ({[placement.requirementId]:placement.optionId})));
+    const trialFor = placements => Object.assign({...fixed},...placements.filter(placement=>!receivingAllocation(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement)).derived).map(placement => ({[placement.requirementId]:placement.optionId})));
     const accept = typeof settings.acceptSelection === 'function' ? placements => settings.acceptSelection(trialFor(placements),placements,records.find(item => item.id === placements[placements.length-1]?.learningId)) : null;
     const selected = assignCourses(program,groups,reserved,initial,accept,metadata), optionSelections = trialFor(selected), selections = {}, placements = [];
     for (const placement of selected) {
       const item = records.find(record => record.id === placement.learningId);
-      if (!Object.prototype.hasOwnProperty.call(fixed,placement.requirementId)) selections[placement.requirementId] = placement.optionId;
-      placements.push({requirementId:placement.requirementId,optionId:placement.optionId,learningId:placement.learningId,status:item.status,provider:item.provider,code:item.code,credits:Number(requirements.find(req => req.id === placement.requirementId)?.credits || 0),creditSystem:program.creditSystem||'semester',...(placement.projectionBasis?{projectionBasis:placement.projectionBasis,sourceQuantityUnknown:placement.sourceQuantityUnknown}:{})});
+      if (!Object.prototype.hasOwnProperty.call(fixed,placement.requirementId)&&!receivingAllocation(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement)).derived) selections[placement.requirementId] = placement.optionId;
+      placements.push({requirementId:placement.requirementId,optionId:placement.optionId,learningId:placement.learningId,status:item.status,provider:item.provider,code:item.code,credits:placementQuantity(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement)),creditSystem:program.creditSystem||'semester',...derivedLearningProvenance(creditContext,requirements.find(req=>req.id===placement.requirementId),placementOption(requirements,placement),item),...(placement.projectionBasis?{projectionBasis:placement.projectionBasis,sourceQuantityUnknown:placement.sourceQuantityUnknown}:{})});
     }
     const matchedActions = new Set([...usedActions,...selected.map(placement => actionKey(records.find(item => item.id === placement.learningId),sourceIdentity))]);
     const matchedIds = candidates.filter(item => matchedActions.has(actionKey(item,sourceIdentity))).map(item => item.id);
@@ -719,7 +750,7 @@
       if (p.modality !== 'any') reasons.push('Fits your ' + (p.modality === 'campus' ? 'on-campus' : 'online') + ' study preference.');
       if (model) {
         score += 8;
-        const matched = matchInventory(model, learning), credits = matched.completed.reduce((sum, item) => sum + Number(list(model.requirements).find(req => req.id === item.requirementId)?.credits || 0), 0);
+        const matched = matchInventory(model, learning),creditContext=allocationContext(model),credits = matched.completed.reduce((sum, item) => sum + placementQuantity(creditContext,list(model.requirements).find(req=>req.id===item.requirementId),placementOption(list(model.requirements),item)),0);
         if (credits) { score += Math.min(30, credits / 3); reasons.unshift(credits + ' existing credits have destination-specific placements to review; confirmation remains program-specific.'); }
         reasons.push('Includes a course-level draft that can be checked against your inventory.');
       }

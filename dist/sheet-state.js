@@ -17,6 +17,23 @@
   const normalized = value => text(value).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
   const providerKey = value => ({sophialearning:'sophia',collegelevelexaminationprogram:'clep',jointservicestranscript:'jst',communitycollegeoftheairforce:'ccaf'}[normalized(value)] || normalized(value));
   const finite = value => typeof value === 'number' && Number.isFinite(value);
+  const commonPlanner = typeof module === 'object' && module.exports ? require('./planner.js') : null;
+  function earnedCreditException(program,requirement,option) {
+    const Planner=root?.DegreePlanner||commonPlanner,policy=Planner?.creditBalancePolicy?.(program);
+    if(!policy || !requirement || !option)return null;
+    const canonical=list(requirement.options).find(candidate=>candidate.id===option.id && candidate.provider===option.provider && candidate.code===option.code);
+    const identity=value=>['credits','sourceCredits','creditSystem','sourceCreditSystem','upper','sourceUpper','creditOrigin','evidence','sourceIds'].map(key=>value[key]??null);
+    if(!canonical || JSON.stringify(identity(canonical))!==JSON.stringify(identity(option)))return null;
+    if(policy.balanceRequirementIds.includes(requirement.id))return canonical.credits;
+    const binding=policy.equivalencies.find(binding=>binding.requirementId===requirement.id);
+    return binding?.options.some(identity=>identity.optionId===canonical.id && identity.provider===canonical.provider && identity.code===canonical.code)?canonical.credits:null;
+  }
+  function placementCredits(program,item,evaluation) {
+    const requirement=list(program.requirements).find(candidate=>candidate.id===evaluation.requirementId);
+    if(!requirement || !finite(requirement.credits) || requirement.credits<0)return null;
+    const option=list(requirement.options).find(candidate=>candidate.id===evaluation.optionId && sameAction(item,program,candidate));
+    return earnedCreditException(program,requirement,option) ?? requirement.credits;
+  }
   const uid = () => root.crypto && typeof root.crypto.randomUUID === 'function' ? root.crypto.randomUUID() : 'sheet-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
   const PROFILE = {entry:'target',goal:'any-degree',degreeLevel:'bachelor',field:'any',school:'',schoolChoice:'',degree:'',pathwayId:'',modality:'any',classroomImportance:'open',country:'US',state:'',priority:'balanced',weeklyHours:10,budget:'',deadline:'',militaryStatus:'none',militaryBranch:'',militaryRecords:'not-sure',hasPrior:'none',priorCreditEstimate:0,assessmentPreference:'mixed',proctoringPreference:'open',goalDetail:''};
   const DEFAULT_SCENARIO = {providers:['Sophia','Study.com','CLEP'],allowConditional:true,useWaivers:false,universityRate:'',fees:'',sophiaMonths:1,studyMonths:1,sophiaWeeks:'',studyWeeks:'',clepWeeks:'',termWeeks:'',termCredits:'',concurrency:1,optionSelections:{}};
@@ -190,7 +207,9 @@
       for(const id of allocated){
         const target=list(program.requirements).find(candidate=>candidate?.id===id);
         if(!target || !finite(target.credits) || target.credits<0)throw new Error('Review this source’s existing degree placements before assigning more credits.');
-        total+=target.credits;
+        const evaluation=item.evaluations.find(entry=>entry?.programId===programId && entry.requirementId===id),credits=placementCredits(program,item,evaluation);
+        if(credits===null)throw new Error('Review this source’s existing degree placements before assigning more credits.');
+        total+=credits;
       }
       if(total>item.credits+0.001)throw new Error('This source already has its credits allocated. Review its school-specific placements.');
     }
@@ -203,6 +222,7 @@
     const req=list(program?.requirements).find(item=>item.id===requirement?.id);
     const option=req && list(req.options).find(item=>item.id===rowOption?.id && providerKey(item.provider)===providerKey(rowOption?.provider));
     if(!req || !option)throw new Error('Choose a reviewed course option from this degree requirement.');
+    const earnedCredits=earnedCreditException(program,req,rowOption),allocationCredits=earnedCredits??req.credits;
     if(['in-progress','completed'].includes(progress) && (option.selectionRequired || rowOption?.selectionRequired || requirement?.selectionRequired))throw new Error('Choose a specific course first.');
     const matches=list(state.learning).filter(item=>sameAction(item,program,option));
     const existing=options.recordId?matches.find(item=>item.id===options.recordId):matches.find(item=>item.status==='earned') || matches[0];
@@ -210,7 +230,7 @@
     const unknownSource=option.sourceCreditStatus==='unknown';
     if(unknownSource && (!existing || !finite(existing.credits) || existing.credits<=0 || !['semester','quarter','competency-unit'].includes(existing.creditSystem)))throw new Error('Add this course’s original credits and credit units in My courses before changing its progress. The school’s awarded credits are not the original source credits.');
     const sourceCredits=unknownSource?existing.credits:finite(option.sourceCredits)?option.sourceCredits:finite(option.bundleCredits)?option.bundleCredits:finite(option.credits)?option.credits:req.credits;
-    if(!finite(sourceCredits)||sourceCredits<=0||sourceCredits>200||!finite(req.credits)||req.credits<=0)throw new Error('This item cannot create an awarded-credit record.');
+    if(!finite(sourceCredits)||sourceCredits<=0||sourceCredits>200||!finite(allocationCredits)||allocationCredits<=0)throw new Error('This item cannot create an awarded-credit record.');
     if(existing && existing.creditSystem===null)throw new Error('Add this source record’s original credit units in My courses before assigning it to this degree.');
     if(progress==='confirmed' && (options.confirmation!==true || !existing || existing.status!=='earned' || !finite(existing.credits) || existing.credits<=0))throw new Error('School confirmation requires an explicit confirmation and a saved completed source with known credits.');
     if(progress==='in-progress' && existing?.status==='earned')throw new Error('This source already has completed learning. Open its learning record to edit it.');
@@ -219,7 +239,8 @@
     if(existing && existing.creditSystem && existing.creditSystem!==units && progress!=='confirmed')throw new Error('Review this source record’s original credit units before changing its progress.');
     const item=existing?copy(existing):{id:uid(),provider:option.provider,code:option.code || option.id,title:option.title,credits:sourceCredits,creditSystem:units,status:'planned',completedOn:'',evaluations:[],...(providerKey(option.provider)==='university'?{institution:text(program.school),sourceProgramId:program.id}:{})};
     if(!finite(item.credits)||item.credits<=0)throw new Error('Record the original source credits before changing progress.');
-    if(item.creditSystem===(program.creditSystem||'semester') && item.credits+0.001<req.credits)throw new Error('The original source credits do not cover this requirement. Review the learning record.');
+    if(earnedCredits!==null && (item.credits!==sourceCredits || item.creditSystem!==units))throw new Error('Review this source record’s original credits and units before applying this exact course mapping.');
+    if(item.creditSystem===(program.creditSystem||'semester') && item.credits+0.001<allocationCredits)throw new Error('The original source credits do not cover this requirement. Review the learning record.');
     item.status=progress==='in-progress'?'in-progress':'earned';
     if(options.completedOn!==undefined)item.completedOn=date(options.completedOn);
     item.evaluations=existing && !sameDetails(existing,item)?[]:copy(list(item.evaluations));
@@ -238,7 +259,12 @@
       }
       if(item.creditSystem===(program.creditSystem||'semester')){
         const allocated=new Set(item.evaluations.filter(evaluation=>evaluation.programId===program.id).map(evaluation=>evaluation.requirementId));
-        const total=list(program.requirements).filter(candidate=>allocated.has(candidate.id)).reduce((sum,candidate)=>sum+candidate.credits,0);
+        let total=0;
+        for(const requirementId of allocated){
+          const evaluation=item.evaluations.find(evaluation=>evaluation.programId===program.id && evaluation.requirementId===requirementId),credits=placementCredits(program,item,evaluation);
+          if(credits===null)throw new Error('Review this source’s existing degree placements before assigning more credits.');
+          total+=credits;
+        }
         if(total>item.credits+0.001)throw new Error('This source already has its credits allocated. Review its school-specific placements.');
       }
     }

@@ -1,15 +1,39 @@
 /* Course-first presentation of the existing ledger. No new awards or matches. */
 (function (root, factory) {
-  const api = factory();
-  if (typeof module === 'object' && module.exports) module.exports = api;
+  const common = typeof module === 'object' && module.exports;
+  const api = factory(common ? require('./planner.js') : root.DegreePlanner);
+  if (common) module.exports = api;
   else root.DegreeCoursePlanView = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (Planner) {
   'use strict';
   const list = value => Array.isArray(value) ? value : [];
   const text = value => typeof value === 'string' ? value.trim() : '';
   const key = value => text(value).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
   const providerKey = value => ({sophialearning:'sophia',sophiaorg:'sophia',collegelevelexaminationprogram:'clep'}[key(value)] || key(value));
   const known = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
+  // Validate against the complete, original ledger before displaying actual
+  // earned credit instead of native course weight. Section subsets are views,
+  // never independently authorized variable-credit degree models.
+  function creditProjection(draft) {
+    const program = draft?.program, plan = draft?.plan;
+    const candidate = program?.degreeCreditBalancePolicy?.enabled === true && program.degreeCreditBalancePolicy.kind === 'gcu-earned-credit-balance-v1';
+    const rejected = candidate && plan ? {...draft,plan:{...plan,validation:{...plan.validation,academicCountsValid:false}}} : draft;
+    const empty = {draft:rejected,balance:null,inactive:new Set()};
+    if (!Planner?.creditBalancePolicy || !Planner?.validate || !program?.id || plan?.programId !== program.id || plan.validation?.academicCountsValid !== true || !Array.isArray(program.requirements) || !Array.isArray(plan.rows)) return empty;
+    try {
+      const balance = Planner.creditBalancePolicy(program), requirements = new Map(program.requirements.map(req => [req.id,req]));
+      if (!balance || requirements.size !== program.requirements.length || plan.rows.length !== requirements.size) return empty;
+      const rows = new Map(plan.rows.map(row => [row.requirementId,row]));
+      if (rows.size !== requirements.size || [...rows.keys()].some(id => !requirements.has(id)) || Planner.validate(program,plan).academicCountsValid !== true) return empty;
+      const inactive = new Set(balance.balanceRequirementIds.filter(id => rows.get(id)?.credits === 0 && rows.get(id)?.option === null));
+      const actualRequirements = program.requirements.map(req => ({...req,credits:rows.get(req.id).credits}));
+      return {draft:{...draft,program:{...program,requirements:actualRequirements}},balance,inactive};
+    } catch {return empty;}
+  }
+  function visibleRows(draft) {
+    const view = creditProjection(draft);
+    return list(draft?.plan?.rows).filter(row => !view.inactive.has(row.requirementId));
+  }
   const knownUnits = value => ['semester','quarter','competency-unit'].includes(value);
   function originalQuantity(option, record) {
     if (known(record?.credits) && knownUnits(record.creditSystem)) return {credits:record.credits,creditSystem:record.creditSystem};
@@ -116,7 +140,8 @@
       known(sourceCredits) && record.credits+0.001 >= sourceCredits) return 'in-progress';
     return 'not-started';
   }
-  function progress(draft) {
+  function progress(draft) {return progressLedger(creditProjection(draft).draft);}
+  function progressLedger(draft) {
     const program = draft?.program || {}, rows = list(draft?.plan?.rows), records = list(draft?.state?.learning), matches = list(draft?.match?.completed);
     const totalCredits = known(program.totalCredits) ? program.totalCredits : 0;
     let confirmedCredits = 0, pendingReviewCredits = 0, inProgressCredits = 0, accountedCredits = 0, duplicateRequirement = false;
@@ -127,7 +152,8 @@
       seen.add(row.requirementId);
       const requirement = list(program.requirements).find(req => req.id === row.requirementId);
       if (!requirement || !known(row.credits)) continue;
-      const credits = Math.min(row.credits,known(requirement.credits) ? requirement.credits : row.credits), option = row.option || {}, group = groupFor(row,requirement,program);
+      const native = typeof requirement.credits === 'number' && Number.isFinite(requirement.credits) && requirement.credits >= 0 ? requirement.credits : row.credits;
+      const credits = Math.min(row.credits,native), option = row.option || {}, group = groupFor(row,requirement,program);
       accountedCredits += credits;
       const status = progressState(row,option,program,recordFor(row,option,program,records,matches,group),group);
       if (status === 'completed') {
@@ -190,7 +216,7 @@
         const source=entry.bundle&&shared.get(providerKey(entry.provider)+'|'+entry.bundle);
         if(source&&source.sectionIds.length>1){entry.crossSectionBundle=true;entry.sharedSource=copy(source);}
       }
-      return {id:bucket.id,title:bucket.title,credits:bucket.credits,progress:progress(sectionDraft),entries:bucket.entries};
+      return {id:bucket.id,title:bucket.title,credits:bucket.credits,progress:progressLedger(sectionDraft),entries:bucket.entries};
     });
   }
   function curriculumHierarchy(draft, roots, allocations) {
@@ -243,7 +269,7 @@
       const owned=new Set(items.map(entry=>entry.requirementId)), ids=new Set([...owned,...references.keys()]);
       const rows=list(draft?.plan?.rows).filter(row=>ids.has(row.requirementId)).map(row=>references.has(row.requirementId)&&!owned.has(row.requirementId)?{...row,credits:references.get(row.requirementId)}:row);
       const selected=list(draft?.program?.requirements).filter(req=>ids.has(req.id)).map(req=>references.has(req.id)&&!owned.has(req.id)?{...req,credits:references.get(req.id)}:req);
-      return progress({...draft,program:{...draft?.program,totalCredits:creditsFor(items)+[...references.values()].reduce((sum,value)=>sum+value,0),requirements:selected},plan:{...draft?.plan,rows}});
+      return progressLedger({...draft,program:{...draft?.program,totalCredits:creditsFor(items)+[...references.values()].reduce((sum,value)=>sum+value,0),requirements:selected},plan:{...draft?.plan,rows}});
     }
     function sharedFor(node, owned){
       const result=new Map();
@@ -296,10 +322,12 @@
     return {sections:roots,issues};
   }
   function build(draft, courseCatalog = {}) {
+    const creditView = creditProjection(draft); draft = creditView.draft;
     const groups = {transfer:[],universityRequired:[],universityReserved:[],unmapped:[],completed:[]};
     const rows = list(draft?.plan?.rows), program = draft?.program || {}, records = list(draft?.state?.learning), match = list(draft?.match?.completed);
     const merged = new Map(), allocations = [];
     for (const row of rows) {
+      if (creditView.inactive.has(row.requirementId)) continue;
       const requirement = list(program.requirements).find(req => req.id === row.requirementId);
       const group = groupFor(row,requirement,program), option = row.option || {};
       const record = recordFor(row,option,program,records,match,group);
@@ -313,6 +341,7 @@
         kind:group,category:text(requirement?.category),
         requirements:[{id:row.requirementId,code:text(row.code),title:text(requirement?.categoryLabel) || text(row.title),category:text(requirement?.category),credits:known(row.credits) ? row.credits : 0}],
         title,provider,credits:known(row.credits) ? row.credits : 0,sourceCredits,code:text(record?.code) || text(option.code),
+        ...(creditView.balance && typeof row.nativeRequirementCredits === 'number' ? {nativeRequirementCredits:row.nativeRequirementCredits,creditBalanceDerived:creditView.balance.balanceRequirementIds.includes(row.requirementId)} : {}),
         ...(group === 'unmapped' ? {courseUrl:null,providerUrl:null,providerLinkLabel:''} : links(record || option,provider,courseCatalog)),
         evidenceUrl:source.map(item => safeURL(item.url)).find(Boolean) || (group === 'unmapped' ? null : safeURL(option.url)),
         evidenceLabel:mappingEvidence(row,option,source,group),
@@ -336,7 +365,7 @@
     const totals = Object.fromEntries(Object.entries(groups).map(([name,entries]) => [name,entries.reduce((sum,entry) => sum+entry.credits,0)]));
     totals.accounted = Object.values(totals).reduce((sum,amount) => sum+amount,0);
     const curriculum=curriculumHierarchy(draft,sections(draft,allocations),allocations);
-    return {groups,totals,progress:progress(draft),sections:curriculum.sections,curriculumIssues:curriculum.issues};
+    return {groups,totals,progress:progressLedger(draft),sections:curriculum.sections,curriculumIssues:curriculum.issues};
   }
-  return Object.freeze({build,progress,courseLinks:(course,catalog)=>links(course,course?.provider,catalog)});
+  return Object.freeze({build,progress,visibleRows,courseLinks:(course,catalog)=>links(course,course?.provider,catalog)});
 }));

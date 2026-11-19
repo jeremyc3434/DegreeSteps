@@ -1,8 +1,8 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const Journey=require('./dist/journey-engine.js'),{loadData}=require('./scripts/audit-student-confirmations.cjs');
-const all=loadData(),ids=['wgu-catalog-ecceaa488637ac83','liberty-business-residential','liberty-criminal-justice-online','liberty-criminal-justice-residential'];
-const catalog={...all.catalog,pathways:all.catalog.pathways.filter(route=>ids.includes(route.id))},modelIds=new Set(catalog.pathways.map(route=>route.modelId)),models=all.models.filter(model=>modelIds.has(model.id));
+const all=loadData(),ids=['wgu-catalog-ecceaa488637ac83','liberty-business-residential','liberty-criminal-justice-online','liberty-criminal-justice-residential'],gcuId='gcu-bsba-campus';
+const catalog={...all.catalog,pathways:all.catalog.pathways.filter(route=>[...ids,gcuId].includes(route.id))},modelIds=new Set(catalog.pathways.map(route=>route.modelId)),models=all.models.filter(model=>modelIds.has(model.id));
 const baselines=JSON.parse(fs.readFileSync(path.join(__dirname,'dist/data/baseline-index.json'),'utf8'));
 const KEY='degreepath-guide-v3',copy=value=>JSON.parse(JSON.stringify(value));
 function selected(id=ids[2]){const state=Journey.selectRoute(Journey.initialize(null,null,catalog),catalog.pathways.find(route=>route.id===id),catalog);state.journey={...state.journey,completed:true,intakeCompleted:true,view:'home'};return state;}
@@ -66,4 +66,58 @@ test('an explicit public format does not silently change a protected career goal
  const initial=selected();initial.profile.goal='teacher';initial.journey.answers.purpose='licensed-career';initial.journey.answers.career='teacher';
  const f=fixture({stored:initial});let rejected=false;try{const used=await f.api.use(ids[0]);rejected=used===false;}catch(error){assert.match(error.message,/goal|career|preferences/i);rejected=true;}
  assert(rejected);assert.deepEqual(f.stored(),initial);assert.equal(f.context.destination,undefined);assert(!f.events.some(event=>event.detail?.event==='plan_started'));if(f.api.preview())assert.equal(f.state().journey.view,'questions','A program-fit review must render its actual controls.');
+});
+
+test('the compiled GCU proposed template adopts actual source credits without claiming publication-ready status',async()=>{
+ const baseline=Object.values(baselines.baselines).find(item=>item.pathwayId===gcuId);
+ assert(baseline,'The complete GCU proposed template must have a generated baseline.');
+ const baselineData=copy(baselines),candidate=Object.values(baselineData.baselines).find(item=>item.pathwayId===gcuId);
+ candidate.qualityReady=false;candidate.researchStatus='conditional';
+ const f=fixture({baselineData});assert.equal(await f.api.use(gcuId),true);assert.equal(f.context.destination,'plan.html');
+ const saved=f.stored(),draft=Journey.buildDraft(saved,catalog,models);
+ assert.equal(saved.selectedPathwayId,gcuId);assert.equal(saved.profile.modality,'campus');assert.equal(saved.journey.completed,true);
+ assert.equal(saved.journey.answers.degree,gcuId);assert.equal(saved.journey.answers.school,'Grand Canyon University');
+ assert.equal(draft.plan.totals.accounted,120);assert.equal(draft.plan.totals.external,baseline.summary.transferCredits);assert.equal(draft.plan.totals.institutional,baseline.summary.universityCredits);
+ assert.equal(draft.plan.validation.academicCountsValid,true);assert.equal(draft.plan.totals.confirmed,0);assert.equal(draft.plan.totals.reported,0);assert.deepEqual(saved.learning,[]);
+ assert(draft.plan.rows.filter(row=>row.option).every(row=>row.credits>0),'No active zero-credit academic course is created.');
+ for(const row of baseline.rows){const actual=draft.plan.rows.find(item=>item.requirementId===row.requirementId);assert(actual);assert.equal(actual.credits,row.credits);assert.equal(actual.option?.id||null,row.optionId);if(row.optionId&&!actual.creditBalanceDerived)assert.equal(saved.scenarios[draft.program.id].optionSelections[row.requirementId],row.optionId);if(actual.creditBalanceDerived)assert.equal(saved.scenarios[draft.program.id].optionSelections[row.requirementId],undefined);}
+ const activation=f.events.find(event=>event.type==='DegreeSteps:growth'&&event.detail.event==='plan_started');assert(activation);assert.equal(activation.detail.planId,undefined,'GCU does not enter the four-route publication/metrics allowlist.');
+});
+
+test('inactive zero-native GCU balance rows stay empty when all native coursework is selected',async()=>{
+ const model=models.find(item=>item.id==='curriculum-gcu-bsba-campus');assert(model,'The generated GCU model must be available.');
+ const Planner=require('./dist/planner.js'),plan=Planner.generate(model,{providers:[],allowConditional:true,priority:'transfer',completed:[]});
+ assert.equal(plan.validation.academicCountsValid,true);
+ const baselineData=copy(baselines),key=Object.keys(baselineData.baselines).find(key=>baselineData.baselines[key].pathwayId===gcuId);assert(key);
+ baselineData.baselines[key]={...baselineData.baselines[key],qualityReady:false,summary:{...baselineData.baselines[key].summary,totalCredits:120,transferCredits:0,universityCredits:120},rows:plan.rows.map(row=>({requirementId:row.requirementId,optionId:row.option?.id||null,provider:row.option?.provider||null,code:row.option?.code||null,credits:row.credits,status:'planned'}))};
+ const f=fixture({baselineData});assert.equal(await f.api.use(gcuId),true);
+ const saved=f.stored(),draft=Journey.buildDraft(saved,catalog,models),inactive=draft.plan.rows.filter(row=>row.creditBalanceDerived);
+ assert.equal(draft.plan.totals.accounted,120);assert.equal(draft.plan.totals.institutional,120);assert.equal(draft.plan.totals.external,0);
+ assert.equal(inactive.length,3);assert(inactive.every(row=>row.credits===0&&row.option===null));
+ for(const row of inactive)assert.equal(saved.scenarios[draft.program.id].optionSelections[row.requirementId],undefined);
+});
+
+test('GCU baseline tampering cannot create extra credits, fake completions or an empty ordinary requirement',async()=>{
+ const initial=selected();
+ for(const kind of ['credits','source-code','earned','empty-ordinary','missing-baseline']){
+  const baselineData=copy(baselines),key=Object.keys(baselineData.baselines).find(key=>baselineData.baselines[key].pathwayId===gcuId);assert(key);
+  const baseline=baselineData.baselines[key];
+  if(kind==='missing-baseline')delete baselineData.baselines[key];
+  else{const row=baseline.rows.find(row=>row.provider==='Sophia');assert(row);if(kind==='credits')row.credits=4;if(kind==='source-code')row.code='invented-source-course';if(kind==='earned')row.status='confirmed';if(kind==='empty-ordinary')Object.assign(row,{credits:0,provider:null,optionId:null,code:null});}
+  const f=fixture({stored:initial,baselineData});await assert.rejects(()=>f.api.use(gcuId),/saved course choices/);assert.deepEqual(f.stored(),initial);assert.equal(f.context.destination,undefined);assert(!f.events.some(event=>event.detail?.event==='plan_started'));
+ }
+});
+
+test('GCU adoption retains learning, notes and old degree history while concurrent degree changes remain protected',async()=>{
+ const initial=selected();initial.learning=[{id:'private-history',provider:'College',code:'HIST999',title:'History',credits:3,creditSystem:'semester',status:'earned',evaluations:[]}];initial.sheet.notes={private:'Keep my notes'};
+ const f=fixture({stored:initial});assert.equal(await f.api.use(gcuId),true);
+ const saved=f.stored();assert.deepEqual(saved.learning,initial.learning);assert.deepEqual(saved.sheet.notes,initial.sheet.notes);assert(saved.whatIf.snapshots.some(snapshot=>snapshot.pathwayId===initial.selectedPathwayId));
+ const different=selected(ids[1]),concurrent=fixture({stored:initial,onBaselineFetch:({write})=>write(different)});
+ await assert.rejects(()=>concurrent.api.use(gcuId),/degree changed in another tab/);assert.deepEqual(concurrent.stored(),different);assert.equal(concurrent.context.destination,undefined);
+});
+
+test('GCU adoption preserves explicit source exclusions and does not silently replace the proposed mix',async()=>{
+ const initial=selected();initial.scenarios['curriculum-gcu-bsba-campus']={providers:[],privateSetting:'Keep my source choices'};
+ const f=fixture({stored:initial});await assert.rejects(()=>f.api.use(gcuId),/source you turned off/);
+ assert.deepEqual(f.stored(),initial);assert.equal(f.context.destination,undefined);assert(!f.events.some(event=>event.detail?.event==='plan_started'));
 });

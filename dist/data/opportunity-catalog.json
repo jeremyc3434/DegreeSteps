@@ -4717,9 +4717,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -4728,9 +4728,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         },
         "graduate": {
           "status": "not-verified",
@@ -4763,6 +4765,19 @@
           "id": "opportunity-gcu-gcu-sophia",
           "title": "Grand Canyon University — Sophia partner pathway",
           "url": "https://gcu.sophia.org/"
+        },
+        {
+          "id": "opportunity-gcu-gcu-handbook-fall-2026-reviewed",
+          "title": "Fall 2026 University Policy Handbook: transfer and graduation requirements",
+          "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "checkedOn": "2026-11-19",
+          "sourcePages": [
+            261,
+            262,
+            263,
+            267,
+            268
+          ]
         }
       ],
       "coverage": {
@@ -4776,7 +4791,7 @@
           "title": "Bachelor of Science in Business Administration",
           "level": "bachelor",
           "status": "listed",
-          "url": "https://www.gcu.edu/degree-programs/on-campus-degrees/bachelors",
+          "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration",
           "paceModel": "course-term"
         },
         {
@@ -5292,6 +5307,7 @@
           "paceModel": "course-term"
         }
       ],
+      "reviewedOn": "2026-11-19",
       "researchFile": "content/research/campus-schools-b.json",
       "catalogCollection": "opportunity-expansion",
       "plannedPrograms": []
@@ -38259,10 +38275,10 @@
         "campus"
       ],
       "paceModel": "course-term",
-      "url": "https://www.gcu.edu/degree-programs/on-campus-degrees/bachelors",
+      "url": "https://www.gcu.edu/degree-programs/bachelor-science-business-administration",
       "sourceId": "opportunity-gcu-gcu-campus-bachelors",
-      "degreeCredits": null,
-      "notes": "Listed in GCU's official campus bachelor's directory. This record verifies campus availability only; it does not establish online availability or transfer equivalencies. Emphases are retained as separate directory options.",
+      "degreeCredits": 120,
+      "notes": "Exact official BSBA program page confirms campus delivery and 120 semester credits. The separately reviewed curriculum route supplies the course plan; this directory record alone does not award transfer credit.",
       "schoolId": "gcu",
       "school": "Grand Canyon University",
       "status": "listed",
@@ -38281,9 +38297,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38292,9 +38308,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38328,9 +38346,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38339,9 +38357,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38375,9 +38395,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38386,9 +38406,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38422,9 +38444,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38433,9 +38455,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38469,9 +38493,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38480,9 +38504,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38516,9 +38542,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38527,9 +38553,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38563,9 +38591,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38574,9 +38602,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38610,9 +38640,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38621,9 +38651,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38657,9 +38689,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38668,9 +38700,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38704,9 +38738,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38715,9 +38749,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38751,9 +38787,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38762,9 +38798,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38798,9 +38836,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38809,9 +38847,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38845,9 +38885,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38856,9 +38896,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38892,9 +38934,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38903,9 +38945,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38939,9 +38983,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38950,9 +38994,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -38986,9 +39032,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -38997,9 +39043,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39033,9 +39081,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39044,9 +39092,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39080,9 +39130,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39091,9 +39141,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39127,9 +39179,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39138,9 +39190,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39174,9 +39228,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39185,9 +39239,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39221,9 +39277,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39232,9 +39288,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39268,9 +39326,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39279,9 +39337,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39315,9 +39375,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39326,9 +39386,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39362,9 +39424,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39373,9 +39435,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39409,9 +39473,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39420,9 +39484,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39456,9 +39522,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39467,9 +39533,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39503,9 +39571,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39514,9 +39582,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39550,9 +39620,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39561,9 +39631,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39597,9 +39669,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39608,9 +39680,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39644,9 +39718,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39655,9 +39729,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39691,9 +39767,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39702,9 +39778,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39738,9 +39816,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39749,9 +39827,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39785,9 +39865,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39796,9 +39876,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39832,9 +39914,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39843,9 +39925,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39879,9 +39963,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39890,9 +39974,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39926,9 +40012,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39937,9 +40023,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -39973,9 +40061,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -39984,9 +40072,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40020,9 +40110,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40031,9 +40121,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40067,9 +40159,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40078,9 +40170,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40114,9 +40208,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40125,9 +40219,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40161,9 +40257,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40172,9 +40268,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40208,9 +40306,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40219,9 +40317,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40255,9 +40355,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40266,9 +40366,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40302,9 +40404,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40313,9 +40415,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40349,9 +40453,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40360,9 +40464,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40396,9 +40502,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40407,9 +40513,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40443,9 +40551,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40454,9 +40562,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40490,9 +40600,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40501,9 +40611,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40537,9 +40649,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40548,9 +40660,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40584,9 +40698,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40595,9 +40709,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40631,9 +40747,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40642,9 +40758,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40678,9 +40796,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40689,9 +40807,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40725,9 +40845,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40736,9 +40856,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40772,9 +40894,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40783,9 +40905,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40819,9 +40943,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40830,9 +40954,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40866,9 +40992,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40877,9 +41003,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40913,9 +41041,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40924,9 +41052,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -40960,9 +41090,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -40971,9 +41101,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -41007,9 +41139,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -41018,9 +41150,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -41054,9 +41188,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -41065,9 +41199,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -41101,9 +41237,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -41112,9 +41248,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -41148,9 +41286,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -41159,9 +41297,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -41195,9 +41335,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -41206,9 +41346,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -41242,9 +41384,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -41253,9 +41395,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -41289,9 +41433,9 @@
         "institutional": {
           "status": "accepted",
           "maximumCredits": 90,
-          "minimumInstitutionalCredits": null,
-          "notes": "GCU advertises up to 90 total transfer credits toward undergraduate degrees. Degree requirements, major/residency rules, accreditation and individual evaluation can reduce what applies. This is not a 90-credit allowance for Sophia or other alternative providers.",
-          "sourceUrl": "https://www.gcu.edu/admissions/college-transfer-center.php"
+          "minimumInstitutionalCredits": 30,
+          "notes": "Undergraduate general policy: up to 90 total transferred semester credits, no more than 84 lower division; at least 30 GCU semester credits. Actual degree applicability, upper-major credits, writing requirements and original issuing institutions remain separate constraints.",
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf"
         },
         "ace": {
           "status": "case-by-case",
@@ -41300,9 +41444,11 @@
           "sourceUrl": "https://gcu.sophia.org/"
         },
         "nccrs": {
-          "status": "not-verified",
-          "notes": "No general current NCCRS acceptance policy was verified. Sophia/ACE acceptance must not be extrapolated to every alternative provider.",
-          "sourceUrl": null
+          "status": "case-by-case",
+          "maximumCredits": 30,
+          "sourceUrl": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+          "scope": "Undergraduate lower-division general education or lower-division electives only; shares the single combined 30-credit alternative-credit cap.",
+          "notes": "The Fall 2026 handbook explicitly recognizes NCCRS coursework for lower-division general education or electives. This is a source-category policy, not approval of every NCCRS course or provider. The 30-credit allowance is shared with ACE, exams and other alternatives."
         }
       }
     },
@@ -66352,6 +66498,25 @@
       "school": "Grand Canyon University",
       "schoolId": "gcu",
       "checkedAt": "2026-11-03",
+      "catalogCollection": "opportunity-expansion",
+      "scope": "Reviewed program inventory and transfer-policy evidence; equivalencies are separate.",
+      "programCount": 0
+    },
+    {
+      "id": "opportunity-gcu-gcu-handbook-fall-2026-reviewed",
+      "title": "Fall 2026 University Policy Handbook: transfer and graduation requirements",
+      "url": "https://www.gcu.edu/sites/default/files/media/documents/academics/handbook/2026-27/university-policy-handbook-fall-2026-v5.pdf",
+      "checkedOn": "2026-11-19",
+      "sourcePages": [
+        261,
+        262,
+        263,
+        267,
+        268
+      ],
+      "school": "Grand Canyon University",
+      "schoolId": "gcu",
+      "checkedAt": "2026-11-19",
       "catalogCollection": "opportunity-expansion",
       "scope": "Reviewed program inventory and transfer-policy evidence; equivalencies are separate.",
       "programCount": 0
