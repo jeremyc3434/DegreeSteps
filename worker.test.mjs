@@ -318,6 +318,24 @@ test('the public degree-link lookup verifies only preloaded source plans and nev
  const unknown=await worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url:'https://unlisted.example.edu/degree/'})),{},{});assert.deepEqual(await unknown.json(),{matched:false});done();
 });
 
+test('the GCU directory parent opens its exact campus variant and earned-credit baseline without AI research',async t=>{
+ const done=noNetwork(t),{call,sqlite,env}=fixture(t),url='https://www.gcu.edu/degree-programs/bachelor-science-business-administration';
+ // A known plan must work even with a managed connection whose key cannot
+ // decrypt. No paid model call or credential decryption is needed for reuse.
+ env.AI_CONNECTIONS_MASTER_KEY=testConnectionMaster;
+ sqlite.prepare('INSERT INTO ai_service_connections (id,ciphertext,iv,revision,verified_at,updated_by,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)').run('anthropic','A'.repeat(44),'0'.repeat(24),1,1,'fixture',1,1);
+ const decrypt=t.mock.method(crypto.subtle,'decrypt',async()=>{throw Error('Known GCU reuse must not decrypt credentials');});
+ const response=await worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url:url+'?utm_source=test'})),{},{});assert.equal(response.status,200);const data=await response.json();
+ assert.equal(data.matched,true);const plan=data.sourcePlan;assert(plan);assert.equal(plan.route.id,'gcu-bsba-campus');assert.equal(plan.route.parentId,'gcu-bachelor-of-science-in-business-administration');assert.deepEqual(plan.route.modalities,['campus']);assert.equal(plan.model.id,'curriculum-gcu-bsba-campus');assert.equal(plan.qualityReady,true);
+ assert.deepEqual([plan.summary.totalCredits,plan.summary.transferCredits,plan.summary.universityCredits],[120,26,94]);assert.equal(plan.summary.externalMaxCredits,90);assert.equal(plan.model.alternativeMaxCredits,30);
+ const quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')).programs.find(item=>item.modelId===plan.model.id);assert.equal(quality.research.status,'research-ready');assert.equal(quality.publication.ready,false,'The degree-link proposal must not silently loosen accelerated-template publication gates.');
+ const baseline=Object.values(JSON.parse(readFileSync(new URL('./dist/data/baseline-index.json',import.meta.url),'utf8')).baselines).find(item=>item.modelId===plan.model.id);assert(baseline.rows.every(row=>row.status==='planned'));assert.equal(baseline.rows.reduce((sum,row)=>sum+row.credits,0),120);
+ for(const row of baseline.rows){const requirement=plan.model.requirements.find(req=>req.id===row.requirementId);if(row.provider!=='University'){const option=requirement.options.find(option=>option.id===row.optionId);assert.equal(row.credits,option.sourceCredits);if(row.credits===3)assert.equal(requirement.credits,4);}}
+ const reuse=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url,startResearch:true}});assert.equal(reuse.status,200);const result=await reuse.json();assert.equal(result.reused,true);assert.equal(result.sourcePlan.model.id,plan.model.id);assert.equal(result.sourcePlan.summary.transferCredits,26);assert.equal(result.template,undefined);
+ for(const query of ['?catalog=2025-2026','?modality=online']){const rejected=await call('/api/catalog/degree-link?'+new URLSearchParams({url:url+query}));assert.equal(rejected.status,200);const value=await rejected.json();assert.equal(value.sourcePlan,undefined);assert.equal(value.existingPlan,undefined);}
+ assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);assert.equal(decrypt.mock.callCount(),0);done();
+});
+
 for(const [degreeUrl,modelId,total,outside,university,modality]of [
  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/','liberty-business-residential',120,83,37,'campus'],
  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,66,54,'online'],

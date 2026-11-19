@@ -99,6 +99,7 @@ async function knownSourcePlan(entry,pathwayId,modality,model) {
   const original=resolvedPlanCatalogSnapshot.pathways.find(route=>route.id===pathwayId);
   if(!original||original.modelId!==entry.id||original.school!==model.school||!original.modalities?.includes(modality)||!entry.routeIds.includes(pathwayId)||!entry.modalities.includes(modality))return null;
   const level=entry.level||degreeLevel(model.level),route={...original,modelId:entry.id,level,modalities:[modality],readyTemplate:true,courseMapStatus:'mapped'};
+  if(original.parentId&&(!degreeLevel(model.level)||original.level!==degreeLevel(model.level)||entry.level&&entry.level!==degreeLevel(model.level)))return null;
   // Build-time baselines contain no student records. A missing/stale artifact
   // fails closed; a degree-link request never launches a fresh optimization.
   if(!baselineSnapshot){
@@ -115,7 +116,31 @@ async function knownSourcePlan(entry,pathwayId,modality,model) {
   const baseline=baselineSnapshot.baselines?.[[entry.id,pathwayId,modality].join('|')];
   if(!baseline||baseline.modelId!==model.id||baseline.validation?.academicCountsValid!==true||baseline.summary?.requirementCount!==model.requirements?.length||baseline.summary?.totalCredits!==model.totalCredits)return null;
   if(!Array.isArray(baseline.rows)||baseline.rows.length!==model.requirements.length||new Set(baseline.rows.map(row=>row.requirementId)).size!==baseline.rows.length)return null;
-  for(const row of baseline.rows){const req=model.requirements.find(req=>req.id===row.requirementId);if(!req||row.credits!==req.credits||row.status!=='planned'||!req.options?.some(option=>option.id===row.optionId&&option.provider===row.provider&&option.code===row.code&&!option.selectionRequired))return null;}
+  const balance=TemplateAcademicPlanner.creditBalancePolicy(model),baselineRows=[];
+  if(model.degreeCreditBalancePolicy?.enabled===true&&!balance)return null;
+  for(const row of baseline.rows){
+    const req=model.requirements.find(req=>req.id===row.requirementId);
+    if(!req||row.status!=='planned')return null;
+    const derived=balance?.balanceRequirementIds.includes(req.id);
+    const option=req.options?.find(option=>option.id===row.optionId&&option.provider===row.provider&&option.code===row.code&&!option.selectionRequired);
+    if(derived&&row.optionId===null){
+      if(row.credits!==0||row.provider!==null||row.code!==null)return null;
+    }else if(!option)return null;
+    if(balance){
+      const variable=balance.equivalencies.some(binding=>binding.requirementId===req.id&&binding.awardedCredits===row.credits&&binding.options.some(item=>item.optionId===option?.id&&item.provider===option.provider&&item.code===option.code));
+      if(row.credits!==req.credits&&!variable&&!(derived&&option&&row.credits===option.credits))return null;
+      if(option&&row.credits!==option.credits)return null;
+      baselineRows.push({...req,requirementId:req.id,credits:row.credits,subgroup:req.subgroup||req.group||null,option:option||null,status:'planned',institutional:option?.provider==='University',upper:Boolean(option?.upper),sourceIds:option?.sourceIds||[],selectionRequired:Boolean(req.selectionRequired||option?.selectionRequired),minimumCompletedCredits:Number(req.minimumCompletedCredits)||0,...(derived||variable?{nativeRequirementCredits:req.credits,...(derived?{creditBalanceDerived:true}:{})}:{})});
+    }else if(row.credits!==req.credits)return null;
+  }
+  if(balance){
+    // Revalidate the precomputed allocation; never run an optimizer or invent
+    // a fourth credit while opening a known degree link.
+    const validation=TemplateAcademicPlanner.validate(model,{rows:baselineRows});
+    if(!validation.valid||!validation.policyChecksComplete)return null;
+    const sum=predicate=>baselineRows.filter(predicate).reduce((total,row)=>total+row.credits,0);
+    if(sum(()=>true)!==model.totalCredits||sum(row=>row.option&&row.option.provider!=='University')!==baseline.summary.transferCredits||sum(row=>row.option?.provider==='University')!==baseline.summary.universityCredits||sum(row=>row.option?.upper===true)!==baseline.summary.upperCredits||baseline.summary.institutionMinCredits!==model.institutionMinCredits||baseline.summary.externalMaxCredits!==model.externalMaxCredits)return null;
+  }
   const reference=original.url?await researchReferenceForURL(original.url):null;
   if(reference&&checkResearchReference({...model,level,schoolName:model.school,programName:model.title,modality,catalogYear:catalogIdentity(model.catalogYear||model.catalog)},reference).length)return null;
   return{route,model:{...model,level},summary:baseline.summary,qualityReady:true};
@@ -180,14 +205,15 @@ async function resolveKnownDegreeLink(value) {
   // A directory URL can name many degrees. Never pick its one mapped degree by accident.
   const identities=new Set(programs.map(program=>[canonicalSchoolName(program.school),canonicalDegreeTitle(program.title),program.level].join('|')));
   if(!aliases.length&&identities.size!==1)return null;
+  const routeMatches=(id,entry)=>programs.some(program=>program.id===id)||curriculumRegistrySnapshot.routes?.some(route=>route.id===id&&route.parentId&&route.school===entry.school&&(!entry.level||route.level===entry.level)&&linkIdentity(route.url)===url&&programs.some(program=>program.id===route.parentId&&program.school===route.school&&program.level===route.level&&canonicalDegreeTitle(program.title)===canonicalDegreeTitle(route.title)));
   const choices=[];
-  for(const entry of curriculumRegistrySnapshot.models.filter(entry=>entry.readyTemplate===true&&entry.status==='reviewed'&&(aliases.length?aliases.some(alias=>alias.modelId===entry.id&&entry.routeIds?.includes(alias.pathwayId)):entry.routeIds?.some(id=>programs.some(program=>program.id===id))))){
+  for(const entry of curriculumRegistrySnapshot.models.filter(entry=>entry.readyTemplate===true&&entry.status==='reviewed'&&(aliases.length?aliases.some(alias=>alias.modelId===entry.id&&entry.routeIds?.includes(alias.pathwayId)):entry.routeIds?.some(id=>routeMatches(id,entry))))){
     const model=await registryModel(entry),catalogYear=catalogIdentity(model?.catalogYear||model?.catalog);
     if(!model||!catalogYear&&!reviewedCurrentCatalog(model))continue;
     for(const modality of entry.modalities||[]){
       if(!['online','campus'].includes(modality))continue;
       const alias=aliases.find(alias=>alias.modelId===entry.id&&alias.modality===modality);if(aliases.length&&!alias)continue;
-      const level=entry.level||degreeLevel(model.level),pathwayId=alias?.pathwayId||entry.routeIds[0];
+      const level=entry.level||degreeLevel(model.level),pathwayId=alias?.pathwayId||entry.routeIds.find(id=>routeMatches(id,entry));
       const sourcePlan=await knownSourcePlan(entry,pathwayId,modality,model);
       // A reviewed mutable catalog can open its preloaded plan. It must not
       // create a year-specific AI research target with an invented edition.
