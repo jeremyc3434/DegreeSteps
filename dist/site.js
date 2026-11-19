@@ -49,6 +49,10 @@
           routeExample.querySelector('[data-home-outside]').textContent=String(choice.outside);
           routeExample.querySelector('[data-home-university]').textContent=String(choice.university);
           routeExample.querySelector('[data-home-route-feedback]').textContent=data.total+' credits accounted for. '+(select.value==='sophia'?'This writing choice keeps '+data.requirementCredits+' credits outside Liberty.':'This writing choice adds '+data.requirementCredits+' credits at Liberty.');
+          const source=routeExample.querySelector('[data-home-choice-source]'),title=routeExample.querySelector('[data-home-choice-title]'),track=routeExample.querySelector('[data-home-mix-track]'),outside=routeExample.querySelector('[data-home-mix-outside]'),university=routeExample.querySelector('[data-home-mix-university]');
+          if(source)source.textContent=choice.provider;if(title)title.textContent=choice.title;
+          if(outside)outside.style.flexGrow=String(choice.outside);if(university)university.style.flexGrow=String(choice.university);
+          if(track)track.setAttribute('aria-label','Proposed course mix: '+choice.outside+' credits through outside courses plus '+choice.university+' credits at Liberty equals '+data.total+' degree credits. This is planned coursework, not completed credit.');
         };
         select.disabled=false;select.addEventListener('change',update);update();
       }

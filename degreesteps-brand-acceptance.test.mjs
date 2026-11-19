@@ -22,7 +22,7 @@ test('all published HTML uses DegreeSteps display branding and shared brand styl
 });
 
 test('homepage explains the student outcome and every primary navigation destination exists',()=>{
- const html=read('dist/index.html'),text=textOnly(html),headline=textOnly(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');matches(headline,/degree/i);matches(headline,/faster/i);matches(headline,/affordable/i);matches(text,/Build my plan/);matches(text,/(?:affordable courses|courses for less)/i);matches(text,/Illustrative|illustration|example plan/i,'Any prefilled product preview must identify itself as an example');
+ const html=read('dist/index.html'),text=textOnly(html),headline=textOnly(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');matches(headline,/degree/i);matches(headline,/step by step/i);const introduction=textOnly(html.match(/<section\b[^>]*data-home-steps[^>]*>([\s\S]*?)<\/section>/i)?.[1]||'');matches(introduction,/faster/i);matches(introduction,/affordable/i);matches(text,/Build my plan/);matches(introduction,/lower-cost outside courses/i);matches(text,/Illustrative|illustration|example plan/i,'Any prefilled product preview must identify itself as an example');
  for(const target of ['/portal.html','/programs.html','/courses.html','/resources/','/community.html','/account.html']){assert(html.includes('href="'+target),'Homepage should link to '+target);const file=resolve(dist,target.replace(/^\//,'')+(target.endsWith('/')?'index.html':''));assert(existsSync(file),'Navigation destination must be published: '+target);}
 });
 

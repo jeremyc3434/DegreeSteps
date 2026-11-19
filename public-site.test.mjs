@@ -32,7 +32,11 @@ test('the public homepage explains the product and offers a clear separate build
   assert(links.some(h=>new URL(h,home.url).pathname==='/account.html'),'A real account entry is available');
   assert(strip(home.html).split(/\s+/).length>=200,'The explanation is crawlable without client rendering');
   const headline=strip(home.html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');
-  assert.match(headline,/Find a faster, more affordable path to your degree\./i,'The first message states the student outcome');
+  assert.match(headline,/Your degree\. Step by step\./i,'The first message introduces a manageable student journey');
+  assert.match(strip(home.html),/Find a faster, more affordable route to the degree you want\. Online or on campus\./,'The supporting sentence states the student outcome');
+  assert.equal((home.html.match(/data-home-step\s/g)||[]).length,3,'The journey has three explicit steps');
+  assert.match(home.html,/<script src="\/home-steps\.js" defer><\/script>/);
+  assert(home.html.indexOf('href="/home-steps.css"')>home.html.indexOf('href="/public-design.css"'),'The homepage component is styled after the shared public design');
   assert.match(home.html,/Example degree plan/,'The proposed product preview is clearly labeled as an example');
   assert.match(home.html,/<table\b[^>]*class="home-plan-table"/,'The course-choice example retains its degree worksheet');
   const photographs=home.html.match(/<img\b[^>]*>/gi)||[];

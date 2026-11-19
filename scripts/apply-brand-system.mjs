@@ -12,7 +12,7 @@ const families=new Map([
   ['compare-plans.html','comparison'],['community.html','community'],
   ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
 ]);
-const managedStyles=new Set(['brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-save.css']);
+const managedStyles=new Set(['brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-save.css','home-steps.css']);
 const managedScripts=new Set(['growth-metrics.js','plan-save.js','task-calendar.js']);
 const managedClasses=new Set(['ds-experience','ds-public-page','ds-workspace-page','ds-discovery-page','ds-collection-page','ds-comparison-page','ds-community-page','ds-settings-page']);
 
@@ -27,6 +27,7 @@ export function pageExperience(name,source){
   if(family){classes.push('ds-'+family+'-page');styles.push(family+'-design.css');}
   if(savePages.has(name))styles.push('plan-save.css');
   if(name==='plan.html')styles.push('plan-design.css');
+  if(name==='index.html'&&publicPage)styles.push('home-steps.css');
   return {publicPage,workspace,family,styles,classes:[...new Set(classes)]};
 }
 

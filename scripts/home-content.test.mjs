@@ -33,12 +33,20 @@ test('a wrong provider, unsupported baseline option or completed record cannot b
  }
 });
 
-test('first view names a real proposed plan with an allocation graphic and exact courses, never a completion bar',()=>{
- const html=render(),hero=html.slice(html.indexOf('<section class="home-route-hero"'),html.indexOf('</aside>'));
+test('the three-step introduction retains the exact proposed plan and readable fallback without requiring account or transcript',()=>{
+ const html=render(),hero=html.slice(html.indexOf('<section class="home-route-hero home-steps-hero"'),html.indexOf('</section>'));
  assert.match(hero,/Example degree plan/);assert.match(hero,/role="img"[^>]+83 credits[\s\S]+37 credits[\s\S]+120 degree credits/);
  assert(!hero.includes('role="progressbar"'));assert.match(hero,/planned coursework, not completed credit/);
  for(const row of example.displayRows){assert(hero.includes(row.code));assert(hero.includes(row.title.replace(/&/g,'&amp;')));}
  assert.match(hero,/See an example plan/);assert.match(hero,/Sign in when you’re ready to save/);
+ assert.equal((hero.match(/data-home-step\s/g)||[]).length,3);
+ for(const title of ['Find your degree','We find the courses','Follow your plan'])assert(hero.includes('data-step-title="'+title+'"'));
+ const first=hero.slice(hero.indexOf('id="home-step-1"'),hero.indexOf('id="home-step-2"'));
+ assert.match(first,/href="\/programs.html"/);assert.match(first,/href="\/portal.html\?view=setup"/);assert.match(first,/href="\/import-courses.html"/);
+ assert(!/<article\b[^>]*(?:hidden|inert)/.test(hero),'Server-rendered cards remain available without JavaScript');
+ assert.match(hero,/data-home-step-controls hidden/);assert.match(hero,/data-home-step-build href="\/portal.html"/);
+ assert(hero.indexOf('data-home-step-build')>hero.indexOf('</article>\n  </div></div>'));
+ assert.equal((hero.match(/data-home-course-choice/g)||[]).length,1);
  assert.equal((html.match(/data-home-route-example\b/g)||[]).length,1);assert.equal((html.match(/id="home-route-example-data"/g)||[]).length,1);
  assert.throws(()=>render({...example,displayRows:[]}),/actual three-course worksheet/);
 });
@@ -46,14 +54,18 @@ test('first view names a real proposed plan with an allocation graphic and exact
 test('the retained course-choice demonstration changes the proposed mix without storage, network or credit awards',async()=>{
  const html=render(),data=JSON.parse(html.match(/id="home-route-example-data">([\s\S]*?)<\/script>/)[1]);
  const listeners={},nodes=new Map(),select={value:'sophia',disabled:true,addEventListener(name,fn){listeners[name]=fn;}};
- for(const key of ['course-provider','outside','university','route-feedback'])nodes.set('[data-home-'+key+']',{textContent:''});
+ for(const key of ['course-provider','outside','university','route-feedback','choice-source','choice-title'])nodes.set('[data-home-'+key+']',{textContent:''});
+ const outsideBar={style:{}},universityBar={style:{}},track={attributes:{},setAttribute(name,value){this.attributes[name]=value;}};
+ nodes.set('[data-home-mix-outside]',outsideBar);nodes.set('[data-home-mix-university]',universityBar);nodes.set('[data-home-mix-track]',track);
  nodes.set('[data-home-course-choice]',select);
  const route={querySelector:selector=>nodes.get(selector)||null},document={querySelector:selector=>selector==='[data-home-route-example]'?route:null,getElementById:()=>({textContent:JSON.stringify(data)}),addEventListener(){}};
  const context={document,matchMedia:()=>({matches:true,addEventListener(){}}),fetch(){throw Error('The example must not make requests');},localStorage:{getItem(){throw Error('No private data reads');},setItem(){throw Error('No private data changes');}}};context.window=context;
  vm.runInNewContext(await readFile(new URL('../dist/site.js',import.meta.url),'utf8'),context);
  assert.equal(select.disabled,false);assert.equal(nodes.get('[data-home-outside]').textContent,'83');
  select.value='university';listeners.change();assert.equal(nodes.get('[data-home-outside]').textContent,'80');assert.equal(nodes.get('[data-home-university]').textContent,'40');assert.match(nodes.get('[data-home-course-provider]').textContent,/Liberty/);
+ assert.equal(outsideBar.style.flexGrow,'80');assert.equal(universityBar.style.flexGrow,'40');assert.equal(nodes.get('[data-home-choice-source]').textContent,'Liberty University');assert.equal(nodes.get('[data-home-choice-title]').textContent,data.choices.university.title);assert.match(track.attributes['aria-label'],/80 credits[\s\S]+40 credits[\s\S]+120 degree credits/);
  select.value='sophia';listeners.change();assert.equal(nodes.get('[data-home-outside]').textContent,'83');assert.equal(nodes.get('[data-home-university]').textContent,'37');
+ assert.equal(outsideBar.style.flexGrow,'83');assert.equal(universityBar.style.flexGrow,'37');assert.equal(nodes.get('[data-home-choice-source]').textContent,'Sophia');assert.match(track.attributes['aria-label'],/83 credits[\s\S]+37 credits/);
  assert.equal(data.personalCreditsAwarded,0);
 });
 

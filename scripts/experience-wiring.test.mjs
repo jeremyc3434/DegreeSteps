@@ -3,6 +3,17 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {applyExperience} from './apply-brand-system.mjs';
 
+test('homepage walkthrough styling follows shared styles once and stays scoped to the homepage',()=>{
+ const source='<html><head><link rel="stylesheet" href="/home-steps.css"><script src="/home-steps.js" defer></script></head><body class="public-page home-public"><main id="keep-home"></main></body></html>';
+ const result=applyExperience(source,'index.html');
+ assert.equal(result.styles.at(-1),'home-steps.css');
+ assert.equal((result.html.match(/href="\/home-steps.css"/g)||[]).length,1);
+ assert.equal((result.html.match(/src="\/home-steps.js"/g)||[]).length,1);
+ assert(result.html.indexOf('href="/home-steps.css"')>result.html.indexOf('href="/public-design.css"'));
+ assert.equal(applyExperience(result.html,'index.html').html,result.html);
+ assert(!applyExperience('<html><head></head><body class="public-page"></body></html>','schools/example/index.html').styles.includes('home-steps.css'));
+});
+
 const css=html=>[...html.matchAll(/<link\b[^>]*\bhref="([^" ]+\.css)"/g)].map(match=>match[1]);
 test('the complete working plan retains every source control while shared styles precede its dedicated design',async()=>{
  const before=await readFile(new URL('../dist/plan.html',import.meta.url),'utf8'),result=applyExperience(before,'plan.html');
