@@ -25,10 +25,12 @@ test('source: resident culminating choice, grades and prerequisite chain are ind
  assert(model.graduationRequirements.some(item=>item.id==='cser'));assert.equal(model.completeExecutablePathway,false);
 });
 test('source: exact reviewed residential guide awards retain their own evidence dates',()=>{
- const options=model.requirements.flatMap(row=>row.options);assert(new Set(options.map(option=>option.provider)).size>=4);
+ // The kit-published model also carries elective and shared placements; the exact official-guide placements are the reviewed guide awards.
+ const options=model.requirements.flatMap(row=>row.options).filter(option=>option.mappingReviewId==='liberty-official-2026-11-10'&&option.evidence==='published');assert(options.length>=40);assert(new Set(options.map(option=>option.provider)).size>=4);
  assert(options.every(option=>option.mappingScope.includes('delivery format')));
  assert(options.every(option=>option.sourceIds.every(id=>model.sources.some(source=>source.id===id&&!source.url.includes('/online/')))));
- assert(model.sources.filter(source=>source.evidenceType==='official-receiving-school-equivalency').every(source=>source.checked==='2026-11-10'));
+ const cited=model.sources.filter(source=>options.some(option=>option.sourceIds.includes(source.id)));assert(cited.length>=4);
+ assert(cited.every(source=>source.evidenceType==='official-receiving-school-equivalency'&&source.checked==='2026-11-10'));
 });
 test('compiled: campus selection opens its own full provisional plan with school and major residency enforced',()=>{
  const c=catalog(),program=compiled(),route=c.pathways.find(route=>route.modelId===mid);assert(route);assert.deepEqual(route.modalities,['campus']);assert.equal(route.parentId,'liberty-catalog-fa62c08cdfa0c990');

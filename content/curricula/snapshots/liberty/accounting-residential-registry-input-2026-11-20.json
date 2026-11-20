@@ -1,0 +1,1550 @@
+{
+  "version": 1,
+  "purpose": "Frozen registry input for the reviewed Accounting (Residential) named-choice stage, as it stood before Liberty moved to content/pathway-kits/liberty (2026-11-20). Test fixture only: the registry never reads it, and the kit publishes the reviewed result.",
+  "frozenFrom": "content/curricula/liberty.json@ca48aeb",
+  "checkedOn": "2026-11-10",
+  "model": {
+    "id": "curriculum-liberty-accounting-bs-residential",
+    "routeIds": [
+      "liberty-catalog-d9815823d612fac8-residential"
+    ],
+    "school": "Liberty University",
+    "title": "Accounting & Data Analysis (B.S.) — Residential",
+    "format": "Residential",
+    "modalities": [
+      "campus"
+    ],
+    "level": "bachelor",
+    "catalog": "2026–2027",
+    "catalogYear": "2026-2027",
+    "totalCredits": 120,
+    "creditSystem": "semester",
+    "institutionMinCredits": 30,
+    "externalMaxCredits": 90,
+    "majorInstitutionFraction": 0.25,
+    "majorResidencyBasisCredits": 69,
+    "sources": [
+      {
+        "id": "liberty-accounting-bs-residential-2026",
+        "title": "Accounting & Data Analysis (B.S.) — Residential official 2026–27 degree completion plan",
+        "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-data-analysis-major-bs/accounting-data-analysis-bs-resident/",
+        "checked": "2026-11-10"
+      },
+      {
+        "id": "liberty-residential-approved-gened",
+        "title": "Liberty approved general-education courses for residential programs, 2026–27",
+        "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-residential-programs/",
+        "checked": "2026-11-10"
+      },
+      {
+        "id": "liberty-official-sophia-residential-2026-05",
+        "title": "Liberty residential Sophia receiving-course equivalency guide · 2026-05",
+        "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "checked": "2026-11-10",
+        "guideUpdated": "2026-05",
+        "evidenceType": "official-receiving-school-equivalency",
+        "scope": "Schoolwide named receiving-course awards; exact degree, catalog and individual applicability require evaluation."
+      },
+      {
+        "id": "liberty-official-study-com-residential-2026-05",
+        "title": "Liberty residential Study.com receiving-course equivalency guide · 2026-05",
+        "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+        "checked": "2026-11-10",
+        "guideUpdated": "2026-05",
+        "evidenceType": "official-receiving-school-equivalency",
+        "scope": "Schoolwide named receiving-course awards; exact degree, catalog and individual applicability require evaluation."
+      },
+      {
+        "id": "liberty-official-straighterline-residential-2026-04",
+        "title": "Liberty residential StraighterLine receiving-course equivalency guide · 2026-04",
+        "url": "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+        "checked": "2026-11-10",
+        "guideUpdated": "2026-04",
+        "evidenceType": "official-receiving-school-equivalency",
+        "scope": "Schoolwide named receiving-course awards; exact degree, catalog and individual applicability require evaluation."
+      },
+      {
+        "id": "liberty-official-clep-residential-2025-08",
+        "title": "Liberty residential CLEP receiving-course equivalency guide · 2025-08",
+        "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "checked": "2026-11-10",
+        "guideUpdated": "2025-08",
+        "evidenceType": "official-receiving-school-equivalency",
+        "scope": "Schoolwide named receiving-course awards; exact degree, catalog and individual applicability require evaluation."
+      },
+      {
+        "id": "liberty-residential-tuition-2026-2027-reviewed",
+        "title": "Liberty residential undergraduate tuition, Fall 2026–Spring 2027",
+        "url": "https://www.liberty.edu/residential/tuition-and-fees/",
+        "kind": "university",
+        "checked": "2026-11-17",
+        "scope": "Standard residential undergraduate tuition; not graduate, special-population or all-in degree cost."
+      },
+      {
+        "id": "liberty-residential-academic-policy-2026-2027-reviewed",
+        "title": "Liberty residential academic information and policies, 2026–2027",
+        "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-resident-program/",
+        "kind": "university",
+        "checked": "2026-11-17",
+        "retrieval": "Current official catalog indexed primary content reviewed; direct retrieval timed out."
+      },
+      {
+        "id": "sophia-soph-0085-current-offer",
+        "kind": "provider",
+        "title": "Sophia current Principles of Marketing offering and source semester credits",
+        "url": "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "checkedOn": "2026-11-17",
+        "retrieval": "full-public-course-page-opened"
+      },
+      {
+        "id": "sophia-soph-0085-current-offer-syllabus",
+        "kind": "provider",
+        "title": "Current syllabus linked by Sophia Principles of Marketing course page",
+        "url": "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "checkedOn": "2026-11-17",
+        "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+        "sha256": "7b674b6a4670877dc2f6f443a89253477f9adb08bf3b3d94e518b0361b45a64b"
+      },
+      {
+        "id": "sophia-soph-0086-current-offer",
+        "kind": "provider",
+        "title": "Sophia current Operations Management offering and source semester credits",
+        "url": "https://www.sophia.org/online-courses/business/operations-management/",
+        "checkedOn": "2026-11-17",
+        "retrieval": "full-public-course-page-opened"
+      },
+      {
+        "id": "sophia-soph-0086-current-offer-syllabus",
+        "kind": "provider",
+        "title": "Current syllabus linked by Sophia Operations Management course page",
+        "url": "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "checkedOn": "2026-11-17",
+        "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+        "sha256": "d3b6aea422fdd0414cd0b93b34fcf8dea4f7786148f8b843c11ade7a8186e55f"
+      }
+    ],
+    "requirements": [
+      {
+        "id": "engl-101",
+        "code": "ENGL 101",
+        "title": "Composition and Rhetoric",
+        "credits": 3,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [
+          {
+            "id": "sophia-soph-0015",
+            "provider": "Sophia",
+            "code": "SOPH-0015",
+            "providerCourseCode": "ENG1001",
+            "codeAliases": [
+              "ENG1001"
+            ],
+            "identitySourceIds": [
+              "liberty-official-sophia-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "ENG1001",
+                "sourceIds": [
+                  "liberty-official-sophia-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "English Composition I",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "ENGL 101",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-sophia-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ]
+          },
+          {
+            "id": "studycom-sdcm-0057",
+            "provider": "Study.com",
+            "code": "SDCM-0057",
+            "providerCourseCode": "English 104",
+            "codeAliases": [
+              "English 104"
+            ],
+            "identitySourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "English 104",
+                "sourceIds": [
+                  "liberty-official-study-com-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "College Composition I",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "ENGL 101",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 2,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ]
+          },
+          {
+            "id": "studycom-sdcm-0244",
+            "provider": "Study.com",
+            "code": "SDCM-0244",
+            "providerCourseCode": "English 204",
+            "codeAliases": [
+              "English 204"
+            ],
+            "identitySourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "English 204",
+                "sourceIds": [
+                  "liberty-official-study-com-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "English Composition I",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "ENGL 101",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 2,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ]
+          },
+          {
+            "id": "straighterline-oosl-0005",
+            "provider": "StraighterLine",
+            "code": "OOSL-0005",
+            "providerCourseCode": "ENG101",
+            "codeAliases": [
+              "ENG101"
+            ],
+            "identitySourceIds": [
+              "liberty-official-straighterline-residential-2026-04"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "ENG101",
+                "sourceIds": [
+                  "liberty-official-straighterline-residential-2026-04"
+                ]
+              }
+            ],
+            "title": "English Composition I",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "ENGL 101",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-straighterline-residential-2026-04"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-04",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ]
+          },
+          {
+            "id": "clep-clep-0041",
+            "provider": "CLEP",
+            "code": "CLEP-0041",
+            "providerCourseCode": "College Composition Modular",
+            "codeAliases": [
+              "College Composition Modular"
+            ],
+            "identitySourceIds": [
+              "liberty-official-clep-residential-2025-08"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "College Composition Modular",
+                "sourceIds": [
+                  "liberty-official-clep-residential-2025-08"
+                ]
+              }
+            ],
+            "title": "College Composition Modular",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCreditBasis": "Independent CLEP/ACE source-credit quantity not established by the receiving-school guide.",
+            "receivingCode": "ENGL 101",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-clep-residential-2025-08"
+            ],
+            "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2025-08",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "minScore": 50,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted.",
+              "Minimum CLEP score: 50. Submit the official College Board report for evaluation."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "univ-101",
+        "code": "UNIV 101",
+        "title": "Foundational Skills",
+        "credits": 1,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": []
+      },
+      {
+        "id": "rlgn-105",
+        "code": "RLGN 105",
+        "title": "Introduction to Biblical Worldview",
+        "credits": 2,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": []
+      },
+      {
+        "id": "evan-101",
+        "code": "EVAN 101",
+        "title": "Evangelism and the Christian Life",
+        "credits": 2,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": []
+      },
+      {
+        "id": "bibl-105",
+        "code": "BIBL 105",
+        "title": "Old Testament Survey",
+        "credits": 2,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": []
+      },
+      {
+        "id": "bibl-110",
+        "code": "BIBL 110",
+        "title": "New Testament Survey",
+        "credits": 2,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": []
+      },
+      {
+        "id": "theo-201",
+        "code": "THEO 201",
+        "title": "Theology Survey I",
+        "credits": 2,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": []
+      },
+      {
+        "id": "theo-202",
+        "code": "THEO 202",
+        "title": "Theology Survey II",
+        "credits": 2,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": []
+      },
+      {
+        "id": "general-choice-1",
+        "code": "",
+        "title": "Communications elective",
+        "credits": 3,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "bucket": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "choiceNote": "Choose an approved residential general-education course; exact alternatives need receiving-school confirmation."
+      },
+      {
+        "id": "general-choice-2",
+        "code": "",
+        "title": "Information literacy elective",
+        "credits": 3,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "bucket": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "choiceNote": "Choose an approved residential general-education course; exact alternatives need receiving-school confirmation."
+      },
+      {
+        "id": "general-choice-3",
+        "code": "",
+        "title": "Information literacy elective",
+        "credits": 3,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "bucket": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "choiceNote": "Choose an approved residential general-education course; exact alternatives need receiving-school confirmation."
+      },
+      {
+        "id": "general-choice-4",
+        "code": "",
+        "title": "Math elective — MATH 114 or higher",
+        "credits": 3,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "bucket": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "choiceNote": "Choose an approved residential general-education course; exact alternatives need receiving-school confirmation."
+      },
+      {
+        "id": "general-choice-5",
+        "code": "",
+        "title": "Critical thinking elective",
+        "credits": 3,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "bucket": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "choiceNote": "Choose an approved residential general-education course; exact alternatives need receiving-school confirmation."
+      },
+      {
+        "id": "general-choice-6",
+        "code": "",
+        "title": "Cultural studies elective",
+        "credits": 3,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "bucket": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "choiceNote": "Choose an approved residential general-education course; exact alternatives need receiving-school confirmation."
+      },
+      {
+        "id": "general-choice-7",
+        "code": "",
+        "title": "Natural science elective",
+        "credits": 3,
+        "category": "general",
+        "group": "general",
+        "upper": false,
+        "bucket": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "choiceNote": "Choose an approved residential general-education course; exact alternatives need receiving-school confirmation."
+      },
+      {
+        "id": "busi-201",
+        "code": "BUSI 201",
+        "title": "Intermediate Business Computer Applications",
+        "credits": 3,
+        "category": "major",
+        "group": "major-foundations",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "busi-205",
+        "code": "BUSI 205",
+        "title": "Introduction to Business Research Methods",
+        "credits": 3,
+        "category": "major",
+        "group": "major-foundations",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "econ-213",
+        "code": "ECON 213",
+        "title": "Principles of Microeconomics",
+        "credits": 3,
+        "category": "major",
+        "group": "major-foundations",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [
+          {
+            "id": "sophia-soph-0011",
+            "provider": "Sophia",
+            "code": "SOPH-0011",
+            "providerCourseCode": "ECON1002",
+            "codeAliases": [
+              "ECON1002"
+            ],
+            "identitySourceIds": [
+              "liberty-official-sophia-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "ECON1002",
+                "sourceIds": [
+                  "liberty-official-sophia-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "Microeconomics",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "ECON 213",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-sophia-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ]
+          },
+          {
+            "id": "studycom-sdcm-0069",
+            "provider": "Study.com",
+            "code": "SDCM-0069",
+            "providerCourseCode": "Economics 101",
+            "codeAliases": [
+              "Economics 101"
+            ],
+            "identitySourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "Economics 101",
+                "sourceIds": [
+                  "liberty-official-study-com-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "Principles of Microeconomics",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "ECON 213",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 2,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ]
+          },
+          {
+            "id": "straighterline-oosl-0008",
+            "provider": "StraighterLine",
+            "code": "OOSL-0008",
+            "providerCourseCode": "ECON102",
+            "codeAliases": [
+              "ECON102"
+            ],
+            "identitySourceIds": [
+              "liberty-official-straighterline-residential-2026-04"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "ECON102",
+                "sourceIds": [
+                  "liberty-official-straighterline-residential-2026-04"
+                ]
+              }
+            ],
+            "title": "Microeconomics",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "ECON 213",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-straighterline-residential-2026-04"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-04",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ]
+          },
+          {
+            "id": "clep-clep-0030",
+            "provider": "CLEP",
+            "code": "CLEP-0030",
+            "providerCourseCode": "Principles of Microeconomics",
+            "codeAliases": [
+              "Principles of Microeconomics"
+            ],
+            "identitySourceIds": [
+              "liberty-official-clep-residential-2025-08"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "Principles of Microeconomics",
+                "sourceIds": [
+                  "liberty-official-clep-residential-2025-08"
+                ]
+              }
+            ],
+            "title": "Principles of Microeconomics",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCreditBasis": "Independent CLEP/ACE source-credit quantity not established by the receiving-school guide.",
+            "receivingCode": "ECON 213",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-clep-residential-2025-08"
+            ],
+            "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2025-08",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "minScore": 50,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted.",
+              "Minimum CLEP score: 50. Submit the official College Board report for evaluation."
+            ]
+          }
+        ],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-211",
+        "code": "ACCT 211",
+        "title": "Financial Principles",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [
+          {
+            "id": "clep-clep-0039",
+            "provider": "CLEP",
+            "code": "CLEP-0039",
+            "providerCourseCode": "Financial Accounting",
+            "codeAliases": [
+              "Financial Accounting"
+            ],
+            "identitySourceIds": [
+              "liberty-official-clep-residential-2025-08"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "Financial Accounting",
+                "sourceIds": [
+                  "liberty-official-clep-residential-2025-08"
+                ]
+              }
+            ],
+            "title": "Financial Accounting",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCreditBasis": "Independent CLEP/ACE source-credit quantity not established by the receiving-school guide.",
+            "receivingCode": "ACCT 211",
+            "upper": false,
+            "sourceIds": [
+              "liberty-official-clep-residential-2025-08"
+            ],
+            "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2025-08",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "minScore": 50,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted.",
+              "Minimum CLEP score: 50. Submit the official College Board report for evaluation."
+            ]
+          }
+        ],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-212",
+        "code": "ACCT 212",
+        "title": "Managerial Principles",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": false,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-301",
+        "code": "ACCT 301",
+        "title": "Intermediate Financial Accounting I",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-302",
+        "code": "ACCT 302",
+        "title": "Intermediate Financial Accounting II",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-311",
+        "code": "ACCT 311",
+        "title": "Corporate Accounting",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-332",
+        "code": "ACCT 332",
+        "title": "Accounting and Control",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-350",
+        "code": "ACCT 350",
+        "title": "Accounting Ethics and Professional Responsibility",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-370",
+        "code": "ACCT 370",
+        "title": "Financial Statement Analysis",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-401",
+        "code": "ACCT 401",
+        "title": "Individual Taxation",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-402",
+        "code": "ACCT 402",
+        "title": "Consolidations and Advanced Accounting Topics",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-403",
+        "code": "ACCT 403",
+        "title": "Fund Accounting for Government and Not for Profits",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-404",
+        "code": "ACCT 404",
+        "title": "Assurance and Attestation",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-406",
+        "code": "ACCT 406",
+        "title": "Principles of Forensic Accounting",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-412",
+        "code": "ACCT 412",
+        "title": "Corporate/Partnership/Estate Taxation",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "acct-470",
+        "code": "ACCT 470",
+        "title": "Advanced Data Analysis and Reporting",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "busi-301",
+        "code": "BUSI 301",
+        "title": "Legal and Ethical Concepts for Decision Makers",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "busi-320",
+        "code": "BUSI 320",
+        "title": "Finance Principles",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [
+          {
+            "id": "studycom-sdcm-0153",
+            "provider": "Study.com",
+            "code": "SDCM-0153",
+            "providerCourseCode": "Finance 301",
+            "codeAliases": [
+              "Finance 301"
+            ],
+            "identitySourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "Finance 301",
+                "sourceIds": [
+                  "liberty-official-study-com-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "Corporate Finance",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "BUSI 320",
+            "receivingTitle": "Corporate Finance",
+            "upper": true,
+            "sourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 2,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted.",
+              "The guide names BUSI 320 Corporate Finance; the 2026–27 catalog names the same code Finance Principles. Confirm current title and applicability with Liberty."
+            ]
+          }
+        ],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "busi-330",
+        "code": "BUSI 330",
+        "title": "Principles of Marketing",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [
+          {
+            "id": "sophia-soph-0085",
+            "provider": "Sophia",
+            "code": "SOPH-0085",
+            "providerCourseCode": "BUSI2020",
+            "codeAliases": [
+              "BUSI2020"
+            ],
+            "identitySourceIds": [
+              "liberty-official-sophia-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "BUSI2020",
+                "sourceIds": [
+                  "liberty-official-sophia-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "Principles of Marketing",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "BUSI 330",
+            "upper": true,
+            "sourceIds": [
+              "liberty-official-sophia-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ],
+            "listingIdentityIds": [
+              "sophia-ede6ac6336a341dfe8"
+            ],
+            "listingIdentitySourceIds": [
+              "sophia-soph-0085-current-offer",
+              "sophia-soph-0085-current-offer-syllabus"
+            ]
+          }
+        ],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "busi-490",
+        "code": "BUSI 490",
+        "title": "Capstone",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "busi-411",
+        "code": "BUSI 411",
+        "title": "Operations Strategy",
+        "credits": 3,
+        "category": "major",
+        "group": "major-core",
+        "upper": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [
+          {
+            "id": "sophia-soph-0086",
+            "provider": "Sophia",
+            "code": "SOPH-0086",
+            "providerCourseCode": "BUSI2030",
+            "codeAliases": [
+              "BUSI2030"
+            ],
+            "identitySourceIds": [
+              "liberty-official-sophia-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "BUSI2030",
+                "sourceIds": [
+                  "liberty-official-sophia-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "Operations Management",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "BUSI 411",
+            "upper": true,
+            "sourceIds": [
+              "liberty-official-sophia-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ],
+            "listingIdentityIds": [
+              "sophia-9cf09679d8ff4be925"
+            ],
+            "listingIdentitySourceIds": [
+              "sophia-soph-0086-current-offer",
+              "sophia-soph-0086-current-offer-syllabus"
+            ]
+          },
+          {
+            "id": "studycom-sdcm-0050",
+            "provider": "Study.com",
+            "code": "SDCM-0050",
+            "providerCourseCode": "Business 312",
+            "codeAliases": [
+              "Business 312"
+            ],
+            "identitySourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "codeAliasEvidence": [
+              {
+                "alias": "Business 312",
+                "sourceIds": [
+                  "liberty-official-study-com-residential-2026-05"
+                ]
+              }
+            ],
+            "title": "Advanced Operations Management",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceCredits": 3,
+            "sourceCreditSystem": "semester",
+            "receivingCode": "BUSI 411",
+            "upper": true,
+            "sourceIds": [
+              "liberty-official-study-com-residential-2026-05"
+            ],
+            "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+            "evidence": "published",
+            "mappingChecked": "2026-11-10",
+            "guideUpdated": "2026-05",
+            "mappingReviewId": "liberty-official-2026-11-10",
+            "mappingScope": "Exact named receiving-course award in the official guide linked by Liberty for this delivery format; degree placement uses the independently sourced requirement code.",
+            "sourcePage": 1,
+            "conditions": [
+              "Published receiving-school award; individual credit, duplicate learning, catalog eligibility, and the current provider recommendation version require Liberty evaluation. No student award is asserted."
+            ]
+          }
+        ],
+        "minimumGrade": "C",
+        "minimumGradeSourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "free-electives",
+        "code": "",
+        "title": "Free electives — courses not already counted in this degree",
+        "credits": 14,
+        "category": "electives",
+        "group": "electives",
+        "upper": false,
+        "bucket": true,
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ],
+        "options": [],
+        "allowedCreditsRange": [
+          8,
+          14
+        ],
+        "excludeAlreadyUsed": true,
+        "freeElective": true
+      }
+    ],
+    "coverage": "complete",
+    "coverageLabel": "Source-linked full-credit curriculum with proposed approved-course choices; transfer matches require separate evidence.",
+    "completeExecutablePathway": false,
+    "rulesNotes": [
+      "A 120-credit zero-technology-assessment scenario: 37 unique general-education credits + 9 major-foundation credits + 60 major-course credits + 14 free-elective credits.",
+      "The published resident sequence uses ECON 213 as social science; its 3 credits are counted once.",
+      "Technology competency is printed as 0–3 credits. The zero-credit scenario requires passing the university assessment; otherwise adjust elective allocation.",
+      "The residential major uses ACCT 350 and BUSI 490, not the online ACCT 340/BUSI 400 pair.",
+      "RLGN 105/EVAN 101 waivers at 45 transfer credits and THEO 201/THEO 202 waivers at 60 require individual evaluation; no automatic removal occurs."
+    ],
+    "unresolved": [
+      {
+        "message": "Confirm that your admission and enrollment history entitles you to the 2026–2027 catalog, and send official records for Liberty’s individual degree audit.",
+        "owner": "student",
+        "status": "personal-task",
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "message": "Check course-specific prerequisites and outside-course recommendation versions where current evidence has not yet been recorded.",
+        "owner": "DegreePath",
+        "status": "unresolved",
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "message": "The published 25% major-residency fraction is enforced against this model’s reviewed 69-credit major ledger; individual transfer awards remain separate.",
+        "owner": "DegreePath",
+        "status": "resolved",
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026",
+          "liberty-residential-academic-policy-2026-2027-reviewed"
+        ]
+      },
+      "Outside-course equivalencies must be sourced separately; a university requirement is not evidence that a particular accelerated course transfers."
+    ],
+    "graduationRequirements": [
+      {
+        "id": "gpa",
+        "title": "Overall GPA",
+        "detail": "At least 2.0 overall GPA.",
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "degree-application",
+        "title": "Graduation application",
+        "detail": "Submit the degree completion application within the last semester of the anticipated graduation date.",
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "id": "major-minimum-grade",
+        "title": "Major course grades",
+        "detail": "At least C in the requirements under the catalog major section, including its listed foundations and other named major sections.",
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      }
+    ],
+    "upperMinCredits": 30,
+    "catalogParentId": "liberty-catalog-d9815823d612fac8",
+    "overlaps": [
+      {
+        "requirementId": "econ-213",
+        "alsoSatisfies": "Social Science Elective",
+        "creditsCountedOnce": 3
+      }
+    ],
+    "obligations": [
+      {
+        "title": "Technology competency",
+        "notes": "Pass the computer assessment or complete the applicable INFT course (0–3 source credits).",
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      },
+      {
+        "title": "Christian/Community Service",
+        "notes": "Satisfy applicable CSER obligations; these are not extra academic credits in this ledger.",
+        "sourceIds": [
+          "liberty-accounting-bs-residential-2026"
+        ]
+      }
+    ],
+    "curriculumSections": [
+      {
+        "id": "general",
+        "title": "General education and foundational skills",
+        "requirementIds": [
+          "engl-101",
+          "univ-101",
+          "rlgn-105",
+          "evan-101",
+          "bibl-105",
+          "bibl-110",
+          "theo-201",
+          "theo-202",
+          "general-choice-1",
+          "general-choice-2",
+          "general-choice-3",
+          "general-choice-4",
+          "general-choice-5",
+          "general-choice-6",
+          "general-choice-7"
+        ],
+        "sourceId": "liberty-accounting-bs-residential-2026"
+      },
+      {
+        "id": "major",
+        "title": "Major and major foundations",
+        "requirementIds": [
+          "busi-201",
+          "busi-205",
+          "econ-213",
+          "acct-211",
+          "acct-212",
+          "acct-301",
+          "acct-302",
+          "acct-311",
+          "acct-332",
+          "acct-350",
+          "acct-370",
+          "acct-401",
+          "acct-402",
+          "acct-403",
+          "acct-404",
+          "acct-406",
+          "acct-412",
+          "acct-470",
+          "busi-301",
+          "busi-320",
+          "busi-330",
+          "busi-490",
+          "busi-411"
+        ],
+        "sourceId": "liberty-accounting-bs-residential-2026"
+      },
+      {
+        "id": "electives",
+        "title": "Free electives",
+        "requirementIds": [
+          "free-electives"
+        ],
+        "sourceId": "liberty-accounting-bs-residential-2026"
+      }
+    ],
+    "gradePolicy": {
+      "minimumGrade": "C",
+      "scope": "major-requirements",
+      "sourceIds": [
+        "liberty-accounting-bs-residential-2026"
+      ],
+      "checked": "2026-11-10",
+      "detail": "At least C in the requirements under the catalog major section, including its listed foundations and other named major sections.",
+      "scopeNote": "The catalog says all courses in the major and places foundations and major courses under Major Requirements; confirm individual evaluation of foundations with Liberty."
+    },
+    "officialMappingCheckedOn": "2026-11-10",
+    "pricing": {
+      "model": "banded-term",
+      "termRate": 12695,
+      "bandMin": 12,
+      "bandMax": 18,
+      "partTimeRate": 870,
+      "partTimeMaximumCreditsExclusive": 12,
+      "summerRate": 475,
+      "period": "semester",
+      "currency": "USD",
+      "catalogYear": "2026-2027",
+      "sourceUrl": "https://www.liberty.edu/residential/tuition-and-fees/",
+      "sourceIds": [
+        "liberty-residential-tuition-2026-2027-reviewed"
+      ],
+      "checkedOn": "2026-11-17",
+      "exclusions": [
+        "Fees, housing, meals, books, supplies and course-specific charges are separate.",
+        "The full-time band applies to fall and spring semesters. Summer uses a separate per-credit rate.",
+        "Loads above 18 credits are outside this reviewed band; no overload charge is inferred."
+      ]
+    },
+    "policyEvidence": {
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "liberty-residential-academic-policy-2026-2027-reviewed"
+        ],
+        "calculation": "25% of the published degree-credit total must be completed through Liberty."
+      },
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "liberty-residential-academic-policy-2026-2027-reviewed"
+        ],
+        "calculation": "Published degree total minus the 25% institutional minimum.",
+        "scope": "Overall ceiling only; exact course applicability, major/minor residency and source-specific policies remain separate."
+      },
+      "majorInstitutionFraction": {
+        "value": 0.25,
+        "sourceIds": [
+          "liberty-residential-academic-policy-2026-2027-reviewed"
+        ],
+        "scope": "Published fraction; the denominator is the exact degree major/minor ledger, not the whole degree."
+      }
+    },
+    "verifiedBasicsReview": {
+      "id": "strong-route-known-basics-2026-11-17",
+      "checkedOn": "2026-11-17",
+      "pricingScope": "standard-undergraduate",
+      "personalAwardsCreated": 0
+    }
+  }
+}

@@ -20,14 +20,21 @@ const newPrograms=new Map([
 
 test('the actual school batch applies one approved fact bundle across several degrees with auditable source lineage',()=>{
  assert.equal(bundle.reviewStatus,'approved');assert.equal(report.bundleId,bundle.id);assert.equal(report.bundleFingerprint,createHash('sha256').update(JSON.stringify(bundle)).digest('hex'));
- assert(report.summary.modelsChanged>=6);assert(report.summary.addedOptions>200);assert(report.summary.updatedOptions>200);
+ // Liberty publishes from its pathway kit, which already carries the bundle's placements; the registry composes the bundle
+ // again only as an audit that must change nothing. The applications are the published options that cite the bundle.
+ const factoryModels=registry.models.filter(entry=>entry.school==='Liberty University'&&entry.path.startsWith('data/curricula/')).map(entry=>modelFor(entry.id));
+ const applications=factoryModels.flatMap(model=>model.requirements.flatMap(row=>row.options.filter(option=>option.sharedAwardProvenance?.bundleId===bundle.id).map(option=>({modelId:model.id,requirementId:row.id,optionId:option.id,awardId:option.sharedAwardProvenance.awardId,providerCourseId:option.sharedAwardProvenance.providerCourseId}))));
+ assert(new Set(applications.map(item=>item.modelId)).size>=6);assert(applications.length>400);
+ for(const model of factoryModels){const audit=report.reports.find(result=>result.modelId===model.id);if(audit){assert.equal(audit.addedOptions,0);assert.equal(audit.updatedOptions,0);}assert(!report.unprocessedProgramIds.includes(model.id));}
+ assert.equal(report.summary.addedOptions,0);assert.equal(report.summary.updatedOptions,0);
  assert.equal(report.privateStudentRecordsIncluded,false);assert.equal(report.studentCreditsAwarded,0);assert.equal(report.publicationDecisionsMade,0);
  const awards=new Map(bundle.awards.map(award=>[award.id,award])),courses=new Map(bundle.providerCourses.map(course=>[course.id,course])),rules=new Map(bundle.placementRules.map(rule=>[rule.id,rule]));
  const seenModels=new Set(),reuseCounts=new Map();let exact=0,free=0;
- for(const result of report.reports){
-  const model=modelFor(result.modelId);assert.equal(result.studentCreditsAwarded,0);assert.equal(result.publicationDecisionsMade,0);
+ for(const result of report.reports){assert.equal(result.studentCreditsAwarded,0);assert.equal(result.publicationDecisionsMade,0);}
+ for(const modelId of new Set(applications.map(item=>item.modelId))){
+  const model=modelFor(modelId);
   assert.equal(model.requirements.reduce((sum,row)=>sum+row.credits,0),model.totalCredits);assert.equal(model.creditSystem,'semester');
-  for(const application of result.applications){
+  for(const application of applications.filter(item=>item.modelId===modelId)){
    const row=model.requirements.find(row=>row.id===application.requirementId),option=row.options.find(option=>option.id===application.optionId),award=awards.get(application.awardId),course=courses.get(application.providerCourseId),rule=rules.get(option.sharedAwardProvenance.placementRuleId);
    assert(row&&option&&award&&course&&rule);assert.equal(row.institutionalOnly===true,false);assert.equal(option.evidence,'published');assert.equal(option.mappingReviewId,bundle.id);
    assert.equal(model.school,award.scope.school);assert.equal(model.catalogYear||model.catalog,award.scope.catalog);assert.equal(model.format,'Online');assert(award.scope.programIds.includes(model.id));assert(rule.modelIds.includes(model.id));
@@ -40,7 +47,7 @@ test('the actual school batch applies one approved fact bundle across several de
    seenModels.add(model.id);reuseCounts.set(course.id,(reuseCounts.get(course.id)||new Set()).add(model.id));
   }
  }
- assert.equal(seenModels.size,report.summary.modelsChanged);assert(exact>0&&free>0);assert([...reuseCounts.values()].some(ids=>ids.size>=5),'The same reviewed provider identity must actually reach several degrees');
+ assert.equal(seenModels.size,new Set(applications.map(item=>item.modelId)).size);assert(exact>0&&free>0);assert([...reuseCounts.values()].some(ids=>ids.size>=5),'The same reviewed provider identity must actually reach several degrees');
 });
 
 test('composing the compiled batch again preserves option IDs, ledger totals and all existing academic policies',()=>{

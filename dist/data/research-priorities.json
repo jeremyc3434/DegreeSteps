@@ -1,29 +1,29 @@
 {
   "schemaRevision": "research-priorities-v1",
-  "revision": "research-priorities-v1:24bd30c297350d0e76dc5edaa598a7f16290844e3af4a10a602284890600aa30",
+  "revision": "research-priorities-v1:a970421225cf9029ebff67955fea456ce4620244a537afdc3ce17515d7127481",
   "asOf": "2026-11-20",
   "inputFingerprints": {
     "inventory": "5641a61bc3ad2f827256cb7c64f05d9e91e5d46720938a1033ab2eb1800c60b4",
-    "models": "667c00fff31299680c73851adcd77bde39792dc910d93a72d5d08c5cdae36d5c",
+    "models": "65d8a76486f12b527a0caa64a63e34de84fc80d838d5d2cd79e5844e25e88f14",
     "pathways": "724ccdc082fc8c4659451d1e3e3c7b85df95e4c1a026e50bad5c7d87c8a6e1f2",
     "programCatalog": "d46e34eb28c79ac3484bb39af59ca245a509492c3e13db9563784e1d0f5de862",
     "providerDiscovery": "3071f4db1055a48686b22f38dc16872f870026bb93941c5f8486214298eda90c",
-    "quality": "b01a95c5ae9e703b396171f5c5b72a30c989e21affd8c2bf320cc15d15fc691c",
-    "registry": "b4563928f8b8cde34e52921e4372cf6b4ef8a561b54fef7b58c65ddcb198e334",
+    "quality": "c0c2184ad061fa02bc6d6aa338a278f5f72d9ba65a6ae7626d971a735f3fc1b9",
+    "registry": "f54c1d0091269ca771b58c09f19f7c86981c50f4be0868326f63ed6e721225ea",
     "schoolInsights": "9b84b9db33a9014067bc7c797cf5d9aa4f3914bf64afda474c9bd92f872f6df6",
     "tesuExamReview": "5d9b52d81bbe4375dc9d1ad7acd2e8d1c00bf62e59b79bd4a303cbaf2505fb0e",
     "umpiPrimaryReview": "c2345e5b07e6db37f4876b2c17180e9a220aff6676f31b5dbebc99c2baaf184c"
   },
-  "academicRegistryRevision": "academic-v1:7d6eeb98dd978a5ed8464d710d3c15fe84a95d29f96eee74ae566da578cb2cba",
+  "academicRegistryRevision": "academic-v1:358f8c45728561575aab70522c1d2294ed85a438f78414c5e10c381c72378037",
   "scope": "Cross-school research prioritization from the existing directory, exact model registry, recorded publication checks and sourced policy channels. This static backlog does not publish a degree map, grant student credit, establish popularity or start a research job.",
   "summary": {
     "schools": 22,
     "programs": 1664,
     "directoryPrograms": 1633,
-    "modelPrograms": 55,
-    "availableTemplates": 48,
+    "modelPrograms": 59,
+    "availableTemplates": 51,
     "publicationReady": 11,
-    "unmappedPrograms": 1606,
+    "unmappedPrograms": 1602,
     "inventoryCandidates": 95,
     "priorityInventoryDegreeCandidates": 10,
     "careerStageGuides": 3
@@ -70,7 +70,7 @@
       "reason": "A degree model exists but has not passed the publication review. Resolve its actual findings rather than start another outline.",
       "order": 3,
       "schoolCount": 4,
-      "programCount": 23,
+      "programCount": 27,
       "inventoryCandidateCount": 0
     },
     {
@@ -97,7 +97,7 @@
       "reason": "A listed program lacks enough explicit delivery, policy or model evidence to assign a stronger research group.",
       "order": 6,
       "schoolCount": 0,
-      "programCount": 717,
+      "programCount": 713,
       "inventoryCandidateCount": 0
     },
     {
@@ -2404,22 +2404,22 @@
       "coverage": {
         "directoryPrograms": 387,
         "programCount": 404,
-        "models": 16,
-        "availableTemplates": 14,
+        "models": 20,
+        "availableTemplates": 17,
         "publicationReady": 5,
-        "unmappedPrograms": 388,
-        "needsResearchPrograms": 11
+        "unmappedPrograms": 384,
+        "needsResearchPrograms": 15
       },
       "groupId": "existing-model-review",
       "nextActions": [
         {
           "id": "map-directory-gaps",
-          "label": "Build exact degree maps for 388 directory or curated program entries without models.",
+          "label": "Build exact degree maps for 384 directory or curated program entries without models.",
           "kind": "map-directory-gaps"
         },
         {
           "id": "resolve-existing-models",
-          "label": "Resolve remaining evidence and publication findings in 11 modeled program entries.",
+          "label": "Resolve remaining evidence and publication findings in 15 modeled program entries.",
           "kind": "resolve-existing-models"
         }
       ]
@@ -23045,6 +23045,147 @@
       "limitsAreNotCoursePlacements": true
     },
     {
+      "id": "liberty-catalog-314d0dd99bb3909d",
+      "parentId": null,
+      "schoolId": "liberty",
+      "title": "Accounting Major (A.A.)",
+      "level": "associate",
+      "catalog": "2026–2027",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "model-needs-research",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-liberty-accounting-aa-online",
+      "availableTemplate": false,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "baseline-course-choices",
+        "conditional-award",
+        "policy-unresolved",
+        "unresolved-research",
+        "validation-selection_required"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 60,
+        "unit": "semester",
+        "totalTransferMaximum": 45,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+        "https://catalog.liberty.edu/programs/",
+        "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-major-aa/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-major-aa/accounting-aa-online/",
+        "https://clep.collegeboard.org/clep-exams/humanities",
+        "https://getcollegecredit.com/exam/ethics-in-america/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9130f042-2988-f011-b4cc-6045bd0a807d",
+        "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/student-financial-services/tuition-fees/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, baseline-course-choices, conditional-award, policy-unresolved, unresolved-research, validation-selection_required.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "liberty-catalog-09af568a433b790e",
+      "parentId": null,
+      "schoolId": "liberty",
+      "title": "Apologetics Major (A.A.)",
+      "level": "associate",
+      "catalog": "2026–2027",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-liberty-apologetics-aa-online",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 60,
+        "unit": "semester",
+        "totalTransferMaximum": 45,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+        "https://catalog.liberty.edu/programs/",
+        "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/apologetics-major-aa/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/apologetics-major-aa/apologetics-aa/",
+        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+        "https://clep.collegeboard.org/clep-exams/humanities",
+        "https://getcollegecredit.com/exam/ethics-in-america/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9130f042-2988-f011-b4cc-6045bd0a807d",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/student-financial-services/tuition-fees/",
+        "https://www.sophia.org/online-courses/social-science/us-history-i/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, policy-unresolved, unresolved-research.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
       "id": "liberty-catalog-6652cf88788c7cbb-online",
       "parentId": "liberty-catalog-6652cf88788c7cbb",
       "schoolId": "liberty",
@@ -23361,6 +23502,75 @@
         {
           "id": "resolve-model-findings",
           "label": "Resolve this model’s recorded publication findings: acceleration-not-established, baseline-course-choices, mapping-scope, policy-unresolved, unresolved-research, validation-selection_required.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "liberty-catalog-f6de078c6efda116",
+      "parentId": null,
+      "schoolId": "liberty",
+      "title": "Criminal Justice Major (A.A.)",
+      "level": "associate",
+      "catalog": "2026–2027",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-liberty-criminal-justice-aa-online",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "conditional-award",
+        "mapping-scope",
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 60,
+        "unit": "semester",
+        "totalTransferMaximum": 45,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+        "https://catalog.liberty.edu/programs/",
+        "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-aa/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-aa/criminal-justice-aa-online/",
+        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+        "https://getcollegecredit.com/exam/ethics-in-america/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9130f042-2988-f011-b4cc-6045bd0a807d",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/student-financial-services/tuition-fees/",
+        "https://www.sophia.org/online-courses/social-science/us-history-i/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: conditional-award, mapping-scope, policy-unresolved, unresolved-research.",
           "kind": "resolve-model-findings"
         }
       ],
@@ -24121,6 +24331,77 @@
         {
           "id": "resolve-model-findings",
           "label": "Resolve this model’s recorded publication findings: baseline-course-choices, conditional-award, mapping-scope, policy-unresolved, unresolved-research, validation-selection_required.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "liberty-catalog-048aa55ff75b7f01",
+      "parentId": null,
+      "schoolId": "liberty",
+      "title": "Religion Major (A.A.)",
+      "level": "associate",
+      "catalog": "2026–2027",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-liberty-religion-aa-online",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 60,
+        "unit": "semester",
+        "totalTransferMaximum": 45,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+        "https://catalog.liberty.edu/programs/",
+        "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/religion-major-aa/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/religion-major-aa/religion-online/",
+        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+        "https://clep.collegeboard.org/clep-exams/humanities",
+        "https://getcollegecredit.com/exam/ethics-in-america/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9130f042-2988-f011-b4cc-6045bd0a807d",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/student-financial-services/tuition-fees/",
+        "https://www.sophia.org/online-courses/social-science/us-history-i/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, policy-unresolved, unresolved-research.",
           "kind": "resolve-model-findings"
         }
       ],
@@ -49458,53 +49739,6 @@
       "limitsAreNotCoursePlacements": true
     },
     {
-      "id": "liberty-catalog-314d0dd99bb3909d",
-      "parentId": null,
-      "schoolId": "liberty",
-      "title": "Accounting Major (A.A.)",
-      "level": "associate",
-      "catalog": null,
-      "modalities": [],
-      "sourceStatus": "curated-pathway",
-      "coverageStatus": "directory-only",
-      "groupId": "catalog-evidence-review",
-      "modelId": null,
-      "availableTemplate": false,
-      "publicationReady": false,
-      "publicationReasonCodes": [],
-      "programPolicy": {
-        "scope": "Exact degree model only; not a school-wide acceptance claim.",
-        "degreeQuantity": null,
-        "unit": null,
-        "totalTransferMaximum": null,
-        "alternativeCreditMaximum": null,
-        "totalLimitSourceUrls": [],
-        "alternativeLimitSourceUrls": []
-      },
-      "evidenceUrls": [
-        "https://catalog.liberty.edu/programs/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-major-aa/"
-      ],
-      "nextActions": [
-        {
-          "id": "resolve-delivery",
-          "label": "Resolve the exact online or campus program format.",
-          "kind": "resolve-delivery"
-        },
-        {
-          "id": "map-degree-requirements",
-          "label": "Capture the exact degree requirements, catalog and remaining university coursework.",
-          "kind": "map-degree-requirements"
-        },
-        {
-          "id": "map-transfer-options",
-          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
-          "kind": "map-transfer-options"
-        }
-      ],
-      "limitsAreNotCoursePlacements": true
-    },
-    {
       "id": "liberty-catalog-d3b75ca0a4a1f1c9",
       "parentId": null,
       "schoolId": "liberty",
@@ -49860,53 +50094,6 @@
       "evidenceUrls": [
         "https://catalog.liberty.edu/programs/",
         "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/apologetics-cultural-engagement-major-bs/"
-      ],
-      "nextActions": [
-        {
-          "id": "resolve-delivery",
-          "label": "Resolve the exact online or campus program format.",
-          "kind": "resolve-delivery"
-        },
-        {
-          "id": "map-degree-requirements",
-          "label": "Capture the exact degree requirements, catalog and remaining university coursework.",
-          "kind": "map-degree-requirements"
-        },
-        {
-          "id": "map-transfer-options",
-          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
-          "kind": "map-transfer-options"
-        }
-      ],
-      "limitsAreNotCoursePlacements": true
-    },
-    {
-      "id": "liberty-catalog-09af568a433b790e",
-      "parentId": null,
-      "schoolId": "liberty",
-      "title": "Apologetics Major (A.A.)",
-      "level": "associate",
-      "catalog": null,
-      "modalities": [],
-      "sourceStatus": "curated-pathway",
-      "coverageStatus": "directory-only",
-      "groupId": "catalog-evidence-review",
-      "modelId": null,
-      "availableTemplate": false,
-      "publicationReady": false,
-      "publicationReasonCodes": [],
-      "programPolicy": {
-        "scope": "Exact degree model only; not a school-wide acceptance claim.",
-        "degreeQuantity": null,
-        "unit": null,
-        "totalTransferMaximum": null,
-        "alternativeCreditMaximum": null,
-        "totalLimitSourceUrls": [],
-        "alternativeLimitSourceUrls": []
-      },
-      "evidenceUrls": [
-        "https://catalog.liberty.edu/programs/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/apologetics-major-aa/"
       ],
       "nextActions": [
         {
@@ -52539,53 +52726,6 @@
       "evidenceUrls": [
         "https://catalog.liberty.edu/programs/",
         "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/creative-writing-major-bs/"
-      ],
-      "nextActions": [
-        {
-          "id": "resolve-delivery",
-          "label": "Resolve the exact online or campus program format.",
-          "kind": "resolve-delivery"
-        },
-        {
-          "id": "map-degree-requirements",
-          "label": "Capture the exact degree requirements, catalog and remaining university coursework.",
-          "kind": "map-degree-requirements"
-        },
-        {
-          "id": "map-transfer-options",
-          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
-          "kind": "map-transfer-options"
-        }
-      ],
-      "limitsAreNotCoursePlacements": true
-    },
-    {
-      "id": "liberty-catalog-f6de078c6efda116",
-      "parentId": null,
-      "schoolId": "liberty",
-      "title": "Criminal Justice Major (A.A.)",
-      "level": "associate",
-      "catalog": null,
-      "modalities": [],
-      "sourceStatus": "curated-pathway",
-      "coverageStatus": "directory-only",
-      "groupId": "catalog-evidence-review",
-      "modelId": null,
-      "availableTemplate": false,
-      "publicationReady": false,
-      "publicationReasonCodes": [],
-      "programPolicy": {
-        "scope": "Exact degree model only; not a school-wide acceptance claim.",
-        "degreeQuantity": null,
-        "unit": null,
-        "totalTransferMaximum": null,
-        "alternativeCreditMaximum": null,
-        "totalLimitSourceUrls": [],
-        "alternativeLimitSourceUrls": []
-      },
-      "evidenceUrls": [
-        "https://catalog.liberty.edu/programs/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-aa/"
       ],
       "nextActions": [
         {
@@ -65746,53 +65886,6 @@
       "evidenceUrls": [
         "https://catalog.liberty.edu/programs/",
         "https://catalog.liberty.edu/undergraduate/colleges-schools/health-sciences/public-health-major-bs/"
-      ],
-      "nextActions": [
-        {
-          "id": "resolve-delivery",
-          "label": "Resolve the exact online or campus program format.",
-          "kind": "resolve-delivery"
-        },
-        {
-          "id": "map-degree-requirements",
-          "label": "Capture the exact degree requirements, catalog and remaining university coursework.",
-          "kind": "map-degree-requirements"
-        },
-        {
-          "id": "map-transfer-options",
-          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
-          "kind": "map-transfer-options"
-        }
-      ],
-      "limitsAreNotCoursePlacements": true
-    },
-    {
-      "id": "liberty-catalog-048aa55ff75b7f01",
-      "parentId": null,
-      "schoolId": "liberty",
-      "title": "Religion Major (A.A.)",
-      "level": "associate",
-      "catalog": null,
-      "modalities": [],
-      "sourceStatus": "curated-pathway",
-      "coverageStatus": "directory-only",
-      "groupId": "catalog-evidence-review",
-      "modelId": null,
-      "availableTemplate": false,
-      "publicationReady": false,
-      "publicationReasonCodes": [],
-      "programPolicy": {
-        "scope": "Exact degree model only; not a school-wide acceptance claim.",
-        "degreeQuantity": null,
-        "unit": null,
-        "totalTransferMaximum": null,
-        "alternativeCreditMaximum": null,
-        "totalLimitSourceUrls": [],
-        "alternativeLimitSourceUrls": []
-      },
-      "evidenceUrls": [
-        "https://catalog.liberty.edu/programs/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/religion-major-aa/"
       ],
       "nextActions": [
         {

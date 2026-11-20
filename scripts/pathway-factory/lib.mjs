@@ -103,10 +103,16 @@ export async function knownRouteIds(base=root){
 /** Program-level helpers shared by verify and compile. */
 export const programUnits=(kit,program)=>program.creditSystem||kit.school.creditSystem;
 export const programSlug=program=>program.slug;
-export function inScope(row,program){
-  const scope=row.scope||{};
-  if(scope.all===true)return (!scope.catalogs||scope.catalogs.includes(program.catalog))&&(!scope.levels||scope.levels.includes(program.level));
+export const programModalities=(program,kit)=>list(program.modalities||kit?.school?.programDefaults?.modalities);
+export function inScope(row,program,kit){
+  const scope=row.scope||{},modalities=programModalities(program,kit);
+  if(scope.all===true)return (!scope.catalogs||scope.catalogs.includes(program.catalog))&&(!scope.levels||scope.levels.includes(program.level))&&(!scope.modalities||modalities.length>0&&modalities.every(m=>scope.modalities.includes(m)));
   return list(scope.programs).includes(program.slug);
+}
+/** An explicit requirement placement: "rowId", "rowId@mode", {row, mode?, optionId?}, or {inline: option} for an institutional option. */
+export function parsePlacement(entry){
+  if(typeof entry==='string'){const at=entry.indexOf('@');return at<0?{row:entry}:{row:entry.slice(0,at),mode:entry.slice(at+1)};}
+  return entry&&typeof entry==='object'?entry:{};
 }
 /** The receiving requirement an equivalency row joins to: an explicit placement, else exact code, else exact title. */
 export function matchRequirement(row,program){

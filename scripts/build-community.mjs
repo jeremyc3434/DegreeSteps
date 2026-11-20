@@ -19,9 +19,6 @@ execFileSync(process.execPath,[resolve(root,'scripts/add-tesu-prerequisites.mjs'
 execFileSync(process.execPath,[resolve(root,'scripts/add-liberty-cli-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-snhu-transfer-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-liberty-named-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
-execFileSync(process.execPath,[resolve(root,'scripts/import-liberty-residential-expansion.mjs'),'--check'],{cwd:root,stdio:'inherit'});
-execFileSync('python',[resolve(root,'scripts/import-liberty-online-expansion.py'),'--check'],{cwd:root,stdio:'inherit'});
-execFileSync('python',[resolve(root,'scripts/import-liberty-history-online.py'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-accounting.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-finance.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-psychology.mjs'),'--check'],{cwd:root,stdio:'inherit'});
