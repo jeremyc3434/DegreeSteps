@@ -34,7 +34,7 @@
   const input = document.querySelector('[data-resource-search]');
   if (input) {
     const cards = [...document.querySelectorAll('[data-resource-card]')], count = document.querySelector('[data-resource-count]');
-    const update = () => {const query=input.value.trim().toLowerCase();let visible=0;for(const card of cards){card.hidden=Boolean(query&&!card.dataset.resourceText.includes(query));if(!card.hidden)visible++;}if(count)count.textContent=query?visible+' matching resource'+(visible===1?'':'s'):'';};
+    const update = () => {const query=input.value.trim().toLowerCase();let visible=0;for(const card of cards){card.hidden=Boolean(query&&!card.dataset.resourceText.includes(query));if(!card.hidden)visible++;}for(const group of document.querySelectorAll('[data-resource-group]'))group.hidden=[...group.querySelectorAll('[data-resource-card]')].every(card=>card.hidden);if(count)count.textContent=query?visible+' matching resource'+(visible===1?'':'s'):'';};
     input.addEventListener('input',update);
   }
   const routeExample=document.querySelector('[data-home-route-example]');
