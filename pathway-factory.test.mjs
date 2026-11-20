@@ -189,3 +189,58 @@ test('drafting without a key only captures; with a key it calls the Messages API
     assert.ok(compileKit(reviewed).doc.models.some(m=>m.title==='Demo Finance'));
   }finally{await f.cleanup();}
 });
+
+/** A minimal one-page PDF whose text layer holds the given lines (Helvetica, one line per row). */
+function pdfBytes(lines){
+  const content=lines.length?'BT /F1 12 Tf '+lines.map((line,i)=>`1 0 0 1 72 ${720-i*20} Tm (${line.replace(/[()\\]/g,'\\$&')}) Tj`).join(' ')+' ET':'';
+  const objects=['<< /Type /Catalog /Pages 2 0 R >>','<< /Type /Pages /Kids [3 0 R] /Count 1 >>','<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>',`<< /Length ${content.length} >>\nstream\n${content}\nendstream`,'<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>'];
+  let out='%PDF-1.4\n';const offsets=[];
+  objects.forEach((body,i)=>{offsets.push(out.length);out+=`${i+1} 0 obj\n${body}\nendobj\n`;});
+  const xref=out.length;
+  out+=`xref\n0 ${objects.length+1}\n0000000000 65535 f \n`+offsets.map(o=>String(o).padStart(10,'0')+' 00000 n \n').join('')+`trailer\n<< /Size ${objects.length+1} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF\n`;
+  return new TextEncoder().encode(out);
+}
+const pdfResponse=(bytes,type='application/pdf')=>async url=>({ok:true,status:200,url,headers:{get:()=>type},arrayBuffer:async()=>bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength)});
+
+test('capture extracts a PDF text layer line by line so table rows can be quoted, and rejects PDFs without text',async()=>{
+  const dir=await mkdtemp(join(tmpdir(),'pathway-capture-pdf-'));
+  try{
+    const rows=['Course by Course Equivalency','Introduction to Psychology: PSYC1010 3 PSY 101- Introduction to Psychology 3LL','Microeconomics: ECON1002 3 ECO 260- Microeconomics 3LL'];
+    const result=await capture('https://demo.example/guide.pdf',{dir,fetchImpl:pdfResponse(pdfBytes(rows)),now:()=>new Date('2026-11-20T00:00:00Z')});
+    assert.deepEqual((await readFile(result.path,'utf8')).trim().split('\n'),rows,'one visual row per line, top to bottom');
+    const meta=JSON.parse(await readFile(result.sidecar,'utf8'));
+    assert.equal(meta.contentType,'application/pdf');assert.equal(meta.sha256.slice(0,16),result.path.slice(-20,-4));
+    await assert.rejects(capture('https://demo.example/scan.pdf',{dir,fetchImpl:pdfResponse(pdfBytes([]))}),/no text layer/);
+    const generic=await capture('https://demo.example/other',{dir,fetchImpl:pdfResponse(pdfBytes(['Signature detected']),'application/octet-stream')});
+    assert.equal(generic.text,'Signature detected\n','a PDF served with a generic type is recognised by its signature');
+  }finally{await rm(dir,{recursive:true,force:true});}
+});
+
+test('named institution courses compile to University options and are verified like other claims',async()=>{
+  const f=await fixture();
+  try{
+    const named={code:'BUS 210',title:'Business Writing',credits:3,sourceIds:['demo-catalog']};
+    const data=clone(f.data);data.programs[0].requirements[0].institutionOptions=[named];await f.write(data);
+    const kit=await loadKit(f.dir);
+    assert.deepEqual((await verifyKit(kit,{asOf:'2026-11-20',routeIds:f.routeIds()})).errors,[]);
+    const bba=compileKit(kit).doc.models[0],options=bba.requirements[0].options;
+    assert.deepEqual(options.map(o=>o.provider),['Sophia','University'],'provider options first, then the named institution course');
+    assert.deepEqual(options[1],{id:'university-bus-210',provider:'University',code:'BUS 210',title:'Business Writing',credits:3,upper:false,creditSystem:'semester',creditOrigin:'institutional',sourceIds:['demo-catalog'],evidence:'published'});
+    assert.ok(!('institutionOptions' in bba.requirements[0]),'the kit field never reaches the compiled model');
+    await f.write(f.data);
+    assert.ok(codes(await verifyMutation(f,d=>{d.programs[0].requirements[0].institutionOptions=[{...named,credits:4}];})).includes('institution-option'));
+    assert.ok(codes(await verifyMutation(f,d=>{d.programs[0].requirements[0].institutionOptions=[{...named,sourceIds:['no-such-source']}];})).includes('unknown-source'));
+    assert.ok(codes(await verifyMutation(f,d=>{d.programs[0].requirements[0].upper=true;d.programs[0].requirements[0].institutionOptions=[named];})).includes('institution-option'),'a lower-level course cannot fill an upper-level requirement');
+    assert.ok(codes(await verifyMutation(f,d=>{d.programs[0].requirements[0].institutionOptions=[named,named];})).includes('institution-option'));
+  }finally{await f.cleanup();}
+});
+
+test('shared provider identities are checked as each published row compiles them, so a second school kit can reuse them',async()=>{
+  const f=await fixture();
+  try{
+    const foreign=d=>{d.provider.courses[0].identitySourceIds=['other-school-source'];};
+    assert.ok(codes(await verifyMutation(f,foreign)).includes('unknown-source'),'another kit’s source on a published shared identity is an error');
+    assert.deepEqual(codes(await verifyMutation(f,d=>{foreign(d);d.equivalencies.equivalencies[0].identity={identitySourceIds:['sophia-catalog']};})),[],'a row-level identity with this kit’s own evidence compiles cleanly');
+    assert.deepEqual(codes(await verifyMutation(f,d=>{foreign(d);d.equivalencies.equivalencies[0].status='candidate';})),[],'a candidate never compiles, so its shared identity is not published');
+  }finally{await f.cleanup();}
+});

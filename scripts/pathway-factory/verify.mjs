@@ -105,6 +105,12 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
       if(r.creditSystem&&r.creditSystem!==units)error(file,'mixed-units',`${r.id}: requirement is in ${r.creditSystem} but the program is in ${units}; convert only with a documented school rule.`);
       if(typeof r.institutionalOnly!=='boolean')error(file,'institutional-only',`${r.id}: institutionalOnly must be true or false.`);
       if(draft&&!list(r.quotes).length)error(file,'draft-quote-missing',`${r.id}: drafted requirements must cite a verbatim quote from the captured catalog.`);
+      for(const choice of list(r.institutionOptions)){
+        if(!choice?.code||!choice.title||!list(choice.sourceIds).length)error(file,'institution-option',`${r.id}: a named institution course needs code, title and sourceIds.`);
+        if(!(choice?.credits>0)||choice.credits>r.credits+EPS)error(file,'institution-option',`${r.id}: institution course ${choice?.code} must award between 0 and ${r.credits} credits.`);
+        if(r.upper&&!choice?.upper)error(file,'institution-option',`${r.id}: ${choice?.code} must be upper level for an upper-level requirement.`);
+      }
+      if(new Set(list(r.institutionOptions).map(c=>c?.code)).size!==list(r.institutionOptions).length)error(file,'institution-option',`${r.id}: an institution course is listed twice.`);
     }
     for(const ref of sourceRefs(program))if(!known.has(ref.id))error(file,'unknown-source',`Unknown source id ${ref.id} at ${ref.path}.`);
     if(draft)warn(file,'draft','Draft program: verified but never compiled until review.status is reviewed.');
@@ -134,7 +140,12 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
     for(const[k,reqSet]of placedBy)if(reqSet.size>1&&!exclusive)error('equivalencies.json','duplicate-award',`${program.slug}: ${k} would award ${reqSet.size} requirements (${[...reqSet].join(', ')}) without a documented one-award-per-source-course policy.`);
   }
   for(const row of rows)for(const ref of sourceRefs(row))if(!ids.has(ref.id))error('equivalencies.json','unknown-source',`${row.id}: unknown source id ${ref.id}.`);
-  for(const provider of kit.providers.values())for(const ref of sourceRefs(provider.courses))if(!ids.has(ref.id))error(provider.file,'unknown-source',`Unknown source id ${ref.id} at ${ref.path}.`);
+  // Provider identities are shared by every kit; check the identity each published row compiles into (shared course + row overrides).
+  for(const row of rows.filter(row=>rowStatus(row)==='published')){
+    const provider=kit.providers.get(row.provider),course=list(provider?.courses).find(c=>c.code===row.code);if(!course)continue;
+    const identity={...course,...(row.identity||{})};for(const field of list(row.identityOmit))delete identity[field];
+    for(const ref of sourceRefs(identity))if(!ids.has(ref.id))error(provider.file,'unknown-source',`${row.id}: ${row.provider} ${row.code} identity cites unknown source ${ref.id} at ${ref.path.replace(/^\./,'')}.`);
+  }
   for(const ref of sourceRefs({policies:school.policies,programDefaults:school.programDefaults}))if(!ids.has(ref.id))error('school.json','unknown-source',`Unknown source id ${ref.id} at ${ref.path}.`);
 
   // Grounding: every quote must appear in its source's capture.

@@ -6,13 +6,17 @@ import {clone,list,slug,sourceRefs,awardFields,inScope,matchRequirement,rowStatu
 import {verifyKit,formatFindings} from './verify.mjs';
 
 /** Fields that exist only in the kit (grounding/review metadata) and never enter a compiled model. */
-const kitOnlyRequirementFields=['quotes'];
+const kitOnlyRequirementFields=['quotes','institutionOptions'];
 
 export function deriveMappingEvidence(kit,program,row,modalities){
   const map=row.universityMapRecord;
   return {schoolName:kit.school.name,programName:program.title,level:program.level,modality:list(modalities)[0],catalogYear:map.catalogTerm,provider:row.provider,providerCourseCode:row.code,receivingCode:row.receivingCode,credits:row.credits,creditSystem:row.creditSystem,creditOrigin:row.creditOrigin,sourceIds:clone(row.sourceIds),programId:map.programId,agreementId:map.agreementId,mappingId:map.mappingId};
 }
 export const defaultOptionId=(row,requirement)=>[slug(row.provider),slug(row.code),requirement.id].join('-');
+/** Named courses taken at the receiving school (requirement.institutionOptions) compile to the registry's University option shape. */
+export function compileInstitutionOption(kit,program,choice){
+  return {id:'university-'+slug(choice.code),provider:'University',code:choice.code,title:choice.title,credits:choice.credits,upper:Boolean(choice.upper),creditSystem:programUnits(kit,program),creditOrigin:'institutional',sourceIds:clone(list(choice.sourceIds)),evidence:'published',...(choice.url?{url:choice.url}:{})};
+}
 
 /** Builds one compiled option from a provider identity plus a receiving-school equivalency row. */
 export function compileOption(kit,program,requirement,row,modalities){
@@ -47,7 +51,7 @@ export function compileProgram(kit,program){
   Object.assign(model,clone(program.modelFields||{}));
   model.requirements=program.requirements.map(requirement=>{
     const compiled=clone(requirement);for(const field of kitOnlyRequirementFields)delete compiled[field];
-    compiled.options=rowsFor(kit,program,requirement).map(row=>compileOption(kit,program,requirement,row,modalities));
+    compiled.options=[...rowsFor(kit,program,requirement).map(row=>compileOption(kit,program,requirement,row,modalities)),...list(requirement.institutionOptions).map(choice=>compileInstitutionOption(kit,program,choice))];
     return compiled;
   });
   return model;

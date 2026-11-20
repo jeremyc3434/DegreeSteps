@@ -16,7 +16,7 @@ content/curricula/kits/<school>.json compiled output (generated, git-ignored)
 
 | Command | What it does |
 | --- | --- |
-| `npm run factory:capture -- <url>` | Fetches a page, strips it to text, stores `content/source-captures/<sha256 prefix>.txt` and a sidecar with `url`, `finalUrl`, `fetchedAt`, `sha256`, `contentType`, `status`. |
+| `npm run factory:capture -- <url>` | Fetches a page (HTML, plain text or a PDF with a text layer), strips it to text, stores `content/source-captures/<sha256 prefix>.txt` and a sidecar with `url`, `finalUrl`, `fetchedAt`, `sha256`, `contentType`, `status`. |
 | `npm run factory:verify [-- <school>] [--as-of YYYY-MM-DD] [--json]` | Hard gate. Exit code 1 on any error. Prints out-of-scope candidates. |
 | `npm run factory:compile [-- <school>] [--out dir]` | Verifies, then compiles publishable programs to `content/curricula/kits/<school>.json`. Refuses on verification errors. |
 | `npm run factory:report [-- <school>] [--json]` | "What to build next": directory programs with no kit, and per-program coverage by in-scope equivalencies. |
@@ -125,6 +125,7 @@ Richer legacy structures (residency, pacing, pricing, transfer rules, review rec
 | `sources`, `quotes`, `policies` | no | Program-level sources, grounding and policy overrides. |
 | `modelFields` | no | Verbatim legacy model fields (pricing, residency, transfer rules, review records…). They win over defaults and normalized policies. |
 | `requirements` | yes | `{id, code, title, credits, category, institutionalOnly, sourceIds, quotes?, …}`. Any other existing requirement fields (`group`, `transferEligibility`, `curriculumAreaEvidence`…) are carried through. No `options`. |
+| `requirements[].institutionOptions` | no | Named courses taken at the receiving school (`{code, title, credits, upper?, sourceIds, url?}`), for example the baseline choice for an elective allocation. They compile to `University` options (`creditOrigin: "institutional"`), never exceed the requirement's credits, must be upper level on an upper-level requirement, and stay out of the compiled requirement itself. |
 
 ## Verification (`verify.mjs`)
 
@@ -132,7 +133,7 @@ Hard errors (compile refuses):
 
 - **Credits**: requirement credits do not sum to `totalCredits`; a requirement, program or row has an unknown or different credit system (`mixed-units` — quarter and competency units are never treated as semester hours); a provider course lacks `sourceCredits` or `sourceCreditSystem`; a row awards more than its requirement (`over-award`).
 - **Grounding**: a quote's text is not in its capture (`quote-not-found`); a quoted source has no capture; a capture file is missing or no longer matches its sidecar hash; a quote cites a source outside the claim's `sourceIds`.
-- **Sources**: any referenced source id is unknown (all `sourceIds`, `*SourceIds`, `sourceId`, `originalSourceId` keys anywhere in the kit); a source has no checked date, an invalid one, or one after `--as-of`; a source id is defined twice.
+- **Sources**: any referenced source id is unknown (provider identities are shared by every kit, so they are checked as each published row compiles them: the shared course plus the row's `identity` overrides); all `sourceIds`, `*SourceIds`, `sourceId`, `originalSourceId` keys anywhere in the kit count; a source has no checked date, an invalid one, or one after `--as-of`; a source id is defined twice.
 - **Duplicate awards**: one provider course applied twice to a requirement; one provider course applied to several requirements of a program without an `oneAwardPerSourceCourse` policy; repeated option ids.
 - **Scope**: a placement for a program outside the row's scope; unknown row statuses; rows without scope; options joined to an `institutionalOnly` requirement.
 - **Identity/review**: unknown route ids; a reviewed program without reviewer or date; a draft requirement without a quote.
@@ -171,20 +172,21 @@ The result is written as `programs/<slug>.json` with `review.status: "draft"`, a
 
 Per school kit: directory programs (`dist/data/program-catalog.json`, same `schoolId`) with no kit program, and for each kit program the share of requirement credits covered by in-scope published rows, credits covered only by candidates, institution-only credits, open requirements, and "reuse candidates" (provider courses documented for the same receiving course in another program). WGU today: 47 of 66 directory programs have no kit; 32 cross-program reuse candidates exist among the 20 modeled programs.
 
-## Publishing (WGU is live on the factory)
+## Publishing (WGU and Excelsior are live on the factory)
 
 A school kit whose `school.json` has `publish.path` is the **source of truth** for that curriculum document. Since 2026-11-20 WGU publishes `content/curricula/wgu.json` from `content/pathway-kits/wgu`; `scripts/import-wgu-curricula.py` is retired.
 
 - Edit the kit, then run `npm run factory:publish`. `npm run build` runs `compile.mjs --publish --check` in place of the old importer and fails if the published file is stale.
 - After a publish, regenerate downstream artifacts in the usual order (`build-curriculum-registry.mjs`, `coverage:build`, research priorities, school batch) before `npm run build`.
 - `content/pathway-kits/<school>/guards.mjs` (optional) exports `checks`: school-specific academic invariants that run against every compiled document. WGU's guards carry the importer's key policy assertions: CU ledgers that balance, institution-only courses with no outside options, 75% ceilings from the program total, capstone residency, the reviewed Business Management pricing and residency basket, per-term pricing and option evidence.
+- Excelsior University (`content/pathway-kits/excelsior`, publishing `content/curricula/excelsior.json`) was authored directly as a kit: three bachelor's ledgers from the November 2026 catalog and program transfer guides, with outside options only from Excelsior's own Sophia, Study.com and StraighterLine equivalency guides (captured PDFs). Every requirement, equivalency row and policy quotes its capture; its `guards.mjs` asserts semester units, the 113-credit ceiling and 7-credit Excelsior-only floor, the 30-credit upper-level minimum, guide-only evidence and the unknown ACE/NCCRS ceiling. Its directory entries come from `content/research/excelsior-programs.json` through `scripts/merge-opportunity-catalog.mjs`.
 - `publish.sourceOrder` pins document source order. The registry copies document sources into each model, and source order is part of every published model fingerprint. Keeping it stable means saved student plans are not flagged as changed. The WGU switch left every publication fingerprint identical.
 
 ## Limitations
 
 - WGU's awards are program-specific agreements, so WGU gains little from multi-program `scope`; the leverage shows up for schools with institution-wide equivalency tables (`scope: {all: true}`).
 - Verification checks that quotes exist in captures, not that the quoted text supports the structured value; reviewers still compare them. Migrated WGU content has no quotes or captures yet: it is trusted as `migrated` and checked for structure, units, sources, dates, scope and duplicates only.
-- Capture handles HTML and plain text; PDF catalogs are rejected (save their text by hand for now). Captures are not refreshed automatically and do not advance `checked` dates.
+- Capture handles HTML, plain text and PDFs with a text layer (pdfjs-dist; one line per visual row, pages separated by a blank line). Scanned PDFs without text are rejected, not OCRed. Table cells that wrap in a PDF can interleave across lines, so quote contiguous runs and compare them with the rendered page. Captures are not refreshed automatically and do not advance `checked` dates.
 - Normalized policies cover transfer and alternative-credit caps and single-award exclusivity; residency, pacing and pricing still travel as verbatim `modelFields`.
 - The join is by exact receiving code, else exact normalized title; renamed or recoded courses need explicit `requirementId` placements.
 - Drafts depend on the model following the schema; everything it returns is unreviewed until a human signs `review`.
