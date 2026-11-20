@@ -120,7 +120,8 @@ test('the finding status becomes a result summary once results render',()=>{
  f.api.announceFinding();assert.equal(f.node('portal-notice').textContent,'Finding course plans for your choices…');
  const html=f.api.results();f.api.notice();
  assert.equal(f.node('portal-notice').textContent,'Found 1 course plan for your choices.');
- assert.match(html,/programs\.html\?subject=psychology/,'a link shows the finder plans that need school confirmation');
+ // Plans that need school confirmation are now part of the guided results, labelled with what to ask.
+ assert.match(html,/portal-tier-confirm">Needs school confirmation/);assert.match(html,/What to ask the school \(2\)/);
  state.journey.step='prior';f.api.set(state);f.api.notice();assert.equal(f.node('portal-notice').textContent,'','leaving results clears the summary');
 });
 

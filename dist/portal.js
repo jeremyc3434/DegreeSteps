@@ -134,7 +134,7 @@
     let sources,results;
     try{
       sources=recommendationSources(input);
-      const searchCatalog={...sources.catalog,pathways:DegreeProgramCatalog.publishedPlans(sources.catalog,sources.models)},modelsById=new Map(sources.models.map(model=>[model.id,model]));
+      const searchCatalog={...sources.catalog,pathways:guidedRoutes(sources.catalog,sources.models)},modelsById=new Map(sources.models.map(model=>[model.id,model]));
       // Profile eligibility and names are cheap. Joint course placement belongs
       // to the comparison worker, including when the student has many records.
       results=Journey.recommend({...state,learning:[]},searchCatalog,[]).map(result=>({...result,model:modelsById.get(result.pathway.modelId)}));recommendationMatches=results;
@@ -241,6 +241,14 @@
     const plans=planIndex?.plans;if(!catalog||!plans||typeof plans!=='object'||!Array.isArray(catalog.pathways))return;
     catalog={...catalog,pathways:catalog.pathways.map(route=>{const subjects=plans[route?.id]?.subjects;return Array.isArray(subjects)&&subjects.every(id=>typeof id==='string')&&JSON.stringify(route.subjects)!==JSON.stringify(subjects)?{...route,subjects:[...subjects]}:route;})};
   }
+  // Reviewed plans plus complete plans that still need school confirmation (labelled on each card).
+  // Without the finder index, only reviewed (published) plans are searched.
+  function guidedRoutes(source,loaded) {
+    const published=DegreeProgramCatalog.publishedPlans(source,loaded),ids=new Set(published.map(route=>route.id)),plans=planIndex?.plans;
+    if(!plans||typeof plans!=='object'||typeof DegreeProgramCatalog.isPlanAvailable!=='function')return published;
+    return [...published,...(source.pathways||[]).filter(route=>route?.modelId&&!ids.has(route.id)&&plans[route.id]?.tier==='confirmation'&&DegreeProgramCatalog.isPlanAvailable(route,source,loaded))];
+  }
+  const needsConfirmation=route=>planIndex?.plans?.[route?.id]?.tier==='confirmation';
   function planQuestions(route) {
     const entry=planIndex?.plans?.[route?.id];
     if(entry?.tier!=='confirmation'||!Array.isArray(entry.questions))return [];
@@ -427,7 +435,7 @@
         ['audit','Use my past courses','Upload a transcript or course spreadsheet.']
       ])+'<details class="portal-tip portal-more-starts"><summary>More ways to start</summary><div class="portal-start-browse"><a href="request-plan.html">Paste a degree link</a></div><div class="portal-start-browse"><a href="degree-audit.html">Build my own plan from scratch</a></div><div class="portal-start-browse"><a href="courses.html?tab=browse">Browse transfer courses</a></div></details>';
       case 'school': {
-        const schools = [...new Set(catalog.pathways.map(r => r.school))].sort();
+        const schools = [...new Set(catalog.pathways.filter(r => r.routeType !== 'career-guide').map(r => r.school).filter(Boolean))].sort() /* career guides name a step ("Choose a … provider"), not a school */;
         return '<form id="portal-question-form">' + field('school','School name',p.school,'list="portal-schools" autocomplete="organization" placeholder="Start typing a school name"') + '<datalist id="portal-schools">' + schools.map(s => '<option value="' + esc(s) + '"></option>').join('') + '</datalist><button class="portal-primary" type="submit">Choose degree</button></form><div class="portal-links"><button type="button" data-answer="unknown">Help me choose a school</button></div>';
       }
       case 'degree': {
@@ -628,11 +636,12 @@
     const fit=knownEstimate(summary?.collectionFitCredits)&&summary.collectionFitCredits>0?'<span>'+esc(summary.collectionFitCredits)+' '+units+' fit from My courses'+(personalRange&&!remaining?' (about '+esc(range(personalRange.saved))+' of outside-course spending avoided)':'')+'</span>':'';
     const reviewCount=(Array.isArray(summary?.reviewCourses)?summary.reviewCourses:[]).filter(course=>course?.status==='earned').length;
     const review=reviewCount?'<span class="portal-route-review">'+reviewCount+' finished course'+(reviewCount===1?' needs':'s need')+' review</span>':'';
-    const estimate=cost||timing?'<dl class="portal-route-estimates">'+cost+timing+'</dl><p class="portal-estimate-note">Planning estimates before financial aid.'+(hasPersonalCost?' Your remaining cost uses the courses you have already added.':'')+(remaining?' Your remaining estimate is the full-route planning estimate (tuition, listed fees and outside courses, as on the plan page) minus about '+esc(range(personalRange.saved))+' of outside-course charges for the '+esc(personalRange.credits)+' '+units+' your finished courses may cover. Your school decides what transfers.':sharedRange?' The planning estimate covers tuition, listed fees and outside courses, as on the plan page.':rate?' Total depends on paid terms needed.':cost&&!hasPersonalCost?' Fees and other extras are excluded.':'')+(timing?' Admissions and transfer processing are separate.':'')+'</p>':'';
+    const estimate=cost||timing?'<dl class="portal-route-estimates">'+cost+timing+'</dl><p class="portal-estimate-note">Planning estimates before financial aid.'+(hasPersonalCost?' Your remaining cost uses the courses you have already added.':'')+(remaining?' Your remaining estimate is the full-route planning estimate (tuition, listed fees and outside courses, as on the plan page) minus about '+esc(range(personalRange.saved))+' of outside-course charges for the '+esc(personalRange.credits)+' '+units+' your finished courses may cover.'+(personalRange.saved&&personalRange.saved.max<250?' The saving is small because those courses were already planned through low-cost subscriptions, so finishing them early mostly saves time rather than money.':'')+' Your school decides what transfers.':sharedRange?' The planning estimate covers tuition, listed fees and outside courses, as on the plan page.':rate?' Total depends on paid terms needed.':cost&&!hasPersonalCost?' Fees and other extras are excluded.':'')+(timing?' Admissions and transfer processing are separate.':'')+'</p>':'';
     const personal=DegreeGuide.preferenceFit?DegreeGuide.preferenceFit(state.profile,r,result.model,catalog.campusFacts):{badges:[],reasons:[]};
     const badges=personal.badges.length?'<div class="portal-personal-badges" aria-label="Study and campus features">'+personal.badges.slice(0,3).map(badge=>badge.sourceUrl?'<a href="'+esc(badge.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(badge.label)+'</a>':'<span>'+esc(badge.label)+'</span>').join('')+'</div>':'';
     const why=personal.reasons.length?'<details class="portal-fit-reasons"><summary>Why this fits your preferences</summary><ul>'+personal.reasons.map(reason=>'<li>'+esc(reason)+'</li>').join('')+'</ul></details>':'';
-    return '<article class="portal-route-card"><'+(secondary?'h3':'h2')+'>'+esc(r.title)+'</'+(secondary?'h3':'h2')+'><p class="portal-target-school">'+esc(r.school)+'</p>'+badges+'<div class="portal-route-facts"><span>'+esc(format)+'</span>'+(credits?'<strong>'+esc(credits)+'</strong>':'')+fit+review+(choiceCount>0?'<span>'+choiceCount+' course choice'+(choiceCount===1?'':'s')+' to make</span>':'')+'</div>'+estimate+why+'<button type="button" class="portal-primary" data-degree-preview="'+esc(r.id)+'">'+(modeled?'See course plan':'See degree')+'</button></article>';
+    const questions=planQuestions(r),tier=planIndex?.plans?.[r.id]?(questions.length?'<p class="portal-tier"><span class="portal-tier-badge portal-tier-confirm">Needs school confirmation</span></p><details class="portal-confirm-questions"><summary>What to ask the school ('+questions.length+')</summary><ul>'+questions.map(q=>'<li>'+esc(q)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p></details>':'<p class="portal-tier"><span class="portal-tier-badge portal-tier-reviewed">Reviewed plan</span></p>'):'';
+    return '<article class="portal-route-card'+(questions.length?' portal-route-card-confirm':'')+'"><'+(secondary?'h3':'h2')+'>'+esc(r.title)+'</'+(secondary?'h3':'h2')+'><p class="portal-target-school">'+esc(r.school)+'</p>'+tier+badges+'<div class="portal-route-facts"><span>'+esc(format)+'</span>'+(credits?'<strong>'+esc(credits)+'</strong>':'')+fit+review+(choiceCount>0?'<span>'+choiceCount+' course choice'+(choiceCount===1?'':'s')+' to make</span>':'')+'</div>'+estimate+why+'<button type="button" class="portal-primary" data-degree-preview="'+esc(r.id)+'">'+(modeled?'See course plan':'See degree')+'</button></article>';
   }
   function progressStatus(progress) {const ready=[...progress.candidates.values()].filter(candidate=>candidate.available&&candidate.eligible).length;return 'Checked '+progress.checked+' of '+progress.matchingIds.length+' matching plans. '+ready+' ready to open.';}
   function matchingStatus(candidate) {return !candidate?'Waiting to check':candidate.available&&candidate.eligible?'Checked · ready to open':'Checked · '+(candidate.reason||'Needs review before a course plan is available.');}
@@ -667,6 +676,8 @@
     const personalScores=new Map(orderedIds.map(id=>[id,DegreeGuide.preferenceFit?DegreeGuide.preferenceFit(state.profile,byId.get(id).pathway,byId.get(id).model,catalog.campusFacts).score:0]));
     const personalOrder=state.profile.priority==='balanced'&&(state.profile.learningPace&&state.profile.learningPace!=='any'||state.profile.campusLocation==='near-home'||state.profile.campusInterests?.length)&&[...personalScores.values()].some(score=>score>0);
     if(personalOrder)orderedIds.sort((a,b)=>personalScores.get(b)-personalScores.get(a));
+    // Reviewed plans first; plans that need school confirmation follow, keeping their relative order.
+    orderedIds.sort((a,b)=>Number(needsConfirmation(byId.get(a).pathway))-Number(needsConfirmation(byId.get(b).pathway)));
     const cards=orderedIds.map((id,index)=>routeCard(byId.get(id),scenarios.get(id)||candidates.get(id),index>=3));
     const scope=recommendationView?.rankingScope,ordering=scope?.orderingMetric,kind=ordering==='estimatedWeeks'?'study-time':ordering==='universityTuitionRemaining'?'university tuition':ordering==='remainingCost'?'remaining cost':ordering==='estimatedBaseCost'?'tuition + course':'';
     const brief=kind?(personalOrder?'Matching study and campus preferences first; available '+kind+' estimates within those matches.':'Available '+kind+' estimates first.')+(scope.unestimatedCount?' '+scope.unestimatedCount+' other plan'+(scope.unestimatedCount===1?' has':'s have')+' no comparable estimate.':''):'Matched to your '+(state.learning.length?'courses and preferences.':'preferences.');
@@ -676,13 +687,14 @@
     resultCount=cards.length;
     return fallback+result+finderLink(cards.length);
   }
-  // The guided search lists reviewed plans only. The plan finder also lists
-  // complete plans that still need school confirmation, so point to it by subject.
+  // Points to the plan finder when it lists more plans for this subject than the guided results show.
   function finderLink(shown) {
     const field=state.profile.field,label=fieldChoicesFor(field).find(([id])=>id===field)?.[1];
     if(!label||!planIndex?.plans||!(DegreeGuide.subjectIds||[]).includes(field))return '';
-    const total=Object.values(planIndex.plans).filter(plan=>Array.isArray(plan?.subjects)&&plan.subjects.includes(field)).length;
-    return total>shown?'<p class="portal-finder-link"><a href="programs.html?subject='+encodeURIComponent(field)+'">See all '+total+' '+esc(label.toLowerCase())+' plans in the plan finder, including plans that need school confirmation →</a></p>':'';
+    // Count exactly what the finder will list: published or needs-confirmation plans, at the chosen degree level.
+    const level=['associate','bachelor','master','doctorate'].includes(state.profile.degreeLevel)?state.profile.degreeLevel:'';
+    const total=Object.values(planIndex.plans).filter(plan=>Array.isArray(plan?.subjects)&&plan.subjects.includes(field)&&(plan.published===true||plan.tier==='confirmation')&&(!level||plan.level===level)).length;
+    return total>shown?'<p class="portal-finder-link"><a href="programs.html?subject='+encodeURIComponent(field)+(level?'&level='+level:'')+'">See all '+total+' '+esc(label.toLowerCase())+' plans in the plan finder →</a></p>':'';
   }
   function resultSummary() {
     if(resultCount===null)return '';

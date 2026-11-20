@@ -475,3 +475,13 @@ body.ds-discovery-page .pf-confirm-detail p { margin:0; color:#6b4a22; font-size
 body.ds-discovery-page .pf-legend { margin:0 0 4px; color:var(--discovery-muted); font-size:.875rem; line-height:1.9; }
 body.ds-discovery-page .pf-legend .pf-badge { margin-right:2px; }
 body.ds-discovery-page .pf-split-label { color:var(--discovery-muted); font-weight:500; }
+
+/* Guided planner: review tier on each recommended plan. */
+body.ds-discovery-page .portal-tier { margin:6px 0 0; }
+body.ds-discovery-page .portal-tier-badge { display:inline-block; padding:3px 8px; border-radius:4px; font-size:.8125rem; font-weight:600; }
+body.ds-discovery-page .portal-tier-reviewed { background:#eaf6ef; color:#1e6141; }
+body.ds-discovery-page .portal-tier-confirm { background:#fff4e5; color:#8a4b0f; }
+body.ds-discovery-page .portal-confirm-questions { margin:10px 0 0; padding:8px 12px; border-left:3px solid #d98a2b; border-radius:0 6px 6px 0; background:#fffaf2; color:#5c3a12; font-size:.875rem; }
+body.ds-discovery-page .portal-confirm-questions summary { cursor:pointer; font-weight:600; }
+body.ds-discovery-page .portal-confirm-questions ul { margin:8px 0; padding-left:18px; }
+body.ds-discovery-page .portal-confirm-questions p { margin:0; color:#6b4a22; }

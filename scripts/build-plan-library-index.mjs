@@ -17,6 +17,7 @@ const researchQuestion=[
   [/state-specific/i,'Ask the school whether your state changes the general-education requirements in this plan.'],
   [/time limit|currency|years? old/i,'Ask the school whether older credits still count.']
 ];
+const levelOf=value=>{const v=String(value||'').toLowerCase();return /associate/.test(v)?'associate':/master/.test(v)?'master':/doctor/.test(v)?'doctorate':/bachelor/.test(v)?'bachelor':'';};
 const generic='Some of the school’s published rules for this program are still being confirmed. Ask the school to confirm this plan before paying for outside courses.';
 const plural=(n,word)=>n+' '+word+(n===1?'':/(ch|sh|s|x)$/.test(word)?'es':'s');
 export function questionsFor(findings){
@@ -39,7 +40,7 @@ export function buildIndex({registry,quality,estimates={}}){
     if(!report||model.readyTemplate!==true||report.research?.status==='unavailable')continue;
     const reviewed=report.publication?.ready===true||report.research?.status==='research-ready';
     const questions=reviewed?[]:questionsFor(report.findings||[]);
-    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(estimates[routeId]?{estimate:estimates[routeId]}:{})};
+    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,level:levelOf(model.level),subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(estimates[routeId]?{estimate:estimates[routeId]}:{})};
   }
   return {kind:'degreesteps-plan-library-index',version:1,registryRevision:quality.registryRevision,asOf:quality.asOf,subjects:Object.fromEntries(subjectAreas.map(s=>[s.id,s.label])),plans:Object.fromEntries(Object.entries(plans).sort(([a],[b])=>a.localeCompare(b)))};
 }

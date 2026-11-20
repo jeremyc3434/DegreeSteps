@@ -752,3 +752,4 @@ body.public-page .transfer-list a:hover strong { color:var(--public-cobalt); tex
 body.public-page .transfer-list a span { color:var(--public-muted); font-size:.8125rem; white-space:nowrap; }
 body.public-page .transfer-list small { display:block; margin-top:4px; color:var(--public-muted); font-size:.8125rem; }
 body.public-page .public-plan-elsewhere { font-size:.75rem; font-weight:500; }
+@media(max-width:640px) { body.public-page .transfer-table td > span { grid-column:2; } }

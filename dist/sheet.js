@@ -21,7 +21,7 @@
   let state,catalog,models=[],sources=[],sourceChecked='',pathway,program,plan,match,input,guidance,targetReviewNeeded=false,targetIssues=[],targetUnknowns=[],mapAvailable=false,saveOK=true,imported=[],dialogRow=null,printView=false,restoreFocus=null,restoreFocusContext=null;
   let evidenceProgramKey='',courseCatalog={courses:[]},courseView,progressFilter='all',sectionOpen=new Map(),progressCorrection=null;
   let storageBaseline,externalRefresh=null,externalPending=false;
-  let estimateRatesPromise,costSummaryEpoch=0,savingsTicket=0,dialogSavingsTicket=0,baselineIndexPromise,baselineIndex=null;
+  let estimateRatesPromise,estimateRatesData=null,costSummaryEpoch=0,savingsTicket=0,dialogSavingsTicket=0,baselineIndexPromise,baselineIndex=null;
   // The degree's own unit (competency units for WGU), so headers, progress and lists never mix units and credits.
   const unitWord=count=>Sheet.creditUnit(program?.creditSystem,count);
   const pendingDiscoveries=new Map();
@@ -176,7 +176,7 @@
   }
   function researchedEstimate(current) {
     if(!window.DegreePlanEstimate||!window.DegreePlanEstimateView||!current.program||!current.plan)return Promise.resolve(null);
-    if(!estimateRatesPromise)estimateRatesPromise=fetch('data/plan-estimate-rates.json').then(response=>{if(!response.ok)throw Error('Estimate rates unavailable');return response.json();}).catch(error=>{estimateRatesPromise=null;throw error;});
+    if(!estimateRatesPromise)estimateRatesPromise=fetch('data/plan-estimate-rates.json').then(response=>{if(!response.ok)throw Error('Estimate rates unavailable');return response.json().then(data=>{estimateRatesData=data;const slot=document.getElementById('sheet-route-difference');if(slot)slot.innerHTML=startingRouteNoteHTML();return data;});}).catch(error=>{estimateRatesPromise=null;throw error;});
     return estimateRatesPromise.then(rates=>window.DegreePlanEstimate.calculate({program:current.program,plan:current.plan,rates})).catch(()=>null);
   }
   // The published starting route for this exact degree, used only to explain why this
@@ -219,11 +219,15 @@
     if(!baselineIndex)void loadBaselineIndex();
     return '<div id="sheet-route-difference" class="course-plan-route-slot">'+startingRouteNoteHTML()+'</div>';
   }
+  const listNames=names=>names.length<2?names.join(''):names.slice(0,-1).join(', ')+' and '+names[names.length-1];
   function startingRouteNoteHTML() {
     if(!baselineIndex||!program||!plan||!pathway)return '';
     const baseline=Object.values(baselineIndex.baselines||{}).find(item=>item.modelId===program.id&&item.pathwayId===pathway.id);
     const result=baseline&&Sheet.routeCreditDifference({baseline,plannedCredits:plan.coverage?.mappedExternalCredits,providers:settings().providers,creditSystem:program.creditSystem});
-    return result?'<p class="course-plan-route-difference" data-route-difference="'+result.difference+'">'+esc(result.text)+(result.providersOff.length?' <button type="button" class="course-plan-inline-action" data-action="options">Course preferences</button>':'')+'</p>':'';
+    // A provider without a reviewed price was left out of the planning estimate, so turning it off can raise the estimate.
+    const priced=new Set((estimateRatesData?.providers||[]).map(item=>item?.provider).filter(Boolean)),unpricedOff=result&&estimateRatesData?result.providersOff.filter(provider=>!priced.has(provider)):[];
+    const costNote=unpricedOff.length?' The planning estimate may go up: '+listNames(unpricedOff)+' prices were not included in it, so replacing those courses with priced ones adds known cost.':'';
+    return result?'<p class="course-plan-route-difference" data-route-difference="'+result.difference+'">'+esc(result.text+costNote)+(result.providersOff.length?' <button type="button" class="course-plan-inline-action" data-action="options">Course preferences</button>':'')+'</p>':'';
   }
   function savingsSlots(node) {
     if(!$('sheet-planning-range')||!$('sheet-savings-tracker'))node.innerHTML='<div id="sheet-planning-range" hidden></div><div id="sheet-savings-tracker"></div>';
