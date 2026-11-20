@@ -164,6 +164,10 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     const card = page.locator('.pf-program').filter({hasNot:page.locator('[href$="usePlan='+PROGRAM+'"]')}).first();
     const target = new URL(await card.locator('.pf-open-plan').getAttribute('href'),BASE).searchParams.get('usePlan');
     await card.locator('.pf-open-plan').click();
+    // A student with a plan in progress is asked before See courses switches plans.
+    const confirm = page.locator('#program-switch-dialog');await confirm.waitFor();
+    assert.match(await confirm.innerText(),/Your current plan and courses stay saved\./);
+    await confirm.getByRole('link',{name:'Switch',exact:true}).click();
     await page.waitForURL(url=>url.pathname.endsWith('/plan.html'));await page.locator('tr.course-plan-row').first().waitFor();
     const after = await stored(page);
     assert.equal(after.selectedPathwayId,target);
