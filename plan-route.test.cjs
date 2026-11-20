@@ -53,7 +53,7 @@ test('gaps remain explicit rather than being relabeled as university coursework'
 });
 
 test('course units, fractional quantities and untrusted display strings remain accurate and escaped',()=>{
- const d=clone(draft()),view=clone(View.build(d));d.program.creditSystem='competency-unit';assert.equal(Route.build(d,view).unit,'units');
+ const d=clone(draft()),view=clone(View.build(d));d.program.creditSystem='competency-unit';assert.equal(Route.build(d,view).unit,'competency units');
  d.program.creditSystem='quarter';assert.match(Route.render(d,view),/quarter credits/);
  d.pathway.school='<img src=x onerror=alert(1)>';view.groups.transfer[0].provider='<script>unsafe</script>';
  const html=Route.render(d,view);assert(!html.includes('<script>'));assert(!html.includes('<img'));assert.match(html,/&lt;img/);assert.match(html,/&lt;script&gt;/);

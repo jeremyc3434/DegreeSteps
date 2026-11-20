@@ -20,7 +20,7 @@
     const providers=[...new Set(list(view.groups?.transfer).map(entry=>entry.provider).filter(provider=>typeof provider==='string'&&provider&&provider!=='University'))];
     const providerDetail=providers.length?providers.slice(0,2).join(' · ')+(providers.length>2?' · more':''):'Eligible outside courses';
     const school=draft.pathway?.school||program.school||'Your university';
-    const unit=program.creditSystem==='competency-unit'?'units':program.creditSystem==='quarter'?'quarter credits':'credits';
+    const unit=program.creditSystem==='competency-unit'?'competency units':program.creditSystem==='quarter'?'quarter credits':'credits';
     const phases=[
       {id:'completed',label:'Finished coursework',value:totals.completed,detail:confirmed?number(confirmed)+' school confirmed':'School awards tracked separately'},
       {id:'outside',label:'Outside courses planned',value:totals.transfer,detail:providerDetail},
