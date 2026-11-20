@@ -81,7 +81,7 @@ function mount({modelId='liberty-business-residential',change,editor=false,track
   context.DegreeCommunity={sharePlan(payload){shares.push(copy(payload));}};
   const source=fs.readFileSync('dist/sheet.js','utf8');
   const hook=`const fixture=JSON.parse(__fixtureJSON);state=fixture.state;catalog=fixture.catalog;models=fixture.models;courseCatalog=fixture.courseCatalog;storageBaseline=localStorage.getItem(KEY);
-    window.__parity={render,handleAction,rowDialog,compareCourses,applyComparedCourse,comparePreview,
+    window.__parity={render,handleAction,rowDialog,compareCourses,applyComparedCourse,comparePreview,loadPlanIndex,chooseDialog,
       getDraft:()=>({state,pathway,program,plan,match,input,guidance}),getProjection:projection,
       search(value){state.sheet.search=value;renderGrid();},filter(value){progressFilter=value;renderGrid();}};
     render();`;
@@ -387,4 +387,67 @@ test('the real Psychology ledger update recovers its removed elective pin withou
  const ui=mount({modelId:model.id,fixtureData:sample,change:state=>{state.scenarios[model.id]={...state.scenarios[model.id],optionSelections:{'free-electives-12':'university-free-electives-12',[valid.id]:validOption.id}};state.sheet.notes={[model.id]:{'free-electives-12':'My earlier elective note'}};state.learning=[{id:'past-learning',provider:'Former College',code:'HIST101',title:'Original college history',credits:3,creditSystem:'quarter',grade:'A',status:'earned',evaluations:[]}];return state;}}),before=copy(ui.saved());
  assert(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'&&issue.requirementId==='free-electives-12'));ui.api.handleAction('update-course-choices');assert.equal(await ui.submit('sheet-course-update-form'),'');
  assert.equal(ui.saved().scenarios[model.id].optionSelections[valid.id],validOption.id);assert(!Object.hasOwn(ui.saved().scenarios[model.id].optionSelections,'free-electives-12'));assert.deepEqual(ui.saved().learning,before.learning);assert.deepEqual(ui.saved().sheet.notes,before.sheet.notes);assert.equal(ui.draft().plan.totals.accounted,120);assert.equal(ui.draft().plan.validation.academicCountsValid,true);assert.equal(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'),false);assert(ui.saved().whatIf.snapshots.some(snapshot=>snapshot.settings.optionSelections['free-electives-12']==='university-free-electives-12'));
+});
+
+test('a plan that needs school confirmation shows its open questions on the worksheet, hidden only on request',async()=>{
+  const ui=mount({modelId:'tesu-general-management'}),slot=ui.node('sheet-school-check');
+  assert.equal(slot.innerHTML,'','nothing is shown before the optional index loads');
+  await ui.api.loadPlanIndex();
+  const index=require('./dist/data/plan-library-index.json').plans['tesu-general-management'];assert.equal(index.tier,'confirmation');
+  const html=slot.innerHTML;assert.equal(slot.hidden,false);
+  assert.match(html,/<h2 id="sheet-school-check-title">Before you pay for courses, ask the school:<\/h2>/);
+  assert.equal((html.match(/<li>/g)||[]).length,index.questions.length,'every open question is listed');
+  assert.doesNotMatch(html,/<li>Ask the school:/i,'the repeated prefix is removed');
+  assert.match(html,/This course plan is complete, but these points are not yet confirmed in the school’s published rules\./);
+  assert.match(html,/data-action="hide-school-check" aria-expanded="true"/);
+  ui.api.handleAction('hide-school-check');
+  assert.match(slot.innerHTML,/is-collapsed/);assert.match(slot.innerHTML,new RegExp(index.questions.length+' questions to ask the school'));
+  assert.match(slot.innerHTML,/data-action="show-school-check" aria-expanded="false"/);assert.doesNotMatch(slot.innerHTML,/<li>/);
+  assert.equal(ui.writes.length,0,'showing or hiding the questions never changes the saved plan');
+  ui.api.render();assert.match(slot.innerHTML,/is-collapsed/,'the choice holds across a re-render');
+  ui.api.handleAction('show-school-check');assert.equal((slot.innerHTML.match(/<li>/g)||[]).length,index.questions.length,'the questions can always be shown again');
+});
+
+test('reviewed plans show nothing new and the worksheet works without the plan index',async()=>{
+  const reviewed=mount();await reviewed.api.loadPlanIndex();
+  assert.equal(require('./dist/data/plan-library-index.json').plans['liberty-business-residential'].tier,'reviewed');
+  assert.equal(reviewed.node('sheet-school-check').innerHTML,'');assert.equal(reviewed.node('sheet-school-check').hidden,true);
+  const offline=mount({modelId:'tesu-general-management',fetcher:url=>url==='data/plan-library-index.json'?Promise.reject(Error('offline')):null});
+  assert.equal(await offline.api.loadPlanIndex(),null,'a failed index load is silent');
+  assert.equal(offline.node('sheet-school-check').innerHTML,'');assert.match(offline.node('sheet-grid').innerHTML,/course-plan-row/,'the worksheet still renders');
+  const broken=mount({modelId:'tesu-general-management',fetcher:url=>url==='data/plan-library-index.json'?Promise.resolve({ok:true,json:async()=>['not an index']}):null});
+  await broken.api.loadPlanIndex();assert.equal(broken.node('sheet-school-check').innerHTML,'');
+});
+
+test('the worksheet degree finder offers the browsing subjects and keeps an older saved subject',async()=>{
+  const Guide=require('./dist/guide-engine.js'),labels=require('./dist/data/plan-library-index.json').subjects;
+  const options=html=>[...(html.match(/<select name="field">([\s\S]*?)<\/select>/)||['',''])[1].matchAll(/<option value="([^"]+)"( selected)?>([^<]*)<\/option>/g)].map(match=>[match[1],text(match[3]),Boolean(match[2])]);
+  const ui=mount();await ui.api.loadPlanIndex();ui.api.chooseDialog();
+  const fresh=options(ui.node('sheet-dialog-content').innerHTML);
+  assert.deepEqual(fresh.map(([id])=>id),['any',...Guide.subjectIds]);
+  for(const id of Guide.subjectIds)assert.equal(fresh.find(([value])=>value===id)[1],text(labels[id].replaceAll('&','&amp;')),id);
+  for(const old of ['general','law','aviation','science','arts','social-science'])assert(!fresh.some(([id])=>id===old),'retired subject '+old+' is not offered to new choices');
+  // A chosen route copies its own field into the profile, so set the older value as a saved profile would hold it.
+  const legacy=mount();legacy.draft().state.profile.field='aviation';legacy.api.chooseDialog();
+  const kept=options(legacy.node('sheet-dialog-content').innerHTML);
+  assert.deepEqual(kept.at(-1),['aviation','Aviation',true],'an older saved subject stays selected instead of resetting');
+  const current=mount();current.draft().state.profile.field='technology';current.api.chooseDialog();
+  assert.deepEqual(options(current.node('sheet-dialog-content').innerHTML).filter(([,,selected])=>selected).map(([id])=>id),['technology']);
+});
+
+test('the worksheet degree finder filters strictly by subject and an older saved subject still filters',async()=>{
+  // Only reviewed plans are offered; attach the real publication list for this fixture's routes.
+  const Catalog=require('./dist/program-catalog.js'),registry=require('./dist/data/curriculum-registry.json'),publication=require('./dist/data/publication-index.json');
+  const modelIds=new Set(data.models.map(model=>model.id)),published={...data,catalog:Catalog.attachPublicationIndex({...data.catalog,curriculumRegistry:registry},{...publication,plans:publication.plans.filter(plan=>modelIds.has(plan.modelId))},registry)};
+  const recommended=async(field,fetcher)=>{const ui=mount({fixtureData:published,fetcher});ui.api.chooseDialog();await ui.submit('sheet-choose-form',{goal:'any-degree',degreeLevel:'bachelor',modality:'any',field,classroomImportance:'open',militaryStatus:'none',priority:'balanced'});await ui.settle();return{ui,ids:[...ui.node('sheet-recommendations').innerHTML.matchAll(/data-route="([^"]+)"/g)].map(match=>match[1]).sort()};};
+  const business=await recommended('business');assert.deepEqual(business.ids,['liberty-business-residential']);assert.equal(business.ui.saved().profile.field,'business');
+  const tech=await recommended('technology');
+  assert.deepEqual(tech.ids,['liberty-business-residential'],'a plan tagged with the subject in the plan index is offered even though its catalog field is business');
+  assert.equal(tech.ui.saved().profile.field,'technology');
+  const psychology=await recommended('psychology');assert.deepEqual(psychology.ids,[],'a subject never returns another subject’s plans');
+  assert.match(psychology.ui.node('sheet-recommendations').innerHTML,/No researched route matches all these choices yet/);
+  assert.deepEqual((await recommended('law')).ids,[],'an older saved subject still filters');
+  const offline=url=>url==='data/plan-library-index.json'?Promise.resolve({ok:false,status:503}):null;
+  assert.deepEqual((await recommended('business',offline)).ids,['liberty-business-residential'],'without the index the finder still works from catalog fields');
+  assert.deepEqual((await recommended('technology',offline)).ids,[],'without the index a subject only matches its own or nearest older field');
 });

@@ -129,3 +129,40 @@ test('under a planning range an unavailable savings comparison stays quiet inste
  const alone=trackerUI();await alone.tracker.update(alone.node,state,draft,{simple:true});assert.match(alone.content.innerHTML,/Costs &amp; savings|Costs & savings/);assert.equal(alone.node.hidden,false);
  const back=await ui.tracker.update(ui.node,state,draft,{simple:true});assert.equal(back.available,false);assert.equal(ui.node.hidden,false,'Without a range the pending message returns');
 });
+
+test('school confirmation questions come only from confirmation plans in the plan index',()=>{
+ const index=require('./dist/data/plan-library-index.json'),frozen=JSON.stringify(index);
+ const questions=Sheet.schoolQuestions(index,'excelsior-bs-psychology');
+ assert.equal(index.plans['excelsior-bs-psychology'].tier,'confirmation');assert.equal(questions.length,index.plans['excelsior-bs-psychology'].questions.length);
+ assert.deepEqual(questions,['What is the most ACE- or NCCRS-recommended credit you accept toward this degree?','Is there a time limit on how old transfer credit can be? Its published sources disagree.']);
+ for(const [id,entry] of Object.entries(index.plans))if(entry.tier==='confirmation')assert(Sheet.schoolQuestions(index,id).length>0,id+' carries its questions');else assert.deepEqual(Sheet.schoolQuestions(index,id),[],id+' is reviewed and shows nothing');
+ assert.equal(index.plans['wgu-catalog-689e417cff765fc9'].tier,'reviewed');assert.deepEqual(Sheet.schoolQuestions(index,'wgu-catalog-689e417cff765fc9'),[]);
+ for(const bad of [null,undefined,[],'index',{plans:null},{plans:[]},{plans:{x:{tier:'confirmation',questions:'Ask'}}}])assert.deepEqual(Sheet.schoolQuestions(bad,'x'),[]);
+ assert.deepEqual(Sheet.schoolQuestions(index,'__proto__'),[]);assert.deepEqual(Sheet.schoolQuestions(index,''),[]);assert.deepEqual(Sheet.schoolQuestions(index,'not-a-plan'),[]);
+ assert.deepEqual(Sheet.schoolQuestions({plans:{x:{tier:'confirmation',questions:['  ask the school: whether X counts. ','',7,'Confirm Y.']}}},'x'),['Whether X counts.','Confirm Y.']);
+ assert.equal(JSON.stringify(index),frozen,'the index is never changed');
+});
+
+test('worksheet subject choices follow the browsing taxonomy and keep older saved subjects selectable',()=>{
+ const Guide=require('./dist/guide-engine.js'),index=require('./dist/data/plan-library-index.json'),taxonomy=require('./content/catalog/subject-areas.json');
+ const choices=Sheet.subjectChoices('any',index);
+ assert.deepEqual(choices.map(([id])=>id),['any',...taxonomy.subjects.map(subject=>subject.id)]);assert.deepEqual(choices.slice(1).map(([id])=>id),Guide.subjectIds);
+ for(const subject of taxonomy.subjects)assert.equal(choices.find(([id])=>id===subject.id)[1],index.subjects[subject.id],subject.id);
+ assert.deepEqual(Sheet.subjectChoices('any',null).map(([id])=>id),choices.map(([id])=>id),'labels fall back when the index is unavailable');
+ assert.equal(Sheet.subjectChoices('psychology',null).find(([id])=>id==='psychology')[1],'Psychology & human services');
+ for(const old of Guide.legacyFieldIds){const list=Sheet.subjectChoices(old,index);assert.equal(list.length,choices.length+1);assert.equal(list.at(-1)[0],old);}
+ assert.equal(Sheet.subjectChoices('astrology',index).length,choices.length,'unknown values are not offered');
+ assert.equal(Sheet.subjectChoices('business',index).length,choices.length,'a current subject is not repeated');
+});
+
+test('route subjects from the plan index make new subjects strict while older saved subjects still match',()=>{
+ const Guide=require('./dist/guide-engine.js'),route=(id,field)=>({id,school:'Example University',title:id,level:'bachelor',field,fields:[field],modalities:['online'],goals:['any-degree','career-growth','change-career']});
+ const catalog={pathways:[route('psych','social-science'),route('cj','social-science'),route('ux','arts')]},frozen=JSON.stringify(catalog);
+ const index={plans:{psych:{subjects:['psychology']},cj:{subjects:['criminal-justice']},ux:{subjects:['technology']}}};
+ const tagged=Sheet.attachRouteSubjects(catalog,index),ids=(value,field)=>Guide.recommend({field,degreeLevel:'bachelor'},value,[],[]).map(fit=>fit.pathway.id).sort();
+ assert.equal(JSON.stringify(catalog),frozen,'the loaded catalog is not changed');
+ assert.deepEqual(ids(tagged,'psychology'),['psych']);assert.deepEqual(ids(tagged,'technology'),['ux']);
+ assert.deepEqual(ids(tagged,'social-science'),['cj','psych'],'an older saved subject still finds both');assert.deepEqual(ids(tagged,'arts'),['ux']);
+ assert.deepEqual(ids(catalog,'psychology'),['cj','psych'],'without the index a new subject falls back to the nearest older field');
+ assert.equal(Sheet.attachRouteSubjects(catalog,null),catalog);assert.equal(Sheet.attachRouteSubjects(catalog,{plans:{psych:{subjects:[1]}}}),catalog);
+});
