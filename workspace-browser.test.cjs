@@ -5,6 +5,11 @@ const Sheet = require('./dist/sheet-state.js');
 const Journey = require('./dist/journey-engine.js');
 const catalog = require('./dist/data/pathways.json');
 const liberty = require('./dist/data/liberty.json');
+const Savings = require('./dist/savings-engine.js'),Catalog = require('./dist/program-catalog.js'),costs = require('./dist/data/cost-comparisons.json');
+const models = Catalog.modelFiles.map(file => require('./dist/'+file));
+const usd = value => new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
+// Estimates are computed from the reviewed curriculum and cost data the page uses, so data updates do not need test edits.
+const projected = state => Savings.calculate(state,Journey.buildDraft(state,catalog,models),costs).projected;
 const BASE = (process.env.DEGREEPATH_TEST_URL || 'http://127.0.0.1:8131/').replace(/\/?$/, '/');
 const KEY = 'degreepath-guide-v3';
 const PROGRAM = 'liberty-business-residential';
@@ -38,7 +43,17 @@ async function fresh(path='plan.html',saved=seed(),viewport={width:1440,height:1
 async function planReady(page) {
   await page.waitForURL(url => url.pathname.endsWith('/plan.html') && !url.searchParams.has('task'));
   await page.locator('#sheet-workspace:not([hidden])').waitFor();
-  await estimate(page,'$65,470');
+  const expected = usd(projected(await stored(page)).netDifference);
+  await estimate(page,expected);
+  return expected;
+}
+// The editable worksheet (with momentum milestones) is the plan's detailed view.
+async function worksheet(page) {
+  await page.goto(BASE+'plan.html?editor=1',{waitUntil:'networkidle'});
+  await page.locator('tr.sheet-row').first().waitFor();
+  const expected = usd(projected(await stored(page)).netDifference);
+  await estimate(page,expected);
+  return expected;
 }
 const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+name+'"]:visible').first();
 (async () => {try {
@@ -54,42 +69,43 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     assert.equal((await stored(page)).selectedPathwayId,'');
     assert(await page.locator('#portal-content [data-answer]').count()>=2);
     await page.locator('[data-answer="target"]').click();
-    const tip = page.locator('.portal-tip').first();
-    assert.equal(await tip.getAttribute('open'),null);
-    await tip.locator('summary').click();
-    assert.equal(await tip.evaluate(node => node.open),true);
-    assert((await tip.innerText()).length>25);
+    // Optional help is one secondary choice rather than an expanded explanation.
+    const help = page.getByRole('button',{name:'Help me choose a school',exact:true});
+    assert(await help.isVisible());
+    assert.equal(await page.locator('#portal-content [data-answer]').count(),1);
     assert.equal((await stored(page)).journey.step,'school');
     await page.reload({waitUntil:'networkidle'});
     assert.equal((await stored(page)).journey.step,'school');
   });
-  await test('a returning student opens the editable plan with one next win and the actual course-map estimate',async () => {
-    const page = await fresh('portal.html');await planReady(page);
-    assert(await page.locator('tr.sheet-row').count()>0);
-    assert.equal(await page.locator('#sheet-home [data-next-win]').count(),1);
+  await test('a returning student opens the course plan with one next action and the actual course-map estimate',async () => {
+    const page = await fresh('portal.html');const expected = await planReady(page);
+    assert(await page.locator('tr.course-plan-row').count()>0);
+    assert.equal(await page.locator('.plan-next-action').count(),1);
     assert.match(await page.locator('#sheet-titlebar').innerText(),/Liberty University/);
-    assert.match(await page.locator('#sheet-savings [data-savings="progress"]').innerText(),/^80 planned · 0 completed · 0 confirmed$/);
-    assert.equal(await money(page),'$65,470');
+    assert.equal(await page.locator('#sheet-savings [data-savings="progress"]').innerText(),projected(seed()).transferCredits+' outside credits · 0 finished');
+    assert.equal(await money(page),expected);
     assert(!/74,170/.test(await page.locator('#sheet-savings').innerText()));
     assert.equal(await nav(page,'plan').getAttribute('aria-current'),'page');
-    assert.equal(await nav(page,'credits').getAttribute('href'),'courses.html');
-    assert.match(await page.locator('.dp-shell-save:visible').innerText(),/Sign in to save|Not saved to your account|Saved to your account|Changes to save/);
+    assert.equal(await nav(page,'credits').getAttribute('href'),'courses.html?tab=mine');
+    assert.match(await page.locator('.dp-shell-save:visible').innerText(),/Sign in to save|Not saved to your account|Saved to your account|Changes to save|Save plan/);
   });
   await test('comparing a course previews a real tuition change before Apply and preserves private learning when applied',async () => {
-    const original = seed(true),page = await fresh('plan.html',original);await planReady(page);
+    const original = seed(true),page = await fresh('plan.html',original);const current = await planReady(page);
     const before = await stored(page);
+    const university = liberty.requirements.find(req=>req.id==='engl-101').options.find(option=>option.provider==='University');
+    const base = projected(before),changed = projected(Sheet.setCourse(structuredClone(before),PROGRAM,'engl-101',university.id));
     await page.locator('[data-compare-row="engl-101"]').first().click();
     await page.locator('#sheet-dialog[open] .sheet-comparison-options').waitFor();
-    const university = liberty.requirements.find(req=>req.id==='engl-101').options.find(option=>option.provider==='University');
     const preview = page.locator('[data-preview-row="engl-101"][data-option="'+university.id+'"]');
     await preview.click();
-    await page.waitForFunction(() => document.querySelector('[data-comparison-credits]')?.textContent === '77');
-    assert.equal(await page.locator('[data-comparison-cost]').innerText(),'$40,085');
-    assert.match(await page.locator('[data-comparison-delta]').innerText(),/\$3,995 higher estimated cost/);
-    assert.equal(await money(page),'$65,470','Preview must not replace the saved-plan estimate');
+    await page.waitForFunction(expected => document.querySelector('[data-comparison-credits]')?.textContent === expected,String(changed.transferCredits));
+    assert.equal(await page.locator('[data-comparison-cost]').innerText(),usd(changed.afterTuition+changed.outsideBudget));
+    assert(changed.netDifference<base.netDifference,'taking the course at the university costs more');
+    assert.match(await page.locator('[data-comparison-delta]').innerText(),new RegExp(usd(base.netDifference-changed.netDifference).replace('$','\\$')+' higher estimated cost'));
+    assert.equal(await money(page),current,'Preview must not replace the saved-plan estimate');
     assert.deepEqual((await stored(page)).scenarios,before.scenarios,'A preview must not persist course choices');
     await page.locator('[data-apply-course="engl-101"]').click();
-    await estimate(page,'$61,475');
+    await estimate(page,usd(changed.netDifference));
     const after = await stored(page);
     assert.equal(after.scenarios[PROGRAM].optionSelections['engl-101'],university.id);
     assert.deepEqual(after.learning,before.learning);
@@ -97,28 +113,28 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     assert.equal(after.profile.goalDetail,'PRIVATE-MOTIVE');
     assert(after.learning.every(record => record.evaluations.every(evaluation => evaluation.status!=='confirmed')));
     await page.locator('#close-sheet-dialog').click();
-    await page.reload({waitUntil:'networkidle'});await estimate(page,'$61,475');
+    await page.reload({waitUntil:'networkidle'});await estimate(page,usd(changed.netDifference));
     assert.equal((await stored(page)).scenarios[PROGRAM].optionSelections['engl-101'],university.id);
   });
   await test('course progress earns a personal milestone while school confirmation remains a separate action',async () => {
-    const page = await fresh();await planReady(page);
+    const page = await fresh();await planReady(page);const expected = await worksheet(page);
     await page.locator('#sheet-momentum [data-momentum-milestone="course-finished"]').waitFor({state:'attached'});
     assert.equal(await page.locator('#sheet-momentum [data-momentum-milestone="course-finished"]').getAttribute('data-earned'),'false');
     assert.equal((await page.locator('#sheet-momentum .momentum-announcement').innerText()).trim(),'');
     await page.locator('[data-progress="engl-101"]').selectOption('completed');
     await page.waitForFunction(() => document.querySelector('#sheet-momentum [data-momentum-milestone="course-finished"]')?.dataset.earned === 'true');
     assert.equal(await page.locator('#sheet-momentum [data-momentum-milestone="transfer-confirmed"]').getAttribute('data-earned'),'false');
-    assert.match(await page.locator('#sheet-savings [data-savings="progress"]').innerText(),/3 completed · 0 confirmed/);
-    assert.equal(await money(page),'$65,470');
+    assert.match(await page.locator('#sheet-savings [data-savings="progress"]').innerText(),/· 3 finished$/);
+    assert.equal(await money(page),expected);
     assert((await page.locator('#sheet-momentum .momentum-announcement').innerText()).trim().length>0);
-    await page.reload({waitUntil:'networkidle'});await estimate(page,'$65,470');
+    await page.reload({waitUntil:'networkidle'});await estimate(page,expected);
     assert.equal((await page.locator('#sheet-momentum .momentum-announcement').innerText()).trim(),'','Returning to an earned milestone must not replay it');
     await page.locator('[data-requirement="engl-101"] [data-row]').last().click();
     await page.locator('#confirm-placement input').check();
     await page.locator('#confirm-placement button').click();
     await page.waitForFunction(() => document.querySelector('#sheet-momentum [data-momentum-milestone="transfer-confirmed"]')?.dataset.earned === 'true');
-    assert.match(await page.locator('#sheet-savings [data-savings="progress"]').innerText(),/3 completed · 3 confirmed/);
-    assert.equal(await money(page),'$65,470');
+    assert.match(await page.locator('#sheet-savings [data-savings="progress"]').innerText(),/· 3 finished$/);
+    assert.equal(await money(page),expected);
   });
   await test('workspace navigation preserves original records and returns credit tasks to the plan',async () => {
     const page = await fresh('plan.html',seed(true));await planReady(page);
@@ -126,48 +142,42 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     await nav(page,'credits').click();
     await page.waitForURL(url=>url.pathname.endsWith('/courses.html'));
     await page.locator('#courses-results').waitFor();
-    await page.locator('#courses-add-own').click();
+    await page.locator('#courses-add-manual').click();
     await page.locator('#sheet-dialog[open] #sheet-learning-form').waitFor();
     assert.equal(await nav(page,'credits').getAttribute('aria-current'),'page');
     assert.match(await page.locator('#sheet-dialog-content').innerText(),/My original private course/);
     await page.locator('#close-sheet-dialog').click();await page.waitForURL(url=>url.pathname.endsWith('/courses.html'));
     await nav(page,'plan').click();await planReady(page);
-    await nav(page,'explore').click();
-    await page.waitForURL(url=>url.pathname.endsWith('/library.html'));
-    await page.locator('#explore').waitFor();
-    assert.equal(await nav(page,'explore').getAttribute('aria-current'),'page');
-    if (await page.locator('#workspace').count()) assert.equal(await page.locator('#workspace').isVisible(),false,'Explore must not expose the legacy duplicate worksheet');
+    await nav(page,'programs').click();
+    await page.waitForURL(url=>url.pathname.endsWith('/programs.html'));
+    await page.locator('.pf-program').first().waitFor();
+    assert.equal(await nav(page,'programs').getAttribute('aria-current'),'page');
+    assert.equal((await stored(page)).selectedPathwayId,before.selectedPathwayId,'Browsing degrees does not change the plan');
     await nav(page,'plan').click();await planReady(page);
     assert.deepEqual((await stored(page)).learning,before.learning);
     assert.deepEqual((await stored(page)).sheet.notes,before.sheet.notes);
   });
-  await test('choosing an Explore school starts its exact-degree question without losing private learning',async () => {
+  await test('opening a plan from Find a degree keeps private learning and the previous plan',async () => {
     const page = await fresh('plan.html',seed(true));await planReady(page);
     const before = await stored(page);
-    await nav(page,'explore').click();
-    await page.locator('#cards [data-plan="cosc"]').click();
-    await page.waitForURL(url=>url.pathname.endsWith('/portal.html') && url.searchParams.get('view')==='setup');
-    await page.locator('#portal-question-title').waitFor();
+    await nav(page,'programs').click();
+    const card = page.locator('.pf-program').filter({hasNot:page.locator('[href$="usePlan='+PROGRAM+'"]')}).first();
+    const target = new URL(await card.locator('.pf-open-plan').getAttribute('href'),BASE).searchParams.get('usePlan');
+    await card.locator('.pf-open-plan').click();
+    await page.waitForURL(url=>url.pathname.endsWith('/plan.html'));await page.locator('tr.course-plan-row').first().waitFor();
     const after = await stored(page);
-    assert.equal(after.journey.step,'degree');
-    assert.equal(after.journey.completed,false);
-    assert.equal(after.profile.school,'Charter Oak State College');
-    assert.equal(after.profile.degree,'');
-    assert.equal(after.selectedPathwayId,'');
+    assert.equal(after.selectedPathwayId,target);
+    assert(after.whatIf.snapshots.some(snapshot=>snapshot.pathwayId===before.selectedPathwayId),'The previous plan stays available');
     assert.deepEqual(after.learning,before.learning);
     assert.deepEqual(after.sheet.notes,before.sheet.notes);
-    assert.equal(await page.locator('.dp-shell-sidebar').isVisible(),false);
-    assert.equal(await page.locator('#portal-savings').isVisible(),false);
+    assert.equal(after.profile.goalDetail,'PRIVATE-MOTIVE');
   });
-  await test('phone layouts keep the first course visible and compare and credit controls usable',async () => {
+  await test('phone layouts keep compare and credit controls usable',async () => {
     for (const width of [390,320]) {
       const page = await fresh('plan.html',seed(),{width,height:844});await planReady(page);
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'The app must not overflow the phone width');
       assert.equal(await page.locator('.dp-shell-sidebar').isVisible(),false);
       assert.equal(await page.locator('.dp-shell-bottom').isVisible(),true);
-      const first = await page.locator('tr.sheet-row').first().boundingBox();
-      assert(first.y<844,'At least one course should appear in the initial viewport');
-      assert(await page.locator('#sheet-grid').evaluate(node=>node.scrollWidth>node.clientWidth),'The worksheet retains its own horizontal scrolling');
       await page.locator('[data-compare-row="engl-101"]').first().click();
       await page.locator('#sheet-dialog[open] .sheet-comparison-options').waitFor();
       const close = await page.locator('#close-sheet-dialog').boundingBox();
@@ -176,12 +186,21 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
       await nav(page,'credits').click();
       await page.waitForURL(url=>url.pathname.endsWith('/courses.html'));
     await page.locator('#courses-results').waitFor();
-    await page.locator('#courses-add-own').click();
+    await page.locator('#courses-add-manual').click();
     await page.locator('#sheet-dialog[open] #sheet-learning-form').waitFor();
       assert.equal(await page.locator('.dp-shell-bottom').isVisible(),false,'A focused credit task keeps its own unobstructed controls');
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
       await page.locator('#close-sheet-dialog').click();await page.waitForURL(url=>url.pathname.endsWith('/courses.html'));
     await nav(page,'plan').click();await planReady(page);
+    }
+  });
+  // Open UX question (reported, not decided here): the phone plan stacks the route, summary,
+  // estimate and next action above the course table, so the first course starts several screens down.
+  await test('phone plans show the first course in the initial viewport',async () => {
+    for (const width of [390,320]) {
+      const page = await fresh('plan.html',seed(),{width,height:844});await planReady(page);
+      const first = await page.locator('tr.course-plan-row').first().boundingBox();
+      assert(first.y<844,'At least one course should appear in the initial viewport (first course at y='+Math.round(first.y)+')');
     }
   });
   assert.deepEqual(errors,[],'Workspace journeys must not throw browser exceptions');
