@@ -21,7 +21,8 @@
   const programs = models => Array.isArray(models) ? models : Object.values(object(models));
   const service = status => ['active', 'veteran', 'reserve'].includes(status);
   const protectedGoals = ['teacher', 'lawyer', 'pilot', 'health-professional'];
-  const fields = ['any', 'general', 'business', 'technology', 'science', 'arts', 'humanities', 'social-science', 'education', 'health', 'law', 'aviation'];
+  // Browsing subjects plus the older field ids, which saved profiles may still hold.
+  const fields = ['any', 'general', 'business', 'technology', 'science', 'arts', 'humanities', 'social-science', 'education', 'health', 'law', 'aviation', 'accounting-finance', 'psychology', 'criminal-justice', 'faith'];
   const knownProctored = new Set(['CLEP', 'StraighterLine', 'Saylor', 'DSST']);
   const questionIds = ['start', 'school', 'degree', 'about', 'purpose', 'career', 'level', 'field', 'format', 'prior', 'military', 'military-records', 'priority', 'routes', 'review'];
   const parse = value => {if (typeof value !== 'string') return value; try {return JSON.parse(value);} catch (_) {return null;}};

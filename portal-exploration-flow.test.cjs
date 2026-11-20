@@ -40,7 +40,7 @@ test('a known-school degree returns to that degree browser and asks preferences 
 });
 
 test('answered goal and priority become an editable summary rather than repeated questions',async()=>{
-  const {f}=await chosenExplorer(),html=f.api.about();assert.doesNotMatch(html,/name="(?:goal|priority)"/);assert.match(html,/Earn a degree/);assert.match(html,/Finish sooner/);assert.match(html,/Change choices/);assert.match(html,/name="prior"/);assert.match(html,/Military service\? Include your training/);
+  const {f}=await chosenExplorer(),html=f.api.about();assert.doesNotMatch(html,/name="(?:goal|priority)"/);assert.match(html,/Earn a degree/);assert.match(html,/Finish sooner/);assert.match(html,/Change choices/);assert.match(html,/name="prior"/);assert.match(html,/<legend>Military service<\/legend>/);
   await f.submit('portal-about-form',{prior:'none',military:'none',militaryRecords:'not-sure'});const state=f.state();assert.equal(state.journey.completed,true);assert.equal(state.journey.intakeCompleted,true);assert.equal(state.profile.goal,'any-degree');assert.equal(state.profile.priority,'speed');assert.equal(state.profile.hasPrior,'none');
 });
 
