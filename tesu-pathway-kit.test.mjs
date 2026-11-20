@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {join,resolve} from 'node:path';
 import {readFile} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
-import {loadKit,kitsRoot,readJSON,root,canonical,clone,list,inScope,matchRequirement,parsePlacement} from './scripts/pathway-factory/lib.mjs';
+import {loadKit,kitsRoot,readJSON,root,canonical,clone,list,inScope,matchRequirement,parsePlacement,normalizeText} from './scripts/pathway-factory/lib.mjs';
 import {compileKit,runGuards,serializePublished} from './scripts/pathway-factory/compile.mjs';
 import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 import {factoryInput} from './scripts/pathway-factory/migrate-liberty.mjs';
@@ -47,12 +47,45 @@ test('the TESU kit is the source of truth: it verifies, passes its guards and pu
   assert.ok(!kit.programs.some(p=>p.modelId==='tesu-general-management'));
 });
 
-test('a fresh migration of the registry output reproduces the committed kit',async()=>{
+test('the migration tool still decomposes the current registry output into the committed ledgers',async()=>{
+  // Parity at the switch (commit "Publish TESU curricula from a Pathway Factory kit") was exact for the whole kit. The kit has
+  // since gained authored, source-grounded equivalency rows, so a fresh decomposition is compared on its ledgers and models.
   const fresh=await migrate();
-  assert.deepEqual(canonical(fresh.equivalencies),canonical(kit.equivalencies));
-  assert.deepEqual(canonical(fresh.school),canonical(kit.school));
-  for(const program of fresh.programs){const committed=kit.programs.find(p=>p.slug===program.slug);const {file:_f,...rest}=committed;assert.deepEqual(canonical(program),canonical(rest),program.slug);}
   assert.deepEqual(parity(fresh.documents.flatMap(d=>d.models),doc.models),[]);
+  for(const program of fresh.programs){
+    const committed=kit.programs.find(p=>p.slug===program.slug),strip=p=>p.requirements.map(({optionRows,...r})=>r);
+    assert.deepEqual(canonical(strip(program)),canonical(strip(committed)),program.slug+' ledger');
+    assert.deepEqual(canonical(program.modelFields),canonical(committed.modelFields),program.slug+' model fields');
+  }
+});
+
+test('TESU-submitted equivalencies replace copied same-school Sophia awards with grounded institution-wide rows',async()=>{
+  const authored=kit.equivalencies.equivalencies.filter(row=>row.authored),sophia=kit.providers.get('Sophia');
+  assert.equal(authored.length,22);
+  for(const row of authored){
+    assert.equal(row.provider,'Sophia');assert.equal(row.evidence,'conditional');assert.equal(row.extra.eligibilityReview.eligibleToStart,false);
+    assert.deepEqual(row.scope,{all:true,levels:['bachelor'],modalities:['online'],catalogs:[kit.programs[0].catalog]});
+    const source=sophia.sources.find(s=>s.id===row.sourceIds[0]),sidecar=await readJSON(resolve(root,source.capture.replace(/\.txt$/,'.json')));
+    assert.equal(sidecar.url,source.url,row.id+' capture is the cited ACE page');
+    const text=normalizeText(await readFile(resolve(root,source.capture),'utf8'));
+    assert.ok(text.includes(normalizeText(`2026-2027 Thomas Edison State University ${row.credits} ${row.receivingCode} ${row.receivingTitle}`)),row.id+' TESU equivalency is in its capture');
+    assert.ok(text.includes(normalizeText('ACE ID: '+row.code)),row.id+' ACE identity is in its capture');
+  }
+  const names=row=>[row.code,row.identity?.aceId,...list(row.identity?.codeAliases)].filter(Boolean).map(v=>String(v).toLowerCase());
+  const rows=new Map(kit.equivalencies.equivalencies.map(row=>[row.id,row]));
+  for(const program of kit.programs)for(const requirement of program.requirements){
+    const placed=list(requirement.optionRows).map(parsePlacement).filter(p=>p.row).map(p=>rows.get(p.row));
+    for(const row of placed.filter(row=>row.authored)){
+      const copies=placed.filter(other=>other!==row&&other.provider==='Sophia'&&/researched in another degree/.test(other.extra?.mappingScope||'')&&names(other).some(n=>names(row).includes(n)||n===sophia.courses.find(c=>c.code===row.code)?.title.toLowerCase()));
+      assert.deepEqual(copies.map(c=>c.id),[],program.slug+'/'+requirement.id+': a copied award of '+row.code+' is superseded, not duplicated');
+    }
+  }
+  // Placement option ids stay unique, so saved selections keep pointing at one option.
+  for(const model of doc.models)for(const requirement of model.requirements){const ids=requirement.options.map(o=>o.id);assert.equal(new Set(ids).size,ids.length,model.id+'/'+requirement.id);}
+  // A quote that is not in its capture is a hard verification error.
+  const broken=clone(kit);broken.providers=kit.providers;broken.dir=kit.dir;
+  broken.equivalencies.equivalencies.find(row=>row.authored).quotes[1].text='2026-2027 Thomas Edison State University 6 MAT-9999 Invented Course';
+  assert.ok((await verifyKit(broken,{asOf:'2026-11-20'})).errors.some(e=>e.code==='quote-not-found'));
 });
 
 test('the retired importers still build exactly the ledger the kit publishes',async()=>{
@@ -81,6 +114,7 @@ test('institution-wide rows are never wider than the data and every placement is
 
 test('TESU guards reject academic regressions in a compiled document',()=>{
   const fresh=()=>clone(doc),model=(d,id='curriculum-tesu-bsba-finance')=>d.models.find(m=>m.id===id),req=(d,code,id)=>model(d,id).requirements.find(r=>r.code===code);
+  const aceOption=d=>req(d,'MAT-1210').options.find(o=>o.mappingReviewId==='tesu-ace-institution-equivalencies-2026-11-20');
   const outsideOption=(d,id)=>model(d,id).requirements.flatMap(r=>r.options.filter(o=>o.provider!=='University').map(o=>({r,o})))[0];
   const cases=[
     ['semesterLedgers',d=>{req(d,'MAN-2100').credits=4;}],
@@ -102,10 +136,21 @@ test('TESU guards reject academic regressions in a compiled document',()=>{
     ['awardsFitTheirRequirement',d=>{const {o}=outsideOption(d);o.sourceIds=['not-a-model-source'];}],
     ['awardsFitTheirRequirement',d=>{const {o}=outsideOption(d);o.creditSystem='quarter';}],
     ['businessCourseCurrency',d=>{model(d,'curriculum-tesu-bsba-accounting').existingCreditReview.groups.find(g=>g.id==='business-capstone').maxAgeYears=10;}],
-    ['businessCourseCurrency',d=>{const g=model(d).existingCreditReview.groups.find(g=>g.maxAgeYears===10);g.maxOlderCredits=g.totalCredits;}]
+    ['businessCourseCurrency',d=>{const g=model(d).existingCreditReview.groups.find(g=>g.maxAgeYears===10);g.maxOlderCredits=g.totalCredits;}],
+    ['provisionalProvidersStayRestricted',d=>{aceOption(d).eligibilityReview.eligibleToStart=true;}],
+    ['provisionalProvidersStayRestricted',d=>{const o=req(d,'SOC-1010').options.find(o=>o.provider==='Sophia');o.conditions=o.conditions.filter(c=>!/provisional|no established/i.test(c));}],
+    ['schoolSubmittedMatchesAreExact',d=>{aceOption(d).mappingEvidence.catalogYear='2025-2026';}],
+    ['schoolSubmittedMatchesAreExact',d=>{aceOption(d).evidence='published';}],
+    ['schoolSubmittedMatchesAreExact',d=>{req(d,'ENC-1010').options.unshift(clone(aceOption(d)));}]
   ];
   for(const [name,mutate]of cases){
     assert.ok(guard(name),name);assert.doesNotThrow(()=>guard(name)(doc,kit),name+' passes on the published document');
     const broken=fresh();mutate(broken);assert.throws(()=>guard(name)(broken,kit),name+' must reject the regression');
+  }
+  // Authored institution-wide rows must quote TESU's own equivalency and the exact ACE identity.
+  const grounded=guard('authoredRowsAreGrounded');assert.doesNotThrow(()=>grounded(doc,kit));
+  for(const mutate of [row=>{row.quotes=row.quotes.filter(q=>!q.text.includes('Thomas Edison State University'));},row=>{row.quotes=row.quotes.filter(q=>!q.text.startsWith('ACE ID: '));},row=>{row.scope={programs:['bsba-finance']};},row=>{row.evidenceType='community-reported';}]){
+    const k={...kit,equivalencies:clone(kit.equivalencies)};mutate(k.equivalencies.equivalencies.find(row=>row.authored));
+    assert.throws(()=>grounded(doc,k),'authoredRowsAreGrounded must reject an ungrounded authored row');
   }
 });

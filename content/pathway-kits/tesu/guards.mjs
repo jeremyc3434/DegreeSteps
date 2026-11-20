@@ -116,4 +116,45 @@ function businessCourseCurrency(doc){
     assert.ok(cites(m,m.existingCreditReview.sourceIds),`${m.title}: the currency rule cites a model source`);
   }
 }
-export const checks=[semesterLedgers,reviewedLedgerShapes,distinctNamedCourses,prerequisitesResolve,residencyAndCaps,gradeMinimums,institutionOnlyStaysAtTESU,awardsFitTheirRequirement,businessCourseCurrency];
+/**
+ * TESU's Approved Provider Directory (captured 2026-11-20) lists SOPHIA Learning, StraighterLine and CLEP as Provisionally
+ * Approved – Review Pending. Every such option keeps that restriction visible: a blocking eligibility review or a condition.
+ */
+const provisionalProviders=['Sophia','StraighterLine','CLEP'];
+function provisionalProvidersStayRestricted(doc){
+  for(const m of doc.models)for(const r of m.requirements)for(const o of outside(r)){
+    if(!provisionalProviders.includes(o.provider))continue;
+    const restricted=o.eligibilityReview?o.eligibilityReview.eligibleToStart===false&&o.eligibilityReview.fullyApproved===false&&cites(m,o.eligibilityReview.sourceIds):list(o.conditions).some(text=>/provisional|no established/i.test(text));
+    assert.ok(restricted,`${m.title} ${r.id}/${o.id}: ${o.provider} is provisionally approved at TESU; the option must keep that restriction`);
+    if(o.evidenceType==='school-submitted-equivalency')assert.ok(o.eligibilityReview,`${m.title} ${r.id}/${o.id}: a documented receiving match carries its separate provider eligibility review`);
+  }
+}
+/**
+ * A TESU-submitted (ACE-published) receiving match names one TESU course for the 2026–2027 catalog. It stays conditional,
+ * awards exactly that course's credits in the requirement for that course (or a free-elective block), and never claims an
+ * individual approval. Copies of the legacy General Management records keep their own (copied) evidence and are not checked here.
+ */
+function schoolSubmittedMatchesAreExact(doc){
+  for(const m of doc.models)for(const r of m.requirements)for(const o of outside(r)){
+    if(o.evidenceType!=='school-submitted-equivalency'||/researched in another degree/i.test(o.mappingScope||''))continue;
+    const e=o.mappingEvidence||{};
+    assert.equal(o.evidence,'conditional',`${m.title} ${r.id}/${o.id}: a school-submitted match stays conditional`);
+    assert.equal(o.receivingMapStatus,'published-school-submitted');assert.equal(o.mappingResearchClosed,true);
+    assert.equal(e.claimOrigin,'receiving-institution-submitted',`${m.title} ${r.id}/${o.id}: claim origin`);
+    assert.equal(e.schoolName,'Thomas Edison State University');assert.equal(e.catalogYear,'2026-2027',`${m.title} ${r.id}/${o.id}: the TESU 2026–2027 catalog`);
+    assert.equal(e.individualApproval,false);assert.equal(e.receivingCode,o.receivingCode);assert.equal(e.credits,o.credits);
+    assert.ok(cites(m,e.sourceIds),`${m.title} ${r.id}/${o.id}: the receiving match cites a model source`);
+    assert.ok(r.code===o.receivingCode||r.freeElective===true&&o.placementType==='elective',`${m.title} ${r.id}/${o.id}: ${o.receivingCode} is placed only in its own requirement or a free-elective block`);
+  }
+}
+/** Institution-wide rows authored in the kit are grounded in a captured TESU-submitted equivalency for their receiving course. */
+function authoredRowsAreGrounded(doc,kit){
+  for(const row of list(kit?.equivalencies?.equivalencies)){
+    if(!row.authored)continue;
+    assert.ok(row.scope?.all===true&&row.scope.levels?.length&&row.scope.modalities?.length&&row.scope.catalogs?.length,row.id+': an authored institution-wide row names its levels, formats and catalogs');
+    assert.ok(list(row.quotes).some(q=>q.text.includes('Thomas Edison State University')&&q.text.includes(row.receivingCode)),row.id+': quotes TESU\'s equivalency for '+row.receivingCode);
+    assert.ok(list(row.quotes).some(q=>/^ACE ID: /.test(q.text)&&q.text.includes(row.code)),row.id+': quotes the exact ACE identity '+row.code);
+    assert.equal(row.evidenceType,'school-submitted-equivalency',row.id+': only TESU-submitted equivalencies are authored institution-wide');
+  }
+}
+export const checks=[semesterLedgers,reviewedLedgerShapes,distinctNamedCourses,prerequisitesResolve,residencyAndCaps,gradeMinimums,institutionOnlyStaysAtTESU,awardsFitTheirRequirement,businessCourseCurrency,provisionalProvidersStayRestricted,schoolSubmittedMatchesAreExact,authoredRowsAreGrounded];
