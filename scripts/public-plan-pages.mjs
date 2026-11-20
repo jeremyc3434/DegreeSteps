@@ -5,6 +5,7 @@ import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
 import {icon,schoolMarkHTML,creditSplit} from './public-visuals.mjs';
 import {subjectAreas,subjectsFor} from './subject-areas.mjs';
+import {transferPath} from './transfer-pages.mjs';
 
 const require=createRequire(import.meta.url);
 const Planner=require('../dist/planner.js');
@@ -23,6 +24,9 @@ export const publicPlanDefinitions=Object.freeze([
 ]);
 
 export function publicPlanPath(plan){return '/degree-plans/'+plan.slug+'/';}
+/** Transfer-directory pages that exist, set by the site build so plan rows can link to them. */
+let transferPaths=new Set();
+export function setTransferPaths(paths){transferPaths=new Set(paths);}
 export function usePublicPlanHref(plan){return '/portal.html?usePlan='+encodeURIComponent(plan.id);}
 function catalogLabel(value){const raw=String(value||''),match=raw.match(/^(20\d{2})(0[1-9]|1[0-2])$/);return match?new Intl.DateTimeFormat('en-US',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(Number(match[1]),Number(match[2])-1,1))):raw;}
 
@@ -132,7 +136,7 @@ function entryRow(entry,plan){
  const atSchool=entry.provider==='University',requirement=entry.requirements.map(req=>'<span><strong>'+esc(req.code||'Degree requirement')+'</strong> '+esc(req.title)+'</span>').join('');
  const link=https(entry.courseUrl),label=atSchool?plan.school:entry.provider;
  const searchText=[entry.requirements.map(req=>[req.code,req.title].join(' ')).join(' '),entry.title,entry.code,label].join(' ').toLowerCase().replace(/\s+/g,' ');
- return '<tr data-preview-provider="'+esc(atSchool?'university':'outside')+'" data-preview-source="'+esc(atSchool?'university':entry.provider)+'" data-preview-text="'+esc(searchText)+'" data-requirement-ids="'+esc(entry.requirementIds.join(' '))+'"><th scope="row">'+requirement+'</th><td data-label="Proposed course">'+(link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+esc(entry.title)+'</a>':esc(entry.title))+(entry.code?'<small>'+esc(entry.code)+'</small>':'')+(!atSchool&&looksUnrelated(entry)?'<small class="public-plan-map-note">'+esc(schoolShort(plan.school))+'’s published transfer guidance accepts this course for this requirement.</small>':'')+'</td><td data-label="Source">'+esc(label)+(atSchool?'<small>'+(entry.kind==='universityRequired'?'University requirement':'Selected university coursework')+'</small>':'')+'</td><td data-label="'+(plan.unit==='competency units'?'Degree units':'Degree credits')+'" data-degree-credits="'+entry.credits+'">'+entry.credits+'</td><td data-label="Evidence">'+(https(entry.evidenceUrl)?'<a href="'+esc(entry.evidenceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(entry.evidenceLabel||'Course evidence')+'</a>':esc(entry.evidenceLabel||'Degree requirement'))+'</td></tr>';
+ return '<tr data-preview-provider="'+esc(atSchool?'university':'outside')+'" data-preview-source="'+esc(atSchool?'university':entry.provider)+'" data-preview-text="'+esc(searchText)+'" data-requirement-ids="'+esc(entry.requirementIds.join(' '))+'"><th scope="row">'+requirement+'</th><td data-label="Proposed course">'+(link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+esc(entry.title)+'</a>':esc(entry.title))+(entry.code?'<small>'+esc(entry.code)+'</small>':'')+(!atSchool&&entry.code&&transferPaths.has(transferPath(entry.provider,entry.code,entry.title))?'<small><a class="public-plan-elsewhere" href="'+esc(transferPath(entry.provider,entry.code,entry.title))+'">Where else this course counts</a></small>':'')+(!atSchool&&looksUnrelated(entry)?'<small class="public-plan-map-note">'+esc(schoolShort(plan.school))+'’s published transfer guidance accepts this course for this requirement.</small>':'')+'</td><td data-label="Source">'+esc(label)+(atSchool?'<small>'+(entry.kind==='universityRequired'?'University requirement':'Selected university coursework')+'</small>':'')+'</td><td data-label="'+(plan.unit==='competency units'?'Degree units':'Degree credits')+'" data-degree-credits="'+entry.credits+'">'+entry.credits+'</td><td data-label="Evidence">'+(https(entry.evidenceUrl)?'<a href="'+esc(entry.evidenceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(entry.evidenceLabel||'Course evidence')+'</a>':esc(entry.evidenceLabel||'Degree requirement'))+'</td></tr>';
 }
 function sectionHTML(section,plan,depth=0){
  const heading=depth?'h3':'h2',shared=list(section.sharedEntries).map(entry=>'<p class="public-plan-shared">'+esc(entry.requirements.map(req=>[req.code,req.title].filter(Boolean).join(' ')).join('; '))+' also fulfills this section. Its credits are counted in its primary section.</p>').join('');
