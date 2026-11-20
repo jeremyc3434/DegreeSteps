@@ -59,6 +59,8 @@
     subjects: (card.dataset.planSubjects || '').split(' ').filter(Boolean), share: Number(card.dataset.planShare) || 0, cost: card.dataset.planCost ? Number(card.dataset.planCost) : null
   }));
   for (const item of items) item.subjectLabels = item.subjects.map(s => labelFor('subject', s));
+  // The flat (non-grouped) list gets its own heading so card headings keep a valid outline.
+  const flatHeading = document.createElement('h2'); flatHeading.className = 'sr-only'; flatHeading.textContent = 'Matching degree plans'; flatHeading.hidden = true; results.appendChild(flatHeading);
   const flat = document.createElement('div'); flat.className = 'public-plan-cards plan-library-flat'; flat.hidden = true; results.appendChild(flat);
   let limit = PAGE;
 
@@ -93,7 +95,7 @@
     const grouped = state.sort === 'school';
     const shown = new Set(list.slice(0, limit).map(item => item.card));
     // Grouped view keeps school sections; other sorts use one flat, ordered grid.
-    flat.hidden = grouped;
+    flat.hidden = grouped; flatHeading.hidden = grouped || list.length === 0;
     for (const item of items) item.card.hidden = !shown.has(item.card);
     if (grouped) {
       for (const item of [...items].sort((a, b) => a.title.localeCompare(b.title))) groups.get(item.school)?.querySelector('.public-plan-cards')?.appendChild(item.card);

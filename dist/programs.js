@@ -36,13 +36,16 @@ document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)r
 $('program-sort').addEventListener('change',()=>{limit=30;render();});
 $('program-dialog').addEventListener('close',()=>restoreFocus?.isConnected&&restoreFocus.focus({preventScroll:true}));
 (async()=>{try{
- const loaded=await Promise.all(['data/pathways.json','data/program-catalog.json','data/opportunity-catalog.json','data/credit-sources.json','data/plan-library-index.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('The degree plans could not load. Please reload.');return r.json();}));
- data=loaded[2];const sources=loaded[3];index=loaded[4];
+ const loaded=await Promise.all(['data/pathways.json','data/program-catalog.json','data/opportunity-catalog.json','data/credit-sources.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('The degree plans could not load. Please reload.');return r.json();}));
+ data=loaded[2];const sources=loaded[3];
+ // The finder index is an enhancement: without it, only reviewed (published) plans are listed.
+ try{const r=await fetch('data/plan-library-index.json');const value=r.ok?await r.json():null;index={plans:value?.plans&&typeof value.plans==='object'?value.plans:{},subjects:value?.subjects&&typeof value.subjects==='object'?value.subjects:{}};}catch{index={plans:{},subjects:{}};}
  $('program-college-tip').querySelector('div').innerHTML=sources.sources.filter(source=>['asu-ulc','tel','cpa-credits','outlier'].includes(source.id)).map(source=>'<p><a href="credit-sources/'+encodeURIComponent(source.id)+'/">'+esc(source.name)+'</a><small>'+esc(source.creditBasis)+'</small></p>').join('');
  catalog=await DegreeProgramCatalog.loadIndex(DegreeProgramCatalog.merge(loaded[0],loaded[1]));
  if(typeof DegreeProgramCatalog.publishedPlans!=='function'||catalog.publicationIndex?.available===false)throw Error('We couldn’t load the reviewed degree plans. Reload to try again. Your saved plan is safe.');
  // Reviewed plans plus complete plans that still need school confirmation (labelled); both open in the planner.
- rows=(catalog.pathways||[]).filter(p=>p.modelId&&index.plans[p.id]&&DegreeProgramCatalog.isPlanAvailable(p,catalog)&&P.availability(p).canChoose);
+ const published=DegreeProgramCatalog.publishedPlans(catalog).filter(p=>P.availability(p).canChoose),publishedIds=new Set(published.map(p=>p.id));
+ rows=[...published,...(typeof DegreeProgramCatalog.isPlanAvailable==='function'?(catalog.pathways||[]).filter(p=>!publishedIds.has(p.id)&&p.modelId&&index.plans[p.id]?.tier==='confirmation'&&DegreeProgramCatalog.isPlanAvailable(p,catalog)&&P.availability(p).canChoose):[])];
  try{const r=await fetch('data/baseline-index.json');const baselineIndex=r.ok?await r.json():null;for(const b of Object.values(baselineIndex?.baselines||{})){const t=b.summary||{};if(!Number.isFinite(t.transferCredits)||!Number.isFinite(t.universityCredits))continue;splits.set(b.pathwayId,{outside:t.transferCredits,university:t.universityCredits,total:Number.isFinite(t.totalCredits)?t.totalCredits:t.transferCredits+t.universityCredits});}}catch{}
  const subjectIds=[...new Set(rows.flatMap(p=>info(p).subjects))];$('program-subject').innerHTML='<option value="">All subjects</option>'+Object.entries(index.subjects).filter(([id])=>subjectIds.includes(id)).map(([id,label])=>'<option value="'+esc(id)+'">'+esc(label)+'</option>').join('');
  const schools=[...new Set(rows.map(p=>p.school))].sort();

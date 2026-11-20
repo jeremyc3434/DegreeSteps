@@ -629,7 +629,7 @@ body.public-page .plan-facet legend { margin:0 0 10px; padding:0; color:var(--pu
 body.public-page .plan-chips { display:flex; flex-wrap:wrap; gap:8px; }
 body.public-page .plan-chip { position:relative; display:inline-flex; align-items:center; gap:8px; margin:0; padding:7px 12px; border:1px solid #d3dbe7; border-radius:999px; background:#fff; color:#334155; font-size:.875rem; line-height:1.25; cursor:pointer; transition:border-color 150ms,background 150ms,color 150ms; }
 body.public-page .plan-chip input { position:absolute; opacity:0; width:1px; height:1px; }
-body.public-page .plan-chip small { color:#7b899b; font-size:.75rem; font-variant-numeric:tabular-nums; }
+body.public-page .plan-chip small { color:#5b6878; font-size:.75rem; font-variant-numeric:tabular-nums; }
 body.public-page .plan-chip:hover { border-color:var(--public-cobalt); }
 body.public-page .plan-chip:has(input:checked) { border-color:var(--public-cobalt); background:var(--ds-soft-blue,#eef1ff); color:var(--public-cobalt); font-weight:600; }
 body.public-page .plan-chip:has(input:checked) small { color:var(--public-cobalt); }
