@@ -28,8 +28,10 @@ const saved = p => p.evaluate(key => JSON.parse(localStorage.getItem(key)), KEY)
 const home = p => p.locator('#sheet-home .student-checklist');
 const item = (p, id) => home(p).locator('[data-dc-task="' + id + '"]');
 async function readyPlan(p) {
-  await home(p).locator('.dc-next').waitFor();
   await p.locator('tr.course-plan-row').first().waitFor();
+  // The checklist sits in the collapsed "All tasks and checklist" panel below the plan.
+  await openDetails(p.locator('#sheet-task-panel'));
+  await home(p).locator('.dc-next').waitFor();
 }
 async function page(state = seed(), path = 'plan.html') {
   const context = await browser.newContext({viewport:{width:1440, height:1000}});
@@ -51,22 +53,39 @@ async function openDetails(locator) {
   if (await locator.getAttribute('open') === null) await locator.locator(':scope > summary').click();
 }
 async function reveal(p, id) {
+  await openDetails(p.locator('#sheet-task-panel'));
   await openDetails(home(p).locator('[data-dc-open="checklist"]'));
   const task = item(p, id), group = await task.getAttribute('data-dc-group');
   await openDetails(home(p).locator('[data-dc-open="group:' + group + '"]'));
   if (await task.getAttribute('data-status') === 'done') await openDetails(home(p).locator('[data-dc-open="done:' + group + '"]'));
   return task;
 }
+const failures = [];
 async function test(name, run) {
   if (process.env.DEGREEPATH_NEXT_STEP_CASE && !new RegExp(process.env.DEGREEPATH_NEXT_STEP_CASE).test(name)) return;
   const before = contexts.length;
+  // Each journey reports on its own so one failure does not hide the rest; any failure fails the run.
   try {await run(); count++; console.log('PASS ' + name);}
+  catch (error) {failures.push(name); console.log('FAIL ' + name + '\n  ' + String(error.message).split('\n')[0]);}
   finally {for (const context of contexts.splice(before)) await context.close();}
 }
 
 (async () => {try {
   browser = await chromium.launch({executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium', args:['--no-sandbox']});
 
+  await test('the records task opens the course upload page, with manual entry, without changing records', async () => {
+    for (const status of [null, 'saved', 'in-progress']) {
+      const state = seed();
+      if (status) state.learning = [record(status)];
+      const p = await page(state);
+      await p.goto(BASE + 'plan.html?task=credits', {waitUntil:'networkidle'});
+      await p.waitForURL('**/import-courses.html?from=plan');
+      assert.equal(await p.getByRole('link', {name:'Enter it manually', exact:true}).getAttribute('href'), 'plan.html?task=credits&manual=1&from=courses');
+      assert.deepEqual((await saved(p)).learning, state.learning);
+    }
+  });
+  // Open question (reported): since plan.html?task=credits always redirects to the upload page,
+  // the "Have you finished any college courses?" dialog below (some / none / later) is unreachable.
   await test('zero, saved-only and in-progress collections all offer the three past-course decisions', async () => {
     for (const status of [null, 'saved', 'in-progress']) {
       const state = seed();
@@ -158,7 +177,7 @@ async function test(name, run) {
     const official = p.getByRole('link', {name:/Open official program information/});
     assert.match(await official.getAttribute('href'), /^https:\/\//);
     assert.equal(await p.locator('[data-action="school-contacted"]').count(), 0);
-    assert.equal(await p.getByRole('link', {name:'My plan', exact:true}).getAttribute('href'), 'plan.html');
+    assert.deepEqual([...new Set(await p.getByRole('link', {name:'My plan', exact:true}).evaluateAll(links => links.map(link => link.getAttribute('href'))))], ['plan.html']);
     await p.getByRole('link', {name:'Back to my checklist', exact:true}).click();
     await p.waitForURL(BASE + 'plan.html');await readyPlan(p);
     assert.equal((await saved(p)).journey.schoolContacted, false);
@@ -222,6 +241,7 @@ async function test(name, run) {
 
   assert.deepEqual(errors, []);
   console.log(count + ' next-step browser journeys passed.');
+  if (failures.length) {console.error(failures.length + ' failed: ' + failures.join('; ')); process.exitCode = 1;}
 } finally {
   for (const context of contexts) await context.close();
   await browser?.close();
