@@ -722,10 +722,10 @@
     if(choice==='some')creditsDialog(null,true);else{closeDialog();announce(choice==='none'?'Starting from zero saved. Your saved courses are unchanged.':'Past courses set aside for now. Your plan stays provisional.');}
   }
   document.addEventListener('click',event=>{
-    const fold=event.target.closest('[data-phone-fold]');
-    if(fold){const group=fold.dataset.phoneFold,open=!phoneFolds.has(group);if(open)phoneFolds.add(group);else phoneFolds.delete(group);fold.setAttribute('aria-expanded',String(open));$('sheet-workspace')?.classList.toggle('phone-open-'+group,open);return;}
-    const jump=event.target.closest('[data-jump-courses]');
-    if(jump){const grid=$('sheet-grid');if(!grid)return;event.preventDefault();grid.scrollIntoView?.({block:'start'});grid.focus({preventScroll:true});}
+    const fold=event.target.closest?.('[data-phone-fold]');
+    if(fold?.dataset?.phoneFold){const group=fold.dataset.phoneFold,open=!phoneFolds.has(group);if(open)phoneFolds.add(group);else phoneFolds.delete(group);fold.setAttribute('aria-expanded',String(open));$('sheet-workspace')?.classList.toggle('phone-open-'+group,open);return;}
+    const jump=event.target.closest?.('[data-jump-courses]');
+    if(jump?.dataset&&'jumpCourses' in jump.dataset){const grid=$('sheet-grid');if(!grid)return;event.preventDefault();grid.scrollIntoView?.({block:'start'});grid.focus({preventScroll:true});}
   });
   document.addEventListener('click',async event=>{const button=event.target.closest('[data-prior-choice]');if(!button)return;button.disabled=true;try{await choosePriorCredits(button.dataset.priorChoice);}catch(error){const node=$('sheet-prior-error');if(node)node.textContent=error.message;else announce(error.message);}finally{if(button.isConnected)button.disabled=false;}});
   let importRevision=0,importedSource='';
@@ -739,17 +739,19 @@
     clearImportPreview();
     location.assign('import-courses.html?from='+(['courses','compare'].includes(query.get('from'))?query.get('from'):'plan'));
   }
+  const readyPlanRoutes=()=>DegreeProgramCatalog.publishedPlans?.(catalog,models)||[];
   // Change degree lists the same plans as the finder: published plans plus complete plans that still
   // need school confirmation (labelled). Without the plan index only published plans are listed.
-  const readyPlanRoutes=()=>DegreeProgramCatalog.planLibraryRoutes?.(catalog,models,planIndex)||DegreeProgramCatalog.publishedPlans?.(catalog,models)||[];
+  // Preference-based recommendations (readyPlanCatalog) stay with published plans.
+  const changeDegreeRoutes=()=>DegreeProgramCatalog.planLibraryRoutes?.(catalog,models,planIndex)||readyPlanRoutes();
   const needsConfirmation=route=>Boolean(DegreeProgramCatalog.needsSchoolConfirmation?.(route,planIndex));
   const confirmBadge='<span class="portal-tier-badge portal-tier-confirm">Needs school confirmation</span>';
   const readyPlanCatalog=()=>({...catalog,pathways:readyPlanRoutes()});
   function hasCoursePlan(route){return DegreeProgramCatalog.isPlanAvailable(route,catalog,models);}
-  function degreeOptionsFor(school){return readyPlanRoutes().filter(route=>route.school===school).sort((a,b)=>Number(hasCoursePlan(b))-Number(hasCoursePlan(a))||a.title.localeCompare(b.title));}
+  function degreeOptionsFor(school){return changeDegreeRoutes().filter(route=>route.school===school).sort((a,b)=>Number(hasCoursePlan(b))-Number(hasCoursePlan(a))||a.title.localeCompare(b.title));}
   function degreeOptionLabel(route){return route.title+(needsConfirmation(route)?' · Needs school confirmation':route.modelId?' · Course plan available':hasCoursePlan(route)?' · Choose study format':' · Requirements only');}
   function targetDialog(initialId){
-    const initial=catalog.pathways.find(route=>route.id===initialId)||pathway,routes=readyPlanRoutes(),schools=[...new Set(routes.map(route=>route.school))].sort(),school=schools.includes(initial.school)?initial.school:schools[0],degrees=degreeOptionsFor(school),selected=degrees.some(route=>route.id===initial.id)?initial.id:degrees[0]?.id;
+    const initial=catalog.pathways.find(route=>route.id===initialId)||pathway,routes=changeDegreeRoutes(),schools=[...new Set(routes.map(route=>route.school))].sort(),school=schools.includes(initial.school)?initial.school:schools[0],degrees=degreeOptionsFor(school),selected=degrees.some(route=>route.id===initial.id)?initial.id:degrees[0]?.id;
     const schoolOptions=schools.map(name=>{const count=routes.filter(route=>route.school===name).length;return[name,name+' · '+count+' plan'+(count===1?'':'s')];});
     openDialog('<h2>Choose a ready-to-use plan</h2>'+(routes.length?'<form id="sheet-target-form">'+select('school','University',schoolOptions,school)+select('pathwayId','Degree',degrees.map(route=>[route.id,needsConfirmation(route)?route.title+' · Needs school confirmation':route.title]),selected)+'<div id="sheet-target-readiness" role="status"></div><button class="button" type="submit">Review degree</button></form>':'<p>No ready-to-use plans could be loaded. Your current plan is unchanged.</p>')+(plan?'<p>Your current plan stays open until you choose its replacement.</p>':'')+'<div class="sheet-detail"><a class="button secondary" href="request-plan.html">Build from a degree link →</a> <a href="programs.html">Browse ready-to-use plans</a></div>','Choose a ready-to-use degree plan');
     if(routes.length)targetReadiness();

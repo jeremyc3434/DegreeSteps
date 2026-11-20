@@ -12,7 +12,7 @@
  // still need school confirmation, labelled. Automatic suggestions stay with published plans.
  let planIndex=null;
  const libraryRoutes = () => typeof DegreeProgramCatalog.planLibraryRoutes==='function'?DegreeProgramCatalog.planLibraryRoutes(catalog,models,planIndex):readyRoutes();
- const needsConfirmation = route => Boolean(DegreeProgramCatalog.needsSchoolConfirmation?.(route,planIndex));
+ const needsConfirmation = route => Boolean(planIndex&&globalThis.DegreeProgramCatalog?.needsSchoolConfirmation?.(route,planIndex));
  function comparisonCatalog(value=state){
   const ids=new Set([...(value.sheet?.isExample?[]:[value.selectedPathwayId||value.profile?.pathwayId]),...(options().selectedIds||[]).map(id=>id.startsWith('saved:')?(value.whatIf?.snapshots||[]).find(saved=>saved.id===id.slice(6))?.pathwayId:null)].filter(Boolean));
   // Explicit private/current targets stay recoverable; only complete templates
