@@ -800,3 +800,54 @@ body.course-plan-page #degree-app-shell .dp-shell-save { color:var(--plan-muted)
   body.course-plan-page .course-plan-provider { min-height:0; font-size:10pt; color:#000; }
   body.course-plan-page .course-plan-table tr { break-inside:avoid; }
 }
+
+/* Course preferences: Apply stays reachable at the bottom of the side tray. */
+body.course-plan-page #sheet-dialog .sheet-options-scope { margin-top:-4px; }
+body.course-plan-page #sheet-dialog .sheet-dialog-footer {
+  position:sticky;
+  bottom:-40px;
+  z-index:5;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  margin:24px -32px 0;
+  padding:14px 32px calc(14px + env(safe-area-inset-bottom, 0px));
+  border-top:1px solid var(--plan-line);
+  background:var(--plan-paper);
+  box-shadow:0 -10px 24px rgb(20 44 81 / 8%);
+}
+body.course-plan-page #sheet-dialog .sheet-dialog-footer > .button { margin:0; }
+body.course-plan-page #sheet-dialog .sheet-unapplied { display:flex; flex-wrap:wrap; align-items:center; gap:10px 12px; flex-basis:100%; }
+body.course-plan-page #sheet-dialog .sheet-unapplied[hidden] { display:none; }
+body.course-plan-page #sheet-dialog .sheet-unapplied p { flex-basis:100%; margin:0; color:var(--plan-ink); font-weight:600; }
+
+/* The shared planning estimate leads; the tuition-only comparison supports it. */
+body.course-plan-page #sheet-planning-range[hidden],
+body.course-plan-page #sheet-savings-tracker[hidden] { display:none; }
+body.course-plan-page #sheet-savings.has-planning-range .plan-estimate-compact { border-radius:8px 8px 0 0; }
+body.course-plan-page .savings-secondary .savings-secondary-overview { padding:0; }
+body.course-plan-page .savings-secondary p.savings-secondary-line { margin:0; color:var(--plan-ink); font-size:.9375rem; line-height:1.5; }
+body.course-plan-page .savings-secondary .savings-secondary-line strong { color:var(--plan-ink); font-weight:650; }
+body.course-plan-page .savings-secondary .savings-secondary-line .savings-label { display:block; }
+body.course-plan-page .course-plan-route-difference,
+body.course-plan-page .course-plan-residency-note {
+  margin:-8px 0 16px;
+  padding:10px 14px;
+  border-left:3px solid var(--plan-cobalt);
+  border-radius:4px;
+  background:var(--ds-soft-blue,#eef1ff);
+  color:var(--plan-ink);
+  font-size:.875rem;
+  line-height:1.55;
+}
+body.course-plan-page .course-plan-residency-note + .course-plan-route-difference { margin-top:0; }
+body.course-plan-page .course-plan-inline-action { margin-left:4px; padding:0; border:0; background:none; color:var(--plan-cobalt); font:inherit; font-weight:600; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+body.course-plan-page .course-plan-residency-alt { font-size:inherit; }
+@media (max-width:760px) {
+  body.course-plan-page #sheet-dialog .sheet-dialog-footer { bottom:-36px; margin-inline:-22px; padding-inline:22px; }
+}
+@media (max-width:700px) {
+  body.course-plan-page #sheet-dialog .sheet-dialog-footer { margin-inline:-18px; padding-inline:18px; }
+  body.course-plan-page #sheet-dialog .sheet-dialog-footer .button { flex:1 1 auto; }
+}

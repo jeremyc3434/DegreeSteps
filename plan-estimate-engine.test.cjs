@@ -11,7 +11,7 @@ function fixture(id=ids[0],changes={}){
 }
 
 test('reviewed rate sources and named university fee components reconcile, without turning exclusions into zero',()=>{
- assert.equal(Estimate.assertRates(rates),rates);assert.equal(rates.entries.length,8);
+ assert.equal(Estimate.assertRates(rates),rates);assert.equal(rates.entries.length,9);
  for(const entry of rates.entries){
   assert.equal(entry.feeBreakdown.filter(row=>row.frequency==='per-term').reduce((sum,row)=>sum+row.amount,0),entry.feesPerTerm);
   assert.equal(entry.feeBreakdown.filter(row=>row.frequency==='one-time').reduce((sum,row)=>sum+row.amount,0),entry.oneTimeFees);
@@ -150,7 +150,7 @@ test('wrong editions, formats, sources or broken ledgers cannot acquire a credib
 
 test('the reviewed data generator reproduces the browser rate file without network or private records',async()=>{
  const {buildPlanEstimateRates}=await import('./scripts/build-plan-estimate-rates.mjs');
- const result=await buildPlanEstimateRates({check:true});assert.equal(result.exactModels,11);assert.equal(result.check,true);
+ const result=await buildPlanEstimateRates({check:true});assert.equal(result.exactModels,14);assert.equal(result.check,true);
  const source=fs.readFileSync('dist/plan-estimate-engine.js','utf8');
  assert(!/\b(?:fetch|localStorage|sessionStorage|indexedDB)\s*[.(]/.test(source));
 });

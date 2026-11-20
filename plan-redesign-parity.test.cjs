@@ -76,7 +76,7 @@ function mount({modelId='liberty-business-residential',change,editor=false,track
   }
   // Their independent mounted suites cover widget DOM behavior. Keep the real
   // checklist engine here and record the exact complete task model it receives.
-  context.DegreeSavingsTracker=trackerResult===undefined?undefined:{update(node){node.innerHTML='Existing savings result';return Promise.resolve(trackerResult);}};context.DegreeMomentum=undefined;
+  const trackerCalls=[];context.DegreeSavingsTracker=trackerResult===undefined?undefined:{update(node,state,draft,options){trackerCalls.push({id:node.id,options:copy(options||{})});node.innerHTML='Existing savings result';return Promise.resolve(trackerResult);}};context.DegreeMomentum=undefined;
   context.DegreeChecklistView={update(target,state,draft){checklists.push(context.DegreeChecklist.build(state,draft));target.innerHTML='Full checklist mounted';}};
   context.DegreeCommunity={sharePlan(payload){shares.push(copy(payload));}};
   const source=fs.readFileSync('dist/sheet.js','utf8');
@@ -87,7 +87,7 @@ function mount({modelId='liberty-business-residential',change,editor=false,track
     render();`;
   const instrumented=source.replace(/  boot\(\);\s*\}\(\)\);\s*$/,hook+'\n}());');assert.notEqual(instrumented,source,'Use the production boot boundary');
   vm.runInContext(instrumented,context,{filename:'sheet.js'});writes.length=0;
-  return {node,api:context.__parity,writes,downloads,navigations,shares,requests,checklists,focusLog,active:()=>document.activeElement,
+  return {node,api:context.__parity,writes,downloads,navigations,shares,requests,checklists,focusLog,trackerCalls,active:()=>document.activeElement,
     control(name,dataset={},container='sheet-grid',tagName='SELECT'){const control=node(name);control.id='';control.tagName=tagName;control.dataset={...dataset};control.container=container;control.isConnected=true;interactive.push(control);return control;},
     button(name,dataset={},container='sheet-grid'){return this.control(name,dataset,container,'BUTTON');},
     replaceStored:value=>values.set(KEY,JSON.stringify(value)),setWriteFailure:value=>{failWrites=value;},saved:()=>JSON.parse(values.get(KEY)),draft:()=>context.__parity.getDraft(),projection:()=>context.__parity.getProjection(),
@@ -227,13 +227,59 @@ test('a personal tuition quote stays primary instead of being replaced by a publ
  assert.doesNotMatch(ui.node('sheet-cost-summary').innerHTML,/Published-price planning range/);assert.match(ui.node('sheet-dialog-content').innerHTML,/name="universityRate"[^>]*value="100"/);assert.equal(JSON.stringify(ui.saved()),before);assert.equal(ui.writes.length,0);
 });
 
-test('a researched compact estimate replaces an unavailable savings message while an available savings result stays primary',async()=>{
+// Changed deliberately: the shared planning range now leads whenever it can be calculated (as on plan pages,
+// the finder and the planner); an available tuition-only savings result is shown below it as secondary.
+test('a researched compact estimate leads the worksheet and any savings result is shown as a secondary tuition comparison',async()=>{
  const unavailable=mount({trackerResult:{available:false}});await unavailable.settle();await unavailable.settle();
- assert.match(unavailable.node('sheet-savings').innerHTML,/plan-estimate-compact/);assert.match(unavailable.node('sheet-savings').innerHTML,/data-action="cost-time"/);assert.equal(unavailable.writes.length,0);
+ assert.match(unavailable.node('sheet-planning-range').innerHTML,/plan-estimate-compact/);assert.match(unavailable.node('sheet-planning-range').innerHTML,/data-action="cost-time"/);assert.equal(unavailable.node('sheet-planning-range').hidden,false);assert.equal(unavailable.writes.length,0);
  const available=mount({trackerResult:{available:true}});await available.settle();await available.settle();
- assert.equal(available.node('sheet-savings').innerHTML,'Existing savings result');assert(!available.requests.includes('data/plan-estimate-rates.json'));assert.equal(available.writes.length,0);
+ assert.match(available.node('sheet-planning-range').innerHTML,/Planning estimate/);assert.match(available.node('sheet-planning-range').innerHTML,/covers tuition, listed fees and outside courses/);
+ assert.equal(available.node('sheet-savings-tracker').innerHTML,'Existing savings result');assert(available.requests.includes('data/plan-estimate-rates.json'));assert.equal(available.trackerCalls.filter(call=>call.id==='sheet-savings-tracker').at(-1).options.secondary,true);assert.equal(available.writes.length,0);
 });
 
+
+test('course preferences say they apply to this plan, keep Apply in a sticky footer, and ask before discarding unapplied changes',async()=>{
+ for(const closeMethod of ['escape','button']){
+  const ui=mount({trackerResult:{available:false}}),before=JSON.stringify(ui.saved());
+  ui.api.handleAction('options');const html=ui.node('sheet-dialog-content').innerHTML;
+  assert.match(html,/These choices apply to this plan only/);assert.match(html,/Course sources for this plan/);
+  assert.match(html,/<div class="sheet-dialog-footer">[\s\S]*type="submit">Apply preferences<\/button><\/div><\/form>/);
+  assert.equal(ui.node('sheet-dialog-savings').hidden,true,'The preferences tray starts with its own choices');
+  const prompt=ui.control('unapplied-prompt',{unapplied:''},'sheet-options-form','DIV');prompt.hidden=true;const discard=ui.button('discard-options',{discardOptions:''},'sheet-options-form');discard.attributes['data-discard-options']='';
+  ui.node('sheet-options-form').values={providers:'Sophia'};
+  const close=ui.button('options-close-'+closeMethod,{},'sheet-dialog');close.id='close-sheet-dialog';
+  if(closeMethod==='escape')await ui.cancelDialog();else await ui.click(close);
+  assert.equal(ui.node('sheet-dialog').open,true,'Unapplied changes are not silently discarded');assert.equal(prompt.hidden,false);assert.equal(ui.active(),discard);
+  await ui.click(discard);assert.equal(ui.node('sheet-dialog').open,false);assert.equal(JSON.stringify(ui.saved()),before,'Discard keeps the saved plan unchanged');
+  ui.api.handleAction('options');await ui.cancelDialog();assert.equal(ui.node('sheet-dialog').open,false,'Without changes, Escape closes at once');
+ }
+});
+
+function singleModelData(id){const full=loadData();return{catalog:{...full.catalog,pathways:full.catalog.pathways.filter(route=>route.modelId===id)},models:full.models.filter(model=>model.id===id),courseCatalog:data.courseCatalog};}
+test('a WGU worksheet uses competency units in progress, sections, coverage and footer',async()=>{
+ const id='curriculum-wgu-catalog-689e417cff765fc9',ui=mount({modelId:id,fixtureData:singleModelData(id)});await ui.settle();
+ const grid=ui.node('sheet-grid').innerHTML,route=ui.node('sheet-route').innerHTML;
+ assert.match(ui.node('sheet-summary').innerHTML,/of 112 competency units finished/);assert.match(grid,/0 \/ 34<\/strong> competency units finished/);assert.match(grid,/outside competency units planned/);assert.match(grid,/competency units at the university/);assert.match(grid,/<abbr title="Competency units">CUs<\/abbr>/);
+ assert.doesNotMatch(grid,/\d credits (?:finished|planned|at the university|not yet mapped)/);assert.match(route,/competency units/);assert.doesNotMatch(route,/<small>units<\/small>/);
+ assert.match(ui.node('sheet-footer').innerHTML,/112 competency units/);
+});
+
+test('Excelsior shows the partnership residency condition next to the standard minimum and explains a starting-route difference',async()=>{
+ const ui=mount({modelId:'curriculum-excelsior-bs-psychology',fixtureData:singleModelData('curriculum-excelsior-bs-psychology')});await ui.settle();await ui.settle();
+ let grid=ui.node('sheet-grid').innerHTML;
+ assert.match(grid,/At least <strong>7<\/strong> credits at the university <small class="course-plan-residency-alt">\(standard enrollment\)<\/small>/);
+ assert.match(grid,/data-residency-alternative="15">Partnership students admitted after December 31, 2024: at least 15 credits at the university\./);
+ assert(ui.requests.includes('data/baseline-index.json'));
+ const key='curriculum-excelsior-bs-psychology',state=ui.draft().state;state.scenarios[key]={...state.scenarios[key],providers:['Sophia','Study.com']};ui.api.render();await ui.settle();
+ grid=ui.node('sheet-grid').innerHTML;assert.match(grid,/fewer outside credits than the starting route because StraighterLine is off in your course sources\./);
+});
+
+test('applying course preferences returns keyboard focus to the page instead of the document body',async()=>{
+ const ui=mount();ui.api.handleAction('options');
+ const error=await ui.submit('sheet-options-form',{reportCatalogYear:'2026-2027',providers:'Sophia',proctoringPreference:'open',priority:'balanced'});
+ assert.equal(error,'');assert.equal(ui.node('sheet-dialog').open,false);assert.equal(ui.node('sheet-status').textContent,'Course preferences applied to this plan.');
+ assert.notEqual(ui.active(),ui.node('body'));assert(ui.active()===ui.node('sheet-status')||ui.active()?.dataset?.action==='options');
+});
 
 test('a late cost-range response cannot replace another open dialog',async()=>{
  let release;const pending=new Promise(resolve=>release=resolve),ui=mount({fetcher:url=>url==='data/plan-estimate-rates.json'?pending:null});
@@ -247,7 +293,7 @@ test('a late estimate for an old degree cannot appear in the replacement plan’
  let release;const pending=new Promise(resolve=>release=resolve),ui=mount({trackerResult:{available:false},fetcher:url=>url==='data/plan-estimate-rates.json'?pending:null});
  await ui.settle();const route=data.catalog.pathways.find(route=>route.modelId==='tesu-general-management'),current=ui.api.getDraft().state,preferences=copy(current);preferences.profile.modality='online';preferences.profile.classroomImportance='open';const next=Journey.selectRoute(preferences,route,data.catalog);Object.assign(current,next);ui.api.render();await ui.settle();
  release({ok:true,json:async()=>require('./dist/data/plan-estimate-rates.json')});await ui.settle();await ui.settle();
- assert.equal(ui.draft().program.id,'tesu-general-management');assert.equal(ui.node('sheet-savings').innerHTML,'Existing savings result');assert.doesNotMatch(ui.node('sheet-savings').innerHTML,/plan-estimate/);
+ assert.equal(ui.draft().program.id,'tesu-general-management');assert.equal(ui.node('sheet-savings-tracker').innerHTML,'Existing savings result');assert.doesNotMatch(ui.node('sheet-planning-range').innerHTML,/plan-estimate/);assert.equal(ui.node('sheet-planning-range').hidden,true);assert.equal(ui.trackerCalls.filter(call=>call.id==='sheet-savings-tracker').at(-1).options.secondary,false);
 });
 
 
