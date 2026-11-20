@@ -2,6 +2,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const { chromium } = require('playwright');
+const { completeProfileSteps } = require('./test-support/profile-steps.cjs');
 
 const BASE = (process.env.DEGREEPATH_TEST_URL || 'http://127.0.0.1:8120/').replace(/\/?$/, '/');
 const ORIGIN = new URL(BASE).origin;
@@ -36,10 +37,11 @@ async function actor(label, viewport = { width:1440, height:1000 }) {
       writes.push({ actor:label, method:request.method(), path:target.pathname });
     }
   });
-  await page.goto(url('/plan.html'), { waitUntil:'networkidle' });
+  await page.goto(url('/plan.html?editor=1'), { waitUntil:'networkidle' });
   await page.locator('#sheet-workspace:not([hidden])').waitFor();
   return { ctx, page, label };
 }
+// The provider-by-row worksheet is the plan's detailed view (plan.html?editor=1).
 // Use the site's same-origin client and native preview cookies, never forged identity headers.
 async function api(person, path, options = {}) {
   return person.page.evaluate(async ({ path, options }) => {
@@ -76,8 +78,16 @@ async function closeEvidence(person) {
   }
 }
 async function worksheet(person) {
-  await person.page.goto(url('/plan.html'), { waitUntil:'networkidle' });
+  await person.page.goto(url('/plan.html?editor=1'), { waitUntil:'networkidle' });
   await person.page.locator('[data-requirement=enc1010]').waitFor();
+}
+// The worksheet no longer has a school picker; switch the saved plan the way Change degree does, keeping records.
+async function useProgram(person, routeId) {
+  const route = catalog.pathways.find(item => item.id === routeId);
+  const current = await person.page.evaluate(key => JSON.parse(localStorage.getItem(key)), KEY);
+  await person.page.evaluate(({ key, value }) => localStorage.setItem(key, JSON.stringify(value)), { key:KEY, value:Sheet.selectPathway(current, route) });
+  await person.page.goto(url('/plan.html?editor=1'), { waitUntil:'networkidle' });
+  await person.page.locator('tr.sheet-row').first().waitFor();
 }
 async function openCourse(person, id = 'enc1010') {
   const row = person.page.locator('[data-requirement="' + id + '"]');
@@ -190,11 +200,13 @@ function actualPlan() {
       await setAlias(bob, 'Evidence Bob ' + RUN);
       await worksheet(alice);
       await alice.page.locator('[data-provider=enc1010]').selectOption('Sophia');
-      await alice.page.locator('[data-action=credits]').click();
-      const form = alice.page.locator('#sheet-learning-form');
+      // Single courses are added through the manual-entry form; the credits action itself opens the upload page.
+      await alice.page.goto(url('/plan.html?task=credits&manual=1'), { waitUntil:'networkidle' });
+      const form = alice.page.locator('#sheet-learning-form'); await form.waitFor();
       for (const [name, value] of Object.entries({ provider:'Community college', code:'PRIVATE-' + RUN, title:'Private learning ' + RUN, credits:'3' })) await form.locator('[name="' + name + '"]').fill(value);
       await form.locator('button[type=submit]').click();
       await alice.page.locator('#close-sheet-dialog').click();
+      await worksheet(alice);
       ledger = await localLearning(alice);
       assert.equal(ledger.length, 1);
       await openCourse(alice);
@@ -261,13 +273,13 @@ function actualPlan() {
       await openCourse(alice);
       await status(alice, 'unreported', 0);
       await closeEvidence(alice);
-      await alice.page.locator('#sheet-school').selectOption('Liberty University');
+      await useProgram(alice, OTHER_PROGRAM.programId);
       await alice.page.locator('[data-provider=engl-101]').selectOption('Sophia');
       await openCourse(alice, 'engl-101');
       await status(alice, 'unreported', 0);
       assert.equal((await evidence(alice, OTHER_PROGRAM)).summary.reportCount, 0);
       await closeEvidence(alice);
-      await alice.page.locator('#sheet-school').selectOption(model.school);
+      await useProgram(alice, COURSE.programId);
       await alice.page.locator('[data-provider=enc1010]').selectOption('Sophia');
       await openCourse(alice);
       await status(alice, 'community-verified', 2);
@@ -345,15 +357,16 @@ function actualPlan() {
       await bob.page.goto(url('/community.html?tab=feed&post=' + planPost.id), { waitUntil:'networkidle' });
       const beforeWrites = writes.length;
       await bob.page.locator('#thread-dialog').getByRole('link', { name:'Make a copy of this plan' }).click();
+      await completeProfileSteps(bob.page);
       await bob.page.waitForFunction(({key,context})=>JSON.parse(localStorage.getItem(key))?.templateOrigin?.context===context,{key:KEY,context:'post:'+planPost.id});
-      await bob.page.goto(url('/plan.html'),{waitUntil:'networkidle'});
+      await bob.page.goto(url('/plan.html?editor=1'),{waitUntil:'networkidle'});
       await bob.page.locator('[data-requirement=enc1010]').waitFor();
       assert.deepEqual(await localLearning(bob), beforeLearning);
       await bob.page.locator('[data-action=more]').click();
       await bob.page.locator('#sheet-dialog [data-action=share]').click();
       await bob.page.locator('#publish-dialog .share-preview').waitFor();
       const description = await bob.page.locator('#publish-dialog [name=body]').inputValue();
-      assert(description.includes('Adapted from a shared DegreePath route: ' + ORIGIN + '/community.html?tab=feed&post=' + planPost.id));
+      assert(description.includes('Adapted from a shared DegreeSteps route: ' + ORIGIN + '/community.html?tab=feed&post=' + planPost.id));
       assert.equal(await bob.page.locator('#publish-dialog .evidence-community-verified').count(), 0);
       assert(!(await bob.page.locator('#publish-dialog').innerText()).includes('PRIVATE-' + RUN));
       assert.equal(writes.length, beforeWrites, 'A copy and public preview must not publish anything automatically');
