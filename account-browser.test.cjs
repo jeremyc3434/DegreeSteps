@@ -76,7 +76,7 @@ async function setup({configured = true,signedIn = true,recovery = false,link = 
     assert.deepEqual(await page.evaluate(key => JSON.parse(localStorage.getItem(key)),KEY),draft);
   });
   await test('opening an older plan preserves the device course collection and private notes',async () => {
-    const {page,state} = await setup(); await page.locator('[data-open-plan="plan-1"]').click();
+    const {page,state} = await setup(); await page.locator('[data-open-plan="plan-1"]:not([data-account-next-step])').click();
     assert.deepEqual(await page.evaluate(key => JSON.parse(localStorage.getItem(key)),KEY),draft); assert.equal(state.writes.length,0);
     assert.match(await page.locator('.account-inline-confirm').innerText(),/current courses and private notes stay/);
     await page.locator('[data-confirm-open="plan-1"]').click(); await page.waitForURL('**/portal.html');
