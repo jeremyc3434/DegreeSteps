@@ -4,6 +4,10 @@
 // opens. Browser journeys that are not about those questions accept the
 // defaults shown on each step, exactly as a student pressing Continue would.
 async function completeProfileSteps(page, {maxSteps = 4} = {}) {
+  // Saved states from before the profile flow get one combined "Make this plan yours." form instead.
+  const legacy = page.locator('#portal-about-form');
+  await page.waitForFunction(() => !/\/portal\.html/.test(location.pathname) || document.querySelector('#portal-profile-form,#portal-about-form'), null, {timeout: 10000}).catch(() => {});
+  if (/\/portal\.html/.test(page.url()) && await legacy.count()) {await legacy.locator('button[type=submit]').click(); return 1;}
   const form = page.locator('#portal-profile-form');
   for (let i = 0; i < maxSteps; i++) {
     // The questions render after the degree choice is saved; a student who
