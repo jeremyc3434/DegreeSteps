@@ -406,3 +406,17 @@ a.portal-degree-option { text-decoration:none; }
 .portal-matching-plans li span{color:var(--portal-muted);font-size:16px}
 .portal-matching-plans li button{flex-shrink:0;min-height:52px;font-size:16px}
 @media(max-width:560px){.portal-matching-plans li{align-items:flex-start;flex-direction:column}.portal-matching-plans li button{width:100%}}
+/* Military service: a visible setup question, not a collapsed tip. */
+.portal-military-field{min-width:0;margin:22px 0 8px;padding:16px 18px 6px;border:1px solid #dbe3ef;border-radius:8px;background:#fafcff}
+.portal-military-field>legend{padding:0 6px;color:#24344b;font-size:16px;font-weight:650}
+.portal-military-field .portal-hint{margin:6px 0 10px}
+.portal-military-field .portal-field{display:block;margin:0 0 16px}
+#portal-about-form>.portal-military-field{grid-column:1/-1}
+/* Open school questions for plans that still need school confirmation. */
+.portal-school-check{margin:18px 0;padding:16px 18px;border:1px solid #eaddc4;border-left:4px solid #b7791f;border-radius:8px;background:#fffcf6;color:#5c4a2a}
+.portal-school-check h3{margin:0 0 8px;font-size:17px;color:#5a3e12}
+.portal-school-check ul{margin:0 0 8px;padding-left:22px;line-height:1.6}
+.portal-school-check li+li{margin-top:6px}
+.portal-school-check p{margin:0;font-size:14px}
+.portal-route-review{color:#7c5a1c}
+.portal-finder-link{margin:18px 0 0;font-size:16px}

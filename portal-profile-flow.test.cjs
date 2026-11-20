@@ -64,7 +64,7 @@ test('online students skip campus fields while campus choices are retained acros
  const saved=f.stored(),next=fixture({initial:Journey.initialize(saved,null,data().catalog),stored:saved,extraStorage:f.storage()});assert.equal(next.api.resume(),true);assert.equal(next.state().journey.step,'priority');await next.api.action('back');assert.deepEqual(next.state().profile.campusInterests,['sports','housing']);assert.match(next.api.body('format'),/value="VA" selected/);assert.match(next.api.body('format'),/name="campusInterests" value="sports" checked/);assert.match(next.api.body('format'),/Your degree requirements determine the semesters you need/);
 });
 test('a known degree completes personalization once and preserves its campus format',async()=>{
- const f=fixture();f.api.choose();await f.submit({goal:'any-degree'});await f.submit({prior:'none',military:'none'});const html=f.api.body('format');assert.doesNotMatch(html,/name="format"/);assert.match(html,/Your current degree/);await f.submit({learningPace:'any',campusLocation:'relocate',campusTime:'one-year',campusInterests:['sports']});await f.submit({...priority,priority:'speed'});
+ const f=fixture();f.api.choose();assert.equal(f.state().journey.step,'prior');await f.submit({prior:'none',military:'none'});const html=f.api.body('format');assert.doesNotMatch(html,/name="format"/);assert.match(html,/Your current degree/);await f.submit({learningPace:'any',campusLocation:'relocate',campusTime:'one-year',campusInterests:['sports']});await f.submit({...priority,priority:'speed'});
  assert.equal(f.state().selectedPathwayId,'campus-degree');assert.equal(f.state().profile.modality,'campus');assert.equal(f.state().journey.completed,true);assert.equal(f.state().journey.intakeCompleted,true);assert.equal(f.state().journey.profileCompleted,true);assert.equal(f.state().journey.profileFlow,undefined);
 });
 function activeState(){const d=data();let state=Journey.selectRoute(Journey.initialize(null,null,d.catalog),d.route,d.catalog);state.journey={...state.journey,intakeCompleted:true,completed:true,view:'home'};state.learning=[{id:'original',provider:'Former College',code:'HIST101',title:'History',credits:3,creditSystem:'semester',status:'earned',evaluations:[]}];state.sheet.notes={private:'Keep this private note'};state.scenarios={'campus-model':{optionSelections:{writing:'sophia-writing'}}};return state;}
@@ -87,11 +87,11 @@ test('invalid optional budgets and a degree changed in another tab cannot overwr
 });
 
 test('a fresh public template starts the same early profile while existing personalized students keep the fast path',async()=>{
- const fresh=fixture();await fresh.api.publicRoute();assert.equal(fresh.state().journey.step,'purpose');assert.equal(fresh.state().journey.profileFlow.mode,'target');assert.equal(fresh.state().journey.profileFlowVersion,1);assert.equal(fresh.state().templateOrigin.title,'Example campus plan');
+ const fresh=fixture();await fresh.api.publicRoute();assert.equal(fresh.state().journey.step,'prior');assert.equal(fresh.state().journey.profileFlow.mode,'target');assert.equal(fresh.state().journey.profileFlowVersion,1);assert.equal(fresh.state().templateOrigin.title,'Example campus plan');
  const initial=activeState(),returning=fixture({initial});await returning.api.publicRoute();assert.equal(returning.state().journey.view,'home');assert.equal(returning.state().journey.intakeCompleted,true);assert.equal(returning.state().journey.profileFlow,undefined);assert.deepEqual(returning.state().learning,initial.learning);
 });
 test('a first selected degree can resume personalization after its initial draft is saved',async()=>{
- const f=fixture();f.api.choose();await f.submit({goal:'any-degree'});const saved=f.stored();assert.equal(saved.selectedPathwayId,'campus-degree');const next=fixture({initial:Journey.initialize(saved,null,data().catalog),stored:saved,extraStorage:f.storage()});assert.equal(next.api.resume('target'),true);assert.equal(next.state().journey.step,'prior');assert.equal(next.state().selectedPathwayId,'campus-degree');
+ const f=fixture();f.api.choose();assert.equal(f.state().journey.step,'prior');const saved=f.stored();assert.equal(saved.selectedPathwayId,'campus-degree');const next=fixture({initial:Journey.initialize(saved,null,data().catalog),stored:saved,extraStorage:f.storage()});assert.equal(next.api.resume('target'),true);assert.equal(next.state().journey.step,'prior');assert.equal(next.state().selectedPathwayId,'campus-degree');
 });
 
 
