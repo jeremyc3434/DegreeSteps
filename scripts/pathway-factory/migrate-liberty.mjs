@@ -147,7 +147,9 @@ export async function migrate({base=root,existingProviders}={}){
   // Programs (requirements without options).
   const defaults={};const first=models[0];
   const core=['id','routeIds','school','title','level','catalog','totalCredits','creditSystem','modalities','sources','requirements'];
-  for(const field of Object.keys(first))if(!core.includes(field)&&models.every(m=>field in m&&same(m[field],first[field])))defaults[field]=clone(first[field]);
+  // Review records and review dates stay with the programs they reviewed, so a newly authored program never inherits them.
+  const reviewRecord=field=>/Review$|CheckedOn$/.test(field);
+  for(const field of Object.keys(first))if(!core.includes(field)&&!reviewRecord(field)&&models.every(m=>field in m&&same(m[field],first[field])))defaults[field]=clone(first[field]);
   const schoolSources=new Map(),programSources=new Map();
   const providerSourceIds=new Set([...providerDocs.values()].flatMap(d=>list(d.sources).map(s=>s.id)));
   const sourceOverrides=new Set();
@@ -204,7 +206,10 @@ export async function migrate({base=root,existingProviders}={}){
     // that source model's credit system equals the receiving model's, so the unit is stated by the source document.
     if(!row.creditSystem&&o.mappingScope===sameSchoolScope){const units=[...new Set(r.placements.map(p=>p.model.creditSystem))];if(units.length===1)row.impliedCreditSystem=units[0];}
     row.scope={programs:placedIn.map(p=>p.slug)};
-    const wide=Array.isArray(o.degreeLevels)&&Array.isArray(o.modalities)||o.mappingScope===sameSchoolScope||guideReviews.has(o.mappingReviewId);
+    // A record whose own conditions carry the context of the requirement it was observed in (an elective-block use or that
+    // requirement's grade notice) is not a context-free award, so it stays with the programs that carry it.
+    const contextual=list(o.conditions).some(text=>text===electiveCondition||/^This requirement needs a grade of /.test(text));
+    const wide=!contextual&&(Array.isArray(o.degreeLevels)&&Array.isArray(o.modalities)||o.mappingScope===sameSchoolScope||guideReviews.has(o.mappingReviewId));
     if(wide){
       const observed=field=>[...new Set(placedIn.flatMap(p=>field==='modalities'?p.modalities:[p[field]]))].sort();
       for(const scope of [{all:true,levels:Array.isArray(o.degreeLevels)?[...o.degreeLevels]:observed('level'),modalities:Array.isArray(o.modalities)?[...o.modalities]:observed('modalities'),catalogs:observed('catalog')},{all:true,levels:observed('level'),modalities:observed('modalities'),catalogs:observed('catalog')}]){
@@ -217,6 +222,17 @@ export async function migrate({base=root,existingProviders}={}){
     return row;
   });
   const equivalencyDoc={kind:'pathway-kit-equivalencies',version:1,school:schoolId,conditionLibrary,placementModes:Object.fromEntries([...modes].sort((a,b)=>a[0].localeCompare(b[0]))),equivalencies};
+  // Programs and documents authored in the kit after the migration (not registry-derived) are kept: their extra school
+  // sources, publish documents and order. Their equivalency rows must already be migrated rows; authored rows are kept too.
+  const kitDir=resolve(base,'content/pathway-kits',schoolId);
+  if(await exists(join(kitDir,'school.json'))){
+    const existing=await readJSON(join(kitDir,'school.json')),known=new Set(school.sources.map(s=>s.id)),paths=new Set(school.publish.documents.map(d=>d.path));
+    for(const source of list(existing.sources))if(!known.has(source.id))school.sources.push(clone(source));
+    for(const d of list(existing.publish?.documents))if(!paths.has(d.path))school.publish.documents.push(clone(d));
+    for(const slug of list(existing.programOrder))if(!school.programOrder.includes(slug))school.programOrder.push(slug);
+    const existingRows=await exists(join(kitDir,'equivalencies.json'))?(await readJSON(join(kitDir,'equivalencies.json'))).equivalencies:[];
+    const ids=new Set(equivalencies.map(r=>r.id));for(const row of list(existingRows))if(row.authored&&!ids.has(row.id))equivalencies.push(clone(row));
+  }
   return {school,equivalencies:equivalencyDoc,programs,providers:providerDocs,documents};
 }
 

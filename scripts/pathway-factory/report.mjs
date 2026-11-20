@@ -27,6 +27,8 @@ export function programCoverage(kit,program){
 }
 export function schoolReport(kit,catalog){
   const school=kit.school,kitRoutes=new Set(kit.programs.flatMap(p=>list(p.routeIds)));
+  // A declared degree variant (e.g. an online route) covers its parent directory program.
+  for(const route of [...list(school.routes),...list(school.publish?.documents).flatMap(d=>list(d.routes))])if(route.parentId&&kitRoutes.has(route.id))kitRoutes.add(route.parentId);
   const directory=list(catalog?.programs).filter(p=>p.schoolId===school.id||p.school===school.name);
   const missing=directory.filter(p=>!kitRoutes.has(p.id)).map(p=>({id:p.id,title:p.title,level:p.level,modalities:p.modalities,url:p.url}))
     .sort((a,b)=>(a.level||'').localeCompare(b.level||'')||a.title.localeCompare(b.title));

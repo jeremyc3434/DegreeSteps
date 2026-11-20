@@ -1,0 +1,261 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "criminal-justice-aa-online",
+  "modelId": "curriculum-liberty-criminal-justice-aa-online",
+  "routeIds": [
+    "liberty-catalog-f6de078c6efda116"
+  ],
+  "title": "Criminal Justice (A.A.) — Online",
+  "level": "associate",
+  "catalog": "2026–2027",
+  "totalCredits": 60,
+  "modalities": [
+    "online"
+  ],
+  "review": {
+    "status": "reviewed",
+    "reviewer": "Claude (pathway factory)",
+    "reviewedOn": "2026-11-20"
+  },
+  "sources": [
+    {
+      "id": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "title": "Criminal Justice (A.A.) — Online official 2026–27 degree completion plan (captured)",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-aa/criminal-justice-aa-online/",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/1e4e3c05d9bff63e.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "text": "Catalog 2026-2027"
+    },
+    {
+      "sourceId": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "text": "This degree plan is effective for those starting this degree program in fall 2026 through summer 2027"
+    },
+    {
+      "sourceId": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "text": "UNIV 104 Instructional Technology for Successful Online Learning 0-3"
+    },
+    {
+      "sourceId": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "text": "15 Hours must be completed through Liberty University"
+    },
+    {
+      "sourceId": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "text": "25% Of major taken through Liberty University"
+    },
+    {
+      "sourceId": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "text": "Grade of 'C' Minimum required for all courses in the major"
+    },
+    {
+      "sourceId": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "text": "2.0 Overall grade point average"
+    },
+    {
+      "sourceId": "liberty-criminal-justice-aa-online-2026-2027-captured",
+      "text": "Total Hours 36-39"
+    }
+  ],
+  "modelFields": {
+    "format": "Online",
+    "institutionMinCredits": 15,
+    "externalMaxCredits": 45,
+    "majorResidencyBasisCredits": 27,
+    "coverageLabel": "Source-linked full-credit curriculum with proposed approved-course choices; transfer matches require separate evidence.",
+    "rulesNotes": [
+      "A 60-credit proposed allocation: 33 unique general-education credits (UNIV 104 at its printed 0 credits) + 6 major-foundation + 21 major credits.",
+      "GOVT 220 is on the approved Cultural Studies list and fulfills that general-education category; it is counted once. GOVT 200 is on the same list, so either foundation course can carry the category.",
+      "The source prints UNIV 104 as 0–3 credits; zero credits are a scenario requiring individual confirmation.",
+      "Do not automatically remove the biblical-worldview or theology survey courses for transfer credit. The source permits those waivers at 45 and 60 transferred credits, but this ledger retains them until individual evaluation.",
+      "General-education electives are proposed course choices from the captured approved online list; any other listed course may be chosen."
+    ],
+    "unresolved": [
+      "Confirm individual catalog eligibility, major-course residency allocation, course prerequisites, and written transfer evaluation.",
+      "Outside-course equivalencies must be sourced separately; a university requirement is not evidence that a particular accelerated course transfers.",
+      "State-specific online general-education requirements may differ; consult the applicable state degree completion plan."
+    ],
+    "graduationRequirements": [
+      {
+        "id": "gpa",
+        "title": "Overall GPA",
+        "detail": "At least 2.0 overall GPA.",
+        "sourceIds": [
+          "liberty-criminal-justice-aa-online-2026-2027-captured"
+        ]
+      },
+      {
+        "id": "degree-application",
+        "title": "Graduation application",
+        "detail": "Submit the degree completion application within the last semester of the anticipated graduation date.",
+        "sourceIds": [
+          "liberty-criminal-justice-aa-online-2026-2027-captured"
+        ]
+      },
+      {
+        "id": "major-minimum-grade",
+        "title": "Major course grades",
+        "detail": "At least C in all courses in the major.",
+        "sourceIds": [
+          "liberty-criminal-justice-aa-online-2026-2027-captured"
+        ]
+      }
+    ],
+    "obligations": [
+      {
+        "title": "UNIV 104 evaluation",
+        "notes": "The degree plan lists UNIV 104 as 0–3 credits. This proposed ledger uses the zero-credit case. Obtain Liberty confirmation; if 3 credits are required, the plan exceeds 60 credits.",
+        "sourceIds": [
+          "liberty-criminal-justice-aa-online-2026-2027-captured"
+        ]
+      }
+    ],
+    "overlaps": [
+      {
+        "requirementId": "govt-220",
+        "alsoSatisfies": "Cultural Studies Elective",
+        "creditsCountedOnce": 3
+      }
+    ],
+    "gradePolicy": {
+      "minimumGrade": "C",
+      "scope": "all-major",
+      "sourceIds": [
+        "liberty-criminal-justice-aa-online-2026-2027-captured"
+      ],
+      "checked": "2026-11-20",
+      "detail": "At least C in all courses in the major."
+    },
+    "pricing": {
+      "model": "threshold-credit",
+      "fullTimeRate": 410,
+      "partTimeRate": 475,
+      "fullTimeMin": 12,
+      "period": "semester",
+      "currency": "USD",
+      "catalogYear": "2026-2027",
+      "sourceUrl": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+      "sourceIds": [
+        "liberty-online-tuition-2026-2027-reviewed",
+        "liberty-tuition-fees-2026-2027-reviewed"
+      ],
+      "checkedOn": "2026-11-17",
+      "exclusions": [
+        "The full-time rate requires at least 12 semester credits; eight-week subterms are not separate billing semesters.",
+        "Program-specific, military and other eligibility-based rates are outside this standard-rate model.",
+        "Technology, completion and course-specific fees remain separate."
+      ]
+    },
+    "publishedFees": [
+      {
+        "id": "technology",
+        "label": "Online technology fee",
+        "amount": 349,
+        "currency": "USD",
+        "frequency": "semester",
+        "sourceIds": [
+          "liberty-online-tuition-2026-2027-reviewed",
+          "liberty-tuition-fees-2026-2027-reviewed"
+        ],
+        "eligibility": "Standard online fee; waived for actively serving military and their spouses under the published policy."
+      },
+      {
+        "id": "degree-completion",
+        "label": "Degree completion application fee",
+        "amount": 100,
+        "currency": "USD",
+        "frequency": "per-application",
+        "sourceIds": [
+          "liberty-online-tuition-2026-2027-reviewed"
+        ]
+      }
+    ],
+    "policyEvidence": {
+      "institutionMinCredits": {
+        "value": 15,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "liberty-criminal-justice-aa-online-2026-2027-captured"
+        ],
+        "calculation": "The degree plan requires 15 hours through Liberty University."
+      },
+      "externalMaxCredits": {
+        "value": 45,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "calculation": "Published degree total less the 25% institutional minimum.",
+        "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+      },
+      "majorInstitutionFraction": {
+        "value": 0.25,
+        "sourceIds": [
+          "liberty-criminal-justice-aa-online-2026-2027-captured"
+        ],
+        "scope": "25% of the major taken through Liberty University, as printed in this degree plan."
+      }
+    },
+    "evidenceCheckedOn": "2026-11-20"
+  },
+  "modelSourceIds": [
+    "liberty-criminal-justice-aa-online-2026-2027-captured",
+    "liberty-online-approved-gened-2026-27-captured-2026-11-20",
+    "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+    "liberty-online-tuition-2026-2027-reviewed",
+    "liberty-tuition-fees-2026-2027-reviewed",
+    "liberty-official-clep-online-2025-08",
+    "liberty-official-sophia-online-2026-07",
+    "liberty-official-straighterline-online-2026-04",
+    "liberty-official-study-com-online-2026-05",
+    "liberty-criminal-justice-online--soph-0022-current-provider-2026-11-18",
+    "liberty-criminal-justice-online--soph-0022-current-ace-2026-11-18",
+    "liberty-criminal-justice-online--soph-0022-current-syllabus-2026-11-18",
+    "soph-0022-current-provider-2026-11-18",
+    "soph-0022-current-ace-2026-11-18",
+    "soph-0022-current-syllabus-2026-11-18",
+    "liberty-criminal-justice-online--sophia",
+    "liberty-criminal-justice-online--liberty-cj-online-sophia-selected-awards-2026-11-18",
+    "liberty-criminal-justice-online--straighterline",
+    "liberty-named-study-com-online-2026-05",
+    "liberty-named-study-com-campus-2026-05",
+    "ace-dsst-dant-0018-v5",
+    "dsst-provider-dant-0018",
+    "liberty-dsst-linked-2023-online",
+    "liberty-dsst-2025-online",
+    "liberty-named-straighterline-online-2026-04",
+    "liberty-named-straighterline-campus-2026-04",
+    "liberty-criminal-justice-online--liberty-official-clep-online-2025-08",
+    "liberty-criminal-justice-online--liberty-official-sophia-online-2026-07",
+    "liberty-criminal-justice-online--liberty-official-straighterline-online-2026-04",
+    "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05"
+  ],
+  "requirements": [
+    {"id":"engl-101","code":"ENGL 101","title":"Composition and Rhetoric","credits":3,"category":"general","group":"writing","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"ENGL 101 Composition and Rhetoric 3"}]},
+    {"id":"coms-101","code":"COMS 101","title":"Speech Communication","credits":3,"category":"general","group":"communication","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured","liberty-online-approved-gened-2026-27-captured-2026-11-20"],"publishedRequirementTitle":"Communications Elective","allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"Communications Elective 3"},{"sourceId":"liberty-online-approved-gened-2026-27-captured-2026-11-20","text":"COMS 101 Speech Communication"}]},
+    {"id":"hius-221","code":"HIUS 221","title":"Survey of American History I","credits":3,"category":"general","group":"information-literacy","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured","liberty-online-approved-gened-2026-27-captured-2026-11-20"],"publishedRequirementTitle":"Information Literacy Elective","allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"Information Literacy Elective 3"},{"sourceId":"liberty-online-approved-gened-2026-27-captured-2026-11-20","text":"HIUS 221 Survey of American History I"}]},
+    {"id":"math-121","code":"MATH 121","title":"College Algebra","credits":3,"category":"general","group":"quantitative-reasoning","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured","liberty-online-approved-gened-2026-27-captured-2026-11-20"],"publishedRequirementTitle":"Math Elective MATH 114 or higher","allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"Math Elective MATH 114 or higher 3"},{"sourceId":"liberty-online-approved-gened-2026-27-captured-2026-11-20","text":"MATH 121 College Algebra"}]},
+    {"id":"rlgn-104","code":"RLGN 104","title":"Christian Life and Biblical Worldview","credits":4,"category":"general","group":"biblical-worldview","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"RLGN 104 Christian Life and Biblical Worldview"}]},
+    {"id":"ethc-101","code":"ETHC 101","title":"Introduction to Ethics","credits":3,"category":"general","group":"critical-thinking","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured","liberty-online-approved-gened-2026-27-captured-2026-11-20"],"publishedRequirementTitle":"Critical Thinking Elective","allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"Critical Thinking Elective 3"},{"sourceId":"liberty-online-approved-gened-2026-27-captured-2026-11-20","text":"ETHC 101 Introduction to Ethics"}]},
+    {"id":"biol-101","code":"BIOL 101","title":"Principles of Biology","credits":3,"category":"general","group":"natural-science","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured","liberty-online-approved-gened-2026-27-captured-2026-11-20"],"publishedRequirementTitle":"Natural Science Elective","allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"Natural Science Elective 3"},{"sourceId":"liberty-online-approved-gened-2026-27-captured-2026-11-20","text":"BIOL 101 Principles of Biology"}],"optionRows":[
+      "straighterline-oosl-0017-to-biol-101-2",
+      "study-com-sdcm-0001-to-biol-101-2"
+    ]},
+    {"id":"soci-200","code":"SOCI 200","title":"Introduction to Sociology","credits":3,"category":"general","group":"social-science","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured","liberty-online-approved-gened-2026-27-captured-2026-11-20"],"publishedRequirementTitle":"Social Science Elective","allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"Social Science Elective 3"},{"sourceId":"liberty-online-approved-gened-2026-27-captured-2026-11-20","text":"SOCI 200 Introduction to Sociology"}]},
+    {"id":"bibl-104","code":"BIBL 104","title":"Survey of Old and New Testament","credits":4,"category":"general","group":"christianity-contexts","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"BIBL 104 Survey of Old and New Testament 4"}]},
+    {"id":"theo-104","code":"THEO 104","title":"Introduction to Theology Survey","credits":4,"category":"general","group":"christianity-contexts","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"THEO 104 Introduction to Theology Survey"}]},
+    {"id":"govt-200","code":"GOVT 200","title":"Constitutional Government and Free Enterprise","credits":3,"category":"major","group":"major-foundations","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"GOVT 200 Constitutional Government and Free Enterprise"}]},
+    {"id":"govt-220","code":"GOVT 220","title":"American Government","credits":3,"category":"major","group":"major-foundations","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured","liberty-online-approved-gened-2026-27-captured-2026-11-20"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"GOVT 220 American Government"},{"sourceId":"liberty-online-approved-gened-2026-27-captured-2026-11-20","text":"GOVT 220 American Government"},{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"Course may also fulfill select general education requirements"}]},
+    {"id":"cjus-200","code":"CJUS 200","title":"Introduction to Criminal Justice","credits":3,"category":"major","group":"major-core","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"CJUS 200 Introduction to Criminal Justice"}]},
+    {"id":"cjus-230","code":"CJUS 230","title":"Criminal Justice Research and Writing","credits":3,"category":"major","group":"major-core","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"CJUS 230 Criminal Justice Research and Writing"}]},
+    {"id":"cjus-231","code":"CJUS 231","title":"Criminal Justice Report Writing","credits":3,"category":"major","group":"major-core","upper":false,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"CJUS 231 Criminal Justice Report Writing"}]},
+    {"id":"cjus-320","code":"CJUS 320","title":"Corrections","credits":3,"category":"major","group":"major-core","upper":true,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"CJUS 320 Corrections"}]},
+    {"id":"cjus-330","code":"CJUS 330","title":"Judicial Process","credits":3,"category":"major","group":"major-core","upper":true,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"CJUS 330 Judicial Process"}]},
+    {"id":"cjus-340","code":"CJUS 340","title":"Criminology","credits":3,"category":"major","group":"major-core","upper":true,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"CJUS 340 Criminology"}]},
+    {"id":"cjus-400","code":"CJUS 400","title":"Criminal Law","credits":3,"category":"major","group":"major-core","upper":true,"institutionalOnly":false,"sourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-criminal-justice-aa-online-2026-2027-captured"],"quotes":[{"sourceId":"liberty-criminal-justice-aa-online-2026-2027-captured","text":"CJUS 400 Criminal Law"}]}
+  ]
+}

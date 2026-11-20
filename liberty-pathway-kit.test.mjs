@@ -5,7 +5,7 @@ import {join,resolve} from 'node:path';
 import {readFile} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
 import {loadKit,kitsRoot,readJSON,root,canonical,clone,list,inScope,matchRequirement,parsePlacement} from './scripts/pathway-factory/lib.mjs';
-import {compileKit,runGuards,serializePublished,publishedDocuments} from './scripts/pathway-factory/compile.mjs';
+import {compileKit,runGuards,serializePublished,publishedDocuments,rowsFor} from './scripts/pathway-factory/compile.mjs';
 import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 import {migrate,factoryInput,parity,files,electiveCondition} from './scripts/pathway-factory/migrate-liberty.mjs';
 
@@ -25,7 +25,7 @@ test('compile(kit) reproduces every Liberty registry model exactly: 13 models, f
       compared++;
     }
   }
-  assert.equal(compared,13);assert.equal(doc.models.length,13);
+  assert.equal(compared,13);assert.equal(kit.programs.filter(p=>p.review.status==='migrated').length,13);
   assert.ok(outsideOptions(doc.models)>9000,'every outside option is carried');
   // The published factory documents compile through the registry's generic stages to exactly the committed outputs.
   const result=spawnSync(process.execPath,['scripts/build-curriculum-registry.mjs','--check'],{cwd:root,encoding:'utf8',timeout:120000});
@@ -36,7 +36,7 @@ test('the Liberty kit is the source of truth: it verifies, passes its guards and
   const result=await verifyKit(kit,{asOf:kit.school.checkedOn});
   assert.deepEqual(result.errors,[]);
   assert.equal(await runGuards(kit,doc),guards.length);assert.ok(guards.length>=10);
-  assert.deepEqual(documents.map(d=>d.path),files.map(name=>'content/curricula/'+name+'.json'));
+  assert.deepEqual(documents.map(d=>d.path),[...files.map(name=>'content/curricula/'+name+'.json'),'content/curricula/liberty-pathway-kit.json']);
   for(const {path,doc:published}of documents){
     assert.equal(published.compiledBy,'pathway-factory',path);
     assert.equal(published.sources,undefined,'each model carries exactly its own sources: '+path);
@@ -58,12 +58,13 @@ test('institution-wide rows are never wider than the data and reuse one award ac
   const rows=kit.equivalencies.equivalencies,wide=rows.filter(row=>row.scope.all);
   const placements=new Map();
   for(const p of kit.programs)for(const r of p.requirements)for(const entry of list(r.optionRows)){const {row}=parsePlacement(entry);if(row){if(!placements.has(row))placements.set(row,[]);placements.get(row).push([p.slug,r.id]);}}
-  assert.ok(wide.length>300);
+  assert.ok(wide.length>250);
   for(const row of wide){
     for(const field of ['levels','modalities','catalogs'])assert.ok(Array.isArray(row.scope[field])&&row.scope[field].length,row.id+' scope names its '+field);
     if(Array.isArray(row.extra?.degreeLevels))assert.ok(row.scope.levels.every(level=>row.extra.degreeLevels.includes(level)),row.id+' levels stay within the award');
     if(Array.isArray(row.extra?.modalities))assert.ok(row.scope.modalities.every(mode=>row.extra.modalities.includes(mode)),row.id+' formats stay within the award');
-    for(const p of kit.programs){
+    // Migrated ledgers record what the school actually placed; authored ledgers keep one record per provider course.
+    for(const p of kit.programs.filter(p=>p.review.status==='migrated')){
       if(!inScope(row,p,kit))continue;
       const req=matchRequirement(row,p);
       if(req&&!req.institutionalOnly&&req.credits===row.credits)assert.ok(list(placements.get(row.id)).some(([slug,id])=>slug===p.slug&&id===req.id),`${row.id} is institution-wide but missing from ${p.slug}/${req.id}`);
@@ -124,4 +125,30 @@ test('publishedDocuments splits a kit across documents and gives unlisted progra
   const stub={school:{id:'x',checkedOn:'2026-11-20',publish:{compiledBy:'pathway-factory',documents:[{path:'a.json',programs:['one'],sources:false,routes:[{id:'r'}]},{path:'b.json',checkedOn:'2026-11-19'}]}},programs:[{slug:'one',review:{status:'reviewed'}},{slug:'two',review:{status:'reviewed'}},{slug:'three',review:{status:'draft'}}]};
   const out=publishedDocuments(stub,{sources:[{id:'s'}],models:[{id:'curriculum-x-one'},{id:'curriculum-x-two'}]});
   assert.deepEqual(out.map(d=>[d.path,d.doc.models.map(m=>m.id),d.doc.checkedOn,d.doc.compiledBy,Boolean(d.doc.sources),Boolean(d.doc.routes)]),[['a.json',['curriculum-x-one'],'2026-11-20','pathway-factory',false,true],['b.json',['curriculum-x-two'],'2026-11-19','pathway-factory',true,false]]);
+});
+
+const authored=['religion-aa-online','apologetics-aa-online','criminal-justice-aa-online','accounting-aa-online'];
+test('kit-authored Liberty programs are grounded, balanced, in scope and flow through the publication gates',async()=>{
+  const quality=await readJSON(resolve(root,'dist/data/pathway-quality-report.json')),catalog=await readJSON(resolve(root,'dist/data/program-catalog.json'));
+  const rows=new Map(kit.equivalencies.equivalencies.map(row=>[row.id,row]));
+  for(const slug of authored){
+    const program=kit.programs.find(p=>p.slug===slug);assert.ok(program,slug);
+    assert.equal(program.review.status,'reviewed');assert.equal(program.review.reviewer,'Claude (pathway factory)');
+    assert.equal(program.routeIds.length,1);assert.ok(catalog.programs.some(route=>route.id===program.routeIds[0]&&route.schoolId==='liberty'&&route.level==='associate'),slug+' uses an exact directory route');
+    assert.equal(program.requirements.reduce((n,r)=>n+r.credits,0),60);
+    for(const r of program.requirements)assert.ok(r.quotes?.length&&r.quotes.every(q=>r.sourceIds.includes(q.sourceId)),slug+'/'+r.id+' is quoted from its own sources');
+    assert.ok(program.sources.every(source=>source.capture&&source.checked==='2026-11-20'));
+    const model=doc.models.find(m=>m.id===program.modelId);
+    for(const r of model.requirements){
+      const keys=r.options.map(o=>o.provider+'|'+o.code);assert.equal(new Set(keys).size,keys.length,slug+'/'+r.id+' carries one record per provider course');
+      const ledger=program.requirements.find(x=>x.id===r.id),placed=ledger.optionRows?ledger.optionRows.map(e=>rows.get(parsePlacement(e).row)):rowsFor(kit,program,ledger);
+      assert.equal(placed.length,r.options.length);
+      for(const row of placed)assert.ok(row.scope.all&&inScope(row,program,kit)&&row.credits===r.credits,slug+'/'+r.id+': '+row.id+' is an institution-wide row in scope');
+      for(const o of r.options)assert.ok(!list(o.conditions).some(text=>text===electiveCondition||/^This requirement needs a grade of /.test(text)),slug+': no placement context from another requirement');
+    }
+    const result=quality.programs.find(item=>item.modelId===program.modelId);assert.ok(result,slug+' reaches the quality report');assert.equal(result.publication.ready,false);
+  }
+  const available=authored.filter(slug=>quality.programs.find(item=>item.modelId==='curriculum-liberty-'+slug).readyTemplate);
+  assert.deepEqual(available,['religion-aa-online','apologetics-aa-online','criminal-justice-aa-online']);
+  assert.ok(quality.programs.find(item=>item.modelId==='curriculum-liberty-accounting-aa-online').findings.some(f=>f.blocking&&f.code==='validation-selection_required'),'the undesignated ACCT elective keeps Accounting (A.A.) unavailable');
 });

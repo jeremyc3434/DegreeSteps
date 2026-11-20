@@ -18,20 +18,17 @@
     "business-bs-online",
     "history-bs-online",
     "healthcare-administration-bs-online",
-    "psychology-bs-residential"
+    "psychology-bs-residential",
+    "religion-aa-online",
+    "apologetics-aa-online",
+    "criminal-justice-aa-online",
+    "accounting-aa-online"
   ],
   "programDefaults": {
     "catalogYear": "2026-2027",
     "majorInstitutionFraction": 0.25,
     "coverage": "complete",
-    "completeExecutablePathway": false,
-    "officialMappingCheckedOn": "2026-11-10",
-    "verifiedBasicsReview": {
-      "id": "strong-route-known-basics-2026-11-17",
-      "checkedOn": "2026-11-17",
-      "pricingScope": "standard-undergraduate",
-      "personalAwardsCreated": 0
-    }
+    "completeExecutablePathway": false
   },
   "publish": {
     "compiledBy": "pathway-factory",
@@ -247,6 +244,11 @@
             "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-resident/"
           }
         ]
+      },
+      {
+        "path": "content/curricula/liberty-pathway-kit.json",
+        "checkedOn": "2026-11-20",
+        "sources": false
       }
     ]
   },
@@ -642,6 +644,7 @@
     {"id":"liberty-psychology-bs-residential-2026","title":"Psychology B.S. Resident degree completion plan, 2026–2027","url":"https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-resident/","checked":"2026-11-16"},
     {"id":"liberty-residential-approved-gened-expansion-2026","title":"Approved residential general-education courses, 2026–2027","url":"https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-residential-programs/","checked":"2026-11-16"},
     {"id":"liberty-psychology-course-prerequisites-2026","title":"Psychology course descriptions and prerequisites, 2026–2027","url":"https://catalog.liberty.edu/undergraduate/courses/psyc/","checked":"2026-11-16"},
-    {"id":"liberty-psychology-residential-tuition-2026-2027","title":"Liberty 2026–27 standard residential undergraduate tuition","url":"https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-resident-program/","checked":"2026-11-16","evidenceType":"official-tuition","scope":"Standard fall/spring undergraduate tuition and part-time rates before financial aid. Housing, fees and other expenses require separate estimates."}
+    {"id":"liberty-psychology-residential-tuition-2026-2027","title":"Liberty 2026–27 standard residential undergraduate tuition","url":"https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-resident-program/","checked":"2026-11-16","evidenceType":"official-tuition","scope":"Standard fall/spring undergraduate tuition and part-time rates before financial aid. Housing, fees and other expenses require separate estimates."},
+    {"id":"liberty-online-approved-gened-2026-27-captured-2026-11-20","title":"Liberty approved general-education courses for online programs, 2026–27 (captured)","url":"https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/","checked":"2026-11-20","capture":"content/source-captures/c934c7f174a51a06.txt"}
   ]
 }
