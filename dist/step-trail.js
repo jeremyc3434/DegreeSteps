@@ -59,7 +59,9 @@
     return li;
   });
   bar.style.setProperty('--steps', String(total));
-  document.body.appendChild(bar);
+  // Early in the tab order (after the skip link) so keyboard users reach it without tabbing through the page.
+  const skip = document.querySelector('.site-skip');
+  if (skip && skip.parentNode === document.body) skip.after(bar); else document.body.prepend(bar);
   document.body.classList.add('has-step-trail');
 
   function offset() { return bar.offsetHeight + 24; }
@@ -72,7 +74,8 @@
     steps.forEach((step, index) => { if (step.heading.getBoundingClientRect().top <= line) active = index; });
     // The closing step becomes current once the page bottom is reached, even when it is short.
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) active = total - 1;
-    bar.classList.toggle('is-visible', active >= 0);
+    bar.classList.toggle('is-visible', active >= 0 || bar.contains(document.activeElement));
+    if (active < 0) { count.textContent = '1 of ' + total; label.textContent = steps[0].label; }
 
     // Fill: whole steps reached plus the fraction of the way through the current section.
     let progress = 0;
@@ -93,11 +96,13 @@
       if (index === active) link.setAttribute('aria-current', 'step'); else link.removeAttribute('aria-current');
     });
     if (active >= 0) {
-      count.textContent = 'Step ' + (active + 1) + ' of ' + total;
+      count.textContent = (active + 1) + ' of ' + total;
       label.textContent = steps[active].label;
     }
   }
   const schedule = () => { if (frame === null) frame = window.requestAnimationFrame(update); };
+  bar.addEventListener('focusin', () => bar.classList.add('is-visible'));
+  bar.addEventListener('focusout', schedule);
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule);
   update();

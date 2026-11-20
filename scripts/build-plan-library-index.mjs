@@ -4,37 +4,50 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import assert from 'node:assert/strict';
 import {subjectAreas,subjectsFor} from './subject-areas.mjs';
+import {loadPublicPlans} from './public-plan-pages.mjs';
 
 const root=resolve(import.meta.dirname,'..'),output=resolve(root,'dist/data/plan-library-index.json');
 const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 
-/** Student-facing wording for each blocking finding category. Unknown codes fall back to a generic, honest line. */
-export const questionText=Object.freeze({
-  'policy-unresolved':'A school transfer policy for this program, such as its limit on outside credit, still needs confirmation.',
-  'unresolved-research':'Some of the school’s published rules for this program are still being confirmed.',
-  'provider-eligibility':'Some outside courses need the provider’s current enrollment terms confirmed.',
-  'mapping-scope':'Some course matches were documented for a related degree or format and need confirmation for this one.',
-  'mapping-applicability':'Some course matches need confirmation that they apply to this exact program.',
-  'conditional-award':'Some course matches carry conditions the school must approve.',
-  'catalog-identity':'The catalog year or edition for this program needs confirmation.'
-});
-const fallback='Some details of this plan still need confirmation with the school.';
+/** Student-facing questions. School-level findings become one concrete question each; course-level findings are counted. */
+const policyQuestion={alternativeMaxCredits:'Ask the school: what is the most ACE- or NCCRS-recommended credit you accept toward this degree?',externalMaxCredits:'Ask the school: what is the most transfer credit you accept toward this degree?',institutionMinCredits:'Ask the school: how many credits must I earn at the school itself for this degree?'};
+const researchQuestion=[
+  [/time limit/i,'Ask the school: is there a time limit on how old transfer credit can be? Its published sources disagree.'],
+  [/catalog eligibility|written transfer evaluation|residency allocation/i,'Ask the school for a written transfer evaluation that confirms these courses for your catalog year, including any major-course residency rules.'],
+  [/state-specific/i,'Ask the school whether your state changes the general-education requirements in this plan.'],
+  [/time limit|currency|years? old/i,'Ask the school whether older credits still count.']
+];
+const generic='Some of the school’s published rules for this program are still being confirmed. Ask the school to confirm this plan before paying for outside courses.';
+const plural=(n,word)=>n+' '+word+(n===1?'':/(ch|sh|s|x)$/.test(word)?'es':'s');
+export function questionsFor(findings){
+  const blocking=findings.filter(f=>f.blocking),out=[];let unmatched=false;
+  for(const f of blocking.filter(f=>f.code==='policy-unresolved'))out.push(policyQuestion[f.field]||generic);
+  for(const f of blocking.filter(f=>f.code==='unresolved-research')){const hit=researchQuestion.find(([re])=>re.test(f.message||''));if(hit)out.push(hit[1]);else unmatched=true;}
+  const optionsFor=codes=>new Set(blocking.filter(f=>codes.includes(f.code)).flatMap(f=>f.optionIds?.length?f.optionIds:[f.code+':'+(f.requirementIds||[]).join(',')]));
+  const matches=optionsFor(['mapping-scope','mapping-applicability','conditional-award']).size,providers=optionsFor(['provider-eligibility']).size;
+  if(matches)out.push('Ask the school to confirm '+plural(matches,'proposed course match')+' for this exact program before paying for '+(matches===1?'it':'them')+'.');
+  if(providers)out.push('Check the provider’s current enrollment terms for '+plural(providers,'outside course')+' before you enroll.');
+  if(blocking.some(f=>f.code==='catalog-identity'))out.push('Ask the school which catalog year applies to you.');
+  if(unmatched||!out.length)out.push(generic);
+  return [...new Set(out)];
+}
 
-export function buildIndex({registry,quality}){
+export function buildIndex({registry,quality,estimates={}}){
   const byModel=new Map(quality.programs.map(p=>[p.modelId,p])),plans={};
   for(const model of registry.models){
     const report=byModel.get(model.id);
     if(!report||model.readyTemplate!==true||report.research?.status==='unavailable')continue;
     const reviewed=report.publication?.ready===true||report.research?.status==='research-ready';
-    const codes=[...new Set((report.findings||[]).filter(f=>f.blocking).map(f=>f.code))];
-    const questions=reviewed?[]:[...new Set(codes.map(code=>questionText[code]||fallback))];
-    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length};
+    const questions=reviewed?[]:questionsFor(report.findings||[]);
+    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(estimates[routeId]?{estimate:estimates[routeId]}:{})};
   }
   return {kind:'degreesteps-plan-library-index',version:1,registryRevision:quality.registryRevision,asOf:quality.asOf,subjects:Object.fromEntries(subjectAreas.map(s=>[s.id,s.label])),plans:Object.fromEntries(Object.entries(plans).sort(([a],[b])=>a.localeCompare(b)))};
 }
 
 if(import.meta.url===`file://${process.argv[1]}`){
-  const index=buildIndex({registry:await read('dist/data/curriculum-registry.json'),quality:await read('dist/data/pathway-quality-report.json')});
+  // The same planning-estimate range the public plan pages show, so every surface quotes one figure.
+  const estimates={};for(const plan of await loadPublicPlans(resolve(root,'dist'))){const r=plan.estimate?.costs?.knownRange;if(r&&Number.isFinite(r.min)&&Number.isFinite(r.max)&&r.min>0)estimates[plan.id]={min:r.min,max:r.max};}
+  const index=buildIndex({registry:await read('dist/data/curriculum-registry.json'),quality:await read('dist/data/pathway-quality-report.json'),estimates});
   const text=JSON.stringify(index)+'\n',tiers=Object.values(index.plans).reduce((n,p)=>(n[p.tier]=(n[p.tier]||0)+1,n),{});
   if(process.argv.includes('--check')){let current='';try{current=await readFile(output,'utf8');}catch{}assert.equal(current,text,'dist/data/plan-library-index.json is stale; run node scripts/build-plan-library-index.mjs');}
   else await writeFile(output,text);

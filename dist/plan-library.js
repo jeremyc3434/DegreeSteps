@@ -52,6 +52,11 @@
   const form = $('[data-plan-filters]'), toolbar = $('[data-plan-toolbar]'), results = $('[data-plan-results]');
   const search = $('[data-plan-search]'), sort = $('[data-plan-sort]'), toggle = $('[data-plan-filter-toggle]');
   const count = $('[data-plan-count]'), active = $('[data-plan-active]'), empty = $('[data-plan-empty]'), more = $('[data-plan-more]'), badge = $('[data-plan-filter-count]');
+  const copy = $('[data-plan-copy]');
+  if (copy && navigator.clipboard) {
+    copy.hidden = false;
+    copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(location.href); copy.textContent = 'Link copied'; } catch { copy.textContent = 'Copy the address bar to share'; } setTimeout(() => { copy.textContent = 'Copy link to this list'; }, 2400); });
+  }
   const groups = new Map($$('[data-plan-group]').map(group => [group.dataset.planGroup, group]));
   const labelFor = (name, value) => { const input = form.querySelector('input[name="' + name + '"][value="' + CSS.escape(value) + '"]'); return input ? input.nextElementSibling.textContent : value; };
   const items = $$('.public-plan-card').map(card => ({
@@ -115,7 +120,7 @@
     }
     const filters = MULTI.reduce((n, key) => n + state[key].length, 0) + (state.share ? 1 : 0);
     badge.hidden = !filters; badge.textContent = filters ? String(filters) : '';
-    count.textContent = list.length === items.length && !state.q && !filters ? plural(items.length, 'researched plan') : plural(list.length, 'plan') + ' match' + (list.length === 1 ? 'es' : '') + ' of ' + items.length;
+    count.textContent = list.length === items.length && !state.q && !filters ? plural(items.length, 'researched plan') : list.length + ' of ' + plural(items.length, 'plan') + ' match' + (list.length === 1 ? 'es' : '');
     empty.hidden = list.length > 0;
     more.hidden = list.length <= limit;
     more.textContent = 'Show ' + Math.min(PAGE, list.length - limit) + ' more plans';

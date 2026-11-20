@@ -472,3 +472,6 @@ body.ds-discovery-page .pf-confirm-detail ul { margin:0 0 10px; padding-left:20p
 body.ds-discovery-page .pf-confirm-detail p { margin:0; color:#6b4a22; font-size:.875rem; }
 @media(max-width:1100px) { body.ds-discovery-page #program-filters { grid-template-columns:repeat(2,minmax(0,1fr)); } body.ds-discovery-page #program-filters .pf-search { grid-column:1/-1; } }
 @media(max-width:600px) { body.ds-discovery-page #program-filters { grid-template-columns:minmax(0,1fr); } }
+body.ds-discovery-page .pf-legend { margin:0 0 4px; color:var(--discovery-muted); font-size:.875rem; line-height:1.9; }
+body.ds-discovery-page .pf-legend .pf-badge { margin-right:2px; }
+body.ds-discovery-page .pf-split-label { color:var(--discovery-muted); font-weight:500; }

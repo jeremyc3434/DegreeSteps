@@ -569,7 +569,8 @@ body.public-page .student-journey-copy p.ds-step-kicker { max-width:none; margin
 
 /* ── Step trail: a sticky, scroll-aware step bar (dist/step-trail.js) ──────────
    The DegreeSteps signature: every public page reads as a short path that ends in an action. */
-body.has-step-trail main h2 { scroll-margin-top:84px; }
+body.has-step-trail main :is(h2,[id]) { scroll-margin-top:84px; }
+.step-trail:focus-within { transform:none; }
 .step-trail { --trail-line:#d9e1ea; --trail-cobalt:var(--public-cobalt,#4054f4); --trail-ink:var(--public-ink,#182230); --trail-navy:var(--ds-route-navy,#142c51);
   position:fixed; z-index:60; top:0; left:0; right:0; background:#fff;
   box-shadow:0 1px 0 var(--trail-line),0 8px 24px -18px rgba(20,44,81,.45); transform:translateY(-110%); transition:transform 240ms cubic-bezier(.2,.7,.2,1); }
@@ -597,7 +598,7 @@ body.has-step-trail main h2 { scroll-margin-top:84px; }
 .step-trail-track { position:absolute; left:0; right:0; bottom:0; height:2px; overflow:hidden; }
 .step-trail-fill { display:block; height:100%; background:var(--trail-cobalt); transform:scaleX(0); transform-origin:left center; transition:transform 120ms linear; }
 @media(max-width:760px) {
-  body.has-step-trail main h2 { scroll-margin-top:68px; }
+  body.has-step-trail main :is(h2,[id]) { scroll-margin-top:68px; }
   .step-trail-inner { height:46px; padding:0 20px; }
   .step-trail-nodes { display:none; }
   .step-trail-now { gap:10px; font-size:.8125rem; }
@@ -706,3 +707,19 @@ body.public-page .public-plan-heading + .public-plan-tools { margin-top:16px; }
 body.public-page [data-preview-count] { margin:12px 0 18px; color:var(--public-muted); font-size:.875rem; }
 @media(max-width:1000px) { body.public-page .public-plan-tools { grid-template-columns:1fr 1fr; } body.public-page .public-plan-find { grid-column:1/-1; } body.public-page .public-plan-tool-actions { grid-column:1/-1; } }
 @media(max-width:760px) { body.public-page .public-plan-tools { position:static; grid-template-columns:1fr 1fr; gap:10px; padding:12px; } body.public-page .public-plan-tools label>span { margin-bottom:4px; } body.public-page .public-plan-tool-actions { min-height:0; } }
+body.public-page .public-plan-map-note { display:block; margin-top:4px; color:#5b6878; font-size:.75rem; font-style:italic; line-height:1.4; }
+/* Phones: each course row becomes a labelled card instead of a sideways-scrolling table. */
+@media(max-width:640px) {
+  body.public-page .public-plan-table { overflow:visible; border:0; }
+  body.public-page .public-plan-table table, body.public-page .public-plan-table tbody { display:block; width:100%; min-width:0; }
+  body.public-page .public-plan-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  body.public-page .public-plan-table tr { display:block; margin:0 0 10px; padding:12px 14px; border:1px solid var(--public-line,#d9e1ea); border-radius:8px; background:#fff; }
+  body.public-page .public-plan-table tr[hidden] { display:none; }
+  body.public-page .public-plan-table th[scope="row"] { display:block; padding:0 0 8px; border:0; font-size:.9375rem; }
+  body.public-page .public-plan-table td { display:grid; grid-template-columns:7.5em minmax(0,1fr); gap:8px; padding:5px 0; border:0; font-size:.875rem; }
+  body.public-page .public-plan-table td::before { content:attr(data-label); color:var(--public-muted); font-size:.8125rem; }
+}
+body.public-page .plan-library-copy { margin-left:auto; padding:6px 12px; border:1px solid #c3cddb; border-radius:999px; background:#fff; color:var(--public-ink); font-size:.8125rem; font-weight:600; }
+body.public-page .plan-library-copy:hover { border-color:var(--public-cobalt); color:var(--public-cobalt); }
+body.public-page .plan-hub-more { margin:18px 0 0; font-size:.9375rem; }
+body.public-page .plan-hub-more a { display:inline-flex; align-items:center; gap:6px; color:var(--public-cobalt); font-weight:600; text-underline-offset:3px; }

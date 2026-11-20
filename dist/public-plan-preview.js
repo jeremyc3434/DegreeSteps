@@ -19,6 +19,8 @@
     if(!row.hidden)visible++;
    }
    for(const section of sections){const owned=[...section.querySelectorAll('[data-preview-provider]')];section.hidden=owned.length>0&&owned.every(row=>row.hidden);if(active&&!section.hidden)section.open=true;}
+   // Parent groups (e.g. a General education heading) hide when every course inside them is filtered out.
+   for(const group of all('.public-plan-section:not([data-preview-section])')){const owned=[...group.querySelectorAll('[data-preview-provider]')];group.hidden=owned.length>0&&owned.every(row=>row.hidden);}
    if(count)count.textContent=visible||!active?'Showing '+visible+' of '+rows.length+' course rows.':'No courses match. Try another word or clear the filters.';
    if(clear)clear.hidden=!active;
    syncToggle();
