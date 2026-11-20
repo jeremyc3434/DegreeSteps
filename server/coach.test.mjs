@@ -9,7 +9,7 @@ const origin='https://degreepath.example';
 const journal=JSON.parse(readFileSync(new URL('../drizzle/meta/_journal.json',import.meta.url),'utf8'));
 const fixture=name=>JSON.parse(readFileSync(new URL('../test-support/fixtures/coach/'+name+'.json',import.meta.url),'utf8'));
 const data={library:fixture('plan-library-index'),index:fixture('coach-index'),knowledge:fixture('coach-knowledge')};
-const KEY='sk-ant-test-server-only-credential-0001';
+const KEY='test-coach-credential-not-real-0001';
 const C=coachInternals();
 
 class LocalD1{
