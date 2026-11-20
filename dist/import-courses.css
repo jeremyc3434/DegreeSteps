@@ -3,3 +3,10 @@
 #import-app .credit-import-steps li,#import-app .credit-import-guide summary,#import-app .credit-import-guide p,#import-app .credit-import-columns dt,#import-app .credit-import-columns dd{font-size:15px}#import-app .credit-template-scroll table{font-size:14px}#import-app .credit-import-guide .sheet-actions{display:flex;flex-wrap:wrap;gap:12px}#import-app .credit-import-guide .button{display:inline-flex;align-items:center;padding:10px 14px;border:1px solid #cbd6e6;border-radius:8px;color:#2457c7;text-decoration:none}
 .import-page>.skip-link{position:fixed;left:1rem;top:-8rem;z-index:200;min-height:44px;padding:.75rem 1rem;border-radius:.375rem;background:var(--ds-navy,#192c43);color:#fff}
 .import-page>.skip-link:focus{top:1rem}
+/* "Nothing to upload?" past-course choices (students with a plan). */
+.import-prior{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin:20px 0 0;padding:18px 22px;border:1px solid #dbe4f0;border-radius:14px;background:#fff}
+.import-prior h2{margin:0 0 4px;font-size:1.05rem}
+.import-prior p{margin:0;color:#4a5d78;font-size:.9375rem}
+.import-prior-actions{display:flex;flex-wrap:wrap;gap:10px}
+.import-prior-actions .import-secondary{min-height:44px}
+@media(max-width:600px){.import-prior{padding:16px}.import-prior-actions,.import-prior-actions .import-secondary{width:100%}}

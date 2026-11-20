@@ -49,33 +49,31 @@ await test('registry preview preserves an existing plan until explicit build and
 await test('changing degree inside My plan loads a registered curriculum before switching',async()=>{const original=seed(),p=await page('plan.html',original);await ready(p);await p.locator('#sheet-titlebar [data-action=target]').click();await p.locator('#sheet-target-form [name=school]').selectOption(fixtureRoute.school);await p.locator('#sheet-target-form [name=pathwayId]').selectOption(fixtureRoute.id);await p.locator('#sheet-target-form button[type=submit]').filter({hasText:'Build course plan'}).waitFor();await p.locator('#sheet-target-form button[type=submit]').click();await ready(p);assert.equal((await saved(p)).selectedPathwayId,fixtureRoute.id);assert.deepEqual((await saved(p)).learning,original.learning);});
 await test('side-by-side comparison uses a registered curriculum instead of an empty outline',async()=>{const original=seed();original.whatIf={...original.whatIf,version:1,selectedIds:['route:'+fixtureRoute.id],includeOtherFormats:true};const p=await page('compare-plans.html',original);const card=p.locator('[data-scenario="route:'+fixtureRoute.id+'"]');await card.waitFor();await card.locator('[data-collection-fit-credits]').waitFor();assert.equal(await card.locator('.comparison-unmapped').count(),0);assert.match(await card.innerText(),/Synthetic Business/);assert.equal((await saved(p)).selectedPathwayId,original.selectedPathwayId);assert.deepEqual((await saved(p)).learning,original.learning);});
 await test('the registered degree worksheet remains readable on a small phone',async()=>{let state=seed();state.profile={...state.profile,school:fixtureRoute.school,schoolChoice:fixtureRoute.school,degree:fixtureRoute.title,pathwayId:fixtureRoute.id,degreeLevel:'bachelor',modality:'online',classroomImportance:'open'};state.selectedPathwayId=fixtureRoute.id;const p=await page('plan.html',state,390);await ready(p);assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.equal((await saved(p)).selectedPathwayId,fixtureRoute.id);});
-await test('source requirements stay a preview until Build and retain courses added in another tab',async()=>{
-  const original=seed(),p=await page(sourceHandoff(),original,1440,{discovery:'ready'}),result=sourceFixture();
-  await p.getByRole('button',{name:'Build course plan',exact:true}).waitFor();
-  assert.deepEqual(curriculumCalls.get(p),[{program:sourceRoute.id,variant:''}]);
-  assert.deepEqual(await saved(p),original,'loading public requirements must not save a replacement plan or source import');
+// Live requirement lookups are retired: the guided planner sends a degree without a reviewed plan to
+// "Research this degree" (an offline-reviewed request), never to /api/curriculum. DegreeProgramCatalog.discover
+// is kept for now but no planner path calls it.
+const researchHref='request-plan.html?source='+encodeURIComponent(sourceRoute.url);
+async function researchCard(p){const card=p.locator('.portal-readiness-card');await card.waitFor();assert.match(await card.innerText(),/does not have a completed template yet/);assert.match(await card.innerText(),/Your current plan and courses stay saved/);return card;}
+await test('a degree without a reviewed plan offers Research this degree, not a live lookup, and keeps courses added in another tab',async()=>{
+  const original=seed(),p=await page(sourceHandoff(),original,1440,{discovery:'ready'}),card=await researchCard(p);
+  const research=card.getByRole('link',{name:'Research this degree →',exact:true});assert.equal(await research.getAttribute('href'),researchHref);
+  assert.equal(await p.getByRole('button',{name:'Build course plan',exact:true}).count(),0);assert(await card.getByRole('button',{name:'Browse available course plans',exact:true}).isVisible());
+  assert.deepEqual(curriculumCalls.get(p),[],'the planner never fetches requirements live');assert.deepEqual(await saved(p),original,'viewing the degree must not save a replacement plan');
   const concurrent=S.updateLearning(original,{id:'another-tab-course',title:'Added in another tab',provider:'Another former college',credits:3,creditSystem:'semester',status:'earned'});
   await p.evaluate(({key,value})=>localStorage.setItem(key,JSON.stringify(value)),{key:KEY,value:concurrent});
-  await p.getByRole('button',{name:'Build course plan',exact:true}).click();await completeProfileSteps(p);await p.waitForURL('**/plan.html');await ready(p);
-  let next=await saved(p);assert.equal(next.selectedPathwayId,result.route.id);assert.deepEqual(next.learning,concurrent.learning);assert.deepEqual(next.sheet.notes,original.sheet.notes);
-  assert.equal(next.sourceCurricula.length,1);assert.equal(next.sourceCurricula[0].model.id,result.model.id);assert(next.whatIf.snapshots.some(snapshot=>snapshot.pathwayId===original.selectedPathwayId));
-  await p.reload({waitUntil:'networkidle'});await ready(p);next=await saved(p);assert.equal(next.selectedPathwayId,result.route.id);assert.deepEqual(next.learning,concurrent.learning);assert.equal(await p.locator('.course-plan-unavailable').count(),0);assert.equal(curriculumCalls.get(p).length,1,'restoring the saved source revision must not rediscover it');
+  await research.click();await p.waitForURL('**/request-plan.html?source=**');assert.equal(await p.locator('#degree-url').inputValue(),sourceRoute.url);
+  const next=await saved(p);assert.equal(next.selectedPathwayId,original.selectedPathwayId);assert.deepEqual(next.learning,concurrent.learning);assert.deepEqual(next.sheet.notes,original.sheet.notes);assert.equal(next.sourceCurricula,undefined);assert.deepEqual(curriculumCalls.get(p),[]);
 });
-await test('source variant choices request the exact selected concentration before Build',async()=>{
-  const original=seed(),p=await page(sourceHandoff(),original,1440,{discovery:'variants'});
-  await p.getByRole('button',{name:sourceVariants[0].title+' Online',exact:true}).waitFor();
-  const choice=p.locator('[data-source-variant="'+sourceVariants[1].id+'"]');await choice.waitFor();assert.match(await choice.innerText(),/Operations concentration/);
-  assert.deepEqual(await saved(p),original);await choice.click();await p.getByRole('button',{name:'Build course plan',exact:true}).waitFor();
-  assert.deepEqual(curriculumCalls.get(p),[{program:sourceRoute.id,variant:''},{program:sourceRoute.id,variant:sourceVariants[1].id}]);
-  assert.match(await p.locator('.portal-readiness-card h2').innerText(),/Operations concentration/);assert.deepEqual(await saved(p),original);
-  await p.getByRole('button',{name:'Build course plan',exact:true}).click();await completeProfileSteps(p);await p.waitForURL('**/plan.html');await ready(p);const next=await saved(p);
-  assert.equal(next.sourceCurricula[0].variant,sourceVariants[1].id);assert.match(next.profile.degree,/Operations concentration/);assert.deepEqual(next.learning,original.learning);
+await test('concentration choices are not fetched live; research starts from the official program link',async()=>{
+  const original=seed(),p=await page(sourceHandoff(),original,1440,{discovery:'variants'}),card=await researchCard(p);
+  assert.equal(await p.locator('[data-source-variant]').count(),0);assert.deepEqual(curriculumCalls.get(p),[]);
+  assert.equal(await card.getByRole('link',{name:'Research this degree →',exact:true}).getAttribute('href'),researchHref);assert.deepEqual(await saved(p),original);
 });
 await test('an incomplete source offers an actionable private-audit path without replacing the active plan',async()=>{
-  const original=seed(),p=await page(sourceHandoff(),original),audit=p.getByRole('link',{name:'Use my degree audit',exact:true});await audit.waitFor();
-  assert.match(await p.locator('.portal-readiness-card').innerText(),/fixed-credit requirement list/);assert.equal(await p.getByRole('button',{name:'Build course plan',exact:true}).count(),0);assert.deepEqual(await saved(p),original);
-  const target=new URL(await audit.getAttribute('href'),BASE);assert.equal(target.searchParams.get('school'),sourceRoute.school);assert.equal(target.searchParams.get('degree'),sourceRoute.title);
-  await audit.click();await p.locator('#audit-import-form').waitFor();assert.deepEqual((await saved(p)).learning,original.learning);assert.equal((await saved(p)).selectedPathwayId,original.selectedPathwayId);
+  const original=seed(),p=await page(sourceHandoff(),original),card=await researchCard(p);assert.equal(await p.getByRole('button',{name:'Build course plan',exact:true}).count(),0);assert.deepEqual(curriculumCalls.get(p),[]);
+  await card.getByRole('link',{name:'Research this degree →',exact:true}).click();await p.waitForURL('**/request-plan.html?source=**');
+  await p.getByRole('link',{name:'Build a plan yourself',exact:true}).click();await p.locator('#audit-import-form').waitFor();
+  assert.deepEqual((await saved(p)).learning,original.learning);assert.equal((await saved(p)).selectedPathwayId,original.selectedPathwayId);
 });
 await test('a private imported audit restores real plan rows and comparison totals',async()=>{
   const original=seed(),entry=privateAudit(),state=A.commit(original,entry,{catalog}),p=await page('plan.html',state);await ready(p);
@@ -93,14 +91,17 @@ await test('a full previous-plan list blocks switching before replacing the acti
   await p.getByRole('button',{name:'Build course plan',exact:true}).click();await p.locator('#portal-step-error').filter({hasText:/saved versions are full/i}).waitFor();
   assert.match(await p.locator('#portal-step-error').innerText(),/saved versions are full/i);assert.equal((await saved(p)).selectedPathwayId,original.selectedPathwayId);assert.deepEqual((await saved(p)).learning,original.learning);assert.equal((await saved(p)).whatIf.snapshots.length,20);
 });
-await test('checking an unmapped current goal offers a source plan before explicit adoption',async()=>{
+await test('checking an unmapped current goal offers research and a degree audit, never a live lookup',async()=>{
   const original=seed();original.selectedPathwayId=sourceRoute.id;original.profile={...original.profile,school:sourceRoute.school,degree:sourceRoute.title,pathwayId:sourceRoute.id,degreeLevel:'bachelor',modality:'online',classroomImportance:'open'};
-  const p=await page('compare-plans.html',original,1440,{discovery:'ready'}),result=sourceFixture();
-  await p.locator('[data-scenario="current"] [data-source-program="'+sourceRoute.id+'"]').click();
-  const imported=p.locator('[data-scenario="route:'+result.route.id+'"]');await imported.locator('[data-collection-fit-credits]').waitFor();
-  assert.equal((await saved(p)).selectedPathwayId,sourceRoute.id);assert.equal((await saved(p)).sourceCurricula,undefined);
-  await imported.locator('[data-use-plan]').click();await p.locator('#comparison-confirm-use').click();await p.waitForURL('**/plan.html');await ready(p);
-  const next=await saved(p);assert.equal(next.selectedPathwayId,result.route.id);assert.equal(next.sourceCurricula[0].model.id,result.model.id);assert.deepEqual(next.learning,original.learning);assert.deepEqual(next.sheet.notes,original.sheet.notes);
+  const p=await page('compare-plans.html',original,1440,{discovery:'ready'}),current=p.locator('[data-scenario="current"]');
+  await current.locator('.comparison-unmapped').waitFor();
+  assert.equal(await current.locator('[data-source-program]').count(),0,'no live requirement check is offered');
+  assert.equal(await current.getByRole('link',{name:'Research this degree →',exact:true}).getAttribute('href'),researchHref);
+  assert(await current.getByRole('link',{name:'Use my degree audit →',exact:true}).isVisible());
+  assert.equal(await p.locator('.comparison-card').filter({hasText:'Unavailable saved program'}).count(),0);
+  assert.deepEqual(curriculumCalls.get(p),[]);assert.equal((await saved(p)).selectedPathwayId,sourceRoute.id);assert.equal((await saved(p)).sourceCurricula,undefined);
+  await current.getByRole('link',{name:'Research this degree →',exact:true}).click();await p.waitForURL('**/request-plan.html?source=**');
+  const next=await saved(p);assert.equal(next.selectedPathwayId,sourceRoute.id);assert.deepEqual(next.learning,original.learning);assert.deepEqual(next.sheet.notes,original.sheet.notes);
 });
 await test('subscription terms and accelerated course loads save through the cost form',async()=>{
   const oldPricing=fixtureModel.pricing;fixtureModel.pricing={model:'subscription',amount:4125,currency:'USD',sourceUrl:fixtureRoute.url};

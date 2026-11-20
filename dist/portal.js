@@ -244,9 +244,7 @@
   // Reviewed plans plus complete plans that still need school confirmation (labelled on each card).
   // Without the finder index, only reviewed (published) plans are searched.
   function guidedRoutes(source,loaded) {
-    const published=DegreeProgramCatalog.publishedPlans(source,loaded),ids=new Set(published.map(route=>route.id)),plans=planIndex?.plans;
-    if(!plans||typeof plans!=='object'||typeof DegreeProgramCatalog.isPlanAvailable!=='function')return published;
-    return [...published,...(source.pathways||[]).filter(route=>route?.modelId&&!ids.has(route.id)&&plans[route.id]?.tier==='confirmation'&&DegreeProgramCatalog.isPlanAvailable(route,source,loaded))];
+    return typeof DegreeProgramCatalog.planLibraryRoutes==='function'?DegreeProgramCatalog.planLibraryRoutes(source,loaded,planIndex):DegreeProgramCatalog.publishedPlans(source,loaded);
   }
   const needsConfirmation=route=>planIndex?.plans?.[route?.id]?.tier==='confirmation';
   function planQuestions(route) {

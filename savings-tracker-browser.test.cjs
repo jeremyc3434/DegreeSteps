@@ -145,7 +145,14 @@ async function test(name, fn) {await fn(); count++; console.log('PASS '+name);}
     for (const width of [320,390]) {
       const page = await fresh('plan.html',seed(),{width,height:844}); await value(page,'#sheet-savings',BASE_MONEY);
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth+1));
-      // The planning estimate leads; the tuition-only comparison states its basis and limits without opening details.
+      // Phones keep the cost line in the glance ("Planning estimate $X–$Y · Before aid") and fold the full
+      // estimate behind it. Opened, the planning estimate leads; the tuition-only comparison states its basis
+      // and limits without opening further details.
+      const costFold = page.locator('[data-phone-fold="cost"]');
+      assert(await costFold.isVisible(),'The cost line stays visible on a phone');
+      assert.match(await costFold.innerText(),/Planning estimate \$[\d,]+–\$[\d,]+/);assert.match(await costFold.innerText(),/Before aid/);
+      assert.equal(await page.locator('#sheet-savings').isVisible(),false,'estimate details start folded on a phone');
+      await costFold.click();assert.equal(await costFold.getAttribute('aria-expanded'),'true');
       const estimate = page.locator('#sheet-planning-range .plan-estimate');
       assert(await estimate.isVisible(),'The planning estimate is visible on a phone');
       assert.match(await estimate.innerText(),/Before aid/);

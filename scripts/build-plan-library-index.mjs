@@ -32,14 +32,14 @@ export function questionsFor(findings){
   return [...new Set(out)];
 }
 
-export function buildIndex({registry,quality,estimates={},starts={}}){
+export function buildIndex({registry,quality,estimates={},starts={},pages=new Map()}){
   const byModel=new Map(quality.programs.map(p=>[p.modelId,p])),plans={};
   for(const model of registry.models){
     const report=byModel.get(model.id);
     if(!report||model.readyTemplate!==true||report.research?.status==='unavailable')continue;
     const reviewed=report.publication?.ready===true||report.research?.status==='research-ready';
     const questions=reviewed?[]:questionsFor(report.findings||[]);
-    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,level:levelOf(model.level),subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(starts[routeId]?{start:starts[routeId]}:{}),...(estimates[routeId]?{estimate:estimates[routeId]}:{})};
+    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,level:levelOf(model.level),subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(starts[routeId]?{start:starts[routeId]}:{}),...(estimates[routeId]?{estimate:estimates[routeId]}:{}),...(pages.has(routeId)?{page:pages.get(routeId)}:{})};
   }
   return {kind:'degreesteps-plan-library-index',version:1,registryRevision:quality.registryRevision,asOf:quality.asOf,subjects:Object.fromEntries(subjectAreas.map(s=>[s.id,s.label])),plans:Object.fromEntries(Object.entries(plans).sort(([a],[b])=>a.localeCompare(b)))};
 }
@@ -64,7 +64,9 @@ if(import.meta.url===`file://${process.argv[1]}`){
     if(estimate.status==='planning-range')estimates[baseline.pathwayId]={min:range.min,max:range.max};
     else if(estimate.status==='partial-range'){const used=[...new Set(plan.rows.map(row=>row.option?.provider).filter(provider=>provider&&provider!=='University'))];estimates[baseline.pathwayId]={min:range.min,max:range.max,partial:true,unpriced:used.filter(provider=>!priced.has(provider))};}
   }
-  const index=buildIndex({registry,quality:await read('dist/data/pathway-quality-report.json'),estimates,starts});
+  // The public, read-only plan page for routes that have one (finder "Just preview").
+  const {loadPublicPlans}=await import('./public-plan-pages.mjs'),pages=new Map((await loadPublicPlans(resolve(root,'dist'))).map(plan=>[plan.id,plan.path]));
+  const index=buildIndex({registry,quality:await read('dist/data/pathway-quality-report.json'),estimates,starts,pages});
   const text=JSON.stringify(index)+'\n',tiers=Object.values(index.plans).reduce((n,p)=>(n[p.tier]=(n[p.tier]||0)+1,n),{});
   if(process.argv.includes('--check')){let current='';try{current=await readFile(output,'utf8');}catch{}assert.equal(current,text,'dist/data/plan-library-index.json is stale; run node scripts/build-plan-library-index.mjs');}
   else await writeFile(output,text);

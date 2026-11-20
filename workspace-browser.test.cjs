@@ -164,6 +164,10 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     const card = page.locator('.pf-program').filter({hasNot:page.locator('[href$="usePlan='+PROGRAM+'"]')}).first();
     const target = new URL(await card.locator('.pf-open-plan').getAttribute('href'),BASE).searchParams.get('usePlan');
     await card.locator('.pf-open-plan').click();
+    // A student with a plan in progress is asked before See courses switches plans.
+    const confirm = page.locator('#program-switch-dialog');await confirm.waitFor();
+    assert.match(await confirm.innerText(),/Your current plan and courses stay saved\./);
+    await confirm.getByRole('link',{name:'Switch',exact:true}).click();
     await page.waitForURL(url=>url.pathname.endsWith('/plan.html'));await page.locator('tr.course-plan-row').first().waitFor();
     const after = await stored(page);
     assert.equal(after.selectedPathwayId,target);
@@ -194,14 +198,29 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     await nav(page,'plan').click();await planReady(page);
     }
   });
-  // Open UX question (reported, not decided here): the phone plan stacks the route, summary,
-  // estimate and next action above the course table, so the first course starts several screens down.
+  // Phones show a compact glance (headline numbers, cost line, next step, jump link) and fold the
+  // route, progress and estimate details, so the first course starts in the first screen.
   await test('phone plans show the first course in the initial viewport',async () => {
     for (const width of [390,320]) {
       const page = await fresh('plan.html',seed(),{width,height:844});await planReady(page);
       const first = await page.locator('tr.course-plan-row').first().boundingBox();
       assert(first.y<844,'At least one course should appear in the initial viewport (first course at y='+Math.round(first.y)+')');
     }
+  });
+  await test('phone plans keep the headline numbers and cost line visible and fold the route behind a disclosure',async () => {
+    const page = await fresh('plan.html',seed(),{width:390,height:844});const expected = await planReady(page);
+    const glance = page.locator('#sheet-glance');await glance.waitFor();
+    assert.match(await glance.innerText(),/Your degree: 120 credits/);
+    assert.match(await glance.locator('[data-phone-fold="cost"]').innerText(),/Planning estimate|Estimated|Total cost/);
+    assert.equal(await page.locator('#sheet-route').isVisible(),false);assert.equal(await page.locator('#sheet-next').isVisible(),false);
+    assert(await page.locator('.sheet-glance-next').isVisible(),'the next step stays visible in the glance');
+    const fold = glance.locator('[data-phone-fold="progress"]');await fold.click();
+    assert.equal(await fold.getAttribute('aria-expanded'),'true');assert(await page.locator('#sheet-route').isVisible());
+    await page.locator('#sheet-titlebar [data-jump-courses]').click();assert.equal(await page.evaluate(() => document.activeElement?.id),'sheet-grid');
+    assert.equal(await money(page),expected,'the folded estimate still holds the same figure');
+    const desktop = await fresh('plan.html');await planReady(desktop);
+    assert.equal(await desktop.locator('#sheet-glance').isVisible(),false);assert.equal(await desktop.locator('#sheet-titlebar [data-jump-courses]').isVisible(),false);
+    assert(await desktop.locator('#sheet-route').isVisible());assert(await desktop.locator('#sheet-next').isVisible());
   });
   assert.deepEqual(errors,[],'Workspace journeys must not throw browser exceptions');
   console.log('\n'+count+' refreshed workspace browser journeys passed.');

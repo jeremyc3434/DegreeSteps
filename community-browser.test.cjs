@@ -202,6 +202,23 @@ function whitelist(plan) {
       assert.equal((await good(anonymous, '/context?context=' + encodeURIComponent(SEED_CONTEXT))).upvotes, baseline.upvotes + 1);
     });
 
+    await journey('a question asked while viewing a plan is filed under that plan’s discussion and listed there', async () => {
+      await openStarter(alice);
+      await alice.page.locator('#new-community-plan').click(); const form = alice.page.locator('#community-post-form'); await form.waitFor({ state:'visible' });
+      assert.equal(await form.locator('[name=context]').inputValue(), SEED_CONTEXT, 'the composer files plan questions under the discussion context');
+      assert.equal(await form.locator('[name=context] option[value^="template:ready-"]').count(), 0);
+      const title = 'Plan question ' + RUN;
+      await form.locator('[name=title]').fill(title); await form.locator('[name=body]').fill('Does this plan accept recent exam credit?');
+      if (await form.locator('[name=consent]').count()) await form.locator('[name=consent]').check();
+      const published = postResponse(alice.page); await form.locator('[type=submit]').click();
+      const response = await published; assert.equal(response.status(), 201); const item = (await response.json()).item;
+      cleanup.push({ actor:alice, type:'posts', id:item.id });
+      assert.equal(response.request().postDataJSON().context, SEED_CONTEXT);
+      await openStarter(bob);
+      await bob.page.locator('#template-questions [data-post-id="' + item.id + '"]').waitFor({ state:'visible' });
+      assert.match(await bob.page.locator('#template-questions').innerText(), new RegExp(title));
+    });
+
     await journey('a real public post requires consent and publishes only the chosen alias and public text', async () => {
       await alice.page.goto(url('/community.html?tab=feed'), { waitUntil:'networkidle' });
       await alice.page.locator('#ask-community').click(); const form = alice.page.locator('#community-post-form'); await form.waitFor({ state:'visible' });

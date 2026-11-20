@@ -45,7 +45,8 @@ async function page(state = seed(), path = 'plan.html') {
   p.on('pageerror', error => errors.push(error.message));
   await p.goto(BASE + path, {waitUntil:'networkidle'});
   if (path.startsWith('portal.html')) await p.locator('#portal-question-title').waitFor();
-  else if (path.includes('task=credits')) await p.locator('#sheet-dialog [data-prior-choice="none"]').waitFor();
+  // The records task opens the upload page, which also offers the two past-course decisions.
+  else if (path.includes('task=credits')) {await p.waitForURL('**/import-courses.html?from=plan');await p.locator('[data-import-prior="later"]').waitFor();}
   else await readyPlan(p);
   return p;
 }
@@ -84,15 +85,17 @@ async function test(name, run) {
       assert.deepEqual((await saved(p)).learning, state.learning);
     }
   });
-  // Open question (reported): since plan.html?task=credits always redirects to the upload page,
-  // the "Have you finished any college courses?" dialog below (some / none / later) is unreachable.
+  // The records task redirects to the upload page, which offers all three past-course decisions:
+  // upload (or enter manually), "I don't have past college courses" and "I'll add them later".
   await test('zero, saved-only and in-progress collections all offer the three past-course decisions', async () => {
     for (const status of [null, 'saved', 'in-progress']) {
       const state = seed();
       if (status) state.learning = [record(status)];
-      const p = await page(state, 'plan.html?task=credits'), dialog = p.locator('#sheet-dialog');
-      assert.equal(await dialog.locator('[data-prior-choice]').count(), 3);
-      for (const choice of ['some', 'none', 'later']) assert(await dialog.locator('[data-prior-choice="' + choice + '"]').isVisible());
+      const p = await page(state, 'plan.html?task=credits');
+      assert(await p.locator('label[for="import-files"]').isVisible(), 'upload past courses');
+      assert(await p.getByRole('link', {name:'Enter it manually', exact:true}).isVisible());
+      assert(await p.getByRole('button', {name:'I don’t have past college courses', exact:true}).isVisible());
+      assert(await p.getByRole('button', {name:'I’ll add them later', exact:true}).isVisible());
       assert.equal(await p.locator('#sheet-learning-form').count(), 0);
       assert.deepEqual((await saved(p)).learning, state.learning);
     }
@@ -102,7 +105,7 @@ async function test(name, run) {
     const state = seed();
     state.learning = ['saved', 'planned', 'in-progress'].map(status => record(status));
     const p = await page(state, 'plan.html?task=credits'), before = await saved(p);
-    await p.locator('[data-prior-choice="none"]').click();
+    await p.locator('[data-import-prior="none"]').click();
     await p.waitForURL(BASE + 'plan.html');
     await readyPlan(p);
     const after = await saved(p);
@@ -122,7 +125,7 @@ async function test(name, run) {
   await test('Do this later records a waiting task and leaves the course plan provisional', async () => {
     const state = seed();state.learning = [record('saved')];
     const p = await page(state, 'plan.html?task=credits');
-    await p.locator('[data-prior-choice="later"]').click();
+    await p.locator('[data-import-prior="later"]').click();
     await p.waitForURL(BASE + 'plan.html');await readyPlan(p);
     const after = await saved(p);
     assert.equal(after.profile.hasPrior, 'unknown');
@@ -134,15 +137,17 @@ async function test(name, run) {
     assert.deepEqual(after.learning, state.learning);
   });
 
+  // Adding past courses is now the upload page itself (or its manual-entry link). Opening the form records
+  // nothing; the past-course answer follows from the records the student saves.
   await test('Add past courses opens the original-record form without awarding or deleting learning', async () => {
     const state = seed();state.learning = [record('saved')];
-    const p = await page(state, 'plan.html?task=credits');
-    await p.locator('[data-prior-choice="some"]').click();
+    const p = await page(state, 'plan.html?task=credits'), before = await saved(p);
+    await p.getByRole('link', {name:'Enter it manually', exact:true}).click();
     await p.locator('#sheet-learning-form').waitFor();
     assert(await p.locator('#sheet-learning-form').getByLabel('Original school or provider').isVisible());
     const after = await saved(p);
-    assert.equal(after.profile.hasPrior, 'some');
-    assert.equal(after.journey.creditsDeferred, true);
+    assert.equal(after.profile.hasPrior, before.profile.hasPrior);
+    assert.equal(after.journey.creditsDeferred, before.journey.creditsDeferred);
     assert.deepEqual(after.learning, state.learning);
     assert.equal(after.journey.planReviewed, false);
     assert.equal(after.journey.schoolContacted, false);
@@ -157,7 +162,7 @@ async function test(name, run) {
       state.sheet.notes['other-degree'].concurrent = 'Keep this newer private note';
       localStorage.setItem(key, JSON.stringify(state));
     }, {key:KEY, source:concurrent});
-    await p.locator('[data-prior-choice="none"]').click();
+    await p.locator('[data-import-prior="none"]').click();
     await p.waitForFunction(() => /completed learning/i.test(document.querySelector('#sheet-prior-error')?.textContent || ''));
     assert.equal(new URL(p.url()).searchParams.get('task'), 'credits');
     const after = await saved(p);
@@ -165,6 +170,14 @@ async function test(name, run) {
     assert.equal(after.sheet.notes['other-degree'].concurrent, 'Keep this newer private note');
     assert.equal(after.profile.hasPrior, 'unknown');
     assert(await p.locator('[data-prior-choice="none"]').isEnabled());
+  });
+
+  await test('a student with finished courses is not offered "I don’t have past college courses" on the upload page', async () => {
+    const state = seed();state.learning = [record('earned')];
+    const p = await page(state, 'plan.html?task=credits');
+    assert.equal(await p.locator('[data-import-prior="none"]').isVisible(), false);
+    assert(await p.locator('[data-import-prior="later"]').isVisible());
+    for (const width of [390, 320]) {await p.setViewportSize({width, height:844});assert(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));}
   });
 
   await test('deadline tasks prepare a specific school question with an official source and return to My plan', async () => {

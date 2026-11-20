@@ -19,3 +19,10 @@
  .pf-side button { max-width:none; flex:1 1 auto; font-size:16px; }
  .pf-presets button { font-size:14px; }
 }
+/* "See courses" confirmation when a student already has a plan with progress. */
+#program-switch-dialog { width:min(480px,calc(100% - 28px)); border:1px solid #d9e1ec; border-radius:8px; padding:24px; font-size:16px; color:#1c304e; }
+#program-switch-dialog::backdrop { background:rgb(14 28 49 / 38%); }
+#program-switch-dialog h2 { margin:0 0 8px; font-size:1.25rem; line-height:1.3; }
+#program-switch-dialog p { margin:0 0 18px; }
+#program-switch-dialog .pf-dialog-actions { display:flex; flex-wrap:wrap; gap:10px; }
+#program-switch-dialog .pf-button { min-height:44px; }

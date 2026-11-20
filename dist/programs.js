@@ -30,9 +30,31 @@ function details(id){
  $('program-dialog-content').innerHTML='<div class="pf-dialog-heading"><span class="pf-school">'+esc(p.school)+'</span><h2>'+esc(p.title)+'</h2><p>'+esc(levels[p.level]||p.level)+' · '+esc(pace(p))+'</p></div>'+(needsConfirmation(p)?'<section class="pf-confirm-detail"><h3>What still needs school confirmation</h3><ul>'+info(p).questions.map(q=>'<li>'+esc(q)+'</li>').join('')+'</ul><p>The course plan is complete, but these points are not yet confirmed in the school’s published rules. Ask the school about them before paying for outside courses.</p></section>':'')+P.detailsHTML(p,school)+'<p class="pf-map-note">Includes the full degree requirements. '+(choices>0?choices+' course choice'+(choices===1?'':'s')+' to make. ':'')+'Each course shows its degree placement and any specific conditions. Your college records the final credit award.</p><div class="pf-dialog-actions"><a class="pf-button pf-button-primary" data-choose-program href="'+esc(href)+'">Build this degree plan</a><a href="school.html?school='+encodeURIComponent(p.school)+'">Read about this school</a><a href="'+esc(p.url||school?.url)+'" target="_blank" rel="noopener">Official program source</a></div>';
  $('program-dialog').showModal();
 }
+// "See courses" makes that plan the active plan (the previous one is kept as a saved version). A student
+// who already has a plan with progress is asked first; first-time visitors keep the one-click path.
+const KEY='degreepath-guide-v3';
+function activePlan(){
+ try{const s=JSON.parse(localStorage.getItem(KEY)||'null'),id=s?.selectedPathwayId||s?.profile?.pathwayId;if(!s||typeof s!=='object'||s.sheet?.isExample||typeof id!=='string'||!id)return null;
+  const scenarios=s.scenarios&&typeof s.scenarios==='object'?Object.values(s.scenarios):[];
+  const progress=(Array.isArray(s.learning)&&s.learning.length>0)||scenarios.some(x=>x&&typeof x==='object'&&Object.keys(x.optionSelections||{}).length>0);
+  return progress?{id}:null;}catch{return null;}
+}
+function confirmSwitch(p,href){
+ restoreFocus=document.activeElement;const page=typeof info(p).page==='string'&&/^\/degree-plans\/[a-z0-9-]+\/$/.test(info(p).page)?info(p).page:'';
+ $('program-switch-content').innerHTML='<h2 id="program-switch-title">Switch your plan to '+esc(p.title)+'?</h2><p>Your current plan and courses stay saved.</p><div class="pf-dialog-actions"><a class="pf-button pf-button-primary" data-switch-plan href="'+esc(href)+'">Switch</a>'+(page?'<a class="pf-button" data-preview-plan href="'+esc(page)+'">Just preview</a>':'<button type="button" class="pf-button" data-preview-plan="'+esc(p.id)+'">Just preview</button>')+'</div>';
+ $('program-switch-dialog').showModal();$('program-switch-dialog').querySelector('[data-switch-plan]').focus();
+}
+document.addEventListener('click',e=>{
+ const open=e.target.closest('a.pf-open-plan');
+ if(open&&e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey){const p=rows.find(r=>r.id===open.closest('[data-program]')?.dataset.program),active=activePlan();if(!p||!active||active.id===p.id)return;e.preventDefault();confirmSwitch(p,open.getAttribute('href'));return;}
+ const preview=e.target.closest('button[data-preview-plan]');if(preview){const focus=restoreFocus;$('program-switch-dialog').close();details(preview.dataset.previewPlan);restoreFocus=focus;}
+});
+$('program-switch-dialog').addEventListener('close',()=>{if(!$('program-dialog').open)restoreFocus?.isConnected&&restoreFocus.focus({preventScroll:true});});
 function reset(){for(const id of['program-search','program-school','program-level','program-credit','program-subject','program-share','program-sort'])$(id).value='';$('program-confirm').checked=true;preset='all';limit=30;render();}
 $('program-filters').addEventListener('submit',e=>{e.preventDefault();limit=30;render();});
-for(const type of ['input','change'])$('program-filters').addEventListener(type,()=>{limit=30;render();});
+// The search box already re-renders on input; its change event fires on blur and would replace the
+// card a student is tapping, losing that tap.
+for(const type of ['input','change'])$('program-filters').addEventListener(type,e=>{if(type==='change'&&e.target?.id==='program-search')return;limit=30;render();});
 document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.preset){preset=b.dataset.preset;limit=30;render();}else if(b.dataset.programDetails)details(b.dataset.programDetails);else if(b.id==='program-more'){limit+=30;render();}else if(b.id==='program-reset')reset();else if(b.id==='program-dialog-close')$('program-dialog').close();});
 $('program-sort').addEventListener('change',()=>{limit=30;render();});
 $('program-dialog').addEventListener('close',()=>restoreFocus?.isConnected&&restoreFocus.focus({preventScroll:true}));

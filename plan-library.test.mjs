@@ -66,3 +66,15 @@ test('the generated hub ships every plan without JS and the library controls hid
   assert.match(html,/data-no-step-trail/,'the library uses its own sticky toolbar instead of the step trail');
   assert.match(html,/<script src="\/plan-library\.js" defer><\/script>/);
 });
+
+test('plan index preview pages point at existing public plan pages for published routes only',async()=>{
+  const {readFile,stat}=await import('node:fs/promises'),{resolve}=await import('node:path');
+  const index=JSON.parse(await readFile(resolve(import.meta.dirname,'dist/data/plan-library-index.json'),'utf8'));
+  const pages=Object.entries(index.plans).filter(([,entry])=>entry.page);
+  if(!pages.length)throw Error('expected at least one public preview page');
+  for(const [id,entry] of pages){
+    if(!/^\/degree-plans\/[a-z0-9-]+\/$/.test(entry.page))throw Error(id+' has an unsafe page path');
+    if(entry.published!==true)throw Error(id+' links a public page without being published');
+    await stat(resolve(import.meta.dirname,'dist'+entry.page+'index.html'));
+  }
+});
