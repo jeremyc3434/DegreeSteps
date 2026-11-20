@@ -9,7 +9,7 @@
   filter.disabled=false;filter.addEventListener('change',show);show();
  }
  const format=document.querySelector('[data-public-plan-format]');
- if(format){const cards=all('[data-plan-format]'),count=document.querySelector('[data-public-plan-count]');function show(){const value=['online','campus'].includes(format.value)?format.value:'all';let visible=0;for(const card of cards){card.hidden=value!=='all'&&card.dataset.planFormat!==value;if(!card.hidden)visible++;}if(count)count.textContent=visible+' course-plan preview'+(visible===1?'':'s')+'.';}format.disabled=false;format.addEventListener('change',show);show();}
+ if(format){const cards=all('[data-plan-format]'),count=document.querySelector('[data-public-plan-count]');function show(){const value=['online','campus'].includes(format.value)?format.value:'all';let visible=0;for(const card of cards){card.hidden=value!=='all'&&card.dataset.planFormat!==value;if(!card.hidden)visible++;}for(const group of all('[data-plan-group]'))group.hidden=[...group.querySelectorAll('[data-plan-format]')].every(card=>card.hidden);if(count)count.textContent=visible+' course-plan preview'+(visible===1?'':'s')+'.';}format.disabled=false;format.addEventListener('change',show);show();}
  for(const calculator of all('[data-subscription-calculator]')){
   const inputs=['monthly','months','extras'].map(name=>calculator.querySelector('[data-calc-'+name+']')),result=calculator.querySelector('[data-calc-result]');
   if(inputs.some(input=>!input)||!result)continue;
