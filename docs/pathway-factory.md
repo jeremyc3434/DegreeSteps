@@ -171,15 +171,14 @@ The result is written as `programs/<slug>.json` with `review.status: "draft"`, a
 
 Per school kit: directory programs (`dist/data/program-catalog.json`, same `schoolId`) with no kit program, and for each kit program the share of requirement credits covered by in-scope published rows, credits covered only by candidates, institution-only credits, open requirements, and "reuse candidates" (provider courses documented for the same receiving course in another program). WGU today: 47 of 66 directory programs have no kit; 32 cross-program reuse candidates exist among the 20 modeled programs.
 
-## Wiring the compiled output into the published pipeline (follow-up)
+## Publishing (WGU is live on the factory)
 
-This pass changes no published data. To replace `content/curricula/wgu.json` with the factory output:
+A school kit whose `school.json` has `publish.path` is the **source of truth** for that curriculum document. Since 2026-11-20 WGU publishes `content/curricula/wgu.json` from `content/pathway-kits/wgu`; `scripts/import-wgu-curricula.py` is retired.
 
-1. Make the kit the source of truth: stop running `scripts/import-wgu-curricula.py` (it writes `content/curricula/wgu.json`), or change it to write kit rows instead. Move its business-adapter packet logic (`content/reuse/wgu-business-awards.json`) into equivalency rows.
-2. Either have `npm run factory:compile -- wgu --out content/curricula` write `content/curricula/wgu.json` before `build-curriculum-registry.mjs` runs, or teach `build-curriculum-registry.mjs` to read `content/curricula/kits/*.json` in its document loop. Do not load both copies: the builder rejects duplicate model ids and route ids.
-3. `build-curriculum-registry.mjs` keeps applying its shared enrichment (course-listing identities, scoped notices) and its Liberty/GCU adapters; with exact model parity it receives identical WGU input, so no new special case is needed. New schools should only ever enter through kits so that the registry stops growing school-specific branches.
-4. Keep the Python WGU tests (`scripts/test_wgu_*.py`) and `dist/data/curricula/wgu.json` consumers pointed at the compiled output; with exact model parity their expectations are unchanged.
-5. Add `npm run factory:verify` to CI before the build, and make `pathway-factory.test.mjs` compare against the compiled file once `wgu.json` is retired.
+- Edit the kit, then run `npm run factory:publish`. `npm run build` runs `compile.mjs --publish --check` in place of the old importer and fails if the published file is stale.
+- After a publish, regenerate downstream artifacts in the usual order (`build-curriculum-registry.mjs`, `coverage:build`, research priorities, school batch) before `npm run build`.
+- `content/pathway-kits/<school>/guards.mjs` (optional) exports `checks`: school-specific academic invariants that run against every compiled document. WGU's guards carry the importer's key policy assertions: CU ledgers that balance, institution-only courses with no outside options, 75% ceilings from the program total, capstone residency, the reviewed Business Management pricing and residency basket, per-term pricing and option evidence.
+- `publish.sourceOrder` pins document source order. The registry copies document sources into each model, and source order is part of every published model fingerprint. Keeping it stable means saved student plans are not flagged as changed. The WGU switch left every publication fingerprint identical.
 
 ## Limitations
 

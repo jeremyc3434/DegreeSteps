@@ -22,7 +22,8 @@
     "factory:compile": "node scripts/pathway-factory/compile.mjs",
     "factory:report": "node scripts/pathway-factory/report.mjs",
     "factory:draft": "node scripts/pathway-factory/draft.mjs",
-    "factory:capture": "node scripts/pathway-factory/capture.mjs"
+    "factory:capture": "node scripts/pathway-factory/capture.mjs",
+    "factory:publish": "node scripts/pathway-factory/compile.mjs --publish"
   },
   "devDependencies": {
     "drizzle-kit": "0.31.10",

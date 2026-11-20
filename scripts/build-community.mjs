@@ -28,7 +28,8 @@ execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-psychology.mjs'
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-english.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-liberal-studies.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-gcu-curriculum.mjs'),'--check'],{cwd:root,stdio:'inherit'});
-execFileSync('python',[resolve(root,'scripts/import-wgu-curricula.py'),'--check'],{cwd:root,stdio:'inherit'});
+// Pathway Factory: published school kits (content/pathway-kits/*/school.json "publish") are the source of their content/curricula documents.
+execFileSync(process.execPath,[resolve(root,'scripts/pathway-factory/compile.mjs'),'--publish','--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-academic-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});

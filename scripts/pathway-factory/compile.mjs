@@ -1,6 +1,8 @@
 /** Kits -> curriculum documents in the existing content/curricula model schema. Deterministic: no clock reads. */
 import {resolve} from 'node:path';
-import {clone,list,slug,sourceRefs,awardFields,inScope,matchRequirement,rowStatus,programUnits,publishableReview,loadKit,kitDirs,resolveKitDir,writeJSON,parseArgs,isMain,root} from './lib.mjs';
+import {readFile,writeFile} from 'node:fs/promises';
+import {pathToFileURL} from 'node:url';
+import {clone,list,slug,sourceRefs,awardFields,inScope,matchRequirement,rowStatus,programUnits,publishableReview,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root} from './lib.mjs';
 import {verifyKit,formatFindings} from './verify.mjs';
 
 /** Fields that exist only in the kit (grounding/review metadata) and never enter a compiled model. */
@@ -63,9 +65,24 @@ export function compileKit(kit){
   list(kit.school.sources).forEach(add);
   for(const p of programs)list(p.sources).forEach(add);
   for(const provider of [...kit.providers.values()].sort((a,b)=>a.provider.localeCompare(b.provider)))for(const s of list(provider.sources))if(used.has(s.id))add(s);
+  // A pinned order keeps published model fingerprints stable (the registry copies document sources into each model).
+  const pinned=list(kit.school.publish?.sourceOrder);
+  if(pinned.length){const rank=new Map(pinned.map((id,i)=>[id,i]));sources.sort((a,b)=>(rank.get(a.id)??pinned.length)-(rank.get(b.id)??pinned.length));}
   const doc={version:1,checkedOn:kit.school.checkedOn,sources,models};
   if(kit.school.routes)doc.routes=clone(kit.school.routes);
   return {doc,skipped};
+}
+
+/** Serialization for published curriculum documents (the files the existing registry build reads). */
+export const serializePublished=doc=>JSON.stringify(doc,null,2)+'\n';
+/** Runs a school's optional guards.mjs (school-specific academic invariants) against its compiled document. */
+export async function runGuards(kit,doc){
+  const path=resolve(kit.dir,'guards.mjs');
+  if(!await exists(path))return 0;
+  const guards=await import(pathToFileURL(path).href);
+  const checks=list(guards.checks);
+  for(const check of checks)check(doc,kit);
+  return checks.length;
 }
 
 async function main(){
@@ -75,9 +92,20 @@ async function main(){
   for(const dir of dirs){
     const kit=await loadKit(dir),result=await verifyKit(kit,{asOf:args['as-of']});
     if(result.errors.length){console.error(formatFindings(kit,result));console.error(`Not compiled: ${kit.school.id} has ${result.errors.length} verification error(s).`);failed=true;continue;}
-    const {doc,skipped}=compileKit(kit),out=resolve(args.out||resolve(root,'content/curricula/kits'),kit.school.id+'.json');
+    const {doc,skipped}=compileKit(kit),guards=await runGuards(kit,doc);
+    const summary={school:kit.school.id,models:doc.models.length,options:doc.models.reduce((n,m)=>n+m.requirements.reduce((k,r)=>k+r.options.length,0),0),guards,skippedDrafts:skipped};
+    if(args.publish){
+      // Published kits are the source of truth for their content/curricula document.
+      if(!kit.school.publish?.path){continue;}
+      const out=resolve(root,kit.school.publish.path),text=serializePublished(doc);
+      if(args.check){const current=await exists(out)?await readFile(out,'utf8'):null;if(current!==text){console.error(`${kit.school.publish.path} is stale; run npm run factory:publish`);failed=true;continue;}}
+      else await writeFile(out,text);
+      console.log(JSON.stringify({...summary,published:kit.school.publish.path,check:Boolean(args.check)}));
+      continue;
+    }
+    const out=resolve(args.out||resolve(root,'content/curricula/kits'),kit.school.id+'.json');
     await writeJSON(out,doc);
-    console.log(JSON.stringify({school:kit.school.id,output:out.replace(root+'/',''),models:doc.models.length,options:doc.models.reduce((n,m)=>n+m.requirements.reduce((k,r)=>k+r.options.length,0),0),skippedDrafts:skipped}));
+    console.log(JSON.stringify({...summary,output:out.replace(root+'/','')}));
   }
   if(failed)process.exitCode=1;
 }

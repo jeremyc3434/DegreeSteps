@@ -1,4 +1,8 @@
-"""Compile reviewed WGU standard-path tables and current Sophia partnership facts.
+"""RETIRED as the WGU source of truth (2026-11-20). WGU curricula now compile from content/pathway-kits/wgu
+via `npm run factory:publish`; its invariants live in content/pathway-kits/wgu/guards.mjs. Kept for history and its
+Python unit tests; do not run it to regenerate content/curricula/wgu.json.
+
+Compile reviewed WGU standard-path tables and current Sophia partnership facts.
 
 Inputs are retained native-web extracts of official sources, not guessed curricula.
 The compiler checks row totals against an explicitly published total where present.

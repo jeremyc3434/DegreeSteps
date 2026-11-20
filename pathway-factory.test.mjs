@@ -6,7 +6,7 @@ import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
 import {readJSON,writeJSON,loadKit,clone,canonical,kitsRoot,root} from './scripts/pathway-factory/lib.mjs';
 import {decompose,compareDocs} from './scripts/pathway-factory/migrate-from-model.mjs';
-import {compileKit} from './scripts/pathway-factory/compile.mjs';
+import {compileKit,runGuards,serializePublished} from './scripts/pathway-factory/compile.mjs';
 import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 import {capture,htmlToText} from './scripts/pathway-factory/capture.mjs';
 import {draftProgram,API_URL,MODEL} from './scripts/pathway-factory/draft.mjs';
@@ -45,21 +45,30 @@ test('WGU decomposes into kits and compiles back to the exact same models',()=>{
   assert.equal(kit.programs.length,20);
 });
 
-test('committed WGU kit files are current, verify cleanly and compile deterministically to parity',async()=>{
+test('the WGU kit is the source of truth: it verifies, passes its guards and publishes exactly content/curricula/wgu.json',async()=>{
   const kit=await loadKit(join(kitsRoot,'wgu'));
-  const fresh=decompose(wgu,{schoolId:'wgu',sourcePath:'content/curricula/wgu.json'});
-  assert.deepEqual(kit.school,fresh.school,'school.json is regenerated from wgu.json');
-  assert.deepEqual(kit.equivalencies,fresh.equivalencies,'equivalencies.json is regenerated from wgu.json');
-  const bySlug=(a,b)=>a.slug.localeCompare(b.slug);
-  assert.deepEqual(kit.programs.map(({file,...p})=>p).sort(bySlug),[...fresh.programs].sort(bySlug),'program files are regenerated from wgu.json');
-  for(const[name,provider]of fresh.providers){const {file,...stored}=kit.providers.get(name);assert.deepEqual(stored,provider,name);}
+  assert.equal(kit.school.publish?.path,'content/curricula/wgu.json');
   const result=await verifyKit(kit,{asOf});
   assert.deepEqual(result.errors,[]);
   assert.ok(result.candidates.length>0&&result.candidates.every(c=>c.reason==='out-of-scope'&&c.documentedFor.length),'cross-program reuse stays an unapplied candidate');
   const first=compileKit(kit).doc,second=compileKit(await loadKit(join(kitsRoot,'wgu'))).doc;
-  assert.equal(JSON.stringify(first),JSON.stringify(second));
-  assertModelParity(wgu,first);
-  assert.deepEqual(compareDocs(wgu,first),[]);
+  assert.equal(JSON.stringify(first),JSON.stringify(second),'compilation is deterministic');
+  assert.equal(await runGuards(kit,first),7);
+  assert.equal(serializePublished(first),await readFile(resolve(root,'content/curricula/wgu.json'),'utf8'),'content/curricula/wgu.json is stale; run npm run factory:publish');
+  const fresh=compileKit(decompose(wgu,{schoolId:'wgu',sourcePath:'content/curricula/wgu.json'})).doc;
+  assertModelParity(first,fresh);
+});
+
+test('WGU guards reject academic regressions in a compiled document',async()=>{
+  const kit=await loadKit(join(kitsRoot,'wgu'));
+  const {doc}=compileKit(kit);
+  const broken=(mutate)=>{const copy=clone(doc);mutate(copy);return runGuards(kit,copy);};
+  const bsmgt=d=>d.models.find(m=>m.id==='curriculum-wgu-catalog-ecceaa488637ac83');
+  await assert.rejects(broken(d=>{const m=bsmgt(d),cap=m.requirements.find(r=>r.code==='QGT1');cap.options=[clone(m.requirements.find(r=>r.options.length).options[0])];}),/must stay at WGU/);
+  await assert.rejects(broken(d=>{bsmgt(d).externalMaxCredits=90;}),/75%/);
+  await assert.rejects(broken(d=>{bsmgt(d).pricing.oneTimeFees[0].frequency='per-term';}),/application fee|one-time/);
+  await assert.rejects(broken(d=>{bsmgt(d).requirements[0].credits+=1;}),/requirements total/);
+  await assert.rejects(broken(d=>{d.models[1].creditSystem='semester';}),/competency units/);
 });
 
 // ---------- Synthetic kit for the verification gates ----------
