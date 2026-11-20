@@ -1,5 +1,6 @@
 /** Loopback preview only. This file is never included in the production Worker. */
 import http from 'node:http';
+import { gzipSync } from 'node:zlib';
 import { handleCatalog } from './catalog.mjs';
 import { handleCurriculumDiscovery } from './curriculum-discovery.mjs';
 import { DatabaseSync } from 'node:sqlite';
@@ -64,7 +65,10 @@ const server=http.createServer(async(req,res)=>{
     try{if((await stat(path)).isDirectory()){res.writeHead(308,{Location:target.pathname+'/'+target.search});res.end();return;}}catch{}
     if(!path.startsWith(staticRoot+sep)){res.writeHead(404);res.end();return;}
     if(!(await stat(path)).isFile())throw Error('Not a file');
-    res.writeHead(200,{'Content-Type':mime[path.split('.').pop()]||'application/octet-stream','Cache-Control':'no-store'});res.end(req.method==='HEAD'?undefined:await readFile(path));
+    // Compress text like the production asset host does, so preview download sizes and timings are realistic.
+    const type=mime[path.split('.').pop()]||'application/octet-stream',zip=/^(text\/|application\/(json|javascript))/.test(type)&&/\bgzip\b/.test(req.headers['accept-encoding']||'');
+    const body=req.method==='HEAD'?undefined:zip?gzipSync(await readFile(path),{level:6}):await readFile(path);
+    res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store',...(zip?{'Content-Encoding':'gzip',Vary:'Accept-Encoding'}:{})});res.end(body);
   }catch(error){if(!res.headersSent)res.writeHead(error?.code==='ENOENT'?404:500,{'Content-Type':'text/plain'});res.end('Preview request unavailable.');}
 });
 server.listen(port,'127.0.0.1',()=>console.log('DegreeSteps preview: http://127.0.0.1:'+port+'/ (local SQLite and loopback-only test sign-in)'));

@@ -41,3 +41,16 @@ Recruit adults actually considering a degree: at least one with prior college cr
 6. "Send this list to a friend." — Watch: copy link.
 
 After each session record: task success (yes / with help / no), time, the exact words they used when confused, and a 1–5 confidence rating for "I know what to do next". Fix anything that blocks two or more participants before launch.
+
+## Round 6 follow-up (2026-11-20)
+
+Fixed after the round-6 walkthrough:
+
+- **Guided planner → worksheet credits agree end to end.** The screen between a guided card and the worksheet now quotes the starting route for a new visitor ("78 proposed transfer credits on this plan’s starting route" for Excelsior Psychology, previously 75). Card, preview and worksheet now read 78 / 78 / 78 (Excelsior), 78 / 78 / 78 (Liberty) and 72 / 72 / 72 (TESU).
+- **Worksheet cost wording matches the finder.** Plans awaiting confirmation with no reviewed estimate (e.g. TESU B.A. Psychology) show "Cost needs confirmation"; the older savings figure stays below it, labelled "Tuition-only comparison".
+- **Finder cards keep published tuition** when no full estimate exists (e.g. Phoenix: "$2,749 per 12 weeks · Published tuition only · full cost needs confirmation").
+- **Credits page speed.** Production already serves data pre-compressed (`worker/index.mjs`); the local preview did not, which made the slow-network test look far worse. The preview now compresses JSON, JS, CSS and HTML like production. Fast 3G time to first results after adding one course: 186 s → 15 s (wgu.json 4.7 MB → 0.49 MB on the wire).
+
+Checked and not a bug: Sophia Introduction to Psychology does not count toward TESU B.A. Psychology because TESU's sourced plan lists PSY-1010 as a TESU course only. A Sophia match would need a published TESU source first.
+
+Still open (P3): highlight the courses replaced after a provider change; "Fewest credits left" needs a degree-level filter; `programs-browser.test.cjs` expects every directory school in the finder's school list, and fails the same way on the code from before this work.

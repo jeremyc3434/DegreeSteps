@@ -293,7 +293,10 @@ test('a late estimate for an old degree cannot appear in the replacement plan’
  let release;const pending=new Promise(resolve=>release=resolve),ui=mount({trackerResult:{available:false},fetcher:url=>url==='data/plan-estimate-rates.json'?pending:null});
  await ui.settle();const route=data.catalog.pathways.find(route=>route.modelId==='tesu-general-management'),current=ui.api.getDraft().state,preferences=copy(current);preferences.profile.modality='online';preferences.profile.classroomImportance='open';const next=Journey.selectRoute(preferences,route,data.catalog);Object.assign(current,next);ui.api.render();await ui.settle();
  release({ok:true,json:async()=>require('./dist/data/plan-estimate-rates.json')});await ui.settle();await ui.settle();
- assert.equal(ui.draft().program.id,'tesu-general-management');assert.equal(ui.node('sheet-savings-tracker').innerHTML,'Existing savings result');assert.doesNotMatch(ui.node('sheet-planning-range').innerHTML,/plan-estimate/);assert.equal(ui.node('sheet-planning-range').hidden,true);assert.equal(ui.trackerCalls.filter(call=>call.id==='sheet-savings-tracker').at(-1).options.secondary,false);
+ assert.equal(ui.draft().program.id,'tesu-general-management');assert.equal(ui.node('sheet-savings-tracker').innerHTML,'Existing savings result');assert.doesNotMatch(ui.node('sheet-planning-range').innerHTML,/plan-estimate/);
+ // The replacement is a plan awaiting school confirmation with no reviewed estimate: it says so, as the finder does,
+ // and the tuition comparison below is labelled tuition-only.
+ assert.match(ui.node('sheet-planning-range').innerHTML,/Cost needs confirmation/);assert.equal(ui.trackerCalls.filter(call=>call.id==='sheet-savings-tracker').at(-1).options.secondary,true);
 });
 
 

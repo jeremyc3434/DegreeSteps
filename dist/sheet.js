@@ -254,13 +254,16 @@
       // published rates, it is the headline (as on plan pages, the finder and the planner). The
       // older tuition-savings comparison stays below it, labelled as tuition-only.
       const slots=savingsSlots(main),ticket=++savingsTicket,view=window.DegreePlanEstimateView,simple=simplePlan();
-      const show=estimate=>{
+      // pending: no shared estimate exists at published rates, so the finder and cards say the cost needs confirmation;
+      // the worksheet says the same and keeps the tuition comparison below it, labelled as tuition-only.
+      const show=(estimate,pending=false)=>{
         if(ticket!==savingsTicket||!currentEstimate(draft,main))return;
-        const shared=Boolean(view?.available(estimate));
-        slots.range.innerHTML=shared?view.render(estimate,{compact:true}):'';slots.range.hidden=!shared;main.classList.toggle('has-planning-range',shared);
-        window.DegreeSavingsTracker.update(slots.savings,state,draft,{onChange,simple,secondary:shared});
+        const shared=Boolean(view?.available(estimate)),confirm=!shared&&pending;
+        slots.range.innerHTML=shared?view.render(estimate,{compact:true}):confirm?'<div class="sheet-cost-confirm"><p class="savings-label">Total cost</p><p><strong>Cost needs confirmation</strong></p><p class="savings-simple-basis">No reviewed planning estimate exists for this plan yet. Ask the school for its current tuition and fees.</p></div>':'';
+        slots.range.hidden=!shared&&!confirm;main.classList.toggle('has-planning-range',shared||confirm);
+        window.DegreeSavingsTracker.update(slots.savings,state,draft,{onChange,simple,secondary:shared||confirm});
       };
-      if(!view||view.hasPersonalAssumptions(personalEstimateSettings(draft)))show(null);else void researchedEstimate(draft).then(show,()=>show(null));
+      if(!view||view.hasPersonalAssumptions(personalEstimateSettings(draft)))show(null);else void Promise.all([researchedEstimate(draft),loadPlanIndex()]).then(([estimate,index])=>{const entry=index?.plans?.[pathway?.id];show(estimate,Boolean(entry&&!entry.estimate));},()=>show(null));
     }
     if (!dialog.hidden) {
       // The tray header follows the same rule: the shared range when it exists, never a contradicting 'pending' message.

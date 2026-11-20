@@ -473,6 +473,12 @@
   }
   // Guided builds start from the same published starting route as the finder and plan pages when the student
   // has no saved course choices for that degree. Saved choices and course sources are never overridden.
+  // A new visitor opens a plan on its starting route (see seedStartingRoute), so the preview quotes the same credits as the card and worksheet.
+  function startingCredits(route){
+    const model=(models||[]).find(item=>item.id===route?.modelId),saved=model&&state.scenarios?.[model.id],outside=planIndex?.plans?.[route?.id]?.start?.outside;
+    if(!model||route.id==='gcu-bsba-campus'||(state.learning||[]).length||state.profile?.proctoringPreference==='avoid'||Array.isArray(saved?.providers)||Object.keys(saved?.optionSelections||{}).length)return null;
+    return Number.isFinite(outside)&&outside>=0?outside:null;
+  }
   async function seedStartingRoute(next,route) {
     const model=models.find(item=>item.id===route?.modelId);
     if(!model||route.id==='gcu-bsba-campus'||Object.keys(next.scenarios?.[model.id]?.optionSelections||{}).length)return next;
@@ -583,7 +589,7 @@
     if(!mapped&&!needsReview&&activePlanState&&target.confirmUnmappedReplacement){
       return '<article class="portal-readiness-card"><span class="portal-readiness-label">Course plan not available</span><h2>Save this goal instead?</h2><p><strong>'+esc(title)+'</strong> at '+esc(school)+' does not have a course-by-course transfer plan yet.</p><p>This will replace '+esc(activePlanState.profile.degree||'your current degree')+' as your active goal. Your courses and notes stay saved.</p><div class="portal-actions">'+button('keep-active-plan','Back to my plan')+button('confirm-unmapped-replacement','Save this goal instead',true)+'</div></article><div class="portal-links">'+button('degree-search','Choose another degree',true)+'</div>';
     }
-    const note=error||(proposed?.targetReviewNeeded?'This degree does not match your saved career or study preferences.':hasMap&&!mapped?(proposed?.targetUnknowns||[]).map(issue=>issue.title+'.').join(' ')||'Review the missing program details before building this course plan.':mapped?proposed.plan.coverage.mappedExternalCredits+' proposed transfer credits with your current planner settings. Course sources and priorities can change this.'+(DegreeProgramCatalog.planChoiceCount(route,catalog,models)>0?' '+DegreeProgramCatalog.planChoiceCount(route,catalog,models)+' course choices to make.':''):'No course-by-course transfer plan is available for this degree yet.');
+    const note=error||(proposed?.targetReviewNeeded?'This degree does not match your saved career or study preferences.':hasMap&&!mapped?(proposed?.targetUnknowns||[]).map(issue=>issue.title+'.').join(' ')||'Review the missing program details before building this course plan.':mapped?(startingCredits(route)!==null?startingCredits(route)+' proposed transfer credits on this plan’s starting route. Your courses, course sources and priorities can change this.':proposed.plan.coverage.mappedExternalCredits+' proposed transfer credits with your current planner settings. Course sources and priorities can change this.')+(DegreeProgramCatalog.planChoiceCount(route,catalog,models)>0?' '+DegreeProgramCatalog.planChoiceCount(route,catalog,models)+' course choices to make.':''):'No course-by-course transfer plan is available for this degree yet.');
     const actions=formatOnly?'<button class="portal-primary" type="button" data-variant-preview="'+esc(route.id)+'">Use '+(route.modalities.includes('online')?'online':'on-campus')+' study</button>':needsReview?button('change-preferences','Update my preferences'):!mapped&&activePlanState?button('keep-active-plan','Back to my plan')+button('request-unmapped-replacement','Save this goal instead',true):button('use-degree',mapped?'Build course plan':'Save goal');
     const opportunitySchool=window.DegreeProgramOpportunities?.schoolFor(catalog,route),programFacts=opportunitySchool?DegreeProgramOpportunities.detailsHTML(route,opportunitySchool):'';
     const formatNote=mapped&&proposed.targetUnknowns?.some(issue=>issue.field==='modality')?'<p class="portal-hint" role="note">Confirm this degree’s study format with the university before enrolling.</p>':'';
