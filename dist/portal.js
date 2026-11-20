@@ -481,6 +481,12 @@
           if(Array.isArray(next.scenarios?.[model.id]?.providers)){
             if(selectedProviders.some(provider=>!scenario.providers.includes(provider))){state=beforeState;throw Error('The saved course choices use a source you turned off. Review your course sources before opening this plan. Your existing plan is still saved.');}
           }else scenario.providers=[...new Set([...scenario.providers,...selectedProviders])];
+        }else if(!Array.isArray(next.scenarios?.[model.id]?.providers)){
+          // Without saved course-source choices, include every provider the starting route actually selects
+          // (e.g. StraighterLine), so the worksheet opens with the same credits as the published route.
+          // Saved choices are never overridden; the worksheet then plans within them.
+          const selectedProviders=[...new Set(model.requirements.flatMap(req=>req.options.filter(option=>selections[req.id]===option.id).map(option=>option.provider)).filter(provider=>provider&&provider!=='University'))];
+          scenario.providers=[...new Set([...scenario.providers,...selectedProviders])];
         }
         next.scenarios={...next.scenarios,[model.id]:{...scenario,optionSelections:selections}};
       }else if(reviewedRoute(route)||route.id==='gcu-bsba-campus'&&model.id==='curriculum-gcu-bsba-campus'){state=beforeState;throw Error('The saved course choices are temporarily unavailable. Your current plan is still saved.');}
@@ -535,17 +541,20 @@
     if(!bound||!['subscription','per-term','per-semester'].includes(pricing.model)||!knownEstimate(pricing.amount)||pricing.amount===0)return '';
     return dollars(pricing.amount)+' / '+(pricing.period||'term');
   }
+  let planIndex=null;
   function routeCard(result,scenario=null,secondary=false) {
     const r=result.pathway,modeled=routeHasMap(r),choiceCount=DegreeProgramCatalog.planChoiceCount(r,catalog,result.model?[result.model]:models),format=(r.modalities||[]).map(m=>m==='campus'?'On campus':'Online').join(' / '),summary=scenario?.summary||scenario;
     let plan=scenario?.draft?.plan,credits='';
     const mapped=knownEstimate(summary?.mappedExternalCredits)?summary.mappedExternalCredits:plan?.coverage?.mappedExternalCredits;
     if(knownEstimate(mapped))credits=mapped+' proposed transfer '+(summary?.creditSystem==='competency-unit'||plan?.creditSystem==='competency-unit'||scenario?.draft?.program?.creditSystem==='competency-unit'||result.model?.creditSystem==='competency-unit'?'competency units':'credits');
     const amount=knownEstimate(summary?.remainingCost)?summary.remainingCost:knownEstimate(summary?.estimatedBaseCost)?summary.estimatedBaseCost:null;
-    const rate=amount===null?publishedRate(scenario?.draft?.program||result.model):'';
-    const cost=amount===null?(rate?'<div><dt>Published university rate</dt><dd>'+esc(rate)+'</dd></div>':''):'<div><dt>'+ (knownEstimate(summary?.remainingCost)?'Remaining cost estimate':'Tuition + courses estimate')+'</dt><dd>'+esc(dollars(amount))+'</dd></div>';
+    // One shared planning range (tuition, fees and outside courses) — the same figure the plan pages and finder show.
+    const shared=planIndex?.plans?.[r.id]?.estimate,sharedRange=shared&&knownEstimate(shared.min)&&knownEstimate(shared.max)?dollars(shared.min)+'–'+dollars(shared.max):'',hasPersonalCost=knownEstimate(summary?.remainingCost);
+    const rate=amount===null&&!sharedRange?publishedRate(scenario?.draft?.program||result.model):'';
+    const cost=hasPersonalCost?'<div><dt>Your remaining cost estimate</dt><dd>'+esc(dollars(summary.remainingCost))+'</dd></div>'+(sharedRange?'<div><dt>Full-route planning estimate</dt><dd>'+esc(sharedRange)+'</dd></div>':''):sharedRange?'<div><dt>Planning estimate</dt><dd>'+esc(sharedRange)+'</dd></div>':amount===null?(rate?'<div><dt>Published university rate</dt><dd>'+esc(rate)+'</dd></div>':''):'<div><dt>Tuition + courses estimate</dt><dd>'+esc(dollars(amount))+'</dd></div>';
     const timing=knownEstimate(summary?.estimatedWeeks)?'<div><dt>Estimated study time</dt><dd>'+esc(summary.estimatedWeeks)+' weeks</dd></div>':'';
     const fit=knownEstimate(summary?.collectionFitCredits)&&summary.collectionFitCredits>0?'<span>'+esc(summary.collectionFitCredits)+' '+(summary.creditSystem==='competency-unit'||scenario?.draft?.program?.creditSystem==='competency-unit'||result.model?.creditSystem==='competency-unit'?'competency units':'credits')+' fit from My courses</span>':'';
-    const estimate=cost||timing?'<dl class="portal-route-estimates">'+cost+timing+'</dl><p class="portal-estimate-note">Planning estimates before financial aid.'+(rate?' Total depends on paid terms needed.':cost&&!knownEstimate(summary?.remainingCost)?' Fees and other extras are excluded.':'')+(timing?' Admissions and transfer processing are separate.':'')+'</p>':'';
+    const estimate=cost||timing?'<dl class="portal-route-estimates">'+cost+timing+'</dl><p class="portal-estimate-note">Planning estimates before financial aid.'+(hasPersonalCost?' Your remaining cost uses the courses you have already added.':'')+(sharedRange?' The planning estimate covers tuition, listed fees and outside courses, as on the plan page.':rate?' Total depends on paid terms needed.':cost&&!hasPersonalCost?' Fees and other extras are excluded.':'')+(timing?' Admissions and transfer processing are separate.':'')+'</p>':'';
     const personal=DegreeGuide.preferenceFit?DegreeGuide.preferenceFit(state.profile,r,result.model,catalog.campusFacts):{badges:[],reasons:[]};
     const badges=personal.badges.length?'<div class="portal-personal-badges" aria-label="Study and campus features">'+personal.badges.slice(0,3).map(badge=>badge.sourceUrl?'<a href="'+esc(badge.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(badge.label)+'</a>':'<span>'+esc(badge.label)+'</span>').join('')+'</div>':'';
     const why=personal.reasons.length?'<details class="portal-fit-reasons"><summary>Why this fits your preferences</summary><ul>'+personal.reasons.map(reason=>'<li>'+esc(reason)+'</li>').join('')+'</ul></details>':'';
@@ -935,6 +944,8 @@
   async function boot() {
     try {
       const response=await fetch('data/pathways.json');if(!response.ok)throw Error('We couldn’t load the degree research.');catalog=await response.json();models=[];
+      // Shared planning estimates are an enhancement; route cards fall back to their own figures without them.
+      try{const response=await fetch('data/plan-library-index.json');if(response.ok)planIndex=await response.json();}catch{planIndex=null;}
       try{const response=await fetch('data/campus-facts.json');if(response.ok){const facts=await response.json();if(Array.isArray(facts.campuses))catalog.campusFacts=facts;}}catch{/* Campus facts can be absent without claiming a campus preference match. */}
       try {catalog=await DegreeProgramCatalog.load(catalog);} catch {announce('The full program directory could not load. You can still enter your exact degree.');}
       models=DegreeProgramCatalog.loadModels?await DegreeProgramCatalog.loadModels([]):await Promise.all(DegreeProgramCatalog.modelFiles.map(async url=>{const response=await fetch(url);if(!response.ok)throw Error('We couldn’t load the degree research.');return response.json();}));
