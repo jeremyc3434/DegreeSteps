@@ -4,6 +4,7 @@ import {resolve} from 'node:path';
 import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
 import {icon,schoolMarkHTML,creditSplit} from './public-visuals.mjs';
+import {subjectAreas,subjectsFor} from './subject-areas.mjs';
 
 const require=createRequire(import.meta.url);
 const Planner=require('../dist/planner.js');
@@ -98,8 +99,22 @@ export async function removeObsoletePreviews(dist,plans){
 const schoolShort=school=>({'Western Governors University':'WGU','Liberty University':'Liberty','Thomas Edison State University':'TESU','University of Maine at Presque Isle':'UMPI','Grand Canyon University':'GCU'})[school]||school;
 const share=plan=>Math.round(plan.outside/plan.total*100);
 function formatChip(plan){return '<span class="ds-chip ds-chip-format">'+icon(plan.format==='Online'?'online':'campus','ds-chip-icon')+esc(plan.format)+'</span>';}
+const levelOf=plan=>{const v=String(plan.model?.level||'').toLowerCase();return /associate/.test(v)?'associate':/master/.test(v)?'master':/doctor/.test(v)?'doctorate':/bachelor/.test(v)?'bachelor':'';};
+const levelLabel={associate:'Associate',bachelor:'Bachelor’s',master:'Master’s',doctorate:'Doctoral'};
+const paceOf=plan=>/self|competency|subscription/i.test(plan.model?.paceModel||'')?'self-paced':'';
+const costRange=plan=>{const r=plan.estimate?.costs?.knownRange;return r&&Number.isFinite(r.min)&&Number.isFinite(r.max)&&r.min>0?r:null;};
+const money=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
+/** Facts the plan library filters and sorts on, kept on each card as data attributes. */
+export function planFacets(plan){
+ const range=costRange(plan);
+ return {format:plan.format==='Online'?'online':'campus',subjects:subjectsFor(plan.degree||plan.shortTitle),level:levelOf(plan),pace:paceOf(plan),school:plan.school,share:share(plan),cost:range?range.min:null,title:plan.shortTitle};
+}
 /** One reviewed route as a card: a credit-split bar with its visible numbers as the text equivalent. */
-export function renderPlanCard(plan,{heading='h2',showSchool=true}={}){return '<article class="public-plan-card" data-plan-format="'+(plan.format==='Online'?'online':'campus')+'"><div class="public-plan-card-top">'+(showSchool?schoolMarkHTML(plan.school,'ds-school-mark ds-school-mark-sm')+'<p class="public-plan-card-school">'+esc(plan.school)+'</p>':'')+formatChip(plan)+'</div><'+heading+'><a href="'+esc(plan.path)+'">'+esc(plan.shortTitle)+'</a></'+heading+'>'+creditSplit({outside:plan.outside,university:plan.university,total:plan.total,schoolLabel:schoolShort(plan.school),unit:plan.unit})+'<p class="public-plan-card-share"><strong>'+share(plan)+'%</strong> of the degree proposed through outside courses <span>· '+esc(plan.unit)+'</span></p><a class="public-plan-card-link" href="'+esc(plan.path)+'">See the course plan'+icon('arrow','ds-link-arrow')+'</a></article>';}
+export function renderPlanCard(plan,{heading='h2',showSchool=true}={}){
+ const f=planFacets(plan),range=costRange(plan);
+ const data=' data-plan-format="'+f.format+'" data-plan-subjects="'+esc(f.subjects.join(' '))+'" data-plan-level="'+f.level+'" data-plan-pace="'+f.pace+'" data-plan-school="'+esc(f.school)+'" data-plan-share="'+f.share+'"'+(f.cost!==null?' data-plan-cost="'+f.cost+'"':'')+' data-plan-title="'+esc(f.title)+'"';
+ return '<article class="public-plan-card"'+data+'><div class="public-plan-card-top">'+(showSchool?schoolMarkHTML(plan.school,'ds-school-mark ds-school-mark-sm')+'<p class="public-plan-card-school">'+esc(plan.school)+'</p>':'')+formatChip(plan)+'</div><'+heading+'><a href="'+esc(plan.path)+'">'+esc(plan.shortTitle)+'</a></'+heading+'>'+creditSplit({outside:plan.outside,university:plan.university,total:plan.total,schoolLabel:schoolShort(plan.school),unit:plan.unit})+'<p class="public-plan-card-share"><strong>'+share(plan)+'%</strong> of the degree proposed through outside courses <span>· '+esc(plan.unit)+'</span></p>'+(range?'<p class="public-plan-card-cost">Planning estimate <strong>'+money(range.min)+'–'+money(range.max)+'</strong> <span>before aid</span></p>':'')+'<a class="public-plan-card-link" href="'+esc(plan.path)+'">See the course plan'+icon('arrow','ds-link-arrow')+'</a></article>';
+}
 
 function entryRow(entry,plan){
  const atSchool=entry.provider==='University',requirement=entry.requirements.map(req=>'<span><strong>'+esc(req.code||'Degree requirement')+'</strong> '+esc(req.title)+'</span>').join('');
@@ -133,7 +148,33 @@ export function renderPublicPlanHub(plans){
  const ordered=[...groups].sort(([a,x],[b,y])=>y.length-x.length||a.localeCompare(b));
  const top=plans.reduce((best,plan)=>share(plan)>share(best)?plan:best,plans[0]);
  const formats=list=>[...new Set(list.map(plan=>plan.format))].join(' & ');
- const groupHTML=([school,list],index)=>'<section class="plan-school-group" data-plan-group aria-labelledby="plan-school-'+index+'"><header class="plan-school-head">'+schoolMarkHTML(school)+'<div><h2 id="plan-school-'+index+'">'+esc(school)+'</h2><p>'+list.length+' researched plan'+(list.length===1?'':'s')+' · '+esc(formats(list))+' · '+esc([...new Set(list.map(plan=>plan.unit))].join(', '))+'</p></div></header><div class="public-plan-cards">'+[...list].sort((a,b)=>a.shortTitle.localeCompare(b.shortTitle)).map(plan=>renderPlanCard(plan,{heading:'h3',showSchool:false})).join('')+'</div></section>';
+ const facets=plans.map(planFacets);
+ const groupHTML=([school,list],index)=>'<section class="plan-school-group" data-plan-group="'+esc(school)+'" aria-labelledby="plan-school-'+index+'"><header class="plan-school-head">'+schoolMarkHTML(school)+'<div><h2 id="plan-school-'+index+'">'+esc(school)+'</h2><p>'+list.length+' researched plan'+(list.length===1?'':'s')+' · '+esc(formats(list))+' · '+esc([...new Set(list.map(plan=>plan.unit))].join(', '))+'</p></div></header><div class="public-plan-cards">'+[...list].sort((a,b)=>a.shortTitle.localeCompare(b.shortTitle)).map(plan=>renderPlanCard(plan,{heading:'h3'})).join('')+'</div></section>';
  const key=top?'<aside class="plan-hub-key" aria-label="How to read each plan"><p class="plan-hub-key-label">How to read a plan</p>'+creditSplit({outside:top.outside,university:top.university,total:top.total,schoolLabel:schoolShort(top.school),unit:top.unit,className:'ds-split-dark ds-split-large'})+'<p class="plan-hub-key-note"><span class="ds-swatch ds-swatch-outside" aria-hidden="true"></span>Outside courses: Sophia, Study.com and other proposed sources. <span class="ds-swatch ds-swatch-school" aria-hidden="true"></span>Coursework at the university.</p><p class="plan-hub-key-example">Example: '+esc(top.school)+' '+esc(top.shortTitle)+' · '+esc(top.format)+'</p></aside>':'';
- return '<section class="site-container page-intro ds-rail-intro plan-hub-intro"><div class="ds-rail-copy"><p class="ds-step-kicker">Step 1 · Pick a starting route</p><h1>A real course plan. A clearer way forward.</h1><p class="page-lede">Open a researched route, see the outside courses and university work, then make it fit your own starting point.</p><p>These previews have complete, source-backed course selections. More available templates are inside the planner.</p><ul class="plan-hub-stats"><li><strong>'+plans.length+'</strong> complete plans</li><li><strong>'+groups.size+'</strong> universities</li>'+(top?'<li><strong>Up to '+share(top)+'%</strong> through outside courses</li>':'')+'</ul><label class="public-plan-hub-filter"><span>Where would you study?</span><select data-public-plan-format disabled><option value="all">Online or on campus</option><option value="online">Online</option><option value="campus">On campus</option></select></label><p data-public-plan-count role="status" aria-live="polite"></p></div>'+key+'</section><div class="site-container plan-hub-groups">'+ordered.map(groupHTML).join('')+'</div><section class="site-container final-cta"><div><h2>Looking for another degree?</h2><p>Browse all available templates, bring your own courses, or research a specific university degree.</p></div><div><a class="site-button" href="/programs.html">Browse available plans</a><a class="text-link" href="/import-courses.html">Use my past courses</a></div></section>';
+ const count=(field,value)=>facets.filter(f=>Array.isArray(f[field])?f[field].includes(value):f[field]===value).length;
+ const chip=(name,value,label,n)=>'<label class="plan-chip"><input type="checkbox" name="'+name+'" value="'+esc(value)+'"><span>'+esc(label)+'</span><small data-facet-count>'+n+'</small></label>';
+ const group=(legend,name,options)=>options.length<2&&name!=='subject'?'':'<fieldset class="plan-facet" data-facet="'+name+'"><legend>'+legend+'</legend><div class="plan-chips">'+options.map(([value,label])=>chip(name,value,label,count(name==='subject'?'subjects':name,value))).join('')+'</div></fieldset>';
+ const subjects=subjectAreas.filter(subject=>count('subjects',subject.id)).map(subject=>[subject.id,subject.label]);
+ const levels=['associate','bachelor','master','doctorate'].filter(level=>count('level',level)).map(level=>[level,levelLabel[level]]);
+ const schools=ordered.map(([school])=>[school,school]);
+ const formatsOpt=[['online','Online'],['campus','On campus']].filter(([value])=>count('format',value));
+ const pace=count('pace','self-paced')?'<fieldset class="plan-facet" data-facet="pace"><legend>Pace</legend><div class="plan-chips">'+chip('pace','self-paced','Self-paced',count('pace','self-paced'))+'</div></fieldset>':'';
+ const shareOpt=[[0,'Any'],[50,'50%+'],[60,'60%+'],[70,'70%+']];
+ const shareGroup='<fieldset class="plan-facet" data-facet="share"><legend>Outside credit</legend><div class="plan-segment">'+shareOpt.map(([value,label],i)=>'<label><input type="radio" name="share" value="'+value+'"'+(i===0?' checked':'')+'><span>'+label+'</span></label>').join('')+'</div></fieldset>';
+ const library='<section class="site-container plan-library" data-plan-library data-no-step-trail aria-label="Degree plan library">'+
+  '<div class="plan-library-bar" data-plan-toolbar hidden><div class="plan-library-bar-inner">'+
+   '<label class="plan-library-search">'+icon('search','plan-library-search-icon')+'<span class="sr-only">Search plans</span><input type="search" data-plan-search placeholder="Search by degree, school or subject" autocomplete="off"></label>'+
+   '<label class="plan-library-sort"><span>Sort</span><select data-plan-sort><option value="outside">Most outside credit</option><option value="cost">Lowest estimate</option><option value="az">Degree A–Z</option><option value="school">By school</option></select></label>'+
+   '<button type="button" class="plan-library-toggle" data-plan-filter-toggle aria-expanded="false" aria-controls="plan-filters">Filters<span data-plan-filter-count hidden></span></button>'+
+  '</div></div>'+
+  '<div class="plan-library-body">'+
+   '<form id="plan-filters" class="plan-library-filters" data-plan-filters hidden aria-label="Filter degree plans"><div class="plan-library-filters-head"><p>Filter plans</p><button type="button" class="plan-library-close" data-plan-filter-close aria-label="Close filters">×</button></div>'+
+    group('Subject','subject',subjects)+group('Format','format',formatsOpt)+group('Degree level','level',levels)+pace+shareGroup+group('School','school',schools)+
+    '<div class="plan-library-filters-foot"><button type="button" class="plan-library-clear" data-plan-clear>Clear all</button><button type="button" class="site-button plan-library-apply" data-plan-filter-close>Show plans</button></div></form>'+
+   '<div class="plan-library-results"><div class="plan-library-summary"><p data-plan-count role="status" aria-live="polite">'+plans.length+' researched plans</p><ul class="plan-library-active" data-plan-active></ul></div>'+
+    '<div class="plan-hub-groups" data-plan-results>'+ordered.map(groupHTML).join('')+'</div>'+
+    '<div class="plan-library-empty" data-plan-empty hidden><h2>No plans match these filters yet.</h2><p>Try removing a filter, or ask for the degree you have in mind. New researched plans are added regularly.</p><div><button type="button" class="site-button secondary" data-plan-clear>Clear all filters</button><a class="text-link" href="/request-plan.html">Request a degree plan</a></div></div>'+
+    '<button type="button" class="plan-library-more" data-plan-more hidden>Show more plans</button>'+
+   '</div></div></section>';
+ return '<section class="site-container page-intro ds-rail-intro plan-hub-intro"><div class="ds-rail-copy"><p class="ds-step-kicker">Step 1 · Pick a starting route</p><h1>A real course plan. A clearer way forward.</h1><p class="page-lede">Open a researched route, see the outside courses and university work, then make it fit your own starting point.</p><p>These previews have complete, source-backed course selections. More available templates are inside the planner.</p><ul class="plan-hub-stats"><li><strong>'+plans.length+'</strong> complete plans</li><li><strong>'+groups.size+'</strong> universities</li>'+(top?'<li><strong>Up to '+share(top)+'%</strong> through outside courses</li>':'')+'</ul></div>'+key+'</section>'+library+'<section class="site-container final-cta"><div><h2>Looking for another degree?</h2><p>Browse all available templates, bring your own courses, or research a specific university degree.</p></div><div><a class="site-button" href="/programs.html">Browse available plans</a><a class="text-link" href="/import-courses.html">Use my past courses</a></div></section>';
 }

@@ -3,8 +3,8 @@
 (function () {
   'use strict';
   const main = document.querySelector('main');
-  // The homepage already runs its own visitor-paced step journey.
-  if (!main || document.querySelector('[data-home-steps]') || document.body.hasAttribute('data-no-step-trail')) return;
+  // The homepage runs its own step journey; long filterable lists use their own sticky toolbar instead.
+  if (!main || document.querySelector('[data-home-steps], [data-no-step-trail]')) return;
 
   const SKIP = 'nav, aside, footer, dialog, details:not([open]), [hidden], [data-trail-skip]';
   const headings = [...main.querySelectorAll('h2')].filter(h => !h.closest(SKIP) && h.getClientRects().length);
