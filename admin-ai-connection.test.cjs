@@ -1,7 +1,8 @@
 const test=require('node:test'),assert=require('node:assert/strict'),vm=require('node:vm'),fs=require('node:fs');
 const html=fs.readFileSync('./dist/admin.html','utf8'),adminSource=fs.readFileSync('./dist/admin.js','utf8'),clientSource=fs.readFileSync('./dist/template-workspace-client.js','utf8');
 const endpoint='/api/admin/ai-connection',fakeKey='clearly-fake-connection-key-do-not-use';
-const config=(values={})=>({configured:false,source:'none',revision:0,storageReady:true,model:'claude-test-model',limits:{researchPerDay:10,researchPerStudentPerDay:3,connectionChangesPerHour:5},...values});
+// canSave:true models the legacy option of saving a key on this page; the default deployment uses the Worker secret.
+const config=(values={})=>({configured:false,source:'none',revision:0,storageReady:true,canSave:true,model:'claude-test-model',limits:{researchPerDay:10,researchPerStudentPerDay:3,connectionChangesPerHour:5},...values});
 function fixture({owner=true,admin=owner,signedIn=true,connection=config(),onRequest}={}){
  const nodes=new Map(),calls=[],windowEvents={},storageCalls=[],logs=[];
  for(const match of html.matchAll(/<([a-z][a-z0-9-]*)\b([^>]*\bid="([^"]+)"[^>]*)>/gi)){
@@ -95,4 +96,8 @@ test('an unreadable managed key is never described as connected and can still be
 });
 test('an unavailable connection status cannot enable key submission or echo transport details',async()=>{
  const f=fixture({onRequest:call=>call.path===endpoint&&call.method==='GET'?{status:503,data:{error:fakeKey}}:null});await f.flush();assert.equal(f.nodes.get('ai-connection-status').textContent,'Refresh needed');assert.equal(f.nodes.get('ai-connection-save').disabled,true);assert.equal(f.nodes.get('ai-connection-refresh').disabled,false);assert(!f.visibleText().includes(fakeKey));await f.submit();assert.equal(f.nodes.get('ai-api-key').value,'');assert.equal(f.calls.some(call=>call.method==='PUT'),false);
+});
+test('by default the page explains the Worker secret, offers no key field, and offers removal of an older saved key',async()=>{
+ const fresh=fixture({connection:config({canSave:false})});await fresh.flush();assert.equal(fresh.nodes.get('ai-key-entry').hidden,true);assert.match(fresh.nodes.get('ai-connection-summary').textContent,/ANTHROPIC_API_KEY secret on the Cloudflare Worker/);assert.equal(fresh.calls.some(call=>call.method==='PUT'),false);
+ const both=fixture({connection:config({canSave:false,configured:true,source:'environment',storedKey:true,revision:2})});await both.flush();assert.equal(both.nodes.get('ai-key-entry').hidden,true);assert.match(both.nodes.get('ai-connection-summary').textContent,/older key is also saved/);assert.equal(both.nodes.get('ai-connection-disconnect').hidden,false);
 });
