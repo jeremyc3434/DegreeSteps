@@ -54,3 +54,11 @@ Fixed after the round-6 walkthrough:
 Checked and not a bug: Sophia Introduction to Psychology does not count toward TESU B.A. Psychology because TESU's sourced plan lists PSY-1010 as a TESU course only. A Sophia match would need a published TESU source first.
 
 Still open (P3): highlight the courses replaced after a provider change; "Fewest credits left" needs a degree-level filter; `programs-browser.test.cjs` expects every directory school in the finder's school list, and fails the same way on the code from before this work.
+
+## Beta release gate (2026-11-20, commit e68d208)
+
+- Build passes; core suite 258/258 files.
+- Browser suite 30/30 files (29 journeys files plus the coach panel), up from 3/29 at the start of this work. Stale tests were rewritten to check current behaviour; real bugs found on the way were fixed (320px overflows, duplicate variant labels, finder first-tap, coach status request left open, community question context).
+- Starting-route consistency: 38/38 plans' worksheets match their published starting route.
+- Accessibility checks: clean on all checked pages, desktop and phone.
+- Not covered: real devices and Safari, screen readers, real students, live Claude calls (the coach ships off), and the production deploy pipeline itself (deploy staging first; see docs/beta-deploy-checklist.md).
