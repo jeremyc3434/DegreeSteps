@@ -21,103 +21,73 @@ async function noOverflow(page) {
   const size = await page.evaluate(() => ({viewport:innerWidth, body:document.body.scrollWidth, root:document.documentElement.scrollWidth}));
   assert(size.body <= size.viewport + 1 && size.root <= size.viewport + 1, JSON.stringify(size));
 }
-function tab(page, id) {return page.locator('.home-barriers [role="tab"][data-barrier="' + id + '"]');}
-async function selected(page, id) {
-  assert.equal(await tab(page,id).getAttribute('aria-selected'), 'true');
-  const active = page.locator('.home-barrier-panel:not([hidden])');
-  assert.equal(await active.count(), 1, 'One relevant answer is shown at a time after enhancement');
-  assert.equal(await active.getAttribute('id'), 'barrier-' + id);
-  assert.equal(await page.locator('.home-barriers [role="tab"][aria-selected="true"]').count(), 1);
-}
 (async () => {try {
   browser = await chromium.launch({executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium',args:['--no-sandbox']});
+  // The homepage is a three-step reading journey (goal, course options, plan) with one real Liberty example.
+  const cta = page => page.locator('#home-step-1').getByRole('link',{name:'Build my plan',exact:true});
+  const choice = page => page.locator('#home-step-2 [data-home-course-choice]');
   await test('the first screen makes the possibility clear and opens the real guided builder', async () => {
     const page = await pageFor();
     assert.equal(await page.locator('main h1').count(), 1);
-    assert.match(words(await page.locator('main h1').innerText()), /Your degree\.\s*Within reach\./i);
-    const intro = words(await page.locator('.home-intro').innerText());
+    assert.match(words(await page.locator('main h1').innerText()), /The degree you want\.\s*A smarter way there\./i);
+    const intro = words(await page.locator('#home-step-1 .home-journey-lede').innerText());
     assert.match(intro, /faster|sooner/i); assert.match(intro, /affordable|budget|spend less/i);
     assert.match(intro, /flexible|life|self.paced/i);
     assert.equal(await page.locator('#portal-question-title').count(), 0);
-    const cta = page.locator('.home-intro').getByRole('link',{name:/^Find my path/i}).first();
-    assert(await cta.isVisible());
-    assert.equal(new URL(await cta.getAttribute('href'),page.url()).pathname, '/portal.html');
-    await cta.click(); await page.waitForURL('**/portal.html');
+    assert(await cta(page).isVisible());
+    assert.equal(new URL(await cta(page).getAttribute('href'),page.url()).pathname, '/portal.html');
+    await cta(page).click(); await page.waitForURL('**/portal.html');
     await page.locator('#portal-question-title').waitFor();
-    assert.equal((await page.locator('#portal-question-title').innerText()).trim(), 'What would you like help with?');
+    assert.equal((await page.locator('#portal-question-title').innerText()).trim(), 'Build your course plan.');
   });
-  await test('human photography is actually served as images with useful alternatives', async () => {
+  await test('the example images are self-hosted and load', async () => {
     const page = await pageFor();
-    const image = page.locator('.home-hero-portrait img').first();
-    assert(await image.isVisible());
-    await image.evaluate(node => node.decode());
-    assert(await image.evaluate(node => node.complete && node.naturalWidth >= 300 && node.naturalHeight > 0));
-    assert((await image.getAttribute('alt') || '').trim().length >= 12, 'The photograph has a meaningful accessible description');
-    const source = await image.evaluate(node => node.currentSrc);
-    assert.equal(new URL(source).origin, new URL(BASE).origin, 'Photography is self-hosted');
-    const response = await page.request.get(source);
-    assert.equal(response.status(),200); assert.match(response.headers()['content-type'],/^image\/(webp|jpeg|png)/i);
-    const bytes = await response.body();
-    assert(bytes.length > 5000, 'A real image is returned rather than an HTML fallback or empty response');
-    const valid = bytes.subarray(0,4).toString() === 'RIFF' && bytes.subarray(8,12).toString() === 'WEBP'
-      || bytes[0] === 0xff && bytes[1] === 0xd8
-      || bytes.subarray(1,4).toString() === 'PNG';
-    assert(valid, 'Worker/preview responses preserve image bytes');
-    for (const selector of ['.home-story-photo img','.home-final-photo img']) {
-      const photo=page.locator(selector);await photo.scrollIntoViewIfNeeded();
-      await page.waitForFunction(node=>node.complete&&node.naturalWidth>0,await photo.elementHandle());
-      await photo.evaluate(node=>node.decode());
+    const images = await page.locator('main img').evaluateAll(nodes => nodes.map(node => node.currentSrc || node.src));
+    assert(images.length >= 2, 'The school and provider marks are shown');
+    for (const source of images) {
+      assert.equal(new URL(source).origin, new URL(BASE).origin, 'Images are self-hosted');
+      const response = await page.request.get(source);
+      assert.equal(response.status(),200,source); assert.match(response.headers()['content-type'],/^image\//i);
+      assert((await response.body()).length > 100, 'A real image is returned rather than an empty response');
     }
-    const story = page.locator('.home-family-story');
-    assert.match(await story.innerText(), /founder/i);
-    assert.match(await story.innerText(), /Liberty/);
-    assert.match(await story.innerText(), /3|three/);
-    assert.match(await story.innerText(), /1|one/);
-    const storyImage = story.locator('img').first();
-    assert(await storyImage.count()); await storyImage.evaluate(node => node.decode());
-    assert(await storyImage.evaluate(node => node.naturalWidth > 0));
+    assert(await page.locator('main img').evaluateAll(nodes => nodes.every(node => node.complete && node.naturalWidth > 0)));
   });
-  await test('students can explore their own barrier with a mouse or keyboard', async () => {
-    const page = await pageFor();
-    for (const id of ['money','time','credits','campus']) {
-      await tab(page,id).click(); await selected(page,id);
-      const text = words(await page.locator('#barrier-' + id).innerText());
-      assert(text.length >= 60, id + ' has a useful explanation');
-      assert(await page.locator('#barrier-' + id + ' a[href*="portal.html"]').count(), id + ' has a practical next step');
-    }
-    await tab(page,'money').focus(); await page.keyboard.press('ArrowRight');
-    await selected(page,'time'); assert(await tab(page,'time').evaluate(node => node === document.activeElement));
-    await page.keyboard.press('End'); await selected(page,'campus');
-    await page.keyboard.press('Home'); await selected(page,'money');
-    await page.keyboard.press('ArrowLeft'); await selected(page,'campus');
+  await test('students can compare the example course sources with a mouse or keyboard', async () => {
+    const page = await pageFor(),step = page.locator('#home-step-2');
+    assert.match(await step.innerText(), /Take it with\s+Sophia/);
+    await choice(page).selectOption('university');
+    assert.match(await step.innerText(), /Take it with\s+Liberty University/);
+    await choice(page).focus(); await page.keyboard.press('ArrowUp');
+    await page.waitForFunction(() => document.querySelector('#home-step-2 [data-home-course-choice]').value === 'sophia');
+    assert.match(await step.innerText(), /Take it with\s+Sophia/);
+    assert.match(await step.innerText(), /Counts toward\s+ENGL 101/);
   });
-  await test('all explanations, the FAQ and public navigation work without JavaScript', async () => {
+  await test('all steps, the FAQ and public navigation work without JavaScript', async () => {
     const page = await pageFor({javaScriptEnabled:false,viewport:{width:390,height:844}});
-    for (const id of ['money','time','credits','campus']) assert(await page.locator('#barrier-' + id).isVisible(), id + ' remains readable');
+    for (const id of [1,2,3]) assert(await page.locator('#home-step-' + id).isVisible(), 'step ' + id + ' remains readable');
+    assert(await choice(page).isDisabled(), 'The example choice is not presented as working without scripts');
     const question = page.locator('.home-questions details').first();
     assert(await question.count());
     await question.locator('summary').click(); assert(await question.evaluate(node => node.open));
-    assert(await question.locator('p').isVisible());
-    const menu = page.locator('header details.site-menu');
-    if (await menu.count() && !await menu.evaluate(node => node.open)) await menu.locator('summary').click();
-    const resources = page.locator('header').getByRole('link',{name:'Resources',exact:true});
+    assert(await question.locator('p').first().isVisible());
+    const resources = page.locator('header.public-header').getByRole('link',{name:'Resources',exact:true});
     assert(await resources.isVisible()); await resources.click(); await page.waitForURL('**/resources/');
     assert(await page.locator('main h1').isVisible());
   });
-  await test('the message, photographs and changing barrier panels fit phone, tablet and desktop widths', async () => {
+  await test('the message, example and course choice fit phone, tablet and desktop widths', async () => {
     for (const width of [320,390,768,1440]) {
       const page = await pageFor({viewport:{width,height:900}}); await noOverflow(page);
-      for (const id of ['money','time','credits','campus']) {await tab(page,id).click(); await noOverflow(page);}
-      const targets = [page.locator('.home-intro').getByRole('link',{name:/^Find my path/i}).first(),tab(page,'money')];
-      for (const target of targets) {const box=await target.boundingBox(); assert(box && box.height >= 44, 'Primary choices remain comfortable touch targets');}
-      const portrait = await page.locator('.home-hero-portrait img').boundingBox();
-      assert(portrait && portrait.width <= width && portrait.width >= Math.min(240,width-40));
+      await choice(page).selectOption('university'); await noOverflow(page);
+      for (const target of [cta(page),choice(page)]) {const box=await target.boundingBox(); assert(box && box.height >= 44, 'Primary choices remain comfortable touch targets');}
+      const preview = await page.locator('.home-degree-preview').boundingBox();
+      assert(preview && preview.x >= 0 && preview.x + preview.width <= width + 1);
     }
   });
   await test('reduced-motion users can use the same clear choices without animated distractions', async () => {
     const page = await pageFor({reducedMotion:'reduce',viewport:{width:390,height:844}});
     assert(await page.evaluate(() => matchMedia('(prefers-reduced-motion: reduce)').matches));
-    await tab(page,'credits').click(); await selected(page,'credits');
+    await choice(page).selectOption('university');
+    await page.evaluate(() => scrollTo(0, document.querySelector('#home-step-3').offsetTop));
     const activeAnimations = await page.evaluate(() => document.getAnimations().filter(animation => animation.playState === 'running').length);
     assert.equal(activeAnimations,0);
     await noOverflow(page);

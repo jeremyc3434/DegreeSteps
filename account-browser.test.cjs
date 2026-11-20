@@ -88,7 +88,7 @@ async function setup({configured = true,signedIn = true,recovery = false,link = 
     const {page} = await setup({link:{ownerId:'student-a',planId:'plan-1',revision:2}});
     await page.getByRole('button',{name:'Sign out',exact:true}).click(); await page.locator('#account-auth-form').waitFor();
     assert.equal(await page.evaluate(key => localStorage.getItem(key),LINK),null); assert.deepEqual(await page.evaluate(key => JSON.parse(localStorage.getItem(key)),KEY),draft);
-    assert.match(await page.locator('#account-status').innerText(),/device draft remains/);
+    assert.match(await page.locator('#account-status').innerText(),/Your plan on this device is still here/);
   });
   await test('password recovery takes priority over the already authenticated dashboard',async () => {
     const {page,state} = await setup({recovery:true});
