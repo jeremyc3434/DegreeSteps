@@ -17,7 +17,9 @@
   const ids=new Set([...(value.sheet?.isExample?[]:[value.selectedPathwayId||value.profile?.pathwayId]),...(options().selectedIds||[]).map(id=>id.startsWith('saved:')?(value.whatIf?.snapshots||[]).find(saved=>saved.id===id.slice(6))?.pathwayId:null)].filter(Boolean));
   // Explicit private/current targets stay recoverable; only complete templates
   // participate in new suggestions and degree-picker choices.
-  const available=libraryRoutes(),known=new Set(available.map(route=>route.id));
+  // Suggestions come from published plans; a plan needing school confirmation joins only when the student picked it.
+  const picked=new Set((options().selectedIds||[]).filter(id=>id.startsWith('route:')).map(id=>id.slice(6)));
+  const available=[...readyRoutes(),...libraryRoutes().filter(route=>picked.has(route.id)&&needsConfirmation(route))],known=new Set(available.map(route=>route.id));
   return {...catalog,pathways:[...available,...catalog.pathways.filter(route=>ids.has(route.id)&&!known.has(route.id))]};
  }
  function attachPrivateCurricula(value){
