@@ -80,7 +80,7 @@
     const doc=win.document;
     const start=()=>{
       win.fetch('/api/coach/status',{credentials:'same-origin',headers:{Accept:'application/json'}})
-        .then(response=>response.json().catch(()=>null).then(body=>response.ok?body:null)).catch(()=>null)
+        .then(response=>response.json().then(body=>response.ok?body:null,()=>null)).catch(()=>null)
         .then(status=>{if(status&&status.enabled===true)mount(win,status);});
     };
     if(doc.readyState==='loading')doc.addEventListener('DOMContentLoaded',start,{once:true});else start();
