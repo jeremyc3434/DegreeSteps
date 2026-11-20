@@ -86,7 +86,7 @@ body.dp-app-shell #courses-app .courses-tabs span {
   font-size:.875rem;
   font-variant-numeric:tabular-nums;
 }
-body.dp-app-shell #courses-app #courses-add-own {
+body.dp-app-shell #courses-app :is(#courses-add-own,#courses-credits-worth) {
   min-height:46px;
   padding:10px 0;
   color:var(--collection-blue);
@@ -349,7 +349,7 @@ body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remov
   body.dp-app-shell #courses-app .courses-heading .courses-primary { width:100%; }
   body.dp-app-shell #courses-app .courses-tools { gap:6px; padding:8px 16px; }
   body.dp-app-shell #courses-app .courses-tabs { width:100%; gap:24px; }
-  body.dp-app-shell #courses-app #courses-add-own { padding-block:8px; }
+  body.dp-app-shell #courses-app :is(#courses-add-own,#courses-credits-worth) { padding-block:8px; }
   body.dp-app-shell #courses-app .courses-filters { flex-wrap:wrap; gap:10px; padding-top:20px; }
   body.dp-app-shell #courses-app .courses-search { flex-basis:100%; }
   body.dp-app-shell #courses-app #course-kind-field { flex:1; width:auto; min-width:0; }

@@ -4,10 +4,10 @@ import {resolve,relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
 
 const dist=resolve(import.meta.dirname,'../dist');
-const workspacePages=new Set(['account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','request-plan.html','school.html']);
+const workspacePages=new Set(['account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html']);
 const savePages=new Set(['plan.html','portal.html','courses.html','compare-plans.html']);
 const families=new Map([
-  ...['portal.html','programs.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html','campuses.html'].map(name=>[name,'discovery']),
+  ...['portal.html','programs.html','credits-worth.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html','campuses.html'].map(name=>[name,'discovery']),
   ...['courses.html','import-courses.html'].map(name=>[name,'collection']),
   ['compare-plans.html','comparison'],['community.html','community'],
   ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
