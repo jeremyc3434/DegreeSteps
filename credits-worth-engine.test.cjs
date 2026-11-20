@@ -46,9 +46,10 @@ test('the remaining estimate comes only from the shared estimate engine and unkn
  assert(priced.estimate.min>0);
  const start=evaluate('liberty-criminal-justice-online',[]);assert.deepEqual([start.estimate.min,start.estimate.max],[published.min,published.max],'with no courses the range equals the plan library’s published range');
  const partial=evaluate('excelsior-bs-psychology',[english]);
- assert.equal(partial.estimate.status,'needs-confirmation','a partial range (StraighterLine unpriced) is not shown as a total');
- assert.match(partial.estimate.reason,/StraighterLine/);
- assert.equal(partial.estimate.min,undefined);
+ // A partial range (StraighterLine unpriced) is labelled as known charges so far, never as a total, and names what is missing.
+ assert.equal(partial.estimate.status,'partial');
+ assert.match(partial.estimate.reason,/StraighterLine/);assert.deepEqual(partial.estimate.unpriced,['StraighterLine']);
+ assert.ok(partial.estimate.min>0&&partial.estimate.max>=partial.estimate.min);
 });
 
 test('a course that matches nothing leaves every plan unchanged and is reported as needing an evaluation',async()=>{

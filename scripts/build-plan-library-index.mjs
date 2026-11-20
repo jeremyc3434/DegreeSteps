@@ -4,7 +4,6 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import assert from 'node:assert/strict';
 import {subjectAreas,subjectsFor} from './subject-areas.mjs';
-import {loadPublicPlans} from './public-plan-pages.mjs';
 
 const root=resolve(import.meta.dirname,'..'),output=resolve(root,'dist/data/plan-library-index.json');
 const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
@@ -33,22 +32,39 @@ export function questionsFor(findings){
   return [...new Set(out)];
 }
 
-export function buildIndex({registry,quality,estimates={}}){
+export function buildIndex({registry,quality,estimates={},starts={}}){
   const byModel=new Map(quality.programs.map(p=>[p.modelId,p])),plans={};
   for(const model of registry.models){
     const report=byModel.get(model.id);
     if(!report||model.readyTemplate!==true||report.research?.status==='unavailable')continue;
     const reviewed=report.publication?.ready===true||report.research?.status==='research-ready';
     const questions=reviewed?[]:questionsFor(report.findings||[]);
-    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,level:levelOf(model.level),subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(estimates[routeId]?{estimate:estimates[routeId]}:{})};
+    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,level:levelOf(model.level),subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(starts[routeId]?{start:starts[routeId]}:{}),...(estimates[routeId]?{estimate:estimates[routeId]}:{})};
   }
   return {kind:'degreesteps-plan-library-index',version:1,registryRevision:quality.registryRevision,asOf:quality.asOf,subjects:Object.fromEntries(subjectAreas.map(s=>[s.id,s.label])),plans:Object.fromEntries(Object.entries(plans).sort(([a],[b])=>a.localeCompare(b)))};
 }
 
 if(import.meta.url===`file://${process.argv[1]}`){
-  // The same planning-estimate range the public plan pages show, so every surface quotes one figure.
-  const estimates={};for(const plan of await loadPublicPlans(resolve(root,'dist'))){const r=plan.estimate?.costs?.knownRange;if(r&&Number.isFinite(r.min)&&Number.isFinite(r.max)&&r.min>0)estimates[plan.id]={min:r.min,max:r.max};}
-  const index=buildIndex({registry:await read('dist/data/curriculum-registry.json'),quality:await read('dist/data/pathway-quality-report.json'),estimates});
+  // Starting-route numbers and the shared planning estimate for every plan, computed exactly as the public plan pages
+  // do (the starting route's saved selections, then the plan-estimate engine). Partial estimates name unpriced providers.
+  const {createRequire}=await import('node:module'),require=createRequire(import.meta.url);
+  const Planner=require('../dist/planner.js'),Estimate=require('../dist/plan-estimate-engine.js');
+  const [registry,baselines,rates]=await Promise.all(['dist/data/curriculum-registry.json','dist/data/baseline-index.json','dist/data/plan-estimate-rates.json'].map(read));
+  const docs=new Map(),estimates={},starts={},priced=new Set((rates.providers||[]).map(item=>item.provider));
+  for(const baseline of Object.values(baselines.baselines||{})){
+    const entry=registry.models.find(item=>item.id===baseline.modelId);if(!entry)continue;
+    if(!docs.has(entry.path))docs.set(entry.path,await read('dist/'+entry.path));
+    const doc=docs.get(entry.path),model=(doc.models||[doc]).find(item=>item.id===baseline.modelId);if(!model)continue;
+    starts[baseline.pathwayId]={outside:baseline.summary.transferCredits,university:baseline.summary.universityCredits,total:baseline.summary.totalCredits};
+    const providers=[...new Set(model.requirements.flatMap(req=>(req.options||[]).map(option=>option.provider)))].filter(provider=>provider&&provider!=='University');
+    const plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optionSelections:Object.fromEntries(baseline.rows.map(row=>[row.requirementId,row.optionId])),optimizationNodeBudget:12000});
+    if(plan.totals?.external!==baseline.summary.transferCredits)continue;
+    const estimate=Estimate.calculate({program:model,plan,rates}),range=estimate?.costs?.knownRange;
+    if(!range||!Number.isFinite(range.min)||!Number.isFinite(range.max)||range.min<=0)continue;
+    if(estimate.status==='planning-range')estimates[baseline.pathwayId]={min:range.min,max:range.max};
+    else if(estimate.status==='partial-range'){const used=[...new Set(plan.rows.map(row=>row.option?.provider).filter(provider=>provider&&provider!=='University'))];estimates[baseline.pathwayId]={min:range.min,max:range.max,partial:true,unpriced:used.filter(provider=>!priced.has(provider))};}
+  }
+  const index=buildIndex({registry,quality:await read('dist/data/pathway-quality-report.json'),estimates,starts});
   const text=JSON.stringify(index)+'\n',tiers=Object.values(index.plans).reduce((n,p)=>(n[p.tier]=(n[p.tier]||0)+1,n),{});
   if(process.argv.includes('--check')){let current='';try{current=await readFile(output,'utf8');}catch{}assert.equal(current,text,'dist/data/plan-library-index.json is stale; run node scripts/build-plan-library-index.mjs');}
   else await writeFile(output,text);

@@ -16,7 +16,7 @@ export async function buildCourseIndex(){
  const fetcher=async file=>{try{const value=await read('dist/'+file);return {ok:true,json:async()=>value};}catch{return {ok:false,json:async()=>null};}};
  const [library,baselines,rates,registry,pathways]=await Promise.all(['dist/data/plan-library-index.json','dist/data/baseline-index.json','dist/data/plan-estimate-rates.json','dist/data/curriculum-registry.json','dist/data/pathways.json'].map(read));
  const catalog=await Catalog.load(pathways,{fetcher});
- const entries=Object.entries(library.plans).filter(([,entry])=>['reviewed','confirmation'].includes(entry.tier)).sort(([a],[b])=>a.localeCompare(b));
+ const entries=Object.entries(library.plans).filter(([,entry])=>(entry.tier==='confirmation'||entry.tier==='reviewed'&&entry.published===true)).sort(([a],[b])=>a.localeCompare(b));
  const models=await Catalog.loadModels([...new Set(entries.map(([,entry])=>entry.modelId))],{fetcher,includeLegacy:false});
  const byModel=new Map(registry.models.map(entry=>[entry.id,entry]));
  const perPlan=[],allKeys=new Set();

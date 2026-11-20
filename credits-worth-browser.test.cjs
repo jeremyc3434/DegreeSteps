@@ -50,13 +50,13 @@ for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['ip
    await finished(page);
    const wall=Date.now()-t0,count=await page.textContent('#cw-count');
    console.log(JSON.stringify({profile:name,count,wallMs:wall}));
-   assert.match(count,/38 plans checked · \d+ could use your courses/);
+   assert.match(count,/37 plans checked · \d+ could use your courses/);
    const cards=await page.$$eval('#cw-list .cw-card',nodes=>nodes.map(n=>n.textContent));
    assert.equal(cards.length,12,'first page of results');
    assert.match(cards[0],/Your courses could fill [1-9]/,'best plan uses the course');
    assert.match(cards[0],/Build this plan/);
    const outcomes=await page.$$eval('.cw-record',nodes=>nodes.map(n=>n.textContent));
-   assert(outcomes.some(text=>/Introduction to Psychology.*Could count in \d+ of 38 plans/.test(text)),outcomes.join('\n'));
+   assert(outcomes.some(text=>/Introduction to Psychology.*Could count in \d+ of 37 plans/.test(text)),outcomes.join('\n'));
    assert(outcomes.some(text=>/Local History Seminar.*No listed match yet/.test(text)));
    assert(outcomes.some(text=>/Two courses on one line.*Needs review/.test(text)));
    assert(await page.$('.pf-badge-confirm'),'confirmation-tier badge is shown');
@@ -73,7 +73,7 @@ for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['ip
    await page.screenshot({path:SHOTS+'/'+name+'-4-cost-sort.png'});
    // Filters announce through the live count.
    await page.selectOption('#cw-subject','psychology');await page.selectOption('#cw-format','online');
-   assert.match(await page.textContent('#cw-count'),/\d+ of 38 plans shown/);
+   assert.match(await page.textContent('#cw-count'),/\d+ of 37 plans shown/);
    assert.equal(await page.getAttribute('#cw-count','aria-live'),'polite');
    // Building with unsaved entries asks first; nothing is written without the explicit choice.
    assert.equal(await page.evaluate(key=>localStorage.getItem(key),KEY),null,'reading and ranking never writes My courses');

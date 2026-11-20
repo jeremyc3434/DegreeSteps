@@ -66,9 +66,11 @@
   const range=result?.costs?.knownRange;
   if(result?.available===true&&result.status==='planning-range'&&finite(range?.min)&&finite(range?.max)&&range.min>=0&&range.max>=range.min)
    return {status:'range',min:Math.round(range.min),max:Math.round(range.max)};
-  // A partial range leaves some course prices out: it is not a total, so it is never shown as one.
+  // A partial range leaves some course prices out: it is labelled as known charges, never as a total.
   if(result?.available===true&&result.status==='partial-range'){
    const unpriced=list(result.costs?.providerBreakdown).filter(line=>line.cost===null).map(line=>line.provider);
+   // Shown as known charges so far (as on the finder, guided planner and worksheet), never as a total.
+   if(finite(range?.min)&&finite(range?.max)&&range.min>=0&&range.max>=range.min)return {status:'partial',min:Math.round(range.min),max:Math.round(range.max),unpriced,reason:unpriced.length?'Some course prices are not included yet: '+unpriced.join(', ')+'.':'Some prices are not included yet.'};
    return {status:'needs-confirmation',reason:unpriced.length?'Some course prices are not included yet: '+unpriced.join(', ')+'.':'Some prices are not included yet.'};
   }
   return {status:'needs-confirmation',reason:text(result?.reason)||'A researched cost range is not available for this exact degree yet.'};
@@ -131,7 +133,8 @@
   const byCovered=(a,b)=>covered(b)-covered(a)||b.filled-a.filled||left(a)-left(b)||az(a,b);
   const comparators={
    covered:byCovered,
-   left:(a,b)=>left(a)-left(b)||covered(b)-covered(a)||az(a,b),
+   // Plans your courses actually touch come first; otherwise a short master's degree with no matches would 'win'.
+   left:(a,b)=>Number(b.filled>0)-Number(a.filled>0)||left(a)-left(b)||covered(b)-covered(a)||az(a,b),
    cost:(a,b)=>Number(priced(b))-Number(priced(a))||(priced(a)&&priced(b)?a.estimate.min-b.estimate.min||a.estimate.max-b.estimate.max:0)||byCovered(a,b)
   };
   const filtered=list(results).filter(result=>(!subject||list(result.subjects).includes(subject))&&(!format||list(result.modalities).includes(format))&&(!options.matchedOnly||result.filled>0));
@@ -156,7 +159,7 @@
   * main-thread fallback. deps: {loadModels(ids)=>Promise<models>, pause()=>Promise, cancelled()=>bool, onResult(result,done,total)}.
   */
  async function evaluateAll(input,hooks={}){
-  const {index,catalog,baselines,registry,rates,learning}=input,plans=Object.entries(index?.plans||{}).filter(([,entry])=>['reviewed','confirmation'].includes(entry?.tier));
+  const {index,catalog,baselines,registry,rates,learning}=input,plans=Object.entries(index?.plans||{}).filter(([,entry])=>(entry?.tier==='confirmation'||entry?.tier==='reviewed'&&entry?.published===true));
   const routes=new Map(list(catalog?.pathways).map(route=>[route.id,route])),byModel=new Map(list(registry?.models).map(entry=>[entry.id,entry]));
   const baselineFor=(routeId,modelId)=>Object.values(baselines?.baselines||{}).find(item=>item.pathwayId===routeId&&item.modelId===modelId)||null;
   // Group plans by their curriculum file so each file is fetched once, and results appear as files arrive.

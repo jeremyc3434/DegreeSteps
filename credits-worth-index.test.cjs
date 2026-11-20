@@ -36,7 +36,8 @@ async function both(learning){
 
 test('the index covers every plan in the plan library and is built from the current curricula',async()=>{
  const {models}=await load();
- assert.deepEqual(Object.keys(courseIndex.plans).sort(),Object.keys(library.plans).sort());
+ // The same plans the finder lists: published reviewed plans plus labelled plans awaiting school confirmation.
+ assert.deepEqual(Object.keys(courseIndex.plans).sort(),Object.entries(library.plans).filter(([,p])=>p.tier==='confirmation'||p.tier==='reviewed'&&p.published===true).map(([id])=>id).sort());
  assert.equal(courseIndex.registryRevision,library.registryRevision);
  for(const [routeId,plan] of Object.entries(courseIndex.plans))assert.deepEqual(plan.keys.map(i=>courseIndex.keys[i]),Worth.planKeys(models.find(m=>m.id===plan.modelId)),routeId);
 });
@@ -44,7 +45,8 @@ test('the index covers every plan in the plan library and is built from the curr
 for(const [name,learning] of Object.entries(lists)){
  test('lightweight and full results are identical for all plans: '+name,async()=>{
   const {full,light,loaded}=await both(learning);
-  assert.equal(full.size,38);assert.equal(light.size,38);
+  const finderPlans=Object.values(library.plans).filter(p=>p.tier==='confirmation'||p.tier==='reviewed'&&p.published===true).length;
+  assert.equal(full.size,finderPlans);assert.equal(light.size,finderPlans);
   for(const [routeId,result] of full)assert.deepStrictEqual(light.get(routeId),result,name+': '+routeId);
   // Every plan a record actually affected was computed with its curriculum.
   const affected=[...full.values()].filter(r=>r.filled>0||Object.values(r.records).some(o=>o.status!=='none')).map(r=>r.modelId);
