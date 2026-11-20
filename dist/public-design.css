@@ -691,3 +691,18 @@ body.public-page .plan-library-more:hover { background:var(--ds-soft-blue,#eef1f
 @media(max-width:560px) { body.public-page .plan-library-search input::placeholder { color:#7b899b; } }
 @media(prefers-reduced-motion:reduce) { body.public-page .plan-library-filters, body.public-page .plan-chip { transition:none !important; } }
 @media print { body.public-page :is(.plan-library-bar,.plan-library-filters,.plan-library-more) { display:none !important; } }
+
+/* ── Plan page course tools: find, filter by coursework type or provider, collapse sections ── */
+body.public-page .public-plan-tools { position:sticky; z-index:30; top:56px; display:grid; grid-template-columns:minmax(220px,2fr) minmax(170px,1fr) minmax(170px,1fr) auto; align-items:end; gap:12px; margin:18px 0 4px; padding:14px 16px; border:1px solid var(--public-line,#d9e1ea); border-radius:10px; background:#fff; box-shadow:0 10px 24px -22px rgba(20,44,81,.6); }
+body.public-page .public-plan-tools label { display:block; margin:0; min-width:0; }
+body.public-page .public-plan-tools label>span { display:block; margin-bottom:6px; color:var(--public-muted); font-size:.8125rem; font-weight:500; }
+body.public-page .public-plan-tools :is(input,select) { width:100%; min-height:44px; padding:0 12px; border:1px solid #9eacbf; border-radius:6px; background-color:#fff; color:var(--public-ink); font-size:.9375rem; }
+body.public-page .public-plan-tools input:focus,body.public-page .public-plan-tools select:focus { outline:2px solid var(--public-cobalt); outline-offset:1px; }
+body.public-page .public-plan-tool-actions { display:flex; align-items:center; gap:12px; min-height:44px; }
+body.public-page .public-plan-tool-button { min-height:44px; padding:0 14px; border:1px solid #c3cddb; border-radius:6px; background:#fff; color:var(--public-ink); font-size:.875rem; font-weight:600; white-space:nowrap; }
+body.public-page .public-plan-tool-button:hover { border-color:var(--public-cobalt); color:var(--public-cobalt); }
+body.public-page .public-plan-tool-clear { padding:0; border:0; background:none; color:var(--public-cobalt); font-size:.875rem; font-weight:600; text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
+body.public-page .public-plan-heading + .public-plan-tools { margin-top:16px; }
+body.public-page [data-preview-count] { margin:12px 0 18px; color:var(--public-muted); font-size:.875rem; }
+@media(max-width:1000px) { body.public-page .public-plan-tools { grid-template-columns:1fr 1fr; } body.public-page .public-plan-find { grid-column:1/-1; } body.public-page .public-plan-tool-actions { grid-column:1/-1; } }
+@media(max-width:760px) { body.public-page .public-plan-tools { position:static; grid-template-columns:1fr 1fr; gap:10px; padding:12px; } body.public-page .public-plan-tools label>span { margin-bottom:4px; } body.public-page .public-plan-tool-actions { min-height:0; } }
