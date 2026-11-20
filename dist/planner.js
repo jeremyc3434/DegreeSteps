@@ -1155,7 +1155,7 @@
     } else for (const [requirementId, optionId] of Object.entries(selections || {})) {
       const requirement = requirements.find(req => req.id === requirementId);
       const option = requirement && typeof optionId === 'string' && optionId && optionsForRequirement(requirement).find(option => option.id === optionId);
-      if (!option || balance?.balanceRequirementIds.includes(requirementId)) setupIssues.push({ code: 'invalid_selection', message: balance?.balanceRequirementIds.includes(requirementId) ? 'Service Learning credit is allocated automatically only for the actual transfer-credit shortfall.' : requirement ? 'The selected option for ' + requirement.title + ' is unavailable under the enabled sources and evidence settings.' : 'A scenario selection does not match a requirement in this program.', requirementId });
+      if (!option || balance?.balanceRequirementIds.includes(requirementId)) setupIssues.push({ code: 'invalid_selection', message: balance?.balanceRequirementIds.includes(requirementId) ? 'Service Learning credit is allocated automatically only for the actual transfer-credit shortfall.' : requirement ? 'The course chosen for ' + requirement.title + ' comes from a source that is turned off or no longer listed. Choose another course for it, or turn that source back on in Course preferences.' : 'A scenario selection does not match a requirement in this program.', requirementId });
       else selectedOptions.set(requirementId, option);
     }
     const completed = new Map();
