@@ -107,3 +107,11 @@ test('evaluateAll loads each curriculum file once per group and reports progress
  const failing=await Worth.evaluateAll({index:subset,catalog:fixture.catalog,baselines,registry,rates,learning:[english]},{loadModels:async()=>{throw Error('offline');}});
  assert(failing.every(result=>result.status==='unavailable'),'a file that cannot load marks its plans unavailable rather than zero');
 });
+
+test('the degree-level filter keeps only plans at that level and ignores unknown levels',()=>{
+ const row=(routeId,level)=>({routeId,level,title:routeId,school:'S',status:'ok',filled:1,totalCredits:60,remaining:{total:30},covered:30,subjects:[],modalities:['online']});
+ const rows=[row('aa','associate'),row('bs','bachelor'),row('ms','master')];
+ assert.deepEqual(Worth.rank(rows,{level:'bachelor'}).results.map(r=>r.routeId),['bs']);
+ assert.equal(Worth.rank(rows,{level:'bachelor'}).level,'bachelor');
+ assert.equal(Worth.rank(rows,{level:'nonsense'}).results.length,3,'an unknown level filters nothing');
+});

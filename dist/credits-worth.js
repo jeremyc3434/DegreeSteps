@@ -76,7 +76,7 @@
    const message=event.data;if(!message||message.id!==runId)return;
    if(message.event==='start'){total=message.total;fillSubjects(message.subjects);}
    else if(message.event==='result'){results.set(message.result.routeId,message.result);done=message.done;total=message.total;queueRender();}
-   else if(message.event==='done'){running=false;elapsed=message.ms;render({announce:true});}
+   else if(message.event==='done'){running=false;elapsed=message.ms;const status=$('cw-save-status');if(/ Checking plans…$/.test(status.textContent))status.textContent=status.textContent.replace(/ Checking plans…$/,' Plans updated.');render({announce:true});}
    else if(message.event==='error'){running=false;showError(message.error+' Reload to try again.');render();}
   });
   worker.addEventListener('error',()=>{running=false;showError('The plan check stopped unexpectedly. Reload to try again.');render();});
@@ -96,7 +96,7 @@
  function showError(text){$('cw-error').hidden=!text;$('cw-error').textContent=text;}
  function fillSubjects(subjects){
   if(subjectsFilled||!subjects)return;subjectsFilled=true;const select=$('cw-subject'),value=select.value;
-  select.innerHTML='<option value="">All subjects</option>'+Object.entries(subjects).map(([id,label])=>'<option value="'+esc(id)+'">'+esc(label)+'</option>').join('');select.value=value;
+  select.innerHTML='<option value="">All subjects</option>'+Object.entries(subjects).map(([id,label])=>'<option value="'+esc(id)+'">'+esc(label)+'</option>').join('');const wanted=value||new URLSearchParams(location.search).get('subject')||'';select.value=Object.hasOwn(subjects,wanted)?wanted:'';
  }
 
  // ---------- Rendering ----------
@@ -141,7 +141,7 @@
  function render(options={}){
   const all=[...results.values()],summary=Worth.recordSummary(all,learning()),records=learning();
   renderRecords(summary);
-  const ranked=Worth.rank(all,{sort:$('cw-sort').value,subject:$('cw-subject').value,format:$('cw-format').value,matchedOnly:$('cw-matched').checked});
+  const ranked=Worth.rank(all,{sort:$('cw-sort').value,subject:$('cw-subject').value,format:$('cw-format').value,level:$('cw-level').value,matchedOnly:$('cw-matched').checked});
   const shown=ranked.results.slice(0,limit);
   $('cw-empty').hidden=records.length>0;
   $('cw-progress-wrap').hidden=!running;
@@ -154,7 +154,7 @@
   const finished=!running&&records.length&&all.length;
   $('cw-nomatch').hidden=!(finished&&ranked.withMatches===0);
   if(options.announce||!running){
-   const filtered=$('cw-subject').value||$('cw-format').value||$('cw-matched').checked;
+   const filtered=$('cw-subject').value||$('cw-format').value||$('cw-level').value||$('cw-matched').checked;
    $('cw-count').textContent=!records.length?'Add a finished course to see your ranking.':running?'Checking '+(total||'all')+' degree plans with your '+records.length+' course'+(records.length===1?'':'s')+'…':ranked.total?(filtered?ranked.results.length+' of '+ranked.total+' plans shown':ranked.total+' plans checked')+' · '+ranked.withMatches+' could use your courses'+(elapsed!==null?' · checked in '+(elapsed/1000).toFixed(1)+'s':''):'No plans could be checked.';
   }
  }
@@ -200,7 +200,12 @@
   const buttons=[...document.querySelectorAll('[data-remove]')];(buttons[Math.min(index,buttons.length-1)]||$('cw-provider')).focus();
  });
  $('cw-save').addEventListener('click',()=>{try{$('cw-save-status').textContent=saveQuick();schedule();render();}catch(error){$('cw-save-status').textContent=error.message;}});
- for(const id of ['cw-sort','cw-subject','cw-format','cw-matched'])$(id).addEventListener('change',()=>{limit=PAGE;render({announce:true});});
+ // Sort and filters live in the address bar so a ranking view can be bookmarked or shared. Course records never do.
+ const CONTROLS={sort:'cw-sort',subject:'cw-subject',format:'cw-format',level:'cw-level'};
+ function writeControls(){try{const params=new URLSearchParams(location.search);for(const [name,id] of Object.entries(CONTROLS)){const value=$(id).value;if(value&&!(name==='sort'&&value==='covered'))params.set(name,value);else params.delete(name);}if($('cw-matched').checked)params.set('matched','1');else params.delete('matched');const query=params.toString(),next=location.pathname+(query?'?'+query:'')+location.hash;if(next!==location.pathname+location.search+location.hash)history.replaceState(history.state,'',next);}catch{}}
+ function readControls(){const params=new URLSearchParams(location.search);for(const [name,id] of Object.entries(CONTROLS)){const value=params.get(name),select=$(id);if(value&&[...select.options].some(option=>option.value===value))select.value=value;}$('cw-matched').checked=params.get('matched')==='1';}
+ readControls();
+ for(const id of ['cw-sort','cw-subject','cw-format','cw-level','cw-matched'])$(id).addEventListener('change',()=>{limit=PAGE;writeControls();render({announce:true});});
  $('cw-controls').addEventListener('submit',event=>event.preventDefault());
  $('cw-more').addEventListener('click',()=>{const first=limit;limit+=PAGE;render();document.querySelectorAll('#cw-list .cw-card')[first]?.querySelector('a')?.focus();});
  $('cw-empty-add').addEventListener('click',event=>{event.preventDefault();$('cw-add').open=true;$('cw-provider').focus();});

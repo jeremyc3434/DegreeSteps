@@ -127,8 +127,9 @@
  const priced=result=>result.status==='ok'&&result.estimate?.status==='range';
 
  /** Pure ranking and filtering. Unknown cost never sorts as zero; unavailable plans always sort last. */
+ const LEVELS=['associate','bachelor','master','doctorate'];
  function rank(results,options={}){
-  const sort=SORTS.includes(options.sort)?options.sort:'covered',subject=text(options.subject),format=['online','campus'].includes(options.format)?options.format:'';
+  const sort=SORTS.includes(options.sort)?options.sort:'covered',subject=text(options.subject),format=['online','campus'].includes(options.format)?options.format:'',level=LEVELS.includes(options.level)?options.level:'';
   const az=(a,b)=>a.title.localeCompare(b.title)||a.school.localeCompare(b.school)||a.routeId.localeCompare(b.routeId);
   const byCovered=(a,b)=>covered(b)-covered(a)||b.filled-a.filled||left(a)-left(b)||az(a,b);
   const comparators={
@@ -137,9 +138,9 @@
    left:(a,b)=>Number(b.filled>0)-Number(a.filled>0)||left(a)-left(b)||covered(b)-covered(a)||az(a,b),
    cost:(a,b)=>Number(priced(b))-Number(priced(a))||(priced(a)&&priced(b)?a.estimate.min-b.estimate.min||a.estimate.max-b.estimate.max:0)||byCovered(a,b)
   };
-  const filtered=list(results).filter(result=>(!subject||list(result.subjects).includes(subject))&&(!format||list(result.modalities).includes(format))&&(!options.matchedOnly||result.filled>0));
+  const filtered=list(results).filter(result=>(!subject||list(result.subjects).includes(subject))&&(!format||list(result.modalities).includes(format))&&(!level||key(result.level).startsWith(level))&&(!options.matchedOnly||result.filled>0));
   const sorted=filtered.slice().sort((a,b)=>Number(a.status!=='ok')-Number(b.status!=='ok')||comparators[sort](a,b));
-  return {sort,subject,format,results:sorted,total:list(results).length,withMatches:list(results).filter(result=>result.filled>0).length};
+  return {sort,subject,format,level,results:sorted,total:list(results).length,withMatches:list(results).filter(result=>result.filled>0).length};
  }
 
  /** One line per finished record across every checked plan: where it was proposed, or why it needs review. */
@@ -249,5 +250,5 @@
   return results;
  }
 
- return Object.freeze({completedRecords,startingRoute,planState,evaluatePlan,rank,recordSummary,evaluateAll,planKeys,recordKeys,recordTouchesPlan,untouchedResult,validCourseIndex,evaluateWithIndex,SORTS:[...SORTS]});
+ return Object.freeze({completedRecords,startingRoute,planState,evaluatePlan,rank,recordSummary,evaluateAll,planKeys,recordKeys,recordTouchesPlan,untouchedResult,validCourseIndex,evaluateWithIndex,SORTS:[...SORTS],LEVELS:[...LEVELS]});
 }));
