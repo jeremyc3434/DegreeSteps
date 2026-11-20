@@ -178,5 +178,73 @@
   return results;
  }
 
- return Object.freeze({completedRecords,startingRoute,planState,evaluatePlan,rank,recordSummary,evaluateAll,SORTS:[...SORTS]});
+ // ---------- Lightweight check: a compact per-plan identity index (dist/data/plan-course-index.json) ----------
+ // These mirror guide-engine's key/providerKey/codeTokens so the index is a superset of what the matcher reads.
+ const key=value=>text(value).normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+ const providerKey=value=>({sophialearning:'sophia',studycom:'studycom',collegelevelexaminationprogram:'clep',jointservicestranscript:'jst',communitycollegeoftheairforce:'ccaf'}[key(value)]||key(value));
+ const codeTokens=value=>(text(value).match(/\b[A-Za-z]{2,6}[\s-]?\d{3,5}[A-Za-z]?\b/g)||[]).map(key);
+ /** Every outside/university option identity a plan lists: provider:code for codes and aliases, provider#listingId for catalog listings. */
+ function planKeys(model){
+  const keys=new Set();
+  for(const requirement of list(model?.requirements))for(const option of list(requirement.options)){
+   const provider=providerKey(option.provider);if(!provider)continue;
+   for(const code of [option.code,...list(option.codeAliases)])if(key(code))keys.add(provider+':'+key(code));
+   for(const id of list(option.listingIdentityIds))if(text(id))keys.add(provider+'#'+text(id));
+  }
+  return [...keys].sort();
+ }
+ /** Every identity a record could resolve to: its codes, aliases, code-shaped tokens in its code or title, and its catalog listing. */
+ function recordKeys(record){
+  const provider=providerKey(record?.provider);if(!provider)return [];
+  const codes=[record.code,record.mappingCode,record.sourceListingCode,...list(record.codeAliases)].map(key).filter(Boolean);
+  const keys=new Set([...codes,...codeTokens(record.code),...codeTokens(record.title)].filter(Boolean).map(code=>provider+':'+code));
+  if(text(record.catalogCourseId))keys.add(provider+'#'+text(record.catalogCourseId));
+  return [...keys];
+ }
+ /** Conservative: true whenever the matcher could place, flag or explain this record in this plan. */
+ function recordTouchesPlan(record,plan,keySet){
+  if(list(record?.evaluations).length&&list(record.evaluations).some(item=>!item?.programId||item.programId===plan.modelId))return true;
+  if(text(record?.sourceProgramId)&&record.sourceProgramId===plan.modelId)return true;
+  if(providerKey(record?.provider)==='university'&&key(record.institution)&&key(record.institution)===key(plan.route?.school))return true;
+  return recordKeys(record).some(item=>keySet.has(item));
+ }
+ /** The plan's result for records it cannot match: its starting route, with each record marked "no listed match". */
+ function untouchedResult(plan,learning){
+  return {...copy(plan.start),matches:[],records:Object.fromEntries(completedRecords(learning).map(record=>[record.id,{status:'none'}]))};
+ }
+ function validCourseIndex(index){
+  return index?.kind==='degreesteps-plan-course-index'&&index.version===1&&Array.isArray(index.keys)&&index.plans&&typeof index.plans==='object'&&Object.values(index.plans).every(plan=>plan&&plan.start&&plan.route&&Array.isArray(plan.keys)&&typeof plan.modelId==='string');
+ }
+ /**
+  * Same results as evaluateAll, but only plans a finished record could touch load their curriculum.
+  * hooks: {loadModels(ids,paths), loadRates(), pause(), cancelled(), onResult(result,done,total), concurrency}
+  */
+ async function evaluateWithIndex(index,input,hooks={}){
+  if(!validCourseIndex(index))throw Error('The plan course index is unavailable.');
+  const learning=completedRecords(list(input?.learning)),entries=Object.entries(index.plans),total=entries.length,results=[];let done=0;
+  const touched=[];
+  for(const [routeId,plan] of entries){
+   const keySet=new Set(plan.keys.map(i=>index.keys[i]));
+   if(learning.some(record=>recordTouchesPlan(record,plan,keySet)))touched.push([routeId,plan]);
+   else{const result=untouchedResult(plan,learning);results.push(result);done++;hooks.onResult?.(result,done,total);}
+  }
+  if(!touched.length||hooks.cancelled?.())return results;
+  let rates=null;try{rates=hooks.loadRates?await hooks.loadRates():input?.rates||null;}catch{rates=null;}
+  const groups=new Map();for(const item of touched){const path=item[1].path||'unknown:'+item[1].modelId;if(!groups.has(path))groups.set(path,[]);groups.get(path).push(item);}
+  const ordered=[...groups.values()].sort((a,b)=>a.length-b.length);
+  const run=async group=>{
+   let models=[];try{models=await hooks.loadModels([...new Set(group.map(([,plan])=>plan.modelId))]);}catch{models=[];}
+   for(const [routeId,plan] of group){
+    if(hooks.cancelled?.())return;
+    const result=evaluatePlan({route:plan.route,model:list(models).find(item=>item.id===plan.modelId),baseline:plan.baseline,indexEntry:{modelId:plan.modelId,tier:plan.start.tier,subjects:plan.start.subjects,questions:plan.start.questions},learning,rates});
+    results.push(result);done++;hooks.onResult?.(result,done,total,routeId);
+    if(hooks.pause)await hooks.pause();
+   }
+  };
+  const concurrency=Math.max(1,Math.min(3,hooks.concurrency||2));let cursor=0;
+  await Promise.all(Array.from({length:concurrency},async()=>{while(cursor<ordered.length&&!hooks.cancelled?.())await run(ordered[cursor++]);}));
+  return results;
+ }
+
+ return Object.freeze({completedRecords,startingRoute,planState,evaluatePlan,rank,recordSummary,evaluateAll,planKeys,recordKeys,recordTouchesPlan,untouchedResult,validCourseIndex,evaluateWithIndex,SORTS:[...SORTS]});
 }));
