@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Compile reviewed Liberty 2026–27 requirement facts into planner source records.
+"""RETIRED as a Liberty source of truth (2026-11-20). Liberty curricula now compile from content/pathway-kits/liberty
+via `npm run factory:publish`; its invariants live in content/pathway-kits/liberty/guards.mjs. Kept for history;
+do not run it to regenerate content/curricula/liberty*.json.
+
+Compile reviewed Liberty 2026–27 requirement facts into planner source records.
 
 This offline importer preserves separately reviewed delivery variants and explicit
 overlap allocations.  It does not infer degree requirements from program titles.

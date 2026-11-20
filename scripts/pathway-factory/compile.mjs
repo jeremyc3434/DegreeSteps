@@ -2,11 +2,11 @@
 import {resolve} from 'node:path';
 import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
-import {clone,list,slug,sourceRefs,awardFields,inScope,matchRequirement,rowStatus,programUnits,publishableReview,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root} from './lib.mjs';
+import {clone,list,slug,sourceRefs,awardFields,inScope,matchRequirement,rowStatus,programUnits,publishableReview,parsePlacement,sourceIndex,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root} from './lib.mjs';
 import {verifyKit,formatFindings} from './verify.mjs';
 
 /** Fields that exist only in the kit (grounding/review metadata) and never enter a compiled model. */
-const kitOnlyRequirementFields=['quotes'];
+const kitOnlyRequirementFields=['quotes','optionRows'];
 
 export function deriveMappingEvidence(kit,program,row,modalities){
   const map=row.universityMapRecord;
@@ -20,7 +20,8 @@ export function compileOption(kit,program,requirement,row,modalities){
   if(!course)throw Error(`Unknown provider course ${row.provider} ${row.code} in ${row.id}`);
   const identity={...clone(course),...clone(row.identity||{})};delete identity.code;
   for(const field of list(row.identityOmit))delete identity[field];
-  const option={id:row.placements?.[program.slug]?.optionId||defaultOptionId(row,requirement),provider:row.provider,code:row.code,...identity};
+  if(identity.sourceCredits===null){delete identity.sourceCredits;if(identity.sourceCreditSystem==null)delete identity.sourceCreditSystem;}
+  const option={id:row.placements?.[program.slug]?.optionId||row.optionId||defaultOptionId(row,requirement),provider:row.provider,code:row.code,...identity};
   for(const field of awardFields)if(row[field]!==undefined)option[field]=clone(row[field]);
   if(row.conditionIds)option.conditions=row.conditionIds.map(id=>{const text=kit.equivalencies.conditionLibrary?.[id];if(typeof text!=='string')throw Error(`Unknown condition ${id} in ${row.id}`);return text;});
   Object.assign(option,clone(row.extra||{}));
@@ -28,10 +29,42 @@ export function compileOption(kit,program,requirement,row,modalities){
   else if(row.universityMapRecord)option.mappingEvidence=deriveMappingEvidence(kit,program,row,modalities);
   return option;
 }
+/**
+ * A placement mode (equivalencies.json placementModes) describes how a placed award differs from the row itself in one
+ * requirement: fields set or removed, appended condition texts, derived degreePlacementEvidence, a requirement-specific option id.
+ */
+export function applyMode(kit,model,requirement,option,modeId){
+  const mode=kit.equivalencies.placementModes?.[modeId];
+  if(!mode)throw Error(`Unknown placement mode ${modeId}`);
+  for(const[field,value]of Object.entries(mode.set||{}))option[field]=clone(value);
+  for(const field of list(mode.unset))delete option[field];
+  if(mode.appendConditionIds)option.conditions=[...list(option.conditions),...mode.appendConditionIds.map(id=>{const text=kit.equivalencies.conditionLibrary?.[id];if(typeof text!=='string')throw Error(`Unknown condition ${id} in mode ${modeId}`);return text;})];
+  const evidence=mode.placementEvidence;
+  if(evidence){
+    const sourceIds=[...list(requirement.sourceIds),...list(evidence.extraSourceIds)];
+    option.degreePlacementEvidence={modelId:model.id,catalogYear:model.catalogYear,modality:list(model.modalities)[0],requirementId:requirement.id,receivingCode:option.receivingCode,credits:option.credits,creditSystem:option.creditSystem,placementType:evidence.placementType,sourceIds};
+    if(evidence.citeInOption)option.sourceIds=[...list(option.sourceIds),...sourceIds.filter(id=>!list(option.sourceIds).includes(id))];
+  }
+  if(mode.idSuffix==='requirement')option.id=option.id+'-'+requirement.id;
+  return option;
+}
+/** Explicit, ordered placements of a requirement (optionRows): equivalency rows with optional modes, or inline institutional options. */
+export function placedOptions(kit,program,requirement,model){
+  const rows=new Map(list(kit.equivalencies.equivalencies).map(row=>[row.id,row]));
+  return list(requirement.optionRows).map(entry=>{
+    const placement=parsePlacement(entry);
+    if(placement.inline)return clone(placement.inline);
+    const row=rows.get(placement.row);if(!row)throw Error(`Unknown equivalency row ${placement.row} in ${program.slug}/${requirement.id}`);
+    const option=compileOption(kit,program,requirement,row,model.modalities);
+    if(placement.mode)applyMode(kit,model,requirement,option,placement.mode);
+    if(placement.optionId)option.id=placement.optionId;
+    return option;
+  });
+}
 /** In-scope, published equivalency rows for one requirement, in stable order. */
 export function rowsFor(kit,program,requirement){
   const order=row=>row.placements?.[program.slug]?.order??Number.MAX_SAFE_INTEGER;
-  return list(kit.equivalencies.equivalencies).filter(row=>rowStatus(row)==='published'&&inScope(row,program)&&matchRequirement(row,program)?.id===requirement.id)
+  return list(kit.equivalencies.equivalencies).filter(row=>rowStatus(row)==='published'&&inScope(row,program,kit)&&matchRequirement(row,program)?.id===requirement.id)
     .sort((a,b)=>order(a)-order(b)||a.provider.localeCompare(b.provider)||a.code.localeCompare(b.code)||a.id.localeCompare(b.id));
 }
 export function compileProgram(kit,program){
@@ -45,9 +78,11 @@ export function compileProgram(kit,program){
   if(policies.transferMaxCredits)Object.assign(model,{externalMaxCredits:policies.transferMaxCredits.value});
   if(policies.alternativeMaxCredits)Object.assign(model,{alternativeMaxCredits:policies.alternativeMaxCredits.value,alternativeCapSourceIds:clone(policies.alternativeMaxCredits.sourceIds)});
   Object.assign(model,clone(program.modelFields||{}));
+  // Per-model source lists (modelSourceIds) let a school publish each model with exactly its own sources.
+  if(program.modelSourceIds){const index=sourceIndex(kit,program);model.sources=program.modelSourceIds.map(id=>{const entry=index.get(id);if(!entry)throw Error(`Unknown model source ${id} in ${program.slug}`);return clone(entry.source);});}
   model.requirements=program.requirements.map(requirement=>{
     const compiled=clone(requirement);for(const field of kitOnlyRequirementFields)delete compiled[field];
-    compiled.options=rowsFor(kit,program,requirement).map(row=>compileOption(kit,program,requirement,row,modalities));
+    compiled.options=requirement.optionRows?placedOptions(kit,program,requirement,model):rowsFor(kit,program,requirement).map(row=>compileOption(kit,program,requirement,row,modalities));
     return compiled;
   });
   return model;
@@ -70,11 +105,34 @@ export function compileKit(kit){
   if(pinned.length){const rank=new Map(pinned.map((id,i)=>[id,i]));sources.sort((a,b)=>(rank.get(a.id)??pinned.length)-(rank.get(b.id)??pinned.length));}
   const doc={version:1,checkedOn:kit.school.checkedOn,sources,models};
   if(kit.school.routes)doc.routes=clone(kit.school.routes);
-  return {doc,skipped};
+  return {doc,skipped,documents:publishedDocuments(kit,doc)};
 }
+/**
+ * Published documents. A single publish.path receives the whole document; publish.documents splits models across several
+ * content/curricula files ({path, programs?, checkedOn?, routes?, sources?:false}); a document without programs takes every
+ * program no other document lists. publish.compiledBy is copied onto each document so the registry knows that the school's
+ * equivalencies are already joined.
+ */
+export function publishedDocuments(kit,doc){
+  const publish=kit.school.publish;
+  if(!publish)return [];
+  if(!publish.documents)return publish.path?[{path:publish.path,doc}]:[];
+  const listed=new Set(publish.documents.flatMap(d=>list(d.programs))),byId=new Map(doc.models.map(m=>[m.id,m]));
+  const programs=kit.programs.filter(publishable),modelOf=slug=>byId.get(compiledId(kit,programs.find(p=>p.slug===slug)));
+  return publish.documents.map(d=>{
+    const models=(d.programs?d.programs.map(modelOf):programs.filter(p=>!listed.has(p.slug)).map(p=>byId.get(compiledId(kit,p)))).filter(Boolean);
+    const out={version:1,checkedOn:d.checkedOn||kit.school.checkedOn};
+    if(publish.compiledBy)out.compiledBy=publish.compiledBy;
+    if(d.sources!==false)out.sources=doc.sources;
+    out.models=models;
+    if(d.routes)out.routes=clone(d.routes);
+    return {path:d.path,doc:out};
+  });
+}
+const compiledId=(kit,program)=>program&&(program.modelId||`curriculum-${kit.school.id}-${program.slug}`);
 
-/** Serialization for published curriculum documents (the files the existing registry build reads). */
-export const serializePublished=doc=>JSON.stringify(doc,null,2)+'\n';
+/** Serialization for published curriculum documents (the files the existing registry build reads): pretty JSON, or one line with publish.compact. */
+export const serializePublished=(doc,{compact=false}={})=>(compact?JSON.stringify(doc):JSON.stringify(doc,null,2))+'\n';
 /** Runs a school's optional guards.mjs (school-specific academic invariants) against its compiled document. */
 export async function runGuards(kit,doc){
   const path=resolve(kit.dir,'guards.mjs');
@@ -92,15 +150,17 @@ async function main(){
   for(const dir of dirs){
     const kit=await loadKit(dir),result=await verifyKit(kit,{asOf:args['as-of']});
     if(result.errors.length){console.error(formatFindings(kit,result));console.error(`Not compiled: ${kit.school.id} has ${result.errors.length} verification error(s).`);failed=true;continue;}
-    const {doc,skipped}=compileKit(kit),guards=await runGuards(kit,doc);
+    const {doc,skipped,documents}=compileKit(kit),guards=await runGuards(kit,doc);
     const summary={school:kit.school.id,models:doc.models.length,options:doc.models.reduce((n,m)=>n+m.requirements.reduce((k,r)=>k+r.options.length,0),0),guards,skippedDrafts:skipped};
     if(args.publish){
       // Published kits are the source of truth for their content/curricula document.
-      if(!kit.school.publish?.path){continue;}
-      const out=resolve(root,kit.school.publish.path),text=serializePublished(doc);
-      if(args.check){const current=await exists(out)?await readFile(out,'utf8'):null;if(current!==text){console.error(`${kit.school.publish.path} is stale; run npm run factory:publish`);failed=true;continue;}}
-      else await writeFile(out,text);
-      console.log(JSON.stringify({...summary,published:kit.school.publish.path,check:Boolean(args.check)}));
+      if(!documents.length){continue;}
+      for(const{path,doc:published}of documents){
+        const out=resolve(root,path),text=serializePublished(published,{compact:kit.school.publish.compact===true});
+        if(args.check){const current=await exists(out)?await readFile(out,'utf8'):null;if(current!==text){console.error(`${path} is stale; run npm run factory:publish`);failed=true;continue;}}
+        else await writeFile(out,text);
+      }
+      console.log(JSON.stringify({...summary,published:documents.map(d=>d.path),check:Boolean(args.check)}));
       continue;
     }
     const out=resolve(args.out||resolve(root,'content/curricula/kits'),kit.school.id+'.json');

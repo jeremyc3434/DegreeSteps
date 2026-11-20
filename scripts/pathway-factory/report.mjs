@@ -4,7 +4,7 @@
  * Usage: node scripts/pathway-factory/report.mjs [kit-dir-or-id ...] [--json]
  */
 import {resolve} from 'node:path';
-import {list,inScope,matchRequirement,rowStatus,loadKit,kitDirs,resolveKitDir,readJSON,parseArgs,isMain,root} from './lib.mjs';
+import {list,inScope,matchRequirement,parsePlacement,rowStatus,loadKit,kitDirs,resolveKitDir,readJSON,parseArgs,isMain,root} from './lib.mjs';
 import {publishable} from './compile.mjs';
 
 const pct=(n,d)=>d?Math.round(1000*n/d)/10:0;
@@ -12,8 +12,9 @@ export function programCoverage(kit,program){
   const rows=list(kit.equivalencies.equivalencies);
   let covered=0,candidate=0,institutional=0,reuse=0;const open=[];
   for(const r of list(program.requirements)){
-    const matched=rows.filter(row=>matchRequirement(row,program)?.id===r.id);
-    const applied=matched.filter(row=>rowStatus(row)==='published'&&inScope(row,program));
+    const placed=list(r.optionRows).map(entry=>rows.find(row=>row.id===parsePlacement(entry).row)).filter(Boolean);
+    const matched=[...new Set([...placed,...rows.filter(row=>matchRequirement(row,program)?.id===r.id)])];
+    const applied=(Array.isArray(r.optionRows)?placed:matched).filter(row=>rowStatus(row)==='published'&&inScope(row,program,kit));
     const appliedKeys=new Set(applied.map(row=>row.provider+'|'+row.code));
     reuse+=new Set(matched.filter(row=>!applied.includes(row)&&!appliedKeys.has(row.provider+'|'+row.code)).map(row=>row.provider+'|'+row.code)).size;
     if(r.institutionalOnly)institutional+=r.credits;

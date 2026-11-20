@@ -1,0 +1,368 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "business-aa-online",
+  "modelId": "curriculum-liberty-business-aa-online",
+  "routeIds": [
+    "liberty-catalog-6652cf88788c7cbb-online"
+  ],
+  "title": "Business (A.A.) — Online",
+  "level": "associate",
+  "catalog": "2026–2027",
+  "totalCredits": 60,
+  "modalities": [
+    "online"
+  ],
+  "review": {
+    "status": "migrated",
+    "source": "dist/data/curricula/liberty.json (registry-compiled)",
+    "reviewedOn": "2026-11-10"
+  },
+  "modelFields": {
+    "format": "Online",
+    "institutionMinCredits": 15,
+    "externalMaxCredits": 45,
+    "majorResidencyBasisCredits": 27,
+    "coverageLabel": "Source-linked full-credit curriculum with proposed approved-course choices; transfer matches require separate evidence.",
+    "rulesNotes": [
+      "A 60-credit proposed allocation: 33 unique general education + 6 foundations + 21 major credits. The zero-free-elective case lies within the printed 0–3-credit elective range.",
+      "BUSI 201 fulfills the information-literacy category and is counted once. Required major-core BUSI 300 and ECON 213 are retained separately from the proposed COMS 101/SOCI 200 general-education choices.",
+      "The source prints UNIV 104 as 0–3 credits; zero credits are a scenario requiring individual confirmation.",
+      "Do not automatically remove RLGN 104 at 45 transfer credits or THEO 104 at 60 transfer credits. The source permits those waivers, but this ledger retains both courses until individual evaluation."
+    ],
+    "unresolved": [
+      "Confirm individual catalog eligibility, major-course residency allocation, course prerequisites, and written transfer evaluation.",
+      "Outside-course equivalencies must be sourced separately; a university requirement is not evidence that a particular accelerated course transfers.",
+      "State-specific online general-education requirements may differ; consult the applicable state degree completion plan."
+    ],
+    "graduationRequirements": [
+      {
+        "id": "gpa",
+        "title": "Overall GPA",
+        "detail": "At least 2.0 overall GPA.",
+        "sourceIds": [
+          "liberty-business-aa-online-2026"
+        ]
+      },
+      {
+        "id": "degree-application",
+        "title": "Graduation application",
+        "detail": "Submit the degree completion application within the last semester of the anticipated graduation date.",
+        "sourceIds": [
+          "liberty-business-aa-online-2026"
+        ]
+      },
+      {
+        "id": "major-minimum-grade",
+        "title": "Major course grades",
+        "detail": "At least C in upper-level courses in the major.",
+        "sourceIds": [
+          "liberty-business-aa-online-2026"
+        ]
+      }
+    ],
+    "catalogParentId": "liberty-catalog-6652cf88788c7cbb",
+    "obligations": [
+      {
+        "title": "UNIV 104 evaluation",
+        "notes": "The degree plan lists UNIV 104 as 0–3 credits. This proposed ledger uses the zero-credit case. Obtain Liberty confirmation; if 3 credits are required, adjust elective allocation within the printed range or retain additional graduation credit.",
+        "sourceIds": [
+          "liberty-business-aa-online-2026"
+        ]
+      }
+    ],
+    "overlaps": [
+      {
+        "requirementId": "busi-201",
+        "alsoSatisfies": "Information Literacy Elective",
+        "creditsCountedOnce": 3
+      }
+    ],
+    "curriculumSections": [
+      {
+        "id": "general",
+        "title": "General education and foundational skills",
+        "requirementIds": [
+          "engl-101",
+          "coms-101",
+          "math-121",
+          "rlgn-104",
+          "ethc-101",
+          "cstu-101",
+          "biol-102",
+          "soci-200",
+          "bibl-104",
+          "theo-104"
+        ],
+        "sourceId": "liberty-business-aa-online-2026"
+      },
+      {
+        "id": "major",
+        "title": "Major and major foundations",
+        "requirementIds": [
+          "busi-201",
+          "busi-230",
+          "acct-211",
+          "acct-212",
+          "busi-300",
+          "busi-301",
+          "busi-303",
+          "busi-310",
+          "econ-213"
+        ],
+        "sourceId": "liberty-business-aa-online-2026"
+      },
+      {
+        "id": "electives",
+        "title": "Free electives",
+        "requirementIds": [],
+        "sourceId": "liberty-business-aa-online-2026"
+      }
+    ],
+    "gradePolicy": {
+      "minimumGrade": "C",
+      "scope": "upper-level-major",
+      "sourceIds": [
+        "liberty-business-aa-online-2026"
+      ],
+      "checked": "2026-11-10",
+      "detail": "At least C in upper-level courses in the major."
+    },
+    "pricing": {
+      "model": "threshold-credit",
+      "fullTimeRate": 410,
+      "partTimeRate": 475,
+      "fullTimeMin": 12,
+      "period": "semester",
+      "currency": "USD",
+      "catalogYear": "2026-2027",
+      "sourceUrl": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+      "sourceIds": [
+        "liberty-online-tuition-2026-2027-reviewed",
+        "liberty-tuition-fees-2026-2027-reviewed"
+      ],
+      "checkedOn": "2026-11-17",
+      "exclusions": [
+        "The full-time rate requires at least 12 semester credits; eight-week subterms are not separate billing semesters.",
+        "Program-specific, military and other eligibility-based rates are outside this standard-rate model.",
+        "Technology, completion and course-specific fees remain separate."
+      ]
+    },
+    "publishedFees": [
+      {
+        "id": "technology",
+        "label": "Online technology fee",
+        "amount": 349,
+        "currency": "USD",
+        "frequency": "semester",
+        "sourceIds": [
+          "liberty-online-tuition-2026-2027-reviewed",
+          "liberty-tuition-fees-2026-2027-reviewed"
+        ],
+        "eligibility": "Standard online fee; waived for actively serving military and their spouses under the published policy."
+      },
+      {
+        "id": "degree-completion",
+        "label": "Degree completion application fee",
+        "amount": 100,
+        "currency": "USD",
+        "frequency": "per-application",
+        "sourceIds": [
+          "liberty-online-tuition-2026-2027-reviewed"
+        ]
+      }
+    ],
+    "policyEvidence": {
+      "institutionMinCredits": {
+        "value": 15,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "calculation": "25% of this published degree total must be completed at Liberty."
+      },
+      "externalMaxCredits": {
+        "value": 45,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "calculation": "Published degree total less the 25% institutional minimum.",
+        "scope": "Overall outside-credit ceiling only. This does not establish a separate aggregate alternative-credit ceiling or a particular provider award."
+      },
+      "majorInstitutionFraction": {
+        "value": 0.25,
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "scope": "25% of the exact major/minor component, unless the degree completion plan specifies otherwise. The denominator remains degree-specific."
+      }
+    },
+    "sharedOnlinePolicyReview": {
+      "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+      "checkedOn": "2026-11-18",
+      "sourceIds": [
+        "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+      ],
+      "fields": [
+        "institutionMinCredits",
+        "externalMaxCredits",
+        "majorInstitutionFraction"
+      ],
+      "alternativeCreditCeilingEstablished": false,
+      "personalAwardsCreated": 0
+    },
+    "defaultProviders": [
+      "Sophia",
+      "Study.com",
+      "StraighterLine",
+      "CLEP",
+      "DSST"
+    ],
+    "cliMappingReview": {
+      "checkedOn": "2026-11-17",
+      "sourceSnapshot": "content/transfer-awards/snapshots/liberty-cli-calculator-2026-11-17.json",
+      "receivingAwardSource": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "scope": "Exact fixed receiving awards; undergraduate degree/format and eligible transcript-route conditions remain explicit."
+    },
+    "policyReview": [
+      {
+        "field": "alternativeMaxCredits",
+        "status": "not-applicable",
+        "reviewId": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+        "sourceIds": [
+          "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        ],
+        "checkedOn": "2026-11-18",
+        "message": "The reviewed online undergraduate catalog publishes no separate aggregate alternative-credit ceiling. Its documented overall transfer and degree/major residency rules remain enforced. Each outside course still requires its own published receiving award and provider eligibility; no numeric alternative-credit allowance or student award is inferred."
+      }
+    ],
+    "sharedPolicyResolution": {
+      "id": "liberty-shared-online-undergraduate-policy-2026-2027-reviewed-2026-11-18",
+      "sourceContentHash": "sha256:a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "level": "associate",
+      "totalCredits": 60,
+      "degreeInstitutionCredits": 15,
+      "overallOutsideCeiling": 45,
+      "majorResidencyBasisCredits": 27,
+      "resolvedFields": [
+        "alternativeMaxCredits"
+      ],
+      "numericAlternativeCapInvented": false,
+      "personalAwardsCreated": 0
+    },
+    "evidenceCheckedOn": "2026-11-10"
+  },
+  "modelSourceIds": [
+    "liberty-online-approved-gened",
+    "liberty-residential-approved-gened",
+    "liberty-business-aa-online-2026",
+    "liberty-official-sophia-online-2026-07",
+    "liberty-official-study-com-online-2026-05",
+    "liberty-official-straighterline-online-2026-04",
+    "liberty-official-clep-online-2025-08",
+    "liberty-online-tuition-2026-2027-reviewed",
+    "liberty-tuition-fees-2026-2027-reviewed",
+    "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+    "collegeboard-clep-humanities-identity-2026-11-17",
+    "ace-clep-0003-v5-identity-2026-11-17",
+    "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+    "liberty-cli-calculator-current",
+    "cli-transcript-issuer-current",
+    "cli-original-bus-310-current",
+    "cli-original-ecn-301-current",
+    "liberty-dsst-linked-2023-online",
+    "liberty-dsst-2025-online",
+    "ace-dsst-dant-0018-v5",
+    "dsst-provider-dant-0018"
+  ],
+  "requirements": [
+    {"id":"engl-101","code":"ENGL 101","title":"Composition and Rhetoric","credits":3,"category":"general","group":"writing","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
+      "sophia-soph-0015-to-engl-101",
+      "study-com-sdcm-0057-to-engl-101",
+      "study-com-sdcm-0244-to-engl-101",
+      "straighterline-oosl-0005-to-engl-101",
+      "clep-clep-0041-to-engl-101"
+    ]},
+    {"id":"coms-101","code":"COMS 101","title":"Speech Communication","credits":3,"category":"general","group":"communication","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
+      "sophia-soph-0024-to-coms-101",
+      "study-com-sdcm-0055-to-coms-101",
+      "straighterline-oosl-0052-to-coms-101"
+    ]},
+    {"id":"math-121","code":"MATH 121","title":"College Algebra","credits":3,"category":"general","group":"quantitative-reasoning","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
+      "sophia-soph-0001-to-math-121",
+      "study-com-sdcm-0013-to-math-121",
+      "study-com-sdcm-0033-to-math-121",
+      "straighterline-oosl-0002-to-math-121",
+      "clep-clep-0013-to-math-121"
+    ]},
+    {"id":"rlgn-104","code":"RLGN 104","title":"Christian Life and Biblical Worldview","credits":4,"category":"general","group":"biblical-worldview","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","optionRows":[
+
+    ]},
+    {"id":"ethc-101","code":"ETHC 101","title":"Introduction to Ethics","credits":3,"category":"general","group":"critical-thinking","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
+      "sophia-soph-0020-to-ethc-101",
+      "study-com-sdcm-0161-to-ethc-101",
+      "straighterline-oosl-0123-to-ethc-101",
+      "dsst-dant-0018-to-ethc-101@requirement-id"
+    ]},
+    {"id":"cstu-101","code":"CSTU 101","title":"Western Culture","credits":3,"category":"general","group":"cultural-studies","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
+      "study-com-sdcm-0047-to-cstu-101",
+      "clep-clep-0003-to-cstu-101"
+    ]},
+    {"id":"biol-102","code":"BIOL 102","title":"Principles of Human Biology","credits":3,"category":"general","group":"natural-science","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
+      "sophia-soph-0002-to-biol-102",
+      "sophia-soph-0073-to-biol-102",
+      "study-com-sdcm-0003-to-biol-102",
+      "straighterline-oosl-0028-to-biol-102"
+    ]},
+    {"id":"soci-200","code":"SOCI 200","title":"Introduction to Sociology","credits":3,"category":"general","group":"social-science","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
+      "sophia-soph-0051-to-soci-200-2",
+      "study-com-sdcm-0048-to-soci-200-2",
+      "straighterline-oosl-0035-to-soci-200-2",
+      "clep-clep-0026-to-soci-200-2"
+    ]},
+    {"id":"bibl-104","code":"BIBL 104","title":"Survey of Old and New Testament","credits":4,"category":"general","group":"christianity-contexts","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","optionRows":[
+
+    ]},
+    {"id":"theo-104","code":"THEO 104","title":"Introduction to Theology Survey","credits":4,"category":"general","group":"christianity-contexts","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","optionRows":[
+
+    ]},
+    {"id":"busi-201","code":"BUSI 201","title":"Intermediate Business Computer Applications","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-business-aa-online-2026"],"optionRows":[
+
+    ]},
+    {"id":"busi-230","code":"BUSI 230","title":"Introduction to Probability and Statistics","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-business-aa-online-2026"],"selectionRequired":false,"optionRows":[
+      "sophia-soph-0005-to-math-201",
+      "study-com-sdcm-0225-to-busi-230",
+      "study-com-sdcm-0068-to-math-201",
+      "straighterline-oosl-0011-to-busi-230",
+      "straighterline-oosl-0070-to-math-201"
+    ]},
+    {"id":"acct-211","code":"ACCT 211","title":"Financial Principles","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-business-aa-online-2026"],"selectionRequired":false,"optionRows":[
+      "clep-clep-0039-to-acct-211-3"
+    ]},
+    {"id":"acct-212","code":"ACCT 212","title":"Managerial Principles","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-business-aa-online-2026"],"optionRows":[
+
+    ]},
+    {"id":"busi-300","code":"BUSI 300","title":"Business Communications","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-business-aa-online-2026"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-business-aa-online-2026"],"optionRows":[
+
+    ]},
+    {"id":"busi-301","code":"BUSI 301","title":"Legal and Ethical Concepts for Decision Makers","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-business-aa-online-2026"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-business-aa-online-2026"],"optionRows":[
+
+    ]},
+    {"id":"busi-303","code":"BUSI 303","title":"International Business","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-business-aa-online-2026"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-business-aa-online-2026"],"selectionRequired":false,"optionRows":[
+      "study-com-sdcm-0054-to-busi-303"
+    ]},
+    {"id":"busi-310","code":"BUSI 310","title":"Principles of Management","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-business-aa-online-2026"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-business-aa-online-2026"],"selectionRequired":false,"optionRows":[
+      "christian-leaders-institute-bus-310-to-busi-310@requirement-id"
+    ]},
+    {"id":"econ-213","code":"ECON 213","title":"Principles of Microeconomics","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-business-aa-online-2026"],"selectionRequired":false,"optionRows":[
+      "christian-leaders-institute-ecn-301-to-econ-213-3@requirement-id",
+      "sophia-soph-0011-to-econ-213-4",
+      "study-com-sdcm-0069-to-econ-213-4",
+      "straighterline-oosl-0008-to-econ-213-4",
+      "clep-clep-0030-to-econ-213-4"
+    ]}
+  ]
+}

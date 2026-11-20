@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Reproduce complete online ledgers from separately reviewed official facts.
+"""RETIRED as a Liberty source of truth (2026-11-20). Liberty curricula now compile from content/pathway-kits/liberty
+via `npm run factory:publish`; its invariants live in content/pathway-kits/liberty/guards.mjs. Kept for history;
+do not run it to regenerate content/curricula/liberty*.json.
+
+Reproduce complete online ledgers from separately reviewed official facts.
 
 This does not infer degree requirements or transfer awards from degree titles.
 """

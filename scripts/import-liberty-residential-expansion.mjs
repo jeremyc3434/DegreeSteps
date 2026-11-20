@@ -1,3 +1,6 @@
+/* RETIRED as a Liberty source of truth (2026-11-20). Liberty curricula now compile from content/pathway-kits/liberty
+ * via `npm run factory:publish`; its invariants live in content/pathway-kits/liberty/guards.mjs. Kept for history;
+ * do not run it to regenerate content/curricula/liberty*.json. */
 /* Offline compilation of independently reviewed residential degree facts. */
 import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';

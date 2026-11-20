@@ -211,7 +211,9 @@ export function supplementDocument(input){
 }
 
 export async function run({check=false}={}){
-  const files=['content/curricula/liberty.json','dist/data/liberty.json','dist/data/liberty-criminal-justice-online.json','dist/data/liberty-criminal-justice-residential.json'];
+  // content/curricula/liberty.json is published by the Liberty pathway kit (content/pathway-kits/liberty) since 2026-11-20;
+  // the three standalone legacy models still take their reviewed guide mappings from here.
+  const files=['dist/data/liberty.json','dist/data/liberty-criminal-justice-online.json','dist/data/liberty-criminal-justice-residential.json'];
   let placements=0;const identities=new Set(),courses=new Set();
   for(const file of files){
     const path=resolve(root,file),original=JSON.parse(await readFile(path,'utf8'));

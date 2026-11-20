@@ -1,13 +1,16 @@
-const test=require('node:test'),assert=require('node:assert/strict');
+const test=require('node:test'),assert=require('node:assert/strict'),cp=require('node:child_process');
 const document=require('./content/curricula/liberty.json');
 const load=()=>import('./scripts/add-liberty-official-mappings.mjs');
 const row=(model,code)=>model.requirements.find(row=>row.code===code);
 const model=id=>document.models.find(model=>model.id===id);
+// content/curricula/liberty.json is published by the Liberty pathway kit; its exact official-guide placements are the reviewed guide awards.
+const officialPlacements=doc=>doc.models.flatMap(model=>model.requirements.flatMap(requirement=>(requirement.options||[]).filter(option=>option.mappingReviewId==='liberty-official-2026-11-10'&&option.evidence==='published').map(option=>({model,requirement,option}))));
+const publishCheck=()=>cp.spawnSync(process.execPath,['scripts/pathway-factory/compile.mjs','liberty','--publish','--check'],{cwd:__dirname,encoding:'utf8',timeout:60000});
 test('reviewed exact awards retain modality, identities, credits and guide dates',async()=>{
- const {supplementDocument,guideSource}=await load(),result=supplementDocument(document);
- assert.deepEqual(result,document,'the committed source is reproducible');
+ const {guideSource}=await load(),published=publishCheck();
+ assert.equal(published.status,0,'the committed source is reproducible: '+(published.stderr||published.stdout));
  let count=0;
- for(const model of result.models)for(const requirement of model.requirements)for(const option of requirement.options||[]){
+ for(const {model,requirement,option} of officialPlacements(document)){
   count++;assert.equal(option.mappingReviewId,'liberty-official-2026-11-10');assert.equal(option.credits,requirement.credits);if(option.provider==='CLEP'){assert.equal(option.sourceCredits,undefined);assert.equal(option.sourceCreditSystem,undefined);}else{assert.equal(option.sourceCredits,option.credits);assert.equal(option.sourceCreditSystem,'semester');}assert.equal(option.creditSystem,'semester');assert.equal(option.evidence,'published');assert(option.providerCourseCode);assert(option.conditions.some(note=>/No student award/.test(note)));
   const source=model.sources.find(source=>option.sourceIds.includes(source.id));assert(source);assert.equal(source.guideUpdated,option.guideUpdated);assert.equal(source.checked,'2026-11-10');
   if(option.provider==='CLEP')assert.equal(option.minScore,50);
@@ -36,7 +39,11 @@ test('grade scopes and conservative online Business technology credits survive r
  for(const name of ['online','residential']){const criminal=require('./dist/data/liberty-criminal-justice-'+name+'.json');assert.equal(row(criminal,'CJUS 310').minimumGrade,'C');assert.equal(row(criminal,'CJUS 200').minimumGrade,'C');assert.equal(row(criminal,'CJUS 400').options.filter(option=>option.provider!=='University').length,0);}
 });
 test('check mode validates upstream artifacts without mutations',async()=>{
- const {run}=await load(),result=await run({check:true});assert.equal(result.check,true);assert.equal(result.files,4);assert(result.providerCourses>90);
+ // The three standalone legacy models still take their guide mappings from the importer; content/curricula/liberty.json is checked by the factory publish.
+ const {run}=await load(),result=await run({check:true});assert.equal(result.check,true);assert.equal(result.files,3);assert.equal(publishCheck().status,0);
+ const identities=new Set(officialPlacements(document).map(({option})=>option.provider+'|'+option.code));
+ for(const file of ['liberty','liberty-criminal-justice-online','liberty-criminal-justice-residential'])for(const row of require('./dist/data/'+file+'.json').requirements)for(const option of row.options||[])if(option.mappingReviewId==='liberty-official-2026-11-10')identities.add(option.provider+'|'+option.code);
+ assert(identities.size>90);
 });
 test('the real Guide enforces reviewed CLEP scores while source quantities stay unknown',()=>{
  const Guide=require('./dist/guide-engine.js'),criminal=require('./dist/data/liberty-criminal-justice-online.json');

@@ -1,0 +1,483 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "computer-science-general-residential",
+  "modelId": "curriculum-liberty-computer-science-general-residential",
+  "routeIds": [
+    "liberty-catalog-1d4c76929b531364-general-residential"
+  ],
+  "title": "Computer Science (B.S.) — General — Residential",
+  "level": "bachelor",
+  "catalog": "2026–2027",
+  "totalCredits": 120,
+  "modalities": [
+    "campus"
+  ],
+  "review": {
+    "status": "migrated",
+    "source": "dist/data/curricula/liberty.json (registry-compiled)",
+    "reviewedOn": "2026-11-10"
+  },
+  "modelFields": {
+    "format": "Residential",
+    "institutionMinCredits": 30,
+    "externalMaxCredits": 90,
+    "majorResidencyBasisCredits": 97,
+    "coverageLabel": "Source-linked full-credit curriculum with proposed approved-course choices; transfer matches require separate evidence.",
+    "rulesNotes": [
+      "A 120-credit proposed allocation: 22 unique general education + 20 foundations + 65 major/quantitative/lab/technical credits + 12 general-cognate credits + 1 free elective.",
+      "All 20 foundation credits have source-approved general-education placements and are counted once: ENGR 270 communications, CSCN 110 and CSCN 111 information literacy, MATH 131 mathematics, PHYS 201 natural science, and BUSI 240 social science.",
+      "The degree-specific ABET footnotes require all 45 major-core and 12 general-cognate credits residentially. Those 57 credits remain university-only, even when a general transfer table has a similar receiving-course code.",
+      "The source permits a 3–4-credit quantitative math choice and a 0–3-credit technology requirement. This ledger uses a three-credit math selection and zero-credit assessment scenario; changing those choices may raise the published 120–124-credit course sequence total.",
+      "MATH 132 is used once as the technical elective. A different approved three-credit course must fill the quantitative math elective."
+    ],
+    "unresolved": [
+      "Confirm individual catalog eligibility, major-course residency allocation, course prerequisites, and written transfer evaluation.",
+      "Outside-course equivalencies must be sourced separately; a university requirement is not evidence that a particular accelerated course transfers."
+    ],
+    "graduationRequirements": [
+      {
+        "id": "gpa",
+        "title": "Overall GPA",
+        "detail": "At least 2.0 overall GPA.",
+        "sourceIds": [
+          "liberty-computer-science-general-residential-2026"
+        ]
+      },
+      {
+        "id": "degree-application",
+        "title": "Graduation application",
+        "detail": "Submit the degree completion application within the last semester of the anticipated graduation date.",
+        "sourceIds": [
+          "liberty-computer-science-general-residential-2026"
+        ]
+      },
+      {
+        "id": "major-minimum-grade",
+        "title": "Major course grades",
+        "detail": "At least C in the requirements under the catalog major section, including its listed foundations and other named major sections.",
+        "sourceIds": [
+          "liberty-computer-science-general-residential-2026"
+        ]
+      }
+    ],
+    "upperMinCredits": 30,
+    "catalogParentId": "liberty-catalog-1d4c76929b531364",
+    "routeSuffix": "general-residential",
+    "minimumDegreeCredits": 120,
+    "publishedCreditRange": {
+      "min": 120,
+      "max": 124
+    },
+    "overlaps": [
+      {
+        "requirementId": "busi-240",
+        "alsoSatisfies": "Social Science Elective",
+        "creditsCountedOnce": 3
+      },
+      {
+        "requirementId": "cscn-110",
+        "alsoSatisfies": "Information Literacy Elective",
+        "creditsCountedOnce": 3
+      },
+      {
+        "requirementId": "cscn-111",
+        "alsoSatisfies": "Information Literacy Elective",
+        "creditsCountedOnce": 3
+      },
+      {
+        "requirementId": "engr-270",
+        "alsoSatisfies": "Communications Elective",
+        "creditsCountedOnce": 3
+      },
+      {
+        "requirementId": "math-131",
+        "alsoSatisfies": "Math Elective",
+        "creditsCountedOnce": 4
+      },
+      {
+        "requirementId": "phys-201",
+        "alsoSatisfies": "Natural Science Elective",
+        "creditsCountedOnce": 4
+      }
+    ],
+    "obligations": [
+      {
+        "title": "Technology competency assessment",
+        "notes": "The zero-credit scenario requires passing the computer assessment. Otherwise complete the applicable INFT course and revise the allocation within the published credit range.",
+        "sourceIds": [
+          "liberty-computer-science-general-residential-2026"
+        ]
+      },
+      {
+        "title": "ABET residency",
+        "notes": "Complete the 45-credit major-course section and 12-credit general cognate residentially. Any exception needs ABET coordinator review and Department Chair approval.",
+        "sourceIds": [
+          "liberty-computer-science-general-residential-2026"
+        ]
+      },
+      {
+        "title": "Christian/Community Service",
+        "notes": "Satisfy applicable CSER obligations before graduation.",
+        "sourceIds": [
+          "liberty-computer-science-general-residential-2026"
+        ]
+      }
+    ],
+    "curriculumSections": [
+      {
+        "id": "general",
+        "title": "General education and foundational skills",
+        "requirementIds": [
+          "engl-101",
+          "univ-101",
+          "rlgn-105",
+          "evan-101",
+          "bibl-105",
+          "bibl-110",
+          "theo-201",
+          "theo-202",
+          "ethc-101",
+          "cstu-101"
+        ],
+        "sourceId": "liberty-computer-science-general-residential-2026"
+      },
+      {
+        "id": "major",
+        "title": "Major and major foundations",
+        "requirementIds": [
+          "busi-240",
+          "cscn-110",
+          "cscn-111",
+          "engr-270",
+          "math-131",
+          "phys-201",
+          "cscn-112",
+          "cscn-215",
+          "cscn-230",
+          "cscn-321",
+          "cscn-326",
+          "cscn-340",
+          "cscn-342",
+          "cscn-345",
+          "cscn-352",
+          "cscn-355",
+          "cscn-434",
+          "cscn-443",
+          "cscn-471",
+          "cscn-481",
+          "cscn-482",
+          "math-211",
+          "math-250",
+          "math-350",
+          "quantitative-math-elective",
+          "lab-science-elective",
+          "math-132",
+          "cscn-354",
+          "computer-science-upper-elective-1",
+          "computer-science-upper-elective-2",
+          "csis-212"
+        ],
+        "sourceId": "liberty-computer-science-general-residential-2026"
+      },
+      {
+        "id": "electives",
+        "title": "Free electives",
+        "requirementIds": [
+          "free-elective-one-credit"
+        ],
+        "sourceId": "liberty-computer-science-general-residential-2026"
+      }
+    ],
+    "gradePolicy": {
+      "minimumGrade": "C",
+      "scope": "major-requirements",
+      "sourceIds": [
+        "liberty-computer-science-general-residential-2026"
+      ],
+      "checked": "2026-11-10",
+      "detail": "At least C in the requirements under the catalog major section, including its listed foundations and other named major sections."
+    },
+    "pricing": {
+      "model": "banded-term",
+      "termRate": 12695,
+      "bandMin": 12,
+      "bandMax": 18,
+      "partTimeRate": 870,
+      "partTimeMaximumCreditsExclusive": 12,
+      "summerRate": 475,
+      "period": "semester",
+      "currency": "USD",
+      "catalogYear": "2026-2027",
+      "sourceUrl": "https://www.liberty.edu/residential/tuition-and-fees/",
+      "sourceIds": [
+        "liberty-residential-tuition-2026-2027-reviewed"
+      ],
+      "checkedOn": "2026-11-17",
+      "exclusions": [
+        "Fees, housing, meals, books, supplies and course-specific charges are separate.",
+        "The full-time band applies to fall and spring semesters. Summer uses a separate per-credit rate.",
+        "Loads above 18 credits are outside this reviewed band; no overload charge is inferred."
+      ]
+    },
+    "policyEvidence": {
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "liberty-residential-academic-policy-2026-2027-reviewed"
+        ],
+        "calculation": "25% of the published degree-credit total must be completed through Liberty."
+      },
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "liberty-residential-academic-policy-2026-2027-reviewed"
+        ],
+        "calculation": "Published degree total minus the 25% institutional minimum.",
+        "scope": "Overall ceiling only; exact course applicability, major/minor residency and source-specific policies remain separate."
+      },
+      "majorInstitutionFraction": {
+        "value": 0.25,
+        "sourceIds": [
+          "liberty-residential-academic-policy-2026-2027-reviewed"
+        ],
+        "scope": "Published fraction; the denominator is the exact degree major/minor ledger, not the whole degree."
+      }
+    },
+    "policyReview": [],
+    "evidenceCheckedOn": "2026-11-10"
+  },
+  "modelSourceIds": [
+    "liberty-online-approved-gened",
+    "liberty-residential-approved-gened",
+    "liberty-computer-science-general-residential-2026",
+    "liberty-official-sophia-residential-2026-05",
+    "liberty-official-study-com-residential-2026-05",
+    "liberty-official-straighterline-residential-2026-04",
+    "liberty-official-clep-residential-2025-08",
+    "liberty-residential-tuition-2026-2027-reviewed",
+    "liberty-residential-academic-policy-2026-2027-reviewed",
+    "liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+    "collegeboard-clep-calculus-identity-2026-11-17",
+    "ace-clep-0038-v5-identity-2026-11-17",
+    "collegeboard-clep-humanities-identity-2026-11-17",
+    "ace-clep-0003-v5-identity-2026-11-17",
+    "sophia-soph-0083-current-offer",
+    "sophia-soph-0083-current-offer-syllabus",
+    "liberty-business-residential--degree",
+    "liberty-business-residential--gened",
+    "liberty-business-residential--sophia",
+    "liberty-business-residential--study",
+    "liberty-business-residential--clep",
+    "liberty-business-residential--busi",
+    "liberty-business-residential--policy",
+    "liberty-business-residential--assessment",
+    "liberty-business-residential--acct",
+    "liberty-business-residential--liberty-straighterline-residential-2026-04",
+    "liberty-business-residential--liberty-official-sophia-residential-2026-05",
+    "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+    "liberty-business-residential--liberty-official-straighterline-residential-2026-04",
+    "liberty-business-residential--liberty-official-clep-residential-2025-08",
+    "liberty-business-residential--liberty-cli-calculator-current",
+    "liberty-business-residential--cli-transcript-issuer-current",
+    "liberty-business-residential--cli-original-bus-320-current",
+    "liberty-business-residential--cli-original-bus-330-current",
+    "liberty-business-residential--cli-original-bus-415-current",
+    "liberty-business-residential--cli-original-ecn-301-current",
+    "liberty-business-residential--liberty-residential-tuition-2026-2027-reviewed",
+    "liberty-business-residential--liberty-residential-academic-policy-2026-2027-reviewed",
+    "liberty-business-residential--liberty-interdisciplinary-degree-2026-2027-reviewed",
+    "liberty-business-residential--liberty-busi-prerequisites-2026-2027-reviewed",
+    "liberty-business-residential--liberty-computer-assessment-current-reviewed",
+    "liberty-business-residential--liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+    "liberty-business-residential--collegeboard-clep-introductory-psychology-identity-2026-11-17",
+    "liberty-business-residential--ace-clep-0020-v5-identity-2026-11-17",
+    "liberty-business-residential--collegeboard-clep-human-growth-development-identity-2026-11-17",
+    "liberty-business-residential--ace-clep-0021-v5-identity-2026-11-17",
+    "liberty-business-residential--sophia-soph-0083-current-offer",
+    "liberty-business-residential--sophia-soph-0083-current-offer-syllabus",
+    "liberty-business-residential--sophia-soph-0085-current-offer",
+    "liberty-business-residential--sophia-soph-0085-current-offer-syllabus",
+    "liberty-business-residential--sophia-soph-0086-current-offer",
+    "liberty-business-residential--sophia-soph-0086-current-offer-syllabus",
+    "liberty-business-residential--liberty-residential-sophia-baseline-electives-2026-11-18",
+    "liberty-business-residential--soph-0016-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0016-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0016-current-syllabus-2026-11-18",
+    "liberty-business-residential--soph-0022-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0022-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0022-current-syllabus-2026-11-18",
+    "liberty-business-residential--soph-0025-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0025-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0025-current-syllabus-2026-11-18",
+    "liberty-business-residential--soph-0027-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0027-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0027-current-syllabus-2026-11-18",
+    "liberty-business-residential--sophia-ace-current-organization-2026-11-18",
+    "liberty-business-residential--soph-0065-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0065-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0065-current-syllabus-2026-11-18",
+    "liberty-business-residential--soph-0021-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0021-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0021-current-syllabus-2026-11-18",
+    "liberty-business-residential--soph-0041-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0041-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0041-current-syllabus-2026-11-18",
+    "liberty-business-residential--liberty-residential-duplicate-credit-2026-11-18",
+    "liberty-business-residential--soph-0006-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0006-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0006-current-syllabus-2026-11-18",
+    "liberty-business-residential--soph-0080-current-provider-2026-11-18",
+    "liberty-business-residential--soph-0080-current-ace-2026-11-18",
+    "liberty-business-residential--soph-0080-current-syllabus-2026-11-18",
+    "soph-0021-current-provider-2026-11-18",
+    "soph-0021-current-ace-2026-11-18",
+    "soph-0021-current-syllabus-2026-11-18",
+    "soph-0041-current-provider-2026-11-18",
+    "soph-0041-current-ace-2026-11-18",
+    "soph-0041-current-syllabus-2026-11-18"
+  ],
+  "requirements": [
+    {"id":"engl-101","code":"ENGL 101","title":"Composition and Rhetoric","credits":3,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"selectionRequired":false,"optionRows":[
+      "sophia-soph-0015-to-engl-101-2",
+      "study-com-sdcm-0057-to-engl-101-2",
+      "study-com-sdcm-0244-to-engl-101-2",
+      "straighterline-oosl-0005-to-engl-101-2",
+      "clep-clep-0041-to-engl-101-2"
+    ]},
+    {"id":"univ-101","code":"UNIV 101","title":"Foundational Skills","credits":1,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"optionRows":[
+
+    ]},
+    {"id":"rlgn-105","code":"RLGN 105","title":"Introduction to Biblical Worldview","credits":2,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"optionRows":[
+
+    ]},
+    {"id":"evan-101","code":"EVAN 101","title":"Evangelism and the Christian Life","credits":2,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"optionRows":[
+
+    ]},
+    {"id":"bibl-105","code":"BIBL 105","title":"Old Testament Survey","credits":2,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"optionRows":[
+
+    ]},
+    {"id":"bibl-110","code":"BIBL 110","title":"New Testament Survey","credits":2,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"optionRows":[
+
+    ]},
+    {"id":"theo-201","code":"THEO 201","title":"Theology Survey I","credits":2,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"optionRows":[
+
+    ]},
+    {"id":"theo-202","code":"THEO 202","title":"Theology Survey II","credits":2,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"optionRows":[
+
+    ]},
+    {"id":"ethc-101","code":"ETHC 101","title":"Introduction to Ethics","credits":3,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"selectionRequired":false,"optionRows":[
+      "sophia-soph-0020-to-ethc-101-3",
+      "study-com-sdcm-0161-to-ethc-101-3",
+      "straighterline-oosl-0123-to-ethc-101-3"
+    ]},
+    {"id":"cstu-101","code":"CSTU 101","title":"Western Culture","credits":3,"category":"general","group":"general","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"selectionRequired":false,"optionRows":[
+      "study-com-sdcm-0047-to-cstu-101-2",
+      "clep-clep-0003-to-cstu-101-2"
+    ]},
+    {"id":"busi-240","code":"BUSI 240","title":"Organizational Behavior and Management","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"alsoSatisfies":["Social Science Elective"],"allocationBasis":"Required major foundation allocated to its separately approved general-education category; counted once.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"selectionRequired":false,"optionRows":[
+      "sophia-soph-0083-to-busi-240-2",
+      "study-com-sdcm-0009-to-busi-240-2",
+      "study-com-sdcm-0053-to-busi-240-2",
+      "straighterline-oosl-0042-to-busi-240-2"
+    ]},
+    {"id":"cscn-110","code":"CSCN 110","title":"Introduction to Computer Sciences","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"alsoSatisfies":["Information Literacy Elective"],"allocationBasis":"Required major foundation allocated to its separately approved general-education category; counted once.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-111","code":"CSCN 111","title":"Programming In C++ Beginner","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"alsoSatisfies":["Information Literacy Elective"],"allocationBasis":"Required major foundation allocated to its separately approved general-education category; counted once.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"engr-270","code":"ENGR 270","title":"Technical Communication","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"alsoSatisfies":["Communications Elective"],"allocationBasis":"Required major foundation allocated to its separately approved general-education category; counted once.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"math-131","code":"MATH 131","title":"Calculus and Analytic Geometry I","credits":4,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"alsoSatisfies":["Math Elective"],"allocationBasis":"Required major foundation allocated to its separately approved general-education category; counted once.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"selectionRequired":false,"optionRows":[
+      "study-com-sdcm-0016-to-math-131",
+      "straighterline-oosl-0012-to-math-131",
+      "clep-clep-0038-to-math-131"
+    ]},
+    {"id":"phys-201","code":"PHYS 201","title":"General Physics I","credits":4,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"alsoSatisfies":["Natural Science Elective"],"allocationBasis":"Required major foundation allocated to its separately approved general-education category; counted once.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-112","code":"CSCN 112","title":"Programming in C++ Advanced","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-215","code":"CSCN 215","title":"Data Structures and Algorithms using C++","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-230","code":"CSCN 230","title":"Business Data Communications and Networks","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-321","code":"CSCN 321","title":"Applied Data Science & Machine Learning Methods with R & Python","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-326","code":"CSCN 326","title":"Database Design and Management","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-340","code":"CSCN 340","title":"Information Security Concepts and Principles","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-342","code":"CSCN 342","title":"Computer Architecture","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-345","code":"CSCN 345","title":"Linux Operating System","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-352","code":"CSCN 352","title":"Windows System Administration","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-355","code":"CSCN 355","title":"Network Architecture, Protocols, and Theory","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-434","code":"CSCN 434","title":"Programming Language Design and Compiler Theory","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-443","code":"CSCN 443","title":"Operating Systems Design","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-471","code":"CSCN 471","title":"Software Engineering Management","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-481","code":"CSCN 481","title":"Computer Sciences Practicum I","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"cscn-482","code":"CSCN 482","title":"Computer Sciences Practicum II","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"conditions":["The degree-specific ABET footnote requires this major-course section to be taken residentially. Exceptions require ABET coordinator review and Department Chair approval."],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"math-211","code":"MATH 211","title":"Introduction to Statistical Analysis","credits":3,"category":"major","group":"quantitative-studies","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"math-250","code":"MATH 250","title":"Introduction to Discrete Mathematics","credits":3,"category":"major","group":"quantitative-studies","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"selectionRequired":false,"optionRows":[
+      "study-com-sdcm-0210-to-math-250"
+    ]},
+    {"id":"math-350","code":"MATH 350","title":"Discrete Mathematics","credits":3,"category":"major","group":"quantitative-studies","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"quantitative-math-elective","code":"","title":"Approved quantitative mathematics elective — three-credit scenario","credits":3,"category":"major","group":"quantitative-studies","upper":false,"bucket":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"allowedCourseCodes":["MATH 132","MATH 221","MATH 301","MATH 302","MATH 307"],"choiceNote":"Choose 3–4 credits from the published list, or another department-approved mathematics course. This ledger allocates the three-credit case; the final course and credits must be selected. MATH 132 is reserved for the separate technical elective and cannot be reused.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"selectionRequired":true,"optionRows":[
+
+    ]},
+    {"id":"lab-science-elective","code":"","title":"Approved science course with lab component","credits":4,"category":"major","group":"lab-sciences","upper":false,"bucket":false,"sourceIds":["liberty-computer-science-general-residential-2026"],"requiresLab":true,"choiceNote":"A science course with a lab component is required. PHYS 101 and PHYS 103 are excluded. A Physics choice must meet the published PHYS 202/PHYS 202L or higher requirement; confirm the exact package and credits.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"math-132","code":"MATH 132","title":"Calculus and Analytic Geometry II","credits":4,"category":"major","group":"technical-electives","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026","liberty-residential-approved-gened"],"choiceNote":"The technical elective permits advanced mathematics MATH 132 or higher not otherwise used. This proposed choice reserves MATH 132 here; the quantitative math elective must use a different approved course.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"selectionRequired":false,"optionRows":[
+      "straighterline-oosl-0019-to-math-132"
+    ]},
+    {"id":"cscn-354","code":"CSCN 354","title":"Fundamentals of Distributed Systems","credits":3,"category":"major","group":"general-cognate","upper":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"computer-science-upper-elective-1","code":"","title":"Upper-level Computer Science elective 1","credits":3,"category":"major","group":"general-cognate","upper":true,"bucket":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"allowedPrefixes":["CSCN"],"minimumCourseLevel":300,"maximumCourseLevel":499,"excludeAlreadyUsed":true,"choiceNote":"Choose a 300–400-level CSCN course not already required in this degree. This cognate section is residentially required under the degree-specific ABET footnote.","allowedCoursePrefixes":["CSCN"],"minCourseLevel":300,"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"selectionRequired":true,"upperOnly":true,"optionRows":[
+
+    ]},
+    {"id":"computer-science-upper-elective-2","code":"","title":"Upper-level Computer Science elective 2","credits":3,"category":"major","group":"general-cognate","upper":true,"bucket":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"allowedPrefixes":["CSCN"],"minimumCourseLevel":300,"maximumCourseLevel":499,"excludeAlreadyUsed":true,"choiceNote":"Choose a 300–400-level CSCN course not already required in this degree. This cognate section is residentially required under the degree-specific ABET footnote.","allowedCoursePrefixes":["CSCN"],"minCourseLevel":300,"minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"selectionRequired":true,"upperOnly":true,"optionRows":[
+
+    ]},
+    {"id":"csis-212","code":"CSIS 212","title":"Computer Science programming-language elective — proposed CSIS 212 choice","credits":3,"category":"major","group":"general-cognate","upper":false,"sourceIds":["liberty-computer-science-general-residential-2026"],"institutionalOnly":true,"allowedCourseCodes":["CSIS 209","CSIS 212","CSIS 244","CSIS 312","CSIS 315","CSCN 315","CSIS 316","CSCN 316","CSIS 354","CSCN 354"],"choiceNote":"The proposed programming-language choice is CSIS 212. The source allows the listed alternatives, subject to prerequisites and department approval. CSCN 354 is already used and cannot be counted again.","minimumGrade":"C","minimumGradeSourceIds":["liberty-computer-science-general-residential-2026"],"optionRows":[
+
+    ]},
+    {"id":"free-elective-one-credit","code":"","title":"Free elective — one credit in the published course sequence","credits":1,"category":"electives","group":"electives","upper":false,"bucket":true,"sourceIds":["liberty-computer-science-general-residential-2026"],"excludeAlreadyUsed":true,"freeElective":true,"selectionRequired":false,"optionRows":[
+      "sophia-soph-0021-to-scom-1xx@elective-block",
+      "sophia-soph-0041-to-csis-1xx@elective-block"
+    ]}
+  ]
+}

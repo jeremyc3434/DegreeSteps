@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Compile the separately reviewed 2026–27 History online ledger; no network calls."""
+"""RETIRED as a Liberty source of truth (2026-11-20). Liberty curricula now compile from content/pathway-kits/liberty
+via `npm run factory:publish`; its invariants live in content/pathway-kits/liberty/guards.mjs. Kept for history;
+do not run it to regenerate content/curricula/liberty*.json.
+
+Compile the separately reviewed 2026–27 History online ledger; no network calls."""
 import json
 import sys
 from pathlib import Path
