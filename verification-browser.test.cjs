@@ -166,7 +166,7 @@ function actualPlan() {
       await openCourse(anonymous);
       assert.equal(await dialog(anonymous).locator('.evidence-form').count(), 0);
       const link = dialog(anonymous).getByRole('link', { name:'Sign in to report an outcome' });
-      assert.match(await link.getAttribute('href'), /^\/account\.html$/);
+      { const target = new URL(await link.getAttribute('href'), BASE); assert.equal(target.pathname, '/account.html'); assert.equal(target.searchParams.get('returnTo'), new URL(anonymous.page.url()).pathname, 'Sign-in returns to the page the student was reading'); }
       assert.equal(await link.getAttribute('target'), '_top');
       assert.equal(writes.filter(item => item.actor === 'anonymous').length, 0, 'Reading the UI must not write');
       const before = (await evidence(anonymous)).summary;
