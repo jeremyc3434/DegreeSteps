@@ -45,7 +45,7 @@ export function renderHome({cta,articleCard,guides,costSection='',example,tuitio
   if(tuition&&(!shownTuition||Object.entries(example.choices).some(([id,choice])=>{const value=tuition.choices?.[id];return !value||value.outside!==choice.outside||value.university!==choice.university||![value.before,value.after,value.difference].every(Number.isFinite)||Math.abs(value.before-value.after-value.difference)>.01;})))throw Error('The homepage tuition example must match every course-choice scenario.');
   const questions=[
     ['Can I start without any college credits?','Yes. Start with a degree plan from zero. You can add past courses or transcripts later.'],
-    ['What if I already have college credits?','Upload your transcript or a spreadsheet, review your courses together, and compare where they fit. Your course collection stays with you when you change degrees.'],
+    ['What if I already have college credits?','Upload your transcript or a spreadsheet, review your courses together, and compare where they fit. Your course collection stays with you when you change degrees. <a href="/credits-worth.html">See what your finished courses could be worth</a> across our degree plans.'],
     ['Is this only for online degrees?','No. Explore online and on-campus plans. Each route keeps the receiving college’s transfer and graduation requirements in view.'],
     ['Will my college accept these courses?','Our researched plans use published course matches and school policies, with sources you can open. The college makes the official decision about your own transfer credits.'],
     ['What does DegreeSteps cost?','Building and saving your degree plan is free. Courses, college tuition and provider fees are separate. Sign in to save your plan to your account.']

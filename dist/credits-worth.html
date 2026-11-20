@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#4054f4"><title>What are my credits worth? — DegreeSteps</title><meta name="description" content="Add the courses you finished and see which researched degree plans they could count toward, how many credits would be left, and a planning estimate where one is available."><link rel="canonical" href="https://degreesteps.com/credits-worth.html"><link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="programs.css"><link rel="stylesheet" href="credits-worth.css"><script src="guide-engine.js" defer></script><script src="sheet-state.js" defer></script><script src="course-library-engine.js" defer></script><script src="credits-worth-engine.js" defer></script><script src="app-shell.js" defer></script><script src="credits-worth.js" defer></script><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><script src="/growth-metrics.js" defer></script></head>
+<body class="programs-page credits-worth-page ds-experience ds-workspace-page ds-discovery-page"><a class="pf-skip" href="#cw-app">Skip to your results</a><header class="pf-fallback"><a href="index.html"><span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span></a><nav><a href="programs.html">Find a degree</a><a href="courses.html">My courses</a></nav></header>
+<main id="cw-app" class="pf-main cw-main">
+ <div class="pf-heading cw-heading"><div><h1>What are my credits worth?</h1><p>Add the courses you’ve finished. See which degree plans they could count toward and what would be left.</p></div><a href="programs.html" class="pf-plan-link">Browse all degree plans →</a></div>
+ <p class="cw-proposal"><strong>These are proposals, not credit awards.</strong> We compare your courses with the course options each school publishes for a plan. The school decides what it accepts after it reviews your official records.</p>
+ <div class="cw-layout">
+  <section class="cw-courses" aria-labelledby="cw-courses-title">
+   <div class="cw-section-head"><h2 id="cw-courses-title">Your finished courses</h2><span id="cw-course-count" class="cw-pill">0</span></div>
+   <p id="cw-storage-note" class="cw-note" hidden></p>
+   <ul id="cw-record-list" class="cw-records"></ul>
+   <div id="cw-courses-empty" class="cw-courses-empty"><p><strong>No finished courses yet.</strong> Add one below. Nothing is saved unless you choose to save it.</p></div>
+   <p id="cw-other-status" class="cw-note" hidden></p><a id="cw-jump" class="cw-jump" href="#cw-results-title" hidden>See your ranked plans ↓</a>
+   <div id="cw-save-bar" class="cw-save-bar" hidden><p id="cw-save-text"></p><button type="button" id="cw-save" class="pf-button pf-button-primary">Save to My courses</button></div>
+   <p id="cw-save-status" class="cw-note" role="status" aria-live="polite"></p>
+   <details id="cw-add" class="cw-add" open>
+    <summary>Add a course you finished</summary>
+    <form id="cw-pick-form" class="cw-form" novalidate>
+     <label><span>Provider</span><select id="cw-provider" name="provider"><option value="">Loading providers…</option></select></label>
+     <label class="cw-wide"><span>Course or exam</span><select id="cw-course" name="course" aria-describedby="cw-pick-hint" disabled><option value="">Choose a provider first</option></select></label>
+     <p id="cw-pick-hint" class="cw-hint">Not listed? Use “Enter it yourself”.</p>
+     <div class="cw-form-actions"><button type="submit" class="pf-button pf-button-primary">Add course</button><button type="button" id="cw-manual-toggle" class="pf-button" aria-expanded="false" aria-controls="cw-manual-form">Enter it yourself</button></div>
+     <p id="cw-pick-error" class="cw-error" role="alert"></p>
+    </form>
+    <form id="cw-manual-form" class="cw-form" novalidate hidden>
+     <p class="cw-hint">Use the details on your transcript or score report.</p>
+     <label><span>School or provider</span><input id="cw-manual-provider" name="provider" required maxlength="120" autocomplete="organization" list="cw-provider-names"><datalist id="cw-provider-names"></datalist></label>
+     <label><span>Course or exam code <small>(recommended)</small></span><input id="cw-manual-code" name="code" maxlength="100" placeholder="For example, SOPH-0015 or ENG 101"></label>
+     <label class="cw-wide"><span>Course title</span><input id="cw-manual-title" name="title" required maxlength="160"></label>
+     <label><span>Credits <small>(if known)</small></span><input id="cw-manual-credits" name="credits" type="number" inputmode="decimal" min="0.1" max="200" step="any"></label>
+     <label><span>Credit units</span><select id="cw-manual-units" name="creditSystem"><option value="semester">Semester credits</option><option value="quarter">Quarter credits</option><option value="competency-unit">Competency units</option><option value="">Not sure</option></select></label>
+     <div class="cw-form-actions"><button type="submit" class="pf-button pf-button-primary">Add course</button></div>
+     <p id="cw-manual-error" class="cw-error" role="alert"></p>
+    </form>
+    <p class="cw-hint">Have a transcript? <a href="import-courses.html">Upload it to My courses</a> to add many courses at once.</p>
+   </details>
+  </section>
+  <section class="cw-results" aria-labelledby="cw-results-title">
+   <h2 id="cw-results-title" class="cw-results-title" tabindex="-1">Degree plans ranked for your courses</h2>
+   <form id="cw-controls" class="cw-controls" role="search" aria-label="Sort and filter plans">
+    <label><span>Sort</span><select id="cw-sort"><option value="covered">Most of the degree covered</option><option value="left">Fewest credits left</option><option value="cost">Lowest remaining estimate</option></select></label>
+    <label><span>Subject</span><select id="cw-subject"><option value="">All subjects</option></select></label>
+    <label><span>Format</span><select id="cw-format"><option value="">Online or on campus</option><option value="online">Online</option><option value="campus">On campus</option></select></label>
+    <label class="pf-check cw-check"><input type="checkbox" id="cw-matched"><span>Only plans my courses could count toward</span></label>
+   </form>
+   <div class="cw-progress-wrap" id="cw-progress-wrap" hidden><progress id="cw-progress" max="1" value="0" aria-labelledby="cw-progress-text"></progress><span id="cw-progress-text">Checking plans…</span></div>
+   <p id="cw-count" class="pf-count" role="status" aria-live="polite">Add a finished course to see your ranking.</p>
+   <div id="cw-error" class="cw-error-box" role="alert" hidden></div>
+   <div id="cw-empty" class="cw-empty"><h3>Start with one course you finished.</h3><p>Pick it from the list, or enter it from your transcript. We’ll check it against every reviewed degree plan, right here on your device.</p><a class="pf-button" href="#cw-add" id="cw-empty-add">Add a course</a></div>
+   <div id="cw-nomatch" class="cw-nomatch" hidden><h3>None of your courses match a proposed option yet.</h3><p>That doesn’t mean they won’t count. These plans only list the outside courses each school publishes. Ask the school for a transcript evaluation; it reviews every course on your official record.</p></div>
+   <ol id="cw-list" class="cw-list" aria-label="Ranked degree plans"></ol>
+   <button type="button" id="cw-more" class="pf-more-results cw-more" hidden>Show more plans</button>
+   <details class="pf-coverage cw-about"><summary>How this works</summary><div><p>For each reviewed degree plan, we start from its published starting route and run the same course planner used by your plan worksheet with your finished courses. A course counts toward a plan only when it matches one of the course options that plan lists from the school’s published sources. A course you type yourself matches only when its provider and course code point to exactly one listed course.</p><p>“Could fill” means a proposed placement. It is not a transfer award. Grades, course age, credit limits and residency rules can still change what a school accepts.</p><p>Planning estimates use the same reviewed rates as the plan worksheet: tuition, fees and outside course prices before financial aid. When a plan has any price we haven’t reviewed, we say the cost needs confirmation instead of guessing.</p><p>Your courses are checked in this browser. Nothing is uploaded, and nothing is saved to My courses unless you choose Save.</p></div></details>
+  </section>
+ </div>
+</main>
+<dialog id="cw-build-dialog" aria-labelledby="cw-build-title"><h2 id="cw-build-title">Include the courses you added?</h2><p>The plan opens with the courses in My courses. Courses you added on this page aren’t saved yet.</p><div class="cw-dialog-actions"><button type="button" id="cw-build-save" class="pf-button pf-button-primary">Save them and open the plan</button><a id="cw-build-skip" class="pf-button" href="portal.html">Open without them</a><button type="button" id="cw-build-cancel" class="pf-button">Cancel</button></div></dialog>
+<noscript><p class="cw-note">Enable JavaScript to check your courses against degree plans. You can still <a href="programs.html">browse degree plans</a>.</p></noscript>
+</body></html>
