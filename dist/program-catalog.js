@@ -96,6 +96,15 @@
   const indexed=new Map(array(catalog.publicationIndex.plans).map(plan=>[plan.modelId,plan])),loaded=new Map(array(models).map(model=>[model.id,model]));
   return structuralPlans(catalog,models).filter(route=>{const entry=indexed.get(route.modelId),model=loaded.get(route.modelId);return entry?.publicationReady===true&&array(entry.routeIds).includes(route.id)&&publicationLevel(route.level)===entry.level&&(!model||entry.modelFingerprint===publicationModelFingerprint(model,entry.level));});
  }
+ // One plan list everywhere: published plans first, then complete plans that the plan index
+ // (data/plan-library-index.json) marks tier "confirmation". Callers label those "Needs school
+ // confirmation". Without the index only published plans are listed.
+ function needsSchoolConfirmation(route,planIndex){return planIndex?.plans?.[route?.id]?.tier==='confirmation';}
+ function planLibraryRoutes(catalog,models=[],planIndex=null){
+  const published=publishedPlans(catalog,models),ids=new Set(published.map(route=>route.id)),plans=planIndex?.plans;
+  if(!plans||typeof plans!=='object')return published;
+  return [...published,...array(catalog?.pathways).filter(route=>route?.modelId&&!ids.has(route.id)&&needsSchoolConfirmation(route,planIndex)&&isPlanAvailable(route,catalog,models))];
+ }
  function planChoiceCount(route,catalog,models=[]){
   const model=array(models).find(item=>item.id===route?.modelId);if(model){const readiness=modelReadiness(model);return readiness.available?readiness.openCourseChoices:null;}
   const entry=array(catalog?.curriculumRegistry?.models).find(item=>item.id===route?.modelId),count=entry?.openCourseChoices??route?.openCourseChoices;
@@ -263,5 +272,5 @@
  }
  function modelsForRoutes(routes,options={}){return loadModels([...new Set(array(Array.isArray(routes)?routes:routes?.pathways).filter(route=>route?.modelId).map(route=>route.modelId))],options);}
  async function load(base,options={}){return loadIndex(merge(base,await jsonFile('data/program-catalog.json',options)),options);}
- return Object.freeze({merge,search,load,field,modelFiles,variants,courseChoiceCounts,modelReadiness,isPlanAvailable,availablePlans,publishedPlans,publicationFingerprint,publicationModelFingerprint,publicationLevel,attachPublicationIndex,planChoiceCount,resolveTarget,rememberPlan,targetIdentity,targetFingerprint,planHistoryId,planSnapshot,attachRegistry,loadIndex,loadModels,modelsForRoutes,validateRegistry,validateModel,discover,validateDiscovery,attachSourceCurricula,sourceModels,rememberDiscovery});
+ return Object.freeze({merge,search,load,field,modelFiles,variants,courseChoiceCounts,modelReadiness,isPlanAvailable,availablePlans,publishedPlans,planLibraryRoutes,needsSchoolConfirmation,publicationFingerprint,publicationModelFingerprint,publicationLevel,attachPublicationIndex,planChoiceCount,resolveTarget,rememberPlan,targetIdentity,targetFingerprint,planHistoryId,planSnapshot,attachRegistry,loadIndex,loadModels,modelsForRoutes,validateRegistry,validateModel,discover,validateDiscovery,attachSourceCurricula,sourceModels,rememberDiscovery});
 }));

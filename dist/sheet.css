@@ -488,3 +488,7 @@ body.course-plan-page #sheet-school-check { padding: 0; margin: 0 0 18px; }
   #sheet-summary .sheet-stats { flex-wrap:wrap; }
   #sheet-summary .sheet-stat { white-space:normal; }
 }
+/* Plans that still need school confirmation carry the same badge as the plan finder and guided planner. */
+.portal-tier { margin: 0 0 6px; }
+.portal-tier-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: .8125rem; font-weight: 600; }
+.portal-tier-confirm { background: #fff4e5; color: #8a4b0f; }

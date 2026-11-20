@@ -41,5 +41,16 @@ const row=(p,id)=>p.locator('[data-requirement="'+id+'"]');
   await glance.locator('[data-jump-courses]').click();assert.equal(await mobile.evaluate(()=>document.activeElement?.id),'sheet-grid');
   const desktop=await fresh();await desktop.locator('#sheet-school-check:not([hidden])').waitFor();assert.equal(await desktop.locator('#sheet-glance').isVisible(),false);assert(await desktop.locator('#sheet-school-check').isVisible());assert(await desktop.locator('#sheet-savings').isVisible());
  });
+ await test('Change degree and Compare list plans that need school confirmation, labelled as in the finder',async()=>{
+  const index=require('./dist/data/plan-library-index.json'),tesu=require('./dist/data/pathways.json').pathways.filter(r=>r.school==='Thomas Edison State University'&&index.plans[r.id]?.tier==='confirmation');assert(tesu.length,'fixture: TESU confirmation-tier plans exist');
+  const page=await fresh();await action(page,'target');const form=page.locator('#sheet-target-form');await form.waitFor();
+  const schools=await form.locator('[name="school"] option').allTextContents();assert(schools.some(s=>/^Thomas Edison State University/.test(s)),'a TESU student sees their own school');assert(schools.some(s=>/^Excelsior University/.test(s)));
+  await form.locator('[name="school"]').selectOption('Thomas Edison State University');
+  const degrees=await form.locator('[name="pathwayId"] option').allTextContents();assert(degrees.some(d=>/B\.S\. in General Management · Needs school confirmation/.test(d)),degrees.join(' | '));
+  await form.locator('[name="pathwayId"]').selectOption('tesu-general-management');await page.locator('#sheet-target-readiness .portal-tier-badge.portal-tier-confirm').filter({hasText:'Needs school confirmation'}).waitFor();
+  await close(page);await page.goto(BASE+'compare-plans.html',{waitUntil:'networkidle'});await page.locator('.comparison-card').first().waitFor();
+  assert((await page.locator('#compare-school option').allTextContents()).includes('Thomas Edison State University'));
+  assert.match(await page.locator('.comparison-card').first().innerText(),/Needs school confirmation/,'the active TESU plan is labelled on its comparison card');
+ });
  assert.deepEqual(errors,[]);console.log('\n'+count+' real worksheet browser journeys passed.');
 }finally{for(const c of contexts)await c.close();await browser?.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
