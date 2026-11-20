@@ -18,10 +18,12 @@ import { publicCommunityCache } from '../server/public-community-cache.mjs';
 import { handleOperatorSnapshot } from '../server/operator-snapshot.mjs';
 import { handleAcademicCoverage } from '../server/academic-coverage.mjs';
 import { handleGrowthMetrics, pruneGrowthMetrics } from '../server/growth-metrics.mjs';
+import { handleCoach, pruneCoach } from '../server/coach.mjs';
 import { assets } from './assets.generated.mjs';
 
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
 let academicCoverageSnapshot, baselineSnapshot;
+let coachDataSnapshot;
 let academicEvidenceCache;
 // Public versioned build assets only. Never put account data or credentials in this cache.
 let nativePublicAssets;
@@ -262,6 +264,24 @@ async function researchEnvironment(env){
   result.RESEARCH_EXECUTE_JOB=(job,execution)=>runTemplateResearchJob(result,job,execution);
   return result;
 }
+// Degree coach (beta): small public build artifacts only. Never curriculum packs, accounts or student records.
+async function coachData(){
+  if(!coachDataSnapshot){
+    const read=async path=>{const asset=assets[path];if(!asset)throw Error('Coach data is unavailable');return JSON.parse(await decodeStaticAsset(asset));};
+    const [library,index,knowledge]=await Promise.all(['/data/plan-library-index.json','/data/coach-index.json','/data/coach-knowledge.json'].map(read));
+    coachDataSnapshot={library,index,knowledge};
+  }
+  return coachDataSnapshot;
+}
+async function coachResponse(request,env){
+  // With COACH_ENABLED unset the handler answers 404 before reading identity, data or keys.
+  if(env?.COACH_ENABLED!=='1')return handleCoach(request,{});
+  const identity=await resolvePortalIdentity(request,env).catch(()=>({user:null,setCookies:[]}));
+  const response=await handleCoach(request,{...env,COACH_USER:identity?.user||null,COACH_DATA:coachData,COACH_RESOLVE_KEY:async()=>(await resolveAIConnection(env,{includeKey:true})).apiKey||null});
+  if(!identity?.setCookies?.length)return response;
+  const headers=new Headers(response.headers);for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);
+  return new Response(response.body,{status:response.status,headers});
+}
 function migrationReadOnly(env){return env?.OPERATOR_MIGRATION_READ_ONLY==='1';}
 function migrationReadOnlyResponse(request){
   return new Response(request.method==='HEAD'?null:JSON.stringify({error:'We’re finishing a site update. Your saved work is safe. Please try again shortly.',code:'migration_readonly'}),{status:503,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','X-Content-Type-Options':'nosniff','Retry-After':'120'}});
@@ -277,7 +297,7 @@ export default {
     }
     return processResearchJobs(batch,await researchEnvironment(env),ctx);
   },
-  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;ctx?.waitUntil?.(pruneGrowthMetrics(env).catch(()=>{}));return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
+  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;ctx?.waitUntil?.(pruneGrowthMetrics(env).catch(()=>{}));if(new Date(controller?.scheduledTime||Date.now()).getUTCMinutes()<2)ctx?.waitUntil?.(pruneCoach(env).catch(()=>{}));return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
   async fetch(request, env, ctx) {
     const target = new URL(request.url);
     if(target.hostname==='www.degreesteps.com'||target.hostname==='degreesteps.com'&&target.protocol!=='https:'){
@@ -287,6 +307,12 @@ export default {
     if(previewHost&&target.pathname==='/robots.txt'&&['GET','HEAD'].includes(request.method))return new Response(request.method==='HEAD'?null:'User-agent: *\nDisallow: /\n',{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'public, max-age=60, must-revalidate','X-Robots-Tag':'noindex, nofollow'}});
     // GET handlers can also upsert profiles/rate records. During a final source
     // snapshot, pause the entire application API before identity or data access.
+    if(target.pathname==='/api/coach'||target.pathname.startsWith('/api/coach/')){
+      if(env?.COACH_ENABLED!=='1')return handleCoach(request,{});
+      if(migrationReadOnly(env))return migrationReadOnlyResponse(request);
+      initializePublicAssets(env);
+      return coachResponse(request,env);
+    }
     if(migrationReadOnly(env)&&(target.pathname==='/api'||target.pathname.startsWith('/api/'))&&!target.pathname.startsWith('/api/auth/')&&!target.pathname.startsWith('/api/operations/'))return migrationReadOnlyResponse(request);
     initializePublicAssets(env);
     if(target.pathname==='/api/growth/events')return handleGrowthMetrics(request,env);
