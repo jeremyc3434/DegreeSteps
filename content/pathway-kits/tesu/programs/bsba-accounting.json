@@ -1,0 +1,635 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bsba-accounting",
+  "modelId": "curriculum-tesu-bsba-accounting",
+  "routeIds": [
+    "tesu-bsba-accounting"
+  ],
+  "title": "B.S.B.A. in Accounting",
+  "level": "bachelor",
+  "catalog": "Current undergraduate catalog · checked November 18, 2026",
+  "totalCredits": 120,
+  "modalities": [
+    "online"
+  ],
+  "review": {
+    "status": "migrated",
+    "source": "dist/data/curricula/tesu-accounting.json (registry-compiled)",
+    "reviewedOn": "2026-11-18"
+  },
+  "modelFields": {
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Current undergraduate catalog · checked November 18, 2026",
+      "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/",
+      "checkedOn": "2026-11-18"
+    },
+    "upperGroupMinimums": [
+      {
+        "group": "area-of-study",
+        "credits": 12
+      },
+      {
+        "group": "business-core",
+        "credits": 6
+      }
+    ],
+    "existingCreditReview": {
+      "kind": "tesu-accounting-course-currency",
+      "sourceIds": [
+        "tesu-accounting-business-policy-2026-11-18"
+      ],
+      "groups": [
+        {
+          "id": "accounting-area",
+          "title": "Accounting area of study",
+          "requirementIds": [
+            "acc2010",
+            "acc2020",
+            "acc3030",
+            "acc4010",
+            "acc4020",
+            "acc4210"
+          ],
+          "maxAgeYears": 10,
+          "maxOlderCredits": 9,
+          "totalCredits": 18
+        },
+        {
+          "id": "business-capstone",
+          "title": "Business capstone",
+          "requirementIds": [
+            "bus4210"
+          ],
+          "maxAgeYears": 5,
+          "maxOlderCredits": 0,
+          "totalCredits": 3
+        }
+      ]
+    },
+    "curriculumSections": [
+      {
+        "id": "tesu-accounting-general-skills",
+        "title": "Intellectual and Practical Skills",
+        "parentId": "general",
+        "requirementIds": [
+          "enc1010",
+          "enc1020",
+          "com2090",
+          "mat1210",
+          "sos1100"
+        ],
+        "sourceId": "tesu-accounting-current-2026-11-18"
+      },
+      {
+        "id": "tesu-accounting-general-civic",
+        "title": "Civic and Global Leadership",
+        "parentId": "general",
+        "requirementIds": [
+          "soc1010",
+          "eth2200",
+          "pos1100"
+        ],
+        "sourceId": "tesu-accounting-current-2026-11-18"
+      },
+      {
+        "id": "tesu-accounting-general-cultures",
+        "title": "Knowledge of Human Cultures",
+        "parentId": "general",
+        "requirementIds": [
+          "soc2100",
+          "his1130",
+          "fil1100",
+          "his1140",
+          "phi1300"
+        ],
+        "sourceId": "tesu-accounting-current-2026-11-18"
+      },
+      {
+        "id": "tesu-accounting-general-science",
+        "title": "Scientific Knowledge",
+        "parentId": "general",
+        "requirementIds": [
+          "eas1010",
+          "bio2080"
+        ],
+        "sourceId": "tesu-accounting-current-2026-11-18"
+      },
+      {
+        "id": "tesu-accounting-business-core",
+        "title": "Professional Business Requirements",
+        "parentId": "major",
+        "requirementIds": [
+          "acc1010",
+          "acc1020",
+          "cis1070",
+          "law2010",
+          "man2100",
+          "mkt2010",
+          "fin3010",
+          "eco1110",
+          "eco1120",
+          "bus2100",
+          "sta2010",
+          "man3730",
+          "man3720",
+          "bus4210"
+        ],
+        "sourceId": "tesu-accounting-current-2026-11-18"
+      },
+      {
+        "id": "tesu-accounting-required",
+        "title": "Required Accounting Courses",
+        "parentId": "major",
+        "requirementIds": [
+          "acc2010",
+          "acc2020"
+        ],
+        "sourceId": "tesu-accounting-current-2026-11-18"
+      },
+      {
+        "id": "tesu-accounting-selected",
+        "title": "Additional Accounting Courses — four selected",
+        "parentId": "major",
+        "requirementIds": [
+          "acc3030",
+          "acc4010",
+          "acc4020",
+          "acc4210"
+        ],
+        "sourceId": "tesu-accounting-current-2026-11-18"
+      },
+      {
+        "id": "tesu-accounting-free",
+        "title": "Free Electives",
+        "parentId": "elective",
+        "requirementIds": [
+          "free-art1000",
+          "free-ant1010",
+          "free-psy1010",
+          "free-his1210",
+          "free-bus1010"
+        ],
+        "sourceId": "tesu-accounting-current-2026-11-18"
+      }
+    ],
+    "coverageLabel": "Complete 120-credit Accounting ledger with named course choices and source-linked transfer candidates.",
+    "tuitionComparison": {
+      "entryId": "tesu-standard",
+      "sourceUrl": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "checkedOn": "2026-11-18",
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current undergraduate catalog · checked November 18, 2026",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/",
+        "checkedOn": "2026-11-18"
+      },
+      "modelId": "curriculum-tesu-bsba-accounting"
+    },
+    "policyEvidence": {
+      "institutionMinCredits": {
+        "value": 15,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "tesu-accounting-residency-2026-11-18"
+        ],
+        "scope": "Standard nonmilitary 15-credit AC, OL/NU, GS or e-Pack course-residency route."
+      },
+      "externalMaxCredits": {
+        "value": 105,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "tesu-accounting-current-2026-11-18",
+          "tesu-accounting-residency-2026-11-18"
+        ],
+        "scope": "Derived bound for the selected standard-residency route, not a universal transfer guarantee.",
+        "calculation": "120 degree credits minus 15 TESU course-residency credits."
+      },
+      "alternativeMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "tesu-accounting-alternative-cap-2026-11-18",
+          "tesu-accounting-transfer-2026-11-18"
+        ],
+        "scope": "Combined ACE/NCCRS, CLEP, DSST, AP, military/corporate training and other approved noncollegiate credit."
+      },
+      "upperMinCredits": {
+        "value": 18,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "tesu-accounting-current-2026-11-18",
+          "tesu-accounting-business-policy-2026-11-18"
+        ],
+        "scope": "12 upper-level area-of-study credits, the upper-level capstone, and one additional three-credit upper-level course in the area of study or Professional Business Requirements. Both required Accounting courses are lower level; all four selected additional Accounting courses are upper level. The remaining six upper credits must therefore be in the business core, including the capstone."
+      }
+    },
+    "policySourceIds": [
+      "tesu-accounting-current-2026-11-18",
+      "tesu-accounting-business-policy-2026-11-18",
+      "tesu-accounting-residency-2026-11-18",
+      "tesu-accounting-alternative-cap-2026-11-18",
+      "tesu-accounting-transfer-2026-11-18"
+    ],
+    "gradePolicy": {
+      "minimumGrade": "C",
+      "scope": "composition-business-core-and-area-of-study",
+      "sourceIds": [
+        "tesu-accounting-transfer-2026-11-18",
+        "tesu-accounting-grades-2026-11-18",
+        "tesu-accounting-business-policy-2026-11-18"
+      ],
+      "checked": "2026-11-18",
+      "detail": "Composition, Professional Business Requirements and Accounting area of study require C or better. Other general education and electives retain their applicable grade rules."
+    },
+    "transferPolicyReview": {
+      "checked": "2026-11-18",
+      "alternativeMaxCredits": 90,
+      "alternativeMaxScope": "Combined noncollegiate sources; not 90 credits per provider.",
+      "duplicatesCountOnce": true,
+      "requiredInstitutionalCourses": [
+        "SOS-1100",
+        "BUS-4210"
+      ],
+      "sourceIds": [
+        "tesu-accounting-transfer-2026-11-18",
+        "tesu-accounting-alternative-cap-2026-11-18"
+      ],
+      "residencyNote": "Standard nonmilitary 15-credit eligible-course residency; exams alone do not fulfill it. Edison Accelerate and military alternatives are separate scenarios."
+    },
+    "graduationRequirements": [
+      {
+        "id": "gpa",
+        "title": "Minimum overall GPA",
+        "description": "Maintain at least a 2.0 overall GPA and satisfy the applicable area-of-study and composition grade requirements.",
+        "sourceIds": [
+          "tesu-accounting-grades-2026-11-18"
+        ]
+      }
+    ],
+    "rulesNotes": [
+      "45 general education + 42 Professional Business Requirements + 18 Accounting + 15 free electives = 120 semester credits.",
+      "12 upper-level area-of-study credits, the upper-level capstone, and one additional three-credit upper-level course in the area of study or Professional Business Requirements. Both required Accounting courses are lower level; all four selected additional Accounting courses are upper level. The remaining six upper credits must therefore be in the business core, including the capstone.",
+      "The two required Accounting courses and four additional Accounting selections are allocated once. The fifth additional Accounting option, ACC-4110, is not an additional mandatory course.",
+      "This is the 18-credit Accounting area of study, not the separate 24-credit Accounting/CPA degree. No state CPA eligibility determination is made.",
+      "The general-education featured-course ledger retains HIS-1140 and PHI-1300 as the two allowed selected Human Cultures courses. No personal waiver is assumed.",
+      "The current catalog edition label was not exposed in the retrieved pages; the reviewed current-catalog identity is separate from dated tuition and provider evidence.",
+      "Standard residency and the combined alternative-source cap are separate. The 105 outside-credit bound is not a claim that 105 source-linked outside credits are available.",
+      "Source recommendation quantities, receiving-school quantities and personal approvals remain separate. Existing provider evidence retains its original dates and conditions.",
+      "At least half of the Accounting area of study must be current within ten years of the most recent application date; the business capstone has a five-year currency limit."
+    ],
+    "unresolved": [
+      "Individual catalog eligibility, state CPA eligibility, course currency and registration availability depend on the student; this plan does not make a licensure or admissions decision.",
+      "Existing receiving-school transfer candidates retain their original provider/version/format restrictions. No additional provider award is inferred from a matching course title.",
+      "The standard nonmilitary residency route is modeled. Military enrollment, foreign-credit rules and Edison Accelerate require a separately evaluated scenario.",
+      "Published tuition is a planning basis; books, provider subscriptions and applicable fees are separate."
+    ],
+    "policyReview": [],
+    "evidenceCheckedOn": "2026-11-18"
+  },
+  "modelSourceIds": [
+    "tesu-accounting-current-2026-11-18",
+    "tesu-accounting-business-policy-2026-11-18",
+    "tesu-accounting-residency-2026-11-18",
+    "tesu-accounting-transfer-2026-11-18",
+    "tesu-accounting-alternative-cap-2026-11-18",
+    "tesu-accounting-grades-2026-11-18",
+    "tesu-accounting-acc2010-2026-11-18",
+    "tesu-accounting-acc2020-2026-11-18",
+    "tesu-accounting-acc3030-2026-11-18",
+    "tesu-accounting-acc4010-2026-11-18",
+    "tesu-accounting-acc4020-2026-11-18",
+    "tesu-accounting-acc4210-2026-11-18",
+    "tesu-accounting-bus1010-2026-11-18",
+    "tesu-accounting-tuition-2026-11-18",
+    "tesu-common-acc1020-prerequisites-2026-11-18",
+    "tesu-common-fin3010-prerequisites-2026-11-18",
+    "tesu-common-bus2100-prerequisites-2026-11-18",
+    "tesu-common-sta2010-prerequisites-2026-11-18",
+    "tesu-common-man3720-prerequisites-2026-11-18",
+    "tesu-bus4210",
+    "tesu-art1000-current-2026-11-17",
+    "tesu-ant1010-current-2026-11-17",
+    "tesu-psy1010-current-2026-11-17",
+    "tesu-his1210-current-2026-11-17",
+    "tesu-general-management--tesu-degree",
+    "tesu-general-management--tesu-clep",
+    "tesu-general-management--tesu-clep-policy",
+    "tesu-general-management--tesu-residency",
+    "tesu-general-management--tesu-directory",
+    "tesu-general-management--tesu-transfer-faq",
+    "tesu-general-management--tesu-transfer",
+    "tesu-general-management--tesu-sophia-algebra",
+    "tesu-general-management--tesu-sophia-accounting",
+    "tesu-general-management--tesu-accelerate",
+    "tesu-general-management--tesu-acc2010",
+    "tesu-general-management--tesu-acc4010",
+    "tesu-general-management--tesu-acc3030",
+    "tesu-general-management--tesu-man3310",
+    "tesu-general-management--tesu-bus4210",
+    "tesu-general-management--df-sophia-tesu-6816",
+    "tesu-general-management--df-accounting-tesu-6620",
+    "tesu-general-management--df-finance-tesu-6587",
+    "tesu-general-management--df-orglead-tesu-5982",
+    "tesu-general-management--df-certificates-tesu-5984",
+    "tesu-general-management--df-ge-tesu-6573",
+    "tesu-general-management--liberty-sophia-provider-identifiers-2026-05",
+    "tesu-general-management--tesu-gened-structure",
+    "tesu-general-management--tesu-transfer-policy-current",
+    "tesu-general-management--tesu-grade-policy-current",
+    "tesu-general-management--tesu-business-core-scope-current",
+    "tesu-general-management--tesu-transcripts-current",
+    "tesu-general-management--tesu-study-general-management-current",
+    "tesu-general-management--tesu-study-man3720-current",
+    "tesu-general-management--tesu-study-fin3010-conflict-current",
+    "tesu-general-management--tesu-study-business306-ace-current",
+    "tesu-general-management--tesu-study-business308-ace-current",
+    "tesu-general-management--tesu-study-ace-organization-current",
+    "tesu-general-management--tesu-sophia-algebra-window-current",
+    "tesu-general-management--tesu-sophia-partner-current",
+    "tesu-general-management--tesu-man3720",
+    "tesu-general-management--tesu-study-course-passing-current",
+    "tesu-general-management--tesu-gm-current-program-2026-11-17",
+    "tesu-general-management--tesu-gm-elective-course-list-2026-11-17",
+    "tesu-general-management--tesu-art1000-current-2026-11-17",
+    "tesu-general-management--tesu-ant1010-current-2026-11-17",
+    "tesu-general-management--tesu-psy1010-current-2026-11-17",
+    "tesu-general-management--tesu-his1210-current-2026-11-17",
+    "tesu-general-management--tesu-tuition-current-2026-11-17",
+    "tesu-general-management--tesu-fees-current-2026-11-17",
+    "tesu-general-management--tesu-accelerated-courses-current-2026-11-17",
+    "tesu-general-management--tesu-edx-degree-restriction-2026-11-17",
+    "tesu-general-management--tesu-institution-transfer-current-2026-11-17",
+    "tesu-general-management--tesu-edison-accelerate-current-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-tesu-provider-directory-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-keyword-algebra-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-keyword-composition-one-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-algebra-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-accounting-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-composition-one-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-composition-two-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-critical-thinking-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-current-general-management-2026-11-17",
+    "tesu-general-management--sophia-soph-0083-current-offer",
+    "tesu-general-management--sophia-soph-0083-current-offer-syllabus",
+    "tesu-general-management--tesu-common-acc1020-prerequisites-2026-11-18",
+    "tesu-general-management--tesu-common-fin3010-prerequisites-2026-11-18",
+    "tesu-general-management--tesu-common-bus2100-prerequisites-2026-11-18",
+    "tesu-general-management--tesu-common-sta2010-prerequisites-2026-11-18",
+    "tesu-general-management--tesu-common-man3720-prerequisites-2026-11-18"
+  ],
+  "requirements": [
+    {"id":"enc1010","code":"ENC-1010","title":"Writing for Success","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-english-composition-i-to-enc-1010",
+      "clep-clep-0040-to-enc-1010@requirement-id",
+      "clep-clep-0041-to-enc-1010"
+    ]},
+    {"id":"enc1020","code":"ENC-1020","title":"Writing for Success II","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-english-composition-ii-to-enc-1020",
+      "clep-clep-0040-to-enc-1020@requirement-id"
+    ]},
+    {"id":"com2090","code":"COM-2090","title":"Public Speaking","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-public-speaking-to-com-2090"
+    ]},
+    {"id":"mat1210","code":"MAT-1210","title":"College Algebra","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-math1001-to-mat-1210",
+      "clep-clep-0013-to-mat-1210"
+    ]},
+    {"id":"sos1100","code":"SOS-1100","title":"Fact, Fiction, or Fake? Information Literacy Today","credits":3,"category":"general","upper":false,"institutionalOnly":true,"group":"intellectual-practical","subgroup":"intellectual-practical","sourceIds":["tesu-accounting-current-2026-11-18"],"optionRows":[
+
+    ]},
+    {"id":"soc1010","code":"SOC-1010","title":"Our Changing World: An Introduction to Sociology","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"civic-global","subgroup":"civic-global","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-introduction-to-sociology-to-soc-1010",
+      "clep-clep-0026-to-soc-1010"
+    ]},
+    {"id":"eth2200","code":"ETH-2200","title":"Leading the Way: A Path Towards Ethical Leadership","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"civic-global","subgroup":"civic-global","sourceIds":["tesu-accounting-current-2026-11-18"],"optionRows":[
+
+    ]},
+    {"id":"pos1100","code":"POS-1100","title":"American Government","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"civic-global","subgroup":"civic-global","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-u-s-government-to-pos-1100",
+      "clep-clep-0007-to-pos-1100"
+    ]},
+    {"id":"soc2100","code":"SOC-2100","title":"Marriage and the Family","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-accounting-current-2026-11-18"],"optionRows":[
+
+    ]},
+    {"id":"his1130","code":"HIS-1130","title":"American History I","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-us-history-i-to-his-1130",
+      "clep-clep-0008-to-his-1130"
+    ]},
+    {"id":"fil1100","code":"FIL-1100","title":"Exploring American Cinema","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-accounting-current-2026-11-18"],"optionRows":[
+
+    ]},
+    {"id":"his1140","code":"HIS-1140","title":"American History II","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-us-history-ii-to-his-1140",
+      "clep-clep-0009-to-his-1140"
+    ]},
+    {"id":"phi1300","code":"PHI-1300","title":"Introduction to Critical Reasoning","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-critical-thinking-to-phi-1300"
+    ]},
+    {"id":"eas1010","code":"EAS-1010","title":"General Earth Science","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"scientific","subgroup":"scientific","allocationType":"category-choice","categoryAllowed":["scientific-knowledge"],"categoryLabel":"Scientific Knowledge choice","featuredCourseCode":"EAS-1010","notes":"Scientific Knowledge category capacity; EAS-1010 is the catalog-featured baseline choice. A different accepted scientific award requires a category allocation, not an exact equivalency to EAS-1010.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-human-biology-to-bio-1010"
+    ]},
+    {"id":"bio2080","code":"BIO-2080","title":"The Science of Nutrition","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"scientific","subgroup":"scientific","allocationType":"category-choice","categoryAllowed":["scientific-knowledge"],"categoryLabel":"Scientific Knowledge choice","featuredCourseCode":"BIO-2080","notes":"Scientific Knowledge category capacity; BIO-2080 is the catalog-featured baseline choice. A different accepted scientific award requires a category allocation, not an exact equivalency to BIO-2080.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-introduction-to-nutrition-to-nut-1010"
+    ]},
+    {"id":"acc1010","code":"ACC-1010","title":"Principles of Financial Accounting","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-busi1010-to-acc-1010",
+      "clep-clep-0039-to-acc-1010"
+    ]},
+    {"id":"acc1020","code":"ACC-1020","title":"Principles of Managerial Accounting","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","prerequisites":["acc1010"],"prerequisiteSourceIds":["tesu-common-acc1020-prerequisites-2026-11-18"],"sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "study-com-accounting-102-to-acc-1020",
+      "sophia-managerial-accounting-to-acc-1020"
+    ]},
+    {"id":"cis1070","code":"CIS-1070","title":"Computer Concepts and Applications","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-introduction-to-information-technology-to-cis-1070"
+    ]},
+    {"id":"law2010","code":"LAW-2010","title":"Business Law","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-business-law-to-law-2010",
+      "clep-clep-0025-to-law-2010"
+    ]},
+    {"id":"man2100","code":"MAN-2100","title":"Principles of Management","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-principles-of-management-to-man-2100",
+      "clep-clep-0028-to-man-2100"
+    ]},
+    {"id":"mkt2010","code":"MKT-2010","title":"Introduction to Marketing","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "clep-clep-0029-to-mkt-2010"
+    ]},
+    {"id":"fin3010","code":"FIN-3010","title":"Principles of Finance","credits":3,"category":"major","upper":true,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","prerequisites":["acc1010"],"prerequisiteSourceIds":["tesu-common-fin3010-prerequisites-2026-11-18"],"sourceIds":["tesu-accounting-current-2026-11-18"],"optionRows":[
+
+    ]},
+    {"id":"eco1110","code":"ECO-1110","title":"Macroeconomics","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-macroeconomics-to-eco-1110",
+      "clep-clep-0027-to-eco-1110"
+    ]},
+    {"id":"eco1120","code":"ECO-1120","title":"Microeconomics","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-microeconomics-to-eco-1120",
+      "clep-clep-0030-to-eco-1120"
+    ]},
+    {"id":"bus2100","code":"BUS-2100","title":"Quantitative Skills for Business","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","prerequisites":["mat1210"],"prerequisiteSourceIds":["tesu-common-bus2100-prerequisites-2026-11-18"],"prerequisiteNotes":"Formal prerequisite permits MAT-1050 or MAT-1210. This modeled named-course baseline selects MAT-1210, already allocated in general education, without adding duplicate math credits.","sourceIds":["tesu-accounting-current-2026-11-18"],"optionRows":[
+
+    ]},
+    {"id":"sta2010","code":"STA-2010","title":"Principles of Statistics","credits":3,"category":"major","upper":false,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","prerequisites":["mat1210"],"prerequisiteSourceIds":["tesu-common-sta2010-prerequisites-2026-11-18"],"sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "sophia-introduction-to-statistics-to-sta-2010"
+    ]},
+    {"id":"man3730","code":"MAN-3730","title":"Managerial Communications","credits":3,"category":"major","upper":true,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "study-com-business-324-to-man-3730"
+    ]},
+    {"id":"man3720","code":"MAN-3720","title":"International Management","credits":3,"category":"major","upper":true,"institutionalOnly":false,"group":"business-core","subgroup":"business-core","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","prerequisites":["man2100"],"prerequisiteSourceIds":["tesu-common-man3720-prerequisites-2026-11-18"],"prerequisiteNotes":"The formal prerequisite prints legacy MAN-210; the same course page advisory links explicitly to current MAN-2100 Principles of Management. This baseline uses that current same-course identity, not an inferred outside equivalency.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "study-com-sdcm-0054-to-man-3720@requirement-id"
+    ]},
+    {"id":"bus4210","code":"BUS-4210","title":"Business Administration Capstone","credits":3,"category":"major","upper":true,"institutionalOnly":true,"group":"business-core","subgroup":"business-core","prerequisites":["fin3010","man2100","mkt2010","acc1010","acc1020","eco1110","eco1120"],"prerequisiteSourceIds":["tesu-bus4210"],"prerequisiteNotes":"Complete the listed core business subjects before the capstone. The course page uses the legacy/ambiguous code MAR-2010 where this degree uses MKT-2010; confirm the equivalency and registration requirements with TESU.","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"optionRows":[
+
+    ]},
+    {"id":"acc2010","code":"ACC-2010","title":"Intermediate Accounting I","credits":3,"category":"major","group":"area-study","subgroup":"area-of-study","upper":false,"institutionalOnly":false,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-acc2010-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18"],"prerequisites":["acc1020"],"prerequisiteSourceIds":["tesu-accounting-acc2010-2026-11-18"],"selectionRequired":false,"optionRows":[
+      "study-com-accounting-201-to-acc-2010"
+    ]},
+    {"id":"acc2020","code":"ACC-2020","title":"Intermediate Accounting II","credits":3,"category":"major","group":"area-study","subgroup":"area-of-study","upper":false,"institutionalOnly":false,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-acc2020-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18"],"prerequisiteNotes":"Advisory knowledge: ACC-2010. This is distinct from a formal prerequisite. Microsoft Excel knowledge is expected.","prerequisiteSourceIds":["tesu-accounting-acc2020-2026-11-18"],"optionRows":[
+
+    ]},
+    {"id":"acc3030","code":"ACC-3030","title":"Cost Accounting","credits":3,"category":"major","group":"area-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-acc3030-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18"],"prerequisiteNotes":"Advisory knowledge: ACC-1010, ACC-2010. This is distinct from a formal prerequisite. Microsoft Excel knowledge is expected.","prerequisiteSourceIds":["tesu-accounting-acc3030-2026-11-18"],"notes":"Selected course from the published four-of-five additional Accounting list; this baseline does not claim that every listed alternative is mandatory.","selectionRequired":false,"optionRows":[
+      "study-com-accounting-303-to-acc-3030"
+    ]},
+    {"id":"acc4010","code":"ACC-4010","title":"Advanced Accounting I","credits":3,"category":"major","group":"area-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-acc4010-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18"],"prerequisites":["acc2010"],"prerequisiteSourceIds":["tesu-accounting-acc4010-2026-11-18"],"notes":"Selected course from the published four-of-five additional Accounting list; this baseline does not claim that every listed alternative is mandatory.","selectionRequired":false,"optionRows":[
+      "study-com-accounting-302-to-acc-4010"
+    ]},
+    {"id":"acc4020","code":"ACC-4020","title":"Advanced Accounting II","credits":3,"category":"major","group":"area-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-acc4020-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18"],"prerequisites":["acc2010","acc4010"],"prerequisiteSourceIds":["tesu-accounting-acc4020-2026-11-18"],"notes":"Selected course from the published four-of-five additional Accounting list; this baseline does not claim that every listed alternative is mandatory.","optionRows":[
+
+    ]},
+    {"id":"acc4210","code":"ACC-4210","title":"Federal Income Taxation","credits":3,"category":"major","group":"area-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-acc4210-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18"],"prerequisites":["acc1010","acc1020"],"prerequisiteSourceIds":["tesu-accounting-acc4210-2026-11-18"],"notes":"Selected course from the published four-of-five additional Accounting list; this baseline does not claim that every listed alternative is mandatory.","optionRows":[
+
+    ]},
+    {"id":"free-art1000","title":"Free elective 1","credits":3,"category":"elective","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-art1000-current-2026-11-17"],"notes":"Named nonduplicating university choice: ART-1000 A World of Art. This is unrestricted free-elective capacity, not a requirement to transfer this exact course. A different permitted course may better fit existing records.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-art1000","provider":"University","code":"ART-1000","title":"A World of Art","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-art1000-current-2026-11-17"],"evidence":"published","url":"https://www2.tesu.edu/ucourse.php?CourseCode=ART-1000&sem="}},
+      "sophia-human-biology-to-bio-1010@elective-block",
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      "sophia-organizational-behavior-to-man-3110@elective-block",
+      "sophia-introduction-to-business-to-bus-1010@elective-block",
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-2@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-3@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-4@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-ant1010","title":"Free elective 2","credits":3,"category":"elective","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-ant1010-current-2026-11-17"],"notes":"Named nonduplicating university choice: ANT-1010 Introduction to Anthropology. This is unrestricted free-elective capacity, not a requirement to transfer this exact course. A different permitted course may better fit existing records.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-ant1010","provider":"University","code":"ANT-1010","title":"Introduction to Anthropology","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-ant1010-current-2026-11-17"],"evidence":"published","url":"https://www2.tesu.edu/ucourse.php?CourseCode=ANT-1010&sem="}},
+      "sophia-human-biology-to-bio-1010@elective-block",
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      "sophia-organizational-behavior-to-man-3110@elective-block",
+      "sophia-introduction-to-business-to-bus-1010@elective-block",
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-2@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-3@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-4@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-psy1010","title":"Free elective 3","credits":3,"category":"elective","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-psy1010-current-2026-11-17"],"notes":"Named nonduplicating university choice: PSY-1010 Introduction to Psychology. This is unrestricted free-elective capacity, not a requirement to transfer this exact course. A different permitted course may better fit existing records.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-psy1010","provider":"University","code":"PSY-1010","title":"Introduction to Psychology","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-psy1010-current-2026-11-17"],"evidence":"published","url":"https://www2.tesu.edu/ucourse.php?CourseCode=PSY-1010&sem="}},
+      "sophia-human-biology-to-bio-1010@elective-block",
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      "sophia-organizational-behavior-to-man-3110@elective-block",
+      "sophia-introduction-to-business-to-bus-1010@elective-block",
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-2@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-3@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-4@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-his1210","title":"Free elective 4","credits":3,"category":"elective","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-his1210-current-2026-11-17"],"notes":"Named nonduplicating university choice: HIS-1210 Introduction to World History I. This is unrestricted free-elective capacity, not a requirement to transfer this exact course. A different permitted course may better fit existing records.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-his1210","provider":"University","code":"HIS-1210","title":"Introduction to World History I","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-his1210-current-2026-11-17"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/his-history/1000/his-1210"}},
+      "sophia-human-biology-to-bio-1010@elective-block",
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      "sophia-organizational-behavior-to-man-3110@elective-block",
+      "sophia-introduction-to-business-to-bus-1010@elective-block",
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-2@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-3@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-4@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-bus1010","title":"Free elective 5","credits":3,"category":"elective","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-accounting-bus1010-2026-11-18"],"notes":"Named nonduplicating university choice: BUS-1010 Introduction to Business. This is unrestricted free-elective capacity, not a requirement to transfer this exact course. A different permitted course may better fit existing records.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-bus1010","provider":"University","code":"BUS-1010","title":"Introduction to Business","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-accounting-current-2026-11-18","tesu-accounting-business-policy-2026-11-18","tesu-accounting-bus1010-2026-11-18"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/bus-business/1000/bus-1010"}},
+      "sophia-human-biology-to-bio-1010@elective-block",
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      "sophia-organizational-behavior-to-man-3110@elective-block",
+      "sophia-introduction-to-business-to-bus-1010@elective-block",
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-2@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-3@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-introduction-to-business-to-bus-1010-4@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]}
+  ]
+}
