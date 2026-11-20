@@ -1,0 +1,375 @@
+{
+ "kind": "degreesteps-coach-index",
+ "version": 1,
+ "registryRevision": "academic-v1:2dd1757b7d2ddd782b79028ae13b18c0dcf0ee5872f5955c5049144c272a8db0",
+ "asOf": "2026-11-20",
+ "plans": {
+  "excelsior-bs-psychology": {
+   "title": "Bachelor of Science in Psychology",
+   "school": "Excelsior University",
+   "level": "bachelor",
+   "format": "Online",
+   "unit": "semester credits"
+  },
+  "wgu-catalog-ecceaa488637ac83": {
+   "title": "Business Management – B.S.",
+   "school": "Western Governors University",
+   "level": "bachelor",
+   "format": "Online",
+   "unit": "competency units",
+   "page": "/degree-plans/wgu-business-management/"
+  },
+  "wgu-catalog-689e417cff765fc9": {
+   "title": "Marketing – B.S.",
+   "school": "Western Governors University",
+   "level": "bachelor",
+   "format": "Online",
+   "unit": "competency units",
+   "page": "/degree-plans/wgu-marketing/"
+  },
+  "liberty-catalog-fa62c08cdfa0c990-online": {
+   "title": "Psychology (B.S.) — Online",
+   "school": "Liberty University",
+   "level": "bachelor",
+   "format": "Online",
+   "unit": "semester credits",
+   "page": "/degree-plans/liberty-psychology-bs-online/"
+  },
+  "liberty-catalog-c8df4d8834411386-online": {
+   "title": "Psychology (A.A.) — Online",
+   "school": "Liberty University",
+   "level": "associate",
+   "format": "Online",
+   "unit": "semester credits"
+  },
+  "tesu-ba-psychology": {
+   "title": "B.A. in Psychology",
+   "school": "Thomas Edison State University",
+   "level": "bachelor",
+   "format": "Online",
+   "unit": "semester credits"
+  },
+  "phoenix-da-ms-psychology": {
+   "title": "Master of Science in Psychology (Direct Assessment)",
+   "school": "University of Phoenix",
+   "level": "master",
+   "format": "Online",
+   "unit": "competency units"
+  },
+  "excelsior-bs-business-no-concentration": {
+   "title": "Bachelor of Science in Business (No Concentration)",
+   "school": "Excelsior University",
+   "level": "bachelor",
+   "format": "Online",
+   "unit": "semester credits"
+  },
+  "liberty-business-residential": {
+   "title": "B.S. Business Administration & Data Analysis — Interdisciplinary Business",
+   "school": "Liberty University",
+   "level": "bachelor",
+   "format": "On campus",
+   "unit": "semester credits",
+   "page": "/degree-plans/liberty-business-residential/"
+  },
+  "gcu-bsba-campus": {
+   "title": "Bachelor of Science in Business Administration",
+   "school": "Grand Canyon University",
+   "level": "bachelor",
+   "format": "On campus",
+   "unit": "semester credits"
+  }
+ },
+ "courses": [
+  {
+   "provider": "Sophia",
+   "code": "SOPH-0073",
+   "title": "Anatomy & Physiology I",
+   "path": "/transfer/sophia/soph-0073-anatomy-physiology-i/",
+   "matches": [
+    {
+     "routeId": "liberty-catalog-fa62c08cdfa0c990-online",
+     "tier": "reviewed",
+     "requirements": [
+      "BIOL 102 Principles of Human Biology"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "liberty-catalog-c8df4d8834411386-online",
+     "tier": "confirmation",
+     "requirements": [
+      "BIOL 102 Principles of Human Biology"
+     ],
+     "credits": 3
+    }
+   ]
+  },
+  {
+   "provider": "Sophia",
+   "code": "SOPH-0015",
+   "title": "English Composition I",
+   "path": "/transfer/sophia/soph-0015-english-composition-i/",
+   "matches": [
+    {
+     "routeId": "liberty-business-residential",
+     "tier": "reviewed",
+     "requirements": [
+      "ENGL 101 Composition and Rhetoric"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "liberty-catalog-fa62c08cdfa0c990-online",
+     "tier": "reviewed",
+     "requirements": [
+      "ENGL 101 Composition and Rhetoric"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "wgu-catalog-ecceaa488637ac83",
+     "tier": "reviewed",
+     "requirements": [
+      "D270 Composition: Successful Self-Expression"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "wgu-catalog-689e417cff765fc9",
+     "tier": "reviewed",
+     "requirements": [
+      "D270 Composition: Successful Self-Expression"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "excelsior-bs-business-no-concentration",
+     "tier": "confirmation",
+     "requirements": [
+      "ENG 101A Advanced Composition"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "excelsior-bs-psychology",
+     "tier": "confirmation",
+     "requirements": [
+      "ENG 101A Advanced Composition"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "liberty-catalog-c8df4d8834411386-online",
+     "tier": "confirmation",
+     "requirements": [
+      "ENGL 101 Composition and Rhetoric"
+     ],
+     "credits": 3
+    }
+   ]
+  },
+  {
+   "provider": "Sophia",
+   "code": "SOPH-0030",
+   "title": "English Composition II",
+   "path": "/transfer/sophia/soph-0030-english-composition-ii/",
+   "matches": [
+    {
+     "routeId": "liberty-business-residential",
+     "tier": "reviewed",
+     "requirements": [
+      "ENGL 102 Information literacy: Composition and Literature"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "liberty-catalog-fa62c08cdfa0c990-online",
+     "tier": "reviewed",
+     "requirements": [
+      "ENGL 102 Composition and Literature"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "excelsior-bs-psychology",
+     "tier": "confirmation",
+     "requirements": [
+      "ENG 102A Advanced Composition II"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "liberty-catalog-c8df4d8834411386-online",
+     "tier": "confirmation",
+     "requirements": [
+      "ENGL 102 Composition and Literature"
+     ],
+     "credits": 3
+    }
+   ]
+  },
+  {
+   "provider": "Sophia",
+   "code": "SOPH-0048",
+   "title": "Introduction to Psychology",
+   "path": "/transfer/sophia/soph-0048-introduction-to-psychology/",
+   "matches": [
+    {
+     "routeId": "liberty-business-residential",
+     "tier": "reviewed",
+     "requirements": [
+      "PSYC 101 General Psychology"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "liberty-catalog-fa62c08cdfa0c990-online",
+     "tier": "reviewed",
+     "requirements": [
+      "PSYC 101 General Psychology"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "excelsior-bs-business-no-concentration",
+     "tier": "confirmation",
+     "requirements": [
+      "PSY 101 Introduction to Psychology I"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "excelsior-bs-psychology",
+     "tier": "confirmation",
+     "requirements": [
+      "PSY 101 Introduction to Psychology I"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "liberty-catalog-c8df4d8834411386-online",
+     "tier": "confirmation",
+     "requirements": [
+      "PSYC 101 General Psychology"
+     ],
+     "credits": 3
+    }
+   ]
+  },
+  {
+   "provider": "Sophia",
+   "code": "SOPH-0005",
+   "title": "Introduction to Statistics",
+   "path": "/transfer/sophia/soph-0005-introduction-to-statistics/",
+   "matches": [
+    {
+     "routeId": "wgu-catalog-ecceaa488637ac83",
+     "tier": "reviewed",
+     "requirements": [
+      "C955 Applied Probability and Statistics"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "wgu-catalog-689e417cff765fc9",
+     "tier": "reviewed",
+     "requirements": [
+      "C955 Applied Probability and Statistics"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "excelsior-bs-business-no-concentration",
+     "tier": "confirmation",
+     "requirements": [
+      "MAT 101 Mathematics for Everyday Life",
+      "MAT 114 Intermediate Algebra",
+      "MAT 201 No Concentration: credits in any academic area",
+      "MAT 201 Arts and Sciences Electives",
+      "MAT 201 Electives in any academic area"
+     ],
+     "credits": 3
+    },
+    {
+     "routeId": "excelsior-bs-psychology",
+     "tier": "confirmation",
+     "requirements": [
+      "MAT 101 Mathematics for Everyday Life",
+      "MAT 201 Statistics"
+     ],
+     "credits": 3
+    }
+   ]
+  },
+  {
+   "provider": "ASU Universal Learner",
+   "code": "CIS308",
+   "title": "Advanced Excel in Business",
+   "path": "/transfer/asu-universal-learner/cis308-advanced-excel-in-business/",
+   "matches": [
+    {
+     "routeId": "gcu-bsba-campus",
+     "tier": "reviewed",
+     "requirements": [
+      "Open elective 1",
+      "Open elective 2",
+      "Open elective 3",
+      "Open elective 4"
+     ],
+     "credits": 3
+    }
+   ]
+  },
+  {
+   "provider": "ASU Universal Learner",
+   "code": "CIS310",
+   "title": "Business Data Visualization",
+   "path": "/transfer/asu-universal-learner/cis310-business-data-visualization/",
+   "matches": [
+    {
+     "routeId": "gcu-bsba-campus",
+     "tier": "reviewed",
+     "requirements": [
+      "Open elective 1",
+      "Open elective 2",
+      "Open elective 3",
+      "Open elective 4"
+     ],
+     "credits": 3
+    }
+   ]
+  },
+  {
+   "provider": "ASU Universal Learner",
+   "code": "CIS105",
+   "title": "Computer Applications and Information Technology",
+   "path": "/transfer/asu-universal-learner/cis105-computer-applications-and-information-technology/",
+   "matches": [
+    {
+     "routeId": "gcu-bsba-campus",
+     "tier": "reviewed",
+     "requirements": [
+      "BIT-200 Introduction to Computer Technology"
+     ],
+     "credits": 3
+    }
+   ]
+  },
+  {
+   "provider": "ASU Universal Learner",
+   "code": "BIO130",
+   "title": "Introduction to Environmental Science",
+   "path": "/transfer/asu-universal-learner/bio130-introduction-to-environmental-science/",
+   "matches": [
+    {
+     "routeId": "gcu-bsba-campus",
+     "tier": "reviewed",
+     "requirements": [
+      "BIO-220 Environmental Science"
+     ],
+     "credits": 4
+    }
+   ]
+  }
+ ]
+}

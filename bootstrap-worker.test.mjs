@@ -30,7 +30,7 @@ function fixture(t){
   const DB=new LocalD1(),auth=[],ai=[],queues=[],assets=[],outside=[];
   t.after(()=>DB.close());
   for(const [uuid,role]of [[ownerUUID,'owner'],[memberUUID,'member']])DB.sqlite.prepare('INSERT INTO community_users(id,alias,role,created_at,updated_at) VALUES(?,?,?,1,1)').run('sb-'+uuid,'Synthetic '+role,role);
-  const env={DB,PORTAL_SUPABASE_URL:provider,PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_bootstrap_fixture',AI_CONNECTIONS_MASTER_KEY:master,
+  const env={DB,PORTAL_SUPABASE_URL:provider,PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_bootstrap_fixture',AI_CONNECTIONS_MASTER_KEY:master,AI_CONNECTIONS_ALLOW_MANAGED:'1',
     ASSETS:{async fetch(request){assets.push(request.url);throw Error('Bootstrap cannot expose normal assets');}},
     RESEARCH_QUEUE:{async send(value){queues.push(value);throw Error('Bootstrap cannot enqueue research');}},
     PORTAL_AUTH_FETCH:async(url,init={})=>{

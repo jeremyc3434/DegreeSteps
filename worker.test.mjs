@@ -209,7 +209,7 @@ test('new management routes reject spoofed roles and static management pages sta
 const connectionPath='/api/admin/ai-connection',testConnectionKey='worker-fixture-claude-key-not-a-real-credential',testConnectionMaster='c3'.repeat(32);
 function assertNoConnectionSecret(value){const text=JSON.stringify(value);for(const key of [testConnectionKey,testConnectionMaster])assert(!text.includes(key),'Browser responses must not expose credential material');assert.doesNotMatch(text,/"(?:apiKey|ciphertext|iv)"/);}
 function connectWorkerFixture(t){
- const f=fixture(t,true,{email:'owner@preview.invalid'}),checks=[];f.env.AI_CONNECTIONS_MASTER_KEY=testConnectionMaster;
+ const f=fixture(t,true,{email:'owner@preview.invalid'}),checks=[];f.env.AI_CONNECTIONS_MASTER_KEY=testConnectionMaster;f.env.AI_CONNECTIONS_ALLOW_MANAGED='1';
  f.env.AI_CONNECTIONS_FETCH=async(url,options)=>{checks.push({url,options});assert.equal(url,'https://api.anthropic.com/v1/messages/count_tokens');assert.equal(options.redirect,'manual');assert.equal(options.headers.Authorization,'Bearer '+testConnectionKey);assert.equal(options.headers['anthropic-version'],'2026-10-21');const body=JSON.parse(options.body);assert.deepEqual(body.messages,[{role:'user',content:'Connection check.'}]);assert.equal(body.max_tokens,undefined);assert.equal(body.tools,undefined);return Response.json({input_tokens:4});};
  return{...f,checks};
 }
