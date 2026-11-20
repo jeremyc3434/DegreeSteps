@@ -102,7 +102,19 @@
     }
   }
   const schedule = () => { if (frame === null) frame = window.requestAnimationFrame(update); };
-  bar.addEventListener('focusin', () => bar.classList.add('is-visible'));
+  // Keyboard: arrow keys, Home and End move between steps (one Tab stop still reaches each).
+  list.addEventListener('keydown', event => {
+    const links = items.map(item => item.firstChild), at = links.indexOf(document.activeElement);
+    if (at < 0) return;
+    const next = { ArrowRight: at + 1, ArrowDown: at + 1, ArrowLeft: at - 1, ArrowUp: at - 1, Home: 0, End: links.length - 1 }[event.key];
+    if (next === undefined) return;
+    event.preventDefault(); links[Math.max(0, Math.min(links.length - 1, next))].focus();
+  });
+  // When focused near the top of the page, sit below the site header instead of covering it.
+  const placeBar = () => { const bottom = header ? header.getBoundingClientRect().bottom : 0; bar.style.top = bottom > 0 && bar.contains(document.activeElement) ? Math.round(bottom) + 'px' : ''; };
+  bar.addEventListener('focusin', () => { bar.classList.add('is-visible'); placeBar(); });
+  bar.addEventListener('focusout', () => setTimeout(placeBar, 0));
+  window.addEventListener('scroll', placeBar, { passive: true });
   bar.addEventListener('focusout', schedule);
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule);

@@ -74,3 +74,15 @@ test('withdrawn generated previews disappear while approved plans and unrelated 
  await assert.rejects(access(join(dist,'degree-plans','withdrawn','index.html')),{code:'ENOENT'});
  assert.deepEqual(await removeObsoletePreviews(dist,[{slug:'approved'}]),[]);
 });
+
+test('plan pages list only the sources the plan cites, grouped, without the shared school document',async()=>{
+ const {referencedSourceIds}=await import('./public-plan-pages.mjs');
+ const {readFile}=await import('node:fs/promises');
+ const html=await readFile(new URL('../dist/degree-plans/wgu-marketing/index.html',import.meta.url),'utf8');
+ const count=Number(/Sources for this plan \((\d+)\)/.exec(html)?.[1]);
+ const doc=JSON.parse(await readFile(new URL('../dist/data/curricula/wgu.json',import.meta.url),'utf8')),model=doc.models.find(m=>/Marketing/.test(m.title));
+ assert.equal(count,model.sources.filter(source=>referencedSourceIds(model).has(source.id)&&/^https:/.test(source.url)).length);
+ assert.ok(count<model.sources.length,'unrelated program sources are not listed');
+ assert.doesNotMatch(html,/Nursing|Master of Business Administration \(MBA\) program guide/i);
+ assert.doesNotMatch(html,/class="public-plan-degree"/,'the degree title is not repeated under the heading');
+});

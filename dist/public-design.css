@@ -724,3 +724,8 @@ body.public-page .plan-library-copy:hover { border-color:var(--public-cobalt); c
 body.public-page .plan-hub-more { margin:18px 0 0; font-size:.9375rem; }
 body.public-page .plan-hub-more a { display:inline-flex; align-items:center; gap:6px; color:var(--public-cobalt); font-weight:600; text-underline-offset:3px; }
 @media(max-width:640px) { body.public-page .public-plan-table td > :is(small,a) { grid-column:2; } }
+body.public-page .public-plan-source-groups { margin:12px 0 0; padding:0; list-style:none; }
+body.public-page .public-plan-source-group { margin:0 0 16px; }
+body.public-page .public-plan-source-group h3 { margin:0 0 6px; font-size:.9375rem; }
+body.public-page .public-plan-source-group h3 span { color:var(--public-muted); font-weight:500; }
+body.public-page .public-plan-source-group ul { margin:0; padding-left:18px; }
