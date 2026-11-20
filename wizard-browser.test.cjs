@@ -152,7 +152,7 @@ const target = pathway => ({ entry: 'audit', goal: 'any-degree', degreeLevel: pa
     await page.locator('[data-tab="sources"]').click();
     assert.equal(await page.locator('[id="data-notes"]').count(), 1);
     const download = page.waitForEvent('download'); await page.locator('[data-action="download-plan"]').click();
-    assert.match((await download).suggestedFilename(), /^degreepath-.*\.txt$/);
+    assert.match((await download).suggestedFilename(), /^degreesteps-.*\.txt$/);
     await page.evaluate(() => localStorage.clear()); await page.goto(BUILDER + '?entry=explore', { waitUntil: 'networkidle' });
     assert.match(await page.locator('.step-title').textContent(), /make possible/);
     assert(requests.every(address => address.startsWith(BASE) || address.startsWith('data:')), 'The new wizard should use only local preloaded assets');

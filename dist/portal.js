@@ -575,13 +575,21 @@
     if(!saveOK){render();showError(Error('This browser could not save your plan. Keep this page open and download a private backup.'));return false;}
     clearProfileDraft();trackPlanStarted(route.id);history.replaceState(null,'',location.pathname);location.assign('plan.html');return true;
   }
+  // Format buttons name the study format; when two variants share a format
+  // (a concentration offered online, say), the title part that differs is added.
+  function variantChoiceLabel(route,choices) {
+    const format=route.modalities.includes('online')?'Online':'On campus';
+    if(choices.filter(r=>r.modalities.includes('online')===route.modalities.includes('online')).length<2)return format;
+    const extra=String(route.title||'').split(' — ').slice(1).filter(part=>!/^(online|residential|on campus)$/i.test(part.trim()));
+    return extra.length?extra.join(' — ')+' · '+format:format;
+  }
   function degreeReadinessBody(target) {
     if(target.unavailable){const research=degreeResearchURL(target.route);return '<article class="portal-readiness-card"><h2>Build a plan for this degree.</h2><p>'+esc(target.route?.title||target.degree||'This degree')+' does not have a completed template yet. Your current plan and courses stay saved.</p><div class="portal-actions"><a class="portal-primary" href="'+esc(research||auditURL(target))+'">'+(research?'Research this degree →':'Build my own plan →')+'</a>'+button('degree-search','Browse available course plans',true)+'</div></article>';}
     if(target.loading)return '<article class="portal-readiness-card" aria-busy="true"><h2>'+esc(target.route?.title||'Your degree')+'</h2><p role="status">Checking official degree requirements…</p></article>';
     if(target.loadError)return '<article class="portal-readiness-card"><h2>We could not load these course requirements.</h2><p role="alert">'+esc(target.loadError)+'</p><p>Your saved plan and courses are unchanged.</p>'+button('retry-degree','Try again')+button('degree-search','Choose another degree',true)+'</article>';
     if(target.discovery?.status==='choose-variant')return '<article class="portal-readiness-card"><h2>'+esc(target.route.title)+'</h2><p>Choose the exact university program.</p><div class="portal-choices">'+(target.discovery.variants||[]).map(variant=>'<button type="button" class="portal-choice" data-source-variant="'+esc(variant.id)+'"><span><strong>'+esc(variant.title)+'</strong><small>'+esc((variant.modalities||[]).map(mode=>mode==='online'?'Online':'On campus').join(' / ')||'Confirm study format')+'</small></span><span aria-hidden="true">→</span></button>').join('')+'</div></article>';
     let route=target.route;const choices=DegreeProgramCatalog.variants(route,catalog);const preferred=choices.find(r=>r.modalities.includes(state.profile.modality))||(state.profile.classroomImportance==='essential'?choices.find(r=>r.modalities.includes('campus')):null);
-    if(choices.length&&(!preferred||target.chooseFormat))return '<article class="portal-readiness-card"><h2>'+esc(route.title)+'</h2><p>Where will you study? Course requirements can differ by study format.</p><div class="portal-actions">'+choices.map(r=>'<button class="portal-primary" type="button" data-variant-preview="'+esc(r.id)+'">'+(r.modalities.includes('online')?'Online':'On campus')+'</button>').join('')+'</div></article>';
+    if(choices.length&&(!preferred||target.chooseFormat))return '<article class="portal-readiness-card"><h2>'+esc(route.title)+'</h2><p>Where will you study? Course requirements can differ by study format.</p><div class="portal-actions">'+choices.map(r=>'<button class="portal-primary" type="button" data-variant-preview="'+esc(r.id)+'">'+esc(variantChoiceLabel(r,choices))+'</button>').join('')+'</div></article>';
     if(preferred)route=preferred;const source=officialSource(route);
     let proposed=null,error='';try{proposed=previewSelection(target).draft;}catch(e){error=e.message;}
     const mapped=Boolean(proposed?.plan),hasMap=Boolean(proposed?.mapAvailable||routeHasMap(route)),formatOnly=proposed?.targetIssues?.length&&proposed.targetIssues.every(issue=>['modality','classroomImportance'].includes(issue.field)),needsReview=Boolean(error||proposed?.targetReviewNeeded||hasMap&&!mapped),unsupported=!hasMap&&!error;

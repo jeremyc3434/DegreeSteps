@@ -17,6 +17,9 @@ async function pageFor(path='/',options={}){
   const context=await browser.newContext({viewport:{width:1440,height:1000},...options});contexts.push(context);
   const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
   const response=await page.goto(url(path),{waitUntil:'networkidle'});assert.equal(response.status(),200,path);
+  // On the homepage the comparison sits in the collapsed "What could transfer courses save you?" drawer.
+  const drawer=page.locator('details.home-cost-drawer');
+  if(await drawer.count()&&!await drawer.evaluate(node=>node.open))await drawer.locator(':scope>summary').click();
   await page.locator('[data-cost-comparison]').waitFor();
   if(options.javaScriptEnabled!==false){await page.locator('[data-cost-school]').waitFor({state:'visible'});await page.waitForFunction(()=>!document.querySelector('[data-cost-school]')?.disabled);}
   return page;
