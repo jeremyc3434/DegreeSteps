@@ -55,7 +55,47 @@
   const model=array(models).find(item=>item.id===route.modelId);
   return !model||modelReadiness(model).available;
  }
- function availablePlans(catalog,models=[]){return array(catalog?.pathways).filter(route=>route.modelId&&isPlanAvailable(route,catalog,models));}
+ function structuralPlans(catalog,models=[]){return array(catalog?.pathways).filter(route=>route.modelId&&isPlanAvailable(route,catalog,models));}
+ // Older discovery screens also honor the full review once loadIndex has
+ // attached it. Direct structural tools keep isPlanAvailable for saved drafts.
+ function availablePlans(catalog,models=[]){return catalog?.publicationIndex!==undefined?publishedPlans(catalog,models):structuralPlans(catalog,models);}
+ // Detect stale public artifacts. This is a deterministic content signature,
+ // not authentication; all publication decisions still come from build review.
+ function publicationFingerprint(value){
+  const canonical=item=>item===null||typeof item!=='object'?JSON.stringify(item):Array.isArray(item)?'['+item.map(canonical).join(',')+']':'{'+Object.keys(item).filter(key=>item[key]!==undefined).sort().map(key=>JSON.stringify(key)+':'+canonical(item[key])).join(',')+'}';
+  const text=canonical(value);let first=2166136261,second=2246822507;
+  for(let i=0;i<text.length;i++){const code=text.charCodeAt(i);first=Math.imul(first^code,16777619);second=Math.imul(second^code,3266489909);}
+  return 'content-v1:'+(first>>>0).toString(16).padStart(8,'0')+(second>>>0).toString(16).padStart(8,'0');
+ }
+ function publicationLevel(value){return ({associates:'associate',associate:'associate',bachelors:'bachelor',bachelor:'bachelor',masters:'master',master:'master',doctoral:'doctorate',doctorate:'doctorate',specialist:'specialist'})[norm(value)]||value;}
+ const immutablePublicationModels=new WeakMap();
+ function publicationModelFingerprint(model,fallbackLevel){
+  const level=publicationLevel(model?.level||fallbackLevel);
+  const cached=model&&immutablePublicationModels.get(model);
+  if(cached?.has(level))return cached.get(level);
+  const signature=publicationFingerprint({...model,...(level?{level}:{})});
+  if(cached)cached.set(level,signature);
+  return signature;
+ }
+ function immutablePublicModel(model){
+  const freeze=value=>{if(value&&typeof value==='object'&&!Object.isFrozen(value)){for(const child of Object.values(value))freeze(child);Object.freeze(value);}return value;};
+  freeze(model);immutablePublicationModels.set(model,new Map());return model;
+ }
+ function attachPublicationIndex(catalog,index,registry){
+  if(index?.schemaVersion!==1||index.privateRecordsIncluded!==false||!/^academic-v1:[a-f0-9]{64}$/.test(index.registryRevision||'')||index.curriculumFingerprint!==publicationFingerprint(registry)||!Array.isArray(index.plans)||index.plans.length>5000)throw Error('The reviewed plan list does not match the current curriculum.');
+  const ids=new Set();
+  for(const plan of index.plans){
+   const entry=array(registry.models).find(item=>item.id===plan?.modelId);
+   if(!entry||!identified(plan.modelId)||ids.has(plan.modelId)||plan.publicationReady!==true||!levels.includes(plan.level)||!/^content-v1:[a-f0-9]{16}$/.test(plan.modelFingerprint||'')||!Array.isArray(plan.routeIds)||!plan.routeIds.length||new Set(plan.routeIds).size!==plan.routeIds.length||plan.routeIds.some(id=>!array(entry.routeIds).includes(id)||!array(catalog.pathways).some(route=>route.id===id&&route.modelId===plan.modelId&&publicationLevel(route.level)===plan.level))||entry.readyTemplate!==true||entry.coverage!=='complete')throw Error('A reviewed plan has an invalid curriculum binding.');
+   ids.add(plan.modelId);
+  }
+  return {...catalog,publicationIndex:{...copy(index),available:true}};
+ }
+ function publishedPlans(catalog,models=[]){
+  if(catalog?.publicationIndex?.available!==true)return [];
+  const indexed=new Map(array(catalog.publicationIndex.plans).map(plan=>[plan.modelId,plan])),loaded=new Map(array(models).map(model=>[model.id,model]));
+  return structuralPlans(catalog,models).filter(route=>{const entry=indexed.get(route.modelId),model=loaded.get(route.modelId);return entry?.publicationReady===true&&array(entry.routeIds).includes(route.id)&&publicationLevel(route.level)===entry.level&&(!model||entry.modelFingerprint===publicationModelFingerprint(model,entry.level));});
+ }
  function planChoiceCount(route,catalog,models=[]){
   const model=array(models).find(item=>item.id===route?.modelId);if(model){const readiness=modelReadiness(model);return readiness.available?readiness.openCourseChoices:null;}
   const entry=array(catalog?.curriculumRegistry?.models).find(item=>item.id===route?.modelId),count=entry?.openCourseChoices??route?.openCourseChoices;
@@ -151,7 +191,11 @@
   if(!cache.registries.has(path))cache.registries.set(path,jsonFile(path,options).then(validateRegistry).catch(error=>{cache.registries.delete(path);throw error;}));return cache.registries.get(path);
  }
  async function loadIndex(base,options={}){
-  try{return attachRegistry(base,await readRegistry(options));}
+  try{
+   const registry=await readRegistry(options),catalog=attachRegistry(base,registry);
+   try{return attachPublicationIndex(catalog,options.publicationIndex||await jsonFile('data/publication-index.json',options),registry);}
+   catch{return {...catalog,publicationIndex:{available:false,plans:[],reason:'The reviewed plan list could not be loaded. Your saved plans remain available.'}};}
+  }
   catch(error){if(options.required)throw error;return {...base,curriculumRegistry:{available:false,modelCount:0,error:error.message}};}
  }
  function validateModel(model,entry){
@@ -184,7 +228,7 @@
   const reviewed=index.models.filter(entry=>entry.status==='reviewed'),byId=new Map(reviewed.map(entry=>[entry.id,entry])),byRoute=new Map(reviewed.flatMap(entry=>entry.routeIds.map(id=>[id,entry]))),legacyById=new Map(legacyEntries.map(entry=>[entry.id,entry]));
   const wanted=new Map(options.includeLegacy===false?[]:legacyEntries.map(entry=>[entry.id,entry]));
   for(const id of array(ids)){const entry=byId.get(id)||byRoute.get(id)||legacyById.get(id)||runtimeCurricula.get(id);if(!entry)throw Error('No sourced curriculum is registered for '+String(id)+'.');wanted.set(entry.id,entry);}
-  return Promise.all([...wanted.values()].map(async entry=>{if(entry.runtimeModel)return validateModel(entry.runtimeModel,entry);const payload=await jsonFile(entry.path,options),models=Array.isArray(payload)?payload:Array.isArray(payload?.models)?payload.models:[payload],model=models.find(model=>model?.id===entry.id);return validateModel(model,entry);}));
+  return Promise.all([...wanted.values()].map(async entry=>{if(entry.runtimeModel)return validateModel(entry.runtimeModel,entry);const payload=await jsonFile(entry.path,options),models=Array.isArray(payload)?payload:Array.isArray(payload?.models)?payload.models:[payload],model=models.find(model=>model?.id===entry.id);return immutablePublicModel(validateModel(model,entry));}));
  }
  function validateDiscovery(value){
   if(value?.version!==1||value.status!=='ready'||!identified(value.programId)||!sha256(value.source?.hash)||!sha256(value.source?.requirementsHash)||value.model?.id!=='source-curriculum-'+value.source.requirementsHash.slice(0,32)||value.route?.id!==value.programId+'-source-'+value.source.requirementsHash.slice(0,16)||!identified(value.route.id)||value.route.parentId!==value.programId||value.route.modelId!==value.model.id||!present(value.route.school)||!present(value.route.title)||!levels.includes(value.route.level)||!modes(value.route.modalities)||!https(value.source.url)||value.route.url!==value.source.url||!dateOnly(value.source.checkedOn)||value.source.reviewStatus!=='automated-public-source'||value.source.algorithm!==undefined&&value.source.algorithm!=='sha256')throw Error('The university requirement response is incomplete.');
@@ -219,5 +263,5 @@
  }
  function modelsForRoutes(routes,options={}){return loadModels([...new Set(array(Array.isArray(routes)?routes:routes?.pathways).filter(route=>route?.modelId).map(route=>route.modelId))],options);}
  async function load(base,options={}){return loadIndex(merge(base,await jsonFile('data/program-catalog.json',options)),options);}
- return Object.freeze({merge,search,load,field,modelFiles,variants,courseChoiceCounts,modelReadiness,isPlanAvailable,availablePlans,planChoiceCount,resolveTarget,rememberPlan,targetIdentity,targetFingerprint,planHistoryId,planSnapshot,attachRegistry,loadIndex,loadModels,modelsForRoutes,validateRegistry,validateModel,discover,validateDiscovery,attachSourceCurricula,sourceModels,rememberDiscovery});
+ return Object.freeze({merge,search,load,field,modelFiles,variants,courseChoiceCounts,modelReadiness,isPlanAvailable,availablePlans,publishedPlans,publicationFingerprint,publicationModelFingerprint,publicationLevel,attachPublicationIndex,planChoiceCount,resolveTarget,rememberPlan,targetIdentity,targetFingerprint,planHistoryId,planSnapshot,attachRegistry,loadIndex,loadModels,modelsForRoutes,validateRegistry,validateModel,discover,validateDiscovery,attachSourceCurricula,sourceModels,rememberDiscovery});
 }));

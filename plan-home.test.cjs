@@ -33,3 +33,36 @@ test('an applicable taking course stays actionable while unmatched records retai
  const unknown={...state,learning:[{...state.learning[0],credits:null,creditSystem:null},state.learning[1]]};
  assert.equal(Home.nextWin(unknown,Journey.buildDraft(unknown,catalog,models)).id,'credit-details');
 });
+
+test('past coursework opens the batch uploader directly while starting from zero skips the upload task',()=>{
+ const state=setup();state.profile.hasPrior='some';state.journey={...state.journey,completed:true,creditsDeferred:false,answers:{...state.journey.answers,prior:'some'}};
+ const before=JSON.stringify(state),next=win(state);
+ assert.equal(next.id,'past-courses');assert.equal(next.href,'import-courses.html?from=plan');assert.equal(next.label,'Upload my courses');assert.match(next.detail,/transcript or spreadsheet/);assert.equal(next.defer,true);assert.equal(JSON.stringify(state),before);
+ state.profile.hasPrior='none';state.journey.answers.prior='none';assert.notEqual(win(state).id,'past-courses');
+});
+
+test('military next steps open the focused record task and respect Waiting or Done for this degree',()=>{
+ const Checklist=require('./dist/student-checklist.js');
+ for(const status of ['waiting','done']){
+  const state=setup();state.profile.militaryStatus='veteran';state.profile.militaryRecords='ccaf';
+  const draft=Journey.buildDraft(state,catalog,models),checklist=Checklist.build(state,draft),next=Home.nextWin(state,draft),url=new URL(next.href,'https://degreesteps.com/');
+  assert.equal(url.searchParams.get('action'),'military-records');assert.equal(url.hash,'#service-records');
+  const updated=Checklist.apply(state,draft,{type:'set-task',taskId:'military-records',status,planContext:checklist.planContext}),before=JSON.stringify(updated),updatedDraft=Journey.buildDraft(updated,catalog,models);
+  assert.equal(Home.nextWin(updated,updatedDraft).id,'first-course','A requested or completed record task must not trap a veteran on the same next action');
+  assert.equal(JSON.stringify(updated),before);assert.deepEqual(updated.learning,state.learning);assert.equal(updatedDraft.plan.totals.reported,0);
+  const other=Sheet.selectPathway(updated,catalog.pathways.find(route=>route.modelId==='liberty-business-residential'));
+  assert.equal(Home.nextWin(other,Journey.buildDraft(other,catalog,models)).id,'service-records','A task saved for another degree must not dismiss this degree’s record step');
+ }
+});
+
+test('the browser can load the checklist after plan-home and still use its current validated task status',()=>{
+ const vm=require('node:vm'),fs=require('node:fs'),Checklist=require('./dist/student-checklist.js'),context={DegreeJourney:Journey};
+ vm.runInNewContext(fs.readFileSync('./dist/plan-home.js','utf8'),context);
+ const state=setup();state.profile.militaryStatus='active';
+ assert.equal(context.DegreePlanHome.nextWin(state,Journey.buildDraft(state,catalog,models)).id,'service-records');
+ const draft=Journey.buildDraft(state,catalog,models),checklist=Checklist.build(state,draft),updated=Checklist.apply(state,draft,{type:'set-task',taskId:'military-records',status:'waiting',planContext:checklist.planContext});
+ context.DegreeChecklist=Checklist;
+ assert.equal(context.DegreePlanHome.nextWin(updated,Journey.buildDraft(updated,catalog,models)).id,'first-course');
+ const invalid=JSON.parse(JSON.stringify(updated));invalid.checklist={version:1,plans:'unreadable'};
+ assert.equal(context.DegreePlanHome.nextWin(invalid,Journey.buildDraft(invalid,catalog,models)).id,'service-records');
+});

@@ -8,7 +8,7 @@
  function launchURL(route){const query=new URLSearchParams({school:route.school,program:route.id,level:route.level});if(list(route.modalities).length===1)query.set('format',route.modalities[0]);return 'portal.html?'+query;}
  function fromCatalog(catalog,Catalog,models=[]){
   if(!Catalog||typeof Catalog.availablePlans!=='function')return [];
-  const routes=Catalog.availablePlans(catalog,models),schools=new Map();for(const route of routes)if(!schools.has(schoolKey(route.school)))schools.set(schoolKey(route.school),canonicalSchoolId(route.school,route.schoolId));
+  const routes=Catalog.publishedPlans?.(catalog,models)||[],schools=new Map();for(const route of routes)if(!schools.has(schoolKey(route.school)))schools.set(schoolKey(route.school),canonicalSchoolId(route.school,route.schoolId));
   return routes.map(route=>({id:'ready-'+route.id,pathwayId:route.id,modelId:route.modelId,schoolId:schools.get(schoolKey(route.school)),schoolName:route.school,title:route.title,programName:route.title,level:route.level,modalities:list(route.modalities),strategy:'balanced',summary:'A complete proposed course plan. Add your courses to see what remains.',coverage:'complete',ready:true,openCourseChoices:Catalog.planChoiceCount?Catalog.planChoiceCount(route,catalog,models):null,launchURL:launchURL(route),reviewedOn:route.curriculumCheckedOn||'',creditFacts:{totalCredits:Number.isFinite(route.degreeCredits)?route.degreeCredits:null},sources:list(route.sources),route}));
  }
  function fromManifest(items,Catalog,catalog){

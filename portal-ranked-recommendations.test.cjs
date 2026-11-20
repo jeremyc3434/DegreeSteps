@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const Journey=require('./dist/journey-engine.js'),Comparison=require('./dist/plan-comparison-engine.js');
+const Journey=require('./dist/journey-engine.js'),Comparison=require('./dist/plan-comparison-engine.js'),Catalog=require('./dist/program-catalog.js');
 const copy=value=>JSON.parse(JSON.stringify(value)),KEY='degreepath-guide-v3';
 function data(){
  const source={id:'catalog',title:'Synthetic university catalog',url:'https://example.edu/catalog'},opt=(provider,code)=>({id:provider+'-'+code,provider,code,title:code,credits:3,creditSystem:'semester',evidence:'published',sourceIds:['catalog']});
@@ -7,15 +7,17 @@ function data(){
  const models=[base];
  for(const [id,title,rate] of [['cheap','Lower tuition',50],['fast','Faster study',600],['unknown','Unpriced option',null]]){const p=copy(base);p.id=id;p.title=title;if(rate===null)delete p.pricing;else p.pricing.amount=rate;if(id==='cheap')p.requirements[0].options=[opt('University','UNI101')];models.push(p);}
  const pathways=models.map(model=>({id:model.id,modelId:model.id,school:model.school,title:model.title,level:'bachelor',field:'general',fields:['general'],goals:['any-degree','career-growth','change-career'],modalities:['online'],paceModel:model.id==='course-fit'?'self-paced':'term-based'}));
- const catalog={pathways,curriculumRegistry:{models:models.map(model=>({id:model.id,routeIds:[model.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}))}};
+ const registry={models:models.map(model=>({id:model.id,routeIds:[model.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}))};
+ const publicationIndex={schemaVersion:1,privateRecordsIncluded:false,registryRevision:'academic-v1:'+'2'.repeat(64),curriculumFingerprint:Catalog.publicationFingerprint(registry),plans:pathways.map(route=>({modelId:route.modelId,routeIds:[route.id],level:Catalog.publicationLevel(route.level),publicationReady:true,modelFingerprint:Catalog.publicationModelFingerprint(models.find(model=>model.id===route.modelId),route.level)}))};
+ const catalog=Catalog.attachPublicationIndex({pathways,curriculumRegistry:registry},publicationIndex,registry);
  let state=Journey.initialize(null,null,catalog);state=Journey.applyAnswer(state,'start','explore',catalog);Object.assign(state.profile,{goal:'any-degree',degreeLevel:'bachelor',field:'any',modality:'online',priority:'cost'});state.journey.step='routes';
  state.learning=[{id:'interest',provider:'Sophia',code:'S1',title:'Writing',credits:3,creditSystem:'semester',status:'saved',evaluations:[]}];state.scenarios={};
  for(const p of models)state.scenarios[p.id]={providers:['Sophia'],allowConditional:true,sophiaWeeks:1,termWeeks:p.id==='fast'?1:10,termCredits:p.id==='fast'?6:3};
  state.sheet.notes={private:'My private note'};state.whatIf={selectedIds:['route:unknown'],priority:'collection'};
  return{state,catalog,models};
 }
-function fixture({initial,stored,fetcher,runner}={}){
- const d=data();initial=copy(initial||d.state);stored=copy(stored||initial);const storage=new Map([[KEY,JSON.stringify(stored)]]),nodes=new Map(),handlers=new Map();let writes=0,calls=0,fetches=0,cancels=0;
+function fixture({initial,stored,fetcher,runner,withoutPublication=false}={}){
+ const d=data();if(withoutPublication)delete d.catalog.publicationIndex;initial=copy(initial||d.state);stored=copy(stored||initial);const storage=new Map([[KEY,JSON.stringify(stored)]]),nodes=new Map(),handlers=new Map();let writes=0,calls=0,fetches=0,cancels=0;
  const node=id=>{if(!nodes.has(id))nodes.set(id,{id,innerHTML:'',textContent:'',hidden:false,dataset:{},classList:{toggle(){}},focus(){},querySelector(){return null;}});return nodes.get(id);};
  const context={console,URL,URLSearchParams,Intl,TextEncoder,TextDecoder,document:{getElementById:node,querySelector(){return null;},querySelectorAll(){return[];},addEventListener(type,fn){if(!handlers.has(type))handlers.set(type,[]);handlers.get(type).push(fn);},body:node('body')},location:{pathname:'/portal.html',search:'',assign(){},replace(){}},history:{replaceState(){}},localStorage:{getItem:key=>storage.get(key)||null,setItem(key,value){writes++;storage.set(key,value);}},FormData:class extends Map{constructor(form){super(Object.entries(form.values||{}));}},CustomEvent:class{},setTimeout(){},clearTimeout(){},dispatchEvent(){},addEventListener(type,fn){if(!handlers.has('window:'+type))handlers.set('window:'+type,[]);handlers.get('window:'+type).push(fn);},scrollTo(){},navigator:{},fetch:async()=>{fetches++;return fetcher?fetcher():{ok:true,json:async()=>({entries:[]})};},__fixture:JSON.stringify({state:initial,stored,catalog:d.catalog,models:d.models})};context.window=context;vm.createContext(context);
  for(const match of fs.readFileSync(path.join(__dirname,'dist/portal.html'),'utf8').matchAll(/<script\b[^>]*\bsrc="([A-Za-z0-9_-]+\.js)"[^>]*>/g)){const s=fs.readFileSync(path.join(__dirname,'dist',match[1]),'utf8');if(s.includes('module.exports'))vm.runInContext(s,context,{filename:match[1]});}
@@ -78,4 +80,12 @@ test('subscription rates require bound sources and never imply a degree total or
 
  test('returning from another tab refreshes recommendations from the latest original course collection',async()=>{
  const f=fixture();await f.api.prepare();const before=f.calls(),saved=f.stored();saved.learning[0].status='earned';f.setStored(saved);await f.windowEvent('focus');await new Promise(resolve=>setImmediate(resolve));assert.equal(f.calls(),before+1);assert(f.api.view().scenarios.some(row=>row.summary?.applicableCompletedCredits===3));assert.equal(f.stored().learning[0].status,'earned');assert.equal(f.writes(),0);await f.windowEvent('storage',{key:'unrelated'});assert.equal(f.calls(),before+1);
+});
+
+
+test('a structurally complete fixture without publication review cannot become a wizard recommendation',async()=>{
+ const f=fixture({withoutPublication:true}),before=f.stored();await f.api.prepare();
+ assert.equal(f.api.view().scenarios.length,0);assert.equal(f.api.view().mappedProgramsChecked,0);
+ assert.equal((f.api.html().match(/data-degree-preview=/g)||[]).length,0);assert.match(f.api.html(),/No course plan matches yet/);
+ assert.deepEqual(f.stored(),before);assert.equal(f.writes(),0);
 });

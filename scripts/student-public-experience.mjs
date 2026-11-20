@@ -20,7 +20,7 @@ export function renderStudentJourney(example){
 }
 
 export function renderSchoolPlanCards({school,entries,baselines,quality}){
- const ready=new Map((quality.programs||[]).filter(item=>item.research?.status==='research-ready').map(item=>[item.modelId,item]));
+ const ready=new Map((quality.programs||[]).filter(item=>item.publication?.ready===true&&item.research?.status==='research-ready').map(item=>[item.modelId,item]));
  const cards=(entries||[]).filter(entry=>entry.school===school&&entry.readyTemplate===true&&ready.has(entry.id)).flatMap(entry=>{
   const baseline=Object.values(baselines.baselines||{}).find(item=>item.modelId===entry.id&&item.validation?.academicCountsValid===true);
   if(!baseline||baseline.summary?.transferCredits+baseline.summary?.universityCredits!==baseline.summary?.totalCredits)return [];

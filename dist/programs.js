@@ -32,11 +32,12 @@ $('program-dialog').addEventListener('close',()=>restoreFocus?.isConnected&&rest
  data=loaded[2];const sources=loaded[3];
  $('program-college-tip').querySelector('div').innerHTML=sources.sources.filter(source=>['asu-ulc','tel','cpa-credits','outlier'].includes(source.id)).map(source=>'<p><a href="credit-sources/'+encodeURIComponent(source.id)+'/">'+esc(source.name)+'</a><small>'+esc(source.creditBasis)+'</small></p>').join('');
  catalog=await DegreeProgramCatalog.loadIndex(DegreeProgramCatalog.merge(loaded[0],loaded[1]));
- rows=DegreeProgramCatalog.availablePlans(catalog).filter(p=>P.availability(p).canChoose).sort((a,b)=>Number(isSelf(b))-Number(isSelf(a))||a.school.localeCompare(b.school)||a.title.localeCompare(b.title));
+ if(typeof DegreeProgramCatalog.publishedPlans!=='function'||catalog.publicationIndex?.available===false)throw Error('We couldn’t load the reviewed degree plans. Reload to try again. Your saved plan is safe.');
+ rows=DegreeProgramCatalog.publishedPlans(catalog).filter(p=>P.availability(p).canChoose).sort((a,b)=>Number(isSelf(b))-Number(isSelf(a))||a.school.localeCompare(b.school)||a.title.localeCompare(b.title));
  const schools=[...new Set(rows.map(p=>p.school))].sort();
  $('program-school').innerHTML='<option value="">All schools</option>'+schools.map(s=>'<option value="'+esc(s)+'">'+esc(s)+'</option>').join('');
  const params=new URLSearchParams(location.search);if(schools.includes(params.get('school')))$('program-school').value=params.get('school');if(params.has('q'))$('program-search').value=params.get('q');if(['self-paced','campus','online'].includes(params.get('type')))preset=params.get('type');
- $('program-coverage').querySelector('div').innerHTML='<p>'+rows.length+' course plans from '+schools.length+' schools. Each includes a full requirement list. The plans distinguish published transfer matches, conditional choices and university courses; the amount of reviewed transfer coverage varies by degree.</p><p>Need a different degree? <a href="request-plan.html">Build a plan from its degree link</a>.</p>';
+ $('program-coverage').querySelector('div').innerHTML='<p>'+rows.length+' reviewed course plans from '+schools.length+' schools. Each includes every degree requirement, researched outside-course matches and required university coursework.</p><p>Need a different degree? <a href="request-plan.html">Build a plan from its degree link</a>.</p>';
  render();
 }catch(e){$('program-count').textContent='';$('program-error').hidden=false;$('program-error').textContent=e.message;}})();
 }());

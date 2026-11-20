@@ -67,15 +67,61 @@ test('native public degree resolution loads only the reviewed public build data 
 for(const [degreeUrl,modelId,total,outside,university,modality]of [
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/','liberty-business-residential',120,83,37,'campus'],
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,66,54,'online'],
-  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','curriculum-liberty-interdisciplinary-aa-online',60,42,18,'online'],
-  ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','curriculum-liberty-psychology-aa-online',60,39,21,'online']
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/','curriculum-liberty-psychology-bs-online',120,78,42,'online']
 ])test('native exact Liberty catalog resolution preserves the saved degree and credit split: '+modelId,async t=>{
   const f=await fixture(t),lookup=url=>f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));
   const response=await lookup(degreeUrl);assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,true);
   const plan=result.sourcePlan;assert(plan,'The native asset-backed lookup must open the existing course plan');assert.equal(plan.model.id,modelId);assert.deepEqual(plan.route.modalities,[modality]);assert.equal(plan.model.catalog.replace(/[–—]/g,'-'),'2026-2027');
   assert.equal(plan.summary.totalCredits,total);assert.equal(plan.summary.transferCredits,outside);assert.equal(plan.summary.universityCredits,university);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),total);assert(plan.model.sources.some(source=>source.url===degreeUrl));
   const wrongCatalog=await lookup(degreeUrl+'?catalog=2025-2026');assert.equal(wrongCatalog.status,200);const rejected=await wrongCatalog.json();assert.equal(rejected.sourcePlan,undefined,'A different catalog must not inherit this baseline');assert.equal(rejected.existingPlan,undefined);
-  assert(f.assetCalls.some(call=>call.path==='/data/baseline-index.json'));assert(f.assetCalls.every(call=>call.path.startsWith('/data/')));assert.deepEqual(f.external,[]);
+  assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'),'The native complete-plan shortcut requires the publication review');assert(f.assetCalls.some(call=>call.path==='/data/baseline-index.json'));assert(f.assetCalls.every(call=>call.path.startsWith('/data/')));assert.deepEqual(f.external,[]);
+});
+
+for(const [degreeUrl,title] of [
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','Interdisciplinary Studies'],
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','Psychology']
+])test('native unpublished associate curriculum keeps its degree identity without a ready-plan shortcut: '+title,async t=>{
+ const f=await fixture(t),response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:degreeUrl}));assert.equal(response.status,200);const result=await response.json();
+ assert.equal(result.matched,true);assert.equal(result.target.schoolName,'Liberty University');assert.match(result.target.programName,new RegExp(title,'i'));assert.equal(result.target.level,'associate');assert.equal(result.target.modality,'online');assert.equal(result.target.catalogYear,'2026-2027');assert.equal(result.sourcePlan,undefined);assert.equal(result.existingPlan,undefined);assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'));assert.deepEqual(f.external,[]);
+});
+
+test('native exact WGU Human Resource Management uses its reviewed CU ledger and publication index',async t=>{
+ const f=await fixture(t),url='https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html';
+ const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json(),plan=result.sourcePlan;assert.equal(result.matched,true);assert(plan);
+ assert.equal(plan.model.id,'curriculum-wgu-catalog-2e49db64c32dfc79');assert.equal(plan.model.catalog,'202509');assert.equal(plan.model.creditSystem,'competency-unit');assert.equal(plan.model.totalCredits,117);assert.equal(plan.model.requirements.length,39);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),117);assert.equal(plan.summary.transferCredits,66);assert.equal(plan.summary.universityCredits,51);assert.deepEqual(plan.route.modalities,['online']);assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'));assert.deepEqual(f.external,[]);
+ const mismatch=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=202605'}));assert.equal((await mismatch.json()).sourcePlan,undefined,'A different program edition must not inherit this CU ledger');
+});
+
+test('native exact registry-route discovery rejects cross-school, award, parent and ownership mismatches',async t=>{
+ const url='https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/';
+ for(const change of ['school','level','parent','unknown-route','format','title']){
+  const f=await fixture(t),original=f.env.ASSETS.fetch;
+  f.env.ASSETS.fetch=async request=>{
+   if(new URL(request.url).pathname!=='/data/curriculum-registry.json')return original(request);
+   const index=JSON.parse(readFileSync(resolve(publicRoot,'data/curriculum-registry.json'),'utf8')),route=index.routes.find(route=>route.id==='liberty-catalog-fa62c08cdfa0c990-online');assert(route);
+   if(change==='school')route.school='Another University';
+   if(change==='level')route.level='master';
+   if(change==='parent')route.parentId='liberty-catalog-cf514fa45da62116';
+   if(change==='unknown-route')route.id='not-owned-by-reviewed-model';
+   if(change==='format')route.modalities=['campus'];
+   if(change==='title')route.title='Psychology (A.A.) — Online';
+   return Response.json(index);
+  };
+  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,false,change);assert.equal(result.sourcePlan,undefined,change);assert.equal(result.existingPlan,undefined,change);assert.deepEqual(f.external,[]);
+ }
+});
+
+test('missing, malformed and stale native publication indexes never expose a ready-plan shortcut',async t=>{
+ for(const change of ['missing','malformed','stale-curriculum']){
+  const f=await fixture(t),original=f.env.ASSETS.fetch;
+  f.env.ASSETS.fetch=async request=>{
+   if(new URL(request.url).pathname!=='/data/publication-index.json')return original(request);
+   if(change==='missing')return new Response('Missing',{status:404});
+   if(change==='malformed')return new Response('{invalid');
+   const index=JSON.parse(readFileSync(resolve(publicRoot,'data/publication-index.json'),'utf8'));index.curriculumFingerprint='content-v1:'+'0'.repeat(16);return Response.json(index);
+  };
+  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:'https://www.liberty.edu/government/bachelors/criminal-justice/'}));assert.equal(response.status,200);const result=await response.json();assert.equal(result.sourcePlan,undefined,change);assert.equal(result.existingPlan,undefined,change);assert.deepEqual(f.external,[]);
+ }
 });
 
 test('missing, malformed and mismatched baseline artifacts cannot advertise a cached complete plan',async t=>{

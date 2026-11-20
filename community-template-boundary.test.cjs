@@ -1,13 +1,14 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
 const Catalog=require('./dist/program-catalog.js'),Templates=require('./dist/community-template-catalog.js'),School=require('./dist/school.js');
 const registry=require('./dist/data/curriculum-registry.json'),base=require('./dist/data/pathways.json'),directory=require('./dist/data/program-catalog.json');
-const catalog=Catalog.attachRegistry(Catalog.merge(base,directory),registry),clone=value=>JSON.parse(JSON.stringify(value));
+const catalog=Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(base,directory),registry),require('./dist/data/publication-index.json'),registry),clone=value=>JSON.parse(JSON.stringify(value));
 const packs=new Map(),modelFor=id=>{const entry=registry.models.find(row=>row.id===id);if(!packs.has(entry.path))packs.set(entry.path,JSON.parse(fs.readFileSync('./dist/'+entry.path)));const pack=packs.get(entry.path);return(pack.models||[pack]).find(model=>model.id===id);};
 test('the community starter library exposes complete program plans, not partial legacy guides',()=>{
- const items=Templates.fromCatalog(catalog,Catalog);assert(items.length>0);assert.equal(items.length,Catalog.availablePlans(catalog).length);
+ const items=Templates.fromCatalog(catalog,Catalog);assert(items.length>0);assert.equal(items.length,Catalog.publishedPlans(catalog).length);
  for(const item of items){assert.equal(item.ready,true);assert.equal(item.coverage,'complete');assert(Catalog.modelReadiness(modelFor(item.modelId)).available);assert.equal(item.summary.includes('still needed'),false);}
  const excluded=new Set(base.pathways.filter(row=>row.modelId&&!registry.models.some(entry=>entry.id===row.modelId&&entry.readyTemplate===true)).map(row=>row.modelId));assert(items.every(item=>!excluded.has(item.modelId)),'Incomplete legacy seed models must not reappear as complete templates');
- for(const id of ['curriculum-liberty-healthcare-administration-bs-online','curriculum-liberty-psychology-bs-residential'])assert(items.some(item=>item.modelId===id));
+ const quality=require('./dist/data/pathway-quality-report.json');assert.deepEqual(new Set(items.map(item=>item.modelId)),new Set(quality.programs.filter(item=>item.publication.ready).map(item=>item.modelId)));
+ const unpublished=new Set(quality.programs.filter(item=>!item.publication.ready).map(item=>item.modelId));assert(items.every(item=>!unpublished.has(item.modelId)),'Research drafts cannot be presented as ready community starter plans');
  assert.equal(new Set(items.map(item=>item.id)).size,items.length);
 });
 test('opening a template validates its exact model before displaying the requirement ledger',()=>{
@@ -18,7 +19,7 @@ test('opening a template validates its exact model before displaying the require
  const unbalanced=clone(model);unbalanced.requirements.pop();assert.throws(()=>Templates.attachModel(item,unbalanced,Catalog),/not available/);
 });
 test('a launch link identifies one exact ready degree without carrying private course records',()=>{
- const route=Catalog.availablePlans(catalog)[0],url=new URL(Templates.launchURL(route),'https://degreepath.test');
+ const route=Catalog.publishedPlans(catalog)[0],url=new URL(Templates.launchURL(route),'https://degreepath.test');
  assert.equal(url.pathname,'/portal.html');assert.equal(url.searchParams.get('school'),route.school);assert.equal(url.searchParams.get('program'),route.id);assert.equal(url.searchParams.get('level'),route.level);assert([...url.searchParams.keys()].every(key=>['school','program','level','format'].includes(key)));
 });
 test('school insight matching is exact and its available courses share the same readiness gate',()=>{
@@ -68,7 +69,7 @@ test('international schools retain distinct exact template and college-contact i
  const tokyo='東京大学',kyoto='京都大学',ids=[Templates.canonicalSchoolId(tokyo),Templates.canonicalSchoolId(kyoto),Templates.canonicalSchoolId(tokyo+' A'),Templates.canonicalSchoolId(kyoto+' A')];
  assert.equal(new Set(ids).size,4);assert(ids.every(id=>/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(id)));assert.equal(Templates.canonicalSchoolId(tokyo),ids[0]);assert.equal(Templates.canonicalSchoolId('Ｅｘａｍｐｌｅ University'),Templates.canonicalSchoolId('Example University'));assert.equal(Templates.canonicalSchoolId('Western Governors University'),'wgu');
  const data={schools:[{id:ids[0],name:tokyo},{id:ids[1],name:kyoto}]};assert.equal(School.matchProfile(data,tokyo).id,ids[0]);assert.equal(School.matchProfile(data,kyoto).id,ids[1]);
- const fakeCatalog={availablePlans:()=>[{id:'tokyo-degree',school:tokyo},{id:'kyoto-degree',school:kyoto}]};assert.deepEqual(School.schoolRoutes({},fakeCatalog,tokyo).map(row=>row.id),['tokyo-degree']);
+ const fakeCatalog={publishedPlans:()=>[{id:'tokyo-degree',school:tokyo},{id:'kyoto-degree',school:kyoto}]};assert.deepEqual(School.schoolRoutes({},fakeCatalog,tokyo).map(row=>row.id),['tokyo-degree']);
  const contact=School.contactContext({organizations:[{id:'kyoto',name:kyoto,status:'verified'}],interests:[]},tokyo);assert.equal(contact.organization,null);
  const artifact={schoolName:kyoto,programName:'B.S. Mathematics',modality:'online',totalCredits:3,creditSystem:'semester',unresolved:[],sources:[{id:'official',url:'https://example.edu/program'}],requirements:[{id:'one',title:'Mathematics',code:'MATH101',credits:3,sourceIds:['official'],options:[{id:'uni',provider:'University',code:'MATH101',title:'Mathematics',credits:3,sourceIds:['official'],evidence:'published'}]}]};
  const item={id:'international-reviewed',status:'ready',schoolName:tokyo,programName:artifact.programName,modality:'online',artifact};assert.equal(Templates.fromReviewed([item],Catalog).length,0,'A different non-Latin school cannot reuse the artifact');

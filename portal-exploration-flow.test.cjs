@@ -1,6 +1,13 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const {loadData}=require('./scripts/audit-student-confirmations.cjs'),Journey=require('./dist/journey-engine.js'),Comparison=require('./dist/plan-comparison-engine.js');
-function scenarioData(){const all=loadData(),ids=new Set(['tesu-general-management','liberty-business-residential','liberty-criminal-justice-residential','wgu-catalog-ecceaa488637ac83']),routes=all.catalog.pathways.filter(route=>ids.has(route.id)),models=new Set(routes.map(route=>route.modelId));return{catalog:{...all.catalog,pathways:routes},models:all.models.filter(model=>models.has(model.id))};}
+const {loadData}=require('./scripts/audit-student-confirmations.cjs'),Journey=require('./dist/journey-engine.js'),Comparison=require('./dist/plan-comparison-engine.js'),Catalog=require('./dist/program-catalog.js');
+function scenarioData(){
+ const all=loadData(),ids=new Set(['tesu-general-management','liberty-business-residential','liberty-criminal-justice-residential','wgu-catalog-ecceaa488637ac83']),routes=all.catalog.pathways.filter(route=>ids.has(route.id)),modelIds=new Set(routes.map(route=>route.modelId)),models=all.models.filter(model=>modelIds.has(model.id));
+ const quality=JSON.parse(fs.readFileSync('dist/data/pathway-quality-report.json','utf8')),reviewed=new Set(quality.programs.filter(item=>item.publication.ready).map(item=>item.modelId)),registry=all.catalog.curriculumRegistry;
+ // Use the real publication decisions for these actual routes. Draft TESU
+ // coursework remains in the fixture without becoming a ready recommendation.
+ const publicationIndex={schemaVersion:1,privateRecordsIncluded:false,registryRevision:quality.registryRevision,curriculumFingerprint:Catalog.publicationFingerprint(registry),plans:models.filter(model=>reviewed.has(model.id)).map(model=>{const matching=routes.filter(route=>route.modelId===model.id),level=Catalog.publicationLevel(matching[0].level);return{modelId:model.id,routeIds:matching.map(route=>route.id),level,publicationReady:true,modelFingerprint:Catalog.publicationModelFingerprint(model,level)};})};
+ return{catalog:Catalog.attachPublicationIndex({...all.catalog,pathways:routes},publicationIndex,registry),models};
+}
 const data=scenarioData(),KEY='degreepath-guide-v3',copy=value=>JSON.parse(JSON.stringify(value));
 const defaultSearch={goal:'any-degree',field:'any',degreeLevel:'unsure',format:'any',priority:'speed'};
 function freshExplorer(){let state=Journey.initialize(null,null,data.catalog);state=Journey.applyAnswer(state,'start','explore',data.catalog);state.journey.step='purpose';return state;}

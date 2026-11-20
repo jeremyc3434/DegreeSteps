@@ -1,10 +1,15 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const Journey=require('./dist/journey-engine.js');
+const Journey=require('./dist/journey-engine.js'),Catalog=require('./dist/program-catalog.js');
 const KEY='degreepath-guide-v3',DRAFT='degreesteps-profile-draft-v1',copy=value=>JSON.parse(JSON.stringify(value));
 function data(){
  const route={id:'campus-degree',modelId:'campus-model',school:'Example University',title:'Business BS',level:'bachelor',field:'business',fields:['business'],modalities:['campus'],goals:['any-degree','career-growth','change-career']};
  const model={id:'campus-model',school:route.school,title:route.title,level:'bachelor',format:'Residential',creditSystem:'semester',totalCredits:6,institutionMinCredits:3,upperMinCredits:0,externalMaxCredits:3,sources:[{id:'catalog',url:'https://example.edu/catalog'}],requirements:[{id:'writing',code:'ENG101',title:'Writing',credits:3,category:'general',options:[{id:'sophia-writing',provider:'Sophia',code:'S1',credits:3,title:'Writing',creditSystem:'semester',evidence:'published',sourceIds:['catalog']}]},{id:'capstone',code:'CAP',title:'Capstone',credits:3,category:'major',institutionalOnly:true,options:[{id:'capstone-option',provider:'University',code:'CAP',credits:3,title:'Capstone',creditSystem:'semester',evidence:'published',sourceIds:['catalog']}]}]};
- return {catalog:{pathways:[route],curriculumRegistry:{models:[{id:model.id,routeIds:[route.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}]}},models:[model],route};
+ const registry={models:[{id:model.id,routeIds:[route.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}]};
+ // This synthetic route is deliberately reviewed. Bind the fixture's discovery
+ // metadata to its exact model instead of treating a complete ledger as review.
+ const publicationIndex={schemaVersion:1,privateRecordsIncluded:false,registryRevision:'academic-v1:'+'1'.repeat(64),curriculumFingerprint:Catalog.publicationFingerprint(registry),plans:[{modelId:model.id,routeIds:[route.id],level:Catalog.publicationLevel(route.level),publicationReady:true,modelFingerprint:Catalog.publicationModelFingerprint(model,route.level)}]};
+ const catalog=Catalog.attachPublicationIndex({pathways:[route],curriculumRegistry:registry},publicationIndex,registry);
+ return {catalog,models:[model],route};
 }
 function fixture({initial,stored,extraStorage={}}={}){
  const d=data();initial=copy(initial||Journey.initialize(null,null,d.catalog));stored=copy(stored||initial);const storage=new Map([[KEY,JSON.stringify(stored)],...Object.entries(extraStorage)]),nodes=new Map(),handlers=new Map();

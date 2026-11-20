@@ -1,18 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {loadPublicPlans,buildPublicPlan,publicPlanDefinitions,renderPublicPlan,renderPublicPlanHub} from './public-plan-pages.mjs';
+import {readFile,mkdtemp,mkdir,writeFile,access,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {loadPublicPlans,buildPublicPlan,publicPlanDefinitions,renderPublicPlan,renderPublicPlanHub,removeObsoletePreviews} from './public-plan-pages.mjs';
 const plans=await loadPublicPlans();
 
-test('public degree previews reproduce the four reviewed zero-record baselines in their actual receiving units',()=>{
- assert.equal(plans.length,4);
+test('public degree previews reproduce all fully reviewed zero-record baselines in their actual receiving units',async()=>{
+ const quality=JSON.parse(await readFile(new URL('../dist/data/pathway-quality-report.json',import.meta.url),'utf8'));
+ assert(plans.length>=4);assert.deepEqual(new Set(plans.map(plan=>plan.modelId)),new Set(quality.programs.filter(program=>program.publication.ready).map(program=>program.modelId)));
  for(const plan of plans){
   assert.equal(plan.plan.validation.academicCountsValid,true);assert.equal(plan.quality.publication.ready,true);
   assert.equal(plan.plan.totals.accounted,plan.total);assert.equal(plan.plan.totals.external,plan.outside);assert.equal(plan.plan.totals.institutional,plan.university);
   assert.equal(plan.view.progress.completedCredits,0);assert.equal(plan.plan.totals.confirmed,0);assert.equal(plan.plan.totals.reported,0);
   assert.equal(plan.view.totals.unmapped,0);assert.equal(plan.view.curriculumIssues.length,0);
  }
- assert.deepEqual(plans.map(plan=>[plan.outside,plan.university,plan.total]),[[69,41,110],[83,37,120],[72,48,120],[74,46,120]]);
- assert.equal(plans[0].unit,'competency units');assert(plans.slice(1).every(plan=>plan.unit==='semester credits'));
+ assert.deepEqual(plans.slice(0,4).map(plan=>[plan.outside,plan.university,plan.total]),[[69,41,110],[83,37,120],[72,48,120],[74,46,120]]);
+ assert.equal(plans[0].unit,'competency units');assert(plans.slice(1,4).every(plan=>plan.unit==='semester credits'));
 });
 
 test('crawlable course tables contain every requirement once and keep shared references and noncredit work outside credit totals',()=>{
@@ -44,4 +48,29 @@ test('hub cards lead to full public routes while only full previews declare a me
  const html=renderPublicPlanHub(plans);assert(!html.includes('data-growth-plan='));
  for(const plan of plans)assert(html.includes(plan.path));
  assert.match(html,/Browse available plans/);assert.match(html,/import-courses.html/);
+});
+
+test('public plan prices use their actual selected courses with visible assumptions and no private record awards',async()=>{
+ const rates=JSON.parse(await readFile(new URL('../dist/data/plan-estimate-rates.json',import.meta.url),'utf8'));
+ const priced=new Set(rates.entries.flatMap(entry=>entry.modelIds));
+ for(const plan of plans.filter(plan=>priced.has(plan.modelId))){
+  assert.equal(plan.estimate.available,true,plan.id);assert.equal(plan.estimate.costs.complete,false);
+  assert.equal(plan.estimate.counts.totalUnits,plan.total);
+  const html=renderPublicPlan(plan,plans);
+  assert.match(html,/Cost & timing/);assert.match(html,/Before aid/);assert.match(html,/Rates, pace assumptions &amp; exclusions|Rates, pace assumptions & exclusions/);
+  assert.match(html,/not a complete cost of attendance/);assert.match(html,/No account or transcript needed/);
+ }
+});
+
+test('withdrawn generated previews disappear while approved plans and unrelated material remain',async t=>{
+ const dist=await mkdtemp(join(tmpdir(),'degreesteps-preview-review-'));t.after(()=>rm(dist,{recursive:true,force:true}));
+ const generated='<article data-public-plan-id="example"><section class="public-plan-hero">A proposed course plan</section></article>';
+ for(const [name,html] of [['approved',generated],['withdrawn',generated],['manual-guide','<h1>A manually maintained student guide</h1>'],['with-assets',generated]]){
+  await mkdir(join(dist,'degree-plans',name),{recursive:true});await writeFile(join(dist,'degree-plans',name,'index.html'),html);
+ }
+ await writeFile(join(dist,'degree-plans','with-assets','keep.txt'),'Keep this unrelated asset.');
+ assert.deepEqual(await removeObsoletePreviews(dist,[{slug:'approved'}]),['/degree-plans/withdrawn/','/degree-plans/with-assets/'].sort());
+ await access(join(dist,'degree-plans','approved','index.html'));await access(join(dist,'degree-plans','manual-guide','index.html'));await access(join(dist,'degree-plans','with-assets','keep.txt'));
+ await assert.rejects(access(join(dist,'degree-plans','withdrawn','index.html')),{code:'ENOENT'});
+ assert.deepEqual(await removeObsoletePreviews(dist,[{slug:'approved'}]),[]);
 });

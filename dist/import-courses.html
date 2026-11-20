@@ -9,10 +9,10 @@
   <script src="account-client.js" defer></script><script src="app-shell.js" defer></script>
   <script src="record-import-engine.js" defer></script><script src="course-import-workflow.js" defer></script><script src="record-file-reader.js" defer></script><script src="credit-import.js" defer></script><script src="import-courses.js" defer></script>
 <link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/collection-design.css"><script src="/growth-metrics.js" defer></script></head>
-<body class="ds-experience ds-workspace-page ds-collection-page">
+<body class="import-page ds-experience ds-workspace-page ds-collection-page">
 <a class="skip-link" href="#import-app">Skip to course upload</a>
-<main id="import-app">
-  <a class="import-back" href="courses.html?tab=mine">← My courses</a>
+<main id="import-app" tabindex="-1">
+  <a id="import-back" class="import-back" href="courses.html?tab=mine">My courses</a>
   <header class="import-heading"><div><p class="import-eyebrow">Bring your progress with you</p><h1>Add your courses in one upload.</h1><p>Upload your transcripts or a spreadsheet. Review the courses together, then add them to your plan.</p></div></header>
   <ol class="import-steps" aria-label="Import progress"><li aria-current="step" id="step-upload"><span>1</span> Upload</li><li id="step-review"><span>2</span> Review courses</li><li id="step-done"><span>3</span> See your options</li></ol>
   <p id="import-status" class="import-status" role="status" aria-live="polite"></p>

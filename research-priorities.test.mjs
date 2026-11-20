@@ -2,7 +2,27 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {buildResearchPriorities} from './scripts/build-research-priorities.mjs';
 import {DIRECTORY_SOURCES,buildProviderDiscovery} from './scripts/provider-directory-discovery.mjs';
+import {readFile} from 'node:fs/promises';
 const copy=value=>structuredClone(value);
+const umpiReview=JSON.parse(await readFile(new URL('./content/curricula/snapshots/umpi/current-primary-review-2026-11-19.json',import.meta.url),'utf8'));
+test('current UMPI evidence creates exact research actions without promoting a degree or turning residency arithmetic into an ACE limit',()=>{
+ const input=inputs();input.programCatalog.schools.push({id:'umpi',name:'University of Maine at Presque Isle',deliveryModes:['online'],paceModels:['competency-subscription']});
+ input.programCatalog.programs.push({id:'umpi-bls',school:'University of Maine at Presque Isle',title:'Liberal Studies BLS',level:'bachelor',modalities:['online'],url:'https://www.umpi.edu/yourpace/academic_programs/liberal-studies/'});
+ const before=buildResearchPriorities(input);input.umpiPrimaryReview=copy(umpiReview);const original=copy(input),after=buildResearchPriorities(input),school=after.schools.find(row=>row.id==='umpi');
+ assert.deepEqual(input,original);assert.deepEqual(after.summary,before.summary);assert.deepEqual(after.programs,before.programs);assert.equal(school.coverage.models,0);assert.equal(school.coverage.publicationReady,0);
+ assert.equal(school.transferEvidence.ace.maximumCredits,null);assert.equal(school.sourceReview.publicationAllowed,false);assert.deepEqual(school.sourceReview.models,[]);
+ assert(school.nextActions.some(task=>task.kind==='umpi-current-gec-course-bindings'));assert(school.nextActions.some(task=>task.kind==='umpi-alternative-cap-scope'));assert(school.nextActions.some(task=>task.kind==='umpi-current-minor-ledger'));
+ const sources=new Map(school.sourceReview.sources.map(source=>[source.id,source]));
+ for(const gate of school.sourceReview.implementationGates)for(const id of gate.sourceIds)assert(school.evidenceUrls.includes(sources.get(id).url));
+ assert(school.sourceReview.sourceDiscrepancies.some(issue=>issue.id==='cpl-scope-conflict'));
+ assert.notEqual(after.inputFingerprints.umpiPrimaryReview,undefined);assert.notEqual(after.revision,before.revision);
+ const unrelatedBefore=before.schools.filter(row=>row.id!=='umpi'),unrelatedAfter=after.schools.filter(row=>row.id!=='umpi');assert.deepEqual(unrelatedAfter,unrelatedBefore);
+});
+test('a UMPI research packet cannot introduce active models, publication claims or source-less gates',()=>{
+ for(const edit of [review=>review.publicationAllowed=true,review=>review.models.push({id:'invented-ready-model'}),review=>review.implementationGates[0].sourceIds=['unreviewed-source'],review=>review.sources[0].url='https://another.edu/umpi-copy']){
+  const input=inputs();input.umpiPrimaryReview=copy(umpiReview);edit(input.umpiPrimaryReview);assert.throws(()=>buildResearchPriorities(input),/UMPI primary review/);
+ }
+});
 test('provider discovery remains a separate research stage with unchanged school, program and readiness totals',()=>{
  const input=inputs(),baseline=buildResearchPriorities(input),definition=DIRECTORY_SOURCES.find(source=>source.id==='hfcc-provider-directory');
  input.providerDiscovery=buildProviderDiscovery({version:1,sources:[{...definition,checkedOn:'2026-11-19',status:'limited',note:'Historical research lead.'}],observations:[{sourceId:definition.id,provider:'Sophia',name:'Unreviewed New University',relation:'matrix-listed',url:definition.url,observedOn:'2026-11-19',sourceDate:'2021-04-20'}]});
@@ -66,4 +86,18 @@ test('explicit mapped variants avoid duplicate directory research without claimi
  assert.equal(broader.coverageStatus,'directory-only');
  input.models.at(-1).policyEvidence.alternativeMaxCredits.sourceIds=['missing-policy'];
  assert.equal(buildResearchPriorities(input).programs.find(p=>p.id==='gcu-business-campus').programPolicy.alternativeCreditMaximum,null);
+});
+
+
+test('TESU indexed exam leads remain a source-recovery task without promoting courses, schools or plans',async()=>{
+ const review=JSON.parse(await readFile(new URL('./content/research-batches/tesu-current-exam-source-audit-2026-11-19.json',import.meta.url),'utf8'));
+ const input=inputs();input.programCatalog.schools.push({id:'tesu',name:review.school,deliveryModes:['online']});
+ input.programCatalog.programs.push({id:'tesu-liberal',school:review.school,title:'Liberal Studies BA',level:'bachelor',modalities:['online'],url:'https://www.tesu.edu/academics/ba/liberal-studies/'});
+ const before=buildResearchPriorities(input);input.tesuExamReview=copy(review);const after=buildResearchPriorities(input),school=after.schools.find(school=>school.id==='tesu');
+ assert.deepEqual(after.summary,before.summary);assert.deepEqual(after.programs,before.programs);assert.equal(school.coverage.publicationReady,0);
+ assert.equal(school.examSourceReview.publicationAllowed,false);assert(school.nextActions.some(task=>task.label.includes('404')));
+ assert(school.examSourceReview.candidateExams.every(exam=>exam.degreePlacementVerified===false));
+ for(const edit of [value=>value.publicationAllowed=true,value=>value.candidateExams[0].enrollmentReady=true,value=>value.sources[0].url='https://copied.example/tesu/']){
+  const invalid=copy(input);edit(invalid.tesuExamReview);assert.throws(()=>buildResearchPriorities(invalid),/TESU exam review/);
+ }
 });

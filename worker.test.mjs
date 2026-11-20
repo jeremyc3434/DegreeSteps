@@ -256,12 +256,14 @@ test('the built connection boundary rejects redirects and cross-origin replaceme
  const crossOrigin=await f.call(connectionPath,{signedIn:true,method:'PUT',headers:{Origin:'https://other.example'},body:{apiKey:testConnectionKey,revision:1}});assert.equal(crossOrigin.status,403);assert.equal(redirects,1);assertNoConnectionSecret(await crossOrigin.json());done();
 });
 
-test('one degree URL resolves a ready curated plan without a key, research row or provider call',async t=>{
+test('an unpublished Phoenix curriculum resolves its identity without presenting a ready plan',async t=>{
  const done=noNetwork(t),f=fixture(t),url='https://www.phoenix.edu/online-business-degrees/mba-competency-based-degree.html';
+ const quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')).programs.find(item=>item.modelId==='curriculum-phoenix-cb-mba');assert.equal(quality.publication.ready,false);
  for(const value of [url,url+'?utm_source=student&ref=friend']){
-  const response=await f.call('/api/templates/requests',{signedIn:true,method:'POST',body:{url:value,startResearch:true}});assert.equal(response.status,200);const data=await response.json();assert.equal(data.reused,true);assert.equal(data.sourcePlan.route.id,'phoenix-cb-mba');assert.equal(data.sourcePlan.route.level,'master');assert.deepEqual(data.sourcePlan.route.modalities,['online']);assert.equal(data.sourcePlan.qualityReady,true);
+  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:value}));assert.equal(response.status,200);const data=await response.json();assert.equal(data.matched,true);assert.equal(data.target.level,'master');assert.equal(data.target.modality,'online');assert.equal(data.target.catalogYear,'2026-2027');assert.equal(data.sourcePlan,undefined);assert.equal(data.existingPlan,undefined);
  }
- assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM degree_templates').get().n,0);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
+ const requested=await f.call('/api/templates/requests',{signedIn:true,method:'POST',body:{url,startResearch:false}});assert.equal(requested.status,202);const draft=await requested.json();assert.equal(draft.template.status,'queued');assert.equal(draft.sourcePlan,undefined);assert.equal(draft.existingPlan,undefined);assert.equal(draft.configured,false);
+ assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM degree_templates').get().n,1);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
 });
 test('URL identity keeps meaningful catalog parameters and never selects one degree from a shared directory',async t=>{
  const done=noNetwork(t),f=fixture(t);
@@ -318,35 +320,30 @@ test('the public degree-link lookup verifies only preloaded source plans and nev
  const unknown=await worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url:'https://unlisted.example.edu/degree/'})),{},{});assert.deepEqual(await unknown.json(),{matched:false});done();
 });
 
-test('the GCU directory parent opens its exact campus variant and earned-credit baseline without AI research',async t=>{
- const done=noNetwork(t),{call,sqlite,env}=fixture(t),url='https://www.gcu.edu/degree-programs/bachelor-science-business-administration';
- // A known plan must work even with a managed connection whose key cannot
- // decrypt. No paid model call or credential decryption is needed for reuse.
- env.AI_CONNECTIONS_MASTER_KEY=testConnectionMaster;
- sqlite.prepare('INSERT INTO ai_service_connections (id,ciphertext,iv,revision,verified_at,updated_by,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)').run('anthropic','A'.repeat(44),'0'.repeat(24),1,1,'fixture',1,1);
- const decrypt=t.mock.method(crypto.subtle,'decrypt',async()=>{throw Error('Known GCU reuse must not decrypt credentials');});
+test('the GCU directory parent keeps its campus identity and earned-credit draft outside ready publication',async t=>{
+ const done=noNetwork(t),{call,sqlite}=fixture(t),url='https://www.gcu.edu/degree-programs/bachelor-science-business-administration';
  const response=await worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url:url+'?utm_source=test'})),{},{});assert.equal(response.status,200);const data=await response.json();
- assert.equal(data.matched,true);const plan=data.sourcePlan;assert(plan);assert.equal(plan.route.id,'gcu-bsba-campus');assert.equal(plan.route.parentId,'gcu-bachelor-of-science-in-business-administration');assert.deepEqual(plan.route.modalities,['campus']);assert.equal(plan.model.id,'curriculum-gcu-bsba-campus');assert.equal(plan.qualityReady,true);
- assert.deepEqual([plan.summary.totalCredits,plan.summary.transferCredits,plan.summary.universityCredits],[120,26,94]);assert.equal(plan.summary.externalMaxCredits,90);assert.equal(plan.model.alternativeMaxCredits,30);
- const quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')).programs.find(item=>item.modelId===plan.model.id);assert.equal(quality.research.status,'research-ready');assert.equal(quality.publication.ready,false,'The degree-link proposal must not silently loosen accelerated-template publication gates.');
- const baseline=Object.values(JSON.parse(readFileSync(new URL('./dist/data/baseline-index.json',import.meta.url),'utf8')).baselines).find(item=>item.modelId===plan.model.id);assert(baseline.rows.every(row=>row.status==='planned'));assert.equal(baseline.rows.reduce((sum,row)=>sum+row.credits,0),120);
- for(const row of baseline.rows){const requirement=plan.model.requirements.find(req=>req.id===row.requirementId);if(row.provider!=='University'){const option=requirement.options.find(option=>option.id===row.optionId);assert.equal(row.credits,option.sourceCredits);if(row.credits===3)assert.equal(requirement.credits,4);}}
- const reuse=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url,startResearch:true}});assert.equal(reuse.status,200);const result=await reuse.json();assert.equal(result.reused,true);assert.equal(result.sourcePlan.model.id,plan.model.id);assert.equal(result.sourcePlan.summary.transferCredits,26);assert.equal(result.template,undefined);
+ assert.equal(data.matched,true);assert.equal(data.target.schoolName,'Grand Canyon University');assert.equal(data.target.programName,'Bachelor of Science in Business Administration');assert.equal(data.target.modality,'campus');assert.equal(data.target.catalogYear,'2026-2027');assert.equal(data.sourcePlan,undefined);assert.equal(data.existingPlan,undefined);
+ const model=JSON.parse(readFileSync(new URL('./dist/data/curricula/gcu-bsba-campus.json',import.meta.url),'utf8')).models.find(item=>item.id==='curriculum-gcu-bsba-campus');assert.equal(model.totalCredits,120);assert.equal(model.externalMaxCredits,90);assert.equal(model.alternativeMaxCredits,30);
+ const quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')).programs.find(item=>item.modelId===model.id);assert.equal(quality.research.status,'research-ready');assert.equal(quality.publication.ready,false,'A reviewed draft must not bypass accelerated-template publication gates.');
+ const baseline=Object.values(JSON.parse(readFileSync(new URL('./dist/data/baseline-index.json',import.meta.url),'utf8')).baselines).find(item=>item.modelId===model.id);assert(baseline.rows.every(row=>row.status==='planned'));assert.equal(baseline.rows.reduce((sum,row)=>sum+row.credits,0),120);
+ for(const row of baseline.rows){const requirement=model.requirements.find(req=>req.id===row.requirementId);if(row.provider!=='University'){const option=requirement.options.find(option=>option.id===row.optionId);assert.equal(row.credits,option.sourceCredits);if(row.credits===3)assert.equal(requirement.credits,4);}}
+ const request=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url,startResearch:false}});assert.equal(request.status,202);const result=await request.json();assert.equal(result.template.status,'queued');assert.equal(result.sourcePlan,undefined);assert.equal(result.existingPlan,undefined);assert.equal(result.configured,false);
  for(const query of ['?catalog=2025-2026','?modality=online']){const rejected=await call('/api/catalog/degree-link?'+new URLSearchParams({url:url+query}));assert.equal(rejected.status,200);const value=await rejected.json();assert.equal(value.sourcePlan,undefined);assert.equal(value.existingPlan,undefined);}
- assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);assert.equal(decrypt.mock.callCount(),0);done();
+ assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,1);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
 });
 
 for(const [degreeUrl,modelId,total,outside,university,modality]of [
  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/','liberty-business-residential',120,83,37,'campus'],
  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,66,54,'online'],
- ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','curriculum-liberty-interdisciplinary-aa-online',60,42,18,'online'],
- ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','curriculum-liberty-psychology-aa-online',60,39,21,'online']
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/','curriculum-liberty-psychology-bs-online',120,78,42,'online']
 ])test('the exact reviewed Liberty catalog link opens its saved baseline: '+modelId,async t=>{
- const done=noNetwork(t),lookup=url=>worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url})),{},{});
+ const done=noNetwork(t),{call,sqlite}=fixture(t),lookup=url=>worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url})),{},{});
  const response=await lookup(degreeUrl);assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,true);
  const plan=result.sourcePlan;assert(plan,'The exact known degree must open a course plan rather than send the student to research');assert.equal(plan.model.id,modelId);assert.deepEqual(plan.route.modalities,[modality]);assert.equal(plan.model.catalog.replace(/[–—]/g,'-'),'2026-2027');
  assert.equal(plan.summary.totalCredits,total);assert.equal(plan.summary.transferCredits,outside);assert.equal(plan.summary.universityCredits,university);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),total);assert(plan.model.sources.some(source=>source.url===degreeUrl));
  assert.equal(result.template,undefined);assert.equal(result.user,undefined);
+ const reuse=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url:degreeUrl,startResearch:true}});assert.equal(reuse.status,200);const reused=await reuse.json();assert.equal(reused.reused,true);assert.equal(reused.sourcePlan.model.id,modelId);assert.equal(reused.sourcePlan.summary.transferCredits,outside);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);
  const wrongCatalog=await lookup(degreeUrl+'?catalog=2025-2026');assert.equal(wrongCatalog.status,200);const rejected=await wrongCatalog.json();assert.equal(rejected.sourcePlan,undefined,'A different catalog must not inherit this baseline');assert.equal(rejected.existingPlan,undefined);done();
 });
 
@@ -364,24 +361,34 @@ test('invalid month-coded catalog versions are rejected before creating research
  for(const catalogYear of ['202600','202613','2026057']){const response=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{schoolName:'Western Governors University',programName:'Business Management – B.S.',level:'bachelor',modality:'online',catalogYear,url:'https://www.wgu.edu/online-business-degrees/business-management-bachelors-program.html',startResearch:true}});assert.equal(response.status,400);}
  assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);done();
 });
-test('new complete templates open directly from their exact degree links without AI or a guessed catalog year',async t=>{
- const done=noNetwork(t),{call,sqlite}=fixture(t);
+test('structurally complete draft templates cannot open as ready plans or invent mutable catalog years',async t=>{
+ const done=noNetwork(t),{call,sqlite}=fixture(t),quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')),registry=JSON.parse(readFileSync(new URL('./dist/data/curriculum-registry.json',import.meta.url),'utf8'));
  const cases=[
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/','curriculum-tesu-bsba-accounting',90,30],
-  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/','curriculum-liberty-history-bs-online',75,45],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-finance/','curriculum-tesu-bsba-finance',84,36],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology','curriculum-tesu-ba-psychology',72,48],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/english','curriculum-tesu-ba-english',60,60],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/','curriculum-tesu-ba-liberal-studies',75,45]
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/','curriculum-tesu-bsba-accounting'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/','curriculum-liberty-history-bs-online'],
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-finance/','curriculum-tesu-bsba-finance'],
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology','curriculum-tesu-ba-psychology'],
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/english','curriculum-tesu-ba-english'],
+  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/','curriculum-tesu-ba-liberal-studies'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','curriculum-liberty-interdisciplinary-aa-online'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','curriculum-liberty-psychology-aa-online']
  ];
- for(const [url,modelId,outside,university]of cases){
-  const response=await call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json();
-  assert.equal(result.matched,true);assert.equal(result.sourcePlan?.qualityReady,true);assert.equal(result.sourcePlan.model.id,modelId);assert.equal(result.sourcePlan.summary.totalCredits,120);assert.equal(result.sourcePlan.summary.transferCredits,outside);assert.equal(result.sourcePlan.summary.universityCredits,university);
-  if(result.sourcePlan.model.catalogIdentity?.kind==='reviewed-current-catalog'){assert.equal(result.sourcePlan.model.catalogYear,null);assert.equal(result.target.catalogYear,undefined);assert.equal(result.target.catalogLabel,result.sourcePlan.model.catalog);}
-  const reused=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url,startResearch:true}});assert.equal(reused.status,200);const reuse=await reused.json();assert.equal(reuse.reused,true);assert.equal(reuse.sourcePlan.model.id,modelId);
+ for(const [url,modelId]of cases){
+  const entry=registry.models.find(model=>model.id===modelId),pack=JSON.parse(readFileSync(new URL('./dist/'+entry.path,import.meta.url),'utf8')),model=(pack.models||[pack]).find(model=>model.id===modelId);assert.equal(entry.readyTemplate,true);assert.equal(quality.programs.find(item=>item.modelId===modelId).publication.ready,false);
+  const response=await call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json();assert.equal(result.sourcePlan,undefined,modelId);assert.equal(result.existingPlan,undefined,modelId);assert.equal(result.user,undefined);
+  if(model.catalogIdentity?.kind==='reviewed-current-catalog'){assert.equal(result.matched,false);assert.equal(result.target,undefined,'An unpublished mutable catalog must not produce a guessed year-specific target');}
+  else{assert.equal(result.matched,true);assert.equal(result.target.schoolName,model.school);assert.equal(result.target.level,model.level);assert.equal(result.target.modality,'online');assert.equal(result.target.catalogYear,'2026-2027');}
+  const requested=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url,startResearch:false}});assert.equal(requested.status,202);const draft=await requested.json();assert.equal(draft.template.status,'queued');assert.equal(draft.sourcePlan,undefined);assert.equal(draft.existingPlan,undefined);assert.equal(draft.configured,false);
+  if(model.catalogIdentity?.kind==='reviewed-current-catalog')assert.equal(draft.template.catalogYear,'unconfirmed');
   const anotherEdition=await call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=2025-2026'}));assert.equal((await anotherEdition.json()).sourcePlan,undefined);
  }
- assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
+ assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,cases.length);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
+});
+test('the newly published WGU human resource plan reuses its exact 117-CU baseline without AI',async t=>{
+ const done=noNetwork(t),{call,sqlite}=fixture(t),url='https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html';
+ const response=await call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const data=await response.json();assert.equal(data.matched,true);assert.equal(data.sourcePlan?.qualityReady,true);assert.equal(data.sourcePlan.model.id,'curriculum-wgu-catalog-2e49db64c32dfc79');assert.equal(data.sourcePlan.model.catalog,'202509');assert.equal(data.sourcePlan.model.creditSystem,'competency-unit');assert.equal(data.sourcePlan.summary.totalCredits,117);assert.equal(data.sourcePlan.summary.transferCredits,66);assert.equal(data.sourcePlan.summary.universityCredits,51);assert.equal(data.sourcePlan.model.requirements.length,39);
+ const reuse=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url,startResearch:true}});assert.equal(reuse.status,200);const result=await reuse.json();assert.equal(result.reused,true);assert.equal(result.sourcePlan.model.id,data.sourcePlan.model.id);assert.equal(result.sourcePlan.model.catalog,'202509');assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);
+ const wrongEdition=await call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=202605'}));assert.equal((await wrongEdition.json()).sourcePlan,undefined);done();
 });
 function referenceDoctoralArtifact(unit){
  const a=workerResearchArtifact();Object.assign(a,{schoolName:'South College',programName:'Doctor of Business Administration',level:'doctorate',modality:'online',catalogYear:'2026-2028',officialUniversityUrl:'https://www.south.edu/doctor-of-business-administration-program-overview/',creditSystem:unit,totalCredits:90,institutionMinCredits:90,externalMaxCredits:0,alternativeMaxCredits:0,upperMinCredits:0,majorInstitutionFraction:0,majorResidencyBasisCredits:0});

@@ -7,6 +7,7 @@ No network request, student record or runtime AI is needed.
 from pathlib import Path
 import json,re,sys
 from wgu_undergraduate_policies import apply_reviewed_undergraduate_policies
+from wgu_bshr_articulations import apply_bshr_articulations
 
 ROOT=Path(__file__).resolve().parents[1]
 SNAP=ROOT/'content/curricula/snapshots/wgu'
@@ -278,6 +279,7 @@ def main():
  out={'version':1,'checkedOn':CHECKED,'sources':sources,'models':models,'routes':declared}
  out=apply_reviewed_supplements(out)
  out=apply_reviewed_undergraduate_policies(out,json.loads((SNAP/'business-current-ledgers-policy-review-2026-11-17.json').read_text()))
+ out=apply_bshr_articulations(out,json.loads((SNAP/'bshr-202509-approved-maps-20261117.json').read_text()))
  output=ROOT/'content/curricula/wgu.json';serialized=json.dumps(out,indent=2)+'\n'
  if '--check'in sys.argv:assert output.read_text()==serialized,'WGU curriculum artifact is stale; rerun importer'
  else:output.write_text(serialized)

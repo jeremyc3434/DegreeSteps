@@ -10,6 +10,7 @@ const output = resolve(root,'outputs/site');
 const types = {html:'text/html; charset=utf-8',js:'application/javascript; charset=utf-8',mjs:'application/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',csv:'text/csv; charset=utf-8',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',txt:'text/plain; charset=utf-8',xml:'application/xml; charset=utf-8',webp:'image/webp',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png'};
 execFileSync(process.execPath,[resolve(root,'scripts/reviewed-course-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-current-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-plan-estimate-rates.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 buildCreditSourceDiscovery(JSON.parse(await readFile(resolve(root,'dist/data/credit-sources.json'),'utf8')));
 execFileSync(process.execPath,[resolve(root,'scripts/add-liberty-official-mappings.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-tesu-official-mappings.mjs'),'--check'],{cwd:root,stdio:'inherit'});
@@ -26,6 +27,7 @@ execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-psychology.mjs'
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-english.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-liberal-studies.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-gcu-curriculum.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync('python',[resolve(root,'scripts/import-wgu-curricula.py'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-academic-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});

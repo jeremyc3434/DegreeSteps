@@ -95,9 +95,14 @@ async function knownSourcePlan(entry,pathwayId,modality,model) {
   try{
   if(!basePathwaysSnapshot)basePathwaysSnapshot=JSON.parse(await decodeStaticAsset(assets['/data/pathways.json']));
   const catalog=await publicCatalogSnapshot();
-  if(!resolvedPlanCatalogSnapshot)resolvedPlanCatalogSnapshot=TemplateProgramCatalog.attachRegistry(TemplateProgramCatalog.merge(basePathwaysSnapshot,catalog),curriculumRegistrySnapshot);
+  if(!resolvedPlanCatalogSnapshot){
+    const publicationAsset=assets['/data/publication-index.json'];if(!publicationAsset)return null;
+    const structural=TemplateProgramCatalog.attachRegistry(TemplateProgramCatalog.merge(basePathwaysSnapshot,catalog),curriculumRegistrySnapshot);
+    resolvedPlanCatalogSnapshot=TemplateProgramCatalog.attachPublicationIndex(structural,JSON.parse(await decodeStaticAsset(publicationAsset)),curriculumRegistrySnapshot);
+  }
   const original=resolvedPlanCatalogSnapshot.pathways.find(route=>route.id===pathwayId);
   if(!original||original.modelId!==entry.id||original.school!==model.school||!original.modalities?.includes(modality)||!entry.routeIds.includes(pathwayId)||!entry.modalities.includes(modality))return null;
+  if(!TemplateProgramCatalog.publishedPlans(resolvedPlanCatalogSnapshot,[model]).some(route=>route.id===pathwayId))return null;
   const level=entry.level||degreeLevel(model.level),route={...original,modelId:entry.id,level,modalities:[modality],readyTemplate:true,courseMapStatus:'mapped'};
   if(original.parentId&&(!degreeLevel(model.level)||original.level!==degreeLevel(model.level)||entry.level&&entry.level!==degreeLevel(model.level)))return null;
   // Build-time baselines contain no student records. A missing/stale artifact
@@ -201,6 +206,15 @@ async function resolveKnownDegreeLink(value) {
   if(!degreeAliasSnapshot)degreeAliasSnapshot=JSON.parse(await decodeStaticAsset(assets['/data/degree-link-aliases.json']));
   const aliases=(degreeAliasSnapshot.aliases||[]).filter(alias=>linkIdentity(alias.url)===url);
   const programs=(catalog.programs||[]).filter(program=>linkIdentity(program.url)===url);
+  // A reviewed format-specific curriculum can have its own official URL while
+  // the directory lists the parent degree. Resolve only that exact registry
+  // route, with the same reviewed model, school, award and delivery format.
+  for(const route of curriculumRegistrySnapshot.routes||[]){
+    if(!route.parentId||linkIdentity(route.url)!==url||!['bachelor','associate','master','doctorate','specialist'].includes(route.level)||route.modalities?.length!==1||!['online','campus'].includes(route.modalities[0]))continue;
+    const entry=curriculumRegistrySnapshot.models.find(entry=>entry.readyTemplate===true&&entry.status==='reviewed'&&entry.routeIds?.includes(route.id)&&entry.school===route.school&&(!entry.level||entry.level===route.level)&&entry.modalities?.includes(route.modalities[0])&&canonicalDegreeTitle(entry.title)===canonicalDegreeTitle(route.title));
+    const parent=(catalog.programs||[]).find(program=>program.id===route.parentId&&program.school===route.school&&program.level===route.level&&canonicalDegreeTitle(program.title)===canonicalDegreeTitle(route.title));
+    if(entry&&parent&&!programs.some(program=>program.id===parent.id))programs.push(parent);
+  }
   if(!programs.length&&!aliases.length)return null;
   // A directory URL can name many degrees. Never pick its one mapped degree by accident.
   const identities=new Set(programs.map(program=>[canonicalSchoolName(program.school),canonicalDegreeTitle(program.title),program.level].join('|')));

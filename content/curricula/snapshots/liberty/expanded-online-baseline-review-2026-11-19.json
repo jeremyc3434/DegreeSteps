@@ -1,0 +1,1202 @@
+{
+  "version": 1,
+  "id": "liberty-expanded-online-baseline-review-2026-11-19",
+  "school": "Liberty University",
+  "checkedOn": "2026-11-19",
+  "reviewType": "Local re-review of original official captures and existing independently reviewed provider identities; no new network retrieval is claimed.",
+  "sources": [
+    {
+      "id": "liberty-health-baseline-catalog-course-review-2026-11-19",
+      "title": "Liberty 2026\u20132027 full undergraduate catalog: Healthcare B.S. prerequisites and course delivery",
+      "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+      "checked": "2026-11-19",
+      "retrievedOn": "2026-11-18",
+      "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "roles": [
+        "prerequisites",
+        "offering"
+      ],
+      "sourcePages": [
+        1132,
+        1155,
+        1164,
+        1165,
+        1166,
+        1168,
+        1169,
+        1172,
+        1254,
+        1255,
+        1261,
+        1262,
+        1311,
+        1338,
+        1340
+      ],
+      "reviewMethod": "SHA-256 of original PDF capture verified; actual course descriptions reviewed from pdftotext raw text. Course rule alternatives are retained, while the baseline prerequisite graph uses an in-ledger satisfying course where available."
+    },
+    {
+      "id": "liberty-psych-baseline-catalog-course-review-2026-11-19",
+      "title": "Liberty 2026\u20132027 full undergraduate catalog: Psychology B.S. requirements, prerequisite alternatives and course delivery",
+      "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+      "checked": "2026-11-19",
+      "retrievedOn": "2026-11-18",
+      "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "roles": [
+        "curriculum",
+        "prerequisites",
+        "offering"
+      ],
+      "sourcePages": [
+        524,
+        525,
+        1155,
+        1307,
+        1308,
+        1309,
+        1310,
+        1311,
+        1338,
+        1340
+      ],
+      "reviewMethod": "Actual retained full catalog reviewed locally; Psychology online degree printed page523, physical524; current course descriptions and online delivery were reviewed by code. No new retrieval is claimed."
+    }
+  ],
+  "scopes": [
+    {
+      "modelId": "curriculum-liberty-healthcare-administration-bs-online",
+      "catalogYear": "2026-2027",
+      "format": "Online",
+      "creditSystem": "semester",
+      "totalCredits": 120,
+      "degreeSourceIds": [
+        "liberty-healthcare-administration-online-2026-2027"
+      ],
+      "policySourceIds": [
+        "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+      ],
+      "prerequisiteSourceIds": [
+        "liberty-health-baseline-catalog-course-review-2026-11-19"
+      ],
+      "majorResidencyBasisCredits": 66,
+      "majorLedgerCalculation": "The source\u2019s 22 three-credit Major Requirements and Foundational Courses rows total 66 credits, allocated once. The baseline retains more than 25% of that component at Liberty.",
+      "choices": [
+        {
+          "requirementId": "free-electives-1",
+          "providerCode": "SOPH-0022",
+          "receivingCode": "HIUS 221"
+        },
+        {
+          "requirementId": "free-electives-2",
+          "providerCode": "SOPH-0025",
+          "receivingCode": "HIUS 222"
+        },
+        {
+          "requirementId": "free-electives-3",
+          "providerCode": "SOPH-0006",
+          "receivingCode": "ARTS 201"
+        },
+        {
+          "requirementId": "free-electives-4",
+          "providerCode": "SOPH-0029",
+          "receivingCode": "ARTS 202"
+        }
+      ],
+      "replacedNotes": [
+        "Confirm your catalog, home-state general-education additions, prerequisites, and individual transfer evaluation before enrolling.",
+        "Major-foundation overlap is optional in the published plan. This baseline uses no overlap; a different approved allocation can change elective quantities.",
+        "An outside course is proposed only when a separately sourced receiving-course equivalency is available; university fallback rows do not establish that outside credit is prohibited."
+      ],
+      "allocationReview": "This baseline retains all 120 published degree credits, the three-credit UNIV 104 case, the listed religion requirements and the full 66-credit major ledger. It applies no transfer waiver or foundational overlap. The four distinct three-credit art/history awards fill the unrestricted 12-credit elective component without repeating a fixed degree course.",
+      "courseReviews": [
+        {
+          "code": "RLGN 104",
+          "credits": 4,
+          "pdfPage": 1311,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "BIBL 104",
+          "credits": 4,
+          "pdfPage": 1155,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "THEO 104",
+          "credits": 4,
+          "pdfPage": 1338,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "UNIV 104",
+          "credits": 3,
+          "pdfPage": 1340,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "BUSI 201",
+          "credits": 3,
+          "pdfPage": 1164,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "anyOf": [
+              {
+                "type": "course",
+                "code": "INFT 110"
+              },
+              {
+                "type": "course",
+                "code": "INFT 111"
+              },
+              {
+                "allOf": [
+                  {
+                    "type": "assessment",
+                    "name": "INFT Excel Test",
+                    "minimumScore": 5
+                  },
+                  {
+                    "type": "assessment",
+                    "name": "INFT PowerPoint Test",
+                    "minimumScore": 5
+                  },
+                  {
+                    "type": "assessment",
+                    "name": "INFT Word Test",
+                    "minimumScore": 5
+                  }
+                ]
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false,
+          "publishedPrerequisiteAlternatives": "INFT 110 or INFT 111 or (INFT Excel Test with a score of 5 and INFT PowerPoint Test with a score of 5 and INFT Word Test with a score of 5)"
+        },
+        {
+          "code": "ACCT 212",
+          "credits": 3,
+          "pdfPage": 1132,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "ACCT 211"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "type": "course",
+                "code": "ACCT 211"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false,
+          "publishedPrerequisiteAlternatives": "ACCT 211"
+        },
+        {
+          "code": "BUSI 323",
+          "credits": 3,
+          "pdfPage": 1165,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "BUSI 344",
+          "credits": 3,
+          "pdfPage": 1166,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "BUSI 418",
+          "credits": 3,
+          "pdfPage": 1168,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "BUSI 428",
+          "credits": 3,
+          "pdfPage": 1169,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "BUSI 344",
+            "BUSI 418"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "type": "course",
+                "code": "BUSI 344"
+              },
+              {
+                "type": "course",
+                "code": "BUSI 418"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false,
+          "publishedPrerequisiteAlternatives": "BUSI 344 and BUSI 418"
+        },
+        {
+          "code": "BUSI 429",
+          "credits": 3,
+          "pdfPage": 1169,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "BUSI 494",
+          "credits": 3,
+          "pdfPage": 1172,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [
+            "BUSI 323",
+            "BUSI 428",
+            "HLTH 485"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "type": "course",
+                "code": "BUSI 323"
+              },
+              {
+                "type": "course",
+                "code": "BUSI 428"
+              },
+              {
+                "type": "course",
+                "code": "HLTH 485"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false,
+          "publishedPrerequisiteAlternatives": "BUSI 323 and BUSI 428 and HLTH 485"
+        },
+        {
+          "code": "HLTH 349",
+          "credits": 3,
+          "pdfPage": 1254,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "HLTH 485",
+          "credits": 3,
+          "pdfPage": 1255,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [
+            "BUSI 230"
+          ],
+          "rule": {
+            "anyOf": [
+              {
+                "type": "course",
+                "code": "MATH 201"
+              },
+              {
+                "type": "course",
+                "code": "BUSI 230"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false,
+          "publishedPrerequisiteAlternatives": "MATH 201 or BUSI 230"
+        },
+        {
+          "code": "HLTH 491",
+          "credits": 3,
+          "pdfPage": 1255,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true,
+          "publishedPrerequisiteAlternatives": null
+        },
+        {
+          "code": "INFO 305",
+          "credits": 3,
+          "pdfPage": 1261,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [
+            "BUSI 311"
+          ],
+          "rule": {
+            "anyOf": [
+              {
+                "type": "course",
+                "code": "BUSI 311"
+              },
+              {
+                "type": "course",
+                "code": "CSIS 100"
+              },
+              {
+                "type": "course",
+                "code": "CSIS 110"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false,
+          "publishedPrerequisiteAlternatives": "BUSI 311 or CSIS 100 or CSIS 110"
+        },
+        {
+          "code": "INFO 320",
+          "credits": 3,
+          "pdfPage": 1262,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [
+            "BUSI 311"
+          ],
+          "rule": {
+            "anyOf": [
+              {
+                "type": "course",
+                "code": "INFO 305"
+              },
+              {
+                "type": "course",
+                "code": "BUSI 311"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false,
+          "publishedPrerequisiteAlternatives": "INFO 305 or BUSI 311"
+        }
+      ]
+    },
+    {
+      "modelId": "curriculum-liberty-psychology-bs-online",
+      "catalogYear": "2026-2027",
+      "format": "Online",
+      "creditSystem": "semester",
+      "totalCredits": 120,
+      "degreeSourceIds": [
+        "liberty-psychology-bs-online-2026",
+        "liberty-psych-baseline-catalog-course-review-2026-11-19"
+      ],
+      "policySourceIds": [
+        "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+      ],
+      "prerequisiteSourceIds": [
+        "liberty-psych-baseline-catalog-course-review-2026-11-19"
+      ],
+      "majorResidencyBasisCredits": 51,
+      "majorLedgerCalculation": "The current Psychology online degree has 12 foundational and 39 core psychology credits, allocated once; the 25% major residency fraction uses this 51-credit component.",
+      "choices": [
+        {
+          "requirementId": "free-electives-1",
+          "provider": "Study.com",
+          "providerCode": "SDCM-0173",
+          "receivingCode": "BUSI 302",
+          "upper": true
+        },
+        {
+          "requirementId": "free-electives-2",
+          "provider": "Study.com",
+          "providerCode": "SDCM-0207",
+          "receivingCode": "BUSI 304",
+          "upper": true
+        },
+        {
+          "requirementId": "free-electives-3",
+          "provider": "Study.com",
+          "providerCode": "SDCM-0172",
+          "receivingCode": "BUSI 311",
+          "upper": true
+        },
+        {
+          "requirementId": "free-electives-4",
+          "provider": "Study.com",
+          "providerCode": "SDCM-0209",
+          "receivingCode": "BUSI 419",
+          "upper": true
+        },
+        {
+          "requirementId": "free-electives-5",
+          "provider": "Sophia",
+          "providerCode": "SOPH-0022",
+          "receivingCode": "HIUS 221",
+          "upper": false
+        },
+        {
+          "requirementId": "free-electives-6",
+          "provider": "Sophia",
+          "providerCode": "SOPH-0025",
+          "receivingCode": "HIUS 222",
+          "upper": false
+        },
+        {
+          "requirementId": "free-electives-7",
+          "provider": "Sophia",
+          "providerCode": "SOPH-0006",
+          "receivingCode": "ARTS 201",
+          "upper": false
+        },
+        {
+          "requirementId": "free-electives-8",
+          "provider": "Sophia",
+          "providerCode": "SOPH-0029",
+          "receivingCode": "ARTS 202",
+          "upper": false
+        },
+        {
+          "requirementId": "free-electives-9",
+          "provider": "Sophia",
+          "providerCode": "SOPH-0016",
+          "receivingCode": "ENVR 215",
+          "upper": false
+        },
+        {
+          "requirementId": "free-electives-10",
+          "provider": "Sophia",
+          "providerCode": "SOPH-0027",
+          "receivingCode": "PHIL 201",
+          "upper": false
+        },
+        {
+          "requirementId": "free-electives-11",
+          "provider": "Sophia",
+          "providerCode": "SOPH-0065",
+          "receivingCode": "PHIL 210",
+          "upper": false
+        }
+      ],
+      "retainedUniv104": {
+        "replacesRequirementId": "free-electives-12",
+        "previousAllocationNote": "A 120-credit proposed allocation: 33 unique general-education credits + 12 major-foundation credits + 39 major-course credits + 36 free-elective credits.",
+        "nextAllocationNote": "This 120-credit baseline uses 36 unique general-education credits including three-credit UNIV 104, 12 major-foundation credits, 39 major-core credits and 33 unrestricted free-elective credits. The BIOL 102 and PSYC 101 overlaps remain counted once."
+      },
+      "replacedNotes": [
+        "Confirm individual catalog eligibility, major-course residency allocation, course prerequisites, and written transfer evaluation.",
+        "Outside-course equivalencies must be sourced separately; a university requirement is not evidence that a particular accelerated course transfers.",
+        "State-specific online general-education requirements may differ; consult the applicable state degree completion plan."
+      ],
+      "allocationReview": "This baseline retains three-credit UNIV 104 and all listed religion requirements. It uses 33 free-elective credits within the published 27\u201336 range, 51 major credits counted once, and 36 unique general-education credits, totaling 120. No transfer-triggered waiver is assumed. Four distinct reviewed Study.com healthcare awards and seven reviewed Sophia awards fill the unrestricted free-elective component; no named psychology requirement is replaced by a business course.",
+      "courseReviews": [
+        {
+          "code": "RLGN 104",
+          "credits": 4,
+          "pdfPage": 1311,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true
+        },
+        {
+          "code": "BIBL 104",
+          "credits": 4,
+          "pdfPage": 1155,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true
+        },
+        {
+          "code": "THEO 104",
+          "credits": 4,
+          "pdfPage": 1338,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true
+        },
+        {
+          "code": "PSYC 354",
+          "credits": 3,
+          "pdfPage": 1308,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "PSYC 101",
+            "MATH 121",
+            "PSYC 255"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "PSYC 101"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 210"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "MATH 114"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 115"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 116"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 117"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 121"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 122"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 123"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 125"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 126"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 128"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 130"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 131"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 132"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 200"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 201"
+                  },
+                  {
+                    "type": "course",
+                    "code": "BUSI 230"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 217"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 221"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 231"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 250"
+                  }
+                ]
+              },
+              {
+                "type": "course",
+                "code": "PSYC 255"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false
+        },
+        {
+          "code": "PSYC 310",
+          "credits": 3,
+          "pdfPage": 1307,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true
+        },
+        {
+          "code": "PSYC 320",
+          "credits": 3,
+          "pdfPage": 1308,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "PSYC 101",
+            "PSYC 255"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "PSYC 200"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 210"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 101"
+                  },
+                  {
+                    "type": "course",
+                    "code": "GEED 201"
+                  }
+                ]
+              },
+              {
+                "type": "course",
+                "code": "PSYC 255"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false
+        },
+        {
+          "code": "PSYC 341",
+          "credits": 3,
+          "pdfPage": 1308,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "PSYC 101",
+            "PSYC 255"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "PSYC 200"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 210"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 101"
+                  },
+                  {
+                    "type": "course",
+                    "code": "GEED 201"
+                  }
+                ]
+              },
+              {
+                "type": "course",
+                "code": "PSYC 255"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false
+        },
+        {
+          "code": "PSYC 351",
+          "credits": 3,
+          "pdfPage": 1308,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "PSYC 101",
+            "PSYC 255"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "PSYC 200"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 210"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 101"
+                  },
+                  {
+                    "type": "course",
+                    "code": "GEED 201"
+                  }
+                ]
+              },
+              {
+                "type": "course",
+                "code": "PSYC 255"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false
+        },
+        {
+          "code": "PSYC 355",
+          "credits": 3,
+          "pdfPage": 1308,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "PSYC 101",
+            "MATH 121",
+            "PSYC 354",
+            "PSYC 255"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "PSYC 101"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 210"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "MATH 114"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 115"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 116"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 117"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 121"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 122"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 123"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 125"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 126"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 128"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 130"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 131"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 132"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 200"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 201"
+                  },
+                  {
+                    "type": "course",
+                    "code": "BUSI 230"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 217"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 221"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 231"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 250"
+                  },
+                  {
+                    "type": "course",
+                    "code": "MATH 211"
+                  }
+                ]
+              },
+              {
+                "type": "course",
+                "code": "PSYC 255"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 354"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false
+        },
+        {
+          "code": "PSYC 420",
+          "credits": 3,
+          "pdfPage": 1309,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "PSYC 101",
+            "PSYC 255"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "PSYC 200"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 210"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 101"
+                  },
+                  {
+                    "type": "course",
+                    "code": "GEED 201"
+                  }
+                ]
+              },
+              {
+                "type": "course",
+                "code": "PSYC 255"
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false
+        },
+        {
+          "code": "PSYC 421",
+          "credits": 3,
+          "pdfPage": 1309,
+          "offeredFormats": [
+            "Online",
+            "Residential"
+          ],
+          "prerequisiteCodes": [
+            "PSYC 355",
+            "PSYC 255",
+            "PSYC 101"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "type": "course",
+                "code": "PSYC 355"
+              },
+              {
+                "type": "course",
+                "code": "PSYC 255"
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "PSYC 101"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 210"
+                  }
+                ]
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false
+        },
+        {
+          "code": "PSYC 491",
+          "credits": 3,
+          "pdfPage": 1310,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [
+            "PSYC 255",
+            "PSYC 101"
+          ],
+          "rule": {
+            "allOf": [
+              {
+                "type": "course",
+                "code": "PSYC 255"
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "course",
+                    "code": "PSYC 101"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 200"
+                  },
+                  {
+                    "type": "course",
+                    "code": "PSYC 210"
+                  },
+                  {
+                    "type": "course",
+                    "code": "GEED 201"
+                  }
+                ]
+              }
+            ]
+          },
+          "noCoursePrerequisitesListed": false,
+          "personalRegistrationRestrictions": {
+            "minimumPrerequisiteGrade": "C",
+            "juniorOrSeniorStatusRequired": true,
+            "minimumCompletedPsychologyCredits": 18
+          }
+        },
+        {
+          "code": "UNIV 104",
+          "credits": 3,
+          "pdfPage": 1340,
+          "offeredFormats": [
+            "Online"
+          ],
+          "prerequisiteCodes": [],
+          "rule": {
+            "allOf": []
+          },
+          "noCoursePrerequisitesListed": true
+        }
+      ],
+      "additionalPersonalTasks": [
+        {
+          "id": "psych-capstone-registration",
+          "message": "Before PSYC 491, meet its published junior/senior status, 18 completed psychology credits and minimum-C prerequisite requirements. These personal grades and registration status are not assumed.",
+          "sourceIds": [
+            "liberty-psych-baseline-catalog-course-review-2026-11-19"
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "No student admission, transfer award, assessment pass, grade or section availability is asserted.",
+    "No numeric alternative-credit ceiling is invented. Overall transfer and institutional/major residency rules remain enforced.",
+    "The current university-hosted receiving guide, provider-linked syllabus and exact current ACE identity remain separate authorities.",
+    "All unreviewed alternatives remain unchanged; the reviewed baseline chooses only the specified current documented elective awards."
+  ],
+  "researchHolds": [
+    {
+      "id": "liberty-business-online-busi105-prerequisite-conflict-2026-11-19",
+      "modelId": "curriculum-liberty-business-bs-online",
+      "catalogYear": "2026-2027",
+      "format": "Online",
+      "totalCredits": 120,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+      ],
+      "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "pdfPages": [
+        1163,
+        1164,
+        1165
+      ],
+      "facts": {
+        "BUSI 105": {
+          "credits": 3,
+          "offeredFormats": [
+            "Residential"
+          ]
+        },
+        "BUSI 301": {
+          "prerequisiteCodes": [
+            "BUSI 105"
+          ],
+          "offeredFormats": [
+            "Residential",
+            "Online"
+          ]
+        },
+        "BUSI 305": {
+          "prerequisiteAlternatives": [
+            "MATH 114",
+            "MATH 115"
+          ],
+          "requiredCourse": "BUSI 205"
+        }
+      },
+      "message": "DegreeSteps must resolve a published prerequisite and delivery conflict before recommending this online route: BUSI 301 requires BUSI 105, but the current catalog offers BUSI 105 residentially only. The reviewed Sophia and Study.com online guides publish no BUSI 105 or BUSI 301 award. An official online offering, approved substitution or exact eligible transfer award is still needed; no exemption is assumed."
+    }
+  ]
+}

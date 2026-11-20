@@ -45,7 +45,8 @@ export function compilePathwayArtifacts({models,entries,catalog,registry,referen
  const report={schemaVersion:1,registryRevision:registry.revision,asOf,scope:'Baseline research coverage. No student credit is awarded by this report.',summary:{models:programs.length,availableTemplates:programs.filter(program=>program.readyTemplate).length,publicationReady:programs.filter(program=>program.publication.ready).length,research:counts(['research-ready','conditional','needs-research','unavailable'],program=>program.status),execution:{personalTaskPrograms:programs.filter(program=>program.execution.personalTasks.length).length},estimates:{cost:counts(['complete-estimate','partial-estimate','not-estimated'],program=>program.estimates.cost.status),timing:counts(['source-supported-scenario','assumption-based-scenario','not-estimated'],program=>program.estimates.timing.status)}},programs};
  const baselineIndex={schemaVersion:1,registryRevision:registry.revision,asOf,plannerHash:inputHashes['/planner.js']||null,inputs:inputHashes,privateRecordsIncluded:false,baselines};
  baselineIndex.revision='baselines-v1:'+createHash('sha256').update(JSON.stringify(baselineIndex)).digest('hex');
- return {report,baselineIndex};
+ const publicationIndex={schemaVersion:1,registryRevision:registry.revision,asOf,privateRecordsIncluded:false,plans:programs.filter(program=>program.publication.ready).map(program=>({modelId:program.modelId,publicationReady:true,level:Catalog.publicationLevel(models.find(model=>model.id===program.modelId)?.level||list(catalog.pathways).find(route=>route.modelId===program.modelId)?.level),modelFingerprint:Catalog.publicationModelFingerprint(models.find(model=>model.id===program.modelId),list(catalog.pathways).find(route=>route.modelId===program.modelId)?.level),routeIds:[...new Set(Object.values(baselines).filter(baseline=>baseline.modelId===program.modelId&&baseline.researchStatus==='research-ready').map(baseline=>baseline.pathwayId))]})).filter(plan=>plan.routeIds.length)};
+ return {report,baselineIndex,publicationIndex};
 }
 export async function runPathwayArtifacts({base=root,check=false}={}){
  const read=async path=>JSON.parse(await readFile(resolve(base,path),'utf8'));
@@ -53,13 +54,14 @@ export async function runPathwayArtifacts({base=root,check=false}={}){
  const catalog=Catalog.attachRegistry(Catalog.merge(await read('dist/data/pathways.json'),await read('dist/data/program-catalog.json')),curricula);
  const paths=[...new Set(['planner.js','data/academic-registry.json','data/pathways.json','data/program-catalog.json','data/curriculum-registry.json','data/research-references.json',...entries.map(entry=>entry.path)])].sort();
  const inputHashes=Object.fromEntries(await Promise.all(paths.map(async path=>['/'+path,createHash('sha256').update(await readFile(resolve(base,'dist',path))).digest('hex')])));
- const {report,baselineIndex}=compilePathwayArtifacts({models,entries,catalog,registry,references:await read('dist/data/research-references.json'),asOf,inputHashes});
- for(const [path,payload] of [['dist/data/pathway-quality-report.json',report],['dist/data/baseline-index.json',baselineIndex]]){
+ const {report,baselineIndex,publicationIndex}=compilePathwayArtifacts({models,entries,catalog,registry,references:await read('dist/data/research-references.json'),asOf,inputHashes});
+ publicationIndex.curriculumFingerprint=Catalog.publicationFingerprint(curricula);
+ for(const [path,payload] of [['dist/data/pathway-quality-report.json',report],['dist/data/baseline-index.json',baselineIndex],['dist/data/publication-index.json',publicationIndex]]){
   const serialized=JSON.stringify(payload)+'\n';
   if(check){if(await readFile(resolve(base,path),'utf8')!==serialized)throw Error(path+' is stale. Run node scripts/build-pathway-quality-report.mjs.');}
   else{await mkdir(resolve(base,'dist/data'),{recursive:true});await writeFile(resolve(base,path),serialized);}
  }
- return {report,baselineIndex};
+ return {report,baselineIndex,publicationIndex};
 }
 if(process.argv[1]&&pathToFileURL(resolve(process.argv[1])).href===import.meta.url){
  const args=process.argv.slice(2);if(args.some(arg=>arg!=='--check'))throw Error('Use --check or no arguments.');

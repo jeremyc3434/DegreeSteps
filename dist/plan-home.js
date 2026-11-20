@@ -1,9 +1,10 @@
 /* One useful action, chosen from the student's actual records and degree. */
 (function (root, factory) {
-  const api = factory(typeof module === 'object' && module.exports ? require('./journey-engine.js') : root.DegreeJourney);
-  if (typeof module === 'object' && module.exports) module.exports = api;
+  const common = typeof module === 'object' && module.exports;
+  const api = factory(common ? require('./journey-engine.js') : root.DegreeJourney, common ? () => require('./student-checklist.js') : () => root.DegreeChecklist);
+  if (common) module.exports = api;
   else root.DegreePlanHome = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function (Journey) {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (Journey, getChecklist) {
   'use strict';
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const list = value => Array.isArray(value) ? value : [];
@@ -18,8 +19,16 @@
     if (unknown) return {id:'credit-details',title:'Add the credit details for your finished course',detail:unknown.title+' is saved as finished. Its credits are still pending.',label:'Add credit details',href:'courses.html?tab=mine&record='+encodeURIComponent(unknown.id)};
     const ownService = ['active','veteran','reserve'].includes(p.militaryStatus);
     const serviceRecorded = learning.some(record => record.status === 'earned' && /jst|joint.?services|ccaf|air.?university|military/i.test(record.provider || ''));
-    if (ownService && !serviceRecorded) return {id:'service-records',title:p.militaryRecords === 'ccaf' ? 'Bring in your CCAF transcript' : 'Bring in your service education record',detail:'Start with the original transcript so your training can be evaluated for this degree.',label:'Get my service record',href:'portal.html?view=school#service-records'};
-    if (!tasks[1].complete) return {id:'past-courses',title:'Bring your past courses into the plan',detail:'Add what you know now. Missing transcript details can wait.',label:'Add past courses',href:'plan.html?task=credits',defer:true};
+    let serviceTaskPending = ownService && !serviceRecorded;
+    if (serviceTaskPending) {
+      try {
+        const checklist = getChecklist?.()?.build(state,draft);
+        const task = checklist?.valid ? checklist.tasks.find(item => item.id === 'military-records') : null;
+        if (task && ['waiting','done'].includes(task.status)) serviceTaskPending = false;
+      } catch {/* An unreadable checklist must not silently dismiss an unfinished record task. */}
+    }
+    if (serviceTaskPending) return {id:'service-records',title:p.militaryRecords === 'ccaf' ? 'Bring in your CCAF transcript' : 'Bring in your service education record',detail:'Start with the original transcript so your training can be evaluated for this degree.',label:'Get my service record',href:'portal.html?view=school&action=military-records#service-records'};
+    if (!tasks[1].complete) return {id:'past-courses',title:'Bring your past courses into the plan',detail:'Upload your transcript or spreadsheet, then review your courses together.',label:'Upload my courses',href:'import-courses.html?from=plan',defer:true};
     if (!plan) return {id:'requirements',title:'Build the course plan for your degree',detail:'Your goal and courses are saved. DegreeSteps can research the requirements from the college’s degree link.',label:'Build from my degree link',href:'request-plan.html'};
     if (!plan.validation?.academicCountsValid || list(plan.setupIssues).some(issue => ['invalid_selection','selection_conflict'].includes(issue.code))) return {id:'conflicts',title:'Resolve the course choices that conflict',detail:'Review the affected requirements before adding more courses.',label:'See affected courses',href:'plan.html?task=checks'};
     const takingIds=new Set(list(draft.collectionMatch?.placements).filter(placement=>list(plan.rows).some(row=>row.status==='planned'&&row.requirementId===placement.requirementId&&row.option?.id===placement.optionId)).map(placement=>placement.learningId));

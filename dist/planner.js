@@ -1112,8 +1112,27 @@
     return approved;
   }
 
-  function generate(program, inputValue) {
+  function reviewedDefaults(program,input) {
+    const review=program.reviewedBaselineChoices,own=(value,key)=>Object.prototype.hasOwnProperty.call(value,key);
+    const edition=value=>String(value||'').replace(/[–—]/g,'-');
+    if(!review||review.version!==1||review.modelId!==program.id||review.format!==program.format||review.creditSystem!==creditSystem(program)||review.totalCredits!==program.totalCredits||edition(review.catalogYear)!==edition(program.catalogYear||program.catalog)||!review.reviewId||!/^20\d{2}-\d{2}-\d{2}$/.test(review.checkedOn||'')||!Array.isArray(review.sourceIds)||!review.sourceIds.length||review.sourceIds.some(id=>!(program.sources||[]).some(source=>source.id===id))||!review.optionSelections||typeof review.optionSelections!=='object'||Array.isArray(review.optionSelections)||input.optionSelections==null||typeof input.optionSelections!=='object'||Array.isArray(input.optionSelections))return {};
+    const entries=Object.entries(review.optionSelections),requirements=program.requirements||[];
+    if(entries.some(([id,optionId])=>typeof optionId!=='string'||!requirements.some(requirement=>requirement.id===id&&(requirement.options||[]).some(option=>option.id===optionId))))return {};
+    const done=new Set((input.completed||[]).filter(item=>['reported','confirmed'].includes(item.status)).map(item=>item.requirementId)),defaults={};
+    for(const [id,optionId] of entries)if(!own(input.optionSelections,id)&&!done.has(id)&&availableOptions(program,id,input).some(option=>option.id===optionId&&!option.selectionRequired))defaults[id]=optionId;
+    return defaults;
+  }
+  function generate(program, inputValue, withoutReviewedDefaults=false) {
     const input = normalizedInput(inputValue), setupIssues = [], warnings = [], requirements = program.requirements || [];
+    if(!withoutReviewedDefaults){
+      const defaults=reviewedDefaults(program,input);
+      if(Object.keys(defaults).length){
+        const candidate=generate(program,{...input,optionSelections:{...defaults,...input.optionSelections}},true);
+        // A researched starting choice is a default, never a restriction on
+        // personal records, enabled providers or a student's own selections.
+        if(candidate.validation?.academicCountsValid&&!candidate.setupIssues.some(issue=>['invalid_selection','selection_conflict'].includes(issue.code)))return candidate;
+      }
+    }
     const balance = creditBalancePolicy(program), normalizedRows = new WeakMap();
     const normalize = rows => {
       if (!balance) return rows;

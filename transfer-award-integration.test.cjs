@@ -4,12 +4,21 @@ const registry=require('./dist/data/curriculum-registry.json'),awards=require('.
 const byId=new Map(awards.awards.map(award=>[award.id,award])),packs=new Map();
 const providerReview=require('./content/catalog/sophia-liberty-baseline-identities-reviewed-2026-11-18.json');
 const reviewedIdentities=new Map(providerReview.courses.map(course=>[course.aceId,course]));
+const baselineReview=require('./content/curricula/snapshots/liberty/expanded-online-baseline-review-2026-11-19.json'),reviewedScopes=new Map(baselineReview.scopes.map(scope=>[scope.modelId,scope]));
 const modelFor=entry=>{if(!packs.has(entry.path))packs.set(entry.path,JSON.parse(fs.readFileSync('./dist/'+entry.path)));const payload=packs.get(entry.path);return(payload.models||[payload]).find(model=>model.id===entry.id);};
 test('compiled named awards keep undergraduate, delivery, quantity and source boundaries',()=>{
- let seen=0;
+ let seen=0,published=0,conditional=0;
  for(const entry of registry.models){const model=modelFor(entry),mode=model.format==='Online'?'online':model.format==='Residential'?'campus':null;
   for(const req of model.requirements)for(const option of req.options){const award=byId.get(option.id);if(!award)continue;seen++;
-   assert.equal(model.school,awards.school);assert(award.degreeLevels.includes(model.level));assert(award.modalities.includes(mode));assert.equal(req.institutionalOnly===true,false);assert.equal(option.evidence,'conditional');assert.equal(option.credits,req.credits);assert.equal(option.creditSystem,model.creditSystem);assert.equal(option.receivingCode,award.receivingCode);
+   assert.equal(model.school,awards.school);assert(award.degreeLevels.includes(model.level));assert(award.modalities.includes(mode));assert.equal(req.institutionalOnly===true,false);if(option.evidence==='published'){
+    published++;const scope=reviewedScopes.get(model.id),placement=option.degreePlacementEvidence,eligibility=option.eligibilityReview;
+    assert(scope,'Published named awards require the exact expanded baseline review');assert.equal(model.format,scope.format);assert.equal(model.catalogYear,scope.catalogYear);assert.equal(option.provider,'Sophia');
+    assert.equal(option.mappingResearchClosed,true);assert.equal(option.receivingMapStatus,'published-online-receiving-award');assert.equal(option.evidenceType,'official-receiving-school-equivalency');
+    assert.equal(placement.modelId,model.id);assert.equal(placement.requirementId,req.id);assert.equal(placement.catalogYear,scope.catalogYear);assert.equal(placement.modality,'online');assert.equal(placement.receivingCode,option.receivingCode);assert.equal(placement.credits,req.credits);assert.equal(placement.creditSystem,model.creditSystem);
+    assert.equal(eligibility.reviewId,baselineReview.id);assert.equal(eligibility.checkedOn,baselineReview.checkedOn);assert.equal(eligibility.status,'current-provider-version-reviewed');assert.equal(eligibility.eligibleToStart,true);assert.equal(eligibility.recommendationPeriodStatus,'reviewed-current-window');
+    assert(option.recommendationStart<=baselineReview.checkedOn&&option.recommendationEnd>=baselineReview.checkedOn);assert.equal(option.sourceCreditStatus,'verified-current-provider-and-ace');
+   }else{conditional++;assert.equal(option.evidence,'conditional','Other named awards retain their unresolved evidence condition');}
+   assert.equal(option.credits,req.credits);assert.equal(option.creditSystem,model.creditSystem);assert.equal(option.receivingCode,award.receivingCode);
    if(option.sourceCreditStatus==='verified-current-provider-and-ace'){
     const identity=reviewedIdentities.get(option.code);assert(identity,'Only an independently reviewed identity can establish source credits');assert.equal(option.provider,'Sophia');assert.equal(option.sourceCredits,identity.sourceCredits);assert.equal(option.sourceCreditSystem,identity.sourceCreditSystem);assert.equal(option.sourceCreditEvidence.status,'reviewed');
     const sourceIds=new Set(model.sources.map(source=>source.id));assert(option.sourceCreditEvidence.sourceIds.length>0&&option.sourceCreditEvidence.sourceIds.every(id=>sourceIds.has(id)));assert(option.recommendationPeriodSourceIds.length>0&&option.recommendationPeriodSourceIds.every(id=>sourceIds.has(id)));
@@ -21,7 +30,7 @@ test('compiled named awards keep undergraduate, delivery, quantity and source bo
    if(req.upperOnly)assert.equal(option.upper,true);
   }
  }
- assert(seen>0,'New researched awards must reach actual degree requirements');
+ assert(seen>0,'New researched awards must reach actual degree requirements');assert(published>0,'Exact independently reviewed baseline matches must be usable');assert(conditional>0,'Unreviewed named awards must keep their conditions');
 });
 test('an online-only Sophia education award never appears in a residential or graduate model',()=>{
  const award=awards.awards.find(item=>item.code==='SOPH-0098');assert(award);assert.deepEqual(award.modalities,['online']);

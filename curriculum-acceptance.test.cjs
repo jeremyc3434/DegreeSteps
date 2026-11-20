@@ -42,7 +42,10 @@ test('all active source and standalone curricula load once per file and preserve
     ['liberty-business-residential',{external:83,institutional:37}],
     ['liberty-criminal-justice-online',{external:72,institutional:48}],
     ['liberty-criminal-justice-residential',{external:74,institutional:46}],
-    ['curriculum-gcu-bsba-campus',{external:26,institutional:94}]
+    ['curriculum-gcu-bsba-campus',{external:26,institutional:94}],
+    ['curriculum-liberty-healthcare-administration-bs-online',{external:66,institutional:54}],
+    ['curriculum-liberty-psychology-bs-online',{external:78,institutional:42}],
+    ['curriculum-wgu-catalog-2e49db64c32dfc79',{external:66,institutional:51}]
   ]);
   const observedReady=[];
   assert.deepEqual(index.models.filter(entry=>entry.path.startsWith('data/curricula/')).map(entry=>entry.id).sort(),sourceModelIds,'Every active researched source model must be registered');

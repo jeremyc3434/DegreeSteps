@@ -1019,6 +1019,56 @@
         "creditSystem": "competency-unit"
       },
       "retrieval": "Unauthenticated public program-data API GET; all receiving requirements reviewed."
+    },
+    {
+      "id": "wgu-bshr-sophia-approved-7112-v186",
+      "title": "WGU published approved Sophia Human Resource Management 202509 course map",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Human Resource Management \u2013 B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202509"
+      },
+      "provider": "Sophia",
+      "checked": "2026-11-17",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 209,
+      "catalogTerm": "202509",
+      "agreementId": 7112,
+      "agreementRecordVersion": 186,
+      "published": true,
+      "approvalStatus": "APPROVED"
+    },
+    {
+      "id": "wgu-bshr-study-approved-4429-v114",
+      "title": "WGU published approved Study.com Human Resource Management 202509 course map",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Human Resource Management \u2013 B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202509"
+      },
+      "provider": "Study.com",
+      "checked": "2026-11-17",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 209,
+      "catalogTerm": "202509",
+      "agreementId": 4429,
+      "agreementRecordVersion": 114,
+      "published": true,
+      "approvalStatus": "APPROVED"
     }
   ],
   "models": [
@@ -6046,7 +6096,151 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Organizational Behavior",
+              "code": "SOPH-0083",
+              "codeAliases": [
+                "BUSI2015"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/organizational-behavior/",
+              "identitySourceIds": [
+                "sophia-soph-0083-current-offer",
+                "sophia-soph-0083-current-offer-syllabus"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "sophia-soph-0083-current-offer",
+                  "sophia-soph-0083-current-offer-syllabus"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "sourceUpper": true,
+              "id": "wgu-bshr-sophia-soph-0083-c715",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "C715",
+              "receivingTitle": "Organizational Behavior",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 246521610,
+                "pathwayRecordVersion": 49,
+                "mappingId": 24652553334,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0083",
+                "receivingCode": "C715",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553334
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Business 107: Organizational Behavior",
+              "code": "SDCM-0009",
+              "codeAliases": [
+                "Business 107"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/organizational-behavior-course.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0009-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0009-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0009-c715",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "C715",
+              "receivingTitle": "Organizational Behavior",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 44292533,
+                "pathwayRecordVersion": 41,
+                "mappingId": 24652553872,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0009",
+                "receivingCode": "C715",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652553872
+              }
+            }
+          ]
         },
         {
           "id": "bshr-fundamentals-for-success-in-business",
@@ -6059,34 +6253,7 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": [
-            {
-              "id": "sophia-soph-0014-fundamentals-for-success-in-business",
-              "provider": "Sophia",
-              "title": "Introduction to Business",
-              "code": "SOPH-0014",
-              "credits": 3,
-              "sourceCredits": 3,
-              "sourceCreditSystem": "semester",
-              "creditSystem": "competency-unit",
-              "receivingTitle": "Fundamentals for Success in Business",
-              "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
-              ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
-              "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
-              ],
-              "url": "https://www.sophia.org/online-courses/business/introduction-to-business/"
-            }
-          ]
+          "options": []
         },
         {
           "id": "bshr-functions-of-human-resource-management",
@@ -6099,7 +6266,151 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Human Resource Management",
+              "code": "SOPH-0089",
+              "codeAliases": [
+                "BUSI1080"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/human-resource-management/",
+              "identitySourceIds": [
+                "sophia-soph-0089-current-offer",
+                "sophia-soph-0089-current-offer-syllabus"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "sophia-soph-0089-current-offer",
+                  "sophia-soph-0089-current-offer-syllabus"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "sourceUpper": false,
+              "id": "wgu-bshr-sophia-soph-0089-d351",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D351",
+              "receivingTitle": "Functions of Human Resource Management",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 246576626,
+                "pathwayRecordVersion": 38,
+                "mappingId": 24652553370,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0089",
+                "receivingCode": "D351",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553370
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Business 106: Human Resource Management",
+              "code": "SDCM-0026",
+              "codeAliases": [
+                "Business 106"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/human-resource-management-course.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0026-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0026-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0026-d351",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D351",
+              "receivingTitle": "Functions of Human Resource Management",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 44293095,
+                "pathwayRecordVersion": 41,
+                "mappingId": 24652554037,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0026",
+                "receivingCode": "D351",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652554037
+              }
+            }
+          ]
         },
         {
           "id": "bshr-critical-thinking-reason-and-evidence",
@@ -6114,30 +6425,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0065-critical-thinking-reason-and-evidence",
               "provider": "Sophia",
               "title": "Critical Thinking",
               "code": "SOPH-0065",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0065-critical-thinking-reason-and-evidence",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "D265",
               "receivingTitle": "Critical Thinking: Reason and Evidence",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122981,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553292,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0065",
+                "receivingCode": "D265",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553292
+              }
             }
           ]
         },
@@ -6154,30 +6506,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0054-principles-of-management",
               "provider": "Sophia",
               "title": "Principles of Management",
               "code": "SOPH-0054",
-              "credits": 4,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/principles-of-management/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0054-principles-of-management",
+              "credits": 4,
               "creditSystem": "competency-unit",
+              "receivingCode": "C483",
               "receivingTitle": "Principles of Management",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 4 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/business/principles-of-management/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71121184,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553191,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0054",
+                "receivingCode": "C483",
+                "credits": 4,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553191
+              }
             }
           ]
         },
@@ -6194,30 +6587,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0051-introduction-to-sociology",
               "provider": "Sophia",
               "title": "Introduction to Sociology",
               "code": "SOPH-0051",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/social-science/introduction-to-sociology/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0051-introduction-to-sociology",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "C273",
               "receivingTitle": "Introduction to Sociology",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/social-science/introduction-to-sociology/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71121006,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553170,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0051",
+                "receivingCode": "C273",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553170
+              }
             }
           ]
         },
@@ -6232,7 +6666,150 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Business Law",
+              "code": "SOPH-0032",
+              "codeAliases": [
+                "BUSI1050"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+              "identitySourceIds": [
+                "wgu-sophia-business-current",
+                "wgu-sophia-business-law-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current",
+                  "wgu-sophia-business-law-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-sophia-soph-0032-d078",
+              "credits": 2,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D078",
+              "receivingTitle": "Business Environment Applications I: Business Structures and Legal Environment",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122816,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553257,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0032",
+                "receivingCode": "D078",
+                "credits": 2,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553257
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Business 103: Introductory Business Law",
+              "code": "SDCM-0025",
+              "codeAliases": [
+                "Business 103"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/business-law-course.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0025-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0025-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0025-d078",
+              "credits": 2,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D078",
+              "receivingTitle": "Business Environment Applications I: Business Structures and Legal Environment",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 44292816,
+                "pathwayRecordVersion": 41,
+                "mappingId": 24652553959,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0025",
+                "receivingCode": "D078",
+                "credits": 2,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652553959
+              }
+            }
+          ]
         },
         {
           "id": "bshr-employment-and-labor-law",
@@ -6273,82 +6850,205 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0016-integrated-physical-sciences",
               "provider": "Sophia",
               "title": "Environmental Science",
               "code": "SOPH-0016",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/science/environmental-science/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0016-integrated-physical-sciences",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "C165",
               "receivingTitle": "Integrated Physical Sciences",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/science/environmental-science/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122586,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553217,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0016",
+                "receivingCode": "C165",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553217
+              }
             },
             {
-              "id": "sophia-soph-0002-integrated-physical-sciences",
               "provider": "Sophia",
               "title": "Human Biology",
               "code": "SOPH-0002",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/science/human-biology/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0002-integrated-physical-sciences",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "C165",
               "receivingTitle": "Integrated Physical Sciences",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/science/human-biology/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122586,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553217,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0002",
+                "receivingCode": "C165",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553217
+              }
             },
             {
-              "id": "sophia-soph-0056-integrated-physical-sciences",
               "provider": "Sophia",
               "title": "Introduction to Chemistry",
               "code": "SOPH-0056",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/science/introduction-to-chemistry/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0056-integrated-physical-sciences",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "C165",
               "receivingTitle": "Integrated Physical Sciences",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/science/introduction-to-chemistry/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122586,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553217,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0056",
+                "receivingCode": "C165",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553217
+              }
             }
           ]
         },
@@ -6363,7 +7063,151 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Principles of Marketing",
+              "code": "SOPH-0085",
+              "codeAliases": [
+                "BUSI2020"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+              "identitySourceIds": [
+                "sophia-soph-0085-current-offer",
+                "sophia-soph-0085-current-offer-syllabus"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "sophia-soph-0085-current-offer",
+                  "sophia-soph-0085-current-offer-syllabus"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "sourceUpper": true,
+              "id": "wgu-bshr-sophia-soph-0085-d077",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D077",
+              "receivingTitle": "Concepts in Marketing, Sales, and Customer Contact",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 246517709,
+                "pathwayRecordVersion": 50,
+                "mappingId": 24652553324,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0085",
+                "receivingCode": "D077",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553324
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Business 102: Principles of Marketing",
+              "code": "SDCM-0007",
+              "codeAliases": [
+                "Business 102"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/principles-of-marketing-course.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0007-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0007-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0007-d077",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D077",
+              "receivingTitle": "Concepts in Marketing, Sales, and Customer Contact",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 44292815,
+                "pathwayRecordVersion": 41,
+                "mappingId": 24652553950,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0007",
+                "receivingCode": "D077",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652553950
+              }
+            }
+          ]
         },
         {
           "id": "bshr-talent-acquisition",
@@ -6389,7 +7233,221 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Organizational Behavior",
+              "code": "SOPH-0083",
+              "codeAliases": [
+                "BUSI2015"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/organizational-behavior/",
+              "identitySourceIds": [
+                "sophia-soph-0083-current-offer",
+                "sophia-soph-0083-current-offer-syllabus"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "sophia-soph-0083-current-offer",
+                  "sophia-soph-0083-current-offer-syllabus"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "sourceUpper": true,
+              "id": "wgu-bshr-sophia-soph-0083-d082",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D082",
+              "receivingTitle": "Emotional and Cultural Intelligence",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 246676578,
+                "pathwayRecordVersion": 1,
+                "mappingId": 24652553390,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0083",
+                "receivingCode": "D082",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553390
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Communications 301: Diversity and Intercultural Communication",
+              "code": "SDCM-0187",
+              "codeAliases": [
+                "Communications 301"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/communications-301-diversity-and-intercultural-communication.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0187-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0187-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0187-d082",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D082",
+              "receivingTitle": "Emotional and Cultural Intelligence",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 246598652,
+                "pathwayRecordVersion": 28,
+                "mappingId": 24652554070,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0187",
+                "receivingCode": "D082",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652554070
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Business 107: Organizational Behavior",
+              "code": "SDCM-0009",
+              "codeAliases": [
+                "Business 107"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/organizational-behavior-course.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0009-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0009-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0009-d082",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D082",
+              "receivingTitle": "Emotional and Cultural Intelligence",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 246598652,
+                "pathwayRecordVersion": 28,
+                "mappingId": 24652554070,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0009",
+                "receivingCode": "D082",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652554070
+              }
+            }
+          ]
         },
         {
           "id": "bshr-applied-probability-and-statistics",
@@ -6404,30 +7462,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0005-applied-probability-and-statistics",
               "provider": "Sophia",
               "title": "Introduction to Statistics",
               "code": "SOPH-0005",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/math/introduction-to-statistics/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0005-applied-probability-and-statistics",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "C955",
               "receivingTitle": "Applied Probability and Statistics",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/math/introduction-to-statistics/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122683,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553227,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0005",
+                "receivingCode": "C955",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553227
+              }
             }
           ]
         },
@@ -6444,56 +7543,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0015-composition-writing-with-a-strategy",
               "provider": "Sophia",
               "title": "English Composition I",
               "code": "SOPH-0015",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
-              "creditSystem": "competency-unit",
-              "receivingTitle": "Composition: Writing with a Strategy",
-              "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
-              ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
+              "creditOrigin": "alternative",
               "sourceType": "alternative",
-              "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+              "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
               ],
-              "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/"
-            },
-            {
-              "id": "sophia-soph-0030-composition-writing-with-a-strategy",
-              "provider": "Sophia",
-              "title": "English Composition II",
-              "code": "SOPH-0030",
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0015-composition-writing-with-a-strategy",
               "credits": 3,
-              "sourceCredits": 3,
-              "sourceCreditSystem": "semester",
               "creditSystem": "competency-unit",
+              "receivingCode": "D269",
               "receivingTitle": "Composition: Writing with a Strategy",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-ii/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122977,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553267,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0015",
+                "receivingCode": "D269",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553267
+              }
             }
           ]
         },
@@ -6523,30 +7637,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0024-introduction-to-communication-connecting-with-others",
               "provider": "Sophia",
               "title": "Public Speaking",
               "code": "SOPH-0024",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/english-and-communication/public-speaking/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0024-introduction-to-communication-connecting-with-others",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "D268",
               "receivingTitle": "Introduction to Communication: Connecting with Others",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/english-and-communication/public-speaking/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122979,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553282,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0024",
+                "receivingCode": "D268",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553282
+              }
             }
           ]
         },
@@ -6561,86 +7716,7 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": [
-            {
-              "id": "sophia-soph-0060-applied-algebra",
-              "provider": "Sophia",
-              "title": "Calculus I",
-              "code": "SOPH-0060",
-              "credits": 3,
-              "sourceCredits": 4,
-              "sourceCreditSystem": "semester",
-              "creditSystem": "competency-unit",
-              "receivingTitle": "Applied Algebra",
-              "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
-              ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
-              "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 4 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
-              ],
-              "url": "https://www.sophia.org/online-courses/math/calculus-i/"
-            },
-            {
-              "id": "sophia-soph-0001-applied-algebra",
-              "provider": "Sophia",
-              "title": "College Algebra",
-              "code": "SOPH-0001",
-              "credits": 3,
-              "sourceCredits": 3,
-              "sourceCreditSystem": "semester",
-              "creditSystem": "competency-unit",
-              "receivingTitle": "Applied Algebra",
-              "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
-              ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
-              "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
-              ],
-              "url": "https://www.sophia.org/online-courses/math/college-algebra/"
-            },
-            {
-              "id": "sophia-soph-0069-applied-algebra",
-              "provider": "Sophia",
-              "title": "Precalculus",
-              "code": "SOPH-0069",
-              "credits": 3,
-              "sourceCredits": 3,
-              "sourceCreditSystem": "semester",
-              "creditSystem": "competency-unit",
-              "receivingTitle": "Applied Algebra",
-              "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
-              ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
-              "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
-              ],
-              "url": "https://www.sophia.org/online-courses/math/precalculus/"
-            }
-          ]
+          "options": []
         },
         {
           "id": "bshr-business-environment-applications-ii-process-logistics-and-operations",
@@ -6653,7 +7729,151 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Operations Management",
+              "code": "SOPH-0086",
+              "codeAliases": [
+                "BUSI2030"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/operations-management/",
+              "identitySourceIds": [
+                "sophia-soph-0086-current-offer",
+                "sophia-soph-0086-current-offer-syllabus"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "sophia-soph-0086-current-offer",
+                  "sophia-soph-0086-current-offer-syllabus"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "sourceUpper": true,
+              "id": "wgu-bshr-sophia-soph-0086-d079",
+              "credits": 2,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D079",
+              "receivingTitle": "Business Environment Applications II: Process, Logistics, and Operations",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 246566029,
+                "pathwayRecordVersion": 41,
+                "mappingId": 24652553362,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0086",
+                "receivingCode": "D079",
+                "credits": 2,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553362
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Business 312: Advanced Operations Management",
+              "code": "SDCM-0050",
+              "codeAliases": [
+                "Business 312"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/business-312-advanced-operations-management.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0050-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0050-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0050-d079",
+              "credits": 2,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D079",
+              "receivingTitle": "Business Environment Applications II: Process, Logistics, and Operations",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 44292817,
+                "pathwayRecordVersion": 41,
+                "mappingId": 24652553969,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0050",
+                "receivingCode": "D079",
+                "credits": 2,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652553969
+              }
+            }
+          ]
         },
         {
           "id": "bshr-health-fitness-and-wellness",
@@ -6668,30 +7888,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0063-health-fitness-and-wellness",
               "provider": "Sophia",
               "title": "Introduction to Nutrition",
               "code": "SOPH-0063",
-              "credits": 4,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/science/introduction-to-nutrition/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0063-health-fitness-and-wellness",
+              "credits": 4,
               "creditSystem": "competency-unit",
+              "receivingCode": "C458",
               "receivingTitle": "Health, Fitness, and Wellness",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 4 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/science/introduction-to-nutrition/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71121161,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553180,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0063",
+                "receivingCode": "C458",
+                "credits": 4,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553180
+              }
             }
           ]
         },
@@ -6708,56 +7969,138 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0059-business-communication",
-              "provider": "Sophia",
-              "title": "Business Communication",
-              "code": "SOPH-0059",
-              "credits": 3,
-              "sourceCredits": 3,
-              "sourceCreditSystem": "semester",
-              "creditSystem": "competency-unit",
-              "receivingTitle": "Business Communication",
-              "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
-              ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
-              "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
-              ],
-              "url": "https://www.sophia.org/online-courses/business/business-communication/"
-            },
-            {
-              "id": "sophia-soph-0034-business-communication",
               "provider": "Sophia",
               "title": "Workplace Communication",
               "code": "SOPH-0034",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/english-and-communication/workplace-communication/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0034-business-communication",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "C716",
               "receivingTitle": "Business Communication",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/english-and-communication/workplace-communication/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122542,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553210,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0034",
+                "receivingCode": "C716",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553210
+              }
+            },
+            {
+              "provider": "Sophia",
+              "title": "Business Communication",
+              "code": "SOPH-0059",
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/business-communication/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0059-business-communication",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "C716",
+              "receivingTitle": "Business Communication",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122542,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553210,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0059",
+                "receivingCode": "C716",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553210
+              }
             }
           ]
         },
@@ -6772,7 +8115,151 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Managerial Accounting",
+              "code": "SOPH-0079",
+              "codeAliases": [
+                "BUSI1011"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/managerial-accounting/",
+              "identitySourceIds": [
+                "sophia-soph-0079-current-offer",
+                "sophia-soph-0079-current-offer-syllabus"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "sophia-soph-0079-current-offer",
+                  "sophia-soph-0079-current-offer-syllabus"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "sourceUpper": false,
+              "id": "wgu-bshr-sophia-soph-0079-d774",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D774",
+              "receivingTitle": "Introduction to Business Accounting",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 246544515,
+                "pathwayRecordVersion": 43,
+                "mappingId": 24652553352,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0079",
+                "receivingCode": "D774",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553352
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Accounting 102: Intro to Managerial Accounting",
+              "code": "SDCM-0076",
+              "codeAliases": [
+                "Accounting 102"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/accounting-102-intro-to-managerial-accounting.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0076-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0076-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0076-d774",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D774",
+              "receivingTitle": "Introduction to Business Accounting",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 246539638,
+                "pathwayRecordVersion": 37,
+                "mappingId": 24652554050,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0076",
+                "receivingCode": "D774",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652554050
+              }
+            }
+          ]
         },
         {
           "id": "bshr-project-management",
@@ -6787,30 +8274,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0013-project-management",
               "provider": "Sophia",
               "title": "Project Management",
               "code": "SOPH-0013",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/project-management/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0013-project-management",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "C722",
               "receivingTitle": "Project Management",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/business/project-management/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122537,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553202,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0013",
+                "receivingCode": "C722",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553202
+              }
             }
           ]
         },
@@ -6838,7 +8366,151 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Business Data Analytics",
+              "code": "SOPH-0091",
+              "codeAliases": [
+                "BUSI2090"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/business-data-analytics/",
+              "identitySourceIds": [
+                "sophia-soph-0091-current-offer",
+                "sophia-soph-0091-current-offer-syllabus"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "sophia-soph-0091-current-offer",
+                  "sophia-soph-0091-current-offer-syllabus"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "sourceUpper": true,
+              "id": "wgu-bshr-sophia-soph-0091-c723",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "C723",
+              "receivingTitle": "Quantitative Analysis For Business",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 246598631,
+                "pathwayRecordVersion": 29,
+                "mappingId": 24652553378,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0091",
+                "receivingCode": "C723",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553378
+              }
+            },
+            {
+              "provider": "Study.com",
+              "title": "Business 212: Business Statistics",
+              "code": "SDCM-0225",
+              "codeAliases": [
+                "Business 212"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/business-114-business-statistics.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0225-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0225-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0225-c723",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "C723",
+              "receivingTitle": "Quantitative Analysis For Business",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 44292538,
+                "pathwayRecordVersion": 41,
+                "mappingId": 24652553891,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0225",
+                "receivingCode": "C723",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652553891
+              }
+            }
+          ]
         },
         {
           "id": "bshr-introduction-to-business-finance",
@@ -6851,7 +8523,81 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Sophia",
+              "title": "Principles of Finance",
+              "code": "SOPH-0033",
+              "codeAliases": [
+                "BUSI1015"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/business/principles-of-finance/",
+              "identitySourceIds": [
+                "sophia-soph-0033-current-offer",
+                "sophia-soph-0033-current-offer-syllabus"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "sophia-soph-0033-current-offer",
+                  "sophia-soph-0033-current-offer-syllabus"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "sourceUpper": false,
+              "id": "wgu-bshr-sophia-soph-0033-d775",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D775",
+              "receivingTitle": "Introduction to Business Finance",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 246544505,
+                "pathwayRecordVersion": 44,
+                "mappingId": 24652553343,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0033",
+                "receivingCode": "D775",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553343
+              }
+            }
+          ]
         },
         {
           "id": "bshr-composition-successful-self-expression",
@@ -6866,82 +8612,71 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0015-composition-successful-self-expression",
               "provider": "Sophia",
               "title": "English Composition I",
               "code": "SOPH-0015",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
-              "creditSystem": "competency-unit",
-              "receivingTitle": "Composition: Successful Self-Expression",
-              "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
-              ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
+              "creditOrigin": "alternative",
               "sourceType": "alternative",
-              "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+              "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
               ],
-              "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/"
-            },
-            {
-              "id": "sophia-soph-0030-composition-successful-self-expression",
-              "provider": "Sophia",
-              "title": "English Composition II",
-              "code": "SOPH-0030",
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0015-composition-successful-self-expression",
               "credits": 3,
-              "sourceCredits": 3,
-              "sourceCreditSystem": "semester",
               "creditSystem": "competency-unit",
+              "receivingCode": "D270",
               "receivingTitle": "Composition: Successful Self-Expression",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-ii/"
-            },
-            {
-              "id": "sophia-soph-0049-composition-successful-self-expression",
-              "provider": "Sophia",
-              "title": "Workplace Writing II",
-              "code": "SOPH-0049",
-              "credits": 3,
-              "sourceCredits": 3,
-              "sourceCreditSystem": "semester",
-              "creditSystem": "competency-unit",
-              "receivingTitle": "Composition: Successful Self-Expression",
-              "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
-              ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
-              "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
-              ],
-              "url": "https://www.sophia.org/online-courses/career-success/workplace-writing-ii/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122978,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553272,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0015",
+                "receivingCode": "D270",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553272
+              }
             }
           ]
         },
@@ -6984,56 +8719,138 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0012-principles-of-economics",
               "provider": "Sophia",
               "title": "Macroeconomics",
               "code": "SOPH-0012",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/social-science/macroeconomics/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0012-principles-of-economics",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "D089",
               "receivingTitle": "Principles of Economics",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/social-science/macroeconomics/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122811,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553244,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0012",
+                "receivingCode": "D089",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553244
+              }
             },
             {
-              "id": "sophia-soph-0011-principles-of-economics",
               "provider": "Sophia",
               "title": "Microeconomics",
               "code": "SOPH-0011",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/social-science/microeconomics/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0011-principles-of-economics",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "D089",
               "receivingTitle": "Principles of Economics",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/social-science/microeconomics/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122811,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553244,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0011",
+                "receivingCode": "D089",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553244
+              }
             }
           ]
         },
@@ -7087,7 +8904,78 @@
             "wgu-bu-bshr-202509-curriculum-reviewed-20261117"
           ],
           "institutionalOnly": false,
-          "options": []
+          "options": [
+            {
+              "provider": "Study.com",
+              "title": "Business 120: International Business",
+              "code": "SDCM-0115",
+              "codeAliases": [
+                "Business 120"
+              ],
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://study.com/academy/course/business-120-international-business.html",
+              "identitySourceIds": [
+                "study-course-sdcm-0115-2026-11"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "study-course-sdcm-0115-2026-11"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-study-sdcm-0115-d080",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D080",
+              "receivingTitle": "Managing in a Global Business Environment",
+              "sourceIds": [
+                "wgu-bshr-study-approved-4429-v114"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 4429,
+                "agreementRecordVersion": 114,
+                "pathwayId": 44292821,
+                "pathwayRecordVersion": 41,
+                "mappingId": 24652553980,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Study.com",
+                "providerCourseCode": "SDCM-0115",
+                "receivingCode": "D080",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-study-approved-4429-v114"
+                ],
+                "programId": 209,
+                "agreementId": 4429,
+                "mappingId": 24652553980
+              }
+            }
+          ]
         },
         {
           "id": "bshr-world-history-diverse-cultures-and-global-connections",
@@ -7102,56 +8990,272 @@
           "institutionalOnly": false,
           "options": [
             {
-              "id": "sophia-soph-0022-world-history-diverse-cultures-and-global-connections",
               "provider": "Sophia",
               "title": "U.S. History I",
               "code": "SOPH-0022",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/social-science/us-history-i/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0022-world-history-diverse-cultures-and-global-connections",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "D266",
               "receivingTitle": "World History: Diverse Cultures and Global Connections",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/social-science/us-history-i/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122992,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553300,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0022",
+                "receivingCode": "D266",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553300
+              }
             },
             {
-              "id": "sophia-soph-0025-world-history-diverse-cultures-and-global-connections",
               "provider": "Sophia",
               "title": "U.S. History II",
               "code": "SOPH-0025",
-              "credits": 3,
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/social-science/us-history-ii/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "sophia-soph-0025-world-history-diverse-cultures-and-global-connections",
+              "credits": 3,
               "creditSystem": "competency-unit",
+              "receivingCode": "D266",
               "receivingTitle": "World History: Diverse Cultures and Global Connections",
               "sourceIds": [
-                "wgu-sophia-business-current",
-                "wgu-bshr-guide"
+                "wgu-bshr-sophia-approved-7112-v186"
               ],
-              "evidence": "conditional",
-              "evidenceType": "provider-partnership",
-              "creditOrigin": "ace",
-              "sourceType": "alternative",
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
               "conditions": [
-                "Sophia publishes this WGU receiving-course title, but its table says equivalencies vary by degree. Obtain WGU approval for this exact program and catalog before purchase.",
-                "Upper-division Sophia articulations changed after March2026. Confirm the current course level and transfer pathway; do not use an older agreement.",
-                "The source course carries 3 semester credits; this proposed receiving requirement carries 3 WGU competency units. WGU evaluation decides the award.",
-                "All transfer credit must be evaluated before the WGU program starts."
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
               ],
-              "url": "https://www.sophia.org/online-courses/social-science/us-history-ii/"
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122992,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553300,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0025",
+                "receivingCode": "D266",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553300
+              }
+            },
+            {
+              "provider": "Sophia",
+              "title": "Macroeconomics",
+              "code": "SOPH-0012",
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/social-science/macroeconomics/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-sophia-soph-0012-d266",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D266",
+              "receivingTitle": "World History: Diverse Cultures and Global Connections",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122992,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553300,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0012",
+                "receivingCode": "D266",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553300
+              }
+            },
+            {
+              "provider": "Sophia",
+              "title": "Microeconomics",
+              "code": "SOPH-0011",
+              "sourceCredits": 3,
+              "sourceCreditSystem": "semester",
+              "creditOrigin": "alternative",
+              "sourceType": "alternative",
+              "url": "https://www.sophia.org/online-courses/social-science/microeconomics/",
+              "identitySourceIds": [
+                "wgu-sophia-business-current"
+              ],
+              "sourceCreditStatus": "verified",
+              "sourceCreditVerification": {
+                "credits": 3,
+                "creditSystem": "semester",
+                "sourceIds": [
+                  "wgu-sophia-business-current"
+                ]
+              },
+              "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "id": "wgu-bshr-sophia-soph-0011-d266",
+              "credits": 3,
+              "creditSystem": "competency-unit",
+              "receivingCode": "D266",
+              "receivingTitle": "World History: Diverse Cultures and Global Connections",
+              "sourceIds": [
+                "wgu-bshr-sophia-approved-7112-v186"
+              ],
+              "evidence": "published",
+              "evidenceType": "official-receiving-school-equivalency",
+              "conditions": [
+                "This exact published match applies to WGU Human Resource Management catalog202509/program209. Complete coursework and send original issuer records before starting at WGU.",
+                "One original source course may satisfy only one WGU requirement; alternative placements do not create duplicate credit."
+              ],
+              "mappingChecked": "2026-11-17",
+              "mappingReviewId": "wgu-bshr-209-approved-20261117",
+              "universityMapRecord": {
+                "programId": 209,
+                "catalogTerm": "202509",
+                "agreementId": 7112,
+                "agreementRecordVersion": 186,
+                "pathwayId": 71122992,
+                "pathwayRecordVersion": 54,
+                "mappingId": 24652553300,
+                "mappingRecordVersion": 0
+              },
+              "mappingEvidence": {
+                "schoolName": "Western Governors University",
+                "programName": "Human Resource Management \u2013 B.S.",
+                "level": "bachelor",
+                "modality": "online",
+                "catalogYear": "202509",
+                "provider": "Sophia",
+                "providerCourseCode": "SOPH-0011",
+                "receivingCode": "D266",
+                "credits": 3,
+                "creditSystem": "competency-unit",
+                "creditOrigin": "alternative",
+                "sourceIds": [
+                  "wgu-bshr-sophia-approved-7112-v186"
+                ],
+                "programId": 209,
+                "agreementId": 7112,
+                "mappingId": 24652553300
+              }
             }
           ]
         },
@@ -7210,16 +9314,14 @@
       ],
       "coverage": "complete",
       "completeExecutablePathway": false,
-      "unresolved": [
-        "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-        "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
-      ],
+      "unresolved": [],
       "rulesNotes": [
         "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
         "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
-        "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+        "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories.",
+        "The reviewed template uses exact published program209/catalog202509 receiving maps and separately verified provider course identities. Other credit sources may offer additional options; this template does not claim every possible source has been exhausted."
       ],
-      "mappingCheckedOn": "2026-11-09",
+      "mappingCheckedOn": "2026-11-17",
       "paceModel": "competency-subscription",
       "alternativeMaxCredits": 87.75,
       "alternativeCapSourceIds": [
@@ -7329,6 +9431,19 @@
         ],
         "checkedOn": "2026-11-17",
         "outsideEquivalenciesReviewed": false
+      },
+      "transferEvidenceReview": {
+        "id": "wgu-bshr-209-approved-20261117",
+        "checkedOn": "2026-11-17",
+        "programId": 209,
+        "catalog": "202509",
+        "receivingClaimsReviewed": 50,
+        "sourceIdentitiesReusedByExactProviderCode": 39,
+        "sourceIds": [
+          "wgu-bshr-sophia-approved-7112-v186",
+          "wgu-bshr-study-approved-4429-v114"
+        ],
+        "studentCreditsAwarded": 0
       }
     },
     {

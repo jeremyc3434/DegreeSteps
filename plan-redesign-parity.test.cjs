@@ -8,13 +8,14 @@ const ids=new Set(['liberty-business-residential','tesu-general-management']);
 const data=(()=>{const full=loadData();return{catalog:{...full.catalog,pathways:full.catalog.pathways.filter(route=>ids.has(route.modelId))},models:full.models.filter(model=>ids.has(model.id)),courseCatalog:require('./dist/data/course-catalog.json')};})();
 const text=html=>String(html).replace(/<[^>]*>/g,' ').replaceAll('&amp;','&').replaceAll('&#39;',"'").replaceAll('&quot;','"').replace(/\s+/g,' ').trim();
 
-function mount({modelId='liberty-business-residential',change,editor=false}={}){
-  const route=data.catalog.pathways.find(route=>route.modelId===modelId);
-  let initial=Journey.selectRoute(Journey.initialize(null,null,data.catalog),route,data.catalog);
+function mount({modelId='liberty-business-residential',change,editor=false,trackerResult,fetcher,fixtureData}={}){
+  const sample=fixtureData||data;
+  const route=sample.catalog.pathways.find(route=>route.modelId===modelId);
+  let initial=Journey.selectRoute(Journey.initialize(null,null,sample.catalog),route,sample.catalog);
   initial=Journey.setPriorCredits(initial,'none');initial.journey.completed=true;
   if(change)initial=change(initial)||initial;
   const values=new Map([[KEY,JSON.stringify(initial)]]),nodes=new Map(),events=new Map(),windowEvents=new Map(),elementEvents=new Map(),writes=[],downloads=[],navigations=[],shares=[],requests=[],checklists=[],interactive=[],focusLog=[];
-  let documentRef,renderedControlSequence=0;
+  let documentRef,renderedControlSequence=0,failWrites=false;
   const within=(element,container)=>container==='sheet-dialog'?element?.container==='sheet-dialog-content'||element?.container==='sheet-dialog':element?.container===container;
   function matches(element,selector){
     if(!element.isConnected)return false;
@@ -65,9 +66,9 @@ function mount({modelId='liberty-business-residential',change,editor=false}={}){
     FormData:class extends Map{constructor(form){super(Object.entries(form.values||{}));}getAll(name){return this.has(name)?[this.get(name)]:[];}},
     setTimeout(){return 1;},clearTimeout(){},requestAnimationFrame(){},scrollTo(){},dispatchEvent(){},
     addEventListener(type,handler){if(!windowEvents.has(type))windowEvents.set(type,[]);windowEvents.get(type).push(handler);},
-    localStorage:{getItem:key=>values.has(key)?values.get(key):null,setItem(key,value){values.set(key,value);writes.push(copy(JSON.parse(value)));}},
-    async fetch(url){requests.push(url);if(typeof url!=='string'||!/^data\/[a-zA-Z0-9_.\/-]+\.json$/.test(url)||url.includes('..'))throw Error('No network is permitted.');const file=path.join(__dirname,'dist',url);return fs.existsSync(file)?{ok:true,json:async()=>JSON.parse(fs.readFileSync(file,'utf8'))}:{ok:false,status:404};},
-    __fixtureJSON:JSON.stringify({state:initial,...data})};
+    localStorage:{getItem:key=>values.has(key)?values.get(key):null,setItem(key,value){if(failWrites)throw Error('Synthetic storage quota');values.set(key,value);writes.push(copy(JSON.parse(value)));}},
+    async fetch(url){requests.push(url);if(fetcher){const response=fetcher(url);if(response)return await response;}if(typeof url!=='string'||!/^data\/[a-zA-Z0-9_.\/-]+\.json$/.test(url)||url.includes('..'))throw Error('No network is permitted.');const file=path.join(__dirname,'dist',url);return fs.existsSync(file)?{ok:true,json:async()=>JSON.parse(fs.readFileSync(file,'utf8'))}:{ok:false,status:404};},
+    __fixtureJSON:JSON.stringify({state:initial,...sample})};
   context.window=context;context.print=()=>{context.__printed=true;};vm.createContext(context);
   const html=fs.readFileSync('dist/plan.html','utf8');
   for(const match of html.matchAll(/<script\b[^>]*\bsrc="([A-Za-z0-9_-]+\.js)"[^>]*>/g)){
@@ -75,7 +76,7 @@ function mount({modelId='liberty-business-residential',change,editor=false}={}){
   }
   // Their independent mounted suites cover widget DOM behavior. Keep the real
   // checklist engine here and record the exact complete task model it receives.
-  context.DegreeSavingsTracker=undefined;context.DegreeMomentum=undefined;
+  context.DegreeSavingsTracker=trackerResult===undefined?undefined:{update(node){node.innerHTML='Existing savings result';return Promise.resolve(trackerResult);}};context.DegreeMomentum=undefined;
   context.DegreeChecklistView={update(target,state,draft){checklists.push(context.DegreeChecklist.build(state,draft));target.innerHTML='Full checklist mounted';}};
   context.DegreeCommunity={sharePlan(payload){shares.push(copy(payload));}};
   const source=fs.readFileSync('dist/sheet.js','utf8');
@@ -89,10 +90,10 @@ function mount({modelId='liberty-business-residential',change,editor=false}={}){
   return {node,api:context.__parity,writes,downloads,navigations,shares,requests,checklists,focusLog,active:()=>document.activeElement,
     control(name,dataset={},container='sheet-grid',tagName='SELECT'){const control=node(name);control.id='';control.tagName=tagName;control.dataset={...dataset};control.container=container;control.isConnected=true;interactive.push(control);return control;},
     button(name,dataset={},container='sheet-grid'){return this.control(name,dataset,container,'BUTTON');},
-    saved:()=>JSON.parse(values.get(KEY)),draft:()=>context.__parity.getDraft(),projection:()=>context.__parity.getProjection(),
+    replaceStored:value=>values.set(KEY,JSON.stringify(value)),setWriteFailure:value=>{failWrites=value;},saved:()=>JSON.parse(values.get(KEY)),draft:()=>context.__parity.getDraft(),projection:()=>context.__parity.getProjection(),
     async progress(id,status){const target={id:'',dataset:{progress:id},value:status,closest(){return null;}};for(const handler of events.get('change')||[])await handler({target});},
     async changeControl(control,value){control.value=value;for(const handler of events.get('change')||[])await handler({target:control});for(let i=0;i<12;i++)await Promise.resolve();},
-    async submit(id,fields={}){const form={id,values:fields,dataset:{},querySelector(){return null;},append(){}};for(const handler of events.get('submit')||[])await handler({target:form,preventDefault(){}});},
+    async submit(id,fields={}){const form={id,values:fields,dataset:{},querySelector(){return null;},append(node){this.error=node;}};for(const handler of events.get('submit')||[])await handler({target:form,preventDefault(){}});return form.error?.textContent||'';},
     async click(button){for(const handler of events.get('click')||[])await handler({target:button});for(let i=0;i<12;i++)await Promise.resolve();},
     async cancelDialog(){let prevented=false;for(const handler of elementEvents.get('sheet-dialog:cancel')||[])await handler({target:node('sheet-dialog'),preventDefault(){prevented=true;}});if(!prevented)node('sheet-dialog').close();for(let i=0;i<12;i++)await Promise.resolve();},
     async settle(){for(let i=0;i<12;i++)await Promise.resolve();}};
@@ -188,11 +189,11 @@ test('all tasks, imports, preferences, cost assumptions and export tools remain 
   const ui=mount({change:state=>{state.profile.militaryStatus='veteran';state.profile.militaryRecords='jst';return state;}});
   assert(ui.checklists.at(-1).tasks.some(task=>task.id==='military-records'),'The unchanged checklist engine receives military context');
   ui.api.handleAction('all-tasks');assert.equal(ui.node('sheet-task-panel').open,true);assert.equal(ui.writes.length,0,'Opening the checklist is a presentation action');
-  ui.api.handleAction('credits');assert.deepEqual(ui.navigations,['import-courses.html'],'Add past courses retains the transcript/spreadsheet import entry');
+  ui.api.handleAction('credits');assert.deepEqual(ui.navigations,['import-courses.html?from=plan'],'Add past courses retains the transcript/spreadsheet import entry');
   for(const [action,pattern]of [['more',/Detailed worksheet/],['options',/Military learning/],['cost-time',/sheet-cost-form/],['download',/Worksheet CSV/]]){
     ui.api.handleAction(action);await ui.settle();assert.match(ui.node('sheet-dialog-content').innerHTML,pattern,action+' retains its original form or controls');
   }
-  ui.api.handleAction('compare-plans');assert.deepEqual(ui.navigations,['import-courses.html','compare-plans.html']);assert.equal(ui.saved().learning.length,0);
+  ui.api.handleAction('compare-plans');assert.deepEqual(ui.navigations,['import-courses.html?from=plan','compare-plans.html']);assert.equal(ui.saved().learning.length,0);
 });
 
 test('private notes remain in private backups and stay out of worksheet CSV and public sharing',async()=>{
@@ -208,4 +209,136 @@ test('the detailed worksheet retains inline provider/course controls and review 
   const ui=mount({editor:true}),html=ui.node('sheet-grid').innerHTML;
   assert.match(html,/Degree requirement/);assert.match(html,/Where to earn it/);assert.match(html,/data-provider="engl-101"/);assert.match(html,/data-course="engl-101"/);assert.match(html,/data-progress="engl-101"/);
   ui.api.handleAction('checks');assert.match(ui.node('sheet-dialog-content').innerHTML,/Plan checks|checks|requirement counts/i);assert.equal(ui.draft().plan.totals.accounted,120);
+});
+
+
+test('Cost & timing opens a researched range without removing personal price controls or altering courses',async()=>{
+ const ui=mount(),before=JSON.stringify(ui.saved());assert.match(ui.node('sheet-toolbar').innerHTML,/Cost &amp; timing|Cost & timing/);
+ ui.api.handleAction('cost-time');await ui.settle();await ui.settle();
+ const summary=ui.node('sheet-cost-summary').innerHTML;
+ assert.match(summary,/plan-estimate/);assert.match(summary,/Published-price planning range/);assert.match(summary,/Outside coursework/);assert.match(summary,/University coursework/);assert.match(summary,/semesters/);
+ assert.match(ui.node('sheet-dialog-content').innerHTML,/id="sheet-cost-form"/);assert.match(ui.node('sheet-dialog-content').innerHTML,/name="universityRate"/);
+ assert(ui.requests.includes('data/plan-estimate-rates.json'));assert.equal(JSON.stringify(ui.saved()),before);assert.equal(ui.writes.length,0);
+});
+
+test('a personal tuition quote stays primary instead of being replaced by a published-price range',async()=>{
+ const ui=mount({change:state=>{state.scenarios['liberty-business-residential']={...state.scenarios['liberty-business-residential'],universityRate:100};return state;}}),before=JSON.stringify(ui.saved());
+ ui.api.handleAction('cost-time');await ui.settle();await ui.settle();
+ assert.doesNotMatch(ui.node('sheet-cost-summary').innerHTML,/Published-price planning range/);assert.match(ui.node('sheet-dialog-content').innerHTML,/name="universityRate"[^>]*value="100"/);assert.equal(JSON.stringify(ui.saved()),before);assert.equal(ui.writes.length,0);
+});
+
+test('a researched compact estimate replaces an unavailable savings message while an available savings result stays primary',async()=>{
+ const unavailable=mount({trackerResult:{available:false}});await unavailable.settle();await unavailable.settle();
+ assert.match(unavailable.node('sheet-savings').innerHTML,/plan-estimate-compact/);assert.match(unavailable.node('sheet-savings').innerHTML,/data-action="cost-time"/);assert.equal(unavailable.writes.length,0);
+ const available=mount({trackerResult:{available:true}});await available.settle();await available.settle();
+ assert.equal(available.node('sheet-savings').innerHTML,'Existing savings result');assert(!available.requests.includes('data/plan-estimate-rates.json'));assert.equal(available.writes.length,0);
+});
+
+
+test('a late cost-range response cannot replace another open dialog',async()=>{
+ let release;const pending=new Promise(resolve=>release=resolve),ui=mount({fetcher:url=>url==='data/plan-estimate-rates.json'?pending:null});
+ ui.api.handleAction('cost-time');await ui.settle();ui.api.handleAction('checks');const checks=ui.node('sheet-dialog-content').innerHTML,before=ui.node('sheet-cost-summary').innerHTML;
+ release({ok:true,json:async()=>require('./dist/data/plan-estimate-rates.json')});await ui.settle();await ui.settle();
+ assert.equal(ui.node('sheet-dialog-content').innerHTML,checks);assert.equal(ui.node('sheet-cost-summary').innerHTML,before);assert.equal(ui.writes.length,0);
+ ui.api.handleAction('cost-time');await ui.settle();await ui.settle();assert.match(ui.node('sheet-cost-summary').innerHTML,/Published-price planning range/);
+});
+
+test('a late estimate for an old degree cannot appear in the replacement plan’s savings area',async()=>{
+ let release;const pending=new Promise(resolve=>release=resolve),ui=mount({trackerResult:{available:false},fetcher:url=>url==='data/plan-estimate-rates.json'?pending:null});
+ await ui.settle();const route=data.catalog.pathways.find(route=>route.modelId==='tesu-general-management'),current=ui.api.getDraft().state,preferences=copy(current);preferences.profile.modality='online';preferences.profile.classroomImportance='open';const next=Journey.selectRoute(preferences,route,data.catalog);Object.assign(current,next);ui.api.render();await ui.settle();
+ release({ok:true,json:async()=>require('./dist/data/plan-estimate-rates.json')});await ui.settle();await ui.settle();
+ assert.equal(ui.draft().program.id,'tesu-general-management');assert.equal(ui.node('sheet-savings').innerHTML,'Existing savings result');assert.doesNotMatch(ui.node('sheet-savings').innerHTML,/plan-estimate/);
+});
+
+
+function courseUpdateData({removedRequirement=true,disabledExistingOption=false}={}){
+ const route={id:'course-update-route',modelId:'course-update-model',school:'Synthetic University',title:'B.A. Example',level:'bachelor',modalities:['online'],field:'general',fields:['general'],goals:['any-degree','career-growth','change-career']};
+ const option=(id,code,provider='University')=>({id,provider,code,title:code,credits:3,creditSystem:'semester',creditOrigin:provider==='University'?'institutional':'alternative',evidence:'published',sourceIds:['catalog']});
+ const requirement={id:removedRequirement?'replacement':'writing',code:'WRIT101',title:'Current writing requirement',credits:3,category:'general',options:[option('current-writing','WRIT101'),...(disabledExistingOption?[option('retired-writing','OLD101','Sophia')]:[])]};
+ const model={id:route.modelId,school:route.school,title:route.title,level:'bachelor',format:'Online',creditSystem:'semester',totalCredits:6,institutionMinCredits:3,upperMinCredits:0,externalMaxCredits:3,sources:[{id:'catalog',title:'Current catalog',url:'https://synthetic.invalid/catalog'}],requirements:[requirement,{id:'capstone',code:'CAP',title:'Capstone',credits:3,category:'major',institutionalOnly:true,options:[option('current-capstone','CAP')]}]};
+ const registry={models:[{id:model.id,routeIds:[route.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}]};
+ return {catalog:{pathways:[route],curriculumRegistry:registry},models:[model],courseCatalog:{courses:[]},route,model};
+}
+function earlierCourseChoices(state,{removedRequirement=true}={}){
+ const id='course-update-model',obsolete=removedRequirement?'retired-elective':'writing';
+ state.scenarios[id]={...state.scenarios[id],optionSelections:{[obsolete]:'retired-writing',capstone:'current-capstone'},futureChoice:'Keep the exact future preference'};
+ state.sheet.notes={[id]:{[obsolete]:'Keep this note on an earlier requirement',capstone:'My current note'}};
+ state.learning=[{id:'original-record',provider:'Former College',code:'HIST101',title:'Original history course',credits:3,creditSystem:'quarter',status:'earned',completedOn:'2025-05-01',grade:'A',privateNote:'Keep my original record',evaluations:[{programId:'other-degree',requirementId:'history',status:'confirmed'}]}];
+ return state;
+}
+
+test('a removed requirement gets an explicit recovery action that preserves original work and saves earlier choices',async()=>{
+ const sample=courseUpdateData(),ui=mount({modelId:sample.model.id,fixtureData:sample,change:state=>earlierCourseChoices(state)}),before=copy(ui.saved());
+ assert(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'&&issue.requirementId==='retired-elective'));assert(!ui.draft().plan.rows.some(row=>row.requirementId==='retired-elective'));assert.match(ui.node('sheet-review-note').innerHTML,/data-action="update-course-choices"/);
+ ui.api.handleAction('checks');assert.match(ui.node('sheet-dialog-content').innerHTML,/Update course choices/);ui.api.handleAction('update-course-choices');
+ assert.equal(ui.writes.length,0);assert.match(ui.node('sheet-dialog-content').innerHTML,/Saved versions/);assert.match(ui.node('sheet-dialog-content').innerHTML,/Your completed courses, grades, school evaluations and notes stay the same/);
+ assert.doesNotMatch(ui.node('sheet-dialog-content').innerHTML,/type="checkbox"/);assert.deepEqual(ui.saved(),before);
+ ui.api.handleAction('keep-course-choices');assert.deepEqual(ui.saved(),before);assert.equal(ui.node('sheet-dialog').open,false);
+ ui.api.handleAction('update-course-choices');await ui.cancelDialog();assert.deepEqual(ui.saved(),before);assert.equal(ui.writes.length,0);
+ ui.api.handleAction('update-course-choices');assert.equal(await ui.submit('sheet-course-update-form'),'');
+ const updated=ui.saved(),snapshot=updated.whatIf.snapshots.find(item=>item.label.startsWith('Before course update'));
+ assert(snapshot);assert.deepEqual(snapshot.settings.optionSelections,before.scenarios[sample.model.id].optionSelections);assert.equal(updated.scenarios[sample.model.id].optionSelections.capstone,'current-capstone');assert(!Object.hasOwn(updated.scenarios[sample.model.id].optionSelections,'retired-elective'));
+ assert.equal(updated.scenarios[sample.model.id].futureChoice,before.scenarios[sample.model.id].futureChoice);assert.deepEqual(updated.learning,before.learning);assert.deepEqual(updated.sheet.notes,before.sheet.notes);assert.deepEqual(updated.profile,before.profile);assert.equal(updated.selectedPathwayId,before.selectedPathwayId);assert.equal(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'),false);assert.equal(ui.draft().plan.totals.accounted,6);assert.equal(ui.writes.length,1);
+ const reloaded=mount({modelId:sample.model.id,fixtureData:sample,change:()=>copy(updated)});assert.equal(reloaded.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'),false);assert.deepEqual(reloaded.saved().learning,before.learning);
+});
+
+test('a withdrawn course option can be refreshed while a completed school-confirmed original record stays intact',async()=>{
+ const sample=courseUpdateData({removedRequirement:false}),ui=mount({modelId:sample.model.id,fixtureData:sample,change:state=>{state=earlierCourseChoices(state,{removedRequirement:false});state.learning=[{...state.learning[0],code:'ENG101',title:'Original completed writing',creditSystem:'semester',evaluations:[{programId:sample.model.id,requirementId:'writing',status:'confirmed'}]}];return state;}}),before=copy(ui.saved());
+ assert(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'));const completed=ui.draft().plan.totals.confirmed;assert.equal(completed,3,'The original school-confirmed award is actually applied before the preference update');
+ ui.api.handleAction('update-course-choices');assert.match(ui.node('sheet-dialog-content').innerHTML,/earlier course option is no longer listed/);assert.match(ui.node('sheet-dialog-content').innerHTML,/Your original recorded course stays in this requirement/);assert.equal(await ui.submit('sheet-course-update-form'),'');
+ assert.deepEqual(ui.saved().learning,before.learning);assert.deepEqual(ui.saved().sheet.notes,before.sheet.notes);assert.equal(ui.draft().plan.totals.confirmed,completed);assert(!Object.hasOwn(ui.saved().scenarios[sample.model.id].optionSelections,'writing'));assert.equal(ui.saved().scenarios[sample.model.id].optionSelections.capstone,'current-capstone');
+});
+
+test('a course excluded only by source preferences is not silently removed as an obsolete choice',()=>{
+ const sample=courseUpdateData({removedRequirement:false,disabledExistingOption:true}),ui=mount({modelId:sample.model.id,fixtureData:sample,change:state=>{state=earlierCourseChoices(state,{removedRequirement:false});state.scenarios[sample.model.id].providers=[];state.scenarios[sample.model.id].mappedProvidersReviewed=['Sophia'];return state;}});
+ assert(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'));assert.doesNotMatch(ui.node('sheet-review-note').innerHTML,/data-action="update-course-choices"/);const before=copy(ui.saved());ui.api.handleAction('update-course-choices');assert.match(ui.node('sheet-dialog-content').innerHTML,/Your course choices are current/);assert.deepEqual(ui.saved(),before);assert.equal(ui.writes.length,0);
+});
+
+test('waiver settings preserve valid course pins from either current requirement list',()=>{
+ const sample=courseUpdateData({removedRequirement:false}),waiverCourse={...copy(sample.model.requirements[0]),id:'waiver-writing',options:[{...copy(sample.model.requirements[0].options[0]),id:'waiver-writing-course'}]};
+ sample.model.transferWaiverVariant={requirements:[waiverCourse,copy(sample.model.requirements[1])]};
+ for(const useWaivers of [true,false]){
+  const ui=mount({modelId:sample.model.id,fixtureData:sample,change:state=>{state.scenarios[sample.model.id]={...state.scenarios[sample.model.id],useWaivers,optionSelections:{writing:'current-writing','waiver-writing':'waiver-writing-course',capstone:'current-capstone'}};return state;}}),before=copy(ui.saved());
+  assert.doesNotMatch(ui.node('sheet-review-note').innerHTML,/data-action="update-course-choices"/);ui.api.handleAction('update-course-choices');assert.match(ui.node('sheet-dialog-content').innerHTML,/Your course choices are current/);assert.deepEqual(ui.saved(),before);assert.equal(ui.writes.length,0);
+ }
+});
+
+test('an explicit course replacement archives a withdrawn option without another approval step',async()=>{
+ const sample=courseUpdateData({removedRequirement:false}),ui=mount({modelId:sample.model.id,fixtureData:sample,editor:true,change:state=>earlierCourseChoices(state,{removedRequirement:false})}),before=copy(ui.saved());
+ const control=ui.control('withdrawn-writing',{course:'writing'});await ui.changeControl(control,'current-writing');
+ assert.equal(ui.node('sheet-dialog').open,false);assert.equal(ui.writes.length,1);assert(ui.saved().whatIf.snapshots.some(snapshot=>snapshot.settings.optionSelections.writing==='retired-writing'));
+ assert.equal(ui.saved().scenarios[sample.model.id].optionSelections.writing,'current-writing');assert.deepEqual(ui.saved().learning,before.learning);assert.deepEqual(ui.saved().sheet.notes,before.sheet.notes);
+});
+
+test('a withdrawn option stays unchanged when automatic archival cannot be saved',async()=>{
+ const sample=courseUpdateData({removedRequirement:false});
+ for(const failure of ['storage','full']){
+  const ui=mount({modelId:sample.model.id,fixtureData:sample,change:state=>{state=earlierCourseChoices(state,{removedRequirement:false});if(failure==='full'){const draft=Journey.buildDraft(state,sample.catalog,sample.models),Catalog=require('./dist/program-catalog.js');state.whatIf={version:1,snapshots:Array.from({length:20},(_,index)=>Catalog.planSnapshot(state,draft,{id:'kept-'+index,label:'Saved version '+index}))};}return state;}}),before=copy(ui.saved());
+  if(failure==='storage')ui.setWriteFailure(true);await ui.changeControl(ui.control('withdrawn-writing-'+failure,{course:'writing'}),'current-writing');
+  assert.deepEqual(ui.saved(),before);assert.deepEqual(ui.draft().state.scenarios[sample.model.id].optionSelections,before.scenarios[sample.model.id].optionSelections);assert.deepEqual(ui.draft().state.learning,before.learning);assert.equal(ui.writes.length,0);
+ }
+});
+
+test('repeating recovery with different saved preferences preserves both earlier versions',async()=>{
+ const sample=courseUpdateData(),first=mount({modelId:sample.model.id,fixtureData:sample,change:state=>earlierCourseChoices(state)});
+ first.api.handleAction('update-course-choices');assert.equal(await first.submit('sheet-course-update-form'),'');
+ const firstSaved=copy(first.saved()),oldSnapshot=copy(firstSaved.whatIf.snapshots[0]);
+ const next=mount({modelId:sample.model.id,fixtureData:sample,change:()=>{const state=copy(firstSaved);state.scenarios[sample.model.id].optionSelections=copy(oldSnapshot.settings.optionSelections);state.profile.priority='speed';state.savings={[sample.model.id]:{monthlyHousing:750,privateEstimate:'Keep this estimate'}};return state;}}),before=copy(next.saved());
+ next.api.handleAction('update-course-choices');assert.equal(await next.submit('sheet-course-update-form'),'');
+ const snapshots=next.saved().whatIf.snapshots;assert.equal(snapshots.length,2);assert.deepEqual(snapshots.find(snapshot=>snapshot.id===oldSnapshot.id),oldSnapshot);assert.equal(snapshots[1].priority,'speed');assert.deepEqual(snapshots[1].savings,before.savings[sample.model.id]);assert.deepEqual(next.saved().learning,before.learning);
+});
+
+test('recovery refuses stale plans, full saved-version history and failed storage without dropping earlier choices',async()=>{
+ const sample=courseUpdateData();
+ const stale=mount({modelId:sample.model.id,fixtureData:sample,change:state=>earlierCourseChoices(state)});stale.api.handleAction('update-course-choices');const concurrent=copy(stale.saved());concurrent.learning.push({id:'new-course',provider:'Other College',title:'New record from another tab',code:'MATH101',credits:3,creditSystem:'semester',status:'earned',evaluations:[]});stale.replaceStored(concurrent);assert.match(await stale.submit('sheet-course-update-form'),/another|changed|updated|refresh/i);assert.deepEqual(stale.saved(),concurrent);assert.equal(stale.writes.length,0);
+ const full=mount({modelId:sample.model.id,fixtureData:sample,change:state=>{state=earlierCourseChoices(state);const draft=Journey.buildDraft(state,sample.catalog,sample.models),Catalog=require('./dist/program-catalog.js');state.whatIf={version:1,snapshots:Array.from({length:20},(_,index)=>Catalog.planSnapshot(state,draft,{id:'kept-'+index,label:'Saved version '+index}))};return state;}}),fullBefore=copy(full.saved());full.api.handleAction('update-course-choices');assert.match(await full.submit('sheet-course-update-form'),/saved versions are full/);assert.deepEqual(full.saved(),fullBefore);assert.equal(full.writes.length,0);
+ const storage=mount({modelId:sample.model.id,fixtureData:sample,change:state=>earlierCourseChoices(state)}),storageBefore=copy(storage.saved());storage.api.handleAction('update-course-choices');storage.setWriteFailure(true);assert.match(await storage.submit('sheet-course-update-form'),/could not be saved/);assert.deepEqual(storage.saved(),storageBefore);assert.deepEqual(storage.draft().state.learning,storageBefore.learning);assert.deepEqual(storage.draft().state.scenarios[sample.model.id].optionSelections,storageBefore.scenarios[sample.model.id].optionSelections);assert.equal(storage.writes.length,0);
+});
+
+test('the real Psychology ledger update recovers its removed elective pin without reassigning completed credits',async()=>{
+ const {applyLibertyExpandedBaselineReview}=await import('./scripts/liberty-expanded-baseline-review.mjs'),all=loadData(),original=all.models.find(model=>model.id==='curriculum-liberty-psychology-bs-online'),model=applyLibertyExpandedBaselineReview(original),route=all.catalog.pathways.find(route=>route.modelId===model.id),valid=model.requirements.find(row=>row.id!=='univ-104'&&row.options.some(option=>option.provider==='University')),validOption=valid.options.find(option=>option.provider==='University'),sample={catalog:{...all.catalog,pathways:[route]},models:[model],courseCatalog:{courses:[]}};
+ assert(!model.requirements.some(row=>row.id==='free-electives-12'));assert.equal(model.requirements.find(row=>row.id==='univ-104').credits,3);
+ const ui=mount({modelId:model.id,fixtureData:sample,change:state=>{state.scenarios[model.id]={...state.scenarios[model.id],optionSelections:{'free-electives-12':'university-free-electives-12',[valid.id]:validOption.id}};state.sheet.notes={[model.id]:{'free-electives-12':'My earlier elective note'}};state.learning=[{id:'past-learning',provider:'Former College',code:'HIST101',title:'Original college history',credits:3,creditSystem:'quarter',grade:'A',status:'earned',evaluations:[]}];return state;}}),before=copy(ui.saved());
+ assert(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'&&issue.requirementId==='free-electives-12'));ui.api.handleAction('update-course-choices');assert.equal(await ui.submit('sheet-course-update-form'),'');
+ assert.equal(ui.saved().scenarios[model.id].optionSelections[valid.id],validOption.id);assert(!Object.hasOwn(ui.saved().scenarios[model.id].optionSelections,'free-electives-12'));assert.deepEqual(ui.saved().learning,before.learning);assert.deepEqual(ui.saved().sheet.notes,before.sheet.notes);assert.equal(ui.draft().plan.totals.accounted,120);assert.equal(ui.draft().plan.validation.academicCountsValid,true);assert.equal(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'),false);assert(ui.saved().whatIf.snapshots.some(snapshot=>snapshot.settings.optionSelections['free-electives-12']==='university-free-electives-12'));
 });

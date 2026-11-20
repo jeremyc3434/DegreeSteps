@@ -1,5 +1,5 @@
 /** Public, zero-record previews of the same reviewed plans used by the planner. */
-import {readFile} from 'node:fs/promises';
+import {readFile,readdir,unlink,rmdir} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {createRequire} from 'node:module';
 import assert from 'node:assert/strict';
@@ -7,6 +7,8 @@ import assert from 'node:assert/strict';
 const require=createRequire(import.meta.url);
 const Planner=require('../dist/planner.js');
 const View=require('../dist/course-plan-view.js');
+const Estimate=require('../dist/plan-estimate-engine.js');
+const EstimateView=require('../dist/plan-estimate-view.js');
 const list=value=>Array.isArray(value)?value:[];
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const https=value=>{try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password?url.href:'';}catch{return '';}};
@@ -22,7 +24,7 @@ export function publicPlanPath(plan){return '/degree-plans/'+plan.slug+'/';}
 export function usePublicPlanHref(plan){return '/portal.html?usePlan='+encodeURIComponent(plan.id);}
 function catalogLabel(value){const raw=String(value||''),match=raw.match(/^(20\d{2})(0[1-9]|1[0-2])$/);return match?new Intl.DateTimeFormat('en-US',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(Number(match[1]),Number(match[2])-1,1))):raw;}
 
-export function buildPublicPlan(definition,{model,entry,baseline,quality,courseCatalog={},generate=Planner.generate}){
+export function buildPublicPlan(definition,{model,entry,baseline,quality,courseCatalog={},rates,generate=Planner.generate}){
  assert.equal(model?.id,definition.modelId,'Public plan model identity changed.');
  assert(entry?.routeIds?.includes(definition.id),'Public route is not bound to its exact curriculum.');
  assert.equal(quality?.publication?.ready,true,'Only publication-ready research can become a public plan page.');
@@ -43,22 +45,52 @@ export function buildPublicPlan(definition,{model,entry,baseline,quality,courseC
  for(const row of plan.rows)assert.equal(row.option?.id,selected.get(row.requirementId)?.optionId,'The preview must preserve the saved baseline selection.');
  const view=View.build({program:model,plan,state:{learning:[]},match:{completed:[]}},courseCatalog);
  assert.equal(view.totals.accounted,definition.total);assert.equal(view.progress.completedCredits,0);assert.equal(view.curriculumIssues.length,0,'Public degree sections must be unambiguous.');
- return {...definition,path:publicPlanPath(definition),useHref:usePublicPlanHref(definition),school:model.school,degree:model.title,catalog:catalogLabel(model.catalog),checkedOn:baseline.summary.checkedOn||entry.checkedOn||'',model,plan,view,baseline,quality};
+ const estimate=rates?Estimate.calculate({program:model,plan,rates}):null;
+ return {...definition,path:publicPlanPath(definition),useHref:usePublicPlanHref(definition),school:model.school,degree:model.title,catalog:catalogLabel(model.catalog),checkedOn:baseline.summary.checkedOn||entry.checkedOn||'',model,plan,view,baseline,quality,estimate};
 }
 
 export async function loadPublicPlans(dist=resolve(import.meta.dirname,'../dist')){
  const read=async path=>JSON.parse(await readFile(resolve(dist,path),'utf8'));
- const [registry,quality,index,courseCatalog]=await Promise.all(['data/curriculum-registry.json','data/pathway-quality-report.json','data/baseline-index.json','data/course-catalog.json'].map(read));
+ const [registry,quality,index,courseCatalog,rates]=await Promise.all(['data/curriculum-registry.json','data/pathway-quality-report.json','data/baseline-index.json','data/course-catalog.json','data/plan-estimate-rates.json'].map(read));
  assert.equal(index.privateRecordsIncluded,false,'Public baselines must not include private student records.');
  assert.equal(index.registryRevision,quality.registryRevision,'The public plan evidence revisions must match.');
- const packs=new Map(),plans=[];
- for(const definition of publicPlanDefinitions){
+ const packs=new Map(),plans=[],definitions=publicPlanDefinitions.filter(definition=>quality.programs.some(program=>program.modelId===definition.modelId&&program.publication.ready));
+ // Additional completed research becomes a real crawlable preview through the
+ // same strict renderer. A directory listing or complete ledger cannot enter.
+ for(const reviewed of quality.programs.filter(program=>program.publication.ready&&!definitions.some(definition=>definition.modelId===program.modelId))){
+  const entry=registry.models.find(entry=>entry.id===reviewed.modelId);assert(entry,'Reviewed public curriculum is missing.');
+  if(!packs.has(entry.path))packs.set(entry.path,await read(entry.path));
+  const pack=packs.get(entry.path),model=pack.id===entry.id?pack:list(pack.models).find(model=>model.id===entry.id);
+  const baseline=Object.values(index.baselines).find(baseline=>baseline.modelId===entry.id&&baseline.researchStatus==='research-ready');
+  assert(model&&baseline,'A publication-ready plan needs its complete saved course choices.');
+  const unit=model.creditSystem==='competency-unit'?'competency units':model.creditSystem==='quarter'?'quarter credits':'semester credits';
+  const slug=({'curriculum-wgu-catalog-2e49db64c32dfc79':'wgu-human-resource-management'})[entry.id]||entry.id.replace(/^curriculum-/,'');assert(/^[a-z0-9-]+$/.test(slug),'Public degree URLs need stable safe identifiers.');
+  const schoolLabel=({'Western Governors University':'WGU','Liberty University':'Liberty','Thomas Edison State University':'TESU','University of Maine at Presque Isle':'UMPI'})[model.school]||model.school;
+  definitions.push({id:baseline.pathwayId,modelId:entry.id,slug,title:schoolLabel+' '+model.title+' transfer plan',shortTitle:model.title,format:baseline.modality==='campus'?'On campus':'Online',outside:baseline.summary.transferCredits,university:baseline.summary.universityCredits,total:model.totalCredits,unit,description:'Explore '+model.school+'’s '+model.title+' with '+baseline.summary.transferCredits+' proposed outside '+unit+', '+baseline.summary.universityCredits+' university '+unit+', and a complete researched course plan.'});
+ }
+ assert.equal(new Set(definitions.map(definition=>definition.slug)).size,definitions.length,'Public degree URLs must not collide.');
+ for(const definition of definitions){
   const entry=registry.models.find(entry=>entry.id===definition.modelId);assert(entry,'Public curriculum is missing.');
   if(!packs.has(entry.path))packs.set(entry.path,await read(entry.path));
   const pack=packs.get(entry.path),model=pack.id===entry.id?pack:list(pack.models).find(model=>model.id===entry.id);
-  plans.push(buildPublicPlan(definition,{model,entry,baseline:Object.values(index.baselines).find(baseline=>baseline.modelId===entry.id&&baseline.pathwayId===definition.id),quality:quality.programs.find(program=>program.modelId===entry.id),courseCatalog}));
+  plans.push(buildPublicPlan(definition,{model,entry,baseline:Object.values(index.baselines).find(baseline=>baseline.modelId===entry.id&&baseline.pathwayId===definition.id),quality:quality.programs.find(program=>program.modelId===entry.id),courseCatalog,rates}));
  }
  return plans;
+}
+
+/** Withdraw only obsolete generated previews, retaining unrelated content and assets. */
+export async function removeObsoletePreviews(dist,plans){
+ const folder=resolve(dist,'degree-plans'),allowed=new Set(plans.map(plan=>plan.slug)),removed=[];
+ let entries;try{entries=await readdir(folder,{withFileTypes:true});}catch(error){if(error.code==='ENOENT')return removed;throw error;}
+ for(const entry of entries){
+  if(!entry.isDirectory()||allowed.has(entry.name))continue;
+  const file=resolve(folder,entry.name,'index.html');let html;
+  try{html=await readFile(file,'utf8');}catch(error){if(error.code==='ENOENT')continue;throw error;}
+  if(!html.includes('data-public-plan-id=')||!html.includes('public-plan-hero'))continue;
+  await unlink(file);removed.push('/degree-plans/'+entry.name+'/');
+  try{await rmdir(resolve(folder,entry.name));}catch(error){if(error.code!=='ENOTEMPTY'&&error.code!=='ENOENT')throw error;}
+ }
+ return removed.sort();
 }
 
 export function renderPlanCard(plan){return '<article class="public-plan-card" data-plan-format="'+(plan.format==='Online'?'online':'campus')+'"><p>'+esc(plan.school)+' · '+esc(plan.format)+'</p><h2><a href="'+esc(plan.path)+'">'+esc(plan.shortTitle)+'</a></h2><dl><div><dt>Outside coursework proposed</dt><dd>'+plan.outside+' <small>'+esc(plan.unit)+'</small></dd></div><div><dt>University coursework</dt><dd>'+plan.university+' <small>'+esc(plan.unit)+'</small></dd></div></dl><a class="site-button" href="'+esc(plan.path)+'">See the course plan</a></article>';}
@@ -87,7 +119,7 @@ export function renderPublicPlan(plan,allPlans=[]){
  const unit=esc(plan.unit),related=allPlans.filter(other=>other.id!==plan.id&&other.school===plan.school).map(other=>'<li><a href="'+esc(other.path)+'">'+esc(other.shortTitle)+' · '+esc(other.format)+'</a></li>').join('');
  const graduation=list(plan.model.graduationRequirements).map(item=>'<li><strong>'+esc(item.title||item.id)+'</strong> '+esc(item.description||item.detail||'')+'</li>').join('');
  const sources=list(plan.model.sources).filter(source=>https(source.url)).map(source=>'<li><a href="'+esc(source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(source.title||source.id)+'</a></li>').join('');
- return '<article data-public-plan-id="'+esc(plan.id)+'" data-growth-plan="'+esc(plan.id)+'"><section class="site-container public-plan-hero"><p>'+esc(plan.school)+' · '+esc(plan.format)+' · Catalog '+esc(plan.catalog)+'</p><h1>'+esc(plan.title)+'</h1><p class="page-lede">See the courses, keep the full degree together, and make this route your own.</p><p class="public-plan-degree">'+esc(plan.degree)+'</p><div class="public-plan-actions"><a class="site-button" href="'+esc(plan.useHref)+'">Use this plan</a><a class="text-link" href="#course-plan">See every course</a></div><p>No account or transcript needed to start.</p><dl class="public-plan-mix"><div><dt>Outside coursework proposed</dt><dd>'+plan.outside+' <small>'+unit+'</small></dd></div><div><dt>University coursework</dt><dd>'+plan.university+' <small>'+unit+'</small></dd></div><div><dt>Complete degree</dt><dd>'+plan.total+' <small>'+unit+'</small></dd></div></dl><p class="public-plan-note">A proposed route starting with no past courses. These are degree '+(plan.unit==='competency units'?'competency units awarded by WGU':'semester credits')+'; original source quantities can differ. Your own records can change the choices. Research checked '+esc(plan.checkedOn)+'.</p>'+publishedRate(plan.model)+'</section><section class="site-container" id="course-plan"><div class="public-plan-heading"><div><h2>Your course-by-course route</h2><p>Every degree requirement is included. Each credit is counted once.</p></div><label><span>Show courses</span><select data-preview-filter disabled><option value="all">All coursework</option><option value="outside">Outside courses</option><option value="university">University coursework</option></select></label></div><p data-preview-count role="status" aria-live="polite"></p>'+plan.view.sections.map(section=>sectionHTML(section,plan)).join('')+'<p class="public-plan-note">The proposed course matches use the receiving university’s published evidence. Individual admission, prior-learning evaluation and any required future-course approval remain the university’s decisions. This preview does not award credits or promise a completion date or complete degree price.</p></section>'+(graduation?'<section class="site-container public-plan-additional"><h2>Beyond the course list</h2><ul>'+graduation+'</ul></section>':'')+'<section class="site-container public-plan-sources"><details><summary>Course and university sources ('+plan.model.sources.length+')</summary><ul>'+sources+'</ul></details></section>'+(related?'<section class="site-container public-plan-related"><h2>Other routes at '+esc(plan.school)+'</h2><ul>'+related+'</ul></section>':'')+'<section class="site-container final-cta"><div><h2>Make this your starting point.</h2><p>Add your courses, choose your priorities, and keep your next step clear.</p></div><div><a class="site-button" href="'+esc(plan.useHref)+'">Use this plan</a><p>Your existing courses stay with you.</p></div></section></article>';
+ return '<article data-public-plan-id="'+esc(plan.id)+'" data-growth-plan="'+esc(plan.id)+'"><section class="site-container public-plan-hero"><p>'+esc(plan.school)+' · '+esc(plan.format)+' · Catalog '+esc(plan.catalog)+'</p><h1>'+esc(plan.title)+'</h1><p class="page-lede">See the courses, keep the full degree together, and make this route your own.</p><p class="public-plan-degree">'+esc(plan.degree)+'</p><div class="public-plan-actions"><a class="site-button" href="'+esc(plan.useHref)+'">Use this plan</a><a class="text-link" href="#course-plan">See every course</a></div><p>No account or transcript needed to start.</p><dl class="public-plan-mix"><div><dt>Outside coursework proposed</dt><dd>'+plan.outside+' <small>'+unit+'</small></dd></div><div><dt>University coursework</dt><dd>'+plan.university+' <small>'+unit+'</small></dd></div><div><dt>Complete degree</dt><dd>'+plan.total+' <small>'+unit+'</small></dd></div></dl><p class="public-plan-note">A proposed route starting with no past courses. These are degree '+(plan.unit==='competency units'?'competency units awarded by WGU':'semester credits')+'; original source quantities can differ. Your own records can change the choices. Research checked '+esc(plan.checkedOn)+'.</p>'+publishedRate(plan.model)+'</section>'+(EstimateView.available(plan.estimate)?'<section class="site-container public-plan-estimates" aria-label="Planning costs and study pace"><h2>Cost & timing</h2>'+EstimateView.render(plan.estimate)+'</section>':'')+'<section class="site-container" id="course-plan"><div class="public-plan-heading"><div><h2>Your course-by-course route</h2><p>Every degree requirement is included. Each credit is counted once.</p></div><label><span>Show courses</span><select data-preview-filter disabled><option value="all">All coursework</option><option value="outside">Outside courses</option><option value="university">University coursework</option></select></label></div><p data-preview-count role="status" aria-live="polite"></p>'+plan.view.sections.map(section=>sectionHTML(section,plan)).join('')+'<p class="public-plan-note">The proposed course matches use the receiving university’s published evidence. Individual admission, prior-learning evaluation and any required future-course approval remain the university’s decisions. This preview does not award credits or promise a completion date or complete degree price.</p></section>'+(graduation?'<section class="site-container public-plan-additional"><h2>Beyond the course list</h2><ul>'+graduation+'</ul></section>':'')+'<section class="site-container public-plan-sources"><details><summary>Course and university sources ('+plan.model.sources.length+')</summary><ul>'+sources+'</ul></details></section>'+(related?'<section class="site-container public-plan-related"><h2>Other routes at '+esc(plan.school)+'</h2><ul>'+related+'</ul></section>':'')+'<section class="site-container final-cta"><div><h2>Make this your starting point.</h2><p>Add your courses, choose your priorities, and keep your next step clear.</p></div><div><a class="site-button" href="'+esc(plan.useHref)+'">Use this plan</a><p>Your existing courses stay with you.</p></div></section></article>';
 }
 
 export function renderPublicPlanHub(plans){return '<section class="site-container page-intro"><h1>A real course plan. A clearer way forward.</h1><p class="page-lede">Open a researched route, see the outside courses and university work, then make it fit your own starting point.</p><p>These previews have complete, source-backed course selections. More available templates are inside the planner.</p><label class="public-plan-hub-filter"><span>Where would you study?</span><select data-public-plan-format disabled><option value="all">Online or on campus</option><option value="online">Online</option><option value="campus">On campus</option></select></label><p data-public-plan-count role="status" aria-live="polite"></p></section><section class="site-container public-plan-cards">'+plans.map(renderPlanCard).join('')+'</section><section class="site-container final-cta"><div><h2>Looking for another degree?</h2><p>Browse all available templates, bring your own courses, or research a specific university degree.</p></div><div><a class="site-button" href="/programs.html">Browse available plans</a><a class="text-link" href="/import-courses.html">Use my past courses</a></div></section>';}

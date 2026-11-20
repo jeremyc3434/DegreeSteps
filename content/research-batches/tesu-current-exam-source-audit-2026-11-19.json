@@ -1,0 +1,460 @@
+{
+  "version": 1,
+  "id": "tesu-current-exam-source-audit-2026-11-19",
+  "checkedOn": "2026-11-19",
+  "school": "Thomas Edison State University",
+  "provider": "CLEP",
+  "publicationAllowed": false,
+  "newStudentPlansVerified": 0,
+  "scope": "Research packet retained after current-table retrieval failed. Indexed receiving awards are candidates for review, not new selectable mappings or verified degree placements.",
+  "sources": [
+    {
+      "id": "tesu-clep-current-policy-2026-11-19",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/exam-programs/clep-college-level-examination-program",
+      "accessStatus": "retrieved-primary-page",
+      "checkedOn": "2026-11-19",
+      "facts": {
+        "awardsCLEPCredit": true,
+        "minimumScorePolicy": "C-equivalent",
+        "numericMinimumScorePublished": null,
+        "officialScoreRecipientCode": "2748",
+        "individualDegreePlacementRequired": true
+      }
+    },
+    {
+      "id": "tesu-clep-current-table-index-2026-11-19",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/exam-programs/clep-college-level-examination-program/listing-of-clep-exams",
+      "accessStatus": "primary-search-index-extract-only",
+      "directRetrievalStatus": 404,
+      "checkedOn": "2026-11-19",
+      "indexedCrawlRecencyDescription": "about two months before the review",
+      "limits": "Current primary-domain search index displayed exact receiving awards and expiry dates. Repeated direct reads of the current child page, trailing-slash variant and no-language-prefix variant returned404. Recover a current receiving-school table or equivalent institutional record before publishing these candidate maps."
+    },
+    {
+      "id": "tesu-provider-directory-2026-11-19",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+      "accessStatus": "retrieved-primary-page",
+      "checkedOn": "2026-11-19",
+      "facts": {
+        "studyComStatus": "approved",
+        "sophiaStatus": "provisionally-approved-review-pending",
+        "clepStatus": "provisionally-approved-review-pending",
+        "straighterLineStatus": "provisionally-approved-review-pending"
+      }
+    },
+    {
+      "id": "tesu-transfer-faq-2026-11-19",
+      "url": "https://www.tesu.edu/admissions/faqs/transfer-credits.php",
+      "accessStatus": "retrieved-primary-page",
+      "checkedOn": "2026-11-19",
+      "facts": {
+        "bachelorCombinedNoncollegiateMaximum": 90,
+        "creditSystem": "semester",
+        "includesACEandNCCRSandCLEPandDSST": true
+      }
+    },
+    {
+      "id": "tesu-actual-degree-ledger-2026-11-18",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/",
+      "accessStatus": "prior-reviewed-primary-ledger",
+      "checkedOn": "2026-11-18",
+      "localReviewPath": "content/curricula/snapshots/tesu/liberal-studies-current-2026-11-18-reviewed.json"
+    }
+  ],
+  "findings": [
+    {
+      "id": "specific-clep-policy-versus-provider-directory",
+      "status": "needs-explicit-source-resolution",
+      "detail": "The university publishes specific CLEP exam credit policy while College Board also appears in its provisional provider directory. Preserve both facts. Administrative provider-review status alone is not evidence of an exam ban; specific current exam awards, dates and personal conditions must establish actionability."
+    },
+    {
+      "id": "sophia-provider-and-exact-award-separation",
+      "status": "preserve-current-holds",
+      "detail": "The Sophia TESU partner page displayed an empty established-equivalency table and listed courses without established agreements. Five separately reviewed institution-submitted ACE maps exist locally; these do not establish every Sophia course or clear provider review globally."
+    },
+    {
+      "id": "source-versus-receiving-score",
+      "status": "keep-separate",
+      "detail": "College Board exam pages reviewed on the date above recommend score50 and3 semester hours, except College Composition recommends6. TESU current policy states C-equivalent, not a numeric50 threshold. Do not silently relabel the provider recommendation as a university-published numeric requirement."
+    },
+    {
+      "id": "residency-and-source-caps",
+      "status": "separate-verified-concepts",
+      "detail": "The exact Liberal Studies ledger models120 credits,15 academic course-residency credits and105 derived outside credits, with a separate90 combined noncollegiate-credit ceiling. A waiver route is separate and is not activated by this packet. CLEP remains noncollegiate credit and does not fulfill TESU academic course residency."
+    },
+    {
+      "id": "potential-reviewed-liberal-studies-basket",
+      "status": "not-a-completed-plan",
+      "detail": "Once current exact receiving maps are recovered, a CLEP-supported Liberal Studies route could reuse published21-credit general-education placements, eligible unrestricted electives and taxonomy/level-approved area allocations. Solver feasibility,18 upper-level area credits,1000-level allocation limits, source bundles and nonduplication must be verified before claiming any outside-credit total."
+    }
+  ],
+  "candidateExams": [
+    {
+      "title": "College Composition",
+      "legacyCourseCode": "CLEP-0040",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 6,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/college-composition",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "ENC-1010",
+          "title": "Writing for Success",
+          "credits": 3,
+          "creditSystem": "semester"
+        },
+        {
+          "code": "ENC-1020",
+          "title": "Writing for Success II",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "College Composition Modular",
+      "legacyCourseCode": "CLEP-0041",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/college-composition-modular",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "ENC-1010",
+          "title": "Writing for Success",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "College Algebra",
+      "legacyCourseCode": "CLEP-0013",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/college-algebra",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "MAT-1210",
+          "title": "College Algebra",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-03-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Introductory Sociology",
+      "legacyCourseCode": "CLEP-0026",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/introductory-sociology",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "SOC-1010",
+          "title": "Our Changing World, An Introduction to Sociology",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "American Government",
+      "legacyCourseCode": "CLEP-0007",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/american-government",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "POS-1100",
+          "title": "American Government",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "History of the United States I: Early Colonization to 1877",
+      "legacyCourseCode": "CLEP-0008",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/history-of-the-us-1",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "HIS-1130",
+          "title": "American History I",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "History of the United States II: 1865 to the Present",
+      "legacyCourseCode": "CLEP-0009",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/history-of-the-us-2",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "HIS-1140",
+          "title": "American History II",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Financial Accounting",
+      "legacyCourseCode": "CLEP-0039",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/financial-accounting",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "ACC-1010",
+          "title": "Principles of Financial Accounting",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2027-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Introductory Business Law",
+      "legacyCourseCode": "CLEP-0025",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/introductory-business-law",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "LAW-2010",
+          "title": "Business Law",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Principles of Management",
+      "legacyCourseCode": "CLEP-0028",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/principles-management",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "MAN-2100",
+          "title": "Principles of Management",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2027-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Principles of Marketing",
+      "legacyCourseCode": "CLEP-0029",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/principles-marketing",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "MKT-2010",
+          "title": "Principles of Marketing",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2027-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Principles of Macroeconomics",
+      "legacyCourseCode": "CLEP-0027",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/principles-macroeconomics",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "ECO-1110",
+          "title": "Macroeconomics",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2027-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Principles of Microeconomics",
+      "legacyCourseCode": "CLEP-0030",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/principles-microeconomics",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "ECO-1120",
+          "title": "Microeconomics",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2027-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Human Growth and Development",
+      "legacyCourseCode": "CLEP-0021",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/human-growth-development",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "PSY-2110",
+          "title": "Developmental Psychology",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Introduction to Educational Psychology",
+      "legacyCourseCode": null,
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/introduction-educational-psychology",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "PSY-2300",
+          "title": "Introduction to Educational Psychology",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    },
+    {
+      "title": "Introductory Psychology",
+      "legacyCourseCode": "CLEP-0020",
+      "legacyCodeIndependentlyReverified": false,
+      "sourceCreditsFromProviderPage": 3,
+      "sourceCreditSystem": "semester",
+      "providerRecommendedScore": 50,
+      "providerPage": "https://clep.collegeboard.org/clep-exams/introductory-psychology",
+      "providerPageReviewedOn": "2026-11-19",
+      "receivingTableEvidence": "primary-search-index-extract-only",
+      "receivingAwards": [
+        {
+          "code": "PSY-1010",
+          "title": "Introduction to Psychology",
+          "credits": 3,
+          "creditSystem": "semester"
+        }
+      ],
+      "indexedReceivingExpiry": "2029-12-31",
+      "enrollmentReady": false,
+      "degreePlacementVerified": false
+    }
+  ],
+  "nextResearchActions": [
+    "Recover the current primary receiving-school CLEP table or institution-submitted equivalent; do not refresh404 sources as verified.",
+    "Verify every original exam identity and source credit amount independently from its receiving award.",
+    "Bind placements to exact requirement codes or explicit current degree elective/taxonomy rules, rather than transplant mappings from another degree.",
+    "Solve a named zero-record plan using reviewed options only; retain conditional Sophia options outside the published baseline.",
+    "Keep College Composition as one original6-credit action allocated across two3-credit requirements."
+  ],
+  "privateStudentRecordsIncluded": false,
+  "runtimeAiCalls": 0
+}

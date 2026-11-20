@@ -1,6 +1,6 @@
 /* Source-backed public worksheets retain the same readable course-plan language. */
 .public-page :is(.public-plan-hero,.public-plan-heading,.public-plan-section,.public-plan-additional,.public-plan-sources,.public-plan-related) { margin-block:28px; }
-.public-page .public-plan-hero h1 { max-width:25ch; }
+.public-page .public-plan-hero h1 { max-width:25ch; font-size:clamp(2rem,5vw,3.5rem); line-height:1.12; letter-spacing:-.035em; overflow-wrap:anywhere; }
 .public-page .public-plan-hero>p:first-child { font-size:1rem; color:var(--ds-muted,#52647c); }
 .public-page .public-plan-degree { font-size:1.125rem; line-height:1.5; }
 .public-page .public-plan-actions { display:flex; align-items:center; gap:16px 24px; flex-wrap:wrap; margin-block:24px; }
@@ -54,3 +54,7 @@
 .public-page .article-subscription input { display:block; width:100%; min-height:48px; border:1px solid #9eacbf; border-radius:6px; padding:10px 12px; margin-top:6px; font-size:1rem; background:#fff; }
 .public-page .article-subscription output { display:block; margin:18px 0 8px; font-size:1.25rem; font-weight:600; }
 @media(max-width:650px) { .public-page .public-plan-mix { grid-template-columns:1fr; gap:20px; } .public-page .public-plan-mix>div { display:flex; justify-content:space-between; gap:20px; } .public-page .public-plan-mix dd { margin:0; text-align:right; } .public-page .public-plan-cards { grid-template-columns:1fr; } .public-page .public-plan-heading { display:block; } .public-page .public-plan-heading label { margin-top:18px; } .public-page .public-plan-leaf>summary>strong { float:none; display:block; margin-top:5px; } }
+
+.public-plan-estimates{padding-block:32px;border-block:1px solid var(--ds-border,#d9e1ea)}
+.public-plan-estimates>h2{margin:0 0 20px;font-size:1.5rem}
+.public-plan-estimates .plan-estimate{max-width:760px}

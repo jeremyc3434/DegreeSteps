@@ -87,7 +87,12 @@
     const receivingClaim=source=>{
       const roles=[...list(source?.role),...list(source?.roles),...(typeof source?.role==='string'?[source.role]:[])];
       const submitted=roles.includes('receiving-institution-submitted-equivalency')&&option?.mappingEvidence?.claimOrigin==='receiving-institution-submitted'&&list(option.mappingEvidence.sourceIds).includes(source.id)&&key(option.mappingEvidence.receivingCode)===key(row.code);
-      const guide=source?.evidenceType==='official-receiving-school-equivalency'&&text(option?.mappingReviewId)&&text(option?.mappingChecked)&&key(option?.receivingCode)===key(row.code);
+      const receiving=key(option?.receivingCode),target=key(row.code),crossListed=list(option?.crossListedReceivingCodes).map(key);
+      // A reviewed guide can explicitly place one receiving award against a
+      // different requirement. Keep that guide only when both named codes and
+      // the exact fulfillment claim are bound to this option's source.
+      const alternate=receiving&&target&&key(option?.fulfillsCode)===target&&crossListed.includes(receiving)&&crossListed.includes(target)&&list(option?.sourceIds).includes(source?.id);
+      const guide=source?.evidenceType==='official-receiving-school-equivalency'&&text(option?.mappingReviewId)&&text(option?.mappingChecked)&&receiving&&target&&(receiving===target||alternate);
       return submitted||guide;
     };
     const ids = unique([...list(option?.sourceIds),...list(row.sourceIds)]).filter(id => !identityOnly.has(id)||receivingClaim(list(program?.sources).find(source=>source.id===id)));

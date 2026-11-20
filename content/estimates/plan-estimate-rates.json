@@ -1,0 +1,318 @@
+{
+  "schemaRevision": "plan-estimate-rates-v1",
+  "checkedOn": "2026-11-19",
+  "scope": "Selected-course planning ranges; known instructional charges before aid. No complete cost-of-attendance or guaranteed completion claim.",
+  "exclusions": [
+    "Applicable sales tax on course subscriptions.",
+    "Books, supplies, course-specific charges and transcript charges when applicable.",
+    "Housing, meals, travel, health insurance and other living costs."
+  ],
+  "sources": [
+    {
+      "id": "liberty-campus-tuition",
+      "title": "Liberty 2026–27 residential tuition",
+      "url": "https://www.liberty.edu/residential/tuition-and-fees/",
+      "checkedOn": "2026-11-19"
+    },
+    {
+      "id": "liberty-campus-fees",
+      "title": "Liberty 2026–27 residential mandatory fees",
+      "url": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-resident-program/",
+      "checkedOn": "2026-11-19"
+    },
+    {
+      "id": "liberty-online-tuition-fees",
+      "title": "Liberty 2026–27 online undergraduate tuition and mandatory fees",
+      "url": "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+      "checkedOn": "2026-11-19"
+    },
+    {
+      "id": "wgu-business-tuition",
+      "title": "WGU Business Management tuition, resources fee and six-month billing",
+      "url": "https://www.wgu.edu/online-business-degrees/business-management-bachelors-program.html",
+      "checkedOn": "2026-11-19"
+    },
+    {
+      "id": "wgu-november-catalog",
+      "title": "WGU November 2026 institutional catalog and application fee",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+      "checkedOn": "2026-11-17"
+    },
+    {
+      "id": "sophia-pricing",
+      "title": "Sophia monthly membership pricing; applicable tax extra",
+      "url": "https://www.sophia.org/plans-and-pricing/",
+      "checkedOn": "2026-11-19"
+    },
+    {
+      "id": "study-pricing",
+      "title": "Study.com College Saver and College Saver Pro prices and enrollment limits",
+      "url": "https://study.com/college/pricing.html",
+      "checkedOn": "2026-11-19"
+    },
+    {
+      "id": "clep-exam-pricing",
+      "title": "College Board CLEP exam registration and separate administration fees",
+      "url": "https://clep.collegeboard.org/register-for-an-exam",
+      "checkedOn": "2026-11-19"
+    },
+    {
+      "id": "wgu-hr-tuition",
+      "title": "WGU Human Resource Management tuition, resource fee and six-month billing",
+      "url": "https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html",
+      "checkedOn": "2026-11-19"
+    }
+  ],
+  "providers": [
+    {
+      "provider": "Sophia",
+      "type": "subscription",
+      "amount": 99,
+      "currency": "USD",
+      "label": "Lowest published combination of $99 monthly, $299 four-month and $799 annual memberships; prepaid commitment assumed",
+      "sourceIds": [
+        "sophia-pricing"
+      ],
+      "missing": [],
+      "packages": [
+        {
+          "months": 1,
+          "amount": 99
+        },
+        {
+          "months": 4,
+          "amount": 299
+        },
+        {
+          "months": 12,
+          "amount": 799
+        }
+      ]
+    },
+    {
+      "provider": "Study.com",
+      "type": "subscription",
+      "amount": 235,
+      "currency": "USD",
+      "label": "$235 monthly College Saver Pro; a cheaper eligible plan may cost less",
+      "sourceIds": [
+        "study-pricing"
+      ],
+      "missing": []
+    },
+    {
+      "provider": "CLEP",
+      "type": "exam",
+      "amount": 97,
+      "currency": "USD",
+      "label": "$97 exam registration; testing administration is separate",
+      "sourceIds": [
+        "clep-exam-pricing"
+      ],
+      "missing": [
+        "CLEP test-center or remote-proctor administration fees vary and are not included."
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "liberty-campus-2026-27",
+      "modelIds": [
+        "liberty-business-residential",
+        "liberty-criminal-justice-residential"
+      ],
+      "school": "Liberty University",
+      "modality": "campus",
+      "creditSystem": "semester",
+      "degreeUnits": 120,
+      "catalogs": [
+        "2026-2027"
+      ],
+      "tuition": {
+        "type": "banded-term",
+        "termRate": 12695,
+        "partTimeRate": 870,
+        "bandMin": 12,
+        "bandMax": 18
+      },
+      "feesPerTerm": 630,
+      "oneTimeFees": 100,
+      "feeBreakdown": [
+        {
+          "label": "Activity fee",
+          "amount": 460,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Student health fee",
+          "amount": 170,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Degree completion application",
+          "amount": 100,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 12,
+        "defaultMax": 18
+      },
+      "termLabel": "semester",
+      "termMonths": null,
+      "sourceIds": [
+        "liberty-campus-tuition",
+        "liberty-campus-fees"
+      ],
+      "missing": [
+        "Campus tuition uses fall/spring pricing; summer enrollment, online courses taken by a residential student and course-specific charges need their applicable prices."
+      ]
+    },
+    {
+      "id": "liberty-online-2026-27",
+      "modelIds": [
+        "liberty-criminal-justice-online",
+        "curriculum-liberty-healthcare-administration-bs-online",
+        "curriculum-liberty-psychology-bs-online"
+      ],
+      "school": "Liberty University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 120,
+      "catalogs": [
+        "2026-2027"
+      ],
+      "tuition": {
+        "type": "threshold-credit",
+        "fullTimeRate": 410,
+        "partTimeRate": 475,
+        "fullTimeMin": 12
+      },
+      "feesPerTerm": 349,
+      "oneTimeFees": 100,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee",
+          "amount": 349,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Degree completion application",
+          "amount": 100,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 12,
+        "defaultMax": 18
+      },
+      "termLabel": "semester",
+      "termMonths": null,
+      "sourceIds": [
+        "liberty-online-tuition-fees"
+      ],
+      "missing": []
+    },
+    {
+      "id": "wgu-business-management-reviewed",
+      "modelIds": [
+        "curriculum-wgu-catalog-ecceaa488637ac83"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 110,
+      "catalogs": [
+        "202605",
+        "202611"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3850,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-business-tuition",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-human-resource-management-reviewed",
+      "modelIds": [
+        "curriculum-wgu-catalog-2e49db64c32dfc79"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 117,
+      "catalogs": [
+        "202509"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3850,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-hr-tuition",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    }
+  ]
+}

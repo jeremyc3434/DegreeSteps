@@ -7,7 +7,7 @@ import {pathToFileURL} from 'node:url';
 import {assertProviderDiscovery} from './provider-directory-discovery.mjs';
 const require=createRequire(import.meta.url),Catalog=require('../dist/program-catalog.js');
 const root=resolve(import.meta.dirname,'..');
-const paths={programCatalog:'dist/data/program-catalog.json',pathways:'dist/data/pathways.json',registry:'dist/data/curriculum-registry.json',quality:'dist/data/pathway-quality-report.json',schoolInsights:'content/school-insights.json',inventory:'content/research-batches/ace-inventory-2026-11-18.json',providerDiscovery:'dist/data/provider-directory-candidates.json'};
+const paths={programCatalog:'dist/data/program-catalog.json',pathways:'dist/data/pathways.json',registry:'dist/data/curriculum-registry.json',quality:'dist/data/pathway-quality-report.json',schoolInsights:'content/school-insights.json',inventory:'content/research-batches/ace-inventory-2026-11-18.json',providerDiscovery:'dist/data/provider-directory-candidates.json',umpiPrimaryReview:'content/curricula/snapshots/umpi/current-primary-review-2026-11-19.json',tesuExamReview:'content/research-batches/tesu-current-exam-source-audit-2026-11-19.json'};
 const outputs=['content/research-batches/research-priorities.json','dist/data/research-priorities.json'];
 const list=v=>Array.isArray(v)?v:[],text=v=>typeof v==='string'?v.trim():'',copy=v=>JSON.parse(JSON.stringify(v)),num=v=>typeof v==='number'&&Number.isFinite(v)&&v>=0?v:null;
 const norm=v=>text(v).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
@@ -61,8 +61,21 @@ function chooseGroup({publicationReady,modelId,modalities,school,level,sourceSta
 export function buildResearchPriorities(input){
  const {programCatalog={},pathways={},registry={},quality={},schoolInsights={},inventory={},models=[]}=input;
  const providerDiscovery=input.providerDiscovery?copy(assertProviderDiscovery(input.providerDiscovery)):null;
+ const umpiPrimaryReview=input.umpiPrimaryReview?copy(input.umpiPrimaryReview):null;
+ if(umpiPrimaryReview){
+  const review=umpiPrimaryReview,sources=new Set(list(review.sources).map(source=>source.id));
+  if(review.version!==1||review.schoolId!=='umpi'||review.schoolName!=='University of Maine at Presque Isle'||!day(review.checkedOn)||review.publicationAllowed!==false||!Array.isArray(review.models)||review.models.length||review.privateStudentRecordsIncluded!==false||review.runtimeAiCalls!==0)throw Error('UMPI primary review must remain dated, unpublished research without models or private records.');
+  if(!sources.size||sources.size!==review.sources.length||review.sources.some(source=>!text(source.id)||!secure(source.url)||!['www.umpi.edu','catalog.umpi.edu','umpi.sophia.org'].includes(new URL(source.url).hostname)))throw Error('UMPI primary review needs distinct, registered public sources.');
+  if(!list(review.implementationGates).length||[...list(review.facts),...list(review.implementationGates),...list(review.sourceDiscrepancies)].some(item=>!text(item.id)||!list(item.sourceIds).length||item.sourceIds.some(id=>!sources.has(id))))throw Error('UMPI primary review facts and remaining gates need source-bound evidence.');
+ }
+ const tesuExamReview=input.tesuExamReview?copy(input.tesuExamReview):null;
+ if(tesuExamReview){
+  const review=tesuExamReview;
+  if(review.version!==1||review.school!=='Thomas Edison State University'||!day(review.checkedOn)||review.publicationAllowed!==false||review.newStudentPlansVerified!==0||review.privateStudentRecordsIncluded!==false||review.runtimeAiCalls!==0||!list(review.sources).length||list(review.sources).some(source=>!secure(source.url)||!['www.tesu.edu','tesu.smartcatalogiq.com'].includes(new URL(source.url).hostname)))throw Error('TESU exam review must remain dated, source-bound unpublished research.');
+  if(!list(review.candidateExams).length||review.candidateExams.some(exam=>exam.enrollmentReady!==false||exam.degreePlacementVerified!==false||!secure(exam.providerPage)||new URL(exam.providerPage).hostname!=='clep.collegeboard.org')||!list(review.nextResearchActions).length||review.nextResearchActions.some(label=>!text(label)||label.length>800))throw Error('TESU exam review candidates cannot become selectable course awards.');
+ }
  const fingerprints=Object.fromEntries(Object.entries(input).sort(([a],[b])=>a.localeCompare(b)).map(([name,value])=>[name,digest(JSON.stringify(value))]));
- const inputDays=[programCatalog.checkedAt,programCatalog.expandedCheckedOn,registry.checkedOn,quality.asOf,schoolInsights.compiledOn,inventory.sourceDate,inventory.stagedOn,...models.flatMap(m=>[m.checkedOn,m.mappingCheckedOn,m.evidenceCheckedOn])].map(day).filter(Boolean).sort();
+ const inputDays=[programCatalog.checkedAt,programCatalog.expandedCheckedOn,registry.checkedOn,quality.asOf,schoolInsights.compiledOn,inventory.sourceDate,inventory.stagedOn,umpiPrimaryReview?.checkedOn,tesuExamReview?.checkedOn,...models.flatMap(m=>[m.checkedOn,m.mappingCheckedOn,m.evidenceCheckedOn])].map(day).filter(Boolean).sort();
  const asOf=inputDays.at(-1)||'2026-11-19';
  const merged=Catalog.attachRegistry(Catalog.merge({pathways:list(pathways.pathways)},programCatalog),registry);
  const schoolMap=new Map(),profileMap=new Map(list(schoolInsights.schools).map(s=>[schoolKey(s.name),s]));
@@ -111,6 +124,16 @@ export function buildResearchPriorities(input){
   school.programIds.sort();school.coverage={...school.coverage,programCount:rows.length,models:ids.length,availableTemplates:ids.filter(id=>registryMap.get(id)?.readyTemplate===true).length,publicationReady:ids.filter(id=>qualityMap.get(id)?.publication?.ready===true).length,unmappedPrograms:rows.filter(p=>!p.modelId&&!list(p.coveredByVariantIds).length).length,needsResearchPrograms:rows.filter(p=>p.modelId&&!p.publicationReady).length};
   const pending=rows.filter(p=>!p.publicationReady);school.groupId=(pending.length?pending:rows).map(p=>p.groupId).sort((a,b)=>order.get(a)-order.get(b))[0]||'catalog-evidence-review';
   school.nextActions=[];
+  if(umpiPrimaryReview&&schoolKey(school.name)===schoolKey(umpiPrimaryReview.schoolName)){
+   school.sourceReview=copy(umpiPrimaryReview);
+   school.evidenceUrls=uniqueURLs([...school.evidenceUrls,...umpiPrimaryReview.sources.map(source=>source.url)]);
+   school.nextActions.push(...umpiPrimaryReview.implementationGates.map(gate=>action(gate.id,gate.label)));
+  }
+  if(tesuExamReview&&schoolKey(school.name)===schoolKey(tesuExamReview.school)){
+   school.examSourceReview=copy(tesuExamReview);
+   school.evidenceUrls=uniqueURLs([...school.evidenceUrls,...tesuExamReview.sources.map(source=>source.url)]);
+   school.nextActions.push(...tesuExamReview.nextResearchActions.map((label,index)=>action('tesu-current-exam-review-'+(index+1),label)));
+  }
   const i=school.transferEvidence.institutional,a=school.transferEvidence.ace;
   if(school.deliveryModes.includes('campus')&&accepted(i)&&i.maximumCredits!==null&&i.maximumCredits>=60)school.nextActions.push(action('institutional-course-source-map','Build the campus route from eligible institutionally taught courses; the '+i.maximumCredits+'-credit policy ceiling is not an alternative-credit allowance.'));
   if(accepted(a))school.nextActions.push(action('alternative-credit-scope','Review exact alternative-credit eligibility'+(a.maximumCredits!==null?' and its separate '+a.maximumCredits+'-credit ceiling':'')+' before mapping courses.'));

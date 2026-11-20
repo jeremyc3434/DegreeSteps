@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const Journey=require('./dist/journey-engine.js'),copy=value=>JSON.parse(JSON.stringify(value)),KEY='degreepath-guide-v3',tick=()=>new Promise(resolve=>setImmediate(resolve));
+const Journey=require('./dist/journey-engine.js'),Catalog=require('./dist/program-catalog.js'),copy=value=>JSON.parse(JSON.stringify(value)),KEY='degreepath-guide-v3',tick=()=>new Promise(resolve=>setImmediate(resolve));
 
 // A small DOM tree exercises the actual incremental DOM operations, including
 // node identity and focus. It intentionally provides no browser or paid service.
@@ -30,7 +30,9 @@ function dom(){
 function data(){
  const routes=[['alpha','First checked degree'],['beta','Second checked degree'],['gamma','Third checked degree'],['unpriced','Unpriced fourth degree']].map(([id,title])=>({id,modelId:id,title,school:'Synthetic University',level:'bachelor',field:'general',fields:['general'],goals:['any-degree'],modalities:['online']}));
  const models=routes.map(route=>({id:route.id,title:route.title,school:route.school,totalCredits:3,creditSystem:'semester',sources:[],requirements:[{id:'capstone',title:'Capstone',credits:3,category:'major',options:[{id:'capstone',provider:'University',title:'Capstone',credits:3}]}]}));
- const catalog={pathways:routes,curriculumRegistry:{models:routes.map(route=>({id:route.modelId,routeIds:[route.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}))}};
+ const registry={models:routes.map(route=>({id:route.modelId,routeIds:[route.id],coverage:'complete',readyTemplate:true,unresolvedRequiredChoices:0}))};
+ const publicationIndex={schemaVersion:1,privateRecordsIncluded:false,registryRevision:'academic-v1:'+'2'.repeat(64),curriculumFingerprint:Catalog.publicationFingerprint(registry),plans:routes.map(route=>({modelId:route.modelId,routeIds:[route.id],level:Catalog.publicationLevel(route.level),publicationReady:true,modelFingerprint:Catalog.publicationModelFingerprint(models.find(model=>model.id===route.modelId),route.level)}))};
+ const catalog=Catalog.attachPublicationIndex({pathways:routes,curriculumRegistry:registry},publicationIndex,registry);
  let state=Journey.initialize(null,null,catalog);state=Journey.applyAnswer(state,'start','explore',catalog);Object.assign(state.profile,{goal:'any-degree',degreeLevel:'bachelor',field:'any',modality:'online',priority:'cost'});state.journey.step='routes';state.learning=[{id:'private-record',provider:'College',code:'ENG1',title:'Private original course',credits:3,creditSystem:'semester',status:'earned',evaluations:[]}];state.sheet.notes={private:'Keep private'};
  return{state,catalog,models};
 }

@@ -1,0 +1,246 @@
+{
+  "version": 1,
+  "id": "umpi-primary-review-2026-11-19",
+  "checkedOn": "2026-11-19",
+  "schoolId": "umpi",
+  "schoolName": "University of Maine at Presque Isle",
+  "status": "primary-facts-reviewed-exact-program-gates-remain",
+  "publicationAllowed": false,
+  "models": [],
+  "privateStudentRecordsIncluded": false,
+  "runtimeAiCalls": 0,
+  "sources": [
+    {
+      "id": "umpi-gec-current",
+      "url": "https://www.umpi.edu/academics/general-education-curriculum/",
+      "title": "UMPI general education curriculum and catalog transition",
+      "checkedOn": "2026-11-19",
+      "access": "reviewed-public-page"
+    },
+    {
+      "id": "umpi-bls-current",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/liberal-studies/",
+      "title": "UMPI current YourPace Liberal Studies offerings and published credit totals",
+      "checkedOn": "2026-11-19",
+      "access": "reviewed-public-page"
+    },
+    {
+      "id": "umpi-faq-current",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "title": "UMPI current YourPace admissions, residency and session pricing FAQ",
+      "checkedOn": "2026-11-19",
+      "access": "reviewed-public-page"
+    },
+    {
+      "id": "umpi-transfer-current",
+      "url": "https://www.umpi.edu/offices/student-records/transfer-credits/",
+      "title": "UMPI current registrar transfer practices",
+      "checkedOn": "2026-11-19",
+      "access": "reviewed-public-page"
+    },
+    {
+      "id": "umpi-handbook-2025-2026",
+      "url": "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf",
+      "title": "UMPI YourPace Student Handbook 2025–2026, pages 8–10",
+      "checkedOn": "2026-11-19",
+      "access": "reviewed-public-pdf",
+      "catalogScope": "2025–2026; not silently assigned to 2026–2027"
+    },
+    {
+      "id": "umpi-sophia-current",
+      "url": "https://umpi.sophia.org/",
+      "title": "UMPI official Sophia partner course-award table",
+      "checkedOn": "2026-11-19",
+      "access": "reviewed-public-page"
+    },
+    {
+      "id": "umpi-current-gec-catalog",
+      "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1783",
+      "title": "UMPI current linked catalog GEC requirements",
+      "checkedOn": "2026-11-19",
+      "access": "blocked-http-403"
+    },
+    {
+      "id": "umpi-current-bls-catalog",
+      "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1813&returnto=621",
+      "title": "UMPI current linked catalog Liberal Studies requirements",
+      "checkedOn": "2026-11-19",
+      "access": "blocked-http-403"
+    },
+    {
+      "id": "umpi-current-course-catalog",
+      "url": "https://catalog.umpi.edu/content.php?catoid=12&navoid=620",
+      "title": "UMPI current linked YourPace course catalog",
+      "checkedOn": "2026-11-19",
+      "access": "blocked-http-403"
+    }
+  ],
+  "facts": [
+    {
+      "id": "incoming-gec",
+      "field": "generalEducationCredits",
+      "value": 40,
+      "creditSystem": "semester",
+      "scope": "Newly accepted 2026–2027 students follow the new eight-outcome GEC; continuing students retain their incoming catalog. Exact approved course bindings remain a separate gate.",
+      "sourceIds": [
+        "umpi-gec-current",
+        "umpi-bls-current"
+      ]
+    },
+    {
+      "id": "bls-project-credit-structure",
+      "field": "publishedMarketingCreditStructure",
+      "value": {
+        "generalEducation": 40,
+        "projectManagementMinor": 18,
+        "electives": 62,
+        "total": 120
+      },
+      "creditSystem": "semester",
+      "scope": "Current BLS Project Management marketing structure, not a complete named requirement ledger or assurance that generic electives satisfy upper-level restrictions.",
+      "sourceIds": [
+        "umpi-bls-current"
+      ]
+    },
+    {
+      "id": "undergraduate-price",
+      "field": "tuitionPerSession",
+      "value": 1800,
+      "currency": "USD",
+      "periodWeeks": 8,
+      "scope": "Undergraduate session charge; total cost depends on actual session count and applicable charges. No one-session completion guarantee.",
+      "sourceIds": [
+        "umpi-faq-current"
+      ]
+    },
+    {
+      "id": "residency",
+      "field": "institutionalResidency",
+      "value": {
+        "institutionMinCredits": 30,
+        "majorMinInstitutionCredits": 12,
+        "majorUpperMinInstitutionCredits": 9
+      },
+      "creditSystem": "semester",
+      "scope": "The nine upper-level credits are a subset of the twelve major credits, which are a subset of thirty institutional credits. BLS minor application requires the governing program rules.",
+      "sourceIds": [
+        "umpi-faq-current"
+      ]
+    },
+    {
+      "id": "incoming-acceptance",
+      "field": "incomingTransferLimit",
+      "value": null,
+      "scope": "The FAQ gives no fixed incoming acceptance limit. Ninety credits is only the 120 minus 30 arithmetic remainder; it is not an established ACE/noncollegiate allowance.",
+      "sourceIds": [
+        "umpi-faq-current"
+      ]
+    },
+    {
+      "id": "gec-prior-degree-exemption",
+      "field": "priorBachelorGecExemption",
+      "value": true,
+      "scope": "Entrants with a completed accredited bachelor degree are exempt from specific GEC requirements; program requirements still apply.",
+      "sourceIds": [
+        "umpi-gec-current"
+      ]
+    }
+  ],
+  "implementationGates": [
+    {
+      "id": "umpi-current-gec-course-bindings",
+      "label": "Obtain the 2026–2027 YourPace approved-course/GLO ledger, including six Integrative Learning credits and the 40-credit total.",
+      "sourceIds": [
+        "umpi-current-gec-catalog",
+        "umpi-gec-current"
+      ],
+      "affects": [
+        "requirements",
+        "generalEducationCredits",
+        "outsideCoursePlacements"
+      ]
+    },
+    {
+      "id": "umpi-current-minor-ledger",
+      "label": "Obtain the current BLS Project Management minor course list, eligible electives, overlap rules and BLS upper-level elective requirement.",
+      "sourceIds": [
+        "umpi-current-bls-catalog",
+        "umpi-bls-current"
+      ],
+      "affects": [
+        "programIdentity",
+        "requirements",
+        "upperMinCredits",
+        "majorResidency"
+      ]
+    },
+    {
+      "id": "umpi-alternative-cap-scope",
+      "label": "Resolve whether the handbook’s combined 30-credit CPL statement applies to evaluated Sophia/Study coursework under the governing current catalog.",
+      "sourceIds": [
+        "umpi-handbook-2025-2026",
+        "umpi-faq-current",
+        "umpi-transfer-current"
+      ],
+      "affects": [
+        "alternativeMaxCredits",
+        "catalogApplicability"
+      ]
+    },
+    {
+      "id": "umpi-current-award-placement",
+      "label": "Bind every proposed provider award to an exact current receiving course and approved degree requirement; do not place generic elective awards into a named minor.",
+      "sourceIds": [
+        "umpi-sophia-current",
+        "umpi-current-course-catalog"
+      ],
+      "affects": [
+        "outsideCoursePlacements",
+        "courseIdentity"
+      ]
+    },
+    {
+      "id": "umpi-current-offering-identity",
+      "label": "Resolve current BLS minor and BA/BBA/BAS award identities from the governing catalog; retain the old Management-minor listing as unconfirmed.",
+      "sourceIds": [
+        "umpi-bls-current",
+        "umpi-current-bls-catalog"
+      ],
+      "affects": [
+        "programIdentity",
+        "catalogApplicability"
+      ]
+    }
+  ],
+  "sourceDiscrepancies": [
+    {
+      "id": "cpl-scope-conflict",
+      "text": "The linked 2025–2026 handbook places ACE among CPL methods, then gives a combined 30-credit bachelor CPL maximum. The current FAQ does not establish a distinct alternative-credit cap. Preserve the scope conflict until current governing evidence resolves it.",
+      "sourceIds": [
+        "umpi-handbook-2025-2026",
+        "umpi-faq-current"
+      ]
+    },
+    {
+      "id": "management-not-in-current-tabs",
+      "text": "The live Liberal Studies page currently lists MIS and Project Management minors but omits the former Management minor from its visible program tabs. Stale search snippets still mention Management. This observation does not establish formal discontinuation or a valid current Management course ledger.",
+      "sourceIds": [
+        "umpi-bls-current"
+      ]
+    },
+    {
+      "id": "current-versus-old-gec",
+      "text": "Do not use old 37-credit/five-GLO plans for newly accepted 2026–2027 students. Current primary GEC requirements identify eight outcomes and current BLS marketing totals forty general-education credits.",
+      "sourceIds": [
+        "umpi-gec-current",
+        "umpi-bls-current"
+      ]
+    }
+  ],
+  "researchDecision": "Keep UMPI outside publication-ready student recommendations until exact course, catalog and policy gates pass. These sourced facts reduce repeat research; they do not create an executable degree plan.",
+  "priorEvidenceArtifacts": [
+    "content/curricula/snapshots/umpi/gec-2026-2027-reviewed.json",
+    "content/curricula/snapshots/umpi/yourpace-2026-2027-reviewed.json",
+    "content/curricula/snapshots/umpi/additional-primary-review-2026-11-17.json"
+  ]
+}

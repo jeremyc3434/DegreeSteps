@@ -10,6 +10,7 @@ import {applyLibertyCJReviewedBaseline} from './liberty-cj-reviewed-baseline.mjs
 import {applyLibertyReviewedPolicy} from './liberty-reviewed-policy.mjs';
 import {applyLibertyHealthUpperIdentities,readLibertyHealthUpperReview} from './liberty-health-upper-identities.mjs';
 import {applyLibertyCJStudyIdentities} from './liberty-cj-study-identities.mjs';
+import {applyLibertyExpandedBaselineReview} from './liberty-expanded-baseline-review.mjs';
 const root=resolve(import.meta.dirname,'..'),read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const guide=await readReviewedOnlineAwards(),cj=await read('content/curricula/snapshots/liberty/criminal-justice-baselines-2026-2027-reviewed.json'),policy=await read('content/curricula/snapshots/liberty/shared-online-policy-2026-2027-reviewed.json');
 const healthcare=await readLibertyHealthUpperReview();
@@ -21,7 +22,8 @@ export function applyLibertyCurrentEvidence(input,{compiled=false}={}){
  model=applyLibertyBaselineReceivingReview(model);
  model=applyLibertyBaselineDuplicatePolicy(model);
  model=applyLibertyProviderIdentities(model);
- return applyLibertyHealthUpperIdentities(applyLibertyCJStudyIdentities(applyLibertyCJReviewedBaseline(model,cj)),healthcare);
+ model=applyLibertyHealthUpperIdentities(applyLibertyCJStudyIdentities(applyLibertyCJReviewedBaseline(model,cj)),healthcare);
+ return compiled?applyLibertyExpandedBaselineReview(model):model;
 }
 
 export async function reviewCourseCatalog({check=false}={}){

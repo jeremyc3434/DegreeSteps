@@ -49,5 +49,14 @@ test('the fully loaded reviewed online catalog no longer shortlists an MBA for a
   assert(rows.length>=3);assert(rows.every(row=>['associate','bachelor'].includes(row.pathway.level)));
   assert(!rows.some(row=>row.pathway.id==='phoenix-cb-mba'));assert.equal(JSON.stringify(state),before);
   const graduate=Journey.recommend({...state,profile:{...state.profile,degreeLevel:'master'}},ready,models);
-  assert(graduate.some(row=>row.pathway.id==='phoenix-cb-mba'),'An explicitly requested master’s degree remains available');
+  const publishedIds=new Set(catalog.publicationIndex.plans.map(plan=>plan.modelId));
+  assert(graduate.every(row=>publishedIds.has(row.pathway.modelId)),'Explicit level selection cannot bypass publication review');
+  assert(!graduate.some(row=>row.pathway.id==='phoenix-cb-mba'),'The unpublished MBA is not offered as a ready student template');
+  // Graduate eligibility still applies to saved/manual structural plans, while
+  // public discovery waits for complete publication review of those plans.
+  const structural={...catalog,publicationIndex:undefined};
+  const structuralModels=await Catalog.modelsForRoutes(Catalog.availablePlans(structural,[]),{fetcher});
+  const existing={...structural,pathways:Catalog.availablePlans(structural,structuralModels)};
+  const explicit=Journey.recommend({...state,profile:{...state.profile,degreeLevel:'master'}},existing,structuralModels);
+  assert(explicit.some(row=>row.pathway.id==='phoenix-cb-mba'),'An explicitly requested master’s remains classifiable in existing structural plans');
 });

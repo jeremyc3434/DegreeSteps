@@ -30,8 +30,9 @@
   function routeHasMap(route) {
     return DegreeProgramCatalog.isPlanAvailable(route,catalog,models);
   }
-  const availableRoutes = () => DegreeProgramCatalog.availablePlans(catalog,models);
+  const availableRoutes = () => typeof DegreeProgramCatalog.publishedPlans==='function'?DegreeProgramCatalog.publishedPlans(catalog,models):[];
   const availableCatalog = () => ({...catalog,pathways:availableRoutes()});
+  const reviewedRoute = route => publicPlanIds.has(route?.id)||availableRoutes().some(item=>item.id===route?.id);
   async function ensureRouteModels(routes) {
     const list=(Array.isArray(routes)?routes:[routes]).filter(Boolean).flatMap(route=>[route,...DegreeProgramCatalog.variants(route,catalog)]),wanted=list.filter(route=>route.modelId&&!models.some(model=>model.id===route.modelId));
     if(!wanted.length||!DegreeProgramCatalog.modelsForRoutes)return;
@@ -131,7 +132,7 @@
     let sources,results;
     try{
       sources=recommendationSources(input);
-      const searchCatalog={...sources.catalog,pathways:DegreeProgramCatalog.availablePlans(sources.catalog,sources.models)},modelsById=new Map(sources.models.map(model=>[model.id,model]));
+      const searchCatalog={...sources.catalog,pathways:DegreeProgramCatalog.publishedPlans(sources.catalog,sources.models)},modelsById=new Map(sources.models.map(model=>[model.id,model]));
       // Profile eligibility and names are cheap. Joint course placement belongs
       // to the comparison worker, including when the student has many records.
       results=Journey.recommend({...state,learning:[]},searchCatalog,[]).map(result=>({...result,model:modelsById.get(result.pathway.modelId)}));recommendationMatches=results;
@@ -446,7 +447,7 @@
       const data=await response.json(),baseline=Object.values(data.baselines||{}).find(item=>item.modelId===model.id&&item.pathwayId===route.id);
       if(baseline){
         const ids=Array.isArray(baseline.rows)?baseline.rows.map(row=>row.requirementId):[];
-        if(baseline.summary?.totalCredits!==model.totalCredits||ids.length!==model.requirements.length||new Set(ids).size!==ids.length||model.requirements.some(req=>!ids.includes(req.id))||publicPlanIds.has(route.id)&&(baseline.qualityReady!==true||baseline.researchStatus!=='research-ready')){state=beforeState;throw Error('The complete saved course choices are temporarily unavailable. Your existing plan is still saved.');}
+        if(baseline.summary?.totalCredits!==model.totalCredits||ids.length!==model.requirements.length||new Set(ids).size!==ids.length||model.requirements.some(req=>!ids.includes(req.id))||reviewedRoute(route)&&(baseline.qualityReady!==true||baseline.researchStatus!=='research-ready')){state=beforeState;throw Error('The complete saved course choices are temporarily unavailable. Your existing plan is still saved.');}
         const gcu=route.id==='gcu-bsba-campus'&&model.id==='curriculum-gcu-bsba-campus',planner=window.DegreePlanner;
         const creditBalance=gcu&&planner?.creditBalancePolicy(model);
         if(gcu&&(!creditBalance||baseline.modality!=='campus'||baseline.rows.some(row=>row.status!=='planned'))){state=beforeState;throw Error('The saved course choices need an updated credit check. Your existing plan is still saved.');}
@@ -482,7 +483,7 @@
           }else scenario.providers=[...new Set([...scenario.providers,...selectedProviders])];
         }
         next.scenarios={...next.scenarios,[model.id]:{...scenario,optionSelections:selections}};
-      }else if(publicPlanIds.has(route.id)||route.id==='gcu-bsba-campus'&&model.id==='curriculum-gcu-bsba-campus'){state=beforeState;throw Error('The saved course choices are temporarily unavailable. Your current plan is still saved.');}
+      }else if(reviewedRoute(route)||route.id==='gcu-bsba-campus'&&model.id==='curriculum-gcu-bsba-campus'){state=beforeState;throw Error('The saved course choices are temporarily unavailable. Your current plan is still saved.');}
     }
     const latest=latestStoredPlan();
     if(latest&&targetChanged(previous,latest)){state=beforeState;throw Error('Your degree changed in another tab. Open your current plan before choosing another degree.');}

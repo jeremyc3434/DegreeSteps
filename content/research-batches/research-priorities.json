@@ -1,18 +1,20 @@
 {
   "schemaRevision": "research-priorities-v1",
-  "revision": "research-priorities-v1:208a7ee10c363a56aa7395d334228620519282c6afe4091d5eca11a0a8805643",
+  "revision": "research-priorities-v1:3b3643f43dc2b6aa13b0dc633f6de8425b755fb7ed34ad53af4c486a94e11c13",
   "asOf": "2026-11-19",
   "inputFingerprints": {
     "inventory": "5641a61bc3ad2f827256cb7c64f05d9e91e5d46720938a1033ab2eb1800c60b4",
-    "models": "8f9b9791a75a5593c690759d642a3992b1c95fbb7c386bc95e081ca596cf7b36",
+    "models": "65bed96588be3965637ff535f01d4cbd984d155536e2c6b08799289cf999d5cd",
     "pathways": "724ccdc082fc8c4659451d1e3e3c7b85df95e4c1a026e50bad5c7d87c8a6e1f2",
     "programCatalog": "f237ce03a5c8af45d3c657d88f4ff8fc7f87ae1244cd8bf5ec51d4a3da1b0de1",
     "providerDiscovery": "b4b5c0556891b6e7eceb62841b417b153d5419748ab93066fe5c414be6ff8e7e",
-    "quality": "82e88bb097042ae1d5b69f0a990d283c9ac1fe99412c5f4c715cca844cb3dbbd",
+    "quality": "3e9ccde64cd6fadc1e8f800c0aaca4302153b0d9d42ef5341ce9215591f66685",
     "registry": "3fda99c6655c7fc60787f6425ada448c4dea720f40bab961ec189acc0bc37c6d",
-    "schoolInsights": "9b84b9db33a9014067bc7c797cf5d9aa4f3914bf64afda474c9bd92f872f6df6"
+    "schoolInsights": "9b84b9db33a9014067bc7c797cf5d9aa4f3914bf64afda474c9bd92f872f6df6",
+    "tesuExamReview": "5d9b52d81bbe4375dc9d1ad7acd2e8d1c00bf62e59b79bd4a303cbaf2505fb0e",
+    "umpiPrimaryReview": "c2345e5b07e6db37f4876b2c17180e9a220aff6676f31b5dbebc99c2baaf184c"
   },
-  "academicRegistryRevision": "academic-v1:724428bff0e609982832a20138f4a49a9ea5ad9f950bf7aa634eb698cf7acc91",
+  "academicRegistryRevision": "academic-v1:bb4deb9d28c50363640ea8c321c87dbe84cdab129add54c35ec0a300af48fa78",
   "scope": "Cross-school research prioritization from the existing directory, exact model registry, recorded publication checks and sourced policy channels. This static backlog does not publish a degree map, grant student credit, establish popularity or start a research job.",
   "summary": {
     "schools": 21,
@@ -20,7 +22,7 @@
     "directoryPrograms": 1630,
     "modelPrograms": 52,
     "availableTemplates": 45,
-    "publicationReady": 4,
+    "publicationReady": 7,
     "unmappedPrograms": 1606,
     "inventoryCandidates": 95,
     "priorityInventoryDegreeCandidates": 10,
@@ -59,7 +61,7 @@
       "reason": "Published self-paced or competency formats have missing degree maps or review findings. Source eligibility and graduate rules remain program-specific.",
       "order": 2,
       "schoolCount": 3,
-      "programCount": 114,
+      "programCount": 113,
       "inventoryCandidateCount": 0
     },
     {
@@ -68,7 +70,7 @@
       "reason": "A degree model exists but has not passed the publication review. Resolve its actual findings rather than start another outline.",
       "order": 3,
       "schoolCount": 4,
-      "programCount": 23,
+      "programCount": 21,
       "inventoryCandidateCount": 0
     },
     {
@@ -104,7 +106,7 @@
       "reason": "The exact model passed the existing publication checks. Continue source monitoring without calling all other programs at its school verified.",
       "order": 7,
       "schoolCount": 0,
-      "programCount": 4,
+      "programCount": 7,
       "inventoryCandidateCount": 0
     },
     {
@@ -1362,7 +1364,15 @@
         ]
       },
       "evidenceUrls": [
-        "https://www.umpi.edu/yourpace/faqs/"
+        "https://catalog.umpi.edu/content.php?catoid=12&navoid=620",
+        "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1783",
+        "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1813&returnto=621",
+        "https://umpi.sophia.org/",
+        "https://www.umpi.edu/academics/general-education-curriculum/",
+        "https://www.umpi.edu/offices/student-records/transfer-credits/",
+        "https://www.umpi.edu/yourpace/academic_programs/liberal-studies/",
+        "https://www.umpi.edu/yourpace/faqs/",
+        "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf"
       ],
       "programIds": [
         "umpi-baba-project-management",
@@ -1404,11 +1414,282 @@
       "groupId": "competency-self-paced-map-gap",
       "nextActions": [
         {
+          "id": "umpi-current-gec-course-bindings",
+          "label": "Obtain the 2026–2027 YourPace approved-course/GLO ledger, including six Integrative Learning credits and the 40-credit total.",
+          "kind": "umpi-current-gec-course-bindings"
+        },
+        {
+          "id": "umpi-current-minor-ledger",
+          "label": "Obtain the current BLS Project Management minor course list, eligible electives, overlap rules and BLS upper-level elective requirement.",
+          "kind": "umpi-current-minor-ledger"
+        },
+        {
+          "id": "umpi-alternative-cap-scope",
+          "label": "Resolve whether the handbook’s combined 30-credit CPL statement applies to evaluated Sophia/Study coursework under the governing current catalog.",
+          "kind": "umpi-alternative-cap-scope"
+        },
+        {
+          "id": "umpi-current-award-placement",
+          "label": "Bind every proposed provider award to an exact current receiving course and approved degree requirement; do not place generic elective awards into a named minor.",
+          "kind": "umpi-current-award-placement"
+        },
+        {
+          "id": "umpi-current-offering-identity",
+          "label": "Resolve current BLS minor and BA/BBA/BAS award identities from the governing catalog; retain the old Management-minor listing as unconfirmed.",
+          "kind": "umpi-current-offering-identity"
+        },
+        {
           "id": "map-directory-gaps",
           "label": "Build exact degree maps for 26 directory or curated program entries without models.",
           "kind": "map-directory-gaps"
         }
-      ]
+      ],
+      "sourceReview": {
+        "version": 1,
+        "id": "umpi-primary-review-2026-11-19",
+        "checkedOn": "2026-11-19",
+        "schoolId": "umpi",
+        "schoolName": "University of Maine at Presque Isle",
+        "status": "primary-facts-reviewed-exact-program-gates-remain",
+        "publicationAllowed": false,
+        "models": [],
+        "privateStudentRecordsIncluded": false,
+        "runtimeAiCalls": 0,
+        "sources": [
+          {
+            "id": "umpi-gec-current",
+            "url": "https://www.umpi.edu/academics/general-education-curriculum/",
+            "title": "UMPI general education curriculum and catalog transition",
+            "checkedOn": "2026-11-19",
+            "access": "reviewed-public-page"
+          },
+          {
+            "id": "umpi-bls-current",
+            "url": "https://www.umpi.edu/yourpace/academic_programs/liberal-studies/",
+            "title": "UMPI current YourPace Liberal Studies offerings and published credit totals",
+            "checkedOn": "2026-11-19",
+            "access": "reviewed-public-page"
+          },
+          {
+            "id": "umpi-faq-current",
+            "url": "https://www.umpi.edu/yourpace/faqs/",
+            "title": "UMPI current YourPace admissions, residency and session pricing FAQ",
+            "checkedOn": "2026-11-19",
+            "access": "reviewed-public-page"
+          },
+          {
+            "id": "umpi-transfer-current",
+            "url": "https://www.umpi.edu/offices/student-records/transfer-credits/",
+            "title": "UMPI current registrar transfer practices",
+            "checkedOn": "2026-11-19",
+            "access": "reviewed-public-page"
+          },
+          {
+            "id": "umpi-handbook-2025-2026",
+            "url": "https://www.umpi.edu/yourpace/wp-content/uploads/sites/73/2025/11/YourPace-Student-Handbook.pdf",
+            "title": "UMPI YourPace Student Handbook 2025–2026, pages 8–10",
+            "checkedOn": "2026-11-19",
+            "access": "reviewed-public-pdf",
+            "catalogScope": "2025–2026; not silently assigned to 2026–2027"
+          },
+          {
+            "id": "umpi-sophia-current",
+            "url": "https://umpi.sophia.org/",
+            "title": "UMPI official Sophia partner course-award table",
+            "checkedOn": "2026-11-19",
+            "access": "reviewed-public-page"
+          },
+          {
+            "id": "umpi-current-gec-catalog",
+            "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1783",
+            "title": "UMPI current linked catalog GEC requirements",
+            "checkedOn": "2026-11-19",
+            "access": "blocked-http-403"
+          },
+          {
+            "id": "umpi-current-bls-catalog",
+            "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1813&returnto=621",
+            "title": "UMPI current linked catalog Liberal Studies requirements",
+            "checkedOn": "2026-11-19",
+            "access": "blocked-http-403"
+          },
+          {
+            "id": "umpi-current-course-catalog",
+            "url": "https://catalog.umpi.edu/content.php?catoid=12&navoid=620",
+            "title": "UMPI current linked YourPace course catalog",
+            "checkedOn": "2026-11-19",
+            "access": "blocked-http-403"
+          }
+        ],
+        "facts": [
+          {
+            "id": "incoming-gec",
+            "field": "generalEducationCredits",
+            "value": 40,
+            "creditSystem": "semester",
+            "scope": "Newly accepted 2026–2027 students follow the new eight-outcome GEC; continuing students retain their incoming catalog. Exact approved course bindings remain a separate gate.",
+            "sourceIds": [
+              "umpi-gec-current",
+              "umpi-bls-current"
+            ]
+          },
+          {
+            "id": "bls-project-credit-structure",
+            "field": "publishedMarketingCreditStructure",
+            "value": {
+              "generalEducation": 40,
+              "projectManagementMinor": 18,
+              "electives": 62,
+              "total": 120
+            },
+            "creditSystem": "semester",
+            "scope": "Current BLS Project Management marketing structure, not a complete named requirement ledger or assurance that generic electives satisfy upper-level restrictions.",
+            "sourceIds": [
+              "umpi-bls-current"
+            ]
+          },
+          {
+            "id": "undergraduate-price",
+            "field": "tuitionPerSession",
+            "value": 1800,
+            "currency": "USD",
+            "periodWeeks": 8,
+            "scope": "Undergraduate session charge; total cost depends on actual session count and applicable charges. No one-session completion guarantee.",
+            "sourceIds": [
+              "umpi-faq-current"
+            ]
+          },
+          {
+            "id": "residency",
+            "field": "institutionalResidency",
+            "value": {
+              "institutionMinCredits": 30,
+              "majorMinInstitutionCredits": 12,
+              "majorUpperMinInstitutionCredits": 9
+            },
+            "creditSystem": "semester",
+            "scope": "The nine upper-level credits are a subset of the twelve major credits, which are a subset of thirty institutional credits. BLS minor application requires the governing program rules.",
+            "sourceIds": [
+              "umpi-faq-current"
+            ]
+          },
+          {
+            "id": "incoming-acceptance",
+            "field": "incomingTransferLimit",
+            "value": null,
+            "scope": "The FAQ gives no fixed incoming acceptance limit. Ninety credits is only the 120 minus 30 arithmetic remainder; it is not an established ACE/noncollegiate allowance.",
+            "sourceIds": [
+              "umpi-faq-current"
+            ]
+          },
+          {
+            "id": "gec-prior-degree-exemption",
+            "field": "priorBachelorGecExemption",
+            "value": true,
+            "scope": "Entrants with a completed accredited bachelor degree are exempt from specific GEC requirements; program requirements still apply.",
+            "sourceIds": [
+              "umpi-gec-current"
+            ]
+          }
+        ],
+        "implementationGates": [
+          {
+            "id": "umpi-current-gec-course-bindings",
+            "label": "Obtain the 2026–2027 YourPace approved-course/GLO ledger, including six Integrative Learning credits and the 40-credit total.",
+            "sourceIds": [
+              "umpi-current-gec-catalog",
+              "umpi-gec-current"
+            ],
+            "affects": [
+              "requirements",
+              "generalEducationCredits",
+              "outsideCoursePlacements"
+            ]
+          },
+          {
+            "id": "umpi-current-minor-ledger",
+            "label": "Obtain the current BLS Project Management minor course list, eligible electives, overlap rules and BLS upper-level elective requirement.",
+            "sourceIds": [
+              "umpi-current-bls-catalog",
+              "umpi-bls-current"
+            ],
+            "affects": [
+              "programIdentity",
+              "requirements",
+              "upperMinCredits",
+              "majorResidency"
+            ]
+          },
+          {
+            "id": "umpi-alternative-cap-scope",
+            "label": "Resolve whether the handbook’s combined 30-credit CPL statement applies to evaluated Sophia/Study coursework under the governing current catalog.",
+            "sourceIds": [
+              "umpi-handbook-2025-2026",
+              "umpi-faq-current",
+              "umpi-transfer-current"
+            ],
+            "affects": [
+              "alternativeMaxCredits",
+              "catalogApplicability"
+            ]
+          },
+          {
+            "id": "umpi-current-award-placement",
+            "label": "Bind every proposed provider award to an exact current receiving course and approved degree requirement; do not place generic elective awards into a named minor.",
+            "sourceIds": [
+              "umpi-sophia-current",
+              "umpi-current-course-catalog"
+            ],
+            "affects": [
+              "outsideCoursePlacements",
+              "courseIdentity"
+            ]
+          },
+          {
+            "id": "umpi-current-offering-identity",
+            "label": "Resolve current BLS minor and BA/BBA/BAS award identities from the governing catalog; retain the old Management-minor listing as unconfirmed.",
+            "sourceIds": [
+              "umpi-bls-current",
+              "umpi-current-bls-catalog"
+            ],
+            "affects": [
+              "programIdentity",
+              "catalogApplicability"
+            ]
+          }
+        ],
+        "sourceDiscrepancies": [
+          {
+            "id": "cpl-scope-conflict",
+            "text": "The linked 2025–2026 handbook places ACE among CPL methods, then gives a combined 30-credit bachelor CPL maximum. The current FAQ does not establish a distinct alternative-credit cap. Preserve the scope conflict until current governing evidence resolves it.",
+            "sourceIds": [
+              "umpi-handbook-2025-2026",
+              "umpi-faq-current"
+            ]
+          },
+          {
+            "id": "management-not-in-current-tabs",
+            "text": "The live Liberal Studies page currently lists MIS and Project Management minors but omits the former Management minor from its visible program tabs. Stale search snippets still mention Management. This observation does not establish formal discontinuation or a valid current Management course ledger.",
+            "sourceIds": [
+              "umpi-bls-current"
+            ]
+          },
+          {
+            "id": "current-versus-old-gec",
+            "text": "Do not use old 37-credit/five-GLO plans for newly accepted 2026–2027 students. Current primary GEC requirements identify eight outcomes and current BLS marketing totals forty general-education credits.",
+            "sourceIds": [
+              "umpi-gec-current",
+              "umpi-bls-current"
+            ]
+          }
+        ],
+        "researchDecision": "Keep UMPI outside publication-ready student recommendations until exact course, catalog and policy gates pass. These sourced facts reduce repeat research; they do not create an executable degree plan.",
+        "priorEvidenceArtifacts": [
+          "content/curricula/snapshots/umpi/gec-2026-2027-reviewed.json",
+          "content/curricula/snapshots/umpi/yourpace-2026-2027-reviewed.json",
+          "content/curricula/snapshots/umpi/additional-primary-review-2026-11-17.json"
+        ]
+      }
     },
     {
       "id": "wgu",
@@ -1542,9 +1823,9 @@
         "programCount": 61,
         "models": 20,
         "availableTemplates": 20,
-        "publicationReady": 1,
+        "publicationReady": 2,
         "unmappedPrograms": 41,
-        "needsResearchPrograms": 19
+        "needsResearchPrograms": 18
       },
       "groupId": "competency-self-paced-map-gap",
       "nextActions": [
@@ -1555,7 +1836,7 @@
         },
         {
           "id": "resolve-existing-models",
-          "label": "Resolve remaining evidence and publication findings in 19 modeled program entries.",
+          "label": "Resolve remaining evidence and publication findings in 18 modeled program entries.",
           "kind": "resolve-existing-models"
         }
       ]
@@ -2032,9 +2313,9 @@
         "programCount": 404,
         "models": 16,
         "availableTemplates": 14,
-        "publicationReady": 3,
+        "publicationReady": 5,
         "unmappedPrograms": 388,
-        "needsResearchPrograms": 13
+        "needsResearchPrograms": 11
       },
       "groupId": "existing-model-review",
       "nextActions": [
@@ -2045,7 +2326,7 @@
         },
         {
           "id": "resolve-existing-models",
-          "label": "Resolve remaining evidence and publication findings in 13 modeled program entries.",
+          "label": "Resolve remaining evidence and publication findings in 11 modeled program entries.",
           "kind": "resolve-existing-models"
         }
       ]
@@ -2613,7 +2894,12 @@
         ]
       },
       "evidenceUrls": [
-        "https://www.tesu.edu/admissions/methods-of-earning-credit/credit-for-training.php"
+        "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/",
+        "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/exam-programs/clep-college-level-examination-program",
+        "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/exam-programs/clep-college-level-examination-program/listing-of-clep-exams",
+        "https://www.tesu.edu/admissions/faqs/transfer-credits.php",
+        "https://www.tesu.edu/admissions/methods-of-earning-credit/credit-for-training.php",
+        "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php"
       ],
       "programIds": [
         "tesu-ba-english",
@@ -2635,11 +2921,496 @@
       "groupId": "existing-model-review",
       "nextActions": [
         {
+          "id": "tesu-current-exam-review-1",
+          "label": "Recover the current primary receiving-school CLEP table or institution-submitted equivalent; do not refresh404 sources as verified.",
+          "kind": "tesu-current-exam-review-1"
+        },
+        {
+          "id": "tesu-current-exam-review-2",
+          "label": "Verify every original exam identity and source credit amount independently from its receiving award.",
+          "kind": "tesu-current-exam-review-2"
+        },
+        {
+          "id": "tesu-current-exam-review-3",
+          "label": "Bind placements to exact requirement codes or explicit current degree elective/taxonomy rules, rather than transplant mappings from another degree.",
+          "kind": "tesu-current-exam-review-3"
+        },
+        {
+          "id": "tesu-current-exam-review-4",
+          "label": "Solve a named zero-record plan using reviewed options only; retain conditional Sophia options outside the published baseline.",
+          "kind": "tesu-current-exam-review-4"
+        },
+        {
+          "id": "tesu-current-exam-review-5",
+          "label": "Keep College Composition as one original6-credit action allocated across two3-credit requirements.",
+          "kind": "tesu-current-exam-review-5"
+        },
+        {
           "id": "resolve-existing-models",
           "label": "Resolve remaining evidence and publication findings in 6 modeled program entries.",
           "kind": "resolve-existing-models"
         }
-      ]
+      ],
+      "examSourceReview": {
+        "version": 1,
+        "id": "tesu-current-exam-source-audit-2026-11-19",
+        "checkedOn": "2026-11-19",
+        "school": "Thomas Edison State University",
+        "provider": "CLEP",
+        "publicationAllowed": false,
+        "newStudentPlansVerified": 0,
+        "scope": "Research packet retained after current-table retrieval failed. Indexed receiving awards are candidates for review, not new selectable mappings or verified degree placements.",
+        "sources": [
+          {
+            "id": "tesu-clep-current-policy-2026-11-19",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/exam-programs/clep-college-level-examination-program",
+            "accessStatus": "retrieved-primary-page",
+            "checkedOn": "2026-11-19",
+            "facts": {
+              "awardsCLEPCredit": true,
+              "minimumScorePolicy": "C-equivalent",
+              "numericMinimumScorePublished": null,
+              "officialScoreRecipientCode": "2748",
+              "individualDegreePlacementRequired": true
+            }
+          },
+          {
+            "id": "tesu-clep-current-table-index-2026-11-19",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/exam-programs/clep-college-level-examination-program/listing-of-clep-exams",
+            "accessStatus": "primary-search-index-extract-only",
+            "directRetrievalStatus": 404,
+            "checkedOn": "2026-11-19",
+            "indexedCrawlRecencyDescription": "about two months before the review",
+            "limits": "Current primary-domain search index displayed exact receiving awards and expiry dates. Repeated direct reads of the current child page, trailing-slash variant and no-language-prefix variant returned404. Recover a current receiving-school table or equivalent institutional record before publishing these candidate maps."
+          },
+          {
+            "id": "tesu-provider-directory-2026-11-19",
+            "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+            "accessStatus": "retrieved-primary-page",
+            "checkedOn": "2026-11-19",
+            "facts": {
+              "studyComStatus": "approved",
+              "sophiaStatus": "provisionally-approved-review-pending",
+              "clepStatus": "provisionally-approved-review-pending",
+              "straighterLineStatus": "provisionally-approved-review-pending"
+            }
+          },
+          {
+            "id": "tesu-transfer-faq-2026-11-19",
+            "url": "https://www.tesu.edu/admissions/faqs/transfer-credits.php",
+            "accessStatus": "retrieved-primary-page",
+            "checkedOn": "2026-11-19",
+            "facts": {
+              "bachelorCombinedNoncollegiateMaximum": 90,
+              "creditSystem": "semester",
+              "includesACEandNCCRSandCLEPandDSST": true
+            }
+          },
+          {
+            "id": "tesu-actual-degree-ledger-2026-11-18",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/",
+            "accessStatus": "prior-reviewed-primary-ledger",
+            "checkedOn": "2026-11-18",
+            "localReviewPath": "content/curricula/snapshots/tesu/liberal-studies-current-2026-11-18-reviewed.json"
+          }
+        ],
+        "findings": [
+          {
+            "id": "specific-clep-policy-versus-provider-directory",
+            "status": "needs-explicit-source-resolution",
+            "detail": "The university publishes specific CLEP exam credit policy while College Board also appears in its provisional provider directory. Preserve both facts. Administrative provider-review status alone is not evidence of an exam ban; specific current exam awards, dates and personal conditions must establish actionability."
+          },
+          {
+            "id": "sophia-provider-and-exact-award-separation",
+            "status": "preserve-current-holds",
+            "detail": "The Sophia TESU partner page displayed an empty established-equivalency table and listed courses without established agreements. Five separately reviewed institution-submitted ACE maps exist locally; these do not establish every Sophia course or clear provider review globally."
+          },
+          {
+            "id": "source-versus-receiving-score",
+            "status": "keep-separate",
+            "detail": "College Board exam pages reviewed on the date above recommend score50 and3 semester hours, except College Composition recommends6. TESU current policy states C-equivalent, not a numeric50 threshold. Do not silently relabel the provider recommendation as a university-published numeric requirement."
+          },
+          {
+            "id": "residency-and-source-caps",
+            "status": "separate-verified-concepts",
+            "detail": "The exact Liberal Studies ledger models120 credits,15 academic course-residency credits and105 derived outside credits, with a separate90 combined noncollegiate-credit ceiling. A waiver route is separate and is not activated by this packet. CLEP remains noncollegiate credit and does not fulfill TESU academic course residency."
+          },
+          {
+            "id": "potential-reviewed-liberal-studies-basket",
+            "status": "not-a-completed-plan",
+            "detail": "Once current exact receiving maps are recovered, a CLEP-supported Liberal Studies route could reuse published21-credit general-education placements, eligible unrestricted electives and taxonomy/level-approved area allocations. Solver feasibility,18 upper-level area credits,1000-level allocation limits, source bundles and nonduplication must be verified before claiming any outside-credit total."
+          }
+        ],
+        "candidateExams": [
+          {
+            "title": "College Composition",
+            "legacyCourseCode": "CLEP-0040",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 6,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/college-composition",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "ENC-1010",
+                "title": "Writing for Success",
+                "credits": 3,
+                "creditSystem": "semester"
+              },
+              {
+                "code": "ENC-1020",
+                "title": "Writing for Success II",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "College Composition Modular",
+            "legacyCourseCode": "CLEP-0041",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/college-composition-modular",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "ENC-1010",
+                "title": "Writing for Success",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "College Algebra",
+            "legacyCourseCode": "CLEP-0013",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/college-algebra",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "MAT-1210",
+                "title": "College Algebra",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-03-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Introductory Sociology",
+            "legacyCourseCode": "CLEP-0026",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/introductory-sociology",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "SOC-1010",
+                "title": "Our Changing World, An Introduction to Sociology",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "American Government",
+            "legacyCourseCode": "CLEP-0007",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/american-government",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "POS-1100",
+                "title": "American Government",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "History of the United States I: Early Colonization to 1877",
+            "legacyCourseCode": "CLEP-0008",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/history-of-the-us-1",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "HIS-1130",
+                "title": "American History I",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "History of the United States II: 1865 to the Present",
+            "legacyCourseCode": "CLEP-0009",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/history-of-the-us-2",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "HIS-1140",
+                "title": "American History II",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Financial Accounting",
+            "legacyCourseCode": "CLEP-0039",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/financial-accounting",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "ACC-1010",
+                "title": "Principles of Financial Accounting",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2027-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Introductory Business Law",
+            "legacyCourseCode": "CLEP-0025",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/introductory-business-law",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "LAW-2010",
+                "title": "Business Law",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Principles of Management",
+            "legacyCourseCode": "CLEP-0028",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/principles-management",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "MAN-2100",
+                "title": "Principles of Management",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2027-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Principles of Marketing",
+            "legacyCourseCode": "CLEP-0029",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/principles-marketing",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "MKT-2010",
+                "title": "Principles of Marketing",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2027-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Principles of Macroeconomics",
+            "legacyCourseCode": "CLEP-0027",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/principles-macroeconomics",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "ECO-1110",
+                "title": "Macroeconomics",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2027-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Principles of Microeconomics",
+            "legacyCourseCode": "CLEP-0030",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/principles-microeconomics",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "ECO-1120",
+                "title": "Microeconomics",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2027-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Human Growth and Development",
+            "legacyCourseCode": "CLEP-0021",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/human-growth-development",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "PSY-2110",
+                "title": "Developmental Psychology",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Introduction to Educational Psychology",
+            "legacyCourseCode": null,
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/introduction-educational-psychology",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "PSY-2300",
+                "title": "Introduction to Educational Psychology",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          },
+          {
+            "title": "Introductory Psychology",
+            "legacyCourseCode": "CLEP-0020",
+            "legacyCodeIndependentlyReverified": false,
+            "sourceCreditsFromProviderPage": 3,
+            "sourceCreditSystem": "semester",
+            "providerRecommendedScore": 50,
+            "providerPage": "https://clep.collegeboard.org/clep-exams/introductory-psychology",
+            "providerPageReviewedOn": "2026-11-19",
+            "receivingTableEvidence": "primary-search-index-extract-only",
+            "receivingAwards": [
+              {
+                "code": "PSY-1010",
+                "title": "Introduction to Psychology",
+                "credits": 3,
+                "creditSystem": "semester"
+              }
+            ],
+            "indexedReceivingExpiry": "2029-12-31",
+            "enrollmentReady": false,
+            "degreePlacementVerified": false
+          }
+        ],
+        "nextResearchActions": [
+          "Recover the current primary receiving-school CLEP table or institution-submitted equivalent; do not refresh404 sources as verified.",
+          "Verify every original exam identity and source credit amount independently from its receiving award.",
+          "Bind placements to exact requirement codes or explicit current degree elective/taxonomy rules, rather than transplant mappings from another degree.",
+          "Solve a named zero-record plan using reviewed options only; retain conditional Sophia options outside the published baseline.",
+          "Keep College Composition as one original6-credit action allocated across two3-credit requirements."
+        ],
+        "privateStudentRecordsIncluded": false,
+        "runtimeAiCalls": 0
+      }
     },
     {
       "id": "california-baptist",
@@ -18404,140 +19175,6 @@
       "limitsAreNotCoursePlacements": true
     },
     {
-      "id": "wgu-catalog-2e49db64c32dfc79",
-      "parentId": null,
-      "schoolId": "wgu",
-      "title": "Human Resource Management – B.S.",
-      "level": "bachelor",
-      "catalog": "202509",
-      "modalities": [
-        "online"
-      ],
-      "sourceStatus": "existing-degree-model",
-      "coverageStatus": "available-proposed-template",
-      "groupId": "competency-self-paced-map-gap",
-      "modelId": "curriculum-wgu-catalog-2e49db64c32dfc79",
-      "availableTemplate": true,
-      "publicationReady": false,
-      "publicationReasonCodes": [
-        "mapping-applicability",
-        "unresolved-research"
-      ],
-      "programPolicy": {
-        "scope": "Exact degree model only; not a school-wide acceptance claim.",
-        "degreeQuantity": 117,
-        "unit": "competency-unit",
-        "totalTransferMaximum": 87.75,
-        "alternativeCreditMaximum": 87.75,
-        "totalLimitSourceUrls": [
-          "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf"
-        ],
-        "alternativeLimitSourceUrls": [
-          "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf"
-        ]
-      },
-      "evidenceUrls": [
-        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
-        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
-        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
-        "https://cdn2.sophia.org/spcc_courses/294/syllabus_pdf/894b07fa5579ca85384628f65e21e136.pdf",
-        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
-        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
-        "https://cdn2.sophia.org/spcc_courses/371/syllabus_pdf/b3c167afe478bfd26406918cf802904a.pdf",
-        "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/2-1-11-Residency-Requirements-and-Credentialing/ta-p/23797",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSACC%3B202503",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSC%3B202510",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSFIN%3B202608",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSHR%3B202509",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSITM%3B202609",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSMGT%3B202605",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSMKT%3B202607",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSUXD%3B202510",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/BU",
-        "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=240",
-        "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
-        "https://study.com/academy/course/accounting-102-intro-to-managerial-accounting.html",
-        "https://study.com/academy/course/business-114-business-statistics.html",
-        "https://study.com/academy/course/business-120-international-business.html",
-        "https://study.com/academy/course/business-312-advanced-operations-management.html",
-        "https://study.com/academy/course/business-law-course.html",
-        "https://study.com/academy/course/communications-301-diversity-and-intercultural-communication.html",
-        "https://study.com/academy/course/human-resource-management-course.html",
-        "https://study.com/academy/course/organizational-behavior-course.html",
-        "https://study.com/academy/course/philosophy-104-contemporary-trends-in-technology-and-ethics.html",
-        "https://study.com/academy/course/principles-of-marketing-course.html",
-        "https://study.com/college/western-governors-university/degrees/wgu-bachelor-of-science-in-business-management.html",
-        "https://wgucollegeofbusiness.sophia.org/",
-        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
-        "https://wgucollegeofhealthprofessions.sophia.org/",
-        "https://wgucollegeofinformationtechnology.sophia.org/",
-        "https://www.sophia.org/online-courses/business/business-data-analytics/",
-        "https://www.sophia.org/online-courses/business/human-resource-management/",
-        "https://www.sophia.org/online-courses/business/managerial-accounting/",
-        "https://www.sophia.org/online-courses/business/operations-management/",
-        "https://www.sophia.org/online-courses/business/organizational-behavior/",
-        "https://www.sophia.org/online-courses/business/principles-of-finance/",
-        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSACC.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSC.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSFIN.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSHA.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSHR.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSITM.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSMGT.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSMKT.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSPM.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSSCOM.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSUXD.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/MBA.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/health-professions/BSHIM.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/health-professions/BSHS.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/health-professions/BSPH.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/health-professions/BSPSY.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSCS.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSCSIA.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSIT.pdf",
-        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSSWE.pdf",
-        "https://www.wgu.edu/online-business-degrees/accounting-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/business-management-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/communications-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/finance-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/healthcare-administration-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/it-information-technology-management-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/marketing-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-program.html",
-        "https://www.wgu.edu/online-business-degrees/project-management-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/supply-chain-operations-management-bachelors-program.html",
-        "https://www.wgu.edu/online-business-degrees/user-experience-design-bachelors-program.html",
-        "https://www.wgu.edu/online-degree-programs.html",
-        "https://www.wgu.edu/online-it-degrees/computer-science.html",
-        "https://www.wgu.edu/online-it-degrees/cybersecurity-information-assurance-bachelors-program.html",
-        "https://www.wgu.edu/online-it-degrees/information-technology-bachelors-program.html",
-        "https://www.wgu.edu/online-it-degrees/software-engineering-bachelors-program.html",
-        "https://www.wgu.edu/online-nursing-health-degrees/health-information-management-bachelors-program.html",
-        "https://www.wgu.edu/online-nursing-health-degrees/health-science-bachelors-program.html",
-        "https://www.wgu.edu/online-nursing-health-degrees/psychology-bachelors-program.html",
-        "https://www.wgu.edu/online-nursing-health-degrees/public-health-bachelors-program.html"
-      ],
-      "nextActions": [
-        {
-          "id": "map-transfer-options",
-          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
-          "kind": "map-transfer-options"
-        },
-        {
-          "id": "resolve-model-findings",
-          "label": "Resolve this model’s recorded publication findings: mapping-applicability, unresolved-research.",
-          "kind": "resolve-model-findings"
-        }
-      ],
-      "limitsAreNotCoursePlacements": true
-    },
-    {
       "id": "wgu-catalog-2f51090ca44182e5",
       "parentId": null,
       "schoolId": "wgu",
@@ -21573,144 +22210,6 @@
       "limitsAreNotCoursePlacements": true
     },
     {
-      "id": "liberty-catalog-cf514fa45da62116-online",
-      "parentId": "liberty-catalog-cf514fa45da62116",
-      "schoolId": "liberty",
-      "title": "Healthcare Administration (B.S.) — Online",
-      "level": "bachelor",
-      "catalog": "2026–2027",
-      "modalities": [
-        "online"
-      ],
-      "sourceStatus": "existing-degree-model",
-      "coverageStatus": "available-proposed-template",
-      "groupId": "existing-model-review",
-      "modelId": "curriculum-liberty-healthcare-administration-bs-online",
-      "availableTemplate": true,
-      "publicationReady": false,
-      "publicationReasonCodes": [
-        "policy-unresolved",
-        "provider-eligibility",
-        "unresolved-research"
-      ],
-      "programPolicy": {
-        "scope": "Exact degree model only; not a school-wide acceptance claim.",
-        "degreeQuantity": 120,
-        "unit": "semester",
-        "totalTransferMaximum": 90,
-        "alternativeCreditMaximum": null,
-        "totalLimitSourceUrls": [
-          "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf"
-        ],
-        "alternativeLimitSourceUrls": []
-      },
-      "evidenceUrls": [
-        "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
-        "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-online/",
-        "https://catalog.liberty.edu/undergraduate/courses/arts/",
-        "https://catalog.liberty.edu/undergraduate/courses/bibl/",
-        "https://catalog.liberty.edu/undergraduate/courses/biol/",
-        "https://catalog.liberty.edu/undergraduate/courses/cjus/",
-        "https://catalog.liberty.edu/undergraduate/courses/coms/",
-        "https://catalog.liberty.edu/undergraduate/courses/econ/",
-        "https://catalog.liberty.edu/undergraduate/courses/engl/",
-        "https://catalog.liberty.edu/undergraduate/courses/ethc/",
-        "https://catalog.liberty.edu/undergraduate/courses/evan/",
-        "https://catalog.liberty.edu/undergraduate/courses/govt/",
-        "https://catalog.liberty.edu/undergraduate/courses/hius/",
-        "https://catalog.liberty.edu/undergraduate/courses/hlth/",
-        "https://catalog.liberty.edu/undergraduate/courses/inft/",
-        "https://catalog.liberty.edu/undergraduate/courses/math/",
-        "https://catalog.liberty.edu/undergraduate/courses/phil/",
-        "https://catalog.liberty.edu/undergraduate/courses/psyc/",
-        "https://catalog.liberty.edu/undergraduate/courses/rlgn/",
-        "https://catalog.liberty.edu/undergraduate/courses/soci/",
-        "https://catalog.liberty.edu/undergraduate/courses/theo/",
-        "https://catalog.liberty.edu/undergraduate/courses/univ/",
-        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
-        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
-        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
-        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
-        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
-        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
-        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
-        "https://cdn2.sophia.org/spcc_courses/341/syllabus_pdf/28fa2c4567b78f16fc7a02da90ee3404.pdf",
-        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
-        "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
-        "https://christianleaders.org/course/index.php?categoryid=131",
-        "https://christianleaders.org/course/view.php?id=779",
-        "https://clep.collegeboard.org/clep-exams/human-growth-development",
-        "https://clep.collegeboard.org/clep-exams/humanities",
-        "https://clep.collegeboard.org/clep-exams/introductory-psychology",
-        "https://getcollegecredit.com/exam/ethics-in-america/",
-        "https://getcollegecredit.com/exam/math-for-liberal-arts/",
-        "https://getcollegecredit.com/exam/money-and-banking/",
-        "https://getcollegecredit.com/exam/organizational-behavior/",
-        "https://getcollegecredit.com/exam/personal-finance/",
-        "https://study.com/academy/course/introduction-to-biology.html",
-        "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=04d2f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=114ba700-5cfe-ee11-a1fe-0022480b35fb&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=217562ba-ba8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3aaf09d7-fb69-ef11-bfe2-0022480c6e65&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4e516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=58516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5f4a3709-bb8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=8b77e848-2988-f011-b4cc-6045bd0a807d",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9130f042-2988-f011-b4cc-6045bd0a807d",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9ffc9344-2988-f011-b4cc-6045bd0a9dd8",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=a469d649-2988-f011-b4cb-000d3a376f43",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=abfc9344-2988-f011-b4cc-6045bd0a9dd8",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ded1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.christianleadersinstitute.org/transfer-information/",
-        "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
-        "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
-        "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
-        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
-        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
-        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
-        "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
-        "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
-        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
-        "https://www.liberty.edu/student-financial-services/tuition-fees/",
-        "https://www.sophia.org/online-courses/business/operations-management/",
-        "https://www.sophia.org/online-courses/business/organizational-behavior/",
-        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
-        "https://www.sophia.org/online-courses/humanities/art-history-i/",
-        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
-        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
-        "https://www.sophia.org/online-courses/science/environmental-science/",
-        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
-        "https://www.sophia.org/online-courses/social-science/us-history-i/",
-        "https://www.sophia.org/online-courses/social-science/us-history-ii/"
-      ],
-      "nextActions": [
-        {
-          "id": "map-transfer-options",
-          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
-          "kind": "map-transfer-options"
-        },
-        {
-          "id": "resolve-model-findings",
-          "label": "Resolve this model’s recorded publication findings: policy-unresolved, provider-eligibility, unresolved-research.",
-          "kind": "resolve-model-findings"
-        }
-      ],
-      "limitsAreNotCoursePlacements": true
-    },
-    {
       "id": "liberty-catalog-5a26b73e7380bcf4-online",
       "parentId": "liberty-catalog-5a26b73e7380bcf4",
       "schoolId": "liberty",
@@ -22226,136 +22725,6 @@
         "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
         "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-residential-programs/",
         "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/addictions-recovery-online/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-online/",
-        "https://catalog.liberty.edu/undergraduate/courses/arts/",
-        "https://catalog.liberty.edu/undergraduate/courses/bibl/",
-        "https://catalog.liberty.edu/undergraduate/courses/biol/",
-        "https://catalog.liberty.edu/undergraduate/courses/cjus/",
-        "https://catalog.liberty.edu/undergraduate/courses/coms/",
-        "https://catalog.liberty.edu/undergraduate/courses/econ/",
-        "https://catalog.liberty.edu/undergraduate/courses/engl/",
-        "https://catalog.liberty.edu/undergraduate/courses/ethc/",
-        "https://catalog.liberty.edu/undergraduate/courses/evan/",
-        "https://catalog.liberty.edu/undergraduate/courses/govt/",
-        "https://catalog.liberty.edu/undergraduate/courses/hius/",
-        "https://catalog.liberty.edu/undergraduate/courses/hlth/",
-        "https://catalog.liberty.edu/undergraduate/courses/inft/",
-        "https://catalog.liberty.edu/undergraduate/courses/math/",
-        "https://catalog.liberty.edu/undergraduate/courses/phil/",
-        "https://catalog.liberty.edu/undergraduate/courses/psyc/",
-        "https://catalog.liberty.edu/undergraduate/courses/rlgn/",
-        "https://catalog.liberty.edu/undergraduate/courses/soci/",
-        "https://catalog.liberty.edu/undergraduate/courses/theo/",
-        "https://catalog.liberty.edu/undergraduate/courses/univ/",
-        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
-        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
-        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
-        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
-        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
-        "https://cdn2.sophia.org/spcc_courses/341/syllabus_pdf/28fa2c4567b78f16fc7a02da90ee3404.pdf",
-        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
-        "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
-        "https://christianleaders.org/course/view.php?id=779",
-        "https://clep.collegeboard.org/clep-exams/human-growth-development",
-        "https://clep.collegeboard.org/clep-exams/humanities",
-        "https://clep.collegeboard.org/clep-exams/introductory-psychology",
-        "https://getcollegecredit.com/exam/ethics-in-america/",
-        "https://getcollegecredit.com/exam/math-for-liberal-arts/",
-        "https://getcollegecredit.com/exam/money-and-banking/",
-        "https://getcollegecredit.com/exam/organizational-behavior/",
-        "https://getcollegecredit.com/exam/personal-finance/",
-        "https://study.com/academy/course/introduction-to-biology.html",
-        "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=04d2f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=217562ba-ba8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5f4a3709-bb8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=8b77e848-2988-f011-b4cc-6045bd0a807d",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9130f042-2988-f011-b4cc-6045bd0a807d",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9ffc9344-2988-f011-b4cc-6045bd0a9dd8",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=a469d649-2988-f011-b4cb-000d3a376f43",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=abfc9344-2988-f011-b4cc-6045bd0a9dd8",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ded1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
-        "https://www.christianleadersinstitute.org/transfer-information/",
-        "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
-        "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
-        "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
-        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
-        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
-        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
-        "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
-        "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
-        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
-        "https://www.liberty.edu/student-financial-services/tuition-fees/",
-        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
-        "https://www.sophia.org/online-courses/humanities/art-history-i/",
-        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
-        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
-        "https://www.sophia.org/online-courses/science/environmental-science/",
-        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
-        "https://www.sophia.org/online-courses/social-science/us-history-i/",
-        "https://www.sophia.org/online-courses/social-science/us-history-ii/"
-      ],
-      "nextActions": [
-        {
-          "id": "map-transfer-options",
-          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
-          "kind": "map-transfer-options"
-        },
-        {
-          "id": "resolve-model-findings",
-          "label": "Resolve this model’s recorded publication findings: policy-unresolved, provider-eligibility, unresolved-research.",
-          "kind": "resolve-model-findings"
-        }
-      ],
-      "limitsAreNotCoursePlacements": true
-    },
-    {
-      "id": "liberty-catalog-fa62c08cdfa0c990-online",
-      "parentId": "liberty-catalog-fa62c08cdfa0c990",
-      "schoolId": "liberty",
-      "title": "Psychology (B.S.) — Online",
-      "level": "bachelor",
-      "catalog": "2026–2027",
-      "modalities": [
-        "online"
-      ],
-      "sourceStatus": "existing-degree-model",
-      "coverageStatus": "available-proposed-template",
-      "groupId": "existing-model-review",
-      "modelId": "curriculum-liberty-psychology-bs-online",
-      "availableTemplate": true,
-      "publicationReady": false,
-      "publicationReasonCodes": [
-        "policy-unresolved",
-        "provider-eligibility",
-        "unresolved-research"
-      ],
-      "programPolicy": {
-        "scope": "Exact degree model only; not a school-wide acceptance claim.",
-        "degreeQuantity": 120,
-        "unit": "semester",
-        "totalTransferMaximum": 90,
-        "alternativeCreditMaximum": null,
-        "totalLimitSourceUrls": [
-          "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf"
-        ],
-        "alternativeLimitSourceUrls": []
-      },
-      "evidenceUrls": [
-        "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
-        "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-residential-programs/",
-        "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/",
         "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-online/",
         "https://catalog.liberty.edu/undergraduate/courses/arts/",
         "https://catalog.liberty.edu/undergraduate/courses/bibl/",
@@ -81481,6 +81850,260 @@
       "limitsAreNotCoursePlacements": true
     },
     {
+      "id": "liberty-catalog-cf514fa45da62116-online",
+      "parentId": "liberty-catalog-cf514fa45da62116",
+      "schoolId": "liberty",
+      "title": "Healthcare Administration (B.S.) — Online",
+      "level": "bachelor",
+      "catalog": "2026–2027",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "publication-ready",
+      "groupId": "maintain-publication-ready",
+      "modelId": "curriculum-liberty-healthcare-administration-bs-online",
+      "availableTemplate": true,
+      "publicationReady": true,
+      "publicationReasonCodes": [],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+        "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-online/",
+        "https://catalog.liberty.edu/undergraduate/courses/arts/",
+        "https://catalog.liberty.edu/undergraduate/courses/bibl/",
+        "https://catalog.liberty.edu/undergraduate/courses/biol/",
+        "https://catalog.liberty.edu/undergraduate/courses/cjus/",
+        "https://catalog.liberty.edu/undergraduate/courses/coms/",
+        "https://catalog.liberty.edu/undergraduate/courses/econ/",
+        "https://catalog.liberty.edu/undergraduate/courses/engl/",
+        "https://catalog.liberty.edu/undergraduate/courses/ethc/",
+        "https://catalog.liberty.edu/undergraduate/courses/evan/",
+        "https://catalog.liberty.edu/undergraduate/courses/govt/",
+        "https://catalog.liberty.edu/undergraduate/courses/hius/",
+        "https://catalog.liberty.edu/undergraduate/courses/hlth/",
+        "https://catalog.liberty.edu/undergraduate/courses/inft/",
+        "https://catalog.liberty.edu/undergraduate/courses/math/",
+        "https://catalog.liberty.edu/undergraduate/courses/phil/",
+        "https://catalog.liberty.edu/undergraduate/courses/psyc/",
+        "https://catalog.liberty.edu/undergraduate/courses/rlgn/",
+        "https://catalog.liberty.edu/undergraduate/courses/soci/",
+        "https://catalog.liberty.edu/undergraduate/courses/theo/",
+        "https://catalog.liberty.edu/undergraduate/courses/univ/",
+        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/341/syllabus_pdf/28fa2c4567b78f16fc7a02da90ee3404.pdf",
+        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+        "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
+        "https://christianleaders.org/course/index.php?categoryid=131",
+        "https://christianleaders.org/course/view.php?id=779",
+        "https://clep.collegeboard.org/clep-exams/human-growth-development",
+        "https://clep.collegeboard.org/clep-exams/humanities",
+        "https://clep.collegeboard.org/clep-exams/introductory-psychology",
+        "https://getcollegecredit.com/exam/ethics-in-america/",
+        "https://getcollegecredit.com/exam/math-for-liberal-arts/",
+        "https://getcollegecredit.com/exam/money-and-banking/",
+        "https://getcollegecredit.com/exam/organizational-behavior/",
+        "https://getcollegecredit.com/exam/personal-finance/",
+        "https://study.com/academy/course/introduction-to-biology.html",
+        "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=04d2f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=114ba700-5cfe-ee11-a1fe-0022480b35fb&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=217562ba-ba8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3aaf09d7-fb69-ef11-bfe2-0022480c6e65&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4e516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=58516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5f4a3709-bb8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=8b77e848-2988-f011-b4cc-6045bd0a807d",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9130f042-2988-f011-b4cc-6045bd0a807d",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9ffc9344-2988-f011-b4cc-6045bd0a9dd8",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=a469d649-2988-f011-b4cb-000d3a376f43",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=abfc9344-2988-f011-b4cc-6045bd0a9dd8",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ded1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.christianleadersinstitute.org/transfer-information/",
+        "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/student-financial-services/tuition-fees/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/organizational-behavior/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "https://www.sophia.org/online-courses/science/environmental-science/",
+        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+        "https://www.sophia.org/online-courses/social-science/us-history-i/",
+        "https://www.sophia.org/online-courses/social-science/us-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "monitor-sources",
+          "label": "Maintain the reviewed source versions and rerun academic validation after changes.",
+          "kind": "monitor-sources"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "liberty-catalog-fa62c08cdfa0c990-online",
+      "parentId": "liberty-catalog-fa62c08cdfa0c990",
+      "schoolId": "liberty",
+      "title": "Psychology (B.S.) — Online",
+      "level": "bachelor",
+      "catalog": "2026–2027",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "publication-ready",
+      "groupId": "maintain-publication-ready",
+      "modelId": "curriculum-liberty-psychology-bs-online",
+      "availableTemplate": true,
+      "publicationReady": true,
+      "publicationReasonCodes": [],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+        "https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-residential-programs/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/",
+        "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-online/",
+        "https://catalog.liberty.edu/undergraduate/courses/arts/",
+        "https://catalog.liberty.edu/undergraduate/courses/bibl/",
+        "https://catalog.liberty.edu/undergraduate/courses/biol/",
+        "https://catalog.liberty.edu/undergraduate/courses/cjus/",
+        "https://catalog.liberty.edu/undergraduate/courses/coms/",
+        "https://catalog.liberty.edu/undergraduate/courses/econ/",
+        "https://catalog.liberty.edu/undergraduate/courses/engl/",
+        "https://catalog.liberty.edu/undergraduate/courses/ethc/",
+        "https://catalog.liberty.edu/undergraduate/courses/evan/",
+        "https://catalog.liberty.edu/undergraduate/courses/govt/",
+        "https://catalog.liberty.edu/undergraduate/courses/hius/",
+        "https://catalog.liberty.edu/undergraduate/courses/hlth/",
+        "https://catalog.liberty.edu/undergraduate/courses/inft/",
+        "https://catalog.liberty.edu/undergraduate/courses/math/",
+        "https://catalog.liberty.edu/undergraduate/courses/phil/",
+        "https://catalog.liberty.edu/undergraduate/courses/psyc/",
+        "https://catalog.liberty.edu/undergraduate/courses/rlgn/",
+        "https://catalog.liberty.edu/undergraduate/courses/soci/",
+        "https://catalog.liberty.edu/undergraduate/courses/theo/",
+        "https://catalog.liberty.edu/undergraduate/courses/univ/",
+        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/341/syllabus_pdf/28fa2c4567b78f16fc7a02da90ee3404.pdf",
+        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+        "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
+        "https://christianleaders.org/course/view.php?id=779",
+        "https://clep.collegeboard.org/clep-exams/human-growth-development",
+        "https://clep.collegeboard.org/clep-exams/humanities",
+        "https://clep.collegeboard.org/clep-exams/introductory-psychology",
+        "https://getcollegecredit.com/exam/ethics-in-america/",
+        "https://getcollegecredit.com/exam/math-for-liberal-arts/",
+        "https://getcollegecredit.com/exam/money-and-banking/",
+        "https://getcollegecredit.com/exam/organizational-behavior/",
+        "https://getcollegecredit.com/exam/personal-finance/",
+        "https://study.com/academy/course/introduction-to-biology.html",
+        "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=04d2f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=114ba700-5cfe-ee11-a1fe-0022480b35fb&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=217562ba-ba8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3aaf09d7-fb69-ef11-bfe2-0022480c6e65&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4e516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=58516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5f4a3709-bb8f-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=8b77e848-2988-f011-b4cc-6045bd0a807d",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9130f042-2988-f011-b4cc-6045bd0a807d",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9ffc9344-2988-f011-b4cc-6045bd0a9dd8",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=a469d649-2988-f011-b4cb-000d3a376f43",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=abfc9344-2988-f011-b4cc-6045bd0a9dd8",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ded1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.christianleadersinstitute.org/transfer-information/",
+        "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLEP-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+        "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-Finalized-8.25.25-1.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Straighterline-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+        "https://www.liberty.edu/student-financial-services/tuition-fees/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "https://www.sophia.org/online-courses/science/environmental-science/",
+        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+        "https://www.sophia.org/online-courses/social-science/us-history-i/",
+        "https://www.sophia.org/online-courses/social-science/us-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "monitor-sources",
+          "label": "Maintain the reviewed source versions and rerun academic validation after changes.",
+          "kind": "monitor-sources"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
       "id": "liberty-business-residential",
       "parentId": null,
       "schoolId": "liberty",
@@ -81602,6 +82225,134 @@
         ],
         "alternativeLimitSourceUrls": [
           "https://wgucollegeofbusiness.sophia.org/",
+          "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf"
+        ]
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/294/syllabus_pdf/894b07fa5579ca85384628f65e21e136.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://cdn2.sophia.org/spcc_courses/360/syllabus_pdf/6b61edd10d803b8636c326958612952e.pdf",
+        "https://cdn2.sophia.org/spcc_courses/371/syllabus_pdf/b3c167afe478bfd26406918cf802904a.pdf",
+        "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/2-1-11-Residency-Requirements-and-Credentialing/ta-p/23797",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSACC%3B202503",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSC%3B202510",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSFIN%3B202608",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSHR%3B202509",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSITM%3B202609",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSMGT%3B202605",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSMKT%3B202607",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSUXD%3B202510",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/BU",
+        "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=240",
+        "https://partners.wgu.edu/general-transfer-guideline-bachelor-dynamic?collegeCode=BU&programId=240",
+        "https://study.com/academy/course/accounting-102-intro-to-managerial-accounting.html",
+        "https://study.com/academy/course/business-114-business-statistics.html",
+        "https://study.com/academy/course/business-120-international-business.html",
+        "https://study.com/academy/course/business-312-advanced-operations-management.html",
+        "https://study.com/academy/course/business-law-course.html",
+        "https://study.com/academy/course/communications-301-diversity-and-intercultural-communication.html",
+        "https://study.com/academy/course/human-resource-management-course.html",
+        "https://study.com/academy/course/organizational-behavior-course.html",
+        "https://study.com/academy/course/philosophy-104-contemporary-trends-in-technology-and-ethics.html",
+        "https://study.com/academy/course/principles-of-marketing-course.html",
+        "https://study.com/college/western-governors-university/degrees/wgu-bachelor-of-science-in-business-management.html",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://wgucollegeofhealthprofessions.sophia.org/",
+        "https://wgucollegeofinformationtechnology.sophia.org/",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/business-law/",
+        "https://www.sophia.org/online-courses/business/human-resource-management/",
+        "https://www.sophia.org/online-courses/business/managerial-accounting/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/organizational-behavior/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSACC.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSC.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSFIN.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSHA.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSHR.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSITM.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSMGT.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSMKT.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSPM.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSSCOM.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/BSUXD.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/business/MBA.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/health-professions/BSHIM.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/health-professions/BSHS.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/health-professions/BSPH.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/health-professions/BSPSY.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSCS.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSCSIA.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSIT.pdf",
+        "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSSWE.pdf",
+        "https://www.wgu.edu/online-business-degrees/accounting-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/business-management-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/communications-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/finance-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/healthcare-administration-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/it-information-technology-management-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/marketing-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-program.html",
+        "https://www.wgu.edu/online-business-degrees/project-management-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/supply-chain-operations-management-bachelors-program.html",
+        "https://www.wgu.edu/online-business-degrees/user-experience-design-bachelors-program.html",
+        "https://www.wgu.edu/online-degree-programs.html",
+        "https://www.wgu.edu/online-it-degrees/computer-science.html",
+        "https://www.wgu.edu/online-it-degrees/cybersecurity-information-assurance-bachelors-program.html",
+        "https://www.wgu.edu/online-it-degrees/information-technology-bachelors-program.html",
+        "https://www.wgu.edu/online-it-degrees/software-engineering-bachelors-program.html",
+        "https://www.wgu.edu/online-nursing-health-degrees/health-information-management-bachelors-program.html",
+        "https://www.wgu.edu/online-nursing-health-degrees/health-science-bachelors-program.html",
+        "https://www.wgu.edu/online-nursing-health-degrees/psychology-bachelors-program.html",
+        "https://www.wgu.edu/online-nursing-health-degrees/public-health-bachelors-program.html"
+      ],
+      "nextActions": [
+        {
+          "id": "monitor-sources",
+          "label": "Maintain the reviewed source versions and rerun academic validation after changes.",
+          "kind": "monitor-sources"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "wgu-catalog-2e49db64c32dfc79",
+      "parentId": null,
+      "schoolId": "wgu",
+      "title": "Human Resource Management – B.S.",
+      "level": "bachelor",
+      "catalog": "202509",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "publication-ready",
+      "groupId": "maintain-publication-ready",
+      "modelId": "curriculum-wgu-catalog-2e49db64c32dfc79",
+      "availableTemplate": true,
+      "publicationReady": true,
+      "publicationReasonCodes": [],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 117,
+        "unit": "competency-unit",
+        "totalTransferMaximum": 87.75,
+        "alternativeCreditMaximum": 87.75,
+        "totalLimitSourceUrls": [
+          "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf"
+        ],
+        "alternativeLimitSourceUrls": [
           "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf"
         ]
       },

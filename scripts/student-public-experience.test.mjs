@@ -21,8 +21,8 @@ test('allocation graphics account for the whole proposed degree without reportin
  assert.match(units,/total planned competency units/);assert.doesNotMatch(units,/total planned credits/);
 });
 
-test('school previews only open complete research-ready source plans and preserve the exact route and unit',()=>{
- const expected=quality.programs.filter(item=>item.research.status==='research-ready'&&registry.models.some(entry=>entry.id===item.modelId&&entry.readyTemplate));
+test('school previews only open complete publication-ready source plans and preserve the exact route and unit',()=>{
+ const expected=quality.programs.filter(item=>item.publication?.ready===true&&item.research.status==='research-ready'&&registry.models.some(entry=>entry.id===item.modelId&&entry.readyTemplate));
  let shown=0;
  for(const school of new Set(registry.models.map(entry=>entry.school))){
   const html=renderSchoolPlanCards({school,entries:registry.models,baselines,quality});
@@ -33,8 +33,9 @@ test('school previews only open complete research-ready source plans and preserv
  const withoutEvidence={...quality,programs:quality.programs.map(item=>({...item,research:{...item.research,status:'needs-research'}}))};
  assert.equal(renderSchoolPlanCards({school:'Liberty University',entries:registry.models,baselines,quality:withoutEvidence}),'');
  const gcu=renderSchoolPlanCards({school:'Grand Canyon University',entries:registry.models,baselines,quality});
- assert.match(gcu,/26 credits from outside courses and 94 credits at Grand Canyon University/);
- assert.match(gcu,/usePlan=gcu-bsba-campus/);
+ assert.equal(gcu,'','A structurally complete but unpublished program does not become a student template');
+ const heldPublication={...quality,programs:quality.programs.map(item=>({...item,publication:{...item.publication,ready:false}}))};
+ assert.equal(renderSchoolPlanCards({school:'Liberty University',entries:registry.models,baselines,quality:heldPublication}),'','Research-ready alone must not bypass publication checks');
 });
 
 test('the visual student journey uses real course rows and leaves source records untouched',()=>{
@@ -71,4 +72,11 @@ test('generated school and provider pages never send a known context into a fals
  assert.doesNotMatch(south,/href="\/programs\.html\?school=South%20College"/);
  const liberty=readFileSync(new URL('../dist/schools/liberty-university/index.html',import.meta.url),'utf8');
  assert.match(liberty,/usePlan=liberty-business-residential/);
+});
+
+test('an unpublished school route keeps an informational next step instead of advertising a ready template',()=>{
+ const html=readFileSync(new URL('../dist/schools/grand-canyon-university/index.html',import.meta.url),'utf8');
+ assert.doesNotMatch(html,/usePlan=gcu-bsba-campus|Build my GCU business plan/);
+ assert.match(html,/href="\/request-plan\.html\?school=Grand%20Canyon%20University"/);
+ assert.match(html,/Official &amp; supporting sources|Official & supporting sources/);
 });

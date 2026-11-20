@@ -4,7 +4,7 @@ test('degree results open the chosen course plan directly while retaining option
  const node=id=>{if(!nodes.has(id))nodes.set(id,{value:'',innerHTML:'',hidden:false,dataset:{},addEventListener(){},querySelector(){return node(id+'-child');},showModal(){this.shown=true;},setAttribute(){}});return nodes.get(id);};
  const route={id:'test-campus-business',school:'A & B University',title:'Business',level:'bachelor',modalities:['campus'],paceModel:'course-term',url:'https://example.edu/business'};
  const opportunities={schoolFor:()=>({name:route.school}),priceText:()=>'$100 per credit',paceText:()=> 'On campus',availability:()=>({canChoose:true}),detailsHTML:()=>'<p>College details</p>'};
- const catalog={merge:()=>({}),loadIndex:async value=>value,availablePlans:()=>[route],planChoiceCount:()=>0};
+ const catalog={merge:()=>({}),loadIndex:async value=>value,publishedPlans:()=>[route],planChoiceCount:()=>0};
  const context={console,URLSearchParams,location:{search:''},document:{getElementById:node,querySelectorAll:()=>[],activeElement:null,addEventListener(type,handler){handlers[type]=handler;}},window:{DegreeProgramOpportunities:opportunities},DegreeProgramCatalog:catalog,localStorage:{setItem(...args){writes.push(args);}},fetch:async()=>({ok:true,json:async()=>({sources:[]})})};
  vm.runInNewContext(fs.readFileSync('./dist/programs.js','utf8'),context);
  await new Promise(resolve=>setImmediate(resolve));
