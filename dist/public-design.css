@@ -723,3 +723,4 @@ body.public-page .plan-library-copy { margin-left:auto; padding:6px 12px; border
 body.public-page .plan-library-copy:hover { border-color:var(--public-cobalt); color:var(--public-cobalt); }
 body.public-page .plan-hub-more { margin:18px 0 0; font-size:.9375rem; }
 body.public-page .plan-hub-more a { display:inline-flex; align-items:center; gap:6px; color:var(--public-cobalt); font-weight:600; text-underline-offset:3px; }
+@media(max-width:640px) { body.public-page .public-plan-table td > :is(small,a) { grid-column:2; } }

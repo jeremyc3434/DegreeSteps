@@ -44,7 +44,7 @@
     link.href = '#' + step.heading.id;
     link.className = 'step-trail-node';
     link.innerHTML = '<span class="step-trail-dot" aria-hidden="true">' + pad(index + 1) + '</span><span class="step-trail-tip">' + step.label.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]) + '</span>';
-    link.setAttribute('aria-label', 'Step ' + (index + 1) + ' of ' + total + ': ' + step.label);
+    link.setAttribute('aria-label', 'Section ' + (index + 1) + ' of ' + total + ': ' + step.label);
     link.addEventListener('click', event => {
       event.preventDefault();
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -59,9 +59,9 @@
     return li;
   });
   bar.style.setProperty('--steps', String(total));
-  // Early in the tab order (after the skip link) so keyboard users reach it without tabbing through the page.
-  const skip = document.querySelector('.site-skip');
-  if (skip && skip.parentNode === document.body) skip.after(bar); else document.body.prepend(bar);
+  // After the site header: keyboard users meet the logo and navigation first, then the page's sections.
+  const header = document.querySelector('body > header');
+  if (header) header.after(bar); else document.body.prepend(bar);
   document.body.classList.add('has-step-trail');
 
   function offset() { return bar.offsetHeight + 24; }
@@ -71,7 +71,8 @@
     frame = null;
     const line = Math.min(window.innerHeight * 0.35, 320);
     let active = -1;
-    steps.forEach((step, index) => { if (step.heading.getBoundingClientRect().top <= line) active = index; });
+    // Sections hidden by a page filter (e.g. a course search) are skipped.
+    steps.forEach((step, index) => { if (step.heading.getClientRects().length && step.heading.getBoundingClientRect().top <= line) active = index; });
     // The closing step becomes current once the page bottom is reached, even when it is short.
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) active = total - 1;
     bar.classList.toggle('is-visible', active >= 0 || bar.contains(document.activeElement));

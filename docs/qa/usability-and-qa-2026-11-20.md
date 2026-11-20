@@ -1,0 +1,43 @@
+# Usability and QA report — plan library, finder and plan pages (2026-11-20)
+
+## What was tested
+
+| Method | Coverage |
+| --- | --- |
+| Persona walkthroughs (2 rounds, independent tester, no source access) | Working adult on desktop, veteran on desktop, 19-year-old on iPhone 13 emulation, keyboard-only user |
+| Self-contained accessibility checks (desktop + phone) | Labels, button/link names, duplicate IDs, heading order, target size, contrast of new components, horizontal scroll — on the plan library (default, filtered, empty), plan pages (default, searching), credit sources, guides, plan finder and its dialog |
+| Browser behaviour checks | Filters, sorting, URL state, copy link, empty states, phone filter sheet, no-JS fallbacks, keyboard order and focus return |
+| Automated suite | `node scripts/test-core.mjs` — 246 files passing |
+
+Limits: Chromium emulation, not real iOS Safari; no screen-reader run; simulated personas are not real students. A full axe-core scan was not run because downloading the external script was blocked in this environment.
+
+## Fixed in this round
+
+- Open questions on plans awaiting school confirmation are concrete asks (e.g. "what is the most ACE- or NCCRS-recommended credit you accept toward this degree?").
+- The finder quotes the same planning estimate as the plan library and plan pages; the baseline is labelled "Starting route"; a legend explains "Reviewed plan" vs "Needs school confirmation".
+- Step bar: reachable right after the site navigation, visible while focused, counts "N of M" ("Section N of M" for screen readers), skips sections hidden by a search, and anchor targets clear it.
+- Plan pages: course rows become labelled cards on phones (no sideways scroll), filtered-out groups hide, and surprising-but-sourced matches (e.g. Macroeconomics for WGU D266) say the school's published transfer guidance accepts them.
+- Plan library: "Outside credit" labels, outside-credit filter second, "Copy link to this list", "5 of 11 plans match" wording, and a visible link to the full finder.
+- Accessibility: filter-count contrast, heading outline in the flat list, 24px checkbox target.
+
+## Known issues — follow-ups (not fixed here)
+
+1. **Worksheet drops StraighterLine for some plans (P1, pre-existing).** Plans whose starting route uses StraighterLine (both Excelsior plans so far) open in the worksheet with fewer outside credits than the starting route: Excelsior Business 81 vs 87, Psychology 75 vs 78. Reviewed WGU and Liberty plans match exactly. Cause: when a plan is opened, the worksheet's course sources only merge the starting route's providers for GCU (`usePublicPlan` in `dist/portal.js`, the `if(gcu)` branch), and the default scenario providers in `dist/sheet-state.js` are Sophia, Study.com and CLEP. Fix carefully: saved student provider choices must not be overridden silently.
+2. **The guided planner shows a different cost figure (P1, pre-existing).** Portal results show e.g. "$20,209" for Liberty Criminal Justice online, outside the $21,559–$23,030 planning range shown elsewhere, and say fees are excluded. Unify with the plan-estimate engine or label it as a different measure.
+3. **Open questions are not carried into the planner setup screen** for plans awaiting school confirmation.
+4. **Guided-planner wizard friction (pre-existing):** no Psychology subject; the military question is hidden in a collapsed tip; a stale "Finding course plans…" banner; the goal question is asked again after choosing a degree; the portal logo goes to plan.html.
+5. **Plan pages list unrelated sources** (217 on WGU Marketing, including other programs' guides) and repeat the degree title under the H1.
+6. **Local preview logs a 404 for `/api/growth/events`.** Check the production route.
+
+## Real user test script (≈30 minutes per participant, 5 participants)
+
+Recruit adults actually considering a degree: at least one with prior college credit, one veteran, one who mostly uses a phone. Ask them to think aloud; don't help unless they are stuck for 2 minutes.
+
+1. "You want an affordable online business degree. Find a plan that fits you." — Watch: do they find Degree plans, the subject filter, the outside-credit filter?
+2. "Which of these would cost you the least, and why?" — Watch: do they trust and understand the planning estimate and outside-credit share?
+3. "Open the plan and tell me which courses you'd take first and where." — Watch: course search, provider filter, evidence links.
+4. "Some plans say 'Needs school confirmation'. What would you do before paying for a course?" — Watch: do they understand the open question and feel confident asking the school?
+5. "Save this plan so you can come back later." — Watch: account/save flow.
+6. "Send this list to a friend." — Watch: copy link.
+
+After each session record: task success (yes / with help / no), time, the exact words they used when confused, and a 1–5 confidence rating for "I know what to do next". Fix anything that blocks two or more participants before launch.
