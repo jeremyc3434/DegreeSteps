@@ -36,13 +36,15 @@ const home = p => p.locator('#sheet-home .student-checklist');
 const saved = p => p.evaluate(key=>JSON.parse(localStorage.getItem(key)),KEY);
 const item = (p,id) => home(p).locator('[data-dc-task="'+id+'"]');
 async function ready(p) {
-  await home(p).locator('.dc-next').waitFor();
   await p.locator('tr.course-plan-row').first().waitFor();
+  // The checklist sits in the collapsed "All tasks and checklist" panel below the plan.
+  await openDetails(p.locator('#sheet-task-panel'));
+  await home(p).locator('.dc-next').waitFor();
 }
 async function openDetails(locator) {
   if (await locator.getAttribute('open') === null) await locator.locator(':scope > summary').click();
 }
-async function checklist(p) {await openDetails(home(p).locator('[data-dc-open="checklist"]'));}
+async function checklist(p) {await openDetails(p.locator('#sheet-task-panel'));await openDetails(home(p).locator('[data-dc-open="checklist"]'));}
 async function reveal(p,id,edit=false) {
   await checklist(p);
   const task = item(p,id);
