@@ -1,6 +1,6 @@
 {
   "schemaRevision": "provider-directory-discovery-v1",
-  "revision": "provider-directory-discovery-v1:ad1eb2de23f28c423df9226a8a43b9f12dc50434868e6cf0947effc6b22a271d",
+  "revision": "provider-directory-discovery-v1:8b63cce0ee8224bf0eda10cefa0207f6dace2e2f5f85914da875482fe0c3f044",
   "asOf": "2026-11-19",
   "scope": "Internal discovery leads only. Listed, claimed partner and transcript-recipient evidence does not establish transfer acceptance, regional accreditation, campus availability or a complete degree plan.",
   "summary": {
@@ -10,7 +10,7 @@
     "blockedSources": 1,
     "limitedSources": 5,
     "eligibleStudentPlans": 0,
-    "knownSchoolCandidates": 12
+    "knownSchoolCandidates": 13
   },
   "methodology": {
     "sourceReviewCadenceDays": 30,
@@ -308,6 +308,66 @@
       "reviewFlags": [
         "historical-source-needs-current-policy"
       ],
+      "studentEligible": false,
+      "publicationAllowed": false,
+      "nextActions": [
+        {
+          "id": "verify-institution",
+          "label": "Verify current institution identity, operating status and regional institutional accreditation."
+        },
+        {
+          "id": "verify-provider-scope",
+          "label": "Review the receiving university’s exact provider policy, program and campus or online scope."
+        },
+        {
+          "id": "map-degree",
+          "label": "Map exact course requirements, alternative-credit caps, residency and source versions."
+        },
+        {
+          "id": "apply-readiness-gates",
+          "label": "Run the existing degree-model evidence and completeness checks before any student publication."
+        }
+      ]
+    },
+    {
+      "id": "provider-school-546ceff09f93f900",
+      "name": "Excelsior University",
+      "observedNames": [
+        "Excelsior University"
+      ],
+      "providers": [
+        "StraighterLine"
+      ],
+      "sourceIds": [
+        "straighterline-colleges"
+      ],
+      "sourceEvidence": [
+        {
+          "sourceId": "straighterline-colleges",
+          "provider": "StraighterLine",
+          "url": "https://www.straighterline.com/colleges/excelsior-college/",
+          "relation": "directory-listed",
+          "checkedOn": "2026-11-19",
+          "sourceDate": null,
+          "historical": false,
+          "sourceAccessStatus": "partial"
+        }
+      ],
+      "reviewStatus": "needs-institution-review",
+      "accreditation": {
+        "status": "unreviewed",
+        "body": null
+      },
+      "operatingStatus": "unreviewed",
+      "campusScope": "unreviewed",
+      "policyReview": {
+        "totalTransferMaximum": null,
+        "alternativeCreditMaximum": null,
+        "actualMappedCredits": null,
+        "unit": null
+      },
+      "knownSchoolId": "excelsior",
+      "reviewFlags": [],
       "studentEligible": false,
       "publicationAllowed": false,
       "nextActions": [
@@ -5622,66 +5682,6 @@
           "sourceId": "straighterline-colleges",
           "provider": "StraighterLine",
           "url": "https://www.straighterline.com/colleges/eternity-bible-college/",
-          "relation": "directory-listed",
-          "checkedOn": "2026-11-19",
-          "sourceDate": null,
-          "historical": false,
-          "sourceAccessStatus": "partial"
-        }
-      ],
-      "reviewStatus": "needs-institution-review",
-      "accreditation": {
-        "status": "unreviewed",
-        "body": null
-      },
-      "operatingStatus": "unreviewed",
-      "campusScope": "unreviewed",
-      "policyReview": {
-        "totalTransferMaximum": null,
-        "alternativeCreditMaximum": null,
-        "actualMappedCredits": null,
-        "unit": null
-      },
-      "knownSchoolId": null,
-      "reviewFlags": [],
-      "studentEligible": false,
-      "publicationAllowed": false,
-      "nextActions": [
-        {
-          "id": "verify-institution",
-          "label": "Verify current institution identity, operating status and regional institutional accreditation."
-        },
-        {
-          "id": "verify-provider-scope",
-          "label": "Review the receiving university’s exact provider policy, program and campus or online scope."
-        },
-        {
-          "id": "map-degree",
-          "label": "Map exact course requirements, alternative-credit caps, residency and source versions."
-        },
-        {
-          "id": "apply-readiness-gates",
-          "label": "Run the existing degree-model evidence and completeness checks before any student publication."
-        }
-      ]
-    },
-    {
-      "id": "provider-school-546ceff09f93f900",
-      "name": "Excelsior University",
-      "observedNames": [
-        "Excelsior University"
-      ],
-      "providers": [
-        "StraighterLine"
-      ],
-      "sourceIds": [
-        "straighterline-colleges"
-      ],
-      "sourceEvidence": [
-        {
-          "sourceId": "straighterline-colleges",
-          "provider": "StraighterLine",
-          "url": "https://www.straighterline.com/colleges/excelsior-college/",
           "relation": "directory-listed",
           "checkedOn": "2026-11-19",
           "sourceDate": null,

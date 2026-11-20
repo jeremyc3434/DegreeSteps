@@ -1,27 +1,27 @@
 {
   "schemaRevision": "research-priorities-v1",
-  "revision": "research-priorities-v1:6b8c14e326f1983e03ad6a46d4e5c340e3e55d4883628299afe625900b1466dd",
+  "revision": "research-priorities-v1:24bd30c297350d0e76dc5edaa598a7f16290844e3af4a10a602284890600aa30",
   "asOf": "2026-11-20",
   "inputFingerprints": {
     "inventory": "5641a61bc3ad2f827256cb7c64f05d9e91e5d46720938a1033ab2eb1800c60b4",
-    "models": "7645e08cf5d628b978549f7604812a0f51aa11b78a6c73b83f6cf2713b73fa05",
+    "models": "667c00fff31299680c73851adcd77bde39792dc910d93a72d5d08c5cdae36d5c",
     "pathways": "724ccdc082fc8c4659451d1e3e3c7b85df95e4c1a026e50bad5c7d87c8a6e1f2",
-    "programCatalog": "f237ce03a5c8af45d3c657d88f4ff8fc7f87ae1244cd8bf5ec51d4a3da1b0de1",
-    "providerDiscovery": "b4b5c0556891b6e7eceb62841b417b153d5419748ab93066fe5c414be6ff8e7e",
-    "quality": "7a304b4e47538b41efb09dbb4b0388a4077b2e5086074cf107b2d76d1122ff14",
-    "registry": "9850810a6d20c40797c82d6a9071b1ef4f0b5c5c8db121af3de89ccf5a1cd285",
+    "programCatalog": "d46e34eb28c79ac3484bb39af59ca245a509492c3e13db9563784e1d0f5de862",
+    "providerDiscovery": "3071f4db1055a48686b22f38dc16872f870026bb93941c5f8486214298eda90c",
+    "quality": "b01a95c5ae9e703b396171f5c5b72a30c989e21affd8c2bf320cc15d15fc691c",
+    "registry": "b4563928f8b8cde34e52921e4372cf6b4ef8a561b54fef7b58c65ddcb198e334",
     "schoolInsights": "9b84b9db33a9014067bc7c797cf5d9aa4f3914bf64afda474c9bd92f872f6df6",
     "tesuExamReview": "5d9b52d81bbe4375dc9d1ad7acd2e8d1c00bf62e59b79bd4a303cbaf2505fb0e",
     "umpiPrimaryReview": "c2345e5b07e6db37f4876b2c17180e9a220aff6676f31b5dbebc99c2baaf184c"
   },
-  "academicRegistryRevision": "academic-v1:89df62567308a45046a2b2a98c6d4cd6689ce9a48c2198eb4c074e746c8fea48",
+  "academicRegistryRevision": "academic-v1:7d6eeb98dd978a5ed8464d710d3c15fe84a95d29f96eee74ae566da578cb2cba",
   "scope": "Cross-school research prioritization from the existing directory, exact model registry, recorded publication checks and sourced policy channels. This static backlog does not publish a degree map, grant student credit, establish popularity or start a research job.",
   "summary": {
-    "schools": 21,
-    "programs": 1659,
-    "directoryPrograms": 1630,
-    "modelPrograms": 52,
-    "availableTemplates": 45,
+    "schools": 22,
+    "programs": 1664,
+    "directoryPrograms": 1633,
+    "modelPrograms": 55,
+    "availableTemplates": 48,
     "publicationReady": 11,
     "unmappedPrograms": 1606,
     "inventoryCandidates": 95,
@@ -51,8 +51,8 @@
       "label": "Published alternative-credit routes need maps",
       "reason": "A school publishes accepted or case-by-case alternative-credit information, but degree mappings or publication review remain incomplete. Acceptance is not a degree placement.",
       "order": 1,
-      "schoolCount": 6,
-      "programCount": 126,
+      "schoolCount": 7,
+      "programCount": 129,
       "inventoryCandidateCount": 0
     },
     {
@@ -70,7 +70,7 @@
       "reason": "A degree model exists but has not passed the publication review. Resolve its actual findings rather than start another outline.",
       "order": 3,
       "schoolCount": 4,
-      "programCount": 21,
+      "programCount": 23,
       "inventoryCandidateCount": 0
     },
     {
@@ -614,6 +614,99 @@
           "id": "map-directory-gaps",
           "label": "Build exact degree maps for 84 directory or curated program entries without models.",
           "kind": "map-directory-gaps"
+        }
+      ]
+    },
+    {
+      "id": "excelsior",
+      "name": "Excelsior University",
+      "sourceStatus": "existing-catalog-or-model",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "course-term"
+      ],
+      "transferEvidence": {
+        "institutional": {
+          "status": "accepted",
+          "maximumCredits": 113,
+          "minimumInstitutionalCredits": null,
+          "notes": "Each captured bachelor's program page states 'Transfer up to 113 Credits'. Outside credit needs the equivalent of C- or higher and is posted as Pass; program pages and the catalog name required Excelsior courses (Information Literacy, Cornerstone and the capstone). Students admitted through a partnership after December 31, 2024 must complete at least 15 Excelsior course credits.",
+          "sourceUrl": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+          "applicability": "Bachelor's programs listed here; nursing and technology programs have additional restrictions that are not imported.",
+          "reportedStatus": "accepted",
+          "reportedMaximumCredits": 113,
+          "unit": null,
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "ace": {
+          "status": "case-by-case",
+          "notes": "Excelsior reserves the right to evaluate and accept or deny ACE- and NCCRS-recommended non-collegiate credit, which must be completed during the recommendation period. Course-by-course partner guides for Sophia, Study.com and StraighterLine are published separately; no separate non-collegiate credit ceiling was found for these programs.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/",
+          "reportedStatus": "case-by-case",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "nccrs": {
+          "status": "case-by-case",
+          "notes": "Evaluated under the same Non-Collegiate Sources of Credit policy as ACE recommendations.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/",
+          "reportedStatus": "case-by-case",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "graduate": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        }
+      },
+      "profileTransferSummary": null,
+      "evidenceUrls": [
+        "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+        "https://www.excelsior.edu/policy/transfer-credit-sources/",
+        "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+        "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+        "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+        "https://www.excelsior.edu/programs/?level=bachelor"
+      ],
+      "programIds": [
+        "excelsior-bs-business",
+        "excelsior-bs-business-no-concentration",
+        "excelsior-bs-liberal-arts",
+        "excelsior-bs-liberal-arts-no-concentration",
+        "excelsior-bs-psychology"
+      ],
+      "coverage": {
+        "directoryPrograms": 3,
+        "programCount": 5,
+        "models": 3,
+        "availableTemplates": 3,
+        "publicationReady": 0,
+        "unmappedPrograms": 0,
+        "needsResearchPrograms": 3
+      },
+      "groupId": "alternative-credit-map-gap",
+      "nextActions": [
+        {
+          "id": "alternative-credit-scope",
+          "label": "Review exact alternative-credit eligibility before mapping courses.",
+          "kind": "alternative-credit-scope"
+        },
+        {
+          "id": "resolve-existing-models",
+          "label": "Resolve remaining evidence and publication findings in 3 modeled program entries.",
+          "kind": "resolve-existing-models"
         }
       ]
     },
@@ -11437,6 +11530,411 @@
       "limitsAreNotCoursePlacements": true
     },
     {
+      "id": "excelsior-bs-business-no-concentration",
+      "parentId": "excelsior-bs-business",
+      "schoolId": "excelsior",
+      "title": "Bachelor of Science in Business (No Concentration)",
+      "level": "bachelor",
+      "catalog": "Excelsior University Academic Catalog, November 2026",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "official-directory-listing",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-excelsior-bs-business-no-concentration",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 113,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.excelsior.edu/program/bachelor-of-science-in-business/"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/272/syllabus_pdf/0d546fa22a229e55a0a8919f5db3891e.pdf",
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/274/syllabus_pdf/5fd5341e247af8aaf8d241ba988749bf.pdf",
+        "https://cdn2.sophia.org/spcc_courses/280/syllabus_pdf/f69c3ad26643f08e1956762b842b99ea.pdf",
+        "https://cdn2.sophia.org/spcc_courses/284/syllabus_pdf/c3dbc7d85d1d4b4dc638b9262bc6092b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/286/syllabus_pdf/a452e15d203b77080748304b71723885.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/318/syllabus_pdf/0cd4a460c70b857939d556908c5e87d7.pdf",
+        "https://cdn2.sophia.org/spcc_courses/319/syllabus_pdf/6abd3255e0cd9cfeab7b42cfc6314ce6.pdf",
+        "https://cdn2.sophia.org/spcc_courses/320/syllabus_pdf/0323cc15afe54dc1952096a5a7687999.pdf",
+        "https://cdn2.sophia.org/spcc_courses/321/syllabus_pdf/59dc0dc2010795cc5c60abb424d98053.pdf",
+        "https://cdn2.sophia.org/spcc_courses/325/syllabus_pdf/570732fea52f098e37aedeefaaab0a5b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/327/syllabus_pdf/e2f99fdbba06a5aebe19e1a43673edc0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/335/syllabus_pdf/7c7de9b605602dc44b9d4da5f99e116d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+        "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
+        "https://cdn2.sophia.org/spcc_courses/361/syllabus_pdf/a101cc63be34ba1b055aa459c8687715.pdf",
+        "https://cdn2.sophia.org/spcc_courses/362/syllabus_pdf/2b6d8d5b16810ac0394e4e3882ae9ec0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/371/syllabus_pdf/b3c167afe478bfd26406918cf802904a.pdf",
+        "https://study.com/academy/course/accounting-102-intro-to-managerial-accounting.html",
+        "https://study.com/academy/course/algebra.html",
+        "https://study.com/academy/course/art-103-history-of-western-art-i.html",
+        "https://study.com/academy/course/art-104-history-of-western-art-ii.html",
+        "https://study.com/academy/course/business-120-international-business.html",
+        "https://study.com/academy/course/business-312-advanced-operations-management.html",
+        "https://study.com/academy/course/business-315-logistics-supply-chain-management.html",
+        "https://study.com/academy/course/business-law-course.html",
+        "https://study.com/academy/course/communications-301-diversity-and-intercultural-communication.html",
+        "https://study.com/academy/course/human-resource-management-course.html",
+        "https://study.com/academy/course/introduction-to-biology.html",
+        "https://study.com/academy/course/marketing-308-applied-marketing.html",
+        "https://study.com/academy/course/organizational-behavior-course.html",
+        "https://study.com/academy/course/precalculus-course.html",
+        "https://study.com/academy/course/principles-of-marketing-course.html",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e44c3360-2ffb-ee11-a1ff-000d3a5d49ac&oid=80099b28-9016-e811-810f-5065f38bf0e1&org=StraighterLine",
+        "https://www.excelsior.edu/catalog/courses/bio111-biology-laboratory/",
+        "https://www.excelsior.edu/catalog/courses/bio115l-anatomy-and-physiology-i-lab/",
+        "https://www.excelsior.edu/catalog/courses/bio212l-microbiology-lab/",
+        "https://www.excelsior.edu/catalog/courses/bus300-introduction-to-entrepreneurship/",
+        "https://www.excelsior.edu/catalog/courses/bus312-managing-human-resources/",
+        "https://www.excelsior.edu/catalog/courses/bus325-women-in-business/",
+        "https://www.excelsior.edu/catalog/courses/bus380-managing-diversity-in-the-workplace/",
+        "https://www.excelsior.edu/catalog/courses/his335-united-states-civil-war/",
+        "https://www.excelsior.edu/catalog/courses/his350-world-war-i/",
+        "https://www.excelsior.edu/catalog/courses/hsc375-health-and-wellness/",
+        "https://www.excelsior.edu/catalog/courses/pol351-war-and-peace-after-the-cold-war/",
+        "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+        "https://www.excelsior.edu/partner/sophia/",
+        "https://www.excelsior.edu/partner/straighterline/",
+        "https://www.excelsior.edu/partner/study-com/",
+        "https://www.excelsior.edu/policy/grade-scale-gpa-and-credit-application/",
+        "https://www.excelsior.edu/policy/transfer-credit-sources/",
+        "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+        "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+        "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-business/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-liberal-arts/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-psychology/",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Sophia_Excelsior-University-Course-Equivalency-03_2025.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Straighterline-Course-Equivalency-12_2024.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Study.com-Course-Equivalency-12_2024.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2026/11/Excelsior_University_Academic_Catalog_November_2026.pdf",
+        "https://www.sophia.org/online-courses/business/managerial-accounting/",
+        "https://www.sophia.org/online-courses/business/organizational-behavior/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.straighterline.com/online-college-courses/anatomy-physiology-i/",
+        "https://www.straighterline.com/online-college-courses/business-ethics/",
+        "https://www.straighterline.com/online-college-courses/business-law/",
+        "https://www.straighterline.com/online-college-courses/business-statistics/",
+        "https://www.straighterline.com/online-college-courses/college-algebra/",
+        "https://www.straighterline.com/online-college-courses/english-composition-i/",
+        "https://www.straighterline.com/online-college-courses/english-composition-ii/",
+        "https://www.straighterline.com/online-college-courses/financial-accounting/",
+        "https://www.straighterline.com/online-college-courses/general-chemistry-i/",
+        "https://www.straighterline.com/online-college-courses/general-physics-i/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-biology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-psychology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-sociology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-statistics/",
+        "https://www.straighterline.com/online-college-courses/organizational-behavior/",
+        "https://www.straighterline.com/online-college-courses/quantitative-reasoning/",
+        "https://www.straighterline.com/online-college-courses/united-states-history-i/",
+        "https://www.straighterline.com/online-college-courses/united-states-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: policy-unresolved, unresolved-research.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "excelsior-bs-liberal-arts-no-concentration",
+      "parentId": "excelsior-bs-liberal-arts",
+      "schoolId": "excelsior",
+      "title": "Bachelor of Science in Liberal Arts (No Concentration)",
+      "level": "bachelor",
+      "catalog": "Excelsior University Academic Catalog, November 2026",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "official-directory-listing",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-excelsior-bs-liberal-arts-no-concentration",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 113,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/272/syllabus_pdf/0d546fa22a229e55a0a8919f5db3891e.pdf",
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/274/syllabus_pdf/5fd5341e247af8aaf8d241ba988749bf.pdf",
+        "https://cdn2.sophia.org/spcc_courses/280/syllabus_pdf/f69c3ad26643f08e1956762b842b99ea.pdf",
+        "https://cdn2.sophia.org/spcc_courses/284/syllabus_pdf/c3dbc7d85d1d4b4dc638b9262bc6092b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/286/syllabus_pdf/a452e15d203b77080748304b71723885.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/318/syllabus_pdf/0cd4a460c70b857939d556908c5e87d7.pdf",
+        "https://cdn2.sophia.org/spcc_courses/319/syllabus_pdf/6abd3255e0cd9cfeab7b42cfc6314ce6.pdf",
+        "https://cdn2.sophia.org/spcc_courses/320/syllabus_pdf/0323cc15afe54dc1952096a5a7687999.pdf",
+        "https://cdn2.sophia.org/spcc_courses/321/syllabus_pdf/59dc0dc2010795cc5c60abb424d98053.pdf",
+        "https://cdn2.sophia.org/spcc_courses/325/syllabus_pdf/570732fea52f098e37aedeefaaab0a5b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/327/syllabus_pdf/e2f99fdbba06a5aebe19e1a43673edc0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/335/syllabus_pdf/7c7de9b605602dc44b9d4da5f99e116d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+        "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
+        "https://cdn2.sophia.org/spcc_courses/361/syllabus_pdf/a101cc63be34ba1b055aa459c8687715.pdf",
+        "https://cdn2.sophia.org/spcc_courses/362/syllabus_pdf/2b6d8d5b16810ac0394e4e3882ae9ec0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/371/syllabus_pdf/b3c167afe478bfd26406918cf802904a.pdf",
+        "https://study.com/academy/course/accounting-102-intro-to-managerial-accounting.html",
+        "https://study.com/academy/course/algebra.html",
+        "https://study.com/academy/course/art-103-history-of-western-art-i.html",
+        "https://study.com/academy/course/art-104-history-of-western-art-ii.html",
+        "https://study.com/academy/course/business-120-international-business.html",
+        "https://study.com/academy/course/business-312-advanced-operations-management.html",
+        "https://study.com/academy/course/business-315-logistics-supply-chain-management.html",
+        "https://study.com/academy/course/business-law-course.html",
+        "https://study.com/academy/course/communications-301-diversity-and-intercultural-communication.html",
+        "https://study.com/academy/course/human-resource-management-course.html",
+        "https://study.com/academy/course/introduction-to-biology.html",
+        "https://study.com/academy/course/marketing-308-applied-marketing.html",
+        "https://study.com/academy/course/organizational-behavior-course.html",
+        "https://study.com/academy/course/precalculus-course.html",
+        "https://study.com/academy/course/principles-of-marketing-course.html",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e44c3360-2ffb-ee11-a1ff-000d3a5d49ac&oid=80099b28-9016-e811-810f-5065f38bf0e1&org=StraighterLine",
+        "https://www.excelsior.edu/catalog/courses/bio111-biology-laboratory/",
+        "https://www.excelsior.edu/catalog/courses/bio115l-anatomy-and-physiology-i-lab/",
+        "https://www.excelsior.edu/catalog/courses/bio212l-microbiology-lab/",
+        "https://www.excelsior.edu/catalog/courses/bus300-introduction-to-entrepreneurship/",
+        "https://www.excelsior.edu/catalog/courses/bus312-managing-human-resources/",
+        "https://www.excelsior.edu/catalog/courses/bus325-women-in-business/",
+        "https://www.excelsior.edu/catalog/courses/bus380-managing-diversity-in-the-workplace/",
+        "https://www.excelsior.edu/catalog/courses/his335-united-states-civil-war/",
+        "https://www.excelsior.edu/catalog/courses/his350-world-war-i/",
+        "https://www.excelsior.edu/catalog/courses/hsc375-health-and-wellness/",
+        "https://www.excelsior.edu/catalog/courses/pol351-war-and-peace-after-the-cold-war/",
+        "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+        "https://www.excelsior.edu/partner/sophia/",
+        "https://www.excelsior.edu/partner/straighterline/",
+        "https://www.excelsior.edu/partner/study-com/",
+        "https://www.excelsior.edu/policy/grade-scale-gpa-and-credit-application/",
+        "https://www.excelsior.edu/policy/transfer-credit-sources/",
+        "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+        "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+        "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-business/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-liberal-arts/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-psychology/",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Sophia_Excelsior-University-Course-Equivalency-03_2025.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Straighterline-Course-Equivalency-12_2024.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Study.com-Course-Equivalency-12_2024.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2026/11/Excelsior_University_Academic_Catalog_November_2026.pdf",
+        "https://www.sophia.org/online-courses/business/managerial-accounting/",
+        "https://www.sophia.org/online-courses/business/organizational-behavior/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.straighterline.com/online-college-courses/anatomy-physiology-i/",
+        "https://www.straighterline.com/online-college-courses/business-ethics/",
+        "https://www.straighterline.com/online-college-courses/business-law/",
+        "https://www.straighterline.com/online-college-courses/business-statistics/",
+        "https://www.straighterline.com/online-college-courses/college-algebra/",
+        "https://www.straighterline.com/online-college-courses/english-composition-i/",
+        "https://www.straighterline.com/online-college-courses/english-composition-ii/",
+        "https://www.straighterline.com/online-college-courses/financial-accounting/",
+        "https://www.straighterline.com/online-college-courses/general-chemistry-i/",
+        "https://www.straighterline.com/online-college-courses/general-physics-i/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-biology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-psychology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-sociology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-statistics/",
+        "https://www.straighterline.com/online-college-courses/organizational-behavior/",
+        "https://www.straighterline.com/online-college-courses/quantitative-reasoning/",
+        "https://www.straighterline.com/online-college-courses/united-states-history-i/",
+        "https://www.straighterline.com/online-college-courses/united-states-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: policy-unresolved, unresolved-research.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "excelsior-bs-psychology",
+      "parentId": null,
+      "schoolId": "excelsior",
+      "title": "Bachelor of Science in Psychology",
+      "level": "bachelor",
+      "catalog": "Excelsior University Academic Catalog, November 2026",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "official-directory-listing",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-excelsior-bs-psychology",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 113,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.excelsior.edu/program/online-bs-in-psychology-degree/"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/272/syllabus_pdf/0d546fa22a229e55a0a8919f5db3891e.pdf",
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/274/syllabus_pdf/5fd5341e247af8aaf8d241ba988749bf.pdf",
+        "https://cdn2.sophia.org/spcc_courses/280/syllabus_pdf/f69c3ad26643f08e1956762b842b99ea.pdf",
+        "https://cdn2.sophia.org/spcc_courses/284/syllabus_pdf/c3dbc7d85d1d4b4dc638b9262bc6092b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/286/syllabus_pdf/a452e15d203b77080748304b71723885.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/318/syllabus_pdf/0cd4a460c70b857939d556908c5e87d7.pdf",
+        "https://cdn2.sophia.org/spcc_courses/319/syllabus_pdf/6abd3255e0cd9cfeab7b42cfc6314ce6.pdf",
+        "https://cdn2.sophia.org/spcc_courses/320/syllabus_pdf/0323cc15afe54dc1952096a5a7687999.pdf",
+        "https://cdn2.sophia.org/spcc_courses/321/syllabus_pdf/59dc0dc2010795cc5c60abb424d98053.pdf",
+        "https://cdn2.sophia.org/spcc_courses/325/syllabus_pdf/570732fea52f098e37aedeefaaab0a5b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/327/syllabus_pdf/e2f99fdbba06a5aebe19e1a43673edc0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/335/syllabus_pdf/7c7de9b605602dc44b9d4da5f99e116d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+        "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
+        "https://cdn2.sophia.org/spcc_courses/361/syllabus_pdf/a101cc63be34ba1b055aa459c8687715.pdf",
+        "https://cdn2.sophia.org/spcc_courses/362/syllabus_pdf/2b6d8d5b16810ac0394e4e3882ae9ec0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/371/syllabus_pdf/b3c167afe478bfd26406918cf802904a.pdf",
+        "https://study.com/academy/course/accounting-102-intro-to-managerial-accounting.html",
+        "https://study.com/academy/course/algebra.html",
+        "https://study.com/academy/course/art-103-history-of-western-art-i.html",
+        "https://study.com/academy/course/art-104-history-of-western-art-ii.html",
+        "https://study.com/academy/course/business-120-international-business.html",
+        "https://study.com/academy/course/business-312-advanced-operations-management.html",
+        "https://study.com/academy/course/business-315-logistics-supply-chain-management.html",
+        "https://study.com/academy/course/business-law-course.html",
+        "https://study.com/academy/course/communications-301-diversity-and-intercultural-communication.html",
+        "https://study.com/academy/course/human-resource-management-course.html",
+        "https://study.com/academy/course/introduction-to-biology.html",
+        "https://study.com/academy/course/marketing-308-applied-marketing.html",
+        "https://study.com/academy/course/organizational-behavior-course.html",
+        "https://study.com/academy/course/precalculus-course.html",
+        "https://study.com/academy/course/principles-of-marketing-course.html",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e44c3360-2ffb-ee11-a1ff-000d3a5d49ac&oid=80099b28-9016-e811-810f-5065f38bf0e1&org=StraighterLine",
+        "https://www.excelsior.edu/catalog/courses/bio111-biology-laboratory/",
+        "https://www.excelsior.edu/catalog/courses/bio115l-anatomy-and-physiology-i-lab/",
+        "https://www.excelsior.edu/catalog/courses/bio212l-microbiology-lab/",
+        "https://www.excelsior.edu/catalog/courses/bus300-introduction-to-entrepreneurship/",
+        "https://www.excelsior.edu/catalog/courses/bus312-managing-human-resources/",
+        "https://www.excelsior.edu/catalog/courses/bus325-women-in-business/",
+        "https://www.excelsior.edu/catalog/courses/bus380-managing-diversity-in-the-workplace/",
+        "https://www.excelsior.edu/catalog/courses/his335-united-states-civil-war/",
+        "https://www.excelsior.edu/catalog/courses/his350-world-war-i/",
+        "https://www.excelsior.edu/catalog/courses/hsc375-health-and-wellness/",
+        "https://www.excelsior.edu/catalog/courses/pol351-war-and-peace-after-the-cold-war/",
+        "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+        "https://www.excelsior.edu/partner/sophia/",
+        "https://www.excelsior.edu/partner/straighterline/",
+        "https://www.excelsior.edu/partner/study-com/",
+        "https://www.excelsior.edu/policy/grade-scale-gpa-and-credit-application/",
+        "https://www.excelsior.edu/policy/transfer-credit-sources/",
+        "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+        "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+        "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-business/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-liberal-arts/",
+        "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-psychology/",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Sophia_Excelsior-University-Course-Equivalency-03_2025.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Straighterline-Course-Equivalency-12_2024.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2018/01/Study.com-Course-Equivalency-12_2024.pdf",
+        "https://www.excelsior.edu/wp-content/uploads/2026/11/Excelsior_University_Academic_Catalog_November_2026.pdf",
+        "https://www.sophia.org/online-courses/business/managerial-accounting/",
+        "https://www.sophia.org/online-courses/business/organizational-behavior/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.straighterline.com/online-college-courses/anatomy-physiology-i/",
+        "https://www.straighterline.com/online-college-courses/business-ethics/",
+        "https://www.straighterline.com/online-college-courses/business-law/",
+        "https://www.straighterline.com/online-college-courses/business-statistics/",
+        "https://www.straighterline.com/online-college-courses/college-algebra/",
+        "https://www.straighterline.com/online-college-courses/english-composition-i/",
+        "https://www.straighterline.com/online-college-courses/english-composition-ii/",
+        "https://www.straighterline.com/online-college-courses/financial-accounting/",
+        "https://www.straighterline.com/online-college-courses/general-chemistry-i/",
+        "https://www.straighterline.com/online-college-courses/general-physics-i/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-biology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-psychology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-sociology/",
+        "https://www.straighterline.com/online-college-courses/introduction-to-statistics/",
+        "https://www.straighterline.com/online-college-courses/organizational-behavior/",
+        "https://www.straighterline.com/online-college-courses/quantitative-reasoning/",
+        "https://www.straighterline.com/online-college-courses/united-states-history-i/",
+        "https://www.straighterline.com/online-college-courses/united-states-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: policy-unresolved, unresolved-research.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
       "id": "troy-accounting-b-s-b-a",
       "parentId": null,
       "schoolId": "troy",
@@ -22140,6 +22638,88 @@
         }
       ],
       "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "excelsior-bs-business",
+      "parentId": null,
+      "schoolId": "excelsior",
+      "title": "Bachelor of Science in Business",
+      "level": "bachelor",
+      "catalog": null,
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "official-directory-listing",
+      "coverageStatus": "covered-by-planning-variant",
+      "groupId": "existing-model-review",
+      "modelId": null,
+      "availableTemplate": false,
+      "publicationReady": false,
+      "publicationReasonCodes": [],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": null,
+        "unit": null,
+        "totalTransferMaximum": null,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://www.excelsior.edu/program/bachelor-of-science-in-business/"
+      ],
+      "nextActions": [
+        {
+          "id": "review-existing-variant",
+          "label": "Review the existing mapped planning variant before starting duplicate degree research: excelsior-bs-business-no-concentration.",
+          "kind": "review-existing-variant"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true,
+      "coveredByVariantIds": [
+        "excelsior-bs-business-no-concentration"
+      ]
+    },
+    {
+      "id": "excelsior-bs-liberal-arts",
+      "parentId": null,
+      "schoolId": "excelsior",
+      "title": "Bachelor of Science in Liberal Arts",
+      "level": "bachelor",
+      "catalog": null,
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "official-directory-listing",
+      "coverageStatus": "covered-by-planning-variant",
+      "groupId": "existing-model-review",
+      "modelId": null,
+      "availableTemplate": false,
+      "publicationReady": false,
+      "publicationReasonCodes": [],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": null,
+        "unit": null,
+        "totalTransferMaximum": null,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/"
+      ],
+      "nextActions": [
+        {
+          "id": "review-existing-variant",
+          "label": "Review the existing mapped planning variant before starting duplicate degree research: excelsior-bs-liberal-arts-no-concentration.",
+          "kind": "review-existing-variant"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true,
+      "coveredByVariantIds": [
+        "excelsior-bs-liberal-arts-no-concentration"
+      ]
     },
     {
       "id": "gcu-bachelor-of-science-in-business-administration",
@@ -85810,7 +86390,7 @@
   "runtimeAiCalls": 0,
   "providerDiscovery": {
     "schemaRevision": "provider-directory-discovery-v1",
-    "revision": "provider-directory-discovery-v1:ad1eb2de23f28c423df9226a8a43b9f12dc50434868e6cf0947effc6b22a271d",
+    "revision": "provider-directory-discovery-v1:8b63cce0ee8224bf0eda10cefa0207f6dace2e2f5f85914da875482fe0c3f044",
     "asOf": "2026-11-19",
     "scope": "Internal discovery leads only. Listed, claimed partner and transcript-recipient evidence does not establish transfer acceptance, regional accreditation, campus availability or a complete degree plan.",
     "summary": {
@@ -85820,7 +86400,7 @@
       "blockedSources": 1,
       "limitedSources": 5,
       "eligibleStudentPlans": 0,
-      "knownSchoolCandidates": 12
+      "knownSchoolCandidates": 13
     },
     "methodology": {
       "sourceReviewCadenceDays": 30,
@@ -86118,6 +86698,66 @@
         "reviewFlags": [
           "historical-source-needs-current-policy"
         ],
+        "studentEligible": false,
+        "publicationAllowed": false,
+        "nextActions": [
+          {
+            "id": "verify-institution",
+            "label": "Verify current institution identity, operating status and regional institutional accreditation."
+          },
+          {
+            "id": "verify-provider-scope",
+            "label": "Review the receiving university’s exact provider policy, program and campus or online scope."
+          },
+          {
+            "id": "map-degree",
+            "label": "Map exact course requirements, alternative-credit caps, residency and source versions."
+          },
+          {
+            "id": "apply-readiness-gates",
+            "label": "Run the existing degree-model evidence and completeness checks before any student publication."
+          }
+        ]
+      },
+      {
+        "id": "provider-school-546ceff09f93f900",
+        "name": "Excelsior University",
+        "observedNames": [
+          "Excelsior University"
+        ],
+        "providers": [
+          "StraighterLine"
+        ],
+        "sourceIds": [
+          "straighterline-colleges"
+        ],
+        "sourceEvidence": [
+          {
+            "sourceId": "straighterline-colleges",
+            "provider": "StraighterLine",
+            "url": "https://www.straighterline.com/colleges/excelsior-college/",
+            "relation": "directory-listed",
+            "checkedOn": "2026-11-19",
+            "sourceDate": null,
+            "historical": false,
+            "sourceAccessStatus": "partial"
+          }
+        ],
+        "reviewStatus": "needs-institution-review",
+        "accreditation": {
+          "status": "unreviewed",
+          "body": null
+        },
+        "operatingStatus": "unreviewed",
+        "campusScope": "unreviewed",
+        "policyReview": {
+          "totalTransferMaximum": null,
+          "alternativeCreditMaximum": null,
+          "actualMappedCredits": null,
+          "unit": null
+        },
+        "knownSchoolId": "excelsior",
+        "reviewFlags": [],
         "studentEligible": false,
         "publicationAllowed": false,
         "nextActions": [
@@ -91432,66 +92072,6 @@
             "sourceId": "straighterline-colleges",
             "provider": "StraighterLine",
             "url": "https://www.straighterline.com/colleges/eternity-bible-college/",
-            "relation": "directory-listed",
-            "checkedOn": "2026-11-19",
-            "sourceDate": null,
-            "historical": false,
-            "sourceAccessStatus": "partial"
-          }
-        ],
-        "reviewStatus": "needs-institution-review",
-        "accreditation": {
-          "status": "unreviewed",
-          "body": null
-        },
-        "operatingStatus": "unreviewed",
-        "campusScope": "unreviewed",
-        "policyReview": {
-          "totalTransferMaximum": null,
-          "alternativeCreditMaximum": null,
-          "actualMappedCredits": null,
-          "unit": null
-        },
-        "knownSchoolId": null,
-        "reviewFlags": [],
-        "studentEligible": false,
-        "publicationAllowed": false,
-        "nextActions": [
-          {
-            "id": "verify-institution",
-            "label": "Verify current institution identity, operating status and regional institutional accreditation."
-          },
-          {
-            "id": "verify-provider-scope",
-            "label": "Review the receiving university’s exact provider policy, program and campus or online scope."
-          },
-          {
-            "id": "map-degree",
-            "label": "Map exact course requirements, alternative-credit caps, residency and source versions."
-          },
-          {
-            "id": "apply-readiness-gates",
-            "label": "Run the existing degree-model evidence and completeness checks before any student publication."
-          }
-        ]
-      },
-      {
-        "id": "provider-school-546ceff09f93f900",
-        "name": "Excelsior University",
-        "observedNames": [
-          "Excelsior University"
-        ],
-        "providers": [
-          "StraighterLine"
-        ],
-        "sourceIds": [
-          "straighterline-colleges"
-        ],
-        "sourceEvidence": [
-          {
-            "sourceId": "straighterline-colleges",
-            "provider": "StraighterLine",
-            "url": "https://www.straighterline.com/colleges/excelsior-college/",
             "relation": "directory-listed",
             "checkedOn": "2026-11-19",
             "sourceDate": null,

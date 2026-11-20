@@ -1,0 +1,1600 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bs-business-no-concentration",
+  "modelId": "curriculum-excelsior-bs-business-no-concentration",
+  "routeIds": [
+    "excelsior-bs-business-no-concentration"
+  ],
+  "title": "Bachelor of Science in Business (No Concentration)",
+  "level": "bachelor",
+  "catalog": "Excelsior University Academic Catalog, November 2026",
+  "totalCredits": 120,
+  "review": {
+    "status": "reviewed",
+    "reviewer": "Claude (pathway factory)",
+    "reviewedOn": "2026-11-20"
+  },
+  "policies": {
+    "transferMaxCredits": {
+      "value": 113,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "excelsior-program-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-program-bs-business",
+          "text": "Transfer up to 113 Credits"
+        }
+      ]
+    }
+  },
+  "quotes": [
+    {
+      "sourceId": "excelsior-catalog-2026-11",
+      "text": "Bachelor of Science in Business Overview"
+    },
+    {
+      "sourceId": "excelsior-program-bs-business",
+      "text": "Transfer up to 113 Credits"
+    },
+    {
+      "sourceId": "excelsior-program-bs-business",
+      "text": "Electives (without concentration) 41 Credits"
+    },
+    {
+      "sourceId": "excelsior-catalog-2026-11",
+      "text": "Students must receive a ‘C’ or better in courses to satisfy their general education requirements at Excelsior."
+    }
+  ],
+  "modelFields": {
+    "catalogYear": "November 2026",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Excelsior University Academic Catalog, November 2026",
+      "sourceUrl": "https://www.excelsior.edu/wp-content/uploads/2026/11/Excelsior_University_Academic_Catalog_November_2026.pdf",
+      "checkedOn": "2026-11-20"
+    },
+    "defaultProviders": [
+      "Sophia",
+      "Study.com",
+      "StraighterLine"
+    ],
+    "institutionMinCredits": 7,
+    "upperMinCredits": 30,
+    "majorMinInstitutionCredits": 0,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 113,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "excelsior-program-bs-business"
+        ],
+        "scope": "Program page transfer ceiling for this bachelor’s degree."
+      },
+      "institutionMinCredits": {
+        "value": 7,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "excelsior-program-bs-business",
+          "excelsior-catalog-2026-11",
+          "excelsior-transfer-guide-bs-business"
+        ],
+        "scope": "Standard (non-partnership) enrollment.",
+        "calculation": "120 degree credits minus the 113-credit transfer ceiling; equal to the 7 credits of Excelsior-only courses (INL 102, IND 101 and the capstone).",
+        "partnershipAlternative": {
+          "value": 15,
+          "sourceIds": [
+            "excelsior-sophia-equivalency-2025-03",
+            "excelsior-studycom-equivalency-2024-12",
+            "excelsior-straighterline-equivalency-2024-12"
+          ],
+          "scope": "Partnership students admitted after December 31, 2024."
+        }
+      },
+      "upperMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "excelsior-catalog-2026-11",
+          "excelsior-straighterline-equivalency-2024-12"
+        ],
+        "scope": "All Excelsior bachelor’s degrees; external upper-level acceptance is subject to official evaluation."
+      },
+      "alternativeMaxCredits": {
+        "value": null,
+        "status": "not-found",
+        "sourceIds": [
+          "excelsior-transfer-credit-sources-policy"
+        ],
+        "scope": "No separate ACE/NCCRS ceiling was found for this program; the overall 113-credit transfer ceiling still applies. An unknown cap is not treated as unlimited."
+      }
+    },
+    "policySourceIds": [
+      "excelsior-program-bs-business",
+      "excelsior-catalog-2026-11",
+      "excelsior-transfer-guide-bs-business",
+      "excelsior-transfer-credit-sources-policy",
+      "excelsior-grade-credit-application-policy"
+    ],
+    "gradePolicy": {
+      "minimumGrade": "C",
+      "scope": "all-listed-requirements",
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-sophia-equivalency-2025-03"
+      ],
+      "checked": "2026-11-20",
+      "detail": "C or better for every listed requirement, including electives. Outside credit needs at least the equivalent of C- and is posted as Pass."
+    },
+    "graduationRequirements": [
+      {
+        "id": "gpa",
+        "title": "Overall GPA",
+        "description": "At least a 2.0 overall GPA for an undergraduate degree.",
+        "sourceIds": [
+          "excelsior-catalog-2026-11"
+        ]
+      },
+      {
+        "id": "arts-sciences-60",
+        "title": "Liberal arts and sciences credits",
+        "description": "Bachelor of Science degrees need at least 60 credits in the liberal arts and sciences; general education and arts and sciences electives count toward it.",
+        "sourceIds": [
+          "excelsior-catalog-2026-11"
+        ]
+      }
+    ],
+    "pricing": {
+      "model": "per-credit",
+      "amount": 510,
+      "period": "credit",
+      "currency": "USD",
+      "fees": [
+        {
+          "id": "academic-services",
+          "label": "Academic Services Fee",
+          "amount": 40,
+          "per": "credit",
+          "currency": "USD"
+        },
+        {
+          "id": "technology",
+          "label": "Technology Fee",
+          "amount": 28,
+          "per": "credit",
+          "currency": "USD"
+        },
+        {
+          "id": "graduation",
+          "label": "Graduation fee",
+          "amount": 125,
+          "frequency": "one-time",
+          "currency": "USD"
+        }
+      ],
+      "sourceIds": [
+        "excelsior-undergraduate-tuition"
+      ],
+      "sourceUrl": "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+      "checkedOn": "2026-11-20",
+      "notes": [
+        "$510 per credit hour is the standard undergraduate tuition; Academic Services ($40 per credit hour) and Technology ($28 per course credit) fees are charged per Excelsior course credit, plus a one-time $125 graduation fee.",
+        "Partner tuition ($460 per credit on the Sophia partnership page) requires partner eligibility and brings the 15-Excelsior-credit partnership rule."
+      ],
+      "exclusions": [
+        "Course materials, the optional $300 post-admission credit evaluation, the 2.85% card service fee and graduation regalia are not included.",
+        "Outside-provider subscriptions are estimated separately."
+      ]
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Business (No Concentration) ledger from the November 2026 catalog, with outside options from Excelsior’s published Sophia, Study.com and StraighterLine equivalency guides.",
+    "curriculumSections": [
+      {
+        "id": "university",
+        "title": "University Requirement",
+        "parentId": "general",
+        "requirementIds": [
+          "inl-102"
+        ],
+        "sourceId": "excelsior-catalog-2026-11"
+      },
+      {
+        "id": "general-education",
+        "title": "General Education Requirements",
+        "parentId": "general",
+        "requirementIds": [
+          "ind-101",
+          "eng-101a",
+          "eng-102a",
+          "ind-203",
+          "comm-125",
+          "psy-101",
+          "soc-101",
+          "ns-110",
+          "mat-101",
+          "mat-114"
+        ],
+        "sourceId": "excelsior-catalog-2026-11"
+      },
+      {
+        "id": "major-core",
+        "title": "Major Core Requirements",
+        "parentId": "major",
+        "requirementIds": [
+          "acc-211",
+          "acc-212",
+          "bus-222",
+          "bus-230",
+          "bus-231",
+          "bus-311",
+          "bus-323",
+          "bus-341",
+          "bus-350",
+          "bus-351",
+          "bus-431",
+          "bus-435",
+          "eco-260",
+          "eco-262",
+          "it-221",
+          "bus-499"
+        ],
+        "sourceId": "excelsior-catalog-2026-11"
+      },
+      {
+        "id": "no-concentration",
+        "title": "No Concentration: credits in any academic area",
+        "parentId": "elective",
+        "requirementIds": [
+          "no-concentration"
+        ],
+        "sourceId": "excelsior-catalog-2026-11"
+      },
+      {
+        "id": "arts-sciences-electives",
+        "title": "Arts and Sciences Electives",
+        "parentId": "elective",
+        "requirementIds": [
+          "arts-sciences-electives"
+        ],
+        "sourceId": "excelsior-catalog-2026-11"
+      },
+      {
+        "id": "electives",
+        "title": "Electives in any academic area",
+        "parentId": "elective",
+        "requirementIds": [
+          "electives"
+        ],
+        "sourceId": "excelsior-catalog-2026-11"
+      },
+      {
+        "id": "upper-level-electives",
+        "title": "Upper-level electives (part of the 17 elective credits)",
+        "parentId": "elective",
+        "requirementIds": [
+          "upper-level-electives"
+        ],
+        "sourceId": "excelsior-catalog-2026-11"
+      }
+    ],
+    "rulesNotes": [
+      "Credit units are semester credits throughout; Excelsior counts one unit of credit as one semester credit.",
+      "Outside options come only from Excelsior’s own partner equivalency guides (Sophia March 2025; Study.com and StraighterLine December 2024). Guide rows whose Sophia course code differs from Sophia’s current syllabus are held as candidates, not options.",
+      "Distribution slots for natural science and mathematics accept outside courses that Excelsior’s guide classifies in that area. Other general education slots list only outside courses that Excelsior equates to the named Excelsior course or required topic.",
+      "Elective blocks list only outside courses that Excelsior equates to a named Excelsior course, so the receiving course is explicit.",
+      "Standard enrollment needs 7 Excelsior credits (INL 102, IND 101 and the capstone); partnership enrollment after December 31, 2024 needs at least 15 Excelsior course credits.",
+      "No separate ACE/NCCRS (non-collegiate) credit ceiling was found for this program; it remains unknown rather than unlimited."
+    ],
+    "unresolved": [
+      "The 10-year transfer-credit time limit in Excelsior’s partner guides conflicts with the Grade Scale, GPA, and Credit Application policy statement that there is generally no time limit."
+    ],
+    "pricingNotes": [
+      "$510 per credit hour is the standard undergraduate tuition; Academic Services ($40 per credit hour) and Technology ($28 per course credit) fees are charged per Excelsior course credit, plus a one-time $125 graduation fee.",
+      "Partner tuition ($460 per credit on the Sophia partnership page) requires partner eligibility and brings the 15-Excelsior-credit partnership rule."
+    ]
+  },
+  "requirements": [
+    {
+      "id": "inl-102",
+      "code": "INL 102",
+      "title": "Information Literacy",
+      "credits": 1,
+      "category": "general",
+      "group": "university",
+      "subgroup": "university",
+      "upper": false,
+      "institutionalOnly": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Excelsior requires this course to be completed at Excelsior University. It must be completed within the first 13 semester hours attempted.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "INL 102 Information Literacy"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Courses must be completed with Excelsior with a minimum grade of a C or higher. Course ID Course Title Requirements Credits INL 102 Information Literacy Complete within the first 13 of attempted credits"
+        }
+      ]
+    },
+    {
+      "id": "ind-101",
+      "code": "IND 101",
+      "title": "Cornerstone A: Foundations",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "social-sciences-history",
+      "upper": false,
+      "institutionalOnly": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Excelsior requires this course to be completed at Excelsior University. It counts toward the Social Sciences/History distribution and must be taken in the first term.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "IND 101 Cornerstone A: Foundations"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "IND 101 Cornerstone A: Foundations Course must be completed with Excelsior University to meet the requirement."
+        }
+      ]
+    },
+    {
+      "id": "eng-101a",
+      "code": "ENG 101A",
+      "title": "Advanced Composition",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "written-english",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Written English distribution slot. Excelsior names ENG 101A as the recommended course; the partner guides identify outside courses that meet the Written English Requirement.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "ENG 101A Advanced Composition"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Written English ENG 101A"
+        }
+      ]
+    },
+    {
+      "id": "eng-102a",
+      "code": "ENG 102A",
+      "title": "Advanced Composition II",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "written-english",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Written English distribution slot. Excelsior names ENG 102A as the recommended course; the partner guides identify outside courses that meet the Written English Requirement.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "ENG 102A Advanced Composition II"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Written English ENG 102A"
+        }
+      ]
+    },
+    {
+      "id": "ind-203",
+      "code": "IND 203",
+      "title": "Introduction to Professional Ethics",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "ethics",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Ethics distribution slot; the ethics topic is required.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "IND 203 Introduction to Professional Ethics"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Ethics IND 203"
+        }
+      ]
+    },
+    {
+      "id": "comm-125",
+      "code": "COMM 125",
+      "title": "Public Speaking",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "humanities",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Humanities distribution slot; DegreeSteps lists only outside courses that Excelsior equates to COMM 125.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "COMM 125 Public Speaking"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Humanities COMM 125"
+        }
+      ]
+    },
+    {
+      "id": "psy-101",
+      "code": "PSY 101",
+      "title": "Introduction to Psychology I",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "social-sciences-history",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Social Sciences/History distribution slot; DegreeSteps lists only outside courses that Excelsior equates to this course.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "PSY 101 Introduction to Psychology I"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Social Sciences / History PSY 101"
+        }
+      ]
+    },
+    {
+      "id": "soc-101",
+      "code": "SOC 101",
+      "title": "Introduction to Sociology",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "social-sciences-history",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Social Sciences/History distribution slot; DegreeSteps lists only outside courses that Excelsior equates to this course.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "SOC 101 Introduction to Sociology"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Social Sciences / History SOC 101"
+        }
+      ]
+    },
+    {
+      "id": "ns-110",
+      "code": "NS 110",
+      "title": "Science in Today’s World",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "natural-sciences",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Natural Sciences/Mathematics distribution slot reserved for natural science (at least 3 natural-science credits are required). Outside options are courses Excelsior classifies as natural science.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "NS 110 Science in Today’s World"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Natural Sciences / Mathematics NS 110"
+        }
+      ]
+    },
+    {
+      "id": "mat-101",
+      "code": "MAT 101",
+      "title": "Mathematics for Everyday Life",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "mathematics",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Natural Sciences/Mathematics distribution slot reserved for mathematics (at least 3 mathematics credits are required). Outside options are courses Excelsior classifies as a mathematics requirement.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "MAT 101 Mathematics for Everyday Life"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Natural Sciences / Mathematics MAT 101"
+        }
+      ]
+    },
+    {
+      "id": "mat-114",
+      "code": "MAT 114",
+      "title": "Intermediate Algebra",
+      "credits": 3,
+      "category": "general",
+      "group": "general-education",
+      "subgroup": "mathematics",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Natural Sciences/Mathematics distribution slot reserved for mathematics (at least 3 mathematics credits are required). Outside options are courses Excelsior classifies as a mathematics requirement.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "MAT 114 Intermediate Algebra"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "Natural Sciences / Mathematics MAT 114"
+        }
+      ]
+    },
+    {
+      "id": "acc-211",
+      "code": "ACC 211",
+      "title": "Financial Accounting",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "ACC 211 Financial Accounting 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "acc-212",
+      "code": "ACC 212",
+      "title": "Managerial Accounting",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "ACC 212 Managerial Accounting 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-222",
+      "code": "BUS 222",
+      "title": "Business Communication",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 222 Business Communication 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-230",
+      "code": "BUS 230",
+      "title": "Business Law",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 230 Business Law 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-231",
+      "code": "BUS 231",
+      "title": "Business Data Literacy",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 231 Business Data Literacy 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-311",
+      "code": "BUS 311",
+      "title": "Organizational Behavior",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": true,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 311 Organizational Behavior 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-323",
+      "code": "BUS 323",
+      "title": "Business Ethics",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": true,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 323 Business Ethics 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-341",
+      "code": "BUS 341",
+      "title": "Management Concepts and Applications",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": true,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 341 Management Concepts and Applications 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-350",
+      "code": "BUS 350",
+      "title": "Principles of Finance",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": true,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 350 Principles of Finance 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-351",
+      "code": "BUS 351",
+      "title": "Marketing Concepts and Application",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": true,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 351 Marketing Concepts and Application 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-431",
+      "code": "BUS 431",
+      "title": "Business Data Analysis",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": true,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 431 Business Data Analysis 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-435",
+      "code": "BUS 435",
+      "title": "International Business",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": true,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 435 International Business 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "eco-260",
+      "code": "ECO 260",
+      "title": "Introduction to Microeconomics",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "ECO 260 Introduction to Microeconomics 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "eco-262",
+      "code": "ECO 262",
+      "title": "Introduction to Macroeconomics",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "ECO 262 Introduction to Macroeconomics 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "it-221",
+      "code": "IT 221",
+      "title": "Introduction to Computers",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": false,
+      "institutionalOnly": false,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "IT 221 Introduction to Computers 3"
+        }
+      ],
+      "notes": "Business component course: Excelsior requires transferred business-component credit to have been earned within 15 years before admission."
+    },
+    {
+      "id": "bus-499",
+      "code": "BUS 499",
+      "title": "Strategic Management Capstone",
+      "credits": 3,
+      "category": "major",
+      "group": "major-core",
+      "subgroup": "major-core",
+      "upper": true,
+      "institutionalOnly": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business"
+      ],
+      "notes": "Excelsior requires this course to be completed at Excelsior University.",
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "BUS 499 Strategic Management Capstone"
+        },
+        {
+          "sourceId": "excelsior-transfer-guide-bs-business",
+          "text": "BUS 499 Strategic Management Capstone Course must be completed with Excelsior University to meet the requirement."
+        }
+      ]
+    },
+    {
+      "id": "no-concentration",
+      "title": "No Concentration: credits in any academic area",
+      "credits": 15,
+      "category": "electives",
+      "group": "no-concentration",
+      "subgroup": "no-concentration",
+      "upper": false,
+      "institutionalOnly": false,
+      "bucket": true,
+      "excludeAlreadyUsed": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business",
+        "excelsior-course-bus300",
+        "excelsior-course-bus325",
+        "excelsior-course-his335"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "No Concentration (Optional) Students may choose to complete this option by applying 15 additional credits in any academic area."
+        },
+        {
+          "sourceId": "excelsior-course-bus300",
+          "text": "BUS300 Introduction to Entrepreneurship Department Business Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-bus300",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bus325",
+          "text": "BUS325 Women in Business Department Business Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-bus325",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-his335",
+          "text": "HIS335 United States Civil War Department History Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-his335",
+          "text": "This course does not require any prerequisites."
+        }
+      ],
+      "notes": "Choosing No Concentration replaces the 15-credit concentration with 15 credits in any academic area. Excelsior states that non-collegiate credit does not apply to a declared concentration, so concentration variants are not modeled here. Named Excelsior courses are listed as baseline choices; any eligible course in the stated area can replace them.",
+      "institutionOptions": [
+        {
+          "code": "BUS 300",
+          "title": "Introduction to Entrepreneurship",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-bus300"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bus300-introduction-to-entrepreneurship/"
+        },
+        {
+          "code": "BUS 325",
+          "title": "Women in Business",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-bus325"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bus325-women-in-business/"
+        },
+        {
+          "code": "HIS 335",
+          "title": "United States Civil War",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-his335"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/his335-united-states-civil-war/"
+        }
+      ]
+    },
+    {
+      "id": "arts-sciences-electives",
+      "title": "Arts and Sciences Electives",
+      "credits": 9,
+      "category": "electives",
+      "group": "arts-sciences-electives",
+      "subgroup": "arts-sciences-electives",
+      "upper": false,
+      "institutionalOnly": false,
+      "bucket": true,
+      "excludeAlreadyUsed": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business",
+        "excelsior-course-his335",
+        "excelsior-course-his350",
+        "excelsior-course-pol351"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "Arts and Sciences Electives Requirements: 9 credits Additional credits needed in liberal arts and sciences to fulfill the program requirements."
+        },
+        {
+          "sourceId": "excelsior-course-his335",
+          "text": "HIS335 United States Civil War Department History Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-his335",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-his350",
+          "text": "HIS350 World War I Department History Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-his350",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-pol351",
+          "text": "POL351 War and Peace After the Cold War Department Political Science Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-pol351",
+          "text": "This course does not require any prerequisites."
+        }
+      ],
+      "notes": "Liberal arts and sciences credit: humanities, social sciences, history, natural sciences or mathematics. Named Excelsior courses are listed as baseline choices; any eligible course in the stated area can replace them.",
+      "institutionOptions": [
+        {
+          "code": "HIS 335",
+          "title": "United States Civil War",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-his335"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/his335-united-states-civil-war/"
+        },
+        {
+          "code": "HIS 350",
+          "title": "World War I",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-his350"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/his350-world-war-i/"
+        },
+        {
+          "code": "POL 351",
+          "title": "War and Peace After the Cold War",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-pol351"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/pol351-war-and-peace-after-the-cold-war/"
+        }
+      ]
+    },
+    {
+      "id": "electives",
+      "title": "Electives in any academic area",
+      "credits": 9,
+      "category": "electives",
+      "group": "electives",
+      "subgroup": "electives",
+      "upper": false,
+      "institutionalOnly": false,
+      "bucket": true,
+      "excludeAlreadyUsed": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business",
+        "excelsior-course-bus300",
+        "excelsior-course-bus325",
+        "excelsior-course-his335"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "Elective Requirements: 17 credits Additional credits needed to fulfill the program requirements in any academic area."
+        },
+        {
+          "sourceId": "excelsior-course-bus300",
+          "text": "BUS300 Introduction to Entrepreneurship Department Business Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-bus300",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bus325",
+          "text": "BUS325 Women in Business Department Business Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-bus325",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-his335",
+          "text": "HIS335 United States Civil War Department History Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-his335",
+          "text": "This course does not require any prerequisites."
+        }
+      ],
+      "notes": "The catalog lists 17 elective credits. Six of them are modeled separately as upper-level electives so the ledger meets the catalog’s 30-credit upper-level minimum: the named upper-level BS in Business courses total 24 credits. Named Excelsior courses are listed as baseline choices; any eligible course in the stated area can replace them.",
+      "allocationBasis": {
+        "catalogCredits": 17,
+        "modeledHere": 11,
+        "upperLevelElectiveRequirementId": "upper-level-electives",
+        "remainderRequirementIds": [
+          "electives-remainder-1",
+          "electives-remainder-2"
+        ]
+      },
+      "institutionOptions": [
+        {
+          "code": "BUS 300",
+          "title": "Introduction to Entrepreneurship",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-bus300"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bus300-introduction-to-entrepreneurship/"
+        },
+        {
+          "code": "BUS 325",
+          "title": "Women in Business",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-bus325"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bus325-women-in-business/"
+        },
+        {
+          "code": "HIS 335",
+          "title": "United States Civil War",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-his335"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/his335-united-states-civil-war/"
+        }
+      ]
+    },
+    {
+      "id": "electives-remainder-1",
+      "title": "Electives in any academic area (1 of the last 2 credits)",
+      "credits": 1,
+      "category": "electives",
+      "group": "electives",
+      "subgroup": "electives",
+      "upper": false,
+      "institutionalOnly": false,
+      "freeElective": true,
+      "excludeAlreadyUsed": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business",
+        "excelsior-course-bio111",
+        "excelsior-course-bio115l",
+        "excelsior-course-bio212l"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "Elective Requirements: 17 credits Additional credits needed to fulfill the program requirements in any academic area."
+        },
+        {
+          "sourceId": "excelsior-course-bio111",
+          "text": "BIO111 Biology Laboratory Department Biology Level Lower Format Online Credits 1"
+        },
+        {
+          "sourceId": "excelsior-course-bio111",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bio115l",
+          "text": "BIO115L Anatomy and Physiology I Lab Department Biology Level Lower Format Online Credits 1"
+        },
+        {
+          "sourceId": "excelsior-course-bio115l",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bio212l",
+          "text": "BIO212L Microbiology Lab Department Biology Level Lower Format Online Credits 1"
+        },
+        {
+          "sourceId": "excelsior-course-bio212l",
+          "text": "This course does not require any prerequisites."
+        }
+      ],
+      "notes": "One of the last 2 catalog elective credits, in any academic area; the ledger keeps every credit explicit. Named Excelsior courses are listed as baseline choices; any eligible course in the stated area can replace them.",
+      "institutionOptions": [
+        {
+          "code": "BIO 111",
+          "title": "Biology Laboratory",
+          "credits": 1,
+          "upper": false,
+          "sourceIds": [
+            "excelsior-course-bio111"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bio111-biology-laboratory/"
+        },
+        {
+          "code": "BIO 115L",
+          "title": "Anatomy and Physiology I Lab",
+          "credits": 1,
+          "upper": false,
+          "sourceIds": [
+            "excelsior-course-bio115l"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bio115l-anatomy-and-physiology-i-lab/"
+        },
+        {
+          "code": "BIO 212L",
+          "title": "Microbiology Lab",
+          "credits": 1,
+          "upper": false,
+          "sourceIds": [
+            "excelsior-course-bio212l"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bio212l-microbiology-lab/"
+        }
+      ]
+    },
+    {
+      "id": "electives-remainder-2",
+      "title": "Electives in any academic area (1 of the last 2 credits)",
+      "credits": 1,
+      "category": "electives",
+      "group": "electives",
+      "subgroup": "electives",
+      "upper": false,
+      "institutionalOnly": false,
+      "freeElective": true,
+      "excludeAlreadyUsed": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business",
+        "excelsior-course-bio111",
+        "excelsior-course-bio115l",
+        "excelsior-course-bio212l"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "Elective Requirements: 17 credits Additional credits needed to fulfill the program requirements in any academic area."
+        },
+        {
+          "sourceId": "excelsior-course-bio111",
+          "text": "BIO111 Biology Laboratory Department Biology Level Lower Format Online Credits 1"
+        },
+        {
+          "sourceId": "excelsior-course-bio111",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bio115l",
+          "text": "BIO115L Anatomy and Physiology I Lab Department Biology Level Lower Format Online Credits 1"
+        },
+        {
+          "sourceId": "excelsior-course-bio115l",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bio212l",
+          "text": "BIO212L Microbiology Lab Department Biology Level Lower Format Online Credits 1"
+        },
+        {
+          "sourceId": "excelsior-course-bio212l",
+          "text": "This course does not require any prerequisites."
+        }
+      ],
+      "notes": "One of the last 2 catalog elective credits, in any academic area; the ledger keeps every credit explicit. Named Excelsior courses are listed as baseline choices; any eligible course in the stated area can replace them.",
+      "institutionOptions": [
+        {
+          "code": "BIO 111",
+          "title": "Biology Laboratory",
+          "credits": 1,
+          "upper": false,
+          "sourceIds": [
+            "excelsior-course-bio111"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bio111-biology-laboratory/"
+        },
+        {
+          "code": "BIO 115L",
+          "title": "Anatomy and Physiology I Lab",
+          "credits": 1,
+          "upper": false,
+          "sourceIds": [
+            "excelsior-course-bio115l"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bio115l-anatomy-and-physiology-i-lab/"
+        },
+        {
+          "code": "BIO 212L",
+          "title": "Microbiology Lab",
+          "credits": 1,
+          "upper": false,
+          "sourceIds": [
+            "excelsior-course-bio212l"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bio212l-microbiology-lab/"
+        }
+      ]
+    },
+    {
+      "id": "upper-level-electives",
+      "title": "Upper-level electives (part of the 17 elective credits)",
+      "credits": 6,
+      "category": "electives",
+      "group": "upper-level-electives",
+      "subgroup": "upper-level-electives",
+      "upper": true,
+      "institutionalOnly": false,
+      "bucket": true,
+      "excludeAlreadyUsed": true,
+      "minimumGrade": "C",
+      "minimumGradeSourceIds": [
+        "excelsior-catalog-2026-11"
+      ],
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-transfer-guide-bs-business",
+        "excelsior-course-bus300",
+        "excelsior-course-bus312",
+        "excelsior-course-bus325",
+        "excelsior-course-bus380"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "All bachelor’s degree programs require a minimum of 30 hours to be completed at the upper level."
+        },
+        {
+          "sourceId": "excelsior-course-bus300",
+          "text": "BUS300 Introduction to Entrepreneurship Department Business Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-bus300",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bus312",
+          "text": "BUS312 Managing Human Resources Department Business Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-bus312",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bus325",
+          "text": "BUS325 Women in Business Department Business Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-bus325",
+          "text": "This course does not require any prerequisites."
+        },
+        {
+          "sourceId": "excelsior-course-bus380",
+          "text": "BUS380 Managing Diversity in the Workplace Department Business Level Upper Format Online Credits 3"
+        },
+        {
+          "sourceId": "excelsior-course-bus380",
+          "text": "This course does not require any prerequisites."
+        }
+      ],
+      "notes": "Derived allocation, not a separately named catalog block: 30 upper-level credits are required and the named upper-level courses (BUS 311, 323, 341, 350, 351, 431, 435, 499) supply 24. Any lower-level substitution for those courses requires more upper-level credit elsewhere. Named Excelsior courses are listed as baseline choices; any eligible course in the stated area can replace them.",
+      "allocationBasis": {
+        "upperMinCredits": 30,
+        "namedUpperCredits": 24,
+        "calculation": "30 - 24 = 6, taken from the 17 catalog elective credits"
+      },
+      "institutionOptions": [
+        {
+          "code": "BUS 300",
+          "title": "Introduction to Entrepreneurship",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-bus300"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bus300-introduction-to-entrepreneurship/"
+        },
+        {
+          "code": "BUS 312",
+          "title": "Managing Human Resources",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-bus312"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bus312-managing-human-resources/"
+        },
+        {
+          "code": "BUS 325",
+          "title": "Women in Business",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-bus325"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bus325-women-in-business/"
+        },
+        {
+          "code": "BUS 380",
+          "title": "Managing Diversity in the Workplace",
+          "credits": 3,
+          "upper": true,
+          "sourceIds": [
+            "excelsior-course-bus380"
+          ],
+          "url": "https://www.excelsior.edu/catalog/courses/bus380-managing-diversity-in-the-workplace/"
+        }
+      ]
+    }
+  ]
+}

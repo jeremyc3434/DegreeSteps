@@ -1,0 +1,555 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "excelsior",
+  "name": "Excelsior University",
+  "creditSystem": "semester",
+  "checkedOn": "2026-11-20",
+  "publish": {
+    "path": "content/curricula/excelsior.json"
+  },
+  "programOrder": [
+    "bs-business-no-concentration",
+    "bs-psychology",
+    "bs-liberal-arts-no-concentration"
+  ],
+  "programDefaults": {
+    "format": "Online",
+    "modalities": [
+      "online"
+    ],
+    "paceModel": "course-term"
+  },
+  "policies": {
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "sourceIds": [
+        "excelsior-grade-credit-application-policy",
+        "excelsior-catalog-2026-11"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-grade-credit-application-policy",
+          "text": "When duplication is confirmed, only one of the sources of credit can be applied to the student’s Excelsior academic program."
+        },
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "A minimum total of 120 credits is required for bachelor’s degrees."
+        }
+      ],
+      "basis": "A provider course may be listed under several requirements, but one completion supplies its credits once: Excelsior applies only one source for duplicated content and each degree needs 120 distinct credits."
+    },
+    "outsideCreditMinimumGrade": {
+      "value": "C-",
+      "sourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "excelsior-sophia-equivalency-2025-03",
+        "excelsior-studycom-equivalency-2024-12"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-straighterline-equivalency-2024-12",
+          "text": "Students must earn the equivalent of a C- or higher on outside sources of credit to be considered for applicability to an Excelsior degree program. All approved transfer credit will be transferred in as a “Pass” and will not factor in the Excelsior GPA."
+        }
+      ]
+    },
+    "upperLevelMinimum": {
+      "value": 30,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "excelsior-catalog-2026-11",
+        "excelsior-straighterline-equivalency-2024-12"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-catalog-2026-11",
+          "text": "All bachelor’s degree programs require a minimum of 30 hours to be completed at the upper level."
+        },
+        {
+          "sourceId": "excelsior-straighterline-equivalency-2024-12",
+          "text": "Excelsior requires completion of a minimum of 30 upper-level credits for all degree programs."
+        }
+      ]
+    },
+    "partnershipResidency": {
+      "value": 15,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "excelsior-studycom-equivalency-2024-12",
+        "excelsior-straighterline-equivalency-2024-12"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-sophia-equivalency-2025-03",
+          "text": "Partnership students admitted after December 31, 2024, will be required to complete a minimum of fifteen (15) Excelsior course credits prior to degree conferral."
+        }
+      ],
+      "basis": "Applies to students admitted through a partnership, not to every student who transfers partner credit."
+    },
+    "nonCollegiateRecommendationWindow": {
+      "value": true,
+      "sourceIds": [
+        "excelsior-transfer-credit-sources-policy"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-transfer-credit-sources-policy",
+          "text": "Learning experiences evaluated and recommended by NCCRS, or ACE must have been successfully completed during the period for which credit was recommended."
+        }
+      ]
+    },
+    "transferTimeLimit": {
+      "value": null,
+      "status": "conflicting",
+      "sourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "excelsior-grade-credit-application-policy"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-straighterline-equivalency-2024-12",
+          "text": "For all undergraduate degrees, except the BS Cybersecurity, BS Information Technology, and BS Computer Science, transfer credit must have been earned within 10 years prior to enrollment."
+        },
+        {
+          "sourceId": "excelsior-grade-credit-application-policy",
+          "text": "Generally, there is no time limit on the use of credit from approved sources of credit to satisfy the requirements of an Excelsior University degree program."
+        }
+      ]
+    },
+    "businessComponentTimeLimit": {
+      "value": 15,
+      "unit": "years",
+      "sourceIds": [
+        "excelsior-grade-credit-application-policy",
+        "excelsior-straighterline-equivalency-2024-12"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-straighterline-equivalency-2024-12",
+          "text": "For the Bachelor of Science in business, credit being transferred into the business component must have been earned within 15 years prior to admission."
+        }
+      ]
+    },
+    "individualEvaluation": {
+      "value": true,
+      "sourceIds": [
+        "excelsior-straighterline-equivalency-2024-12"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-straighterline-equivalency-2024-12",
+          "text": "Students will be reviewed individually, and official evaluations will be conducted at the time a student is admitted to Excelsior"
+        }
+      ]
+    },
+    "tuitionPerCredit": {
+      "value": 510,
+      "currency": "USD",
+      "sourceIds": [
+        "excelsior-undergraduate-tuition"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-undergraduate-tuition",
+          "text": "$510 per credit hour. Per credit tuition cost for all undergraduate courses."
+        },
+        {
+          "sourceId": "excelsior-undergraduate-tuition",
+          "text": "Academic Services Fee $40 per credit hour."
+        },
+        {
+          "sourceId": "excelsior-undergraduate-tuition",
+          "text": "Technology Fee $28 per course credit."
+        },
+        {
+          "sourceId": "excelsior-undergraduate-tuition",
+          "text": "Graduation Fee $125"
+        }
+      ]
+    },
+    "partnerTuition": {
+      "value": 460,
+      "currency": "USD",
+      "sourceIds": [
+        "excelsior-partner-sophia"
+      ],
+      "quotes": [
+        {
+          "sourceId": "excelsior-partner-sophia",
+          "text": "Individuals who have completed a minimum of two courses, employees, the spouse/domestic partner of an employee, and children of an employee are eligible for benefits."
+        },
+        {
+          "sourceId": "excelsior-partner-sophia",
+          "text": "Tuition (per credit) $460 Non-Partner Price $510"
+        }
+      ]
+    }
+  },
+  "routes": [
+    {
+      "id": "excelsior-bs-business-no-concentration",
+      "parentId": "excelsior-bs-business",
+      "title": "Bachelor of Science in Business (No Concentration)",
+      "school": "Excelsior University",
+      "schoolId": "excelsior",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+      "sourceId": "excelsior-catalog-2026-11",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-20"
+    },
+    {
+      "id": "excelsior-bs-liberal-arts-no-concentration",
+      "parentId": "excelsior-bs-liberal-arts",
+      "title": "Bachelor of Science in Liberal Arts (No Concentration)",
+      "school": "Excelsior University",
+      "schoolId": "excelsior",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "liberal-arts",
+      "fields": [
+        "liberal-arts"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+      "sourceId": "excelsior-catalog-2026-11",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-20"
+    }
+  ],
+  "sources": [
+    {
+      "id": "excelsior-catalog-2026-11",
+      "title": "Excelsior University Academic Catalog, November 2026 (program degree summaries and graduation requirements)",
+      "url": "https://www.excelsior.edu/wp-content/uploads/2026/11/Excelsior_University_Academic_Catalog_November_2026.pdf",
+      "capture": "content/source-captures/8511f551861c60f8.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-transfer-guide-bs-business",
+      "title": "Excelsior BS in Business transfer guide (requirement areas and Excelsior-only courses)",
+      "url": "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-business/",
+      "capture": "content/source-captures/bcaf80240d54d0e5.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-transfer-guide-bs-psychology",
+      "title": "Excelsior BS in Psychology transfer guide (requirement areas and Excelsior-only courses)",
+      "url": "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-psychology/",
+      "capture": "content/source-captures/77d8accf7ed62374.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-transfer-guide-bs-liberal-arts",
+      "title": "Excelsior BS in Liberal Arts transfer guide (requirement areas and Excelsior-only courses)",
+      "url": "https://www.excelsior.edu/transfer-guide/bachelor-of-science-in-liberal-arts/",
+      "capture": "content/source-captures/7725f9641853e000.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-program-bs-business",
+      "title": "Excelsior BS in Business program page (transfer up to 113 credits)",
+      "url": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+      "capture": "content/source-captures/8c966fc544e4e919.txt",
+      "kind": "university",
+      "roles": [
+        "program",
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-program-bs-psychology",
+      "title": "Excelsior BS in Psychology program page (transfer up to 113 credits)",
+      "url": "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+      "capture": "content/source-captures/4ef4a3951b98bf1f.txt",
+      "kind": "university",
+      "roles": [
+        "program",
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-program-bs-liberal-arts",
+      "title": "Excelsior BS in Liberal Arts program page (transfer up to 113 credits)",
+      "url": "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+      "capture": "content/source-captures/8676b8a53a6ba51b.txt",
+      "kind": "university",
+      "roles": [
+        "program",
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-sophia-equivalency-2025-03",
+      "title": "Excelsior University Sophia Learning course equivalency guide (March 2025) with transfer credit guidelines",
+      "url": "https://www.excelsior.edu/wp-content/uploads/2018/01/Sophia_Excelsior-University-Course-Equivalency-03_2025.pdf",
+      "capture": "content/source-captures/bf374e766b95392a.txt",
+      "kind": "university",
+      "roles": [
+        "receiving-map",
+        "policy"
+      ],
+      "documentDate": "2025-03",
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-studycom-equivalency-2024-12",
+      "title": "Excelsior University Study.com course equivalency guide (December 2024) with transfer credit guidelines",
+      "url": "https://www.excelsior.edu/wp-content/uploads/2018/01/Study.com-Course-Equivalency-12_2024.pdf",
+      "capture": "content/source-captures/68940f13a81e286a.txt",
+      "kind": "university",
+      "roles": [
+        "receiving-map",
+        "policy"
+      ],
+      "documentDate": "2024-12",
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-straighterline-equivalency-2024-12",
+      "title": "Excelsior University StraighterLine course equivalency guide (December 2024) with transfer credit guidelines",
+      "url": "https://www.excelsior.edu/wp-content/uploads/2018/01/Straighterline-Course-Equivalency-12_2024.pdf",
+      "capture": "content/source-captures/4baa13da7cce7170.txt",
+      "kind": "university",
+      "roles": [
+        "receiving-map",
+        "policy"
+      ],
+      "documentDate": "2024-12",
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-grade-credit-application-policy",
+      "title": "Excelsior Grade Scale, GPA, and Credit Application policy (duplicative credit and time limits)",
+      "url": "https://www.excelsior.edu/policy/grade-scale-gpa-and-credit-application/",
+      "capture": "content/source-captures/beb298d6782dfcd1.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-transfer-credit-sources-policy",
+      "title": "Excelsior Transfer and Evaluated Credit Sources policy (non-collegiate ACE/NCCRS credit)",
+      "url": "https://www.excelsior.edu/policy/transfer-credit-sources/",
+      "capture": "content/source-captures/311c987a81ba94ad.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-undergraduate-tuition",
+      "title": "Excelsior undergraduate tuition and fees",
+      "url": "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+      "capture": "content/source-captures/280cdb082800f54d.txt",
+      "kind": "university",
+      "roles": [
+        "pricing"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-partner-sophia",
+      "title": "Excelsior Sophia partnership page (partner eligibility and partner tuition)",
+      "url": "https://www.excelsior.edu/partner/sophia/",
+      "capture": "content/source-captures/c1e83be97460b83d.txt",
+      "kind": "university",
+      "roles": [
+        "pricing",
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-partner-straighterline",
+      "title": "Excelsior StraighterLine partnership page (links the StraighterLine equivalency guide)",
+      "url": "https://www.excelsior.edu/partner/straighterline/",
+      "capture": "content/source-captures/2f9fdb6389d47bb9.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-partner-study-com",
+      "title": "Excelsior Study.com partnership page",
+      "url": "https://www.excelsior.edu/partner/study-com/",
+      "capture": "content/source-captures/96b8816e5e8ae345.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-bus300",
+      "title": "Excelsior BUS 300 Introduction to Entrepreneurship course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/bus300-introduction-to-entrepreneurship/",
+      "capture": "content/source-captures/b360e278373ef094.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-bus312",
+      "title": "Excelsior BUS 312 Managing Human Resources course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/bus312-managing-human-resources/",
+      "capture": "content/source-captures/7a041d073c9f90a3.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-bus325",
+      "title": "Excelsior BUS 325 Women in Business course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/bus325-women-in-business/",
+      "capture": "content/source-captures/e5d0db12a1750d1a.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-bus380",
+      "title": "Excelsior BUS 380 Managing Diversity in the Workplace course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/bus380-managing-diversity-in-the-workplace/",
+      "capture": "content/source-captures/a1cb403289cc9f8a.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-his335",
+      "title": "Excelsior HIS 335 United States Civil War course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/his335-united-states-civil-war/",
+      "capture": "content/source-captures/b7bef6d063d26b6c.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-his350",
+      "title": "Excelsior HIS 350 World War I course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/his350-world-war-i/",
+      "capture": "content/source-captures/4300c283926400f8.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-pol351",
+      "title": "Excelsior POL 351 War and Peace After the Cold War course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/pol351-war-and-peace-after-the-cold-war/",
+      "capture": "content/source-captures/b4447aeec1e81f66.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-hsc375",
+      "title": "Excelsior HSC 375 Health and Wellness course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/hsc375-health-and-wellness/",
+      "capture": "content/source-captures/8cf8a738c0616918.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-bio111",
+      "title": "Excelsior BIO 111 Biology Laboratory course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/bio111-biology-laboratory/",
+      "capture": "content/source-captures/6b2b365952767cb9.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-bio115l",
+      "title": "Excelsior BIO 115L Anatomy and Physiology I Lab course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/bio115l-anatomy-and-physiology-i-lab/",
+      "capture": "content/source-captures/ea85d6db8cde95b3.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    },
+    {
+      "id": "excelsior-course-bio212l",
+      "title": "Excelsior BIO 212L Microbiology Lab course page (level, credits, prerequisites)",
+      "url": "https://www.excelsior.edu/catalog/courses/bio212l-microbiology-lab/",
+      "capture": "content/source-captures/2565c2eafe90620f.txt",
+      "kind": "university",
+      "roles": [
+        "course"
+      ],
+      "checked": "2026-11-20"
+    }
+  ]
+}
