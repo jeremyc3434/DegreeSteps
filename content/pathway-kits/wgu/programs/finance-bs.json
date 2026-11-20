@@ -1,0 +1,1578 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "finance-bs",
+  "modelId": "curriculum-wgu-catalog-d6925a8fbb6e8d9a",
+  "routeIds": [
+    "wgu-catalog-d6925a8fbb6e8d9a"
+  ],
+  "title": "Finance – B.S.",
+  "level": "bachelor",
+  "catalog": "202608",
+  "totalCredits": 121,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-20"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 90.75,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-business-current",
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "Every equivalency placed in more than one requirement of this program carries the school-published single-award condition.",
+      "sourceIds": [
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bsfin-sophia-7112-v186",
+        "wgu-business-bsfin-study-4429-v114"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+    ],
+    "mappingCheckedOn": "2026-11-20",
+    "pricing": {
+      "model": "subscription",
+      "amount": 3850,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-business-degrees/finance-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bsfin-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    },
+    "externalMaxCredits": 90.75,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-undergraduate-residency-policy-23797-20260918",
+      "wgu-bu-bsfin-202608-metadata-reviewed-20261117",
+      "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90.75,
+        "fraction": 0.75,
+        "basisCredits": 121,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 90.75,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 40-course, 121-CU BSFIN 202608 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "residencyPolicy": {
+      "type": "institution-fraction-with-capstone-exclusion",
+      "creditScope": "active-program",
+      "creditSystem": "competency-unit",
+      "fraction": 0.25,
+      "capstoneRequirementIds": [
+        "bsfin-finance-capstone"
+      ],
+      "capstoneCredits": 3,
+      "sourceIds": [
+        "wgu-undergraduate-residency-policy-23797-20260918",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117",
+        "wgu-bu-bsfin-202608-metadata-reviewed-20261117",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "interpretationStatus": "verified-additional-capstone",
+      "calculatedMinimumInstitutionCUs": 33.25,
+      "primaryPolicySections": [
+        "IV.2",
+        "IV.3.a",
+        "IV.3.b.i"
+      ],
+      "conservativeSufficientCondition": {
+        "minimumNonCapstoneInstitutionCUs": 30.25,
+        "basisCredits": 121,
+        "derivation": "25% of active undergraduate degree CUs earned directly in that WGU program, in addition to required capstone CUs."
+      },
+      "notes": [
+        "Only passed CUs earned within the active WGU program count toward this rule. Prior WGU or other outside credit is not automatically counted as active-program residency."
+      ]
+    },
+    "policyCheckedOn": "2026-11-17",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 245,
+      "programCode": "BSFIN",
+      "catalog": "202608",
+      "recordVersion": 6,
+      "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99",
+      "sourceIds": [
+        "wgu-bu-bsfin-202608-metadata-reviewed-20261117",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "checkedOn": "2026-11-17",
+      "outsideEquivalenciesReviewed": false
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bsfin-core-business-management",
+        "parentId": "core",
+        "title": "Business Management",
+        "credits": 18,
+        "requirementIds": [
+          "bsfin-organizational-behavior",
+          "bsfin-operations-and-supply-chain-management",
+          "bsfin-quantitative-analysis-for-business",
+          "bsfin-project-management",
+          "bsfin-business-ethics",
+          "bsfin-values-based-leadership"
+        ],
+        "sourceId": "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsfin-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 31,
+        "requirementIds": [
+          "bsfin-introduction-to-sociology",
+          "bsfin-critical-thinking-reason-and-evidence",
+          "bsfin-applied-probability-and-statistics",
+          "bsfin-composition-successful-self-expression",
+          "bsfin-us-history-stories-of-american-democracy",
+          "bsfin-applied-algebra",
+          "bsfin-introduction-to-communication-connecting-with-others",
+          "bsfin-health-fitness-and-wellness",
+          "bsfin-integrated-physical-sciences",
+          "bsfin-global-arts-and-humanities"
+        ],
+        "sourceId": "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsfin-core-finance",
+        "parentId": "core",
+        "title": "Finance",
+        "credits": 21,
+        "requirementIds": [
+          "bsfin-innovation-in-finance",
+          "bsfin-personal-finance",
+          "bsfin-corporate-finance",
+          "bsfin-financial-statement-analysis",
+          "bsfin-financial-management-i",
+          "bsfin-financial-management-ii",
+          "bsfin-enterprise-risk-management"
+        ],
+        "sourceId": "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsfin-core-business-core",
+        "parentId": "core",
+        "title": "Business Core",
+        "credits": 39,
+        "requirementIds": [
+          "bsfin-emotional-and-cultural-intelligence",
+          "bsfin-principles-of-financial-and-managerial-accounting",
+          "bsfin-innovative-and-strategic-thinking",
+          "bsfin-fundamentals-of-spreadsheets-and-data-presentations",
+          "bsfin-business-environment-applications-i-business-structures-and-legal-environment",
+          "bsfin-finance-skills-for-managers",
+          "bsfin-principles-of-management",
+          "bsfin-information-technology-management-essentials",
+          "bsfin-business-environment-applications-ii-process-logistics-and-operations",
+          "bsfin-concepts-in-marketing-sales-and-customer-contact",
+          "bsfin-principles-of-economics",
+          "bsfin-managing-in-a-global-business-environment",
+          "bsfin-business-simulation"
+        ],
+        "sourceId": "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsfin-core-accounting",
+        "parentId": "core",
+        "title": "Accounting",
+        "credits": 3,
+        "requirementIds": [
+          "bsfin-business-law-for-accountants"
+        ],
+        "sourceId": "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsfin-core-human-resources",
+        "parentId": "core",
+        "title": "Human Resources",
+        "credits": 6,
+        "requirementIds": [
+          "bsfin-functions-of-human-resource-management",
+          "bsfin-employment-and-labor-law"
+        ],
+        "sourceId": "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsfin-capstone-finance",
+        "parentId": "capstone",
+        "title": "Finance",
+        "credits": 3,
+        "requirementIds": [
+          "bsfin-finance-capstone"
+        ],
+        "sourceId": "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {
+        "C722": 5,
+        "D075": 10,
+        "D388": 5
+      },
+      "recencySourceIds": [
+        "wgu-business-bsfin-transfer-notes-v6"
+      ],
+      "publishedNotes": {
+        "notesAdditional": "Project Management must have been taken within the past 5 years.",
+        "notesCore": "Fundamentals of Spreadsheets and Data Presentations must have been taken within the past 5 years, and Information Technology Management Essentials must have been taken within the past 10 years.",
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-business-approved-agreement-batch-2026-11-20",
+      "checkedOn": "2026-11-20",
+      "programId": 245,
+      "catalog": "202608",
+      "receivingClaimsReviewed": 84,
+      "sourceIdentitiesReusedByExactProviderCode": 71,
+      "sourceIds": [
+        "wgu-business-bsfin-sophia-7112-v186",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsfin-straighterline-550-v66",
+        "wgu-business-bsfin-saylor-668-v78"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 23,
+          "approvedSourceCodeCount": 42,
+          "independentlyVerifiedSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0006",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0024",
+            "SOPH-0025",
+            "SOPH-0027",
+            "SOPH-0029",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0089",
+            "SOPH-0091"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0006",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0024",
+            "SOPH-0025",
+            "SOPH-0027",
+            "SOPH-0029",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0089",
+            "SOPH-0091"
+          ],
+          "selectableReceivingPlacements": 27,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0001",
+            "SOPH-0008",
+            "SOPH-0009",
+            "SOPH-0010",
+            "SOPH-0020",
+            "SOPH-0044",
+            "SOPH-0060",
+            "SOPH-0069",
+            "SOPH-0070",
+            "SOPH-0073",
+            "SOPH-0074",
+            "SOPH-0076",
+            "SOPH-0081",
+            "SOPH-0095",
+            "SOPH-0096"
+          ],
+          "multiSourceRequirementsHeld": [
+            {
+              "provider": "Sophia",
+              "receivingCode": "D196",
+              "receivingCredits": 3,
+              "sourceGroups": [
+                [
+                  "SOPH-0010"
+                ],
+                [
+                  "SOPH-0079"
+                ]
+              ],
+              "originalPartnerCourseText": "*BUSI1010 (SOPH-0010) and BUSI1011 (SOPH-0079)",
+              "reason": "This award requires multiple original source courses. Single-course options cannot award the complete receiving requirement."
+            }
+          ],
+          "agreementId": 7112,
+          "agreementRecordVersion": 186,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 27,
+          "approvedSourceCodeCount": 89,
+          "independentlyVerifiedSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0013",
+            "SDCM-0015",
+            "SDCM-0016",
+            "SDCM-0025",
+            "SDCM-0026",
+            "SDCM-0047",
+            "SDCM-0050",
+            "SDCM-0057",
+            "SDCM-0059",
+            "SDCM-0076",
+            "SDCM-0085",
+            "SDCM-0086",
+            "SDCM-0115",
+            "SDCM-0123",
+            "SDCM-0142",
+            "SDCM-0167",
+            "SDCM-0168",
+            "SDCM-0185",
+            "SDCM-0187",
+            "SDCM-0225"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0013",
+            "SDCM-0015",
+            "SDCM-0016",
+            "SDCM-0025",
+            "SDCM-0026",
+            "SDCM-0047",
+            "SDCM-0050",
+            "SDCM-0057",
+            "SDCM-0059",
+            "SDCM-0085",
+            "SDCM-0086",
+            "SDCM-0115",
+            "SDCM-0123",
+            "SDCM-0142",
+            "SDCM-0167",
+            "SDCM-0168",
+            "SDCM-0185",
+            "SDCM-0187",
+            "SDCM-0225"
+          ],
+          "selectableReceivingPlacements": 23,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0002",
+            "SDCM-0003",
+            "SDCM-0004",
+            "SDCM-0005",
+            "SDCM-0006",
+            "SDCM-0012",
+            "SDCM-0023",
+            "SDCM-0028",
+            "SDCM-0029",
+            "SDCM-0031",
+            "SDCM-0032",
+            "SDCM-0033",
+            "SDCM-0034",
+            "SDCM-0035",
+            "SDCM-0039",
+            "SDCM-0048",
+            "SDCM-0051",
+            "SDCM-0053",
+            "SDCM-0054",
+            "SDCM-0055",
+            "SDCM-0056",
+            "SDCM-0060",
+            "SDCM-0062",
+            "SDCM-0068",
+            "SDCM-0069",
+            "SDCM-0071",
+            "SDCM-0073",
+            "SDCM-0075",
+            "SDCM-0077",
+            "SDCM-0078",
+            "SDCM-0079",
+            "SDCM-0087",
+            "SDCM-0088",
+            "SDCM-0090",
+            "SDCM-0101",
+            "SDCM-0102",
+            "SDCM-0105",
+            "SDCM-0118",
+            "SDCM-0124",
+            "SDCM-0130",
+            "SDCM-0132",
+            "SDCM-0134",
+            "SDCM-0138",
+            "SDCM-0140",
+            "SDCM-0152",
+            "SDCM-0153",
+            "SDCM-0155",
+            "SDCM-0160",
+            "SDCM-0161",
+            "SDCM-0169",
+            "SDCM-0174",
+            "SDCM-0188",
+            "SDCM-0189",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0237",
+            "SDCM-0242",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0248",
+            "SDCM-0252",
+            "SDCM-0253",
+            "SDCM-0255",
+            "SDCM-0259",
+            "SDCM-0260"
+          ],
+          "multiSourceRequirementsHeld": [
+            {
+              "provider": "Study.com",
+              "receivingCode": "D196",
+              "receivingCredits": 3,
+              "sourceGroups": [
+                [
+                  "SDCM-0075",
+                  "SDCM-0078",
+                  "SDCM-0124",
+                  "SDCM-0152"
+                ],
+                [
+                  "SDCM-0076",
+                  "SDCM-0077",
+                  "SDCM-0105"
+                ]
+              ],
+              "originalPartnerCourseText": "*((Accounting 101 (SDCM-0075), Accounting 201 (SDCM-0124), Accounting 202 (SDCM-0152, or Accounting 302 (SDCM-0078)) AND ((Accounting 102 (SDCM-0076), Accounting 301 (SDCM-0077), or Accounting 303 (SDCM-0105))",
+              "reason": "This award requires multiple original source courses. Single-course options cannot award the complete receiving requirement."
+            }
+          ],
+          "agreementId": 4429,
+          "agreementRecordVersion": 114,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 19,
+          "approvedSourceCodeCount": 43,
+          "independentlyVerifiedSourceCodes": [
+            "OOSL-0002",
+            "OOSL-0036"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "OOSL-0002",
+            "OOSL-0036"
+          ],
+          "selectableReceivingPlacements": 2,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0003",
+            "OOSL-0005",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0009",
+            "OOSL-0010",
+            "OOSL-0011",
+            "OOSL-0012",
+            "OOSL-0015",
+            "OOSL-0017",
+            "OOSL-0019",
+            "OOSL-0023",
+            "OOSL-0028",
+            "OOSL-0030",
+            "OOSL-0033",
+            "OOSL-0034",
+            "OOSL-0035",
+            "OOSL-0039",
+            "OOSL-0041",
+            "OOSL-0042",
+            "OOSL-0044",
+            "OOSL-0045",
+            "OOSL-0046",
+            "OOSL-0047",
+            "OOSL-0048",
+            "OOSL-0051",
+            "OOSL-0052",
+            "OOSL-0055",
+            "OOSL-0059",
+            "OOSL-0060",
+            "OOSL-0066",
+            "OOSL-0070",
+            "OOSL-0101",
+            "OOSL-0109",
+            "OOSL-0112",
+            "OOSL-0113",
+            "OOSL-0114",
+            "OOSL-0121",
+            "OOSL-0123",
+            "OOSL-0124",
+            "OOSL-0125"
+          ],
+          "multiSourceRequirementsHeld": [
+            {
+              "provider": "StraighterLine",
+              "receivingCode": "D196",
+              "receivingCredits": 3,
+              "sourceGroups": [
+                [
+                  "OOSL-0009",
+                  "OOSL-0045"
+                ],
+                [
+                  "OOSL-0010",
+                  "OOSL-0033"
+                ]
+              ],
+              "originalPartnerCourseText": "*((ACC101 (OOSL-0009) or (ACC151 (OOSL-0045)) and ((ACC102 (OOSL-0010) or (ACC150 (OOSL-0033))",
+              "reason": "This award requires multiple original source courses. Single-course options cannot award the complete receiving requirement."
+            }
+          ],
+          "agreementId": 550,
+          "agreementRecordVersion": 66,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/550"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 15,
+          "approvedSourceCodeCount": 19,
+          "independentlyVerifiedSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0011",
+            "SAYA-0013",
+            "SAYA-0014",
+            "SAYA-0019",
+            "SAYA-0021",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0036",
+            "SAYA-0037",
+            "SAYA-0038",
+            "SAYA-0039",
+            "SAYA-0045",
+            "SAYA-0047"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0011",
+            "SAYA-0013",
+            "SAYA-0014",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0036",
+            "SAYA-0037",
+            "SAYA-0038",
+            "SAYA-0039",
+            "SAYA-0045",
+            "SAYA-0047"
+          ],
+          "selectableReceivingPlacements": 19,
+          "unknownSourceIdentityCodesHeld": [],
+          "multiSourceRequirementsHeld": [
+            {
+              "provider": "Saylor",
+              "receivingCode": "D196",
+              "receivingCredits": 3,
+              "sourceGroups": [
+                [
+                  "SAYA-0009"
+                ],
+                [
+                  "SAYA-0021"
+                ]
+              ],
+              "originalPartnerCourseText": "*BUS105 (SAYA-0009) and BUS103 (SAYA-0021)",
+              "reason": "This award requires multiple original source courses. Single-course options cannot award the complete receiving requirement."
+            }
+          ],
+          "agreementId": 668,
+          "agreementRecordVersion": 78,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/668"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false,
+      "retiredInvalidSingleCourseOptions": []
+    }
+  },
+  "requirements": [
+    {
+      "id": "bsfin-organizational-behavior",
+      "code": "C715",
+      "title": "Organizational Behavior",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-introduction-to-sociology",
+      "code": "C273",
+      "title": "Introduction to Sociology",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-innovation-in-finance",
+      "code": "D367",
+      "title": "Innovation in Finance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "finance",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Finance",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-critical-thinking-reason-and-evidence",
+      "code": "D265",
+      "title": "Critical Thinking: Reason and Evidence",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-emotional-and-cultural-intelligence",
+      "code": "D082",
+      "title": "Emotional and Cultural Intelligence",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-applied-probability-and-statistics",
+      "code": "C955",
+      "title": "Applied Probability and Statistics",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-composition-successful-self-expression",
+      "code": "D270",
+      "title": "Composition: Successful Self-Expression",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-operations-and-supply-chain-management",
+      "code": "C720",
+      "title": "Operations and Supply Chain Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-us-history-stories-of-american-democracy",
+      "code": "D267",
+      "title": "US History: Stories of American Democracy",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-principles-of-financial-and-managerial-accounting",
+      "code": "D196",
+      "title": "Principles of Financial and Managerial Accounting",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-applied-algebra",
+      "code": "C957",
+      "title": "Applied Algebra",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-introduction-to-communication-connecting-with-others",
+      "code": "D268",
+      "title": "Introduction to Communication: Connecting with Others",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-innovative-and-strategic-thinking",
+      "code": "D081",
+      "title": "Innovative and Strategic Thinking",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-fundamentals-of-spreadsheets-and-data-presentations",
+      "code": "D388",
+      "title": "Fundamentals of Spreadsheets and Data Presentations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      },
+      "transferRecencyYears": 5,
+      "transferRecencySourceIds": [
+        "wgu-business-bsfin-transfer-notes-v6"
+      ]
+    },
+    {
+      "id": "bsfin-personal-finance",
+      "code": "D363",
+      "title": "Personal Finance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "finance",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Finance",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-quantitative-analysis-for-business",
+      "code": "C723",
+      "title": "Quantitative Analysis For Business",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-business-environment-applications-i-business-structures-and-legal-environment",
+      "code": "D078",
+      "title": "Business Environment Applications I: Business Structures and Legal Environment",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-finance-skills-for-managers",
+      "code": "D076",
+      "title": "Finance Skills for Managers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-principles-of-management",
+      "code": "C483",
+      "title": "Principles of Management",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-information-technology-management-essentials",
+      "code": "D075",
+      "title": "Information Technology Management Essentials",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      },
+      "transferRecencyYears": 10,
+      "transferRecencySourceIds": [
+        "wgu-business-bsfin-transfer-notes-v6"
+      ]
+    },
+    {
+      "id": "bsfin-business-environment-applications-ii-process-logistics-and-operations",
+      "code": "D079",
+      "title": "Business Environment Applications II: Process, Logistics, and Operations",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-corporate-finance",
+      "code": "D362",
+      "title": "Corporate Finance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "finance",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Finance",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-business-law-for-accountants",
+      "code": "D216",
+      "title": "Business Law for Accountants",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "accounting",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Accounting",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-health-fitness-and-wellness",
+      "code": "C458",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-concepts-in-marketing-sales-and-customer-contact",
+      "code": "D077",
+      "title": "Concepts in Marketing, Sales, and Customer Contact",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-principles-of-economics",
+      "code": "D089",
+      "title": "Principles of Economics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-financial-statement-analysis",
+      "code": "D366",
+      "title": "Financial Statement Analysis",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "finance",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Finance",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-managing-in-a-global-business-environment",
+      "code": "D080",
+      "title": "Managing in a Global Business Environment",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-functions-of-human-resource-management",
+      "code": "D351",
+      "title": "Functions of Human Resource Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "human-resources",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Human Resources",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-financial-management-i",
+      "code": "D364",
+      "title": "Financial Management I",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "finance",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Finance",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-project-management",
+      "code": "C722",
+      "title": "Project Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      },
+      "transferRecencyYears": 5,
+      "transferRecencySourceIds": [
+        "wgu-business-bsfin-transfer-notes-v6"
+      ]
+    },
+    {
+      "id": "bsfin-integrated-physical-sciences",
+      "code": "C165",
+      "title": "Integrated Physical Sciences",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-employment-and-labor-law",
+      "code": "D352",
+      "title": "Employment and Labor Law",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "human-resources",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Human Resources",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-financial-management-ii",
+      "code": "D365",
+      "title": "Financial Management II",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "finance",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Finance",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-global-arts-and-humanities",
+      "code": "D198",
+      "title": "Global Arts and Humanities",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-business-ethics",
+      "code": "C717",
+      "title": "Business Ethics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-business-simulation",
+      "code": "D361",
+      "title": "Business Simulation",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-enterprise-risk-management",
+      "code": "D368",
+      "title": "Enterprise Risk Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "finance",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Finance",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-values-based-leadership",
+      "code": "D253",
+      "title": "Values-Based Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    },
+    {
+      "id": "bsfin-finance-capstone",
+      "code": "D369",
+      "title": "Finance Capstone",
+      "credits": 3,
+      "category": "capstone",
+      "sourceIds": [
+        "wgu-bsfin-guide",
+        "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": true,
+      "group": "finance",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Finance",
+        "sourceIds": [
+          "wgu-bu-bsfin-202608-curriculum-reviewed-20261117"
+        ],
+        "programId": 245,
+        "catalogTerm": "202608",
+        "ledgerSha256": "11eca16ee0dc22ebaaf668bc715b754cee2f212b7e4436a63adb77fdc77f5d99"
+      }
+    }
+  ]
+}

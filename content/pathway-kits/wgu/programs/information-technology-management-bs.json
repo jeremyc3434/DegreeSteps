@@ -1,0 +1,1356 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "information-technology-management-bs",
+  "modelId": "curriculum-wgu-catalog-bf14bd14e87ae7aa",
+  "routeIds": [
+    "wgu-catalog-bf14bd14e87ae7aa"
+  ],
+  "title": "Information Technology Management – B.S.",
+  "level": "bachelor",
+  "catalog": "202609",
+  "totalCredits": 112,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-20"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 84,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-business-current",
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "Every equivalency placed in more than one requirement of this program carries the school-published single-award condition.",
+      "sourceIds": [
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsitm-sophia-7112-v186",
+        "wgu-business-bsitm-study-4429-v114"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "DegreeSteps must review required-capstone applicability for this exact program before calculating its institutional minimum; the overall 75% ceiling is already source-backed.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+    ],
+    "mappingCheckedOn": "2026-11-20",
+    "pricing": {
+      "model": "subscription",
+      "amount": 3850,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-business-degrees/it-information-technology-management-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bsitm-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    },
+    "externalMaxCredits": 84,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-undergraduate-residency-policy-23797-20260918",
+      "wgu-bu-bsitm-202609-metadata-reviewed-20261117",
+      "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 84,
+        "fraction": 0.75,
+        "basisCredits": 112,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 84,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 37-course, 112-CU BSITM 202609 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "policyCheckedOn": "2026-11-17",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 252,
+      "programCode": "BSITM",
+      "catalog": "202609",
+      "recordVersion": 18,
+      "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945",
+      "sourceIds": [
+        "wgu-bu-bsitm-202609-metadata-reviewed-20261117",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "checkedOn": "2026-11-17",
+      "outsideEquivalenciesReviewed": false
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bsitm-core-business-management",
+        "parentId": "core",
+        "title": "Business Management",
+        "credits": 18,
+        "requirementIds": [
+          "bsitm-organizational-behavior",
+          "bsitm-values-based-leadership",
+          "bsitm-project-management",
+          "bsitm-change-management",
+          "bsitm-quantitative-analysis-for-business",
+          "bsitm-operations-and-supply-chain-management"
+        ],
+        "sourceId": "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsitm-core-business-core",
+        "parentId": "core",
+        "title": "Business Core",
+        "credits": 34,
+        "requirementIds": [
+          "bsitm-emotional-and-cultural-intelligence",
+          "bsitm-principles-of-management",
+          "bsitm-business-environment-applications-i-business-structures-and-legal-environment",
+          "bsitm-fundamentals-of-spreadsheets-and-data-presentations",
+          "bsitm-introduction-to-business-accounting",
+          "bsitm-principles-of-economics",
+          "bsitm-innovative-and-strategic-thinking",
+          "bsitm-concepts-in-marketing-sales-and-customer-contact",
+          "bsitm-managing-in-a-global-business-environment",
+          "bsitm-business-simulation",
+          "bsitm-introduction-to-business-finance"
+        ],
+        "sourceId": "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsitm-core-it-management-for-business",
+        "parentId": "core",
+        "title": "IT Management for Business",
+        "credits": 18,
+        "requirementIds": [
+          "bsitm-building-a-successful-it-organization",
+          "bsitm-information-systems-management",
+          "bsitm-product-management-and-leadership",
+          "bsitm-digital-transformation",
+          "bsitm-emerging-trends-and-innovation-in-it",
+          "bsitm-organizational-technology-strategy"
+        ],
+        "sourceId": "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsitm-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 31,
+        "requirementIds": [
+          "bsitm-critical-thinking-reason-and-evidence",
+          "bsitm-health-fitness-and-wellness",
+          "bsitm-integrated-physical-sciences",
+          "bsitm-applied-probability-and-statistics",
+          "bsitm-composition-successful-self-expression",
+          "bsitm-technical-communication",
+          "bsitm-applied-algebra",
+          "bsitm-technology-and-ethics-emerging-trends-and-society",
+          "bsitm-design-thinking-for-business",
+          "bsitm-world-history-diverse-cultures-and-global-connections"
+        ],
+        "sourceId": "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsitm-core-business-of-it",
+        "parentId": "core",
+        "title": "Business of IT",
+        "credits": 3,
+        "requirementIds": [
+          "bsitm-it-leadership-foundations"
+        ],
+        "sourceId": "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsitm-core-network-and-security",
+        "parentId": "core",
+        "title": "Network and Security",
+        "credits": 3,
+        "requirementIds": [
+          "bsitm-network-and-security-foundations"
+        ],
+        "sourceId": "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsitm-core-information-technology-management",
+        "parentId": "core",
+        "title": "Information Technology Management",
+        "credits": 3,
+        "requirementIds": [
+          "bsitm-technology-governance"
+        ],
+        "sourceId": "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsitm-core-data-analytics",
+        "parentId": "core",
+        "title": "Data Analytics",
+        "credits": 2,
+        "requirementIds": [
+          "bsitm-data-and-information-governance"
+        ],
+        "sourceId": "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {},
+      "recencySourceIds": [
+        "wgu-business-bsitm-transfer-notes-v18"
+      ],
+      "publishedNotes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-business-approved-agreement-batch-2026-11-20",
+      "checkedOn": "2026-11-20",
+      "programId": 252,
+      "catalog": "202609",
+      "receivingClaimsReviewed": 70,
+      "sourceIdentitiesReusedByExactProviderCode": 61,
+      "sourceIds": [
+        "wgu-business-bsitm-sophia-7112-v186",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsitm-straighterline-550-v66",
+        "wgu-business-bsitm-saylor-668-v78"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 19,
+          "approvedSourceCodeCount": 33,
+          "independentlyVerifiedSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0034",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0059",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0091"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0034",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0059",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0091"
+          ],
+          "selectableReceivingPlacements": 25,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0001",
+            "SOPH-0060",
+            "SOPH-0068",
+            "SOPH-0069",
+            "SOPH-0070",
+            "SOPH-0071",
+            "SOPH-0073",
+            "SOPH-0074",
+            "SOPH-0081",
+            "SOPH-0095",
+            "SOPH-0096"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7112,
+          "agreementRecordVersion": 186,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 21,
+          "approvedSourceCodeCount": 76,
+          "independentlyVerifiedSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0013",
+            "SDCM-0015",
+            "SDCM-0016",
+            "SDCM-0025",
+            "SDCM-0052",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0086",
+            "SDCM-0115",
+            "SDCM-0187",
+            "SDCM-0225",
+            "SDCM-0265"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0013",
+            "SDCM-0015",
+            "SDCM-0016",
+            "SDCM-0025",
+            "SDCM-0052",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0086",
+            "SDCM-0115",
+            "SDCM-0187",
+            "SDCM-0225",
+            "SDCM-0265"
+          ],
+          "selectableReceivingPlacements": 16,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0002",
+            "SDCM-0003",
+            "SDCM-0004",
+            "SDCM-0005",
+            "SDCM-0006",
+            "SDCM-0011",
+            "SDCM-0012",
+            "SDCM-0023",
+            "SDCM-0028",
+            "SDCM-0029",
+            "SDCM-0031",
+            "SDCM-0032",
+            "SDCM-0033",
+            "SDCM-0034",
+            "SDCM-0035",
+            "SDCM-0038",
+            "SDCM-0039",
+            "SDCM-0040",
+            "SDCM-0041",
+            "SDCM-0042",
+            "SDCM-0053",
+            "SDCM-0054",
+            "SDCM-0058",
+            "SDCM-0060",
+            "SDCM-0062",
+            "SDCM-0065",
+            "SDCM-0066",
+            "SDCM-0068",
+            "SDCM-0069",
+            "SDCM-0073",
+            "SDCM-0077",
+            "SDCM-0079",
+            "SDCM-0090",
+            "SDCM-0101",
+            "SDCM-0102",
+            "SDCM-0105",
+            "SDCM-0133",
+            "SDCM-0134",
+            "SDCM-0138",
+            "SDCM-0140",
+            "SDCM-0153",
+            "SDCM-0155",
+            "SDCM-0156",
+            "SDCM-0157",
+            "SDCM-0158",
+            "SDCM-0159",
+            "SDCM-0174",
+            "SDCM-0188",
+            "SDCM-0189",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0242",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0248",
+            "SDCM-0252",
+            "SDCM-0253",
+            "SDCM-0255",
+            "SDCM-0259",
+            "SDCM-0260"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4429,
+          "agreementRecordVersion": 114,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 15,
+          "approvedSourceCodeCount": 36,
+          "independentlyVerifiedSourceCodes": [
+            "OOSL-0002"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "OOSL-0002"
+          ],
+          "selectableReceivingPlacements": 1,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0003",
+            "OOSL-0005",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0010",
+            "OOSL-0011",
+            "OOSL-0012",
+            "OOSL-0014",
+            "OOSL-0015",
+            "OOSL-0017",
+            "OOSL-0019",
+            "OOSL-0023",
+            "OOSL-0028",
+            "OOSL-0030",
+            "OOSL-0033",
+            "OOSL-0034",
+            "OOSL-0039",
+            "OOSL-0040",
+            "OOSL-0042",
+            "OOSL-0043",
+            "OOSL-0044",
+            "OOSL-0047",
+            "OOSL-0048",
+            "OOSL-0051",
+            "OOSL-0055",
+            "OOSL-0059",
+            "OOSL-0063",
+            "OOSL-0070",
+            "OOSL-0092",
+            "OOSL-0101",
+            "OOSL-0112",
+            "OOSL-0113",
+            "OOSL-0114",
+            "OOSL-0121",
+            "OOSL-0124"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 550,
+          "agreementRecordVersion": 66,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/550"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 15,
+          "approvedSourceCodeCount": 18,
+          "independentlyVerifiedSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0027",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0038",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0027",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0038",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "selectableReceivingPlacements": 19,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0012",
+            "SAYA-0029",
+            "SAYA-0033"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 668,
+          "agreementRecordVersion": 78,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/668"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false,
+      "retiredInvalidSingleCourseOptions": []
+    }
+  },
+  "requirements": [
+    {
+      "id": "bsitm-organizational-behavior",
+      "code": "C715",
+      "title": "Organizational Behavior",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-emotional-and-cultural-intelligence",
+      "code": "D082",
+      "title": "Emotional and Cultural Intelligence",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-building-a-successful-it-organization",
+      "code": "E091",
+      "title": "Building A Successful IT Organization",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "it-management-for-business",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "IT Management for Business",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-critical-thinking-reason-and-evidence",
+      "code": "D265",
+      "title": "Critical Thinking: Reason and Evidence",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-principles-of-management",
+      "code": "C483",
+      "title": "Principles of Management",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-health-fitness-and-wellness",
+      "code": "C458",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-business-environment-applications-i-business-structures-and-legal-environment",
+      "code": "D078",
+      "title": "Business Environment Applications I: Business Structures and Legal Environment",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-it-leadership-foundations",
+      "code": "D370",
+      "title": "IT Leadership Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-of-it",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business of IT",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-fundamentals-of-spreadsheets-and-data-presentations",
+      "code": "D388",
+      "title": "Fundamentals of Spreadsheets and Data Presentations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-integrated-physical-sciences",
+      "code": "C165",
+      "title": "Integrated Physical Sciences",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-applied-probability-and-statistics",
+      "code": "C955",
+      "title": "Applied Probability and Statistics",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-values-based-leadership",
+      "code": "D253",
+      "title": "Values-Based Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-information-systems-management",
+      "code": "C724",
+      "title": "Information Systems Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "it-management-for-business",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "IT Management for Business",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-project-management",
+      "code": "C722",
+      "title": "Project Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-introduction-to-business-accounting",
+      "code": "D774",
+      "title": "Introduction to Business Accounting",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-composition-successful-self-expression",
+      "code": "D270",
+      "title": "Composition: Successful Self-Expression",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-technical-communication",
+      "code": "D339",
+      "title": "Technical Communication",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-product-management-and-leadership",
+      "code": "D823",
+      "title": "Product Management and Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "it-management-for-business",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "IT Management for Business",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-applied-algebra",
+      "code": "C957",
+      "title": "Applied Algebra",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-change-management",
+      "code": "C721",
+      "title": "Change Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-quantitative-analysis-for-business",
+      "code": "C723",
+      "title": "Quantitative Analysis For Business",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-principles-of-economics",
+      "code": "D089",
+      "title": "Principles of Economics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-innovative-and-strategic-thinking",
+      "code": "D081",
+      "title": "Innovative and Strategic Thinking",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-concepts-in-marketing-sales-and-customer-contact",
+      "code": "D077",
+      "title": "Concepts in Marketing, Sales, and Customer Contact",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-digital-transformation",
+      "code": "D824",
+      "title": "Digital Transformation",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "it-management-for-business",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "IT Management for Business",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-network-and-security-foundations",
+      "code": "D315",
+      "title": "Network and Security - Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "network-and-security",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Network and Security",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-managing-in-a-global-business-environment",
+      "code": "D080",
+      "title": "Managing in a Global Business Environment",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-technology-and-ethics-emerging-trends-and-society",
+      "code": "D773",
+      "title": "Technology and Ethics: Emerging Trends and Society",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-technology-governance",
+      "code": "D822",
+      "title": "Technology Governance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "information-technology-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Information Technology Management",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-design-thinking-for-business",
+      "code": "D428",
+      "title": "Design Thinking for Business",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-business-simulation",
+      "code": "D361",
+      "title": "Business Simulation",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-data-and-information-governance",
+      "code": "D494",
+      "title": "Data and Information Governance",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "data-analytics",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Data Analytics",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-world-history-diverse-cultures-and-global-connections",
+      "code": "D266",
+      "title": "World History: Diverse Cultures and Global Connections",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-introduction-to-business-finance",
+      "code": "D775",
+      "title": "Introduction to Business Finance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-emerging-trends-and-innovation-in-it",
+      "code": "D825",
+      "title": "Emerging Trends and Innovation in IT",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "it-management-for-business",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "IT Management for Business",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-operations-and-supply-chain-management",
+      "code": "C720",
+      "title": "Operations and Supply Chain Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    },
+    {
+      "id": "bsitm-organizational-technology-strategy",
+      "code": "D826",
+      "title": "Organizational Technology Strategy",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsitm-guide",
+        "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "it-management-for-business",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "IT Management for Business",
+        "sourceIds": [
+          "wgu-bu-bsitm-202609-curriculum-reviewed-20261117"
+        ],
+        "programId": 252,
+        "catalogTerm": "202609",
+        "ledgerSha256": "4032cb056042ccf77218abfcd0d534254b47d0bad21f3816e10a2fbd73bf2945"
+      }
+    }
+  ]
+}

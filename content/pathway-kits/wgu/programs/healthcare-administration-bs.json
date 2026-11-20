@@ -1,0 +1,432 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "healthcare-administration-bs",
+  "modelId": "curriculum-wgu-catalog-94e68cf7b91dec17",
+  "routeIds": [
+    "wgu-catalog-94e68cf7b91dec17"
+  ],
+  "title": "Healthcare Administration – B.S.",
+  "level": "bachelor",
+  "catalog": "Published program guide; catalog version needs confirmation",
+  "totalCredits": 110,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-09"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 82.5,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-business-current"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
+      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+    ],
+    "mappingCheckedOn": "2026-11-09",
+    "pricing": {
+      "model": "subscription",
+      "amount": 3850,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-business-degrees/healthcare-administration-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bsha-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "id": "bsha-organizational-behavior",
+      "code": "",
+      "title": "Organizational Behavior",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-fundamentals-for-success-in-business",
+      "code": "",
+      "title": "Fundamentals for Success in Business",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-emotional-and-cultural-intelligence",
+      "code": "",
+      "title": "Emotional and Cultural Intelligence",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-health-fitness-and-wellness",
+      "code": "",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-values-based-leadership",
+      "code": "",
+      "title": "Values-Based Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-principles-of-management",
+      "code": "",
+      "title": "Principles of Management",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-healthcare-administration-evolution-systems-and-leadership",
+      "code": "",
+      "title": "Healthcare Administration Evolution, Systems, and Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-composition-writing-with-a-strategy",
+      "code": "",
+      "title": "Composition: Writing with a Strategy",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-healthcare-leadership-and-community-engagement",
+      "code": "",
+      "title": "Healthcare Leadership and Community Engagement",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-critical-thinking-reason-and-evidence",
+      "code": "",
+      "title": "Critical Thinking: Reason and Evidence",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-applied-healthcare-statistics",
+      "code": "",
+      "title": "Applied Healthcare Statistics",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-introduction-to-business-accounting",
+      "code": "",
+      "title": "Introduction to Business Accounting",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-healthcare-policy-and-governance",
+      "code": "",
+      "title": "Healthcare Policy and Governance",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-introduction-to-communication-connecting-with-others",
+      "code": "",
+      "title": "Introduction to Communication: Connecting with Others",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-professional-practice-experience-i-technical",
+      "code": "",
+      "title": "Professional Practice Experience I: Technical",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-introduction-to-sociology",
+      "code": "",
+      "title": "Introduction to Sociology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-applied-algebra",
+      "code": "",
+      "title": "Applied Algebra",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-human-growth-and-development",
+      "code": "",
+      "title": "Human Growth and Development",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-fundamentals-of-spreadsheets-and-data-presentations",
+      "code": "",
+      "title": "Fundamentals of Spreadsheets and Data Presentations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-evidence-based-healthcare-administration",
+      "code": "",
+      "title": "Evidence-Based Healthcare Administration",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-principles-of-economics",
+      "code": "",
+      "title": "Principles of Economics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-project-management",
+      "code": "",
+      "title": "Project Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-integrated-physical-sciences",
+      "code": "",
+      "title": "Integrated Physical Sciences",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-innovative-and-strategic-thinking",
+      "code": "",
+      "title": "Innovative and Strategic Thinking",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-change-management",
+      "code": "",
+      "title": "Change Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-business-communication",
+      "code": "",
+      "title": "Business Communication",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-introduction-to-business-finance",
+      "code": "",
+      "title": "Introduction to Business Finance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-emergency-management-and-planning-in-healthcare",
+      "code": "",
+      "title": "Emergency Management and Planning in Healthcare",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-strategic-training-and-development",
+      "code": "",
+      "title": "Strategic Training and Development",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-operations-and-supply-chain-management",
+      "code": "",
+      "title": "Operations and Supply Chain Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-concepts-in-marketing-sales-and-customer-contact",
+      "code": "",
+      "title": "Concepts in Marketing, Sales, and Customer Contact",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-american-politics-and-the-us-constitution",
+      "code": "",
+      "title": "American Politics and the US Constitution",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-exploring-emerging-trends-in-healthcare-administration",
+      "code": "",
+      "title": "Exploring Emerging Trends in Healthcare Administration",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsha-healthcare-administration-capstone",
+      "code": "",
+      "title": "Healthcare Administration Capstone",
+      "credits": 4,
+      "category": "capstone",
+      "sourceIds": [
+        "wgu-bsha-guide"
+      ],
+      "institutionalOnly": true
+    }
+  ]
+}

@@ -1,0 +1,1394 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "user-experience-design-bs",
+  "modelId": "curriculum-wgu-catalog-c023977432f945c3",
+  "routeIds": [
+    "wgu-catalog-c023977432f945c3"
+  ],
+  "title": "User Experience Design – B.S.",
+  "level": "bachelor",
+  "catalog": "202510",
+  "totalCredits": 115,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-20"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 86.25,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-business-current",
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "Every equivalency placed in more than one requirement of this program carries the school-published single-award condition.",
+      "sourceIds": [
+        "wgu-business-bsuxd-saylor-668-v78",
+        "wgu-business-bsuxd-sophia-7112-v186",
+        "wgu-business-bsuxd-study-4429-v114"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+    ],
+    "mappingCheckedOn": "2026-11-20",
+    "pricing": {
+      "model": "subscription",
+      "amount": 3850,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-business-degrees/user-experience-design-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bsuxd-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    },
+    "externalMaxCredits": 86.25,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-undergraduate-residency-policy-23797-20260918",
+      "wgu-bu-bsuxd-202510-metadata-reviewed-20261117",
+      "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 86.25,
+        "fraction": 0.75,
+        "basisCredits": 115,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 86.25,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 38-course, 115-CU BSUXD 202510 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "residencyPolicy": {
+      "type": "institution-fraction-with-capstone-exclusion",
+      "creditScope": "active-program",
+      "creditSystem": "competency-unit",
+      "fraction": 0.25,
+      "capstoneRequirementIds": [
+        "bsuxd-design-applied-learning-capstone"
+      ],
+      "capstoneCredits": 3,
+      "sourceIds": [
+        "wgu-undergraduate-residency-policy-23797-20260918",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117",
+        "wgu-bu-bsuxd-202510-metadata-reviewed-20261117",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "interpretationStatus": "verified-additional-capstone",
+      "calculatedMinimumInstitutionCUs": 31.75,
+      "primaryPolicySections": [
+        "IV.2",
+        "IV.3.a",
+        "IV.3.b.i"
+      ],
+      "conservativeSufficientCondition": {
+        "minimumNonCapstoneInstitutionCUs": 28.75,
+        "basisCredits": 115,
+        "derivation": "25% of active undergraduate degree CUs earned directly in that WGU program, in addition to required capstone CUs."
+      },
+      "notes": [
+        "Only passed CUs earned within the active WGU program count toward this rule. Prior WGU or other outside credit is not automatically counted as active-program residency."
+      ]
+    },
+    "policyCheckedOn": "2026-11-17",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 217,
+      "programCode": "BSUXD",
+      "catalog": "202510",
+      "recordVersion": 8,
+      "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c",
+      "sourceIds": [
+        "wgu-bu-bsuxd-202510-metadata-reviewed-20261117",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "checkedOn": "2026-11-17",
+      "outsideEquivalenciesReviewed": false
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bsuxd-core-business-management",
+        "parentId": "core",
+        "title": "Business Management",
+        "credits": 12,
+        "requirementIds": [
+          "bsuxd-organizational-behavior",
+          "bsuxd-project-management",
+          "bsuxd-change-management",
+          "bsuxd-values-based-leadership"
+        ],
+        "sourceId": "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsuxd-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 31,
+        "requirementIds": [
+          "bsuxd-introduction-to-communication-connecting-with-others",
+          "bsuxd-critical-thinking-reason-and-evidence",
+          "bsuxd-composition-writing-with-a-strategy",
+          "bsuxd-introduction-to-systems-thinking-and-applications",
+          "bsuxd-influential-communication-through-visual-design-and-storytelling",
+          "bsuxd-health-fitness-and-wellness",
+          "bsuxd-introduction-to-sociology",
+          "bsuxd-integrated-physical-sciences",
+          "bsuxd-applied-probability-and-statistics",
+          "bsuxd-world-history-diverse-cultures-and-global-connections"
+        ],
+        "sourceId": "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsuxd-core-power-skills",
+        "parentId": "core",
+        "title": "Power Skills",
+        "credits": 12,
+        "requirementIds": [
+          "bsuxd-giving-receiving-and-incorporating-feedback",
+          "bsuxd-adapting-to-ambiguity",
+          "bsuxd-empathy-and-inclusive-collaboration",
+          "bsuxd-navigating-complex-problems"
+        ],
+        "sourceId": "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsuxd-core-business-core",
+        "parentId": "core",
+        "title": "Business Core",
+        "credits": 36,
+        "requirementIds": [
+          "bsuxd-emotional-and-cultural-intelligence",
+          "bsuxd-innovative-and-strategic-thinking",
+          "bsuxd-principles-of-management",
+          "bsuxd-business-environment-applications-i-business-structures-and-legal-environment",
+          "bsuxd-fundamentals-of-spreadsheets-and-data-presentations",
+          "bsuxd-introduction-to-business-accounting",
+          "bsuxd-introduction-to-business-finance",
+          "bsuxd-business-environment-applications-ii-process-logistics-and-operations",
+          "bsuxd-concepts-in-marketing-sales-and-customer-contact",
+          "bsuxd-principles-of-economics",
+          "bsuxd-managing-in-a-global-business-environment",
+          "bsuxd-business-simulation"
+        ],
+        "sourceId": "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsuxd-core-design",
+        "parentId": "core",
+        "title": "Design",
+        "credits": 18,
+        "requirementIds": [
+          "bsuxd-foundations-of-design",
+          "bsuxd-empathizing-defining-and-ideating",
+          "bsuxd-design-applications",
+          "bsuxd-prototyping-and-iterating-i",
+          "bsuxd-prototyping-and-iterating-ii",
+          "bsuxd-leveraging-ai-and-technology-in-design"
+        ],
+        "sourceId": "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsuxd-core-human-resources",
+        "parentId": "core",
+        "title": "Human Resources",
+        "credits": 3,
+        "requirementIds": [
+          "bsuxd-functions-of-human-resource-management"
+        ],
+        "sourceId": "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      },
+      {
+        "id": "wgu-bsuxd-capstone-design",
+        "parentId": "capstone",
+        "title": "Design",
+        "credits": 3,
+        "requirementIds": [
+          "bsuxd-design-applied-learning-capstone"
+        ],
+        "sourceId": "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {
+        "C722": 5,
+        "D388": 5
+      },
+      "recencySourceIds": [
+        "wgu-business-bsuxd-transfer-notes-v8"
+      ],
+      "publishedNotes": {
+        "notesAdditional": "Project Management must have been taken within the past 5 years.",
+        "notesCore": "Fundamentals of Spreadsheets and Data Presentations must have been taken within the past 5 years.",
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-business-approved-agreement-batch-2026-11-20",
+      "checkedOn": "2026-11-20",
+      "programId": 217,
+      "catalog": "202510",
+      "receivingClaimsReviewed": 67,
+      "sourceIdentitiesReusedByExactProviderCode": 53,
+      "sourceIds": [
+        "wgu-business-bsuxd-sophia-7112-v186",
+        "wgu-business-bsuxd-study-4429-v114",
+        "wgu-business-bsuxd-straighterline-550-v66",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 20,
+          "approvedSourceCodeCount": 31,
+          "independentlyVerifiedSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0024",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0089"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0024",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0089"
+          ],
+          "selectableReceivingPlacements": 26,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0009",
+            "SOPH-0070",
+            "SOPH-0071",
+            "SOPH-0073",
+            "SOPH-0074",
+            "SOPH-0081",
+            "SOPH-0095",
+            "SOPH-0096"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7112,
+          "agreementRecordVersion": 186,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 20,
+          "approvedSourceCodeCount": 71,
+          "independentlyVerifiedSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0025",
+            "SDCM-0026",
+            "SDCM-0050",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0115",
+            "SDCM-0187"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0025",
+            "SDCM-0026",
+            "SDCM-0050",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0115",
+            "SDCM-0187"
+          ],
+          "selectableReceivingPlacements": 11,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0002",
+            "SDCM-0003",
+            "SDCM-0004",
+            "SDCM-0005",
+            "SDCM-0006",
+            "SDCM-0011",
+            "SDCM-0012",
+            "SDCM-0023",
+            "SDCM-0028",
+            "SDCM-0029",
+            "SDCM-0031",
+            "SDCM-0032",
+            "SDCM-0034",
+            "SDCM-0035",
+            "SDCM-0038",
+            "SDCM-0039",
+            "SDCM-0040",
+            "SDCM-0041",
+            "SDCM-0042",
+            "SDCM-0048",
+            "SDCM-0053",
+            "SDCM-0054",
+            "SDCM-0055",
+            "SDCM-0060",
+            "SDCM-0062",
+            "SDCM-0065",
+            "SDCM-0066",
+            "SDCM-0068",
+            "SDCM-0069",
+            "SDCM-0071",
+            "SDCM-0073",
+            "SDCM-0077",
+            "SDCM-0079",
+            "SDCM-0090",
+            "SDCM-0101",
+            "SDCM-0102",
+            "SDCM-0105",
+            "SDCM-0133",
+            "SDCM-0134",
+            "SDCM-0138",
+            "SDCM-0140",
+            "SDCM-0153",
+            "SDCM-0155",
+            "SDCM-0156",
+            "SDCM-0157",
+            "SDCM-0158",
+            "SDCM-0159",
+            "SDCM-0169",
+            "SDCM-0174",
+            "SDCM-0188",
+            "SDCM-0189",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0242",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0248",
+            "SDCM-0252",
+            "SDCM-0255",
+            "SDCM-0259"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4429,
+          "agreementRecordVersion": 114,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 15,
+          "approvedSourceCodeCount": 35,
+          "independentlyVerifiedSourceCodes": [],
+          "independentlyVerifiedSelectableSourceCodes": [],
+          "selectableReceivingPlacements": 0,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0005",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0010",
+            "OOSL-0011",
+            "OOSL-0015",
+            "OOSL-0017",
+            "OOSL-0023",
+            "OOSL-0028",
+            "OOSL-0030",
+            "OOSL-0033",
+            "OOSL-0034",
+            "OOSL-0035",
+            "OOSL-0039",
+            "OOSL-0040",
+            "OOSL-0042",
+            "OOSL-0043",
+            "OOSL-0044",
+            "OOSL-0046",
+            "OOSL-0047",
+            "OOSL-0048",
+            "OOSL-0051",
+            "OOSL-0052",
+            "OOSL-0055",
+            "OOSL-0059",
+            "OOSL-0063",
+            "OOSL-0070",
+            "OOSL-0092",
+            "OOSL-0101",
+            "OOSL-0112",
+            "OOSL-0113",
+            "OOSL-0114",
+            "OOSL-0121",
+            "OOSL-0124",
+            "OOSL-0125"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 550,
+          "agreementRecordVersion": 66,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/550"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 12,
+          "approvedSourceCodeCount": 16,
+          "independentlyVerifiedSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "selectableReceivingPlacements": 16,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0012",
+            "SAYA-0029",
+            "SAYA-0033"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 668,
+          "agreementRecordVersion": 78,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/668"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false,
+      "retiredInvalidSingleCourseOptions": []
+    }
+  },
+  "requirements": [
+    {
+      "id": "bsuxd-organizational-behavior",
+      "code": "C715",
+      "title": "Organizational Behavior",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-introduction-to-communication-connecting-with-others",
+      "code": "D268",
+      "title": "Introduction to Communication: Connecting with Others",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-giving-receiving-and-incorporating-feedback",
+      "code": "D640",
+      "title": "Giving, Receiving and Incorporating Feedback",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "power-skills",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Power Skills",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-emotional-and-cultural-intelligence",
+      "code": "D082",
+      "title": "Emotional and Cultural Intelligence",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-innovative-and-strategic-thinking",
+      "code": "D081",
+      "title": "Innovative and Strategic Thinking",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-foundations-of-design",
+      "code": "D651",
+      "title": "Foundations of Design",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "design",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Design",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-critical-thinking-reason-and-evidence",
+      "code": "D265",
+      "title": "Critical Thinking: Reason and Evidence",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-adapting-to-ambiguity",
+      "code": "D641",
+      "title": "Adapting to Ambiguity",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "power-skills",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Power Skills",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-empathizing-defining-and-ideating",
+      "code": "D653",
+      "title": "Empathizing, Defining, and Ideating",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "design",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Design",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-principles-of-management",
+      "code": "C483",
+      "title": "Principles of Management",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-empathy-and-inclusive-collaboration",
+      "code": "D642",
+      "title": "Empathy and Inclusive Collaboration",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "power-skills",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Power Skills",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-business-environment-applications-i-business-structures-and-legal-environment",
+      "code": "D078",
+      "title": "Business Environment Applications I: Business Structures and Legal Environment",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-fundamentals-of-spreadsheets-and-data-presentations",
+      "code": "D388",
+      "title": "Fundamentals of Spreadsheets and Data Presentations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      },
+      "transferRecencyYears": 5,
+      "transferRecencySourceIds": [
+        "wgu-business-bsuxd-transfer-notes-v8"
+      ]
+    },
+    {
+      "id": "bsuxd-introduction-to-business-accounting",
+      "code": "D774",
+      "title": "Introduction to Business Accounting",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-composition-writing-with-a-strategy",
+      "code": "D269",
+      "title": "Composition: Writing with a Strategy",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-navigating-complex-problems",
+      "code": "D643",
+      "title": "Navigating Complex Problems",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "power-skills",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Power Skills",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-introduction-to-systems-thinking-and-applications",
+      "code": "D459",
+      "title": "Introduction to Systems Thinking and Applications",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-introduction-to-business-finance",
+      "code": "D775",
+      "title": "Introduction to Business Finance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-influential-communication-through-visual-design-and-storytelling",
+      "code": "D246",
+      "title": "Influential Communication through Visual Design and Storytelling",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-design-applications",
+      "code": "D652",
+      "title": "Design Applications",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "design",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Design",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-business-environment-applications-ii-process-logistics-and-operations",
+      "code": "D079",
+      "title": "Business Environment Applications II: Process, Logistics, and Operations",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-health-fitness-and-wellness",
+      "code": "C458",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-project-management",
+      "code": "C722",
+      "title": "Project Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      },
+      "transferRecencyYears": 5,
+      "transferRecencySourceIds": [
+        "wgu-business-bsuxd-transfer-notes-v8"
+      ]
+    },
+    {
+      "id": "bsuxd-change-management",
+      "code": "C721",
+      "title": "Change Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-introduction-to-sociology",
+      "code": "C273",
+      "title": "Introduction to Sociology",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-concepts-in-marketing-sales-and-customer-contact",
+      "code": "D077",
+      "title": "Concepts in Marketing, Sales, and Customer Contact",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-integrated-physical-sciences",
+      "code": "C165",
+      "title": "Integrated Physical Sciences",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-prototyping-and-iterating-i",
+      "code": "D654",
+      "title": "Prototyping and Iterating I",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "design",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Design",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-prototyping-and-iterating-ii",
+      "code": "D655",
+      "title": "Prototyping and Iterating II",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "design",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Design",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-applied-probability-and-statistics",
+      "code": "C955",
+      "title": "Applied Probability and Statistics",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-world-history-diverse-cultures-and-global-connections",
+      "code": "D266",
+      "title": "World History: Diverse Cultures and Global Connections",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "general-education",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "General Education",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-principles-of-economics",
+      "code": "D089",
+      "title": "Principles of Economics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-functions-of-human-resource-management",
+      "code": "D351",
+      "title": "Functions of Human Resource Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "human-resources",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Human Resources",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-leveraging-ai-and-technology-in-design",
+      "code": "D656",
+      "title": "Leveraging AI and Technology in Design",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "design",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Design",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-managing-in-a-global-business-environment",
+      "code": "D080",
+      "title": "Managing in a Global Business Environment",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-business-simulation",
+      "code": "D361",
+      "title": "Business Simulation",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-core",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Core",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-values-based-leadership",
+      "code": "D253",
+      "title": "Values-Based Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": false,
+      "group": "business-management",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Business Management",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    },
+    {
+      "id": "bsuxd-design-applied-learning-capstone",
+      "code": "D657",
+      "title": "Design Applied Learning Capstone",
+      "credits": 3,
+      "category": "capstone",
+      "sourceIds": [
+        "wgu-bsuxd-guide",
+        "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+      ],
+      "institutionalOnly": true,
+      "group": "design",
+      "curriculumAreaEvidence": {
+        "areaOfStudy": "Design",
+        "sourceIds": [
+          "wgu-bu-bsuxd-202510-curriculum-reviewed-20261117"
+        ],
+        "programId": 217,
+        "catalogTerm": "202510",
+        "ledgerSha256": "ed785c34f68d5e2efa9b49a6a9f78265badac93258769bb445eb72dd03f2424c"
+      }
+    }
+  ]
+}

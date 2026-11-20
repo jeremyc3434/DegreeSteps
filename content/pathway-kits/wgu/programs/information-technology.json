@@ -1,0 +1,443 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "information-technology",
+  "modelId": "curriculum-wgu-catalog-d734fb4b04eded7c",
+  "routeIds": [
+    "wgu-catalog-d734fb4b04eded7c"
+  ],
+  "title": "Information Technology",
+  "level": "bachelor",
+  "catalog": "202608",
+  "totalCredits": 110,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-09"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 82.5,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-technology-current"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
+      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+    ],
+    "mappingCheckedOn": "2026-11-09",
+    "pricing": {
+      "model": "subscription",
+      "amount": 3925,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-it-degrees/information-technology-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bsit-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "id": "bsit-introduction-to-it",
+      "code": "",
+      "title": "Introduction to IT",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-business-productivity-software",
+      "code": "",
+      "title": "Business Productivity Software",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-influential-communication-through-visual-design-and-storytelling",
+      "code": "",
+      "title": "Influential Communication through Visual Design and Storytelling",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-health-fitness-and-wellness",
+      "code": "",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-technology-and-ethics-emerging-trends-and-society",
+      "code": "",
+      "title": "Technology and Ethics: Emerging Trends and Society",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-critical-thinking-reason-and-evidence",
+      "code": "",
+      "title": "Critical Thinking: Reason and Evidence",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-business-of-it-applications",
+      "code": "",
+      "title": "Business of IT - Applications",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-composition-successful-self-expression",
+      "code": "",
+      "title": "Composition: Successful Self-Expression",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-introduction-to-systems-thinking-and-applications",
+      "code": "",
+      "title": "Introduction to Systems Thinking and Applications",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-business-of-it-project-management",
+      "code": "",
+      "title": "Business of IT - Project Management",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-applied-probability-and-statistics",
+      "code": "",
+      "title": "Applied Probability and Statistics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-practical-applications-of-prompt",
+      "code": "",
+      "title": "Practical Applications of Prompt",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-linux-foundations",
+      "code": "",
+      "title": "Linux Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-it-foundations",
+      "code": "",
+      "title": "IT Foundations",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-american-politics-and-the-us-constitution",
+      "code": "",
+      "title": "American Politics and the US Constitution",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-digital-transformation-in-the-enterprise",
+      "code": "",
+      "title": "Digital Transformation in the Enterprise",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-fundamentals-of-spreadsheets-and-data-presentations",
+      "code": "",
+      "title": "Fundamentals of Spreadsheets and Data Presentations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-agile-methodology",
+      "code": "",
+      "title": "Agile Methodology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-it-applications",
+      "code": "",
+      "title": "IT Applications",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-technology-management",
+      "code": "",
+      "title": "Technology Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-web-design-fundamentals",
+      "code": "",
+      "title": "Web Design Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-network-and-security-foundations",
+      "code": "",
+      "title": "Network and Security - Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-applied-algebra",
+      "code": "",
+      "title": "Applied Algebra",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-cloud-applications",
+      "code": "",
+      "title": "Cloud Applications",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-data-management-foundations",
+      "code": "",
+      "title": "Data Management - Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-networks",
+      "code": "",
+      "title": "Networks",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-technical-communication",
+      "code": "",
+      "title": "Technical Communication",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-natural-science-lab",
+      "code": "",
+      "title": "Natural Science Lab",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-global-arts-and-humanities",
+      "code": "",
+      "title": "Global Arts and Humanities",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-network-and-security-applications",
+      "code": "",
+      "title": "Network and Security - Applications",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-foundations-of-programming-python",
+      "code": "",
+      "title": "Foundations of Programming (Python)",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-technology-governance",
+      "code": "",
+      "title": "Technology Governance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-data-management-applications",
+      "code": "",
+      "title": "Data Management - Applications",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-python-for-it-automation",
+      "code": "",
+      "title": "Python for IT Automation",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsit-cloud-foundations",
+      "code": "",
+      "title": "Cloud Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsit-guide"
+      ],
+      "institutionalOnly": false
+    }
+  ]
+}

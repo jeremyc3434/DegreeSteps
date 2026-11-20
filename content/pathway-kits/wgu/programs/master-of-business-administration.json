@@ -1,0 +1,167 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "master-of-business-administration",
+  "modelId": "curriculum-wgu-catalog-b2a8a37d4fbedabd",
+  "routeIds": [
+    "wgu-catalog-b2a8a37d4fbedabd"
+  ],
+  "title": "Master of Business Administration (MBA)",
+  "level": "master",
+  "catalog": "201404",
+  "totalCredits": 34,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-09"
+  },
+  "modelFields": {
+    "unresolved": [
+      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
+      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
+      "Confirm the required prior degree, applicable graduate transfer policy, admissions eligibility and catalog with WGU.",
+      "No outside transfer pathway is asserted for this graduate degree."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. This graduate curriculum contains no proposed undergraduate alternative-credit matches."
+    ],
+    "mappingCheckedOn": "2026-11-09",
+    "pricing": {
+      "model": "subscription",
+      "amount": 4850,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-program.html",
+      "sourceIds": [
+        "wgu-mba-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "id": "mba-managing-organizations-and-leading-people",
+      "code": "",
+      "title": "Managing Organizations and Leading People",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-managing-human-capital",
+      "code": "",
+      "title": "Managing Human Capital",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-management-communication",
+      "code": "",
+      "title": "Management Communication",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-marketing",
+      "code": "",
+      "title": "Marketing",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-accounting-for-decision-makers",
+      "code": "",
+      "title": "Accounting for Decision Makers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-ethical-leadership",
+      "code": "",
+      "title": "Ethical Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-financial-management",
+      "code": "",
+      "title": "Financial Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-data-driven-decision-making",
+      "code": "",
+      "title": "Data-Driven Decision Making",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-operations-management",
+      "code": "",
+      "title": "Operations Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-global-economics-for-managers",
+      "code": "",
+      "title": "Global Economics for Managers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "mba-mba-capstone",
+      "code": "",
+      "title": "MBA Capstone",
+      "credits": 4,
+      "category": "capstone",
+      "sourceIds": [
+        "wgu-mba-guide"
+      ],
+      "institutionalOnly": true
+    }
+  ]
+}
