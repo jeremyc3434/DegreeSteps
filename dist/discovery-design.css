@@ -452,3 +452,23 @@ body.ds-discovery-page .pf-steps span { display:grid; place-items:center; width:
 body.ds-discovery-page .pf-steps li[aria-current="step"] { color:#fff; font-weight:600; }
 body.ds-discovery-page .pf-steps li[aria-current="step"] span { border-color:#6f7dff; background:#6f7dff; color:#fff; box-shadow:0 0 0 4px rgba(111,125,255,.25); }
 @media(max-width:560px) { body.ds-discovery-page .pf-steps { row-gap:10px; } body.ds-discovery-page .pf-steps li + li::before { width:14px; margin:0 6px; } }
+
+/* Plan finder: subject, outside-credit and review-tier controls. */
+body.ds-discovery-page #program-filters { grid-template-columns:minmax(200px,1.6fr) repeat(3,minmax(140px,1fr)); }
+body.ds-discovery-page .pf-more>div { align-items:flex-end; }
+body.ds-discovery-page .pf-check { display:flex; align-items:center; gap:10px; min-height:48px; cursor:pointer; }
+body.ds-discovery-page #program-filters .pf-check>span { margin:0; color:var(--discovery-ink); font-size:.9375rem; }
+body.ds-discovery-page .pf-check input { width:20px; height:20px; accent-color:var(--discovery-blue,#4054f4); }
+body.ds-discovery-page .pf-results-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px 20px; }
+body.ds-discovery-page .pf-results-head .pf-count { margin-block:18px; }
+body.ds-discovery-page .pf-sort { display:flex; align-items:center; gap:8px; color:var(--discovery-muted); font-size:.875rem; }
+body.ds-discovery-page .pf-sort select { min-height:40px; padding:0 30px 0 10px; border:1px solid #9eacbf; border-radius:6px; background-color:#fff; color:var(--discovery-ink); font-size:.9375rem; }
+body.ds-discovery-page .pf-badge-confirm { background:#fff4e5; color:#8a4b0f; }
+body.ds-discovery-page .pf-confirm-note { margin:12px 0 0; padding:10px 12px; border-left:3px solid #d98a2b; border-radius:0 6px 6px 0; background:#fffaf2; color:#5c3a12; font-size:.875rem; line-height:1.5; }
+body.ds-discovery-page .pf-confirm-note span { color:#8a4b0f; white-space:nowrap; }
+body.ds-discovery-page .pf-confirm-detail { margin:0 0 18px; padding:16px 18px; border:1px solid #f0d3a8; border-radius:8px; background:#fffaf2; }
+body.ds-discovery-page .pf-confirm-detail h3 { margin:0 0 8px; color:#5c3a12; font-size:1rem; }
+body.ds-discovery-page .pf-confirm-detail ul { margin:0 0 10px; padding-left:20px; color:#5c3a12; font-size:.9375rem; }
+body.ds-discovery-page .pf-confirm-detail p { margin:0; color:#6b4a22; font-size:.875rem; }
+@media(max-width:1100px) { body.ds-discovery-page #program-filters { grid-template-columns:repeat(2,minmax(0,1fr)); } body.ds-discovery-page #program-filters .pf-search { grid-column:1/-1; } }
+@media(max-width:600px) { body.ds-discovery-page #program-filters { grid-template-columns:minmax(0,1fr); } }

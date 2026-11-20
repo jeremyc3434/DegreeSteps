@@ -31,6 +31,7 @@ execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.m
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-academic-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-pathway-quality-report.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-plan-library-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/provider-directory-discovery.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-priorities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-school-research-batch.mjs'),'--check'],{cwd:root,stdio:'inherit'});
