@@ -86,7 +86,7 @@ function savedTarget(pathId, overrides = {}) {
   browser = await chromium.launch({executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium', args:['--no-sandbox']});
   await test('a fresh visitor sees one clear question without a preselected degree or sample spreadsheet', async () => {
     const page = await fresh();
-    assert.equal((await page.locator('#portal-question-title').innerText()).trim(), 'Let’s build your degree plan.');
+    assert.equal((await page.locator('#portal-question-title').innerText()).trim(), 'Build your course plan.');
     assert.equal(await page.locator('.portal-choice').count(), 3);
     assert(await page.getByRole('link',{name:/browse affordable courses first/}).isVisible());
     assert(await page.getByRole('button', {name:/Help me choose/}).isVisible());
