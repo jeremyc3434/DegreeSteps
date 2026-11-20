@@ -208,7 +208,43 @@
   function renderSchoolCheck(focusAction) {
     const node=$('sheet-school-check');if(!node)return;
     const html=task||!pathway?'':schoolCheckHTML();if(node.innerHTML!==html)node.innerHTML=html;node.hidden=!html;
+    if(planIndex)renderGlance();
     if(focusAction)node.querySelector('[data-action="'+focusAction+'"]')?.focus();
+  }
+  // Phone glance (≤700px only; wider screens never show it): what the plan is, its headline
+  // numbers and cost line, a jump to the courses, and one-line disclosures for the secondary
+  // panels (credit breakdown and starting-route notes, school questions, estimate details),
+  // which stay folded on phones until opened. Folding is presentation only; nothing is saved.
+  const phoneFolds=new Set();let glanceCost=null;
+  function glanceHTML() {
+    if(task||!pathway||!plan||!program)return '';
+    const route=window.DegreePlanRoute?.build({state,pathway,program,plan,match,input,guidance},projection());
+    if(!route?.available)return '';
+    const phase=id=>route.phases.find(item=>item.id===id),number=value=>new Intl.NumberFormat('en-US',{maximumFractionDigits:1}).format(value);
+    const questions=Sheet.schoolQuestions(planIndex,pathway.id).length,savings=$('sheet-savings'),costShown=Boolean(savings&&!savings.hidden);
+    const fold=(group,controls,title,detail)=>'<li data-glance-fold="'+group+'"><button type="button" class="sheet-glance-fold" data-phone-fold="'+group+'" aria-expanded="'+phoneFolds.has(group)+'" aria-controls="'+controls+'"><span><strong>'+title+'</strong><small>'+esc(detail)+'</small></span><i aria-hidden="true"></i></button></li>';
+    const draft={state,pathway,program,plan,match,input,guidance},next=simplePlan()&&window.DegreePlanHome?.nextWin(state,draft);
+    const unmatched=(match?.unmatched||[]).filter(record=>record.status==='earned').length;
+    const notes=[route.needsCourseCredits?'<span>'+esc(number(route.needsCourseCredits)+' '+route.unit+' still need a course')+'</span>':'',unmatched?'<a href="courses.html?tab=mine">'+unmatched+' past course'+(unmatched===1?'':'s')+' not matched</a>':''].filter(Boolean).join('');
+    const nextHTML=next?'<a class="sheet-glance-next" href="'+esc(next.href)+'"><span><small>Next step:</small> <strong>'+esc(next.title)+'</strong></span><span class="sheet-glance-next-label">'+esc(next.label)+'</span></a>':'';
+    // The fold summaries carry the headline numbers and cost line, so they stay visible while the panels are folded.
+    const folds=[fold('progress','sheet-route sheet-summary','Your degree: <span data-glance-total>'+esc(number(phase('degree').value)+' '+route.unit)+'</span>',number(phase('outside').value)+' outside · '+number(phase('university').value)+' university · '+number(phase('completed').value)+' finished'),
+      costShown?fold('cost','sheet-savings',glanceCost?esc(glanceCost.label)+' <span data-glance-cost>'+esc(glanceCost.amount)+'</span>':'Cost',glanceCost?.detail||'Estimate details'):'',
+      questions?fold('school','sheet-school-check',esc(questions+' question'+(questions===1?'':'s')+' to ask the school'),'Before you pay for outside courses'):''].join('');
+    return '<section class="sheet-glance" aria-label="Plan at a glance">'+(notes||!simplePlan()?'<div class="sheet-glance-row">'+(notes?'<p class="sheet-glance-notes">'+notes+'</p>':'')+(simplePlan()?'':jumpLink('sheet-glance-jump'))+'</div>':'')+'<ul class="sheet-glance-folds">'+folds+'</ul>'+nextHTML+'</section>';
+  }
+  // On the course list the jump sits in the title block (phones only); the worksheet keeps it in the glance.
+  function jumpLink(className){return '<a class="'+className+'" href="#sheet-grid" data-jump-courses>Jump to courses <span aria-hidden="true">↓</span></a>';}
+  function renderGlance() {
+    const node=$('sheet-glance'),workspace=$('sheet-workspace');if(!node||!workspace)return;
+    const html=glanceHTML();if(node.innerHTML!==html)node.innerHTML=html;node.hidden=!html;
+    workspace.classList.toggle('has-glance',Boolean(html));
+    workspace.classList.toggle('glance-has-next',Boolean(html&&node.querySelector('.sheet-glance-next')));
+    for(const group of ['progress','school','cost'])workspace.classList.toggle('phone-open-'+group,phoneFolds.has(group));
+  }
+  function setGlanceCost(value) {
+    const next=value&&value.amount?{label:String(value.label||'').trim(),amount:String(value.amount).replace(/\s+/g,' ').trim(),detail:value.detail||'Estimate details'}:null;
+    if(JSON.stringify(next)===JSON.stringify(glanceCost))return;glanceCost=next;renderGlance();
   }
   function loadBaselineIndex() {
     if(typeof fetch!=='function')return Promise.resolve(null);
@@ -263,7 +299,11 @@
         const shared=Boolean(view?.available(estimate)),confirm=!shared&&pending;
         slots.range.innerHTML=shared?view.render(estimate,{compact:true}):confirm?'<div class="sheet-cost-confirm"><p class="savings-label">Total cost</p><p><strong>Cost needs confirmation</strong></p><p class="savings-simple-basis">No reviewed planning estimate exists for this plan yet. Ask the school for its current tuition and fees.</p></div>':'';
         slots.range.hidden=!shared&&!confirm;main.classList.toggle('has-planning-range',shared||confirm);
-        window.DegreeSavingsTracker.update(slots.savings,state,draft,{onChange,simple,secondary:shared||confirm});
+        const tracked=window.DegreeSavingsTracker.update(slots.savings,state,draft,{onChange,simple,secondary:shared||confirm});
+        // The phone glance repeats the headline cost line exactly as the panel states it.
+        if(shared)setGlanceCost({label:'Planning estimate',amount:slots.range.querySelector('.plan-estimate-heading strong')?.textContent,detail:'Before aid · estimate details'});
+        else if(confirm)setGlanceCost({label:'Total cost:',amount:'needs confirmation',detail:'Ask the school · estimate details'});
+        else void Promise.resolve(tracked).then(()=>{if(ticket!==savingsTicket)return;const amount=slots.savings.querySelector('[data-savings="money"]'),label=amount?.closest('.savings-metric')?.querySelector('.savings-label');setGlanceCost(amount&&label?{label:label.textContent,amount:amount.textContent}:null);},()=>{});
       };
       if(!view||view.hasPersonalAssumptions(personalEstimateSettings(draft)))show(null);else void Promise.all([researchedEstimate(draft),loadPlanIndex()]).then(([estimate,index])=>{const entry=index?.plans?.[pathway?.id];show(estimate,Boolean(entry&&!entry.estimate));},()=>show(null));
     }
@@ -343,6 +383,7 @@
     generate();if(persist)save();$('sheet-workspace').hidden=Boolean(task);$('sheet-loading').hidden=true;document.body.classList.toggle('course-plan-page',simplePlan());
     renderSchoolCheck();
     updateSavings();
+    renderGlance();
     if(simplePlan()){renderCoursePlan();renderChecklist();restoreWorksheetFocus(focusId,focusKind,focusRow);if(!task)loadOutcomes();return;}
     if($('sheet-route'))$('sheet-route').innerHTML='';
     if($('sheet-next'))$('sheet-next').innerHTML='';
@@ -412,7 +453,7 @@
     courseView=projection();
     const draft={state,pathway,program,plan,match,input,guidance,targetReviewNeeded,targetIssues,targetUnknowns,mapAvailable};
     const format=(pathway.modalities||[]).map(x=>x==='campus'?'On campus':x==='hybrid'?'Hybrid':'Online').join(' / ');
-    $('sheet-titlebar').innerHTML='<div class="course-plan-target"><h1 class="sheet-title">'+esc(pathway.title)+'</h1><div class="course-plan-school">'+esc(pathway.school)+(format?' · '+esc(format):'')+' <span class="sheet-mobile-target">'+button('target','Change degree','ghost')+'</span></div></div><div class="sheet-actions">'+button('compare-plans','Compare degrees','secondary')+button('more','Plan tools','ghost')+'</div>';
+    $('sheet-titlebar').innerHTML='<div class="course-plan-target"><h1 class="sheet-title">'+esc(pathway.title)+'</h1><div class="course-plan-school">'+esc(pathway.school)+(format?' · '+esc(format):'')+' <span class="sheet-mobile-target">'+button('target','Change degree','ghost')+'</span>'+jumpLink('sheet-title-jump')+'</div></div><div class="sheet-actions">'+button('compare-plans','Compare degrees','secondary')+button('more','Plan tools','ghost')+'</div>';
     if($('sheet-route'))$('sheet-route').innerHTML=window.DegreePlanRoute?.render(draft,courseView)||'';
     if($('sheet-next')){
       const next=plan&&window.DegreePlanHome?.nextWin(state,draft);
@@ -674,6 +715,12 @@
     state=next;render();
     if(choice==='some')creditsDialog(null,true);else{closeDialog();announce(choice==='none'?'Starting from zero saved. Your saved courses are unchanged.':'Past courses set aside for now. Your plan stays provisional.');}
   }
+  document.addEventListener('click',event=>{
+    const fold=event.target.closest('[data-phone-fold]');
+    if(fold){const group=fold.dataset.phoneFold,open=!phoneFolds.has(group);if(open)phoneFolds.add(group);else phoneFolds.delete(group);fold.setAttribute('aria-expanded',String(open));$('sheet-workspace')?.classList.toggle('phone-open-'+group,open);return;}
+    const jump=event.target.closest('[data-jump-courses]');
+    if(jump){const grid=$('sheet-grid');if(!grid)return;event.preventDefault();grid.scrollIntoView?.({block:'start'});grid.focus({preventScroll:true});}
+  });
   document.addEventListener('click',async event=>{const button=event.target.closest('[data-prior-choice]');if(!button)return;button.disabled=true;try{await choosePriorCredits(button.dataset.priorChoice);}catch(error){const node=$('sheet-prior-error');if(node)node.textContent=error.message;else announce(error.message);}finally{if(button.isConnected)button.disabled=false;}});
   let importRevision=0,importedSource='';
   function clearImportPreview() {
