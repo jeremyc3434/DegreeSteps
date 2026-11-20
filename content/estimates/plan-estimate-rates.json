@@ -139,6 +139,17 @@
       "url": "https://www.straighterline.com/pricing",
       "checkedOn": "2026-11-20",
       "notes": "Pay-as-you-go membership is $99 per month plus each selected course charge. Restricted four-month and annual plans list $699 and $1,499, apply to 27 listed courses and new students, and exclude lab kits."
+    },
+    {
+      "id": "excelsior-undergraduate-tuition",
+      "title": "Excelsior undergraduate tuition and fees",
+      "url": "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+      "checkedOn": "2026-11-20",
+      "reviewBasis": {
+        "type": "retained-published-per-credit-tuition-and-itemized-fees",
+        "document": "content/source-captures/280cdb082800f54d.txt",
+        "sha256": "280cdb082800f54d227b1ff74a05d97541a7ca4ed40753802cdf69972fa43980"
+      }
     }
   ],
   "providers": [
@@ -582,6 +593,61 @@
       ],
       "missing": [
         "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "excelsior-online-2026-11",
+      "modelIds": [
+        "curriculum-excelsior-bs-business-no-concentration",
+        "curriculum-excelsior-bs-psychology",
+        "curriculum-excelsior-bs-liberal-arts-no-concentration"
+      ],
+      "school": "Excelsior University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 120,
+      "catalogs": [
+        "November 2026"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 510
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 125,
+      "feesPerUnit": 68,
+      "feeBreakdown": [
+        {
+          "label": "Academic Services Fee",
+          "amount": 40,
+          "frequency": "per-unit"
+        },
+        {
+          "label": "Technology Fee",
+          "amount": 28,
+          "frequency": "per-unit"
+        },
+        {
+          "label": "Graduation fee",
+          "amount": 125,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "termLabel": "trimester",
+      "termMonths": null,
+      "sourceIds": [
+        "excelsior-undergraduate-tuition"
+      ],
+      "missing": [
+        "Uses standard per-credit tuition. Partner tuition (which requires partner eligibility and brings the 15-Excelsior-credit partnership rule) and the BS in Business fixed-rate trimester option are not used.",
+        "Excelsior does not publish a standard credit load per trimester in the reviewed sources; the trimester count uses a planning-assumption pace.",
+        "The optional $300 post-admission credit evaluation, the 2.85% card service fee and graduation regalia are not included."
       ]
     }
   ],
