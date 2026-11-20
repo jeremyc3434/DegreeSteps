@@ -1,6 +1,11 @@
+/* RETIRED as a TESU source of truth (2026-11-20). TESU curricula now compile from content/pathway-kits/tesu via
+ * `npm run factory:publish`; its invariants live in content/pathway-kits/tesu/guards.mjs. The builder below is kept as a
+ * cross-check: `--check` proves the kit-published document still carries this reviewed ledger (scripts/tesu-kit-ledger-check.mjs).
+ * Running it without --check no longer writes content/curricula. */
 /* Compile the exact current Accounting ledger. Transfer awards are attached by
  * the shared registry using school/receiving-code evidence, never by degree title. */
 import assert from 'node:assert/strict';
+import {assertKitLedger} from './tesu-kit-ledger-check.mjs';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -81,7 +86,7 @@ export function buildTESUAccounting(facts,baseline){
 export async function run({check=false}={}){
  const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
  const result=buildTESUAccounting(await read(factsPath),await read('dist/data/tesu.json'));
- if(check)assert.deepEqual(await read(outputPath),result,'TESU Accounting source model needs regeneration');else await writeFile(resolve(root,outputPath),JSON.stringify(result,null,2)+'\n');
+ if(!check)throw Error('Retired: TESU publishes '+outputPath+' from content/pathway-kits/tesu (npm run factory:publish).');assertKitLedger(await read(outputPath),result,'TESU Accounting');
  return {model:result.models[0].id,requirements:result.models[0].requirements.length,credits:result.models[0].totalCredits,newProviderEquivalencies:0,check};
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url))run({check:process.argv.includes('--check')}).then(result=>console.log(JSON.stringify(result))).catch(error=>{console.error(error.message);process.exitCode=1;});

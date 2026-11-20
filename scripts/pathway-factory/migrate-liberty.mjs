@@ -20,7 +20,7 @@ import {clone,list,slug,same,canonical,identityFields,awardFields,inScope,matchR
 import {compileKit} from './compile.mjs';
 
 export const files=['liberty','liberty-history-online','liberty-online-expansion','liberty-residential-expansion'];
-const schoolId='liberty',schoolName='Liberty University';
+const schoolId='liberty';
 /** Messages the registry's generic compiler pushes itself when a policy is not documented (build-curriculum-registry.mjs). */
 const genericPolicyPrompts={institutionMinCredits:'Confirm how many credits must be earned at this university for this exact degree.',upperMinCredits:'Confirm the degree’s upper-level credit minimum.',alternativeMaxCredits:'Confirm the combined limit on alternative credit sources.'};
 /** The registry's elective-block condition (build-curriculum-registry.mjs elective placement). */
@@ -28,6 +28,11 @@ export const electiveCondition='Proposed use in this published elective block. T
 const sameSchoolScope='Same-school receiving-course award researched in another degree; exact degree and delivery-format application require confirmation.';
 /** Reviews whose awards come from Liberty's institution-wide transfer guides (per modality), not from one degree. */
 const guideReviews=new Set(['liberty-official-2026-11-10','liberty-online-full-guide-awards-2026-11-18']);
+/**
+ * What a registry-to-kit migration needs to know about one school. Liberty is the default; other schools whose registry
+ * models are decomposed the same way (TESU: migrate-tesu.mjs) pass their own files, ids and school-wide review ids.
+ */
+export const libertyConfig=Object.freeze({schoolId,schoolName:'Liberty University',files,modelPrefix:'curriculum-liberty-',guideReviews});
 const placementEvidenceKeys='modelId,catalogYear,modality,requirementId,receivingCode,credits,creditSystem,placementType,sourceIds';
 const key=value=>JSON.stringify(canonical(value));
 const short=value=>createHash('sha256').update(key(value)).digest('hex').slice(0,8);
@@ -89,7 +94,8 @@ function modeName(mode){
   return parts.join('-');
 }
 
-export async function migrate({base=root,existingProviders}={}){
+export async function migrate({base=root,existingProviders,config=libertyConfig}={}){
+  const {schoolId,schoolName,files,modelPrefix,guideReviews}=config;
   const registry=await readJSON(resolve(base,'dist/data/curriculum-registry.json'));
   const documents=[],models=[];
   for(const name of files){
@@ -98,7 +104,7 @@ export async function migrate({base=root,existingProviders}={}){
     documents.push({path:'content/curricula/'+name+'.json',checkedOn:content.checkedOn,routes:content.routes,models:inputs});
     models.push(...inputs);
   }
-  const slugOf=id=>id.replace(/^curriculum-liberty-/,'');
+  const slugOf=id=>id.startsWith(modelPrefix)?id.slice(modelPrefix.length):id;
   const providers=existingProviders||await loadProviders(resolve(base,'content/pathway-kits/providers'));
   const providerDocs=new Map([...providers].map(([name,doc])=>{const copy=clone(doc);delete copy.file;return [name,copy];}));
 
@@ -126,9 +132,11 @@ export async function migrate({base=root,existingProviders}={}){
       const group=placements.filter(q=>q.core?.provider===provider&&q.core.code===code).map(q=>q.core);
       const quantity=mostCommon(group.filter(o=>o.sourceCredits>0&&o.sourceCreditSystem).map(o=>({sourceCredits:o.sourceCredits,sourceCreditSystem:o.sourceCreditSystem})));
       doc.courses.push({code,title:mostCommon(group.map(o=>o.title)),...(quantity||{sourceCredits:null})});
+      doc.added=true;
     }
   }
-  for(const doc of providerDocs.values())doc.courses.sort((a,b)=>a.code.localeCompare(b.code));
+  // Only provider files that gained courses are re-sorted; the others stay byte-identical.
+  for(const doc of providerDocs.values())if(doc.added){delete doc.added;doc.courses.sort((a,b)=>a.code.localeCompare(b.code));}
 
   // Rows: one per distinct award.
   const rowsByKey=new Map();
@@ -237,12 +245,22 @@ export async function migrate({base=root,existingProviders}={}){
 }
 
 export async function writeLibertyKit(kit,out=kitsRoot){
-  const dir=join(out,schoolId);
+  const dir=join(out,kit.school.id);
   await writeJSON(join(dir,'school.json'),kit.school,['sources']);
   await writeJSON(join(dir,'equivalencies.json'),kit.equivalencies,['equivalencies']);
   for(const program of kit.programs)await writeProgram(join(dir,'programs',program.slug+'.json'),program);
-  for(const provider of kit.providers.values())await writeJSON(join(out,'providers',providerFile(provider.provider)),provider,['courses','sources']);
+  for(const provider of kit.providers.values())await writeProvider(join(out,'providers',providerFile(provider.provider)),provider);
   return dir;
+}
+/** Shared provider files are rewritten only when their content changes, keeping the layout of their sources (one per line or pretty). */
+async function writeProvider(path,provider){
+  if(await exists(path)){
+    const text=await readFile(path,'utf8'),current=JSON.parse(text);
+    if(same(current,provider))return;
+    const layout=stringifyKit(current,['courses'])+'\n'===text?['courses']:['courses','sources'];
+    return writeJSON(path,provider,layout);
+  }
+  return writeJSON(path,provider,['courses','sources']);
 }
 /** Program files keep one requirement per block and one placement per line. */
 export function stringifyProgram(program){

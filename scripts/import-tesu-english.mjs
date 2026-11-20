@@ -1,6 +1,11 @@
+/* RETIRED as a TESU source of truth (2026-11-20). TESU curricula now compile from content/pathway-kits/tesu via
+ * `npm run factory:publish`; its invariants live in content/pathway-kits/tesu/guards.mjs. The builder below is kept as a
+ * cross-check: `--check` proves the kit-published document still carries this reviewed ledger (scripts/tesu-kit-ledger-check.mjs).
+ * Running it without --check no longer writes content/curricula. */
 /* Published English allocations with editable named subject choices. No outside
  * equivalency is inferred from an English title or another degree's approval. */
 import assert from 'node:assert/strict';
+import {assertKitLedger} from './tesu-kit-ledger-check.mjs';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -79,7 +84,7 @@ export function buildTESUEnglish(facts,baseline){
 }
 export async function run({check=false}={}){
  const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8')),result=buildTESUEnglish(await read(factsPath),await read('dist/data/tesu.json'));
- if(check)assert.deepEqual(await read(outputPath),result,'Regenerate the reviewed TESU English source');else await writeFile(resolve(root,outputPath),JSON.stringify(result,null,2)+'\n');
+ if(!check)throw Error('Retired: TESU publishes '+outputPath+' from content/pathway-kits/tesu (npm run factory:publish).');assertKitLedger(await read(outputPath),result,'TESU English');
  return{model:result.models[0].id,requirements:40,credits:120,newProviderEquivalencies:0,check};
 }
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url))run({check:process.argv.includes('--check')}).then(result=>console.log(JSON.stringify(result))).catch(error=>{console.error(error.message);process.exitCode=1;});

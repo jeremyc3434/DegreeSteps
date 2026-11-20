@@ -32,8 +32,9 @@ test('upper-level free electives cannot replace the eighteen upper credits requi
 });
 test('offline Psychology import is deterministic, source-bound and does not mutate reused records or manufacture an edition',async()=>{
  const {buildTESUPsychology}=await import('./scripts/import-tesu-psychology.mjs');
- const before=JSON.stringify([facts,baseline]),built=buildTESUPsychology(facts,baseline).models[0];
- assert.deepEqual(built,raw);assert.equal(JSON.stringify([facts,baseline]),before);
+ const before=JSON.stringify([facts,baseline]),built=buildTESUPsychology(facts,baseline);
+ // TESU publishes this document from its pathway kit; the retired importer's reviewed ledger must be exactly what the kit publishes.
+ const {assertKitLedger}=await import('./scripts/tesu-kit-ledger-check.mjs');assertKitLedger(require('./content/curricula/tesu-psychology.json'),built,'TESU Psychology');assert.equal(JSON.stringify([facts,baseline]),before);
  assert.equal(raw.catalogYear,null);assert.equal(raw.catalogIdentity.kind,'reviewed-current-catalog');assert.equal(raw.tuitionComparison.modelId,raw.id);assert.deepEqual(raw.tuitionComparison.catalogIdentity,raw.catalogIdentity);
  assert(raw.sources.some(source=>source.url===raw.catalogIdentity.sourceUrl&&source.checked===raw.catalogIdentity.checkedOn));
  assert.equal(raw.alternativeMaxCredits,90);assert.equal(raw.institutionMinCredits,15);assert.equal(raw.externalMaxCredits,105);assert.deepEqual(raw.upperGroupMinimums,[{group:'area-of-study',credits:18}]);

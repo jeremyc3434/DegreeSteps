@@ -1,0 +1,888 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "ba-psychology",
+  "modelId": "curriculum-tesu-ba-psychology",
+  "routeIds": [
+    "tesu-ba-psychology"
+  ],
+  "title": "B.A. in Psychology",
+  "level": "bachelor",
+  "catalog": "Current undergraduate catalog · checked November 18, 2026",
+  "totalCredits": 120,
+  "modalities": [
+    "online"
+  ],
+  "review": {
+    "status": "migrated",
+    "source": "dist/data/curricula/tesu-psychology.json (registry-compiled)",
+    "reviewedOn": "2026-11-18"
+  },
+  "modelFields": {
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Current undergraduate catalog · checked November 18, 2026",
+      "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology",
+      "checkedOn": "2026-11-18"
+    },
+    "upperGroupMinimums": [
+      {
+        "group": "area-of-study",
+        "credits": 18
+      }
+    ],
+    "coverageLabel": "Complete 120-credit Psychology ledger with named course choices and separately sourced TESU transfer candidates.",
+    "curriculumSections": [
+      {
+        "id": "tesu-psychology-intellectual",
+        "title": "Intellectual and Practical Skills",
+        "parentId": "general",
+        "requirementIds": [
+          "enc1010",
+          "enc1020",
+          "com2090",
+          "mat1210",
+          "sos1100"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-civic",
+        "title": "Civic and Global Leadership",
+        "parentId": "general",
+        "requirementIds": [
+          "soc1010",
+          "eth2200",
+          "pos1100"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-cultures",
+        "title": "Knowledge of Human Cultures",
+        "parentId": "general",
+        "requirementIds": [
+          "soc2100",
+          "his1130",
+          "fil1100",
+          "his1140",
+          "phi1300"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-scientific",
+        "title": "Scientific Knowledge",
+        "parentId": "general",
+        "requirementIds": [
+          "eas1010",
+          "bio2080"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-required",
+        "title": "Required Psychology Courses",
+        "parentId": "major",
+        "requirementIds": [
+          "psy1010",
+          "psy3220",
+          "psy3790",
+          "psy4000",
+          "psy3740",
+          "psy2110",
+          "psy3500",
+          "sta2010",
+          "sos4500"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-social-selection",
+        "title": "Social Psychology Selection",
+        "parentId": "major",
+        "requirementIds": [
+          "psy3520"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-psych-electives",
+        "title": "Psychology Electives",
+        "parentId": "major",
+        "requirementIds": [
+          "psy3000",
+          "psy3600"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-social-science",
+        "title": "Social Science Electives",
+        "parentId": "major",
+        "requirementIds": [
+          "eco1110",
+          "eco1120"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-capstone",
+        "title": "Liberal Arts Capstone",
+        "parentId": "major",
+        "requirementIds": [
+          "lib4960"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      },
+      {
+        "id": "tesu-psychology-free",
+        "title": "Free Electives",
+        "parentId": "elective",
+        "requirementIds": [
+          "free-art1000",
+          "free-ant1010",
+          "free-his1210",
+          "free-bus1010",
+          "free-cis1070",
+          "free-acc1010",
+          "free-law2010",
+          "free-man2100",
+          "free-mkt2010",
+          "free-hum1030"
+        ],
+        "sourceId": "tesu-psychology-current-2026-11-18"
+      }
+    ],
+    "tuitionComparison": {
+      "entryId": "tesu-standard",
+      "sourceUrl": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "checkedOn": "2026-11-18",
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current undergraduate catalog · checked November 18, 2026",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology",
+        "checkedOn": "2026-11-18"
+      },
+      "modelId": "curriculum-tesu-ba-psychology"
+    },
+    "policyEvidence": {
+      "institutionMinCredits": {
+        "value": 15,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "tesu-psychology-residency-2026-11-18"
+        ],
+        "scope": "Standard nonmilitary eligible-course residency; TECEP examinations do not replace the academic course-residency requirement."
+      },
+      "externalMaxCredits": {
+        "value": 105,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "tesu-psychology-current-2026-11-18",
+          "tesu-psychology-residency-2026-11-18"
+        ],
+        "scope": "Derived outside-credit bound for this standard residency scenario, separate from actual course placements.",
+        "calculation": "120 degree credits minus 15 institutional course-residency credits."
+      },
+      "alternativeMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "tesu-psychology-alternative-cap-2026-11-18",
+          "tesu-psychology-transfer-2026-11-18"
+        ],
+        "scope": "Combined noncollegiate-credit ceiling; not a separate allowance for each provider."
+      },
+      "upperMinCredits": {
+        "value": 18,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "tesu-psychology-current-2026-11-18",
+          "tesu-psychology-degree-policy-2026-11-18"
+        ],
+        "scope": "At least 18 upper-level credits within the 45-credit Psychology area of study, including its capstone."
+      }
+    },
+    "policySourceIds": [
+      "tesu-psychology-current-2026-11-18",
+      "tesu-psychology-degree-policy-2026-11-18",
+      "tesu-psychology-residency-2026-11-18",
+      "tesu-psychology-alternative-cap-2026-11-18",
+      "tesu-psychology-transfer-2026-11-18"
+    ],
+    "gradePolicy": {
+      "minimumGrade": "C",
+      "scope": "composition-and-area-of-study",
+      "sourceIds": [
+        "tesu-psychology-transfer-2026-11-18",
+        "tesu-psychology-grades-2026-11-18"
+      ],
+      "checked": "2026-11-18",
+      "detail": "C or better in English composition and all Psychology area-of-study courses; unrelated general education and electives retain their own rules."
+    },
+    "graduationRequirements": [
+      {
+        "id": "gpa",
+        "title": "Overall GPA",
+        "description": "At least 2.0 overall GPA.",
+        "sourceIds": [
+          "tesu-psychology-grades-2026-11-18"
+        ]
+      }
+    ],
+    "transferPolicyReview": {
+      "checked": "2026-11-18",
+      "alternativeMaxCredits": 90,
+      "duplicatesCountOnce": true,
+      "requiredInstitutionalCourses": [
+        "SOS-1100",
+        "LIB-4960"
+      ],
+      "sourceIds": [
+        "tesu-psychology-transfer-2026-11-18",
+        "tesu-psychology-alternative-cap-2026-11-18"
+      ],
+      "residencyNote": "Standard nonmilitary 15-credit academic residency remains separate from the university-only information literacy and capstone courses; military, foreign-credit and Edison Accelerate scenarios require their own applicable policy."
+    },
+    "rulesNotes": [
+      "The three-credit PSY-3520 choice is one of the published Social Psychology elective alternatives.",
+      "PSY-3000 and PSY-3600 are the two published Psychology elective examples, chosen as a named baseline.",
+      "ECO-1110 and ECO-1120 are explicitly listed as Social Sciences in the university-linked selection source, and are not repeated in this baseline general education.",
+      "Each university code and original learning action is allocated once; Psychology in the area of study cannot also fulfill a general-education row.",
+      "Current catalog does not identify an academic-year edition in retrieved text; do not infer it from provider equivalency years.",
+      "The ten-year half-area and five-year Business Capstone currency rules explicitly apply to BS/BSBA, not this BA Psychology degree. Certificate currency terms are also not borrowed.",
+      "All provider awards are inherited only from existing exact same-school receiving-code evidence, retaining their original source conditions and dates.",
+      "The selected 45-credit area of study includes its capstone; upper-level free electives cannot replace the 18 upper-level area-of-study credits.",
+      "C or better is scoped to English composition and the area of study. Formal prerequisites PSY-1010 → PSY-3500 and MAT-1210 → STA-2010 are distinct from advisory background knowledge.",
+      "LIB-4960 is taken near completion under the published advisory, with no fabricated completed-credit threshold.",
+      "The standard 15-credit nonmilitary academic residency and separate 90-credit alternative-source maximum are retained. This does not represent a fully researched 105-credit outside basket.",
+      "This BA degree is not represented as a clinical psychologist license or a professional-practice qualification."
+    ],
+    "pricingNotes": [
+      "Published tuition is an estimate basis; applicable fees, provider subscriptions, books and individual course availability remain separate."
+    ],
+    "unresolved": [],
+    "policyReview": [],
+    "evidenceCheckedOn": "2026-11-18"
+  },
+  "modelSourceIds": [
+    "tesu-psychology-current-2026-11-18",
+    "tesu-psychology-degree-policy-2026-11-18",
+    "tesu-psychology-social-science-selection-2026-11-18",
+    "tesu-psychology-residency-2026-11-18",
+    "tesu-psychology-transfer-2026-11-18",
+    "tesu-psychology-alternative-cap-2026-11-18",
+    "tesu-psychology-grades-2026-11-18",
+    "tesu-psychology-tuition-2026-11-18",
+    "tesu-psychology-course-psy1010-2026-11-18",
+    "tesu-psychology-course-psy3220-2026-11-18",
+    "tesu-psychology-course-psy3790-2026-11-18",
+    "tesu-psychology-course-psy4000-2026-11-18",
+    "tesu-psychology-course-psy3740-2026-11-18",
+    "tesu-psychology-course-psy2110-2026-11-18",
+    "tesu-psychology-course-psy3500-2026-11-18",
+    "tesu-psychology-course-sta2010-2026-11-18",
+    "tesu-psychology-course-sos4500-2026-11-18",
+    "tesu-psychology-course-psy3520-2026-11-18",
+    "tesu-psychology-course-psy3000-2026-11-18",
+    "tesu-psychology-course-psy3600-2026-11-18",
+    "tesu-psychology-course-eco1110-2026-11-18",
+    "tesu-psychology-course-eco1120-2026-11-18",
+    "tesu-psychology-course-lib4960-2026-11-18",
+    "tesu-psychology-hum1030-2026-11-18",
+    "tesu-psychology-acc1010-2026-11-18",
+    "tesu-accounting-bus1010-2026-11-18",
+    "tesu-art1000-current-2026-11-17",
+    "tesu-ant1010-current-2026-11-17",
+    "tesu-his1210-current-2026-11-17",
+    "tesu-gm-current-program-2026-11-17",
+    "tesu-general-management--tesu-degree",
+    "tesu-general-management--tesu-clep",
+    "tesu-general-management--tesu-clep-policy",
+    "tesu-general-management--tesu-residency",
+    "tesu-general-management--tesu-directory",
+    "tesu-general-management--tesu-transfer-faq",
+    "tesu-general-management--tesu-transfer",
+    "tesu-general-management--tesu-sophia-algebra",
+    "tesu-general-management--tesu-sophia-accounting",
+    "tesu-general-management--tesu-accelerate",
+    "tesu-general-management--tesu-acc2010",
+    "tesu-general-management--tesu-acc4010",
+    "tesu-general-management--tesu-acc3030",
+    "tesu-general-management--tesu-man3310",
+    "tesu-general-management--tesu-bus4210",
+    "tesu-general-management--df-sophia-tesu-6816",
+    "tesu-general-management--df-accounting-tesu-6620",
+    "tesu-general-management--df-finance-tesu-6587",
+    "tesu-general-management--df-orglead-tesu-5982",
+    "tesu-general-management--df-certificates-tesu-5984",
+    "tesu-general-management--df-ge-tesu-6573",
+    "tesu-general-management--liberty-sophia-provider-identifiers-2026-05",
+    "tesu-general-management--tesu-gened-structure",
+    "tesu-general-management--tesu-transfer-policy-current",
+    "tesu-general-management--tesu-grade-policy-current",
+    "tesu-general-management--tesu-business-core-scope-current",
+    "tesu-general-management--tesu-transcripts-current",
+    "tesu-general-management--tesu-study-general-management-current",
+    "tesu-general-management--tesu-study-man3720-current",
+    "tesu-general-management--tesu-study-fin3010-conflict-current",
+    "tesu-general-management--tesu-study-business306-ace-current",
+    "tesu-general-management--tesu-study-business308-ace-current",
+    "tesu-general-management--tesu-study-ace-organization-current",
+    "tesu-general-management--tesu-sophia-algebra-window-current",
+    "tesu-general-management--tesu-sophia-partner-current",
+    "tesu-general-management--tesu-man3720",
+    "tesu-general-management--tesu-study-course-passing-current",
+    "tesu-general-management--tesu-gm-current-program-2026-11-17",
+    "tesu-general-management--tesu-gm-elective-course-list-2026-11-17",
+    "tesu-general-management--tesu-art1000-current-2026-11-17",
+    "tesu-general-management--tesu-ant1010-current-2026-11-17",
+    "tesu-general-management--tesu-psy1010-current-2026-11-17",
+    "tesu-general-management--tesu-his1210-current-2026-11-17",
+    "tesu-general-management--tesu-tuition-current-2026-11-17",
+    "tesu-general-management--tesu-fees-current-2026-11-17",
+    "tesu-general-management--tesu-accelerated-courses-current-2026-11-17",
+    "tesu-general-management--tesu-edx-degree-restriction-2026-11-17",
+    "tesu-general-management--tesu-institution-transfer-current-2026-11-17",
+    "tesu-general-management--tesu-edison-accelerate-current-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-tesu-provider-directory-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-tesu-partner-page-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-keyword-algebra-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-keyword-composition-one-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-algebra-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-accounting-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-composition-one-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-composition-two-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-sophia-critical-thinking-ace-record-2026-11-17",
+    "tesu-general-management--tesu-receiving-review-current-general-management-2026-11-17",
+    "tesu-general-management--sophia-soph-0083-current-offer",
+    "tesu-general-management--sophia-soph-0083-current-offer-syllabus",
+    "tesu-general-management--tesu-common-acc1020-prerequisites-2026-11-18",
+    "tesu-general-management--tesu-common-fin3010-prerequisites-2026-11-18",
+    "tesu-general-management--tesu-common-bus2100-prerequisites-2026-11-18",
+    "tesu-general-management--tesu-common-sta2010-prerequisites-2026-11-18",
+    "tesu-general-management--tesu-common-man3720-prerequisites-2026-11-18",
+    "sophia-soph-0015-ace-tesu-equivalency-2026-11-20",
+    "tesu-current-catalogs-2026-11-20",
+    "tesu-provider-directory-2026-11-20",
+    "sophia-tesu-partner-page-2026-11-20",
+    "tesu-ace-nccrs-policy-2026-11-20",
+    "sophia-soph-0030-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0049-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0024-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0001-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0071-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0022-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0025-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0065-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0005-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0012-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0011-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0002-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0010-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0023-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0032-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0054-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0083-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0014-ace-tesu-equivalency-2026-11-20"
+  ],
+  "requirements": [
+    {"id":"enc1010","code":"ENC-1010","title":"Writing for Success","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"gradePolicyNote":"C or better in English composition. This does not impose the area-of-study grade requirement on unrelated general education.","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-enc1010","provider":"University","code":"ENC-1010","title":"Writing for Success","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}},
+      {"row":"sophia-soph-0015-to-enc-1010-tesu-2026-2027","optionId":"sophia-enc1010-3"},
+      "clep-clep-0040-to-enc-1010@requirement-id",
+      "clep-clep-0041-to-enc-1010"
+    ]},
+    {"id":"enc1020","code":"ENC-1020","title":"Writing for Success II","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"gradePolicyNote":"C or better in English composition. This does not impose the area-of-study grade requirement on unrelated general education.","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-enc1020","provider":"University","code":"ENC-1020","title":"Writing for Success II","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}},
+      {"row":"sophia-soph-0030-to-enc-1020-tesu-2026-2027","optionId":"sophia-enc1020-2"},
+      "clep-clep-0040-to-enc-1020@requirement-id",
+      "sophia-soph-0049-to-enc-1020-tesu-2026-2027"
+    ]},
+    {"id":"com2090","code":"COM-2090","title":"Public Speaking","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-com2090","provider":"University","code":"COM-2090","title":"Public Speaking","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      {"row":"sophia-soph-0024-to-com-2090-tesu-2026-2027","optionId":"sophia-com2090-1"}
+    ]},
+    {"id":"mat1210","code":"MAT-1210","title":"College Algebra","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-mat1210","provider":"University","code":"MAT-1210","title":"College Algebra","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      {"row":"sophia-soph-0001-to-mat-1210-tesu-2026-2027","optionId":"soph-0001"},
+      "clep-clep-0013-to-mat-1210"
+    ]},
+    {"id":"sos1100","code":"SOS-1100","title":"Fact, Fiction, or Fake? Information Literacy Today","credits":3,"category":"general","upper":false,"institutionalOnly":true,"group":"intellectual-practical","subgroup":"intellectual-practical","sourceIds":["tesu-psychology-current-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-sos1100","provider":"University","code":"SOS-1100","title":"Fact, Fiction, or Fake? Information Literacy Today","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}}
+    ]},
+    {"id":"soc1010","code":"SOC-1010","title":"Our Changing World: An Introduction to Sociology","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"civic-global","subgroup":"civic-global","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-soc1010","provider":"University","code":"SOC-1010","title":"Our Changing World: An Introduction to Sociology","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      "sophia-introduction-to-sociology-to-soc-1010",
+      "clep-clep-0026-to-soc-1010"
+    ]},
+    {"id":"eth2200","code":"ETH-2200","title":"Leading the Way: A Path Towards Ethical Leadership","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"civic-global","subgroup":"civic-global","sourceIds":["tesu-psychology-current-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-eth2200","provider":"University","code":"ETH-2200","title":"Leading the Way: A Path Towards Ethical Leadership","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}}
+    ]},
+    {"id":"pos1100","code":"POS-1100","title":"American Government","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"civic-global","subgroup":"civic-global","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-pos1100","provider":"University","code":"POS-1100","title":"American Government","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      {"row":"sophia-soph-0071-to-pos-1100-tesu-2026-2027","optionId":"sophia-pos1100-2"},
+      "clep-clep-0007-to-pos-1100"
+    ]},
+    {"id":"soc2100","code":"SOC-2100","title":"Marriage and the Family","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-psychology-current-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-soc2100","provider":"University","code":"SOC-2100","title":"Marriage and the Family","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}}
+    ]},
+    {"id":"his1130","code":"HIS-1130","title":"American History I","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-his1130","provider":"University","code":"HIS-1130","title":"American History I","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      {"row":"sophia-soph-0022-to-his-1130-tesu-2026-2027","optionId":"sophia-his1130-2"},
+      "clep-clep-0008-to-his-1130"
+    ]},
+    {"id":"fil1100","code":"FIL-1100","title":"Exploring American Cinema","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-psychology-current-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-fil1100","provider":"University","code":"FIL-1100","title":"Exploring American Cinema","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}}
+    ]},
+    {"id":"his1140","code":"HIS-1140","title":"American History II","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-his1140","provider":"University","code":"HIS-1140","title":"American History II","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      {"row":"sophia-soph-0025-to-his-1140-tesu-2026-2027","optionId":"sophia-his1140-2"},
+      "clep-clep-0009-to-his-1140"
+    ]},
+    {"id":"phi1300","code":"PHI-1300","title":"Introduction to Critical Reasoning","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"human-cultures","notes":"Catalog featured choice; other approved humanities/social-science choices may apply.","subgroup":"human-cultures","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-phi1300","provider":"University","code":"PHI-1300","title":"Introduction to Critical Reasoning","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      {"row":"sophia-soph-0065-to-phi-1300-tesu-2026-2027","optionId":"sophia-phi1300-1"}
+    ]},
+    {"id":"eas1010","code":"EAS-1010","title":"General Earth Science","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"scientific","subgroup":"scientific","allocationType":"category-choice","categoryAllowed":["scientific-knowledge"],"categoryLabel":"Scientific Knowledge choice","featuredCourseCode":"EAS-1010","notes":"Scientific Knowledge category capacity; EAS-1010 is the catalog-featured baseline choice. A different accepted scientific award requires a category allocation, not an exact equivalency to EAS-1010.","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-eas1010","provider":"University","code":"EAS-1010","title":"General Earth Science","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      "sophia-human-biology-to-bio-1010"
+    ]},
+    {"id":"bio2080","code":"BIO-2080","title":"The Science of Nutrition","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"scientific","subgroup":"scientific","allocationType":"category-choice","categoryAllowed":["scientific-knowledge"],"categoryLabel":"Scientific Knowledge choice","featuredCourseCode":"BIO-2080","notes":"Scientific Knowledge category capacity; BIO-2080 is the catalog-featured baseline choice. A different accepted scientific award requires a category allocation, not an exact equivalency to BIO-2080.","sourceIds":["tesu-psychology-current-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-bio2080","provider":"University","code":"BIO-2080","title":"The Science of Nutrition","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18"],"evidence":"published"}},
+      "sophia-introduction-to-nutrition-to-nut-1010"
+    ]},
+    {"id":"psy1010","code":"PSY-1010","title":"Introduction to Psychology","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":false,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy1010-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","optionRows":[
+      {"inline":{"id":"university-psy1010","provider":"University","code":"PSY-1010","title":"Introduction to Psychology","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy1010-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy3220","code":"PSY-3220","title":"Research in Experimental Psychology","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3220-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","optionRows":[
+      {"inline":{"id":"university-psy3220","provider":"University","code":"PSY-3220","title":"Research in Experimental Psychology","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3220-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy3790","code":"PSY-3790","title":"Social Psychology","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3790-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","optionRows":[
+      {"inline":{"id":"university-psy3790","provider":"University","code":"PSY-3790","title":"Social Psychology","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3790-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy4000","code":"PSY-4000","title":"History and Systems of Psychology","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy4000-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","optionRows":[
+      {"inline":{"id":"university-psy4000","provider":"University","code":"PSY-4000","title":"History and Systems of Psychology","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy4000-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy3740","code":"PSY-3740","title":"Physiological Psychology","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3740-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","optionRows":[
+      {"inline":{"id":"university-psy3740","provider":"University","code":"PSY-3740","title":"Physiological Psychology","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3740-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy2110","code":"PSY-2110","title":"Developmental Psychology","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":false,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy2110-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","optionRows":[
+      {"inline":{"id":"university-psy2110","provider":"University","code":"PSY-2110","title":"Developmental Psychology","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy2110-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy3500","code":"PSY-3500","title":"Abnormal Psychology","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3500-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","prerequisites":["psy1010"],"prerequisiteSourceIds":["tesu-psychology-course-psy3500-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-psy3500","provider":"University","code":"PSY-3500","title":"Abnormal Psychology","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3500-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"sta2010","code":"STA-2010","title":"Principles of Statistics","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":false,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-sta2010-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","prerequisites":["mat1210"],"prerequisiteSourceIds":["tesu-psychology-course-sta2010-2026-11-18"],"prerequisiteNotes":"Knowledge equivalent to MAT-1210 with C or better is advised; the published formal prerequisite is MAT-1210.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-sta2010","provider":"University","code":"STA-2010","title":"Principles of Statistics","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-sta2010-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}},
+      {"row":"sophia-soph-0005-to-sta-2010-tesu-2026-2027","optionId":"sophia-sta2010-1"}
+    ]},
+    {"id":"sos4500","code":"SOS-4500","title":"Ethics in the Social Sciences","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-sos4500-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"required-psychology","optionRows":[
+      {"inline":{"id":"university-sos4500","provider":"University","code":"SOS-4500","title":"Ethics in the Social Sciences","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-sos4500-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy3520","code":"PSY-3520","title":"Psychology of Personality","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3520-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"social-psychology-selection","prerequisiteNotes":"Introductory psychology knowledge is advised; this is separate from a formal prerequisite.","prerequisiteSourceIds":["tesu-psychology-course-psy3520-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-psy3520","provider":"University","code":"PSY-3520","title":"Psychology of Personality","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3520-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy3000","code":"PSY-3000","title":"Thanatology: An Understanding of Death and Dying","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3000-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"psychology-electives","prerequisiteNotes":"Introductory psychology knowledge is advised; this is separate from a formal prerequisite.","prerequisiteSourceIds":["tesu-psychology-course-psy3000-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-psy3000","provider":"University","code":"PSY-3000","title":"Thanatology: An Understanding of Death and Dying","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3000-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"psy3600","code":"PSY-3600","title":"Organizational Theory","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3600-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"psychology-electives","prerequisiteNotes":"Introductory psychology knowledge is advised; this is separate from a formal prerequisite.","prerequisiteSourceIds":["tesu-psychology-course-psy3600-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-psy3600","provider":"University","code":"PSY-3600","title":"Organizational Theory","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-psy3600-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"eco1110","code":"ECO-1110","title":"Macroeconomics","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":false,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-eco1110-2026-11-18","tesu-psychology-social-science-selection-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"social-science-electives","choiceNote":"Proposed named selection from the university-linked Social Sciences list, allocated once in the six-credit area-of-study elective block.","prerequisiteNotes":"Three credits of college-level mathematics are advised, separate from a formal prerequisite.","prerequisiteSourceIds":["tesu-psychology-course-eco1110-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-eco1110","provider":"University","code":"ECO-1110","title":"Macroeconomics","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-eco1110-2026-11-18","tesu-psychology-social-science-selection-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}},
+      {"row":"sophia-soph-0012-to-eco-1110-tesu-2026-2027","optionId":"sophia-eco1110-2"},
+      "clep-clep-0027-to-eco-1110"
+    ]},
+    {"id":"eco1120","code":"ECO-1120","title":"Microeconomics","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":false,"institutionalOnly":false,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-eco1120-2026-11-18","tesu-psychology-social-science-selection-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"social-science-electives","choiceNote":"Proposed named selection from the university-linked Social Sciences list, allocated once in the six-credit area-of-study elective block.","prerequisiteNotes":"Three credits of college-level mathematics are advised, separate from a formal prerequisite.","prerequisiteSourceIds":["tesu-psychology-course-eco1120-2026-11-18"],"selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-eco1120","provider":"University","code":"ECO-1120","title":"Microeconomics","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-eco1120-2026-11-18","tesu-psychology-social-science-selection-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}},
+      {"row":"sophia-soph-0011-to-eco-1120-tesu-2026-2027","optionId":"sophia-eco1120-2"},
+      "clep-clep-0030-to-eco-1120"
+    ]},
+    {"id":"lib4960","code":"LIB-4960","title":"Liberal Arts Capstone – Social Sciences","credits":3,"category":"major","group":"area-of-study","subgroup":"area-of-study","upper":true,"institutionalOnly":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-lib4960-2026-11-18"],"minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"curriculumBlock":"capstone","prerequisiteNotes":"Near-completion of degree requirements is advised before enrolling; no numeric completed-credit threshold is stated.","prerequisiteSourceIds":["tesu-psychology-course-lib4960-2026-11-18"],"optionRows":[
+      {"inline":{"id":"university-lib4960","provider":"University","code":"LIB-4960","title":"Liberal Arts Capstone – Social Sciences","credits":3,"upper":true,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-course-lib4960-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}}
+    ]},
+    {"id":"free-art1000","title":"Free elective 1","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-art1000-current-2026-11-17"],"notes":"Named university baseline: ART-1000 A World of Art. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-art1000","provider":"University","code":"ART-1000","title":"A World of Art","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-art1000-current-2026-11-17"],"evidence":"published","url":"https://www2.tesu.edu/ucourse.php?CourseCode=ART-1000&sem="}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-ant1010","title":"Free elective 2","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-ant1010-current-2026-11-17"],"notes":"Named university baseline: ANT-1010 Introduction to Anthropology. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-ant1010","provider":"University","code":"ANT-1010","title":"Introduction to Anthropology","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-ant1010-current-2026-11-17"],"evidence":"published","url":"https://www2.tesu.edu/ucourse.php?CourseCode=ANT-1010&sem="}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-his1210","title":"Free elective 3","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-his1210-current-2026-11-17"],"notes":"Named university baseline: HIS-1210 Introduction to World History I. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-his1210","provider":"University","code":"HIS-1210","title":"Introduction to World History I","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-his1210-current-2026-11-17"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/his-history/1000/his-1210"}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-bus1010","title":"Free elective 4","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-accounting-bus1010-2026-11-18"],"notes":"Named university baseline: BUS-1010 Introduction to Business. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-bus1010","provider":"University","code":"BUS-1010","title":"Introduction to Business","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-accounting-bus1010-2026-11-18"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/bus-business/1000/bus-1010"}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-cis1070","title":"Free elective 5","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-gm-current-program-2026-11-17"],"notes":"Named university baseline: CIS-1070 Computer Concepts and Applications. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-cis1070","provider":"University","code":"CIS-1070","title":"Computer Concepts and Applications","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-gm-current-program-2026-11-17"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-acc1010","title":"Free elective 6","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-acc1010-2026-11-18"],"prerequisiteNotes":"Working knowledge of Microsoft Excel is required as an advisory; this is not a formal prerequisite course.","prerequisiteSourceIds":["tesu-psychology-acc1010-2026-11-18"],"notes":"Named university baseline: ACC-1010 Principles of Financial Accounting. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-acc1010","provider":"University","code":"ACC-1010","title":"Principles of Financial Accounting","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-acc1010-2026-11-18"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/acc-accounting/1000/acc-1010"}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-law2010","title":"Free elective 7","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-gm-current-program-2026-11-17"],"notes":"Named university baseline: LAW-2010 Business Law. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-law2010","provider":"University","code":"LAW-2010","title":"Business Law","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-gm-current-program-2026-11-17"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-man2100","title":"Free elective 8","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-gm-current-program-2026-11-17"],"notes":"Named university baseline: MAN-2100 Principles of Management. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-man2100","provider":"University","code":"MAN-2100","title":"Principles of Management","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-gm-current-program-2026-11-17"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-mkt2010","title":"Free elective 9","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-gm-current-program-2026-11-17"],"notes":"Named university baseline: MKT-2010 Introduction to Marketing. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-mkt2010","provider":"University","code":"MKT-2010","title":"Introduction to Marketing","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-gm-current-program-2026-11-17"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]},
+    {"id":"free-hum1030","title":"Free elective 10","credits":3,"category":"electives","group":"free-electives","subgroup":"free-electives","upper":false,"freeElective":true,"excludeAlreadyUsed":true,"sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-hum1030-2026-11-18"],"notes":"Named university baseline: HUM-1030 Introduction to the Humanities III: Music. This is unrestricted elective capacity, not an exact-course transfer requirement; an eligible nonduplicating course may replace it.","selectionRequired":false,"optionRows":[
+      {"inline":{"id":"university-free-hum1030","provider":"University","code":"HUM-1030","title":"Introduction to the Humanities III: Music","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-psychology-current-2026-11-18","tesu-psychology-hum1030-2026-11-18"],"evidence":"published","url":"https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hum-humanities/1000/hum-1030"}},
+      {"row":"sophia-soph-0002-to-bio-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-eas1010-1"},
+      "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
+      {"row":"sophia-soph-0010-to-acc-1010-tesu-2026-2027","mode":"elective-block","optionId":"soph-0010"},
+      "clep-clep-0039-to-acc-1010-2@elective-block",
+      "study-com-accounting-102-to-acc-1020-2@elective-block",
+      "sophia-managerial-accounting-to-acc-1020-2@elective-block",
+      {"row":"sophia-soph-0023-to-cis-1070-tesu-2026-2027","mode":"elective-block","optionId":"sophia-cis1070-1"},
+      {"row":"sophia-soph-0032-to-law-2010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-law2010-2"},
+      "clep-clep-0025-to-law-2010-2@elective-block",
+      {"row":"sophia-soph-0054-to-man-2100-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man2100-2"},
+      "clep-clep-0028-to-man-2100-2@elective-block",
+      "clep-clep-0029-to-mkt-2010-2@elective-block",
+      "study-com-business-324-to-man-3730-3@elective-block",
+      "study-com-sdcm-0054-to-man-3720-2@elective-block",
+      "study-com-accounting-303-to-acc-3030-2@elective-block",
+      "study-com-accounting-302-to-acc-4010-2@elective-block",
+      "study-com-finance-303-to-fin-3310@elective-block",
+      "study-com-finance-302-to-fin-3340@elective-block",
+      "study-com-sdcm-0071-to-man-3310@elective-block",
+      "study-com-business-307-to-man-3110@elective-block",
+      {"row":"sophia-soph-0083-to-man-3110-tesu-2026-2027","mode":"elective-block","optionId":"sophia-man3110-1"},
+      "study-com-accounting-201-to-acc-2010-2@elective-block",
+      {"row":"sophia-soph-0014-to-bus-1010-tesu-2026-2027","mode":"elective-block","optionId":"sophia-elective2-4"},
+      "sophia-project-management-to-man-2350@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
+      "sophia-project-management-to-man-2350-2@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-2@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-2@elective-block",
+      "sophia-project-management-to-man-2350-3@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-3@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-3@elective-block",
+      "sophia-project-management-to-man-2350-4@elective-block",
+      "sophia-introduction-to-ethics-to-phi-1800-4@elective-block",
+      "sophia-ancient-greek-philosophers-to-phi-2260-4@elective-block"
+    ]}
+  ]
+}
