@@ -1,0 +1,487 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "software-engineering",
+  "modelId": "curriculum-wgu-catalog-3a9fedcacbfcccae",
+  "routeIds": [
+    "wgu-catalog-3a9fedcacbfcccae"
+  ],
+  "title": "Software Engineering",
+  "level": "bachelor",
+  "catalog": "Published program guide; catalog version needs confirmation",
+  "totalCredits": 120,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-09"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 90,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-technology-current"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
+      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+    ],
+    "mappingCheckedOn": "2026-11-09",
+    "pricing": {
+      "model": "subscription",
+      "amount": 4125,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-it-degrees/software-engineering-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bsswe-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "id": "bsswe-introduction-to-software-engineering",
+      "code": "",
+      "title": "Introduction to Software Engineering",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-mathematics-for-programmers",
+      "code": "",
+      "title": "Mathematics for Programmers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-web-development-foundations",
+      "code": "",
+      "title": "Web Development Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-it-leadership-foundations",
+      "code": "",
+      "title": "IT Leadership Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-object-oriented-programming-in-python",
+      "code": "",
+      "title": "Object Oriented Programming in Python",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-version-control",
+      "code": "",
+      "title": "Version Control",
+      "credits": 1,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-javascript-programming",
+      "code": "",
+      "title": "JavaScript Programming",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-applied-probability-and-statistics",
+      "code": "",
+      "title": "Applied Probability and Statistics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-introduction-to-systems-thinking-and-applications",
+      "code": "",
+      "title": "Introduction to Systems Thinking and Applications",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-calculus-i",
+      "code": "",
+      "title": "Calculus I",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-ethical-engineering",
+      "code": "",
+      "title": "Ethical Engineering",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-data-management-foundations",
+      "code": "",
+      "title": "Data Management - Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-foundations-of-ui-ux",
+      "code": "",
+      "title": "Foundations of UI/UX",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-front-end-development",
+      "code": "",
+      "title": "Front End Development",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-applied-discrete-mathematics",
+      "code": "",
+      "title": "Applied Discrete Mathematics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-composition-successful-self-expression",
+      "code": "",
+      "title": "Composition: Successful Self-Expression",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-network-and-security-foundations",
+      "code": "",
+      "title": "Network and Security - Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-data-structures-and-algorithms-i",
+      "code": "",
+      "title": "Data Structures and Algorithms I",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-linear-algebra-for-engineers",
+      "code": "",
+      "title": "Linear Algebra for Engineers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-data-for-ai",
+      "code": "",
+      "title": "Data for AI",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-general-physics-i",
+      "code": "",
+      "title": "General Physics I",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-physics-i-lab-for-programmers",
+      "code": "",
+      "title": "Physics I Lab for Programmers",
+      "credits": 1,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-java-frameworks",
+      "code": "",
+      "title": "Java Frameworks",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-health-fitness-and-wellness",
+      "code": "",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-agile-for-software-engineering",
+      "code": "",
+      "title": "Agile for Software Engineering",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-general-chemistry-i",
+      "code": "",
+      "title": "General Chemistry I",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-business-of-it-applications",
+      "code": "",
+      "title": "Business of IT - Applications",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-advanced-java",
+      "code": "",
+      "title": "Advanced Java",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-operating-systems-for-computer-scientists",
+      "code": "",
+      "title": "Operating Systems for Computer Scientists",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-aws-developer",
+      "code": "",
+      "title": "AWS Developer",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-introduction-to-physical-and-human-geography",
+      "code": "",
+      "title": "Introduction to Physical and Human Geography",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-back-end-programming",
+      "code": "",
+      "title": "Back-End Programming",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-technical-communication",
+      "code": "",
+      "title": "Technical Communication",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-software-security-and-testing",
+      "code": "",
+      "title": "Software Security and Testing",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-software-design-and-quality-assurance",
+      "code": "",
+      "title": "Software Design and Quality Assurance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-american-politics-and-the-us-constitution",
+      "code": "",
+      "title": "American Politics and the US Constitution",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-special-topics-in-software-engineering-and-ai",
+      "code": "",
+      "title": "Special Topics in Software Engineering and AI",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-software-engineering",
+      "code": "",
+      "title": "Software Engineering",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bsswe-applied-software-engineering",
+      "code": "",
+      "title": "Applied Software Engineering",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsswe-guide"
+      ],
+      "institutionalOnly": false
+    }
+  ]
+}

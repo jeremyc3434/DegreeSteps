@@ -1,0 +1,487 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "computer-science-bs",
+  "modelId": "curriculum-wgu-bs-computer-science-reviewed",
+  "routeIds": [
+    "wgu-bs-computer-science-reviewed"
+  ],
+  "title": "Computer Science – B.S.",
+  "level": "bachelor",
+  "catalog": "202611",
+  "totalCredits": 121,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-09"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 90.75,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-technology-current"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
+      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+    ],
+    "mappingCheckedOn": "2026-11-09",
+    "pricing": {
+      "model": "subscription",
+      "amount": 4125,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-it-degrees/computer-science.html",
+      "sourceIds": [
+        "wgu-bscs-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "id": "bscs-health-fitness-and-wellness",
+      "code": "",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-foundations-of-programming-python",
+      "code": "",
+      "title": "Foundations of Programming (Python)",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-mathematics-for-programmers",
+      "code": "",
+      "title": "Mathematics for Programmers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-applied-probability-and-statistics",
+      "code": "",
+      "title": "Applied Probability and Statistics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-web-design-fundamentals",
+      "code": "",
+      "title": "Web Design Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-calculus-i",
+      "code": "",
+      "title": "Calculus I",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-practical-applications-of-prompt",
+      "code": "",
+      "title": "Practical Applications of Prompt",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-introduction-to-computer-science",
+      "code": "",
+      "title": "Introduction to Computer Science",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-network-and-security-foundations",
+      "code": "",
+      "title": "Network and Security - Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-discrete-mathematics-i",
+      "code": "",
+      "title": "Discrete Mathematics I",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-version-control",
+      "code": "",
+      "title": "Version Control",
+      "credits": 1,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-scripting-and-programming-applications",
+      "code": "",
+      "title": "Scripting and Programming - Applications",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-discrete-mathematics-ii",
+      "code": "",
+      "title": "Discrete Mathematics II",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-data-management-foundations",
+      "code": "",
+      "title": "Data Management - Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-data-management-applications",
+      "code": "",
+      "title": "Data Management - Applications",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-introduction-to-communication-connecting-with-others",
+      "code": "",
+      "title": "Introduction to Communication: Connecting with Others",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-composition-successful-self-expression",
+      "code": "",
+      "title": "Composition: Successful Self-Expression",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-data-structures-and-algorithms-i",
+      "code": "",
+      "title": "Data Structures and Algorithms I",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-java-fundamentals",
+      "code": "",
+      "title": "Java Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-java-frameworks",
+      "code": "",
+      "title": "Java Frameworks",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-natural-science-lab",
+      "code": "",
+      "title": "Natural Science Lab",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-operating-systems-for-computer-scientists",
+      "code": "",
+      "title": "Operating Systems for Computer Scientists",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-data-structures-and-algorithms-ii",
+      "code": "",
+      "title": "Data Structures and Algorithms II",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-fundamentals-of-information-security",
+      "code": "",
+      "title": "Fundamentals of Information Security",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-linear-algebra-for-engineers",
+      "code": "",
+      "title": "Linear Algebra for Engineers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-computer-architecture",
+      "code": "",
+      "title": "Computer Architecture",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-linux-foundations",
+      "code": "",
+      "title": "Linux Foundations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-aws-developer",
+      "code": "",
+      "title": "AWS Developer",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-agile-for-software-engineering",
+      "code": "",
+      "title": "Agile for Software Engineering",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-american-politics-and-us-constitution",
+      "code": "",
+      "title": "American Politics and US Constitution",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-advanced-java",
+      "code": "",
+      "title": "Advanced Java",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-software-design-and-quality-assurance",
+      "code": "",
+      "title": "Software Design and Quality Assurance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-back-end-programming",
+      "code": "",
+      "title": "Back-End Programming",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-introduction-to-systems-thinking-and-applications",
+      "code": "",
+      "title": "Introduction to Systems Thinking and Applications",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-ethics-in-technology",
+      "code": "",
+      "title": "Ethics in Technology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-introduction-to-ai-for-computer-scientists",
+      "code": "",
+      "title": "Introduction to AI for Computer Scientists",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-artificial-intelligence-optimization-for-computer-scientists",
+      "code": "",
+      "title": "Artificial Intelligence Optimization for Computer Scientists",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-advanced-ai-and-ml",
+      "code": "",
+      "title": "Advanced AI and ML",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bscs-computer-science-project-development-with-a-team",
+      "code": "",
+      "title": "Computer Science Project Development with a Team",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bscs-guide"
+      ],
+      "institutionalOnly": false
+    }
+  ]
+}
