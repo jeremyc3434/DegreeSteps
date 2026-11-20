@@ -1,0 +1,2369 @@
+{
+  "version": 1,
+  "id": "liberty-shared-online-undergraduate-awards-v1",
+  "reviewStatus": "approved",
+  "checkedOn": "2026-11-20",
+  "school": "Liberty University",
+  "sources": [
+    {
+      "id": "liberty-shared-source-09ad8846610658730b98cba7",
+      "kind": "provider",
+      "title": "Sophia IT Career Exploration current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/344/syllabus_pdf/b31bce7db21c4c54b9bf64d680e4f109.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "fbc99906b5e70b7184f4e435f01113f65dd347048f1b5f64ab640d724dab51f0",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:fbc99906b5e70b7184f4e435f01113f65dd347048f1b5f64ab640d724dab51f0",
+      "originalSourceId": "soph-0041-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-19a3ef2492ec89223f430c7c",
+      "title": "SDCM-0207 Health 302 — current ACE version 3",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3aaf09d7-fb69-ef11-bfe2-0022480c6e65&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "checked": "2026-11-18",
+      "sha256": "3518c39a38b8eac1f78311ce386873928a240e93014cc22780a5adcd528c0676",
+      "sourceContentHash": "sha256:3518c39a38b8eac1f78311ce386873928a240e93014cc22780a5adcd528c0676",
+      "aceId": "SDCM-0207",
+      "aceVersion": 3,
+      "reviewedFacts": {
+        "providerCourseCode": "Health 302",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceLevel": "upper-division-baccalaureate",
+        "minimumPassingScore": 70,
+        "recommendationStart": "2024-10-01",
+        "recommendationEnd": "2027-09-30"
+      },
+      "reviewedExtract": "ACE SDCM-0207; version 3; Health 302; upper-division 3 SH; minimum score 70; 2024-10-01 through 2027-09-30.",
+      "originalSourceId": "study-health-current-ace-sdcm-0207-v3"
+    },
+    {
+      "id": "liberty-shared-source-1b57176ebd15f8779510e52d",
+      "kind": "provider",
+      "title": "Sophia Environmental Science current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/341/syllabus_pdf/28fa2c4567b78f16fc7a02da90ee3404.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "f18b513b85a41c342eda6317d01b3d10f53114e4cb06c6862f86196733c88e42",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:f18b513b85a41c342eda6317d01b3d10f53114e4cb06c6862f86196733c88e42",
+      "originalSourceId": "soph-0016-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+      "title": "Liberty 2026–2027 Undergraduate Catalog (October22,2026): online residency and transfer policy",
+      "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "policy"
+      ],
+      "checked": "2026-11-18",
+      "retrieval": "Actual full undergraduate catalog PDF retrieved 2026-11-18; SHA-256 verified. Reviewed online policy in physicalPDF pages30,32,33,41 (printed29,31,32,40).",
+      "scope": {
+        "schoolName": "Liberty University",
+        "catalogYear": "2026-2027",
+        "modality": "online",
+        "levels": [
+          "associate",
+          "bachelor"
+        ]
+      },
+      "notes": "Full catalog retains the actual policy text omitted from the current parent-page overview. No separate combined alternative-credit ceiling was found.",
+      "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "sourcePages": [
+        30,
+        32,
+        33,
+        41
+      ],
+      "sourceContentHash": "sha256:a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "originalSourceId": "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+      "sourceReviewScope": "Current2026–2027 online undergraduate associate/bachelor residency policies, with explicit degree-specific exceptions. General provider recognition and duplicate-credit policy do not establish an individual award."
+    },
+    {
+      "id": "liberty-shared-source-2a390bc39b6c2d0ced2dfd83",
+      "title": "Liberty online Sophia transfer guide · 2026-07",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+      "checked": "2026-11-18",
+      "provider": "Sophia",
+      "modality": "online",
+      "guideUpdated": "2026-07",
+      "evidenceType": "official-receiving-school-equivalency",
+      "sourceContentHash": "sha256:c4eaeb58cc874354573a0c7fe5047c4138216e197fec270218a84326c36d3031",
+      "sha256": "c4eaeb58cc874354573a0c7fe5047c4138216e197fec270218a84326c36d3031",
+      "scope": {
+        "schoolName": "Liberty University",
+        "catalogYear": "2026-2027",
+        "modality": "online",
+        "levels": [
+          "associate",
+          "bachelor"
+        ]
+      },
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "originalSourceId": "liberty-online-sophia-guide-full-2026-11-18",
+      "sourceReviewScope": "Receiving-school awards from the exact online guide. This document does not independently verify provider recommendations or grant a student credit."
+    },
+    {
+      "id": "liberty-shared-source-413a7b67e0705cc7aa2eaf72",
+      "kind": "ace",
+      "title": "ACE SOPH-0041 version 3 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=add1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "1f413ec812961947f403800e963390133d30a066809ddda7fd603cf7d7e0edbc",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:1f413ec812961947f403800e963390133d30a066809ddda7fd603cf7d7e0edbc",
+      "originalSourceId": "soph-0041-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-48fdff551e578b0c2ea3aacd",
+      "kind": "provider",
+      "title": "Sophia current Developing Effective Teams offering",
+      "url": "https://www.sophia.org/online-courses/career-success/developing-effective-teams/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "a6c631ed1223c9c110104f6817c09d9636c426b031bc2db358399b6391570b92",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:a6c631ed1223c9c110104f6817c09d9636c426b031bc2db358399b6391570b92",
+      "originalSourceId": "soph-0021-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-49dbc1624f2b56c1b553b411",
+      "kind": "provider",
+      "title": "Sophia current IT Career Exploration offering",
+      "url": "https://www.sophia.org/online-courses/career-success/it-career-exploration/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "6db1823b41ecf939b00946b5f317eba4a8a5dd660518254eef18065728a467aa",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:6db1823b41ecf939b00946b5f317eba4a8a5dd660518254eef18065728a467aa",
+      "originalSourceId": "soph-0041-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-5e6eadb5cd837e3565175989",
+      "kind": "provider",
+      "title": "Sophia current U.S. History I offering",
+      "url": "https://www.sophia.org/online-courses/social-science/us-history-i/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "5c116969ee62014fb283f27509c600e45d81dc8c0d3207ae19efeb180a88eef6",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:5c116969ee62014fb283f27509c600e45d81dc8c0d3207ae19efeb180a88eef6",
+      "originalSourceId": "soph-0022-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-5e9f7058990f651dfb537ed5",
+      "title": "Liberty online Study.com transfer guide · 2026-05",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "checked": "2026-11-18",
+      "provider": "Study.com",
+      "modality": "online",
+      "guideUpdated": "2026-05",
+      "evidenceType": "official-receiving-school-equivalency",
+      "sourceContentHash": "sha256:c716db080bfeeaf528599f2c78b5ba913d7841cbe49d4fce886108a21bbedcb3",
+      "sha256": "c716db080bfeeaf528599f2c78b5ba913d7841cbe49d4fce886108a21bbedcb3",
+      "scope": {
+        "schoolName": "Liberty University",
+        "catalogYear": "2026-2027",
+        "modality": "online",
+        "levels": [
+          "associate",
+          "bachelor"
+        ]
+      },
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "originalSourceId": "liberty-online-study-guide-full-2026-11-18",
+      "sourceReviewScope": "Receiving-school awards from the exact online guide. This document does not independently verify provider recommendations or grant a student credit."
+    },
+    {
+      "id": "liberty-shared-source-625a92e273acc9e436df571f",
+      "kind": "provider",
+      "title": "Sophia current Art History I offering",
+      "url": "https://www.sophia.org/online-courses/humanities/art-history-i/",
+      "checkedOn": "2026-11-18",
+      "sha256": "06b4d8380cf4f874733695272ee5192d0802d74b2ff54080c676359e48a56784",
+      "retrieval": "Current offering and linked syllabus independently matched to exact ACE ID, provider course code and original three-semester-credit quantity.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:06b4d8380cf4f874733695272ee5192d0802d74b2ff54080c676359e48a56784",
+      "originalSourceId": "soph-0006-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-65e87784b81a5f781edfc1e9",
+      "kind": "provider",
+      "title": "Sophia Developing Effective Teams current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/281/syllabus_pdf/931f81250d1999d6060bfc38e664eb48.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "6765270400f3ab068e0914919862419e376825a28b3a5d5a9d665e81e2fb6e9d",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:6765270400f3ab068e0914919862419e376825a28b3a5d5a9d665e81e2fb6e9d",
+      "originalSourceId": "soph-0021-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-6725da4703111a4d3b994257",
+      "title": "ACE National Guide: Health 309: Healthcare Informatics, version 4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=a8cfaeb5-39ba-ee11-a569-00224805fa3a&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Study.com",
+      "checkedOn": "2026-11-20",
+      "sourceContentHash": "sha256:532f617ac3c4acad97b88620cd468231051146ba9832b9ebaebb67aae29cd640",
+      "sha256": "532f617ac3c4acad97b88620cd468231051146ba9832b9ebaebb67aae29cd640",
+      "capturedAt": "2026-11-20T02:11:34.431164+00:00",
+      "captureFormat": "ace-national-guide-html",
+      "bytes": 168886,
+      "courseCodes": [
+        "SDCM-0170"
+      ],
+      "reviewedExtract": "ACE ID: SDCM-0170; Version: 4; Organization’s ID: Health 309: Healthcare Informatics; Minimum Passing Score: 70; selected ACE Credit Recommendation Period: 5/1/2024 - 5/31/2027; Upper-Division Baccalaureate; Credits (SH): 3.",
+      "recommendationPeriodSelection": "The selected current exhibit option, not an older period listed in the same page.",
+      "originalSourceId": "study-sdcm-0170-ace-v4-20261120"
+    },
+    {
+      "id": "liberty-shared-source-6a3e90447050f59ecb823669",
+      "kind": "provider",
+      "title": "Sophia Critical Thinking current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "b7cb9b0fa15fcae900ad8e3ee2f157a7812fee6c4bd9f0bc78985358ff9ab2a8",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:b7cb9b0fa15fcae900ad8e3ee2f157a7812fee6c4bd9f0bc78985358ff9ab2a8",
+      "originalSourceId": "soph-0065-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-7da038329303f7e9b80e4f90",
+      "kind": "ace",
+      "title": "ACE SOPH-0022 version 4 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "b593d906224722643eb29e3bac70f700aa2e646653f833c3fbadbf3f4aeeb6d8",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:b593d906224722643eb29e3bac70f700aa2e646653f833c3fbadbf3f4aeeb6d8",
+      "originalSourceId": "soph-0022-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-8107ef7fab63f1b80749169a",
+      "kind": "ace",
+      "title": "ACE SOPH-0025 version 4 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ded1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "63820ed80b1ca246436edb9cc966400e2236ab9a4db6e10c92134dee53cbef23",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:63820ed80b1ca246436edb9cc966400e2236ab9a4db6e10c92134dee53cbef23",
+      "originalSourceId": "soph-0025-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-854bd0c4e4cad870c6f98f0e",
+      "kind": "provider",
+      "title": "Sophia Art History I current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+      "checkedOn": "2026-11-18",
+      "sha256": "d917b600f7791da5e76814c2ba869b9971732861a0c1d60d4a859e5870442c70",
+      "retrieval": "Current offering and linked syllabus independently matched to exact ACE ID, provider course code and original three-semester-credit quantity.",
+      "sourcePage": 1,
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:d917b600f7791da5e76814c2ba869b9971732861a0c1d60d4a859e5870442c70",
+      "originalSourceId": "soph-0006-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-86bfe2e81c266bd14a2dd11a",
+      "kind": "provider",
+      "title": "Sophia current Environmental Science offering",
+      "url": "https://www.sophia.org/online-courses/science/environmental-science/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "d648410a1a1c007c891f7aac6ed58daa5278da63a5de27d6e51f953096ee640a",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:d648410a1a1c007c891f7aac6ed58daa5278da63a5de27d6e51f953096ee640a",
+      "originalSourceId": "soph-0016-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-929744a1489db9d7e3c4a6b5",
+      "kind": "ace",
+      "title": "ACE SOPH-0027 version 3 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "37fffb71816be12a879f31eca927bb6aa9bf3f76b1df0cc8e6cd01092bc60375",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:37fffb71816be12a879f31eca927bb6aa9bf3f76b1df0cc8e6cd01092bc60375",
+      "originalSourceId": "soph-0027-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-9d234147cc11aeb37c0c7c21",
+      "kind": "provider",
+      "title": "Sophia Ancient Greek Philosophers current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "081f68c2dd26cbe536463ca6c7a55edd47e3f00ef577b4d4515fb8dd7f18ac84",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:081f68c2dd26cbe536463ca6c7a55edd47e3f00ef577b4d4515fb8dd7f18ac84",
+      "originalSourceId": "soph-0027-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-9e7b2b5b0b4ac7d63e545baf",
+      "kind": "ace",
+      "title": "ACE SOPH-0016 version 5 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=04d2f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "04eb93f7c49e5ea219006ec463416feb7c3e5142d057e51519f906f1aab8431f",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:04eb93f7c49e5ea219006ec463416feb7c3e5142d057e51519f906f1aab8431f",
+      "originalSourceId": "soph-0016-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-a2c4f9db989ffc74d2b561a5",
+      "kind": "provider",
+      "title": "Sophia current U.S. History II offering",
+      "url": "https://www.sophia.org/online-courses/social-science/us-history-ii/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "badf3bcab744adcf56bb559d86434b08058373620ab1d7df997b480881470371",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:badf3bcab744adcf56bb559d86434b08058373620ab1d7df997b480881470371",
+      "originalSourceId": "soph-0025-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-abf16c84d1fe9d9188f634e0",
+      "title": "SDCM-0173 Health 301 — current ACE version 4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4e516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "checked": "2026-11-18",
+      "sha256": "7f03b8ab82ac3526b45ac1c18cc55abec332d92366b08868904f714d269e8499",
+      "sourceContentHash": "sha256:7f03b8ab82ac3526b45ac1c18cc55abec332d92366b08868904f714d269e8499",
+      "aceId": "SDCM-0173",
+      "aceVersion": 4,
+      "reviewedFacts": {
+        "providerCourseCode": "Health 301",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceLevel": "upper-division-baccalaureate",
+        "minimumPassingScore": 70,
+        "recommendationStart": "2024-05-01",
+        "recommendationEnd": "2027-05-31"
+      },
+      "reviewedExtract": "ACE SDCM-0173; version 4; Health 301; upper-division 3 SH; minimum score 70; 2024-05-01 through 2027-05-31.",
+      "originalSourceId": "study-health-current-ace-sdcm-0173-v4"
+    },
+    {
+      "id": "liberty-shared-source-bc8210f2fe13fb8300b351a9",
+      "kind": "ace",
+      "title": "ACE SOPH-0021 version 4 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e852597e-bc1d-ef11-840a-6045bd04c00b&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "4806b70a69ad5620b76a4de350d7d5d0d6984dcfd4767e622380162632cca40d",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:4806b70a69ad5620b76a4de350d7d5d0d6984dcfd4767e622380162632cca40d",
+      "originalSourceId": "soph-0021-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-be8dc0770b064d137cd746b0",
+      "title": "SDCM-0172 Health 303 — current ACE version 4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=58516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "checked": "2026-11-18",
+      "sha256": "7ad6f8c614cfd956572466ba9843f13079efc91f7e3f611f373c4f0e0bb1f33d",
+      "sourceContentHash": "sha256:7ad6f8c614cfd956572466ba9843f13079efc91f7e3f611f373c4f0e0bb1f33d",
+      "aceId": "SDCM-0172",
+      "aceVersion": 4,
+      "reviewedFacts": {
+        "providerCourseCode": "Health 303",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceLevel": "upper-division-baccalaureate",
+        "minimumPassingScore": 70,
+        "recommendationStart": "2024-05-01",
+        "recommendationEnd": "2027-05-31"
+      },
+      "reviewedExtract": "ACE SDCM-0172; version 4; Health 303; upper-division 3 SH; minimum score 70; 2024-05-01 through 2027-05-31.",
+      "originalSourceId": "study-health-current-ace-sdcm-0172-v4"
+    },
+    {
+      "id": "liberty-shared-source-c15c0603e383ab088afc5fc6",
+      "kind": "provider",
+      "title": "Sophia current Art History II offering",
+      "url": "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+      "checkedOn": "2026-11-18",
+      "sha256": "749d0807d4b7cc410613e12f3ad0f8cfcf7d09f8a3262e7c28d079e59896ea5f",
+      "retrieval": "Current offering and linked syllabus independently matched to exact ACE ID, provider course code and original three-semester-credit quantity.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:749d0807d4b7cc410613e12f3ad0f8cfcf7d09f8a3262e7c28d079e59896ea5f",
+      "originalSourceId": "soph-0029-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-c1aef350a1ac8a629707766e",
+      "kind": "provider",
+      "title": "Sophia Health, Fitness, and Wellness current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+      "checkedOn": "2026-11-18",
+      "sha256": "945457a61afc12fcc36643b0c4afe64b8cfef0b356eac0b8df22cc1b6c3a77b7",
+      "retrieval": "Current offering and linked syllabus independently matched to exact ACE ID, provider course code and original three-semester-credit quantity.",
+      "sourcePage": 1,
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:945457a61afc12fcc36643b0c4afe64b8cfef0b356eac0b8df22cc1b6c3a77b7",
+      "originalSourceId": "soph-0080-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-c7dd7c3f273fa46d1827398b",
+      "kind": "provider",
+      "title": "Sophia Art History II current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+      "checkedOn": "2026-11-18",
+      "sha256": "7c642a9afa1f2f9ec7950101252db67a47dee0fa414997353d14f4d708806ef4",
+      "retrieval": "Current offering and linked syllabus independently matched to exact ACE ID, provider course code and original three-semester-credit quantity.",
+      "sourcePage": 1,
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:7c642a9afa1f2f9ec7950101252db67a47dee0fa414997353d14f4d708806ef4",
+      "originalSourceId": "soph-0029-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-cd66228b032c5ccfe83e503a",
+      "title": "ACE National Guide: Health 310: Human Resource Management in Healthcare, version 4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=636f2bef-38ba-ee11-a569-00224805fa3a&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Study.com",
+      "checkedOn": "2026-11-20",
+      "sourceContentHash": "sha256:f2c495c10218358c6eb314081d3e267815938ed29d1ceccee5799ac8dd55cbfa",
+      "sha256": "f2c495c10218358c6eb314081d3e267815938ed29d1ceccee5799ac8dd55cbfa",
+      "capturedAt": "2026-11-20T02:11:34.437196+00:00",
+      "captureFormat": "ace-national-guide-html",
+      "bytes": 171365,
+      "courseCodes": [
+        "SDCM-0169"
+      ],
+      "reviewedExtract": "ACE ID: SDCM-0169; Version: 4; Organization’s ID: Health 310: Human Resource Management in Healthcare; Minimum Passing Score: 70; selected ACE Credit Recommendation Period: 5/1/2024 - 5/31/2027; Upper-Division Baccalaureate; Credits (SH): 3.",
+      "recommendationPeriodSelection": "The selected current exhibit option, not an older period listed in the same page.",
+      "originalSourceId": "study-sdcm-0169-ace-v4-20261120"
+    },
+    {
+      "id": "liberty-shared-source-d72baa1c7866b6e24c875c43",
+      "kind": "provider",
+      "title": "Sophia U.S. History II current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/357/syllabus_pdf/0017b148f4126c90294ecd22a87a56ce.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "16ae443e81b3434f752d6d12bb33519b61fc81acb5e54722c2d8ef0ae415a51f",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:16ae443e81b3434f752d6d12bb33519b61fc81acb5e54722c2d8ef0ae415a51f",
+      "originalSourceId": "soph-0025-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-e46b724b4502a633a2e86a58",
+      "kind": "ace",
+      "title": "ACE SOPH-0065 version 2 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "316c6fd1fbfc0b216e8c2da17faadd025aefa9238ed08cfc39ae1ebd54a0077a",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:316c6fd1fbfc0b216e8c2da17faadd025aefa9238ed08cfc39ae1ebd54a0077a",
+      "originalSourceId": "soph-0065-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-e5da81b849f18e0829144ecc",
+      "kind": "ace",
+      "title": "ACE SOPH-0080 current version 2 identity and recommendation period",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "sha256": "9b83cece93620807b400a848b8a3e6b2b64e7cebf34707c684e5b0832db2e1cc",
+      "retrieval": "Raw public body captured and independently read; exact provider identity, ACE version, original three semester credits, lower-division level and current matching recommendation period verified.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:9b83cece93620807b400a848b8a3e6b2b64e7cebf34707c684e5b0832db2e1cc",
+      "originalSourceId": "soph-0080-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-ea5608ba45e58af8d6d72f88",
+      "kind": "ace",
+      "title": "ACE SOPH-0029 current version 3 identity and recommendation period",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "sha256": "395861ab4c3e269424bcece57eca7c07ff09dbdbd8dba743cbef28a8293066f6",
+      "retrieval": "Raw public body captured and independently read; exact provider identity, ACE version, original three semester credits, lower-division level and current matching recommendation period verified.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:395861ab4c3e269424bcece57eca7c07ff09dbdbd8dba743cbef28a8293066f6",
+      "originalSourceId": "soph-0029-current-ace-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-ee823056fa147579a1800034",
+      "kind": "provider",
+      "title": "Sophia U.S. History I current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/353/syllabus_pdf/a5363eefee75728424920a2d26c1acdf.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "dfaa18e7548a2b02c68b9e832c93c1d62eae6cda702877b6a2bcd280616e77fa",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:dfaa18e7548a2b02c68b9e832c93c1d62eae6cda702877b6a2bcd280616e77fa",
+      "originalSourceId": "soph-0022-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-ef865b9570b4bded706d61e1",
+      "kind": "provider",
+      "title": "Sophia current Critical Thinking offering",
+      "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "e568b55c2bd06b1590bc8f45797a15dcca1e44e5ceffff6a9fe7697bfee6d8cc",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:e568b55c2bd06b1590bc8f45797a15dcca1e44e5ceffff6a9fe7697bfee6d8cc",
+      "originalSourceId": "soph-0065-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-f639549ea26b78473d6bc4ec",
+      "title": "SDCM-0209 Health 308 — current ACE version 3",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=114ba700-5cfe-ee11-a1fe-0022480b35fb&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "checked": "2026-11-18",
+      "sha256": "03fd997be4046c41dff705c6f84e1f695ec52c2fa1b02bbb66d740de43a4e910",
+      "sourceContentHash": "sha256:03fd997be4046c41dff705c6f84e1f695ec52c2fa1b02bbb66d740de43a4e910",
+      "aceId": "SDCM-0209",
+      "aceVersion": 3,
+      "reviewedFacts": {
+        "providerCourseCode": "Health 308",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceLevel": "upper-division-baccalaureate",
+        "minimumPassingScore": 70,
+        "recommendationStart": "2024-06-01",
+        "recommendationEnd": "2027-07-31"
+      },
+      "reviewedExtract": "ACE SDCM-0209; version 3; Health 308; upper-division 3 SH; minimum score 70; 2024-06-01 through 2027-07-31.",
+      "originalSourceId": "study-health-current-ace-sdcm-0209-v3"
+    },
+    {
+      "id": "liberty-shared-source-f70be6e1bbb75fd7dd20e42f",
+      "kind": "provider",
+      "title": "Sophia current Ancient Greek Philosophers offering",
+      "url": "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "1f50909bac24cf5d4ea1dfa41cb8df8c633fcc48b2131e08742b625ba47dbb8a",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:1f50909bac24cf5d4ea1dfa41cb8df8c633fcc48b2131e08742b625ba47dbb8a",
+      "originalSourceId": "soph-0027-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-fd804abeef3e349dbe30aecb",
+      "kind": "provider",
+      "title": "Sophia current Health, Fitness, and Wellness offering",
+      "url": "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+      "checkedOn": "2026-11-18",
+      "sha256": "4e8d437948f9592d453518fbbc2d5f32cd3c50d436d22c144b0cbfc6ef93c319",
+      "retrieval": "Current offering and linked syllabus independently matched to exact ACE ID, provider course code and original three-semester-credit quantity.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:4e8d437948f9592d453518fbbc2d5f32cd3c50d436d22c144b0cbfc6ef93c319",
+      "originalSourceId": "soph-0080-current-provider-2026-11-18"
+    },
+    {
+      "id": "liberty-shared-source-fdee587b0f2488fe3aea6c62",
+      "kind": "ace",
+      "title": "ACE SOPH-0006 current version 4 identity and recommendation period",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "sha256": "9b07c87b780fa3f791cf6b3d0a70ace4eae9aeea3c80f7b7b04a6ae63e229ece",
+      "retrieval": "Raw public body captured and independently read; exact provider identity, ACE version, original three semester credits, lower-division level and current matching recommendation period verified.",
+      "roles": [
+        "provider-identity"
+      ],
+      "sourceContentHash": "sha256:9b07c87b780fa3f791cf6b3d0a70ace4eae9aeea3c80f7b7b04a6ae63e229ece",
+      "originalSourceId": "soph-0006-current-ace-2026-11-18"
+    }
+  ],
+  "providerCourses": [
+    {
+      "id": "sophia-soph-0006-v4",
+      "provider": "Sophia",
+      "code": "SOPH-0006",
+      "title": "Art History I",
+      "courseVersion": "4",
+      "providerCourseCode": "ARTHIST1001",
+      "codeAliases": [
+        "ARTHIST1001"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2024-04-01",
+      "recommendationEnd": "2027-03-31",
+      "identitySourceIds": [
+        "liberty-shared-source-625a92e273acc9e436df571f",
+        "liberty-shared-source-fdee587b0f2488fe3aea6c62",
+        "liberty-shared-source-854bd0c4e4cad870c6f98f0e"
+      ],
+      "url": "https://www.sophia.org/online-courses/humanities/art-history-i/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0016-v5",
+      "provider": "Sophia",
+      "code": "SOPH-0016",
+      "title": "Environmental Science",
+      "courseVersion": "5",
+      "providerCourseCode": "SCIE1005",
+      "codeAliases": [
+        "SCIE1005"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2026-06-01",
+      "recommendationEnd": "2029-05-31",
+      "identitySourceIds": [
+        "liberty-shared-source-86bfe2e81c266bd14a2dd11a",
+        "liberty-shared-source-9e7b2b5b0b4ac7d63e545baf",
+        "liberty-shared-source-1b57176ebd15f8779510e52d"
+      ],
+      "url": "https://www.sophia.org/online-courses/science/environmental-science/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0021-v4",
+      "provider": "Sophia",
+      "code": "SOPH-0021",
+      "title": "Developing Effective Teams",
+      "courseVersion": "4",
+      "providerCourseCode": "BUS1200",
+      "codeAliases": [
+        "BUS1200"
+      ],
+      "sourceCredits": 1,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2024-10-01",
+      "recommendationEnd": "2027-09-30",
+      "identitySourceIds": [
+        "liberty-shared-source-48fdff551e578b0c2ea3aacd",
+        "liberty-shared-source-bc8210f2fe13fb8300b351a9",
+        "liberty-shared-source-65e87784b81a5f781edfc1e9"
+      ],
+      "url": "https://www.sophia.org/online-courses/career-success/developing-effective-teams/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0022-v4",
+      "provider": "Sophia",
+      "code": "SOPH-0022",
+      "title": "U.S. History I",
+      "courseVersion": "4",
+      "providerCourseCode": "HIST1001",
+      "codeAliases": [
+        "HIST1001"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2026-07-01",
+      "recommendationEnd": "2029-06-30",
+      "identitySourceIds": [
+        "liberty-shared-source-5e6eadb5cd837e3565175989",
+        "liberty-shared-source-7da038329303f7e9b80e4f90",
+        "liberty-shared-source-ee823056fa147579a1800034"
+      ],
+      "url": "https://www.sophia.org/online-courses/social-science/us-history-i/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0025-v4",
+      "provider": "Sophia",
+      "code": "SOPH-0025",
+      "title": "U.S. History II",
+      "courseVersion": "4",
+      "providerCourseCode": "HIST1002",
+      "codeAliases": [
+        "HIST1002"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2026-07-01",
+      "recommendationEnd": "2029-06-30",
+      "identitySourceIds": [
+        "liberty-shared-source-a2c4f9db989ffc74d2b561a5",
+        "liberty-shared-source-8107ef7fab63f1b80749169a",
+        "liberty-shared-source-d72baa1c7866b6e24c875c43"
+      ],
+      "url": "https://www.sophia.org/online-courses/social-science/us-history-ii/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0027-v3",
+      "provider": "Sophia",
+      "code": "SOPH-0027",
+      "title": "Ancient Greek Philosophers",
+      "courseVersion": "3",
+      "providerCourseCode": "PHIL1001",
+      "codeAliases": [
+        "PHIL1001"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2024-06-01",
+      "recommendationEnd": "2027-05-31",
+      "identitySourceIds": [
+        "liberty-shared-source-f70be6e1bbb75fd7dd20e42f",
+        "liberty-shared-source-929744a1489db9d7e3c4a6b5",
+        "liberty-shared-source-9d234147cc11aeb37c0c7c21"
+      ],
+      "url": "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0029-v3",
+      "provider": "Sophia",
+      "code": "SOPH-0029",
+      "title": "Art History II",
+      "courseVersion": "3",
+      "providerCourseCode": "HUMA1012",
+      "codeAliases": [
+        "HUMA1012"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2025-05-01",
+      "recommendationEnd": "2028-04-30",
+      "identitySourceIds": [
+        "liberty-shared-source-c15c0603e383ab088afc5fc6",
+        "liberty-shared-source-ea5608ba45e58af8d6d72f88",
+        "liberty-shared-source-c7dd7c3f273fa46d1827398b"
+      ],
+      "url": "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0041-v3",
+      "provider": "Sophia",
+      "code": "SOPH-0041",
+      "title": "IT Career Exploration",
+      "courseVersion": "3",
+      "providerCourseCode": "CS1003",
+      "codeAliases": [
+        "CS1003"
+      ],
+      "sourceCredits": 1,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2026-07-01",
+      "recommendationEnd": "2029-06-30",
+      "identitySourceIds": [
+        "liberty-shared-source-49dbc1624f2b56c1b553b411",
+        "liberty-shared-source-413a7b67e0705cc7aa2eaf72",
+        "liberty-shared-source-09ad8846610658730b98cba7"
+      ],
+      "url": "https://www.sophia.org/online-courses/career-success/it-career-exploration/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0065-v2",
+      "provider": "Sophia",
+      "code": "SOPH-0065",
+      "title": "Critical Thinking",
+      "courseVersion": "2",
+      "providerCourseCode": "PHIL1005",
+      "codeAliases": [
+        "PHIL1005"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2025-10-01",
+      "recommendationEnd": "2028-09-30",
+      "identitySourceIds": [
+        "liberty-shared-source-ef865b9570b4bded706d61e1",
+        "liberty-shared-source-e46b724b4502a633a2e86a58",
+        "liberty-shared-source-6a3e90447050f59ecb823669"
+      ],
+      "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "sophia-soph-0080-v2",
+      "provider": "Sophia",
+      "code": "SOPH-0080",
+      "title": "Health, Fitness, and Wellness",
+      "courseVersion": "2",
+      "providerCourseCode": "HLTH1011",
+      "codeAliases": [
+        "HLTH1011"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "sourceCreditBasis": "Independent provider offering, provider-linked syllabus and exact ACE recommendation window.",
+      "recommendationStart": "2024-02-01",
+      "recommendationEnd": "2027-01-31",
+      "identitySourceIds": [
+        "liberty-shared-source-fd804abeef3e349dbe30aecb",
+        "liberty-shared-source-e5da81b849f18e0829144ecc",
+        "liberty-shared-source-c1aef350a1ac8a629707766e"
+      ],
+      "url": "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "study-sdcm-0169-v4",
+      "provider": "Study.com",
+      "code": "SDCM-0169",
+      "title": "Human Resource Management in Healthcare",
+      "courseVersion": "4",
+      "providerCourseCode": "Health 310",
+      "codeAliases": [
+        "Health 310"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "sourceCreditBasis": "Independent current ACE National Guide exhibit: exact provider code and version, original 3 semester hours, upper-division level, selected recommendation window and minimum passing score.",
+      "recommendationStart": "2024-05-01",
+      "recommendationEnd": "2027-05-31",
+      "providerCoursePassingPercent": 70,
+      "identitySourceIds": [
+        "liberty-shared-source-cd66228b032c5ccfe83e503a"
+      ],
+      "url": "https://study.com/academy/course/health-310-human-resource-management-in-healthcare.html",
+      "providerOfferingObservation": {
+        "url": "https://study.com/academy/course/health-310-human-resource-management-in-healthcare.html",
+        "checkedOn": "2026-11-20",
+        "method": "Rendered public provider course page reviewed separately; raw provider body capture unavailable.",
+        "observedCode": "SDCM-0169",
+        "observedSourceCredits": 3,
+        "observedCreditSystem": "semester",
+        "observedSourceUpper": true,
+        "proctoring": "unproctored",
+        "minimumCourseGradePercent": 70,
+        "supportsIdentityHash": false
+      },
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "study-sdcm-0170-v4",
+      "provider": "Study.com",
+      "code": "SDCM-0170",
+      "title": "Healthcare Informatics",
+      "courseVersion": "4",
+      "providerCourseCode": "Health 309",
+      "codeAliases": [
+        "Health 309"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "sourceCreditBasis": "Independent current ACE National Guide exhibit: exact provider code and version, original 3 semester hours, upper-division level, selected recommendation window and minimum passing score.",
+      "recommendationStart": "2024-05-01",
+      "recommendationEnd": "2027-05-31",
+      "providerCoursePassingPercent": 70,
+      "identitySourceIds": [
+        "liberty-shared-source-6725da4703111a4d3b994257"
+      ],
+      "url": "https://study.com/academy/course/health-309-healthcare-informatics.html",
+      "providerOfferingObservation": {
+        "url": "https://study.com/academy/course/health-309-healthcare-informatics.html",
+        "checkedOn": "2026-11-20",
+        "method": "Rendered public provider course page reviewed separately; raw provider body capture unavailable.",
+        "observedCode": "SDCM-0170",
+        "observedSourceCredits": 3,
+        "observedCreditSystem": "semester",
+        "observedSourceUpper": true,
+        "proctoring": "unproctored",
+        "minimumCourseGradePercent": 70,
+        "supportsIdentityHash": false
+      },
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "study-sdcm-0172-v4",
+      "provider": "Study.com",
+      "code": "SDCM-0172",
+      "title": "Healthcare Organization and Management",
+      "courseVersion": "4",
+      "providerCourseCode": "Health 303",
+      "codeAliases": [
+        "Health 303"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "sourceCreditBasis": "Independent current ACE exhibit with original provider code, source quantity, recommendation window and passing requirement.",
+      "recommendationStart": "2024-05-01",
+      "recommendationEnd": "2027-05-31",
+      "identitySourceIds": [
+        "liberty-shared-source-be8dc0770b064d137cd746b0"
+      ],
+      "url": "https://study.com/academy/course/health-303-healthcare-organization-management.html",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "study-sdcm-0173-v4",
+      "provider": "Study.com",
+      "code": "SDCM-0173",
+      "title": "Ethical and Legal Issues in Healthcare",
+      "courseVersion": "4",
+      "providerCourseCode": "Health 301",
+      "codeAliases": [
+        "Health 301"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "sourceCreditBasis": "Independent current ACE exhibit with original provider code, source quantity, recommendation window and passing requirement.",
+      "recommendationStart": "2024-05-01",
+      "recommendationEnd": "2027-05-31",
+      "identitySourceIds": [
+        "liberty-shared-source-abf16c84d1fe9d9188f634e0"
+      ],
+      "url": "https://study.com/academy/course/health-301-ethical-legal-issues-in-healthcare.html",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "study-sdcm-0207-v3",
+      "provider": "Study.com",
+      "code": "SDCM-0207",
+      "title": "Health Services Policy",
+      "courseVersion": "3",
+      "providerCourseCode": "Health 302",
+      "codeAliases": [
+        "Health 302"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "sourceCreditBasis": "Independent current ACE exhibit with original provider code, source quantity, recommendation window and passing requirement.",
+      "recommendationStart": "2024-10-01",
+      "recommendationEnd": "2027-09-30",
+      "identitySourceIds": [
+        "liberty-shared-source-19a3ef2492ec89223f430c7c"
+      ],
+      "url": "https://study.com/academy/course/health-302-health-services-policy.html",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "study-sdcm-0209-v3",
+      "provider": "Study.com",
+      "code": "SDCM-0209",
+      "title": "Healthcare Quality & Outcome Measurement",
+      "courseVersion": "3",
+      "providerCourseCode": "Health 308",
+      "codeAliases": [
+        "Health 308"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "sourceCreditBasis": "Independent current ACE exhibit with original provider code, source quantity, recommendation window and passing requirement.",
+      "recommendationStart": "2024-06-01",
+      "recommendationEnd": "2027-07-31",
+      "identitySourceIds": [
+        "liberty-shared-source-f639549ea26b78473d6bc4ec"
+      ],
+      "url": "https://study.com/academy/course/health-308-healthcare-quality-outcome-measurement.html",
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    }
+  ],
+  "awards": [
+    {
+      "id": "liberty-online-sdcm-0169-busi-344-associate",
+      "providerCourseId": "study-sdcm-0169-v4",
+      "receivingCode": "BUSI 344",
+      "receivingTitle": "Mgmt Human Resource & Health Prof.",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0169   Health 310                         Human Resource Management in Healthcare             3   BUSI 344   Mgmt Human Resource & Health Prof.               3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0169-busi-344-bachelor",
+      "providerCourseId": "study-sdcm-0169-v4",
+      "receivingCode": "BUSI 344",
+      "receivingTitle": "Mgmt Human Resource & Health Prof.",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0169   Health 310                         Human Resource Management in Healthcare             3   BUSI 344   Mgmt Human Resource & Health Prof.               3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0170-info-320-associate",
+      "providerCourseId": "study-sdcm-0170-v4",
+      "receivingCode": "INFO 320",
+      "receivingTitle": "Healthcare Informatics",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0170   Health 309                         Healthcare Informatics                              3   INFO 320   Healthcare Informatics                           3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0170-info-320-bachelor",
+      "providerCourseId": "study-sdcm-0170-v4",
+      "receivingCode": "INFO 320",
+      "receivingTitle": "Healthcare Informatics",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0170   Health 309                         Healthcare Informatics                              3   INFO 320   Healthcare Informatics                           3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0172-busi-311-associate",
+      "providerCourseId": "study-sdcm-0172-v4",
+      "receivingCode": "BUSI 311",
+      "receivingTitle": "Intro to Healthcare Admin",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0172   Health 303                         Healthcare Organization and Management              3   BUSI 311   Intro to Healthcare Admin                        3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0172-busi-311-bachelor",
+      "providerCourseId": "study-sdcm-0172-v4",
+      "receivingCode": "BUSI 311",
+      "receivingTitle": "Intro to Healthcare Admin",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0172   Health 303                         Healthcare Organization and Management              3   BUSI 311   Intro to Healthcare Admin                        3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0173-busi-302-associate",
+      "providerCourseId": "study-sdcm-0173-v4",
+      "receivingCode": "BUSI 302",
+      "receivingTitle": "Legal & Ethical Issues Healthcare",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0173   Health 301                         Ethical and Legal Issues in Healthcare              3   BUSI 302   Legal & Ethical Issues Healthcare                3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0173-busi-302-bachelor",
+      "providerCourseId": "study-sdcm-0173-v4",
+      "receivingCode": "BUSI 302",
+      "receivingTitle": "Legal & Ethical Issues Healthcare",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0173   Health 301                         Ethical and Legal Issues in Healthcare              3   BUSI 302   Legal & Ethical Issues Healthcare                3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0207-busi-304-associate",
+      "providerCourseId": "study-sdcm-0207-v3",
+      "receivingCode": "BUSI 304",
+      "receivingTitle": "Intro to Health Policy",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0207   Health 302                         Health Services Policy                              3   BUSI 304   Intro to Health Policy                           3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0207-busi-304-bachelor",
+      "providerCourseId": "study-sdcm-0207-v3",
+      "receivingCode": "BUSI 304",
+      "receivingTitle": "Intro to Health Policy",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0207   Health 302                         Health Services Policy                              3   BUSI 304   Intro to Health Policy                           3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0209-busi-419-associate",
+      "providerCourseId": "study-sdcm-0209-v3",
+      "receivingCode": "BUSI 419",
+      "receivingTitle": "Management of Quality Improvement and Outcomes",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0209   Health 308                         Healthcare Quality & Outcome Measurement            3   BUSI 419   Management of Quality Improvement and Outcomes   3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-sdcm-0209-busi-419-bachelor",
+      "providerCourseId": "study-sdcm-0209-v3",
+      "receivingCode": "BUSI 419",
+      "receivingTitle": "Management of Quality Improvement and Outcomes",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Study.com — updated on May 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SDCM-0209   Health 308                         Healthcare Quality & Outcome Measurement            3   BUSI 419   Management of Quality Improvement and Outcomes   3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0006-arts-201-associate",
+      "providerCourseId": "sophia-soph-0006-v4",
+      "receivingCode": "ARTS 201",
+      "receivingTitle": "History of Art I",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0006    ArtHist1001                        Art History I                                                 3      ARTS 201          History of Art I                                   3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0006-arts-201-bachelor",
+      "providerCourseId": "sophia-soph-0006-v4",
+      "receivingCode": "ARTS 201",
+      "receivingTitle": "History of Art I",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0006    ArtHist1001                        Art History I                                                 3      ARTS 201          History of Art I                                   3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0016-envr-215-associate",
+      "providerCourseId": "sophia-soph-0016-v5",
+      "receivingCode": "ENVR 215",
+      "receivingTitle": "Principles of Environmental Science",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0016    ENVS1001                           Environmental Science                                         3      ENVR 215            Principles of Environmental Science              3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0016-envr-215-bachelor",
+      "providerCourseId": "sophia-soph-0016-v5",
+      "receivingCode": "ENVR 215",
+      "receivingTitle": "Principles of Environmental Science",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0016    ENVS1001                           Environmental Science                                         3      ENVR 215            Principles of Environmental Science              3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0021-scom-1xx-associate",
+      "providerCourseId": "sophia-soph-0021-v4",
+      "receivingCode": "SCOM 1XX",
+      "receivingTitle": "Speech Communication Elec-Lower Level",
+      "credits": 1,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0021    BUS1200                            Developing Effective Teams                                    1      SCOM 1XX          Speech Communication Elec-Lower Level              1",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0021-scom-1xx-bachelor",
+      "providerCourseId": "sophia-soph-0021-v4",
+      "receivingCode": "SCOM 1XX",
+      "receivingTitle": "Speech Communication Elec-Lower Level",
+      "credits": 1,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0021    BUS1200                            Developing Effective Teams                                    1      SCOM 1XX          Speech Communication Elec-Lower Level              1",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0022-hius-221-associate",
+      "providerCourseId": "sophia-soph-0022-v4",
+      "receivingCode": "HIUS 221",
+      "receivingTitle": "Survey of American History I",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SOPH-0022   HIST1001                           US History I              3   HIUS 221   Survey of American History I            3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0022-hius-221-bachelor",
+      "providerCourseId": "sophia-soph-0022-v4",
+      "receivingCode": "HIUS 221",
+      "receivingTitle": "Survey of American History I",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SOPH-0022   HIST1001                           US History I              3   HIUS 221   Survey of American History I            3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0025-hius-222-associate",
+      "providerCourseId": "sophia-soph-0025-v4",
+      "receivingCode": "HIUS 222",
+      "receivingTitle": "Survey of American History II",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SOPH-0025   HIST1002                           US History II             3   HIUS 222   Survey of American History II           3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0025-hius-222-bachelor",
+      "providerCourseId": "sophia-soph-0025-v4",
+      "receivingCode": "HIUS 222",
+      "receivingTitle": "Survey of American History II",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 2,
+      "reviewedExtract": "SOPH-0025   HIST1002                           US History II             3   HIUS 222   Survey of American History II           3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0027-phil-201-associate",
+      "providerCourseId": "sophia-soph-0027-v3",
+      "receivingCode": "PHIL 201",
+      "receivingTitle": "Philosophy and Contemporary Ideas",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0027    PHIL1001                           Ancient Greek Philosophers                                    3      PHIL 201          Philosophy and Contemporary Ideas                  3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0027-phil-201-bachelor",
+      "providerCourseId": "sophia-soph-0027-v3",
+      "receivingCode": "PHIL 201",
+      "receivingTitle": "Philosophy and Contemporary Ideas",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0027    PHIL1001                           Ancient Greek Philosophers                                    3      PHIL 201          Philosophy and Contemporary Ideas                  3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0029-arts-202-associate",
+      "providerCourseId": "sophia-soph-0029-v3",
+      "receivingCode": "ARTS 202",
+      "receivingTitle": "History of Art II",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0029    HUMA 1012 (Formerly ArtHist1002)   Art History II                                                3      ARTS 202          History of Art II                                  3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0029-arts-202-bachelor",
+      "providerCourseId": "sophia-soph-0029-v3",
+      "receivingCode": "ARTS 202",
+      "receivingTitle": "History of Art II",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0029    HUMA 1012 (Formerly ArtHist1002)   Art History II                                                3      ARTS 202          History of Art II                                  3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0041-csis-1xx-associate",
+      "providerCourseId": "sophia-soph-0041-v3",
+      "receivingCode": "CSIS 1XX",
+      "receivingTitle": "Computer Science Info Elec-Lower Level",
+      "credits": 1,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0041    CS1003                             IT Career Exploration                                         1      CSIS 1XX          Computer Science Info Elec-Lower Level             1",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0041-csis-1xx-bachelor",
+      "providerCourseId": "sophia-soph-0041-v3",
+      "receivingCode": "CSIS 1XX",
+      "receivingTitle": "Computer Science Info Elec-Lower Level",
+      "credits": 1,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0041    CS1003                             IT Career Exploration                                         1      CSIS 1XX          Computer Science Info Elec-Lower Level             1",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0065-phil-210-associate",
+      "providerCourseId": "sophia-soph-0065-v2",
+      "receivingCode": "PHIL 210",
+      "receivingTitle": "Logic",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0065    PHIL1005                           Critical Thinking                                             3      PHIL 210          Logic                                              3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0065-phil-210-bachelor",
+      "providerCourseId": "sophia-soph-0065-v2",
+      "receivingCode": "PHIL 210",
+      "receivingTitle": "Logic",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0065    PHIL1005                           Critical Thinking                                             3      PHIL 210          Logic                                              3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0080-hlth-216-associate",
+      "providerCourseId": "sophia-soph-0080-v2",
+      "receivingCode": "HLTH 216",
+      "receivingTitle": "Personal Health",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0080    HLTH1011                           Health, Fitness and Wellness                                  3      HLTH 216            Personal Health                                  3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "associate",
+        "programIds": [
+          "curriculum-liberty-business-aa-online",
+          "curriculum-liberty-interdisciplinary-aa-online",
+          "curriculum-liberty-psychology-aa-online"
+        ]
+      }
+    },
+    {
+      "id": "liberty-online-soph-0080-hlth-216-bachelor",
+      "providerCourseId": "sophia-soph-0080-v2",
+      "receivingCode": "HLTH 216",
+      "receivingTitle": "Personal Health",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false,
+      "evidence": "published",
+      "sourceIds": [
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeSourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
+      ],
+      "scopeQuote": "Liberty University — Transfer Equivalency Guide for Sophia Learning — updated on July 2026",
+      "sourcePage": 1,
+      "reviewedExtract": "SOPH-0080    HLTH1011                           Health, Fitness and Wellness                                  3      HLTH 216            Personal Health                                  3",
+      "scope": {
+        "school": "Liberty University",
+        "catalog": "2026-2027",
+        "modality": "online",
+        "level": "bachelor",
+        "programIds": [
+          "curriculum-liberty-accounting-bs-online",
+          "curriculum-liberty-business-bs-online",
+          "curriculum-liberty-healthcare-administration-bs-online",
+          "curriculum-liberty-history-bs-online",
+          "curriculum-liberty-human-services-bs-online",
+          "curriculum-liberty-psychology-addictions-online",
+          "curriculum-liberty-psychology-bs-online",
+          "liberty-criminal-justice-online"
+        ]
+      }
+    }
+  ],
+  "placementRules": [
+    {
+      "id": "liberty-online-associate-exact",
+      "kind": "exact",
+      "modelIds": [
+        "curriculum-liberty-business-aa-online",
+        "curriculum-liberty-interdisciplinary-aa-online",
+        "curriculum-liberty-psychology-aa-online"
+      ],
+      "sourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0"
+      ],
+      "awardIds": [
+        "liberty-online-soph-0016-envr-215-associate",
+        "liberty-online-soph-0022-hius-221-associate",
+        "liberty-online-soph-0025-hius-222-associate",
+        "liberty-online-soph-0027-phil-201-associate",
+        "liberty-online-soph-0065-phil-210-associate",
+        "liberty-online-soph-0021-scom-1xx-associate",
+        "liberty-online-soph-0041-csis-1xx-associate",
+        "liberty-online-soph-0006-arts-201-associate",
+        "liberty-online-soph-0029-arts-202-associate",
+        "liberty-online-soph-0080-hlth-216-associate",
+        "liberty-online-sdcm-0173-busi-302-associate",
+        "liberty-online-sdcm-0207-busi-304-associate",
+        "liberty-online-sdcm-0172-busi-311-associate",
+        "liberty-online-sdcm-0209-busi-419-associate",
+        "liberty-online-sdcm-0170-info-320-associate",
+        "liberty-online-sdcm-0169-busi-344-associate"
+      ]
+    },
+    {
+      "id": "liberty-online-associate-free-elective",
+      "kind": "free-elective",
+      "modelIds": [
+        "curriculum-liberty-business-aa-online",
+        "curriculum-liberty-interdisciplinary-aa-online",
+        "curriculum-liberty-psychology-aa-online"
+      ],
+      "sourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0"
+      ],
+      "awardIds": [
+        "liberty-online-soph-0016-envr-215-associate",
+        "liberty-online-soph-0022-hius-221-associate",
+        "liberty-online-soph-0025-hius-222-associate",
+        "liberty-online-soph-0027-phil-201-associate",
+        "liberty-online-soph-0065-phil-210-associate",
+        "liberty-online-soph-0021-scom-1xx-associate",
+        "liberty-online-soph-0041-csis-1xx-associate",
+        "liberty-online-soph-0006-arts-201-associate",
+        "liberty-online-soph-0029-arts-202-associate",
+        "liberty-online-soph-0080-hlth-216-associate",
+        "liberty-online-sdcm-0173-busi-302-associate",
+        "liberty-online-sdcm-0207-busi-304-associate",
+        "liberty-online-sdcm-0172-busi-311-associate",
+        "liberty-online-sdcm-0209-busi-419-associate",
+        "liberty-online-sdcm-0170-info-320-associate",
+        "liberty-online-sdcm-0169-busi-344-associate"
+      ]
+    },
+    {
+      "id": "liberty-online-bachelor-exact",
+      "kind": "exact",
+      "modelIds": [
+        "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-healthcare-administration-bs-online",
+        "curriculum-liberty-history-bs-online",
+        "curriculum-liberty-human-services-bs-online",
+        "curriculum-liberty-psychology-addictions-online",
+        "curriculum-liberty-psychology-bs-online",
+        "liberty-criminal-justice-online"
+      ],
+      "sourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0"
+      ],
+      "awardIds": [
+        "liberty-online-soph-0016-envr-215-bachelor",
+        "liberty-online-soph-0022-hius-221-bachelor",
+        "liberty-online-soph-0025-hius-222-bachelor",
+        "liberty-online-soph-0027-phil-201-bachelor",
+        "liberty-online-soph-0065-phil-210-bachelor",
+        "liberty-online-soph-0021-scom-1xx-bachelor",
+        "liberty-online-soph-0041-csis-1xx-bachelor",
+        "liberty-online-soph-0006-arts-201-bachelor",
+        "liberty-online-soph-0029-arts-202-bachelor",
+        "liberty-online-soph-0080-hlth-216-bachelor",
+        "liberty-online-sdcm-0173-busi-302-bachelor",
+        "liberty-online-sdcm-0207-busi-304-bachelor",
+        "liberty-online-sdcm-0172-busi-311-bachelor",
+        "liberty-online-sdcm-0209-busi-419-bachelor",
+        "liberty-online-sdcm-0170-info-320-bachelor",
+        "liberty-online-sdcm-0169-busi-344-bachelor"
+      ]
+    },
+    {
+      "id": "liberty-online-bachelor-free-elective",
+      "kind": "free-elective",
+      "modelIds": [
+        "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-healthcare-administration-bs-online",
+        "curriculum-liberty-history-bs-online",
+        "curriculum-liberty-human-services-bs-online",
+        "curriculum-liberty-psychology-addictions-online",
+        "curriculum-liberty-psychology-bs-online",
+        "liberty-criminal-justice-online"
+      ],
+      "sourceIds": [
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0"
+      ],
+      "awardIds": [
+        "liberty-online-soph-0016-envr-215-bachelor",
+        "liberty-online-soph-0022-hius-221-bachelor",
+        "liberty-online-soph-0025-hius-222-bachelor",
+        "liberty-online-soph-0027-phil-201-bachelor",
+        "liberty-online-soph-0065-phil-210-bachelor",
+        "liberty-online-soph-0021-scom-1xx-bachelor",
+        "liberty-online-soph-0041-csis-1xx-bachelor",
+        "liberty-online-soph-0006-arts-201-bachelor",
+        "liberty-online-soph-0029-arts-202-bachelor",
+        "liberty-online-soph-0080-hlth-216-bachelor",
+        "liberty-online-sdcm-0173-busi-302-bachelor",
+        "liberty-online-sdcm-0207-busi-304-bachelor",
+        "liberty-online-sdcm-0172-busi-311-bachelor",
+        "liberty-online-sdcm-0209-busi-419-bachelor",
+        "liberty-online-sdcm-0170-info-320-bachelor",
+        "liberty-online-sdcm-0169-busi-344-bachelor"
+      ]
+    }
+  ],
+  "inputFingerprints": {
+    "guide": "051909fa2442e846e4bcbdb71e9792ca8b3bc0f9fbfa2e529a08de869f7997a6",
+    "identities": "2079abe63ddfe8c282304c52efe4031c5829bce878a47063fff6f37d725aad98",
+    "health": "699e7e76b1ed1c43ffa58487c74f8470e4788a2b6ea0a5f07cc07f2a69a790b5",
+    "extraIdentities": "e4f1d3f4a7463156c84a1bf0f5b86344ffb7f839c583db5dbbc40df4bde09829",
+    "policy": "1403e5c663394b7e9604835a4d34cadff0649b56affcccb2881b31a08bbff1d3"
+  },
+  "scopeReview": {
+    "basis": "The reviewed university-hosted online transfer tables establish named school receiving awards. The current undergraduate catalog supplies online associate/bachelor policy scope and unrestricted elective-credit policy. Explicit model IDs are retained from that separately reviewed policy packet. Exact degree requirements remain independently bound to their own sources; no residential, graduate, unlisted future program, university-only course, restricted major elective or individual student award inherits this bundle.",
+    "programIds": [
+      "curriculum-liberty-accounting-bs-online",
+      "curriculum-liberty-business-aa-online",
+      "curriculum-liberty-business-bs-online",
+      "curriculum-liberty-healthcare-administration-bs-online",
+      "curriculum-liberty-history-bs-online",
+      "curriculum-liberty-human-services-bs-online",
+      "curriculum-liberty-interdisciplinary-aa-online",
+      "curriculum-liberty-psychology-aa-online",
+      "curriculum-liberty-psychology-addictions-online",
+      "curriculum-liberty-psychology-bs-online",
+      "liberty-criminal-justice-online"
+    ],
+    "catalogSourceId": "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+    "reviewedGuideAwardCount": 299,
+    "independentProviderCourseCount": 16,
+    "compositeAwardsExcluded": 5
+  },
+  "publicationAllowed": false,
+  "personalAwardsCreated": 0,
+  "runtimeAiCalls": 0
+}

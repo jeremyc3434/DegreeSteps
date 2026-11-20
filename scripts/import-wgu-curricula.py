@@ -8,6 +8,7 @@ from pathlib import Path
 import json,re,sys
 from wgu_undergraduate_policies import apply_reviewed_undergraduate_policies
 from wgu_bshr_articulations import apply_bshr_articulations
+from wgu_business_batch import apply_business_awards
 
 ROOT=Path(__file__).resolve().parents[1]
 SNAP=ROOT/'content/curricula/snapshots/wgu'
@@ -280,6 +281,8 @@ def main():
  out=apply_reviewed_supplements(out)
  out=apply_reviewed_undergraduate_policies(out,json.loads((SNAP/'business-current-ledgers-policy-review-2026-11-17.json').read_text()))
  out=apply_bshr_articulations(out,json.loads((SNAP/'bshr-202509-approved-maps-20261117.json').read_text()))
+ identity_bundles=[json.loads((ROOT/'content/reuse'/name).read_text())for name in ['wgu-provider-identities.json','wgu-sophia-provider-identities.json','wgu-straighterline-provider-identities.json','wgu-saylor-provider-identities.json']]
+ out,_business_batch_report=apply_business_awards(out,json.loads((ROOT/'content/reuse/wgu-business-awards.json').read_text()),identity_bundles=identity_bundles)
  output=ROOT/'content/curricula/wgu.json';serialized=json.dumps(out,indent=2)+'\n'
  if '--check'in sys.argv:assert output.read_text()==serialized,'WGU curriculum artifact is stale; rerun importer'
  else:output.write_text(serialized)

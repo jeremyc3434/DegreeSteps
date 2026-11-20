@@ -38,15 +38,16 @@ export function buildPublicPlan(definition,{model,entry,baseline,quality,courseC
  const plan=generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optionSelections:Object.fromEntries([...selected].map(([id,row])=>[id,row.optionId])),optimizationNodeBudget:12000});
  assert.equal(plan.validation?.academicCountsValid,true,'The public plan must pass the academic solver.');
  assert.equal(plan.totals.accounted,definition.total);
- assert.equal(plan.totals.external,definition.outside);
- assert.equal(plan.totals.institutional,definition.university);
+ assert.equal(plan.totals.external,baseline.summary.transferCredits,'The preview must reproduce its current reviewed outside-course total.');
+ assert.equal(plan.totals.institutional,baseline.summary.universityCredits,'The preview must reproduce its current reviewed university-course total.');
  assert.equal(plan.totals.reported,0);assert.equal(plan.totals.confirmed,0);
  assert.equal(plan.rows.length,model.requirements.length);
  for(const row of plan.rows)assert.equal(row.option?.id,selected.get(row.requirementId)?.optionId,'The preview must preserve the saved baseline selection.');
  const view=View.build({program:model,plan,state:{learning:[]},match:{completed:[]}},courseCatalog);
  assert.equal(view.totals.accounted,definition.total);assert.equal(view.progress.completedCredits,0);assert.equal(view.curriculumIssues.length,0,'Public degree sections must be unambiguous.');
  const estimate=rates?Estimate.calculate({program:model,plan,rates}):null;
- return {...definition,path:publicPlanPath(definition),useHref:usePublicPlanHref(definition),school:model.school,degree:model.title,catalog:catalogLabel(model.catalog),checkedOn:baseline.summary.checkedOn||entry.checkedOn||'',model,plan,view,baseline,quality,estimate};
+ const description='Explore '+model.school+'’s '+model.title+' with '+plan.totals.external+' proposed outside '+definition.unit+', '+plan.totals.institutional+' university '+definition.unit+', and a complete researched course plan.';
+ return {...definition,outside:plan.totals.external,university:plan.totals.institutional,description,path:publicPlanPath(definition),useHref:usePublicPlanHref(definition),school:model.school,degree:model.title,catalog:catalogLabel(model.catalog),checkedOn:baseline.summary.checkedOn||entry.checkedOn||'',model,plan,view,baseline,quality,estimate};
 }
 
 export async function loadPublicPlans(dist=resolve(import.meta.dirname,'../dist')){
@@ -64,7 +65,7 @@ export async function loadPublicPlans(dist=resolve(import.meta.dirname,'../dist'
   const baseline=Object.values(index.baselines).find(baseline=>baseline.modelId===entry.id&&baseline.researchStatus==='research-ready');
   assert(model&&baseline,'A publication-ready plan needs its complete saved course choices.');
   const unit=model.creditSystem==='competency-unit'?'competency units':model.creditSystem==='quarter'?'quarter credits':'semester credits';
-  const slug=({'curriculum-wgu-catalog-2e49db64c32dfc79':'wgu-human-resource-management'})[entry.id]||entry.id.replace(/^curriculum-/,'');assert(/^[a-z0-9-]+$/.test(slug),'Public degree URLs need stable safe identifiers.');
+  const slug=model.school==='Western Governors University'?'wgu-'+model.title.replace(/\s*[–—-]\s*B\.S\.\s*$/i,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''):entry.id.replace(/^curriculum-/,'');assert(/^[a-z0-9-]+$/.test(slug),'Public degree URLs need stable safe identifiers.');
   const schoolLabel=({'Western Governors University':'WGU','Liberty University':'Liberty','Thomas Edison State University':'TESU','University of Maine at Presque Isle':'UMPI'})[model.school]||model.school;
   definitions.push({id:baseline.pathwayId,modelId:entry.id,slug,title:schoolLabel+' '+model.title+' transfer plan',shortTitle:model.title,format:baseline.modality==='campus'?'On campus':'Online',outside:baseline.summary.transferCredits,university:baseline.summary.universityCredits,total:model.totalCredits,unit,description:'Explore '+model.school+'’s '+model.title+' with '+baseline.summary.transferCredits+' proposed outside '+unit+', '+baseline.summary.universityCredits+' university '+unit+', and a complete researched course plan.'});
  }

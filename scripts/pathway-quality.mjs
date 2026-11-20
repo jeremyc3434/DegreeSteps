@@ -33,6 +33,151 @@ function scopeNote(message){
  if(/^Existing receiving-school (?:transfer candidates|awards) retain their original provider(?:\/version\/format restrictions|, course-version, credit-unit, delivery and individual-evaluation conditions)\. No (?:additional )?provider award is inferred from (?:a matching course title|a course title)\.$/.test(message))return 'student-task';
  return null;
 }
+// Legacy importers emitted prose for several distinct questions. Keep those
+// strings auditable, but classify the question from current scoped evidence.
+// New batch adapters can emit the same typed topics directly; an unknown topic
+// or an unproved topic remains a normal blocking research item.
+const wguNoticeTopics=new Map([
+ ['WGU course identifiers are not printed in the guide; titles are retained without invented course codes.','curriculum-identifiers'],
+ ['University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.','additional-transfer-options'],
+ ['Confirm the student’s applicable program catalog; the official program-guide version is recorded above.','personal-catalog-selection'],
+ ['These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.','selected-transfer-awards']
+]);
+function currentSource(source,asOf){
+ const checked=date(sourceDate(source)),now=date(asOf);
+ return https(source?.url)&&checked!==null&&checked<=now&&now-checked<30*day;
+}
+function officialWgu(source){
+ try{const url=new URL(source?.url);return source.kind==='university'&&url.protocol==='https:'&&!url.username&&!url.password&&(url.hostname==='wgu.edu'||url.hostname.endsWith('.wgu.edu'));}catch{return false;}
+}
+function reviewedWguLedger(model,sources,asOf){
+ const review=model?.curriculumReview,requirements=list(model?.requirements),catalog=text(model?.catalogYear||model?.catalog);
+ if(model?.school!=='Western Governors University'||level(model.level)!=='bachelor'||format(model.format)!=='online'||model.creditSystem!=='competency-unit'||model.auditProvenance?.status==='student-provided'||!/^20\d{2}(?:0[1-9]|1[0-2])$/.test(catalog))return null;
+ if(review?.status!=='current-complete-named-ledger'||review.catalog!==catalog||!Number.isInteger(review.programId)||review.programId<=0||!text(review.programCode)||!Number.isInteger(review.recordVersion)||review.recordVersion<=0||!/^[a-f0-9]{64}$/.test(review.ledgerSha256||''))return null;
+ const reviewDate=date(review.checkedOn),now=date(asOf),ids=list(review.sourceIds);
+ if(reviewDate===null||reviewDate>now||now-reviewDate>=30*day||ids.length<2||new Set(ids).size!==ids.length)return null;
+ const scoped=source=>officialWgu(source)&&currentSource(source,asOf)&&sourceDate(source)===review.checkedOn&&source.scope?.schoolName===model.school&&source.scope?.programId===review.programId&&source.scope?.programCode===review.programCode&&source.scope?.catalogYear===catalog&&source.scope?.level==='bachelor'&&source.scope?.modality==='online'&&source.scope?.creditSystem==='competency-unit';
+ const evidence=ids.map(id=>sources.get(id));
+ if(!evidence.every(scoped)||!evidence.some(source=>source.publicRecordId===review.programId&&source.publicRecordVersion===review.recordVersion&&source.approvalStatus==='Approved'&&source.inactiveProgram===0))return null;
+ if(!finite(model.totalCredits)||model.totalCredits<=0||!requirements.length||new Set(requirements.map(row=>row.id)).size!==requirements.length||!near(requirements.reduce((sum,row)=>sum+(finite(row.credits)?row.credits:0),0),model.totalCredits))return null;
+ if(requirements.some(row=>!text(row.id)||!text(row.title)||!finite(row.credits)||row.credits<=0||row.researchGap||!list(row.sourceIds).some(id=>ids.includes(id))))return null;
+ return {sourceIds:ids,catalog,review};
+}
+function completeNamedBaseline(model,plan){
+ const requirements=list(model?.requirements),rows=list(plan?.rows),byId=new Map(requirements.map(row=>[row.id,row]));
+ return plan?.validation?.academicCountsValid===true&&plan?.validation?.policyChecksComplete===true&&requirements.length>0&&rows.length===requirements.length&&new Set(rows.map(row=>row.requirementId)).size===rows.length&&rows.every(row=>{
+  const requirement=byId.get(row.requirementId),option=list(requirement?.options).find(option=>option.id===row.option?.id&&option.provider===row.option?.provider&&option.code===row.option?.code);
+  return requirement&&row.status==='planned'&&!row.selectionRequired&&option&&!option.selectionRequired&&text(option.code)&&text(option.title)&&near(row.credits,requirement.credits)&&near(option.credits,requirement.credits);
+ });
+}
+const identityAuthorities={
+ Sophia:{domains:['sophia.org'],aceOrganizationId:'76099b28-9016-e811-810f-5065f38bf0e1',acePrefix:'SOPH',names:['sophia','sophialearning','sophialearningllc']},
+ 'Study.com':{domains:['study.com'],aceOrganizationId:'82099b28-9016-e811-810f-5065f38bf0e1',acePrefix:'SDCM',names:['studycom','studycomllc']},
+ StraighterLine:{domains:['straighterline.com'],aceOrganizationId:'80099b28-9016-e811-810f-5065f38bf0e1',acePrefix:'OOSL',names:['straighterline']},
+ Saylor:{domains:['saylor.org'],aceOrganizationId:'68099b28-9016-e811-810f-5065f38bf0e1',acePrefix:'SAYA',names:['saylor','sayloracademy','sayloruniversity']}
+};
+const normalizedIdentity=value=>text(value).toLowerCase().replace(/[^a-z0-9]/g,'');
+function declaredIdentityMatches(source,option,authority){
+ const aliases=new Set([option.code,option.aceId,option.providerCourseCode,...list(option.codeAliases)].map(normalizedIdentity).filter(Boolean));
+ for(const provider of [source.provider,source.scope?.provider,source.observed?.provider])if(provider!==undefined&&!authority.names.includes(normalizedIdentity(provider)))return false;
+ for(const codes of [source.courseCodes,source.scope?.courseCodes])if(codes!==undefined&&(!Array.isArray(codes)||!codes.length||!codes.some(code=>aliases.has(normalizedIdentity(code)))))return false;
+ for(const record of [source,source.observed,source.reviewedFacts]){
+  if(!record||typeof record!=='object')continue;
+  for(const value of [record.aceId,record.providerCourseCode])if(value!==undefined&&!aliases.has(normalizedIdentity(value)))return false;
+  if(record.sourceCredits!==undefined&&!near(record.sourceCredits,option.sourceCredits)||record.sourceCreditSystem!==undefined&&record.sourceCreditSystem!==option.sourceCreditSystem||record.offered===false)return false;
+  for(const key of ['recommendationStart','recommendationEnd'])if(record[key]!==undefined&&record[key]!==option[key])return false;
+  const version=record.aceVersion??record.courseVersion;
+  if(version!==undefined&&String(version)!==String(option.courseVersion??option.version))return false;
+ }
+ const aceCode=text(option.aceId||option.code).toUpperCase();
+ return !/^[A-Z]{4}-\d{4}$/.test(aceCode)||aceCode.startsWith(authority.acePrefix+'-');
+}
+/** Publisher identity is independent from the receiving university award.
+ * Provider pages and exact ACE/Credly recommendation exhibits are both valid
+ * primary sources. Domain, declared issuer/course bindings and current dates
+ * must agree; an arbitrary accreditor or another school's map never qualifies. */
+export function isIndependentProviderIdentitySource(source,option,{asOf}={}){
+ assertDate(asOf);
+ const authority=identityAuthorities[option?.provider];
+ if(!authority||!currentSource(source,asOf)||officialWgu(source)||!declaredIdentityMatches(source,option,authority))return false;
+ const url=new URL(source.url),host=url.hostname,owns=domain=>host===domain||host.endsWith('.'+domain),roles=list(source.roles);
+ if(source.roles!==undefined&&!roles.some(role=>['provider-identity','source-credit-recommendation','recommendation-period'].includes(role)))return false;
+ if(authority.domains.some(owns))return !source.kind||source.kind==='provider';
+ if(owns('acenet.edu')){
+  if(!['ace','accreditor'].includes(source.kind)||!/^\/National-Guide\/Pages\/Course\.aspx$/i.test(url.pathname)||!roles.includes('provider-identity'))return false;
+  const cid=url.searchParams.get('cid'),organizationId=url.searchParams.get('oid'),organization=url.searchParams.get('org');
+  if(!/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i.test(cid||'')||organizationId&&organizationId.toLowerCase()!==authority.aceOrganizationId||organization&&!authority.names.includes(normalizedIdentity(organization)))return false;
+  return organizationId?.toLowerCase()===authority.aceOrganizationId||Boolean(organization&&authority.names.includes(normalizedIdentity(organization)));
+ }
+ if(owns('credly.com')){
+  // Public organization recommendation pages are source documents. A learner's
+  // individual awarded badge is not a provider-course definition.
+  const organization=url.pathname.match(/^\/(?:org|organizations)\/([^/]+)\/badge\//i)?.[1],issuer=normalizedIdentity(organization),knownIssuer=authority.names.includes(issuer)||['americancounciloneducation','americancounciloneducationace'].includes(issuer);
+  return ['ace','accreditor','provider'].includes(source.kind)&&roles.includes('provider-identity')&&knownIssuer&&authority.names.includes(normalizedIdentity(source.provider||source.scope?.provider))&&list(source.courseCodes).some(code=>[option.code,option.aceId,option.providerCourseCode,...list(option.codeAliases)].some(value=>normalizedIdentity(value)===normalizedIdentity(code)));
+ }
+ return false;
+}
+function reviewedSelectedAwards(model,plan,sources,asOf){
+ const selected=selectedOptions(model,plan).filter(({option})=>option?.provider!=='University');
+ if(!selected.length)return false;
+ return selected.every(({requirement,option})=>{
+  const award=option.mappingEvidence,identity=option.sourceCreditVerification,awardIds=list(award?.sourceIds),identityIds=list(option.identitySourceIds);
+  if(mappingFinding(model,requirement,option)||option.evidence!=='published'||option.evidenceType!=='official-receiving-school-equivalency'||!text(option.mappingReviewId)||date(option.mappingChecked)===null||date(option.mappingChecked)>date(asOf)||date(asOf)-date(option.mappingChecked)>=30*day||option.eligibilityReview?.eligibleToStart===false)return false;
+  if(award?.schoolName!==model.school||award.programName!==model.title||award.catalogYear!==text(model.catalogYear||model.catalog)||award.level!=='bachelor'||award.modality!=='online'||award.provider!==option.provider||award.providerCourseCode!==option.code||award.receivingCode!==requirement.code||!near(award.credits,option.credits)||award.creditSystem!==model.creditSystem||!bound(sources,awardIds)||!awardIds.every(id=>list(option.sourceIds).includes(id)))return false;
+  if(!awardIds.every(id=>{const source=sources.get(id);return officialWgu(source)&&currentSource(source,asOf)&&source.scope?.schoolName===model.school&&source.scope?.programName===model.title&&source.scope?.catalogYear===award.catalogYear&&source.scope?.level==='bachelor'&&source.scope?.modality==='online'&&list(source.roles).includes('receiving-map');}))return false;
+  return option.sourceCreditStatus==='verified'&&finite(option.sourceCredits)&&option.sourceCredits>0&&['semester','quarter','competency-unit'].includes(option.sourceCreditSystem)&&near(identity?.credits,option.sourceCredits)&&identity?.creditSystem===option.sourceCreditSystem&&bound(sources,identityIds)&&identityIds.every(id=>!awardIds.includes(id)&&isIndependentProviderIdentitySource(sources.get(id),option,{asOf}))&&bound(sources,identity?.sourceIds)&&identity.sourceIds.every(id=>!awardIds.includes(id)&&isIndependentProviderIdentitySource(sources.get(id),option,{asOf}));
+ });
+}
+function noticeModelDigest(model){
+ const canonical=value=>Array.isArray(value)?value.map(canonical):plain(value)?Object.fromEntries(Object.keys(value).sort().map(key=>[key,canonical(value[key])])):value;
+ const {unresolved,...academic}=model;
+ return createHash('sha256').update(JSON.stringify(canonical(academic))).digest('hex');
+}
+function compiledNoticeBaseline(model,input,{asOf,sources}){
+ const proof=input.noticeCompilation,choices=proof?.baselineOptionSelections,requirements=list(model.requirements);
+ if(proof?.version!==1||proof.modelId!==model.id||proof.catalog!==text(model.catalogYear||model.catalog)||proof.modality!==format(model.format)||proof.creditSystem!==model.creditSystem||proof.academicInputSha256!==noticeModelDigest(model)||date(proof.classifiedAsOf)===null||date(proof.classifiedAsOf)>date(asOf)||!plain(choices)||Object.keys(choices).length!==requirements.length)return null;
+ if(!list(input.sourceIds).every(id=>proof.sourceReviewDates?.[id]===sourceDate(sources.get(id)))||requirements.some(row=>!text(choices[row.id])||!list(row.options).some(option=>option.id===choices[row.id])))return null;
+ try{return Planner.generate(model,{providers:unique(requirements.flatMap(row=>list(row.options).map(option=>option.provider)).filter(provider=>provider!=='University')),allowConditional:true,priority:'transfer',completed:[],optionSelections:choices});}catch{return null;}
+}
+function classifyScopedNotice(model,input,{asOf,plan,sources}){
+ const typed=plain(input)&&input.kind==='degree-research-notice'&&input.scope===undefined&&input.appliesWhen===undefined&&input.requirementIds===undefined&&input.optionIds===undefined&&['curriculum-identifiers','additional-transfer-options','personal-catalog-selection','selected-transfer-awards'].includes(input.topic)&&input.status===(input.topic==='personal-catalog-selection'?'personal-task':'informational');
+ const topic=typeof input==='string'?wguNoticeTopics.get(input):typed?input.topic:null;
+ if(!topic)return null;
+ const ledger=reviewedWguLedger(model,sources,asOf);
+ if(!ledger||typed&&(!bound(sources,input.sourceIds)||!input.sourceIds.every(id=>ledger.sourceIds.includes(id))))return null;
+ const compiledBaseline=typed&&input.noticeCompilation?compiledNoticeBaseline(model,input,{asOf,sources}):null;
+ if(typed&&input.noticeCompilation&&!compiledBaseline)return null;
+ const common={blocking:false,classificationBasis:'current-scoped-ledger-and-typed-question',sourceIds:[...ledger.sourceIds],field:topic};
+ if(topic==='curriculum-identifiers')return {category:'missing-research',code:'curriculum-identifier-format',...common};
+ if(topic==='personal-catalog-selection')return {category:'student-task',code:'personal-catalog-selection',executionRequired:true,...common};
+ const evaluatedPlan=plan||compiledBaseline;
+ if(!completeNamedBaseline(model,evaluatedPlan))return null;
+ if(topic==='additional-transfer-options')return {category:'missing-research',code:'additional-transfer-options',...common};
+ if(topic==='selected-transfer-awards'&&reviewedSelectedAwards(model,evaluatedPlan,sources,asOf))return {category:'missing-research',code:'selected-transfer-awards-reviewed',...common};
+ return null;
+}
+/** Compile source-proven notice states for the student planner as well as the
+ * publication report. This changes notice metadata only: no academic course,
+ * transfer award, numeric rule, source review date or learner record is changed. */
+export function compileScopedResearchNotices(model,{asOf}={}){
+ assertDate(asOf);
+ const notices=list(model?.unresolved),known=note=>typeof note==='string'?wguNoticeTopics.has(note):plain(note)&&note.kind==='degree-research-notice';
+ if(!notices.some(known))return model;
+ const sources=sourceMap(model),providers=unique(list(model.requirements).flatMap(row=>list(row.options).map(option=>option.provider)).filter(provider=>provider!=='University'));
+ let plan=null;
+ try{plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[]});}catch{/* A failed baseline cannot support a nonblocking compilation. */}
+ const unresolved=notices.map(input=>{
+  if(!known(input))return input;
+  const message=typeof input==='string'?input:text(input.message),proof=classifyScopedNotice(model,input,{asOf,plan,sources});
+  if(!proof){
+   if(typeof input==='string')return input;
+   return {...input,status:'unresolved',owner:'DegreeSteps',blocking:true,noticeProofStatus:'needs-current-scoped-evidence'};
+  }
+  const topic=typeof input==='string'?wguNoticeTopics.get(input):input.topic;
+  return {...(plain(input)?input:{}),kind:'degree-research-notice',topic,message,status:proof.category==='student-task'?'personal-task':'informational',owner:proof.category==='student-task'?'student':'DegreeSteps',blocking:false,sourceIds:[...proof.sourceIds],noticeProofStatus:'current-scoped-evidence',noticeCompilation:{version:1,modelId:model.id,catalog:text(model.catalogYear||model.catalog),modality:format(model.format),creditSystem:model.creditSystem,classificationCode:proof.code,classifiedAsOf:asOf,academicInputSha256:noticeModelDigest(model),baselineOptionSelections:Object.fromEntries(list(plan?.rows).map(row=>[row.requirementId,row.option?.id||null])),sourceReviewDates:Object.fromEntries(proof.sourceIds.map(id=>[id,sourceDate(sources.get(id))]))}};
+ });
+ return {...model,unresolved};
+}
 function selectedOptions(model,plan){
  const requirements=new Map(list(model?.requirements).map(row=>[row.id,row]));
  if(!plan)return list(model?.requirements).flatMap(requirement=>list(requirement.options).map(option=>({requirement,option})));
@@ -82,11 +227,15 @@ export function classifyModelFindings(model,{asOf,plan}={}){
  }
  for(const input of list(model?.unresolved)){
   const note=typeof input==='string'?{message:input}:plain(input)?input:{message:String(input)};
-  if(!selectedNote(note,plan))continue;
-  if(note.status==='resolved'&&bound(sources,note.sourceIds))continue;
-  if(note.appliesWhen==='transfer-waiver'&&!model.appliedTransferWaiver)continue;
+  const typedNotice=plain(input)&&input.kind==='degree-research-notice';
+  if(!typedNotice&&!selectedNote(note,plan))continue;
+  if(!typedNotice&&note.status==='resolved'&&bound(sources,note.sourceIds))continue;
+  if(!typedNotice&&note.appliesWhen==='transfer-waiver'&&!model.appliedTransferWaiver)continue;
   const message=text(note.message)||'A degree research item has not been classified.';
   const extra={field:note.field||null,requirementIds:list(note.requirementIds),optionIds:list(note.optionIds),sourceIds:list(note.sourceIds)};
+  const scopedNotice=classifyScopedNotice(model,input,{asOf,plan,sources});
+  if(scopedNotice){const {category,code,...proof}=scopedNotice;add(category,code,message,{...extra,...proof});continue;}
+  if(typedNotice){add('missing-research','unresolved-research',message,{...extra,blocking:true,classificationBasis:'typed-notice-proof-not-established'});continue;}
   if(note.missingEvidence==='reviewed-source-identity'){
    for(const {requirement,option} of selectedOptions(model,plan)){
     if(option?.provider==='University'||note.requirementIds&&!note.requirementIds.includes(requirement?.id)||note.optionIds&&!note.optionIds.includes(option?.id)||note.selectionRequiredOnly&&!option?.selectionRequired&&!requirement?.selectionRequired)continue;

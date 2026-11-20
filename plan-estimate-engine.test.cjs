@@ -5,12 +5,13 @@ const ids=['liberty-business-residential','liberty-criminal-justice-online','lib
 function fixture(id=ids[0],changes={}){
  const row=registry.models.find(item=>item.id===id),pack=JSON.parse(fs.readFileSync('dist/'+row.path,'utf8')),program=(pack.models||[pack]).find(item=>item.id===id),baseline=Object.values(baselines.baselines).find(item=>item.modelId===id);
  const selections={...Object.fromEntries(baseline.rows.map(item=>[item.requirementId,item.optionId])),...changes};
- const plan=Planner.generate(program,{providers:['Sophia','Study.com','CLEP','StraighterLine'],priority:'transfer',allowConditional:true,completed:[],optionSelections:selections});
+ const providers=[...new Set(program.requirements.flatMap(row=>row.options.map(option=>option.provider)).filter(provider=>provider!=='University'))];
+ const plan=Planner.generate(program,{providers,priority:'transfer',allowConditional:true,completed:[],optionSelections:selections});
  return{program,plan,rates};
 }
 
 test('reviewed rate sources and named university fee components reconcile, without turning exclusions into zero',()=>{
- assert.equal(Estimate.assertRates(rates),rates);assert.equal(rates.entries.length,4);
+ assert.equal(Estimate.assertRates(rates),rates);assert.equal(rates.entries.length,8);
  for(const entry of rates.entries){
   assert.equal(entry.feeBreakdown.filter(row=>row.frequency==='per-term').reduce((sum,row)=>sum+row.amount,0),entry.feesPerTerm);
   assert.equal(entry.feeBreakdown.filter(row=>row.frequency==='one-time').reduce((sum,row)=>sum+row.amount,0),entry.oneTimeFees);
@@ -66,17 +67,16 @@ test('Liberty Healthcare uses the exact online bachelor ledger and standard unde
  const id='curriculum-liberty-healthcare-administration-bs-online',entry=registry.models.find(item=>item.id===id),pack=JSON.parse(fs.readFileSync('dist/'+entry.path,'utf8')),program=(pack.models||[pack]).find(item=>item.id===id);
  const plan=Planner.generate(program,{providers:['Sophia','Study.com','CLEP'],priority:'transfer',allowConditional:true,completed:[]}),result=Estimate.calculate({program,plan,rates});
  assert.equal(result.available,true,result.reason);assert.equal(result.rateEntryId,'liberty-online-2026-27');
- assert.deepEqual([result.counts.totalUnits,result.counts.outsideUnits,result.counts.remainingUniversityUnits],[120,66,54]);
+ assert.deepEqual([result.counts.totalUnits,result.counts.outsideUnits,result.counts.remainingUniversityUnits],[120,72,48]);
  const fixed=Estimate.calculate({program,plan,rates,assumptions:{universityUnitsPerTermMin:18,universityUnitsPerTermMax:18}});
- assert.deepEqual(fixed.timing.universityTerms,{min:3,max:3});assert.deepEqual(fixed.costs.universityTuition,{min:54*410,max:54*410});assert.deepEqual(fixed.costs.universityFees,{min:3*349+100,max:3*349+100});
+ assert.deepEqual(fixed.timing.universityTerms,{min:3,max:3});assert.deepEqual(fixed.costs.universityTuition,{min:48*410,max:48*410},'The final twelve-credit semester qualifies for the published full-time rate');assert.deepEqual(fixed.costs.universityFees,{min:3*349+100,max:3*349+100});
  assert(result.sources.some(source=>source.id==='liberty-online-tuition-fees'));assert(!result.sources.some(source=>source.id==='liberty-campus-fees'));
  assert(result.costs.missing.some(value=>/course-specific charges/.test(value)));assert.equal(result.costs.complete,false);
  const wrong=structuredClone(program);wrong.format='Residential';assert.equal(Estimate.calculate({program:wrong,plan,rates}).reasonCode,'degree-rate-mismatch');
 });
 
-test('the reviewed Psychology route prices its retained UNIV 104 and actual 42 Liberty credits',async()=>{
- const {applyLibertyExpandedBaselineReview}=await import('./scripts/liberty-expanded-baseline-review.mjs');
- const id='curriculum-liberty-psychology-bs-online',entry=registry.models.find(item=>item.id===id),pack=JSON.parse(fs.readFileSync('dist/'+entry.path,'utf8')),program=applyLibertyExpandedBaselineReview(pack.models.find(item=>item.id===id));
+test('the reviewed Psychology route prices its retained UNIV 104 and actual 42 Liberty credits',()=>{
+ const id='curriculum-liberty-psychology-bs-online',entry=registry.models.find(item=>item.id===id),pack=JSON.parse(fs.readFileSync('dist/'+entry.path,'utf8')),program=pack.models.find(item=>item.id===id);
  const plan=Planner.generate(program,{providers:['Sophia','Study.com','CLEP'],priority:'transfer',allowConditional:true,completed:[]}),result=Estimate.calculate({program,plan,rates});
  assert.equal(result.available,true,result.reason);assert.equal(result.rateEntryId,'liberty-online-2026-27');assert.deepEqual([result.counts.totalUnits,result.counts.outsideUnits,result.counts.remainingUniversityUnits],[120,78,42]);
  assert.equal(program.requirements.find(row=>row.id==='univ-104').credits,3,'Pricing cannot invent a personal waiver');
@@ -119,7 +119,9 @@ test('an unpriced selected provider leaves a partial range and an explicit price
  const selected=req.options.find(option=>option.provider==='StraighterLine');
  const changed=fixture(ids[0],{[req.id]:selected.id}),result=Estimate.calculate(changed);
  assert.equal(result.available,true,result.reason);assert.equal(result.status,'partial-range');
- assert(result.costs.missing.includes('StraighterLine course prices are not included.'));
+ assert(result.costs.missing.some(note=>/StraighterLine membership and individual course charges are not included/.test(note)));
+ assert.equal(result.costs.outsideCourses,null,'An unpriced basket must not be displayed as zero outside-course cost');
+ assert(result.sources.some(source=>source.id==='straighterline-membership-course-pricing'));
  assert.equal(result.costs.providerBreakdown.find(item=>item.provider==='StraighterLine').cost,null);
  assert.equal(result.costs.complete,false);
 });
@@ -148,7 +150,7 @@ test('wrong editions, formats, sources or broken ledgers cannot acquire a credib
 
 test('the reviewed data generator reproduces the browser rate file without network or private records',async()=>{
  const {buildPlanEstimateRates}=await import('./scripts/build-plan-estimate-rates.mjs');
- const result=await buildPlanEstimateRates({check:true});assert.equal(result.exactModels,7);assert.equal(result.check,true);
+ const result=await buildPlanEstimateRates({check:true});assert.equal(result.exactModels,11);assert.equal(result.check,true);
  const source=fs.readFileSync('dist/plan-estimate-engine.js','utf8');
  assert(!/\b(?:fetch|localStorage|sessionStorage|indexedDB)\s*[.(]/.test(source));
 });

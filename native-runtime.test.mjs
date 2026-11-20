@@ -66,7 +66,7 @@ test('native public degree resolution loads only the reviewed public build data 
 
 for(const [degreeUrl,modelId,total,outside,university,modality]of [
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/','liberty-business-residential',120,83,37,'campus'],
-  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,66,54,'online'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,72,48,'online'],
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/','curriculum-liberty-psychology-bs-online',120,78,42,'online']
 ])test('native exact Liberty catalog resolution preserves the saved degree and credit split: '+modelId,async t=>{
   const f=await fixture(t),lookup=url=>f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));
@@ -88,7 +88,7 @@ for(const [degreeUrl,title] of [
 test('native exact WGU Human Resource Management uses its reviewed CU ledger and publication index',async t=>{
  const f=await fixture(t),url='https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html';
  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json(),plan=result.sourcePlan;assert.equal(result.matched,true);assert(plan);
- assert.equal(plan.model.id,'curriculum-wgu-catalog-2e49db64c32dfc79');assert.equal(plan.model.catalog,'202509');assert.equal(plan.model.creditSystem,'competency-unit');assert.equal(plan.model.totalCredits,117);assert.equal(plan.model.requirements.length,39);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),117);assert.equal(plan.summary.transferCredits,66);assert.equal(plan.summary.universityCredits,51);assert.deepEqual(plan.route.modalities,['online']);assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'));assert.deepEqual(f.external,[]);
+ assert.equal(plan.model.id,'curriculum-wgu-catalog-2e49db64c32dfc79');assert.equal(plan.model.catalog,'202509');assert.equal(plan.model.creditSystem,'competency-unit');assert.equal(plan.model.totalCredits,117);assert.equal(plan.model.requirements.length,39);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),117);assert.equal(plan.summary.transferCredits,78);assert.equal(plan.summary.universityCredits,39);assert.deepEqual(plan.route.modalities,['online']);assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'));assert.deepEqual(f.external,[]);
  const mismatch=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=202605'}));assert.equal((await mismatch.json()).sourcePlan,undefined,'A different program edition must not inherit this CU ledger');
 });
 

@@ -1,6 +1,6 @@
 {
   "schemaRevision": "plan-estimate-rates-v1",
-  "checkedOn": "2026-11-19",
+  "checkedOn": "2026-11-20",
   "scope": "Selected-course planning ranges; known instructional charges before aid. No complete cost-of-attendance or guaranteed completion claim.",
   "exclusions": [
     "Applicable sales tax on course subscriptions.",
@@ -61,6 +61,84 @@
       "title": "WGU Human Resource Management tuition, resource fee and six-month billing",
       "url": "https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html",
       "checkedOn": "2026-11-19"
+    },
+    {
+      "id": "wgu-marketing-tuition",
+      "title": "WGU Marketing tuition, resource fee and six-month billing",
+      "url": "https://www.wgu.edu/online-business-degrees/marketing-bachelors-program.html",
+      "checkedOn": "2026-11-09",
+      "reviewBasis": {
+        "type": "retained-exact-program-price-and-itemized-fee",
+        "document": "content/curricula/snapshots/wgu/business-tuition-current-web.txt",
+        "sha256": "25b63f94fccfefb93cab6310a6d60c99f8028d7bd48dedadf1e97bdf8751d9a2",
+        "curriculumCatalog": "202607",
+        "degreeCUs": 112
+      }
+    },
+    {
+      "id": "wgu-finance-tuition",
+      "title": "WGU Finance tuition, resource fee and six-month billing",
+      "url": "https://www.wgu.edu/online-business-degrees/finance-bachelors-program.html",
+      "checkedOn": "2026-11-09",
+      "reviewBasis": {
+        "type": "retained-exact-program-price-and-itemized-fee",
+        "document": "content/curricula/snapshots/wgu/business-tuition-current-web.txt",
+        "sha256": "25b63f94fccfefb93cab6310a6d60c99f8028d7bd48dedadf1e97bdf8751d9a2",
+        "curriculumCatalog": "202608",
+        "degreeCUs": 121
+      },
+      "notes": [
+        "The program tuition headline and itemized cost breakdown show $3,850; a lower amount in a generic FAQ is not used."
+      ]
+    },
+    {
+      "id": "wgu-user-experience-design-tuition",
+      "title": "WGU User Experience Design tuition, resource fee and six-month billing",
+      "url": "https://www.wgu.edu/online-business-degrees/user-experience-design-bachelors-program.html",
+      "checkedOn": "2026-11-09",
+      "reviewBasis": {
+        "type": "retained-exact-program-price-and-itemized-fee",
+        "document": "content/curricula/snapshots/wgu/other-tuition-current-web.txt",
+        "sha256": "de14a1f1c3fbd17664323379320241b354ef27f027ad92cee321eae14a7e0a6a",
+        "curriculumCatalog": "202510",
+        "degreeCUs": 115
+      }
+    },
+    {
+      "id": "wgu-communications-tuition",
+      "title": "WGU Communications tuition, resource fee and six-month billing",
+      "url": "https://www.wgu.edu/online-business-degrees/communications-bachelors-program.html",
+      "checkedOn": "2026-11-09",
+      "reviewBasis": {
+        "type": "retained-exact-program-price-and-itemized-fee",
+        "document": "content/curricula/snapshots/wgu/health-mba-tuition-current-web.txt",
+        "sha256": "67ba1f5f5e3810db7684cf0638bf2fd756f986c3f93772901c226ad1e93b4b89",
+        "curriculumCatalog": "202510",
+        "degreeCUs": 115
+      }
+    },
+    {
+      "id": "saylor-direct-credit-fees",
+      "title": "Saylor Direct Credit FAQ: SmarterProctoring fees for most ACE credit courses",
+      "url": "https://support.saylor.org/hc/en-us/articles/23597374410900-FAQ-Saylor-Direct-Credit",
+      "checkedOn": "2026-11-20",
+      "publishedUpdatedOn": "2026-11-18",
+      "notes": "The FAQ lists $5 per SmarterProctoring session for most ACE credit courses; it does not establish the fee for every course or proctoring channel."
+    },
+    {
+      "id": "saylor-bus206-syllabus-fees",
+      "title": "Saylor BUS206 syllabus: built-in proctoring and course-specific fee statement",
+      "url": "https://learn.saylor.org/mod/page/view.php?id=20620",
+      "checkedOn": "2026-11-20",
+      "publishedUpdatedOn": "2025-10-02",
+      "notes": "This syllabus describes the built-in Saylor proctor and says course access and proctoring have no charge. Its applicability differs from the paid SmarterProctoring channel described in the FAQ."
+    },
+    {
+      "id": "straighterline-membership-course-pricing",
+      "title": "StraighterLine membership, individual course charges and restricted prepaid plans",
+      "url": "https://www.straighterline.com/pricing",
+      "checkedOn": "2026-11-20",
+      "notes": "Pay-as-you-go membership is $99 per month plus each selected course charge. Restricted four-month and annual plans list $699 and $1,499, apply to 27 listed courses and new students, and exclude lab kits."
     }
   ],
   "providers": [
@@ -312,6 +390,219 @@
       ],
       "missing": [
         "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-marketing-reviewed",
+      "modelIds": [
+        "curriculum-wgu-catalog-689e417cff765fc9"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 112,
+      "catalogs": [
+        "202607"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3850,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-marketing-tuition",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-finance-reviewed",
+      "modelIds": [
+        "curriculum-wgu-catalog-d6925a8fbb6e8d9a"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 121,
+      "catalogs": [
+        "202608"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3850,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-finance-tuition",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-user-experience-design-reviewed",
+      "modelIds": [
+        "curriculum-wgu-catalog-c023977432f945c3"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 115,
+      "catalogs": [
+        "202510"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3850,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-user-experience-design-tuition",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-communications-reviewed",
+      "modelIds": [
+        "curriculum-wgu-catalog-f5987d0b65c06f56"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 115,
+      "catalogs": [
+        "202510"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3850,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-communications-tuition",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    }
+  ],
+  "unpricedProviders": [
+    {
+      "provider": "Saylor",
+      "sourceIds": [
+        "saylor-direct-credit-fees",
+        "saylor-bus206-syllabus-fees"
+      ],
+      "missing": [
+        "Saylor exam and proctoring charges are not included. Published pages describe both a $5 SmarterProctoring channel and a course-specific free built-in channel; DegreeSteps has not established which applies to each selected credit exam."
+      ]
+    },
+    {
+      "provider": "StraighterLine",
+      "sourceIds": [
+        "straighterline-membership-course-pricing"
+      ],
+      "missing": [
+        "StraighterLine membership and individual course charges are not included. Pay-as-you-go uses a monthly membership plus course fees; prepaid plans cover only listed eligible courses, and lab kits may cost extra."
       ]
     }
   ]

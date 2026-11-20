@@ -12,11 +12,20 @@ test('compiled named awards keep undergraduate, delivery, quantity and source bo
   for(const req of model.requirements)for(const option of req.options){const award=byId.get(option.id);if(!award)continue;seen++;
    assert.equal(model.school,awards.school);assert(award.degreeLevels.includes(model.level));assert(award.modalities.includes(mode));assert.equal(req.institutionalOnly===true,false);if(option.evidence==='published'){
     published++;const scope=reviewedScopes.get(model.id),placement=option.degreePlacementEvidence,eligibility=option.eligibilityReview;
+    if(option.sharedAwardProvenance){
+     const bundle=require('./content/reuse/liberty-undergraduate-awards.json'),shared=bundle.awards.find(a=>a.id===option.sharedAwardProvenance.awardId),course=bundle.providerCourses.find(c=>c.id===option.sharedAwardProvenance.providerCourseId),rule=bundle.placementRules.find(r=>r.id===option.sharedAwardProvenance.placementRuleId);
+     assert(shared&&course&&rule);assert.equal(option.mappingReviewId,bundle.id);assert.equal(option.receivingMapStatus,'published-shared-reviewed-award');assert.equal(option.mappingResearchClosed,true);assert.equal(option.evidenceType,'official-receiving-school-equivalency');
+     assert.equal(shared.scope.school,model.school);assert.equal(shared.scope.catalog,model.catalogYear||model.catalog);assert.equal(shared.scope.modality,mode);assert(shared.scope.programIds.includes(model.id));assert(rule.modelIds.includes(model.id));
+     assert.equal(placement.modelId,model.id);assert.equal(placement.requirementId,req.id);assert.equal(placement.catalogYear,shared.scope.catalog);assert.equal(placement.modality,mode);assert.equal(placement.receivingCode,shared.receivingCode);assert.equal(placement.credits,req.credits);assert.equal(placement.creditSystem,model.creditSystem);
+     assert.equal(option.code,course.code);assert.equal(option.sourceCredits,course.sourceCredits);assert.equal(option.sourceCreditSystem,course.sourceCreditSystem);assert.equal(option.courseVersion,course.courseVersion);assert.equal(eligibility.eligibleToStart,true);assert.equal(eligibility.status,'current-provider-version-reviewed');
+     assert(option.recommendationStart<=bundle.checkedOn&&option.recommendationEnd>=bundle.checkedOn);assert([...shared.sourceIds,...shared.scopeSourceIds,...rule.sourceIds].every(id=>option.sourceIds.includes(id)&&model.sources.some(source=>source.id===id)));
+    }else{
     assert(scope,'Published named awards require the exact expanded baseline review');assert.equal(model.format,scope.format);assert.equal(model.catalogYear,scope.catalogYear);assert.equal(option.provider,'Sophia');
     assert.equal(option.mappingResearchClosed,true);assert.equal(option.receivingMapStatus,'published-online-receiving-award');assert.equal(option.evidenceType,'official-receiving-school-equivalency');
     assert.equal(placement.modelId,model.id);assert.equal(placement.requirementId,req.id);assert.equal(placement.catalogYear,scope.catalogYear);assert.equal(placement.modality,'online');assert.equal(placement.receivingCode,option.receivingCode);assert.equal(placement.credits,req.credits);assert.equal(placement.creditSystem,model.creditSystem);
     assert.equal(eligibility.reviewId,baselineReview.id);assert.equal(eligibility.checkedOn,baselineReview.checkedOn);assert.equal(eligibility.status,'current-provider-version-reviewed');assert.equal(eligibility.eligibleToStart,true);assert.equal(eligibility.recommendationPeriodStatus,'reviewed-current-window');
     assert(option.recommendationStart<=baselineReview.checkedOn&&option.recommendationEnd>=baselineReview.checkedOn);assert.equal(option.sourceCreditStatus,'verified-current-provider-and-ace');
+    }
    }else{conditional++;assert.equal(option.evidence,'conditional','Other named awards retain their unresolved evidence condition');}
    assert.equal(option.credits,req.credits);assert.equal(option.creditSystem,model.creditSystem);assert.equal(option.receivingCode,award.receivingCode);
    if(option.sourceCreditStatus==='verified-current-provider-and-ace'){
@@ -25,7 +34,7 @@ test('compiled named awards keep undergraduate, delivery, quantity and source bo
    }else{assert.equal(option.sourceCreditStatus,'unknown');assert.equal(option.sourceCredits,undefined,'A receiving guide alone cannot establish independent provider credits');assert.equal(option.sourceCreditSystem,undefined);}
    assert.match(option.sourceCreditBasis,/unknown|not-established|receiving|independent/i);
    const ids=new Set(model.sources.map(source=>source.id));for(const id of option.sourceIds)assert(ids.has(id));
-   const primary=awards.sources.find(source=>source.provider===option.provider&&source.modality===mode);assert.equal(option.url,primary.url);assert.equal(option.sourcePage,award.sourcePages[primary.id]);
+   const primary=awards.sources.find(source=>source.provider===option.provider&&source.modality===mode);if(option.sharedAwardProvenance){const bundle=require('./content/reuse/liberty-undergraduate-awards.json'),course=bundle.providerCourses.find(c=>c.id===option.sharedAwardProvenance.providerCourseId);assert.equal(option.url,course.url);assert(option.sourceIds.some(id=>model.sources.find(s=>s.id===id)?.url===primary.url));}else{assert.equal(option.url,primary.url);assert.equal(option.sourcePage,award.sourcePages[primary.id]);}
    if(option.placementType!=='elective')assert([req.code,...(req.allowedCourseCodes||[])].includes(option.receivingCode));
    if(req.upperOnly)assert.equal(option.upper,true);
   }

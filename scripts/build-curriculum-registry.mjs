@@ -14,6 +14,10 @@ import {applyLibertyVerifiedBasics} from './liberty-verified-basics.mjs';
 import {addLibertyCLIOptions,readLibertyCLIReview} from './add-liberty-cli-awards.mjs';
 import {reviewedSourceDate} from './reviewed-source-date.mjs';
 import {applyLibertyCurrentEvidence} from './liberty-current-evidence.mjs';
+import {composeSharedAwards} from './shared-award-composition.mjs';
+import {libertySharedAwardsPath} from './build-liberty-shared-awards.mjs';
+import {applyLibertySharedPolicyResolutions} from './liberty-shared-policies.mjs';
+import {compileScopedResearchNotices} from './pathway-quality.mjs';
 import {addGCUTransferOptions} from './add-gcu-transfer-options.mjs';
 import {addGCUInstitutionalOptions} from './add-gcu-institutional-options.mjs';
 const require=createRequire(import.meta.url),root=resolve(import.meta.dirname,'..');
@@ -46,6 +50,7 @@ for(const award of dsstAwards.awards){const id=key(dsstAwards.school)+'|'+key(aw
 const libertyAccountingChoices=await read('content/curricula/snapshots/liberty/accounting-residential-named-choices-2026-2027-reviewed.json');
 const libertyVerifiedBasics=await read('content/reviews/strong-route-known-basics-2026-11-17.json');
 const libertyCLIReview=await readLibertyCLIReview();
+const sharedAwardBundle=await read(libertySharedAwardsPath),sharedAwardReports=[];
 function modelModalities(model,records){return /^online$/i.test(model.format||'')?['online']:/^(residential|campus|on campus)$/i.test(model.format||'')?['campus']:[...new Set(records.flatMap(record=>list(record.modalities)))];}
 function sharedAwardApplies(match,model,records){
   const levels=[...new Set([model.level,...records.map(record=>record.level)].filter(Boolean))];
@@ -56,7 +61,7 @@ function sharedAwardApplies(match,model,records){
 function sharedOption(match,model,records){const option=clone(match.option),modes=modelModalities(model,records);if(option.sourceCredits===null){delete option.sourceCredits;delete option.sourceCreditSystem;}if(match.award&&modes.length===1){const source=match.sources.find(source=>source.modality===modes[0]);if(source){option.url=source.url;option.sourcePage=option.sourcePages?.[source.id]??option.sourcePage;}}return option;}
 const folder=resolve(root,'content/curricula');
 await mkdir(folder,{recursive:true});await mkdir(resolve(root,'dist/data/curricula'),{recursive:true});
-const registry={version:1,checkedOn:null,routes:[],models:[]},report=[],courseIndex=new Map(),courseSources=new Map();
+const registry={version:1,checkedOn:sharedAwardBundle.checkedOn,routes:[],models:[]},report=[],courseIndex=new Map(),courseSources=new Map();
 const outputs=new Map(),ids=new Set();
 const canonicalLevel=value=>({bachelors:'bachelor',bachelor:'bachelor',associates:'associate',associate:'associate',masters:'master',master:'master',doctoral:'doctorate',doctorate:'doctorate',specialist:'specialist'})[key(value)]||null;
 function sourceMap(...arrays){const result=new Map();for(const s of arrays.flat()){if(!s?.id||!s.url)continue;const old=result.get(s.id);assert(!old||old.url===s.url,'Conflicting source identity '+s.id);result.set(s.id,clone(s));}return result;}
@@ -111,10 +116,15 @@ function compile(raw,document){
   const sections=list(model.curriculumSections).map(s=>({...s,requirementIds:list(s.requirementIds).flatMap(id=>requirements.filter(r=>r.id===id||r.allocationOf===id).map(r=>r.id))}));
   if(sections.length)model.curriculumSections=sections;
   Object.assign(model,applyLibertyCurrentEvidence(model,{compiled:true}));
+  Object.assign(model,applyLibertySharedPolicyResolutions(model));
+  const composed=composeSharedAwards([model],sharedAwardBundle,{asOf:sharedAwardBundle.checkedOn});
+  Object.assign(model,composed.models[0]);
+  sharedAwardReports.push({...composed.report,modelId:model.id});
   model.evidenceCheckedOn=model.evidenceCheckedOn||document.checkedOn;
   model.coverageLabel=model.coverageLabel||(gap>0?'Published curriculum with specific remaining research gaps':'Published degree requirements with source-linked course choices');
   model.completeExecutablePathway=false; // Individual admission and transfer approval remain necessary.
   delete model.routeIds;
+  Object.assign(model,compileScopedResearchNotices(model,{asOf:sharedAwardBundle.checkedOn}));
   const choices=Catalog.courseChoiceCounts(model);
   const entry={id:model.id,path:'',routeIds,school:model.school,title:model.title,format:model.format,...choices,readyTemplate:model.coverage==='complete'&&gap<=0&&Catalog.modelReadiness(model).available,degreeCredits:model.totalCredits,creditUnit:model.creditSystem,paceModel:model.paceModel||records.find(r=>r.paceModel)?.paceModel,...(model.pricing?{pricing:clone(model.pricing)}:{}),modalities:[...new Set(records.flatMap(r=>r.modalities||[]))],coverage:model.coverage==='complete'&&gap<=0?'complete':'partial',status:'reviewed',checkedOn:document.checkedOn};
   if(model.format&&/^online$/i.test(model.format))entry.modalities=['online'];
@@ -183,6 +193,7 @@ for(const alias of aliasDocument.aliases){
   assert(url.hostname.split('.').slice(-2).join('.')===source.hostname.split('.').slice(-2).join('.'),'Degree link alias and source belong to different university domains');
 }
 Catalog.validateRegistry(registry);
+await output('dist/data/shared-award-composition.json',{schemaVersion:1,checkedOn:sharedAwardBundle.checkedOn,bundleId:sharedAwardBundle.id,bundleFingerprint:createHash('sha256').update(JSON.stringify(sharedAwardBundle)).digest('hex'),unprocessedProgramIds:[...new Set(sharedAwardBundle.placementRules.flatMap(rule=>rule.modelIds))].filter(id=>!sharedAwardReports.some(report=>report.modelId===id)).sort(),summary:{modelsConsidered:sharedAwardReports.length,modelsChanged:sharedAwardReports.reduce((n,r)=>n+r.modelsChanged,0),addedOptions:sharedAwardReports.reduce((n,r)=>n+r.addedOptions,0),updatedOptions:sharedAwardReports.reduce((n,r)=>n+r.updatedOptions,0),retainedPublishedOptions:sharedAwardReports.reduce((n,r)=>n+r.retainedPublishedOptions,0),heldOptions:sharedAwardReports.reduce((n,r)=>n+r.held.length,0)},reports:sharedAwardReports.filter(r=>r.modelsChanged||r.held.length),privateStudentRecordsIncluded:false,studentCreditsAwarded:0,publicationDecisionsMade:0});
 await output('dist/data/curriculum-registry.json',registry);
 await output('dist/data/curriculum-coverage.json',{version:1,checkedOn:registry.checkedOn,modelCount:report.length,coveredRouteCount:new Set(registry.models.flatMap(m=>m.routeIds)).size,models:report});
 await output('dist/data/curriculum-course-index.json',{version:1,checkedAt:registry.checkedOn,scope:'Source-linked course identities discovered in researched degree requirements. These listings are not an individual transfer award.',sources:[...courseSources.values()],courses:[...courseIndex.values()]});

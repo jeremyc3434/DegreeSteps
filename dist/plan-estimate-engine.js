@@ -34,6 +34,13 @@
    if(provider.packages!==undefined&&(!Array.isArray(provider.packages)||!provider.packages.length||provider.type!=='subscription'||provider.packages.some(item=>!Number.isInteger(item.months)||item.months<1||item.months>24||!finite(item.amount)||item.amount<=0)))throw Error('Prepaid memberships need positive sourced month and price quantities.');
    providers.add(provider.provider);
   }
+  if(rates.unpricedProviders!==undefined){
+   if(!Array.isArray(rates.unpricedProviders)||rates.unpricedProviders.length>100)throw Error('Unpriced providers need a bounded source review list.');
+   for(const provider of rates.unpricedProviders){
+    if(!provider||typeof provider!=='object'||Array.isArray(provider)||Object.keys(provider).some(key=>!['provider','sourceIds','missing'].includes(key))||!text(provider.provider)||providers.has(provider.provider)||!bound(provider)||!Array.isArray(provider.missing)||!provider.missing.length||provider.missing.length>10||provider.missing.some(note=>!text(note)||note.length>1000))throw Error('An unpriced provider needs unique source-bound omissions, without a numeric price claim.');
+    providers.add(provider.provider);
+   }
+  }
   return rates;
  }
  function unavailable(reason,code){return{available:false,status:'unavailable',reason,reasonCode:code,costs:null,timing:null,counts:null,sources:[],notes:[]};}
@@ -85,7 +92,7 @@
    for(const provider of unique([...courses.values()].map(course=>course.provider)).sort()){
     const count=[...courses.values()].filter(course=>course.provider===provider).length,price=rates.providers.find(item=>item.provider===provider),months={min:Math.ceil(count/outsideMax),max:Math.ceil(count/outsideMin)};
     outsideMonths=add(outsideMonths,months);
-    if(!price){missing.push(provider+' course prices are not included.');providerBreakdown.push({provider,courses:count,months,cost:null});continue;}
+    if(!price){const unpriced=list(rates.unpricedProviders).find(item=>item.provider===provider);if(unpriced){unpriced.sourceIds.forEach(id=>sourceIds.add(id));missing.push(...unpriced.missing);}else missing.push(provider+' course prices are not included.');providerBreakdown.push({provider,courses:count,months,cost:null});continue;}
     price.sourceIds.forEach(id=>sourceIds.add(id));
     const cost=price.type==='subscription'?{min:subscriptionCost(price,months.min),max:subscriptionCost(price,months.max)}:{min:money(count*price.amount),max:money(count*price.amount)};
     outsideCosts=add(outsideCosts,cost);providerBreakdown.push({provider,courses:count,months,cost,priceLabel:price.label});
@@ -106,7 +113,7 @@
    if(providerBreakdown.some(item=>item.provider==='Sophia'))notes.push('Sophia uses the lowest published mix of monthly, four-month and annual memberships for the assumed study time. Prepaid plans require the upfront payment; promotions and tax are excluded.');
    if(conditionalUnits)notes.push(conditionalUnits+' proposed outside units retain the eligibility conditions shown on their course rows.');
    return{available:true,status:providerBreakdown.some(item=>!item.cost)?'partial-range':'planning-range',programId:program.id,rateEntryId:entry.id,checkedOn:rates.checkedOn,
-    costs:{knownRange:add(universityCombined,outsideCosts),universityTuition,universityFees,outsideCourses:outsideCosts,providerBreakdown,missing:unique(missing),currency:'USD',complete:false,scope:'known-remaining-course-charges-before-aid'},
+    costs:{knownRange:add(universityCombined,outsideCosts),universityTuition,universityFees,outsideCourses:providerBreakdown.some(item=>!item.cost)?null:outsideCosts,providerBreakdown,missing:unique(missing),currency:'USD',complete:false,scope:'known-remaining-course-charges-before-aid'},
     timing:{outsideMonths,universityTerms,termLabel:entry.termLabel,universityTermMonths:entry.termMonths,totalMonths:entry.termMonths===null?null:{min:money(outsideMonths.min+universityTerms.min*entry.termMonths),max:money(outsideMonths.max+universityTerms.max*entry.termMonths)},assumptions:assumptionsText},
     counts:{totalUnits:total,outsideUnits:outside,universityUnits:university,remainingUniversityUnits:remainingUniversity,finishedUnits:finished,remainingOutsideCourses:courses.size,creditSystem:program.creditSystem},
     sources:rates.sources.filter(source=>sourceIds.has(source.id)).map(source=>({...source})),notes,assumptions:{outsideCoursesPerMonthMin:outsideMin,outsideCoursesPerMonthMax:outsideMax,universityUnitsPerTermMin:universityMin,universityUnitsPerTermMax:universityMax}};

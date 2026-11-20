@@ -9,7 +9,7 @@ Use **Manage DegreeSteps → Academic coverage → Research priorities** to choo
 | Directory entry | A program is listed; its requirements and transfer route may still need research. |
 | Curriculum model | A structured degree ledger exists. Its evidence or allocations may remain incomplete. |
 | Available template | The registry enables a proposed course plan. This is separate from passing publication review. |
-| Publication-ready | The exact model passes the current publication checks. The current report has **four**; this does not verify other degrees at those schools. |
+| Publication-ready | The exact model passes the current publication checks. Read the current count from `dist/data/publication-index.json`; a reviewed plan does not verify other degrees at that school. |
 
 A directory parent can be marked `covered-by-planning-variant` only through an **explicit parent ID** and available variants at the same school and degree level covering all of that parent's listed formats. Similar titles never establish coverage. This prevents duplicate research without copying a campus model into an unresearched online format or inheriting its policy limits.
 
@@ -24,7 +24,7 @@ Keep institutional, ACE, NCCRS and graduate channels separate. A total transfer 
 ## Monthly review and release
 
 1. Recheck official catalogs, exact receiving-school awards and original provider records. Save extracts, applicable catalog/format, quantities, source URLs and genuine review dates. A fetch or rebuild does not refresh evidence. Staged inventory claims remain unreviewed until independently supported.
-2. Correct the curated inputs or their scoped importers. Review changed fact fingerprints in the coverage workspace; a supported fact alone does not publish a template. The separate school capture workflow currently pilots Liberty; it does not automate cross-school extraction.
+2. Correct the curated inputs or their scoped importers. Review changed fact fingerprints in the coverage workspace; a supported fact alone does not publish a template. The separate source-capture workflow pilots Liberty. Approved shared-award composition now runs during curriculum compilation; the WGU business adapter processes exact program claims from shared official agreement captures. Source capture alone still does not approve a fact.
 3. Regenerate in dependency order after reviewed input changes:
 
 ```sh

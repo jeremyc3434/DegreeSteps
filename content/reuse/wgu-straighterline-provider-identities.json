@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "id": "wgu-straighterline-independent-provider-identities-20261120",
+  "provider": "StraighterLine",
+  "checkedOn": "2026-11-20",
+  "sources": [
+    {
+      "id": "straighterline-oosl-0036-current-offering-20261120",
+      "title": "StraighterLine Personal Finance current offering and original credits",
+      "url": "https://www.straighterline.com/online-college-courses/personal-finance/",
+      "kind": "provider",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "StraighterLine",
+      "checked": "2026-11-20",
+      "sourceContentHash": "sha256:8895a7a2a9a596597a11e2b61c933df476291721e0d7238b9e4c592ce49981b0",
+      "sha256": "8895a7a2a9a596597a11e2b61c933df476291721e0d7238b9e4c592ce49981b0",
+      "captureUrl": "https://www.straighterline.com/online-college-courses/personal-finance/",
+      "captureFormat": "provider-public-body",
+      "courseCodes": [
+        "OOSL-0036"
+      ],
+      "retrieval": "Unauthenticated public provider capture; academic fields only."
+    },
+    {
+      "id": "straighterline-oosl-0036-ace-exhibit-20261120",
+      "title": "ACE National Guide: Personal Finance (OOSL-0036), original semester hours and current recommendation",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=f72daf29-959a-ee11-be37-00224805fa3a&oid=80099b28-9016-e811-810f-5065f38bf0e1&org=StraighterLine",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "StraighterLine",
+      "checked": "2026-11-20",
+      "sourceContentHash": "sha256:a744f9fbe9e184d93a533fffc8caa5f9f79e54c3a80210f13f3ce6d740240715",
+      "sha256": "a744f9fbe9e184d93a533fffc8caa5f9f79e54c3a80210f13f3ce6d740240715",
+      "captureUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=f72daf29-959a-ee11-be37-00224805fa3a&oid=80099b28-9016-e811-810f-5065f38bf0e1&org=StraighterLine",
+      "captureFormat": "ace-national-guide-html",
+      "courseCodes": [
+        "OOSL-0036"
+      ],
+      "retrieval": "Unauthenticated public provider capture; academic fields only."
+    },
+    {
+      "id": "straighterline-oosl-0002-current-offering-20261120",
+      "title": "StraighterLine College Algebra current offering and original credits",
+      "url": "https://www.straighterline.com/online-college-courses/college-algebra/",
+      "kind": "provider",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "StraighterLine",
+      "checked": "2026-11-20",
+      "sourceContentHash": "sha256:ee185c51d551c92abea076483aa5aa13277e05837f97958fe93c6cd2a1fe7511",
+      "sha256": "ee185c51d551c92abea076483aa5aa13277e05837f97958fe93c6cd2a1fe7511",
+      "captureUrl": "https://www.straighterline.com/online-college-courses/college-algebra/",
+      "captureFormat": "provider-public-body",
+      "courseCodes": [
+        "OOSL-0002"
+      ],
+      "retrieval": "Unauthenticated public provider capture; academic fields only."
+    },
+    {
+      "id": "straighterline-oosl-0002-ace-exhibit-20261120",
+      "title": "ACE National Guide: College Algebra (OOSL-0002), original semester hours and current recommendation",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e44c3360-2ffb-ee11-a1ff-000d3a5d49ac&oid=80099b28-9016-e811-810f-5065f38bf0e1&org=StraighterLine",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "StraighterLine",
+      "checked": "2026-11-20",
+      "sourceContentHash": "sha256:4b3844ebe1a42f1326564a82d8abc647ec5c3aeedb889e78c6b9e3f511f34e16",
+      "sha256": "4b3844ebe1a42f1326564a82d8abc647ec5c3aeedb889e78c6b9e3f511f34e16",
+      "captureUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e44c3360-2ffb-ee11-a1ff-000d3a5d49ac&oid=80099b28-9016-e811-810f-5065f38bf0e1&org=StraighterLine",
+      "captureFormat": "ace-national-guide-html",
+      "courseCodes": [
+        "OOSL-0002"
+      ],
+      "retrieval": "Unauthenticated public provider capture; academic fields only."
+    }
+  ],
+  "courses": [
+    {
+      "provider": "StraighterLine",
+      "code": "OOSL-0002",
+      "aceId": "OOSL-0002",
+      "providerCourseCode": "MAT101",
+      "codeAliases": [
+        "MAT101"
+      ],
+      "title": "College Algebra",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://www.straighterline.com/online-college-courses/college-algebra/",
+      "identitySourceIds": [
+        "straighterline-oosl-0002-current-offering-20261120",
+        "straighterline-oosl-0002-ace-exhibit-20261120"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "straighterline-oosl-0002-current-offering-20261120",
+          "straighterline-oosl-0002-ace-exhibit-20261120"
+        ]
+      },
+      "sourceCreditBasis": "Current provider offering confirms the exact ACE identity and quantity; the separate exact ACE exhibit confirms the original semester-hour unit and current recommendation period.",
+      "identityCheckedOn": "2026-11-20",
+      "identityReviewId": "other-provider-current-original-quantities-2026-11-20",
+      "providerCourseUrl": "https://www.straighterline.com/online-college-courses/college-algebra/",
+      "courseVersion": 5,
+      "recommendationStart": "2024-06-01",
+      "recommendationEnd": "2027-05-31",
+      "recommendationPeriodSourceIds": [
+        "straighterline-oosl-0002-ace-exhibit-20261120"
+      ],
+      "identityEvidence": {
+        "providerHeadline": "MAT101 | 3 Credits",
+        "providerAceCode": "OOSL-0002",
+        "aceExhibit": {
+          "aceId": "OOSL-0002",
+          "providerCourseCode": "MAT101",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "courseVersion": 5,
+          "recommendationStart": "2024-06-01",
+          "recommendationEnd": "2027-05-31"
+        },
+        "sourceIds": [
+          "straighterline-oosl-0002-current-offering-20261120",
+          "straighterline-oosl-0002-ace-exhibit-20261120"
+        ]
+      }
+    },
+    {
+      "provider": "StraighterLine",
+      "code": "OOSL-0036",
+      "aceId": "OOSL-0036",
+      "providerCourseCode": "FIN101",
+      "codeAliases": [
+        "FIN101"
+      ],
+      "title": "Personal Finance",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://www.straighterline.com/online-college-courses/personal-finance/",
+      "identitySourceIds": [
+        "straighterline-oosl-0036-current-offering-20261120",
+        "straighterline-oosl-0036-ace-exhibit-20261120"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "straighterline-oosl-0036-current-offering-20261120",
+          "straighterline-oosl-0036-ace-exhibit-20261120"
+        ]
+      },
+      "sourceCreditBasis": "Current provider offering confirms the exact ACE identity and quantity; the separate exact ACE exhibit confirms the original semester-hour unit and current recommendation period.",
+      "identityCheckedOn": "2026-11-20",
+      "identityReviewId": "other-provider-current-original-quantities-2026-11-20",
+      "providerCourseUrl": "https://www.straighterline.com/online-college-courses/personal-finance/",
+      "courseVersion": 5,
+      "recommendationStart": "2024-02-01",
+      "recommendationEnd": "2027-01-31",
+      "recommendationPeriodSourceIds": [
+        "straighterline-oosl-0036-ace-exhibit-20261120"
+      ],
+      "identityEvidence": {
+        "providerHeadline": "FIN101 | 3 Credits",
+        "providerAceCode": "OOSL-0036",
+        "aceExhibit": {
+          "aceId": "OOSL-0036",
+          "providerCourseCode": "FIN101",
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "courseVersion": 5,
+          "recommendationStart": "2024-02-01",
+          "recommendationEnd": "2027-01-31"
+        },
+        "sourceIds": [
+          "straighterline-oosl-0036-current-offering-20261120",
+          "straighterline-oosl-0036-ace-exhibit-20261120"
+        ]
+      }
+    }
+  ],
+  "scope": "Independent currently offered provider identities and original quantities, with separately captured exact ACE versions and recommendation periods. No receiving university award or degree placement is inferred.",
+  "studentCreditsAwarded": 0,
+  "publicationDecisionsMade": 0
+}

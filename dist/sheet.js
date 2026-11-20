@@ -93,9 +93,13 @@
     const key=pathway.modelId||pathway.id,s=Sheet.scenario(state,key),raw=models.find(m=>m.id===pathway.modelId);
     if(raw){
       const mapped=[...new Set(raw.requirements.flatMap(r=>r.options.map(o=>o.provider)))].filter(p=>p!=='University');
-      const reviewed=s.mappedProvidersReviewed||['Sophia','Study.com','CLEP'],added=mapped.filter(p=>!reviewed.includes(p));
-      if(added.length||!s.mappedProvidersReviewed){s.providers=[...new Set([...s.providers,...added])];s.mappedProvidersReviewed=mapped;
-      state.scenarios={...state.scenarios,[key]:s};
+      const explicitProviders=Array.isArray(state.scenarios?.[key]?.providers);
+      const defaults=Array.isArray(raw.defaultProviders)?[...new Set(raw.defaultProviders)].filter(p=>mapped.includes(p)):[...new Set([...s.providers,...mapped])];
+      if(!explicitProviders||JSON.stringify(s.mappedProvidersReviewed)!==JSON.stringify(mapped)){
+        // Newly researched sources become available in course preferences without
+        // changing a student's saved selection, including an empty selection.
+        s.providers=explicitProviders?[...s.providers]:defaults;s.mappedProvidersReviewed=mapped;
+        state.scenarios={...state.scenarios,[key]:s};
       }
     }
     return s;

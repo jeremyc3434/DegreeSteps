@@ -1,0 +1,1325 @@
+{
+  "version": 1,
+  "id": "study-independent-provider-identities-2026-11-20",
+  "provider": "Study.com",
+  "checkedOn": "2026-11-20",
+  "scope": "Reusable original provider identities and semester quantities only. Each university program still requires its own current receiving-school agreement.",
+  "notes": [
+    "Seventeen current Study.com course pages were independently reviewed on 2026-11-20. Original source semester quantities are separate from WGU receiving competency units.",
+    "Six previously reviewed provider identities are retained with their original 2026-11-18 dates and independent ACE/provider sources; no receiving-school award is copied.",
+    "Recommendation versions and dates are populated only where an existing exact ACE exhibit proves them. A current provider offering alone is not represented as an independently reviewed current ACE version.",
+    "Study.com Business 318 has consistent three-semester-hour evidence but conflicting level descriptions; its level is deliberately unspecified. Math 104 currently carries four semester hours, despite a stale older support table showing six."
+  ],
+  "sources": [
+    {
+      "id": "ace-study-biology101-v5-2026-11-18",
+      "kind": "ace",
+      "title": "ACE Study.com Biology101 SDCM0001 version5",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=1646a087-bf1b-f111-8341-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "roles": [
+        "provider-identity",
+        "recommendation-period"
+      ],
+      "checkedOn": "2026-11-18",
+      "sourceHtmlSha256": "d58d4b507c58da80182624e74f3522d766bc4071761f36f204cc1bf397925a09",
+      "capturedAt": "2026-11-18T23:29:18.262343+00:00",
+      "retrieval": "Actual official ACE exhibit body: exact ACE ID, organization course ID, version, selected recommendation period, semester quantity, level and minimum score reviewed."
+    },
+    {
+      "id": "ace-study-computer-science103-v4-2026-11-18",
+      "kind": "ace",
+      "title": "ACE Study.com ComputerScience103 SDCM0162 version4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=637022a4-f4a6-f111-b8de-002248082a42&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "roles": [
+        "provider-identity",
+        "recommendation-period"
+      ],
+      "checkedOn": "2026-11-18",
+      "sourceHtmlSha256": "965fd24b2388e45e0b02d8166c3c579f751a343ed6958d2991a9a9f1195cc660",
+      "capturedAt": "2026-11-18T23:29:18.428274+00:00",
+      "retrieval": "Actual official ACE exhibit body: exact ACE ID, organization course ID, version, selected recommendation period, semester quantity, level and minimum score reviewed."
+    },
+    {
+      "id": "provider-study-biology101-current-web-2026-11-18",
+      "kind": "provider",
+      "title": "Study.com current Biology101 IntrotoBiology offering",
+      "url": "https://study.com/academy/course/introduction-to-biology.html",
+      "roles": [
+        "provider-identity",
+        "current-offering"
+      ],
+      "checkedOn": "2026-11-18",
+      "rawBodyCaptured": false,
+      "retrieval": "Current official provider page opened and read in the web reader; provider offering and ACE ID corroborated. No local raw-body hash is claimed.",
+      "observed": {
+        "aceId": "SDCM-0001",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      }
+    },
+    {
+      "id": "provider-study-computer-science103-current-web-2026-11-18",
+      "kind": "provider",
+      "title": "Study.com current ComputerScience103 offering",
+      "url": "https://study.com/academy/course/computer-science-103-computer-concepts-applications.html",
+      "roles": [
+        "provider-identity",
+        "current-offering"
+      ],
+      "checkedOn": "2026-11-18",
+      "rawBodyCaptured": false,
+      "retrieval": "Current official provider page opened and read in the web reader; provider offering and ACE ID corroborated. No local raw-body hash is claimed.",
+      "observed": {
+        "aceId": "SDCM-0162",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      }
+    },
+    {
+      "id": "study-current-sdcm-0013-2026-11-20",
+      "kind": "provider",
+      "title": "Math 101: College Algebra — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/algebra.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "201854ed13ce9147fe172ea957244a98a7c89b32d23ed4ff095f5e8fa286f9e4",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0013",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Study.com's College Algebra (Math 101) is a self-paced college algebra online course for college credit, recommended by both the American Council on Education (ACE) and the National College Credit Recommendation Service (NCCRS) for 3 transferable semester hours (ACE Course ID: SDCM-0013). There are no prerequisites, and the course transfers to 2,000+ colleges.\n* Credits: 3 transferable, lower-division semester hours\n* Credit recommendation: Recommended by both ACE (Course ID: SDCM-0013) and NCCRS"
+    },
+    {
+      "id": "study-current-sdcm-0015-2026-11-20",
+      "kind": "provider",
+      "title": "Math 103: Precalculus — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/precalculus-course.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "0982b9c6b3ba24e8c8e12c6a8607c6125326def3f7c665afabd27d4e387f1397",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0015",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Math 103: Precalculus (SDCM-0015) course. Learn functions, logs, and trig in one self-paced course. Start anytime and transfer to over 2,000 colleges and universities.\nStudy.com's Precalculus (Math 103) is an online precalculus course for college credit. It bridges algebra and calculus in Study.com's 【10†math】 lineup. You'll work with functions and graphs, logarithms, and trigonometry, including the unit circle and trig identities. The American Council on Education (ACE) and the National College Credit Recommendation Service (NCCRS) recommend it for 3 lower-division semester hours. Its ACE Course ID is SDCM-0015. This course transfers to 2,000+ colleges.\n* Credits: 3 transferable, lower-division semester hours"
+    },
+    {
+      "id": "study-current-sdcm-0016-2026-11-20",
+      "kind": "provider",
+      "title": "Math 104: Calculus — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/calculus.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "9b00efff6078fee9e03f3a88de5be24075d5baf26a5daf4496107199066d5c8b",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0016",
+        "offered": true,
+        "sourceCredits": 4,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 4 credits online in an ACE-recommended Calculus I class (SDCM-0016): limits to series. Learn at your own pace, then transfer the credits to 2,000+ colleges.\nStudy.com's Calculus (Math 104) is a self-paced, online Calculus I course for college credit that takes you from limits and continuity through derivatives, integrals, and infinite series. The American Council on Education (ACE) recommends it for 4 lower-division semester hours (ACE Course ID: SDCM-0016). It has no prerequisites, and the credit transfers to 2,000+ colleges. You learn through short video lessons, take open-book chapter tests, and finish on your own schedule.\n* Credits: 4 transferable, lower-division semester hours"
+    },
+    {
+      "id": "study-current-sdcm-0024-2026-11-20",
+      "kind": "provider",
+      "title": "Business 100: Intro to Business — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/intro-to-business.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "d029e1829b208c54fc935fea1cb675bbd4dceed8e62c4e502a13c1c96ebd16be",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0024",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Business 100: Intro to Business (SDCM-0024) course. Learn how businesses are owned, run, marketed, and financed at your own pace. Start anytime and transfer to 2,000+ colleges.\nStudy.com's Intro to Business (Business 100) is an online intro to business course for college credit and often the first course in a 【10†business】 degree. As an introduction to business, it covers how organizations are owned, managed, marketed, and financed. It carries a recommendation from the American Council on Education (ACE) for 3 lower-division semester hours (ACE Course ID: SDCM-0024). You can transfer it to 2,000+ colleges.\n* Credits: 3 transferable, lower-division semester hours"
+    },
+    {
+      "id": "study-current-sdcm-0047-2026-11-20",
+      "kind": "provider",
+      "title": "Humanities 101: Intro to the Humanities — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/humanities-course.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "92404dc194a9c0d87ce4a9874f2467bfaad601c8c51d0e0421401f92c71c3007",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0047",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Humanities 101: Intro to the Humanities (SDCM-0047) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nStudy.com's Intro to the Humanities course (Humanities 101) is an online, self-paced course for college credit that traces how people have expressed ideas through art, music, literature, and philosophy, from the ancient world to today. It works like a campus humanities class, but you learn through short video lessons on your own schedule. The American Council on Education (ACE) recommends it for 3 lower-division semester hours (ACE Course ID: SDCM-0047), and the credit transfers to 2,000+ colleges.\n* Credits: 3 transferable, lower-division semester hours in our ACE-recommended course (ACE Course ID: SDCM-0047)"
+    },
+    {
+      "id": "study-current-sdcm-0052-2026-11-20",
+      "kind": "provider",
+      "title": "Business 113: Business Communication — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/business-113-business-communication.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "f5b38a3d212b8495225fee69fec3ceba1ce10050054dfa6d49058990d7ebc97b",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0052",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Business 113: Business Communication (SDCM-0052) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges and universities.\nBusiness 113: Business Communication is an online business course for college credit. The course transfers in for 3 semester hours as a lower-division course at most colleges and universities. Course features include:\nThe course objective of Business 113: Business Communication (SDCM-0052) is to equip you with foundational knowledge and practical skills in business communication, focusing on effective writing, speaking, listening, and visual communications. Through practical applications and projects, you will learn to craft clear and impactful messages tailored to diverse business contexts."
+    },
+    {
+      "id": "study-current-sdcm-0057-2026-11-20",
+      "kind": "provider",
+      "title": "English 104: College Composition I — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/college-composition-writing-course.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "6c6053168df34c0d975b22bab744b17fbf56129420ef7738251dbabf134c3d58",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0057",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Study.com's College Composition I (English 104) is a self-paced English composition online course for college credit, recommended by the American Council on Education (ACE) for 3 transferable lower-division semester hours (ACE Course ID: SDCM-0057). This English composition course for college credit has no prerequisites and transfers to 2,000+ colleges.\n* Credits: 3 transferable lower-division semester hours in an ACE-recommended course (ACE Course ID: SDCM-0057)\nStudy.com's College Composition I course (English 104) has been evaluated and recommended by the American Council on Education (ACE) for 3 semester hours in the lower division baccalaureate degree category (ACE Course ID: SDCM-0057). It transfers to 2,000+ colleges."
+    },
+    {
+      "id": "study-current-sdcm-0059-2026-11-20",
+      "kind": "provider",
+      "title": "Finance 102: Personal Finance — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/finance-102-personal-finance.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "b560a7c6b389a1bb9ee9abec33b8fa046226285be979cdfc35e5d53f93ed26e8",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0059",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Finance 102: Personal Finance (SDCM-0059) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nFinance 102: Personal Finance is an online personal finance course for college credit. The course transfers in for 3 semester hours as a lower-division course at most colleges and universities. Course features include:\nBy the end of Finance 102: Personal Finance (SDCM-0059), students will be able to manage various aspects of personal finance and utilize resources to make informed financial decisions."
+    },
+    {
+      "id": "study-current-sdcm-0085-2026-11-20",
+      "kind": "provider",
+      "title": "Business 314: Employment Law — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/business-314-employment-law.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "7857873f2b9de8c4288c35de6a011e18709c19aacd33ec5cecff9791904788bb",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0085",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": true
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Business 314: Employment Law (SDCM-0085) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nBusiness 314: Employment Law is an online business course for college credit. The course transfers in for 3 semester hours as an upper-division course at most colleges and universities. Course features include:\nBusiness 314: Employment Law has been evaluated and recommended by ACE for 3 semester hours in the upper division baccalaureate degree category."
+    },
+    {
+      "id": "study-current-sdcm-0086-2026-11-20",
+      "kind": "provider",
+      "title": "Business 315: Logistics & Supply Chain Management — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/business-315-logistics-supply-chain-management.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "64984644b760778aa14b0f9358b34148830352ea1aa484323c07a20e344d73f0",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0086",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": true
+      },
+      "reviewedExtract": "Earn 3 upper-division credits in our ACE-recommended supply chain management course (SDCM-0086): procurement, inventory, distribution, lean, and sustainability.\nIt is recommended by the American Council on Education (ACE) for 3 upper-division semester hours (ACE Course ID: SDCM-0086), has no prerequisites, and transfers to 2,000+ colleges. Explore all online 【10†business management courses】 for college credit.\n* Credits: 3 transferable, upper-division semester hours"
+    },
+    {
+      "id": "study-current-sdcm-0089-2026-11-20",
+      "kind": "provider",
+      "title": "English 105: College Composition II — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/english-105-college-composition-ii.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "7b40969f293cde4c076fe7b1e3b3b81b6b4f8b4be1a2ae80f9ed42100b1b6ee6",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0089",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online English 105: College Composition II (SDCM-0089) course, Learn how to research, argue, and cite in MLA, APA, and Chicago at your own pace. Start anytime and transfer to 2,000+ colleges and universities.\nStudy.com's College Composition II (English 105) is an online English composition II course for college credit. It's the second course in the 【10†English】 composition sequence, after Composition I. You'll plan, research, write, and cite a full research paper across three assignments, with no final exam. It holds an American Council on Education (ACE) recommendation for 3 lower-division semester hours (ACE Course ID: SDCM-0089) and transfers to 2,000+ colleges.\n* Credits: 3 transferable, lower-division semester hours"
+    },
+    {
+      "id": "study-current-sdcm-0123-2026-11-20",
+      "kind": "provider",
+      "title": "Business 303: Management Information Systems — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/business-303-management-information-systems.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "5689242e686b932aa5ff043c45ab6eb7cc59697998ed4dc6f117c59393821c31",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0123",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": true
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Business 303: Management Information Systems (SDCM-0123) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nStudy.com's Business 303: Management Information Systems is a self-paced, online course for college credit. It explores how businesses use technology, data, and information systems to improve operations and support decision-making. Topics include business processes, databases, networks, cloud computing, information security, and systems development. The American Council on Education (ACE) recommends the course for 3 upper-division semester hours (ACE Course ID: SDCM-0123).\n* Credits: 3 semester hours, subject to acceptance by the receiving institution"
+    },
+    {
+      "id": "study-current-sdcm-0142-2026-11-20",
+      "kind": "provider",
+      "title": "Business 318: Management Ethics — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/business-318-management-ethics.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "ca6e32ce9d16b08e9dc6804f9d0b1cd1351215b9317a6da80bb7b1730a3d9ecb",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0142",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester"
+      },
+      "reviewedExtract": "Study.com's Management Ethics course (Business 318) is a self-paced, online way to earn college credit in management ethics. It's recommended for credit by the American Council on Education (ACE) for 3 transferable, lower-division semester hours (ACE Course ID: SDCM-0142), has no prerequisites, and transfers to 2,000+ colleges. You'll learn how ethical frameworks apply to leadership, corporate culture, and real management decisions, through short video lessons and applied case studies.\n* Credits: 3 transferable, lower-division semester hours, recommended by ACE (Course ID: SDCM-0142)\nManagement Ethics is evaluated and recommended by the American Council on Education (ACE) for 3 semester hours in the lower-division baccalaureate degree category (Course ID SDCM-0142), and it transfers to 2,000+ colleges."
+    },
+    {
+      "id": "study-current-sdcm-0151-2026-11-20",
+      "kind": "provider",
+      "title": "Marketing 308: Applied Marketing — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/marketing-308-applied-marketing.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "536231d0afedbd542b3e3f8cfd97b5d679f0ce943ed2ea7066cfff6bc1babbea",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0151",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": true
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Marketing 308: Applied Marketing (SDCM-0151) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nMarketing 308: Applied Marketing is an online marketing course for college credit. The course transfers in for 3 semester hours as an upper-division course at most colleges and universities. Course features include:\nAt the end of this course, Marketing 308: Applied Marketing (SDCM-0151), you'll become familiar with marketing plans, strategic marketing planning, marketing research, and a variety of effective marketing tactics/strategies."
+    },
+    {
+      "id": "study-current-sdcm-0167-2026-11-20",
+      "kind": "provider",
+      "title": "Art 103: History of Western Art I — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/art-103-history-of-western-art-i.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "8929c5dd31d4e18b0f6a01125000b5a9e5735ddb0a35630c23f69b781f7c5572",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0167",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Art 103: History of Western Art I (SDCM-0167) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nArt 103: History of Western Art I is an online art history course for college credit. The course transfers in for 3 semester hours as a lower-division course at most colleges and universities. Course features include:\nArt 103: History of Western Art I has been evaluated and recommended by NCCRS and ACE for 3 semester hours in the lower baccalaureate degree category. Many colleges accept this course for general education requirements. Find your school on Study.com's 【2†partner college list】 to see how this course transfers to your school. If you don't see your college, confirm with the registrar or your advisor that the course will transfer into your program."
+    },
+    {
+      "id": "study-current-sdcm-0168-2026-11-20",
+      "kind": "provider",
+      "title": "Art 104: History of Western Art II — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/art-104-history-of-western-art-ii.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "309519d246ea10863129c1623aab525be58e8613ebc5dfe3782907324cd1c937",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0168",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Art 104: History of Western Art II (SDCM-0168) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nArt 104: History of Western Art II is an online art history course for college credit. The course transfers in for 3 semester hours as a lower-division course at most colleges and universities. Course features include:\nArt 104: History of Western Art II has been evaluated and recommended by ACE for 3 semester hours in the lower baccalaureate degree category."
+    },
+    {
+      "id": "study-current-sdcm-0185-2026-11-20",
+      "kind": "provider",
+      "title": "Social Science 108: Ethics in the Social Sciences — current provider identity and original semester credits",
+      "url": "https://study.com/academy/course/social-science-108-ethics-in-the-social-sciences.html",
+      "roles": [
+        "provider-identity",
+        "current-offering",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-20",
+      "rawBodyCaptured": false,
+      "captureMethod": "native-public-web-rendered-extract",
+      "extractedTextSha256": "1a28e6a7adaec9f95f1b00f154f2a2a785d588f8b81235aa02a1c16a85b24ace",
+      "retrieval": "Official Study.com course page opened and read with the public web reader. The hash identifies the exact rendered extraction; it is not a hash of the origin HTTP body.",
+      "observed": {
+        "aceId": "SDCM-0185",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Earn 3 transferable credits with our online Social Science 108: Ethics in the Social Sciences (SDCM-0185) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges and universities.\nSocial Science 108: Ethics in the Social Sciences is an online social science course for college credit. The course transfers in for 3 semester hours as a lower-division course at most colleges and universities.\nSocial Science 108: Ethics in the Social Sciences has been evaluated and recommended by ACE and NCCRS for 3 semester hours in the lower division baccalaureate degree category."
+    },
+    {
+      "id": "study-health-current-ace-sdcm-0172-v4",
+      "title": "SDCM-0172 Health 303 — current ACE version 4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=58516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period"
+      ],
+      "checked": "2026-11-18",
+      "sha256": "7ad6f8c614cfd956572466ba9843f13079efc91f7e3f611f373c4f0e0bb1f33d",
+      "sourceContentHash": "sha256:7ad6f8c614cfd956572466ba9843f13079efc91f7e3f611f373c4f0e0bb1f33d",
+      "aceId": "SDCM-0172",
+      "aceVersion": 4,
+      "reviewedFacts": {
+        "providerCourseCode": "Health 303",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceLevel": "upper-division-baccalaureate",
+        "minimumPassingScore": 70,
+        "recommendationStart": "2024-05-01",
+        "recommendationEnd": "2027-05-31"
+      },
+      "reviewedExtract": "ACE SDCM-0172; version 4; Health 303; upper-division 3 SH; minimum score 70; 2024-05-01 through 2027-05-31."
+    },
+    {
+      "id": "study-health-current-ace-sdcm-0173-v4",
+      "title": "SDCM-0173 Health 301 — current ACE version 4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4e516116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period"
+      ],
+      "checked": "2026-11-18",
+      "sha256": "7f03b8ab82ac3526b45ac1c18cc55abec332d92366b08868904f714d269e8499",
+      "sourceContentHash": "sha256:7f03b8ab82ac3526b45ac1c18cc55abec332d92366b08868904f714d269e8499",
+      "aceId": "SDCM-0173",
+      "aceVersion": 4,
+      "reviewedFacts": {
+        "providerCourseCode": "Health 301",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceLevel": "upper-division-baccalaureate",
+        "minimumPassingScore": 70,
+        "recommendationStart": "2024-05-01",
+        "recommendationEnd": "2027-05-31"
+      },
+      "reviewedExtract": "ACE SDCM-0173; version 4; Health 301; upper-division 3 SH; minimum score 70; 2024-05-01 through 2027-05-31."
+    },
+    {
+      "id": "study-health-current-ace-sdcm-0207-v3",
+      "title": "SDCM-0207 Health 302 — current ACE version 3",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3aaf09d7-fb69-ef11-bfe2-0022480c6e65&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period"
+      ],
+      "checked": "2026-11-18",
+      "sha256": "3518c39a38b8eac1f78311ce386873928a240e93014cc22780a5adcd528c0676",
+      "sourceContentHash": "sha256:3518c39a38b8eac1f78311ce386873928a240e93014cc22780a5adcd528c0676",
+      "aceId": "SDCM-0207",
+      "aceVersion": 3,
+      "reviewedFacts": {
+        "providerCourseCode": "Health 302",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceLevel": "upper-division-baccalaureate",
+        "minimumPassingScore": 70,
+        "recommendationStart": "2024-10-01",
+        "recommendationEnd": "2027-09-30"
+      },
+      "reviewedExtract": "ACE SDCM-0207; version 3; Health 302; upper-division 3 SH; minimum score 70; 2024-10-01 through 2027-09-30."
+    },
+    {
+      "id": "study-health-current-ace-sdcm-0209-v3",
+      "title": "SDCM-0209 Health 308 — current ACE version 3",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=114ba700-5cfe-ee11-a1fe-0022480b35fb&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period"
+      ],
+      "checked": "2026-11-18",
+      "sha256": "03fd997be4046c41dff705c6f84e1f695ec52c2fa1b02bbb66d740de43a4e910",
+      "sourceContentHash": "sha256:03fd997be4046c41dff705c6f84e1f695ec52c2fa1b02bbb66d740de43a4e910",
+      "aceId": "SDCM-0209",
+      "aceVersion": 3,
+      "reviewedFacts": {
+        "providerCourseCode": "Health 308",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceLevel": "upper-division-baccalaureate",
+        "minimumPassingScore": 70,
+        "recommendationStart": "2024-06-01",
+        "recommendationEnd": "2027-07-31"
+      },
+      "reviewedExtract": "ACE SDCM-0209; version 3; Health 308; upper-division 3 SH; minimum score 70; 2024-06-01 through 2027-07-31."
+    }
+  ],
+  "courses": [
+    {
+      "provider": "Study.com",
+      "title": "Biology 101: Intro to Biology",
+      "code": "SDCM-0001",
+      "aceId": "SDCM-0001",
+      "codeAliases": [
+        "Biology 101"
+      ],
+      "providerCourseCode": "Biology 101",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/introduction-to-biology.html",
+      "identitySourceIds": [
+        "ace-study-biology101-v5-2026-11-18",
+        "provider-study-biology101-current-web-2026-11-18"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "ace-study-biology101-v5-2026-11-18",
+          "provider-study-biology101-current-web-2026-11-18"
+        ]
+      },
+      "sourceCreditBasis": "Original issuer identity and semester quantity from the retained independent ACE exhibit and current provider offering review. Receiving-school awards are excluded.",
+      "courseVersion": 5,
+      "recommendationStart": "2026-05-01",
+      "recommendationEnd": "2029-04-30",
+      "recommendationPeriodSourceIds": [
+        "ace-study-biology101-v5-2026-11-18"
+      ],
+      "identityReviewId": "liberty-cj-study-identities-2026-11-18",
+      "identityCheckedOn": "2026-11-18"
+    },
+    {
+      "provider": "Study.com",
+      "title": "Math 101: College Algebra",
+      "code": "SDCM-0013",
+      "aceId": "SDCM-0013",
+      "codeAliases": [
+        "Math 101"
+      ],
+      "providerCourseCode": "Math 101",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/algebra.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0013-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0013-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Math 103: Precalculus",
+      "code": "SDCM-0015",
+      "aceId": "SDCM-0015",
+      "codeAliases": [
+        "Math 103"
+      ],
+      "providerCourseCode": "Math 103",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/precalculus-course.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0015-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0015-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Math 104: Calculus",
+      "code": "SDCM-0016",
+      "aceId": "SDCM-0016",
+      "codeAliases": [
+        "Math 104"
+      ],
+      "providerCourseCode": "Math 104",
+      "sourceCredits": 4,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/calculus.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0016-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 4,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0016-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Business 100: Intro to Business",
+      "code": "SDCM-0024",
+      "aceId": "SDCM-0024",
+      "codeAliases": [
+        "Business 100"
+      ],
+      "providerCourseCode": "Business 100",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/intro-to-business.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0024-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0024-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Humanities 101: Intro to the Humanities",
+      "code": "SDCM-0047",
+      "aceId": "SDCM-0047",
+      "codeAliases": [
+        "Humanities 101"
+      ],
+      "providerCourseCode": "Humanities 101",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/humanities-course.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0047-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0047-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Business 113: Business Communication",
+      "code": "SDCM-0052",
+      "aceId": "SDCM-0052",
+      "codeAliases": [
+        "Business 113"
+      ],
+      "providerCourseCode": "Business 113",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/business-113-business-communication.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0052-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0052-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "English 104: College Composition I",
+      "code": "SDCM-0057",
+      "aceId": "SDCM-0057",
+      "codeAliases": [
+        "English 104"
+      ],
+      "providerCourseCode": "English 104",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/college-composition-writing-course.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0057-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0057-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20"
+    },
+    {
+      "provider": "Study.com",
+      "title": "Finance 102: Personal Finance",
+      "code": "SDCM-0059",
+      "aceId": "SDCM-0059",
+      "codeAliases": [
+        "Finance 102"
+      ],
+      "providerCourseCode": "Finance 102",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/finance-102-personal-finance.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0059-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0059-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Business 314: Employment Law",
+      "code": "SDCM-0085",
+      "aceId": "SDCM-0085",
+      "codeAliases": [
+        "Business 314"
+      ],
+      "providerCourseCode": "Business 314",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/business-314-employment-law.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0085-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0085-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": true
+    },
+    {
+      "provider": "Study.com",
+      "title": "Business 315: Logistics & Supply Chain Management",
+      "code": "SDCM-0086",
+      "aceId": "SDCM-0086",
+      "codeAliases": [
+        "Business 315"
+      ],
+      "providerCourseCode": "Business 315",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/business-315-logistics-supply-chain-management.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0086-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0086-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": true
+    },
+    {
+      "provider": "Study.com",
+      "title": "English 105: College Composition II",
+      "code": "SDCM-0089",
+      "aceId": "SDCM-0089",
+      "codeAliases": [
+        "English 105"
+      ],
+      "providerCourseCode": "English 105",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/english-105-college-composition-ii.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0089-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0089-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Business 303: Management Information Systems",
+      "code": "SDCM-0123",
+      "aceId": "SDCM-0123",
+      "codeAliases": [
+        "Business 303"
+      ],
+      "providerCourseCode": "Business 303",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/business-303-management-information-systems.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0123-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0123-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": true
+    },
+    {
+      "provider": "Study.com",
+      "title": "Business 318: Management Ethics",
+      "code": "SDCM-0142",
+      "aceId": "SDCM-0142",
+      "codeAliases": [
+        "Business 318"
+      ],
+      "providerCourseCode": "Business 318",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/business-318-management-ethics.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0142-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0142-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20"
+    },
+    {
+      "provider": "Study.com",
+      "title": "Marketing 308: Applied Marketing",
+      "code": "SDCM-0151",
+      "aceId": "SDCM-0151",
+      "codeAliases": [
+        "Marketing 308"
+      ],
+      "providerCourseCode": "Marketing 308",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/marketing-308-applied-marketing.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0151-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0151-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": true
+    },
+    {
+      "provider": "Study.com",
+      "title": "Computer Science 103: Computer Concepts & Applications",
+      "code": "SDCM-0162",
+      "aceId": "SDCM-0162",
+      "codeAliases": [
+        "Computer Science 103"
+      ],
+      "providerCourseCode": "Computer Science 103",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/computer-science-103-computer-concepts-applications.html",
+      "identitySourceIds": [
+        "ace-study-computer-science103-v4-2026-11-18",
+        "provider-study-computer-science103-current-web-2026-11-18"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "ace-study-computer-science103-v4-2026-11-18",
+          "provider-study-computer-science103-current-web-2026-11-18"
+        ]
+      },
+      "sourceCreditBasis": "Original issuer identity and semester quantity from the retained independent ACE exhibit and current provider offering review. Receiving-school awards are excluded.",
+      "courseVersion": 4,
+      "recommendationStart": "2026-11-01",
+      "recommendationEnd": "2029-10-31",
+      "recommendationPeriodSourceIds": [
+        "ace-study-computer-science103-v4-2026-11-18"
+      ],
+      "identityReviewId": "liberty-cj-study-identities-2026-11-18",
+      "identityCheckedOn": "2026-11-18"
+    },
+    {
+      "provider": "Study.com",
+      "title": "Art 103: History of Western Art I",
+      "code": "SDCM-0167",
+      "aceId": "SDCM-0167",
+      "codeAliases": [
+        "Art 103"
+      ],
+      "providerCourseCode": "Art 103",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/art-103-history-of-western-art-i.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0167-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0167-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Art 104: History of Western Art II",
+      "code": "SDCM-0168",
+      "aceId": "SDCM-0168",
+      "codeAliases": [
+        "Art 104"
+      ],
+      "providerCourseCode": "Art 104",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/art-104-history-of-western-art-ii.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0168-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0168-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Health 303: Healthcare Organization and Management",
+      "code": "SDCM-0172",
+      "aceId": "SDCM-0172",
+      "codeAliases": [
+        "Health 303"
+      ],
+      "providerCourseCode": "Health 303",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/health-303-healthcare-organization-management.html",
+      "identitySourceIds": [
+        "study-health-current-ace-sdcm-0172-v4"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-health-current-ace-sdcm-0172-v4"
+        ]
+      },
+      "sourceCreditBasis": "Original Study.com identity and semester quantity independently reviewed in its current ACE exhibit; no receiving-school award is reused.",
+      "courseVersion": 4,
+      "recommendationStart": "2024-05-01",
+      "recommendationEnd": "2027-05-31",
+      "recommendationPeriodSourceIds": [
+        "study-health-current-ace-sdcm-0172-v4"
+      ],
+      "identityReviewId": "liberty-health-upper-independent-identities-2026-11-18",
+      "identityCheckedOn": "2026-11-18"
+    },
+    {
+      "provider": "Study.com",
+      "title": "Health 301: Ethical and Legal Issues in Healthcare",
+      "code": "SDCM-0173",
+      "aceId": "SDCM-0173",
+      "codeAliases": [
+        "Health 301"
+      ],
+      "providerCourseCode": "Health 301",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/health-301-ethical-legal-issues-in-healthcare.html",
+      "identitySourceIds": [
+        "study-health-current-ace-sdcm-0173-v4"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-health-current-ace-sdcm-0173-v4"
+        ]
+      },
+      "sourceCreditBasis": "Original Study.com identity and semester quantity independently reviewed in its current ACE exhibit; no receiving-school award is reused.",
+      "courseVersion": 4,
+      "recommendationStart": "2024-05-01",
+      "recommendationEnd": "2027-05-31",
+      "recommendationPeriodSourceIds": [
+        "study-health-current-ace-sdcm-0173-v4"
+      ],
+      "identityReviewId": "liberty-health-upper-independent-identities-2026-11-18",
+      "identityCheckedOn": "2026-11-18"
+    },
+    {
+      "provider": "Study.com",
+      "title": "Social Science 108: Ethics in the Social Sciences",
+      "code": "SDCM-0185",
+      "aceId": "SDCM-0185",
+      "codeAliases": [
+        "Social Science 108"
+      ],
+      "providerCourseCode": "Social Science 108",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/social-science-108-ethics-in-the-social-sciences.html",
+      "identitySourceIds": [
+        "study-current-sdcm-0185-2026-11-20"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-current-sdcm-0185-2026-11-20"
+        ]
+      },
+      "sourceCreditBasis": "Exact current provider course page identifies the ACE code and original semester-hour quantity; no receiving-school quantity is used.",
+      "identityReviewId": "study-independent-provider-identities-2026-11-20",
+      "identityCheckedOn": "2026-11-20",
+      "sourceUpper": false
+    },
+    {
+      "provider": "Study.com",
+      "title": "Health 302: Health Services Policy",
+      "code": "SDCM-0207",
+      "aceId": "SDCM-0207",
+      "codeAliases": [
+        "Health 302"
+      ],
+      "providerCourseCode": "Health 302",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/health-302-health-services-policy.html",
+      "identitySourceIds": [
+        "study-health-current-ace-sdcm-0207-v3"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-health-current-ace-sdcm-0207-v3"
+        ]
+      },
+      "sourceCreditBasis": "Original Study.com identity and semester quantity independently reviewed in its current ACE exhibit; no receiving-school award is reused.",
+      "courseVersion": 3,
+      "recommendationStart": "2024-10-01",
+      "recommendationEnd": "2027-09-30",
+      "recommendationPeriodSourceIds": [
+        "study-health-current-ace-sdcm-0207-v3"
+      ],
+      "identityReviewId": "liberty-health-upper-independent-identities-2026-11-18",
+      "identityCheckedOn": "2026-11-18"
+    },
+    {
+      "provider": "Study.com",
+      "title": "Health 308: Healthcare Quality & Outcome Measurement",
+      "code": "SDCM-0209",
+      "aceId": "SDCM-0209",
+      "codeAliases": [
+        "Health 308"
+      ],
+      "providerCourseCode": "Health 308",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "creditOrigin": "alternative",
+      "sourceType": "alternative",
+      "url": "https://study.com/academy/course/health-308-healthcare-quality-outcome-measurement.html",
+      "identitySourceIds": [
+        "study-health-current-ace-sdcm-0209-v3"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "study-health-current-ace-sdcm-0209-v3"
+        ]
+      },
+      "sourceCreditBasis": "Original Study.com identity and semester quantity independently reviewed in its current ACE exhibit; no receiving-school award is reused.",
+      "courseVersion": 3,
+      "recommendationStart": "2024-06-01",
+      "recommendationEnd": "2027-07-31",
+      "recommendationPeriodSourceIds": [
+        "study-health-current-ace-sdcm-0209-v3"
+      ],
+      "identityReviewId": "liberty-health-upper-independent-identities-2026-11-18",
+      "identityCheckedOn": "2026-11-18"
+    }
+  ]
+}

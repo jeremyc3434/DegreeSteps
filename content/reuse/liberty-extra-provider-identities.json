@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "id": "liberty-extra-independent-provider-identities-20261120",
+  "reviewStatus": "approved",
+  "checkedOn": "2026-11-20",
+  "sources": [
+    {
+      "id": "study-sdcm-0170-ace-v4-20261120",
+      "title": "ACE National Guide: Health 309: Healthcare Informatics, version 4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=a8cfaeb5-39ba-ee11-a569-00224805fa3a&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Study.com",
+      "checkedOn": "2026-11-20",
+      "sourceContentHash": "sha256:532f617ac3c4acad97b88620cd468231051146ba9832b9ebaebb67aae29cd640",
+      "sha256": "532f617ac3c4acad97b88620cd468231051146ba9832b9ebaebb67aae29cd640",
+      "capturedAt": "2026-11-20T02:11:34.431164+00:00",
+      "captureFormat": "ace-national-guide-html",
+      "bytes": 168886,
+      "courseCodes": [
+        "SDCM-0170"
+      ],
+      "reviewedExtract": "ACE ID: SDCM-0170; Version: 4; Organization\u2019s ID: Health 309: Healthcare Informatics; Minimum Passing Score: 70; selected ACE Credit Recommendation Period: 5/1/2024 - 5/31/2027; Upper-Division Baccalaureate; Credits (SH): 3.",
+      "recommendationPeriodSelection": "The selected current exhibit option, not an older period listed in the same page."
+    },
+    {
+      "id": "study-sdcm-0169-ace-v4-20261120",
+      "title": "ACE National Guide: Health 310: Human Resource Management in Healthcare, version 4",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=636f2bef-38ba-ee11-a569-00224805fa3a&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "kind": "ace",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Study.com",
+      "checkedOn": "2026-11-20",
+      "sourceContentHash": "sha256:f2c495c10218358c6eb314081d3e267815938ed29d1ceccee5799ac8dd55cbfa",
+      "sha256": "f2c495c10218358c6eb314081d3e267815938ed29d1ceccee5799ac8dd55cbfa",
+      "capturedAt": "2026-11-20T02:11:34.437196+00:00",
+      "captureFormat": "ace-national-guide-html",
+      "bytes": 171365,
+      "courseCodes": [
+        "SDCM-0169"
+      ],
+      "reviewedExtract": "ACE ID: SDCM-0169; Version: 4; Organization\u2019s ID: Health 310: Human Resource Management in Healthcare; Minimum Passing Score: 70; selected ACE Credit Recommendation Period: 5/1/2024 - 5/31/2027; Upper-Division Baccalaureate; Credits (SH): 3.",
+      "recommendationPeriodSelection": "The selected current exhibit option, not an older period listed in the same page."
+    }
+  ],
+  "courses": [
+    {
+      "id": "study-sdcm-0170-v4",
+      "provider": "Study.com",
+      "code": "SDCM-0170",
+      "title": "Healthcare Informatics",
+      "courseVersion": "4",
+      "providerCourseCode": "Health 309",
+      "codeAliases": [
+        "Health 309"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "sourceCreditBasis": "Independent current ACE National Guide exhibit: exact provider code and version, original 3 semester hours, upper-division level, selected recommendation window and minimum passing score.",
+      "recommendationStart": "2024-05-01",
+      "recommendationEnd": "2027-05-31",
+      "providerCoursePassingPercent": 70,
+      "identitySourceIds": [
+        "study-sdcm-0170-ace-v4-20261120"
+      ],
+      "url": "https://study.com/academy/course/health-309-healthcare-informatics.html",
+      "activeOffering": true,
+      "providerOfferingObservation": {
+        "url": "https://study.com/academy/course/health-309-healthcare-informatics.html",
+        "checkedOn": "2026-11-20",
+        "method": "Rendered public provider course page reviewed separately; raw provider body capture unavailable.",
+        "observedCode": "SDCM-0170",
+        "observedSourceCredits": 3,
+        "observedCreditSystem": "semester",
+        "observedSourceUpper": true,
+        "proctoring": "unproctored",
+        "minimumCourseGradePercent": 70,
+        "supportsIdentityHash": false
+      },
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    },
+    {
+      "id": "study-sdcm-0169-v4",
+      "provider": "Study.com",
+      "code": "SDCM-0169",
+      "title": "Human Resource Management in Healthcare",
+      "courseVersion": "4",
+      "providerCourseCode": "Health 310",
+      "codeAliases": [
+        "Health 310"
+      ],
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "sourceCreditBasis": "Independent current ACE National Guide exhibit: exact provider code and version, original 3 semester hours, upper-division level, selected recommendation window and minimum passing score.",
+      "recommendationStart": "2024-05-01",
+      "recommendationEnd": "2027-05-31",
+      "providerCoursePassingPercent": 70,
+      "identitySourceIds": [
+        "study-sdcm-0169-ace-v4-20261120"
+      ],
+      "url": "https://study.com/academy/course/health-310-human-resource-management-in-healthcare.html",
+      "activeOffering": true,
+      "providerOfferingObservation": {
+        "url": "https://study.com/academy/course/health-310-human-resource-management-in-healthcare.html",
+        "checkedOn": "2026-11-20",
+        "method": "Rendered public provider course page reviewed separately; raw provider body capture unavailable.",
+        "observedCode": "SDCM-0169",
+        "observedSourceCredits": 3,
+        "observedCreditSystem": "semester",
+        "observedSourceUpper": true,
+        "proctoring": "unproctored",
+        "minimumCourseGradePercent": 70,
+        "supportsIdentityHash": false
+      },
+      "eligibilityReview": {
+        "status": "current-provider-version-reviewed",
+        "eligibleToStart": true,
+        "recommendationPeriodStatus": "reviewed-current-window"
+      }
+    }
+  ],
+  "reviewNotes": [
+    "Independent ACE identity and source-credit facts only. Liberty receiving awards, degree placement and residency remain independently bound to reviewed university sources.",
+    "Health 305 / SDCM-0208 remains excluded: the receiving guide title and named course equivalency conflict requires separate resolution."
+  ]
+}

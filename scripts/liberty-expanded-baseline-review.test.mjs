@@ -7,8 +7,26 @@ import {assessPathwayQuality} from './pathway-quality.mjs';
 import {applyLibertyExpandedBaselineReview,libertyExpandedBaselineReview as review} from './liberty-expanded-baseline-review.mjs';
 import {applyLibertyCurrentEvidence} from './liberty-current-evidence.mjs';
 const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.url),'utf8'));
-const original=(await read('dist/data/curricula/liberty-online-expansion.json')).models.find(model=>model.id==='curriculum-liberty-healthcare-administration-bs-online');
+const compiledHealth=(await read('dist/data/curricula/liberty-online-expansion.json')).models.find(model=>model.id==='curriculum-liberty-healthcare-administration-bs-online');
 const clone=value=>JSON.parse(JSON.stringify(value));
+// This helper is a pre-composition stage. The public compiled models now also
+// contain the later shared-award stage, whose aliases and reviewed identities
+// are deliberately different. Rebuild this unit fixture through the actual
+// evidence functions instead of reapplying an earlier stage to a final output.
+function beforeSharedComposition(input){
+ const model=clone(input);
+ for(const row of model.requirements){
+  row.options=row.options.filter(option=>!option.sharedAwardProvenance||!option.id.startsWith('shared-option-'));
+  for(const option of row.options){
+   if(!option.sharedAwardProvenance)continue;
+   option.evidence='conditional';
+   option.eligibilityReview={status:'needs-independent-provider-review',eligibleToStart:false,recommendationPeriodStatus:'version-period-link-still-to-review',sourceIds:[]};
+   delete option.sharedAwardProvenance;
+  }
+ }
+ return applyLibertyCurrentEvidence(model,{compiled:true});
+}
+const original=beforeSharedComposition(compiledHealth);
 function planFor(model,selections=model.reviewedBaselineChoices?.optionSelections){return Planner.generate(model,{providers:[...new Set(model.requirements.flatMap(row=>row.options.map(option=>option.provider)).filter(provider=>provider!=='University'))],allowConditional:true,priority:'transfer',completed:[],optionSelections:selections,optimizationNodeBudget:12000});}
 const quality=(model,plan=planFor(model))=>assessPathwayQuality({model,plan,asOf:'2026-11-19'});
 const option=(model,requirement='free-electives-1',code='SOPH-0022')=>model.requirements.find(row=>row.id===requirement).options.find(option=>option.code===code&&option.mappingResearchClosed===true);
@@ -87,7 +105,7 @@ test('the compiled evidence integration preserves the same review and original r
 });
 
 test('Psychology retains three-credit UNIV 104 and has 78 documented outside plus 42 Liberty credits',async()=>{
- const originalPsych=(await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online'),before=JSON.stringify(originalPsych);
+ const originalPsych=beforeSharedComposition((await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online')),before=JSON.stringify(originalPsych);
  const model=applyLibertyExpandedBaselineReview(originalPsych),plan=planFor(model),report=quality(model,plan);
  assert.equal(report.publication.ready,true);assert.equal(report.research.blockingFindings,0);assert.equal(report.research.conditionalFindings,0);
  assert.deepEqual([report.metrics.degreeCredits,report.metrics.feasibleOutsideCredits,report.metrics.conditionalOutsideCredits],[120,78,0]);assert.equal(plan.totals.institutional,42);assert.equal(plan.totals.upper,51);assert.equal(plan.validation.academicCountsValid,true);assert.equal(plan.validation.policyChecksComplete,true);
@@ -100,7 +118,7 @@ test('Psychology retains three-credit UNIV 104 and has 78 documented outside plu
 });
 
 test('Psychology worksheet uses catalog components and counts shared general-education courses only once',async()=>{
- const input=(await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online'),model=applyLibertyExpandedBaselineReview(input),plan=planFor(model);
+ const input=beforeSharedComposition((await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online')),model=applyLibertyExpandedBaselineReview(input),plan=planFor(model);
  const view=CoursePlanView.build({program:model,plan,state:{learning:[]},match:{completed:[]}},{});
  assert.deepEqual(view.curriculumIssues,[]);
  const components=model.curriculumSections;
@@ -115,7 +133,7 @@ test('Psychology worksheet uses catalog components and counts shared general-edu
 });
 
 test('the Study health-course facts become only exact Psychology free-elective placements',async()=>{
- const originalPsych=(await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online'),model=applyLibertyExpandedBaselineReview(originalPsych);
+ const originalPsych=beforeSharedComposition((await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online')),model=applyLibertyExpandedBaselineReview(originalPsych);
  for(const requirement of model.requirements.filter(row=>['free-electives-1','free-electives-2','free-electives-3','free-electives-4'].includes(row.id))){
   const selected=requirement.options.find(option=>option.id===model.reviewedBaselineChoices.optionSelections[requirement.id]);
   assert.equal(selected.provider,'Study.com');assert.equal(selected.credits,3);assert.equal(selected.sourceCredits,3);assert.equal(selected.sourceCreditSystem,'semester');assert.equal(selected.sourceUpper,true);assert.equal(selected.upper,true);assert.equal(selected.creditOrigin,'alternative');assert.equal(selected.evidence,'published');
@@ -127,7 +145,7 @@ test('the Study health-course facts become only exact Psychology free-elective p
 });
 
 test('Psychology prerequisites, capstone grades and registration status remain exact and personal',async()=>{
- const model=applyLibertyExpandedBaselineReview((await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online')),row=code=>model.requirements.find(row=>row.code===code);
+ const model=applyLibertyExpandedBaselineReview(beforeSharedComposition((await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online'))),row=code=>model.requirements.find(row=>row.code===code);
  assert.deepEqual(row('PSYC 355').prerequisites,['psyc-101','math-121','psyc-354','psyc-255']);assert.deepEqual(row('PSYC 421').prerequisites,['psyc-355','psyc-255','psyc-101']);assert.deepEqual(row('PSYC 491').prerequisites,['psyc-255','psyc-101']);
  assert(row('PSYC 355').prerequisitePolicy.rule.allOf[1].anyOf.some(rule=>rule.code==='MATH 121'));assert.equal(row('PSYC 491').registrationPolicy.minimumPrerequisiteGrade,'C');assert.equal(row('PSYC 491').registrationPolicy.minimumCompletedPsychologyCredits,18);assert.equal(row('PSYC 491').registrationPolicy.personalEligibilityConfirmed,false);
  assert(model.unresolved.some(note=>note.owner==='student'&&note.status==='personal-task'&&/18 completed psychology credits/.test(note.message)));assert.equal(model.appliedTransferWaiver,undefined);assert.equal(model.assessmentsPassed,undefined);
@@ -140,4 +158,37 @@ test('the Business prerequisite conflict is a platform research hold and cannot 
  assert.equal(JSON.stringify(originalBusiness),before);assert.deepEqual(model.requirements,originalBusiness.requirements);assert.deepEqual(applyLibertyExpandedBaselineReview(model),model);
  const unsupported=clone(originalBusiness);unsupported.sources=unsupported.sources.filter(source=>!review.researchHolds[0].sourceIds.includes(source.id));assert.equal(applyLibertyExpandedBaselineReview(unsupported),unsupported);
  const outsideScope={...originalBusiness,format:'Residential'},outsideBefore=JSON.stringify(outsideScope);assert.equal(applyLibertyExpandedBaselineReview(outsideScope),outsideScope);assert.equal(JSON.stringify(outsideScope),outsideBefore);
+});
+
+
+test('the final shared-composed healthcare and Psychology outputs preserve complete reviewed routes and original degree quantities',async()=>{
+ const compiledPsych=(await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online');
+ for(const [model,outside,university]of [[compiledHealth,72,48],[compiledPsych,78,42]]){
+  const before=JSON.stringify(model),plan=planFor(model),report=assessPathwayQuality({model,plan,asOf:'2026-11-20'});
+  assert.equal(report.publication.ready,true);assert.equal(report.research.blockingFindings,0);assert.equal(report.metrics.feasibleOutsideCredits,outside);assert.equal(plan.totals.institutional,university);assert.equal(plan.totals.accounted,120);assert.equal(model.requirements.reduce((sum,row)=>sum+row.credits,0),120);assert.equal(plan.totals.confirmed,0);assert.equal(plan.totals.reported,0);assert.equal(plan.validation.academicCountsValid,true);
+  const univ=model.requirements.find(row=>row.id==='univ-104');assert.equal(univ?.credits,3);assert.equal(plan.rows.find(row=>row.requirementId===univ.id)?.option?.provider,'University');if(model.id==='curriculum-liberty-psychology-bs-online')assert.equal(univ.institutionalOnly,true);assert.deepEqual(CoursePlanView.build({program:model,plan,state:{learning:[]},match:{completed:[]}},{}).curriculumIssues,[]);assert.equal(JSON.stringify(model),before);
+  if(model.id===compiledHealth.id){
+   // The historical helper fixture above remains 66/54. These additional six
+   // credits are independently reviewed shared awards, consumed only after
+   // composition; an earlier helper must not be reapplied to this final model.
+   assert.equal(model.majorInstitutionFraction,0.25);assert.equal(model.majorResidencyBasisCredits,66);assert.equal(model.institutionMinCredits,30);assert.equal(model.externalMaxCredits,90);assert.equal(model.alternativeMaxCredits,undefined);
+   assert.equal(report.research.conditionalFindings,0);assert.equal(plan.validation.policyChecksComplete,true);assert.deepEqual(plan.validation.errors,[]);assert(plan.totals.upper>=30);
+   const sources=new Map(model.sources.map(source=>[source.id,source]));
+   for(const [requirementId,code,hash]of [
+    ['info-320','SDCM-0170','532f617ac3c4acad97b88620cd468231051146ba9832b9ebaebb67aae29cd640'],
+    ['busi-344','SDCM-0169','f2c495c10218358c6eb314081d3e267815938ed29d1ceccee5799ac8dd55cbfa']
+   ]){
+    const requirement=model.requirements.find(row=>row.id===requirementId),selected=plan.rows.find(row=>row.requirementId===requirementId)?.option;assert(selected);
+    assert.equal(selected.provider,'Study.com');assert.equal(selected.code,code);assert.equal(selected.receivingCode,requirement.code);assert.equal(selected.courseVersion,'4');assert.equal(selected.credits,3);assert.equal(selected.sourceCredits,3);assert.equal(selected.sourceCreditSystem,'semester');assert.equal(selected.sourceUpper,true);assert.equal(selected.upper,true);assert.equal(selected.evidence,'published');assert.equal(selected.eligibilityReview.eligibleToStart,true);
+    assert.equal(selected.recommendationStart,'2024-05-01');assert.equal(selected.recommendationEnd,'2027-05-31');assert.equal(selected.providerCoursePassingPercent,70);
+    assert.equal(selected.sharedAwardProvenance.bundleId,'liberty-shared-online-undergraduate-awards-v1');assert.equal(selected.degreePlacementEvidence.modelId,model.id);assert.equal(selected.degreePlacementEvidence.requirementId,requirementId);assert.equal(selected.degreePlacementEvidence.catalogYear,model.catalogYear);assert.equal(selected.degreePlacementEvidence.placementType,'exact-named-requirement');
+    assert(selected.identitySourceIds.length);for(const id of selected.identitySourceIds){const source=sources.get(id);assert.equal(source.kind,'ace');assert(source.roles.includes('provider-identity'));assert(source.courseCodes.includes(code));assert.equal(source.sourceContentHash,'sha256:'+hash);assert.equal(source.checkedOn,'2026-11-20');}
+    const receiving=sources.get(selected.sourceIds.find(id=>sources.get(id)?.originalSourceId==='liberty-online-study-guide-full-2026-11-18'));assert.equal(receiving.kind,'university');assert(receiving.roles.includes('receiving-map'));assert(!selected.identitySourceIds.includes(receiving.id));
+    const curriculum=sources.get('liberty-healthcare-administration-online-2026-2027'),policy=[...sources.values()].find(source=>source.originalSourceId==='liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18');
+    assert.equal(curriculum.url,'https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/');assert.equal(curriculum.checked,'2026-11-16');assert.equal(policy.kind,'university');assert(policy.roles.includes('curriculum')&&policy.roles.includes('policy'));assert.equal(policy.sourceContentHash,'sha256:a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de');assert.deepEqual([...selected.degreePlacementEvidence.sourceIds].sort(),[curriculum.id,policy.id].sort());assert(selected.degreePlacementEvidence.sourceIds.every(id=>!selected.identitySourceIds.includes(id)));
+   }
+   // The differently titled Health 305 receiving award remains held.
+   assert.equal(plan.rows.find(row=>row.requirementId==='busi-323')?.option?.provider,'University');assert(!plan.rows.some(row=>row.option.code==='SDCM-0208'));
+  }
+ }
 });

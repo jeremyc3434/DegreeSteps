@@ -11,6 +11,7 @@ const types = {html:'text/html; charset=utf-8',js:'application/javascript; chars
 execFileSync(process.execPath,[resolve(root,'scripts/reviewed-course-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-current-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-plan-estimate-rates.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-liberty-shared-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 buildCreditSourceDiscovery(JSON.parse(await readFile(resolve(root,'dist/data/credit-sources.json'),'utf8')));
 execFileSync(process.execPath,[resolve(root,'scripts/add-liberty-official-mappings.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-tesu-official-mappings.mjs'),'--check'],{cwd:root,stdio:'inherit'});
