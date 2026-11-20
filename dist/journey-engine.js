@@ -296,7 +296,8 @@
     // School/degree fields identify an old route and may be replaced by this
     // explicit choice; level, goal, and format remain hard constraints.
     const exactDegree = pathway.routeType !== 'career-guide' && !list(pathway.stageLevels).length, identifiedLevel = Guide.normalizeProfile({degreeLevel:pathway.level}).degreeLevel;
-    const filters = {...p, pathwayId:'', school:'', degree:'', field:exactDegree ? pathway.field || 'any' : own(j.answers, 'field') || j.completed ? p.field : 'any'};
+    const filters = {...p, pathwayId:'', school:'', degree:'', field:exactDegree ? 'any' : own(j.answers, 'field') || j.completed ? p.field : 'any'};
+    // An exact degree trivially matches its own subject, so only level, goal and format are checked against it.
     if (exactDegree) filters.degreeLevel = identifiedLevel;
     if (j.answers.purpose === 'licensed-career' || protectedGoals.includes(p.goal)) filters.field = 'any';
     if (!exactDegree && !own(j.answers, 'level') && !j.completed) filters.degreeLevel = 'unsure';

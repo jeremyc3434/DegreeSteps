@@ -29,11 +29,13 @@
   // Without a route subject list (no index), a new subject falls back to the
   // nearest older route field rather than matching nothing.
   const subjectFallbackFields = { 'accounting-finance': ['business'], psychology: ['social-science'], 'criminal-justice': ['social-science', 'law'], humanities: ['humanities', 'general'] };
-  function subjectMatches(route, field) {
+  // includeOwnField: a chosen route never conflicts with its own catalog field (selecting a route copies that field
+  // into the profile). Filtering recommendations stays strict so a subject returns only its own plans.
+  function subjectMatches(route, field, includeOwnField = false) {
     if (!field || field === 'any') return true;
     const subjects = unique(list(route && route.subjects)), fields = unique([route && route.field, ...list(route && route.fields)]);
     if (subjects.length) {
-      if (subjectIds.includes(field)) return subjects.includes(field);
+      if (subjectIds.includes(field)) return subjects.includes(field) || includeOwnField && fields.includes(field);
       if (list(legacySubjects[field]).some(subject => subjects.includes(subject))) return true;
       return fields.includes(field);
     }
@@ -702,7 +704,7 @@
     if (p.field !== 'any') {
       const listed = fields.length ? fields : unique(list(route.subjects));
       if (!listed.length) issue(unknowns,'field','Subject needs confirmation',p.field,'Verified program subject',[],'not-listed');
-      else if (!subjectMatches(route,p.field)) issue(conflicts,'field','Subject',p.field,names(listed),listed);
+      else if (!subjectMatches(route,p.field,true)) issue(conflicts,'field','Subject',p.field,names(listed),listed);
     }
     let modalities = unique(list(route.modalities).filter(value=>['online','campus'].includes(value))), formatBasis = modalities.length ? 'catalog' : 'unknown';
     const available = Array.isArray(programs) ? programs : Object.values(programs || {}), model = available.find(item=>item?.id === route.modelId);

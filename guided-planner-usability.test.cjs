@@ -144,3 +144,14 @@ test('a route card shows a remaining planning estimate only from the same engine
  assert.doesNotMatch(f.api.card(result,none),/Your remaining planning estimate/,'no finished courses, no personal range');
  f.api.setRates(null);assert.doesNotMatch(f.api.card(result,finished),/remaining planning/,'without reviewed rates nothing is shown');
 });
+
+test('a route always matches its own catalog field even when its browsing subject differs (regression)',()=>{
+ const Guide=require('./dist/guide-engine.js');
+ const finance={id:'x',field:'business',subjects:['accounting-finance']};
+ assert.equal(Guide.subjectMatches(finance,'business',true),true,'selecting a plan copies its field into the profile; it must not conflict with itself');
+ assert.equal(Guide.subjectMatches(finance,'business'),false,'subject filtering stays strict');
+ assert.equal(Guide.subjectMatches(finance,'accounting-finance'),true);
+ assert.equal(Guide.subjectMatches(finance,'psychology'),false);
+ const r=Guide.assessTarget({...Guide.normalizeProfile({}),field:'business'},{...finance,level:'bachelor',modalities:['online'],goals:['any-degree'],school:'Western Governors University',title:'Finance – B.S.'},[]);
+ assert.equal(r.conflicts.filter(c=>c.field==='field').length,0);
+});

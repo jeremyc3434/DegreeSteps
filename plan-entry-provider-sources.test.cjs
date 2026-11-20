@@ -42,3 +42,9 @@ test('saved course-source choices are respected rather than silently widened',as
  const draft=Journey.buildDraft(saved,catalog,models);
  assert.ok(draft.plan.rows.every(row=>row.option?.provider!=='StraighterLine'),'the worksheet plans within the student’s own sources');
 });
+
+test('opening a plan whose browsing subject differs from its catalog field is not rejected (regression)',async()=>{
+ for(const id of ids){const f=fixture();assert.equal(await f.api.use(id),true,id);}
+ const route={...catalog.pathways.find(r=>r.id==='wgu-catalog-689e417cff765fc9'),subjects:['accounting-finance']};
+ assert.doesNotThrow(()=>Journey.selectRoute(Journey.initialize(null,null,catalog),route,catalog));
+});
