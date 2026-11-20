@@ -19,23 +19,24 @@ execFileSync(process.execPath,[resolve(root,'scripts/add-tesu-prerequisites.mjs'
 execFileSync(process.execPath,[resolve(root,'scripts/add-liberty-cli-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-snhu-transfer-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-liberty-named-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
-execFileSync(process.execPath,[resolve(root,'scripts/import-liberty-residential-expansion.mjs'),'--check'],{cwd:root,stdio:'inherit'});
-execFileSync('python',[resolve(root,'scripts/import-liberty-online-expansion.py'),'--check'],{cwd:root,stdio:'inherit'});
-execFileSync('python',[resolve(root,'scripts/import-liberty-history-online.py'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-accounting.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-finance.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-psychology.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-english.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-liberal-studies.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-gcu-curriculum.mjs'),'--check'],{cwd:root,stdio:'inherit'});
-execFileSync('python',[resolve(root,'scripts/import-wgu-curricula.py'),'--check'],{cwd:root,stdio:'inherit'});
+// Pathway Factory: published school kits (content/pathway-kits/*/school.json "publish") are the source of their content/curricula documents.
+execFileSync(process.execPath,[resolve(root,'scripts/pathway-factory/compile.mjs'),'--publish','--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-academic-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-pathway-quality-report.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-plan-library-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-plan-course-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/provider-directory-discovery.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-priorities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-school-research-batch.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-coach-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-public-site.mjs')],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/apply-brand-system.mjs')],{cwd:root,stdio:'inherit'});
 const assets = {};
@@ -80,6 +81,9 @@ const coverageApi=(await readFile(resolve(root,'server/academic-coverage.mjs'),'
 assert(!/^import\s/m.test(coverageApi),'Bundle academic coverage imports explicitly before building');
 const growthApi=(await readFile(resolve(root,'server/growth-metrics.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(growthApi),'Bundle growth metrics imports explicitly before building');
+const coachApiSource=(await readFile(resolve(root,'server/coach.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
+assert(!/^import\s/m.test(coachApiSource),'Bundle coach imports explicitly before building');
+const coachBundle='const {handleCoach,pruneCoach}=(()=>{\n'+coachApiSource+'\nreturn {handleCoach,pruneCoach};\n})();\n';
 const growthBundle='const {handleGrowthMetrics,pruneGrowthMetrics}=(()=>{\n'+growthApi+'\nreturn {handleGrowthMetrics,pruneGrowthMetrics};\n})();\n';
 const researchJobs=(await readFile(resolve(root,'server/research-jobs.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 const templateApi=(await readFile(resolve(root,'server/template-research.mjs'),'utf8')).replace(/^import .*;\n/gm,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
@@ -91,7 +95,7 @@ const snapshotRegistry=(await readFile(resolve(root,'db/d1-snapshot-registry.mjs
 const snapshotApi=(await readFile(resolve(root,'server/operator-snapshot.mjs'),'utf8')).replace(/^import .*;\n/gm,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(snapshotRegistry+snapshotApi),'Bundle operator snapshot imports explicitly before building');
 const handler=(await readFile(resolve(root,'worker/index.mjs'),'utf8')).replace(/^import .*;\n/gm,'');
-const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi+'\n'+coverageApi+'\n'+growthBundle;
+const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle;
 const source=core+'const assets='+JSON.stringify(assets)+';\n'+handler;
 await rm(output,{recursive:true,force:true});
 await mkdir(resolve(output,'dist/server'),{recursive:true});await mkdir(resolve(output,'.openai'),{recursive:true});
@@ -112,6 +116,7 @@ for (const path of ['/','/portal.html','/account.html','/degree-audit.html','/re
   const response=await module.default.fetch(new Request('https://degreepath.test'+path),{},{});assert.equal(response.status,200,path);
 }
 const authStatus=await module.default.fetch(new Request('https://degreepath.test/api/auth/status'),{},{});assert.equal(authStatus.status,200);assert.equal((await authStatus.json()).configured,false);
+for(const path of ['/api/coach/status','/api/coach/ask','/api/coach/feedback']){const coachOff=await module.default.fetch(new Request('https://degreepath.test'+path,{method:path.endsWith('status')?'GET':'POST'}),{},{});assert.equal(coachOff.status,404,'The coach must not exist unless COACH_ENABLED is 1: '+path);}
 const missingDb=await module.default.fetch(new Request('https://degreepath.test/api/community/session'),{},{});assert.equal(missingDb.status,503);
 const unknownCurriculum=await module.default.fetch(new Request('https://degreepath.test/api/curriculum?program=unknown'),{},{});assert.equal(unknownCurriculum.status,404);
 console.log(JSON.stringify({output,assets:Object.keys(assets).length,workerBytes:Buffer.byteLength(source),nativeWorkerBytes:Buffer.byteLength(nativeSource),checks:'ESM, asset routes, API binding boundary passed'}));

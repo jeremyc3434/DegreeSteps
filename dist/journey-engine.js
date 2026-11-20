@@ -21,7 +21,8 @@
   const programs = models => Array.isArray(models) ? models : Object.values(object(models));
   const service = status => ['active', 'veteran', 'reserve'].includes(status);
   const protectedGoals = ['teacher', 'lawyer', 'pilot', 'health-professional'];
-  const fields = ['any', 'general', 'business', 'technology', 'science', 'arts', 'humanities', 'social-science', 'education', 'health', 'law', 'aviation'];
+  // Browsing subjects plus the older field ids, which saved profiles may still hold.
+  const fields = ['any', 'general', 'business', 'technology', 'science', 'arts', 'humanities', 'social-science', 'education', 'health', 'law', 'aviation', 'accounting-finance', 'psychology', 'criminal-justice', 'faith'];
   const knownProctored = new Set(['CLEP', 'StraighterLine', 'Saylor', 'DSST']);
   const questionIds = ['start', 'school', 'degree', 'about', 'purpose', 'career', 'level', 'field', 'format', 'prior', 'military', 'military-records', 'priority', 'routes', 'review'];
   const parse = value => {if (typeof value !== 'string') return value; try {return JSON.parse(value);} catch (_) {return null;}};
@@ -295,7 +296,8 @@
     // School/degree fields identify an old route and may be replaced by this
     // explicit choice; level, goal, and format remain hard constraints.
     const exactDegree = pathway.routeType !== 'career-guide' && !list(pathway.stageLevels).length, identifiedLevel = Guide.normalizeProfile({degreeLevel:pathway.level}).degreeLevel;
-    const filters = {...p, pathwayId:'', school:'', degree:'', field:exactDegree ? pathway.field || 'any' : own(j.answers, 'field') || j.completed ? p.field : 'any'};
+    const filters = {...p, pathwayId:'', school:'', degree:'', field:exactDegree ? 'any' : own(j.answers, 'field') || j.completed ? p.field : 'any'};
+    // An exact degree trivially matches its own subject, so only level, goal and format are checked against it.
     if (exactDegree) filters.degreeLevel = identifiedLevel;
     if (j.answers.purpose === 'licensed-career' || protectedGoals.includes(p.goal)) filters.field = 'any';
     if (!exactDegree && !own(j.answers, 'level') && !j.completed) filters.degreeLevel = 'unsure';

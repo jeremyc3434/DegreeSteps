@@ -39,7 +39,8 @@ test('History online capstone sequence retains one supported prerequisite altern
 });
 
 test('History importer is deterministic and checks source-model drift without network requests',()=>{
- const result=cp.spawnSync('python',['scripts/import-liberty-history-online.py','--check'],{encoding:'utf8'});
+ // Liberty now publishes from content/pathway-kits/liberty; reproducibility is the factory's offline publish check.
+ const result=cp.spawnSync(process.execPath,['scripts/pathway-factory/compile.mjs','liberty','--publish','--check'],{encoding:'utf8',timeout:60000});
  assert.equal(result.status,0,result.stderr||result.stdout);
 });
 

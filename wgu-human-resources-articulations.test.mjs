@@ -111,5 +111,6 @@ test('the actual default optimizer produces a complete78+39 HR route without rep
 test('the scoped HR review leaves the current Business Management110CU edition intact and is reproducible offline',()=>{
  const bsmgt=doc.models.find(model=>model.id==='curriculum-wgu-catalog-ecceaa488637ac83');assert.equal(bsmgt.catalog,'202605');assert.equal(bsmgt.totalCredits,110);assert.equal(bsmgt.requirements.length,36);assert.deepEqual(bsmgt.unresolved,[]);
  for(const option of bsmgt.requirements.flatMap(row=>row.options)){assert.equal(option.universityMapRecord.programId,240);assert.equal(option.mappingEvidence.catalogYear,'202605');}
- const result=spawnSync('python',['scripts/import-wgu-curricula.py','--check'],{cwd:import.meta.dirname,encoding:'utf8',timeout:10000});assert.equal(result.status,0,result.stderr||result.stdout);
+ // WGU now publishes from content/pathway-kits/wgu; reproducibility is the factory's offline publish check.
+ const result=spawnSync(process.execPath,['scripts/pathway-factory/compile.mjs','wgu','--publish','--check'],{cwd:import.meta.dirname,encoding:'utf8',timeout:30000});assert.equal(result.status,0,result.stderr||result.stdout);
 });

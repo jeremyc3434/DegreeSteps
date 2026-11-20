@@ -467,3 +467,28 @@ details.sheet-detail[open] > summary::after { content: '−'; }
 .sheet-table :is(select,input) { font-size:16px; }
 .sheet-table a { text-underline-offset:3px; }
 #sheet-scroll-help { color:#526983; }
+/* Open questions for plans that still need school confirmation. */
+#sheet-school-check { padding: 12px 22px 0; }
+#sheet-school-check[hidden] { display: none; }
+.sheet-school-check { padding: 14px 16px; border: 1px solid #eaddc4; border-left: 4px solid #b7791f; border-radius: 8px; background: #fffcf6; color: #5c4a2a; font-size: 15px; line-height: 1.55; }
+.sheet-school-check-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.sheet-school-check h2 { margin: 0 0 6px; font-size: 16px; line-height: 1.4; color: #5a3e12; }
+.sheet-school-check ul { margin: 0 0 8px; padding-left: 20px; }
+.sheet-school-check li + li { margin-top: 4px; }
+.sheet-school-check p { margin: 0; font-size: 14px; }
+.sheet-school-check strong { color: #5a3e12; }
+.sheet-school-check.is-collapsed { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 12px 8px 14px; }
+.sheet-page .sheet-school-check .button { flex: none; min-height: 36px; padding: 6px 12px; font-size: 14px; color: #5a3e12; border-color: #d8c39a; }
+.sheet-school-check .button:focus-visible { outline: 3px solid #b7791f; outline-offset: 2px; }
+body.course-plan-page #sheet-school-check { padding: 0; margin: 0 0 18px; }
+@media (max-width: 700px) { #sheet-school-check { padding: 10px 14px 0; } body.course-plan-page #sheet-school-check { padding: 0; margin-bottom: 20px; } .sheet-school-check { padding: 12px 12px 12px 14px; } }
+@media print { .sheet-school-check .button { display: none; } }
+@media (max-width:360px) {
+  /* The one-line worksheet stats overflow a 320px screen; let them wrap there. */
+  #sheet-summary .sheet-stats { flex-wrap:wrap; }
+  #sheet-summary .sheet-stat { white-space:normal; }
+}
+/* Plans that still need school confirmation carry the same badge as the plan finder and guided planner. */
+.portal-tier { margin: 0 0 6px; }
+.portal-tier-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: .8125rem; font-weight: 600; }
+.portal-tier-confirm { background: #fff4e5; color: #8a4b0f; }

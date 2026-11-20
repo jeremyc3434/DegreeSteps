@@ -2,6 +2,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const { chromium } = require('playwright');
+const { completeProfileSteps } = require('./test-support/profile-steps.cjs');
 
 const BASE = (process.env.DEGREEPATH_TEST_URL || 'http://127.0.0.1:8107/').replace(/\/?$/, '/');
 const ORIGIN = new URL(BASE).origin;
@@ -9,10 +10,20 @@ const KEY = 'degreepath-guide-v3';
 const RUN = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 6);
 const templates = JSON.parse(fs.readFileSync(__dirname + '/dist/data/community-templates.json', 'utf8'));
 const catalog = JSON.parse(fs.readFileSync(__dirname + '/dist/data/pathways.json', 'utf8'));
-const model = JSON.parse(fs.readFileSync(__dirname + '/dist/data/tesu.json', 'utf8'));
-const starter = templates.templates.find(item => item.id === 'seed-tesu-business');
-const pathway = catalog.pathways.find(item => item.modelId === model.id);
-const SEED_CONTEXT = 'template:' + starter.id;
+// Starters are generated from published plans (community-template-catalog.js); this uses the Liberty
+// business starter and computes the requirement ids from its reviewed curriculum.
+const model = JSON.parse(fs.readFileSync(__dirname + '/dist/data/liberty.json', 'utf8'));
+const starter = (() => {
+  const Catalog = require('./dist/program-catalog.js'), Templates = require('./dist/community-template-catalog.js'), registry = require('./dist/data/curriculum-registry.json');
+  const published = Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(require('./dist/data/pathways.json'), require('./dist/data/program-catalog.json')), registry), require('./dist/data/publication-index.json'), registry);
+  return Templates.fromCatalog(published, Catalog).find(item => item.modelId === model.id);
+})();
+const pathway = catalog.pathways.find(item => item.id === starter.pathwayId);
+const CONFIRMED = model.requirements[0].id;
+const CHOSEN = model.requirements.find(req => req.id !== CONFIRMED && req.options.some(option => option.provider === 'University') && req.options.some(option => option.provider !== 'University'));
+const CHOSEN_OPTION = CHOSEN.options.find(option => option.provider === 'University').id;
+// A plan starter's discussion is the program's discussion.
+const SEED_CONTEXT = 'program:' + starter.pathwayId;
 const PRIVATE = 'PRIVATE-BROWSER-' + RUN;
 const questionTitle = 'Browser question ' + RUN;
 const planTitle = 'Browser proposed plan ' + RUN;
@@ -58,9 +69,15 @@ async function signIn(actor, name) {
   return session.user;
 }
 async function journey(name, fn) { await fn(); journeys++; console.log('PASS ' + name); }
+// Starter templates are the published plans (the same rule the community-template-boundary core test uses).
+const STARTERS = (() => {
+  const Catalog = require('./dist/program-catalog.js'), registry = require('./dist/data/curriculum-registry.json');
+  const catalog = Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(require('./dist/data/pathways.json'), require('./dist/data/program-catalog.json')), registry), require('./dist/data/publication-index.json'), registry);
+  return Catalog.publishedPlans(catalog).length;
+})();
 async function waitTemplates(page) {
   await page.locator('.template-card[data-template-id]').first().waitFor({ state:'visible' });
-  assert.equal(await page.locator('.template-card[data-template-id]').count(), 8);
+  assert.equal(await page.locator('.template-card[data-template-id]').count(), STARTERS);
 }
 async function openStarter(actor) {
   await actor.page.goto(url('/community.html?tab=templates&template=' + starter.id), { waitUntil:'networkidle' });
@@ -82,18 +99,18 @@ function fixture(overrides = {}) {
     version:3, view:'results', step:'direction', selectedPathwayId:pathway.id, resultTab:'plan', baseline:null,
     profile:{
       entry:'audit', goal:'any-degree', degreeLevel:'bachelor', field:'business', schoolChoice:pathway.school,
-      school:pathway.school, degree:pathway.title, pathwayId:pathway.id, modality:'online', priority:'balanced',
+      school:pathway.school, degree:pathway.title, pathwayId:pathway.id, modality:pathway.modalities[0], priority:'balanced',
       militaryStatus:'veteran', militaryBranch:'army', militaryRecords:'jst', hasPrior:'some', goalDetail:PRIVATE + '-PROFILE'
     },
     learning:[{
       id:PRIVATE + '-learning', provider:'JST', code:PRIVATE + '-CODE', title:PRIVATE + '-TRAINING', credits:3,
       creditSystem:'semester', status:'earned', completedOn:'2024-06-01', notes:PRIVATE + '-NOTE',
-      evaluations:[{ programId:model.id, requirementId:'enc1010', status:'confirmed' }]
+      evaluations:[{ programId:model.id, requirementId:CONFIRMED, status:'confirmed' }]
     }],
     scenarios:{ [model.id]:{
       providers:[], allowConditional:false, useWaivers:false, universityRate:'', fees:'', sophiaMonths:1, studyMonths:1,
       sophiaWeeks:'', studyWeeks:'', clepWeeks:'', termWeeks:'', termCredits:'', concurrency:1,
-      optionSelections:{ mat1210:'tesu-mat1210' }
+      optionSelections:{ [CHOSEN.id]:CHOSEN_OPTION }
     } },
     ...overrides
   };
@@ -123,12 +140,12 @@ function whitelist(plan) {
   browser = await chromium.launch({ executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium', headless:true, args:['--no-sandbox'] });
   try {
     anonymous = await context('anonymous');
-    await journey('public browsing shows eight editorial starters, native sign-in, and an empty live context', async () => {
+    await journey('public browsing shows the published-plan starters, native sign-in, and an empty live context', async () => {
       await anonymous.page.goto(url('/community.html'), { waitUntil:'networkidle' }); await waitTemplates(anonymous.page);
       assert.equal(await anonymous.page.locator('#community-signin').evaluate(el => el.tagName), 'A');
       assert.equal(await anonymous.page.locator('#community-signin').getAttribute('target'), '_top');
-      assert.match(await anonymous.page.locator('#community-signin').getAttribute('href'), /^\/account\.html$/);
-      assert.match(await anonymous.page.locator('#community-status').textContent(), /Oct 31, 2026/);
+      assert.equal(await anonymous.page.locator('#community-signin').getAttribute('href'), '/account.html?returnTo=' + encodeURIComponent('/community.html'), 'Sign-in returns to the community page');
+      assert.match(await anonymous.page.locator('#community-status').textContent(), /proposed until your university confirms/);
       const empty = await good(anonymous, '/feed?context=' + encodeURIComponent('school:browser-empty-' + RUN));
       assert.deepEqual(empty, { items:[], cursor:null });
       await anonymous.page.locator('#community-tab-feed').click();
@@ -185,6 +202,23 @@ function whitelist(plan) {
       assert.equal((await good(anonymous, '/context?context=' + encodeURIComponent(SEED_CONTEXT))).upvotes, baseline.upvotes + 1);
     });
 
+    await journey('a question asked while viewing a plan is filed under that plan’s discussion and listed there', async () => {
+      await openStarter(alice);
+      await alice.page.locator('#new-community-plan').click(); const form = alice.page.locator('#community-post-form'); await form.waitFor({ state:'visible' });
+      assert.equal(await form.locator('[name=context]').inputValue(), SEED_CONTEXT, 'the composer files plan questions under the discussion context');
+      assert.equal(await form.locator('[name=context] option[value^="template:ready-"]').count(), 0);
+      const title = 'Plan question ' + RUN;
+      await form.locator('[name=title]').fill(title); await form.locator('[name=body]').fill('Does this plan accept recent exam credit?');
+      if (await form.locator('[name=consent]').count()) await form.locator('[name=consent]').check();
+      const published = postResponse(alice.page); await form.locator('[type=submit]').click();
+      const response = await published; assert.equal(response.status(), 201); const item = (await response.json()).item;
+      cleanup.push({ actor:alice, type:'posts', id:item.id });
+      assert.equal(response.request().postDataJSON().context, SEED_CONTEXT);
+      await openStarter(bob);
+      await bob.page.locator('#template-questions [data-post-id="' + item.id + '"]').waitFor({ state:'visible' });
+      assert.match(await bob.page.locator('#template-questions').innerText(), new RegExp(title));
+    });
+
     await journey('a real public post requires consent and publishes only the chosen alias and public text', async () => {
       await alice.page.goto(url('/community.html?tab=feed'), { waitUntil:'networkidle' });
       await alice.page.locator('#ask-community').click(); const form = alice.page.locator('#community-post-form'); await form.waitFor({ state:'visible' });
@@ -239,26 +273,27 @@ function whitelist(plan) {
       cleanup.push({ actor:alice, type:'posts', id:sharedPlan.id });
       const payload = response.request().postDataJSON(); assert.equal(payload.publishPublicPlan, true); whitelist(payload.plan);
       assert(!JSON.stringify(payload).includes(PRIVATE)); assert(!JSON.stringify(payload).includes('JST'));
-      assert(!payload.plan.courses.some(course => course.requirementId === 'enc1010'), 'Confirmed prior learning must not become a public proposed course');
-      assert(payload.plan.courses.some(course => course.requirementId === 'mat1210' && course.courseId === 'tesu-mat1210'));
+      assert(!payload.plan.courses.some(course => course.requirementId === CONFIRMED), 'Confirmed prior learning must not become a public proposed course');
+      assert(payload.plan.courses.some(course => course.requirementId === CHOSEN.id && course.courseId === CHOSEN_OPTION));
       assert.deepEqual((await stored(alice)).learning, beforeDraft.learning);
       await alice.page.locator('#thread-dialog a[href="portal.html?shared=' + sharedPlan.id + '"]').waitFor({ state:'visible' });
       const invalid = await api(alice, '/posts', { method:'POST', body:{ ...payload, plan:{ ...payload.plan, notes:PRIVATE } } });
       assert.equal(invalid.status, 400, 'Server must reject accidentally forwarded private plan fields');
     });
 
-    await journey('using an editorial starter changes the planning profile while preserving existing learning and course choices', async () => {
+    await journey('building from a plan starter previews the degree and preserves existing learning and course choices', async () => {
       await seedDraft(bob, fixture({ view:'wizard', step:'direction' })); const before = await stored(bob);
       const beforePosts = writes.filter(item => item.label === 'bob' && item.path === '/api/community/posts').length;
       await bob.page.goto(url('/community.html'), { waitUntil:'networkidle' }); await waitTemplates(bob.page);
-      await bob.page.locator('[data-template-id="' + starter.id + '"] a[href="portal.html?template=' + starter.id + '"]').click();
-      await bob.page.waitForFunction(({ key, context }) => JSON.parse(localStorage.getItem(key))?.templateOrigin?.context === context, { key:KEY, context:SEED_CONTEXT });
+      const build = bob.page.locator('[data-template-id="' + starter.id + '"] a').filter({ hasText:'Build my plan' });
+      assert.equal(await build.getAttribute('href'), starter.launchURL); await build.click();
+      await bob.page.getByRole('button', { name:'Build course plan', exact:true }).waitFor();
+      assert.deepEqual(await stored(bob), before, 'Opening a starter does not change the saved plan');
+      await bob.page.getByRole('button', { name:'Build course plan', exact:true }).click();
+      await completeProfileSteps(bob.page); await bob.page.waitForURL('**/plan.html');
       const after = await stored(bob); assert.deepEqual(after.learning, before.learning);
       assert.deepEqual(after.scenarios[model.id].optionSelections, before.scenarios[model.id].optionSelections);
-      assert.equal(after.profile.pathwayId, pathway.id); assert.equal(after.profile.entry, 'target');
-      assert.equal(after.profile.priority, starter.strategy); assert.equal(after.templateOrigin.context, SEED_CONTEXT);
-      assert.match(await bob.page.locator('#portal-notice').textContent(), /private learning records are unchanged/);
-      assert(await bob.page.locator('#portal-question-title').isVisible());
+      assert.equal(after.selectedPathwayId, pathway.id); assert.equal(after.profile.school, pathway.school);
       assert.equal(writes.filter(item => item.label === 'bob' && item.path === '/api/community/posts').length, beforePosts);
     });
 
@@ -268,6 +303,8 @@ function whitelist(plan) {
       const link = bob.page.getByRole('link', { name:'Make a copy of this plan', exact:true });
       assert.equal(await link.getAttribute('href'), 'portal.html?shared=' + encodeURIComponent(sharedPlan.id)); await link.click();
       await bob.page.waitForFunction(({ key, context }) => JSON.parse(localStorage.getItem(key))?.templateOrigin?.context === context, { key:KEY, context:'post:' + sharedPlan.id });
+      // A returning student lands on the copied course plan.
+      await bob.page.waitForURL('**/plan.html'); await bob.page.waitForLoadState('networkidle');
       const after = await stored(bob); assert.deepEqual(after.learning, before.learning);
       assert.equal(after.learning.filter(item => item.status === 'earned').length, before.learning.filter(item => item.status === 'earned').length);
       const expected = {};
@@ -277,7 +314,7 @@ function whitelist(plan) {
         if (option) expected[requirement.id] = option.id;
       }
       assert.deepEqual(after.scenarios[model.id].optionSelections, expected); assert.equal(after.templateOrigin.unmatchedChoices, 0);
-      assert.equal(after.profile.pathwayId, pathway.id); assert.match(await bob.page.locator('#portal-notice').textContent(), /proposed choices/);
+      assert.equal(after.profile.pathwayId, pathway.id); await bob.page.locator('tr.course-plan-row').first().waitFor();
       assert.equal(writes.filter(item => item.label === 'bob' && item.path === '/api/community/posts').length, beforePosts);
     });
 
@@ -288,13 +325,13 @@ function whitelist(plan) {
       assert.equal(await mobile.page.locator('#community-tab-feed').getAttribute('aria-selected'), 'true');
       assert.equal(await mobile.page.locator('#community-tab-feed').evaluate(el => document.activeElement === el), true);
       await mobile.page.keyboard.press('ArrowLeft'); assert.equal(await mobile.page.locator('#community-tab-templates').getAttribute('aria-selected'), 'true');
-      await mobile.page.locator('#template-search').fill('TESU'); assert.equal(await mobile.page.locator('.template-card').count(), 1);
+      await mobile.page.locator('#template-search').fill('Interdisciplinary'); assert.equal(await mobile.page.locator('.template-card').count(), 1);
       await mobile.page.locator('[data-view-template="' + starter.id + '"]').first().focus(); await mobile.page.keyboard.press('Enter');
       await mobile.page.locator('#template-discussion .engagement-bar').waitFor({ state:'visible' }); await noOverflow(mobile.page);
       await mobile.page.locator('.starter-ledger > summary').click(); await noOverflow(mobile.page);
       await mobile.page.locator('#ask-template').click(); await mobile.page.locator('#thread-dialog .engagement-bar').waitFor({ state:'visible' });
       await noOverflow(mobile.page);
-      assert.equal(await mobile.page.locator('#thread-dialog a[href="/account.html"]').first().getAttribute('target'), '_top');
+      assert.equal(await mobile.page.locator('#thread-dialog a[href^="/account.html"]').first().getAttribute('target'), '_top');
       await mobile.page.keyboard.press('Escape'); assert.equal(await mobile.page.locator('#thread-dialog').evaluate(el => el.open), false);
       assert.deepEqual(errors, [], 'No uncaught browser JavaScript errors in any journey');
     });

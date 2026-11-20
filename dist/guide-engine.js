@@ -19,6 +19,28 @@
   const validDay = value => typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&Number.isFinite(Date.parse(value+'T00:00:00Z'))&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value;
   const service = profile => ['active', 'veteran', 'reserve'].includes(profile.militaryStatus);
   const protectedGoals = ['teacher', 'lawyer', 'pilot', 'health-professional'];
+  // Browsing subjects (content/catalog/subject-areas.json, carried per route as
+  // route.subjects from data/plan-library-index.json). Older saved field ids stay
+  // valid: they keep matching the route's own field and map onto these subjects.
+  const subjectIds = ['business', 'accounting-finance', 'technology', 'health', 'psychology', 'criminal-justice', 'education', 'humanities', 'faith'];
+  const legacyFieldIds = ['general', 'science', 'arts', 'social-science', 'law', 'aviation'];
+  const fieldIds = ['any', ...subjectIds, ...legacyFieldIds];
+  const legacySubjects = { 'social-science': ['psychology', 'criminal-justice'], general: ['humanities'], law: ['criminal-justice'] };
+  // Without a route subject list (no index), a new subject falls back to the
+  // nearest older route field rather than matching nothing.
+  const subjectFallbackFields = { 'accounting-finance': ['business'], psychology: ['social-science'], 'criminal-justice': ['social-science', 'law'], humanities: ['humanities', 'general'] };
+  // includeOwnField: a chosen route never conflicts with its own catalog field (selecting a route copies that field
+  // into the profile). Filtering recommendations stays strict so a subject returns only its own plans.
+  function subjectMatches(route, field, includeOwnField = false) {
+    if (!field || field === 'any') return true;
+    const subjects = unique(list(route && route.subjects)), fields = unique([route && route.field, ...list(route && route.fields)]);
+    if (subjects.length) {
+      if (subjectIds.includes(field)) return subjects.includes(field) || includeOwnField && fields.includes(field);
+      if (list(legacySubjects[field]).some(subject => subjects.includes(subject))) return true;
+      return fields.includes(field);
+    }
+    return fields.includes(field) || list(subjectFallbackFields[field]).some(value => fields.includes(value));
+  }
 
   function normalizeProfile(raw) {
     const p = raw || {};
@@ -27,7 +49,7 @@
       goal: choose(p.goal, ['any-degree', 'career-growth', 'change-career', ...protectedGoals], 'any-degree'),
       goalDetail: text(p.goalDetail),
       degreeLevel: choose(level(p.degreeLevel), ['unsure', 'associate', 'bachelor', 'master', 'doctorate', 'specialist'], 'unsure'),
-      field: choose(p.field, ['any', 'general', 'business', 'technology', 'science', 'arts', 'humanities', 'social-science', 'education', 'health', 'law', 'aviation'], 'any'),
+      field: choose(p.field, fieldIds, 'any'),
       school: text(p.school), degree: text(p.degree), pathwayId: text(p.pathwayId),
       modality: choose(p.modality, ['any', 'online', 'campus'], 'any'),
       classroomImportance: choose(p.classroomImportance, ['open', 'preferred', 'essential'], 'open'),
@@ -85,8 +107,37 @@
     const sources = new Map(list(program?.sources).map(source=>[source.id,source]));
     return list(ids).length > 0 && list(ids).every(id=>{try {const url=new URL(sources.get(id)?.url);return url.protocol==='https:'&&!url.username&&!url.password;}catch{return false;}});
   }
+  // Course codes written inside a hand-entered code or title, such as
+  // "SOPH-0015 English Composition I". Only whole code-shaped tokens are read;
+  // the words of a title never identify a course.
+  function codeTokens(value) {
+    return unique((text(value).match(/\b[A-Za-z]{2,6}[\s-]?\d{3,5}[A-Za-z]?\b/g) || []).map(key));
+  }
+  function manualCodeHits(program,item) {
+    const requirements=list(program?.requirements),provider=providerKey(item?.provider);
+    if (!provider||provider==='university'||text(item?.catalogCourseId)) return null;
+    const options=requirements.flatMap(req=>list(req.options)).filter(option=>providerKey(option.provider)===provider&&text(option.code));
+    if (!options.length||text(item.code)&&options.some(option=>matchesCode(option,item.code))) return null;
+    const tokens=codeTokens(text(item.code)?item.code:item.title);
+    if (!tokens.length) return null;
+    const identity=sourceIdentities(requirements),hits=options.filter(option=>optionCodeKeys(option).some(code=>tokens.includes(code)));
+    return {hits,identities:new Set(hits.map(option=>identity(provider+':'+key(option.code))))};
+  }
+  // A manually entered record (no catalog listing) is matched only when its
+  // provider plus a written course code points to exactly one source identity
+  // among this degree's proposed options. This only matches the record to an
+  // option; it never awards or confirms credit, and the saved record is unchanged.
+  function resolveManualIdentity(program,item) {
+    const found=manualCodeHits(program,item);
+    return found&&found.identities.size===1 ? {...item,code:found.hits[0].code,codeBasis:'manual-code-recognized'} : item;
+  }
+  function manualIdentityAmbiguous(program,item) {
+    const found=manualCodeHits(program,item);
+    return Boolean(found&&found.identities.size>1);
+  }
   function resolveRecordIdentity(program,item) {
-    if (!text(item?.catalogCourseId)||text(item?.code)&&item.codeBasis!=='curated-course-map') return item;
+    if (!text(item?.catalogCourseId)) return item&&typeof item==='object'?resolveManualIdentity(program,item):item;
+    if (text(item?.code)&&item.codeBasis!=='curated-course-map') return item;
     const requirements=list(program?.requirements),identity=sourceIdentities(requirements);
     if(text(item.code)&&requirements.some(req=>list(req.options).some(option=>providerKey(option.provider)===providerKey(item.provider)&&matchesCode(option,item.code))))return item;
     const options=requirements.flatMap(req=>list(req.options)).filter(option=>providerKey(option.provider)===providerKey(item.provider)&&text(option.code)&&list(option.listingIdentityIds).includes(item.catalogCourseId)&&boundSources(program,option.listingIdentitySourceIds));
@@ -651,8 +702,9 @@
     }
     const fields = unique([route.field,...list(route.fields)]);
     if (p.field !== 'any') {
-      if (!fields.length) issue(unknowns,'field','Subject needs confirmation',p.field,'Verified program subject',[],'not-listed');
-      else if (!fields.includes(p.field)) issue(conflicts,'field','Subject',p.field,names(fields),fields);
+      const listed = fields.length ? fields : unique(list(route.subjects));
+      if (!listed.length) issue(unknowns,'field','Subject needs confirmation',p.field,'Verified program subject',[],'not-listed');
+      else if (!subjectMatches(route,p.field,true)) issue(conflicts,'field','Subject',p.field,names(listed),listed);
     }
     let modalities = unique(list(route.modalities).filter(value=>['online','campus'].includes(value))), formatBasis = modalities.length ? 'catalog' : 'unknown';
     const available = Array.isArray(programs) ? programs : Object.values(programs || {}), model = available.find(item=>item?.id === route.modelId);
@@ -732,7 +784,7 @@
       if (p.school && key(pathway.school) !== key(p.school)) return null;
       if (p.degree && key(pathway.title) !== key(p.degree)) return null;
       if (p.degreeLevel !== 'unsure' && level(pathway.level) !== p.degreeLevel && !(protectedGoals.includes(p.goal) && list(pathway.goals).includes(p.goal) && list(pathway.stageLevels).includes(p.degreeLevel))) return null;
-      if (p.field !== 'any' && !fields.includes(p.field)) return null;
+      if (!subjectMatches(pathway, p.field)) return null;
       if (p.modality !== 'any' && !modalities.includes(p.modality)) return null;
       if (p.classroomImportance === 'essential' && !modalities.includes('campus')) return null;
       if (protectedGoals.includes(p.goal) && !list(pathway.goals).includes(p.goal)) return null;
@@ -835,5 +887,5 @@
     return { title: route.title || 'Your degree route', summary, tips, nextActions: unique(nextActions).slice(0, 3), milestones, careerNotes: unique(careerNotes), militaryNotes: unique(militaryNotes), ...(modeled ? {researchTasks:copy(list(plan.researchTasks)),personalTasks:copy(list(plan.personalTasks)),resolvedNotes:copy(list(plan.resolvedNotes))} : {}) };
   }
 
-  return Object.freeze({ normalizeProfile, preferenceFit, steps, matchInventory, matchCollection, migrateLegacy, assessTarget, recommend, buildGuidance, catalogCourseCode, courseReviewReason, resolveRecordIdentity });
+  return Object.freeze({ subjectIds:[...subjectIds], legacyFieldIds:[...legacyFieldIds], subjectMatches, manualIdentityAmbiguous, normalizeProfile, preferenceFit, steps, matchInventory, matchCollection, migrateLegacy, assessTarget, recommend, buildGuidance, catalogCourseCode, courseReviewReason, resolveRecordIdentity });
 }));

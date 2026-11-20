@@ -65,7 +65,9 @@ const registry={version:1,checkedOn:sharedAwardBundle.checkedOn,routes:[],models
 const outputs=new Map(),ids=new Set();
 const canonicalLevel=value=>({bachelors:'bachelor',bachelor:'bachelor',associates:'associate',associate:'associate',masters:'master',master:'master',doctoral:'doctorate',doctorate:'doctorate',specialist:'specialist'})[key(value)]||null;
 function sourceMap(...arrays){const result=new Map();for(const s of arrays.flat()){if(!s?.id||!s.url)continue;const old=result.get(s.id);assert(!old||old.url===s.url,'Conflicting source identity '+s.id);result.set(s.id,clone(s));}return result;}
+// Pathway Factory documents (compiledBy) arrive with their school's equivalencies already joined: school augmentation stages never re-apply.
 function compile(raw,document){
+  const factory=document.compiledBy==='pathway-factory';
   assert(raw&&typeof raw==='object'&&!Array.isArray(raw),'Curriculum model must be an object');
   assert(Array.isArray(raw.routeIds)&&raw.routeIds.length===new Set(raw.routeIds).size,'Curriculum needs unique exact route IDs: '+raw.id);
   assert(Array.isArray(raw.requirements)&&raw.requirements.length,'Curriculum requirements must be a nonempty array: '+raw.id);
@@ -92,14 +94,16 @@ function compile(raw,document){
       if(splits.length>1){row.title=req.title+' · allocation '+(i+1);row.allocationOf=req.id;row.selectionRequired=true;delete row.code;}
       if(req.bucket||req.allocationSlot||req.researchGap)row.selectionRequired=true;
       if((req.freeElective||req.bucket||req.allocationSlot)&&req.upper||[req.minCourseLevel,req.minimumCourseLevel].some(value=>{const level=Number(value);return level>=(level>=1000?3000:300);}))row.upperOnly=true;
-      if(!req.institutionalOnly){const receivingCodes=[req.code,...list(req.allowedCourseCodes)].filter(Boolean);for(const receivingCode of receivingCodes)for(const match of shared.get(key(model.school)+'|'+key(receivingCode))||[]){if(!sharedAwardApplies(match,model,records)||match.option.credits!==row.credits||match.creditSystem!==(model.creditSystem||'semester'))continue;if(row.options.some(o=>o.id===match.option.id))continue;row.options.push(sharedOption(match,model,records));sources=sourceMap([...sources.values()],match.sources);}}
-      if(!req.institutionalOnly&&(req.freeElective===true||list(req.allowedCoursePrefixes).length)){for(const [identity,matches] of shared){if(!identity.startsWith(key(model.school)+'|'))continue;for(const match of matches){const receiving=String(match.option.receivingCode||'').match(/^([A-Za-z]+)[\s-]*(\d+)/),minimum=Number(req.minCourseLevel||req.minimumCourseLevel||0),maximum=Number(req.maxCourseLevel||req.maximumCourseLevel||Infinity);if(!sharedAwardApplies(match,model,records)||match.option.credits!==row.credits||match.creditSystem!==(model.creditSystem||'semester')||fixedCodes.has(key(match.option.receivingCode))||row.options.some(o=>o.id===match.option.id)||row.upperOnly&&!match.option.upper)continue;if((minimum||Number.isFinite(maximum))&&(!receiving||Number(receiving[2])<minimum||Number(receiving[2])>maximum))continue;if(list(req.allowedCoursePrefixes).length&&(!receiving||!req.allowedCoursePrefixes.map(key).includes(key(receiving[1]))))continue;row.options.push({...sharedOption(match,model,records),placementType:'elective',evidence:'conditional',conditions:[...list(match.option.conditions),'Proposed use in this published elective block. The receiving course must meet its department and level restrictions and must not also count elsewhere in this degree; confirm your catalog and allocation.']});sources=sourceMap([...sources.values()],match.sources);}}}
+      if(!factory&&!req.institutionalOnly){const receivingCodes=[req.code,...list(req.allowedCourseCodes)].filter(Boolean);for(const receivingCode of receivingCodes)for(const match of shared.get(key(model.school)+'|'+key(receivingCode))||[]){if(!sharedAwardApplies(match,model,records)||match.option.credits!==row.credits||match.creditSystem!==(model.creditSystem||'semester'))continue;if(row.options.some(o=>o.id===match.option.id))continue;row.options.push(sharedOption(match,model,records));sources=sourceMap([...sources.values()],match.sources);}}
+      if(!factory&&!req.institutionalOnly&&(req.freeElective===true||list(req.allowedCoursePrefixes).length)){for(const [identity,matches] of shared){if(!identity.startsWith(key(model.school)+'|'))continue;for(const match of matches){const receiving=String(match.option.receivingCode||'').match(/^([A-Za-z]+)[\s-]*(\d+)/),minimum=Number(req.minCourseLevel||req.minimumCourseLevel||0),maximum=Number(req.maxCourseLevel||req.maximumCourseLevel||Infinity);if(!sharedAwardApplies(match,model,records)||match.option.credits!==row.credits||match.creditSystem!==(model.creditSystem||'semester')||fixedCodes.has(key(match.option.receivingCode))||row.options.some(o=>o.id===match.option.id)||row.upperOnly&&!match.option.upper)continue;if((minimum||Number.isFinite(maximum))&&(!receiving||Number(receiving[2])<minimum||Number(receiving[2])>maximum))continue;if(list(req.allowedCoursePrefixes).length&&(!receiving||!req.allowedCoursePrefixes.map(key).includes(key(receiving[1]))))continue;row.options.push({...sharedOption(match,model,records),placementType:'elective',evidence:'conditional',conditions:[...list(match.option.conditions),'Proposed use in this published elective block. The receiving course must meet its department and level restrictions and must not also count elsewhere in this degree; confirm your catalog and allocation.']});sources=sourceMap([...sources.values()],match.sources);}}}
+      let generated=null;
       if(!row.options.some(o=>o.provider==='University')){
         assert(row.sourceIds.length,'Requirement needs a curriculum source: '+model.id+':'+row.id);
-        row.options.push({id:'university-'+slug(row.id),provider:'University',title:row.title,...(row.code?{code:row.code}:{}),credits:row.credits,upper:Boolean(row.upper),creditSystem:model.creditSystem||'semester',creditOrigin:'institutional',sourceIds:[...row.sourceIds],evidence:'published',...(row.selectionRequired?{selectionRequired:true,conditions:['Choose a specific course allowed by this published requirement.']}:{})});
+        row.options.push(generated={id:'university-'+slug(row.id),provider:'University',title:row.title,...(row.code?{code:row.code}:{}),credits:row.credits,upper:Boolean(row.upper),creditSystem:model.creditSystem||'semester',creditOrigin:'institutional',sourceIds:[...row.sourceIds],evidence:'published',...(row.selectionRequired?{selectionRequired:true,conditions:['Choose a specific course allowed by this published requirement.']}:{})});
       }
-      if(row.options.some(o=>o.provider!=='University'&&o.code)||row.selectionRequired&&row.options.some(o=>o.code&&!o.selectionRequired))row.selectionRequired=false;
-      if(row.minimumGrade)for(const option of row.options)option.conditions=[...list(option.conditions),'This requirement needs a grade of '+row.minimumGrade+' or higher; confirm the school’s treatment of pass grades.'];
+      if((!factory||row.selectionRequired)&&(row.options.some(o=>o.provider!=='University'&&o.code)||row.selectionRequired&&row.options.some(o=>o.code&&!o.selectionRequired)))row.selectionRequired=false;
+      // Factory documents already carry their options' final conditions; only the generated institutional option gets the grade notice.
+      if(row.minimumGrade)for(const option of factory?row.options.filter(o=>o===generated):row.options)option.conditions=[...list(option.conditions),'This requirement needs a grade of '+row.minimumGrade+' or higher; confirm the school’s treatment of pass grades.'];
       requirements.push(row);
     }
   }
@@ -115,11 +119,18 @@ function compile(raw,document){
   if(requirements.some(r=>r.options.some(o=>o.provider!=='University'))&&!Number.isFinite(model.alternativeMaxCredits)&&!documentedResolution('alternativeMaxCredits'))model.policyReview.push({field:'alternativeMaxCredits',status:'unverified',message:'Confirm the combined limit on alternative credit sources.'});
   const sections=list(model.curriculumSections).map(s=>({...s,requirementIds:list(s.requirementIds).flatMap(id=>requirements.filter(r=>r.id===id||r.allocationOf===id).map(r=>r.id))}));
   if(sections.length)model.curriculumSections=sections;
-  Object.assign(model,applyLibertyCurrentEvidence(model,{compiled:true}));
-  Object.assign(model,applyLibertySharedPolicyResolutions(model));
-  const composed=composeSharedAwards([model],sharedAwardBundle,{asOf:sharedAwardBundle.checkedOn});
-  Object.assign(model,composed.models[0]);
-  sharedAwardReports.push({...composed.report,modelId:model.id});
+  if(!factory){
+    Object.assign(model,applyLibertyCurrentEvidence(model,{compiled:true}));
+    Object.assign(model,applyLibertySharedPolicyResolutions(model));
+    const composed=composeSharedAwards([model],sharedAwardBundle,{asOf:sharedAwardBundle.checkedOn});
+    Object.assign(model,composed.models[0]);
+    sharedAwardReports.push({...composed.report,modelId:model.id});
+  }else{
+    // The approved shared-award bundle stays upstream evidence for a factory kit: composing it again must change nothing.
+    const audit=composeSharedAwards([model],sharedAwardBundle,{asOf:sharedAwardBundle.checkedOn});
+    assert(audit.report.addedOptions===0&&audit.report.updatedOptions===0&&JSON.stringify(audit.models[0])===JSON.stringify(model),'Factory document '+model.id+' differs from the approved shared-award bundle; update its pathway kit');
+    sharedAwardReports.push({...audit.report,modelId:model.id});
+  }
   model.evidenceCheckedOn=model.evidenceCheckedOn||document.checkedOn;
   model.coverageLabel=model.coverageLabel||(gap>0?'Published curriculum with specific remaining research gaps':'Published degree requirements with source-linked course choices');
   model.completeExecutablePathway=false; // Individual admission and transfer approval remain necessary.
@@ -142,9 +153,10 @@ for(const name of (await readdir(folder)).filter(n=>n.endsWith('.json')).sort())
   if(!registry.checkedOn||doc.checkedOn>registry.checkedOn)registry.checkedOn=doc.checkedOn;
   for(const raw of list(doc.models||doc.programs)){
     if(['planned','upcoming','approval-pending','inactive'].includes(raw.status))continue;
-    const named=applyLibertyAccountingNamedChoices(raw,libertyAccountingChoices);
-    const mapped=named.school==='Liberty University'&&['Online','Residential'].includes(named.format)?applyReviewedLibertyMaps(named):named;
-    const scoped=applyCourseListingIdentities(addLibertyCLIOptions(applyLibertyVerifiedBasics(mapped,libertyVerifiedBasics),libertyCLIReview,list(raw.routeIds).map(id=>routes.get(id)).filter(Boolean)));
+    const factory=doc.compiledBy==='pathway-factory';
+    const named=factory?raw:applyLibertyAccountingNamedChoices(raw,libertyAccountingChoices);
+    const mapped=!factory&&named.school==='Liberty University'&&['Online','Residential'].includes(named.format)?applyReviewedLibertyMaps(named):named;
+    const scoped=factory?mapped:applyCourseListingIdentities(addLibertyCLIOptions(applyLibertyVerifiedBasics(mapped,libertyVerifiedBasics),libertyCLIReview,list(raw.routeIds).map(id=>routes.get(id)).filter(Boolean)));
     const enriched=scoped.id==='curriculum-gcu-bsba-campus'?addGCUInstitutionalOptions(addGCUTransferOptions(scoped,gcuTransferReview),gcuInstitutionalReview):scoped;
     const {model,entry,gap}=compile(enriched,doc);assert(!ids.has(model.id),'Duplicate curriculum model '+model.id);ids.add(model.id);entry.path='data/curricula/'+name;registry.models.push(entry);models.push(model);
     report.push({id:model.id,school:model.school,title:model.title,totalCredits:model.totalCredits,importedRequirementCredits:model.totalCredits-gap,unresolvedCredits:gap,requirements:model.requirements.length,externalOptions:model.requirements.reduce((s,r)=>s+r.options.filter(o=>o.provider!=='University').length,0),coverage:entry.coverage});

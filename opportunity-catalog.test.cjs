@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const Catalog=require('./dist/program-catalog.js'),base=require('./dist/data/pathways.json'),directory=require('./dist/data/program-catalog.json'),opportunities=require('./dist/data/opportunity-catalog.json');
-const research=fs.readdirSync(path.join(__dirname,'content/research')).filter(name=>['cbe-schools.json','campus-schools-a.json','campus-schools-b.json','asu-programs.json','cbu-programs.json'].includes(name)).map(name=>JSON.parse(fs.readFileSync(path.join(__dirname,'content/research',name),'utf8')));
+const research=fs.readdirSync(path.join(__dirname,'content/research')).filter(name=>['cbe-schools.json','campus-schools-a.json','campus-schools-b.json','asu-programs.json','cbu-programs.json','excelsior-programs.json'].includes(name)).map(name=>JSON.parse(fs.readFileSync(path.join(__dirname,'content/research',name),'utf8')));
 const school=id=>opportunities.schools.find(s=>s.id===id),program=id=>opportunities.programs.find(p=>p.id===id);
 
 test('expanded discovery preserves every existing official listing and keeps source-backed school/program identities',()=>{

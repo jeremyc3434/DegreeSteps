@@ -28,8 +28,10 @@ const saved = p => p.evaluate(key => JSON.parse(localStorage.getItem(key)), KEY)
 const home = p => p.locator('#sheet-home .student-checklist');
 const item = (p, id) => home(p).locator('[data-dc-task="' + id + '"]');
 async function readyPlan(p) {
-  await home(p).locator('.dc-next').waitFor();
   await p.locator('tr.course-plan-row').first().waitFor();
+  // The checklist sits in the collapsed "All tasks and checklist" panel below the plan.
+  await openDetails(p.locator('#sheet-task-panel'));
+  await home(p).locator('.dc-next').waitFor();
 }
 async function page(state = seed(), path = 'plan.html') {
   const context = await browser.newContext({viewport:{width:1440, height:1000}});
@@ -43,7 +45,8 @@ async function page(state = seed(), path = 'plan.html') {
   p.on('pageerror', error => errors.push(error.message));
   await p.goto(BASE + path, {waitUntil:'networkidle'});
   if (path.startsWith('portal.html')) await p.locator('#portal-question-title').waitFor();
-  else if (path.includes('task=credits')) await p.locator('#sheet-dialog [data-prior-choice="none"]').waitFor();
+  // The records task opens the upload page, which also offers the two past-course decisions.
+  else if (path.includes('task=credits')) {await p.waitForURL('**/import-courses.html?from=plan');await p.locator('[data-import-prior="later"]').waitFor();}
   else await readyPlan(p);
   return p;
 }
@@ -51,29 +54,48 @@ async function openDetails(locator) {
   if (await locator.getAttribute('open') === null) await locator.locator(':scope > summary').click();
 }
 async function reveal(p, id) {
+  await openDetails(p.locator('#sheet-task-panel'));
   await openDetails(home(p).locator('[data-dc-open="checklist"]'));
   const task = item(p, id), group = await task.getAttribute('data-dc-group');
   await openDetails(home(p).locator('[data-dc-open="group:' + group + '"]'));
   if (await task.getAttribute('data-status') === 'done') await openDetails(home(p).locator('[data-dc-open="done:' + group + '"]'));
   return task;
 }
+const failures = [];
 async function test(name, run) {
   if (process.env.DEGREEPATH_NEXT_STEP_CASE && !new RegExp(process.env.DEGREEPATH_NEXT_STEP_CASE).test(name)) return;
   const before = contexts.length;
+  // Each journey reports on its own so one failure does not hide the rest; any failure fails the run.
   try {await run(); count++; console.log('PASS ' + name);}
+  catch (error) {failures.push(name); console.log('FAIL ' + name + '\n  ' + String(error.message).split('\n')[0]);}
   finally {for (const context of contexts.splice(before)) await context.close();}
 }
 
 (async () => {try {
   browser = await chromium.launch({executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium', args:['--no-sandbox']});
 
+  await test('the records task opens the course upload page, with manual entry, without changing records', async () => {
+    for (const status of [null, 'saved', 'in-progress']) {
+      const state = seed();
+      if (status) state.learning = [record(status)];
+      const p = await page(state);
+      await p.goto(BASE + 'plan.html?task=credits', {waitUntil:'networkidle'});
+      await p.waitForURL('**/import-courses.html?from=plan');
+      assert.equal(await p.getByRole('link', {name:'Enter it manually', exact:true}).getAttribute('href'), 'plan.html?task=credits&manual=1&from=courses');
+      assert.deepEqual((await saved(p)).learning, state.learning);
+    }
+  });
+  // The records task redirects to the upload page, which offers all three past-course decisions:
+  // upload (or enter manually), "I don't have past college courses" and "I'll add them later".
   await test('zero, saved-only and in-progress collections all offer the three past-course decisions', async () => {
     for (const status of [null, 'saved', 'in-progress']) {
       const state = seed();
       if (status) state.learning = [record(status)];
-      const p = await page(state, 'plan.html?task=credits'), dialog = p.locator('#sheet-dialog');
-      assert.equal(await dialog.locator('[data-prior-choice]').count(), 3);
-      for (const choice of ['some', 'none', 'later']) assert(await dialog.locator('[data-prior-choice="' + choice + '"]').isVisible());
+      const p = await page(state, 'plan.html?task=credits');
+      assert(await p.locator('label[for="import-files"]').isVisible(), 'upload past courses');
+      assert(await p.getByRole('link', {name:'Enter it manually', exact:true}).isVisible());
+      assert(await p.getByRole('button', {name:'I don’t have past college courses', exact:true}).isVisible());
+      assert(await p.getByRole('button', {name:'I’ll add them later', exact:true}).isVisible());
       assert.equal(await p.locator('#sheet-learning-form').count(), 0);
       assert.deepEqual((await saved(p)).learning, state.learning);
     }
@@ -83,7 +105,7 @@ async function test(name, run) {
     const state = seed();
     state.learning = ['saved', 'planned', 'in-progress'].map(status => record(status));
     const p = await page(state, 'plan.html?task=credits'), before = await saved(p);
-    await p.locator('[data-prior-choice="none"]').click();
+    await p.locator('[data-import-prior="none"]').click();
     await p.waitForURL(BASE + 'plan.html');
     await readyPlan(p);
     const after = await saved(p);
@@ -103,7 +125,7 @@ async function test(name, run) {
   await test('Do this later records a waiting task and leaves the course plan provisional', async () => {
     const state = seed();state.learning = [record('saved')];
     const p = await page(state, 'plan.html?task=credits');
-    await p.locator('[data-prior-choice="later"]').click();
+    await p.locator('[data-import-prior="later"]').click();
     await p.waitForURL(BASE + 'plan.html');await readyPlan(p);
     const after = await saved(p);
     assert.equal(after.profile.hasPrior, 'unknown');
@@ -115,15 +137,17 @@ async function test(name, run) {
     assert.deepEqual(after.learning, state.learning);
   });
 
+  // Adding past courses is now the upload page itself (or its manual-entry link). Opening the form records
+  // nothing; the past-course answer follows from the records the student saves.
   await test('Add past courses opens the original-record form without awarding or deleting learning', async () => {
     const state = seed();state.learning = [record('saved')];
-    const p = await page(state, 'plan.html?task=credits');
-    await p.locator('[data-prior-choice="some"]').click();
+    const p = await page(state, 'plan.html?task=credits'), before = await saved(p);
+    await p.getByRole('link', {name:'Enter it manually', exact:true}).click();
     await p.locator('#sheet-learning-form').waitFor();
     assert(await p.locator('#sheet-learning-form').getByLabel('Original school or provider').isVisible());
     const after = await saved(p);
-    assert.equal(after.profile.hasPrior, 'some');
-    assert.equal(after.journey.creditsDeferred, true);
+    assert.equal(after.profile.hasPrior, before.profile.hasPrior);
+    assert.equal(after.journey.creditsDeferred, before.journey.creditsDeferred);
     assert.deepEqual(after.learning, state.learning);
     assert.equal(after.journey.planReviewed, false);
     assert.equal(after.journey.schoolContacted, false);
@@ -138,7 +162,7 @@ async function test(name, run) {
       state.sheet.notes['other-degree'].concurrent = 'Keep this newer private note';
       localStorage.setItem(key, JSON.stringify(state));
     }, {key:KEY, source:concurrent});
-    await p.locator('[data-prior-choice="none"]').click();
+    await p.locator('[data-import-prior="none"]').click();
     await p.waitForFunction(() => /completed learning/i.test(document.querySelector('#sheet-prior-error')?.textContent || ''));
     assert.equal(new URL(p.url()).searchParams.get('task'), 'credits');
     const after = await saved(p);
@@ -146,6 +170,14 @@ async function test(name, run) {
     assert.equal(after.sheet.notes['other-degree'].concurrent, 'Keep this newer private note');
     assert.equal(after.profile.hasPrior, 'unknown');
     assert(await p.locator('[data-prior-choice="none"]').isEnabled());
+  });
+
+  await test('a student with finished courses is not offered "I don’t have past college courses" on the upload page', async () => {
+    const state = seed();state.learning = [record('earned')];
+    const p = await page(state, 'plan.html?task=credits');
+    assert.equal(await p.locator('[data-import-prior="none"]').isVisible(), false);
+    assert(await p.locator('[data-import-prior="later"]').isVisible());
+    for (const width of [390, 320]) {await p.setViewportSize({width, height:844});assert(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));}
   });
 
   await test('deadline tasks prepare a specific school question with an official source and return to My plan', async () => {
@@ -158,7 +190,7 @@ async function test(name, run) {
     const official = p.getByRole('link', {name:/Open official program information/});
     assert.match(await official.getAttribute('href'), /^https:\/\//);
     assert.equal(await p.locator('[data-action="school-contacted"]').count(), 0);
-    assert.equal(await p.getByRole('link', {name:'My plan', exact:true}).getAttribute('href'), 'plan.html');
+    assert.deepEqual([...new Set(await p.getByRole('link', {name:'My plan', exact:true}).evaluateAll(links => links.map(link => link.getAttribute('href'))))], ['plan.html']);
     await p.getByRole('link', {name:'Back to my checklist', exact:true}).click();
     await p.waitForURL(BASE + 'plan.html');await readyPlan(p);
     assert.equal((await saved(p)).journey.schoolContacted, false);
@@ -222,6 +254,7 @@ async function test(name, run) {
 
   assert.deepEqual(errors, []);
   console.log(count + ' next-step browser journeys passed.');
+  if (failures.length) {console.error(failures.length + ' failed: ' + failures.join('; ')); process.exitCode = 1;}
 } finally {
   for (const context of contexts) await context.close();
   await browser?.close();

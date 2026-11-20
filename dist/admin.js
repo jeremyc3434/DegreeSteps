@@ -19,7 +19,7 @@ function aiControls(){
  $('ai-connection-save').disabled=aiConnectionBusy||!ready||!aiConnection.storageReady;
  $('ai-api-key').disabled=aiConnectionBusy||!ready||!aiConnection.storageReady;
  $('ai-connection-test').disabled=aiConnectionBusy||!ready||!aiConnection.configured;
- $('ai-connection-disconnect').disabled=aiConnectionBusy||!ready||aiConnection.source!=='managed';
+ $('ai-connection-disconnect').disabled=aiConnectionBusy||!ready||!(aiConnection.storedKey||aiConnection.source==='managed');
  $('ai-connection-refresh').disabled=aiConnectionBusy;
  $('ai-connection-form').setAttribute('aria-busy',String(aiConnectionBusy));
 }
@@ -28,11 +28,13 @@ function showAIConnection(config){
  aiConnection=config;
  const connected=config.configured,badge=$('ai-connection-status');
  badge.textContent=connected?'Connected':'Not connected';badge.dataset.state=connected?'ready':'disconnected';
- $('ai-connection-summary').textContent=config.source==='managed'?(connected?'Connected with your encrypted, saved API key.':'A saved API key is present, but the server cannot open it. Finish the secure storage setup.'):config.source==='environment'?'Connected with a server secret. To remove that key, update the site’s server settings.':'Add an API key to enable research for new degree requests.';
- $('ai-storage-note').hidden=config.storageReady===true;
- $('ai-key-entry').hidden=config.storageReady!==true;$('ai-key-entry').open=!connected;
+ // The key lives in the Worker secret ANTHROPIC_API_KEY. Saving a key on this page is a legacy option, off unless the server allows it.
+ const canSave=config.canSave===true,stored=config.storedKey===true||config.source==='managed';
+ $('ai-connection-summary').textContent=config.source==='environment'?'Connected with the server secret ANTHROPIC_API_KEY.'+(stored?' An older key is also saved on this page. Disconnect it so only the server secret is used.':''):config.source==='managed'?(connected?'Connected with an older key saved on this page. Add the key as the ANTHROPIC_API_KEY Worker secret, then disconnect this saved key.':'An older saved key is present, but the server cannot open it. Add the ANTHROPIC_API_KEY Worker secret and disconnect this saved key.'):'Not connected. Add your Claude Console key as the ANTHROPIC_API_KEY secret on the Cloudflare Worker (Settings → Variables and Secrets), then refresh this page.';
+ $('ai-storage-note').hidden=!canSave||config.storageReady===true;
+ $('ai-key-entry').hidden=!canSave||config.storageReady!==true;$('ai-key-entry').open=canSave&&!connected;
  $('ai-key-summary').textContent=connected?'Replace API key':'Add your API key';
- $('ai-connection-test').hidden=!connected;$('ai-connection-disconnect').hidden=config.source!=='managed';
+ $('ai-connection-test').hidden=!connected;$('ai-connection-disconnect').hidden=!stored;
  const daily=Number(config.limits?.researchPerDay),student=Number(config.limits?.researchPerStudentPerDay);
  $('ai-connection-limits').hidden=!(Number.isSafeInteger(daily)&&daily>0&&daily<=20&&Number.isSafeInteger(student)&&student>0&&student<=20);
  $('ai-connection-limits').textContent='Up to '+daily+' new research runs per day across DegreeSteps · '+student+' per student. Existing degree research is reused first.';

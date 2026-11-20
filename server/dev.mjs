@@ -1,5 +1,6 @@
 /** Loopback preview only. This file is never included in the production Worker. */
 import http from 'node:http';
+import { gzipSync } from 'node:zlib';
 import { handleCatalog } from './catalog.mjs';
 import { handleCurriculumDiscovery } from './curriculum-discovery.mjs';
 import { DatabaseSync } from 'node:sqlite';
@@ -8,6 +9,7 @@ import { resolve, sep } from 'node:path';
 import { handleCommunity } from './community.mjs';
 import { handlePortal } from './portal.mjs';
 import { handleAuth, resolvePortalIdentity } from './auth.mjs';
+import { handleCoach } from './coach.mjs';
 const root=resolve(import.meta.dirname,'..'),staticRoot=resolve(root,'dist');
 const port=Number(process.env.DEGREEPATH_PREVIEW_PORT)||8099;
 await mkdir(resolve(root,'.local-community'),{recursive:true});
@@ -44,6 +46,18 @@ const server=http.createServer(async(req,res)=>{
       const candidate=target.searchParams.get('return_to')||'/community.html',returnTo=candidate.startsWith('/')&&!candidate.startsWith('//')?candidate:'/community.html';
       res.writeHead(303,{'Location':returnTo,'Set-Cookie':'degreepath_preview_user='+(signout?'':scoped)+'; Path=/; HttpOnly; SameSite=Lax'+(signout?'; Max-Age=0':'')});res.end();return;
     }
+    if(target.pathname==='/api/coach'||target.pathname.startsWith('/api/coach/')){
+      // Degree coach preview: off unless COACH_ENABLED=1. COACH_FETCH=mock answers from a scripted local model (no network).
+      const headers=new Headers();for(const [key,value]of Object.entries(req.headers))if(value)headers.set(key,String(value));
+      const chunks=[];let bytes=0;for await(const chunk of req){bytes+=chunk.length;if(bytes>64*1024){res.writeHead(413);res.end('Too large');return;}chunks.push(chunk);}
+      const request=new Request(target,{method:req.method,headers,...(!['GET','HEAD'].includes(req.method)&&chunks.length?{body:Buffer.concat(chunks)}:{})});
+      const match=(req.headers.cookie||'').match(/(?:^|;\s*)degreepath_preview_user=([A-Za-z0-9_-]+)/),user=users[match?.[1]]||null;
+      const coachEnv=process.env.COACH_ENABLED==='1'?{DB,COACH_ENABLED:'1',COACH_USER:user,COACH_HASH_SALT:process.env.COACH_HASH_SALT||'preview-only-coach-salt',COACH_MODEL:process.env.COACH_MODEL,COACH_DAILY_USD_CAP:process.env.COACH_DAILY_USD_CAP,COACH_ANON_DAILY_LIMIT:process.env.COACH_ANON_DAILY_LIMIT,COACH_USER_DAILY_LIMIT:process.env.COACH_USER_DAILY_LIMIT,
+        COACH_DATA:async()=>Object.fromEntries(await Promise.all([['library','plan-library-index'],['index','coach-index'],['knowledge','coach-knowledge']].map(async([name,file])=>[name,JSON.parse(await readFile(resolve(staticRoot,'data',file+'.json'),'utf8'))]))),
+        ...(process.env.COACH_FETCH==='mock'?{COACH_FETCH:(await import('./coach-mock.mjs')).createMockCoachFetch(),COACH_RESOLVE_KEY:async()=>'preview-mock-key-not-a-real-credential'}:{COACH_RESOLVE_KEY:async()=>process.env.ANTHROPIC_API_KEY||null})}:{};
+      const response=await handleCoach(request,coachEnv);
+      res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
+    }
     if(target.pathname.startsWith('/api/community/')||target.pathname.startsWith('/api/portal/')||target.pathname.startsWith('/api/auth/')||target.pathname.startsWith('/auth/')){
       const headers=new Headers();for(const [key,value]of Object.entries(req.headers))if(value&&!key.startsWith('oai-authenticated-'))headers.set(key,String(value));
       const match=(req.headers.cookie||'').match(/(?:^|;\s*)degreepath_preview_user=([A-Za-z0-9_-]+)/),user=users[match?.[1]];
@@ -64,7 +78,10 @@ const server=http.createServer(async(req,res)=>{
     try{if((await stat(path)).isDirectory()){res.writeHead(308,{Location:target.pathname+'/'+target.search});res.end();return;}}catch{}
     if(!path.startsWith(staticRoot+sep)){res.writeHead(404);res.end();return;}
     if(!(await stat(path)).isFile())throw Error('Not a file');
-    res.writeHead(200,{'Content-Type':mime[path.split('.').pop()]||'application/octet-stream','Cache-Control':'no-store'});res.end(req.method==='HEAD'?undefined:await readFile(path));
+    // Compress text like the production asset host does, so preview download sizes and timings are realistic.
+    const type=mime[path.split('.').pop()]||'application/octet-stream',zip=/^(text\/|application\/(json|javascript))/.test(type)&&/\bgzip\b/.test(req.headers['accept-encoding']||'');
+    const body=req.method==='HEAD'?undefined:zip?gzipSync(await readFile(path),{level:6}):await readFile(path);
+    res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store',...(zip?{'Content-Encoding':'gzip',Vary:'Accept-Encoding'}:{})});res.end(body);
   }catch(error){if(!res.headersSent)res.writeHead(error?.code==='ENOENT'?404:500,{'Content-Type':'text/plain'});res.end('Preview request unavailable.');}
 });
 server.listen(port,'127.0.0.1',()=>console.log('DegreeSteps preview: http://127.0.0.1:'+port+'/ (local SQLite and loopback-only test sign-in)'));

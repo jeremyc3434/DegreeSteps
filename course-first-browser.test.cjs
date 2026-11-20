@@ -15,7 +15,7 @@ function seed({ready=true,level='bachelor'}={}){
   {id:'unknown-history',provider:'My former college',code:'HIST 999',title:'History course needing a transcript',credits:null,creditSystem:null,status:'earned',evaluations:[]}
  ];
  state.sheet.notes={private:'Keep my private advisor note'};
- state.whatIf={version:1,goalReady:ready,selectedIds:ready?['route:liberty-business-residential','route:tesu-general-management','route:liberty-criminal-justice-online']:[]};
+ state.whatIf={version:1,goalReady:ready,selectedIds:ready?['route:liberty-business-residential','route:liberty-criminal-justice-residential','route:liberty-criminal-justice-online']:[]};
  return state;
 }
 async function page(state=seed(),width=1440){
@@ -54,7 +54,10 @@ async function test(name,run){
   const original=seed({ready:false,level:'master'}),p=await page(original);
   await p.locator('#comparison-intent').waitFor();assert.equal(await p.locator('#comparison-level').inputValue(),'master');
   await p.locator('#comparison-modality').selectOption('online');
-  await p.locator('#comparison-intent-form button[type=submit]').click();await p.locator('[data-scenario]').first().waitFor();
+  await p.locator('#comparison-intent-form button[type=submit]').click();
+  // Only published plans are compared; when none is a master's degree, no bachelor's plan may stand in for one.
+  const published=require('./dist/data/publication-index.json').plans.filter(plan=>plan.publicationReady&&plan.level==='master');
+  if(published.length)await p.locator('[data-scenario]').first().waitFor();else await p.getByText(/isn’t a reviewed route matching these preferences/).waitFor();
   const ids=await p.locator('[data-scenario]').evaluateAll(nodes=>nodes.map(node=>node.dataset.scenario));
   for(const id of ids)assert.equal(catalog.pathways.find(route=>route.id===id.slice(6))?.level,'master');
   assert.equal((await stored(p)).profile.degreeLevel,'master');assert.equal((await stored(p)).selectedPathwayId,'');
@@ -70,7 +73,7 @@ async function test(name,run){
   assert.equal((await card.locator('[data-potential-fit-credits]').innerText()).trim(),'6');
   assert.equal((await card.locator('[data-confirmed-credits]').innerText()).trim(),'0');
   assert.equal((await card.locator('[data-remaining-credits]').innerText()).trim(),'117');
-  assert(await card.locator('[data-tuition-left]').isVisible());assert.match(await card.locator('[data-tuition-left]').innerText(),/\$[\d,]+/);
+  assert(await card.locator('[data-remaining-cost]').isVisible());assert.match(await card.locator('[data-remaining-cost]').innerText(),/\$[\d,]+/);assert.match(await card.locator('[data-tuition-left]').textContent(),/\$[\d,]+/,'the tuition share sits under See what’s included');
   assert.equal(await card.locator('[data-study-weeks]').count(),0);
   assert(await card.locator('[data-estimate-plan]').isVisible());
   await card.locator('[data-course-review]>summary').click();
@@ -102,7 +105,7 @@ async function test(name,run){
   await business(p).locator('[data-estimate-plan]').click();await p.locator('#comparison-use').waitFor();
   assert.equal((await stored(p)).selectedPathwayId,'');
   assert.match(await p.locator('#comparison-confirm-use').innerText(),/add estimate/);
-  await p.locator('#comparison-confirm-use').click();await p.waitForURL('**/plan.html?task=cost-time');
+  await p.locator('#comparison-confirm-use').click();await p.waitForURL('**/plan.html?task=cost-time&from=compare');
   await p.locator('#sheet-cost-form').waitFor();assert.equal((await stored(p)).selectedPathwayId,'liberty-business-residential');
   assert.deepEqual((await stored(p)).learning,original.learning);assert.deepEqual((await stored(p)).sheet.notes,original.sheet.notes);
  });
@@ -112,7 +115,7 @@ async function test(name,run){
    assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
    for(const card of await p.locator('[data-scenario]').all()){
     const bounds=await card.boundingBox();assert(bounds.x>=0&&bounds.x+bounds.width<=width+1);
-    assert(await card.locator('[data-tuition-left]').isVisible());assert(await card.locator('[data-use-plan]').isVisible());
+    assert(await card.locator('[data-remaining-cost]').isVisible());assert(await card.locator('[data-use-plan]').isVisible());
    }
    await p.locator('#comparison-advanced>summary').click();assert.equal(await p.locator('#compare-slot option').count(),3);
    assert.equal(await p.locator('#compare-slot').inputValue(),'0');

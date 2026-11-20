@@ -76,7 +76,7 @@ async function setup({configured = true,signedIn = true,recovery = false,link = 
     assert.deepEqual(await page.evaluate(key => JSON.parse(localStorage.getItem(key)),KEY),draft);
   });
   await test('opening an older plan preserves the device course collection and private notes',async () => {
-    const {page,state} = await setup(); await page.locator('[data-open-plan="plan-1"]').click();
+    const {page,state} = await setup(); await page.locator('[data-open-plan="plan-1"]:not([data-account-next-step])').click();
     assert.deepEqual(await page.evaluate(key => JSON.parse(localStorage.getItem(key)),KEY),draft); assert.equal(state.writes.length,0);
     assert.match(await page.locator('.account-inline-confirm').innerText(),/current courses and private notes stay/);
     await page.locator('[data-confirm-open="plan-1"]').click(); await page.waitForURL('**/portal.html');
@@ -88,7 +88,7 @@ async function setup({configured = true,signedIn = true,recovery = false,link = 
     const {page} = await setup({link:{ownerId:'student-a',planId:'plan-1',revision:2}});
     await page.getByRole('button',{name:'Sign out',exact:true}).click(); await page.locator('#account-auth-form').waitFor();
     assert.equal(await page.evaluate(key => localStorage.getItem(key),LINK),null); assert.deepEqual(await page.evaluate(key => JSON.parse(localStorage.getItem(key)),KEY),draft);
-    assert.match(await page.locator('#account-status').innerText(),/device draft remains/);
+    assert.match(await page.locator('#account-status').innerText(),/Your plan on this device is still here/);
   });
   await test('password recovery takes priority over the already authenticated dashboard',async () => {
     const {page,state} = await setup({recovery:true});

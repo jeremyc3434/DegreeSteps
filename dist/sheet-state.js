@@ -359,5 +359,60 @@
     const values={externalCredits:current?.coverage?.mappedExternalCredits,confirmedCredits:current?.totals?.confirmed,modeledSubtotal:current?.costs?.modeledSubtotal,scenarioWeeks:current?.timing?.scenarioWeeks};
     return Object.fromEntries(Object.entries(values).map(([key,value])=>[key,finite(value)&&finite(baseline[key])?value-baseline[key]:null]));
   }
-  return Object.freeze({initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog});
+  // The degree's own unit name. Competency units and quarter credits are never relabelled as semester credits.
+  function creditUnit(creditSystem,count) {
+    const one=count===1;
+    if(creditSystem==='competency-unit')return one?'competency unit':'competency units';
+    if(creditSystem==='quarter')return one?'quarter credit':'quarter credits';
+    return one?'credit':'credits';
+  }
+  const listNames=names=>names.length<2?names.join(''):names.slice(0,-1).join(', ')+' and '+names.at(-1);
+  // Compares this worksheet's planned outside credits with the published starting route
+  // (a reviewed baseline). Read-only: it explains a difference, it never changes choices.
+  function routeCreditDifference({baseline,plannedCredits,providers,creditSystem}={}) {
+    const starting=baseline?.summary?.transferCredits;
+    if(!finite(starting)||!finite(plannedCredits)||!Array.isArray(providers))return null;
+    const difference=Math.round((plannedCredits-starting)*10)/10;
+    if(difference===0)return null;
+    const amount=Math.abs(difference),unit=creditUnit(creditSystem,amount),outside=difference<0?'fewer':'more';
+    const routeProviders=[...new Set(list(baseline.rows).map(row=>row?.provider).filter(provider=>typeof provider==='string'&&provider&&provider!=='University'))];
+    const off=difference<0?routeProviders.filter(provider=>!providers.includes(provider)):[];
+    const reason=off.length?'because '+listNames(off)+(off.length===1?' is':' are')+' off in your course sources':'because of your current choices';
+    return {difference,startingCredits:starting,plannedCredits,providersOff:off,text:amount+' '+outside+' outside '+unit+' than the starting route '+reason+'.'};
+  }
+  // An alternative institution minimum that applies only to some students (for example
+  // partnership admission), read from the program's own sourced policy evidence.
+  function residencyAlternative(program,shownMinimum) {
+    const alt=program?.policyEvidence?.institutionMinCredits?.partnershipAlternative;
+    if(!alt||!finite(alt.value)||alt.value<=0||!text(alt.scope)||!list(alt.sourceIds).length||finite(shownMinimum)&&alt.value<=shownMinimum)return null;
+    return {value:alt.value,scope:text(alt.scope),sourceIds:[...alt.sourceIds],text:text(alt.scope).replace(/[.\s]+$/,'')+': at least '+alt.value+' '+creditUnit(program.creditSystem,alt.value)+' at the university.'};
+  }
+  // Plans that still need school confirmation (data/plan-library-index.json,
+  // tier 'confirmation') carry open questions keyed by route id. Reviewed plans
+  // and a missing or malformed index return none.
+  function schoolQuestions(index,routeId){
+    const plans=object(object(index).plans),id=text(routeId);
+    const entry=id&&Object.hasOwn(plans,id)?object(plans[id]):{};
+    if(entry.tier!=='confirmation'||!Array.isArray(entry.questions))return [];
+    return entry.questions.slice(0,12).filter(question=>typeof question==='string'&&question.trim()).map(question=>{const value=bounded(question,400).replace(/^ask the school:\s*/i,'');return value.charAt(0).toUpperCase()+value.slice(1);}).filter(Boolean);
+  }
+  // Subject choices follow the browsing taxonomy (content/catalog/subject-areas.json);
+  // labels come from the plan index when present. An older saved field id stays
+  // selectable so a saved profile is shown as it is rather than reset.
+  const defaultSubjectLabels={business:'Business & management','accounting-finance':'Accounting & finance',technology:'Technology & data',health:'Health & healthcare',psychology:'Psychology & human services','criminal-justice':'Criminal justice & law',education:'Education',humanities:'Communication & humanities',faith:'Religion & ministry'};
+  const legacySubjectLabels={science:'Science & mathematics',arts:'Arts & design','social-science':'Social sciences (psychology or criminal justice)',general:'General studies',law:'Law',aviation:'Aviation'};
+  function subjectChoices(current,index){
+    const ids=Guide&&Array.isArray(Guide.subjectIds)?Guide.subjectIds:Object.keys(defaultSubjectLabels),labels=object(object(index).subjects);
+    const items=[['any','Any eligible subject'],...ids.filter(id=>Object.hasOwn(defaultSubjectLabels,id)).map(id=>[id,Object.hasOwn(labels,id)&&text(labels[id])?text(labels[id]):defaultSubjectLabels[id]])];
+    const value=text(current);
+    if(value&&!items.some(([id])=>id===value)&&Object.hasOwn(legacySubjectLabels,value))items.push([value,legacySubjectLabels[value]]);
+    return items;
+  }
+  // Route subjects from the plan index let a new subject filter strictly.
+  function attachRouteSubjects(catalog,index){
+    const plans=object(object(index).plans);if(!catalog||!Array.isArray(catalog.pathways)||!Object.keys(plans).length)return catalog;
+    let changed=false;const pathways=catalog.pathways.map(route=>{const entry=route&&Object.hasOwn(plans,route.id)?object(plans[route.id]):{},subjects=entry.subjects;if(!Array.isArray(subjects)||!subjects.every(id=>typeof id==='string')||JSON.stringify(route.subjects)===JSON.stringify(subjects))return route;changed=true;return {...route,subjects:[...subjects]};});
+    return changed?{...catalog,pathways}:catalog;
+  }
+  return Object.freeze({initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog,creditUnit,routeCreditDifference,residencyAlternative,schoolQuestions,subjectChoices,attachRouteSubjects});
 }));

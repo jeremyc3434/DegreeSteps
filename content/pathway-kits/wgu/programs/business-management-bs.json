@@ -1,0 +1,1655 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "business-management-bs",
+  "modelId": "curriculum-wgu-catalog-ecceaa488637ac83",
+  "routeIds": [
+    "wgu-catalog-ecceaa488637ac83"
+  ],
+  "title": "Business Management – B.S.",
+  "level": "bachelor",
+  "catalog": "202605",
+  "totalCredits": 110,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-20"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 82.5,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-business-current"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "Every equivalency placed in more than one requirement of this program carries the school-published single-award condition.",
+      "sourceIds": [
+        "wgu-bsmgt-sophia-approved-7112-v186",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmgt-sophia-7112-v186",
+        "wgu-business-bsmgt-study-4429-v114"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Current published WGU agreements7112rev186(Sophia)and4429rev114(Study.com) explicitly bind the included outside courses to Business Management202605. Their program-specific receiving awards supersede older provider-only candidates; original source-credit quantities remain separate.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories.",
+      "The November 2026 university catalog independently verifies all 36 named WGU course codes, their competency-unit amounts and the 110-CU BSMGT 202605 total.",
+      "The program-specific guideline identifies eight nontransferable WGU courses totaling 26 CU, including the 4-CU QGT1 capstone. These are enforced as university-only; this is distinct from the broader residency sufficient check.",
+      "Current core term charges are $3,850 tuition plus $200 resource fee per six months, with a separate $65 application fee. Personal completion timing remains a pace scenario, not a promise.",
+      "Primary WGU handbook23797, updatedSeptember18,2026, requires25%ofdegreeCUs directly within the active program in addition to capstone; for this110CUledger the verified calculated floor is31.5CU including QGT1.",
+      "The executable outside options are limited to source codes printed in the currently published approved program240 agreements. The same original learning action cannot satisfy two receiving requirements.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+    ],
+    "mappingCheckedOn": "2026-11-20",
+    "pricing": {
+      "model": "subscription",
+      "amount": 4050,
+      "period": "6 months",
+      "currency": "USD",
+      "tuitionPerTerm": 3850,
+      "resourceFeePerTerm": 200,
+      "includesResourceFee": true,
+      "effectiveTermsBeginning": "2026-10-01",
+      "oneTimeFees": [
+        {
+          "id": "application",
+          "label": "Application fee",
+          "amount": 65,
+          "currency": "USD",
+          "frequency": "one-time",
+          "sourceIds": [
+            "wgu-bsmgt-catalog-202611"
+          ]
+        }
+      ],
+      "sourceUrl": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+      "sourceIds": [
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-tuition"
+      ],
+      "checkedOn": "2026-11-17",
+      "notes": [
+        "$4,050 per six-month term combines $3,850 tuition and the $200 resource fee. The $65 application fee is separate and is not charged each term.",
+        "Outside learning, optional costs, financial aid, discounts and individual remaining-term count are not included. A six-month billing period is not a guaranteed degree completion time."
+      ]
+    },
+    "externalMaxCredits": 82.5,
+    "policySourceIds": [
+      "wgu-bsmgt-catalog-202611",
+      "wgu-bsmgt-transfer-guideline-202605",
+      "wgu-bsmgt-transfer-guidelines-api-240-reviewed",
+      "wgu-residency-policy-23797-20260918"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 82.5,
+        "fraction": 0.75,
+        "basisCredits": 110,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-bsmgt-catalog-202611"
+        ],
+        "note": "Overall 75% program transfer ceiling; exact mapped-course and residency restrictions can require more WGU coursework."
+      },
+      "alternativeMaxCredits": {
+        "value": 82.5,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-bsmgt-catalog-202611",
+          "wgu-sophia-business-current"
+        ],
+        "note": "Alternative learning shares the overall ceiling; no additional credit allowance is added on top."
+      }
+    },
+    "residencyPolicy": {
+      "type": "institution-fraction-with-capstone-exclusion",
+      "creditSystem": "competency-unit",
+      "fraction": 0.25,
+      "capstoneRequirementIds": [
+        "bsmgt-business-management-capstone-written-project"
+      ],
+      "capstoneCredits": 4,
+      "sourceIds": [
+        "wgu-residency-policy-23797-20260918",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-transfer-guidelines-api-240-reviewed"
+      ],
+      "interpretationStatus": "verified-additional-capstone",
+      "conservativeSufficientCondition": {
+        "minimumNonCapstoneInstitutionCUs": 27.5,
+        "basisCredits": 110,
+        "derivation": "The current handbook requires25%of110degreeCUs within the active program in addition to capstone:27.5noncapstoneWGUCU+4CUQGT1. The existing check directly enforces this primary-source rule."
+      },
+      "notes": [
+        "At least25% of the110required degree CUs must be earned directly within the active WGU program, in addition to the required4CUcapstone:27.5noncapstone+4capstone=31.5CU.",
+        "Prior completed WGU-program credits and transferred certifications are not automatically current-program residency; only the handbook-defined reviewed exceptions can apply."
+      ],
+      "calculatedMinimumInstitutionCUs": 31.5,
+      "primaryPolicySections": [
+        "IV.2",
+        "IV.3.a",
+        "IV.3.b.i"
+      ],
+      "historicalWording": [
+        {
+          "wording": "at least 25% of the required Degree Competency Units (excluding the capstone course) at WGU",
+          "sourceIds": [
+            "wgu-bsmgt-transfer-guideline-202605"
+          ],
+          "retrieval": "Earlier indexed wording; current handbook resolves the additional-capstone basis."
+        }
+      ],
+      "creditScope": "active-program"
+    },
+    "pacePolicy": {
+      "termMonths": 6,
+      "startDayOfMonth": 1,
+      "fullTimeMinimumCUsPerTerm": 12,
+      "acceleratedAdditionalCoursesRequireMentor": true,
+      "transferBeforeInitialTerm": true,
+      "transcriptDeadline": {
+        "dayOfMonth": 5,
+        "monthsBeforeStart": 1,
+        "sourceIds": [
+          "wgu-bsmgt-catalog-202611"
+        ]
+      },
+      "sourceIds": [
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-guide"
+      ],
+      "notes": [
+        "Complete transfer courses and have original official records evaluated before the first WGU term; no later transfer awards are assumed.",
+        "After the original term courses are completed, additional courses may be added with the program mentor. Student mastery and assessment completion determine pace."
+      ]
+    },
+    "transferRules": {
+      "originalIssuerRecordsRequired": true,
+      "oneSourceCoursePerReceivingRequirement": true,
+      "businessMinimumGrade": "C",
+      "otherCourseMinimumGrade": "C-",
+      "courseSpecificRecencyYears": {
+        "D388": 5,
+        "C722": 5
+      },
+      "sourceIds": [
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-transfer-guideline-202605"
+      ],
+      "notes": [
+        "The transfer deadline uses the current institutional catalog fifth-day rule; earlier receipt is safer than the marketing page summary.",
+        "A generic CU/semester-credit learning equivalence is not proof of an individual outside course award; every source quantity remains separate."
+      ],
+      "businessReceivingCourseCodes": [
+        "C483",
+        "C715",
+        "C716",
+        "C722",
+        "C723",
+        "D077",
+        "D078",
+        "D079",
+        "D080",
+        "D081",
+        "D082",
+        "D089",
+        "D351",
+        "D353",
+        "D354",
+        "D388",
+        "D774",
+        "D775"
+      ],
+      "otherReceivingCourseCodes": [
+        "C165",
+        "C273",
+        "C458",
+        "C955",
+        "D265",
+        "D266",
+        "D268",
+        "D270",
+        "D333",
+        "D428"
+      ],
+      "gradeScopeSourceIds": [
+        "wgu-bsmgt-transfer-guidelines-api-240-reviewed"
+      ],
+      "recencySourceIds": [
+        "wgu-business-bsmgt-transfer-notes-v12"
+      ],
+      "publishedNotes": {
+        "notesAdditional": "Project Management must have been taken within the past 5 years.",
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-bsmgt-catalog-202611",
+          "wgu-bsmgt-guide"
+        ],
+        "sourcePages": {
+          "wgu-bsmgt-catalog-202611": [
+            65,
+            73,
+            74
+          ],
+          "wgu-bsmgt-guide": [
+            4
+          ]
+        },
+        "message": "The complete 36-course, 110-CU BSMGT 202605 curriculum is enforced through named receiving requirements. A separate semester upper-level aggregate is not assumed; this does not remove named-course eligibility, current transfer restrictions or required WGU coursework."
+      }
+    ],
+    "personalEvaluationReminder": "Published program-specific course maps do not record completed student credits. WGU evaluates original official transcripts and applies completion dates, duplicates and personal eligibility.",
+    "researchGaps": [
+      {
+        "requirementId": "bsmgt-innovative-and-strategic-thinking",
+        "receivingCode": "D081",
+        "credits": 3,
+        "creditSystem": "competency-unit",
+        "status": "no-reviewed-outside-option",
+        "note": "The named WGU course remains available; an outside alternative is not required to complete this degree."
+      },
+      {
+        "requirementId": "bsmgt-talent-acquisition",
+        "receivingCode": "D354",
+        "credits": 3,
+        "creditSystem": "competency-unit",
+        "status": "no-reviewed-outside-option",
+        "note": "The named WGU course remains available; an outside alternative is not required to complete this degree."
+      },
+      {
+        "requirementId": "bsmgt-fundamentals-of-spreadsheets-and-data-presentations",
+        "receivingCode": "D388",
+        "credits": 3,
+        "creditSystem": "competency-unit",
+        "status": "no-reviewed-outside-option",
+        "note": "The named WGU course remains available; an outside alternative is not required to complete this degree."
+      },
+      {
+        "requirementId": "bsmgt-strategic-training-and-development",
+        "receivingCode": "D353",
+        "credits": 3,
+        "creditSystem": "competency-unit",
+        "status": "no-reviewed-outside-option",
+        "note": "The named WGU course remains available; an outside alternative is not required to complete this degree."
+      },
+      {
+        "requirementId": "bsmgt-design-thinking-for-business",
+        "receivingCode": "D428",
+        "credits": 3,
+        "creditSystem": "competency-unit",
+        "status": "no-reviewed-outside-option",
+        "note": "The named WGU course remains available; an outside alternative is not required to complete this degree."
+      }
+    ],
+    "transferEvidenceReview": {
+      "id": "wgu-bsmgt-240-approved-20261117",
+      "checkedOn": "2026-11-17",
+      "programId": 240,
+      "catalog": "202605",
+      "sourceIds": [
+        "wgu-bsmgt-sophia-approved-7112-v186",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-bsmgt-program-data-202605-reviewed",
+        "wgu-bsmgt-transfer-guidelines-api-240-reviewed"
+      ],
+      "receivingClaims": 44,
+      "distinctReceivingRequirementCUs": 69,
+      "outsideOfferIdentities": "Existing independently reviewed source identities plus seven current linked Sophia syllabi; no duplicate original action or inferred SH quantity.",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 21,
+          "approvedSourceCodeCount": 33,
+          "independentlyVerifiedSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0024",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0034",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0059",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0089",
+            "SOPH-0091"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0024",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0034",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0059",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0089",
+            "SOPH-0091"
+          ],
+          "selectableReceivingPlacements": 29,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0070",
+            "SOPH-0071",
+            "SOPH-0073",
+            "SOPH-0074",
+            "SOPH-0081",
+            "SOPH-0095",
+            "SOPH-0096"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7112,
+          "agreementRecordVersion": 186,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 23,
+          "approvedSourceCodeCount": 75,
+          "independentlyVerifiedSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0025",
+            "SDCM-0026",
+            "SDCM-0050",
+            "SDCM-0052",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0115",
+            "SDCM-0187",
+            "SDCM-0225",
+            "SDCM-0265"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0025",
+            "SDCM-0026",
+            "SDCM-0050",
+            "SDCM-0052",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0115",
+            "SDCM-0187",
+            "SDCM-0225",
+            "SDCM-0265"
+          ],
+          "selectableReceivingPlacements": 14,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0002",
+            "SDCM-0003",
+            "SDCM-0004",
+            "SDCM-0005",
+            "SDCM-0006",
+            "SDCM-0011",
+            "SDCM-0012",
+            "SDCM-0023",
+            "SDCM-0028",
+            "SDCM-0029",
+            "SDCM-0031",
+            "SDCM-0032",
+            "SDCM-0034",
+            "SDCM-0035",
+            "SDCM-0038",
+            "SDCM-0039",
+            "SDCM-0040",
+            "SDCM-0041",
+            "SDCM-0042",
+            "SDCM-0048",
+            "SDCM-0053",
+            "SDCM-0054",
+            "SDCM-0055",
+            "SDCM-0060",
+            "SDCM-0062",
+            "SDCM-0065",
+            "SDCM-0066",
+            "SDCM-0068",
+            "SDCM-0069",
+            "SDCM-0071",
+            "SDCM-0073",
+            "SDCM-0077",
+            "SDCM-0079",
+            "SDCM-0090",
+            "SDCM-0101",
+            "SDCM-0102",
+            "SDCM-0105",
+            "SDCM-0133",
+            "SDCM-0134",
+            "SDCM-0138",
+            "SDCM-0140",
+            "SDCM-0153",
+            "SDCM-0155",
+            "SDCM-0156",
+            "SDCM-0157",
+            "SDCM-0158",
+            "SDCM-0159",
+            "SDCM-0169",
+            "SDCM-0174",
+            "SDCM-0188",
+            "SDCM-0189",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0242",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0248",
+            "SDCM-0252",
+            "SDCM-0255",
+            "SDCM-0259",
+            "SDCM-0260"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4429,
+          "agreementRecordVersion": 114,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 17,
+          "approvedSourceCodeCount": 36,
+          "independentlyVerifiedSourceCodes": [],
+          "independentlyVerifiedSelectableSourceCodes": [],
+          "selectableReceivingPlacements": 0,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0005",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0010",
+            "OOSL-0011",
+            "OOSL-0014",
+            "OOSL-0015",
+            "OOSL-0017",
+            "OOSL-0023",
+            "OOSL-0028",
+            "OOSL-0030",
+            "OOSL-0033",
+            "OOSL-0034",
+            "OOSL-0035",
+            "OOSL-0039",
+            "OOSL-0040",
+            "OOSL-0042",
+            "OOSL-0043",
+            "OOSL-0044",
+            "OOSL-0046",
+            "OOSL-0047",
+            "OOSL-0048",
+            "OOSL-0051",
+            "OOSL-0052",
+            "OOSL-0055",
+            "OOSL-0059",
+            "OOSL-0063",
+            "OOSL-0070",
+            "OOSL-0092",
+            "OOSL-0101",
+            "OOSL-0112",
+            "OOSL-0113",
+            "OOSL-0114",
+            "OOSL-0121",
+            "OOSL-0124",
+            "OOSL-0125"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 550,
+          "agreementRecordVersion": 66,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/550"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 14,
+          "approvedSourceCodeCount": 17,
+          "independentlyVerifiedSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0027",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0027",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "selectableReceivingPlacements": 18,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0012",
+            "SAYA-0029",
+            "SAYA-0033"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 668,
+          "agreementRecordVersion": 78,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/668"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false
+    },
+    "additionalProviderIdentityReview": {
+      "id": "wgu-business-approved-agreement-batch-2026-11-20",
+      "checkedOn": "2026-11-20",
+      "programId": 240,
+      "catalog": "202605",
+      "receivingClaimsReviewed": 75,
+      "sourceIdentitiesReusedByExactProviderCode": 61,
+      "sourceIds": [
+        "wgu-business-bsmgt-sophia-7112-v186",
+        "wgu-business-bsmgt-study-4429-v114",
+        "wgu-business-bsmgt-straighterline-550-v66",
+        "wgu-business-bsmgt-saylor-668-v78"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 21,
+          "approvedSourceCodeCount": 33,
+          "independentlyVerifiedSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0024",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0034",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0059",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0089",
+            "SOPH-0091"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0024",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0034",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0059",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0089",
+            "SOPH-0091"
+          ],
+          "selectableReceivingPlacements": 29,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0070",
+            "SOPH-0071",
+            "SOPH-0073",
+            "SOPH-0074",
+            "SOPH-0081",
+            "SOPH-0095",
+            "SOPH-0096"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7112,
+          "agreementRecordVersion": 186,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 23,
+          "approvedSourceCodeCount": 75,
+          "independentlyVerifiedSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0025",
+            "SDCM-0026",
+            "SDCM-0050",
+            "SDCM-0052",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0115",
+            "SDCM-0187",
+            "SDCM-0225",
+            "SDCM-0265"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0025",
+            "SDCM-0026",
+            "SDCM-0050",
+            "SDCM-0052",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0115",
+            "SDCM-0187",
+            "SDCM-0225",
+            "SDCM-0265"
+          ],
+          "selectableReceivingPlacements": 14,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0002",
+            "SDCM-0003",
+            "SDCM-0004",
+            "SDCM-0005",
+            "SDCM-0006",
+            "SDCM-0011",
+            "SDCM-0012",
+            "SDCM-0023",
+            "SDCM-0028",
+            "SDCM-0029",
+            "SDCM-0031",
+            "SDCM-0032",
+            "SDCM-0034",
+            "SDCM-0035",
+            "SDCM-0038",
+            "SDCM-0039",
+            "SDCM-0040",
+            "SDCM-0041",
+            "SDCM-0042",
+            "SDCM-0048",
+            "SDCM-0053",
+            "SDCM-0054",
+            "SDCM-0055",
+            "SDCM-0060",
+            "SDCM-0062",
+            "SDCM-0065",
+            "SDCM-0066",
+            "SDCM-0068",
+            "SDCM-0069",
+            "SDCM-0071",
+            "SDCM-0073",
+            "SDCM-0077",
+            "SDCM-0079",
+            "SDCM-0090",
+            "SDCM-0101",
+            "SDCM-0102",
+            "SDCM-0105",
+            "SDCM-0133",
+            "SDCM-0134",
+            "SDCM-0138",
+            "SDCM-0140",
+            "SDCM-0153",
+            "SDCM-0155",
+            "SDCM-0156",
+            "SDCM-0157",
+            "SDCM-0158",
+            "SDCM-0159",
+            "SDCM-0169",
+            "SDCM-0174",
+            "SDCM-0188",
+            "SDCM-0189",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0242",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0248",
+            "SDCM-0252",
+            "SDCM-0255",
+            "SDCM-0259",
+            "SDCM-0260"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4429,
+          "agreementRecordVersion": 114,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 17,
+          "approvedSourceCodeCount": 36,
+          "independentlyVerifiedSourceCodes": [],
+          "independentlyVerifiedSelectableSourceCodes": [],
+          "selectableReceivingPlacements": 0,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0005",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0010",
+            "OOSL-0011",
+            "OOSL-0014",
+            "OOSL-0015",
+            "OOSL-0017",
+            "OOSL-0023",
+            "OOSL-0028",
+            "OOSL-0030",
+            "OOSL-0033",
+            "OOSL-0034",
+            "OOSL-0035",
+            "OOSL-0039",
+            "OOSL-0040",
+            "OOSL-0042",
+            "OOSL-0043",
+            "OOSL-0044",
+            "OOSL-0046",
+            "OOSL-0047",
+            "OOSL-0048",
+            "OOSL-0051",
+            "OOSL-0052",
+            "OOSL-0055",
+            "OOSL-0059",
+            "OOSL-0063",
+            "OOSL-0070",
+            "OOSL-0092",
+            "OOSL-0101",
+            "OOSL-0112",
+            "OOSL-0113",
+            "OOSL-0114",
+            "OOSL-0121",
+            "OOSL-0124",
+            "OOSL-0125"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 550,
+          "agreementRecordVersion": 66,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/550"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 14,
+          "approvedSourceCodeCount": 17,
+          "independentlyVerifiedSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0027",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0027",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "selectableReceivingPlacements": 18,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0012",
+            "SAYA-0029",
+            "SAYA-0033"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 668,
+          "agreementRecordVersion": 78,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/668"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false,
+      "retiredInvalidSingleCourseOptions": []
+    }
+  },
+  "requirements": [
+    {
+      "id": "bsmgt-organizational-behavior",
+      "code": "C715",
+      "title": "Organizational Behavior",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-emotional-and-cultural-intelligence",
+      "code": "D082",
+      "title": "Emotional and Cultural Intelligence",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-business-communication",
+      "code": "C716",
+      "title": "Business Communication",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-principles-of-management",
+      "code": "C483",
+      "title": "Principles of Management",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-functions-of-human-resource-management",
+      "code": "D351",
+      "title": "Functions of Human Resource Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-health-fitness-and-wellness",
+      "code": "C458",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-innovative-and-strategic-thinking",
+      "code": "D081",
+      "title": "Innovative and Strategic Thinking",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-business-environment-applications-i-business-structures-and-legal-environment",
+      "code": "D078",
+      "title": "Business Environment Applications I: Business Structures and Legal Environment",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-introduction-to-communication-connecting-with-others",
+      "code": "D268",
+      "title": "Introduction to Communication: Connecting with Others",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-concepts-in-marketing-sales-and-customer-contact",
+      "code": "D077",
+      "title": "Concepts in Marketing, Sales, and Customer Contact",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-introduction-to-business-accounting",
+      "code": "D774",
+      "title": "Introduction to Business Accounting",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-critical-thinking-reason-and-evidence",
+      "code": "D265",
+      "title": "Critical Thinking: Reason and Evidence",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-composition-successful-self-expression",
+      "code": "D270",
+      "title": "Composition: Successful Self-Expression",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-introduction-to-business-finance",
+      "code": "D775",
+      "title": "Introduction to Business Finance",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-introduction-to-sociology",
+      "code": "C273",
+      "title": "Introduction to Sociology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-business-management-tasks",
+      "code": "QHT1",
+      "title": "Business Management Tasks",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": true,
+      "transferEligibility": {
+        "status": "nontransferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-talent-acquisition",
+      "code": "D354",
+      "title": "Talent Acquisition",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-applied-probability-and-statistics",
+      "code": "C955",
+      "title": "Applied Probability and Statistics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-fundamentals-of-spreadsheets-and-data-presentations",
+      "code": "D388",
+      "title": "Fundamentals of Spreadsheets and Data Presentations",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      },
+      "transferRecencyYears": 5
+    },
+    {
+      "id": "bsmgt-values-based-leadership",
+      "code": "D253",
+      "title": "Values-Based Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": true,
+      "transferEligibility": {
+        "status": "nontransferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-strategic-training-and-development",
+      "code": "D353",
+      "title": "Strategic Training and Development",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-consumer-behavior",
+      "code": "D175",
+      "title": "Consumer Behavior",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": true,
+      "transferEligibility": {
+        "status": "nontransferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-sales-management",
+      "code": "D099",
+      "title": "Sales Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": true,
+      "transferEligibility": {
+        "status": "nontransferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-design-thinking-for-business",
+      "code": "D428",
+      "title": "Design Thinking for Business",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-business-ethics",
+      "code": "C717",
+      "title": "Business Ethics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": true,
+      "transferEligibility": {
+        "status": "nontransferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-quantitative-analysis-for-business",
+      "code": "C723",
+      "title": "Quantitative Analysis For Business",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-principles-of-economics",
+      "code": "D089",
+      "title": "Principles of Economics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-world-history-diverse-cultures-and-global-connections",
+      "code": "D266",
+      "title": "World History: Diverse Cultures and Global Connections",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-business-environment-applications-ii-process-logistics-and-operations",
+      "code": "D079",
+      "title": "Business Environment Applications II: Process, Logistics, and Operations",
+      "credits": 2,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-integrated-physical-sciences",
+      "code": "C165",
+      "title": "Integrated Physical Sciences",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-managing-in-a-global-business-environment",
+      "code": "D080",
+      "title": "Managing in a Global Business Environment",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-business-simulation",
+      "code": "D361",
+      "title": "Business Simulation",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": true,
+      "transferEligibility": {
+        "status": "nontransferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-change-management",
+      "code": "C721",
+      "title": "Change Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": true,
+      "transferEligibility": {
+        "status": "nontransferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-project-management",
+      "code": "C722",
+      "title": "Project Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      },
+      "transferRecencyYears": 5,
+      "transferRecencySourceIds": [
+        "wgu-business-bsmgt-transfer-notes-v12"
+      ]
+    },
+    {
+      "id": "bsmgt-ethics-in-technology",
+      "code": "D333",
+      "title": "Ethics in Technology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-transfer-guideline-202605",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": false,
+      "transferEligibility": {
+        "status": "transferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    },
+    {
+      "id": "bsmgt-business-management-capstone-written-project",
+      "code": "QGT1",
+      "title": "Business Management Capstone Written Project",
+      "credits": 4,
+      "category": "capstone",
+      "sourceIds": [
+        "wgu-bsmgt-guide",
+        "wgu-bsmgt-catalog-202611",
+        "wgu-bsmgt-program-data-202605-reviewed"
+      ],
+      "institutionalOnly": true,
+      "transferEligibility": {
+        "status": "nontransferable",
+        "sourceIds": [
+          "wgu-bsmgt-transfer-guideline-202605"
+        ],
+        "catalog": "202605",
+        "note": "Official program-specific transfer guideline; eligibility alone does not establish a particular outside-course equivalency."
+      }
+    }
+  ]
+}

@@ -1,0 +1,366 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "health-science-bs",
+  "modelId": "curriculum-wgu-catalog-995901539a30b649",
+  "routeIds": [
+    "wgu-catalog-995901539a30b649"
+  ],
+  "title": "Health Science – B.S.",
+  "level": "bachelor",
+  "catalog": "202406",
+  "totalCredits": 91,
+  "review": {
+    "status": "migrated",
+    "source": "content/curricula/wgu.json",
+    "reviewedOn": "2026-11-09"
+  },
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 68.25,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-sophia-health-current"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
+      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
+      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+    ],
+    "mappingCheckedOn": "2026-11-09",
+    "pricing": {
+      "model": "subscription",
+      "amount": 4425,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-nursing-health-degrees/health-science-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bshs-tuition"
+      ],
+      "checkedOn": "2026-11-09",
+      "notes": [
+        "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
+      ]
+    }
+  },
+  "requirements": [
+    {
+      "id": "bshs-learning-strategies-in-higher-education",
+      "code": "",
+      "title": "Learning Strategies in Higher Education",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-critical-thinking-reason-and-evidence",
+      "code": "",
+      "title": "Critical Thinking: Reason and Evidence",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-composition-writing-with-a-strategy",
+      "code": "",
+      "title": "Composition: Writing with a Strategy",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-integrated-physical-sciences",
+      "code": "",
+      "title": "Integrated Physical Sciences",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-introduction-to-communication-connecting-with-others",
+      "code": "",
+      "title": "Introduction to Communication: Connecting with Others",
+      "credits": 3,
+      "category": "general",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-global-arts-and-humanities",
+      "code": "",
+      "title": "Global Arts and Humanities",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-introduction-to-chemistry",
+      "code": "",
+      "title": "Introduction to Chemistry",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-anatomy-and-physiology-i-with-lab",
+      "code": "",
+      "title": "Anatomy and Physiology I with Lab",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-introduction-to-psychology",
+      "code": "",
+      "title": "Introduction to Psychology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-world-history-diverse-cultures-and-global-connections",
+      "code": "",
+      "title": "World History: Diverse Cultures and Global Connections",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-applied-healthcare-statistics",
+      "code": "",
+      "title": "Applied Healthcare Statistics",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-anatomy-and-physiology-ii-with-lab",
+      "code": "",
+      "title": "Anatomy and Physiology II with Lab",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-microbiology-with-lab-a-fundamental-approach",
+      "code": "",
+      "title": "Microbiology with Lab: A Fundamental Approach",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-introduction-to-sociology",
+      "code": "",
+      "title": "Introduction to Sociology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-applied-algebra",
+      "code": "",
+      "title": "Applied Algebra",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-human-growth-and-development",
+      "code": "",
+      "title": "Human Growth and Development",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-pathophysiology",
+      "code": "",
+      "title": "Pathophysiology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-career-and-lifelong-learning",
+      "code": "",
+      "title": "Career and Lifelong Learning",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-introduction-to-research-methods",
+      "code": "",
+      "title": "Introduction to Research Methods",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-health-fitness-and-wellness",
+      "code": "",
+      "title": "Health, Fitness, and Wellness",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-understanding-substance-abuse-addiction",
+      "code": "",
+      "title": "Understanding Substance Abuse & Addiction",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-cognitive-psychology",
+      "code": "",
+      "title": "Cognitive Psychology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-cultural-awareness-and-ethics",
+      "code": "",
+      "title": "Cultural Awareness and Ethics",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-health-psychology",
+      "code": "",
+      "title": "Health Psychology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-foundations-in-public-health",
+      "code": "",
+      "title": "Foundations in Public Health",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-health-equity-and-social-determinants-of-health",
+      "code": "",
+      "title": "Health Equity and Social Determinants of Health",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-introduction-to-epidemiology",
+      "code": "",
+      "title": "Introduction to Epidemiology",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": false
+    },
+    {
+      "id": "bshs-health-sciences-capstone",
+      "code": "",
+      "title": "Health Sciences Capstone",
+      "credits": 3,
+      "category": "capstone",
+      "sourceIds": [
+        "wgu-bshs-guide"
+      ],
+      "institutionalOnly": true
+    }
+  ]
+}

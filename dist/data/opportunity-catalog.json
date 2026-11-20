@@ -1,19 +1,20 @@
 {
   "version": 1,
-  "checkedOn": "2026-11-04",
+  "checkedOn": "2026-11-20",
   "reviewCadence": "monthly",
   "scope": "Reviewed discovery for the requested self-paced/CBE and campus-capable schools. Coverage is explicit per school. Listings and transfer-policy evidence do not establish admission, current intake, course equivalency, individual acceptance, licensure, total price or a finish date. Upcoming and approval-pending programs are separate.",
   "coverage": {
-    "schoolCount": 12,
-    "expectedRequestedSchoolCount": 12,
-    "programCount": 1122,
+    "schoolCount": 13,
+    "expectedRequestedSchoolCount": 13,
+    "programCount": 1125,
     "plannedProgramCount": 2,
     "sourceFiles": [
       "content/research/asu-programs.json",
       "content/research/campus-schools-a.json",
       "content/research/campus-schools-b.json",
       "content/research/cbe-schools.json",
-      "content/research/cbu-programs.json"
+      "content/research/cbu-programs.json",
+      "content/research/excelsior-programs.json"
     ],
     "excludedEmptySchoolIds": [],
     "completeRequestedSchoolSet": true
@@ -4692,6 +4693,121 @@
         "completeInventory": false
       },
       "researchFile": "content/research/cbu-programs.json",
+      "catalogCollection": "opportunity-expansion",
+      "plannedPrograms": []
+    },
+    {
+      "id": "excelsior",
+      "name": "Excelsior University",
+      "url": "https://www.excelsior.edu/programs/?level=bachelor",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "course-term"
+      ],
+      "accreditation": {
+        "institutional": "Middle States Commission on Higher Education (MSCHE)",
+        "sourceUrl": "https://www.excelsior.edu/program/bachelor-of-science-in-business/"
+      },
+      "pricing": {
+        "model": "per-credit",
+        "amount": 510,
+        "currency": "USD",
+        "period": "credit",
+        "notes": "$510 per credit hour for undergraduate courses, plus a $40 per credit hour Academic Services Fee, a $28 per course credit Technology Fee and a one-time $125 graduation fee. Partner, military, nursing and BS in Business fixed-rate pricing differ.",
+        "sourceUrl": "https://www.excelsior.edu/costs-and-financing/undergraduate/"
+      },
+      "transferPolicy": {
+        "institutional": {
+          "status": "accepted",
+          "maximumCredits": 113,
+          "minimumInstitutionalCredits": null,
+          "notes": "Each captured bachelor's program page states 'Transfer up to 113 Credits'. Outside credit needs the equivalent of C- or higher and is posted as Pass; program pages and the catalog name required Excelsior courses (Information Literacy, Cornerstone and the capstone). Students admitted through a partnership after December 31, 2024 must complete at least 15 Excelsior course credits.",
+          "sourceUrl": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+          "applicability": "Bachelor's programs listed here; nursing and technology programs have additional restrictions that are not imported."
+        },
+        "ace": {
+          "status": "case-by-case",
+          "notes": "Excelsior reserves the right to evaluate and accept or deny ACE- and NCCRS-recommended non-collegiate credit, which must be completed during the recommendation period. Course-by-course partner guides for Sophia, Study.com and StraighterLine are published separately; no separate non-collegiate credit ceiling was found for these programs.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/"
+        },
+        "nccrs": {
+          "status": "case-by-case",
+          "notes": "Evaluated under the same Non-Collegiate Sources of Credit policy as ACE recommendations.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/"
+        }
+      },
+      "sources": [
+        {
+          "id": "opportunity-excelsior-excelsior-bs-business-page",
+          "title": "Excelsior Bachelor of Science in Business program page",
+          "url": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+          "checkedOn": "2026-11-20"
+        },
+        {
+          "id": "opportunity-excelsior-excelsior-bs-psychology-page",
+          "title": "Excelsior Bachelor of Science in Psychology program page",
+          "url": "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+          "checkedOn": "2026-11-20"
+        },
+        {
+          "id": "opportunity-excelsior-excelsior-bs-liberal-arts-page",
+          "title": "Excelsior Bachelor of Science in Liberal Arts program page",
+          "url": "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+          "checkedOn": "2026-11-20"
+        },
+        {
+          "id": "opportunity-excelsior-excelsior-transfer-credit-sources",
+          "title": "Excelsior Transfer and Evaluated Credit Sources policy",
+          "url": "https://www.excelsior.edu/policy/transfer-credit-sources/",
+          "checkedOn": "2026-11-20"
+        },
+        {
+          "id": "opportunity-excelsior-excelsior-undergraduate-tuition",
+          "title": "Excelsior undergraduate tuition and fees",
+          "url": "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+          "checkedOn": "2026-11-20"
+        }
+      ],
+      "coverage": {
+        "status": "partial",
+        "degreeEntries": 3,
+        "completeFor": "Three bachelor's programs whose program page, transfer guide and November 2026 catalog section were captured: BS in Business, BS in Psychology and BS in Liberal Arts.",
+        "gaps": [
+          "Other Excelsior associate, bachelor's, nursing, technology and graduate programs are not imported yet.",
+          "Concentration-specific BS in Business and BS in Liberal Arts course maps are not modeled; the reviewed course maps use the published No Concentration option."
+        ],
+        "directoryUrl": "https://www.excelsior.edu/programs/?level=bachelor",
+        "completeInventory": false
+      },
+      "programs": [
+        {
+          "id": "excelsior-bs-business",
+          "title": "Bachelor of Science in Business",
+          "level": "bachelor",
+          "status": "listed",
+          "url": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+          "paceModel": "course-term"
+        },
+        {
+          "id": "excelsior-bs-psychology",
+          "title": "Bachelor of Science in Psychology",
+          "level": "bachelor",
+          "status": "listed",
+          "url": "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+          "paceModel": "course-term"
+        },
+        {
+          "id": "excelsior-bs-liberal-arts",
+          "title": "Bachelor of Science in Liberal Arts",
+          "level": "bachelor",
+          "status": "listed",
+          "url": "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+          "paceModel": "course-term"
+        }
+      ],
+      "researchFile": "content/research/excelsior-programs.json",
       "catalogCollection": "opportunity-expansion",
       "plannedPrograms": []
     },
@@ -38268,6 +38384,153 @@
       }
     },
     {
+      "id": "excelsior-bs-business",
+      "title": "Bachelor of Science in Business",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+      "sourceId": "opportunity-excelsior-excelsior-bs-business-page",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "notes": "Asynchronous online program with General, Accounting, Finance, Human Resources Management, Logistics Management, Marketing or No Concentration options. The program page states transfer up to 113 credits.",
+      "schoolId": "excelsior",
+      "school": "Excelsior University",
+      "status": "listed",
+      "coverage": "official-listing",
+      "courseMapStatus": "not-mapped",
+      "catalogCollection": "opportunity-expansion",
+      "checkedOn": "2026-11-20",
+      "effectivePricing": {
+        "model": "per-credit",
+        "amount": 510,
+        "currency": "USD",
+        "period": "credit",
+        "notes": "$510 per credit hour for undergraduate courses, plus a $40 per credit hour Academic Services Fee, a $28 per course credit Technology Fee and a one-time $125 graduation fee. Partner, military, nursing and BS in Business fixed-rate pricing differ.",
+        "sourceUrl": "https://www.excelsior.edu/costs-and-financing/undergraduate/"
+      },
+      "effectiveTransferPolicy": {
+        "institutional": {
+          "status": "accepted",
+          "maximumCredits": 113,
+          "minimumInstitutionalCredits": null,
+          "notes": "Each captured bachelor's program page states 'Transfer up to 113 Credits'. Outside credit needs the equivalent of C- or higher and is posted as Pass; program pages and the catalog name required Excelsior courses (Information Literacy, Cornerstone and the capstone). Students admitted through a partnership after December 31, 2024 must complete at least 15 Excelsior course credits.",
+          "sourceUrl": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+          "applicability": "Bachelor's programs listed here; nursing and technology programs have additional restrictions that are not imported."
+        },
+        "ace": {
+          "status": "case-by-case",
+          "notes": "Excelsior reserves the right to evaluate and accept or deny ACE- and NCCRS-recommended non-collegiate credit, which must be completed during the recommendation period. Course-by-course partner guides for Sophia, Study.com and StraighterLine are published separately; no separate non-collegiate credit ceiling was found for these programs.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/"
+        },
+        "nccrs": {
+          "status": "case-by-case",
+          "notes": "Evaluated under the same Non-Collegiate Sources of Credit policy as ACE recommendations.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/"
+        }
+      }
+    },
+    {
+      "id": "excelsior-bs-liberal-arts",
+      "title": "Bachelor of Science in Liberal Arts",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+      "sourceId": "opportunity-excelsior-excelsior-bs-liberal-arts-page",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "notes": "Asynchronous online program with an optional Logistics Management concentration. The program page states transfer up to 113 credits.",
+      "schoolId": "excelsior",
+      "school": "Excelsior University",
+      "status": "listed",
+      "coverage": "official-listing",
+      "courseMapStatus": "not-mapped",
+      "catalogCollection": "opportunity-expansion",
+      "checkedOn": "2026-11-20",
+      "effectivePricing": {
+        "model": "per-credit",
+        "amount": 510,
+        "currency": "USD",
+        "period": "credit",
+        "notes": "$510 per credit hour for undergraduate courses, plus a $40 per credit hour Academic Services Fee, a $28 per course credit Technology Fee and a one-time $125 graduation fee. Partner, military, nursing and BS in Business fixed-rate pricing differ.",
+        "sourceUrl": "https://www.excelsior.edu/costs-and-financing/undergraduate/"
+      },
+      "effectiveTransferPolicy": {
+        "institutional": {
+          "status": "accepted",
+          "maximumCredits": 113,
+          "minimumInstitutionalCredits": null,
+          "notes": "Each captured bachelor's program page states 'Transfer up to 113 Credits'. Outside credit needs the equivalent of C- or higher and is posted as Pass; program pages and the catalog name required Excelsior courses (Information Literacy, Cornerstone and the capstone). Students admitted through a partnership after December 31, 2024 must complete at least 15 Excelsior course credits.",
+          "sourceUrl": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+          "applicability": "Bachelor's programs listed here; nursing and technology programs have additional restrictions that are not imported."
+        },
+        "ace": {
+          "status": "case-by-case",
+          "notes": "Excelsior reserves the right to evaluate and accept or deny ACE- and NCCRS-recommended non-collegiate credit, which must be completed during the recommendation period. Course-by-course partner guides for Sophia, Study.com and StraighterLine are published separately; no separate non-collegiate credit ceiling was found for these programs.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/"
+        },
+        "nccrs": {
+          "status": "case-by-case",
+          "notes": "Evaluated under the same Non-Collegiate Sources of Credit policy as ACE recommendations.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/"
+        }
+      }
+    },
+    {
+      "id": "excelsior-bs-psychology",
+      "title": "Bachelor of Science in Psychology",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+      "sourceId": "opportunity-excelsior-excelsior-bs-psychology-page",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "notes": "Asynchronous online program. The program page states transfer up to 113 credits.",
+      "schoolId": "excelsior",
+      "school": "Excelsior University",
+      "status": "listed",
+      "coverage": "official-listing",
+      "courseMapStatus": "not-mapped",
+      "catalogCollection": "opportunity-expansion",
+      "checkedOn": "2026-11-20",
+      "effectivePricing": {
+        "model": "per-credit",
+        "amount": 510,
+        "currency": "USD",
+        "period": "credit",
+        "notes": "$510 per credit hour for undergraduate courses, plus a $40 per credit hour Academic Services Fee, a $28 per course credit Technology Fee and a one-time $125 graduation fee. Partner, military, nursing and BS in Business fixed-rate pricing differ.",
+        "sourceUrl": "https://www.excelsior.edu/costs-and-financing/undergraduate/"
+      },
+      "effectiveTransferPolicy": {
+        "institutional": {
+          "status": "accepted",
+          "maximumCredits": 113,
+          "minimumInstitutionalCredits": null,
+          "notes": "Each captured bachelor's program page states 'Transfer up to 113 Credits'. Outside credit needs the equivalent of C- or higher and is posted as Pass; program pages and the catalog name required Excelsior courses (Information Literacy, Cornerstone and the capstone). Students admitted through a partnership after December 31, 2024 must complete at least 15 Excelsior course credits.",
+          "sourceUrl": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+          "applicability": "Bachelor's programs listed here; nursing and technology programs have additional restrictions that are not imported."
+        },
+        "ace": {
+          "status": "case-by-case",
+          "notes": "Excelsior reserves the right to evaluate and accept or deny ACE- and NCCRS-recommended non-collegiate credit, which must be completed during the recommendation period. Course-by-course partner guides for Sophia, Study.com and StraighterLine are published separately; no separate non-collegiate credit ceiling was found for these programs.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/"
+        },
+        "nccrs": {
+          "status": "case-by-case",
+          "notes": "Evaluated under the same Non-Collegiate Sources of Credit policy as ACE recommendations.",
+          "sourceUrl": "https://www.excelsior.edu/policy/transfer-credit-sources/"
+        }
+      }
+    },
+    {
       "id": "gcu-bachelor-of-science-in-business-administration",
       "title": "Bachelor of Science in Business Administration",
       "level": "bachelor",
@@ -66839,6 +67102,66 @@
       "catalogCollection": "opportunity-expansion",
       "scope": "Named online degree options in CBU online admissions page, excluding standalone credentials and deduplicating repeated DPA link, plus a bounded set of campus degrees with explicit format labels in the official finder.",
       "programCount": 52
+    },
+    {
+      "id": "opportunity-excelsior-excelsior-bs-business-page",
+      "title": "Excelsior Bachelor of Science in Business program page",
+      "url": "https://www.excelsior.edu/program/bachelor-of-science-in-business/",
+      "checkedOn": "2026-11-20",
+      "school": "Excelsior University",
+      "schoolId": "excelsior",
+      "checkedAt": "2026-11-20",
+      "catalogCollection": "opportunity-expansion",
+      "scope": "Three bachelor's programs whose program page, transfer guide and November 2026 catalog section were captured: BS in Business, BS in Psychology and BS in Liberal Arts.",
+      "programCount": 1
+    },
+    {
+      "id": "opportunity-excelsior-excelsior-bs-psychology-page",
+      "title": "Excelsior Bachelor of Science in Psychology program page",
+      "url": "https://www.excelsior.edu/program/online-bs-in-psychology-degree/",
+      "checkedOn": "2026-11-20",
+      "school": "Excelsior University",
+      "schoolId": "excelsior",
+      "checkedAt": "2026-11-20",
+      "catalogCollection": "opportunity-expansion",
+      "scope": "Three bachelor's programs whose program page, transfer guide and November 2026 catalog section were captured: BS in Business, BS in Psychology and BS in Liberal Arts.",
+      "programCount": 1
+    },
+    {
+      "id": "opportunity-excelsior-excelsior-bs-liberal-arts-page",
+      "title": "Excelsior Bachelor of Science in Liberal Arts program page",
+      "url": "https://www.excelsior.edu/program/bachelor-of-science-online-liberal-arts-degree/",
+      "checkedOn": "2026-11-20",
+      "school": "Excelsior University",
+      "schoolId": "excelsior",
+      "checkedAt": "2026-11-20",
+      "catalogCollection": "opportunity-expansion",
+      "scope": "Three bachelor's programs whose program page, transfer guide and November 2026 catalog section were captured: BS in Business, BS in Psychology and BS in Liberal Arts.",
+      "programCount": 1
+    },
+    {
+      "id": "opportunity-excelsior-excelsior-transfer-credit-sources",
+      "title": "Excelsior Transfer and Evaluated Credit Sources policy",
+      "url": "https://www.excelsior.edu/policy/transfer-credit-sources/",
+      "checkedOn": "2026-11-20",
+      "school": "Excelsior University",
+      "schoolId": "excelsior",
+      "checkedAt": "2026-11-20",
+      "catalogCollection": "opportunity-expansion",
+      "scope": "Three bachelor's programs whose program page, transfer guide and November 2026 catalog section were captured: BS in Business, BS in Psychology and BS in Liberal Arts.",
+      "programCount": 0
+    },
+    {
+      "id": "opportunity-excelsior-excelsior-undergraduate-tuition",
+      "title": "Excelsior undergraduate tuition and fees",
+      "url": "https://www.excelsior.edu/costs-and-financing/undergraduate/",
+      "checkedOn": "2026-11-20",
+      "school": "Excelsior University",
+      "schoolId": "excelsior",
+      "checkedAt": "2026-11-20",
+      "catalogCollection": "opportunity-expansion",
+      "scope": "Three bachelor's programs whose program page, transfer guide and November 2026 catalog section were captured: BS in Business, BS in Psychology and BS in Liberal Arts.",
+      "programCount": 0
     }
   ]
 }

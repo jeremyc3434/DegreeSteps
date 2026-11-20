@@ -76,18 +76,18 @@ function mount({modelId='liberty-business-residential',change,editor=false,track
   }
   // Their independent mounted suites cover widget DOM behavior. Keep the real
   // checklist engine here and record the exact complete task model it receives.
-  context.DegreeSavingsTracker=trackerResult===undefined?undefined:{update(node){node.innerHTML='Existing savings result';return Promise.resolve(trackerResult);}};context.DegreeMomentum=undefined;
+  const trackerCalls=[];context.DegreeSavingsTracker=trackerResult===undefined?undefined:{update(node,state,draft,options){trackerCalls.push({id:node.id,options:copy(options||{})});node.innerHTML='Existing savings result';return Promise.resolve(trackerResult);}};context.DegreeMomentum=undefined;
   context.DegreeChecklistView={update(target,state,draft){checklists.push(context.DegreeChecklist.build(state,draft));target.innerHTML='Full checklist mounted';}};
   context.DegreeCommunity={sharePlan(payload){shares.push(copy(payload));}};
   const source=fs.readFileSync('dist/sheet.js','utf8');
   const hook=`const fixture=JSON.parse(__fixtureJSON);state=fixture.state;catalog=fixture.catalog;models=fixture.models;courseCatalog=fixture.courseCatalog;storageBaseline=localStorage.getItem(KEY);
-    window.__parity={render,handleAction,rowDialog,compareCourses,applyComparedCourse,comparePreview,
+    window.__parity={render,handleAction,rowDialog,compareCourses,applyComparedCourse,comparePreview,loadPlanIndex,chooseDialog,
       getDraft:()=>({state,pathway,program,plan,match,input,guidance}),getProjection:projection,
       search(value){state.sheet.search=value;renderGrid();},filter(value){progressFilter=value;renderGrid();}};
     render();`;
   const instrumented=source.replace(/  boot\(\);\s*\}\(\)\);\s*$/,hook+'\n}());');assert.notEqual(instrumented,source,'Use the production boot boundary');
   vm.runInContext(instrumented,context,{filename:'sheet.js'});writes.length=0;
-  return {node,api:context.__parity,writes,downloads,navigations,shares,requests,checklists,focusLog,active:()=>document.activeElement,
+  return {node,api:context.__parity,writes,downloads,navigations,shares,requests,checklists,focusLog,trackerCalls,active:()=>document.activeElement,
     control(name,dataset={},container='sheet-grid',tagName='SELECT'){const control=node(name);control.id='';control.tagName=tagName;control.dataset={...dataset};control.container=container;control.isConnected=true;interactive.push(control);return control;},
     button(name,dataset={},container='sheet-grid'){return this.control(name,dataset,container,'BUTTON');},
     replaceStored:value=>values.set(KEY,JSON.stringify(value)),setWriteFailure:value=>{failWrites=value;},saved:()=>JSON.parse(values.get(KEY)),draft:()=>context.__parity.getDraft(),projection:()=>context.__parity.getProjection(),
@@ -227,13 +227,59 @@ test('a personal tuition quote stays primary instead of being replaced by a publ
  assert.doesNotMatch(ui.node('sheet-cost-summary').innerHTML,/Published-price planning range/);assert.match(ui.node('sheet-dialog-content').innerHTML,/name="universityRate"[^>]*value="100"/);assert.equal(JSON.stringify(ui.saved()),before);assert.equal(ui.writes.length,0);
 });
 
-test('a researched compact estimate replaces an unavailable savings message while an available savings result stays primary',async()=>{
+// Changed deliberately: the shared planning range now leads whenever it can be calculated (as on plan pages,
+// the finder and the planner); an available tuition-only savings result is shown below it as secondary.
+test('a researched compact estimate leads the worksheet and any savings result is shown as a secondary tuition comparison',async()=>{
  const unavailable=mount({trackerResult:{available:false}});await unavailable.settle();await unavailable.settle();
- assert.match(unavailable.node('sheet-savings').innerHTML,/plan-estimate-compact/);assert.match(unavailable.node('sheet-savings').innerHTML,/data-action="cost-time"/);assert.equal(unavailable.writes.length,0);
+ assert.match(unavailable.node('sheet-planning-range').innerHTML,/plan-estimate-compact/);assert.match(unavailable.node('sheet-planning-range').innerHTML,/data-action="cost-time"/);assert.equal(unavailable.node('sheet-planning-range').hidden,false);assert.equal(unavailable.writes.length,0);
  const available=mount({trackerResult:{available:true}});await available.settle();await available.settle();
- assert.equal(available.node('sheet-savings').innerHTML,'Existing savings result');assert(!available.requests.includes('data/plan-estimate-rates.json'));assert.equal(available.writes.length,0);
+ assert.match(available.node('sheet-planning-range').innerHTML,/Planning estimate/);assert.match(available.node('sheet-planning-range').innerHTML,/covers tuition, listed fees and outside courses/);
+ assert.equal(available.node('sheet-savings-tracker').innerHTML,'Existing savings result');assert(available.requests.includes('data/plan-estimate-rates.json'));assert.equal(available.trackerCalls.filter(call=>call.id==='sheet-savings-tracker').at(-1).options.secondary,true);assert.equal(available.writes.length,0);
 });
 
+
+test('course preferences say they apply to this plan, keep Apply in a sticky footer, and ask before discarding unapplied changes',async()=>{
+ for(const closeMethod of ['escape','button']){
+  const ui=mount({trackerResult:{available:false}}),before=JSON.stringify(ui.saved());
+  ui.api.handleAction('options');const html=ui.node('sheet-dialog-content').innerHTML;
+  assert.match(html,/These choices apply to this plan only/);assert.match(html,/Course sources for this plan/);
+  assert.match(html,/<div class="sheet-dialog-footer">[\s\S]*type="submit">Apply preferences<\/button><\/div><\/form>/);
+  assert.equal(ui.node('sheet-dialog-savings').hidden,true,'The preferences tray starts with its own choices');
+  const prompt=ui.control('unapplied-prompt',{unapplied:''},'sheet-options-form','DIV');prompt.hidden=true;const discard=ui.button('discard-options',{discardOptions:''},'sheet-options-form');discard.attributes['data-discard-options']='';
+  ui.node('sheet-options-form').values={providers:'Sophia'};
+  const close=ui.button('options-close-'+closeMethod,{},'sheet-dialog');close.id='close-sheet-dialog';
+  if(closeMethod==='escape')await ui.cancelDialog();else await ui.click(close);
+  assert.equal(ui.node('sheet-dialog').open,true,'Unapplied changes are not silently discarded');assert.equal(prompt.hidden,false);assert.equal(ui.active(),discard);
+  await ui.click(discard);assert.equal(ui.node('sheet-dialog').open,false);assert.equal(JSON.stringify(ui.saved()),before,'Discard keeps the saved plan unchanged');
+  ui.api.handleAction('options');await ui.cancelDialog();assert.equal(ui.node('sheet-dialog').open,false,'Without changes, Escape closes at once');
+ }
+});
+
+function singleModelData(id){const full=loadData();return{catalog:{...full.catalog,pathways:full.catalog.pathways.filter(route=>route.modelId===id)},models:full.models.filter(model=>model.id===id),courseCatalog:data.courseCatalog};}
+test('a WGU worksheet uses competency units in progress, sections, coverage and footer',async()=>{
+ const id='curriculum-wgu-catalog-689e417cff765fc9',ui=mount({modelId:id,fixtureData:singleModelData(id)});await ui.settle();
+ const grid=ui.node('sheet-grid').innerHTML,route=ui.node('sheet-route').innerHTML;
+ assert.match(ui.node('sheet-summary').innerHTML,/of 112 competency units finished/);assert.match(grid,/0 \/ 34<\/strong> competency units finished/);assert.match(grid,/outside competency units planned/);assert.match(grid,/competency units at the university/);assert.match(grid,/<abbr title="Competency units">CUs<\/abbr>/);
+ assert.doesNotMatch(grid,/\d credits (?:finished|planned|at the university|not yet mapped)/);assert.match(route,/competency units/);assert.doesNotMatch(route,/<small>units<\/small>/);
+ assert.match(ui.node('sheet-footer').innerHTML,/112 competency units/);
+});
+
+test('Excelsior shows the partnership residency condition next to the standard minimum and explains a starting-route difference',async()=>{
+ const ui=mount({modelId:'curriculum-excelsior-bs-psychology',fixtureData:singleModelData('curriculum-excelsior-bs-psychology')});await ui.settle();await ui.settle();
+ let grid=ui.node('sheet-grid').innerHTML;
+ assert.match(grid,/At least <strong>7<\/strong> credits at the university <small class="course-plan-residency-alt">\(standard enrollment\)<\/small>/);
+ assert.match(grid,/data-residency-alternative="15">Partnership students admitted after December 31, 2024: at least 15 credits at the university\./);
+ assert(ui.requests.includes('data/baseline-index.json'));
+ const key='curriculum-excelsior-bs-psychology',state=ui.draft().state;state.scenarios[key]={...state.scenarios[key],providers:['Sophia','Study.com']};ui.api.render();await ui.settle();
+ grid=ui.node('sheet-grid').innerHTML;assert.match(grid,/fewer outside credits than the starting route because StraighterLine is off in your course sources\./);
+});
+
+test('applying course preferences returns keyboard focus to the page instead of the document body',async()=>{
+ const ui=mount();ui.api.handleAction('options');
+ const error=await ui.submit('sheet-options-form',{reportCatalogYear:'2026-2027',providers:'Sophia',proctoringPreference:'open',priority:'balanced'});
+ assert.equal(error,'');assert.equal(ui.node('sheet-dialog').open,false);assert.equal(ui.node('sheet-status').textContent,'Course preferences applied to this plan.');
+ assert.notEqual(ui.active(),ui.node('body'));assert(ui.active()===ui.node('sheet-status')||ui.active()?.dataset?.action==='options');
+});
 
 test('a late cost-range response cannot replace another open dialog',async()=>{
  let release;const pending=new Promise(resolve=>release=resolve),ui=mount({fetcher:url=>url==='data/plan-estimate-rates.json'?pending:null});
@@ -247,7 +293,10 @@ test('a late estimate for an old degree cannot appear in the replacement plan’
  let release;const pending=new Promise(resolve=>release=resolve),ui=mount({trackerResult:{available:false},fetcher:url=>url==='data/plan-estimate-rates.json'?pending:null});
  await ui.settle();const route=data.catalog.pathways.find(route=>route.modelId==='tesu-general-management'),current=ui.api.getDraft().state,preferences=copy(current);preferences.profile.modality='online';preferences.profile.classroomImportance='open';const next=Journey.selectRoute(preferences,route,data.catalog);Object.assign(current,next);ui.api.render();await ui.settle();
  release({ok:true,json:async()=>require('./dist/data/plan-estimate-rates.json')});await ui.settle();await ui.settle();
- assert.equal(ui.draft().program.id,'tesu-general-management');assert.equal(ui.node('sheet-savings').innerHTML,'Existing savings result');assert.doesNotMatch(ui.node('sheet-savings').innerHTML,/plan-estimate/);
+ assert.equal(ui.draft().program.id,'tesu-general-management');assert.equal(ui.node('sheet-savings-tracker').innerHTML,'Existing savings result');assert.doesNotMatch(ui.node('sheet-planning-range').innerHTML,/plan-estimate/);
+ // The replacement is a plan awaiting school confirmation with no reviewed estimate: it says so, as the finder does,
+ // and the tuition comparison below is labelled tuition-only.
+ assert.match(ui.node('sheet-planning-range').innerHTML,/Cost needs confirmation/);assert.equal(ui.trackerCalls.filter(call=>call.id==='sheet-savings-tracker').at(-1).options.secondary,true);
 });
 
 
@@ -341,4 +390,67 @@ test('the real Psychology ledger update recovers its removed elective pin withou
  const ui=mount({modelId:model.id,fixtureData:sample,change:state=>{state.scenarios[model.id]={...state.scenarios[model.id],optionSelections:{'free-electives-12':'university-free-electives-12',[valid.id]:validOption.id}};state.sheet.notes={[model.id]:{'free-electives-12':'My earlier elective note'}};state.learning=[{id:'past-learning',provider:'Former College',code:'HIST101',title:'Original college history',credits:3,creditSystem:'quarter',grade:'A',status:'earned',evaluations:[]}];return state;}}),before=copy(ui.saved());
  assert(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'&&issue.requirementId==='free-electives-12'));ui.api.handleAction('update-course-choices');assert.equal(await ui.submit('sheet-course-update-form'),'');
  assert.equal(ui.saved().scenarios[model.id].optionSelections[valid.id],validOption.id);assert(!Object.hasOwn(ui.saved().scenarios[model.id].optionSelections,'free-electives-12'));assert.deepEqual(ui.saved().learning,before.learning);assert.deepEqual(ui.saved().sheet.notes,before.sheet.notes);assert.equal(ui.draft().plan.totals.accounted,120);assert.equal(ui.draft().plan.validation.academicCountsValid,true);assert.equal(ui.draft().plan.setupIssues.some(issue=>issue.code==='invalid_selection'),false);assert(ui.saved().whatIf.snapshots.some(snapshot=>snapshot.settings.optionSelections['free-electives-12']==='university-free-electives-12'));
+});
+
+test('a plan that needs school confirmation shows its open questions on the worksheet, hidden only on request',async()=>{
+  const ui=mount({modelId:'tesu-general-management'}),slot=ui.node('sheet-school-check');
+  assert.equal(slot.innerHTML,'','nothing is shown before the optional index loads');
+  await ui.api.loadPlanIndex();
+  const index=require('./dist/data/plan-library-index.json').plans['tesu-general-management'];assert.equal(index.tier,'confirmation');
+  const html=slot.innerHTML;assert.equal(slot.hidden,false);
+  assert.match(html,/<h2 id="sheet-school-check-title">Before you pay for courses, ask the school:<\/h2>/);
+  assert.equal((html.match(/<li>/g)||[]).length,index.questions.length,'every open question is listed');
+  assert.doesNotMatch(html,/<li>Ask the school:/i,'the repeated prefix is removed');
+  assert.match(html,/This course plan is complete, but these points are not yet confirmed in the school’s published rules\./);
+  assert.match(html,/data-action="hide-school-check" aria-expanded="true"/);
+  ui.api.handleAction('hide-school-check');
+  assert.match(slot.innerHTML,/is-collapsed/);assert.match(slot.innerHTML,new RegExp(index.questions.length+' questions to ask the school'));
+  assert.match(slot.innerHTML,/data-action="show-school-check" aria-expanded="false"/);assert.doesNotMatch(slot.innerHTML,/<li>/);
+  assert.equal(ui.writes.length,0,'showing or hiding the questions never changes the saved plan');
+  ui.api.render();assert.match(slot.innerHTML,/is-collapsed/,'the choice holds across a re-render');
+  ui.api.handleAction('show-school-check');assert.equal((slot.innerHTML.match(/<li>/g)||[]).length,index.questions.length,'the questions can always be shown again');
+});
+
+test('reviewed plans show nothing new and the worksheet works without the plan index',async()=>{
+  const reviewed=mount();await reviewed.api.loadPlanIndex();
+  assert.equal(require('./dist/data/plan-library-index.json').plans['liberty-business-residential'].tier,'reviewed');
+  assert.equal(reviewed.node('sheet-school-check').innerHTML,'');assert.equal(reviewed.node('sheet-school-check').hidden,true);
+  const offline=mount({modelId:'tesu-general-management',fetcher:url=>url==='data/plan-library-index.json'?Promise.reject(Error('offline')):null});
+  assert.equal(await offline.api.loadPlanIndex(),null,'a failed index load is silent');
+  assert.equal(offline.node('sheet-school-check').innerHTML,'');assert.match(offline.node('sheet-grid').innerHTML,/course-plan-row/,'the worksheet still renders');
+  const broken=mount({modelId:'tesu-general-management',fetcher:url=>url==='data/plan-library-index.json'?Promise.resolve({ok:true,json:async()=>['not an index']}):null});
+  await broken.api.loadPlanIndex();assert.equal(broken.node('sheet-school-check').innerHTML,'');
+});
+
+test('the worksheet degree finder offers the browsing subjects and keeps an older saved subject',async()=>{
+  const Guide=require('./dist/guide-engine.js'),labels=require('./dist/data/plan-library-index.json').subjects;
+  const options=html=>[...(html.match(/<select name="field">([\s\S]*?)<\/select>/)||['',''])[1].matchAll(/<option value="([^"]+)"( selected)?>([^<]*)<\/option>/g)].map(match=>[match[1],text(match[3]),Boolean(match[2])]);
+  const ui=mount();await ui.api.loadPlanIndex();ui.api.chooseDialog();
+  const fresh=options(ui.node('sheet-dialog-content').innerHTML);
+  assert.deepEqual(fresh.map(([id])=>id),['any',...Guide.subjectIds]);
+  for(const id of Guide.subjectIds)assert.equal(fresh.find(([value])=>value===id)[1],text(labels[id].replaceAll('&','&amp;')),id);
+  for(const old of ['general','law','aviation','science','arts','social-science'])assert(!fresh.some(([id])=>id===old),'retired subject '+old+' is not offered to new choices');
+  // A chosen route copies its own field into the profile, so set the older value as a saved profile would hold it.
+  const legacy=mount();legacy.draft().state.profile.field='aviation';legacy.api.chooseDialog();
+  const kept=options(legacy.node('sheet-dialog-content').innerHTML);
+  assert.deepEqual(kept.at(-1),['aviation','Aviation',true],'an older saved subject stays selected instead of resetting');
+  const current=mount();current.draft().state.profile.field='technology';current.api.chooseDialog();
+  assert.deepEqual(options(current.node('sheet-dialog-content').innerHTML).filter(([,,selected])=>selected).map(([id])=>id),['technology']);
+});
+
+test('the worksheet degree finder filters strictly by subject and an older saved subject still filters',async()=>{
+  // Only reviewed plans are offered; attach the real publication list for this fixture's routes.
+  const Catalog=require('./dist/program-catalog.js'),registry=require('./dist/data/curriculum-registry.json'),publication=require('./dist/data/publication-index.json');
+  const modelIds=new Set(data.models.map(model=>model.id)),published={...data,catalog:Catalog.attachPublicationIndex({...data.catalog,curriculumRegistry:registry},{...publication,plans:publication.plans.filter(plan=>modelIds.has(plan.modelId))},registry)};
+  const recommended=async(field,fetcher)=>{const ui=mount({fixtureData:published,fetcher});ui.api.chooseDialog();await ui.submit('sheet-choose-form',{goal:'any-degree',degreeLevel:'bachelor',modality:'any',field,classroomImportance:'open',militaryStatus:'none',priority:'balanced'});await ui.settle();return{ui,ids:[...ui.node('sheet-recommendations').innerHTML.matchAll(/data-route="([^"]+)"/g)].map(match=>match[1]).sort()};};
+  const business=await recommended('business');assert.deepEqual(business.ids,['liberty-business-residential']);assert.equal(business.ui.saved().profile.field,'business');
+  const tech=await recommended('technology');
+  assert.deepEqual(tech.ids,['liberty-business-residential'],'a plan tagged with the subject in the plan index is offered even though its catalog field is business');
+  assert.equal(tech.ui.saved().profile.field,'technology');
+  const psychology=await recommended('psychology');assert.deepEqual(psychology.ids,[],'a subject never returns another subject’s plans');
+  assert.match(psychology.ui.node('sheet-recommendations').innerHTML,/No researched route matches all these choices yet/);
+  assert.deepEqual((await recommended('law')).ids,[],'an older saved subject still filters');
+  const offline=url=>url==='data/plan-library-index.json'?Promise.resolve({ok:false,status:503}):null;
+  assert.deepEqual((await recommended('business',offline)).ids,['liberty-business-residential'],'without the index the finder still works from catalog fields');
+  assert.deepEqual((await recommended('technology',offline)).ids,[],'without the index a subject only matches its own or nearest older field');
 });

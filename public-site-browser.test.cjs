@@ -15,11 +15,11 @@ async function noOverflow(page){const sizes=await page.evaluate(()=>({screen:inn
   await journey('the public homepage explains DegreePath before a clear CTA opens the separate app',async()=>{
     const{page}=await context({viewport:{width:1440,height:1000}});await navigate(page,'/');
     assert.equal(await page.locator('#portal-question-title').count(),0);
-    assert.match((await page.locator('main h1').innerText()).replace(/\s+/g,' '),/Your degree\.\s*Within reach\./i);
+    assert.match((await page.locator('main h1').innerText()).replace(/\s+/g,' '),/The degree you want\.\s*A smarter way there\./i);
     const cta=page.locator('main a[href="/portal.html"],main a[href="portal.html"]').first();assert(await cta.isVisible());
     await cta.click();await page.waitForURL('**/portal.html');await page.locator('#portal-question-title').waitFor();
-    assert.equal((await page.locator('#portal-question-title').innerText()).trim(),'What would you like help with?');
-    await page.getByRole('link',{name:'DegreePath home',exact:true}).first().click();
+    assert.equal((await page.locator('#portal-question-title').innerText()).trim(),'Build your course plan.');
+    await page.getByRole('link',{name:'DegreeSteps home',exact:true}).first().click();
     await page.waitForURL(u=>u.pathname==='/'||u.pathname==='/index.html');
     assert.equal(await page.locator('#portal-question-title').count(),0);assert(await page.locator('main h1').isVisible());
   });
@@ -29,7 +29,7 @@ async function noOverflow(page){const sizes=await page.evaluate(()=>({screen:inn
       await navigate(page,path);assert(await page.locator('main h1').isVisible());
       const text=(await page.locator('main').innerText()).trim();assert(text.split(/\s+/).length>400);
       assert(await page.locator('main a[href^="https://"]').count(),'Primary sources remain accessible');
-      assert(await page.locator('main a[href*="portal.html"]').count(),'Article includes a real next step');
+      assert(await page.locator('main a[href*="portal.html"],main a[href^="/degree-plans/"]').count(),'Article includes a real next step (the app or a degree plan)');
     }
     await navigate(page,'/resources/');assert(await page.locator('main a[href^="/guides/"],main a[href^="guides/"]').count());
   });
@@ -81,7 +81,8 @@ async function noOverflow(page){const sizes=await page.evaluate(()=>({screen:inn
     assert.deepEqual(writes,[],'Opening an account page must not upload the device ledger');
     assert.deepEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('degreepath-guide-v3'))),draft);
     const build=page.getByRole('link',{name:/Build my plan/i}).first();assert(await build.isVisible());await build.click();
-    await page.waitForURL('**/portal.html');await page.locator('#portal-content').waitFor();
+    // A device that already holds a saved goal opens that plan rather than the start screen.
+    await page.waitForURL(u=>u.pathname==='/plan.html');await page.locator('.course-plan-pending').waitFor();
     assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('degreepath-guide-v3')))).learning[0].id,'private-source');
   });
   assert.deepEqual(errors,[],'Public journeys must not produce JavaScript errors');

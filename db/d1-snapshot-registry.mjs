@@ -190,6 +190,125 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   },
   {
+    "name": "coach_questions",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "question",
+        "type": "text"
+      },
+      {
+        "name": "topics_json",
+        "type": "text"
+      },
+      {
+        "name": "tools_json",
+        "type": "text"
+      },
+      {
+        "name": "plan_ids_json",
+        "type": "text"
+      },
+      {
+        "name": "ask_school",
+        "type": "integer"
+      },
+      {
+        "name": "used_saved",
+        "type": "integer"
+      },
+      {
+        "name": "status",
+        "type": "text"
+      },
+      {
+        "name": "model",
+        "type": "text"
+      },
+      {
+        "name": "input_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "output_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "cache_write_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "cache_read_tokens",
+        "type": "integer"
+      },
+      {
+        "name": "cost_micro_usd",
+        "type": "integer"
+      },
+      {
+        "name": "answer",
+        "type": "text"
+      },
+      {
+        "name": "rating",
+        "type": "integer"
+      },
+      {
+        "name": "rating_reason",
+        "type": "text"
+      },
+      {
+        "name": "rated_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "coach_spend_days",
+    "columns": [
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "cost_micro_usd",
+        "type": "integer"
+      },
+      {
+        "name": "calls",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "coach_visitor_days",
+    "columns": [
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "visitor_hash",
+        "type": "text"
+      },
+      {
+        "name": "count",
+        "type": "integer"
+      }
+    ]
+  },
+  {
     "name": "college_access_audit",
     "columns": [
       {
@@ -1168,6 +1287,12 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "index",
+    "name": "coach_questions_created",
+    "tbl_name": "coach_questions",
+    "sql": "CREATE INDEX `coach_questions_created` ON `coach_questions` (`created_at`)"
+  },
+  {
+    "type": "index",
     "name": "college_access_audit_org",
     "tbl_name": "college_access_audit",
     "sql": "CREATE INDEX `college_access_audit_org` ON `college_access_audit` (`organization_id`,`created_at`,`id`)"
@@ -1368,6 +1493,24 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "type": "index",
     "name": "sqlite_autoindex_ai_service_connections_1",
     "tbl_name": "ai_service_connections",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_coach_questions_1",
+    "tbl_name": "coach_questions",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_coach_spend_days_1",
+    "tbl_name": "coach_spend_days",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_coach_visitor_days_1",
+    "tbl_name": "coach_visitor_days",
     "sql": null
   },
   {
@@ -1591,6 +1734,24 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "ai_service_connections",
     "tbl_name": "ai_service_connections",
     "sql": "CREATE TABLE `ai_service_connections` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`ciphertext` text,\n\t`iv` text,\n\t`revision` integer NOT NULL,\n\t`verified_at` integer,\n\t`updated_by` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"ai_connection_service\" CHECK(\"ai_service_connections\".\"id\" = 'anthropic'),\n\tCONSTRAINT \"ai_connection_revision\" CHECK(\"ai_service_connections\".\"revision\" > 0),\n\tCONSTRAINT \"ai_connection_encrypted_pair\" CHECK((\"ai_service_connections\".\"ciphertext\" IS NULL AND \"ai_service_connections\".\"iv\" IS NULL AND \"ai_service_connections\".\"verified_at\" IS NULL) OR (\"ai_service_connections\".\"ciphertext\" IS NOT NULL AND length(\"ai_service_connections\".\"ciphertext\") BETWEEN 44 AND 5600 AND \"ai_service_connections\".\"iv\" IS NOT NULL AND length(\"ai_service_connections\".\"iv\") = 24 AND \"ai_service_connections\".\"verified_at\" IS NOT NULL))\n)"
+  },
+  {
+    "type": "table",
+    "name": "coach_questions",
+    "tbl_name": "coach_questions",
+    "sql": "CREATE TABLE `coach_questions` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`day` text NOT NULL,\n\t`question` text NOT NULL,\n\t`topics_json` text DEFAULT '[]' NOT NULL,\n\t`tools_json` text DEFAULT '[]' NOT NULL,\n\t`plan_ids_json` text DEFAULT '[]' NOT NULL,\n\t`ask_school` integer DEFAULT 0 NOT NULL,\n\t`used_saved` integer DEFAULT 0 NOT NULL,\n\t`status` text NOT NULL,\n\t`model` text NOT NULL,\n\t`input_tokens` integer DEFAULT 0 NOT NULL,\n\t`output_tokens` integer DEFAULT 0 NOT NULL,\n\t`cache_write_tokens` integer DEFAULT 0 NOT NULL,\n\t`cache_read_tokens` integer DEFAULT 0 NOT NULL,\n\t`cost_micro_usd` integer DEFAULT 0 NOT NULL,\n\t`answer` text DEFAULT '' NOT NULL,\n\t`rating` integer,\n\t`rating_reason` text,\n\t`rated_at` integer,\n\tCONSTRAINT \"coach_question_length\" CHECK(length(\"coach_questions\".\"question\") BETWEEN 1 AND 1000),\n\tCONSTRAINT \"coach_answer_length\" CHECK(length(\"coach_questions\".\"answer\")<=1500),\n\tCONSTRAINT \"coach_rating_values\" CHECK(\"coach_questions\".\"rating\" IS NULL OR \"coach_questions\".\"rating\" IN (-1,1)),\n\tCONSTRAINT \"coach_rating_reason_length\" CHECK(\"coach_questions\".\"rating_reason\" IS NULL OR length(\"coach_questions\".\"rating_reason\")<=200),\n\tCONSTRAINT \"coach_flags\" CHECK(\"coach_questions\".\"ask_school\" IN (0,1) AND \"coach_questions\".\"used_saved\" IN (0,1))\n)"
+  },
+  {
+    "type": "table",
+    "name": "coach_spend_days",
+    "tbl_name": "coach_spend_days",
+    "sql": "CREATE TABLE `coach_spend_days` (\n\t`day` text PRIMARY KEY NOT NULL,\n\t`cost_micro_usd` integer DEFAULT 0 NOT NULL,\n\t`calls` integer DEFAULT 0 NOT NULL,\n\tCONSTRAINT \"coach_spend_day_format\" CHECK(length(\"coach_spend_days\".\"day\")=10 AND \"coach_spend_days\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"coach_spend_bounds\" CHECK(\"coach_spend_days\".\"cost_micro_usd\">=0 AND \"coach_spend_days\".\"calls\">=0)\n)"
+  },
+  {
+    "type": "table",
+    "name": "coach_visitor_days",
+    "tbl_name": "coach_visitor_days",
+    "sql": "CREATE TABLE `coach_visitor_days` (\n\t`day` text NOT NULL,\n\t`visitor_hash` text NOT NULL,\n\t`count` integer DEFAULT 1 NOT NULL,\n\tPRIMARY KEY(`day`, `visitor_hash`),\n\tCONSTRAINT \"coach_visitor_day_format\" CHECK(length(\"coach_visitor_days\".\"day\")=10 AND \"coach_visitor_days\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"coach_visitor_hash_format\" CHECK(length(\"coach_visitor_days\".\"visitor_hash\")=66 AND substr(\"coach_visitor_days\".\"visitor_hash\",1,2) IN ('a:','u:')),\n\tCONSTRAINT \"coach_visitor_count_bounds\" CHECK(\"coach_visitor_days\".\"count\" BETWEEN 0 AND 1000)\n)"
   },
   {
     "type": "table",

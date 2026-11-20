@@ -5,12 +5,12 @@ import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 
 const root=resolve(import.meta.dirname,'..'),researchRoot=resolve(root,'content/research');
-const researchFiles=new Set(['cbe-schools.json','campus-schools-a.json','campus-schools-b.json','asu-programs.json','cbu-programs.json']);
+const researchFiles=new Set(['cbe-schools.json','campus-schools-a.json','campus-schools-b.json','asu-programs.json','cbu-programs.json','excelsior-programs.json']);
 const files=(await readdir(researchRoot)).filter(name=>researchFiles.has(name)).sort();
 assert(files.length,'No reviewed opportunity research is available');
 const collection='opportunity-expansion',clone=value=>JSON.parse(JSON.stringify(value)),levels=new Set(['associate','bachelor','master','doctorate','specialist']);
 const future=new Set(['upcoming','approval-pending','planned','pending-approval','not-yet-available']);
-const expectedSchoolCount=12,schoolIds=new Set(),programIds=new Set(),schools=[],programs=[],plannedPrograms=[],sources=[],excludedEmptySchoolIds=[];
+const expectedSchoolCount=13,schoolIds=new Set(),programIds=new Set(),schools=[],programs=[],plannedPrograms=[],sources=[],excludedEmptySchoolIds=[];
 let checkedOn='';
 const validURL=value=>{try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password;}catch{return false;}};
 const stable=value=>createHash('sha256').update(value).digest('hex').slice(0,18);

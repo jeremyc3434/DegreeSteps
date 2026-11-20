@@ -397,3 +397,91 @@ body.ds-discovery-page .school-consent { font-size:.9375rem; line-height:1.65; }
   body.ds-discovery-page :is(.pf-program,.link-insight,.link-sheet tr,.audit-editor-row) { break-inside:avoid; }
   body.ds-discovery-page .school-hero :is(h1,p,a) { color:#000; }
 }
+
+/* ── Course-plan finder: compact branded cards with the credit-split bar ── */
+body.ds-discovery-page .pf-heading { position:relative; overflow:hidden; isolation:isolate; padding:30px 32px 30px 36px; }
+body.ds-discovery-page .pf-heading::before { content:""; position:absolute; left:0; top:30px; height:40px; border-left:3px solid #6f7dff; }
+body.ds-discovery-page .pf-kicker { position:relative; margin:0 0 10px!important; padding-left:24px; color:#b2c2ff!important; font-size:.875rem!important; font-weight:500; }
+body.ds-discovery-page .pf-kicker::before { content:""; position:absolute; left:0; top:3px; width:13px; height:11px; border-left:2px solid currentColor; border-bottom:2px solid currentColor; opacity:.8; }
+body.ds-discovery-page .pf-heading .pf-plan-link { position:relative; z-index:1; align-self:flex-start; }
+body.ds-discovery-page #program-results { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+body.ds-discovery-page #program-results > .pf-empty { grid-column:1/-1; }
+body.ds-discovery-page .pf-program { display:flex; flex-direction:column; gap:14px; padding:18px 20px 16px; border:1px solid var(--discovery-line,#d9e1ea); border-radius:10px; background:#fff; transition:border-color .18s ease, box-shadow .18s ease; }
+body.ds-discovery-page .pf-program:hover { border-color:#aab6ff; box-shadow:0 10px 24px -18px rgba(20,44,81,.45); }
+body.ds-discovery-page .pf-main-col { min-width:0; }
+body.ds-discovery-page .pf-school-row { display:flex; align-items:center; gap:10px; }
+body.ds-discovery-page .pf-mark { position:relative; display:inline-grid; place-items:center; flex:none; width:34px; height:34px; border-radius:8px; background:var(--discovery-navy,#142c51); color:#fff; font-size:.6875rem; font-weight:750; letter-spacing:-.01em; overflow:hidden; }
+body.ds-discovery-page .pf-mark::after { content:""; position:absolute; left:6px; bottom:6px; width:10px; height:2px; border-radius:2px; background:#6f7dff; }
+body.ds-discovery-page .pf-program h2 { margin:12px 0 4px; font-size:1.125rem; line-height:1.35; font-weight:650; }
+body.ds-discovery-page .pf-program .pf-meta { margin:0; }
+body.ds-discovery-page .pf-badges { margin-top:10px; }
+body.ds-discovery-page .pf-badge { background:#f1f4fa; color:#455f84; font-size:.8125rem; }
+body.ds-discovery-page .pf-badge-ready { background:#eaf6ef; color:#1e6141; }
+body.ds-discovery-page .pf-split { margin-top:14px; }
+body.ds-discovery-page .pf-split-track { display:flex; gap:3px; height:10px; overflow:hidden; border-radius:3px; background:#e6eaf2; }
+body.ds-discovery-page .pf-split-track > span { display:block; min-width:4px; }
+body.ds-discovery-page .pf-split-outside { background:var(--ds-cobalt,#4054f4); }
+body.ds-discovery-page .pf-split-school { background:var(--ds-navy,#192c43); }
+body.ds-discovery-page .pf-split-text { margin:8px 0 0!important; color:var(--discovery-muted,#526174); font-size:.875rem!important; line-height:1.5; }
+body.ds-discovery-page .pf-split-text strong { color:var(--discovery-ink,#192c43); font-size:1rem; font-weight:650; }
+body.ds-discovery-page .pf-split-text span { color:var(--ds-cobalt,#4054f4); }
+body.ds-discovery-page .pf-side { display:flex; flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px 14px; margin-top:auto; padding-top:14px; border-top:1px solid #edf1f6; }
+body.ds-discovery-page .pf-price { flex:1 1 100%; text-align:left; font-weight:600; }
+body.ds-discovery-page .pf-price small { display:inline; margin-left:6px; }
+body.ds-discovery-page .pf-price small { font-weight:400; font-size:.8125rem; }
+body.ds-discovery-page .pf-side .pf-open-plan { width:auto; min-height:44px; padding:10px 20px; order:3; }
+body.ds-discovery-page .pf-side button { order:2; margin-left:auto; }
+body.ds-discovery-page .pf-side button { min-height:44px; padding:8px 4px; border:0; background:transparent; color:var(--ds-cobalt,#4054f4); text-decoration:underline; text-underline-offset:3px; font-size:.875rem; }
+@media(max-width:1100px) { body.ds-discovery-page #program-results { grid-template-columns:minmax(0,1fr); } }
+@media(max-width:680px) {
+    body.ds-discovery-page .pf-program { padding:16px; }
+  body.ds-discovery-page .pf-side { flex-direction:row; }
+  body.ds-discovery-page .pf-side button { max-width:none; margin-left:0; padding-inline:0; }
+  body.ds-discovery-page .pf-side .pf-open-plan { flex:1 1 auto; }
+}
+@media(prefers-reduced-motion:reduce) { body.ds-discovery-page .pf-program { transition:none; } }
+
+/* Plan-finder hero: the three DegreeSteps steps, with this page as step 1. */
+body.ds-discovery-page .pf-steps { display:flex; flex-wrap:wrap; align-items:center; gap:0; margin:22px 0 0; padding:0; list-style:none; font-size:.875rem; }
+body.ds-discovery-page .pf-steps li { display:flex; align-items:center; color:var(--discovery-navy-muted,#c1d0e8); }
+body.ds-discovery-page .pf-steps li + li::before { content:""; width:28px; height:2px; margin:0 10px; border-radius:2px; background:var(--discovery-navy-line,#365173); }
+body.ds-discovery-page .pf-steps a { display:flex; align-items:center; color:inherit; text-decoration:none; border-radius:999px; }
+body.ds-discovery-page .pf-steps a:hover { color:#fff; }
+body.ds-discovery-page .pf-steps a:focus-visible { outline:2px solid #b2c2ff; outline-offset:3px; }
+body.ds-discovery-page .pf-steps span { display:grid; place-items:center; width:24px; height:24px; margin-right:8px; border:1.5px solid var(--discovery-navy-line,#365173); border-radius:999px; font-size:.75rem; font-weight:600; font-variant-numeric:tabular-nums; }
+body.ds-discovery-page .pf-steps li[aria-current="step"] { color:#fff; font-weight:600; }
+body.ds-discovery-page .pf-steps li[aria-current="step"] span { border-color:#6f7dff; background:#6f7dff; color:#fff; box-shadow:0 0 0 4px rgba(111,125,255,.25); }
+@media(max-width:560px) { body.ds-discovery-page .pf-steps { row-gap:10px; } body.ds-discovery-page .pf-steps li + li::before { width:14px; margin:0 6px; } }
+
+/* Plan finder: subject, outside-credit and review-tier controls. */
+body.ds-discovery-page #program-filters { grid-template-columns:minmax(200px,1.6fr) repeat(3,minmax(140px,1fr)); }
+body.ds-discovery-page .pf-more>div { align-items:flex-end; }
+body.ds-discovery-page .pf-check { display:flex; align-items:center; gap:10px; min-height:48px; cursor:pointer; }
+body.ds-discovery-page #program-filters .pf-check>span { margin:0; color:var(--discovery-ink); font-size:.9375rem; }
+body.ds-discovery-page .pf-check input { width:24px; height:24px; accent-color:var(--discovery-blue,#4054f4); }
+body.ds-discovery-page .pf-results-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px 20px; }
+body.ds-discovery-page .pf-results-head .pf-count { margin-block:18px; }
+body.ds-discovery-page .pf-sort { display:flex; align-items:center; gap:8px; color:var(--discovery-muted); font-size:.875rem; }
+body.ds-discovery-page .pf-sort select { min-height:40px; padding:0 30px 0 10px; border:1px solid #9eacbf; border-radius:6px; background-color:#fff; color:var(--discovery-ink); font-size:.9375rem; }
+body.ds-discovery-page .pf-badge-confirm { background:#fff4e5; color:#8a4b0f; }
+body.ds-discovery-page .pf-confirm-note { margin:12px 0 0; padding:10px 12px; border-left:3px solid #d98a2b; border-radius:0 6px 6px 0; background:#fffaf2; color:#5c3a12; font-size:.875rem; line-height:1.5; }
+body.ds-discovery-page .pf-confirm-note span { color:#8a4b0f; white-space:nowrap; }
+body.ds-discovery-page .pf-confirm-detail { margin:0 0 18px; padding:16px 18px; border:1px solid #f0d3a8; border-radius:8px; background:#fffaf2; }
+body.ds-discovery-page .pf-confirm-detail h3 { margin:0 0 8px; color:#5c3a12; font-size:1rem; }
+body.ds-discovery-page .pf-confirm-detail ul { margin:0 0 10px; padding-left:20px; color:#5c3a12; font-size:.9375rem; }
+body.ds-discovery-page .pf-confirm-detail p { margin:0; color:#6b4a22; font-size:.875rem; }
+@media(max-width:1100px) { body.ds-discovery-page #program-filters { grid-template-columns:repeat(2,minmax(0,1fr)); } body.ds-discovery-page #program-filters .pf-search { grid-column:1/-1; } }
+@media(max-width:600px) { body.ds-discovery-page #program-filters { grid-template-columns:minmax(0,1fr); } }
+body.ds-discovery-page .pf-legend { margin:0 0 4px; color:var(--discovery-muted); font-size:.875rem; line-height:1.9; }
+body.ds-discovery-page .pf-legend .pf-badge { margin-right:2px; }
+body.ds-discovery-page .pf-split-label { color:var(--discovery-muted); font-weight:500; }
+
+/* Guided planner: review tier on each recommended plan. */
+body.ds-discovery-page .portal-tier { margin:6px 0 0; }
+body.ds-discovery-page .portal-tier-badge { display:inline-block; padding:3px 8px; border-radius:4px; font-size:.8125rem; font-weight:600; }
+body.ds-discovery-page .portal-tier-reviewed { background:#eaf6ef; color:#1e6141; }
+body.ds-discovery-page .portal-tier-confirm { background:#fff4e5; color:#8a4b0f; }
+body.ds-discovery-page .portal-confirm-questions { margin:10px 0 0; padding:8px 12px; border-left:3px solid #d98a2b; border-radius:0 6px 6px 0; background:#fffaf2; color:#5c3a12; font-size:.875rem; }
+body.ds-discovery-page .portal-confirm-questions summary { cursor:pointer; font-weight:600; }
+body.ds-discovery-page .portal-confirm-questions ul { margin:8px 0; padding-left:18px; }
+body.ds-discovery-page .portal-confirm-questions p { margin:0; color:#6b4a22; }
