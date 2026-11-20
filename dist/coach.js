@@ -80,7 +80,8 @@
     const doc=win.document;
     const start=()=>{
       win.fetch('/api/coach/status',{credentials:'same-origin',headers:{Accept:'application/json'}})
-        .then(response=>response.ok?response.json():null).catch(()=>null)
+        // Always read the body (even the 404 sent while the coach is off) so the request completes.
+        .then(response=>response.json().then(body=>response.ok?body:null,()=>null)).catch(()=>null)
         .then(status=>{if(status&&status.enabled===true)mount(win,status);});
     };
     if(doc.readyState==='loading')doc.addEventListener('DOMContentLoaded',start,{once:true});else start();
