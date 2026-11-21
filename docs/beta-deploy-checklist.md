@@ -1,38 +1,40 @@
-# Beta deploy checklist (2026-11-20)
+# Beta deploy checklist
 
-The full launch procedure, covering accounts, data migration and the domain, is in [site-launch.md](site-launch.md). This page covers only what changed for the beta release on `claude/app-expansion-design-6g2n8u`.
+Deploys run from GitHub Actions (`.github/workflows/deploy.yml`), so no terminal is needed. The full launch procedure, covering accounts, data migration and the domain, is in [site-launch.md](site-launch.md).
 
-## Before deploying
+## One-time setup (in the browser)
 
-1. **Merge.** Merge `claude/app-expansion-design-6g2n8u` into `main` through a pull request.
-2. **Build and test.** Run `npm run build` and `node scripts/test-core.mjs`. Both must pass; they do on the branch.
-3. **Claude API key.** The key is stored only as a Worker secret (see site-launch.md step 5):
-   - `npx wrangler@4.164.0 secret put ANTHROPIC_API_KEY --name degreesteps`
-   - repeat with `--name degreesteps-staging` for staging.
-   - Then, on the admin page, use **Disconnect saved key** and revoke the old key in the Claude Console.
-4. **Database migrations.** Apply the D1 migrations, including the new `0014_coach_beta.sql`. It only adds three coach tables and is safe while the coach is off.
-   - Staging first: `npx wrangler@4.164.0 d1 migrations apply degreesteps-staging-public --remote --config wrangler.staging.jsonc`.
-   - Then production: `npx wrangler@4.164.0 d1 migrations apply degreesteps-public --remote`.
+1. **Cloudflare API token.** In the Cloudflare dashboard go to My Profile → API Tokens → Create Token → "Edit Cloudflare Workers" template, then add **Account → D1 → Edit**. Restrict it to the DegreeSteps account. Copy the token.
+2. **Claude API key.** In the Claude Console, create a key in its own workspace and set a monthly spend limit on that workspace.
+3. **GitHub secrets.** In the repo, go to Settings → Secrets and variables → Actions → New repository secret, and add:
+   - `CLOUDFLARE_API_TOKEN`: the token from step 1.
+   - `ANTHROPIC_API_KEY`: the key from step 2.
+4. **Optional approval step.** Under Settings → Environments → `production`, add yourself as a required reviewer. Production deploys then wait for your click.
 
-## Deploy
+## How deploys happen
 
-1. Deploy staging: `npm run deploy:staging`.
-2. Smoke-test staging on a phone and a laptop:
+- **Staging:** automatic after every merge to `main`. The workflow runs the source safety check, the build and the core tests, applies D1 migrations, deploys the `degreesteps-staging` Worker and sets `ANTHROPIC_API_KEY` on it.
+- **Production:** go to Actions → Deploy → Run workflow, choose `production` and tick "I have verified the existing D1 data and encrypted-connection migration" (see site-launch.md step 4). The workflow then runs `scripts/check-production-config.mjs`, applies migrations, deploys `degreesteps` and sets the key.
+- **Every run** writes a summary on its Actions page.
+
+## After the first production deploy
+
+1. On the admin page, click **Test connection**. It should say it is connected with the server secret.
+2. Click **Disconnect saved key**, then revoke that old key in the Claude Console.
+3. Smoke-test on a phone and a laptop:
    - the plan finder;
    - "Help me choose" → a plan → the worksheet;
    - "What are my credits worth?";
-   - the transfer directory;
-   - the admin page shows "Connected with the server secret".
-3. Deploy production: `npm run deploy:cloudflare`. The production config check runs first.
+   - the transfer directory.
 
 ## Leave off for the first week
 
 - **AI coach.** Leave `COACH_ENABLED` unset. To turn it on later:
-  - add `COACH_HASH_SALT` (any random text of 16 or more characters) as a secret;
+  - add a `COACH_HASH_SALT` Worker secret (16+ random characters);
   - set `COACH_ENABLED=1`;
   - optionally set `COACH_DAILY_USD_CAP` (default `3`).
-  - The coach uses Claude Haiku 5.5 by default.
+  - The coach uses Claude Haiku 5.5.
 
 ## Rollback
 
-Redeploy the previous Worker version from the Cloudflare dashboard (Workers → degreesteps → Deployments). Migration 0014 is additive, so it does not need to be rolled back.
+Redeploy the previous Worker version from the Cloudflare dashboard (Workers → degreesteps → Deployments), or re-run the Deploy workflow on an earlier commit. Migration 0014 only adds tables, so it does not need to be rolled back.
