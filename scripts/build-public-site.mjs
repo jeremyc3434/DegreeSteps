@@ -10,6 +10,8 @@ import {loadPublicPlans,removeObsoletePreviews,renderPublicPlanHub,renderPublicP
 import {loadTransferCourses,renderTransferCourse,renderTransferIndex,transferDescription,removeObsoleteTransferPages} from './transfer-pages.mjs';
 import {icon,sourceCategories,sourceCategory,articleIcon,schoolMarkHTML} from './public-visuals.mjs';
 import {articleAction,sourceAction,renderActionCallout,renderEditorialSection,articleAuthor,authorPath,renderAuthorNote,renderPlanLinks} from './public-editorial.mjs';
+// Partner settings affect only how outbound provider links are rendered, never which plans or courses appear.
+const Outbound=createRequire(import.meta.url)('../dist/outbound.js');
 
 const root = resolve(import.meta.dirname, '..'), dist = resolve(root, 'dist');
 const originValue = process.env.DEGREEPATH_PUBLIC_ORIGIN || 'https://degreesteps.com';
@@ -20,6 +22,8 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;'
 const slug = value => String(value).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/&/g,'and').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const json = value => JSON.stringify(value).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029');
 const safeURL = value => {try {const u = new URL(value); return ['https:','http:'].includes(u.protocol) && !u.username && !u.password ? u.href : '';} catch {return '';}};
+const partnerSettings=Outbound.configure(JSON.parse(await readFile(resolve(root,'content/monetization/partners.json'),'utf8')));
+await writeFile(resolve(dist,'data/partners.json'),JSON.stringify(partnerSettings,null,2)+'\n');
 const readinessRegistry=JSON.parse(await readFile(resolve(dist,'data/curriculum-registry.json'),'utf8'));
 const pathwayQuality=JSON.parse(await readFile(resolve(dist,'data/pathway-quality-report.json'),'utf8'));
 const publishedModelIds=new Set((pathwayQuality.programs||[]).filter(program=>program.publication?.ready===true).map(program=>program.modelId));
