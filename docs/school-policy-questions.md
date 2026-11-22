@@ -1,46 +1,77 @@
-# Questions for the schools — plans awaiting confirmation
+# Questions for the schools
 
-Prepared 2026-11-20 from DegreeSteps' plan research. Every question below comes from a gap or conflict in the school's own published sources; nothing here is a guess. When a school answers in writing, send the reply (or a link) and the plan can move from "Needs school confirmation" to "Reviewed".
+These are short emails to send to each school's transfer-credit or admissions office. Each school gets at most three questions that it can answer in a sentence. When a school replies, forward the reply and the plans can move from "Needs school confirmation" to "Reviewed".
 
-Plans affected: 26 of 37 plans in the finder (Excelsior 3, Liberty 11, TESU 6, Phoenix 4, WGU 2).
+## Excelsior University
 
-## Excelsior University (Business, Liberal Arts, Psychology — B.S.)
+**Subject:** Two quick transfer-credit questions
 
-1. **Alternative-credit limit.** What is the most credit you accept in total from alternative sources (ACE- or NCCRS-evaluated courses such as Sophia, Study.com and StraighterLine, plus exams such as CLEP) toward each of these three degrees?
-2. **Age of transfer credit.** Your partner guides say transfer credit has a 10-year time limit, but your *Grade Scale, GPA, and Credit Application* policy says there is generally no time limit. Which rule applies to these degrees?
+> Hello,
+>
+> I help adult students plan bachelor's degrees at Excelsior (Business, Liberal Arts and Psychology). Could you confirm two things?
+>
+> 1. What is the most credit you accept in total from ACE- or NCCRS-evaluated courses and exams (for example Sophia, Study.com, StraighterLine or CLEP)?
+> 2. Is there a time limit on how old transfer credit can be? Your partner guides mention 10 years, but your credit policy says there is generally no limit.
+>
+> Thank you,
+> Jeremy Collins, DegreeSteps
 
-## Liberty University (11 plans, online and residential)
+## Liberty University
 
-1. **Alternative-credit limit.** For Religion A.A., Apologetics A.A., Criminal Justice A.A. (online) and Accounting & Data Analysis B.S. (residential): what is the most ACE- or NCCRS-evaluated credit you accept toward the degree?
-2. **Major-course residency.** How many credits in the major must be taken at Liberty, and which requirements do they have to cover? Does a written transfer evaluation confirm this by catalog year?
-3. **State-specific general education.** Which states add online general-education requirements, and where is each state's degree completion plan published?
-4. **BUSI 105 / BUSI 301 (Business Administration & Data Analysis B.S., online).** BUSI 301 requires BUSI 105, but the current catalog offers BUSI 105 only residentially, and the Sophia and Study.com guides list no award for either. How does an online student meet this prerequisite: an online section, an approved substitution, or a transfer course?
-5. **Course matches.** Please confirm the course matches listed in the appendix for each program.
+**Subject:** Three quick questions about online transfer credit
 
-## Thomas Edison State University (English, Liberal Studies, Psychology, Accounting, Finance, General Management)
+> Hello,
+>
+> I help students plan Liberty's online degrees. Could you confirm:
+>
+> 1. For the online A.A. in Religion, Apologetics and Criminal Justice, what is the most ACE- or NCCRS-evaluated credit you accept?
+> 2. For online bachelor's degrees, how many credits in the major must be taken at Liberty?
+> 3. For the online B.S. in Business Administration & Data Analysis, BUSI 301 requires BUSI 105, which the catalog lists only on campus. How do online students meet that prerequisite?
+>
+> Thank you,
+> Jeremy Collins, DegreeSteps
 
-1. **Provider status.** Your provider directory lists Sophia and CLEP as "Provisionally Approved – Review Pending". Will courses and exams completed now be accepted under the current mappings?
-2. **CLEP scores.** What numeric CLEP score is required? The policy we found says only "C-equivalent".
-3. **Catalog year.** Which catalog edition applies to a student who enrolls now?
-4. **Unclear items (General Management):**
-   - Study.com Finance 101 → FIN-3010: the program table says 1 lower-level credit; the FIN-3010 guide says 3 credits. Which is right?
-   - Study.com Accounting 302 appears under different titles; which exact course earns ACC-4010?
-   - Is the capstone prerequisite MAR-2010 the same course as the degree requirement MKT-2010?
-   - Is there a current outside course for ETH-2200 or BUS-2100?
-   - Can BIO-1010 and NUT-1010 fill the Scientific Knowledge category in this degree?
-5. **Course matches.** Please confirm the course matches listed in the appendix for each program.
+## Thomas Edison State University
 
-## University of Phoenix (MBA, MHA, MIS — competency-based; M.S. Psychology — direct assessment)
+**Subject:** Three quick transfer-credit questions
 
-1. Are these four programs currently enrolling, and which catalog applies to a new student?
-2. Are there admission requirements beyond a bachelor's degree?
+> Hello,
+>
+> I help adult students plan TESU degrees. Could you confirm:
+>
+> 1. Your provider list shows Sophia and CLEP as "Provisionally Approved – Review Pending." Are courses and exams taken now still accepted under your current guides?
+> 2. What is the minimum CLEP score you accept?
+> 3. Which catalog year applies to a student who enrolls this term?
+>
+> Thank you,
+> Jeremy Collins, DegreeSteps
 
-## Western Governors University (Accounting B.S., IT Management B.S.)
+## University of Phoenix
 
-1. **Credits at WGU.** How many competency units must be earned at WGU for each degree? Does the required capstone count toward that minimum?
-2. **Outside courses.** Do the outside courses in your published guide for these programs come in at the level each requirement needs (e.g. upper-division)?
+**Subject:** Quick question about competency-based master's programs
 
-## Appendix — course matches to confirm
+> Hello,
+>
+> Are the competency-based MBA, MHA and MIS, and the M.S. in Psychology (direct assessment), currently enrolling new students? And do any of them accept transfer credit?
+>
+> Thank you,
+> Jeremy Collins, DegreeSteps
+
+## Western Governors University
+
+**Subject:** Quick question about residency requirements
+
+> Hello,
+>
+> For the B.S. in Accounting and the B.S. in IT Management, how many competency units must a student earn at WGU, and does the capstone count toward that?
+>
+> Thank you,
+> Jeremy Collins, DegreeSteps
+
+---
+
+## Only if a school asks for detail: course matches to confirm
+
 
 Each line is an outside course we propose for a requirement, based on the school's published guides or partner maps, but which the school's sources do not yet confirm for this exact program.
 
