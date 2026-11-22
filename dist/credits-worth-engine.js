@@ -105,7 +105,7 @@
    else remainingOutside+=credits;
   }
   // Per-record outcome in this plan: placed, an ambiguous hand-typed code, a published reason it cannot count, or no proposed option.
-  const placements=list(draft.match?.completed),records={},matches=[];
+  const placements=list(draft.match?.completed),records={},matches=[];let listed=null;
   const reasons=new Map(list(draft.match?.reviewReasons).map(item=>[item.learningId,item.reason]));
   for(const record of learning){
    const placed=placements.filter(item=>item.learningId===record.id&&doneRequirements.has(item.requirementId));
@@ -115,6 +115,8 @@
     for(const item of placed){const row=plan.rows.find(r=>r.requirementId===item.requirementId);matches.push({learningId:record.id,requirementId:item.requirementId,requirement:text(row?.title)||text(row?.code)||item.requirementId,credits:finite(row?.credits)?row.credits:0});}
    }else if(Guide.manualIdentityAmbiguous?.(draft.program,record))records[record.id]={status:'ambiguous'};
    else if(reasons.has(record.id))records[record.id]={status:'review',reason:reasons.get(record.id)};
+   // The plan lists this exact provider course but did not place it: say so, rather than "no listed match".
+   else if(recordKeys(record).some(item=>(listed||(listed=new Set(planKeys(model)))).has(item)))records[record.id]={status:'review',reason:finite(record.credits)&&record.credits>0?'this plan lists this course, but its rules did not place it here (for example a course-level, duplicate or credit-limit rule). Ask the school to evaluate it.':'this plan lists this course, but its credit amount isn’t recorded. Add it as your own course with the credits on your record to check it.'};
    else records[record.id]={status:'none'};
   }
   return {...base,status:'ok',filled:round(filled),remainingOutside:round(remainingOutside),remainingUniversity:round(remainingUniversity),unresolved:round(unresolved),

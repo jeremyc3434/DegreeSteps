@@ -1133,6 +1133,16 @@
       "count": 0,
       "checkedAt": "2026-11-18",
       "scope": "Reviewed provider identity and ACE recommendation period; receiving awards remain separate."
+    },
+    {
+      "id": "plan-course-identities",
+      "provider": "Several providers",
+      "url": "https://degreesteps.com/degree-plans/",
+      "minimum": 0,
+      "checkedAt": null,
+      "count": 111,
+      "status": "plan-identities",
+      "scope": "Outside courses named in DegreeSteps degree plans, with the provider, course code and source links each plan publishes. Credit recommendations and school acceptance require review."
     }
   ],
   "courses": [
@@ -2209,7 +2219,9 @@
       "url": "https://www.sophia.org/online-courses/business/business-communication/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0059"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -2221,7 +2233,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "wgu-bshr-sophia-approved-7112-v186",
+        "wgu-sophia-business-current"
+      ]
     },
     {
       "id": "sophia-8be6fe3460648279df",
@@ -2262,7 +2278,9 @@
       "url": "https://www.sophia.org/online-courses/business/business-ethics/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0076"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -2274,7 +2292,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "sophia-soph-0076-syllabus-2026-11-20"
+      ]
     },
     {
       "id": "sophia-2572898d05a607b7c4",
@@ -2453,7 +2475,9 @@
       "url": "https://www.sophia.org/online-courses/social-science/criminology/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0084"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -2465,7 +2489,14 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "sophia-soph-0084-ace-tesu-equivalency-2026-11-20",
+        "sophia-tesu-partner-page-2026-11-20",
+        "tesu-ace-nccrs-policy-2026-11-20",
+        "tesu-current-catalogs-2026-11-20",
+        "tesu-provider-directory-2026-11-20"
+      ]
     },
     {
       "id": "sophia-f85de5e9d95958a898",
@@ -2761,7 +2792,9 @@
       "url": "https://www.sophia.org/online-courses/language/french-i/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0077"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -2773,7 +2806,13 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-business-bs-online-2026",
+        "liberty-named-sophia-campus-2026-05",
+        "liberty-named-sophia-online-2026-07",
+        "liberty-online-sophia-guide-full-2026-11-18"
+      ]
     },
     {
       "id": "sophia-025565313ea433b13b",
@@ -2864,7 +2903,9 @@
       "url": "https://www.sophia.org/online-courses/science/human-biology/",
       "code": null,
       "mappingCode": "Human Biology",
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0002"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "curated-course-map",
@@ -2878,6 +2919,9 @@
       "mappingStatus": "reviewed-destination-example",
       "mappedCourseIds": [
         "tesu-general-management:eas1010"
+      ],
+      "planIdentitySourceIds": [
+        "liberty-official-sophia-online-2026-07"
       ]
     },
     {
@@ -3032,7 +3076,9 @@
       "url": "https://www.sophia.org/online-courses/science/introduction-to-chemistry/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0056"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -3044,7 +3090,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "sophia-soph-0056-syllabus-2026-11-20"
+      ]
     },
     {
       "id": "sophia-2edcf91ff50ee0be76",
@@ -3149,7 +3199,9 @@
       "url": "https://www.sophia.org/online-courses/humanities/introduction-to-ethics/",
       "code": null,
       "mappingCode": "Introduction to Ethics",
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0020"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "curated-course-map",
@@ -3166,6 +3218,9 @@
         "tesu-general-management:elective3",
         "tesu-general-management:elective4",
         "tesu-general-management:elective5"
+      ],
+      "planIdentitySourceIds": [
+        "liberty-official-sophia-online-2026-07"
       ]
     },
     {
@@ -3176,7 +3231,9 @@
       "url": "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-information-technology/",
       "code": null,
       "mappingCode": "Introduction to Information Technology",
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0023"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "curated-course-map",
@@ -3190,6 +3247,10 @@
       "mappingStatus": "reviewed-destination-example",
       "mappedCourseIds": [
         "tesu-general-management:cis1070"
+      ],
+      "planIdentitySourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "sophia-soph-0023-syllabus-2026-11-20"
       ]
     },
     {
@@ -3244,7 +3305,9 @@
       "url": "https://www.sophia.org/online-courses/science/introduction-to-nutrition/",
       "code": null,
       "mappingCode": "Introduction to Nutrition",
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0063"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "curated-course-map",
@@ -3258,6 +3321,10 @@
       "mappingStatus": "reviewed-destination-example",
       "mappedCourseIds": [
         "tesu-general-management:bio2080"
+      ],
+      "planIdentitySourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "sophia-soph-0063-syllabus-2026-11-20"
       ]
     },
     {
@@ -3385,7 +3452,9 @@
       "url": "https://www.sophia.org/online-courses/math/introduction-to-statistics/",
       "code": null,
       "mappingCode": "Introduction to Statistics",
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0005"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "curated-course-map",
@@ -3399,6 +3468,10 @@
       "mappingStatus": "reviewed-destination-example",
       "mappedCourseIds": [
         "tesu-general-management:sta2010"
+      ],
+      "planIdentitySourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "sophia-soph-0005-syllabus-2026-11-20"
       ]
     },
     {
@@ -3699,7 +3772,9 @@
       "url": "https://www.sophia.org/online-courses/math/precalculus/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0069"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -3711,7 +3786,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "sophia-soph-0069-syllabus-2026-11-20"
+      ]
     },
     {
       "id": "sophia-addfe49ec4c9db0079",
@@ -3774,7 +3853,9 @@
       "url": "https://www.sophia.org/online-courses/business/principles-of-management/",
       "code": null,
       "mappingCode": "Principles of Management",
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0054"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "curated-course-map",
@@ -3788,6 +3869,10 @@
       "mappingStatus": "reviewed-destination-example",
       "mappedCourseIds": [
         "tesu-general-management:man2100"
+      ],
+      "planIdentitySourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "sophia-soph-0054-syllabus-2026-11-20"
       ]
     },
     {
@@ -3831,7 +3916,9 @@
       "url": "https://www.sophia.org/online-courses/business/project-management/",
       "code": null,
       "mappingCode": "Project Management",
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0013"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "curated-course-map",
@@ -3848,6 +3935,10 @@
         "tesu-general-management:elective3",
         "tesu-general-management:elective4",
         "tesu-general-management:elective5"
+      ],
+      "planIdentitySourceIds": [
+        "wgu-bshr-sophia-approved-7112-v186",
+        "wgu-sophia-business-current"
       ]
     },
     {
@@ -3858,7 +3949,9 @@
       "url": "https://www.sophia.org/online-courses/english-and-communication/public-speaking/",
       "code": null,
       "mappingCode": "Public Speaking",
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0024"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "curated-course-map",
@@ -3872,6 +3965,10 @@
       "mappingStatus": "reviewed-destination-example",
       "mappedCourseIds": [
         "tesu-general-management:com2090"
+      ],
+      "planIdentitySourceIds": [
+        "excelsior-sophia-equivalency-2025-03",
+        "sophia-soph-0024-syllabus-2026-11-20"
       ]
     },
     {
@@ -3926,7 +4023,9 @@
       "url": "https://www.sophia.org/online-courses/language/spanish-i/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0057"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -3938,7 +4037,13 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-business-bs-online-2026",
+        "liberty-named-sophia-campus-2026-05",
+        "liberty-named-sophia-online-2026-07",
+        "liberty-online-sophia-guide-full-2026-11-18"
+      ]
     },
     {
       "id": "sophia-95e741c520dac740d4",
@@ -3948,7 +4053,9 @@
       "url": "https://www.sophia.org/online-courses/language/spanish-ii/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0064"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -3960,7 +4067,13 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-business-bs-online-2026",
+        "liberty-named-sophia-campus-2026-05",
+        "liberty-named-sophia-online-2026-07",
+        "liberty-online-sophia-guide-full-2026-11-18"
+      ]
     },
     {
       "id": "sophia-62a8e98457dd782ac1",
@@ -4123,7 +4236,9 @@
       "url": "https://www.sophia.org/online-courses/english-and-communication/workplace-communication/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0034"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -4135,7 +4250,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "wgu-bshr-sophia-approved-7112-v186",
+        "wgu-sophia-business-current"
+      ]
     },
     {
       "id": "sophia-1468ee67ef11161785",
@@ -4167,7 +4286,9 @@
       "url": "https://www.sophia.org/online-courses/career-success/workplace-writing-ii/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0049"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -4179,7 +4300,14 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "sophia-soph-0049-ace-tesu-equivalency-2026-11-20",
+        "sophia-tesu-partner-page-2026-11-20",
+        "tesu-ace-nccrs-policy-2026-11-20",
+        "tesu-current-catalogs-2026-11-20",
+        "tesu-provider-directory-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-cd66be7afc31a3cecc",
@@ -4369,7 +4497,9 @@
       "url": "https://www.straighterline.com/online-college-courses/art-appreciation/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0109"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4381,7 +4511,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-named-straighterline-campus-2026-04",
+        "liberty-named-straighterline-online-2026-04"
+      ]
     },
     {
       "id": "straighterline-3a73c55b28ee2a0aba",
@@ -4457,7 +4591,9 @@
       "url": "https://www.straighterline.com/online-college-courses/business-ethics/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0041"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4469,7 +4605,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0041-course-page-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-73c6f1457758346ecf",
@@ -4479,7 +4619,9 @@
       "url": "https://www.straighterline.com/online-college-courses/business-law/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0048"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4491,7 +4633,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0048-course-page-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-03914d1eaabec0d0c9",
@@ -4501,7 +4647,9 @@
       "url": "https://www.straighterline.com/online-college-courses/business-statistics/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0011"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4513,7 +4661,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0011-course-page-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-a3ffc76e5bf71873d6",
@@ -4589,7 +4741,9 @@
       "url": "https://www.straighterline.com/online-college-courses/college-algebra/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0002"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4601,7 +4755,12 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0002-ace-exhibit-20261120",
+        "straighterline-oosl-0002-current-offering-20261120"
+      ]
     },
     {
       "id": "straighterline-a92b212a01279e823f",
@@ -4611,7 +4770,9 @@
       "url": "https://www.straighterline.com/online-college-courses/cultural-anthropology/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0046"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4623,7 +4784,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-named-straighterline-campus-2026-04",
+        "liberty-named-straighterline-online-2026-04"
+      ]
     },
     {
       "id": "straighterline-de441996369da0a62b",
@@ -4707,7 +4872,9 @@
       "url": "https://www.straighterline.com/online-college-courses/financial-accounting/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0045"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4719,7 +4886,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0045-course-page-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-0def6f2cb8f3f60332",
@@ -4795,7 +4966,9 @@
       "url": "https://www.straighterline.com/online-college-courses/general-chemistry-i/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0015"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4807,7 +4980,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0015-course-page-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-62b9791095371acfac",
@@ -4839,7 +5016,9 @@
       "url": "https://www.straighterline.com/online-college-courses/general-physics-i/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0023"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4851,7 +5030,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0023-course-page-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-1ffe8de7864c2d52a2",
@@ -4931,7 +5114,9 @@
       "url": "https://www.straighterline.com/online-college-courses/introduction-to-biology/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0017"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -4943,7 +5128,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0017-course-page-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-633bf59c59cce89d2b",
@@ -5308,7 +5497,9 @@
       "url": "https://www.straighterline.com/online-college-courses/introduction-to-statistics/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0070"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -5320,7 +5511,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "straighterline-oosl-0070-course-page-2026-11-20"
+      ]
     },
     {
       "id": "straighterline-72d0eb0f37cdab7dff",
@@ -5680,7 +5875,9 @@
       "url": "https://www.straighterline.com/online-college-courses/personal-fitness-wellness/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0059"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -5692,7 +5889,10 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-criminal-justice-online--straighterline"
+      ]
     },
     {
       "id": "straighterline-2797536578285daaf0",
@@ -5838,7 +6038,9 @@
       "url": "https://www.straighterline.com/online-college-courses/spanish-i/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0067"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -5850,7 +6052,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-named-straighterline-campus-2026-04",
+        "liberty-named-straighterline-online-2026-04"
+      ]
     },
     {
       "id": "straighterline-6e5de3a60d6aa4a084",
@@ -5860,7 +6066,9 @@
       "url": "https://www.straighterline.com/online-college-courses/spanish-ii/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0068"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -5872,7 +6080,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-named-straighterline-campus-2026-04",
+        "liberty-named-straighterline-online-2026-04"
+      ]
     },
     {
       "id": "straighterline-d666f22139bab6892d",
@@ -5978,7 +6190,9 @@
       "url": "https://www.straighterline.com/online-college-courses/western-civilization-i/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0040"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -5990,7 +6204,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-named-straighterline-campus-2026-04",
+        "liberty-named-straighterline-online-2026-04"
+      ]
     },
     {
       "id": "straighterline-89cbd0333f9278faa1",
@@ -6000,7 +6218,9 @@
       "url": "https://www.straighterline.com/online-college-courses/western-civilization-ii/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "OOSL-0043"
+      ],
       "credits": 3,
       "creditSystem": "semester",
       "creditBasis": "provider-directory",
@@ -6012,7 +6232,11 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-named-straighterline-campus-2026-04",
+        "liberty-named-straighterline-online-2026-04"
+      ]
     },
     {
       "id": "straighterline-a893abffd3a2e66183",
@@ -6516,6 +6740,3987 @@
       "mappingStatus": "reviewed-destination-example",
       "mappedCourseIds": [
         "tesu-general-management:fin3310"
+      ]
+    },
+    {
+      "id": "christianleadersinstitute-plan-bus310",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christianleadersinstitute",
+      "title": "Business Management for Every Enterprise",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "code": "BUS 310",
+      "mappingCode": "BUS 310",
+      "codeAliases": [],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "cli-original-bus-310-current",
+        "cli-transcript-issuer-current",
+        "liberty-cli-calculator-current"
+      ]
+    },
+    {
+      "id": "christianleadersinstitute-plan-bus320",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christianleadersinstitute",
+      "title": "Business Finance For Every Enterprise",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "code": "BUS 320",
+      "mappingCode": "BUS 320",
+      "codeAliases": [],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "cli-original-bus-320-current",
+        "cli-transcript-issuer-current",
+        "liberty-cli-calculator-current"
+      ]
+    },
+    {
+      "id": "christianleadersinstitute-plan-bus330",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christianleadersinstitute",
+      "title": "Enterprise Marketing",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "code": "BUS 330",
+      "mappingCode": "BUS 330",
+      "codeAliases": [],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "cli-original-bus-330-current",
+        "cli-transcript-issuer-current",
+        "liberty-cli-calculator-current"
+      ]
+    },
+    {
+      "id": "christianleadersinstitute-plan-bus415",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christianleadersinstitute",
+      "title": "Strategic Management",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "code": "BUS 415",
+      "mappingCode": "BUS 415",
+      "codeAliases": [],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "cli-original-bus-415-current",
+        "cli-transcript-issuer-current",
+        "liberty-cli-calculator-current"
+      ]
+    },
+    {
+      "id": "christianleadersinstitute-plan-ecn301",
+      "provider": "Christian Leaders Institute",
+      "providerId": "christianleadersinstitute",
+      "title": "Microeconomics",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "code": "ECN 301",
+      "mappingCode": "ECN 301",
+      "codeAliases": [],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "cli-original-ecn-301-current",
+        "cli-transcript-issuer-current",
+        "liberty-cli-calculator-current",
+        "liberty-criminal-justice-online--cli-original-ecn-301-current",
+        "liberty-criminal-justice-online--cli-transcript-issuer-current",
+        "liberty-criminal-justice-online--liberty-cli-calculator-current"
+      ]
+    },
+    {
+      "id": "dsst-plan-dant0018",
+      "provider": "DSST",
+      "providerId": "dsst",
+      "title": "Ethics in America",
+      "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+      "code": "DANT-0018",
+      "mappingCode": "DANT-0018",
+      "codeAliases": [
+        "SQ474",
+        "SR474"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "ace-dsst-dant-0018-v5",
+        "dsst-provider-dant-0018",
+        "liberty-dsst-2025-online",
+        "liberty-dsst-linked-2023-online"
+      ]
+    },
+    {
+      "id": "dsst-plan-dant0035",
+      "provider": "DSST",
+      "providerId": "dsst",
+      "title": "Money and Banking",
+      "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+      "code": "DANT-0035",
+      "mappingCode": "DANT-0035",
+      "codeAliases": [
+        "SQ548",
+        "SR548"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "ace-dsst-dant-0035-v5",
+        "dsst-provider-dant-0035",
+        "liberty-dsst-2025-online",
+        "liberty-dsst-linked-2023-online"
+      ]
+    },
+    {
+      "id": "dsst-plan-dant0037",
+      "provider": "DSST",
+      "providerId": "dsst",
+      "title": "Personal Finance",
+      "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+      "code": "DANT-0037",
+      "mappingCode": "DANT-0037",
+      "codeAliases": [
+        "SQ550",
+        "SR550"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "ace-dsst-dant-0037-v5",
+        "dsst-provider-dant-0037",
+        "liberty-dsst-2025-online",
+        "liberty-dsst-linked-2023-online"
+      ]
+    },
+    {
+      "id": "dsst-plan-dant0066",
+      "provider": "DSST",
+      "providerId": "dsst",
+      "title": "Organizational Behavior",
+      "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+      "code": "DANT-0066",
+      "mappingCode": "DANT-0066",
+      "codeAliases": [
+        "SS531",
+        "ST531"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "ace-dsst-dant-0066-v4",
+        "dsst-provider-dant-0066",
+        "liberty-dsst-2025-online",
+        "liberty-dsst-linked-2023-online"
+      ]
+    },
+    {
+      "id": "dsst-plan-dant0076",
+      "provider": "DSST",
+      "providerId": "dsst",
+      "title": "Math for Liberal Arts",
+      "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/DSST-Transfer-Equivalency-Guide-1.pdf",
+      "code": "DANT-0076",
+      "mappingCode": "DANT-0076",
+      "codeAliases": [
+        "SS300",
+        "ST300"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "ace-dsst-dant-0076-v3",
+        "dsst-provider-dant-0076",
+        "liberty-dsst-2025-online",
+        "liberty-dsst-linked-2023-online"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0005",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Principles of Microeconomics",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=11bf254f-3e8e-ee11-8179-00224805fa3a&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0005",
+      "mappingCode": "SAYA-0005",
+      "codeAliases": [
+        "ECON101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0006",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Principles of Macroeconomics",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=b372b484-3f8e-ee11-8179-00224805fa3a&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0006",
+      "mappingCode": "SAYA-0006",
+      "codeAliases": [
+        "ECON102"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0009",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Managerial Accounting",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=2db3ca06-468e-ee11-8179-00224805fa3a&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0009",
+      "mappingCode": "SAYA-0009",
+      "codeAliases": [
+        "BUS105"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0011",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Moral and Political Philosophy",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=2d416f06-9e8f-ee11-8179-00224805fa3a&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0011",
+      "mappingCode": "SAYA-0011",
+      "codeAliases": [
+        "PHIL103"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0013",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Management Information Systems",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=86e60ee7-9f8f-ee11-8179-00224805fa3a&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0013",
+      "mappingCode": "SAYA-0013",
+      "codeAliases": [
+        "BUS206"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsfin-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0014",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Strategic Information Technology",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=4120b47e-a08f-ee11-8179-00224805fa3a&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0014",
+      "mappingCode": "SAYA-0014",
+      "codeAliases": [
+        "BUS303"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsfin-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0019",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Introduction to Molecular and Cellular Biology",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=9b7df68d-0c25-f011-8c4d-0022480829d1&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0019",
+      "mappingCode": "SAYA-0019",
+      "codeAliases": [
+        "BIO101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0020",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Introduction to Business",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=2a27eefe-0d25-f011-8c4e-6045bd0369be&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0020",
+      "mappingCode": "SAYA-0020",
+      "codeAliases": [
+        "BUS101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0023",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Principles of Marketing",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=2ba10f16-2525-f011-8c4e-6045bd0a9dd8&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0023",
+      "mappingCode": "SAYA-0023",
+      "codeAliases": [
+        "BUS203"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0024",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Business Law",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=7df67e32-2725-f011-8c4e-6045bd0a9dd8&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0024",
+      "mappingCode": "SAYA-0024",
+      "codeAliases": [
+        "BUS205"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0027",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Business Communications",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=f0ef5569-2925-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0027",
+      "mappingCode": "SAYA-0027",
+      "codeAliases": [
+        "BUS210"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0028",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "General Chemistry I",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=a57d8ce5-0a25-f011-8c4d-0022480829d1&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0028",
+      "mappingCode": "SAYA-0028",
+      "codeAliases": [
+        "CHEM101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0034",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Organizational Behavior",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=c23c18ba-2a25-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0034",
+      "mappingCode": "SAYA-0034",
+      "codeAliases": [
+        "BUS209"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0035",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Principles of Management",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=6c476eee-2b25-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0035",
+      "mappingCode": "SAYA-0035",
+      "codeAliases": [
+        "BUS208"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0036",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Art Appreciation",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=0c3c2425-0925-f011-8c4d-0022480829d1&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0036",
+      "mappingCode": "SAYA-0036",
+      "codeAliases": [
+        "ARTH101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0037",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Business Statistics",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=436814fc-2c25-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0037",
+      "mappingCode": "SAYA-0037",
+      "codeAliases": [
+        "BUS204"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0038",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Operations Management",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=09cfecb2-2e25-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0038",
+      "mappingCode": "SAYA-0038",
+      "codeAliases": [
+        "BUS300"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0039",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Project Management",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=518b717b-3025-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0039",
+      "mappingCode": "SAYA-0039",
+      "codeAliases": [
+        "BUS402"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0044",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "World Regional Geography",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=81970edd-c725-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0044",
+      "mappingCode": "SAYA-0044",
+      "codeAliases": [
+        "GEOG101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0045",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Introduction to Critical Thinking and Logic",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=97e7441f-c925-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0045",
+      "mappingCode": "SAYA-0045",
+      "codeAliases": [
+        "PHIL102"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bshr-saylor-668-v78",
+        "wgu-business-bsitm-saylor-668-v78",
+        "wgu-business-bsmgt-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78",
+        "wgu-business-bsuxd-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "saylor-plan-saya0047",
+      "provider": "Saylor",
+      "providerId": "saylor",
+      "title": "Business Ethics",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=Saylor+University&cid=d6e653bf-cb25-f011-8c4d-6045bd0a807d&oid=68099b28-9016-e811-810f-5065f38bf0e1",
+      "code": "SAYA-0047",
+      "mappingCode": "SAYA-0047",
+      "codeAliases": [
+        "BUS200"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "saylor-current-provider-credit-list-20261120",
+        "wgu-business-bsacc-saylor-668-v78",
+        "wgu-business-bsfin-saylor-668-v78",
+        "wgu-business-bsmkt-saylor-668-v78"
+      ]
+    },
+    {
+      "id": "sophia-plan-soph0073",
+      "provider": "Sophia",
+      "providerId": "sophia",
+      "title": "Anatomy & Physiology I",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+      "code": "SOPH-0073",
+      "mappingCode": "SOPH-0073",
+      "codeAliases": [
+        "SCIE1050"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-sophia-online-2026-07"
+      ]
+    },
+    {
+      "id": "sophia-plan-soph0098",
+      "provider": "Sophia",
+      "providerId": "sophia",
+      "title": "Intro to Education",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Sophia-Learning-Transfer-Equivalencies.pdf",
+      "code": "SOPH-0098",
+      "mappingCode": "SOPH-0098",
+      "codeAliases": [
+        "EDUC1005"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-sophia-online-2026-07",
+        "liberty-online-sophia-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "straighterline-plan-oosl0028",
+      "provider": "StraighterLine",
+      "providerId": "straighterline",
+      "title": "Anatomy & Physiology I",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+      "code": "OOSL-0028",
+      "mappingCode": "OOSL-0028",
+      "codeAliases": [
+        "BIO201"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-straighterline-equivalency-2024-12",
+        "liberty-official-straighterline-online-2026-04",
+        "straighterline-oosl-0028-course-page-2026-11-20"
+      ]
+    },
+    {
+      "id": "straighterline-plan-oosl0052",
+      "provider": "StraighterLine",
+      "providerId": "straighterline",
+      "title": "Introduction to Communications",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+      "code": "OOSL-0052",
+      "mappingCode": "OOSL-0052",
+      "codeAliases": [
+        "COM101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-straighterline-online-2026-04",
+        "liberty-official-straighterline-residential-2026-04"
+      ]
+    },
+    {
+      "id": "straighterline-plan-oosl0118",
+      "provider": "StraighterLine",
+      "providerId": "straighterline",
+      "title": "Foundations of Early Childhood Education",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+      "code": "OOSL-0118",
+      "mappingCode": "OOSL-0118",
+      "codeAliases": [
+        "ECE101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-named-straighterline-campus-2026-04",
+        "liberty-named-straighterline-online-2026-04"
+      ]
+    },
+    {
+      "id": "straighterline-plan-oosl0123",
+      "provider": "StraighterLine",
+      "providerId": "straighterline",
+      "title": "Intro to Ethics",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/StraighterLine-Transfer-Equivalencies.pdf",
+      "code": "OOSL-0123",
+      "mappingCode": "OOSL-0123",
+      "codeAliases": [
+        "PHIL102"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-criminal-justice-online--liberty-official-straighterline-online-2026-04",
+        "liberty-criminal-justice-residential--liberty-official-straighterline-residential-2026-04",
+        "liberty-official-straighterline-online-2026-04",
+        "liberty-official-straighterline-residential-2026-04"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0001",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Intro to Biology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0001",
+      "mappingCode": "SDCM-0001",
+      "codeAliases": [
+        "Biology 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "ace-study-biology101-v5-2026-11-18",
+        "excelsior-studycom-equivalency-2024-12",
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-cj-study-online-named-awards-2026-11-18",
+        "liberty-criminal-justice-online--ace-study-biology101-v5-2026-11-18",
+        "liberty-criminal-justice-online--liberty-cj-study-online-named-awards-2026-11-18",
+        "liberty-criminal-justice-online--provider-study-biology101-current-web-2026-11-18",
+        "liberty-criminal-justice-online--study",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "provider-study-biology101-current-web-2026-11-18",
+        "study",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bshr-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsmgt-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114",
+        "wgu-business-bsuxd-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0003",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Anatomy and Physiology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0003",
+      "mappingCode": "SDCM-0003",
+      "codeAliases": [
+        "Biology 105"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0005",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Environment and Humanity",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0005",
+      "mappingCode": "SDCM-0005",
+      "codeAliases": [
+        "Environmental Science 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0007",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 102: Principles of Marketing",
+      "url": "https://study.com/academy/course/principles-of-marketing-course.html",
+      "code": "SDCM-0007",
+      "mappingCode": "SDCM-0007",
+      "codeAliases": [
+        "Business 102"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "study-course-sdcm-0007-2026-11",
+        "wgu-bshr-study-approved-4429-v114",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsuxd-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0011",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Western Civilization I",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0011",
+      "mappingCode": "SDCM-0011",
+      "codeAliases": [
+        "History 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0012",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "US History I",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0012",
+      "mappingCode": "SDCM-0012",
+      "codeAliases": [
+        "History 103"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0013",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "College Algebra",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0013",
+      "mappingCode": "SDCM-0013",
+      "codeAliases": [
+        "Math 101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "study-current-sdcm-0013-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bshr-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0014",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "College Mathematics",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0014",
+      "mappingCode": "SDCM-0014",
+      "codeAliases": [
+        "Math 102"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0015",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Math 103: Precalculus",
+      "url": "https://study.com/academy/course/precalculus-course.html",
+      "code": "SDCM-0015",
+      "mappingCode": "SDCM-0015",
+      "codeAliases": [
+        "Math 103"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "study-current-sdcm-0015-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bshr-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0016",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Math 104: Calculus",
+      "url": "https://study.com/academy/course/calculus.html",
+      "code": "SDCM-0016",
+      "mappingCode": "SDCM-0016",
+      "codeAliases": [
+        "Math 104"
+      ],
+      "credits": 4,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "study-current-sdcm-0016-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bshr-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0017",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Intro to Psychology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0017",
+      "mappingCode": "SDCM-0017",
+      "codeAliases": [
+        "Psychology 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0019",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Human Growth and Development",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0019",
+      "mappingCode": "SDCM-0019",
+      "codeAliases": [
+        "Psychology 103"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0025",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 103: Introductory Business Law",
+      "url": "https://study.com/academy/course/business-law-course.html",
+      "code": "SDCM-0025",
+      "mappingCode": "SDCM-0025",
+      "codeAliases": [
+        "Business 103"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "study-course-sdcm-0025-2026-11",
+        "wgu-bshr-study-approved-4429-v114",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114",
+        "wgu-business-bsuxd-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0026",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 106: Human Resource Management",
+      "url": "https://study.com/academy/course/human-resource-management-course.html",
+      "code": "SDCM-0026",
+      "mappingCode": "SDCM-0026",
+      "codeAliases": [
+        "Business 106"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "study-course-sdcm-0026-2026-11",
+        "wgu-bshr-study-approved-4429-v114",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-business-bsc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114",
+        "wgu-business-bsuxd-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0029",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Earth Science",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0029",
+      "mappingCode": "SDCM-0029",
+      "codeAliases": [
+        "Earth Science 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0032",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Principles of Health",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0032",
+      "mappingCode": "SDCM-0032",
+      "codeAliases": [
+        "Health 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-criminal-justice-online--study",
+        "liberty-criminal-justice-residential--study",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "study"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0033",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Precalculus Algebra",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0033",
+      "mappingCode": "SDCM-0033",
+      "codeAliases": [
+        "Math 105"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0038",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Western Civilization II",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0038",
+      "mappingCode": "SDCM-0038",
+      "codeAliases": [
+        "History 102"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0039",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "US History II",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0039",
+      "mappingCode": "SDCM-0039",
+      "codeAliases": [
+        "History 104"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0042",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "American Government",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0042",
+      "mappingCode": "SDCM-0042",
+      "codeAliases": [
+        "Political Science 102"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0043",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Research Methods in Psychology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0043",
+      "mappingCode": "SDCM-0043",
+      "codeAliases": [
+        "Psychology 105"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0044",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Life Span Developmental Psychology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0044",
+      "mappingCode": "SDCM-0044",
+      "codeAliases": [
+        "Psychology 107"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0045",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Psychology of Adulthood and Aging",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0045",
+      "mappingCode": "SDCM-0045",
+      "codeAliases": [
+        "Psychology 108"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-aa-online-2026",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0047",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Introduction to Humanities",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0047",
+      "mappingCode": "SDCM-0047",
+      "codeAliases": [
+        "Humanities 101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "study-current-sdcm-0047-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0048",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Intro to Sociology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0048",
+      "mappingCode": "SDCM-0048",
+      "codeAliases": [
+        "Sociology 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0052",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 113: Business Communication",
+      "url": "https://study.com/academy/course/business-113-business-communication.html",
+      "code": "SDCM-0052",
+      "mappingCode": "SDCM-0052",
+      "codeAliases": [
+        "Business 113"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "study-current-sdcm-0052-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bshr-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsmgt-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0054",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 308: Globalization & International Management",
+      "url": "https://study.com/college/thomas-edison-state-university/degrees/tesu-man-3720-international-management-overview-course-equivalency-guide.html",
+      "code": "SDCM-0054",
+      "mappingCode": "SDCM-0054",
+      "codeAliases": [
+        "Business 308"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05",
+        "tesu-degree",
+        "tesu-directory",
+        "tesu-general-management--tesu-degree",
+        "tesu-general-management--tesu-directory",
+        "tesu-general-management--tesu-study-business308-ace-current",
+        "tesu-general-management--tesu-study-course-passing-current",
+        "tesu-general-management--tesu-study-general-management-current",
+        "tesu-general-management--tesu-study-man3720-current",
+        "tesu-general-management--tesu-transcripts-current",
+        "tesu-study-business308-ace-current",
+        "tesu-study-course-passing-current",
+        "tesu-study-general-management-current",
+        "tesu-study-man3720-current",
+        "tesu-transcripts-current"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0055",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Public Speaking",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0055",
+      "mappingCode": "SDCM-0055",
+      "codeAliases": [
+        "Communications 101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0057",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "College Composition I",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0057",
+      "mappingCode": "SDCM-0057",
+      "codeAliases": [
+        "English 104"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "study-current-sdcm-0057-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bshr-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsmgt-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114",
+        "wgu-business-bsuxd-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0059",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Personal Finance",
+      "url": "https://www.liberty.edu/residential/wp-content/uploads/Study.com-Transfer-Equivalency-Guide-Finalized.pdf",
+      "code": "SDCM-0059",
+      "mappingCode": "SDCM-0059",
+      "codeAliases": [
+        "Finance 102"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "study-current-sdcm-0059-2026-11-20",
+        "wgu-business-bsfin-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0060",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Macroeconomics",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0060",
+      "mappingCode": "SDCM-0060",
+      "codeAliases": [
+        "Economics 102"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0064",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Quantitative Literacy",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0064",
+      "mappingCode": "SDCM-0064",
+      "codeAliases": [
+        "Math 107"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-business-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0068",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Principles of Statistics",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0068",
+      "mappingCode": "SDCM-0068",
+      "codeAliases": [
+        "Statistics 101"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0069",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Principles of Microeconomics",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0069",
+      "mappingCode": "SDCM-0069",
+      "codeAliases": [
+        "Economics 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0085",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 314: Employment Law",
+      "url": "https://study.com/academy/course/business-314-employment-law.html",
+      "code": "SDCM-0085",
+      "mappingCode": "SDCM-0085",
+      "codeAliases": [
+        "Business 314"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "study-current-sdcm-0085-2026-11-20",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bshr-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0088",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Analyzing and Interpreting Literature",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0088",
+      "mappingCode": "SDCM-0088",
+      "codeAliases": [
+        "English 103"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0089",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "College Composition II",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0089",
+      "mappingCode": "SDCM-0089",
+      "codeAliases": [
+        "English 105"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "study-current-sdcm-0089-2026-11-20",
+        "wgu-business-bshr-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0115",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 120: International Business",
+      "url": "https://study.com/academy/course/business-120-international-business.html",
+      "code": "SDCM-0115",
+      "mappingCode": "SDCM-0115",
+      "codeAliases": [
+        "Business 120"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "study-course-sdcm-0115-2026-11",
+        "wgu-bshr-study-approved-4429-v114",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114",
+        "wgu-business-bsuxd-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0116",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Foundations of Leadership",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0116",
+      "mappingCode": "SDCM-0116",
+      "codeAliases": [
+        "Business 302"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0123",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 303: Management Information Systems",
+      "url": "https://study.com/academy/course/business-303-management-information-systems.html",
+      "code": "SDCM-0123",
+      "mappingCode": "SDCM-0123",
+      "codeAliases": [
+        "Business 303"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "study-current-sdcm-0123-2026-11-20",
+        "wgu-business-bsfin-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0133",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Intro to Political Science",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0133",
+      "mappingCode": "SDCM-0133",
+      "codeAliases": [
+        "Political Science 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0134",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Industrial/Organizational Psychology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0134",
+      "mappingCode": "SDCM-0134",
+      "codeAliases": [
+        "Psychology 301"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0138",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Introduction to Physics",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0138",
+      "mappingCode": "SDCM-0138",
+      "codeAliases": [
+        "Physics 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0142",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 318: Management Ethics",
+      "url": "https://study.com/academy/course/business-318-management-ethics.html",
+      "code": "SDCM-0142",
+      "mappingCode": "SDCM-0142",
+      "codeAliases": [
+        "Business 318"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "study-current-sdcm-0142-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0144",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Leading Organizational Change",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0144",
+      "mappingCode": "SDCM-0144",
+      "codeAliases": [
+        "Business 304"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0145",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Organizational Communication",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0145",
+      "mappingCode": "SDCM-0145",
+      "codeAliases": [
+        "Business 313"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0146",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Negotiations & Conflict Management",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0146",
+      "mappingCode": "SDCM-0146",
+      "codeAliases": [
+        "Business 319"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0151",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Marketing 308: Applied Marketing",
+      "url": "https://study.com/academy/course/marketing-308-applied-marketing.html",
+      "code": "SDCM-0151",
+      "mappingCode": "SDCM-0151",
+      "codeAliases": [
+        "Marketing 308"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "study-current-sdcm-0151-2026-11-20",
+        "wgu-business-bsmkt-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0153",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Corporate Finance",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0153",
+      "mappingCode": "SDCM-0153",
+      "codeAliases": [
+        "Finance 301"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0154",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Western Civilization from Prehistory to Post WWII",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0154",
+      "mappingCode": "SDCM-0154",
+      "codeAliases": [
+        "History 100"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0155",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "US History from Settlement to Present Day",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0155",
+      "mappingCode": "SDCM-0155",
+      "codeAliases": [
+        "History 105"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0161",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Ethics - Theory & Practice",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0161",
+      "mappingCode": "SDCM-0161",
+      "codeAliases": [
+        "Philosophy 103"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-business-bs-online-2026",
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-criminal-justice-residential--liberty-official-study-com-residential-2026-05",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0162",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Computer Concepts & Applications",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0162",
+      "mappingCode": "SDCM-0162",
+      "codeAliases": [
+        "Computer Science 103"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "ace-study-computer-science103-v4-2026-11-18",
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-cj-study-residential-named-awards-2026-11-18",
+        "liberty-criminal-justice-residential--ace-study-computer-science103-v4-2026-11-18",
+        "liberty-criminal-justice-residential--liberty-cj-study-residential-named-awards-2026-11-18",
+        "liberty-criminal-justice-residential--provider-study-computer-science103-current-web-2026-11-18",
+        "liberty-criminal-justice-residential--study",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "provider-study-computer-science103-current-web-2026-11-18",
+        "study"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0167",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "History of Western Art I",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0167",
+      "mappingCode": "SDCM-0167",
+      "codeAliases": [
+        "Art 103"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "study-current-sdcm-0167-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0168",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "History of Western Art II",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0168",
+      "mappingCode": "SDCM-0168",
+      "codeAliases": [
+        "Art 104"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "study-current-sdcm-0168-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0169",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Human Resource Management in Healthcare",
+      "url": "https://study.com/academy/course/health-310-human-resource-management-in-healthcare.html",
+      "code": "SDCM-0169",
+      "mappingCode": "SDCM-0169",
+      "codeAliases": [
+        "Health 310"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "liberty-shared-source-cd66228b032c5ccfe83e503a"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0170",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Healthcare Informatics",
+      "url": "https://study.com/academy/course/health-309-healthcare-informatics.html",
+      "code": "SDCM-0170",
+      "mappingCode": "SDCM-0170",
+      "codeAliases": [
+        "Health 309"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "liberty-shared-source-6725da4703111a4d3b994257"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0172",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Healthcare Organization and Management",
+      "url": "https://study.com/academy/course/health-303-healthcare-organization-management.html",
+      "code": "SDCM-0172",
+      "mappingCode": "SDCM-0172",
+      "codeAliases": [
+        "Health 303"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "liberty-shared-source-be8dc0770b064d137cd746b0"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0173",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Ethical and Legal Issues in Healthcare",
+      "url": "https://study.com/academy/course/health-301-ethical-legal-issues-in-healthcare.html",
+      "code": "SDCM-0173",
+      "mappingCode": "SDCM-0173",
+      "codeAliases": [
+        "Health 301"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "liberty-shared-source-abf16c84d1fe9d9188f634e0"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0178",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Advanced Abnormal Psychology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0178",
+      "mappingCode": "SDCM-0178",
+      "codeAliases": [
+        "Psychology 306"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0181",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Physiological Psychology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0181",
+      "mappingCode": "SDCM-0181",
+      "codeAliases": [
+        "Psychology 311"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0182",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Advanced Social Psychology",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0182",
+      "mappingCode": "SDCM-0182",
+      "codeAliases": [
+        "Psychology 316"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0183",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Psychology of Learning",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0183",
+      "mappingCode": "SDCM-0183",
+      "codeAliases": [
+        "Psychology 314"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0185",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Social Science 108: Ethics in the Social Sciences",
+      "url": "https://study.com/academy/course/social-science-108-ethics-in-the-social-sciences.html",
+      "code": "SDCM-0185",
+      "mappingCode": "SDCM-0185",
+      "codeAliases": [
+        "Social Science 108"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "study-current-sdcm-0185-2026-11-20",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0187",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Diversity and Intercultural Communication",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0187",
+      "mappingCode": "SDCM-0187",
+      "codeAliases": [
+        "Communications 301"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "excelsior-studycom-equivalency-2024-12",
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "study-course-sdcm-0187-2026-11",
+        "wgu-bshr-study-approved-4429-v114",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114",
+        "wgu-business-bsuxd-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0189",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Intro to Astronomy",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0189",
+      "mappingCode": "SDCM-0189",
+      "codeAliases": [
+        "Astronomy 101"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0207",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Health Services Policy",
+      "url": "https://study.com/academy/course/health-302-health-services-policy.html",
+      "code": "SDCM-0207",
+      "mappingCode": "SDCM-0207",
+      "codeAliases": [
+        "Health 302"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "liberty-shared-source-19a3ef2492ec89223f430c7c",
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0209",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Healthcare Quality & Outcome Measurement",
+      "url": "https://study.com/academy/course/health-308-healthcare-quality-outcome-measurement.html",
+      "code": "SDCM-0209",
+      "mappingCode": "SDCM-0209",
+      "codeAliases": [
+        "Health 308"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026",
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "liberty-shared-source-f639549ea26b78473d6bc4ec"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0225",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Business 212: Business Statistics",
+      "url": "https://study.com/academy/course/business-114-business-statistics.html",
+      "code": "SDCM-0225",
+      "mappingCode": "SDCM-0225",
+      "codeAliases": [
+        "Business 212"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05",
+        "study-course-sdcm-0225-2026-11",
+        "wgu-bshr-study-approved-4429-v114",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-business-bsacc-study-4429-v114",
+        "wgu-business-bsfin-study-4429-v114",
+        "wgu-business-bsitm-study-4429-v114",
+        "wgu-business-bsmkt-study-4429-v114"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0236",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Historiography & Historical Methods",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0236",
+      "mappingCode": "SDCM-0236",
+      "codeAliases": [
+        "History 301"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0243",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Critical Thinking & Analysis",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0243",
+      "mappingCode": "SDCM-0243",
+      "codeAliases": [
+        "Humanities 201"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-accounting-bs-online-2026",
+        "liberty-business-bs-online-2026",
+        "liberty-healthcare-administration-online-2026-2027",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-named-study-com-campus-2026-05",
+        "liberty-named-study-com-online-2026-05",
+        "liberty-online-study-guide-full-2026-11-18",
+        "liberty-psychology-addictions-online-2026",
+        "liberty-psychology-bs-online-2026"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0244",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "English Composition I",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0244",
+      "mappingCode": "SDCM-0244",
+      "codeAliases": [
+        "English 204"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0245",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "English Composition II",
+      "url": "https://www.liberty.edu/online/wp-content/uploads/Study.com-Course-Equivalency-Guide.pdf",
+      "code": "SDCM-0245",
+      "mappingCode": "SDCM-0245",
+      "codeAliases": [
+        "English 205"
+      ],
+      "credits": null,
+      "creditSystem": null,
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "liberty-history-free-arts-courses-2026-2027",
+        "liberty-history-free-busi-courses-2026-2027",
+        "liberty-history-free-csis-courses-2026-2027",
+        "liberty-history-free-econ-courses-2026-2027",
+        "liberty-history-free-engl-courses-2026-2027",
+        "liberty-history-free-govt-courses-2026-2027",
+        "liberty-history-free-hlth-courses-2026-2027",
+        "liberty-history-free-musc-courses-2026-2027",
+        "liberty-history-free-soci-courses-2026-2027",
+        "liberty-history-online-2026-2027",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-study-com-residential-2026-05",
+        "liberty-online-study-guide-full-2026-11-18"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0265",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Philosophy 104: Contemporary Trends in Technology and Ethics",
+      "url": "https://study.com/academy/course/philosophy-104-contemporary-trends-in-technology-and-ethics.html",
+      "code": "SDCM-0265",
+      "mappingCode": "SDCM-0265",
+      "codeAliases": [
+        "Philosophy 104"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "study-course-sdcm-0265-2026-11",
+        "wgu-bsmgt-study-approved-4429-v114",
+        "wgu-business-bsitm-study-4429-v114"
       ]
     }
   ]
