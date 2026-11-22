@@ -208,11 +208,18 @@
   function studentSchoolEmail() {
     const courses=[...new Set((plan?.rows||[]).map(row=>row.option).filter(option=>option&&option.provider&&option.provider!=='University').map(option=>option.provider+' '+option.title))];
     const format=(pathway?.modalities||[]).length===1?(pathway.modalities[0]==='campus'?'on campus':'online'):'';
-    return Sheet.schoolEmail(planIndex,pathway?.id,{title:pathway?.title,school:pathway?.school,format,courses});
+    return Sheet.schoolEmail(planIndex,pathway?.id,{title:pathway?.title,school:pathway?.school,modalities:pathway?.modalities,format,courses});
+  }
+  // Where the email goes, named with the school page the address came from; a school with no published address gets its contact page.
+  function schoolEmailHint(email) {
+    const c=email.contact;
+    if(c&&c.email)return 'A short email in your words, addressed to '+esc(c.office)+' ('+esc(c.email)+', <a href="'+esc(c.source)+'" target="_blank" rel="noopener">published by the school</a>).';
+    if(c&&c.contactPage)return 'This school doesn’t publish a transfer email. Copy the email and send it through <a href="'+esc(c.contactPage)+'" target="_blank" rel="noopener">its contact form</a>.';
+    return 'A short email in your words, ready to send to the school’s admissions or transfer-credit office.';
   }
   function schoolEmailActionsHTML() {
     const email=studentSchoolEmail();if(!email)return '';
-    return '<div class="sheet-school-email"><a class="button small" href="'+esc(email.mailto)+'" data-school-email="open">Email the school these questions</a><button type="button" class="button ghost small" data-action="copy-school-email">Copy the email</button><p class="sheet-school-email-hint">A short email in your words, ready to send to the school’s admissions or transfer-credit office.</p></div>';
+    return '<div class="sheet-school-email"><a class="button small" href="'+esc(email.mailto)+'" data-school-email="open">Email the school these questions</a><button type="button" class="button ghost small" data-action="copy-school-email">Copy the email</button><p class="sheet-school-email-hint">'+schoolEmailHint(email)+'</p></div>';
   }
   function schoolCheckHTML() {
     const routeId=pathway?.id,questions=Sheet.schoolQuestions(planIndex,routeId);if(!questions.length)return '';

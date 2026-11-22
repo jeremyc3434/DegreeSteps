@@ -399,6 +399,21 @@
   /** A short email a student can send the school, in their own voice, built from the plan's open questions.
    * At most three plain questions; checks the student does with a provider (enrollment terms) are left out.
    * options: {title, school, format, courses:[course titles]} — all optional. Returns null when nothing is open. */
+  // Published transfer-credit contacts, each copied from the school's own page (checked 2026-11-22). Only addresses a school
+  // publishes for these questions are listed; a school that publishes none gets its contact page instead.
+  const SCHOOL_TRANSFER_CONTACTS=Object.freeze({
+    'Western Governors University':{email:'transcriptinfo@wgu.edu',office:'WGU transcript and transfer evaluation team',source:'https://www.wgu.edu/transfer'},
+    'Liberty University':{online:{email:'luotransfer@liberty.edu',office:'Liberty University Online transfer evaluators',source:'https://liberty.edu/online/transfer-students'},campus:{email:'undergradtransfer@liberty.edu',office:'Liberty University transfer evaluations',source:'https://www.liberty.edu/registrar/transferring-courses/consultations'}},
+    'Excelsior University':{email:'admissions@excelsior.edu',office:'Excelsior University admissions',source:'https://www.excelsior.edu/start-with-more-credit/'},
+    'Thomas Edison State University':{email:'registrar@tesu.edu',office:'TESU Office of the Registrar, Director of Transfer Evaluations',source:'https://tesu.smartcatalogiq.com/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit/'},
+    'University of Phoenix':{email:'',office:'University of Phoenix enrollment',source:'https://www.phoenix.edu/about/contact-us.html',contactPage:'https://www.phoenix.edu/request/email-us'}
+  });
+  /** The school's published transfer contact for a plan, or null. options: {school, modalities}. */
+  function schoolTransferContact(options={}){
+    const entry=SCHOOL_TRANSFER_CONTACTS[text(options.school)];if(!entry)return null;
+    if(entry.online||entry.campus){const online=(Array.isArray(options.modalities)?options.modalities:[]).includes('online');return entry[online?'online':'campus']||null;}
+    return entry;
+  }
   function schoolEmail(index,routeId,options={}){
     const plans=object(object(index).plans),id=text(routeId),entry=id&&Object.hasOwn(plans,id)?object(plans[id]):{};
     if(entry.tier!=='confirmation'||!Array.isArray(entry.questions))return null;
@@ -420,7 +435,8 @@
     const list=asks.slice(0,3),format=text(options.format);
     const subject='Transfer credit question'+(title?' – '+title:'');
     const body=['Hello,','','I’m planning to enroll in '+(title?'the '+title+(format?' ('+format+')':''):'one of your degrees')+' and want to take some courses before I start. Before I pay for them, could you help with '+(list.length===1?'one question':list.length+' quick questions')+'?','',...list.map((ask,i)=>(i+1)+'. '+ask),'','Thank you,','[Your name]'].join('\n');
-    return {subject,body,questions:list,mailto:'mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)};
+    const contact=schoolTransferContact({school:options.school,modalities:options.modalities}),to=contact?.email||'';
+    return {subject,body,questions:list,contact,mailto:'mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)};
   }
   // Subject choices follow the browsing taxonomy (content/catalog/subject-areas.json);
   // labels come from the plan index when present. An older saved field id stays
@@ -440,5 +456,5 @@
     let changed=false;const pathways=catalog.pathways.map(route=>{const entry=route&&Object.hasOwn(plans,route.id)?object(plans[route.id]):{},subjects=entry.subjects;if(!Array.isArray(subjects)||!subjects.every(id=>typeof id==='string')||JSON.stringify(route.subjects)===JSON.stringify(subjects))return route;changed=true;return {...route,subjects:[...subjects]};});
     return changed?{...catalog,pathways}:catalog;
   }
-  return Object.freeze({schoolEmail,initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog,creditUnit,routeCreditDifference,residencyAlternative,schoolQuestions,subjectChoices,attachRouteSubjects});
+  return Object.freeze({schoolEmail,schoolTransferContact,initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog,creditUnit,routeCreditDifference,residencyAlternative,schoolQuestions,subjectChoices,attachRouteSubjects});
 }));
