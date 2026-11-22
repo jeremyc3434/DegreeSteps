@@ -13,6 +13,8 @@
   const schoolKey = name => ({'Thomas Edison State University':'tesu','Liberty University':'liberty','University of Maine at Presque Isle':'umpi','Western Governors University':'wgu','Charter Oak State College':'cosc','Southern New Hampshire University':'snhu','Purdue Global':'purdue-global'}[name] || slug(name));
   const safeURL = value => { try { const u = new URL(value); return ['https:','http:'].includes(u.protocol) && !u.username && !u.password ? u.href : ''; } catch { return ''; } };
   const link = (href,title) => safeURL(href) ? '<a href="'+esc(safeURL(href))+'" target="_blank" rel="noopener">'+esc(title)+'</a>' : esc(title);
+  // Anonymous aggregate counters (growth-metrics.js). Only the event name and a fixed detail are sent.
+  const growth = (event,extra={}) => { try { window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event,context:'workspace',...extra}})); } catch { /* Measurement never blocks the worksheet. */ } };
   const opts = (items,value) => items.map(item => {const a=Array.isArray(item)?item:[item,item];return '<option value="'+esc(a[0])+'"'+(String(a[0])===String(value)?' selected':'')+'>'+esc(a[1])+'</option>';}).join('');
   const button = (action,title,kind='secondary') => '<button type="button" class="button '+kind+' small" data-action="'+action+'">'+title+'</button>';
   const field = (name,title,value,type='text',attrs='') => '<label class="sheet-field"><span>'+esc(title)+'</span><input name="'+name+'" type="'+type+'" value="'+esc(value??'')+'" '+attrs+'></label>';
@@ -208,7 +210,7 @@
   }
   function schoolEmailActionsHTML() {
     const email=studentSchoolEmail();if(!email)return '';
-    return '<div class="sheet-school-email"><a class="button small" href="'+esc(email.mailto)+'">Email the school these questions</a><button type="button" class="button ghost small" data-action="copy-school-email">Copy the email</button><p class="sheet-school-email-hint">A short email in your words, ready to send to the school’s admissions or transfer-credit office.</p></div>';
+    return '<div class="sheet-school-email"><a class="button small" href="'+esc(email.mailto)+'" data-school-email="open">Email the school these questions</a><button type="button" class="button ghost small" data-action="copy-school-email">Copy the email</button><p class="sheet-school-email-hint">A short email in your words, ready to send to the school’s admissions or transfer-credit office.</p></div>';
   }
   function schoolCheckHTML() {
     const routeId=pathway?.id,questions=Sheet.schoolQuestions(planIndex,routeId);if(!questions.length)return '';
@@ -732,6 +734,7 @@
     if(choice==='some')creditsDialog(null,true);else{closeDialog();announce(choice==='none'?'Starting from zero saved. Your saved courses are unchanged.':'Past courses set aside for now. Your plan stays provisional.');}
   }
   document.addEventListener('click',event=>{
+    if(event.target.closest?.('a[data-school-email="open"]'))growth('school_email',{action:'open'});
     const fold=event.target.closest?.('[data-phone-fold]');
     if(fold?.dataset?.phoneFold){const group=fold.dataset.phoneFold,open=!phoneFolds.has(group);if(open)phoneFolds.add(group);else phoneFolds.delete(group);fold.setAttribute('aria-expanded',String(open));$('sheet-workspace')?.classList.toggle('phone-open-'+group,open);return;}
     const jump=event.target.closest?.('[data-jump-courses]');
@@ -861,7 +864,7 @@
     if(action==='keep-course-choices'){courseUpdateReview=null;closeDialog();return;}
     if(action==='all-tasks'){const panel=$('sheet-task-panel');if(panel){panel.open=true;panel.scrollIntoView?.({block:'start'});panel.querySelector('summary')?.focus();}return;}
     if(action==='refresh-saved'){void refreshSavedPlan();return;}
-    if(action==='copy-school-email'){const email=studentSchoolEmail();if(!email)return;const text='Subject: '+email.subject+'\n\n'+email.body;Promise.resolve().then(()=>navigator.clipboard.writeText(text)).then(()=>announce('Email copied. Paste it into a new message to the school.'),()=>announce('Copying is blocked in this browser. Use “Email the school these questions” instead.'));return;}
+    if(action==='copy-school-email'){const email=studentSchoolEmail();if(!email)return;const text='Subject: '+email.subject+'\n\n'+email.body;Promise.resolve().then(()=>navigator.clipboard.writeText(text)).then(()=>{announce('Email copied. Paste it into a new message to the school.');growth('school_email',{action:'copy'});},()=>announce('Copying is blocked in this browser. Use “Email the school these questions” instead.'));return;}
     if(action==='hide-school-check'||action==='show-school-check'){const hide=action==='hide-school-check';setSchoolCheckHidden(pathway?.id,hide);renderSchoolCheck(hide?'show-school-check':'hide-school-check');announce(hide?'School questions hidden.':'School questions shown.');return;}
     if(action==='compare-plans'){storedPlan();location.assign('compare-plans.html');return;}
     if(action==='backup'){const latest=storedPlan();download(JSON.stringify(latest.raw===storageBaseline?state:latest.state,null,2),'degreesteps-private-backup.json','application/json');announce('Private backup downloaded.');return;}

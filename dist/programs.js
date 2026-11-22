@@ -51,11 +51,14 @@ document.addEventListener('click',e=>{
 });
 $('program-switch-dialog').addEventListener('close',()=>{if(!$('program-dialog').open)restoreFocus?.isConnected&&restoreFocus.focus({preventScroll:true});});
 function reset(){for(const id of['program-search','program-school','program-level','program-credit','program-subject','program-share','program-sort'])$(id).value='';$('program-confirm').checked=true;preset='all';limit=30;render();}
-$('program-filters').addEventListener('submit',e=>{e.preventDefault();limit=30;render();});
+// Anonymous aggregate counter (growth-metrics.js): the finder was used to narrow plans. No filter values are sent.
+const growth=(event,extra={})=>{try{window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event,context:'workspace',...extra}}));}catch{/* Measurement never blocks the page. */}};
+const finderUsed=()=>growth('finder_used');
+$('program-filters').addEventListener('submit',e=>{e.preventDefault();limit=30;render();finderUsed();});
 // The search box already re-renders on input; its change event fires on blur and would replace the
 // card a student is tapping, losing that tap.
-for(const type of ['input','change'])$('program-filters').addEventListener(type,e=>{if(type==='change'&&e.target?.id==='program-search')return;limit=30;render();});
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.preset){preset=b.dataset.preset;limit=30;render();}else if(b.dataset.programDetails)details(b.dataset.programDetails);else if(b.id==='program-more'){limit+=30;render();}else if(b.id==='program-reset')reset();else if(b.id==='program-dialog-close')$('program-dialog').close();});
+for(const type of ['input','change'])$('program-filters').addEventListener(type,e=>{if(type==='change'&&e.target?.id==='program-search')return;limit=30;render();finderUsed();});
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.preset){preset=b.dataset.preset;limit=30;render();finderUsed();}else if(b.dataset.programDetails)details(b.dataset.programDetails);else if(b.id==='program-more'){limit+=30;render();}else if(b.id==='program-reset')reset();else if(b.id==='program-dialog-close')$('program-dialog').close();});
 $('program-sort').addEventListener('change',()=>{limit=30;render();});
 $('program-dialog').addEventListener('close',()=>restoreFocus?.isConnected&&restoreFocus.focus({preventScroll:true}));
 (async()=>{try{
