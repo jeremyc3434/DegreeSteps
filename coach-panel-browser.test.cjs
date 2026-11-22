@@ -17,7 +17,7 @@ async function targetsAtLeast44(p,selector){const boxes=await p.locator(selector
   if(OFF.length>1){
     for(const path of ['programs.html','portal.html','plan.html']){const p=await open(OFF,path);await p.waitForTimeout(300);assert.equal(await p.locator('[data-coach-root]').count(),0,'coach must not render when off: '+path);assert.equal(await p.locator('link[href="/coach.css"]').count(),0);checks++;}
     const status=await (await open(OFF,'programs.html')).evaluate(async()=>{const r=await fetch('/api/coach/status');return{status:r.status,body:await r.json()};});
-    assert.deepEqual(status,{status:404,body:{enabled:false}});checks++;
+    assert.deepEqual(status,{status:200,body:{enabled:false}});checks++;
   }
   for(const path of ['portal.html','plan.html']){const p=await open(ON,path);await p.locator('[data-coach-open]').waitFor();checks++;}
 

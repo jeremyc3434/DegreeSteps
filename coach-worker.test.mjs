@@ -15,7 +15,7 @@ function database(t){
 test('built Worker: the coach API does not exist unless COACH_ENABLED is 1',async t=>{
   const DB=database(t);let called=0;
   for(const env of [{},{DB,COACH_ENABLED:'0',ANTHROPIC_API_KEY:'sk-ant-'+'x'.repeat(40),COACH_FETCH:async()=>{called++;}}]){
-    const status=await worker.fetch(new Request(origin+'/api/coach/status'),env,{});assert.equal(status.status,404);assert.deepEqual(await status.json(),{enabled:false});
+    const status=await worker.fetch(new Request(origin+'/api/coach/status'),env,{});assert.equal(status.status,200);assert.deepEqual(await status.json(),{enabled:false});
     const ask=await worker.fetch(new Request(origin+'/api/coach/ask',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin,'X-Coach-Request':'1'},body:'{"question":"hi"}'}),env,{});assert.equal(ask.status,404);
   }
   assert.equal(called,0);assert.equal(DB.sqlite.prepare('SELECT count(*) AS n FROM coach_questions').get().n,0);

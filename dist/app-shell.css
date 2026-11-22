@@ -186,3 +186,8 @@ body.dp-app-shell { --dp-muted:#596b83; font-size:16px; line-height:1.55; }
 .dp-shell-save-account[hidden] { display:none; }
 .dp-shell-save-account:hover { background:#f2f6ff; border-color:#98b9ef; }
 @media(max-width:420px) { .dp-shell-save-account { padding:6px; font-size:14px; } .dp-shell-header-actions { gap:6px; } }
+
+/* Slim legal footer on app pages; body padding already keeps it clear of the phone bottom navigation. */
+.dp-legal-footer{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 20px;margin:32px 0 0;padding:16px 16px 20px;border-top:1px solid #e5ebf4;font-size:13px;line-height:1.5;color:#5b6b82}
+.dp-legal-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.dp-legal-footer a:hover,.dp-legal-footer a:focus-visible{color:#203f6b}

@@ -610,7 +610,7 @@
     if(!mapped&&!needsReview&&activePlanState&&target.confirmUnmappedReplacement){
       return '<article class="portal-readiness-card"><span class="portal-readiness-label">Course plan not available</span><h2>Save this goal instead?</h2><p><strong>'+esc(title)+'</strong> at '+esc(school)+' does not have a course-by-course transfer plan yet.</p><p>This will replace '+esc(activePlanState.profile.degree||'your current degree')+' as your active goal. Your courses and notes stay saved.</p><div class="portal-actions">'+button('keep-active-plan','Back to my plan')+button('confirm-unmapped-replacement','Save this goal instead',true)+'</div></article><div class="portal-links">'+button('degree-search','Choose another degree',true)+'</div>';
     }
-    const note=error||(proposed?.targetReviewNeeded?'This degree does not match your saved career or study preferences.':hasMap&&!mapped?(proposed?.targetUnknowns||[]).map(issue=>issue.title+'.').join(' ')||'Review the missing program details before building this course plan.':mapped?(startingCredits(route)!==null?startingCredits(route)+' proposed transfer credits on this plan’s starting route. Your courses, course sources and priorities can change this.':proposed.plan.coverage.mappedExternalCredits+' proposed transfer credits with your current planner settings. Course sources and priorities can change this.')+(DegreeProgramCatalog.planChoiceCount(route,catalog,models)>0?' '+DegreeProgramCatalog.planChoiceCount(route,catalog,models)+' course choices to make.':''):'No course-by-course transfer plan is available for this degree yet.');
+    const note=error||(proposed?.targetReviewNeeded?'This degree does not match your saved career or study preferences.':hasMap&&!mapped?(proposed?.targetUnknowns||[]).map(issue=>issue.title+'.').join(' ')||'Review the missing program details before building this course plan.':mapped?(startingCredits(route)!==null?startingCredits(route)+' proposed transfer '+(route?.creditUnit==='competency-unit'?'competency units':'credits')+' on this plan’s starting route. Your courses, course sources and priorities can change this.':proposed.plan.coverage.mappedExternalCredits+' proposed transfer '+(proposed.program?.creditSystem==='competency-unit'?'competency units':'credits')+' with your current planner settings. Course sources and priorities can change this.')+(DegreeProgramCatalog.planChoiceCount(route,catalog,models)>0?' '+DegreeProgramCatalog.planChoiceCount(route,catalog,models)+' course choices to make.':''):'No course-by-course transfer plan is available for this degree yet.');
     const actions=formatOnly?'<button class="portal-primary" type="button" data-variant-preview="'+esc(route.id)+'">Use '+(route.modalities.includes('online')?'online':'on-campus')+' study</button>':needsReview?button('change-preferences','Update my preferences'):!mapped&&activePlanState?button('keep-active-plan','Back to my plan')+button('request-unmapped-replacement','Save this goal instead',true):button('use-degree',mapped?'Build course plan':'Save goal');
     const opportunitySchool=window.DegreeProgramOpportunities?.schoolFor(catalog,route),programFacts=opportunitySchool?DegreeProgramOpportunities.detailsHTML(route,opportunitySchool):'';
     const formatNote=mapped&&proposed.targetUnknowns?.some(issue=>issue.field==='modality')?'<p class="portal-hint" role="note">Confirm this degree’s study format with the university before enrolling.</p>':'';
@@ -657,6 +657,19 @@
     if(estimateRates||!window.DegreePlanEstimate)return;
     try{const response=await fetch('data/plan-estimate-rates.json');if(response.ok)estimateRates=await response.json();}catch{estimateRates=null;}
   }
+  function sharedTiming(timing) {
+    const valid=value=>value&&knownEstimate(value.min)&&knownEstimate(value.max)&&value.max>=value.min,span=value=>value.min===value.max?String(value.min):value.min+'–'+value.max;
+    if(!valid(timing?.outsideMonths)||!valid(timing?.universityTerms))return '';
+    const terms=timing.termMonths===6?'six-month terms':timing.termLabel==='semester'?'semesters':timing.termLabel==='trimester'?'trimesters':'study periods';
+    return 'About '+span(timing.outsideMonths)+' months of outside courses, then '+span(timing.universityTerms)+' university '+terms;
+  }
+  // Spend less: order by the shared planning estimate (the finder's and plan pages' range): low end, then midpoint.
+  // Complete estimates first, then known-charges-so-far ranges, then plans without an estimate (labelled on their cards).
+  function sharedCostOrder(ids) {
+    const estimate=id=>{const value=planIndex?.plans?.[id]?.estimate;return value&&knownEstimate(value.min)&&knownEstimate(value.max)?value:null;},group=id=>{const value=estimate(id);return !value?2:value.partial?1:0;};
+    const ordered=[...ids].sort((a,b)=>{const ga=group(a),gb=group(b);if(ga!==gb||ga===2)return ga-gb;const ea=estimate(a),eb=estimate(b);return ea.min-eb.min||(ea.min+ea.max)-(eb.min+eb.max);});
+    return {ordered,partial:ordered.filter(id=>group(id)===1).length,unestimated:ordered.filter(id=>group(id)===2).length};
+  }
   function routeCard(result,scenario=null,secondary=false) {
     const r=result.pathway,modeled=routeHasMap(r),choiceCount=DegreeProgramCatalog.planChoiceCount(r,catalog,result.model?[result.model]:models),format=(r.modalities||[]).map(m=>m==='campus'?'On campus':'Online').join(' / '),summary=scenario?.summary||scenario;
     let plan=scenario?.draft?.plan,credits='';
@@ -676,7 +689,10 @@
     const range=value=>dollars(value.min)+(value.max!==value.min?'–'+dollars(value.max):'');
     const remaining=sameBasis?'<div><dt>Your remaining planning estimate</dt><dd>'+esc(range(personalRange.remaining))+'</dd></div><div><dt>Full-route planning estimate</dt><dd>'+esc(range(personalRange.full))+'</dd></div>':'';
     const cost=hasPersonalCost?'<div><dt>Your remaining cost estimate</dt><dd>'+esc(dollars(summary.remainingCost))+'</dd></div>'+(sharedRange?'<div><dt>Full-route planning estimate</dt><dd>'+esc(sharedRange)+'</dd></div>':''):remaining?remaining:sharedRange?'<div><dt>'+(shared.partial?'Known charges so far':'Planning estimate')+'</dt><dd>'+esc(sharedRange)+'</dd></div>':indexed?'<div><dt>Cost</dt><dd>Needs confirmation</dd></div>':amount===null?(rate?'<div><dt>Published university rate</dt><dd>'+esc(rate)+'</dd></div>':''):'<div><dt>Tuition + courses estimate</dt><dd>'+esc(dollars(amount))+'</dd></div>';
-    const timing=knownEstimate(summary?.estimatedWeeks)?'<div><dt>Estimated study time</dt><dd>'+esc(summary.estimatedWeeks)+' weeks</dd></div>':'';
+    // Finish sooner: the published starting route's study time from the same shared estimate (outside months, then
+    // university terms at its stated pace assumptions). Nothing is shown when the data has no timing for this plan.
+    const indexedTiming=state.profile.priority==='speed'&&!(state.learning||[]).length?sharedTiming(indexed?.timing):'';
+    const timing=indexedTiming?'<div><dt>Study time · starting route</dt><dd>'+esc(indexedTiming)+'</dd></div>':knownEstimate(summary?.estimatedWeeks)?'<div><dt>Estimated study time</dt><dd>'+esc(summary.estimatedWeeks)+' weeks</dd></div>':'';
     const fit=knownEstimate(summary?.collectionFitCredits)&&summary.collectionFitCredits>0?'<span>'+esc(summary.collectionFitCredits)+' '+units+' fit from My courses'+(personalRange&&!remaining?' (about '+esc(range(personalRange.saved))+' of outside-course spending avoided)':'')+'</span>':'';
     const reviewCount=(Array.isArray(summary?.reviewCourses)?summary.reviewCourses:[]).filter(course=>course?.status==='earned').length;
     const review=reviewCount?'<span class="portal-route-review">'+reviewCount+' finished course'+(reviewCount===1?' needs':'s need')+' review</span>':'';
@@ -710,6 +726,10 @@
     if(!host){renderQuestion();updateResultNotice();return;}
     const focused=document.activeElement,route=focused?.dataset?.degreePreview,hadFocus=Boolean(host.contains?.(focused));
     host.innerHTML=recommendationResultsBody();updateResultNotice();
+    // The empty state carries its own research action; the shared link below would repeat it.
+    const degreeLink=document.querySelector?.('[data-degree-link]');if(degreeLink)degreeLink.hidden=resultCount===0;
+    // Finished results: if the update left focus nowhere, start keyboard and screen-reader users at the main heading.
+    if(!recommendationPending&&!hadFocus){const active=document.activeElement;if(!active||active===document.body||active===document.documentElement)$('portal-question-title')?.focus?.({preventScroll:true});}
     if(recommendationProgress)recommendationProgress.readyIds.forEach(id=>recommendationProgress.renderedIds.add(id));
     if(hadFocus&&route){const next=[...(host.querySelectorAll?.('[data-degree-preview]')||[])].find(node=>node.dataset.degreePreview===route);next?.closest?.('details')?.setAttribute('open','');next?.focus({preventScroll:true});}
   }
@@ -722,15 +742,27 @@
     if(personalOrder)orderedIds.sort((a,b)=>personalScores.get(b)-personalScores.get(a));
     // Reviewed plans first; plans that need school confirmation follow, keeping their relative order.
     orderedIds.sort((a,b)=>Number(needsConfirmation(byId.get(a).pathway))-Number(needsConfirmation(byId.get(b).pathway)));
+    const costOrder=state.profile.priority==='cost'&&planIndex?.plans&&typeof planIndex.plans==='object'&&orderedIds.some(id=>planIndex.plans[id])?sharedCostOrder(orderedIds):null;
+    if(costOrder)orderedIds.splice(0,orderedIds.length,...costOrder.ordered);
     const cards=orderedIds.map((id,index)=>routeCard(byId.get(id),scenarios.get(id)||candidates.get(id),index>=3));
     const scope=recommendationView?.rankingScope,ordering=scope?.orderingMetric,kind=ordering==='estimatedWeeks'?'study-time':ordering==='universityTuitionRemaining'?'university tuition':ordering==='remainingCost'?'remaining cost':ordering==='estimatedBaseCost'?'tuition + course':'';
     const brief=kind?(personalOrder?'Matching study and campus preferences first; available '+kind+' estimates within those matches.':'Available '+kind+' estimates first.')+(scope.unestimatedCount?' '+scope.unestimatedCount+' other plan'+(scope.unestimatedCount===1?' has':'s have')+' no comparable estimate.':''):'Matched to your '+(state.learning.length?'courses and preferences.':'preferences.');
-    const basis=recommendationView?.rankBasis?'<p class="portal-ranking-note">'+esc(brief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>'+esc((personalOrder?'Published study and campus features matching your preferences are prioritized. Within the same fit, ':'')+recommendationView.rankBasis)+'</p></details>':'';
+    const costBrief=costOrder?'Lowest planning estimate first.'+(costOrder.partial?' '+costOrder.partial+' plan'+(costOrder.partial===1?' shows':'s show')+' only known charges so far and follow'+(costOrder.partial===1?'s':'')+'.':'')+(costOrder.unestimated?' '+costOrder.unestimated+' plan'+(costOrder.unestimated===1?' has':'s have')+' no reviewed planning estimate and '+(costOrder.unestimated===1?'is':'are')+' listed last.':''):'';
+    const basis=costOrder?'<p class="portal-ranking-note" data-cost-order>'+esc(costBrief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>Plans are ordered by the planning estimate shown on each card and in the plan finder: the low end of the range first, then its midpoint. Estimates cover tuition, listed fees and outside courses before financial aid. A range of known charges so far leaves some course prices out, so it follows the complete estimates; plans without a reviewed estimate come last.</p></details>':recommendationView?.rankBasis?'<p class="portal-ranking-note">'+esc(brief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>'+esc((personalOrder?'Published study and campus features matching your preferences are prioritized. Within the same fit, ':'')+recommendationView.rankBasis)+'</p></details>':'';
     const fallback=recommendationError?'<div class="portal-comparison-retry" role="status"><p>'+esc(recommendationError)+'</p>'+button('retry-recommendations','Try comparison again',true)+'</div>':'';
-    const result=cards.length?basis+cards.slice(0,3).join('')+(cards.length>3?'<details class="portal-route-options"><summary>More matching plans ('+(cards.length-3)+')</summary>'+cards.slice(3).join('')+'</details>':''):recommendationError?'':'<div class="portal-empty-result"><h2>No course plan matches yet.</h2><p>'+esc(protectedGoals.includes(state.profile.goal)?'No mapped program currently meets this career and study format.':'The matching degrees do not yet have transfer-course plans.')+'</p>'+'<a class="portal-primary" href="request-plan.html">Build from a degree link →</a>'+'</div>';
+    const result=cards.length?basis+cards.slice(0,3).join('')+(cards.length>3?'<details class="portal-route-options"><summary>More matching plans ('+(cards.length-3)+')</summary>'+cards.slice(3).join('')+'</details>':''):recommendationError?'':emptyResultHTML();
     resultCount=cards.length;
     if(cards.length)trackGrowth('guided_results');
     return fallback+result+finderLink(cards.length);
+  }
+  // No researched plan matches: the main action is the existing research request (request-plan.html), for a listed
+  // matching degree when the catalog has one, otherwise from any official degree link. No new contact collection.
+  function emptyResultHTML() {
+    const planned=new Set(availableRoutes().map(route=>route.id));let unplanned=[];
+    try{unplanned=Journey.recommend({...state,learning:[]},{...catalog,pathways:catalog.pathways.filter(route=>!planned.has(route.id)&&route.routeType!=='career-guide'&&degreeResearchURL(route))},[]).map(result=>result.pathway).slice(0,3);}catch{unplanned=[];}
+    const reason=protectedGoals.includes(state.profile.goal)?'No researched plan currently meets this career goal and study format.':unplanned.length?'We list matching degrees, but haven’t researched their transfer-course plans yet.':'None of our researched plans match these choices yet.';
+    const research=unplanned.length?'<p>Research one from its official page: we check the college’s requirements and transfer rules, then build a plan you can edit.</p><ul class="portal-research-list">'+unplanned.map(route=>'<li><span><strong>'+esc(route.title)+'</strong> '+esc(route.school)+'</span><a class="portal-primary" href="'+esc(degreeResearchURL(route))+'">Research this degree →</a></li>').join('')+'</ul><p class="portal-research-other"><a href="request-plan.html">Research a different degree from its link →</a></p>':'<p>Paste a college’s official degree page and we’ll check its requirements and transfer rules, then build a plan you can edit.</p><a class="portal-primary" href="request-plan.html">Research a degree from its link →</a>';
+    return '<div class="portal-empty-result" data-empty-result><h2>No course plan matches yet.</h2><p>'+esc(reason)+'</p>'+research+'</div>';
   }
   // Points to the plan finder when it lists more plans for this subject than the guided results show.
   function finderLink(shown) {
@@ -752,8 +784,14 @@
     const next=showingRecommendations()&&!recommendationPending?resultSummary():showingRecommendations()?resultNotice:'';
     notice.textContent=next;resultNotice=next;
   }
+  // "Yes, courses or exam credits" with no finished courses yet: offer the next step without blocking the results.
+  // The wizard answers are already saved with the plan state, so they are still here when the student comes back.
+  function priorCoursesNextStep() {
+    if(!['some','degree'].includes(state.profile.hasPrior)||(state.learning||[]).some(record=>record?.status==='earned'))return '';
+    return '<section class="portal-prior-next" data-prior-next aria-labelledby="portal-prior-next-title"><h2 id="portal-prior-next-title">Add the courses you’ve finished, so the plans are ranked for you</h2><p>You said you have courses or exam credits. Add them and these plans are re-ranked by how much of each degree they could fill. Your answers here are kept.</p><div class="portal-prior-next-actions"><a class="portal-primary" href="credits-worth.html?from=guided">Add finished courses →</a><a href="import-courses.html?from=portal">Upload a transcript or spreadsheet</a></div></section>';
+  }
   function routesBody() {
-    return profileSummaryHTML()+'<div id="portal-recommendation-results">'+recommendationResultsBody()+'</div><div class="portal-links">'+button('change-preferences','Change my choices',true)+'<a href="request-plan.html">Build from a degree link →</a></div>';
+    return profileSummaryHTML()+priorCoursesNextStep()+'<div id="portal-recommendation-results">'+recommendationResultsBody()+'</div><div class="portal-links">'+button('change-preferences','Change my choices',true)+'<a href="request-plan.html" data-degree-link'+(resultCount===0?' hidden':'')+'>Build from a degree link →</a></div>';
   }
   function renderQuestion() {
     if(!['start','school','degree','purpose','prior','format','priority','routes','about'].includes(state.journey.step))state.journey.step='purpose';
@@ -797,7 +835,8 @@
     if(!draft.plan||!draft.program)return '';
     const program=draft.program,coverage=draft.plan.coverage||{},facts=[],units=program.creditSystem==='competency-unit'?'competency units':'credits';
     const unknown=field=>Boolean(program.policyUnknowns?.[field])||(program.policyReview||[]).some(rule=>rule.field===field&&!['verified','confirmed','resolved','not-applicable'].includes(rule.status));
-    const format=value=>new Intl.NumberFormat('en-US',{maximumFractionDigits:1}).format(value);
+    // Requirements are shown exactly (32.25, never rounded up or down), with "at least" or "up to".
+    const format=value=>new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(value);
     const minimum=Number.isFinite(coverage.derivedInstitutionMinimum)?coverage.derivedInstitutionMinimum:program.institutionMinCredits;
     const ceiling=Number.isFinite(program.externalMaxCredits)?Math.min(program.externalMaxCredits,Number.isFinite(minimum)?program.totalCredits-minimum:program.externalMaxCredits):Number.isFinite(minimum)?program.totalCredits-minimum:null;
     if(Number.isFinite(ceiling)&&!unknown('externalMaxCredits'))facts.push('Transfer limit after residency: up to '+format(ceiling)+' '+units+' that fit this degree.');
@@ -821,7 +860,7 @@
     if (context.records.length) notes.push(context.records.length+' of your learning records still need an individual evaluation.');
     if (state.journey.creditsDeferred&&state.profile.hasPrior!=='none') notes.push('Add your past courses when you have their records.');
     const ready=plan&&plan.validation.academicCountsValid!==false&&!context.missing.length&&!context.conditional.length&&!context.policyQuestions.length&&!context.researchBlockers.length;
-    return '<a class="portal-back" href="plan.html">'+backIcon+'My plan</a><div class="portal-home-heading"><span class="portal-kicker">A quick check</span><h1 id="portal-question-title" tabindex="-1">Review your plan</h1><p>'+esc(draft.pathway.school+' · '+draft.pathway.title)+'</p></div>'+copiedChoicesWarning()+'<section class="portal-review-card"><h2>'+ (plan ? plan.coverage.mappedExternalCredits+' planned transfer credits' : 'Your exact goal is saved')+'</h2><p>'+esc(ready?'Your selected course list is ready. Review what you want to take next.':'Review your selected courses and the specific open items below.')+'</p><div class="portal-actions"><a class="portal-secondary" href="plan.html">Open course plan</a>'+(notes.length?'<a class="portal-text-action" href="plan.html?task=checks">View details</a>':'')+'</div></section>'+(notes.length?'<section class="portal-review-card portal-attention"><h2>Still to resolve</h2><ul>'+notes.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul></section>':'')+(draft.guidance.careerNotes.length?'<details class="portal-tip"><summary>Requirements for your career</summary><ul>'+draft.guidance.careerNotes.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></details>':'')+(draft.guidance.militaryNotes.length?'<details class="portal-tip"><summary>Military opportunities</summary><ul>'+draft.guidance.militaryNotes.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></details>':'')+'<div class="portal-actions">'+button('finish-plan-review','I’ve reviewed my plan')+'</div><p class="portal-hint">This saves your review. Completed credit is recorded from your own course records and school evaluations.</p>';
+    return '<a class="portal-back" href="plan.html">'+backIcon+'My plan</a><div class="portal-home-heading"><span class="portal-kicker">A quick check</span><h1 id="portal-question-title" tabindex="-1">Review your plan</h1><p>'+esc(draft.pathway.school+' · '+draft.pathway.title)+'</p></div>'+copiedChoicesWarning()+'<section class="portal-review-card"><h2>'+ (plan ? plan.coverage.mappedExternalCredits+' planned transfer '+(draft.program?.creditSystem==='competency-unit'?'competency units':'credits') : 'Your exact goal is saved')+'</h2><p>'+esc(ready?'Your selected course list is ready. Review what you want to take next.':'Review your selected courses and the specific open items below.')+'</p><div class="portal-actions"><a class="portal-secondary" href="plan.html">Open course plan</a>'+(notes.length?'<a class="portal-text-action" href="plan.html?task=checks">View details</a>':'')+'</div></section>'+(notes.length?'<section class="portal-review-card portal-attention"><h2>Still to resolve</h2><ul>'+notes.map(n=>'<li>'+esc(n)+'</li>').join('')+'</ul></section>':'')+(draft.guidance.careerNotes.length?'<details class="portal-tip"><summary>Requirements for your career</summary><ul>'+draft.guidance.careerNotes.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></details>':'')+(draft.guidance.militaryNotes.length?'<details class="portal-tip"><summary>Military opportunities</summary><ul>'+draft.guidance.militaryNotes.map(t=>'<li>'+esc(t)+'</li>').join('')+'</ul></details>':'')+'<div class="portal-actions">'+button('finish-plan-review','I’ve reviewed my plan')+'</div><p class="portal-hint">This saves your review. Completed credit is recorded from your own course records and school evaluations.</p>';
   }
   function transcriptGuidance() {
     const providerId=value=>({sophialearning:'sophia'}[key(value)]||key(value));

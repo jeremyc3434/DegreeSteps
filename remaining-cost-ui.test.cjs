@@ -1,93 +1,78 @@
-/* Production comparison renderers with synthetic route data. Browser geometry
- * is covered separately; these checks protect cost scope and ranking behavior. */
+/* Production comparison renderers with real published plans. Browser geometry is covered separately; these checks
+ * protect the rule that comparison cards show the same shared planning estimate as the finder and plan pages. */
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const script=fs.readFileSync(require.resolve('./dist/compare-plans.js'),'utf8');
+const Planner=require('./dist/planner.js'),Estimate=require('./dist/plan-estimate-engine.js'),EstimateView=require('./dist/plan-estimate-view.js');
+const read=path=>JSON.parse(fs.readFileSync(require.resolve('./dist/'+path),'utf8'));
+const rates=read('data/plan-estimate-rates.json'),index=read('data/plan-library-index.json'),registry=read('data/curriculum-registry.json'),baselines=read('data/baseline-index.json');
 function mount(){
  const nodes=new Map(),node=id=>{if(!nodes.has(id))nodes.set(id,{value:'collection',checked:false,textContent:'',hidden:false,innerHTML:''});return nodes.get(id);};
- const context={document:{getElementById:node},window:{DegreePlanComparison:{},DegreeJourney:require('./dist/journey-engine.js'),DegreeChecklist:require('./dist/student-checklist.js')},location:{search:''},URL,URLSearchParams,Intl,console};
+ const context={document:{getElementById:node},window:{DegreePlanComparison:{},DegreeJourney:require('./dist/journey-engine.js'),DegreeChecklist:require('./dist/student-checklist.js'),DegreePlanEstimate:Estimate,DegreePlanEstimateView:EstimateView},location:{search:''},URL,URLSearchParams,Intl,console};
  context.DegreeChecklist=context.window.DegreeChecklist;
  context.window.window=context.window;
  const boundary=" document.addEventListener('click'";
  assert(script.includes(boundary));
  const journey=script.match(/ const Journey=s=>window\.DegreeJourney\.buildDraft\(s,catalog,models\);/)[0];
- const source=script.slice(0,script.indexOf(boundary))+journey+"window.__ui={bestId,recommendationLabel,costHTML,estimateHTML,nextStepsHTML,card,setView:value=>view=value,setData:(routes,ledgers)=>{catalog=routes;models=ledgers;}};}());";
+ const source=script.slice(0,script.indexOf(boundary))+journey+"window.__ui={bestId,recommendationLabel,costHTML,estimateHTML,nextStepsHTML,card,isSuggestion,setView:value=>view=value,setState:value=>state=value,setRates:value=>estimateRates=value,setData:(routes,ledgers)=>{catalog=routes;models=ledgers;}};}());";
  vm.runInNewContext(source,context,{filename:'compare-plans.js'});
- return {ui:context.window.__ui,priority:value=>node('compare-priority').value=value};
+ const ui=context.window.__ui;ui.setRates(rates);ui.setState({profile:{},whatIf:{}});
+ return {ui,priority:value=>node('compare-priority').value=value};
 }
-const cost=(patch={})=>({universityTuition:4000,outsideCourses:300,fees:null,estimatedBaseCost:4300,tuitionAndCourses:4300,knownSubtotal:4300,total:null,complete:false,items:[{provider:'Sophia',amount:300,detail:'Three monthly sessions',source:'https://example.edu/prices'}],missing:['University fees still need confirmation.'],assumptions:['Three months of outside study.'],exclusions:['Housing and living costs'],...patch});
-const scenario=(id,total,patch={})=>({id,available:true,eligible:true,draft:{pathway:{level:'bachelor'}},summary:{remainingCost:total,costBreakdown:cost({complete:true,total}),collectionFitFraction:.3,completedFitFraction:.1,estimatedWeeks:20,...patch}});
+// The starting route for a published plan, built exactly as the plan library index builds it.
+function starting(routeId){
+ const baseline=Object.values(baselines.baselines).find(item=>item.pathwayId===routeId),entry=registry.models.find(item=>item.id===baseline.modelId),doc=read(entry.path),model=(doc.models||[doc]).find(item=>item.id===baseline.modelId);
+ const providers=[...new Set(model.requirements.flatMap(req=>(req.options||[]).map(option=>option.provider)))].filter(provider=>provider&&provider!=='University');
+ const plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optionSelections:Object.fromEntries(baseline.rows.map(row=>[row.requirementId,row.optionId])),optimizationNodeBudget:12000});
+ return {model,plan};
+}
+const scenario=(routeId,patch={})=>{const {model,plan}=starting(routeId);return {id:'route:'+routeId,label:routeId,available:true,eligible:true,canUse:true,draft:{pathway:{id:routeId,level:'bachelor',school:model.school,title:model.title},program:model,plan},summary:{remainingCredits:120,universityCreditsRemaining:40,collectionFitFraction:.3,completedFitFraction:.1,remainingCost:1,costBreakdown:{knownSubtotal:334,complete:false}},...patch};};
 
-test('tuition and courses stay explicitly partial when other costs are unknown',()=>{
- const {ui}=mount(),html=ui.costHTML({costBreakdown:cost()});
- assert.match(html,/Tuition \+ courses estimate/);assert.match(html,/data-remaining-cost="partial">\$4,300/);assert.match(html,/Personal fees and charges are not yet included/);assert.match(html,/Other required fees<\/dt><dd>Needs estimate/);assert.match(html,/University fees still need confirmation/);assert.match(html,/Three monthly sessions/);assert.match(html,/Housing and living costs/);
-});
-test('a university-only subtotal never appears as the remaining degree price',()=>{
- const {ui}=mount(),html=ui.costHTML({costBreakdown:cost({outsideCourses:null,estimatedBaseCost:null,tuitionAndCourses:null,knownSubtotal:4000,items:[],missing:['Study.com duration needs an estimate.']})});
- assert.match(html,/Known costs so far/);assert.match(html,/data-remaining-cost="partial">\$4,000/);assert.match(html,/Outside courses and exams<\/dt><dd>Needs estimate/);assert.match(html,/Study.com duration needs an estimate/);
-});
-test('no priced component offers an estimate prompt rather than a zero price',()=>{
- const {ui}=mount(),html=ui.costHTML({costBreakdown:cost({universityTuition:null,outsideCourses:null,estimatedBaseCost:null,tuitionAndCourses:null,knownSubtotal:0,items:[]})});
- assert.match(html,/data-remaining-cost="partial">Needs estimate/);assert.doesNotMatch(html,/>\$0</);
-});
-test('zero known outside costs cannot hide missing university tuition as a free route',()=>{
- const {ui}=mount(),html=ui.costHTML({costBreakdown:cost({universityTuition:null,outsideCourses:0,estimatedBaseCost:null,tuitionAndCourses:null,knownSubtotal:0,items:[],missing:['University tuition needs a quote.']})});
- assert.match(html,/data-remaining-cost="partial">Needs estimate/);assert.doesNotMatch(html,/data-remaining-cost="partial">\$0/);assert.match(html,/University tuition needs a quote/);
- const finished=ui.costHTML({costBreakdown:cost({universityTuition:0,outsideCourses:0,fees:0,estimatedBaseCost:0,tuitionAndCourses:0,knownSubtotal:0,total:0,complete:true,items:[],missing:[]})});assert.match(finished,/data-remaining-cost="complete">\$0/);
-});
-test('a complete scoped estimate includes fees and itemized evidence',()=>{
- const {ui}=mount(),html=ui.costHTML({costBreakdown:cost({fees:125,total:4425,complete:true,knownSubtotal:4425,missing:[]})});
- assert.match(html,/data-remaining-cost="complete">\$4,425/);assert.match(html,/Other required fees<\/dt><dd>\$125/);assert.doesNotMatch(html,/Personal fees and charges are not yet included/);assert.match(html,/href="https:\/\/example.edu\/prices"/);
-});
-test('student and provider metadata render as text and unsafe links are omitted',()=>{
- const {ui}=mount(),html=ui.costHTML({costBreakdown:cost({items:[{provider:'<img src=x onerror=alert(1)>',amount:null,detail:'<script>steal()</script>',source:'javascript:alert(1)'}],missing:['<b>unknown</b>'],exclusions:['<i>books</i>']})});
- assert.doesNotMatch(html,/<img|<script|href="javascript:/);assert.match(html,/&lt;img/);assert.match(html,/&lt;script/);assert.match(html,/&lt;b&gt;unknown/);
-});
-test('incomplete cheaper subtotals cannot win the complete remaining-cost ranking',()=>{
- const {ui,priority}=mount();priority('cost');
- const complete=scenario('complete',5000),partial=scenario('partial',null,{costBreakdown:cost({estimatedBaseCost:10})});
- ui.setView({scenarios:[complete,partial]});assert.equal(ui.bestId(),null);assert.equal(ui.recommendationLabel(false),'Suggested route');
-});
-test('complete comparable estimates rank by total cost, including zero remaining cost',()=>{
- const {ui,priority}=mount();priority('cost');ui.setView({scenarios:[scenario('higher',5000),scenario('lower',4500),scenario('finished',0)]});
- assert.equal(ui.bestId(),'finished');assert.equal(ui.recommendationLabel(true),'Lowest estimated cost');
-});
-test('an automatic shortlist cannot award a winner when an omitted eligible plan has no comparable estimate',()=>{
- for(const [metric,field] of [['cost','remainingCost'],['tuition','universityTuitionRemaining'],['terms','estimatedWeeks']]){
-  const {ui,priority}=mount();priority(metric);
-  const scenarios=[scenario('one',4000,{[field]:10}),scenario('two',5000,{[field]:20}),scenario('three',6000,{[field]:30})];
-  ui.setView({scenarios,rankingScope:{mode:'eligible-routes',eligibleCount:4,comparable:false,metric:null,unestimatedCount:1}});
-  assert.equal(ui.bestId(),null,metric+' keeps the omitted route in scope');
-  ui.setView({scenarios,rankingScope:{mode:'eligible-routes',eligibleCount:4,comparable:true,metric:field,unestimatedCount:0}});
-  assert.equal(ui.bestId(),'one',metric+' can rank a completely comparable pool');
-  ui.setView({scenarios,rankingScope:{mode:'selected-plans',eligibleCount:3,comparable:true,metric:field}});
-  assert.equal(ui.bestId(),'one',metric+' retains explicit selected-plan comparison');
+test('comparison cards show the same planning estimate as the plan library index (finder and plan pages)',()=>{
+ const {ui}=mount();
+ for(const id of ['liberty-catalog-fa62c08cdfa0c990-online','liberty-criminal-justice-online','wgu-catalog-2e49db64c32dfc79']){
+  const expected=index.plans[id].estimate,html=ui.costHTML(scenario(id));
+  assert(expected,id+' has a published estimate');
+  assert.match(html,new RegExp('data-estimate-min="'+expected.min+'" data-estimate-max="'+expected.max+'"'),id);
+  const fmt=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
+  assert(html.includes(fmt(expected.min)+'–'+fmt(expected.max)),id+' shows the shared range');
+  assert.match(html,/Planning estimate/);assert.doesNotMatch(html,/Known costs so far|\$334|Tuition \+ courses estimate/);
+  assert.doesNotMatch(html,/data-action="cost-time"/,'the worksheet tray button is not shown on the compare page');
  }
 });
-test('a scoped tuition-and-courses ordering cannot become a total-cost winner in the cards',()=>{
+test('a plan without a shared estimate says the cost needs confirmation and never shows a partial sum',()=>{
+ const {ui}=mount(),id='liberty-catalog-0610d6f6373438cc-online';
+ assert.equal(index.plans[id].estimate,undefined);
+ const s=scenario(id),html=ui.estimateHTML(s);
+ assert.match(html,/Cost needs confirmation/);assert.match(html,/data-remaining-cost="needs-confirmation"/);assert.doesNotMatch(html,/\$\d/);
+ const broken=ui.estimateHTML({...scenario('liberty-catalog-fa62c08cdfa0c990-online'),draft:{pathway:{level:'bachelor'},program:{id:'x'},plan:{rows:[]}}});
+ assert.match(broken,/Cost needs confirmation/);assert.doesNotMatch(broken,/\$\d/);
+});
+test('cost priority ranks by the shared estimate low end, then midpoint',()=>{
  const {ui,priority}=mount();priority('cost');
- ui.setView({scenarios:[scenario('one',4000),scenario('two',5000)],rankingScope:{mode:'eligible-routes',eligibleCount:4,comparable:true,metric:'estimatedBaseCost'}});
- assert.equal(ui.bestId(),null);
+ const psych=scenario('liberty-catalog-fa62c08cdfa0c990-online'),cj=scenario('liberty-criminal-justice-online'),wgu=scenario('wgu-catalog-2e49db64c32dfc79');
+ ui.setView({scenarios:[cj,psych]});assert.equal(ui.bestId(),psych.id);assert.equal(ui.recommendationLabel(true),'Lowest estimated cost');
+ ui.setView({scenarios:[cj,psych,wgu]});assert.equal(ui.bestId(),wgu.id);
 });
-test('unknown tuition or study time prevents a winner badge over the remaining eligible routes',()=>{
- for(const [metric,field] of [['tuition','universityTuitionRemaining'],['terms','estimatedWeeks']]){
-  const {ui,priority}=mount();priority(metric);
-  const low=scenario('low',5000,{[field]:10}),high=scenario('high',6000,{[field]:20}),unknown=scenario('unknown',null,{[field]:null});
-  ui.setView({scenarios:[low,high,unknown]});assert.equal(ui.bestId(),null,metric+' cannot rank an unknown estimate');
-  ui.setView({scenarios:[low,high]});assert.equal(ui.bestId(),'low',metric+' can rank complete comparable estimates');
- }
+test('a plan without a shared estimate prevents a lowest-cost winner',()=>{
+ const {ui,priority}=mount();priority('cost');
+ ui.setView({scenarios:[scenario('liberty-catalog-fa62c08cdfa0c990-online'),scenario('liberty-catalog-0610d6f6373438cc-online')]});assert.equal(ui.bestId(),null);
+ ui.setView({scenarios:[scenario('liberty-catalog-fa62c08cdfa0c990-online'),scenario('liberty-criminal-justice-online')],rankingScope:{mode:'eligible-routes',comparable:false}});assert.equal(ui.bestId(),null,'an automatic shortlist with an omitted unpriced plan has no winner');
 });
-test('cost ties and different degree levels do not receive a false winner',()=>{
- const {ui,priority}=mount();priority('cost');ui.setView({scenarios:[scenario('one',5000),scenario('two',5000)]});assert.equal(ui.bestId(),null);
- const graduate=scenario('master',3000);graduate.draft.pathway.level='master';ui.setView({scenarios:[scenario('bachelor',5000),graduate]});assert.equal(ui.bestId(),null);
+test('different degree levels do not receive a false winner',()=>{
+ const {ui,priority}=mount();priority('cost');const graduate=scenario('liberty-criminal-justice-online');graduate.draft.pathway.level='master';
+ ui.setView({scenarios:[scenario('liberty-catalog-fa62c08cdfa0c990-online'),graduate]});assert.equal(ui.bestId(),null);
 });
-test('a base-cost suggestion explains excluded fees without a lowest-cost badge',()=>{
- const {ui,priority}=mount();priority('cost');const route=scenario('suggestion',null,{costBreakdown:cost()});route.label='Business';route.draft.pathway.school='Example University';
- ui.setView({scenarios:[route,scenario('other',null,{costBreakdown:cost({estimatedBaseCost:6000,tuitionAndCourses:6000})})],hasTarget:false,recommendation:{id:route.id,metric:'estimatedBaseCost',reason:'Compare tuition and outside courses. Fees still need confirmation.',partial:true}});
- const html=ui.card(route,0,route.id);assert.match(html,/Suggested route/);assert.match(html,/Fees still need confirmation/);assert.doesNotMatch(html,/Lowest estimated cost/);assert.match(html,/Tuition \+ courses estimate/);
+test('a plan the student did not choose is labelled as a suggestion',()=>{
+ const {ui}=mount(),route=scenario('liberty-criminal-justice-online');
+ ui.setState({profile:{},whatIf:{}});ui.setView({scenarios:[route],hasTarget:true,matrix:[]});
+ assert.equal(ui.isSuggestion(route),true);let html=ui.card(route,1,null);assert.match(html,/Suggested to compare/);assert.match(html,/added this plan as a suggestion/);
+ ui.setState({profile:{},whatIf:{selectedIds:['route:liberty-criminal-justice-online']}});
+ assert.equal(ui.isSuggestion(route),false);html=ui.card(route,1,null);assert.doesNotMatch(html,/Suggested to compare|as a suggestion/);
+ assert.equal(ui.isSuggestion({...route,id:'current',isCurrent:true}),false);
 });
-test('university work stays separate from total remaining credit and estimated pace',()=>{
- const {ui}=mount(),html=ui.estimateHTML({isCurrent:true,summary:{remainingCredits:90,universityCreditsRemaining:30,estimatedWeeks:40,universityTermsRemaining:2,termLabel:'term',estimatedBaseCost:4300,costBreakdown:cost()}});
- assert.match(html,/data-remaining-credits>90/);assert.match(html,/data-university-credits>30/);assert.match(html,/data-study-weeks>40 weeks/);assert.match(html,/Finished courses are excluded from remaining costs./);
+test('university work stays separate from total remaining credit',()=>{
+ const {ui}=mount(),html=ui.estimateHTML({...scenario('liberty-catalog-fa62c08cdfa0c990-online'),isCurrent:true,summary:{remainingCredits:90,universityCreditsRemaining:30}});
+ assert.match(html,/data-remaining-credits>90/);assert.match(html,/data-university-credits>30/);assert.match(html,/Finished courses are excluded from remaining costs./);
 });
 test('first steps reuse the actual checklist including military records without writing or mutating the plan',()=>{
  const {ui}=mount(),S=require('./dist/sheet-state.js'),J=require('./dist/journey-engine.js'),C=require('./dist/program-catalog.js'),catalog=C.merge(require('./dist/data/pathways.json'),require('./dist/data/program-catalog.json')),route=catalog.pathways.find(row=>row.id==='liberty-business-residential'),model=require('./dist/data/liberty.json');

@@ -655,9 +655,9 @@ body.public-page .plan-pill { display:inline-flex; align-items:center; gap:6px; 
 body.public-page .plan-pill::after { content:"×"; font-size:1rem; line-height:1; }
 body.public-page .plan-pill:hover { background:#dfe5ff; }
 body.public-page .plan-pill-clear { padding:5px 4px; border:0; background:none; color:var(--public-muted); font-size:.8125rem; text-decoration:underline; text-underline-offset:3px; }
-body.public-page .plan-library .plan-library-flat { grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); }
+body.public-page .plan-library .plan-library-flat { grid-template-columns:repeat(auto-fill,minmax(min(310px,100%),1fr)); }
 body.public-page .plan-library.is-enhanced .plan-school-group { margin-bottom:40px; }
-body.public-page .plan-library.is-enhanced .public-plan-cards { grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); }
+body.public-page .plan-library.is-enhanced .public-plan-cards { grid-template-columns:repeat(auto-fill,minmax(min(310px,100%),1fr)); }
 body.public-page .plan-library.is-grouped .public-plan-card-top .ds-school-mark,
 body.public-page .plan-library.is-grouped .public-plan-card-school,
 body.public-page .plan-library:not(.is-enhanced) .public-plan-card-top .ds-school-mark,

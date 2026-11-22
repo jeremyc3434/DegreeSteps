@@ -1,12 +1,12 @@
 /* Actual account-page events with synthetic private identities; no real login. */
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const source=fs.readFileSync('dist/account.js','utf8');
-function fixture(identity){
- const state={user:structuredClone(identity)},calls=[],events={},nodes=new Map();
+function fixture(identity,search=''){
+ const state={user:identity?structuredClone(identity):null},calls=[],events={},nodes=new Map();
  for(const id of ['account-content','account-status','account-error'])nodes.set(id,{innerHTML:'',textContent:'',hidden:false,querySelector(){return null;}});
  const Account={
   async auth(){return{configured:true,providers:['email','google']};},
-  async session(){return{user:structuredClone(state.user)};},
+  async session(){return{user:state.user?structuredClone(state.user):null};},
   async api(path,options={}){
    calls.push({path,...options});
    if(path==='/plans')return{items:[]};
@@ -16,7 +16,7 @@ function fixture(identity){
   },
   deviceDraft(){return null;},linkedPlan(){return null;},invalidate(){}
  };
- const context={window:{DegreeAccount:Account},document:{getElementById:id=>nodes.get(id),addEventListener:(event,fn)=>{events[event]=fn;}},location:{search:'',hash:'',origin:'https://degreesteps.test',pathname:'/account.html'},URLSearchParams,URL,console,FormData:class{constructor(form){this.values=form.values;}get(name){return this.values[name];}has(name){return Object.hasOwn(this.values,name);}},setTimeout,requestAnimationFrame:fn=>fn()};
+ const context={window:{DegreeAccount:Account},document:{getElementById:id=>nodes.get(id),addEventListener:(event,fn)=>{events[event]=fn;}},location:{search,hash:'',origin:'https://degreesteps.test',pathname:'/account.html'},URLSearchParams,URL,console,FormData:class{constructor(form){this.values=form.values;}get(name){return this.values[name];}has(name){return Object.hasOwn(this.values,name);}},setTimeout,requestAnimationFrame:fn=>fn()};
  vm.runInNewContext(source,context,{filename:'account.js'});
  const flush=async()=>{for(let i=0;i<8;i++)await new Promise(resolve=>setImmediate(resolve));};
  return{calls,state,flush,html:()=>nodes.get('account-content').innerHTML,async chooseName(alias){const form={id:'account-profile-form',values:{alias},querySelector:()=>({textContent:''})};events.submit({target:form,preventDefault(){},submitter:{disabled:false,textContent:'Save name',isConnected:true}});await flush();}};
@@ -49,4 +49,9 @@ test('a deliberately edited neutral Student name stays neutral after saving and 
  const f=fixture({id:'student-a',alias:'Chosen nickname',displayName:'Private Legal Name',createdAt:1000,updatedAt:2000});await f.flush();await f.chooseName('Student');
  assert.match(f.html(),/<h1>Hello, Student\.<\/h1>/);assert.doesNotMatch(f.html(),/Private Legal Name/);assert.match(f.html(),/name="alias" value="Student"/);
  const reopened=fixture(f.state.user);await reopened.flush();assert.match(reopened.html(),/<h1>Hello, Student\.<\/h1>/);assert.doesNotMatch(reopened.html(),/Private Legal Name/);assert.equal(reopened.calls.filter(call=>call.method).length,0);
+});
+test('signing in from Save plan leads with what a free account gives; a plain sign-in still says welcome back',async()=>{
+ const save=fixture(null,'?returnTo=%2Fplan.html');await save.flush();
+ assert.match(save.html(),/<h1>Save your plan\.<\/h1><p class="account-lede">Save your plan to your free account so you can come back to it on any device\.<\/p>/);assert.doesNotMatch(save.html(),/Welcome back/);
+ const plain=fixture(null);await plain.flush();assert.match(plain.html(),/<h1>Welcome back\.<\/h1>/);
 });

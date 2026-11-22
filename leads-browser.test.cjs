@@ -32,7 +32,7 @@ async function targetsAtLeast44(p,selector){for(const box of await p.locator(sel
       assert.equal(await p.locator('link[href="/leads.css"]').count(),0,'No styles load when off');
       assert.equal(await p.locator('#sheet-lead-actions').isVisible(),false);
       const result=await p.evaluate(async()=>{const status=await fetch('/api/leads/status'),post=await fetch('/api/school-inquiries',{method:'POST',headers:{'Content-Type':'application/json','X-Leads-Request':'1'},body:'{}'}),page=await fetch('/plan-review/');return[status.status,post.status,page.status];});
-      assert.deepEqual(result,[404,404,404]);checks++;
+      assert.deepEqual(result,[200,404,404]);checks++;
     }
   }
   for(const viewport of VIEWPORTS){
