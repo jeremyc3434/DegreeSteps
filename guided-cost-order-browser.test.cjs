@@ -50,5 +50,18 @@ const shown=page=>page.locator('#portal-recommendation-results [data-degree-prev
    else assert.doesNotMatch(text,/Study time|months of outside|weeks/,id+' has no published timing');
   }
  });
+ await test('students with finished courses get a clear, non-blocking next step that keeps their answers',async()=>{
+  const page=await guided({field:'business',degreeLevel:'bachelor',prior:'some',modality:'online',priority:'cost'});
+  const next=page.locator('[data-prior-next]');
+  assert.match(await next.innerText(),/Add the courses you’ve finished, so the plans are ranked for you/);
+  assert.equal(await next.getByRole('link',{name:/Add finished courses/}).getAttribute('href'),'credits-worth.html?from=guided');
+  assert((await shown(page)).length>0,'results are not blocked');
+  await next.getByRole('link',{name:/Add finished courses/}).click();await page.waitForURL('**/credits-worth.html?from=guided');
+  assert(await page.locator('#cw-from-guided').isVisible());
+  const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('degreepath-guide-v3')).profile);
+  assert.equal(saved.field,'business');assert.equal(saved.hasPrior,'some');assert.equal(saved.priority,'cost');
+  const none=await guided({field:'business',degreeLevel:'bachelor',prior:'none',modality:'online',priority:'cost'});
+  assert.equal(await none.locator('[data-prior-next]').count(),0);
+ });
  assert.deepEqual(errors,[]);console.log(count+' guided ordering journeys passed.');
 }finally{for(const context of contexts)await context.close();await browser?.close();}})().catch(error=>{console.error(error);process.exitCode=1;});

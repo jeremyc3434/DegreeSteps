@@ -176,6 +176,9 @@
   catch{$('cw-provider').innerHTML='<option value="">Course list unavailable</option>';$('cw-pick-error').textContent='The course list couldn’t load. You can still enter a course yourself.';}
  }
 
+ // Arriving from the guided planner's results: offer the way back (its answers stay in the saved plan state).
+ try{if(new URLSearchParams(location.search).get('from')==='guided')$('cw-from-guided').hidden=false;}catch{}
+
  // ---------- Events ----------
  $('cw-provider').addEventListener('change',()=>{$('cw-pick-error').textContent='';fillCourses();});
  $('cw-pick-form').addEventListener('submit',event=>{

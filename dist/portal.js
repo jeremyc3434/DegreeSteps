@@ -771,8 +771,14 @@
     const next=showingRecommendations()&&!recommendationPending?resultSummary():showingRecommendations()?resultNotice:'';
     notice.textContent=next;resultNotice=next;
   }
+  // "Yes, courses or exam credits" with no finished courses yet: offer the next step without blocking the results.
+  // The wizard answers are already saved with the plan state, so they are still here when the student comes back.
+  function priorCoursesNextStep() {
+    if(!['some','degree'].includes(state.profile.hasPrior)||(state.learning||[]).some(record=>record?.status==='earned'))return '';
+    return '<section class="portal-prior-next" data-prior-next aria-labelledby="portal-prior-next-title"><h2 id="portal-prior-next-title">Add the courses you’ve finished, so the plans are ranked for you</h2><p>You said you have courses or exam credits. Add them and these plans are re-ranked by how much of each degree they could fill. Your answers here are kept.</p><div class="portal-prior-next-actions"><a class="portal-primary" href="credits-worth.html?from=guided">Add finished courses →</a><a href="import-courses.html?from=portal">Upload a transcript or spreadsheet</a></div></section>';
+  }
   function routesBody() {
-    return profileSummaryHTML()+'<div id="portal-recommendation-results">'+recommendationResultsBody()+'</div><div class="portal-links">'+button('change-preferences','Change my choices',true)+'<a href="request-plan.html">Build from a degree link →</a></div>';
+    return profileSummaryHTML()+priorCoursesNextStep()+'<div id="portal-recommendation-results">'+recommendationResultsBody()+'</div><div class="portal-links">'+button('change-preferences','Change my choices',true)+'<a href="request-plan.html">Build from a degree link →</a></div>';
   }
   function renderQuestion() {
     if(!['start','school','degree','purpose','prior','format','priority','routes','about'].includes(state.journey.step))state.journey.step='purpose';
