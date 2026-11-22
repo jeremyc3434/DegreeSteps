@@ -63,3 +63,13 @@ test('every course-provider link in the app and the generated pages goes through
  for(const anchor of cells.match(/<a [^>]*href="https:\/\/(?:www\.)?(?:sophia\.org|study\.com|straighterline\.com|learn\.saylor\.org|clep\.collegeboard\.org)\/(?:online-courses|academy|online-college-courses|course|clep-exams)[^>]*>/g)||[])assert.match(anchor,/data-outbound-provider="/,anchor);
 });
 
+test('the disclosure page says plainly how DegreeSteps makes money and is linked from every public footer',()=>{
+ const page=fs.readFileSync('dist/how-we-make-money/index.html','utf8'),text=page.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
+ assert.match(text,/DegreeSteps is free\./);
+ assert.match(text,/may earn a referral fee from some course providers or schools/);assert.match(text,/labelled “Partner link”/);
+ assert.match(text,/never changes which plans, schools or courses you see, or the order they appear in/);
+ assert.match(text,/Plans are built from schools’ published sources/);
+ assert.match(text,/We do not have any referral partners today\./,'The page states the shipped (all none) settings');
+ assert.match(fs.readFileSync('dist/sitemap.xml','utf8'),/\/how-we-make-money\//);
+ for(const file of['dist/index.html','dist/about/index.html','dist/degree-plans/index.html','dist/how-we-make-money/index.html'])assert.match(fs.readFileSync(file,'utf8'),/<footer class="public-footer">[\s\S]*<a href="\/how-we-make-money\/">How we make money<\/a>/,file);
+});
