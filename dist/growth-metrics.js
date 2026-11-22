@@ -2,10 +2,10 @@
 (function(root,factory){'use strict';const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;else root.DegreeGrowth=api;}(typeof globalThis!=='undefined'?globalThis:this,function(root){
   'use strict';
   const CHOICE='degreesteps-growth-choice-v1';
-  const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied'];
+  const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request'];
   const CONTEXTS=['home','article','provider','school','degree-plan','workspace','transfer'];
   const PROVIDERS=['Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other'];
-  const ACTIONS=['open','copy'];
+  const ACTIONS=['open','copy'],INQUIRY_ACTIONS=['submitted'];
   // Plan ids must be in the public plan library index. The index is read only when an event names a plan.
   const PLAN=/^[a-z0-9][a-z0-9-]{0,127}$/,PLAN_INDEX='/data/plan-library-index.json';
   let planIndex=null;
@@ -34,7 +34,7 @@
     const {planId,provider,action}=dims;
     if(!enabled()||!EVENTS.includes(event)||!CONTEXTS.includes(source)||planId!==undefined&&!(typeof planId==='string'&&PLAN.test(planId))||!root.fetch)return false;
     if(event==='provider_click'?!PROVIDERS.includes(provider):provider!==undefined)return false;
-    if(event==='school_email'?!ACTIONS.includes(action):action!==undefined)return false;
+    if(event==='school_email'?!ACTIONS.includes(action):event==='school_inquiry'?!INQUIRY_ACTIONS.includes(action):action!==undefined)return false;
     const key=event+'|'+source+'|'+(planId||'')+'|'+(provider||action||'');if(sent.has(key)||sent.size>=64)return false;sent.add(key);
     const payload={event,context:source,...(planId?{planId}:{}),...(provider?{provider}:{}),...(action?{action}:{})};
     if(!planId){send(payload);return true;}

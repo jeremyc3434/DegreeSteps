@@ -19,6 +19,7 @@ import { handleOperatorSnapshot } from '../server/operator-snapshot.mjs';
 import { handleAcademicCoverage } from '../server/academic-coverage.mjs';
 import { handleGrowthMetrics, pruneGrowthMetrics } from '../server/growth-metrics.mjs';
 import { handleCoach, pruneCoach } from '../server/coach.mjs';
+import { handleLeads, pruneLeads, isLeadsPath } from '../server/leads.mjs';
 import { assets } from './assets.generated.mjs';
 
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
@@ -282,6 +283,27 @@ async function coachResponse(request,env){
   const headers=new Headers(response.headers);for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);
   return new Response(response.body,{status:response.status,headers});
 }
+// School inquiries and plan review requests (both off unless their flag is 1): plan titles and school names from the
+// public coach index, and the allowlist and offer from /data/lead-settings.json. Never plans, rankings or accounts.
+let leadsDataSnapshot;
+async function leadsData(){
+  if(!leadsDataSnapshot){
+    const read=async path=>{const asset=assets[path];if(!asset)throw Error('Lead settings are unavailable');return JSON.parse(await decodeStaticAsset(asset));};
+    const [index,settings]=await Promise.all([read('/data/coach-index.json'),read('/data/lead-settings.json')]);
+    leadsDataSnapshot={plans:Object.fromEntries(Object.entries(index.plans||{}).map(([id,plan])=>[id,{title:plan?.title,school:plan?.school}])),settings};
+  }
+  return leadsDataSnapshot;
+}
+async function leadsResponse(request,env,path){
+  const leadsEnv={...env,LEADS_DATA:leadsData};
+  if(!path.startsWith('/api/admin/'))return handleLeads(request,leadsEnv);
+  const identity=await resolvePortalIdentity(request,env);
+  if(identity.unavailable)return Response.json({error:'Sign-in is temporarily unavailable. Please try again.',code:'auth_unavailable'},{status:503,headers:{'Cache-Control':'private, no-store','Vary':'Cookie','X-Content-Type-Options':'nosniff','Retry-After':'15'}});
+  const response=await handleLeads(request,{...leadsEnv,PORTAL_USER:identity.user});
+  if(!identity.setCookies?.length)return response;
+  const headers=new Headers(response.headers);for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);
+  return new Response(response.body,{status:response.status,headers});
+}
 // Growth measurement accepts a plan id only when it is in the public plan library index (a small build artifact).
 let growthPlanIdsSnapshot;
 async function growthPlanIds(){
@@ -303,7 +325,7 @@ export default {
     }
     return processResearchJobs(batch,await researchEnvironment(env),ctx);
   },
-  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;ctx?.waitUntil?.(pruneGrowthMetrics(env).catch(()=>{}));if(new Date(controller?.scheduledTime||Date.now()).getUTCMinutes()<2)ctx?.waitUntil?.(pruneCoach(env).catch(()=>{}));return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
+  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;ctx?.waitUntil?.(pruneGrowthMetrics(env).catch(()=>{}));if(new Date(controller?.scheduledTime||Date.now()).getUTCMinutes()<2){ctx?.waitUntil?.(pruneCoach(env).catch(()=>{}));ctx?.waitUntil?.(pruneLeads(env).catch(()=>{}));}return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
   async fetch(request, env, ctx) {
     const target = new URL(request.url);
     if(target.hostname==='www.degreesteps.com'||target.hostname==='degreesteps.com'&&target.protocol!=='https:'){
@@ -318,6 +340,13 @@ export default {
       if(migrationReadOnly(env))return migrationReadOnlyResponse(request);
       initializePublicAssets(env);
       return coachResponse(request,env);
+    }
+    if(isLeadsPath(target.pathname)){
+      // With both flags unset these routes answer 404 before reading identity, data or the database.
+      if(env?.SCHOOL_INQUIRIES_ENABLED!=='1'&&env?.PLAN_REVIEW_ENABLED!=='1')return handleLeads(request,{});
+      if(migrationReadOnly(env))return migrationReadOnlyResponse(request);
+      initializePublicAssets(env);
+      return leadsResponse(request,env,target.pathname);
     }
     if(migrationReadOnly(env)&&(target.pathname==='/api'||target.pathname.startsWith('/api/'))&&!target.pathname.startsWith('/api/auth/')&&!target.pathname.startsWith('/api/operations/'))return migrationReadOnlyResponse(request);
     initializePublicAssets(env);
@@ -387,8 +416,9 @@ export default {
     if(['/login','/signup'].includes(target.pathname))return Response.redirect(target.origin+'/account.html'+target.search,302);
     let path=target.pathname==='/'?'/index.html':target.pathname;
     if(path.endsWith('/'))path+='index.html';
-    if(!assets[path] && assets[path+'/index.html'])return Response.redirect(target.origin+target.pathname+'/'+target.search,308);
-    const asset=assets[path];
+    if(!assets[path] && assets[path+'/index.html'] && !(path==='/plan-review'&&env?.PLAN_REVIEW_ENABLED!=='1'))return Response.redirect(target.origin+target.pathname+'/'+target.search,308);
+    // The Plan review offer page exists only while PLAN_REVIEW_ENABLED is 1.
+    const asset=path.startsWith('/plan-review/')&&env?.PLAN_REVIEW_ENABLED!=='1'?null:assets[path];
     if(!asset)return new Response('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"></head><body><main class="site-container" style="padding:80px 24px"><h1>Let’s find your next step.</h1><p>This page could not be found.</p><p><a href="/">DegreeSteps home</a> · <a href="/resources/">Student resources</a> · <a href="/portal.html">Build my plan</a></p></main></body></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
     const privatePage=['/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html'].includes(path);
     if(asset.external){

@@ -1,11 +1,13 @@
 /** Anonymous aggregate event counters. This module never reads a student plan. */
 const DegreeGrowthMetrics=(()=>{
   'use strict';
-  const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied'];
+  const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request'];
   const CONTEXTS=['home','article','provider','school','degree-plan','workspace','transfer'];
-  // Fixed detail values. A provider name is recorded only for provider_click and an action only for school_email.
+  // Fixed detail values. A provider name is recorded only for provider_click and an action only for school_email and school_inquiry.
   const PROVIDERS=['Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other'];
   const SCHOOL_EMAIL_ACTIONS=['open','copy'];
+  // A school inquiry is counted once, when the student submits it (no plan contents or contact details).
+  const SCHOOL_INQUIRY_ACTIONS=['submitted'];
   const PLAN_FORMAT=/^[a-z0-9][a-z0-9-]{0,127}$/;
   const KEYS=['event','context','planId','provider','action'];
   const MAX_BODY=1024,MAX_BUCKET=1000000,MAX_PER_MINUTE=1200,RETENTION_DAYS=90;
@@ -36,9 +38,9 @@ const DegreeGrowthMetrics=(()=>{
     const bytes=new Uint8Array(size);let offset=0;for(const part of parts){bytes.set(part,offset);offset+=part.length;}
     let value;try{value=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{fail(400,'Send valid JSON.');}
     if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).some(key=>!KEYS.includes(key))||!EVENTS.includes(value.event)||!CONTEXTS.includes(value.context)||value.planId!==undefined&&(typeof value.planId!=='string'||!PLAN_FORMAT.test(value.planId)))fail(400,'Choose a supported public event.');
-    // Each event has exactly one permitted detail: a provider for provider_click, open/copy for school_email, otherwise none.
+    // Each event has exactly one permitted detail: a provider for provider_click, open/copy for school_email, submitted for school_inquiry, otherwise none.
     if(value.event==='provider_click'?!PROVIDERS.includes(value.provider):value.provider!==undefined)fail(400,'Choose a supported public event.');
-    if(value.event==='school_email'?!SCHOOL_EMAIL_ACTIONS.includes(value.action):value.action!==undefined)fail(400,'Choose a supported public event.');
+    if(value.event==='school_email'?!SCHOOL_EMAIL_ACTIONS.includes(value.action):value.event==='school_inquiry'?!SCHOOL_INQUIRY_ACTIONS.includes(value.action):value.action!==undefined)fail(400,'Choose a supported public event.');
     return{event:value.event,context:value.context,planId:value.planId||'',detail:value.provider||value.action||''};
   }
   // Plan ids are optional. A supplied id must be a plan in the public plan library index; an unknown id is rejected.
@@ -76,7 +78,7 @@ const DegreeGrowthMetrics=(()=>{
       const now=clock(context),end=day(now),start=day(now-(days-1)*86400000);
       const rows=(await stmt(env.DB,'SELECT day,event,context,plan_id AS planId,detail,count FROM growth_daily_counts WHERE day>=? AND day<=? ORDER BY day DESC,event,context,plan_id,detail',start,end).all()).results||[];
       const totals=EVENTS.map(event=>({event,count:rows.filter(row=>row.event===event).reduce((sum,row)=>sum+Number(row.count),0)}));
-      const result=response({period:{start,end,days},events:totals,rows,dimensions:{providers:PROVIDERS,schoolEmailActions:SCHOOL_EMAIL_ACTIONS},methodology:{unit:'aggregate events',uniquePeopleMeasured:false,conversionRateMeasured:false,visitorIdentifiersStored:false,cookiesUsed:false,privateRecordsIncluded:false,retentionDays:RETENTION_DAYS,limits:'Counts exclude visitors who opt out or send browser privacy signals. Duplicate visits, blocked requests and rate limits affect totals. These are directional event counts, not unique students or linked conversion rates.'}});
+      const result=response({period:{start,end,days},events:totals,rows,dimensions:{providers:PROVIDERS,schoolEmailActions:SCHOOL_EMAIL_ACTIONS,schoolInquiryActions:SCHOOL_INQUIRY_ACTIONS},methodology:{unit:'aggregate events',uniquePeopleMeasured:false,conversionRateMeasured:false,visitorIdentifiersStored:false,cookiesUsed:false,privateRecordsIncluded:false,retentionDays:RETENTION_DAYS,limits:'Counts exclude visitors who opt out or send browser privacy signals. Duplicate visits, blocked requests and rate limits affect totals. These are directional event counts, not unique students or linked conversion rates.'}});
       result.headers.set('Vary','Cookie');return result;
     }catch(error){return response({error:error instanceof Problem?error.message:'Aggregate measurement is temporarily unavailable.'},error instanceof Problem?error.status:503);}
   }

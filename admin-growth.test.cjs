@@ -51,3 +51,10 @@ test('the panel is accessible tables, owner-only, and uses no chart library or t
   if(status===200)assert.match(nodes['admin-growth-body'].innerHTML,/Funnel/);if(status===503)assert.match(nodes['admin-growth-status'].textContent,/temporarily unavailable/);
  }
 });
+
+test('opt-in request counts appear only once school contact requests or Plan review requests have been used',()=>{
+ assert.doesNotMatch(Growth.html(report),/Requests from students/);
+ const used={...report,rows:[...report.rows,row('2026-11-22','school_inquiry',2,'submitted'),row('2026-11-01','plan_review_request',3)]};
+ const text=Growth.html(used).replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
+ assert.match(text,/School contact requests sent 2 2/);assert.match(text,/Plan review requests 0 3/);
+});

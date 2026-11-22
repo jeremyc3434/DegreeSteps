@@ -12,6 +12,7 @@ import { handleAuth, resolvePortalIdentity } from './auth.mjs';
 import { handleCoach } from './coach.mjs';
 import { handleGrowthMetrics } from './growth-metrics.mjs';
 import { handleCollegeAccess } from './college-access.mjs';
+import { handleLeads, isLeadsPath } from './leads.mjs';
 const root=resolve(import.meta.dirname,'..'),staticRoot=resolve(root,'dist');
 const port=Number(process.env.DEGREEPATH_PREVIEW_PORT)||8099;
 await mkdir(resolve(root,'.local-community'),{recursive:true});
@@ -60,6 +61,19 @@ const server=http.createServer(async(req,res)=>{
       const response=await handleCoach(request,coachEnv);
       res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
     }
+    if(isLeadsPath(target.pathname)){
+      // School contact requests and Plan review: off unless SCHOOL_INQUIRIES_ENABLED=1 / PLAN_REVIEW_ENABLED=1, as in the Worker.
+      // LEADS_PREVIEW_SCHOOLS (comma-separated school names) adds schools to the allowlist in this loopback preview only.
+      const headers=new Headers();for(const [key,value]of Object.entries(req.headers))if(value&&!key.startsWith('oai-authenticated-'))headers.set(key,String(value));
+      headers.set('CF-Connecting-IP',req.socket.remoteAddress||'127.0.0.1');
+      const chunks=[];let bytes=0;for await(const chunk of req){bytes+=chunk.length;if(bytes>8192){res.writeHead(413);res.end('Too large');return;}chunks.push(chunk);}
+      const request=new Request(target,{method:req.method,headers,...(!['GET','HEAD'].includes(req.method)&&chunks.length?{body:Buffer.concat(chunks)}:{})});
+      const match=(req.headers.cookie||'').match(/(?:^|;\s*)degreepath_preview_user=([A-Za-z0-9_-]+)/),user=users[match?.[1]]||null;
+      const leadsData=async()=>{const index=JSON.parse(await readFile(resolve(staticRoot,'data/coach-index.json'),'utf8')),settings=JSON.parse(await readFile(resolve(staticRoot,'data/lead-settings.json'),'utf8'));const extra=String(process.env.LEADS_PREVIEW_SCHOOLS||'').split(',').map(name=>name.trim()).filter(Boolean);return{plans:index.plans,settings:{...settings,schools:[...settings.schools,...extra]}};};
+      const response=await handleLeads(request,{DB,COMMUNITY_ADMIN_EMAIL:env.COMMUNITY_ADMIN_EMAIL,SCHOOL_INQUIRIES_ENABLED:process.env.SCHOOL_INQUIRIES_ENABLED,PLAN_REVIEW_ENABLED:process.env.PLAN_REVIEW_ENABLED,LEADS_HASH_SALT:process.env.LEADS_HASH_SALT||'preview-only-leads-salt',LEADS_DATA:leadsData,PORTAL_USER:user});
+      res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
+    }
+    if(target.pathname.startsWith('/plan-review')&&process.env.PLAN_REVIEW_ENABLED!=='1'){res.writeHead(404,{'Content-Type':'text/plain'});res.end('Not found.');return;}
     if(target.pathname==='/api/growth/events'||target.pathname==='/api/admin/growth-summary'||target.pathname==='/api/colleges/status'){
       // Aggregate counters and the owner report, as in the Worker. Signed-in preview users come from the loopback cookie only.
       const headers=new Headers();for(const [key,value]of Object.entries(req.headers))if(value&&!key.startsWith('oai-authenticated-'))headers.set(key,String(value));
