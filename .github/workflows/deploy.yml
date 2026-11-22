@@ -108,12 +108,20 @@ jobs:
           PLAN_REVIEW_ENABLED: ${{ vars.PLAN_REVIEW_ENABLED }}
           EMAIL_ALERTS_ENABLED: ${{ vars.EMAIL_ALERTS_ENABLED }}
           EMAIL_POSTAL_ADDRESS: ${{ vars.EMAIL_POSTAL_ADDRESS }}
+          COACH_ENABLED: ${{ vars.COACH_ENABLED }}
+          COACH_DAILY_USD_CAP: ${{ vars.COACH_DAILY_USD_CAP }}
+          COACH_MODEL: ${{ vars.COACH_MODEL }}
+          EMAIL_FROM: ${{ vars.EMAIL_FROM }}
+          EMAIL_DAILY_CAP: ${{ vars.EMAIL_DAILY_CAP }}
         run: |
           flags=()
-          for name in SCHOOL_INQUIRIES_ENABLED PLAN_REVIEW_ENABLED EMAIL_ALERTS_ENABLED; do
+          for name in SCHOOL_INQUIRIES_ENABLED PLAN_REVIEW_ENABLED EMAIL_ALERTS_ENABLED COACH_ENABLED; do
             if [ "${!name}" = "1" ]; then flags+=(--var "$name:1"); fi
           done
-          if [ -n "$EMAIL_POSTAL_ADDRESS" ]; then flags+=(--var "EMAIL_POSTAL_ADDRESS:$EMAIL_POSTAL_ADDRESS"); fi
+          # Optional settings: passed only when set as GitHub environment variables.
+          for name in EMAIL_POSTAL_ADDRESS COACH_DAILY_USD_CAP COACH_MODEL EMAIL_FROM EMAIL_DAILY_CAP; do
+            if [ -n "${!name}" ]; then flags+=(--var "$name:${!name}"); fi
+          done
           if [ "$EMAIL_ALERTS_ENABLED" = "1" ] && [ -z "$EMAIL_POSTAL_ADDRESS" ]; then
             echo "::warning::EMAIL_ALERTS_ENABLED is 1 but EMAIL_POSTAL_ADDRESS is not set; alert emails will not be sent."
           fi

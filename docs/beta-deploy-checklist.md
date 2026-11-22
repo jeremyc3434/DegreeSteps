@@ -30,9 +30,10 @@ Deploys run from GitHub Actions (`.github/workflows/deploy.yml`), so no terminal
 ## Leave off for the first week
 
 - **AI coach.** Leave `COACH_ENABLED` unset. To turn it on later:
-  - add a `COACH_HASH_SALT` Worker secret (16+ random characters);
-  - set `COACH_ENABLED=1`;
-  - optionally set `COACH_DAILY_USD_CAP` (default `3`).
+  - add a `COACH_HASH_SALT` repository secret (16+ random characters); the Deploy workflow writes it to the Worker;
+  - set the GitHub environment variable `COACH_ENABLED` to `1` (Settings → Environments → staging or production);
+  - optionally set `COACH_DAILY_USD_CAP` (default `3`) and `COACH_MODEL` the same way.
+  - Set flags in GitHub, not in the Cloudflare dashboard: every deploy replaces the Worker's plain variables with the ones the workflow passes.
   - The coach uses Claude Haiku 5.5.
 - **"Have [School] contact me" and the paid Plan review.** Both are off. Nothing is ever sent to a school or a payment provider automatically; requests wait on the admin page for you to download as CSV and forward by hand, and are deleted after 365 days.
   - Add a `LEADS_HASH_SALT` repository secret (16+ random characters); the Deploy workflow writes it to the Worker as a secret. It is used only for the daily per-visitor submission limit.
