@@ -53,9 +53,11 @@
   const search = $('[data-plan-search]'), sort = $('[data-plan-sort]'), toggle = $('[data-plan-filter-toggle]');
   const count = $('[data-plan-count]'), active = $('[data-plan-active]'), empty = $('[data-plan-empty]'), more = $('[data-plan-more]'), badge = $('[data-plan-filter-count]');
   const copy = $('[data-plan-copy]');
+  // Anonymous aggregate counters (growth-metrics.js). Neither the link nor the filter values are sent.
+  const growth = event => { try { window.dispatchEvent(new CustomEvent('DegreeSteps:growth', { detail: { event, context: 'degree-plan' } })); } catch { /* Measurement never blocks the page. */ } };
   if (copy && navigator.clipboard) {
     copy.hidden = false;
-    copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(location.href); copy.textContent = 'Link copied'; } catch { copy.textContent = 'Copy the address bar to share'; } setTimeout(() => { copy.textContent = 'Copy link to this list'; }, 2400); });
+    copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(location.href); copy.textContent = 'Link copied'; growth('share_link_copied'); } catch { copy.textContent = 'Copy the address bar to share'; } setTimeout(() => { copy.textContent = 'Copy link to this list'; }, 2400); });
   }
   const groups = new Map($$('[data-plan-group]').map(group => [group.dataset.planGroup, group]));
   const labelFor = (name, value) => { const input = form.querySelector('input[name="' + name + '"][value="' + CSS.escape(value) + '"]'); return input ? input.nextElementSibling.textContent : value; };
@@ -154,9 +156,9 @@
   narrow.addEventListener('change', () => setOpen(false));
 
   let typing = null;
-  search.addEventListener('input', () => { clearTimeout(typing); typing = setTimeout(() => render(readForm(), { resetPage: true }), 120); });
-  sort.addEventListener('change', () => render(readForm(), { resetPage: true }));
-  form.addEventListener('change', () => render(readForm(), { resetPage: true }));
+  search.addEventListener('input', () => { clearTimeout(typing); typing = setTimeout(() => { render(readForm(), { resetPage: true }); growth('finder_used'); }, 120); });
+  sort.addEventListener('change', () => { render(readForm(), { resetPage: true }); growth('finder_used'); });
+  form.addEventListener('change', () => { render(readForm(), { resetPage: true }); growth('finder_used'); });
   form.addEventListener('submit', event => event.preventDefault());
   for (const button of $$('[data-plan-clear]')) button.addEventListener('click', () => apply(normalize({ sort: sort.value })));
   more.addEventListener('click', () => { const first = limit; limit += PAGE; render(readForm()); const next = query(items, readForm()).results[first]; next?.card.querySelector('a')?.focus(); });

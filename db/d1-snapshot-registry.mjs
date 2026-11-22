@@ -1030,6 +1030,19 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   },
   {
+    "name": "email_send_days",
+    "columns": [
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "count",
+        "type": "integer"
+      }
+    ]
+  },
+  {
     "name": "growth_daily_counts",
     "columns": [
       {
@@ -1049,8 +1062,152 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
         "type": "text"
       },
       {
+        "name": "detail",
+        "type": "text"
+      },
+      {
         "name": "count",
         "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "lead_rate_limits",
+    "columns": [
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "visitor_hash",
+        "type": "text"
+      },
+      {
+        "name": "kind",
+        "type": "text"
+      },
+      {
+        "name": "count",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "plan_alert_subscriptions",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "portal_plan_id",
+        "type": "text"
+      },
+      {
+        "name": "plan_id",
+        "type": "text"
+      },
+      {
+        "name": "email",
+        "type": "text"
+      },
+      {
+        "name": "fingerprint",
+        "type": "text"
+      },
+      {
+        "name": "summary_json",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "confirmed_at",
+        "type": "integer"
+      },
+      {
+        "name": "last_change_email_at",
+        "type": "integer"
+      },
+      {
+        "name": "last_reminder_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "plan_alert_tokens",
+    "columns": [
+      {
+        "name": "token_hash",
+        "type": "text"
+      },
+      {
+        "name": "subscription_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "plan_review_requests",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "email",
+        "type": "text"
+      },
+      {
+        "name": "plan_id",
+        "type": "text"
+      },
+      {
+        "name": "plan_title",
+        "type": "text"
+      },
+      {
+        "name": "note",
+        "type": "text"
+      },
+      {
+        "name": "offer_price",
+        "type": "integer"
+      },
+      {
+        "name": "offer_currency",
+        "type": "text"
+      },
+      {
+        "name": "offer_status",
+        "type": "text"
+      },
+      {
+        "name": "consent_version",
+        "type": "text"
+      },
+      {
+        "name": "consent_text",
+        "type": "text"
       }
     ]
   },
@@ -1134,6 +1291,63 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
       {
         "name": "count",
         "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "school_inquiries",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "plan_id",
+        "type": "text"
+      },
+      {
+        "name": "plan_title",
+        "type": "text"
+      },
+      {
+        "name": "school",
+        "type": "text"
+      },
+      {
+        "name": "first_name",
+        "type": "text"
+      },
+      {
+        "name": "email",
+        "type": "text"
+      },
+      {
+        "name": "phone",
+        "type": "text"
+      },
+      {
+        "name": "location",
+        "type": "text"
+      },
+      {
+        "name": "start_timing",
+        "type": "text"
+      },
+      {
+        "name": "prior_credit",
+        "type": "text"
+      },
+      {
+        "name": "consent_version",
+        "type": "text"
+      },
+      {
+        "name": "consent_text",
+        "type": "text"
       }
     ]
   },
@@ -1461,9 +1675,39 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "index",
+    "name": "plan_alert_owner_plan",
+    "tbl_name": "plan_alert_subscriptions",
+    "sql": "CREATE UNIQUE INDEX `plan_alert_owner_plan` ON `plan_alert_subscriptions` (`user_id`,`portal_plan_id`)"
+  },
+  {
+    "type": "index",
+    "name": "plan_alert_plan",
+    "tbl_name": "plan_alert_subscriptions",
+    "sql": "CREATE INDEX `plan_alert_plan` ON `plan_alert_subscriptions` (`plan_id`)"
+  },
+  {
+    "type": "index",
+    "name": "plan_alert_tokens_subscription",
+    "tbl_name": "plan_alert_tokens",
+    "sql": "CREATE INDEX `plan_alert_tokens_subscription` ON `plan_alert_tokens` (`subscription_id`)"
+  },
+  {
+    "type": "index",
+    "name": "plan_review_requests_created",
+    "tbl_name": "plan_review_requests",
+    "sql": "CREATE INDEX `plan_review_requests_created` ON `plan_review_requests` (`created_at`)"
+  },
+  {
+    "type": "index",
     "name": "portal_plans_owner",
     "tbl_name": "portal_plans",
     "sql": "CREATE INDEX `portal_plans_owner` ON `portal_plans` (`user_id`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "school_inquiries_created",
+    "tbl_name": "school_inquiries",
+    "sql": "CREATE INDEX `school_inquiries_created` ON `school_inquiries` (`created_at`)"
   },
   {
     "type": "index",
@@ -1617,8 +1861,38 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "index",
+    "name": "sqlite_autoindex_email_send_days_1",
+    "tbl_name": "email_send_days",
+    "sql": null
+  },
+  {
+    "type": "index",
     "name": "sqlite_autoindex_growth_daily_counts_1",
     "tbl_name": "growth_daily_counts",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_lead_rate_limits_1",
+    "tbl_name": "lead_rate_limits",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_plan_alert_subscriptions_1",
+    "tbl_name": "plan_alert_subscriptions",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_plan_alert_tokens_1",
+    "tbl_name": "plan_alert_tokens",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_plan_review_requests_1",
+    "tbl_name": "plan_review_requests",
     "sql": null
   },
   {
@@ -1637,6 +1911,12 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "type": "index",
     "name": "sqlite_autoindex_portal_rate_limits_1",
     "tbl_name": "portal_rate_limits",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_school_inquiries_1",
+    "tbl_name": "school_inquiries",
     "sql": null
   },
   {
@@ -1857,9 +2137,39 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "table",
+    "name": "email_send_days",
+    "tbl_name": "email_send_days",
+    "sql": "CREATE TABLE `email_send_days` (\n\t`day` text PRIMARY KEY NOT NULL,\n\t`count` integer DEFAULT 0 NOT NULL,\n\tCONSTRAINT \"email_send_day_format\" CHECK(length(\"email_send_days\".\"day\")=10 AND \"email_send_days\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"email_send_count_bounds\" CHECK(\"email_send_days\".\"count\" BETWEEN 0 AND 100000)\n)"
+  },
+  {
+    "type": "table",
     "name": "growth_daily_counts",
     "tbl_name": "growth_daily_counts",
-    "sql": "CREATE TABLE `growth_daily_counts` (\n\t`day` text NOT NULL,\n\t`event` text NOT NULL,\n\t`context` text NOT NULL,\n\t`plan_id` text DEFAULT '' NOT NULL,\n\t`count` integer DEFAULT 1 NOT NULL,\n\tPRIMARY KEY(`day`, `event`, `context`, `plan_id`),\n\tCONSTRAINT \"growth_day_format\" CHECK(length(\"growth_daily_counts\".\"day\")=10 AND \"growth_daily_counts\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"growth_event_enum\" CHECK(\"growth_daily_counts\".\"event\" IN ('landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed')),\n\tCONSTRAINT \"growth_context_enum\" CHECK(\"growth_daily_counts\".\"context\" IN ('home','article','provider','school','degree-plan','workspace')),\n\tCONSTRAINT \"growth_plan_scope\" CHECK(\"growth_daily_counts\".\"plan_id\" IN ('','wgu-catalog-ecceaa488637ac83','liberty-business-residential','liberty-criminal-justice-online','liberty-criminal-justice-residential')),\n\tCONSTRAINT \"growth_count_bounds\" CHECK(\"growth_daily_counts\".\"count\" BETWEEN 1 AND 1000000)\n)"
+    "sql": "CREATE TABLE \"growth_daily_counts\" (\n\t`day` text NOT NULL,\n\t`event` text NOT NULL,\n\t`context` text NOT NULL,\n\t`plan_id` text DEFAULT '' NOT NULL,\n\t`detail` text DEFAULT '' NOT NULL,\n\t`count` integer DEFAULT 1 NOT NULL,\n\tPRIMARY KEY(`day`, `event`, `context`, `plan_id`, `detail`),\n\tCONSTRAINT \"growth_day_format\" CHECK(length(\"growth_daily_counts\".\"day\")=10 AND \"growth_daily_counts\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"growth_event_enum\" CHECK(\"growth_daily_counts\".\"event\" IN ('landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request','alert_subscribed','alert_unsubscribed')),\n\tCONSTRAINT \"growth_context_enum\" CHECK(\"growth_daily_counts\".\"context\" IN ('home','article','provider','school','degree-plan','workspace','transfer','email')),\n\tCONSTRAINT \"growth_plan_scope\" CHECK(\"growth_daily_counts\".\"plan_id\"='' OR (length(\"growth_daily_counts\".\"plan_id\") BETWEEN 1 AND 128 AND \"growth_daily_counts\".\"plan_id\" NOT GLOB '*[^a-z0-9-]*')),\n\tCONSTRAINT \"growth_detail_enum\" CHECK(\"growth_daily_counts\".\"detail\" IN ('','Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other','open','copy','submitted','settings','link','one-click')),\n\tCONSTRAINT \"growth_count_bounds\" CHECK(\"growth_daily_counts\".\"count\" BETWEEN 1 AND 1000000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "lead_rate_limits",
+    "tbl_name": "lead_rate_limits",
+    "sql": "CREATE TABLE `lead_rate_limits` (\n\t`day` text NOT NULL,\n\t`visitor_hash` text NOT NULL,\n\t`kind` text NOT NULL,\n\t`count` integer DEFAULT 1 NOT NULL,\n\tPRIMARY KEY(`day`, `visitor_hash`, `kind`),\n\tCONSTRAINT \"lead_rate_day_format\" CHECK(length(\"lead_rate_limits\".\"day\")=10 AND \"lead_rate_limits\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"lead_rate_hash_format\" CHECK(length(\"lead_rate_limits\".\"visitor_hash\")=64 AND \"lead_rate_limits\".\"visitor_hash\" NOT GLOB '*[^0-9a-f]*'),\n\tCONSTRAINT \"lead_rate_kind\" CHECK(\"lead_rate_limits\".\"kind\" IN ('school_inquiry','plan_review')),\n\tCONSTRAINT \"lead_rate_count_bounds\" CHECK(\"lead_rate_limits\".\"count\" BETWEEN 0 AND 1000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "plan_alert_subscriptions",
+    "tbl_name": "plan_alert_subscriptions",
+    "sql": "CREATE TABLE `plan_alert_subscriptions` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`user_id` text NOT NULL,\n\t`portal_plan_id` text NOT NULL,\n\t`plan_id` text NOT NULL,\n\t`email` text NOT NULL,\n\t`fingerprint` text NOT NULL,\n\t`summary_json` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`confirmed_at` integer NOT NULL,\n\t`last_change_email_at` integer,\n\t`last_reminder_at` integer,\n\tCONSTRAINT \"plan_alert_fingerprint_format\" CHECK(length(\"plan_alert_subscriptions\".\"fingerprint\")=64 AND \"plan_alert_subscriptions\".\"fingerprint\" NOT GLOB '*[^0-9a-f]*'),\n\tCONSTRAINT \"plan_alert_plan_format\" CHECK(length(\"plan_alert_subscriptions\".\"plan_id\") BETWEEN 1 AND 128 AND \"plan_alert_subscriptions\".\"plan_id\" NOT GLOB '*[^a-z0-9-]*'),\n\tCONSTRAINT \"plan_alert_email_length\" CHECK(length(\"plan_alert_subscriptions\".\"email\") BETWEEN 3 AND 254),\n\tCONSTRAINT \"plan_alert_summary_length\" CHECK(length(\"plan_alert_subscriptions\".\"summary_json\") BETWEEN 2 AND 2000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "plan_alert_tokens",
+    "tbl_name": "plan_alert_tokens",
+    "sql": "CREATE TABLE `plan_alert_tokens` (\n\t`token_hash` text PRIMARY KEY NOT NULL,\n\t`subscription_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\tFOREIGN KEY (`subscription_id`) REFERENCES `plan_alert_subscriptions`(`id`) ON UPDATE no action ON DELETE cascade,\n\tCONSTRAINT \"plan_alert_token_hash_format\" CHECK(length(\"plan_alert_tokens\".\"token_hash\")=64 AND \"plan_alert_tokens\".\"token_hash\" NOT GLOB '*[^0-9a-f]*')\n)"
+  },
+  {
+    "type": "table",
+    "name": "plan_review_requests",
+    "tbl_name": "plan_review_requests",
+    "sql": "CREATE TABLE `plan_review_requests` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`name` text NOT NULL,\n\t`email` text NOT NULL,\n\t`plan_id` text DEFAULT '' NOT NULL,\n\t`plan_title` text DEFAULT '' NOT NULL,\n\t`note` text DEFAULT '' NOT NULL,\n\t`offer_price` integer NOT NULL,\n\t`offer_currency` text NOT NULL,\n\t`offer_status` text NOT NULL,\n\t`consent_version` text NOT NULL,\n\t`consent_text` text NOT NULL,\n\tCONSTRAINT \"plan_review_plan_format\" CHECK(\"plan_review_requests\".\"plan_id\"='' OR (length(\"plan_review_requests\".\"plan_id\") BETWEEN 1 AND 128 AND \"plan_review_requests\".\"plan_id\" NOT GLOB '*[^a-z0-9-]*')),\n\tCONSTRAINT \"plan_review_text_lengths\" CHECK(length(\"plan_review_requests\".\"name\") BETWEEN 1 AND 100 AND length(\"plan_review_requests\".\"email\") BETWEEN 3 AND 254 AND length(\"plan_review_requests\".\"plan_title\")<=200 AND length(\"plan_review_requests\".\"note\")<=1000),\n\tCONSTRAINT \"plan_review_offer\" CHECK(\"plan_review_requests\".\"offer_price\" BETWEEN 0 AND 10000 AND length(\"plan_review_requests\".\"offer_currency\")=3 AND \"plan_review_requests\".\"offer_status\" IN ('waitlist','checkout')),\n\tCONSTRAINT \"plan_review_consent\" CHECK(length(\"plan_review_requests\".\"consent_version\") BETWEEN 1 AND 40 AND length(\"plan_review_requests\".\"consent_text\") BETWEEN 20 AND 600)\n)"
   },
   {
     "type": "table",
@@ -1878,6 +2188,12 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "portal_rate_limits",
     "tbl_name": "portal_rate_limits",
     "sql": "CREATE TABLE `portal_rate_limits` (\n\t`user_id` text NOT NULL,\n\t`action` text NOT NULL,\n\t`window_start` integer NOT NULL,\n\t`count` integer NOT NULL,\n\tPRIMARY KEY(`user_id`, `action`),\n\tFOREIGN KEY (`user_id`) REFERENCES `portal_profiles`(`id`) ON UPDATE no action ON DELETE cascade,\n\tCONSTRAINT \"portal_rate_action\" CHECK(\"portal_rate_limits\".\"action\" IN ('save','profile','delete')),\n\tCONSTRAINT \"portal_rate_positive\" CHECK(\"portal_rate_limits\".\"count\" > 0)\n)"
+  },
+  {
+    "type": "table",
+    "name": "school_inquiries",
+    "tbl_name": "school_inquiries",
+    "sql": "CREATE TABLE `school_inquiries` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`plan_id` text NOT NULL,\n\t`plan_title` text NOT NULL,\n\t`school` text NOT NULL,\n\t`first_name` text NOT NULL,\n\t`email` text NOT NULL,\n\t`phone` text DEFAULT '' NOT NULL,\n\t`location` text NOT NULL,\n\t`start_timing` text NOT NULL,\n\t`prior_credit` text NOT NULL,\n\t`consent_version` text NOT NULL,\n\t`consent_text` text NOT NULL,\n\tCONSTRAINT \"school_inquiry_plan_format\" CHECK(length(\"school_inquiries\".\"plan_id\") BETWEEN 1 AND 128 AND \"school_inquiries\".\"plan_id\" NOT GLOB '*[^a-z0-9-]*'),\n\tCONSTRAINT \"school_inquiry_text_lengths\" CHECK(length(\"school_inquiries\".\"plan_title\") BETWEEN 1 AND 200 AND length(\"school_inquiries\".\"school\") BETWEEN 1 AND 160 AND length(\"school_inquiries\".\"first_name\") BETWEEN 1 AND 60 AND length(\"school_inquiries\".\"email\") BETWEEN 3 AND 254 AND length(\"school_inquiries\".\"phone\")<=40 AND length(\"school_inquiries\".\"location\") BETWEEN 2 AND 80),\n\tCONSTRAINT \"school_inquiry_start_timing\" CHECK(\"school_inquiries\".\"start_timing\" IN ('this-term','next-6-months','later')),\n\tCONSTRAINT \"school_inquiry_prior_credit\" CHECK(\"school_inquiries\".\"prior_credit\" IN ('yes','no')),\n\tCONSTRAINT \"school_inquiry_consent\" CHECK(length(\"school_inquiries\".\"consent_version\") BETWEEN 1 AND 40 AND length(\"school_inquiries\".\"consent_text\") BETWEEN 20 AND 600)\n)"
   },
   {
     "type": "table",

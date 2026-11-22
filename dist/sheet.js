@@ -13,6 +13,10 @@
   const schoolKey = name => ({'Thomas Edison State University':'tesu','Liberty University':'liberty','University of Maine at Presque Isle':'umpi','Western Governors University':'wgu','Charter Oak State College':'cosc','Southern New Hampshire University':'snhu','Purdue Global':'purdue-global'}[name] || slug(name));
   const safeURL = value => { try { const u = new URL(value); return ['https:','http:'].includes(u.protocol) && !u.username && !u.password ? u.href : ''; } catch { return ''; } };
   const link = (href,title) => safeURL(href) ? '<a href="'+esc(safeURL(href))+'" target="_blank" rel="noopener">'+esc(title)+'</a>' : esc(title);
+  // Links out to course providers go through the shared outbound helper (outbound.js), which only renders the link.
+  const providerLink = (href,title,provider,className='') => { if(!window.DegreeOutbound) return className ? '<a class="'+className+'" href="'+esc(href)+'" target="_blank" rel="noopener">'+esc(title)+'</a>' : link(href,title); const url = className ? href : safeURL(href); return url ? window.DegreeOutbound.link({href:url,html:esc(title),provider,className}) : esc(title); };
+  // Anonymous aggregate counters (growth-metrics.js). Only the event name and a fixed detail are sent.
+  const growth = (event,extra={}) => { try { window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event,context:'workspace',...extra}})); } catch { /* Measurement never blocks the worksheet. */ } };
   const opts = (items,value) => items.map(item => {const a=Array.isArray(item)?item:[item,item];return '<option value="'+esc(a[0])+'"'+(String(a[0])===String(value)?' selected':'')+'>'+esc(a[1])+'</option>';}).join('');
   const button = (action,title,kind='secondary') => '<button type="button" class="button '+kind+' small" data-action="'+action+'">'+title+'</button>';
   const field = (name,title,value,type='text',attrs='') => '<label class="sheet-field"><span>'+esc(title)+'</span><input name="'+name+'" type="'+type+'" value="'+esc(value??'')+'" '+attrs+'></label>';
@@ -208,14 +212,26 @@
   }
   function schoolEmailActionsHTML() {
     const email=studentSchoolEmail();if(!email)return '';
-    return '<div class="sheet-school-email"><a class="button small" href="'+esc(email.mailto)+'">Email the school these questions</a><button type="button" class="button ghost small" data-action="copy-school-email">Copy the email</button><p class="sheet-school-email-hint">A short email in your words, ready to send to the school’s admissions or transfer-credit office.</p></div>';
+    return '<div class="sheet-school-email"><a class="button small" href="'+esc(email.mailto)+'" data-school-email="open">Email the school these questions</a><button type="button" class="button ghost small" data-action="copy-school-email">Copy the email</button><p class="sheet-school-email-hint">A short email in your words, ready to send to the school’s admissions or transfer-credit office.</p></div>';
   }
   function schoolCheckHTML() {
     const routeId=pathway?.id,questions=Sheet.schoolQuestions(planIndex,routeId);if(!questions.length)return '';
     if(schoolCheckHidden().includes(routeId))return '<section class="sheet-school-check is-collapsed" aria-label="Needs school confirmation"><p><strong>'+questions.length+' question'+(questions.length===1?'':'s')+' to ask the school</strong> before you pay for courses.</p><button type="button" class="button ghost small" data-action="show-school-check" aria-expanded="false" aria-controls="sheet-school-check">Show questions</button></section>';
-    return '<section class="sheet-school-check" aria-labelledby="sheet-school-check-title"><div class="sheet-school-check-head"><h2 id="sheet-school-check-title">Before you pay for courses, ask the school:</h2><button type="button" class="button ghost small" data-action="hide-school-check" aria-expanded="true" aria-controls="sheet-school-check">Hide</button></div><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p>'+schoolEmailActionsHTML()+'</section>';
+    return '<section class="sheet-school-check" aria-labelledby="sheet-school-check-title"><div class="sheet-school-check-head"><h2 id="sheet-school-check-title">Before you pay for courses, ask the school:</h2><button type="button" class="button ghost small" data-action="hide-school-check" aria-expanded="true" aria-controls="sheet-school-check">Hide</button></div><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p>'+schoolEmailActionsHTML()+leadActionsHTML()+'</section>';
+  }
+  // Optional extra actions from leads.js (school contact request, Plan review link). Empty unless a feature is on;
+  // they never change the plan, its courses or their order.
+  // They sit inside the school questions, next to "Email the school these questions", or on their own when the plan has none.
+  function leadActionsHTML() {
+    return task||!pathway?'':(window.DegreeLeads?.actionsHTML({planId:pathway.id,school:pathway.school,title:pathway.title})||'');
+  }
+  function renderLeadActions() {
+    const node=$('sheet-lead-actions');if(!node)return;
+    const html=Sheet.schoolQuestions(planIndex,pathway?.id).length?'':leadActionsHTML();
+    if(node.innerHTML!==html)node.innerHTML=html;node.hidden=!html;
   }
   function renderSchoolCheck(focusAction) {
+    renderLeadActions();
     const node=$('sheet-school-check');if(!node)return;
     const html=task||!pathway?'':schoolCheckHTML();if(node.innerHTML!==html)node.innerHTML=html;node.hidden=!html;
     if(planIndex)renderGlance();
@@ -387,6 +403,14 @@
     if(focusKind)document.querySelector('[data-'+focusKind+'="'+CSS.escape(focusRow)+'"]')?.focus({preventScroll:true});
     else if(focusId)$(focusId)?.focus({preventScroll:true});
   }
+  // Email plan alerts (plan-alerts.js): an unticked opt-in for a plan saved to the student's account, shown only when
+  // the site enables alerts and the plan is in the public plan library. It never changes the plan or the device draft.
+  function renderAlerts() {
+    if(task||!window.DegreePlanAlerts)return;
+    let node=$('sheet-alerts');if(!node&&$('sheet-footer')){node=document.createElement('div');node.id='sheet-alerts';node.hidden=true;$('sheet-footer').after(node);}
+    const id=pathway?.id;if(!node||!id||state?.sheet?.isExample){if(node){node.hidden=true;node.innerHTML='';}return;}
+    void loadPlanIndex().then(()=>{if(pathway?.id===id)void window.DegreePlanAlerts.mountOptIn(node,{planId:id,inLibrary:Boolean(planIndex?.plans?.[id])});},()=>{});
+  }
   function render({persist=true}={}) {
     assertCurrentDraft();
     const active=document.activeElement,focusId=active?.id,focusRow=active?.dataset?.provider||active?.dataset?.course||active?.dataset?.progress,focusKind=active?.dataset?.provider?'provider':active?.dataset?.course?'course':active?.dataset?.progress?'progress':'';
@@ -394,6 +418,7 @@
     renderSchoolCheck();
     updateSavings();
     renderGlance();
+    renderAlerts();
     if(simplePlan()){renderCoursePlan();renderChecklist();restoreWorksheetFocus(focusId,focusKind,focusRow);if(!task)loadOutcomes();return;}
     if($('sheet-route'))$('sheet-route').innerHTML='';
     if($('sheet-next'))$('sheet-next').innerHTML='';
@@ -491,11 +516,11 @@
     const assignments=entry.requirements.map(req=>'<span><strong>'+esc(req.code||req.title)+'</strong>'+esc(req.code?' · '+req.title:'')+'</span>').join('')+(shared.length?'<small class="course-plan-overlap">Also meets '+esc([...new Set(shared)].join(', '))+' · counted once</small>':'');
     const courseLink='<button type="button" class="course-plan-name" data-row="'+esc(entry.requirementId)+'">'+esc(entry.title)+'</button>';
     const providerHref=entry.courseUrl||entry.providerUrl;
-    const providerLink=providerHref&&!missing?'<a class="course-plan-provider-link" href="'+esc(providerHref)+'" target="_blank" rel="noopener">'+esc(entry.courseUrl?'Open course at '+(entry.provider==='University'?program.school:entry.provider):entry.providerLinkLabel)+'</a>':'';
+    const providerAnchor=providerHref&&!missing?providerLink(providerHref,entry.courseUrl?'Open course at '+(entry.provider==='University'?program.school:entry.provider):entry.providerLinkLabel,entry.provider,'course-plan-provider-link'):'';
     const progressState=needsChoice?'needs-course':entry.progressState||(done?'completed':missing?'needs-course':entry.status==='in-progress'?'in-progress':'not-started');
     const progress=missing||needsChoice?'<span class="course-plan-needs-course">Choose a course</span>':courseProgressControl(first,entry.title);
     const updated=replacedRows.has(entry.requirementId)||(entry.requirements||[]).some(req=>replacedRows.has(req?.id||req));
-    return '<tr class="course-plan-row'+(updated?' is-replaced':'')+'" data-requirement="'+esc(entry.requirementId)+'" data-kind="'+kind+'" data-course-progress="'+progressState+'"><td class="course-plan-course">'+courseLink+(updated?'<small class="course-plan-replaced">Updated after your course preferences changed</small>':'')+(entry.code?'<small>'+esc(entry.code)+'</small>':'')+(entry.bundle?'<small class="course-plan-bundle">'+(entry.crossSectionBundle?'Shared '+(entry.provider==='CLEP'?'exam':'course')+' · '+entry.credits+' credits in this section':entry.requirements.length>1?'One '+(entry.provider==='CLEP'?'exam':'course')+' fills '+entry.requirements.length+' requirements':entry.sourceCredits?entry.sourceCredits+' source credits · '+entry.credits+' applied in this plan':'Bundled source')+'</small>':'')+providerLink+'</td><td class="course-plan-provider">'+esc(entry.provider||'Not matched')+'</td><td class="course-plan-credits">'+entry.credits+'</td><td class="course-plan-placement">'+assignments+'<button class="course-plan-evidence" type="button" data-row="'+esc(entry.requirementId)+'">'+esc(entry.evidenceLabel)+'</button></td><td class="course-plan-progress"><div class="course-progress-control"><span class="course-progress-dot" aria-hidden="true"></span>'+progress+'</div></td><td class="course-plan-action">'+(needsChoice?'<button type="button" data-row="'+esc(entry.requirementId)+'">Choose course</button>':done||missing||entry.creditBalanceDerived?'<button type="button" data-row="'+esc(entry.requirementId)+'">View details</button>':'<button type="button" data-compare-row="'+esc(entry.requirementId)+'">Change course</button>')+'</td></tr>';
+    return '<tr class="course-plan-row'+(updated?' is-replaced':'')+'" data-requirement="'+esc(entry.requirementId)+'" data-kind="'+kind+'" data-course-progress="'+progressState+'"><td class="course-plan-course">'+courseLink+(updated?'<small class="course-plan-replaced">Updated after your course preferences changed</small>':'')+(entry.code?'<small>'+esc(entry.code)+'</small>':'')+(entry.bundle?'<small class="course-plan-bundle">'+(entry.crossSectionBundle?'Shared '+(entry.provider==='CLEP'?'exam':'course')+' · '+entry.credits+' credits in this section':entry.requirements.length>1?'One '+(entry.provider==='CLEP'?'exam':'course')+' fills '+entry.requirements.length+' requirements':entry.sourceCredits?entry.sourceCredits+' source credits · '+entry.credits+' applied in this plan':'Bundled source')+'</small>':'')+providerAnchor+'</td><td class="course-plan-provider">'+esc(entry.provider||'Not matched')+'</td><td class="course-plan-credits">'+entry.credits+'</td><td class="course-plan-placement">'+assignments+'<button class="course-plan-evidence" type="button" data-row="'+esc(entry.requirementId)+'">'+esc(entry.evidenceLabel)+'</button></td><td class="course-plan-progress"><div class="course-progress-control"><span class="course-progress-dot" aria-hidden="true"></span>'+progress+'</div></td><td class="course-plan-action">'+(needsChoice?'<button type="button" data-row="'+esc(entry.requirementId)+'">Choose course</button>':done||missing||entry.creditBalanceDerived?'<button type="button" data-row="'+esc(entry.requirementId)+'">View details</button>':'<button type="button" data-compare-row="'+esc(entry.requirementId)+'">Change course</button>')+'</td></tr>';
   }
   function coursePlanTable(entries,kind) {return '<table class="course-plan-table"><caption class="screen-reader-only">'+esc(kind==='transfer'?'Transfer courses':kind==='unmapped'?'Requirements without matched courses':'Degree coursework')+'</caption><thead><tr><th>Course</th><th>Provider</th><th>'+(program?.creditSystem==='competency-unit'?'<abbr title="Competency units">CUs</abbr>':program?.creditSystem==='quarter'?'Quarter credits':'Credits')+'</th><th>Counts toward</th><th>Progress</th><th><span class="screen-reader-only">Actions</span></th></tr></thead><tbody>'+entries.map(entry=>coursePlanRow(entry,entry.kind||kind)).join('')+'</tbody></table>';}
   function curriculumSectionHTML(section,q,depth=0){
@@ -549,7 +574,7 @@
     const done=['reported','confirmed'].includes(row.status),missing=courseView.groups.unmapped.some(item=>item.requirementIds.includes(id)),record=progressRecord(row);
     let html='<h2>'+esc(entry.title)+'</h2><p class="course-info-meta">'+esc([entry.provider,entry.code,entry.credits+' degree credits'].filter(Boolean).join(' · '))+'</p>'+creditBalanceNote(row);
     if(missing)html+='<p>No transfer course has been matched to this requirement yet.</p>';
-    else html+='<p>'+(entry.courseUrl?link(entry.courseUrl,'Open course ↗'):entry.providerUrl?link(entry.providerUrl,entry.providerLinkLabel+' ↗'):'')+'</p>';
+    else html+='<p>'+(entry.courseUrl?providerLink(entry.courseUrl,'Open course ↗',entry.provider):entry.providerUrl?providerLink(entry.providerUrl,entry.providerLinkLabel+' ↗',entry.provider):'')+'</p>';
     if(needsCourseChoice(row))html+=courseChoiceActions(row);
     if(!missing&&!needsCourseChoice(row))html+='<label class="sheet-field"><span>Course progress</span>'+courseProgressControl(row,entry.title)+'</label>';
     if(done)html+='<p><strong>Finished</strong> · '+(row.status==='confirmed'?'School confirmed':'School evaluation pending')+'</p>'+(record?'<button type="button" class="button secondary" data-edit-learning="'+esc(record.id)+'">Edit my course record</button>':'');
@@ -690,7 +715,7 @@
     const cards=available.map(option=>'<button type="button" class="sheet-course-pick'+(option.id===selected.id?' is-selected':'')+'" data-preview-row="'+esc(id)+'" data-option="'+esc(option.id)+'" aria-pressed="'+(option.id===selected.id)+'"><span class="sheet-provider-mark provider-'+esc(slug(option.provider))+'" aria-hidden="true">'+esc(option.provider==='University'?'U':option.provider==='Study.com'?'ST':option.provider==='StraighterLine'?'SL':option.provider.slice(0,2).toUpperCase())+'</span><span class="sheet-course-pick-body"><span class="sheet-course-pick-top"><strong>'+esc(option.provider==='University'?program.school:option.provider)+'</strong>'+(option.id===currentId?'<small class="sheet-current-tag">In my plan</small>':'')+'</span><span class="sheet-course-pick-title">'+esc(option.title)+'</span><span class="sheet-course-pick-facts">'+option.credits+' credits · '+esc(optionAssessment(option))+'</span><span class="sheet-option-evidence">'+(option.provider==='University'?'University requirements apply':option.evidence==='conditional'?'Transfer match needs review':'Published transfer match')+'</span></span><span class="sheet-pick-indicator" aria-hidden="true">'+(option.id===selected.id?'✓':'')+'</span></button>').join('');
     const guide=providerGuide(selected.provider),conditions=[...new Set([...(selected.conditions||[]),...(row.conditions||[])].filter(Boolean))];
     const previewEntry=Object.values(window.DegreeCoursePlanView.build(preview.draft,courseCatalog).groups).flat().find(entry=>entry.requirementIds.includes(id));
-    const previewCourseLink=previewEntry?.courseUrl?'<p class="sheet-preview-course-link">'+link(previewEntry.courseUrl,'Open this course at '+(selected.provider==='University'?program.school:selected.provider))+'</p>':previewEntry?.providerUrl?'<p class="sheet-preview-course-link">'+link(previewEntry.providerUrl,previewEntry.providerLinkLabel)+'</p>':'';
+    const previewCourseLink=previewEntry?.courseUrl?'<p class="sheet-preview-course-link">'+providerLink(previewEntry.courseUrl,'Open this course at '+(selected.provider==='University'?program.school:selected.provider),selected.provider)+'</p>':previewEntry?.providerUrl?'<p class="sheet-preview-course-link">'+providerLink(previewEntry.providerUrl,previewEntry.providerLinkLabel,selected.provider)+'</p>':'';
     const selectedDetails='<details class="sheet-comparison-details"><summary>Pricing, assessments & sources</summary>'+(guide?.priceNote?'<h3>Provider pricing</h3><p>'+esc(guide.priceNote)+'</p>':'<p>A current price quote for this option is still needed.</p>')+(guide?.assessmentNote?'<h3>Assessment guidance</h3><p>'+esc(guide.assessmentNote)+'</p>':'<p>Confirm the current assessments and any proctoring directly with the provider.</p>')+(conditions.length?'<h3>Transfer conditions</h3><ul>'+conditions.map(condition=>'<li>'+esc(condition)+'</li>').join('')+'</ul>':'')+'<p>'+(safeURL(selected.url)?link(selected.url,'Transfer / course reference'):'')+(safeURL(guide?.url)?' · '+link(guide.url,'Provider information'):'')+'</p></details>';
     const isCurrent=selected.id===currentId;
     const portability=selected.provider!=='University'?'<a class="sheet-portability" href="compare-plans.html?course='+encodeURIComponent(selected.code||selected.id)+'&amp;provider='+encodeURIComponent(selected.provider)+'">Check this course against other degrees →</a>':'';
@@ -732,6 +757,7 @@
     if(choice==='some')creditsDialog(null,true);else{closeDialog();announce(choice==='none'?'Starting from zero saved. Your saved courses are unchanged.':'Past courses set aside for now. Your plan stays provisional.');}
   }
   document.addEventListener('click',event=>{
+    if(event.target.closest?.('a[data-school-email="open"]'))growth('school_email',{action:'open'});
     const fold=event.target.closest?.('[data-phone-fold]');
     if(fold?.dataset?.phoneFold){const group=fold.dataset.phoneFold,open=!phoneFolds.has(group);if(open)phoneFolds.add(group);else phoneFolds.delete(group);fold.setAttribute('aria-expanded',String(open));$('sheet-workspace')?.classList.toggle('phone-open-'+group,open);return;}
     const jump=event.target.closest?.('[data-jump-courses]');
@@ -861,7 +887,7 @@
     if(action==='keep-course-choices'){courseUpdateReview=null;closeDialog();return;}
     if(action==='all-tasks'){const panel=$('sheet-task-panel');if(panel){panel.open=true;panel.scrollIntoView?.({block:'start'});panel.querySelector('summary')?.focus();}return;}
     if(action==='refresh-saved'){void refreshSavedPlan();return;}
-    if(action==='copy-school-email'){const email=studentSchoolEmail();if(!email)return;const text='Subject: '+email.subject+'\n\n'+email.body;Promise.resolve().then(()=>navigator.clipboard.writeText(text)).then(()=>announce('Email copied. Paste it into a new message to the school.'),()=>announce('Copying is blocked in this browser. Use “Email the school these questions” instead.'));return;}
+    if(action==='copy-school-email'){const email=studentSchoolEmail();if(!email)return;const text='Subject: '+email.subject+'\n\n'+email.body;Promise.resolve().then(()=>navigator.clipboard.writeText(text)).then(()=>{announce('Email copied. Paste it into a new message to the school.');growth('school_email',{action:'copy'});},()=>announce('Copying is blocked in this browser. Use “Email the school these questions” instead.'));return;}
     if(action==='hide-school-check'||action==='show-school-check'){const hide=action==='hide-school-check';setSchoolCheckHidden(pathway?.id,hide);renderSchoolCheck(hide?'show-school-check':'hide-school-check');announce(hide?'School questions hidden.':'School questions shown.');return;}
     if(action==='compare-plans'){storedPlan();location.assign('compare-plans.html');return;}
     if(action==='backup'){const latest=storedPlan();download(JSON.stringify(latest.raw===storageBaseline?state:latest.state,null,2),'degreesteps-private-backup.json','application/json');announce('Private backup downloaded.');return;}
@@ -899,6 +925,7 @@
     catch(error){externalNotice(error.message);}
   }
   for(const type of ['storage','focus','pageshow'])window.addEventListener(type,observeSavedChange);
+  window.addEventListener('DegreeSteps:leads-ready',()=>renderSchoolCheck());
   async function boot() {
     try {const response=await fetch('data/pathways.json');if(!response.ok)throw Error('Could not load the preloaded degree research.');catalog=await response.json();try{catalog=await DegreeProgramCatalog.load(catalog);}catch{/* Exact free-text targets remain available when directory is unavailable. */}models=DegreeProgramCatalog.loadModels?await DegreeProgramCatalog.loadModels([]):await Promise.all(DegreeProgramCatalog.modelFiles.map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('Could not load the preloaded degree research.');return r.json();}));try{const r=await fetch('data/credit-sources.json');if(r.ok){const data=await r.json();sources=data.sources||[];sourceChecked=data.checkedOn||'';}}catch{/* core worksheet still works without optional source catalog */}
       try{const r=await fetch('data/course-catalog.json');if(r.ok)courseCatalog=await r.json();}catch{/* Provider directories remain available when exact course links cannot load. */}

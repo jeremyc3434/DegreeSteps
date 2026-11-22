@@ -213,7 +213,11 @@
     return saveOK&&!protectedEdit;
   }
   function announce(message) {$('portal-notice').textContent = message;}
-  function trackPlanStarted(id) {window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event:'plan_started',context:'workspace',...(publicPlanIds.has(id)?{planId:id}:{})}}));}
+  // Anonymous aggregate counters only (growth-metrics.js). A plan id is sent only when it is in the public plan library index.
+  function trackGrowth(event,extra={}) {try{window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event,context:'workspace',...extra}}));}catch{/* Measurement never blocks planning. */}}
+  const growthPlan=id=>typeof id==='string'&&(planIndex?.plans&&Object.hasOwn(planIndex.plans,id)||publicPlanIds.has(id))?{planId:id}:{};
+  // The worksheet opens from a chosen plan: plan_started (kept for continuity) and plan_built (the funnel step).
+  function trackPlanStarted(id) {trackGrowth('plan_started',growthPlan(id));trackGrowth('plan_built',growthPlan(id));}
   function button(action, label, secondary = false) {return '<button type="button" class="portal-' + (secondary ? 'secondary' : 'primary') + '" data-action="' + action + '">' + esc(label) + '</button>';}
   function choice(value, title, detail = '') {
     const current = state.journey.answers[state.journey.step];
@@ -238,6 +242,11 @@
     const format=(route?.modalities||[]).length===1?(route.modalities[0]==='campus'?'on campus':'online'):'';
     const email=Sheet.schoolEmail(planIndex,route?.id,{title:route?.title,school:route?.school,format});
     return email?'<p class="portal-school-email"><a href="'+esc(email.mailto)+'">Email the school these questions</a> <small>A short email in your words, for the admissions or transfer-credit office.</small></p>':'';
+  }
+  // Optional extra actions from leads.js (school contact request, Plan review link). Empty unless a feature is on;
+  // they never change which plans are shown or their order.
+  function leadActionsHTML(route) {
+    return window.DegreeLeads?.actionsHTML({planId:route?.id,school:route?.school,title:route?.title})||'';
   }
   function schoolCheckHTML(...routes) {
     const route=routes.find(item=>planQuestions(item).length),questions=route?planQuestions(route):[];
@@ -341,7 +350,7 @@
   function startProfile(mode,returnStep='routes') {
     cancelRecommendations();degreePreview=null;
     state.journey={...state.journey,view:'questions',profileFlow:{version:1,mode,returnStep,values:{},baseTarget:latestStoredPlan()?.selectedPathwayId||''},step:mode==='explore'?'purpose':'prior'};
-    persistProfileDraft();render();
+    persistProfileDraft();render();trackGrowth('guided_started');
   }
   function restoreProfileDraft(mode) {
     let saved;try{saved=JSON.parse(read(PROFILE_DRAFT_KEY));}catch{return false;}
@@ -605,7 +614,7 @@
     const actions=formatOnly?'<button class="portal-primary" type="button" data-variant-preview="'+esc(route.id)+'">Use '+(route.modalities.includes('online')?'online':'on-campus')+' study</button>':needsReview?button('change-preferences','Update my preferences'):!mapped&&activePlanState?button('keep-active-plan','Back to my plan')+button('request-unmapped-replacement','Save this goal instead',true):button('use-degree',mapped?'Build course plan':'Save goal');
     const opportunitySchool=window.DegreeProgramOpportunities?.schoolFor(catalog,route),programFacts=opportunitySchool?DegreeProgramOpportunities.detailsHTML(route,opportunitySchool):'';
     const formatNote=mapped&&proposed.targetUnknowns?.some(issue=>issue.field==='modality')?'<p class="portal-hint" role="note">Confirm this degree’s study format with the university before enrolling.</p>':'';
-    return '<article class="portal-readiness-card"><span class="portal-readiness-label">'+(mapped?'Transfer-course plan':unsupported?'Course plan not available':'Check your preferences')+'</span><h2>'+esc(title)+'</h2><p class="portal-target-school">'+esc(school)+'</p>'+programFacts+schoolCheckHTML(route,target.route)+formatNote+'<p>'+esc(note)+'</p>'+(source?'<a href="'+esc(source.url)+'" target="_blank" rel="noopener">Official degree information ↗</a>':'')+'<div class="portal-actions">'+actions+'</div></article><div class="portal-links">'+button('degree-search','Choose another degree',true)+'</div>';
+    return '<article class="portal-readiness-card"><span class="portal-readiness-label">'+(mapped?'Transfer-course plan':unsupported?'Course plan not available':'Check your preferences')+'</span><h2>'+esc(title)+'</h2><p class="portal-target-school">'+esc(school)+'</p>'+programFacts+schoolCheckHTML(route,target.route)+(mapped?leadActionsHTML(route):'')+formatNote+'<p>'+esc(note)+'</p>'+(source?'<a href="'+esc(source.url)+'" target="_blank" rel="noopener">Official degree information ↗</a>':'')+'<div class="portal-actions">'+actions+'</div></article><div class="portal-links">'+button('degree-search','Choose another degree',true)+'</div>';
   }
   document.addEventListener('input',event=>{if(event.target.matches('#portal-question-form [name="degree"]'))renderDegreeOptions(true);});
   document.addEventListener('change',event=>{if(['portal-degree-level','portal-degree-format'].includes(event.target.id))renderDegreeOptions(true);if(event.target.matches('#portal-explore-form [name=goal]'))$('portal-subject-field').hidden=protectedGoals.includes(event.target.value);});
@@ -720,6 +729,7 @@
     const fallback=recommendationError?'<div class="portal-comparison-retry" role="status"><p>'+esc(recommendationError)+'</p>'+button('retry-recommendations','Try comparison again',true)+'</div>':'';
     const result=cards.length?basis+cards.slice(0,3).join('')+(cards.length>3?'<details class="portal-route-options"><summary>More matching plans ('+(cards.length-3)+')</summary>'+cards.slice(3).join('')+'</details>':''):recommendationError?'':'<div class="portal-empty-result"><h2>No course plan matches yet.</h2><p>'+esc(protectedGoals.includes(state.profile.goal)?'No mapped program currently meets this career and study format.':'The matching degrees do not yet have transfer-course plans.')+'</p>'+'<a class="portal-primary" href="request-plan.html">Build from a degree link →</a>'+'</div>';
     resultCount=cards.length;
+    if(cards.length)trackGrowth('guided_results');
     return fallback+result+finderLink(cards.length);
   }
   // Points to the plan finder when it lists more plans for this subject than the guided results show.
@@ -913,7 +923,7 @@
     if(['school','degree'].includes(id)&&value==='unknown'&&state.journey.profileFlowVersion===1){startProfile('explore');return;}
     if(id==='degree'&&value==='unknown'){state.journey.step='purpose';render();return;}
     if(id==='degree'||id==='routes'){openPlan();return;}
-    if(id==='start'){state.journey.profileFlowVersion=1;if(value==='explore'){startProfile('explore');return;}state.journey.step=value==='target'?'school':'purpose';}
+    if(id==='start'){trackGrowth('guided_started');state.journey.profileFlowVersion=1;if(value==='explore'){startProfile('explore');return;}state.journey.step=value==='target'?'school':'purpose';}
     else if(id==='school')state.journey.step=value==='unknown'?'purpose':'degree';
     else state.journey.step='purpose';
     render();
@@ -972,6 +982,7 @@
     if(recommendationPending)cancelRecommendations();
     await prepareRecommendations();
   }
+  window.addEventListener?.('DegreeSteps:leads-ready',()=>{if(document.querySelector('.portal-readiness-card'))render(false);});
   window.addEventListener?.('storage',event=>{if(event.key===KEY||event.key===null)refreshRecommendations().catch(showError);});
   window.addEventListener?.('focus',()=>refreshRecommendations().catch(showError));
   document.addEventListener('input',event=>{

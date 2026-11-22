@@ -30,11 +30,21 @@ Deploys run from GitHub Actions (`.github/workflows/deploy.yml`), so no terminal
 ## Leave off for the first week
 
 - **AI coach.** Leave `COACH_ENABLED` unset. To turn it on later:
-  - add a `COACH_HASH_SALT` Worker secret (16+ random characters);
-  - set `COACH_ENABLED=1`;
-  - optionally set `COACH_DAILY_USD_CAP` (default `3`).
+  - add a `COACH_HASH_SALT` repository secret (16+ random characters); the Deploy workflow writes it to the Worker;
+  - set the GitHub environment variable `COACH_ENABLED` to `1` (Settings → Environments → staging or production);
+  - optionally set `COACH_DAILY_USD_CAP` (default `3`) and `COACH_MODEL` the same way.
+  - Set flags in GitHub, not in the Cloudflare dashboard: every deploy replaces the Worker's plain variables with the ones the workflow passes.
   - The coach uses Claude Haiku 5.5.
+- **"Have [School] contact me" and the paid Plan review.** Both are off. Nothing is ever sent to a school or a payment provider automatically; requests wait on the admin page for you to download as CSV and forward by hand, and are deleted after 365 days.
+  - Add a `LEADS_HASH_SALT` repository secret (16+ random characters); the Deploy workflow writes it to the Worker as a secret. It is used only for the daily per-visitor submission limit.
+  - School contact requests: set the GitHub environment variable `SCHOOL_INQUIRIES_ENABLED` to `1` (Settings → Environments → staging or production → Environment variables), and list each school, by its exact name on DegreeSteps plans, in `content/monetization/schools.json`. With the list empty no student sees the button.
+  - Plan review: set `PLAN_REVIEW_ENABLED` to `1` the same way. The price, currency, turnaround and status come from `content/monetization/plan-review.json` (status `waitlist`: no payment is taken).
+  - The Deploy workflow passes these variables to both the build (disclosure copy on `/why-its-free/` and `/privacy/`, and the `/plan-review/` sitemap entry) and the Worker. Review `/why-its-free/` on staging before production.
+- **Email plan alerts.** Off. Signed-in students can turn on an email when a saved plan's requirements, costs or school confirmations change, plus at most one saved-plan reminder a month. To turn them on:
+  - add a `RESEND_API_KEY` repository secret (a Resend sending key for degreesteps.com); the Deploy workflow writes it to the Worker as a secret;
+  - set the GitHub environment variable `EMAIL_POSTAL_ADDRESS` to the postal address printed in every alert email (no email is sent without it);
+  - set the GitHub environment variable `EMAIL_ALERTS_ENABLED` to `1`. The Deploy workflow passes both to the Worker.
 
 ## Rollback
 
-Redeploy the previous Worker version from the Cloudflare dashboard (Workers → degreesteps → Deployments), or re-run the Deploy workflow on an earlier commit. Migration 0014 only adds tables, so it does not need to be rolled back.
+Redeploy the previous Worker version from the Cloudflare dashboard (Workers → degreesteps → Deployments), or re-run the Deploy workflow on an earlier commit. Migration 0014 only adds tables, so it does not need to be rolled back. Migrations 0016 and 0017 add the request and alert tables and widen the growth counters' allowed events (0017's list includes every event from 0015 and 0016); they do not need to be rolled back either.

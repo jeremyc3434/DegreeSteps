@@ -12,10 +12,14 @@ const families=new Map([
   ['compare-plans.html','comparison'],['community.html','community'],
   ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
 ]);
-const managedStyles=new Set(['brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-save.css','home-steps.css']);
-const managedScripts=new Set(['growth-metrics.js','plan-save.js','task-calendar.js','coach.js']);
+const managedStyles=new Set(['brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-save.css','home-steps.css','plan-alerts.css']);
+const managedScripts=new Set(['growth-metrics.js','plan-save.js','task-calendar.js','coach.js','leads.js','plan-alerts.js']);
+// Email plan alerts: the script renders nothing unless /api/alerts is enabled (EMAIL_ALERTS_ENABLED=1).
+const alertPages=new Set(['plan.html','account.html']);
 // Degree coach (beta): the script renders nothing unless /api/coach/status reports the coach enabled.
 const coachPages=new Set(['programs.html','portal.html','plan.html']);
+// School contact requests and Plan review (both off by default): the script renders nothing unless /api/leads/status reports a feature on.
+const leadsPages=new Set(['portal.html','plan.html','plan-review/index.html']);
 const managedClasses=new Set(['ds-experience','ds-public-page','ds-workspace-page','ds-discovery-page','ds-collection-page','ds-comparison-page','ds-community-page','ds-settings-page']);
 
 export function pageExperience(name,source){
@@ -26,6 +30,8 @@ export function pageExperience(name,source){
   const classes=['ds-experience'];
   if(publicPage)classes.push('ds-public-page');
   if(workspace){classes.push('ds-workspace-page');styles.push('workspace-design.css');}
+  // Small component styles go before the family and page designs, which stay last.
+  if(alertPages.has(name))styles.push('plan-alerts.css');
   if(family){classes.push('ds-'+family+'-page');styles.push(family+'-design.css');}
   if(savePages.has(name))styles.push('plan-save.css');
   if(name==='plan.html')styles.push('plan-design.css');
@@ -41,7 +47,7 @@ export function applyExperience(source,name){
     const href=tag.match(/\bhref=["']([^"']+)["']/i)?.[1];
     return href&&managedStyles.has(href.replace(/^\//,'').split('?')[0])?'':tag;
   }));
-  const scripts=['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[]),...(coachPages.has(name)?['coach.js']:[])];
+  const scripts=['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[]),...(coachPages.has(name)?['coach.js']:[]),...(leadsPages.has(name)?['leads.js']:[]),...(alertPages.has(name)?['plan-alerts.js']:[])];
   // Catalog credit-accounting checks share the planner's source-bound policy validator.
   if(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["']/i.test(next)&&!/<script\b[^>]*\bsrc=["']\/?planner\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["'][^>]*>/i,tag=>'<script src="/planner.js" defer></script>'+tag);
   if(/<script\b[^>]*\bsrc=["']\/?student-checklist-view\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?student-checklist-view\.js["'][^>]*>/i,tag=>'<script src="/task-calendar.js" defer></script>'+tag);

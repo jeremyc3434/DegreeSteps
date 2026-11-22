@@ -39,14 +39,14 @@
   <script src="plan-estimate-engine.js" defer></script>
   <script src="plan-estimate-view.js" defer></script>
   <link rel="stylesheet" href="plan-estimate.css">
-  <script src="sheet.js" defer></script>
+  <script src="outbound.js" defer></script><script src="sheet.js" defer></script>
   <link rel="stylesheet" href="app-shell.css">
   <link rel="stylesheet" href="programs.css">
   <link rel="stylesheet" href="course-workspace.css">
   <link rel="stylesheet" href="student-checklist.css">
   <script src="account-client.js" defer></script>
   <script src="app-shell.js" defer></script>
-<link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/plan-save.css"><link rel="stylesheet" href="/plan-design.css"><script src="/growth-metrics.js" defer></script><script src="/plan-save.js" defer></script><script src="/coach.js" defer></script></head>
+<link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/plan-alerts.css"><link rel="stylesheet" href="/plan-save.css"><link rel="stylesheet" href="/plan-design.css"><script src="/growth-metrics.js" defer></script><script src="/plan-save.js" defer></script><script src="/coach.js" defer></script><script src="/leads.js" defer></script><script src="/plan-alerts.js" defer></script></head>
 <body class="sheet-page ds-experience ds-workspace-page">
   <a class="skip-link" href="#sheet-app">Skip to degree worksheet</a>
   <header class="site-header">
@@ -64,6 +64,7 @@
         <div id="sheet-glance" hidden></div>
         <div id="sheet-route"></div>
         <div id="sheet-school-check" hidden></div>
+        <div id="sheet-lead-actions" hidden></div>
         <div id="sheet-summary"></div>
         <div id="sheet-savings" hidden><div id="sheet-planning-range" hidden></div><div id="sheet-savings-tracker"></div></div>
         <div id="sheet-next"></div>
@@ -74,6 +75,7 @@
         <div id="sheet-grid" tabindex="0" role="region" aria-label="Degree requirement table" aria-describedby="sheet-scroll-help"></div>
         <details id="sheet-task-panel"><summary>All tasks and checklist</summary><div id="sheet-home"></div></details>
         <div id="sheet-footer"></div>
+        <div id="sheet-alerts" hidden></div>
         <div id="sheet-context"></div>
         <div id="sheet-momentum" hidden></div>
       </section>

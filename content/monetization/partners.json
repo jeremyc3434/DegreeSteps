@@ -1,0 +1,12 @@
+{
+  "about": "Outbound partner settings for course-provider links. Every provider ships at status none, so links are unchanged. Setting a provider to affiliate adds its params to its links, marks them rel=\"sponsored noopener\" and shows a Partner link note that links to /why-its-free/. These settings never change which plans, schools or courses are shown, or their order: planning, ranking, the finder, the credits page and the plan index never read this file. The owner reviews /why-its-free/ before any provider is set to affiliate.",
+  "providers": {
+    "Sophia": { "status": "none", "params": {}, "disclosure": true },
+    "Study.com": { "status": "none", "params": {}, "disclosure": true },
+    "StraighterLine": { "status": "none", "params": {}, "disclosure": true },
+    "Saylor": { "status": "none", "params": {}, "disclosure": true },
+    "CLEP": { "status": "none", "params": {}, "disclosure": true },
+    "DSST": { "status": "none", "params": {}, "disclosure": true },
+    "Christian Leaders Institute": { "status": "none", "params": {}, "disclosure": true }
+  }
+}

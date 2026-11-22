@@ -5,11 +5,17 @@ import { handleCatalog } from './catalog.mjs';
 import { handleCurriculumDiscovery } from './curriculum-discovery.mjs';
 import { DatabaseSync } from 'node:sqlite';
 import { readFile, mkdir, stat } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { resolve, sep } from 'node:path';
 import { handleCommunity } from './community.mjs';
 import { handlePortal } from './portal.mjs';
 import { handleAuth, resolvePortalIdentity } from './auth.mjs';
 import { handleCoach } from './coach.mjs';
+import { handleGrowthMetrics } from './growth-metrics.mjs';
+import { handleCollegeAccess } from './college-access.mjs';
+import { handleLeads, isLeadsPath } from './leads.mjs';
+import { handlePlanAlerts } from './plan-alerts.mjs';
+import { createRequire } from 'node:module';
 const root=resolve(import.meta.dirname,'..'),staticRoot=resolve(root,'dist');
 const port=Number(process.env.DEGREEPATH_PREVIEW_PORT)||8099;
 await mkdir(resolve(root,'.local-community'),{recursive:true});
@@ -29,6 +35,17 @@ const DB={
 const env={DB,COMMUNITY_ADMIN_EMAIL:'owner@preview.invalid',COMMUNITY_CATALOGS:await Promise.all(['tesu','liberty','liberty-criminal-justice-residential','liberty-criminal-justice-online'].map(async name=>JSON.parse(await readFile(resolve(staticRoot,'data',name+'.json'),'utf8'))))};
 try{const registry=JSON.parse(await readFile(resolve(staticRoot,'data/curriculum-registry.json'),'utf8')),packs=new Map();for(const entry of registry.models||[]){if(entry.status!=='reviewed')continue;if(!packs.has(entry.path)){const payload=JSON.parse(await readFile(resolve(staticRoot,entry.path),'utf8'));packs.set(entry.path,payload.models||[payload]);}const model=packs.get(entry.path).find(model=>model.id===entry.id);if(model&&!env.COMMUNITY_CATALOGS.some(row=>row.id===model.id))env.COMMUNITY_CATALOGS.push(model);}}catch(error){if(error.code!=='ENOENT')throw error;}
 const users={alice:{id:'preview-alice',email:'alice@preview.invalid'},bob:{id:'preview-bob',email:'bob@preview.invalid'},owner:{id:'preview-owner',email:'owner@preview.invalid'}};
+let previewAlertSnapshot;
+async function previewAlertData(){
+  if(!previewAlertSnapshot){
+    const read=async path=>JSON.parse(await readFile(resolve(staticRoot,path),'utf8')),index=await read('data/plan-library-index.json'),registry=await read('data/curriculum-registry.json'),entries=new Map((registry.models||[]).map(entry=>[entry.id,entry]));
+    const Catalog=createRequire(import.meta.url)('../dist/program-catalog.js'),plans=index.plans||{},entryFor=id=>Object.hasOwn(plans,id)?entries.get(plans[id].modelId):null;
+    previewAlertSnapshot={plans,titleFor:id=>{const entry=entryFor(id);return entry?entry.title+(entry.school?' — '+entry.school:''):'';},
+      pageFor:id=>/^[a-z0-9-]{1,128}$/.test(id)&&existsSync(resolve(staticRoot,'degree-plans',id,'index.html')),
+      modelFingerprint:async id=>{const entry=entryFor(id);if(!entry)return '';const pack=await read(entry.path),model=(pack.models||[pack]).find(item=>item.id===entry.id);return model?Catalog.publicationModelFingerprint(model,plans[id].level):'';}};
+  }
+  return previewAlertSnapshot;
+}
 const mime={html:'text/html; charset=utf-8',js:'application/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',csv:'text/csv; charset=utf-8',txt:'text/plain; charset=utf-8',xml:'application/xml; charset=utf-8',webp:'image/webp',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png'};
 const server=http.createServer(async(req,res)=>{
   try{
@@ -56,6 +73,40 @@ const server=http.createServer(async(req,res)=>{
         COACH_DATA:async()=>Object.fromEntries(await Promise.all([['library','plan-library-index'],['index','coach-index'],['knowledge','coach-knowledge']].map(async([name,file])=>[name,JSON.parse(await readFile(resolve(staticRoot,'data',file+'.json'),'utf8'))]))),
         ...(process.env.COACH_FETCH==='mock'?{COACH_FETCH:(await import('./coach-mock.mjs')).createMockCoachFetch(),COACH_RESOLVE_KEY:async()=>'preview-mock-key-not-a-real-credential'}:{COACH_RESOLVE_KEY:async()=>process.env.ANTHROPIC_API_KEY||null})}:{};
       const response=await handleCoach(request,coachEnv);
+      res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
+    }
+    if(isLeadsPath(target.pathname)){
+      // School contact requests and Plan review: off unless SCHOOL_INQUIRIES_ENABLED=1 / PLAN_REVIEW_ENABLED=1, as in the Worker.
+      // LEADS_PREVIEW_SCHOOLS (comma-separated school names) adds schools to the allowlist in this loopback preview only.
+      const headers=new Headers();for(const [key,value]of Object.entries(req.headers))if(value&&!key.startsWith('oai-authenticated-'))headers.set(key,String(value));
+      headers.set('CF-Connecting-IP',req.socket.remoteAddress||'127.0.0.1');
+      const chunks=[];let bytes=0;for await(const chunk of req){bytes+=chunk.length;if(bytes>8192){res.writeHead(413);res.end('Too large');return;}chunks.push(chunk);}
+      const request=new Request(target,{method:req.method,headers,...(!['GET','HEAD'].includes(req.method)&&chunks.length?{body:Buffer.concat(chunks)}:{})});
+      const match=(req.headers.cookie||'').match(/(?:^|;\s*)degreepath_preview_user=([A-Za-z0-9_-]+)/),user=users[match?.[1]]||null;
+      const leadsData=async()=>{const index=JSON.parse(await readFile(resolve(staticRoot,'data/coach-index.json'),'utf8')),settings=JSON.parse(await readFile(resolve(staticRoot,'data/lead-settings.json'),'utf8'));const extra=String(process.env.LEADS_PREVIEW_SCHOOLS||'').split(',').map(name=>name.trim()).filter(Boolean);return{plans:index.plans,settings:{...settings,schools:[...settings.schools,...extra]}};};
+      const response=await handleLeads(request,{DB,COMMUNITY_ADMIN_EMAIL:env.COMMUNITY_ADMIN_EMAIL,SCHOOL_INQUIRIES_ENABLED:process.env.SCHOOL_INQUIRIES_ENABLED,PLAN_REVIEW_ENABLED:process.env.PLAN_REVIEW_ENABLED,LEADS_HASH_SALT:process.env.LEADS_HASH_SALT||'preview-only-leads-salt',LEADS_DATA:leadsData,PORTAL_USER:user});
+      res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
+    }
+    if(target.pathname.startsWith('/plan-review')&&process.env.PLAN_REVIEW_ENABLED!=='1'){res.writeHead(404,{'Content-Type':'text/plain'});res.end('Not found.');return;}
+    if(target.pathname==='/api/growth/events'||target.pathname==='/api/admin/growth-summary'||target.pathname==='/api/colleges/status'){
+      // Aggregate counters and the owner report, as in the Worker. Signed-in preview users come from the loopback cookie only.
+      const headers=new Headers();for(const [key,value]of Object.entries(req.headers))if(value&&!key.startsWith('oai-authenticated-'))headers.set(key,String(value));
+      const chunks=[];let bytes=0;for await(const chunk of req){bytes+=chunk.length;if(bytes>4096){res.writeHead(413);res.end('Too large');return;}chunks.push(chunk);}
+      const request=new Request(target,{method:req.method,headers,...(!['GET','HEAD'].includes(req.method)&&chunks.length?{body:Buffer.concat(chunks)}:{})});
+      const match=(req.headers.cookie||'').match(/(?:^|;\s*)degreepath_preview_user=([A-Za-z0-9_-]+)/),user=users[match?.[1]]||null;
+      const planIds=async()=>new Set(Object.keys(JSON.parse(await readFile(resolve(staticRoot,'data/plan-library-index.json'),'utf8')).plans||{}));
+      const response=target.pathname==='/api/colleges/status'?await handleCollegeAccess(request,{...env,PORTAL_USER:user,COLLEGE_ACCESS_ENABLED:true}):await handleGrowthMetrics(request,{...env,PORTAL_USER:user,GROWTH_PLAN_IDS:planIds});
+      res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
+    }
+    if(target.pathname==='/api/alerts'||target.pathname.startsWith('/api/alerts/')){
+      // Email plan alerts preview: off unless EMAIL_ALERTS_ENABLED=1. No email is sent from the preview server.
+      const headers=new Headers();for(const [key,value]of Object.entries(req.headers))if(value&&!key.startsWith('oai-authenticated-'))headers.set(key,String(value));
+      const chunks=[];let bytes=0;for await(const chunk of req){bytes+=chunk.length;if(bytes>4096){res.writeHead(413);res.end('Too large');return;}chunks.push(chunk);}
+      const request=new Request(target,{method:req.method,headers,...(!['GET','HEAD'].includes(req.method)&&chunks.length?{body:Buffer.concat(chunks)}:{})});
+      const match=(req.headers.cookie||'').match(/(?:^|;\s*)degreepath_preview_user=([A-Za-z0-9_-]+)/),user=users[match?.[1]]||null;
+      const alertEnv=process.env.EMAIL_ALERTS_ENABLED==='1'?{DB,EMAIL_ALERTS_ENABLED:'1',ALERTS_USER:user,ALERTS_PLAN_DATA:previewAlertData,
+        ALERTS_PLAN_OWNER:async id=>{const response=await handlePortal(new Request(target.origin+'/api/portal/plans/'+encodeURIComponent(id)),{...env,PORTAL_USER:user,PORTAL_AUTH_REQUIRED:true,PORTAL_AUTH_CONFIGURED:true});if(!response.ok)return{owned:false};const state=(await response.json()).item?.state;return{owned:true,pathwayId:String(state?.selectedPathwayId||state?.profile?.pathwayId||'')};}}:{};
+      const response=await handlePlanAlerts(request,alertEnv);
       res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
     }
     if(target.pathname.startsWith('/api/community/')||target.pathname.startsWith('/api/portal/')||target.pathname.startsWith('/api/auth/')||target.pathname.startsWith('/auth/')){

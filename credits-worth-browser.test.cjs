@@ -15,7 +15,8 @@ async function open(browser,profile,{draft=null}={}){
  const context=await browser.newContext({...profile,reducedMotion:'reduce'});
  if(draft)await context.addInitScript(([key,value])=>{if(!sessionStorage.getItem('seeded')){localStorage.setItem(key,value);sessionStorage.setItem('seeded','1');}},[KEY,JSON.stringify(draft)]);
  const page=await context.newPage(),requests=[],errors=[];
- page.on('request',request=>{if(request.method()!=='GET')requests.push(request.method()+' '+request.url());});
+ // The only allowed write is the anonymous aggregate counter for a finished ranking, which carries no course data.
+ page.on('request',request=>{if(request.method()==='GET')return;if(new URL(request.url()).pathname==='/api/growth/events'&&request.postData()==='{"event":"credits_worth_used","context":"workspace"}')return;requests.push(request.method()+' '+request.url()+' '+(request.postData()||''));});
  page.on('pageerror',error=>errors.push(String(error)));
  await page.goto(BASE+'/credits-worth.html');
  return {context,page,requests,errors};
