@@ -76,7 +76,7 @@
    const message=event.data;if(!message||message.id!==runId)return;
    if(message.event==='start'){total=message.total;fillSubjects(message.subjects);}
    else if(message.event==='result'){results.set(message.result.routeId,message.result);done=message.done;total=message.total;queueRender();}
-   else if(message.event==='done'){running=false;elapsed=message.ms;const status=$('cw-save-status');if(/ Checking plans…$/.test(status.textContent))status.textContent=status.textContent.replace(/ Checking plans…$/,' Plans updated.');render({announce:true});}
+   else if(message.event==='done'){running=false;elapsed=message.ms;try{window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event:'credits_worth_used',context:'workspace'}}));}catch{/* Anonymous aggregate counter: the first ranking finished. No course records are sent. */}const status=$('cw-save-status');if(/ Checking plans…$/.test(status.textContent))status.textContent=status.textContent.replace(/ Checking plans…$/,' Plans updated.');render({announce:true});}
    else if(message.event==='error'){running=false;showError(message.error+' Reload to try again.');render();}
   });
   worker.addEventListener('error',()=>{running=false;showError('The plan check stopped unexpectedly. Reload to try again.');render();});

@@ -1049,6 +1049,10 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
         "type": "text"
       },
       {
+        "name": "detail",
+        "type": "text"
+      },
+      {
         "name": "count",
         "type": "integer"
       }
@@ -1859,7 +1863,7 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "type": "table",
     "name": "growth_daily_counts",
     "tbl_name": "growth_daily_counts",
-    "sql": "CREATE TABLE `growth_daily_counts` (\n\t`day` text NOT NULL,\n\t`event` text NOT NULL,\n\t`context` text NOT NULL,\n\t`plan_id` text DEFAULT '' NOT NULL,\n\t`count` integer DEFAULT 1 NOT NULL,\n\tPRIMARY KEY(`day`, `event`, `context`, `plan_id`),\n\tCONSTRAINT \"growth_day_format\" CHECK(length(\"growth_daily_counts\".\"day\")=10 AND \"growth_daily_counts\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"growth_event_enum\" CHECK(\"growth_daily_counts\".\"event\" IN ('landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed')),\n\tCONSTRAINT \"growth_context_enum\" CHECK(\"growth_daily_counts\".\"context\" IN ('home','article','provider','school','degree-plan','workspace')),\n\tCONSTRAINT \"growth_plan_scope\" CHECK(\"growth_daily_counts\".\"plan_id\" IN ('','wgu-catalog-ecceaa488637ac83','liberty-business-residential','liberty-criminal-justice-online','liberty-criminal-justice-residential')),\n\tCONSTRAINT \"growth_count_bounds\" CHECK(\"growth_daily_counts\".\"count\" BETWEEN 1 AND 1000000)\n)"
+    "sql": "CREATE TABLE \"growth_daily_counts\" (\n\t`day` text NOT NULL,\n\t`event` text NOT NULL,\n\t`context` text NOT NULL,\n\t`plan_id` text DEFAULT '' NOT NULL,\n\t`detail` text DEFAULT '' NOT NULL,\n\t`count` integer DEFAULT 1 NOT NULL,\n\tPRIMARY KEY(`day`, `event`, `context`, `plan_id`, `detail`),\n\tCONSTRAINT \"growth_day_format\" CHECK(length(\"growth_daily_counts\".\"day\")=10 AND \"growth_daily_counts\".\"day\" GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n\tCONSTRAINT \"growth_event_enum\" CHECK(\"growth_daily_counts\".\"event\" IN ('landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied')),\n\tCONSTRAINT \"growth_context_enum\" CHECK(\"growth_daily_counts\".\"context\" IN ('home','article','provider','school','degree-plan','workspace','transfer')),\n\tCONSTRAINT \"growth_plan_scope\" CHECK(\"growth_daily_counts\".\"plan_id\"='' OR (length(\"growth_daily_counts\".\"plan_id\") BETWEEN 1 AND 128 AND \"growth_daily_counts\".\"plan_id\" NOT GLOB '*[^a-z0-9-]*')),\n\tCONSTRAINT \"growth_detail_enum\" CHECK(\"growth_daily_counts\".\"detail\" IN ('','Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other','open','copy')),\n\tCONSTRAINT \"growth_count_bounds\" CHECK(\"growth_daily_counts\".\"count\" BETWEEN 1 AND 1000000)\n)"
   },
   {
     "type": "table",

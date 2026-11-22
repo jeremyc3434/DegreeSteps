@@ -22,7 +22,16 @@ function fixture(t,{role='owner',frozen=false}={}){
 }
 const eventRequest=(headers={})=>new Request(origin+'/api/growth/events',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','X-Growth-Request':'1',Cookie:'__Host-degreepath_access=verified-access',...headers},body:JSON.stringify({event:'plan_started',context:'workspace',planId:'liberty-business-residential'})});
 
+const indexPlans=Object.keys(JSON.parse(readFileSync(new URL('./dist/data/plan-library-index.json',import.meta.url),'utf8')).plans);
+const planRequest=(planId,event='plan_built')=>new Request(origin+'/api/growth/events',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','X-Growth-Request':'1'},body:JSON.stringify({event,context:'workspace',planId})});
 for(const {kind,worker}of workers){
+ test(kind+': plan ids are validated against the built plan library index, without identity or private reads',async t=>{
+  const f=fixture(t),later=indexPlans.find(id=>id.startsWith('tesu-')||id.startsWith('gcu-'));assert(later);
+  assert.equal((await worker.fetch(planRequest(later),f.env,f.ctx)).status,204);
+  assert.equal((await worker.fetch(planRequest('not-a-published-plan'),f.env,f.ctx)).status,400);
+  assert.deepEqual(f.sqlite.prepare('SELECT event,plan_id,count FROM growth_daily_counts').all().map(row=>({...row})),[{event:'plan_built',plan_id:later,count:1}]);
+  assert.equal(f.calls.auth,0);assert(f.calls.queries.every(sql=>sql.includes('growth_daily_counts')));
+ });
  test(kind+': public aggregate events never resolve an identity or read private records',async t=>{
   const f=fixture(t);const response=await worker.fetch(eventRequest(),f.env,f.ctx);assert.equal(response.status,204);assert.equal(f.calls.auth,0);assert.equal(f.sqlite.prepare('SELECT sum(count) AS n FROM growth_daily_counts').get().n,1);assert(f.calls.queries.every(sql=>sql.includes('growth_daily_counts')));
  });

@@ -282,6 +282,12 @@ async function coachResponse(request,env){
   const headers=new Headers(response.headers);for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);
   return new Response(response.body,{status:response.status,headers});
 }
+// Growth measurement accepts a plan id only when it is in the public plan library index (a small build artifact).
+let growthPlanIdsSnapshot;
+async function growthPlanIds(){
+  if(!growthPlanIdsSnapshot){const asset=assets['/data/plan-library-index.json'];if(!asset)throw Error('Plan index is unavailable');growthPlanIdsSnapshot=new Set(Object.keys(JSON.parse(await decodeStaticAsset(asset)).plans||{}));}
+  return growthPlanIdsSnapshot;
+}
 function migrationReadOnly(env){return env?.OPERATOR_MIGRATION_READ_ONLY==='1';}
 function migrationReadOnlyResponse(request){
   return new Response(request.method==='HEAD'?null:JSON.stringify({error:'We’re finishing a site update. Your saved work is safe. Please try again shortly.',code:'migration_readonly'}),{status:503,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','X-Content-Type-Options':'nosniff','Retry-After':'120'}});
@@ -315,7 +321,7 @@ export default {
     }
     if(migrationReadOnly(env)&&(target.pathname==='/api'||target.pathname.startsWith('/api/'))&&!target.pathname.startsWith('/api/auth/')&&!target.pathname.startsWith('/api/operations/'))return migrationReadOnlyResponse(request);
     initializePublicAssets(env);
-    if(target.pathname==='/api/growth/events')return handleGrowthMetrics(request,env);
+    if(target.pathname==='/api/growth/events')return handleGrowthMetrics(request,{...env,GROWTH_PLAN_IDS:growthPlanIds});
     if(target.pathname.startsWith('/api/operations/'))return await handleOperatorSnapshot(request,env)||Response.json({error:'Not found.'},{status:404,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'}});
     if(target.pathname==='/api/catalog/degree-link'){
       const headers={'Cache-Control':'public, max-age=300','X-Content-Type-Options':'nosniff'};

@@ -3,7 +3,7 @@
  const $=id=>document.getElementById(id),esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const events=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed'];
  const labels={landing_view:'Public page views',plan_previewed:'Degree plan previews',course_saved:'Course-save actions',plan_started:'Plans started',account_plan_saved:'Private account saves',first_task_completed:'First task completions'};
- const contexts={home:'Home',article:'Articles and resources',provider:'Credit providers',school:'Schools','degree-plan':'Public degree plans',workspace:'Student workspace'};
+ const contexts={home:'Home',article:'Articles and resources',provider:'Credit providers',school:'Schools','degree-plan':'Public degree plans',transfer:'Transfer course pages',workspace:'Student workspace'};
  let revision=0;
  const count=value=>Number.isSafeInteger(value)&&value>=0?value:0;
  function render(data){

@@ -1,7 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createTrustedDatabase} from '../scripts/d1-snapshot.mjs';
+import {readFileSync} from 'node:fs';
 import {handleGrowthMetrics,pruneGrowthMetrics} from './growth-metrics.mjs';
+
+const libraryPlans=Object.keys(JSON.parse(readFileSync(new URL('../dist/data/plan-library-index.json',import.meta.url),'utf8')).plans);
 
 const origin='https://degreesteps.example',plan='liberty-business-residential';let minute=0;
 function fixture(t){
@@ -14,7 +17,7 @@ function fixture(t){
    return{first:async()=>statement.get(...values)||null,all:async()=>({results:statement.all(...values)}),run:async()=>({meta:{changes:Number(statement.run(...values).changes)}})};
   }};
  }};
- return{sqlite,DB,env:{DB,PORTAL_USER:{id:'owner'},COMMUNITY_ADMIN_EMAIL:'configured@example.com'},now:Date.UTC(2026,10,19)+60000*(++minute)};
+ return{sqlite,DB,env:{DB,PORTAL_USER:{id:'owner'},COMMUNITY_ADMIN_EMAIL:'configured@example.com',GROWTH_PLAN_IDS:async()=>new Set(libraryPlans)},now:Date.UTC(2026,10,19)+60000*(++minute)};
 }
 const request=(path='/api/growth/events',{method='POST',body={event:'landing_view',context:'home'},headers={}}={})=>new Request(origin+path,{method,headers:{Origin:origin,'Content-Type':'application/json','X-Growth-Request':'1',...headers},...(['GET','HEAD'].includes(method)?{}:{body:typeof body==='string'?body:JSON.stringify(body)})});
 const count=f=>f.sqlite.prepare('SELECT coalesce(sum(count),0) AS n FROM growth_daily_counts').get().n;
@@ -24,7 +27,7 @@ test('events aggregate by UTC day, action, coarse page category and known public
  const f=fixture(t);assert.equal((await send(f,{event:'landing_view',context:'home'})).status,204);assert.equal((await send(f,{event:'landing_view',context:'home'})).status,204);
  assert.equal((await send(f,{event:'plan_previewed',context:'degree-plan',planId:plan})).status,204);
  const rows=f.sqlite.prepare('SELECT * FROM growth_daily_counts ORDER BY event').all();assert.equal(rows.length,2);assert.equal(rows[0].count,2);assert.equal(rows[1].plan_id,plan);assert.equal(rows[0].day,'2026-11-19');
- assert.deepEqual(Object.keys(rows[0]),['day','event','context','plan_id','count']);assert(f.DB.prepared.every(sql=>!sql.includes('portal_')&&!sql.includes('template_requests')&&!sql.includes('college_interest')));
+ assert.deepEqual(Object.keys(rows[0]),['day','event','context','plan_id','detail','count']);assert(f.DB.prepared.every(sql=>!sql.includes('portal_')&&!sql.includes('template_requests')&&!sql.includes('college_interest')));
 });
 
 test('cross-origin requests, unsupported fields and oversized or untyped payloads cannot store visitor data',async t=>{
@@ -78,4 +81,36 @@ test('retention pruning removes only old aggregate rows and leaves current activ
  const f=fixture(t);await send(f,{event:'plan_started',context:'workspace'});
  f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,count) VALUES('2026-01-01','landing_view','home','',9)").run();
  assert.equal(await pruneGrowthMetrics(f.env,{now:f.now}),true);assert.equal(await pruneGrowthMetrics(f.env,{now:f.now}),false);assert.equal(count(f),1);assert.equal(f.sqlite.prepare('SELECT count(*) AS n FROM community_users').get().n,3);
+});
+
+test('plan ids are checked against the public plan library index, not a fixed list, and stay optional',async t=>{
+ const f=fixture(t);assert(libraryPlans.length>4);
+ const later=libraryPlans.find(id=>!['wgu-catalog-ecceaa488637ac83','liberty-business-residential','liberty-criminal-justice-online','liberty-criminal-justice-residential'].includes(id));
+ assert.equal((await send(f,{event:'plan_built',context:'degree-plan',planId:later})).status,204);
+ assert.equal((await send(f,{event:'plan_built',context:'workspace'})).status,204);
+ for(const planId of['unpublished-private-plan','Bad Plan','x'.repeat(129),7])assert.equal((await send(f,{event:'plan_built',context:'workspace',planId})).status,400);
+ assert.deepEqual(f.sqlite.prepare("SELECT plan_id AS planId,count FROM growth_daily_counts WHERE event='plan_built' ORDER BY plan_id").all().map(row=>({...row})),[{planId:'',count:1},{planId:later,count:1}]);
+ // Without a readable index the event is still counted, without its plan dimension.
+ const g=fixture(t);g.env.GROWTH_PLAN_IDS=async()=>{throw Error('index unavailable');};
+ assert.equal((await send(g,{event:'plan_previewed',context:'degree-plan',planId:later})).status,204);assert.deepEqual({...g.sqlite.prepare('SELECT plan_id,detail,count FROM growth_daily_counts').get()},{plan_id:'',detail:'',count:1});
+});
+
+test('funnel v2 events accept only their fixed detail: a provider allowlist for clicks and open/copy for school emails',async t=>{
+ const f=fixture(t);
+ for(const event of['finder_used','guided_started','guided_results','plan_built','credits_worth_used','share_link_copied'])assert.equal((await send(f,{event,context:'workspace'})).status,204,event);
+ assert.equal((await send(f,{event:'transfer_page_view',context:'transfer'})).status,204);
+ for(const provider of['Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other'])assert.equal((await send(f,{event:'provider_click',context:'degree-plan',provider})).status,204,provider);
+ for(const action of['open','copy'])assert.equal((await send(f,{event:'school_email',context:'workspace',action})).status,204);
+ for(const body of[
+  {event:'provider_click',context:'workspace'},{event:'provider_click',context:'workspace',provider:'sophia'},{event:'provider_click',context:'workspace',provider:'https://sophia.org/?ref=me'},
+  {event:'school_email',context:'workspace'},{event:'school_email',context:'workspace',action:'send'},{event:'school_email',context:'workspace',action:'open',provider:'Sophia'},
+  {event:'finder_used',context:'workspace',provider:'Sophia'},{event:'guided_started',context:'workspace',action:'open'},{event:'share_link_copied',context:'workspace',url:'https://degreesteps.com/degree-plans/?q=private'}
+ ])assert.equal((await send(f,body)).status,400,JSON.stringify(body));
+ const providers=f.sqlite.prepare("SELECT detail FROM growth_daily_counts WHERE event='provider_click' ORDER BY detail").all().map(row=>row.detail);assert.equal(providers.length,8);
+ const summary=await (await handleGrowthMetrics(request('/api/admin/growth-summary?days=28',{method:'GET'}),f.env,{now:f.now})).json();
+ assert.equal(summary.events.length,15);assert.equal(summary.events.find(row=>row.event==='provider_click').count,8);assert.equal(summary.events.find(row=>row.event==='school_email').count,2);
+ assert(summary.rows.some(row=>row.event==='school_email'&&row.detail==='copy'));assert.deepEqual(summary.dimensions.schoolEmailActions,['open','copy']);assert.equal(summary.dimensions.providers.length,8);
+ // The database itself refuses details outside the fixed lists, even if a caller bypasses validation.
+ assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','provider_click','home','','student@example.com',1)").run(),/CHECK/);
+ assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','landing_view','home','Private Plan','',1)").run(),/CHECK/);
 });

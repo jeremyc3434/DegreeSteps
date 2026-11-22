@@ -213,7 +213,11 @@
     return saveOK&&!protectedEdit;
   }
   function announce(message) {$('portal-notice').textContent = message;}
-  function trackPlanStarted(id) {window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event:'plan_started',context:'workspace',...(publicPlanIds.has(id)?{planId:id}:{})}}));}
+  // Anonymous aggregate counters only (growth-metrics.js). A plan id is sent only when it is in the public plan library index.
+  function trackGrowth(event,extra={}) {try{window.dispatchEvent(new CustomEvent('DegreeSteps:growth',{detail:{event,context:'workspace',...extra}}));}catch{/* Measurement never blocks planning. */}}
+  const growthPlan=id=>typeof id==='string'&&(planIndex?.plans&&Object.hasOwn(planIndex.plans,id)||publicPlanIds.has(id))?{planId:id}:{};
+  // The worksheet opens from a chosen plan: plan_started (kept for continuity) and plan_built (the funnel step).
+  function trackPlanStarted(id) {trackGrowth('plan_started',growthPlan(id));trackGrowth('plan_built',growthPlan(id));}
   function button(action, label, secondary = false) {return '<button type="button" class="portal-' + (secondary ? 'secondary' : 'primary') + '" data-action="' + action + '">' + esc(label) + '</button>';}
   function choice(value, title, detail = '') {
     const current = state.journey.answers[state.journey.step];
@@ -341,7 +345,7 @@
   function startProfile(mode,returnStep='routes') {
     cancelRecommendations();degreePreview=null;
     state.journey={...state.journey,view:'questions',profileFlow:{version:1,mode,returnStep,values:{},baseTarget:latestStoredPlan()?.selectedPathwayId||''},step:mode==='explore'?'purpose':'prior'};
-    persistProfileDraft();render();
+    persistProfileDraft();render();trackGrowth('guided_started');
   }
   function restoreProfileDraft(mode) {
     let saved;try{saved=JSON.parse(read(PROFILE_DRAFT_KEY));}catch{return false;}
@@ -720,6 +724,7 @@
     const fallback=recommendationError?'<div class="portal-comparison-retry" role="status"><p>'+esc(recommendationError)+'</p>'+button('retry-recommendations','Try comparison again',true)+'</div>':'';
     const result=cards.length?basis+cards.slice(0,3).join('')+(cards.length>3?'<details class="portal-route-options"><summary>More matching plans ('+(cards.length-3)+')</summary>'+cards.slice(3).join('')+'</details>':''):recommendationError?'':'<div class="portal-empty-result"><h2>No course plan matches yet.</h2><p>'+esc(protectedGoals.includes(state.profile.goal)?'No mapped program currently meets this career and study format.':'The matching degrees do not yet have transfer-course plans.')+'</p>'+'<a class="portal-primary" href="request-plan.html">Build from a degree link →</a>'+'</div>';
     resultCount=cards.length;
+    if(cards.length)trackGrowth('guided_results');
     return fallback+result+finderLink(cards.length);
   }
   // Points to the plan finder when it lists more plans for this subject than the guided results show.
@@ -913,7 +918,7 @@
     if(['school','degree'].includes(id)&&value==='unknown'&&state.journey.profileFlowVersion===1){startProfile('explore');return;}
     if(id==='degree'&&value==='unknown'){state.journey.step='purpose';render();return;}
     if(id==='degree'||id==='routes'){openPlan();return;}
-    if(id==='start'){state.journey.profileFlowVersion=1;if(value==='explore'){startProfile('explore');return;}state.journey.step=value==='target'?'school':'purpose';}
+    if(id==='start'){trackGrowth('guided_started');state.journey.profileFlowVersion=1;if(value==='explore'){startProfile('explore');return;}state.journey.step=value==='target'?'school':'purpose';}
     else if(id==='school')state.journey.step=value==='unknown'?'purpose':'degree';
     else state.journey.step='purpose';
     render();
