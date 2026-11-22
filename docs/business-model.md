@@ -12,7 +12,7 @@
 
 **Why it's defensible:** the plans are researched from source, checked, and kept current through the Pathway Factory, and every claim links to a school document. Forums and affiliate blogs don't have this.
 
-**The one rule that protects the business:** trust. Money never changes which plans, schools or courses a student sees, or their order. Every paid relationship is labelled and explained on `/how-we-make-money/`. A core test enforces that plan building and ranking never read partner settings.
+**The one rule that protects the business:** trust. Money never changes which plans, schools or courses a student sees, or their order. Every paid relationship is labelled and explained on `/why-its-free/`. A core test enforces that plan building and ranking never read partner settings.
 
 ## How money can come in (recommended order)
 
@@ -62,7 +62,7 @@ The measurement is anonymous, daily aggregate counts only, with no cookies, IP a
 **Weeks 1–2: measure and get ready**
 - Funnel measurement and the owner Growth panel (being built now).
 - One partner-link layer for every provider link. Off until a partnership exists, so nothing changes for students.
-- The `/how-we-make-money/` disclosure page, for you to review.
+- The `/why-its-free/` disclosure page, for you to review.
 - You apply to the provider affiliate or partner programs.
 
 **Weeks 3–6: grow and convert**

@@ -9,7 +9,7 @@
 (function(root,factory){'use strict';const api=factory(root);if(typeof module==='object'&&module.exports)module.exports=api;else root.DegreeOutbound=api;}(typeof globalThis!=='undefined'?globalThis:this,function(root){
   'use strict';
   const PROVIDERS=Object.freeze(['Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute']);
-  const STATUSES=['none','affiliate'],DISCLOSURE_PATH='/how-we-make-money/',SETTINGS_PATH='/data/partners.json';
+  const STATUSES=['none','affiliate'],DISCLOSURE_PATH='/why-its-free/',SETTINGS_PATH='/data/partners.json';
   const KEYS={sophia:'Sophia',sophialearning:'Sophia',studycom:'Study.com',straighterline:'StraighterLine',saylor:'Saylor',sayloracademy:'Saylor',clep:'CLEP',dsst:'DSST',christianleadersinstitute:'Christian Leaders Institute'};
   const HOSTS=[[/(^|\.)sophia\.org$/,'Sophia'],[/(^|\.)study\.com$/,'Study.com'],[/(^|\.)straighterline\.com$/,'StraighterLine'],[/(^|\.)saylor\.org$/,'Saylor'],[/^clep\.collegeboard\.org$/,'CLEP'],[/(^|\.)getcollegecredit\.com$/,'DSST'],[/(^|\.)christianleaders\.org$/,'Christian Leaders Institute']];
   const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -53,7 +53,7 @@
     const school=!provider||provider==='University',name=school?'':providerName(provider,href),partner=school?null:partnerFor(name,options);
     const finalHref=partner?partnerHref(href,partner):href,finalRel=partner?'sponsored noopener':rel;
     const anchor='<a'+(className?' class="'+esc(className)+'"':'')+' href="'+esc(finalHref)+'"'+(target?' target="'+esc(target)+'"':'')+(finalRel?' rel="'+esc(finalRel)+'"':'')+(name?' data-outbound-provider="'+esc(name)+'"':'')+'>'+html+'</a>';
-    return partner?anchor+' <small class="outbound-partner-note">Partner link · <a href="'+DISCLOSURE_PATH+'">How DegreeSteps makes money</a></small>':anchor;
+    return partner?anchor+' <small class="outbound-partner-note">Partner link · <a href="'+DISCLOSURE_PATH+'">Why DegreeSteps is free</a></small>':anchor;
   }
   /** In the browser, read the published settings once. Until then (or if unreadable) every link stays plain. */
   function load(){

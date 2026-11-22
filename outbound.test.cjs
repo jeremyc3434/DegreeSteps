@@ -28,7 +28,7 @@ test('provider names map to the fixed allowlist by label or host, otherwise "oth
 test('an affiliate provider adds its params, is marked sponsored and always shows a Partner link note to the disclosure page',()=>{
  const settings=Outbound.normalize(affiliate('Study.com'));
  const out=Outbound.link({href:'https://study.com/academy/course/x.html?a=1',html:'Course page at Study.com',provider:'Study.com',rel:'noopener noreferrer',settings});
- assert.equal(out,'<a href="https://study.com/academy/course/x.html?a=1&amp;ref=degreesteps&amp;utm_source=degreesteps" target="_blank" rel="sponsored noopener" data-outbound-provider="Study.com">Course page at Study.com</a> <small class="outbound-partner-note">Partner link · <a href="/how-we-make-money/">How DegreeSteps makes money</a></small>');
+ assert.equal(out,'<a href="https://study.com/academy/course/x.html?a=1&amp;ref=degreesteps&amp;utm_source=degreesteps" target="_blank" rel="sponsored noopener" data-outbound-provider="Study.com">Course page at Study.com</a> <small class="outbound-partner-note">Partner link · <a href="/why-its-free/">Why DegreeSteps is free</a></small>');
  // Other providers are untouched by one provider's partnership.
  assert.doesNotMatch(Outbound.link({href:'https://www.sophia.org/x',html:'x',provider:'Sophia',settings}),/sponsored|Partner link|[?&]ref=/);
 });
@@ -63,13 +63,13 @@ test('every course-provider link in the app and the generated pages goes through
  for(const anchor of cells.match(/<a [^>]*href="https:\/\/(?:www\.)?(?:sophia\.org|study\.com|straighterline\.com|learn\.saylor\.org|clep\.collegeboard\.org)\/(?:online-courses|academy|online-college-courses|course|clep-exams)[^>]*>/g)||[])assert.match(anchor,/data-outbound-provider="/,anchor);
 });
 
-test('the disclosure page says plainly how DegreeSteps makes money and is linked from every public footer',()=>{
- const page=fs.readFileSync('dist/how-we-make-money/index.html','utf8'),text=page.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
+test('the disclosure page says plainly why DegreeSteps is free and is linked from every public footer',()=>{
+ const page=fs.readFileSync('dist/why-its-free/index.html','utf8'),text=page.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
  assert.match(text,/DegreeSteps is free\./);
  assert.match(text,/may earn a referral fee from some course providers or schools/);assert.match(text,/labelled “Partner link”/);
  assert.match(text,/never changes which plans, schools or courses you see, or the order they appear in/);
  assert.match(text,/Plans are built from schools’ published sources/);
  assert.match(text,/We do not have any referral partners today\./,'The page states the shipped (all none) settings');
- assert.match(fs.readFileSync('dist/sitemap.xml','utf8'),/\/how-we-make-money\//);
- for(const file of['dist/index.html','dist/about/index.html','dist/degree-plans/index.html','dist/how-we-make-money/index.html'])assert.match(fs.readFileSync(file,'utf8'),/<footer class="public-footer">[\s\S]*<a href="\/how-we-make-money\/">How we make money<\/a>/,file);
+ assert.match(fs.readFileSync('dist/sitemap.xml','utf8'),/\/why-its-free\//);
+ for(const file of['dist/index.html','dist/about/index.html','dist/degree-plans/index.html','dist/why-its-free/index.html'])assert.match(fs.readFileSync(file,'utf8'),/<footer class="public-footer">[\s\S]*<a href="\/why-its-free\/">Why DegreeSteps is free<\/a>/,file);
 });
