@@ -396,6 +396,32 @@
     if(entry.tier!=='confirmation'||!Array.isArray(entry.questions))return [];
     return entry.questions.slice(0,12).filter(question=>typeof question==='string'&&question.trim()).map(question=>{const value=bounded(question,400).replace(/^ask the school:\s*/i,'');return value.charAt(0).toUpperCase()+value.slice(1);}).filter(Boolean);
   }
+  /** A short email a student can send the school, in their own voice, built from the plan's open questions.
+   * At most three plain questions; checks the student does with a provider (enrollment terms) are left out.
+   * options: {title, school, format, courses:[course titles]} — all optional. Returns null when nothing is open. */
+  function schoolEmail(index,routeId,options={}){
+    const plans=object(object(index).plans),id=text(routeId),entry=id&&Object.hasOwn(plans,id)?object(plans[id]):{};
+    if(entry.tier!=='confirmation'||!Array.isArray(entry.questions))return null;
+    const school=bounded(text(options.school),120)||'your school',title=bounded(text(options.title),160);
+    const courses=(Array.isArray(options.courses)?options.courses:[]).map(item=>bounded(text(item),80)).filter(Boolean);
+    const rules=[
+      [/ACE- or NCCRS/i,()=>'What is the most credit you accept toward this degree from ACE- or NCCRS-evaluated courses and exams (for example Sophia, Study.com or CLEP)?'],
+      [/how many credits must I earn at the school/i,()=>'How many credits do I need to take at '+school+' itself for this degree?'],
+      [/time limit/i,()=>'Is there a time limit on how old my transfer credits can be?'],
+      [/written transfer evaluation|residency/i,()=>'Could you tell me how many courses in my major I must take at '+school+', and whether I can get an unofficial transfer evaluation before I enroll?'],
+      [/proposed course match/i,()=>courses.length?'Will these courses count toward this degree: '+courses.slice(0,3).join('; ')+(courses.length>3?' (I can send the full list)':'')+'?':'Will the outside courses in my plan count toward this degree? I can send you the list.'],
+      [/catalog year/i,()=>'Which catalog year would apply to me if I enroll this term?'],
+      [/state changes the general-education/i,()=>'Does my state add any general-education requirements to this degree?']
+    ];
+    // Most important first (rules are listed in priority order), so the three asks are the ones that change the plan most.
+    const asks=[],open=entry.questions.filter(item=>typeof item==='string');
+    for(const [pattern,ask] of rules)if(open.some(question=>pattern.test(question))&&!asks.includes(ask()))asks.push(ask());
+    if(!asks.length)asks.push('Is this program open to new students now, and which catalog requirements would I follow if I enroll this term?');
+    const list=asks.slice(0,3),format=text(options.format);
+    const subject='Transfer credit question'+(title?' – '+title:'');
+    const body=['Hello,','','I’m planning to enroll in '+(title?'the '+title+(format?' ('+format+')':''):'one of your degrees')+' and want to take some courses before I start. Before I pay for them, could you help with '+(list.length===1?'one question':list.length+' quick questions')+'?','',...list.map((ask,i)=>(i+1)+'. '+ask),'','Thank you,','[Your name]'].join('\n');
+    return {subject,body,questions:list,mailto:'mailto:?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)};
+  }
   // Subject choices follow the browsing taxonomy (content/catalog/subject-areas.json);
   // labels come from the plan index when present. An older saved field id stays
   // selectable so a saved profile is shown as it is rather than reset.
@@ -414,5 +440,5 @@
     let changed=false;const pathways=catalog.pathways.map(route=>{const entry=route&&Object.hasOwn(plans,route.id)?object(plans[route.id]):{},subjects=entry.subjects;if(!Array.isArray(subjects)||!subjects.every(id=>typeof id==='string')||JSON.stringify(route.subjects)===JSON.stringify(subjects))return route;changed=true;return {...route,subjects:[...subjects]};});
     return changed?{...catalog,pathways}:catalog;
   }
-  return Object.freeze({initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog,creditUnit,routeCreditDifference,residencyAlternative,schoolQuestions,subjectChoices,attachRouteSubjects});
+  return Object.freeze({schoolEmail,initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog,creditUnit,routeCreditDifference,residencyAlternative,schoolQuestions,subjectChoices,attachRouteSubjects});
 }));

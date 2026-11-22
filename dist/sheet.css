@@ -492,3 +492,9 @@ body.course-plan-page #sheet-school-check { padding: 0; margin: 0 0 18px; }
 .portal-tier { margin: 0 0 6px; }
 .portal-tier-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: .8125rem; font-weight: 600; }
 .portal-tier-confirm { background: #fff4e5; color: #8a4b0f; }
+
+/* Student's own email to the school, from the open questions */
+.sheet-school-email{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:10px}
+.sheet-school-email .button{min-height:44px;display:inline-flex;align-items:center}
+.sheet-school-email-hint{flex-basis:100%;margin:0;font-size:.875rem;color:#5b6b82}
+.sheet-school-check .sheet-school-email a.button{color:#fff;text-decoration:none}

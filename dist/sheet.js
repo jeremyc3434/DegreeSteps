@@ -200,10 +200,20 @@
     const next=[...schoolCheckHidden().filter(id=>id!==routeId),...(hidden?[routeId]:[])];schoolCheckHiddenMemory=next;
     try{sessionStorage.setItem(schoolCheckHiddenKey,JSON.stringify(next));}catch{/* The choice still holds for this page. */}
   }
+  // The student's own email to the school, built from this plan's open questions (see DegreeSheet.schoolEmail).
+  function studentSchoolEmail() {
+    const courses=[...new Set((plan?.rows||[]).map(row=>row.option).filter(option=>option&&option.provider&&option.provider!=='University').map(option=>option.provider+' '+option.title))];
+    const format=(pathway?.modalities||[]).length===1?(pathway.modalities[0]==='campus'?'on campus':'online'):'';
+    return Sheet.schoolEmail(planIndex,pathway?.id,{title:pathway?.title,school:pathway?.school,format,courses});
+  }
+  function schoolEmailActionsHTML() {
+    const email=studentSchoolEmail();if(!email)return '';
+    return '<div class="sheet-school-email"><a class="button small" href="'+esc(email.mailto)+'">Email the school these questions</a><button type="button" class="button ghost small" data-action="copy-school-email">Copy the email</button><p class="sheet-school-email-hint">A short email in your words, ready to send to the school’s admissions or transfer-credit office.</p></div>';
+  }
   function schoolCheckHTML() {
     const routeId=pathway?.id,questions=Sheet.schoolQuestions(planIndex,routeId);if(!questions.length)return '';
     if(schoolCheckHidden().includes(routeId))return '<section class="sheet-school-check is-collapsed" aria-label="Needs school confirmation"><p><strong>'+questions.length+' question'+(questions.length===1?'':'s')+' to ask the school</strong> before you pay for courses.</p><button type="button" class="button ghost small" data-action="show-school-check" aria-expanded="false" aria-controls="sheet-school-check">Show questions</button></section>';
-    return '<section class="sheet-school-check" aria-labelledby="sheet-school-check-title"><div class="sheet-school-check-head"><h2 id="sheet-school-check-title">Before you pay for courses, ask the school:</h2><button type="button" class="button ghost small" data-action="hide-school-check" aria-expanded="true" aria-controls="sheet-school-check">Hide</button></div><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p></section>';
+    return '<section class="sheet-school-check" aria-labelledby="sheet-school-check-title"><div class="sheet-school-check-head"><h2 id="sheet-school-check-title">Before you pay for courses, ask the school:</h2><button type="button" class="button ghost small" data-action="hide-school-check" aria-expanded="true" aria-controls="sheet-school-check">Hide</button></div><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p>'+schoolEmailActionsHTML()+'</section>';
   }
   function renderSchoolCheck(focusAction) {
     const node=$('sheet-school-check');if(!node)return;
@@ -851,6 +861,7 @@
     if(action==='keep-course-choices'){courseUpdateReview=null;closeDialog();return;}
     if(action==='all-tasks'){const panel=$('sheet-task-panel');if(panel){panel.open=true;panel.scrollIntoView?.({block:'start'});panel.querySelector('summary')?.focus();}return;}
     if(action==='refresh-saved'){void refreshSavedPlan();return;}
+    if(action==='copy-school-email'){const email=studentSchoolEmail();if(!email)return;const text='Subject: '+email.subject+'\n\n'+email.body;Promise.resolve().then(()=>navigator.clipboard.writeText(text)).then(()=>announce('Email copied. Paste it into a new message to the school.'),()=>announce('Copying is blocked in this browser. Use “Email the school these questions” instead.'));return;}
     if(action==='hide-school-check'||action==='show-school-check'){const hide=action==='hide-school-check';setSchoolCheckHidden(pathway?.id,hide);renderSchoolCheck(hide?'show-school-check':'hide-school-check');announce(hide?'School questions hidden.':'School questions shown.');return;}
     if(action==='compare-plans'){storedPlan();location.assign('compare-plans.html');return;}
     if(action==='backup'){const latest=storedPlan();download(JSON.stringify(latest.raw===storageBaseline?state:latest.state,null,2),'degreesteps-private-backup.json','application/json');announce('Private backup downloaded.');return;}

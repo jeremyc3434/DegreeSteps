@@ -1,46 +1,20 @@
-# Questions for the schools — plans awaiting confirmation
+# Open school questions (internal reference)
 
-Prepared 2026-11-20 from DegreeSteps' plan research. Every question below comes from a gap or conflict in the school's own published sources; nothing here is a guess. When a school answers in writing, send the reply (or a link) and the plan can move from "Needs school confirmation" to "Reviewed".
+Students send these questions themselves. On any plan marked "Needs school confirmation", the worksheet and the guided planner offer **Email the school these questions**. It opens a short email in the student's own words, with at most three questions built from that plan's open items, and the student sends it to the school's admissions or transfer-credit office. DegreeSteps never emails schools for students. The email builder is `DegreeSheet.schoolEmail` in `dist/sheet-state.js` (tests: `sheet-school-email.test.cjs`).
 
-Plans affected: 26 of 37 plans in the finder (Excelsior 3, Liberty 11, TESU 6, Phoenix 4, WGU 2).
+When a student (or anyone) forwards a school's written answer, record it in the school's pathway kit and recompile, so the plan can move to "Reviewed".
 
-## Excelsior University (Business, Liberal Arts, Psychology — B.S.)
+## What is still open, by school
 
-1. **Alternative-credit limit.** What is the most credit you accept in total from alternative sources (ACE- or NCCRS-evaluated courses such as Sophia, Study.com and StraighterLine, plus exams such as CLEP) toward each of these three degrees?
-2. **Age of transfer credit.** Your partner guides say transfer credit has a 10-year time limit, but your *Grade Scale, GPA, and Credit Application* policy says there is generally no time limit. Which rule applies to these degrees?
+- **Excelsior University** (B.S. Business, Liberal Arts, Psychology): the combined cap on ACE/NCCRS-evaluated credit; and whether transfer credit has a time limit (partner guides say 10 years, the credit policy says generally none).
+- **Liberty University** (11 plans): the ACE/NCCRS cap for Religion, Apologetics and Criminal Justice A.A. (online) and Accounting & Data Analysis B.S. (residential); major-course residency and unofficial evaluations; state-specific online general education; how online students meet BUSI 105 → BUSI 301; and the course matches listed below.
+- **Thomas Edison State University** (6 plans): whether Sophia and CLEP remain accepted while listed "Provisionally Approved – Review Pending"; the minimum CLEP score; which catalog year applies; specific General Management items (FIN-3010 credit amount, ACC-4010 course identity, MAR-2010 vs MKT-2010, ETH-2200/BUS-2100, BIO-1010/NUT-1010 placement); and the course matches listed below.
+- **University of Phoenix** (competency-based MBA, MHA, MIS; M.S. Psychology): whether each is enrolling and which catalog applies.
+- **Western Governors University** (Accounting B.S., IT Management B.S.): competency units required at WGU, and whether the capstone counts.
 
-## Liberty University (11 plans, online and residential)
+## Course matches to confirm
 
-1. **Alternative-credit limit.** For Religion A.A., Apologetics A.A., Criminal Justice A.A. (online) and Accounting & Data Analysis B.S. (residential): what is the most ACE- or NCCRS-evaluated credit you accept toward the degree?
-2. **Major-course residency.** How many credits in the major must be taken at Liberty, and which requirements do they have to cover? Does a written transfer evaluation confirm this by catalog year?
-3. **State-specific general education.** Which states add online general-education requirements, and where is each state's degree completion plan published?
-4. **BUSI 105 / BUSI 301 (Business Administration & Data Analysis B.S., online).** BUSI 301 requires BUSI 105, but the current catalog offers BUSI 105 only residentially, and the Sophia and Study.com guides list no award for either. How does an online student meet this prerequisite: an online section, an approved substitution, or a transfer course?
-5. **Course matches.** Please confirm the course matches listed in the appendix for each program.
 
-## Thomas Edison State University (English, Liberal Studies, Psychology, Accounting, Finance, General Management)
-
-1. **Provider status.** Your provider directory lists Sophia and CLEP as "Provisionally Approved – Review Pending". Will courses and exams completed now be accepted under the current mappings?
-2. **CLEP scores.** What numeric CLEP score is required? The policy we found says only "C-equivalent".
-3. **Catalog year.** Which catalog edition applies to a student who enrolls now?
-4. **Unclear items (General Management):**
-   - Study.com Finance 101 → FIN-3010: the program table says 1 lower-level credit; the FIN-3010 guide says 3 credits. Which is right?
-   - Study.com Accounting 302 appears under different titles; which exact course earns ACC-4010?
-   - Is the capstone prerequisite MAR-2010 the same course as the degree requirement MKT-2010?
-   - Is there a current outside course for ETH-2200 or BUS-2100?
-   - Can BIO-1010 and NUT-1010 fill the Scientific Knowledge category in this degree?
-5. **Course matches.** Please confirm the course matches listed in the appendix for each program.
-
-## University of Phoenix (MBA, MHA, MIS — competency-based; M.S. Psychology — direct assessment)
-
-1. Are these four programs currently enrolling, and which catalog applies to a new student?
-2. Are there admission requirements beyond a bachelor's degree?
-
-## Western Governors University (Accounting B.S., IT Management B.S.)
-
-1. **Credits at WGU.** How many competency units must be earned at WGU for each degree? Does the required capstone count toward that minimum?
-2. **Outside courses.** Do the outside courses in your published guide for these programs come in at the level each requirement needs (e.g. upper-division)?
-
-## Appendix — course matches to confirm
 
 Each line is an outside course we propose for a requirement, based on the school's published guides or partner maps, but which the school's sources do not yet confirm for this exact program.
 
