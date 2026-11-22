@@ -30,14 +30,14 @@
     return '<div class="admin-growth-scroll" role="region" tabindex="0" aria-label="'+esc(caption)+'"><table class="admin-growth-table"><caption>'+esc(caption)+'</caption><thead><tr>'+head.map((cell,i)=>'<th scope="col"'+(i?' class="admin-growth-num"':'')+'>'+esc(cell)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr><th scope="row">'+esc(row[0])+'</th>'+row.slice(1).map(cell=>'<td class="admin-growth-num">'+esc(cell)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
   }
   function html(data){
-    const [week,month]=summarize(data),head=['','Last 7 days','Last 28 days'],counts=(label,read)=>[label,format(read(week)),format(read(month))];
+    const [week,month]=summarize(data),head=['','7 days','28 days'],counts=(label,read)=>[label,format(read(week)),format(read(month))];
     const funnel=FUNNEL.map(([name,label],i)=>{
       const prior=i?FUNNEL[i-1][0]:null;
       return[label,format(week.event(name)),prior?percent(week.event(name),week.event(prior)):'',format(month.event(name)),prior?percent(month.event(name),month.event(prior)):''];
     });
     return '<p class="admin-growth-period">'+esc(week.start)+' to '+esc(week.end)+' and '+esc(month.start)+' to '+esc(month.end)+' (UTC).</p>'+
       '<dl class="admin-growth-visits"><div><dt>Visits, last 7 days</dt><dd>'+format(week.event('landing_view'))+'</dd></div><div><dt>Visits, last 28 days</dt><dd>'+format(month.event('landing_view'))+'</dd></div></dl>'+
-      table('Funnel: each step as a share of the step before',['Step','Last 7 days','% of previous step','Last 28 days','% of previous step'],funnel)+
+      table('Funnel: each step as a share of the step before',['Step','7 days','% of prev.','28 days','% of prev.'],funnel)+
       table('Tool use',head,TOOLS.map(([name,label])=>counts(label,window=>window.event(name))))+
       table('Course provider link clicks',head,[...PROVIDERS.map(provider=>counts(provider==='other'?'Other providers':provider,window=>window.detail('provider_click',provider))),counts('All providers',window=>window.event('provider_click'))])+
       table('Emails to schools',head,EMAILS.map(([action,label])=>counts(label,window=>window.detail('school_email',action))))+
