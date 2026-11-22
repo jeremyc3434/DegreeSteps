@@ -43,8 +43,9 @@
   if(routeExample){
     try{
       const data=JSON.parse(document.getElementById('home-route-example-data').textContent),select=routeExample.querySelector('[data-home-course-choice]');
-      const validTuition=!data.tuition||data.tuition.scope==='tuition-plus-outside-budget'&&Number.isFinite(data.tuition.outsideBudget)&&data.tuition.outsideBudget>=0&&Number.isFinite(data.tuition.unitsPerTerm)&&data.tuition.unitsPerTerm>0&&Object.entries(data.choices||{}).every(([id,choice])=>{const value=data.tuition.choices?.[id];return value&&value.outside===choice.outside&&value.university===choice.university&&[value.before,value.after,value.difference,value.beforeTerms,value.afterTerms].every(Number.isFinite)&&value.before>0&&value.after>=0&&value.beforeTerms>=0&&value.afterTerms>=0&&Math.abs(value.before-value.after-value.difference)<.01;});
-      const valid=validTuition&&Object.values(data.choices||{}).length===2&&Object.values(data.choices).every(choice=>Number.isFinite(choice.outside)&&Number.isFinite(choice.university)&&choice.outside>=0&&choice.university>=0&&choice.outside+choice.university===data.total)&&data.personalCreditsAwarded===0;
+      const finite=value=>Number.isFinite(value),span=value=>value&&finite(value.min)&&finite(value.max)&&value.min>=0&&value.max>=value.min;
+      const validEstimate=!data.estimate||data.estimate.scope==='plan-estimate'&&Object.entries(data.choices||{}).every(([id,choice])=>{const value=data.estimate.choices?.[id];return value&&value.outside===choice.outside&&value.university===choice.university&&finite(value.min)&&finite(value.max)&&value.min>0&&value.max>=value.min&&span(value.outsideMonths)&&span(value.universityTerms);});
+      const valid=validEstimate&&Object.values(data.choices||{}).length===2&&Object.values(data.choices).every(choice=>Number.isFinite(choice.outside)&&Number.isFinite(choice.university)&&choice.outside>=0&&choice.university>=0&&choice.outside+choice.university===data.total)&&data.personalCreditsAwarded===0;
       if(valid&&select){
         const update=()=>{
           const choice=data.choices[select.value];if(!choice)return;
@@ -57,12 +58,10 @@
           if(outside)outside.style.flexGrow=String(choice.outside);if(university)university.style.flexGrow=String(choice.university);
           if(track)track.setAttribute('aria-label','Proposed course mix: '+choice.outside+' credits through outside courses plus '+choice.university+' credits at Liberty equals '+data.total+' degree credits. This is planned coursework, not completed credit.');
           for(const selector of ['[data-home-provider-logo]','[data-home-self-paced-note]']){const node=routeExample.querySelector(selector);if(node)node.hidden=select.value!=='sophia';}
-          const tuition=data.tuition?.choices?.[select.value];
-          if(tuition){
-            const money=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
-            for(const [name,value] of [['before',money(tuition.before)],['after',money(tuition.after)],['difference',money(tuition.difference)],['before-terms',String(tuition.beforeTerms)],['after-terms',String(tuition.afterTerms)]]){const node=routeExample.querySelector('[data-home-tuition-'+name+']');if(node)node.textContent=value;}
-            const bar=routeExample.querySelector('[data-home-tuition-after-bar]');if(bar)bar.style.width=(tuition.after/Math.max(tuition.before,tuition.after)*100).toFixed(3)+'%';
-            const beforeBar=routeExample.querySelector('[data-home-tuition-before-bar]');if(beforeBar)beforeBar.style.width=(tuition.before/Math.max(tuition.before,tuition.after)*100).toFixed(3)+'%';
+          const estimate=data.estimate?.choices?.[select.value];
+          if(estimate){
+            const money=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value),range=value=>value.min===value.max?String(value.min):value.min+'–'+value.max;
+            for(const [name,value] of [['range',money(estimate.min)+'–'+money(estimate.max)],['terms',range(estimate.universityTerms)],['outside',range(estimate.outsideMonths)]]){const node=routeExample.querySelector('[data-home-estimate-'+name+']');if(node)node.textContent=value;}
           }
         };
         select.disabled=false;select.addEventListener('change',update);update();

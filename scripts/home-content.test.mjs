@@ -3,27 +3,27 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import vm from 'node:vm';
-import {buildHomeExample,buildHomeTuition,renderHome} from './home-content.mjs';
+import {buildHomeExample,buildHomeEstimate,renderHome} from './home-content.mjs';
 import {renderCostWidget} from './cost-content.mjs';
 
-const require=createRequire(import.meta.url),Planner=require('../dist/planner.js'),Cost=require('../dist/cost-engine.js');
+const require=createRequire(import.meta.url),Planner=require('../dist/planner.js'),Estimate=require('../dist/plan-estimate-engine.js');
 const registry=require('../dist/data/curriculum-registry.json');
 const entry=registry.models.find(item=>item.id==='liberty-business-residential');
 const pack=require('../dist/'+entry.path),program=(pack.models||[pack]).find(item=>item.id===entry.id);
 const baseline=Object.values(require('../dist/data/baseline-index.json').baselines).find(item=>item.modelId===program.id&&item.pathwayId===program.id);
 const example=buildHomeExample({program,baseline,Planner});
-const costData=require('../dist/data/cost-comparisons.json'),costEntry=costData.entries.find(item=>item.id==='liberty-residential');
-const tuition=buildHomeTuition({example,entry:costEntry,Cost});
+const costData=require('../dist/data/cost-comparisons.json'),rates=require('../dist/data/plan-estimate-rates.json'),indexEntry=require('../dist/data/plan-library-index.json').plans[program.id];
+const estimate=buildHomeEstimate({example,program,baseline,Planner,Estimate,rates,indexEntry});
 const cta=(label,href)=>'<a href="'+href+'">'+label+'</a>';
-const render=(data=example,costSection='',comparison=tuition)=>renderHome({cta,articleCard:()=>'',guides:[],costSection,example:data,tuition:comparison});
+const render=(data=example,costSection='',comparison=estimate)=>renderHome({cta,articleCard:()=>'',guides:[],costSection,example:data,estimate:comparison});
 const routeData=html=>JSON.parse(html.match(/id="home-route-example-data">([\s\S]*?)<\/script>/)[1]);
 const textOnly=html=>html.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
 const script=await readFile(new URL('../dist/site.js',import.meta.url),'utf8');
 
 function mount(data){
  const listeners={},nodes=new Map(),forbidden=[],select={value:'sophia',disabled:true,addEventListener(name,fn){listeners[name]=fn;}};
- for(const key of ['course-provider','outside','university','route-feedback','choice-source','choice-title','tuition-before','tuition-after','tuition-difference','tuition-before-terms','tuition-after-terms'])nodes.set('[data-home-'+key+']',{textContent:''});
- for(const key of ['mix-outside','mix-university','tuition-before-bar','tuition-after-bar'])nodes.set('[data-home-'+key+']',{style:{}});
+ for(const key of ['course-provider','outside','university','route-feedback','choice-source','choice-title','estimate-range','estimate-terms','estimate-outside'])nodes.set('[data-home-'+key+']',{textContent:''});
+ for(const key of ['mix-outside','mix-university'])nodes.set('[data-home-'+key+']',{style:{}});
  for(const key of ['provider-logo','self-paced-note'])nodes.set('[data-home-'+key+']',{hidden:false});
  nodes.set('[data-home-mix-track]',{attributes:{},setAttribute(name,value){this.attributes[name]=value;}});
  nodes.set('[data-home-course-choice]',select);
@@ -83,77 +83,65 @@ test('the homepage is three readable vertical chapters with the exact plan and n
  assert.throws(()=>render({...example,displayRows:[]}),/actual three-course worksheet/);
 });
 
-test('tuition illustrations use the same credit scenario and real tuition engine without changing source facts',()=>{
- const beforeExample=JSON.stringify(example),beforeEntry=JSON.stringify(costEntry),value=buildHomeTuition({example,entry:costEntry,Cost});
- assert.equal(value.scope,'tuition-plus-outside-budget');assert.equal(value.outsideBudget,2000);assert.equal(value.unitsPerTerm,15);
- for(const [id,choice] of Object.entries(example.choices)){
-  const expected=Cost.calculate(costEntry,{transferUnits:choice.outside,outsideBudget:2000,unitsPerTerm:15}),actual=value.choices[id];
-  assert.deepEqual(actual,{before:expected.beforeTotal,after:expected.afterTotal,difference:expected.savings,outside:choice.outside,university:choice.university,beforeTerms:expected.beforeTerms,afterTerms:expected.afterTerms});
-  assert.equal(actual.outside+actual.university,120);assert.equal(actual.before-actual.after,actual.difference);
- }
- assert.deepEqual([value.choices.sophia.before,value.choices.sophia.after,value.choices.sophia.difference],[101560,33480,68080]);
- assert.deepEqual([value.choices.university.after,value.choices.university.difference],[36090,65470]);
- assert.equal(JSON.stringify(example),beforeExample);assert.equal(JSON.stringify(costEntry),beforeEntry);assert.deepEqual(value.sources,costEntry.sources);
- const html=render();assert.match(html,/data-home-tuition-after>\$33,480/);assert.match(html,/data-home-tuition-difference>\$68,080/);
- assert.match(html,/Before financial aid/);assert.match(html,/Other fees, books and living costs are extra/);assert.match(html,/outside study and course availability can add time/);
- const withoutTuition=render(example,'',null);assert.doesNotMatch(withoutTuition,/data-home-tuition-after/);assert.equal(routeData(withoutTuition).tuition,null);
+test('the homepage cost line is the plan’s own planning estimate, the same as its plan page and the finder',()=>{
+ const before=JSON.stringify(example);
+ assert.equal(estimate.scope,'plan-estimate');assert.equal(estimate.planUrl,'/degree-plans/liberty-business-residential/');
+ assert.deepEqual([estimate.choices.sophia.min,estimate.choices.sophia.max],[indexEntry.estimate.min,indexEntry.estimate.max]);
+ assert.deepEqual(estimate.choices.sophia.universityTerms,indexEntry.timing.universityTerms);assert.deepEqual(estimate.choices.sophia.outsideMonths,indexEntry.timing.outsideMonths);
+ for(const [id,choice] of Object.entries(example.choices)){const value=estimate.choices[id];assert.equal(value.outside,choice.outside);assert.equal(value.university,choice.university);assert(value.min>0&&value.max>=value.min);}
+ assert(estimate.choices.university.min>estimate.choices.sophia.min,'taking the writing course at Liberty costs more');
+ assert.equal(JSON.stringify(example),before);
+ const html=render(),money=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
+ assert(html.includes('data-home-estimate-range>'+money(indexEntry.estimate.min)+'–'+money(indexEntry.estimate.max)+'<'));
+ assert.match(html,/Planning estimate · Before financial aid/);assert.match(html,/same planning estimate as <a href="\/degree-plans\/liberty-business-residential\/">this plan’s page<\/a>/);
+ assert.doesNotMatch(html,/University tuition alone|difference in this example/);
+ const withoutEstimate=render(example,'',null);assert.doesNotMatch(withoutEstimate,/data-home-estimate-range/);assert.equal(routeData(withoutEstimate).estimate,null);
 });
 
-test('wrong school format, degree size or scenario quantities cannot become the same-plan tuition illustration',()=>{
- for(const options of [
-  {example:{...example,modelId:'another-degree'},entry:costEntry},
-  {example:{...example,format:'Online'},entry:costEntry},
-  {example,entry:{...costEntry,id:'liberty-online'}},
-  {example,entry:{...costEntry,totalUnits:121}}
- ])assert.throws(()=>buildHomeTuition({...options,Cost}),/same Liberty campus degree and credit total/);
+test('a different plan, mismatched course mix or estimate cannot become the homepage example',()=>{
+ assert.throws(()=>buildHomeEstimate({example:{...example,modelId:'another-degree'},program,baseline,Planner,Estimate,rates,indexEntry}),/same Liberty campus degree/);
  const wrongMix=structuredClone(example);wrongMix.choices.university.university++;
- assert.throws(()=>buildHomeTuition({example:wrongMix,entry:costEntry,Cost}),/tuition comparison and proposed course mix disagree/);
- for(const edit of [value=>value.choices.sophia.outside=90,value=>delete value.choices.university,value=>value.choices.university.difference++,value=>value.choices.sophia.after=NaN]){
-  const invalid=structuredClone(tuition);edit(invalid);assert.throws(()=>render(example,'',invalid),/tuition example must match every course-choice scenario/);
+ assert.throws(()=>buildHomeEstimate({example:wrongMix,program,baseline,Planner,Estimate,rates,indexEntry}),/estimate and proposed course mix disagree/);
+ assert.throws(()=>buildHomeEstimate({example,program,baseline,Planner,Estimate,rates,indexEntry:{estimate:{min:1,max:2}}}),/equal the plan page and plan finder estimate/);
+ for(const edit of [value=>value.choices.sophia.outside=90,value=>delete value.choices.university,value=>value.choices.university.min=NaN,value=>value.scope='tuition-only']){
+  const invalid=structuredClone(estimate);edit(invalid);assert.throws(()=>render(example,'',invalid),/homepage estimate must match every course-choice scenario/);
  }
 });
 
-test('changing a course updates source, planned credits, logo, bar and exact-credit tuition together without private data access',()=>{
- const data=routeData(render()),original=JSON.stringify(data),f=mount(data),node=key=>f.nodes.get('[data-home-'+key+']');
+test('changing a course updates source, planned credits, logo, bar and planning estimate together without private data access',()=>{
+ const data=routeData(render()),original=JSON.stringify(data),f=mount(data),node=key=>f.nodes.get('[data-home-'+key+']'),money=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
+ const sophia=data.estimate.choices.sophia,university=data.estimate.choices.university;
  assert.equal(f.select.disabled,false);assert.equal(node('outside').textContent,'83');assert.equal(node('university').textContent,'37');
- assert.equal(node('tuition-after').textContent,'$33,480');assert.equal(node('tuition-difference').textContent,'$68,080');assert.equal(node('provider-logo').hidden,false);assert.equal(node('self-paced-note').hidden,false);
+ assert.equal(node('estimate-range').textContent,money(sophia.min)+'–'+money(sophia.max));assert.equal(node('estimate-terms').textContent,sophia.universityTerms.min+'–'+sophia.universityTerms.max);
  f.change('university');assert.equal(node('outside').textContent,'80');assert.equal(node('university').textContent,'40');assert.equal(node('course-provider').textContent,'Liberty University');
- assert.equal(node('mix-outside').style.flexGrow,'80');assert.equal(node('mix-university').style.flexGrow,'40');assert.equal(node('choice-source').textContent,'Liberty University');assert.equal(node('choice-title').textContent,data.choices.university.title);
- assert.match(node('mix-track').attributes['aria-label'],/80 credits[\s\S]+40 credits[\s\S]+120 degree credits/);
+ assert.equal(node('mix-outside').style.flexGrow,'80');assert.equal(node('mix-university').style.flexGrow,'40');assert.equal(node('choice-title').textContent,data.choices.university.title);
  assert.equal(node('provider-logo').hidden,true);assert.equal(node('self-paced-note').hidden,true);
- assert.equal(node('tuition-before').textContent,'$101,560');assert.equal(node('tuition-after').textContent,'$36,090');assert.equal(node('tuition-difference').textContent,'$65,470');
- assert.equal(node('tuition-before-terms').textContent,'8');assert.equal(node('tuition-after-terms').textContent,'3');
- assert.equal(node('tuition-after-bar').style.width,(36090/101560*100).toFixed(3)+'%');assert.equal(node('tuition-before-bar').style.width,'100.000%');
- f.change('sophia');assert.equal(node('outside').textContent,'83');assert.equal(node('university').textContent,'37');assert.equal(node('mix-outside').style.flexGrow,'83');assert.equal(node('mix-university').style.flexGrow,'37');
- assert.equal(node('choice-source').textContent,'Sophia');assert.equal(node('choice-title').textContent,data.choices.sophia.title);assert.match(node('mix-track').attributes['aria-label'],/83 credits[\s\S]+37 credits/);
- assert.equal(node('provider-logo').hidden,false);assert.equal(node('self-paced-note').hidden,false);assert.equal(node('tuition-after').textContent,'$33,480');assert.equal(node('tuition-difference').textContent,'$68,080');assert.equal(node('tuition-after-bar').style.width,(33480/101560*100).toFixed(3)+'%');
+ assert.equal(node('estimate-range').textContent,money(university.min)+'–'+money(university.max));
+ f.change('sophia');assert.equal(node('outside').textContent,'83');assert.equal(node('estimate-range').textContent,money(sophia.min)+'–'+money(sophia.max));
  assert.equal(f.payload.textContent,f.original);assert.equal(JSON.stringify(data),original);assert.equal(data.personalCreditsAwarded,0);
 });
 
-test('malformed tuition keeps the source choice disabled instead of publishing mismatched dynamic totals',()=>{
+test('a malformed estimate keeps the source choice disabled instead of publishing mismatched dynamic totals',()=>{
  for(const edit of [
-  data=>data.tuition.scope='tuition-only',
-  data=>data.tuition.outsideBudget=-1,
-  data=>data.tuition.unitsPerTerm=0,
-  data=>delete data.tuition.choices.university,
-  data=>data.tuition.choices.sophia.outside=90,
-  data=>data.tuition.choices.sophia.after=-1,
-  data=>data.tuition.choices.sophia.after=NaN,
-  data=>data.tuition.choices.university.difference++,
-  data=>data.tuition.choices.university.beforeTerms=-1,
+  data=>data.estimate.scope='tuition-only',
+  data=>delete data.estimate.choices.university,
+  data=>data.estimate.choices.sophia.outside=90,
+  data=>data.estimate.choices.sophia.min=-1,
+  data=>data.estimate.choices.sophia.max=NaN,
+  data=>data.estimate.choices.university.universityTerms.min=-1,
   data=>data.personalCreditsAwarded=3
  ]){
   const data=routeData(render());edit(data);const f=mount(data);
-  assert.equal(f.select.disabled,true);assert.equal(f.listeners.change,undefined);assert.equal(f.nodes.get('[data-home-tuition-after]').textContent,'');assert.equal(f.payload.textContent,f.original);
+  assert.equal(f.select.disabled,true);assert.equal(f.listeners.change,undefined);assert.equal(f.nodes.get('[data-home-estimate-range]').textContent,'');assert.equal(f.payload.textContent,f.original);
  }
 });
 
 test('the expandable calculator retains its complete six-college examples separately from the exact-credit homepage illustration',()=>{
  const calculator=renderCostWidget(costData),html=render(example,calculator);
  assert.equal(new Set(costData.entries.map(item=>item.schoolName)).size,6);assert(html.includes(calculator));
- assert.match(html,/<details class="home-tool-drawer home-cost-drawer"><summary>[\s\S]+Compare costs at six colleges/);
- assert.match(html,/Separate tuition examples with editable assumptions/);
+ assert.match(html,/<details class="home-tool-drawer home-cost-drawer"><summary>[\s\S]+A tuition calculator with generic examples/);
+ assert.match(html,/Generic tuition examples at six colleges’ published rates/);
  for(const item of costData.entries)assert(html.includes('<option value="'+item.id+'"'));
  assert.match(html,/data-cost-school/);assert.match(html,/data-cost-transfer/);assert.match(html,/id="degree-cost-data"/);
- assert.deepEqual([routeData(html).tuition.choices.sophia.outside,routeData(html).tuition.choices.sophia.university],[83,37]);
+ assert.deepEqual([routeData(html).estimate.choices.sophia.outside,routeData(html).estimate.choices.sophia.university],[83,37]);
 });
