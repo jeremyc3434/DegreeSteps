@@ -240,8 +240,8 @@
   // The student's own short email to the school, from the plan's open questions (DegreeSheet.schoolEmail).
   function schoolEmailLink(route) {
     const format=(route?.modalities||[]).length===1?(route.modalities[0]==='campus'?'on campus':'online'):'';
-    const email=Sheet.schoolEmail(planIndex,route?.id,{title:route?.title,school:route?.school,format});
-    return email?'<p class="portal-school-email"><a href="'+esc(email.mailto)+'">Email the school these questions</a> <small>A short email in your words, for the admissions or transfer-credit office.</small></p>':'';
+    const email=Sheet.schoolEmail(planIndex,route?.id,{title:route?.title,school:route?.school,modalities:route?.modalities,format});
+    return email?'<p class="portal-school-email"><a href="'+esc(email.mailto)+'">Email the school these questions</a> <small>'+(email.contact?.email?'To '+esc(email.contact.office)+' ('+esc(email.contact.email)+'), as published by the school.':email.contact?.contactPage?'This school doesn’t publish a transfer email; copy the text into <a href="'+esc(email.contact.contactPage)+'" target="_blank" rel="noopener">its contact form</a>.':'A short email in your words, for the admissions or transfer-credit office.')+'</small></p>':'';
   }
   // Optional extra actions from leads.js (school contact request, Plan review link). Empty unless a feature is on;
   // they never change which plans are shown or their order.

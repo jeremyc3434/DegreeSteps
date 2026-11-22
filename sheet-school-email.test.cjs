@@ -26,3 +26,12 @@ test('course questions name at most three of the student’s courses and offer t
  const ask=email.questions.find(q=>/count toward this degree/.test(q));
  assert.match(ask,/A; B; C \(I can send the full list\)/);assert.doesNotMatch(ask,/\bD\b/);
 });
+
+test('emails are addressed to the transfer contact each school publishes, chosen by study format',()=>{
+ const online=Sheet.schoolEmail(index,confirmation[0][0],{school:'Liberty University',modalities:['online']});
+ const campus=Sheet.schoolEmail(index,confirmation[0][0],{school:'Liberty University',modalities:['campus']});
+ assert.match(online.mailto,/^mailto:luotransfer@liberty\.edu\?subject=/);assert.match(campus.mailto,/^mailto:undergradtransfer@liberty\.edu\?subject=/);
+ for(const [school,addr] of [['Western Governors University','transcriptinfo@wgu.edu'],['Excelsior University','admissions@excelsior.edu'],['Thomas Edison State University','registrar@tesu.edu']]){const c=Sheet.schoolTransferContact({school});assert.equal(c.email,addr);assert.match(c.source,/^https:\/\//);}
+ const phoenix=Sheet.schoolEmail(index,confirmation[0][0],{school:'University of Phoenix'});assert.match(phoenix.mailto,/^mailto:\?subject=/);assert.match(phoenix.contact.contactPage,/^https:\/\/www\.phoenix\.edu\//);
+ assert.equal(Sheet.schoolTransferContact({school:'Unknown U'}),null);
+});
