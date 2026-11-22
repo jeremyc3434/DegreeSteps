@@ -10,6 +10,8 @@ import { handleCommunity } from './community.mjs';
 import { handlePortal } from './portal.mjs';
 import { handleAuth, resolvePortalIdentity } from './auth.mjs';
 import { handleCoach } from './coach.mjs';
+import { handleGrowthMetrics } from './growth-metrics.mjs';
+import { handleCollegeAccess } from './college-access.mjs';
 const root=resolve(import.meta.dirname,'..'),staticRoot=resolve(root,'dist');
 const port=Number(process.env.DEGREEPATH_PREVIEW_PORT)||8099;
 await mkdir(resolve(root,'.local-community'),{recursive:true});
@@ -56,6 +58,16 @@ const server=http.createServer(async(req,res)=>{
         COACH_DATA:async()=>Object.fromEntries(await Promise.all([['library','plan-library-index'],['index','coach-index'],['knowledge','coach-knowledge']].map(async([name,file])=>[name,JSON.parse(await readFile(resolve(staticRoot,'data',file+'.json'),'utf8'))]))),
         ...(process.env.COACH_FETCH==='mock'?{COACH_FETCH:(await import('./coach-mock.mjs')).createMockCoachFetch(),COACH_RESOLVE_KEY:async()=>'preview-mock-key-not-a-real-credential'}:{COACH_RESOLVE_KEY:async()=>process.env.ANTHROPIC_API_KEY||null})}:{};
       const response=await handleCoach(request,coachEnv);
+      res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
+    }
+    if(target.pathname==='/api/growth/events'||target.pathname==='/api/admin/growth-summary'||target.pathname==='/api/colleges/status'){
+      // Aggregate counters and the owner report, as in the Worker. Signed-in preview users come from the loopback cookie only.
+      const headers=new Headers();for(const [key,value]of Object.entries(req.headers))if(value&&!key.startsWith('oai-authenticated-'))headers.set(key,String(value));
+      const chunks=[];let bytes=0;for await(const chunk of req){bytes+=chunk.length;if(bytes>4096){res.writeHead(413);res.end('Too large');return;}chunks.push(chunk);}
+      const request=new Request(target,{method:req.method,headers,...(!['GET','HEAD'].includes(req.method)&&chunks.length?{body:Buffer.concat(chunks)}:{})});
+      const match=(req.headers.cookie||'').match(/(?:^|;\s*)degreepath_preview_user=([A-Za-z0-9_-]+)/),user=users[match?.[1]]||null;
+      const planIds=async()=>new Set(Object.keys(JSON.parse(await readFile(resolve(staticRoot,'data/plan-library-index.json'),'utf8')).plans||{}));
+      const response=target.pathname==='/api/colleges/status'?await handleCollegeAccess(request,{...env,PORTAL_USER:user,COLLEGE_ACCESS_ENABLED:true}):await handleGrowthMetrics(request,{...env,PORTAL_USER:user,GROWTH_PLAN_IDS:planIds});
       res.writeHead(response.status,Object.fromEntries(response.headers));res.end(req.method==='HEAD'?undefined:Buffer.from(await response.arrayBuffer()));return;
     }
     if(target.pathname.startsWith('/api/community/')||target.pathname.startsWith('/api/portal/')||target.pathname.startsWith('/api/auth/')||target.pathname.startsWith('/auth/')){
