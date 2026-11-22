@@ -84,7 +84,13 @@ assert(!/^import\s/m.test(growthApi),'Bundle growth metrics imports explicitly b
 const coachApiSource=(await readFile(resolve(root,'server/coach.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(coachApiSource),'Bundle coach imports explicitly before building');
 const coachBundle='const {handleCoach,pruneCoach}=(()=>{\n'+coachApiSource+'\nreturn {handleCoach,pruneCoach};\n})();\n';
-const growthBundle='const {handleGrowthMetrics,pruneGrowthMetrics}=(()=>{\n'+growthApi+'\nreturn {handleGrowthMetrics,pruneGrowthMetrics};\n})();\n';
+const growthBundle='const {handleGrowthMetrics,pruneGrowthMetrics,recordGrowthEvent}=(()=>{\n'+growthApi+'\nreturn {handleGrowthMetrics,pruneGrowthMetrics,recordGrowthEvent};\n})();\n';
+const emailApi=(await readFile(resolve(root,'server/email.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
+assert(!/^import\s/m.test(emailApi),'Bundle email imports explicitly before building');
+const emailBundle='const {sendEmail,emailSettings,validEmailAddress}=(()=>{\n'+emailApi+'\nreturn {sendEmail,emailSettings,validEmailAddress};\n})();\n';
+const alertsApi=(await readFile(resolve(root,'server/plan-alerts.mjs'),'utf8')).replace(/^import \{ sendEmail, emailSettings, validEmailAddress \} from '\.\/email\.mjs';\n/m,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
+assert(!/^import\s/m.test(alertsApi),'Bundle plan alert imports explicitly before building');
+const alertsBundle='const {handlePlanAlerts,runPlanAlerts,removePlanAlerts}=(()=>{\n'+alertsApi+'\nreturn {handlePlanAlerts,runPlanAlerts,removePlanAlerts};\n})();\n';
 const researchJobs=(await readFile(resolve(root,'server/research-jobs.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 const templateApi=(await readFile(resolve(root,'server/template-research.mjs'),'utf8')).replace(/^import .*;\n/gm,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(collegeApi+templateApi),'Bundle college and template imports explicitly before building');
@@ -95,7 +101,7 @@ const snapshotRegistry=(await readFile(resolve(root,'db/d1-snapshot-registry.mjs
 const snapshotApi=(await readFile(resolve(root,'server/operator-snapshot.mjs'),'utf8')).replace(/^import .*;\n/gm,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(snapshotRegistry+snapshotApi),'Bundle operator snapshot imports explicitly before building');
 const handler=(await readFile(resolve(root,'worker/index.mjs'),'utf8')).replace(/^import .*;\n/gm,'');
-const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle;
+const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle+'\n'+emailBundle+'\n'+alertsBundle;
 const source=core+'const assets='+JSON.stringify(assets)+';\n'+handler;
 await rm(output,{recursive:true,force:true});
 await mkdir(resolve(output,'dist/server'),{recursive:true});await mkdir(resolve(output,'.openai'),{recursive:true});
@@ -117,6 +123,7 @@ for (const path of ['/','/portal.html','/account.html','/degree-audit.html','/re
 }
 const authStatus=await module.default.fetch(new Request('https://degreepath.test/api/auth/status'),{},{});assert.equal(authStatus.status,200);assert.equal((await authStatus.json()).configured,false);
 for(const path of ['/api/coach/status','/api/coach/ask','/api/coach/feedback']){const coachOff=await module.default.fetch(new Request('https://degreepath.test'+path,{method:path.endsWith('status')?'GET':'POST'}),{},{});assert.equal(coachOff.status,404,'The coach must not exist unless COACH_ENABLED is 1: '+path);}
+for(const [path,method]of [['/api/alerts/subscriptions','GET'],['/api/alerts/subscriptions','POST'],['/api/alerts/unsubscribe?token=x','GET'],['/api/alerts/unsubscribe?token=x','POST']]){const alertsOff=await module.default.fetch(new Request('https://degreepath.test'+path,{method}),{},{});assert.equal(alertsOff.status,404,'Email alerts must not exist unless EMAIL_ALERTS_ENABLED is 1: '+method+' '+path);}
 const missingDb=await module.default.fetch(new Request('https://degreepath.test/api/community/session'),{},{});assert.equal(missingDb.status,503);
 const unknownCurriculum=await module.default.fetch(new Request('https://degreepath.test/api/curriculum?program=unknown'),{},{});assert.equal(unknownCurriculum.status,404);
 console.log(JSON.stringify({output,assets:Object.keys(assets).length,workerBytes:Buffer.byteLength(source),nativeWorkerBytes:Buffer.byteLength(nativeSource),checks:'ESM, asset routes, API binding boundary passed'}));

@@ -108,7 +108,7 @@ test('funnel v2 events accept only their fixed detail: a provider allowlist for 
  ])assert.equal((await send(f,body)).status,400,JSON.stringify(body));
  const providers=f.sqlite.prepare("SELECT detail FROM growth_daily_counts WHERE event='provider_click' ORDER BY detail").all().map(row=>row.detail);assert.equal(providers.length,8);
  const summary=await (await handleGrowthMetrics(request('/api/admin/growth-summary?days=28',{method:'GET'}),f.env,{now:f.now})).json();
- assert.equal(summary.events.length,15);assert.equal(summary.events.find(row=>row.event==='provider_click').count,8);assert.equal(summary.events.find(row=>row.event==='school_email').count,2);
+ assert.equal(summary.events.length,17);assert.deepEqual(summary.events.slice(-2).map(row=>row.event),['alert_subscribed','alert_unsubscribed']);assert.equal(summary.events.find(row=>row.event==='provider_click').count,8);assert.equal(summary.events.find(row=>row.event==='school_email').count,2);
  assert(summary.rows.some(row=>row.event==='school_email'&&row.detail==='copy'));assert.deepEqual(summary.dimensions.schoolEmailActions,['open','copy']);assert.equal(summary.dimensions.providers.length,8);
  // The database itself refuses details outside the fixed lists, even if a caller bypasses validation.
  assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','provider_click','home','','student@example.com',1)").run(),/CHECK/);

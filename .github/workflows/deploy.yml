@@ -5,6 +5,8 @@ name: Deploy
 # scripts/check-production-config.mjs). Credentials come from repository secrets:
 #   CLOUDFLARE_API_TOKEN - Cloudflare API token with Workers Scripts: Edit and D1: Edit on the owner account
 #   ANTHROPIC_API_KEY    - optional; when present it is (re)written as the Worker secret on every deploy
+#   RESEND_API_KEY       - optional; Resend sending key for email plan alerts, (re)written as a Worker secret the same way.
+#                          Alerts stay off until the Worker variable EMAIL_ALERTS_ENABLED is set to 1.
 on:
   push:
     branches: [main]
@@ -101,6 +103,17 @@ jobs:
           fi
           printf '%s' "$ANTHROPIC_API_KEY" | npx --yes wrangler@4.164.0 secret put ANTHROPIC_API_KEY --config "$WRANGLER_CONFIG" >/dev/null
           echo "ANTHROPIC_API_KEY updated on $WORKER_NAME."
+
+      - name: Set Resend API key secret
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          if [ -z "$RESEND_API_KEY" ]; then
+            echo "No RESEND_API_KEY repository secret; leaving the Worker secret unchanged."
+            exit 0
+          fi
+          printf '%s' "$RESEND_API_KEY" | npx --yes wrangler@4.164.0 secret put RESEND_API_KEY --config "$WRANGLER_CONFIG" >/dev/null
+          echo "RESEND_API_KEY updated on $WORKER_NAME."
 
       - name: Summary
         run: |

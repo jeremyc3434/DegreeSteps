@@ -38,7 +38,7 @@ test('the funnel shows plain counts with step-to-step percentages and never divi
 
 test('the panel is accessible tables, owner-only, and uses no chart library or third-party request',async()=>{
  const out=Growth.html(report);
- assert.equal((out.match(/<caption>/g)||[]).length,4);assert(out.includes('<th scope="col"'));assert(out.includes('<th scope="row">'));assert(!/<canvas|<svg|chart\.js|d3/i.test(out));
+ assert.equal((out.match(/<caption>/g)||[]).length,5);assert(out.includes('<th scope="col"'));assert(out.includes('<th scope="row">'));assert(!/<canvas|<svg|chart\.js|d3/i.test(out));
  assert.match(html,/<section id="admin-growth"[^>]*\bhidden\b/);assert.match(html,/<script src="admin-growth\.js" defer><\/script>/);
  assert(!/https?:\/\//.test(source.replace(/^\/\*[\s\S]*?\*\//,'')),'No external requests');
  // Owner access is decided by the server: 401/403 keeps the panel hidden, other failures explain themselves.

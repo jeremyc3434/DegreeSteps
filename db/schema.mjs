@@ -74,3 +74,4 @@ export * from './research-jobs-schema.mjs';
 export * from './academic-coverage-schema.mjs';
 export * from './growth-schema.mjs';
 export * from './coach-schema.mjs';
+export * from './alerts-schema.mjs';
