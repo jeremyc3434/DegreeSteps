@@ -217,9 +217,21 @@
   function schoolCheckHTML() {
     const routeId=pathway?.id,questions=Sheet.schoolQuestions(planIndex,routeId);if(!questions.length)return '';
     if(schoolCheckHidden().includes(routeId))return '<section class="sheet-school-check is-collapsed" aria-label="Needs school confirmation"><p><strong>'+questions.length+' question'+(questions.length===1?'':'s')+' to ask the school</strong> before you pay for courses.</p><button type="button" class="button ghost small" data-action="show-school-check" aria-expanded="false" aria-controls="sheet-school-check">Show questions</button></section>';
-    return '<section class="sheet-school-check" aria-labelledby="sheet-school-check-title"><div class="sheet-school-check-head"><h2 id="sheet-school-check-title">Before you pay for courses, ask the school:</h2><button type="button" class="button ghost small" data-action="hide-school-check" aria-expanded="true" aria-controls="sheet-school-check">Hide</button></div><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p>'+schoolEmailActionsHTML()+'</section>';
+    return '<section class="sheet-school-check" aria-labelledby="sheet-school-check-title"><div class="sheet-school-check-head"><h2 id="sheet-school-check-title">Before you pay for courses, ask the school:</h2><button type="button" class="button ghost small" data-action="hide-school-check" aria-expanded="true" aria-controls="sheet-school-check">Hide</button></div><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p>'+schoolEmailActionsHTML()+leadActionsHTML()+'</section>';
+  }
+  // Optional extra actions from leads.js (school contact request, Plan review link). Empty unless a feature is on;
+  // they never change the plan, its courses or their order.
+  // They sit inside the school questions, next to "Email the school these questions", or on their own when the plan has none.
+  function leadActionsHTML() {
+    return task||!pathway?'':(window.DegreeLeads?.actionsHTML({planId:pathway.id,school:pathway.school,title:pathway.title})||'');
+  }
+  function renderLeadActions() {
+    const node=$('sheet-lead-actions');if(!node)return;
+    const html=Sheet.schoolQuestions(planIndex,pathway?.id).length?'':leadActionsHTML();
+    if(node.innerHTML!==html)node.innerHTML=html;node.hidden=!html;
   }
   function renderSchoolCheck(focusAction) {
+    renderLeadActions();
     const node=$('sheet-school-check');if(!node)return;
     const html=task||!pathway?'':schoolCheckHTML();if(node.innerHTML!==html)node.innerHTML=html;node.hidden=!html;
     if(planIndex)renderGlance();
@@ -904,6 +916,7 @@
     catch(error){externalNotice(error.message);}
   }
   for(const type of ['storage','focus','pageshow'])window.addEventListener(type,observeSavedChange);
+  window.addEventListener('DegreeSteps:leads-ready',()=>renderSchoolCheck());
   async function boot() {
     try {const response=await fetch('data/pathways.json');if(!response.ok)throw Error('Could not load the preloaded degree research.');catalog=await response.json();try{catalog=await DegreeProgramCatalog.load(catalog);}catch{/* Exact free-text targets remain available when directory is unavailable. */}models=DegreeProgramCatalog.loadModels?await DegreeProgramCatalog.loadModels([]):await Promise.all(DegreeProgramCatalog.modelFiles.map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('Could not load the preloaded degree research.');return r.json();}));try{const r=await fetch('data/credit-sources.json');if(r.ok){const data=await r.json();sources=data.sources||[];sourceChecked=data.checkedOn||'';}}catch{/* core worksheet still works without optional source catalog */}
       try{const r=await fetch('data/course-catalog.json');if(r.ok)courseCatalog=await r.json();}catch{/* Provider directories remain available when exact course links cannot load. */}

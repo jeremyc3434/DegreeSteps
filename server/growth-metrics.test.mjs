@@ -95,6 +95,15 @@ test('plan ids are checked against the public plan library index, not a fixed li
  assert.equal((await send(g,{event:'plan_previewed',context:'degree-plan',planId:later})).status,204);assert.deepEqual({...g.sqlite.prepare('SELECT plan_id,detail,count FROM growth_daily_counts').get()},{plan_id:'',detail:'',count:1});
 });
 
+test('revenue-feature events: school_inquiry carries only action submitted; plan_review_request carries no detail',async t=>{
+ const f=fixture(t);
+ assert.equal((await send(f,{event:'school_inquiry',context:'workspace',action:'submitted'})).status,204);
+ assert.equal((await send(f,{event:'plan_review_request',context:'article'})).status,204);
+ for(const body of[{event:'school_inquiry',context:'workspace'},{event:'school_inquiry',context:'workspace',action:'open'},{event:'school_inquiry',context:'workspace',action:'submitted',email:'jane@example.com'},{event:'plan_review_request',context:'article',action:'submitted'},{event:'plan_review_request',context:'article',provider:'Sophia'}])assert.equal((await send(f,body)).status,400,JSON.stringify(body));
+ const rows=f.sqlite.prepare('SELECT event,detail,count FROM growth_daily_counts ORDER BY event').all().map(row=>({...row}));
+ assert.deepEqual(rows,[{event:'plan_review_request',detail:'',count:1},{event:'school_inquiry',detail:'submitted',count:1}]);
+});
+
 test('funnel v2 events accept only their fixed detail: a provider allowlist for clicks and open/copy for school emails',async t=>{
  const f=fixture(t);
  for(const event of['finder_used','guided_started','guided_results','plan_built','credits_worth_used','share_link_copied'])assert.equal((await send(f,{event,context:'workspace'})).status,204,event);
@@ -108,9 +117,10 @@ test('funnel v2 events accept only their fixed detail: a provider allowlist for 
  ])assert.equal((await send(f,body)).status,400,JSON.stringify(body));
  const providers=f.sqlite.prepare("SELECT detail FROM growth_daily_counts WHERE event='provider_click' ORDER BY detail").all().map(row=>row.detail);assert.equal(providers.length,8);
  const summary=await (await handleGrowthMetrics(request('/api/admin/growth-summary?days=28',{method:'GET'}),f.env,{now:f.now})).json();
- assert.equal(summary.events.length,15);assert.equal(summary.events.find(row=>row.event==='provider_click').count,8);assert.equal(summary.events.find(row=>row.event==='school_email').count,2);
+ assert.equal(summary.events.length,17);assert.equal(summary.events.find(row=>row.event==='provider_click').count,8);assert.equal(summary.events.find(row=>row.event==='school_email').count,2);
  assert(summary.rows.some(row=>row.event==='school_email'&&row.detail==='copy'));assert.deepEqual(summary.dimensions.schoolEmailActions,['open','copy']);assert.equal(summary.dimensions.providers.length,8);
  // The database itself refuses details outside the fixed lists, even if a caller bypasses validation.
+ assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','school_inquiry','workspace','','jane@example.com',1)").run(),/CHECK/);
  assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','provider_click','home','','student@example.com',1)").run(),/CHECK/);
  assert.throws(()=>f.sqlite.prepare("INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES('2026-11-19','landing_view','home','Private Plan','',1)").run(),/CHECK/);
 });

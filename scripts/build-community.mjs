@@ -83,6 +83,9 @@ const growthApi=(await readFile(resolve(root,'server/growth-metrics.mjs'),'utf8'
 assert(!/^import\s/m.test(growthApi),'Bundle growth metrics imports explicitly before building');
 const coachApiSource=(await readFile(resolve(root,'server/coach.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(coachApiSource),'Bundle coach imports explicitly before building');
+const leadsApiSource=(await readFile(resolve(root,'server/leads.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function|const)/gm,'');
+assert(!/^import\s/m.test(leadsApiSource)&&!/^export\s/m.test(leadsApiSource),'Bundle lead imports explicitly before building');
+const leadsBundle='const {handleLeads,pruneLeads,isLeadsPath}=(()=>{\n'+leadsApiSource+'\nreturn {handleLeads,pruneLeads,isLeadsPath};\n})();\n';
 const coachBundle='const {handleCoach,pruneCoach}=(()=>{\n'+coachApiSource+'\nreturn {handleCoach,pruneCoach};\n})();\n';
 const growthBundle='const {handleGrowthMetrics,pruneGrowthMetrics}=(()=>{\n'+growthApi+'\nreturn {handleGrowthMetrics,pruneGrowthMetrics};\n})();\n';
 const researchJobs=(await readFile(resolve(root,'server/research-jobs.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
@@ -95,7 +98,7 @@ const snapshotRegistry=(await readFile(resolve(root,'db/d1-snapshot-registry.mjs
 const snapshotApi=(await readFile(resolve(root,'server/operator-snapshot.mjs'),'utf8')).replace(/^import .*;\n/gm,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(snapshotRegistry+snapshotApi),'Bundle operator snapshot imports explicitly before building');
 const handler=(await readFile(resolve(root,'worker/index.mjs'),'utf8')).replace(/^import .*;\n/gm,'');
-const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle;
+const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle+leadsBundle;
 const source=core+'const assets='+JSON.stringify(assets)+';\n'+handler;
 await rm(output,{recursive:true,force:true});
 await mkdir(resolve(output,'dist/server'),{recursive:true});await mkdir(resolve(output,'.openai'),{recursive:true});
@@ -116,7 +119,9 @@ for (const path of ['/','/portal.html','/account.html','/degree-audit.html','/re
   const response=await module.default.fetch(new Request('https://degreepath.test'+path),{},{});assert.equal(response.status,200,path);
 }
 const authStatus=await module.default.fetch(new Request('https://degreepath.test/api/auth/status'),{},{});assert.equal(authStatus.status,200);assert.equal((await authStatus.json()).configured,false);
+for(const [path,method] of [['/api/leads/status','GET'],['/api/school-inquiries','POST'],['/api/plan-review/requests','POST'],['/api/admin/school-inquiries','GET'],['/api/admin/plan-review-requests','GET']]){const leadsOff=await module.default.fetch(new Request('https://degreepath.test'+path,{method}),{},{});assert.equal(leadsOff.status,404,'School inquiries and plan review must not exist unless their flag is 1: '+path);}
 for(const path of ['/api/coach/status','/api/coach/ask','/api/coach/feedback']){const coachOff=await module.default.fetch(new Request('https://degreepath.test'+path,{method:path.endsWith('status')?'GET':'POST'}),{},{});assert.equal(coachOff.status,404,'The coach must not exist unless COACH_ENABLED is 1: '+path);}
+for(const path of ['/plan-review/','/plan-review']){const reviewOff=await module.default.fetch(new Request('https://degreepath.test'+path),{},{});assert.equal(reviewOff.status,404,'The Plan review page must not exist unless PLAN_REVIEW_ENABLED is 1: '+path);}
 const missingDb=await module.default.fetch(new Request('https://degreepath.test/api/community/session'),{},{});assert.equal(missingDb.status,503);
 const unknownCurriculum=await module.default.fetch(new Request('https://degreepath.test/api/curriculum?program=unknown'),{},{});assert.equal(unknownCurriculum.status,404);
 console.log(JSON.stringify({output,assets:Object.keys(assets).length,workerBytes:Buffer.byteLength(source),nativeWorkerBytes:Buffer.byteLength(nativeSource),checks:'ESM, asset routes, API binding boundary passed'}));

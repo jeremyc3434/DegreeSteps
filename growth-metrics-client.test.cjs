@@ -71,3 +71,11 @@ test('action hooks accept only known public facts, deduplicate in memory, and ne
  assert.equal(f.api.track('unknown','workspace'),false);assert.equal(f.api.track('plan_started','https://private.example'),false);
  const offline=fixture({path:'/plan.html',failFetch:true});assert.equal(offline.api.track('plan_started','workspace'),true);assert.equal(offline.api.track('plan_started','workspace'),false);
 });
+
+test('revenue-feature events: school_inquiry sends only action submitted, plan_review_request sends no detail',()=>{
+ const f=fixture({path:'/plan.html'});f.calls.length=0;
+ assert.equal(f.api.track('school_inquiry','workspace',{action:'open'}),false);assert.equal(f.api.track('school_inquiry','workspace'),false);
+ assert.equal(f.api.track('plan_review_request','article',{action:'submitted'}),false);
+ assert.equal(f.api.track('school_inquiry','workspace',{action:'submitted'}),true);assert.equal(f.api.track('plan_review_request','article'),true);
+ assert.deepEqual(f.calls.map(call=>call.payload),[{event:'school_inquiry',context:'workspace',action:'submitted'},{event:'plan_review_request',context:'article'}]);
+});

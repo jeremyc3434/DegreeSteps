@@ -9,6 +9,8 @@
   const TOOLS=[['finder_used','Plan finder used'],['guided_started','Guided planner started'],['guided_results','Guided planner showed results'],['credits_worth_used','Credits-worth ranking computed'],['transfer_page_view','Transfer course pages viewed']];
   const PROVIDERS=['Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other'];
   const EMAILS=[['open','Opened in an email app'],['copy','Copied']];
+  // Opt-in features (off by default). The table appears only once either has been used in the last 28 days.
+  const REQUESTS=[['school_inquiry','School contact requests sent'],['plan_review_request','Plan review requests']];
   const DAY=/^\d{4}-\d{2}-\d{2}$/;
   function shift(day,days){return new Date(Date.parse(day+'T00:00:00Z')-days*86400000).toISOString().slice(0,10);}
   /** Totals for each window. `end` is the report's last UTC day; a window of N days covers end-(N-1)..end. */
@@ -41,6 +43,7 @@
       table('Tool use',head,TOOLS.map(([name,label])=>counts(label,window=>window.event(name))))+
       table('Course provider link clicks',head,[...PROVIDERS.map(provider=>counts(provider==='other'?'Other providers':provider,window=>window.detail('provider_click',provider))),counts('All providers',window=>window.event('provider_click'))])+
       table('Emails to schools',head,EMAILS.map(([action,label])=>counts(label,window=>window.detail('school_email',action))))+
+      (REQUESTS.some(([name])=>month.event(name)>0)?table('Requests from students',head,REQUESTS.map(([name,label])=>counts(label,window=>window.event(name)))):'')+
       '<p class="admin-growth-note">Visits are public page views. Each count is an anonymous daily total of actions, not unique people, and the same action is counted at most once per page. Percentages compare event counts between steps, so they are directional, not conversion rates. Visitors with browser privacy signals or the measurement setting turned off are not counted.</p>';
   }
   let revision=0;

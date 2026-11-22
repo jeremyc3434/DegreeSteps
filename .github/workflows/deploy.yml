@@ -64,6 +64,12 @@ jobs:
       - name: Install
         run: npm ci --ignore-scripts
       - name: Build
+        # Optional revenue features, off unless the environment variable is 1 (Settings > Environments > staging or
+        # production > Environment variables). At build time the flags add the disclosure copy and the /plan-review/
+        # sitemap entry; the deploy step below passes the same values to the Worker.
+        env:
+          SCHOOL_INQUIRIES_ENABLED: ${{ vars.SCHOOL_INQUIRIES_ENABLED }}
+          PLAN_REVIEW_ENABLED: ${{ vars.PLAN_REVIEW_ENABLED }}
         run: npm run build
       - name: Core tests
         run: node scripts/test-core.mjs
@@ -89,7 +95,15 @@ jobs:
         run: npx --yes wrangler@4.164.0 d1 migrations apply "$D1_NAME" --remote --config "$WRANGLER_CONFIG"
 
       - name: Deploy Worker
-        run: npx --yes wrangler@4.164.0 deploy --config "$WRANGLER_CONFIG"
+        env:
+          SCHOOL_INQUIRIES_ENABLED: ${{ vars.SCHOOL_INQUIRIES_ENABLED }}
+          PLAN_REVIEW_ENABLED: ${{ vars.PLAN_REVIEW_ENABLED }}
+        run: |
+          flags=()
+          for name in SCHOOL_INQUIRIES_ENABLED PLAN_REVIEW_ENABLED; do
+            if [ "${!name}" = "1" ]; then flags+=(--var "$name:1"); fi
+          done
+          npx --yes wrangler@4.164.0 deploy --config "$WRANGLER_CONFIG" "${flags[@]}"
 
       - name: Set Claude API key secret
         env:

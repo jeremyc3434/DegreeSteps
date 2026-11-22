@@ -243,6 +243,11 @@
     const email=Sheet.schoolEmail(planIndex,route?.id,{title:route?.title,school:route?.school,format});
     return email?'<p class="portal-school-email"><a href="'+esc(email.mailto)+'">Email the school these questions</a> <small>A short email in your words, for the admissions or transfer-credit office.</small></p>':'';
   }
+  // Optional extra actions from leads.js (school contact request, Plan review link). Empty unless a feature is on;
+  // they never change which plans are shown or their order.
+  function leadActionsHTML(route) {
+    return window.DegreeLeads?.actionsHTML({planId:route?.id,school:route?.school,title:route?.title})||'';
+  }
   function schoolCheckHTML(...routes) {
     const route=routes.find(item=>planQuestions(item).length),questions=route?planQuestions(route):[];
     return questions.length?'<section class="portal-school-check" aria-label="Needs school confirmation"><h3>Before you pay for courses, ask the school:</h3><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p>'+schoolEmailLink(route)+'</section>':'';
@@ -609,7 +614,7 @@
     const actions=formatOnly?'<button class="portal-primary" type="button" data-variant-preview="'+esc(route.id)+'">Use '+(route.modalities.includes('online')?'online':'on-campus')+' study</button>':needsReview?button('change-preferences','Update my preferences'):!mapped&&activePlanState?button('keep-active-plan','Back to my plan')+button('request-unmapped-replacement','Save this goal instead',true):button('use-degree',mapped?'Build course plan':'Save goal');
     const opportunitySchool=window.DegreeProgramOpportunities?.schoolFor(catalog,route),programFacts=opportunitySchool?DegreeProgramOpportunities.detailsHTML(route,opportunitySchool):'';
     const formatNote=mapped&&proposed.targetUnknowns?.some(issue=>issue.field==='modality')?'<p class="portal-hint" role="note">Confirm this degree’s study format with the university before enrolling.</p>':'';
-    return '<article class="portal-readiness-card"><span class="portal-readiness-label">'+(mapped?'Transfer-course plan':unsupported?'Course plan not available':'Check your preferences')+'</span><h2>'+esc(title)+'</h2><p class="portal-target-school">'+esc(school)+'</p>'+programFacts+schoolCheckHTML(route,target.route)+formatNote+'<p>'+esc(note)+'</p>'+(source?'<a href="'+esc(source.url)+'" target="_blank" rel="noopener">Official degree information ↗</a>':'')+'<div class="portal-actions">'+actions+'</div></article><div class="portal-links">'+button('degree-search','Choose another degree',true)+'</div>';
+    return '<article class="portal-readiness-card"><span class="portal-readiness-label">'+(mapped?'Transfer-course plan':unsupported?'Course plan not available':'Check your preferences')+'</span><h2>'+esc(title)+'</h2><p class="portal-target-school">'+esc(school)+'</p>'+programFacts+schoolCheckHTML(route,target.route)+(mapped?leadActionsHTML(route):'')+formatNote+'<p>'+esc(note)+'</p>'+(source?'<a href="'+esc(source.url)+'" target="_blank" rel="noopener">Official degree information ↗</a>':'')+'<div class="portal-actions">'+actions+'</div></article><div class="portal-links">'+button('degree-search','Choose another degree',true)+'</div>';
   }
   document.addEventListener('input',event=>{if(event.target.matches('#portal-question-form [name="degree"]'))renderDegreeOptions(true);});
   document.addEventListener('change',event=>{if(['portal-degree-level','portal-degree-format'].includes(event.target.id))renderDegreeOptions(true);if(event.target.matches('#portal-explore-form [name=goal]'))$('portal-subject-field').hidden=protectedGoals.includes(event.target.value);});
@@ -977,6 +982,7 @@
     if(recommendationPending)cancelRecommendations();
     await prepareRecommendations();
   }
+  window.addEventListener?.('DegreeSteps:leads-ready',()=>{if(document.querySelector('.portal-readiness-card'))render(false);});
   window.addEventListener?.('storage',event=>{if(event.key===KEY||event.key===null)refreshRecommendations().catch(showError);});
   window.addEventListener?.('focus',()=>refreshRecommendations().catch(showError));
   document.addEventListener('input',event=>{
