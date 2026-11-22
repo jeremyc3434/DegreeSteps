@@ -1,5 +1,6 @@
-/* Guided planner ordering against the loopback preview: "Spend less" follows the shared planning estimate that the
- * finder and plan pages show, the subject filter matches the finder's, and "Finish sooner" shows only sourced timing. */
+/* Guided planner results against the loopback preview: "Spend less" follows the shared planning estimate that the
+ * finder and plan pages show, the subject filter matches the finder's, "Finish sooner" shows only sourced timing,
+ * finished courses get a next step, and goals without a plan lead to the research request instead of a dead end. */
 const assert=require('node:assert/strict');
 const {chromium}=require('playwright');
 const index=require('./dist/data/plan-library-index.json');
@@ -62,6 +63,17 @@ const shown=page=>page.locator('#portal-recommendation-results [data-degree-prev
   assert.equal(saved.field,'business');assert.equal(saved.hasPrior,'some');assert.equal(saved.priority,'cost');
   const none=await guided({field:'business',degreeLevel:'bachelor',prior:'none',modality:'online',priority:'cost'});
   assert.equal(await none.locator('[data-prior-next]').count(),0);
+ });
+ await test('teacher, pilot and law goals lead to the research request, without a duplicated link',async()=>{
+  for(const goal of ['teacher','pilot','lawyer']){
+   const page=await guided({goal}),empty=page.locator('[data-empty-result]');
+   await empty.waitFor();assert.match(await empty.innerText(),/No course plan matches yet/);
+   const research=empty.locator('a.portal-primary');assert(await research.count()>=1,goal+' has a main research action');
+   for(const href of await research.evaluateAll(nodes=>nodes.map(node=>node.getAttribute('href'))))assert.match(href,/^request-plan\.html(\?source=https%3A%2F%2F.+)?$/,goal+' links to the existing research request');
+   assert.doesNotMatch(await empty.innerText(),/Pilot pathway|Lawyer pathway/,'career guides are not offered as degrees to research');
+   assert.equal(await page.locator('a:visible',{hasText:'Build from a degree link'}).count(),0,goal+' has no duplicated link');
+   assert.equal(await page.locator('input[type=email]:visible').count(),0,'no new contact collection');
+  }
  });
  assert.deepEqual(errors,[]);console.log(count+' guided ordering journeys passed.');
 }finally{for(const context of contexts)await context.close();await browser?.close();}})().catch(error=>{console.error(error);process.exitCode=1;});

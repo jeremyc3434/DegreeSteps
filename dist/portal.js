@@ -726,6 +726,8 @@
     if(!host){renderQuestion();updateResultNotice();return;}
     const focused=document.activeElement,route=focused?.dataset?.degreePreview,hadFocus=Boolean(host.contains?.(focused));
     host.innerHTML=recommendationResultsBody();updateResultNotice();
+    // The empty state carries its own research action; the shared link below would repeat it.
+    const degreeLink=document.querySelector?.('[data-degree-link]');if(degreeLink)degreeLink.hidden=resultCount===0;
     if(recommendationProgress)recommendationProgress.readyIds.forEach(id=>recommendationProgress.renderedIds.add(id));
     if(hadFocus&&route){const next=[...(host.querySelectorAll?.('[data-degree-preview]')||[])].find(node=>node.dataset.degreePreview===route);next?.closest?.('details')?.setAttribute('open','');next?.focus({preventScroll:true});}
   }
@@ -746,10 +748,19 @@
     const costBrief=costOrder?'Lowest planning estimate first.'+(costOrder.partial?' '+costOrder.partial+' plan'+(costOrder.partial===1?' shows':'s show')+' only known charges so far and follow'+(costOrder.partial===1?'s':'')+'.':'')+(costOrder.unestimated?' '+costOrder.unestimated+' plan'+(costOrder.unestimated===1?' has':'s have')+' no reviewed planning estimate and '+(costOrder.unestimated===1?'is':'are')+' listed last.':''):'';
     const basis=costOrder?'<p class="portal-ranking-note" data-cost-order>'+esc(costBrief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>Plans are ordered by the planning estimate shown on each card and in the plan finder: the low end of the range first, then its midpoint. Estimates cover tuition, listed fees and outside courses before financial aid. A range of known charges so far leaves some course prices out, so it follows the complete estimates; plans without a reviewed estimate come last.</p></details>':recommendationView?.rankBasis?'<p class="portal-ranking-note">'+esc(brief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>'+esc((personalOrder?'Published study and campus features matching your preferences are prioritized. Within the same fit, ':'')+recommendationView.rankBasis)+'</p></details>':'';
     const fallback=recommendationError?'<div class="portal-comparison-retry" role="status"><p>'+esc(recommendationError)+'</p>'+button('retry-recommendations','Try comparison again',true)+'</div>':'';
-    const result=cards.length?basis+cards.slice(0,3).join('')+(cards.length>3?'<details class="portal-route-options"><summary>More matching plans ('+(cards.length-3)+')</summary>'+cards.slice(3).join('')+'</details>':''):recommendationError?'':'<div class="portal-empty-result"><h2>No course plan matches yet.</h2><p>'+esc(protectedGoals.includes(state.profile.goal)?'No mapped program currently meets this career and study format.':'The matching degrees do not yet have transfer-course plans.')+'</p>'+'<a class="portal-primary" href="request-plan.html">Build from a degree link →</a>'+'</div>';
+    const result=cards.length?basis+cards.slice(0,3).join('')+(cards.length>3?'<details class="portal-route-options"><summary>More matching plans ('+(cards.length-3)+')</summary>'+cards.slice(3).join('')+'</details>':''):recommendationError?'':emptyResultHTML();
     resultCount=cards.length;
     if(cards.length)trackGrowth('guided_results');
     return fallback+result+finderLink(cards.length);
+  }
+  // No researched plan matches: the main action is the existing research request (request-plan.html), for a listed
+  // matching degree when the catalog has one, otherwise from any official degree link. No new contact collection.
+  function emptyResultHTML() {
+    const planned=new Set(availableRoutes().map(route=>route.id));let unplanned=[];
+    try{unplanned=Journey.recommend({...state,learning:[]},{...catalog,pathways:catalog.pathways.filter(route=>!planned.has(route.id)&&route.routeType!=='career-guide'&&degreeResearchURL(route))},[]).map(result=>result.pathway).slice(0,3);}catch{unplanned=[];}
+    const reason=protectedGoals.includes(state.profile.goal)?'No researched plan currently meets this career goal and study format.':unplanned.length?'We list matching degrees, but haven’t researched their transfer-course plans yet.':'None of our researched plans match these choices yet.';
+    const research=unplanned.length?'<p>Research one from its official page: we check the college’s requirements and transfer rules, then build a plan you can edit.</p><ul class="portal-research-list">'+unplanned.map(route=>'<li><span><strong>'+esc(route.title)+'</strong> '+esc(route.school)+'</span><a class="portal-primary" href="'+esc(degreeResearchURL(route))+'">Research this degree →</a></li>').join('')+'</ul><p class="portal-research-other"><a href="request-plan.html">Research a different degree from its link →</a></p>':'<p>Paste a college’s official degree page and we’ll check its requirements and transfer rules, then build a plan you can edit.</p><a class="portal-primary" href="request-plan.html">Research a degree from its link →</a>';
+    return '<div class="portal-empty-result" data-empty-result><h2>No course plan matches yet.</h2><p>'+esc(reason)+'</p>'+research+'</div>';
   }
   // Points to the plan finder when it lists more plans for this subject than the guided results show.
   function finderLink(shown) {
@@ -778,7 +789,7 @@
     return '<section class="portal-prior-next" data-prior-next aria-labelledby="portal-prior-next-title"><h2 id="portal-prior-next-title">Add the courses you’ve finished, so the plans are ranked for you</h2><p>You said you have courses or exam credits. Add them and these plans are re-ranked by how much of each degree they could fill. Your answers here are kept.</p><div class="portal-prior-next-actions"><a class="portal-primary" href="credits-worth.html?from=guided">Add finished courses →</a><a href="import-courses.html?from=portal">Upload a transcript or spreadsheet</a></div></section>';
   }
   function routesBody() {
-    return profileSummaryHTML()+priorCoursesNextStep()+'<div id="portal-recommendation-results">'+recommendationResultsBody()+'</div><div class="portal-links">'+button('change-preferences','Change my choices',true)+'<a href="request-plan.html">Build from a degree link →</a></div>';
+    return profileSummaryHTML()+priorCoursesNextStep()+'<div id="portal-recommendation-results">'+recommendationResultsBody()+'</div><div class="portal-links">'+button('change-preferences','Change my choices',true)+'<a href="request-plan.html" data-degree-link'+(resultCount===0?' hidden':'')+'>Build from a degree link →</a></div>';
   }
   function renderQuestion() {
     if(!['start','school','degree','purpose','prior','format','priority','routes','about'].includes(state.journey.step))state.journey.step='purpose';
