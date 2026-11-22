@@ -406,7 +406,9 @@ const coachApi=(()=>{
     const path=new URL(request.url).pathname;
     if(path!=='/api/coach'&&!path.startsWith('/api/coach/'))return null;
     // Flag off: the coach does not exist. The status body lets the page hide the entry point.
-    if(!enabled(env))return json(path==='/api/coach/status'?{enabled:false}:{error:'Not found.'},404);
+    // Off: the status check answers 200 {enabled:false} (the page renders nothing, and the browser logs no failed request);
+    // every other coach path stays 404.
+    if(!enabled(env))return path==='/api/coach/status'?json({enabled:false},200):json({error:'Not found.'},404);
     if(path==='/api/coach/status'){
       if(request.method!=='GET')fail(405,'Use GET.','method_not_allowed');
       if(!env.DB||!salt(env))return json({enabled:false},200);

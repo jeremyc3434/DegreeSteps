@@ -36,7 +36,7 @@ test('flag off: every coach path is 404, status says disabled, and nothing is re
   let touched=false;const env={DB:{prepare(){touched=true;}},COACH_DATA:async()=>{touched=true;},COACH_RESOLVE_KEY:async()=>{touched=true;},COACH_FETCH:async()=>{touched=true;}};
   for(const value of [undefined,'0','true','',1]){
     const off={...env,COACH_ENABLED:value};
-    const s=await status(off);assert.equal(s.status,404);assert.deepEqual(await s.json(),{enabled:false});
+    const s=await status(off);assert.equal(s.status,200);assert.deepEqual(await s.json(),{enabled:false});
     for(const path of ['/api/coach/ask','/api/coach/feedback','/api/coach','/api/coach/other'])assert.equal((await handleCoach(new Request(origin+path,{method:'POST',body:'{}'}),off)).status,404);
   }
   assert.equal(touched,false);

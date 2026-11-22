@@ -27,12 +27,12 @@ const call=(f,request,at=now)=>handleLeads(request,f.env,{now:at});
 const inquiry=(extra={})=>({planId:wguPlan,firstName:'Jordan',email:'jordan@example.com',phone:'',location:'Ohio',startTiming:'next-6-months',priorCredit:'yes',consent:true,consentVersion:leadsInternals.INQUIRY_CONSENT_VERSION,...extra});
 const review=(extra={})=>({name:'Sam Rivera',email:'sam@example.com',planId:libertyPlan,note:'Two Sophia courses done.',consent:true,consentVersion:leadsInternals.REVIEW_CONSENT_VERSION,...extra});
 
-test('with both flags off every route is 404 and nothing is read, not even the database or plan data',async()=>{
+test('with both flags off every route but status is 404, status says disabled, and nothing is read',async()=>{
  let touched=0;const trap=new Proxy({},{get(){touched++;throw Error('must not be read');}});
  for(const [path,method]of ROUTES){
   assert(isLeadsPath(path));
   const response=await handleLeads(new Request(origin+path,{method,headers:{Origin:origin,'Content-Type':'application/json','X-Leads-Request':'1'},...(method==='POST'?{body:'{}'}:{})}),{DB:trap,LEADS_DATA:()=>{touched++;},PORTAL_USER:{id:'owner-1'}});
-  assert.equal(response.status,404,path);
+  assert.equal(response.status,path==='/api/leads/status'?200:404,path);
  }
  assert.equal(touched,0);
  assert.deepEqual(await (await handleLeads(get('/api/leads/status'),{})).json(),{enabled:false});

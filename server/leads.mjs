@@ -177,7 +177,7 @@ const leadsApi=(()=>{
     const route=ROUTES[path],now=Number.isFinite(context?.now)?context.now:Date.now();
     try{
       // Flags off: the feature does not exist. Nothing else is read.
-      if(route==='status'){if(!inquiriesOn(env)&&!reviewOn(env))return json({enabled:false},404);if(request.method!=='GET')fail(405,'Use GET.','method_not_allowed');return await status(env);}
+      if(route==='status'){if(!inquiriesOn(env)&&!reviewOn(env))return json({enabled:false},200);if(request.method!=='GET')fail(405,'Use GET.','method_not_allowed');return await status(env);}
       if((route==='inquiry'||route==='inquiries')&&!inquiriesOn(env))return notFound();
       if((route==='review'||route==='reviews')&&!reviewOn(env))return notFound();
       if(!ready(env))fail(503,'This form is temporarily unavailable. Your plan has not changed.','leads_unconfigured');

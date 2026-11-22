@@ -20,10 +20,10 @@ function fixture(t,flags={}){
 const reviewRequest=body=>new Request(origin+'/api/plan-review/requests',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','X-Leads-Request':'1','CF-Connecting-IP':'203.0.113.20'},body:JSON.stringify(body)});
 const reviewBody={name:'Synthetic Student',email:'student@example.invalid',planId:plan,consent:true,consentVersion:'plan-review-v1'};
 for(const {kind,worker}of workers){
- test(kind+': with both flags unset every route and the offer page are 404, before identity or database work',async t=>{
+ test(kind+': with both flags unset the status says disabled, and every other route and the offer page are 404, before identity or database work',async t=>{
   const f=fixture(t);
   for(const [path,method]of[['/api/leads/status','GET'],['/api/school-inquiries','POST'],['/api/plan-review/requests','POST'],['/api/admin/school-inquiries','GET'],['/api/admin/plan-review-requests','GET'],['/plan-review/','GET'],['/plan-review','GET']]){
-   const response=await worker.fetch(new Request(origin+path,{method,headers:{Cookie:'__Host-degreepath_access=verified-access'}}),f.env,f.ctx);assert.equal(response.status,404,path);
+   const response=await worker.fetch(new Request(origin+path,{method,headers:{Cookie:'__Host-degreepath_access=verified-access'}}),f.env,f.ctx);assert.equal(response.status,path==='/api/leads/status'?200:404,path);if(path==='/api/leads/status')assert.deepEqual(await response.json(),{enabled:false});
   }
   assert.equal(f.calls.auth,0);assert.equal(f.calls.queries.length,0);
   assert.equal((await worker.fetch(new Request(origin+'/why-its-free/'),f.env,f.ctx)).status,200);

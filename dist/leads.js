@@ -1,5 +1,5 @@
 /* Opt-in "Have [School] contact me" and the Plan review request form. Both are off unless the server says
-   otherwise: GET /api/leads/status answers 404 while SCHOOL_INQUIRIES_ENABLED and PLAN_REVIEW_ENABLED are
+   otherwise: GET /api/leads/status answers {enabled:false} while SCHOOL_INQUIRIES_ENABLED and PLAN_REVIEW_ENABLED are
    unset, and then this script renders nothing and loads no styles. It never reads or writes the browser's saved
    plan and never changes which plans, schools or courses are shown, or their order: the
    worksheet and planner ask it only for extra action links next to a plan that is already on screen. */
