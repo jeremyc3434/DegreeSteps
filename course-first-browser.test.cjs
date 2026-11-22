@@ -73,7 +73,7 @@ async function test(name,run){
   assert.equal((await card.locator('[data-potential-fit-credits]').innerText()).trim(),'6');
   assert.equal((await card.locator('[data-confirmed-credits]').innerText()).trim(),'0');
   assert.equal((await card.locator('[data-remaining-credits]').innerText()).trim(),'117');
-  assert(await card.locator('[data-remaining-cost]').isVisible());assert.match(await card.locator('[data-remaining-cost]').innerText(),/\$[\d,]+/);assert.match(await card.locator('[data-tuition-left]').textContent(),/\$[\d,]+/,'the tuition share sits under See what’s included');
+  assert(await card.locator('[data-remaining-cost]').isVisible());assert.match(await card.locator('[data-remaining-cost]').innerText(),/Planning estimate\s*\$[\d,]+–\$[\d,]+|Cost needs confirmation/,'the card shows the shared planning estimate or says the cost needs confirmation');assert.doesNotMatch(await card.locator('[data-remaining-cost]').innerText(),/Known costs so far|Tuition \+ courses estimate/);
   assert.equal(await card.locator('[data-study-weeks]').count(),0);
   assert(await card.locator('[data-estimate-plan]').isVisible());
   await card.locator('[data-course-review]>summary').click();

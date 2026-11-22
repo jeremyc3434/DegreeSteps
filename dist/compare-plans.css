@@ -109,3 +109,7 @@ body{background:#f8fafc;color:#172d4b}
 .portal-tier { margin: 4px 0 8px; }
 .portal-tier-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: .8125rem; font-weight: 600; }
 .portal-tier-confirm { background: #fff4e5; color: #8a4b0f; }
+/* Audit fixes: the shared planning estimate sits inside the card without its own frame; suggestions are labelled. */
+.comparison-shared-estimate .plan-estimate{margin:0;padding:0;border:0;background:none;box-shadow:none}
+.comparison-cost-confirm>strong{font-size:1.25rem}
+.comparison-suggested-note{margin:6px 0 0;padding:8px 10px;border-radius:7px;background:#f1f5fb;color:#435a76;font-size:14px;line-height:1.4}
