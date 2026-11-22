@@ -233,9 +233,15 @@
   }
   // Plans that still need school confirmation keep their open questions on the
   // availability screen, as in the plan finder.
+  // The student's own short email to the school, from the plan's open questions (DegreeSheet.schoolEmail).
+  function schoolEmailLink(route) {
+    const format=(route?.modalities||[]).length===1?(route.modalities[0]==='campus'?'on campus':'online'):'';
+    const email=Sheet.schoolEmail(planIndex,route?.id,{title:route?.title,school:route?.school,format});
+    return email?'<p class="portal-school-email"><a href="'+esc(email.mailto)+'">Email the school these questions</a> <small>A short email in your words, for the admissions or transfer-credit office.</small></p>':'';
+  }
   function schoolCheckHTML(...routes) {
-    const questions=routes.map(planQuestions).find(items=>items.length)||[];
-    return questions.length?'<section class="portal-school-check" aria-label="Needs school confirmation"><h3>Before you pay for courses, ask the school:</h3><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p></section>':'';
+    const route=routes.find(item=>planQuestions(item).length),questions=route?planQuestions(route):[];
+    return questions.length?'<section class="portal-school-check" aria-label="Needs school confirmation"><h3>Before you pay for courses, ask the school:</h3><ul>'+questions.map(question=>'<li>'+esc(question)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p>'+schoolEmailLink(route)+'</section>':'';
   }
   function attachSubjects() {
     const plans=planIndex?.plans;if(!catalog||!plans||typeof plans!=='object'||!Array.isArray(catalog.pathways))return;
@@ -669,7 +675,7 @@
     const personal=DegreeGuide.preferenceFit?DegreeGuide.preferenceFit(state.profile,r,result.model,catalog.campusFacts):{badges:[],reasons:[]};
     const badges=personal.badges.length?'<div class="portal-personal-badges" aria-label="Study and campus features">'+personal.badges.slice(0,3).map(badge=>badge.sourceUrl?'<a href="'+esc(badge.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(badge.label)+'</a>':'<span>'+esc(badge.label)+'</span>').join('')+'</div>':'';
     const why=personal.reasons.length?'<details class="portal-fit-reasons"><summary>Why this fits your preferences</summary><ul>'+personal.reasons.map(reason=>'<li>'+esc(reason)+'</li>').join('')+'</ul></details>':'';
-    const questions=planQuestions(r),tier=planIndex?.plans?.[r.id]?(questions.length?'<p class="portal-tier"><span class="portal-tier-badge portal-tier-confirm">Needs school confirmation</span></p><details class="portal-confirm-questions"><summary>Before you pay for courses ('+questions.length+')</summary><ul>'+questions.map(q=>'<li>'+esc(q)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p></details>':'<p class="portal-tier"><span class="portal-tier-badge portal-tier-reviewed">Reviewed plan</span></p>'):'';
+    const questions=planQuestions(r),tier=planIndex?.plans?.[r.id]?(questions.length?'<p class="portal-tier"><span class="portal-tier-badge portal-tier-confirm">Needs school confirmation</span></p><details class="portal-confirm-questions"><summary>Before you pay for courses ('+questions.length+')</summary><ul>'+questions.map(q=>'<li>'+esc(q)+'</li>').join('')+'</ul><p>This course plan is complete, but these points are not yet confirmed in the school’s published rules.</p>'+schoolEmailLink(r)+'</details>':'<p class="portal-tier"><span class="portal-tier-badge portal-tier-reviewed">Reviewed plan</span></p>'):'';
     return '<article class="portal-route-card'+(questions.length?' portal-route-card-confirm':'')+'"><'+(secondary?'h3':'h2')+'>'+esc(r.title)+'</'+(secondary?'h3':'h2')+'><p class="portal-target-school">'+esc(r.school)+'</p>'+tier+badges+'<div class="portal-route-facts"><span>'+esc(format)+'</span>'+(credits?'<strong>'+esc(credits)+'</strong>':'')+fit+review+(choiceCount>0?'<span>'+choiceCount+' course choice'+(choiceCount===1?'':'s')+' to make</span>':'')+'</div>'+estimate+why+'<button type="button" class="portal-primary" data-degree-preview="'+esc(r.id)+'">'+(modeled?'See course plan':'See degree')+'</button></article>';
   }
   function progressStatus(progress) {const ready=[...progress.candidates.values()].filter(candidate=>candidate.available&&candidate.eligible).length;return 'Checked '+progress.checked+' of '+progress.matchingIds.length+' matching plans. '+ready+' ready to open.';}

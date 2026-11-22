@@ -1,76 +1,19 @@
-# Questions for the schools
+# Open school questions (internal reference)
 
-These are short emails to send to each school's transfer-credit or admissions office. Each school gets at most three questions that it can answer in a sentence. When a school replies, forward the reply and the plans can move from "Needs school confirmation" to "Reviewed".
+Students send these questions themselves. On any plan marked "Needs school confirmation", the worksheet and the guided planner offer **Email the school these questions**. It opens a short email in the student's own words, with at most three questions built from that plan's open items, and the student sends it to the school's admissions or transfer-credit office. DegreeSteps never emails schools for students. The email builder is `DegreeSheet.schoolEmail` in `dist/sheet-state.js` (tests: `sheet-school-email.test.cjs`).
 
-## Excelsior University
+When a student (or anyone) forwards a school's written answer, record it in the school's pathway kit and recompile, so the plan can move to "Reviewed".
 
-**Subject:** Two quick transfer-credit questions
+## What is still open, by school
 
-> Hello,
->
-> I help adult students plan bachelor's degrees at Excelsior (Business, Liberal Arts and Psychology). Could you confirm two things?
->
-> 1. What is the most credit you accept in total from ACE- or NCCRS-evaluated courses and exams (for example Sophia, Study.com, StraighterLine or CLEP)?
-> 2. Is there a time limit on how old transfer credit can be? Your partner guides mention 10 years, but your credit policy says there is generally no limit.
->
-> Thank you,
-> Jeremy Collins, DegreeSteps
+- **Excelsior University** (B.S. Business, Liberal Arts, Psychology): the combined cap on ACE/NCCRS-evaluated credit; and whether transfer credit has a time limit (partner guides say 10 years, the credit policy says generally none).
+- **Liberty University** (11 plans): the ACE/NCCRS cap for Religion, Apologetics and Criminal Justice A.A. (online) and Accounting & Data Analysis B.S. (residential); major-course residency and unofficial evaluations; state-specific online general education; how online students meet BUSI 105 → BUSI 301; and the course matches listed below.
+- **Thomas Edison State University** (6 plans): whether Sophia and CLEP remain accepted while listed "Provisionally Approved – Review Pending"; the minimum CLEP score; which catalog year applies; specific General Management items (FIN-3010 credit amount, ACC-4010 course identity, MAR-2010 vs MKT-2010, ETH-2200/BUS-2100, BIO-1010/NUT-1010 placement); and the course matches listed below.
+- **University of Phoenix** (competency-based MBA, MHA, MIS; M.S. Psychology): whether each is enrolling and which catalog applies.
+- **Western Governors University** (Accounting B.S., IT Management B.S.): competency units required at WGU, and whether the capstone counts.
 
-## Liberty University
+## Course matches to confirm
 
-**Subject:** Three quick questions about online transfer credit
-
-> Hello,
->
-> I help students plan Liberty's online degrees. Could you confirm:
->
-> 1. For the online A.A. in Religion, Apologetics and Criminal Justice, what is the most ACE- or NCCRS-evaluated credit you accept?
-> 2. For online bachelor's degrees, how many credits in the major must be taken at Liberty?
-> 3. For the online B.S. in Business Administration & Data Analysis, BUSI 301 requires BUSI 105, which the catalog lists only on campus. How do online students meet that prerequisite?
->
-> Thank you,
-> Jeremy Collins, DegreeSteps
-
-## Thomas Edison State University
-
-**Subject:** Three quick transfer-credit questions
-
-> Hello,
->
-> I help adult students plan TESU degrees. Could you confirm:
->
-> 1. Your provider list shows Sophia and CLEP as "Provisionally Approved – Review Pending." Are courses and exams taken now still accepted under your current guides?
-> 2. What is the minimum CLEP score you accept?
-> 3. Which catalog year applies to a student who enrolls this term?
->
-> Thank you,
-> Jeremy Collins, DegreeSteps
-
-## University of Phoenix
-
-**Subject:** Quick question about competency-based master's programs
-
-> Hello,
->
-> Are the competency-based MBA, MHA and MIS, and the M.S. in Psychology (direct assessment), currently enrolling new students? And do any of them accept transfer credit?
->
-> Thank you,
-> Jeremy Collins, DegreeSteps
-
-## Western Governors University
-
-**Subject:** Quick question about residency requirements
-
-> Hello,
->
-> For the B.S. in Accounting and the B.S. in IT Management, how many competency units must a student earn at WGU, and does the capstone count toward that?
->
-> Thank you,
-> Jeremy Collins, DegreeSteps
-
----
-
-## Only if a school asks for detail: course matches to confirm
 
 
 Each line is an outside course we propose for a requirement, based on the school's published guides or partner maps, but which the school's sources do not yet confirm for this exact program.
