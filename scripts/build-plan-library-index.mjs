@@ -32,14 +32,14 @@ export function questionsFor(findings){
   return [...new Set(out)];
 }
 
-export function buildIndex({registry,quality,estimates={},starts={},pages=new Map()}){
+export function buildIndex({registry,quality,estimates={},starts={},timings={},pages=new Map()}){
   const byModel=new Map(quality.programs.map(p=>[p.modelId,p])),plans={};
   for(const model of registry.models){
     const report=byModel.get(model.id);
     if(!report||model.readyTemplate!==true||report.research?.status==='unavailable')continue;
     const reviewed=report.publication?.ready===true||report.research?.status==='research-ready';
     const questions=reviewed?[]:questionsFor(report.findings||[]);
-    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,level:levelOf(model.level),subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(starts[routeId]?{start:starts[routeId]}:{}),...(estimates[routeId]?{estimate:estimates[routeId]}:{}),...(pages.has(routeId)?{page:pages.get(routeId)}:{})};
+    for(const routeId of model.routeIds||[])plans[routeId]={modelId:model.id,tier:reviewed?'reviewed':'confirmation',published:report.publication?.ready===true,level:levelOf(model.level),subjects:subjectsFor(model.title),questions,openItems:reviewed?0:(report.findings||[]).filter(f=>f.blocking).length,...(starts[routeId]?{start:starts[routeId]}:{}),...(estimates[routeId]?{estimate:estimates[routeId]}:{}),...(timings[routeId]?{timing:timings[routeId]}:{}),...(pages.has(routeId)?{page:pages.get(routeId)}:{})};
   }
   return {kind:'degreesteps-plan-library-index',version:1,registryRevision:quality.registryRevision,asOf:quality.asOf,subjects:Object.fromEntries(subjectAreas.map(s=>[s.id,s.label])),plans:Object.fromEntries(Object.entries(plans).sort(([a],[b])=>a.localeCompare(b)))};
 }
@@ -50,7 +50,7 @@ if(import.meta.url===`file://${process.argv[1]}`){
   const {createRequire}=await import('node:module'),require=createRequire(import.meta.url);
   const Planner=require('../dist/planner.js'),Estimate=require('../dist/plan-estimate-engine.js');
   const [registry,baselines,rates]=await Promise.all(['dist/data/curriculum-registry.json','dist/data/baseline-index.json','dist/data/plan-estimate-rates.json'].map(read));
-  const docs=new Map(),estimates={},starts={},priced=new Set((rates.providers||[]).map(item=>item.provider));
+  const docs=new Map(),estimates={},starts={},timings={},priced=new Set((rates.providers||[]).map(item=>item.provider));
   for(const baseline of Object.values(baselines.baselines||{})){
     const entry=registry.models.find(item=>item.id===baseline.modelId);if(!entry)continue;
     if(!docs.has(entry.path))docs.set(entry.path,await read('dist/'+entry.path));
@@ -61,12 +61,15 @@ if(import.meta.url===`file://${process.argv[1]}`){
     if(plan.totals?.external!==baseline.summary.transferCredits)continue;
     const estimate=Estimate.calculate({program:model,plan,rates}),range=estimate?.costs?.knownRange;
     if(!range||!Number.isFinite(range.min)||!Number.isFinite(range.max)||range.min<=0)continue;
+    // Study time from the same estimate: outside months and university terms at the engine's default pace assumptions.
+    const timing=estimate.timing;
+    if(timing?.outsideMonths&&timing?.universityTerms)timings[baseline.pathwayId]={outsideMonths:{min:timing.outsideMonths.min,max:timing.outsideMonths.max},universityTerms:{min:timing.universityTerms.min,max:timing.universityTerms.max},termLabel:timing.termLabel,termMonths:timing.universityTermMonths??null};
     if(estimate.status==='planning-range')estimates[baseline.pathwayId]={min:range.min,max:range.max};
     else if(estimate.status==='partial-range'){const used=[...new Set(plan.rows.map(row=>row.option?.provider).filter(provider=>provider&&provider!=='University'))];estimates[baseline.pathwayId]={min:range.min,max:range.max,partial:true,unpriced:used.filter(provider=>!priced.has(provider))};}
   }
   // The public, read-only plan page for routes that have one (finder "Just preview").
   const {loadPublicPlans}=await import('./public-plan-pages.mjs'),pages=new Map((await loadPublicPlans(resolve(root,'dist'))).map(plan=>[plan.id,plan.path]));
-  const index=buildIndex({registry,quality:await read('dist/data/pathway-quality-report.json'),estimates,starts,pages});
+  const index=buildIndex({registry,quality:await read('dist/data/pathway-quality-report.json'),estimates,starts,timings,pages});
   const text=JSON.stringify(index)+'\n',tiers=Object.values(index.plans).reduce((n,p)=>(n[p.tier]=(n[p.tier]||0)+1,n),{});
   if(process.argv.includes('--check')){let current='';try{current=await readFile(output,'utf8');}catch{}assert.equal(current,text,'dist/data/plan-library-index.json is stale; run node scripts/build-plan-library-index.mjs');}
   else await writeFile(output,text);

@@ -657,6 +657,19 @@
     if(estimateRates||!window.DegreePlanEstimate)return;
     try{const response=await fetch('data/plan-estimate-rates.json');if(response.ok)estimateRates=await response.json();}catch{estimateRates=null;}
   }
+  function sharedTiming(timing) {
+    const valid=value=>value&&knownEstimate(value.min)&&knownEstimate(value.max)&&value.max>=value.min,span=value=>value.min===value.max?String(value.min):value.min+'–'+value.max;
+    if(!valid(timing?.outsideMonths)||!valid(timing?.universityTerms))return '';
+    const terms=timing.termMonths===6?'six-month terms':timing.termLabel==='semester'?'semesters':timing.termLabel==='trimester'?'trimesters':'study periods';
+    return 'About '+span(timing.outsideMonths)+' months of outside courses, then '+span(timing.universityTerms)+' university '+terms;
+  }
+  // Spend less: order by the shared planning estimate (the finder's and plan pages' range): low end, then midpoint.
+  // Complete estimates first, then known-charges-so-far ranges, then plans without an estimate (labelled on their cards).
+  function sharedCostOrder(ids) {
+    const estimate=id=>{const value=planIndex?.plans?.[id]?.estimate;return value&&knownEstimate(value.min)&&knownEstimate(value.max)?value:null;},group=id=>{const value=estimate(id);return !value?2:value.partial?1:0;};
+    const ordered=[...ids].sort((a,b)=>{const ga=group(a),gb=group(b);if(ga!==gb||ga===2)return ga-gb;const ea=estimate(a),eb=estimate(b);return ea.min-eb.min||(ea.min+ea.max)-(eb.min+eb.max);});
+    return {ordered,partial:ordered.filter(id=>group(id)===1).length,unestimated:ordered.filter(id=>group(id)===2).length};
+  }
   function routeCard(result,scenario=null,secondary=false) {
     const r=result.pathway,modeled=routeHasMap(r),choiceCount=DegreeProgramCatalog.planChoiceCount(r,catalog,result.model?[result.model]:models),format=(r.modalities||[]).map(m=>m==='campus'?'On campus':'Online').join(' / '),summary=scenario?.summary||scenario;
     let plan=scenario?.draft?.plan,credits='';
@@ -676,7 +689,10 @@
     const range=value=>dollars(value.min)+(value.max!==value.min?'–'+dollars(value.max):'');
     const remaining=sameBasis?'<div><dt>Your remaining planning estimate</dt><dd>'+esc(range(personalRange.remaining))+'</dd></div><div><dt>Full-route planning estimate</dt><dd>'+esc(range(personalRange.full))+'</dd></div>':'';
     const cost=hasPersonalCost?'<div><dt>Your remaining cost estimate</dt><dd>'+esc(dollars(summary.remainingCost))+'</dd></div>'+(sharedRange?'<div><dt>Full-route planning estimate</dt><dd>'+esc(sharedRange)+'</dd></div>':''):remaining?remaining:sharedRange?'<div><dt>'+(shared.partial?'Known charges so far':'Planning estimate')+'</dt><dd>'+esc(sharedRange)+'</dd></div>':indexed?'<div><dt>Cost</dt><dd>Needs confirmation</dd></div>':amount===null?(rate?'<div><dt>Published university rate</dt><dd>'+esc(rate)+'</dd></div>':''):'<div><dt>Tuition + courses estimate</dt><dd>'+esc(dollars(amount))+'</dd></div>';
-    const timing=knownEstimate(summary?.estimatedWeeks)?'<div><dt>Estimated study time</dt><dd>'+esc(summary.estimatedWeeks)+' weeks</dd></div>':'';
+    // Finish sooner: the published starting route's study time from the same shared estimate (outside months, then
+    // university terms at its stated pace assumptions). Nothing is shown when the data has no timing for this plan.
+    const indexedTiming=state.profile.priority==='speed'&&!(state.learning||[]).length?sharedTiming(indexed?.timing):'';
+    const timing=indexedTiming?'<div><dt>Study time · starting route</dt><dd>'+esc(indexedTiming)+'</dd></div>':knownEstimate(summary?.estimatedWeeks)?'<div><dt>Estimated study time</dt><dd>'+esc(summary.estimatedWeeks)+' weeks</dd></div>':'';
     const fit=knownEstimate(summary?.collectionFitCredits)&&summary.collectionFitCredits>0?'<span>'+esc(summary.collectionFitCredits)+' '+units+' fit from My courses'+(personalRange&&!remaining?' (about '+esc(range(personalRange.saved))+' of outside-course spending avoided)':'')+'</span>':'';
     const reviewCount=(Array.isArray(summary?.reviewCourses)?summary.reviewCourses:[]).filter(course=>course?.status==='earned').length;
     const review=reviewCount?'<span class="portal-route-review">'+reviewCount+' finished course'+(reviewCount===1?' needs':'s need')+' review</span>':'';
@@ -722,10 +738,13 @@
     if(personalOrder)orderedIds.sort((a,b)=>personalScores.get(b)-personalScores.get(a));
     // Reviewed plans first; plans that need school confirmation follow, keeping their relative order.
     orderedIds.sort((a,b)=>Number(needsConfirmation(byId.get(a).pathway))-Number(needsConfirmation(byId.get(b).pathway)));
+    const costOrder=state.profile.priority==='cost'&&planIndex?.plans&&typeof planIndex.plans==='object'&&orderedIds.some(id=>planIndex.plans[id])?sharedCostOrder(orderedIds):null;
+    if(costOrder)orderedIds.splice(0,orderedIds.length,...costOrder.ordered);
     const cards=orderedIds.map((id,index)=>routeCard(byId.get(id),scenarios.get(id)||candidates.get(id),index>=3));
     const scope=recommendationView?.rankingScope,ordering=scope?.orderingMetric,kind=ordering==='estimatedWeeks'?'study-time':ordering==='universityTuitionRemaining'?'university tuition':ordering==='remainingCost'?'remaining cost':ordering==='estimatedBaseCost'?'tuition + course':'';
     const brief=kind?(personalOrder?'Matching study and campus preferences first; available '+kind+' estimates within those matches.':'Available '+kind+' estimates first.')+(scope.unestimatedCount?' '+scope.unestimatedCount+' other plan'+(scope.unestimatedCount===1?' has':'s have')+' no comparable estimate.':''):'Matched to your '+(state.learning.length?'courses and preferences.':'preferences.');
-    const basis=recommendationView?.rankBasis?'<p class="portal-ranking-note">'+esc(brief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>'+esc((personalOrder?'Published study and campus features matching your preferences are prioritized. Within the same fit, ':'')+recommendationView.rankBasis)+'</p></details>':'';
+    const costBrief=costOrder?'Lowest planning estimate first.'+(costOrder.partial?' '+costOrder.partial+' plan'+(costOrder.partial===1?' shows':'s show')+' only known charges so far and follow'+(costOrder.partial===1?'s':'')+'.':'')+(costOrder.unestimated?' '+costOrder.unestimated+' plan'+(costOrder.unestimated===1?' has':'s have')+' no reviewed planning estimate and '+(costOrder.unestimated===1?'is':'are')+' listed last.':''):'';
+    const basis=costOrder?'<p class="portal-ranking-note" data-cost-order>'+esc(costBrief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>Plans are ordered by the planning estimate shown on each card and in the plan finder: the low end of the range first, then its midpoint. Estimates cover tuition, listed fees and outside courses before financial aid. A range of known charges so far leaves some course prices out, so it follows the complete estimates; plans without a reviewed estimate come last.</p></details>':recommendationView?.rankBasis?'<p class="portal-ranking-note">'+esc(brief)+'</p><details class="portal-ranking-details"><summary>How these plans are ordered</summary><p>'+esc((personalOrder?'Published study and campus features matching your preferences are prioritized. Within the same fit, ':'')+recommendationView.rankBasis)+'</p></details>':'';
     const fallback=recommendationError?'<div class="portal-comparison-retry" role="status"><p>'+esc(recommendationError)+'</p>'+button('retry-recommendations','Try comparison again',true)+'</div>':'';
     const result=cards.length?basis+cards.slice(0,3).join('')+(cards.length>3?'<details class="portal-route-options"><summary>More matching plans ('+(cards.length-3)+')</summary>'+cards.slice(3).join('')+'</details>':''):recommendationError?'':'<div class="portal-empty-result"><h2>No course plan matches yet.</h2><p>'+esc(protectedGoals.includes(state.profile.goal)?'No mapped program currently meets this career and study format.':'The matching degrees do not yet have transfer-course plans.')+'</p>'+'<a class="portal-primary" href="request-plan.html">Build from a degree link →</a>'+'</div>';
     resultCount=cards.length;
