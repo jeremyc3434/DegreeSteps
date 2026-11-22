@@ -403,6 +403,14 @@
     if(focusKind)document.querySelector('[data-'+focusKind+'="'+CSS.escape(focusRow)+'"]')?.focus({preventScroll:true});
     else if(focusId)$(focusId)?.focus({preventScroll:true});
   }
+  // Email plan alerts (plan-alerts.js): an unticked opt-in for a plan saved to the student's account, shown only when
+  // the site enables alerts and the plan is in the public plan library. It never changes the plan or the device draft.
+  function renderAlerts() {
+    if(task||!window.DegreePlanAlerts)return;
+    let node=$('sheet-alerts');if(!node&&$('sheet-footer')){node=document.createElement('div');node.id='sheet-alerts';node.hidden=true;$('sheet-footer').after(node);}
+    const id=pathway?.id;if(!node||!id||state?.sheet?.isExample){if(node){node.hidden=true;node.innerHTML='';}return;}
+    void loadPlanIndex().then(()=>{if(pathway?.id===id)void window.DegreePlanAlerts.mountOptIn(node,{planId:id,inLibrary:Boolean(planIndex?.plans?.[id])});},()=>{});
+  }
   function render({persist=true}={}) {
     assertCurrentDraft();
     const active=document.activeElement,focusId=active?.id,focusRow=active?.dataset?.provider||active?.dataset?.course||active?.dataset?.progress,focusKind=active?.dataset?.provider?'provider':active?.dataset?.course?'course':active?.dataset?.progress?'progress':'';
@@ -410,6 +418,7 @@
     renderSchoolCheck();
     updateSavings();
     renderGlance();
+    renderAlerts();
     if(simplePlan()){renderCoursePlan();renderChecklist();restoreWorksheetFocus(focusId,focusKind,focusRow);if(!task)loadOutcomes();return;}
     if($('sheet-route'))$('sheet-route').innerHTML='';
     if($('sheet-next'))$('sheet-next').innerHTML='';

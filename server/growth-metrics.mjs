@@ -2,6 +2,9 @@
 const DegreeGrowthMetrics=(()=>{
   'use strict';
   const EVENTS=['landing_view','plan_previewed','course_saved','plan_started','account_plan_saved','first_task_completed','finder_used','guided_started','guided_results','plan_built','credits_worth_used','transfer_page_view','provider_click','school_email','share_link_copied','school_inquiry','plan_review_request'];
+  // Recorded only by the server after a verified account action (email plan alerts); never accepted from browsers.
+  const SERVER_EVENTS=['alert_subscribed','alert_unsubscribed'],ALL_EVENTS=[...EVENTS,...SERVER_EVENTS];
+  const ALERT_UNSUBSCRIBE_METHODS=['settings','link','one-click'];
   const CONTEXTS=['home','article','provider','school','degree-plan','workspace','transfer'];
   // Fixed detail values. A provider name is recorded only for provider_click and an action only for school_email and school_inquiry.
   const PROVIDERS=['Sophia','Study.com','StraighterLine','Saylor','CLEP','DSST','Christian Leaders Institute','other'];
@@ -77,12 +80,21 @@ const DegreeGrowthMetrics=(()=>{
       if(!Number.isInteger(days)||days<1||days>RETENTION_DAYS)fail(400,'Choose between 1 and 90 days.');
       const now=clock(context),end=day(now),start=day(now-(days-1)*86400000);
       const rows=(await stmt(env.DB,'SELECT day,event,context,plan_id AS planId,detail,count FROM growth_daily_counts WHERE day>=? AND day<=? ORDER BY day DESC,event,context,plan_id,detail',start,end).all()).results||[];
-      const totals=EVENTS.map(event=>({event,count:rows.filter(row=>row.event===event).reduce((sum,row)=>sum+Number(row.count),0)}));
-      const result=response({period:{start,end,days},events:totals,rows,dimensions:{providers:PROVIDERS,schoolEmailActions:SCHOOL_EMAIL_ACTIONS,schoolInquiryActions:SCHOOL_INQUIRY_ACTIONS},methodology:{unit:'aggregate events',uniquePeopleMeasured:false,conversionRateMeasured:false,visitorIdentifiersStored:false,cookiesUsed:false,privateRecordsIncluded:false,retentionDays:RETENTION_DAYS,limits:'Counts exclude visitors who opt out or send browser privacy signals. Duplicate visits, blocked requests and rate limits affect totals. These are directional event counts, not unique students or linked conversion rates.'}});
+      const totals=ALL_EVENTS.map(event=>({event,count:rows.filter(row=>row.event===event).reduce((sum,row)=>sum+Number(row.count),0)}));
+      const result=response({period:{start,end,days},events:totals,rows,dimensions:{providers:PROVIDERS,schoolEmailActions:SCHOOL_EMAIL_ACTIONS,schoolInquiryActions:SCHOOL_INQUIRY_ACTIONS,alertUnsubscribeMethods:ALERT_UNSUBSCRIBE_METHODS},methodology:{unit:'aggregate events',uniquePeopleMeasured:false,conversionRateMeasured:false,visitorIdentifiersStored:false,cookiesUsed:false,privateRecordsIncluded:false,retentionDays:RETENTION_DAYS,limits:'Counts exclude visitors who opt out or send browser privacy signals. Duplicate visits, blocked requests and rate limits affect totals. These are directional event counts, not unique students or linked conversion rates.'}});
       result.headers.set('Vary','Cookie');return result;
     }catch(error){return response({error:error instanceof Problem?error.message:'Aggregate measurement is temporarily unavailable.'},error instanceof Problem?error.status:503);}
   }
-  return{handle,prune};
+  /** Server-side counter for verified account actions. Same table, caps and kill switch; no identifiers. */
+  async function record(env,value,context={}){
+    if(!env?.DB||env.GROWTH_METRICS_DISABLED==='1')return false;
+    const event=value?.event,where=value?.context,planId=value?.planId||'',detail=value?.detail||'';
+    if(!SERVER_EVENTS.includes(event)||!['workspace','email'].includes(where)||planId&&!PLAN_FORMAT.test(planId)||(event==='alert_unsubscribed'?!ALERT_UNSUBSCRIBE_METHODS.includes(detail):detail!==''))return false;
+    await stmt(env.DB,'INSERT INTO growth_daily_counts(day,event,context,plan_id,detail,count) VALUES(?,?,?,?,?,1) ON CONFLICT(day,event,context,plan_id,detail) DO UPDATE SET count=count+1 WHERE count<?',day(clock(context)),event,where,planId,detail,MAX_BUCKET).run();
+    return true;
+  }
+  return{handle,prune,record};
 })();
 export async function handleGrowthMetrics(request,env,context={}){return DegreeGrowthMetrics.handle(request,env,context);}
 export async function pruneGrowthMetrics(env,context={}){return DegreeGrowthMetrics.prune(env,context);}
+export async function recordGrowthEvent(env,value,context={}){return DegreeGrowthMetrics.record(env,value,context);}

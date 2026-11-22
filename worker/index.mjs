@@ -17,7 +17,8 @@ import { handleCurriculumDiscovery } from '../server/curriculum-discovery.mjs';
 import { publicCommunityCache } from '../server/public-community-cache.mjs';
 import { handleOperatorSnapshot } from '../server/operator-snapshot.mjs';
 import { handleAcademicCoverage } from '../server/academic-coverage.mjs';
-import { handleGrowthMetrics, pruneGrowthMetrics } from '../server/growth-metrics.mjs';
+import { handleGrowthMetrics, pruneGrowthMetrics, recordGrowthEvent } from '../server/growth-metrics.mjs';
+import { handlePlanAlerts, runPlanAlerts, removePlanAlerts } from '../server/plan-alerts.mjs';
 import { handleCoach, pruneCoach } from '../server/coach.mjs';
 import { handleLeads, pruneLeads, isLeadsPath } from '../server/leads.mjs';
 import { assets } from './assets.generated.mjs';
@@ -25,6 +26,7 @@ import { assets } from './assets.generated.mjs';
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
 let academicCoverageSnapshot, baselineSnapshot;
 let coachDataSnapshot;
+let alertPlanDataSnapshot;
 let academicEvidenceCache;
 // Public versioned build assets only. Never put account data or credentials in this cache.
 let nativePublicAssets;
@@ -310,6 +312,40 @@ async function growthPlanIds(){
   if(!growthPlanIdsSnapshot){const asset=assets['/data/plan-library-index.json'];if(!asset)throw Error('Plan index is unavailable');growthPlanIdsSnapshot=new Set(Object.keys(JSON.parse(await decodeStaticAsset(asset)).plans||{}));}
   return growthPlanIdsSnapshot;
 }
+// Email plan alerts (off unless EMAIL_ALERTS_ENABLED=1). Public build data only: the plan index, registry titles,
+// public plan pages and the curriculum model's publication fingerprint. Never student records.
+async function alertPlanData(){
+  if(!alertPlanDataSnapshot){
+    const read=async path=>{const asset=assets[path];if(!asset)throw Error('Plan alert data is unavailable');return JSON.parse(await decodeStaticAsset(asset));};
+    const index=await read('/data/plan-library-index.json');if(!curriculumRegistrySnapshot)curriculumRegistrySnapshot=await read('/data/curriculum-registry.json');
+    const registry=new Map((curriculumRegistrySnapshot.models||[]).map(entry=>[entry.id,entry])),plans=index.plans||{},entryFor=id=>Object.hasOwn(plans,id)?registry.get(plans[id].modelId):null;
+    alertPlanDataSnapshot={plans,
+      titleFor:id=>{const entry=entryFor(id);return entry?entry.title+(entry.school?' — '+entry.school:''):'';},
+      pageFor:id=>/^[a-z0-9-]{1,128}$/.test(id)&&Boolean(assets['/degree-plans/'+id+'/index.html']),
+      modelFingerprint:async id=>{const entry=entryFor(id);if(!entry)return '';const model=await registryModel(entry);return model?TemplateProgramCatalog.publicationModelFingerprint(model,plans[id].level):'';}};
+  }
+  return alertPlanDataSnapshot;
+}
+function alertEnvironment(env){return{...env,ALERTS_PLAN_DATA:alertPlanData,ALERTS_GROWTH:value=>recordGrowthEvent(env,value)};}
+async function alertsResponse(request,env){
+  const target=new URL(request.url),alertEnv=alertEnvironment(env);
+  // Unsubscribe links work from email without a sign-in; the random token is the only credential.
+  if(target.pathname==='/api/alerts/unsubscribe')return handlePlanAlerts(request,alertEnv);
+  const identity=await resolvePortalIdentity(request,env);
+  if(identity.unavailable)return Response.json({error:'Sign-in is temporarily unavailable. Your saved plans have not changed. Please try again.',code:'auth_unavailable'},{status:503,headers:{'Cache-Control':'private, no-store','Vary':'Cookie','X-Content-Type-Options':'nosniff','Retry-After':'15'}});
+  const portalEnv={...env,PORTAL_USER:identity.user,PORTAL_USER_ACCESS_TOKEN:identity.accessToken,PORTAL_AUTH_REQUIRED:true,PORTAL_AUTH_CONFIGURED:identity.configured};
+  // Ownership is checked through the same portal handler (D1 or Supabase with the student's own session and RLS).
+  const owner=async portalPlanId=>{
+    const response=await handlePortal(new Request(target.origin+'/api/portal/plans/'+encodeURIComponent(portalPlanId),{method:'GET'}),portalEnv);
+    if(response.status===404||response.status===400)return{owned:false};
+    if(!response.ok)throw Error('Saved plans are unavailable');
+    const state=(await response.json())?.item?.state;return{owned:true,pathwayId:String(state?.selectedPathwayId||state?.profile?.pathwayId||'')};
+  };
+  const response=await handlePlanAlerts(request,{...alertEnv,ALERTS_USER:identity.user||null,ALERTS_PLAN_OWNER:owner});
+  if(!identity.setCookies?.length)return response;
+  const headers=new Headers(response.headers);for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);
+  return new Response(response.body,{status:response.status,headers});
+}
 function migrationReadOnly(env){return env?.OPERATOR_MIGRATION_READ_ONLY==='1';}
 function migrationReadOnlyResponse(request){
   return new Response(request.method==='HEAD'?null:JSON.stringify({error:'We’re finishing a site update. Your saved work is safe. Please try again shortly.',code:'migration_readonly'}),{status:503,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','X-Content-Type-Options':'nosniff','Retry-After':'120'}});
@@ -325,7 +361,7 @@ export default {
     }
     return processResearchJobs(batch,await researchEnvironment(env),ctx);
   },
-  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;ctx?.waitUntil?.(pruneGrowthMetrics(env).catch(()=>{}));if(new Date(controller?.scheduledTime||Date.now()).getUTCMinutes()<2){ctx?.waitUntil?.(pruneCoach(env).catch(()=>{}));ctx?.waitUntil?.(pruneLeads(env).catch(()=>{}));}return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
+  async scheduled(controller,env,ctx){if(migrationReadOnly(env))return;ctx?.waitUntil?.(pruneGrowthMetrics(env).catch(()=>{}));const minute=new Date(controller?.scheduledTime||Date.now()).getUTCMinutes();if(minute<2){ctx?.waitUntil?.(pruneCoach(env).catch(()=>{}));ctx?.waitUntil?.(pruneLeads(env).catch(()=>{}));}if(env?.EMAIL_ALERTS_ENABLED==='1'&&minute>=30&&minute<32){initializePublicAssets(env);ctx?.waitUntil?.(runPlanAlerts(alertEnvironment(env)).catch(()=>{}));}return dispatchResearchOutbox(await researchEnvironment(env),{limit:10});},
   async fetch(request, env, ctx) {
     const target = new URL(request.url);
     if(target.hostname==='www.degreesteps.com'||target.hostname==='degreesteps.com'&&target.protocol!=='https:'){
@@ -347,6 +383,12 @@ export default {
       if(migrationReadOnly(env))return migrationReadOnlyResponse(request);
       initializePublicAssets(env);
       return leadsResponse(request,env,target.pathname);
+    }
+    if(target.pathname==='/api/alerts'||target.pathname.startsWith('/api/alerts/')){
+      if(env?.EMAIL_ALERTS_ENABLED!=='1')return handlePlanAlerts(request,{});
+      if(migrationReadOnly(env))return migrationReadOnlyResponse(request);
+      initializePublicAssets(env);
+      return alertsResponse(request,env);
     }
     if(migrationReadOnly(env)&&(target.pathname==='/api'||target.pathname.startsWith('/api/'))&&!target.pathname.startsWith('/api/auth/')&&!target.pathname.startsWith('/api/operations/'))return migrationReadOnlyResponse(request);
     initializePublicAssets(env);
@@ -404,6 +446,9 @@ export default {
       // load the research graph or read administrative review records.
       const response=growthAPI ? await handleGrowthMetrics(routedRequest,portalEnv) : coverageAPI ? await handleAcademicCoverage(routedRequest,portalEnv,academicCoverageData) : connectionAPI ? await handleAIConnections(routedRequest,portalEnv) : transcriptAPI ? await handleTranscriptImport(routedRequest,portalEnv) : templateAPI ? await handleTemplateResearch(routedRequest,portalEnv,ctx) : collegeAPI ? await handleCollegeAccess(routedRequest,portalEnv) : target.pathname.startsWith('/api/portal/') ? await handlePortal(routedRequest,portalEnv,ctx) : await handleCommunity(routedRequest,portalEnv,ctx);
       publicDiscussionCache?.store(response,ctx);
+      // Deleting a saved plan or all portal data also removes its email alerts (whether or not alerts are on).
+      const deletedPlan=request.method==='DELETE'&&response.ok&&identity.user?.id&&target.pathname.match(/^\/api\/portal\/(?:plans\/([^/]+)|profile)$/);
+      if(deletedPlan){let portalPlanId;try{portalPlanId=deletedPlan[1]?decodeURIComponent(deletedPlan[1]):undefined;}catch{portalPlanId=null;}if(portalPlanId!==null)await removePlanAlerts(env,{userId:identity.user.id,...(portalPlanId?{portalPlanId}:{})}).catch(()=>{});}
       if (!identity.setCookies?.length) return response;
       const headers=new Headers(response.headers);
       for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);

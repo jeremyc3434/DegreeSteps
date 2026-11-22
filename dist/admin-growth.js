@@ -44,7 +44,8 @@
       table('Course provider link clicks',head,[...PROVIDERS.map(provider=>counts(provider==='other'?'Other providers':provider,window=>window.detail('provider_click',provider))),counts('All providers',window=>window.event('provider_click'))])+
       table('Emails to schools',head,EMAILS.map(([action,label])=>counts(label,window=>window.detail('school_email',action))))+
       (REQUESTS.some(([name])=>month.event(name)>0)?table('Requests from students',head,REQUESTS.map(([name,label])=>counts(label,window=>window.event(name)))):'')+
-      '<p class="admin-growth-note">Visits are public page views. Each count is an anonymous daily total of actions, not unique people, and the same action is counted at most once per page. Percentages compare event counts between steps, so they are directional, not conversion rates. Visitors with browser privacy signals or the measurement setting turned off are not counted.</p>';
+      table('Email plan alerts',head,[counts('Alerts turned on',window=>window.event('alert_subscribed')),counts('Turned off in settings',window=>window.detail('alert_unsubscribed','settings')),counts('Unsubscribed from an email link',window=>window.detail('alert_unsubscribed','link')+window.detail('alert_unsubscribed','one-click'))])+
+      '<p class="admin-growth-note">Visits are public page views. Each count is an anonymous daily total of actions, not unique people, and the same action is counted at most once per page. Percentages compare event counts between steps, so they are directional, not conversion rates. Visitors with browser privacy signals or the measurement setting turned off are not counted. Email alert counts are recorded by the server when a signed-in student turns alerts on or off, or uses an unsubscribe link.</p>';
   }
   let revision=0;
   async function load(){

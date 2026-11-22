@@ -5,6 +5,12 @@ name: Deploy
 # scripts/check-production-config.mjs). Credentials come from repository secrets:
 #   CLOUDFLARE_API_TOKEN - Cloudflare API token with Workers Scripts: Edit and D1: Edit on the owner account
 #   ANTHROPIC_API_KEY    - optional; when present it is (re)written as the Worker secret on every deploy
+#   RESEND_API_KEY       - optional; Resend sending key for email plan alerts, (re)written as a Worker secret the same way.
+#   LEADS_HASH_SALT      - optional; salt for the daily per-visitor limit on school contact and Plan review requests,
+#   COACH_HASH_SALT        and for the degree coach. Each is (re)written as a Worker secret only when the GitHub secret exists.
+# Feature flags and plain settings come from environment variables (Settings > Environments > staging or production >
+# Environment variables): SCHOOL_INQUIRIES_ENABLED, PLAN_REVIEW_ENABLED and EMAIL_ALERTS_ENABLED (each off unless 1),
+# and EMAIL_POSTAL_ADDRESS (the postal address printed in alert emails; alerts send nothing without it).
 on:
   push:
     branches: [main]
@@ -95,14 +101,22 @@ jobs:
         run: npx --yes wrangler@4.164.0 d1 migrations apply "$D1_NAME" --remote --config "$WRANGLER_CONFIG"
 
       - name: Deploy Worker
+        # wrangler deploy replaces the Worker's plain variables with these, so every flag and setting is passed on
+        # each deploy. A flag that is not exactly 1 is left unset (off).
         env:
           SCHOOL_INQUIRIES_ENABLED: ${{ vars.SCHOOL_INQUIRIES_ENABLED }}
           PLAN_REVIEW_ENABLED: ${{ vars.PLAN_REVIEW_ENABLED }}
+          EMAIL_ALERTS_ENABLED: ${{ vars.EMAIL_ALERTS_ENABLED }}
+          EMAIL_POSTAL_ADDRESS: ${{ vars.EMAIL_POSTAL_ADDRESS }}
         run: |
           flags=()
-          for name in SCHOOL_INQUIRIES_ENABLED PLAN_REVIEW_ENABLED; do
+          for name in SCHOOL_INQUIRIES_ENABLED PLAN_REVIEW_ENABLED EMAIL_ALERTS_ENABLED; do
             if [ "${!name}" = "1" ]; then flags+=(--var "$name:1"); fi
           done
+          if [ -n "$EMAIL_POSTAL_ADDRESS" ]; then flags+=(--var "EMAIL_POSTAL_ADDRESS:$EMAIL_POSTAL_ADDRESS"); fi
+          if [ "$EMAIL_ALERTS_ENABLED" = "1" ] && [ -z "$EMAIL_POSTAL_ADDRESS" ]; then
+            echo "::warning::EMAIL_ALERTS_ENABLED is 1 but EMAIL_POSTAL_ADDRESS is not set; alert emails will not be sent."
+          fi
           npx --yes wrangler@4.164.0 deploy --config "$WRANGLER_CONFIG" "${flags[@]}"
 
       - name: Set Claude API key secret
@@ -115,6 +129,31 @@ jobs:
           fi
           printf '%s' "$ANTHROPIC_API_KEY" | npx --yes wrangler@4.164.0 secret put ANTHROPIC_API_KEY --config "$WRANGLER_CONFIG" >/dev/null
           echo "ANTHROPIC_API_KEY updated on $WORKER_NAME."
+
+      - name: Set Resend API key secret
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          if [ -z "$RESEND_API_KEY" ]; then
+            echo "No RESEND_API_KEY repository secret; leaving the Worker secret unchanged."
+            exit 0
+          fi
+          printf '%s' "$RESEND_API_KEY" | npx --yes wrangler@4.164.0 secret put RESEND_API_KEY --config "$WRANGLER_CONFIG" >/dev/null
+          echo "RESEND_API_KEY updated on $WORKER_NAME."
+
+      - name: Set hashing salt secrets
+        env:
+          LEADS_HASH_SALT: ${{ secrets.LEADS_HASH_SALT }}
+          COACH_HASH_SALT: ${{ secrets.COACH_HASH_SALT }}
+        run: |
+          for name in LEADS_HASH_SALT COACH_HASH_SALT; do
+            if [ -z "${!name}" ]; then
+              echo "No $name repository secret; leaving the Worker secret unchanged."
+              continue
+            fi
+            printf '%s' "${!name}" | npx --yes wrangler@4.164.0 secret put "$name" --config "$WRANGLER_CONFIG" >/dev/null
+            echo "$name updated on $WORKER_NAME."
+          done
 
       - name: Summary
         run: |
