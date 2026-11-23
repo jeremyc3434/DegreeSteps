@@ -6,7 +6,7 @@ import {renderHome,buildHomeExample,buildHomeEstimate} from './home-content.mjs'
 import {renderStudentJourney,renderCreditMix,renderSchoolPlanCards,renderProviderFacts,providerIntroduction,renderArticleStart} from './student-public-experience.mjs';
 import {createRequire} from 'node:module';
 import {renderCostWidget,renderCostMethodology} from './cost-content.mjs';
-import {loadPublicPlans,removeObsoletePreviews,renderPublicPlanHub,renderPublicPlan,renderPlanCard,setTransferPaths} from './public-plan-pages.mjs';
+import {loadPublicPlans,removeObsoletePreviews,renderPublicPlanHub,renderPublicPlan,renderPlanCard,setTransferPaths,planStructuredData} from './public-plan-pages.mjs';
 import {loadTransferCourses,renderTransferCourse,renderTransferIndex,transferDescription,removeObsoleteTransferPages} from './transfer-pages.mjs';
 import {icon,sourceCategories,sourceCategory,articleIcon,schoolMarkHTML} from './public-visuals.mjs';
 import {normalizeLeadSettings} from '../server/leads.mjs';
@@ -81,7 +81,7 @@ function layout({path,title,description,body,section='',crumbs=[],schema=[],date
   const canonical = origin + path;
   const costAssets=['/','/compare/'].includes(path)?'<link rel="stylesheet" href="/cost-comparison.css"><script src="/cost-engine.js" defer></script><script src="/cost-comparison.js" defer></script>':'';
   const socialImage = '<meta property="og:image" content="'+origin+'/images/degreesteps-social.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="DegreeSteps: your degree, your pace; a faster, more affordable path to graduation."><meta name="twitter:image" content="'+origin+'/images/degreesteps-social.png"><meta name="twitter:image:alt" content="DegreeSteps: your degree, your pace; a faster, more affordable path to graduation.">';
-  const estimateAssets=path.startsWith('/degree-plans/')?'<link rel="stylesheet" href="/plan-estimate.css">':'';
+  const estimateAssets=path.startsWith('/degree-plans/')?'<link rel="stylesheet" href="/plan-estimate.css"><link rel="stylesheet" href="/public-plan-seo.css">':'';
   const previewAssets=path.startsWith('/degree-plans/')||path.startsWith('/schools/')||kind==='article'?'<link rel="stylesheet" href="/public-plan-preview.css"><script src="/public-plan-preview.js" defer></script>':'';
   const libraryAssets=path==='/degree-plans/'?'<script src="/plan-library.js" defer></script>':path==='/plan-review/'?'<link rel="stylesheet" href="/leads.css">':'';
   const growthContext=path==='/'?'home':path.startsWith('/transfer/')?'transfer':path.startsWith('/degree-plans/')?'degree-plan':path.startsWith('/credit-sources/')?'provider':path.startsWith('/schools/')?'school':kind==='article'?'article':'home';
@@ -132,7 +132,7 @@ const transferCourses=await loadTransferCourses(dist,{publicPlans});
 await removeObsoleteTransferPages(dist,transferCourses);
 setTransferPaths(transferCourses.map(course=>course.path));
 await page({path:'/degree-plans/',title:'Explore complete transfer-course degree plans',description:'Open a complete researched degree route, see the proposed outside courses and required university coursework, then customize the plan with your own courses.',section:'plans',crumbs:[{name:'Degree plan previews',path:'/degree-plans/'}],body:renderPublicPlanHub(publicPlans,planScope),schema:[{'@context':'https://schema.org','@type':'ItemList',name:'Source-backed degree plan previews',itemListElement:publicPlans.map((plan,index)=>({'@type':'ListItem',position:index+1,name:plan.title,url:origin+plan.path}))}]});
-for(const plan of publicPlans)await page({path:plan.path,title:plan.title,description:plan.description,section:'plans',date:plan.checkedOn,crumbs:[{name:'Degree plan previews',path:'/degree-plans/'},{name:plan.shortTitle,path:plan.path}],body:renderPublicPlan(plan,publicPlans),schema:[{'@context':'https://schema.org','@type':'WebPage',name:plan.title,description:plan.description,url:origin+plan.path,about:{'@type':'CollegeOrUniversity',name:plan.school},dateModified:plan.checkedOn}]});
+for(const plan of publicPlans)await page({path:plan.path,title:plan.title,description:plan.description,section:'plans',date:plan.checkedOn,crumbs:[{name:'Degree plan previews',path:'/degree-plans/'},{name:plan.shortTitle,path:plan.path}],body:renderPublicPlan(plan,publicPlans),schema:planStructuredData(plan,origin)});
 
 
 await page({path:'/transfer/',section:'resources',title:'Where do outside courses count? Transfer course directory',description:'Look up Sophia, Study.com, StraighterLine, Saylor and other courses and see which researched degree plans list them in the school’s published transfer guidance.',crumbs:[{name:'Transfer courses',path:'/transfer/'}],body:renderTransferIndex(transferCourses),schema:[{'@context':'https://schema.org','@type':'CollectionPage',name:'Transfer course directory',url:origin+'/transfer/'}]});
