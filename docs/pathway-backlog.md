@@ -22,6 +22,15 @@ Reviewed kits under `content/pathway-kits/{strayer,champlain,apus,bellevue}`; ea
 - **Unexplained credit totals (4):** Champlain B.S. Accounting and A.S. General Studies, and Bellevue B.S. Psychology (drafts removed), and Bellevue Supply Chain and Logistics (draft kept).
 - **Published:** Strayer A.A. Information Technology (needs school confirmation).
 
+## PDF-catalog batch (UMGC, Columbia Southern), 2026-11-23
+
+Reviewed kits under `content/pathway-kits/{umgc,columbia-southern}` (`scripts/pathway-factory/finalize-umgc-csu-2026-11-23.mjs`); held programs record their reason in `review.heldReason`. 35 of 37 drafted programs publish at needs school confirmation.
+
+- **UMGC B.S. General Studies (held):** UMGC requires 15 upper-level credits at UMGC. The ledger fixes only 6 (the capstone and the upper-level writing course); its 27 major-elective credits are any discipline at any level, so meeting the rule depends on the student's choices.
+- **UMGC B.S. Homeland Security (held):** no published outside course joins. Its only codeless block is "Remaining General Education and Elective Courses", a mixed block no Sophia category award fills.
+- **UMGC B.S. Social Science (fixed, published):** the draft summed to 123. The capture lists STAT 200 as a "required related course" that "may be applied to general education requirements", and UMGC's mathematics general education list names STAT 200, so the separate mathematics block was removed (120 credits).
+- **Columbia Southern A.S. Cybersecurity (not drafted):** the batch's page range 48–49 drafted A.S. Business a second time; the duplicate was removed. Draft A.S. Cybersecurity from page 49 in a later run.
+
 ## Other registry models outside the finder (not in the 2026-11-23 scope)
 
 These were already unpublished before this batch and were not part of it; their blockers are recorded in `dist/data/pathway-quality-report.json`:

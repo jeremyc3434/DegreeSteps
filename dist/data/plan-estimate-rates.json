@@ -333,6 +333,54 @@
         "document": "content/source-captures/5c73fd1762c7b974.txt",
         "sha256": "5c73fd1762c7b974a165d1a9e20d7851b8e1dc9664bbc4a2c70c7ec7a63c13b8"
       }
+    },
+    {
+      "id": "umgc-ug-tuition-2026-27",
+      "title": "UMGC tuition rates and fees, Summer 2026–Spring 2027",
+      "url": "https://www.umgc.edu/tuition-financial-assistance/tuition",
+      "checkedOn": "2026-11-23",
+      "notes": "Out-of-state standard undergraduate rate $499 per credit (Summer 2026–Spring 2027); Maryland resident $337 ($343 from Summer 2027); military $250. Technology fee $15 per credit (not charged to undergraduate military students); $50 undergraduate application fee; $50 diploma or certificate fee.",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/d99c671e6d71d759.txt",
+        "sha256": "d99c671e6d71d759f620e0dabb1009893baae6f6dcf140ab10ce2839d4b7c208"
+      }
+    },
+    {
+      "id": "columbia-southern-catalog-tuition-fees-2026-2028",
+      "title": "Columbia Southern University 2026–2028 catalog: tuition rates and student fees",
+      "url": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+      "checkedOn": "2026-11-23",
+      "notes": "Undergraduate $278.00 per credit hour; technology fee $35 per undergraduate course (waived for active-duty U.S. service members); $0 domestic application fee; $100 petition to graduate; $250 per credit for active-duty military using Tuition Assistance.",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/ce1320e395ba226d.txt",
+        "sha256": "ce1320e395ba226dd10f4962c531ad6dfcee05f23c3dffa2accac0d4f2a8580e"
+      }
+    },
+    {
+      "id": "columbia-southern-tuition-overview-2026",
+      "title": "Columbia Southern University tuition overview",
+      "url": "https://www.columbiasouthern.edu/tuition-financing/tuition-overview/",
+      "checkedOn": "2026-11-23",
+      "notes": "Current undergraduate rate $278 per credit hour; $250.20 for CSU Learning Partners.",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/9916265b088c1e95.txt",
+        "sha256": "9916265b088c1e95d711528e7d925a37f513d3f19f99d612ec791aee673aec62"
+      }
+    },
+    {
+      "id": "columbia-southern-catalog-terms-course-load-2026-2028",
+      "title": "Columbia Southern University 2026–2028 catalog: academic year and course load",
+      "url": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=5,188&columns=2",
+      "checkedOn": "2026-11-23",
+      "notes": "Academic year of 4 terms, 36 weeks of instruction; full-time undergraduate load is six credit hours in a nine-week period, up to nine credit hours.",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/5418c128c8ace48f.txt",
+        "sha256": "5418c128c8ace48f5e7f649359fc1eb34c14e0e24177eab41b222a5441bed538"
+      }
     }
   ],
   "providers": [
@@ -1706,6 +1754,245 @@
         "The $100 Resource Kit is charged per course unless you opt out course by course (shown as $22.22 per quarter hour); opting out means buying course materials yourself.",
         "Withdrawal, transcript, diploma and regalia charges, and state tuition-fund assessments, are not included.",
         "Quarter loads of 2–3 courses (9–14 quarter hours) are a planning assumption."
+      ]
+    },
+    {
+      "id": "umgc-online-2026-27-60",
+      "modelIds": [
+        "curriculum-umgc-associate-of-arts-in-general-studies"
+      ],
+      "school": "University of Maryland Global Campus",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 60,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 499
+      },
+      "feesPerUnit": 15,
+      "feesPerTerm": 0,
+      "oneTimeFees": 100,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee",
+          "amount": 15,
+          "frequency": "per-unit"
+        },
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "frequency": "one-time"
+        },
+        {
+          "label": "Diploma fee",
+          "amount": 50,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "termLabel": "term",
+      "termMonths": 3,
+      "sourceIds": [
+        "umgc-ug-tuition-2026-27"
+      ],
+      "missing": [
+        "Uses the $499 out-of-state standard undergraduate rate, the rate for students who do not live in Maryland. Maryland residents pay $337 per credit ($343 from Summer 2027), and military students $250 with no technology fee; those rates are not applied.",
+        "Books and course materials, which vary by course, are not included.",
+        "UMGC runs fall, winter, spring and summer terms; 6–12 credits per term is a planning assumption."
+      ]
+    },
+    {
+      "id": "umgc-online-2026-27-120",
+      "modelIds": [
+        "curriculum-umgc-bachelor-of-arts-in-communication-studies",
+        "curriculum-umgc-bachelor-of-arts-in-history",
+        "curriculum-umgc-bachelor-of-science-in-accounting",
+        "curriculum-umgc-bachelor-of-science-in-business-administration-and-management",
+        "curriculum-umgc-bachelor-of-science-in-computer-information-systems",
+        "curriculum-umgc-bachelor-of-science-in-computer-science",
+        "curriculum-umgc-bachelor-of-science-in-criminal-justice",
+        "curriculum-umgc-bachelor-of-science-in-cybersecurity-management-and-policy",
+        "curriculum-umgc-bachelor-of-science-in-cybersecurity-technology",
+        "curriculum-umgc-bachelor-of-science-in-data-science",
+        "curriculum-umgc-bachelor-of-science-in-environmental-health-and-safety",
+        "curriculum-umgc-bachelor-of-science-in-finance",
+        "curriculum-umgc-bachelor-of-science-in-health-services-management",
+        "curriculum-umgc-bachelor-of-science-in-human-resource-management",
+        "curriculum-umgc-bachelor-of-science-in-marketing",
+        "curriculum-umgc-bachelor-of-science-in-psychology",
+        "curriculum-umgc-bachelor-of-science-in-social-science",
+        "curriculum-umgc-bachelor-of-science-in-sustainable-value-chain"
+      ],
+      "school": "University of Maryland Global Campus",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 120,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 499
+      },
+      "feesPerUnit": 15,
+      "feesPerTerm": 0,
+      "oneTimeFees": 100,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee",
+          "amount": 15,
+          "frequency": "per-unit"
+        },
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "frequency": "one-time"
+        },
+        {
+          "label": "Diploma fee",
+          "amount": 50,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "termLabel": "term",
+      "termMonths": 3,
+      "sourceIds": [
+        "umgc-ug-tuition-2026-27"
+      ],
+      "missing": [
+        "Uses the $499 out-of-state standard undergraduate rate, the rate for students who do not live in Maryland. Maryland residents pay $337 per credit ($343 from Summer 2027), and military students $250 with no technology fee; those rates are not applied.",
+        "Books and course materials, which vary by course, are not included.",
+        "UMGC runs fall, winter, spring and summer terms; 6–12 credits per term is a planning assumption."
+      ]
+    },
+    {
+      "id": "columbia-southern-online-2026-28-60",
+      "modelIds": [
+        "curriculum-columbia-southern-a-s-business",
+        "curriculum-columbia-southern-a-s-information-technology"
+      ],
+      "school": "Columbia Southern University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 60,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 278
+      },
+      "feesPerUnit": 11.67,
+      "feesPerTerm": 0,
+      "oneTimeFees": 100,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee ($35 per 3-credit course)",
+          "amount": 11.67,
+          "frequency": "per-unit"
+        },
+        {
+          "label": "Petition to graduate",
+          "amount": 100,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 3,
+        "max": 9,
+        "defaultMin": 3,
+        "defaultMax": 6
+      },
+      "termLabel": "9-week term",
+      "termMonths": 2,
+      "sourceIds": [
+        "columbia-southern-catalog-tuition-fees-2026-2028",
+        "columbia-southern-tuition-overview-2026",
+        "columbia-southern-catalog-terms-course-load-2026-2028"
+      ],
+      "missing": [
+        "Uses the $278 standard undergraduate rate. CSU Learning Partner rates ($250.20) and the $250 active-duty Tuition Assistance rate, which also waives the technology fee, are not applied.",
+        "The $35 per-course technology fee is spread as $11.67 per credit (most courses are 3 credits), about 1 cent over per course.",
+        "Books, the 2.75% card payment fee and the drop registration fee are not included.",
+        "A term is 9 weeks (4 terms and 36 weeks of instruction a year), modeled as 2 months; 3–6 credits per term is a planning assumption (6 is a full-time load, 9 the maximum)."
+      ]
+    },
+    {
+      "id": "columbia-southern-online-2026-28-120",
+      "modelIds": [
+        "curriculum-columbia-southern-b-s-accounting",
+        "curriculum-columbia-southern-b-s-business-administration",
+        "curriculum-columbia-southern-b-s-communication",
+        "curriculum-columbia-southern-b-s-criminal-justice-administration",
+        "curriculum-columbia-southern-b-s-emergency-management",
+        "curriculum-columbia-southern-b-s-fire-administration",
+        "curriculum-columbia-southern-b-s-health-care-administration",
+        "curriculum-columbia-southern-b-s-homeland-security",
+        "curriculum-columbia-southern-b-s-human-resource-management",
+        "curriculum-columbia-southern-b-s-information-systems-and-cyber-security",
+        "curriculum-columbia-southern-b-s-information-technology",
+        "curriculum-columbia-southern-b-s-occupational-safety-and-health",
+        "curriculum-columbia-southern-b-s-organizational-leadership",
+        "curriculum-columbia-southern-b-s-psychology"
+      ],
+      "school": "Columbia Southern University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 120,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 278
+      },
+      "feesPerUnit": 11.67,
+      "feesPerTerm": 0,
+      "oneTimeFees": 100,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee ($35 per 3-credit course)",
+          "amount": 11.67,
+          "frequency": "per-unit"
+        },
+        {
+          "label": "Petition to graduate",
+          "amount": 100,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 3,
+        "max": 9,
+        "defaultMin": 3,
+        "defaultMax": 6
+      },
+      "termLabel": "9-week term",
+      "termMonths": 2,
+      "sourceIds": [
+        "columbia-southern-catalog-tuition-fees-2026-2028",
+        "columbia-southern-tuition-overview-2026",
+        "columbia-southern-catalog-terms-course-load-2026-2028"
+      ],
+      "missing": [
+        "Uses the $278 standard undergraduate rate. CSU Learning Partner rates ($250.20) and the $250 active-duty Tuition Assistance rate, which also waives the technology fee, are not applied.",
+        "The $35 per-course technology fee is spread as $11.67 per credit (most courses are 3 credits), about 1 cent over per course.",
+        "Books, the 2.75% card payment fee and the drop registration fee are not included.",
+        "A term is 9 weeks (4 terms and 36 weeks of instruction a year), modeled as 2 months; 3–6 credits per term is a planning assumption (6 is a full-time load, 9 the maximum)."
       ]
     }
   ],

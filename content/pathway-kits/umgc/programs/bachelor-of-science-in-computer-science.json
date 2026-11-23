@@ -1,0 +1,603 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-in-computer-science",
+  "routeIds": [
+    "umgc-bachelor-of-science-in-computer-science"
+  ],
+  "title": "Bachelor of Science in Computer Science",
+  "level": "bachelor",
+  "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Computer Science, checked 2026-11-23",
+  "totalCredits": 120,
+  "catalogUrl": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,53-55&columns=2",
+  "review": {
+    "status": "reviewed",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+      "title": "Bachelor of Science in Computer Science catalog page",
+      "url": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,53-55&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/85324ed0cc488dbd.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+      "text": "You must complete a minimum of 120 credits."
+    }
+  ],
+  "gaps": [
+    "The capture prints only a combined 'Remaining General Education and Elective Courses 68' for this major; the 33-credit elective block is derived (68 minus the 35 general education credits not already covered by CMSC 105 and STAT 200) and is not printed as such.",
+    "Residency rules (at least 30 credits, normally the final 30, at UMGC; half of major credits at UMGC; at least 15 upper-level credits at UMGC) are stated but not tied to specific courses, so no individual requirement is flagged institutionalOnly.",
+    "Specific course choices for the specialization depend on the student's chosen track; the Software Development track allows any three upper-level ARIN, CIFS, CMIT, CMSC, CYOP, DATA, or WDDE courses.",
+    "Prerequisites for specific courses (e.g., MATH 140 and specialization courses) are referenced but not detailed in the capture.",
+    "The capture does not state whether the 30-credit major core, 9-credit specialization, and 3-credit capstone must include any minimum number of upper-level credits beyond the general bachelor's degree rules."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-in-computer-science-wrtg-111-or-another-writing-course",
+      "code": "",
+      "title": "WRTG 111 or another writing course",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "WRTG 111 or another writing course (3 credits)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "WRTG 111 or another writing course"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-wrtg-112",
+      "code": "WRTG 112",
+      "title": "WRTG 112 (grade of C- or better within the first 24 credits)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "WRTG 112 (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-a-course-in-communication-writing-or-speech",
+      "code": "",
+      "title": "A course in communication, writing, or speech",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "A course in communication, writing, or speech (3 credits)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "A course in communication, writing, or speech"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-upper-level-advanced-writing-course-wrtg-391-wrtg-393-or-wrtg-394",
+      "code": "",
+      "title": "Upper-level advanced writing course (WRTG 391, WRTG 393, or WRTG 394)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "An upper-level advanced writing course (3 credits)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Upper-level advanced writing course (WRTG 391, WRTG 393, or WRTG 394)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-stat-200",
+      "code": "STAT 200",
+      "title": "Introduction to Statistics (related requirement; applies to general education mathematics)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "STAT 200 Introduction to Statistics (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-arts-and-humanities-two-3-credit-courses",
+      "code": "",
+      "title": "Arts and Humanities (two 3-credit courses)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "Arts and Humanities 6"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts and Humanities (two 3-credit courses)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-behavioral-and-social-sciences-two-3-credit-courses",
+      "code": "",
+      "title": "Behavioral and Social Sciences (two 3-credit courses)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "Behavioral and Social Sciences 6"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Behavioral and Social Sciences (two 3-credit courses)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-science-lecture-with-related-lab-or-combined-lecture-lab-science-course",
+      "code": "",
+      "title": "Science lecture with related lab, or combined lecture/lab science course",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "A science lecture course (3 credits) with related laboratory"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Science lecture with related lab, or combined lecture/lab science course"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-any-other-science-course",
+      "code": "",
+      "title": "Any other science course",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "Any other science course (3 credits)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Any other science course"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-professional-exploration-course-must-be-taken-within-the-first-6-credits",
+      "code": "",
+      "title": "Professional exploration course (must be taken within the first 6 credits)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "Professional exploration course (3 credits)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Professional exploration course (must be taken within the first 6 credits)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-libs-150-capl-398a-or-other-general-education-course",
+      "code": "",
+      "title": "LIBS 150, CAPL 398A, or other general education course",
+      "credits": 1,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "LIBS 150, CAPL 398A, or other general education course"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "LIBS 150, CAPL 398A, or other general education course"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-105",
+      "code": "CMSC 105",
+      "title": "Introduction to Programming in Python (related requirement; applies to general education computing)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 105 Introduction to Programming in Python (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-115",
+      "code": "CMSC 115",
+      "title": "Fundamentals of Programming and Software Development",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 115 Fundamentals of Programming"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-150",
+      "code": "CMSC 150",
+      "title": "Introduction to Discrete Structures",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 150 Introduction to Discrete Structures (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-215",
+      "code": "CMSC 215",
+      "title": "Object-Oriented Programming",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 215 Object-Oriented Programming (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-220",
+      "code": "CMSC 220",
+      "title": "Introduction to Database Systems",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 220 Introduction to Database Systems (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-310",
+      "code": "CMSC 310",
+      "title": "Computer Systems and Architecture",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 310 Computer Systems and Architecture (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-315",
+      "code": "CMSC 315",
+      "title": "Data Structures and Analysis",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 315 Data Structures and Analysis (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-345",
+      "code": "CMSC 345",
+      "title": "Software Engineering Principles and Techniques",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 345 Software Engineering Principles"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-412",
+      "code": "CMSC 412",
+      "title": "Operating Systems",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 412 Operating Systems (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-427",
+      "code": "CMSC 427",
+      "title": "Artificial Intelligence Systems Development",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 427 Artificial Intelligence Systems Development (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-451",
+      "code": "CMSC 451",
+      "title": "Design and Analysis of Computer Algorithms",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 451 Design and Analysis of Computer Algorithms (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-required-specialization-courses-three-courses-within-one-spe-baf0ca6a",
+      "code": "",
+      "title": "Required Specialization Courses (three courses within one specialization: AI Developer, Cloud Engineering, Network Security, Software Development, or Web and Game Development)",
+      "credits": 9,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "REQUIRED SPECIALIZATION COURSES (9 CREDITS)"
+        }
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Required Specialization Courses (three courses within one specialization: AI Developer, Cloud Engineering, Network Security, Software Development, or Web and Game Development)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-cmsc-495",
+      "code": "CMSC 495",
+      "title": "Computer Science Capstone",
+      "credits": 3,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "CMSC 495 Computer Science Capstone (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-math-140",
+      "code": "MATH 140",
+      "title": "Calculus I (related requirement; applies to elective requirements)",
+      "credits": 4,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "MATH 140 Calculus I (4)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-computer-science-remaining-elective-courses-any-academic-discipline",
+      "code": "",
+      "title": "Remaining elective courses (any academic discipline)",
+      "credits": 33,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+          "text": "Remaining General Education and Elective Courses 68"
+        }
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Remaining elective courses (any academic discipline)"
+      }
+    }
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "90 credits from all sources combined toward the bachelor’s degree"
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "At least 30 credits (normally the final 30) must be completed at UMGC."
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "Half the required number of credits within the major (if you are not majoring in applied technology, described on p. 38, or general studies, described on p. 73) must be completed at UMGC."
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "At least 15 credits of upper-level coursework (i.e., earned in courses numbered 300 to 499) must be completed at UMGC."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling. The school also requires 15 upper-level credits at the school; 24 upper-level credits in this program (named courses and upper-level-only choices) have no outside option, so the plan always meets it."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "University of Maryland Global Campus current catalog page for Bachelor of Science in Computer Science, checked 2026-11-23",
+      "sourceUrl": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,53-55&columns=2",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "majorInstitutionFraction": {
+        "value": 0.5,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "Share of the 30 major credits in this program's major block that must be completed at the school."
+      }
+    },
+    "majorInstitutionFraction": 0.5,
+    "majorResidencyBasisCredits": 30,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Computer Science ledger from University of Maryland Global Campus's current catalog page, including 11 open course choice block(s) (62% of credits) you fill, with outside options from Sophia's published University of Maryland Global Campus partner table."
+  }
+}
