@@ -68,6 +68,38 @@ const DegreeAcademicCoverage = (() => {
     if(!value||typeof value!=='object'||Array.isArray(value))fail(400,'Send a JSON object.');
     return value;
   }
+  /**
+   * A sharded release keeps fact and finding summaries in per-school registry shards. Load only what the request
+   * needs: one program's shards, one fact's shard plus its programs' shards, or (for overview, list and queue views)
+   * every shard. The merged view is cached per shard set for the current release.
+   */
+  const shardViews=new Map();
+  async function scoped(context,path) {
+    const index=context?.registry;
+    if(!index||Array.isArray(index.facts)||!Array.isArray(index.registryShards))return context;
+    if(typeof context.loadRegistryShards!=='function')fail(503,'The academic registry is not available in this release.');
+    const shards=index.registryShards,forPrograms=ids=>shards.map((entry,number)=>[entry,number]).filter(([entry])=>entry.group==='shared'||arr(entry.programIds).some(id=>ids.includes(id))).map(([,number])=>number);
+    let numbers;
+    const program=path.match(/^\/programs\/([A-Za-z0-9_-]+)$/),fact=path.match(/^\/facts\/([A-Za-z0-9_-]+)(?:\/review)?$/),source=path.match(/^\/sources\/([A-Za-z0-9_-]+)$/);
+    if(program)numbers=forPrograms([program[1]]);
+    else if(fact){
+      const home=index.factShards?.[fact[1]];
+      if(!Number.isSafeInteger(home)||!shards[home])numbers=[];
+      else{const [first]=await context.loadRegistryShards([shards[home]]),found=arr(first?.facts).find(item=>item.id===fact[1]);numbers=unique([home,...forPrograms(arr(found?.programIds))]);}
+    }
+    else if(source)numbers=forPrograms(arr(arr(index.sources).find(item=>item.id===source[1])?.programIds));
+    else numbers=shards.map((entry,number)=>number);
+    numbers=[...new Set(numbers)].sort((a,b)=>a-b);
+    const key=index.revision+'|'+numbers.join(',');
+    if(!shardViews.has(key)){
+      const loaded=await context.loadRegistryShards(numbers.map(number=>shards[number]));
+      if(loaded.some(shard=>shard?.revision!==index.revision))fail(503,'The academic registry needs a rebuild.');
+      // Keep at most a few merged views; a full view replaces narrower ones.
+      if(shardViews.size>=4)shardViews.delete(shardViews.keys().next().value);
+      shardViews.set(key,{...index,facts:loaded.flatMap(shard=>arr(shard.facts)),findings:loaded.flatMap(shard=>arr(shard.findings))});
+    }
+    return {...context,registry:shardViews.get(key)};
+  }
   function base(context) {
     const registry=context?.registry;
     if(!registry||typeof registry.revision!=='string'||!/^academic-v[1-9]\d*:[a-f0-9]{64}$/.test(registry.revision)||!Array.isArray(registry.facts)||!Array.isArray(registry.programs)||!Array.isArray(registry.sources))fail(503,'The academic registry is not available in this release.');
@@ -239,7 +271,8 @@ const DegreeAcademicCoverage = (() => {
       const user=await administrator(env);
       // The graph can be large. Anonymous users and college-only accounts must
       // never trigger an asset fetch, JSON decode, or index allocation for it.
-      const data=base(typeof context==='function'?await context():context),path=url.pathname.slice(PREFIX.length),method=request.method;
+      const path=url.pathname.slice(PREFIX.length),method=request.method;
+      const data=base(await scoped(typeof context==='function'?await context():context,path));
       if(method!=='GET'&&method!=='POST')fail(405,'Use GET to read coverage or POST to save a fact review.');
       const factMatch=path.match(/^\/facts\/([A-Za-z0-9_-]+)(\/review)?$/);
       if(factMatch) {

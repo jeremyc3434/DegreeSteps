@@ -159,6 +159,8 @@ export async function runSchoolResearchBatch({base=ROOT,check=false,capture=fals
   const read=async path=>JSON.parse(await readFile(resolve(base,path),'utf8'));
   const [{models},directory,curriculum,pathways,aliasDocument]=await Promise.all([readAcademicInputs(base),read('dist/data/program-catalog.json'),read('dist/data/curriculum-registry.json'),read('dist/data/pathways.json'),read('dist/data/degree-link-aliases.json')]);
   let academicRegistry=null;try{academicRegistry=await read('dist/data/academic-registry.json');}catch(error){if(error.code!=='ENOENT')throw error;}
+  // Sharded releases keep finding summaries in per-school registry shards.
+  if(academicRegistry&&!Array.isArray(academicRegistry.findings)&&Array.isArray(academicRegistry.registryShards))academicRegistry={...academicRegistry,findings:(await Promise.all(academicRegistry.registryShards.map(entry=>read('dist'+entry.path)))).flatMap(shard=>list(shard.findings))};
   const manifest=buildSchoolResearchBatch({directory,curriculum,pathways,models,academicRegistry,degreeLinkAliases:aliasDocument.aliases});
   const path=resolve(base,schoolBatchPath),serialized=JSON.stringify(manifest,null,2)+'\n';
   if(check){if(await readFile(path,'utf8')!==serialized)throw new Error(schoolBatchPath+' is stale.');}else{await mkdir(dirname(path),{recursive:true});await writeFile(path,serialized);}
