@@ -261,6 +261,78 @@
         "curriculumCatalog": "202612",
         "degreeCUs": 122
       }
+    },
+    {
+      "id": "strayer-tuition-2026-27",
+      "title": "Strayer University 2026–2027 undergraduate tuition rates",
+      "url": "https://coursecatalog.strayer.edu/tuition-charges-2026-2027",
+      "checkedOn": "2026-11-23",
+      "notes": "Undergraduate rate \"On or after winter 2014 $1,555 per course\"; Strayer undergraduate courses in these plans are 4.5 quarter hours.",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/f254fa4c21aff192.txt",
+        "sha256": "f254fa4c21aff1929d8daa9613f0b74f80ac9eaf0c88792e6dce84a8f6d8459f"
+      }
+    },
+    {
+      "id": "strayer-books-fees-2026-27",
+      "title": "Strayer University 2026–2027 books and fees",
+      "url": "https://coursecatalog.strayer.edu/books-fees",
+      "checkedOn": "2026-11-23",
+      "notes": "Resource Kit $100 charged per course (opt-out possible per course); Technology Fee $65 once per quarter; Final Academic Requirements Evaluation Fee $150 for bachelor’s (none for associate).",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/7815467e77b68a50.txt",
+        "sha256": "7815467e77b68a50a8077258b721e4d14a210ce209c2e6eddae8fe6f50899eff"
+      }
+    },
+    {
+      "id": "champlain-online-ug-tuition-2026-27",
+      "title": "Champlain College Online undergraduate tuition, Fall 2026–Summer 2027",
+      "url": "https://online.champlain.edu/paying-school/undergraduate-tuition",
+      "checkedOn": "2026-11-23",
+      "notes": "$342 per credit standard rate; $297 and $250 reduced rates for eligible groups; $150 one-time graduation fee.",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/f52e1067de53768a.txt",
+        "sha256": "f52e1067de53768af9136e887e8dbe3321f2c54f74751d8752b658b06444c0e6"
+      }
+    },
+    {
+      "id": "champlain-online-ug-fee-details-2026-27",
+      "title": "Champlain College Online undergraduate tuition and fee details",
+      "url": "https://online.champlain.edu/undergraduate-tuition-fee-details",
+      "checkedOn": "2026-11-23",
+      "notes": "One-time $150 graduation fee for associate and bachelor’s degrees; tuition is the only billed item; each semester is 4 months; more than 18 credits per semester needs permission.",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/f7d2b9db6a9283ec.txt",
+        "sha256": "f7d2b9db6a9283ece30853a6b02af80edcf861e2d97d091aab8f88970217205f"
+      }
+    },
+    {
+      "id": "apus-tuition-fees-2026",
+      "title": "American Public University tuition and fees",
+      "url": "https://www.apu.apus.edu/tuition-and-financing/tuition-and-fees/",
+      "checkedOn": "2026-11-23",
+      "notes": "$360 per undergraduate credit standard rate; undergraduate technology fee $0; admission $0; graduation $250 (associate) and $350 (bachelor’s).",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/ba1f7b98439b89c8.txt",
+        "sha256": "ba1f7b98439b89c8801b5ea9ee22936332e12abb742b5d02a725f6f3d395d468"
+      }
+    },
+    {
+      "id": "bellevue-tuition-fees-2026-27",
+      "title": "Bellevue University 2026/2027 undergraduate tuition and fees",
+      "url": "https://www.bellevue.edu/tuition-and-aid/tuition-rates-and-fees/",
+      "checkedOn": "2026-11-23",
+      "notes": "Online $459 per credit hour; application $50; General College fee $300 per term; graduation $100; course materials fee applies to traditional/cohort programs.",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/source-captures/5c73fd1762c7b974.txt",
+        "sha256": "5c73fd1762c7b974a165d1a9e20d7851b8e1dc9664bbc4a2c70c7ec7a63c13b8"
+      }
     }
   ],
   "providers": [
@@ -1158,6 +1230,482 @@
       ],
       "missing": [
         "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "apus-2026-60",
+      "modelIds": [
+        "curriculum-apus-associate-of-arts-in-business-administration",
+        "curriculum-apus-associate-of-arts-in-criminal-justice",
+        "curriculum-apus-associate-of-science-in-cybersecurity"
+      ],
+      "school": "American Public University System",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 60,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 360
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 250,
+      "feeBreakdown": [
+        {
+          "label": "Graduation fee (associate)",
+          "amount": 250,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 12,
+        "defaultMin": 3,
+        "defaultMax": 6
+      },
+      "termLabel": "8-week session",
+      "termMonths": 2,
+      "sourceIds": [
+        "apus-tuition-fees-2026"
+      ],
+      "missing": [
+        "Uses the $360 standard rate before grants. The 10% Opportunity Grant (applied automatically, $324), Veteran Grant, Everyday Heroes Grant and $250 Preferred Military Rate are not applied.",
+        "Program-specific technology fees (for example ENGR and ELEN courses) and late-registration fees are not included.",
+        "3–6 credits per 8-week session is a planning assumption."
+      ]
+    },
+    {
+      "id": "apus-2026-120",
+      "modelIds": [
+        "curriculum-apus-bachelor-of-arts-in-communication",
+        "curriculum-apus-bachelor-of-arts-in-criminal-justice",
+        "curriculum-apus-bachelor-of-arts-in-emergency-and-disaster-management",
+        "curriculum-apus-bachelor-of-arts-in-homeland-security",
+        "curriculum-apus-bachelor-of-arts-in-human-resource-management",
+        "curriculum-apus-bachelor-of-arts-in-interdisciplinary-studies",
+        "curriculum-apus-bachelor-of-arts-in-management",
+        "curriculum-apus-bachelor-of-arts-in-marketing",
+        "curriculum-apus-bachelor-of-arts-in-psychology",
+        "curriculum-apus-bachelor-of-arts-in-supply-chain-management",
+        "curriculum-apus-bachelor-of-business-administration",
+        "curriculum-apus-bachelor-of-science-in-accounting",
+        "curriculum-apus-bachelor-of-science-in-business-analytics",
+        "curriculum-apus-bachelor-of-science-in-cybersecurity",
+        "curriculum-apus-bachelor-of-science-in-finance",
+        "curriculum-apus-bachelor-of-science-in-fire-science-management",
+        "curriculum-apus-bachelor-of-science-in-healthcare-administration",
+        "curriculum-apus-bachelor-of-science-in-information-technology",
+        "curriculum-apus-bachelor-of-science-in-public-health"
+      ],
+      "school": "American Public University System",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 120,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 360
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 350,
+      "feeBreakdown": [
+        {
+          "label": "Graduation fee (bachelor’s)",
+          "amount": 350,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 12,
+        "defaultMin": 3,
+        "defaultMax": 6
+      },
+      "termLabel": "8-week session",
+      "termMonths": 2,
+      "sourceIds": [
+        "apus-tuition-fees-2026"
+      ],
+      "missing": [
+        "Uses the $360 standard rate before grants. The 10% Opportunity Grant (applied automatically, $324), Veteran Grant, Everyday Heroes Grant and $250 Preferred Military Rate are not applied.",
+        "Program-specific technology fees (for example ENGR and ELEN courses) and late-registration fees are not included.",
+        "3–6 credits per 8-week session is a planning assumption."
+      ]
+    },
+    {
+      "id": "apus-2026-122",
+      "modelIds": [
+        "curriculum-apus-bachelor-of-science-in-computer-science"
+      ],
+      "school": "American Public University System",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 122,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 360
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 350,
+      "feeBreakdown": [
+        {
+          "label": "Graduation fee (bachelor’s)",
+          "amount": 350,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 12,
+        "defaultMin": 3,
+        "defaultMax": 6
+      },
+      "termLabel": "8-week session",
+      "termMonths": 2,
+      "sourceIds": [
+        "apus-tuition-fees-2026"
+      ],
+      "missing": [
+        "Uses the $360 standard rate before grants. The 10% Opportunity Grant (applied automatically, $324), Veteran Grant, Everyday Heroes Grant and $250 Preferred Military Rate are not applied.",
+        "Program-specific technology fees (for example ENGR and ELEN courses) and late-registration fees are not included.",
+        "3–6 credits per 8-week session is a planning assumption."
+      ]
+    },
+    {
+      "id": "bellevue-online-2026-27-60",
+      "modelIds": [
+        "curriculum-bellevue-associate-degree-in-multidisciplinary-studies",
+        "curriculum-bellevue-associate-of-science-in-business"
+      ],
+      "school": "Bellevue University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 60,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 459
+      },
+      "feesPerTerm": 300,
+      "oneTimeFees": 150,
+      "feeBreakdown": [
+        {
+          "label": "General College fee",
+          "amount": 300,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "frequency": "one-time"
+        },
+        {
+          "label": "Graduation fee",
+          "amount": 100,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "termLabel": "term",
+      "termMonths": 4,
+      "sourceIds": [
+        "bellevue-tuition-fees-2026-27"
+      ],
+      "missing": [
+        "Uses the $459 online rate. The $250 military rate and Campus@Work or Guild funding are not applied.",
+        "Individual course fees (\"Additional fees may apply for individual courses\") are not included.",
+        "6–12 credits per term (three terms a year) is a planning assumption."
+      ]
+    },
+    {
+      "id": "bellevue-online-2026-27-127",
+      "modelIds": [
+        "curriculum-bellevue-bachelor-of-science-in-accounting",
+        "curriculum-bellevue-bachelor-of-science-in-healthcare-management",
+        "curriculum-bellevue-bachelor-of-science-in-management-information-systems",
+        "curriculum-bellevue-bachelor-of-science-in-project-management",
+        "curriculum-bellevue-bachelor-of-science-marketing",
+        "curriculum-bellevue-communication-studies",
+        "curriculum-bellevue-emergency-management",
+        "curriculum-bellevue-online-bachelor-s-degree-of-information-technology",
+        "curriculum-bellevue-online-bachelor-s-degree-of-management"
+      ],
+      "school": "Bellevue University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 127,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 459
+      },
+      "feesPerTerm": 300,
+      "oneTimeFees": 150,
+      "feeBreakdown": [
+        {
+          "label": "General College fee",
+          "amount": 300,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "frequency": "one-time"
+        },
+        {
+          "label": "Graduation fee",
+          "amount": 100,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "termLabel": "term",
+      "termMonths": 4,
+      "sourceIds": [
+        "bellevue-tuition-fees-2026-27"
+      ],
+      "missing": [
+        "Uses the $459 online rate. The $250 military rate and Campus@Work or Guild funding are not applied.",
+        "Individual course fees (\"Additional fees may apply for individual courses\") are not included.",
+        "6–12 credits per term (three terms a year) is a planning assumption."
+      ]
+    },
+    {
+      "id": "champlain-online-2026-27-60",
+      "modelIds": [
+        "curriculum-champlain-associate-of-science-in-accounting",
+        "curriculum-champlain-business-management-2"
+      ],
+      "school": "Champlain College Online",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 60,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 342
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 150,
+      "feeBreakdown": [
+        {
+          "label": "Graduation fee",
+          "amount": 150,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "termLabel": "semester",
+      "termMonths": 4,
+      "sourceIds": [
+        "champlain-online-ug-tuition-2026-27",
+        "champlain-online-ug-fee-details-2026-27"
+      ],
+      "missing": [
+        "Uses the $342 standard rate. Reduced rates ($297 for alumni, associate-degree graduates, veterans and military families; $250 for servicemembers; truED employer rates) are not applied.",
+        "The fee-details page’s cost-of-attendance example still multiplies by $335; the current tuition page lists $342 for Fall 2026–Summer 2027.",
+        "Books for the few courses that require them are not included.",
+        "6–12 credits per semester is a planning assumption."
+      ]
+    },
+    {
+      "id": "champlain-online-2026-27-120",
+      "modelIds": [
+        "curriculum-champlain-bachelor-of-arts-in-applied-psychology",
+        "curriculum-champlain-bachelor-of-science-in-cybersecurity",
+        "curriculum-champlain-bachelor-of-science-in-digital-marketing",
+        "curriculum-champlain-bachelor-of-science-in-healthcare-administration",
+        "curriculum-champlain-business-management",
+        "curriculum-champlain-computer-information-systems",
+        "curriculum-champlain-computer-science",
+        "curriculum-champlain-criminal-justice",
+        "curriculum-champlain-data-science-and-artificial-intelligence",
+        "curriculum-champlain-economic-crime-investigation",
+        "curriculum-champlain-finance",
+        "curriculum-champlain-human-resource-management",
+        "curriculum-champlain-integrated-studies",
+        "curriculum-champlain-management-information-systems",
+        "curriculum-champlain-marketing-and-communication",
+        "curriculum-champlain-marketing-management",
+        "curriculum-champlain-sociology-bachelor-of-arts",
+        "curriculum-champlain-software-development"
+      ],
+      "school": "Champlain College Online",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 120,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 342
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 150,
+      "feeBreakdown": [
+        {
+          "label": "Graduation fee",
+          "amount": 150,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "termLabel": "semester",
+      "termMonths": 4,
+      "sourceIds": [
+        "champlain-online-ug-tuition-2026-27",
+        "champlain-online-ug-fee-details-2026-27"
+      ],
+      "missing": [
+        "Uses the $342 standard rate. Reduced rates ($297 for alumni, associate-degree graduates, veterans and military families; $250 for servicemembers; truED employer rates) are not applied.",
+        "The fee-details page’s cost-of-attendance example still multiplies by $335; the current tuition page lists $342 for Fall 2026–Summer 2027.",
+        "Books for the few courses that require them are not included.",
+        "6–12 credits per semester is a planning assumption."
+      ]
+    },
+    {
+      "id": "strayer-online-2026-27-90",
+      "modelIds": [
+        "curriculum-strayer-associate-in-arts-in-accounting",
+        "curriculum-strayer-associate-in-arts-in-business-administration",
+        "curriculum-strayer-associate-in-arts-in-information-technology"
+      ],
+      "school": "Strayer University",
+      "modality": "online",
+      "creditSystem": "quarter",
+      "degreeUnits": 90,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 345.56
+      },
+      "feesPerTerm": 65,
+      "oneTimeFees": 0,
+      "feesPerUnit": 22.22,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee",
+          "amount": 65,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Resource Kit ($100 per 4.5-quarter-hour course)",
+          "amount": 22.22,
+          "frequency": "per-unit"
+        }
+      ],
+      "pace": {
+        "min": 4,
+        "max": 23,
+        "defaultMin": 9,
+        "defaultMax": 14
+      },
+      "termLabel": "quarter",
+      "termMonths": null,
+      "sourceIds": [
+        "strayer-tuition-2026-27",
+        "strayer-books-fees-2026-27"
+      ],
+      "missing": [
+        "Tuition is billed at $1,555 per 4.5-quarter-hour course; it is shown here as $345.56 per quarter hour, rounded to the cent (about 2 cents more per course). Accelerate courses ($3,045 per course) are not used.",
+        "The $100 Resource Kit is charged per course unless you opt out course by course (shown as $22.22 per quarter hour); opting out means buying course materials yourself.",
+        "Withdrawal, transcript, diploma and regalia charges, and state tuition-fund assessments, are not included.",
+        "Quarter loads of 2–3 courses (9–14 quarter hours) are a planning assumption."
+      ]
+    },
+    {
+      "id": "strayer-online-2026-27-180",
+      "modelIds": [
+        "curriculum-strayer-bachelor-of-business-administration",
+        "curriculum-strayer-bachelor-of-science-in-accounting",
+        "curriculum-strayer-bachelor-of-science-in-criminal-justice",
+        "curriculum-strayer-bachelor-of-science-in-information-technology",
+        "curriculum-strayer-health-services-administration"
+      ],
+      "school": "Strayer University",
+      "modality": "online",
+      "creditSystem": "quarter",
+      "degreeUnits": 180,
+      "catalogs": [
+        "Current catalog page, checked 2026-11-23"
+      ],
+      "tuition": {
+        "type": "per-credit",
+        "rate": 345.56
+      },
+      "feesPerTerm": 65,
+      "oneTimeFees": 150,
+      "feesPerUnit": 22.22,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee",
+          "amount": 65,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Resource Kit ($100 per 4.5-quarter-hour course)",
+          "amount": 22.22,
+          "frequency": "per-unit"
+        },
+        {
+          "label": "Final academic requirements evaluation fee",
+          "amount": 150,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 4,
+        "max": 23,
+        "defaultMin": 9,
+        "defaultMax": 14
+      },
+      "termLabel": "quarter",
+      "termMonths": null,
+      "sourceIds": [
+        "strayer-tuition-2026-27",
+        "strayer-books-fees-2026-27"
+      ],
+      "missing": [
+        "Tuition is billed at $1,555 per 4.5-quarter-hour course; it is shown here as $345.56 per quarter hour, rounded to the cent (about 2 cents more per course). Accelerate courses ($3,045 per course) are not used.",
+        "The $100 Resource Kit is charged per course unless you opt out course by course (shown as $22.22 per quarter hour); opting out means buying course materials yourself.",
+        "Withdrawal, transcript, diploma and regalia charges, and state tuition-fund assessments, are not included.",
+        "Quarter loads of 2–3 courses (9–14 quarter hours) are a planning assumption."
       ]
     }
   ],
