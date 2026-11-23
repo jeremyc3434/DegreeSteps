@@ -6,7 +6,7 @@
  */
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
-import {list,loadKit,resolveKitDir,readJSON,parseArgs,isMain,root,today} from './lib.mjs';
+import {list,exists,loadKit,resolveKitDir,readJSON,parseArgs,isMain,root,today} from './lib.mjs';
 import {verifyKit} from './verify.mjs';
 import {programCoverage,schoolReport,formatReport} from './report.mjs';
 import {estimateCost} from './draft.mjs';
@@ -48,7 +48,13 @@ async function main(){
   const args=parseArgs(process.argv.slice(2));
   if(!args.school||!args.summary)throw Error('Usage: run-report.mjs --school <kit-dir-or-id> --summary <file.json> [--run-url <url>]');
   const summary=JSON.parse(await readFile(resolve(args.summary),'utf8'));
-  const kit=await loadKit(resolveKitDir(args.school));
+  const dir=resolveKitDir(args.school);
+  if(!await exists(resolve(dir,'school.json'))){
+    // A new school whose every page failed has no kit yet: report the pages only.
+    process.stdout.write([`## Pathway Factory draft run: new school \`${args.school}\``,'','No program was drafted, so no kit was created. Captures that succeeded are included for a hand draft.','',...list(summary.items).map(item=>`- ${item.url}: ${item.status}${item.error?' — '+item.error:''}`)].join('\n')+'\n');
+    return;
+  }
+  const kit=await loadKit(dir);
   const verification=await verifyKit(kit,{asOf:today()});
   let catalog=null;try{catalog=await readJSON(resolve(root,'dist/data/program-catalog.json'));}catch{}
   process.stdout.write(draftRunMarkdown({summary,kit,verification,catalog,runUrl:args['run-url']||''}));
