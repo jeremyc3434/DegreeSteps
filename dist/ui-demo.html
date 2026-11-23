@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Component check | DegreeSteps</title>
+<script src="/ui-sheet.js" defer></script>
+<script src="/ui-demo.js" defer></script>
+<style>
+body { margin:0; background:var(--tok-canvas); color:var(--tok-ink); font-family:var(--tok-font); }
+.demo-main { max-width:960px; margin:0 auto; padding:32px 20px 64px; display:flex; flex-direction:column; gap:32px; }
+.demo-main h1 { margin:0; font-size:var(--tok-text-h1); letter-spacing:var(--tok-tracking-title); line-height:1.1; }
+.demo-main h2 { margin:0 0 12px; font-size:var(--tok-text-h2); letter-spacing:var(--tok-tracking-title); }
+.demo-row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.demo-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+</style>
+<link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><script src="/site-header.js" defer></script><script src="/growth-metrics.js" defer></script></head>
+<body class="ds-experience">
+<a class="site-skip" href="#main">Skip to content</a>
+<header class="ds-header ds-header--public" data-ds-header><div class="ds-header-inner"><a class="ds-header-brand ds-wordmark" href="/" aria-label="DegreeSteps home"><span>Degree</span><span class="ds-wordmark-steps">Steps</span></a><button type="button" class="ds-header-toggle" aria-expanded="false" aria-controls="ds-header-menu-demo" hidden><span>Menu</span></button><nav class="ds-header-nav" id="ds-header-menu-demo" aria-label="Main navigation"><a class="ds-header-link" href="/degree-plans/">Degrees</a><a class="ds-header-link" href="/transfer/">Transfer courses</a><a class="ds-header-link" href="/community.html?tab=feed">Community</a><a class="ds-header-link" href="/plan.html" data-fallback-href="/portal.html">My plan</a><a class="ds-header-link ds-header-link--account" href="/account.html">Sign in</a></nav></div></header>
+<main id="main" class="demo-main">
+  <div>
+    <h1>Component check</h1>
+    <p>Internal page for visual review of the shared components. Not linked and not indexed.</p>
+  </div>
+  <section aria-labelledby="demo-buttons">
+    <h2 id="demo-buttons">Buttons</h2>
+    <div class="demo-row">
+      <a class="ds-btn ds-btn-primary" href="#main">Build this plan</a>
+      <button type="button" class="ds-btn ds-btn-secondary">Ask the school</button>
+      <button type="button" class="ds-btn ds-btn-ghost">Show 19 more</button>
+      <button type="button" class="ds-btn ds-btn-primary" disabled>Disabled</button>
+    </div>
+  </section>
+  <section aria-labelledby="demo-chips">
+    <h2 id="demo-chips">Chips</h2>
+    <div class="demo-row">
+      <button type="button" class="ds-chip" aria-pressed="true">Bachelor's</button>
+      <button type="button" class="ds-chip" aria-pressed="false">Online</button>
+      <span class="ds-chip ds-chip--soft">Psychology</span>
+    </div>
+  </section>
+  <section aria-labelledby="demo-cards">
+    <h2 id="demo-cards">Card, stats and progress</h2>
+    <div class="demo-grid">
+      <article class="ds-card">
+        <p class="ds-card-eyebrow">Example school · Online</p>
+        <h3 class="ds-card-title">B.S. Example degree</h3>
+        <div class="ds-stats">
+          <div class="ds-stat"><span class="ds-stat-label">Est. cost</span><span class="ds-stat-value">$0–$0</span></div>
+          <div class="ds-stat ds-stat--accent"><span class="ds-stat-label">For less</span><span class="ds-stat-value">0 of 120</span></div>
+        </div>
+        <div class="ds-progress" aria-label="Example progress: 9 done, 69 for less, 42 at the school">
+          <div class="ds-progress-bar" aria-hidden="true"><span class="ds-progress-segment ds-progress-segment--done" style="width:7.5%"></span><span class="ds-progress-segment ds-progress-segment--less" style="width:57.5%"></span><span class="ds-progress-segment ds-progress-segment--school" style="width:35%"></span></div>
+          <ul class="ds-progress-legend"><li><span class="ds-dot ds-dot--done"></span><strong>9</strong> done</li><li><span class="ds-dot ds-dot--less"></span><strong>69</strong> for less</li><li><span class="ds-dot ds-dot--school"></span><strong>42</strong> at school</li></ul>
+        </div>
+        <button type="button" class="ds-btn ds-btn-secondary" data-demo-sheet>Open the row sheet</button>
+      </article>
+    </div>
+  </section>
+  <p>The numbers on this page are placeholders for layout checks, not plan data.</p>
+</main>
+</body>
+</html>

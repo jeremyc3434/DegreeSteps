@@ -190,7 +190,7 @@ async function test(name, run) {
     const official = p.getByRole('link', {name:/Open official program information/});
     assert.match(await official.getAttribute('href'), /^https:\/\//);
     assert.equal(await p.locator('[data-action="school-contacted"]').count(), 0);
-    assert.deepEqual([...new Set(await p.getByRole('link', {name:'My plan', exact:true}).evaluateAll(links => links.map(link => link.getAttribute('href'))))], ['plan.html']);
+    assert.deepEqual([...new Set(await p.getByRole('link', {name:'My plan', exact:true}).evaluateAll(links => links.map(link => new URL(link.getAttribute('href'), location.href).pathname)))], ['/plan.html']);
     await p.getByRole('link', {name:'Back to my checklist', exact:true}).click();
     await p.waitForURL(BASE + 'plan.html');await readyPlan(p);
     assert.equal((await saved(p)).journey.schoolContacted, false);

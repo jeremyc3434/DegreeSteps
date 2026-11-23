@@ -12,8 +12,8 @@ const families=new Map([
   ['compare-plans.html','comparison'],['community.html','community'],
   ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
 ]);
-const managedStyles=new Set(['brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-save.css','home-steps.css','plan-alerts.css']);
-const managedScripts=new Set(['growth-metrics.js','plan-save.js','task-calendar.js','coach.js','leads.js','plan-alerts.js']);
+const managedStyles=new Set(['ds-tokens.css','ds-components.css','brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-save.css','home-steps.css','plan-alerts.css']);
+const managedScripts=new Set(['site-header.js','growth-metrics.js','plan-save.js','task-calendar.js','coach.js','leads.js','plan-alerts.js']);
 // Email plan alerts: the script renders nothing unless /api/alerts is enabled (EMAIL_ALERTS_ENABLED=1).
 const alertPages=new Set(['plan.html','account.html']);
 // Degree coach (beta): the script renders nothing unless /api/coach/status reports the coach enabled.
@@ -26,7 +26,7 @@ export function pageExperience(name,source){
   const publicPage=/<body\b[^>]*\bclass=["'][^"']*\bpublic-page\b/i.test(source);
   const workspace=!publicPage&&(workspacePages.has(name)||/<script\b[^>]*\bsrc=["'][^"']*app-shell\.js["']/i.test(source));
   const family=publicPage?'public':families.get(name)||null;
-  const styles=['brand.css','experience.css'];
+  const styles=['ds-tokens.css','brand.css','experience.css','ds-components.css'];
   const classes=['ds-experience'];
   if(publicPage)classes.push('ds-public-page');
   if(workspace){classes.push('ds-workspace-page');styles.push('workspace-design.css');}
@@ -51,6 +51,10 @@ export function applyExperience(source,name){
   // Catalog credit-accounting checks share the planner's source-bound policy validator.
   if(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["']/i.test(next)&&!/<script\b[^>]*\bsrc=["']\/?planner\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["'][^>]*>/i,tag=>'<script src="/planner.js" defer></script>'+tag);
   if(/<script\b[^>]*\bsrc=["']\/?student-checklist-view\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?student-checklist-view\.js["'][^>]*>/i,tag=>'<script src="/task-calendar.js" defer></script>'+tag);
+  // The shared header (site-header.js) must run before the workspace shell that renders it; elsewhere it only enhances.
+  next=next.replace(/<script\b[^>]*\bsrc=["']\/?site-header\.js["'][^>]*>\s*<\/script>/gi,'');
+  const shellTag=/<script\b[^>]*\bsrc=["']\/?app-shell\.js["'][^>]*>/i;
+  if(shellTag.test(next))next=next.replace(shellTag,tag=>'<script src="/site-header.js" defer></script>'+tag);else scripts.unshift('site-header.js');
   next=next.replace(/<\/head>/i,selected.styles.map(name=>'<link rel="stylesheet" href="/'+name+'">').join('')+scripts.map(name=>'<script src="/'+name+'" defer></script>').join('')+'</head>');
   next=next.replace(/<body\b([^>]*)>/i,(tag,attributes)=>{
     const match=attributes.match(/\bclass=(["'])(.*?)\1/i);
