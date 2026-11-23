@@ -1,0 +1,435 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-in-psychology",
+  "routeIds": [],
+  "title": "Bachelor of Science in Psychology",
+  "level": "bachelor",
+  "catalog": "2026–2027",
+  "totalCredits": 120,
+  "catalogUrl": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,101-103&columns=2",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+      "title": "Bachelor of Science in Psychology catalog page",
+      "url": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,101-103&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/4f33b36ae38aada2.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+      "text": "You must complete a minimum of 120 credits."
+    }
+  ],
+  "gaps": [
+    "Elective credit amount (46) is not printed for this program; it is derived from 120 total minus 36 major credits (30 core + 3 capstone + 3 related) minus 38 remaining general education credits. The program table prints only 'Remaining General Education and Elective Courses 84'. The general catalog range is 1–49.",
+    "The 3-credit general education Mathematics requirement is not listed separately. The capture says STAT 200 'may be applied to general education requirements', and the course sequence maps it to 'Related and general education/mathematics'. The ledger therefore counts STAT 200 toward Mathematics.",
+    "The capture does not explicitly label the credit unit as semester hours.",
+    "Residency rules are not tied to specific courses, so all requirements are marked institutionalOnly false: at least 30 credits (normally the final 30) must be completed at UMGC; half the credits within the major must be completed at UMGC; at least 15 upper-level credits (300–499) must be completed at UMGC.",
+    "At least half the major credits must be earned through graded coursework. A minimum grade of C is required for courses applied to the major, and a 2.0 overall GPA is required.",
+    "WRTG 112 must be completed with C- or better within the first 24 credits and may not be earned through Prior Learning. Mathematics must be completed within the first 24 credits. The professional exploration course must be taken within the first 6 credits.",
+    "General education courses may not be taken pass/fail. Pass/fail credit (max 18) applies only to electives.",
+    "The capture does not state which specific courses satisfy flexible slots beyond discipline lists. PSYC 251, PSYC 310 and PSYC 341 may each be replaced by any upper-level PSYC course."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-100",
+      "code": "PSYC 100",
+      "title": "Introduction to Psychology",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 100 Introduction to Psychology (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-220",
+      "code": "PSYC 220",
+      "title": "Social Psychology",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 220 Social Psychology (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-251",
+      "code": "PSYC 251",
+      "title": "Lifespan Development (or any upper-level PSYC course)",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 251 Lifespan Development (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-300",
+      "code": "PSYC 300",
+      "title": "Research Methods in Psychology",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 300 Research Methods in Psychology (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-301",
+      "code": "PSYC 301",
+      "title": "Biological Basis of Behavior",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 301 Biological Basis of Behavior (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-310",
+      "code": "PSYC 310",
+      "title": "Sensation and Perception (or any upper-level PSYC course)",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 310 Sensation and Perception (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-335",
+      "code": "PSYC 335",
+      "title": "Theories of Personality",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 335 Theories of Personality (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-341",
+      "code": "PSYC 341",
+      "title": "Memory and Cognition (or any upper-level PSYC course)",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 341 Memory and Cognition (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-353",
+      "code": "PSYC 353",
+      "title": "Psychopathology and Mental Health",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 353 Psychopathology and Mental Health (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-436",
+      "code": "PSYC 436",
+      "title": "Introduction to Clinical Psychology",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 436 Introduction to Clinical Psychology (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-psyc-495",
+      "code": "PSYC 495",
+      "title": "Psychology Capstone",
+      "credits": 3,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "PSYC 495 Psychology Capstone (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-stat-200",
+      "code": "STAT 200",
+      "title": "Introduction to Statistics (required related course; applied to general education mathematics)",
+      "credits": 3,
+      "category": "other",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "STAT 200 Introduction to Statistics (3)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-communications-wrtg-111-or-another-writing-course",
+      "code": "",
+      "title": "Communications: WRTG 111 or another writing course",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "WRTG 111 or another writing course (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-wrtg-112",
+      "code": "WRTG 112",
+      "title": "Communications: WRTG 112",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "WRTG 112 (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-communications-a-course-in-communication-writing-or-speech",
+      "code": "",
+      "title": "Communications: a course in communication, writing, or speech",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "A course in communication, writing, or speech (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-communications-an-upper-level-advanced-writing-course",
+      "code": "",
+      "title": "Communications: an upper-level advanced writing course",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "An upper-level advanced writing course (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-arts-and-humanities-two-3-credit-courses",
+      "code": "",
+      "title": "Arts and Humanities (two 3-credit courses)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "Arts and Humanities 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-behavioral-and-social-sciences-two-3-credit-courses",
+      "code": "",
+      "title": "Behavioral and Social Sciences (two 3-credit courses)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "Behavioral and Social Sciences 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-biological-and-physical-sciences-lab-science-4-credits-plus-any-ot-ae4456a1",
+      "code": "",
+      "title": "Biological and Physical Sciences (lab science 4 credits plus any other science course 3 credits)",
+      "credits": 7,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "Biological and Physical Sciences 7"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-research-and-computing-literacy-professional-exploration-course",
+      "code": "",
+      "title": "Research and Computing Literacy: professional exploration course",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "Professional exploration course (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-research-and-computing-literacy-libs-150-capl-398a-or-other-general-education-course",
+      "code": "",
+      "title": "Research and Computing Literacy: LIBS 150, CAPL 398A, or other general education course",
+      "credits": 1,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "LIBS 150, CAPL 398A, or other general education course"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-research-and-computing-literacy-computing-or-information-technology",
+      "code": "",
+      "title": "Research and Computing Literacy: computing or information technology",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "One 3-credit course or three 1-credit courses in computing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-psychology-electives",
+      "code": "",
+      "title": "Electives",
+      "credits": 46,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-bachelor-of-science-in-psychology-catalog-2026-11-23",
+          "text": "Electives 1–49"
+        }
+      ]
+    }
+  ]
+}
