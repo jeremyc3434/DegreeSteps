@@ -176,3 +176,26 @@ test('a page with no receiving-school column or a redirect away from the partner
     await assert.rejects(run(f,{school:'snhu',partner:'snhu',page:await fixture('snhu')}),/--name/);
   }finally{await f.cleanup();}
 });
+
+test('the weekly freshness check treats a Sophia partner page as changed only when its course table changes, not its live review counts',async()=>{
+  const {checkFreshness}=await import('./scripts/pathway-factory/freshness.mjs');
+  const {tableSignature}=await import('./scripts/pathway-factory/import-sophia-partner.mjs');
+  const {capture}=await import('./scripts/pathway-factory/capture.mjs');
+  const base=await mkdtemp(join(tmpdir(),'sophia-freshness-')),kits=join(base,'content/pathway-kits'),captures=join(base,'content/source-captures');
+  const url='https://snhu.sophia.org/',original=await fixture('snhu');
+  const respond=body=>({ok:true,status:200,url,headers:{get:()=>'text/html'},text:async()=>body});
+  try{
+    const stored=await capture(url,{dir:captures,fetchImpl:async()=>respond(original),now:()=>new Date('2026-11-23T00:00:00Z')});
+    await writeJSON(join(kits,'demo','school.json'),{kind:'pathway-kit-school',version:1,id:'demo',name:'Demo',creditSystem:'semester',checkedOn:'2026-11-23',sources:[
+      {id:'demo-sophia-partner-page',title:'Sophia partner page',url,checked:'2026-11-23',capture:stored.path.slice(base.length+1),tableSha256:tableSignature(parseRows(original))}]});
+    await writeJSON(join(kits,'providers','sophia.json'),sophia,['courses']);
+    const run=body=>checkFreshness({base,asOf:'2026-11-30',fetchImpl:async()=>respond(body),write:false,delayMs:0,log:()=>{}});
+    // Review counts are bare digit cells after the credits; change every 5-digit number on the page.
+    const recounted=original.replace(/>(\d{4,6})</g,(m,n)=>'>'+(Number(n)+7)+'<');
+    assert.notEqual(recounted,original,'the fixture contains review counts to change');
+    assert.equal((await run(recounted)).summary.changed,0,'review counts alone are not a change');
+    const retabled=original.replace('ENG130','ENG131');
+    assert.notEqual(retabled,original);
+    assert.equal((await run(retabled)).summary.changed,1,'a changed course match is a change');
+  }finally{await rm(base,{recursive:true,force:true});}
+});

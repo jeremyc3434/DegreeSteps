@@ -65,7 +65,10 @@ export async function fetchPage(url,{fetchImpl=globalThis.fetch,userAgent=USER_A
   if(pdf&&!bytes)throw Error('A PDF response must be read as bytes.');
   const body=pdf?'':bytes?new TextDecoder().decode(bytes):await response.text();
   const text=pdf?await pdfToText(bytes):/html/i.test(type)||/^\s*</.test(body)?htmlToText(body):body.replace(/\r\n/g,'\n');
-  return {text,sha256:sha256(text),url,finalUrl:response.url||url,contentType:type,status:response.status};
+  const page={text,sha256:sha256(text),url,finalUrl:response.url||url,contentType:type,status:response.status};
+  // The raw HTML stays off the sidecar; freshness uses it for sources that fingerprint a parsed table (Sophia partner pages).
+  if(!pdf&&body&&(/html/i.test(type)||/^\s*</.test(body)))Object.defineProperty(page,'html',{value:body,enumerable:false});
+  return page;
 }
 /** Writes a fetched page as <sha256 prefix>.txt plus its JSON sidecar. Returns {path, sidecar, sha256, text, relative}. */
 export async function storeCapture(page,{dir=capturesRoot,now=()=>new Date()}={}){
