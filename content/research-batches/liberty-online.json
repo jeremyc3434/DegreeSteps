@@ -8,18 +8,18 @@
     ]
   },
   "modality": "online",
-  "inputAsOf": "2026-11-20",
-  "academicRegistryRevision": "academic-v1:2dd1757b7d2ddd782b79028ae13b18c0dcf0ee5872f5955c5049144c272a8db0",
+  "inputAsOf": "2026-11-23",
+  "academicRegistryRevision": "academic-v1:44065b70fdcaffd128698bc015f14bd4d3bd4033425d669774120f67169cb85f",
   "scope": "All existing Liberty directory parents are included for delivery discovery. Only variants with explicit online modality and an exact program URL are counted as known online programs. Capturing a source does not verify its claims or publish a template.",
   "summary": {
     "directoryCandidates": 387,
     "onlineRouteCandidates": 13,
     "knownOnlinePrograms": 12,
     "activeCurriculumModels": 11,
-    "readyTemplates": 10,
-    "uniqueOfficialSources": 442,
+    "readyTemplates": 11,
+    "uniqueOfficialSources": 443,
     "sharedExactProgramSources": 37,
-    "queuedJobs": 442
+    "queuedJobs": 443
   },
   "programs": [
     {
@@ -3397,9 +3397,10 @@
       "catalog": "2026–2027",
       "catalogYear": "2026-2027",
       "modelId": "curriculum-liberty-human-services-bs-online",
-      "readyTemplate": false,
+      "readyTemplate": true,
       "coverage": "complete",
       "sourceIds": [
+        "source-013854b23a41446ca52686b8",
         "source-0595c95ee18bfba3c584a193",
         "source-08e19757bace01a1e96bebc3",
         "source-0cd03010426a12c0777c9efe",
@@ -11393,6 +11394,7 @@
       "url": "https://catalog.liberty.edu/undergraduate/courses/psyc/",
       "titles": [
         "Liberty PSYC course descriptions and online delivery, 2026–2027",
+        "Liberty University 2026–2027 undergraduate course descriptions: Psychology (PSYC) (captured)",
         "PSYC course descriptions, 2026–27"
       ],
       "programIds": [
@@ -11425,6 +11427,7 @@
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--psyc-courses",
         "curriculum-liberty-history-bs-online:liberty-criminal-justice-online--psyc-courses",
         "curriculum-liberty-human-services-bs-online:liberty-criminal-justice-online--psyc-courses",
+        "curriculum-liberty-human-services-bs-online:liberty-psyc-courses-2026-2027-captured-2026-11-23",
         "curriculum-liberty-interdisciplinary-aa-online:liberty-aa-psyc-online-course-choices-2026-11-18",
         "curriculum-liberty-interdisciplinary-aa-online:liberty-criminal-justice-online--psyc-courses",
         "curriculum-liberty-psychology-aa-online:liberty-aa-psyc-online-course-choices-2026-11-18",
@@ -13230,6 +13233,29 @@
       ],
       "localSourceIds": [
         "curriculum-liberty-history-bs-online:liberty-history-free-musc-courses-2026-2027"
+      ],
+      "roles": [
+        "model-evidence"
+      ],
+      "kind": "course-description",
+      "affectedExactPrograms": 1,
+      "sourceContentHash": null,
+      "captureStatus": "not-captured"
+    },
+    {
+      "id": "source-013854b23a41446ca52686b8",
+      "url": "https://catalog.liberty.edu/undergraduate/courses/sowk/",
+      "titles": [
+        "Liberty University 2026–2027 undergraduate course descriptions: Social Work (SOWK) (captured)"
+      ],
+      "programIds": [
+        "liberty-catalog-af9ac1098c168c17-online"
+      ],
+      "modelIds": [
+        "curriculum-liberty-human-services-bs-online"
+      ],
+      "localSourceIds": [
+        "curriculum-liberty-human-services-bs-online:liberty-sowk-courses-2026-2027-captured-2026-11-23"
       ],
       "roles": [
         "model-evidence"
@@ -22179,6 +22205,21 @@
       "status": "queued"
     },
     {
+      "id": "capture-source-013854b23a41446ca52686b8",
+      "stage": "capture-evidence",
+      "sourceId": "source-013854b23a41446ca52686b8",
+      "url": "https://catalog.liberty.edu/undergraduate/courses/sowk/",
+      "kind": "course-description",
+      "priority": 100,
+      "affectedProgramIds": [
+        "liberty-catalog-af9ac1098c168c17-online"
+      ],
+      "affectedModelIds": [
+        "curriculum-liberty-human-services-bs-online"
+      ],
+      "status": "queued"
+    },
+    {
       "id": "capture-source-3d6d3b6586c2a21d632d0a10",
       "stage": "capture-evidence",
       "sourceId": "source-3d6d3b6586c2a21d632d0a10",
@@ -27849,5 +27890,5 @@
       "status": "queued"
     }
   ],
-  "revision": "school-batch-v1:014920de7f0b0647aeb16ce1214e183af9ba69b0b5092f1155d9e95cb314848d"
+  "revision": "school-batch-v1:c0639d727d24501047b01514cb65c5fb9d6fd3fe2965a99fd6c618ab29db805d"
 }

@@ -1,27 +1,27 @@
 {
   "schemaRevision": "research-priorities-v1",
-  "revision": "research-priorities-v1:67812f5d9455cce1fa34a8b86ade188acc2a0ff267914ca2a7b987842984ba4d",
-  "asOf": "2026-11-20",
+  "revision": "research-priorities-v1:8a08950bff94992e5d1754c7981e10bef314407834b155d60a48ab6f7615eb56",
+  "asOf": "2026-11-23",
   "inputFingerprints": {
     "inventory": "5641a61bc3ad2f827256cb7c64f05d9e91e5d46720938a1033ab2eb1800c60b4",
-    "models": "1de44036d6ce099ed9cca7715a52e881971bb01d34f407f8e47421cf89080ba9",
+    "models": "1fda5f02b2d28132aa15010029cfd8f062b0e9ee2be77bcce37427ff1f6d3c51",
     "pathways": "724ccdc082fc8c4659451d1e3e3c7b85df95e4c1a026e50bad5c7d87c8a6e1f2",
     "programCatalog": "d46e34eb28c79ac3484bb39af59ca245a509492c3e13db9563784e1d0f5de862",
     "providerDiscovery": "3071f4db1055a48686b22f38dc16872f870026bb93941c5f8486214298eda90c",
-    "quality": "3d69723a6ba679c49809778118b1496d43f7536019cd3a8eea30f44f391284df",
-    "registry": "f54c1d0091269ca771b58c09f19f7c86981c50f4be0868326f63ed6e721225ea",
+    "quality": "c957f10923c6559693e082b89f8c1264db7b2626b50fdb3d8988e424e3bb1331",
+    "registry": "b9c1be9177316778cbb363dae67b9e6b13b70e94aee94fa4f8d3d32510aa90ec",
     "schoolInsights": "9b84b9db33a9014067bc7c797cf5d9aa4f3914bf64afda474c9bd92f872f6df6",
     "tesuExamReview": "5d9b52d81bbe4375dc9d1ad7acd2e8d1c00bf62e59b79bd4a303cbaf2505fb0e",
     "umpiPrimaryReview": "c2345e5b07e6db37f4876b2c17180e9a220aff6676f31b5dbebc99c2baaf184c"
   },
-  "academicRegistryRevision": "academic-v1:2dd1757b7d2ddd782b79028ae13b18c0dcf0ee5872f5955c5049144c272a8db0",
+  "academicRegistryRevision": "academic-v1:44065b70fdcaffd128698bc015f14bd4d3bd4033425d669774120f67169cb85f",
   "scope": "Cross-school research prioritization from the existing directory, exact model registry, recorded publication checks and sourced policy channels. This static backlog does not publish a degree map, grant student credit, establish popularity or start a research job.",
   "summary": {
     "schools": 22,
     "programs": 1664,
     "directoryPrograms": 1633,
     "modelPrograms": 59,
-    "availableTemplates": 51,
+    "availableTemplates": 54,
     "publicationReady": 11,
     "unmappedPrograms": 1602,
     "inventoryCandidates": 95,
@@ -2405,7 +2405,7 @@
         "directoryPrograms": 387,
         "programCount": 404,
         "models": 20,
-        "availableTemplates": 17,
+        "availableTemplates": 20,
         "publicationReady": 5,
         "unmappedPrograms": 384,
         "needsResearchPrograms": 15
@@ -23055,18 +23055,16 @@
         "online"
       ],
       "sourceStatus": "existing-degree-model",
-      "coverageStatus": "model-needs-research",
+      "coverageStatus": "available-proposed-template",
       "groupId": "existing-model-review",
       "modelId": "curriculum-liberty-accounting-aa-online",
-      "availableTemplate": false,
+      "availableTemplate": true,
       "publicationReady": false,
       "publicationReasonCodes": [
         "acceleration-not-established",
-        "baseline-course-choices",
         "conditional-award",
         "policy-unresolved",
-        "unresolved-research",
-        "validation-selection_required"
+        "unresolved-research"
       ],
       "programPolicy": {
         "scope": "Exact degree model only; not a school-wide acceptance claim.",
@@ -23086,6 +23084,7 @@
         "https://catalog.liberty.edu/undergraduate/colleges-schools/applied-studies-academic-success/general-education-courses-online-programs/",
         "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-major-aa/",
         "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-major-aa/accounting-aa-online/",
+        "https://catalog.liberty.edu/undergraduate/courses/acct/",
         "https://clep.collegeboard.org/clep-exams/humanities",
         "https://getcollegecredit.com/exam/ethics-in-america/",
         "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=69b65d60-f98e-ee11-8179-00224805f697&oid=e9089b28-9016-e811-810f-5065f38bf0e1&org=College+Board%27s+College-Level+Examination+Program+%28CLEP%29",
@@ -23108,7 +23107,7 @@
         },
         {
           "id": "resolve-model-findings",
-          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, baseline-course-choices, conditional-award, policy-unresolved, unresolved-research, validation-selection_required.",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, policy-unresolved, unresolved-research.",
           "kind": "resolve-model-findings"
         }
       ],
@@ -23406,18 +23405,16 @@
         "campus"
       ],
       "sourceStatus": "existing-degree-model",
-      "coverageStatus": "model-needs-research",
+      "coverageStatus": "available-proposed-template",
       "groupId": "existing-model-review",
       "modelId": "curriculum-liberty-computer-science-general-residential",
-      "availableTemplate": false,
+      "availableTemplate": true,
       "publicationReady": false,
       "publicationReasonCodes": [
         "acceleration-not-established",
-        "baseline-course-choices",
         "mapping-scope",
         "policy-unresolved",
-        "unresolved-research",
-        "validation-selection_required"
+        "unresolved-research"
       ],
       "programPolicy": {
         "scope": "Exact degree model only; not a school-wide acceptance claim.",
@@ -23439,6 +23436,9 @@
         "https://catalog.liberty.edu/undergraduate/colleges-schools/business/computer-science-major-bs/general-resident/",
         "https://catalog.liberty.edu/undergraduate/courses/acct/",
         "https://catalog.liberty.edu/undergraduate/courses/busi/",
+        "https://catalog.liberty.edu/undergraduate/courses/chem/",
+        "https://catalog.liberty.edu/undergraduate/courses/cscn/",
+        "https://catalog.liberty.edu/undergraduate/courses/math/",
         "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
         "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
         "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
@@ -23501,7 +23501,7 @@
         },
         {
           "id": "resolve-model-findings",
-          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, baseline-course-choices, mapping-scope, policy-unresolved, unresolved-research, validation-selection_required.",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-scope, policy-unresolved, unresolved-research.",
           "kind": "resolve-model-findings"
         }
       ],
@@ -23728,17 +23728,15 @@
         "online"
       ],
       "sourceStatus": "existing-degree-model",
-      "coverageStatus": "model-needs-research",
+      "coverageStatus": "available-proposed-template",
       "groupId": "existing-model-review",
       "modelId": "curriculum-liberty-human-services-bs-online",
-      "availableTemplate": false,
+      "availableTemplate": true,
       "publicationReady": false,
       "publicationReasonCodes": [
-        "baseline-course-choices",
         "conditional-award",
         "provider-eligibility",
-        "unresolved-research",
-        "validation-selection_required"
+        "unresolved-research"
       ],
       "programPolicy": {
         "scope": "Exact degree model only; not a school-wide acceptance claim.",
@@ -23776,6 +23774,7 @@
         "https://catalog.liberty.edu/undergraduate/courses/psyc/",
         "https://catalog.liberty.edu/undergraduate/courses/rlgn/",
         "https://catalog.liberty.edu/undergraduate/courses/soci/",
+        "https://catalog.liberty.edu/undergraduate/courses/sowk/",
         "https://catalog.liberty.edu/undergraduate/courses/theo/",
         "https://catalog.liberty.edu/undergraduate/courses/univ/",
         "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
@@ -23849,7 +23848,7 @@
         },
         {
           "id": "resolve-model-findings",
-          "label": "Resolve this model’s recorded publication findings: baseline-course-choices, conditional-award, provider-eligibility, unresolved-research, validation-selection_required.",
+          "label": "Resolve this model’s recorded publication findings: conditional-award, provider-eligibility, unresolved-research.",
           "kind": "resolve-model-findings"
         }
       ],
@@ -24214,12 +24213,10 @@
       "availableTemplate": true,
       "publicationReady": false,
       "publicationReasonCodes": [
-        "baseline-course-choices",
         "conditional-award",
         "mapping-scope",
         "policy-unresolved",
-        "unresolved-research",
-        "validation-selection_required"
+        "unresolved-research"
       ],
       "programPolicy": {
         "scope": "Exact degree model only; not a school-wide acceptance claim.",
@@ -24256,6 +24253,7 @@
         "https://catalog.liberty.edu/undergraduate/courses/hlth/",
         "https://catalog.liberty.edu/undergraduate/courses/inft/",
         "https://catalog.liberty.edu/undergraduate/courses/math/",
+        "https://catalog.liberty.edu/undergraduate/courses/phed/",
         "https://catalog.liberty.edu/undergraduate/courses/phil/",
         "https://catalog.liberty.edu/undergraduate/courses/psyc/",
         "https://catalog.liberty.edu/undergraduate/courses/rlgn/",
@@ -24330,7 +24328,7 @@
         },
         {
           "id": "resolve-model-findings",
-          "label": "Resolve this model’s recorded publication findings: baseline-course-choices, conditional-award, mapping-scope, policy-unresolved, unresolved-research, validation-selection_required.",
+          "label": "Resolve this model’s recorded publication findings: conditional-award, mapping-scope, policy-unresolved, unresolved-research.",
           "kind": "resolve-model-findings"
         }
       ],
