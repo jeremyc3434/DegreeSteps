@@ -32,7 +32,7 @@ test('the public homepage explains the product and offers a clear separate build
   assert(links.some(h=>new URL(h,home.url).pathname==='/account.html'),'A real account entry is available');
   assert(strip(home.html).split(/\s+/).length>=200,'The explanation is crawlable without client rendering');
   const headline=strip(home.html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');
-  assert.match(headline,/^Finish your degree for less\.$/i,'The first message states the outcome');
+  assert.match(headline,/^A degree that fits your life\.$/i,'The first message states the outcome');
   assert.match(strip(home.html.match(/<h2 id="home-steps-title"[^>]*>([\s\S]*?)<\/h2>/i)?.[1]||''),/^The degree you want\. A smarter way there\.$/i,'The example chapter still connects the degree goal to a different route');
   assert.match(strip(home.html),/Find a faster, more affordable route with flexible courses that can count toward your degree\. Online or on campus\./,'The supporting sentence states the student outcome and course flexibility');
   const chapters=[...home.html.matchAll(/<section\b(?=[^>]*\bdata-home-step(?:\s|>))[^>]*>/gi)];
@@ -53,10 +53,11 @@ test('the public homepage explains the product and offers a clear separate build
     assert.equal(source.origin,siteOrigin,'Homepage images are self-hosted');
     const brand=source.pathname.match(/^\/images\/brands\/([a-z0-9-]+)\.svg$/i);
     if(brand){
-      assert.match(image,/\balt\s*=\s*(["'])\1/i,'A decorative brand image has an explicit empty text alternative');
+      assert.match(image,/\balt\s*=/i,'Every brand image has an explicit text alternative');
       for(const dimension of ['width','height'])assert(/^[1-9]\d*$/.test(attr(image,dimension)),'Brand images have positive numeric '+dimension);
       const name=brandNames.get(brand[1]);assert(name,'The example identifies a known school or course provider');
-      assert.match(strip(home.html.slice(match.index+image.length,match.index+image.length+600)),name,'The decorative logo has a nearby readable brand name');
+      if(attr(image,'alt'))assert.match(attr(image,'alt'),name,'An informative logo identifies its school or provider');
+      else assert.match(strip(home.html.slice(match.index+image.length,match.index+image.length+600)),name,'A decorative logo has a nearby readable brand name');
     }else assert(attr(image,'alt').length>=12,'A photograph has a useful text alternative');
   }
 

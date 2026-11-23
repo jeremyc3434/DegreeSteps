@@ -924,7 +924,7 @@ test('the redesign covers every retained page and assigns its shared and task-sp
   if(bodyClasses(doc).has('public-page'))assert.equal(css.filter(href=>href==='/public-design.css').length,1,file+' uses the public reading and discovery design');
  }
  for(const [family,files]of Object.entries(familyPages))for(const file of files){const css=styles(file,documents.get(file));assert(css.includes('/workspace-design.css'),file+' retains shared workspace navigation styling');assert.equal(css.filter(href=>href==='/'+family).length,1,file+' gets the appropriate task layout');assert(css.indexOf('/'+family)>css.indexOf('/workspace-design.css'),file+' can adapt shared workspace styling to its task');}
- const planCSS=styles('plan.html',documents.get('plan.html'));assert.equal(planCSS.at(-1),'/plan-design.css','The approved complete plan keeps its specialized design after shared styles');
+ const planCSS=styles('plan.html',documents.get('plan.html'));assert.equal(planCSS.at(-1),'/plan-redesign.css','The plan refinement follows legacy and shared styles');assert(planCSS.indexOf('/plan-design.css')<planCSS.indexOf('/plan-redesign.css'),'The complete worksheet design remains loaded');
 });
 
 test('every static stylesheet, script, image and downloadable template resolves locally',()=>{

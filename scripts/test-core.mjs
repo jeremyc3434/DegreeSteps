@@ -29,7 +29,7 @@ async function runner(){
     const file=files[cursor++];
     const result=await new Promise((accept,reject)=>{const child=spawn(process.execPath,['--test','--test-isolation=none',file],{cwd:root,stdio:['ignore','pipe','pipe']});let output='',bytes=0;const collect=chunk=>{bytes+=chunk.length;if(bytes>16*1024*1024){child.kill();return;}output+=chunk.toString();};child.stdout.on('data',collect);child.stderr.on('data',collect);child.once('error',()=>reject(Error('Could not start the core test process for '+file+'.')));child.once('close',(status,signal)=>accept({status,signal,output}));});
     console.log('\nCore test: '+file+'\n'+result.output);
-    if(result.status!==0||result.signal){failed.push(file);process.exitCode=1;console.error('Core test failed: '+file+(result.signal?' ('+result.signal+')':'')+'.');}
+    if(result.status!==0||result.signal||!result.output.trim()){failed.push(file);process.exitCode=1;console.error('Core test failed: '+file+(result.signal?' ('+result.signal+')':!result.output.trim()?' (no test output received)':'')+'.');}
   }
 }
 await Promise.all(Array.from({length:concurrency},runner));

@@ -10,11 +10,26 @@ const formats={online:'Online',campus:'On campus'};
 const idOK=v=>typeof v==='string'&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(v);
 let catalog,rows=[],index={plans:{},subjects:{}},limit=12;
 const filters={q:'',subject:'',level:'',format:'',sort:'cost',confirm:true};
+const purposes={any:'any-degree',grow:'career-growth',change:'change-career',licensed:'licensed-career'},priorities={cost:'cost',outside:'transfer',time:'speed'};
+const quizIntent=params.get('from')==='quiz'?{
+  purpose:Object.values(purposes).includes(params.get('purpose'))?params.get('purpose'):'',
+  priority:['balanced','speed','cost','transfer'].includes(params.get('priority'))?params.get('priority'):''
+}:null;
+function intentParams(next){
+  if(quizIntent&&(quizIntent.purpose||quizIntent.priority)){next.set('from','quiz');if(quizIntent.purpose)next.set('purpose',quizIntent.purpose);if(quizIntent.priority)next.set('priority',quizIntent.priority);}
+  return next;
+}
+function degreeParams(){const next=new URLSearchParams();for(const key of ['q','subject','level','format'])if(filters[key])next.set(key,filters[key]);if(filters.sort!=='cost')next.set('sort',filters.sort);if(!filters.confirm)next.set('confirm','0');return intentParams(next);}
+function creditsUrl(p){const next=degreeParams();next.set('step','credits');next.set('plan',p.id);return 'start.html?'+next;}
 
 const info=p=>index.plans[p.id]||{tier:'reviewed',subjects:[]};
 const needsConfirmation=p=>info(p).tier==='confirmation';
 const money=v=>v>=10000?'$'+(Math.round(v/100)/10).toLocaleString('en-US')+'k':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
 const costText=p=>{const e=info(p).estimate;return e&&Number.isFinite(e.min)&&Number.isFinite(e.max)?(e.min===e.max?money(e.min):money(e.min)+'–'+money(e.max)):'';};
+const partialCost=p=>info(p).estimate?.partial===true;
+const costLabel=p=>partialCost(p)?'Known charges so far':'Est. cost';
+const costMissing=p=>partialCost(p)?((info(p).estimate.unpriced||[]).filter(name=>typeof name==='string'&&name.trim()).join(' and ')||'Some course')+' prices not included.':'';
+const costRange=p=>{const e=info(p).estimate;return e&&Number.isFinite(e.min)&&Number.isFinite(e.max)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(e.min)+'–'+new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(e.max):'';};
 const months=p=>{const t=info(p).timing;if(!t||!t.outsideMonths||!t.universityTerms||!Number.isFinite(t.termMonths))return null;return t.outsideMonths.min+t.universityTerms.min*t.termMonths;};
 const share=p=>{const s=info(p).start;return s&&s.total>0?s.outside/s.total:null;};
 const unit=p=>p.school==='Western Governors University'?'units':'credits';
@@ -22,9 +37,9 @@ const unit=p=>p.school==='Western Governors University'?'units':'credits';
 // Where "Build this plan" leads once step 2 is answered. A plan with a saved starting route opens directly;
 // any other plan uses the finder's existing school/program link, which asks its own remaining questions.
 function planUrl(p,then){
-  if(info(p).start)return 'portal.html?usePlan='+encodeURIComponent(p.id)+(then?'&then='+encodeURIComponent(then):'');
+  if(info(p).start){const next=new URLSearchParams({usePlan:p.id});if(then)next.set('then',then);return 'portal.html?'+intentParams(next);}
   const format=p.modalities?.length===1?'&format='+encodeURIComponent(p.modalities[0]):'';
-  return 'portal.html?school='+encodeURIComponent(p.school)+'&program='+encodeURIComponent(p.id)+'&level='+encodeURIComponent(p.level)+format;
+  const next=new URLSearchParams('school='+encodeURIComponent(p.school)+'&program='+encodeURIComponent(p.id)+'&level='+encodeURIComponent(p.level)+format);return 'portal.html?'+intentParams(next);
 }
 
 function matches(p){
@@ -39,7 +54,10 @@ function matches(p){
 function sorted(list){
   const last=v=>v===null||v===undefined?Infinity:v;
   const by={
-    cost:(a,b)=>last(info(a).estimate?.min)-last(info(b).estimate?.min),
+    cost:(a,b)=>{
+      const rank=p=>costText(p)?partialCost(p)?1:0:2;
+      return rank(a)-rank(b)||last(info(a).estimate?.min)-last(info(b).estimate?.min);
+    },
     outside:(a,b)=>(share(b)??-1)-(share(a)??-1),
     time:(a,b)=>last(months(a))-last(months(b)),
     az:(a,b)=>a.title.localeCompare(b.title)
@@ -50,10 +68,10 @@ function card(p){
   const s=info(p).start,cost=costText(p),pct=s&&s.total?Math.round(s.outside/s.total*100):0,fmt=(p.modalities||[]).map(m=>formats[m]||m).join(' · ');
   return '<article class="start-card" data-plan="'+esc(p.id)+'"><div class="start-card-head"><p class="start-school">'+esc(p.school)+(fmt?' · '+esc(fmt):'')+'</p><h2>'+esc(p.title)+'</h2>'
     +(needsConfirmation(p)?'<span class="start-badge">Needs school confirmation</span>':'')+'</div>'
-    +'<div class="start-stats"><div class="start-stat"><span>Est. cost</span><strong>'+(cost?esc(cost):'Ask the school')+'</strong></div>'
+    +'<div class="start-stats"><div class="start-stat"><span>'+costLabel(p)+'</span><strong'+(cost?' title="'+esc(costRange(p))+' before aid" aria-label="'+esc(costRange(p))+' before aid"':'')+'>'+(cost?esc(cost):'Ask the school')+'</strong>'+(partialCost(p)?'<small>'+esc(costMissing(p))+'</small>':'')+'</div>'
     +'<div class="start-stat start-stat-accent"><span>Low-cost '+unit(p)+'</span><strong>'+(s?s.outside+' of '+s.total:'—')+'</strong></div></div>'
     +(s?'<div class="start-bar" role="img" aria-label="'+esc(s.outside+' of '+s.total+' '+unit(p)+' can come from low-cost courses')+'"><span style="width:'+pct+'%"></span></div>':'')
-    +'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="start.html?step=credits&amp;plan='+encodeURIComponent(p.id)+'">Build this plan</a>'
+    +'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="'+esc(creditsUrl(p))+'">Build this plan</a>'
     +(info(p).page?'<a class="start-text-link" href="'+esc(info(p).page)+'">See every course</a>':'')+'</div></article>';
 }
 function chipGroup(id,name,options,current){
@@ -71,7 +89,7 @@ function renderDegree(){
   $('start-sort').value=filters.sort;$('start-confirm').checked=filters.confirm;
 }
 function syncUrl(){
-  const next=new URLSearchParams();for(const key of ['q','subject','level','format'])if(filters[key])next.set(key,filters[key]);if(filters.sort!=='cost')next.set('sort',filters.sort);if(!filters.confirm)next.set('confirm','0');
+  const next=degreeParams();
   history.replaceState(null,'','start.html'+(next.toString()?'?'+next:''));
 }
 function show(step){
@@ -84,7 +102,8 @@ function show(step){
 // Step 2: the plan is chosen; the credits answer decides which existing plan step opens first.
 function openCredits(p){
   const s=info(p).start,cost=costText(p);
-  $('start-picked').innerHTML='<strong>'+esc(p.title)+'</strong> · '+esc(p.school)+(cost?' · Est. '+esc(cost):'')+(s?' · '+esc(s.outside+' of '+s.total)+' '+unit(p)+' for less':'');
+  $('start-picked').innerHTML='<strong>'+esc(p.title)+'</strong> · '+esc(p.school)+(cost?' · '+costLabel(p)+' '+esc(cost)+'<span class="screen-reader-only"> ('+esc(costRange(p))+')</span>':'')+(s?' · '+esc(s.outside+' of '+s.total)+' '+unit(p)+' for less':'')+(partialCost(p)?'<br><span>'+esc(costMissing(p))+'</span>':'');
+  $('start-credits-back').href='start.html'+(degreeParams().toString()?'?'+degreeParams():'');
   $('start-credits-skip').href=planUrl(p,'later');
   $('start-military').href=planUrl(p,'military');
   $('start-credits-form').onsubmit=event=>{event.preventDefault();const choice=new FormData(event.target).get('prior');location.assign(planUrl(p,['none','some','upload'].includes(choice)?choice:'none'));};
@@ -109,7 +128,7 @@ function renderQuiz(){
   $('start-quiz-card').innerHTML='<h2 id="start-quiz-question">'+esc(item.q)+'</h2>'+note+'<div class="start-quiz-options" role="group" aria-labelledby="start-quiz-question">'+item.options.map(([value,label])=>'<button type="button" class="start-answer-button" data-quiz-answer="'+esc(value)+'">'+esc(label)+'</button>').join('')+'</div>';
 }
 function finishQuiz(){
-  const next=new URLSearchParams();for(const key of ['level','subject','format'])if(answers[key])next.set(key,answers[key]);if(answers.sort&&answers.sort!=='cost')next.set('sort',answers.sort);next.set('from','quiz');
+  const next=new URLSearchParams();for(const key of ['level','subject','format'])if(answers[key])next.set(key,answers[key]);if(answers.sort&&answers.sort!=='cost')next.set('sort',answers.sort);next.set('from','quiz');if(purposes[answers.purpose])next.set('purpose',purposes[answers.purpose]);if(priorities[answers.sort])next.set('priority',priorities[answers.sort]);
   location.assign('start.html?'+next);
 }
 
@@ -138,8 +157,6 @@ $('start-confirm').addEventListener('change',()=>{filters.confirm=$('start-confi
   // Deep links that name a plan skip straight to step 2.
   const named=idOK(params.get('plan'))?params.get('plan'):idOK(params.get('usePlan'))?params.get('usePlan'):idOK(params.get('program'))?params.get('program'):'';
   const chosen=named&&rows.find(p=>p.id===named&&(!params.get('school')||p.school===params.get('school')));
-  if(chosen){openCredits(chosen);return;}
-  if(step==='quiz'){renderQuiz();document.title='1-minute quiz — DegreeSteps';show('quiz');return;}
   if(params.get('q'))filters.q=params.get('q').slice(0,80);
   if(index.subjects[params.get('subject')])filters.subject=params.get('subject');
   if(levels[params.get('level')])filters.level=params.get('level');
@@ -147,6 +164,8 @@ $('start-confirm').addEventListener('change',()=>{filters.confirm=$('start-confi
   if(['cost','outside','time','az'].includes(params.get('sort')))filters.sort=params.get('sort');
   if(params.get('confirm')==='0')filters.confirm=false;
   if(params.get('school'))filters.q=filters.q||params.get('school').slice(0,80);
+  if(chosen){openCredits(chosen);return;}
+  if(step==='quiz'){renderQuiz();document.title='1-minute quiz — DegreeSteps';show('quiz');return;}
   $('start-q').value=filters.q;
   if(named&&!chosen)$('start-error').textContent='That degree plan isn’t available right now. Pick another below.',$('start-error').hidden=false;
   renderDegree();show('degree');

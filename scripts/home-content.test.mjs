@@ -57,7 +57,7 @@ test('a wrong provider, unsupported baseline option or completed record cannot b
 
 test('the homepage is three readable vertical chapters with the exact plan and no carousel controls',()=>{
  const html=render(),hero=html.split('<section class="home-credit-strip"')[0];
- assert.match(textOnly(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1]||''),/^Finish your degree for less\.$/);
+ assert.match(textOnly(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1]||''),/^A degree that fits your life\.$/);
  assert.equal((html.match(/<h1\b/g)||[]).length,1,'one page title');
  assert.match(textOnly(hero.match(/<h2 id="home-steps-title"[^>]*>([\s\S]*?)<\/h2>/)?.[1]||''),/^The degree you want\. A smarter way there\.$/);
  assert.match(html,/<form class="home-search-form" action="\/start.html" method="get"/);assert.match(html,/href="\/start.html\?step=quiz"/);assert.equal((html.match(/class="home-search-chip"/g)||[]).length,5);

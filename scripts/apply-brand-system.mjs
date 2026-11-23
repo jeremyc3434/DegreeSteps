@@ -12,7 +12,7 @@ const families=new Map([
   ['compare-plans.html','comparison'],['community.html','community'],
   ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
 ]);
-const managedStyles=new Set(['ds-tokens.css','ds-components.css','brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-save.css','home-steps.css','plan-alerts.css']);
+const managedStyles=new Set(['ds-tokens.css','ds-components.css','brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-redesign.css','plan-save.css','home-steps.css','plan-alerts.css']);
 const managedScripts=new Set(['site-header.js','growth-metrics.js','plan-save.js','task-calendar.js','coach.js','leads.js','plan-alerts.js']);
 // Email plan alerts: the script renders nothing unless /api/alerts is enabled (EMAIL_ALERTS_ENABLED=1).
 const alertPages=new Set(['plan.html','account.html']);
@@ -34,7 +34,7 @@ export function pageExperience(name,source){
   if(alertPages.has(name))styles.push('plan-alerts.css');
   if(family){classes.push('ds-'+family+'-page');styles.push(family+'-design.css');}
   if(savePages.has(name))styles.push('plan-save.css');
-  if(name==='plan.html')styles.push('plan-design.css');
+  if(name==='plan.html')styles.push('plan-design.css','plan-redesign.css');
   if(name==='index.html'&&publicPage)styles.push('home-steps.css');
   return {publicPage,workspace,family,styles,classes:[...new Set(classes)]};
 }

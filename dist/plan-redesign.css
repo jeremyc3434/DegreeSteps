@@ -1,15 +1,15 @@
 /* Redesign 2/6: My plan (approved canvas: Plan and Desktop boards). Layout and presentation only; every control keeps
    its existing behaviour in sheet.js. Tokens come from ds-tokens.css. */
 
-/* Summary header: degree, progress (done / for less / your pick / at school), cost and courses still to choose. */
+/* Summary header: degree, actual progress, planned credit mix, cost and courses still to choose. */
 body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has-plan-summary { display:block !important; padding:0 !important; margin:0 0 var(--tok-space-5); border:0 !important; border-radius:0 !important; background:none !important; box-shadow:none !important; color:inherit; }
 #sheet-titlebar.has-plan-summary > .plan-summary { max-width:none; width:auto; }
 #sheet-titlebar h1.focus-quiet:focus { outline:none !important; box-shadow:none !important; }
-.plan-summary { background:var(--tok-ink); color:#fff; border-radius:var(--tok-radius-xl); padding:var(--tok-space-5) var(--tok-space-5) var(--tok-space-6); display:flex; flex-direction:column; gap:var(--tok-space-4); }
+.plan-summary { background:#fff; color:var(--tok-ink); border:1px solid var(--tok-border); border-radius:var(--tok-radius-lg); padding:var(--tok-space-6); display:flex; flex-direction:column; gap:var(--tok-space-4); }
 .plan-summary-top { display:flex; flex-wrap:wrap; gap:var(--tok-space-4); align-items:flex-start; justify-content:space-between; }
 .plan-summary-id { flex:999 1 320px; min-width:0; display:flex; flex-direction:column; gap:var(--tok-space-1); }
-.plan-summary-school { margin:0; color:#b2c2ff; font-size:var(--tok-text-small); font-weight:var(--tok-weight-semibold); }
-.plan-summary .sheet-title { margin:0; color:#fff; font-size:clamp(1.5rem,1.2rem + 1vw,2rem); line-height:1.15; letter-spacing:var(--tok-tracking-title); font-weight:var(--tok-weight-heavy); }
+.plan-summary-school { margin:0; color:var(--tok-muted); font-size:var(--tok-text-small); font-weight:var(--tok-weight-semibold); }
+body.course-plan-page #sheet-titlebar.has-plan-summary .sheet-title { margin:0; color:var(--tok-ink); font-size:clamp(1.5rem,1.2rem + 1vw,2rem); line-height:1.15; letter-spacing:var(--tok-tracking-title); font-weight:var(--tok-weight-bold); }
 /* Focus moves to the title once on load for screen readers; only keyboard focus draws the ring. */
 #sheet-titlebar h1:focus:not(:focus-visible) { outline:none; box-shadow:none; }
 #sheet-titlebar h1:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); border-radius:6px; }
@@ -23,7 +23,7 @@ body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has
   .plan-summary-top { flex-wrap:nowrap; }
   #sheet-titlebar .plan-summary-actions { flex:0 0 auto; justify-content:flex-end; }
   #sheet-titlebar .plan-summary-actions [data-action="ask-school"], #sheet-titlebar .plan-summary-actions [data-action="compare-plans"] { display:none; }
-  .plan-summary .sheet-title { font-size:1.375rem; }
+  body.course-plan-page #sheet-titlebar.has-plan-summary .sheet-title { font-size:1.375rem; }
   .plan-summary-id-actions { margin-top:var(--tok-space-1); }
   .plan-summary-stat { padding:var(--tok-space-2) var(--tok-space-3); }
   .plan-summary-stat strong { font-size:1rem; }
@@ -31,7 +31,7 @@ body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has
   #sheet-titlebar .plan-summary-id-actions { flex-wrap:nowrap; gap:var(--tok-space-4); }
   #sheet-titlebar .plan-summary-id-actions .button { min-height:40px; padding:6px 12px; font-size:var(--tok-text-small); white-space:nowrap; flex:0 0 auto; }
   #sheet-titlebar .plan-summary-id-actions .sheet-title-jump { display:inline-flex !important; margin:0 !important; font-size:var(--tok-text-small); white-space:nowrap; }
-  #sheet-titlebar .plan-summary-school { font-size:var(--tok-text-xsmall); }
+  #sheet-titlebar .plan-summary-school { font-size:var(--tok-text-small); }
   #sheet-titlebar .plan-summary-progress .ds-progress-legend { margin-top:var(--tok-space-1); }
   #sheet-titlebar .plan-summary-stat strong { font-size:.9375rem; line-height:1.3; }
   #sheet-grid .plan-view-controls { margin:var(--tok-space-3) 0; gap:var(--tok-space-2); flex-wrap:nowrap; }
@@ -40,52 +40,58 @@ body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has
   #sheet-grid .plan-group-mode { min-height:34px; padding:0 10px; font-size:var(--tok-text-xsmall); white-space:nowrap; }
   #sheet-grid .plan-bucket-note { margin-bottom:var(--tok-space-2); }
   .plan-bucket { margin-top:var(--tok-space-4); }
-  /* Phones: the bar's text alternative and the group headings carry the done / for less / your pick / at school
-     numbers, so the visible legend under the bar is left out to keep the first course on screen. */
-  #sheet-titlebar .plan-summary-composition { display:none; }
-  #sheet-titlebar .plan-summary-progress .degree-progress-legend { flex-wrap:nowrap !important; gap:6px; }
-  #sheet-titlebar .plan-summary-progress .degree-progress-legend button { flex:1 1 0; min-width:0; justify-content:center; gap:4px; padding:0 4px; white-space:nowrap; font-size:.75rem; }
+  /* Keep the planned mix visible, separate from actual completion. Progress filters wrap rather than clip labels. */
+  #sheet-titlebar .plan-summary-composition { display:flex; }
+  #sheet-titlebar .plan-summary-progress .degree-progress-legend { gap:6px; }
+  #sheet-titlebar .plan-summary-progress .degree-progress-legend button { flex:0 0 auto; white-space:nowrap; }
   #sheet-titlebar .plan-summary-finished .degree-progress-percent { font-size:1.0625rem; }
   .plan-main { display:flex; flex-direction:column; }
   .plan-main > #sheet-glance { order:10; margin-top:var(--tok-space-6); }
 }
-.plan-summary .button { min-height:var(--tok-target); }
-.plan-summary .button.secondary { background:#fff; color:var(--tok-ink); border-color:#fff; }
-.plan-summary .button.ghost { background:transparent; color:#fff; border:1px solid rgb(255 255 255 / 45%); }
-.plan-summary .button.ghost:hover, .plan-summary .button.ghost:focus-visible { background:rgb(255 255 255 / 10%); }
-.plan-summary .sheet-title-jump { color:#d6deeb; }
-.plan-summary-progress .ds-progress-bar { background:#2c3e57; }
-.plan-summary-progress .ds-progress-legend { color:#d6deeb; }
-.plan-summary-progress .ds-progress-legend strong { color:#fff; }
+body.course-plan-page #sheet-titlebar.has-plan-summary .button { min-height:var(--tok-target); border:1px solid var(--tok-border); border-radius:8px; background:#fff; color:var(--tok-ink); }
+body.course-plan-page #sheet-titlebar.has-plan-summary .button.secondary { background:#f4f7fe; color:#2443b5; border-color:#d7e1fb; }
+body.course-plan-page #sheet-titlebar.has-plan-summary .button.ghost { background:#fff; color:var(--tok-muted); border-color:var(--tok-border); }
+body.course-plan-page #sheet-titlebar.has-plan-summary .button:hover { color:#2443b5; background:#eaf0ff; border-color:#a8bce8; }
+.plan-summary .sheet-title-jump { color:#2443b5; }
+.plan-summary-progress .ds-progress-bar { background:#e9eef4; border-radius:6px; overflow:hidden; height:8px; margin:0; }
+.plan-summary-progress .ds-progress-legend { color:var(--tok-muted); font-size:.875rem; }
+.plan-summary-progress .ds-progress-legend strong { color:var(--tok-ink); }
 .plan-summary-progress .ds-dot--school { background:#8a99b0; }
 .plan-summary-progress .plan-summary-of { margin-left:auto; }
 .plan-summary-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--tok-space-3); }
-.plan-summary-stat { display:flex; flex-direction:column; gap:2px; min-height:var(--tok-target); padding:var(--tok-space-3); border:0; border-radius:var(--tok-radius-sm); background:#22324a; color:#fff; font:inherit; text-align:left; text-decoration:none; cursor:pointer; }
-.plan-summary-stat:hover { background:#2a3c57; }
+.plan-summary-stat { display:flex; flex-direction:column; gap:2px; min-height:var(--tok-target); padding:var(--tok-space-3); border-radius:var(--tok-radius-sm); border:1px solid var(--tok-border-soft); background:#f7f9fc; color:var(--tok-ink); font:inherit; text-align:left; text-decoration:none; cursor:pointer; }
+.plan-summary-stat:hover { background:#eaf0ff; }
 .plan-summary-stat:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
-.plan-summary-stat span { color:#b2c2ff; font-size:var(--tok-text-xsmall); font-weight:var(--tok-weight-semibold); }
-.plan-summary-stat strong { font-size:1.125rem; font-weight:var(--tok-weight-heavy); }
+.plan-summary-stat span { color:var(--tok-muted); font-size:var(--tok-text-small); font-weight:var(--tok-weight-semibold); }
+.plan-summary-stat strong { font-size:1.125rem; font-weight:var(--tok-weight-bold); }
+
+.plan-summary-mix{display:flex;flex-direction:column;gap:7px;padding-top:12px;border-top:1px solid var(--tok-border-soft)}
+.plan-summary-mix-label{margin:0;font-size:.875rem;color:var(--tok-muted);font-weight:500}
+#sheet-titlebar .plan-summary-composition{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0;font-size:.875rem;line-height:1.5}
+#sheet-titlebar .plan-summary-composition strong{color:var(--tok-ink)}
+#sheet-titlebar .plan-summary-composition .plan-summary-of{margin-left:0}
+#sheet-titlebar .plan-summary-progress .degree-progress-finished{background:#159766}
+#sheet-titlebar .plan-summary-progress .degree-progress-active{background:#e5a333}
 
 /* Not started is a neutral state, not an error: slate instead of red for the row marker, dot and button. */
 [data-course-progress="not-started"], [data-course-progress="needs-course"] { --course-progress-color:#7b899b; --course-progress-ink:#475467; --course-progress-bg:#f4f6f9; --course-progress-border:#dfe5ee; }
 .progress-color-not-started i { background:#7b899b !important; }
 
-/* The header is the one progress display: finished credits and percent, the bar (done / for less / your pick / at
-   school), and the Finished / In progress / Not started filters. */
-#sheet-titlebar .plan-summary-progress.degree-progress { margin:0; padding:0; border:0; background:none; box-shadow:none; color:#fff; display:flex; flex-direction:column; gap:var(--tok-space-2); }
-#sheet-titlebar .plan-summary-finished { margin:0; color:#d6deeb; font-size:var(--tok-text-small); display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--tok-space-2); }
-#sheet-titlebar .plan-summary-finished strong { color:#fff; }
-#sheet-titlebar .plan-summary-finished .degree-progress-percent { margin-left:auto; font-size:1.25rem; font-weight:var(--tok-weight-heavy); color:#fff; }
+/* Actual learning progress uses the main bar. The planned source mix is a separate labeled breakdown. */
+#sheet-titlebar .plan-summary-progress.degree-progress { margin:0; padding:0; border:0; background:none; box-shadow:none; color:var(--tok-ink); display:flex; flex-direction:column; gap:var(--tok-space-2); }
+#sheet-titlebar .plan-summary-finished { margin:0; color:var(--tok-muted); font-size:var(--tok-text-small); display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--tok-space-2); }
+#sheet-titlebar .plan-summary-finished strong { color:var(--tok-ink); }
+#sheet-titlebar .plan-summary-finished .degree-progress-percent { margin-left:auto; font-size:1.25rem; font-weight:var(--tok-weight-bold); color:var(--tok-ink); }
 .plan-summary-finished .degree-progress-percent span { font-size:.875rem; }
 #sheet-titlebar .plan-summary-progress .degree-progress-legend { display:flex; flex-wrap:wrap; gap:var(--tok-space-2); margin:0; padding:0; border:0; background:none; }
-#sheet-titlebar .plan-summary-progress .degree-progress-legend button { display:inline-flex; align-items:center; gap:6px; min-height:var(--tok-target); padding:0 12px; border:1px solid rgb(255 255 255 / 28%); border-radius:var(--tok-radius-pill); background:transparent; color:#fff; font:inherit; font-size:var(--tok-text-xsmall); cursor:pointer; }
-#sheet-titlebar .plan-summary-progress .degree-progress-legend button[aria-pressed="true"] { background:#fff; color:var(--tok-ink); border-color:#fff; }
+#sheet-titlebar .plan-summary-progress .degree-progress-legend button { display:inline-flex; align-items:center; gap:6px; min-height:var(--tok-target); padding:0 12px; border:1px solid var(--tok-border); border-radius:var(--tok-radius-pill); background:#fff; color:var(--tok-muted); font:inherit; font-size:var(--tok-text-small); cursor:pointer; }
+#sheet-titlebar .plan-summary-progress .degree-progress-legend button[aria-pressed="true"] { background:#eaf0ff; color:#2443b5; border-color:#b8c9f1; }
 .plan-summary-progress .degree-progress-legend button:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
 .plan-summary-progress .degree-progress-legend i { flex:none; width:9px; height:9px; border-radius:999px; display:inline-block; }
 .plan-summary-progress .progress-color-completed i { background:var(--tok-success); }
 .plan-summary-progress .progress-color-in-progress i { background:var(--tok-pick); }
-.plan-summary-progress .degree-progress-reset { margin-left:var(--tok-space-2); min-height:var(--tok-target); padding:0 10px; border:1px solid rgb(255 255 255 / 45%); border-radius:var(--tok-radius-pill); background:transparent; color:#fff; font:inherit; font-size:var(--tok-text-xsmall); cursor:pointer; }
-.plan-summary-progress .degree-progress-review { margin:0; color:#fde7b0; font-size:var(--tok-text-xsmall); }
+.plan-summary-progress .degree-progress-reset { margin-left:var(--tok-space-2); min-height:var(--tok-target); padding:0 10px; border:1px solid var(--tok-border); border-radius:var(--tok-radius-pill); background:#fff; color:var(--tok-muted); font:inherit; font-size:var(--tok-text-small); cursor:pointer; }
+.plan-summary-progress .degree-progress-review { margin:0; color:#8a5617; font-size:var(--tok-text-xsmall); }
 .plan-summary-progress .degree-progress-review * { color:inherit; }
 #sheet-titlebar .plan-summary-progress .degree-progress-legend button strong { color:inherit !important; }
 .course-plan-notes { display:flex; flex-wrap:wrap; gap:var(--tok-space-2) var(--tok-space-4); margin:0 0 var(--tok-space-2); color:var(--tok-muted); font-size:var(--tok-text-small); }
@@ -140,4 +146,3 @@ body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has
   #sheet-dialog:not(.is-course-comparison) { border-radius:var(--tok-radius-xl) 0 0 var(--tok-radius-xl); }
 }
 @media print { .plan-bottom-bar, .plan-summary-actions, .plan-view-controls { display:none !important; } .plan-summary { background:#fff; color:#000; border:1px solid #000; } .plan-summary .sheet-title { color:#000; } }
-@media (max-width:360px) { #sheet-titlebar .plan-summary-progress .degree-progress-legend { flex-wrap:wrap !important; } #sheet-titlebar .plan-summary-progress .degree-progress-legend button { flex:1 1 auto; } }

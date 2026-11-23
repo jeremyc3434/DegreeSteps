@@ -62,7 +62,9 @@ export function renderHome({cta,articleCard,guides,costSection='',example,estima
   ];
   return `
 <section class="home-search-hero" aria-labelledby="home-title"><div class="site-container home-search-inner">
-  <div class="home-search-copy"><h1 id="home-title">Finish your degree for less.</h1><p class="home-search-lede">See which low-cost courses count toward a real degree, and what is left.</p></div>
+  <div class="home-search-copy"><h1 id="home-title">A degree that fits <span>your life.</span></h1><p class="home-search-lede">Start with credits you have. Add affordable, flexible courses. See your route to graduation.</p>
+
+  </div>
   <form class="home-search-form" action="/start.html" method="get" role="search" aria-label="Find a degree">
     <label for="home-search-q">What do you want to study?</label>
     <div class="home-search-field"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input id="home-search-q" name="q" type="search" autocomplete="off" placeholder="Psychology, business, nursing…"></div>
@@ -70,6 +72,12 @@ export function renderHome({cta,articleCard,guides,costSection='',example,estima
     <button type="submit" class="site-button home-search-submit">Show my options</button>
     <a class="home-search-quiz" href="/start.html?step=quiz">Not sure what to study? Take a 1-minute quiz</a>
   </form>
+    <div class="home-course-peek" aria-label="A real course match from our Liberty example">
+      <div class="home-peek-source"><img src="/images/brands/sophia.svg" alt="Sophia Learning" width="106" height="30"><strong>${esc(example.choices.sophia.title)}</strong><span>Self-paced course</span></div>
+      <div class="home-peek-match"><span>${example.requirementCredits} credits</span><i aria-hidden="true"></i></div>
+      <div class="home-peek-degree"><span class="home-peek-school">${esc(example.school)}</span><strong>${esc(example.requirementCode)}</strong><span>${esc(example.displayRows[0].title)}</span></div>
+      <a href="${esc(example.previewUrl)}">See the course-by-course example</a>
+    </div>
   <ol class="home-search-steps" aria-label="How it works"><li><strong>Pick a degree</strong><span>Compare schools by cost and time.</span></li><li><strong>Add credits you have</strong><span>Optional. Past classes can count.</span></li><li><strong>Build your plan</strong><span>Choose your courses and track progress.</span></li></ol>
 </div></section>
 <div class="home-route-hero home-steps-hero home-journey" data-home-steps data-home-route-example>
