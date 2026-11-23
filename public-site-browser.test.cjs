@@ -15,10 +15,11 @@ async function noOverflow(page){const sizes=await page.evaluate(()=>({screen:inn
   await journey('the public homepage explains DegreePath before a clear CTA opens the separate app',async()=>{
     const{page}=await context({viewport:{width:1440,height:1000}});await navigate(page,'/');
     assert.equal(await page.locator('#portal-question-title').count(),0);
-    assert.match((await page.locator('main h1').innerText()).replace(/\s+/g,' '),/The degree you want\.\s*A smarter way there\./i);
-    const cta=page.locator('main a[href="/portal.html"],main a[href="portal.html"]').first();assert(await cta.isVisible());
-    await cta.click();await page.waitForURL('**/portal.html');await page.locator('#portal-question-title').waitFor();
-    assert.equal((await page.locator('#portal-question-title').innerText()).trim(),'Build your course plan.');
+    assert.equal((await page.locator('main h1').innerText()).replace(/\s+/g,' ').trim(),'Finish your degree for less.');
+    assert.match((await page.locator('#home-steps-title').innerText()).replace(/\s+/g,' '),/The degree you want\.\s*A smarter way there\./i);
+    const cta=page.locator('main a[href="/start.html"]').first();assert(await cta.isVisible());
+    await cta.click();await page.waitForURL('**/start.html');await page.locator('#start-step-degree:not([hidden])').waitFor();
+    assert.equal((await page.locator('#start-degree-title').innerText()).trim(),'Pick a degree');
     await page.getByRole('link',{name:'DegreeSteps home',exact:true}).first().click();
     await page.waitForURL(u=>u.pathname==='/'||u.pathname==='/index.html');
     assert.equal(await page.locator('#portal-question-title').count(),0);assert(await page.locator('main h1').isVisible());
