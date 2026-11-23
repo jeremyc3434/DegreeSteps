@@ -12,7 +12,7 @@
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 3 requirement(s) (62% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "heldReason": "Reviewed; named upper-level courses total 27 of the 30 required upper-level credits, so the open electives would have to be upper level, which the plan cannot yet represent."
   },
   "sources": [
     {
@@ -27,6 +27,10 @@
     {
       "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -159,7 +163,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "AC 321 Cost Accounting (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ac-341",
@@ -176,7 +181,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "AC 341 Accounting Information Systems (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ba-312",
@@ -193,7 +199,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "BA 312 Principles of Finance (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ba-402",
@@ -210,7 +217,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "BA 402 Risk Management (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ba-412a",
@@ -227,7 +235,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "BA 412A Intermediate Finance (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ba-416a",
@@ -244,7 +253,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "BA 416A Investments (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ba-417",
@@ -261,7 +271,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "BA 417 International Finance (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ba-418",
@@ -278,7 +289,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "BA 418 Cash Management (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ba-450",
@@ -295,7 +307,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-finance-catalog-2026-11-23",
           "text": "BA 450 Business Ethics (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-finance-ecn-201",
@@ -438,6 +451,9 @@
       }
     },
     "upperMinCredits": 30,
-    "majorMinInstitutionCredits": 21
+    "majorMinInstitutionCredits": 21,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 127-credit Bachelor of Science in Finance ledger from Bellevue University's current catalog page, including 3 open course choice block(s) (62% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
   }
 }

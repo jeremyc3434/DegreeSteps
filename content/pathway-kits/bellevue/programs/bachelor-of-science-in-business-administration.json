@@ -12,7 +12,7 @@
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 3 requirement(s) (57% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "heldReason": "The plan checker cannot keep the 21 upper-level major credits Bellevue requires in residence with the named major courses and the open upper-level coursework block, so the student's choices decide feasibility (planner: \"At least 21 major credits must be earned through the university in this model.\")."
   },
   "sources": [
     {
@@ -27,6 +27,10 @@
     {
       "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -144,7 +148,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "BA 312 Principles of Finance (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-ba-427",
@@ -161,7 +166,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "BA 427 Managing Operations in a Global Supply Chain (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-ba-439",
@@ -178,7 +184,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "BA 439 Business Policy and Strategy (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-ba-450",
@@ -195,7 +202,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "BA 450 Business Ethics (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-ba-465a",
@@ -212,7 +220,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "BA 465A Business Law (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-ecn-201",
@@ -297,7 +306,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "Choose either EN 321 or CA 308."
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-ba-412a",
@@ -314,7 +324,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "BA 412A Intermediate Finance (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-ban-403",
@@ -331,7 +342,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "BAN 403 Data Visualization (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-cis-316",
@@ -348,7 +360,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-business-administration-catalog-2026-11-23",
           "text": "CIS 316 Management Information Systems (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-business-administration-upper-level-business-administration-coursework-300-or-e3278e77",
@@ -474,6 +487,9 @@
       }
     },
     "upperMinCredits": 30,
-    "majorMinInstitutionCredits": 21
+    "majorMinInstitutionCredits": 21,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 127-credit Bachelor of Science in Business Administration ledger from Bellevue University's current catalog page, including 3 open course choice block(s) (57% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
   }
 }

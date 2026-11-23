@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "associate-of-science-in-business",
-  "routeIds": [],
+  "routeIds": [
+    "bellevue-associate-of-science-in-business"
+  ],
   "title": "Associate of Science in Business",
   "level": "associate",
   "catalog": "Bellevue University current catalog page for Associate of Science in Business, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://www.bellevue.edu/programs/associate-degrees/business/online/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 3 requirement(s) (25% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -27,6 +30,10 @@
     {
       "sourceId": "bellevue-associate-of-science-in-business-catalog-2026-11-23",
       "text": "60 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -240,7 +247,11 @@
           "sourceId": "bellevue-associate-of-science-in-business-catalog-2026-11-23",
           "text": "Mathematics:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics: MA 101 Intermediate Algebra OR MA 102 College Algebra OR MA 215 Applied Statistics"
+      }
     },
     {
       "id": "associate-of-science-in-business-ca-107",
@@ -291,7 +302,11 @@
           "sourceId": "bellevue-associate-of-science-in-business-catalog-2026-11-23",
           "text": "Human Thought & Expression:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Human Thought & Expression: CA 208 Critical Thinking and Communication OR CA 209 Diversity, Inclusion, and Communication"
+      }
     },
     {
       "id": "associate-of-science-in-business-cis-121",
@@ -342,7 +357,11 @@
           "sourceId": "bellevue-associate-of-science-in-business-catalog-2026-11-23",
           "text": "students must choose 9 additional credit hours of electives"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Electives"
+      }
     }
   ],
   "policies": {
@@ -391,6 +410,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 60-credit Associate of Science in Business ledger from Bellevue University's current catalog page, including 3 open course choice block(s) (25% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
   }
 }

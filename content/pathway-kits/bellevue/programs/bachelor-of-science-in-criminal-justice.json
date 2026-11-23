@@ -4,15 +4,14 @@
   "slug": "bachelor-of-science-in-criminal-justice",
   "title": "Bachelor of Science in Criminal Justice",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Bellevue University current catalog page for Bachelor of Science in Criminal Justice, checked 2026-11-23",
   "totalCredits": 127,
   "catalogUrl": "https://www.bellevue.edu/programs/bachelors-degrees/criminal-justice/online/",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "No published outside course joins any named requirement of this program."
+    "heldReason": "Reviewed; named upper-level courses total 24 of the 30 required upper-level credits, so the open electives would have to be upper level, which the plan cannot yet represent."
   },
   "sources": [
     {
@@ -27,6 +26,10 @@
     {
       "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -89,7 +92,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "CJUS 310 Crime Theory and Causes (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-cjus-320",
@@ -106,7 +110,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "CJUS 320 Criminal Courts and Social Policy (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-cjus-330",
@@ -123,7 +128,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "CJUS 330 Forensics and Investigative Techniques (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-cjus-340",
@@ -140,7 +146,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "CJUS 340 Criminal Law, Evidence, and Constitutional Procedure (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-cjus-350",
@@ -157,7 +164,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "CJUS 350 Understanding Violent Crime (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-cjus-410",
@@ -174,7 +182,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "CJUS 410 Ethics and Values in Criminal Justice (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-cjus-420",
@@ -191,7 +200,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "CJUS 420 Punishment and Criminal Sanctions (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-cjus-430",
@@ -208,7 +218,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "CJUS 430 Family Crime and Victimization (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-major-selection-choose-two-courses-from-cybr-250-cybr-433-cj-9915087b",
@@ -262,5 +273,78 @@
       ]
     }
   ],
-  "routeIds": []
+  "routeIds": [],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 97,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "bellevue-catalog-2025-2027-degree-requirements"
+      ],
+      "quotes": [
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Bachelor of Science (B.S.) • 1271 • • 2.0 2.5 30 30 12"
+        },
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Resident credit hours are credits earned at Bellevue University in all approved delivery formats."
+        }
+      ],
+      "basis": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Bellevue University current catalog page for Bachelor of Science in Criminal Justice, checked 2026-11-23",
+      "sourceUrl": "https://www.bellevue.edu/programs/bachelors-degrees/criminal-justice/online/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 97,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "upperMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Upper-level (300–400) credit hours required for the degree."
+      },
+      "majorMinInstitutionCredits": {
+        "value": 12,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Major credit hours completed in residence."
+      }
+    },
+    "upperMinCredits": 30,
+    "majorMinInstitutionCredits": 12,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 127-credit Bachelor of Science in Criminal Justice ledger from Bellevue University's current catalog page, including 3 open course choice block(s) (76% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
+  }
 }

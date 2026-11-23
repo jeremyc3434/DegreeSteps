@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-arts-in-human-resource-management",
-  "routeIds": [],
+  "routeIds": [
+    "apus-bachelor-of-arts-in-human-resource-management"
+  ],
   "title": "Bachelor of Arts in Human Resource Management",
   "level": "bachelor",
   "catalog": "American Public University System current catalog page for Bachelor of Arts in Human Resource Management, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-human-resource-management/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (48% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -52,7 +55,11 @@
           "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours) 1\nSelect 2 courses from the following:\n6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-human-resource-management-civics-political-social-sciences-select-1-of-coll112-or-econ102",
@@ -69,7 +76,11 @@
           "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
           "text": "Select 1 course from the following:\n3\nCOLL112\nPlanning Your Future with Purpose in Business\nECON102\nMacroeconomics"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Civics, Political & Social Sciences: select 1 of COLL112 or ECON102"
+      }
     },
     {
       "id": "bachelor-of-arts-in-human-resource-management-civics-political-social-sciences-select-1-course-from-list",
@@ -86,7 +97,11 @@
           "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
           "text": "Select 1 course from the following:\n3\nANTH100\nIntroduction to Anthropology"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Civics, Political & Social Sciences: select 1 course from list"
+      }
     },
     {
       "id": "bachelor-of-arts-in-human-resource-management-comm120",
@@ -137,7 +152,11 @@
           "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
           "text": "Select 1 course from the following:\n3\nCOMM150\nEmerging Technology for College Success"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication: Writing, Oral, and Multimedia (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-human-resource-management-history-select-1-course",
@@ -154,7 +173,11 @@
           "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
           "text": "History (3 semester hours)\nSelect 1 course from the following:\n3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-human-resource-management-math110",
@@ -188,7 +211,11 @@
           "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)\nSelect 1 course from the following:\n3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-human-resource-management-acct105",
@@ -494,7 +521,11 @@
           "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
           "text": "Select one of the following concentrations:\n9"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (select one: General; Employee Relations and Change Leadership; Leadership and Development; Workplace Conflict Management)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-human-resource-management-busn499",
@@ -528,7 +559,11 @@
           "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
           "text": "Elective Requirements (27 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
     }
   ],
   "policies": {
@@ -595,6 +630,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Arts in Human Resource Management ledger from American Public University System's current catalog page, including 8 open course choice block(s) (48% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

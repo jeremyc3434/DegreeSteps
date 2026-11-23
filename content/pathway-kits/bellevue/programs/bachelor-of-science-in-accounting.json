@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-science-in-accounting",
-  "routeIds": [],
+  "routeIds": [
+    "bellevue-bachelor-of-science-in-accounting"
+  ],
   "title": "Bachelor of Science in Accounting",
   "level": "bachelor",
   "catalog": "Bellevue University current catalog page for Bachelor of Science in Accounting, checked 2026-11-23",
   "totalCredits": 127,
   "catalogUrl": "https://www.bellevue.edu/programs/bachelors-degrees/accounting/online/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 3 requirement(s) (48% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -27,6 +30,10 @@
     {
       "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -54,7 +61,11 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "Integrative General Education Credits"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Integrative General Education Credits"
+      }
     },
     {
       "id": "bachelor-of-science-in-accounting-ac-205",
@@ -139,7 +150,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "BA 312 Principles of Finance (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ba-427",
@@ -156,7 +168,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "BA 427 Managing Operations in a Global Supply Chain (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ba-439",
@@ -173,7 +186,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "BA 439 Business Policy and Strategy (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ba-450",
@@ -190,7 +204,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "BA 450 Business Ethics (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ba-465a",
@@ -207,7 +222,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "BA 465A Business Law (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-cis-222",
@@ -241,7 +257,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "EN 321 Business Communication: Professional Writing, Speaking, and Research (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ecn-201",
@@ -326,7 +343,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "AC 311 Intermediate Accounting I (1 - 3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ac-312",
@@ -343,7 +361,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "AC 312 Intermediate Accounting II (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ac-321",
@@ -360,7 +379,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "AC 321 Cost Accounting (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ac-331",
@@ -377,7 +397,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "AC 331 Income Tax Accounting (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ac-341",
@@ -394,7 +415,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "AC 341 Accounting Information Systems (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ac-416",
@@ -411,7 +433,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "AC 416 Advanced Accounting Problems (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-ac-442",
@@ -428,7 +451,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "AC 442 Financial Auditing (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-accounting-upper-level-accounting-electives-only-one-upper-level-tax-course-a-2521b4ae",
@@ -445,7 +469,11 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "Plus an additional 6 hours of upper-level accounting:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Upper-level accounting electives (only one upper-level tax course: AC 433, AC 434, AC 435 or AC 439)"
+      }
     },
     {
       "id": "bachelor-of-science-in-accounting-elective-credits",
@@ -462,7 +490,11 @@
           "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "Elective Credits"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Credits"
+      }
     }
   ],
   "policies": {
@@ -537,6 +569,9 @@
       }
     },
     "upperMinCredits": 30,
-    "majorMinInstitutionCredits": 21
+    "majorMinInstitutionCredits": 21,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 127-credit Bachelor of Science in Accounting ledger from Bellevue University's current catalog page, including 3 open course choice block(s) (48% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
   }
 }

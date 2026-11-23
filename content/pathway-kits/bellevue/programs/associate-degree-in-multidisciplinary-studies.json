@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "associate-degree-in-multidisciplinary-studies",
-  "routeIds": [],
+  "routeIds": [
+    "bellevue-associate-degree-in-multidisciplinary-studies"
+  ],
   "title": "Associate Degree in Multidisciplinary Studies",
   "level": "associate",
   "catalog": "Bellevue University current catalog page for Associate Degree in Multidisciplinary Studies, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://www.bellevue.edu/programs/associate-degrees/multidisciplinary-studies/online/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (65% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -27,6 +30,10 @@
     {
       "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
       "text": "Requirements (60 credit hours)"
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -158,7 +165,11 @@
           "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
           "text": "Mathematics (3 credit hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics (select one: MA 101 Intermediate Algebra or MA 135 Math in Everyday Life)"
+      }
     },
     {
       "id": "associate-degree-in-multidisciplinary-studies-technology-select-one-cis-111-cis-115-cis-121-or-cis-212",
@@ -175,7 +186,11 @@
           "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
           "text": "Technology (3 credit hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology (select one: CIS 111, CIS 115, CIS 121, or CIS 212)"
+      }
     },
     {
       "id": "associate-degree-in-multidisciplinary-studies-ps-151",
@@ -209,7 +224,11 @@
           "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
           "text": "Human Civilization (3 credit hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Human Civilization (select one: HI 110, HI 111, HI 151, or HI 152)"
+      }
     },
     {
       "id": "associate-degree-in-multidisciplinary-studies-human-thought-and-expression-select-one-ca-202-ca-204-ca-208-or-en-186",
@@ -226,7 +245,11 @@
           "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
           "text": "Human Thought and Expression (3 credit hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Human Thought and Expression (select one: CA 202, CA 204, CA 208, or EN 186)"
+      }
     },
     {
       "id": "associate-degree-in-multidisciplinary-studies-natural-sciences-select-one-bi-142-or-ns-105",
@@ -243,7 +266,11 @@
           "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
           "text": "Natural Sciences (3 credit hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select one: BI 142 or NS 105)"
+      }
     },
     {
       "id": "associate-degree-in-multidisciplinary-studies-quantitative-problem-solving-and-technology-select-two-2e0761a8",
@@ -260,7 +287,11 @@
           "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
           "text": "Quantitative, Problem-Solving, and Technology (6 credit hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Quantitative, Problem-Solving, and Technology (select two: DSC 101, SYS 101, MA 215, CIS 245, ECN 201, CYBR 250, CIS 111, CIS 115, CIS 121, CIS 212)"
+      }
     },
     {
       "id": "associate-degree-in-multidisciplinary-studies-communication-collaboration-and-leadership-select-two-14fd907d",
@@ -277,7 +308,11 @@
           "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
           "text": "Communication, Collaboration, and Leadership (6 credit hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Communication, Collaboration, and Leadership (select two: CA 105, CIS 133, CA 110, CA 209, PY 101, SO 101, PH 106)"
+      }
     },
     {
       "id": "associate-degree-in-multidisciplinary-studies-additional-requirements-select-four-courses-from-the-combined-major-lists",
@@ -294,7 +329,11 @@
           "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
           "text": "Additional Requirements (12 credit hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Additional Requirements (select four courses from the combined major lists)"
+      }
     }
   ],
   "policies": {
@@ -343,6 +382,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 60-credit Associate Degree in Multidisciplinary Studies ledger from Bellevue University's current catalog page, including 8 open course choice block(s) (65% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
   }
 }

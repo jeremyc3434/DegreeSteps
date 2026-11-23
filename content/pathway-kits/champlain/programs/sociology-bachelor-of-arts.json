@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "sociology-bachelor-of-arts",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-sociology-bachelor-of-arts"
+  ],
   "title": "Sociology (Bachelor of Arts)",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Sociology (Bachelor of Arts), checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-sociology",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (50% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -292,7 +295,11 @@
           "sourceId": "champlain-sociology-bachelor-of-arts-catalog-2026-11-23",
           "text": "plus any two 200+ level CRIM or PSYC courses"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Program Electives: any two 200+ level CRIM or PSYC courses"
+      }
     },
     {
       "id": "sociology-bachelor-of-arts-general-electives",
@@ -309,7 +316,11 @@
           "sourceId": "champlain-sociology-bachelor-of-arts-catalog-2026-11-23",
           "text": "General Electives (30 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     },
     {
       "id": "sociology-bachelor-of-arts-engl-100",
@@ -360,7 +371,11 @@
           "sourceId": "champlain-sociology-bachelor-of-arts-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (choose one: COMM 130 or COMM 140)"
+      }
     },
     {
       "id": "sociology-bachelor-of-arts-comm-230",
@@ -394,7 +409,11 @@
           "sourceId": "champlain-sociology-bachelor-of-arts-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis (choose one: CRIT 220 or PHIL 240)"
+      }
     },
     {
       "id": "sociology-bachelor-of-arts-technology-literacy-complete-one-mkcm-120-soci-260-cmit-130-igmd-110-gmdv-110-or-mkcm-101",
@@ -411,7 +430,11 @@
           "sourceId": "champlain-sociology-bachelor-of-arts-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (complete one: MKCM 120, SOCI 260, CMIT 130, IGMD 110, GMDV 110, or MKCM 101)"
+      }
     },
     {
       "id": "sociology-bachelor-of-arts-math-170",
@@ -445,7 +468,11 @@
           "sourceId": "champlain-sociology-bachelor-of-arts-catalog-2026-11-23",
           "text": "Scientific Literacy/Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy/Natural Sciences (complete one: SCIE 180 or SCIE 230)"
+      }
     },
     {
       "id": "sociology-bachelor-of-arts-soci-200",
@@ -479,7 +506,11 @@
           "sourceId": "champlain-sociology-bachelor-of-arts-catalog-2026-11-23",
           "text": "Complete any two of the following courses:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Sciences (any two from listed courses)"
+      }
     },
     {
       "id": "sociology-bachelor-of-arts-crit-100",
@@ -513,7 +544,11 @@
           "sourceId": "champlain-sociology-bachelor-of-arts-catalog-2026-11-23",
           "text": "students must also complete 6 Credits of a General Education Electives"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Electives (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)"
+      }
     }
   ],
   "policies": {
@@ -562,6 +597,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Sociology (Bachelor of Arts) ledger from Champlain College Online's current catalog page, including 8 open course choice block(s) (50% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

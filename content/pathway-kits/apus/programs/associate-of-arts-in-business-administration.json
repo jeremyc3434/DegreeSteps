@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "associate-of-arts-in-business-administration",
-  "routeIds": [],
+  "routeIds": [
+    "apus-associate-of-arts-in-business-administration"
+  ],
   "title": "Associate of Arts in Business Administration",
   "level": "associate",
   "catalog": "American Public University System current catalog page for Associate of Arts in Business Administration, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/associate/associate-art--business-administration/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 4 requirement(s) (25% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -53,7 +56,11 @@
           "sourceId": "apus-associate-of-arts-in-business-administration-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours) 1"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "associate-of-arts-in-business-administration-coll112",
@@ -138,7 +145,11 @@
           "sourceId": "apus-associate-of-arts-in-business-administration-catalog-2026-11-23",
           "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication: Writing, Oral, and Multimedia (select 1 course)"
+      }
     },
     {
       "id": "associate-of-arts-in-business-administration-history-select-1-course",
@@ -155,7 +166,11 @@
           "sourceId": "apus-associate-of-arts-in-business-administration-catalog-2026-11-23",
           "text": "History (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
     },
     {
       "id": "associate-of-arts-in-business-administration-math110",
@@ -189,7 +204,11 @@
           "sourceId": "apus-associate-of-arts-in-business-administration-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "associate-of-arts-in-business-administration-busn100",
@@ -426,6 +445,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "60 degree credits minus the 45-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 60-credit Associate of Arts in Business Administration ledger from American Public University System's current catalog page, including 4 open course choice block(s) (25% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

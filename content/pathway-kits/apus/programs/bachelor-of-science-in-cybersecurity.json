@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-science-in-cybersecurity",
-  "routeIds": [],
+  "routeIds": [
+    "apus-bachelor-of-science-in-cybersecurity"
+  ],
   "title": "Bachelor of Science in Cybersecurity",
   "level": "bachelor",
   "catalog": "American Public University System current catalog page for Bachelor of Science in Cybersecurity, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-cybersecurity/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 7 requirement(s) (55% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -52,7 +55,11 @@
           "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-civics-political-social-sciences-select-2-courses",
@@ -69,7 +76,11 @@
           "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "Civics, Political & Social Sciences (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Civics, Political & Social Sciences (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-comm120",
@@ -120,7 +131,11 @@
           "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication: Writing, Oral, and Multimedia (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-history-select-1-course",
@@ -137,7 +152,11 @@
           "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "History (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-math110",
@@ -171,7 +190,11 @@
           "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-issc242",
@@ -426,7 +449,11 @@
           "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "Students must choose a concentration for this degree program"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (select one: General, Critical Infrastructure, Digital Forensics, Privacy and Surveillance, or Wireless and Mobile Security)"
+      }
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-issc499",
@@ -460,7 +487,11 @@
           "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "Elective Requirements (30 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
     }
   ],
   "policies": {
@@ -527,6 +558,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Cybersecurity ledger from American Public University System's current catalog page, including 7 open course choice block(s) (55% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

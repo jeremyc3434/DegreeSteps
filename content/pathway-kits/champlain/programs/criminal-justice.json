@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "criminal-justice",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-criminal-justice"
+  ],
   "title": "Criminal Justice",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Criminal Justice, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-criminal-justice",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 7 requirement(s) (45% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -293,7 +296,11 @@
           "sourceId": "champlain-criminal-justice-catalog-2026-11-23",
           "text": "plus any two 200+ level SOCI or PSYC courses"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Applied Advanced Electives: any two 200+ level SOCI or PSYC courses"
+      }
     },
     {
       "id": "criminal-justice-engl-100",
@@ -344,7 +351,11 @@
           "sourceId": "champlain-criminal-justice-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)"
+      }
     },
     {
       "id": "criminal-justice-comm-230",
@@ -395,7 +406,11 @@
           "sourceId": "champlain-criminal-justice-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis (one of CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)"
+      }
     },
     {
       "id": "criminal-justice-technology-literacy-one-of-cmit-130-gmdv-110-igmd-110-mkcm-101-mkcm-120-soci-260",
@@ -412,7 +427,11 @@
           "sourceId": "champlain-criminal-justice-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (one of CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260)"
+      }
     },
     {
       "id": "criminal-justice-math-170",
@@ -446,7 +465,11 @@
           "sourceId": "champlain-criminal-justice-catalog-2026-11-23",
           "text": "Scientific Literacy/Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy/Natural Sciences (one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics)"
+      }
     },
     {
       "id": "criminal-justice-soci-200",
@@ -514,7 +537,11 @@
           "sourceId": "champlain-criminal-justice-catalog-2026-11-23",
           "text": "students must also complete 6 Credits of a General Education Elective"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Elective (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)"
+      }
     },
     {
       "id": "criminal-justice-general-electives",
@@ -531,7 +558,11 @@
           "sourceId": "champlain-criminal-justice-catalog-2026-11-23",
           "text": "General Electives (30 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -580,6 +611,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Criminal Justice ledger from Champlain College Online's current catalog page, including 7 open course choice block(s) (45% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

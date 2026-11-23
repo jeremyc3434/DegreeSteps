@@ -35,6 +35,45 @@
       "url": "https://www.bellevue.edu/wp-content/uploads/2025/12/25-27-catalog.pdf",
       "checked": "2026-11-23",
       "capture": "content/source-captures/d033d7f984f7917f.txt"
+    },
+    {
+      "id": "sophia-soph-0033-current-offer",
+      "kind": "provider",
+      "title": "Sophia current Principles of Finance offering and source semester credits",
+      "url": "https://www.sophia.org/online-courses/business/principles-of-finance/",
+      "checkedOn": "2026-11-17",
+      "retrieval": "full-public-course-page-opened",
+      "checked": "2026-11-17",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "courseCodes": [
+        "SOPH-0033",
+        "BUSI1015"
+      ],
+      "copiedFor": "slot-placements-bellevue:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "sophia-soph-0033-current-offer-syllabus",
+      "kind": "provider",
+      "title": "Current syllabus linked by Sophia Principles of Finance course page",
+      "url": "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+      "sha256": "65ce55c2e74c5f2da1050652641913788cabe640f3deda2aec8a79ce0b7ce617",
+      "checked": "2026-11-17",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "courseCodes": [
+        "SOPH-0033",
+        "BUSI1015"
+      ],
+      "copiedFor": "slot-placements-bellevue:provider-identity",
+      "copiedFrom": "wgu/school.json"
     }
   ],
   "programDefaults": {
@@ -43,5 +82,719 @@
       "online"
     ],
     "paceModel": "course-term"
-  }
+  },
+  "publish": {
+    "compiledBy": "pathway-factory",
+    "compact": true,
+    "documents": [
+      {
+        "path": "content/curricula/bellevue-associate-degree-in-multidisciplinary-studies.json",
+        "programs": [
+          "associate-degree-in-multidisciplinary-studies"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-associate-degree-in-multidisciplinary-studies",
+            "parentId": "bellevue-multidisciplinary-studies-as",
+            "title": "Associate Degree in Multidisciplinary Studies",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "associate",
+            "modalities": [
+              "online"
+            ],
+            "field": "general",
+            "fields": [
+              "general"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/associate-degrees/multidisciplinary-studies/online/",
+            "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
+            "degreeCredits": 60,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-associate-of-science-in-business.json",
+        "programs": [
+          "associate-of-science-in-business"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-associate-of-science-in-business",
+            "parentId": "bellevue-business-as",
+            "title": "Associate of Science in Business",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "associate",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/associate-degrees/business/online/",
+            "sourceId": "bellevue-associate-of-science-in-business-catalog-2026-11-23",
+            "degreeCredits": 60,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-bachelor-of-science-in-accounting.json",
+        "programs": [
+          "bachelor-of-science-in-accounting"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-bachelor-of-science-in-accounting",
+            "parentId": "bellevue-accounting-bs",
+            "title": "Bachelor of Science in Accounting",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "accounting-finance",
+            "fields": [
+              "accounting-finance"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/accounting/online/",
+            "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-bachelor-of-science-in-healthcare-management.json",
+        "programs": [
+          "bachelor-of-science-in-healthcare-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-bachelor-of-science-in-healthcare-management",
+            "parentId": "bellevue-healthcare-management-bs",
+            "title": "Bachelor of Science in Healthcare Management",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "health",
+            "fields": [
+              "health"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/healthcare-management/online-accelerated/",
+            "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-bachelor-of-science-in-management-information-systems.json",
+        "programs": [
+          "bachelor-of-science-in-management-information-systems"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-bachelor-of-science-in-management-information-systems",
+            "parentId": "bellevue-management-information-systems-bs",
+            "title": "Bachelor of Science in Management Information Systems",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/management-information-systems/online-accelerated/",
+            "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-bachelor-of-science-in-project-management.json",
+        "programs": [
+          "bachelor-of-science-in-project-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-bachelor-of-science-in-project-management",
+            "parentId": "bellevue-project-management-bs",
+            "title": "Bachelor of Science in Project Management",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/project-management/online-accelerated/",
+            "sourceId": "bellevue-bachelor-of-science-in-project-management-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-bachelor-of-science-marketing.json",
+        "programs": [
+          "bachelor-of-science-marketing"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-bachelor-of-science-marketing",
+            "parentId": "bellevue-marketing-bs",
+            "title": "Bachelor of Science, Marketing",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/marketing/online-accelerated/",
+            "sourceId": "bellevue-bachelor-of-science-marketing-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-communication-studies.json",
+        "programs": [
+          "communication-studies"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-communication-studies",
+            "parentId": "bellevue-communication-studies-ba",
+            "title": "Communication Studies",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "humanities",
+            "fields": [
+              "humanities"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/communication-studies/online/",
+            "sourceId": "bellevue-communication-studies-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-emergency-management.json",
+        "programs": [
+          "emergency-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-emergency-management",
+            "parentId": "bellevue-emergency-management-bs",
+            "title": "Emergency Management",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "criminal-justice",
+            "fields": [
+              "criminal-justice"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/emergency-management/online-accelerated/",
+            "sourceId": "bellevue-emergency-management-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-online-bachelor-s-degree-of-information-technology.json",
+        "programs": [
+          "online-bachelor-s-degree-of-information-technology"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-online-bachelor-s-degree-of-information-technology",
+            "parentId": "bellevue-information-technology-bs",
+            "title": "online bachelor's degree of information technology",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/information-technology/online/",
+            "sourceId": "bellevue-online-bachelor-s-degree-of-information-technology-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/bellevue-online-bachelor-s-degree-of-management.json",
+        "programs": [
+          "online-bachelor-s-degree-of-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "bellevue-online-bachelor-s-degree-of-management",
+            "parentId": "bellevue-management-bs",
+            "title": "online bachelor's degree of management",
+            "school": "Bellevue University",
+            "schoolId": "bellevue",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://www.bellevue.edu/programs/bachelors-degrees/management/online-accelerated/",
+            "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
+            "degreeCredits": 127,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      }
+    ]
+  },
+  "routes": [
+    {
+      "id": "bellevue-associate-degree-in-multidisciplinary-studies",
+      "parentId": "bellevue-multidisciplinary-studies-as",
+      "title": "Associate Degree in Multidisciplinary Studies",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "associate",
+      "modalities": [
+        "online"
+      ],
+      "field": "general",
+      "fields": [
+        "general"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/associate-degrees/multidisciplinary-studies/online/",
+      "sourceId": "bellevue-associate-degree-in-multidisciplinary-studies-catalog-2026-11-23",
+      "degreeCredits": 60,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-associate-of-science-in-business",
+      "parentId": "bellevue-business-as",
+      "title": "Associate of Science in Business",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "associate",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/associate-degrees/business/online/",
+      "sourceId": "bellevue-associate-of-science-in-business-catalog-2026-11-23",
+      "degreeCredits": 60,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-bachelor-of-science-in-accounting",
+      "parentId": "bellevue-accounting-bs",
+      "title": "Bachelor of Science in Accounting",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "accounting-finance",
+      "fields": [
+        "accounting-finance"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/accounting/online/",
+      "sourceId": "bellevue-bachelor-of-science-in-accounting-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-bachelor-of-science-in-healthcare-management",
+      "parentId": "bellevue-healthcare-management-bs",
+      "title": "Bachelor of Science in Healthcare Management",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "health",
+      "fields": [
+        "health"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/healthcare-management/online-accelerated/",
+      "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-bachelor-of-science-in-management-information-systems",
+      "parentId": "bellevue-management-information-systems-bs",
+      "title": "Bachelor of Science in Management Information Systems",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/management-information-systems/online-accelerated/",
+      "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-bachelor-of-science-in-project-management",
+      "parentId": "bellevue-project-management-bs",
+      "title": "Bachelor of Science in Project Management",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/project-management/online-accelerated/",
+      "sourceId": "bellevue-bachelor-of-science-in-project-management-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-bachelor-of-science-marketing",
+      "parentId": "bellevue-marketing-bs",
+      "title": "Bachelor of Science, Marketing",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/marketing/online-accelerated/",
+      "sourceId": "bellevue-bachelor-of-science-marketing-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-communication-studies",
+      "parentId": "bellevue-communication-studies-ba",
+      "title": "Communication Studies",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "humanities",
+      "fields": [
+        "humanities"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/communication-studies/online/",
+      "sourceId": "bellevue-communication-studies-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-emergency-management",
+      "parentId": "bellevue-emergency-management-bs",
+      "title": "Emergency Management",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "criminal-justice",
+      "fields": [
+        "criminal-justice"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/emergency-management/online-accelerated/",
+      "sourceId": "bellevue-emergency-management-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-online-bachelor-s-degree-of-information-technology",
+      "parentId": "bellevue-information-technology-bs",
+      "title": "online bachelor's degree of information technology",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/information-technology/online/",
+      "sourceId": "bellevue-online-bachelor-s-degree-of-information-technology-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "bellevue-online-bachelor-s-degree-of-management",
+      "parentId": "bellevue-management-bs",
+      "title": "online bachelor's degree of management",
+      "school": "Bellevue University",
+      "schoolId": "bellevue",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://www.bellevue.edu/programs/bachelors-degrees/management/online-accelerated/",
+      "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
+      "degreeCredits": 127,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    }
+  ],
+  "programOrder": [
+    "associate-degree-in-multidisciplinary-studies",
+    "associate-of-science-in-business",
+    "bachelor-of-science-in-accounting",
+    "bachelor-of-science-in-healthcare-management",
+    "bachelor-of-science-in-management-information-systems",
+    "bachelor-of-science-in-project-management",
+    "bachelor-of-science-marketing",
+    "communication-studies",
+    "emergency-management",
+    "online-bachelor-s-degree-of-information-technology",
+    "online-bachelor-s-degree-of-management"
+  ]
 }

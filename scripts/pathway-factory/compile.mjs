@@ -2,7 +2,7 @@
 import {resolve} from 'node:path';
 import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
-import {clone,list,slug,sourceRefs,awardFields,inScope,matchRequirement,rowStatus,programUnits,publishableReview,parsePlacement,sourceIndex,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root} from './lib.mjs';
+import {clone,list,slug,sourceRefs,awardFields,inScope,matchRequirement,rowStatus,programUnits,publishableReview,parsePlacement,sourceIndex,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root,slotPieces,slotUpperOnly,slotRowsFor} from './lib.mjs';
 import {verifyKit,formatFindings} from './verify.mjs';
 
 /** Fields that exist only in the kit (grounding/review metadata) and never enter a compiled model. */
@@ -84,12 +84,48 @@ export function compileProgram(kit,program){
   Object.assign(model,clone(program.modelFields||{}));
   // Per-model source lists (modelSourceIds) let a school publish each model with exactly its own sources.
   if(program.modelSourceIds){const index=sourceIndex(kit,program);model.sources=program.modelSourceIds.map(id=>{const entry=index.get(id);if(!entry)throw Error(`Unknown model source ${id} in ${program.slug}`);return clone(entry.source);});}
-  model.requirements=program.requirements.map(requirement=>{
+  model.requirements=program.requirements.flatMap(requirement=>{
+    if(requirement.slot)return compileSlot(kit,program,requirement,modalities);
     const compiled=clone(requirement);for(const field of kitOnlyRequirementFields)delete compiled[field];
     compiled.options=requirement.optionRows?placedOptions(kit,program,requirement,model):[...rowsFor(kit,program,requirement).map(row=>compileOption(kit,program,requirement,row,modalities)),...list(requirement.institutionOptions).map(choice=>compileInstitutionOption(kit,program,choice))];
     return compiled;
   });
   return model;
+}
+/**
+ * An open slot compiles to one requirement per course-sized choice. Each choice is an allocation slot (the registry adds
+ * the school's "choose a course" placeholder) and carries only the outside awards an explicit slotPlacements rule allows.
+ */
+export function compileSlot(kit,program,requirement,modalities){
+  const units=programUnits(kit,program),pieces=slotPieces(requirement.credits,units),upper=slotUpperOnly(requirement.slot.label||requirement.title);
+  // The choices of one block are interchangeable, so each eligible outside course is offered in exactly one of them
+  // (round-robin over the same-sized choices). Every eligible course stays available in the block, a planned set of up
+  // to one course per choice always fits, and the published data does not repeat each course once per choice.
+  const eligible=new Map();
+  for(const credits of pieces)if(!eligible.has(String(credits)))eligible.set(String(credits),slotRowsFor(kit,program,requirement,{credits}));
+  const offered=(credits,index)=>{
+    const key=String(credits),same=pieces.map((c,i)=>[c,i]).filter(([c])=>String(c)===key).map(([,i])=>i),turn=same.indexOf(index);
+    return eligible.get(key).filter((entry,order)=>order%same.length===turn);
+  };
+  return pieces.map((credits,index)=>{
+    const compiled=clone(requirement);for(const field of kitOnlyRequirementFields)delete compiled[field];
+    delete compiled.code;
+    const many=pieces.length>1,id=many?`${requirement.id}-${index+1}`:requirement.id;
+    Object.assign(compiled,{id,title:many?`${requirement.title} · choice ${index+1} of ${pieces.length}`:requirement.title,credits,allocationSlot:true,slot:{kind:requirement.slot.kind,label:requirement.slot.label||requirement.title,choice:index+1,of:pieces.length,blockId:requirement.id,blockCredits:requirement.credits}});
+    if(many)compiled.allocationOf=requirement.id;
+    if(requirement.slot.kind==='free-elective')compiled.freeElective=true;
+    if(upper)compiled.upper=true;
+    const piece={...requirement,id};
+    compiled.options=offered(credits,index).map(({row,rule})=>{
+      const option=compileOption(kit,program,piece,row,modalities);
+      option.allocationType=requirement.slot.kind==='free-elective'?'free-elective-category':'general-category';
+      option.receivingCategory=row.receivingTitle;
+      option.slotPlacementId=rule.id;
+      if(rule.condition)option.conditions=[...list(option.conditions),rule.condition];
+      return option;
+    });
+    return compiled;
+  });
 }
 export const publishable=program=>publishableReview.includes(program.review?.status);
 

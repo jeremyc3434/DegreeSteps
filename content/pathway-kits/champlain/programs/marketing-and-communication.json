@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "marketing-and-communication",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-marketing-and-communication"
+  ],
   "title": "Marketing and Communication",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Marketing and Communication, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-marketing-communication",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 11 requirement(s) (68% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -56,7 +59,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Visual Storytelling (6 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Visual Storytelling Courses (Choose 2): MKCM 102, MKCM 103, MKCM 101, MKCM 201"
+      }
     },
     {
       "id": "marketing-and-communication-mkcm-120",
@@ -192,7 +199,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Advanced Marketing Communication Courses (12 Credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Advanced Marketing Communication Courses (choose four 300/400-level marketing and marketing communication courses)"
+      }
     },
     {
       "id": "marketing-and-communication-business-electives-acct-econ-or-mgmt-prefix",
@@ -209,7 +220,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Business Electives (6 Credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Business Electives (ACCT, ECON, or MGMT prefix)"
+      }
     },
     {
       "id": "marketing-and-communication-general-electives",
@@ -226,7 +241,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "General Electives (30 Credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     },
     {
       "id": "marketing-and-communication-general-education-electives-two-courses-from-arts-comm-crim-except-crim-dbed83a0",
@@ -243,7 +262,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "please complete 6 credits of General Education Electives"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Electives (two courses from ARTS, COMM, CRIM except CRIM 225, CRIT, ENGL, HIST, MATH, MKCM 120, PHIL, PSYC, SOCI)"
+      }
     },
     {
       "id": "marketing-and-communication-engl-100",
@@ -294,7 +317,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (choose one: COMM 130 or COMM 140)"
+      }
     },
     {
       "id": "marketing-and-communication-comm-230",
@@ -328,7 +355,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis (choose one: CRIT 220 or PHIL 240)"
+      }
     },
     {
       "id": "marketing-and-communication-technology-literacy-choose-one-mkcm-120-soci-260-cmit-130-igmd-110-gmdv-110-mkcm-101",
@@ -345,7 +376,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (choose one: MKCM 120, SOCI 260, CMIT 130, IGMD 110, GMDV 110, MKCM 101)"
+      }
     },
     {
       "id": "marketing-and-communication-quantitative-literacy-choose-one-math-125-math-160-math-170-math-190",
@@ -362,7 +397,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Quantitative Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Quantitative Literacy (choose one: MATH 125, MATH 160, MATH 170, MATH 190)"
+      }
     },
     {
       "id": "marketing-and-communication-scientific-literacy-natural-sciences-choose-one-scie-180-or-scie-230",
@@ -379,7 +418,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Scientific Literacy: Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences (choose one: SCIE 180 or SCIE 230)"
+      }
     },
     {
       "id": "marketing-and-communication-soci-200",
@@ -413,7 +456,11 @@
           "sourceId": "champlain-marketing-and-communication-catalog-2026-11-23",
           "text": "Arts/Humanities/Social Services"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Services (complete any two from listed courses)"
+      }
     },
     {
       "id": "marketing-and-communication-crit-100",
@@ -479,6 +526,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Marketing and Communication ledger from Champlain College Online's current catalog page, including 11 open course choice block(s) (68% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

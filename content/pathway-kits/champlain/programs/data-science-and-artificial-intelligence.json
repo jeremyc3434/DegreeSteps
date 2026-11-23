@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "data-science-and-artificial-intelligence",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-data-science-and-artificial-intelligence"
+  ],
   "title": "Data Science and Artificial Intelligence",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Data Science and Artificial Intelligence, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-data-science-artificial-intelligence",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 7 requirement(s) (38% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -411,7 +414,11 @@
           "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (complete one: COMM 130 or COMM 140)"
+      }
     },
     {
       "id": "data-science-and-artificial-intelligence-comm-230",
@@ -445,7 +452,11 @@
           "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
           "text": "Inquiry and Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry and Analysis (complete one: CRIT 220 or PHIL 240)"
+      }
     },
     {
       "id": "data-science-and-artificial-intelligence-technology-literacy-complete-one-cmit-130-gmdv-110-igmd-110-2f8007cf",
@@ -462,7 +473,11 @@
           "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (complete one: CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, or SOCI 260)"
+      }
     },
     {
       "id": "data-science-and-artificial-intelligence-math-170",
@@ -496,7 +511,11 @@
           "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
           "text": "Scientific Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy (complete one: SCIE 180 or SCIE 230)"
+      }
     },
     {
       "id": "data-science-and-artificial-intelligence-soci-200",
@@ -530,7 +549,11 @@
           "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
           "text": "Arts/Humanities/Social Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Sciences (choose any two from the listed options)"
+      }
     },
     {
       "id": "data-science-and-artificial-intelligence-crit-100",
@@ -564,7 +587,11 @@
           "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
           "text": "6 Credits of a General Education Elective"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Elective (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)"
+      }
     },
     {
       "id": "data-science-and-artificial-intelligence-general-electives",
@@ -581,7 +608,11 @@
           "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
           "text": "General Electives (21 Credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -630,6 +661,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Data Science and Artificial Intelligence ledger from Champlain College Online's current catalog page, including 7 open course choice block(s) (38% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

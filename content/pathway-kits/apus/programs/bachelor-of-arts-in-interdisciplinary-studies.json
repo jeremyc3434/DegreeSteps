@@ -4,15 +4,15 @@
   "slug": "bachelor-of-arts-in-interdisciplinary-studies",
   "title": "Bachelor of Arts in Interdisciplinary Studies",
   "level": "bachelor",
-  "catalog": "2026 - 2027 Catalog",
+  "catalog": "American Public University System current catalog page for Bachelor of Arts in Interdisciplinary Studies, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-interdisciplinary-studies/",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "No published outside course joins any named requirement of this program."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -52,7 +52,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-civics-political-social-sciences-select-2-courses",
@@ -69,7 +73,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Civics, Political & Social Sciences (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Civics, Political & Social Sciences (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-comm120",
@@ -120,7 +128,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication: Writing, Oral, and Multimedia (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-history-select-1-course",
@@ -137,7 +149,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "History (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-mathematics-and-applied-reasoning-select-1-course",
@@ -154,7 +170,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Mathematics and Applied Reasoning (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics and Applied Reasoning (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-natural-sciences-select-1-course",
@@ -171,7 +191,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-intd310",
@@ -205,7 +229,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Select 3 courses from the following:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major selection group 1: select 3 courses (COMM, ENGL, WEBD list)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-major-selection-group-2-select-3-courses-biol-dats-ers-7d5585b2",
@@ -222,7 +250,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Select 3 courses from the following:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major selection group 2: select 3 courses (BIOL, DATS, ERSC, EVSP, POLS, PSYC, SCIN, SOCI, SPST list)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-major-selection-group-3-select-3-courses-chfd-cmrj-def-ebd33766",
@@ -239,7 +271,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Select 3 courses from the following:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major selection group 3: select 3 courses (CHFD, CMRJ, DEFM, EDMG, EDUC, INTL, IRLS, LSTD, SPHE list)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-major-selection-group-4-select-3-courses-acct-anly-bus-b1c84a74",
@@ -256,7 +292,11 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Select 3 courses from the following:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major selection group 4: select 3 courses (ACCT, ANLY, BUSN, ENTR, FINC, HOSP, HRMT, INFO, ISSC, ITMG, MGMT, MKTG, RLMT, RTMG, SPMT, TLMT list)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-interdisciplinary-studies-intd498",
@@ -290,8 +330,83 @@
           "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
           "text": "Elective Requirements (48 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
     }
   ],
-  "routeIds": []
+  "routeIds": [
+    "apus-bachelor-of-arts-in-interdisciplinary-studies"
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "apus-apu-transfer-credit-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "At APU, our transfer credit limits are: 45 academic credits toward an associate degree (up to 30 non-traditional credits) 90 academic credits toward a bachelor’s degree (up to 60 non-traditional credits)"
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    },
+    "alternativeMaxCredits": {
+      "value": 60,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "apus-apu-transfer-credit-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "At APU, our transfer credit limits are: 45 academic credits toward an associate degree (up to 30 non-traditional credits) 90 academic credits toward a bachelor’s degree (up to 60 non-traditional credits)"
+        },
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "“Non-traditional” transfer credits are those earned based on assessment, competency testing (i.e. CLEP or ACE exams)"
+        }
+      ],
+      "basis": "Sophia credit is ACE-recommended, which the school counts as non-traditional transfer credit."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "American Public University System current catalog page for Bachelor of Arts in Interdisciplinary Studies, checked 2026-11-23",
+      "sourceUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-interdisciplinary-studies/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "apus-apu-transfer-credit-limits-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "apus-apu-transfer-credit-limits-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Arts in Interdisciplinary Studies ledger from American Public University System's current catalog page, including 11 open course choice block(s) (90% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
+  }
 }

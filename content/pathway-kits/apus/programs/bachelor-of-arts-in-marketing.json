@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-arts-in-marketing",
-  "routeIds": [],
+  "routeIds": [
+    "apus-bachelor-of-arts-in-marketing"
+  ],
   "title": "Bachelor of Arts in Marketing",
   "level": "bachelor",
   "catalog": "American Public University System current catalog page for Bachelor of Arts in Marketing, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-marketing/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 6 requirement(s) (40% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -51,7 +54,11 @@
           "sourceId": "apus-bachelor-of-arts-in-marketing-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-marketing-coll112",
@@ -136,7 +143,11 @@
           "sourceId": "apus-bachelor-of-arts-in-marketing-catalog-2026-11-23",
           "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication: Writing, Oral, and Multimedia (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-marketing-history-select-1-course",
@@ -153,7 +164,11 @@
           "sourceId": "apus-bachelor-of-arts-in-marketing-catalog-2026-11-23",
           "text": "History (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-marketing-math110",
@@ -187,7 +202,11 @@
           "sourceId": "apus-bachelor-of-arts-in-marketing-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-marketing-acct105",
@@ -510,7 +529,11 @@
           "sourceId": "apus-bachelor-of-arts-in-marketing-catalog-2026-11-23",
           "text": "Select one of the following concentrations:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (select one: General, Digital Marketing Strategies, Marketing Communication Strategy, or Marketing Decision Making)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-marketing-busn499",
@@ -544,7 +567,11 @@
           "sourceId": "apus-bachelor-of-arts-in-marketing-catalog-2026-11-23",
           "text": "Elective Requirements (24 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
     }
   ],
   "policies": {
@@ -611,6 +638,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Arts in Marketing ledger from American Public University System's current catalog page, including 6 open course choice block(s) (40% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

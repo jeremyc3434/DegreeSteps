@@ -4,15 +4,14 @@
   "slug": "bachelor-of-science-in-cybersecurity",
   "title": "Bachelor of Science in Cybersecurity",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Bellevue University current catalog page for Bachelor of Science in Cybersecurity, checked 2026-11-23",
   "totalCredits": 127,
   "catalogUrl": "https://www.bellevue.edu/programs/bachelors-degrees/cybersecurity/online/",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "No published outside course joins any named requirement of this program."
+    "heldReason": "Reviewed; named upper-level courses total 27 of the 30 required upper-level credits, so the open electives would have to be upper level, which the plan cannot yet represent."
   },
   "sources": [
     {
@@ -27,6 +26,10 @@
     {
       "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -105,7 +108,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CIS 311 Network Security (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-cis-312",
@@ -122,7 +126,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CIS 312 Securing Access Control (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-cis-411",
@@ -139,7 +144,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CIS 411 Assessments and Audits (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-cybr-309",
@@ -156,7 +162,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CYBR 309 Database Security (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-cybr-320",
@@ -173,7 +180,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CYBR 320 Operational Security (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-cybr-340",
@@ -190,7 +198,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CYBR 340 Operating Systems and Mobile Device Security (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-cybr-350",
@@ -207,7 +216,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CYBR 350 Web Application Security (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-cybr-420",
@@ -224,7 +234,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CYBR 420 Cyber Investigations and Forensics (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-cybr-430",
@@ -241,7 +252,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
           "text": "CYBR 430 Penetration Testing and Incident Response (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-cybersecurity-emphasis-protect-and-defend-securely-provision-or-oversee-and-g-42c0ceaf",
@@ -278,5 +290,78 @@
       ]
     }
   ],
-  "routeIds": []
+  "routeIds": [],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 97,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "bellevue-catalog-2025-2027-degree-requirements"
+      ],
+      "quotes": [
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Bachelor of Science (B.S.) • 1271 • • 2.0 2.5 30 30 12"
+        },
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Resident credit hours are credits earned at Bellevue University in all approved delivery formats."
+        }
+      ],
+      "basis": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Bellevue University current catalog page for Bachelor of Science in Cybersecurity, checked 2026-11-23",
+      "sourceUrl": "https://www.bellevue.edu/programs/bachelors-degrees/cybersecurity/online/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 97,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "upperMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Upper-level (300–400) credit hours required for the degree."
+      },
+      "majorMinInstitutionCredits": {
+        "value": 12,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Major credit hours completed in residence."
+      }
+    },
+    "upperMinCredits": 30,
+    "majorMinInstitutionCredits": 12,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 127-credit Bachelor of Science in Cybersecurity ledger from Bellevue University's current catalog page, including 3 open course choice block(s) (74% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
+  }
 }

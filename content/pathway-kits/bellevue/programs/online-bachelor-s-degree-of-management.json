@@ -4,15 +4,15 @@
   "slug": "online-bachelor-s-degree-of-management",
   "title": "online bachelor's degree of management",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Bellevue University current catalog page for online bachelor's degree of management, checked 2026-11-23",
   "totalCredits": 127,
   "catalogUrl": "https://www.bellevue.edu/programs/bachelors-degrees/management/online-accelerated/",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "No published outside course joins any named requirement of this program."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -27,6 +27,10 @@
     {
       "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -54,7 +58,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 301 Foundations for Professional Success (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-300",
@@ -71,7 +76,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 300 Critical Business Communications (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-305",
@@ -88,7 +94,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 305 Problem Solving and Analysis (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-310",
@@ -105,7 +112,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 310 Fiscal Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-400",
@@ -122,7 +130,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 400 Leadership and Management Skills (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-405",
@@ -139,7 +148,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 405 Organizational Behavior (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-410",
@@ -156,7 +166,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 410 Global Business (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-415",
@@ -173,7 +184,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 415 Leading and Managing Change (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-420",
@@ -190,7 +202,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 420 Ethical Management and Sustainability (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-mgmt-430",
@@ -207,7 +220,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "MGMT 430 Management Capstone (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-management-integrative-general-education",
@@ -224,7 +238,11 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "Integrative General Education Credits"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Integrative General Education"
+      }
     },
     {
       "id": "online-bachelor-s-degree-of-management-electives",
@@ -241,8 +259,87 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-management-catalog-2026-11-23",
           "text": "Elective Credits"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Electives"
+      }
     }
   ],
-  "routeIds": []
+  "routeIds": [
+    "bellevue-online-bachelor-s-degree-of-management"
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 97,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "bellevue-catalog-2025-2027-degree-requirements"
+      ],
+      "quotes": [
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Bachelor of Science (B.S.) • 1271 • • 2.0 2.5 30 30 12"
+        },
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Resident credit hours are credits earned at Bellevue University in all approved delivery formats."
+        }
+      ],
+      "basis": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Bellevue University current catalog page for online bachelor's degree of management, checked 2026-11-23",
+      "sourceUrl": "https://www.bellevue.edu/programs/bachelors-degrees/management/online-accelerated/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 97,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "upperMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Upper-level (300–400) credit hours required for the degree."
+      },
+      "majorMinInstitutionCredits": {
+        "value": 12,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Major credit hours completed in residence."
+      }
+    },
+    "upperMinCredits": 30,
+    "majorMinInstitutionCredits": 12,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 127-credit online bachelor's degree of management ledger from Bellevue University's current catalog page, including 2 open course choice block(s) (69% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
+  }
 }

@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "integrated-studies",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-integrated-studies"
+  ],
   "title": "Integrated Studies",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Integrated Studies, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-integrated-studies",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 9 requirement(s) (73% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -55,7 +58,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "Area of Study (from prior experience 40 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Area of Study (focus area from prior experience)"
+      }
     },
     {
       "id": "integrated-studies-mgmt-210",
@@ -208,7 +215,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (one of COMM 130 or COMM 140)"
+      }
     },
     {
       "id": "integrated-studies-comm-230",
@@ -242,7 +253,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis (one of CRIT 220 or PHIL 240)"
+      }
     },
     {
       "id": "integrated-studies-technology-literacy-one-of-cmit-130-gmdv-110-igmd-110-mkcm-101-mkcm-120-soci-260",
@@ -259,7 +274,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "Complete one of the following courses, unless your program requires a specific course:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (one of CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260)"
+      }
     },
     {
       "id": "integrated-studies-quantitative-literacy-one-of-math-125-math-160-math-170-math-190",
@@ -276,7 +295,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "Quantitative Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Quantitative Literacy (one of MATH 125, MATH 160, MATH 170, MATH 190)"
+      }
     },
     {
       "id": "integrated-studies-scientific-literacy-natural-sciences-one-of-scie-180-or-scie-230",
@@ -293,7 +316,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "Scientific Literacy: Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences (one of SCIE 180 or SCIE 230)"
+      }
     },
     {
       "id": "integrated-studies-soci-200",
@@ -327,7 +354,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "Complete any two of the following courses, unless your program requires a specific course(s):"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Sciences (any two from listed courses)"
+      }
     },
     {
       "id": "integrated-studies-crit-100",
@@ -361,7 +392,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "students must also complete 6 Credits of a General Education Elective"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Elective"
+      }
     },
     {
       "id": "integrated-studies-general-electives",
@@ -378,7 +413,11 @@
           "sourceId": "champlain-integrated-studies-catalog-2026-11-23",
           "text": "General Electives (20 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -427,6 +466,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Integrated Studies ledger from Champlain College Online's current catalog page, including 9 open course choice block(s) (73% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

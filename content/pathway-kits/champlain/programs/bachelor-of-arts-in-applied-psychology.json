@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-arts-in-applied-psychology",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-bachelor-of-arts-in-applied-psychology"
+  ],
   "title": "Bachelor of Arts in Applied Psychology",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Bachelor of Arts in Applied Psychology, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-applied-psychology",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (50% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -257,7 +260,11 @@
           "sourceId": "champlain-bachelor-of-arts-in-applied-psychology-catalog-2026-11-23",
           "text": "Choose two of the following 400 level PSYC courses"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Applied Advanced Electives: two 400-level PSYC courses (PSYC 410, PSYC 440, or PSYC 455)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-applied-psychology-applied-advanced-electives-two-200-level-crim-or-soci-courses",
@@ -274,7 +281,11 @@
           "sourceId": "champlain-bachelor-of-arts-in-applied-psychology-catalog-2026-11-23",
           "text": "plus two of any 200+ level CRIM or SOCI courses"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Applied Advanced Electives: two 200+ level CRIM or SOCI courses"
+      }
     },
     {
       "id": "bachelor-of-arts-in-applied-psychology-engl-100",
@@ -325,7 +336,11 @@
           "sourceId": "champlain-bachelor-of-arts-in-applied-psychology-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication: one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication"
+      }
     },
     {
       "id": "bachelor-of-arts-in-applied-psychology-comm-230",
@@ -359,7 +374,11 @@
           "sourceId": "champlain-bachelor-of-arts-in-applied-psychology-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis: one of CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life"
+      }
     },
     {
       "id": "bachelor-of-arts-in-applied-psychology-crit-100",
@@ -393,7 +412,11 @@
           "sourceId": "champlain-bachelor-of-arts-in-applied-psychology-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy: one of CMIT 130, IGMD 110, GMDV 110, MKCM 101, MKCM 120, or SOCI 260"
+      }
     },
     {
       "id": "bachelor-of-arts-in-applied-psychology-math-170",
@@ -427,7 +450,11 @@
           "sourceId": "champlain-bachelor-of-arts-in-applied-psychology-catalog-2026-11-23",
           "text": "Scientific Literacy/Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy/Natural Sciences: one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics"
+      }
     },
     {
       "id": "bachelor-of-arts-in-applied-psychology-soci-200",
@@ -495,7 +522,11 @@
           "sourceId": "champlain-bachelor-of-arts-in-applied-psychology-catalog-2026-11-23",
           "text": "students must also complete 6 Credits of a General Education Elective (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Elective (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-applied-psychology-general-electives",
@@ -512,7 +543,11 @@
           "sourceId": "champlain-bachelor-of-arts-in-applied-psychology-catalog-2026-11-23",
           "text": "General Electives (30 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -561,6 +596,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Arts in Applied Psychology ledger from Champlain College Online's current catalog page, including 8 open course choice block(s) (50% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

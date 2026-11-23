@@ -4,15 +4,14 @@
   "slug": "management-of-human-resources",
   "title": "Management of Human Resources",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Bellevue University current catalog page for Management of Human Resources, checked 2026-11-23",
   "totalCredits": 127,
   "catalogUrl": "https://www.bellevue.edu/programs/bachelors-degrees/management-human-resources/online-accelerated/",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "No published outside course joins any named requirement of this program."
+    "heldReason": "Reviewed; 1 block(s) without a named course are not a course choice the student can make (Final course(s): Track 1 (MHRC 476 Human Resource Management Capstone Project, 4 credits) or Track 2 (MHRC 470 SHRM CP/SCP Preparation Course, 3 credits + MHRC 475 Applied Human Resource Management Capstone Project, 1 credit, taken concurrently))."
   },
   "sources": [
     {
@@ -27,6 +26,10 @@
     {
       "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -54,7 +57,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 311 Foundations for Professional Success (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-mhrc-312",
@@ -71,7 +75,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 312 Introduction to Human Resource Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-mhrc-322",
@@ -88,7 +93,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 322 Employment and Labor Laws (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-mhrc-329",
@@ -105,7 +111,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 329 Recruitment, Selection and Placement of Human Resources (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-mhrc-426",
@@ -122,7 +129,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 426 Training and Development of Human Resources (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-mhrc-436",
@@ -139,7 +147,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 436 Employee and Labor Relations (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-mhrc-446",
@@ -156,7 +165,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 446 Compensation Administration (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-mhrc-456",
@@ -173,7 +183,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 456 Benefits Administration (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-mhrc-467",
@@ -190,7 +201,8 @@
           "sourceId": "bellevue-management-of-human-resources-catalog-2026-11-23",
           "text": "MHRC 467 Business and HR Analytics (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "management-of-human-resources-final-course-s-track-1-mhrc-476-human-resource-management-capstone-pro-275769ba",
@@ -244,5 +256,75 @@
       ]
     }
   ],
-  "routeIds": []
+  "routeIds": [],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 97,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "bellevue-catalog-2025-2027-degree-requirements"
+      ],
+      "quotes": [
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Bachelor of Science (B.S.) • 1271 • • 2.0 2.5 30 30 12"
+        },
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Resident credit hours are credits earned at Bellevue University in all approved delivery formats."
+        }
+      ],
+      "basis": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Bellevue University current catalog page for Management of Human Resources, checked 2026-11-23",
+      "sourceUrl": "https://www.bellevue.edu/programs/bachelors-degrees/management-human-resources/online-accelerated/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 97,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "upperMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Upper-level (300–400) credit hours required for the degree."
+      },
+      "majorMinInstitutionCredits": {
+        "value": 12,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Major credit hours completed in residence."
+      }
+    },
+    "upperMinCredits": 30,
+    "majorMinInstitutionCredits": 12
+  }
 }

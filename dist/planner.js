@@ -1410,7 +1410,18 @@
   function compare(program, input) {
     return ['transfer', 'speed', 'cost'].map(priority => generate(program, Object.assign({}, input || {}, { priority })));
   }
-  const api = Object.freeze({ generate, compare, validate, availableOptions, providerPricing, providerQuoteKeys, institutionResidencyMinimum, creditBalancePolicy });
+  // An open slot is a sourced requirement block the student fills with a course of their choice (owner-approved,
+  // 2026-11-23). Until they choose, it is planned as one course at the school: the registry's "choose a course"
+  // placeholder, which has no course code. It is a complete plan row, never a named course.
+  const SLOT_KINDS = ['gen-ed', 'major-elective', 'free-elective', 'concentration'];
+  function isOpenSlot(requirement) {
+    const slot = requirement && requirement.slot;
+    return Boolean(slot && typeof slot === 'object' && SLOT_KINDS.includes(slot.kind) && typeof slot.label === 'string' && slot.label.trim() && requirement.allocationSlot === true && !requirement.institutionalOnly);
+  }
+  function openSlotPlaceholder(requirement, option) {
+    return Boolean(isOpenSlot(requirement) && option && option.provider === 'University' && option.selectionRequired === true && !(typeof option.code === 'string' && option.code.trim()) && Math.abs(Number(option.credits) - Number(requirement.credits)) < 0.001 && (requirement.options || []).some(item => item.id === option.id && item.provider === 'University'));
+  }
+  const api = Object.freeze({ generate, compare, validate, availableOptions, providerPricing, providerQuoteKeys, institutionResidencyMinimum, creditBalancePolicy, isOpenSlot, openSlotPlaceholder });
   root.DegreePlanner = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

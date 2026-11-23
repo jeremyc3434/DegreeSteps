@@ -12,7 +12,7 @@
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 3 requirement(s) (66% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "heldReason": "Reviewed; named upper-level courses total 15 of the 30 required upper-level credits, so the open electives would have to be upper level, which the plan cannot yet represent."
   },
   "sources": [
     {
@@ -27,6 +27,10 @@
     {
       "sourceId": "bellevue-online-bachelor-s-degree-of-public-health-catalog-2026-11-23",
       "text": "120 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -105,7 +109,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-public-health-catalog-2026-11-23",
           "text": "CA 315 Health Communication (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-public-health-hhs-260",
@@ -190,7 +195,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-public-health-catalog-2026-11-23",
           "text": "PHE 310 Public and Consumer Health Literacy (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-public-health-phe-330",
@@ -207,7 +213,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-public-health-catalog-2026-11-23",
           "text": "PHE 330 Epidemiology (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-public-health-phe-360",
@@ -224,7 +231,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-public-health-catalog-2026-11-23",
           "text": "PHE 360 Personal and Community Health (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-public-health-ph-410",
@@ -241,7 +249,8 @@
           "sourceId": "bellevue-online-bachelor-s-degree-of-public-health-catalog-2026-11-23",
           "text": "PH 410 Medical Ethics and Leadership (3 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "online-bachelor-s-degree-of-public-health-py-211",
@@ -380,6 +389,9 @@
       }
     },
     "upperMinCredits": 30,
-    "majorMinInstitutionCredits": 12
+    "majorMinInstitutionCredits": 12,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit online bachelor's degree of public health ledger from Bellevue University's current catalog page, including 3 open course choice block(s) (66% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
   }
 }

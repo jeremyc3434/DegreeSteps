@@ -64,5 +64,123 @@
   ],
   "conditionLibrary": {
     "sophia-partner-provider-published": "Sophia publishes this course match on its American Public University System partner page (https://apus.sophia.org/); it is not taken from a American Public University System document. American Public University System decides transfer credit when it evaluates your Sophia transcript, so confirm it applies to your program and catalog year before relying on it."
-  }
+  },
+  "slotPlacements": [
+    {
+      "id": "apus-arts-humanities",
+      "receivingText": "Arts & Humanities / Humanities",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^(?:General Education: )?Arts & Humanities",
+      "lowerDivision": true,
+      "sourceIds": [
+        "apus-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-sophia-partner-page",
+          "text": "Arts & Humanities / Humanities"
+        }
+      ],
+      "condition": "Sophia's APUS partner table lists this course as \"Arts & Humanities / Humanities\" credit, not as a named course. APUS decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "apus-span100-arts-humanities",
+      "receivingText": "SPAN100: Gen Ed Arts & Humanities",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^(?:General Education: )?Arts & Humanities",
+      "lowerDivision": true,
+      "sourceIds": [
+        "apus-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-sophia-partner-page",
+          "text": "SPAN100: Gen Ed Arts & Humanities"
+        }
+      ],
+      "condition": "Sophia's APUS partner table lists this course as \"SPAN100: Gen Ed Arts & Humanities\" credit, not as a named course. APUS decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "apus-rels101-elective-only",
+      "receivingText": "RELS101: Introduction to the Study of Religions (Elective-only course; not Arts & Humanities)",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "lowerDivision": true,
+      "sourceIds": [
+        "apus-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-sophia-partner-page",
+          "text": "RELS101: Introduction to the Study of Religions (Elective-only course; not Arts & Humanities)"
+        }
+      ],
+      "condition": "Sophia's APUS partner table lists this course as \"RELS101: Introduction to the Study of Religions (Elective-only course; not Arts & Humanities)\" credit, not as a named course. APUS decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "apus-elective-in-all-other-programs",
+      "receivingText": "Applies to specific degree concentrations or as an elective in all other programs. Please speak with your academic advisor before registering.",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "lowerDivision": true,
+      "sourceIds": [
+        "apus-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-sophia-partner-page",
+          "text": "Applies to specific degree concentrations or as an elective in all other programs. Please speak with your academic advisor before registering."
+        }
+      ],
+      "condition": "Sophia's APUS partner table lists this course as \"Applies to specific degree concentrations or as an elective in all other programs. Please speak with your academic advisor before registering.\" credit, not as a named course. APUS decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "apus-elective-only",
+      "receivingText": "Elective Only",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "lowerDivision": true,
+      "sourceIds": [
+        "apus-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-sophia-partner-page",
+          "text": "Elective Only"
+        }
+      ],
+      "condition": "Sophia's APUS partner table lists this course as \"Elective Only\" credit, not as a named course. APUS decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "apus-elective-only-lower",
+      "receivingText": "Elective only",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "lowerDivision": true,
+      "sourceIds": [
+        "apus-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-sophia-partner-page",
+          "text": "Elective only"
+        }
+      ],
+      "condition": "Sophia's APUS partner table lists this course as \"Elective only\" credit, not as a named course. APUS decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    }
+  ]
 }

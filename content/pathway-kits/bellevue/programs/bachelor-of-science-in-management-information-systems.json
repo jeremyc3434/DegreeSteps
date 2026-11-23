@@ -4,15 +4,15 @@
   "slug": "bachelor-of-science-in-management-information-systems",
   "title": "Bachelor of Science in Management Information Systems",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Bellevue University current catalog page for Bachelor of Science in Management Information Systems, checked 2026-11-23",
   "totalCredits": 127,
   "catalogUrl": "https://www.bellevue.edu/programs/bachelors-degrees/management-information-systems/online-accelerated/",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "No published outside course joins any named requirement of this program."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -27,6 +27,10 @@
     {
       "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -55,7 +59,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 303 Strategic Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-misc-313",
@@ -72,7 +77,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 313 Business Communications and Research (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-misc-322",
@@ -89,7 +95,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 322 Leadership and Team Building (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-misc-330",
@@ -106,7 +113,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 330 Information Systems Infrastructure (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-misc-351",
@@ -123,7 +131,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 351 Fiscal and Contract Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-misc-404",
@@ -140,7 +149,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 404 Information Security Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-misc-442",
@@ -157,7 +167,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 442 IT Project Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-misc-450",
@@ -174,7 +185,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 450 IT Crisis Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-misc-480",
@@ -191,7 +203,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "MISC 480 IT Strategy, Management and Delivery (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-integrative-general-education",
@@ -208,7 +221,11 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "Integrative General Education Credits"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Integrative General Education"
+      }
     },
     {
       "id": "bachelor-of-science-in-management-information-systems-electives",
@@ -225,8 +242,87 @@
           "sourceId": "bellevue-bachelor-of-science-in-management-information-systems-catalog-2026-11-23",
           "text": "Elective Credits"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Electives"
+      }
     }
   ],
-  "routeIds": []
+  "routeIds": [
+    "bellevue-bachelor-of-science-in-management-information-systems"
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 97,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "bellevue-catalog-2025-2027-degree-requirements"
+      ],
+      "quotes": [
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Bachelor of Science (B.S.) • 1271 • • 2.0 2.5 30 30 12"
+        },
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Resident credit hours are credits earned at Bellevue University in all approved delivery formats."
+        }
+      ],
+      "basis": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Bellevue University current catalog page for Bachelor of Science in Management Information Systems, checked 2026-11-23",
+      "sourceUrl": "https://www.bellevue.edu/programs/bachelors-degrees/management-information-systems/online-accelerated/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 97,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "upperMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Upper-level (300–400) credit hours required for the degree."
+      },
+      "majorMinInstitutionCredits": {
+        "value": 12,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Major credit hours completed in residence."
+      }
+    },
+    "upperMinCredits": 30,
+    "majorMinInstitutionCredits": 12,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 127-credit Bachelor of Science in Management Information Systems ledger from Bellevue University's current catalog page, including 2 open course choice block(s) (72% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
+  }
 }

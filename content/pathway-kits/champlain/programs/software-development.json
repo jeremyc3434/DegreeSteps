@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "software-development",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-software-development"
+  ],
   "title": "Software Development",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Software Development, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-software-development",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 9 requirement(s) (38% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -429,7 +432,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (choose one: COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)"
+      }
     },
     {
       "id": "software-development-comm-230",
@@ -463,7 +470,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis (choose one: CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)"
+      }
     },
     {
       "id": "software-development-technology-literacy-choose-one-mkcm-120-soci-260-cmit-130-igmd-110-gmdv-110-or-mkcm-101",
@@ -480,7 +491,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (choose one: MKCM 120, SOCI 260, CMIT 130, IGMD 110, GMDV 110, or MKCM 101)"
+      }
     },
     {
       "id": "software-development-quantitative-literacy-choose-one-math-125-math-160-math-170-or-math-190",
@@ -497,7 +512,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "Quantitative Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Quantitative Literacy (choose one: MATH 125, MATH 160, MATH 170, or MATH 190)"
+      }
     },
     {
       "id": "software-development-scientific-literacy-natural-sciences-choose-one-scie-180-or-scie-230",
@@ -514,7 +533,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "Scientific Literacy: Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences (choose one: SCIE 180 or SCIE 230)"
+      }
     },
     {
       "id": "software-development-soci-200",
@@ -548,7 +571,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "Arts/Humanities/Social Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Sciences (any two courses from the listed options)"
+      }
     },
     {
       "id": "software-development-crit-100",
@@ -582,7 +609,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "please complete 6 credits of General Education Electives"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Electives (two courses from ARTS, COMM, CRIM except CRIM 225, CRIT, ENGL, HIST, MATH, MKCM 120, PHIL, PSYC, SOCI)"
+      }
     },
     {
       "id": "software-development-technical-electives",
@@ -599,7 +630,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "Technical Electives (12 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Technical Electives"
+      }
     },
     {
       "id": "software-development-general-electives",
@@ -616,7 +651,11 @@
           "sourceId": "champlain-software-development-catalog-2026-11-23",
           "text": "General Electives (6 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -665,6 +704,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Software Development ledger from Champlain College Online's current catalog page, including 9 open course choice block(s) (38% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

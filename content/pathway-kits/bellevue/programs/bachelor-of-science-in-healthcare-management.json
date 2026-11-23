@@ -4,15 +4,15 @@
   "slug": "bachelor-of-science-in-healthcare-management",
   "title": "Bachelor of Science in Healthcare Management",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Bellevue University current catalog page for Bachelor of Science in Healthcare Management, checked 2026-11-23",
   "totalCredits": 127,
   "catalogUrl": "https://www.bellevue.edu/programs/bachelors-degrees/healthcare-management/online-accelerated/",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "No published outside course joins any named requirement of this program."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -27,6 +27,10 @@
     {
       "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
       "text": "127 total credit hours."
+    },
+    {
+      "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+      "text": "Upper-level (300-400)"
     }
   ],
   "gaps": [
@@ -55,7 +59,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 300 Foundations for Professional Success in Healthcare Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-433",
@@ -72,7 +77,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 433 Principles of Healthcare Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-323",
@@ -89,7 +95,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 323 Operations Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-346",
@@ -106,7 +113,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 346 Evidence-Based Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-313",
@@ -123,7 +131,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 313 Health Information Technology (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-333",
@@ -140,7 +149,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 333 Human Resources in Healthcare (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-353",
@@ -157,7 +167,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 353 Marketing Healthcare Services (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-413",
@@ -174,7 +185,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 413 Fiscal Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-423",
@@ -191,7 +203,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 423 Legal and Regulatory Issues (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-bhmc-445",
@@ -208,7 +221,8 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "BHMC 445 Applied Decision Making in Healthcare Management (4 credits)"
         }
-      ]
+      ],
+      "upper": true
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-integrative-general-education",
@@ -225,7 +239,11 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "Integrative General Education Credits"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Integrative General Education"
+      }
     },
     {
       "id": "bachelor-of-science-in-healthcare-management-electives",
@@ -242,8 +260,87 @@
           "sourceId": "bellevue-bachelor-of-science-in-healthcare-management-catalog-2026-11-23",
           "text": "Elective Credits"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Electives"
+      }
     }
   ],
-  "routeIds": []
+  "routeIds": [
+    "bellevue-bachelor-of-science-in-healthcare-management"
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 97,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "bellevue-catalog-2025-2027-degree-requirements"
+      ],
+      "quotes": [
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Bachelor of Science (B.S.) • 1271 • • 2.0 2.5 30 30 12"
+        },
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Resident credit hours are credits earned at Bellevue University in all approved delivery formats."
+        }
+      ],
+      "basis": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Bellevue University current catalog page for Bachelor of Science in Healthcare Management, checked 2026-11-23",
+      "sourceUrl": "https://www.bellevue.edu/programs/bachelors-degrees/healthcare-management/online-accelerated/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 97,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "127 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "upperMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Upper-level (300–400) credit hours required for the degree."
+      },
+      "majorMinInstitutionCredits": {
+        "value": 12,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Major credit hours completed in residence."
+      }
+    },
+    "upperMinCredits": 30,
+    "majorMinInstitutionCredits": 12,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 127-credit Bachelor of Science in Healthcare Management ledger from Bellevue University's current catalog page, including 2 open course choice block(s) (69% of credits) you fill, with outside options from Sophia's published Bellevue University partner table."
+  }
 }

@@ -6,8 +6,8 @@
  * Idempotent: re-running rewrites the same values. Usage: node scripts/pathway-factory/finalize-four-schools-2026-11-23.mjs
  */
 import {join} from 'node:path';
-import {readdir} from 'node:fs/promises';
-import {readJSON,writeJSON,loadKit,loadProviders,matchRequirement,inScope,rowStatus,root} from './lib.mjs';
+import {readdir,rm} from 'node:fs/promises';
+import {readJSON,writeJSON,loadKit,loadProviders,matchRequirement,inScope,rowStatus,root,slug,programUnits,slotPieces,slotRowsFor,slotUpperOnly,list,normalizeText} from './lib.mjs';
 
 const CHECKED='2026-11-23';
 const REVIEW={status:'reviewed',reviewer:'DegreeSteps research (automated draft, human-directed review)',reviewedOn:CHECKED};
@@ -45,6 +45,7 @@ const SCHOOLS={
     levels:{
       bachelor:{residency:30,upper:30,majorResidency:12,quotes:[{sourceId:'bellevue-catalog-2025-2027-degree-requirements',text:'Bachelor of Science (B.S.) • 1271 • • 2.0 2.5 30 30 12'},{sourceId:'bellevue-catalog-2025-2027-degree-requirements',text:'Resident credit hours are credits earned at Bellevue University in all approved delivery formats.'}]},
       associate:{residency:15,quotes:[{sourceId:'bellevue-catalog-2025-2027-degree-requirements',text:'Associate of Science (A.S.) • 60 • • 2.0 2.5 15 NA NA'}]}},
+    upperLevelQuote:{sourceId:'bellevue-catalog-2025-2027-degree-requirements',text:'Upper-level (300-400)'},
     baQuote:{sourceId:'bellevue-catalog-2025-2027-degree-requirements',text:'Bachelor of Arts (B.A.) • 127 • • 2.0 2.5 30 30 12'},
     business21:{slugs:['bachelor-of-science-in-accounting','bachelor-of-science-in-business-administration','bachelor-of-science-in-finance'],quote:{sourceId:'bellevue-catalog-2025-2027-degree-requirements',text:'The Accounting, Business Administration, Finance, and Financial Planning majors require 21 upper-level credit hours completed in residence.'}},
     parents:{
@@ -60,15 +61,75 @@ const SCHOOLS={
       'online-bachelor-s-degree-of-public-health':'bellevue-public-health-bs','supply-chain-and-logistics-management':'bellevue-supply-chain-and-logistics-management-bs'},
     unpublished:{
       'bachelor-of-science-in-psychology':'The captured page states 41 major credits but lists only 34; the source of the remaining 7 major credits is not stated.',
-      'supply-chain-and-logistics-management':'The captured page gives two different major totals (54 and 57 credits) without explaining the difference.'}}};
+      'supply-chain-and-logistics-management':'The captured page gives two different major totals (54 and 57 credits) without explaining the difference.',
+      'bachelor-of-science-in-business-administration':'The plan checker cannot keep the 21 upper-level major credits Bellevue requires in residence with the named major courses and the open upper-level coursework block, so the student\'s choices decide feasibility (planner: "At least 21 major credits must be earned through the university in this model.").'}}};
 
 /** Reviewed programs with the least outside-course coverage (below 11.8% of degree credits), held so the academic registry
  *  index stays inside its 12 MiB Worker budget. Coverage measured 2026-11-23 after the course-code join fix. */
-const CAP_HOLD={
-  bellevue:['associate-degree-in-multidisciplinary-studies','business-analytics','history','online-bachelor-s-degree-of-public-health'],
-  apus:['associate-of-arts-in-criminal-justice','associate-of-science-in-cybersecurity','bachelor-of-arts-in-communication','bachelor-of-arts-in-criminal-justice','bachelor-of-arts-in-emergency-and-disaster-management','bachelor-of-arts-in-marketing','bachelor-of-arts-in-psychology','bachelor-of-arts-in-supply-chain-management','bachelor-of-science-in-computer-science','bachelor-of-science-in-cybersecurity','bachelor-of-science-in-finance','bachelor-of-science-in-fire-science-management','bachelor-of-science-in-healthcare-administration','bachelor-of-science-in-information-technology','bachelor-of-science-in-public-health'],
-  champlain:['bachelor-of-science-in-cybersecurity','bachelor-of-science-in-information-technology','computer-information-systems','computer-science','data-science-and-artificial-intelligence','economic-crime-investigation','human-resource-management','marketing-and-communication','marketing-management','sociology-bachelor-of-arts'],
-  strayer:['bachelor-of-science-in-criminal-justice','health-services-administration']};
+// The registry is sharded per school (2026-11-23), so no reviewed program is held for the index size budget any more.
+const CAP_HOLD={};
+
+/** Draft requirement category -> open-slot kind. Any other category on a codeless requirement keeps its program a draft. */
+const SLOT_KIND={'general-education':'gen-ed',elective:'free-elective',concentration:'concentration',major:'major-elective',core:'major-elective'};
+
+/**
+ * Explicit category-award placements from each school's Sophia partner table (owner-approved open slots, 2026-11-23).
+ * receivingText is the exact category text the table prints; quotes repeat it from the captured table. Only elective
+ * or named-category awards fill a slot, and only a slot of the stated kind (labelPattern narrows gen-ed rules to the
+ * slot whose own quoted label names that category). All Sophia awards here are lower-division.
+ */
+const SLOT_RULES={
+  strayer:{source:'strayer-sophia-partner-page',school:'Strayer',rules:[
+    ['general-elective','General Elective (ELC 000)'],['elc-000','ELC 000'],['philosophy-elective','Philosophy Elective (PHI 001)'],
+    ['language-elective-1','Language Elective (LAN 001)'],['language-elective-2','Language Elective (LAN 002)'],['language-elective-3','Language Elective (LAN 003)'],
+    ['science-elective','Science Elective (SCI 005)'],['soc-psy-elective','SOC/PSY Elective']].map(([id,text])=>({id,receivingText:text,slotKinds:['free-elective']}))},
+  champlain:{source:'champlain-sophia-partner-page',school:'Champlain College Online',rules:[
+    {id:'gen-1xx-general-electives',receivingText:'GEN-1XX',slotKinds:['free-elective']},
+    ...['ARTS','COMM','ENGL','HIST','MATH','PHIL','SCIE'].map(prefix=>({id:prefix.toLowerCase()+'-1xx-gen-ed-elective',receivingText:prefix+'-1XX',slotKinds:['gen-ed'],
+      labelPattern:`^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\b${prefix}\\b`}))]},
+  apus:{source:'apus-sophia-partner-page',school:'APUS',rules:[
+    {id:'arts-humanities',receivingText:'Arts & Humanities / Humanities',slotKinds:['gen-ed'],labelPattern:'^(?:General Education: )?Arts & Humanities'},
+    {id:'span100-arts-humanities',receivingText:'SPAN100: Gen Ed Arts & Humanities',slotKinds:['gen-ed'],labelPattern:'^(?:General Education: )?Arts & Humanities'},
+    {id:'rels101-elective-only',receivingText:'RELS101: Introduction to the Study of Religions (Elective-only course; not Arts & Humanities)',slotKinds:['free-elective']},
+    {id:'elective-in-all-other-programs',receivingText:'Applies to specific degree concentrations or as an elective in all other programs. Please speak with your academic advisor before registering.',slotKinds:['free-elective']},
+    {id:'elective-only',receivingText:'Elective Only',slotKinds:['free-elective']},{id:'elective-only-lower',receivingText:'Elective only',slotKinds:['free-elective']}]},
+  bellevue:{source:'bellevue-sophia-partner-page',school:'Bellevue University',rules:[
+    'UE TLL Unclassified Lower-Level Elective','UE TLL Unclassified Lower Level Elective','Unclassified Lower Level Elective','BA TLL Business Administration Lower-Level Elective',
+    'CA TLL1 Communication Lower 100-Level Elective','EN TLL1 English 100-Level Elective','GD TLL Graphic Design Lower- Level Elective','PH TLL Philosophy Lower-Level Elective',
+    'FL TLL1 Foreign Language Lower 100-Level Elective','BI TLL Biology Lower-Level Elective','CIS TLL Computer Information Systems Lower-Level Elective','CH TLL Chemistry Lower-Level Elective',
+    'MA TLL2 to Math Lower 200-Level Elective','TN TLL Technology Lower-Level Elective','MA TLL2 Math Lower 200-Level Elective','SO TLL Sociology Lower Level Elective'].map((text,index)=>({id:`${index+1}-${slug(text)}`,receivingText:text,slotKinds:['free-elective']}))}};
+
+/**
+ * A slot-placed provider course keeps its reviewed identity evidence: identity sources defined only in another kit's
+ * school.json are copied here, tagged copiedFor/copiedFrom (as the Sophia importer does for published rows).
+ */
+async function copySlotIdentitySources(kitsDir,id,kit,school){
+  const tag=`slot-placements-${id}:provider-identity`,texts=new Set(list(kit.equivalencies.slotPlacements).map(rule=>normalizeText(rule.receivingText)));
+  school.sources=school.sources.filter(s=>s.copiedFor!==tag);
+  const have=new Set([...school.sources.map(s=>s.id),...[...kit.providers.values()].flatMap(p=>list(p.sources).map(s=>s.id))]),need=new Set();
+  for(const row of list(kit.equivalencies.equivalencies)){
+    if(row.receivingCode||!texts.has(normalizeText(row.receivingTitle||'')))continue;
+    const course=list(kit.providers.get(row.provider)?.courses).find(c=>c.code===row.code);
+    for(const ref of [...list(course?.identitySourceIds),...list(course?.sourceCreditVerification?.sourceIds)])if(!have.has(ref))need.add(ref);
+  }
+  if(!need.size)return;
+  const origins=new Map();
+  for(const name of (await readdir(kitsDir)).sort()){
+    if(name==='providers'||name===id)continue;
+    try{for(const s of list((await readJSON(join(kitsDir,name,'school.json'))).sources))if(!s.copiedFor&&!origins.has(s.id))origins.set(s.id,{source:s,from:name+'/school.json'});}catch{}
+  }
+  for(const ref of [...need].sort()){const origin=origins.get(ref);if(origin)school.sources.push({...origin.source,copiedFor:tag,copiedFrom:origin.from});}
+}
+
+async function writeSlotRules(dir,id){
+  const cfg=SLOT_RULES[id],path=join(dir,'equivalencies.json'),doc=await readJSON(path);
+  if(!cfg){delete doc.slotPlacements;await writeJSON(path,doc,['equivalencies']);return;}
+  doc.slotPlacements=cfg.rules.map(rule=>({id:`${id}-${rule.id}`,receivingText:rule.receivingText,slotKinds:rule.slotKinds,...(rule.labelPattern?{labelPattern:rule.labelPattern}:{}),lowerDivision:true,
+    sourceIds:[cfg.source],quotes:[{sourceId:cfg.source,text:rule.receivingText}],
+    condition:`Sophia's ${cfg.school} partner table lists this course as "${rule.receivingText}" credit, not as a named course. ${cfg.school} decides whether it fills this open course choice; confirm before you enroll.`,
+    basis:'Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind.'}));
+  await writeJSON(path,doc,['equivalencies']);
+}
 
 /** Finder field from the program title (journey-engine field ids). */
 export function fieldFor(title){
@@ -84,16 +145,25 @@ export function fieldFor(title){
   return 'general';
 }
 
+/** Credits that have at least one outside option: named requirements joined by a published row, plus slot choices a rule fills. */
 function coveredCredits(kit,program){
-  const rows=kit.equivalencies.equivalencies.filter(row=>rowStatus(row)==='published'&&inScope(row,program,kit));
-  return program.requirements.filter(r=>rows.some(row=>matchRequirement(row,program)?.id===r.id)).reduce((s,r)=>s+r.credits,0);
+  const rows=kit.equivalencies.equivalencies.filter(row=>rowStatus(row)==='published'&&inScope(row,program,kit)),units=programUnits(kit,program);
+  return program.requirements.reduce((sum,r)=>{
+    const kind=!r.code&&SLOT_KIND[r.category];
+    if(kind){const slotReq={...r,slot:{kind,label:r.title}};return sum+slotPieces(r.credits,units).filter(credits=>slotRowsFor(kit,program,slotReq,{credits}).length).reduce((s,c)=>s+c,0);}
+    return sum+(rows.some(row=>matchRequirement(row,program)?.id===r.id)?r.credits:0);
+  },0);
 }
 
 export async function finalize({base=root}={}){
   const kitsDir=join(base,'content/pathway-kits'),providers=await loadProviders(join(kitsDir,'providers')),report={};
   for(const[id,cfg]of Object.entries(SCHOOLS)){
     const dir=join(kitsDir,id),schoolPath=join(dir,'school.json'),school=await readJSON(schoolPath);
+    await writeSlotRules(dir,id);
+    // Slots are judged on the unsplit draft ledger: clear any slot marks from an earlier run before loading.
+    for(const file of (await readdir(join(dir,'programs'))).filter(f=>f.endsWith('.json'))){const path=join(dir,'programs',file),p=await readJSON(path);if(p.requirements.some(r=>r.slot)){p.requirements.forEach(r=>delete r.slot);await writeJSON(path,p,[]);}}
     const kit=await loadKit(dir,{providers});
+    await copySlotIdentitySources(kitsDir,id,kit,school);
     school.checkedOn=CHECKED;
     school.publish={path:`content/curricula/${id}.json`};
     school.programDefaults={format:'Online',modalities:['online'],paceModel:'course-term'};
@@ -129,23 +199,41 @@ export async function finalize({base=root}={}){
         if(business)program.policies.transferMaxCredits.quotes=[...program.policies.transferMaxCredits.quotes,cfg.business21.quote];
       }
       program.modelFields=modelFields;
+      // Bellevue's catalog defines upper level by course number ("Upper-level (300-400)"): mark named 300- and 400-level
+      // courses upper level so the 30 upper-level credit rule can be checked.
+      if(cfg.upperLevelQuote){
+        for(const r of program.requirements){const number=Number(String(r.code||'').match(/(\d{3})/)?.[1]);if(r.code&&number>=300&&number<500)r.upper=true;else delete r.upper;}
+        program.quotes=[...list(program.quotes).filter(q=>q.text!==cfg.upperLevelQuote.text),cfg.upperLevelQuote];
+        delete program.sourceIds;// program-level quotes resolve against school sources
+      }
       delete program.status;
       const placeholders=program.requirements.filter(r=>!r.code);
-      if(placeholders.length){
-        // The plan finder needs a complete named baseline: one named course per requirement with matching credits. These
-        // category, concentration and elective blocks need named course choices from the school's course catalog first.
-        const share=Math.round(placeholders.reduce((s,r)=>s+r.credits,0)/total*100);
-        const why=`Reviewed; needs a named baseline before publishing: ${placeholders.length} requirement(s) (${share}% of degree credits) are general-education, concentration or elective blocks without a named course.`;
+      const unsupported=placeholders.filter(r=>!SLOT_KIND[r.category]);
+      if(unsupported.length){
+        const why=`Reviewed; ${unsupported.length} block(s) without a named course are not a course choice the student can make (${unsupported.map(r=>r.title).join('; ')}).`;
         held.push({slug,reason:why});program.review=draftReview(why);program.routeIds=[];await writeJSON(path,program,[]);continue;
       }
-      // Every requirement is a named course from the captured catalog page: the ledger is complete (individual admission and
-      // transfer approval still apply, so the pathway is never marked executable).
-      Object.assign(modelFields,{coverage:'complete',completeExecutablePathway:false,coverageLabel:`Complete ${total}-credit ${program.title} ledger from ${school.name}'s current catalog page, with outside options from Sophia's published ${school.name} partner table.`});
+      // Owner-approved open slots (2026-11-23): a general-education, elective, concentration or major block without a
+      // named course is a sourced choice the student fills; its quoted title is the slot label.
+      for(const r of placeholders)r.slot={kind:SLOT_KIND[r.category],label:r.title};
+      // Individual admission and transfer approval still apply, so the pathway is never marked executable.
+      const openShare=placeholders.length?Math.round(placeholders.reduce((s,r)=>s+r.credits,0)/total*100):0;
+      Object.assign(modelFields,{coverage:'complete',completeExecutablePathway:false,coverageLabel:`Complete ${total}-credit ${program.title} ledger from ${school.name}'s current catalog page${placeholders.length?`, including ${placeholders.length} open course choice block(s) (${openShare}% of credits) you fill`:''}, with outside options from Sophia's published ${school.name} partner table.`});
       if(capHold){
         // Reviewed and fully prepared, but held: publishing it would push dist/data/academic-registry.json past the
         // Worker's 12 MiB parse budget. Set review to reviewed and bind the route once the index is sharded.
         const why='Reviewed and ready; held only by the academic registry index size budget (12 MiB). Publish after the index is sharded.';
         held.push({slug,reason:why});program.review=draftReview(why);program.routeIds=[];await writeJSON(path,program,[]);continue;
+      }
+      // The plan treats an open elective as a course of unknown level, so upper-level and upper-level-major residency
+      // minimums must be met by named courses (or upper-level-only slots). Otherwise the student's elective choices
+      // decide feasibility, which the plan cannot show yet: keep the program a draft.
+      if(level.upper){
+        const upperNamed=program.requirements.filter(r=>r.upper||r.slot&&slotUpperOnly(r.slot.label)).reduce((s,r)=>s+r.credits,0);
+        const businessMajor=cfg.business21?.slugs.includes(slug),majorUpper=program.requirements.filter(r=>r.code&&(r.upper||!businessMajor)&&['major','core','concentration'].includes(r.category)).reduce((s,r)=>s+r.credits,0);
+        const why=upperNamed<level.upper?`Reviewed; named upper-level courses total ${upperNamed} of the ${level.upper} required upper-level credits, so the open electives would have to be upper level, which the plan cannot yet represent.`
+          :modelFields.majorMinInstitutionCredits&&majorUpper<modelFields.majorMinInstitutionCredits?`Reviewed; named ${businessMajor?'upper-level ':''}major courses total ${majorUpper} of the ${modelFields.majorMinInstitutionCredits} ${businessMajor?'upper-level ':''}major credits required in residence.`:null;
+        if(why){held.push({slug,reason:why});program.review=draftReview(why);program.routeIds=[];for(const r of program.requirements)delete r.slot;await writeJSON(path,program,[]);continue;}
       }
       program.routeIds=[routeId];
       program.review={...program.review,...REVIEW};
@@ -156,8 +244,15 @@ export async function finalize({base=root}={}){
       published.push({slug,covered,total});
     }
     // A school with no publishable program publishes nothing: no curriculum document and no declared routes.
-    if(published.length){school.routes=routes;school.programOrder=published.map(p=>p.slug);}
+    // One compact document per program: open-slot choices repeat their outside options, so a student's worksheet loads
+    // only its own degree instead of the whole school.
+    if(published.length){
+      school.routes=routes;school.programOrder=published.map(p=>p.slug);
+      school.publish={compiledBy:'pathway-factory',compact:true,documents:published.map(p=>({path:`content/curricula/${id}-${p.slug}.json`,programs:[p.slug],sources:'own',routes:routes.filter(r=>r.id===`${id}-${p.slug}`)}))};
+    }
     else{delete school.publish;delete school.routes;delete school.programOrder;}
+    await rm(join(base,`content/curricula/${id}.json`),{force:true});
+    for(const name of await readdir(join(base,'content/curricula')))if(name.startsWith(id+'-')&&name.endsWith('.json')&&!published.some(p=>name===`${id}-${p.slug}.json`))await rm(join(base,'content/curricula',name),{force:true});
     await writeJSON(schoolPath,school,[]);
     report[id]={published,held};
   }

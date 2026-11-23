@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "associate-in-arts-in-accounting",
-  "routeIds": [],
+  "routeIds": [
+    "strayer-associate-in-arts-in-accounting"
+  ],
   "title": "Associate in Arts in Accounting",
   "level": "associate",
   "catalog": "Strayer University current catalog page for Associate in Arts in Accounting, checked 2026-11-23",
   "totalCredits": 90,
   "catalogUrl": "https://coursecatalog.strayer.edu/accounting/associate-in-arts/accounting",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 1 requirement(s) (5% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -374,7 +377,11 @@
           "sourceId": "strayer-associate-in-arts-in-accounting-catalog-2026-11-23",
           "text": "Electives\nThese courses are selected in consultation with a dean, advisor or coach.\nSub-Total Credits\n4.5"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Electives"
+      }
     }
   ],
   "policies": {
@@ -430,6 +437,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "90 degree credits minus the 63-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 90-credit Associate in Arts in Accounting ledger from Strayer University's current catalog page, including 1 open course choice block(s) (5% of credits) you fill, with outside options from Sophia's published Strayer University partner table."
   }
 }

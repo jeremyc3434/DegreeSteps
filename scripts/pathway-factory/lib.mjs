@@ -144,3 +144,47 @@ export function parseArgs(argv){
   return args;
 }
 export const isMain=meta=>Boolean(process.argv[1])&&resolve(process.argv[1])===fileURLToPath(meta.url);
+
+/**
+ * Open slots: a sourced requirement block with no single named course ("General Education: Humanities, 6 credits",
+ * "Free electives, 12 credits"). A program requirement declares it with slot {kind, label}; the student picks the course.
+ * The compiler splits a slot into course-sized choices (3 semester credits, 4.5 quarter credits; a smaller remainder
+ * becomes the last choice) so each choice can hold one outside course or one course at the school.
+ */
+export const slotKinds=Object.freeze(['gen-ed','major-elective','free-elective','concentration']);
+export const slotCourseSize=Object.freeze({semester:3,quarter:4.5});
+/** A slot whose own quoted label restricts it to upper-level (300/400-level, upper-division) courses. */
+export const slotUpperOnly=label=>{const text=String(label||'');return !/lower/i.test(text)&&/\b[34]00\s*\+|\b[34]00[\s-]*level|\b[34]00\s+or\s+(?:above|higher)|upper[\s-]*(?:level|division)/i.test(text);};
+export function slotPieces(credits,units){
+  const size=slotCourseSize[units];
+  if(!size||!(credits>size+1e-9))return [credits];
+  const pieces=[];let left=credits;
+  while(left>size+1e-9){pieces.push(size);left=Math.round((left-size)*1000)/1000;}
+  if(left>1e-9)pieces.push(left);
+  return pieces;
+}
+/**
+ * Explicit, sourced category-award placements (equivalencies.json slotPlacements). Each rule names the exact receiving
+ * text a provider table prints for a category award ("Elective Only", "General Elective (ELC 000)") and the slot kinds it
+ * may fill. A provider row joins a slot only through such a rule: no fuzzy matching. Lower-division awards never fill an
+ * upper-level-only slot.
+ */
+export const slotRules=kit=>list(kit.equivalencies?.slotPlacements);
+export function slotRowsFor(kit,program,requirement,{credits=requirement.credits}={}){
+  if(!requirement.slot)return [];
+  const units=programUnits(kit,program),upperOnly=slotUpperOnly(requirement.slot.label||requirement.title),out=[];
+  for(const rule of slotRules(kit)){
+    if(!list(rule.slotKinds).includes(requirement.slot.kind))continue;
+    if(rule.lowerDivision&&upperOnly)continue;
+    if(rule.labelPattern&&!new RegExp(rule.labelPattern,'i').test(requirement.slot.label||requirement.title))continue;
+    for(const row of list(kit.equivalencies.equivalencies)){
+      if(row.receivingCode||normalizeText(row.receivingTitle||'')!==normalizeText(rule.receivingText))continue;
+      if(!inScope(row,program,kit))continue;
+      const awarded=row.creditSystem||row.impliedCreditSystem;
+      if(awarded&&awarded!==units)continue;
+      if(Math.abs(Number(row.credits)-credits)>1e-9)continue;
+      if(!out.some(entry=>entry.row.id===row.id))out.push({row,rule});
+    }
+  }
+  return out.sort((a,b)=>a.row.provider.localeCompare(b.row.provider)||a.row.code.localeCompare(b.row.code)||a.row.id.localeCompare(b.row.id));
+}

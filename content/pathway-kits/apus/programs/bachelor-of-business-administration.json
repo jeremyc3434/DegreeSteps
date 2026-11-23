@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-business-administration",
-  "routeIds": [],
+  "routeIds": [
+    "apus-bachelor-of-business-administration"
+  ],
   "title": "Bachelor of Business Administration",
   "level": "bachelor",
   "catalog": "American Public University System current catalog page for Bachelor of Business Administration, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-business-administration/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 9 requirement(s) (48% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -53,7 +56,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours) 1\nSelect 2 courses from the following:\n6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-business-administration-civics-political-social-sciences-select-1-of-coll112-or-econ101",
@@ -70,7 +77,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "COLL112\nPlanning Your Future with Purpose in Business\nECON101\nMicroeconomics"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Civics, Political & Social Sciences: select 1 of COLL112 or ECON101"
+      }
     },
     {
       "id": "bachelor-of-business-administration-civics-political-social-sciences-select-1-course-from-list",
@@ -87,7 +98,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "ANTH100\nIntroduction to Anthropology"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Civics, Political & Social Sciences: select 1 course from list"
+      }
     },
     {
       "id": "bachelor-of-business-administration-comm120",
@@ -138,7 +153,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication: Writing, Oral, and Multimedia elective (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-business-administration-history-select-1-course",
@@ -155,7 +174,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "History (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-business-administration-math110",
@@ -189,7 +212,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-business-administration-econ102",
@@ -495,7 +522,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "ACCT100\nAccounting I\nACCT105\nAccounting for Non Accounting Majors"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Accounting: select 1 of ACCT100 Accounting I or ACCT105 Accounting for Non Accounting Majors"
+      }
     },
     {
       "id": "bachelor-of-business-administration-concentration-select-one-of-nine-concentrations",
@@ -512,7 +543,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "Select one of the following concentrations:\n9"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (select one of nine concentrations)"
+      }
     },
     {
       "id": "bachelor-of-business-administration-busn499",
@@ -546,7 +581,11 @@
           "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
           "text": "Elective Requirements (24 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
     }
   ],
   "policies": {
@@ -613,6 +652,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Business Administration ledger from American Public University System's current catalog page, including 9 open course choice block(s) (48% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

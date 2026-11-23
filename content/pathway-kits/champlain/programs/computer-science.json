@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "computer-science",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-computer-science"
+  ],
   "title": "Computer Science",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Computer Science, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-computer-science",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (48% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -362,7 +365,11 @@
           "sourceId": "champlain-computer-science-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)"
+      }
     },
     {
       "id": "computer-science-comm-230",
@@ -396,7 +403,11 @@
           "sourceId": "champlain-computer-science-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis (one of CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)"
+      }
     },
     {
       "id": "computer-science-technology-literacy-one-of-cmit-130-gmdv-110-igmd-110-mkcm-101-mkcm-120-soci-260",
@@ -413,7 +424,11 @@
           "sourceId": "champlain-computer-science-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (one of CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260)"
+      }
     },
     {
       "id": "computer-science-quantitative-literacy-one-of-math-125-math-160-math-170-math-190",
@@ -430,7 +445,11 @@
           "sourceId": "champlain-computer-science-catalog-2026-11-23",
           "text": "Quantitative Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Quantitative Literacy (one of MATH 125, MATH 160, MATH 170, MATH 190)"
+      }
     },
     {
       "id": "computer-science-scientific-literacy-natural-sciences-one-of-scie-180-exploring-science-or-scie-230-physics-mechanics",
@@ -447,7 +466,11 @@
           "sourceId": "champlain-computer-science-catalog-2026-11-23",
           "text": "Scientific Literacy: Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences (one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics)"
+      }
     },
     {
       "id": "computer-science-soci-200",
@@ -481,7 +504,11 @@
           "sourceId": "champlain-computer-science-catalog-2026-11-23",
           "text": "Complete two of the following courses, unless a specific course is required by your program:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Sciences (two courses from the listed options)"
+      }
     },
     {
       "id": "computer-science-crit-100",
@@ -515,7 +542,11 @@
           "sourceId": "champlain-computer-science-catalog-2026-11-23",
           "text": "students must also complete 6 Credits of a General Education Elective"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Elective"
+      }
     },
     {
       "id": "computer-science-general-electives",
@@ -532,7 +563,11 @@
           "sourceId": "champlain-computer-science-catalog-2026-11-23",
           "text": "General Electives (30 credits required)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -581,6 +616,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Computer Science ledger from Champlain College Online's current catalog page, including 8 open course choice block(s) (48% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

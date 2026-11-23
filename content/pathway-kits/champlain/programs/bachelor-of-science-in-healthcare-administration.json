@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-science-in-healthcare-administration",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-bachelor-of-science-in-healthcare-administration"
+  ],
   "title": "Bachelor of Science in Healthcare Administration",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Bachelor of Science in Healthcare Administration, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-healthcare-administration",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (45% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -361,7 +364,11 @@
           "sourceId": "champlain-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (one of COMM 130 or COMM 140)"
+      }
     },
     {
       "id": "bachelor-of-science-in-healthcare-administration-comm-230",
@@ -395,7 +402,11 @@
           "sourceId": "champlain-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis (one of CRIT 220 or PHIL 240)"
+      }
     },
     {
       "id": "bachelor-of-science-in-healthcare-administration-technology-literacy-one-of-cmit-130-gmdv-110-igmd-1-b873805b",
@@ -412,7 +423,11 @@
           "sourceId": "champlain-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (one of CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260)"
+      }
     },
     {
       "id": "bachelor-of-science-in-healthcare-administration-quantitative-literacy-one-of-math-125-math-160-math-170-math-190",
@@ -429,7 +444,11 @@
           "sourceId": "champlain-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
           "text": "Quantitative Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Quantitative Literacy (one of MATH 125, MATH 160, MATH 170, MATH 190)"
+      }
     },
     {
       "id": "bachelor-of-science-in-healthcare-administration-scientific-literacy-natural-sciences-one-of-scie-180-or-scie-230",
@@ -446,7 +465,11 @@
           "sourceId": "champlain-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
           "text": "Scientific Literacy: Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences (one of SCIE 180 or SCIE 230)"
+      }
     },
     {
       "id": "bachelor-of-science-in-healthcare-administration-soci-200",
@@ -497,7 +520,11 @@
           "sourceId": "champlain-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
           "text": "Complete SOCI 110 and any one of the following, for a total of two courses"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Services elective (one additional course from the listed options)"
+      }
     },
     {
       "id": "bachelor-of-science-in-healthcare-administration-crit-100",
@@ -531,7 +558,11 @@
           "sourceId": "champlain-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
           "text": "students must also complete 6 Credits of a General Education Elective"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Elective"
+      }
     },
     {
       "id": "bachelor-of-science-in-healthcare-administration-general-electives",
@@ -548,7 +579,11 @@
           "sourceId": "champlain-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
           "text": "General Electives (30 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -597,6 +632,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Healthcare Administration ledger from Champlain College Online's current catalog page, including 8 open course choice block(s) (45% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

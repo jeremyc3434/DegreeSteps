@@ -59,5 +59,166 @@
   ],
   "conditionLibrary": {
     "sophia-partner-provider-published": "Sophia publishes this course match on its Champlain College Online partner page (https://champlaincollegeonline.sophia.org/); it is not taken from a Champlain College Online document. Champlain College Online decides transfer credit when it evaluates your Sophia transcript, so confirm it applies to your program and catalog year before relying on it."
-  }
+  },
+  "slotPlacements": [
+    {
+      "id": "champlain-gen-1xx-general-electives",
+      "receivingText": "GEN-1XX",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "GEN-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"GEN-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-arts-1xx-gen-ed-elective",
+      "receivingText": "ARTS-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bARTS\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "ARTS-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"ARTS-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-comm-1xx-gen-ed-elective",
+      "receivingText": "COMM-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bCOMM\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "COMM-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"COMM-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-engl-1xx-gen-ed-elective",
+      "receivingText": "ENGL-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bENGL\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "ENGL-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"ENGL-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-hist-1xx-gen-ed-elective",
+      "receivingText": "HIST-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bHIST\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "HIST-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"HIST-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-math-1xx-gen-ed-elective",
+      "receivingText": "MATH-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bMATH\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "MATH-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"MATH-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-phil-1xx-gen-ed-elective",
+      "receivingText": "PHIL-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bPHIL\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "PHIL-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"PHIL-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-scie-1xx-gen-ed-elective",
+      "receivingText": "SCIE-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bSCIE\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "SCIE-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"SCIE-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    }
+  ]
 }

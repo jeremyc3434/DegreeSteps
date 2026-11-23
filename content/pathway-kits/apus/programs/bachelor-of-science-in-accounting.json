@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-science-in-accounting",
-  "routeIds": [],
+  "routeIds": [
+    "apus-bachelor-of-science-in-accounting"
+  ],
   "title": "Bachelor of Science in Accounting",
   "level": "bachelor",
   "catalog": "American Public University System current catalog page for Bachelor of Science in Accounting, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-accounting/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 5 requirement(s) (35% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -52,7 +55,11 @@
           "sourceId": "apus-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours) 1"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-science-in-accounting-econ101",
@@ -137,7 +144,11 @@
           "sourceId": "apus-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication: Writing, Oral, and Multimedia (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-science-in-accounting-history-select-1-course",
@@ -154,7 +165,11 @@
           "sourceId": "apus-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "History (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-science-in-accounting-math110",
@@ -188,7 +203,11 @@
           "sourceId": "apus-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-science-in-accounting-acct100",
@@ -562,7 +581,11 @@
           "sourceId": "apus-bachelor-of-science-in-accounting-catalog-2026-11-23",
           "text": "Elective Requirements (27 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
     }
   ],
   "policies": {
@@ -629,6 +652,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Accounting ledger from American Public University System's current catalog page, including 5 open course choice block(s) (35% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

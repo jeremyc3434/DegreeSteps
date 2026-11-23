@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "associate-of-arts-in-criminal-justice",
-  "routeIds": [],
+  "routeIds": [
+    "apus-associate-of-arts-in-criminal-justice"
+  ],
   "title": "Associate of Arts in Criminal Justice",
   "level": "associate",
   "catalog": "American Public University System current catalog page for Associate of Arts in Criminal Justice, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/associate/associate-arts-criminal-justice/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 7 requirement(s) (50% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -53,7 +56,11 @@
           "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "associate-of-arts-in-criminal-justice-civics-political-social-sciences-select-2-courses",
@@ -70,7 +77,11 @@
           "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
           "text": "Civics, Political & Social Sciences (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Civics, Political & Social Sciences (select 2 courses)"
+      }
     },
     {
       "id": "associate-of-arts-in-criminal-justice-comm120",
@@ -121,7 +132,11 @@
           "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
           "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication: Writing, Oral, and Multimedia (select 1 course)"
+      }
     },
     {
       "id": "associate-of-arts-in-criminal-justice-history-select-1-course",
@@ -138,7 +153,11 @@
           "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
           "text": "History (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
     },
     {
       "id": "associate-of-arts-in-criminal-justice-mathematics-and-applied-reasoning-select-1-course",
@@ -155,7 +174,11 @@
           "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
           "text": "Mathematics and Applied Reasoning (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics and Applied Reasoning (select 1 course)"
+      }
     },
     {
       "id": "associate-of-arts-in-criminal-justice-natural-sciences-select-1-course",
@@ -172,7 +195,11 @@
           "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "associate-of-arts-in-criminal-justice-cmrj100",
@@ -325,7 +352,11 @@
           "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
           "text": "Elective Requirements (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements (lower-level 100-200 courses)"
+      }
     }
   ],
   "policies": {
@@ -392,6 +423,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "60 degree credits minus the 45-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 60-credit Associate of Arts in Criminal Justice ledger from American Public University System's current catalog page, including 7 open course choice block(s) (50% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

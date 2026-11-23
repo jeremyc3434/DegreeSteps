@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "computer-information-systems",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-computer-information-systems"
+  ],
   "title": "Computer & Information Systems",
   "level": "bachelor",
   "catalog": "Champlain College Online current catalog page for Computer & Information Systems, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-computer-information-systems",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 10 requirement(s) (53% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -293,7 +296,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "Choose One of the following courses"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Project management choice: MGMT 260 Foundations of Project Management or MGMT 262 Project Scheduling & Budgeting"
+      }
     },
     {
       "id": "computer-information-systems-systems-administration-choice-netw-250-windows-server-administration-i-94eaa9ad",
@@ -310,7 +317,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "Choose One of the following courses"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Systems administration choice: NETW 250 Windows Server Administration I or NETW 260 Linux Systems Administration I"
+      }
     },
     {
       "id": "computer-information-systems-engl-100",
@@ -361,7 +372,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication: COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication"
+      }
     },
     {
       "id": "computer-information-systems-comm-230",
@@ -412,7 +427,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "Inquiry & Analysis"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis: CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life"
+      }
     },
     {
       "id": "computer-information-systems-technology-literacy-one-of-cmit-130-gmdv-110-igmd-110-mkcm-101-mkcm-120-soci-260",
@@ -429,7 +448,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "Technology Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy: one of CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260"
+      }
     },
     {
       "id": "computer-information-systems-quantitative-literacy-one-of-math-125-math-160-math-170-math-190",
@@ -446,7 +469,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "Quantitative Literacy"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Quantitative Literacy: one of MATH 125, MATH 160, MATH 170, MATH 190"
+      }
     },
     {
       "id": "computer-information-systems-scientific-literacy-natural-sciences-scie-180-or-scie-230",
@@ -463,7 +490,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "Scientific Literacy: Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences: SCIE 180 or SCIE 230"
+      }
     },
     {
       "id": "computer-information-systems-soci-200",
@@ -497,7 +528,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "Arts/Humanities/Social Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Sciences: any two from listed courses"
+      }
     },
     {
       "id": "computer-information-systems-general-education-elective",
@@ -514,7 +549,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "students must also complete 6 Credits of a General Education Elective"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Elective"
+      }
     },
     {
       "id": "computer-information-systems-general-electives",
@@ -531,7 +570,11 @@
           "sourceId": "champlain-computer-information-systems-catalog-2026-11-23",
           "text": "General Electives (30 credits required)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -580,6 +623,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Computer & Information Systems ledger from Champlain College Online's current catalog page, including 10 open course choice block(s) (53% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

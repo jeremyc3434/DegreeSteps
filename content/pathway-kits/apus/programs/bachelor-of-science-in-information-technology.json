@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-science-in-information-technology",
-  "routeIds": [],
+  "routeIds": [
+    "apus-bachelor-of-science-in-information-technology"
+  ],
   "title": "Bachelor of Science in Information Technology",
   "level": "bachelor",
   "catalog": "American Public University System current catalog page for Bachelor of Science in Information Technology, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-information-technology/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 7 requirement(s) (50% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -69,7 +72,11 @@
           "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours) 1"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities selection (select 1 course from the listed options)"
+      }
     },
     {
       "id": "bachelor-of-science-in-information-technology-coll114",
@@ -205,7 +212,11 @@
           "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences selection (select 1 course from the listed options)"
+      }
     },
     {
       "id": "bachelor-of-science-in-information-technology-itcc121",
@@ -409,7 +420,11 @@
           "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "Cybersecurity, Surveillance, Privacy and Ethics"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major selection: STEM470 Cybersecurity, Surveillance, Privacy and Ethics or STEM471 Analytics, Algorithms, AI, and Humanity"
+      }
     },
     {
       "id": "bachelor-of-science-in-information-technology-major-selection-hrmt101-human-relations-communication-a33e5518",
@@ -426,7 +441,11 @@
           "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "Human Relations Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major selection: HRMT101 Human Relations Communication or MGMT100 Human Relations"
+      }
     },
     {
       "id": "bachelor-of-science-in-information-technology-major-selection-itcc112-advanced-productivity-applicat-2afb11d2",
@@ -443,7 +462,11 @@
           "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "Advanced Productivity Applications"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major selection: ITCC112 Advanced Productivity Applications or WEBD122 Introduction to Web Analytics"
+      }
     },
     {
       "id": "bachelor-of-science-in-information-technology-concentration-select-one-general-blockchain-and-digita-48b22d7a",
@@ -460,7 +483,11 @@
           "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "Select one of the following concentrations:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (select one: General, Blockchain and Digital Currency, Programming, Programming Full Stack/Python® Visualization, or Project Management)"
+      }
     },
     {
       "id": "bachelor-of-science-in-information-technology-info498",
@@ -494,7 +521,11 @@
           "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "Elective Requirements (30 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
     }
   ],
   "policies": {
@@ -561,6 +592,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Information Technology ledger from American Public University System's current catalog page, including 7 open course choice block(s) (50% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

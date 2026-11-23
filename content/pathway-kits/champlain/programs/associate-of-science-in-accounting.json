@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "associate-of-science-in-accounting",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-associate-of-science-in-accounting"
+  ],
   "title": "Associate of Science in Accounting",
   "level": "associate",
   "catalog": "Champlain College Online current catalog page for Associate of Science in Accounting, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/associate-accounting",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 5 requirement(s) (35% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -207,7 +210,11 @@
           "sourceId": "champlain-associate-of-science-in-accounting-catalog-2026-11-23",
           "text": "Complete the following courses, along with an economics (ECON) elective."
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Economics (ECON) elective"
+      }
     },
     {
       "id": "associate-of-science-in-accounting-engl-100",
@@ -258,7 +265,11 @@
           "sourceId": "champlain-associate-of-science-in-accounting-catalog-2026-11-23",
           "text": "Complete one of the following"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (choose COMM 130 or COMM 140)"
+      }
     },
     {
       "id": "associate-of-science-in-accounting-crit-100",
@@ -309,7 +320,11 @@
           "sourceId": "champlain-associate-of-science-in-accounting-catalog-2026-11-23",
           "text": "Scientific Literacy: Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences (choose SCIE 180 or SCIE 230)"
+      }
     },
     {
       "id": "associate-of-science-in-accounting-arts-humanities-social-sciences-choose-one-from-listed-options",
@@ -326,7 +341,11 @@
           "sourceId": "champlain-associate-of-science-in-accounting-catalog-2026-11-23",
           "text": "Arts/Humanities/Social Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Sciences (choose one from listed options)"
+      }
     },
     {
       "id": "associate-of-science-in-accounting-general-electives",
@@ -343,7 +362,11 @@
           "sourceId": "champlain-associate-of-science-in-accounting-catalog-2026-11-23",
           "text": "General Electives (9 Credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -392,6 +415,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "60 degree credits minus the 45-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 60-credit Associate of Science in Accounting ledger from Champlain College Online's current catalog page, including 5 open course choice block(s) (35% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

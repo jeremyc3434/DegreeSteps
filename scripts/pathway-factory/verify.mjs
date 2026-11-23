@@ -4,7 +4,7 @@
  */
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
-import {list,dateOnly,today,sourceDate,sourceRefs,normalizeText,sha256,creditSystems,inScope,matchRequirement,rowStatus,programUnits,parsePlacement,sourceIndex,loadKit,kitDirs,resolveKitDir,knownRouteIds,parseArgs,isMain,root,exists} from './lib.mjs';
+import {list,dateOnly,today,sourceDate,sourceRefs,normalizeText,sha256,creditSystems,inScope,matchRequirement,rowStatus,programUnits,parsePlacement,sourceIndex,loadKit,kitDirs,resolveKitDir,knownRouteIds,parseArgs,isMain,root,exists,slotKinds} from './lib.mjs';
 
 const EPS=1e-6;
 const near=(a,b)=>Math.abs(a-b)<EPS;
@@ -31,6 +31,7 @@ export function quotedClaims(kit){
   const take=(claim,file,label,sources)=>{if(Array.isArray(claim?.quotes))claims.push({claim,file,label,sources});};
   for(const[name,policy]of Object.entries(kit.school.policies||{}))take(policy,'school.json','policy '+name);
   for(const row of list(kit.equivalencies.equivalencies))take(row,'equivalencies.json','equivalency '+row.id,scopedProgramSources(kit,row));
+  for(const rule of list(kit.equivalencies.slotPlacements))take(rule,'equivalencies.json','slot placement '+rule.id);
   for(const program of kit.programs){
     take(program,program.file,'program '+program.slug);
     for(const[name,policy]of Object.entries(program.policies||{}))take(policy,program.file,'policy '+name);
@@ -121,6 +122,15 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
         if(r.upper&&!choice?.upper)error(file,'institution-option',`${r.id}: ${choice?.code} must be upper level for an upper-level requirement.`);
       }
       if(new Set(list(r.institutionOptions).map(c=>c?.code)).size!==list(r.institutionOptions).length)error(file,'institution-option',`${r.id}: an institution course is listed twice.`);
+      if(r.slot!==undefined){
+        // An open slot is a sourced block with no single named course: the student chooses it.
+        if(!r.slot||typeof r.slot!=='object'||!slotKinds.includes(r.slot.kind))error(file,'slot-kind',`${r.id}: slot.kind must be one of ${slotKinds.join(', ')}.`);
+        if(!String(r.slot?.label||'').trim())error(file,'slot-label',`${r.id}: a slot needs the label its source prints.`);
+        if(r.code)error(file,'slot-code',`${r.id}: a slot has no single receiving course code.`);
+        if(r.institutionalOnly)error(file,'slot-institutional',`${r.id}: a slot cannot be institutionalOnly.`);
+        if(list(r.institutionOptions).length||r.optionRows!==undefined)error(file,'slot-options',`${r.id}: slot options come only from slotPlacements rules.`);
+        if(!list(r.quotes).length||!list(r.sourceIds).length)error(file,'slot-quote',`${r.id}: a slot must be quoted from its captured source.`);
+      }
     }
     for(const ref of sourceRefs(program))if(!known.has(ref.id))error(file,'unknown-source',`Unknown source id ${ref.id} at ${ref.path}.`);
     if(draft)warn(file,'draft','Draft program: verified but never compiled until review.status is reviewed.');
@@ -168,6 +178,21 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
     for(const[k,reqSet]of placedBy)if(reqSet.size>1&&!exclusive)duplicate('equivalencies.json','duplicate-award',`${program.slug}: ${k} would award ${reqSet.size} requirements (${[...reqSet].join(', ')}) without a documented one-award-per-source-course policy.`);
   }
   for(const row of rows){const scoped=new Set(scopedProgramSources(kit,row).map(s=>s.id));for(const ref of sourceRefs(row))if(!ids.has(ref.id)&&!scoped.has(ref.id))error('equivalencies.json','unknown-source',`${row.id}: unknown source id ${ref.id}.`);}
+  // Category-award placements into open slots: explicit, sourced, quoted rules only.
+  const ruleIds=new Set();
+  for(const rule of list(kit.equivalencies.slotPlacements)){
+    const label=`slot placement ${rule?.id}`;
+    if(!rule?.id||ruleIds.has(rule.id))error('equivalencies.json','slot-rule-id',`${label}: id is missing or repeats.`);ruleIds.add(rule?.id);
+    if(!String(rule?.receivingText||'').trim())error('equivalencies.json','slot-rule-text',`${label}: receivingText must be the exact category text the provider table prints.`);
+    if(!list(rule?.slotKinds).length||list(rule?.slotKinds).some(kind=>!slotKinds.includes(kind)))error('equivalencies.json','slot-rule-kinds',`${label}: slotKinds must list ${slotKinds.join(', ')} values.`);
+    if(!list(rule?.sourceIds).length||!list(rule?.quotes).length)error('equivalencies.json','slot-rule-quote',`${label}: a rule needs sourceIds and a quote of the category award.`);
+    if(typeof rule?.lowerDivision!=='boolean')error('equivalencies.json','slot-rule-level',`${label}: lowerDivision must be true or false.`);
+    if(!String(rule?.condition||'').trim())error('equivalencies.json','slot-rule-condition',`${label}: a rule needs the condition shown to students.`);
+    for(const ref of list(rule?.sourceIds))if(!ids.has(ref))error('equivalencies.json','unknown-source',`${label}: unknown source id ${ref}.`);
+    if(rule?.labelPattern){try{new RegExp(rule.labelPattern,'i');}catch{error('equivalencies.json','slot-rule-pattern',`${label}: labelPattern is not a valid pattern.`);}}
+    const matched=rows.filter(row=>!row.receivingCode&&normalizeText(row.receivingTitle||'')===normalizeText(rule?.receivingText||''));
+    if(!matched.length)warn('equivalencies.json','slot-rule-unused',`${label}: no equivalency row prints "${rule?.receivingText}".`);
+  }
   // Provider identities are shared by every kit; check the identity each published row compiles into (shared course + row overrides).
   for(const row of rows.filter(row=>rowStatus(row)==='published')){
     const provider=kit.providers.get(row.provider),course=list(provider?.courses).find(c=>c.code===row.code);if(!course)continue;

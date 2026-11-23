@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-arts-in-communication",
-  "routeIds": [],
+  "routeIds": [
+    "apus-bachelor-of-arts-in-communication"
+  ],
   "title": "Bachelor of Arts in Communication",
   "level": "bachelor",
   "catalog": "American Public University System current catalog page for Bachelor of Arts in Communication, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-communication/",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (70% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -54,7 +57,11 @@
           "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
           "text": "Arts & Humanities (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education: Arts & Humanities (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-general-education-civics-political-social-sciences-select-2-courses",
@@ -71,7 +78,11 @@
           "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
           "text": "Civics, Political & Social Sciences (6 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education: Civics, Political & Social Sciences (select 2 courses)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-comm120",
@@ -139,7 +150,11 @@
           "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
           "text": "History (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education: History (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-general-education-mathematics-and-applied-reasoning-select-1-course",
@@ -156,7 +171,11 @@
           "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
           "text": "Mathematics and Applied Reasoning (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education: Mathematics and Applied Reasoning (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-general-education-natural-sciences-select-1-course",
@@ -173,7 +192,11 @@
           "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
           "text": "Natural Sciences (3 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education: Natural Sciences (select 1 course)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-comm101",
@@ -326,7 +349,11 @@
           "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
           "text": "Select 6 courses from the following:\n18"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major Required: select 6 courses (COMM210, COMM255, COMM285, COMM350, COMM400, COMM401, COMM402, MKTG304, MKTG305)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-concentration-select-one-digital-communication-and-media-design-or-ed675027",
@@ -343,7 +370,11 @@
           "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
           "text": "Select one of the following concentrations:\n18"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (select one: Digital Communication and Media Design or Strategic Communication)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-comm498",
@@ -377,7 +408,11 @@
           "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
           "text": "Elective Requirements (27 semester hours)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
     }
   ],
   "policies": {
@@ -444,6 +479,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "120 degree credits minus the 90-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Arts in Communication ledger from American Public University System's current catalog page, including 8 open course choice block(s) (70% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
   }
 }

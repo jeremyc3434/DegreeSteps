@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-science-in-criminal-justice",
-  "routeIds": [],
+  "routeIds": [
+    "strayer-bachelor-of-science-in-criminal-justice"
+  ],
   "title": "Bachelor of Science in Criminal Justice",
   "level": "bachelor",
   "catalog": "Strayer University current catalog page for Bachelor of Science in Criminal Justice, checked 2026-11-23",
   "totalCredits": 180,
   "catalogUrl": "https://coursecatalog.strayer.edu/criminal-justice/bachelor-of-science/criminal-justice",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 2 requirement(s) (25% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -564,7 +567,11 @@
           "sourceId": "strayer-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "Students must choose one of the concentrations listed to complete the Bachelor of Science in Criminal Justice."
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (choose one)"
+      }
     },
     {
       "id": "bachelor-of-science-in-criminal-justice-electives",
@@ -581,7 +588,11 @@
           "sourceId": "strayer-bachelor-of-science-in-criminal-justice-catalog-2026-11-23",
           "text": "These courses are selected in consultation with a dean, advisor or coach"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Electives"
+      }
     }
   ],
   "policies": {
@@ -637,6 +648,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "180 degree credits minus the 126-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 180-credit Bachelor of Science in Criminal Justice ledger from Strayer University's current catalog page, including 2 open course choice block(s) (25% of credits) you fill, with outside options from Sophia's published Strayer University partner table."
   }
 }

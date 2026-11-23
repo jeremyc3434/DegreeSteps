@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "business-management-2",
-  "routeIds": [],
+  "routeIds": [
+    "champlain-business-management-2"
+  ],
   "title": "Business Management",
   "level": "associate",
   "catalog": "Champlain College Online current catalog page for Business Management, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/associate-business-management",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 4 requirement(s) (35% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -240,7 +243,11 @@
           "sourceId": "champlain-business-management-2-catalog-2026-11-23",
           "text": "Oral Communication"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)"
+      }
     },
     {
       "id": "business-management-2-crit-100",
@@ -274,7 +281,11 @@
           "sourceId": "champlain-business-management-2-catalog-2026-11-23",
           "text": "Choose any one of the following, unless a specific course is required by your program:"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Quantitative Literacy (one of MATH 125, MATH 160, MATH 170, MATH 190)"
+      }
     },
     {
       "id": "business-management-2-scientific-literacy-natural-sciences-one-of-scie-180-exploring-science-or-scie-e8d5239a",
@@ -291,7 +302,11 @@
           "sourceId": "champlain-business-management-2-catalog-2026-11-23",
           "text": "Scientific Literacy: Natural Sciences"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences (one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics)"
+      }
     },
     {
       "id": "business-management-2-econ-215",
@@ -325,7 +340,11 @@
           "sourceId": "champlain-business-management-2-catalog-2026-11-23",
           "text": "General Electives (12 Credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
     }
   ],
   "policies": {
@@ -374,6 +393,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "60 degree credits minus the 45-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 60-credit Business Management ledger from Champlain College Online's current catalog page, including 4 open course choice block(s) (35% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
   }
 }

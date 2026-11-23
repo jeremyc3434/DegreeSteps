@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-science-in-information-technology",
-  "routeIds": [],
+  "routeIds": [
+    "strayer-bachelor-of-science-in-information-technology"
+  ],
   "title": "Bachelor of Science in Information Technology",
   "level": "bachelor",
   "catalog": "Strayer University current catalog page for Bachelor of Science in Information Technology, checked 2026-11-23",
   "totalCredits": 180,
   "catalogUrl": "https://coursecatalog.strayer.edu/information-systems/bachelor-of-science/information-technology",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
     "draftedOn": "2026-11-23",
-    "heldReason": "Reviewed; needs a named baseline before publishing: 2 requirement(s) (30% of degree credits) are general-education, concentration or elective blocks without a named course."
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -530,7 +533,11 @@
           "sourceId": "strayer-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "Students must choose one of the concentrations listed to complete the Bachelor of Science in Information Technology."
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (choose one: Artificial Intelligence, Cloud Computing, Cybersecurity, Data Analytics, Data Management, IT Project Management, Networking, Software Development)"
+      }
     },
     {
       "id": "bachelor-of-science-in-information-technology-electives",
@@ -547,7 +554,11 @@
           "sourceId": "strayer-bachelor-of-science-in-information-technology-catalog-2026-11-23",
           "text": "These courses are selected in consultation a dean, advisor or coach; within this component it is possible for students to develop a minor in a second area of study (see Minors)."
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Electives"
+      }
     }
   ],
   "policies": {
@@ -603,6 +614,9 @@
         "scope": "Minimum credits completed at the school.",
         "calculation": "180 degree credits minus the 126-credit transfer ceiling."
       }
-    }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 180-credit Bachelor of Science in Information Technology ledger from Strayer University's current catalog page, including 2 open course choice block(s) (30% of credits) you fill, with outside options from Sophia's published Strayer University partner table."
   }
 }
