@@ -1,0 +1,72 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "purdue-global",
+  "name": "Purdue University Global",
+  "creditSystem": "quarter",
+  "checkedOn": "2026-11-23",
+  "sources": [
+    {
+      "id": "purdue-global-sophia-partner-page",
+      "title": "Sophia partner page: Sophia courses that transfer to Purdue University Global",
+      "url": "https://purdueglobal.sophia.org/",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/8f450974ae2465ec.txt",
+      "tableSha256": "e7f270130c499cc6a7f6e18033bfa4b126cf6e4c5bbc81423a2408b3c12e9ca2",
+      "kind": "provider",
+      "publisher": "Sophia Learning",
+      "evidenceType": "provider-published-equivalency",
+      "roles": [
+        "transfer-equivalency"
+      ],
+      "scope": "Provider-published course matches for Purdue University Global; Purdue University Global confirms transfer credit when it evaluates the transcript."
+    },
+    {
+      "id": "sophia-soph-0033-current-offer",
+      "kind": "provider",
+      "title": "Sophia current Principles of Finance offering and source semester credits",
+      "url": "https://www.sophia.org/online-courses/business/principles-of-finance/",
+      "checkedOn": "2026-11-17",
+      "retrieval": "full-public-course-page-opened",
+      "checked": "2026-11-17",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "courseCodes": [
+        "SOPH-0033",
+        "BUSI1015"
+      ],
+      "copiedFor": "sophia-partner-import-purdueglobal:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "sophia-soph-0033-current-offer-syllabus",
+      "kind": "provider",
+      "title": "Current syllabus linked by Sophia Principles of Finance course page",
+      "url": "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+      "sha256": "65ce55c2e74c5f2da1050652641913788cabe640f3deda2aec8a79ce0b7ce617",
+      "checked": "2026-11-17",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "courseCodes": [
+        "SOPH-0033",
+        "BUSI1015"
+      ],
+      "copiedFor": "sophia-partner-import-purdueglobal:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15",
+      "copiedFor": "sophia-partner-import-purdueglobal:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    }
+  ]
+}
