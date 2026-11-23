@@ -41,22 +41,42 @@ test('WGU decomposes into kits and compiles back to the exact same models',()=>{
   assertModelParity(wgu,doc);
   assert.deepEqual(compareDocs(wgu,doc),[]);
   const courses=[...kit.providers.values()].reduce((n,p)=>n+p.courses.length,0);
-  assert.equal(courses,95,'689 options share 95 provider course identities');
-  assert.equal(kit.programs.length,20);
+  // Since 2026-11-23 wgu.json holds the nine migrated models; the eleven API-authored programs publish in wgu-pathway-kit.json.
+  assert.equal(courses,80,'the migrated models\' options share 80 provider course identities');
+  assert.equal(kit.programs.length,9);
 });
 
-test('the WGU kit is the source of truth: it verifies, passes its guards and publishes exactly content/curricula/wgu.json',async()=>{
+test('the WGU kit is the source of truth: it verifies, passes its guards and publishes exactly its two documents',async()=>{
   const kit=await loadKit(join(kitsRoot,'wgu'));
-  assert.equal(kit.school.publish?.path,'content/curricula/wgu.json');
-  const result=await verifyKit(kit,{asOf});
+  assert.deepEqual(kit.school.publish?.documents?.map(d=>[d.path,d.sources]),[['content/curricula/wgu.json','own'],['content/curricula/wgu-pathway-kit.json',false]]);
+  const result=await verifyKit(kit,{asOf:kit.school.checkedOn});
   assert.deepEqual(result.errors,[]);
   assert.ok(result.candidates.length>0&&result.candidates.every(c=>c.reason==='out-of-scope'&&c.documentedFor.length),'cross-program reuse stays an unapplied candidate');
-  const first=compileKit(kit).doc,second=compileKit(await loadKit(join(kitsRoot,'wgu'))).doc;
+  const compiled=compileKit(kit),first=compiled.doc,second=compileKit(await loadKit(join(kitsRoot,'wgu'))).doc;
   assert.equal(JSON.stringify(first),JSON.stringify(second),'compilation is deterministic');
   assert.equal(await runGuards(kit,first),7);
-  assert.equal(serializePublished(first),await readFile(resolve(root,'content/curricula/wgu.json'),'utf8'),'content/curricula/wgu.json is stale; run npm run factory:publish');
+  for(const {path,doc} of compiled.documents)assert.equal(serializePublished(doc),await readFile(resolve(root,path),'utf8'),path+' is stale; run npm run factory:publish');
+  // wgu.json keeps exactly the migrated models and its pinned sources; a fresh decomposition reproduces them.
+  const published=compiled.documents.find(d=>d.path==='content/curricula/wgu.json').doc;
+  assert.equal(published.sources.length,215);assert.deepEqual(published.sources.map(s=>s.id),kit.school.publish.sourceOrder);
   const fresh=compileKit(decompose(wgu,{schoolId:'wgu',sourcePath:'content/curricula/wgu.json'})).doc;
-  assertModelParity(first,fresh);
+  assertModelParity({models:first.models.filter(m=>published.models.some(p=>p.id===m.id))},fresh);
+  // The authored document: every model carries exactly its own sources and only program-scoped, agreement-backed rows.
+  const authored=compiled.documents.find(d=>d.path==='content/curricula/wgu-pathway-kit.json').doc;
+  assert.equal(authored.models.length,11);assert.equal(authored.sources,undefined);
+  for(const model of authored.models){
+    const ids=new Set(model.sources.map(s=>s.id));
+    for(const r of model.requirements){
+      assert.match(r.code,/^[A-Z]\d{3}$/,model.id+' requirement code');
+      for(const o of r.options){
+        assert.equal(o.evidence,'published');assert.equal(o.evidenceType,'official-receiving-school-equivalency');assert.equal(o.receivingCode,r.code);assert.equal(o.credits,r.credits);
+        assert.equal(o.sourceCreditStatus,'verified',model.id+' '+o.id+' identity');
+        assert.equal(o.mappingEvidence.programId,model.curriculumReview.programId);assert.equal(o.mappingEvidence.catalogYear,model.catalog);
+        for(const id of [...o.sourceIds,...o.identitySourceIds])assert.ok(ids.has(id),model.id+' cites '+id);
+      }
+      if(r.institutionalOnly)assert.equal(r.options.length,0);
+    }
+  }
 });
 
 test('WGU guards reject academic regressions in a compiled document',async()=>{

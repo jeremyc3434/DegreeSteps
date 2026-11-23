@@ -127,7 +127,14 @@ export function publishedDocuments(kit,doc){
     const models=(d.programs?d.programs.map(modelOf):programs.filter(p=>!listed.has(p.slug)).map(p=>byId.get(compiledId(kit,p)))).filter(Boolean);
     const out={version:1,checkedOn:d.checkedOn||kit.school.checkedOn};
     if(publish.compiledBy)out.compiledBy=publish.compiledBy;
-    if(d.sources!==false)out.sources=doc.sources;
+    // sources:'own' keeps the document's source list to school sources, its own programs' sources and the provider sources
+    // its models cite, in the document's (pinned) order, so programs published in another document never change it.
+    if(d.sources==='own'){
+      const slugs=new Set((d.programs||programs.filter(p=>!listed.has(p.slug)).map(p=>p.slug))),own=new Set([...list(kit.school.sources),...programs.filter(p=>slugs.has(p.slug)).flatMap(p=>list(p.sources))].map(s=>s.id));
+      const cited=new Set(sourceRefs(models).map(r=>r.id)),fromProviders=new Set([...kit.providers.values()].flatMap(p=>list(p.sources).map(s=>s.id)));
+      out.sources=doc.sources.filter(s=>own.has(s.id)||fromProviders.has(s.id)&&cited.has(s.id));
+    }
+    else if(d.sources!==false)out.sources=doc.sources;
     out.models=models;
     if(d.routes)out.routes=clone(d.routes);
     return {path:d.path,doc:out};

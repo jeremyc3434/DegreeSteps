@@ -15,5 +15,5 @@ test('the compiled published alternative is selectable without a conditional ove
  const proposed=Planner.generate(model,{providers:['Sophia'],allowConditional:false,optionSelections:{[row.id]:optionId}});assert.equal(proposed.rows.find(item=>item.requirementId===row.id).option.id,optionId);assert.equal(proposed.totals.external,60);assert.equal(proposed.totals.confirmed,0);assert.equal(proposed.validation.academicCountsValid,true);
  const published=Planner.generate(model,{providers:['Sophia'],allowConditional:false});assert(published.rows.some(item=>item.option?.id===optionId));
  assert(!model.requirements.find(row=>row.title==='Introduction to Business Finance').options.some(option=>option.code==='SOPH-0032'));
- const cs=pack.models.find(model=>/Computer Science/.test(model.title));assert(!cs.requirements.some(row=>row.options.some(option=>option.id===optionId||option.provider==='Study.com')));
+ const cs=[...pack.models,...require('./dist/data/curricula/wgu-pathway-kit.json').models].find(model=>/Computer Science/.test(model.title));assert(!cs.requirements.some(row=>row.options.some(option=>option.id===optionId||option.provider!=='University'&&option.universityMapRecord?.programId!==cs.curriculumReview.programId)));
 });

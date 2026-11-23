@@ -11,33 +11,219 @@
   "catalog": "202404",
   "totalCredits": 106,
   "review": {
-    "status": "migrated",
-    "source": "content/curricula/wgu.json",
-    "reviewedOn": "2026-11-09"
+    "status": "reviewed",
+    "reviewer": "Claude (pathway factory)",
+    "reviewedOn": "2026-11-23"
   },
+  "sources": [
+    {
+      "id": "wgu-bspsy-202404-curriculum-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSPSY%3B202404",
+      "title": "Bachelor of Science in Psychology 202404 complete named CU ledger",
+      "kind": "university",
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 147,
+        "programCode": "BSPSY",
+        "catalogYear": "202404",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "retrieval": "Unauthenticated public program-data API GET, captured; every receiving requirement reviewed.",
+      "capture": "content/source-captures/94906dc08482543f.txt"
+    },
+    {
+      "id": "wgu-bspsy-202404-metadata-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/HE",
+      "title": "BS Psychology (Catalog 04-2024) current public academic record and transfer notes",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 147,
+        "programCode": "BSPSY",
+        "catalogYear": "202404",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "publicRecordId": 147,
+      "publicRecordVersion": 11,
+      "inactiveProgram": 0,
+      "approvalStatus": "Approved",
+      "retrieval": "Unauthenticated public academic API GET, captured.",
+      "capture": "content/source-captures/4847ac27eab31ba8.txt",
+      "notes": {
+        "notesFinal": "This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Certification must be current or have been taken within the last 5 years to be considered for transfer. Please refer to the General Transfer Guidelines for more information. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    {
+      "id": "wgu-bspsy-transfer-guidelines-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=147",
+      "title": "BSPSY 202404 transfer guidelines: transfer areas and nontransferable courses",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 147,
+        "programCode": "BSPSY",
+        "catalogYear": "202404",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "capture": "content/source-captures/8d34bfd3fc9508cc.txt"
+    },
+    {
+      "id": "wgu-bspsy-sophia-7111-v281",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7111",
+      "title": "WGU approved Sophia receiving map for BSPSY 202404",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Psychology – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202404"
+      },
+      "provider": "Sophia",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 147,
+      "catalogTerm": "202404",
+      "agreementId": 7111,
+      "agreementRecordVersion": 281,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/9df84b626c37c04c.txt"
+    },
+    {
+      "id": "wgu-bspsy-study-4426-v186",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4426",
+      "title": "WGU approved Study.com receiving map for BSPSY 202404",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Psychology – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202404"
+      },
+      "provider": "Study.com",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 147,
+      "catalogTerm": "202404",
+      "agreementId": 4426,
+      "agreementRecordVersion": 186,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/3b3ff2452d4a0c6d.txt"
+    },
+    {
+      "id": "wgu-bspsy-straighterline-1855-v130",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/1855",
+      "title": "WGU approved StraighterLine receiving map for BSPSY 202404",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Psychology – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202404"
+      },
+      "provider": "StraighterLine",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 147,
+      "catalogTerm": "202404",
+      "agreementId": 1855,
+      "agreementRecordVersion": 130,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/50a5ebce4b56cb0c.txt"
+    },
+    {
+      "id": "wgu-bspsy-saylor-670-v96",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/670",
+      "title": "WGU approved Saylor receiving map for BSPSY 202404",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Psychology – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202404"
+      },
+      "provider": "Saylor",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 147,
+      "catalogTerm": "202404",
+      "agreementId": 670,
+      "agreementRecordVersion": 96,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/74cc97ea9155cc47.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "wgu-bspsy-202404-metadata-20261123",
+      "text": "\"id\":147,\"pamsProgramCode\":\"BSPSY\",\"programName\":\"BS Psychology (Catalog 04-2024)\""
+    }
+  ],
   "policies": {
     "alternativeMaxCredits": {
       "value": 79.5,
       "creditSystem": "competency-unit",
       "sourceIds": [
-        "wgu-sophia-health-current"
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "WGU publishes that transfer courses may not be used to fulfill more than one course of study; every option placed in more than one requirement carries the single-award condition.",
+      "sourceIds": [
+        "wgu-bspsy-202404-metadata-20261123",
+        "wgu-bspsy-sophia-7111-v281",
+        "wgu-bspsy-study-4426-v186",
+        "wgu-bspsy-saylor-670-v96"
       ]
     }
   },
   "modelFields": {
     "unresolved": [
-      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
       "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
-      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
       "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
     ],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
-      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
-      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+      "Outside options come only from WGU's current published partner agreements for BSPSY catalog 202404 (program 147), captured 2026-11-23. Approved partner courses without an independently verified provider identity, and awards that need several source courses together, are held out of the plan.",
+      "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
+      "This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Certification must be current or have been taken within the last 5 years to be considered for transfer. Please refer to the General Transfer Guidelines for more information. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
     ],
-    "mappingCheckedOn": "2026-11-09",
+    "mappingCheckedOn": "2026-11-23",
     "pricing": {
       "model": "subscription",
       "amount": 4425,
@@ -51,382 +237,415 @@
       "notes": [
         "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
       ]
+    },
+    "externalMaxCredits": 79.5,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-undergraduate-residency-policy-23797-20260918",
+      "wgu-bspsy-202404-metadata-20261123",
+      "wgu-bspsy-202404-curriculum-20261123"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 79.5,
+        "fraction": 0.75,
+        "basisCredits": 106,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 79.5,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bspsy-202404-curriculum-20261123"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 34-course, 106-CU BSPSY 202404 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "residencyPolicy": {
+      "type": "institution-fraction-with-capstone-exclusion",
+      "creditScope": "active-program",
+      "creditSystem": "competency-unit",
+      "fraction": 0.25,
+      "capstoneRequirementIds": [
+        "bspsy-capstone-in-psychology"
+      ],
+      "capstoneCredits": 4,
+      "sourceIds": [
+        "wgu-undergraduate-residency-policy-23797-20260918",
+        "wgu-bspsy-202404-curriculum-20261123",
+        "wgu-bspsy-transfer-guidelines-20261123"
+      ],
+      "interpretationStatus": "verified-additional-capstone",
+      "calculatedMinimumInstitutionCUs": 30.5,
+      "primaryPolicySections": [
+        "IV.2",
+        "IV.3.a",
+        "IV.3.b.i"
+      ],
+      "conservativeSufficientCondition": {
+        "minimumNonCapstoneInstitutionCUs": 26.5,
+        "basisCredits": 106,
+        "derivation": "25% of active undergraduate degree CUs earned directly in that WGU program, in addition to required capstone CUs."
+      },
+      "capstoneEvidence": "D578 Capstone in Psychology is the program's only course named as a capstone in the current ledger and is listed as Non-Transferable in the program's transfer guidelines.",
+      "notes": [
+        "Only passed CUs earned within the active WGU program count toward this rule. Prior WGU or other outside credit is not automatically counted as active-program residency."
+      ]
+    },
+    "policyCheckedOn": "2026-11-23",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 147,
+      "programCode": "BSPSY",
+      "catalog": "202404",
+      "recordVersion": 11,
+      "ledgerSha256": "8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5",
+      "sourceIds": [
+        "wgu-bspsy-202404-metadata-20261123",
+        "wgu-bspsy-202404-curriculum-20261123"
+      ],
+      "checkedOn": "2026-11-23",
+      "outsideEquivalenciesReviewed": true
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bspsy-core-psychology",
+        "parentId": "core",
+        "title": "Psychology",
+        "credits": 49,
+        "requirementIds": [
+          "bspsy-consumer-behavior",
+          "bspsy-social-psychology",
+          "bspsy-health-equity-and-social-determinants-of-health",
+          "bspsy-adult-psychology",
+          "bspsy-understanding-substance-abuse-addiction",
+          "bspsy-cognitive-psychology",
+          "bspsy-psychopathology",
+          "bspsy-career-and-lifelong-learning",
+          "bspsy-neuropsychology",
+          "bspsy-mental-health-awareness-and-education",
+          "bspsy-theories-of-personality",
+          "bspsy-cultural-awareness-and-ethics",
+          "bspsy-psychology-of-learning",
+          "bspsy-team-dynamics",
+          "bspsy-health-psychology",
+          "bspsy-industrial-and-organizational-psychology"
+        ],
+        "sourceId": "wgu-bspsy-202404-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bspsy-core-foundations-of-success",
+        "parentId": "core",
+        "title": "Foundations of Success",
+        "credits": 4,
+        "requirementIds": [
+          "bspsy-learning-strategies-in-higher-education"
+        ],
+        "sourceId": "wgu-bspsy-202404-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bspsy-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 49,
+        "requirementIds": [
+          "bspsy-introduction-to-psychology",
+          "bspsy-critical-thinking-reason-and-evidence",
+          "bspsy-introduction-to-communication-connecting-with-others",
+          "bspsy-introduction-to-biology",
+          "bspsy-introduction-to-statistics-for-research",
+          "bspsy-health-fitness-and-wellness",
+          "bspsy-influential-communication-through-visual-design-and-storytelling",
+          "bspsy-fundamentals-of-anatomy-and-physiology",
+          "bspsy-composition-writing-with-a-strategy",
+          "bspsy-human-growth-and-development",
+          "bspsy-applied-probability-and-statistics",
+          "bspsy-introduction-to-sociology",
+          "bspsy-composition-successful-self-expression",
+          "bspsy-introduction-to-physical-and-human-geography",
+          "bspsy-introduction-to-research-methods",
+          "bspsy-world-history-diverse-cultures-and-global-connections"
+        ],
+        "sourceId": "wgu-bspsy-202404-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bspsy-capstone-psychology",
+        "parentId": "capstone",
+        "title": "Psychology",
+        "credits": 4,
+        "requirementIds": [
+          "bspsy-capstone-in-psychology"
+        ],
+        "sourceId": "wgu-bspsy-202404-curriculum-20261123"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {},
+      "recencySourceIds": [
+        "wgu-bspsy-202404-metadata-20261123"
+      ],
+      "publishedNotes": {
+        "notesFinal": "This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Certification must be current or have been taken within the last 5 years to be considered for transfer. Please refer to the General Transfer Guidelines for more information. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-current-agreement-ledgers-2026-11-23",
+      "checkedOn": "2026-11-23",
+      "programId": 147,
+      "catalog": "202404",
+      "receivingClaimsReviewed": 50,
+      "sourceIdentitiesReusedByExactProviderCode": 24,
+      "sourceIds": [
+        "wgu-bspsy-sophia-7111-v281",
+        "wgu-bspsy-study-4426-v186",
+        "wgu-bspsy-straighterline-1855-v130",
+        "wgu-bspsy-saylor-670-v96"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 15,
+          "approvedSourceCodeCount": 26,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0022",
+            "SOPH-0025",
+            "SOPH-0051",
+            "SOPH-0080"
+          ],
+          "selectableReceivingPlacements": 14,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0009",
+            "SOPH-0015",
+            "SOPH-0024",
+            "SOPH-0030",
+            "SOPH-0034",
+            "SOPH-0048",
+            "SOPH-0049",
+            "SOPH-0050",
+            "SOPH-0059",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0071",
+            "SOPH-0073",
+            "SOPH-0074",
+            "SOPH-0078",
+            "SOPH-0081",
+            "SOPH-0090",
+            "SOPH-0101"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7111,
+          "agreementRecordVersion": 281,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7111"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 19,
+          "approvedSourceCodeCount": 52,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0052",
+            "SDCM-0057",
+            "SDCM-0089",
+            "SDCM-0225"
+          ],
+          "selectableReceivingPlacements": 5,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0003",
+            "SDCM-0011",
+            "SDCM-0012",
+            "SDCM-0017",
+            "SDCM-0018",
+            "SDCM-0019",
+            "SDCM-0020",
+            "SDCM-0021",
+            "SDCM-0032",
+            "SDCM-0034",
+            "SDCM-0038",
+            "SDCM-0039",
+            "SDCM-0040",
+            "SDCM-0041",
+            "SDCM-0043",
+            "SDCM-0044",
+            "SDCM-0045",
+            "SDCM-0048",
+            "SDCM-0055",
+            "SDCM-0060",
+            "SDCM-0065",
+            "SDCM-0066",
+            "SDCM-0067",
+            "SDCM-0068",
+            "SDCM-0069",
+            "SDCM-0133",
+            "SDCM-0134",
+            "SDCM-0135",
+            "SDCM-0140",
+            "SDCM-0154",
+            "SDCM-0155",
+            "SDCM-0156",
+            "SDCM-0157",
+            "SDCM-0158",
+            "SDCM-0159",
+            "SDCM-0178",
+            "SDCM-0179",
+            "SDCM-0180",
+            "SDCM-0181",
+            "SDCM-0182",
+            "SDCM-0184",
+            "SDCM-0186",
+            "SDCM-0188",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0252",
+            "SDCM-0258"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4426,
+          "agreementRecordVersion": 186,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4426"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 11,
+          "approvedSourceCodeCount": 24,
+          "independentlyVerifiedSelectableSourceCodes": [],
+          "selectableReceivingPlacements": 0,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0005",
+            "OOSL-0006",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0011",
+            "OOSL-0014",
+            "OOSL-0017",
+            "OOSL-0027",
+            "OOSL-0028",
+            "OOSL-0030",
+            "OOSL-0034",
+            "OOSL-0035",
+            "OOSL-0039",
+            "OOSL-0040",
+            "OOSL-0043",
+            "OOSL-0044",
+            "OOSL-0046",
+            "OOSL-0047",
+            "OOSL-0052",
+            "OOSL-0063",
+            "OOSL-0070",
+            "OOSL-0092",
+            "OOSL-0107",
+            "OOSL-0121"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 1855,
+          "agreementRecordVersion": 130,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/1855"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 5,
+          "approvedSourceCodeCount": 7,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0034",
+            "SAYA-0037",
+            "SAYA-0044"
+          ],
+          "selectableReceivingPlacements": 5,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0007",
+            "SAYA-0010"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 670,
+          "agreementRecordVersion": 96,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/670"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false
     }
   },
+  "modelSourceIds": [
+    "wgu-bspsy-202404-curriculum-20261123",
+    "wgu-bspsy-202404-metadata-20261123",
+    "wgu-bspsy-transfer-guidelines-20261123",
+    "wgu-bspsy-sophia-7111-v281",
+    "wgu-bspsy-study-4426-v186",
+    "wgu-bspsy-straighterline-1855-v130",
+    "wgu-bspsy-saylor-670-v96",
+    "wgu-undergraduate-institutional-catalog-202611",
+    "wgu-undergraduate-residency-policy-23797-20260918",
+    "wgu-bspsy-tuition",
+    "wgu-sophia-business-current",
+    "ace-study-biology101-v5-2026-11-18",
+    "provider-study-biology101-current-web-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-syllabus-2026-11-18",
+    "saylor-current-provider-credit-list-20261120",
+    "study-course-sdcm-0225-2026-11",
+    "study-current-sdcm-0052-2026-11-20",
+    "study-current-sdcm-0057-2026-11-20",
+    "study-current-sdcm-0089-2026-11-20"
+  ],
   "requirements": [
-    {
-      "id": "bspsy-learning-strategies-in-higher-education",
-      "code": "",
-      "title": "Learning Strategies in Higher Education",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-composition-writing-with-a-strategy",
-      "code": "",
-      "title": "Composition: Writing with a Strategy",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-introduction-to-psychology",
-      "code": "",
-      "title": "Introduction to Psychology",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-critical-thinking-reason-and-evidence",
-      "code": "",
-      "title": "Critical Thinking: Reason and Evidence",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-introduction-to-communication-connecting-with-others",
-      "code": "",
-      "title": "Introduction to Communication: Connecting with Others",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-human-growth-and-development",
-      "code": "",
-      "title": "Human Growth and Development",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-applied-probability-and-statistics",
-      "code": "",
-      "title": "Applied Probability and Statistics",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-introduction-to-sociology",
-      "code": "",
-      "title": "Introduction to Sociology",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-composition-successful-self-expression",
-      "code": "",
-      "title": "Composition: Successful Self-Expression",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-theories-of-personality",
-      "code": "",
-      "title": "Theories of Personality",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-cultural-awareness-and-ethics",
-      "code": "",
-      "title": "Cultural Awareness and Ethics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-introduction-to-physical-and-human-geography",
-      "code": "",
-      "title": "Introduction to Physical and Human Geography",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-psychology-of-learning",
-      "code": "",
-      "title": "Psychology of Learning",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-social-psychology",
-      "code": "",
-      "title": "Social Psychology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-introduction-to-research-methods",
-      "code": "",
-      "title": "Introduction to Research Methods",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-introduction-to-biology",
-      "code": "",
-      "title": "Introduction to Biology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-health-equity-and-social-determinants-of-health",
-      "code": "",
-      "title": "Health Equity and Social Determinants of Health",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-adult-psychology",
-      "code": "",
-      "title": "Adult Psychology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-introduction-to-statistics-for-research",
-      "code": "",
-      "title": "Introduction to Statistics for Research",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-cognitive-psychology",
-      "code": "",
-      "title": "Cognitive Psychology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-health-fitness-and-wellness",
-      "code": "",
-      "title": "Health, Fitness, and Wellness",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-psychopathology",
-      "code": "",
-      "title": "Psychopathology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-career-and-lifelong-learning",
-      "code": "",
-      "title": "Career and Lifelong Learning",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-fundamentals-of-anatomy-and-physiology",
-      "code": "",
-      "title": "Fundamentals of Anatomy and Physiology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-understanding-substance-abuse-addiction",
-      "code": "",
-      "title": "Understanding Substance Abuse & Addiction",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-influential-communication-through-visual-design-and-storytelling",
-      "code": "",
-      "title": "Influential Communication through Visual Design and Storytelling",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-health-psychology",
-      "code": "",
-      "title": "Health Psychology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-world-history-diverse-cultures-and-global-connections",
-      "code": "",
-      "title": "World History: Diverse Cultures and Global Connections",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-neuropsychology",
-      "code": "",
-      "title": "Neuropsychology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-mental-health-awareness-and-education",
-      "code": "",
-      "title": "Mental Health Awareness and Education",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-consumer-behavior",
-      "code": "",
-      "title": "Consumer Behavior",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-industrial-and-organizational-psychology",
-      "code": "",
-      "title": "Industrial and Organizational Psychology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-team-dynamics",
-      "code": "",
-      "title": "Team Dynamics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspsy-capstone-in-psychology",
-      "code": "",
-      "title": "Capstone in Psychology",
-      "credits": 4,
-      "category": "capstone",
-      "sourceIds": [
-        "wgu-bspsy-guide"
-      ],
-      "institutionalOnly": true
-    }
+    {"id":"bspsy-consumer-behavior","code":"D616","title":"Consumer Behavior","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D616\",\"courseName\":\"Consumer Behavior\",\"courseDescription\":\"Consumer Behavior examines the buying behavior of consumers in the marketplace. Students will gain knowledge of consumer behavior theories and an understanding of how consumer behavior concepts apply to the consumer decision-making process. Students will learn how consumer insights are gained through the exploration of external social and cultural influences such as reference groups, family, and culture, as well as consumer influences such as needs, motivation, personality, and learning. The course also provides an interdisciplinary perspective, including psychology, sociology, anthropology, and economics, to better evaluate and predict consumer behavior. There are no prerequisites to this course. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D616\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-learning-strategies-in-higher-education","code":"D389","title":"Learning Strategies in Higher Education","credits":4,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"foundations-of-success","curriculumAreaEvidence":{"areaOfStudy":"Foundations of Success","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D389\",\"courseName\":\"Learning Strategies in Higher Education\",\"courseDescription\":\"Learning Strategies in Higher Education provides students with a toolbox of skills that will support student academic growth as they advance in their academic journey. Students will be introduced to the WGU Library; how to use it and best practices for research strategies. Students will learn how to be professional in written communication and how to properly integrate and cite source materials in academic papers. In this course, students also will learn about setting goals, time-management, study strategies, making and keeping appointments, professional decorum, and test-taking skills. Learning these skills, strategies, and methods will establish an academic foundation for students to be successful in higher education. There are no prerequisites for this course.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Foundations of Success\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D389\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-introduction-to-psychology","code":"C180","title":"Introduction to Psychology","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"C180\",\"courseName\":\"Introduction to Psychology\",\"courseDescription\":\"In this course, students will develop an understanding of psychology and how it helps them better understand others and themselves. Students will learn general theories about psychological development, the structure of the brain, and how psychologists study behavior. They will gain an understanding of both normal and disordered psychological behaviors, as well as general applications of the science of psychology in society (such as personality typing and counseling).\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-critical-thinking-reason-and-evidence","code":"D265","title":"Critical Thinking: Reason and Evidence","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D265\",\"courseName\":\"Critical Thinking: Reason and Evidence\",\"courseDescription\":\"In this course you will learn key critical thinking concepts and how to apply them in the analysis and evaluation of reasons and evidence. The course examines the basic components of an argument, the credibility of evidence sources, the impact of bias, and how to construct an argument that provides good support for a claim. The course consists of an introduction and four major sections. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the four competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-introduction-to-communication-connecting-with-others","code":"D268","title":"Introduction to Communication: Connecting with Others","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D268\",\"courseName\":\"Introduction to Communication: Connecting with Others\",\"courseDescription\":\"Welcome to Introduction to Communication: Connecting with Others! It may seem like common knowledge that communication skills are important, and that communicating with others is inescapable in our everyday lives. While this may appear simplistic, the study of communication is actually complex, dynamic, and multifaceted. Strong communication skills are invaluable to strengthening a multitude of aspects of life. Specifically, this course will focus on communication in the professional setting, and present material from multiple vantage points, including communicating with others in a variety of contexts, across situations, and with diverse populations. Upon completion, you will have a deeper understanding of both your own and others’ communication behaviors, and a toolbox of effective behaviors to enhance your experience in the workplace.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-social-psychology","code":"D567","title":"Social Psychology","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D567\",\"courseName\":\"Social Psychology\",\"courseDescription\":\"Social Psychology presents major theories in the field related to how the thoughts, emotions, and behaviors of an individual both influence and are influenced by groups, communities, and society. Topics include the social factors that influence the choices people make, the role cultural expectations play in directing behavior, and how to analyze the roots of your own assumptions. Students will perform self-reflections and analyze case studies of social behaviors. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""}]},
+    {"id":"bspsy-introduction-to-biology","code":"C190","title":"Introduction to Biology","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"C190\",\"courseName\":\"Introduction to Biology\",\"courseDescription\":\"This course is a foundational introduction to the biological sciences.  The overarching theories of life from biological research are explored as well as the fundamental concepts and principles of the study of living organisms and their interaction with the environment.  Key concepts include how living organisms use and produce energy; how life grows, develops, and reproduces; how life responds to the environment to maintain internal stability; and how life evolves and adapts to the environment.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-health-equity-and-social-determinants-of-health","code":"D568","title":"Health Equity and Social Determinants of Health","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D568\",\"courseName\":\"Health Equity and Social Determinants of Health\",\"courseDescription\":\"Health Equity and Social Determinants of Health examines the social determinants of health (SDOH) as underlying factors that contribute to health inequity in populations and communities and their effect on health outcomes. This course will help students understand the evidence-based strategies and approaches that promote health equity. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D568\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-adult-psychology","code":"D569","title":"Adult Psychology","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D569\",\"courseName\":\"Adult Psychology\",\"courseDescription\":\"Adult Psychology provides an in-depth study of adult development. The learner will explore and apply major theories of adult development. The learner will analyze how individual characteristics and experiences, sociocultural factors, and structural contexts contribute to adult development. Focus on current evidence-based science is included, along with emphasis on observation, recognition, and application to individuals. There are no prerequisites for this course. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D569\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-introduction-to-statistics-for-research","code":"D582","title":"Introduction to Statistics for Research","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D582\",\"courseName\":\"Introduction to Statistics for Research\",\"courseDescription\":\"Introduction to Statistics for Research covers descriptive and inferential statistics used to address research questions. Levels of measurement, central tendency and variability, probability, distributions, correlation, hypothesis testing, t-tests, analysis of variance, linear regression, and chi-square tests are examined, with a focus on their implications for research. Reading and interpreting graphically presented statistical data is included. Before taking this course, students should complete C955 Applied Probability and Statistics or an equivalent course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-health-fitness-and-wellness","code":"C458","title":"Health, Fitness, and Wellness","credits":4,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"C458\",\"courseName\":\"Health, Fitness, and Wellness\",\"courseDescription\":\"Health, Fitness, and Wellness focuses on the importance and foundations of good health and physical fitness, particularly for children and adolescents. This course addresses health, nutrition, and fitness, and substance use and abuse.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-understanding-substance-abuse-addiction","code":"D573","title":"Understanding Substance Abuse & Addiction","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D573\",\"courseName\":\"Understanding Substance Abuse \\u0026 Addiction\",\"courseDescription\":\"Understanding Substance Abuse and Addiction provides an overview of substance abuse causes, impact, prevention, and treatment. Students will understand the signs and symptoms of substance abuse and addiction and its impact on individuals, groups, and the community. Students will analyze relevant factors that initiate and reinforce substance abuse and addiction and describe evidence-based strategies for prevention, intervention, and treatment. There are no prerequisites for this course. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D573\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-influential-communication-through-visual-design-and-storytelling","code":"D246","title":"Influential Communication through Visual Design and Storytelling","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D246\",\"courseName\":\"Influential Communication through Visual Design and Storytelling\",\"courseDescription\":\"Influential Communication through Visual Design and Storytelling provides learners with foundational visual design and storytelling techniques to influence and create a lasting impression on audiences. Learners will first explore how human behavior is influenced by visuals and when to apply visual techniques to better communicate with audiences. Next, learners will learn techniques for creating compelling stories that create memorable images within the audience\\u0027s mind. Ultimately, learners who master these skills will be well-positioned to apply their visual and storytelling techniques to not only better communicate their thoughts and ideas to an audience, but to also influence or motivate them.\\r\\n\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-cognitive-psychology","code":"D570","title":"Cognitive Psychology","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D570\",\"courseName\":\"Cognitive Psychology\",\"courseDescription\":\"Cognitive Psychology examines human mental processes, including how humans sense, interpret, think about, and respond to information, and how they integrate new information with prior experience. This course examines mental operations, attention, pattern recognition and other perceptual processes, memory, problem-solving and decision-making, categorization and concept formation, language acquisition and use, and contextual-interpretation. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D570\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-psychopathology","code":"D571","title":"Psychopathology","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D571\",\"courseName\":\"Psychopathology\",\"courseDescription\":\"Psychopathology examines historical and contemporary views and issues of abnormal behavior. Students are provided with an overview of the ways mental health practitioners explain, diagnose, and treat behavioral disorders. Sociocultural impacts on abnormal behavior, including the manifestation, categorization, and treatment of mental illness, are explored. Biases and popular depictions of mental health and mental illness are analyzed. There are no prerequisites for this course. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""}]},
+    {"id":"bspsy-career-and-lifelong-learning","code":"D572","title":"Career and Lifelong Learning","credits":4,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D572\",\"courseName\":\"Career and Lifelong Learning\",\"courseDescription\":\"Career and Lifelong Learning supports students in taking their first steps in a lifelong journey of development as a professional. Students will explore career pathways, plan how best to achieve their desired professional future, and take tangible steps toward that future by creating career growth materials that adhere to today’s best practices. There are no prerequisites for this course.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D572\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-fundamentals-of-anatomy-and-physiology","code":"D203","title":"Fundamentals of Anatomy and Physiology","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D203\",\"courseName\":\"Fundamentals of Anatomy and Physiology\",\"courseDescription\":\"Fundamentals of Anatomy and Physiology provides an overview of the structures and functions of organs and systems of the human body. This course will explore how the parts of the body systems work together to produce movement, transport nutrients, eliminate wastes, protect vital tissues and organs, regulate bodily functions, and support reproduction and growth, through videos, readings, exploratory learning, and practice activities.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-neuropsychology","code":"D574","title":"Neuropsychology","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D574\",\"courseName\":\"Neuropsychology\",\"courseDescription\":\"Neuropsychology covers how brain processes relate to human cognition and behavior. Students will understand typical cognitive function in a person’s everyday life, major cognitive processes and neurophysiology involved in human sensation and perception, and insights from social neurobiology on the interaction between brain processes and social behaviors. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D574\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-mental-health-awareness-and-education","code":"D579","title":"Mental Health Awareness and Education","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D579\",\"courseName\":\"Mental Health Awareness and Education\",\"courseDescription\":\"Mental Health Awareness and Education is designed to help students recognize mental disorders, improve access to mental health services, support recovery, and lower the rate of death, disease, and disability among those with mental illnesses. Topics include mental health education programs, mental health stigmas, cultural diversity in mental health, and barriers to mental health care and strategies to overcome those barriers. Students will analyze these topics from the vantage point of a community mental health perspective. There are no prerequisites for this course.   \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D579\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-capstone-in-psychology","code":"D578","title":"Capstone in Psychology","credits":4,"category":"capstone","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D578\",\"courseName\":\"Capstone in Psychology\",\"courseDescription\":\"The Capstone in Psychology is a culminating experience for the B.S. in Psychology program. In this project-based course, students will apply their skills and psychological expertise obtained through the program to an issue of personal interest. Students will think deeply and use their creative problem-solving skills and understanding of diverse perspectives. Upon completion of the capstone, students will have proposed an evidence-based strategy to address a real-world psychosocial issue. The tasks for this course could be used as artifacts for a professional portfolio. There are no prerequisites for this course.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D578\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-theories-of-personality","code":"D564","title":"Theories of Personality","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D564\",\"courseName\":\"Theories of Personality\",\"courseDescription\":\"Theories of Personality describes the concepts and assumptions of significant theories of personality. The course assesses the strengths and weaknesses of each major personality theory, describes and defines the research methodology frequently used by psychologists in the study of personality, and identifies the contributions of theory and empirical research to our contemporary understanding of personality. Cultural impacts on personality are also discussed. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""}]},
+    {"id":"bspsy-composition-writing-with-a-strategy","code":"D269","title":"Composition: Writing with a Strategy","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D269\",\"courseName\":\"Composition: Writing with a Strategy\",\"courseDescription\":\"Welcome to Composition: Writing with a Strategy! In this course, you will focus on three main topics: understanding purpose, context, and audience, writing strategies and techniques, and editing and revising.  In addition, the first section, will offer review on core elements of the writing process, cross-cultural communication, as well as working with words and common standards and practices. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the seven competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-human-growth-and-development","code":"D202","title":"Human Growth and Development","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D202\",\"courseName\":\"Human Growth and Development\",\"courseDescription\":\"This is Human Growth and Development, a three-module course that examines the entire human lifetime, from conception to death. Presented chronologically, the course focuses on three key areas: physical, cognitive, and psychosocial growth, along with other important issues such as cultural influences, emotions, and resilience. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to, with the goal of demonstrating proficiency in the four competencies covered in the final assessment. If you have no prior knowledge of this material, you can expect to spend 30-40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-applied-probability-and-statistics","code":"C955","title":"Applied Probability and Statistics","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"C955\",\"courseName\":\"Applied Probability and Statistics\",\"courseDescription\":\"Applied Probability and Statistics is designed to help students develop competence in the fundamental concepts of basic statistics including: introductory algebra and graphing; descriptive statistics; regression and correlation; and probability. Statistical data and probability are often used in everyday life, science, business, information technology, and educational settings to make informed decisions about the validity of studies and the effect of data on decisions. This course discusses what constitutes sound research design and how to appropriately model phenomena using statistical data. Additionally, the content covers simple probability calculations, based on events that occur in the business and IT industries. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-introduction-to-sociology","code":"C273","title":"Introduction to Sociology","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"C273\",\"courseName\":\"Introduction to Sociology\",\"courseDescription\":\"This course teaches students to think like sociologists, or, in other words, to see and understand the hidden rules, or norms, by which people live, and how they free or restrain behavior. Students will learn about socializing institutions, such as schools and families, as well as workplace organizations and governments. Participants will also learn how people deviate from the rules by challenging norms and how such behavior may result in social change, either on a large scale or within small groups.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-composition-successful-self-expression","code":"D270","title":"Composition: Successful Self-Expression","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D270\",\"courseName\":\"Composition: Successful Self-Expression\",\"courseDescription\":\"Welcome to Composition: Successful Self-Expression! In this course, you will focus on four main topics: professional writing for a cross-cultural audience, narrowing research topics and questions, researching for content to support a topic, and referencing research sources. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the seven competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content. You will demonstrate competency through a performance assessment. There is no prerequisite for this course and there is no specific technical knowledge needed.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-cultural-awareness-and-ethics","code":"D565","title":"Cultural Awareness and Ethics","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D565\",\"courseName\":\"Cultural Awareness and Ethics\",\"courseDescription\":\"Cultural Awareness and Ethics provides students with the understanding of what it means to have personal, explicit and implicit cultural biases and how these can affect interpersonal interactions. The course will explore strategies for responding to personal biases and for promoting cultural awareness and ethical actions. Through critical readings, videos, and interactive activities, the student will gain knowledge in these essential subjects. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D565\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-introduction-to-physical-and-human-geography","code":"D199","title":"Introduction to Physical and Human Geography","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D199\",\"courseName\":\"Introduction to Physical and Human Geography\",\"courseDescription\":\"This is Introduction to Physical and Human Geography, a three-module course that addresses the question of what geography really is in today\\u0027s complex world; how migration affects—and has been affected by—geography; and one of the biggest present problems related to geography: climate change. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to, with the goal of demonstrating proficiency in the five competencies covered in the final assessment. If you have no prior knowledge of this material, you can expect to spend 30–40 hours on the course content. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-psychology-of-learning","code":"D566","title":"Psychology of Learning","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D566\",\"courseName\":\"Psychology of Learning\",\"courseDescription\":\"Psychology of Learning focuses on applying research on learning, emotion, and motivation to positively impact influence human behavior. The course presents a study of key research and theories in the areas related to learning, with a focus on applications to promote acquisition, retention, and transfer of knowledge. Learners will explore evidence-based strategies to promote learning and analyze how individual and group characteristics can impact affect learning. This course will improve learners’ understanding of the emotional, social, and environmental factors which that shape human learning and humans\\u0027 capacity for development. \\\"Introduction to Psychology\\\" is the prerequisite for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""}]},
+    {"id":"bspsy-introduction-to-research-methods","code":"D581","title":"Introduction to Research Methods","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D581\",\"courseName\":\"Introduction to Research Methods\",\"courseDescription\":\"Introduction to Research Methods familiarizes students with the foundations of research, guiding students through selecting topics, forming research questions, engaging with relevant and reliable literature, and designing a research project. This course provides an overview of how researchers form questions and hypotheses, which different types of methodologies can be used to address these questions, and how existing literature and data are used to support or reject hypotheses. The methods presented in this course can be applied to many fields and disciplines, and they provide a baseline for students to use in their chosen area of study and future work.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-world-history-diverse-cultures-and-global-connections","code":"D266","title":"World History: Diverse Cultures and Global Connections","credits":3,"category":"general","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D266\",\"courseName\":\"World History: Diverse Cultures and Global Connections\",\"courseDescription\":\"This is World History: Diverse Cultures and Global Connections. In this course, you will focus on three main topics—cultural and religious diversity; pandemics; and the relationship of empires and nation states—as well as the skills of identifying root causes, explaining causes and effects, and analyzing complex systems.  This course consists of an introduction and four major sections. Each section includes learning opportunities through reading, images, videos, and other relevant resources. Assessment activities with feedback also provide opportunities to practice and check how well you understand the content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to, with the goal of demonstrating proficiency in the four competencies covered in the final assessment. If you have no prior knowledge of this material, you can expect to spend 30-40 hours on the course content. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspsy-team-dynamics","code":"D577","title":"Team Dynamics","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D577\",\"courseName\":\"Team Dynamics\",\"courseDescription\":\"Team Dynamics explores interpersonal communication strategies, collaborative team interactions methods, and problem-solving techniques to promote effective communication and improve quality outcomes in a professional environment. In this course, students will apply psychologically-sound approaches for resolving conflicts, allowing them to navigate challenging workplace disagreements and personalities. Students in this course will apply their skills to various situations. There are no prerequisites for this course. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D577\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-health-psychology","code":"D575","title":"Health Psychology","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123","wgu-bspsy-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D575\",\"courseName\":\"Health Psychology\",\"courseDescription\":\"Health Psychology provides a basic overview of the biopsychosocial model of health and other holistic models of wellness. The course draws from diverse cultural perspectives as well as the theory and practice of human health behavior change to explore the relationship between psychosocial experiences and health. Topics include the impact of social and cultural factors on health, the relationship between stress and physical health and disease, the psychological experience of illness, and how lifestyle patterns and behavior influence chronic disease. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""},{"sourceId":"wgu-bspsy-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D575\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspsy-industrial-and-organizational-psychology","code":"D576","title":"Industrial and Organizational Psychology","credits":3,"category":"core","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"institutionalOnly":false,"group":"psychology","curriculumAreaEvidence":{"areaOfStudy":"Psychology","sourceIds":["wgu-bspsy-202404-curriculum-20261123"],"programId":147,"catalogTerm":"202404","ledgerSha256":"8b8b22bae9a4e9c59a491eee2d18f65ed61552ddac17e8c72a8476b486de6ad5"},"quotes":[{"sourceId":"wgu-bspsy-202404-curriculum-20261123","text":"\"courseCode\":\"D576\",\"courseName\":\"Industrial and Organizational Psychology\",\"courseDescription\":\"Industrial and Organizational Psychology introduces students to the ways that businesses and other organizations use psychological theories and models to recruit and train new talent, improve overall productivity, and enhance the motivation, resilience, and team dynamics of employees. Students will consider both how to apply these strategies to themselves and how to use them to lead others. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Psychology\""}]}
   ]
 }

@@ -25,6 +25,8 @@ execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-psychology.mjs'
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-english.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-liberal-studies.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-gcu-curriculum.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+// WGU programs authored from captured WGU public API records must still match their captures.
+execFileSync(process.execPath,[resolve(root,'scripts/wgu-agreement-ledgers.mjs'),'--check'],{cwd:root,stdio:['ignore','ignore','inherit']});
 // Pathway Factory: published school kits (content/pathway-kits/*/school.json "publish") are the source of their content/curricula documents.
 execFileSync(process.execPath,[resolve(root,'scripts/pathway-factory/compile.mjs'),'--publish','--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
