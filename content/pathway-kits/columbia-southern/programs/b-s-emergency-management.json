@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "b-s-emergency-management",
-  "routeIds": [],
+  "routeIds": [
+    "columbia-southern-b-s-emergency-management"
+  ],
   "title": "B.S. EMERGENCY MANAGEMENT",
   "level": "bachelor",
-  "catalog": "2026 – 2028 University Catalog",
+  "catalog": "Columbia Southern University current catalog page for B.S. EMERGENCY MANAGEMENT, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,103-105&columns=2",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -54,7 +57,11 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "Humanities and Fine Arts Group A 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Humanities and Fine Arts Group A"
+      }
     },
     {
       "id": "b-s-emergency-management-humanities-and-fine-arts-group-a-or-b",
@@ -71,7 +78,11 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "Humanities and Fine Arts Group A or B 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Humanities and Fine Arts Group A or B"
+      }
     },
     {
       "id": "b-s-emergency-management-social-and-behavioral-sciences",
@@ -88,7 +99,11 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "Social and Behavioral Sciences 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Social and Behavioral Sciences"
+      }
     },
     {
       "id": "b-s-emergency-management-natural-sciences",
@@ -105,7 +120,11 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "Natural Sciences 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences"
+      }
     },
     {
       "id": "b-s-emergency-management-mathematics",
@@ -122,7 +141,11 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "Mathematics 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics"
+      }
     },
     {
       "id": "b-s-emergency-management-history",
@@ -139,7 +162,11 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "History 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History"
+      }
     },
     {
       "id": "b-s-emergency-management-english-composition",
@@ -156,7 +183,11 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "English Composition 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "English Composition"
+      }
     },
     {
       "id": "b-s-emergency-management-emg-3301",
@@ -385,14 +416,19 @@
       "title": "Capstone in Emergency Management",
       "credits": 3,
       "category": "capstone",
-      "institutionalOnly": false,
+      "institutionalOnly": true,
       "sourceIds": [
-        "columbia-southern-b-s-emergency-management-catalog-2026-11-23"
+        "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
+        "columbia-southern-catalog-2026-2028-policies-2026-11-23"
       ],
       "quotes": [
         {
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "EMG 4320 Capstone in Emergency Management 3"
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "Capstone courses must be completed at CSU."
         }
       ]
     },
@@ -411,7 +447,11 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "Open Electives 36"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Open Electives"
+      }
     },
     {
       "id": "b-s-emergency-management-concentration-select-one-emergency-medical-services-environmental-science-f-135483fc",
@@ -428,7 +468,66 @@
           "sourceId": "columbia-southern-b-s-emergency-management-catalog-2026-11-23",
           "text": "Concentration 12"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (select one: Emergency Medical Services; Environmental Science; Fire Science; Homeland Security; Occupational Safety and Health; Public Safety Health and Wellness)"
+      }
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "A minimum of 25% of an associate or bachelor’s degree must be completed at CSU."
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "complete at least 25 percent of the courses within an undergraduate program at CSU."
+        }
+      ],
+      "basis": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Columbia Southern University current catalog page for B.S. EMERGENCY MANAGEMENT, checked 2026-11-23",
+      "sourceUrl": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,103-105&columns=2",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit B.S. EMERGENCY MANAGEMENT ledger from Columbia Southern University's current catalog page, including 9 open course choice block(s) (65% of credits) you fill, with outside options from Sophia's published Columbia Southern University partner table."
+  }
 }

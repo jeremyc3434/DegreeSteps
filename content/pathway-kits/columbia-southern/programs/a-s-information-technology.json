@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "a-s-information-technology",
-  "routeIds": [],
+  "routeIds": [
+    "columbia-southern-a-s-information-technology"
+  ],
   "title": "A.S. INFORMATION TECHNOLOGY",
   "level": "associate",
-  "catalog": "2026 – 2028 University Catalog",
+  "catalog": "Columbia Southern University current catalog page for A.S. INFORMATION TECHNOLOGY, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,49-50&columns=2",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -53,7 +56,11 @@
           "sourceId": "columbia-southern-a-s-information-technology-catalog-2026-11-23",
           "text": "Humanities and Fine Arts Group A 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Humanities and Fine Arts Group A"
+      }
     },
     {
       "id": "a-s-information-technology-humanities-and-fine-arts-group-a-or-b",
@@ -70,7 +77,11 @@
           "sourceId": "columbia-southern-a-s-information-technology-catalog-2026-11-23",
           "text": "Humanities and Fine Arts Group A or B 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Humanities and Fine Arts Group A or B"
+      }
     },
     {
       "id": "a-s-information-technology-social-and-behavioral-sciences-history",
@@ -87,7 +98,11 @@
           "sourceId": "columbia-southern-a-s-information-technology-catalog-2026-11-23",
           "text": "Social and Behavioral Sciences / History 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Social and Behavioral Sciences / History"
+      }
     },
     {
       "id": "a-s-information-technology-natural-sciences",
@@ -104,7 +119,11 @@
           "sourceId": "columbia-southern-a-s-information-technology-catalog-2026-11-23",
           "text": "Natural Sciences 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences"
+      }
     },
     {
       "id": "a-s-information-technology-mathematics",
@@ -121,7 +140,11 @@
           "sourceId": "columbia-southern-a-s-information-technology-catalog-2026-11-23",
           "text": "Mathematics 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics"
+      }
     },
     {
       "id": "a-s-information-technology-english-composition",
@@ -138,7 +161,11 @@
           "sourceId": "columbia-southern-a-s-information-technology-catalog-2026-11-23",
           "text": "English Composition 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "English Composition"
+      }
     },
     {
       "id": "a-s-information-technology-itc-1301",
@@ -257,7 +284,11 @@
           "sourceId": "columbia-southern-a-s-information-technology-catalog-2026-11-23",
           "text": "Program Electives 9"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Program Electives (select 3 courses from the listed options)"
+      }
     },
     {
       "id": "a-s-information-technology-open-electives",
@@ -274,7 +305,66 @@
           "sourceId": "columbia-southern-a-s-information-technology-catalog-2026-11-23",
           "text": "Open Electives 12"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Open Electives"
+      }
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 45,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "A minimum of 25% of an associate or bachelor’s degree must be completed at CSU."
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "complete at least 25 percent of the courses within an undergraduate program at CSU."
+        }
+      ],
+      "basis": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Columbia Southern University current catalog page for A.S. INFORMATION TECHNOLOGY, checked 2026-11-23",
+      "sourceUrl": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,49-50&columns=2",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 15,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 45,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+        ],
+        "scope": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 15,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+      }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 60-credit A.S. INFORMATION TECHNOLOGY ledger from Columbia Southern University's current catalog page, including 8 open course choice block(s) (70% of credits) you fill, with outside options from Sophia's published Columbia Southern University partner table."
+  }
 }

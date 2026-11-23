@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "b-s-occupational-safety-and-health",
-  "routeIds": [],
+  "routeIds": [
+    "columbia-southern-b-s-occupational-safety-and-health"
+  ],
   "title": "B.S. OCCUPATIONAL SAFETY AND HEALTH",
   "level": "bachelor",
-  "catalog": "2026 – 2028 University Catalog",
+  "catalog": "Columbia Southern University current catalog page for B.S. OCCUPATIONAL SAFETY AND HEALTH, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,112-115&columns=2",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -55,7 +58,11 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "Humanities and Fine Arts Group A 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Humanities and Fine Arts Group A"
+      }
     },
     {
       "id": "b-s-occupational-safety-and-health-humanities-and-fine-arts-group-a-or-b",
@@ -72,7 +79,11 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "Humanities and Fine Arts Group A or B 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Humanities and Fine Arts Group A or B"
+      }
     },
     {
       "id": "b-s-occupational-safety-and-health-social-and-behavioral-sciences",
@@ -89,7 +100,11 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "Social and Behavioral Sciences 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Social and Behavioral Sciences"
+      }
     },
     {
       "id": "b-s-occupational-safety-and-health-natural-sciences-bio-1301-chm-1301-and-phy-1301-are-required",
@@ -106,7 +121,11 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "Natural Sciences 9"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (BIO 1301, CHM 1301, and PHY 1301 are required)"
+      }
     },
     {
       "id": "b-s-occupational-safety-and-health-mathematics-mat-1302-or-higher-is-required",
@@ -123,7 +142,11 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "Mathematics 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics (MAT 1302 or higher is required)"
+      }
     },
     {
       "id": "b-s-occupational-safety-and-health-history",
@@ -140,7 +163,11 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "History 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History"
+      }
     },
     {
       "id": "b-s-occupational-safety-and-health-english-composition",
@@ -157,7 +184,11 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "English Composition 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "English Composition"
+      }
     },
     {
       "id": "b-s-occupational-safety-and-health-osh-2301",
@@ -395,7 +426,11 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "Program Electives 18"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Program Electives (choose 6 courses from the program elective list)"
+      }
     },
     {
       "id": "b-s-occupational-safety-and-health-open-electives-33-credits-without-a-concentration-21-credits-plus-37fe2382",
@@ -412,7 +447,66 @@
           "sourceId": "columbia-southern-b-s-occupational-safety-and-health-catalog-2026-11-23",
           "text": "Open Electives 21 – 33"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Open Electives (33 credits without a concentration; 21 credits plus a 12-credit concentration if a concentration is completed)"
+      }
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "A minimum of 25% of an associate or bachelor’s degree must be completed at CSU."
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "complete at least 25 percent of the courses within an undergraduate program at CSU."
+        }
+      ],
+      "basis": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Columbia Southern University current catalog page for B.S. OCCUPATIONAL SAFETY AND HEALTH, checked 2026-11-23",
+      "sourceUrl": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,112-115&columns=2",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit B.S. OCCUPATIONAL SAFETY AND HEALTH ledger from Columbia Southern University's current catalog page, including 9 open course choice block(s) (68% of credits) you fill, with outside options from Sophia's published Columbia Southern University partner table."
+  }
 }

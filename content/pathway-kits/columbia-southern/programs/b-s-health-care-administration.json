@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "b-s-health-care-administration",
-  "routeIds": [],
+  "routeIds": [
+    "columbia-southern-b-s-health-care-administration"
+  ],
   "title": "B.S. HEALTH CARE ADMINISTRATION",
   "level": "bachelor",
-  "catalog": "2026 – 2028 University Catalog",
+  "catalog": "Columbia Southern University current catalog page for B.S. HEALTH CARE ADMINISTRATION, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,93-94&columns=2",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -53,7 +56,11 @@
           "sourceId": "columbia-southern-b-s-health-care-administration-catalog-2026-11-23",
           "text": "Humanities and Fine Arts – Group A 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Humanities and Fine Arts – Group A"
+      }
     },
     {
       "id": "b-s-health-care-administration-humanities-and-fine-arts-group-a-or-b",
@@ -70,7 +77,11 @@
           "sourceId": "columbia-southern-b-s-health-care-administration-catalog-2026-11-23",
           "text": "Humanities and Fine Arts – Group A or B 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Humanities and Fine Arts – Group A or B"
+      }
     },
     {
       "id": "b-s-health-care-administration-social-and-behavioral-sciences",
@@ -87,7 +98,11 @@
           "sourceId": "columbia-southern-b-s-health-care-administration-catalog-2026-11-23",
           "text": "Social and Behavioral Sciences 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Social and Behavioral Sciences"
+      }
     },
     {
       "id": "b-s-health-care-administration-natural-sciences",
@@ -104,7 +119,11 @@
           "sourceId": "columbia-southern-b-s-health-care-administration-catalog-2026-11-23",
           "text": "Natural Sciences 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences"
+      }
     },
     {
       "id": "b-s-health-care-administration-mathematics",
@@ -121,7 +140,11 @@
           "sourceId": "columbia-southern-b-s-health-care-administration-catalog-2026-11-23",
           "text": "Mathematics 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics"
+      }
     },
     {
       "id": "b-s-health-care-administration-history",
@@ -138,7 +161,11 @@
           "sourceId": "columbia-southern-b-s-health-care-administration-catalog-2026-11-23",
           "text": "History 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History"
+      }
     },
     {
       "id": "b-s-health-care-administration-english-composition",
@@ -155,7 +182,11 @@
           "sourceId": "columbia-southern-b-s-health-care-administration-catalog-2026-11-23",
           "text": "English Composition 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "English Composition"
+      }
     },
     {
       "id": "b-s-health-care-administration-ldr-3301",
@@ -444,7 +475,66 @@
           "sourceId": "columbia-southern-b-s-health-care-administration-catalog-2026-11-23",
           "text": "Open Electives ....................................24-42"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Open Electives"
+      }
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "A minimum of 25% of an associate or bachelor’s degree must be completed at CSU."
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-policies-2026-11-23",
+          "text": "complete at least 25 percent of the courses within an undergraduate program at CSU."
+        }
+      ],
+      "basis": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Columbia Southern University current catalog page for B.S. HEALTH CARE ADMINISTRATION, checked 2026-11-23",
+      "sourceUrl": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,93-94&columns=2",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "columbia-southern-catalog-2026-2028-policies-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+      }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit B.S. HEALTH CARE ADMINISTRATION ledger from Columbia Southern University's current catalog page, including 8 open course choice block(s) (60% of credits) you fill, with outside options from Sophia's published Columbia Southern University partner table."
+  }
 }

@@ -64,5 +64,139 @@
   ],
   "conditionLibrary": {
     "sophia-partner-provider-published": "Sophia publishes this course match on its University of Maryland Global Campus partner page (https://umgc.sophia.org/); it is not taken from a University of Maryland Global Campus document. University of Maryland Global Campus decides transfer credit when it evaluates your Sophia transcript, so confirm it applies to your program and catalog year before relying on it."
-  }
+  },
+  "slotPlacements": [
+    {
+      "id": "umgc-elective",
+      "receivingText": "Elective",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "labelPattern": "^(Elective Courses|Electives|Remaining elective courses)",
+      "lowerDivision": true,
+      "sourceIds": [
+        "umgc-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-sophia-partner-page",
+          "text": "Elective"
+        }
+      ],
+      "condition": "Sophia's UMGC partner table lists this course as \"Elective\" credit, not as a named course. UMGC decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "umgc-bmgt-elective",
+      "receivingText": "BMGT Elective",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "labelPattern": "^(Elective Courses|Electives|Remaining elective courses)",
+      "lowerDivision": true,
+      "sourceIds": [
+        "umgc-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-sophia-partner-page",
+          "text": "BMGT Elective"
+        }
+      ],
+      "condition": "Sophia's UMGC partner table lists this course as \"BMGT Elective\" credit, not as a named course. UMGC decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "umgc-comm-elective",
+      "receivingText": "COMM Elective",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "labelPattern": "^(Elective Courses|Electives|Remaining elective courses)",
+      "lowerDivision": true,
+      "sourceIds": [
+        "umgc-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-sophia-partner-page",
+          "text": "COMM Elective"
+        }
+      ],
+      "condition": "Sophia's UMGC partner table lists this course as \"COMM Elective\" credit, not as a named course. UMGC decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "umgc-sdev-elective",
+      "receivingText": "SDEV Elective",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "labelPattern": "^(Elective Courses|Electives|Remaining elective courses)",
+      "lowerDivision": true,
+      "sourceIds": [
+        "umgc-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-sophia-partner-page",
+          "text": "SDEV Elective"
+        }
+      ],
+      "condition": "Sophia's UMGC partner table lists this course as \"SDEV Elective\" credit, not as a named course. UMGC decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "umgc-humn-elective",
+      "receivingText": "HUMN Elective",
+      "slotKinds": [
+        "free-elective",
+        "gen-ed"
+      ],
+      "labelPattern": "^(Elective Courses|Electives|Remaining elective courses|Arts and Humanities)",
+      "lowerDivision": true,
+      "sourceIds": [
+        "umgc-sophia-partner-page",
+        "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-sophia-partner-page",
+          "text": "HUMN Elective"
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "Two 3-credit courses chosen from the following disciplines: ARTH, ARTT, ASTD, ENGL (except ENGL 281 and ENGL 384), GRCO, HIST, HUMN, MUSC, PHIL, THET, dance, literature, or a foreign language"
+        }
+      ],
+      "condition": "Sophia's UMGC partner table lists this course as \"HUMN Elective\" credit, not as a named course. UMGC decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "umgc-phil-elective",
+      "receivingText": "PHIL Elective",
+      "slotKinds": [
+        "free-elective",
+        "gen-ed"
+      ],
+      "labelPattern": "^(Elective Courses|Electives|Remaining elective courses|Arts and Humanities)",
+      "lowerDivision": true,
+      "sourceIds": [
+        "umgc-sophia-partner-page",
+        "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-sophia-partner-page",
+          "text": "PHIL Elective"
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "Two 3-credit courses chosen from the following disciplines: ARTH, ARTT, ASTD, ENGL (except ENGL 281 and ENGL 384), GRCO, HIST, HUMN, MUSC, PHIL, THET, dance, literature, or a foreign language"
+        }
+      ],
+      "condition": "Sophia's UMGC partner table lists this course as \"PHIL Elective\" credit, not as a named course. UMGC decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    }
+  ]
 }

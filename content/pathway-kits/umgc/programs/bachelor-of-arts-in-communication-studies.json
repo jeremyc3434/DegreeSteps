@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-arts-in-communication-studies",
-  "routeIds": [],
+  "routeIds": [
+    "umgc-bachelor-of-arts-in-communication-studies"
+  ],
   "title": "Bachelor of Arts in Communication Studies",
   "level": "bachelor",
-  "catalog": "2026–2027",
+  "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Arts in Communication Studies, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,48-50&columns=2",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -274,7 +277,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "A course in communication, writing, or speech (3 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "A course in communication, writing, or speech (Communications)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-an-upper-level-advanced-writing-course-communications",
@@ -291,7 +298,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "An upper-level advanced writing course (3 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "An upper-level advanced writing course (Communications)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-mathematics",
@@ -308,7 +319,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "Mathematics 3"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Mathematics"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-arts-and-humanities-two-3-credit-courses",
@@ -325,7 +340,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "Arts and Humanities 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts and Humanities (two 3-credit courses)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-behavioral-and-social-sciences-two-3-credit-courses",
@@ -342,7 +361,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "Behavioral and Social Sciences 6"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Behavioral and Social Sciences (two 3-credit courses)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-biological-and-physical-sciences-lab-science-4-credits-plu-f241f7cb",
@@ -359,7 +382,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "Biological and Physical Sciences 7"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Biological and Physical Sciences (lab science 4 credits plus another science course 3 credits)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-professional-exploration-course-research-and-computing-literacy",
@@ -376,7 +403,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "Professional exploration course (3 credits)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Professional exploration course (Research and Computing Literacy)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-libs-150-capl-398a-or-other-general-education-course-resea-b116e8dc",
@@ -393,7 +424,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "LIBS 150, CAPL 398A, or other general education course"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "LIBS 150, CAPL 398A, or other general education course (Research and Computing Literacy)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-computing-or-information-technology-research-and-computing-literacy",
@@ -410,7 +445,11 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "One 3-credit course or three 1-credit courses in computing"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Computing or information technology (Research and Computing Literacy)"
+      }
     },
     {
       "id": "bachelor-of-arts-in-communication-studies-elective-courses",
@@ -427,7 +466,84 @@
           "sourceId": "umgc-bachelor-of-arts-in-communication-studies-catalog-2026-11-23",
           "text": "Elective Courses 46"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Courses"
+      }
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "90 credits from all sources combined toward the bachelor’s degree"
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "At least 30 credits (normally the final 30) must be completed at UMGC."
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "Half the required number of credits within the major (if you are not majoring in applied technology, described on p. 38, or general studies, described on p. 73) must be completed at UMGC."
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "At least 15 credits of upper-level coursework (i.e., earned in courses numbered 300 to 499) must be completed at UMGC."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling. The school also requires 15 upper-level credits at the school; 27 upper-level credits in this program (named courses and upper-level-only choices) have no outside option, so the plan always meets it."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "University of Maryland Global Campus current catalog page for Bachelor of Arts in Communication Studies, checked 2026-11-23",
+      "sourceUrl": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,48-50&columns=2",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "majorInstitutionFraction": {
+        "value": 0.5,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "Share of the 30 major credits in this program's major block that must be completed at the school."
+      }
+    },
+    "majorInstitutionFraction": 0.5,
+    "majorResidencyBasisCredits": 30,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Arts in Communication Studies ledger from University of Maryland Global Campus's current catalog page, including 10 open course choice block(s) (68% of credits) you fill, with outside options from Sophia's published University of Maryland Global Campus partner table."
+  }
 }

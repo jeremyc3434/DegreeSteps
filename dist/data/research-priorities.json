@@ -1,27 +1,27 @@
 {
   "schemaRevision": "research-priorities-v1",
-  "revision": "research-priorities-v1:aeb0ed31a5e922fcc358ed86d442b8576e1fcc7d5b62af7332da85d38dd8e0e7",
+  "revision": "research-priorities-v1:79b9aabdfdef09ca4544bd0e0a7981df10bf6ef16a175a6d0f8bfd89ac389d6e",
   "asOf": "2026-11-23",
   "inputFingerprints": {
     "inventory": "5641a61bc3ad2f827256cb7c64f05d9e91e5d46720938a1033ab2eb1800c60b4",
-    "models": "8930aa1a80b67471a6a95cd016413c3834a447468c2579c252f5b6271f19b055",
+    "models": "61d3e2a0e0f5286aebc47a488d2dae9f46bdf1cf986a203853480e996d251ac6",
     "pathways": "724ccdc082fc8c4659451d1e3e3c7b85df95e4c1a026e50bad5c7d87c8a6e1f2",
     "programCatalog": "d46e34eb28c79ac3484bb39af59ca245a509492c3e13db9563784e1d0f5de862",
     "providerDiscovery": "3071f4db1055a48686b22f38dc16872f870026bb93941c5f8486214298eda90c",
-    "quality": "f9eaacce79d481c6b629df7d6dc0952e81ce8cb04fdc0e7fc682aed52e9b9f38",
-    "registry": "d9b5cc6e7aaeb7124da9deb78d799d4ace2984c76a2f2b75fbac3bd7b4b18a39",
+    "quality": "c9dfdf436058835c4a5a27ce791fb3b3b49e5ad639fa0f201d139abc1f312632",
+    "registry": "f86d02b5b018978d65cc4902a18ac83aa8a989f740642ad8a98730ff56800818",
     "schoolInsights": "9b84b9db33a9014067bc7c797cf5d9aa4f3914bf64afda474c9bd92f872f6df6",
     "tesuExamReview": "5d9b52d81bbe4375dc9d1ad7acd2e8d1c00bf62e59b79bd4a303cbaf2505fb0e",
     "umpiPrimaryReview": "c2345e5b07e6db37f4876b2c17180e9a220aff6676f31b5dbebc99c2baaf184c"
   },
-  "academicRegistryRevision": "academic-v1:c1f4cc8b6ed8aedb77eda9dbb09554a1d68d823b20c08c4f05d43739e11b61be",
+  "academicRegistryRevision": "academic-v1:fc0f9d18c8e07605ace0a243687da18e684b5279566535b898d65afb4fc02fd8",
   "scope": "Cross-school research prioritization from the existing directory, exact model registry, recorded publication checks and sourced policy channels. This static backlog does not publish a degree map, grant student credit, establish popularity or start a research job.",
   "summary": {
-    "schools": 25,
-    "programs": 1726,
+    "schools": 27,
+    "programs": 1761,
     "directoryPrograms": 1633,
-    "modelPrograms": 121,
-    "availableTemplates": 116,
+    "modelPrograms": 156,
+    "availableTemplates": 151,
     "publicationReady": 19,
     "unmappedPrograms": 1593,
     "inventoryCandidates": 95,
@@ -69,8 +69,8 @@
       "label": "Finish review of existing models",
       "reason": "A degree model exists but has not passed the publication review. Resolve its actual findings rather than start another outline.",
       "order": 3,
-      "schoolCount": 7,
-      "programCount": 87,
+      "schoolCount": 9,
+      "programCount": 122,
       "inventoryCandidateCount": 0
     },
     {
@@ -2142,6 +2142,96 @@
       ]
     },
     {
+      "id": "columbia-southern-university",
+      "name": "Columbia Southern University",
+      "sourceStatus": "existing-catalog-or-model",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "course-term"
+      ],
+      "transferEvidence": {
+        "institutional": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "ace": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "nccrs": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "graduate": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        }
+      },
+      "profileTransferSummary": null,
+      "evidenceUrls": [],
+      "programIds": [
+        "columbia-southern-a-s-business",
+        "columbia-southern-a-s-information-technology",
+        "columbia-southern-b-s-accounting",
+        "columbia-southern-b-s-business-administration",
+        "columbia-southern-b-s-communication",
+        "columbia-southern-b-s-criminal-justice-administration",
+        "columbia-southern-b-s-emergency-management",
+        "columbia-southern-b-s-fire-administration",
+        "columbia-southern-b-s-health-care-administration",
+        "columbia-southern-b-s-homeland-security",
+        "columbia-southern-b-s-human-resource-management",
+        "columbia-southern-b-s-information-systems-and-cyber-security",
+        "columbia-southern-b-s-information-technology",
+        "columbia-southern-b-s-occupational-safety-and-health",
+        "columbia-southern-b-s-organizational-leadership",
+        "columbia-southern-b-s-psychology"
+      ],
+      "coverage": {
+        "directoryPrograms": 0,
+        "programCount": 16,
+        "models": 16,
+        "availableTemplates": 16,
+        "publicationReady": 0,
+        "unmappedPrograms": 0,
+        "needsResearchPrograms": 16
+      },
+      "groupId": "existing-model-review",
+      "nextActions": [
+        {
+          "id": "resolve-existing-models",
+          "label": "Resolve remaining evidence and publication findings in 16 modeled program entries.",
+          "kind": "resolve-existing-models"
+        }
+      ]
+    },
+    {
       "id": "liberty",
       "name": "Liberty University",
       "sourceStatus": "existing-catalog-or-model",
@@ -3793,6 +3883,99 @@
         "privateStudentRecordsIncluded": false,
         "runtimeAiCalls": 0
       }
+    },
+    {
+      "id": "university-of-maryland-global-campus",
+      "name": "University of Maryland Global Campus",
+      "sourceStatus": "existing-catalog-or-model",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "course-term"
+      ],
+      "transferEvidence": {
+        "institutional": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "ace": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "nccrs": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "graduate": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        }
+      },
+      "profileTransferSummary": null,
+      "evidenceUrls": [],
+      "programIds": [
+        "umgc-associate-of-arts-in-general-studies",
+        "umgc-bachelor-of-arts-in-communication-studies",
+        "umgc-bachelor-of-arts-in-history",
+        "umgc-bachelor-of-science-in-accounting",
+        "umgc-bachelor-of-science-in-business-administration-and-management",
+        "umgc-bachelor-of-science-in-computer-information-systems",
+        "umgc-bachelor-of-science-in-computer-science",
+        "umgc-bachelor-of-science-in-criminal-justice",
+        "umgc-bachelor-of-science-in-cybersecurity-management-and-policy",
+        "umgc-bachelor-of-science-in-cybersecurity-technology",
+        "umgc-bachelor-of-science-in-data-science",
+        "umgc-bachelor-of-science-in-environmental-health-and-safety",
+        "umgc-bachelor-of-science-in-finance",
+        "umgc-bachelor-of-science-in-health-services-management",
+        "umgc-bachelor-of-science-in-human-resource-management",
+        "umgc-bachelor-of-science-in-marketing",
+        "umgc-bachelor-of-science-in-psychology",
+        "umgc-bachelor-of-science-in-social-science",
+        "umgc-bachelor-of-science-in-sustainable-value-chain"
+      ],
+      "coverage": {
+        "directoryPrograms": 0,
+        "programCount": 19,
+        "models": 19,
+        "availableTemplates": 19,
+        "publicationReady": 0,
+        "unmappedPrograms": 0,
+        "needsResearchPrograms": 19
+      },
+      "groupId": "existing-model-review",
+      "nextActions": [
+        {
+          "id": "resolve-existing-models",
+          "label": "Resolve remaining evidence and publication findings in 19 modeled program entries.",
+          "kind": "resolve-existing-models"
+        }
+      ]
     },
     {
       "id": "california-baptist",
@@ -24442,6 +24625,1034 @@
       "limitsAreNotCoursePlacements": true
     },
     {
+      "id": "columbia-southern-a-s-business",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "A.S. BUSINESS",
+      "level": "associate",
+      "catalog": "Columbia Southern University current catalog page for A.S. BUSINESS, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-a-s-business",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 60,
+        "unit": "semester",
+        "totalTransferMaximum": 45,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,48&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-a-s-information-technology",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "A.S. INFORMATION TECHNOLOGY",
+      "level": "associate",
+      "catalog": "Columbia Southern University current catalog page for A.S. INFORMATION TECHNOLOGY, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-a-s-information-technology",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 60,
+        "unit": "semester",
+        "totalTransferMaximum": 45,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,49-50&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-accounting",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. ACCOUNTING",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. ACCOUNTING, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-accounting",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,50&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-business-administration",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. Business Administration",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. Business Administration, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-business-administration",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,50-53&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-communication",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. Communication",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. Communication, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-communication",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,39&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-criminal-justice-administration",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. CRIMINAL JUSTICE ADMINISTRATION",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. CRIMINAL JUSTICE ADMINISTRATION, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-criminal-justice-administration",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,101-103&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-emergency-management",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. EMERGENCY MANAGEMENT",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. EMERGENCY MANAGEMENT, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-emergency-management",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,103-105&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-fire-administration",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. FIRE ADMINISTRATION",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. FIRE ADMINISTRATION, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-fire-administration",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,108-109&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-health-care-administration",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. HEALTH CARE ADMINISTRATION",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. HEALTH CARE ADMINISTRATION, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-health-care-administration",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,93-94&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-homeland-security",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. HOMELAND SECURITY",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. HOMELAND SECURITY, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-homeland-security",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,111-112&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-human-resource-management",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. Human Resource Management",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. Human Resource Management, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-human-resource-management",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,53-54&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-information-systems-and-cyber-security",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. INFORMATION SYSTEMS AND CYBER SECURITY",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. INFORMATION SYSTEMS AND CYBER SECURITY, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-information-systems-and-cyber-security",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,54-55&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-information-technology",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. INFORMATION TECHNOLOGY",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. INFORMATION TECHNOLOGY, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-information-technology",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,55-56&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-occupational-safety-and-health",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. OCCUPATIONAL SAFETY AND HEALTH",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. OCCUPATIONAL SAFETY AND HEALTH, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-occupational-safety-and-health",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,112-115&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-organizational-leadership",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. ORGANIZATIONAL LEADERSHIP",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. ORGANIZATIONAL LEADERSHIP, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-organizational-leadership",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,56-57&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "columbia-southern-b-s-psychology",
+      "parentId": null,
+      "schoolId": "columbia-southern-university",
+      "title": "B.S. PSYCHOLOGY",
+      "level": "bachelor",
+      "catalog": "Columbia Southern University current catalog page for B.S. PSYCHOLOGY, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-columbia-southern-b-s-psychology",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://columbiasouthern.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
+        "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=36-37,41-43&columns=2",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
       "id": "excelsior-bs-business",
       "parentId": null,
       "schoolId": "excelsior",
@@ -27780,6 +28991,1183 @@
         {
           "id": "resolve-model-findings",
           "label": "Resolve this model’s recorded publication findings: mapping-scope, provider-eligibility.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-associate-of-arts-in-general-studies",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Associate of Arts in General Studies",
+      "level": "associate",
+      "catalog": "University of Maryland Global Campus current catalog page for Associate of Arts in General Studies, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-associate-of-arts-in-general-studies",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 60,
+        "unit": "semester",
+        "totalTransferMaximum": 45,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=30-33&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-arts-in-communication-studies",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Arts in Communication Studies",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Arts in Communication Studies, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-arts-in-communication-studies",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,48-50&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-arts-in-history",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Arts in History",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Arts in History, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-arts-in-history",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,82-84&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-accounting",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Accounting",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Accounting, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-accounting",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://cdn2.sophia.org/spcc_courses/371/syllabus_pdf/b3c167afe478bfd26406918cf802904a.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.sophia.org/online-courses/business/managerial-accounting/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,38-40&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-business-administration-and-management",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Business Administration and Management",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Business Administration and Management, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-business-administration-and-management",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/321/syllabus_pdf/59dc0dc2010795cc5c60abb424d98053.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,46-48&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-computer-information-systems",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Computer Information Systems",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Computer Information Systems, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-computer-information-systems",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,50-53&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-computer-science",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Computer Science",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Computer Science, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-computer-science",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,53-55&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-criminal-justice",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Criminal Justice",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Criminal Justice, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-criminal-justice",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,55-57&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-cybersecurity-management-and-policy",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Cybersecurity Management and Policy",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Cybersecurity Management and Policy, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-cybersecurity-management-and-policy",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,59-62&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-cybersecurity-technology",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Cybersecurity Technology",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Cybersecurity Technology, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-cybersecurity-technology",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,62-64&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-data-science",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Data Science",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Data Science, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-data-science",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,64-67&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-environmental-health-and-safety",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Environmental Health and Safety",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Environmental Health and Safety, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-environmental-health-and-safety",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,71-73&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-finance",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Finance",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Finance, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-finance",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://cdn2.sophia.org/spcc_courses/371/syllabus_pdf/b3c167afe478bfd26406918cf802904a.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/managerial-accounting/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,73-75&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-health-services-management",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Health Services Management",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Health Services Management, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-health-services-management",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,80-82&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-human-resource-management",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Human Resource Management",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Human Resource Management, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-human-resource-management",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,88-91&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-marketing",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Marketing",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Marketing, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-marketing",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,95-97&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-psychology",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Psychology",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Psychology, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-psychology",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,101-103&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-social-science",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Social Science",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Social Science, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-social-science",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,103-106&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice, policy-unresolved.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umgc-bachelor-of-science-in-sustainable-value-chain",
+      "parentId": null,
+      "schoolId": "university-of-maryland-global-campus",
+      "title": "Bachelor of Science in Sustainable Value Chain",
+      "level": "bachelor",
+      "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Sustainable Value Chain, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-umgc-bachelor-of-science-in-sustainable-value-chain",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "open-course-choice",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/273/syllabus_pdf/e47f444981caa9b38d0fa04061ad5ea1.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umgc.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/online-courses/business-law-3",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/business/principles-of-marketing/",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
+        "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,106-109&columns=2"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, open-course-choice, policy-unresolved.",
           "kind": "resolve-model-findings"
         }
       ],

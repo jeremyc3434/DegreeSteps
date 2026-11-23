@@ -14,7 +14,9 @@
  *                           requires through the school (published as majorInstitutionFraction + majorResidencyBasisCredits)
  *     upperResidency        {credits, quotes}: upper-level credits (course numbers 300-499) required at the school; met
  *                           only when named upper-level courses with no outside option already reach it
- *   extraSlotKinds          [{category, titlePattern, kind}]: codeless blocks of other categories that are open choices
+ *   extraSlotKinds          [{category, titlePattern, kind, override?}]: codeless blocks of other categories that are open
+ *                           choices (override: true replaces the default kind for that category, e.g. a restricted
+ *                           "Program Electives" list is a major-elective choice, not a free elective)
  *   capstoneAtSchool        {quote}: named capstone courses are institutionalOnly (school policy)
  *   unpublished             {slug: reason}
  *   parents                 {slug: directory program id}
@@ -29,8 +31,9 @@ export const GOALS=['any-degree','career-growth','change-career'];
 export const SLOT_KIND={'general-education':'gen-ed',elective:'free-elective',concentration:'concentration',major:'major-elective',core:'major-elective'};
 
 export function slotKindOf(cfg,r){
-  if(SLOT_KIND[r.category])return SLOT_KIND[r.category];
-  return list(cfg.extraSlotKinds).find(x=>x.category===r.category&&new RegExp(x.titlePattern,'i').test(r.title))?.kind;
+  const match=list(cfg.extraSlotKinds).find(x=>x.category===r.category&&new RegExp(x.titlePattern,'i').test(r.title));
+  if(match&&(match.override||!SLOT_KIND[r.category]))return match.kind;
+  return SLOT_KIND[r.category];
 }
 
 /**
@@ -59,7 +62,7 @@ async function writeSlotRules(dir,id,cfg){
   const path=join(dir,'equivalencies.json'),doc=await readJSON(path);
   if(!cfg){delete doc.slotPlacements;await writeJSON(path,doc,['equivalencies']);return;}
   doc.slotPlacements=cfg.rules.map(rule=>({id:`${id}-${rule.id}`,receivingText:rule.receivingText,slotKinds:rule.slotKinds,...(rule.labelPattern?{labelPattern:rule.labelPattern}:{}),lowerDivision:true,
-    sourceIds:[cfg.source],quotes:[{sourceId:cfg.source,text:rule.receivingText}],
+    sourceIds:[...new Set([cfg.source,...list(rule.extraQuotes).map(q=>q.sourceId)])],quotes:[{sourceId:cfg.source,text:rule.receivingText},...list(rule.extraQuotes)],
     condition:`Sophia's ${cfg.school} partner table lists this course as "${rule.receivingText}" credit, not as a named course. ${cfg.school} decides whether it fills this open course choice; confirm before you enroll.`,
     basis:'Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind.'}));
   await writeJSON(path,doc,['equivalencies']);
@@ -89,11 +92,15 @@ function coveredCredits(kit,program,cfg){
   },0);
 }
 
-/** Named upper-level (300-499) credits with no published outside option: the student necessarily takes them at the school. */
+/**
+ * Upper-level credits the plan always places at the school: named 300-499 courses with no published outside option,
+ * plus open choices whose own label restricts them to upper level (slot placement rules are lower-division only, so
+ * no outside option can fill them).
+ */
 function schoolOnlyUpperCredits(kit,program){
   const rows=kit.equivalencies.equivalencies.filter(row=>rowStatus(row)==='published'&&inScope(row,program,kit));
   return program.requirements.filter(r=>{
-    if(!r.code)return false;
+    if(!r.code)return slotUpperOnly(r.title)&&list(kit.equivalencies.slotPlacements).every(rule=>rule.lowerDivision!==false);
     const number=Number(String(r.code).match(/(\d{3})/)?.[1]);
     return number>=300&&number<500&&(r.institutionalOnly||!rows.some(row=>matchRequirement(row,program)?.id===r.id));
   }).reduce((s,r)=>s+r.credits,0);
@@ -181,12 +188,12 @@ export async function finalizeSchools({schools,slotRules={},checked,base=root,on
       if(level.upperResidency){
         const schoolUpper=schoolOnlyUpperCredits(kit,kit.programs.find(p=>p.slug===slug));
         if(schoolUpper<level.upperResidency.credits){
-          const why=`Reviewed; named upper-level courses with no outside option total ${schoolUpper} of the ${level.upperResidency.credits} upper-level credits required at the school, so meeting the rule depends on choices the plan cannot yet represent.`;
+          const why=`Reviewed; upper-level courses and upper-level-only choices with no outside option total ${schoolUpper} of the ${level.upperResidency.credits} upper-level credits required at the school, so meeting the rule depends on choices the plan cannot yet represent.`;
           held.push({slug,reason:why});program.review=draftReview(why);program.routeIds=[];await writeJSON(path,program,[]);continue;
         }
         const upperSources=[...new Set(level.upperResidency.quotes.map(q=>q.sourceId))];
-        modelFields.residencyPolicy={upperLevelCreditsAtSchool:level.upperResidency.credits,namedSchoolOnlyUpperLevelCredits:schoolUpper,status:'met-by-named-courses-without-outside-options',sourceIds:upperSources};
-        policyEvidence.residencyPolicy={value:level.upperResidency.credits,creditSystem:unit,sourceIds:upperSources,scope:`Upper-level credits completed at the school; ${schoolUpper} named upper-level credits in this program have no outside option.`};
+        // Recorded with the transfer policy (the model's residencyPolicy field is reserved for WGU's capstone rule).
+        program.policies.transferMaxCredits.basis+=` The school also requires ${level.upperResidency.credits} upper-level credits at the school; ${schoolUpper} upper-level credits in this program (named courses and upper-level-only choices) have no outside option, so the plan always meets it.`;
         program.policies.transferMaxCredits.quotes=[...program.policies.transferMaxCredits.quotes,...level.upperResidency.quotes];
         program.policies.transferMaxCredits.sourceIds=[...new Set([...program.policies.transferMaxCredits.sourceIds,...upperSources])];
       }

@@ -2,17 +2,20 @@
   "kind": "pathway-kit-program",
   "version": 1,
   "slug": "bachelor-of-science-in-sustainable-value-chain",
-  "routeIds": [],
+  "routeIds": [
+    "umgc-bachelor-of-science-in-sustainable-value-chain"
+  ],
   "title": "Bachelor of Science in Sustainable Value Chain",
   "level": "bachelor",
-  "catalog": "2026–2027",
+  "catalog": "University of Maryland Global Campus current catalog page for Bachelor of Science in Sustainable Value Chain, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,106-109&columns=2",
-  "status": "draft",
   "review": {
-    "status": "draft",
+    "status": "reviewed",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
   },
   "sources": [
     {
@@ -170,7 +173,11 @@
           "sourceId": "umgc-bachelor-of-science-in-sustainable-value-chain-catalog-2026-11-23",
           "text": "Three upper-level courses chosen from the following areas (9)"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "major-elective",
+        "label": "Major Elective Courses (three upper-level courses from business analytics, environmental systems, marketing, project management, or supply chain areas)"
+      }
     },
     {
       "id": "bachelor-of-science-in-sustainable-value-chain-opmg-495",
@@ -442,7 +449,84 @@
           "sourceId": "umgc-bachelor-of-science-in-sustainable-value-chain-catalog-2026-11-23",
           "text": "Remaining General Education and Elective Courses 45"
         }
-      ]
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Remaining General Education and Elective Courses"
+      }
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "90 credits from all sources combined toward the bachelor’s degree"
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "At least 30 credits (normally the final 30) must be completed at UMGC."
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "Half the required number of credits within the major (if you are not majoring in applied technology, described on p. 38, or general studies, described on p. 73) must be completed at UMGC."
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "At least 15 credits of upper-level coursework (i.e., earned in courses numbered 300 to 499) must be completed at UMGC."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling. The school also requires 15 upper-level credits at the school; 33 upper-level credits in this program (named courses and upper-level-only choices) have no outside option, so the plan always meets it."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "University of Maryland Global Campus current catalog page for Bachelor of Science in Sustainable Value Chain, checked 2026-11-23",
+      "sourceUrl": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34-36,106-109&columns=2",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "majorInstitutionFraction": {
+        "value": 0.5,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-degree-policies-2026-11-23"
+        ],
+        "scope": "Share of the 30 major credits in this program's major block that must be completed at the school."
+      }
+    },
+    "majorInstitutionFraction": 0.5,
+    "majorResidencyBasisCredits": 30,
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Sustainable Value Chain ledger from University of Maryland Global Campus's current catalog page, including 2 open course choice block(s) (45% of credits) you fill, with outside options from Sophia's published University of Maryland Global Campus partner table."
+  }
 }

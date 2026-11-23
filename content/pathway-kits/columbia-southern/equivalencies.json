@@ -45,5 +45,147 @@
   ],
   "conditionLibrary": {
     "sophia-partner-provider-published": "Sophia publishes this course match on its Columbia Southern University partner page (https://columbiasouthern.sophia.org/); it is not taken from a Columbia Southern University document. Columbia Southern University decides transfer credit when it evaluates your Sophia transcript, so confirm it applies to your program and catalog year before relying on it."
-  }
+  },
+  "slotPlacements": [
+    {
+      "id": "columbia-southern-open-electives",
+      "receivingText": "Open Electives",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "labelPattern": "^Open Electives",
+      "lowerDivision": true,
+      "sourceIds": [
+        "columbia-southern-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-sophia-partner-page",
+          "text": "Open Electives"
+        }
+      ],
+      "condition": "Sophia's Columbia Southern University partner table lists this course as \"Open Electives\" credit, not as a named course. Columbia Southern University decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "columbia-southern-humanities-a-b",
+      "receivingText": "Humanities A/B",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^Humanities and Fine Arts\\s*[–-]?\\s*Group A or B$",
+      "lowerDivision": true,
+      "sourceIds": [
+        "columbia-southern-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-sophia-partner-page",
+          "text": "Humanities A/B"
+        }
+      ],
+      "condition": "Sophia's Columbia Southern University partner table lists this course as \"Humanities A/B\" credit, not as a named course. Columbia Southern University decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "columbia-southern-humanities-b",
+      "receivingText": "Humanities B",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^Humanities and Fine Arts\\s*[–-]?\\s*Group A or B$",
+      "lowerDivision": true,
+      "sourceIds": [
+        "columbia-southern-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-sophia-partner-page",
+          "text": "Humanities B"
+        }
+      ],
+      "condition": "Sophia's Columbia Southern University partner table lists this course as \"Humanities B\" credit, not as a named course. Columbia Southern University decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "columbia-southern-phl-2350-or-humanities-a-b",
+      "receivingText": "PHL 2350 Philosophies of World Religions or Humanities A/B",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^Humanities and Fine Arts\\s*[–-]?\\s*Group A or B$",
+      "lowerDivision": true,
+      "sourceIds": [
+        "columbia-southern-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-sophia-partner-page",
+          "text": "PHL 2350 Philosophies of World Religions or Humanities A/B"
+        }
+      ],
+      "condition": "Sophia's Columbia Southern University partner table lists this course as \"PHL 2350 Philosophies of World Religions or Humanities A/B\" credit, not as a named course. Columbia Southern University decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "columbia-southern-natural-sciences",
+      "receivingText": "Natural Sciences",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^Natural Sciences$",
+      "lowerDivision": true,
+      "sourceIds": [
+        "columbia-southern-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-sophia-partner-page",
+          "text": "Natural Sciences"
+        }
+      ],
+      "condition": "Sophia's Columbia Southern University partner table lists this course as \"Natural Sciences\" credit, not as a named course. Columbia Southern University decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "columbia-southern-social-behavioral-sciences",
+      "receivingText": "Social and Behavioral Sciences",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^Social and Behavioral Sciences(\\s*/\\s*History)?$",
+      "lowerDivision": true,
+      "sourceIds": [
+        "columbia-southern-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-sophia-partner-page",
+          "text": "Social and Behavioral Sciences"
+        }
+      ],
+      "condition": "Sophia's Columbia Southern University partner table lists this course as \"Social and Behavioral Sciences\" credit, not as a named course. Columbia Southern University decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "columbia-southern-mat-1301-or-mathematics",
+      "receivingText": "MAT 1301 Liberal Arts Math or Mathematics",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^Mathematics$",
+      "lowerDivision": true,
+      "sourceIds": [
+        "columbia-southern-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-sophia-partner-page",
+          "text": "MAT 1301 Liberal Arts Math or Mathematics"
+        }
+      ],
+      "condition": "Sophia's Columbia Southern University partner table lists this course as \"MAT 1301 Liberal Arts Math or Mathematics\" credit, not as a named course. Columbia Southern University decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    }
+  ]
 }
