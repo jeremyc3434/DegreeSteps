@@ -1,0 +1,36 @@
+/* DegreeSteps design tokens (redesign foundation, approved 2026-11-23). brand.css maps its --ds-* names onto these. */
+:root {
+  /* Color */
+  --tok-cobalt:#4054f4; --tok-cobalt-hover:#2c3dd6; --tok-cobalt-soft:#eef1ff;
+  --tok-ink:#182230; --tok-navy:#192c43; --tok-muted:#526174;
+  --tok-surface:#ffffff; --tok-canvas:#f7f9fc;
+  --tok-border:#dfe5ee; --tok-border-soft:#e3e9f1; --tok-control-border:#7b899b;
+  /* Status: the bright hues are markers only; text uses the dark shade of each family. */
+  --tok-success:#22c55e; --tok-success-text:#166534; --tok-success-soft:#eaf8ef;
+  --tok-pick:#f59e0b; --tok-pick-text:#92400e; --tok-pick-soft:#fff6e5;
+  --tok-school:#5b6b83;
+  --tok-error:#b42318; --tok-warning:#92400e;
+  /* Type */
+  --tok-font:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --tok-text-h1:clamp(2.25rem,1.9rem + 1vw,2.5rem); /* 36 to 40 */
+  --tok-text-h2:1.625rem; /* 26 */
+  --tok-text-h3:1.1875rem; /* 19 */
+  --tok-text-body:1rem; --tok-text-lead:1.0625rem; /* 16 and 17 */
+  --tok-text-small:.875rem; --tok-text-xsmall:.8125rem; /* 14 and 13 */
+  --tok-weight-regular:400; --tok-weight-semibold:600; --tok-weight-bold:700; --tok-weight-heavy:800;
+  --tok-tracking-title:-.02em;
+  /* Space */
+  --tok-space-1:4px; --tok-space-2:8px; --tok-space-3:12px; --tok-space-4:16px; --tok-space-5:20px;
+  --tok-space-6:24px; --tok-space-8:32px; --tok-space-12:48px; --tok-space-16:64px;
+  /* Shape */
+  --tok-radius-sm:12px; --tok-radius-md:14px; --tok-radius-lg:16px; --tok-radius-xl:18px; --tok-radius-pill:999px;
+  --tok-shadow-panel:0 20px 48px rgb(24 34 48 / 18%);
+  /* Interaction */
+  --tok-target:44px;
+  --tok-focus-ring:0 0 0 3px #fff,0 0 0 6px var(--tok-cobalt);
+  --tok-duration-fast:120ms; --tok-duration-normal:180ms;
+  --tok-content-width:1200px;
+}
+@media (prefers-reduced-motion:reduce) {
+  :root { --tok-duration-fast:0ms; --tok-duration-normal:0ms; }
+}

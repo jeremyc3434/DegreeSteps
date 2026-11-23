@@ -70,7 +70,8 @@ async function noOverflow(page) {
     assert(await question.count());
     await question.locator('summary').click(); assert(await question.evaluate(node => node.open));
     assert(await question.locator('p').first().isVisible());
-    const resources = page.locator('header.public-header').getByRole('link',{name:'Resources',exact:true});
+    for (const name of ['Degrees','Transfer courses','Community','My plan','Sign in']) assert(await page.locator('header.public-header').getByRole('link',{name,exact:true}).isVisible(), name + ' is in the header without scripts');
+    const resources = page.locator('footer').getByRole('link',{name:'Resources',exact:true});
     assert(await resources.isVisible()); await resources.click(); await page.waitForURL('**/resources/');
     assert(await page.locator('main h1').isVisible());
   });

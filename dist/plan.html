@@ -45,8 +45,9 @@
   <link rel="stylesheet" href="course-workspace.css">
   <link rel="stylesheet" href="student-checklist.css">
   <script src="account-client.js" defer></script>
-  <script src="app-shell.js" defer></script>
-<link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/plan-alerts.css"><link rel="stylesheet" href="/plan-save.css"><link rel="stylesheet" href="/plan-design.css"><script src="/growth-metrics.js" defer></script><script src="/plan-save.js" defer></script><script src="/coach.js" defer></script><script src="/leads.js" defer></script><script src="/plan-alerts.js" defer></script></head>
+  <script src="/site-header.js" defer></script><script src="app-shell.js" defer></script>
+
+<link rel="stylesheet" href="/plan-redesign.css"><link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/plan-alerts.css"><link rel="stylesheet" href="/plan-save.css"><link rel="stylesheet" href="/plan-design.css"><script src="/growth-metrics.js" defer></script><script src="/plan-save.js" defer></script><script src="/coach.js" defer></script><script src="/leads.js" defer></script><script src="/plan-alerts.js" defer></script></head>
 <body class="sheet-page ds-experience ds-workspace-page">
   <a class="skip-link" href="#sheet-app">Skip to degree worksheet</a>
   <header class="site-header">
@@ -61,23 +62,30 @@
       <div id="sheet-error" role="alert" hidden></div>
       <section id="sheet-workspace" aria-label="Degree plan worksheet" hidden>
         <div id="sheet-titlebar"></div>
-        <div id="sheet-glance" hidden></div>
-        <div id="sheet-route"></div>
-        <div id="sheet-school-check" hidden></div>
-        <div id="sheet-lead-actions" hidden></div>
-        <div id="sheet-summary"></div>
-        <div id="sheet-savings" hidden><div id="sheet-planning-range" hidden></div><div id="sheet-savings-tracker"></div></div>
-        <div id="sheet-next"></div>
-        <div id="sheet-controls"></div>
-        <div id="sheet-review-note"></div>
-        <div id="sheet-toolbar"></div>
-        <p id="sheet-scroll-help">Swipe across to edit courses and progress →</p>
-        <div id="sheet-grid" tabindex="0" role="region" aria-label="Degree requirement table" aria-describedby="sheet-scroll-help"></div>
-        <details id="sheet-task-panel"><summary>All tasks and checklist</summary><div id="sheet-home"></div></details>
-        <div id="sheet-footer"></div>
-        <div id="sheet-alerts" hidden></div>
-        <div id="sheet-context"></div>
-        <div id="sheet-momentum" hidden></div>
+        <div class="plan-layout">
+          <div class="plan-main">
+            <div id="sheet-glance" hidden></div>
+            <div id="sheet-controls"></div>
+            <div id="sheet-review-note"></div>
+            <div id="sheet-toolbar"></div>
+            <p id="sheet-scroll-help">Swipe across to edit courses and progress →</p>
+            <div id="sheet-grid" tabindex="0" role="region" aria-label="Degree requirement table" aria-describedby="sheet-scroll-help"></div>
+            <div id="sheet-footer"></div>
+          </div>
+          <aside class="plan-side" aria-label="Plan summary">
+            <div id="sheet-summary"></div>
+            <div id="sheet-savings" hidden><div id="sheet-planning-range" hidden></div><div id="sheet-savings-tracker"></div></div>
+            <div id="sheet-next"></div>
+            <details id="sheet-task-panel"><summary>All tasks and checklist</summary><div id="sheet-home"></div></details>
+            <div id="sheet-school-check" hidden></div>
+            <div id="sheet-lead-actions" hidden></div>
+            <div id="sheet-alerts" hidden></div>
+            <div id="sheet-route"></div>
+            <div id="sheet-context"></div>
+            <div id="sheet-momentum" hidden></div>
+          </aside>
+        </div>
+        <div class="plan-bottom-bar"><button type="button" class="button secondary" data-action="ask-school">Ask the school</button><button type="button" class="button primary" data-action="save-plan">Save my plan</button></div>
       </section>
       <noscript><div class="notice"><strong>Enable JavaScript to open your degree worksheet.</strong><p>You can still <a href="library.html">browse the policy library</a>.</p></div></noscript>
     </div>

@@ -43,7 +43,8 @@ async function noOverflow(page){const sizes=await page.evaluate(()=>({screen:inn
         const menu=page.locator('header button[aria-expanded]').first();
         if(await menu.count()&&await menu.isVisible()){await menu.click();assert.equal(await menu.getAttribute('aria-expanded'),'true');}
       }
-      const resources=page.locator('header').getByRole('link',{name:/^Resources$/i}).first();
+      for(const name of ['Degrees','Transfer courses','Community','My plan','Sign in'])assert(await page.locator('header').getByRole('link',{name,exact:true}).first().isVisible(),name+' is reachable from the phone menu');
+      const resources=page.locator('footer').getByRole('link',{name:/^Resources$/i}).first();
       assert(await resources.isVisible(),'Public resources are reachable on a phone');await resources.click();await page.waitForURL('**/resources/');await noOverflow(page);
       await navigate(page,paths.guide);await noOverflow(page);
       assert(await page.locator('main h1').isVisible());

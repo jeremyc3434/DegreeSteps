@@ -9,9 +9,13 @@
     "surface": "#FFFFFF",
     "canvas": "#F7F9FC",
     "softBlue": "#EEF1FF",
-    "border": "#D9E1EA",
+    "border": "#DFE5EE",
+    "borderSoft": "#E3E9F1",
     "controlBorder": "#7B899B",
+    "cobaltHover": "#2C3DD6",
     "success": "#166534",
+    "successMarker": "#22C55E",
+    "pickMarker": "#F59E0B",
     "warning": "#92400E",
     "error": "#B42318"
   },
@@ -27,8 +31,12 @@
     96
   ],
   "radiusPx": {
-    "control": 6,
-    "card": 8
+    "control": 12,
+    "card": 16,
+    "sm": 12,
+    "md": 14,
+    "lg": 16,
+    "xl": 18
   },
   "layout": {
     "maxWidthPx": 1200,
@@ -40,7 +48,14 @@
     "fallback": "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
     "bodyPx": 16,
     "bodyLineHeight": 1.6,
-    "headingTracking": "-.03em"
+    "headingTracking": "-.02em",
+    "scalePx": {
+      "h1": [36, 40],
+      "h2": 26,
+      "h3": 19,
+      "body": [16, 17],
+      "small": [13, 14]
+    }
   },
   "motionMs": {
     "fast": 120,
