@@ -36,13 +36,14 @@ async function more(page){await page.locator('#sheet-titlebar [data-action="more
   for(const width of [390,1440])await test('every My plan feature in the feature map is reachable at '+width+'px',async()=>{
     const {page,errors}=await open(width);await ready(page);
     // Summary: progress (done / for less / your pick / at school), cost, still to choose, change degree.
-    assert.match(await page.locator('.plan-summary-progress').getAttribute('aria-label'),/done, .* for less, .* your pick, .* at /);
+    assert.match(await page.locator('.plan-summary-progress [role=progressbar]').getAttribute('aria-valuetext'),/finished; .* in progress; .* not started\. Plan: .* done, .* for less, .* your pick, .* at /);
     assert.equal(await page.locator('#sheet-titlebar [data-action="target"]').count(),1,'Change degree');
     assert.equal(await page.locator('#sheet-titlebar [data-action="compare-plans"]').count(),1,'Compare degrees');
     assert.match(await page.locator('[data-summary-pick]').innerText(),/\d+ courses?/);
     // Groups and filters.
     for(const group of ['less','pick','school'])assert.equal(await page.locator('[data-plan-group="'+group+'"]').count(),1,group+' group');
-    assert.equal(await page.locator('.plan-view-chips [data-progress-filter]').count(),3,'To do / Done / All');
+    assert.equal(await page.locator('#sheet-titlebar .degree-progress [data-progress-filter]').count(),3,'Finished / In progress / Not started filters in the header');
+    assert.equal(await page.locator('.degree-progress').count(),1,'one progress display');
     await page.locator('[data-group-mode="section"]').click();await page.locator('[data-plan-section]').first().waitFor();
     await page.locator('[data-group-mode="how"]').click();await page.locator('[data-plan-group="less"]').waitFor();
     // Per-row: progress control, the row sheet with evidence and change actions.
@@ -83,6 +84,38 @@ async function more(page){await page.locator('#sheet-titlebar [data-action="more
     // Save: phone bottom bar; desktop header.
     if(width<1024)assert(await page.locator('.plan-bottom-bar [data-action="save-plan"]').isVisible());
     else assert.equal(await page.locator('.plan-bottom-bar').isVisible(),false);
+    assert.deepEqual(errors,[]);
+  });
+
+  // One source of truth: the header segments, the group headings, the rows in each group and the progress counts agree,
+  // for a plan with many open slots and for a classic plan.
+  for(const id of [SLOTS,LIBERTY,'wgu-catalog-19be0ad2d1922f49'])await test('every count on the page agrees for '+id,async()=>{
+    const {page,errors}=await open(1440,{id});await ready(page);
+    const facts=await page.evaluate(()=>{
+      const num=text=>Number(String(text).replace(/[^0-9.]/g,''));
+      const header=Object.fromEntries([...document.querySelectorAll('[data-summary-bucket]')].map(node=>[node.dataset.summaryBucket,num(node.textContent)]));
+      const groups={},rows={};
+      for(const section of document.querySelectorAll('[data-plan-group]')){const bucket=section.dataset.planGroup;groups[bucket]=num(section.querySelector('.plan-bucket-meta').textContent.split('·')[1]);rows[bucket]=[...section.querySelectorAll('tr.course-plan-row .course-plan-credits')].reduce((sum,node)=>sum+num(node.textContent),0);}
+      return {header,groups,rows,required:num(document.querySelector('[data-summary-required]').textContent),finished:num(document.querySelector('[data-degree-finished]')?.textContent??'0'),notes:document.querySelector('.course-plan-coverage')?.innerText||''};
+    });
+    for(const bucket of ['done','less','pick','school']){
+      assert.equal(facts.groups[bucket]??0,facts.header[bucket],bucket+': group heading matches the header');
+      assert.equal(facts.rows[bucket]??0,facts.header[bucket],bucket+': rows in the group match the header');
+    }
+    assert.equal(facts.header.done+facts.header.less+facts.header.pick+facts.header.school,facts.required,'the four parts make the whole degree');
+    assert.equal(facts.finished,facts.header.done,'finished credits match the done segment');
+    assert.doesNotMatch(facts.notes,/outside credits planned|not yet mapped/,'no second set of counts below the filters');
+    assert.equal(await page.locator('.plan-side .degree-progress').count(),0,'no second progress card');
+    assert.deepEqual(errors,[]);
+  });
+
+  await test('a finished course moves to Done and the header, group and finished counts move together',async()=>{
+    const {page,errors}=await open(1440,{id:LIBERTY});await ready(page);
+    await page.locator('[data-plan-group="less"] [data-progress="engl-101"]').selectOption('completed');
+    await page.locator('[data-plan-group="done"] tr.course-plan-row[data-requirement="engl-101"]').waitFor();
+    const done=Number(await page.locator('[data-summary-bucket="done"]').innerText()),finished=Number(await page.locator('[data-degree-finished]').innerText());
+    assert.equal(done,3);assert.equal(finished,done);
+    assert.match(await page.locator('[data-plan-group="done"] .plan-bucket-meta').innerText(),/· 3 credits/);
     assert.deepEqual(errors,[]);
   });
 

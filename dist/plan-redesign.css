@@ -40,6 +40,12 @@ body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has
   #sheet-grid .plan-group-mode { min-height:34px; padding:0 10px; font-size:var(--tok-text-xsmall); white-space:nowrap; }
   #sheet-grid .plan-bucket-note { margin-bottom:var(--tok-space-2); }
   .plan-bucket { margin-top:var(--tok-space-4); }
+  /* Phones: the bar's text alternative and the group headings carry the done / for less / your pick / at school
+     numbers, so the visible legend under the bar is left out to keep the first course on screen. */
+  #sheet-titlebar .plan-summary-composition { display:none; }
+  #sheet-titlebar .plan-summary-progress .degree-progress-legend { flex-wrap:nowrap !important; gap:6px; }
+  #sheet-titlebar .plan-summary-progress .degree-progress-legend button { flex:1 1 0; min-width:0; justify-content:center; gap:4px; padding:0 4px; white-space:nowrap; font-size:.75rem; }
+  #sheet-titlebar .plan-summary-finished .degree-progress-percent { font-size:1.0625rem; }
   .plan-main { display:flex; flex-direction:column; }
   .plan-main > #sheet-glance { order:10; margin-top:var(--tok-space-6); }
 }
@@ -59,6 +65,30 @@ body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has
 .plan-summary-stat:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
 .plan-summary-stat span { color:#b2c2ff; font-size:var(--tok-text-xsmall); font-weight:var(--tok-weight-semibold); }
 .plan-summary-stat strong { font-size:1.125rem; font-weight:var(--tok-weight-heavy); }
+
+/* Not started is a neutral state, not an error: slate instead of red for the row marker, dot and button. */
+[data-course-progress="not-started"], [data-course-progress="needs-course"] { --course-progress-color:#7b899b; --course-progress-ink:#475467; --course-progress-bg:#f4f6f9; --course-progress-border:#dfe5ee; }
+.progress-color-not-started i { background:#7b899b !important; }
+
+/* The header is the one progress display: finished credits and percent, the bar (done / for less / your pick / at
+   school), and the Finished / In progress / Not started filters. */
+#sheet-titlebar .plan-summary-progress.degree-progress { margin:0; padding:0; border:0; background:none; box-shadow:none; color:#fff; display:flex; flex-direction:column; gap:var(--tok-space-2); }
+#sheet-titlebar .plan-summary-finished { margin:0; color:#d6deeb; font-size:var(--tok-text-small); display:flex; flex-wrap:wrap; align-items:baseline; gap:var(--tok-space-2); }
+#sheet-titlebar .plan-summary-finished strong { color:#fff; }
+#sheet-titlebar .plan-summary-finished .degree-progress-percent { margin-left:auto; font-size:1.25rem; font-weight:var(--tok-weight-heavy); color:#fff; }
+.plan-summary-finished .degree-progress-percent span { font-size:.875rem; }
+#sheet-titlebar .plan-summary-progress .degree-progress-legend { display:flex; flex-wrap:wrap; gap:var(--tok-space-2); margin:0; padding:0; border:0; background:none; }
+#sheet-titlebar .plan-summary-progress .degree-progress-legend button { display:inline-flex; align-items:center; gap:6px; min-height:var(--tok-target); padding:0 12px; border:1px solid rgb(255 255 255 / 28%); border-radius:var(--tok-radius-pill); background:transparent; color:#fff; font:inherit; font-size:var(--tok-text-xsmall); cursor:pointer; }
+#sheet-titlebar .plan-summary-progress .degree-progress-legend button[aria-pressed="true"] { background:#fff; color:var(--tok-ink); border-color:#fff; }
+.plan-summary-progress .degree-progress-legend button:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
+.plan-summary-progress .degree-progress-legend i { flex:none; width:9px; height:9px; border-radius:999px; display:inline-block; }
+.plan-summary-progress .progress-color-completed i { background:var(--tok-success); }
+.plan-summary-progress .progress-color-in-progress i { background:var(--tok-pick); }
+.plan-summary-progress .degree-progress-reset { margin-left:var(--tok-space-2); min-height:var(--tok-target); padding:0 10px; border:1px solid rgb(255 255 255 / 45%); border-radius:var(--tok-radius-pill); background:transparent; color:#fff; font:inherit; font-size:var(--tok-text-xsmall); cursor:pointer; }
+.plan-summary-progress .degree-progress-review { margin:0; color:#fde7b0; font-size:var(--tok-text-xsmall); }
+.plan-summary-progress .degree-progress-review * { color:inherit; }
+#sheet-titlebar .plan-summary-progress .degree-progress-legend button strong { color:inherit !important; }
+.course-plan-notes { display:flex; flex-wrap:wrap; gap:var(--tok-space-2) var(--tok-space-4); margin:0 0 var(--tok-space-2); color:var(--tok-muted); font-size:var(--tok-text-small); }
 
 /* Two columns on wide screens: the checklist, and a summary panel beside it. */
 .plan-layout { display:block; }
@@ -110,3 +140,4 @@ body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has
   #sheet-dialog:not(.is-course-comparison) { border-radius:var(--tok-radius-xl) 0 0 var(--tok-radius-xl); }
 }
 @media print { .plan-bottom-bar, .plan-summary-actions, .plan-view-controls { display:none !important; } .plan-summary { background:#fff; color:#000; border:1px solid #000; } .plan-summary .sheet-title { color:#000; } }
+@media (max-width:360px) { #sheet-titlebar .plan-summary-progress .degree-progress-legend { flex-wrap:wrap !important; } #sheet-titlebar .plan-summary-progress .degree-progress-legend button { flex:1 1 auto; } }

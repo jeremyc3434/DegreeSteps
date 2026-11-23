@@ -259,7 +259,7 @@ function singleModelData(id){const full=loadData();return{catalog:{...full.catal
 test('a WGU worksheet uses competency units in progress, sections, coverage and footer',async()=>{
  const id='curriculum-wgu-catalog-689e417cff765fc9',ui=mount({modelId:id,fixtureData:singleModelData(id)});await ui.settle();
  const grid=ui.node('sheet-grid').innerHTML,route=ui.node('sheet-route').innerHTML;
- assert.match(ui.node('sheet-summary').innerHTML,/of 112 competency units finished/);assert.match(grid,/0 \/ 34<\/strong> competency units finished/);assert.match(grid,/outside competency units planned/);assert.match(grid,/competency units at the university/);assert.match(grid,/<abbr title="Competency units">CUs<\/abbr>/);
+ assert.match(ui.node('sheet-titlebar').innerHTML,/of 112 competency units finished/);assert.match(grid,/0 \/ 34<\/strong> competency units finished/);assert.match(ui.node('sheet-titlebar').innerHTML,/data-summary-bucket="less">\d+<\/strong> for less/);assert.match(grid,/competency units must be taken at /);assert.match(grid,/<abbr title="Competency units">CUs<\/abbr>/);
  assert.doesNotMatch(grid,/\d credits (?:finished|planned|at the university|not yet mapped)/);assert.match(route,/competency units/);assert.doesNotMatch(route,/<small>units<\/small>/);
  assert.match(ui.node('sheet-footer').innerHTML,/112 competency units/);
 });
@@ -267,7 +267,7 @@ test('a WGU worksheet uses competency units in progress, sections, coverage and 
 test('Excelsior shows the partnership residency condition next to the standard minimum and explains a starting-route difference',async()=>{
  const ui=mount({modelId:'curriculum-excelsior-bs-psychology',fixtureData:singleModelData('curriculum-excelsior-bs-psychology')});await ui.settle();await ui.settle();
  let grid=ui.node('sheet-grid').innerHTML;
- assert.match(grid,/At least <strong>7<\/strong> credits at the university <small class="course-plan-residency-alt">\(standard enrollment\)<\/small>/);
+ assert.match(grid,/At least <strong>7<\/strong> credits must be taken at [^<]+ <small class="course-plan-residency-alt">\(standard enrollment\)<\/small>/);
  assert.match(grid,/data-residency-alternative="15">Partnership students admitted after December 31, 2024: at least 15 credits at the university\./);
  assert(ui.requests.includes('data/baseline-index.json'));
  const key='curriculum-excelsior-bs-psychology',state=ui.draft().state;state.scenarios[key]={...state.scenarios[key],providers:['Sophia','Study.com']};ui.api.render();await ui.settle();
