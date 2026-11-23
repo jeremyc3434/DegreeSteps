@@ -20,11 +20,17 @@ async function captureText(captureCache,path,base){
 }
 
 /** Collects every object carrying quotes, with the claim's own source ids for cross-checking. */
-function quotedClaims(kit){
+/** Sources a program-scoped row may cite besides school and provider sources: those every program in its scope defines. */
+function scopedProgramSources(kit,row){
+  const slugs=list(row?.scope?.programs);if(row?.scope?.all||!slugs.length)return [];
+  const per=slugs.map(slug=>list(kit.programs.find(p=>p.slug===slug)?.sources));
+  return per[0].filter(source=>per.every(sources=>sources.some(s=>s.id===source.id)));
+}
+export function quotedClaims(kit){
   const claims=[];
-  const take=(claim,file,label)=>{if(Array.isArray(claim?.quotes))claims.push({claim,file,label});};
+  const take=(claim,file,label,sources)=>{if(Array.isArray(claim?.quotes))claims.push({claim,file,label,sources});};
   for(const[name,policy]of Object.entries(kit.school.policies||{}))take(policy,'school.json','policy '+name);
-  for(const row of list(kit.equivalencies.equivalencies))take(row,'equivalencies.json','equivalency '+row.id);
+  for(const row of list(kit.equivalencies.equivalencies))take(row,'equivalencies.json','equivalency '+row.id,scopedProgramSources(kit,row));
   for(const program of kit.programs){
     take(program,program.file,'program '+program.slug);
     for(const[name,policy]of Object.entries(program.policies||{}))take(policy,program.file,'policy '+name);
@@ -161,7 +167,7 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
     }
     for(const[k,reqSet]of placedBy)if(reqSet.size>1&&!exclusive)duplicate('equivalencies.json','duplicate-award',`${program.slug}: ${k} would award ${reqSet.size} requirements (${[...reqSet].join(', ')}) without a documented one-award-per-source-course policy.`);
   }
-  for(const row of rows)for(const ref of sourceRefs(row))if(!ids.has(ref.id))error('equivalencies.json','unknown-source',`${row.id}: unknown source id ${ref.id}.`);
+  for(const row of rows){const scoped=new Set(scopedProgramSources(kit,row).map(s=>s.id));for(const ref of sourceRefs(row))if(!ids.has(ref.id)&&!scoped.has(ref.id))error('equivalencies.json','unknown-source',`${row.id}: unknown source id ${ref.id}.`);}
   // Provider identities are shared by every kit; check the identity each published row compiles into (shared course + row overrides).
   for(const row of rows.filter(row=>rowStatus(row)==='published')){
     const provider=kit.providers.get(row.provider),course=list(provider?.courses).find(c=>c.code===row.code);if(!course)continue;
@@ -171,8 +177,8 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
   for(const ref of sourceRefs({policies:school.policies,programDefaults:school.programDefaults}))if(!ids.has(ref.id))error('school.json','unknown-source',`Unknown source id ${ref.id} at ${ref.path}.`);
 
   // Grounding: every quote must appear in its source's capture.
-  for(const{claim,file,label}of quotedClaims(kit)){
-    const programSources=kit.programs.find(p=>p.file===file)?.sources;
+  for(const{claim,file,label,sources}of quotedClaims(kit)){
+    const programSources=sources||kit.programs.find(p=>p.file===file)?.sources;
     for(const q of claim.quotes){
       const entry=sourceIndex(kit,{sources:programSources}).get(q.sourceId);
       if(!q.sourceId||!entry){error(file,'quote-source',`${label}: quote cites unknown source ${q.sourceId}.`);continue;}

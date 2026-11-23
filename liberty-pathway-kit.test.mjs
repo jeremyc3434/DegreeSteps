@@ -137,7 +137,7 @@ test('kit-authored Liberty programs are grounded, balanced, in scope and flow th
     assert.equal(program.routeIds.length,1);assert.ok(catalog.programs.some(route=>route.id===program.routeIds[0]&&route.schoolId==='liberty'&&route.level==='associate'),slug+' uses an exact directory route');
     assert.equal(program.requirements.reduce((n,r)=>n+r.credits,0),60);
     for(const r of program.requirements)assert.ok(r.quotes?.length&&r.quotes.every(q=>r.sourceIds.includes(q.sourceId)),slug+'/'+r.id+' is quoted from its own sources');
-    assert.ok(program.sources.every(source=>source.capture&&source.checked==='2026-11-20'));
+    assert.ok(program.sources.every(source=>source.capture&&['2026-11-20','2026-11-23'].includes(source.checked)));
     const model=doc.models.find(m=>m.id===program.modelId);
     for(const r of model.requirements){
       const keys=r.options.map(o=>o.provider+'|'+o.code);assert.equal(new Set(keys).size,keys.length,slug+'/'+r.id+' carries one record per provider course');
@@ -149,6 +149,10 @@ test('kit-authored Liberty programs are grounded, balanced, in scope and flow th
     const result=quality.programs.find(item=>item.modelId===program.modelId);assert.ok(result,slug+' reaches the quality report');assert.equal(result.publication.ready,false);
   }
   const available=authored.filter(slug=>quality.programs.find(item=>item.modelId==='curriculum-liberty-'+slug).readyTemplate);
-  assert.deepEqual(available,['religion-aa-online','apologetics-aa-online','criminal-justice-aa-online']);
-  assert.ok(quality.programs.find(item=>item.modelId==='curriculum-liberty-accounting-aa-online').findings.some(f=>f.blocking&&f.code==='validation-selection_required'),'the undesignated ACCT elective keeps Accounting (A.A.) unavailable');
+  assert.deepEqual(available,['religion-aa-online','apologetics-aa-online','criminal-justice-aa-online','accounting-aa-online']);
+  // The ACCT Elective is a proposed named course from the captured ACCT course list whose prerequisite is in the degree.
+  const accounting=kit.programs.find(p=>p.slug==='accounting-aa-online'),acct=accounting.requirements.find(r=>r.publishedRequirementTitle==='ACCT Elective');
+  assert.equal(acct.code,'ACCT 311');assert.ok(acct.quotes.some(q=>/Choose any ACCT course not already required in the major/.test(q.text))&&acct.quotes.some(q=>/ACCT 311 Corporate Accounting 3 Credit Hour\(s\) Prerequisite: ACCT 212/.test(q.text)));
+  assert.ok(accounting.requirements.some(r=>r.code==='ACCT 212'),'the proposed choice has its prerequisite in the degree');
+  assert.ok(!quality.programs.find(item=>item.modelId==='curriculum-liberty-accounting-aa-online').findings.some(f=>f.blocking&&f.code==='validation-selection_required'),'no undesignated course choice remains');
 });

@@ -418,11 +418,27 @@
     const id=pathway?.id;if(!node||!id||state?.sheet?.isExample){if(node){node.hidden=true;node.innerHTML='';}return;}
     void loadPlanIndex().then(()=>{if(pathway?.id===id)void window.DegreePlanAlerts.mountOptIn(node,{planId:id,inLibrary:Boolean(planIndex?.plans?.[id])});},()=>{});
   }
+  // Weekly source freshness (data/plan-freshness.json, scripts/pathway-factory/freshness.mjs): a neutral note while a
+  // page this plan's research cites has changed and is being rechecked. Optional: a missing or empty file shows nothing.
+  let planFreshness=null,planFreshnessPromise=null;
+  function loadPlanFreshness() {
+    if(typeof fetch!=='function')return Promise.resolve(null);
+    if(!planFreshnessPromise)planFreshnessPromise=Promise.resolve().then(()=>fetch('data/plan-freshness.json')).then(response=>response.ok?response.json():null).then(data=>{planFreshness=data?.plans&&typeof data.plans==='object'&&!Array.isArray(data.plans)?data.plans:{};renderFreshness();return planFreshness;}).catch(()=>{planFreshness={};return planFreshness;});
+    return planFreshnessPromise;
+  }
+  function renderFreshness() {
+    const entry=task?null:planFreshness?.[pathway?.id],show=entry?.status==='rechecking'&&/^\d{4}-\d{2}-\d{2}$/.test(entry.since||'');
+    let node=$('sheet-freshness');
+    if(!node){if(!show||!$('sheet-school-check'))return;node=document.createElement('p');node.id='sheet-freshness';node.className='sheet-freshness';node.setAttribute('role','note');$('sheet-school-check').before(node);}
+    const text=show?'Rechecking: the school updated a source page on '+new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(entry.since+'T00:00:00Z'))+'.':'';
+    if(node.textContent!==text)node.textContent=text;node.hidden=!show;
+  }
   function render({persist=true}={}) {
     assertCurrentDraft();
     const active=document.activeElement,focusId=active?.id,focusRow=active?.dataset?.provider||active?.dataset?.course||active?.dataset?.progress,focusKind=active?.dataset?.provider?'provider':active?.dataset?.course?'course':active?.dataset?.progress?'progress':'';
     generate();if(persist)save();$('sheet-workspace').hidden=Boolean(task);$('sheet-loading').hidden=true;document.body.classList.toggle('course-plan-page',simplePlan());
     renderSchoolCheck();
+    renderFreshness();void loadPlanFreshness();
     updateSavings();
     renderGlance();
     renderAlerts();

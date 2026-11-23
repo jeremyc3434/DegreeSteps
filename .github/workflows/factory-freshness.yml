@@ -1,0 +1,114 @@
+name: Pathway Factory freshness check
+
+# Weekly (Mondays 09:17 UTC) and by hand. Re-fetches every captured source page one at a time with a DegreeSteps user
+# agent and a per-request timeout, and compares the normalized text with the capture the kits cite. When a page
+# changed, it opens or updates one pull request ("Freshness: N sources changed") from factory/freshness with
+# content/freshness/report.json, the new captures and dist/data/plan-freshness.json (plans shown as "Rechecking").
+# Kits, checked dates and published plans are never edited; a reviewer decides what changes. Unreachable pages
+# (403, timeouts) are listed, not treated as changed. With nothing changed the run writes a summary only.
+on:
+  schedule:
+    - cron: '17 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: factory-freshness
+  cancel-in-progress: false
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      BRANCH: factory/freshness
+    steps:
+      - name: Check out main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Use Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Read flags from an open freshness pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Keeps the first detection date ("since") while the same pull request stays open.
+          gh api "repos/$GITHUB_REPOSITORY/contents/dist/data/plan-freshness.json?ref=$BRANCH" --jq .content 2>/dev/null | base64 -d > "$RUNNER_TEMP/previous-flags.json" 2>/dev/null || true
+          if [ ! -s "$RUNNER_TEMP/previous-flags.json" ]; then rm -f "$RUNNER_TEMP/previous-flags.json"; fi
+      - name: Re-capture and compare every source page
+        id: check
+        run: |
+          previous=()
+          if [ -f "$RUNNER_TEMP/previous-flags.json" ]; then previous=(--previous "$RUNNER_TEMP/previous-flags.json"); fi
+          node scripts/pathway-factory/freshness.mjs --as-of "$(date -u +%F)" "${previous[@]}" --summary-md "$RUNNER_TEMP/freshness.md"
+      - name: Re-verify the kits as of today
+        id: verify
+        run: |
+          set +e
+          npm run --silent factory:verify -- --as-of "$(date -u +%F)" > "$RUNNER_TEMP/verify.txt" 2>&1
+          code=$?
+          set -e
+          echo "exit=$code" >> "$GITHUB_OUTPUT"
+          tail -n 40 "$RUNNER_TEMP/verify.txt"
+          {
+            echo
+            if [ "$code" -eq 0 ]; then echo "\`factory:verify --as-of $(date -u +%F)\` passed."; else echo "\`factory:verify --as-of $(date -u +%F)\` reported errors:"; echo; echo '```'; grep -E 'ERROR|error\(s\)' "$RUNNER_TEMP/verify.txt" | head -n 60; echo '```'; fi
+          } >> "$RUNNER_TEMP/freshness.md"
+      - name: Write the run summary
+        if: always()
+        run: if [ -f "$RUNNER_TEMP/freshness.md" ]; then cat "$RUNNER_TEMP/freshness.md" >> "$GITHUB_STEP_SUMMARY"; fi
+      - name: Rebuild plan pages with the rechecking notes
+        if: steps.check.outputs.changed != '0' || steps.check.outputs.flags_changed == 'true'
+        run: npm run build
+      - name: Open or update the freshness pull request
+        if: steps.check.outputs.changed != '0' || steps.check.outputs.flags_changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHANGED: ${{ steps.check.outputs.changed }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH"
+          git add -- content/freshness/report.json content/source-captures dist/degree-plans
+          if [ -f dist/data/plan-freshness.json ]; then git add -- dist/data/plan-freshness.json; fi
+          if git diff --cached --quiet; then echo "No file changes to propose."; exit 0; fi
+          case "$CHANGED" in
+            0) title="Freshness: 0 sources changed (clear rechecking notes)" ;;
+            1) title="Freshness: 1 source changed" ;;
+            *) title="Freshness: $CHANGED sources changed" ;;
+          esac
+          git commit -m "$title ($(date -u +%F))" -m "Weekly Pathway Factory freshness check. Kits and checked dates are unchanged; review the report before updating any source."
+          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$BRANCH"
+          {
+            echo "Automated weekly freshness check from [this run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID). Nothing here edits a kit, a checked date or a published plan's courses."
+            echo
+            echo "**What merging does:** stores the new captures and \`content/freshness/report.json\`, and shows a neutral \"Rechecking: the school updated a source page on <date>\" note on the flagged plans (\`dist/data/plan-freshness.json\`). **What it does not do:** re-ground quotes or move checked dates. A reviewer reads each changed page, points the kit source at the new capture, fixes any quote that no longer appears, and removes the plan from \`plan-freshness.json\` once its research is current. Close without merging if a change is cosmetic."
+            echo
+            head -c 55000 "$RUNNER_TEMP/freshness.md"
+          } > "$RUNNER_TEMP/pr-body.md"
+          number=$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number')
+          if [ -n "$number" ]; then
+            gh pr edit "$number" --title "$title" --body-file "$RUNNER_TEMP/pr-body.md"
+          else
+            gh pr create --base main --head "$BRANCH" --title "$title" --body-file "$RUNNER_TEMP/pr-body.md"
+          fi
+      - name: Keep the report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: factory-freshness-${{ github.run_id }}
+          retention-days: 45
+          if-no-files-found: ignore
+          path: |
+            content/freshness/report.json
+            ${{ runner.temp }}/verify.txt

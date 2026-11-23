@@ -4,10 +4,46 @@
   "id": "wgu",
   "name": "Western Governors University",
   "creditSystem": "competency-unit",
-  "checkedOn": "2026-11-20",
+  "checkedOn": "2026-11-23",
   "publish": {
-    "path": "content/curricula/wgu.json",
     "replaces": "scripts/import-wgu-curricula.py",
+    "documents": [
+      {
+        "path": "content/curricula/wgu.json",
+        "checkedOn": "2026-11-20",
+        "sources": "own"
+      },
+      {
+        "path": "content/curricula/wgu-pathway-kit.json",
+        "programs": [
+          "health-science-bs",
+          "public-health-bs",
+          "healthcare-administration-bs",
+          "supply-chain-and-operations-management-bs",
+          "project-management-bs",
+          "software-engineering",
+          "information-technology",
+          "psychology-bs",
+          "cybersecurity-and-information-assurance",
+          "computer-science-bs",
+          "health-information-management-bs"
+        ],
+        "checkedOn": "2026-11-23",
+        "sources": false,
+        "routes": [
+          {
+            "id": "wgu-bs-computer-science-reviewed",
+            "school": "Western Governors University",
+            "title": "Computer Science – B.S.",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "url": "https://www.wgu.edu/online-it-degrees/computer-science/program-guide.html"
+          }
+        ]
+      }
+    ],
     "sourceOrder": [
       "wgu-sophia-business-current",
       "wgu-sophia-technology-current",
@@ -225,7 +261,7 @@
       "wgu-business-bsmgt-straighterline-550-v66",
       "wgu-business-bsmgt-saylor-668-v78"
     ],
-    "sourceOrderNote": "Document source order is part of each published model fingerprint; keep it stable so saved student plans are not flagged as changed. New sources are appended in compile order."
+    "sourceOrderNote": "Document source order is part of each published model fingerprint; keep it stable so saved student plans are not flagged as changed. New sources are appended in compile order. Programs authored from WGU’s current public API publish in content/curricula/wgu-pathway-kit.json, where each model carries exactly its own sources (modelSourceIds)."
   },
   "programOrder": [
     "business-management-bs",

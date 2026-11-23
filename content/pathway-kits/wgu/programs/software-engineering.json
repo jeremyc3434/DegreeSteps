@@ -8,36 +8,224 @@
   ],
   "title": "Software Engineering",
   "level": "bachelor",
-  "catalog": "Published program guide; catalog version needs confirmation",
+  "catalog": "202610",
   "totalCredits": 120,
   "review": {
-    "status": "migrated",
-    "source": "content/curricula/wgu.json",
-    "reviewedOn": "2026-11-09"
+    "status": "reviewed",
+    "reviewer": "Claude (pathway factory)",
+    "reviewedOn": "2026-11-23"
   },
+  "sources": [
+    {
+      "id": "wgu-bsswe-202610-curriculum-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSSWE%3B202610",
+      "title": "Bachelor of Science, Software Engineering 202610 complete named CU ledger",
+      "kind": "university",
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalogYear": "202610",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "retrieval": "Unauthenticated public program-data API GET, captured; every receiving requirement reviewed.",
+      "capture": "content/source-captures/feb99ac6d6246ddb.txt"
+    },
+    {
+      "id": "wgu-bsswe-202610-metadata-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/IT",
+      "title": "BS Software Engineering (Catalog 10-2026) current public academic record and transfer notes",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalogYear": "202610",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "publicRecordId": 254,
+      "publicRecordVersion": 4,
+      "inactiveProgram": 0,
+      "approvalStatus": "Approved",
+      "retrieval": "Unauthenticated public academic API GET, captured.",
+      "capture": "content/source-captures/c0f1e682efb3df5c.txt",
+      "notes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    {
+      "id": "wgu-bsswe-transfer-guidelines-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=254",
+      "title": "BSSWE 202610 transfer guidelines: transfer areas and nontransferable courses",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalogYear": "202610",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "capture": "content/source-captures/a3cf27f14ebf7a99.txt"
+    },
+    {
+      "id": "wgu-bsswe-sophia-7110-v236",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110",
+      "title": "WGU approved Sophia receiving map for BSSWE 202610",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Software Engineering",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202610"
+      },
+      "provider": "Sophia",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 254,
+      "catalogTerm": "202610",
+      "agreementId": 7110,
+      "agreementRecordVersion": 236,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/186d4e3a3fda7a15.txt"
+    },
+    {
+      "id": "wgu-bsswe-study-4424-v240",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424",
+      "title": "WGU approved Study.com receiving map for BSSWE 202610",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Software Engineering",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202610"
+      },
+      "provider": "Study.com",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 254,
+      "catalogTerm": "202610",
+      "agreementId": 4424,
+      "agreementRecordVersion": 240,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/3138982ad34dd8f4.txt"
+    },
+    {
+      "id": "wgu-bsswe-straighterline-547-v121",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547",
+      "title": "WGU approved StraighterLine receiving map for BSSWE 202610",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Software Engineering",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202610"
+      },
+      "provider": "StraighterLine",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 254,
+      "catalogTerm": "202610",
+      "agreementId": 547,
+      "agreementRecordVersion": 121,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/6abe5f3197b69344.txt"
+    },
+    {
+      "id": "wgu-bsswe-saylor-671-v108",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671",
+      "title": "WGU approved Saylor receiving map for BSSWE 202610",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Software Engineering",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202610"
+      },
+      "provider": "Saylor",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 254,
+      "catalogTerm": "202610",
+      "agreementId": 671,
+      "agreementRecordVersion": 108,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/4a1ca634549e22a4.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "wgu-bsswe-202610-metadata-20261123",
+      "text": "\"id\":254,\"pamsProgramCode\":\"BSSWE\",\"programName\":\"BS Software Engineering (Catalog 10-2026)\""
+    }
+  ],
   "policies": {
     "alternativeMaxCredits": {
       "value": 90,
       "creditSystem": "competency-unit",
       "sourceIds": [
-        "wgu-sophia-technology-current"
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "WGU publishes that transfer courses may not be used to fulfill more than one course of study; every option placed in more than one requirement carries the single-award condition.",
+      "sourceIds": [
+        "wgu-bsswe-202610-metadata-20261123",
+        "wgu-bsswe-sophia-7110-v236",
+        "wgu-bsswe-saylor-671-v108",
+        "wgu-bsswe-study-4424-v240",
+        "wgu-bsswe-straighterline-547-v121"
       ]
     }
   },
   "modelFields": {
     "unresolved": [
-      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
       "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
-      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
-      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
+      "WGU's current BSSWE ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
     ],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
-      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
-      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+      "Outside options come only from WGU's current published partner agreements for BSSWE catalog 202610 (program 254), captured 2026-11-23. Approved partner courses without an independently verified provider identity, and awards that need several source courses together, are held out of the plan.",
+      "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
     ],
-    "mappingCheckedOn": "2026-11-09",
+    "mappingCheckedOn": "2026-11-23",
     "pricing": {
       "model": "subscription",
       "amount": 4125,
@@ -51,437 +239,548 @@
       "notes": [
         "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
       ]
+    },
+    "externalMaxCredits": 90,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-bsswe-202610-metadata-20261123",
+      "wgu-bsswe-202610-curriculum-20261123"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "fraction": 0.75,
+        "basisCredits": 120,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 90,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bsswe-202610-curriculum-20261123"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 39-course, 120-CU BSSWE 202610 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "policyCheckedOn": "2026-11-23",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 254,
+      "programCode": "BSSWE",
+      "catalog": "202610",
+      "recordVersion": 4,
+      "ledgerSha256": "15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78",
+      "sourceIds": [
+        "wgu-bsswe-202610-metadata-20261123",
+        "wgu-bsswe-202610-curriculum-20261123"
+      ],
+      "checkedOn": "2026-11-23",
+      "outsideEquivalenciesReviewed": true
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bsswe-core-mathematics-content",
+        "parentId": "core",
+        "title": "Mathematics Content",
+        "credits": 10,
+        "requirementIds": [
+          "bsswe-mathematics-for-programmers",
+          "bsswe-calculus-i",
+          "bsswe-applied-discrete-mathematics"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-web-development",
+        "parentId": "core",
+        "title": "Web Development",
+        "credits": 3,
+        "requirementIds": [
+          "bsswe-web-development-foundations"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-business-of-it",
+        "parentId": "core",
+        "title": "Business of IT",
+        "credits": 7,
+        "requirementIds": [
+          "bsswe-it-leadership-foundations",
+          "bsswe-business-of-it-applications"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-programming",
+        "parentId": "core",
+        "title": "Programming",
+        "credits": 9,
+        "requirementIds": [
+          "bsswe-object-oriented-programming-in-python",
+          "bsswe-javascript-programming",
+          "bsswe-agile-for-software-engineering"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-full-stack-engineering",
+        "parentId": "core",
+        "title": "Full Stack Engineering",
+        "credits": 1,
+        "requirementIds": [
+          "bsswe-version-control"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 25,
+        "requirementIds": [
+          "bsswe-applied-probability-and-statistics",
+          "bsswe-introduction-to-systems-thinking-and-applications",
+          "bsswe-ethical-engineering",
+          "bsswe-composition-successful-self-expression",
+          "bsswe-health-fitness-and-wellness",
+          "bsswe-introduction-to-physical-and-human-geography",
+          "bsswe-technical-communication",
+          "bsswe-american-politics-and-the-us-constitution"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-data-management",
+        "parentId": "core",
+        "title": "Data Management",
+        "credits": 3,
+        "requirementIds": [
+          "bsswe-data-management-foundations"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-software",
+        "parentId": "core",
+        "title": "Software",
+        "credits": 25,
+        "requirementIds": [
+          "bsswe-foundations-of-ui-ux",
+          "bsswe-introduction-to-software-engineering",
+          "bsswe-java-frameworks",
+          "bsswe-advanced-java",
+          "bsswe-back-end-programming",
+          "bsswe-software-security-and-testing",
+          "bsswe-software-design-and-quality-assurance",
+          "bsswe-special-topics-in-software-engineering-and-ai"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-software-development",
+        "parentId": "core",
+        "title": "Software Development",
+        "credits": 3,
+        "requirementIds": [
+          "bsswe-front-end-development"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-network-and-security",
+        "parentId": "core",
+        "title": "Network and Security",
+        "credits": 3,
+        "requirementIds": [
+          "bsswe-network-and-security-foundations"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-computer-science",
+        "parentId": "core",
+        "title": "Computer Science",
+        "credits": 7,
+        "requirementIds": [
+          "bsswe-data-structures-and-algorithms-i",
+          "bsswe-operating-systems-for-computer-scientists"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-mathematics",
+        "parentId": "core",
+        "title": "Mathematics",
+        "credits": 3,
+        "requirementIds": [
+          "bsswe-linear-algebra-for-engineers"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-artificial-intelligence",
+        "parentId": "core",
+        "title": "Artificial Intelligence",
+        "credits": 3,
+        "requirementIds": [
+          "bsswe-data-for-ai"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-general-science-content",
+        "parentId": "core",
+        "title": "General Science Content",
+        "credits": 6,
+        "requirementIds": [
+          "bsswe-general-physics-i",
+          "bsswe-general-chemistry-i"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-physics-content",
+        "parentId": "core",
+        "title": "Physics Content",
+        "credits": 1,
+        "requirementIds": [
+          "bsswe-physics-i-lab-for-programmers"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-cloud-and-virtualization",
+        "parentId": "core",
+        "title": "Cloud and Virtualization",
+        "credits": 3,
+        "requirementIds": [
+          "bsswe-aws-developer"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-information-technology-management",
+        "parentId": "core",
+        "title": "Information Technology Management",
+        "credits": 4,
+        "requirementIds": [
+          "bsswe-software-engineering"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsswe-core-software-applications",
+        "parentId": "core",
+        "title": "Software Applications",
+        "credits": 4,
+        "requirementIds": [
+          "bsswe-applied-software-engineering"
+        ],
+        "sourceId": "wgu-bsswe-202610-curriculum-20261123"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {},
+      "recencySourceIds": [
+        "wgu-bsswe-202610-metadata-20261123"
+      ],
+      "publishedNotes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-current-agreement-ledgers-2026-11-23",
+      "checkedOn": "2026-11-23",
+      "programId": 254,
+      "catalog": "202610",
+      "receivingClaimsReviewed": 54,
+      "sourceIdentitiesReusedByExactProviderCode": 25,
+      "sourceIds": [
+        "wgu-bsswe-sophia-7110-v236",
+        "wgu-bsswe-study-4424-v240",
+        "wgu-bsswe-straighterline-547-v121",
+        "wgu-bsswe-saylor-671-v108"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 15,
+          "approvedSourceCodeCount": 27,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0022",
+            "SOPH-0025",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0080",
+            "SOPH-0083"
+          ],
+          "selectableReceivingPlacements": 10,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0015",
+            "SOPH-0030",
+            "SOPH-0043",
+            "SOPH-0047",
+            "SOPH-0048",
+            "SOPH-0049",
+            "SOPH-0050",
+            "SOPH-0058",
+            "SOPH-0059",
+            "SOPH-0060",
+            "SOPH-0062",
+            "SOPH-0063",
+            "SOPH-0068",
+            "SOPH-0071",
+            "SOPH-0090",
+            "SOPH-0095",
+            "SOPH-0096"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7110,
+          "agreementRecordVersion": 236,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 20,
+          "approvedSourceCodeCount": 69,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0009",
+            "SDCM-0016",
+            "SDCM-0025",
+            "SDCM-0057",
+            "SDCM-0089",
+            "SDCM-0265"
+          ],
+          "selectableReceivingPlacements": 6,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0006",
+            "SDCM-0011",
+            "SDCM-0012",
+            "SDCM-0017",
+            "SDCM-0018",
+            "SDCM-0019",
+            "SDCM-0020",
+            "SDCM-0021",
+            "SDCM-0028",
+            "SDCM-0032",
+            "SDCM-0034",
+            "SDCM-0038",
+            "SDCM-0039",
+            "SDCM-0040",
+            "SDCM-0041",
+            "SDCM-0042",
+            "SDCM-0043",
+            "SDCM-0044",
+            "SDCM-0045",
+            "SDCM-0048",
+            "SDCM-0053",
+            "SDCM-0058",
+            "SDCM-0060",
+            "SDCM-0065",
+            "SDCM-0066",
+            "SDCM-0067",
+            "SDCM-0068",
+            "SDCM-0069",
+            "SDCM-0101",
+            "SDCM-0102",
+            "SDCM-0133",
+            "SDCM-0134",
+            "SDCM-0135",
+            "SDCM-0138",
+            "SDCM-0154",
+            "SDCM-0155",
+            "SDCM-0156",
+            "SDCM-0157",
+            "SDCM-0158",
+            "SDCM-0159",
+            "SDCM-0178",
+            "SDCM-0179",
+            "SDCM-0180",
+            "SDCM-0181",
+            "SDCM-0182",
+            "SDCM-0184",
+            "SDCM-0186",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0196",
+            "SDCM-0199",
+            "SDCM-0201",
+            "SDCM-0212",
+            "SDCM-0213",
+            "SDCM-0216",
+            "SDCM-0219",
+            "SDCM-0220",
+            "SDCM-0240",
+            "SDCM-0249",
+            "SDCM-0252",
+            "SDCM-0253",
+            "SDCM-0255",
+            "SDCM-0259"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4424,
+          "agreementRecordVersion": 240,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 12,
+          "approvedSourceCodeCount": 28,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "OOSL-0015"
+          ],
+          "selectableReceivingPlacements": 1,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0004",
+            "OOSL-0005",
+            "OOSL-0006",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0011",
+            "OOSL-0012",
+            "OOSL-0019",
+            "OOSL-0023",
+            "OOSL-0027",
+            "OOSL-0034",
+            "OOSL-0035",
+            "OOSL-0039",
+            "OOSL-0040",
+            "OOSL-0042",
+            "OOSL-0043",
+            "OOSL-0044",
+            "OOSL-0046",
+            "OOSL-0051",
+            "OOSL-0059",
+            "OOSL-0063",
+            "OOSL-0070",
+            "OOSL-0085",
+            "OOSL-0092",
+            "OOSL-0107",
+            "OOSL-0128",
+            "OOSL-0129"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 547,
+          "agreementRecordVersion": 121,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 7,
+          "approvedSourceCodeCount": 11,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0027",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0044"
+          ],
+          "selectableReceivingPlacements": 8,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0007",
+            "SAYA-0016",
+            "SAYA-0018"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 671,
+          "agreementRecordVersion": 108,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false
     }
   },
+  "modelSourceIds": [
+    "wgu-bsswe-202610-curriculum-20261123",
+    "wgu-bsswe-202610-metadata-20261123",
+    "wgu-bsswe-transfer-guidelines-20261123",
+    "wgu-bsswe-sophia-7110-v236",
+    "wgu-bsswe-study-4424-v240",
+    "wgu-bsswe-straighterline-547-v121",
+    "wgu-bsswe-saylor-671-v108",
+    "wgu-undergraduate-institutional-catalog-202611",
+    "wgu-bsswe-tuition",
+    "wgu-global-sophia--soph-0080-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-syllabus-2026-11-18",
+    "saylor-current-provider-credit-list-20261120",
+    "wgu-sophia-business-current",
+    "study-course-sdcm-0025-2026-11",
+    "study-current-sdcm-0057-2026-11-20",
+    "study-current-sdcm-0089-2026-11-20",
+    "sophia-soph-0083-current-offer",
+    "sophia-soph-0083-current-offer-syllabus",
+    "study-course-sdcm-0009-2026-11",
+    "straighterline-oosl-0015-course-page-2026-11-20",
+    "study-current-sdcm-0016-2026-11-20",
+    "study-course-sdcm-0265-2026-11"
+  ],
   "requirements": [
-    {
-      "id": "bsswe-introduction-to-software-engineering",
-      "code": "",
-      "title": "Introduction to Software Engineering",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-mathematics-for-programmers",
-      "code": "",
-      "title": "Mathematics for Programmers",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-web-development-foundations",
-      "code": "",
-      "title": "Web Development Foundations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-it-leadership-foundations",
-      "code": "",
-      "title": "IT Leadership Foundations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-object-oriented-programming-in-python",
-      "code": "",
-      "title": "Object Oriented Programming in Python",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-version-control",
-      "code": "",
-      "title": "Version Control",
-      "credits": 1,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-javascript-programming",
-      "code": "",
-      "title": "JavaScript Programming",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-applied-probability-and-statistics",
-      "code": "",
-      "title": "Applied Probability and Statistics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-introduction-to-systems-thinking-and-applications",
-      "code": "",
-      "title": "Introduction to Systems Thinking and Applications",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-calculus-i",
-      "code": "",
-      "title": "Calculus I",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-ethical-engineering",
-      "code": "",
-      "title": "Ethical Engineering",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-data-management-foundations",
-      "code": "",
-      "title": "Data Management - Foundations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-foundations-of-ui-ux",
-      "code": "",
-      "title": "Foundations of UI/UX",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-front-end-development",
-      "code": "",
-      "title": "Front End Development",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-applied-discrete-mathematics",
-      "code": "",
-      "title": "Applied Discrete Mathematics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-composition-successful-self-expression",
-      "code": "",
-      "title": "Composition: Successful Self-Expression",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-network-and-security-foundations",
-      "code": "",
-      "title": "Network and Security - Foundations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-data-structures-and-algorithms-i",
-      "code": "",
-      "title": "Data Structures and Algorithms I",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-linear-algebra-for-engineers",
-      "code": "",
-      "title": "Linear Algebra for Engineers",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-data-for-ai",
-      "code": "",
-      "title": "Data for AI",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-general-physics-i",
-      "code": "",
-      "title": "General Physics I",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-physics-i-lab-for-programmers",
-      "code": "",
-      "title": "Physics I Lab for Programmers",
-      "credits": 1,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-java-frameworks",
-      "code": "",
-      "title": "Java Frameworks",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-health-fitness-and-wellness",
-      "code": "",
-      "title": "Health, Fitness, and Wellness",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-agile-for-software-engineering",
-      "code": "",
-      "title": "Agile for Software Engineering",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-general-chemistry-i",
-      "code": "",
-      "title": "General Chemistry I",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-business-of-it-applications",
-      "code": "",
-      "title": "Business of IT - Applications",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-advanced-java",
-      "code": "",
-      "title": "Advanced Java",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-operating-systems-for-computer-scientists",
-      "code": "",
-      "title": "Operating Systems for Computer Scientists",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-aws-developer",
-      "code": "",
-      "title": "AWS Developer",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-introduction-to-physical-and-human-geography",
-      "code": "",
-      "title": "Introduction to Physical and Human Geography",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-back-end-programming",
-      "code": "",
-      "title": "Back-End Programming",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-technical-communication",
-      "code": "",
-      "title": "Technical Communication",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-software-security-and-testing",
-      "code": "",
-      "title": "Software Security and Testing",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-software-design-and-quality-assurance",
-      "code": "",
-      "title": "Software Design and Quality Assurance",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-american-politics-and-the-us-constitution",
-      "code": "",
-      "title": "American Politics and the US Constitution",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-special-topics-in-software-engineering-and-ai",
-      "code": "",
-      "title": "Special Topics in Software Engineering and AI",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-software-engineering",
-      "code": "",
-      "title": "Software Engineering",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsswe-applied-software-engineering",
-      "code": "",
-      "title": "Applied Software Engineering",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsswe-guide"
-      ],
-      "institutionalOnly": false
-    }
+    {"id":"bsswe-mathematics-for-programmers","code":"E064","title":"Mathematics for Programmers","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"mathematics-content","curriculumAreaEvidence":{"areaOfStudy":"Mathematics Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E064\",\"courseName\":\"Mathematics for Programmers\",\"courseDescription\":\"This course bridges mathematics and programming by using Python to develop mathematical reasoning skills. Students create and evaluate functions to model relationships, analyze and graph algebraic and trigonometric functions, and solve problems that build readiness for calculus and object-oriented programming while using computational tools to explore patterns, precision, and real-world applications.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Mathematics Content\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E064\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsswe-web-development-foundations","code":"D276","title":"Web Development Foundations","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"web-development","curriculumAreaEvidence":{"areaOfStudy":"Web Development","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D276\",\"courseName\":\"Web Development Foundations\",\"courseDescription\":\"Welcome to Web Development Foundations! In this course you will learn about web design and development using HTML and CSS. This course employs the zyBooks learning platform which contains all the necessary reading materials, knowledge checks, and hands-on activities to prepare you for the course assessment. For the best understanding of the course content, complete each chapter. There are no prerequisites. Competency will be demonstrated with a performance assessment. \\n\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Web Development\""}]},
+    {"id":"bsswe-it-leadership-foundations","code":"D370","title":"IT Leadership Foundations","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D370\",\"courseName\":\"IT Leadership Foundations\",\"courseDescription\":\"IT Leadership Foundations is an introductory course that provides students with an overview of organizational structures, communication, and leadership styles specific to information technology in organizations. It also introduces students to some of the power skills that help make successful IT professionals, including time management, problem solving, and emotional intelligence. Students in this course explore their own strengths and passions in relation to the field. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business of IT\""}]},
+    {"id":"bsswe-object-oriented-programming-in-python","code":"E066","title":"Object Oriented Programming in Python","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"programming","curriculumAreaEvidence":{"areaOfStudy":"Programming","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E066\",\"courseName\":\"Object Oriented Programming in Python\",\"courseDescription\":\"This course bridges foundational programming skills to advanced object-oriented concepts, empowering learners to design and implement robust, scalable applications. It emphasizes the core pillars of object-oriented programming such as inheritance, composition, encapsulation, abstraction, and polymorphism while introducing data structure fundamentals. Learners will define and extend class hierarchies, apply method overriding, work with polymorphic collections, and traverse data structures using iterative and recursive techniques. Through practical problem-solving, the course reinforces code reusability and equips learners to apply object-oriented principles for efficient, maintainable solutions.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Programming\""}]},
+    {"id":"bsswe-version-control","code":"D197","title":"Version Control","credits":1,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"full-stack-engineering","curriculumAreaEvidence":{"areaOfStudy":"Full Stack Engineering","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D197\",\"courseName\":\"Version Control\",\"courseDescription\":\"Version control is critical to maintaining software and enabling scalability solutions. A best practice for any programming project that requires multiple files uses version control. Version control enables teams to have collaborative workflows and enhances the software development lifecycle.  This course introduces students to the basics of publishing, retrieving, branching, and cloning.  There are no prerequisites for this course.\",\"competencyUnits\":\"1\",\"areaOfStudy\":\"Full Stack Engineering\""}]},
+    {"id":"bsswe-javascript-programming","code":"E065","title":"JavaScript Programming","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"programming","curriculumAreaEvidence":{"areaOfStudy":"Programming","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E065\",\"courseName\":\"JavaScript Programming\",\"courseDescription\":\"JavaScript Programming expands students’ web development skill set by teaching them to build interactive, user-centered websites using JavaScript, cascading style sheets (CSS), the Document Object Model (DOM), and event handling. The course also introduces dynamic navigation, reactive interface components, and client-side data entry and storage. Web Development Foundations is a prerequisite for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Programming\""}]},
+    {"id":"bsswe-applied-probability-and-statistics","code":"C955","title":"Applied Probability and Statistics","credits":3,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"C955\",\"courseName\":\"Applied Probability and Statistics\",\"courseDescription\":\"Applied Probability and Statistics is designed to help students develop competence in the fundamental concepts of basic statistics including: introductory algebra and graphing; descriptive statistics; regression and correlation; and probability. Statistical data and probability are often used in everyday life, science, business, information technology, and educational settings to make informed decisions about the validity of studies and the effect of data on decisions. This course discusses what constitutes sound research design and how to appropriately model phenomena using statistical data. Additionally, the content covers simple probability calculations, based on events that occur in the business and IT industries. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsswe-introduction-to-systems-thinking-and-applications","code":"D459","title":"Introduction to Systems Thinking and Applications","credits":3,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D459\",\"courseName\":\"Introduction to Systems Thinking and Applications\",\"courseDescription\":\"Introduction to Systems Thinking and Applications provides learners with the skills required to engage in a holistic systems-based approach to analyzing complex problems and solutions. This course introduces the foundational concepts and principles of systems thinking and provides opportunities to use a systems thinking approach to analyze and evaluate real-world case studies. The course will culminate with using systems thinking to develop a solution to an authentic complex problem. This course has no prerequisites, but general education math (C955 or C957) is preferred. Because the course is self-paced, learners may move through the material as quickly or as slowly as needed, with the goal of demonstrating proficiency in the five competencies covered in the final assessment. If learners have no prior knowledge of this material, they can expect to spend 30 to 40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsswe-calculus-i","code":"E067","title":"Calculus I","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"mathematics-content","curriculumAreaEvidence":{"areaOfStudy":"Mathematics Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E067\",\"courseName\":\"Calculus I\",\"courseDescription\":\"Calculus I introduces the fundamental ideas of limits, derivatives, anti-derivatives, and basic differential equations as tools for modeling and solving real-world problems. Students explore how functions behave, how rates of change are measured and optimized, and how derivatives lead to applications in linear approximations and optimization. The basics of how accumulated quantities (antiderivatives) are computed using the Fundamental Theorem of Calculus are also introduced. Emphasis is placed on polynomial, exponential, logarithmic, and trigonometric functions, with applications drawn from science, engineering, economics, and technology. Students will focus on conceptual understanding, graphical interpretation, and applied problem-solving rather than formal proofs. By the end of the course, students will be able to analyze change, model systems, and apply calculus techniques to practical scenarios. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Mathematics Content\""}]},
+    {"id":"bsswe-ethical-engineering","code":"E068","title":"Ethical Engineering","credits":3,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E068\",\"courseName\":\"Ethical Engineering\",\"courseDescription\":\"Ethical Engineering introduces learners to the ethical, professional, and societal responsibilities inherent in engineering practice. Learners examine the societal, economic, environmental, and global impacts of engineering decisions; interpret professional engineering codes of ethics; and apply ethical decision-making frameworks to real-world and historical engineering cases. Through case analysis and performance-based assessment, learners develop the judgment required to navigate ethical dilemmas in traditional and emerging engineering fields responsibly.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsswe-data-management-foundations","code":"D426","title":"Data Management - Foundations","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"data-management","curriculumAreaEvidence":{"areaOfStudy":"Data Management","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D426\",\"courseName\":\"Data Management - Foundations\",\"courseDescription\":\"Data Management Foundations offers an introduction in creating conceptual, logical and physical data models.  Students gain skills in creating databases and tables in SQL-enabled database management systems, as well as skills in normalizing databases. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Data Management\""}]},
+    {"id":"bsswe-foundations-of-ui-ux","code":"E069","title":"Foundations of UI/UX","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E069\",\"courseName\":\"Foundations of UI/UX\",\"courseDescription\":\"This course introduces learners to the foundational principles of user interface (UI) and user experience (UX) design within software engineering contexts. Learners explore visual design principles, user-centered design methodologies, wireframing and prototyping techniques, usability testing, and design-development collaboration. The course emphasizes creating functional, accessible interfaces that meet both user needs and technical requirements. This course is appropriate for learners in software engineering programs who need practical UI/UX skills for front-end development.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsswe-introduction-to-software-engineering","code":"E063","title":"Introduction to Software Engineering","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E063\",\"courseName\":\"Introduction to Software Engineering\",\"courseDescription\":\"This course guides learners toward understanding what Software Engineering means, how it applies in the real world, and the landscape of careers in the field. It also includes a little review of programming while being appropriate for learners with little to no background in software engineering.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsswe-front-end-development","code":"E070","title":"Front End Development","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software-development","curriculumAreaEvidence":{"areaOfStudy":"Software Development","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E070\",\"courseName\":\"Front End Development\",\"courseDescription\":\"This course develops learners’ ability to analyze user and stakeholder requirements and design effective web‑based solutions using existing frameworks, assets, and web content. Learners apply computing principles and contemporary tools to implement user‑centered designs that emphasize usability, accessibility, and functional page layout from multiple user perspectives. The course further strengthens learners’ skills in integrating application programming interfaces (APIs) and web services to add data‑driven capabilities to web applications. Through applied design and implementation activities, learners demonstrate the ability to solve computing problems, evaluate design tradeoffs, and develop web solutions that meet specified functional and user requirements, consistent with professional computing practice. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software Development\""}]},
+    {"id":"bsswe-applied-discrete-mathematics","code":"E071","title":"Applied Discrete Mathematics","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"mathematics-content","curriculumAreaEvidence":{"areaOfStudy":"Mathematics Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E071\",\"courseName\":\"Applied Discrete Mathematics\",\"courseDescription\":\"Applied Discrete Mathematics introduces the foundational mathematical structures that underpin modern technology. Topics include logic, Boolean algebra, sets, functions, relations, graphs, combinatorics, and modular arithmetic, with emphasis on their applications to technology concepts such as Boolean algebra and structures, password complexity, access control models, network topologies, and cryptography. Students will not focus on abstract proofs but will instead learn how discrete mathematics informs real-world technology structures and practices. By the end of the course, students will be able to apply mathematical reasoning to technology scenarios, analyze system vulnerabilities through discrete models, and explain the mathematical principles behind technological architectures and protocols.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Mathematics Content\""}]},
+    {"id":"bsswe-composition-successful-self-expression","code":"D270","title":"Composition: Successful Self-Expression","credits":3,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D270\",\"courseName\":\"Composition: Successful Self-Expression\",\"courseDescription\":\"Welcome to Composition: Successful Self-Expression! In this course, you will focus on four main topics: professional writing for a cross-cultural audience, narrowing research topics and questions, researching for content to support a topic, and referencing research sources. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the seven competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content. You will demonstrate competency through a performance assessment. There is no prerequisite for this course and there is no specific technical knowledge needed.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsswe-network-and-security-foundations","code":"D315","title":"Network and Security - Foundations","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"network-and-security","curriculumAreaEvidence":{"areaOfStudy":"Network and Security","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D315\",\"courseName\":\"Network and Security - Foundations\",\"courseDescription\":\"Network and Security - Foundations introduces learners to the basic network systems and concepts related to networking technologies. Learners will gain skills in applying network security concepts for business continuity, data access, and confidentiality, and in identifying solutions for compliance with security guidance.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Network and Security\""}]},
+    {"id":"bsswe-data-structures-and-algorithms-i","code":"C949","title":"Data Structures and Algorithms I","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"C949\",\"courseName\":\"Data Structures and Algorithms I\",\"courseDescription\":\"Data Structures and Algorithms I covers the fundamentals of dynamic data structures, such as bags, lists, stacks, queues, trees, and hash tables with their associated algorithms. This course discusses object-oriented design and abstract data types as design paradigms. The course emphasizes problem-solving and techniques for designing efficient, maintainable software applications. Students will implement simple applications using the techniques learned.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Computer Science\""}]},
+    {"id":"bsswe-linear-algebra-for-engineers","code":"E082","title":"Linear Algebra for Engineers","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"mathematics","curriculumAreaEvidence":{"areaOfStudy":"Mathematics","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E082\",\"courseName\":\"Linear Algebra for Engineers\",\"courseDescription\":\"This course develops foundational linear algebra knowledge and applies it to engineering and computing problems. Learners use matrix methods to formulate and solve systems of linear equations, analyze vector spaces and linear transformations to represent and manipulate multidimensional data, and determine eigenvalues, eigenvectors, and matrix factorizations to evaluate system behavior and optimize solutions. Emphasis is placed on applying mathematical principles to model, analyze, and solve real world problems, including applications in data representation, optimization, and the mathematical foundations of machine learning. The course builds on prior coursework in calculus for engineering and programming.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Mathematics\""}]},
+    {"id":"bsswe-data-for-ai","code":"E072","title":"Data for AI","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"artificial-intelligence","curriculumAreaEvidence":{"areaOfStudy":"Artificial Intelligence","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E072\",\"courseName\":\"Data for AI\",\"courseDescription\":\"This course examines data through a modern artificial intelligence (AI) lens, focusing on how data is sourced, prepared, and validated to support AI‑driven systems. Learners explore the role of databases and data architectures in AI, including structured and unstructured data, and examine algorithms and techniques used to enable intelligent applications. Emphasis is placed on preparing, transforming, and validating data for use in AI systems. By the end of the course, learners will be able to support modern data‑driven applications by applying data preparation, transformation, and testing techniques to ensure data quality and reliability for AI applications.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Artificial Intelligence\""}]},
+    {"id":"bsswe-general-physics-i","code":"D845","title":"General Physics I","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-science-content","curriculumAreaEvidence":{"areaOfStudy":"General Science Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D845\",\"courseName\":\"General Physics I\",\"courseDescription\":\"This General Physics course covers fundamental concepts, including Newton’s Laws, forces, motion, energy, waves, electricity, and magnetism, with real-world applications and insights into relativity and quantum theory. Learners will study measurement, forces and motion, Newton’s Laws, centrifugal and centripetal forces, friction, gravity, momentum, collisions, vectors, wave motion, energy, thermodynamics, and electromagnetic waves. Skills developed include scientific literacy, physical science application, systems thinking, and scientific reasoning.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Science Content\""}]},
+    {"id":"bsswe-physics-i-lab-for-programmers","code":"E073","title":"Physics I Lab for Programmers","credits":1,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"physics-content","curriculumAreaEvidence":{"areaOfStudy":"Physics Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E073\",\"courseName\":\"Physics I Lab for Programmers\",\"courseDescription\":\"This course introduces foundational physics through programming-based lab experiences. Students apply the scientific method, analyze experimental data, and communicate results while modeling physical systems. Through applied projects, learners create physics-based simulations and computational artifacts, building practical skills in scientific reasoning, data analysis, and technical communication.\",\"competencyUnits\":\"1\",\"areaOfStudy\":\"Physics Content\""}]},
+    {"id":"bsswe-java-frameworks","code":"D287","title":"Java Frameworks","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D287\",\"courseName\":\"Java Frameworks\",\"courseDescription\":\"Java Frameworks builds object-oriented programming expertise and introduces powerful new tools for Java application development. Students will execute exception handling, Java frameworks, and other object-oriented principles and constructs to develop a complete application including a user interface. This course requires foundational knowledge of object-oriented programming and the Java language. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsswe-health-fitness-and-wellness","code":"C458","title":"Health, Fitness, and Wellness","credits":4,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"C458\",\"courseName\":\"Health, Fitness, and Wellness\",\"courseDescription\":\"Health, Fitness, and Wellness focuses on the importance and foundations of good health and physical fitness, particularly for children and adolescents. This course addresses health, nutrition, and fitness, and substance use and abuse.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsswe-agile-for-software-engineering","code":"E074","title":"Agile for Software Engineering","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"programming","curriculumAreaEvidence":{"areaOfStudy":"Programming","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E074\",\"courseName\":\"Agile for Software Engineering\",\"courseDescription\":\"This course introduces the application of Agile methodology in software engineering, focusing on Scrum, Kanban, and collaborative team practices. Learners apply agile leadership frameworks, communication strategies, and agile processes to contribute effectively to software engineering projects and foster an agile team culture. Successful completion of this course may support learners in pursuing Agile or Scrum‑related certifications offered by the Scrum Alliance.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Programming\""}]},
+    {"id":"bsswe-general-chemistry-i","code":"D843","title":"General Chemistry I","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-science-content","curriculumAreaEvidence":{"areaOfStudy":"General Science Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D843\",\"courseName\":\"General Chemistry I\",\"courseDescription\":\"General Chemistry I introduces foundational principles of chemistry, starting at the atomic level and expanding to the behavior of elements within the periodic table. This course explores how atoms bond to form molecules and proceeds into chemical reactions, acids and bases, solutions, and nuclear reactions. Students will gain a comprehensive understanding of stability and change in chemical processes. This course highlights the practical aspects of chemistry, providing insights into how chemical principles underpin everyday phenomena and contribute to our understanding of environmental processes. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Science Content\""}]},
+    {"id":"bsswe-business-of-it-applications","code":"D336","title":"Business of IT - Applications","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D336\",\"courseName\":\"Business of IT - Applications\",\"courseDescription\":\"Business of IT - Applications examines Information Technology Infrastructure Library (ITIL®) terminology, structure, policies, and concepts. Focusing on the management of information technology (IT) infrastructure, development, and operations, learners will explore the core principles of ITIL practices for service management to prepare them for careers as IT professionals, business managers, and business process owners. This course has no prerequisites.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Business of IT\""}]},
+    {"id":"bsswe-advanced-java","code":"E155","title":"Advanced Java","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E155\",\"courseName\":\"Advanced Java\",\"courseDescription\":\"Advanced Java builds on object-oriented programming expertise by emphasizing multithreaded development and the use of Java frameworks to create scalable, maintainable applications. Learners will apply advanced Java techniques to design and implement software solutions that meet organizational and business requirements. The course also introduces deployment strategies using modern cloud services, enabling learners to deliver and manage applications in distributed environments. This course requires intermediate proficiency in Java and object-oriented programming.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsswe-operating-systems-for-computer-scientists","code":"D686","title":"Operating Systems for Computer Scientists","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D686\",\"courseName\":\"Operating Systems for Computer Scientists\",\"courseDescription\":\"Operating Systems for Computer Scientists focuses on the intricacies of operating systems. This comprehensive course for computer science students covers core principles such as processes, threads, memory management, and file systems, providing students with insights into CPU scheduling algorithms, deadlock handling, and system performance optimization. Additionally, the course delves into security mechanisms, addressing common threats and preventative measures. Through a blend of theoretical concepts and practical applications, students emerge equipped to adeptly navigate operating system features and prepared for real-world challenges in computer science.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Computer Science\""}]},
+    {"id":"bsswe-aws-developer","code":"D321","title":"AWS Developer","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"cloud-and-virtualization","curriculumAreaEvidence":{"areaOfStudy":"Cloud and Virtualization","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D321\",\"courseName\":\"AWS Developer\",\"courseDescription\":\"AWS Developer examines the skills and knowledge needed to effectively implement automated and continuous testing processes for software deployments with cloud solutions. Students will learn to design software with Amazon Web Services (AWS), software development kits (SDKs), and command line interface (CLI), and to implement authentication, encryption, and authorization within an AWS environment. Students will also learn to design cloud service deployments with AWS infrastructure services, platform services, and features. Students will learn skills to monitor automated testing for quality control and to perform root cause analysis on testing or production failures. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Cloud and Virtualization\""}]},
+    {"id":"bsswe-introduction-to-physical-and-human-geography","code":"D199","title":"Introduction to Physical and Human Geography","credits":3,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D199\",\"courseName\":\"Introduction to Physical and Human Geography\",\"courseDescription\":\"This is Introduction to Physical and Human Geography, a three-module course that addresses the question of what geography really is in today\\u0027s complex world; how migration affects—and has been affected by—geography; and one of the biggest present problems related to geography: climate change. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to, with the goal of demonstrating proficiency in the five competencies covered in the final assessment. If you have no prior knowledge of this material, you can expect to spend 30–40 hours on the course content. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsswe-back-end-programming","code":"D288","title":"Back-End Programming","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D288\",\"courseName\":\"Back-End Programming\",\"courseDescription\":\"Back-End Programming introduces students to creating back-end components of a web application with the support of framework packages. This course also teaches students how to implement database functionality in a web application and how to create web services. This course requires intermediate expertise in object-oriented programming and the Java language.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsswe-technical-communication","code":"D339","title":"Technical Communication","credits":3,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D339\",\"courseName\":\"Technical Communication\",\"courseDescription\":\"Technical Communication introduces skills in editing professional communications, evaluating the impact of professional etiquette in digital environments, and in creating artifacts that are persuasive, informational, and research-based. The course also introduces skills in delivering multimedia presentations using professional verbal communication skills.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsswe-software-security-and-testing","code":"D385","title":"Software Security and Testing","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D385\",\"courseName\":\"Software Security and Testing\",\"courseDescription\":\"This course prepares you to recognize security vulnerabilities in software, to plan interventions to address security vulnerabilities where they exist, and to develop and test these interventions. The course covers topics in Web security, permissions, and identity security; debugging; log file analysis; API security; and encryption and cryptography concepts.  \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsswe-software-design-and-quality-assurance","code":"D480","title":"Software Design and Quality Assurance","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D480\",\"courseName\":\"Software Design and Quality Assurance\",\"courseDescription\":\"Software Design and Quality Assurance applies a QA focus to every phase of the software development life cycle. This course investigates best practices for quality analysis, quality planning, and testing strategies as they pertain to the everyday practice of software development. Students will come to understand how their work fits into the bigger picture: how QA, testing, and code-writing practices interact within specific process models; the potential impact of new code on existing code or on other applications; the importance of usability and the influence users have on the ultimate success of an application. Students will explore test plans, test cases, unit tests, integration tests, regression tests, usability tests, and test and review tools.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsswe-american-politics-and-the-us-constitution","code":"C963","title":"American Politics and the US Constitution","credits":3,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"C963\",\"courseName\":\"American Politics and the US Constitution\",\"courseDescription\":\"American Politics and the U.S. Constitution examines the evolution of representative government in the United States and the changing interpretations of the civil rights and civil liberties protected by the Constitution. This course will give candidates an understanding of the powers of the branches of the federal government, the continual tensions inherent in a federal system, the shifting relationship between state and federal governments, and the interactions between elected officials and the ever-changing electorate. This course will focus on such topics as the role of a free press in a democracy, the impact of changing demographics on American politics, and the debates over and expansion of civil rights. Upon completion of the course, candidates should be able to explain the basic functions of the federal government, describe the forces that shape American policy and politics, and be better prepared to participate in America’s civic institutions. This course has no prerequisite. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsswe-special-topics-in-software-engineering-and-ai","code":"E075","title":"Special Topics in Software Engineering and AI","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E075\",\"courseName\":\"Special Topics in Software Engineering and AI\",\"courseDescription\":\"This course explores modern topics, challenges, and emerging solutions in software engineering and artificial intelligence. Students analyze contemporary frameworks, methodologies, and technologies, and apply them to solve real-world problems.\\n\\nThrough applied projects, learners design and develop software solutions, evaluate the use of emerging technologies, and assess technical, ethical, and professional implications. The course culminates in a completed application that demonstrates the ability to analyze, design, and implement a modern software solution.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E075\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsswe-software-engineering","code":"D284","title":"Software Engineering","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"information-technology-management","curriculumAreaEvidence":{"areaOfStudy":"Information Technology Management","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D284\",\"courseName\":\"Software Engineering\",\"courseDescription\":\"Software Engineering introduces the concepts of software engineering to students who have completed the core courses in programming and project management. The principles build on previously acquired concepts, switching the emphasis from programming simple routines to engineering robust and scalable software solutions. This course does not cover programming, but it provides an overview of software engineering processes and their challenging nature, focusing on the need for a disciplined approach to software engineering. A generic process framework provides the groundwork for formal process models. Prescriptive process models such as the Waterfall Model and Agile Development are included. This course also introduces the elements and phases of software engineering, including requirements engineering, design concepts, and software quality. There are no prerequisites for this course. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Information Technology Management\""}]},
+    {"id":"bsswe-applied-software-engineering","code":"E076","title":"Applied Software Engineering","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"software-applications","curriculumAreaEvidence":{"areaOfStudy":"Software Applications","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E076\",\"courseName\":\"Applied Software Engineering\",\"courseDescription\":\"Applied Software Engineering demonstrates full‑stack software solutions by producing comprehensive documentation and building functional applications that integrate front‑end, back‑end, and supporting services. It executes unit testing, revises software based on test outcomes, and documents all updates to ensure accuracy and quality. The course also deploys software applications to a cloud platform, using scripts and containers to deliver consistent, reliable performance across environments.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Software Applications\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E076\",\"transferArea\":\"Non-Transferable\""}]}
   ]
 }

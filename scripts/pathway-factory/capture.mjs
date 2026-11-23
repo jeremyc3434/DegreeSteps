@@ -48,23 +48,37 @@ export async function pdfToText(bytes){
   if(!text)throw Error('The PDF has no text layer; it cannot be captured without OCR.');
   return text+'\n';
 }
-/** Fetches url, stores text + sidecar, returns {path, sidecar, sha256, text}. fetchImpl and now are injectable for tests. */
-export async function capture(url,{dir=capturesRoot,fetchImpl=globalThis.fetch,now=()=>new Date()}={}){
+export const USER_AGENT='DegreeSteps-PathwayFactory/1.0 (+source capture)';
+/**
+ * Fetches url and converts it to capture text without writing anything. Returns {text, sha256, url, finalUrl, contentType,
+ * status}. A non-2xx response throws an Error with .status. timeoutMs (optional) aborts a slow request.
+ */
+export async function fetchPage(url,{fetchImpl=globalThis.fetch,userAgent=USER_AGENT,timeoutMs}={}){
   const parsed=new URL(url);if(!['https:','http:'].includes(parsed.protocol))throw Error('Only http(s) URLs can be captured.');
-  const response=await fetchImpl(url,{redirect:'follow',headers:{'user-agent':'DegreeSteps-PathwayFactory/1.0 (+source capture)','accept':'text/html,text/plain;q=0.9,*/*;q=0.1'}});
-  if(!response.ok)throw Error(`Capture failed: HTTP ${response.status} for ${url}`);
+  const init={redirect:'follow',headers:{'user-agent':userAgent,'accept':'text/html,text/plain;q=0.9,*/*;q=0.1'}};
+  if(timeoutMs)init.signal=AbortSignal.timeout(timeoutMs);
+  const response=await fetchImpl(url,init);
+  if(!response.ok)throw Object.assign(Error(`Capture failed: HTTP ${response.status} for ${url}`),{status:response.status});
   const type=response.headers?.get?.('content-type')||'';
   const bytes=typeof response.arrayBuffer==='function'?new Uint8Array(await response.arrayBuffer()):null;
   const pdf=/pdf/i.test(type)||Boolean(bytes)&&String.fromCharCode(...bytes.slice(0,5))==='%PDF-';
   if(pdf&&!bytes)throw Error('A PDF response must be read as bytes.');
   const body=pdf?'':bytes?new TextDecoder().decode(bytes):await response.text();
   const text=pdf?await pdfToText(bytes):/html/i.test(type)||/^\s*</.test(body)?htmlToText(body):body.replace(/\r\n/g,'\n');
-  const hash=sha256(text),name=hash.slice(0,16);
+  return {text,sha256:sha256(text),url,finalUrl:response.url||url,contentType:type,status:response.status};
+}
+/** Writes a fetched page as <sha256 prefix>.txt plus its JSON sidecar. Returns {path, sidecar, sha256, text, relative}. */
+export async function storeCapture(page,{dir=capturesRoot,now=()=>new Date()}={}){
+  const name=page.sha256.slice(0,16);
   await mkdir(dir,{recursive:true});
   const path=join(dir,name+'.txt'),sidecar=join(dir,name+'.json');
-  await writeFile(path,text);
-  await writeFile(sidecar,JSON.stringify({url,finalUrl:response.url||url,fetchedAt:now().toISOString(),sha256:hash,contentType:type,status:response.status,characters:text.length},null,2)+'\n');
-  return {path,sidecar,sha256:hash,text,relative:path.startsWith(root+'/')?path.slice(root.length+1):path};
+  await writeFile(path,page.text);
+  await writeFile(sidecar,JSON.stringify({url:page.url,finalUrl:page.finalUrl,fetchedAt:now().toISOString(),sha256:page.sha256,contentType:page.contentType,status:page.status,characters:page.text.length},null,2)+'\n');
+  return {path,sidecar,sha256:page.sha256,text:page.text,relative:path.startsWith(root+'/')?path.slice(root.length+1):path};
+}
+/** Fetches url, stores text + sidecar, returns {path, sidecar, sha256, text}. fetchImpl and now are injectable for tests. */
+export async function capture(url,{dir=capturesRoot,fetchImpl=globalThis.fetch,now=()=>new Date(),timeoutMs}={}){
+  return storeCapture(await fetchPage(url,{fetchImpl,timeoutMs}),{dir,now});
 }
 async function main(){
   const args=parseArgs(process.argv.slice(2)),url=args._[0];

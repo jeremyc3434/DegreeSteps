@@ -8,7 +8,8 @@ test('the ten original Study.com choices retain their university-issued evidence
  assert.equal(options.reduce((sum,{row})=>sum+row.credits,0),28);
  for(const {row,option}of options){assert.equal(option.evidence,'published');assert.equal(option.creditSystem,'competency-unit');assert.equal(option.sourceCreditSystem,'semester');assert.equal(option.sourceCredits,3);assert.equal(option.credits,row.credits);assert.match(row.code,/^[CD]\d{3}$/);assert(option.conditions.some(note=>/202605/.test(note)));assert.equal(option.universityMapRecord.programId,240);assert.equal(option.universityMapRecord.agreementId,4429);}
  const finance=business.requirements.find(row=>row.title==='Introduction to Business Finance');assert(finance);assert(!finance.options.some(option=>option.provider==='Study.com'));
- const cs=pack.models.find(model=>/Computer Science/.test(model.title));assert(!cs.requirements.some(row=>row.options.some(option=>option.provider==='Study.com')));
+ // Computer Science never borrows Business Management awards: its outside options are only its own program-scoped WGU agreement maps.
+ const cs=[...pack.models,...require('./dist/data/curricula/wgu-pathway-kit.json').models].find(model=>/Computer Science/.test(model.title));assert(cs.requirements.every(row=>row.options.every(option=>option.provider==='University'||option.universityMapRecord?.programId===cs.curriculumReview.programId&&option.mappingReviewId!=='wgu-bsmgt-240-approved-20261117')));
 });
 test('the four additional Study.com placements are program-scoped and original Math104 credits remain separate from WGU awards',()=>{
  const batch=require('./content/reuse/wgu-business-awards.json'),review=batch.existingPrograms.find(model=>model.modelId===id),refs=new Map(doc.sources.map(source=>[source.id,source]));

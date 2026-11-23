@@ -11,33 +11,221 @@
   "catalog": "202608",
   "totalCredits": 110,
   "review": {
-    "status": "migrated",
-    "source": "content/curricula/wgu.json",
-    "reviewedOn": "2026-11-09"
+    "status": "reviewed",
+    "reviewer": "Claude (pathway factory)",
+    "reviewedOn": "2026-11-23"
   },
+  "sources": [
+    {
+      "id": "wgu-bsit-202608-curriculum-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSIT%3B202608",
+      "title": "Bachelor of Science, Information Technology 202608 complete named CU ledger",
+      "kind": "university",
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 250,
+        "programCode": "BSIT",
+        "catalogYear": "202608",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "retrieval": "Unauthenticated public program-data API GET, captured; every receiving requirement reviewed.",
+      "capture": "content/source-captures/53209f34db8e7d5a.txt"
+    },
+    {
+      "id": "wgu-bsit-202608-metadata-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/IT",
+      "title": "BS Information Technology (Catalog 08-2026) current public academic record and transfer notes",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 250,
+        "programCode": "BSIT",
+        "catalogYear": "202608",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "publicRecordId": 250,
+      "publicRecordVersion": 6,
+      "inactiveProgram": 0,
+      "approvalStatus": "Approved",
+      "retrieval": "Unauthenticated public academic API GET, captured.",
+      "capture": "content/source-captures/c0f1e682efb3df5c.txt",
+      "notes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    {
+      "id": "wgu-bsit-transfer-guidelines-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=250",
+      "title": "BSIT 202608 transfer guidelines: transfer areas and nontransferable courses",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 250,
+        "programCode": "BSIT",
+        "catalogYear": "202608",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "capture": "content/source-captures/03c73bc3a14c946f.txt"
+    },
+    {
+      "id": "wgu-bsit-sophia-7110-v236",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110",
+      "title": "WGU approved Sophia receiving map for BSIT 202608",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Information Technology",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "provider": "Sophia",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 250,
+      "catalogTerm": "202608",
+      "agreementId": 7110,
+      "agreementRecordVersion": 236,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/186d4e3a3fda7a15.txt"
+    },
+    {
+      "id": "wgu-bsit-study-4424-v240",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424",
+      "title": "WGU approved Study.com receiving map for BSIT 202608",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Information Technology",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "provider": "Study.com",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 250,
+      "catalogTerm": "202608",
+      "agreementId": 4424,
+      "agreementRecordVersion": 240,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/3138982ad34dd8f4.txt"
+    },
+    {
+      "id": "wgu-bsit-straighterline-547-v121",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547",
+      "title": "WGU approved StraighterLine receiving map for BSIT 202608",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Information Technology",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "provider": "StraighterLine",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 250,
+      "catalogTerm": "202608",
+      "agreementId": 547,
+      "agreementRecordVersion": 121,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/6abe5f3197b69344.txt"
+    },
+    {
+      "id": "wgu-bsit-saylor-671-v108",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671",
+      "title": "WGU approved Saylor receiving map for BSIT 202608",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Information Technology",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "provider": "Saylor",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 250,
+      "catalogTerm": "202608",
+      "agreementId": 671,
+      "agreementRecordVersion": 108,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/4a1ca634549e22a4.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "wgu-bsit-202608-metadata-20261123",
+      "text": "\"id\":250,\"pamsProgramCode\":\"BSIT\",\"programName\":\"BS Information Technology (Catalog 08-2026)\""
+    }
+  ],
   "policies": {
     "alternativeMaxCredits": {
       "value": 82.5,
       "creditSystem": "competency-unit",
       "sourceIds": [
-        "wgu-sophia-technology-current"
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "WGU publishes that transfer courses may not be used to fulfill more than one course of study; every option placed in more than one requirement carries the single-award condition.",
+      "sourceIds": [
+        "wgu-bsit-202608-metadata-20261123",
+        "wgu-bsit-sophia-7110-v236",
+        "wgu-bsit-saylor-671-v108",
+        "wgu-bsit-study-4424-v240",
+        "wgu-bsit-straighterline-547-v121"
       ]
     }
   },
   "modelFields": {
     "unresolved": [
-      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
       "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
-      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
-      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
+      "WGU's current BSIT ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
     ],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
-      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
-      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+      "Outside options come only from WGU's current published partner agreements for BSIT catalog 202608 (program 250), captured 2026-11-23. Approved partner courses without an independently verified provider identity, and awards that need several source courses together, are held out of the plan.",
+      "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
     ],
-    "mappingCheckedOn": "2026-11-09",
+    "mappingCheckedOn": "2026-11-23",
     "pricing": {
       "model": "subscription",
       "amount": 3925,
@@ -51,393 +239,481 @@
       "notes": [
         "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
       ]
+    },
+    "externalMaxCredits": 82.5,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-bsit-202608-metadata-20261123",
+      "wgu-bsit-202608-curriculum-20261123"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 82.5,
+        "fraction": 0.75,
+        "basisCredits": 110,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 82.5,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bsit-202608-curriculum-20261123"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 35-course, 110-CU BSIT 202608 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "policyCheckedOn": "2026-11-23",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 250,
+      "programCode": "BSIT",
+      "catalog": "202608",
+      "recordVersion": 6,
+      "ledgerSha256": "617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce",
+      "sourceIds": [
+        "wgu-bsit-202608-metadata-20261123",
+        "wgu-bsit-202608-curriculum-20261123"
+      ],
+      "checkedOn": "2026-11-23",
+      "outsideEquivalenciesReviewed": true
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bsit-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 36,
+        "requirementIds": [
+          "bsit-influential-communication-through-visual-design-and-storytelling",
+          "bsit-health-fitness-and-wellness",
+          "bsit-technology-and-ethics-emerging-trends-and-society",
+          "bsit-critical-thinking-reason-and-evidence",
+          "bsit-composition-successful-self-expression",
+          "bsit-introduction-to-systems-thinking-and-applications",
+          "bsit-applied-probability-and-statistics",
+          "bsit-american-politics-and-the-us-constitution",
+          "bsit-applied-algebra",
+          "bsit-technical-communication",
+          "bsit-natural-science-lab",
+          "bsit-global-arts-and-humanities"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-business-of-it",
+        "parentId": "core",
+        "title": "Business of IT",
+        "credits": 8,
+        "requirementIds": [
+          "bsit-business-of-it-applications",
+          "bsit-business-of-it-project-management"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-computer-science",
+        "parentId": "core",
+        "title": "Computer Science",
+        "credits": 2,
+        "requirementIds": [
+          "bsit-practical-applications-of-prompt"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-operating-systems",
+        "parentId": "core",
+        "title": "Operating Systems",
+        "credits": 3,
+        "requirementIds": [
+          "bsit-linux-foundations"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-it-fundamentals",
+        "parentId": "core",
+        "title": "IT Fundamentals",
+        "credits": 25,
+        "requirementIds": [
+          "bsit-it-foundations",
+          "bsit-digital-transformation-in-the-enterprise",
+          "bsit-agile-methodology",
+          "bsit-it-applications",
+          "bsit-technology-management",
+          "bsit-foundations-of-programming-python",
+          "bsit-introduction-to-it",
+          "bsit-business-productivity-software"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-business-core",
+        "parentId": "core",
+        "title": "Business Core",
+        "credits": 3,
+        "requirementIds": [
+          "bsit-fundamentals-of-spreadsheets-and-data-presentations"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-web-development",
+        "parentId": "core",
+        "title": "Web Development",
+        "credits": 3,
+        "requirementIds": [
+          "bsit-web-design-fundamentals"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-network-and-security",
+        "parentId": "core",
+        "title": "Network and Security",
+        "credits": 10,
+        "requirementIds": [
+          "bsit-network-and-security-foundations",
+          "bsit-cloud-applications",
+          "bsit-network-and-security-applications"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-data-management",
+        "parentId": "core",
+        "title": "Data Management",
+        "credits": 7,
+        "requirementIds": [
+          "bsit-data-management-foundations",
+          "bsit-data-management-applications"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-networks",
+        "parentId": "core",
+        "title": "Networks",
+        "credits": 4,
+        "requirementIds": [
+          "bsit-networks"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-information-technology-management",
+        "parentId": "core",
+        "title": "Information Technology Management",
+        "credits": 6,
+        "requirementIds": [
+          "bsit-technology-governance",
+          "bsit-cloud-foundations"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bsit-core-networking",
+        "parentId": "core",
+        "title": "Networking",
+        "credits": 3,
+        "requirementIds": [
+          "bsit-python-for-it-automation"
+        ],
+        "sourceId": "wgu-bsit-202608-curriculum-20261123"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {},
+      "recencySourceIds": [
+        "wgu-bsit-202608-metadata-20261123"
+      ],
+      "publishedNotes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-current-agreement-ledgers-2026-11-23",
+      "checkedOn": "2026-11-23",
+      "programId": 250,
+      "catalog": "202608",
+      "receivingClaimsReviewed": 45,
+      "sourceIdentitiesReusedByExactProviderCode": 29,
+      "sourceIds": [
+        "wgu-bsit-sophia-7110-v236",
+        "wgu-bsit-study-4424-v240",
+        "wgu-bsit-straighterline-547-v121",
+        "wgu-bsit-saylor-671-v108"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 15,
+          "approvedSourceCodeCount": 30,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0005",
+            "SOPH-0006",
+            "SOPH-0013",
+            "SOPH-0027",
+            "SOPH-0029",
+            "SOPH-0076",
+            "SOPH-0080"
+          ],
+          "selectableReceivingPlacements": 7,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0001",
+            "SOPH-0008",
+            "SOPH-0009",
+            "SOPH-0015",
+            "SOPH-0020",
+            "SOPH-0023",
+            "SOPH-0030",
+            "SOPH-0043",
+            "SOPH-0047",
+            "SOPH-0049",
+            "SOPH-0050",
+            "SOPH-0059",
+            "SOPH-0060",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0067",
+            "SOPH-0068",
+            "SOPH-0069",
+            "SOPH-0070",
+            "SOPH-0071",
+            "SOPH-0072",
+            "SOPH-0075",
+            "SOPH-0082"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7110,
+          "agreementRecordVersion": 236,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 16,
+          "approvedSourceCodeCount": 50,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0013",
+            "SDCM-0015",
+            "SDCM-0016",
+            "SDCM-0025",
+            "SDCM-0047",
+            "SDCM-0057",
+            "SDCM-0089",
+            "SDCM-0142",
+            "SDCM-0167",
+            "SDCM-0168",
+            "SDCM-0185",
+            "SDCM-0265"
+          ],
+          "selectableReceivingPlacements": 12,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0010",
+            "SDCM-0032",
+            "SDCM-0033",
+            "SDCM-0034",
+            "SDCM-0042",
+            "SDCM-0051",
+            "SDCM-0056",
+            "SDCM-0058",
+            "SDCM-0068",
+            "SDCM-0073",
+            "SDCM-0087",
+            "SDCM-0088",
+            "SDCM-0118",
+            "SDCM-0130",
+            "SDCM-0132",
+            "SDCM-0160",
+            "SDCM-0161",
+            "SDCM-0164",
+            "SDCM-0165",
+            "SDCM-0188",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0212",
+            "SDCM-0213",
+            "SDCM-0218",
+            "SDCM-0219",
+            "SDCM-0237",
+            "SDCM-0240",
+            "SDCM-0242",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0248",
+            "SDCM-0249",
+            "SDCM-0253",
+            "SDCM-0255",
+            "SDCM-0258",
+            "SDCM-0259"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4424,
+          "agreementRecordVersion": 240,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 8,
+          "approvedSourceCodeCount": 26,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "OOSL-0002",
+            "OOSL-0041"
+          ],
+          "selectableReceivingPlacements": 2,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0003",
+            "OOSL-0005",
+            "OOSL-0006",
+            "OOSL-0011",
+            "OOSL-0012",
+            "OOSL-0016",
+            "OOSL-0018",
+            "OOSL-0019",
+            "OOSL-0034",
+            "OOSL-0059",
+            "OOSL-0060",
+            "OOSL-0063",
+            "OOSL-0066",
+            "OOSL-0070",
+            "OOSL-0083",
+            "OOSL-0084",
+            "OOSL-0085",
+            "OOSL-0086",
+            "OOSL-0090",
+            "OOSL-0109",
+            "OOSL-0115",
+            "OOSL-0119",
+            "OOSL-0120",
+            "OOSL-0123"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 547,
+          "agreementRecordVersion": 121,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 6,
+          "approvedSourceCodeCount": 8,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0011",
+            "SAYA-0027",
+            "SAYA-0036",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0045",
+            "SAYA-0047"
+          ],
+          "selectableReceivingPlacements": 8,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0016"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 671,
+          "agreementRecordVersion": 108,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false
     }
   },
+  "modelSourceIds": [
+    "wgu-bsit-202608-curriculum-20261123",
+    "wgu-bsit-202608-metadata-20261123",
+    "wgu-bsit-transfer-guidelines-20261123",
+    "wgu-bsit-sophia-7110-v236",
+    "wgu-bsit-study-4424-v240",
+    "wgu-bsit-straighterline-547-v121",
+    "wgu-bsit-saylor-671-v108",
+    "wgu-undergraduate-institutional-catalog-202611",
+    "wgu-bsit-tuition",
+    "wgu-global-sophia--soph-0080-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-syllabus-2026-11-18",
+    "saylor-current-provider-credit-list-20261120",
+    "wgu-sophia-business-current",
+    "study-course-sdcm-0025-2026-11",
+    "straighterline-oosl-0002-current-offering-20261120",
+    "straighterline-oosl-0002-ace-exhibit-20261120",
+    "study-current-sdcm-0013-2026-11-20",
+    "study-current-sdcm-0015-2026-11-20",
+    "study-current-sdcm-0016-2026-11-20",
+    "wgu-global-sophia--soph-0006-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0006-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0006-current-syllabus-2026-11-18",
+    "wgu-global-sophia--soph-0027-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0027-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0027-current-syllabus-2026-11-18",
+    "wgu-global-sophia--soph-0029-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0029-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0029-current-syllabus-2026-11-18",
+    "sophia-soph-0076-syllabus-2026-11-20",
+    "straighterline-oosl-0041-course-page-2026-11-20",
+    "study-current-sdcm-0047-2026-11-20",
+    "study-current-sdcm-0142-2026-11-20",
+    "study-current-sdcm-0167-2026-11-20",
+    "study-current-sdcm-0168-2026-11-20",
+    "study-current-sdcm-0185-2026-11-20",
+    "study-current-sdcm-0057-2026-11-20",
+    "study-current-sdcm-0089-2026-11-20",
+    "study-course-sdcm-0265-2026-11"
+  ],
   "requirements": [
-    {
-      "id": "bsit-introduction-to-it",
-      "code": "",
-      "title": "Introduction to IT",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-business-productivity-software",
-      "code": "",
-      "title": "Business Productivity Software",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-influential-communication-through-visual-design-and-storytelling",
-      "code": "",
-      "title": "Influential Communication through Visual Design and Storytelling",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-health-fitness-and-wellness",
-      "code": "",
-      "title": "Health, Fitness, and Wellness",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-technology-and-ethics-emerging-trends-and-society",
-      "code": "",
-      "title": "Technology and Ethics: Emerging Trends and Society",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-critical-thinking-reason-and-evidence",
-      "code": "",
-      "title": "Critical Thinking: Reason and Evidence",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-business-of-it-applications",
-      "code": "",
-      "title": "Business of IT - Applications",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-composition-successful-self-expression",
-      "code": "",
-      "title": "Composition: Successful Self-Expression",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-introduction-to-systems-thinking-and-applications",
-      "code": "",
-      "title": "Introduction to Systems Thinking and Applications",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-business-of-it-project-management",
-      "code": "",
-      "title": "Business of IT - Project Management",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-applied-probability-and-statistics",
-      "code": "",
-      "title": "Applied Probability and Statistics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-practical-applications-of-prompt",
-      "code": "",
-      "title": "Practical Applications of Prompt",
-      "credits": 2,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-linux-foundations",
-      "code": "",
-      "title": "Linux Foundations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-it-foundations",
-      "code": "",
-      "title": "IT Foundations",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-american-politics-and-the-us-constitution",
-      "code": "",
-      "title": "American Politics and the US Constitution",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-digital-transformation-in-the-enterprise",
-      "code": "",
-      "title": "Digital Transformation in the Enterprise",
-      "credits": 2,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-fundamentals-of-spreadsheets-and-data-presentations",
-      "code": "",
-      "title": "Fundamentals of Spreadsheets and Data Presentations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-agile-methodology",
-      "code": "",
-      "title": "Agile Methodology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-it-applications",
-      "code": "",
-      "title": "IT Applications",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-technology-management",
-      "code": "",
-      "title": "Technology Management",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-web-design-fundamentals",
-      "code": "",
-      "title": "Web Design Fundamentals",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-network-and-security-foundations",
-      "code": "",
-      "title": "Network and Security - Foundations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-applied-algebra",
-      "code": "",
-      "title": "Applied Algebra",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-cloud-applications",
-      "code": "",
-      "title": "Cloud Applications",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-data-management-foundations",
-      "code": "",
-      "title": "Data Management - Foundations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-networks",
-      "code": "",
-      "title": "Networks",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-technical-communication",
-      "code": "",
-      "title": "Technical Communication",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-natural-science-lab",
-      "code": "",
-      "title": "Natural Science Lab",
-      "credits": 2,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-global-arts-and-humanities",
-      "code": "",
-      "title": "Global Arts and Humanities",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-network-and-security-applications",
-      "code": "",
-      "title": "Network and Security - Applications",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-foundations-of-programming-python",
-      "code": "",
-      "title": "Foundations of Programming (Python)",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-technology-governance",
-      "code": "",
-      "title": "Technology Governance",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-data-management-applications",
-      "code": "",
-      "title": "Data Management - Applications",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-python-for-it-automation",
-      "code": "",
-      "title": "Python for IT Automation",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bsit-cloud-foundations",
-      "code": "",
-      "title": "Cloud Foundations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsit-guide"
-      ],
-      "institutionalOnly": false
-    }
+    {"id":"bsit-influential-communication-through-visual-design-and-storytelling","code":"D246","title":"Influential Communication through Visual Design and Storytelling","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D246\",\"courseName\":\"Influential Communication through Visual Design and Storytelling\",\"courseDescription\":\"Influential Communication through Visual Design and Storytelling provides learners with foundational visual design and storytelling techniques to influence and create a lasting impression on audiences. Learners will first explore how human behavior is influenced by visuals and when to apply visual techniques to better communicate with audiences. Next, learners will learn techniques for creating compelling stories that create memorable images within the audience\\u0027s mind. Ultimately, learners who master these skills will be well-positioned to apply their visual and storytelling techniques to not only better communicate their thoughts and ideas to an audience, but to also influence or motivate them.\\r\\n\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-health-fitness-and-wellness","code":"C458","title":"Health, Fitness, and Wellness","credits":4,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"C458\",\"courseName\":\"Health, Fitness, and Wellness\",\"courseDescription\":\"Health, Fitness, and Wellness focuses on the importance and foundations of good health and physical fitness, particularly for children and adolescents. This course addresses health, nutrition, and fitness, and substance use and abuse.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-technology-and-ethics-emerging-trends-and-society","code":"D773","title":"Technology and Ethics: Emerging Trends and Society","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D773\",\"courseName\":\"Technology and Ethics: Emerging Trends and Society\",\"courseDescription\":\"Technology and Ethics: Emerging Trends and Society explores the intersection of ethical thinking and technological innovations. A foundational introduction to ethical frameworks is applied to emerging trends in technology, including artificial intelligence, social media, and other forms of digital media. This course examines the impact of technology on our understanding of self, as well as the individual’s role in interacting with others in a globalized society. The course helps students gain the ability to recognize ethical actions within the context of current and newly evolving technological landscapes. This course has no prerequisites.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-critical-thinking-reason-and-evidence","code":"D265","title":"Critical Thinking: Reason and Evidence","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D265\",\"courseName\":\"Critical Thinking: Reason and Evidence\",\"courseDescription\":\"In this course you will learn key critical thinking concepts and how to apply them in the analysis and evaluation of reasons and evidence. The course examines the basic components of an argument, the credibility of evidence sources, the impact of bias, and how to construct an argument that provides good support for a claim. The course consists of an introduction and four major sections. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the four competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-business-of-it-applications","code":"D336","title":"Business of IT - Applications","credits":4,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D336\",\"courseName\":\"Business of IT - Applications\",\"courseDescription\":\"Business of IT - Applications examines Information Technology Infrastructure Library (ITIL®) terminology, structure, policies, and concepts. Focusing on the management of information technology (IT) infrastructure, development, and operations, learners will explore the core principles of ITIL practices for service management to prepare them for careers as IT professionals, business managers, and business process owners. This course has no prerequisites.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Business of IT\""}]},
+    {"id":"bsit-composition-successful-self-expression","code":"D270","title":"Composition: Successful Self-Expression","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D270\",\"courseName\":\"Composition: Successful Self-Expression\",\"courseDescription\":\"Welcome to Composition: Successful Self-Expression! In this course, you will focus on four main topics: professional writing for a cross-cultural audience, narrowing research topics and questions, researching for content to support a topic, and referencing research sources. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the seven competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content. You will demonstrate competency through a performance assessment. There is no prerequisite for this course and there is no specific technical knowledge needed.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-introduction-to-systems-thinking-and-applications","code":"D459","title":"Introduction to Systems Thinking and Applications","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D459\",\"courseName\":\"Introduction to Systems Thinking and Applications\",\"courseDescription\":\"Introduction to Systems Thinking and Applications provides learners with the skills required to engage in a holistic systems-based approach to analyzing complex problems and solutions. This course introduces the foundational concepts and principles of systems thinking and provides opportunities to use a systems thinking approach to analyze and evaluate real-world case studies. The course will culminate with using systems thinking to develop a solution to an authentic complex problem. This course has no prerequisites, but general education math (C955 or C957) is preferred. Because the course is self-paced, learners may move through the material as quickly or as slowly as needed, with the goal of demonstrating proficiency in the five competencies covered in the final assessment. If learners have no prior knowledge of this material, they can expect to spend 30 to 40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-business-of-it-project-management","code":"D324","title":"Business of IT - Project Management","credits":4,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D324\",\"courseName\":\"Business of IT - Project Management\",\"courseDescription\":\"In this course, students will build on industry standard concepts, techniques, and processes to develop a comprehensive foundation for project management activities. During a project\\u0027s life cycle, students will develop the critical skills necessary to initiate, plan, execute, monitor, control, and close a project. Students will apply best practices in areas such as scope management, resource allocation, project planning, project scheduling, quality control, risk management, performance measurement, and project reporting. This course prepares students for the following certification exam: CompTIA Project+.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Business of IT\""}]},
+    {"id":"bsit-applied-probability-and-statistics","code":"C955","title":"Applied Probability and Statistics","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"C955\",\"courseName\":\"Applied Probability and Statistics\",\"courseDescription\":\"Applied Probability and Statistics is designed to help students develop competence in the fundamental concepts of basic statistics including: introductory algebra and graphing; descriptive statistics; regression and correlation; and probability. Statistical data and probability are often used in everyday life, science, business, information technology, and educational settings to make informed decisions about the validity of studies and the effect of data on decisions. This course discusses what constitutes sound research design and how to appropriately model phenomena using statistical data. Additionally, the content covers simple probability calculations, based on events that occur in the business and IT industries. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-practical-applications-of-prompt","code":"D685","title":"Practical Applications of Prompt","credits":2,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D685\",\"courseName\":\"Practical Applications of Prompt\",\"courseDescription\":\"The Practical Applications of Prompt course introduces learners to generative artificial intelligence (AI). This course aims to allow learners to gain skills for writing effective prompts and develop more effective conversations with artificial intelligence. Practical Applications of Prompt will lead learners to explore why prompt engineering is necessary. The course also aims to help learners, regardless of background, increase prompt fluency, which is fluency in using prompt effectively. The course teaches learners how to create effective prompts to elicit information with consideration of scope, specificity, and context; additionally, it teaches learners to evaluate the medium of the prompt and adjust prompts to output relevant results. The last section of the course focuses on ways to evaluate the efficacy of prompts and improve the depth and quality of analytical investigations. This approach prepares students to navigate the complexities of working with generative AI and use these skills effectively throughout their careers.\",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Computer Science\""}]},
+    {"id":"bsit-linux-foundations","code":"D281","title":"Linux Foundations","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"operating-systems","curriculumAreaEvidence":{"areaOfStudy":"Operating Systems","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D281\",\"courseName\":\"Linux Foundations\",\"courseDescription\":\"Linux Foundations prepares learners for the LPI Linux Essentials certification, and is an introduction to Linux as an operating system as well as an introduction to open-source concepts and the basics of the Linux command line. Learners will gain skills in identifying the fundamentals of open-source software and to develop resources for data access and security.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Operating Systems\""}]},
+    {"id":"bsit-it-foundations","code":"D316","title":"IT Foundations","credits":4,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D316\",\"courseName\":\"IT Foundations\",\"courseDescription\":\"IT Foundations provides learners with an understanding of personal computer components and their functions in a desktop system; a knowledge of computer data storage and retrieval; and skills in classifying, installing, configuring, optimizing, upgrading, and troubleshooting printers, laptops, portable devices, operating systems, networks, and system security. This course also gives learners the ability to recommend appropriate tools, diagnostic procedures, preventative maintenance, and troubleshooting techniques for personal computer components in a desktop system; strategies for identifying, preventing, and reporting safety hazards and environmental or human accidents in technological environments; and effective communication skills for interacting with colleagues and clients, including job-related professional behavior. The course prepares learners for the CompTIA A+ Core 1 certification exam.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bsit-american-politics-and-the-us-constitution","code":"C963","title":"American Politics and the US Constitution","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"C963\",\"courseName\":\"American Politics and the US Constitution\",\"courseDescription\":\"American Politics and the U.S. Constitution examines the evolution of representative government in the United States and the changing interpretations of the civil rights and civil liberties protected by the Constitution. This course will give candidates an understanding of the powers of the branches of the federal government, the continual tensions inherent in a federal system, the shifting relationship between state and federal governments, and the interactions between elected officials and the ever-changing electorate. This course will focus on such topics as the role of a free press in a democracy, the impact of changing demographics on American politics, and the debates over and expansion of civil rights. Upon completion of the course, candidates should be able to explain the basic functions of the federal government, describe the forces that shape American policy and politics, and be better prepared to participate in America’s civic institutions. This course has no prerequisite. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-digital-transformation-in-the-enterprise","code":"E006","title":"Digital Transformation in the Enterprise","credits":2,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123","wgu-bsit-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"E006\",\"courseName\":\"Digital Transformation in the Enterprise\",\"courseDescription\":\"Digital Transformation in the Enterprise provides an in-depth exploration of digital transformation within modern organizations. Students will evaluate emerging technologies and their potential to drive organizational improvement, focusing on the strategic assessment and integration of technology to enhance business processes and performance. The course covers the latest trends in digital innovation, methods for assessing and selecting appropriate technology solutions, and strategies for implementing digital transformation initiatives. By the end of the course, students will be equipped with the skills necessary to analyze business needs, propose technology solutions, and effectively manage the change associated with digital transformation. This course is designed for students who aspire to lead or contribute to digital transformation efforts in their organizations, ensuring they are prepared to leverage technology to create a competitive advantage in the rapidly evolving business landscape. There are no prerequisites for this course.\",\"competencyUnits\":\"2\",\"areaOfStudy\":\"IT Fundamentals\""},{"sourceId":"wgu-bsit-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E006\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsit-fundamentals-of-spreadsheets-and-data-presentations","code":"D388","title":"Fundamentals of Spreadsheets and Data Presentations","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D388\",\"courseName\":\"Fundamentals of Spreadsheets and Data Presentations\",\"courseDescription\":\"Fundamentals of Spreadsheets and Data Presentations offers learners an overview of the use of spreadsheet functions and methods for presenting data within spreadsheets. Learners will have the opportunity to explore features and uses of MS Excel and apply the tools to situations they may encounter while studying in their program. They will also be introduced to real world uses and tools to collect, organize and present data.  \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bsit-agile-methodology","code":"E007","title":"Agile Methodology","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"E007\",\"courseName\":\"Agile Methodology\",\"courseDescription\":\"Agile Methodology introduces students to agile\\u0027s principles, practices, and mindset, focusing on adaptability, collaboration, and value delivery in dynamic team environments. This course explores how agile methodologies such as scrum, Kanban, and Lean empower teams to respond to change, prioritize meaningful work, and achieve shared goals through iterative progress. Students will develop skills in facilitating agile ceremonies, managing backlogs, and fostering transparency and alignment while building cohesive, self-organizing teams that value inclusivity and psychological safety. Through real-world scenarios and hands-on exercises, students will embrace agile values and principles to enhance collaboration, continuous improvement, and success across diverse contexts. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bsit-it-applications","code":"D317","title":"IT Applications","credits":4,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D317\",\"courseName\":\"IT Applications\",\"courseDescription\":\"IT Applications introduces skills in identifying operating systems and their configurations and in implementing security principles across devices and networks. Learners will also gain skills in troubleshooting software, security, and malware issues, and in implementing basic operational procedures in documentation, change management, compliance, and communication. The course will introduce basic disaster recovery and business continuity procedures, scripting basics, and remote access technology solutions.  The course prepares learners for the CompTIA A+ Core 2 certification exam.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bsit-technology-management","code":"E008","title":"Technology Management","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"E008\",\"courseName\":\"Technology Management\",\"courseDescription\":\"Technology Management provides learners with the knowledge and skills needed to manage and troubleshoot technology systems within an organization. This course will enable students to diagnose, prioritize, and resolve technical issues. The course also emphasizes the importance of collaboration and communication within teams to support a cohesive organizational culture. By the end of the course, students will be equipped to identify and address technology issues, communicate effectively with both technical and nontechnical stakeholders, and work within and influence the organizational culture to support technology management initiatives. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bsit-web-design-fundamentals","code":"E009","title":"Web Design Fundamentals","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"web-development","curriculumAreaEvidence":{"areaOfStudy":"Web Development","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"E009\",\"courseName\":\"Web Design Fundamentals\",\"courseDescription\":\"Web Design Fundamentals provides students with essential web development skills, guiding them through the creation of accessible, responsive, and interactive web pages. This course will enable students to gain hands-on experience in HTML, CSS, and foundational JavaScript. The course will also focus on teaching students how to structure content, apply styling, and add dynamic functionality to enhance user engagement. Emphasizing industry best practices, this course covers key aspects of web accessibility, focusing on WCAG compliance, along with core UX and UI principles to ensure usability for diverse audiences. By the end of the course, students will have a comprehensive toolkit for designing web pages that are not only visually compelling but also technically sound and adaptable to various devices and user needs. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Web Development\""}]},
+    {"id":"bsit-network-and-security-foundations","code":"D315","title":"Network and Security - Foundations","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"network-and-security","curriculumAreaEvidence":{"areaOfStudy":"Network and Security","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D315\",\"courseName\":\"Network and Security - Foundations\",\"courseDescription\":\"Network and Security - Foundations introduces learners to the basic network systems and concepts related to networking technologies. Learners will gain skills in applying network security concepts for business continuity, data access, and confidentiality, and in identifying solutions for compliance with security guidance.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Network and Security\""}]},
+    {"id":"bsit-applied-algebra","code":"C957","title":"Applied Algebra","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"C957\",\"courseName\":\"Applied Algebra\",\"courseDescription\":\"Applied Algebra is designed to help you develop competence in working with functions, the algebra of functions, and using some applied properties of functions. You will start learning about how we can apply different kinds of functions to relevant, real-life examples. From there, the algebra of several families of functions will be explored, including linear, polynomial, exponential, and logistic functions. You will also learn about relevant, applicable mathematical properties of each family of functions, including rate of change, concavity, maximizing/minimizing, and asymptotes. These properties will be used to solve problems related to your major and make sense of everyday living problems. Students should complete Applied Probability and Statistics or its equivalent prior to engaging in Applied Algebra.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-cloud-applications","code":"D318","title":"Cloud Applications","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"network-and-security","curriculumAreaEvidence":{"areaOfStudy":"Network and Security","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D318\",\"courseName\":\"Cloud Applications\",\"courseDescription\":\"Cloud Applications prepares learners for the CompTIA Cloud+ certification exam. Learners will gain skills in designing cloud infrastructure and services and in recommending cloud security solutions, policies, and procedures. The course will also introduce skills in deploying cloud solutions for storage, networking, and security, and in managing cloud operations with processes, procedures, and improvements. Learners will also gain skills in troubleshooting cloud services issues in networking, security, and performance.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Network and Security\""}]},
+    {"id":"bsit-data-management-foundations","code":"D426","title":"Data Management - Foundations","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"data-management","curriculumAreaEvidence":{"areaOfStudy":"Data Management","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D426\",\"courseName\":\"Data Management - Foundations\",\"courseDescription\":\"Data Management Foundations offers an introduction in creating conceptual, logical and physical data models.  Students gain skills in creating databases and tables in SQL-enabled database management systems, as well as skills in normalizing databases. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Data Management\""}]},
+    {"id":"bsit-networks","code":"D325","title":"Networks","credits":4,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"networks","curriculumAreaEvidence":{"areaOfStudy":"Networks","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D325\",\"courseName\":\"Networks\",\"courseDescription\":\"Networks introduces skills in configuring networking components and a network infrastructure. Learners will gain skills in optimizing network operations for availability, performance, and security, and in troubleshooting network issues. The course prepares learners for the CompTIA Network+ certification exam. Network and Security - Foundations is a prerequisite for this course.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Networks\""}]},
+    {"id":"bsit-technical-communication","code":"D339","title":"Technical Communication","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D339\",\"courseName\":\"Technical Communication\",\"courseDescription\":\"Technical Communication introduces skills in editing professional communications, evaluating the impact of professional etiquette in digital environments, and in creating artifacts that are persuasive, informational, and research-based. The course also introduces skills in delivering multimedia presentations using professional verbal communication skills.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-natural-science-lab","code":"C683","title":"Natural Science Lab","credits":2,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"C683\",\"courseName\":\"Natural Science Lab\",\"courseDescription\":\"This course provides students an introduction to using the scientific method and engaging in scientific research to reach conclusions about the natural world. Students will design and carry out an experiment in the natural sciences to investigate a hypothesis by gathering quantitative data. They will also research a specific topic in the natural sciences using academic sources and draw conclusions from their findings.\",\"competencyUnits\":\"2\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-global-arts-and-humanities","code":"D198","title":"Global Arts and Humanities","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D198\",\"courseName\":\"Global Arts and Humanities\",\"courseDescription\":\"This is a Global Arts and Humanities course that contains three modules with corresponding lessons. This course is an invitation to see the world through the humanities, examine the humanities during the Information Age, and explore the global origins of music—essentially questioning what makes us human, and how people are connected across culture and time. Each module includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to practice and check learning. With no prior knowledge or experience, a learner can expect to spend 30-40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsit-network-and-security-applications","code":"D329","title":"Network and Security - Applications","credits":4,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"network-and-security","curriculumAreaEvidence":{"areaOfStudy":"Network and Security","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D329\",\"courseName\":\"Network and Security - Applications\",\"courseDescription\":\"Network and Security - Applications prepares learners for the CompTIA Security+ certification exam. The course introduces learners to skills in identifying threats, attacks, and vulnerabilities to organizational security. The learner will also gain skills in designing security solutions for enterprise infrastructures and architectures, as well as in implementing security solutions across hardware, applications, and network services. Learners will be able to execute operations and incident response with tools, policies, forensics, and mitigation techniques, and to analyze information security controls, governance, risk, and compliance.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Network and Security\""}]},
+    {"id":"bsit-foundations-of-programming-python","code":"E010","title":"Foundations of Programming (Python)","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"E010\",\"courseName\":\"Foundations of Programming (Python)\",\"courseDescription\":\"Foundations of Programming (Python) introduces students to the fundamental principles of programming using Python. This course is designed to equip students with the essential skills needed to write, troubleshoot, and debug simple Python programs. Students will explore the syntax and structure of Python, develop an understanding of variables, loops, and conditional statements, and learn to work within different development environments, including integrated development environments (IDEs) and text editors. By the end of the course, students will be able to create functional Python programs, manipulate data structures, and apply debugging techniques across various platforms. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bsit-technology-governance","code":"D822","title":"Technology Governance","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"information-technology-management","curriculumAreaEvidence":{"areaOfStudy":"Information Technology Management","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D822\",\"courseName\":\"Technology Governance\",\"courseDescription\":\"Technology Governance equips students with strategic frameworks and practices essential for effective governance in technology. The course covers the entire lifecycle of technology governance, including establishing governance structures and leadership techniques for enforcing these frameworks. Key themes include the evaluation of various technology governance models, the development of IT leadership skills, and the strategic integration of technology to meet business objectives. The course is aligned with COBIT, ITIL, CMMI, and ISO frameworks, emphasizing their application in real-world scenarios. Ethical considerations and social responsibility in technological governance are also explored.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Information Technology Management\""}]},
+    {"id":"bsit-data-management-applications","code":"D427","title":"Data Management - Applications","credits":4,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"data-management","curriculumAreaEvidence":{"areaOfStudy":"Data Management","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D427\",\"courseName\":\"Data Management - Applications\",\"courseDescription\":\"Data Management - Applications covers conceptual data modeling and introduces MySQL. Students will learn how to create simple to complex SELECT queries, including subqueries and joins, and how to use SQL to update and delete data. Topics covered in this course include exposure to MySQL; creating and modifying databases, tables, views, foreign keys and primary keys (FKs and PKs), and indexes; populating tables; and developing simple Select-From-Where (SFW) queries to complex 3+ table join queries. The following course is a prerequisite: Data Management - Foundations.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Data Management\""}]},
+    {"id":"bsit-introduction-to-it","code":"E004","title":"Introduction to IT","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"E004\",\"courseName\":\"Introduction to IT\",\"courseDescription\":\"Introduction to IT introduces the fundamental concepts, structures, and roles of information technology (IT) within an organization. The course is structured to provide a comprehensive understanding of the various aspects of IT, including networking, database management, cybersecurity, artificial intelligence (AI), and software development. This course also explores the essential components of the typical technology infrastructure for various types of organizations, the role and interaction of each component, and the evolving nature of technology and its implications for business practices. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bsit-python-for-it-automation","code":"D522","title":"Python for IT Automation","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123","wgu-bsit-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"networking","curriculumAreaEvidence":{"areaOfStudy":"Networking","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D522\",\"courseName\":\"Python for IT Automation\",\"courseDescription\":\"Python for IT Automation covers the fundamentals of the Python language and its features to control program flow, inform decisions, and automate IT tasks and processes. The course emphasizes a systematic approach to solving problems and the application of programming logic to administer secure, scalable, and resilient IT networks and systems. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Networking\""},{"sourceId":"wgu-bsit-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D522\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsit-business-productivity-software","code":"E005","title":"Business Productivity Software","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123","wgu-bsit-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"E005\",\"courseName\":\"Business Productivity Software\",\"courseDescription\":\"Business Productivity Software prepares students to effectively use business productivity software to enhance efficiency, streamline communication, and support collaboration for their personal projects within an IT team setting. The course will explore a range of productivity software, including communication, collaboration, organization, and presentation software. The course covers each tool’s features and functions, how the tools contribute to optimizing productivity, and their role in facilitating clear communication and collaborative efforts. The course examines how to use these tools for productivity while following their organizations’ technology policies and best practices. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"IT Fundamentals\""},{"sourceId":"wgu-bsit-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E005\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsit-cloud-foundations","code":"D282","title":"Cloud Foundations","credits":3,"category":"core","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"information-technology-management","curriculumAreaEvidence":{"areaOfStudy":"Information Technology Management","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D282\",\"courseName\":\"Cloud Foundations\",\"courseDescription\":\"Cloud Foundations introduces learners to real-world issues and practical solutions to cloud computing. This course covers the business value of cloud computing, examining cloud types, the steps to successful cloud adoption, and the effect cloud adoption has on IT service management, as well as the risks and consequences of implementing cloud solutions. This course prepares learners for the AWS Certified Practitioner certification exam. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Information Technology Management\""}]}
   ]
 }

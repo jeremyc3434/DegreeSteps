@@ -8,36 +8,227 @@
   ],
   "title": "Project Management – B.S.",
   "level": "bachelor",
-  "catalog": "Published program guide; catalog version needs confirmation",
+  "catalog": "202607",
   "totalCredits": 120,
   "review": {
-    "status": "migrated",
-    "source": "content/curricula/wgu.json",
-    "reviewedOn": "2026-11-09"
+    "status": "reviewed",
+    "reviewer": "Claude (pathway factory)",
+    "reviewedOn": "2026-11-23"
   },
+  "sources": [
+    {
+      "id": "wgu-bspm-202607-curriculum-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSPM%3B202607",
+      "title": "Bachelor of Science, Project Management 202607 complete named CU ledger",
+      "kind": "university",
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 243,
+        "programCode": "BSPM",
+        "catalogYear": "202607",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "retrieval": "Unauthenticated public program-data API GET, captured; every receiving requirement reviewed.",
+      "capture": "content/source-captures/1805741d1836a237.txt"
+    },
+    {
+      "id": "wgu-bspm-202607-metadata-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/BU",
+      "title": "BS Project Management (Catalog 07-2026) current public academic record and transfer notes",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 243,
+        "programCode": "BSPM",
+        "catalogYear": "202607",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "publicRecordId": 243,
+      "publicRecordVersion": 8,
+      "inactiveProgram": 0,
+      "approvalStatus": "Approved",
+      "retrieval": "Unauthenticated public academic API GET, captured.",
+      "capture": "content/source-captures/c9033a03068b5300.txt",
+      "notes": {
+        "notesNonTransfer": "Project Management must have been taken within the past 5 years.",
+        "notesCore": "Fundamentals of Spreadsheets and Data Presentations must have been taken within the past 5 years.",
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    {
+      "id": "wgu-bspm-transfer-guidelines-20261123",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=243",
+      "title": "BSPM 202607 transfer guidelines: transfer areas and nontransferable courses",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-23",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 243,
+        "programCode": "BSPM",
+        "catalogYear": "202607",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "capture": "content/source-captures/cfdd2de484070237.txt"
+    },
+    {
+      "id": "wgu-bspm-sophia-7112-v190",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112",
+      "title": "WGU approved Sophia receiving map for BSPM 202607",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Project Management – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202607"
+      },
+      "provider": "Sophia",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 243,
+      "catalogTerm": "202607",
+      "agreementId": 7112,
+      "agreementRecordVersion": 190,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/2d9765176d6e88ab.txt"
+    },
+    {
+      "id": "wgu-bspm-study-4429-v114",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429",
+      "title": "WGU approved Study.com receiving map for BSPM 202607",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Project Management – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202607"
+      },
+      "provider": "Study.com",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 243,
+      "catalogTerm": "202607",
+      "agreementId": 4429,
+      "agreementRecordVersion": 114,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/7f6daf948d176648.txt"
+    },
+    {
+      "id": "wgu-bspm-straighterline-550-v66",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/550",
+      "title": "WGU approved StraighterLine receiving map for BSPM 202607",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Project Management – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202607"
+      },
+      "provider": "StraighterLine",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 243,
+      "catalogTerm": "202607",
+      "agreementId": 550,
+      "agreementRecordVersion": 66,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/2183ac3b1ceebdb1.txt"
+    },
+    {
+      "id": "wgu-bspm-saylor-668-v78",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/668",
+      "title": "WGU approved Saylor receiving map for BSPM 202607",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Project Management – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202607"
+      },
+      "provider": "Saylor",
+      "checked": "2026-11-23",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 243,
+      "catalogTerm": "202607",
+      "agreementId": 668,
+      "agreementRecordVersion": 78,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/bcb2781564d893c4.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "wgu-bspm-202607-metadata-20261123",
+      "text": "\"id\":243,\"pamsProgramCode\":\"BSPM\",\"programName\":\"BS Project Management (Catalog 07-2026)\""
+    }
+  ],
   "policies": {
     "alternativeMaxCredits": {
       "value": 90,
       "creditSystem": "competency-unit",
       "sourceIds": [
-        "wgu-sophia-business-current"
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "WGU publishes that transfer courses may not be used to fulfill more than one course of study; every option placed in more than one requirement carries the single-award condition.",
+      "sourceIds": [
+        "wgu-bspm-202607-metadata-20261123",
+        "wgu-bspm-saylor-668-v78",
+        "wgu-bspm-sophia-7112-v190",
+        "wgu-bspm-straighterline-550-v66",
+        "wgu-bspm-study-4429-v114"
       ]
     }
   },
   "modelFields": {
     "unresolved": [
-      "Confirm the student’s applicable program catalog; the official program-guide version is recorded above.",
       "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-      "WGU course identifiers are not printed in the guide; titles are retained without invented course codes.",
-      "Confirm the exact residency calculation, including the capstone exclusion, with WGU. No guessed numeric institutional minimum or overall transfer cap is assigned.",
       "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
     ],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
-      "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
-      "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories."
+      "Outside options come only from WGU's current published partner agreements for BSPM catalog 202607 (program 243), captured 2026-11-23. Approved partner courses without an independently verified provider identity, and awards that need several source courses together, are held out of the plan.",
+      "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
+      "Project Management must have been taken within the past 5 years.",
+      "Fundamentals of Spreadsheets and Data Presentations must have been taken within the past 5 years.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
     ],
-    "mappingCheckedOn": "2026-11-09",
+    "mappingCheckedOn": "2026-11-23",
     "pricing": {
       "model": "subscription",
       "amount": 3830,
@@ -51,437 +242,512 @@
       "notes": [
         "Published tuition per six-month term. Confirm current mandatory fees, materials, financial-aid eligibility and the applicable program catalog. This is not a quoted total degree cost."
       ]
+    },
+    "externalMaxCredits": 90,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-undergraduate-residency-policy-23797-20260918",
+      "wgu-bspm-202607-metadata-20261123",
+      "wgu-bspm-202607-curriculum-20261123"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "fraction": 0.75,
+        "basisCredits": 120,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 90,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bspm-202607-curriculum-20261123"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 39-course, 120-CU BSPM 202607 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "residencyPolicy": {
+      "type": "institution-fraction-with-capstone-exclusion",
+      "creditScope": "active-program",
+      "creditSystem": "competency-unit",
+      "fraction": 0.25,
+      "capstoneRequirementIds": [
+        "bspm-applied-project-management-capstone"
+      ],
+      "capstoneCredits": 4,
+      "sourceIds": [
+        "wgu-undergraduate-residency-policy-23797-20260918",
+        "wgu-bspm-202607-curriculum-20261123",
+        "wgu-bspm-transfer-guidelines-20261123"
+      ],
+      "interpretationStatus": "verified-additional-capstone",
+      "calculatedMinimumInstitutionCUs": 34,
+      "primaryPolicySections": [
+        "IV.2",
+        "IV.3.a",
+        "IV.3.b.i"
+      ],
+      "conservativeSufficientCondition": {
+        "minimumNonCapstoneInstitutionCUs": 30,
+        "basisCredits": 120,
+        "derivation": "25% of active undergraduate degree CUs earned directly in that WGU program, in addition to required capstone CUs."
+      },
+      "capstoneEvidence": "E062 Applied Project Management Capstone is the program's only course named as a capstone in the current ledger and is listed as Non-Transferable in the program's transfer guidelines.",
+      "notes": [
+        "Only passed CUs earned within the active WGU program count toward this rule. Prior WGU or other outside credit is not automatically counted as active-program residency."
+      ]
+    },
+    "policyCheckedOn": "2026-11-23",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 243,
+      "programCode": "BSPM",
+      "catalog": "202607",
+      "recordVersion": 8,
+      "ledgerSha256": "37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f",
+      "sourceIds": [
+        "wgu-bspm-202607-metadata-20261123",
+        "wgu-bspm-202607-curriculum-20261123"
+      ],
+      "checkedOn": "2026-11-23",
+      "outsideEquivalenciesReviewed": true
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bspm-core-business-management",
+        "parentId": "core",
+        "title": "Business Management",
+        "credits": 12,
+        "requirementIds": [
+          "bspm-organizational-behavior",
+          "bspm-change-management",
+          "bspm-values-based-leadership",
+          "bspm-quantitative-analysis-for-business"
+        ],
+        "sourceId": "wgu-bspm-202607-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bspm-core-project-management",
+        "parentId": "core",
+        "title": "Project Management",
+        "credits": 28,
+        "requirementIds": [
+          "bspm-foundations-of-project-management",
+          "bspm-project-scoping-and-scheduling",
+          "bspm-budgeting-and-cost-control",
+          "bspm-risk-management-and-contingency-planning",
+          "bspm-stakeholder-communication-and-collaboration",
+          "bspm-applied-professional-experience",
+          "bspm-legal-ethical-and-cultural-considerations-in-project-management",
+          "bspm-project-management-methodologies",
+          "bspm-strategic-project-management-and-decision-making"
+        ],
+        "sourceId": "wgu-bspm-202607-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bspm-core-business-core",
+        "parentId": "core",
+        "title": "Business Core",
+        "credits": 33,
+        "requirementIds": [
+          "bspm-emotional-and-cultural-intelligence",
+          "bspm-fundamentals-of-spreadsheets-and-data-presentations",
+          "bspm-principles-of-management",
+          "bspm-business-environment-applications-i-business-structures-and-legal-environment",
+          "bspm-introduction-to-business-accounting",
+          "bspm-introduction-to-business-finance",
+          "bspm-concepts-in-marketing-sales-and-customer-contact",
+          "bspm-business-environment-applications-ii-process-logistics-and-operations",
+          "bspm-business-simulation",
+          "bspm-managing-in-a-global-business-environment",
+          "bspm-principles-of-economics"
+        ],
+        "sourceId": "wgu-bspm-202607-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bspm-core-power-skills",
+        "parentId": "core",
+        "title": "Power Skills",
+        "credits": 12,
+        "requirementIds": [
+          "bspm-giving-receiving-and-incorporating-feedback",
+          "bspm-adapting-to-ambiguity",
+          "bspm-empathy-and-inclusive-collaboration",
+          "bspm-navigating-complex-problems"
+        ],
+        "sourceId": "wgu-bspm-202607-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bspm-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 31,
+        "requirementIds": [
+          "bspm-critical-thinking-reason-and-evidence",
+          "bspm-composition-successful-self-expression",
+          "bspm-introduction-to-communication-connecting-with-others",
+          "bspm-applied-probability-and-statistics",
+          "bspm-world-history-diverse-cultures-and-global-connections",
+          "bspm-introduction-to-sociology",
+          "bspm-design-thinking-for-business",
+          "bspm-integrated-physical-sciences",
+          "bspm-health-fitness-and-wellness",
+          "bspm-technology-and-ethics-emerging-trends-and-society"
+        ],
+        "sourceId": "wgu-bspm-202607-curriculum-20261123"
+      },
+      {
+        "id": "wgu-bspm-capstone-project-management",
+        "parentId": "capstone",
+        "title": "Project Management",
+        "credits": 4,
+        "requirementIds": [
+          "bspm-applied-project-management-capstone"
+        ],
+        "sourceId": "wgu-bspm-202607-curriculum-20261123"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {
+        "D388": 5
+      },
+      "recencySourceIds": [
+        "wgu-bspm-202607-metadata-20261123"
+      ],
+      "publishedNotes": {
+        "notesNonTransfer": "Project Management must have been taken within the past 5 years.",
+        "notesCore": "Fundamentals of Spreadsheets and Data Presentations must have been taken within the past 5 years.",
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-current-agreement-ledgers-2026-11-23",
+      "checkedOn": "2026-11-23",
+      "programId": 243,
+      "catalog": "202607",
+      "receivingClaimsReviewed": 68,
+      "sourceIdentitiesReusedByExactProviderCode": 53,
+      "sourceIds": [
+        "wgu-bspm-sophia-7112-v190",
+        "wgu-bspm-study-4429-v114",
+        "wgu-bspm-straighterline-550-v66",
+        "wgu-bspm-saylor-668-v78"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 19,
+          "approvedSourceCodeCount": 31,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0025",
+            "SOPH-0032",
+            "SOPH-0033",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0079",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0085",
+            "SOPH-0086",
+            "SOPH-0091"
+          ],
+          "selectableReceivingPlacements": 22,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0015",
+            "SOPH-0024",
+            "SOPH-0050",
+            "SOPH-0063",
+            "SOPH-0065",
+            "SOPH-0070",
+            "SOPH-0071",
+            "SOPH-0073",
+            "SOPH-0074",
+            "SOPH-0081",
+            "SOPH-0095",
+            "SOPH-0096"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7112,
+          "agreementRecordVersion": 190,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7112"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 21,
+          "approvedSourceCodeCount": 71,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0007",
+            "SDCM-0009",
+            "SDCM-0025",
+            "SDCM-0050",
+            "SDCM-0057",
+            "SDCM-0076",
+            "SDCM-0115",
+            "SDCM-0187",
+            "SDCM-0225",
+            "SDCM-0265"
+          ],
+          "selectableReceivingPlacements": 12,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0002",
+            "SDCM-0003",
+            "SDCM-0004",
+            "SDCM-0005",
+            "SDCM-0006",
+            "SDCM-0011",
+            "SDCM-0012",
+            "SDCM-0023",
+            "SDCM-0028",
+            "SDCM-0029",
+            "SDCM-0031",
+            "SDCM-0032",
+            "SDCM-0034",
+            "SDCM-0035",
+            "SDCM-0038",
+            "SDCM-0039",
+            "SDCM-0040",
+            "SDCM-0041",
+            "SDCM-0042",
+            "SDCM-0048",
+            "SDCM-0053",
+            "SDCM-0054",
+            "SDCM-0055",
+            "SDCM-0060",
+            "SDCM-0062",
+            "SDCM-0065",
+            "SDCM-0066",
+            "SDCM-0068",
+            "SDCM-0069",
+            "SDCM-0073",
+            "SDCM-0077",
+            "SDCM-0079",
+            "SDCM-0090",
+            "SDCM-0101",
+            "SDCM-0102",
+            "SDCM-0105",
+            "SDCM-0133",
+            "SDCM-0134",
+            "SDCM-0138",
+            "SDCM-0140",
+            "SDCM-0153",
+            "SDCM-0155",
+            "SDCM-0156",
+            "SDCM-0157",
+            "SDCM-0158",
+            "SDCM-0159",
+            "SDCM-0174",
+            "SDCM-0188",
+            "SDCM-0189",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0242",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0248",
+            "SDCM-0252",
+            "SDCM-0255",
+            "SDCM-0259",
+            "SDCM-0260"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4429,
+          "agreementRecordVersion": 114,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4429"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 15,
+          "approvedSourceCodeCount": 34,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "OOSL-0015",
+            "OOSL-0048"
+          ],
+          "selectableReceivingPlacements": 2,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0005",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0010",
+            "OOSL-0011",
+            "OOSL-0017",
+            "OOSL-0023",
+            "OOSL-0028",
+            "OOSL-0030",
+            "OOSL-0033",
+            "OOSL-0034",
+            "OOSL-0035",
+            "OOSL-0039",
+            "OOSL-0040",
+            "OOSL-0042",
+            "OOSL-0043",
+            "OOSL-0044",
+            "OOSL-0046",
+            "OOSL-0047",
+            "OOSL-0051",
+            "OOSL-0052",
+            "OOSL-0055",
+            "OOSL-0059",
+            "OOSL-0063",
+            "OOSL-0070",
+            "OOSL-0092",
+            "OOSL-0101",
+            "OOSL-0112",
+            "OOSL-0113",
+            "OOSL-0114",
+            "OOSL-0121",
+            "OOSL-0124"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 550,
+          "agreementRecordVersion": 66,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/550"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 13,
+          "approvedSourceCodeCount": 16,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0009",
+            "SAYA-0019",
+            "SAYA-0023",
+            "SAYA-0024",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "selectableReceivingPlacements": 17,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0012",
+            "SAYA-0029",
+            "SAYA-0033"
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 668,
+          "agreementRecordVersion": 78,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/668"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false
     }
   },
+  "modelSourceIds": [
+    "wgu-bspm-202607-curriculum-20261123",
+    "wgu-bspm-202607-metadata-20261123",
+    "wgu-bspm-transfer-guidelines-20261123",
+    "wgu-bspm-sophia-7112-v190",
+    "wgu-bspm-study-4429-v114",
+    "wgu-bspm-straighterline-550-v66",
+    "wgu-bspm-saylor-668-v78",
+    "wgu-undergraduate-institutional-catalog-202611",
+    "wgu-undergraduate-residency-policy-23797-20260918",
+    "wgu-bspm-tuition",
+    "saylor-current-provider-credit-list-20261120",
+    "wgu-sophia-business-current",
+    "straighterline-oosl-0015-course-page-2026-11-20",
+    "ace-study-biology101-v5-2026-11-18",
+    "provider-study-biology101-current-web-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-syllabus-2026-11-18",
+    "sophia-soph-0083-current-offer",
+    "sophia-soph-0083-current-offer-syllabus",
+    "study-course-sdcm-0009-2026-11",
+    "sophia-soph-0091-current-offer",
+    "sophia-soph-0091-current-offer-syllabus",
+    "study-course-sdcm-0225-2026-11",
+    "sophia-soph-0085-current-offer",
+    "sophia-soph-0085-current-offer-syllabus",
+    "study-course-sdcm-0007-2026-11",
+    "wgu-sophia-business-law-2026-11",
+    "straighterline-oosl-0048-course-page-2026-11-20",
+    "study-course-sdcm-0025-2026-11",
+    "sophia-soph-0086-current-offer",
+    "sophia-soph-0086-current-offer-syllabus",
+    "study-course-sdcm-0050-2026-11",
+    "study-course-sdcm-0115-2026-11",
+    "study-course-sdcm-0187-2026-11",
+    "study-current-sdcm-0057-2026-11-20",
+    "study-course-sdcm-0265-2026-11",
+    "sophia-soph-0079-current-offer",
+    "sophia-soph-0079-current-offer-syllabus",
+    "study-course-sdcm-0076-2026-11",
+    "sophia-soph-0033-current-offer",
+    "sophia-soph-0033-current-offer-syllabus"
+  ],
   "requirements": [
-    {
-      "id": "bspm-organizational-behavior",
-      "code": "",
-      "title": "Organizational Behavior",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-foundations-of-project-management",
-      "code": "",
-      "title": "Foundations of Project Management",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-emotional-and-cultural-intelligence",
-      "code": "",
-      "title": "Emotional and Cultural Intelligence",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-giving-receiving-and-incorporating-feedback",
-      "code": "",
-      "title": "Giving, Receiving and Incorporating Feedback",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-fundamentals-of-spreadsheets-and-data-presentations",
-      "code": "",
-      "title": "Fundamentals of Spreadsheets and Data Presentations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-project-scoping-and-scheduling",
-      "code": "",
-      "title": "Project Scoping and Scheduling",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-principles-of-management",
-      "code": "",
-      "title": "Principles of Management",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-business-environment-applications-i-business-structures-and-legal-environment",
-      "code": "",
-      "title": "Business Environment Applications I: Business Structures and Legal Environment",
-      "credits": 2,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-introduction-to-business-accounting",
-      "code": "",
-      "title": "Introduction to Business Accounting",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-budgeting-and-cost-control",
-      "code": "",
-      "title": "Budgeting and Cost Control",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-change-management",
-      "code": "",
-      "title": "Change Management",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-critical-thinking-reason-and-evidence",
-      "code": "",
-      "title": "Critical Thinking: Reason and Evidence",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-adapting-to-ambiguity",
-      "code": "",
-      "title": "Adapting to Ambiguity",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-empathy-and-inclusive-collaboration",
-      "code": "",
-      "title": "Empathy and Inclusive Collaboration",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-composition-successful-self-expression",
-      "code": "",
-      "title": "Composition: Successful Self-Expression",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-risk-management-and-contingency-planning",
-      "code": "",
-      "title": "Risk Management and Contingency Planning",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-introduction-to-communication-connecting-with-others",
-      "code": "",
-      "title": "Introduction to Communication: Connecting with Others",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-introduction-to-business-finance",
-      "code": "",
-      "title": "Introduction to Business Finance",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-values-based-leadership",
-      "code": "",
-      "title": "Values-Based Leadership",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-stakeholder-communication-and-collaboration",
-      "code": "",
-      "title": "Stakeholder Communication and Collaboration",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-concepts-in-marketing-sales-and-customer-contact",
-      "code": "",
-      "title": "Concepts in Marketing, Sales, and Customer Contact",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-applied-probability-and-statistics",
-      "code": "",
-      "title": "Applied Probability and Statistics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-world-history-diverse-cultures-and-global-connections",
-      "code": "",
-      "title": "World History: Diverse Cultures and Global Connections",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-applied-professional-experience",
-      "code": "",
-      "title": "Applied Professional Experience",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-introduction-to-sociology",
-      "code": "",
-      "title": "Introduction to Sociology",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-navigating-complex-problems",
-      "code": "",
-      "title": "Navigating Complex Problems",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-design-thinking-for-business",
-      "code": "",
-      "title": "Design Thinking for Business",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-legal-ethical-and-cultural-considerations-in-project",
-      "code": "",
-      "title": "Legal, Ethical, and Cultural Considerations in Project",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-management-business-environment-applications-ii-process-logistics-and-operations",
-      "code": "",
-      "title": "Management Business Environment Applications II: Process, Logistics, and Operations",
-      "credits": 2,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-project-management-methodologies",
-      "code": "",
-      "title": "Project Management Methodologies",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-integrated-physical-sciences",
-      "code": "",
-      "title": "Integrated Physical Sciences",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-quantitative-analysis-for-business",
-      "code": "",
-      "title": "Quantitative Analysis For Business",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-business-simulation",
-      "code": "",
-      "title": "Business Simulation",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-health-fitness-and-wellness",
-      "code": "",
-      "title": "Health, Fitness, and Wellness",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-managing-in-a-global-business-environment",
-      "code": "",
-      "title": "Managing in a Global Business Environment",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-strategic-project-management-and-decision-making",
-      "code": "",
-      "title": "Strategic Project Management and Decision Making",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-principles-of-economics",
-      "code": "",
-      "title": "Principles of Economics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-technology-and-ethics-emerging-trends-and-society",
-      "code": "",
-      "title": "Technology and Ethics: Emerging Trends and Society",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": false
-    },
-    {
-      "id": "bspm-applied-project-management-capstone",
-      "code": "",
-      "title": "Applied Project Management Capstone",
-      "credits": 4,
-      "category": "capstone",
-      "sourceIds": [
-        "wgu-bspm-guide"
-      ],
-      "institutionalOnly": true
-    }
+    {"id":"bspm-organizational-behavior","code":"C715","title":"Organizational Behavior","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"C715\",\"courseName\":\"Organizational Behavior\",\"courseDescription\":\"Organizational Behavior and Leadership explores how to lead and manage effectively in diverse business environments. Students are asked to demonstrate the ability to apply organizational leadership theories and management strategies in a series of scenario-based problems.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Management\""}]},
+    {"id":"bspm-foundations-of-project-management","code":"E054","title":"Foundations of Project Management","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E054\",\"courseName\":\"Foundations of Project Management\",\"courseDescription\":\"Foundations of Project Management provide learners with a comprehensive understanding of core project management principles and practices, emphasizing the alignment of project management processes with organizational goals and structures throughout the project life cycle. Learners will explore the roles and responsibilities of project stakeholders and their impact on project success, learning effective stakeholder engagement strategies and communication techniques. Additionally, learners will develop the skills to determine appropriate project management approaches, tools, and practices based on project characteristics, enabling them to make informed decisions and drive successful project outcomes. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Project Management\""}]},
+    {"id":"bspm-emotional-and-cultural-intelligence","code":"D082","title":"Emotional and Cultural Intelligence","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D082\",\"courseName\":\"Emotional and Cultural Intelligence\",\"courseDescription\":\"Success in today’s workplace requires more than technical skill. It depends on emotional awareness, cultural understanding, and ethical decision-making. This course will help you strengthen your ability to communicate effectively, connect across differences, and lead with empathy. These are not soft skills. They are the professional capabilities employers value most and the human qualities that technology can never replace.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-giving-receiving-and-incorporating-feedback","code":"D640","title":"Giving, Receiving and Incorporating Feedback","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"power-skills","curriculumAreaEvidence":{"areaOfStudy":"Power Skills","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D640\",\"courseName\":\"Giving, Receiving and Incorporating Feedback\",\"courseDescription\":\"Giving, Receiving, and Incorporating Feedback introduces students to the skills and strategies used to successfully receive feedback, iterate based on feedback, and provide constructive feedback to others. This course explores personal and professional settings in different contexts, including culturally complex or diverse settings. Students will engage with their peers as they are introduced to self-assessment and reflection as forms of feedback that can help them explore personal interests and preferences as well as professional relationships and networks.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Power Skills\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D640\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-fundamentals-of-spreadsheets-and-data-presentations","code":"D388","title":"Fundamentals of Spreadsheets and Data Presentations","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D388\",\"courseName\":\"Fundamentals of Spreadsheets and Data Presentations\",\"courseDescription\":\"Fundamentals of Spreadsheets and Data Presentations offers learners an overview of the use of spreadsheet functions and methods for presenting data within spreadsheets. Learners will have the opportunity to explore features and uses of MS Excel and apply the tools to situations they may encounter while studying in their program. They will also be introduced to real world uses and tools to collect, organize and present data.  \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}],"transferRecencyYears":5,"transferRecencySourceIds":["wgu-bspm-202607-metadata-20261123"]},
+    {"id":"bspm-project-scoping-and-scheduling","code":"E055","title":"Project Scoping and Scheduling","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E055\",\"courseName\":\"Project Scoping and Scheduling\",\"courseDescription\":\"In Project Scoping and Scheduling, learners will develop their skills in creating a work breakdown structure (WBS) with defined project activities and interdependencies aligned with project objectives. Learners will master the development of project schedules using critical path method, resource leveling, and scheduling software tools to optimize project timelines and resource allocation. Additionally, the learner will gain expertise in monitoring project schedules, identifying variances, and implementing corrective actions to ensure project progress aligns with the planned schedule, enhancing their ability to effectively manage project timelines and deliver successful project outcomes.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Project Management\""}]},
+    {"id":"bspm-principles-of-management","code":"C483","title":"Principles of Management","credits":4,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"C483\",\"courseName\":\"Principles of Management\",\"courseDescription\":\"Principles of Management provides students with an introductory look at the discipline of management and its context within the business environment. Students of this course build on previously mastered competencies by taking a more in-depth look at management as a discipline and how it differs from leadership while further exploring the importance of communication within business. This course provides students with a business generalist overview in the areas of strategic planning, total quality, entrepreneurship, conflict and change, human resource management, diversity, and organizational structure.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-business-environment-applications-i-business-structures-and-legal-environment","code":"D078","title":"Business Environment Applications I: Business Structures and Legal Environment","credits":2,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D078\",\"courseName\":\"Business Environment Applications I: Business Structures and Legal Environment\",\"courseDescription\":\"Business Environment Applications 1 provides students with a generalist overview of the business environment and a deeper look at a number of topics that make up the non-discipline areas of business which are required for a business person to be successful within any business environment. The first part of the course focuses on knowledge about organizations and how people operate within organizations, including the areas of organizational theory, structure, and effectiveness. The course then looks at business from a legal perspective with an overview of the legal environment of business. The course will prepare the student to consider specific legal situations and to make legal and ethical decisions related to those situations. \",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-introduction-to-business-accounting","code":"D774","title":"Introduction to Business Accounting","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D774\",\"courseName\":\"Introduction to Business Accounting\",\"courseDescription\":\"Introduction to Business Accounting provides students with an introduction to the discipline of accounting and its context within the business environment. This course will help students gain a fundamental knowledge of the role of financial and managerial accounting and the use of financial statements, budgeting, and managing costs and profits in business. This course is designed for business generalist students. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-budgeting-and-cost-control","code":"E056","title":"Budgeting and Cost Control","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E056\",\"courseName\":\"Budgeting and Cost Control\",\"courseDescription\":\"The Budgeting and Cost Control in Project Management course equips learners to effectively manage project budgets and control costs throughout the project lifecycle. Learners create accurate project budgets using resource requirements, historical data, and cost estimation techniques, as well as explore techniques for monitoring project costs, analyzing cost variances, and implementing cost control measures to ensure projects stay within budget constraints. Learners will develop the skills necessary to manage project budgets, identify cost variances, and implement cost control measures to ensure project success, emphasizing the importance of change management, risk management, and proactive cost control strategies in achieving project objectives within budget constraints.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Project Management\""}]},
+    {"id":"bspm-change-management","code":"C721","title":"Change Management","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"C721\",\"courseName\":\"Change Management\",\"courseDescription\":\"Change Management provides an understanding of change and an overview of successfully managing change using various methods and tools. Emphasizing change theories and various best practices, this course covers how to recognize and implement change using an array of other effective strategies, including those related to innovation and leadership. Other topics include approaches to change, diagnosing and planning for change, implementing change, and sustaining change.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Management\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"C721\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-critical-thinking-reason-and-evidence","code":"D265","title":"Critical Thinking: Reason and Evidence","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D265\",\"courseName\":\"Critical Thinking: Reason and Evidence\",\"courseDescription\":\"In this course you will learn key critical thinking concepts and how to apply them in the analysis and evaluation of reasons and evidence. The course examines the basic components of an argument, the credibility of evidence sources, the impact of bias, and how to construct an argument that provides good support for a claim. The course consists of an introduction and four major sections. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the four competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-adapting-to-ambiguity","code":"D641","title":"Adapting to Ambiguity","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"power-skills","curriculumAreaEvidence":{"areaOfStudy":"Power Skills","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D641\",\"courseName\":\"Adapting to Ambiguity\",\"courseDescription\":\"Adapting to Ambiguity prepares students to navigate ambiguous situations in uncertain and rapidly changing environments. Students will collaborate with peers as they develop a proactive mindset toward Page 2 of 7 ambiguity and learn how to approach ambiguous situations through adaptability, clarity, and creative problem-solving. This course enables students to apply tools for reframing ambiguous situations, creating a vision for success, planning incremental steps, and adapting to both personal and professional situations as growth opportunities. In addition, students will explore the importance of a professional portfolio and how to curate artifacts for a given purpose and career goal.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Power Skills\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D641\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-empathy-and-inclusive-collaboration","code":"D642","title":"Empathy and Inclusive Collaboration","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"power-skills","curriculumAreaEvidence":{"areaOfStudy":"Power Skills","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D642\",\"courseName\":\"Empathy and Inclusive Collaboration\",\"courseDescription\":\"Empathy and Inclusive Collaboration guides students toward understanding the value and benefits of culturally diverse groups, identifying their own implicit and explicit biases, and applying strategies to overcome these biases. Students will learn to leverage diverse perspectives, ensure inclusivity, apply empathetic listening strategies, and build collaborative work groups. Students will learn that having multiple perspectives is imperative to being a creative and innovative problem-solver and developing inclusive solutions. Students will develop an awareness of power disparity, an ability to decentralize their own perspectives, and the knowledge of how to seek deeper context on issues rather than act through implicit bias.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Power Skills\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D642\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-composition-successful-self-expression","code":"D270","title":"Composition: Successful Self-Expression","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D270\",\"courseName\":\"Composition: Successful Self-Expression\",\"courseDescription\":\"Welcome to Composition: Successful Self-Expression! In this course, you will focus on four main topics: professional writing for a cross-cultural audience, narrowing research topics and questions, researching for content to support a topic, and referencing research sources. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the seven competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content. You will demonstrate competency through a performance assessment. There is no prerequisite for this course and there is no specific technical knowledge needed.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-risk-management-and-contingency-planning","code":"E057","title":"Risk Management and Contingency Planning","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E057\",\"courseName\":\"Risk Management and Contingency Planning\",\"courseDescription\":\"In Risk Management and Contingency Planning, the learner will acquire essential skills in categorizing project risks based on likelihood and potential impact, enabling them to identify and prioritize risks effectively. The learner will perform risk analysis using qualitative and quantitative methods to assess risks, plan appropriate risk responses, and mitigate potential impacts on project outcomes. Additionally, the learner will develop a comprehensive risk management plan that includes monitoring strategies and fallback measures, enhancing their ability to proactively manage risks, ensure project resilience, and optimize project success.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Project Management\""}]},
+    {"id":"bspm-introduction-to-communication-connecting-with-others","code":"D268","title":"Introduction to Communication: Connecting with Others","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D268\",\"courseName\":\"Introduction to Communication: Connecting with Others\",\"courseDescription\":\"Welcome to Introduction to Communication: Connecting with Others! It may seem like common knowledge that communication skills are important, and that communicating with others is inescapable in our everyday lives. While this may appear simplistic, the study of communication is actually complex, dynamic, and multifaceted. Strong communication skills are invaluable to strengthening a multitude of aspects of life. Specifically, this course will focus on communication in the professional setting, and present material from multiple vantage points, including communicating with others in a variety of contexts, across situations, and with diverse populations. Upon completion, you will have a deeper understanding of both your own and others’ communication behaviors, and a toolbox of effective behaviors to enhance your experience in the workplace.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-introduction-to-business-finance","code":"D775","title":"Introduction to Business Finance","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D775\",\"courseName\":\"Introduction to Business Finance\",\"courseDescription\":\"Introduction to Business Finance provides students with an introductory look at the discipline of finance and its context within the business environment. This course will help students gain an understanding of the systems, structure, roles, and impact of finance in business. Students will also gain an understanding of the uses of financial ratios, the application of the time value of money concepts, and capital budgeting in business. This course provides the student a business generalist overview of the field of finance. The prerequisite for this course is Introduction to Business Accounting.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-values-based-leadership","code":"D253","title":"Values-Based Leadership","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D253\",\"courseName\":\"Values-Based Leadership\",\"courseDescription\":\"Values-Based Leadership guides students to learn by reflection, design, and scenario planning. Through a combination of theory, reflection, value alignment, and practice, the course helps students examine and understand values-based leadership and explore foundations in creating a culture of care. In this course, students are given the opportunity to identify and define their personal values through an assessment and reflection process. Students then evaluate business cases to practice mapping the influence of values on their own leadership. In this course, students also participate in scenario planning, where they can practice implementing their values in their daily routine (i.e., behaviors) and then in a leadership setting. The course illustrates how values-driven leadership is used in goal setting as well as problem-solving at an organizational level. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Management\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D253\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-stakeholder-communication-and-collaboration","code":"E058","title":"Stakeholder Communication and Collaboration","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E058\",\"courseName\":\"Stakeholder Communication and Collaboration\",\"courseDescription\":\"In Stakeholder Communication and Collaboration, the learner will develop a stakeholder communications strategy to effectively engage and inform project stakeholders. Learners will facilitate communication and collaboration among internal and external project stakeholders, fostering strong relationships and promoting project success. Additionally, the learner will explore project management tools to manage stakeholder communication and collaboration, ensuring effective information sharing, feedback mechanisms, and stakeholder engagement throughout the project lifecycle.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Project Management\""}]},
+    {"id":"bspm-concepts-in-marketing-sales-and-customer-contact","code":"D077","title":"Concepts in Marketing, Sales, and Customer Contact","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D077\",\"courseName\":\"Concepts in Marketing, Sales, and Customer Contact\",\"courseDescription\":\"Concepts in Marketing, Sales, and Customer Contact introduces students to the discipline of marketing and its role within the strategic and operational environments of a business. This course covers fundamental knowledge in the area of marketing planning, including the marketing mix, while also describing basic concepts of brand management, digital marketing, customer relationship management, and personal selling and negotiating. All of this helps students identify the role of marketing within an organization. This course provides students with a business generalist overview of the field of marketing and an exploration of the marketing major.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-applied-probability-and-statistics","code":"C955","title":"Applied Probability and Statistics","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"C955\",\"courseName\":\"Applied Probability and Statistics\",\"courseDescription\":\"Applied Probability and Statistics is designed to help students develop competence in the fundamental concepts of basic statistics including: introductory algebra and graphing; descriptive statistics; regression and correlation; and probability. Statistical data and probability are often used in everyday life, science, business, information technology, and educational settings to make informed decisions about the validity of studies and the effect of data on decisions. This course discusses what constitutes sound research design and how to appropriately model phenomena using statistical data. Additionally, the content covers simple probability calculations, based on events that occur in the business and IT industries. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-world-history-diverse-cultures-and-global-connections","code":"D266","title":"World History: Diverse Cultures and Global Connections","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D266\",\"courseName\":\"World History: Diverse Cultures and Global Connections\",\"courseDescription\":\"This is World History: Diverse Cultures and Global Connections. In this course, you will focus on three main topics—cultural and religious diversity; pandemics; and the relationship of empires and nation states—as well as the skills of identifying root causes, explaining causes and effects, and analyzing complex systems.  This course consists of an introduction and four major sections. Each section includes learning opportunities through reading, images, videos, and other relevant resources. Assessment activities with feedback also provide opportunities to practice and check how well you understand the content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to, with the goal of demonstrating proficiency in the four competencies covered in the final assessment. If you have no prior knowledge of this material, you can expect to spend 30-40 hours on the course content. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-applied-professional-experience","code":"E101","title":"Applied Professional Experience","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E101\",\"courseName\":\"Applied Professional Experience\",\"courseDescription\":\"This applied experience course provides learners with an immersive, cohesive, project-based experience. Learners apply foundational project management knowledge for an on-the job early-career project. Through hands-on ownership of planning, and execution, learners practice tracking performance, managing change, documenting risks and issues, and reporting project status to stakeholders. The course emphasizes professional accountability, and real-world project workflows.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Project Management\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E101\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-introduction-to-sociology","code":"C273","title":"Introduction to Sociology","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"C273\",\"courseName\":\"Introduction to Sociology\",\"courseDescription\":\"This course teaches students to think like sociologists, or, in other words, to see and understand the hidden rules, or norms, by which people live, and how they free or restrain behavior. Students will learn about socializing institutions, such as schools and families, as well as workplace organizations and governments. Participants will also learn how people deviate from the rules by challenging norms and how such behavior may result in social change, either on a large scale or within small groups.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-navigating-complex-problems","code":"D643","title":"Navigating Complex Problems","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"power-skills","curriculumAreaEvidence":{"areaOfStudy":"Power Skills","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D643\",\"courseName\":\"Navigating Complex Problems\",\"courseDescription\":\"Navigating Complex Problems introduces students to problem-solving techniques needed to address organizational challenges and implement solutions for desired results. Students will identify the data required to define complex problems, differentiate between short- and long-term problems, and develop strategies for resolution. Students will focus on root cause analysis, ethics and biases, communications, and the steps to strategically solve problems, while learning how to create an implementation plan for stakeholders.   \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Power Skills\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D643\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-design-thinking-for-business","code":"D428","title":"Design Thinking for Business","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D428\",\"courseName\":\"Design Thinking for Business\",\"courseDescription\":\"Design Thinking for Business examines the design thinking methodology for solving complex problems. This course introduces students to design thinking as a human-centered approach to problem-solving and innovation that draws upon empathy and creativity to develop solutions to complex problems. Students will explore the principles and stages of design thinking and analyze the use of design thinking in developing solutions through real-world scenarios.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-legal-ethical-and-cultural-considerations-in-project-management","code":"E059","title":"Legal, Ethical, and Cultural Considerations in Project Management","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E059\",\"courseName\":\"Legal, Ethical, and Cultural Considerations in Project Management\",\"courseDescription\":\"In Legal, Ethical, and Cultural Considerations in Project Management, learners will delve into the multifaceted aspects of legal, ethical, and cultural considerations that shape project management practices. By exploring the intersection of legal and regulatory standards with project activities and deliverables, learners will navigate complex compliance issues and risk management strategies. Through engaging discussions on ethical behavior in project leadership and decision-making, learners will cultivate a foundation of integrity and ethical decision-making principles essential for effective project management. Furthermore, learners will explore the impact of cultural considerations on project stakeholder communication, emphasizing the importance of cultural sensitivity and inclusivity in fostering collaborative relationships and ethical decision-making processes within diverse project environments.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Project Management\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E059\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-business-environment-applications-ii-process-logistics-and-operations","code":"D079","title":"Business Environment Applications II: Process, Logistics, and Operations","credits":2,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D079\",\"courseName\":\"Business Environment Applications II: Process, Logistics, and Operations\",\"courseDescription\":\"Business Environment II: Logistics, Process, and Operations provides students with a generalist overview of the business environment as they explore themes of ethics, problem-solving, and innovative thinking. This course adds to the students’ business skills and knowledge in a number of professional areas. The first part of the course uncovers a series of business processes like project and risk management. The second part gives an introductory-level look at the specialized areas of operations management, supply chains, and logistics. The course finishes with models of change management and how to use them to overcome barriers in organizations. \",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-project-management-methodologies","code":"E060","title":"Project Management Methodologies","credits":4,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E060\",\"courseName\":\"Project Management Methodologies\",\"courseDescription\":\"In Project Management Methodologies, the learner will explore the intricacies of project management methodologies, delving into the benefits, limitations, and core principles that underpin various approaches. The learner will apply an appropriate project management methodology to effectively plan, execute, and monitor project activities, honing their skills in project management implementation. Additionally, the learner will critically evaluate the benefits and challenges of adopting emerging tools and software in project management, equipping them with the knowledge and adaptability needed to navigate the evolving landscape of project management practices. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Project Management\""}]},
+    {"id":"bspm-integrated-physical-sciences","code":"C165","title":"Integrated Physical Sciences","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"C165\",\"courseName\":\"Integrated Physical Sciences\",\"courseDescription\":\"This course provides students with an overview of the basic principles and unifying ideas of the physical sciences: physics, chemistry, and earth sciences. Course materials focus on scientific reasoning and practical, everyday applications of physical science concepts to help students integrate conceptual knowledge with practical skills. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-quantitative-analysis-for-business","code":"C723","title":"Quantitative Analysis For Business","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"C723\",\"courseName\":\"Quantitative Analysis For Business\",\"courseDescription\":\"Quantitative Analysis for Business explores various decision-making models, including expected value models, linear programming models, and inventory models. This course helps student learn to analyze data by using a variety of analytic tools and techniques to make better business decisions. In addition, it covers developing project schedules using the Critical Path Method. Other topics include calculating and evaluating formulas, measures of uncertainty, crash costs, and visual representation of decision-making models using electronic spreadsheets and graphs. This course has no prerequisites. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Management\""}]},
+    {"id":"bspm-business-simulation","code":"D361","title":"Business Simulation","credits":4,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D361\",\"courseName\":\"Business Simulation\",\"courseDescription\":\"This course ties together all the skills and knowledge covered in the business courses and allows the student to prove their mastery of the competencies by applying them in a simulated business environment. This course will help take the student\\u0027s knowledge and skills from the theoretical to applicable.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Business Core\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D361\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bspm-health-fitness-and-wellness","code":"C458","title":"Health, Fitness, and Wellness","credits":4,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"C458\",\"courseName\":\"Health, Fitness, and Wellness\",\"courseDescription\":\"Health, Fitness, and Wellness focuses on the importance and foundations of good health and physical fitness, particularly for children and adolescents. This course addresses health, nutrition, and fitness, and substance use and abuse.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-managing-in-a-global-business-environment","code":"D080","title":"Managing in a Global Business Environment","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D080\",\"courseName\":\"Managing in a Global Business Environment\",\"courseDescription\":\"Managing in a Global Business Environment provides students with a generalist overview of business from a global perspective, while also developing basic skills and knowledge to help them make strategic decisions, communicate, and develop personal relationships in a global environment. Business today is by its very nature a global environment, and individuals working in business will experience the global nature of business as they progress through their careers. This course builds on previously acquired competencies by providing an overview of U.S. federal laws in relation to doing business in a global environment. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-strategic-project-management-and-decision-making","code":"E061","title":"Strategic Project Management and Decision Making","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E061\",\"courseName\":\"Strategic Project Management and Decision Making\",\"courseDescription\":\"In Strategic Project Management and Decision-Making, learners will align project approaches with organizational strategy, ensuring maximum value creation and stakeholder satisfaction. Learners will hone their analytical skills to make informed decisions and tackle complex project management challenges within specified constraints. By delving into real-world scenarios, learners will develop the acumen to evaluate complex situations and determine the most efficient and effective course of action, fostering strategic thinking and agility in project management practices.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Project Management\""}]},
+    {"id":"bspm-principles-of-economics","code":"D089","title":"Principles of Economics","credits":3,"category":"core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D089\",\"courseName\":\"Principles of Economics\",\"courseDescription\":\"Principles of Economics introduces students to foundational economic theories on markets and market behavior. This information is valuable to students pursuing careers involving decision making and is applicable to any industry. This course has three competencies: The Economic Way of Thinking, Microeconomics, and Macroeconomics. In the first, economics is defined, and fundamental economic principles are introduced. Microeconomics develops the supply and demand model and demonstrates how it is used to understand business interactions and to make public policy decisions. The competency includes supply, demand, elasticity, efficiency, market failure, costs, production, and market structure. Macroeconomics focuses on the measurement and performance of the nation economy. The competency includes macroeconomic variables, aggregate supply, aggregate demand, money, monetary policy, fiscal policy, and international trade.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bspm-technology-and-ethics-emerging-trends-and-society","code":"D773","title":"Technology and Ethics: Emerging Trends and Society","credits":3,"category":"general","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"D773\",\"courseName\":\"Technology and Ethics: Emerging Trends and Society\",\"courseDescription\":\"Technology and Ethics: Emerging Trends and Society explores the intersection of ethical thinking and technological innovations. A foundational introduction to ethical frameworks is applied to emerging trends in technology, including artificial intelligence, social media, and other forms of digital media. This course examines the impact of technology on our understanding of self, as well as the individual’s role in interacting with others in a globalized society. The course helps students gain the ability to recognize ethical actions within the context of current and newly evolving technological landscapes. This course has no prerequisites.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bspm-applied-project-management-capstone","code":"E062","title":"Applied Project Management Capstone","credits":4,"category":"capstone","sourceIds":["wgu-bspm-202607-curriculum-20261123","wgu-bspm-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"project-management","curriculumAreaEvidence":{"areaOfStudy":"Project Management","sourceIds":["wgu-bspm-202607-curriculum-20261123"],"programId":243,"catalogTerm":"202607","ledgerSha256":"37c5fb3d5c10bc66e6056fc6a5da333bdebc7df4b165cf444ccb630114e4af5f"},"quotes":[{"sourceId":"wgu-bspm-202607-curriculum-20261123","text":"\"courseCode\":\"E062\",\"courseName\":\"Applied Project Management Capstone\",\"courseDescription\":\"In the capstone experience, learners will immerse themselves in a real-world project context, where they will have the opportunity to showcase their project management knowledge, skills, and abilities in a dynamic and practical setting. Through hands-on experiences and projects, learners will demonstrate their ability to navigate complex project challenges, apply strategic thinking, and deliver successful project outcomes. This culminating experience will allow learners to integrate theory with practice, showcasing their growth, creativity, and readiness to excel as project management professionals in diverse and challenging environments.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Project Management\""},{"sourceId":"wgu-bspm-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E062\",\"transferArea\":\"Non-Transferable\""}]}
   ]
 }
