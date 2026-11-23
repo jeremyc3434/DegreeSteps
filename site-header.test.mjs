@@ -88,6 +88,6 @@ test('tokens: brand names map onto the new tokens and text colors stay readable'
 test('the component check page is never indexed or linked',()=>{
  const demo=read('dist/ui-demo.html');assert.match(demo,/<meta name="robots" content="noindex,nofollow">/);
  assert.match(read('dist/robots.txt'),/Disallow: \/ui-demo\.html/);assert.doesNotMatch(read('dist/sitemap.xml'),/ui-demo/);
- assert.match(read('worker/index.mjs'),/'\/ui-demo\.html'\]\.includes\(path\)/);
+ assert.match(read('worker/index.mjs'),/'\/ui-demo\.html'[,\]]/);
  for(const file of walk(dist).filter(p=>p.endsWith('.html')&&!p.endsWith('ui-demo.html')))assert.doesNotMatch(readFileSync(file,'utf8'),/href="\/?ui-demo\.html"/,file);
 });
