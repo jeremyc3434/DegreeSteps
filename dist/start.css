@@ -35,19 +35,6 @@
 .start-sort{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
 .start-sort select{font:inherit;min-height:44px;border-radius:12px;border:1.5px solid #c9d3e0;padding:0 10px;background:#fff}
 .start-count{margin:0;font-size:14px;color:var(--tok-muted,#526174)}
-.start-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
-.start-card{background:#fff;border:1px solid #e3e9f1;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
-.start-card-head{display:flex;flex-direction:column;gap:4px}
-.start-school{margin:0;font-size:13px;font-weight:600;color:var(--tok-muted,#526174)}
-.start-card h2{margin:0;font-size:19px;line-height:1.25;font-weight:700;overflow-wrap:anywhere}
-.start-badge{align-self:flex-start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:#fff7e6;color:#92400e;border:1px solid #f6d79b}
-.start-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.start-stat{background:#f7f9fc;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:2px}
-.start-stat span{font-size:12px;font-weight:600;color:var(--tok-muted,#526174)}
-.start-stat strong{font-size:18px;font-weight:800}
-.start-stat-accent{background:#eef1ff}.start-stat-accent span,.start-stat-accent strong{color:#2c3dd6}
-.start-bar{height:8px;border-radius:8px;background:#dfe5ee;overflow:hidden}.start-bar span{display:block;height:100%;background:var(--tok-cobalt,#4054f4)}
-.start-card-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:auto}
 .start-primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:12px;border:0;background:var(--tok-cobalt,#4054f4);color:#fff;font:inherit;font-size:16px;font-weight:700;text-decoration:none;cursor:pointer}
 .start-primary:hover{background:#2c3dd6;color:#fff}
 .start-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:12px;border:1.5px solid #c9d3e0;background:#fff;color:var(--tok-ink,#182230);font:inherit;font-weight:700;cursor:pointer}

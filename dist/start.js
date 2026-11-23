@@ -4,20 +4,14 @@
  * and the credits answer is carried as ?then= so the plan opens on the matching existing step. */
 (function(){'use strict';
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),norm=v=>String(v||'').toLowerCase();
-const P=window.DegreeProgramOpportunities,params=new URLSearchParams(location.search);
-const levels={associate:'Associate',bachelor:'Bachelor’s',master:'Master’s',doctorate:'Doctoral',specialist:'Specialist'};
-const formats={online:'Online',campus:'On campus'};
+const P=window.DegreeProgramOpportunities,F=window.DegreePlanFinder,params=new URLSearchParams(location.search);
+const levels=F.LEVELS,formats=F.FORMATS;
 const idOK=v=>typeof v==='string'&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(v);
-let catalog,rows=[],index={plans:{},subjects:{}},limit=12;
+let catalog,rows=[],index={plans:{},subjects:{}},ctx=F.context({}),limit=12;
 const filters={q:'',subject:'',level:'',format:'',sort:'cost',confirm:true};
 
-const info=p=>index.plans[p.id]||{tier:'reviewed',subjects:[]};
-const needsConfirmation=p=>info(p).tier==='confirmation';
-const money=v=>v>=10000?'$'+(Math.round(v/100)/10).toLocaleString('en-US')+'k':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
-const costText=p=>{const e=info(p).estimate;return e&&Number.isFinite(e.min)&&Number.isFinite(e.max)?(e.min===e.max?money(e.min):money(e.min)+'–'+money(e.max)):'';};
-const months=p=>{const t=info(p).timing;if(!t||!t.outsideMonths||!t.universityTerms||!Number.isFinite(t.termMonths))return null;return t.outsideMonths.min+t.universityTerms.min*t.termMonths;};
-const share=p=>{const s=info(p).start;return s&&s.total>0?s.outside/s.total:null;};
-const unit=p=>p.school==='Western Governors University'?'units':'credits';
+// Plan facts, filters, sorting and the card come from the shared finder (plan-finder.js), the same as Find a degree.
+const info=p=>F.info(ctx,p),needsConfirmation=p=>F.needsConfirmation(ctx,p),costText=p=>F.costText(ctx,p),unit=p=>F.unit(p);
 
 // Where "Build this plan" leads once step 2 is answered. A plan with a saved starting route opens directly;
 // any other plan uses the finder's existing school/program link, which asks its own remaining questions.
@@ -27,34 +21,11 @@ function planUrl(p,then){
   return 'portal.html?school='+encodeURIComponent(p.school)+'&program='+encodeURIComponent(p.id)+'&level='+encodeURIComponent(p.level)+format;
 }
 
-function matches(p){
-  if(filters.subject&&!(info(p).subjects||[]).includes(filters.subject))return false;
-  if(filters.level&&p.level!==filters.level)return false;
-  if(filters.format&&!(p.modalities||[]).includes(filters.format))return false;
-  if(!filters.confirm&&needsConfirmation(p))return false;
-  const q=norm(filters.q).trim();
-  if(q){const hay=norm([p.school,p.title,levels[p.level],...(info(p).subjects||[]).map(id=>index.subjects[id]||id)].join(' '));if(!q.split(/\s+/).every(word=>hay.includes(word)))return false;}
-  return true;
-}
-function sorted(list){
-  const last=v=>v===null||v===undefined?Infinity:v;
-  const by={
-    cost:(a,b)=>last(info(a).estimate?.min)-last(info(b).estimate?.min),
-    outside:(a,b)=>(share(b)??-1)-(share(a)??-1),
-    time:(a,b)=>last(months(a))-last(months(b)),
-    az:(a,b)=>a.title.localeCompare(b.title)
-  }[filters.sort]||(()=>0);
-  return [...list].sort((a,b)=>by(a,b)||Number(needsConfirmation(a))-Number(needsConfirmation(b))||a.title.localeCompare(b.title)||a.school.localeCompare(b.school));
-}
+const matches=p=>F.matches(ctx,p,filters);
+const sorted=list=>F.sort(ctx,list,filters.sort);
 function card(p){
-  const s=info(p).start,cost=costText(p),pct=s&&s.total?Math.round(s.outside/s.total*100):0,fmt=(p.modalities||[]).map(m=>formats[m]||m).join(' · ');
-  return '<article class="start-card" data-plan="'+esc(p.id)+'"><div class="start-card-head"><p class="start-school">'+esc(p.school)+(fmt?' · '+esc(fmt):'')+'</p><h2>'+esc(p.title)+'</h2>'
-    +(needsConfirmation(p)?'<span class="start-badge">Needs school confirmation</span>':'')+'</div>'
-    +'<div class="start-stats"><div class="start-stat"><span>Est. cost</span><strong>'+(cost?esc(cost):'Ask the school')+'</strong></div>'
-    +'<div class="start-stat start-stat-accent"><span>Low-cost '+unit(p)+'</span><strong>'+(s?s.outside+' of '+s.total:'—')+'</strong></div></div>'
-    +(s?'<div class="start-bar" role="img" aria-label="'+esc(s.outside+' of '+s.total+' '+unit(p)+' can come from low-cost courses')+'"><span style="width:'+pct+'%"></span></div>':'')
-    +'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="start.html?step=credits&amp;plan='+encodeURIComponent(p.id)+'">Build this plan</a>'
-    +(info(p).page?'<a class="start-text-link" href="'+esc(info(p).page)+'">See every course</a>':'')+'</div></article>';
+  return F.card(ctx,p,{hooks:{card:'start-card',primary:'start-primary'},primary:{href:'start.html?step=credits&plan='+encodeURIComponent(p.id),label:'Build this plan',attrs:' data-build-plan="'+F.esc(p.id)+'"'},
+    links:info(p).page?'<a class="start-text-link fd-link" href="'+F.esc(info(p).page)+'">See every course</a>':''});
 }
 function chipGroup(id,name,options,current){
   const el=$(id);const legend=el.querySelector('legend').outerHTML;
@@ -129,6 +100,7 @@ $('start-confirm').addEventListener('change',()=>{filters.confirm=$('start-confi
 (async()=>{try{
   const loaded=await Promise.all(['data/pathways.json','data/program-catalog.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('The degree plans could not load. Please reload.');return r.json();}));
   try{const r=await fetch('data/plan-library-index.json');const value=r.ok?await r.json():null;index={plans:value?.plans&&typeof value.plans==='object'?value.plans:{},subjects:value?.subjects&&typeof value.subjects==='object'?value.subjects:{}};}catch{index={plans:{},subjects:{}};}
+  ctx=F.context({index});
   catalog=await DegreeProgramCatalog.loadIndex(DegreeProgramCatalog.merge(loaded[0],loaded[1]));
   if(typeof DegreeProgramCatalog.publishedPlans!=='function'||catalog.publicationIndex?.available===false)throw Error('We couldn’t load the degree plans. Reload to try again. Your saved plan is safe.');
   // The same plan list as the degree finder: reviewed plans plus complete plans that need school confirmation.
