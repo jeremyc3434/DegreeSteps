@@ -22,30 +22,99 @@ export function htmlToText(html){
   return text.split('\n').map(line=>line.replace(/[ \t ]+/g,' ').trim()).filter(Boolean).join('\n')+'\n';
 }
 /**
- * Extracts a PDF's text layer: one line per visual row (items sharing a baseline, left to right), pages separated by a
- * blank line. No OCR: a scanned PDF without a text layer is rejected instead of captured empty.
+ * Page ranges for big catalog PDFs: `<pdf-url>#pages=34-37,120-123` captures only those pages (1-based, inclusive; one
+ * page is `#pages=12`). Add `&columns=2` for a two-column layout: each page is read left column first, then right column,
+ * instead of joining both columns on one line. The fragment is never sent to the server; it stays in the capture's url so
+ * a later re-fetch (freshness) extracts exactly the same pages the same way.
  */
-export async function pdfToText(bytes){
+export const MAX_PAGE_RANGES=20,MAX_RANGED_PAGES=80;
+export function parsePageFragment(url){
+  const parsed=new URL(url),hash=parsed.hash.replace(/^#/,'');
+  parsed.hash='';
+  const fetchUrl=parsed.toString();
+  if(!hash)return {fetchUrl,pages:null,columns:1};
+  const params=new URLSearchParams(hash),keys=[...params.keys()];
+  if(!keys.includes('pages')){
+    if(keys.includes('columns'))throw Error(`#columns needs #pages in ${url}`);
+    return {fetchUrl:url,pages:null,columns:1};// an ordinary in-page anchor is left as it was
+  }
+  const unknown=keys.filter(k=>!['pages','columns'].includes(k));
+  if(unknown.length)throw Error(`Unknown page-range option ${unknown.join(', ')} in ${url}`);
+  const spec=params.get('pages')||'';
+  if(!/^\d+(-\d+)?(,\d+(-\d+)?)*$/.test(spec))throw Error(`Invalid #pages=${spec} in ${url}: use 34-37,120-123`);
+  const ranges=spec.split(',').map(part=>{const [a,b=a]=part.split('-').map(Number);return [a,b];});
+  if(ranges.some(([a,b])=>a<1||b<a))throw Error(`Invalid page range in #pages=${spec}: pages start at 1 and each range must run forward`);
+  if(ranges.length>MAX_PAGE_RANGES)throw Error(`#pages has more than ${MAX_PAGE_RANGES} ranges`);
+  const sorted=[...ranges].sort((x,y)=>x[0]-y[0]);
+  for(let i=1;i<sorted.length;i++)if(sorted[i][0]<=sorted[i-1][1])throw Error(`Overlapping page ranges in #pages=${spec}`);
+  const count=ranges.reduce((n,[a,b])=>n+b-a+1,0);
+  if(count>MAX_RANGED_PAGES)throw Error(`#pages selects ${count} pages; the limit is ${MAX_RANGED_PAGES}`);
+  const columns=params.has('columns')?Number(params.get('columns')):1;
+  if(![1,2].includes(columns))throw Error(`#columns must be 1 or 2 in ${url}`);
+  return {fetchUrl,pages:ranges,columns,spec};
+}
+function rowsToLines(items){
+  const rows=[];
+  for(const item of [...items].sort((a,b)=>b.y-a.y||a.x-b.x)){
+    const row=rows.find(r=>Math.abs(r.y-item.y)<=Math.max(2,item.h*0.4));
+    if(row)row.items.push(item);else rows.push({y:item.y,items:[item]});
+  }
+  return rows.sort((a,b)=>b.y-a.y).map(row=>{
+    let line='',end=null;
+    for(const item of row.items.sort((a,b)=>a.x-b.x)){line+=(end!==null&&item.x-end>0.15*item.h?' ':'')+item.str;end=item.end;}
+    return line.replace(/\s+/g,' ').trim();
+  }).filter(Boolean);
+}
+/**
+ * Finds a two-column page's gutter: the widest vertical band in the middle 30-70% of the text's width that almost no text
+ * crosses, with text on both sides. A few crossing lines (a full-width running header, a page footer) are tolerated, and
+ * rotated text (side tabs) is ignored. Returns the split x, or null (the page is then read as one column).
+ */
+export function columnGutter(items){
+  const flat=items.filter(i=>!i.rotated);
+  if(flat.length<6)return null;
+  const left=Math.min(...flat.map(i=>i.x)),right=Math.max(...flat.map(i=>i.end)),width=right-left;
+  if(!(width>0))return null;
+  const lo=left+width*0.3,hi=left+width*0.7,cells=200,step=(hi-lo)/cells,count=new Array(cells).fill(0);
+  for(const i of flat){
+    const from=Math.max(0,Math.floor((i.x-lo)/step)),to=Math.min(cells-1,Math.ceil((i.end-lo)/step)-1);
+    for(let c=from;c<=to;c++)count[c]++;
+  }
+  const tolerated=Math.max(2,Math.floor(flat.length*0.03));
+  let best=null,start=null;
+  for(let c=0;c<=cells;c++){
+    if(c<cells&&count[c]<=tolerated){if(start===null)start=c;continue;}
+    if(start!==null&&(!best||c-start>best.len))best={start,len:c-start};
+    start=null;
+  }
+  if(!best||best.len*step<Math.max(6,width*0.015))return null;
+  const split=lo+(best.start+best.len/2)*step,l=flat.filter(i=>i.end<=split).length,r=flat.filter(i=>i.x>=split).length;
+  return l>=3&&r>=3?split:null;
+}
+/**
+ * Extracts a PDF's text layer: one line per visual row (items sharing a baseline, left to right), pages separated by a
+ * blank line. No OCR: a scanned PDF without a text layer is rejected instead of captured empty. `pages` (from
+ * parsePageFragment) limits the pages read; `columns: 2` reads each page's left column before its right column.
+ */
+export async function pdfToText(bytes,{pages=null,columns=1}={}){
   const pdfjs=await import('pdfjs-dist/legacy/build/pdf.mjs');
   const task=pdfjs.getDocument({data:new Uint8Array(bytes),useWasm:false,enableXfa:false,disableFontFace:true,useSystemFonts:true,isEvalSupported:false,stopAtErrors:true,verbosity:0});
-  const doc=await task.promise,pages=[];
+  const doc=await task.promise,out=[];
   try{
-    for(let n=1;n<=doc.numPages;n++){
-      const items=(await (await doc.getPage(n)).getTextContent()).items.filter(item=>typeof item.str==='string'&&item.str.trim());
-      const rows=[];
-      for(const item of items.map(i=>({x:i.transform[4],y:i.transform[5],end:i.transform[4]+(i.width||0),str:i.str,h:Math.abs(i.transform[3])||i.height||10})).sort((a,b)=>b.y-a.y||a.x-b.x)){
-        const row=rows.find(r=>Math.abs(r.y-item.y)<=Math.max(2,item.h*0.4));
-        if(row)row.items.push(item);else rows.push({y:item.y,items:[item]});
-      }
-      pages.push(rows.sort((a,b)=>b.y-a.y).map(row=>{
-        let line='',end=null;
-        for(const item of row.items.sort((a,b)=>a.x-b.x)){line+=(end!==null&&item.x-end>0.15*item.h?' ':'')+item.str;end=item.end;}
-        return line.replace(/\s+/g,' ').trim();
-      }).filter(Boolean).join('\n'));
+    const numbers=pages?pages.flatMap(([a,b])=>Array.from({length:b-a+1},(_,k)=>a+k)):Array.from({length:doc.numPages},(_,k)=>k+1);
+    const beyond=numbers.find(n=>n>doc.numPages);
+    if(beyond)throw Error(`The PDF has ${doc.numPages} pages; #pages asks for page ${beyond}.`);
+    for(const n of numbers){
+      const items=(await (await doc.getPage(n)).getTextContent()).items.filter(item=>typeof item.str==='string'&&item.str.trim())
+        .map(i=>({x:i.transform[4],y:i.transform[5],end:i.transform[4]+(i.width||0),str:i.str,h:Math.abs(i.transform[3])||i.height||10,rotated:Math.abs(i.transform[1])>0.01||Math.abs(i.transform[2])>0.01}));
+      const split=columns===2?columnGutter(items):null;
+      // Items that straddle the gutter (a running header) are read with the left column, where they start.
+      const lines=split===null?rowsToLines(items):[...rowsToLines(items.filter(i=>i.x<split)),...rowsToLines(items.filter(i=>i.x>=split))];
+      out.push(lines.join('\n'));
     }
   }finally{await task.destroy();}
-  const text=pages.join('\n\n').trim();
-  if(!text)throw Error('The PDF has no text layer; it cannot be captured without OCR.');
+  const text=out.join('\n\n').trim();
+  if(!text)throw Error(pages?'The selected PDF pages have no text layer; they cannot be captured without OCR.':'The PDF has no text layer; it cannot be captured without OCR.');
   return text+'\n';
 }
 export const USER_AGENT='DegreeSteps-PathwayFactory/1.0 (+source capture)';
@@ -55,17 +124,20 @@ export const USER_AGENT='DegreeSteps-PathwayFactory/1.0 (+source capture)';
  */
 export async function fetchPage(url,{fetchImpl=globalThis.fetch,userAgent=USER_AGENT,timeoutMs}={}){
   const parsed=new URL(url);if(!['https:','http:'].includes(parsed.protocol))throw Error('Only http(s) URLs can be captured.');
+  const range=parsePageFragment(url);
   const init={redirect:'follow',headers:{'user-agent':userAgent,'accept':'text/html,text/plain;q=0.9,*/*;q=0.1'}};
   if(timeoutMs)init.signal=AbortSignal.timeout(timeoutMs);
-  const response=await fetchImpl(url,init);
+  const response=await fetchImpl(range.fetchUrl,init);
   if(!response.ok)throw Object.assign(Error(`Capture failed: HTTP ${response.status} for ${url}`),{status:response.status});
   const type=response.headers?.get?.('content-type')||'';
   const bytes=typeof response.arrayBuffer==='function'?new Uint8Array(await response.arrayBuffer()):null;
   const pdf=/pdf/i.test(type)||Boolean(bytes)&&String.fromCharCode(...bytes.slice(0,5))==='%PDF-';
   if(pdf&&!bytes)throw Error('A PDF response must be read as bytes.');
+  if(range.pages&&!pdf)throw Error(`#pages applies only to PDFs; ${range.fetchUrl} is not a PDF.`);
   const body=pdf?'':bytes?new TextDecoder().decode(bytes):await response.text();
-  const text=pdf?await pdfToText(bytes):/html/i.test(type)||/^\s*</.test(body)?htmlToText(body):body.replace(/\r\n/g,'\n');
-  const page={text,sha256:sha256(text),url,finalUrl:response.url||url,contentType:type,status:response.status};
+  const text=pdf?await pdfToText(bytes,{pages:range.pages,columns:range.columns}):/html/i.test(type)||/^\s*</.test(body)?htmlToText(body):body.replace(/\r\n/g,'\n');
+  const page={text,sha256:sha256(text),url,finalUrl:response.url||range.fetchUrl,contentType:type,status:response.status};
+  if(range.pages)Object.assign(page,{pages:range.spec,columns:range.columns,documentSha256:sha256(bytes)});
   // The raw HTML stays off the sidecar; freshness uses it for sources that fingerprint a parsed table (Sophia partner pages).
   if(!pdf&&body&&(/html/i.test(type)||/^\s*</.test(body)))Object.defineProperty(page,'html',{value:body,enumerable:false});
   return page;
@@ -76,7 +148,8 @@ export async function storeCapture(page,{dir=capturesRoot,now=()=>new Date()}={}
   await mkdir(dir,{recursive:true});
   const path=join(dir,name+'.txt'),sidecar=join(dir,name+'.json');
   await writeFile(path,page.text);
-  await writeFile(sidecar,JSON.stringify({url:page.url,finalUrl:page.finalUrl,fetchedAt:now().toISOString(),sha256:page.sha256,contentType:page.contentType,status:page.status,characters:page.text.length},null,2)+'\n');
+  const ranged=page.pages?{pages:page.pages,columns:page.columns,documentSha256:page.documentSha256}:{};
+  await writeFile(sidecar,JSON.stringify({url:page.url,finalUrl:page.finalUrl,fetchedAt:now().toISOString(),sha256:page.sha256,contentType:page.contentType,status:page.status,characters:page.text.length,...ranged},null,2)+'\n');
   return {path,sidecar,sha256:page.sha256,text:page.text,relative:path.startsWith(root+'/')?path.slice(root.length+1):path};
 }
 /** Fetches url, stores text + sidecar, returns {path, sidecar, sha256, text}. fetchImpl and now are injectable for tests. */

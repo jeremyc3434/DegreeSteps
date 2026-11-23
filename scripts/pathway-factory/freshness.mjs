@@ -14,7 +14,7 @@ import {readFile,readdir,appendFile} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {tableSignature,parseRows} from './import-sophia-partner.mjs';
 import {list,sha256,normalizeText,today as todayDate,dateOnly,readJSON,writeJSON,exists,loadKit,kitDirs,loadProviders,sourceRefs,sourceIndex,inScope,rowStatus,parseArgs,isMain,root} from './lib.mjs';
-import {fetchPage,storeCapture} from './capture.mjs';
+import {fetchPage,storeCapture,parsePageFragment} from './capture.mjs';
 import {quotedClaims} from './verify.mjs';
 
 export const FRESHNESS_USER_AGENT='DegreeSteps-FreshnessCheck/1.0 (+https://degreesteps.com; weekly source freshness check)';
@@ -100,11 +100,23 @@ export async function checkFreshness({base=root,kitsDir,capturesDir,asOf=todayDa
   const {targets:all,kits}=await collectTargets({base,kitsDir:kitsDir??resolve(base,'content/pathway-kits'),capturesDir});
   const targets=all.filter(t=>t.url.includes(filter)).slice(0,limit);
   const changed=[],unchanged=[],unreachable=[];
+  // Page-ranged sources (`#pages=…`) of one catalog PDF share a single download per run; each compares only its own pages.
+  const documents=new Map();
+  const sharedFetch=async(url,init)=>{
+    if(!documents.has(url))documents.set(url,(async()=>{
+      const response=await fetchImpl(url,init);
+      const bytes=response.ok&&typeof response.arrayBuffer==='function'?new Uint8Array(await response.arrayBuffer()):null;
+      return {ok:response.ok,status:response.status,url:response.url,headers:response.headers,bytes,text:bytes?null:response.text?.bind(response)};
+    })());
+    const saved=await documents.get(url);
+    return {ok:saved.ok,status:saved.status,url:saved.url,headers:saved.headers,...(saved.bytes?{arrayBuffer:async()=>saved.bytes.slice().buffer}:{text:saved.text})};
+  };
   for(const[index,t]of targets.entries()){
-    if(index&&delayMs)await sleep(delayMs);
+    const range=(()=>{try{return parsePageFragment(t.url);}catch{return {pages:null};}})();
+    if(index&&delayMs&&!(range.pages&&documents.has(range.fetchUrl)))await sleep(delayMs);
     const compare=t.cited.size?[...t.cited.keys()]:[...t.sidecars].sort((a,b)=>a.fetchedAt.localeCompare(b.fetchedAt)).slice(-1).map(s=>s.capture);
     let page;
-    try{page=await fetchPage(t.url,{fetchImpl,userAgent:FRESHNESS_USER_AGENT,timeoutMs});}
+    try{page=await fetchPage(t.url,{fetchImpl:range.pages?sharedFetch:fetchImpl,userAgent:FRESHNESS_USER_AGENT,timeoutMs});}
     catch(error){unreachable.push({url:t.url,status:error.status??null,error:error.name==='TimeoutError'||error.name==='AbortError'?`timed out after ${timeoutMs} ms`:error.message});log(`unreachable ${t.url}: ${unreachable.at(-1).error}`);continue;}
     const newHash=normalizedHash(page.text),old=[];
     // Pages fingerprinted by a parsed table (Sophia partner pages show live review counts) change only when the table does.

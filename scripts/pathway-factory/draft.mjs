@@ -10,7 +10,7 @@
 import {resolve,join} from 'node:path';
 import {readFile,writeFile} from 'node:fs/promises';
 import {slug as slugify,sha256,creditSystems,levels,today as todayDate,readJSON,writeJSON,exists,resolveKitDir,loadKit,parseArgs,isMain,root,capturesRoot,list} from './lib.mjs';
-import {capture,fetchPage,storeCapture} from './capture.mjs';
+import {capture,fetchPage,storeCapture,parsePageFragment} from './capture.mjs';
 import {verifyKit,formatFindings} from './verify.mjs';
 /** Requirement id: program slug plus code or title, capped at 120 characters (stable hash suffix) so compiled option ids stay
  *  within the catalog's 200-character id limit when a long title (such as a concentration list) has no code. */
@@ -177,7 +177,7 @@ export async function draftProgram({kitDir,programUrl,slug,apiKey=process.env.AN
  */
 export function parseUrlList(text){
   const urls=[...new Set(String(text||'').split(/\r?\n/).filter(line=>!line.trim().startsWith('#')).join(' ').split(/\s+/).filter(Boolean))];
-  for(const url of urls){let parsed;try{parsed=new URL(url);}catch{throw Error(`Not a URL: ${url}`);}if(parsed.protocol!=='https:')throw Error(`Only https catalog URLs are accepted: ${url}`);}
+  for(const url of urls){let parsed;try{parsed=new URL(url);}catch{throw Error(`Not a URL: ${url}`);}if(parsed.protocol!=='https:')throw Error(`Only https catalog URLs are accepted: ${url}`);parsePageFragment(url);}
   if(!urls.length)throw Error('No program URLs were given.');
   if(urls.length>MAX_BATCH_URLS)throw Error(`${urls.length} URLs given; at most ${MAX_BATCH_URLS} per run.`);
   return urls;
