@@ -53,10 +53,11 @@ test('the public homepage explains the product and offers a clear separate build
     assert.equal(source.origin,siteOrigin,'Homepage images are self-hosted');
     const brand=source.pathname.match(/^\/images\/brands\/([a-z0-9-]+)\.svg$/i);
     if(brand){
-      assert.match(image,/\balt\s*=\s*(["'])\1/i,'A decorative brand image has an explicit empty text alternative');
+      assert.match(image,/\balt\s*=/i,'Every brand image has an explicit text alternative');
       for(const dimension of ['width','height'])assert(/^[1-9]\d*$/.test(attr(image,dimension)),'Brand images have positive numeric '+dimension);
       const name=brandNames.get(brand[1]);assert(name,'The example identifies a known school or course provider');
-      assert.match(strip(home.html.slice(match.index+image.length,match.index+image.length+600)),name,'The decorative logo has a nearby readable brand name');
+      if(attr(image,'alt'))assert.match(attr(image,'alt'),name,'An informative logo identifies its school or provider');
+      else assert.match(strip(home.html.slice(match.index+image.length,match.index+image.length+600)),name,'A decorative logo has a nearby readable brand name');
     }else assert(attr(image,'alt').length>=12,'A photograph has a useful text alternative');
   }
 
