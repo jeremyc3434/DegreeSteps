@@ -12,6 +12,7 @@
  */
 import {readFile,readdir,appendFile} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
+import {tableSignature,parseRows} from './import-sophia-partner.mjs';
 import {list,sha256,normalizeText,today as todayDate,dateOnly,readJSON,writeJSON,exists,loadKit,kitDirs,loadProviders,sourceRefs,sourceIndex,inScope,rowStatus,parseArgs,isMain,root} from './lib.mjs';
 import {fetchPage,storeCapture} from './capture.mjs';
 import {quotedClaims} from './verify.mjs';
@@ -53,6 +54,7 @@ export async function collectTargets({base=root,kitsDir=resolve(base,'content/pa
     const capture=rel(source.capture,base),url=sidecarUrl.get(capture)||source.url;
     const t=target(url);if(!t.cited.has(capture))t.cited.set(capture,{capture,sources:[]});
     const entry=t.cited.get(capture);if(!entry.sources.some(s=>s.id===source.id&&s.owner===owner))entry.sources.push({id:source.id,owner});
+    if(source.tableSha256)entry.tableSha256=source.tableSha256;
     return capture;
   };
   for(const doc of providers.values())for(const s of list(doc.sources))cite(s,doc.file);
@@ -105,6 +107,9 @@ export async function checkFreshness({base=root,kitsDir,capturesDir,asOf=todayDa
     try{page=await fetchPage(t.url,{fetchImpl,userAgent:FRESHNESS_USER_AGENT,timeoutMs});}
     catch(error){unreachable.push({url:t.url,status:error.status??null,error:error.name==='TimeoutError'||error.name==='AbortError'?`timed out after ${timeoutMs} ms`:error.message});log(`unreachable ${t.url}: ${unreachable.at(-1).error}`);continue;}
     const newHash=normalizedHash(page.text),old=[];
+    // Pages fingerprinted by a parsed table (Sophia partner pages show live review counts) change only when the table does.
+    const tableHashes=compare.map(c=>t.cited.get(c)?.tableSha256).filter(Boolean);
+    if(tableHashes.length===compare.length&&page.html&&tableHashes.every(h=>h===tableSignature(parseRows(page.html)))){unchanged.push(t.url);continue;}
     for(const capture of compare){
       const path=resolve(base,capture);
       old.push({capture,hash:await exists(path)?normalizedHash(await readFile(path,'utf8')):null});

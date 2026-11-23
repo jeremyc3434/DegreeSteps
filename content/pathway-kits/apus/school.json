@@ -1,0 +1,72 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "apus",
+  "name": "American Public University System",
+  "creditSystem": "semester",
+  "checkedOn": "2026-11-23",
+  "sources": [
+    {
+      "id": "apus-sophia-partner-page",
+      "title": "Sophia partner page: Sophia courses that transfer to American Public University System",
+      "url": "https://apus.sophia.org/",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/973f2cca3ec677bd.txt",
+      "tableSha256": "8121ded7668b21239b712ff3f75349d7fed1652ef47396bbbb3eb5a11f761a4d",
+      "kind": "provider",
+      "publisher": "Sophia Learning",
+      "evidenceType": "provider-published-equivalency",
+      "roles": [
+        "transfer-equivalency"
+      ],
+      "scope": "Provider-published course matches for American Public University System; American Public University System confirms transfer credit when it evaluates the transcript."
+    },
+    {
+      "id": "sophia-soph-0033-current-offer",
+      "kind": "provider",
+      "title": "Sophia current Principles of Finance offering and source semester credits",
+      "url": "https://www.sophia.org/online-courses/business/principles-of-finance/",
+      "checkedOn": "2026-11-17",
+      "retrieval": "full-public-course-page-opened",
+      "checked": "2026-11-17",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "courseCodes": [
+        "SOPH-0033",
+        "BUSI1015"
+      ],
+      "copiedFor": "sophia-partner-import-apus:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "sophia-soph-0033-current-offer-syllabus",
+      "kind": "provider",
+      "title": "Current syllabus linked by Sophia Principles of Finance course page",
+      "url": "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+      "sha256": "65ce55c2e74c5f2da1050652641913788cabe640f3deda2aec8a79ce0b7ce617",
+      "checked": "2026-11-17",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "courseCodes": [
+        "SOPH-0033",
+        "BUSI1015"
+      ],
+      "copiedFor": "sophia-partner-import-apus:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15",
+      "copiedFor": "sophia-partner-import-apus:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    }
+  ]
+}

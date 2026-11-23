@@ -1,0 +1,33 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "bellevue",
+  "name": "Bellevue University",
+  "creditSystem": "semester",
+  "checkedOn": "2026-11-23",
+  "sources": [
+    {
+      "id": "bellevue-sophia-partner-page",
+      "title": "Sophia partner page: Sophia courses that transfer to Bellevue University",
+      "url": "https://bellevue.sophia.org/",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/06db2c3d5b3a2b1a.txt",
+      "tableSha256": "2e1c7ed9629dac4be2c7e645538c18652eb3f0b1924c800fa77109dbdb24d530",
+      "kind": "provider",
+      "publisher": "Sophia Learning",
+      "evidenceType": "provider-published-equivalency",
+      "roles": [
+        "transfer-equivalency"
+      ],
+      "scope": "Provider-published course matches for Bellevue University; Bellevue University confirms transfer credit when it evaluates the transcript."
+    },
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15",
+      "copiedFor": "sophia-partner-import-bellevue:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    }
+  ]
+}

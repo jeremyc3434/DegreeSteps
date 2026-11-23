@@ -1,0 +1,54 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "capella",
+  "name": "Capella University",
+  "creditSystem": "quarter",
+  "checkedOn": "2026-11-23",
+  "sources": [
+    {
+      "id": "capella-sophia-partner-page",
+      "title": "Sophia partner page: Sophia courses that transfer to Capella University",
+      "url": "https://capella.sophia.org/",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/232e61ffb40e3b29.txt",
+      "tableSha256": "6e6eb1b3bd4aac5641d2097f8c71f4c57e3a6b6623c88d96a9f8270575be06b5",
+      "kind": "provider",
+      "publisher": "Sophia Learning",
+      "evidenceType": "provider-published-equivalency",
+      "roles": [
+        "transfer-equivalency"
+      ],
+      "scope": "Provider-published course matches for Capella University; Capella University confirms transfer credit when it evaluates the transcript."
+    },
+    {
+      "id": "sophia-soph-0086-current-offer",
+      "kind": "provider",
+      "title": "Sophia current Operations Management offering and source semester credits",
+      "url": "https://www.sophia.org/online-courses/business/operations-management/",
+      "checkedOn": "2026-11-17",
+      "retrieval": "full-public-course-page-opened",
+      "copiedFor": "sophia-partner-import-capella:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "sophia-soph-0086-current-offer-syllabus",
+      "kind": "provider",
+      "title": "Current syllabus linked by Sophia Operations Management course page",
+      "url": "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+      "sha256": "d3b6aea422fdd0414cd0b93b34fcf8dea4f7786148f8b843c11ade7a8186e55f",
+      "copiedFor": "sophia-partner-import-capella:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15",
+      "copiedFor": "sophia-partner-import-capella:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    }
+  ]
+}
