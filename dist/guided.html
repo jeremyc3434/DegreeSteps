@@ -1,53 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta name="robots" content="noindex, nofollow">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#4054f4">
-  <meta name="description" content="Build a degree plan around your goals, existing credits, budget, and life. Compare routes, explore community templates, and see your next steps.">
-  <title>DegreeSteps — Build your degree plan</title>
-  <link rel="stylesheet" href="wizard.css">
-  <link rel="stylesheet" href="credit-import.css">
-  <link rel="stylesheet" href="community.css">
-  <link rel="stylesheet" href="community.css">
-  <script src="planner.js" defer></script>
-  <script src="guide-engine.js" defer></script>
-  <script src="account-return.js" defer></script>
-  <script src="community-client.js" defer></script>
-  <script src="credit-import.js" defer></script>
-  <script src="wizard.js" defer></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+  <title>Find your degree — DegreeSteps</title>
+  <link rel="stylesheet" href="portal.css">
 <link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><script src="/site-header.js" defer></script><script src="/growth-metrics.js" defer></script></head>
-<body class="ds-experience ds-workspace-page ds-discovery-page">
-  <a class="skip-link" href="#app">Skip to degree builder</a>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="DegreeSteps home"><span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span></a>
-    <nav class="workspace-nav" aria-label="Main navigation"><a href="portal.html" aria-current="page">Build a plan</a><a href="community.html?tab=templates">Explore templates</a><a href="community.html?tab=feed">Community</a></nav>
-    <a class="header-library" href="library.html">Policy library <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-  </header>
-  <main>
-    <section class="intro" aria-labelledby="intro-title">
-      <div class="intro-copy"><p class="intro-eyebrow">YOUR DEGREE WORKSPACE</p><h1 id="intro-title">Plan your next degree.</h1><p>Build around your goals, prior credits, and the way you want to learn.</p></div>
-      <div class="workspace-assurance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6zM8 12l3 3 5-6"/></svg><span><strong>Your plan, at your pace</strong>No account needed to get started.</span></div>
-    </section>
-    <div id="app" tabindex="-1">
-      <div id="loading-state" class="loading-state" role="status"><span class="loading-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h15m-5-5 5 5-5 5"/></svg></span><p>Getting your degree builder ready…</p></div>
-      <div id="error-state" class="notice error-state" role="alert" hidden></div>
-      <section id="wizard-view" class="wizard-shell" aria-label="Personalized degree builder" hidden>
-        <div class="wizard-topline"><span class="builder-label"><span class="workspace-dot" aria-hidden="true"></span> Plan builder</span><span class="builder-note">A few choices. A clear way forward.</span></div>
-        <div id="wizard-layout">
-          <section id="step-panel" tabindex="-1" aria-live="polite" aria-atomic="false"></section>
-          <div class="wizard-sidebar"><div id="wizard-progress"></div><aside id="journey-panel" aria-label="Your route so far"></aside><a class="sidebar-community-link" href="community.html?tab=templates"><span><strong>Need a starting point?</strong>Explore DegreeSteps starter templates.</span><svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
-        </div>
-        <div id="wizard-footer"><button class="button ghost" id="back-step" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg> Back</button><span id="save-status" class="save-status" role="status">Your plan in progress</span><button class="button" id="next-step" type="button">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div>
-      </section>
-      <section id="results-view" aria-label="Your personalized degree plan" hidden><div id="result-header"></div><div id="recommendation-grid"></div><div id="result-details"></div><div id="result-actions"></div></section>
-      <noscript><div class="notice"><strong>Enable JavaScript to build your plan.</strong><p>You can still <a href="library.html">explore the policy library</a>.</p></div></noscript>
-    </div>
-    <section id="data-notes" class="data-notes" aria-labelledby="data-notes-title"><svg class="data-notes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3 3 7l9 4 9-4-9-4ZM5 11v6l7 4 7-4v-6M12 11v10"/></svg><div><h2 id="data-notes-title">A useful draft. Sources you can check.</h2><p>Your plan uses researched school policies and pathways. Proposed matches and research gaps stay visible. Your receiving university makes the final credit decision.</p><a href="library.html">View policies and research dates <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div></section>
+<body class="portal-page ds-experience ds-workspace-page ds-discovery-page">
+  <header class="portal-header"><a class="brand" href="/" aria-label="DegreeSteps home"><span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span></a></header>
+  <main id="legacy-guided-handoff" class="portal-question">
+    <h1>Let’s find your degree.</h1>
+    <p class="portal-lede">The plan builder moved to a 1-minute quiz. Your saved plan and courses have not been changed.</p>
+    <a class="portal-primary" id="guided-quiz-link" href="/start.html?step=quiz">Take the 1-minute quiz</a>
+    <p><a href="/plan.html">Open my plan</a></p>
   </main>
-  <footer class="site-footer"><a class="brand" href="index.html"><span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span></a><p>A clearer path from where you are to what’s next.</p><div class="footer-links"><a href="community.html?tab=templates">Templates</a><a href="community.html?tab=feed">Community</a><a href="library.html">Policies &amp; research</a></div></footer>
-  <dialog id="learning-dialog" aria-label="Your learning record"><div class="dialog-topline"><span class="step-eyebrow">YOUR LEARNING RECORD</span><button class="dialog-close" id="close-learning" type="button" aria-label="Close learning record">×</button></div><div id="learning-dialog-content"></div></dialog>
-  <dialog id="source-dialog" aria-label="Supporting sources"><div class="dialog-topline"><span class="step-eyebrow">SOURCES &amp; EVIDENCE</span><button class="dialog-close" id="close-sources" type="button" aria-label="Close supporting sources">×</button></div><div id="source-dialog-content"></div></dialog>
+  <script id="legacy-guided-redirect">
+  (function () {
+    'use strict';
+    // The older guided builder (wizard.js) is retired. Saved plans keep loading: the shared plan loader
+    // (journey-engine.js, used by portal.html and plan.html) still migrates the older degreepath-pathway-v2 record.
+    location.replace('/start.html?step=quiz');
+  }());
+  </script>
 </body>
 </html>

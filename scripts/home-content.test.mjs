@@ -57,7 +57,10 @@ test('a wrong provider, unsupported baseline option or completed record cannot b
 
 test('the homepage is three readable vertical chapters with the exact plan and no carousel controls',()=>{
  const html=render(),hero=html.split('<section class="home-credit-strip"')[0];
- assert.match(textOnly(hero.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1]||''),/^The degree you want\. A smarter way there\.$/);
+ assert.match(textOnly(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1]||''),/^Finish your degree for less\.$/);
+ assert.equal((html.match(/<h1\b/g)||[]).length,1,'one page title');
+ assert.match(textOnly(hero.match(/<h2 id="home-steps-title"[^>]*>([\s\S]*?)<\/h2>/)?.[1]||''),/^The degree you want\. A smarter way there\.$/);
+ assert.match(html,/<form class="home-search-form" action="\/start.html" method="get"/);assert.match(html,/href="\/start.html\?step=quiz"/);assert.equal((html.match(/class="home-search-chip"/g)||[]).length,5);
  const chapters=[...hero.matchAll(/<section\b[^>]*\bid="(home-step-\d+)"[^>]*\bdata-home-step\b[^>]*>/g)];
  assert.deepEqual(chapters.map(row=>row[1]),['home-step-1','home-step-2','home-step-3']);
  for(const [index,title] of ['The degree you want','More ways to earn credit','Your route, made clear'].entries()){
@@ -72,11 +75,11 @@ test('the homepage is three readable vertical chapters with the exact plan and n
  assert.match(hero,/planned coursework, not completed credit/);
  for(const row of example.displayRows){assert(hero.includes(row.code));assert(hero.includes(row.title.replace(/&/g,'&amp;')));}
  const first=hero.slice(hero.indexOf('id="home-step-1"'),hero.indexOf('id="home-step-2"'));
- assert.match(first,/href="\/portal.html"/);assert.match(first,/href="\/portal.html\?view=setup"/);assert.match(first,/href="\/import-courses.html"/);assert.match(first,/No transcript needed/);
+ assert.match(first,/href="\/start.html"/);assert.match(first,/href="\/start.html\?step=quiz"/);assert.match(first,/href="\/import-courses.html"/);assert.match(first,/No transcript needed/);
  assert.match(hero,/See an example plan/);assert.match(hero,/Sign in when you’re ready to save/);
  assert(hero.includes('href="'+example.planUrl.replace(/&/g,'&amp;')+'">Start a plan for this degree<'));
  assert.match(hero,/See the full starting plan/);assert.match(hero,/Choose your courses when you build your own plan\. This example isn’t saved\./);
- assert.match(hero,/data-home-step-build href="\/portal.html"/);assert(hero.indexOf('data-home-step-build')>hero.indexOf('class="home-journey-actionbar"'));
+ assert.match(hero,/data-home-step-build href="\/start.html"/);assert(hero.indexOf('data-home-step-build')>hero.indexOf('class="home-journey-actionbar"'));
  assert.equal((hero.match(/data-home-course-choice/g)||[]).length,1);
  assert.equal((html.match(/data-home-route-example\b/g)||[]).length,1);assert.equal((html.match(/id="home-route-example-data"/g)||[]).length,1);
  assert.equal(routeData(html).personalCreditsAwarded,0);

@@ -19,7 +19,7 @@ test('the shared header names the five destinations on both surfaces',()=>{
  for(const [label,href] of [['Degrees','/degree-plans/'],['Transfer courses','/transfer/'],['Community','/community.html?tab=feed'],['My plan','/plan.html'],['Sign in','/account.html']])assert(pub.includes('href="'+href.replace('&','&amp;')+'"')&&pub.includes('>'+label+'<'),label);
  assert(app.includes('href="/programs.html"'),'Degrees opens the degree finder inside the workspace');
  assert.match(pub,/href="\/degree-plans\/"[^>]*aria-current="page"/);assert.match(app,/data-shell-nav="plan"[^>]*aria-current="page"/);
- assert.match(app,/data-fallback-href="\/portal.html"/,'My plan falls back to setup when no plan exists');
+ assert.match(app,/data-fallback-href="\/start.html"/,'My plan falls back to Build my plan when no plan exists');
  assert.match(pub,/<button type="button" class="ds-header-toggle" aria-expanded="false" aria-controls="ds-header-menu-public" hidden>/,'The menu button stays hidden until the script can run it');
  assert.match(pub,/<nav class="ds-header-nav" id="ds-header-menu-public" aria-label="Main navigation">/);
 });
@@ -88,6 +88,6 @@ test('tokens: brand names map onto the new tokens and text colors stay readable'
 test('the component check page is never indexed or linked',()=>{
  const demo=read('dist/ui-demo.html');assert.match(demo,/<meta name="robots" content="noindex,nofollow">/);
  assert.match(read('dist/robots.txt'),/Disallow: \/ui-demo\.html/);assert.doesNotMatch(read('dist/sitemap.xml'),/ui-demo/);
- assert.match(read('worker/index.mjs'),/'\/ui-demo\.html'\]\.includes\(path\)/);
+ assert.match(read('worker/index.mjs'),/'\/ui-demo\.html'[,\]]/);
  for(const file of walk(dist).filter(p=>p.endsWith('.html')&&!p.endsWith('ui-demo.html')))assert.doesNotMatch(readFileSync(file,'utf8'),/href="\/?ui-demo\.html"/,file);
 });

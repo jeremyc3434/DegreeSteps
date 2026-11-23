@@ -115,11 +115,11 @@ function fixture(overrides = {}) {
     ...overrides
   };
 }
+// The retired guided builder (guided.html) now redirects to the quiz, so drafts are seeded on a static page and
+// sharing goes through My plan's share action (the same community-client publish dialog).
 async function seedDraft(actor, value) {
-  await actor.page.goto(url('/guided.html'), { waitUntil:'networkidle' });
+  await actor.page.goto(url('/about/'), { waitUntil:'networkidle' });
   await actor.page.evaluate(({ key, value }) => localStorage.setItem(key, JSON.stringify(value)), { key:KEY, value });
-  await actor.page.reload({ waitUntil:'networkidle' });
-  await actor.page.waitForFunction(() => !document.querySelector('#results-view').hidden || !document.querySelector('#wizard-view').hidden);
 }
 async function stored(actor) { return actor.page.evaluate(key => JSON.parse(localStorage.getItem(key)), KEY); }
 async function noOverflow(page) {
@@ -127,7 +127,9 @@ async function noOverflow(page) {
   assert(widths.document <= widths.viewport + 1, 'Horizontal overflow: ' + JSON.stringify(widths));
 }
 function whitelist(plan) {
-  assert.deepEqual(Object.keys(plan).sort(), ['courses','programId','programName','schoolId','schoolName','strategy','totalCredits'].sort());
+  // catalogYear is a public catalog fact My plan's share includes; nothing private may appear.
+  assert.deepEqual(Object.keys(plan).filter(key => key !== 'catalogYear').sort(), ['courses','programId','programName','schoolId','schoolName','strategy','totalCredits'].sort());
+  if ('catalogYear' in plan) assert.equal(typeof plan.catalogYear, 'string');
   for (const course of plan.courses) {
     assert(Object.keys(course).every(key => ['requirementId','requirement','courseId','title','provider','credits','url'].includes(key)));
     assert.equal(typeof course.credits, 'number');
@@ -257,16 +259,16 @@ function whitelist(plan) {
       assert(reviewedReports.items.some(item => item.targetId === question.id && item.target.deleted));
     });
 
-    await journey('wizard sharing previews proposed source rows, excludes JST records, and writes only after explicit consent', async () => {
-      await seedDraft(alice, fixture()); await alice.page.locator('[data-action=share-plan]').waitFor({ state:'visible' });
+    await journey('plan sharing previews proposed source rows, excludes JST records, and writes only after explicit consent', async () => {
+      await seedDraft(alice, fixture());
       const beforeDraft = await stored(alice), beforeWrites = writes.filter(item => item.path === '/api/community/posts' && item.method === 'POST').length;
-      await alice.page.locator('[data-action=share-plan]').click();
+      await alice.page.goto(url('/plan.html?share=1'), { waitUntil:'networkidle' });
       const form = alice.page.locator('#publish-dialog .publish-form'); await form.waitFor({ state:'visible' });
       assert(!(await alice.page.locator('#publish-dialog-content').textContent()).includes(PRIVATE));
       await form.locator('.share-preview details summary').click();
       assert((await form.locator('.share-preview tbody tr').count()) > 0);
       assert.equal(await form.locator('[name=consent]').isChecked(), false);
-      await form.locator('[name=title]').fill(planTitle); await form.locator('[type=submit]').click();
+      await form.locator('[name=title]').fill(planTitle); if(!(await form.locator('[name=body]').inputValue()))await form.locator('[name=body]').fill('A proposed plan to compare.'); await form.locator('[type=submit]').click();
       assert.equal(writes.filter(item => item.path === '/api/community/posts' && item.method === 'POST').length, beforeWrites);
       await form.locator('[name=consent]').check(); const published = postResponse(alice.page); await form.locator('[type=submit]').click();
       const response = await published; assert.equal(response.status(), 201); sharedPlan = (await response.json()).item;

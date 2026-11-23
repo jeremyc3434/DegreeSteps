@@ -4,10 +4,10 @@ import {resolve,relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
 
 const dist=resolve(import.meta.dirname,'../dist');
-const workspacePages=new Set(['account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html']);
+const workspacePages=new Set(['account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html','start.html']);
 const savePages=new Set(['plan.html','portal.html','courses.html','compare-plans.html']);
 const families=new Map([
-  ...['portal.html','programs.html','credits-worth.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html','campuses.html'].map(name=>[name,'discovery']),
+  ...['portal.html','start.html','programs.html','credits-worth.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html','campuses.html'].map(name=>[name,'discovery']),
   ...['courses.html','import-courses.html'].map(name=>[name,'collection']),
   ['compare-plans.html','comparison'],['community.html','community'],
   ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
@@ -17,7 +17,7 @@ const managedScripts=new Set(['site-header.js','growth-metrics.js','plan-save.js
 // Email plan alerts: the script renders nothing unless /api/alerts is enabled (EMAIL_ALERTS_ENABLED=1).
 const alertPages=new Set(['plan.html','account.html']);
 // Degree coach (beta): the script renders nothing unless /api/coach/status reports the coach enabled.
-const coachPages=new Set(['programs.html','portal.html','plan.html']);
+const coachPages=new Set(['programs.html','portal.html','plan.html','start.html']);
 // School contact requests and Plan review (both off by default): the script renders nothing unless /api/leads/status reports a feature on.
 const leadsPages=new Set(['portal.html','plan.html','plan-review/index.html']);
 const managedClasses=new Set(['ds-experience','ds-public-page','ds-workspace-page','ds-discovery-page','ds-collection-page','ds-comparison-page','ds-community-page','ds-settings-page']);

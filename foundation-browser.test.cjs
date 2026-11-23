@@ -60,7 +60,7 @@ const noOverflow = async (page, label) => {
     const withPlan = await open('', {width:1440, height:900});
     assert.equal(await withPlan.locator('[data-ds-header] [data-header-destination="plan"]').getAttribute('href'), '/plan.html');
     const without = await open('', {width:1440, height:900}, false);
-    assert.equal(await without.locator('[data-ds-header] [data-header-destination="plan"]').getAttribute('href'), '/portal.html');
+    assert.equal(await without.locator('[data-ds-header] [data-header-destination="plan"]').getAttribute('href'), '/start.html');
   });
   await test('the workspace keeps My courses, preferences, resources and account status one tap away', async () => {
     const desktop = await open('plan.html', {width:1440, height:900});
