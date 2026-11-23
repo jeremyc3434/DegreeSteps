@@ -32,7 +32,7 @@ test('the public homepage explains the product and offers a clear separate build
   assert(links.some(h=>new URL(h,home.url).pathname==='/account.html'),'A real account entry is available');
   assert(strip(home.html).split(/\s+/).length>=200,'The explanation is crawlable without client rendering');
   const headline=strip(home.html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');
-  assert.match(headline,/^Finish your degree for less\.$/i,'The first message states the outcome');
+  assert.match(headline,/^A degree that fits your life\.$/i,'The first message states the outcome');
   assert.match(strip(home.html.match(/<h2 id="home-steps-title"[^>]*>([\s\S]*?)<\/h2>/i)?.[1]||''),/^The degree you want\. A smarter way there\.$/i,'The example chapter still connects the degree goal to a different route');
   assert.match(strip(home.html),/Find a faster, more affordable route with flexible courses that can count toward your degree\. Online or on campus\./,'The supporting sentence states the student outcome and course flexibility');
   const chapters=[...home.html.matchAll(/<section\b(?=[^>]*\bdata-home-step(?:\s|>))[^>]*>/gi)];
