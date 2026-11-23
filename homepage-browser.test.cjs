@@ -29,7 +29,7 @@ async function noOverflow(page) {
   await test('the first screen makes the possibility clear and opens the real guided builder', async () => {
     const page = await pageFor();
     assert.equal(await page.locator('main h1').count(), 1);
-    assert.equal(words(await page.locator('main h1').innerText()), 'Finish your degree for less.');
+    assert.equal(words(await page.locator('main h1').innerText()), 'A degree that fits your life.');
     assert.match(words(await page.locator('#home-steps-title').innerText()), /The degree you want\.\s*A smarter way there\./i);
     const intro = words(await page.locator('#home-step-1 .home-journey-lede').innerText());
     assert.match(intro, /faster|sooner/i); assert.match(intro, /affordable|budget|spend less/i);

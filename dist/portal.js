@@ -510,7 +510,33 @@
     const then=new URLSearchParams(location.search).get('then');
     return ({none:'plan.html?task=credits&prior=none',later:'plan.html?task=credits&prior=later',some:'plan.html?task=credits&manual=1',upload:'import-courses.html?from=plan',military:'plan.html?task=preferences'})[then]||'plan.html';
   }
-  async function usePublicPlan(id) {
+  // The short builder carries only explicit, allow-listed answers. Existing
+  // student records and preferences stay untouched on ordinary degree links.
+  function builderIntent(params=new URLSearchParams(location.search)) {
+    if(params.get('from')!=='quiz')return null;
+    const purpose=['any-degree','career-growth','change-career','licensed-career'].includes(params.get('purpose'))?params.get('purpose'):null;
+    const priority=['balanced','speed','cost','transfer'].includes(params.get('priority'))?params.get('priority'):null;
+    const career=purpose==='licensed-career'&&protectedGoals.includes(params.get('career'))?params.get('career'):null;
+    return purpose||priority?{purpose,priority,career}:null;
+  }
+  function applyBuilderIntent(previous,intent) {
+    if(!intent)return previous;
+    let next=clone(previous);
+    if(intent.purpose){
+      if(intent.purpose==='licensed-career'&&!intent.career)delete next.journey.answers.career;
+      next=Journey.applyAnswer(next,'purpose',intent.purpose,catalog);
+      if(intent.purpose==='licensed-career'&&intent.career)next=Journey.applyAnswer(next,'career',intent.career,catalog);
+    }
+    if(intent.priority)next=Journey.applyAnswer(next,'priority',intent.priority,catalog);
+    return next;
+  }
+  function quizCareerBody(id,intent) {
+    const route=catalog.pathways.find(item=>item.id===id);
+    if(!route||!routeHasMap(route))throw Error('Choose a degree plan from the plan library. Your current plan stays saved.');
+    $('portal-loading').hidden=true;
+    $('portal-content').innerHTML='<section class="portal-question portal-simple-setup"><h1 id="portal-question-title" tabindex="-1">Which career are you working toward?</h1><p>A general degree does not qualify you for every licensed profession. We’ll keep this goal with your plan.</p><p class="portal-profile-note">Your degree choice: '+esc(route.title)+' · '+esc(route.school)+'</p><form id="portal-quiz-career-form" data-plan="'+esc(id)+'">'+chooseField('career','Your intended career',[['','Choose a career'],...goalChoices.filter(([value])=>protectedGoals.includes(value))],'')+'<button class="portal-primary" type="submit">Continue with this career</button></form><p id="portal-step-error" role="alert"></p><div class="portal-links"><a href="start.html?from=quiz&amp;purpose=licensed-career'+(intent.priority?'&amp;priority='+encodeURIComponent(intent.priority):'')+'">Back to degree options</a></div></section>';
+  }
+  async function usePublicPlan(id,intent=null) {
     if(typeof id!=='string'||!/^[A-Za-z0-9_-]{1,120}$/.test(id))throw Error('Choose a degree plan from the plan library.');
     const route=catalog.pathways.find(item=>item.id===id);
     if(!route||!routeHasMap(route))throw Error('This course plan is not available. Your existing plan is still saved.');
@@ -519,10 +545,17 @@
     state=previous;
     let next;
     try{
-      const selecting=clone(previous);
+      const selecting=applyBuilderIntent(clone(previous),intent);
       if(route.modalities?.length===1){selecting.profile.modality=route.modalities[0];if(selecting.profile.modality==='online'&&selecting.profile.classroomImportance==='essential')selecting.profile.classroomImportance='open';}
       next=DegreeProgramCatalog.resolveTarget(Journey.selectRoute(selecting,route,catalog),catalog).state;
-    }catch(error){state=beforeState;throw error;}
+    }catch(error){
+      state=beforeState;
+      if(intent?.purpose==='licensed-career'){
+        state=applyBuilderIntent(previous,intent);state.journey={...state.journey,view:'questions',step:'degree',completed:false};
+        await previewDegree(route,{explicitFormat:true,allowSchoolChange:true});return false;
+      }
+      throw error;
+    }
     const model=models.find(item=>item.id===route.modelId);
     if(!model){state=beforeState;throw Error('The course requirements could not load. Your existing plan is still saved.');}
     const hasChoices=Object.keys(next.scenarios?.[model.id]?.optionSelections||{}).length>0;
@@ -586,7 +619,7 @@
     delete next.journey.explorationSearch;
     if(next.profile.hasPrior==='none'&&next.learning.some(item=>item.status==='earned')){next.profile.hasPrior='some';next.journey.answers.prior='some';}
     const check=Journey.buildDraft(next,catalog,models);
-    if(check.targetReviewNeeded||!check.plan||check.plan.validation?.academicCountsValid!==true){state=clone(beforeState);state.journey={...state.journey,view:'questions',step:'degree'};await previewDegree(route,{explicitFormat:true,allowSchoolChange:true});return false;}
+    if(check.targetReviewNeeded||!check.plan||check.plan.validation?.academicCountsValid!==true){state=intent?check.state:clone(beforeState);state.journey={...state.journey,view:'questions',step:'degree'};await previewDegree(route,{explicitFormat:true,allowSchoolChange:true});return false;}
     assertPreviousPlanSaved(latest||previous,check.state);
     state=check.state;state.journey={...state.journey,view:'home',step:'review',completed:true,creditsDeferred:!state.learning.some(item=>item.status==='earned')&&state.profile.hasPrior!=='none',planReviewed:false,schoolContacted:false};
     degreePreview=null;page='home';save();
@@ -1059,9 +1092,16 @@
     } catch (error) {showError(error);}
   });
   document.addEventListener('submit',async event => {
-    if (!['portal-question-form','portal-custom-degree-form','portal-explore-form','portal-about-form','portal-profile-form'].includes(event.target.id)) return;
+    if (!['portal-question-form','portal-custom-degree-form','portal-explore-form','portal-about-form','portal-profile-form','portal-quiz-career-form'].includes(event.target.id)) return;
     event.preventDefault();
     try {
+      if(event.target.id==='portal-quiz-career-form'){
+        const career=String(new FormData(event.target).get('career')||'');
+        if(!protectedGoals.includes(career))throw Error('Choose the career you want to prepare for.');
+        const params=new URLSearchParams(location.search);params.set('career',career);
+        history.replaceState(null,'',location.pathname+'?'+params);
+        const used=await usePublicPlan(event.target.dataset.plan,builderIntent(params));if(!used)render(false);return;
+      }
       if(event.target.id==='portal-profile-form'){await submitProfileStep(event.target);return;}
       const values = new FormData(event.target), id = state.journey.step;
       if(event.target.id==='portal-about-form') {
@@ -1154,7 +1194,7 @@
       await ensureRouteModels(catalog.pathways.find(route=>route.id===(state.selectedPathwayId||state.profile?.pathwayId)));
       activePlanState=actualSavedTarget(state)&&read(KEY)?clone(state):null;
       const params = new URLSearchParams(location.search);
-      if(params.has('usePlan')){try{const used=await usePublicPlan(params.get('usePlan'));if(!used)render(false);}catch(error){state=Journey.initialize(read(KEY),read('degreepath-pathway-v2'),catalog);degreePreview=null;announce(error.message);render(false);}return;}
+      if(params.has('usePlan')){try{const intent=builderIntent(params);if(intent?.purpose==='licensed-career'&&!intent.career){quizCareerBody(params.get('usePlan'),intent);return;}const used=await usePublicPlan(params.get('usePlan'),intent);if(!used)render(false);}catch(error){state=Journey.initialize(read(KEY),read('degreepath-pathway-v2'),catalog);degreePreview=null;announce(error.message);render(false);}return;}
       await openPublicRoute(params);
       const school = (params.get('school') || '').trim();
       if (school && school.length <= 120) {

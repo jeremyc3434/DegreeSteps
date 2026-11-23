@@ -10,9 +10,9 @@ const seed=id=>J.initialize(S.selectPathway(S.initialize(null,null,catalog),cata
 const PLAN='apus-bachelor-of-arts-in-psychology';
 let browser,count=0;const contexts=[];
 async function test(name,fn){await fn();count++;console.log('PASS '+name);}
-async function open(width,path,{plan=null}={}){
+async function open(width,path,{plan=null,state=null}={}){
   const context=await browser.newContext({viewport:{width,height:900}});contexts.push(context);
-  if(plan)await context.addInitScript(({key,state})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(state));},{key:KEY,state:seed(plan)});
+  if(state||plan)await context.addInitScript(({key,state})=>{if(!localStorage.getItem(key))localStorage.setItem(key,JSON.stringify(state));},{key:KEY,state:state||seed(plan)});
   const page=await context.newPage(),errors=[];page.on('pageerror',error=>errors.push(String(error)));
   await page.goto(BASE+path,{waitUntil:'load'});
   return {page,errors};
@@ -26,7 +26,7 @@ const stored=page=>page.evaluate(key=>localStorage.getItem(key),KEY);
   await test('home: search-first hero, quiz link and 3-step explainer, with every search section and tag kept',async()=>{
     const {page,errors}=await open(390,'');
     assert.equal(await page.locator('main h1').count(),1);
-    assert.equal((await page.locator('main h1').innerText()).trim(),'Finish your degree for less.');
+    assert.equal((await page.locator('main h1').innerText()).trim(),'A degree that fits your life.');
     const form=page.locator('form.home-search-form');
     assert.equal(await form.getAttribute('action'),'/start.html');
     assert(await page.getByLabel('What do you want to study?').isVisible());
@@ -136,6 +136,51 @@ const stored=page=>page.evaluate(key=>localStorage.getItem(key),KEY);
     await page.locator('#start-step-quiz:not([hidden])').waitFor({timeout:30000});
     await page.locator('[data-quiz-answer="licensed"]').click();
     assert.match(await page.locator('#start-quiz-card').innerText(),/confirm licensure with the school/);
+  });
+
+  await test('partial course prices remain clearly incomplete on the card and credits step',async()=>{
+    const {page,errors}=await open(390,'start.html?q=Excelsior');
+    await page.locator('#start-step-degree:not([hidden])').waitFor({timeout:30000});
+    const cards=page.locator('.start-card');assert.equal(await cards.count(),3);
+    for(const card of await cards.all()){assert.match(await card.innerText(),/Known charges so far/);assert.match(await card.innerText(),/StraighterLine prices not included/);assert.doesNotMatch(await card.innerText(),/Est\. cost/);}
+    await cards.first().getByRole('link',{name:'Build this plan'}).click();await page.locator('#start-step-credits:not([hidden])').waitFor();
+    assert.match(await page.locator('#start-picked').innerText(),/Known charges so far/);assert.match(await page.locator('#start-picked').innerText(),/StraighterLine prices not included/);assert.equal(await overflow(page),0);assert.deepEqual(errors,[]);
+  });
+
+  await test('explicit quiz intent survives a credits-step reload and keeps the original course collection',async()=>{
+    const state=seed('liberty-criminal-justice-residential');state.profile.goal='career-growth';state.profile.priority='cost';
+    state.learning=[{id:'quiz-original-course',provider:'College',title:'Original composition course',code:'ENG101',credits:3,creditSystem:'semester',status:'earned'}];state.sheet.notes={private:'Keep my original note'};
+    const {page,errors}=await open(390,'start.html?step=credits&plan='+PLAN+'&from=quiz&purpose=change-career&priority=speed',{state});
+    await page.locator('#start-step-credits:not([hidden])').waitFor({timeout:30000});await page.reload();await page.locator('#start-step-credits:not([hidden])').waitFor();
+    assert.match(await page.locator('#start-credits-back').getAttribute('href'),/purpose=change-career/);
+    await page.locator('#start-credits-skip').click();await page.waitForURL(/plan\.html\?task=credits&prior=later/,{timeout:60000});
+    const saved=JSON.parse(await stored(page));assert.equal(saved.selectedPathwayId,PLAN);assert.equal(saved.profile.goal,'change-career');assert.equal(saved.profile.priority,'speed');assert.equal(saved.journey.answers.purpose,'change-career');assert.deepEqual(saved.learning,state.learning);assert.deepEqual(saved.sheet.notes,state.sheet.notes);assert.deepEqual(errors,[]);
+  });
+
+  await test('licensed intent asks for a profession and keeps an incompatible degree behind the existing review guard',async()=>{
+    const state=seed('liberty-criminal-justice-residential');state.learning=[{id:'licensed-original-course',provider:'College',title:'Original course',credits:3,creditSystem:'semester',status:'earned'}];
+    const {page,errors}=await open(390,'start.html?step=credits&plan='+PLAN+'&from=quiz&purpose=licensed-career&priority=speed',{state});
+    await page.locator('#start-step-credits:not([hidden])').waitFor({timeout:30000});await page.locator('#start-credits-next').click();await page.locator('#portal-quiz-career-form').waitFor({timeout:60000});
+    assert.match(await page.locator('#portal-question-title').innerText(),/Which career/);assert.match(await page.locator('.portal-profile-note').innerText(),/Psychology/);
+    await page.reload();await page.locator('#portal-quiz-career-form').waitFor();await page.locator('#portal-quiz-career-form select[name=career]').selectOption('teacher');await page.locator('#portal-quiz-career-form [type=submit]').click();
+    await page.locator('.portal-readiness-card').waitFor();assert.equal(new URL(page.url()).searchParams.get('career'),'teacher');assert.equal(new URL(page.url()).searchParams.get('priority'),'speed');
+    assert(await page.locator('[data-action=change-preferences]').isVisible());assert(await page.locator('[data-action=degree-search]').isVisible());
+    const saved=JSON.parse(await stored(page));assert.equal(saved.selectedPathwayId,state.selectedPathwayId,'an unsupported career target does not overwrite the existing plan');assert.deepEqual(saved.learning,state.learning);assert.deepEqual(errors,[]);
+  });
+
+  await test('a fresh licensed-career build keeps its exact goal and speed priority during compatibility review',async()=>{
+    const {page,errors}=await open(390,'portal.html?usePlan='+PLAN+'&then=later&from=quiz&purpose=licensed-career&priority=speed');
+    await page.locator('#portal-quiz-career-form').waitFor({timeout:60000});
+    await page.locator('#portal-quiz-career-form select[name=career]').selectOption('teacher');await page.locator('#portal-quiz-career-form [type=submit]').click();
+    await page.locator('.portal-readiness-card').waitFor();
+    const saved=JSON.parse(await stored(page));assert.equal(saved.profile.goal,'teacher');assert.equal(saved.profile.priority,'speed');assert.equal(saved.journey.answers.purpose,'licensed-career');assert.equal(saved.journey.answers.career,'teacher');
+    assert(await page.locator('[data-action=change-preferences]').isVisible());assert.deepEqual(errors,[]);
+  });
+
+  await test('an ordinary degree link keeps prior goal and priority preferences',async()=>{
+    const state=seed('liberty-criminal-justice-residential');state.profile.goal='career-growth';state.profile.priority='speed';
+    const {page,errors}=await open(1440,'start.html?step=credits&plan='+PLAN,{state});await page.locator('#start-step-credits:not([hidden])').waitFor({timeout:30000});await page.locator('#start-credits-skip').click();await page.waitForURL(/plan\.html\?task=credits&prior=later/,{timeout:60000});
+    const saved=JSON.parse(await stored(page));assert.equal(saved.profile.goal,'career-growth');assert.equal(saved.profile.priority,'speed');assert.deepEqual(errors,[]);
   });
 
   await test('guided.html redirects to the quiz; header, home and footer entry points reach the new flow',async()=>{
