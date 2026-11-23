@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {mkdtemp,readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {resolve} from 'node:path';
-import {buildAcademicRegistry,buildAcademicRegistryArtifacts,validateAcademicRegistry,validateAcademicRegistryArtifacts,canonicalJSON,runAcademicRegistry,academicRegistryLimits} from './build-academic-registry.mjs';
+import {buildAcademicRegistry,buildAcademicRegistryArtifacts,validateAcademicRegistry,validateAcademicRegistryArtifacts,canonicalJSON,runAcademicRegistry,academicRegistryLimits,mergeAcademicRegistryShards} from './build-academic-registry.mjs';
 import {handleAcademicCoverage} from '../server/academic-coverage.mjs';
 
 const asOf='2026-11-18';
@@ -74,14 +74,17 @@ test('source and program backlinks are validated and reject corrupted provenance
 });
 
 test('runtime artifacts retain exact evidence in bounded content-addressed shards',()=>{
- const full=build([model()]),artifacts=buildAcademicRegistryArtifacts(full);assert.equal(validateAcademicRegistryArtifacts(artifacts),artifacts.index);
- assert.equal(artifacts.index.revision,full.revision);assert(!Object.hasOwn(fact(artifacts.index,'equivalence'),'facts'));
+ const full=build([model()]),artifacts=buildAcademicRegistryArtifacts(full),compact=mergeAcademicRegistryShards(artifacts.index,artifacts.registryShards);assert.equal(validateAcademicRegistryArtifacts(artifacts),artifacts.index);
+ assert.equal(artifacts.index.revision,full.revision);assert(!Object.hasOwn(fact(compact,'equivalence'),'facts'));
+ // Fact and finding summaries live in per-school registry shards, located through the index.
+ assert(!Object.hasOwn(artifacts.index,'facts')&&!Object.hasOwn(artifacts.index,'findings'));assert(artifacts.index.registryShards.length>0);
+ for(const [path,shard]of artifacts.registryShards){const text=JSON.stringify(shard)+'\n';assert(Buffer.byteLength(text)<=academicRegistryLimits.shardBytes);assert(path.includes(createHash('sha256').update(text).digest('hex')));for(const item of shard.facts)assert.equal(artifacts.index.registryShards[artifacts.index.factShards[item.id]].path,'/'+path.slice(5));}
  for(const [path,shard]of artifacts.shards){const text=canonicalJSON(shard)+'\n';assert(Buffer.byteLength(text)<=academicRegistryLimits.evidenceBytes);assert(path.includes(createHash('sha256').update(text).digest('hex')));}
- const summary=fact(artifacts.index,'equivalence'),shard=artifacts.shards.get('dist'+summary.detailPath);assert.deepEqual(shard.facts.find(fact=>fact.id===summary.id),fact(full,'equivalence'));
+ const summary=fact(compact,'equivalence'),shard=artifacts.shards.get('dist'+summary.detailPath);assert.deepEqual(shard.facts.find(fact=>fact.id===summary.id),fact(full,'equivalence'));
 });
 
 test('lean runtime indexes restore exact placement and model-local provenance on fact details',async()=>{
- const full=build([model()]),before=canonicalJSON(full),artifacts=buildAcademicRegistryArtifacts(full),original=fact(full,'equivalence'),summary=fact(artifacts.index,'equivalence');
+ const full=build([model()]),before=canonicalJSON(full),artifacts=buildAcademicRegistryArtifacts(full),original=fact(full,'equivalence'),summary=fact(mergeAcademicRegistryShards(artifacts.index,artifacts.registryShards),'equivalence');
  assert.deepEqual(artifacts.index.requirements,[]);
  assert.equal(artifacts.index.programs[0].requirementCount,full.programs[0].requirementIds.length);
  assert(!Object.hasOwn(summary,'requirementIds'));assert(!Object.hasOwn(summary,'sourceReferenceIds'));
@@ -89,7 +92,7 @@ test('lean runtime indexes restore exact placement and model-local provenance on
  assert.equal(summary.sourceBinding.bound,original.sourceBinding.bound);assert.equal(summary.sourceBinding.missingReferenceCount,0);
  assert.deepEqual([...artifacts.shards.values()].flatMap(shard=>shard.requirements),full.requirements);
  assert.deepEqual([...artifacts.shards.values()].flatMap(shard=>shard.sourceReferences),full.sourceReferences);
- const calls=[],context={registry:artifacts.index,loadEvidence:async paths=>{
+ const shardCalls=[],calls=[],context={registry:artifacts.index,loadRegistryShards:async entries=>{shardCalls.push(entries.map(entry=>entry.path));return entries.map(entry=>artifacts.registryShards.get('dist'+entry.path));},loadEvidence:async paths=>{
   calls.push(paths);
   const shards=paths.map(path=>artifacts.shards.get('dist'+path));
   return {facts:shards.flatMap(shard=>shard.facts),sources:shards.flatMap(shard=>shard.sources)};
@@ -100,7 +103,7 @@ test('lean runtime indexes restore exact placement and model-local provenance on
  const list=await handleAcademicCoverage(new Request(prefix+'/programs'),env,context);
  assert.equal(list.status,200);assert.equal(calls.length,0,'Program lists must not hydrate provenance details');
  const response=await handleAcademicCoverage(new Request(prefix+'/facts/'+summary.id),env,context),result=await response.json();
- assert.equal(response.status,200);assert.equal(calls.length,1);
+ assert.equal(response.status,200);assert.equal(calls.length,1);assert(shardCalls.length>=1,'A sharded release loads the registry shard that holds the fact');
  for(const field of ['requirementIds','sourceReferenceIds','sourceIds','programIds','evidenceFingerprint','scope','facts'])assert.deepEqual(result.fact[field],original[field],field);
  assert.equal(result.fact.sourceBinding.bound,true);assert.deepEqual(result.fact.sourceBinding.missingLocalSourceIds,[]);
  assert.equal(canonicalJSON(full),before,'Compaction and hydration cannot alter the validated academic evidence');

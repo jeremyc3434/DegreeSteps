@@ -132,7 +132,8 @@ async function knownSourcePlan(entry,pathwayId,modality,model) {
     const req=model.requirements.find(req=>req.id===row.requirementId);
     if(!req||row.status!=='planned')return null;
     const derived=balance?.balanceRequirementIds.includes(req.id);
-    const option=req.options?.find(option=>option.id===row.optionId&&option.provider===row.provider&&option.code===row.code&&!option.selectionRequired);
+    // An open slot's "choose a course" placeholder is a complete baseline row (the student picks the course later).
+    const option=req.options?.find(option=>option.id===row.optionId&&option.provider===row.provider&&(option.code===row.code&&!option.selectionRequired||!balance&&row.code===null&&TemplateAcademicPlanner.openSlotPlaceholder?.(req,option)));
     if(derived&&row.optionId===null){
       if(row.credits!==0||row.provider!==null||row.code!==null)return null;
     }else if(!option)return null;
@@ -160,9 +161,24 @@ async function academicCoverageData(){
   if(!academicCoverageSnapshot){
     const registry=JSON.parse(await decodeStaticAsset(assets['/data/academic-registry.json'])),report=JSON.parse(await decodeStaticAsset(assets['/data/pathway-quality-report.json']));
     if(report.registryRevision!==registry.revision)throw Error('Academic coverage artifacts disagree.');
-    academicCoverageSnapshot={registry,report,loadEvidence:loadAcademicEvidence};
+    academicCoverageSnapshot={registry,report,loadEvidence:loadAcademicEvidence,loadRegistryShards:loadAcademicRegistryShards};
   }
   return academicCoverageSnapshot;
+}
+/** Per-school academic registry shards (fact and finding summaries), checked against the index's content hashes. */
+async function loadAcademicRegistryShards(entries){
+  const out=[];let totalBytes=0;
+  for(const entry of entries){
+    const path=entry?.path;
+    if(typeof path!=='string'||!/^\/data\/academic-registry-shards\/[a-f0-9]{64}\.json$/.test(path)||!assets[path]||path.split('/').at(-1).slice(0,-5)!==entry.sha256)throw Error('This registry shard is not part of the current academic release.');
+    const body=await decodeStaticAsset(assets[path]),encoded=new TextEncoder().encode(body);
+    totalBytes+=encoded.byteLength;
+    if(encoded.byteLength>8*1024*1024||totalBytes>40*1024*1024)throw Error('The registry shards exceed the release size limit.');
+    const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',encoded)),byte=>byte.toString(16).padStart(2,'0')).join('');
+    if(digest!==entry.sha256)throw Error('A registry shard failed its content check.');
+    out.push(JSON.parse(body));
+  }
+  return out;
 }
 async function loadAcademicEvidence(paths){
   if(!Array.isArray(paths)||paths.length>32)throw Error('Choose a smaller evidence group.');

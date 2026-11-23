@@ -125,6 +125,25 @@
     if(value.trim())notes[requirementId]=value.slice(0,6000);else delete notes[requirementId];
     return {...state,sheet:{...nextSheet,notes:{...nextSheet.notes,[programId]:notes}}};
   }
+  // Open-slot course choices (owner-approved 2026-11-23): the course a student picked, or already took, for an open
+  // slot ("Choose any approved Humanities course"). Stored additively in state.sheet.slotChoices[programId][requirementId]
+  // with the same private lifetime as notes. It is the student's own plan record, never an award or a school approval.
+  function slotChoice(state,programId,requirementId) {
+    const saved=object(object(object(state?.sheet).slotChoices)[programId])[requirementId];
+    if(!saved||typeof saved!=='object')return null;
+    const code=bounded(saved.code,40),title=bounded(saved.title,160),credits=finite(saved.credits)&&saved.credits>0&&saved.credits<=30?saved.credits:null;
+    return code||title?{code,title,credits,updatedAt:typeof saved.updatedAt==='string'?saved.updatedAt.slice(0,40):''}:null;
+  }
+  function setSlotChoice(state,programId,requirementId,value) {
+    programId=identifier(programId,'program');requirementId=identifier(requirementId,'requirement');
+    const input=object(value),code=bounded(input.code,40),title=bounded(input.title,160);
+    const credits=input.credits===''||input.credits==null?null:Number(input.credits);
+    if(credits!==null&&(!Number.isFinite(credits)||credits<=0||credits>30))throw new Error('Enter credits between 0 and 30, or leave credits blank.');
+    const nextSheet=sheet(state),all=copy(object(nextSheet.slotChoices)),choices={...object(all[programId])};
+    if(code||title)choices[requirementId]={code,title,credits,updatedAt:new Date().toISOString()};else delete choices[requirementId];
+    if(Object.keys(choices).length)all[programId]=choices;else delete all[programId];
+    return {...state,sheet:{...nextSheet,slotChoices:all}};
+  }
   function sourceOptions(program,option) {
     const candidates=list(program.requirements).flatMap(req=>list(req.options)).filter(item=>providerKey(item.provider)===providerKey(option.provider));
     const related=[option],codes=new Set([option.code || option.id,...list(option.codeAliases)].map(normalized).filter(Boolean));
@@ -419,18 +438,21 @@
     if(entry.tier!=='confirmation'||!Array.isArray(entry.questions))return null;
     const school=bounded(text(options.school),120)||'your school',title=bounded(text(options.title),160);
     const courses=(Array.isArray(options.courses)?options.courses:[]).map(item=>bounded(text(item),80)).filter(Boolean);
+    const slotPicks=(Array.isArray(options.slotChoices)?options.slotChoices:[]).map(item=>bounded(text(item),160)).filter(Boolean);
     const rules=[
       [/ACE- or NCCRS/i,()=>'What is the most credit you accept toward this degree from ACE- or NCCRS-evaluated courses and exams (for example Sophia, Study.com or CLEP)?'],
       [/how many credits must I earn at the school/i,()=>'How many credits do I need to take at '+school+' itself for this degree?'],
       [/time limit/i,()=>'Is there a time limit on how old my transfer credits can be?'],
       [/written transfer evaluation|residency/i,()=>'Could you tell me how many courses in my major I must take at '+school+', and whether I can get an unofficial transfer evaluation before I enroll?'],
       [/proposed course match/i,()=>courses.length?'Will these courses count toward this degree: '+courses.slice(0,3).join('; ')+(courses.length>3?' (I can send the full list)':'')+'?':'Will the outside courses in my plan count toward this degree? I can send you the list.'],
+      // The student's own open-slot picks, asked only while the three-question limit leaves room.
+      [/open course choice/i,()=>slotPicks.length?'Will the courses I picked count for the open course choices: '+slotPicks.slice(0,2).join('; ')+(slotPicks.length>2?' (I can send the full list)':'')+'?':''],
       [/catalog year/i,()=>'Which catalog year would apply to me if I enroll this term?'],
       [/state changes the general-education/i,()=>'Does my state add any general-education requirements to this degree?']
     ];
     // Most important first (rules are listed in priority order), so the three asks are the ones that change the plan most.
     const asks=[],open=entry.questions.filter(item=>typeof item==='string');
-    for(const [pattern,ask] of rules)if(open.some(question=>pattern.test(question))&&!asks.includes(ask()))asks.push(ask());
+    for(const [pattern,ask] of rules){const question=ask();if(question&&open.some(item=>pattern.test(item))&&!asks.includes(question))asks.push(question);}
     if(!asks.length)asks.push('Is this program open to new students now, and which catalog requirements would I follow if I enroll this term?');
     const list=asks.slice(0,3),format=text(options.format);
     const subject='Transfer credit question'+(title?' – '+title:'');
@@ -456,5 +478,5 @@
     let changed=false;const pathways=catalog.pathways.map(route=>{const entry=route&&Object.hasOwn(plans,route.id)?object(plans[route.id]):{},subjects=entry.subjects;if(!Array.isArray(subjects)||!subjects.every(id=>typeof id==='string')||JSON.stringify(route.subjects)===JSON.stringify(subjects))return route;changed=true;return {...route,subjects:[...subjects]};});
     return changed?{...catalog,pathways}:catalog;
   }
-  return Object.freeze({schoolEmail,schoolTransferContact,initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog,creditUnit,routeCreditDifference,residencyAlternative,schoolQuestions,subjectChoices,attachRouteSubjects});
+  return Object.freeze({schoolEmail,schoolTransferContact,initialize,selectPathway,savedTarget,targetMatches,targetRoute,restoreTarget,scenario,setCourse,setNote,slotChoice,setSlotChoice,recordProgress,correctProgress,assignLearning,updateLearning,parseCSV,mergeLearning,exportCSV,publicPlan,compareBaseline,catalogYear,programCatalog,creditUnit,routeCreditDifference,residencyAlternative,schoolQuestions,subjectChoices,attachRouteSubjects});
 }));

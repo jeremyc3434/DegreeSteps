@@ -216,7 +216,7 @@ export function validateAcademicRegistry(registry){
  assert(registry.contentHash===metadataDigest(core(registry)),'Academic content hash mismatch.');assert(registry.revision==='academic-v1:'+registry.contentHash,'Academic revision mismatch.');return registry;
 }
 
-export const academicRegistryLimits={indexBytes:12*1024*1024,evidenceBytes:1024*1024};
+export const academicRegistryLimits={indexBytes:12*1024*1024,shardBytes:8*1024*1024,evidenceBytes:1024*1024};
 const bytes=value=>Buffer.byteLength(value,'utf8');
 /** Runtime indexes never contain the full evidence graph. Exact conditions and
  * bibliographic metadata live in content-addressed, bounded evidence shards. */
@@ -268,19 +268,52 @@ export function buildAcademicRegistryArtifacts(registry){
  // Additional dependency edges are in the build registry. The compact index
  // already has complete fact/program/source adjacency and exact detail links.
  index.dependencies=[];
+ // Fact and finding summaries are the bulk of the index and grow with every degree. They live in per-school
+ // registry shards (a fact or finding whose programs span schools goes to the shared shard), loaded on demand.
+ const institutionOf=new Map(registry.programs.map(program=>[program.id,program.institutionId])),groupOf=item=>{const owners=unique(list(item.programIds).map(id=>institutionOf.get(id)).filter(Boolean));return owners.length===1?owners[0]:'shared';};
+ const grouped=new Map();
+ for(const name of ['facts','findings'])for(const item of index[name]){const group=groupOf(item);if(!grouped.has(group))grouped.set(group,{facts:[],findings:[]});grouped.get(group)[name].push(item);}
+ const registryShards=new Map();index.registryShards=[];index.factShards={};index.findingShards={};
+ for(const group of [...grouped.keys()].sort()){
+  const {facts,findings}=grouped.get(group),shard={schemaVersion:1,artifactType:'academic-registry-shard',revision:registry.revision,group,facts,findings};
+  const serialized=JSON.stringify(shard)+'\n',hash=createHash('sha256').update(serialized).digest('hex'),path='dist/data/academic-registry-shards/'+hash+'.json';
+  assert(bytes(serialized)<=academicRegistryLimits.shardBytes,'Academic registry shard '+group+' exceeds '+academicRegistryLimits.shardBytes+' bytes.');
+  registryShards.set(path,shard);
+  const number=index.registryShards.length;
+  index.registryShards.push({path:'/'+path.slice(5),sha256:hash,bytes:bytes(serialized),group,programIds:unique(facts.concat(findings).flatMap(item=>list(item.programIds))),factCount:facts.length,findingCount:findings.length});
+  for(const fact of facts)index.factShards[fact.id]=number;
+  for(const finding of findings)index.findingShards[finding.id]=number;
+ }
+ delete index.facts;delete index.findings;
  const indexBytes=bytes(JSON.stringify(index)+'\n');
  assert(indexBytes<=academicRegistryLimits.indexBytes,'Academic registry index exceeds 12MiB ('+indexBytes+' bytes; '+Object.entries(index).filter(([,value])=>Array.isArray(value)).map(([key,value])=>key+':'+bytes(JSON.stringify(value))).join(', ')+').');
- validateAcademicRegistryArtifacts({index,shards});return {index,shards};
+ validateAcademicRegistryArtifacts({index,shards,registryShards});return {index,shards,registryShards};
+}
+/** The full compact registry (index plus every shard), as the coverage workbench reads it when it needs everything. */
+export function mergeAcademicRegistryShards(index,registryShards){
+ const loaded=[...registryShards.values()];
+ return {...index,facts:loaded.flatMap(shard=>shard.facts),findings:loaded.flatMap(shard=>shard.findings)};
 }
 
-export function validateAcademicRegistryArtifacts({index,shards}){
+export function validateAcademicRegistryArtifacts({index,shards,registryShards=new Map()}){
  assert(index.schemaVersion===1&&index.artifactType==='academic-registry-index','Malformed compact academic registry.');
  assert(index.revision==='academic-v1:'+index.contentHash,'Compact academic revision mismatch.');
  assert(bytes(JSON.stringify(index)+'\n')<=academicRegistryLimits.indexBytes,'Academic index exceeds its byte limit.');
  const available=new Set();
  for(const [path,shard] of shards){const serialized=canonicalJSON(shard)+'\n',hash=createHash('sha256').update(serialized).digest('hex');assert(path==='dist/data/academic-evidence/'+hash+'.json','Evidence path does not match its actual content.');assert(bytes(serialized)<=academicRegistryLimits.evidenceBytes,'Evidence shard exceeds its byte limit.');available.add('/'+path.slice(5));}
- for(const name of ['facts','sources','requirements','sourceReferences','findings'])for(const item of index[name])assert(available.has(item.detailPath),'Index item does not point to an evidence shard.');
- for(const fact of index.facts)assert(!Object.hasOwn(fact,'facts')&&!Object.hasOwn(fact,'declaredEvidence'),'The runtime index must not duplicate fact evidence.');
+ const listed=new Map(list(index.registryShards).map((entry,number)=>[entry.path,number]));
+ assert(listed.size===registryShards.size,'Every academic registry shard must be listed once.');
+ const facts=[],findings=[];
+ for(const [path,shard] of registryShards){
+  const serialized=JSON.stringify(shard)+'\n',hash=createHash('sha256').update(serialized).digest('hex'),number=listed.get('/'+path.slice(5));
+  assert(path==='dist/data/academic-registry-shards/'+hash+'.json'&&number!==undefined&&index.registryShards[number].sha256===hash,'Registry shard path does not match its actual content.');
+  assert(shard.revision===index.revision&&shard.artifactType==='academic-registry-shard','Registry shard belongs to another academic release.');
+  assert(bytes(serialized)<=academicRegistryLimits.shardBytes,'Registry shard exceeds its byte limit.');
+  for(const fact of shard.facts){assert(index.factShards[fact.id]===number,'A fact is not located in its listed shard.');facts.push(fact);}
+  for(const finding of shard.findings){assert(index.findingShards[finding.id]===number,'A finding is not located in its listed shard.');findings.push(finding);}
+ }
+ for(const [name,items] of [['facts',facts],['findings',findings],...['sources','requirements','sourceReferences'].map(name=>[name,index[name]])])for(const item of items)assert(available.has(item.detailPath),'Index item does not point to an evidence shard ('+name+').');
+ for(const fact of facts)assert(!Object.hasOwn(fact,'facts')&&!Object.hasOwn(fact,'declaredEvidence'),'The runtime index must not duplicate fact evidence.');
  return index;
 }
 
@@ -291,22 +324,26 @@ export async function readAcademicInputs(base=root){
  const selected=new Set(registry.models.map(entry=>entry.id));return {models:models.filter(model=>selected.has(model.id)),entries:registry.models,asOf:registry.checkedOn};
 }
 export async function runAcademicRegistry({base=root,check=false,asOf}={}){
- const input=await readAcademicInputs(base),registry=buildAcademicRegistry({...input,asOf:asOf||input.asOf}),{index,shards}=buildAcademicRegistryArtifacts(registry),output=JSON.stringify(index)+'\n',path=resolve(base,academicRegistryPath),evidenceFolder=resolve(base,'dist/data/academic-evidence');
- const expected=new Set([...shards.keys()].map(path=>path.split('/').at(-1)));
+ const input=await readAcademicInputs(base),registry=buildAcademicRegistry({...input,asOf:asOf||input.asOf}),{index,shards,registryShards}=buildAcademicRegistryArtifacts(registry),output=JSON.stringify(index)+'\n',path=resolve(base,academicRegistryPath),evidenceFolder=resolve(base,'dist/data/academic-evidence'),shardFolder=resolve(base,'dist/data/academic-registry-shards');
+ const expected=new Set([...shards.keys()].map(path=>path.split('/').at(-1))),expectedShards=new Set([...registryShards.keys()].map(path=>path.split('/').at(-1)));
  if(check){
   assert(await readFile(path,'utf8')===output,'Academic registry is stale. Run node scripts/build-academic-registry.mjs.');
   for(const [shardPath,value] of shards)assert(await readFile(resolve(base,shardPath),'utf8')===canonicalJSON(value)+'\n','Academic evidence shard is stale or changed.');
   assert((await readdir(evidenceFolder)).filter(name=>name.endsWith('.json')).every(name=>expected.has(name)),'Unreferenced stale academic evidence shards remain.');
+  for(const [shardPath,value] of registryShards)assert(await readFile(resolve(base,shardPath),'utf8')===JSON.stringify(value)+'\n','Academic registry shard is stale or changed.');
+  assert((await readdir(shardFolder)).filter(name=>name.endsWith('.json')).every(name=>expectedShards.has(name)),'Unreferenced stale academic registry shards remain.');
  }else{
-  await mkdir(dirname(path),{recursive:true});await mkdir(evidenceFolder,{recursive:true});
+  await mkdir(dirname(path),{recursive:true});await mkdir(evidenceFolder,{recursive:true});await mkdir(shardFolder,{recursive:true});
   for(const [shardPath,value] of shards)await writeFile(resolve(base,shardPath),canonicalJSON(value)+'\n');
+  for(const [shardPath,value] of registryShards)await writeFile(resolve(base,shardPath),JSON.stringify(value)+'\n');
   await writeFile(path,output);
   for(const name of await readdir(evidenceFolder))if(/^[a-f0-9]{64}\.json$/.test(name)&&!expected.has(name))await unlink(resolve(evidenceFolder,name));
+  for(const name of await readdir(shardFolder))if(/^[a-f0-9]{64}\.json$/.test(name)&&!expectedShards.has(name))await unlink(resolve(shardFolder,name));
  }
- return index;
+ return {...index,factCount:Object.keys(index.factShards).length};
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
  const index=process.argv.indexOf('--as-of');
  const registry=await runAcademicRegistry({check:process.argv.includes('--check'),asOf:index>=0?process.argv[index+1]:undefined});
- console.log('Academic registry: '+registry.programs.length+' programs, '+registry.facts.length+' scoped facts, '+registry.sources.length+' source records, '+registry.reuseGroups.length+' reuse candidates; '+registry.revision+'.');
+ console.log('Academic registry: '+registry.programs.length+' programs, '+registry.factCount+' scoped facts in '+registry.registryShards.length+' shards, '+registry.sources.length+' source records, '+registry.reuseGroups.length+' reuse candidates; '+registry.revision+'.');
 }

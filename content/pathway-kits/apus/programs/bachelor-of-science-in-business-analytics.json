@@ -1,0 +1,634 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-in-business-analytics",
+  "routeIds": [
+    "apus-bachelor-of-science-in-business-analytics"
+  ],
+  "title": "Bachelor of Science in Business Analytics",
+  "level": "bachelor",
+  "catalog": "American Public University System current catalog page for Bachelor of Science in Business Analytics, checked 2026-11-23",
+  "totalCredits": 120,
+  "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-business-analytics/",
+  "review": {
+    "status": "reviewed",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+      "title": "Bachelor of Science in Business Analytics catalog page",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-business-analytics/",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/71f4302555cfdf16.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+      "text": "Total Semester Hours\n120"
+    }
+  ],
+  "gaps": [
+    "Student's chosen concentration is not known; the 9-hour concentration block cannot be resolved to specific courses (Human Resources: HRMT407, HRMT412, HRMT330; Marketing: MKTG305, MKTG400, MKTG401; Programming: ENTD220, ENTD320, INFO222; Security and Intelligence: HLSS320, INTL440, CMRJ320; General: 9 hours from listed prefixes).",
+    "The capture does not state a residency requirement or how many credits must be completed at the institution.",
+    "BUSN499 must be taken as the last course before graduation (requires senior standing and completion of all major courses), but the capture does not explicitly state it must be completed at the school.",
+    "The capture does not state maximum transfer credit, minimum grades, or minimum GPA requirements.",
+    "ECON102 appears both as a General Education option and as a Major Required course; the capture does not state whether one course may satisfy both requirements."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-in-business-analytics-arts-humanities-select-2-courses",
+      "code": "",
+      "title": "Arts & Humanities (select 2 courses)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Arts & Humanities (6 semester hours)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts & Humanities (select 2 courses)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-civics-political-social-sciences-1-course-from-coll112-eco-dc47858a",
+      "code": "",
+      "title": "Civics, Political & Social Sciences (1 course from COLL112/ECON101 plus 1 course from list)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Civics, Political & Social Sciences (6 semester hours)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Civics, Political & Social Sciences (1 course from COLL112/ECON101 plus 1 course from list)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-comm120",
+      "code": "COMM120",
+      "title": "Information and Digital Literacy",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Information and Digital Literacy"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-engl110",
+      "code": "ENGL110",
+      "title": "Making Writing Relevant",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Making Writing Relevant"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-communication-elective-select-1-course",
+      "code": "",
+      "title": "Communication elective (select 1 course)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Communication elective (select 1 course)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-history-select-1-course",
+      "code": "",
+      "title": "History (select 1 course)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "History (3 semester hours)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "History (select 1 course)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-math110",
+      "code": "MATH110",
+      "title": "College Algebra",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "College Algebra"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-natural-sciences-select-1-course",
+      "code": "",
+      "title": "Natural Sciences (select 1 course)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Natural Sciences (3 semester hours)"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Natural Sciences (select 1 course)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-acct105",
+      "code": "ACCT105",
+      "title": "Accounting for Non Accounting Majors",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Accounting for Non Accounting Majors"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-econ102",
+      "code": "ECON102",
+      "title": "Macroeconomics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "ECON102"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-math120",
+      "code": "MATH120",
+      "title": "Introduction to Statistics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Introduction to Statistics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-busn100",
+      "code": "BUSN100",
+      "title": "Basics of Business",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Basics of Business"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-mktg201",
+      "code": "MKTG201",
+      "title": "Fundamentals of Marketing",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Fundamentals of Marketing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-finc201",
+      "code": "FINC201",
+      "title": "Financial Management Principles",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Financial Management Principles"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-busn311",
+      "code": "BUSN311",
+      "title": "Law and Ethics in the Business Environment",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Law and Ethics in the Business Environment"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-itcc112",
+      "code": "ITCC112",
+      "title": "Advanced Productivity Applications",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Advanced Productivity Applications"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-anly460",
+      "code": "ANLY460",
+      "title": "Applied Analytics I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "ANLY460"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-anly461",
+      "code": "ANLY461",
+      "title": "Applied Analytics II",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "ANLY461"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-anly462",
+      "code": "ANLY462",
+      "title": "Applied Analytics III",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "ANLY462"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-busn312",
+      "code": "BUSN312",
+      "title": "Operations Research",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Operations Research"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-busn350",
+      "code": "BUSN350",
+      "title": "Analytics II",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "BUSN350"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-busn410",
+      "code": "BUSN410",
+      "title": "Critical Thinking Strategies for Business Decisions",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Critical Thinking Strategies for Business Decisions"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-busn450",
+      "code": "BUSN450",
+      "title": "Advanced Analytics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "BUSN450"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-entd200",
+      "code": "ENTD200",
+      "title": "Fundamentals of Programming",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Fundamentals of Programming"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-itcc200",
+      "code": "ITCC200",
+      "title": "Application Software Integration",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Application Software Integration"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-busn250",
+      "code": "BUSN250",
+      "title": "Analytics I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "BUSN250"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-concentration-select-one-general-human-resources-marketing-3e683d59",
+      "code": "",
+      "title": "Concentration (select one: General, Human Resources, Marketing, Programming, or Security and Intelligence)",
+      "credits": 9,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Select one of the following concentrations:"
+        }
+      ],
+      "slot": {
+        "kind": "concentration",
+        "label": "Concentration (select one: General, Human Resources, Marketing, Programming, or Security and Intelligence)"
+      }
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-busn499",
+      "code": "BUSN499",
+      "title": "Senior Seminar in Business Administration",
+      "credits": 3,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Senior Seminar in Business Administration 2"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-business-analytics-elective-requirements",
+      "code": "",
+      "title": "Elective Requirements",
+      "credits": 24,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+          "text": "Elective Requirements (24 semester hours)"
+        }
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "Elective Requirements"
+      }
+    }
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "apus-apu-transfer-credit-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "At APU, our transfer credit limits are: 45 academic credits toward an associate degree (up to 30 non-traditional credits) 90 academic credits toward a bachelor’s degree (up to 60 non-traditional credits)"
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    },
+    "alternativeMaxCredits": {
+      "value": 60,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "apus-apu-transfer-credit-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "At APU, our transfer credit limits are: 45 academic credits toward an associate degree (up to 30 non-traditional credits) 90 academic credits toward a bachelor’s degree (up to 60 non-traditional credits)"
+        },
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "“Non-traditional” transfer credits are those earned based on assessment, competency testing (i.e. CLEP or ACE exams)"
+        }
+      ],
+      "basis": "Sophia credit is ACE-recommended, which the school counts as non-traditional transfer credit."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "American Public University System current catalog page for Bachelor of Science in Business Analytics, checked 2026-11-23",
+      "sourceUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-business-analytics/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "apus-apu-transfer-credit-limits-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "apus-apu-transfer-credit-limits-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Business Analytics ledger from American Public University System's current catalog page, including 7 open course choice block(s) (45% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
+  }
+}

@@ -297,6 +297,8 @@ function derivedValidationFindings(model,plan,findings){
   if(collection==='personalTasks'||issue.owner==='student'&&['personal-task','reported_credit'].includes(issue.status||issue.code)){
    if(bound(sources,sourceIds)){category='student-task';blocking=false;extra.executionRequired=true;}
   }else if(issue.code==='conditional_mapping'||issue.code==='waiver_confirmation')category='conditional-policy';
+  // Open course choices are the student's to make and the school's to confirm: the plan stays at the confirmation tier.
+  else if(issue.code==='selection_required'&&requirementIds.length&&requirementIds.every(id=>Planner.isOpenSlot?.(list(model?.requirements).find(row=>row.id===id)))){category='conditional-policy';code='open-course-choice';}
   const criticalIdentity=issue.missingEvidence==='reviewed-source-identity',criticalDuplicate=/duplicate.award exclusions?/i.test(message);
   if(criticalIdentity&&findings.some(item=>item.code==='selected-source-identity'&&requirementIds.every(id=>item.requirementIds.includes(id))&&optionIds.every(id=>item.optionIds.includes(id))))continue;
   if(criticalDuplicate&&findings.some(item=>item.code==='duplicate-award-research'&&optionIds.every(id=>item.optionIds.includes(id))))continue;
@@ -326,6 +328,8 @@ export function assessPathwayQuality({model,plan,route,asOf,studentPlan,minimumO
  if(!balanceValid)add('missing-research','earned-credit-policy','The earned-credit balance needs its exact reviewed GCU course identities and policy evidence.');
  const completeRow=row=>{
   const requirement=required.get(row.requirementId);
+  // An open slot planned as a course at the school (the student picks it) is a complete, sourced row.
+  if(!balance&&row.status==='planned'&&Planner.openSlotPlaceholder?.(requirement,row.option)&&near(row.credits,requirement.credits))return list(requirement.options).some(option=>option.id===row.option.id&&option.provider===row.option.provider);
   if(row.status!=='planned'||!requirement||row.selectionRequired)return false;
   if(balance?.balanceRequirementIds.includes(requirement.id)){
    if(row.creditBalanceDerived!==true||row.nativeRequirementCredits!==0)return false;

@@ -152,7 +152,9 @@ test('native coverage loads compact indexes after admin authorization and hydrat
   const call=(path,body)=>f.call(path,{method:body?'POST':'GET',headers:{Cookie:'__Host-degreepath_access=coverage-test-access',...(body?{Origin:origin,'Content-Type':'application/json','X-Portal-Request':'1'}:{})},...(body?{body:JSON.stringify(body)}:{})});
   assert.equal((await call('/api/admin/academic-coverage')).status,403);assert.equal(f.assetCalls.length,0,'A student must not load the graph');
   email='owner@preview.invalid';const summary=await call('/api/admin/academic-coverage');assert.equal(summary.status,200);const status=await summary.json();assert(status.summary.programs>0);assert.equal(status.qualitySummary.models,status.summary.programs);
-  assert(f.assetCalls.every(call=>['/data/academic-registry.json','/data/pathway-quality-report.json'].includes(call.path)),'The overview must not hydrate any evidence');
+  // The overview reads the index and the per-school registry shards (fact and finding summaries), never evidence.
+  assert(f.assetCalls.every(call=>['/data/academic-registry.json','/data/pathway-quality-report.json'].includes(call.path)||/^\/data\/academic-registry-shards\/[a-f0-9]{64}\.json$/.test(call.path)),'The overview must not hydrate any evidence');
+  assert(f.assetCalls.some(call=>/^\/data\/academic-registry-shards\//.test(call.path)),'The overview reads the registry shards');
   const list=await(await call('/api/admin/academic-coverage/programs?limit=1')).json();assert.equal(list.items.length,1);
   const details=await call('/api/admin/academic-coverage/programs/'+list.items[0].id);assert.equal(details.status,200);const program=await details.json();assert(program.facts.length>0);assert(program.facts.every(fact=>fact.facts&&fact.evidenceFingerprint));
   assert(f.assetCalls.some(call=>/^\/data\/academic-evidence\/[a-f0-9]{64}\.json$/.test(call.path)));
@@ -160,7 +162,8 @@ test('native coverage loads compact indexes after admin authorization and hydrat
   assert.equal(saved.status,201);assert.equal((await saved.json()).publicationChanged,false);
   const after=await(await call('/api/admin/academic-coverage/facts/'+fact.id)).json();assert.equal(after.fact.administrativeReview.decision,'needs-evidence');assert.equal(after.history.length,1);assert.equal(after.fact.evidenceFingerprint,fact.evidenceFingerprint);assert.deepEqual(f.external,[]);
   const index=JSON.parse(readFileSync(resolve(publicRoot,'data/academic-registry.json'),'utf8')),impact=new Map();
-  for(const item of index.facts)for(const sourceId of item.sourceIds)impact.set(sourceId,(impact.get(sourceId)||0)+1);
+  const indexFacts=index.registryShards.flatMap(entry=>JSON.parse(readFileSync(resolve(publicRoot,entry.path.slice(1)),'utf8')).facts);
+  for(const item of indexFacts)for(const sourceId of item.sourceIds)impact.set(sourceId,(impact.get(sourceId)||0)+1);
   for(const [sourceId]of [...impact].sort((a,b)=>b[1]-a[1]).slice(0,5)){
     const response=await call('/api/admin/academic-coverage/sources/'+sourceId);assert.equal(response.status,200,'A shared guide must stay within the evidence budget');const source=await response.json();assert.equal(source.factsAreSummaries,true);assert(source.facts.length);assert(source.facts.every(item=>item.label&&item.facts===undefined));
   }
