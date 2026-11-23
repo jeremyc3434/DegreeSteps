@@ -1,0 +1,90 @@
+/* Redesign 2/6: My plan (approved canvas: Plan and Desktop boards). Layout and presentation only; every control keeps
+   its existing behaviour in sheet.js. Tokens come from ds-tokens.css. */
+
+/* Summary header: degree, progress (done / for less / your pick / at school), cost and courses still to choose. */
+body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has-plan-summary { display:block !important; padding:0 !important; margin:0 0 var(--tok-space-5); border:0 !important; border-radius:0 !important; background:none !important; box-shadow:none !important; color:inherit; }
+#sheet-titlebar.has-plan-summary > .plan-summary { max-width:none; width:auto; }
+#sheet-titlebar h1.focus-quiet:focus { outline:none !important; box-shadow:none !important; }
+.plan-summary { background:var(--tok-ink); color:#fff; border-radius:var(--tok-radius-xl); padding:var(--tok-space-5) var(--tok-space-5) var(--tok-space-6); display:flex; flex-direction:column; gap:var(--tok-space-4); }
+.plan-summary-top { display:flex; flex-wrap:wrap; gap:var(--tok-space-4); align-items:flex-start; justify-content:space-between; }
+.plan-summary-id { flex:999 1 320px; min-width:0; display:flex; flex-direction:column; gap:var(--tok-space-1); }
+.plan-summary-school { margin:0; color:#b2c2ff; font-size:var(--tok-text-small); font-weight:var(--tok-weight-semibold); }
+.plan-summary .sheet-title { margin:0; color:#fff; font-size:clamp(1.5rem,1.2rem + 1vw,2rem); line-height:1.15; letter-spacing:var(--tok-tracking-title); font-weight:var(--tok-weight-heavy); }
+/* Focus moves to the title once on load for screen readers; only keyboard focus draws the ring. */
+#sheet-titlebar h1:focus:not(:focus-visible) { outline:none; box-shadow:none; }
+#sheet-titlebar h1:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); border-radius:6px; }
+.plan-summary-id-actions { display:flex; flex-wrap:wrap; align-items:center; gap:var(--tok-space-3); margin-top:var(--tok-space-2); }
+#sheet-titlebar .plan-summary-actions { flex:1 1 280px; display:flex; flex-wrap:wrap !important; gap:var(--tok-space-2); justify-content:flex-end; margin:0; min-width:0; }
+#sheet-titlebar .plan-summary-actions .button { white-space:normal; max-width:100%; }
+@media (max-width:1023px) {
+  #sheet-titlebar .plan-summary-actions { justify-content:flex-start; flex-basis:100%; }
+  /* The phone bottom bar carries "Ask the school". */
+  #sheet-titlebar .plan-summary-actions [data-action="ask-school"] { display:none; }
+}
+.plan-summary .button { min-height:var(--tok-target); }
+.plan-summary .button.secondary { background:#fff; color:var(--tok-ink); border-color:#fff; }
+.plan-summary .button.ghost { background:transparent; color:#fff; border:1px solid rgb(255 255 255 / 45%); }
+.plan-summary .button.ghost:hover, .plan-summary .button.ghost:focus-visible { background:rgb(255 255 255 / 10%); }
+.plan-summary .sheet-title-jump { color:#d6deeb; }
+.plan-summary-progress .ds-progress-bar { background:#2c3e57; }
+.plan-summary-progress .ds-progress-legend { color:#d6deeb; }
+.plan-summary-progress .ds-progress-legend strong { color:#fff; }
+.plan-summary-progress .ds-dot--school { background:#8a99b0; }
+.plan-summary-progress .plan-summary-of { margin-left:auto; }
+.plan-summary-stats { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--tok-space-3); }
+.plan-summary-stat { display:flex; flex-direction:column; gap:2px; min-height:var(--tok-target); padding:var(--tok-space-3); border:0; border-radius:var(--tok-radius-sm); background:#22324a; color:#fff; font:inherit; text-align:left; text-decoration:none; cursor:pointer; }
+.plan-summary-stat:hover { background:#2a3c57; }
+.plan-summary-stat:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
+.plan-summary-stat span { color:#b2c2ff; font-size:var(--tok-text-xsmall); font-weight:var(--tok-weight-semibold); }
+.plan-summary-stat strong { font-size:1.125rem; font-weight:var(--tok-weight-heavy); }
+
+/* Two columns on wide screens: the checklist, and a summary panel beside it. */
+.plan-layout { display:block; }
+.plan-main { min-width:0; }
+.plan-side { display:flex; flex-direction:column; gap:var(--tok-space-4); margin-top:var(--tok-space-6); min-width:0; }
+.plan-side > [hidden] { display:none !important; }
+@media (min-width:1024px) {
+  .plan-layout { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,360px); gap:var(--tok-space-6); align-items:start; }
+  .plan-side { margin-top:0; }
+}
+
+/* Show and group controls. */
+.plan-view-controls { display:flex; flex-wrap:wrap; gap:var(--tok-space-3); align-items:center; justify-content:space-between; margin:var(--tok-space-4) 0; }
+.plan-view-chips { display:flex; flex-wrap:wrap; gap:var(--tok-space-2); }
+.plan-view-chips .ds-chip { min-height:40px; }
+.plan-group-modes { display:flex; flex-wrap:wrap; gap:var(--tok-space-1); padding:3px; border:1px solid var(--tok-border); border-radius:var(--tok-radius-pill); background:var(--tok-surface); }
+.plan-group-mode { min-height:38px; padding:0 var(--tok-space-3); border:0; border-radius:var(--tok-radius-pill); background:transparent; color:var(--tok-muted); font:inherit; font-size:var(--tok-text-small); font-weight:var(--tok-weight-semibold); cursor:pointer; }
+.plan-group-mode.is-active { background:var(--tok-ink); color:#fff; }
+.plan-group-mode:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
+
+/* The four groups: Take for less, Your pick, At the school, Done. */
+.plan-bucket { margin:var(--tok-space-6) 0 0; }
+.plan-bucket-head { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:var(--tok-space-2); }
+.plan-bucket-head h2 { display:flex; align-items:center; gap:var(--tok-space-2); margin:0; font-size:var(--tok-text-h3); font-weight:var(--tok-weight-bold); color:var(--tok-ink); }
+.plan-bucket-meta { color:var(--tok-muted); font-size:var(--tok-text-small); }
+.plan-bucket-note { margin:var(--tok-space-1) 0 var(--tok-space-3); color:var(--tok-muted); font-size:var(--tok-text-small); }
+.plan-bucket-pick .course-plan-table { border:1.5px dashed #c9d3e0; }
+.plan-bucket-pick .course-plan-slot { color:var(--tok-pick-text); font-weight:var(--tok-weight-semibold); }
+
+/* Preferences: one sheet with two tabs. More menu groups. */
+.sheet-pref-tabs { display:flex; flex-wrap:wrap; gap:var(--tok-space-2); margin:0 0 var(--tok-space-4); }
+.sheet-pref-tab { min-height:40px; padding:0 var(--tok-space-4); border:1.5px solid var(--tok-border); border-radius:var(--tok-radius-pill); background:var(--tok-surface); color:var(--tok-ink); font:inherit; font-size:var(--tok-text-small); font-weight:var(--tok-weight-semibold); cursor:pointer; }
+.sheet-pref-tab.is-active { background:var(--tok-ink); border-color:var(--tok-ink); color:#fff; }
+.sheet-pref-tab:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
+.sheet-more-group + .sheet-more-group { margin-top:var(--tok-space-4); }
+#sheet-dialog .sheet-more-group h3 { margin-top:var(--tok-space-3); }
+
+/* Phone: a bottom bar with the two main actions, and course details as a bottom sheet. */
+.plan-bottom-bar { display:none; }
+@media (max-width:1023px) {
+  .plan-bottom-bar { position:sticky; bottom:0; z-index:5; display:flex; gap:var(--tok-space-3); margin:var(--tok-space-6) 0 0; padding:var(--tok-space-3) 0 calc(var(--tok-space-3) + env(safe-area-inset-bottom)); background:var(--tok-surface); border-top:1px solid var(--tok-border-soft); }
+  .plan-bottom-bar .button { flex:1 1 0; min-height:48px; justify-content:center; }
+  .plan-bottom-bar .button.primary { flex-grow:1.4; }
+}
+@media (max-width:640px) {
+  #sheet-dialog:not(.is-course-comparison) { inset:auto 0 0 0; width:100vw; height:auto; max-height:92dvh; border-left:0; border-radius:var(--tok-radius-xl) var(--tok-radius-xl) 0 0; box-shadow:var(--tok-shadow-panel); }
+}
+@media (min-width:641px) {
+  #sheet-dialog:not(.is-course-comparison) { border-radius:var(--tok-radius-xl) 0 0 var(--tok-radius-xl); }
+}
+@media print { .plan-bottom-bar, .plan-summary-actions, .plan-view-controls { display:none !important; } .plan-summary { background:#fff; color:#000; border:1px solid #000; } .plan-summary .sheet-title { color:#000; } }
