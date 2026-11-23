@@ -55,7 +55,16 @@ async function worksheet(page) {
   await estimate(page,expected);
   return expected;
 }
-const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+name+'"]:visible').first();
+// Main destinations sit behind the header's menu button on phones; open it first when it is collapsed.
+const nav = (page,name) => {
+  const target = page.locator('#degree-app-shell [data-shell-nav="'+name+'"]');
+  const ready = async () => {
+    const toggle = page.locator('#degree-app-shell .ds-header-toggle');
+    if (!await target.first().isVisible() && await toggle.isVisible() && await toggle.getAttribute('aria-expanded') !== 'true') await toggle.click();
+    return target.locator('visible=true').first();
+  };
+  return {click: async () => (await ready()).click(), getAttribute: async name2 => (await ready()).getAttribute(name2)};
+};
 (async () => {try {
   browser = await chromium.launch({executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium',args:['--no-sandbox']});
   await test('a first-time student enters a focused wizard with optional help rather than a sample degree',async () => {
@@ -63,8 +72,8 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     await page.waitForURL(url => url.pathname.endsWith('/portal.html'));
     await page.locator('#portal-question-title').waitFor();
     assert(await page.locator('body').evaluate(node => node.classList.contains('is-onboarding')));
-    assert.equal(await page.locator('.dp-shell-sidebar').isVisible(),false);
-    assert.equal(await page.locator('.dp-shell-bottom').isVisible(),false);
+    assert.equal(await page.locator('.dp-shell-subnav').isVisible(),false,'The focused setup sets the workspace bar aside');
+    assert.equal(await page.locator('#degree-app-shell .ds-header-nav').isVisible(),false,'The focused setup sets the main links aside');
     assert.equal(await page.locator('#portal-savings').isVisible(),false);
     assert.equal((await stored(page)).selectedPathwayId,'');
     assert(await page.locator('#portal-content [data-answer]').count()>=2);
@@ -180,8 +189,12 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     for (const width of [390,320]) {
       const page = await fresh('plan.html',seed(),{width,height:844});await planReady(page);
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'The app must not overflow the phone width');
-      assert.equal(await page.locator('.dp-shell-sidebar').isVisible(),false);
-      assert.equal(await page.locator('.dp-shell-bottom').isVisible(),true);
+      assert.equal(await page.locator('#degree-app-shell .ds-header-toggle').isVisible(),true,'The phone header offers the menu');
+      assert.equal(await page.locator('.dp-shell-subnav').isVisible(),false,'The plan starts right under the header');
+      await page.locator('#degree-app-shell .ds-header-toggle').click();
+      for (const name of ['My courses','My preferences','Schools & resources']) assert(await page.locator('.dp-shell-subnav').getByRole('link',{name}).isVisible(),name+' is one tap away');
+      await page.keyboard.press('Escape');
+      assert.equal(await page.locator('#degree-app-shell .ds-header-toggle').getAttribute('aria-expanded'),'false');
       await page.locator('[data-compare-row="engl-101"]').first().click();
       await page.locator('#sheet-dialog[open] .sheet-comparison-options').waitFor();
       const close = await page.locator('#close-sheet-dialog').boundingBox();
@@ -192,7 +205,7 @@ const nav = (page,name) => page.locator('#degree-app-shell [data-shell-nav="'+na
     await page.locator('#courses-results').waitFor();
     await page.locator('#courses-add-manual').click();
     await page.locator('#sheet-dialog[open] #sheet-learning-form').waitFor();
-      assert.equal(await page.locator('.dp-shell-bottom').isVisible(),false,'A focused credit task keeps its own unobstructed controls');
+      assert.equal(await page.locator('.dp-shell-bottom').count(),0,'A focused credit task has no tab bar over its controls');
       assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
       await page.locator('#close-sheet-dialog').click();await page.waitForURL(url=>url.pathname.endsWith('/courses.html'));
     await nav(page,'plan').click();await planReady(page);

@@ -27,10 +27,39 @@
   const nav = mobile => links.map(link => '<a href="'+link.href+'"'+(active === link.id ? ' aria-current="page"' : '')+' data-shell-nav="'+link.id+'">'+icon(link.icon)+'<span>'+link.title+'</span></a>').join('');
   const shell = document.createElement('div');
   shell.id = 'degree-app-shell';
-  shell.innerHTML = '<aside class="dp-shell-sidebar" aria-label="DegreeSteps workspace"><a class="dp-shell-brand" href="/" aria-label="DegreeSteps home">'+wordmark+'</a><div class="dp-shell-nav-label">YOUR WORKSPACE</div><nav class="dp-shell-nav" aria-label="Main navigation">'+nav(false)+'</nav><div class="dp-shell-sidebar-bottom"><a class="dp-shell-website dp-shell-preferences" href="portal.html?view=preferences"'+(preferenceView ? ' aria-current="page"' : '')+'>My preferences</a><a class="dp-shell-account" href="account.html"'+(active === 'account' ? ' aria-current="page"' : '')+'><span class="dp-shell-avatar">'+icon('person')+'</span><span><strong data-shell-account-label>My account</strong><small data-shell-account-detail>Open account settings</small></span>'+icon('arrow')+'</a><a class="dp-shell-website" href="library.html">Schools & resources '+icon('arrow')+'</a><a class="dp-shell-website" href="index.html">Visit DegreeSteps website '+icon('arrow')+'</a></div></aside><header class="dp-shell-header"><a class="dp-shell-mobile-brand" href="/" aria-label="DegreeSteps home">'+wordmark+'</a><div class="dp-shell-page-title" id="dp-shell-page-title">'+labels[page]+'</div><div class="dp-shell-header-actions"><a class="dp-shell-save-account" href="account.html#account-save-form" title="Save this plan to your account" hidden>Save plan</a><span class="dp-shell-save" role="status" aria-live="polite" hidden>'+icon('check')+'<span></span></span><a class="dp-shell-account-button" href="account.html" aria-label="My account">'+icon('person')+'</a></div></header><nav class="dp-shell-bottom" aria-label="Mobile main navigation">'+nav(true)+'</nav>';
+  // One header for the whole site (dist/site-header.js), plus a workspace bar for the links that used to live in the
+  // sidebar and bottom tabs. Every former destination stays one tap away.
+  const headerCurrent = {plan:'plan', programs:'degrees', community:'community', account:'account'}[active] || '';
+  const actions = '<div class="dp-shell-header-actions"><a class="dp-shell-save-account" href="account.html#account-save-form" title="Save this plan to your account" hidden>Save plan</a><span class="dp-shell-save" role="status" aria-live="polite" hidden>'+icon('check')+'<span></span></span></div>';
+  const headerHTML = window.DegreeHeader ? window.DegreeHeader.html({surface:'app', current:headerCurrent, className:'dp-shell-header', actions}) : '<header class="ds-header ds-header--app dp-shell-header"><div class="ds-header-inner"><a class="ds-header-brand ds-wordmark" href="/" aria-label="DegreeSteps home">Degree<span class="ds-wordmark-steps">Steps</span></a><nav class="ds-header-nav" aria-label="Main navigation">'+nav(false)+'<a href="/account.html" data-shell-nav="account">Sign in</a></nav>'+actions+'</div></header>';
+  const workspace = '<nav class="dp-shell-subnav" aria-label="Your workspace"><div class="dp-shell-subnav-inner"><div class="dp-shell-page-title" id="dp-shell-page-title">'+labels[page]+'</div><div class="dp-shell-subnav-links"><a href="courses.html?tab=mine"'+(active === 'credits' ? ' aria-current="page"' : '')+' data-shell-nav="credits">My courses</a><a class="dp-shell-website dp-shell-preferences" href="portal.html?view=preferences"'+(preferenceView ? ' aria-current="page"' : '')+'>My preferences</a><a class="dp-shell-website" href="library.html"'+(active === 'explore' ? ' aria-current="page"' : '')+'>Schools & resources</a><a class="dp-shell-account" href="account.html"'+(active === 'account' ? ' aria-current="page"' : '')+'><span class="dp-shell-avatar">'+icon('person')+'</span><span><strong data-shell-account-label>My account</strong><small data-shell-account-detail>Open account settings</small></span></a></div></div></nav>';
+  shell.innerHTML = headerHTML + workspace;
   const skipLink=document.body.querySelector?.(':scope > a.skip-link, :scope > a.site-skip, :scope > a.sheet-skip');
   if(skipLink&&typeof skipLink.after==='function')skipLink.after(shell);else document.body.prepend(shell);
   document.body.classList.add('dp-app-shell');
+  window.DegreeHeader?.enhance?.(shell.querySelector('[data-ds-header]'));
+  // The header is fixed; page content starts below its measured height (it can wrap on narrow screens). An open
+  // phone menu overlays the page instead of pushing it.
+  const headerNode = shell.querySelector('header');
+  const syncHeaderHeight = () => {
+    if (!headerNode?.getBoundingClientRect || headerNode.classList?.contains('ds-header--open')) return;
+    const height = Math.ceil(headerNode.getBoundingClientRect().height);
+    if (height > 0) document.body.style?.setProperty?.('--dp-header-height', height+'px');
+  };
+  syncHeaderHeight();
+  if (typeof ResizeObserver === 'function' && headerNode) new ResizeObserver(syncHeaderHeight).observe(headerNode);
+  // Phones: the workspace links (My courses, My preferences, Schools & resources, account) open with the menu, directly
+  // under it, instead of taking a permanent row above the plan.
+  const workspaceBar = shell.querySelector('.dp-shell-subnav');
+  headerNode?.addEventListener?.('ds-header-menu', event => {
+    const open = Boolean(event.detail?.open);
+    shell.classList?.toggle('dp-shell-menu-open', open);
+    if (workspaceBar?.style) workspaceBar.style.top = open ? Math.ceil(headerNode.getBoundingClientRect().bottom)+'px' : '';
+  });
+  workspaceBar?.addEventListener?.('keydown', event => {
+    const toggle = headerNode?.querySelector?.('.ds-header-toggle');
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {toggle.click();toggle.focus();}
+  });
   if (page === 'library.html') {
     document.body.classList.add('dp-explore-page');
     const heading = document.querySelector('#explore .section-head h2');
@@ -97,6 +126,8 @@
       const detail = shell.querySelector('[data-shell-account-detail]');
       const avatar = shell.querySelector('.dp-shell-avatar');
       label.textContent = user ? (user.alias || 'My account') : 'My account';
+      const headerAccount = shell.querySelector('[data-header-account]');
+      if (headerAccount) headerAccount.textContent = user ? 'My account' : 'Sign in';
       detail.textContent = !known ? 'Account status unavailable' : user ? storageAvailable ? 'My saved plans' : 'Signed in · Saved plans unavailable' : 'Sign in to save your plans';
       if (user?.alias) {avatar.textContent = user.alias.trim().slice(0,1).toUpperCase();avatar.classList.add('dp-shell-avatar-initial');}
       else {avatar.innerHTML = icon('person');avatar.classList.remove('dp-shell-avatar-initial');}

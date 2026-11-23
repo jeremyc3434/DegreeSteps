@@ -191,3 +191,61 @@ body.dp-app-shell { --dp-muted:#596b83; font-size:16px; line-height:1.55; }
 .dp-legal-footer{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 20px;margin:32px 0 0;padding:16px 16px 20px;border-top:1px solid #e5ebf4;font-size:13px;line-height:1.5;color:#5b6b82}
 .dp-legal-footer a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .dp-legal-footer a:hover,.dp-legal-footer a:focus-visible{color:#203f6b}
+
+/* ---------- Redesign foundation: one header (site-header.js) above a workspace bar ----------
+   Replaces the sidebar and the phone tab bar. The header stays fixed at the top; the workspace bar keeps My courses,
+   My preferences, Schools & resources and the account status one tap away. Selectors outrank the older shell rules. */
+body.dp-app-shell { --dp-sidebar-width:0px; --dp-header-height:64px; padding-left:0; }
+body.dp-app-shell #degree-app-shell header.dp-shell-header { position:fixed; inset:0 0 auto 0; z-index:40; display:block; width:auto; height:auto; min-height:var(--dp-header-height); padding:0; gap:0; border-bottom:1px solid var(--tok-border-soft,#e3e9f1); background:var(--tok-surface,#fff); box-shadow:none; }
+body.dp-app-shell #degree-app-shell header.dp-shell-header .ds-header-inner { max-width:none; padding-inline:24px; }
+body.dp-app-shell #degree-app-shell header.dp-shell-header .ds-header-brand { font-size:22px; margin:0 auto 0 0; padding:0; }
+body.dp-app-shell #degree-app-shell header.dp-shell-header svg { width:20px; height:20px; }
+body.dp-app-shell #degree-app-shell .ds-header-actions { margin-left:0; }
+body.dp-app-shell #degree-app-shell .dp-shell-header-actions { gap:12px; margin-left:0; }
+body.dp-app-shell #degree-app-shell .dp-shell-header-actions .dp-shell-save svg { width:13px; height:13px; }
+.dp-shell-subnav { border-bottom:1px solid var(--tok-border-soft,#e3e9f1); background:var(--tok-surface,#fff); font-family:var(--tok-font,Inter,system-ui,sans-serif); }
+.dp-shell-subnav-inner { display:flex; align-items:center; gap:8px 24px; flex-wrap:wrap; min-height:48px; padding:4px 24px; box-sizing:border-box; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-page-title { margin-right:auto; color:var(--tok-ink,#182230); font-size:15px; font-weight:700; }
+.dp-shell-subnav-links { display:flex; align-items:center; gap:4px; min-width:0; max-width:100%; overflow-x:auto; scrollbar-width:thin; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav-links > a { display:inline-flex; align-items:center; gap:8px; flex:none; min-height:44px; padding:0 10px; border-radius:var(--tok-radius-sm,12px); color:var(--tok-muted,#526174); font-size:14px; font-weight:600; white-space:nowrap; justify-content:flex-start; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav-links > a:hover { color:var(--tok-ink,#182230); background:var(--tok-canvas,#f7f9fc); }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav-links > a[aria-current="page"] { color:var(--tok-ink,#182230); box-shadow:inset 0 -2px 0 var(--tok-cobalt,#4054f4); border-radius:0; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-account { margin:0; padding:0 10px; border:0; background:transparent; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-account > span:last-child { display:flex; flex-direction:column; line-height:1.2; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-account strong { color:var(--tok-ink,#182230); font-size:14px; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-account small { max-width:none; color:var(--tok-muted,#526174); font-size:12px; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-avatar { display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--tok-cobalt-soft,#eef1ff); color:var(--tok-cobalt-hover,#2c3dd6); font-size:13px; font-weight:700; }
+body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-avatar svg { width:16px; height:16px; }
+/* A focused sequence (onboarding) keeps the brand and save status but sets the navigation aside. */
+body.dp-app-shell.is-onboarding #degree-app-shell :is(.ds-header-nav,.ds-header-toggle,.dp-shell-subnav) { display:none!important; }
+@media (max-width:900px) {
+  body.dp-app-shell { --dp-header-height:64px; padding-left:0; padding-bottom:0; }
+  body.dp-app-shell #degree-app-shell header.dp-shell-header .ds-header-inner { padding-inline:16px; }
+  .dp-shell-subnav-inner { padding:4px 12px; }
+  body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-page-title { flex-basis:100%; padding:8px 4px 0; }
+}
+@media (max-width:550px) {
+  body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-account small { display:none; }
+  body.dp-app-shell #degree-app-shell .dp-shell-save-account { max-width:none; }
+}
+@media print { #degree-app-shell .dp-shell-subnav { display:none!important; } }
+/* The save status sits beside the Save button at every width (the older phone layout pinned it under the logo). */
+body.dp-app-shell #degree-app-shell header.dp-shell-header .dp-shell-save { position:static; max-width:none; font-size:13px; line-height:1.2; }
+/* Phones: one header row (logo, Save, menu) and one workspace row, so the plan starts in the first screen.
+   The save status stays in the page for screen readers; the page title repeats the page heading. */
+@media (max-width:1100px) {
+  body.dp-app-shell #degree-app-shell .dp-shell-subnav { display:none; }
+  body.dp-app-shell #degree-app-shell.dp-shell-menu-open .dp-shell-subnav { display:block; position:fixed; left:0; right:0; z-index:39; max-height:calc(100dvh - 120px); overflow:auto; box-shadow:0 16px 32px rgb(24 34 48 / 12%); }
+  body.dp-app-shell #degree-app-shell .dp-shell-subnav-links { flex-direction:column; align-items:stretch; overflow:visible; width:100%; }
+  body.dp-app-shell #degree-app-shell .dp-shell-subnav-inner { padding:4px 16px 12px; }
+  body.dp-app-shell #degree-app-shell .dp-shell-subnav-links > a { min-height:48px; padding:0 8px; font-size:16px; }
+  body.dp-app-shell #degree-app-shell .dp-shell-subnav-links > a[aria-current="page"] { box-shadow:inset 3px 0 0 var(--tok-cobalt,#4054f4); padding-left:12px; }
+}
+@media (max-width:900px) {
+  body.dp-app-shell #degree-app-shell .dp-shell-subnav .dp-shell-page-title { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; flex-basis:auto; padding:0; }
+}
+@media (max-width:550px) {
+  body.dp-app-shell #degree-app-shell header.dp-shell-header .dp-shell-save > span { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  body.dp-app-shell #degree-app-shell header.dp-shell-header .dp-shell-save > svg { display:none!important; }
+  body.dp-app-shell #degree-app-shell header.dp-shell-header .ds-header-inner { gap:8px; }
+}

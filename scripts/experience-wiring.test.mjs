@@ -19,7 +19,7 @@ test('the complete working plan retains every source control while shared styles
  const before=await readFile(new URL('../dist/plan.html',import.meta.url),'utf8'),result=applyExperience(before,'plan.html');
  const required=['sheet-grid','sheet-task-panel','sheet-home','sheet-dialog','sheet-search'];
  for(const id of required.filter(id=>before.includes('id="'+id+'"')))assert(result.html.includes('id="'+id+'"'));
- assert.deepEqual(result.styles,['brand.css','experience.css','workspace-design.css','plan-alerts.css','plan-save.css','plan-design.css']);
+ assert.deepEqual(result.styles,['ds-tokens.css','brand.css','experience.css','ds-components.css','workspace-design.css','plan-alerts.css','plan-save.css','plan-design.css']);
  assert.equal(css(result.html).at(-1),'/plan-design.css');
  assert.equal(applyExperience(result.html,'plan.html').html,result.html);
  assert.deepEqual([...before.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(match=>match[1]),[...result.html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(match=>match[1]));
@@ -28,7 +28,7 @@ test('the complete working plan retains every source control while shared styles
 test('public metadata, structured content and external styles survive deterministic wiring',()=>{
  const input='<!doctype html><html><head><title>Keep this title</title><link rel="canonical" href="https://degreesteps.com/guides/example/"><link rel="stylesheet" href="https://external.example/brand.css"><link rel="stylesheet" href="/brand.css"><script type="application/ld+json">{"@type":"Article","headline":"Keep this evidence"}</script></head><body class="public-page article-public"><main id="main"><p>Keep every researched paragraph.</p></main></body></html>';
  const result=applyExperience(input,'guides/example/index.html');
- assert.deepEqual(result.styles,['brand.css','experience.css','public-design.css']);assert.equal(result.workspace,false);
+ assert.deepEqual(result.styles,['ds-tokens.css','brand.css','experience.css','ds-components.css','public-design.css']);assert.equal(result.workspace,false);
  for(const text of ['<title>Keep this title</title>','href="https://degreesteps.com/guides/example/"','href="https://external.example/brand.css"','{"@type":"Article","headline":"Keep this evidence"}','<p>Keep every researched paragraph.</p>'])assert(result.html.includes(text));
  assert.match(result.html,/<body class="public-page article-public ds-experience ds-public-page">/);assert.equal(applyExperience(result.html,'guides/example/index.html').html,result.html);
 });
@@ -37,7 +37,7 @@ test('bare legacy builder bodies receive family styling without introducing a ne
  const inline="const example='<link rel=\"stylesheet\" href=\"/brand.css\">';";
  const source='<html><head><meta name="theme-color" content="#123456"></head><body><form id="existing-audit"><input type="hidden" name="existingContext" value="kept"></form><script>'+inline+'</script></body></html>';
  const result=applyExperience(source,'audit.html');
- assert.deepEqual(result.styles,['brand.css','experience.css','workspace-design.css','discovery-design.css']);
+ assert.deepEqual(result.styles,['ds-tokens.css','brand.css','experience.css','ds-components.css','workspace-design.css','discovery-design.css']);
  assert.match(result.html,/<body class="ds-experience ds-workspace-page ds-discovery-page">/);
  assert(result.html.includes(inline));assert(result.html.includes('<input type="hidden" name="existingContext" value="kept">'));
  assert.equal((result.html.match(/id="existing-audit"/g)||[]).length,1);assert.equal(applyExperience(result.html,'audit.html').html,result.html);
