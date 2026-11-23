@@ -69,7 +69,8 @@ for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['ip
    // Lowest remaining estimate: every priced card precedes "Needs confirmation".
    await page.selectOption('#cw-sort','cost');
    const prices=await page.$$eval('#cw-list .cw-price strong',nodes=>nodes.map(n=>n.textContent));
-   const firstUnknown=prices.indexOf('Needs confirmation');
+   // Plans without a priced estimate (if any are shown) sort after every priced plan.
+   const unknownAt=prices.indexOf('Needs confirmation'),firstUnknown=unknownAt<0?prices.length:unknownAt;
    assert(firstUnknown>0&&prices.slice(firstUnknown).every(p=>p==='Needs confirmation'),prices.join(','));
    const values=prices.slice(0,firstUnknown).map(p=>Number(p.split('–')[0].replace(/[^0-9]/g,'')));
    assert.deepEqual(values,[...values].sort((a,b)=>a-b));
