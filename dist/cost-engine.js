@@ -42,7 +42,10 @@
     const totalUnits = amount(entry.totalUnits, 'program units', {min:1, max:1000, integer:true});
     const limit = amount(entry.scenarioTransferLimit, 'comparison transfer limit', {max:totalUnits, integer:true});
     const defaultTransfer = entry.defaultTransferUnits === undefined ? limit : entry.defaultTransferUnits;
-    const transferUnits = amount(from(input, 'transferUnits', defaultTransfer), 'applied transfer units', {max:limit, integer:true});
+    // Quarter-hour programs (for example 4.5-credit courses) apply transfer credit in quarter-unit steps; every other model stays whole-unit.
+    const unitStep = entry.unitStep === 0.25 || entry.unitStep === 0.5 ? entry.unitStep : null;
+    const transferUnits = amount(from(input, 'transferUnits', defaultTransfer), 'applied transfer units', {max:limit, integer:!unitStep});
+    if (unitStep && Math.abs(transferUnits / unitStep - Math.round(transferUnits / unitStep)) > 1e-9) throw new RangeError('Enter a valid applied transfer units between 0 and ' + limit + ' in steps of ' + unitStep + '.');
     const enteredBudget = currency(from(input, 'outsideBudget', entry.defaultOutsideBudget === undefined ? 2000 : entry.defaultOutsideBudget), 'outside-credit budget', {max:100000});
     const outsideBudget = transferUnits === 0 ? 0 : cents(enteredBudget);
     let unitsPerTerm = null;
