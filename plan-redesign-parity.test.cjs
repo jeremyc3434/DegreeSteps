@@ -61,7 +61,7 @@ function mount({modelId='liberty-business-residential',change,editor=false,track
     createElement(tag){const element=node('created-'+nodes.size);element.tagName=tag.toUpperCase();element.click=function(){downloads.push({filename:this.download,blob:blobs.get(this.href)});};return element;}};
   documentRef=document;
   const context={console,URL:FixtureURL,URLSearchParams,Intl,Math,Date,JSON,Blob,TextEncoder,TextDecoder,CSS:{escape:value=>String(value)},document,
-    location:{origin:'https://degree.synthetic.invalid',pathname:'/plan.html',search:editor?'?editor=1':'',assign(value){navigations.push(value);},replace(value){navigations.push(value);}},
+    location:{origin:'https://degree.synthetic.invalid',pathname:'/plan.html',search:editor?'?editor=1':'?group=section',assign(value){navigations.push(value);},replace(value){navigations.push(value);}},
     history:{replaceState(){}},navigator:{},CustomEvent:class{constructor(type,options){this.type=type;this.detail=options?.detail;}},
     FormData:class extends Map{constructor(form){super(Object.entries(form.values||{}));}getAll(name){return this.has(name)?[this.get(name)]:[];}},
     setTimeout(){return 1;},clearTimeout(){},requestAnimationFrame(){},scrollTo(){},dispatchEvent(){},

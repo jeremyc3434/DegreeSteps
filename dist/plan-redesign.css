@@ -17,9 +17,31 @@ body #sheet-titlebar.has-plan-summary, body.course-plan-page #sheet-titlebar.has
 #sheet-titlebar .plan-summary-actions { flex:1 1 280px; display:flex; flex-wrap:wrap !important; gap:var(--tok-space-2); justify-content:flex-end; margin:0; min-width:0; }
 #sheet-titlebar .plan-summary-actions .button { white-space:normal; max-width:100%; }
 @media (max-width:1023px) {
-  #sheet-titlebar .plan-summary-actions { justify-content:flex-start; flex-basis:100%; }
-  /* The phone bottom bar carries "Ask the school". */
-  #sheet-titlebar .plan-summary-actions [data-action="ask-school"] { display:none; }
+  /* Phones keep the first course on the first screen: Ask the school lives in the bottom bar and Compare degrees in
+     More, so the header holds the degree, Change degree and More. */
+  .plan-summary { padding:var(--tok-space-4); gap:var(--tok-space-3); }
+  .plan-summary-top { flex-wrap:nowrap; }
+  #sheet-titlebar .plan-summary-actions { flex:0 0 auto; justify-content:flex-end; }
+  #sheet-titlebar .plan-summary-actions [data-action="ask-school"], #sheet-titlebar .plan-summary-actions [data-action="compare-plans"] { display:none; }
+  .plan-summary .sheet-title { font-size:1.375rem; }
+  .plan-summary-id-actions { margin-top:var(--tok-space-1); }
+  .plan-summary-stat { padding:var(--tok-space-2) var(--tok-space-3); }
+  .plan-summary-stat strong { font-size:1rem; }
+  .plan-summary-progress .ds-progress-legend { gap:var(--tok-space-1) var(--tok-space-3); font-size:var(--tok-text-xsmall); }
+  #sheet-titlebar .plan-summary-id-actions { flex-wrap:nowrap; gap:var(--tok-space-4); }
+  #sheet-titlebar .plan-summary-id-actions .button { min-height:40px; padding:6px 12px; font-size:var(--tok-text-small); white-space:nowrap; flex:0 0 auto; }
+  #sheet-titlebar .plan-summary-id-actions .sheet-title-jump { display:inline-flex !important; margin:0 !important; font-size:var(--tok-text-small); white-space:nowrap; }
+  #sheet-titlebar .plan-summary-school { font-size:var(--tok-text-xsmall); }
+  #sheet-titlebar .plan-summary-progress .ds-progress-legend { margin-top:var(--tok-space-1); }
+  #sheet-titlebar .plan-summary-stat strong { font-size:.9375rem; line-height:1.3; }
+  #sheet-grid .plan-view-controls { margin:var(--tok-space-3) 0; gap:var(--tok-space-2); flex-wrap:nowrap; }
+  #sheet-grid .plan-view-chips { gap:6px; flex-wrap:nowrap; }
+  #sheet-grid .plan-view-chips .ds-chip { min-height:40px; padding:0 12px; font-size:var(--tok-text-small); }
+  #sheet-grid .plan-group-mode { min-height:34px; padding:0 10px; font-size:var(--tok-text-xsmall); white-space:nowrap; }
+  #sheet-grid .plan-bucket-note { margin-bottom:var(--tok-space-2); }
+  .plan-bucket { margin-top:var(--tok-space-4); }
+  .plan-main { display:flex; flex-direction:column; }
+  .plan-main > #sheet-glance { order:10; margin-top:var(--tok-space-6); }
 }
 .plan-summary .button { min-height:var(--tok-target); }
 .plan-summary .button.secondary { background:#fff; color:var(--tok-ink); border-color:#fff; }
