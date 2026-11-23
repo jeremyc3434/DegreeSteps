@@ -134,6 +134,13 @@
       "notes": "This syllabus describes the built-in Saylor proctor and says course access and proctoring have no charge. Its applicability differs from the paid SmarterProctoring channel described in the FAQ."
     },
     {
+      "id": "saylor-credit-exam-fee-2026-11-23",
+      "title": "Saylor BUS101 credit final exam: SmarterProctoring, $5 per attempt",
+      "url": "https://learn.saylor.org/mod/lti/view.php?id=97925",
+      "checkedOn": "2026-11-23",
+      "notes": "States: up to 3 attempts, 14 days between attempts, passing score 70% or higher, proctored by SmarterProctoring automated software, and a fee of $5 per attempt payable at the start of each session."
+    },
+    {
       "id": "straighterline-membership-course-pricing",
       "title": "StraighterLine membership, individual course charges and restricted prepaid plans",
       "url": "https://www.straighterline.com/pricing",
@@ -304,6 +311,21 @@
       ],
       "missing": [
         "CLEP test-center or remote-proctor administration fees vary and are not included."
+      ]
+    },
+    {
+      "provider": "Saylor",
+      "type": "exam",
+      "amount": 5,
+      "currency": "USD",
+      "label": "$5 per proctored credit exam attempt (SmarterProctoring); the course itself is free",
+      "sourceIds": [
+        "saylor-credit-exam-fee-2026-11-23",
+        "saylor-direct-credit-fees",
+        "saylor-bus206-syllabus-fees"
+      ],
+      "missing": [
+        "Saylor retakes cost $5 per attempt (up to 3 attempts, 14 days apart, 70% to pass) and are not included. A few Saylor courses use a free built-in proctor, so the real exam cost can be lower."
       ]
     }
   ],
@@ -1140,16 +1162,6 @@
     }
   ],
   "unpricedProviders": [
-    {
-      "provider": "Saylor",
-      "sourceIds": [
-        "saylor-direct-credit-fees",
-        "saylor-bus206-syllabus-fees"
-      ],
-      "missing": [
-        "Saylor exam and proctoring charges are not included. Published pages describe both a $5 SmarterProctoring channel and a course-specific free built-in channel; DegreeSteps has not established which applies to each selected credit exam."
-      ]
-    },
     {
       "provider": "StraighterLine",
       "sourceIds": [

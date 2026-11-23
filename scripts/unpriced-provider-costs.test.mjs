@@ -16,30 +16,37 @@ function fixture(provider,withStudy=false){
  const plan=Planner.generate(program,{providers:[provider,'Study.com'],allowConditional:true,priority:'transfer',completed:[]});assert.equal(plan.validation.academicCountsValid,true);return {rates,program,plan};
 }
 
-test('Saylor and StraighterLine publish source-bound omissions without making an unsupported numeric price claim',()=>{
+test('StraighterLine publishes a source-bound omission without an unsupported numeric price claim',()=>{
  assert.equal(Estimate.assertRates(actualRates),actualRates);
- for(const provider of ['Saylor','StraighterLine']){
-  assert(!actualRates.providers.some(price=>price.provider===provider),'The provider has no universal reviewed numeric price');
-  const record=actualRates.unpricedProviders.find(record=>record.provider===provider);assert(record);assert(record.missing.length);assert(record.sourceIds.every(id=>actualRates.sources.some(source=>source.id===id&&source.checkedOn==='2026-11-20')));
- }
- const saylor=actualRates.unpricedProviders.find(record=>record.provider==='Saylor');assert(saylor.missing.some(note=>/\$5 SmarterProctoring/.test(note)&&/free built-in/.test(note)&&/not included/.test(note)));
- const straighter=actualRates.unpricedProviders.find(record=>record.provider==='StraighterLine');assert(straighter.missing.some(note=>/membership and individual course charges/.test(note)&&/lab kits/.test(note)));
+ assert(!actualRates.providers.some(price=>price.provider==='StraighterLine'),'StraighterLine has no universal reviewed numeric price');
+ const straighter=actualRates.unpricedProviders.find(record=>record.provider==='StraighterLine');assert(straighter);assert(straighter.sourceIds.every(id=>actualRates.sources.some(source=>source.id===id&&source.checkedOn==='2026-11-20')));
+ assert(straighter.missing.some(note=>/membership and individual course charges/.test(note)&&/lab kits/.test(note)));
+});
+
+test('Saylor is priced at its published $5 proctored credit-exam fee per course, with retakes and free-proctor courses explained',()=>{
+ assert(!actualRates.unpricedProviders.some(record=>record.provider==='Saylor'));
+ const saylor=actualRates.providers.find(price=>price.provider==='Saylor');assert.equal(saylor.type,'exam');assert.equal(saylor.amount,5);assert.equal(saylor.currency,'USD');
+ const exam=actualRates.sources.find(source=>source.id==='saylor-credit-exam-fee-2026-11-23');assert(exam&&/\$5 per attempt/.test(exam.notes)&&/SmarterProctoring/.test(exam.notes));assert(saylor.sourceIds.includes(exam.id));
+ assert(saylor.missing.some(note=>/retakes cost \$5 per attempt/.test(note)&&/free built-in proctor/.test(note)));
+ const f=fixture('Saylor'),result=Estimate.calculate(f);assert.equal(result.available,true,result.reason);
+ const line=result.costs.providerBreakdown.find(line=>line.provider==='Saylor');assert.deepEqual(line.cost,{min:5,max:5});assert.notEqual(result.costs.outsideCourses,null);
+ assert(result.sources.some(source=>source.id==='saylor-credit-exam-fee-2026-11-23'));
 });
 
 test('unknown provider charges stay null and partial instead of becoming zero or a false complete course total',()=>{
- for(const provider of ['Saylor','StraighterLine']){
+ for(const provider of ['StraighterLine']){
   const f=fixture(provider),before=JSON.stringify(f),result=Estimate.calculate(f);assert.equal(result.available,true,result.reason);assert.equal(result.status,'partial-range');assert.equal(result.costs.complete,false);assert.equal(result.costs.outsideCourses,null);
   const line=result.costs.providerBreakdown.find(line=>line.provider===provider);assert.equal(line.cost,null);assert.equal(line.courses,1);assert(result.costs.missing.some(note=>note.startsWith(provider)));
   assert.deepEqual(result.costs.knownRange,{min:1874,max:1874},'Only synthetic university tuition and listed fees contribute known charges');
   assert(result.sources.some(source=>source.id===(provider==='Saylor'?'saylor-direct-credit-fees':'straighterline-membership-course-pricing')));
   const html=View.render(result);assert.match(html,/Known charges so far/);assert.match(html,/Not included/);assert.doesNotMatch(html,/\$0(?:<|–|\s)/);assert.equal(JSON.stringify(f),before);
  }
- const mixed=Estimate.calculate(fixture('Saylor',true));assert.equal(mixed.status,'partial-range');assert.equal(mixed.costs.outsideCourses,null);assert.deepEqual(mixed.costs.knownRange,{min:2109,max:2109});assert.equal(mixed.costs.providerBreakdown.find(line=>line.provider==='Study.com').cost.min,235,'Known provider charges are retained in the known subtotal');
+ const mixed=Estimate.calculate(fixture('StraighterLine',true));assert.equal(mixed.status,'partial-range');assert.equal(mixed.costs.outsideCourses,null);assert.deepEqual(mixed.costs.knownRange,{min:2109,max:2109});assert.equal(mixed.costs.providerBreakdown.find(line=>line.provider==='Study.com').cost.min,235,'Known provider charges are retained in the known subtotal');
 });
 
 test('unpriced review records reject numeric overrides, duplicate providers and unbound or empty explanations',()=>{
  for(const change of [r=>r.unpricedProviders[0].amount=0,r=>r.unpricedProviders[0].cost=5,r=>r.unpricedProviders[0].provider='Sophia',r=>r.unpricedProviders[0].sourceIds=['missing'],r=>r.unpricedProviders[0].missing=[],r=>r.unpricedProviders[0].missing=[null],r=>r.unpricedProviders.push(copy(r.unpricedProviders[0]))]){
-  const rates=copy(actualRates);change(rates);assert.throws(()=>Estimate.assertRates(rates));const f=fixture('Saylor');f.rates=rates;assert.equal(Estimate.calculate(f).available,false);
+  const rates=copy(actualRates);change(rates);assert.throws(()=>Estimate.assertRates(rates));const f=fixture('StraighterLine');f.rates=rates;assert.equal(Estimate.calculate(f).available,false);
  }
  const legacy=copy(actualRates);delete legacy.unpricedProviders;assert.equal(Estimate.assertRates(legacy),legacy,'Previously published rate files remain supported');
 });
