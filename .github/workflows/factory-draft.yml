@@ -1,0 +1,134 @@
+name: Pathway Factory draft run
+
+# Run by hand from the Actions tab: "Pathway Factory draft run" > "Run workflow". It captures each official catalog
+# page, drafts every program in one Message Batches request (half the standard API price), verifies the kit and opens
+# a pull request from factory/<school>-<run id> to main. Every program stays status "draft": nothing compiles or
+# publishes until a person reviews it in a separate change. Needs the ANTHROPIC_API_KEY repository secret and
+# Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests".
+on:
+  workflow_dispatch:
+    inputs:
+      school:
+        description: Kit id (an existing content/pathway-kits/<id>, or a new lowercase id such as "snhu")
+        required: true
+        type: string
+      program_urls:
+        description: Official catalog program URLs, one per line or separated by spaces (at most 25)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: factory-draft-${{ inputs.school }}
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    # Most batches end within an hour; draft.mjs cancels a batch still running after 5.5 hours (unprocessed
+    # requests are not billed) so the job ends before this limit.
+    timeout-minutes: 360
+    env:
+      SCHOOL: ${{ inputs.school }}
+      PROGRAM_URLS: ${{ inputs.program_urls }}
+    steps:
+      - name: Check out main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Use Node.js 24
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Validate the inputs
+        id: inputs
+        run: |
+          node --input-type=module <<'JS'
+          import {writeFileSync,appendFileSync,existsSync} from 'node:fs';
+          import {parseUrlList} from './scripts/pathway-factory/draft.mjs';
+          const school=process.env.SCHOOL.trim();
+          if(!/^[a-z0-9][a-z0-9-]{1,48}$/.test(school)||school==='providers')throw Error('school must be a kit id: lowercase letters, digits and hyphens.');
+          const urls=parseUrlList(process.env.PROGRAM_URLS);
+          writeFileSync(process.env.RUNNER_TEMP+'/program-urls.txt',urls.join('\n')+'\n');
+          const kit=existsSync(`content/pathway-kits/${school}/school.json`);
+          appendFileSync(process.env.GITHUB_OUTPUT,`school=${school}\nbranch=factory/${school}-${process.env.GITHUB_RUN_ID}\ncount=${urls.length}\n`);
+          console.log(`${urls.length} URL(s) for ${kit?'existing kit':'NEW school'} ${school}.`);
+          JS
+      - name: Require the API key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then echo "::error::The ANTHROPIC_API_KEY repository secret is not set."; exit 1; fi
+      - name: Capture and draft in one Message Batch
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SCHOOL_ID: ${{ steps.inputs.outputs.school }}
+        run: |
+          set +e
+          node scripts/pathway-factory/draft.mjs --school "$SCHOOL_ID" --batch --program-urls "$RUNNER_TEMP/program-urls.txt" --summary "$RUNNER_TEMP/draft-summary.json"
+          code=$?
+          set -e
+          # 2 = some pages failed or some drafts have verification errors; both are reported in the pull request.
+          if [ "$code" -ne 0 ] && [ "$code" -ne 2 ]; then exit "$code"; fi
+      - name: Verify and report
+        env:
+          SCHOOL_ID: ${{ steps.inputs.outputs.school }}
+        run: |
+          npm run --silent factory:verify -- "$SCHOOL_ID" --as-of "$(date -u +%F)" || echo "Verification reported errors; they are listed in the pull request."
+          npm run --silent factory:report -- "$SCHOOL_ID" || true
+          node scripts/pathway-factory/run-report.mjs --school "$SCHOOL_ID" --summary "$RUNNER_TEMP/draft-summary.json" \
+            --run-url "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" > "$RUNNER_TEMP/pr-body.md"
+          cat "$RUNNER_TEMP/pr-body.md" >> "$GITHUB_STEP_SUMMARY"
+      - name: Check that only drafts and captures changed
+        env:
+          SCHOOL_ID: ${{ steps.inputs.outputs.school }}
+        run: |
+          node --input-type=module <<'JS'
+          import {execFileSync} from 'node:child_process';
+          import {readFileSync} from 'node:fs';
+          const school=process.env.SCHOOL_ID;
+          const changed=execFileSync('git',['status','--porcelain','--untracked-files=all'],{encoding:'utf8'}).split('\n').filter(Boolean).map(line=>line.slice(3));
+          const allowed=path=>path.startsWith('content/source-captures/')||path.startsWith(`content/pathway-kits/${school}/`);
+          const outside=changed.filter(path=>!allowed(path));
+          if(outside.length)throw Error('Unexpected changes outside the kit and captures: '+outside.join(', '));
+          for(const path of changed.filter(p=>/\/programs\/[^/]+\.json$/.test(p))){
+            const program=JSON.parse(readFileSync(path,'utf8'));
+            if(program.status!=='draft'||program.review?.status!=='draft')throw Error(`${path} is not a draft; this workflow never publishes.`);
+          }
+          console.log(`${changed.length} changed file(s), all drafts or captures.`);
+          JS
+      - name: Open the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SCHOOL_ID: ${{ steps.inputs.outputs.school }}
+          BRANCH: ${{ steps.inputs.outputs.branch }}
+        run: |
+          if [ -z "$(git status --porcelain --untracked-files=all)" ]; then
+            echo "Nothing was captured or drafted; no pull request." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add -- "content/pathway-kits/$SCHOOL_ID" content/source-captures
+          drafted=$(node -e 'const s=require(process.argv[1]);console.log(s.items.filter(i=>i.status==="drafted").length)' "$RUNNER_TEMP/draft-summary.json")
+          git commit -m "Factory drafts for $SCHOOL_ID ($drafted program(s), run $GITHUB_RUN_ID)" -m "Drafted by the Pathway Factory draft workflow. Every program is status draft; review before publishing."
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "Factory drafts: $SCHOOL_ID ($drafted program(s), review needed)" --body-file "$RUNNER_TEMP/pr-body.md"
+      - name: Keep the run summary
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: factory-draft-${{ github.run_id }}
+          retention-days: 30
+          if-no-files-found: ignore
+          path: |
+            ${{ runner.temp }}/draft-summary.json
+            ${{ runner.temp }}/pr-body.md

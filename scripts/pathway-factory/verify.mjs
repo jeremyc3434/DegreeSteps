@@ -26,7 +26,7 @@ function scopedProgramSources(kit,row){
   const per=slugs.map(slug=>list(kit.programs.find(p=>p.slug===slug)?.sources));
   return per[0].filter(source=>per.every(sources=>sources.some(s=>s.id===source.id)));
 }
-function quotedClaims(kit){
+export function quotedClaims(kit){
   const claims=[];
   const take=(claim,file,label,sources)=>{if(Array.isArray(claim?.quotes))claims.push({claim,file,label,sources});};
   for(const[name,policy]of Object.entries(kit.school.policies||{}))take(policy,'school.json','policy '+name);
