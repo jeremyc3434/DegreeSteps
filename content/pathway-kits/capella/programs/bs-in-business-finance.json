@@ -1,0 +1,400 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bs-in-business-finance",
+  "routeIds": [],
+  "title": "BS in Business, Finance",
+  "level": "bachelor",
+  "catalog": "October 2026 University Catalog",
+  "totalCredits": 180,
+  "catalogUrl": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,161-162&columns=2",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "capella-bs-in-business-finance-catalog-2026-11-23",
+      "title": "BS in Business, Finance catalog page",
+      "url": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,161-162&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/4fbd4bc320598349.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+      "text": "At least 180 quarter credits, including a minimum of"
+    }
+  ],
+  "gaps": [
+    "The capture does not explicitly state whether MAT2010 (6) counts within the 45-credit general education block; the printed block totals (45+42+48+39+6=180) imply it does, so the ledger may double-count 6 credits if summed directly.",
+    "ACS1003 is conditional (only for students assessed as needing support); students who complete it take BUS2003 instead of BUS2007 and choose 33 rather than 39 elective quarter credits.",
+    "No residency or must-complete-at-Capella requirement is stated in the capture.",
+    "Total requires a minimum of 54 quarter credits from the 3000-level and above; distribution of elective/general education level is not otherwise specified.",
+    "Optional Honors Pathway (PHI-H2005, COM-H4005, SOC-H3005; at least 15 quarter credits) applies toward general education only for honors students and is not included as a separate requirement.",
+    "FlexPath (-FPX) delivery uses program points (e.g., 22.5 program points general education) rather than quarter credits; the FlexPath version of this program's requirements is not fully captured.",
+    "Course-level prerequisites are referenced but not included in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bs-in-business-finance-general-education-requirements-minimum-of-4-quarter-credits-from-each-category",
+      "code": "",
+      "title": "General Education Requirements (minimum of 4 quarter credits from each category)",
+      "credits": 45,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "Choose 45 quarter credits with a minimum of 4 quarter"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-mat2010",
+      "code": "MAT2010",
+      "title": "Practical Statistics (required general education course)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "MAT2010 Practical Statistics 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-acs1003",
+      "code": "ACS1003",
+      "title": "Building Skills for Academic Success (only for students determined to need additional support)",
+      "credits": 6,
+      "category": "other",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "ACS1003 Building Skills for 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus2007",
+      "code": "BUS2007",
+      "title": "Introduction to Business Perspectives (BUS2003 instead for students who completed ACS1003)",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS2007 Introduction to Business 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus1011",
+      "code": "BUS1011",
+      "title": "Management Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS1011 Management Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus2012",
+      "code": "BUS2012",
+      "title": "Leadership Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS2012 Leadership Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus2021",
+      "code": "BUS2021",
+      "title": "Business Law Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS2021 Business Law Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus2030",
+      "code": "BUS2030",
+      "title": "Marketing and Sales Fundamentals",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS2030 Marketing and Sales 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus2061",
+      "code": "BUS2061",
+      "title": "Accounting Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS2061 Accounting Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus2062",
+      "code": "BUS2062",
+      "title": "Finance Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS2062 Finance Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus3022",
+      "code": "BUS3022",
+      "title": "Fundamentals of Supply Chain Management",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS3022 Fundamentals of Supply 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus3040",
+      "code": "BUS3040",
+      "title": "Fundamentals of Human Resource Management",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS3040 Fundamentals of Human 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus3050",
+      "code": "BUS3050",
+      "title": "Fundamentals of Organizational Communication",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS3050 Fundamentals of 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus4070",
+      "code": "BUS4070",
+      "title": "Foundations in Finance",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS4070 Foundations in Finance 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus4071",
+      "code": "BUS4071",
+      "title": "Financial Markets and Institutions",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS4071 Financial Markets and 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus4072",
+      "code": "BUS4072",
+      "title": "Analysis for Financial Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS4072 Analysis for Financial 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus4073",
+      "code": "BUS4073",
+      "title": "Investments and Portfolio Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS4073 Investments and Portfolio 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus4801",
+      "code": "BUS4801",
+      "title": "Ethics and Enterprise",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS4801 Ethics and Enterprise 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-finance-specialization-electives-choose-from-bus4074-bus4075-bus4076-bus4077",
+      "code": "",
+      "title": "Finance specialization electives (choose from BUS4074, BUS4075, BUS4076, BUS4077)",
+      "credits": 18,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "In addition, choose 18 quarter credits from the following"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-elective-courses-additional-undergraduate-courses-33-if-acs1003-completed",
+      "code": "",
+      "title": "Elective courses (additional undergraduate courses; 33 if ACS1003 completed)",
+      "credits": 39,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "Choose 39 quarter credits of additional undergraduate"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-finance-bus4993",
+      "code": "BUS4993",
+      "title": "Business Capstone Project (taken during the student's final quarter)",
+      "credits": 6,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-finance-catalog-2026-11-23",
+          "text": "BUS4993 Business Capstone Project 6"
+        }
+      ]
+    }
+  ]
+}

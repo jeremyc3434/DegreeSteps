@@ -1,0 +1,420 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bs-in-business-marketing",
+  "routeIds": [],
+  "title": "BS in Business, Marketing",
+  "level": "bachelor",
+  "catalog": "October 2026 University Catalog",
+  "totalCredits": 180,
+  "catalogUrl": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,169-170&columns=2",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "capella-bs-in-business-marketing-catalog-2026-11-23",
+      "title": "BS in Business, Marketing catalog page",
+      "url": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,169-170&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/da59f5703a1525a4.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+      "text": "At least 180 quarter credits, including a minimum of"
+    }
+  ],
+  "gaps": [
+    "Individual core and specialization course credits are printed in a detached column in the two-column PDF capture; values were assigned by column order (BUS2003/BUS2007 6, BUS1011 3, BUS2012 3, BUS2021 3, BUS2030 6, BUS2061 3, BUS2062 3, BUS3022 3, BUS3040 6, BUS3050 6; each specialization course 6). These are consistent with the stated block minimums (core 42, specialization 48) but should be verified against the source.",
+    "Credits for the specialization option courses BUS4024, BUS4027 and BUS4035 are not printed adjacent to the titles; only the 12-quarter-credit block amount is used.",
+    "The capture does not state explicitly whether MAT2010 Practical Statistics counts within the 45 general education quarter credits. The block totals (45 + 42 + 48 + 39 + 6 = 180) imply it does, so it should not be added on top of the 45.",
+    "ACS1003 is required only for students determined by academic assessment to need additional support (taken in the first quarter). The capture does not say whether its 6 credits count toward the 39 elective credits or are added to the 180 total.",
+    "The footnotes marked ‡ (core courses) and § (elective courses) are not included in the capture.",
+    "The degree requires a minimum of 54 quarter credits from the 3000-level and above; this constraint is not represented as a separate ledger line.",
+    "The capture does not state residency or institutional-credit requirements (courses that must be completed at Capella).",
+    "The optional Honors Pathway (PHI-H2005 3, COM-H4005 6, SOC-H3005 6; at least 15 quarter credits applied toward general education) is not listed as a separate requirement because it applies only to honors-pathway students.",
+    "The general education category list is only partially captured: the credit pairing for individual Communication, Humanities and Natural Science courses is garbled in the two-column layout. The category minimums (4 quarter credits each) are stated, but category assignment per course should be confirmed from p. 148.",
+    "Prerequisites are referenced ('Refer to the course descriptions') but are not included in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bs-in-business-marketing-general-education-requirements-minimum-of-4-quarter-credits-from-each-categ-4b4dd81b",
+      "code": "",
+      "title": "General Education Requirements (minimum of 4 quarter credits from each category; see General Education Courses p. 148)",
+      "credits": 45,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "Choose 45 quarter credits with a minimum of 4 quarter"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-mat2010",
+      "code": "MAT2010",
+      "title": "Practical Statistics (required general education course)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "MAT2010 Practical Statistics 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-acs1003",
+      "code": "ACS1003",
+      "title": "Building Skills for Academic Success (Additional Program Requirement; conditional)",
+      "credits": 6,
+      "category": "other",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "ACS1003 Building Skills for 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus2003-or-bus2007",
+      "code": "BUS2003 or BUS2007",
+      "title": "Introduction to Business Perspectives",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS2003 Introduction to Business"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus1011",
+      "code": "BUS1011",
+      "title": "Management Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS1011 Management Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus2012",
+      "code": "BUS2012",
+      "title": "Leadership Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS2012 Leadership Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus2021",
+      "code": "BUS2021",
+      "title": "Business Law Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS2021 Business Law Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus2030",
+      "code": "BUS2030",
+      "title": "Marketing and Sales Fundamentals",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS2030 Marketing and Sales"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus2061",
+      "code": "BUS2061",
+      "title": "Accounting Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS2061 Accounting Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus2062",
+      "code": "BUS2062",
+      "title": "Finance Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS2062 Finance Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus3022",
+      "code": "BUS3022",
+      "title": "Fundamentals of Supply Chain Management",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS3022 Fundamentals of Supply"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus3040",
+      "code": "BUS3040",
+      "title": "Fundamentals of Human Resource Management",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS3040 Fundamentals of Human"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus3050",
+      "code": "BUS3050",
+      "title": "Fundamentals of Organizational Communication",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS3050 Fundamentals of"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus4022",
+      "code": "BUS4022",
+      "title": "E-Marketing",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS4022 E-Marketing"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus4030",
+      "code": "BUS4030",
+      "title": "Marketing Distribution Channel Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS4030 Marketing Distribution"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus4033",
+      "code": "BUS4033",
+      "title": "Brand Identity and Marketing Communications",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS4033 Brand Identity and"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus4036",
+      "code": "BUS4036",
+      "title": "Marketing Research",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS4036 Marketing Research"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus4801",
+      "code": "BUS4801",
+      "title": "Ethics and Enterprise",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS4801 Ethics and Enterprise"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus4802",
+      "code": "BUS4802",
+      "title": "Change Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS4802 Change Management"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-specialization-choice-12-quarter-credits-from-bus4024-customer-behavior-bus-939dfd3a",
+      "code": "",
+      "title": "Specialization choice: 12 quarter credits from BUS4024 Customer Behavior, BUS4027 Public Relations, BUS4035 Global Marketing",
+      "credits": 12,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "In addition, choose 12 quarter credits from the following"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-elective-courses-additional-undergraduate-courses",
+      "code": "",
+      "title": "Elective courses (additional undergraduate courses)",
+      "credits": 39,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "Choose 39 quarter credits of additional undergraduate"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-marketing-bus4993",
+      "code": "BUS4993",
+      "title": "Business Capstone Project (taken during the student's final quarter)",
+      "credits": 6,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-marketing-catalog-2026-11-23",
+          "text": "BUS4993 Business Capstone Project 6"
+        }
+      ]
+    }
+  ]
+}

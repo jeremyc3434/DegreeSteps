@@ -1,0 +1,435 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-bs-in-computer-science",
+  "routeIds": [],
+  "title": "Bachelor of Science (BS) in Computer Science",
+  "level": "bachelor",
+  "catalog": "October 2026 University Catalog",
+  "totalCredits": 180,
+  "catalogUrl": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,202-203&columns=2",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+      "title": "Bachelor of Science (BS) in Computer Science catalog page",
+      "url": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,202-203&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/15cf0049cf06143c.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+      "text": "At least 180 quarter credits, including a minimum of"
+    }
+  ],
+  "gaps": [
+    "The 21-credit general education block is not printed; it is derived as 45 required general education quarter credits minus the 24 quarter credits of required math courses (MAT1050, MAT1200, MAT2051, MAT2200). This assumes those courses count toward the 45, because they are listed under General Education Requirements. Confirm this with the catalog or the school.",
+    "General education requires a minimum of 4 quarter credits from each category (Communication, Humanities, Natural Science and Mathematics, Social Science). The ledger cannot verify how the remaining credits are distributed across these categories.",
+    "The total of 180 quarter credits must include a minimum of 54 quarter credits from the 3000-level and above. This is a distribution constraint that is not captured as a separate requirement line.",
+    "Recommended (not required) courses are not included in the ledger: HUM1350 Culture, Continuity, and Change (6) and IT3180 Pathways to Certificate-Based Professional Development (6).",
+    "An optional Honors Pathway exists. PHI-H2005 (3), COM-H4005 (6) and SOC-H3005 (6), at least 15 quarter credits, apply toward general education for honors students. It is not included as a base requirement.",
+    "Capstone courses must be taken during the student's final two quarters. The capture does not state whether capstone or any other courses must be completed at Capella; no residency or institutional-credit requirement is stated.",
+    "Course prerequisites are referenced but not detailed in the capture.",
+    "The capture also begins a FlexPath option of this program measured in program points. That capture is truncated after the general education section, so the FlexPath ledger cannot be built and is excluded here."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-mat1050",
+      "code": "MAT1050",
+      "title": "College Algebra",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "MAT1050 College Algebra 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-mat1200",
+      "code": "MAT1200",
+      "title": "Pre-Calculus",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "MAT1200 Pre-Calculus 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-mat2051",
+      "code": "MAT2051",
+      "title": "Discrete Mathematics",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "MAT2051 Discrete Mathematics 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-mat2200",
+      "code": "MAT2200",
+      "title": "Calculus",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "MAT2200 Calculus 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-general-education-courses-remaining-credits-of-the-45-qua-e0b868b2",
+      "code": "",
+      "title": "General education courses (remaining credits of the 45 quarter-credit requirement, minimum 4 quarter credits from each category)",
+      "credits": 21,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "Choose 45 quarter credits with a minimum of 4 quarter"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it1006",
+      "code": "IT1006",
+      "title": "Information Technology Concepts and Practices",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT1006 Information Technology 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it1170",
+      "code": "IT1170",
+      "title": "Goals and Ethics for the IT Professional",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT1170 Goals and Ethics for the IT 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it2180",
+      "code": "IT2180",
+      "title": "Operating System and Hardware Infrastructure",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT2180 Operating System and 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it2230",
+      "code": "IT2230",
+      "title": "Introduction to Database Systems",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT2230 Introduction to Database 3"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it2249",
+      "code": "IT2249",
+      "title": "Introduction to Programming with Java",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT2249 Introduction to 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it2280",
+      "code": "IT2280",
+      "title": "Network Technology and Architecture",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT2280 Network Technology and 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it3240",
+      "code": "IT3240",
+      "title": "Web Development and JavaScript",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT3240 Web Development and 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it3249",
+      "code": "IT3249",
+      "title": "Principles of Software Architecture",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT3249 Principles of Software 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it4803",
+      "code": "IT4803",
+      "title": "System Assurance Security",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT4803 System Assurance Security 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-csc4010",
+      "code": "CSC4010",
+      "title": "Principles of Programming Languages",
+      "credits": 6,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "CSC4010 Principles of Programming 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-csc4020",
+      "code": "CSC4020",
+      "title": "Algorithms and Data Structures",
+      "credits": 6,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "CSC4020 Algorithms and Data 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-csc4030",
+      "code": "CSC4030",
+      "title": "Introduction to Machine Learning",
+      "credits": 6,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "CSC4030 Introduction to Machine 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-csc4040",
+      "code": "CSC4040",
+      "title": "Computer Vision",
+      "credits": 6,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "CSC4040 Computer Vision 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it4527",
+      "code": "IT4527",
+      "title": "Java Application Development",
+      "credits": 6,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT4527 Java Application 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-it4535",
+      "code": "IT4535",
+      "title": "Introduction to Artificial Intelligence",
+      "credits": 6,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "IT4535 Introduction to Artificial 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-elective-courses-additional-undergraduate-courses",
+      "code": "",
+      "title": "Elective courses (additional undergraduate courses)",
+      "credits": 36,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "Choose 36 quarter credits of additional undergraduate"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-csc4900",
+      "code": "CSC4900",
+      "title": "Computer Science Capstone 1",
+      "credits": 6,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "CSC4900 Computer Science 6"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-bs-in-computer-science-csc4902",
+      "code": "CSC4902",
+      "title": "Computer Science Capstone 2",
+      "credits": 6,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bachelor-of-science-bs-in-computer-science-catalog-2026-11-23",
+          "text": "CSC4902 Computer Science 6"
+        }
+      ]
+    }
+  ]
+}
