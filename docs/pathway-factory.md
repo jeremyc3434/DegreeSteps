@@ -188,6 +188,23 @@ One-time setup: the `ANTHROPIC_API_KEY` repository secret (already present), and
 
 **Cost.** Measured offline on real captures (Liberty Accounting A.A. degree completion plan: 6,180 characters, 19 requirements; Excelsior B.S. Psychology transfer guide: 19,373 characters, 29 requirements): about 2,600–6,500 input tokens per page including the ≈770-token prompt and schema, and roughly 1,000–1,500 tokens of ledger JSON plus adaptive thinking. At the batch rates for `claude-opus-5-5` ($2 input / $10 output per million tokens) a typical draft costs about **$0.05–0.08**, and no draft can exceed about $0.18 (the 16,000-token output cap). A full 25-page run is typically under $2. The pull request reports the tokens actually billed.
 
+## Catalog PDFs: page ranges (`#pages=…`)
+
+Some schools publish the whole catalog as one PDF (UMGC: 379 pages; Columbia Southern: 246 pages, two columns). A program URL may then name only the pages that hold that program, so the capture, the draft and its quotes cover that program and nothing else.
+
+| Fragment | Meaning |
+| --- | --- |
+| `#pages=38-40` | PDF pages 38 to 40 (1-based PDF page numbers, not the printed page numbers). |
+| `#pages=34-36,38-40` | Several ranges, read in the order written. Use this to put the shared general-education pages before the program's own pages. |
+| `#pages=12` | One page. |
+| `&columns=2` | Two-column layout: each page is read left column first, then right column. The gutter is found per page (the widest band in the middle of the text that almost no text crosses; running headers and rotated side tabs are ignored). A page with no gutter is read as one column. |
+
+Rules: ranges must run forward, may not overlap, at most 20 ranges and 80 pages, and `#pages` only applies to PDFs. Invalid fragments are rejected by `parseUrlList`, so the draft workflow fails before capturing anything. The fragment is never sent to the server. The capture keeps the full URL with its fragment; its sidecar adds `pages`, `columns` and `documentSha256` (the hash of the whole PDF), while `sha256` remains the hash of the ranged text that quotes are grounded against. A URL without `#pages` (or with an ordinary in-page anchor) is captured exactly as before.
+
+Freshness re-fetches a ranged source and compares only its own pages, so an edit elsewhere in the catalog flags nothing; ranged sources of the same PDF share one download per run.
+
+Ready-to-run batches (verified page ranges, 2026-11-23): `docs/factory-batches/umgc.txt` (21 programs; school id `umgc`) and `docs/factory-batches/columbia-southern.txt` (17 programs; school id `columbia-southern`). Paste the URL lines into "Pathway Factory draft run".
+
 ## Sophia partner pages (`import-sophia-partner.mjs`)
 
 ```
