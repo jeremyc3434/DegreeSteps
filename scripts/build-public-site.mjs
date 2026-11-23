@@ -59,7 +59,7 @@ await removeObsoletePreviews(dist,publicPlans);
 const pages = [];
 const brand = '<a class="site-brand ds-wordmark" href="/" aria-label="DegreeSteps home"><span>Degree</span><span class="ds-wordmark-steps">Steps</span></a>';
 const arrow = '';
-const cta = (label='Build my plan',href='/portal.html') => '<a class="site-button" href="'+esc(href)+'">'+esc(label)+'</a>';
+const cta = (label='Build my plan',href='/start.html') => '<a class="site-button" href="'+esc(href)+'">'+esc(label)+'</a>';
 const sourceLinks = sources => '<ul class="source-list">'+[...new Map((sources || []).filter(s => safeURL(s.url)).map(s => [s.url,s])).values()].map(s => '<li><a href="'+esc(safeURL(s.url))+'" target="_blank" rel="noopener">'+esc(s.title || s.url)+arrow+'</a>'+(s.checkedOn ? '<small>Checked '+esc(s.checkedOn)+'</small>' : '')+'</li>').join('')+'</ul>';
 const list = values => '<ul class="plain-list">'+(values || []).map(value => '<li>'+esc(value)+'</li>').join('')+'</ul>';
 const paragraph = value => '<p>'+esc(value)+'</p>';
@@ -69,7 +69,7 @@ const eyebrow = value => '<p class="page-context">'+esc(value)+'</p>';
 const SiteHeader=createRequire(import.meta.url)('../dist/site-header.js');
 function header(current,path='') {
   const id=current==='plans'||path.startsWith('/degree-plans/')?'degrees':path.startsWith('/transfer/')?'transfer':'';
-  return SiteHeader.html({surface:'public',current:id,className:'public-header',actions:'<a class="ds-btn ds-btn-primary nav-cta" href="/portal.html">Build my plan</a>'});
+  return SiteHeader.html({surface:'public',current:id,className:'public-header',actions:'<a class="ds-btn ds-btn-primary nav-cta" href="/start.html">Build my plan</a>'});
 }
 function footer() {
   return '<footer class="public-footer"><div class="footer-top"><div>'+brand+'<p>A clearer path to your degree. Built around your life.</p></div><div><h2>Start your path</h2><a href="/portal.html">Build a degree plan</a><a href="/degree-plans/">Preview researched plans</a><a href="/campuses.html">Find a campus</a><a href="/how-it-works/">How it works</a><a href="/resources/">Resources</a><a href="/compare/">Compare college costs</a><a href="/account.html">My account</a><a href="/about/">Our story</a></div><div><h2>Learn & compare</h2><a href="/courses.html">Browse courses</a><a href="/guides/">Student guides</a><a href="/schools/">School resources</a><a href="/credit-sources/">Credit sources</a><a href="/transfer/">Transfer courses</a><a href="/blog/">The DegreeSteps journal</a></div><div><h2>Get oriented</h2><a href="/faq/">Common questions</a><a href="/community.html">Community</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/why-its-free/">Why DegreeSteps is free</a></div></div><div class="footer-bottom"><p>DegreeSteps is a planning resource. Your school makes the final decisions about credit and degree requirements.</p><p>© '+new Date().getUTCFullYear()+' DegreeSteps</p></div></footer>';
@@ -236,5 +236,5 @@ await writeFile(programsPath,programsHTML);
 pages.push({path:'/programs.html',date:null});
 const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+pages.map(p=>'<url><loc>'+esc(origin+p.path)+'</loc>'+(p.date?'<lastmod>'+p.date+'</lastmod>':'')+'</url>').join('\n')+'\n</urlset>\n';
 await writeFile(resolve(dist,'sitemap.xml'),sitemap);
-await writeFile(resolve(dist,'robots.txt'),'User-agent: *\nAllow: /\nDisallow: /portal.html\nDisallow: /plan.html\nDisallow: /account.html\nDisallow: /guided.html\nDisallow: /audit.html\nDisallow: /request-plan.html\nDisallow: /admin.html\nDisallow: /coverage.html\nDisallow: /ui-demo.html\nDisallow: /api/\nDisallow: /auth/\n\nSitemap: '+origin+'/sitemap.xml\n');
+await writeFile(resolve(dist,'robots.txt'),'User-agent: *\nAllow: /\nDisallow: /portal.html\nDisallow: /plan.html\nDisallow: /account.html\nDisallow: /guided.html\nDisallow: /audit.html\nDisallow: /start.html\nDisallow: /request-plan.html\nDisallow: /admin.html\nDisallow: /coverage.html\nDisallow: /ui-demo.html\nDisallow: /api/\nDisallow: /auth/\n\nSitemap: '+origin+'/sitemap.xml\n');
 console.log(JSON.stringify({publicPages:pages.length,articles:articles.length,schoolProfiles:schoolEntries.length,sourceProfiles:creditCatalog.sources.length,origin}));

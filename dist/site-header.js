@@ -18,7 +18,7 @@
     Object.freeze({id:'degrees', label:'Degrees', publicHref:'/degree-plans/', appHref:'/programs.html', shell:'programs'}),
     Object.freeze({id:'transfer', label:'Transfer courses', publicHref:'/transfer/', appHref:'/transfer/', shell:'transfer'}),
     Object.freeze({id:'community', label:'Community', publicHref:'/community.html?tab=feed', appHref:'/community.html?tab=feed', shell:'community'}),
-    Object.freeze({id:'plan', label:'My plan', publicHref:'/plan.html', appHref:'/plan.html', shell:'plan', fallbackHref:'/portal.html'}),
+    Object.freeze({id:'plan', label:'My plan', publicHref:'/plan.html', appHref:'/plan.html', shell:'plan', fallbackHref:'/start.html'}),
     Object.freeze({id:'account', label:'Sign in', publicHref:'/account.html', appHref:'/account.html', shell:'account'})
   ]);
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -505,6 +505,11 @@
     else for(const req of model.requirements){const option=req.options.find(item=>item.id===selections[req.id]);if(option&&option.provider!=='University'&&!scenario.providers.includes(option.provider))delete selections[req.id];}
     return {...next,scenarios:{...next.scenarios,[model.id]:{...scenario,optionSelections:selections}}};
   }
+  // Build my plan (start.html) step 2 passes the credits answer as ?then=; the plan opens on that existing step.
+  function afterPlanUrl() {
+    const then=new URLSearchParams(location.search).get('then');
+    return ({none:'plan.html?task=credits&prior=none',later:'plan.html?task=credits&prior=later',some:'plan.html?task=credits&manual=1',upload:'import-courses.html?from=plan',military:'plan.html?task=preferences'})[then]||'plan.html';
+  }
   async function usePublicPlan(id) {
     if(typeof id!=='string'||!/^[A-Za-z0-9_-]{1,120}$/.test(id))throw Error('Choose a degree plan from the plan library.');
     const route=catalog.pathways.find(item=>item.id===id);
@@ -586,7 +591,7 @@
     state=check.state;state.journey={...state.journey,view:'home',step:'review',completed:true,creditsDeferred:!state.learning.some(item=>item.status==='earned')&&state.profile.hasPrior!=='none',planReviewed:false,schoolContacted:false};
     degreePreview=null;page='home';save();
     if(!saveOK){render();showError(Error('This browser could not save your plan. Keep this page open and download a private backup.'));return false;}
-    clearProfileDraft();trackPlanStarted(route.id);history.replaceState(null,'',location.pathname);location.assign('plan.html');return true;
+    clearProfileDraft();trackPlanStarted(route.id);const destination=afterPlanUrl();history.replaceState(null,'',location.pathname);location.assign(destination);return true;
   }
   // Format buttons name the study format; when two variants share a format
   // (a concentration offered online, say), the title part that differs is added.

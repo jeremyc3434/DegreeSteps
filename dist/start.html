@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#4054f4"><title>Build my plan — DegreeSteps</title><meta name="description" content="Pick a degree, add credits you have, and build your plan in three steps."><link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="start.css"><script src="/planner.js" defer></script><script src="program-catalog.js" defer></script><script src="program-opportunities.js" defer></script><script src="account-client.js" defer></script><script src="start.js" defer></script><script src="/site-header.js" defer></script><script src="app-shell.js" defer></script><link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><script src="/growth-metrics.js" defer></script><script src="/coach.js" defer></script></head>
+<body class="start-page ds-experience ds-workspace-page ds-discovery-page">
+<a class="start-skip" href="#start-app">Skip to the plan builder</a>
+<main id="start-app" class="start-app" tabindex="-1">
+  <div id="start-loading" class="start-loading">Loading degree plans…</div>
+  <p id="start-error" class="start-error" role="alert" hidden></p>
+  <section id="start-step-degree" class="start-step" hidden aria-labelledby="start-degree-title">
+    <div class="start-progress"><p class="start-step-label">Step 1 of 3</p><div class="start-bars" aria-hidden="true"><span class="on"></span><span></span><span></span></div></div>
+    <h1 id="start-degree-title" tabindex="-1">Pick a degree</h1>
+    <form id="start-filters" class="start-filters" role="search" onsubmit="return false">
+      <label for="start-q" class="start-label">What do you want to study?</label>
+      <div class="start-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input id="start-q" type="search" autocomplete="off" placeholder="Psychology, business, a school…"></div>
+      <fieldset class="start-chips" id="start-subjects"><legend>Subject</legend></fieldset>
+      <div class="start-row">
+        <fieldset class="start-chips" id="start-levels"><legend>Level</legend></fieldset>
+        <fieldset class="start-chips" id="start-formats"><legend>Format</legend></fieldset>
+      </div>
+      <div class="start-row start-row-end">
+        <label class="start-check"><input type="checkbox" id="start-confirm" checked> Include plans that need school confirmation</label>
+        <label class="start-sort"><span>Sort</span><select id="start-sort"><option value="cost">Lowest cost first</option><option value="outside">Most credits for less</option><option value="time">Finish sooner</option><option value="az">A–Z</option></select></label>
+      </div>
+    </form>
+    <p id="start-count" class="start-count" role="status"></p>
+    <div id="start-results" class="start-results"></div>
+    <button type="button" id="start-more" class="start-secondary" hidden>Show more degrees</button>
+    <div class="start-help">
+      <a href="start.html?step=quiz" id="start-quiz-link">Not sure? Take the 1-minute quiz</a>
+      <a href="portal.html?view=setup">Answer more questions for tailored picks</a>
+      <a href="request-plan.html">Degree not listed? Build from a degree link</a>
+      <a href="programs.html">Open the full degree finder</a>
+    </div>
+  </section>
+  <section id="start-step-credits" class="start-step" hidden aria-labelledby="start-credits-title">
+    <div class="start-progress"><a class="start-back" href="start.html" id="start-credits-back">← Back</a><p class="start-step-label">Step 2 of 3</p><a class="start-skip-link" id="start-credits-skip" href="#">Skip</a></div>
+    <div class="start-bars" aria-hidden="true"><span class="on"></span><span class="on"></span><span></span></div>
+    <p class="start-picked" id="start-picked"></p>
+    <h1 id="start-credits-title" tabindex="-1">Have you taken college classes before?</h1>
+    <p class="start-lede">They might count. You can add them later too.</p>
+    <form id="start-credits-form" class="start-credits">
+      <fieldset class="start-answers"><legend class="start-sr">Past college credit</legend>
+        <label class="start-answer"><input type="radio" name="prior" value="none" checked><span><strong>No, starting fresh</strong><small>We plan every course.</small></span></label>
+        <label class="start-answer"><input type="radio" name="prior" value="some"><span><strong>Yes, a few</strong><small>Type them in on the next screen.</small></span></label>
+        <label class="start-answer"><input type="radio" name="prior" value="upload"><span><strong>Yes, I have a transcript</strong><small>Upload it and we match the courses.</small></span></label>
+      </fieldset>
+      <button type="submit" class="start-primary" id="start-credits-next">See my plan</button>
+      <p class="start-note"><a href="#" id="start-military">Military training can count too. Add it</a></p>
+    </form>
+  </section>
+  <section id="start-step-quiz" class="start-step" hidden aria-labelledby="start-quiz-title">
+    <div class="start-progress"><a class="start-back" href="#" id="start-quiz-back">← Back</a><p class="start-step-label" id="start-quiz-count">Question 1 of 5</p><a class="start-skip-link" href="start.html">Skip quiz</a></div>
+    <h1 id="start-quiz-title" tabindex="-1">Let’s find your degree</h1>
+    <div id="start-quiz-card" class="start-quiz-card"></div>
+  </section>
+</main>
+</body></html>
