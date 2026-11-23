@@ -26,6 +26,9 @@ async function test(name,fn){await fn();checks++;console.log('PASS '+name);}
  browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
  for(const width of [320,390,1440])await test('unstarted degree has zero visual progress despite outside courses at '+width+'px',async()=>{
   const page=await open(width),f=await facts(page);counts(f,0,0);assert(f.numbers.less>0,'The route actually includes outside coursework');assert.equal(f.donePixels,0);assert.equal(f.activePixels,0);assert(f.trackPixels>0);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+  const layout=await page.locator('.plan-summary-progress .degree-progress-legend button').evaluateAll(buttons=>buttons.map(button=>{const range=document.createRange();range.selectNodeContents(button);const box=button.getBoundingClientRect();return{label:button.textContent.trim(),box:{left:box.left,right:box.right,top:box.top,bottom:box.bottom},contents:[...range.getClientRects()].map(rect=>({left:rect.left,right:rect.right,top:rect.top,bottom:rect.bottom}))};}));
+  assert.equal(layout.length,3);for(const item of layout)for(const rect of item.contents)assert(rect.left>=item.box.left-1&&rect.right<=item.box.right+1&&rect.top>=item.box.top-1&&rect.bottom<=item.box.bottom+1,item.label+' fits its button');
+  for(let a=0;a<layout.length;a++)for(let b=a+1;b<layout.length;b++){const x=layout[a].box,y=layout[b].box;assert(x.right<=y.left+1||y.right<=x.left+1||x.bottom<=y.top+1||y.bottom<=x.top+1,'Progress buttons do not overlap');}
  });
  await test('starting, finishing and reversing a course changes only actual learning progress',async()=>{
   const page=await open(1440),before=await facts(page),records=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)).learning,KEY);
