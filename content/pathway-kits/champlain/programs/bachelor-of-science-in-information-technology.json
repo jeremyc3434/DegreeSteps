@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Bachelor of Science in Information Technology",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Bachelor of Science in Information Technology, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-information-technology",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 9 requirement(s) (50% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -294,7 +294,7 @@
       ]
     },
     {
-      "id": "bachelor-of-science-in-information-technology-capstone-choice-cmit-450-senior-seminar-project-or-cmit-490-technical-internship",
+      "id": "bachelor-of-science-in-information-technology-capstone-choice-cmit-450-senior-seminar-project-or-cmi-3e8c2984",
       "code": "",
       "title": "Capstone choice: CMIT 450 Senior Seminar Project or CMIT 490 Technical Internship",
       "credits": 3,
@@ -396,7 +396,7 @@
       ]
     },
     {
-      "id": "bachelor-of-science-in-information-technology-technology-literacy-one-of-cmit-130-gmdv-110-igmd-110-mkcm-101-mkcm-120-soci-260",
+      "id": "bachelor-of-science-in-information-technology-technology-literacy-one-of-cmit-130-gmdv-110-igmd-110-23459c47",
       "code": "",
       "title": "Technology Literacy (one of CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260)",
       "credits": 3,
@@ -531,5 +531,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Bachelor of Science in Information Technology, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-information-technology",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

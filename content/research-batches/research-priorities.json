@@ -1,27 +1,27 @@
 {
   "schemaRevision": "research-priorities-v1",
-  "revision": "research-priorities-v1:1285dd63f5df009e8336304a73bc057615aa09a9e010c4e9bc3379f8fbbc9030",
+  "revision": "research-priorities-v1:7ca2fb4426dacc1014a75671be7a1741c85393b721322c9aa066e4c045f91e9d",
   "asOf": "2026-11-23",
   "inputFingerprints": {
     "inventory": "5641a61bc3ad2f827256cb7c64f05d9e91e5d46720938a1033ab2eb1800c60b4",
-    "models": "955349183ccb4954ffaf41247f59fdddceb7687989e35a0e0478dea1a7870aa5",
+    "models": "4497a1b32c868e369c5152a5dabc742cb4de4255934d10110b76370318022599",
     "pathways": "724ccdc082fc8c4659451d1e3e3c7b85df95e4c1a026e50bad5c7d87c8a6e1f2",
     "programCatalog": "d46e34eb28c79ac3484bb39af59ca245a509492c3e13db9563784e1d0f5de862",
     "providerDiscovery": "3071f4db1055a48686b22f38dc16872f870026bb93941c5f8486214298eda90c",
-    "quality": "e6a2af194db0c1afecd81edc9348cfee504d06a0997cca6b7708d46238191d6b",
-    "registry": "8c3b123d55990da9cadc9fd8966d8125f726d443c06ce52cd41f71de91117538",
+    "quality": "a058dd94c050b3c2fa85bb366e199ebb626ff45c476a0ef7830c7c9f107fd296",
+    "registry": "d83109d37eba1a5a36decee8b8eb46e8548c3848ad31a788e25a4f36b4b3531d",
     "schoolInsights": "9b84b9db33a9014067bc7c797cf5d9aa4f3914bf64afda474c9bd92f872f6df6",
     "tesuExamReview": "5d9b52d81bbe4375dc9d1ad7acd2e8d1c00bf62e59b79bd4a303cbaf2505fb0e",
     "umpiPrimaryReview": "c2345e5b07e6db37f4876b2c17180e9a220aff6676f31b5dbebc99c2baaf184c"
   },
-  "academicRegistryRevision": "academic-v1:7f32fd5b88b458ecf84b10f3103862f5546ab98b34cce82d0ec970d24deba4e3",
+  "academicRegistryRevision": "academic-v1:84d1843bda3ac52a79442e3e3ce348d1dee4e93bdd4c40fc4ccd6e3e259f8461",
   "scope": "Cross-school research prioritization from the existing directory, exact model registry, recorded publication checks and sourced policy channels. This static backlog does not publish a degree map, grant student credit, establish popularity or start a research job.",
   "summary": {
-    "schools": 22,
-    "programs": 1664,
+    "schools": 23,
+    "programs": 1665,
     "directoryPrograms": 1633,
-    "modelPrograms": 59,
-    "availableTemplates": 54,
+    "modelPrograms": 60,
+    "availableTemplates": 55,
     "publicationReady": 19,
     "unmappedPrograms": 1602,
     "inventoryCandidates": 95,
@@ -69,8 +69,8 @@
       "label": "Finish review of existing models",
       "reason": "A degree model exists but has not passed the publication review. Resolve its actual findings rather than start another outline.",
       "order": 3,
-      "schoolCount": 4,
-      "programCount": 27,
+      "schoolCount": 5,
+      "programCount": 28,
       "inventoryCandidateCount": 0
     },
     {
@@ -2923,6 +2923,81 @@
         {
           "id": "resolve-existing-models",
           "label": "Resolve remaining evidence and publication findings in 2 modeled program entries.",
+          "kind": "resolve-existing-models"
+        }
+      ]
+    },
+    {
+      "id": "strayer-university",
+      "name": "Strayer University",
+      "sourceStatus": "existing-catalog-or-model",
+      "deliveryModes": [
+        "online"
+      ],
+      "paceModels": [
+        "course-term"
+      ],
+      "transferEvidence": {
+        "institutional": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "ace": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "nccrs": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        },
+        "graduate": {
+          "status": "not-verified",
+          "reportedStatus": "not-verified",
+          "reportedMaximumCredits": null,
+          "maximumCredits": null,
+          "unit": null,
+          "sourceUrl": null,
+          "notes": "",
+          "scope": "Reported school-level policy; exact degree, catalog, format and source applicability require review."
+        }
+      },
+      "profileTransferSummary": null,
+      "evidenceUrls": [],
+      "programIds": [
+        "strayer-associate-in-arts-in-information-technology"
+      ],
+      "coverage": {
+        "directoryPrograms": 0,
+        "programCount": 1,
+        "models": 1,
+        "availableTemplates": 1,
+        "publicationReady": 0,
+        "unmappedPrograms": 0,
+        "needsResearchPrograms": 1
+      },
+      "groupId": "existing-model-review",
+      "nextActions": [
+        {
+          "id": "resolve-existing-models",
+          "label": "Resolve remaining evidence and publication findings in 1 modeled program entries.",
           "kind": "resolve-existing-models"
         }
       ]
@@ -22483,6 +22558,64 @@
         {
           "id": "resolve-model-findings",
           "label": "Resolve this model’s recorded publication findings: baseline-course-choices, catalog-identity, conditional-award, policy-unresolved, unresolved-research, validation-selection_required.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "strayer-associate-in-arts-in-information-technology",
+      "parentId": null,
+      "schoolId": "strayer-university",
+      "title": "Associate in Arts in Information Technology",
+      "level": "associate",
+      "catalog": "Strayer University current catalog page for Associate in Arts in Information Technology, checked 2026-11-23",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "existing-model-review",
+      "modelId": "curriculum-strayer-associate-in-arts-in-information-technology",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "policy-unresolved"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 90,
+        "unit": "quarter",
+        "totalTransferMaximum": 63,
+        "alternativeCreditMaximum": null,
+        "totalLimitSourceUrls": [
+          "https://coursecatalog.strayer.edu/graduation-degree-conferral-and-commencement",
+          "https://coursecatalog.strayer.edu/undergraduate-admission"
+        ],
+        "alternativeLimitSourceUrls": []
+      },
+      "evidenceUrls": [
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://coursecatalog.strayer.edu/graduation-degree-conferral-and-commencement",
+        "https://coursecatalog.strayer.edu/information-systems/associate-in-arts/information-technology",
+        "https://coursecatalog.strayer.edu/undergraduate-admission",
+        "https://strayer.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, policy-unresolved.",
           "kind": "resolve-model-findings"
         }
       ],

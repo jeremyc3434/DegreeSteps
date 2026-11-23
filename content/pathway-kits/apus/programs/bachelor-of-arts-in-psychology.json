@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Bachelor of Arts in Psychology",
   "level": "bachelor",
-  "catalog": "2026 - 2027 Catalog",
+  "catalog": "American Public University System current catalog page for Bachelor of Arts in Psychology, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-psychology/",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (63% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -428,5 +428,71 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "apus-apu-transfer-credit-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "At APU, our transfer credit limits are: 45 academic credits toward an associate degree (up to 30 non-traditional credits) 90 academic credits toward a bachelor’s degree (up to 60 non-traditional credits)"
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    },
+    "alternativeMaxCredits": {
+      "value": 60,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "apus-apu-transfer-credit-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "At APU, our transfer credit limits are: 45 academic credits toward an associate degree (up to 30 non-traditional credits) 90 academic credits toward a bachelor’s degree (up to 60 non-traditional credits)"
+        },
+        {
+          "sourceId": "apus-apu-transfer-credit-limits-2026-11-23",
+          "text": "“Non-traditional” transfer credits are those earned based on assessment, competency testing (i.e. CLEP or ACE exams)"
+        }
+      ],
+      "basis": "Sophia credit is ACE-recommended, which the school counts as non-traditional transfer credit."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "American Public University System current catalog page for Bachelor of Arts in Psychology, checked 2026-11-23",
+      "sourceUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-psychology/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "apus-apu-transfer-credit-limits-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "apus-apu-transfer-credit-limits-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Bachelor of Science in Digital Marketing",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Bachelor of Science in Digital Marketing, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-digital-marketing",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 9 requirement(s) (40% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -397,7 +397,7 @@
       ]
     },
     {
-      "id": "bachelor-of-science-in-digital-marketing-oral-communication-choose-one-comm-130-interpersonal-communication-or-comm-140-fundamentals-of-public-communication",
+      "id": "bachelor-of-science-in-digital-marketing-oral-communication-choose-one-comm-130-interpersonal-commun-39c1a2cd",
       "code": "",
       "title": "Oral Communication (choose one: COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)",
       "credits": 3,
@@ -431,7 +431,7 @@
       ]
     },
     {
-      "id": "bachelor-of-science-in-digital-marketing-inquiry-analysis-choose-one-crit-220-critical-inquiry-or-phil-240-ethics-in-civic-professional-life",
+      "id": "bachelor-of-science-in-digital-marketing-inquiry-analysis-choose-one-crit-220-critical-inquiry-or-ph-54621cbe",
       "code": "",
       "title": "Inquiry & Analysis (choose one: CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)",
       "credits": 3,
@@ -448,7 +448,7 @@
       ]
     },
     {
-      "id": "bachelor-of-science-in-digital-marketing-technology-literacy-choose-one-cmit-130-gmdv-110-igmd-110-mkcm-101-mkcm-120-soci-260",
+      "id": "bachelor-of-science-in-digital-marketing-technology-literacy-choose-one-cmit-130-gmdv-110-igmd-110-m-1ca44cdf",
       "code": "",
       "title": "Technology Literacy (choose one: CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260)",
       "credits": 3,
@@ -516,7 +516,7 @@
       ]
     },
     {
-      "id": "bachelor-of-science-in-digital-marketing-arts-humanities-social-services-choose-two-from-listed-arts-comm-crim-crit-econ-hist-mkcm-phil-psyc-soci-options",
+      "id": "bachelor-of-science-in-digital-marketing-arts-humanities-social-services-choose-two-from-listed-arts-14ae40e0",
       "code": "",
       "title": "Arts/Humanities/Social Services (choose two from listed ARTS, COMM, CRIM, CRIT, ECON, HIST, MKCM, PHIL, PSYC, SOCI options)",
       "credits": 6,
@@ -583,5 +583,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Bachelor of Science in Digital Marketing, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-digital-marketing",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

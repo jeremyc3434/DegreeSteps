@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Marketing Management",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Marketing Management, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-marketing-management",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 15 requirement(s) (68% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -483,7 +483,7 @@
       ]
     },
     {
-      "id": "marketing-management-general-education-electives-two-courses-from-arts-comm-crim-except-crim-225-crit-engl-hist-math-mkcm-120-phil-psyc-soci",
+      "id": "marketing-management-general-education-electives-two-courses-from-arts-comm-crim-except-crim-225-cri-a3801f44",
       "code": "",
       "title": "General Education Electives (two courses from ARTS, COMM, CRIM except CRIM 225, CRIT, ENGL, HIST, MATH, MKCM 120, PHIL, PSYC, SOCI)",
       "credits": 6,
@@ -499,5 +499,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Marketing Management, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-marketing-management",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

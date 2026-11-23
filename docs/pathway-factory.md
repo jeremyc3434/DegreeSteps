@@ -102,7 +102,7 @@ Richer legacy structures (residency, pacing, pricing, transfer rules, review rec
 | `id` | yes | Stable row id. |
 | `provider`, `code` | yes | Must exist in a provider file. |
 | `status` | yes | `published` (applied in scope) or `candidate` (never applied, reported). |
-| `receivingCode` / `receivingTitle` | one | Join key. A row joins the requirement with the same `code`; when the school publishes no code, the requirement with no code and the same (normalized) title. |
+| `receivingCode` / `receivingTitle` | one | Join key. A row joins the requirement with the same `code`; failing an exact match, the one requirement whose code is equal after uppercasing and dropping spaces, hyphens and periods (`MGMT-110` joins `MGMT 110`; two such candidates join neither). When the school publishes no code, the requirement with no code and the same (normalized) title. |
 | `credits`, `creditSystem` | yes | Receiving award in the program's units. |
 | `scope` | yes | `{"programs":[slug,…]}` or `{"all":true, "catalogs"?:[…], "levels"?:[…]}`. This is the leverage: one row serves every program in scope. A row matching a program outside its scope becomes an **out-of-scope candidate**, never an option. |
 | `sourceIds` | yes | Receiving-school evidence. |
@@ -265,6 +265,17 @@ Eleven WGU bachelor's programs that were in the registry but not the plan finder
 - **Prices:** for the eight programs that reached the reviewed bar, `content/estimates/plan-estimate-rates.json` gained per-degree entries from captured program pages (tuition per six-month term plus the $200 e-books and resources fee; the $65 application fee from the November 2026 catalog).
 
 Run `node scripts/wgu-agreement-ledgers.mjs` after recapturing, then the usual publish chain; `npm run build` runs it with `--check`. The WGU MBA is not in this set: WGU's public API has no MBA program record, partner agreement or transfer guideline (see `docs/pathway-backlog.md`).
+
+## First automated batch: Strayer, Champlain, APUS and Bellevue (2026-11-23)
+
+The first `factory-draft.yml` runs drafted 77 programs (Strayer 9, Champlain College Online 23, APUS 23, Bellevue 22) from the official catalog or program pages. `scripts/pathway-factory/finalize-four-schools-2026-11-23.mjs` records the review:
+
+- **Join fix.** Sophia tables write `MGMT-110` where catalogs write `MGMT 110`, so no Champlain row joined. `matchRequirement` now falls back to a unique punctuation-insensitive code match. Compiling WGU, Liberty, TESU and Excelsior before and after gives byte-identical documents.
+- **Over-awards.** The fix exposed Sophia Calculus I (4 credits) listed against 3-credit courses (Champlain MATH-210, APUS MATH225). Those two rows are demoted to `candidate` with `candidateReason: "award-exceeds-receiving-course-credits"`. A re-run of the importer would restore them, so re-apply the demotion after any re-import.
+- **School facts, captured and quoted.** Strayer: no more than 126 of 180 quarter hours (bachelor's) or 63 of 90 (associate) from transfer. Champlain: up to 90 (bachelor's) or 45 (associate) transfer credits. APUS: 90 / 45 academic credits, of which at most 60 / 30 non-traditional (ACE, CLEP). Bellevue: 30 (bachelor's) or 15 (associate) in-residence credits, 30 upper-level credits and 12 major credits in residence (21 upper-level for Accounting, Business Administration and Finance) from the 2025–2027 catalog's degree requirements table; Bellevue publishes no separate transfer ceiling, so the ceiling is the total minus residency.
+- **Removed drafts.** Three drafts whose captured page leaves part of the credit total unexplained were removed (their drafts remain in the bot pull requests): Champlain B.S. Accounting (54-credit professional block lists 48), Champlain A.S. General Studies (57 of 60), Bellevue B.S. Psychology (41 major credits, 34 listed). Bellevue Supply Chain and Logistics stays a draft (major total given as both 54 and 57).
+- **What published.** The plan finder needs a complete named baseline: one named course per requirement, with matching credits. 58 reviewed programs still carry general-education, concentration or elective blocks without a named course (355 requirements, about 45% of each degree's credits), so they stay drafts with a `heldReason`; their policies, catalog identity and routes are prepared and the finalize script publishes each one once its blocks are filled with named courses from the school's course catalog. 12 Bellevue and 2 APUS drafts also have no outside course joining any named requirement. **Strayer A.A. Information Technology** has every requirement named and publishes at the needs-school-confirmation tier.
+- **Index budget.** `dist/data/academic-registry.json` must stay under 12 MiB because the Worker parses it whole. Main was at 11.0 MB; publishing all 59 reviewed programs measured 13.6 MB, and 28 of them 12.4 MB. Growing the library past roughly 30 more programs needs the index split (for example per school, loaded on demand) or a reviewed new budget.
 
 ## TESU on the factory
 

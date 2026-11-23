@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Management Information Systems",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Management Information Systems, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-management-information-systems",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 10 requirement(s) (40% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -209,7 +209,7 @@
       ]
     },
     {
-      "id": "management-information-systems-it-choice-netw-250-windows-server-administration-i-or-netw-260-linux-systems-administration-i",
+      "id": "management-information-systems-it-choice-netw-250-windows-server-administration-i-or-netw-260-linux-416ecde1",
       "code": "",
       "title": "IT choice: NETW 250 Windows Server Administration I or NETW 260 Linux Systems Administration I",
       "credits": 3,
@@ -616,5 +616,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Management Information Systems, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-management-information-systems",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

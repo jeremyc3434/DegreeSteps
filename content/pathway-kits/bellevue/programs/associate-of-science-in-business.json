@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Associate of Science in Business",
   "level": "associate",
-  "catalog": "unstated",
+  "catalog": "Bellevue University current catalog page for Associate of Science in Business, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://www.bellevue.edu/programs/associate-degrees/business/online/",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 3 requirement(s) (25% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -226,7 +226,7 @@
       ]
     },
     {
-      "id": "associate-of-science-in-business-mathematics-ma-101-intermediate-algebra-or-ma-102-college-algebra-or-ma-215-applied-statistics",
+      "id": "associate-of-science-in-business-mathematics-ma-101-intermediate-algebra-or-ma-102-college-algebra-o-7f86d8f5",
       "code": "",
       "title": "Mathematics: MA 101 Intermediate Algebra OR MA 102 College Algebra OR MA 215 Applied Statistics",
       "credits": 3,
@@ -277,7 +277,7 @@
       ]
     },
     {
-      "id": "associate-of-science-in-business-human-thought-expression-ca-208-critical-thinking-and-communication-or-ca-209-diversity-inclusion-and-communication",
+      "id": "associate-of-science-in-business-human-thought-expression-ca-208-critical-thinking-and-communication-ce68d44e",
       "code": "",
       "title": "Human Thought & Expression: CA 208 Critical Thinking and Communication OR CA 209 Diversity, Inclusion, and Communication",
       "credits": 3,
@@ -344,5 +344,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 45,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "bellevue-catalog-2025-2027-degree-requirements"
+      ],
+      "quotes": [
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Associate of Science (A.S.) • 60 • • 2.0 2.5 15 NA NA"
+        }
+      ],
+      "basis": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Bellevue University current catalog page for Associate of Science in Business, checked 2026-11-23",
+      "sourceUrl": "https://www.bellevue.edu/programs/associate-degrees/business/online/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 15,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 45,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 15,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+      }
+    }
+  }
 }

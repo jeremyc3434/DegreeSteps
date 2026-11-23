@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Bachelor of Science in Accounting",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Strayer University current catalog page for Bachelor of Science in Accounting, checked 2026-11-23",
   "totalCredits": 180,
   "catalogUrl": "https://coursecatalog.strayer.edu/accounting/bachelor-of-science/accounting",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 1 requirement(s) (18% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -615,5 +615,60 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 126,
+      "creditSystem": "quarter",
+      "sourceIds": [
+        "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+        "strayer-degree-conferral-requirements-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "text": "No more than 126 quarter hours of transfer credit from all sources may be applied toward a bachelor’s degree"
+        },
+        {
+          "sourceId": "strayer-degree-conferral-requirements-2026-11-23",
+          "text": "180 quarter credit hours of course work for a bachelor’s degree"
+        }
+      ],
+      "basis": "180 degree credits minus the 126-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Strayer University current catalog page for Bachelor of Science in Accounting, checked 2026-11-23",
+      "sourceUrl": "https://coursecatalog.strayer.edu/accounting/bachelor-of-science/accounting",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 54,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 126,
+        "creditSystem": "quarter",
+        "sourceIds": [
+          "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "strayer-degree-conferral-requirements-2026-11-23"
+        ],
+        "scope": "180 degree credits minus the 126-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 54,
+        "creditSystem": "quarter",
+        "sourceIds": [
+          "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "strayer-degree-conferral-requirements-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "180 degree credits minus the 126-credit transfer ceiling."
+      }
+    }
+  }
 }

@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Economic Crime Investigation",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Economic Crime Investigation, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-economic-crime-investigation",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (48% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -347,7 +347,7 @@
       ]
     },
     {
-      "id": "economic-crime-investigation-oral-communication-one-of-comm-130-interpersonal-communication-or-comm-140-fundamentals-of-public-communication",
+      "id": "economic-crime-investigation-oral-communication-one-of-comm-130-interpersonal-communication-or-comm-19fdaeae",
       "code": "",
       "title": "Oral Communication (one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)",
       "credits": 3,
@@ -381,7 +381,7 @@
       ]
     },
     {
-      "id": "economic-crime-investigation-inquiry-analysis-one-of-crit-220-critical-inquiry-or-phil-240-ethics-in-civic-professional-life",
+      "id": "economic-crime-investigation-inquiry-analysis-one-of-crit-220-critical-inquiry-or-phil-240-ethics-in-3a2c8659",
       "code": "",
       "title": "Inquiry & Analysis (one of CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)",
       "credits": 3,
@@ -432,7 +432,7 @@
       ]
     },
     {
-      "id": "economic-crime-investigation-scientific-literacy-natural-sciences-one-of-scie-180-exploring-science-or-scie-230-physics-mechanics",
+      "id": "economic-crime-investigation-scientific-literacy-natural-sciences-one-of-scie-180-exploring-science-c22bd5c1",
       "code": "",
       "title": "Scientific Literacy: Natural Sciences (one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics)",
       "credits": 3,
@@ -466,7 +466,7 @@
       ]
     },
     {
-      "id": "economic-crime-investigation-arts-humanities-social-sciences-any-two-of-arts-115-arts-120-arts-125-arts-135-comm-130-comm-140-crim-100-crim-120-crit-220-econ-215-hist-213-mkcm-120-phil-240-psyc-100-soci-110",
+      "id": "economic-crime-investigation-arts-humanities-social-sciences-any-two-of-arts-115-arts-120-arts-125-a-0e434813",
       "code": "",
       "title": "Arts/Humanities/Social Sciences (any two of ARTS 115, ARTS 120, ARTS 125, ARTS 135, COMM 130, COMM 140, CRIM 100, CRIM 120, CRIT 220, ECON 215, HIST 213, MKCM 120, PHIL 240, PSYC 100, SOCI 110)",
       "credits": 6,
@@ -533,5 +533,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Economic Crime Investigation, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-economic-crime-investigation",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

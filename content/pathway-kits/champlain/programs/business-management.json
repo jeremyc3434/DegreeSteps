@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Business Management",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Business Management, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-business-management",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 9 requirement(s) (48% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -278,7 +278,7 @@
       ]
     },
     {
-      "id": "business-management-300-level-business-elective-acct-cmit-finc-hcmt-ldrs-mba-mgmt-mktg-mmkt-padm-or-pmgt-may-be-a-graduate-course",
+      "id": "business-management-300-level-business-elective-acct-cmit-finc-hcmt-ldrs-mba-mgmt-mktg-mmkt-padm-or-4215345c",
       "code": "",
       "title": "300+ level business elective (ACCT, CMIT, FINC, HCMT, LDRS, MBA, MGMT, MKTG, MMKT, PADM, or PMGT; may be a graduate course)",
       "credits": 3,
@@ -499,7 +499,7 @@
       ]
     },
     {
-      "id": "business-management-arts-humanities-social-sciences-choose-one-from-listed-arts-comm-crim-crit-hist-mgmt-mkcm-phil-psyc-soci-writ-courses",
+      "id": "business-management-arts-humanities-social-sciences-choose-one-from-listed-arts-comm-crim-crit-hist-05cbf71a",
       "code": "",
       "title": "Arts/Humanities/Social Sciences (choose one from listed ARTS, COMM, CRIM, CRIT, HIST, MGMT, MKCM, PHIL, PSYC, SOCI, WRIT courses)",
       "credits": 3,
@@ -516,7 +516,7 @@
       ]
     },
     {
-      "id": "business-management-general-education-elective-any-arts-comm-crit-econ-engl-hist-math-phil-psyc-scie-soci-mkcm-120-crim-except-crim-225",
+      "id": "business-management-general-education-elective-any-arts-comm-crit-econ-engl-hist-math-phil-psyc-scie-3a3df730",
       "code": "",
       "title": "General Education Elective (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)",
       "credits": 6,
@@ -549,5 +549,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Business Management, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-business-management",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

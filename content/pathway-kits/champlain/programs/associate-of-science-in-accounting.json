@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Associate of Science in Accounting",
   "level": "associate",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Associate of Science in Accounting, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/associate-accounting",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 5 requirement(s) (35% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -345,5 +345,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 45,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 45 credit hours toward an associate degree."
+        }
+      ],
+      "basis": "60 degree credits minus the 45-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Associate of Science in Accounting, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/associate-accounting",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 15,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 45,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "60 degree credits minus the 45-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 15,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "60 degree credits minus the 45-credit transfer ceiling."
+      }
+    }
+  }
 }

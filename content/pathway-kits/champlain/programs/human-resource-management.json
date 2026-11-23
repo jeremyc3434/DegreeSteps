@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Human Resource Management",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Human Resource Management, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-human-resource-management",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (45% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -362,7 +362,7 @@
       ]
     },
     {
-      "id": "human-resource-management-oral-communication-one-of-comm-130-interpersonal-communication-or-comm-140-fundamentals-of-public-communication",
+      "id": "human-resource-management-oral-communication-one-of-comm-130-interpersonal-communication-or-comm-140-4a643d44",
       "code": "",
       "title": "Oral Communication (one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)",
       "credits": 3,
@@ -396,7 +396,7 @@
       ]
     },
     {
-      "id": "human-resource-management-inquiry-analysis-one-of-crit-220-critical-inquiry-or-phil-240-ethics-in-civic-professional-life",
+      "id": "human-resource-management-inquiry-analysis-one-of-crit-220-critical-inquiry-or-phil-240-ethics-in-ci-d3267159",
       "code": "",
       "title": "Inquiry & Analysis (one of CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)",
       "credits": 3,
@@ -447,7 +447,7 @@
       ]
     },
     {
-      "id": "human-resource-management-scientific-literacy-natural-sciences-one-of-scie-180-exploring-science-or-scie-230-physics-mechanics",
+      "id": "human-resource-management-scientific-literacy-natural-sciences-one-of-scie-180-exploring-science-or-ce7c99aa",
       "code": "",
       "title": "Scientific Literacy: Natural Sciences (one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics)",
       "credits": 3,
@@ -481,7 +481,7 @@
       ]
     },
     {
-      "id": "human-resource-management-arts-humanities-social-sciences-any-two-from-arts-115-arts-120-arts-125-arts-135-comm-130-comm-140-comm-240-crim-100-crim-120-crit-220-econ-215-hist-213-mkcm-120-phil-240-psyc-100-soci-110",
+      "id": "human-resource-management-arts-humanities-social-sciences-any-two-from-arts-115-arts-120-arts-125-ar-66ae8be4",
       "code": "",
       "title": "Arts/Humanities/Social Sciences (any two from ARTS 115, ARTS 120, ARTS 125, ARTS 135, COMM 130, COMM 140, COMM 240, CRIM 100, CRIM 120, CRIT 220, ECON 215, HIST 213, MKCM 120, PHIL 240, PSYC 100, SOCI 110)",
       "credits": 6,
@@ -515,7 +515,7 @@
       ]
     },
     {
-      "id": "human-resource-management-general-education-elective-any-arts-comm-crit-econ-engl-hist-math-phil-psyc-scie-soci-mkcm-120-crim-except-crim-225",
+      "id": "human-resource-management-general-education-elective-any-arts-comm-crit-econ-engl-hist-math-phil-psy-4ac15c9c",
       "code": "",
       "title": "General Education Elective (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)",
       "credits": 6,
@@ -548,5 +548,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Human Resource Management, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-human-resource-management",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

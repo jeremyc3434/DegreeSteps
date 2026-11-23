@@ -114,11 +114,19 @@ export function parsePlacement(entry){
   if(typeof entry==='string'){const at=entry.indexOf('@');return at<0?{row:entry}:{row:entry.slice(0,at),mode:entry.slice(at+1)};}
   return entry&&typeof entry==='object'?entry:{};
 }
-/** The receiving requirement an equivalency row joins to: an explicit placement, else exact code, else exact title. */
+/** Course-code join key: uppercase letters and digits only, so "MGMT 110", "MGMT-110" and "mgmt.110" compare equal. */
+export const courseCodeKey=code=>typeof code==='string'?code.toUpperCase().replace(/[^A-Z0-9]/g,''):'';
+/** The receiving requirement an equivalency row joins to: an explicit placement, else exact code, else a unique
+ *  normalized-code match (punctuation and spacing differ between a school's catalog and a provider's table), else exact title. */
 export function matchRequirement(row,program){
   const placed=row.placements?.[program.slug]?.requirementId;
   if(placed)return program.requirements.find(r=>r.id===placed)||null;
-  if(row.receivingCode)return program.requirements.find(r=>r.code===row.receivingCode)||null;
+  if(row.receivingCode){
+    const exact=program.requirements.find(r=>r.code===row.receivingCode);if(exact)return exact;
+    const key=courseCodeKey(row.receivingCode);if(!key)return null;
+    const loose=program.requirements.filter(r=>courseCodeKey(r.code)===key);
+    return loose.length===1?loose[0]:null;
+  }
   if(row.receivingTitle)return program.requirements.find(r=>!r.code&&normalizeText(r.title)===normalizeText(row.receivingTitle))||null;
   return null;
 }

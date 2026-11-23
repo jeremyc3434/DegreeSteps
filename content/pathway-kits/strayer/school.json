@@ -88,6 +88,61 @@
       "checked": "2026-11-15",
       "copiedFor": "sophia-partner-import-strayer:provider-identity",
       "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+      "title": "Strayer University catalog: Undergraduate Admission (transfer credit limits)",
+      "url": "https://coursecatalog.strayer.edu/undergraduate-admission",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/99fbc2ca5bf0ebb6.txt"
+    },
+    {
+      "id": "strayer-degree-conferral-requirements-2026-11-23",
+      "title": "Strayer University catalog: Graduation, Degree Conferral and Commencement",
+      "url": "https://coursecatalog.strayer.edu/graduation-degree-conferral-and-commencement",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/d70243623ec81146.txt"
     }
+  ],
+  "publish": {
+    "path": "content/curricula/strayer.json"
+  },
+  "programDefaults": {
+    "format": "Online",
+    "modalities": [
+      "online"
+    ],
+    "paceModel": "course-term"
+  },
+  "routes": [
+    {
+      "id": "strayer-associate-in-arts-in-information-technology",
+      "title": "Associate in Arts in Information Technology",
+      "school": "Strayer University",
+      "schoolId": "strayer",
+      "level": "associate",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://coursecatalog.strayer.edu/information-systems/associate-in-arts/information-technology",
+      "sourceId": "strayer-associate-in-arts-in-information-technology-catalog-2026-11-23",
+      "degreeCredits": 90,
+      "creditUnit": "quarter",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    }
+  ],
+  "programOrder": [
+    "associate-in-arts-in-information-technology"
   ]
 }

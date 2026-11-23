@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Bachelor of Arts in Applied Psychology",
   "level": "bachelor",
-  "catalog": "unstated",
+  "catalog": "Champlain College Online current catalog page for Bachelor of Arts in Applied Psychology, checked 2026-11-23",
   "totalCredits": 120,
   "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-applied-psychology",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (50% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -243,7 +243,7 @@
       ]
     },
     {
-      "id": "bachelor-of-arts-in-applied-psychology-applied-advanced-electives-two-400-level-psyc-courses-psyc-410-psyc-440-or-psyc-455",
+      "id": "bachelor-of-arts-in-applied-psychology-applied-advanced-electives-two-400-level-psyc-courses-psyc-41-e7265138",
       "code": "",
       "title": "Applied Advanced Electives: two 400-level PSYC courses (PSYC 410, PSYC 440, or PSYC 455)",
       "credits": 6,
@@ -311,7 +311,7 @@
       ]
     },
     {
-      "id": "bachelor-of-arts-in-applied-psychology-oral-communication-one-of-comm-130-interpersonal-communication-or-comm-140-fundamentals-of-public-communication",
+      "id": "bachelor-of-arts-in-applied-psychology-oral-communication-one-of-comm-130-interpersonal-communicatio-3ec65c35",
       "code": "",
       "title": "Oral Communication: one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication",
       "credits": 3,
@@ -345,7 +345,7 @@
       ]
     },
     {
-      "id": "bachelor-of-arts-in-applied-psychology-inquiry-analysis-one-of-crit-220-critical-inquiry-or-phil-240-ethics-in-civic-professional-life",
+      "id": "bachelor-of-arts-in-applied-psychology-inquiry-analysis-one-of-crit-220-critical-inquiry-or-phil-240-aed59d85",
       "code": "",
       "title": "Inquiry & Analysis: one of CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life",
       "credits": 3,
@@ -379,7 +379,7 @@
       ]
     },
     {
-      "id": "bachelor-of-arts-in-applied-psychology-technology-literacy-one-of-cmit-130-igmd-110-gmdv-110-mkcm-101-mkcm-120-or-soci-260",
+      "id": "bachelor-of-arts-in-applied-psychology-technology-literacy-one-of-cmit-130-igmd-110-gmdv-110-mkcm-10-d92a00ec",
       "code": "",
       "title": "Technology Literacy: one of CMIT 130, IGMD 110, GMDV 110, MKCM 101, MKCM 120, or SOCI 260",
       "credits": 3,
@@ -413,7 +413,7 @@
       ]
     },
     {
-      "id": "bachelor-of-arts-in-applied-psychology-scientific-literacy-natural-sciences-one-of-scie-180-exploring-science-or-scie-230-physics-mechanics",
+      "id": "bachelor-of-arts-in-applied-psychology-scientific-literacy-natural-sciences-one-of-scie-180-explorin-83ae8df2",
       "code": "",
       "title": "Scientific Literacy/Natural Sciences: one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics",
       "credits": 3,
@@ -481,7 +481,7 @@
       ]
     },
     {
-      "id": "bachelor-of-arts-in-applied-psychology-general-education-elective-any-arts-comm-crit-econ-engl-hist-math-phil-psyc-scie-soci-mkcm-120-crim-except-crim-225",
+      "id": "bachelor-of-arts-in-applied-psychology-general-education-elective-any-arts-comm-crit-econ-engl-hist-b56083f5",
       "code": "",
       "title": "General Education Elective (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)",
       "credits": 6,
@@ -514,5 +514,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Bachelor of Arts in Applied Psychology, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-applied-psychology",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    }
+  }
 }

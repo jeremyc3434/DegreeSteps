@@ -5,14 +5,14 @@
   "routeIds": [],
   "title": "Associate Degree in Multidisciplinary Studies",
   "level": "associate",
-  "catalog": "unstated",
+  "catalog": "Bellevue University current catalog page for Associate Degree in Multidisciplinary Studies, checked 2026-11-23",
   "totalCredits": 60,
   "catalogUrl": "https://www.bellevue.edu/programs/associate-degrees/multidisciplinary-studies/online/",
-  "status": "draft",
   "review": {
     "status": "draft",
     "draftedBy": "claude-opus-5-5",
-    "draftedOn": "2026-11-23"
+    "draftedOn": "2026-11-23",
+    "heldReason": "Reviewed; needs a named baseline before publishing: 8 requirement(s) (65% of degree credits) are general-education, concentration or elective blocks without a named course."
   },
   "sources": [
     {
@@ -144,7 +144,7 @@
       ]
     },
     {
-      "id": "associate-degree-in-multidisciplinary-studies-mathematics-select-one-ma-101-intermediate-algebra-or-ma-135-math-in-everyday-life",
+      "id": "associate-degree-in-multidisciplinary-studies-mathematics-select-one-ma-101-intermediate-algebra-or-9998a81f",
       "code": "",
       "title": "Mathematics (select one: MA 101 Intermediate Algebra or MA 135 Math in Everyday Life)",
       "credits": 3,
@@ -246,7 +246,7 @@
       ]
     },
     {
-      "id": "associate-degree-in-multidisciplinary-studies-quantitative-problem-solving-and-technology-select-two-dsc-101-sys-101-ma-215-cis-245-ecn-201-cybr-250-cis-111-cis-115-cis-121-cis-212",
+      "id": "associate-degree-in-multidisciplinary-studies-quantitative-problem-solving-and-technology-select-two-2e0761a8",
       "code": "",
       "title": "Quantitative, Problem-Solving, and Technology (select two: DSC 101, SYS 101, MA 215, CIS 245, ECN 201, CYBR 250, CIS 111, CIS 115, CIS 121, CIS 212)",
       "credits": 6,
@@ -263,7 +263,7 @@
       ]
     },
     {
-      "id": "associate-degree-in-multidisciplinary-studies-communication-collaboration-and-leadership-select-two-ca-105-cis-133-ca-110-ca-209-py-101-so-101-ph-106",
+      "id": "associate-degree-in-multidisciplinary-studies-communication-collaboration-and-leadership-select-two-14fd907d",
       "code": "",
       "title": "Communication, Collaboration, and Leadership (select two: CA 105, CIS 133, CA 110, CA 209, PY 101, SO 101, PH 106)",
       "credits": 6,
@@ -296,5 +296,53 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 45,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "bellevue-catalog-2025-2027-degree-requirements"
+      ],
+      "quotes": [
+        {
+          "sourceId": "bellevue-catalog-2025-2027-degree-requirements",
+          "text": "Associate of Science (A.S.) • 60 • • 2.0 2.5 15 NA NA"
+        }
+      ],
+      "basis": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Bellevue University current catalog page for Associate Degree in Multidisciplinary Studies, checked 2026-11-23",
+      "sourceUrl": "https://www.bellevue.edu/programs/associate-degrees/multidisciplinary-studies/online/",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 15,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 45,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+      },
+      "institutionMinCredits": {
+        "value": 15,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "bellevue-catalog-2025-2027-degree-requirements"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "60 degree credits minus the 15-credit in-residence minimum; no separate transfer ceiling is published."
+      }
+    }
+  }
 }
