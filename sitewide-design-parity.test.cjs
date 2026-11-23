@@ -419,43 +419,9 @@ const workspaceContracts={
     ]
   },
   "guided.html": {
-    "ids": [
-      "intro-title",
-      "app",
-      "loading-state",
-      "error-state",
-      "wizard-view",
-      "wizard-layout",
-      "step-panel",
-      "wizard-progress",
-      "journey-panel",
-      "wizard-footer",
-      "back-step",
-      "save-status",
-      "next-step",
-      "results-view",
-      "result-header",
-      "recommendation-grid",
-      "result-details",
-      "result-actions",
-      "data-notes",
-      "data-notes-title",
-      "learning-dialog",
-      "close-learning",
-      "learning-dialog-content",
-      "source-dialog",
-      "close-sources",
-      "source-dialog-content"
-    ],
+    "ids": ["legacy-guided-handoff", "guided-quiz-link", "legacy-guided-redirect"],
     "fields": [],
-    "scripts": [
-      "planner.js",
-      "guide-engine.js",
-      "account-return.js",
-      "community-client.js",
-      "credit-import.js",
-      "wizard.js"
-    ]
+    "scripts": []
   },
   "import-courses.html": {
     "ids": [

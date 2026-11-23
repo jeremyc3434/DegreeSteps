@@ -75,7 +75,8 @@ async function more(page){await page.locator('#sheet-titlebar [data-action="more
     // More: versions, sources, downloads, backup, print, share, checks, next steps.
     await more(page);
     for(const action of ['compare','sources','download','backup','print','share','checks','next','credits','options','cost-time'])
-      assert.equal(await page.locator('#sheet-dialog [data-action="'+action+'"]').count(),1,'More › '+action);
+      // The compact cost summary shown at the top of dialogs (plans with an estimate) has its own cost-time button.
+      assert.equal(await page.locator('#sheet-dialog [data-action="'+action+'"]:not(.plan-estimate *)').count(),1,'More › '+action);
     await page.locator('#sheet-dialog [data-action="compare"]').click();
     assert.match(await page.locator('#sheet-dialog-content').innerText(),/What if I change my plan\?/);await closeDialog(page);
     // Side panel content stays on the page.

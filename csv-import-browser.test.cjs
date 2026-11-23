@@ -44,15 +44,13 @@ async function test(name,fn){await fn();count++;console.log('PASS '+name);}
     assert.equal(records[1].creditSystem,'quarter');assert.equal(records[1].title,'College Algebra, honors');
     assert(records.every(r=>!r.evaluations.some(e=>e.status==='confirmed')));
   });
-  await test('the guided importer offers the same template and invalidates edited previews',async()=>{
-    await page.evaluate(k=>{const s=JSON.parse(localStorage.getItem(k));s.view='wizard';s.step='experience';s.profile.entry='target';localStorage.setItem(k,JSON.stringify(s));},KEY);
-    await page.goto(BASE+'guided.html',{waitUntil:'networkidle'});await page.locator('[data-action=add-learning]').first().click();await page.locator('[data-learning-mode=csv]').click();
-    assert(await page.locator('[data-credit-template][href$=".csv"]').isVisible());await page.locator('#learning-csv').fill(filled());await page.locator('[data-action=preview-import]').click();
-    assert(await page.locator('[data-action=confirm-import]').isVisible());await page.locator('#learning-csv').fill(template);
-    assert.equal(await page.locator('[data-action=confirm-import]').count(),0);await page.locator('[data-action=preview-import]').click();assert.match(await page.locator('#import-error').innerText(),/header row/);
-    await page.setViewportSize({width:390,height:844});await page.getByText('See labeled example rows',{exact:true}).click();
-    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
-    assert.equal(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).learning.length,KEY),2);
+  await test('the retired guided importer address leads to the quiz while the course import page keeps its template',async()=>{
+    // guided.html (the old wizard with its own CSV box) now redirects to the 1-minute quiz; course files are imported on
+    // import-courses.html, which the journeys above cover, and its downloadable template stays linked.
+    await page.goto(BASE+'guided.html',{waitUntil:'load'});await page.waitForURL(/start\.html\?step=quiz/);
+    await page.goto(BASE+'import-courses.html',{waitUntil:'networkidle'});
+    assert(await page.locator('a[download][href$=".csv"]').count(),'the CSV template is still offered');
+    assert.equal(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).learning.length,KEY),2,'saved courses are unchanged');
   });
   assert.deepEqual(errors,[]);console.log('\n'+count+' CSV browser journeys passed.');
 }finally{await browser?.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

@@ -3,7 +3,7 @@
   'use strict';
   const $ = id => document.getElementById(id), Sheet = window.DegreeSheet, Guide = window.DegreeGuide, Planner = window.DegreePlanner, Journey = window.DegreeJourney;
   const KEY = 'degreepath-guide-v3';
-  const query = new URLSearchParams(location.search), task = ['credits','cost-time','checks','next','download'].includes(query.get('task')) ? query.get('task') : '';
+  const query = new URLSearchParams(location.search), task = ['credits','cost-time','checks','next','download','preferences','ask-school'].includes(query.get('task')) ? query.get('task') : '';
   if(task)document.body.classList.add('portal-task-page');
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const clone = value => JSON.parse(JSON.stringify(value));
