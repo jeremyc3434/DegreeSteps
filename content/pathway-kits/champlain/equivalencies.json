@@ -35,7 +35,7 @@
     {"id":"sophia-soph-0077-champlain-partner-candidate","status":"candidate","provider":"Sophia","code":"SOPH-0077","credits":3,"creditSystem":"semester","sourceIds":["champlain-sophia-partner-page"],"evidence":"conditional","evidenceType":"provider-published-equivalency","creditOrigin":"alternative","sourceType":"alternative","conditionIds":["sophia-partner-provider-published"],"mappingChecked":"2026-11-23","mappingReviewId":"sophia-partner-import-champlaincollegeonline","quotes":[{"sourceId":"champlain-sophia-partner-page","text":"French I ENGL-1XX SOPH-0077 3"}],"scope":{"all":true},"receivingTitle":"ENGL-1XX","extra":{"partnerReceivingText":"ENGL-1XX","partnerColumn":"Champlain College Online Course","partnerCreditColumn":"Sem Credits","candidateReason":"no-course-code"}},
     {"id":"sophia-soph-0057-champlain-partner-candidate","status":"candidate","provider":"Sophia","code":"SOPH-0057","credits":3,"creditSystem":"semester","sourceIds":["champlain-sophia-partner-page"],"evidence":"conditional","evidenceType":"provider-published-equivalency","creditOrigin":"alternative","sourceType":"alternative","conditionIds":["sophia-partner-provider-published"],"mappingChecked":"2026-11-23","mappingReviewId":"sophia-partner-import-champlaincollegeonline","quotes":[{"sourceId":"champlain-sophia-partner-page","text":"Spanish I ENGL-1XX SOPH-0057 3"}],"scope":{"all":true},"receivingTitle":"ENGL-1XX","extra":{"partnerReceivingText":"ENGL-1XX","partnerColumn":"Champlain College Online Course","partnerCreditColumn":"Sem Credits","candidateReason":"no-course-code"}},
     {"id":"sophia-soph-0064-champlain-partner-candidate","status":"candidate","provider":"Sophia","code":"SOPH-0064","credits":3,"creditSystem":"semester","sourceIds":["champlain-sophia-partner-page"],"evidence":"conditional","evidenceType":"provider-published-equivalency","creditOrigin":"alternative","sourceType":"alternative","conditionIds":["sophia-partner-provider-published"],"mappingChecked":"2026-11-23","mappingReviewId":"sophia-partner-import-champlaincollegeonline","quotes":[{"sourceId":"champlain-sophia-partner-page","text":"Spanish II ENGL-1XX SOPH-0064 3"}],"scope":{"all":true},"receivingTitle":"ENGL-1XX","extra":{"partnerReceivingText":"ENGL-1XX","partnerColumn":"Champlain College Online Course","partnerCreditColumn":"Sem Credits","candidateReason":"no-course-code"}},
-    {"id":"sophia-soph-0060-to-math-210","status":"published","provider":"Sophia","code":"SOPH-0060","credits":4,"creditSystem":"semester","sourceIds":["champlain-sophia-partner-page"],"evidence":"conditional","evidenceType":"provider-published-equivalency","creditOrigin":"alternative","sourceType":"alternative","conditionIds":["sophia-partner-provider-published"],"mappingChecked":"2026-11-23","mappingReviewId":"sophia-partner-import-champlaincollegeonline","quotes":[{"sourceId":"champlain-sophia-partner-page","text":"Calculus I MATH-210 SOPH-0060 4"}],"scope":{"all":true},"receivingCode":"MATH-210","extra":{"partnerReceivingText":"MATH-210","partnerColumn":"Champlain College Online Course","partnerCreditColumn":"Sem Credits"}},
+    {"id":"sophia-soph-0060-to-math-210","status":"candidate","provider":"Sophia","code":"SOPH-0060","credits":4,"creditSystem":"semester","sourceIds":["champlain-sophia-partner-page"],"evidence":"conditional","evidenceType":"provider-published-equivalency","creditOrigin":"alternative","sourceType":"alternative","conditionIds":["sophia-partner-provider-published"],"mappingChecked":"2026-11-23","mappingReviewId":"sophia-partner-import-champlaincollegeonline","quotes":[{"sourceId":"champlain-sophia-partner-page","text":"Calculus I MATH-210 SOPH-0060 4"}],"scope":{"all":true},"receivingCode":"MATH-210","extra":{"partnerReceivingText":"MATH-210","partnerColumn":"Champlain College Online Course","partnerCreditColumn":"Sem Credits","candidateReason":"award-exceeds-receiving-course-credits","reviewNote":"The partner page lists 4 credits for MATH-210, but the school's catalog lists that course at fewer credits, so the award amount cannot be applied without the school's evaluation (reviewed 2026-11-23)."}},
     {"id":"sophia-soph-0001-to-math120","status":"published","provider":"Sophia","code":"SOPH-0001","credits":3,"creditSystem":"semester","sourceIds":["champlain-sophia-partner-page"],"evidence":"conditional","evidenceType":"provider-published-equivalency","creditOrigin":"alternative","sourceType":"alternative","conditionIds":["sophia-partner-provider-published"],"mappingChecked":"2026-11-23","mappingReviewId":"sophia-partner-import-champlaincollegeonline","quotes":[{"sourceId":"champlain-sophia-partner-page","text":"College Algebra MATH120 SOPH-0001 3"}],"scope":{"all":true},"receivingCode":"MATH120","extra":{"partnerReceivingText":"MATH120","partnerColumn":"Champlain College Online Course","partnerCreditColumn":"Sem Credits"}},
     {"id":"sophia-soph-0055-to-math-115","status":"published","provider":"Sophia","code":"SOPH-0055","credits":3,"creditSystem":"semester","sourceIds":["champlain-sophia-partner-page"],"evidence":"conditional","evidenceType":"provider-published-equivalency","creditOrigin":"alternative","sourceType":"alternative","conditionIds":["sophia-partner-provider-published"],"mappingChecked":"2026-11-23","mappingReviewId":"sophia-partner-import-champlaincollegeonline","quotes":[{"sourceId":"champlain-sophia-partner-page","text":"Introduction to College Mathematics MATH-115 SOPH-0055 3"}],"scope":{"all":true},"receivingCode":"MATH-115","extra":{"partnerReceivingText":"MATH-115","partnerColumn":"Champlain College Online Course","partnerCreditColumn":"Sem Credits"}},
     {"id":"sophia-soph-0005-to-math-170","status":"published","provider":"Sophia","code":"SOPH-0005","credits":3,"creditSystem":"semester","sourceIds":["champlain-sophia-partner-page"],"evidence":"conditional","evidenceType":"provider-published-equivalency","creditOrigin":"alternative","sourceType":"alternative","conditionIds":["sophia-partner-provider-published"],"mappingChecked":"2026-11-23","mappingReviewId":"sophia-partner-import-champlaincollegeonline","quotes":[{"sourceId":"champlain-sophia-partner-page","text":"Introduction to Statistics MATH-170 SOPH-0005 3"}],"scope":{"all":true},"receivingCode":"MATH-170","extra":{"partnerReceivingText":"MATH-170","partnerColumn":"Champlain College Online Course","partnerCreditColumn":"Sem Credits"}},
@@ -59,5 +59,166 @@
   ],
   "conditionLibrary": {
     "sophia-partner-provider-published": "Sophia publishes this course match on its Champlain College Online partner page (https://champlaincollegeonline.sophia.org/); it is not taken from a Champlain College Online document. Champlain College Online decides transfer credit when it evaluates your Sophia transcript, so confirm it applies to your program and catalog year before relying on it."
-  }
+  },
+  "slotPlacements": [
+    {
+      "id": "champlain-gen-1xx-general-electives",
+      "receivingText": "GEN-1XX",
+      "slotKinds": [
+        "free-elective"
+      ],
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "GEN-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"GEN-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-arts-1xx-gen-ed-elective",
+      "receivingText": "ARTS-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bARTS\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "ARTS-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"ARTS-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-comm-1xx-gen-ed-elective",
+      "receivingText": "COMM-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bCOMM\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "COMM-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"COMM-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-engl-1xx-gen-ed-elective",
+      "receivingText": "ENGL-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bENGL\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "ENGL-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"ENGL-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-hist-1xx-gen-ed-elective",
+      "receivingText": "HIST-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bHIST\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "HIST-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"HIST-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-math-1xx-gen-ed-elective",
+      "receivingText": "MATH-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bMATH\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "MATH-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"MATH-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-phil-1xx-gen-ed-elective",
+      "receivingText": "PHIL-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bPHIL\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "PHIL-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"PHIL-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    },
+    {
+      "id": "champlain-scie-1xx-gen-ed-elective",
+      "receivingText": "SCIE-1XX",
+      "slotKinds": [
+        "gen-ed"
+      ],
+      "labelPattern": "^General Education Electives?\\s*\\((?:Any|two courses from)\\b[^)]*\\bSCIE\\b",
+      "lowerDivision": true,
+      "sourceIds": [
+        "champlain-sophia-partner-page"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-sophia-partner-page",
+          "text": "SCIE-1XX"
+        }
+      ],
+      "condition": "Sophia's Champlain College Online partner table lists this course as \"SCIE-1XX\" credit, not as a named course. Champlain College Online decides whether it fills this open course choice; confirm before you enroll.",
+      "basis": "Owner-approved open slot (2026-11-23): an elective or category award fills only an open choice of the matching kind."
+    }
+  ]
 }

@@ -1,0 +1,624 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "computer-science",
+  "routeIds": [
+    "champlain-computer-science"
+  ],
+  "title": "Computer Science",
+  "level": "bachelor",
+  "catalog": "Champlain College Online current catalog page for Computer Science, checked 2026-11-23",
+  "totalCredits": 120,
+  "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-computer-science",
+  "review": {
+    "status": "reviewed",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23",
+    "reviewer": "DegreeSteps research (automated draft, human-directed review)",
+    "reviewedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "champlain-computer-science-catalog-2026-11-23",
+      "title": "Computer Science catalog page",
+      "url": "https://online.champlain.edu/degrees-certificates/bachelors-computer-science",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/193967948d514969.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "champlain-computer-science-catalog-2026-11-23",
+      "text": "A 120-credit bachelor's degree in computer science traditionally takes 4 years to complete."
+    }
+  ],
+  "gaps": [
+    "Catalog year/term is not stated (the only dated reference is the tuition period 'Fall '26 - Summer '27').",
+    "The credit unit is not explicitly labeled; semester credits are inferred from references to '15-week semester' and 'credit hours'.",
+    "No residency/institutional-credit requirement is tied to specific courses; the page only says 'CCO accepts up to 90 transfer credits toward a bachelor's degree'.",
+    "MATH 190 appears both as a Professional Course and as a Quantitative Literacy option; the capture does not say whether one course may satisfy both requirements.",
+    "Several courses (COMM 130, COMM 140, CRIT 220, PHIL 240, MKCM 120) appear under more than one General Education category; the double-counting policy is not stated.",
+    "CSCI 410 lists MATH-160 Logic and Probability as a prerequisite, so the Quantitative Literacy choice may effectively be MATH 160; the capture does not state this as a requirement.",
+    "Prerequisites reference CMIT-235 Advanced Python as an alternative to SDEV-340, but CMIT 235 is not listed in the curriculum.",
+    "Minimum GPA for graduation, upper-level credit minimums, and any minimum grades in major courses are not stated.",
+    "Course options for the 6-credit General Education Elective are given by subject prefix only; no specific course list is provided."
+  ],
+  "requirements": [
+    {
+      "id": "computer-science-cmit-135",
+      "code": "CMIT 135",
+      "title": "Introduction to Python",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Introduction to Python"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-cmit-140",
+      "code": "CMIT 140",
+      "title": "Introduction to Operating Systems",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Introduction to Operating Systems"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-cmit-200",
+      "code": "CMIT 200",
+      "title": "Relational Database Design and SQL",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Relational Database Design and SQL"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-cmit-450",
+      "code": "CMIT 450",
+      "title": "Senior Seminar Project",
+      "credits": 3,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Senior Seminar Project"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-csci-410",
+      "code": "CSCI 410",
+      "title": "Advanced Programming Paradigms",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Advanced Programming Paradigms"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-csci-420",
+      "code": "CSCI 420",
+      "title": "Computational Logic",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Computational Logic"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-csci-430",
+      "code": "CSCI 430",
+      "title": "Compilers",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Compilers"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-math-190",
+      "code": "MATH 190",
+      "title": "Linear Algebra and Analytical Geometry",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Linear Algebra and Analytical Geometry"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-math-210",
+      "code": "MATH 210",
+      "title": "Calculus I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Calculus I"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-math-270",
+      "code": "MATH 270",
+      "title": "Discrete Mathematics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Discrete Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-netw-260",
+      "code": "NETW 260",
+      "title": "Linux Systems Administration I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Linux Systems Administration I"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-netw-360",
+      "code": "NETW 360",
+      "title": "Linux Systems Administration II",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Linux Systems Administration II"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-sdev-240",
+      "code": "SDEV 240",
+      "title": "C++ Programming I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "C++ Programming I"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-sdev-310",
+      "code": "SDEV 310",
+      "title": "Computer Architecture and Assembly Programming",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Computer Architecture and Assembly Programming"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-sdev-340",
+      "code": "SDEV 340",
+      "title": "C++ Programming II",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "C++ Programming II"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-sdev-345",
+      "code": "SDEV 345",
+      "title": "Data Structures & Algorithms",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Data Structures & Algorithms"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-engl-100",
+      "code": "ENGL 100",
+      "title": "The Writing Process",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "The Writing Process"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-engl-110",
+      "code": "ENGL 110",
+      "title": "Writing With Authority",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Writing With Authority"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-oral-communication-one-of-comm-130-interpersonal-communication-or-comm-140-fundamen-aa332389",
+      "code": "",
+      "title": "Oral Communication (one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Oral Communication"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Oral Communication (one of COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)"
+      }
+    },
+    {
+      "id": "computer-science-comm-230",
+      "code": "COMM 230",
+      "title": "Small Group Communication",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Small Group Communication"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-inquiry-analysis-one-of-crit-220-critical-inquiry-or-phil-240-ethics-in-civic-professional-life",
+      "code": "",
+      "title": "Inquiry & Analysis (one of CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Inquiry & Analysis"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Inquiry & Analysis (one of CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)"
+      }
+    },
+    {
+      "id": "computer-science-technology-literacy-one-of-cmit-130-gmdv-110-igmd-110-mkcm-101-mkcm-120-soci-260",
+      "code": "",
+      "title": "Technology Literacy (one of CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Technology Literacy"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Technology Literacy (one of CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, SOCI 260)"
+      }
+    },
+    {
+      "id": "computer-science-quantitative-literacy-one-of-math-125-math-160-math-170-math-190",
+      "code": "",
+      "title": "Quantitative Literacy (one of MATH 125, MATH 160, MATH 170, MATH 190)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Quantitative Literacy"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Quantitative Literacy (one of MATH 125, MATH 160, MATH 170, MATH 190)"
+      }
+    },
+    {
+      "id": "computer-science-scientific-literacy-natural-sciences-one-of-scie-180-exploring-science-or-scie-230-physics-mechanics",
+      "code": "",
+      "title": "Scientific Literacy: Natural Sciences (one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Scientific Literacy: Natural Sciences"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Scientific Literacy: Natural Sciences (one of SCIE 180 Exploring Science or SCIE 230 Physics - Mechanics)"
+      }
+    },
+    {
+      "id": "computer-science-soci-200",
+      "code": "SOCI 200",
+      "title": "Social Justice Perspectives",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Social Justice Perspectives"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-arts-humanities-social-sciences-two-courses-from-the-listed-options",
+      "code": "",
+      "title": "Arts/Humanities/Social Sciences (two courses from the listed options)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Complete two of the following courses, unless a specific course is required by your program:"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "Arts/Humanities/Social Sciences (two courses from the listed options)"
+      }
+    },
+    {
+      "id": "computer-science-crit-100",
+      "code": "CRIT 100",
+      "title": "Mindsets for Modern Learning",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "Mindsets for Modern Learning"
+        }
+      ]
+    },
+    {
+      "id": "computer-science-general-education-elective",
+      "code": "",
+      "title": "General Education Elective",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "students must also complete 6 Credits of a General Education Elective"
+        }
+      ],
+      "slot": {
+        "kind": "gen-ed",
+        "label": "General Education Elective"
+      }
+    },
+    {
+      "id": "computer-science-general-electives",
+      "code": "",
+      "title": "General Electives",
+      "credits": 30,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-computer-science-catalog-2026-11-23",
+          "text": "General Electives (30 credits required)"
+        }
+      ],
+      "slot": {
+        "kind": "free-elective",
+        "label": "General Electives"
+      }
+    }
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-transfer-credit-options-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-transfer-credit-options-2026-11-23",
+          "text": "Up to 90 credit hours toward a bachelor’s degree."
+        }
+      ],
+      "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    }
+  },
+  "modelFields": {
+    "catalogYear": "Current catalog page, checked 2026-11-23",
+    "catalogIdentity": {
+      "kind": "reviewed-current-catalog",
+      "label": "Champlain College Online current catalog page for Computer Science, checked 2026-11-23",
+      "sourceUrl": "https://online.champlain.edu/degrees-certificates/bachelors-computer-science",
+      "checkedOn": "2026-11-23"
+    },
+    "defaultProviders": [
+      "Sophia"
+    ],
+    "institutionMinCredits": 30,
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 90,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "120 degree credits minus the 90-credit transfer ceiling."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "champlain-transfer-credit-options-2026-11-23"
+        ],
+        "scope": "Minimum credits completed at the school.",
+        "calculation": "120 degree credits minus the 90-credit transfer ceiling."
+      }
+    },
+    "coverage": "complete",
+    "completeExecutablePathway": false,
+    "coverageLabel": "Complete 120-credit Computer Science ledger from Champlain College Online's current catalog page, including 8 open course choice block(s) (48% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
+  }
+}

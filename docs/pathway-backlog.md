@@ -13,6 +13,15 @@ Curriculum models that exist in `dist/data/curriculum-registry.json` but are del
 - The November 2026 institutional catalog does name the current MBA ledger (catalog 201404, 34 CUs, C200–C216). A plan built from it would be 34 WGU CUs and 0 outside CUs: a list of WGU's own courses, not a transfer pathway.
 - Owner decision needed: whether all-at-the-school master's plans (like the Phoenix ones) belong in the finder. If yes, the MBA ledger can be authored from the captured catalog page; it would still carry the generic WGU residency and catalog questions.
 
+## First automated batch (Strayer, Champlain College Online, APUS, Bellevue), 2026-11-23
+
+Reviewed kits under `content/pathway-kits/{strayer,champlain,apus,bellevue}`; each held program records its reason in `review.heldReason`.
+
+- **Needs a named baseline (58 programs):** general-education, concentration and elective blocks without a named course. Next step: capture each school's course catalog and fill every block with named courses offered online, as was done for Liberty's elective slots.
+- **No outside course joins (14):** 12 Bellevue programs (Bellevue's pages list general education only as a 37-credit block) and APUS Homeland Security and Interdisciplinary Studies.
+- **Unexplained credit totals (4):** Champlain B.S. Accounting and A.S. General Studies, and Bellevue B.S. Psychology (drafts removed), and Bellevue Supply Chain and Logistics (draft kept).
+- **Published:** Strayer A.A. Information Technology (needs school confirmation).
+
 ## Other registry models outside the finder (not in the 2026-11-23 scope)
 
 These were already unpublished before this batch and were not part of it; their blockers are recorded in `dist/data/pathway-quality-report.json`:

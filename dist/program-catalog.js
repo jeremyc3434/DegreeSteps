@@ -29,7 +29,8 @@
  function courseChoiceCounts(model){
   const rows=array(model?.requirements),sources=array(model?.sources);
   const onlyPlaceholders=row=>!array(row.options).some(option=>option&&!option.selectionRequired);
-  const publishedFreeElective=row=>row.freeElective===true&&array(row.sourceIds).some(id=>sources.some(source=>source.id===id&&https(source.url)));
+  // Published free electives and open slots (sourced blocks the student fills, owner-approved 2026-11-23) are resolved choices.
+  const publishedFreeElective=row=>(row.freeElective===true||planner()?.isOpenSlot?.(row)===true)&&array(row.sourceIds).some(id=>sources.some(source=>source.id===id&&https(source.url)));
   return {openCourseChoices:rows.filter(row=>row.selectionRequired||onlyPlaceholders(row)).length,unresolvedRequiredChoices:rows.filter(row=>onlyPlaceholders(row)&&!publishedFreeElective(row)).length};
  }
  // Availability means a complete proposed requirement plan, not university approval.

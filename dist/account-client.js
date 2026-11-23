@@ -159,6 +159,10 @@
     };
     next.learning = learning;
     next.sheet = {...object(saved.sheet),notes:mergeNotes(object(saved.sheet).notes,object(local.sheet).notes)};
+    // Open-slot course choices: keep both sides per degree; this device's choice for the same slot wins.
+    const slotChoices = {};
+    for (const source of [object(saved.sheet).slotChoices,object(local.sheet).slotChoices]) for (const [programId,choices] of Object.entries(object(source))) if (choices && typeof choices === 'object' && !Array.isArray(choices)) Object.defineProperty(slotChoices,programId,{value:{...object(slotChoices[programId]),...clone(choices)},writable:true,enumerable:true,configurable:true});
+    if (Object.keys(slotChoices).length) next.sheet.slotChoices = slotChoices; else delete next.sheet.slotChoices;
     // Retain working settings and notes for other degrees while opening the
     // saved target's settings. No course evaluation is copied between targets.
     const activeTargets = new Set([saved.selectedPathwayId,saved.profile?.pathwayId].filter(Boolean));

@@ -9,9 +9,12 @@
  */
 import {resolve,join} from 'node:path';
 import {readFile,writeFile} from 'node:fs/promises';
-import {slug as slugify,creditSystems,levels,today as todayDate,readJSON,writeJSON,exists,resolveKitDir,loadKit,parseArgs,isMain,root,capturesRoot,list} from './lib.mjs';
+import {slug as slugify,sha256,creditSystems,levels,today as todayDate,readJSON,writeJSON,exists,resolveKitDir,loadKit,parseArgs,isMain,root,capturesRoot,list} from './lib.mjs';
 import {capture,fetchPage,storeCapture} from './capture.mjs';
 import {verifyKit,formatFindings} from './verify.mjs';
+/** Requirement id: program slug plus code or title, capped at 120 characters (stable hash suffix) so compiled option ids stay
+ *  within the catalog's 200-character id limit when a long title (such as a concentration list) has no code. */
+export function requirementId(slug,label){const id=`${slug}-${slugify(label)}`;return id.length<=120?id:id.slice(0,100).replace(/-+$/,'')+'-'+sha256(id).slice(0,8);}
 
 export const MODEL='claude-opus-5-5';
 export const API_URL='https://api.anthropic.com/v1/messages';
@@ -125,7 +128,7 @@ export async function runBatch(requests,{apiKey,fetchImpl=globalThis.fetch,pollM
 export function buildDraftProgram({draft,kit,slug,url,capturePath,checked,model,routeIds}){
   const sourceId=`${kit.school.id}-${slug}-catalog-${checked}`;
   const ids=new Set();
-  const requirements=draft.requirements.map(r=>{let id=`${slug}-${slugify(r.code||r.title)}`;const base=id;let n=2;while(ids.has(id))id=`${base}-${n++}`;ids.add(id);
+  const requirements=draft.requirements.map(r=>{let id=requirementId(slug,r.code||r.title);const base=id;let n=2;while(ids.has(id))id=`${base}-${n++}`;ids.add(id);
     return {id,code:r.code,title:r.title,credits:r.credits,category:r.category,institutionalOnly:r.institutionalOnly,sourceIds:[sourceId],quotes:[{sourceId,text:r.quote}]};});
   const program={kind:'pathway-kit-program',version:1,slug,routeIds,title:draft.title,level:draft.level,catalog:draft.catalog,totalCredits:draft.totalCredits};
   if(draft.creditSystem!==kit.school.creditSystem)program.creditSystem=draft.creditSystem;

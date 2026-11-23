@@ -31,7 +31,7 @@ export function compilePathwayArtifacts({models,entries,catalog,registry,referen
   // Preserve the existing degree-link compatibility contract. The independent
   // research-quality report is deliberately not a silent public gate change.
   const balancePolicy=Planner.creditBalancePolicy?.(model),inactiveBalance=row=>Boolean(balancePolicy?.balanceRequirementIds.includes(row.requirementId)&&row.creditBalanceDerived===true&&row.credits===0&&row.option===null);
-  const complete=plan.validation?.academicCountsValid===true&&list(plan.rows).length===list(model.requirements).length&&list(plan.rows).every(row=>inactiveBalance(row)||row.option&&!row.selectionRequired&&row.option.code&&!row.option.selectionRequired);
+  const complete=plan.validation?.academicCountsValid===true&&list(plan.rows).length===list(model.requirements).length&&list(plan.rows).every(row=>inactiveBalance(row)||!balancePolicy&&row.status==='planned'&&Planner.openSlotPlaceholder(list(model.requirements).find(req=>req.id===row.requirementId),row.option)||row.option&&!row.selectionRequired&&row.option.code&&!row.option.selectionRequired);
   for(const pathwayId of list(entry.routeIds))for(const format of list(entry.modalities)){
    const targetRoute=list(catalog.pathways).find(route=>route.id===pathwayId);
    if(!complete||!targetRoute||targetRoute.modelId!==model.id||targetRoute.school!==model.school||targetRoute.level&&targetRoute.level!==level||!list(targetRoute.modalities).includes(format)||!['online','campus'].includes(format)||mode&&format!==mode)continue;

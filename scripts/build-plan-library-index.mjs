@@ -28,6 +28,8 @@ export function questionsFor(findings){
   if(matches)out.push('Ask the school to confirm '+plural(matches,'proposed course match')+' for this exact program before paying for '+(matches===1?'it':'them')+'.');
   if(providers)out.push('Check the provider’s current enrollment terms for '+plural(providers,'outside course')+' before you enroll.');
   if(blocking.some(f=>f.code==='catalog-identity'))out.push('Ask the school which catalog year applies to you.');
+  const openChoices=new Set(blocking.filter(f=>f.code==='open-course-choice').flatMap(f=>f.requirementIds||[])).size;
+  if(openChoices)out.push('Pick a course for '+plural(openChoices,'open course choice')+' in this plan, then ask the school to confirm '+(openChoices===1?'it counts':'they count')+'.');
   if(unmatched||!out.length)out.push(generic);
   return [...new Set(out)];
 }

@@ -67,6 +67,1477 @@
       "checked": "2026-11-15",
       "copiedFor": "sophia-partner-import-apus:provider-identity",
       "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "apus-apu-transfer-credit-limits-2026-11-23",
+      "title": "American Public University: Transfer Credit (transfer credit limits)",
+      "url": "https://www.apu.apus.edu/admissions/transfer-credit/",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/e29c9dad46c3f266.txt"
+    },
+    {
+      "id": "sophia-soph-0086-current-offer",
+      "kind": "provider",
+      "title": "Sophia current Operations Management offering and source semester credits",
+      "url": "https://www.sophia.org/online-courses/business/operations-management/",
+      "checkedOn": "2026-11-17",
+      "retrieval": "full-public-course-page-opened",
+      "copiedFor": "slot-placements-apus:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "sophia-soph-0086-current-offer-syllabus",
+      "kind": "provider",
+      "title": "Current syllabus linked by Sophia Operations Management course page",
+      "url": "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+      "sha256": "d3b6aea422fdd0414cd0b93b34fcf8dea4f7786148f8b843c11ade7a8186e55f",
+      "copiedFor": "slot-placements-apus:provider-identity",
+      "copiedFrom": "liberty/school.json"
     }
+  ],
+  "programDefaults": {
+    "format": "Online",
+    "modalities": [
+      "online"
+    ],
+    "paceModel": "course-term"
+  },
+  "publish": {
+    "compiledBy": "pathway-factory",
+    "compact": true,
+    "documents": [
+      {
+        "path": "content/curricula/apus-associate-of-arts-in-business-administration.json",
+        "programs": [
+          "associate-of-arts-in-business-administration"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-associate-of-arts-in-business-administration",
+            "title": "Associate of Arts in Business Administration",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "associate",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-art--business-administration/",
+            "sourceId": "apus-associate-of-arts-in-business-administration-catalog-2026-11-23",
+            "degreeCredits": 60,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-associate-of-arts-in-criminal-justice.json",
+        "programs": [
+          "associate-of-arts-in-criminal-justice"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-associate-of-arts-in-criminal-justice",
+            "title": "Associate of Arts in Criminal Justice",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "associate",
+            "modalities": [
+              "online"
+            ],
+            "field": "criminal-justice",
+            "fields": [
+              "criminal-justice"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-arts-criminal-justice/",
+            "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
+            "degreeCredits": 60,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-associate-of-science-in-cybersecurity.json",
+        "programs": [
+          "associate-of-science-in-cybersecurity"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-associate-of-science-in-cybersecurity",
+            "title": "Associate of Science in Cybersecurity",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "associate",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-science-cybersecurity/",
+            "sourceId": "apus-associate-of-science-in-cybersecurity-catalog-2026-11-23",
+            "degreeCredits": 60,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-communication.json",
+        "programs": [
+          "bachelor-of-arts-in-communication"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-communication",
+            "title": "Bachelor of Arts in Communication",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "humanities",
+            "fields": [
+              "humanities"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-communication/",
+            "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-criminal-justice.json",
+        "programs": [
+          "bachelor-of-arts-in-criminal-justice"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-criminal-justice",
+            "title": "Bachelor of Arts in Criminal Justice",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "criminal-justice",
+            "fields": [
+              "criminal-justice"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-criminal-justice/",
+            "sourceId": "apus-bachelor-of-arts-in-criminal-justice-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-emergency-and-disaster-management.json",
+        "programs": [
+          "bachelor-of-arts-in-emergency-and-disaster-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-emergency-and-disaster-management",
+            "title": "Bachelor of Arts in Emergency and Disaster Management",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "criminal-justice",
+            "fields": [
+              "criminal-justice"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-emergency-disaster-management/",
+            "sourceId": "apus-bachelor-of-arts-in-emergency-and-disaster-management-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-homeland-security.json",
+        "programs": [
+          "bachelor-of-arts-in-homeland-security"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-homeland-security",
+            "title": "Bachelor of Arts in Homeland Security",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "criminal-justice",
+            "fields": [
+              "criminal-justice"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-homeland-security/",
+            "sourceId": "apus-bachelor-of-arts-in-homeland-security-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-human-resource-management.json",
+        "programs": [
+          "bachelor-of-arts-in-human-resource-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-human-resource-management",
+            "title": "Bachelor of Arts in Human Resource Management",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-human-resource-management/",
+            "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-interdisciplinary-studies.json",
+        "programs": [
+          "bachelor-of-arts-in-interdisciplinary-studies"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-interdisciplinary-studies",
+            "title": "Bachelor of Arts in Interdisciplinary Studies",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "general",
+            "fields": [
+              "general"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-interdisciplinary-studies/",
+            "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-management.json",
+        "programs": [
+          "bachelor-of-arts-in-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-management",
+            "title": "Bachelor of Arts in Management",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-management/",
+            "sourceId": "apus-bachelor-of-arts-in-management-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-marketing.json",
+        "programs": [
+          "bachelor-of-arts-in-marketing"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-marketing",
+            "title": "Bachelor of Arts in Marketing",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-marketing/",
+            "sourceId": "apus-bachelor-of-arts-in-marketing-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-psychology.json",
+        "programs": [
+          "bachelor-of-arts-in-psychology"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-psychology",
+            "title": "Bachelor of Arts in Psychology",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "psychology",
+            "fields": [
+              "psychology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-psychology/",
+            "sourceId": "apus-bachelor-of-arts-in-psychology-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-arts-in-supply-chain-management.json",
+        "programs": [
+          "bachelor-of-arts-in-supply-chain-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-arts-in-supply-chain-management",
+            "title": "Bachelor of Arts in Supply Chain Management",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-supply-chain-management/",
+            "sourceId": "apus-bachelor-of-arts-in-supply-chain-management-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-business-administration.json",
+        "programs": [
+          "bachelor-of-business-administration"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-business-administration",
+            "title": "Bachelor of Business Administration",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-business-administration/",
+            "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-accounting.json",
+        "programs": [
+          "bachelor-of-science-in-accounting"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-accounting",
+            "title": "Bachelor of Science in Accounting",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "accounting-finance",
+            "fields": [
+              "accounting-finance"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-accounting/",
+            "sourceId": "apus-bachelor-of-science-in-accounting-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-business-analytics.json",
+        "programs": [
+          "bachelor-of-science-in-business-analytics"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-business-analytics",
+            "title": "Bachelor of Science in Business Analytics",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-business-analytics/",
+            "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-computer-science.json",
+        "programs": [
+          "bachelor-of-science-in-computer-science"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-computer-science",
+            "title": "Bachelor of Science in Computer Science",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-computer-science/",
+            "sourceId": "apus-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+            "degreeCredits": 122,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-cybersecurity.json",
+        "programs": [
+          "bachelor-of-science-in-cybersecurity"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-cybersecurity",
+            "title": "Bachelor of Science in Cybersecurity",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-cybersecurity/",
+            "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-finance.json",
+        "programs": [
+          "bachelor-of-science-in-finance"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-finance",
+            "title": "Bachelor of Science in Finance",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "accounting-finance",
+            "fields": [
+              "accounting-finance"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-of-science-in-finance/",
+            "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-fire-science-management.json",
+        "programs": [
+          "bachelor-of-science-in-fire-science-management"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-fire-science-management",
+            "title": "Bachelor of Science in Fire Science Management",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "criminal-justice",
+            "fields": [
+              "criminal-justice"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-fire-science-management/",
+            "sourceId": "apus-bachelor-of-science-in-fire-science-management-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-healthcare-administration.json",
+        "programs": [
+          "bachelor-of-science-in-healthcare-administration"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-healthcare-administration",
+            "title": "Bachelor of Science in Healthcare Administration",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "health",
+            "fields": [
+              "health"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-health-care-administration/",
+            "sourceId": "apus-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-information-technology.json",
+        "programs": [
+          "bachelor-of-science-in-information-technology"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-information-technology",
+            "title": "Bachelor of Science in Information Technology",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-information-technology/",
+            "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/apus-bachelor-of-science-in-public-health.json",
+        "programs": [
+          "bachelor-of-science-in-public-health"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "apus-bachelor-of-science-in-public-health",
+            "title": "Bachelor of Science in Public Health",
+            "school": "American Public University System",
+            "schoolId": "apus",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "health",
+            "fields": [
+              "health"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-public-health/",
+            "sourceId": "apus-bachelor-of-science-in-public-health-catalog-2026-11-23",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-23"
+          }
+        ]
+      }
+    ]
+  },
+  "routes": [
+    {
+      "id": "apus-associate-of-arts-in-business-administration",
+      "title": "Associate of Arts in Business Administration",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "associate",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-art--business-administration/",
+      "sourceId": "apus-associate-of-arts-in-business-administration-catalog-2026-11-23",
+      "degreeCredits": 60,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-associate-of-arts-in-criminal-justice",
+      "title": "Associate of Arts in Criminal Justice",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "associate",
+      "modalities": [
+        "online"
+      ],
+      "field": "criminal-justice",
+      "fields": [
+        "criminal-justice"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-arts-criminal-justice/",
+      "sourceId": "apus-associate-of-arts-in-criminal-justice-catalog-2026-11-23",
+      "degreeCredits": 60,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-associate-of-science-in-cybersecurity",
+      "title": "Associate of Science in Cybersecurity",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "associate",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/associate/associate-science-cybersecurity/",
+      "sourceId": "apus-associate-of-science-in-cybersecurity-catalog-2026-11-23",
+      "degreeCredits": 60,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-communication",
+      "title": "Bachelor of Arts in Communication",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "humanities",
+      "fields": [
+        "humanities"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-communication/",
+      "sourceId": "apus-bachelor-of-arts-in-communication-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-criminal-justice",
+      "title": "Bachelor of Arts in Criminal Justice",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "criminal-justice",
+      "fields": [
+        "criminal-justice"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-criminal-justice/",
+      "sourceId": "apus-bachelor-of-arts-in-criminal-justice-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-emergency-and-disaster-management",
+      "title": "Bachelor of Arts in Emergency and Disaster Management",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "criminal-justice",
+      "fields": [
+        "criminal-justice"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-emergency-disaster-management/",
+      "sourceId": "apus-bachelor-of-arts-in-emergency-and-disaster-management-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-homeland-security",
+      "title": "Bachelor of Arts in Homeland Security",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "criminal-justice",
+      "fields": [
+        "criminal-justice"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-homeland-security/",
+      "sourceId": "apus-bachelor-of-arts-in-homeland-security-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-human-resource-management",
+      "title": "Bachelor of Arts in Human Resource Management",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-human-resource-management/",
+      "sourceId": "apus-bachelor-of-arts-in-human-resource-management-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-interdisciplinary-studies",
+      "title": "Bachelor of Arts in Interdisciplinary Studies",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "general",
+      "fields": [
+        "general"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-interdisciplinary-studies/",
+      "sourceId": "apus-bachelor-of-arts-in-interdisciplinary-studies-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-management",
+      "title": "Bachelor of Arts in Management",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-management/",
+      "sourceId": "apus-bachelor-of-arts-in-management-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-marketing",
+      "title": "Bachelor of Arts in Marketing",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-marketing/",
+      "sourceId": "apus-bachelor-of-arts-in-marketing-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-psychology",
+      "title": "Bachelor of Arts in Psychology",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "psychology",
+      "fields": [
+        "psychology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-psychology/",
+      "sourceId": "apus-bachelor-of-arts-in-psychology-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-arts-in-supply-chain-management",
+      "title": "Bachelor of Arts in Supply Chain Management",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-arts-supply-chain-management/",
+      "sourceId": "apus-bachelor-of-arts-in-supply-chain-management-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-business-administration",
+      "title": "Bachelor of Business Administration",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-business-administration/",
+      "sourceId": "apus-bachelor-of-business-administration-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-accounting",
+      "title": "Bachelor of Science in Accounting",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "accounting-finance",
+      "fields": [
+        "accounting-finance"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-accounting/",
+      "sourceId": "apus-bachelor-of-science-in-accounting-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-business-analytics",
+      "title": "Bachelor of Science in Business Analytics",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-business-analytics/",
+      "sourceId": "apus-bachelor-of-science-in-business-analytics-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-computer-science",
+      "title": "Bachelor of Science in Computer Science",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-computer-science/",
+      "sourceId": "apus-bachelor-of-science-in-computer-science-catalog-2026-11-23",
+      "degreeCredits": 122,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-cybersecurity",
+      "title": "Bachelor of Science in Cybersecurity",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-cybersecurity/",
+      "sourceId": "apus-bachelor-of-science-in-cybersecurity-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-finance",
+      "title": "Bachelor of Science in Finance",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "accounting-finance",
+      "fields": [
+        "accounting-finance"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-of-science-in-finance/",
+      "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-fire-science-management",
+      "title": "Bachelor of Science in Fire Science Management",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "criminal-justice",
+      "fields": [
+        "criminal-justice"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-fire-science-management/",
+      "sourceId": "apus-bachelor-of-science-in-fire-science-management-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-healthcare-administration",
+      "title": "Bachelor of Science in Healthcare Administration",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "health",
+      "fields": [
+        "health"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-health-care-administration/",
+      "sourceId": "apus-bachelor-of-science-in-healthcare-administration-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-information-technology",
+      "title": "Bachelor of Science in Information Technology",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-information-technology/",
+      "sourceId": "apus-bachelor-of-science-in-information-technology-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    },
+    {
+      "id": "apus-bachelor-of-science-in-public-health",
+      "title": "Bachelor of Science in Public Health",
+      "school": "American Public University System",
+      "schoolId": "apus",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "health",
+      "fields": [
+        "health"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-public-health/",
+      "sourceId": "apus-bachelor-of-science-in-public-health-catalog-2026-11-23",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-23"
+    }
+  ],
+  "programOrder": [
+    "associate-of-arts-in-business-administration",
+    "associate-of-arts-in-criminal-justice",
+    "associate-of-science-in-cybersecurity",
+    "bachelor-of-arts-in-communication",
+    "bachelor-of-arts-in-criminal-justice",
+    "bachelor-of-arts-in-emergency-and-disaster-management",
+    "bachelor-of-arts-in-homeland-security",
+    "bachelor-of-arts-in-human-resource-management",
+    "bachelor-of-arts-in-interdisciplinary-studies",
+    "bachelor-of-arts-in-management",
+    "bachelor-of-arts-in-marketing",
+    "bachelor-of-arts-in-psychology",
+    "bachelor-of-arts-in-supply-chain-management",
+    "bachelor-of-business-administration",
+    "bachelor-of-science-in-accounting",
+    "bachelor-of-science-in-business-analytics",
+    "bachelor-of-science-in-computer-science",
+    "bachelor-of-science-in-cybersecurity",
+    "bachelor-of-science-in-finance",
+    "bachelor-of-science-in-fire-science-management",
+    "bachelor-of-science-in-healthcare-administration",
+    "bachelor-of-science-in-information-technology",
+    "bachelor-of-science-in-public-health"
   ]
 }

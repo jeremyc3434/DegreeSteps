@@ -194,7 +194,7 @@
         if(previous&&state.journey?.view==='questions')state={...clone(previous),profile:clone(state.profile),journey:clone(state.journey),selectedPathwayId:state.selectedPathwayId};
         if(previous){
           for(const field of ['learning','customCurricula','auditDrafts','checklist','accountRestoreReview']){if(Object.hasOwn(previous,field))state[field]=clone(previous[field]);else delete state[field];}
-          state.sheet={...state.sheet,notes:clone(previous.sheet?.notes||{})};
+          state.sheet={...state.sheet,notes:clone(previous.sheet?.notes||{}),...(previous.sheet?.slotChoices?{slotChoices:clone(previous.sheet.slotChoices)}:{})};
           if(previous.whatIf)state.whatIf=clone(previous.whatIf);
         }
         if(previous&&actualSavedTarget(previous)&&targetChanged(previous,state)){
