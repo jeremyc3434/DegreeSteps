@@ -1,0 +1,587 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "data-science-and-artificial-intelligence",
+  "routeIds": [],
+  "title": "Data Science and Artificial Intelligence",
+  "level": "bachelor",
+  "catalog": "unstated",
+  "totalCredits": 120,
+  "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-data-science-artificial-intelligence",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+      "title": "Data Science and Artificial Intelligence catalog page",
+      "url": "https://online.champlain.edu/degrees-certificates/bachelors-data-science-artificial-intelligence",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/d6a84dcee3ff4dd5.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+      "text": "A 120-credit bachelor's degree in data science and artificial intelligence traditionally takes 4 years to complete."
+    }
+  ],
+  "gaps": [
+    "Catalog year/term is not stated on the page (only a tuition period 'Fall '26 - Summer '27' is printed).",
+    "The credit system is not explicitly labeled; semester credits inferred from references to '15-week semester' and 3-credit courses.",
+    "The Database Management block header reads '(6 courses)' but only two 3-credit courses are listed; treated as 6 credits.",
+    "No residency or institutional-credit requirement is stated beyond 'CCO accepts up to 90 transfer credits toward a bachelor's degree'.",
+    "Rules on whether a course may satisfy multiple general education categories (e.g., COMM 130, COMM 140, CRIT 220, PHIL 240, MKCM 120 appear in more than one list) are not stated.",
+    "Minimum GPA or grade requirements for graduation are not stated.",
+    "Upper-level credit minimums, if any, are not stated."
+  ],
+  "requirements": [
+    {
+      "id": "data-science-and-artificial-intelligence-math-190",
+      "code": "MATH 190",
+      "title": "Linear Algebra and Analytical Geometry",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Linear Algebra and Analytical Geometry"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-math-210",
+      "code": "MATH 210",
+      "title": "Calculus I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Calculus I"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-math-270",
+      "code": "MATH 270",
+      "title": "Discrete Mathematics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Discrete Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-cmit-135",
+      "code": "CMIT 135",
+      "title": "Introduction to Python",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Introduction to Python"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-cmit-145",
+      "code": "CMIT 145",
+      "title": "Programming With R",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Programming With R"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-cmit-235",
+      "code": "CMIT 235",
+      "title": "Advanced Python",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Advanced Python"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-csci-420",
+      "code": "CSCI 420",
+      "title": "Computational Logic",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Computational Logic"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-cmit-200",
+      "code": "CMIT 200",
+      "title": "Relational Database Design and SQL",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Relational Database Design and SQL"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-cmit-300",
+      "code": "CMIT 300",
+      "title": "NoSQL Databases",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "NoSQL Databases"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-data-200",
+      "code": "DATA 200",
+      "title": "Introduction to Data Analytics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Introduction to Data Analytics"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-data-300",
+      "code": "DATA 300",
+      "title": "Advanced Data Analytics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Advanced Data Analytics"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-data-310",
+      "code": "DATA 310",
+      "title": "Data Mining",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Data Mining"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-arti-200",
+      "code": "ARTI 200",
+      "title": "Introduction to Machine Learning and Artificial Intelligence",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Introduction to Machine Learning and Artificial Intelligence"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-arti-300",
+      "code": "ARTI 300",
+      "title": "Machine Learning Frameworks Artificial Intelligence",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Machine Learning Frameworks Artificial Intelligence"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-arti-320",
+      "code": "ARTI 320",
+      "title": "Deep Learning and Neural Networks I Artificial Intelligence",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Deep Learning and Neural Networks I Artificial Intelligence"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-arti-425",
+      "code": "ARTI 425",
+      "title": "Computer Vision Artificial Intelligence",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Computer Vision Artificial Intelligence"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-arti-420",
+      "code": "ARTI 420",
+      "title": "Deep Learning and Neural Networks II Artificial Intelligence",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Deep Learning and Neural Networks II Artificial Intelligence"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-arti-430",
+      "code": "ARTI 430",
+      "title": "Natural Language Processing Artificial Intelligence",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Natural Language Processing Artificial Intelligence"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-cmit-450",
+      "code": "CMIT 450",
+      "title": "Senior Seminar Project",
+      "credits": 3,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Senior Seminar Project"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-engl-100",
+      "code": "ENGL 100",
+      "title": "The Writing Process",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "The Writing Process"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-engl-110",
+      "code": "ENGL 110",
+      "title": "Writing With Authority",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Writing With Authority"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-oral-communication-complete-one-comm-130-or-comm-140",
+      "code": "",
+      "title": "Oral Communication (complete one: COMM 130 or COMM 140)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Oral Communication"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-comm-230",
+      "code": "COMM 230",
+      "title": "Small Group Communication",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Small Group Communication"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-inquiry-and-analysis-complete-one-crit-220-or-phil-240",
+      "code": "",
+      "title": "Inquiry and Analysis (complete one: CRIT 220 or PHIL 240)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Inquiry and Analysis"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-technology-literacy-complete-one-cmit-130-gmdv-110-igmd-110-mkcm-101-mkcm-120-or-soci-260",
+      "code": "",
+      "title": "Technology Literacy (complete one: CMIT 130, GMDV 110, IGMD 110, MKCM 101, MKCM 120, or SOCI 260)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Technology Literacy"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-math-170",
+      "code": "MATH 170",
+      "title": "Introduction to Statistics",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Introduction to Statistics"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-scientific-literacy-complete-one-scie-180-or-scie-230",
+      "code": "",
+      "title": "Scientific Literacy (complete one: SCIE 180 or SCIE 230)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Scientific Literacy"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-soci-200",
+      "code": "SOCI 200",
+      "title": "Social Justice Perspectives",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Social Justice Perspectives"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-arts-humanities-social-sciences-choose-any-two-from-the-listed-options",
+      "code": "",
+      "title": "Arts/Humanities/Social Sciences (choose any two from the listed options)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Arts/Humanities/Social Sciences"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-crit-100",
+      "code": "CRIT 100",
+      "title": "Mindsets for Modern Learning",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "Mindsets for Modern Learning"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-general-education-elective-any-arts-comm-crit-econ-engl-hist-math-phil-psyc-scie-soci-mkcm-120-crim-except-crim-225",
+      "code": "",
+      "title": "General Education Elective (Any ARTS, COMM, CRIT, ECON, ENGL, HIST, MATH, PHIL, PSYC, SCIE, SOCI, MKCM 120, CRIM except CRIM-225)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "6 Credits of a General Education Elective"
+        }
+      ]
+    },
+    {
+      "id": "data-science-and-artificial-intelligence-general-electives",
+      "code": "",
+      "title": "General Electives",
+      "credits": 21,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-data-science-and-artificial-intelligence-catalog-2026-11-23",
+          "text": "General Electives (21 Credits)"
+        }
+      ]
+    }
+  ]
+}

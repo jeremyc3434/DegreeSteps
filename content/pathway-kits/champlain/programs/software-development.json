@@ -1,0 +1,622 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "software-development",
+  "routeIds": [],
+  "title": "Software Development",
+  "level": "bachelor",
+  "catalog": "unstated",
+  "totalCredits": 120,
+  "catalogUrl": "https://online.champlain.edu/degrees-certificates/bachelors-software-development",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "champlain-software-development-catalog-2026-11-23",
+      "title": "Software Development catalog page",
+      "url": "https://online.champlain.edu/degrees-certificates/bachelors-software-development",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/5f8b3e7eba182763.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "champlain-software-development-catalog-2026-11-23",
+      "text": "A 120-credit bachelor's degree in software development"
+    }
+  ],
+  "gaps": [
+    "Catalog year/term is not stated (only tuition period Fall '26 - Summer '27 is printed).",
+    "The list of courses that satisfy the 12 credits of Technical Electives is not stated.",
+    "Any restrictions on the 6 credits of General Electives are not stated (capture only notes up to 9 graduate credits may be taken within general electives via the Bachelor's to Master's pathway).",
+    "Residency requirement is not stated as such; the capture only says CCO accepts up to 90 transfer credits toward a bachelor's degree. No specific course is stated as required to be completed at Champlain.",
+    "Double-counting policy is not stated: CMIT 130 appears in both Professional Courses and Technology Literacy, and several courses (COMM 130, COMM 140, CRIT 220, PHIL 240, MKCM 120) appear in multiple general education blocks.",
+    "Prerequisite courses referenced but not listed in the curriculum: CMIT-140 (for CYBR 330), SDEV-350 (alternative for SDEV 435), WEBD-215 (alternative for WEBD 370).",
+    "SDEV 435 requires 90 completed credits; the capture does not identify it as a formal capstone.",
+    "Minimum GPA or grade requirements for graduation are not stated."
+  ],
+  "requirements": [
+    {
+      "id": "software-development-cmit-130",
+      "code": "CMIT 130",
+      "title": "Networking Fundamentals",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Networking Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "software-development-cmit-135",
+      "code": "CMIT 135",
+      "title": "Introduction to Python",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Introduction to Python"
+        }
+      ]
+    },
+    {
+      "id": "software-development-cmit-200",
+      "code": "CMIT 200",
+      "title": "Relational Database Design and SQL",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Relational Database Design and SQL"
+        }
+      ]
+    },
+    {
+      "id": "software-development-cmit-280",
+      "code": "CMIT 280",
+      "title": "Cloud Computing Security",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Cloud Computing Security"
+        }
+      ]
+    },
+    {
+      "id": "software-development-cmit-310",
+      "code": "CMIT 310",
+      "title": "Enterprise Database Systems",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Enterprise Database Systems"
+        }
+      ]
+    },
+    {
+      "id": "software-development-cybr-210",
+      "code": "CYBR 210",
+      "title": "Foundations of Cybersecurity",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Foundations of Cybersecurity"
+        }
+      ]
+    },
+    {
+      "id": "software-development-cybr-330",
+      "code": "CYBR 330",
+      "title": "Operating System Security",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Operating System Security"
+        }
+      ]
+    },
+    {
+      "id": "software-development-math-210",
+      "code": "MATH 210",
+      "title": "Calculus I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Calculus I"
+        }
+      ]
+    },
+    {
+      "id": "software-development-math-270",
+      "code": "MATH 270",
+      "title": "Discrete Mathematics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Discrete Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "software-development-mgmt-260",
+      "code": "MGMT 260",
+      "title": "Foundations of Project Management",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Foundations of Project Management"
+        }
+      ]
+    },
+    {
+      "id": "software-development-sdev-230",
+      "code": "SDEV 230",
+      "title": "Information Systems Analysis and Design",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Information Systems Analysis and Design"
+        }
+      ]
+    },
+    {
+      "id": "software-development-sdev-240",
+      "code": "SDEV 240",
+      "title": "C++ Programming I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "C++ Programming I"
+        }
+      ]
+    },
+    {
+      "id": "software-development-sdev-310",
+      "code": "SDEV 310",
+      "title": "Computer Architecture and Assembly Programming",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Computer Architecture and Assembly Programming"
+        }
+      ]
+    },
+    {
+      "id": "software-development-sdev-340",
+      "code": "SDEV 340",
+      "title": "C++ Programming II",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "C++ Programming II"
+        }
+      ]
+    },
+    {
+      "id": "software-development-sdev-345",
+      "code": "SDEV 345",
+      "title": "Data Structures & Algorithms",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Data Structures & Algorithms"
+        }
+      ]
+    },
+    {
+      "id": "software-development-sdev-385",
+      "code": "SDEV 385",
+      "title": "Operating Systems Architecture",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Operating Systems Architecture"
+        }
+      ]
+    },
+    {
+      "id": "software-development-sdev-435",
+      "code": "SDEV 435",
+      "title": "Applied Software Practice",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Applied Software Practice"
+        }
+      ]
+    },
+    {
+      "id": "software-development-sdev-415",
+      "code": "SDEV 415",
+      "title": "Linux/ Unix Programming I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Linux/ Unix Programming I"
+        }
+      ]
+    },
+    {
+      "id": "software-development-webd-125",
+      "code": "WEBD 125",
+      "title": "Web Page Development I - HTML",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Web Page Development I - HTML"
+        }
+      ]
+    },
+    {
+      "id": "software-development-webd-370",
+      "code": "WEBD 370",
+      "title": "Usability in Website and Software Design",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Usability in Website and Software Design"
+        }
+      ]
+    },
+    {
+      "id": "software-development-engl-100",
+      "code": "ENGL 100",
+      "title": "The Writing Process",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "The Writing Process"
+        }
+      ]
+    },
+    {
+      "id": "software-development-engl-110",
+      "code": "ENGL 110",
+      "title": "Writing With Authority",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Writing With Authority"
+        }
+      ]
+    },
+    {
+      "id": "software-development-oral-communication-choose-one-comm-130-interpersonal-communication-or-comm-140-fundamentals-of-public-communication",
+      "code": "",
+      "title": "Oral Communication (choose one: COMM 130 Interpersonal Communication or COMM 140 Fundamentals of Public Communication)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Oral Communication"
+        }
+      ]
+    },
+    {
+      "id": "software-development-comm-230",
+      "code": "COMM 230",
+      "title": "Small Group Communication",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Small Group Communication"
+        }
+      ]
+    },
+    {
+      "id": "software-development-inquiry-analysis-choose-one-crit-220-critical-inquiry-or-phil-240-ethics-in-civic-professional-life",
+      "code": "",
+      "title": "Inquiry & Analysis (choose one: CRIT 220 Critical Inquiry or PHIL 240 Ethics in Civic & Professional Life)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Inquiry & Analysis"
+        }
+      ]
+    },
+    {
+      "id": "software-development-technology-literacy-choose-one-mkcm-120-soci-260-cmit-130-igmd-110-gmdv-110-or-mkcm-101",
+      "code": "",
+      "title": "Technology Literacy (choose one: MKCM 120, SOCI 260, CMIT 130, IGMD 110, GMDV 110, or MKCM 101)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Technology Literacy"
+        }
+      ]
+    },
+    {
+      "id": "software-development-quantitative-literacy-choose-one-math-125-math-160-math-170-or-math-190",
+      "code": "",
+      "title": "Quantitative Literacy (choose one: MATH 125, MATH 160, MATH 170, or MATH 190)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Quantitative Literacy"
+        }
+      ]
+    },
+    {
+      "id": "software-development-scientific-literacy-natural-sciences-choose-one-scie-180-or-scie-230",
+      "code": "",
+      "title": "Scientific Literacy: Natural Sciences (choose one: SCIE 180 or SCIE 230)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Scientific Literacy: Natural Sciences"
+        }
+      ]
+    },
+    {
+      "id": "software-development-soci-200",
+      "code": "SOCI 200",
+      "title": "Social Justice Perspectives",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Social Justice Perspectives"
+        }
+      ]
+    },
+    {
+      "id": "software-development-arts-humanities-social-sciences-any-two-courses-from-the-listed-options",
+      "code": "",
+      "title": "Arts/Humanities/Social Sciences (any two courses from the listed options)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Arts/Humanities/Social Sciences"
+        }
+      ]
+    },
+    {
+      "id": "software-development-crit-100",
+      "code": "CRIT 100",
+      "title": "Mindsets for Modern Learning",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Mindsets for Modern Learning"
+        }
+      ]
+    },
+    {
+      "id": "software-development-general-education-electives-two-courses-from-arts-comm-crim-except-crim-225-crit-engl-hist-math-mkcm-120-phil-psyc-soci",
+      "code": "",
+      "title": "General Education Electives (two courses from ARTS, COMM, CRIM except CRIM 225, CRIT, ENGL, HIST, MATH, MKCM 120, PHIL, PSYC, SOCI)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "please complete 6 credits of General Education Electives"
+        }
+      ]
+    },
+    {
+      "id": "software-development-technical-electives",
+      "code": "",
+      "title": "Technical Electives",
+      "credits": 12,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "Technical Electives (12 credits)"
+        }
+      ]
+    },
+    {
+      "id": "software-development-general-electives",
+      "code": "",
+      "title": "General Electives",
+      "credits": 6,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "champlain-software-development-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-software-development-catalog-2026-11-23",
+          "text": "General Electives (6 credits)"
+        }
+      ]
+    }
+  ]
+}
