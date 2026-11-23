@@ -1,0 +1,603 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-in-finance",
+  "routeIds": [],
+  "title": "Bachelor of Science in Finance",
+  "level": "bachelor",
+  "catalog": "2026 - 2027 Catalog",
+  "totalCredits": 120,
+  "catalogUrl": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-of-science-in-finance/",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+      "title": "Bachelor of Science in Finance catalog page",
+      "url": "https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-of-science-in-finance/",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/dd95341b888d0724.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+      "text": "Total Semester Hours\n120"
+    }
+  ],
+  "gaps": [
+    "No residency/institutional credit requirement is stated in the capture, so no course is marked institutionalOnly; the actual residency policy must be confirmed elsewhere.",
+    "Page breadcrumb shows 'American Military University' and 'Bachelor of Science in Sports Management' while the URL (/apu/) and page content are for the Bachelor of Science in Finance; the issuing university (APU vs. AMU) should be verified.",
+    "Only the General Concentration is shown; the capture does not state whether other finance concentrations exist or whether the General Concentration is the only option.",
+    "The footnote marker '1' on Arts & Humanities is not explicitly tied to a footnote; the capture's only note says literature courses require ENGL101 or ENGL110.",
+    "Transfer credit limits, minimum grades, and GPA requirements are not stated in the capture.",
+    "Prerequisites for major and concentration courses are not stated in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-in-finance-arts-humanities-select-2-courses",
+      "code": "",
+      "title": "Arts & Humanities (select 2 courses)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Arts & Humanities (6 semester hours)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-coll112",
+      "code": "COLL112",
+      "title": "Planning Your Future with Purpose in Business",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Planning Your Future with Purpose in Business"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-econ101",
+      "code": "ECON101",
+      "title": "Microeconomics",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Microeconomics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-comm120",
+      "code": "COMM120",
+      "title": "Information and Digital Literacy",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Information and Digital Literacy"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-engl110",
+      "code": "ENGL110",
+      "title": "Making Writing Relevant",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Making Writing Relevant"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-communication-writing-oral-and-multimedia-select-1-course",
+      "code": "",
+      "title": "Communication: Writing, Oral, and Multimedia (select 1 course)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Communication: Writing, Oral, and Multimedia (9 semester hours)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-history-select-1-course",
+      "code": "",
+      "title": "History (select 1 course)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "History (3 semester hours)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-math110",
+      "code": "MATH110",
+      "title": "College Algebra",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "College Algebra"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-natural-sciences-select-1-course",
+      "code": "",
+      "title": "Natural Sciences (select 1 course)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Natural Sciences (3 semester hours)"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-acct100",
+      "code": "ACCT100",
+      "title": "Accounting I",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Accounting I"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-econ102",
+      "code": "ECON102",
+      "title": "Macroeconomics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Macroeconomics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-math120",
+      "code": "MATH120",
+      "title": "Introduction to Statistics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Introduction to Statistics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-busn100",
+      "code": "BUSN100",
+      "title": "Basics of Business",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Basics of Business"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-mktg201",
+      "code": "MKTG201",
+      "title": "Fundamentals of Marketing",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Fundamentals of Marketing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc201",
+      "code": "FINC201",
+      "title": "Financial Management Principles",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Financial Management Principles"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-busn311",
+      "code": "BUSN311",
+      "title": "Law and Ethics in the Business Environment",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Law and Ethics in the Business Environment"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-itcc112",
+      "code": "ITCC112",
+      "title": "Advanced Productivity Applications",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Advanced Productivity Applications"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-acct300",
+      "code": "ACCT300",
+      "title": "Financial Accounting",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Financial Accounting"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-econ304",
+      "code": "ECON304",
+      "title": "Monetary Economics",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Monetary Economics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc202",
+      "code": "FINC202",
+      "title": "Principles of FinTech",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Principles of FinTech"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc311",
+      "code": "FINC311",
+      "title": "Corporate Finance",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Corporate Finance"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc301",
+      "code": "FINC301",
+      "title": "Managerial Finance",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Managerial Finance"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc310",
+      "code": "FINC310",
+      "title": "Financial Markets and Institutions",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Financial Markets and Institutions"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc302",
+      "code": "FINC302",
+      "title": "Financial Statement Analysis",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Financial Statement Analysis"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc401",
+      "code": "FINC401",
+      "title": "Financial Modeling and Forecasting",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Financial Modeling and Forecasting"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc402",
+      "code": "FINC402",
+      "title": "Investments",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "FINC402"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc410",
+      "code": "FINC410",
+      "title": "International Finance",
+      "credits": 3,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "International Finance"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc303",
+      "code": "FINC303",
+      "title": "Blockchain Technology for Business",
+      "credits": 3,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Blockchain Technology for Business"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc305",
+      "code": "FINC305",
+      "title": "Financial Data Analytics",
+      "credits": 3,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Financial Data Analytics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc306",
+      "code": "FINC306",
+      "title": "Data Mining and Machine Learning for Finance",
+      "credits": 3,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Data Mining and Machine Learning for Finance"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-finc308",
+      "code": "FINC308",
+      "title": "Personal Financial Planning",
+      "credits": 3,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Personal Financial Planning"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-busn499",
+      "code": "BUSN499",
+      "title": "Senior Seminar in Business Administration",
+      "credits": 3,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Senior Seminar in Business Administration"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-in-finance-elective-requirements",
+      "code": "",
+      "title": "Elective Requirements",
+      "credits": 21,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "apus-bachelor-of-science-in-finance-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-bachelor-of-science-in-finance-catalog-2026-11-23",
+          "text": "Elective Requirements (21 semester hours)"
+        }
+      ]
+    }
+  ]
+}
