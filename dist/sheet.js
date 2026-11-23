@@ -905,15 +905,22 @@
   function targetDialog(initialId){
     const initial=catalog.pathways.find(route=>route.id===initialId)||pathway,routes=changeDegreeRoutes(),schools=[...new Set(routes.map(route=>route.school))].sort(),school=schools.includes(initial.school)?initial.school:schools[0],degrees=degreeOptionsFor(school),selected=degrees.some(route=>route.id===initial.id)?initial.id:degrees[0]?.id;
     const schoolOptions=schools.map(name=>{const count=routes.filter(route=>route.school===name).length;return[name,name+' · '+count+' plan'+(count===1?'':'s')];});
-    openDialog('<h2>Choose a ready-to-use plan</h2>'+(routes.length?'<form id="sheet-target-form">'+select('school','University',schoolOptions,school)+select('pathwayId','Degree',degrees.map(route=>[route.id,needsConfirmation(route)?route.title+' · Needs school confirmation':route.title]),selected)+'<div id="sheet-target-readiness" role="status"></div><button class="button" type="submit">Review degree</button></form>':'<p>No ready-to-use plans could be loaded. Your current plan is unchanged.</p>')+(plan?'<p>Your current plan stays open until you choose its replacement.</p>':'')+'<div class="sheet-detail"><a class="button secondary" href="request-plan.html">Build from a degree link →</a> <a href="programs.html">Browse ready-to-use plans</a></div>','Choose a ready-to-use degree plan');
+    openDialog('<h2>Choose a ready-to-use plan</h2>'+(routes.length?'<form id="sheet-target-form">'+select('school','University',schoolOptions,school)+select('pathwayId','Degree',degrees.map(route=>[route.id,needsConfirmation(route)?route.title+' · Needs school confirmation':route.title]),selected)+'<div id="sheet-target-card" class="sheet-target-card"></div><div id="sheet-target-readiness" role="status"></div><button class="button" type="submit">Review degree</button></form>':'<p>No ready-to-use plans could be loaded. Your current plan is unchanged.</p>')+(plan?'<p>Your current plan stays open until you choose its replacement.</p>':'')+'<div class="sheet-detail"><a class="button secondary" href="request-plan.html">Build from a degree link →</a> <a href="programs.html">Browse ready-to-use plans</a></div>','Choose a ready-to-use degree plan');
     if(routes.length)targetReadiness();
   }
   function preferenceLabel(value){return({online:'online study',campus:'on-campus study',essential:'in-person classes',open:'flexible classroom attendance','any-degree':'earning a degree','career-growth':'career advancement','change-career':'changing careers',teacher:'teacher preparation',lawyer:'preparing for a legal career',pilot:'professional flight training','health-professional':'health-profession qualification'})[value]||String(value||'not specified');}
   function targetIssueText(issue){if(issue.field==='goal')return 'Your goal is '+preferenceLabel(issue.current)+'. This program has not been established as preparation for that profession.';if(issue.field==='classroomImportance')return 'You require in-person classes. This program is online.';return issue.title+': you selected '+preferenceLabel(issue.current)+'. This program offers '+(issue.allowedValues?.length?issue.allowedValues.map(preferenceLabel).join(' or '):preferenceLabel(issue.required))+'.';}
+  // The chosen degree as the shared plan card (plan-finder.js): est. cost and credits for less, as in Find a degree.
+  function targetCard(route){
+    const node=$('sheet-target-card'),F=window.DegreePlanFinder;if(!node||!F)return;
+    const draw=()=>{if(!node.isConnected)return;node.innerHTML=route?F.card(F.context({index:planIndex||{}}),route,{}):'';};
+    if(planIndex)draw();else{draw();loadPlanIndex().then(draw,()=>{});}
+  }
   let targetReadinessRevision=0;
   async function targetReadiness(){
     const form=$('sheet-target-form'),node=$('sheet-target-readiness');if(!form||!node)return;
     const route=catalog.pathways.find(item=>item.id===form.elements.pathwayId.value),submit=form.querySelector('button[type=submit]'),ticket=++targetReadinessRevision;
+    targetCard(route);
     submit.disabled=true;submit.textContent='Loading course plan…';node.innerHTML='<p role="status">Loading course plan…</p>';form.dataset.formatChoice='false';delete form.dataset.discoveredRouteId;
     try{
       await ensureRouteModels(route);if(!form.isConnected||ticket!==targetReadinessRevision)return;

@@ -46,3 +46,4 @@
 .campuses-page :is(a,button,input,select,summary):focus-visible { outline:3px solid var(--ds-cobalt); outline-offset:3px; }
 @media(max-width:800px) { .campus-grid { grid-template-columns:1fr; } .campus-filters { grid-template-columns:1fr 1fr; } .campus-search { grid-column:1/-1; } }
 @media(max-width:560px) { .campus-main { padding:26px 18px 80px; } .campus-heading { display:block; } .campus-heading .campus-link { margin-top:14px; } .campus-filters { grid-template-columns:1fr; padding:18px; } .campus-search { grid-column:auto; } .campus-card { padding:21px; } .campus-fallback { padding:18px; } .campus-fallback nav { gap:12px; font-size:.875rem; } }
+.campus-heading-links{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
