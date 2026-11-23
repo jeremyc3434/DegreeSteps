@@ -1,0 +1,348 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "associate-of-science-accounting",
+  "routeIds": [],
+  "title": "Associate of Science - Accounting",
+  "level": "associate",
+  "catalog": "unstated",
+  "totalCredits": 64,
+  "catalogUrl": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/rybZPFHqD",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+      "title": "Associate of Science - Accounting catalog page",
+      "url": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/rybZPFHqD",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/93da5e916704758a.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+      "text": "Grand Total Credits:<!-- --> <strong>64</strong>"
+    }
+  ],
+  "gaps": [
+    "The capture labels units only as 'credits'; it does not explicitly state semester hours (semester assumed for the schema field and should be verified).",
+    "No catalog year/term is printed; the record shows dateStart 2024-09-01 and catalogActivationDate 2024-06-04 only.",
+    "MATH215 prerequisite (MATH 140 Introduction to Quantitative Reasoning or MATH 150 Fundamental Algebra) is mentioned with no credit value; capture says it 'can count as a University Elective' but does not state whether it is required for all students.",
+    "Specific Science courses and which ones satisfy the lab component are not listed.",
+    "No residency / institutional-credit requirement is stated in the capture.",
+    "No minimum grade or GPA requirements are stated in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "associate-of-science-accounting-eng120",
+      "code": "ENG120",
+      "title": "College Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "ENG120</a> <!-- -->-<!-- --> <!-- -->College Writing"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-math215",
+      "code": "MATH215",
+      "title": "Statistical Concepts",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "MATH215</a> <!-- -->-<!-- --> <!-- -->Statistical Concepts"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-science-two-courses-from-the-science-discipline-one-must-have-a-lab-component",
+      "code": "",
+      "title": "Science (two courses from the Science discipline; one must have a lab component)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "Two courses from the Science discipline. One course must have a lab component."
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-econ220",
+      "code": "ECON220",
+      "title": "Introduction to Macroeconomics",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "ECON220</a> <!-- -->-<!-- --> <!-- -->Introduction to Macroeconomics"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-social-and-behavioral-sciences-elective-anthropology-geography-histo-baed31de",
+      "code": "",
+      "title": "Social and Behavioral Sciences elective (Anthropology, Geography, History, Political Science, Psychology or Sociology)",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "Choose from the Anthropology, Geography, History, Political Science, Psychology and Sociology disciplines."
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-humn210",
+      "code": "HUMN210",
+      "title": "Intro to Logic & Critical Thinking Skill",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "HUMN210</a> <!-- -->-<!-- --> <!-- -->Intro to Logic &amp; Critical Thinking Skill"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-arts-humanities-elective-art-english-literature-fine-arts-humanities-dd51d3a5",
+      "code": "",
+      "title": "Arts & Humanities elective (Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater)",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "Choose from the Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater disciplines."
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-learning-strategies-pf321-learning-strategies-or-pf121-basic-learnin-3f93929a",
+      "code": "",
+      "title": "Learning Strategies: PF321 Learning Strategies or PF121 Basic Learning Strategies (choose 1)",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "PF321</a> <!-- -->-<!-- --> <!-- -->Learning Strategies"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-communication-comm150-interpersonal-communication-or-spch100-speech-71f1ad5b",
+      "code": "",
+      "title": "Communication: COMM150 Interpersonal Communication or SPCH100 Speech Communication (choose 1)",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "COMM150</a> <!-- -->-<!-- --> <!-- -->Interpersonal Communication"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-pf106",
+      "code": "PF106",
+      "title": "Introduction to Spreadsheets",
+      "credits": 1,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "PF106</a> <!-- -->-<!-- --> <!-- -->Introduction to Spreadsheets"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-additional-general-education-elective-any-100-or-200-level-general-education-course",
+      "code": "",
+      "title": "Additional General Education elective (any 100- or 200-level General Education course)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "Any General Education course at the 100 or 200 level"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-acct215",
+      "code": "ACCT215",
+      "title": "Financial Accounting",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "ACCT215</a> <!-- -->-<!-- --> <!-- -->Financial Accounting"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-acct225",
+      "code": "ACCT225",
+      "title": "Managerial Accounting",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "ACCT225</a> <!-- -->-<!-- --> <!-- -->Managerial Accounting"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-acct310",
+      "code": "ACCT310",
+      "title": "Intermediate Accounting I",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "ACCT310</a> <!-- -->-<!-- --> <!-- -->Intermediate Accounting I"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-acct320",
+      "code": "ACCT320",
+      "title": "Intermediate Accounting II",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "ACCT320</a> <!-- -->-<!-- --> <!-- -->Intermediate Accounting II"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-acct390",
+      "code": "ACCT390",
+      "title": "Federal Income Tax I",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "ACCT390</a> <!-- -->-<!-- --> <!-- -->Federal Income Tax I"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-major-elective-choose-1-acct330-acct360-acct420-acct425-acct470-entr395-frac341",
+      "code": "",
+      "title": "Major Elective (choose 1: ACCT330, ACCT360, ACCT420, ACCT425, ACCT470, ENTR395, FRAC341)",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "Major Electives</span>"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-science-accounting-university-electives-any-undergraduate-courses-except-developmental-education",
+      "code": "",
+      "title": "University Electives (any undergraduate courses except developmental education)",
+      "credits": 4,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-associate-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-associate-of-science-accounting-catalog-2026-11-23",
+          "text": "Any undergraduate courses offered by the University except developmental education courses."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,452 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-information-technology",
+  "routeIds": [],
+  "title": "Bachelor of Science - Information Technology",
+  "level": "bachelor",
+  "catalog": "unstated",
+  "totalCredits": 124,
+  "catalogUrl": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/r1ZC8PtB5w",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+      "title": "Bachelor of Science - Information Technology catalog page",
+      "url": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/r1ZC8PtB5w",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/ae3d6c8315868ed4.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+      "text": "Grand Total Credits:<!-- --> <strong>124</strong>"
+    }
+  ],
+  "gaps": [
+    "Credit unit type (semester vs. quarter) is not labeled in the capture; recorded as semester but needs confirmation.",
+    "No catalog year/term is printed; capture only shows dateStart 2024-09-01 and catalogActivationDate 2024-06-04.",
+    "No residency/institutional credit requirement is stated, so no course is marked institutionalOnly (including the ITEC495 capstone).",
+    "Mathematics prerequisite (MATH 140 or MATH 150) is noted as possibly counting as a University elective; its credit value is not printed.",
+    "Transfer students must show Programming Fundamentals (4), Database Fundamentals (4), Network Fundamentals (2), Cybersecurity Fundamentals (2); how these map to the Professional Core is not detailed.",
+    "Professional Core 12-credit block and Major Electives allow other courses with Program Chair approval; approval criteria are not stated.",
+    "Graduate-level substitution policy (e.g., ITEC640, CYSC610) is referenced but not detailed.",
+    "Minimum grade, GPA, and upper-division credit requirements are not stated in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-information-technology-eng120",
+      "code": "ENG120",
+      "title": "College Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "College Writing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-math215",
+      "code": "MATH215",
+      "title": "Statistical Concepts",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Statistical Concepts"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-social-and-behavioral-sciences-at-least-two-different-disciplines",
+      "code": "",
+      "title": "Social and Behavioral Sciences (at least two different disciplines)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Choose from Anthropology, Economics, Geography, History, Political Science, Psychology, and Sociology."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-science-two-courses-one-with-lab",
+      "code": "",
+      "title": "Science (two courses, one with lab)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Two courses from the Science discipline. One course must have a lab component."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-humn211",
+      "code": "HUMN211",
+      "title": "Introduction to Critical Ethics",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Introduction to Critical Ethics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-arts-humanities-elective",
+      "code": "",
+      "title": "Arts & Humanities elective",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Choose from the Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-pf121-basic-learning-strategies-or-pf321-learning-strategies",
+      "code": "",
+      "title": "PF121 Basic Learning Strategies or PF321 Learning Strategies",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Basic Learning Strategies"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-comm150-interpersonal-communication-or-spch100-speech-communication",
+      "code": "",
+      "title": "COMM150 Interpersonal Communication or SPCH100 Speech Communication",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Interpersonal Communication"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-eng220",
+      "code": "ENG220",
+      "title": "Research Writing: Exploring Professional Identities",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Research Writing: Exploring Professional Identities"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-comp111-introduction-to-computer-science-object-oriented-5a3d72ac",
+      "code": "",
+      "title": "COMP111 Introduction to Computer Science & Object-Oriented Programming or ITEC136 Principles of Programming",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Introduction to Computer Science"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-comp204",
+      "code": "COMP204",
+      "title": "Principles of Computer Networks",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Principles of Computer Networks"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-itec200",
+      "code": "ITEC200",
+      "title": "Linux Fundamentals",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Linux Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-cloud200",
+      "code": "CLOUD200",
+      "title": "Cloud Fundamentals",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Cloud Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-cysc200",
+      "code": "CYSC200",
+      "title": "Cybersecurity Fundamentals",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Cybersecurity Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-professional-core-it-related-coursework",
+      "code": "",
+      "title": "Professional Core IT-related coursework",
+      "credits": 12,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Computer Graphics, Operating Systems, Networks, Web Design"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-itec275",
+      "code": "ITEC275",
+      "title": "Computer Networks: Switching, Routing, & Wans",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Computer Networks: Switching, Routing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-itec400",
+      "code": "ITEC400",
+      "title": "Linux Administration",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Linux Administration"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-itec495",
+      "code": "ITEC495",
+      "title": "Information Technology Capstone",
+      "credits": 4,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Information Technology Capstone"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-mis310",
+      "code": "MIS310",
+      "title": "Info Systems Architecture & Technology",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Info Systems Architecture"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-comp281",
+      "code": "COMP281",
+      "title": "Database Management Systems",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Database Management Systems"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-itec430-information-technology-project-management-or-itec-0407e41a",
+      "code": "",
+      "title": "ITEC430 Information Technology Project Management or ITEC640 Project Management",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Information Technology Project Management"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-cysc300-information-assurance-or-cysc610-information-assurance",
+      "code": "",
+      "title": "CYSC300 Information Assurance or CYSC610 Information Assurance",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Information Assurance"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-major-electives",
+      "code": "",
+      "title": "Major Electives",
+      "credits": 8,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Major Electives"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-information-technology-university-electives",
+      "code": "",
+      "title": "University Electives",
+      "credits": 28,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-information-technology-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-information-technology-catalog-2026-11-23",
+          "text": "Any undergraduate courses offered by the University except developmental education courses."
+        }
+      ]
+    }
+  ]
+}

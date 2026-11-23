@@ -1,0 +1,518 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-accounting",
+  "routeIds": [],
+  "title": "Bachelor of Science - Accounting",
+  "level": "bachelor",
+  "catalog": "unstated",
+  "totalCredits": 124,
+  "catalogUrl": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/rybZDYSqw",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+      "title": "Bachelor of Science - Accounting catalog page",
+      "url": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/rybZDYSqw",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/30c1459e6eb24a06.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+      "text": "Grand Total Credits:<!-- --> <strong>124</strong>"
+    }
+  ],
+  "gaps": [
+    "The capture says only \"credits\" and does not name the credit unit (semester vs. quarter); semester was selected but is not stated in the capture.",
+    "No catalog year/term is printed; the record shows only dateStart 2024-09-01 and catalogActivationDate 2024-06-04.",
+    "MATH215 requires MATH 140 or MATH 150 as a prerequisite; the credits for these courses are not printed (the capture says the course can count as a University Elective).",
+    "No residency or institutional-credit (must-complete-at-Franklin) requirement is stated in the capture.",
+    "No minimum grade, GPA, or upper-division credit requirements are stated in the capture.",
+    "Several Major Elective options carry variable credit (ACCT410 1-9, ACCT411 1-4, ACCT499 1-4); how excess credits apply beyond the 4-credit block is not stated."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-accounting-eng120",
+      "code": "ENG120",
+      "title": "College Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "College Writing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-math215",
+      "code": "MATH215",
+      "title": "Statistical Concepts",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Statistical Concepts"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-science-two-courses-from-the-science-discipline-one-with-a-lab-component",
+      "code": "",
+      "title": "Science (two courses from the Science discipline, one with a lab component)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Two courses from the Science discipline. One course must have a lab component."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-econ220",
+      "code": "ECON220",
+      "title": "Introduction to Macroeconomics",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Introduction to Macroeconomics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-social-and-behavioral-sciences-elective-anthropology-geography-histor-e4e1c41c",
+      "code": "",
+      "title": "Social and Behavioral Sciences elective (Anthropology, Geography, History, Political Science, Psychology, or Sociology)",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Choose from the Anthropology, Geography, History, Political Science, Psychology, or Sociology disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-humn210",
+      "code": "HUMN210",
+      "title": "Intro to Logic & Critical Thinking Skill",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Intro to Logic"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-arts-humanities-elective-art-english-literature-fine-arts-humanities-5b73eff7",
+      "code": "",
+      "title": "Arts & Humanities elective (Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater)",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Choose from the Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-learning-strategies-pf121-basic-learning-strategies-or-pf321-learning-strategies",
+      "code": "",
+      "title": "Learning Strategies: PF121 Basic Learning Strategies or PF321 Learning Strategies",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Basic Learning Strategies"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-communication-comm150-interpersonal-communication-or-spch100-speech-communication",
+      "code": "",
+      "title": "Communication: COMM150 Interpersonal Communication or SPCH100 Speech Communication",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Interpersonal Communication"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-pf106",
+      "code": "PF106",
+      "title": "Introduction to Spreadsheets",
+      "credits": 1,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Introduction to Spreadsheets"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-additional-general-education-elective-any-100-or-200-level-general-education-course",
+      "code": "",
+      "title": "Additional General Education elective (any 100 or 200 level General Education course)",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Any General Education course at the 100 or 200 level"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct215",
+      "code": "ACCT215",
+      "title": "Financial Accounting",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Financial Accounting"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct225",
+      "code": "ACCT225",
+      "title": "Managerial Accounting",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Managerial Accounting"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-bsad220",
+      "code": "BSAD220",
+      "title": "Business Law",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Business Law"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-econ210",
+      "code": "ECON210",
+      "title": "Introduction to Microeconomics",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Introduction to Microeconomics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-fina301",
+      "code": "FINA301",
+      "title": "Principles of Finance",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Principles of Finance"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-mgmt312",
+      "code": "MGMT312",
+      "title": "Principles of Management",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Principles of Management"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-mktg300",
+      "code": "MKTG300",
+      "title": "Marketing",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Marketing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct310",
+      "code": "ACCT310",
+      "title": "Intermediate Accounting I",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Intermediate Accounting I"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct320",
+      "code": "ACCT320",
+      "title": "Intermediate Accounting II",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Intermediate Accounting II"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct330",
+      "code": "ACCT330",
+      "title": "Cost Management",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Cost Management"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct390",
+      "code": "ACCT390",
+      "title": "Federal Income Tax I",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Federal Income Tax I"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct420",
+      "code": "ACCT420",
+      "title": "Federal Income Tax II",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Federal Income Tax II"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct425",
+      "code": "ACCT425",
+      "title": "Accounting Information Systems",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Accounting Information Systems"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct470",
+      "code": "ACCT470",
+      "title": "Auditing",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Auditing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-acct495",
+      "code": "ACCT495",
+      "title": "Accounting Research & Analysis",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Accounting Research"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-major-electives-choose-from-acct360-acct401-acct410-acct411-acct499-e-9caed690",
+      "code": "",
+      "title": "Major Electives (choose from ACCT360, ACCT401, ACCT410, ACCT411, ACCT499, ENTR395, FINA403, FPLN300, FPLN430, ACCT445, FRAC341, FRAC344, FRAC346)",
+      "credits": 4,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Major Electives"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-accounting-university-electives-any-undergraduate-courses-except-developmental-e-a2ef43ac",
+      "code": "",
+      "title": "University Electives (any undergraduate courses except developmental education; ACCT 202 cannot be taken for credit)",
+      "credits": 24,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-accounting-catalog-2026-11-23",
+          "text": "Any undergraduate courses offered by the University except developmental education courses."
+        }
+      ]
+    }
+  ]
+}

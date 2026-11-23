@@ -1,0 +1,403 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-business-administration",
+  "routeIds": [],
+  "title": "Bachelor of Science - Business Administration",
+  "level": "bachelor",
+  "catalog": "unstated",
+  "totalCredits": 124,
+  "catalogUrl": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/rJTNwYr5D",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+      "title": "Bachelor of Science - Business Administration catalog page",
+      "url": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/rJTNwYr5D",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/9d1d137bf4ace031.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+      "text": "Grand Total Credits:<!-- --> <strong>124</strong>"
+    }
+  ],
+  "gaps": [
+    "No catalog year/term is printed; the capture only shows dateStart 2026-09-02 and catalogActivationDate 2026-06-01.",
+    "The credit unit type (semester vs. quarter) is not stated in the capture; semester is assumed and should be verified.",
+    "No residency or institutional-credit requirement (courses that must be completed at the school) is stated, so all items are marked institutionalOnly false.",
+    "MATH 140 Introduction to Quantitative Reasoning or MATH 150 Fundamental Algebra is a prerequisite to MATH 215. Its credits are not printed; the capture says it can count as a University Elective.",
+    "Per the capture, ACCT 215 Financial Accounting plus ACCT 225 Managerial Accounting can fulfill the ACCT 202 requirement. Credits for those courses are not printed.",
+    "The ledger reflects the standard Business Administration track of the 36-credit Standard or Specialization block. The alternative Business Administration with Project Management Specialization track requires BSAD305, BSAD474, BSAD495, BSAD320, AMGT440, OSCM390 and OSCM491, plus at least 8 major-area elective credits.",
+    "Optional focus areas may fulfill the Major Elective requirement: Digital Marketing (MKTG340, MKTG345, MKTG415), Management and Leadership (MGMT325, MGMT440, MGMT470), Financial Management (FINA340, FINA403, FINA450), Human Resources Management (HRM300, HRM400, HRM402), and Performance Management (MGMT325, MGMT425, HRM420).",
+    "300/400-level courses used to fulfill a minor may count as Major Area Electives, and graduate introductory courses (e.g., MGMT 707) may be substituted. The governing academic policy is referenced but not included in the capture.",
+    "Specific eligible courses for the Science (including lab), Arts & Humanities, and Social and Behavioral Sciences elective blocks are not listed.",
+    "Minimum grade, GPA, and upper-division credit requirements are not stated in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-business-administration-eng120",
+      "code": "ENG120",
+      "title": "College Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "College Writing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-math215",
+      "code": "MATH215",
+      "title": "Statistical Concepts",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Statistical Concepts"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-econ220",
+      "code": "ECON220",
+      "title": "Introduction to Macroeconomics",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Introduction to Macroeconomics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-social-and-behavioral-sciences-elective-anthropology-geo-e8700ba5",
+      "code": "",
+      "title": "Social and Behavioral Sciences elective (Anthropology, Geography, History, Political Science, Psychology, or Sociology)",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Choose from the Anthropology, Geography, History, Political Science, Psychology, or Sociology disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-science-two-courses-one-with-lab",
+      "code": "",
+      "title": "Science (two courses, one with lab)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Two courses from the Science discipline. One course must have a lab component."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-arts-humanities-electives",
+      "code": "",
+      "title": "Arts & Humanities electives",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Choose from the Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-pf121-basic-learning-strategies-or-pf321-learning-strategies",
+      "code": "",
+      "title": "PF121 Basic Learning Strategies or PF321 Learning Strategies",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Basic Learning Strategies"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-comm150-interpersonal-communication-or-spch100-speech-communication",
+      "code": "",
+      "title": "COMM150 Interpersonal Communication or SPCH100 Speech Communication",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Interpersonal Communication"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-eng205",
+      "code": "ENG205",
+      "title": "Business & Professional Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Business &amp; Professional Writing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-acct202",
+      "code": "ACCT202",
+      "title": "Financial/Managerial Acct for Non-Majors",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "ACCT202</a> - Financial/Managerial Acct for Non-Majors <span>(4)</span>"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-bsad220",
+      "code": "BSAD220",
+      "title": "Business Law",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "BSAD220</a> - Business Law <span>(4)</span>"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-econ210",
+      "code": "ECON210",
+      "title": "Introduction to Microeconomics",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "ECON210</a> - Introduction to Microeconomics <span>(4)</span>"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-fina301",
+      "code": "FINA301",
+      "title": "Principles of Finance",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "FINA301</a> - Principles of Finance <span>(4)</span>"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-mgmt312",
+      "code": "MGMT312",
+      "title": "Principles of Management",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "MGMT312</a> - Principles of Management <span>(4)</span>"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-mktg300",
+      "code": "MKTG300",
+      "title": "Marketing",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "MKTG300</a> - Marketing <span>(4)</span>"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-bsad320",
+      "code": "BSAD320",
+      "title": "Quant & Qual Methods for Decision Making",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Quant &amp; Qual Methods for Decision Making"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-bsad474",
+      "code": "BSAD474",
+      "title": "Advanced Business Acumen",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Advanced Business Acumen"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-bsad305",
+      "code": "BSAD305",
+      "title": "Business and AI",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Business and AI"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-bsad495",
+      "code": "BSAD495",
+      "title": "Business Administration Capstone",
+      "credits": 4,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Business Administration Capstone"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-major-area-electives-acct-amgt-bsad-comm-econ-egmt-entr-f5fc2ac8",
+      "code": "",
+      "title": "Major Area Electives (ACCT, AMGT, BSAD, COMM, ECON, EGMT, ENTR, FINA, FPLN, HCM, HIM, HRM, MGMT, MKTG, OSCM, PBRL, PSYC, RMI, or SPM; excluding courses numbered 100 to 200)",
+      "credits": 20,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Earn at least <span>20</span> credits from"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-business-administration-university-electives",
+      "code": "",
+      "title": "University Electives",
+      "credits": 28,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-business-administration-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-business-administration-catalog-2026-11-23",
+          "text": "Any undergraduate courses offered by the University except developmental education courses."
+        }
+      ]
+    }
+  ]
+}
