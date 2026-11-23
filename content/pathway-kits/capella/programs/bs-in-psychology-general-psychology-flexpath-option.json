@@ -1,0 +1,284 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bs-in-psychology-general-psychology-flexpath-option",
+  "routeIds": [],
+  "title": "BS in Psychology, General Psychology, FlexPath option",
+  "level": "bachelor",
+  "catalog": "October 2026 University Catalog",
+  "totalCredits": 0,
+  "creditSystem": "competency-unit",
+  "catalogUrl": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,300-301&columns=2",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+      "title": "BS in Psychology, General Psychology, FlexPath option catalog page",
+      "url": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,300-301&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/be51d6c7836606fa.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+      "text": ""
+    }
+  ],
+  "gaps": [
+    "The capture ends after the specialization course list; the FlexPath option's elective requirement, capstone course, and total program points are not captured. totalCredits is set to 0 because no total is stated for this program.",
+    "The 180 quarter credit total, 57 quarter credit elective block, and PSYC4900 capstone shown in the capture belong to the preceding (GuidedPath, quarter-credit) program and were not applied to this FlexPath ledger.",
+    "This program is measured in Capella FlexPath 'program points', which is not one of the schema's credit-system options. 'competency-unit' was used as the closest available label. Program points are not WGU competency units or quarter credits, and no conversion was applied.",
+    "The remaining general education block of 15 program points is derived: the stated 22.5 program points minus the 7.5 program points of required general education courses listed under 'Required courses'. Confirm that these required courses count toward the 22.5.",
+    "The minimum of 2 program points from English (ENG-FPX) courses is included within the remaining general education block. It is not a separate credit amount.",
+    "Code 'PYSC-FPX2520' is recorded as printed; it is likely a typo for PSYC-FPX2520.",
+    "Specialization courses total at least 18 program points per the capture (6 + 12). Whether overlap between the two specialization lists is allowed is not stated.",
+    "Footnote † on general education and specialization courses refers to ACS1003 placement. Any added program points from ACS1003 for FlexPath students are not stated.",
+    "No residency or institution-only requirements are stated in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-mat-fpx2010",
+      "code": "MAT-FPX2010",
+      "title": "Practical Statistics",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "MAT- Practical Statistics 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-psyc-fpx1010",
+      "code": "PSYC-FPX1010",
+      "title": "Introductory Psychology",
+      "credits": 1.5,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PSYC- Introductory Psychology 1.5"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-pysc-fpx2520",
+      "code": "PYSC-FPX2520",
+      "title": "Social Psychology in Action",
+      "credits": 1.5,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PYSC- Social Psychology in Action 1.5"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-psyc-fpx2600",
+      "code": "PSYC-FPX2600",
+      "title": "Development Across the Lifespan",
+      "credits": 1.5,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PSYC- Development Across the 1.5"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-remaining-general-education-program-points-flexp-a75e1a7e",
+      "code": "",
+      "title": "Remaining general education program points (FlexPath general education list; minimum 2 program points from each category and minimum 2 program points from English (ENG-FPX) courses)",
+      "credits": 15,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "Choose 22.5 program points with a minimum of 2 program"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-psyc-fpx2002",
+      "code": "PSYC-FPX2002",
+      "title": "The Skillful Psychology Student",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PSYC- The Skillful Psychology 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-psyc-fpx1540",
+      "code": "PSYC-FPX1540",
+      "title": "The Psychology of Human Differences and Society",
+      "credits": 1.5,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PSYC- The Psychology of Human 1.5"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-psyc-fpx3310",
+      "code": "PSYC-FPX3310",
+      "title": "Brain, Body, and Behavior",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PSYC- Brain, Body, and Behavior 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-psyc-fpx3700",
+      "code": "PSYC-FPX3700",
+      "title": "Statistics for Psychology",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PSYC- Statistics for Psychology 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-psyc-fpx4101",
+      "code": "PSYC-FPX4101",
+      "title": "History, Systems, and Contemporary Psychology",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PSYC- History, Systems, and 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-psyc-fpx4600",
+      "code": "PSYC-FPX4600",
+      "title": "Research Methods in Psychology",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "PSYC- Research Methods in 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-core-developmental-course-choose-one-of-psyc-fpx-cfbd7344",
+      "code": "",
+      "title": "Core developmental course: choose one of PSYC-FPX2700 Child Development, PSYC-FPX2720 Adolescent Psychology, or PSYC-FPX2740 Adult Development and Aging",
+      "credits": 1.5,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "In addition, choose one of the following three courses."
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-specialization-psychology-courses-choose-6-progr-973728cf",
+      "code": "",
+      "title": "Specialization psychology courses (choose 6 program points from listed psychology courses)",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "Choose an additional 6 program points from the following"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-psychology-general-psychology-flexpath-option-specialization-upper-division-psychology-courses-1bc11afe",
+      "code": "",
+      "title": "Specialization upper division psychology courses (choose 12 program points from listed upper division courses)",
+      "credits": 12,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-psychology-general-psychology-flexpath-option-catalog-2026-11-23",
+          "text": "choose an additional 12 program points from"
+        }
+      ]
+    }
+  ]
+}

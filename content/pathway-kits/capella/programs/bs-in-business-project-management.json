@@ -1,0 +1,436 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bs-in-business-project-management",
+  "routeIds": [],
+  "title": "BS in Business, Project Management",
+  "level": "bachelor",
+  "catalog": "October 2026 University Catalog",
+  "totalCredits": 180,
+  "catalogUrl": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,171-172&columns=2",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "capella-bs-in-business-project-management-catalog-2026-11-23",
+      "title": "BS in Business, Project Management catalog page",
+      "url": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,171-172&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/44cd8580e6da65ae.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+      "text": "At least 180 quarter credits, including a minimum of"
+    }
+  ],
+  "gaps": [
+    "MAT2010 is listed as a 'Required course' under General Education Requirements; the capture implies (by the 180-credit arithmetic) but does not explicitly state that its 6 quarter credits count within the 45-credit general education block, so the ledger lines should not be double-counted.",
+    "ACS1003 (6 quarter credits) is conditional: required only for students determined by academic assessment to need additional support, taken in the first quarter. Students who complete ACS1003 take BUS2003 instead of BUS2007 and choose 33 (not 39) elective quarter credits.",
+    "Core course BUS2003 Introduction to Business Perspectives (6) is the alternative to BUS2007 for students who completed ACS1003; only one is required.",
+    "The program requires a minimum of 54 quarter credits from the 3000-level and above; the capture does not state how this is tracked against electives.",
+    "BUS4993 capstone must be taken during the student's final quarter; no other sequencing or institutional residency requirement is stated in the capture.",
+    "The capture does not state any residency or must-complete-at-Capella requirement, so no requirement is marked institutionalOnly.",
+    "Optional Honors Pathway (PHI-H2005 3, COM-H4005 6, SOC-H3005 6; at least 15 quarter credits) is applied toward the general education requirement; not listed as separate ledger lines.",
+    "Per-category general education minimums (4 quarter credits each in Communication, Humanities, Natural Science and Mathematics, Social Science) are part of the 45-credit block; individual gen ed course credit values in the capture are partially garbled by two-column extraction.",
+    "The FlexPath option (program points) version of this degree is a separate ledger and its requirements are truncated in the capture (only gen ed, MAT-FPX2010 and the first core courses appear)."
+  ],
+  "requirements": [
+    {
+      "id": "bs-in-business-project-management-general-education-requirements-minimum-4-quarter-credits-from-each-category",
+      "code": "",
+      "title": "General Education Requirements (minimum 4 quarter credits from each category)",
+      "credits": 45,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "Choose 45 quarter credits with a minimum of 4 quarter"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-mat2010",
+      "code": "MAT2010",
+      "title": "Practical Statistics",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "MAT2010 Practical Statistics 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-acs1003",
+      "code": "ACS1003",
+      "title": "Building Skills for Academic Success",
+      "credits": 6,
+      "category": "other",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "ACS1003 Building Skills for 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus2007",
+      "code": "BUS2007",
+      "title": "Introduction to Business Perspectives",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS2007 Introduction to Business 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus1011",
+      "code": "BUS1011",
+      "title": "Management Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS1011 Management Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus2012",
+      "code": "BUS2012",
+      "title": "Leadership Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS2012 Leadership Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus2030",
+      "code": "BUS2030",
+      "title": "Marketing and Sales Fundamentals",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS2030 Marketing and Sales 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus2061",
+      "code": "BUS2061",
+      "title": "Accounting Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS2061 Accounting Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus2062",
+      "code": "BUS2062",
+      "title": "Finance Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS2062 Finance Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus3022",
+      "code": "BUS3022",
+      "title": "Fundamentals of Supply Chain Management",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS3022 Fundamentals of Supply 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus3040",
+      "code": "BUS3040",
+      "title": "Fundamentals of Human Resource Management",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS3040 Fundamentals of Human 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus3050",
+      "code": "BUS3050",
+      "title": "Fundamentals of Organizational Communication",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS3050 Fundamentals of 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm1000",
+      "code": "PM1000",
+      "title": "Project Management Principles",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM1000 Project Management 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm4000",
+      "code": "PM4000",
+      "title": "Foundations of Project Management Domains",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM4000 Foundations of Project 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm4020",
+      "code": "PM4020",
+      "title": "Integration and Scope Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM4020 Integration and Scope 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm4030",
+      "code": "PM4030",
+      "title": "Scheduling, Cost, and Quality Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM4030 Scheduling, Cost, and 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm4040",
+      "code": "PM4040",
+      "title": "Human Resources and Motivation Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM4040 Human Resources and 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm4050",
+      "code": "PM4050",
+      "title": "Communication and Stakeholder Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM4050 Communication and 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm4060",
+      "code": "PM4060",
+      "title": "Risk Management in Project Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM4060 Risk Management in Project 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm4070",
+      "code": "PM4070",
+      "title": "Procurement Management in Project Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM4070 Procurement Management 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-pm4080",
+      "code": "PM4080",
+      "title": "Agile Project Management",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "PM4080 Agile Project Management 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-elective-courses-additional-undergraduate-courses",
+      "code": "",
+      "title": "Elective courses (additional undergraduate courses)",
+      "credits": 39,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "Choose 39 quarter credits of additional undergraduate"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-project-management-bus4993",
+      "code": "BUS4993",
+      "title": "Business Capstone Project",
+      "credits": 6,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-project-management-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-project-management-catalog-2026-11-23",
+          "text": "BUS4993 Business Capstone Project 6"
+        }
+      ]
+    }
+  ]
+}

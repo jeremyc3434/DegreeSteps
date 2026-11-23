@@ -1,0 +1,418 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bs-in-business-accounting",
+  "routeIds": [],
+  "title": "BS in Business, Accounting",
+  "level": "bachelor",
+  "catalog": "October 2026 University Catalog",
+  "totalCredits": 180,
+  "catalogUrl": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,156-157&columns=2",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "capella-bs-in-business-accounting-catalog-2026-11-23",
+      "title": "BS in Business, Accounting catalog page",
+      "url": "https://www.capella.edu/content/dam/capella/PDF/October_2026_University_Catalog.pdf#pages=149-150,156-157&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/2cb3cc4d36ebef11.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+      "text": "At least 180 quarter credits, including a minimum of"
+    }
+  ],
+  "gaps": [
+    "MAT2010 (6 quarter credits) is listed as a required course under General Education Requirements; the totals only reach 180 if it counts within the 45-credit general education block, so the gen-ed block and MAT2010 must not be summed separately (remaining gen-ed choice is effectively 39 quarter credits, but the capture does not print that figure).",
+    "This ledger follows the default path for students not required to take ACS1003. Students determined to need additional support must take ACS1003 Building Skills for Academic Success (6 quarter credits) in their first quarter, must take BUS2003 instead of BUS2007, and choose only 33 (not 39) elective quarter credits.",
+    "Total requires a minimum of 54 quarter credits from the 3000-level and above; which electives/gen-ed courses satisfy this depends on student choices and is not itemized.",
+    "General education category minimums (at least 4 quarter credits from each of Communication, Humanities, Natural Science and Mathematics, Social Science) are stated but specific course selections are student choice.",
+    "Optional Honors Pathway (PHI-H2005 3, COM-H4005 6, SOC-H3005 6; at least 15 quarter credits applied toward general education) is not included in the default ledger.",
+    "The capture does not state any residency or institutional-credit requirement (courses that must be completed at Capella) or transfer credit limits.",
+    "The FlexPath option of this specialization (measured in program points) is not captured beyond its introduction and is not covered by this ledger.",
+    "Course prerequisites are referenced to course descriptions not included in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bs-in-business-accounting-general-education-requirements-minimum-of-4-quarter-credits-from-each-category",
+      "code": "",
+      "title": "General Education Requirements (minimum of 4 quarter credits from each category)",
+      "credits": 45,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "Choose 45 quarter credits with a minimum of 4 quarter"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-mat2010",
+      "code": "MAT2010",
+      "title": "Practical Statistics",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "MAT2010 Practical Statistics 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus2007",
+      "code": "BUS2007",
+      "title": "Introduction to Business Perspectives",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS2007 Introduction to Business 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus1011",
+      "code": "BUS1011",
+      "title": "Management Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS1011 Management Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus2012",
+      "code": "BUS2012",
+      "title": "Leadership Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS2012 Leadership Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus2021",
+      "code": "BUS2021",
+      "title": "Business Law Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS2021 Business Law Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus2030",
+      "code": "BUS2030",
+      "title": "Marketing and Sales Fundamentals",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS2030 Marketing and Sales 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus2061",
+      "code": "BUS2061",
+      "title": "Accounting Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS2061 Accounting Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus2062",
+      "code": "BUS2062",
+      "title": "Finance Fundamentals",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS2062 Finance Fundamentals 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus3022",
+      "code": "BUS3022",
+      "title": "Fundamentals of Supply Chain Management",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS3022 Fundamentals of Supply 3"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus3040",
+      "code": "BUS3040",
+      "title": "Fundamentals of Human Resource Management",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS3040 Fundamentals of Human 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus3050",
+      "code": "BUS3050",
+      "title": "Fundamentals of Organizational Communication",
+      "credits": 6,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS3050 Fundamentals of 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4060",
+      "code": "BUS4060",
+      "title": "Financial Accounting Principles",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4060 Financial Accounting 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4061",
+      "code": "BUS4061",
+      "title": "Managerial Accounting Principles",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4061 Managerial Accounting 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4062",
+      "code": "BUS4062",
+      "title": "Intermediate Financial Accounting Topics and Trends",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4062 Intermediate Financial 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4063",
+      "code": "BUS4063",
+      "title": "Advanced Financial Accounting Topics and Trends",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4063 Advanced Financial 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4064",
+      "code": "BUS4064",
+      "title": "Cost Accounting for Planning and Control",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4064 Cost Accounting for 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4065",
+      "code": "BUS4065",
+      "title": "Income Tax Concepts and Strategies",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4065 Income Tax Concepts and 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4068",
+      "code": "BUS4068",
+      "title": "Contemporary Auditing Using Investigative Accounting Practices",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4068 Contemporary Auditing 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4070",
+      "code": "BUS4070",
+      "title": "Foundations in Finance",
+      "credits": 6,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4070 Foundations in Finance 6"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-elective-courses-any-undergraduate-courses",
+      "code": "",
+      "title": "Elective courses (any undergraduate courses)",
+      "credits": 39,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "At least 39§ quarter credits"
+        }
+      ]
+    },
+    {
+      "id": "bs-in-business-accounting-bus4993",
+      "code": "BUS4993",
+      "title": "Business Capstone Project",
+      "credits": 6,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "capella-bs-in-business-accounting-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "capella-bs-in-business-accounting-catalog-2026-11-23",
+          "text": "BUS4993 Business Capstone Project 6"
+        }
+      ]
+    }
+  ]
+}
