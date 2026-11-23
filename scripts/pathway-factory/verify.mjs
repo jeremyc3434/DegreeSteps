@@ -20,7 +20,7 @@ async function captureText(captureCache,path,base){
 }
 
 /** Collects every object carrying quotes, with the claim's own source ids for cross-checking. */
-function quotedClaims(kit){
+export function quotedClaims(kit){
   const claims=[];
   const take=(claim,file,label)=>{if(Array.isArray(claim?.quotes))claims.push({claim,file,label});};
   for(const[name,policy]of Object.entries(kit.school.policies||{}))take(policy,'school.json','policy '+name);
