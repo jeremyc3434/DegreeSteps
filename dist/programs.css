@@ -61,3 +61,24 @@ body.programs-page .pf-program .pf-choice-note { margin:8px 0 0; font-size:.875r
 body.programs-page #program-filters > label { min-width:0; }
 body.programs-page #program-filters select { min-width:0; }
 .programs-page .pf-badge.pf-badge-fit { font-size:.875rem; }
+.pf-personal { display:flex; align-items:center; flex-wrap:wrap; gap:10px 20px; margin:18px 0 8px; padding:16px 18px; background:#eef3ff; border:1px solid #cbd8f3; border-radius:10px; }
+.pf-personal-toggle { display:inline-flex; align-items:center; gap:10px; min-height:44px; font-size:1rem; font-weight:650; color:#1c304e; cursor:pointer; }
+.pf-personal-toggle input { width:20px; height:20px; margin:0; accent-color:var(--ds-cobalt); }
+.pf-personal p { flex:1 1 280px; margin:0; font-size:.9375rem; line-height:1.5; color:#415676; }
+.pf-personal button { min-height:44px; border:0; padding:8px 12px; background:transparent; color:var(--ds-cobalt); font:inherit; text-decoration:underline; text-underline-offset:3px; }
+.pf-personal-fit { margin-top:16px; padding:14px 16px; border-radius:8px; background:#f4f7ff; border:1px solid #dde5f6; }
+.pf-personal-fit dl { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px 18px; margin:0; }
+.pf-personal-fit dl>div { min-width:0; }
+.pf-personal-fit dt { color:#526781; font-size:.875rem; line-height:1.45; }
+.pf-personal-fit dd { margin:4px 0 0; color:#1c304e; font-size:1.1875rem; line-height:1.35; font-weight:650; }
+.pf-personal-fit dd small { font-size:.875rem; font-weight:400; }
+.pf-personal-fit .pf-personal-stages { margin:10px 0 0; font-size:.875rem; line-height:1.5; color:#526781; }
+.pf-personal-fit .pf-personal-stages span { white-space:nowrap; }
+.pf-personal-track { display:flex; overflow:hidden; height:8px; margin-top:12px; border-radius:20px; background:#dce4f2; }
+.pf-personal-track .pf-personal-finished { background:#287853; }
+.pf-personal-track .pf-personal-unfinished { background:#6a7bfa; }
+.pf-personal-unavailable { margin:14px 0 0; font-size:.875rem; line-height:1.5; color:#526781; }
+.pf-personal-price-label { display:block; font-size:.875rem; color:#526781; }
+.pf-personal-price-value { display:block; font-size:1.1875rem; color:#1c304e; font-weight:650; }
+.pf-side [data-personal-review] { display:inline-flex; align-items:center; justify-content:center; width:100%; min-height:48px; padding:12px 18px; font-size:1rem; font-weight:600; }
+@media(max-width:700px) { .pf-personal { gap:4px; padding:12px 14px; } .pf-personal p { flex-basis:100%; } .pf-personal-fit { padding:12px; } }

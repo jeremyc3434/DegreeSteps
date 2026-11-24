@@ -67,7 +67,7 @@ async function run(name,fn){
  browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
  for(const width of[390,1440]){
   await run('Start combines independent study filters and keeps them through the credits step at '+width+'px',async()=>{
-   const{page,initial}=await open('start.html?subject=business&level=bachelor&format=online&confirm=0',width);await startReady(page);
+   const{page,initial}=await open('start.html?subject=business&level=bachelor&format=online&confirm=0&fit=0',width);await startReady(page);
    await page.locator('#start-pace').selectOption('self-paced');await page.locator('#start-cbe').check();await page.locator('#start-billing').selectOption('subscription');
    const wanted=expected(item=>item.info.subjects.includes('business')&&item.route.level==='bachelor'&&item.info.fit.modality==='online'&&item.info.fit.competencyBased===true&&item.info.fit.selfPaced===true&&item.info.fit.billing==='subscription');
    assert(wanted.length>0);assert.deepEqual(sorted(await startIds(page)),sorted(wanted));
@@ -87,7 +87,7 @@ async function run(name,fn){
   });
 
   await run('Finder distinguishes per-credit, flat-term and subscription plans without losing saved courses at '+width+'px',async()=>{
-   const{page,initial}=await open('programs.html?format=online&confirm=0&pace=scheduled&billing=per-credit',width);await programsReady(page);
+   const{page,initial}=await open('programs.html?format=online&confirm=0&pace=scheduled&billing=per-credit&fit=0',width);await programsReady(page);
    assert.deepEqual(sorted(await programIds(page)),sorted(readyOnlinePerCredit));
    assert((await page.locator('.pf-tuition-basis').allInnerTexts()).every(text=>/\$410.*\$475 per credit/.test(text)),'Known threshold rates do not become an unknown-price message');
    await page.locator('#program-cbe').check();assert.deepEqual(sorted(await programIds(page)),sorted(expected(item=>item.info.fit.modality==='online'&&item.info.fit.billing==='per-credit'&&item.info.fit.selfPaced===false&&item.info.fit.competencyBased===true)));await page.locator('[data-clear-filter="cbe"]').click();assert.deepEqual(sorted(await programIds(page)),sorted(readyOnlinePerCredit));

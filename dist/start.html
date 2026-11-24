@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#4054f4"><title>Build my plan — DegreeSteps</title><meta name="description" content="Pick a degree, add credits you have, and build your plan in three steps."><link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="start.css"><script src="/planner.js" defer></script><script src="program-catalog.js" defer></script><script src="program-opportunities.js" defer></script><script src="account-client.js" defer></script><script src="start.js" defer></script><script src="/site-header.js" defer></script><script src="app-shell.js" defer></script><link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><script src="/growth-metrics.js" defer></script><script src="/coach.js" defer></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#4054f4"><title>Build my plan — DegreeSteps</title><meta name="description" content="Pick a degree, add credits you have, and build your plan in three steps."><link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="start.css"><script src="/planner.js" defer></script><script src="program-catalog.js" defer></script><script src="program-opportunities.js" defer></script><script src="account-client.js" defer></script><script src="degree-discovery-client.js" defer></script><script src="start.js" defer></script><script src="/site-header.js" defer></script><script src="app-shell.js" defer></script><link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><script src="/growth-metrics.js" defer></script><script src="/coach.js" defer></script></head>
 <body class="start-page ds-experience ds-workspace-page ds-discovery-page">
 <a class="start-skip" href="#start-app">Skip to the plan builder</a>
 <main id="start-app" class="start-app" tabindex="-1">
@@ -27,10 +27,16 @@
       </div><p class="start-note">Plan estimates are before aid and exclude living costs. Study pace affects the range.</p></details>
       <div class="start-row start-row-end">
         <label class="start-check"><input type="checkbox" id="start-confirm" checked> Include plans that need school confirmation</label>
-        <label class="start-sort"><span>Sort</span><select id="start-sort"><option value="cost">Lowest cost first</option><option value="outside">Most credits for less</option><option value="time">Finish sooner</option><option value="az">A–Z</option></select></label>
+        <label class="start-sort"><span>Sort</span><select id="start-sort"><option value="fit" id="start-sort-fit" hidden>Best fit for my courses</option><option value="cost">Lowest cost first</option><option value="outside">Most credits for less</option><option value="time">Finish sooner</option><option value="az">A–Z</option></select></label>
       </div>
     </form>
     <div id="start-active-filters" class="start-active-filters" aria-label="Active filters"></div>
+    <div class="start-personal-tools" id="start-personal-tools">
+      <label class="start-check" id="start-personal-label" hidden><input type="checkbox" id="start-personal"><span>Use my courses</span></label>
+      <a id="start-personal-courses" href="import-courses.html?from=degrees">Already taken classes? Add your courses</a>
+      <p id="start-personal-status" role="status" aria-live="polite" aria-busy="false"></p>
+      <button type="button" id="start-personal-retry" class="start-text-link" hidden>Try course matching again</button>
+    </div>
     <p id="start-count" class="start-count" role="status"></p>
     <div id="start-results" class="start-results"></div>
     <button type="button" id="start-more" class="start-secondary" hidden>Show more degrees</button>
