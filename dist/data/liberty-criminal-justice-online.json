@@ -741,6 +741,111 @@
         "catalogYear": "2026-2027"
       },
       "retrieval": "Actual official guide body reviewed for the exact named provider-course/receiving-course/quantity row. Online and residential URLs independently returned identical current PDF bytes."
+    },
+    {
+      "id": "liberty-cli-religion-calculator-2026-11-24",
+      "title": "Liberty registrar calculator — fixed Christian Leaders religion receiving awards",
+      "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "checked": "2026-11-24",
+      "evidenceType": "official-receiving-school-calculator",
+      "scope": "Undergraduate institutional receiving awards; the public query has no program or delivery-format parameter.",
+      "capture": {
+        "path": "content/transfer-awards/snapshots/liberty-cli-calculator-2026-11-24.json",
+        "sha256": "4fe1b9dba704f03d80aef7f02bba50d222d2db66223479f0a72c1c67640eec85"
+      }
+    },
+    {
+      "id": "cli-religion-course-catalog-2026-11-24",
+      "title": "Christian Leaders coded college-course catalog",
+      "url": "https://degrees.christianleaders.org/christian-leaders-college-catalog/",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "provider-identity"
+      ],
+      "checked": "2026-11-24",
+      "courseCodes": [
+        "BIB 111",
+        "BIB 112",
+        "MIN 310",
+        "THE 101",
+        "THE 210",
+        "THE 310"
+      ],
+      "capture": {
+        "path": "content/source-captures/0aa25cc9afd35216.txt",
+        "sha256": "0aa25cc9afd35216f1ee94a130e814627adde662b4990c0029af893a40798f35",
+        "rawSha256": "5486d24b43d8e5c79f177aee112254a98fb795230caeed2059d2cc7a5b354e99"
+      }
+    },
+    {
+      "id": "cli-religion-transcript-route-2026-11-24",
+      "title": "Christian Leaders official outgoing academic-transcript requirements and processing fees",
+      "url": "https://www.christianleadersinstitute.org/transfer-information/",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "issuer-policy"
+      ],
+      "checked": "2026-11-24",
+      "capture": {
+        "path": "content/source-captures/97c0c5964f2dd77e.txt",
+        "sha256": "97c0c5964f2dd77e62bbd40d0c98db1f08efa74b6f3d6cd1463cfb4c6acd7c18",
+        "rawSha256": "616998f58fd707677378c78adfe131c747ddbb0df8664871855f326273d8c856"
+      }
+    },
+    {
+      "id": "cli-religion-admissions-2026-11-24",
+      "title": "Christian Leaders Leadership Excellence School admission pathway",
+      "url": "https://www.christianleadersinstitute.org/admission/",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "issuer-policy"
+      ],
+      "checked": "2026-11-24",
+      "capture": {
+        "path": "content/source-captures/d3ba24d370117072.txt",
+        "sha256": "d3ba24d370117072494d008aaaaad1c67cf1723d0b3690702004bff62c4cec9f",
+        "rawSha256": "55e429841f7b30bc188ac02b29d79760eabf2a9a15165660ee65fb8fb58d44ea"
+      }
+    },
+    {
+      "id": "cli-religion-accreditation-2026-11-24",
+      "title": "Christian Leaders ABHE candidacy disclosure",
+      "url": "https://help.christianleaders.org/helpdesk/accreditation-status",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "recognition"
+      ],
+      "checked": "2026-11-24",
+      "capture": {
+        "path": "content/source-captures/eaf73c1129426672.txt",
+        "sha256": "eaf73c11294266721836512f30a810bf79e90b73baea65f9200f02e2ffd4a4c0",
+        "rawSha256": "0c801cc475db5cdca348622078d0a358c0790d97c820042dc5f46b1839b5536a"
+      }
+    },
+    {
+      "id": "cli-religion-the-101-2026-11-24",
+      "title": "Christian Leaders Institute THE 101 current coded course identity",
+      "url": "https://christianleaders.org/course/view.php?id=1217",
+      "kind": "provider",
+      "provider": "Christian Leaders Institute",
+      "roles": [
+        "provider-identity"
+      ],
+      "checked": "2026-11-24",
+      "courseCodes": [
+        "THE 101"
+      ],
+      "retrieval": "public-search-index; direct course page returned HTTP 403 during this review",
+      "listedCreditQuantity": 3,
+      "listedCreditUnit": "credits"
     }
   ],
   "requirements": [
@@ -2463,6 +2568,87 @@
           "evidence": "published",
           "effortHours": null,
           "url": "https://catalog.liberty.edu/undergraduate/courses/theo/"
+        },
+        {
+          "id": "liberty-cli-the-101-to-theo-104",
+          "provider": "Christian Leaders Institute",
+          "providerId": "christian-leaders",
+          "code": "THE 101",
+          "title": "Christian Basics: Introduction to Christian Doctrine",
+          "credits": 4,
+          "creditSystem": "semester",
+          "receivingCode": "THEO 104",
+          "upper": false,
+          "creditOrigin": "institutional",
+          "sourceCreditStatus": "unknown",
+          "providerListedCreditQuantity": 3,
+          "providerListedCreditUnit": "credits",
+          "providerCourseUrl": "https://christianleaders.org/course/view.php?id=1217",
+          "url": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+          "evidence": "conditional",
+          "evidenceType": "official-receiving-school-calculator",
+          "mappingScope": "Current exact named undergraduate receiving award. The public calculator has no program, catalog or delivery-format parameter; individual eligible transcript and exact degree application remain conditional.",
+          "degreeLevels": [
+            "associate",
+            "bachelor"
+          ],
+          "modalities": [
+            "online",
+            "campus"
+          ],
+          "catalogs": [
+            "2026-2027"
+          ],
+          "sourceIds": [
+            "liberty-cli-religion-calculator-2026-11-24"
+          ],
+          "identitySourceIds": [
+            "cli-religion-the-101-2026-11-24",
+            "cli-religion-course-catalog-2026-11-24"
+          ],
+          "calculatorInstitutionCode": "M12424",
+          "calculatorAwardRange": {
+            "low": 4,
+            "high": 4
+          },
+          "costStatus": "unpriced-academic-pathway",
+          "paceStatus": "provider-limits-known-course-duration-not-promised",
+          "conditions": [
+            "Use the eligible CLI academic-transcript pathway; free course access alone is not an academic transcript.",
+            "CLI currently discloses ABHE candidate/pre-accreditation status; no regional-accreditation claim is made.",
+            "Meet the academic pathway admission and location eligibility requirements before enrolling for transferable college credit.",
+            "The named Liberty receiving course must satisfy this degree requirement, grade rules and residency allocation.",
+            "The provider-listed course quantity and Liberty receiving credits are separate; only the exact published Liberty award counts toward this requirement.",
+            "CLI academic-pathway fees and the outgoing transcript charge are separate from free learning access. No zero-price route or finish date is assumed."
+          ],
+          "courseUrl": "https://christianleaders.org/course/view.php?id=1217",
+          "preapprovalRequired": true,
+          "receivingMapStatus": "published-university-calculator",
+          "issuerReview": {
+            "issuer": "Christian Leaders Institute",
+            "creditRoute": "cli-academic-transcript",
+            "origin": "institutional",
+            "routeStatus": "candidate",
+            "accreditation": "ABHE candidate/pre-accreditation; not regional or full institutional accreditation.",
+            "freeLearningAloneIsCredit": false,
+            "outgoingTranscriptFeeNonGraduateUSD": 75,
+            "outgoingTranscriptFeeGraduateUSD": 30,
+            "totalAcademicPathwayCostUSD": null,
+            "eligibility": "An eligible academic-transcript pathway is required. Leadership Excellence admission and location eligibility apply; a free developmental learning record is not automatically a college-credit transcript.",
+            "sourceIds": [
+              "cli-religion-transcript-route-2026-11-24",
+              "cli-religion-admissions-2026-11-24",
+              "cli-religion-accreditation-2026-11-24"
+            ]
+          },
+          "providerPacePolicy": {
+            "maximumActiveCredits": 18,
+            "maximumCompletedCreditsPerTerm": 21,
+            "termMonths": 4,
+            "courseEnrollmentDays": 180,
+            "sourceUrl": "https://christianleaders.org/mod/page/view.php?id=114819&lang=en_us",
+            "reviewedOn": "2026-11-17"
+          }
         }
       ],
       "prerequisiteNotes": "The reviewed course catalog lists no course prerequisite. Personal registration eligibility and available sections remain separate.",
@@ -6294,5 +6480,77 @@
     "classificationReviewedOn": "2026-11-18",
     "newSourceRetrievals": true,
     "personalAwardsCreated": 0
+  },
+  "reviewedBaselineChoices": {
+    "version": 1,
+    "reviewId": "liberty-cli-religion-baseline-preservation-2026-11-24",
+    "modelId": "liberty-criminal-justice-online",
+    "format": "Online",
+    "creditSystem": "semester",
+    "totalCredits": 120,
+    "catalogYear": "2026–2027",
+    "checkedOn": "2026-11-24",
+    "sourceIds": [
+      "liberty-official-sophia-online-2026-07",
+      "degree",
+      "univ-courses",
+      "rlgn-courses",
+      "bibl-courses",
+      "theo-courses",
+      "govt-courses",
+      "liberty-official-study-com-online-2026-05",
+      "cjus-courses",
+      "sophia",
+      "liberty-cj-online-sophia-selected-awards-2026-11-18",
+      "study",
+      "liberty-cj-study-online-named-awards-2026-11-18"
+    ],
+    "optionSelections": {
+      "engl-101": "sophia-soph-0015",
+      "coms-101": "sophia-soph-0024",
+      "engl-102": "sophia-soph-0030",
+      "arts-209": "sophia-soph-0009",
+      "univ-104": "university-univ-104",
+      "math-115": "sophia-soph-0055",
+      "rlgn-104": "university-rlgn-104",
+      "ethc-101": "sophia-soph-0020",
+      "biol-102": "sophia-soph-0002",
+      "psyc-101": "sophia-soph-0048",
+      "bibl-104": "university-bibl-104",
+      "theo-104": "university-theo-104",
+      "govt-200": "university-govt-200",
+      "govt-220": "sophia-soph-0071",
+      "cjus-200": "sophia-soph-0090",
+      "cjus-230": "studycom-sdcm-0177",
+      "cjus-231": "university-cjus-231",
+      "cjus-300": "university-cjus-300",
+      "cjus-310": "studycom-sdcm-0128",
+      "cjus-320": "university-cjus-320",
+      "cjus-330": "university-cjus-330",
+      "cjus-340": "university-cjus-340",
+      "cjus-350": "university-cjus-350",
+      "cjus-400": "university-cjus-400",
+      "cjus-410": "university-cjus-410",
+      "cjus-420": "university-cjus-420",
+      "govt-480": "university-govt-480",
+      "econ-213": "sophia-soph-0011",
+      "econ-214": "sophia-soph-0012",
+      "psyc-210": "sophia-soph-0078",
+      "soci-200": "sophia-soph-0051",
+      "phil-201": "sophia-soph-0027",
+      "phil-210": "sophia-soph-0065",
+      "hius-221": "sophia-soph-0022",
+      "hius-222": "sophia-soph-0025",
+      "arts-201": "sophia-soph-0006",
+      "arts-202": "sophia-soph-0029",
+      "hlth-216": "sophia-soph-0080",
+      "biol-101": "studycom-sdcm-0001"
+    }
+  },
+  "cliReligionMappingReview": {
+    "checkedOn": "2026-11-24",
+    "sourceSnapshot": "content/transfer-awards/snapshots/liberty-cli-calculator-2026-11-24.json",
+    "receivingAwardSource": "https://webapi.liberty.edu/transfer-credits/?institution=M12424&term=NULL&state=FL&subject=",
+    "scope": "Exact fixed named undergraduate religion receiving awards. Current catalog, delivery format, academic transcript and personal approval remain explicit conditions."
   }
 }

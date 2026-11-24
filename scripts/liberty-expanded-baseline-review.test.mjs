@@ -27,7 +27,10 @@ function beforeSharedComposition(input){
  return applyLibertyCurrentEvidence(model,{compiled:true});
 }
 const original=beforeSharedComposition(compiledHealth);
-function planFor(model,selections=model.reviewedBaselineChoices?.optionSelections){return Planner.generate(model,{providers:[...new Set(model.requirements.flatMap(row=>row.options.map(option=>option.provider)).filter(provider=>provider!=='University'))],allowConditional:true,priority:'transfer',completed:[],optionSelections:selections,optimizationNodeBudget:12000});}
+// These historical baselines use their reviewed provider preferences. Later
+// optional providers must be explicitly enabled before their awards can enter.
+const baselineProviders=['Sophia','Study.com','StraighterLine','CLEP','DSST'];
+function planFor(model,selections=model.reviewedBaselineChoices?.optionSelections){return Planner.generate(model,{providers:baselineProviders,allowConditional:true,priority:'transfer',completed:[],optionSelections:selections,optimizationNodeBudget:12000});}
 const quality=(model,plan=planFor(model))=>assessPathwayQuality({model,plan,asOf:'2026-11-19'});
 const option=(model,requirement='free-electives-1',code='SOPH-0022')=>model.requirements.find(row=>row.id===requirement).options.find(option=>option.code===code&&option.mappingResearchClosed===true);
 
@@ -190,5 +193,17 @@ test('the final shared-composed healthcare and Psychology outputs preserve compl
    // The differently titled Health 305 receiving award remains held.
    assert.equal(plan.rows.find(row=>row.requirementId==='busi-323')?.option?.provider,'University');assert(!plan.rows.some(row=>row.option.code==='SDCM-0208'));
   }
+ }
+});
+
+test('explicitly enabling and selecting a later CLI religion award retains its conditional publication hold and unknown original units',async()=>{
+ const compiledPsych=(await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online');
+ for(const model of [compiledHealth,compiledPsych]){
+  const requirement=model.requirements.find(row=>row.id==='theo-104'),choice=requirement.options.find(option=>option.id==='liberty-cli-the-101-to-theo-104');assert(choice);
+  const plan=Planner.generate(model,{providers:[...baselineProviders,'Christian Leaders Institute'],allowConditional:true,priority:'transfer',completed:[],optionSelections:{...model.reviewedBaselineChoices.optionSelections,'theo-104':choice.id}}),report=assessPathwayQuality({model,plan,asOf:'2026-11-24'});
+  assert.equal(plan.validation.academicCountsValid,true);assert.equal(plan.rows.find(row=>row.requirementId==='theo-104').option.id,choice.id);
+  assert.equal(choice.credits,4);assert.equal(choice.providerListedCreditQuantity,3);assert.equal(choice.sourceCredits,undefined);assert.equal(choice.sourceCreditSystem,undefined);assert.equal(choice.sourceCreditStatus,'unknown');
+  assert.equal(report.publication.ready,false);assert(report.findings.some(finding=>finding.code==='conditional-award'&&finding.optionIds.includes(choice.id)&&finding.blocking===true));
+  assert(plan.blockers.some(issue=>issue.code==='conditional_mapping'));assert.equal(plan.totals.accounted,120);assert.equal(plan.totals.confirmed,0);assert.equal(plan.totals.reported,0);
  }
 });

@@ -220,11 +220,15 @@ test('missing prerequisites or an impossible load prevent a numerical timing cla
   assert.equal(tooSmall.timing.scenarioWeeks, null);
   assert(tooSmall.timing.missing.some(item => item.includes('largest planned course')));
 });
-test('speed timing retains residency, upper-level and conditional evidence limits', () => {
+test('speed timing retains residency, upper-level rules and the reviewed Liberty baseline', () => {
   const p = JSON.parse(fs.readFileSync('./dist/data/liberty.json'));
   const speed = Planner.generate(p, { ...defaults, priority: 'speed', timing: { externalWeeks: { Sophia: 2, 'Study.com': 3, CLEP: 1 }, externalConcurrency: 2, universityTermWeeks: 16, universityCreditsPerTerm: 15 } });
   assert(speed.validation.academicCountsValid); assert(speed.totals.institutional >= 30); assert(speed.totals.majorInstitutional >= 18); assert(speed.totals.upper >= 30);
-  assert(speed.timing.scenarioWeeks > 0); assert.equal(speed.readiness, 'draft');
+  assert(speed.timing.scenarioWeeks > 0); assert.equal(speed.readiness, 'review-ready');
+  assert.equal(speed.validation.valid,true);assert.equal(speed.blockers.length,0);
+  assert.equal(speed.totals.external,83);assert.equal(speed.totals.institutional,37);
+  assert(speed.rows.every(row=>row.option.evidence==='published'),'the reviewed baseline does not approve conditional awards');
+  assert.equal(speed.totals.confirmed,0,'a proposed baseline does not award personal credit');
 });
 test('default transfer priority preserves outside credit even when university tuition is cheaper', () => {
   const p = program([requirement('a'), requirement('b'), requirement('c')]);

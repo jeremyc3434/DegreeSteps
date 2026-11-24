@@ -680,12 +680,29 @@
     const routes=catalog.pathways.filter(route=>hasCoursePlan(route)||order.has(route.id)&&route.modelId).sort((a,b)=>(order.get(a.id)??999)-(order.get(b.id)??999)||fit(b)-fit(a)||a.school.localeCompare(b.school)||a.title.localeCompare(b.title));
     return '<section class="course-plan-recovery"><h2>Course plans you can open now</h2><p>Choose a degree to see its courses. Your saved learning stays with you.</p>'+routes.map(route=>'<div><span><strong>'+esc(route.title)+'</strong><small>'+esc(route.school)+' · '+esc(route.modalities?.includes('online')?'Online':'On campus')+(order.has(route.id)?' · Previously saved':'')+'</small></span><button type="button" class="button secondary small" data-recovery-open="'+esc(route.id)+'">Open course plan</button></div>').join('')+'</section>';
   }
+  function hiddenTransferOptionsHTML(row) {
+    if(!row||['reported','confirmed'].includes(row.status))return '';
+    const req=reqFor(row),key=pathway.modelId||pathway.id,providers=[...new Set((req?.options||[]).map(option=>option.provider).filter(provider=>provider&&provider!=='University'))];
+    if(!providers.length)return '';
+    // Relax only source and conditional-match preferences. All academic checks
+    // and the student's other preferences still apply, without changing the plan.
+    const expanded={...state,scenarios:{...state.scenarios,[key]:{...Sheet.scenario(state,key),providers,allowConditional:true}}};
+    const expandedInput=Journey.planningInput(expanded,pathway,match,program),visible=new Set(Planner.availableOptions(program,req.id,input).map(option=>option.id));
+    const code=value=>String(value||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+    const hidden=Planner.availableOptions(program,req.id,expandedInput).filter(option=>option.provider!=='University'&&!option.selectionRequired&&option.allocationType!=='category-substitution'&&code(req.code)&&code(option.receivingCode)===code(req.code)&&!visible.has(option.id));
+    const sourcesOff=hidden.some(option=>!input.providers.includes(option.provider)),conditionsOff=hidden.some(option=>option.evidence==='conditional'&&!input.allowConditional);
+    if(!sourcesOff&&!conditionsOff)return '';
+    const reason=sourcesOff&&conditionsOff?'Some course sources and conditional transfer matches are off.':sourcesOff?'Some course sources are off.':'Conditional transfer matches are off.';
+    return '<div class="sheet-detail" data-hidden-transfer-options><p>More transfer options are hidden. '+reason+'</p>'+button('options','Course preferences','secondary')+'</div>';
+  }
   function simpleCourseDialog(id) {
     const entry=Object.values(courseView?.groups||projection().groups).flat().find(entry=>entry.requirementIds.includes(id)),row=plan?.rows.find(row=>row.requirementId===id);if(!entry||!row)return;dialogRow=id;
     const done=['reported','confirmed'].includes(row.status),missing=courseView.groups.unmapped.some(item=>item.requirementIds.includes(id)),record=progressRecord(row);
+    const hiddenOptions=hiddenTransferOptionsHTML(row);
     let html='<h2>'+esc(entry.title)+'</h2><p class="course-info-meta">'+esc([entry.provider,entry.code,entry.credits+' degree '+unitWord(entry.credits)].filter(Boolean).join(' · '))+'</p>'+creditBalanceNote(row);
-    if(missing&&!openSlot(row))html+='<p>No transfer course has been matched to this requirement yet.</p>';
+    if(missing&&!openSlot(row))html+=hiddenOptions?'':'<p>No transfer course has been matched to this requirement yet.</p>';
     else html+='<p>'+(entry.courseUrl?providerLink(entry.courseUrl,'Open course ↗',entry.provider):entry.providerUrl?providerLink(entry.providerUrl,entry.providerLinkLabel+' ↗',entry.provider):'')+'</p>';
+    html+=hiddenOptions;
     if(needsCourseChoice(row))html+=courseChoiceActions(row);
     if(openSlot(row)&&!done)html+=slotChoiceHTML(row);
     if(!missing&&!needsCourseChoice(row))html+='<label class="sheet-field"><span>Course progress</span>'+courseProgressControl(row,entry.title)+'</label>';
@@ -834,7 +851,7 @@
     const selectedDetails='<details class="sheet-comparison-details"><summary>Pricing, assessments & sources</summary>'+(guide?.priceNote?'<h3>Provider pricing</h3><p>'+esc(guide.priceNote)+'</p>':'<p>A current price quote for this option is still needed.</p>')+(guide?.assessmentNote?'<h3>Assessment guidance</h3><p>'+esc(guide.assessmentNote)+'</p>':'<p>Confirm the current assessments and any proctoring directly with the provider.</p>')+(conditions.length?'<h3>Transfer conditions</h3><ul>'+conditions.map(condition=>'<li>'+esc(condition)+'</li>').join('')+'</ul>':'')+'<p>'+(safeURL(selected.url)?link(selected.url,'Transfer / course reference'):'')+(safeURL(guide?.url)?' · '+link(guide.url,'Provider information'):'')+'</p></details>';
     const isCurrent=selected.id===currentId;
     const portability=selected.provider!=='University'?'<a class="sheet-portability" href="compare-plans.html?course='+encodeURIComponent(selected.code||selected.id)+'&amp;provider='+encodeURIComponent(selected.provider)+'">Check this course against other degrees →</a>':'';
-    $('sheet-dialog-content').innerHTML=heading+comparisonImpact(preview)+'<div class="sheet-comparison-options" aria-label="Available course options">'+cards+'</div>'+previewCourseLink+(selected.evidence==='conditional'&&selected.provider!=='University'?'<p class="sheet-comparison-review"><span aria-hidden="true">●</span> Review the documented eligibility conditions for this course.</p>':'')+'<div class="sheet-comparison-apply"><button type="button" class="button primary" data-apply-course="'+esc(id)+'" data-option="'+esc(selected.id)+'"'+(!preview.allowed||isCurrent?' disabled':'')+'>'+(isCurrent?'Already in my plan':'Use this course')+'</button><button type="button" class="button ghost" data-row="'+esc(id)+'">Current course details</button></div>'+portability+selectedDetails;
+    $('sheet-dialog-content').innerHTML=heading+comparisonImpact(preview)+'<div class="sheet-comparison-options" aria-label="Available course options">'+cards+'</div>'+hiddenTransferOptionsHTML(row)+previewCourseLink+(selected.evidence==='conditional'&&selected.provider!=='University'?'<p class="sheet-comparison-review"><span aria-hidden="true">●</span> Review the documented eligibility conditions for this course.</p>':'')+'<div class="sheet-comparison-apply"><button type="button" class="button primary" data-apply-course="'+esc(id)+'" data-option="'+esc(selected.id)+'"'+(!preview.allowed||isCurrent?' disabled':'')+'>'+(isCurrent?'Already in my plan':'Use this course')+'</button><button type="button" class="button ghost" data-row="'+esc(id)+'">Current course details</button></div>'+portability+selectedDetails;
     const active=$('sheet-dialog-content').querySelector('[data-preview-row][aria-pressed="true"]');
     if(optionId)active?.focus({preventScroll:true});
   }

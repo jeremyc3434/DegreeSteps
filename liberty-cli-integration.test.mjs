@@ -7,7 +7,8 @@ const review=await readLibertyCLIReview();
 test('legacy residential business receives exact optional alternatives without changing defaults or source quantities',async()=>{
  const original=JSON.parse(await readFile(new URL('dist/data/liberty.json',import.meta.url),'utf8')),before=JSON.stringify(original),model=addLibertyCLIOptions(original,review);
  assert.equal(JSON.stringify(original),before);
- const options=model.requirements.flatMap(row=>row.options).filter(option=>option.provider===review.provider);
+ const originalAwardIds=new Set(review.awards.map(award=>award.id));
+ const options=model.requirements.flatMap(row=>row.options).filter(option=>originalAwardIds.has(option.id));
  assert.equal(options.length,4);
  assert(!model.defaultProviders.includes(review.provider));
  assert(options.every(option=>option.evidence==='conditional'&&option.preapprovalRequired===true&&option.credits===3&&option.sourceCredits===undefined&&option.sourceCreditSystem===undefined));

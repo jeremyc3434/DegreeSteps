@@ -138,7 +138,7 @@ function prepareTemplatePlan(state,template,A,catalog,consent={},research=false)
    if(codeKey(option.provider)==='university'&&option.provider!=='University')throw Error('Use the canonical University provider for destination courses.');
    if(option.provider!=='University'&&(alternative&&institutional||!alternative&&!recognized))throw Error('A transfer option needs a consistent college-issued or alternative credit source.');
    if(['master','doctorate','specialist'].includes(model.level)&&option.provider!=='University'&&(alternative||option.graduateApproval!==true||!institutional))throw Error('Graduate transfer choices need exact graduate-program approval and college-issued credit.');
-   const documented=documentedPublished(req,option),added={...mapped(option),id:namespace+'-row-'+(index+1)+'-option-'+(optionIndex+1),evidence:documented?'published':'conditional',creditSystem:model.creditSystem,conditions:[...list(option.conditions),...(documented?[]:['Your university must confirm this placement for your own records and catalog.'])]};
+   const documented=documentedPublished(req,option),conditions=list(option.conditions),added={...mapped(option),id:namespace+'-row-'+(index+1)+'-option-'+(optionIndex+1),evidence:documented?'published':'conditional',creditSystem:model.creditSystem,conditions:conditions.length||documented?[...conditions]:['School approval required.']};
    for(const field of ['status','learningId','completedOn','schoolConfirmed','confirmed','evaluations'])delete added[field];
    if(added.bundleId){if(!bundles.has(added.bundleId))bundles.set(added.bundleId,namespace+'-bundle-'+(bundles.size+1));added.bundleId=bundles.get(added.bundleId);}
    if(alternative)added.creditOrigin='alternative';

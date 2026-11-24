@@ -16,7 +16,7 @@
 import {join,resolve} from 'node:path';
 import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {clone,list,slug,same,canonical,identityFields,awardFields,inScope,matchRequirement,loadProviders,loadKit,readJSON,writeJSON,stringifyKit,providerFile,parseArgs,isMain,kitsRoot,root,exists} from './lib.mjs';
+import {clone,list,slug,same,canonical,identityFields,awardFields,inScope,matchRequirement,parsePlacement,loadProviders,loadKit,readJSON,writeJSON,stringifyKit,providerFile,parseArgs,isMain,kitsRoot,root,exists} from './lib.mjs';
 import {compileKit} from './compile.mjs';
 
 export const files=['liberty','liberty-history-online','liberty-online-expansion','liberty-residential-expansion'];
@@ -238,8 +238,40 @@ export async function migrate({base=root,existingProviders,config=libertyConfig}
     for(const source of list(existing.sources))if(!known.has(source.id))school.sources.push(clone(source));
     for(const d of list(existing.publish?.documents))if(!paths.has(d.path))school.publish.documents.push(clone(d));
     for(const slug of list(existing.programOrder))if(!school.programOrder.includes(slug))school.programOrder.push(slug);
-    const existingRows=await exists(join(kitDir,'equivalencies.json'))?(await readJSON(join(kitDir,'equivalencies.json'))).equivalencies:[];
-    const ids=new Set(equivalencies.map(r=>r.id));for(const row of list(existingRows))if(row.authored&&!ids.has(row.id))equivalencies.push(clone(row));
+    const existingEquivalencies=await exists(join(kitDir,'equivalencies.json'))?await readJSON(join(kitDir,'equivalencies.json')):{};
+    const authored=list(existingEquivalencies.equivalencies).filter(row=>row.authored),authoredIds=new Set(authored.map(row=>row.id));
+    const preserveCondition=id=>{
+      const text=existingEquivalencies.conditionLibrary?.[id];
+      assert(typeof text==='string','Authored condition is missing: '+id);
+      assert(conditionLibrary[id]===undefined||conditionLibrary[id]===text,'Authored condition conflicts with the reconstructed library: '+id);
+      conditionLibrary[id]=text;
+    };
+    // Kit-authored awards remain authoritative even when they now appear in the registry. Reconstructing such an
+    // award can factor its option-id suffix into a placement mode; unchanged authored programs would then lose that
+    // suffix. Keep both the original award and its placements, including the exact ids a saved choice refers to.
+    for(const row of authored){
+      const index=equivalencies.findIndex(existing=>existing.id===row.id);
+      if(index<0)equivalencies.push(clone(row));else equivalencies[index]=clone(row);
+      list(row.conditionIds).forEach(preserveCondition);
+    }
+    for(const program of programs){
+      const path=join(kitDir,'programs',program.slug+'.json');if(!await exists(path))continue;
+      const original=await readJSON(path);
+      for(const requirement of program.requirements){
+        const previous=original.requirements.find(row=>row.id===requirement.id);
+        const placements=new Map(list(previous?.optionRows).map(entry=>[parsePlacement(entry).row,entry]).filter(([id])=>authoredIds.has(id)));
+        if(!placements.size)continue;
+        requirement.optionRows=requirement.optionRows.map(entry=>{
+          const parsed=parsePlacement(entry),original=placements.get(parsed.row);if(!original)return entry;
+          const {mode}=parsePlacement(original);
+          if(mode){
+            const definition=existingEquivalencies.placementModes?.[mode];assert(definition,'Authored placement mode is missing: '+mode);
+            equivalencyDoc.placementModes[mode]=clone(definition);list(definition.appendConditionIds).forEach(preserveCondition);
+          }
+          return clone(original);
+        });
+      }
+    }
   }
   return {school,equivalencies:equivalencyDoc,programs,providers:providerDocs,documents};
 }
@@ -299,7 +331,14 @@ async function main(){
   const rows=kit.equivalencies.equivalencies,wide=rows.filter(r=>r.scope.all);
   let baselineBytes=0;for(const name of files)baselineBytes+=Buffer.byteLength(await readFile(resolve(root,'dist/data/curricula/'+name+'.json'),'utf8'));
   console.log(JSON.stringify({school:schoolId,programs:kit.programs.length,outsideOptions:outside,equivalencyRows:rows.length,reuseRatio:Math.round(outside/rows.length*10)/10,institutionWideRows:wide.length,institutionWidePlacements:kit.programs.reduce((n,p)=>n+p.requirements.reduce((k,r)=>k+list(r.optionRows).filter(e=>typeof e==='string'&&wide.some(w=>w.id===e.split('@')[0])).length,0),0),placementModes:Object.keys(kit.equivalencies.placementModes).length,conditions:Object.keys(kit.equivalencies.conditionLibrary).length,parity:diffs.length?diffs.slice(0,20):'exact',check:Boolean(args.check),baselineBytes,kit:await kitSize()},null,2));
-  if(args.check){const committed=await loadKit(join(kitsRoot,schoolId));if(!same(committed.equivalencies.equivalencies,kit.equivalencies.equivalencies)){console.error('content/pathway-kits/liberty differs from a fresh migration');process.exitCode=1;}}
+  if(args.check){
+    const committed=await loadKit(join(kitsRoot,schoolId)),migrated=new Set(kit.programs.map(program=>program.slug));
+    const reconstructed={...committed,school:kit.school,equivalencies:kit.equivalencies,providers:kit.providers,programs:[...kit.programs,...committed.programs.filter(program=>!migrated.has(program.slug))]};
+    const roundtrip=compileKit(reconstructed).doc,changes=parity(doc.models,roundtrip.models);
+    // Equivalent factoring and row order may differ after a new authored award.
+    // Check the complete published academic content, including saved option ids.
+    if(roundtrip.models.length!==doc.models.length||changes.length){console.error('Liberty migration changes compiled academic content: '+changes.slice(0,20).join('; '));process.exitCode=1;}
+  }
   if(diffs.length)process.exitCode=1;
 }
 if(isMain(import.meta))await main();

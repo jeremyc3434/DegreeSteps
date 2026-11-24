@@ -338,19 +338,51 @@
     },
     "reviewedBaselineChoices": {
       "version": 1,
+      "reviewId": "liberty-cli-religion-baseline-preservation-2026-11-24",
       "modelId": "curriculum-liberty-psychology-bs-online",
-      "catalogYear": "2026-2027",
       "format": "Online",
       "creditSystem": "semester",
       "totalCredits": 120,
-      "checkedOn": "2026-11-19",
-      "reviewId": "liberty-expanded-online-baseline-review-2026-11-19",
+      "catalogYear": "2026-2027",
+      "checkedOn": "2026-11-24",
       "sourceIds": [
+        "liberty-official-sophia-online-2026-07",
         "liberty-psychology-bs-online-2026",
-        "liberty-psych-baseline-catalog-course-review-2026-11-19",
-        "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        "liberty-online-approved-gened",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83",
+        "liberty-psych-baseline-catalog-course-review-2026-11-19"
       ],
       "optionSelections": {
+        "engl-101": "sophia-soph-0015",
+        "coms-101": "sophia-soph-0024",
+        "engl-102": "sophia-soph-0030",
+        "arts-209": "sophia-soph-0009",
+        "math-121": "sophia-soph-0001",
+        "rlgn-104": "university-rlgn-104",
+        "ethc-101": "sophia-soph-0020",
+        "cstu-101": "studycom-sdcm-0047",
+        "bibl-104": "university-bibl-104",
+        "theo-104": "university-theo-104",
+        "biol-102": "sophia-soph-0002",
+        "psyc-101": "sophia-soph-0048",
+        "psyc-210": "sophia-soph-0078",
+        "psyc-354": "university-psyc-354",
+        "psyc-255": "studycom-sdcm-0043",
+        "psyc-310": "university-psyc-310",
+        "psyc-312": "studycom-sdcm-0182",
+        "psyc-320": "university-psyc-320",
+        "psyc-341": "university-psyc-341",
+        "psyc-351": "university-psyc-351",
+        "psyc-355": "university-psyc-355",
+        "psyc-365": "studycom-sdcm-0183",
+        "psyc-380": "studycom-sdcm-0181",
+        "psyc-420": "university-psyc-420",
+        "psyc-421": "university-psyc-421",
+        "psyc-430": "studycom-sdcm-0178",
+        "psyc-491": "university-psyc-491",
         "free-electives-1": "liberty-reviewed-study-sdcm-0173-free-electives-1",
         "free-electives-2": "liberty-reviewed-study-sdcm-0207-free-electives-2",
         "free-electives-3": "liberty-reviewed-study-sdcm-0172-free-electives-3",
@@ -361,7 +393,8 @@
         "free-electives-8": "sophia-soph-0029",
         "free-electives-9": "liberty-named-sophia-soph-0016-envr-215",
         "free-electives-10": "sophia-soph-0027",
-        "free-electives-11": "sophia-soph-0065"
+        "free-electives-11": "sophia-soph-0065",
+        "univ-104": "university-univ-104"
       }
     },
     "expandedBaselineReview": {
@@ -545,7 +578,13 @@
     "liberty-shared-source-f639549ea26b78473d6bc4ec",
     "liberty-shared-source-f70be6e1bbb75fd7dd20e42f",
     "liberty-shared-source-fd804abeef3e349dbe30aecb",
-    "liberty-shared-source-fdee587b0f2488fe3aea6c62"
+    "liberty-shared-source-fdee587b0f2488fe3aea6c62",
+    "liberty-cli-religion-calculator-2026-11-24",
+    "cli-religion-transcript-route-2026-11-24",
+    "cli-religion-admissions-2026-11-24",
+    "cli-religion-accreditation-2026-11-24",
+    "cli-religion-course-catalog-2026-11-24",
+    "cli-religion-the-101-2026-11-24"
   ],
   "requirements": [
     {"id":"engl-101","code":"ENGL 101","title":"Composition and Rhetoric","credits":3,"category":"general","group":"writing","upper":false,"sourceIds":["liberty-psychology-bs-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
@@ -595,7 +634,7 @@
 
     ]},
     {"id":"theo-104","code":"THEO 104","title":"Introduction to Theology Survey","credits":4,"category":"general","group":"christianity-contexts","upper":false,"sourceIds":["liberty-psychology-bs-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-psych-baseline-catalog-course-review-2026-11-19"],"checkedOn":"2026-11-19"},"prerequisiteSourceIds":["liberty-psych-baseline-catalog-course-review-2026-11-19"],"offeringPolicy":{"offeredFormats":["Online","Residential"],"sourceIds":["liberty-psych-baseline-catalog-course-review-2026-11-19"],"checkedOn":"2026-11-19","actualSectionAvailabilityConfirmed":false},"optionRows":[
-
+      "christian-leaders-institute-the-101-to-theo-104"
     ]},
     {"id":"biol-102","code":"BIOL 102","title":"Principles of Human Biology","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-psychology-bs-online-2026"],"selectionRequired":false,"optionRows":[
       "sophia-soph-0002-to-biol-102",

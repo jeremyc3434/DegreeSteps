@@ -346,18 +346,59 @@
     },
     "reviewedBaselineChoices": {
       "version": 1,
+      "reviewId": "liberty-cli-religion-baseline-preservation-2026-11-24",
       "modelId": "curriculum-liberty-healthcare-administration-bs-online",
-      "catalogYear": "2026-2027",
       "format": "Online",
       "creditSystem": "semester",
       "totalCredits": 120,
-      "checkedOn": "2026-11-19",
-      "reviewId": "liberty-expanded-online-baseline-review-2026-11-19",
+      "catalogYear": "2026-2027",
+      "checkedOn": "2026-11-24",
       "sourceIds": [
+        "liberty-official-sophia-online-2026-07",
         "liberty-healthcare-administration-online-2026-2027",
-        "liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
+        "liberty-online-approved-gened",
+        "liberty-official-study-com-online-2026-05",
+        "liberty-official-clep-online-2025-08",
+        "liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
+        "liberty-shared-source-2a390bc39b6c2d0ced2dfd83"
       ],
       "optionSelections": {
+        "engl-101": "sophia-soph-0015",
+        "coms-101": "sophia-soph-0024",
+        "engl-102": "sophia-soph-0030",
+        "arts-209": "sophia-soph-0009",
+        "math-121": "sophia-soph-0001",
+        "rlgn-104": "university-rlgn-104",
+        "ethc-101": "sophia-soph-0020",
+        "cstu-101": "studycom-sdcm-0047",
+        "biol-102": "sophia-soph-0002",
+        "psyc-101": "sophia-soph-0048",
+        "bibl-104": "university-bibl-104",
+        "theo-104": "university-theo-104",
+        "univ-104": "university-univ-104",
+        "busi-201": "university-busi-201",
+        "busi-230": "sophia-soph-0005",
+        "busi-240": "sophia-soph-0083",
+        "acct-211": "clep-clep-0039",
+        "acct-212": "university-acct-212",
+        "busi-302": "study-health-reviewed-sdcm-0173",
+        "busi-304": "study-health-reviewed-sdcm-0207",
+        "busi-311": "study-health-reviewed-sdcm-0172",
+        "busi-323": "university-busi-323",
+        "busi-344": "shared-option-aa4adecbcf0b5aefed1f2ca6",
+        "busi-411": "sophia-soph-0086",
+        "busi-418": "university-busi-418",
+        "busi-419": "study-health-reviewed-sdcm-0209",
+        "busi-428": "university-busi-428",
+        "busi-429": "university-busi-429",
+        "busi-494": "university-busi-494",
+        "econ-213": "sophia-soph-0011",
+        "hlth-349": "university-hlth-349",
+        "hlth-485": "university-hlth-485",
+        "hlth-491": "university-hlth-491",
+        "info-305": "university-info-305",
+        "info-320": "shared-option-d2dcfe19b3e000ef7cfb76de",
         "free-electives-1": "sophia-soph-0022",
         "free-electives-2": "sophia-soph-0025",
         "free-electives-3": "sophia-soph-0006",
@@ -551,7 +592,13 @@
     "liberty-shared-source-f639549ea26b78473d6bc4ec",
     "liberty-shared-source-f70be6e1bbb75fd7dd20e42f",
     "liberty-shared-source-fd804abeef3e349dbe30aecb",
-    "liberty-shared-source-fdee587b0f2488fe3aea6c62"
+    "liberty-shared-source-fdee587b0f2488fe3aea6c62",
+    "liberty-cli-religion-calculator-2026-11-24",
+    "cli-religion-transcript-route-2026-11-24",
+    "cli-religion-admissions-2026-11-24",
+    "cli-religion-accreditation-2026-11-24",
+    "cli-religion-course-catalog-2026-11-24",
+    "cli-religion-the-101-2026-11-24"
   ],
   "requirements": [
     {"id":"engl-101","code":"ENGL 101","title":"Composition and Rhetoric","credits":3,"category":"general","group":"writing","upper":false,"sourceIds":["liberty-healthcare-administration-online-2026-2027","liberty-online-approved-gened"],"allocationBasis":"Proposed approved general-education course choice; no overlap with this baseline’s major foundations.","selectionRequired":false,"optionRows":[
@@ -613,7 +660,7 @@
 
     ]},
     {"id":"theo-104","code":"THEO 104","title":"Introduction to Theology Survey","credits":4,"category":"general","group":"christianity-contexts","upper":false,"sourceIds":["liberty-healthcare-administration-online-2026-2027","liberty-online-approved-gened"],"allocationBasis":"Proposed approved general-education course choice; no overlap with this baseline’s major foundations.","prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-health-baseline-catalog-course-review-2026-11-19"],"checkedOn":"2026-11-19"},"prerequisiteSourceIds":["liberty-health-baseline-catalog-course-review-2026-11-19"],"offeringPolicy":{"offeredFormats":["Online","Residential"],"sourceIds":["liberty-health-baseline-catalog-course-review-2026-11-19"],"checkedOn":"2026-11-19","actualSectionAvailabilityConfirmed":false},"optionRows":[
-
+      "christian-leaders-institute-the-101-to-theo-104"
     ]},
     {"id":"univ-104","code":"UNIV 104","title":"Instructional Technology for Successful Online Learning","credits":3,"category":"general","group":"technology","upper":false,"sourceIds":["liberty-healthcare-administration-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-health-baseline-catalog-course-review-2026-11-19"],"checkedOn":"2026-11-19"},"prerequisiteSourceIds":["liberty-health-baseline-catalog-course-review-2026-11-19"],"offeringPolicy":{"offeredFormats":["Online"],"sourceIds":["liberty-health-baseline-catalog-course-review-2026-11-19"],"checkedOn":"2026-11-19","actualSectionAvailabilityConfirmed":false},"optionRows":[
 

@@ -6,12 +6,13 @@ const models = ['residential', 'online'].map(mode => ({
   mode,
   program: require('./dist/data/liberty-criminal-justice-' + mode + '.json'),
   external: mode === 'residential' ? 74 : 72,
+  excludedSource: mode === 'residential' ? 10 : 4,
   general: mode === 'residential' ? 40 : 39,
   elective: mode === 'residential' ? 35 : 36
 }));
 const input = { providers: ['Sophia', 'Study.com', 'CLEP', 'StraighterLine'], allowConditional: true, priority: 'transfer' };
 
-for (const {mode, program, external, general, elective} of models) {
+for (const {mode, program, external, excludedSource, general, elective} of models) {
   const requirement = code => program.requirements.find(row => row.code === code);
   test(mode + ': a real 120-credit general Criminal Justice ledger counts GOVT 220 once', () => {
     assert.equal(program.totalCredits, 120);
@@ -33,7 +34,9 @@ for (const {mode, program, external, general, elective} of models) {
     assert.equal(plan.totals.accounted, 120);
     assert.equal(plan.totals.external, external);
     assert.equal(plan.totals.institutional, 120 - external);
-    assert.equal(plan.coverage.researchGapCredits, 120 - external);
+    assert.equal(plan.coverage.researchGapCredits, 120 - external - excludedSource);
+    assert.equal(plan.coverage.excludedSourceCredits, excludedSource, 'known conditional CLI awards remain excluded when the provider is off');
+    assert(plan.rows.every(row => row.option.provider !== 'Christian Leaders Institute'), 'available optional awards do not change the selected provider baseline');
     assert.equal(plan.coverage.requiredUniversityCredits, 0, 'unmapped does not establish university-only status');
     assert.equal(plan.validation.academicCountsValid, true);
     assert(plan.totals.institutional >= 30);
@@ -81,16 +84,27 @@ for (const {mode, program, external, general, elective} of models) {
             assert.equal(option.sourceCredits,undefined,'a receiving award does not establish independent source exam credits');
             assert.equal(option.sourceCreditSystem,undefined);
             assert.equal(option.minScore,50);
-          }else if(option.id==='liberty-cli-ecn-301-to-econ-213'){
+          }else if(option.provider==='Christian Leaders Institute'){
+            const expected={
+              'ECN 301':['ECON 213',3,3],
+              'MIN 310':['EVAN 101',2,3],
+              'BIB 111':['BIBL 105',2,3],
+              'BIB 112':['BIBL 110',2,3],
+              'THE 210':['THEO 201',2,4],
+              'THE 310':['THEO 202',2,4],
+              'THE 101':['THEO 104',4,3]
+            }[option.code];
+            assert(expected, 'CLI options must use an exact reviewed original course');
             assert.equal(option.provider,'Christian Leaders Institute');
-            assert.equal(option.code,'ECN 301');
+            assert.equal(option.receivingCode,expected[0]);
+            assert.equal(option.credits,expected[1]);
             assert.equal(option.sourceCreditStatus,'unknown');
             assert.equal(option.sourceCredits,undefined,'the receiving award must not fill an unknown original source quantity');
             assert.equal(option.sourceCreditSystem,undefined,'the provider lists credits without an established original unit');
-            assert.equal(option.providerListedCreditQuantity,3);
+            assert.equal(option.providerListedCreditQuantity,expected[2]);
             assert.equal(option.providerListedCreditUnit,'credits');
-            assert.deepEqual(option.calculatorAwardRange,{low:3,high:3});
-            assert(option.sourceIds.includes('liberty-cli-calculator-current'));
+            assert.deepEqual(option.calculatorAwardRange,{low:expected[1],high:expected[1]});
+            assert(option.sourceIds.includes(option.code==='ECN 301'?'liberty-cli-calculator-current':'liberty-cli-religion-calculator-2026-11-24'));
             assert(option.identitySourceIds.length>0&&option.identitySourceIds.every(id=>sourceIds.has(id)));
             assert.equal(option.creditOrigin,'institutional');
             assert.equal(option.evidence,'conditional');

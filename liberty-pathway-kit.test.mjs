@@ -46,12 +46,27 @@ test('the Liberty kit is the source of truth: it verifies, passes its guards and
   assert.equal(check.status,0,check.stderr||check.stdout);
 });
 
-test('a fresh migration of the registry output reproduces the committed kit',async()=>{
+test('a registry migration preserves all compiled models and canonical authored evidence',async()=>{
   const fresh=await migrate();
-  assert.deepEqual(canonical(fresh.equivalencies),canonical(kit.equivalencies));
-  assert.deepEqual(canonical(fresh.school),canonical(kit.school));
-  for(const program of fresh.programs){const committed=kit.programs.find(p=>p.slug===program.slug);const {file:_f,...rest}=committed;assert.deepEqual(canonical(program),canonical(rest),program.slug);}
-  assert.deepEqual(parity(fresh.documents.flatMap(d=>d.models),doc.models),[]);
+  const migratedSlugs=new Set(fresh.programs.map(program=>program.slug));
+  // Authored program files are deliberately not reconstructed from registry output. Include the files a migration
+  // leaves in place, so an award-id change cannot silently break their saved option selections.
+  const providers=new Map([...fresh.providers].map(([name,provider])=>[name,{...provider,file:kit.providers.get(name).file}]));
+  const programs=[...fresh.programs.map(program=>({...program,file:kit.programs.find(committed=>committed.slug===program.slug).file})),...kit.programs.filter(program=>!migratedSlugs.has(program.slug))];
+  const roundtrip={...kit,school:fresh.school,equivalencies:fresh.equivalencies,providers,programs};
+  const compiled=compileKit(roundtrip).doc;
+  assert.equal(compiled.models.length,doc.models.length);
+  assert.deepEqual(parity(doc.models,compiled.models),[],'every model, requirement, option id and evidence field survives migration');
+  assert.deepEqual(parity(fresh.documents.flatMap(document=>document.models),compiled.models),[]);
+  assert.deepEqual((await verifyKit(roundtrip,{asOf:kit.school.checkedOn})).errors,[]);
+  assert.equal(await runGuards(roundtrip,compiled),guards.length);
+  const authored=kit.equivalencies.equivalencies.filter(row=>row.authored),rows=new Map(fresh.equivalencies.equivalencies.map(row=>[row.id,row]));
+  for(const row of authored){
+    assert.deepEqual(rows.get(row.id),row,row.id+' keeps its authored identity, scope and conditions');
+    assert.deepEqual(fresh.providers.get(row.provider).courses.find(course=>course.code===row.code),kit.providers.get(row.provider).courses.find(course=>course.code===row.code),row.id+' keeps independent original-course facts');
+  }
+  const checked=spawnSync(process.execPath,['scripts/pathway-factory/migrate-liberty.mjs','--check'],{cwd:root,encoding:'utf8',timeout:60000});
+  assert.equal(checked.status,0,checked.stderr||checked.stdout);
 });
 
 test('institution-wide rows are never wider than the data and reuse one award across many degrees',()=>{
