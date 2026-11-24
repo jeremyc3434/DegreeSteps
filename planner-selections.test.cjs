@@ -107,6 +107,9 @@ test('unknown, disabled, unsourced and mismatched selections are setup errors', 
     [base, { optionSelections: { writing: 'missing' } }],
     [base, { optionSelections: { writing: null } }],
     [base, { optionSelections: { writing: 's-writing' }, providers: ['CLEP'] }],
+    [base, { optionSelections: null }],
+    [base, { optionSelections: 42 }],
+    [base, { optionSelections: 's-writing' }],
     [base, { optionSelections: ['s-writing'] }]
   ];
   for (const change of [{ sourceIds: ['missing'] }, { credits: 6 }, { creditSystem: 'quarter' }, { evidence: 'student-record' }]) {

@@ -17,6 +17,7 @@ execFileSync(process.execPath,[resolve(root,'scripts/add-liberty-official-mappin
 execFileSync(process.execPath,[resolve(root,'scripts/add-tesu-official-mappings.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-tesu-prerequisites.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-liberty-cli-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/liberty-cli-religion-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/add-snhu-transfer-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-liberty-named-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-accounting.mjs'),'--check'],{cwd:root,stdio:'inherit'});

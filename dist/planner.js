@@ -38,7 +38,9 @@
   const tuitionAssumptionsCache = new WeakMap();
 
   function normalizedInput(input) {
-    return Object.assign({ completed: [], providers: ['Sophia', 'Study.com', 'CLEP'], priority: 'transfer', allowConditional: false, weeklyHours: 10, universityRate: 0, fees: 0, providerMonths: {}, examBudget: 97, modernStates: false, optionSelections: {} }, input || {});
+    const normalized = Object.assign({ completed: [], providers: ['Sophia', 'Study.com', 'CLEP'], priority: 'transfer', allowConditional: false, weeklyHours: 10, universityRate: 0, fees: 0, providerMonths: {}, examBudget: 97, modernStates: false, optionSelections: {} }, input || {});
+    if (normalized.optionSelections === undefined) normalized.optionSelections = {};
+    return normalized;
   }
 
   const positive = value => Number.isFinite(Number(value)) && Number(value) > 0;
@@ -1150,7 +1152,7 @@
     // automatic choices. Invalid requests remain explicit blockers even though
     // the ledger can still show its supported automatic fallback.
     const selectedOptions = new Map(), selections = input.optionSelections;
-    if (selections != null && (typeof selections !== 'object' || Array.isArray(selections))) {
+    if (selections === null || typeof selections !== 'object' || Array.isArray(selections)) {
       setupIssues.push({ code: 'invalid_selection', message: 'Scenario selections must identify a supported option for each requirement.' });
     } else for (const [requirementId, optionId] of Object.entries(selections || {})) {
       const requirement = requirements.find(req => req.id === requirementId);

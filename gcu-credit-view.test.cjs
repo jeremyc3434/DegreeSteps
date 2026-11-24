@@ -1,6 +1,6 @@
 /* Actual GCU overlay and worksheet closures. No student storage or network. */
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
-const Planner=require('./dist/planner.js'),View=require('./dist/course-plan-view.js'),Momentum=require('./dist/student-progress.js'),Sheet=require('./dist/sheet-state.js');
+const Planner=require('./dist/planner.js'),View=require('./dist/course-plan-view.js'),Momentum=require('./dist/student-progress.js'),Sheet=require('./dist/sheet-state.js'),Journey=require('./dist/journey-engine.js');
 const clone=value=>JSON.parse(JSON.stringify(value));
 const freeze=value=>{if(value&&typeof value==='object'){Object.freeze(value);Object.values(value).forEach(freeze);}return value;};
 const input={priority:'transfer',providers:['Sophia'],providerMonths:{Sophia:1},universityRate:0,fees:0};
@@ -21,7 +21,7 @@ function worksheet(draft,{editor=false}={}){
  const nodes=new Map(),downloads=[];
  function node(id){if(!nodes.has(id))nodes.set(id,{id,hidden:false,open:false,innerHTML:'',textContent:'',dataset:{},scrollLeft:0,scrollTop:0,classList:{add(){},remove(){},toggle(){}},addEventListener(){},setAttribute(){},querySelector(){return null;},querySelectorAll(){return[];},focus(){}});return nodes.get(id);}
  class DownloadURL extends URL{static createObjectURL(blob){downloads.push(blob.parts.join(''));return 'blob:degree-test';}static revokeObjectURL(){}}
- const context={URL:DownloadURL,URLSearchParams,Intl,JSON,Math,Date,console,Blob:class{constructor(parts){this.parts=parts;}},document:{body:node('body'),activeElement:null,getElementById:node,querySelector(){return null;},querySelectorAll(){return[];},addEventListener(){},createElement(){return{click(){}};}},location:{search:editor?'?editor=1':'',assign(){},replace(){}},localStorage:{getItem(){return null;},setItem(){throw Error('Rendering must not save records');}},setTimeout(){return 1;},clearTimeout(){},addEventListener(){},DegreeSheet:Sheet,DegreePlanner:Planner,DegreeCoursePlanView:View,__fixture:clone(draft)};context.window=context;
+ const context={URL:DownloadURL,URLSearchParams,Intl,JSON,Math,Date,console,Blob:class{constructor(parts){this.parts=parts;}},document:{body:node('body'),activeElement:null,getElementById:node,querySelector(){return null;},querySelectorAll(){return[];},addEventListener(){},createElement(){return{click(){}};}},location:{search:editor?'?editor=1':'',assign(){},replace(){}},localStorage:{getItem(){return null;},setItem(){throw Error('Rendering must not save records');}},setTimeout(){return 1;},clearTimeout(){},addEventListener(){},DegreeSheet:Sheet,DegreePlanner:Planner,DegreeCoursePlanView:View,DegreeJourney:Journey,__fixture:clone(draft)};context.window=context;
  const source=fs.readFileSync('./dist/sheet.js','utf8'),boundary=source.lastIndexOf('  boot();');assert(boundary>0);
  const hooks=`state=__fixture.state;program=__fixture.program;plan=__fixture.plan;pathway=__fixture.pathway;match=__fixture.match;input=__fixture.input;catalog={pathways:[]};guidance={};courseView=projection();
  openDialog=function(html,label){window.__dialog={html,label};};

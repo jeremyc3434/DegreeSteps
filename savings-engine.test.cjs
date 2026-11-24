@@ -37,7 +37,8 @@ test('browser API uses the same pure calculation with no storage or network acce
   assert.equal(result.available,true);
   assert.equal(result.projected.netDifference,68080);
   assert.equal(result.unmappedCredits,0);
-  assert.equal(result.outsideOptionResearchCredits,34);
+  assert.equal(result.outsideOptionResearchCredits,24);
+  assert.equal(draft.plan.coverage.excludedSourceCredits,10,'known optional CLI awards are excluded from the baseline provider preferences');
   assert(!result.notes.some(note=>/credits still need course research/.test(note)));
   assert.equal(JSON.stringify([state,draft,costs]),before);
   assert.equal(browser.localStorage,undefined);
@@ -57,9 +58,10 @@ test('Liberty current sourced allocations replace neither policy maximum nor par
   assert.notEqual(result.projected.outsideBudget,draft.plan.costs.knownSubtotal);
   assert.equal(result.projected.netDifference,68080);
   assert.equal(result.projected.termsAvoided,5);
-  assert.equal(result.researchGapCredits,34);
+  assert.equal(result.researchGapCredits,24);
+  assert.equal(draft.plan.coverage.excludedSourceCredits,10,'source-excluded awards are distinct from missing outside mappings');
   assert.equal(result.unmappedCredits,0);
-  assert.equal(result.outsideOptionResearchCredits,34);
+  assert.equal(result.outsideOptionResearchCredits,24);
   assert(result.notes.some(note=>note.includes('without mapped outside alternatives')));
   assert(!result.notes.some(note=>/credits still need course research/.test(note)));
   assert.equal(result.provisional,true);
