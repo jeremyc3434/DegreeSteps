@@ -142,3 +142,84 @@ test('unknown upload return values cannot become redirects and a student without
   assert.equal(ui.node('import-next').href,'compare-plans.html?from=courses');assert.equal(ui.node('import-next').textContent,'Find degrees for my courses');
  }
 });
+
+test('review guidance explains a disabled Add and focuses missing details without changing course selections',async()=>{
+ const state=initial([source()]),ui=mount(state);
+ await ui.choose([input('mixed-review.csv','Provider,Course code,Course title,Credits,Credit units,Status\nNew College,BIO101,Biology I,3,semester,completed\nNew College,HIS101,History I,3,semester,')]);
+ const missing=ui.view().rows.find(row=>row.record.code==='HIS101'),before=ui.view().rows;
+ assert.equal(ui.node('import-apply').disabled,false,'A ready subset can still be added');assert.match(ui.node('import-selection-help').textContent,/1 other course needs attention and won’t be added/);
+ await ui.click('import-review-attention');
+ assert.equal(ui.node('import-attention-only').checked,true);assert.deepEqual(ui.view().rows,before,'Reviewing is not permission to select, alter or discard rows');assert.equal(ui.focused().dataset.row,missing.id);assert.equal(ui.focused().dataset.field,'status');assert.equal(ui.storage.writes.length,0);
+ await ui.select(missing.id,true);assert.equal(ui.node('import-apply').disabled,true);assert.match(ui.node('import-selection-help').textContent,/1 selected course needs attention/);assert.match(ui.node('import-selection-help').textContent,/Select ready courses/);
+ await ui.click('import-select-valid');assert.equal(ui.node('import-apply').disabled,false);assert.equal(ui.view().rows.length,2);assert.equal(ui.view().rows.find(row=>row.id===missing.id).selected,false);
+ await ui.click('import-apply');assert.equal(ui.saved().learning.length,2);assert.deepEqual(ui.saved().learning[0],state.learning[0]);assert.equal(ui.saved().learning[1].code,'BIO101');
+});
+
+test('shared missing details open the existing batch form without guessing facts or reopening a collapsed review',async()=>{
+ const ui=mount();await ui.choose([input('missing-details.csv','Provider,Course code,Course title,Credits,Credit units,Status\n,ENG201,Writing II,4,,\n,MAT101,Algebra I,5,,')]);
+ assert.equal(ui.node('import-batch-details').open,true);assert.equal(ui.storage.writes.length,0);assert(ui.view().rows.every(row=>!row.record.provider&&row.record.creditSystem===null&&row.record.status===null));
+ ui.node('import-batch-details').open=false;const first=ui.view().rows[0];await ui.field(first.id,'title','Writing II, corrected');assert.equal(ui.node('import-batch-details').open,false,'Typing in a row respects a deliberately collapsed batch form');
+ ui.node('batch-provider').value='Example Quarter College';ui.node('batch-units').value='quarter';ui.node('batch-status').value='earned';await ui.click('import-fill-missing');assert.equal(ui.node('import-apply').disabled,false);await ui.click('import-apply');
+ assert.deepEqual(ui.saved().learning.map(row=>[row.credits,row.creditSystem,row.status]),[[4,'quarter','earned'],[5,'quarter','earned']]);assert.equal(ui.saved().learning[0].title,'Writing II, corrected');
+});
+
+test('bulk guidance never opens for receiving transfer awards or infers audit course facts',async()=>{
+ for(const [name,text,kind]of [
+  ['transfer.csv','Provider,Course code,Course title,Credits,Credit units,Status,Grade\nReceiving College,ENG101,Writing I,3,semester,completed,TR\nReceiving College,MAT101,Algebra I,3,semester,completed,TR','transfer'],
+  ['audit.csv','Degree audit\nProvider,Course code,Course title,Credits,Credit units,Status\nReceiving College,ENG101,Writing I,3,semester,completed\nReceiving College,MAT101,Algebra I,3,semester,completed','audit']
+ ]){
+  const ui=mount();await ui.choose([input(name,text)]);assert.equal(ui.view().rows.length,2);assert.notEqual(ui.node('import-batch-details').open,true,name+' does not invite bulk guesses');
+  const before=ui.view().rows.map(row=>copy(row.record));ui.node('batch-units').value='quarter';ui.node('batch-status').value='earned';await ui.click('import-fill-missing');
+  assert.deepEqual(ui.view().rows.map(row=>row.record),before,name+' printed destination awards remain separate from original course facts');assert.equal(ui.storage.writes.length,0);if(kind==='transfer')assert.equal(ui.node('import-apply').disabled,true);
+  assert(ui.view().rows.every(row=>row.record.credits===null&&row.record.creditSystem===null));if(kind==='audit')assert(ui.view().rows.every(row=>row.record.status==='planned'));
+ }
+});
+
+test('uploading from My courses leads to degree fits and keeps the active plan as an explicit alternative',async()=>{
+ const state=initial([source()]),ui=mount(state,{search:'?from=courses'});await ui.choose([input('new-course.csv','Provider,Course code,Course title,Credits,Credit units,Status\nNew College,HIS101,History I,3,semester,completed')]);await ui.click('import-apply');
+ assert.equal(ui.node('import-next').href,'compare-plans.html?from=courses');assert.equal(ui.node('import-next').textContent,'Find degrees for my courses');assert.equal(ui.node('import-alternative').hidden,false);assert.equal(ui.node('import-alternative').href,'plan.html');assert.equal(ui.node('import-alternative').textContent,'See my updated plan');
+ assert.equal(ui.saved().selectedPathwayId,state.selectedPathwayId);assert.deepEqual(ui.saved().sheet.notes,state.sheet.notes);assert.deepEqual(ui.saved().learning[0],state.learning[0]);
+});
+
+test('a plan-origin import keeps its direct return and offers comparisons without implicitly changing degrees',async()=>{
+ const state=initial([source()]),ui=mount(state,{search:'?from=plan'});await ui.choose([input('new-course.csv','Provider,Course code,Course title,Credits,Credit units,Status\nNew College,HIS101,History I,3,semester,completed')]);await ui.click('import-apply');
+ assert.equal(ui.node('import-next').href,'plan.html');assert.equal(ui.node('import-alternative').hidden,false);assert.equal(ui.node('import-alternative').href,'compare-plans.html?from=courses');assert.equal(ui.node('import-alternative').textContent,'Compare degrees with my courses');assert.equal(ui.saved().selectedPathwayId,state.selectedPathwayId);assert.equal(ui.saved().learning.length,2);
+});
+
+test('credit-match uploads return to the same matching journey and never ask to modify an unrelated plan',async()=>{
+ for(const withPlan of [true,false]){
+  const state=initial([source()]);if(!withPlan){state.selectedPathwayId='';state.profile.pathwayId='';state.profile.degree='';}
+  const ui=mount(state,{search:'?from=credits-worth'});assert.equal(ui.node('import-back').href,'credits-worth.html');assert.equal(ui.node('import-back').textContent,'Degree matches');assert.equal(ui.node('import-prior').hidden,true);
+  await ui.choose([input('new-course.csv','Provider,Course code,Course title,Credits,Credit units,Status\nNew College,HIS101,History I,3,semester,completed')]);await ui.click('import-apply');
+  assert.equal(ui.node('import-next').href,'credits-worth.html');assert.equal(ui.node('import-next').textContent,'See degree matches for my credits');assert.equal(ui.node('import-alternative').hidden,false);assert.equal(ui.node('import-alternative').href,'compare-plans.html?from=courses');assert.deepEqual(ui.saved().profile,{...state.profile,hasPrior:'some'});assert.equal(ui.saved().selectedPathwayId,state.selectedPathwayId);assert.deepEqual(ui.saved().learning[0],state.learning[0]);
+ }
+});
+
+test('course-collection and comparison uploads hide the unrelated no-past-courses plan question',()=>{
+ for(const from of ['courses','compare']){const ui=mount(initial(),{search:'?from='+from});assert.equal(ui.node('import-prior').hidden,true);assert.equal(ui.storage.writes.length,0);}
+ const planned=mount(initial(),{search:'?from=plan'});assert.equal(planned.node('import-prior').hidden,false,'The plan-origin journey retains its own legitimate prior-course question');
+});
+
+test('the main heading follows Upload, Review and Done and returns to Upload without losing saved courses',async()=>{
+ const original=initial([source()]),ui=mount(original,{search:'?from=courses'});
+ assert.equal(ui.node('import-page-title').textContent,'Add your courses in one upload.');assert.match(ui.node('import-page-guidance').textContent,/transcript or spreadsheet/);assert.equal(ui.node('step-upload').attributes['aria-current'],'step');
+ await ui.choose([input('new-course.csv','Provider,Course code,Course title,Credits,Credit units,Status\nNew College,HIS101,History I,3,semester,completed')]);
+ assert.equal(ui.node('import-page-title').textContent,'Review your courses.');assert.match(ui.node('import-page-guidance').textContent,/Check the details/);assert.equal(ui.node('step-review').attributes['aria-current'],'step');assert.equal(ui.node('step-upload').attributes['aria-current'],undefined);assert.deepEqual(ui.saved(),original);
+ await ui.click('import-apply');assert.equal(ui.node('import-page-title').textContent,'Choose your next step.');assert.match(ui.node('import-page-guidance').textContent,/My courses/);assert.equal(ui.node('step-done').attributes['aria-current'],'step');const saved=ui.saved();
+ await ui.click('import-start-over');assert.equal(ui.node('import-page-title').textContent,'Add your courses in one upload.');assert.equal(ui.node('step-upload').attributes['aria-current'],'step');assert.equal(ui.node('step-done').attributes['aria-current'],undefined);assert.deepEqual(ui.saved(),saved,'Starting another upload does not clear the first import or existing notes');
+});
+
+test('review guidance is in normal flow before batch details and remains linked to the compact Add control',()=>{
+ const html=fs.readFileSync('dist/import-courses.html','utf8'),summary=html.match(/<div id="import-review-summary" class="import-review-summary">([\s\S]*?)<\/div>/)?.[1],sticky=html.match(/<div class="import-action-bar">([\s\S]*?)<\/section>/)?.[1];
+ assert(summary,'The non-sticky review summary exists');assert.match(summary,/id="import-selection-help"/);assert.match(summary,/id="import-review-attention"/);assert(html.indexOf('id="import-review-summary"')<html.indexOf('id="import-batch-details"'),'The explanation appears before bulk details and the wide table');
+ assert(sticky,'The compact action bar remains');assert.match(sticky,/id="import-selection-count"/);assert.match(sticky,/id="import-apply"[^>]*aria-describedby="import-selection-help"/);assert.doesNotMatch(sticky,/id="import-selection-help"|id="import-review-attention"|Existing courses and degree plans stay saved/);
+ for(const id of ['import-selection-help','import-review-attention','import-page-title','import-page-guidance'])assert.equal((html.match(new RegExp('id="'+id+'"','g'))||[]).length,1,id+' has one accessible target');
+});
+
+test('Review attention prioritizes the selected blocking course over an earlier unchecked problem without changing the review',async()=>{
+ const original=initial([source()]),ui=mount(original);
+ await ui.choose([input('two-problems.csv','Provider,Course code,Course title,Credits,Credit units,Status\n,ENG210,Writing II,3,semester,completed\nNew College,HIS210,History II,3,semester,\nNew College,BIO210,Biology II,3,semester,completed')]);
+ const earlier=ui.view().rows.find(row=>row.record.code==='ENG210'),blocking=ui.view().rows.find(row=>row.record.code==='HIS210');assert.equal(earlier.selected,false);await ui.select(blocking.id,true);assert.equal(ui.node('import-apply').disabled,true);
+ const before=ui.view().rows;await ui.click('import-review-attention');
+ assert.equal(ui.node('import-attention-only').checked,true);assert.equal(ui.focused().dataset.row,blocking.id,'Focus goes to the selected course that prevents Add');assert.equal(ui.focused().dataset.field,'status');assert.deepEqual(ui.view().rows,before,'Filtering and focus preserve every course fact and selection');assert.deepEqual(ui.saved(),original);assert.equal(ui.storage.writes.length,0);
+});

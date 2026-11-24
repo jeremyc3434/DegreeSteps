@@ -1,10 +1,14 @@
 /* What are my credits worth? Builds on programs.css and the shared discovery design. */
 .credits-worth-page .cw-main{max-width:1320px}
-.cw-heading{margin-bottom:16px}
+body.credits-worth-page.ds-discovery-page .cw-heading{margin:0 0 20px;padding:0 0 20px;border:0;border-bottom:1px solid var(--ds-border,#d9e1ea);border-radius:0;background:transparent;color:var(--ds-navy,#192c43)}
+body.credits-worth-page.ds-discovery-page .cw-heading::before{content:none}
+body.credits-worth-page.ds-discovery-page .cw-heading h1{color:var(--ds-navy,#192c43);font-size:clamp(2rem,2.8vw,2.5rem);font-weight:650;line-height:1.15;letter-spacing:-.035em}
+body.credits-worth-page.ds-discovery-page .cw-heading p{color:var(--ds-muted,#526174);max-width:62ch;font-size:1rem;line-height:1.6}
+body.credits-worth-page.ds-discovery-page .cw-heading .pf-plan-link{color:var(--ds-cobalt,#4054f4);font-size:.9375rem;text-decoration:underline;text-underline-offset:4px}
 .cw-proposal{margin:0 0 22px;padding:12px 14px;border:1px solid #cfe0f7;border-left:4px solid var(--ds-cobalt,#4054f4);border-radius:0 8px 8px 0;background:#f3f7ff;color:#2a4364;font-size:.9375rem;line-height:1.55}
 .cw-layout{display:grid;grid-template-columns:minmax(280px,360px) minmax(0,1fr);gap:24px;align-items:start}
 .cw-layout>*{min-width:0}
-.cw-courses{position:sticky;top:16px;background:#fff;border:1px solid #dfe6f1;border-radius:11px;padding:18px}
+.cw-courses{position:sticky;top:16px;background:#fff;border:1px solid #dfe6f1;border-radius:12px;padding:20px}
 .cw-section-head{display:flex;align-items:center;gap:10px}
 .cw-section-head h2,.cw-results-title{font-size:1.125rem;line-height:1.35;margin:0;color:#1c304e}
 .cw-results-title{margin-bottom:12px}
@@ -17,15 +21,15 @@
 .cw-record{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;border:1px solid #e3e9f3;border-radius:8px;background:#fbfcfe}
 .cw-record>div{min-width:0;display:flex;flex-direction:column;gap:3px}
 .cw-record strong{font-size:.9375rem;color:#233d61;overflow-wrap:anywhere}
-.cw-record-meta{font-size:.8125rem;color:#6b7d96;overflow-wrap:anywhere}
-.cw-tag{align-self:flex-start;font-size:.75rem;padding:1px 7px;border-radius:4px;background:#eef4ff;color:#3d5f93}
+.cw-record-meta{font-size:.875rem;color:var(--ds-muted,#526174);overflow-wrap:anywhere}
+.cw-tag{align-self:flex-start;font-size:.875rem;line-height:1.5;padding:2px 7px;border-radius:4px;background:#eef4ff;color:#3d5f93}
 .cw-tag-unsaved{background:#fff4e5;color:#8a4b0f}
-.cw-outcome{font-size:.8125rem;line-height:1.45}
+.cw-outcome{font-size:.875rem;line-height:1.45}
 .cw-outcome-match{color:#1f6b47}
 .cw-outcome-review{color:#8a4b0f}
 .cw-outcome-none{color:#5b6b82}
-.cw-outcome-pending{color:#6b7d96}
-.cw-remove,.cw-edit{align-self:flex-start;min-height:44px;min-width:44px;padding:8px 10px;border:1px solid #d1ddf0;border-radius:6px;background:#fff;color:var(--ds-cobalt,#4054f4);font-size:.8125rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.cw-outcome-pending{color:var(--ds-muted,#526174)}
+.cw-remove,.cw-edit{align-self:flex-start;min-height:44px;min-width:44px;padding:8px 10px;border:1px solid #d1ddf0;border-radius:6px;background:#fff;color:var(--ds-cobalt,#4054f4);font-size:.875rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
 .cw-courses-empty p{font-size:.875rem;color:#5b7090;line-height:1.55;margin:12px 0 0}
 .cw-save-bar{margin-top:14px;padding:12px;border-radius:8px;background:#fffaf2;border:1px solid #f0d8b5}
 .cw-save-bar p{margin:0 0 10px;font-size:.875rem;color:#5c3a12;line-height:1.5}
@@ -36,7 +40,7 @@
 .cw-add>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:600;color:#233d61}
 .cw-form{display:grid;gap:12px;margin-top:8px}
 .cw-form label>span{display:block;font-size:.875rem;color:#5b7090;margin-bottom:6px}
-.cw-form small{font-weight:400;color:#8291a6}
+.cw-form small{font-weight:400;color:var(--ds-muted,#526174)}
 .cw-form input,.cw-form select,.cw-controls select{width:100%;min-height:44px;border:1px solid #cfd9e8;border-radius:6px;background:#fff;padding:9px 11px;color:#2a4364;font-size:1rem}
 .cw-form-actions{display:flex;flex-wrap:wrap;gap:8px}
 .cw-form-actions .pf-button,.cw-save-bar .pf-button,.cw-dialog-actions .pf-button{min-height:44px}
@@ -53,8 +57,9 @@
 .cw-empty[hidden],.cw-nomatch[hidden]{display:none}
 .cw-list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .cw-card article{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:20px;background:#fff;border:1px solid #e0e7f2;border-radius:10px;padding:20px}
-.cw-card h3{font-size:1rem;line-height:1.5;color:#233d61;margin:4px 0 4px}
+.cw-card h3{font-size:1.125rem;font-weight:600;line-height:1.5;color:#233d61;margin:4px 0 4px}
 .cw-card-main{min-width:0}
+body.credits-worth-page .cw-card .pf-badge{font-size:.875rem;line-height:1.5}
 .cw-fill{margin:12px 0 8px;font-size:.9375rem;color:#2a4364}
 .cw-fill strong{font-size:1.375rem;color:#1f6b47}
 .cw-bar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:#eef2f8;gap:2px}
@@ -65,17 +70,17 @@
 .cw-bar-open{background:repeating-linear-gradient(45deg,#e4e9f1 0 4px,#fff 4px 8px)}
 .cw-left{margin:8px 0 0;font-size:.875rem;color:#4f6584;line-height:1.5}
 .cw-left-label{font-weight:600}
-.cw-none-line{margin:10px 0 0;font-size:.8125rem;color:#6b7d96}
+.cw-none-line{margin:10px 0 0;font-size:.875rem;color:var(--ds-muted,#526174)}
 .cw-matched,.cw-questions{margin-top:10px;font-size:.875rem;color:#3f5675}
 .cw-matched>summary,.cw-questions>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:var(--ds-cobalt,#4054f4)}
 .cw-matched ul,.cw-questions ul{margin:4px 0 0;padding-left:18px;line-height:1.55}
 .cw-matched li{overflow-wrap:anywhere}
-.cw-matched li span{color:#6b7d96}
+.cw-matched li span{color:var(--ds-muted,#526174)}
 .cw-card-side{display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:12px}
 .cw-price{text-align:left}
-.cw-price-label{display:block;font-size:.8125rem;color:#6b7d96}
-.cw-price strong{display:block;font-size:1.0625rem;color:#1c304e}
-.cw-build{text-align:center;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.cw-price-label{display:block;font-size:.875rem;color:var(--ds-muted,#526174)}
+.cw-price strong{display:block;font-size:1.35rem;color:#1c304e}
+.cw-build{text-align:center;min-height:48px;font-size:1rem;font-weight:600;border-radius:8px;display:inline-flex;align-items:center;justify-content:center}
 .cw-more{margin-top:14px}
 .cw-about{margin-top:20px}
 .cw-about p{line-height:1.6}
@@ -99,3 +104,4 @@
 }
 .cw-from-guided{margin:0 0 14px;padding:10px 14px;border-radius:7px;background:#f4f8fd;font-size:15px}
 .cw-from-guided a{font-weight:600;margin-right:6px}
+.cw-courses-empty:not([hidden]){display:flex;flex-wrap:wrap;align-items:center;gap:10px}.cw-courses-empty p{flex-basis:100%}.cw-courses-empty .pf-button{margin-top:2px;min-height:48px}.cw-empty .pf-button{margin:8px 4px 0}

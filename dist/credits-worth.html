@@ -10,7 +10,7 @@
    <div class="cw-section-head"><h2 id="cw-courses-title">Your finished courses</h2><span id="cw-course-count" class="cw-pill">0</span></div>
    <p id="cw-storage-note" class="cw-note" hidden></p>
    <ul id="cw-record-list" class="cw-records"></ul>
-   <div id="cw-courses-empty" class="cw-courses-empty"><p><strong>No finished courses yet.</strong> Add one below. Nothing is saved unless you choose to save it.</p></div>
+   <div id="cw-courses-empty" class="cw-courses-empty"><p><strong>Bring your finished courses together.</strong> Upload a transcript or spreadsheet, then review your courses before saving.</p><a class="pf-button pf-button-primary" href="import-courses.html?from=credits-worth">Upload my courses</a><a class="cw-edit" href="#cw-add">Or add one course below</a></div>
    <p id="cw-other-status" class="cw-note" hidden></p><a id="cw-jump" class="cw-jump" href="#cw-results-title" hidden>See your ranked plans ↓</a>
    <div id="cw-save-bar" class="cw-save-bar" hidden><p id="cw-save-text"></p><button type="button" id="cw-save" class="pf-button pf-button-primary">Save to My courses</button></div>
    <p id="cw-save-status" class="cw-note" role="status" aria-live="polite"></p>
@@ -33,7 +33,7 @@
      <div class="cw-form-actions"><button type="submit" class="pf-button pf-button-primary">Add course</button></div>
      <p id="cw-manual-error" class="cw-error" role="alert"></p>
     </form>
-    <p class="cw-hint">Have a transcript? <a href="import-courses.html">Upload it to My courses</a> to add many courses at once.</p>
+    <p class="cw-hint">Have a transcript? <a href="import-courses.html?from=credits-worth">Upload it to My courses</a> to add many courses at once.</p>
    </details>
   </section>
   <section class="cw-results" aria-labelledby="cw-results-title">
@@ -48,7 +48,7 @@
    <div class="cw-progress-wrap" id="cw-progress-wrap" hidden><progress id="cw-progress" max="1" value="0" aria-labelledby="cw-progress-text"></progress><span id="cw-progress-text">Checking plans…</span></div>
    <p id="cw-count" class="pf-count" role="status" aria-live="polite">Add a finished course to see your ranking.</p>
    <div id="cw-error" class="cw-error-box" role="alert" hidden></div>
-   <div id="cw-empty" class="cw-empty"><h3>Start with one course you finished.</h3><p>Pick it from the list, or enter it from your transcript. We’ll check it against every plan in the plan finder, reviewed or awaiting school confirmation, right here on your device.</p><a class="pf-button" href="#cw-add" id="cw-empty-add">Add a course</a></div>
+   <div id="cw-empty" class="cw-empty"><h3>See where your finished courses could count.</h3><p>Upload your records together, or add one course from the list. We’ll check it against every plan in the plan finder, reviewed or awaiting school confirmation, right here on your device.</p><a class="pf-button pf-button-primary" href="import-courses.html?from=credits-worth">Upload my courses</a><a class="pf-button" href="#cw-add" id="cw-empty-add">Add one course</a></div>
    <div id="cw-nomatch" class="cw-nomatch" hidden><h3>None of your courses match a proposed option yet.</h3><p>That doesn’t mean they won’t count. These plans only list the outside courses each school publishes. Ask the school for a transcript evaluation; it reviews every course on your official record.</p></div>
    <ol id="cw-list" class="cw-list" aria-label="Ranked degree plans"></ol>
    <button type="button" id="cw-more" class="pf-more-results cw-more" hidden>Show more plans</button>

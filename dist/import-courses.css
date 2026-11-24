@@ -10,3 +10,4 @@
 .import-prior-actions{display:flex;flex-wrap:wrap;gap:10px}
 .import-prior-actions .import-secondary{min-height:44px}
 @media(max-width:600px){.import-prior{padding:16px}.import-prior-actions,.import-prior-actions .import-secondary{width:100%}}
+.import-review-summary{margin:0 0 16px;padding:14px 16px;border:1px solid #dce5f2;border-radius:10px;background:#f5f8ff;color:#344968;font-size:14px;line-height:1.55}.import-review-summary p{margin:0}.import-review-summary button{margin-top:6px}.import-review-summary:has(#import-review-attention[hidden]):has(#import-selection-help:empty){display:none}
