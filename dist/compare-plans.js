@@ -168,11 +168,44 @@
  }
  // A plan the student did not pick (not the active plan, a saved version or a chosen degree) is a suggestion and says so.
  function isSuggestion(s){if(!s||s.isCurrent||String(s.id).startsWith('saved:'))return false;const picked=state.whatIf?.selectedIds;return !Array.isArray(picked)||!picked.map(id=>sourceSelections.get(id)||id).includes(s.id);}
+ function degreeFitHTML(s){
+  const Facts=window.DegreeProgramOpportunities,program=s.draft?.program,route=s.draft?.pathway;
+  if(!program||typeof Facts?.fitFacts!=='function')return '';
+  const definition={...route,...program,url:route?.url||program.url||'',paceModel:program.paceModel||route?.paceModel};
+  const actual=Facts.fitFacts(definition,Facts.schoolFor?.(catalog,definition));
+  const entry=planIndex?.plans?.[route?.id],candidate=entry?.fit;
+  const year=value=>String(value||'').replace(/[–—]/g,'-');
+  const modality=/^(residential|campus)$/i.test(program.format||'')?'campus':/^online$/i.test(program.format||'')?'online':route?.modalities?.length===1?route.modalities[0]:null;
+  // Compact public facts may fill a missing price only for this exact model,
+  // edition and learning format. The current scenario's own known facts win.
+  const indexed=entry?.modelId===program.id&&candidate?.modelId===program.id&&Boolean(year(program.catalogYear||program.catalog))&&year(candidate.catalogYear)===year(program.catalogYear||program.catalog)&&['online','campus'].includes(modality)&&candidate.modality===modality&&(!route?.modalities?.length||route.modalities.includes(modality))?candidate:null;
+  const known=value=>typeof value==='string'&&value.trim()&&!/needs confirmation/i.test(value);
+  const value=key=>actual[key]===null||actual[key]===undefined?indexed?.[key]:actual[key];
+  const competency=value('competencyBased'),selfPaced=value('selfPaced'),billing=value('billing');
+  const badges=[];
+  if(competency===true)badges.push('Competency-based (CBE)');
+  if(selfPaced===true)badges.push(known(actual.paceLabel)&&actual.selfPaced===true?actual.paceLabel:known(indexed?.paceLabel)?indexed.paceLabel:'Self-paced');
+  else if(selfPaced===false)badges.push('Term-based');
+  if(billing)badges.push(known(actual.billingLabel)&&actual.billing===billing?actual.billingLabel:known(indexed?.billingLabel)?indexed.billingLabel:({'per-credit':'Pay per credit',subscription:'Subscription tuition','flat-term':'Flat price per term',annual:'Annual tuition'})[billing]||'');
+  const actualPrice=known(actual.tuitionLabel),indexedPrice=!actualPrice&&known(indexed?.tuitionLabel)&&(!actual.billing||actual.billing===indexed.billing);
+  const tuition=actualPrice?actual.tuitionLabel:indexedPrice?indexed.tuitionLabel:'';
+  const sourceRows=[];
+  const addSource=(source,label)=>{const url=safeURL(source?.url);if(url&&!sourceRows.some(row=>row.url===url))sourceRows.push({url,label});};
+  if(actual.competencyBased!==null&&actual.competencyBased!==undefined||actual.selfPaced!==null&&actual.selfPaced!==undefined)addSource(actual.sources?.learning,'Study format');
+  if(indexed&&(actual.competencyBased==null&&indexed.competencyBased!=null||actual.selfPaced==null&&indexed.selfPaced!=null))addSource(indexed.sources?.learning,'Study format');
+  if(actual.billing)addSource(actual.sources?.billing,'Tuition and billing');
+  if(indexedPrice||!actual.billing&&billing)addSource(indexed?.sources?.billing,'Tuition and billing');
+  const liveCapstone=(program.requirements||[]).find(req=>/capstone/i.test(req.title||'')&&req.registrationPolicy?.synchronousSeminars&&req.registrationPolicy?.sourceIds?.length);
+  const liveSource=liveCapstone&&(program.sources||[]).find(source=>liveCapstone.registrationPolicy.sourceIds.includes(source.id)&&safeURL(source.url));
+  const live=liveCapstone&&liveSource?'<p class="comparison-attendance-fact">Capstone includes live seminars. <a href="'+esc(safeURL(liveSource.url))+'" target="_blank" rel="noopener noreferrer">Course requirement</a></p>':'';
+  if(!badges.filter(Boolean).length&&!tuition&&!live)return '';
+  return '<section class="comparison-degree-fit" aria-label="Study format and tuition billing">'+(badges.filter(Boolean).length?'<ul class="comparison-degree-tags" aria-label="Program features">'+badges.filter(Boolean).map(label=>'<li>'+esc(label)+'</li>').join('')+'</ul>':'')+(tuition?'<p class="comparison-tuition-fact"><span>University tuition</span><strong>'+esc(tuition)+'</strong></p>':'')+live+(sourceRows.length?'<details class="comparison-fit-sources"><summary>Study and tuition sources</summary><ul>'+sourceRows.map(source=>'<li><a href="'+esc(source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(source.label)+'</a></li>').join('')+'</ul></details>':'')+'</section>';
+ }
  function card(s,index,best){
   const p=s.draft.pathway,summary=s.summary,source=(p?.sources||s.draft.program?.sources||[]).find(x=>safeURL(x.url)),norm=v=>String(v||'').toLowerCase().replace(/[^a-z0-9]/g,''),preview=candidate?view.matrix.find(row=>norm(row.course.provider)===norm(candidate.provider)&&[candidate.code,...(candidate.codeAliases||[])].filter(Boolean).some(code=>[row.course.code,...(row.course.codeAliases||[])].some(alias=>norm(alias)===norm(code)))||row.course.origin==='candidate')?.cells[s.id]:null;
   const suggested=isSuggestion(s),title=s.isCurrent?'My active plan':best===s.id&&!candidate?recommendationLabel(bestId()===s.id)+(suggested?' · Suggestion':''):suggested?'Suggested to compare':'Degree option '+(index+1),reason=view.recommendation?.id===s.id?view.recommendation.reason:s.recommendationReasons?.[0];
   const primaryAction=(s.isCurrent?'<a class="comparison-open-plan" href="plan.html">Open my plan →</a>':s.canUse&&s.available?'<button type="button" class="comparison-use-button" data-use-plan="'+esc(s.id)+'">Use this plan →</button>':'');
-  return '<article class="comparison-card'+(best===s.id&&!candidate?' comparison-recommended':'')+'" data-scenario="'+esc(s.id)+'"><div class="comparison-card-top"><span>'+title+'</span>'+(s.isCurrent?'':'<button type="button" data-remove-plan="'+index+'" aria-label="Remove '+esc(s.label)+' from comparison">×</button>')+'</div><h2>'+esc(s.label)+'</h2>'+(suggested?'<p class="comparison-suggested-note" data-suggested-plan>DegreeSteps added this plan as a suggestion from your preferences. You didn’t choose it; remove it with × or choose a different degree.</p>':'')+'<p class="comparison-school">'+esc(p?.school||'Program unavailable')+'</p>'+(needsConfirmation(p)?'<p class="portal-tier"><span class="portal-tier-badge portal-tier-confirm">Needs school confirmation</span></p>':'')+primaryAction+(view.hasTarget?progressCard(s):'')+(!s.eligible?'<p class="comparison-warning">Review this degree against your career, level or study format.</p>':'')+
+  return '<article class="comparison-card'+(best===s.id&&!candidate?' comparison-recommended':'')+'" data-scenario="'+esc(s.id)+'"><div class="comparison-card-top"><span>'+title+'</span>'+(s.isCurrent?'':'<button type="button" data-remove-plan="'+index+'" aria-label="Remove '+esc(s.label)+' from comparison">×</button>')+'</div><h2>'+esc(s.label)+'</h2>'+(suggested?'<p class="comparison-suggested-note" data-suggested-plan>DegreeSteps added this plan as a suggestion from your preferences. You didn’t choose it; remove it with × or choose a different degree.</p>':'')+'<p class="comparison-school">'+esc(p?.school||'Program unavailable')+'</p>'+degreeFitHTML(s)+(needsConfirmation(p)?'<p class="portal-tier"><span class="portal-tier-badge portal-tier-confirm">Needs school confirmation</span></p>':'')+primaryAction+(view.hasTarget?progressCard(s):'')+(!s.eligible?'<p class="comparison-warning">Review this degree against your career, level or study format.</p>':'')+
    (summary?(reason?'<p class="comparison-why">'+esc(reason)+'</p>':'')+(candidate?'<p class="comparison-preview-fit">This course: <strong>'+(preview&&preview.status!=='needs-evaluation'?number(preview.credits)+' '+esc(creditUnit(summary))+' potential':'needs evaluation')+'</strong><span>Preview only; no course records change.</span></p>':'')+fitHTML(s)+reviewCourses(s)+coverageHTML(s)+estimateHTML(s):'<div class="comparison-unmapped"><strong>Check exact requirements first</strong><p>'+esc(s.reason)+'</p>'+discoveryHTML(p)+(source?'<a class="comparison-requirements-link" href="'+esc(safeURL(source.url))+'" target="_blank" rel="noopener">Official degree requirements ↗</a>':'<a class="comparison-requirements-link" href="portal.html?view=setup">Choose the exact degree →</a>')+'</div>')+
    '<details class="comparison-source"><summary>Sources and conditions</summary>'+researchDetailsHTML(s)+(p?.sources||s.draft.program?.sources||[]).slice(0,3).filter(x=>safeURL(x.url)).map(source=>'<a href="'+esc(safeURL(source.url))+'" target="_blank" rel="noopener">'+esc(source.title||'Curriculum source')+' ↗</a>').join('')+'</details></article>';
  }

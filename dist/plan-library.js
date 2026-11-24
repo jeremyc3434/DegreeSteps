@@ -2,25 +2,27 @@
  * Progressive enhancement: without JS every plan is listed, grouped by school. Shareable state lives in the URL. */
 (function (root) {
   'use strict';
-  const MULTI = ['subject', 'format', 'level', 'pace', 'school'];
+  const MULTI = ['subject', 'format', 'level', 'pace', 'cbe', 'billing', 'school'];
+  const ENUMS = {pace:['self-paced','scheduled'], cbe:['1'], billing:['per-credit','subscription','flat-term','annual']};
   const PAGE = 12;
 
   /** Normalizes URL-style state into a predictable shape. */
   function normalize(state) {
-    const out = { q: String(state.q || '').trim().slice(0, 80), sort: ['outside', 'cost', 'az', 'school'].includes(state.sort) ? state.sort : 'outside', share: [50, 60, 70].includes(Number(state.share)) ? Number(state.share) : 0 };
-    for (const key of MULTI) out[key] = [...new Set((Array.isArray(state[key]) ? state[key] : String(state[key] || '').split(',')).map(v => String(v).trim()).filter(Boolean))];
+    const out = { q: String(state.q || '').trim().slice(0, 80), sort: ['outside', 'cost', 'az', 'school'].includes(state.sort) ? state.sort : 'outside', share: [50, 60, 70].includes(Number(state.share)) ? Number(state.share) : 0, budget:[15000,25000,40000].includes(Number(state.budget))?Number(state.budget):0 };
+    for (const key of MULTI) out[key] = [...new Set((Array.isArray(state[key]) ? state[key] : String(state[key] || '').split(',')).map(v => String(v).trim()).filter(value=>value&&(!ENUMS[key]||ENUMS[key].includes(value))))];
     return out;
   }
   const words = text => String(text || '').toLowerCase().replace(/[^a-z0-9%+]+/g, ' ').split(' ').filter(Boolean);
   /** True when an item passes every active filter. `skip` ignores one facet (used for facet counts). */
   function matches(item, state, skip) {
     if (state.q) {
-      const hay = words([item.title, item.school, item.subjectLabels.join(' '), item.format === 'online' ? 'online' : 'on campus campus residential', item.level].join(' ')).join(' ');
+      const hay = words([item.title, item.school, item.subjectLabels.join(' '), item.format === 'online' ? 'online' : 'on campus campus residential', item.level, item.pace==='self-paced'?'self-paced':item.pace==='scheduled'?'term-based':'',item.cbe==='1'?'competency-based CBE':'',{'per-credit':'per credit',subscription:'subscription','flat-term':'flat price per term',annual:'annual tuition'}[item.billing]||''].join(' ')).join(' ');
       if (!words(state.q).every(word => hay.includes(word))) return false;
     }
     if (skip !== 'share' && item.share < state.share) return false;
+    if (skip !== 'budget' && state.budget && (item.costStatus !== 'planning-range' || !Number.isFinite(item.costMax) || item.costMax<=0 || item.costMax>state.budget)) return false;
     if (skip !== 'subject' && state.subject.length && !state.subject.some(s => item.subjects.includes(s))) return false;
-    for (const key of ['format', 'level', 'pace', 'school']) if (skip !== key && state[key].length && !state[key].includes(item[key])) return false;
+    for (const key of ['format', 'level', 'pace', 'cbe', 'billing', 'school']) if (skip !== key && state[key].length && !state[key].includes(item[key])) return false;
     return true;
   }
   /** Stable comparator for a sort key; unknown costs always sort last. */
@@ -62,8 +64,9 @@
   const groups = new Map($$('[data-plan-group]').map(group => [group.dataset.planGroup, group]));
   const labelFor = (name, value) => { const input = form.querySelector('input[name="' + name + '"][value="' + CSS.escape(value) + '"]'); return input ? input.nextElementSibling.textContent : value; };
   const items = $$('.public-plan-card').map(card => ({
-    card, title: card.dataset.planTitle || '', school: card.dataset.planSchool || '', format: card.dataset.planFormat || '', level: card.dataset.planLevel || '', pace: card.dataset.planPace || '',
-    subjects: (card.dataset.planSubjects || '').split(' ').filter(Boolean), share: Number(card.dataset.planShare) || 0, cost: card.dataset.planCost ? Number(card.dataset.planCost) : null
+    card, title: card.dataset.planTitle || '', school: card.dataset.planSchool || '', format: card.dataset.planFormat || '', level: card.dataset.planLevel || '', pace: card.dataset.planPace || '', cbe:card.dataset.planCbe||'',billing:card.dataset.planBilling||'',
+    subjects: (card.dataset.planSubjects || '').split(' ').filter(Boolean), share: Number(card.dataset.planShare) || 0, cost: card.dataset.planCost ? Number(card.dataset.planCost) : null,
+    costMax:card.dataset.planCostMax?Number(card.dataset.planCostMax):null,costStatus:card.dataset.planCostStatus||''
   }));
   for (const item of items) item.subjectLabels = item.subjects.map(s => labelFor('subject', s));
   // The flat (non-grouped) list gets its own heading so card headings keep a valid outline.
@@ -73,7 +76,7 @@
 
   function readURL() {
     const params = new URLSearchParams(location.search), state = {};
-    for (const key of ['q', 'sort', 'share', ...MULTI]) if (params.has(key)) state[key] = params.get(key);
+    for (const key of ['q', 'sort', 'share', 'budget', ...MULTI]) if (params.has(key)) state[key] = params.get(key);
     return normalize(state);
   }
   function writeURL(state) {
@@ -81,18 +84,19 @@
     if (state.q) params.set('q', state.q);
     if (state.sort !== 'outside') params.set('sort', state.sort);
     if (state.share) params.set('share', String(state.share));
+    if (state.budget) params.set('budget', String(state.budget));
     for (const key of MULTI) if (state[key].length) params.set(key, state[key].join(','));
     const next = location.pathname + (params.toString() ? '?' + params : '') + location.hash;
     if (next !== location.pathname + location.search + location.hash) history.replaceState(null, '', next);
   }
   function readForm() {
-    const state = { q: search.value, sort: sort.value, share: (form.querySelector('input[name="share"]:checked') || {}).value };
+    const state = { q: search.value, sort: sort.value, share: (form.querySelector('input[name="share"]:checked') || {}).value, budget:(form.querySelector('input[name="budget"]:checked')||{}).value };
     for (const key of MULTI) state[key] = $$('input[name="' + key + '"]:checked').map(input => input.value);
     return normalize(state);
   }
   function fillForm(state) {
     search.value = state.q; sort.value = state.sort;
-    for (const input of $$('[data-plan-filters] input')) input.checked = input.name === 'share' ? Number(input.value) === state.share : (state[input.name] || []).includes(input.value);
+    for (const input of $$('[data-plan-filters] input')) input.checked = ['share','budget'].includes(input.name) ? Number(input.value) === state[input.name] : (state[input.name] || []).includes(input.value);
   }
   const plural = (n, word) => n + ' ' + word + (n === 1 ? '' : 's');
 
@@ -120,7 +124,7 @@
       label.querySelector('[data-facet-count]').textContent = n;
       input.disabled = n === 0 && !input.checked; label.classList.toggle('is-empty', input.disabled);
     }
-    const filters = MULTI.reduce((n, key) => n + state[key].length, 0) + (state.share ? 1 : 0);
+    const filters = MULTI.reduce((n, key) => n + state[key].length, 0) + (state.share ? 1 : 0) + (state.budget?1:0);
     badge.hidden = !filters; badge.textContent = filters ? String(filters) : '';
     count.textContent = list.length === items.length && !state.q && !filters ? plural(items.length, 'researched plan') : list.length + ' of ' + plural(items.length, 'plan') + ' match' + (list.length === 1 ? 'es' : '');
     empty.hidden = list.length > 0;
@@ -131,11 +135,12 @@
     if (state.q) pills.push(['q', state.q, '“' + state.q + '”']);
     for (const key of MULTI) for (const value of state[key]) pills.push([key, value, labelFor(key, value)]);
     if (state.share) pills.push(['share', String(state.share), state.share + '%+ outside credit']);
+    if (state.budget) pills.push(['budget',String(state.budget),'Plan range up to $'+state.budget.toLocaleString('en-US')]);
     active.innerHTML = '';
     for (const [key, value, text] of pills) {
       const li = document.createElement('li'), button = document.createElement('button');
       button.type = 'button'; button.className = 'plan-pill'; button.textContent = text; button.setAttribute('aria-label', 'Remove filter: ' + text);
-      button.addEventListener('click', () => { const next = readForm(); if (key === 'q') next.q = ''; else if (key === 'share') next.share = 0; else next[key] = next[key].filter(v => v !== value); apply(next); count.focus?.(); });
+      button.addEventListener('click', () => { const next = readForm(); if (key === 'q') next.q = ''; else if (key === 'share' || key === 'budget') next[key] = 0; else next[key] = next[key].filter(v => v !== value); apply(next); count.focus?.(); });
       li.appendChild(button); active.appendChild(li);
     }
     if (pills.length > 1) { const li = document.createElement('li'), button = document.createElement('button'); button.type = 'button'; button.className = 'plan-pill-clear'; button.textContent = 'Clear all'; button.addEventListener('click', () => apply(normalize({ sort: sort.value }))); li.appendChild(button); active.appendChild(li); }

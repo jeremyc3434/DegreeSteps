@@ -721,6 +721,18 @@ body.public-page .public-plan-map-note { display:block; margin-top:4px; color:#5
 }
 body.public-page .plan-library-copy { margin-left:auto; padding:6px 12px; border:1px solid #c3cddb; border-radius:999px; background:#fff; color:var(--public-ink); font-size:.8125rem; font-weight:600; }
 body.public-page .plan-library-copy:hover { border-color:var(--public-cobalt); color:var(--public-cobalt); }
+
+/* Shared degree-fit facts stay visible before a student opens the course plan. */
+body.public-page .public-plan-fit-badges { display:flex; flex-wrap:wrap; gap:7px; margin:12px 0 0; padding:0; list-style:none; }
+body.public-page .public-plan-fit-badges li { margin:0; padding:5px 9px; border:1px solid #d7e0f8; border-radius:6px; background:#f3f6ff; color:#294476; font-size:.875rem; font-weight:550; line-height:1.4; }
+body.public-page .public-plan-fit { margin:18px 0; padding:0; }
+body.public-page .public-plan-fit-tuition { margin:10px 0; color:var(--public-muted); font-size:1rem; line-height:1.55; }
+body.public-page .public-plan-fit-tuition strong { color:var(--public-ink); font-weight:600; }
+body.public-page .public-plan-fit > details { margin-top:8px; color:var(--public-muted); font-size:.875rem; }
+body.public-page .public-plan-fit > details > summary { display:list-item; width:fit-content; min-height:44px; padding:10px 0; color:var(--public-cobalt); cursor:pointer; }
+body.public-page .public-plan-fit > details li { margin:5px 0; }
+body.public-page .public-plan-fit > details a { display:inline-flex; align-items:center; min-height:36px; }
+body.public-page .plan-facet-note { margin:8px 0 0; color:var(--public-muted); font-size:.875rem; line-height:1.5; }
 body.public-page .plan-hub-more { margin:18px 0 0; font-size:.9375rem; }
 body.public-page .plan-hub-more a { display:inline-flex; align-items:center; gap:6px; color:var(--public-cobalt); font-weight:600; text-underline-offset:3px; }
 @media(max-width:640px) { body.public-page .public-plan-table td > :is(small,a) { grid-column:2; } }

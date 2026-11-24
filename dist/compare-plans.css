@@ -113,3 +113,17 @@ body{background:#f8fafc;color:#172d4b}
 .comparison-shared-estimate .plan-estimate{margin:0;padding:0;border:0;background:none;box-shadow:none}
 .comparison-cost-confirm>strong{font-size:1.25rem}
 .comparison-suggested-note{margin:6px 0 0;padding:8px 10px;border-radius:7px;background:#f1f5fb;color:#435a76;font-size:14px;line-height:1.4}
+
+/* Study format and billing remain distinct from the remaining-plan estimate. */
+.comparison-degree-fit{margin:0 0 15px;padding:0 0 12px;border-bottom:1px solid #e5ebf4;color:#435a76}
+.comparison-degree-tags{display:flex;flex-wrap:wrap;gap:7px;list-style:none;margin:0 0 10px;padding:0}
+.comparison-degree-tags>li{max-width:100%;padding:5px 9px;border:1px solid #dce6f7;border-radius:6px;background:#f2f6ff;color:#315b97;font-size:.875rem;line-height:1.45;overflow-wrap:anywhere}
+.comparison-tuition-fact{display:grid;gap:3px;margin:8px 0 0;font-size:.875rem;line-height:1.55}
+.comparison-tuition-fact>span{color:#536780}
+.comparison-tuition-fact>strong{color:#263f60;font-size:.9375rem;font-weight:600;overflow-wrap:anywhere}
+.comparison-attendance-fact{margin:10px 0 0;font-size:.875rem;line-height:1.6;color:#485f7b}
+.comparison-attendance-fact a,.comparison-fit-sources a{display:inline-flex;align-items:center;min-height:44px;color:#285fc3;text-underline-offset:3px}
+.comparison-fit-sources{font-size:.875rem;line-height:1.5;margin:4px 0 0}
+.comparison-fit-sources>summary{display:flex;align-items:center;min-height:44px;color:#435f86;cursor:pointer}
+.comparison-fit-sources ul{list-style:none;margin:0;padding:0}
+.comparison-fit-sources li{margin:0}

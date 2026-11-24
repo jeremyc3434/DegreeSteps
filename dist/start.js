@@ -9,7 +9,9 @@ const levels={associate:'Associate',bachelor:'Bachelor’s',master:'Master’s',
 const formats={online:'Online',campus:'On campus'};
 const idOK=v=>typeof v==='string'&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(v);
 let catalog,rows=[],index={plans:{},subjects:{}},limit=12;
-const filters={q:'',subject:'',level:'',format:'',sort:'cost',confirm:true};
+const filterDefaults={q:'',subject:'',level:'',format:'',pace:'',billing:'',cbe:false,share:'',budget:'',sort:'cost',confirm:true};
+const filters={...filterDefaults};
+const paceLabels={'self-paced':'Self-paced',scheduled:'Term-based'},billingLabels={'per-credit':'Per credit',subscription:'Subscription','flat-term':'Flat price per term',annual:'Annual tuition'};
 const purposes={any:'any-degree',grow:'career-growth',change:'change-career',licensed:'licensed-career'},priorities={cost:'cost',outside:'transfer',time:'speed'};
 const quizIntent=params.get('from')==='quiz'?{
   purpose:Object.values(purposes).includes(params.get('purpose'))?params.get('purpose'):'',
@@ -19,11 +21,12 @@ function intentParams(next){
   if(quizIntent&&(quizIntent.purpose||quizIntent.priority)){next.set('from','quiz');if(quizIntent.purpose)next.set('purpose',quizIntent.purpose);if(quizIntent.priority)next.set('priority',quizIntent.priority);}
   return next;
 }
-function degreeParams(){const next=new URLSearchParams();for(const key of ['q','subject','level','format'])if(filters[key])next.set(key,filters[key]);if(filters.sort!=='cost')next.set('sort',filters.sort);if(!filters.confirm)next.set('confirm','0');return intentParams(next);}
+function degreeParams(){const next=new URLSearchParams();for(const key of ['q','subject','level','format','pace','billing','share','budget'])if(filters[key])next.set(key,filters[key]);if(filters.cbe)next.set('cbe','1');if(filters.sort!=='cost')next.set('sort',filters.sort);if(!filters.confirm)next.set('confirm','0');return intentParams(next);}
 function creditsUrl(p){const next=degreeParams();next.set('step','credits');next.set('plan',p.id);return 'start.html?'+next;}
 
 const info=p=>index.plans[p.id]||{tier:'reviewed',subjects:[]};
 const needsConfirmation=p=>info(p).tier==='confirmation';
+const fit=p=>{const f=info(p).fit,edition=value=>String(value||'').replace(/[–—]/g,'-');return f&&f.modelId===p.modelId&&(!f.modality||(p.modalities||[]).includes(f.modality))&&(!p.catalog||edition(f.catalogYear)===edition(p.catalog))?f:P.fitFacts?.(p,P.schoolFor(catalog,p))||{};};
 const money=v=>v>=10000?'$'+(Math.round(v/100)/10).toLocaleString('en-US')+'k':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
 const costText=p=>{const e=info(p).estimate;return e&&Number.isFinite(e.min)&&Number.isFinite(e.max)?(e.min===e.max?money(e.min):money(e.min)+'–'+money(e.max)):'';};
 const partialCost=p=>info(p).estimate?.partial===true;
@@ -32,7 +35,7 @@ const costMissing=p=>partialCost(p)?((info(p).estimate.unpriced||[]).filter(name
 const costRange=p=>{const e=info(p).estimate;return e&&Number.isFinite(e.min)&&Number.isFinite(e.max)?new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(e.min)+'–'+new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(e.max):'';};
 const months=p=>{const t=info(p).timing;if(!t||!t.outsideMonths||!t.universityTerms||!Number.isFinite(t.termMonths))return null;return t.outsideMonths.min+t.universityTerms.min*t.termMonths;};
 const share=p=>{const s=info(p).start;return s&&s.total>0?s.outside/s.total:null;};
-const unit=p=>p.school==='Western Governors University'?'units':'credits';
+const unit=p=>fit(p).creditSystem==='competency-unit'||p.creditUnit==='competency-unit'?'units':fit(p).creditSystem==='quarter'||p.creditUnit==='quarter'?'quarter credits':'credits';
 
 // Where "Build this plan" leads once step 2 is answered. A plan with a saved starting route opens directly;
 // any other plan uses the finder's existing school/program link, which asks its own remaining questions.
@@ -47,6 +50,9 @@ function matches(p){
   if(filters.level&&p.level!==filters.level)return false;
   if(filters.format&&!(p.modalities||[]).includes(filters.format))return false;
   if(!filters.confirm&&needsConfirmation(p))return false;
+  if(!P.fitsFilters(fit(p),{...(filters.cbe?{competencyBased:true}:{}),...(filters.pace?{selfPaced:filters.pace==='self-paced'}:{}),...(filters.billing?{billing:filters.billing}:{})}))return false;
+  if(filters.share&&(share(p)===null||share(p)*100<Number(filters.share)))return false;
+  if(filters.budget){const e=info(p).estimate;if(!e||e.partial===true||!Number.isFinite(e.max)||e.max>Number(filters.budget))return false;}
   const q=norm(filters.q).trim();
   if(q){const hay=norm([p.school,p.title,levels[p.level],...(info(p).subjects||[]).map(id=>index.subjects[id]||id)].join(' '));if(!q.split(/\s+/).every(word=>hay.includes(word)))return false;}
   return true;
@@ -66,11 +72,15 @@ function sorted(list){
 }
 function card(p){
   const s=info(p).start,cost=costText(p),pct=s&&s.total?Math.round(s.outside/s.total*100):0,fmt=(p.modalities||[]).map(m=>formats[m]||m).join(' · ');
+  const f=fit(p),badges=[f.competencyBased===true?'Competency-based (CBE)':'',f.selfPaced===true?'Self-paced':f.selfPaced===false?'Term-based':'',f.billing?f.billingLabel||billingLabels[f.billing]:'',...(f.requirements||[]).map(item=>item.label)].filter(Boolean);
   return '<article class="start-card" data-plan="'+esc(p.id)+'"><div class="start-card-head"><p class="start-school">'+esc(p.school)+(fmt?' · '+esc(fmt):'')+'</p><h2>'+esc(p.title)+'</h2>'
     +(needsConfirmation(p)?'<span class="start-badge">Needs school confirmation</span>':'')+'</div>'
+    +(badges.length?'<ul class="start-fit-badges" aria-label="Program features">'+badges.map(label=>'<li>'+esc(label)+'</li>').join('')+'</ul>':'')
+    +(f.billing&&f.tuitionLabel?'<p class="start-tuition">University tuition: '+esc(f.tuitionLabel)+'</p>':'')
     +'<div class="start-stats"><div class="start-stat"><span>'+costLabel(p)+'</span><strong'+(cost?' title="'+esc(costRange(p))+' before aid" aria-label="'+esc(costRange(p))+' before aid"':'')+'>'+(cost?esc(cost):'Ask the school')+'</strong>'+(partialCost(p)?'<small>'+esc(costMissing(p))+'</small>':'')+'</div>'
     +'<div class="start-stat start-stat-accent"><span>Low-cost '+unit(p)+'</span><strong>'+(s?s.outside+' of '+s.total:'—')+'</strong></div></div>'
     +(s?'<div class="start-bar" role="img" aria-label="'+esc(s.outside+' of '+s.total+' '+unit(p)+' can come from low-cost courses')+'"><span style="width:'+pct+'%"></span></div>':'')
+    +(s?'<p class="start-college-work"><strong>'+esc(s.university)+'</strong> '+unit(p)+' at the university in this plan</p>':'')
     +'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="'+esc(creditsUrl(p))+'">Build this plan</a>'
     +(info(p).page?'<a class="start-text-link" href="'+esc(info(p).page)+'">See every course</a>':'')+'</div></article>';
 }
@@ -87,6 +97,10 @@ function renderDegree(){
   chipGroup('start-levels','level',Object.entries(levels).filter(([id])=>rows.some(p=>p.level===id)),filters.level);
   chipGroup('start-formats','format',Object.entries(formats).filter(([id])=>rows.some(p=>(p.modalities||[]).includes(id))),filters.format);
   $('start-sort').value=filters.sort;$('start-confirm').checked=filters.confirm;
+  for(const key of ['pace','billing','share','budget'])$('start-'+key).value=filters[key];$('start-cbe').checked=filters.cbe;
+  const active=[['q',filters.q?'Search: '+filters.q:''],['subject',index.subjects[filters.subject]],['level',levels[filters.level]],['format',formats[filters.format]],['pace',paceLabels[filters.pace]],['billing',billingLabels[filters.billing]],['cbe',filters.cbe?'Competency-based (CBE)':''],['share',filters.share?'At least '+filters.share+'% transfer coursework':''],['budget',filters.budget?'Plan range up to '+money(Number(filters.budget)):'']].filter(([,label])=>label);
+  $('start-active-filters').innerHTML=active.map(([key,label])=>'<button type="button" data-clear-filter="'+key+'" aria-label="Remove filter: '+esc(label)+'">'+esc(label)+' <span aria-hidden="true">×</span></button>').join('')+(active.length?'<button type="button" data-clear-all>Clear filters</button>':'');
+  const quizLink=degreeParams();quizLink.set('step','quiz');$('start-quiz-link').href='start.html?'+quizLink;
 }
 function syncUrl(){
   const next=degreeParams();
@@ -128,15 +142,17 @@ function renderQuiz(){
   $('start-quiz-card').innerHTML='<h2 id="start-quiz-question">'+esc(item.q)+'</h2>'+note+'<div class="start-quiz-options" role="group" aria-labelledby="start-quiz-question">'+item.options.map(([value,label])=>'<button type="button" class="start-answer-button" data-quiz-answer="'+esc(value)+'">'+esc(label)+'</button>').join('')+'</div>';
 }
 function finishQuiz(){
-  const next=new URLSearchParams();for(const key of ['level','subject','format'])if(answers[key])next.set(key,answers[key]);if(answers.sort&&answers.sort!=='cost')next.set('sort',answers.sort);next.set('from','quiz');if(purposes[answers.purpose])next.set('purpose',purposes[answers.purpose]);if(priorities[answers.sort])next.set('priority',priorities[answers.sort]);
+  const next=degreeParams();for(const key of ['level','subject','format'])if(answers[key])next.set(key,answers[key]);else next.delete(key);if(answers.sort&&answers.sort!=='cost')next.set('sort',answers.sort);else next.delete('sort');next.set('from','quiz');if(purposes[answers.purpose])next.set('purpose',purposes[answers.purpose]);if(priorities[answers.sort])next.set('priority',priorities[answers.sort]);
   location.assign('start.html?'+next);
 }
 
 document.addEventListener('click',event=>{
+  const clear=event.target.closest?.('[data-clear-filter],[data-clear-all]');
+  if(clear){if(clear.hasAttribute('data-clear-all'))Object.assign(filters,filterDefaults);else filters[clear.dataset.clearFilter]=filterDefaults[clear.dataset.clearFilter];$('start-q').value=filters.q;limit=12;renderDegree();syncUrl();$('start-q').focus();return;}
   const chip=event.target.closest?.('[data-filter]');
   if(chip){filters[chip.dataset.filter]=chip.dataset.value;limit=12;renderDegree();syncUrl();const again=document.querySelector('[data-filter="'+chip.dataset.filter+'"][data-value="'+CSS.escape(chip.dataset.value)+'"]');again?.focus();return;}
   if(event.target.id==='start-more'){limit+=12;renderDegree();return;}
-  if(event.target.id==='start-clear'){Object.assign(filters,{q:'',subject:'',level:'',format:'',sort:'cost',confirm:true});$('start-q').value='';renderDegree();syncUrl();return;}
+  if(event.target.id==='start-clear'){Object.assign(filters,filterDefaults);$('start-q').value='';renderDegree();syncUrl();return;}
   const answer=event.target.closest?.('[data-quiz-answer]');
   if(answer){answers[quiz[quizAt].id]=answer.dataset.quizAnswer;if(quizAt<quiz.length-1){quizAt++;renderQuiz();$('start-quiz-question')?.setAttribute('tabindex','-1');$('start-quiz-question')?.focus();}else finishQuiz();return;}
   if(event.target.id==='start-quiz-back'){event.preventDefault();if(quizAt>0){quizAt--;renderQuiz();}return;}
@@ -144,6 +160,8 @@ document.addEventListener('click',event=>{
 $('start-q').addEventListener('input',()=>{filters.q=$('start-q').value;limit=12;renderDegree();syncUrl();});
 $('start-sort').addEventListener('change',()=>{filters.sort=$('start-sort').value;renderDegree();syncUrl();});
 $('start-confirm').addEventListener('change',()=>{filters.confirm=$('start-confirm').checked;renderDegree();syncUrl();});
+for(const key of ['pace','billing','share','budget'])$('start-'+key).addEventListener('change',()=>{filters[key]=$('start-'+key).value;limit=12;renderDegree();syncUrl();});
+$('start-cbe').addEventListener('change',()=>{filters.cbe=$('start-cbe').checked;limit=12;renderDegree();syncUrl();});
 
 (async()=>{try{
   const loaded=await Promise.all(['data/pathways.json','data/program-catalog.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('The degree plans could not load. Please reload.');return r.json();}));
@@ -161,6 +179,11 @@ $('start-confirm').addEventListener('change',()=>{filters.confirm=$('start-confi
   if(index.subjects[params.get('subject')])filters.subject=params.get('subject');
   if(levels[params.get('level')])filters.level=params.get('level');
   if(formats[params.get('format')])filters.format=params.get('format');
+  if(paceLabels[params.get('pace')])filters.pace=params.get('pace');
+  if(billingLabels[params.get('billing')])filters.billing=params.get('billing');
+  filters.cbe=params.get('cbe')==='1';
+  if(['50','60','70'].includes(params.get('share')))filters.share=params.get('share');
+  if(['15000','25000','40000'].includes(params.get('budget')))filters.budget=params.get('budget');
   if(['cost','outside','time','az'].includes(params.get('sort')))filters.sort=params.get('sort');
   if(params.get('confirm')==='0')filters.confirm=false;
   if(params.get('school'))filters.q=filters.q||params.get('school').slice(0,80);
