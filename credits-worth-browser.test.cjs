@@ -28,7 +28,7 @@ const noHorizontalScroll=page=>page.evaluate(()=>document.documentElement.scroll
 
 for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['iphone13',devices['iPhone 13']]]){
  test(name+': empty state, quick add, ranking, review states, save and build',async()=>{
-  const browser=await chromium.launch();
+  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
   try{
    const {context,page,requests,errors}=await open(browser,profile);
    await page.waitForSelector('#cw-provider option[value="Sophia"]',{state:'attached'});
@@ -97,7 +97,7 @@ for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['ip
 }
 
 test('a saved My courses draft is read without uploading or rewriting it, and unfinished courses are explained',async()=>{
- const browser=await chromium.launch();
+ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
  try{
   const {context,page,requests,errors}=await open(browser,{viewport:{width:1366,height:900}},{draft:savedDraft});
   const before=await page.evaluate(key=>localStorage.getItem(key),KEY);
@@ -117,7 +117,7 @@ test('a saved My courses draft is read without uploading or rewriting it, and un
 });
 
 test('entry points link to the page',async()=>{
- const browser=await chromium.launch();
+ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
  try{
   const page=await browser.newPage();
   for(const path of ['/programs.html','/courses.html','/how-it-works/','/']){await page.goto(BASE+path);assert(await page.$('a[href$="credits-worth.html"]'),path+' links to What are my credits worth?');}

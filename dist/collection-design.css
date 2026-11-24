@@ -27,42 +27,42 @@ body.dp-app-shell #import-app :is(button,a,input,select,summary):focus-visible {
 /* A recognizable collection, with its own browsing and saved-course views. */
 body.dp-app-shell #courses-app .courses-heading {
   margin:0;
-  padding:25px 26px;
-  border-radius:8px 8px 0 0;
-  color:#fff;
-  background:var(--collection-navy);
+  padding:0 0 20px;
+  border-radius:0;
+  color:var(--collection-ink);
+  background:transparent;
   align-items:center;
   flex-wrap:wrap;
   gap:18px;
 }
 body.dp-app-shell #courses-app .courses-heading h1 {
   margin:0;
-  color:#fff;
-  font-size:clamp(1.8rem,2.5vw,2.2rem);
+  color:var(--collection-ink);
+  font-size:clamp(2rem,2.5vw,2.4rem);
   font-weight:650;
   line-height:1.15;
   letter-spacing:var(--ds-title-tracking,-.03em);
 }
 body.dp-app-shell #courses-app .courses-heading .courses-primary {
-  min-height:46px;
-  padding:11px 17px;
-  border-color:#fff;
-  border-radius:6px;
-  background:#fff;
-  color:var(--collection-navy)!important;
-  font-size:.9375rem;
+  min-height:48px;
+  padding:12px 18px;
+  border-color:var(--collection-blue);
+  border-radius:8px;
+  background:var(--collection-blue);
+  color:#fff!important;
+  font-size:1rem;
 }
-body.dp-app-shell #courses-app .courses-heading .courses-primary:hover { background:#eaf0ff; }
+body.dp-app-shell #courses-app .courses-heading .courses-primary:hover { background:#3042d9; border-color:#3042d9; }
 body.dp-app-shell #courses-app .courses-heading .courses-primary > [aria-hidden="true"] { display:none; }
-body.dp-app-shell #courses-app .courses-heading :is(a,button):focus-visible { outline-color:#b2c2ff; }
+body.dp-app-shell #courses-app .courses-heading :is(a,button):focus-visible { outline-color:var(--collection-blue); }
 body.dp-app-shell #courses-app .courses-tools {
-  padding:8px 22px 0;
+  padding:0;
   gap:12px 26px;
   flex-wrap:wrap;
-  border:1px solid var(--collection-line);
-  border-top:0;
-  border-radius:0 0 8px 8px;
-  background:var(--collection-paper);
+  border:0;
+  border-bottom:1px solid var(--collection-line);
+  border-radius:0;
+  background:transparent;
 }
 body.dp-app-shell #courses-app .courses-tabs { gap:26px; }
 body.dp-app-shell #courses-app .courses-tabs button {
@@ -130,7 +130,7 @@ body.dp-app-shell #courses-app .courses-status { color:var(--collection-muted); 
 body.dp-app-shell #courses-app .courses-results-header button { color:var(--collection-blue); }
 body.dp-app-shell #courses-app .course-list {
   border-color:var(--collection-line);
-  border-radius:7px;
+  border-radius:12px;
   background:var(--collection-paper);
 }
 body.dp-app-shell #courses-app .course-list-head {
@@ -230,14 +230,16 @@ body.dp-app-shell #import-app .import-steps {
   border-block:1px solid var(--collection-line);
 }
 body.dp-app-shell #import-app .import-steps li { font-size:.9375rem; font-weight:550; }
-body.dp-app-shell #import-app .import-steps li span { border-radius:5px; }
+body.dp-app-shell #import-app .import-steps li span { border-radius:50%; }
+body.dp-app-shell #import-app .import-steps li[aria-current="step"] { color:var(--collection-ink); font-weight:650; }
+body.dp-app-shell #import-app .import-steps li[aria-current="step"] span { background:var(--collection-blue); color:#fff; }
 body.dp-app-shell #import-app .import-start { gap:22px; }
 body.dp-app-shell #import-app .import-upload-card {
-  min-height:300px;
+  min-height:260px;
   padding:28px 24px;
   border-color:#a7b8d1;
-  border-radius:8px;
-  background:var(--collection-paper);
+  border-radius:12px;
+  background:#f8faff;
 }
 body.dp-app-shell #import-app .import-upload-card.is-dragging { border-color:var(--collection-blue); background:var(--ds-soft-blue,#eef1ff); }
 body.dp-app-shell #import-app :is(.import-upload-card,.import-template-card) h2 {
@@ -248,10 +250,9 @@ body.dp-app-shell #import-app :is(.import-upload-card,.import-template-card) h2 
 body.dp-app-shell #import-app :is(.import-upload-card,.import-template-card) > p { font-size:1rem; color:var(--collection-muted); }
 body.dp-app-shell #import-app .import-template-card {
   padding:26px;
-  border:0;
-  border-left:3px solid var(--collection-blue);
-  border-radius:0;
-  background:var(--collection-canvas);
+  border:1px solid var(--collection-line);
+  border-radius:12px;
+  background:var(--collection-paper);
 }
 body.dp-app-shell #import-app .import-template-card .import-eyebrow { font-size:.875rem; font-weight:550; letter-spacing:0; text-transform:none; }
 body.dp-app-shell #import-app :is(.import-button,.import-secondary,.import-text-button,.import-text-link) {
@@ -280,7 +281,8 @@ body.dp-app-shell #import-app :is(input:not([type="checkbox"]):not([type="file"]
   font-size:1rem;
 }
 body.dp-app-shell #import-app .import-table-tools { color:var(--collection-muted); font-size:.875rem; }
-body.dp-app-shell #import-app .import-table-wrap { max-width:100%; border-color:var(--collection-line); border-radius:6px; overscroll-behavior-inline:contain; }
+body.dp-app-shell #import-app .import-table-wrap { max-width:100%; border-color:var(--collection-line); border-radius:10px; overscroll-behavior-inline:contain; scrollbar-color:#9dacc4 var(--collection-canvas); }
+body.dp-app-shell #import-app .import-table-wrap::before { content:"Scroll across for all course details."; display:block; position:sticky; left:0; width:fit-content; max-width:100%; padding:10px 12px; color:var(--collection-muted); background:var(--collection-paper); font-size:.875rem; line-height:1.5; }
 body.dp-app-shell #import-app .import-table { min-width:1650px; font-size:1rem; }
 body.dp-app-shell #import-app .import-table th { padding:13px 11px; background:var(--collection-canvas); color:var(--collection-muted); font-size:.875rem; font-weight:550; }
 body.dp-app-shell #import-app .import-table td { padding:13px 9px; border-top-color:var(--collection-line); }
@@ -335,8 +337,8 @@ body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remov
 @media(max-width:850px) {
   body.dp-app-shell #courses-app,
   body.dp-app-shell #import-app { padding:23px 20px 42px; }
-  body.dp-app-shell #courses-app .courses-heading { padding:23px; }
-  body.dp-app-shell #courses-app .courses-tools { padding-inline:20px; }
+  body.dp-app-shell #courses-app .courses-heading { padding:0 0 20px; }
+  body.dp-app-shell #courses-app .courses-tools { padding-inline:0; }
   body.dp-app-shell #courses-app .course-row { min-height:0; padding:16px; row-gap:7px; }
   body.dp-app-shell #import-app .import-template-card { padding:22px; }
   body.dp-app-shell #import-app .import-action-bar { bottom:0; }
@@ -344,10 +346,10 @@ body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remov
 @media(max-width:600px) {
   body.dp-app-shell #courses-app,
   body.dp-app-shell #import-app { padding:20px 14px 38px; }
-  body.dp-app-shell #courses-app .courses-heading { padding:22px 18px; }
+  body.dp-app-shell #courses-app .courses-heading { padding:0 0 18px; }
   body.dp-app-shell #courses-app .courses-heading h1 { font-size:1.85rem; }
   body.dp-app-shell #courses-app .courses-heading .courses-primary { width:100%; }
-  body.dp-app-shell #courses-app .courses-tools { gap:6px; padding:8px 16px; }
+  body.dp-app-shell #courses-app .courses-tools { gap:6px; padding:0; }
   body.dp-app-shell #courses-app .courses-tabs { width:100%; gap:24px; }
   body.dp-app-shell #courses-app :is(#courses-add-own,#courses-credits-worth) { padding-block:8px; }
   body.dp-app-shell #courses-app .courses-filters { flex-wrap:wrap; gap:10px; padding-top:20px; }
@@ -365,7 +367,7 @@ body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remov
   body.dp-app-shell #import-app .import-steps { gap:12px; margin-block:22px; }
   body.dp-app-shell #import-app .import-steps li { gap:7px; font-size:.875rem; }
   body.dp-app-shell #import-app .import-steps li span { width:27px; height:27px; }
-  body.dp-app-shell #import-app .import-upload-card { min-height:280px; padding:24px 16px; }
+  body.dp-app-shell #import-app .import-upload-card { min-height:240px; padding:24px 16px; }
   body.dp-app-shell #import-app .import-file-label { padding-inline:13px; }
   body.dp-app-shell #import-app .import-panel { padding:18px 15px; }
   body.dp-app-shell #import-app .import-action-bar { padding:16px; }
@@ -386,6 +388,7 @@ body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remov
   body.dp-app-shell #courses-app .course-row { break-inside:avoid; background:#fff; }
   body.dp-app-shell #courses-app .course-row h2,body.dp-app-shell #courses-app .course-row h2 button { color:#000; }
   body.dp-app-shell #import-app .import-action-bar { position:static; box-shadow:none; }
+  body.dp-app-shell #import-app .import-table-wrap::before { content:none; }
 }
 
 /* Features are reviewed facts, with the same values used by the filters. */
