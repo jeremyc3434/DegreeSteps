@@ -150,7 +150,45 @@ test('wrong editions, formats, sources or broken ledgers cannot acquire a credib
 
 test('the reviewed data generator reproduces the browser rate file without network or private records',async()=>{
  const {buildPlanEstimateRates}=await import('./scripts/build-plan-estimate-rates.mjs');
- const result=await buildPlanEstimateRates({check:true});assert.equal(result.exactModels,119);assert.equal(result.check,true);
+ const result=await buildPlanEstimateRates({check:true});assert.equal(result.exactModels,122);assert.equal(result.check,true);
  const source=fs.readFileSync('dist/plan-estimate-engine.js','utf8');
  assert(!/\b(?:fetch|localStorage|sessionStorage|indexedDB)\s*[.(]/.test(source));
+});
+
+
+const libertyBaselineRateReview=JSON.parse(fs.readFileSync('content/estimates/liberty-online-baseline-rate-bindings-reviewed-2026-11-24.json','utf8'));
+for(const [id,outside,university,terms,tuition,fees,tuitionAt12] of [
+ ['curriculum-liberty-history-bs-online',69,51,3,20910,1147,21105],
+ ['curriculum-liberty-human-services-bs-online',60,60,4,24990,1496,24600],
+ ['curriculum-liberty-psychology-addictions-online',69,51,3,20910,1147,21105]
+])test('new Liberty online baselines use their exact reviewed standard-rate binding: '+id,()=>{
+ const f=fixture(id),before=JSON.stringify(f),result=Estimate.calculate(f);
+ const binding=libertyBaselineRateReview.programs.find(item=>item.modelId===id),evidence=libertyBaselineRateReview.primaryEvidence;
+ assert(binding&&f.program.sources.some(source=>source.url===binding.degreeUrl),'The exact degree has its own reviewed online catalog source');
+ assert(f.program.sources.some(source=>source.url===evidence.url&&source.sha256===evidence.sha256),'The retained primary catalog supports the standard-rate scope');
+ assert.equal(libertyBaselineRateReview.rateEntryId,'liberty-online-2026-27');assert.equal(libertyBaselineRateReview.catalogYear,'2026-2027');
+ assert.deepEqual(evidence.physicalPages,[82,83,85]);assert.equal(evidence.policyUrl,f.program.pricing.sourceUrl);
+ assert.equal(f.program.level,'bachelor');assert.equal(f.program.format,'Online');assert.equal(f.program.creditSystem,'semester');
+ assert.equal(result.available,true,result.reason);assert.equal(result.status,'planning-range');assert.equal(result.rateEntryId,'liberty-online-2026-27');
+ assert.deepEqual([result.counts.totalUnits,result.counts.outsideUnits,result.counts.remainingUniversityUnits],[120,outside,university]);
+ const fixed=Estimate.calculate({...f,assumptions:{universityUnitsPerTermMin:18,universityUnitsPerTermMax:18}});
+ assert.deepEqual(fixed.timing.universityTerms,{min:terms,max:terms});
+ assert.deepEqual(fixed.costs.universityTuition,{min:tuition,max:tuition},'Price the actual remaining university credits, including the part-time final semester when applicable');
+ assert.deepEqual(fixed.costs.universityFees,{min:fees,max:fees},'Charge the technology fee per billing semester and completion application once');
+ const threshold=Estimate.calculate({...f,assumptions:{universityUnitsPerTermMin:12,universityUnitsPerTermMax:12}});
+ assert.deepEqual(threshold.timing.universityTerms,{min:5,max:5});
+ assert.deepEqual(threshold.costs.universityTuition,{min:tuitionAt12,max:tuitionAt12},'Twelve credits qualifies for full-time semester pricing; a residual partial term uses the part-time rate');
+ assert.deepEqual(threshold.costs.universityFees,{min:1845,max:1845});
+ assert.equal(f.program.requirements.find(row=>row.id==='univ-104').credits,3,'A price binding must not invent a personal course waiver');
+ assert(result.sources.some(source=>source.id==='liberty-online-tuition-fees'&&source.url===f.program.pricing.sourceUrl));
+ assert(!result.sources.some(source=>source.id==='liberty-campus-fees'));
+ assert(result.costs.knownRange.min>0&&result.costs.knownRange.max>=result.costs.knownRange.min);
+ assert.equal(result.costs.complete,false);assert(result.costs.missing.some(value=>/tax/i.test(value)));assert(result.costs.missing.some(value=>/course-specific charges/.test(value)));
+ assert(result.timing.assumptions.some(value=>/2–4 completed outside courses per month.*planning assumption/.test(value)));
+ assert(result.timing.assumptions.some(value=>/12–18 credits per university semester.*planning assumption/.test(value)));
+ assert.equal(result.timing.totalMonths,null,'A semester price cannot invent a supported graduation date');
+ assert(result.notes.some(value=>/not a complete cost of attendance or a graduation-date promise/.test(value)));
+ const campus=structuredClone(f.program);campus.format='Residential';assert.equal(Estimate.calculate({...f,program:campus}).reasonCode,'degree-rate-mismatch');
+ const future=structuredClone(f.program);future.catalogYear='2027-2028';assert.equal(Estimate.calculate({...f,program:future}).reasonCode,'degree-rate-mismatch');
+ assert.equal(JSON.stringify(f),before,'Pricing leaves the academic model, selected courses and original facts unchanged');
 });

@@ -15,9 +15,9 @@ const BASE = (process.env.DEGREEPATH_TEST_URL || 'http://127.0.0.1:8133/').repla
 const KEY = 'degreepath-guide-v3';
 const ARTIFACTS = process.env.DEGREEPATH_BASELINE_ARTIFACTS || '/tmp/degreesteps-liberty-online-baselines-browser';
 const cases = [
-  {modelId:'curriculum-liberty-history-bs-online', outside:69},
-  {modelId:'curriculum-liberty-human-services-bs-online', outside:60},
-  {modelId:'curriculum-liberty-psychology-addictions-online', outside:69}
+  {modelId:'curriculum-liberty-history-bs-online', outside:69, estimate:'$22,925–$24,393'},
+  {modelId:'curriculum-liberty-human-services-bs-online', outside:60, estimate:'$27,098–$28,637'},
+  {modelId:'curriculum-liberty-psychology-addictions-online', outside:69, estimate:'$23,061–$24,762'}
 ].map(item => {
   const route = catalog.pathways.find(route => route.modelId === item.modelId);
   assert(route?.readyTemplate, item.modelId + ' must be discoverable as an actual ready plan');
@@ -83,6 +83,25 @@ async function test(name, fn) {
     assert.equal(await page.locator('tr.course-plan-row[data-kind=unmapped]').count(), 0);
     assert.match(await page.locator('#sheet-footer').innerText(), /Degree total: 120 credits/);
     assert.equal(await page.locator('.course-plan-unavailable,.course-plan-pending').count(), 0, 'The ready route cannot end at a research or requirements dead end');
+    await page.waitForFunction(expected => document.querySelector('[data-summary-cost]')?.textContent === expected, config.estimate);
+    if (width <= 700) {
+      assert.equal(await page.locator('[data-glance-cost]').innerText(), config.estimate, 'The phone repeats the same published-price range');
+      await page.locator('[data-phone-fold="cost"]').click();
+    }
+    const estimate = page.locator('#sheet-savings .plan-estimate');
+    assert(await estimate.isVisible(), 'The student can open a sourced cost range rather than an unpriced-plan warning');
+    assert.equal(await estimate.locator('.plan-estimate-heading strong').innerText(), config.estimate);
+    assert.equal(await page.locator('.sheet-cost-confirm').count(), 0);
+    await estimate.getByRole('button', {name:'See cost & timing', exact:true}).click();
+    const costDialog = page.locator('#sheet-dialog[open]');
+    await costDialog.locator('.plan-estimate').waitFor();
+    await costDialog.getByText('Rates, pace assumptions & exclusions', {exact:true}).click();
+    assert(await costDialog.locator('a[href="https://catalog.liberty.edu/undergraduate/admission/expenses-financial-policy-online-program/"]').isVisible());
+    assert.match(await costDialog.innerText(), /Before aid/);
+    assert.match(await costDialog.innerText(), /living costs|Housing/);
+    await page.locator('#close-sheet-dialog').click();
+    await costDialog.waitFor({state:'hidden'});
+    if (width <= 700) await page.locator('[data-phone-fold="cost"]').click();
     // The phone glance deliberately replaces the wider-screen next-action card.
     const next = width <= 700 ? page.locator('.sheet-glance-next') : page.locator('[aria-label="Your next action"]');
     await next.waitFor();
