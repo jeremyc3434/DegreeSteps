@@ -15,8 +15,10 @@
   ],
   "review": {
     "status": "migrated",
-    "source": "dist/data/curricula/liberty-history-online.json (registry-compiled)",
-    "reviewedOn": "2026-11-18"
+    "reviewedOn": "2026-11-24",
+    "reviewId": "liberty-history-online-baseline-2026-11-24",
+    "source": "content/curricula/snapshots/liberty/history-online-baseline-review-2026-11-24.json",
+    "baselineReviewStatus": "reviewed"
   },
   "modelFields": {
     "officialMappingCheckedOn": "2026-11-10",
@@ -156,7 +158,26 @@
       }
     },
     "unresolved": [
-      "State-specific general-education additions and a student’s admission/catalog rights depend on the individual record. Published outside-course options remain separate from an individual transfer award."
+      {
+        "id": "liberty-history-online-baseline-2026-11-24:personal-records",
+        "message": "Submit official records for Liberty’s individual transfer award, admission/catalog rights, state-specific general-education additions and duplicate-learning check.",
+        "owner": "student",
+        "status": "personal-task",
+        "sourceIds": [
+          "liberty-history-degree-review-2026-11-24",
+          "liberty-history-policy-review-2026-11-24"
+        ]
+      },
+      {
+        "id": "liberty-history-online-baseline-2026-11-24:prerequisite-registration",
+        "message": "Before registering for HIST 491, record accepted HIST 300 and HIEU 322 prerequisite credit and at least 72 earned semester credits for senior standing. Select an available online section; personal eligibility and future section availability are not assumed.",
+        "owner": "student",
+        "status": "personal-task",
+        "sourceIds": [
+          "liberty-history-catalog-review-2026-11-24",
+          "liberty-history-policy-review-2026-11-24"
+        ]
+      }
     ],
     "curriculumSections": [
       {
@@ -367,7 +388,79 @@
       "numericAlternativeCapInvented": false,
       "personalAwardsCreated": 0
     },
-    "evidenceCheckedOn": "2026-11-18"
+    "evidenceCheckedOn": "2026-11-24",
+    "historyBaselineReview": {
+      "id": "liberty-history-online-baseline-2026-11-24",
+      "checkedOn": "2026-11-24",
+      "reviewPacket": "content/curricula/snapshots/liberty/history-online-baseline-review-2026-11-24.json",
+      "degreeSourceIds": [
+        "liberty-history-degree-review-2026-11-24",
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "policySourceIds": [
+        "liberty-history-policy-review-2026-11-24"
+      ],
+      "personalAwardsCreated": 0,
+      "numericAlternativeCapInvented": false,
+      "retainedUniv104Credits": 3,
+      "majorResidencyBasisCredits": 42
+    },
+    "reviewedBaselineChoices": {
+      "version": 1,
+      "modelId": "curriculum-liberty-history-bs-online",
+      "catalogYear": "2026-2027",
+      "format": "Online",
+      "creditSystem": "semester",
+      "totalCredits": 120,
+      "checkedOn": "2026-11-24",
+      "reviewId": "liberty-history-online-baseline-2026-11-24",
+      "sourceIds": [
+        "liberty-history-degree-review-2026-11-24",
+        "liberty-history-catalog-review-2026-11-24",
+        "liberty-history-policy-review-2026-11-24"
+      ],
+      "optionSelections": {
+        "engl-101": "sophia-soph-0015",
+        "coms-101": "sophia-soph-0024",
+        "univ-104": "university-univ-104",
+        "math-121": "sophia-soph-0001",
+        "rlgn-104": "university-rlgn-104",
+        "ethc-101": "sophia-soph-0020",
+        "cstu-101": "studycom-sdcm-0047",
+        "biol-102": "sophia-soph-0002",
+        "psyc-101": "sophia-soph-0048",
+        "bibl-104": "university-bibl-104",
+        "theo-104": "university-theo-104",
+        "geog-200": "university-geog-200",
+        "hius-221": "sophia-soph-0022",
+        "hieu-201": "university-hieu-201",
+        "hist-300": "university-hist-300",
+        "hist-491": "university-hist-491",
+        "hius-222": "sophia-soph-0025",
+        "hieu-322": "university-hieu-322",
+        "hieu-390": "university-hieu-390",
+        "hius-313": "university-hius-313",
+        "hius-316": "university-hius-316",
+        "hiwd-320": "university-hiwd-320",
+        "hieu-425": "university-hieu-425",
+        "hius-341": "university-hius-341",
+        "hiwd-350": "university-hiwd-350",
+        "free-electives-1": "shared-option-7726870b48c6f8c3a96bb6c9",
+        "free-electives-2": "shared-option-259845d0664dd92f25acefe9",
+        "free-electives-3": "shared-option-4c4452094f3fe547963a930d",
+        "free-electives-4": "shared-option-2e600bced9151894946f9d54",
+        "free-electives-5": "sophia-soph-0006",
+        "free-electives-6": "sophia-soph-0029",
+        "free-electives-7": "liberty-named-sophia-soph-0016-envr-215",
+        "free-electives-8": "sophia-soph-0027",
+        "free-electives-9": "sophia-soph-0065",
+        "free-electives-10": "sophia-soph-0080",
+        "free-electives-11": "sophia-soph-0011",
+        "free-electives-12": "sophia-soph-0012",
+        "free-electives-13": "sophia-soph-0005",
+        "free-electives-14": "sophia-soph-0030"
+      }
+    }
   },
   "modelSourceIds": [
     "liberty-history-online-2026-2027",
@@ -529,118 +622,269 @@
     "cli-religion-admissions-2026-11-24",
     "cli-religion-accreditation-2026-11-24",
     "cli-religion-course-catalog-2026-11-24",
-    "cli-religion-the-101-2026-11-24"
+    "cli-religion-the-101-2026-11-24",
+    "liberty-history-catalog-review-2026-11-24",
+    "liberty-history-degree-review-2026-11-24",
+    "liberty-history-policy-review-2026-11-24",
+    "study-health-current-ace-sdcm-0173-v4",
+    "liberty-online-health-301-provider-observation-2026-11-18",
+    "liberty-online-free-elective-policy-2026-11-24",
+    "study-health-current-ace-sdcm-0207-v3",
+    "liberty-online-health-302-provider-observation-2026-11-18",
+    "study-health-current-ace-sdcm-0172-v4",
+    "liberty-online-health-303-provider-observation-2026-11-18",
+    "study-health-current-ace-sdcm-0209-v3",
+    "liberty-online-health-308-provider-observation-2026-11-18",
+    "wgu-global-sophia--gcu-soph-0011-ace-2026-11-19",
+    "wgu-global-sophia--gcu-soph-0011-provider-syllabus-2026-11-19",
+    "wgu-global-sophia--sophia-ace-current-course-index-2026-11-19",
+    "wgu-sophia-business-current",
+    "wgu-global-sophia--gcu-soph-0012-ace-2026-11-19",
+    "wgu-global-sophia--gcu-soph-0012-provider-syllabus-2026-11-19",
+    "wgu-global-sophia--gcu-soph-0005-ace-2026-11-19",
+    "wgu-global-sophia--sophia-ace-statistics-period-2026-11-19",
+    "wgu-global-sophia--gcu-soph-0030-ace-2026-11-19",
+    "wgu-global-sophia--sophia-ace-current-organization-2026-11-19",
+    "liberty-shared-source-1b57176ebd15f8779510e52d",
+    "liberty-shared-source-2a390bc39b6c2d0ced2dfd83",
+    "liberty-shared-source-5e6eadb5cd837e3565175989",
+    "liberty-shared-source-625a92e273acc9e436df571f",
+    "liberty-shared-source-6a3e90447050f59ecb823669",
+    "liberty-shared-source-7da038329303f7e9b80e4f90",
+    "liberty-shared-source-8107ef7fab63f1b80749169a",
+    "liberty-shared-source-854bd0c4e4cad870c6f98f0e",
+    "liberty-shared-source-86bfe2e81c266bd14a2dd11a",
+    "liberty-shared-source-929744a1489db9d7e3c4a6b5",
+    "liberty-shared-source-9d234147cc11aeb37c0c7c21",
+    "liberty-shared-source-9e7b2b5b0b4ac7d63e545baf",
+    "liberty-shared-source-a2c4f9db989ffc74d2b561a5",
+    "liberty-shared-source-c15c0603e383ab088afc5fc6",
+    "liberty-shared-source-c1aef350a1ac8a629707766e",
+    "liberty-shared-source-c7dd7c3f273fa46d1827398b",
+    "liberty-shared-source-d72baa1c7866b6e24c875c43",
+    "liberty-shared-source-e46b724b4502a633a2e86a58",
+    "liberty-shared-source-e5da81b849f18e0829144ecc",
+    "liberty-shared-source-ea5608ba45e58af8d6d72f88",
+    "liberty-shared-source-ee823056fa147579a1800034",
+    "liberty-shared-source-ef865b9570b4bded706d61e1",
+    "liberty-shared-source-f70be6e1bbb75fd7dd20e42f",
+    "liberty-shared-source-fd804abeef3e349dbe30aecb",
+    "liberty-shared-source-fdee587b0f2488fe3aea6c62",
+    "wgu-global-sophia--gcu-soph-0015-ace-2026-11-19",
+    "wgu-global-sophia--gcu-soph-0015-provider-syllabus-2026-11-19",
+    "wgu-global-sophia--sophia-ace-composition-i-period-2026-11-19",
+    "liberty-core-soph-0024-current-ace-2026-11-24",
+    "liberty-core-soph-0024-current-syllabus-2026-11-24",
+    "liberty-core-soph-0001-current-ace-2026-11-24",
+    "liberty-core-soph-0020-current-ace-2026-11-24",
+    "ace-study-humanities101-v5-2026-11-24",
+    "provider-study-humanities101-current-web-2026-11-24",
+    "liberty-core-soph-0002-current-ace-2026-11-24",
+    "liberty-core-soph-0048-current-ace-2026-11-24",
+    "liberty-core-soph-0048-current-syllabus-2026-11-24"
   ],
+  "sources": [
+    {
+      "id": "liberty-history-catalog-review-2026-11-24",
+      "title": "Liberty 2026–2027 full undergraduate catalog: History online requirements, prerequisites and delivery",
+      "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+      "checkedOn": "2026-11-24",
+      "retrievedOn": "2026-11-24",
+      "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "roles": [
+        "curriculum",
+        "prerequisites",
+        "offering"
+      ],
+      "sourcePages": [
+        202,
+        203,
+        1155,
+        1242,
+        1256,
+        1257,
+        1258,
+        1259,
+        1260,
+        1311,
+        1338,
+        1340
+      ],
+      "pageNumbering": "Physical PDF pages; printed page numbers are one lower.",
+      "reviewMethod": "SHA-256 of the actual freshly retrieved official full catalog verified. Selected course descriptions and exact online prerequisite alternatives reviewed from raw PDF text; online degree physical pages 202–203. Delivery does not guarantee a future section.",
+      "capture": "content/source-captures/55c9e594bf42cc33.txt",
+      "captureSha256": "55c9e594bf42cc336b55aa783243639fc48328ae9cd143d281acc003e9406590",
+      "documentSha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "capturePageSpec": "202,203,1155,1242,1256,1257,1258,1259,1260,1311,1338,1340",
+      "captureColumns": 2
+    },
+    {
+      "id": "liberty-history-degree-review-2026-11-24",
+      "title": "History B.S. online degree completion plan, 2026–2027, retrieved November 24",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/",
+      "checkedOn": "2026-11-24",
+      "retrievedOn": "2026-11-24",
+      "sha256": "cde7cbd18fbdb608bb47823cfe76476825d773702bcabaae041b5b9358d60862",
+      "roles": [
+        "curriculum",
+        "degree-placement"
+      ],
+      "capture": "content/source-captures/88dcc4ac8b0536dc.txt",
+      "captureContentHash": "sha256:88dcc4ac8b0536dc707a2a4d0e261129337a204d2c30081956385d04dec152d4"
+    },
+    {
+      "id": "liberty-history-policy-review-2026-11-24",
+      "title": "Online undergraduate academic policy: unrestricted electives and earned-credit classification, 2026–2027",
+      "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+      "checkedOn": "2026-11-24",
+      "retrievedOn": "2026-11-24",
+      "sha256": "1a4735ad5d0b9b4e442bdd8babfe3af397ff641b8f932781ac5c8a8d597311ad",
+      "roles": [
+        "policy",
+        "degree-placement",
+        "student-classification"
+      ],
+      "capture": "content/source-captures/004b0e85327846b7.txt",
+      "captureContentHash": "sha256:004b0e85327846b70c6e8b8f17d2a721490c80b6b341183e31dbada0f3541ffc"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "liberty-history-degree-review-2026-11-24",
+      "text": "Choose 36-45 credit hours of Free Electives"
+    },
+    {
+      "sourceId": "liberty-history-degree-review-2026-11-24",
+      "text": "It is strongly recommended that students include 300-400 level GEOG courses in their Free Elective courses"
+    },
+    {
+      "sourceId": "liberty-history-degree-review-2026-11-24",
+      "text": "25% Of major taken through Liberty University"
+    },
+    {
+      "sourceId": "liberty-history-degree-review-2026-11-24",
+      "text": "30 Hours must be completed through Liberty University"
+    },
+    {
+      "sourceId": "liberty-history-policy-review-2026-11-24",
+      "text": "Free electives may be taken from the undergraduate courses offered in any department."
+    },
+    {
+      "sourceId": "liberty-history-policy-review-2026-11-24",
+      "text": "Senior 72.00—and above"
+    }
+  ],
+  "file": "programs/history-bs-online.json",
   "requirements": [
     {"id":"engl-101","code":"ENGL 101","title":"Composition and Rhetoric","credits":3,"category":"general","group":"writing","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"selectionRequired":false,"optionRows":[
-      "sophia-soph-0015-to-engl-101",
+      {"row":"liberty-online-baseline-soph-0015-to-engl-101","mode":"exact-named-requirement-evidence-cited","optionId":"sophia-soph-0015"},
       "study-com-sdcm-0057-to-engl-101",
       "study-com-sdcm-0244-to-engl-101",
       "straighterline-oosl-0005-to-engl-101",
       "clep-clep-0041-to-engl-101"
     ]},
     {"id":"coms-101","code":"COMS 101","title":"Speech Communication","credits":3,"category":"general","group":"communication","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"selectionRequired":false,"optionRows":[
-      "sophia-soph-0024-to-coms-101",
+      {"row":"liberty-online-baseline-soph-0024-to-coms-101","mode":"exact-named-requirement-evidence-cited","optionId":"sophia-soph-0024"},
       "study-com-sdcm-0055-to-coms-101",
       "straighterline-oosl-0052-to-coms-101"
     ]},
-    {"id":"univ-104","code":"UNIV 104","title":"Instructional Technology for Successful Online Learning","credits":3,"category":"general","group":"technology","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"optionRows":[
+    {"id":"univ-104","code":"UNIV 104","title":"Instructional Technology for Successful Online Learning","credits":3,"category":"general","group":"technology","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened","liberty-criminal-justice-online--liberty-cj-univ-catalog-2026-2027-reviewed","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
     {"id":"math-121","code":"MATH 121","title":"College Algebra","credits":3,"category":"general","group":"quantitative-reasoning","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"selectionRequired":false,"optionRows":[
-      "sophia-soph-0001-to-math-121",
+      {"row":"liberty-online-baseline-soph-0001-to-math-121","mode":"exact-named-requirement-evidence-cited","optionId":"sophia-soph-0001"},
       "study-com-sdcm-0013-to-math-121",
       "study-com-sdcm-0033-to-math-121",
       "straighterline-oosl-0002-to-math-121",
       "clep-clep-0013-to-math-121"
     ]},
-    {"id":"rlgn-104","code":"RLGN 104","title":"Christian Life and Biblical Worldview","credits":4,"category":"general","group":"biblical-worldview","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"optionRows":[
+    {"id":"rlgn-104","code":"RLGN 104","title":"Christian Life and Biblical Worldview","credits":4,"category":"general","group":"biblical-worldview","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened","liberty-criminal-justice-online--liberty-cj-rlgn-catalog-2026-2027-reviewed","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
     {"id":"ethc-101","code":"ETHC 101","title":"Introduction to Ethics","credits":3,"category":"general","group":"critical-thinking","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"selectionRequired":false,"optionRows":[
-      "sophia-soph-0020-to-ethc-101",
+      {"row":"liberty-online-baseline-soph-0020-to-ethc-101","mode":"exact-named-requirement-evidence-cited","optionId":"sophia-soph-0020"},
       "study-com-sdcm-0161-to-ethc-101",
       "straighterline-oosl-0123-to-ethc-101",
       "dsst-dant-0018-to-ethc-101@requirement-id"
     ]},
     {"id":"cstu-101","code":"CSTU 101","title":"Western Culture","credits":3,"category":"general","group":"cultural-studies","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"selectionRequired":false,"optionRows":[
-      "study-com-sdcm-0047-to-cstu-101",
+      {"row":"liberty-online-baseline-sdcm-0047-to-cstu-101","mode":"exact-named-requirement-evidence-cited","optionId":"studycom-sdcm-0047"},
       "clep-clep-0003-to-cstu-101"
     ]},
     {"id":"biol-102","code":"BIOL 102","title":"Principles of Human Biology","credits":3,"category":"general","group":"natural-science","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"selectionRequired":false,"optionRows":[
-      "sophia-soph-0002-to-biol-102",
+      {"row":"liberty-online-baseline-soph-0002-to-biol-102","mode":"exact-named-requirement-evidence-cited","optionId":"sophia-soph-0002"},
       "sophia-soph-0073-to-biol-102",
       "study-com-sdcm-0003-to-biol-102",
       "straighterline-oosl-0028-to-biol-102"
     ]},
     {"id":"psyc-101","code":"PSYC 101","title":"General Psychology","credits":3,"category":"general","group":"social-science","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"selectionRequired":false,"optionRows":[
-      "sophia-soph-0048-to-psyc-101",
+      {"row":"liberty-online-baseline-soph-0048-to-psyc-101","mode":"exact-named-requirement-evidence-cited","optionId":"sophia-soph-0048"},
       "study-com-sdcm-0017-to-psyc-101",
       "straighterline-oosl-0027-to-psyc-101",
       "clep-clep-0020-to-psyc-101"
     ]},
-    {"id":"bibl-104","code":"BIBL 104","title":"Survey of Old and New Testament","credits":4,"category":"general","group":"christianity-contexts","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"optionRows":[
+    {"id":"bibl-104","code":"BIBL 104","title":"Survey of Old and New Testament","credits":4,"category":"general","group":"christianity-contexts","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened","liberty-criminal-justice-online--liberty-cj-bibl-catalog-2026-2027-reviewed","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"theo-104","code":"THEO 104","title":"Introduction to Theology Survey","credits":4,"category":"general","group":"christianity-contexts","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened"],"optionRows":[
+    {"id":"theo-104","code":"THEO 104","title":"Introduction to Theology Survey","credits":4,"category":"general","group":"christianity-contexts","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-online-approved-gened","liberty-criminal-justice-online--liberty-cj-theo-catalog-2026-2027-reviewed","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
       "christian-leaders-institute-the-101-to-theo-104"
     ]},
-    {"id":"geog-200","code":"GEOG 200","title":"Introduction to Geography","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"geog-200","code":"GEOG 200","title":"Introduction to Geography","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hius-221","code":"HIUS 221","title":"Survey of American History I","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-history-online-2026-2027"],"selectionRequired":false,"optionRows":[
-      "sophia-soph-0022-to-hius-221-8@exact-named-requirement-evidence-cited",
+    {"id":"hius-221","code":"HIUS 221","title":"Survey of American History I","credits":3,"category":"major","group":"major-foundations","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hius-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"selectionRequired":false,"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
+      {"row":"liberty-online-baseline-soph-0022-to-hius-221","mode":"reviewed-online-composition-history-bs-online-hius-221-3275a91f","optionId":"sophia-soph-0022"},
       "straighterline-oosl-0039-to-hius-221",
       "study-com-sdcm-0012-to-hius-221-4@exact-named-requirement-evidence-cited-requirement-id",
       "study-com-sdcm-0155-to-hius-221-4@exact-named-requirement-evidence-cited-requirement-id",
-      "sophia-soph-0022-to-hius-221-9@requirement-id",
+      {"row":"sophia-soph-0022-to-hius-221-9","mode":"reviewed-online-composition-history-bs-online-hius-221-8d0c09d6","optionId":"liberty-named-sophia-soph-0022-hius-221"},
       "straighterline-oosl-0039-to-hius-221-5@requirement-id"
     ]},
-    {"id":"hieu-201","code":"HIEU 201","title":"History of Western Civilization I","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-history-online-2026-2027"],"allowedCourseCodes":["HIEU 201","HIEU 202"],"selectionRequired":false,"optionRows":[
+    {"id":"hieu-201","code":"HIEU 201","title":"History of Western Civilization I","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hieu-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"allowedCourseCodes":["HIEU 201","HIEU 202"],"selectionRequired":false,"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
       "study-com-sdcm-0154-to-hieu-201-4@exact-named-requirement-evidence-cited-requirement-id",
       "study-com-sdcm-0011-to-hieu-201-4@exact-named-requirement-evidence-cited-requirement-id",
       "straighterline-oosl-0040-to-hieu-201-3@requirement-id",
       "study-com-sdcm-0038-to-hieu-202-4@exact-named-requirement-evidence-cited",
       "straighterline-oosl-0043-to-hieu-202"
     ]},
-    {"id":"hist-300","code":"HIST 300","title":"Historical Methodology","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-history-online-2026-2027"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"selectionRequired":false,"optionRows":[
+    {"id":"hist-300","code":"HIST 300","title":"Historical Methodology","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hist-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"selectionRequired":false,"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"advisoryTiming":{"message":"Should be taken no later than the first semester of the junior year.","registrationRestriction":false,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24"},"optionRows":[
       "study-com-sdcm-0236-to-hist-300-4@exact-named-requirement-evidence-cited-requirement-id"
     ]},
-    {"id":"hist-491","code":"HIST 491","title":"Senior Capstone Seminar","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hist-courses-2026-2027","liberty-history-online-academic-policy-2026-2027"],"minimumGrade":"C","prerequisites":["hist-300","hieu-322"],"prerequisiteNotes":"The online capstone requires senior status, HIST 300 and one course from a published upper-level history list. The online academic policy defines senior status at 72 earned semester credits. This named baseline satisfies the second course prerequisite with HIEU 322; it does not require every alternative.","minimumCompletedCredits":72,"minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hist-491","code":"HIST 491","title":"Senior Capstone Seminar","credits":3,"category":"major","group":"major-core","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hist-courses-2026-2027","liberty-history-online-academic-policy-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","prerequisites":["hist-300","hieu-322"],"prerequisiteNotes":"The online capstone requires senior status, HIST 300 and one course from a published upper-level history list. The online academic policy defines senior status at 72 earned semester credits. This named baseline satisfies the second course prerequisite with HIEU 322; it does not require every alternative.","minimumCompletedCredits":72,"minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[{"type":"course","code":"HIST 300"},{"anyOf":[{"type":"course","code":"HIEU 321"},{"type":"course","code":"HIEU 322"},{"type":"course","code":"HIEU 360"},{"type":"course","code":"HIEU 370"},{"type":"course","code":"HIEU 380"},{"type":"course","code":"HIEU 390"},{"type":"course","code":"HIEU 425"},{"type":"course","code":"HIEU 450"},{"type":"course","code":"HIEU 455"},{"type":"course","code":"HIEU 460"},{"type":"course","code":"HIEU 466"},{"type":"course","code":"HIEU 485"},{"type":"course","code":"HIUS 310"},{"type":"course","code":"HIUS 312"},{"type":"course","code":"HIUS 314"},{"type":"course","code":"HIUS 316"},{"type":"course","code":"HIUS 340"},{"type":"course","code":"HIUS 341"},{"type":"course","code":"HIUS 351"},{"type":"course","code":"HIUS 360"},{"type":"course","code":"HIUS 380"},{"type":"course","code":"HIUS 390"},{"type":"course","code":"HIUS 395"},{"type":"course","code":"HIUS 396"},{"type":"course","code":"HIUS 420"},{"type":"course","code":"HIUS 430"},{"type":"course","code":"HIUS 442"},{"type":"course","code":"HIUS 452"},{"type":"course","code":"HIUS 470"},{"type":"course","code":"HIWD 320"},{"type":"course","code":"HIWD 341"},{"type":"course","code":"HIWD 350"},{"type":"course","code":"HIWD 370"},{"type":"course","code":"HIWD 371"},{"type":"course","code":"HIWD 372"},{"type":"course","code":"HIWD 375"},{"type":"course","code":"HIWD 460"}]}]},"noCoursePrerequisitesListed":false,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24","publishedPrerequisiteAlternatives":"HIST 300 and one of the enumerated HIEU/HIUS/HIWD courses. HIEU 322 is the selected baseline alternative; HIUS 313 is absent from the list."},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"registrationPolicy":{"seniorStatusRequired":true,"minimumCompletedCredits":72,"classificationCreditBasis":"earned-semester-credits","sourceIds":["liberty-history-catalog-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"checkedOn":"2026-11-24","personalEligibilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hius-222","code":"HIUS 222","title":"Survey of American History II","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-history-online-2026-2027"],"selectionRequired":false,"optionRows":[
-      "sophia-soph-0025-to-hius-222-8@exact-named-requirement-evidence-cited",
+    {"id":"hius-222","code":"HIUS 222","title":"Survey of American History II","credits":3,"category":"major","group":"major-core","upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hius-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"selectionRequired":false,"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
+      {"row":"liberty-online-baseline-soph-0025-to-hius-222","mode":"reviewed-online-composition-history-bs-online-hius-222-bc737c0c","optionId":"sophia-soph-0025"},
       "straighterline-oosl-0044-to-hius-222",
       "study-com-sdcm-0039-to-hius-222-4@exact-named-requirement-evidence-cited-requirement-id",
-      "sophia-soph-0025-to-hius-222-9@requirement-id",
+      {"row":"sophia-soph-0025-to-hius-222-9","mode":"reviewed-online-composition-history-bs-online-hius-222-b53296b4","optionId":"liberty-named-sophia-soph-0025-hius-222"},
       "straighterline-oosl-0044-to-hius-222-5@requirement-id"
     ]},
-    {"id":"hieu-322","code":"HIEU 322","title":"Roman Civilization","credits":3,"category":"major","group":"european-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hieu-courses-2026-2027"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published european history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hieu-322","code":"HIEU 322","title":"Roman Civilization","credits":3,"category":"major","group":"european-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hieu-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published european history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hieu-390","code":"HIEU 390","title":"Modern Europe","credits":3,"category":"major","group":"european-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hieu-courses-2026-2027"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published european history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hieu-390","code":"HIEU 390","title":"Modern Europe","credits":3,"category":"major","group":"european-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hieu-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published european history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hius-313","code":"HIUS 313","title":"The American Founding","credits":3,"category":"major","group":"us-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hius-courses-2026-2027"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published us history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hius-313","code":"HIUS 313","title":"The American Founding","credits":3,"category":"major","group":"us-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hius-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published us history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hius-316","code":"HIUS 316","title":"Jacksonian America","credits":3,"category":"major","group":"us-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hius-courses-2026-2027"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published us history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hius-316","code":"HIUS 316","title":"Jacksonian America","credits":3,"category":"major","group":"us-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hius-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published us history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hiwd-320","code":"HIWD 320","title":"History of Africa","credits":3,"category":"major","group":"world-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hiwd-courses-2026-2027"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published world history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hiwd-320","code":"HIWD 320","title":"History of Africa","credits":3,"category":"major","group":"world-history","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hiwd-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published world history elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hieu-425","code":"HIEU 425","title":"The French Revolution and the Napoleonic Era","credits":3,"category":"major","group":"history-electives","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hieu-courses-2026-2027"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hieu-425","code":"HIEU 425","title":"The French Revolution and the Napoleonic Era","credits":3,"category":"major","group":"history-electives","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hieu-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hius-341","code":"HIUS 341","title":"History of American Politics","credits":3,"category":"major","group":"history-electives","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hius-courses-2026-2027"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hius-341","code":"HIUS 341","title":"History of American Politics","credits":3,"category":"major","group":"history-electives","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hius-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"hiwd-350","code":"HIWD 350","title":"East Asian Civilization","credits":3,"category":"major","group":"history-electives","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hiwd-courses-2026-2027"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"optionRows":[
+    {"id":"hiwd-350","code":"HIWD 350","title":"East Asian Civilization","credits":3,"category":"major","group":"history-electives","upper":true,"sourceIds":["liberty-history-online-2026-2027","liberty-history-hiwd-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-catalog-review-2026-11-24"],"minimumGrade":"C","choiceNote":"Proposed named online course in the published history electives elective block; a different eligible course may be chosen without counting the same award twice.","allocationBasis":"Named online-offered selection satisfying the published department/upper-level restriction.","minimumGradeSourceIds":["liberty-history-online-2026-2027"],"prerequisites":[],"prerequisitePolicy":{"status":"verified","catalogYear":"2026-2027","format":"Online","rule":{"allOf":[]},"noCoursePrerequisitesListed":true,"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","reviewId":"liberty-history-online-baseline-2026-11-24"},"prerequisiteSourceIds":["liberty-history-catalog-review-2026-11-24"],"offeringPolicy":{"offeredFormats":["Residential","Online"],"sourceIds":["liberty-history-catalog-review-2026-11-24"],"checkedOn":"2026-11-24","actualSectionAvailabilityConfirmed":false},"optionRows":[
 
     ]},
-    {"id":"free-electives-1","allocationOf":"free-electives","title":"Free elective 1","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-busi-courses-2026-2027"],"notes":"Named online university fallback: BUSI 101 Introduction to Business. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-1","allocationOf":"free-electives","title":"Free elective 1","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-busi-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: BUSI 101 Introduction to Business. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-1","provider":"University","code":"BUSI 101","receivingCode":"BUSI 101","title":"Introduction to Business","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-busi-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/busi/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -736,11 +980,11 @@
       "study-com-sdcm-0169-to-busi-344-47@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0170-to-info-320-47@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0172-to-busi-311-47@elective-placement-free-elective-evidence-ad095505-cited",
-      "study-com-sdcm-0173-to-busi-302-47@elective-placement-free-elective-evidence-ad095505-cited",
+      {"row":"liberty-online-baseline-sdcm-0173-to-busi-302","mode":"reviewed-online-composition-history-bs-online-free-electives-1-cd3a1452","optionId":"shared-option-7726870b48c6f8c3a96bb6c9"},
       "study-com-sdcm-0207-to-busi-304-47@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-47@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-2","allocationOf":"free-electives","title":"Free elective 2","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-busi-courses-2026-2027"],"notes":"Named online university fallback: BUSI 223 Personal Finance. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-2","allocationOf":"free-electives","title":"Free elective 2","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-busi-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: BUSI 223 Personal Finance. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-2","provider":"University","code":"BUSI 223","receivingCode":"BUSI 223","title":"Personal Finance","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-busi-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/busi/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -837,10 +1081,10 @@
       "study-com-sdcm-0170-to-info-320-48@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0172-to-busi-311-48@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0173-to-busi-302-48@elective-placement-free-elective-evidence-ad095505-cited",
-      "study-com-sdcm-0207-to-busi-304-48@elective-placement-free-elective-evidence-ad095505-cited",
+      {"row":"liberty-online-baseline-sdcm-0207-to-busi-304","mode":"reviewed-online-composition-history-bs-online-free-electives-2-fba3cd38","optionId":"shared-option-259845d0664dd92f25acefe9"},
       "study-com-sdcm-0209-to-busi-419-48@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-3","allocationOf":"free-electives","title":"Free elective 3","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-econ-courses-2026-2027"],"notes":"Named online university fallback: ECON 213 Principles of Microeconomics. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-3","allocationOf":"free-electives","title":"Free elective 3","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-econ-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: ECON 213 Principles of Microeconomics. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-3","provider":"University","code":"ECON 213","receivingCode":"ECON 213","title":"Principles of Microeconomics","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-econ-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/econ/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -935,12 +1179,12 @@
       "dsst-dant-0035-to-busi-321@elective-block",
       "study-com-sdcm-0169-to-busi-344-49@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0170-to-info-320-49@elective-placement-free-elective-evidence-ad095505-cited",
-      "study-com-sdcm-0172-to-busi-311-49@elective-placement-free-elective-evidence-ad095505-cited",
+      {"row":"liberty-online-baseline-sdcm-0172-to-busi-311","mode":"reviewed-online-composition-history-bs-online-free-electives-3-5d0256d9","optionId":"shared-option-4c4452094f3fe547963a930d"},
       "study-com-sdcm-0173-to-busi-302-49@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0207-to-busi-304-49@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-49@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-4","allocationOf":"free-electives","title":"Free elective 4","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-econ-courses-2026-2027"],"notes":"Named online university fallback: ECON 214 Principles of Macroeconomics. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-4","allocationOf":"free-electives","title":"Free elective 4","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-econ-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: ECON 214 Principles of Macroeconomics. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-4","provider":"University","code":"ECON 214","receivingCode":"ECON 214","title":"Principles of Macroeconomics","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-econ-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/econ/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1038,9 +1282,9 @@
       "study-com-sdcm-0172-to-busi-311-50@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0173-to-busi-302-50@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0207-to-busi-304-50@elective-placement-free-elective-evidence-ad095505-cited",
-      "study-com-sdcm-0209-to-busi-419-50@elective-placement-free-elective-evidence-ad095505-cited"
+      {"row":"liberty-online-baseline-sdcm-0209-to-busi-419","mode":"reviewed-online-composition-history-bs-online-free-electives-4-dc93736c","optionId":"shared-option-2e600bced9151894946f9d54"}
     ]},
-    {"id":"free-electives-5","allocationOf":"free-electives","title":"Free elective 5","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-soci-courses-2026-2027"],"notes":"Named online university fallback: SOCI 200 Introduction to Sociology. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-5","allocationOf":"free-electives","title":"Free elective 5","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-soci-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: SOCI 200 Introduction to Sociology. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-5","provider":"University","code":"SOCI 200","receivingCode":"SOCI 200","title":"Introduction to Sociology","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-soci-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/soci/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1095,9 +1339,9 @@
       "straighterline-oosl-0004-to-cjus-200@elective-block",
       "study-com-sdcm-0177-to-cjus-230@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0128-to-cjus-310@elective-placement-free-elective-evidence-cited",
-      "sophia-soph-0006-to-arts-201-3@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0006-to-arts-201","mode":"reviewed-online-composition-history-bs-online-free-electives-5-7ee66ccd","optionId":"sophia-soph-0006"},
       "study-com-sdcm-0167-to-arts-201@elective-placement-free-elective-evidence-cited",
-      "sophia-soph-0006-to-arts-201-4@elective-block",
+      {"row":"sophia-soph-0006-to-arts-201-4","mode":"reviewed-online-composition-history-bs-online-free-electives-5-07287914","optionId":"liberty-named-sophia-soph-0006-arts-201"},
       "sophia-soph-0029-to-arts-202-3@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0168-to-arts-202@elective-placement-free-elective-evidence-cited",
       "sophia-soph-0029-to-arts-202-4@elective-block",
@@ -1140,7 +1384,7 @@
       "study-com-sdcm-0207-to-busi-304-51@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-51@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-6","allocationOf":"free-electives","title":"Free elective 6","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-soci-courses-2026-2027"],"notes":"Named online university fallback: SOCI 201 Social Problems. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-6","allocationOf":"free-electives","title":"Free elective 6","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-soci-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: SOCI 201 Social Problems. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-6","provider":"University","code":"SOCI 201","receivingCode":"SOCI 201","title":"Social Problems","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-soci-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/soci/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1198,9 +1442,9 @@
       "sophia-soph-0006-to-arts-201-3@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0167-to-arts-201@elective-placement-free-elective-evidence-cited",
       "sophia-soph-0006-to-arts-201-4@elective-block",
-      "sophia-soph-0029-to-arts-202-3@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0029-to-arts-202","mode":"reviewed-online-composition-history-bs-online-free-electives-6-71f71489","optionId":"sophia-soph-0029"},
       "study-com-sdcm-0168-to-arts-202@elective-placement-free-elective-evidence-cited",
-      "sophia-soph-0029-to-arts-202-4@elective-block",
+      {"row":"sophia-soph-0029-to-arts-202-4","mode":"reviewed-online-composition-history-bs-online-free-electives-6-9a625240","optionId":"liberty-named-sophia-soph-0029-arts-202"},
       "sophia-soph-0080-to-hlth-216-3@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0032-to-hlth-216@elective-placement-free-elective-evidence-cited",
       "straighterline-oosl-0059-to-hlth-216@elective-block",
@@ -1240,7 +1484,7 @@
       "study-com-sdcm-0207-to-busi-304-52@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-52@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-7","allocationOf":"free-electives","title":"Free elective 7","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-govt-courses-2026-2027"],"notes":"Named online university fallback: GOVT 200 Constitutional Government and Free Enterprise. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-7","allocationOf":"free-electives","title":"Free elective 7","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-govt-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: GOVT 200 Constitutional Government and Free Enterprise. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-7","provider":"University","code":"GOVT 200","receivingCode":"GOVT 200","title":"Constitutional Government and Free Enterprise","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-govt-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/govt/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1260,7 +1504,7 @@
       "straighterline-oosl-0063-to-govt-220@elective-block",
       "clep-clep-0007-to-govt-220@elective-block",
       "study-com-sdcm-0005-to-envr-215@elective-placement-free-elective-evidence-cited",
-      "sophia-soph-0016-to-envr-215-2@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0016-to-envr-215","mode":"reviewed-online-composition-history-bs-online-free-electives-7-8600a21f","optionId":"liberty-named-sophia-soph-0016-envr-215"},
       "straighterline-oosl-0055-to-envr-215@elective-block",
       "dsst-dant-0037-to-busi-223@elective-block",
       "dsst-dant-0066-to-busi-240@elective-block",
@@ -1340,7 +1584,7 @@
       "study-com-sdcm-0207-to-busi-304-53@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-53@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-8","allocationOf":"free-electives","title":"Free elective 8","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-musc-courses-2026-2027"],"notes":"Named online university fallback: MUSC 103 Music Appreciation. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-8","allocationOf":"free-electives","title":"Free elective 8","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-musc-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: MUSC 103 Music Appreciation. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-8","provider":"University","code":"MUSC 103","receivingCode":"MUSC 103","title":"Music Appreciation","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-musc-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/musc/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1382,9 +1626,9 @@
       "study-com-sdcm-0048-to-soci-200@elective-placement-free-elective-evidence-cited",
       "straighterline-oosl-0035-to-soci-200@elective-block",
       "clep-clep-0026-to-soci-200@elective-block",
-      "sophia-soph-0027-to-phil-201-3@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0027-to-phil-201","mode":"reviewed-online-composition-history-bs-online-free-electives-8-54925d77","optionId":"sophia-soph-0027"},
       "straighterline-oosl-0060-to-phil-201@elective-block",
-      "sophia-soph-0027-to-phil-201-4@elective-placement",
+      {"row":"sophia-soph-0027-to-phil-201-4","mode":"reviewed-online-composition-history-bs-online-free-electives-8-87db3938","optionId":"liberty-named-sophia-soph-0027-phil-201"},
       "straighterline-oosl-0060-to-phil-201-2@elective-block",
       "sophia-soph-0065-to-phil-210-3@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0243-to-phil-210@elective-placement-free-elective-evidence-cited",
@@ -1440,7 +1684,7 @@
       "study-com-sdcm-0207-to-busi-304-54@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-54@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-9","allocationOf":"free-electives","title":"Free elective 9","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-arts-courses-2026-2027"],"notes":"Named online university fallback: ARTS 105 Art Appreciation. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-9","allocationOf":"free-electives","title":"Free elective 9","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-arts-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: ARTS 105 Art Appreciation. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-9","provider":"University","code":"ARTS 105","receivingCode":"ARTS 105","title":"Art Appreciation","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-arts-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/arts/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1486,9 +1730,9 @@
       "straighterline-oosl-0060-to-phil-201@elective-block",
       "sophia-soph-0027-to-phil-201-4@elective-placement",
       "straighterline-oosl-0060-to-phil-201-2@elective-block",
-      "sophia-soph-0065-to-phil-210-3@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0065-to-phil-210","mode":"reviewed-online-composition-history-bs-online-free-electives-9-23b9a4e4","optionId":"sophia-soph-0065"},
       "study-com-sdcm-0243-to-phil-210@elective-placement-free-elective-evidence-cited",
-      "sophia-soph-0065-to-phil-210-4@elective-block",
+      {"row":"sophia-soph-0065-to-phil-210-4","mode":"reviewed-online-composition-history-bs-online-free-electives-9-80c0d340","optionId":"liberty-named-sophia-soph-0065-phil-210"},
       "study-com-sdcm-0162-to-inft-110@elective-placement-free-elective-evidence-cited",
       "sophia-soph-0090-to-cjus-200@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0067-to-cjus-200@elective-placement-free-elective-evidence-cited",
@@ -1540,7 +1784,7 @@
       "study-com-sdcm-0207-to-busi-304-55@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-55@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-10","allocationOf":"free-electives","title":"Free elective 10","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-hlth-courses-2026-2027"],"notes":"Named online university fallback: HLTH 252 Drugs in Society. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-10","allocationOf":"free-electives","title":"Free elective 10","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-hlth-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: HLTH 252 Drugs in Society. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-10","provider":"University","code":"HLTH 252","receivingCode":"HLTH 252","title":"Drugs in Society","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-hlth-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/hlth/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1601,11 +1845,11 @@
       "sophia-soph-0029-to-arts-202-3@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0168-to-arts-202@elective-placement-free-elective-evidence-cited",
       "sophia-soph-0029-to-arts-202-4@elective-block",
-      "sophia-soph-0080-to-hlth-216-3@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0080-to-hlth-216","mode":"reviewed-online-composition-history-bs-online-free-electives-10-860ada8d","optionId":"sophia-soph-0080"},
       "study-com-sdcm-0032-to-hlth-216@elective-placement-free-elective-evidence-cited",
       "straighterline-oosl-0059-to-hlth-216@elective-block",
       "study-com-sdcm-0032-to-hlth-216-2@elective-block",
-      "sophia-soph-0080-to-hlth-216-4@elective-placement",
+      {"row":"sophia-soph-0080-to-hlth-216-4","mode":"reviewed-online-composition-history-bs-online-free-electives-10-1e2d8fdb","optionId":"liberty-named-sophia-soph-0080-hlth-216"},
       "straighterline-oosl-0059-to-hlth-216-2@elective-block",
       "study-com-sdcm-0001-to-biol-101@elective-placement-free-elective-evidence-cited",
       "straighterline-oosl-0017-to-biol-101@elective-block",
@@ -1640,7 +1884,7 @@
       "study-com-sdcm-0207-to-busi-304-56@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-56@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-11","allocationOf":"free-electives","title":"Free elective 11","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-csis-courses-2026-2027"],"notes":"Named online university fallback: CSIS 100 Introduction to Information Systems and Information Technology. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-11","allocationOf":"free-electives","title":"Free elective 11","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-csis-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: CSIS 100 Introduction to Information Systems and Information Technology. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-11","provider":"University","code":"CSIS 100","receivingCode":"CSIS 100","title":"Introduction to Information Systems and Information Technology","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-csis-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/csis/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1665,7 +1909,7 @@
       "dsst-dant-0037-to-busi-223@elective-block",
       "dsst-dant-0066-to-busi-240@elective-block",
       "christian-leaders-institute-ecn-301-to-econ-213@elective-block",
-      "sophia-soph-0011-to-econ-213@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0011-to-econ-213","mode":"liberty-online-reviewed-free-elective","optionId":"sophia-soph-0011"},
       "study-com-sdcm-0069-to-econ-213@elective-placement-free-elective-evidence-cited",
       "straighterline-oosl-0008-to-econ-213@elective-block",
       "clep-clep-0030-to-econ-213@elective-block",
@@ -1740,7 +1984,7 @@
       "study-com-sdcm-0207-to-busi-304-57@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-57@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-12","allocationOf":"free-electives","title":"Free elective 12","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-engl-courses-2026-2027"],"notes":"Named online university fallback: ENGL 201 American Literature I. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-12","allocationOf":"free-electives","title":"Free elective 12","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-engl-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: ENGL 201 American Literature I. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-12","provider":"University","code":"ENGL 201","receivingCode":"ENGL 201","title":"American Literature I","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-engl-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/engl/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1769,7 +2013,7 @@
       "study-com-sdcm-0069-to-econ-213@elective-placement-free-elective-evidence-cited",
       "straighterline-oosl-0008-to-econ-213@elective-block",
       "clep-clep-0030-to-econ-213@elective-block",
-      "sophia-soph-0012-to-econ-214@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0012-to-econ-214","mode":"liberty-online-reviewed-free-elective","optionId":"sophia-soph-0012"},
       "study-com-sdcm-0060-to-econ-214@elective-placement-free-elective-evidence-cited",
       "straighterline-oosl-0007-to-econ-214@elective-block",
       "clep-clep-0027-to-econ-214@elective-block",
@@ -1840,7 +2084,7 @@
       "study-com-sdcm-0207-to-busi-304-58@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0209-to-busi-419-58@elective-placement-free-elective-evidence-ad095505-cited"
     ]},
-    {"id":"free-electives-13","allocationOf":"free-electives","title":"Free elective 13","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-engl-courses-2026-2027"],"notes":"Named online university fallback: ENGL 202 American Literature II. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-13","allocationOf":"free-electives","title":"Free elective 13","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-engl-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: ENGL 202 American Literature II. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-13","provider":"University","code":"ENGL 202","receivingCode":"ENGL 202","title":"American Literature II","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-engl-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/engl/"}},
       "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
@@ -1938,11 +2182,12 @@
       "study-com-sdcm-0172-to-busi-311-59@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0173-to-busi-302-59@elective-placement-free-elective-evidence-ad095505-cited",
       "study-com-sdcm-0207-to-busi-304-59@elective-placement-free-elective-evidence-ad095505-cited",
-      "study-com-sdcm-0209-to-busi-419-59@elective-placement-free-elective-evidence-ad095505-cited"
+      "study-com-sdcm-0209-to-busi-419-59@elective-placement-free-elective-evidence-ad095505-cited",
+      {"row":"liberty-online-baseline-soph-0005-to-math-201","mode":"liberty-online-reviewed-free-elective","optionId":"sophia-soph-0005"}
     ]},
-    {"id":"free-electives-14","allocationOf":"free-electives","title":"Free elective 14","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-hlth-courses-2026-2027"],"notes":"Named online university fallback: HLTH 105 Introduction to the Health Professions. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
+    {"id":"free-electives-14","allocationOf":"free-electives","title":"Free elective 14","credits":3,"category":"electives","group":"free-electives","freeElective":true,"excludeAlreadyUsed":true,"upper":false,"sourceIds":["liberty-history-online-2026-2027","liberty-history-free-hlth-courses-2026-2027","liberty-history-degree-review-2026-11-24","liberty-history-policy-review-2026-11-24"],"notes":"Named online university fallback: HLTH 105 Introduction to the Health Professions. This is unrestricted free-elective capacity; a different eligible, nonduplicating course may be selected.","selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-free-electives-14","provider":"University","code":"HLTH 105","receivingCode":"HLTH 105","title":"Introduction to the Health Professions","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["liberty-history-online-2026-2027","liberty-history-free-hlth-courses-2026-2027"],"evidence":"published","url":"https://catalog.liberty.edu/undergraduate/courses/hlth/"}},
-      "sophia-soph-0030-to-engl-102-4@elective-placement-free-elective-evidence-cited",
+      {"row":"liberty-online-baseline-soph-0030-to-engl-102","mode":"liberty-online-reviewed-free-elective","optionId":"sophia-soph-0030"},
       "study-com-sdcm-0088-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0089-to-engl-102-4@elective-placement-free-elective-evidence-cited",
       "study-com-sdcm-0245-to-engl-102-4@elective-placement-free-elective-evidence-cited",

@@ -106,8 +106,8 @@ export const programSlug=program=>program.slug;
 export const programModalities=(program,kit)=>list(program.modalities||kit?.school?.programDefaults?.modalities);
 export function inScope(row,program,kit){
   const scope=row.scope||{},modalities=programModalities(program,kit);
-  if(scope.all===true)return (!scope.catalogs||scope.catalogs.includes(program.catalog))&&(!scope.levels||scope.levels.includes(program.level))&&(!scope.modalities||modalities.length>0&&modalities.every(m=>scope.modalities.includes(m)));
-  return list(scope.programs).includes(program.slug);
+  if(scope.all!==true&&!list(scope.programs).includes(program.slug))return false;
+  return (!scope.catalogs||scope.catalogs.includes(program.catalog))&&(!scope.levels||scope.levels.includes(program.level))&&(!scope.modalities||modalities.length>0&&modalities.every(m=>scope.modalities.includes(m)));
 }
 /** An explicit requirement placement: "rowId", "rowId@mode", {row, mode?, optionId?}, or {inline: option} for an institutional option. */
 export function parsePlacement(entry){
