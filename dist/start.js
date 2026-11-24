@@ -9,6 +9,7 @@ const levels={associate:'Associate',bachelor:'Bachelor’s',master:'Master’s',
 const formats={online:'Online',campus:'On campus'};
 const idOK=v=>typeof v==='string'&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(v);
 let catalog,rows=[],index={plans:{},subjects:{}},limit=12;
+let personalController=null,personalAvailable=false,personalEnabled=false,personalPending=false,personalComplete=false,personalScopeKey='',personalRevision=0,personalError='',personalChecked=0,personalTotal=0,personalResults=new Map();
 const filterDefaults={q:'',subject:'',level:'',format:'',pace:'',billing:'',cbe:false,share:'',budget:'',sort:'cost',confirm:true};
 const filters={...filterDefaults};
 const paceLabels={'self-paced':'Self-paced',scheduled:'Term-based'},billingLabels={'per-credit':'Per credit',subscription:'Subscription','flat-term':'Flat price per term',annual:'Annual tuition'};
@@ -21,7 +22,7 @@ function intentParams(next){
   if(quizIntent&&(quizIntent.purpose||quizIntent.priority)){next.set('from','quiz');if(quizIntent.purpose)next.set('purpose',quizIntent.purpose);if(quizIntent.priority)next.set('priority',quizIntent.priority);}
   return next;
 }
-function degreeParams(){const next=new URLSearchParams();for(const key of ['q','subject','level','format','pace','billing','share','budget'])if(filters[key])next.set(key,filters[key]);if(filters.cbe)next.set('cbe','1');if(filters.sort!=='cost')next.set('sort',filters.sort);if(!filters.confirm)next.set('confirm','0');return intentParams(next);}
+function degreeParams(){const next=new URLSearchParams();for(const key of ['q','subject','level','format','pace','billing','share','budget'])if(filters[key])next.set(key,filters[key]);if(filters.cbe)next.set('cbe','1');if(personalAvailable)next.set('fit',personalEnabled?'1':'0');if(filters.sort!=='cost')next.set('sort',filters.sort);if(!filters.confirm)next.set('confirm','0');return intentParams(next);}
 function creditsUrl(p){const next=degreeParams();next.set('step','credits');next.set('plan',p.id);return 'start.html?'+next;}
 
 const info=p=>index.plans[p.id]||{tier:'reviewed',subjects:[]};
@@ -45,27 +46,71 @@ function planUrl(p,then){
   const next=new URLSearchParams('school='+encodeURIComponent(p.school)+'&program='+encodeURIComponent(p.id)+'&level='+encodeURIComponent(p.level)+format);return 'portal.html?'+intentParams(next);
 }
 
-function matches(p){
+function matchesBasic(p){
   if(filters.subject&&!(info(p).subjects||[]).includes(filters.subject))return false;
   if(filters.level&&p.level!==filters.level)return false;
   if(filters.format&&!(p.modalities||[]).includes(filters.format))return false;
   if(!filters.confirm&&needsConfirmation(p))return false;
   if(!P.fitsFilters(fit(p),{...(filters.cbe?{competencyBased:true}:{}),...(filters.pace?{selfPaced:filters.pace==='self-paced'}:{}),...(filters.billing?{billing:filters.billing}:{})}))return false;
   if(filters.share&&(share(p)===null||share(p)*100<Number(filters.share)))return false;
-  if(filters.budget){const e=info(p).estimate;if(!e||e.partial===true||!Number.isFinite(e.max)||e.max>Number(filters.budget))return false;}
+  if(filters.budget&&!personalEnabled){const e=info(p).estimate;if(!e||e.partial===true||!Number.isFinite(e.max)||e.max>Number(filters.budget))return false;}
   const q=norm(filters.q).trim();
   if(q){const hay=norm([p.school,p.title,levels[p.level],...(info(p).subjects||[]).map(id=>index.subjects[id]||id)].join(' '));if(!q.split(/\s+/).every(word=>hay.includes(word)))return false;}
   return true;
 }
+const personalFor=p=>personalEnabled&&!personalPending?personalResults.get(p.id):null;
+const personalReady=p=>{const result=personalFor(p);return result?.available===true&&result.eligible!==false&&result.summary?result:null;};
+const personalRange=p=>{const value=personalReady(p)?.estimate,range=value?.costs?.knownRange;return value?.available===true&&range&&Number.isFinite(range.min)&&Number.isFinite(range.max)&&range.min>=0&&range.max>=range.min?{...range,partial:value.partial===true||value.status==='partial-range'}:null;};
+function matches(p){if(!matchesBasic(p))return false;if(personalEnabled&&filters.budget&&personalComplete){const range=personalRange(p);return Boolean(range&&!range.partial&&range.max<=Number(filters.budget));}return true;}
+function discoveryProfile(){return{field:filters.subject||'any',degreeLevel:filters.level||'unsure',modality:filters.format||'any',classroomImportance:filters.format==='campus'?'essential':'open'};}
+function personalStatus(){
+  $('start-personal-label').hidden=!personalAvailable;$('start-personal').checked=personalEnabled;$('start-sort-fit').hidden=!personalAvailable;
+  $('start-personal-courses').textContent=personalAvailable?'My courses':'Already taken classes? Add your courses';
+  $('start-personal-courses').href=personalAvailable?'courses.html?tab=mine':'import-courses.html?from=degrees';
+  const status=$('start-personal-status');status.setAttribute('aria-busy',String(personalPending));
+  $('start-personal-retry').hidden=!personalError;
+  status.textContent=personalError||(!personalEnabled?'':personalPending?'Matching your courses with '+personalTotal+' ready plans… '+personalChecked+' checked.':personalComplete?'Your courses checked against '+personalTotal+' ready plan'+(personalTotal===1?'':'s')+'. Finished and unfinished coursework stay separate.':'');
+  const budget=$('start-budget').closest('label')?.querySelector('span');if(budget)budget.textContent=personalEnabled?'Remaining planning range up to':'Planning range up to';
+}
+function queuePersonal(){
+  if(!personalEnabled||!personalController){personalStatus();return;}
+  const ready=new Set(DegreeProgramCatalog.publishedPlans(catalog).map(p=>p.id)),ids=rows.filter(matchesBasic).filter(p=>ready.has(p.id)).map(p=>p.id),profile=discoveryProfile(),key=JSON.stringify([ids,profile]);
+  if(key===personalScopeKey){personalStatus();return;}
+  personalController.cancel();const ticket=++personalRevision;personalScopeKey=key;personalResults=new Map();personalError='';personalChecked=0;personalTotal=ids.length;personalPending=ids.length>0;personalComplete=!ids.length;personalStatus();
+  if(!ids.length)return;
+  personalController.run(ids,{discoveryProfile:profile,onProgress:value=>{if(ticket!==personalRevision||!personalEnabled)return;personalChecked=value.checkedCount||0;personalStatus();}}).then(value=>{
+    if(ticket!==personalRevision||!personalEnabled)return;personalResults=new Map(value.results.map(result=>[result.pathwayId,result]));personalChecked=value.checkedCount;personalPending=false;personalComplete=true;renderDegree();
+  }).catch(error=>{if(ticket!==personalRevision||['superseded','disposed'].includes(error.code))return;if(error.code==='courses-changed'){refreshPersonal();return;}personalPending=false;personalComplete=false;personalError='Your course matches could not finish. Your saved courses and plan are unchanged.';personalStatus();renderDegree();});
+}
+function refreshPersonal(){
+  if(!catalog||!personalController)return;personalController.cancel();++personalRevision;personalScopeKey='';personalResults=new Map();personalPending=false;personalComplete=false;personalError='';
+  try{const wasAvailable=personalAvailable;personalAvailable=personalController.hasCourses();personalEnabled=personalAvailable&&(wasAvailable?personalEnabled:new URLSearchParams(location.search).get('fit')!=='0');if(!personalAvailable&&filters.sort==='fit')filters.sort='cost';}
+  catch{personalAvailable=false;personalEnabled=false;personalError='Your course collection could not be reopened. Open My courses to continue.';}
+  renderDegree();
+}
+function personalCard(p){
+  const result=personalFor(p),value=personalReady(p),readyIds=new Set(DegreeProgramCatalog.publishedPlans(catalog).map(route=>route.id));
+  if(!value)return '<div class="start-personal-card" data-personal-state="'+(personalPending&&readyIds.has(p.id)?'pending':'unavailable')+'"><p>'+(personalPending&&readyIds.has(p.id)?'Checking your courses…':result?.eligible===false?'This degree falls outside your saved goals or study preferences.':'Your courses have not been matched to this template.')+'</p></div>';
+  const s=value.summary,f=s.fitBreakdown,u=s.creditSystem==='competency-unit'?'competency units':s.creditSystem==='quarter'?'quarter credits':'credits',range=personalRange(p),cost=range?(range.min===range.max?money(range.min):money(range.min)+'–'+money(range.max)):'Not available yet';
+  return '<div class="start-personal-card" data-personal-state="ready"><p class="start-personal-earned"><strong data-personal-earned>'+esc(f.completedCredits)+'</strong> finished '+u+' fit</p>'
+    +'<p class="start-personal-potential"><span data-personal-in-progress>'+esc(f.inProgressCredits)+'</span> in progress · <span data-personal-saved>'+esc(f.savedCredits)+'</span> saved'+(f.plannedCredits?' · <span data-personal-planned>'+esc(f.plannedCredits)+'</span> planned':'')+' <span>— potential matches</span></p>'
+    +'<p class="start-college-work"><strong data-personal-university>'+esc(s.universityCreditsRemaining)+'</strong> '+u+' still at the university</p>'
+    +'<div class="start-personal-cost" data-personal-cost'+(range?' data-estimate-min="'+range.min+'" data-estimate-max="'+range.max+'"':'')+'><span>'+(range?.partial?'Known remaining charges':'Est. remaining cost')+'</span><strong>'+esc(cost)+'</strong><small class="start-personal-scope">Before aid; living costs excluded.'+(range?.partial?' Some charges are not included.':'')+'</small></div>'
+    +(f.needsReviewCount?'<p class="start-personal-review">'+esc(f.needsReviewCount)+' course'+(f.needsReviewCount===1?' has':'s have')+' no match in this plan yet.</p>':'')+'</div>';
+}
+function personalLink(p){const next=new URLSearchParams({from:'courses',degree:p.id});if(p.modalities?.length===1)next.set('format',p.modalities[0]);return'compare-plans.html?'+next;}
 function sorted(list){
   const last=v=>v===null||v===undefined?Infinity:v;
+  const personalOrder=personalEnabled&&personalComplete&&window.DegreeDiscoveryFit?new Map(window.DegreeDiscoveryFit.rank([...personalResults.values()],filters.sort==='time'?'time':filters.sort==='cost'?'cost':'collection').map((value,i)=>[value.pathwayId,i])):null;
   const by={
+    fit:(a,b)=>(personalOrder?.get(a.id)??Infinity)-(personalOrder?.get(b.id)??Infinity),
     cost:(a,b)=>{
+      if(personalEnabled&&personalComplete)return(personalOrder?.get(a.id)??Infinity)-(personalOrder?.get(b.id)??Infinity);
       const rank=p=>costText(p)?partialCost(p)?1:0:2;
       return rank(a)-rank(b)||last(info(a).estimate?.min)-last(info(b).estimate?.min);
     },
     outside:(a,b)=>(share(b)??-1)-(share(a)??-1),
-    time:(a,b)=>last(months(a))-last(months(b)),
+    time:(a,b)=>personalEnabled&&personalComplete?(personalOrder?.get(a.id)??Infinity)-(personalOrder?.get(b.id)??Infinity):last(months(a))-last(months(b)),
     az:(a,b)=>a.title.localeCompare(b.title)
   }[filters.sort]||(()=>0);
   return [...list].sort((a,b)=>by(a,b)||Number(needsConfirmation(a))-Number(needsConfirmation(b))||a.title.localeCompare(b.title)||a.school.localeCompare(b.school));
@@ -77,11 +122,11 @@ function card(p){
     +(needsConfirmation(p)?'<span class="start-badge">Needs school confirmation</span>':'')+'</div>'
     +(badges.length?'<ul class="start-fit-badges" aria-label="Program features">'+badges.map(label=>'<li>'+esc(label)+'</li>').join('')+'</ul>':'')
     +(f.billing&&f.tuitionLabel?'<p class="start-tuition">University tuition: '+esc(f.tuitionLabel)+'</p>':'')
-    +'<div class="start-stats"><div class="start-stat"><span>'+costLabel(p)+'</span><strong'+(cost?' title="'+esc(costRange(p))+' before aid" aria-label="'+esc(costRange(p))+' before aid"':'')+'>'+(cost?esc(cost):'Ask the school')+'</strong>'+(partialCost(p)?'<small>'+esc(costMissing(p))+'</small>':'')+'</div>'
+    +(personalEnabled?personalCard(p):'<div class="start-stats"><div class="start-stat"><span>'+costLabel(p)+'</span><strong'+(cost?' title="'+esc(costRange(p))+' before aid" aria-label="'+esc(costRange(p))+' before aid"':'')+'>'+(cost?esc(cost):'Ask the school')+'</strong>'+(partialCost(p)?'<small>'+esc(costMissing(p))+'</small>':'')+'</div>'
     +'<div class="start-stat start-stat-accent"><span>Low-cost '+unit(p)+'</span><strong>'+(s?s.outside+' of '+s.total:'—')+'</strong></div></div>'
     +(s?'<div class="start-bar" role="img" aria-label="'+esc(s.outside+' of '+s.total+' '+unit(p)+' can come from low-cost courses')+'"><span style="width:'+pct+'%"></span></div>':'')
-    +(s?'<p class="start-college-work"><strong>'+esc(s.university)+'</strong> '+unit(p)+' at the university in this plan</p>':'')
-    +'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="'+esc(creditsUrl(p))+'">Build this plan</a>'
+    +(s?'<p class="start-college-work"><strong>'+esc(s.university)+'</strong> '+unit(p)+' at the university in this plan</p>':''))
+    +'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="'+esc(personalReady(p)?personalLink(p):creditsUrl(p))+'">'+(personalReady(p)?'Review my plan':'Build this plan')+'</a>'
     +(info(p).page?'<a class="start-text-link" href="'+esc(info(p).page)+'">See every course</a>':'')+'</div></article>';
 }
 function chipGroup(id,name,options,current){
@@ -89,6 +134,7 @@ function chipGroup(id,name,options,current){
   el.innerHTML=legend+[['','All'],...options].map(([value,label])=>'<button type="button" class="start-chip" data-filter="'+name+'" data-value="'+esc(value)+'" aria-pressed="'+String(value===current)+'">'+esc(label)+'</button>').join('');
 }
 function renderDegree(){
+  queuePersonal();
   const list=sorted(rows.filter(matches)),pending=list.filter(needsConfirmation).length;
   $('start-count').textContent=list.length?list.length+' degree'+(list.length===1?'':'s')+(pending?' · '+pending+' need'+(pending===1?'s':'')+' school confirmation':''):'No degrees match. Try fewer filters.';
   $('start-results').innerHTML=list.slice(0,limit).map(card).join('')||'<div class="start-empty"><p>No degree plan matches these choices yet.</p><button type="button" class="start-secondary" id="start-clear">Clear filters</button> <a href="request-plan.html">Build from a degree link</a></div>';
@@ -162,6 +208,13 @@ $('start-sort').addEventListener('change',()=>{filters.sort=$('start-sort').valu
 $('start-confirm').addEventListener('change',()=>{filters.confirm=$('start-confirm').checked;renderDegree();syncUrl();});
 for(const key of ['pace','billing','share','budget'])$('start-'+key).addEventListener('change',()=>{filters[key]=$('start-'+key).value;limit=12;renderDegree();syncUrl();});
 $('start-cbe').addEventListener('change',()=>{filters.cbe=$('start-cbe').checked;limit=12;renderDegree();syncUrl();});
+$('start-personal').addEventListener('change',()=>{personalEnabled=$('start-personal').checked;personalController?.cancel();++personalRevision;personalPending=false;personalComplete=false;personalScopeKey='';personalResults=new Map();personalError='';if(!personalEnabled&&filters.sort==='fit')filters.sort='cost';limit=12;renderDegree();syncUrl();});
+$('start-personal-retry').addEventListener('click',refreshPersonal);
+window.addEventListener('storage',event=>{if(event.key==='degreepath-guide-v3'||event.key===null)refreshPersonal();});
+window.addEventListener('degreepath:plan-saved',refreshPersonal);
+window.addEventListener('degreepath:save',refreshPersonal);
+window.addEventListener('pagehide',()=>{++personalRevision;personalController?.cancel();personalScopeKey='';});
+window.addEventListener('pageshow',event=>{if(event.persisted)refreshPersonal();});
 
 (async()=>{try{
   const loaded=await Promise.all(['data/pathways.json','data/program-catalog.json'].map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('The degree plans could not load. Please reload.');return r.json();}));
@@ -184,9 +237,10 @@ $('start-cbe').addEventListener('change',()=>{filters.cbe=$('start-cbe').checked
   filters.cbe=params.get('cbe')==='1';
   if(['50','60','70'].includes(params.get('share')))filters.share=params.get('share');
   if(['15000','25000','40000'].includes(params.get('budget')))filters.budget=params.get('budget');
-  if(['cost','outside','time','az'].includes(params.get('sort')))filters.sort=params.get('sort');
+  if(['fit','cost','outside','time','az'].includes(params.get('sort')))filters.sort=params.get('sort');
   if(params.get('confirm')==='0')filters.confirm=false;
   if(params.get('school'))filters.q=filters.q||params.get('school').slice(0,80);
+  if(window.DegreeDiscoveryClient){try{personalController=window.DegreeDiscoveryClient.create({catalog});personalAvailable=personalController.hasCourses();personalEnabled=personalAvailable&&params.get('fit')!=='0';if(personalEnabled&&!params.has('sort'))filters.sort='fit';if(!personalAvailable&&filters.sort==='fit')filters.sort='cost';}catch{personalError='Your course collection could not be opened. Open My courses to continue.';}}
   if(chosen){openCredits(chosen);return;}
   if(step==='quiz'){renderQuiz();document.title='1-minute quiz — DegreeSteps';show('quiz');return;}
   $('start-q').value=filters.q;

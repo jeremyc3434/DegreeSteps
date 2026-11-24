@@ -3,7 +3,7 @@
  'use strict';
  const failure=(message,code)=>Object.assign(new Error(message),{code});
  function create(config={}){
-  const engine=config.engine||root.DegreePlanComparison,journey=config.journey||root.DegreeJourney,schedule=config.schedule||((fn,delay)=>setTimeout(fn,delay)),cancelSchedule=config.cancelSchedule||clearTimeout;
+  const engine=config.engine||root.DegreePlanComparison,journey=config.journey||root.DegreeJourney,discovery=config.discovery||root.DegreeDiscoveryFit,schedule=config.schedule||((fn,delay)=>setTimeout(fn,delay)),cancelSchedule=config.cancelSchedule||clearTimeout;
   const delayMs=Number.isFinite(config.delayMs)?Math.max(0,Math.min(1000,config.delayMs)):100,timeoutMs=Number.isFinite(config.timeoutMs)&&config.timeoutMs>0?Math.min(120000,config.timeoutMs):45000;
   const factory=config.workerFactory||(typeof root.Worker==='function'?()=>new root.Worker('degree-comparison-worker.js'):null);
   let available=Boolean(factory),active=null,sequence=0,disposed=false;
@@ -16,10 +16,10 @@
   function run(kind,payload,runtime={}){
    cancel();
    if(disposed)return Promise.reject(failure('This comparison screen is closed.','disposed'));
-   if(!['build','matrix','draft'].includes(kind))return Promise.reject(failure('Choose a supported comparison action.','invalid-request'));
+   if(!['build','matrix','draft','discovery'].includes(kind))return Promise.reject(failure('Choose a supported comparison action.','invalid-request'));
    return new Promise((resolve,reject)=>{
     const job={id:++sequence,resolve,reject,launch:null,timer:null,worker:null};active=job;
-    const progress=value=>{if(active===job&&kind==='build'&&typeof runtime?.onProgress==='function')try{runtime.onProgress(value);}catch{/* A display callback cannot fail a comparison. */}};
+    const progress=value=>{if(active===job&&['build','discovery'].includes(kind)&&typeof runtime?.onProgress==='function')try{runtime.onProgress(value);}catch{/* A display callback cannot fail a comparison. */}};
     job.launch=schedule(()=>{
      if(active!==job)return;job.launch=null;
      if(available){
@@ -40,7 +40,7 @@
       if(active!==job)return;job.launch=null;const started=Date.now();
       try{
        if(!engine)throw Error('The comparison engine is unavailable. Reload this page to try again.');
-       const value=kind==='build'?engine.build(payload.state,payload.catalog,payload.models,payload.costs,payload.options||{},{onProgress:progress}):kind==='matrix'?engine.courseMatrix(payload.view,payload.catalog,payload.models):journey.buildDraft(payload.state,payload.catalog,payload.models);
+       const value=kind==='discovery'?discovery.evaluate(payload.state,payload.catalog,payload.models,payload.costs,{...payload.options,...(payload.estimateRates?{estimateRates:payload.estimateRates}:{})},{onProgress:progress}):kind==='build'?engine.build(payload.state,payload.catalog,payload.models,payload.costs,payload.options||{},{onProgress:progress}):kind==='matrix'?engine.courseMatrix(payload.view,payload.catalog,payload.models):journey.buildDraft(payload.state,payload.catalog,payload.models);
        if(Date.now()-started>timeoutMs)finish(job,failure('This comparison took too long. Your plan is unchanged.','timeout'));else finish(job,null,value);
       }catch(error){finish(job,failure(error.message||'The comparison could not finish. Your plan is unchanged.','calculation-failed'));}
      },32);
