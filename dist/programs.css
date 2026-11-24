@@ -27,3 +27,37 @@
 #program-switch-dialog .pf-dialog-actions { display:flex; flex-wrap:wrap; gap:10px; }
 #program-switch-dialog .pf-button { min-height:44px; }
 .pf-freshness{margin:10px 0 0;padding:6px 10px;border-left:3px solid #c9d3e2;background:#f6f8fb;color:#5b6b80;font-size:14px;line-height:1.5}
+
+/* Independent degree-fit choices stay usable together on phones and desktop. */
+body.programs-page #program-filters { grid-template-columns:minmax(210px,1.4fr) minmax(170px,1fr) minmax(130px,.8fr) minmax(150px,.9fr); }
+.pf-fit-controls { grid-column:1/-1; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; align-items:end; min-width:0; }
+body.programs-page #program-filters .pf-fit-check { display:flex; align-items:center; gap:10px; min-height:70px; margin:0; }
+body.programs-page #program-filters .pf-fit-check input { flex:0 0 18px; width:18px; height:18px; margin:0; accent-color:var(--ds-cobalt); }
+body.programs-page #program-filters .pf-fit-check > span { margin:0; min-width:0; color:#29405f; }
+.pf-fit-check strong { display:block; font-size:.9375rem; line-height:1.5; font-weight:600; }
+.pf-fit-check small { display:block; font-size:.875rem; line-height:1.45; font-weight:400; color:#596b83; }
+#program-budget-note { display:block; max-width:230px; margin-top:6px; font-size:.875rem; line-height:1.4; color:#596b83; }
+.pf-active-filters { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin:14px 0 18px; }
+.pf-filter-chip, .pf-clear-filters { display:inline-flex; align-items:center; justify-content:center; gap:12px; min-height:44px; max-width:100%; border:1px solid #cbd6e8; border-radius:6px; background:#eef3ff; padding:8px 12px; color:#263f72; font:inherit; font-size:.875rem; line-height:1.4; }
+.pf-filter-chip > span:first-child { overflow-wrap:anywhere; }
+.pf-filter-chip > span[aria-hidden] { font-size:1.25rem; line-height:1; }
+.pf-clear-filters { border-color:transparent; background:transparent; color:var(--ds-cobalt); text-decoration:underline; text-underline-offset:3px; }
+body.programs-page .pf-program .pf-tuition-basis { margin:9px 0 0; color:#415b7c; font-size:.875rem; line-height:1.5; }
+body.programs-page .pf-program .pf-choice-note { margin:8px 0 0; font-size:.875rem; }
+@media(max-width:1050px) {
+ body.programs-page #program-filters { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ body.programs-page #program-filters .pf-search { grid-column:auto; }
+}
+@media(max-width:700px) {
+ body.programs-page #program-filters .pf-search { grid-column:1/-1; }
+ .pf-fit-controls { grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+ body.programs-page #program-filters .pf-fit-check { grid-column:1/-1; min-height:48px; }
+ body.programs-page #program-filters .pf-more > div { display:grid; grid-template-columns:minmax(0,1fr); }
+ .pf-fit-controls > label { min-width:0; }
+}
+@media(max-width:360px) {
+ .pf-fit-controls { grid-template-columns:minmax(0,1fr); }
+}
+body.programs-page #program-filters > label { min-width:0; }
+body.programs-page #program-filters select { min-width:0; }
+.programs-page .pf-badge.pf-badge-fit { font-size:.875rem; }

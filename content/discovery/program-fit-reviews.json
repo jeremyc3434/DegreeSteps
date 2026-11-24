@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-24",
+  "scope": "Exact reviewed program editions and delivery formats for discovery filters only. These records do not alter degree requirements, transfer awards, publication decisions, student progress or prices.",
+  "reviews": [
+    {
+      "id": "liberty-online-undergraduate-scheduled-2026-27-reviewed-2026-11-24",
+      "modelIds": [
+        "curriculum-liberty-healthcare-administration-bs-online",
+        "curriculum-liberty-history-bs-online",
+        "curriculum-liberty-human-services-bs-online",
+        "curriculum-liberty-psychology-addictions-online",
+        "curriculum-liberty-psychology-bs-online",
+        "liberty-criminal-justice-online"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "paceModel": "course-term",
+      "source": {
+        "id": "liberty-online-professor-deadlines-reviewed-2026-11-24",
+        "url": "https://www.liberty.edu/online/prospective-students-faqs/",
+        "title": "Liberty prospective online student FAQs: professor-set assignment deadlines",
+        "checkedOn": "2026-11-24",
+        "quote": "meet the deadlines specified by the professor for turning in assignments",
+        "reviewMethod": "Official primary page opened and the relevant FAQ passages inspected through the connected web research tool. No raw HTTP body capture or hash is claimed."
+      },
+      "supportingSources": [
+        {
+          "id": "liberty-online-course-structure-reviewed-2026-11-24",
+          "url": "https://catalog.liberty.edu/undergraduate/about-liberty/online-programs/",
+          "title": "Liberty 2026\u20132027 undergraduate catalog: online course structure",
+          "checkedOn": "2026-11-24",
+          "quote": "Some courses are delivered in a 14- to 17-week format (with one entry date per semester)",
+          "reviewMethod": "Official current 2026\u20132027 catalog page opened and the Structure section inspected through the connected web research tool."
+        },
+        {
+          "id": "liberty-online-weekly-deadlines-reviewed-2026-11-24",
+          "url": "https://www.liberty.edu/online/exclusions/",
+          "title": "Liberty online program exclusions: weekly assignments and variable attendance formats",
+          "checkedOn": "2026-11-24",
+          "quote": "you will likely have assignments due weekly",
+          "reviewMethod": "Official primary page opened and the No Set Login Times and delivery-format exceptions inspected through the connected web research tool."
+        }
+      ],
+      "programBindings": [
+        {
+          "modelId": "curriculum-liberty-healthcare-administration-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-history-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-human-services-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/human-services-major-bs/human-services-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-addictions-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/addictions-recovery-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/"
+        },
+        {
+          "modelId": "liberty-criminal-justice-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-online/"
+        }
+      ],
+      "notes": [
+        "This is a fixed course/term schedule classification, not a claim that every course has a live login time.",
+        "Online work can be completed at flexible times within professor deadlines; flexible daily access is not an open-ended, independently paced degree.",
+        "No competency-based status, absence of proctored assessments, guaranteed section availability or complete absence of attendance obligations is inferred."
+      ]
+    },
+    {
+      "id": "liberty-campus-undergraduate-scheduled-2026-27-reviewed-2026-11-24",
+      "modelIds": [
+        "liberty-business-residential",
+        "liberty-criminal-justice-residential"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "campus",
+      "paceModel": "course-term",
+      "source": {
+        "id": "liberty-residential-class-schedule-reviewed-2026-11-24",
+        "url": "https://www.liberty.edu/online/",
+        "title": "Liberty official online FAQs: comparison with traditional on-campus classes",
+        "checkedOn": "2026-11-24",
+        "quote": "Traditional classes are completed through structured face-to-face lectures and class time, and they operate on a semester-by-semester basis.",
+        "reviewMethod": "Official primary page opened and the How do online classes compare to traditional on-campus classes FAQ inspected through the connected web research tool."
+      },
+      "supportingSources": [
+        {
+          "id": "liberty-residential-semester-formats-reviewed-2026-11-24",
+          "url": "https://www.liberty.edu/online/prospective-students-faqs/",
+          "title": "Liberty prospective student FAQs: residential lecture and intensive formats",
+          "checkedOn": "2026-11-24",
+          "quote": "Semester-long courses",
+          "reviewMethod": "Official primary page opened and the residential degree format section inspected through the connected web research tool."
+        }
+      ],
+      "programBindings": [
+        {
+          "modelId": "liberty-business-residential",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/"
+        },
+        {
+          "modelId": "liberty-criminal-justice-residential",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-resident/"
+        }
+      ],
+      "notes": [
+        "Residential lecture courses and intensives have scheduled class periods; no claim is made that every course must be taken face-to-face.",
+        "Only the listed residential business and criminal justice editions are covered.",
+        "No competency-based status, absence of proctored assessments, guaranteed section availability or complete absence of attendance obligations is inferred."
+      ]
+    }
+  ]
+}

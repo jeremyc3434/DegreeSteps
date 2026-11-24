@@ -33,7 +33,7 @@
     if (program && program.pricing && typeof program.pricing === 'object') return program.pricing;
     const p = school && school.pricing;
     if (!p || !program) return null;
-    if (Array.isArray(p.programIds) && p.programIds.includes(program.id)) return p;
+    if (Array.isArray(p.programIds)) return p.programIds.includes(program.id) ? p : null;
     // A university-wide number is unsafe when delivery models or prices differ.
     if (p.model === 'subscription' && program.paceModel === 'competency-subscription' &&
         Array.isArray(school.paceModels) && school.paceModels.length === 1 && school.paceModels[0] === program.paceModel) return p;
@@ -41,22 +41,87 @@
   }
   function priceText(program, school) {
     const p = applicablePricing(program, school);
-    if (!p || !isPositive(p.amount) || !p.period || !['subscription', 'per-credit', 'per-term', 'per-year', 'annual', 'per-semester'].includes(p.model)) return UNKNOWN_TUITION;
-    let amount;
-    try { amount = new Intl.NumberFormat('en-US', { style: 'currency', currency: p.currency || 'USD', maximumFractionDigits: Number.isInteger(p.amount) ? 0 : 2 }).format(p.amount); }
-    catch (_) { return UNKNOWN_TUITION; }
+    if (!p || !p.period) return UNKNOWN_TUITION;
+    const money = value => {
+      try { return new Intl.NumberFormat('en-US', { style: 'currency', currency: p.currency || 'USD', maximumFractionDigits: Number.isInteger(value) ? 0 : 2 }).format(value); }
+      catch (_) { return null; }
+    };
+    const period = String(p.period).replace(/^per\s+/i, '');
+    if (p.model === 'threshold-credit') {
+      if (!isPositive(p.fullTimeRate) || !isPositive(p.partTimeRate) || !Number.isInteger(p.fullTimeMin) || p.fullTimeMin < 1) return UNKNOWN_TUITION;
+      const low = money(Math.min(p.fullTimeRate, p.partTimeRate)), high = money(Math.max(p.fullTimeRate, p.partTimeRate)), full = money(p.fullTimeRate);
+      if (!low || !high || !full) return UNKNOWN_TUITION;
+      return (low === high ? low : low + '–' + high) + ' per credit (' + full + ' at ' + p.fullTimeMin + '+ credits per ' + period + ')';
+    }
+    if (p.model === 'banded-term') {
+      if (!isPositive(p.termRate) || !Number.isInteger(p.bandMin) || !Number.isInteger(p.bandMax) || p.bandMin < 1 || p.bandMax < p.bandMin) return UNKNOWN_TUITION;
+      const amount = money(p.termRate), partTime = isPositive(p.partTimeRate) ? money(p.partTimeRate) : null;
+      if (!amount) return UNKNOWN_TUITION;
+      return amount + ' per ' + period + ' (' + p.bandMin + '–' + p.bandMax + ' credits)' + (partTime ? '; ' + partTime + ' per credit below ' + p.bandMin : '');
+    }
+    if (!isPositive(p.amount) || !['subscription', 'per-credit', 'per-term', 'per-year', 'annual', 'per-semester'].includes(p.model)) return UNKNOWN_TUITION;
+    const amount = money(p.amount);
+    if (!amount) return UNKNOWN_TUITION;
     return amount + ' per ' + String(p.period).replace(/^per\s+/i, '');
+  }
+  // Learning model, pace and billing are independent facts. Unknown never means no.
+  function learningFacts(program) {
+    const p = program || {}, pace = p.paceModel;
+    return {
+      competencyBased: typeof p.competencyBased === 'boolean' ? p.competencyBased : pace === 'competency-subscription' ? true : null,
+      selfPaced: typeof p.selfPaced === 'boolean' ? p.selfPaced : ['competency-subscription', 'self-paced'].includes(pace) ? true : pace === 'course-term' ? false : null
+    };
   }
   function paceText(program) {
     if (!program) return 'Pace needs confirmation';
+    const pace = learningFacts(program);
+    if (pace.selfPaced === false) return 'Courses follow a term schedule';
     const p = program.pricing || program.effectivePricing;
-    if (program.paceModel === 'competency-subscription') {const period=p&&p.period?String(p.period).replace(/^per\s+/i,'').replace(/^(\d+)\s+(weeks?|months?)$/,(_,n,unit)=>n+'-'+unit.replace(/s$/,'')):'';return period?'Self-paced · '+period+' terms':'Self-paced subscription';}
-    if (program.paceModel === 'self-paced') {
+    if (pace.selfPaced === true && program.paceModel === 'competency-subscription') {const period=p&&['subscription','per-term','per-semester','banded-term'].includes(p.model)&&p.period?String(p.period).replace(/^per\s+/i,'').replace(/^(\d+)\s+(weeks?|months?)$/,(_,n,unit)=>n+'-'+unit.replace(/s$/,'')):'';return period?'Self-paced · '+period+' terms':'Self-paced';}
+    if (pace.selfPaced === true) {
       const weeks = program.blockWeeks || program.termWeeks;
       return isPositive(weeks) ? 'Self-paced within ' + weeks + '-week blocks' : p && p.model === 'per-credit' ? 'Self-paced; tuition charged per credit' : 'Self-paced';
     }
-    if (program.paceModel === 'course-term') return 'Courses follow a term schedule';
     return 'Pace needs confirmation';
+  }
+  function fitFacts(program, school) {
+    const p = program || {}, learning = learningFacts(p), pricing = applicablePricing(p, school);
+    const models = {'per-credit':'per-credit','threshold-credit':'per-credit',subscription:'subscription','per-term':'flat-term','per-semester':'flat-term','banded-term':'flat-term','per-year':'annual',annual:'annual'};
+    const billing = pricing && Object.hasOwn(models, pricing.model) ? models[pricing.model] : null;
+    const labels = {'per-credit':'Per credit',subscription:'Subscription','flat-term':'Flat price per term',annual:'Annual tuition'};
+    const date = value => {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value || ''))) return null;
+      const parsed = new Date(value + 'T00:00:00Z');
+      return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value ? value : null;
+    };
+    const ids = value => [...new Set(items(value))];
+    const rawPeriod = pricing && pricing.period ? String(pricing.period).replace(/^per\s+/i, '').trim() : '';
+    const weeks = p.blockWeeks || p.termWeeks;
+    const termLabel = rawPeriod && !/^(?:semester |quarter |competency )?credits?$/i.test(rawPeriod) ? rawPeriod : isPositive(weeks) ? weeks + ' weeks' : null;
+    return {
+      ...learning, billing, termLabel, tuitionLabel:priceText(p, school), paceLabel:paceText(p), billingLabel:labels[billing] || 'Billing type not listed',
+      sources: {
+        learning: {
+          url:safeURL(p.paceSourceUrl) || safeURL(p.learningSourceUrl) || safeURL(p.url),
+          sourceIds:ids(p.paceSourceIds || p.learningSourceIds || p.pacePolicy && p.pacePolicy.sourceIds || p.sourceId),
+          checkedOn:date(p.paceCheckedOn || p.learningCheckedOn || p.checkedOn || p.catalogCheckedAt)
+        },
+        billing: {
+          url:safeURL(pricing && pricing.sourceUrl), sourceIds:ids(pricing && (pricing.sourceIds || pricing.sourceId)), checkedOn:date(pricing && pricing.checkedOn)
+        }
+      }
+    };
+  }
+  function fitsFilters(facts, filters) {
+    const values = facts && typeof facts === 'object' ? facts : {}, selected = filters || {};
+    for (const key of ['competencyBased', 'selfPaced']) {
+      const wanted = selected[key];
+      if (wanted === undefined || wanted === null || wanted === '') continue;
+      if (typeof wanted !== 'boolean' || values[key] !== wanted) return false;
+    }
+    const billing = selected.billing;
+    if (billing !== undefined && billing !== null && billing !== '' && (!['per-credit','subscription','flat-term','annual'].includes(billing) || values.billing !== billing)) return false;
+    return true;
   }
   function dateLabel(value) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value || ''))) return '';
@@ -99,18 +164,23 @@
     if (policy.status === 'case-by-case') return 'School review required';
     return graduate(program) && kind !== 'institutional' ? 'Graduate credit needs confirmation' : 'Needs confirmation';
   }
-  function detailsHTML(program, school) {
+  function detailsHTML(program, school, fitOverride) {
     if (!program) return '';
-    const state = availability(program), price = applicablePricing(program, school);
+    const state = availability(program), price = applicablePricing(program, school), fit = fitOverride && typeof fitOverride === 'object' ? fitOverride : fitFacts(program, school);
     const row = (label, value) => '<div><dt>' + escapeHTML(label) + '</dt><dd>' + escapeHTML(value) + '</dd></div>';
-    const source = price && price.sourceUrl || program.url;
-    let html = '<div class="program-facts"><dl>' + row('Tuition', priceText(program, school)) + row('Pace', paceText(program));
+    const source = safeURL(fit.sources && fit.sources.billing && fit.sources.billing.url) || safeURL(price && price.sourceUrl) || safeURL(program.url);
+    const learningSource = typeof fit.selfPaced === 'boolean' || typeof fit.competencyBased === 'boolean' ? safeURL(fit.sources && fit.sources.learning && fit.sources.learning.url) : '';
+    let html = '<div class="program-facts"><dl>' + row('Tuition', typeof fit.tuitionLabel === 'string' ? fit.tuitionLabel : priceText(program, school)) + row('Pace', typeof fit.paceLabel === 'string' ? fit.paceLabel : paceText(program));
+    if (typeof fit.competencyBased === 'boolean') html += row('Learning model', fit.competencyBased ? 'Competency-based (CBE)' : 'Course-based');
+    if (['per-credit','subscription','flat-term','annual'].includes(fit.billing)) html += row('Tuition billing', fit.billingLabel || fitFacts(program, school).billingLabel);
     if (!state.canChoose) html += row('Availability', state.statusLabel);
     if (isPositive(program.degreeCredits)) {
       const unit = program.creditUnit === 'quarter' ? 'quarter credits' : program.creditUnit === 'semester' ? 'semester credits' : program.creditUnit === 'competency-unit' ? 'competency units' : 'credits';
       html += row('Degree requirements', program.degreeCredits + ' ' + unit);
     }
-    html += '</dl>' + (source ? '<span class="program-fact-source">' + link(source, 'Official program and tuition') + '</span>' : '') + '</div>';
+    html += '</dl>' + (source || learningSource ? '<span class="program-fact-source">' + (source ? link(source, 'Official program and tuition') : '') + (learningSource && learningSource !== source ? (source ? ' · ' : '') + link(learningSource, 'Learning format source') : '') + '</span>' : '') + '</div>';
+    const attendance=Array.isArray(fit.requirements)?fit.requirements.filter(item=>item&&typeof item.label==='string'&&safeURL(item.url)):[];
+    if(attendance.length)html+='<div class="program-conditions"><strong>Attendance requirements</strong><ul>'+attendance.map(item=>'<li>'+escapeHTML(item.label)+(item.courseCode?' · '+escapeHTML(item.courseCode):'')+' '+link(item.url,'Course requirement source')+'</li>').join('')+'</ul></div>';
     const policies = [['institutional', 'College-earned credits'], ['ace', 'ACE courses'], ['nccrs', 'NCCRS courses']].map(([kind, label]) => ({ kind, label, policy: programPolicy(program, school, kind) }));
     html += '<div class="program-policy"><dl>' + policies.map(p => row(p.label, policyLabel(p.policy, p.kind, program))).join('') + '</dl></div>';
     const requirements = items(program.prerequisites);
@@ -134,5 +204,5 @@
     }
     return html;
   }
-  return Object.freeze({ priceText, paceText, availability, schoolFor, detailsHTML });
+  return Object.freeze({ priceText, paceText, fitFacts, fitsFilters, transferPolicyFor:programPolicy, availability, schoolFor, detailsHTML });
 }));

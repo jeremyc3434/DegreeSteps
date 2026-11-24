@@ -16,15 +16,26 @@
         <fieldset class="start-chips" id="start-levels"><legend>Level</legend></fieldset>
         <fieldset class="start-chips" id="start-formats"><legend>Format</legend></fieldset>
       </div>
+      <div class="start-fit-controls" aria-label="Study preferences">
+        <label><span>University study pace</span><select id="start-pace"><option value="">Any pace</option><option value="self-paced">Self-paced</option><option value="scheduled">Term-based</option></select></label>
+        <label><span>Tuition billing</span><select id="start-billing"><option value="">Any billing</option><option value="per-credit">Per credit</option><option value="subscription">Subscription</option><option value="flat-term">Flat price per term</option><option value="annual">Annual tuition</option></select></label>
+        <label class="start-check"><input type="checkbox" id="start-cbe"><span>Competency-based (CBE)</span></label>
+      </div>
+      <details class="start-more-filters"><summary>More filters</summary><div class="start-fit-controls">
+        <label><span>Transfer coursework in this plan</span><select id="start-share"><option value="">Any amount</option><option value="50">50% or more</option><option value="60">60% or more</option><option value="70">70% or more</option></select></label>
+        <label><span>Planning range up to</span><select id="start-budget"><option value="">Any budget</option><option value="15000">$15,000</option><option value="25000">$25,000</option><option value="40000">$40,000</option></select></label>
+      </div><p class="start-note">Plan estimates are before aid and exclude living costs. Study pace affects the range.</p></details>
       <div class="start-row start-row-end">
         <label class="start-check"><input type="checkbox" id="start-confirm" checked> Include plans that need school confirmation</label>
         <label class="start-sort"><span>Sort</span><select id="start-sort"><option value="cost">Lowest cost first</option><option value="outside">Most credits for less</option><option value="time">Finish sooner</option><option value="az">A–Z</option></select></label>
       </div>
     </form>
+    <div id="start-active-filters" class="start-active-filters" aria-label="Active filters"></div>
     <p id="start-count" class="start-count" role="status"></p>
     <div id="start-results" class="start-results"></div>
     <button type="button" id="start-more" class="start-secondary" hidden>Show more degrees</button>
     <div class="start-help">
+      <a href="compare-plans.html?from=courses">Find degrees that fit my courses</a>
       <a href="start.html?step=quiz" id="start-quiz-link">Not sure? Take the 1-minute quiz</a>
       <a href="portal.html?view=setup">Answer more questions for tailored picks</a>
       <a href="request-plan.html">Degree not listed? Build from a degree link</a>
