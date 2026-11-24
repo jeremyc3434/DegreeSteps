@@ -69,9 +69,25 @@ test('a registry migration preserves all compiled models and canonical authored 
   assert.equal(checked.status,0,checked.stderr||checked.stdout);
 });
 
-test('institution-wide rows are never wider than the data and reuse one award across many degrees',()=>{
+test('institution-wide rows are never wider than the data and reuse one award across many degrees',async()=>{
   const rows=kit.equivalencies.equivalencies,wide=rows.filter(row=>row.scope.all);
-  const placements=new Map();
+  const placements=new Map(),rowIndex=new Map(rows.map(row=>[row.id,row])),supersessions=[];
+  const reviewedPrograms=['history-bs-online','human-services-bs-online','psychology-addictions-online'];
+  const expectedSupersessions=[
+    ['sophia-soph-0015-to-engl-101','engl-101',reviewedPrograms,'published'],
+    ['sophia-soph-0024-to-coms-101','coms-101',reviewedPrograms,'published'],
+    ['sophia-soph-0009-to-arts-209','arts-209',reviewedPrograms.slice(1),'published'],
+    ['sophia-soph-0001-to-math-121','math-121',[reviewedPrograms[0],reviewedPrograms[2]],'published'],
+    ['sophia-soph-0020-to-ethc-101','ethc-101',reviewedPrograms,'published'],
+    ['study-com-sdcm-0047-to-cstu-101','cstu-101',reviewedPrograms,'published'],
+    ['sophia-soph-0022-to-hius-221-8','hius-221',[reviewedPrograms[0]],'conditional'],
+    ['sophia-soph-0025-to-hius-222-8','hius-222',[reviewedPrograms[0]],'conditional']
+  ].flatMap(([id,requirement,programs,evidence])=>programs.map(program=>[id+'|'+program+'|'+requirement,evidence]));
+  const expected=new Map(expectedSupersessions),masters=rows.filter(row=>row.id.startsWith('liberty-online-baseline-'));
+  assert.equal(masters.length,30);
+  const packetPaths=['content/catalog/sophia-liberty-baseline-identities-reviewed-2026-11-18.json','content/catalog/liberty-extra-sophia-identities-reviewed-2026-11-24.json','content/curricula/snapshots/liberty/health-upper-provider-identities-2026-11-18-reviewed.json','content/catalog/liberty-psychology-study-identities-reviewed-2026-11-24.json','content/catalog/liberty-core-sophia-identities-reviewed-2026-11-24.json','content/catalog/liberty-core-study-identities-reviewed-2026-11-24.json','content/catalog/liberty-upper-psychology-study-identities-reviewed-2026-11-24.json'];
+  const packets=new Map(await Promise.all(packetPaths.map(async path=>[path,await readJSON(resolve(root,path))]))),guide=await readJSON(resolve(root,'content/transfer-awards/snapshots/liberty-online-guide-awards-reviewed-2026-11-18.json'));
+  const digest=source=>String(source?.sha256||source?.sourceContentHash||'').replace(/^sha256:/,'');
   for(const p of kit.programs)for(const r of p.requirements)for(const entry of list(r.optionRows)){const {row}=parsePlacement(entry);if(row){if(!placements.has(row))placements.set(row,[]);placements.get(row).push([p.slug,r.id]);}}
   assert.ok(wide.length>250);
   for(const row of wide){
@@ -82,9 +98,47 @@ test('institution-wide rows are never wider than the data and reuse one award ac
     for(const p of kit.programs.filter(p=>p.review.status==='migrated')){
       if(!inScope(row,p,kit))continue;
       const req=matchRequirement(row,p);
-      if(req&&!req.institutionalOnly&&req.credits===row.credits)assert.ok(list(placements.get(row.id)).some(([slug,id])=>slug===p.slug&&id===req.id),`${row.id} is institution-wide but missing from ${p.slug}/${req.id}`);
+      if(!req||req.institutionalOnly||req.credits!==row.credits||list(placements.get(row.id)).some(([slug,id])=>slug===p.slug&&id===req.id))continue;
+      // These reviewed baselines replace old records with the same exact award and stronger current source facts.
+      // Check the actual compiled placement so saved option-id overrides and receiving/source quantities stay bound.
+      const key=row.id+'|'+p.slug+'|'+req.id;
+      assert.ok(expected.has(key),`${row.id} is institution-wide but missing from ${p.slug}/${req.id}`);
+      assert.equal(row.evidence,expected.get(key));
+      const replacement=list(req.optionRows).map((entry,index)=>({entry:parsePlacement(entry),index})).find(({entry})=>{
+        const candidate=rowIndex.get(entry.row);
+        return masters.includes(candidate)&&candidate.authored===true&&candidate.status==='published'&&inScope(candidate,p,kit)&&candidate.provider===row.provider&&candidate.code===row.code&&candidate.receivingCode===row.receivingCode&&candidate.credits===row.credits&&(candidate.creditSystem||candidate.impliedCreditSystem)===(row.creditSystem||row.impliedCreditSystem);
+      });
+      assert.ok(replacement,`${row.id} is institution-wide but missing from ${p.slug}/${req.id}`);
+      const candidate=rowIndex.get(replacement.entry.row),model=doc.models.find(model=>model.id===p.modelId),compiled=model.requirements.find(value=>value.id===req.id),option=compiled.options[replacement.index],sources=new Map(model.sources.map(source=>[source.id,source]));
+      assert.deepEqual(candidate.scope.programs,reviewedPrograms);assert.deepEqual(candidate.scope.levels,['bachelor']);assert.deepEqual(candidate.scope.modalities,['online']);assert.deepEqual(candidate.scope.catalogs,['2026–2027']);
+      assert.equal(option.provider,candidate.provider);assert.equal(option.code,candidate.code);assert.equal(option.receivingCode,candidate.receivingCode);assert.equal(option.credits,candidate.credits);
+      assert.equal(option.evidence,'published');assert.equal(option.evidenceType,'official-receiving-school-equivalency');assert.equal(option.mappingResearchClosed,true);assert.match(option.receivingMapStatus,/^published-/);
+      const stamp=option.baselineAwardReview,packet=packets.get(stamp?.reviewPath),course=packet?.courses.find(course=>(course.code||course.aceId)===option.code),award=guide.awards.find(award=>award.id===stamp?.receivingAwardId);
+      assert.ok(stamp&&packet&&course&&award,option.code+' retains its independent packet and exact receiving award');
+      assert.equal(stamp.reviewId,packet.id);assert.equal(stamp.sourceIdentityOnly,true);assert.equal(stamp.studentCreditsAwarded,0);
+      assert.equal(option.sourceCreditEvidence.status,'reviewed');assert(['verified-current-provider-and-ace','reviewed-independent-recommendation'].includes(option.sourceCreditStatus));
+      assert.equal(option.sourceCredits,course.sourceCredits);assert.equal(option.sourceCredits,candidate.identity.sourceCredits);assert(option.sourceCredits>0);assert.equal(option.sourceCreditSystem,course.sourceCreditSystem);assert.equal(option.sourceCreditSystem,candidate.identity.sourceCreditSystem);assert.equal(option.sourceUpper,course.sourceUpper);
+      assert.equal(String(option.courseVersion),String(course.aceVersion));assert.equal(option.providerCourseCode,course.providerCourseCode);assert.equal(option.recommendationStart,course.recommendationStart);assert.equal(option.recommendationEnd,course.recommendationEnd);
+      assert.equal(course.activeOffering,true);assert.equal(option.providerCoursePassingPercent,course.minScore??course.minimumPassingScore);
+      assert.equal(option.sourceCreditVerification.credits,course.sourceCredits);assert.equal(option.sourceCreditVerification.creditSystem,course.sourceCreditSystem);
+      const independent=stamp.independentIdentitySourceIds;
+      assert(independent?.length>0&&independent.every(id=>sources.has(id)&&!award.sourceIds.includes(id)&&['ace','provider','accreditor'].includes(sources.get(id).kind)));
+      assert(independent.some(id=>sources.get(id).kind==='ace'));assert(independent.some(id=>sources.get(id).kind==='provider'));
+      assert([...(course.identitySourceIds||[course.aceSourceId].filter(Boolean)),...(course.activeOfferingSourceIds||[])].every(id=>independent.includes(id)));
+      assert(option.identitySourceIds.length>0&&option.identitySourceIds.every(id=>['ace','provider','accreditor'].includes(sources.get(id)?.kind)));
+      assert(option.sourceCreditEvidence.sourceIds.length>0&&option.sourceCreditEvidence.sourceIds.every(id=>option.identitySourceIds.includes(id)));
+      assert.equal(option.eligibilityReview.eligibleToStart,true);assert.equal(option.eligibilityReview.status,'current-provider-version-reviewed');assert.equal(option.eligibilityReview.recommendationPeriodStatus,'reviewed-current-window');
+      assert(option.recommendationStart<=p.review.reviewedOn&&option.recommendationEnd>=p.review.reviewedOn);
+      assert.equal(award.provider,option.provider);assert.equal(award.code,option.code);assert.equal(award.receivingCode,option.receivingCode);assert.equal(award.credits,option.credits);assert.equal(award.creditSystem,option.creditSystem);
+      for(const id of award.sourceIds){const original=sources.get(id);assert.equal(new URL(original.url).hostname,'www.liberty.edu');assert.equal(original.modality,'online');assert.match(digest(original),/^[a-f0-9]{64}$/);assert(option.sourceIds.some(ref=>sources.get(ref)?.url===original.url&&digest(sources.get(ref))===digest(original)));}
+      const placement=option.degreePlacementEvidence;
+      assert.equal(placement.modelId,model.id);assert.equal(placement.catalogYear,model.catalogYear);assert.equal(placement.modality,'online');assert.equal(model.format,'Online');assert.equal(placement.requirementId,req.id);assert.equal(placement.receivingCode,row.receivingCode);assert.equal(placement.credits,req.credits);assert.equal(placement.creditSystem,model.creditSystem);assert.equal(placement.placementType,'exact-named-requirement');
+      assert(placement.sourceIds.length>0&&placement.sourceIds.every(id=>option.sourceIds.includes(id)&&sources.has(id)));
+      assert.equal(model.reviewedBaselineChoices.optionSelections[req.id],option.id);
+      supersessions.push(key);
     }
   }
+  assert.deepEqual(supersessions.sort(),[...expected.keys()].sort());
   for(const row of rows)for(const [slug] of list(placements.get(row.id)))assert.ok(inScope(row,kit.programs.find(p=>p.slug===slug),kit),row.id+' placed out of scope');
   const placed=[...placements.values()].reduce((n,list)=>n+list.length,0);
   assert.ok(placed/rows.length>8,'one equivalency row serves many placements');

@@ -17,7 +17,7 @@ import {join,resolve} from 'node:path';
 import {readFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {clone,list,slug,same,canonical,identityFields,awardFields,inScope,matchRequirement,parsePlacement,loadProviders,loadKit,readJSON,writeJSON,stringifyKit,providerFile,parseArgs,isMain,kitsRoot,root,exists} from './lib.mjs';
-import {compileKit} from './compile.mjs';
+import {compileKit,compileOption,rowsFor} from './compile.mjs';
 
 export const files=['liberty','liberty-history-online','liberty-online-expansion','liberty-residential-expansion'];
 const schoolId='liberty';
@@ -253,6 +253,41 @@ export async function migrate({base=root,existingProviders,config=libertyConfig}
       const index=equivalencies.findIndex(existing=>existing.id===row.id);
       if(index<0)equivalencies.push(clone(row));else equivalencies[index]=clone(row);
       list(row.conditionIds).forEach(preserveCondition);
+    }
+    // Programs outside the registry-derived set remain authored inputs. Their automatic placements still depend on
+    // the canonical award scopes: a stronger award used by a migrated bachelor program is not evidence to remove an
+    // unchanged, older receiving award from an authored associate program. Preserve the award and scope only when
+    // the reconstructed core is identical, so an id collision cannot substitute different evidence or source facts.
+    const reconstructedSlugs=new Set(programs.map(program=>program.slug));
+    const originalKit={school:existing,equivalencies:existingEquivalencies,providers};
+    const reconstructedKit={school,equivalencies:equivalencyDoc,providers:providerDocs};
+    const originalRows=new Map(list(existingEquivalencies.equivalencies).map(row=>[row.id,row]));
+    for(const name of (await readdir(join(kitDir,'programs'))).filter(name=>name.endsWith('.json'))){
+      const program=await readJSON(join(kitDir,'programs',name));if(reconstructedSlugs.has(program.slug))continue;
+      for(const requirement of program.requirements){
+        const used=requirement.optionRows
+          ? requirement.optionRows.map(entry=>originalRows.get(parsePlacement(entry).row)).filter(Boolean)
+          : rowsFor(originalKit,program,requirement);
+        const scopedOptions=requirement.optionRows?[]:rowsFor(reconstructedKit,program,requirement).map(row=>compileOption(reconstructedKit,program,requirement,row,program.modalities));
+        for(const row of used){
+          if(authoredIds.has(row.id))continue;
+          const original=compileOption(originalKit,program,requirement,row,program.modalities);
+          // Factoring can renumber equivalent rows. An automatic placement already carrying the exact original
+          // option needs no scope repair; never use the coincidentally matching row id as evidence of equivalence.
+          if(scopedOptions.some(option=>same(option,original)))continue;
+          const candidates=equivalencies.filter(candidate=>candidate.provider===row.provider&&candidate.code===row.code);
+          const identical=candidate=>same(original,compileOption(reconstructedKit,program,requirement,candidate,program.modalities));
+          let reconstructed=candidates.find(candidate=>candidate.id===row.id&&identical(candidate))||candidates.find(identical);
+          if(reconstructed){
+            assert(!requirement.optionRows||reconstructed.id===row.id,'Migration cannot change canonical placement '+row.id+' used by authored program '+program.slug);
+            reconstructed.scope=clone(row.scope);
+          }else{
+            assert(!equivalencies.some(candidate=>candidate.id===row.id),'Migration cannot replace canonical award '+row.id+' used by authored program '+program.slug);
+            reconstructed=clone(row);equivalencies.push(reconstructed);
+          }
+          list(row.conditionIds).forEach(preserveCondition);
+        }
+      }
     }
     for(const program of programs){
       const path=join(kitDir,'programs',program.slug+'.json');if(!await exists(path))continue;

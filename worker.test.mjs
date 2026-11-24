@@ -336,11 +336,14 @@ test('the GCU directory parent keeps its campus identity and earned-credit draft
 for(const [degreeUrl,modelId,total,outside,university,modality]of [
  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/','liberty-business-residential',120,83,37,'campus'],
  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,72,48,'online'],
- ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/','curriculum-liberty-psychology-bs-online',120,78,42,'online']
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/','curriculum-liberty-psychology-bs-online',120,78,42,'online'],
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/','curriculum-liberty-history-bs-online',120,69,51,'online'],
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/human-services-major-bs/human-services-online/','curriculum-liberty-human-services-bs-online',120,60,60,'online'],
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/addictions-recovery-online/','curriculum-liberty-psychology-addictions-online',120,69,51,'online']
 ])test('the exact reviewed Liberty catalog link opens its saved baseline: '+modelId,async t=>{
  const done=noNetwork(t),{call,sqlite}=fixture(t),lookup=url=>worker.fetch(new Request(origin+'/api/catalog/degree-link?'+new URLSearchParams({url})),{},{});
  const response=await lookup(degreeUrl);assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,true);
- const plan=result.sourcePlan;assert(plan,'The exact known degree must open a course plan rather than send the student to research');assert.equal(plan.model.id,modelId);assert.deepEqual(plan.route.modalities,[modality]);assert.equal(plan.model.catalog.replace(/[–—]/g,'-'),'2026-2027');
+ const plan=result.sourcePlan;assert(plan,'The exact known degree must open a course plan rather than send the student to research');assert.equal(plan.qualityReady,true);assert.equal(plan.model.id,modelId);assert.deepEqual(plan.route.modalities,[modality]);assert.equal(plan.model.catalog.replace(/[–—]/g,'-'),'2026-2027');
  assert.equal(plan.summary.totalCredits,total);assert.equal(plan.summary.transferCredits,outside);assert.equal(plan.summary.universityCredits,university);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),total);assert(plan.model.sources.some(source=>source.url===degreeUrl));
  assert.equal(result.template,undefined);assert.equal(result.user,undefined);
  const reuse=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url:degreeUrl,startResearch:true}});assert.equal(reuse.status,200);const reused=await reuse.json();assert.equal(reused.reused,true);assert.equal(reused.sourcePlan.model.id,modelId);assert.equal(reused.sourcePlan.summary.transferCredits,outside);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);
@@ -365,7 +368,7 @@ test('structurally complete draft templates cannot open as ready plans or invent
  const done=noNetwork(t),{call,sqlite}=fixture(t),quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')),registry=JSON.parse(readFileSync(new URL('./dist/data/curriculum-registry.json',import.meta.url),'utf8'));
  const cases=[
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/','curriculum-tesu-bsba-accounting'],
-  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/','curriculum-liberty-history-bs-online'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-data-analysis-major-bs/accounting-data-analysis-bs-online/','curriculum-liberty-accounting-bs-online'],
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-finance/','curriculum-tesu-bsba-finance'],
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology','curriculum-tesu-ba-psychology'],
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/english','curriculum-tesu-ba-english'],

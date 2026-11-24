@@ -1,0 +1,1061 @@
+{
+  "version": 1,
+  "id": "liberty-history-online-baseline-2026-11-24",
+  "school": "Liberty University",
+  "checkedOn": "2026-11-24",
+  "modelId": "curriculum-liberty-history-bs-online",
+  "catalogYear": "2026-2027",
+  "format": "Online",
+  "creditSystem": "semester",
+  "totalCredits": 120,
+  "degreeSourceIds": [
+    "liberty-history-degree-review-2026-11-24",
+    "liberty-history-catalog-review-2026-11-24"
+  ],
+  "policySourceIds": [
+    "liberty-history-policy-review-2026-11-24"
+  ],
+  "allocationReview": {
+    "uniqueGeneralEducationCredits": 36,
+    "majorFoundationsCredits": 6,
+    "majorCoursesCredits": 36,
+    "freeElectiveCredits": 42,
+    "freeElectiveSlots": 14,
+    "retainedUniv104Credits": 3,
+    "generalEducationOverlaps": [
+      "GEOG 200",
+      "HIUS 221"
+    ],
+    "overlapCreditsCountedOnce": 6,
+    "majorResidencyBasisCredits": 42,
+    "majorInstitutionFraction": 0.25,
+    "institutionMinCredits": 30,
+    "externalMaxCredits": 90,
+    "upperMinCredits": 30,
+    "freeElectiveRestrictions": "Unrestricted department/level; upper-level GEOG is recommended, not required."
+  },
+  "courseReviews": [
+    {
+      "requirementId": "geog-200",
+      "code": "GEOG 200",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hius-221",
+      "code": "HIUS 221",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hieu-201",
+      "code": "HIEU 201",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hist-300",
+      "code": "HIST 300",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true,
+      "advisoryTiming": {
+        "message": "Should be taken no later than the first semester of the junior year.",
+        "registrationRestriction": false,
+        "sourceIds": [
+          "liberty-history-catalog-review-2026-11-24"
+        ],
+        "checkedOn": "2026-11-24"
+      }
+    },
+    {
+      "requirementId": "hist-491",
+      "code": "HIST 491",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [
+        "HIST 300",
+        "HIEU 322"
+      ],
+      "rule": {
+        "allOf": [
+          {
+            "type": "course",
+            "code": "HIST 300"
+          },
+          {
+            "anyOf": [
+              {
+                "type": "course",
+                "code": "HIEU 321"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 322"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 360"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 370"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 380"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 390"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 425"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 450"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 455"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 460"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 466"
+              },
+              {
+                "type": "course",
+                "code": "HIEU 485"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 310"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 312"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 314"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 316"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 340"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 341"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 351"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 360"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 380"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 390"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 395"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 396"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 420"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 430"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 442"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 452"
+              },
+              {
+                "type": "course",
+                "code": "HIUS 470"
+              },
+              {
+                "type": "course",
+                "code": "HIWD 320"
+              },
+              {
+                "type": "course",
+                "code": "HIWD 341"
+              },
+              {
+                "type": "course",
+                "code": "HIWD 350"
+              },
+              {
+                "type": "course",
+                "code": "HIWD 370"
+              },
+              {
+                "type": "course",
+                "code": "HIWD 371"
+              },
+              {
+                "type": "course",
+                "code": "HIWD 372"
+              },
+              {
+                "type": "course",
+                "code": "HIWD 375"
+              },
+              {
+                "type": "course",
+                "code": "HIWD 460"
+              }
+            ]
+          }
+        ]
+      },
+      "noCoursePrerequisitesListed": false,
+      "personalRegistrationRestrictions": {
+        "seniorStatusRequired": true,
+        "minimumCompletedCredits": 72,
+        "classificationCreditBasis": "earned-semester-credits",
+        "sourceIds": [
+          "liberty-history-catalog-review-2026-11-24",
+          "liberty-history-policy-review-2026-11-24"
+        ],
+        "checkedOn": "2026-11-24",
+        "personalEligibilityConfirmed": false
+      }
+    },
+    {
+      "requirementId": "hius-222",
+      "code": "HIUS 222",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hieu-322",
+      "code": "HIEU 322",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hieu-390",
+      "code": "HIEU 390",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hius-313",
+      "code": "HIUS 313",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hius-316",
+      "code": "HIUS 316",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hiwd-320",
+      "code": "HIWD 320",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hieu-425",
+      "code": "HIEU 425",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hius-341",
+      "code": "HIUS 341",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "hiwd-350",
+      "code": "HIWD 350",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "univ-104",
+      "code": "UNIV 104",
+      "credits": 3,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "rlgn-104",
+      "code": "RLGN 104",
+      "credits": 4,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "bibl-104",
+      "code": "BIBL 104",
+      "credits": 4,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    },
+    {
+      "requirementId": "theo-104",
+      "code": "THEO 104",
+      "credits": 4,
+      "sourceIds": [
+        "liberty-history-catalog-review-2026-11-24"
+      ],
+      "offeredFormats": [
+        "Residential",
+        "Online"
+      ],
+      "prerequisiteCodes": [],
+      "rule": {
+        "allOf": []
+      },
+      "noCoursePrerequisitesListed": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "liberty-history-catalog-review-2026-11-24",
+      "title": "Liberty 2026–2027 full undergraduate catalog: History online requirements, prerequisites and delivery",
+      "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf",
+      "checkedOn": "2026-11-24",
+      "retrievedOn": "2026-11-24",
+      "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "roles": [
+        "curriculum",
+        "prerequisites",
+        "offering"
+      ],
+      "sourcePages": [
+        202,
+        203,
+        1155,
+        1242,
+        1256,
+        1257,
+        1258,
+        1259,
+        1260,
+        1311,
+        1338,
+        1340
+      ],
+      "pageNumbering": "Physical PDF pages; printed page numbers are one lower.",
+      "reviewMethod": "SHA-256 of the actual freshly retrieved official full catalog verified. Selected course descriptions and exact online prerequisite alternatives reviewed from raw PDF text; online degree physical pages 202–203. Delivery does not guarantee a future section."
+    },
+    {
+      "id": "liberty-history-degree-review-2026-11-24",
+      "title": "History B.S. online degree completion plan, 2026–2027, retrieved November 24",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/",
+      "checkedOn": "2026-11-24",
+      "retrievedOn": "2026-11-24",
+      "sha256": "cde7cbd18fbdb608bb47823cfe76476825d773702bcabaae041b5b9358d60862",
+      "roles": [
+        "curriculum",
+        "degree-placement"
+      ],
+      "capture": "content/source-captures/88dcc4ac8b0536dc.txt",
+      "captureContentHash": "sha256:88dcc4ac8b0536dc707a2a4d0e261129337a204d2c30081956385d04dec152d4"
+    },
+    {
+      "id": "liberty-history-policy-review-2026-11-24",
+      "title": "Online undergraduate academic policy: unrestricted electives and earned-credit classification, 2026–2027",
+      "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+      "checkedOn": "2026-11-24",
+      "retrievedOn": "2026-11-24",
+      "sha256": "1a4735ad5d0b9b4e442bdd8babfe3af397ff641b8f932781ac5c8a8d597311ad",
+      "roles": [
+        "policy",
+        "degree-placement",
+        "student-classification"
+      ],
+      "capture": "content/source-captures/004b0e85327846b7.txt",
+      "captureContentHash": "sha256:004b0e85327846b70c6e8b8f17d2a721490c80b6b341183e31dbada0f3541ffc"
+    }
+  ],
+  "choices": [
+    {
+      "requirementId": "engl-101",
+      "optionId": "sophia-soph-0015",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0015",
+      "receivingCode": "ENGL 101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "coms-101",
+      "optionId": "sophia-soph-0024",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0024",
+      "receivingCode": "COMS 101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "univ-104",
+      "optionId": "university-univ-104",
+      "provider": "University",
+      "providerCode": "UNIV 104",
+      "receivingCode": "UNIV 104",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "math-121",
+      "optionId": "sophia-soph-0001",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0001",
+      "receivingCode": "MATH 121",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "rlgn-104",
+      "optionId": "university-rlgn-104",
+      "provider": "University",
+      "providerCode": "RLGN 104",
+      "receivingCode": "RLGN 104",
+      "credits": 4,
+      "creditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "ethc-101",
+      "optionId": "sophia-soph-0020",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0020",
+      "receivingCode": "ETHC 101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "cstu-101",
+      "optionId": "studycom-sdcm-0047",
+      "provider": "Study.com",
+      "providerCode": "SDCM-0047",
+      "receivingCode": "CSTU 101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "biol-102",
+      "optionId": "sophia-soph-0002",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0002",
+      "receivingCode": "BIOL 102",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "psyc-101",
+      "optionId": "sophia-soph-0048",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0048",
+      "receivingCode": "PSYC 101",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "bibl-104",
+      "optionId": "university-bibl-104",
+      "provider": "University",
+      "providerCode": "BIBL 104",
+      "receivingCode": "BIBL 104",
+      "credits": 4,
+      "creditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "theo-104",
+      "optionId": "university-theo-104",
+      "provider": "University",
+      "providerCode": "THEO 104",
+      "receivingCode": "THEO 104",
+      "credits": 4,
+      "creditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "geog-200",
+      "optionId": "university-geog-200",
+      "provider": "University",
+      "providerCode": "GEOG 200",
+      "receivingCode": "GEOG 200",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "hius-221",
+      "optionId": "sophia-soph-0022",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0022",
+      "receivingCode": "HIUS 221",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "hieu-201",
+      "optionId": "university-hieu-201",
+      "provider": "University",
+      "providerCode": "HIEU 201",
+      "receivingCode": "HIEU 201",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "hist-300",
+      "optionId": "university-hist-300",
+      "provider": "University",
+      "providerCode": "HIST 300",
+      "receivingCode": "HIST 300",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hist-491",
+      "optionId": "university-hist-491",
+      "provider": "University",
+      "providerCode": "HIST 491",
+      "receivingCode": "HIST 491",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hius-222",
+      "optionId": "sophia-soph-0025",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0025",
+      "receivingCode": "HIUS 222",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "hieu-322",
+      "optionId": "university-hieu-322",
+      "provider": "University",
+      "providerCode": "HIEU 322",
+      "receivingCode": "HIEU 322",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hieu-390",
+      "optionId": "university-hieu-390",
+      "provider": "University",
+      "providerCode": "HIEU 390",
+      "receivingCode": "HIEU 390",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hius-313",
+      "optionId": "university-hius-313",
+      "provider": "University",
+      "providerCode": "HIUS 313",
+      "receivingCode": "HIUS 313",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hius-316",
+      "optionId": "university-hius-316",
+      "provider": "University",
+      "providerCode": "HIUS 316",
+      "receivingCode": "HIUS 316",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hiwd-320",
+      "optionId": "university-hiwd-320",
+      "provider": "University",
+      "providerCode": "HIWD 320",
+      "receivingCode": "HIWD 320",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hieu-425",
+      "optionId": "university-hieu-425",
+      "provider": "University",
+      "providerCode": "HIEU 425",
+      "receivingCode": "HIEU 425",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hius-341",
+      "optionId": "university-hius-341",
+      "provider": "University",
+      "providerCode": "HIUS 341",
+      "receivingCode": "HIUS 341",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "hiwd-350",
+      "optionId": "university-hiwd-350",
+      "provider": "University",
+      "providerCode": "HIWD 350",
+      "receivingCode": "HIWD 350",
+      "credits": 3,
+      "creditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "free-electives-1",
+      "optionId": "shared-option-7726870b48c6f8c3a96bb6c9",
+      "provider": "Study.com",
+      "providerCode": "SDCM-0173",
+      "receivingCode": "BUSI 302",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "free-electives-2",
+      "optionId": "shared-option-259845d0664dd92f25acefe9",
+      "provider": "Study.com",
+      "providerCode": "SDCM-0207",
+      "receivingCode": "BUSI 304",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "free-electives-3",
+      "optionId": "shared-option-4c4452094f3fe547963a930d",
+      "provider": "Study.com",
+      "providerCode": "SDCM-0172",
+      "receivingCode": "BUSI 311",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "free-electives-4",
+      "optionId": "shared-option-2e600bced9151894946f9d54",
+      "provider": "Study.com",
+      "providerCode": "SDCM-0209",
+      "receivingCode": "BUSI 419",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": true
+    },
+    {
+      "requirementId": "free-electives-5",
+      "optionId": "sophia-soph-0006",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0006",
+      "receivingCode": "ARTS 201",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-6",
+      "optionId": "sophia-soph-0029",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0029",
+      "receivingCode": "ARTS 202",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-7",
+      "optionId": "liberty-named-sophia-soph-0016-envr-215",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0016",
+      "receivingCode": "ENVR 215",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-8",
+      "optionId": "sophia-soph-0027",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0027",
+      "receivingCode": "PHIL 201",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-9",
+      "optionId": "sophia-soph-0065",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0065",
+      "receivingCode": "PHIL 210",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-10",
+      "optionId": "sophia-soph-0080",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0080",
+      "receivingCode": "HLTH 216",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-11",
+      "optionId": "sophia-soph-0011",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0011",
+      "receivingCode": "ECON 213",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-12",
+      "optionId": "sophia-soph-0012",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0012",
+      "receivingCode": "ECON 214",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-13",
+      "optionId": "sophia-soph-0005",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0005",
+      "receivingCode": "MATH 201",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    },
+    {
+      "requirementId": "free-electives-14",
+      "optionId": "sophia-soph-0030",
+      "provider": "Sophia",
+      "providerCode": "SOPH-0030",
+      "receivingCode": "ENGL 102",
+      "credits": 3,
+      "creditSystem": "semester",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "upper": false
+    }
+  ],
+  "limitations": [
+    "This reviewed baseline creates no personal transfer award, admission decision, prerequisite completion, assessment pass or guaranteed future section.",
+    "Published online awards and independently reviewed provider original credits/version/window remain separate facts. One-credit SOPH-0021 and SOPH-0041 cannot fill a three-credit slot.",
+    "Conditional alternative choices, religion waivers and a zero-credit UNIV 104 scenario retain their separate eligibility and complete-ledger requirements.",
+    "The official HIST 491 alternative list excludes HIUS 313; selected HIEU 322 covers that part of the prerequisite."
+  ],
+  "baselineMetrics": {
+    "degreeCredits": 120,
+    "documentedOutsideCredits": 69,
+    "conditionalOutsideCredits": 0,
+    "institutionalCredits": 51,
+    "upperCredits": 42,
+    "majorInstitutionalCredits": 36,
+    "personalCreditsConfirmed": 0,
+    "personalCreditsReported": 0
+  },
+  "quotes": [
+    {
+      "sourceId": "liberty-history-degree-review-2026-11-24",
+      "text": "Choose 36-45 credit hours of Free Electives"
+    },
+    {
+      "sourceId": "liberty-history-degree-review-2026-11-24",
+      "text": "It is strongly recommended that students include 300-400 level GEOG courses in their Free Elective courses"
+    },
+    {
+      "sourceId": "liberty-history-degree-review-2026-11-24",
+      "text": "25% Of major taken through Liberty University"
+    },
+    {
+      "sourceId": "liberty-history-degree-review-2026-11-24",
+      "text": "30 Hours must be completed through Liberty University"
+    },
+    {
+      "sourceId": "liberty-history-policy-review-2026-11-24",
+      "text": "Free electives may be taken from the undergraduate courses offered in any department."
+    },
+    {
+      "sourceId": "liberty-history-policy-review-2026-11-24",
+      "text": "Senior 72.00—and above"
+    }
+  ]
+}

@@ -66,7 +66,9 @@ test('compiled History plan supplies real outside choices, preserves credit rule
  assert.equal(compiled.requirements.reduce((sum,req)=>sum+req.credits,0),120);assert.equal(compiled.requirements.some(req=>req.researchGap),false);
  const plan=Planner.generate(compiled,{providers:['Sophia','Study.com','StraighterLine','CLEP'],allowConditional:true,priority:'transfer'});
  assert.equal(plan.validation.academicCountsValid,true);assert.equal(plan.totals.accounted,120);assert(plan.totals.external>=60,'A broad-elective History pathway must have a genuinely useful accelerated allocation');assert(plan.totals.external<=90);assert(plan.totals.institutional>=30);assert(plan.totals.majorInstitutional>=10.5);assert(plan.totals.upper>=30);
- assert.equal(plan.totals.external,75,'Named university fallbacks must not invent additional transfer coverage');
+ assert.equal(plan.totals.external,69,'The reviewed baseline uses exact published awards and retains research alternatives separately');
+ assert.equal(plan.totals.institutional,51);assert.equal(plan.totals.majorInstitutional,36);assert.equal(plan.totals.upper,42);
+ assert.equal(plan.coverage.conditionalExternalCredits,0);assert(plan.rows.every(item=>item.option.evidence==='published'));
  assert.equal(plan.totals.confirmed,0,'Proposed choices are not earned or awarded credits');
  const capstone=plan.rows.find(item=>item.requirementId==='hist-491');assert.equal(capstone.option.provider,'University');assert.deepEqual(capstone.prerequisites,['hist-300','hieu-322']);
  const capstoneStep=plan.sequence.find(step=>step.requirementIds.includes('hist-491'));

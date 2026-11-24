@@ -68,7 +68,7 @@ test('discovery validates selection responses and permits retry after a temporar
 
 test('compiled expanded ledgers use conditional borrowed awards and source course credits in the library',()=>{
  const fs=require('node:fs'),registry=require('./dist/data/curriculum-registry.json'),packs=new Map();let borrowed=0;
- for(const entry of registry.models){if(!packs.has(entry.path))packs.set(entry.path,JSON.parse(fs.readFileSync('./dist/'+entry.path)));const payload=packs.get(entry.path),m=(payload.models||[payload]).find(m=>m.id===entry.id);Catalog.validateModel(m,entry);for(const req of m.requirements)for(const option of req.options){if(option.sourceIds.some(id=>/^liberty-.*--/.test(id))){borrowed++;assert.equal(option.evidence,'conditional');assert.match(option.mappingScope,/exact degree/);}if(option.placementType==='elective'){if(option.sharedAwardProvenance){
+ for(const entry of registry.models){if(!packs.has(entry.path))packs.set(entry.path,JSON.parse(fs.readFileSync('./dist/'+entry.path)));const payload=packs.get(entry.path),m=(payload.models||[payload]).find(m=>m.id===entry.id);Catalog.validateModel(m,entry);for(const req of m.requirements)for(const option of req.options){if(option.provider!=='University'&&option.sourceIds.some(id=>/^liberty-.*--/.test(id))){borrowed++;assert.equal(option.evidence,'conditional');assert.match(option.mappingScope,/exact degree/);}if(option.placementType==='elective'){if(option.sharedAwardProvenance){
        const bundle=require('./content/reuse/liberty-undergraduate-awards.json'),award=bundle.awards.find(a=>a.id===option.sharedAwardProvenance.awardId),course=bundle.providerCourses.find(c=>c.id===option.sharedAwardProvenance.providerCourseId),rule=bundle.placementRules.find(r=>r.id===option.sharedAwardProvenance.placementRuleId);
        assert(award&&course&&rule);assert.equal(option.mappingReviewId,bundle.id);assert.equal(option.receivingMapStatus,'published-shared-reviewed-award');assert.equal(option.evidence,'published');
        assert.equal(award.scope.school,m.school);assert.equal(award.scope.catalog,m.catalogYear||m.catalog);assert.equal(award.scope.modality,'online');assert.equal(m.format,'Online');assert(award.scope.programIds.includes(m.id)&&rule.modelIds.includes(m.id));
@@ -78,11 +78,27 @@ test('compiled expanded ledgers use conditional borrowed awards and source cours
        assert([...award.sourceIds,...award.scopeSourceIds,...rule.sourceIds].every(id=>option.sourceIds.includes(id)&&m.sources.some(source=>source.id===id)));
        assert(option.identitySourceIds.every(id=>!award.sourceIds.includes(id)&&m.sources.some(source=>source.id===id)));
       }else if(option.categoryPlacementReviewed===true){assert.equal(option.evidence,'published');assert.equal(option.receivingMapStatus,'published-institutional-category');assert.equal(option.mappingEvidence?.publisher,m.school);assert.equal(option.degreePlacementEvidence?.modelId,m.id);assert.equal(option.degreePlacementEvidence?.requirementId,req.id);assert.equal(option.degreePlacementEvidence?.actualAllocatedCredits,option.credits);assert(option.mappingEvidence?.sourceIds?.length&&option.degreePlacementEvidence?.sourceIds?.length);}else if(option.evidence==='published'&&option.receivingMapStatus==='published-online-receiving-award'){
-       assert(['curriculum-liberty-healthcare-administration-bs-online','curriculum-liberty-psychology-bs-online'].includes(m.id));
+       if(option.mappingReviewId==='liberty-online-baseline-awards-2026-11-24'){
+        assert.equal(m.id,'curriculum-liberty-history-bs-online');
+        const expected={'free-electives-11':'SOPH-0011','free-electives-12':'SOPH-0012','free-electives-13':'SOPH-0005','free-electives-14':'SOPH-0030'};
+        assert.equal(option.code,expected[req.id]);
+        const review=require('./content/catalog/liberty-extra-sophia-identities-reviewed-2026-11-24.json'),course=review.courses.find(course=>course.code===option.code&&course.receivingCode===option.receivingCode);
+        assert(course&&course.activeOffering===true);assert.equal(option.provider,course.provider);assert.equal(option.providerCourseCode,course.providerCourseCode);
+        assert.equal(option.sourceCredits,course.sourceCredits);assert.equal(option.sourceCreditSystem,course.sourceCreditSystem);assert.equal(String(option.courseVersion),String(course.aceVersion));
+        assert.equal(option.recommendationStart,course.recommendationStart);assert.equal(option.recommendationEnd,course.recommendationEnd);
+        assert.equal(option.credits,course.credits);assert.equal(option.creditSystem,course.receivingCreditSystem);
+        assert.equal(option.baselineAwardReview.reviewId,review.id);assert.equal(option.baselineAwardReview.receivingAwardId,course.receivingAwardId);assert.equal(option.baselineAwardReview.studentCreditsAwarded,0);
+        assert.equal(option.sourceCreditEvidence.status,'reviewed');assert.equal(option.eligibilityReview.eligibleToStart,true);assert.equal(option.eligibilityReview.recommendationPeriodStatus,'reviewed-current-window');
+        assert([...course.identitySourceIds,...course.activeOfferingSourceIds].every(id=>option.identitySourceIds.includes(id)&&m.sources.some(source=>source.id===id)));
+        assert(course.recommendationPeriodSourceIds.every(id=>option.recommendationPeriodSourceIds.includes(id)));
+        assert.equal(m.reviewedBaselineChoices.optionSelections[req.id],option.id);
+       }else{
+        assert(['curriculum-liberty-healthcare-administration-bs-online','curriculum-liberty-psychology-bs-online'].includes(m.id));
+        assert.equal(option.mappingReviewId,'liberty-online-full-guide-awards-2026-11-18');
+       }
        assert.equal(m.school,'Liberty University');assert.equal(m.format,'Online');assert.equal(m.catalogYear,'2026-2027');
        assert.match(req.id,/^free-electives-\d+$/);assert.equal(req.category,'electives');
        assert.equal(option.evidence,'published');assert.equal(option.evidenceType,'official-receiving-school-equivalency');assert.equal(option.mappingResearchClosed,true);
-       assert.equal(option.mappingReviewId,'liberty-online-full-guide-awards-2026-11-18');
        assert.equal(option.sourceCreditStatus,'verified-current-provider-and-ace');assert.equal(option.eligibilityReview?.status,'current-provider-version-reviewed');
        const placement=option.degreePlacementEvidence;
        assert.equal(placement.modelId,m.id);assert.equal(placement.requirementId,req.id);assert.equal(placement.catalogYear,m.catalogYear);assert.equal(placement.modality,'online');
