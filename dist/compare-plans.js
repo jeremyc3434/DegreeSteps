@@ -194,6 +194,9 @@
   if(selfPaced===true)badges.push(known(actual.paceLabel)&&actual.selfPaced===true?actual.paceLabel:known(indexed?.paceLabel)?indexed.paceLabel:'Self-paced');
   else if(selfPaced===false)badges.push('Term-based');
   if(billing)badges.push(known(actual.billingLabel)&&actual.billing===billing?actual.billingLabel:known(indexed?.billingLabel)?indexed.billingLabel:({'per-credit':'Pay per credit',subscription:'Subscription tuition','flat-term':'Flat price per term',annual:'Annual tuition'})[billing]||'');
+  const programRequirements=typeof Facts.programRequirements==='function'?Facts.programRequirements(indexed):[];
+  if(typeof Facts.requirementBadges==='function')badges.push(...Facts.requirementBadges(indexed));
+  const requirementsHTML=typeof Facts.requirementsHTML==='function'?Facts.requirementsHTML(indexed,{compact:true}):'';
   const actualPrice=known(actual.tuitionLabel),indexedPrice=!actualPrice&&known(indexed?.tuitionLabel)&&(!actual.billing||actual.billing===indexed.billing);
   const tuition=actualPrice?actual.tuitionLabel:indexedPrice?indexed.tuitionLabel:'';
   const sourceRows=[];
@@ -204,9 +207,11 @@
   if(indexedPrice||!actual.billing&&billing)addSource(indexed?.sources?.billing,'Tuition and billing');
   const liveCapstone=(program.requirements||[]).find(req=>/capstone/i.test(req.title||'')&&req.registrationPolicy?.synchronousSeminars&&req.registrationPolicy?.sourceIds?.length);
   const liveSource=liveCapstone&&(program.sources||[]).find(source=>liveCapstone.registrationPolicy.sourceIds.includes(source.id)&&safeURL(source.url));
-  const live=liveCapstone&&liveSource?'<p class="comparison-attendance-fact">Capstone includes live seminars. <a href="'+esc(safeURL(liveSource.url))+'" target="_blank" rel="noopener noreferrer">Course requirement</a></p>':'';
-  if(!badges.filter(Boolean).length&&!tuition&&!live)return '';
-  return '<section class="comparison-degree-fit" aria-label="Study format and tuition billing">'+(badges.filter(Boolean).length?'<ul class="comparison-degree-tags" aria-label="Program features">'+badges.filter(Boolean).map(label=>'<li>'+esc(label)+'</li>').join('')+'</ul>':'')+(tuition?'<p class="comparison-tuition-fact"><span>University tuition</span><strong>'+esc(tuition)+'</strong></p>':'')+live+(sourceRows.length?'<details class="comparison-fit-sources"><summary>Study and tuition sources</summary><ul>'+sourceRows.map(source=>'<li><a href="'+esc(source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(source.label)+'</a></li>').join('')+'</ul></details>':'')+'</section>';
+  const reviewedLive=programRequirements.some(fact=>fact.kind==='attendance'&&fact.type==='live-seminars'&&fact.scope!=='school-policy');
+  const live=liveCapstone&&liveSource&&!reviewedLive?'<p class="comparison-attendance-fact">Capstone includes live seminars. <a href="'+esc(safeURL(liveSource.url))+'" target="_blank" rel="noopener noreferrer">Course requirement</a></p>':'';
+  const labels=[...new Set(badges.filter(Boolean))];
+  if(!labels.length&&!tuition&&!live&&!requirementsHTML)return '';
+  return '<section class="comparison-degree-fit" aria-label="Program details">'+(labels.length?'<ul class="comparison-degree-tags" aria-label="Program features">'+labels.map(label=>'<li>'+esc(label)+'</li>').join('')+'</ul>':'')+(tuition?'<p class="comparison-tuition-fact"><span>University tuition</span><strong>'+esc(tuition)+'</strong></p>':'')+live+requirementsHTML+(sourceRows.length?'<details class="comparison-fit-sources"><summary>Study and tuition sources</summary><ul>'+sourceRows.map(source=>'<li><a href="'+esc(source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(source.label)+'</a></li>').join('')+'</ul></details>':'')+'</section>';
  }
  function card(s,index,best){
   const p=s.draft.pathway,summary=s.summary,source=(p?.sources||s.draft.program?.sources||[]).find(x=>safeURL(x.url)),norm=v=>String(v||'').toLowerCase().replace(/[^a-z0-9]/g,''),preview=candidate?view.matrix.find(row=>norm(row.course.provider)===norm(candidate.provider)&&[candidate.code,...(candidate.codeAliases||[])].filter(Boolean).some(code=>[row.course.code,...(row.course.codeAliases||[])].some(alias=>norm(alias)===norm(code)))||row.course.origin==='candidate')?.cells[s.id]:null;

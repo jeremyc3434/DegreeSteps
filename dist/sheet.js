@@ -190,7 +190,7 @@
   // the worksheet works as before and shows nothing new.
   // Requirements whose course changed on the last preferences update; shown until the next update or reload (never saved).
   let replacedRows=new Set();
-  let planIndex=null,planIndexPromise=null;const schoolCheckHiddenKey='degreepath-school-check-hidden';let schoolCheckHiddenMemory=[];
+  let planIndex=null,planIndexPromise=null,displayedProgramRequirements='';const schoolCheckHiddenKey='degreepath-school-check-hidden';let schoolCheckHiddenMemory=[];
   function loadPlanIndex() {
     if(typeof fetch!=='function')return Promise.resolve(null);
     if(!planIndexPromise)planIndexPromise=Promise.resolve().then(()=>fetch('data/plan-library-index.json')).then(response=>{if(!response.ok)throw Error('Plan index unavailable');return response.json();}).then(data=>{planIndex=data&&typeof data==='object'&&!Array.isArray(data)?data:null;renderSchoolCheck();return planIndex;}).catch(()=>{planIndexPromise=null;return null;});
@@ -240,10 +240,21 @@
   }
   function renderSchoolCheck(focusAction) {
     renderLeadActions();
+    renderProgramRequirements();
     const node=$('sheet-school-check');if(!node)return;
     const html=task||!pathway?'':schoolCheckHTML();if(node.innerHTML!==html)node.innerHTML=html;node.hidden=!html;
     if(planIndex)renderGlance();
     if(focusAction)node.querySelector('[data-action="'+focusAction+'"]')?.focus();
+  }
+  function renderProgramRequirements() {
+    const node=$('sheet-program-requirements');if(!node)return;
+    const entry=planIndex?.plans?.[pathway?.id]?.fit,edition=value=>String(value||'').replace(/[–—]/g,'-'),format=/^online$/i.test(program?.format||'')?'online':/^(residential|campus|on campus)$/i.test(program?.format||'')?'campus':null;
+    const scoped=entry&&program&&entry.modelId===program.id&&entry.modelId===pathway?.modelId&&edition(entry.catalogYear)===edition(program.catalogYear||program.catalog)&&entry.modality===format;
+    const codes=new Set((program?.requirements||[]).map(row=>String(row.code||'').toUpperCase().replace(/[^A-Z0-9]/g,'')));
+    const fit=scoped?{...entry,programRequirements:(entry.programRequirements||[]).filter(fact=>fact.scope!=='course'||Array.isArray(fact.courseCodes)&&fact.courseCodes.length&&fact.courseCodes.every(code=>codes.has(String(code).toUpperCase().replace(/[^A-Z0-9]/g,''))))}:null;
+    const html=task||!fit?'':window.DegreeProgramOpportunities?.requirementsHTML?.(fit,{compact:true})||'';
+    // Disclosure state is presentation only; ordinary course updates do not close it.
+    if(displayedProgramRequirements!==html){node.innerHTML=html;displayedProgramRequirements=html;}node.hidden=!html;
   }
   // Phone glance (≤700px only; wider screens never show it): what the plan is, its headline
   // numbers and cost line, a jump to the courses, and one-line disclosures for the secondary

@@ -119,7 +119,7 @@ async function run(name,fn){
    cards=await publicCards(page);assert.equal(await cards.count(),expected(item=>item.info.fit.modality==='online'&&item.info.fit.competencyBased===true).length);
    const chosen=cards.locator('.public-plan-card-link[href="'+wgu.info.page+'"]');assert.equal(await chosen.count(),1);await chosen.click();await page.waitForURL('**'+wgu.info.page);
    const facts=page.locator('.public-plan-fit');await facts.first().waitFor();assert.match(await facts.first().innerText(),/Competency-based.*Self-paced.*Subscription/s);
-   await facts.first().locator('summary').click();assert((await facts.first().locator('a[href^="https://"]').count())>=1,'The public degree offers primary study/billing sources');
+   const studySources=facts.first().locator('details').filter({has:page.locator('summary').filter({hasText:/^Study.*sources$/})});await studySources.locator('summary').click();assert((await studySources.locator('a[href^="https://"]').count())>=1,'The public degree offers primary study/billing sources');
    await preserved(page,initial);await fitViewport(page);
   });
 
@@ -130,7 +130,7 @@ async function run(name,fn){
    assert.equal(await page.locator('[data-scenario]').count(),3,'Reading fit facts keeps the explicitly selected comparison set');
    assert.match(await current.locator('.comparison-degree-tags').innerText(),/Term-based/);assert.match(await current.locator('.comparison-degree-tags').innerText(),/Per credit/);assert.doesNotMatch(await current.locator('.comparison-degree-tags').innerText(),/Competency-based|Self-paced/);
    assert.match(await current.locator('.comparison-tuition-fact').innerText(),/\$410.*\$475 per credit/);
-   const live=current.locator('.comparison-attendance-fact');assert.match(await live.innerText(),/Capstone includes live seminars/);assert.match(await live.locator('a').getAttribute('href'),/^https:\/\/[^/]*liberty\.edu\//);
+   await current.locator('.program-requirements > summary').click();const live=current.locator('[data-program-requirement="liberty-hser497-live-seminars"]');assert.match(await live.innerText(),/live seminars every other week/);assert.match(await live.locator('a').getAttribute('href'),/^https:\/\/[^/]*liberty\.edu\//);assert.equal(await current.locator('.comparison-attendance-fact').count(),0,'The sourced requirement replaces the old duplicate capstone note');
    const tags=await alternative.locator('.comparison-degree-tags').innerText();assert.match(tags,/Competency-based/);assert.match(tags,/Self-paced/);assert.match(tags,/Subscription/);
    await alternative.locator('.comparison-fit-sources > summary').click();assert((await alternative.locator('.comparison-fit-sources a[href^="https://"]').count())>=1);
    await preserved(page,initial);await fitViewport(page);

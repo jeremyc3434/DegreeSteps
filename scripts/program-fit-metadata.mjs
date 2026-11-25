@@ -1,12 +1,13 @@
 /** Compact discovery facts. These labels never change curriculum or publication decisions. */
 import Facts from '../dist/program-opportunities.js';
+import {assembleProgramRequirements} from './program-requirements-metadata.mjs';
 
 const list=value=>Array.isArray(value)?value:[];
 const catalog=value=>String(value||'').replace(/[–—]/g,'-').trim();
 const modality=model=>/^online$/i.test(model?.format)?'online':/^(residential|campus|on campus)$/i.test(model?.format)?'campus':null;
 const https=value=>{try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password;}catch{return false;}};
 
-export function buildProgramFit({model,route={},estimate,rates={},reviews={}}){
+export function buildProgramFit({model,route={},estimate,rates={},reviews={},requirementReviews=[]}){
   const edition=catalog(model.catalogYear||model.catalog),format=modality(model);
   const program={...route,...model,id:route.id||model.id,url:route.url||model.url,
     paceModel:model.paceModel||route.paceModel,pricing:model.pricing||route.pricing};
@@ -42,5 +43,5 @@ export function buildProgramFit({model,route={},estimate,rates={},reviews={}}){
       courseCode:requirement.code||null,url:sources[0].url,sourceIds:[...policy.sourceIds]}];
   });
   return {modelId:model.id,catalogYear:edition,modality:format,creditSystem:model.creditSystem||null,
-    ...Facts.fitFacts(program),requirements,...(review?{learningReviewId:review.id}:{})};
+    ...Facts.fitFacts(program),requirements,programRequirements:assembleProgramRequirements(model,requirementReviews),...(review?{learningReviewId:review.id}:{})};
 }

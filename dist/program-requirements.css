@@ -1,0 +1,15 @@
+/* Shared, source-linked program requirements. Disclosures remain closed until requested. */
+.program-requirements{margin-top:12px;border-top:1px solid #dce5f2;font-size:1rem;color:#405875}
+.program-requirements>summary{display:flex;align-items:center;justify-content:space-between;min-height:44px;gap:12px;cursor:pointer;font-size:1rem;font-weight:650;color:#244e95;list-style:none}
+.program-requirements>summary::-webkit-details-marker{display:none}
+.program-requirements>summary::after{content:'';width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-right:5px;flex:none}
+.program-requirements[open]>summary::after{transform:rotate(225deg)}
+.program-requirement-list{list-style:none;margin:0;padding:0}
+.program-requirement-list>li{padding:12px 0;border-top:1px solid #e5ebf4}
+.program-requirement-heading{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px 10px;margin:0;color:#253b58;line-height:1.5}
+.program-requirement-heading strong{font-size:1rem;font-weight:650}
+.program-requirement-scope{font-size:.875rem;font-weight:400;color:#61748b}
+.program-requirement-detail{margin:5px 0;font-size:1rem;line-height:1.6;color:#526780;overflow-wrap:anywhere}
+.program-requirement-sources{display:flex;flex-wrap:wrap;gap:0 14px}
+.program-requirement-sources a{display:inline-flex;align-items:center;min-height:44px;font-size:.875rem;color:#285fc3;line-height:1.5;text-underline-offset:3px;overflow-wrap:anywhere}
+.program-requirements>summary:focus-visible,.program-requirement-sources a:focus-visible{outline:3px solid #4054f4;outline-offset:3px;border-radius:3px}

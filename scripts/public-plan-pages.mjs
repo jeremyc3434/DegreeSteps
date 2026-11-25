@@ -7,6 +7,7 @@ import {icon,schoolMarkHTML,creditSplit} from './public-visuals.mjs';
 import {subjectAreas,subjectsFor} from './subject-areas.mjs';
 import {transferPath} from './transfer-pages.mjs';
 import {buildProgramFit} from './program-fit-metadata.mjs';
+import {loadProgramRequirementReviews} from './program-requirements-metadata.mjs';
 
 const require=createRequire(import.meta.url);
 const Planner=require('../dist/planner.js');
@@ -51,7 +52,7 @@ export function setTransferPaths(paths){transferPaths=new Set(paths);}
 export function usePublicPlanHref(plan){return '/portal.html?usePlan='+encodeURIComponent(plan.id);}
 function catalogLabel(value){const raw=String(value||''),match=raw.match(/^(20\d{2})(0[1-9]|1[0-2])$/);return match?new Intl.DateTimeFormat('en-US',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(Number(match[1]),Number(match[2])-1,1))):raw;}
 
-export function buildPublicPlan(definition,{model,entry,baseline,quality,courseCatalog={},rates,route={},reviews={},generate=Planner.generate}){
+export function buildPublicPlan(definition,{model,entry,baseline,quality,courseCatalog={},rates,route={},reviews={},requirementReviews=[],generate=Planner.generate}){
  assert.equal(model?.id,definition.modelId,'Public plan model identity changed.');
  assert(entry?.routeIds?.includes(definition.id),'Public route is not bound to its exact curriculum.');
  assert.equal(quality?.publication?.ready,true,'Only publication-ready research can become a public plan page.');
@@ -73,7 +74,7 @@ export function buildPublicPlan(definition,{model,entry,baseline,quality,courseC
  const view=View.build({program:model,plan,state:{learning:[]},match:{completed:[]}},courseCatalog);
  assert.equal(view.totals.accounted,definition.total);assert.equal(view.progress.completedCredits,0);assert.equal(view.curriculumIssues.length,0,'Public degree sections must be unambiguous.');
  const estimate=rates?Estimate.calculate({program:model,plan,rates}):null;
- const fit=buildProgramFit({model,route,estimate,rates,reviews});
+ const fit=buildProgramFit({model,route,estimate,rates,reviews,requirementReviews});
  const description='Explore '+model.school+'’s '+model.title+' with '+plan.totals.external+' proposed outside '+definition.unit+', '+plan.totals.institutional+' university '+definition.unit+', and a complete researched course plan.';
  return {...definition,outside:plan.totals.external,university:plan.totals.institutional,description,path:publicPlanPath(definition),useHref:usePublicPlanHref(definition),school:model.school,degree:model.title,catalog:catalogLabel(model.catalog),checkedOn:baseline.summary.checkedOn||entry.checkedOn||'',model,plan,view,baseline,quality,estimate,fit};
 }
@@ -82,6 +83,7 @@ export async function loadPublicPlans(dist=resolve(import.meta.dirname,'../dist'
  const read=async path=>JSON.parse(await readFile(resolve(dist,path),'utf8'));
  const [registry,quality,index,courseCatalog,rates]=await Promise.all(['data/curriculum-registry.json','data/pathway-quality-report.json','data/baseline-index.json','data/course-catalog.json','data/plan-estimate-rates.json'].map(read));
  const [pathways,reviews]=await Promise.all([read('data/pathways.json'),readFile(resolve(import.meta.dirname,'../content/discovery/program-fit-reviews.json'),'utf8').then(JSON.parse)]);
+ const requirementReviews=await loadProgramRequirementReviews(resolve(import.meta.dirname,'..'));
  const routes=[...list(registry.routes),...list(pathways.pathways)];
  const freshness=await loadPlanFreshness(dist);
  assert.equal(index.privateRecordsIncluded,false,'Public baselines must not include private student records.');
@@ -105,7 +107,7 @@ export async function loadPublicPlans(dist=resolve(import.meta.dirname,'../dist'
   const entry=registry.models.find(entry=>entry.id===definition.modelId);assert(entry,'Public curriculum is missing.');
   if(!packs.has(entry.path))packs.set(entry.path,await read(entry.path));
   const pack=packs.get(entry.path),model=pack.id===entry.id?pack:list(pack.models).find(model=>model.id===entry.id);
-  plans.push(buildPublicPlan(definition,{model,entry,baseline:Object.values(index.baselines).find(baseline=>baseline.modelId===entry.id&&baseline.pathwayId===definition.id),quality:quality.programs.find(program=>program.modelId===entry.id),courseCatalog,rates,route:routes.find(route=>route.id===definition.id)||{},reviews}));
+  plans.push(buildPublicPlan(definition,{model,entry,baseline:Object.values(index.baselines).find(baseline=>baseline.modelId===entry.id&&baseline.pathwayId===definition.id),quality:quality.programs.find(program=>program.modelId===entry.id),courseCatalog,rates,route:routes.find(route=>route.id===definition.id)||{},reviews,requirementReviews}));
   const fresh=freshnessFor(freshness,definition.id);if(fresh)plans.at(-1).freshness=fresh;
  }
  return plans;
@@ -143,14 +145,14 @@ export function planFacets(plan){
 }
 const attendanceFacts=fit=>list(fit.requirements).filter(requirement=>requirement.type==='live-seminars'&&requirement.label&&https(requirement.url));
 function fitBadges(plan){
- const fit=fitFor(plan),labels=[...new Set([fit.competencyBased===true?'Competency-based (CBE)':'',fit.selfPaced===true?'Self-paced':fit.selfPaced===false?'Term-based':'',fit.billing?fit.billingLabel:'',...attendanceFacts(fit).map(requirement=>requirement.label)].filter(Boolean))];
+ const fit=fitFor(plan),labels=[...new Set([fit.competencyBased===true?'Competency-based (CBE)':'',fit.selfPaced===true?'Self-paced':fit.selfPaced===false?'Term-based':'',fit.billing?fit.billingLabel:'',...attendanceFacts(fit).map(requirement=>requirement.label),...ProgramFacts.requirementBadges(fit)].filter(Boolean))];
  return labels.length?'<ul class="public-plan-fit-badges" aria-label="Program features">'+labels.map(label=>'<li>'+esc(label)+'</li>').join('')+'</ul>':'';
 }
 function studyFacts(plan,{includeTuition=true}={}){
  const fit=fitFor(plan),badges=fitBadges(plan),tuition=includeTuition&&fit.billing&&fit.tuitionLabel?'<p class="public-plan-fit-tuition">University tuition: <strong>'+esc(fit.tuitionLabel)+'</strong></p>':'';
  const attendance=attendanceFacts(fit),sources=[['University study format',fit.sources?.learning?.url],['Published tuition',fit.sources?.billing?.url],...attendance.map(requirement=>[[requirement.courseCode,requirement.label].filter(Boolean).join(': '),requirement.url])].filter(([,url])=>https(url));
  if(!badges&&!tuition)return '';
- return '<div class="public-plan-fit" aria-label="University study and billing">'+badges+tuition+(sources.length?'<details><summary>'+ (attendance.length?'Study, billing, and attendance sources':'Study and billing sources')+'</summary><ul>'+sources.map(([label,url])=>'<li><a href="'+esc(https(url))+'" target="_blank" rel="noopener noreferrer">'+esc(label)+'</a></li>').join('')+'</ul></details>':'')+'</div>';
+ return '<div class="public-plan-fit" aria-label="University study and billing">'+badges+tuition+(sources.length?'<details><summary>'+ (attendance.length?'Study, billing, and attendance sources':'Study and billing sources')+'</summary><ul>'+sources.map(([label,url])=>'<li><a href="'+esc(https(url))+'" target="_blank" rel="noopener noreferrer">'+esc(label)+'</a></li>').join('')+'</ul></details>':'')+ProgramFacts.requirementsHTML(fit)+'</div>';
 }
 /** One reviewed route as a card: a credit-split bar with its visible numbers as the text equivalent. */
 export function renderPlanCard(plan,{heading='h2',showSchool=true}={}){
