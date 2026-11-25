@@ -163,6 +163,13 @@ jobs:
             echo "$name updated on $WORKER_NAME."
           done
 
+      - name: Publish prepared starter discussions
+        # The Worker labels these as DegreeSteps examples before they become visible.
+        # Guarded upserts preserve real participation and moderator removals.
+        run: |
+          node scripts/build-community-starters.mjs --check
+          npx --yes wrangler@4.164.0 d1 execute "$D1_NAME" --remote --config "$WRANGLER_CONFIG" --file content/community/starter-library.sql --yes
+
       - name: Summary
         run: |
           {

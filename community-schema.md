@@ -8,6 +8,10 @@ Sites dispatch authenticates visitors and supplies `oai-authenticated-user-id` p
 
 Anyone can read posts and context discussions. Writes require a signed-in identity, matching `Origin`, `Content-Type: application/json` for JSON payloads, and `X-Community-Request: 1`. The API also rejects cross-site Fetch Metadata. DELETE does not need a JSON body. Responses are non-cacheable JSON. Errors have `{error: "message"}` and an appropriate HTTP status (400, 401, 403, 404, 413, 415, 429, 503).
 
+## Prepared starter material
+
+[DegreeSteps starter discussions](docs/community-starter-library.md) are prepared editorial questions and guide answers, visibly labeled as examples. They use reserved non-login publishing profiles, with no synthetic reactions or transfer evidence. Public starter posts/comments add `origin: "degreesteps-starter"` and `author.kind: "degreesteps-guide"`; these markers come only from stored trusted author IDs. Posts expose separate `guideAnswers` and `studentComments` counts in addition to the compatible total `comments`. Feed `source=all|students|starters` defaults to student posts before starter examples, with source-aware cursors. Comment and evidence cursors retain their original format. Normal contextual summaries can add `starterDiscussions` to link to related prepared questions.
+
 ## Identity and moderation
 
 Users begin with the alias `Community member`. Only their explicitly chosen alias is public; identity headers, email, internal user IDs, and reporter identities are never included in public posts/comments. `/session` and `/profile` return the current user's own ID, alias, and role.

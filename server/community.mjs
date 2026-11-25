@@ -3,6 +3,22 @@ const PREFIX = '/api/community';
 const KINDS = new Set(['question', 'plan', 'template']);
 const CONTEXT = /^(school|program|course|template|post):[A-Za-z0-9][A-Za-z0-9._:/-]{0,159}$/;
 const ID = /^[A-Za-z0-9][A-Za-z0-9_-]{0,119}$/;
+// Editorial attribution is a property of these non-login database authors only.
+// A display alias, incoming payload, email address or profile role never grants it.
+const STARTER_GUIDES = new Map([
+  ['ds-guide-planning','DegreeSteps Planning Guide'],['ds-guide-transfers','DegreeSteps Transfer Guide'],
+  ['ds-guide-courses','DegreeSteps Course Guide'],['ds-guide-campus','DegreeSteps Campus Guide'],
+  ['ds-guide-military','DegreeSteps Military Guide'],['ds-guide-careers','DegreeSteps Career Guide'],
+  ['ds-guide-money','DegreeSteps Cost Guide'],['ds-guide-momentum','DegreeSteps Study Guide']
+]);
+const STARTER_AUTHOR_SQL = [...STARTER_GUIDES.keys()].map(value=>"'"+value+"'").join(',');
+const guideAliasKey = value => value.normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase();
+const STARTER_GUIDE_ALIASES = new Set([...STARTER_GUIDES.values()].map(guideAliasKey));
+function publicAuthor(authorId,alias,user) {
+  const guide=STARTER_GUIDES.get(authorId);
+  return {alias:guide||alias,isYou:authorId===user?.id,...(guide?{kind:'degreesteps-guide'}:{})};
+}
+const starterOrigin = authorId => STARTER_GUIDES.has(authorId)?{origin:'degreesteps-starter'}:{};
 const LIMITS = { publish: 12, comment: 40, reaction: 120, report: 15, profile: 12, moderation: 120 };
 const WINDOW = 60 * 60 * 1000;
 class ApiError extends Error { constructor(status, message) { super(message); this.status = status; } }
@@ -109,6 +125,7 @@ async function identity(request, env) {
   const raw = request.headers.get('oai-authenticated-user-id');
   if (!raw) return null;
   if (raw.length > 256 || /[\u0000-\u001f]/.test(raw)) fail(401, 'Invalid sign-in identity.');
+  if (STARTER_GUIDES.has(raw)) fail(401, 'Editorial guide authors cannot sign in or contribute as students.');
   // Email is compared only during owner bootstrap, never persisted or returned.
   const configured = typeof env.COMMUNITY_ADMIN_EMAIL === 'string' ? env.COMMUNITY_ADMIN_EMAIL.trim().toLowerCase() : '';
   const authenticatedEmail = (request.headers.get('oai-authenticated-user-email') || '').trim().toLowerCase();
@@ -151,6 +168,50 @@ function paged(rows, limit, mapper) {
   const more = rows.length > limit; const records = rows.slice(0, limit); const last = records.at(-1);
   return { items:records.map(mapper), cursor:more && last ? btoa(JSON.stringify([last.created_at,last.id])).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'') : null };
 }
+function feedPage(url) {
+  if(url.searchParams.getAll('source').length>1)fail(400,'Choose one discussion source.');
+  const source=url.searchParams.get('source')??'all';
+  if(!['all','students','starters'].includes(source))fail(400,'Choose all, students, or starters.');
+  const withoutCursor=new URL(url.href);withoutCursor.searchParams.delete('cursor');
+  const {limit}=page(withoutCursor),raw=url.searchParams.get('cursor');
+  if(!raw)return {limit,source,before:null,legacy:false};
+  if(raw.length>400)fail(400,'Invalid cursor.');
+  let value;try{value=JSON.parse(atob(raw.replace(/-/g,'+').replace(/_/g,'/')));}catch{fail(400,'Invalid cursor.');}
+  const validBefore=(stamp,recordId)=>Number.isSafeInteger(stamp)&&stamp>=0&&typeof recordId==='string'&&ID.test(recordId);
+  // Previously issued chronological cursors retain their old continuation.
+  // Comment, evidence and moderation pagination continue using page() unchanged.
+  if(Array.isArray(value)&&value.length===2&&validBefore(...value))return{limit,source,before:value,legacy:true};
+  if(!Array.isArray(value)||value.length!==5||value[0]!=='feed-v1'||value[1]!==source||![0,1].includes(value[2])||!validBefore(value[3],value[4])||source==='students'&&value[2]!==0||source==='starters'&&value[2]!==1)fail(400,'Invalid cursor.');
+  return{limit,source,before:{rank:value[2],stamp:value[3],id:value[4]},legacy:false};
+}
+async function feedRows(db,user,where,args,details) {
+  const {limit,source,before,legacy}=details;
+  const sourceClause=rank=>'p.user_id '+(rank?'IN':'NOT IN')+' ('+STARTER_AUTHOR_SQL+')';
+  const appendBefore=(conditions,values,stamp,recordId)=>{conditions.push('(p.created_at < ? OR (p.created_at = ? AND p.id < ?))');values.push(stamp,stamp,recordId);};
+  if(legacy){
+    const conditions=[...where],values=[...args];
+    if(source!=='all')conditions.push(sourceClause(source==='starters'?1:0));
+    appendBefore(conditions,values,before[0],before[1]);
+    return postRows(db,user,conditions.join(' AND '),values,limit+1);
+  }
+  const rows=[];
+  // Each phase uses the existing context/feed chronological index and a bounded
+  // page. Avoid sorting all students and editorial posts together with CASE.
+  for(const rank of source==='all'?[0,1]:[source==='starters'?1:0]){
+    if(before&&rank<before.rank)continue;
+    const remaining=limit+1-rows.length;if(remaining<=0)break;
+    const conditions=[...where,sourceClause(rank)],values=[...args];
+    if(before&&before.rank===rank)appendBefore(conditions,values,before.stamp,before.id);
+    rows.push(...await postRows(db,user,conditions.join(' AND '),values,remaining));
+  }
+  return rows;
+}
+function pagedFeed(rows,user,details) {
+  if(details.legacy)return paged(rows,details.limit,row=>postView(row,user));
+  const more=rows.length>details.limit,records=rows.slice(0,details.limit),last=records.at(-1);
+  const value=last?['feed-v1',details.source,STARTER_GUIDES.has(last.user_id)?1:0,last.created_at,last.id]:null;
+  return{items:records.map(row=>postView(row,user)),cursor:more&&value?btoa(JSON.stringify(value)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''):null};
+}
 async function postRows(db, user, where, args, limit) {
   // Select the bounded page before looking at its activity. Reactions are read
   // once per selected post, rather than separately for every count and flag.
@@ -168,12 +229,15 @@ async function postRows(db, user, where, args, limit) {
       FROM community_reactions r WHERE r.post_id IN (SELECT id FROM post_page)
       GROUP BY r.post_id
     ), comment_totals AS MATERIALIZED (
-      SELECT c.context,COUNT(*) AS comments FROM community_comments c
+      SELECT c.context,COUNT(*) AS comments,
+        SUM(CASE WHEN c.user_id IN (${STARTER_AUTHOR_SQL}) THEN 1 ELSE 0 END) AS guide_answers,
+        SUM(CASE WHEN c.user_id NOT IN (${STARTER_AUTHOR_SQL}) THEN 1 ELSE 0 END) AS student_comments FROM community_comments c
       WHERE c.deleted_at IS NULL AND c.context IN (SELECT 'post:' || id FROM post_page)
       GROUP BY c.context
     )
     SELECT p.*,u.alias,COALESCE(r.likes,0) AS likes,COALESCE(r.upvotes,0) AS upvotes,
-      COALESCE(c.comments,0) AS comments,COALESCE(r.liked,0) AS liked,COALESCE(r.upvoted,0) AS upvoted
+      COALESCE(c.comments,0) AS comments,COALESCE(c.guide_answers,0) AS guide_answers,
+      COALESCE(c.student_comments,0) AS student_comments,COALESCE(r.liked,0) AS liked,COALESCE(r.upvoted,0) AS upvoted
     FROM post_page p JOIN community_users u ON u.id=p.user_id
     LEFT JOIN reaction_totals r ON r.post_id=p.id
     LEFT JOIN comment_totals c ON c.context='post:' || p.id
@@ -181,8 +245,9 @@ async function postRows(db, user, where, args, limit) {
 }
 function postView(row, user) {
   return { id:row.id, kind:row.kind, context:row.context, title:row.title, body:row.body, url:row.url,
-    plan:row.plan_json ? JSON.parse(row.plan_json) : null, author:{ alias:row.alias, isYou:row.user_id === user?.id },
+    plan:row.plan_json ? JSON.parse(row.plan_json) : null, author:publicAuthor(row.user_id,row.alias,user),...starterOrigin(row.user_id),
     createdAt:row.created_at, updatedAt:row.updated_at, likes:Number(row.likes), upvotes:Number(row.upvotes), comments:Number(row.comments),
+    guideAnswers:Number(row.guide_answers||0),studentComments:Number(row.student_comments||0),
     liked:!!row.liked, upvoted:!!row.upvoted, canEdit:row.user_id === user?.id, canDelete:row.user_id === user?.id || !!isMod(user) };
 }
 async function getPost(db, recordId, user) {
@@ -202,19 +267,21 @@ async function contextSummary(db,value,user) {
   await validContext(db,value);
   if (value.startsWith('post:')) {
     const post=await getPost(db,value.slice(5),user);
-    return {context:value,likes:post.likes,upvotes:post.upvotes,liked:post.liked,upvoted:post.upvoted,comments:post.comments};
+    return {context:value,likes:post.likes,upvotes:post.upvotes,liked:post.liked,upvoted:post.upvoted,comments:post.comments,...(post.origin||post.guideAnswers?{guideAnswers:post.guideAnswers,studentComments:post.studentComments}:{})};
   }
   const row=await first(db,`SELECT
     SUM(CASE WHEN reaction='like' THEN 1 ELSE 0 END) AS likes,
     SUM(CASE WHEN reaction='upvote' THEN 1 ELSE 0 END) AS upvotes,
     MAX(CASE WHEN user_id=? AND reaction='like' THEN 1 ELSE 0 END) AS liked,
     MAX(CASE WHEN user_id=? AND reaction='upvote' THEN 1 ELSE 0 END) AS upvoted,
-    (SELECT COUNT(*) FROM community_comments WHERE context=? AND deleted_at IS NULL) AS comments
-    FROM community_context_reactions WHERE context=?`,user?.id || '',user?.id || '',value,value);
-  return {context:value,likes:Number(row.likes),upvotes:Number(row.upvotes),liked:!!row.liked,upvoted:!!row.upvoted,comments:Number(row.comments)};
+    (SELECT COUNT(*) FROM community_comments WHERE context=? AND deleted_at IS NULL) AS comments,
+    (SELECT COUNT(*) FROM community_comments WHERE context=? AND deleted_at IS NULL AND user_id IN (${STARTER_AUTHOR_SQL})) AS guide_answers,
+    (SELECT COUNT(*) FROM community_posts WHERE context=? AND deleted_at IS NULL AND user_id IN (${STARTER_AUTHOR_SQL})) AS starter_discussions
+    FROM community_context_reactions WHERE context=?`,user?.id || '',user?.id || '',value,value,value,value);
+  return {context:value,likes:Number(row.likes),upvotes:Number(row.upvotes),liked:!!row.liked,upvoted:!!row.upvoted,comments:Number(row.comments),...(row.guide_answers?{guideAnswers:Number(row.guide_answers),studentComments:Number(row.comments)-Number(row.guide_answers)}:{}),...(row.starter_discussions?{starterDiscussions:Number(row.starter_discussions)}:{})};
 }
 function commentView(row,user) {
-  return { id:row.id, context:row.context, parentId:row.parent_id, body:row.body, author:{alias:row.alias,isYou:row.user_id === user?.id},
+  return { id:row.id, context:row.context, parentId:row.parent_id, body:row.body, author:publicAuthor(row.user_id,row.alias,user),...starterOrigin(row.user_id),
     createdAt:row.created_at, updatedAt:row.updated_at, canDelete:row.user_id === user?.id || !!isMod(user) };
 }
 const EVIDENCE_DISCLAIMER = 'Community evidence only. A reviewed report is not university approval, a transfer guarantee, or an automatic credit award. Confirm your own catalog and evaluation with the school.';
@@ -365,6 +432,7 @@ async function api(request,env) {
   if (path === `${PREFIX}/profile` && method === 'POST') {
     requireUser(user); const body = await payload(request); only(body,['alias']); const alias = text(body.alias,'Display alias',2,40);
     if (/[<>]/.test(alias) || alias.includes('@')) fail(400,'Use a display alias without markup or an email address.');
+    if (STARTER_GUIDE_ALIASES.has(guideAliasKey(alias))) fail(400,'That name is reserved for DegreeSteps guides. Choose your own public alias.');
     await rate(db,user,'profile'); await run(db,'UPDATE community_users SET alias = ?, updated_at = ? WHERE id = ?',alias,now(),user.id);
     return json({ user:{...user,alias} });
   }
@@ -489,13 +557,11 @@ async function api(request,env) {
     return json(await contextSummary(db,value,user));
   }
   if (path === `${PREFIX}/feed` && method === 'GET') {
-    const {limit,before} = page(url); const where = ['p.deleted_at IS NULL']; const args = [];
+    const details=feedPage(url); const where = ['p.deleted_at IS NULL']; const args = [];
     if (url.searchParams.has('context')) { where.push('p.context = ?'); args.push(context(url.searchParams.get('context'))); }
     if (url.searchParams.has('kind')) { const kind = url.searchParams.get('kind'); if (!KINDS.has(kind)) fail(400,'Invalid post kind.'); where.push('p.kind = ?'); args.push(kind); }
     if (url.searchParams.has('mine')) { if (url.searchParams.get('mine') !== '1') fail(400,'Invalid author filter.'); requireUser(user); where.push('p.user_id = ?'); args.push(user.id); }
-    if (before) { where.push('(p.created_at < ? OR (p.created_at = ? AND p.id < ?))'); args.push(before[0],before[0],before[1]); }
-    const rows = await postRows(db,user,where.join(' AND '),args,limit+1);
-    return json(paged(rows,limit,row=>postView(row,user)));
+    return json(pagedFeed(await feedRows(db,user,where,args,details),user,details));
   }
   if (path === `${PREFIX}/posts` && method === 'POST') {
     requireUser(user); const post = postPayload(await payload(request)); await validContext(db,post.context); await rate(db,user,'publish');

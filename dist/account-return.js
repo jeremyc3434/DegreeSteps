@@ -26,6 +26,7 @@
         if(template&&/^[A-Za-z0-9_-]{1,100}$/.test(template))query.set('template',template);
       }else if(url.pathname==='/community.html'){
         const tab=url.searchParams.get('tab');if(['feed','templates'].includes(tab))query.set('tab',tab);
+        const source=url.searchParams.get('source');if(['all','students','starters'].includes(source))query.set('source',source);
         for(const key of ['post','template']){const value=url.searchParams.get(key);if(value&&identifier.test(value))query.set(key,value);}
         const target=url.searchParams.get('context');if(target&&context.test(target))query.set('context',target);
         for(const key of ['school','level','format']){const value=url.searchParams.get(key);if(bounded(value))query.set(key,value);}

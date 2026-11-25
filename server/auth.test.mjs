@@ -267,6 +267,8 @@ test('workspace sign-in returns keep approved pages and preserve only school con
  for(const path of ['/request-plan.html','/admin.html']){const result=await call(env,'/api/auth/login',{method:'POST',body:{email:'student@example.com',password:'long-password',returnTo:path}});assert.equal(result.data.returnTo,path);}
  const result=await call(env,'/api/auth/login',{method:'POST',body:{email:'student@example.com',password:'long-password',returnTo:'/school.html?school=Liberty%20University&template=tpl-reviewed&redirect=https://attacker.example'}});
  assert.equal(result.data.returnTo,'/school.html?school=Liberty+University&template=tpl-reviewed');
+ for(const source of ['all','students','starters']){const community=await call(env,'/api/auth/login',{method:'POST',body:{email:'student@example.com',password:'long-password',returnTo:'/community.html?tab=feed&source='+source+'&context=school%3Awgu&next=https://attacker.example'}});assert.equal(community.data.returnTo,'/community.html?tab=feed&source='+source+'&context=school%3Awgu');}
+ const invalidSource=await call(env,'/api/auth/login',{method:'POST',body:{email:'student@example.com',password:'long-password',returnTo:'/community.html?tab=feed&source=owner'}});assert.equal(invalidSource.data.returnTo,'/community.html?tab=feed');
  const unsafe=await call(env,'/api/auth/login',{method:'POST',body:{email:'student@example.com',password:'long-password',returnTo:'//attacker.example/admin.html'}});assert.equal(unsafe.data.returnTo,'/account.html');
 });
 
