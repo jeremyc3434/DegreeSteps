@@ -7,6 +7,7 @@ import { execFileSync } from 'node:child_process';
 import { buildCreditSourceDiscovery } from '../server/credit-source-discovery.mjs';
 const root = resolve(import.meta.dirname,'..');
 const output = resolve(root,'outputs/site');
+execFileSync(process.execPath,[resolve(root,'scripts/course-assessment-reviews.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 const types = {html:'text/html; charset=utf-8',js:'application/javascript; charset=utf-8',mjs:'application/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',csv:'text/csv; charset=utf-8',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',txt:'text/plain; charset=utf-8',xml:'application/xml; charset=utf-8',webp:'image/webp',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png'};
 execFileSync(process.execPath,[resolve(root,'scripts/reviewed-course-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-current-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
@@ -74,7 +75,9 @@ assert(!/^import\s/m.test(researchReferencesApi),'Bundle research reference impo
 const creditSourceDiscoveryApi=(await readFile(resolve(root,'server/credit-source-discovery.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(creditSourceDiscoveryApi),'Bundle credit source discovery imports explicitly before building');
 const academicPlannerSource=await readFile(resolve(root,'dist/planner.js'),'utf8');
-const academicPlannerBundle='const TemplateAcademicPlanner=(()=>{const module={exports:{}};const exports=module.exports;\n'+academicPlannerSource+'\nreturn module.exports;})();\n';
+const assessmentSource=await readFile(resolve(root,'dist/course-assessment.js'),'utf8');
+const assessmentBundle='const TemplateCourseAssessment=(()=>{const module={exports:{}};const exports=module.exports;\n'+assessmentSource+'\nreturn module.exports;})();\n';
+const academicPlannerBundle=assessmentBundle+'const TemplateAcademicPlanner=(()=>{const module={exports:{}};const exports=module.exports;const require=name=>{if(name==="./course-assessment.js")return TemplateCourseAssessment;throw new Error("Unsupported planner dependency.");};\n'+academicPlannerSource+'\nreturn module.exports;})();\n';
 const programCatalogSource=await readFile(resolve(root,'dist/program-catalog.js'),'utf8');
 const programCatalogBundle='const TemplateProgramCatalog=(()=>{const module={exports:{}};const exports=module.exports;const require=name=>{if(name==="./planner.js")return TemplateAcademicPlanner;throw new Error("Unsupported catalog dependency.");};\n'+programCatalogSource+'\nreturn module.exports;})();\n';
 const academicApi=(await readFile(resolve(root,'server/template-academic.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');

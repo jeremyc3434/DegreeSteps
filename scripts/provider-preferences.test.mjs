@@ -55,11 +55,11 @@ test('removing or reintroducing mapped providers updates discovery without chang
  assert.deepEqual(reintroduced.settings().providers,['Sophia']);assert.deepEqual(reintroduced.settings().mappedProvidersReviewed,[...mapped,'DSST']);
 });
 
-test('the actual planning input still excludes proctored sources when the student avoids them',()=>{
+test('the actual planning input keeps source choices separate from the course-level assessment preference',()=>{
  const ui=mount({proctoringPreference:'avoid'});assert.deepEqual(ui.settings().providers,mapped);
  const state=ui.state(),before=copy(state),input=Journey.planningInput(state,route,{completed:[]},ui.api.program());
- assert.deepEqual(input.providers,['Sophia','Study.com']);assert.deepEqual(state,before,'Applying assessment preferences cannot rewrite the stored source choices');
+ assert.deepEqual(input.providers,mapped);assert.equal(input.proctoringPreference,'avoid');assert.deepEqual(state,before,'Applying assessment preferences cannot rewrite the stored source choices');
  const explicit=mount({scenario:{providers:['Sophia','Saylor','StraighterLine']},proctoringPreference:'avoid'});explicit.settings();
- assert.deepEqual(Journey.planningInput(explicit.state(),route,{completed:[]},explicit.api.program()).providers,['Sophia']);
+ const selected=Journey.planningInput(explicit.state(),route,{completed:[]},explicit.api.program());assert.deepEqual(selected.providers,['Sophia','Saylor','StraighterLine']);assert.equal(selected.proctoringPreference,'avoid');
  assert.deepEqual(explicit.settings().providers,['Sophia','Saylor','StraighterLine']);
 });

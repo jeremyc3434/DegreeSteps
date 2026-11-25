@@ -52,7 +52,7 @@ export async function runPathwayArtifacts({base=root,check=false}={}){
  const read=async path=>JSON.parse(await readFile(resolve(base,path),'utf8'));
  const {models,entries,asOf}=await readAcademicInputs(base),registry=await read('dist/data/academic-registry.json'),curricula=await read('dist/data/curriculum-registry.json');
  const catalog=Catalog.attachRegistry(Catalog.merge(await read('dist/data/pathways.json'),await read('dist/data/program-catalog.json')),curricula);
- const paths=[...new Set(['planner.js','data/academic-registry.json','data/pathways.json','data/program-catalog.json','data/curriculum-registry.json','data/research-references.json',...entries.map(entry=>entry.path)])].sort();
+ const paths=[...new Set(['planner.js','course-assessment.js','data/academic-registry.json','data/pathways.json','data/program-catalog.json','data/curriculum-registry.json','data/research-references.json',...entries.map(entry=>entry.path)])].sort();
  const inputHashes=Object.fromEntries(await Promise.all(paths.map(async path=>['/'+path,createHash('sha256').update(await readFile(resolve(base,'dist',path))).digest('hex')])));
  const {report,baselineIndex,publicationIndex}=compilePathwayArtifacts({models,entries,catalog,registry,references:await read('dist/data/research-references.json'),asOf,inputHashes});
  publicationIndex.curriculumFingerprint=Catalog.publicationFingerprint(curricula);

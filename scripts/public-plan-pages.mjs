@@ -15,6 +15,8 @@ const View=require('../dist/course-plan-view.js');
 const Estimate=require('../dist/plan-estimate-engine.js');
 const EstimateView=require('../dist/plan-estimate-view.js');
 const ProgramFacts=require('../dist/program-opportunities.js');
+const Assessment=require('../dist/course-assessment.js');
+const AssessmentView=require('../dist/course-assessment-view.js');
 // Rendering only: provider links go through the shared outbound helper, loaded on first use. Plan building
 // (buildPublicPlan, loadPublicPlans) never loads it or reads partner settings.
 let OutboundHelper;const outbound=()=>OutboundHelper??=require('../dist/outbound.js');
@@ -152,7 +154,7 @@ function studyFacts(plan,{includeTuition=true}={}){
  const fit=fitFor(plan),badges=fitBadges(plan),tuition=includeTuition&&fit.billing&&fit.tuitionLabel?'<p class="public-plan-fit-tuition">University tuition: <strong>'+esc(fit.tuitionLabel)+'</strong></p>':'';
  const attendance=attendanceFacts(fit),sources=[['University study format',fit.sources?.learning?.url],['Published tuition',fit.sources?.billing?.url],...attendance.map(requirement=>[[requirement.courseCode,requirement.label].filter(Boolean).join(': '),requirement.url])].filter(([,url])=>https(url));
  if(!badges&&!tuition)return '';
- return '<div class="public-plan-fit" aria-label="University study and billing">'+badges+tuition+(sources.length?'<details><summary>'+ (attendance.length?'Study, billing, and attendance sources':'Study and billing sources')+'</summary><ul>'+sources.map(([label,url])=>'<li><a href="'+esc(https(url))+'" target="_blank" rel="noopener noreferrer">'+esc(label)+'</a></li>').join('')+'</ul></details>':'')+ProgramFacts.requirementsHTML(fit)+'</div>';
+ return '<div class="public-plan-fit" aria-label="University study and billing">'+badges+tuition+(sources.length?'<details><summary>'+ (attendance.length?'Study, billing, and attendance sources':'Study and billing sources')+'</summary><ul>'+sources.map(([label,url])=>'<li><a href="'+esc(https(url))+'" target="_blank" rel="noopener noreferrer">'+esc(label)+'</a></li>').join('')+'</ul></details>':'')+ProgramFacts.requirementsHTML(fit)+AssessmentView.render(Assessment.summarize(plan.model,plan.plan))+'</div>';
 }
 /** One reviewed route as a card: a credit-split bar with its visible numbers as the text equivalent. */
 export function renderPlanCard(plan,{heading='h2',showSchool=true}={}){

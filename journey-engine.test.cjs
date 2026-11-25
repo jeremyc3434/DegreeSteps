@@ -197,7 +197,7 @@ test('provider preparation preserves an explicit selection as newly mapped sourc
   assert(!Journey.buildDraft(prepared, catalog, models).input.providers.includes('StraighterLine'));
   prepared.profile.proctoringPreference = 'avoid';
   const avoided = Journey.buildDraft(prepared, catalog, models);
-  assert(!avoided.input.providers.some(provider => ['CLEP', 'StraighterLine', 'Saylor', 'DSST'].includes(provider)));
+  assert.deepEqual(avoided.input.providers,['Sophia']);assert.equal(avoided.input.proctoringPreference,'avoid');
 });
 
 test('live source records match the same current model and do not become school confirmations', () => {

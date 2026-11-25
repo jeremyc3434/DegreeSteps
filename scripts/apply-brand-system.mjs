@@ -50,6 +50,10 @@ export function applyExperience(source,name){
   const scripts=['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[]),...(coachPages.has(name)?['coach.js']:[]),...(leadsPages.has(name)?['leads.js']:[]),...(alertPages.has(name)?['plan-alerts.js']:[])];
   // Catalog credit-accounting checks share the planner's source-bound policy validator.
   if(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["']/i.test(next)&&!/<script\b[^>]*\bsrc=["']\/?planner\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["'][^>]*>/i,tag=>'<script src="/planner.js" defer></script>'+tag);
+  if(/<script\b[^>]*\bsrc=["']\/?planner\.js["']/i.test(next)){
+    next=next.replace(/<script\b[^>]*\bsrc=["']\/?course-assessment\.js["'][^>]*>\s*<\/script>/gi,'');
+    next=next.replace(/<script\b[^>]*\bsrc=["']\/?planner\.js["'][^>]*>/i,tag=>'<script src="'+(/\bsrc=["']\//i.test(tag)?'/':'')+'course-assessment.js" defer></script>'+tag);
+  }
   if(/<script\b[^>]*\bsrc=["']\/?student-checklist-view\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?student-checklist-view\.js["'][^>]*>/i,tag=>'<script src="/task-calendar.js" defer></script>'+tag);
   // The shared header (site-header.js) must run before the workspace shell that renders it; elsewhere it only enhances.
   next=next.replace(/<script\b[^>]*\bsrc=["']\/?site-header\.js["'][^>]*>\s*<\/script>/gi,'');
