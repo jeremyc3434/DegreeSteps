@@ -10,6 +10,7 @@
  */
 (function (root) {
   'use strict';
+  const Assessment = typeof module === 'object' && module.exports ? require('./course-assessment.js') : root.DegreeCourseAssessment;
   const providerPricing = Object.freeze({
     checked: '2026-10-28',
     Sophia: { monthly: 99, label: 'Monthly membership; tax additional', source: 'https://www.sophia.org/plans-and-pricing/' },
@@ -393,8 +394,23 @@
       if (balance?.writingIntensiveRequirementIds.includes(requirement.id) && option.provider !== 'University') return false;
       if (option.provider === 'University') return true;
       if (requirement.institutionalOnly || !input.providers.includes(option.provider)) return false;
-      return true;
+      return assessmentAllowsOption(program, option, input, requirement.id);
     });
+  }
+
+  function assessmentFor(program, option) {
+    return Assessment?.describe?.(program, option) || {status:'unknown',label:'Assessment format not classified',detail:'',sources:[]};
+  }
+  // Assessment preferences apply to future choices. Actual completed work and
+  // an academically matched current enrollment keep their exact placements.
+  // This exception never bypasses the academic/provider guards in optionsFor.
+  function assessmentAllowsOption(program, option, input = {}, requirementId) {
+    if (!option || typeof option !== 'object') return false;
+    if (input.proctoringPreference !== 'avoid' || option?.provider === 'University') return true;
+    const placements = [...(Array.isArray(input.completed) ? input.completed.filter(item => ['confirmed','reported'].includes(item?.status)) : []), ...(Array.isArray(input.plannedLearning) ? input.plannedLearning.filter(item => item?.status === 'in-progress' && typeof item.learningId === 'string' && item.learningId.trim()) : [])];
+    const retained = placements.some(item => (!requirementId || item.requirementId === requirementId) && (['confirmed','reported'].includes(item.status) || item.optionId === option.id) && (Array.isArray(program?.requirements) ? program.requirements : []).some(req => req?.id === item.requirementId && (Array.isArray(req.options) ? req.options : []).some(canonical => canonical?.id === option.id && canonical.provider === option.provider && canonical.code === option.code && canonical.credits === option.credits)));
+    if (retained) return true;
+    return Assessment?.allowsOption ? Assessment.allowsOption(program, option, input) : !['monitored','restricted'].includes(assessmentFor(program,option).status);
   }
 
   function availableOptions(program, requirementId, input) {
@@ -766,24 +782,29 @@
   function candidateScore(program, rows, input, priority) {
     const cost = costModel(program, rows, input), t = totals(program, rows), providerCount = new Set(rows.filter(r => r.status === 'planned' && r.option && r.option.provider !== 'University').map(r => r.option.provider)).size;
     const unpricedProviders = new Set(rows.filter(r => r.status === 'planned' && r.option && r.option.provider!=='University'&&!cost.providerCosts.some(item=>item.provider===r.option.provider&&finite(item.amount))).map(r=>r.option.provider)).size;
-    if (priority === 'campus') return t.external * 100000 + cost.knownSubtotal;
-    if (priority === 'transfer') return [-t.external, unpricedProviders, cost.knownSubtotal, providerCount];
+    // Keep academic feasibility and the student's time/cost/transfer objective
+    // first. When those are tied, published unmonitored work is a better match
+    // than an unknown format. Unknown options remain available for caps and
+    // residency constraints; they never acquire an unmonitored claim.
+    const assessmentTieBreak = score => input.proctoringPreference === 'avoid' ? [...(Array.isArray(score) ? score : [score]),futureActions(rows).filter(action => action.rows.some(row => (Assessment?.statusFor?.(program,row.option) || assessmentFor(program,row.option).status) === 'unknown')).length] : score;
+    if (priority === 'campus') return assessmentTieBreak(t.external * 100000 + cost.knownSubtotal);
+    if (priority === 'transfer') return assessmentTieBreak([-t.external, unpricedProviders, cost.knownSubtotal, providerCount]);
     if (priority === 'speed') {
       if (hasComparableTiming(program, input)) {
         const timing = timingModel(program, rows, input);
-        return [timing.scenarioWeeks === null ? Number.MAX_SAFE_INTEGER : timing.scenarioWeeks, timing.universityTerms || 0, timing.universityCredits, timing.externalActions, unpricedProviders, cost.knownSubtotal];
+        return assessmentTieBreak([timing.scenarioWeeks === null ? Number.MAX_SAFE_INTEGER : timing.scenarioWeeks, timing.universityTerms || 0, timing.universityCredits, timing.externalActions, unpricedProviders, cost.knownSubtotal]);
       }
       // Without comparable duration inputs the objective uses workload only.
       // These are the same measures returned by timingModel; constructing a
       // full course schedule at every search node cannot change this score.
-      return [sum(rows.filter(row=>row.status==='planned'&&isUniversity(row)),row=>row.credits), universityDepth(rows), futureActions(rows).length, unpricedProviders, cost.knownSubtotal];
+      return assessmentTieBreak([sum(rows.filter(row=>row.status==='planned'&&isUniversity(row)),row=>row.credits), universityDepth(rows), futureActions(rows).length, unpricedProviders, cost.knownSubtotal]);
     }
     // Compare known native tuition, including source-bound flat-term pricing.
     // If those assumptions are absent, preserve the transfer-first fallback.
     const comparable = tuitionAssumptions(program,input).comparable;
     const universityPenalty = comparable ? finite(cost.universityTuition) ? 0 : Number.MAX_SAFE_INTEGER : t.institutional * 10000;
-    if (priority === 'balanced') return [universityPenalty, unpricedProviders, providerCount * 250 + cost.knownSubtotal];
-    return [universityPenalty, unpricedProviders, cost.knownSubtotal];
+    if (priority === 'balanced') return assessmentTieBreak([universityPenalty, unpricedProviders, providerCount * 250 + cost.knownSubtotal]);
+    return assessmentTieBreak([universityPenalty, unpricedProviders, cost.knownSubtotal]);
   }
 
   function subsets(items) {
@@ -1423,7 +1444,7 @@
   function openSlotPlaceholder(requirement, option) {
     return Boolean(isOpenSlot(requirement) && option && option.provider === 'University' && option.selectionRequired === true && !(typeof option.code === 'string' && option.code.trim()) && Math.abs(Number(option.credits) - Number(requirement.credits)) < 0.001 && (requirement.options || []).some(item => item.id === option.id && item.provider === 'University'));
   }
-  const api = Object.freeze({ generate, compare, validate, availableOptions, providerPricing, providerQuoteKeys, institutionResidencyMinimum, creditBalancePolicy, isOpenSlot, openSlotPlaceholder });
+  const api = Object.freeze({ generate, compare, validate, availableOptions, assessmentFor, assessmentAllowsOption, providerPricing, providerQuoteKeys, institutionResidencyMinimum, creditBalancePolicy, isOpenSlot, openSlotPlaceholder });
   root.DegreePlanner = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);

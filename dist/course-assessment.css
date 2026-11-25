@@ -1,0 +1,26 @@
+.course-assessments{border-top:1px solid #dce4ef;margin:20px 0 0;color:var(--ds-ink,#17314f);font-size:16px;line-height:1.55}
+.course-assessments>summary{cursor:pointer;min-height:48px;padding:14px 24px 14px 0;position:relative;list-style:none;display:flex;flex-direction:column;gap:4px;font-weight:600}
+.course-assessments>summary::-webkit-details-marker{display:none}
+.course-assessments>summary::after{content:'⌄';position:absolute;right:0;top:14px;color:#315eb3;font-size:20px}
+.course-assessments[open]>summary::after{transform:rotate(180deg)}
+.course-assessment-title{color:#2452a7;font-size:16px}
+.course-assessment-headline{font-size:14px;font-weight:400;color:#536c8b;overflow-wrap:anywhere}
+.course-assessment-content section+section{border-top:1px solid #dce4ef;margin-top:18px;padding-top:16px}
+.course-assessment-content h3{font-size:16px;margin:4px 0 8px}
+.course-assessment-content p{margin:6px 0 12px}
+.course-assessment-groups,.course-assessment-sources{list-style:none;padding:0;margin:0}
+.course-assessment-groups>li{padding:12px 0;border-top:1px solid #e4eaf3}
+.course-assessment-group-heading{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:space-between;align-items:baseline}
+.course-assessment-group-heading>span,.course-assessment-status{color:#536c8b;font-size:14px}
+.course-assessment-course-list>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:#2452a7;text-decoration:underline;text-underline-offset:3px}
+.course-assessment-course-list ul{padding-left:20px;margin:0 0 12px}
+.course-assessment-course-list li{padding:4px 0;overflow-wrap:anywhere}
+.course-assessment-sources li{margin:4px 0 8px}
+.course-assessment-sources a{display:inline-flex;align-items:center;min-height:44px;max-width:100%;overflow-wrap:anywhere;color:#2452a7;text-decoration:underline;text-underline-offset:3px}
+.course-assessment-reviewed{display:block;font-size:14px;color:#627995}
+.course-assessment-fact{font-size:16px;margin:12px 0;padding:12px 0;border-top:1px solid #e4eaf3}
+.course-assessment-fact>strong,.course-assessment-fact>.course-assessment-status{display:block}
+.course-assessment-fact p{margin:6px 0 10px}
+.course-assessments summary:focus-visible,.course-assessment-sources a:focus-visible{outline:3px solid #345aff;outline-offset:4px;border-radius:3px}
+@media(max-width:700px){.course-assessments{margin-top:16px}.course-assessment-content{padding-bottom:8px}}
+@media print{.course-assessments:not([open])>.course-assessment-content{display:block}.course-assessments>summary::after{display:none}}

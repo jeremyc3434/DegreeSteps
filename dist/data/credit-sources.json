@@ -9,7 +9,7 @@
       "summary": "Current offer. Broad self-paced course catalog, including business, general education and lab options. Confirm the exact course and receiving degree before purchasing.",
       "pace": "Self-paced; completion time depends on assignments, labs and assessment readiness.",
       "priceNote": "Published pricing: $99/month plus individual course charges. New-student plans advertise $699/four months or $1,499/year for 27 selected courses; lab kits are extra. Verify eligibility, renewals and checkout.",
-      "assessmentNote": "Current support requires Honorlock for final Benchmark exams: computer, Chrome extension, webcam identity check and government ID. Exams remain open-book using authorized materials.",
+      "assessmentNote": "Courses use different mixes of Checkpoints, Capstones and exams. Secured final Benchmarks require Honorlock screen sharing and browser restrictions, without a live proctor watching. Some courses list no final; book rules vary by course.",
       "url": "https://www.straighterline.com/",
       "evidence": [
         {
@@ -23,9 +23,15 @@
         {
           "title": "Final Benchmark and Honorlock requirements",
           "url": "https://helpcenter.straighterline.com/hc/en-us/articles/47963029736083-Exams-How-to-Prepare-for-my-Final-Exam"
+        },
+        {
+          "title": "Final exam screen sharing and browser restrictions",
+          "url": "https://helpcenter.straighterline.com/hc/en-us/articles/48548412762259-Exams-How-to-Prepare-for-my-Final-Exam",
+          "checkedOn": "2026-11-24"
         }
       ],
-      "mappingStatus": "catalog-only"
+      "mappingStatus": "catalog-only",
+      "assessmentCheckedOn": "2026-11-24"
     },
     {
       "id": "sophia",
@@ -35,7 +41,7 @@
       "summary": "Current offer. General education and other college-level courses through a subscription. Check developmental or noncredit exclusions and receiving-school applicability.",
       "pace": "Asynchronous and self-paced; ordinarily two active courses at a time. Written/project grading can affect completion.",
       "priceNote": "Published monthly price is $99 before applicable tax; longer subscriptions are available. Official pages disagree about the annual price, so verify checkout.",
-      "assessmentNote": "Challenges, Milestones and course-specific written or project Touchstones; the published overall passing threshold is 70%.",
+      "assessmentNote": "Open-book assessments without proctored exams. Identity verification may be required. Written or project Touchstones and lab activities depend on the course.",
       "url": "https://www.sophia.org/",
       "evidence": [
         {
@@ -49,9 +55,15 @@
         {
           "title": "Membership and concurrent-course rules",
           "url": "https://app.sophia.org/tutorials/account-and-billing"
+        },
+        {
+          "title": "Published no-proctor assessment policy",
+          "url": "https://www.sophia.org/blog/higher-education/online-learning-grading-timelines/",
+          "checkedOn": "2026-11-24"
         }
       ],
-      "mappingStatus": "catalog-only"
+      "mappingStatus": "catalog-only",
+      "assessmentCheckedOn": "2026-11-24"
     },
     {
       "id": "study-com",
@@ -61,7 +73,7 @@
       "summary": "Current offer. College Saver covers a general-education selection; College Saver Pro adds premium and upper-division options. Study-help and test-prep subscriptions are different products.",
       "pace": "Self-paced. Current plans advertise unlimited monthly completions, with two concurrent Saver courses or three concurrent Pro courses.",
       "priceNote": "Published plans: College Saver $95/month and College Saver Pro $235/month. Confirm course inclusion and current checkout terms.",
-      "assessmentNote": "Current official support describes required final exams as open-book and non-proctored. Course-specific assignments still apply.",
+      "assessmentNote": "College Saver and College Saver Pro exams are open-book and unproctored. Identity verification is required before each final; finals use a desktop or laptop. Course-specific assignments still apply.",
       "url": "https://study.com/college/",
       "evidence": [
         {
@@ -75,9 +87,15 @@
         {
           "title": "Open-book College Saver finals",
           "url": "https://study.com/support/solutions/articles/11000134404-does-study-com-s-college-saver-plan-allow-you-to-earn-college-credit-online-"
+        },
+        {
+          "title": "Current non-proctored final and identity requirements",
+          "url": "https://study.com/support/solutions/articles/11000130197-non-proctored-college-saver-and-college-saver-pro-final-exams-faqs",
+          "checkedOn": "2026-11-24"
         }
       ],
-      "mappingStatus": "catalog-only"
+      "mappingStatus": "catalog-only",
+      "assessmentCheckedOn": "2026-11-24"
     },
     {
       "id": "saylor",
@@ -113,7 +131,7 @@
           "url": "https://clep.collegeboard.org/clep-exams/introductory-business-law"
         },
         {
-          "title": "2026–27 exam fee confirmation",
+          "title": "2026\u201327 exam fee confirmation",
           "url": "https://clep.collegeboard.org/for-high-schools/state-funding"
         },
         {
@@ -152,7 +170,7 @@
       "creditBasis": "Credit examinations with individual recommended credit amounts and levels; the receiving university decides the award.",
       "summary": "Credit-by-examination options. Five exact exam-form matches are documented for Liberty online undergraduate requirements; coverage for other exams and schools remains DegreeSteps research.",
       "pace": "Prepare independently and schedule an appointment; current policy includes a 30-day retest interval.",
-      "priceNote": "Published exam fee: $100 per distinct exam, plus testing-center administration charges. Military funding or reimbursement depends on the student’s own eligibility and program rules.",
+      "priceNote": "Published exam fee: $100 per distinct exam, plus testing-center administration charges. Military funding or reimbursement depends on the student\u2019s own eligibility and program rules.",
       "assessmentNote": "Test-center or remote ProProctor delivery where offered. Public Speaking includes a speech and is not available remotely.",
       "url": "https://getcollegecredit.com/",
       "evidence": [
@@ -384,7 +402,7 @@
       "id": "actfl",
       "name": "ACTFL language proficiency assessments through LTI",
       "kind": "language-assessment",
-      "creditBasis": "Proficiency-dependent ACE recommendations for designated language/test combinations; current ACTFL window is June 1, 2024–May 31, 2027.",
+      "creditBasis": "Proficiency-dependent ACE recommendations for designated language/test combinations; current ACTFL window is June 1, 2024\u2013May 31, 2027.",
       "summary": "Current assessment route. Existing language skills may support lower- or upper-level recommendations; actual university awards and duplication rules require separate checks.",
       "pace": "Scheduled assessment; preparation depends on existing language proficiency and the skill being tested.",
       "priceNote": "Prices vary by assessment, language and delivery. No blanket test price or credit total is assumed.",
@@ -717,7 +735,7 @@
       "name": "Portage Learning",
       "kind": "institutional-partner",
       "status": "current-offer",
-      "creditBasis": "College credit through Geneva College or Bushnell University. The transcript issuer depends on the student’s state of residence when registering.",
+      "creditBasis": "College credit through Geneva College or Bushnell University. The transcript issuer depends on the student\u2019s state of residence when registering.",
       "summary": "Online science labs, healthcare prerequisites and general education courses with a college-issued transcript.",
       "pace": "Open enrollment and self-directed study. The microbiology syllabus sets a 28-day minimum and 48 hours between module or final exams; grading adds time.",
       "priceNote": "Published general tuition is $230 USD per credit, including required learning materials, transcript, application and technology fees. Payment is due at enrollment.",
@@ -847,7 +865,7 @@
       "status": "current-offer",
       "creditBasis": "ACE recommends three lower-division semester hours in quantitative reasoning for the CSM certificate, through November 30, 2027.",
       "summary": "One inexpensive quantitative-reasoning course. It can fill a math or elective requirement where the receiving college accepts this exact certificate.",
-      "pace": "Self-paced. Provider estimates 10–60+ study hours; the ACE exhibit allows up to 120 hours. Completion depends on mastery.",
+      "pace": "Self-paced. Provider estimates 10\u201360+ study hours; the ACE exhibit allows up to 120 hours. Completion depends on mastery.",
       "priceNote": "The CSM course costs $54 USD. Optional personal coaching costs an additional $115 USD.",
       "assessmentNote": "A mastery-based certificate is required. The ACE exhibit lists a minimum passing score of 100; quantitative reasoning is distinct from college algebra or statistics.",
       "url": "https://www.smilabs.org/products/collegecredit",
@@ -895,7 +913,7 @@
       "summary": "Free Christian-focused learning with a separate academic-transcript pathway. College admission or verification requirements apply to eligible credit records.",
       "pace": "Online and self-paced. Course, admissions and verification requirements determine when an eligible transcript can be issued.",
       "priceNote": "Learning access is free. Outgoing transcript processing is $75 USD for students without a CLI degree or $30 USD for CLI graduates; additional pathway fees may apply.",
-      "assessmentNote": "Requirements differ between free learning and the academic pathway. Archived Liberty transfer pairs exist; current exact course approvals are not yet established in DegreeSteps.",
+      "assessmentNote": "Published course pages describe timed, open-note quizzes; some also include written reflections. Open-note does not establish an unmonitored assessment. Academic-transcript eligibility is separate from free course access.",
       "url": "https://www.christianleadersinstitute.org/christian-leaders-institute-course-catalogue/",
       "checkedOn": "2026-11-17",
       "evidence": [
@@ -920,9 +938,14 @@
           "checkedOn": "2026-11-17"
         },
         {
-          "title": "Archived Liberty equivalency guide — July 2022",
+          "title": "Archived Liberty equivalency guide \u2014 July 2022",
           "url": "https://www.liberty.edu/registrar/wp-content/uploads/sites/119/CLC-Transfer-Equivalency-Guide-Finalized-7.7.22.pdf",
           "checkedOn": "2026-11-17"
+        },
+        {
+          "title": "Published course quiz format example",
+          "url": "https://christianleaders.org/course/section.php?id=7683",
+          "checkedOn": "2026-11-24"
         }
       ],
       "mappingStatus": "catalog-only",
@@ -947,13 +970,14 @@
           "basis": "institution-issued",
           "status": "candidate",
           "issuer": "Christian Leaders Institute / historical Christian Leaders College",
-          "eligibility": "Leadership Excellence admission or Institute Verification pathway; processing fees apply. CLI holds ABHE candidate status. Current receiving-school acceptance and exact course versions remain unconfirmed in DegreeSteps.",
+          "eligibility": "Leadership Excellence admission or Institute Verification pathway; processing fees apply. CLI holds ABHE candidate status. Receiving-school acceptance is specific to the exact course, version and degree shown in your plan.",
           "sourceUrls": [
             "https://www.christianleadersinstitute.org/transfer-information/",
             "https://help.christianleaders.org/helpdesk/accreditation-status"
           ]
         }
-      ]
+      ],
+      "assessmentCheckedOn": "2026-11-24"
     }
   ]
 }

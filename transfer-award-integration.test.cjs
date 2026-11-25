@@ -73,6 +73,6 @@ test('new routes consider their reviewed sources by default and preserve the stu
   // reviewed, rather than treating StraighterLine as a newly enabled source.
   const settings=Sheet.scenario(narrow.state,id),added=mapped.filter(provider=>!settings.mappedProvidersReviewed.includes(provider));assert.deepEqual(added,[]);
   state.scenarios[id]={providers:[],mappedProvidersReviewed:['Sophia']};assert.deepEqual(Journey.buildDraft(state,catalog,[model]).input.providers,[]);
-  delete state.scenarios[id];state.profile.proctoringPreference='avoid';assert(!Journey.buildDraft(state,catalog,[model]).input.providers.includes('CLEP'));
+  delete state.scenarios[id];state.profile.proctoringPreference='avoid';const avoided=Journey.buildDraft(state,catalog,[model]);assert(avoided.input.providers.includes('CLEP'),'Assessment preferences do not disable a whole source');assert(!avoided.plan.rows.some(row=>row.status==='planned'&&row.option?.provider==='CLEP'),'A fresh future plan excludes the reviewed monitored exam options');
  }
 });

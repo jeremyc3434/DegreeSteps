@@ -14,7 +14,7 @@ function mount(){
 test('the actual library filter and visible course badges use one reviewed assessment fact',()=>{
  const f=mount();f.node('course-assessment').value='no-proctor';f.ui.render();const html=f.node('courses-results').innerHTML;
  assert(html.includes(study.title));assert(!html.includes(sl.title));assert.match(html,/No proctored exams/);assert.match(html,/ACE-recommended/);assert(!html.includes('Self-paced course'));
- f.ui.details(study.id);const details=f.node('course-details-content').innerHTML;assert.match(details,/Course features and sources/);assert.match(details,/Nov 18, 2026/);assert.match(details,/College Saver non-proctored/);
+ f.ui.details(study.id);const details=f.node('course-details-content').innerHTML;assert.match(details,/Course features and sources/);const reviewed=Features.resolve(study,attributes).evidence.find(item=>item.attribute==='assessment');assert(reviewed);assert(reviewed.sources.some(source=>details.includes(source.url)));assert(details.includes(Features.resolve(study,attributes).assessmentFact?.label||reviewed.label));assert.doesNotMatch(details,/<dt>Assessments<\/dt><dd>Not verified/);
 });
 test('a confirmed new course save emits one anonymous activation event; duplicate and failed saves emit none',()=>{
  const f=mount();assert(f.ui.save(study.id));assert.equal(f.saved().learning.length,1);assert.equal(f.events.filter(e=>e.type==='DegreeSteps:growth').length,1);assert.deepEqual(copy(f.events.find(e=>e.type==='DegreeSteps:growth').detail),{event:'course_saved',context:'workspace'});

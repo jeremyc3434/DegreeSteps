@@ -3,7 +3,7 @@
  'use strict';
  const KEY='degreepath-guide-v3',scripts=new Map();
  const failure=(message,code)=>Object.assign(new Error(message),{code});
- const dependencies=[['DegreePlanner','planner.js'],['DegreeGuide','guide-engine.js'],['DegreeSheet','sheet-state.js'],['DegreeJourney','journey-engine.js'],['DegreeCostComparison','cost-engine.js'],['DegreeCoursePlanView','course-plan-view.js'],['DegreeSavings','savings-engine.js'],['DegreePlanEstimate','plan-estimate-engine.js'],['DegreePlanComparison','plan-comparison-engine.js'],['DegreeDiscoveryFit','degree-discovery-fit.js'],['DegreeComparisonRunner','comparison-runner.js']];
+ const dependencies=[['DegreeCourseAssessment','course-assessment.js'],['DegreePlanner','planner.js'],['DegreeGuide','guide-engine.js'],['DegreeSheet','sheet-state.js'],['DegreeJourney','journey-engine.js'],['DegreeCostComparison','cost-engine.js'],['DegreeCoursePlanView','course-plan-view.js'],['DegreeSavings','savings-engine.js'],['DegreePlanEstimate','plan-estimate-engine.js'],['DegreePlanComparison','plan-comparison-engine.js'],['DegreeDiscoveryFit','degree-discovery-fit.js'],['DegreeComparisonRunner','comparison-runner.js']];
  function script(globalName,path){
   if(root[globalName])return Promise.resolve();
   if(!scripts.has(path))scripts.set(path,new Promise((resolve,reject)=>{

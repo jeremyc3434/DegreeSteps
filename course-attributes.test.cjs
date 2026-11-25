@@ -6,7 +6,7 @@ test('actual current offerings show reviewed features and the same values drive 
  const studyRow=data.courses.find(r=>r.code==='SDCM-0001'),study=find(studyRow.courseIds[0]),features=Features.resolve(study,data,today);
  assert.equal(features.assessment,'no-proctor');assert.equal(features.pace,'self-paced');assert.equal(features.creditOrigin,'ace');assert.equal(features.badges.length,3);assert(Features.matches(study,data,{assessment:'no-proctor',pace:'self-paced',creditOrigin:'ace'},today));assert(!Features.matches(study,data,{assessment:'proctored'},today));
  assert(features.evidence.every(e=>e.checkedOn&&e.sources.every(s=>s.url.startsWith('https://'))));
- const sl=all.find(c=>c.provider==='StraighterLine'&&data.policies.find(p=>p.provider==='StraighterLine').courseIds.includes(c.id));assert.equal(Features.resolve(sl,data,today).assessment,'proctored');assert(!Features.matches(sl,data,{assessment:'no-proctor'},today));
+ const sl=all.find(c=>c.provider==='StraighterLine'&&data.policies.find(p=>p.provider==='StraighterLine').courseIds.includes(c.id));assert.equal(Features.resolve(sl,data,today).assessment,'unknown','A directory-wide StraighterLine listing does not establish monitoring for this course');assert.equal(Features.resolve(sl,data,today).pace,'self-paced');assert(!Features.matches(sl,data,{assessment:'no-proctor'},today));
 });
 test('unknown and unreviewed course versions never inherit an ACE or no-proctor claim',()=>{
  const r=data.courses.find(r=>r.provider==='Study.com'),c=find(r.courseIds[0]);

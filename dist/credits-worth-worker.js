@@ -4,7 +4,7 @@
 // before the planner scripts are fetched. The planner loads the first time a curriculum is needed.
 importScripts('credits-worth-engine.js');
 const Worth=self.DegreeCreditsWorth;
-function planner(){if(!self.DegreeProgramCatalog)importScripts('planner.js','guide-engine.js','sheet-state.js','journey-engine.js','program-catalog.js','cost-engine.js','plan-estimate-engine.js');return self.DegreeProgramCatalog;}
+function planner(){if(!self.DegreeProgramCatalog)importScripts('course-assessment.js','planner.js','guide-engine.js','sheet-state.js','journey-engine.js','program-catalog.js','cost-engine.js','plan-estimate-engine.js');return self.DegreeProgramCatalog;}
 const models=new Map();let courseIndex=null,registry=null,rates=null,full=null,current=0;
 const json=async url=>{const response=await fetch(url);if(!response.ok)throw Error('Could not load '+url+'.');return response.json();};
 // The compact identity index lets plans no finished course could touch skip their curriculum download.

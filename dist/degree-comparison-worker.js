@@ -1,6 +1,6 @@
 /* Private comparison calculations stay in this browser worker. */
 'use strict';
-importScripts('planner.js','guide-engine.js','sheet-state.js','journey-engine.js','program-catalog.js','cost-engine.js','savings-engine.js','course-plan-view.js','plan-comparison-engine.js','plan-estimate-engine.js','degree-discovery-fit.js');
+importScripts('course-assessment.js','planner.js','guide-engine.js','sheet-state.js','journey-engine.js','program-catalog.js','cost-engine.js','savings-engine.js','course-plan-view.js','plan-comparison-engine.js','plan-estimate-engine.js','degree-discovery-fit.js');
 self.addEventListener('message',event=>{
  const request=event.data;
  if(!request||!Number.isSafeInteger(request.id)||request.id<1||!['build','matrix','draft','discovery'].includes(request.kind))return;

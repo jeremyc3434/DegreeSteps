@@ -23,7 +23,6 @@
   const protectedGoals = ['teacher', 'lawyer', 'pilot', 'health-professional'];
   // Browsing subjects plus the older field ids, which saved profiles may still hold.
   const fields = ['any', 'general', 'business', 'technology', 'science', 'arts', 'humanities', 'social-science', 'education', 'health', 'law', 'aviation', 'accounting-finance', 'psychology', 'criminal-justice', 'faith'];
-  const knownProctored = new Set(['CLEP', 'StraighterLine', 'Saylor', 'DSST']);
   const questionIds = ['start', 'school', 'degree', 'about', 'purpose', 'career', 'level', 'field', 'format', 'prior', 'military', 'military-records', 'priority', 'routes', 'review'];
   const parse = value => {if (typeof value !== 'string') return value; try {return JSON.parse(value);} catch (_) {return null;}};
   const enumValue = (value, values, label) => {
@@ -353,7 +352,7 @@
     const quotedRate = Math.max(0, number(s.universityRate)), published = program?.pricing;
     const publishedRate = published?.model === 'per-credit' && (!published.currency || published.currency === 'USD') && number(published.amount) > 0 ? number(published.amount) : null;
     return {...s, completed:list(match?.completed),
-      providers:s.providers.filter(provider => !(state.profile.proctoringPreference === 'avoid' && knownProctored.has(provider))),
+      providers:[...s.providers], proctoringPreference:state.profile.proctoringPreference === 'avoid' ? 'avoid' : 'open', plannedLearning:[],
       priority:state.profile.priority === 'fastest' ? 'speed' : state.profile.priority,
       allowConditional:s.allowConditional,
       universityRate:quotedRate || publishedRate || 0, universityRateBasis:quotedRate ? 'student-quote' : publishedRate ? 'published-program-price' : 'unknown',
@@ -440,6 +439,19 @@
         for (const {req,option} of components) if (!done.has(req.id)&&!Object.prototype.hasOwnProperty.call(fixed,req.id)) input.optionSelections[req.id]=option.id;
       }
     }
+    // Keep an existing enrollment before considering assessment preferences for
+    // new work. The ordinary identity matcher and whole-plan academic check
+    // establish these exact row/option placements; no provider/title guess can
+    // turn a saved interest into an in-progress exception.
+    if (program && input.proctoringPreference === 'avoid' && list(state.learning).some(item => item?.status === 'in-progress')) {
+      const currentInput = {...input, proctoringPreference:'open'}, currentAvailable = new Map(program.requirements.map(requirement => [requirement.id,new Set(Planner.availableOptions(program,requirement.id,currentInput).map(option => option.id))]));
+      const current = Guide.matchCollection(program, list(state.learning).filter(item => item?.status === 'in-progress'), {
+        earnedMatch:match, optionSelections:input.optionSelections,
+        availableOption:(requirement,option) => currentAvailable.get(requirement.id)?.has(option.id),
+        acceptSelection:selections => supportsAssignment(program,{...currentInput,optionSelections:selections})
+      });
+      input.plannedLearning = current.placements.filter(item => item.status === 'in-progress');
+    }
     const availableByRequirement=new Map(program?program.requirements.map(requirement=>[requirement.id,new Set(Planner.availableOptions(program,requirement.id,input).map(option=>option.id))]):[]);
     const collectionMatch = program ? Guide.matchCollection(program, state.learning, {
       earnedMatch:match,
@@ -461,6 +473,27 @@
       if (plan) plan.provisional = true;
     }
     return {state, pathway, program, plan, match, collectionMatch, guidance, input, targetIssues, targetUnknowns, mapAvailable,targetReviewNeeded:Boolean(targetIssues.length)};
+  }
+  // Apply only after an explicit preference submission. Ordinary draft reads
+  // retain every saved pin, even when it needs a course-choice correction.
+  function applyAssessmentPreference(previous, catalog, models) {
+    const result = {state:copy(previous),replaced:[]};
+    if (previous?.profile?.proctoringPreference !== 'avoid') return result;
+    const pathway = routeFor(previous,catalog), programId = pathway?.modelId || pathway?.id;
+    const saved = object(previous?.scenarios?.[programId]), pins = object(saved.optionSelections);
+    if (!Object.keys(pins).length) return result;
+    const draft = buildDraft(previous,catalog,models), program = draft.program;
+    if (!program || program.id !== programId) throw new Error('We couldn’t load your degree’s course choices. Reload, then apply your preferences again.');
+    const selections = {...pins}, completed = new Set(list(draft.match.completed).map(item => item.requirementId));
+    for (const [requirementId,optionId] of Object.entries(pins)) {
+      if (completed.has(requirementId)) continue;
+      const requirement = list(program.requirements).find(item => item.id === requirementId), option = list(requirement?.options).find(item => item.id === optionId);
+      if (!option || Planner.assessmentAllowsOption(program,option,draft.input,requirementId)) continue;
+      delete selections[requirementId];
+      result.replaced.push({requirementId,optionId,provider:option.provider});
+    }
+    if (result.replaced.length) result.state.scenarios = {...object(result.state.scenarios),[programId]:{...copy(saved),optionSelections:selections}};
+    return result;
   }
   function draftSignature(state, draft) {
     const pathway = draft?.pathway || {}, programId = pathway.modelId || pathway.id || text(state.selectedPathwayId);
@@ -503,5 +536,5 @@
       task('school', 'Confirm with your school', contacted, contacted ? 'You marked this draft sent to your school. Individual awards still require its official evaluation.' : 'Request the school’s official evaluation and written course approvals. Counts and community reports do not confirm your individual awards.')
     ];
   }
-  return Object.freeze({initialize, questions, applyAnswer, setPriorCredits, selectRoute, recommend, prepare, planningInput, buildDraft, draftSignature, tasks});
+  return Object.freeze({initialize, questions, applyAnswer, setPriorCredits, selectRoute, recommend, prepare, planningInput, buildDraft, applyAssessmentPreference, draftSignature, tasks});
 }));

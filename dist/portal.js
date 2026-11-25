@@ -9,7 +9,7 @@
   const clone = value => JSON.parse(JSON.stringify(value));
   const key = value => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   const backIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m14 6-6 6 6 6M8 12h12"/></svg>';
-  let state, catalog, models, draft, saveOK = true, page = 'home', degreePreview = null, activePlanState = null;
+  let state, catalog, models, draft, saveOK = true, page = 'home', degreePreview = null, activePlanState = null, profileCourseChoicesUpdated = 0;
   const pendingDiscoveries=new Map();
   let recommendationView=null,recommendationPending=false,recommendationError='',recommendationRequest=0,recommendationRunner=null,recommendationCosts=null,recommendationProgress=null,recommendationMatches=null;
   const recommendationCache=new Map();
@@ -428,11 +428,17 @@
     }
     state.journey={...state.journey,profileCompleted:true,profileVersion:1,intakeCompleted:true};
     if(flow.mode==='preferences'){
-      const latest=latestStoredPlan();if(!latest||(latest.selectedPathwayId||'')!==flow.baseTarget)throw Error('Your active degree changed in another tab. Reopen My preferences to update that plan.');
+      let latest=latestStoredPlan();if(!latest||(latest.selectedPathwayId||'')!==flow.baseTarget)throw Error('Your active degree changed in another tab. Reopen My preferences to update that plan.');
+      if(state.profile.proctoringPreference==='avoid'){
+        attachPrivateCurricula(latest);
+        await ensureRouteModels(Sheet.targetRoute(latest,catalog));
+        latest=latestStoredPlan();if(!latest||(latest.selectedPathwayId||'')!==flow.baseTarget)throw Error('Your active degree changed in another tab. Reopen My preferences to update that plan.');
+      }
       const selected=clone(latest),keys=['priority',...learnerPreferenceFields];
       for(const name of keys)if(Object.hasOwn(state.profile,name))selected.profile[name]=clone(state.profile[name]);
       selected.journey={...selected.journey,profileCompleted:true,profileVersion:1,intakeCompleted:true,creditsDeferred:state.journey.creditsDeferred,answers:{...selected.journey.answers,...Object.fromEntries(['prior','military','military-records','priority'].filter(name=>Object.hasOwn(state.journey.answers,name)).map(name=>[name,clone(state.journey.answers[name])]))}};
-      delete selected.journey.profileFlow;state=selected;state.journey.view='home';state.journey.completed=true;state.journey.step='review';page='home';render();if(saveOK)clearProfileDraft();return;
+      const adjusted=Journey.applyAssessmentPreference(selected,catalog,models);profileCourseChoicesUpdated=adjusted.replaced.length;
+      delete adjusted.state.journey.profileFlow;state=adjusted.state;state.journey.view='home';state.journey.completed=true;state.journey.step='review';page='home';render();if(saveOK)clearProfileDraft();return;
     }
     delete state.journey.profileFlow;
     if(flow.mode==='target'){openPlan();if(saveOK)clearProfileDraft();return;}
@@ -499,7 +505,7 @@
     const baseline=Object.values(data?.baselines||{}).find(item=>item.modelId===model.id&&item.pathwayId===route.id);
     if(!baseline||baseline.summary?.totalCredits!==model.totalCredits||!Array.isArray(baseline.rows))return next;
     const selections={};
-    for(const row of baseline.rows){const req=model.requirements.find(item=>item.id===row.requirementId),option=req?.options.find(item=>item.id===row.optionId&&item.provider===row.provider&&item.credits===row.credits);if(!option)return next;if(next.profile.proctoringPreference==='avoid'&&['CLEP','DSST','Saylor','StraighterLine'].includes(option.provider))continue;selections[req.id]=option.id;}
+    for(const row of baseline.rows){const req=model.requirements.find(item=>item.id===row.requirementId),option=req?.options.find(item=>item.id===row.optionId&&item.provider===row.provider&&item.credits===row.credits);if(!option)return next;if(!window.DegreePlanner.assessmentAllowsOption(model,option,{proctoringPreference:next.profile.proctoringPreference},req.id))continue;selections[req.id]=option.id;}
     const scenario=Sheet.scenario(next,model.id),explicit=Array.isArray(next.scenarios?.[model.id]?.providers);
     if(!explicit)scenario.providers=[...new Set([...scenario.providers,...model.requirements.flatMap(req=>req.options.filter(option=>selections[req.id]===option.id).map(option=>option.provider)).filter(provider=>provider&&provider!=='University')])];
     else for(const req of model.requirements){const option=req.options.find(item=>item.id===selections[req.id]);if(option&&option.provider!=='University'&&!scenario.providers.includes(option.provider))delete selections[req.id];}
@@ -577,7 +583,7 @@
           const option=req?.options.find(item=>item.id===row.optionId&&item.provider===row.provider&&item.credits===row.credits&&(!gcu||item.code===row.code));
           if(!option){state=beforeState;throw Error('The saved course choices have changed. Open the plan again to load its latest version.');}
           if(creditBalance&&creditBalance.balanceRequirementIds.includes(req.id))continue;
-          if(next.profile.proctoringPreference==='avoid'&&['CLEP','DSST','Saylor','StraighterLine'].includes(option.provider))continue;
+          if(!planner.assessmentAllowsOption(model,option,{proctoringPreference:next.profile.proctoringPreference},req.id))continue;
           selections[req.id]=option.id;
         }
         if(gcu){
@@ -968,7 +974,7 @@
     $('portal-loading').hidden = true;
     if (!questions && page === 'home') {
       save();
-      if (saveOK) {location.replace('plan.html'); return;}
+      if (saveOK) {const destination='plan.html'+(profileCourseChoicesUpdated?'?coursesUpdated='+profileCourseChoicesUpdated:'');profileCourseChoicesUpdated=0;location.replace(destination); return;}
       announce('This browser could not save your plan. Keep this tab open and download a private backup before leaving.');
     }
     if (questions) renderQuestion(); else renderHome();
