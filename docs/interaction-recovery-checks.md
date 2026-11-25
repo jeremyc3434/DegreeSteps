@@ -25,3 +25,9 @@ Saved comparisons must always apply current course records. A historical snapsho
 Regression tests exercise the production worksheet and course/comparison handlers with synthetic data. Cases include cancellation, stale confirmations, failed storage, late async results, degree changes, imported courses, shared exam awards, and GCU’s actual three-credit source/four-credit content matches. Checklist, degree and account records remain separate; these actions do not modify university transcripts.
 
 Run focused interaction checks, then build and run the full core suite. The relevant entry points are `progress-correction.test.cjs`, `course-controls-reversal.test.cjs`, `import-courses-ui.test.cjs`, `checklist-delete-confirmation.test.cjs`, `comparison-worker-ui.test.cjs` and `plan-comparison-engine.test.cjs`. Release receipts in ignored `outputs/handoff/interaction-recovery-release.json` distinguish synthetic interaction checks from live HTTP and authenticated browser verification.
+
+## Legacy plan review size
+
+New reviews store compact versioned change-detection receipts instead of duplicating the full course/source signature in private plan metadata. Existing JSON signatures still match; a checklist save compacts recognizable metadata on a copied state before enforcing the unchanged 480,000-byte limit. Original courses, notes, task dates and saved plan identities are retained. A changed academic rule or source invalidates the review; the checklist continues to treat price-only edits independently. Receipts authenticate neither a person nor a university credit award.
+
+Coverage: `journey-review-receipts.test.cjs`, the legacy migration case in `student-checklist.test.cjs`, and the phone/desktop account save/reopen journeys in `ready-pathways-student-browser.test.cjs`.

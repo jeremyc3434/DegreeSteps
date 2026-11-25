@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "id": "umpi-current-route-review-2026-11-25",
+  "checkedOn": "2026-11-25",
+  "schoolId": "umpi",
+  "schoolName": "University of Maine at Presque Isle",
+  "status": "current-offerings-reviewed-governing-ledger-blocked",
+  "publicationAllowed": false,
+  "models": [],
+  "privateStudentRecordsIncluded": false,
+  "runtimeAiCalls": 0,
+  "sources": [
+    {
+      "id": "umpi-yourpace-liberal-studies-live-2026-11-25",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/liberal-studies/",
+      "title": "Current UMPI YourPace Liberal Studies offerings and published credit totals",
+      "checkedOn": "2026-11-25",
+      "capture": "content/source-captures/cd45f6f970135242.txt",
+      "sha256": "cd45f6f970135242f7fc7b823859d5b79ca13010e32d165b1e02dc4cbefc7a95",
+      "scope": "Current official marketing page; not a governing course-level catalog or full degree ledger."
+    },
+    {
+      "id": "umpi-gec-live-2026-11-25",
+      "url": "https://www.umpi.edu/academics/general-education-curriculum/",
+      "title": "UMPI current general education transition",
+      "checkedOn": "2026-11-25",
+      "capture": "content/source-captures/8df7419ad05ad017.txt",
+      "sha256": "8df7419ad05ad01717d5364a9a8ef7c18eec2646a1cf78a76fff89db5f3bbb0b",
+      "scope": "Current 2026–2027 cohort framework only; approved course ledger not linked outside blocked catalog."
+    },
+    {
+      "id": "umpi-yourpace-accounting-live-2026-11-25",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/accounting/",
+      "title": "UMPI current YourPace Accounting program and catalog links",
+      "checkedOn": "2026-11-25",
+      "capture": "content/source-captures/c9acde779a4e0545.txt",
+      "sha256": "c9acde779a4e0545c094b7a4b2a9237ba577ec68610cb600abfb48d8cb373109",
+      "scope": "Current marketing offering, totals, and exact catalog link; not a named requirement ledger."
+    },
+    {
+      "id": "umpi-yourpace-tuition-live-2026-11-25",
+      "url": "https://www.umpi.edu/yourpace/tuition/",
+      "title": "UMPI YourPace tuition 2026–2027",
+      "checkedOn": "2026-11-25",
+      "capture": "content/source-captures/c8054ffc5377769b.txt",
+      "sha256": "c8054ffc5377769b221877c29ed6a696d36957d3d508ccb82b4e99cc987fb7cb",
+      "scope": "Current tuition rate only; no total degree cost or minimum session-completion promise."
+    }
+  ],
+  "facts": [
+    {
+      "id": "bls-accounting-current-credit-structure",
+      "program": "Bachelor of Liberal Studies — Accounting Minor",
+      "status": "current-offering-confirmed-course-ledger-unconfirmed",
+      "totalCredits": 120,
+      "generalEducationCredits": 40,
+      "minorCredits": 18,
+      "electiveCredits": 62,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "umpi-yourpace-liberal-studies-live-2026-11-25",
+        "umpi-yourpace-accounting-live-2026-11-25"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-yourpace-liberal-studies-live-2026-11-25",
+          "text": "The program includes 40 credit hours of general education courses, 18 credit hours of Accounting Minor core courses, and 62 credit hours of electives."
+        }
+      ],
+      "notEstablished": [
+        "Named current minor requirement courses",
+        "Approved 2026–2027 general-education course placements",
+        "GEC/minor overlap rules",
+        "BLS upper-level elective and minor residency application",
+        "Current governing alternative-credit cap scope"
+      ],
+      "catalogLink": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1829"
+    },
+    {
+      "id": "bls-project-management-current-credit-structure",
+      "program": "Bachelor of Liberal Studies — Project Management Minor",
+      "status": "current-offering-confirmed-course-ledger-unconfirmed",
+      "totalCredits": 120,
+      "generalEducationCredits": 40,
+      "minorCredits": 18,
+      "electiveCredits": 62,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "umpi-yourpace-liberal-studies-live-2026-11-25"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-yourpace-liberal-studies-live-2026-11-25",
+          "text": "The program includes 40 credit hours of general education courses, 18 credit hours of Project Management Minor core courses, and 62 credit hours of electives."
+        }
+      ],
+      "notEstablished": [
+        "Named current minor requirement courses",
+        "Approved 2026–2027 general-education course placements",
+        "GEC/minor overlap rules",
+        "BLS upper-level elective and minor residency application",
+        "Current governing alternative-credit cap scope"
+      ]
+    },
+    {
+      "id": "current-yourpace-undergraduate-session-tuition",
+      "field": "undergraduateTuitionPerSession",
+      "value": 1800,
+      "currency": "USD",
+      "periodWeeks": 8,
+      "academicYear": "2026–2027",
+      "sourceIds": [
+        "umpi-yourpace-tuition-live-2026-11-25"
+      ],
+      "scope": "Session tuition for YourPace undergraduate learners; total varies with sessions and applicable charges. Not a guaranteed degree price or completion duration."
+    }
+  ],
+  "catalogAccess": {
+    "status": "blocked-http-403",
+    "currentRootUrl": "https://catalog.umpi.edu/",
+    "attemptOwner": "Root release audit; live probe confirmed HTTP403",
+    "linkedRequiredUrls": [
+      "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1813&returnto=621",
+      "https://catalog.umpi.edu/content.php?catoid=12&navoid=620",
+      "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1783",
+      "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1829",
+      "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1876",
+      "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1791"
+    ],
+    "scope": "Failure to retrieve current catalog is an access limitation, not evidence of discontinuation or credit rejection.",
+    "currentAccountingIdentityLinks": {
+      "BLS/BAS Accounting Minor": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1829",
+      "Accounting BA": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1876",
+      "Business Administration Accounting": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1791"
+    },
+    "accessAttempts": [
+      {
+        "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1829",
+        "result": "http-403",
+        "attemptedAt": "2026-11-25T15:09:43.267323+00:00",
+        "responseSha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+        "needed": "Current Accounting-minor named course ledger, program identity and rule applicability",
+        "academicContentRetrieved": false
+      },
+      {
+        "url": "https://catalog.umpi.edu/preview_program.php?catoid=12&poid=1783",
+        "result": "http-403",
+        "attemptedAt": "2026-11-25T15:09:44.066927+00:00",
+        "responseSha256": "58bf2215b395dcac74c009aa98701854e43cbe54a1cd3a95fee6a647ca9910d4",
+        "needed": "Current eight-outcome GEC approved-course ledger and overlap rules",
+        "academicContentRetrieved": false
+      }
+    ]
+  },
+  "policyScope": {
+    "status": "unresolved-primary-policy-scope",
+    "overallOutsideCeiling": {
+      "arithmeticOnly": 90,
+      "basis": "120 total minus 30 institution credits; not an ACE cap claim"
+    },
+    "combinedCplLimitPublished": 30,
+    "cplScopeConflict": "Prior reviewed official CPL pages/2025–2026 handbook include ACE and publish a 30-credit bachelor CPL maximum. Current YourPace FAQ does not establish whether current evaluated partner coursework has a distinct classification. No exemption or current catalog override established. Neither 90 ACE nor an automatically applied current YourPace 30 ACE cap is represented as resolved.",
+    "priorReview": "content/reviews/umpi-alternative-credit-policy-review-2026-11-17.json"
+  },
+  "researchDecision": "Keep current BLS Accounting and Project Management as research candidates only. Preserve existing exact Management-minor goal separately; do not substitute a new minor or expose a partial ledger as an executable template. The changed current GEC must be bound before current-student publication.",
+  "remainingEvidence": [
+    "Governing current YourPace degree/minor course ledger and exact award identity",
+    "2026–2027 approved courses for eight GLOs, including six Integrative Learning credits and a 40-credit nonduplicated allocation",
+    "Current BLS upper-level elective/overlap/residency application",
+    "Current program-specific CPL/partner-ACE scope",
+    "Exact provider-course placements into the approved current degree ledger"
+  ],
+  "priorEvidenceArtifacts": [
+    "content/curricula/snapshots/umpi/current-primary-review-2026-11-19.json",
+    "content/curricula/snapshots/umpi/gec-2026-2027-reviewed.json",
+    "content/curricula/snapshots/umpi/yourpace-2026-2027-reviewed.json",
+    "content/curricula/snapshots/umpi/additional-primary-review-2026-11-17.json"
+  ]
+}

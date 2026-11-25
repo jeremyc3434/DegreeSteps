@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
+import {applyTESUProviderReview} from './tesu-provider-review.mjs';
 const root=resolve(import.meta.dirname,'..'),clone=value=>JSON.parse(JSON.stringify(value));
 export const reviewPath='content/reviews/tesu-ace-school-submitted-receiving-maps-2026-11-17.json';
 const document=JSON.parse(await readFile(resolve(root,reviewPath),'utf8'));
@@ -40,7 +41,10 @@ export function applyTESUReceivingMaps(input){
  model.receivingMapReview={id:document.id,checkedOn:document.checkedOn,evidencePath:reviewPath,provider:'Sophia',sourceBoundRequirementCredits:15,mappingStatus:'published-school-submitted',requirementIds:document.mappings.map(item=>item.requirementId),providerEligibilityStatus:document.providerEligibility.status,newOutsideOptions:0,newCompletedOrConfirmedCredits:0};
  model.mappingReview={...model.mappingReview,schoolSubmittedReceivingRequirementCredits:15,schoolSubmittedReceivingReviewId:document.id};
  model.unresolved=model.unresolved.map(note=>note.startsWith('All newly added community mappings require')?'Community-reported options outside the five independently school-submitted Sophia receiving maps still need current course/version, source recommendation period, receiving level and catalog research. The five documented named matches retain separate provisional-provider and personal-record conditions.':note);
- return model;
+ // The retained receiving-course packet is historical evidence, not the owner
+ // of today's provider-governance status. Reapply that independent review so
+ // rerunning this supplement cannot restore superseded enrollment flags.
+ return applyTESUProviderReview(model);
 }
 export async function run({check=false}={}){const file=resolve(root,'dist/data/tesu.json'),original=JSON.parse(await readFile(file,'utf8')),result=applyTESUReceivingMaps(original);if(check)assert.deepEqual(original,result,'TESU school-submitted receiving maps need regeneration');else await writeFile(file,JSON.stringify(result,null,2)+'\n');return{check,model:result.id,schoolSubmittedReceivingPairs:5,receivingRequirementCredits:15,sourceEligibilityUnchanged:true,newOutsideActions:0};}
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href)console.log(JSON.stringify(await run({check:process.argv.includes('--check')})));

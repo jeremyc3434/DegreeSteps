@@ -1,6 +1,6 @@
 {
   "schemaRevision": "plan-estimate-rates-v1",
-  "checkedOn": "2026-11-24",
+  "checkedOn": "2026-11-25",
   "scope": "Selected-course planning ranges; known instructional charges before aid. No complete cost-of-attendance or guaranteed completion claim.",
   "exclusions": [
     "Applicable sales tax on course subscriptions.",
@@ -380,6 +380,34 @@
         "type": "retained-published-tuition-and-itemized-fees",
         "document": "content/source-captures/5418c128c8ace48f.txt",
         "sha256": "5418c128c8ace48f5e7f649359fc1eb34c14e0e24177eab41b222a5441bed538"
+      }
+    },
+    {
+      "id": "tesu-tuition-2026-11-25",
+      "title": "TESU undergraduate tuition effective August 2026: standard out-of-state rates",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "checkedOn": "2026-11-25",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/estimates/snapshots/tesu-tuition-2026-11-25.txt",
+        "sha256": "f8215234bccdb62d93cf65c75d0c023c57cdeae4764bdfbf96662f6b852a9b1d",
+        "fetchedAt": "2026-11-25T14:55:43.127055+00:00",
+        "rawHtmlSha256": "9ced21150ea4e04886995de92af3faf3ec03279dbc890c52373e57f393239d6e",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "tesu-fees-2026-11-25",
+      "title": "TESU published application and graduation audit fees effective August 2026",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/university-fees/index.php",
+      "checkedOn": "2026-11-25",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/estimates/snapshots/tesu-fees-2026-11-25.txt",
+        "sha256": "3517615a6d418f56de86cb3ba694f5decea5a1104900e8672ae91b45e2748e97",
+        "fetchedAt": "2026-11-25T14:58:48.842452+00:00",
+        "rawHtmlSha256": "c096ec352887aedfc2457f0e9af1c6906769f5766877218c4a44ae68a19ba237",
+        "httpStatus": 200
       }
     }
   ],
@@ -1996,6 +2024,67 @@
         "The $35 per-course technology fee is spread as $11.67 per credit (most courses are 3 credits), about 1 cent over per course.",
         "Books, the 2.75% card payment fee and the drop registration fee are not included.",
         "A term is 9 weeks (4 terms and 36 weeks of instruction a year), modeled as 2 months; 3–6 credits per term is a planning assumption (6 is a full-time load, 9 the maximum)."
+      ]
+    },
+    {
+      "id": "tesu-standard-out-of-state-2026",
+      "school": "Thomas Edison State University",
+      "modelIds": [
+        "curriculum-tesu-bsba-accounting",
+        "curriculum-tesu-ba-english",
+        "curriculum-tesu-bsba-finance",
+        "curriculum-tesu-ba-liberal-studies",
+        "curriculum-tesu-ba-psychology",
+        "tesu-general-management"
+      ],
+      "catalogs": [
+        "Current undergraduate catalog · checked November 18, 2026",
+        "Current undergraduate catalog · checked October 28, 2026"
+      ],
+      "creditSystem": "semester",
+      "modality": "online",
+      "degreeUnits": 120,
+      "institutionMinimumUnits": 15,
+      "populationLabel": "Standard out-of-state undergraduate tuition · non-military",
+      "tuition": {
+        "type": "banded-term",
+        "termRate": 4652,
+        "bandMin": 9,
+        "bandMax": 18,
+        "partTimeRate": 584
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 148,
+      "feeBreakdown": [
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "frequency": "one-time"
+        },
+        {
+          "label": "Graduation audit fee",
+          "amount": 98,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 3,
+        "max": 15,
+        "defaultMin": 9,
+        "defaultMax": 15
+      },
+      "termLabel": "term",
+      "termMonths": null,
+      "sourceIds": [
+        "tesu-tuition-2026-11-25",
+        "tesu-fees-2026-11-25"
+      ],
+      "missing": [],
+      "notes": [
+        "Uses published standard out-of-state undergraduate tuition, effective August 2026. New Jersey/Pennsylvania resident, military, corporate-partner and alumni discounts or waivers are not applied.",
+        "The tuition scenario uses eligible TESU online, Guided Study, Accelerated or e-Pack courses. TECEP and portfolio assessments are billed separately and are not substituted for those courses.",
+        "The selected academic route retains the standard 15-credit TESU course-residency requirement. Edison Accelerate is a separate paid waiver scenario and is not included.",
+        "TESU charges $4,652 for a term of 9–18 eligible credits and $584 per credit below 9. The assumed 9–15 credits per term are a planning scenario; prerequisites, course availability and advisor-approved loads can change the number of billed terms."
       ]
     }
   ],

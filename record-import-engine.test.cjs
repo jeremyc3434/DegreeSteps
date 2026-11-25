@@ -2,6 +2,33 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const Import=require('./dist/record-import-engine.js');
 const template='School/provider,Course code,Course name,Credits,Credit units,Progress,Grade,Exam score,Completion date';
 
+test('a labeled original college carries into a readable transcript without retyping every course',()=>{
+ const raw=require('node:fs').readFileSync('./test-support/fixtures/course-import/synthetic-transcript.txt','utf8');
+ const batch=Import.parseTranscript(raw,{documentKind:'completed-transcript'});
+ assert.equal(batch.rows.length,2);assert.equal(batch.rows.reduce((total,row)=>total+row.record.credits,0),6);
+ for(const row of batch.rows){assert.equal(row.record.provider,'Example Semester College');assert.equal(row.source.issuerLabel,'Example Semester College');assert.equal(row.record.status,'earned');assert.equal(row.selected,true);assert.deepEqual(row.record.evaluations,[]);}
+});
+
+test('multiple labeled issuers and provider names mentioned in notes are not assigned to every course',()=>{
+ const batch=Import.parseTranscript([{page:1,text:'Official Transcript\nInstitution: First College\nSemester credits\nENG101 Writing 3 A'},{page:2,text:'Official Transcript\nInstitution: Second College\nSemester credits\nMAT120 Algebra 3 B'}]);
+ assert(batch.issues.some(issue=>issue.code==='ambiguous-transcript-issuer'));
+ assert(batch.rows.every(row=>row.record.provider===''&&!row.selected));
+ const notes=Import.parseTranscript('Official Transcript\nNotes: Some future students use Sophia and Study.com.\nSemester credits\nENG101 Writing 3 A');
+ assert.equal(notes.rows[0].record.provider,'');assert.equal(notes.rows[0].selected,false);
+});
+
+test('explicit alternative-provider legal names keep their original course identity without awarding transfer credit',()=>{
+ const batch=Import.parseTranscript('Official Transcript\nProvider: Study.com, LLC\nSemester credits\nSDCM-0024 Business Fundamentals 3 A');
+ assert.equal(batch.rows[0].record.provider,'Study.com');assert.equal(batch.rows[0].record.code,'SDCM-0024');assert.equal(batch.rows[0].record.credits,3);assert.deepEqual(batch.rows[0].record.evaluations,[]);
+});
+
+test('explicit receiving-school headers never establish the originals of transferred coursework',()=>{
+ const batch=Import.parseTranscript('Official Transcript\nInstitution: Receiving College\nSemester credits\nTRANSFER CREDITS AWARDED\nNotes: Sophia\nENG101 Composition 3 TR\nInstitutional credit\nHIS101 History 3 A');
+ const transfer=batch.rows[0],resident=batch.rows[1];
+ assert.equal(transfer.record.provider,'Receiving College');assert.equal(transfer.source.isTransfer,true);assert.equal(transfer.record.code,'');assert.equal(transfer.record.credits,null);assert.equal(transfer.record.status,null);assert.equal(transfer.selected,false);assert.deepEqual(transfer.record.evaluations,[]);
+ assert.equal(resident.record.provider,'Receiving College');assert.equal(resident.record.status,'earned');assert.equal(resident.selected,true);
+});
+
 test('the public nine-column template supports source facts without batch defaults',()=>{
  const batch=Import.parseCSV(template+'\nSophia,SOPH-0015,English Composition I,3,semester,Finished,A,,2026-01-20');
  assert.equal(batch.rows[0].selected,true);assert.equal(batch.rows[0].record.provider,'Sophia');assert.equal(batch.rows[0].record.status,'earned');assert.equal(batch.rows[0].record.creditSystem,'semester');assert.equal(batch.rows[0].record.completedOn,'2026-01-20');

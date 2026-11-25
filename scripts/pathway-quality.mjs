@@ -122,7 +122,7 @@ function reviewedSelectedAwards(model,plan,sources,asOf){
  if(!selected.length)return false;
  return selected.every(({requirement,option})=>{
   const award=option.mappingEvidence,identity=option.sourceCreditVerification,awardIds=list(award?.sourceIds),identityIds=list(option.identitySourceIds);
-  if(mappingFinding(model,requirement,option)||option.evidence!=='published'||option.evidenceType!=='official-receiving-school-equivalency'||!text(option.mappingReviewId)||date(option.mappingChecked)===null||date(option.mappingChecked)>date(asOf)||date(asOf)-date(option.mappingChecked)>=30*day||option.eligibilityReview?.eligibleToStart===false)return false;
+  if(mappingFinding(model,requirement,option)||option.evidence!=='published'||option.evidenceType!=='official-receiving-school-equivalency'||!text(option.mappingReviewId)||date(option.mappingChecked)===null||date(option.mappingChecked)>date(asOf)||date(asOf)-date(option.mappingChecked)>=30*day||option.eligibilityReview?.providerReviewPending===true||option.eligibilityReview?.eligibleToStart===false)return false;
   if(award?.schoolName!==model.school||award.programName!==model.title||award.catalogYear!==text(model.catalogYear||model.catalog)||award.level!=='bachelor'||award.modality!=='online'||award.provider!==option.provider||award.providerCourseCode!==option.code||award.receivingCode!==requirement.code||!near(award.credits,option.credits)||award.creditSystem!==model.creditSystem||!bound(sources,awardIds)||!awardIds.every(id=>list(option.sourceIds).includes(id)))return false;
   if(!awardIds.every(id=>{const source=sources.get(id);return officialWgu(source)&&currentSource(source,asOf)&&source.scope?.schoolName===model.school&&source.scope?.programName===model.title&&source.scope?.catalogYear===award.catalogYear&&source.scope?.level==='bachelor'&&source.scope?.modality==='online'&&list(source.roles).includes('receiving-map');}))return false;
   return option.sourceCreditStatus==='verified'&&finite(option.sourceCredits)&&option.sourceCredits>0&&['semester','quarter','competency-unit'].includes(option.sourceCreditSystem)&&near(identity?.credits,option.sourceCredits)&&identity?.creditSystem===option.sourceCreditSystem&&bound(sources,identityIds)&&identityIds.every(id=>!awardIds.includes(id)&&isIndependentProviderIdentitySource(sources.get(id),option,{asOf}))&&bound(sources,identity?.sourceIds)&&identity.sourceIds.every(id=>!awardIds.includes(id)&&isIndependentProviderIdentitySource(sources.get(id),option,{asOf}));
@@ -205,7 +205,7 @@ function mappingFinding(model,requirement,option){
  const receivingIdentity=typedCategory?reviewedCategoryPlacement(model,requirement,option,sources):text(option?.receivingCode||requirement?.code);
  if(!text(option?.code)||!receivingIdentity||!bound(sources,option?.sourceIds))return finding(model,'missing-research','mapping-evidence','An outside course needs its exact source identity, receiving award and usable evidence references.',details);
  const eligibility=option.eligibilityReview,documented=option.mappingResearchClosed===true&&/^published-/.test(option.receivingMapStatus||'');
- if(eligibility?.eligibleToStart===false)return finding(model,'conditional-policy','provider-eligibility','The receiving match may be documented, but provider eligibility is not cleared for enrollment.',{...details,sourceIds:[...details.sourceIds,...list(eligibility.sourceIds)],mappingDocumented:documented,evidenceStrength:documented?'documented':'conditional'});
+ if(eligibility?.providerReviewPending===true||eligibility?.eligibleToStart===false)return finding(model,'conditional-policy','provider-eligibility','The provider review remains provisional or unresolved. A receiving-course match and an individual credit award are separate claims.',{...details,sourceIds:[...details.sourceIds,...list(eligibility.sourceIds)],mappingDocumented:documented,evidenceStrength:documented?'documented':'conditional'});
  if(/same.school.*(?:another degree|other degree)|exact degree.*require confirmation|researched in another degree/i.test(option.mappingScope||''))return finding(model,'missing-research','mapping-scope','A receiving match researched for another pathway needs an explicit applicable school, format and catalog scope.',details);
  if(option.evidence==='published')return null;
  if(option.evidence!=='conditional')return finding(model,'missing-research','mapping-status','The outside award has no published or reviewed conditional mapping status.',details);
@@ -254,6 +254,13 @@ export function classifyModelFindings(model,{asOf,plan}={}){
  }
  for(const {requirement,option} of selectedOptions(model,plan)){
   const item=mappingFinding(model,requirement,option);if(item)items.push(item);
+  // Provider governance cannot conceal a separate missing receiving award or
+  // cross-program scope. Inspect that claim independently, without modifying
+  // the option or treating its course conditions as cleared.
+  if(option?.eligibilityReview?.providerReviewPending===true||option?.eligibilityReview?.eligibleToStart===false){
+   const {eligibilityReview,...award}=option,awardIssue=mappingFinding(model,requirement,award);
+   if(awardIssue?.category==='missing-research')items.push(awardIssue);
+  }
   if(option?.preapprovalRequired===true)add('student-task','preapproval-required','Obtain the university’s required individual pre-approval before purchasing this course.',{requirementIds:[requirement?.id],optionIds:[option.id],sourceIds:list(option.sourceIds),blocking:false,executionRequired:true});
  }
  const grouped=new Map();

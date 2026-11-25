@@ -293,7 +293,7 @@ test('valid legacy review and request metadata migrate without treating a sent r
   assert.equal(task(Checklist.build(priced,initialDraft),'review-plan').status,'done');
   const migrated=act(priced,initialDraft,{type:'add-task',title:'Keep the legacy review'});
   assert.equal(migrated.checklist.plans[tesu.id].items['review-plan'].signature,Checklist.build(migrated,initialDraft).signature);
-  assert.equal(migrated.journey.reviewedSignature,signature);
+  assert(migrated.journey.reviewedSignature.length<250);assert(Journey.reviewSignatureMatches(migrated.journey.reviewedSignature,signature));assert(Journey.reviewSignatureMatches(migrated.journey.schoolContactedSignature,signature));assert(Buffer.byteLength(JSON.stringify(migrated))<Checklist.limits.maxBytes);
   const academic=clone(initialDraft);academic.program.catalog+=' changed';
   built=Checklist.build(state,academic);
   assert.equal(task(built,'review-plan').status,'todo');assert.equal(task(built,'request-school-feedback').status,'todo');

@@ -541,6 +541,44 @@
       "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/3000/man-3720",
       "checked": "2026-11-18",
       "scope": "Published course prerequisite identity, not an outside-credit equivalency or degree transfer approval."
+    },
+    {
+      "id": "tesu-provider-directory-2026-11-25",
+      "title": "TESU Approved Provider Directory: current approved and provisionally approved providers",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+      "checked": "2026-11-25",
+      "capture": "content/source-captures/c8006b53ea7a4598.txt",
+      "evidenceType": "official-university-policy",
+      "scope": "Provider approval status only. Study.com is approved; Sophia, StraighterLine, Saylor Academy and CLEP remain provisionally approved — review pending. No course equivalency or individual credit award is created."
+    },
+    {
+      "id": "tesu-provider-review-policy-2026-11-25",
+      "title": "TESU Educational Provider Review: provider approval and course evaluation are distinct",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+      "checked": "2026-11-25",
+      "capture": "content/source-captures/3d731765e918fb1e.txt",
+      "evidenceType": "official-university-policy",
+      "scope": "Provider approval is followed by separate course-equivalency evaluation and does not guarantee acceptance of every course. The policy does not establish student enrollment permission or a ban for provisional providers."
+    },
+    {
+      "id": "study-tesu-gened-collection-2026-11-25",
+      "title": "Study.com TESU general education collection: provider-published named receiving codes",
+      "url": "https://study.com/college/school/thomas-edison-state-university/general-education-collection.html",
+      "checked": "2026-11-25",
+      "capture": "content/source-captures/2812a9f0b38edaa6.txt",
+      "captureMethod": "native-public-web-rendered-extract",
+      "rawBodyCaptured": false,
+      "evidenceType": "provider-published",
+      "scope": "English 104 is listed as ENC-1010, three lower-division credits. The publisher is Study.com; this is not an official TESU equivalency or an individual award."
+    },
+    {
+      "id": "tesu-study-english104-ace-current-2026-11-25",
+      "title": "ACE Study.com English 104 SDCM-0057 version 5: original source identity, quantity and recommendation period",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4ceaa0de-81f1-f011-8406-6045bd02b4cc&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "checked": "2026-11-25",
+      "capture": "content/source-captures/783fc185594100ac.txt",
+      "evidenceType": "official-recommendation",
+      "scope": "SDCM-0057 version 5, English 104, three lower-division semester credits, March 1, 2026 through February 28, 2029, minimum passing score 70. Original course evidence only; no TESU receiving equivalency is inferred."
     }
   ],
   "requirements": [
@@ -692,15 +730,18 @@
             "status": "provisionally-approved-review-pending",
             "provider": "Sophia",
             "fullyApproved": false,
-            "eligibleToStart": false,
             "sourceIds": [
-              "tesu-receiving-review-tesu-provider-directory-2026-11-17",
-              "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
-              "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17"
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
             ],
             "recommendationPeriodStatus": "exact-source-period-established",
-            "owner": "DegreePath",
-            "individualApproval": false
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status",
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
           }
         },
         {
@@ -724,7 +765,23 @@
             "A single exam awards 6 total credits allocated 3 each to ENC-1010 and ENC-1020; pay for and complete this exam once.",
             "University publishes this mapping but provider status is provisional; confirm acceptance, required score and date applicability."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams/college-composition"
+          "url": "https://clep.collegeboard.org/clep-exams/college-composition",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0041",
@@ -745,7 +802,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-enc1010",
@@ -761,6 +834,114 @@
           ],
           "evidence": "published",
           "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"
+        },
+        {
+          "id": "studycom-sdcm-0057-enc1010-reviewed-2026-11-25",
+          "provider": "Study.com",
+          "code": "SDCM-0057",
+          "aceId": "SDCM-0057",
+          "providerCourseCode": "English 104",
+          "title": "English 104: College Composition I",
+          "codeAliases": [
+            "English 104"
+          ],
+          "sourceCredits": 3,
+          "sourceCreditSystem": "semester",
+          "sourceUpper": false,
+          "courseVersion": 5,
+          "recommendationStart": "2026-03-01",
+          "recommendationEnd": "2029-02-28",
+          "providerCoursePassingPercent": 70,
+          "receivingCode": "ENC-1010",
+          "credits": 3,
+          "creditSystem": "semester",
+          "upper": false,
+          "evidence": "conditional",
+          "evidenceType": "provider-published",
+          "mappingResearchClosed": false,
+          "individualApproval": false,
+          "receivingTitle": "Writing for Success",
+          "creditOrigin": "alternative",
+          "identitySourceIds": [
+            "tesu-study-english104-ace-current-2026-11-25"
+          ],
+          "identityReviewId": "tesu-study-english104-candidate-2026-11-25",
+          "identityCheckedOn": "2026-11-25",
+          "sourceCreditStatus": "verified",
+          "sourceCreditEvidence": {
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceIds": [
+              "tesu-study-english104-ace-current-2026-11-25"
+            ]
+          },
+          "recommendationPeriodSourceIds": [
+            "tesu-study-english104-ace-current-2026-11-25"
+          ],
+          "providerCoursePassingSourceIds": [
+            "tesu-study-english104-ace-current-2026-11-25"
+          ],
+          "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4ceaa0de-81f1-f011-8406-6045bd02b4cc&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+          "mappingChecked": "2026-11-25",
+          "mappingReviewId": "tesu-study-english104-candidate-2026-11-25",
+          "mappingScope": "Current provider-published ENC-1010 candidate, independently identified by ACE. No TESU-submitted receiving award has been established.",
+          "mappingEvidence": {
+            "schoolName": "Thomas Edison State University",
+            "provider": "Study.com",
+            "providerCourseCode": "SDCM-0057",
+            "receivingCode": "ENC-1010",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceIds": [
+              "study-tesu-gened-collection-2026-11-25"
+            ],
+            "claimOrigin": "provider-published",
+            "publisher": "Study.com",
+            "scope": "provider-published-university-course-candidate",
+            "individualApproval": false
+          },
+          "degreePlacementEvidence": {
+            "modelId": "tesu-general-management",
+            "schoolName": "Thomas Edison State University",
+            "programName": "B.S. in General Management",
+            "requirementId": "enc1010",
+            "receivingCode": "ENC-1010",
+            "credits": 3,
+            "creditSystem": "semester",
+            "sourceIds": [
+              "tesu-gm-current-program-2026-11-17",
+              "tesu-receiving-review-current-general-management-2026-11-17"
+            ],
+            "scope": "The exact degree names ENC-1010; this does not establish acceptance of the provider course."
+          },
+          "sourceIds": [
+            "study-tesu-gened-collection-2026-11-25",
+            "tesu-study-english104-ace-current-2026-11-25",
+            "tesu-gm-current-program-2026-11-17",
+            "tesu-receiving-review-current-general-management-2026-11-17"
+          ],
+          "conditions": [
+            "Study.com publishes English 104 as a three-credit ENC-1010 candidate. A TESU-submitted receiving award has not been established; exact degree and individual acceptance remain conditional.",
+            "ACE independently identifies SDCM-0057 version 5 as three lower-division semester credits for March 1, 2026 through February 28, 2029. The completed version and completion date must match the applicable recommendation record.",
+            "TESU lists Study.com as an approved educational provider, but provider approval does not guarantee acceptance of every course or establish student enrollment permission.",
+            "TESU requires C or better in composition. Send an official Study.com transcript directly to TESU; the receiving institution makes the individual credit award."
+          ],
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status",
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
+          }
         }
       ],
       "group": "intellectual-practical",
@@ -921,15 +1102,18 @@
             "status": "provisionally-approved-review-pending",
             "provider": "Sophia",
             "fullyApproved": false,
-            "eligibleToStart": false,
             "sourceIds": [
-              "tesu-receiving-review-tesu-provider-directory-2026-11-17",
-              "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
-              "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17"
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
             ],
             "recommendationPeriodStatus": "version-period-link-still-to-review",
-            "owner": "DegreePath",
-            "individualApproval": false
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status",
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
           }
         },
         {
@@ -953,7 +1137,23 @@
             "A single exam awards 6 total credits allocated 3 each to ENC-1010 and ENC-1020; pay for and complete this exam once.",
             "University publishes this mapping but provider status is provisional; confirm acceptance, required score and date applicability."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams/college-composition"
+          "url": "https://clep.collegeboard.org/clep-exams/college-composition",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-enc1020",
@@ -1023,7 +1223,23 @@
             "TESU provider-directory snapshot lists Sophia as Provisionally Approved – Review Pending. The community table and published ACE mappings do not settle current acceptance of this particular course.",
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List"
+          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-com2090",
@@ -1187,15 +1403,18 @@
             "status": "provisionally-approved-review-pending",
             "provider": "Sophia",
             "fullyApproved": false,
-            "eligibleToStart": false,
             "sourceIds": [
-              "tesu-receiving-review-tesu-provider-directory-2026-11-17",
-              "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
-              "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17"
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
             ],
             "recommendationPeriodStatus": "exact-source-period-established",
-            "owner": "DegreePath",
-            "individualApproval": false
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status",
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
           }
         },
         {
@@ -1217,7 +1436,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-mat1210",
@@ -1324,7 +1559,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0026",
@@ -1345,7 +1596,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-soc1010",
@@ -1446,7 +1713,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0007",
@@ -1467,7 +1750,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-pos1100",
@@ -1569,7 +1868,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0008",
@@ -1590,7 +1905,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-his1130",
@@ -1693,7 +2024,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0009",
@@ -1714,7 +2061,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-his1140",
@@ -1879,15 +2242,18 @@
             "status": "provisionally-approved-review-pending",
             "provider": "Sophia",
             "fullyApproved": false,
-            "eligibleToStart": false,
             "sourceIds": [
-              "tesu-receiving-review-tesu-provider-directory-2026-11-17",
-              "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
-              "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17"
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
             ],
             "recommendationPeriodStatus": "version-period-link-still-to-review",
-            "owner": "DegreePath",
-            "individualApproval": false
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status",
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
           }
         },
         {
@@ -1956,7 +2322,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "category-substitution"
+          "allocationType": "category-substitution",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-eas1010",
@@ -2024,7 +2406,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "category-substitution"
+          "allocationType": "category-substitution",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-bio2080",
@@ -2191,15 +2589,18 @@
             "status": "provisionally-approved-review-pending",
             "provider": "Sophia",
             "fullyApproved": false,
-            "eligibleToStart": false,
             "sourceIds": [
-              "tesu-receiving-review-tesu-provider-directory-2026-11-17",
-              "tesu-receiving-review-tesu-provider-review-policy-2026-11-17",
-              "tesu-receiving-review-sophia-tesu-partner-page-2026-11-17"
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
             ],
             "recommendationPeriodStatus": "version-period-link-still-to-review",
-            "owner": "DegreePath",
-            "individualApproval": false
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status",
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
           }
         },
         {
@@ -2221,7 +2622,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams/financial-accounting"
+          "url": "https://clep.collegeboard.org/clep-exams/financial-accounting",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-acc1010",
@@ -2290,7 +2707,23 @@
             "The source uses legacy code ACC-102; treating it as current ACC-1020 is conditional on TESU confirming the same receiving-course identity.",
             "TESU provider-directory snapshot lists Study.com as Approved; provider approval alone does not establish this course award, current upper-level classification or degree applicability."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_Certificate_Plans"
+          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_Certificate_Plans",
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-acc1020-1",
@@ -2321,7 +2754,23 @@
             "TESU provider-directory snapshot lists Sophia as Provisionally Approved – Review Pending. The community table and published ACE mappings do not settle current acceptance of this particular course.",
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List"
+          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-acc1020",
@@ -2391,7 +2840,23 @@
             "TESU provider-directory snapshot lists Sophia as Provisionally Approved – Review Pending. The community table and published ACE mappings do not settle current acceptance of this particular course.",
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List"
+          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-cis1070",
@@ -2456,7 +2921,23 @@
             "TESU provider-directory snapshot lists Sophia as Provisionally Approved – Review Pending. The community table and published ACE mappings do not settle current acceptance of this particular course.",
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List"
+          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0025",
@@ -2477,7 +2958,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-law2010",
@@ -2541,7 +3038,23 @@
             "TESU provider-directory snapshot lists Sophia as Provisionally Approved – Review Pending. The community table and published ACE mappings do not settle current acceptance of this particular course.",
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List"
+          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0028",
@@ -2562,7 +3075,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-man2100",
@@ -2616,7 +3145,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-mkt2010",
@@ -2737,7 +3282,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0027",
@@ -2758,7 +3319,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-eco1110",
@@ -2840,7 +3417,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "clep-0030",
@@ -2861,7 +3454,23 @@
             "University table publishes this equivalency; provider directory currently lists CLEP as provisionally approved. Confirm individual applicability before purchase.",
             "Confirm required numeric score; C-equivalent minimum and expiry apply."
           ],
-          "url": "https://clep.collegeboard.org/clep-exams"
+          "url": "https://clep.collegeboard.org/clep-exams",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "CLEP",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-eco1120",
@@ -2965,7 +3574,23 @@
             "TESU provider-directory snapshot lists Sophia as Provisionally Approved – Review Pending. The community table and published ACE mappings do not settle current acceptance of this particular course.",
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List"
+          "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-sta2010",
@@ -3034,7 +3659,23 @@
             "The source uses legacy code MAN-373; treating it as current MAN-3730 is conditional on TESU confirming the same receiving-course identity.",
             "TESU provider-directory snapshot lists Study.com as Approved; provider approval alone does not establish this course award, current upper-level classification or degree applicability."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BS_Organizational_Leadership_Degree_Plan"
+          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BS_Organizational_Leadership_Degree_Plan",
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-man3730",
@@ -3129,7 +3770,23 @@
           "providerCoursePassingSourceIds": [
             "tesu-study-course-passing-current",
             "tesu-study-business308-ace-current"
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-man3720",
@@ -3244,7 +3901,23 @@
             "Confirm the exact current provider course/version, ACE or NCCRS recommendation period covering your completion date, and TESU written approval for your catalog before purchase. Those version/date windows were not recovered from this snapshot.",
             "TESU provider-directory snapshot lists Study.com as Approved; provider approval alone does not establish this course award, current upper-level classification or degree applicability."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan"
+          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan",
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-acc3030",
@@ -3312,7 +3985,23 @@
             "TESU provider-directory snapshot lists Study.com as Approved; provider approval alone does not establish this course award, current upper-level classification or degree applicability.",
             "The Accounting page calls Study.com Accounting 302 “Advanced Accounting II”; other community pages call it “Advanced Accounting.” Verify the current course title/version and the ACC-4010 award; do not substitute ACC-4020 or infer equivalency from the title."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan"
+          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan",
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-acc4010",
@@ -3382,7 +4071,23 @@
             "Confirm the exact current provider course/version, ACE or NCCRS recommendation period covering your completion date, and TESU written approval for your catalog before purchase. Those version/date windows were not recovered from this snapshot.",
             "TESU provider-directory snapshot lists Study.com as Approved; provider approval alone does not establish this course award, current upper-level classification or degree applicability."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Finance_Degree_Plan"
+          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Finance_Degree_Plan",
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-fin3310",
@@ -3445,7 +4150,23 @@
             "Confirm the exact current provider course/version, ACE or NCCRS recommendation period covering your completion date, and TESU written approval for your catalog before purchase. Those version/date windows were not recovered from this snapshot.",
             "TESU provider-directory snapshot lists Study.com as Approved; provider approval alone does not establish this course award, current upper-level classification or degree applicability."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Finance_Degree_Plan"
+          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Finance_Degree_Plan",
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-fin3340",
@@ -3541,7 +4262,23 @@
           "providerCoursePassingSourceIds": [
             "tesu-study-course-passing-current",
             "tesu-study-business306-ace-current"
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-man3310",
@@ -3611,7 +4348,23 @@
             "The source uses legacy code MAN-311; treating it as current MAN-3110 is conditional on TESU confirming the same receiving-course identity.",
             "TESU provider-directory snapshot lists Study.com as Approved; provider approval alone does not establish this course award, current upper-level classification or degree applicability."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BS_Organizational_Leadership_Degree_Plan"
+          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BS_Organizational_Leadership_Degree_Plan",
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-man3110-1",
@@ -3666,7 +4419,23 @@
           "listingIdentitySourceIds": [
             "sophia-soph-0083-current-offer",
             "sophia-soph-0083-current-offer-syllabus"
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-man3110",
@@ -3729,7 +4498,23 @@
             "Confirm the exact current provider course/version, ACE or NCCRS recommendation period covering your completion date, and TESU written approval for your catalog before purchase. Those version/date windows were not recovered from this snapshot.",
             "TESU provider-directory snapshot lists Study.com as Approved; provider approval alone does not establish this course award, current upper-level classification or degree applicability."
           ],
-          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan"
+          "url": "https://degreeforum.miraheze.org/wiki/Sample_TESU_BSBA_Accounting_Degree_Plan",
+          "eligibilityReview": {
+            "status": "approved-provider-course-mapping-separate",
+            "provider": "Study.com",
+            "fullyApproved": true,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": false,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-acc2010",
@@ -3816,7 +4601,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective2-3",
@@ -3851,7 +4652,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "free-elective"
+          "allocationType": "free-elective",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective2-2",
@@ -3886,7 +4703,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "free-elective"
+          "allocationType": "free-elective",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective2-1",
@@ -3939,7 +4772,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-elective2",
@@ -4045,7 +4894,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective3-3",
@@ -4080,7 +4945,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "free-elective"
+          "allocationType": "free-elective",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective3-2",
@@ -4115,7 +4996,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "free-elective"
+          "allocationType": "free-elective",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective3-1",
@@ -4168,7 +5065,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-elective3",
@@ -4274,7 +5187,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective4-3",
@@ -4309,7 +5238,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "free-elective"
+          "allocationType": "free-elective",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective4-2",
@@ -4344,7 +5289,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "free-elective"
+          "allocationType": "free-elective",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective4-1",
@@ -4397,7 +5358,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-elective4",
@@ -4515,7 +5492,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective5-3",
@@ -4550,7 +5543,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "free-elective"
+          "allocationType": "free-elective",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective5-2",
@@ -4585,7 +5594,23 @@
             "The Sophia TESU page checked November 11, 2026 shows no established course equivalencies and lists the courses without an established transfer agreement. Existing ACE or community evidence remains conditional; confirm this course with TESU before purchase."
           ],
           "url": "https://degreeforum.miraheze.org/wiki/Sophia.org_Equivalency_List",
-          "allocationType": "free-elective"
+          "allocationType": "free-elective",
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "sophia-elective5-1",
@@ -4638,7 +5663,23 @@
               ],
               "scope": "Same original Sophia course identity only; not a TESU equivalency or a version/date guarantee."
             }
-          ]
+          ],
+          "eligibilityReview": {
+            "status": "provisionally-approved-review-pending",
+            "provider": "Sophia",
+            "fullyApproved": false,
+            "sourceIds": [
+              "tesu-provider-directory-2026-11-25",
+              "tesu-provider-review-policy-2026-11-25"
+            ],
+            "checkedOn": "2026-11-25",
+            "reviewId": "tesu-provider-policy-review-2026-11-25",
+            "owner": "DegreeSteps",
+            "individualApproval": false,
+            "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition.",
+            "providerReviewPending": true,
+            "enrollmentPermission": "not-established-by-provider-status"
+          }
         },
         {
           "id": "tesu-elective5",
@@ -5193,5 +6234,23 @@
       "tesu-common-man3720-prerequisites-2026-11-18"
     ],
     "scope": "Selected current same-school course sequence; provider awards and their review dates are unchanged."
+  },
+  "providerEligibilityReview": {
+    "id": "tesu-provider-policy-review-2026-11-25",
+    "checkedOn": "2026-11-25",
+    "sourceIds": [
+      "tesu-provider-directory-2026-11-25",
+      "tesu-provider-review-policy-2026-11-25"
+    ],
+    "approvedProviders": [
+      "Study.com"
+    ],
+    "provisionalProviders": [
+      "Sophia",
+      "StraighterLine",
+      "Saylor",
+      "CLEP"
+    ],
+    "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
   }
 }

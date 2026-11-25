@@ -3,6 +3,15 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {applyExperience} from './apply-brand-system.mjs';
 
+test('a local feedback worksheet retains shared styling without acquiring analytics or account transport',async()=>{
+ const source=await readFile(new URL('../dist/student-test.html',import.meta.url),'utf8'),result=applyExperience(source,'student-test.html');
+ assert(result.html.includes('noindex,nofollow,noarchive'));assert(result.html.includes('student-test.js'));
+ for(const script of ['growth-metrics.js','site-header.js','app-shell.js','plan-save.js','coach.js','leads.js'])assert(!result.html.includes('src="/'+script+'"'));
+ assert(result.styles.includes('ds-tokens.css'));assert.equal(result.styles.at(-1),'ds-overlays.css');
+ assert.equal(applyExperience(result.html,'student-test.html').html,result.html);
+ assert(applyExperience('<html><head></head><body></body></html>','index.html').html.includes('growth-metrics.js'),'Other public pages retain their existing behavior.');
+});
+
 test('homepage walkthrough styling follows shared styles once and stays scoped to the homepage',()=>{
  const source='<html><head><link rel="stylesheet" href="/home-steps.css"><script src="/home-steps.js" defer></script></head><body class="public-page home-public"><main id="keep-home"></main></body></html>';
  const result=applyExperience(source,'index.html');

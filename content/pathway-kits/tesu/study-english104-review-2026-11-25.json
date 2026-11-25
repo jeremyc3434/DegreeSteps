@@ -1,0 +1,69 @@
+{
+  "kind": "tesu-study-provider-candidate-review",
+  "version": 1,
+  "id": "tesu-study-english104-candidate-2026-11-25",
+  "checkedOn": "2026-11-25",
+  "school": "Thomas Edison State University",
+  "scope": "One provider-published receiving-course candidate, independently identified by ACE. Neither ACE nor the provider source establishes a TESU-submitted receiving award, exact degree approval or an individual credit award.",
+  "sources": [
+    {
+      "id": "study-tesu-gened-collection-2026-11-25",
+      "title": "Study.com TESU general education collection: provider-published named receiving codes",
+      "url": "https://study.com/college/school/thomas-edison-state-university/general-education-collection.html",
+      "checked": "2026-11-25",
+      "capture": "content/source-captures/2812a9f0b38edaa6.txt",
+      "captureMethod": "native-public-web-rendered-extract",
+      "rawBodyCaptured": false,
+      "evidenceType": "provider-published",
+      "scope": "English 104 is listed as ENC-1010, three lower-division credits. The publisher is Study.com; this is not an official TESU equivalency or an individual award."
+    },
+    {
+      "id": "tesu-study-english104-ace-current-2026-11-25",
+      "title": "ACE Study.com English 104 SDCM-0057 version 5: original source identity, quantity and recommendation period",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4ceaa0de-81f1-f011-8406-6045bd02b4cc&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "checked": "2026-11-25",
+      "capture": "content/source-captures/783fc185594100ac.txt",
+      "evidenceType": "official-recommendation",
+      "scope": "SDCM-0057 version 5, English 104, three lower-division semester credits, March 1, 2026 through February 28, 2029, minimum passing score 70. Original course evidence only; no TESU receiving equivalency is inferred."
+    }
+  ],
+  "providerCourse": {
+    "provider": "Study.com",
+    "code": "SDCM-0057",
+    "aceId": "SDCM-0057",
+    "providerCourseCode": "English 104",
+    "title": "English 104: College Composition I",
+    "codeAliases": [
+      "English 104"
+    ],
+    "sourceCredits": 3,
+    "sourceCreditSystem": "semester",
+    "sourceUpper": false,
+    "courseVersion": 5,
+    "recommendationStart": "2026-03-01",
+    "recommendationEnd": "2029-02-28",
+    "providerCoursePassingPercent": 70
+  },
+  "receivingCandidate": {
+    "receivingCode": "ENC-1010",
+    "credits": 3,
+    "creditSystem": "semester",
+    "upper": false,
+    "evidence": "conditional",
+    "evidenceType": "provider-published",
+    "mappingResearchClosed": false,
+    "individualApproval": false
+  },
+  "conditions": [
+    "Study.com publishes English 104 as a three-credit ENC-1010 candidate. A TESU-submitted receiving award has not been established; exact degree and individual acceptance remain conditional.",
+    "ACE independently identifies SDCM-0057 version 5 as three lower-division semester credits for March 1, 2026 through February 28, 2029. The completed version and completion date must match the applicable recommendation record.",
+    "TESU lists Study.com as an approved educational provider, but provider approval does not guarantee acceptance of every course or establish student enrollment permission.",
+    "TESU requires C or better in composition. Send an official Study.com transcript directly to TESU; the receiving institution makes the individual credit award."
+  ],
+  "publicationPromotionAllowed": false,
+  "excludedClaims": [
+    "No Statistics 101 four-credit placement is created.",
+    "No Psychology 101 to PSY-1010 equivalency is created; the collection instead lists FEL-1999.",
+    "No other course from the collection is added without independently reviewed source identity and receiving quantity."
+  ]
+}

@@ -297,6 +297,11 @@
     // A current recommendation window governs projections. An exact confirmed
     // destination award can preserve an older version already evaluated there.
     const confirmedDestination=evaluation?.status==='confirmed'&&evaluation.programId===program?.id&&evaluation.requirementId===requirement.id;
+    // An explicitly identified original version cannot inherit a different
+    // version's receiving candidate. Unknown versions remain unknown; only an
+    // exact destination award can establish an already-evaluated exception.
+    const originalVersion=typeof item.courseVersion==='number'?String(item.courseVersion):text(item.courseVersion),mappedVersion=typeof option?.courseVersion==='number'?String(option.courseVersion):text(option?.courseVersion);
+    if(!confirmedDestination&&originalVersion&&mappedVersion&&originalVersion!==mappedVersion)return false;
     if(!confirmedDestination&&item.completedOn&&option?.recommendationStart&&item.completedOn<option.recommendationStart)return false;
     if(!confirmedDestination&&item.completedOn&&option?.recommendationEnd&&item.completedOn>option.recommendationEnd)return false;
     return true;

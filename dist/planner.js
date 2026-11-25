@@ -98,7 +98,7 @@
   function conditionalReview(row, option) {
     const documented = option.mappingResearchClosed === true && /^published-/.test(option.receivingMapStatus || '');
     const eligibility = option.eligibilityReview;
-    const providerPending = eligibility?.eligibleToStart === false;
+    const providerPending = eligibility?.providerReviewPending === true || eligibility?.eligibleToStart === false;
     const target = option.provider + ' — ' + option.title + ' → ' + (option.receivingCategory || row.code || row.title);
     let message = providerPending && documented ? target + ' is a documented receiving-course match. DegreeSteps is checking ' + option.provider + ' provider eligibility before recommending enrollment.' : 'DegreeSteps is reviewing the documented conditions for ' + target + '.';
     if (providerPending && eligibility.recommendationPeriodStatus === 'version-period-link-still-to-review') message += ' The exact source-course recommendation dates also remain under review.';
@@ -1395,7 +1395,7 @@
     if (conditional.length) actions.push(conditionalReview(conditional[0],conditional[0].option).message + (conditional.length > 1 ? ' ' + (conditional.length - 1) + ' other selected course conditions are also in the DegreeSteps research queue.' : ''));
     if (program.appliedTransferWaiver) actions.push('Ask the university to confirm the ' + program.appliedTransferWaiver.minimumQualifyingTransferCredits + '-credit transfer waiver and the proposed replacement electives. Waived requirements do not award credit.');
     const seen = new Set();
-    const orderedRows = (plan.sequence || []).flatMap(step => step.requirementIds.map(id => plan.rows.find(row => row.requirementId === id)));
+    const orderedRows = (plan.sequence || []).filter(step => !step.executionBlocked).flatMap(step => step.requirementIds.map(id => plan.rows.find(row => row.requirementId === id)));
     for (const row of orderedRows.filter(r => r.status === 'planned' && r.option && r.option.provider !== 'University')) {
       const key = optionKey(row.option); if (seen.has(key)) continue; seen.add(key);
       actions.push((row.plannedLearningStatus === 'in-progress' ? 'Continue your in-progress course: ' : row.option.evidence === 'published' && row.option.preapprovalRequired !== true ? row.reusesSavedCourse ? 'Use your collected course: ' : 'Start: ' : 'After approval: ') + row.option.provider + ' — ' + row.option.title + (row.option.minScore ? ' (minimum score ' + row.option.minScore + ')' : '') + ' → ' + (row.option.receivingCategory || row.code || row.title) + '.');
@@ -1411,21 +1411,37 @@
 
   function sequence(rows) {
     const planned = rows.filter(row => row.status === 'planned' && row.option), output = [], done = new Set(rows.filter(row => ['confirmed', 'reported'].includes(row.status)).map(row => row.requirementId)), actions = new Map();
-    // Destination course prerequisites apply to university enrollment. They are not
-    // automatically treated as the external provider's enrollment prerequisites.
-    const remaining = [...planned].sort((a, b) => Number(a.option.provider === 'University') - Number(b.option.provider === 'University'));
+    const completedSources = new Set(rows.filter(row => ['confirmed', 'reported'].includes(row.status) && row.option).map(row => row.option.provider + '|' + row.option.code));
+    const memberships = new Set(['Sophia', 'Study.com', 'StraighterLine']);
+    // Suggest one membership's currently ready courses together. This is an order
+    // of work, not a promise that a subscription lasts a particular number of months.
+    // Personal calendar dates and the original requirement/course rows stay intact.
+    const remaining = [...planned]; let activeMembership = null;
     while (remaining.length) {
       const completedCredits = sum(rows.filter(row => done.has(row.requirementId)), row => row.credits);
-      let index = remaining.findIndex(row => (row.option.provider !== 'University' || (row.prerequisites || []).every(id => done.has(id) || !planned.some(r => r.requirementId === id))) && completedCredits + 0.001 >= number(row.minimumCompletedCredits));
-      const blocked = index < 0;
-      if (index < 0) index = 0; // A draft still displays all work; it claims no feasible term schedule.
+      const ready = remaining.map((row, index) => ({row, index})).filter(({row}) => {
+        // Receiving-course prerequisites govern university enrollment; a provider's
+        // own published prerequisites govern its outside course. Never copy the
+        // receiving school's prerequisites onto the outside provider by implication.
+        const prerequisites = row.option.provider === 'University' ? row.prerequisites || [] : row.option.prerequisites || [];
+        return prerequisites.every(id => done.has(id) || row.option.provider !== 'University' && completedSources.has(row.option.provider + '|' + id)) && completedCredits + 0.001 >= number(row.minimumCompletedCredits);
+      });
+      // Continue work the student has already started before suggesting a new
+      // membership. University prerequisites and completed-credit minima still apply.
+      let choice = ready.find(({row}) => row.plannedLearningStatus === 'in-progress');
+      if (!choice && activeMembership) choice = ready.find(({row}) => row.option.provider === activeMembership);
+      if (!choice) choice = ready.find(({row}) => row.option.provider !== 'University') || ready[0];
+      const blocked = !choice, index = choice ? choice.index : 0; // Keep every row visible in an infeasible draft.
       const row = remaining.splice(index, 1)[0], key = row.option.provider === 'University' ? row.requirementId : optionKey(row.option);
       if (actions.has(key)) actions.get(key).requirementIds.push(row.requirementId);
       else {
         const step = { order: output.length + 1, requirementIds: [row.requirementId], provider: row.option.provider, title: row.option.title, code: row.option.code, after: row.option.provider === 'University' ? row.prerequisites || [] : row.option.prerequisites || [], notes: row.prerequisiteNotes || '', timingVerified: false, ...(row.minimumCompletedCredits ? {minimumCompletedCredits:row.minimumCompletedCredits} : {}), ...(blocked ? {executionBlocked:true, notes:[row.prerequisiteNotes, 'Confirm prerequisite completion before starting this course.'].filter(Boolean).join(' ')} : {}), ...(row.plannedLearningStatus ? {learningStatus:row.plannedLearningStatus} : {}) };
         actions.set(key, step); output.push(step);
       }
-      done.add(row.requirementId);
+      if (!blocked) {
+        if (memberships.has(row.option.provider)) activeMembership = row.option.provider;
+        done.add(row.requirementId); completedSources.add(row.option.provider + '|' + row.option.code);
+      }
     }
     return output;
   }
