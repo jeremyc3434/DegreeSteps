@@ -100,7 +100,8 @@
         label('credits', 'Credits', 'inputmode="decimal" maxlength="12" placeholder="Unknown"') +
         '<label class="audit-row-policy"><span>At university</span><span class="audit-checkbox"><input type="checkbox" data-field="requiredAtUniversity" aria-label="Required at university, row ' + (index + 1) + '"' + (row.requiredAtUniversity ? ' checked' : '') + '>Required here</span></label>' +
         '<label class="audit-row-policy"><span>Course level</span><span class="audit-checkbox"><input type="checkbox" data-field="upperLevel" aria-label="Upper level, row ' + (index + 1) + '"' + (row.upperLevel ? ' checked' : '') + '>Upper level</span></label>' +
-        '<button type="button" class="audit-remove-row" data-remove-row="' + index + '" aria-label="Remove requirement row ' + (index + 1) + '">Remove</button></div>';
+        '<button type="button" class="audit-remove-row" data-remove-row="' + index + '" aria-label="Remove requirement row ' + (index + 1) + '">Remove</button>' +
+        (row.importNotes ? '<details class="audit-import-notes"><summary>Imported course suggestions</summary><p>Proposed spreadsheet notes · not an accepted transfer award</p><p>' + esc(row.importNotes) + '</p></details>' : '') + '</div>';
     }).join('');
     $('audit-row-count').textContent = rows.length + (rows.length === 1 ? ' row' : ' rows');
   }
@@ -201,7 +202,12 @@
       }
       const latest = current();
       const withDraft = A.saveDraft(latest, context(metadata), {metadata, rows, csv:$('audit-csv').value, mode:'rows'});
-      store(A.commit(withDraft, entry, {catalog:currentCatalog}));
+      let next = A.commit(withDraft, entry, {catalog:currentCatalog});
+      if (parsed.rows.some(row => row.importNotes)) {
+        for (const [index, row] of parsed.rows.entries()) if (row.importNotes) next = DegreeSheet.setNote(next, entry.model.id, 'audit-row-' + (index + 1), 'Imported suggestions · not an accepted transfer award\n' + row.importNotes);
+        A.validatePrivateWork(next);
+      }
+      store(next);
       location.href = 'plan.html';
     } catch (error) { showError(error); busy = false; $('audit-build').disabled = !$('audit-confirm').checked; $('audit-back').disabled = false; }
   });

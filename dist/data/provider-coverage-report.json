@@ -1,0 +1,1321 @@
+{
+  "schemaRevision": "provider-coverage-v1",
+  "revision": "provider-coverage-v1:294adc1a83daedb4177c85a3f5387f12e90b5f26556478d8aa95bdb40bd6027b",
+  "registryRevision": "academic-v1:1b84ced51394de509fc734b0cc80b979c66d80d7bf31836f7a373cd02d2c955d",
+  "asOf": "2026-11-25",
+  "privateStudentRecordsIncluded": false,
+  "runtimeAiCalls": 0,
+  "publicationAllowed": false,
+  "studentCreditAwarded": false,
+  "scope": "Internal provider integration counts. Listings, source identities, receiving claims, degree placements, ready alternatives and selected ready baselines are separate stages; none awards individual credit.",
+  "methodology": {
+    "indexed": "Distinct provider/code, declared original version, quantity, units and recommendation period across the course-library inputs; unknown facts are not filled from another version.",
+    "receivingAwards": "Institution-source-bound requires exact typed award fields and a current local receiving-map source. Provider-published and unresolved claims are separate; these are evidence-coverage counts, not new approval decisions.",
+    "placements": "A distinct requirement/source-award placement. The same award reused in several requirements is not several original courses.",
+    "readiness": "Ready alternatives exist in a publication-ready model; ready baselines count only providers selected in its publication-index route. No automatic promotion occurs.",
+    "pricing": "A current source-bound provider rate exists; eligibility, chosen tier, duration and other charges still govern a student estimate.",
+    "assessment": "Current exact course-code or supported provider-policy evidence, using the existing assessment engine."
+  },
+  "summary": {
+    "directoryProviders": 31,
+    "observedProviders": 31,
+    "indexedProviders": 9,
+    "directoryOnlyProviders": 22,
+    "providersWithReceivingClaims": 9,
+    "providersWithInstitutionSourceBoundAwards": 6,
+    "providersUsedInReadyBaselines": 4,
+    "indexedIdentities": 543,
+    "publicationReadyPlans": 22
+  },
+  "providers": [
+    {
+      "id": "actfl",
+      "name": "ACTFL language proficiency assessments through LTI",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "language-assessment",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "aleks",
+      "name": "ALEKS Independent Use",
+      "directoryListed": true,
+      "directoryStatus": "current-offer",
+      "kind": "alternative-provider",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "asu-ulc",
+      "name": "ASU Universal Learner Courses",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "institutional-course",
+      "stage": "receiving-claims-placed",
+      "indexedIdentities": 7,
+      "sourceReviewedMappedIdentities": 7,
+      "receivingClaims": {
+        "institutionSourceBound": 7,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 7
+      },
+      "placements": {
+        "institutionSourceBound": 16,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 16
+      },
+      "modelsWithOptions": 1,
+      "modelsEnabledByDefault": 1,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 7
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate",
+        "assessment-details-incomplete"
+      ]
+    },
+    {
+      "id": "christian-leaders",
+      "name": "Christian Leaders Institute / College",
+      "directoryListed": true,
+      "directoryStatus": "candidate",
+      "kind": "institutional-course",
+      "stage": "receiving-claims-placed",
+      "indexedIdentities": 11,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 12,
+        "providerPublished": 0,
+        "unresolved": 21,
+        "total": 33
+      },
+      "placements": {
+        "institutionSourceBound": 37,
+        "providerPublished": 0,
+        "unresolved": 119,
+        "total": 156
+      },
+      "modelsWithOptions": 20,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 8,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 11
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-source-reviewed-mapped-identities",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate",
+        "assessment-details-incomplete",
+        "not-in-fresh-plan-provider-defaults"
+      ]
+    },
+    {
+      "id": "clep",
+      "name": "CLEP examinations",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "credit-examination",
+      "stage": "used-in-ready-baseline",
+      "indexedIdentities": 49,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 83,
+        "total": 83
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 823,
+        "total": 823
+      },
+      "modelsWithOptions": 26,
+      "modelsEnabledByDefault": 16,
+      "publicationReadyAlternativeModels": 8,
+      "publicationReadyBaselineModels": 2,
+      "assessment": {
+        "knownIndexedIdentities": 21,
+        "unknownIndexedIdentities": 28
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 1,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "assessment-details-incomplete"
+      ]
+    },
+    {
+      "id": "coopersmith",
+      "name": "Coopersmith Career Consulting",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "alternative-provider",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "cpa-credits",
+      "name": "CPA Credits / Upper Iowa University courses",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "institutional-partner",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "davar",
+      "name": "Davar Academy",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "alternative-provider",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "dsst",
+      "name": "DSST examinations",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "credit-examination",
+      "stage": "receiving-claims-placed",
+      "indexedIdentities": 5,
+      "sourceReviewedMappedIdentities": 5,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 10,
+        "total": 10
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 284,
+        "total": 284
+      },
+      "modelsWithOptions": 14,
+      "modelsEnabledByDefault": 5,
+      "publicationReadyAlternativeModels": 5,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 5,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "fema",
+      "name": "FEMA Independent Study and optional college conversion",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "training-and-conversion",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "google-certificates",
+      "name": "Google Career Certificates through Coursera",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "credential-bundle",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "coursera-certificates",
+      "name": "IBM and other designated Coursera certificates",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "credential-bundle",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "lawshelf",
+      "name": "LawShelf",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "alternative-provider",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "military-jst",
+      "name": "Military training and Joint Services Transcript",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "qualifying-prior-learning",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "modern-states",
+      "name": "Modern States CLEP preparation and vouchers",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "preparation-and-funding",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "onlinedegree",
+      "name": "OnlineDegree.com historical courses",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "retired-provider",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "outlier",
+      "name": "Outlier by Savvas",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "school-mediated-dual-enrollment",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "portage",
+      "name": "Portage Learning",
+      "directoryListed": true,
+      "directoryStatus": "current-offer",
+      "kind": "institutional-partner",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "saylor",
+      "name": "Saylor Direct Credit",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "alternative-provider",
+      "stage": "used-in-ready-baseline",
+      "indexedIdentities": 42,
+      "sourceReviewedMappedIdentities": 21,
+      "receivingClaims": {
+        "institutionSourceBound": 228,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 228
+      },
+      "placements": {
+        "institutionSourceBound": 228,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 228
+      },
+      "modelsWithOptions": 18,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 13,
+      "publicationReadyBaselineModels": 7,
+      "assessment": {
+        "knownIndexedIdentities": 42,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 1,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "not-in-fresh-plan-provider-defaults"
+      ]
+    },
+    {
+      "id": "csm",
+      "name": "SeeMore: Core Strategies for Mathematics",
+      "directoryListed": true,
+      "directoryStatus": "current-offer",
+      "kind": "alternative-provider",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "microsoft-exams",
+      "name": "Selected Microsoft certification examinations",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "industry-certification",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "sophia",
+      "name": "Sophia Learning",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "alternative-provider",
+      "stage": "used-in-ready-baseline",
+      "indexedIdentities": 163,
+      "sourceReviewedMappedIdentities": 68,
+      "receivingClaims": {
+        "institutionSourceBound": 391,
+        "providerPublished": 375,
+        "unresolved": 271,
+        "total": 1037
+      },
+      "placements": {
+        "institutionSourceBound": 900,
+        "providerPublished": 2087,
+        "unresolved": 3432,
+        "total": 6419
+      },
+      "modelsWithOptions": 150,
+      "modelsEnabledByDefault": 117,
+      "publicationReadyAlternativeModels": 22,
+      "publicationReadyBaselineModels": 20,
+      "assessment": {
+        "knownIndexedIdentities": 58,
+        "unknownIndexedIdentities": 105
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 1,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "assessment-details-incomplete"
+      ]
+    },
+    {
+      "id": "straighterline",
+      "name": "StraighterLine",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "alternative-provider",
+      "stage": "receiving-claims-placed",
+      "indexedIdentities": 105,
+      "sourceReviewedMappedIdentities": 19,
+      "receivingClaims": {
+        "institutionSourceBound": 21,
+        "providerPublished": 0,
+        "unresolved": 168,
+        "total": 189
+      },
+      "placements": {
+        "institutionSourceBound": 21,
+        "providerPublished": 0,
+        "unresolved": 2342,
+        "total": 2363
+      },
+      "modelsWithOptions": 35,
+      "modelsEnabledByDefault": 13,
+      "publicationReadyAlternativeModels": 16,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 19,
+        "unknownIndexedIdentities": 86
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate",
+        "assessment-details-incomplete"
+      ]
+    },
+    {
+      "id": "study-com",
+      "name": "Study.com",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "alternative-provider",
+      "stage": "used-in-ready-baseline",
+      "indexedIdentities": 139,
+      "sourceReviewedMappedIdentities": 61,
+      "receivingClaims": {
+        "institutionSourceBound": 343,
+        "providerPublished": 6,
+        "unresolved": 287,
+        "total": 636
+      },
+      "placements": {
+        "institutionSourceBound": 697,
+        "providerPublished": 79,
+        "unresolved": 4198,
+        "total": 4974
+      },
+      "modelsWithOptions": 50,
+      "modelsEnabledByDefault": 19,
+      "publicationReadyAlternativeModels": 22,
+      "publicationReadyBaselineModels": 22,
+      "assessment": {
+        "knownIndexedIdentities": 121,
+        "unknownIndexedIdentities": 18
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 1,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "assessment-details-incomplete"
+      ]
+    },
+    {
+      "id": "teex",
+      "name": "TEEX training",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "training-provider",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "tel",
+      "name": "TEL Education partner-university courses",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "institutional-partner",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "tecep",
+      "name": "TESU TECEP examinations",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "institutional-examination",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "total-testing",
+      "name": "Total Testing Education / CIS",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "alternative-provider",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "uexcel",
+      "name": "UExcel historical examinations",
+      "directoryListed": true,
+      "directoryStatus": "not-stated",
+      "kind": "retired-examination",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "upi-study",
+      "name": "UPI Study",
+      "directoryListed": true,
+      "directoryStatus": "current-offer",
+      "kind": "alternative-provider",
+      "stage": "receiving-claims-placed",
+      "indexedIdentities": 22,
+      "sourceReviewedMappedIdentities": 21,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 42,
+        "unresolved": 0,
+        "total": 42
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 780,
+        "unresolved": 0,
+        "total": 780
+      },
+      "modelsWithOptions": 6,
+      "modelsEnabledByDefault": 6,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 22,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    },
+    {
+      "id": "westcott",
+      "name": "Westcott Courses / UMass Global",
+      "directoryListed": true,
+      "directoryStatus": "current-offer",
+      "kind": "institutional-partner",
+      "stage": "directory-only",
+      "indexedIdentities": 0,
+      "sourceReviewedMappedIdentities": 0,
+      "receivingClaims": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "placements": {
+        "institutionSourceBound": 0,
+        "providerPublished": 0,
+        "unresolved": 0,
+        "total": 0
+      },
+      "modelsWithOptions": 0,
+      "modelsEnabledByDefault": 0,
+      "publicationReadyAlternativeModels": 0,
+      "publicationReadyBaselineModels": 0,
+      "assessment": {
+        "knownIndexedIdentities": 0,
+        "unknownIndexedIdentities": 0
+      },
+      "pricing": {
+        "currentSourceBoundProviderRates": 0,
+        "eligibleRateScopeRequired": true,
+        "completePriceGuaranteed": false
+      },
+      "gaps": [
+        "no-indexed-courses",
+        "no-source-reviewed-mapped-identities",
+        "no-institution-source-bound-awards",
+        "not-used-in-publication-ready-baseline",
+        "no-current-provider-rate"
+      ]
+    }
+  ],
+  "inputFingerprints": {
+    "directory": "36259a33222e57936987fbbfa23e423bbeac5083f803d69974d898cb57b3eaa4",
+    "courseCatalogs": "9465f32c146ca77bc1e610efc309bb8a89323ac1d6578ddf48780b4546af8235",
+    "models": "a85beb04e11802872f2f9719c27a71fa5fc1c76951b43145b8bf47fa16e9adb7",
+    "publication": "5bfdd21d58b7e13188fcd94a51f7d78595e6b36390efb6f134da5b7ca34773de",
+    "baselines": "fa3131699236cadee38b460bdceb0ee1876a90eda06583af09b15b831e446591",
+    "rates": "40a8e3bc18533a5ee8c2190e21139f7b97ce263001d1e947b06b35b01b6512c6",
+    "assessment": "cd2983f934624676a899333d852c042c90d52d5869589d83dce76ee258edd2b5"
+  }
+}

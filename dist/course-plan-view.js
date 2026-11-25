@@ -1,15 +1,15 @@
 /* Course-first presentation of the existing ledger. No new awards or matches. */
 (function (root, factory) {
   const common = typeof module === 'object' && module.exports;
-  const api = factory(common ? require('./planner.js') : root.DegreePlanner);
+  const api = factory(common ? require('./planner.js') : root.DegreePlanner, common ? require('./provider-registry.js') : root.DegreeCreditProviders);
   if (common) module.exports = api;
   else root.DegreeCoursePlanView = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function (Planner) {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (Planner, Providers) {
   'use strict';
   const list = value => Array.isArray(value) ? value : [];
   const text = value => typeof value === 'string' ? value.trim() : '';
   const key = value => text(value).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
-  const providerKey = value => ({sophialearning:'sophia',sophiaorg:'sophia',collegelevelexaminationprogram:'clep'}[key(value)] || key(value));
+  const providerKey = value => Providers ? Providers.key(value) : ({sophialearning:'sophia',sophiaorg:'sophia',collegelevelexaminationprogram:'clep'}[key(value)] || key(value));
   const known = value => typeof value === 'number' && Number.isFinite(value) && value > 0;
   // Validate against the complete, original ledger before displaying actual
   // earned credit instead of native course weight. Section subsets are views,
@@ -58,6 +58,7 @@
     return values.length > 0 && codes(right).some(code => values.includes(code));
   }
   function actualCourseURL(value, provider) {
+    if (Providers) return Providers.courseURL(value, provider);
     const url = safeURL(value); if (!url) return null;
     const u = new URL(url), host = u.hostname.toLowerCase().replace(/^www\./,''), path = u.pathname.replace(/\/+$/,'');
     if (/\.(?:pdf|docx?|xlsx?)(?:$|\?)/i.test(path) || /degreeforum|reddit|acenet\.edu/.test(host)) return null;
@@ -78,7 +79,7 @@
     const matches = list(catalog?.courses).filter(course => sameSource(option,course));
     const courseURLs = unique(matches.map(course => actualCourseURL(course.url,provider)));
     const courseUrl = courseURLs.length === 1 ? courseURLs[0] : actualCourseURL(option?.courseUrl || option?.url,provider);
-    let providerUrl = providerDirectories[providerKey(provider)] || null;
+    let providerUrl = Providers?.directory(provider) || providerDirectories[providerKey(provider)] || null;
     if(providerKey(provider)==='christianleadersinstitute'&&safeURL(option?.providerDirectoryUrl)){const directory=new URL(option.providerDirectoryUrl);if(directory.hostname==='christianleaders.org'&&directory.pathname==='/course/index.php'&&/^\d+$/.test(directory.searchParams.get('categoryid')||''))providerUrl=directory.href;}
     return {courseUrl:courseUrl || null,providerUrl,providerLinkLabel:providerKey(provider) === 'clep' ? 'Browse CLEP exams' : 'Find course at '+provider};
   }

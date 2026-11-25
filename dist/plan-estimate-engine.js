@@ -33,7 +33,16 @@
    if(!keys||keys.some(key=>!finite(price[key])||price[key]<=0)||price.type==='banded-term'&&(!Number.isInteger(price.bandMin)||!Number.isInteger(price.bandMax)||price.bandMin<1||price.bandMax<price.bandMin||entry.pace.max>price.bandMax)||price.type==='threshold-credit'&&(!Number.isInteger(price.fullTimeMin)||price.fullTimeMin<1))throw Error('A reviewed university rate must have a supported, positive billing basis.');
   }
   for(const provider of rates.providers){
-   if(!text(provider.provider)||providers.has(provider.provider)||!['subscription','exam'].includes(provider.type)||!finite(provider.amount)||provider.amount<0||!bound(provider))throw Error('Every provider price needs one nonnegative sourced price.');
+   if(!text(provider.provider)||providers.has(provider.provider)||!['subscription','exam','per-course'].includes(provider.type)||!bound(provider)||provider.type!=='per-course'&&(!finite(provider.amount)||provider.amount<0))throw Error('Every provider price needs one nonnegative sourced price.');
+   if(provider.type==='per-course'){
+    const identities=new Set();
+    if(provider.amount!==undefined||provider.currency!=='USD'||!text(provider.label)||!Array.isArray(provider.courseQuotes)||!provider.courseQuotes.length||provider.courseQuotes.length>1000)throw Error('Per-course prices need explicit original-course quotes, without a generic fallback price.');
+    for(const quote of provider.courseQuotes){
+     const version=typeof quote?.courseVersion==='number'&&Number.isSafeInteger(quote.courseVersion)?String(quote.courseVersion):text(quote?.courseVersion),key=quote?.code+'|'+version;
+     if(!text(quote?.code)||!version||identities.has(key)||!finite(quote.amount)||quote.amount<0||quote.currency!=='USD'||!finite(quote.sourceCredits)||quote.sourceCredits<=0||!['semester','quarter','competency-unit'].includes(quote.sourceCreditSystem)||!validDate(quote.recommendationStart)||!validDate(quote.recommendationEnd)||quote.recommendationStart>quote.recommendationEnd||!validDate(quote.checkedOn)||quote.checkedOn>rates.checkedOn||quote.checkedOn<quote.recommendationStart||quote.checkedOn>quote.recommendationEnd||!bound(quote))throw Error('A course quote needs a unique exact original-course/version, credits, active recommendation and price source.');
+     identities.add(key);
+    }
+   }
    if(provider.packages!==undefined&&(!Array.isArray(provider.packages)||!provider.packages.length||provider.type!=='subscription'||provider.packages.some(item=>!Number.isInteger(item.months)||item.months<1||item.months>24||!finite(item.amount)||item.amount<=0)))throw Error('Prepaid memberships need positive sourced month and price quantities.');
    providers.add(provider.provider);
   }
@@ -89,16 +98,28 @@
     // A source course may cover several receiving requirements (including CUs).
     // Charge its membership/exam once, without converting receiving CUs to source credits.
     const key=option.provider+'|'+option.code;
-    if(!courses.has(key))courses.set(key,{provider:option.provider,code:option.code});
+    if(!courses.has(key))courses.set(key,{provider:option.provider,code:option.code,options:[]});
+    courses.get(key).options.push(option);
    }
    if(!near(total,program.totalCredits))throw Error('Every degree unit must be accounted for once.');
    const providerBreakdown=[];let outsideMonths={min:0,max:0},outsideCosts={min:0,max:0};
    for(const provider of unique([...courses.values()].map(course=>course.provider)).sort()){
-    const count=[...courses.values()].filter(course=>course.provider===provider).length,price=rates.providers.find(item=>item.provider===provider),months={min:Math.ceil(count/outsideMax),max:Math.ceil(count/outsideMin)};
+    const selectedCourses=[...courses.values()].filter(course=>course.provider===provider),count=selectedCourses.length,price=rates.providers.find(item=>item.provider===provider),months={min:Math.ceil(count/outsideMax),max:Math.ceil(count/outsideMin)};
     outsideMonths=add(outsideMonths,months);
     if(!price){const unpriced=list(rates.unpricedProviders).find(item=>item.provider===provider);if(unpriced){unpriced.sourceIds.forEach(id=>sourceIds.add(id));missing.push(...unpriced.missing);}else missing.push(provider+' course prices are not included.');providerBreakdown.push({provider,courses:count,months,cost:null});continue;}
     price.sourceIds.forEach(id=>sourceIds.add(id));
-    const cost=price.type==='subscription'?{min:subscriptionCost(price,months.min),max:subscriptionCost(price,months.max)}:{min:money(count*price.amount),max:money(count*price.amount)};
+    let cost;
+    if(price.type==='per-course'){
+     let total=0;const unknown=[];
+     for(const course of selectedCourses){
+      const quotes=price.courseQuotes.filter(quote=>quote.code===course.code&&course.options.every(option=>String(option.courseVersion??'')===String(quote.courseVersion)&&finite(option.sourceCredits)&&near(option.sourceCredits,quote.sourceCredits)&&option.sourceCreditSystem===quote.sourceCreditSystem&&option.recommendationStart===quote.recommendationStart&&option.recommendationEnd===quote.recommendationEnd));
+      if(quotes.length!==1){unknown.push(course.code);continue;}
+      total+=quotes[0].amount;quotes[0].sourceIds.forEach(id=>sourceIds.add(id));
+     }
+     if(unknown.length){missing.push(provider+' individual-course prices are not included for this basket because the exact source-course version, original credits or purchase quote is missing for '+unknown.join(', ')+'.');cost=null;}
+     else cost={min:money(total),max:money(total)};
+    }else cost=price.type==='subscription'?{min:subscriptionCost(price,months.min),max:subscriptionCost(price,months.max)}:{min:money(count*price.amount),max:money(count*price.amount)};
+    if(!cost){providerBreakdown.push({provider,courses:count,months,cost:null,priceLabel:price.label});missing.push(...list(price.missing));continue;}
     outsideCosts=add(outsideCosts,cost);providerBreakdown.push({provider,courses:count,months,cost,priceLabel:price.label});
     missing.push(...list(price.missing));
    }
@@ -116,6 +137,7 @@
    notes.push(...list(entry.notes));
    if(providerBreakdown.some(item=>item.provider==='Study.com'))notes.push('Study.com uses the full College Saver Pro library price; an eligible lower-priced membership may reduce your cost.');
    if(providerBreakdown.some(item=>item.provider==='Sophia'))notes.push('Sophia uses the lowest published mix of monthly, four-month and annual memberships for the assumed study time. Prepaid plans require the upfront payment; promotions and tax are excluded.');
+   for(const provider of rates.providers.filter(price=>price.type==='per-course'&&providerBreakdown.some(item=>item.provider===price.provider)))notes.push(provider.provider+': '+provider.label,...list(provider.notes));
    if(conditionalUnits)notes.push(conditionalUnits+' proposed outside units retain the eligibility conditions shown on their course rows.');
    return{available:true,status:providerBreakdown.some(item=>!item.cost)?'partial-range':'planning-range',programId:program.id,rateEntryId:entry.id,checkedOn:rates.checkedOn,...(entry.populationLabel?{rateScope:entry.populationLabel}:{}),
     costs:{knownRange:add(universityCombined,outsideCosts),universityTuition,universityFees,outsideCourses:providerBreakdown.some(item=>!item.cost)?null:outsideCosts,providerBreakdown,missing:unique(missing),currency:'USD',complete:false,scope:'known-remaining-course-charges-before-aid'},

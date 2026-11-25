@@ -12,8 +12,8 @@
   "totalCredits": 120,
   "review": {
     "status": "reviewed",
-    "reviewer": "Claude (pathway factory)",
-    "reviewedOn": "2026-11-23"
+    "reviewer": "Codex (independent Study.com identity and receiving-map review)",
+    "reviewedOn": "2026-11-25"
   },
   "sources": [
     {
@@ -109,7 +109,7 @@
       "capture": "content/source-captures/186d4e3a3fda7a15.txt"
     },
     {
-      "id": "wgu-bsswe-study-4424-v240",
+      "id": "wgu-bsswe-study-4424-v242",
       "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424",
       "title": "WGU approved Study.com receiving map for BSSWE 202610",
       "kind": "university",
@@ -124,15 +124,15 @@
         "catalogYear": "202610"
       },
       "provider": "Study.com",
-      "checked": "2026-11-23",
+      "checked": "2026-11-25",
       "evidenceType": "official-receiving-school-equivalency",
       "programId": 254,
       "catalogTerm": "202610",
       "agreementId": 4424,
-      "agreementRecordVersion": 240,
+      "agreementRecordVersion": 242,
       "published": true,
       "approvalStatus": "APPROVED",
-      "capture": "content/source-captures/3138982ad34dd8f4.txt"
+      "capture": "content/source-captures/fded09837aae8641.txt"
     },
     {
       "id": "wgu-bsswe-straighterline-547-v121",
@@ -207,8 +207,8 @@
       "sourceIds": [
         "wgu-bsswe-202610-metadata-20261123",
         "wgu-bsswe-sophia-7110-v236",
+        "wgu-bsswe-study-4424-v242",
         "wgu-bsswe-saylor-671-v108",
-        "wgu-bsswe-study-4424-v240",
         "wgu-bsswe-straighterline-547-v121"
       ]
     }
@@ -221,11 +221,11 @@
     ],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
-      "Outside options come only from WGU's current published partner agreements for BSSWE catalog 202610 (program 254), captured 2026-11-23. Approved partner courses without an independently verified provider identity, and awards that need several source courses together, are held out of the plan.",
+      "Outside options come only from WGU's published partner agreements for BSSWE catalog 202610 (program 254). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
       "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
       "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
     ],
-    "mappingCheckedOn": "2026-11-23",
+    "mappingCheckedOn": "2026-11-25",
     "pricing": {
       "model": "subscription",
       "amount": 4125,
@@ -511,15 +511,15 @@
       }
     },
     "transferEvidenceReview": {
-      "id": "wgu-current-agreement-ledgers-2026-11-23",
-      "checkedOn": "2026-11-23",
+      "id": "wgu-source-and-agreement-expansion-2026-11-25",
+      "checkedOn": "2026-11-25",
       "programId": 254,
       "catalog": "202610",
       "receivingClaimsReviewed": 54,
-      "sourceIdentitiesReusedByExactProviderCode": 25,
+      "sourceIdentitiesReusedByExactProviderCode": 46,
       "sourceIds": [
         "wgu-bsswe-sophia-7110-v236",
-        "wgu-bsswe-study-4424-v240",
+        "wgu-bsswe-study-4424-v242",
         "wgu-bsswe-straighterline-547-v121",
         "wgu-bsswe-saylor-671-v108"
       ],
@@ -561,6 +561,7 @@
             "SOPH-0095",
             "SOPH-0096"
           ],
+          "sourceIdentityConflictsHeld": [],
           "multiSourceRequirementsHeld": [],
           "agreementId": 7110,
           "agreementRecordVersion": 236,
@@ -570,42 +571,55 @@
           "officialReceivingClaimsReviewed": 20,
           "approvedSourceCodeCount": 69,
           "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0006",
             "SDCM-0009",
             "SDCM-0016",
-            "SDCM-0025",
+            "SDCM-0017",
+            "SDCM-0028",
+            "SDCM-0034",
+            "SDCM-0042",
             "SDCM-0057",
+            "SDCM-0058",
+            "SDCM-0068",
             "SDCM-0089",
+            "SDCM-0196",
+            "SDCM-0199",
+            "SDCM-0201",
+            "SDCM-0212",
+            "SDCM-0213",
+            "SDCM-0216",
+            "SDCM-0219",
+            "SDCM-0220",
+            "SDCM-0240",
+            "SDCM-0249",
+            "SDCM-0253",
+            "SDCM-0255",
+            "SDCM-0259",
             "SDCM-0265"
           ],
-          "selectableReceivingPlacements": 6,
+          "selectableReceivingPlacements": 27,
           "unknownSourceIdentityCodesHeld": [
-            "SDCM-0006",
             "SDCM-0011",
             "SDCM-0012",
-            "SDCM-0017",
             "SDCM-0018",
             "SDCM-0019",
             "SDCM-0020",
             "SDCM-0021",
-            "SDCM-0028",
+            "SDCM-0025",
             "SDCM-0032",
-            "SDCM-0034",
             "SDCM-0038",
             "SDCM-0039",
             "SDCM-0040",
             "SDCM-0041",
-            "SDCM-0042",
             "SDCM-0043",
             "SDCM-0044",
             "SDCM-0045",
             "SDCM-0048",
             "SDCM-0053",
-            "SDCM-0058",
             "SDCM-0060",
             "SDCM-0065",
             "SDCM-0066",
             "SDCM-0067",
-            "SDCM-0068",
             "SDCM-0069",
             "SDCM-0101",
             "SDCM-0102",
@@ -628,24 +642,20 @@
             "SDCM-0186",
             "SDCM-0194",
             "SDCM-0195",
-            "SDCM-0196",
-            "SDCM-0199",
-            "SDCM-0201",
-            "SDCM-0212",
-            "SDCM-0213",
-            "SDCM-0216",
-            "SDCM-0219",
-            "SDCM-0220",
-            "SDCM-0240",
-            "SDCM-0249",
-            "SDCM-0252",
-            "SDCM-0253",
-            "SDCM-0255",
-            "SDCM-0259"
+            "SDCM-0252"
+          ],
+          "sourceIdentityConflictsHeld": [
+            {
+              "receivingCode": "C955",
+              "sourceCode": "SDCM-0025",
+              "partnerCourse": "*Statistics 101 (SDCM-0068) or Business 212 (SDCM-0025)",
+              "independentProviderCourse": "Business 103: Introductory Business Law",
+              "reason": "The university row names a different provider course than the independently verified identifier. No correction or equivalency is inferred."
+            }
           ],
           "multiSourceRequirementsHeld": [],
           "agreementId": 4424,
-          "agreementRecordVersion": 240,
+          "agreementRecordVersion": 242,
           "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424"
         },
         "StraighterLine": {
@@ -684,6 +694,7 @@
             "OOSL-0128",
             "OOSL-0129"
           ],
+          "sourceIdentityConflictsHeld": [],
           "multiSourceRequirementsHeld": [],
           "agreementId": 547,
           "agreementRecordVersion": 121,
@@ -708,6 +719,7 @@
             "SAYA-0016",
             "SAYA-0018"
           ],
+          "sourceIdentityConflictsHeld": [],
           "multiSourceRequirementsHeld": [],
           "agreementId": 671,
           "agreementRecordVersion": 108,
@@ -722,7 +734,7 @@
     "wgu-bsswe-202610-metadata-20261123",
     "wgu-bsswe-transfer-guidelines-20261123",
     "wgu-bsswe-sophia-7110-v236",
-    "wgu-bsswe-study-4424-v240",
+    "wgu-bsswe-study-4424-v242",
     "wgu-bsswe-straighterline-547-v121",
     "wgu-bsswe-saylor-671-v108",
     "wgu-undergraduate-institutional-catalog-202611",
@@ -730,17 +742,38 @@
     "wgu-global-sophia--soph-0080-current-provider-2026-11-18",
     "wgu-global-sophia--soph-0080-current-ace-2026-11-18",
     "wgu-global-sophia--soph-0080-current-syllabus-2026-11-18",
+    "study-software-identity-sdcm-0034-2026-11-25",
     "saylor-current-provider-credit-list-20261120",
     "wgu-sophia-business-current",
-    "study-course-sdcm-0025-2026-11",
+    "study-software-identity-sdcm-0068-2026-11-25",
+    "study-software-identity-sdcm-0042-2026-11-25",
+    "study-software-identity-sdcm-0017-2026-11-25",
     "study-current-sdcm-0057-2026-11-20",
     "study-current-sdcm-0089-2026-11-20",
+    "study-software-identity-sdcm-0249-2026-11-25",
+    "study-software-identity-sdcm-0220-2026-11-25",
+    "study-software-identity-sdcm-0199-2026-11-25",
+    "study-software-identity-sdcm-0213-2026-11-25",
+    "study-software-identity-sdcm-0219-2026-11-25",
+    "study-software-identity-sdcm-0058-2026-11-25",
     "sophia-soph-0083-current-offer",
     "sophia-soph-0083-current-offer-syllabus",
+    "study-software-identity-sdcm-0006-2026-11-25",
     "study-course-sdcm-0009-2026-11",
+    "study-software-identity-sdcm-0212-2026-11-25",
+    "study-software-identity-sdcm-0240-2026-11-25",
+    "study-software-ace-sdcm-0240-v3-2026-11-25",
+    "study-software-identity-sdcm-0196-2026-11-25",
+    "study-software-identity-sdcm-0201-2026-11-25",
     "straighterline-oosl-0015-course-page-2026-11-20",
+    "study-software-identity-sdcm-0028-2026-11-25",
+    "study-software-identity-sdcm-0255-2026-11-25",
+    "study-software-identity-sdcm-0259-2026-11-25",
+    "study-software-ace-sdcm-0259-v1-2026-11-25",
+    "study-software-identity-sdcm-0216-2026-11-25",
     "study-current-sdcm-0016-2026-11-20",
-    "study-course-sdcm-0265-2026-11"
+    "study-course-sdcm-0265-2026-11",
+    "study-software-identity-sdcm-0253-2026-11-25"
   ],
   "requirements": [
     {"id":"bsswe-mathematics-for-programmers","code":"E064","title":"Mathematics for Programmers","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"mathematics-content","curriculumAreaEvidence":{"areaOfStudy":"Mathematics Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E064\",\"courseName\":\"Mathematics for Programmers\",\"courseDescription\":\"This course bridges mathematics and programming by using Python to develop mathematical reasoning skills. Students create and evaluate functions to model relationships, analyze and graph algebraic and trigonometric functions, and solve problems that build readiness for calculus and object-oriented programming while using computational tools to explore patterns, precision, and real-world applications.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Mathematics Content\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E064\",\"transferArea\":\"Non-Transferable\""}]},

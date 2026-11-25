@@ -17,6 +17,7 @@ import {resolve,join} from 'node:path';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
 import {stringifyKit,slug,isMain,root} from './pathway-factory/lib.mjs';
+import {loadStudyExpansion,applyStudyExpansion,studyIdentityMatchesReceivingLabel} from './wgu-study-expansion.mjs';
 
 export const REVIEW={id:'wgu-current-agreement-ledgers-2026-11-23',checkedOn:'2026-11-23',reviewer:'Claude (pathway factory)'};
 const API='https://marketing-api-gateway.wgu.edu/partner/v1/public/';
@@ -106,8 +107,11 @@ export function recencyRules(notes,rows){
 
 export async function buildPrograms({check=false}={}){
   const index=await captureIndex();
+  const studyIdentityReview=await loadStudyExpansion();
+  const studyAgreementReview=JSON.parse(await readFile(resolve(root,'content/reuse/wgu-study-agreement-review-2026-11-25.json'),'utf8'));
+  assert.equal(studyAgreementReview.agreementId,4424);assert.equal(studyAgreementReview.provider,'Study.com');assert.equal(studyAgreementReview.checkedOn,'2026-11-25');
   const providerDocs=new Map();
-  for(const name of await readdir(resolve(root,'content/pathway-kits/providers'))){const doc=JSON.parse(await readFile(resolve(root,'content/pathway-kits/providers',name),'utf8'));providerDocs.set(doc.provider,doc);}
+  for(const name of await readdir(resolve(root,'content/pathway-kits/providers'))){let doc=JSON.parse(await readFile(resolve(root,'content/pathway-kits/providers',name),'utf8'));if(doc.provider==='Study.com')doc=applyStudyExpansion(doc,studyIdentityReview);providerDocs.set(doc.provider,doc);}
   const identity=(provider,code)=>providerDocs.get(provider)?.courses.find(c=>c.code===code);
   const usable=course=>course&&course.sourceCreditStatus==='verified'&&course.sourceCredits>0&&course.sourceCreditSystem==='semester'&&(!course.recommendationEnd||course.recommendationEnd>=REVIEW.checkedOn)&&(!course.recommendationStart||course.recommendationStart<=REVIEW.checkedOn);
   const equivalencies=JSON.parse(await readFile(join(kitDir,'equivalencies.json'),'utf8'));
@@ -155,9 +159,15 @@ export async function buildPrograms({check=false}={}){
     for(const [provider,info] of Object.entries(PROVIDERS)){
       const agreementId=info.agreements[config.college],cap=await captured(index,urls.agreement(agreementId)),ag=cap.json;
       assert(ag.id===agreementId&&ag.published===true&&ag.status==='APPROVED'&&ag.college.code===config.college&&JSON.parse(ag.agreementPrograms).includes(config.programId),`${config.code}: ${provider} agreement ${agreementId} must be published, approved and list the program`);
+      let agreementChecked=REVIEW.checkedOn,agreementReviewId=REVIEW.id;
+      if(provider==='Study.com'&&agreementId===studyAgreementReview.agreementId){
+        assert.equal(cap.sha256,studyAgreementReview.sourceSha256,'New Study agreement content requires an explicit receiving review');assert.equal(ag.recordVersion,studyAgreementReview.agreementRecordVersion);
+        assert(studyAgreementReview.scope.programs.some(p=>p.programId===config.programId&&p.programCode===config.code&&p.catalog===config.catalog),'Receiving review must cover this exact program/catalog');
+        agreementChecked=studyAgreementReview.checkedOn;agreementReviewId=studyAgreementReview.id;
+      }
       const sid=`${prefix}-${info.slug}-${agreementId}-v${ag.recordVersion}`;
-      agreementSources[provider]={id:sid,url:cap.url,title:`WGU approved ${provider} receiving map for ${config.code} ${config.catalog}`,kind:'university',roles:['receiving-map'],scope:{schoolName:SCHOOL,programName:existing.title,level:'bachelor',modality:'online',catalogYear:config.catalog},provider,checked:REVIEW.checkedOn,evidenceType:'official-receiving-school-equivalency',programId:config.programId,catalogTerm:config.catalog,agreementId,agreementRecordVersion:ag.recordVersion,published:true,approvalStatus:'APPROVED',capture:cap.capture};
-      const cov={officialReceivingClaimsReviewed:0,approvedSourceCodes:new Set(),selectable:new Set(),selectableReceivingPlacements:0,held:new Set(),multiSourceRequirementsHeld:[],agreementId,agreementRecordVersion:ag.recordVersion,sourceUrl:cap.url};
+      agreementSources[provider]={id:sid,url:cap.url,title:`WGU approved ${provider} receiving map for ${config.code} ${config.catalog}`,kind:'university',roles:['receiving-map'],scope:{schoolName:SCHOOL,programName:existing.title,level:'bachelor',modality:'online',catalogYear:config.catalog},provider,checked:agreementChecked,evidenceType:'official-receiving-school-equivalency',programId:config.programId,catalogTerm:config.catalog,agreementId,agreementRecordVersion:ag.recordVersion,published:true,approvalStatus:'APPROVED',capture:cap.capture};
+      const cov={officialReceivingClaimsReviewed:0,approvedSourceCodes:new Set(),selectable:new Set(),selectableReceivingPlacements:0,held:new Set(),sourceIdentityConflictsHeld:[],multiSourceRequirementsHeld:[],agreementId,agreementRecordVersion:ag.recordVersion,sourceUrl:cap.url};
       for(const pathway of ag.agreementPathways)for(const mapping of pathway.pathwayMappings){
         if(mapping.program.id!==config.programId)continue;
         const receiving=requirements.find(r=>r.code===pathway.pamsBannerCode);
@@ -169,12 +179,15 @@ export async function buildPrograms({check=false}={}){
         if(!expression.executableAsSingleCourse){cov.multiSourceRequirementsHeld.push({receivingCode:receiving.code,partnerCourse:clean(mapping.partnerCourse),reason:'The award requires several original source courses; no single course can satisfy the complete receiving requirement.'});continue;}
         for(const code of expression.codes){
           if(!usable(identity(provider,code))){cov.held.add(code);continue;}
+          if(provider==='Study.com'&&!studyIdentityMatchesReceivingLabel(identity(provider,code),mapping.partnerCourse,code)){
+            cov.held.add(code);cov.sourceIdentityConflictsHeld.push({receivingCode:receiving.code,sourceCode:code,partnerCourse:clean(mapping.partnerCourse),independentProviderCourse:identity(provider,code).providerCourseCode||identity(provider,code).title,reason:'The university row names a different provider course than the independently verified identifier. No correction or equivalency is inferred.'});continue;
+          }
           cov.selectable.add(code);cov.selectableReceivingPlacements++;
           const conditionIds=[exact,oneCourse,...recencyIds.filter(({rule})=>rule.appliesTo==='all-outside-courses'||rule.codes.includes(receiving.code)).map(({id})=>id)];
-          placed.push({id:`${info.slug}-${code.toLowerCase()}-to-${receiving.code.toLowerCase()}-${config.slug}`,provider,code,status:'published',credits:receiving.credits,creditSystem:'competency-unit',receivingCode:receiving.code,receivingTitle:receiving.title,sourceIds:[sid],evidence:'published',evidenceType:'official-receiving-school-equivalency',creditOrigin:'alternative',sourceType:'alternative',conditionSourceIds:[src.metadata.id],mappingChecked:REVIEW.checkedOn,mappingReviewId:REVIEW.id,universityMapRecord:{programId:config.programId,catalogTerm:config.catalog,agreementId,agreementRecordVersion:ag.recordVersion,pathwayId:pathway.id,pathwayRecordVersion:pathway.recordVersion,mappingId:mapping.id,mappingRecordVersion:mapping.recordVersion},conditionIds,quotes:[{sourceId:sid,text:rawRecord(cap.text,`{"id":${mapping.id},"program":{"id":${config.programId},"pamsProgramCode":"${config.code}"},"partnerCourse":`,'"partnerCourse":')}],scope:{programs:[config.slug]},placements:{[config.slug]:{optionId:`${prefix}-${code.toLowerCase()}-${receiving.code.toLowerCase()}`}}});
+          placed.push({id:`${info.slug}-${code.toLowerCase()}-to-${receiving.code.toLowerCase()}-${config.slug}`,provider,code,status:'published',credits:receiving.credits,creditSystem:'competency-unit',receivingCode:receiving.code,receivingTitle:receiving.title,sourceIds:[sid],evidence:'published',evidenceType:'official-receiving-school-equivalency',creditOrigin:'alternative',sourceType:'alternative',conditionSourceIds:[src.metadata.id],mappingChecked:agreementChecked,mappingReviewId:agreementReviewId,universityMapRecord:{programId:config.programId,catalogTerm:config.catalog,agreementId,agreementRecordVersion:ag.recordVersion,pathwayId:pathway.id,pathwayRecordVersion:pathway.recordVersion,mappingId:mapping.id,mappingRecordVersion:mapping.recordVersion},conditionIds,quotes:[{sourceId:sid,text:rawRecord(cap.text,`{"id":${mapping.id},"program":{"id":${config.programId},"pamsProgramCode":"${config.code}"},"partnerCourse":`,'"partnerCourse":')}],scope:{programs:[config.slug]},placements:{[config.slug]:{optionId:`${prefix}-${code.toLowerCase()}-${receiving.code.toLowerCase()}`}}});
         }
       }
-      coverage[provider]={officialReceivingClaimsReviewed:cov.officialReceivingClaimsReviewed,approvedSourceCodeCount:cov.approvedSourceCodes.size,independentlyVerifiedSelectableSourceCodes:[...cov.selectable].sort(),selectableReceivingPlacements:cov.selectableReceivingPlacements,unknownSourceIdentityCodesHeld:[...cov.held].filter(c=>!cov.selectable.has(c)).sort(),multiSourceRequirementsHeld:cov.multiSourceRequirementsHeld,agreementId,agreementRecordVersion:ag.recordVersion,sourceUrl:cap.url};
+      coverage[provider]={officialReceivingClaimsReviewed:cov.officialReceivingClaimsReviewed,approvedSourceCodeCount:cov.approvedSourceCodes.size,independentlyVerifiedSelectableSourceCodes:[...cov.selectable].sort(),selectableReceivingPlacements:cov.selectableReceivingPlacements,unknownSourceIdentityCodesHeld:[...cov.held].filter(c=>!cov.selectable.has(c)).sort(),sourceIdentityConflictsHeld:cov.sourceIdentityConflictsHeld,multiSourceRequirementsHeld:cov.multiSourceRequirementsHeld,agreementId,agreementRecordVersion:ag.recordVersion,sourceUrl:cap.url};
     }
     // A provider course may be approved for several WGU courses; the program's single-award rule keeps one use.
     placed.sort((a,b)=>a.receivingCode.localeCompare(b.receivingCode)||a.provider.localeCompare(b.provider)||a.code.localeCompare(b.code));
@@ -182,10 +195,14 @@ export async function buildPrograms({check=false}={}){
     const ceiling=total*0.75,capstone=capstones.length===1?requirements.find(r=>r.code===capstones[0].courseCode):null;
     const sections=[];for(const r of requirements){const parent=r.category,area=r.curriculumAreaEvidence.areaOfStudy,id=`${prefix}-${parent}-${slug(area)}`;let s=sections.find(x=>x.id===id);if(!s)sections.push(s={id,parentId:parent,title:area,credits:0,requirementIds:[],sourceId:src.ledger.id});s.credits+=r.credits;s.requirementIds.push(r.id);}
     const usedAgreementIds=[...new Set(placed.map(r=>r.sourceIds[0]))];
+    const mappingDate=Object.values(agreementSources).map(source=>source.checked).sort().at(-1)||REVIEW.checkedOn;
+    const identityDate=placed.map(row=>identity(row.provider,row.code)?.identityCheckedOn||REVIEW.checkedOn).sort().at(-1)||REVIEW.checkedOn;
+    const programReviewDate=[REVIEW.checkedOn,mappingDate,identityDate].sort().at(-1);
+    const summaryReviewId=programReviewDate>REVIEW.checkedOn?'wgu-source-and-agreement-expansion-2026-11-25':REVIEW.id;
     const modelFields={
       unresolved:['These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.','University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.'],
-      rulesNotes:['The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.',`Outside options come only from WGU's current published partner agreements for ${config.code} catalog ${config.catalog} (program ${config.programId}), captured ${REVIEW.checkedOn}. Approved partner courses without an independently verified provider identity, and awards that need several source courses together, are held out of the plan.`,'General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.',...Object.values(notes)],
-      mappingCheckedOn:REVIEW.checkedOn,
+      rulesNotes:['The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.',`Outside options come only from WGU's published partner agreements for ${config.code} catalog ${config.catalog} (program ${config.programId}). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.`,'General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.',...Object.values(notes)],
+      mappingCheckedOn:mappingDate,
       pricing:existing.modelFields.pricing,
       externalMaxCredits:ceiling,
       policySourceIds:['wgu-undergraduate-institutional-catalog-202611',...(capstone?['wgu-undergraduate-residency-policy-23797-20260918']:[]),src.metadata.id,src.ledger.id],
@@ -196,11 +213,11 @@ export async function buildPrograms({check=false}={}){
       curriculumReview:{status:'current-complete-named-ledger',programId:config.programId,programCode:config.code,catalog:config.catalog,recordVersion:record.recordVersion,ledgerSha256:hash,sourceIds:[src.metadata.id,src.ledger.id],checkedOn:REVIEW.checkedOn,outsideEquivalenciesReviewed:true},
       curriculumSections:sections,
       transferRules:{courseSpecificRecencyYears:Object.fromEntries(requirements.filter(r=>r.transferRecencyYears).map(r=>[r.code,r.transferRecencyYears])),recencySourceIds:[src.metadata.id],publishedNotes:notes,...(recency.some(r=>r.appliesTo==='all-outside-courses')?{allOutsideCoursesRecencyYears:5}:{})},
-      transferEvidenceReview:{id:REVIEW.id,checkedOn:REVIEW.checkedOn,programId:config.programId,catalog:config.catalog,receivingClaimsReviewed:Object.values(coverage).reduce((n,c)=>n+c.officialReceivingClaimsReviewed,0),sourceIdentitiesReusedByExactProviderCode:placed.length,sourceIds:Object.values(agreementSources).map(s=>s.id),studentCreditsAwarded:0,scope:'exact-program-receiving-awards-with-independent-shared-provider-identities',providerCoverage:coverage,allPossibleSourcesGloballyReviewed:false}
+      transferEvidenceReview:{id:summaryReviewId,checkedOn:programReviewDate,programId:config.programId,catalog:config.catalog,receivingClaimsReviewed:Object.values(coverage).reduce((n,c)=>n+c.officialReceivingClaimsReviewed,0),sourceIdentitiesReusedByExactProviderCode:placed.length,sourceIds:Object.values(agreementSources).map(s=>s.id),studentCreditsAwarded:0,scope:'exact-program-receiving-awards-with-independent-shared-provider-identities',providerCoverage:coverage,allPossibleSourcesGloballyReviewed:false}
     };
     if(!capstone)modelFields.unresolved.push(`WGU's current ${config.code} ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU.`);
     const program={kind:'pathway-kit-program',version:1,slug:config.slug,modelId:existing.modelId,routeIds:existing.routeIds,title:existing.title,level:'bachelor',catalog:config.catalog,totalCredits:total,
-      review:{status:'reviewed',reviewer:REVIEW.reviewer,reviewedOn:REVIEW.checkedOn},
+      review:{status:'reviewed',reviewer:programReviewDate>REVIEW.checkedOn?'Codex (independent Study.com identity and receiving-map review)':REVIEW.reviewer,reviewedOn:programReviewDate},
       sources:[src.ledger,src.metadata,src.guidelines,...Object.values(agreementSources)],
       quotes:[{sourceId:src.metadata.id,text:`"id":${config.programId},"pamsProgramCode":"${config.code}","programName":"${record.programName}"`}],
       policies:{alternativeMaxCredits:{value:ceiling,creditSystem:'competency-unit',sourceIds:['wgu-undergraduate-institutional-catalog-202611']},oneAwardPerSourceCourse:{value:true,basis:'WGU publishes that transfer courses may not be used to fulfill more than one course of study; every option placed in more than one requirement carries the single-award condition.',sourceIds:[src.metadata.id,...usedAgreementIds]}},

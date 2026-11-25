@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+ <title>Import a shared degree plan · DegreeSteps</title>
+ <link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="template-import.css">
+ <script src="course-assessment.js" defer></script><script src="planner.js" defer></script><script src="/provider-registry.js" defer></script><script src="guide-engine.js" defer></script><script src="program-catalog.js" defer></script><script src="sheet-state.js" defer></script><script src="audit-curriculum.js" defer></script><script src="template-import-engine.js" defer></script><script src="template-import-workflow.js" defer></script><script src="template-import.js" defer></script>
+ <script src="/site-header.js" defer></script><script src="/app-shell.js" defer></script>
+<link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/collection-design.css"><link rel="stylesheet" href="/ds-overlays.css"><script src="/growth-metrics.js" defer></script></head>
+<body class="template-import-page ds-experience ds-workspace-page ds-collection-page">
+ <main id="template-import-app">
+  <a class="ti-back" href="community.html">Community</a>
+  <h1>Import a shared degree plan.</h1>
+  <p class="ti-lead">Turn a spreadsheet into an editable plan. Start with one degree tab.</p>
+  <p id="ti-error" class="ti-error" role="alert" hidden></p><p id="ti-status" role="status" aria-live="polite"></p>
+  <section class="ti-card" id="ti-start" aria-labelledby="ti-file-title">
+   <h2 id="ti-file-title">Choose your spreadsheet</h2><p>Excel (.xlsx) or CSV. Files are read in this browser; the original workbook is not uploaded.</p>
+   <label class="ti-file">Choose file<input id="ti-file" type="file" accept=".xlsx,.csv,.tsv,text/csv,text/tab-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></label>
+   <p class="ti-help">Uploading your own completed courses? <a href="import-courses.html?from=courses">Import a transcript instead</a>.</p>
+  </section>
+  <section class="ti-card" id="ti-sheet-panel" aria-labelledby="ti-sheet-title" hidden><h2 id="ti-sheet-title">Choose one degree</h2><label for="ti-sheet">Degree tab<select id="ti-sheet"></select></label><p id="ti-sheet-help" class="ti-help"></p><button id="ti-review" type="button" class="ti-primary">Review this degree</button><button id="ti-cancel" type="button" class="ti-secondary">Cancel import</button></section>
+  <section id="ti-review-panel" hidden>
+   <div class="ti-card"><div class="ti-section-title"><h2>Review your draft</h2><button id="ti-change-sheet" class="ti-secondary" type="button">Change degree tab</button></div>
+    <p id="ti-count"></p><p id="ti-match" class="ti-match" hidden></p>
+    <p class="ti-notice">Course suggestions from the spreadsheet stay proposed. Its “Finished” labels do not mark any of your courses complete.</p>
+    <details id="ti-issues" hidden><summary>What was left out?</summary><ul id="ti-issue-list"></ul></details>
+    <div class="ti-table-wrap" tabindex="0" role="region" aria-label="Imported degree requirements"><table><thead><tr><th scope="col">Keep</th><th scope="col">Requirement</th><th scope="col">Credits / units</th><th scope="col">Proposed outside courses</th></tr></thead><tbody id="ti-rows"></tbody></table></div>
+   </div>
+   <form id="ti-form" class="ti-card"><h2>Confirm the degree</h2><div class="ti-fields">
+    <label>School<input name="school" maxlength="120" required autocomplete="organization"></label><label>Degree name<input name="title" maxlength="200" required></label>
+    <label>Degree or catalog link<input name="sourceUrl" type="url" maxlength="1500" required placeholder="https://www.college.edu/degree"></label><label>Catalog / version<input name="catalog" maxlength="200" placeholder="If known"></label>
+    <label>Degree level<select name="level" required><option value="">Choose</option><option value="associate">Associate</option><option value="bachelor">Bachelor’s</option><option value="master">Master’s</option><option value="doctorate">Doctorate</option><option value="specialist">Specialist</option></select></label>
+    <label>Credit units<select name="creditSystem" required><option value="">Choose</option><option value="semester">Semester credits</option><option value="quarter">Quarter credits</option><option value="competency-unit">Competency units</option></select></label>
+    <label>Degree total<input name="totalCredits" type="number" min="1" max="500" step="0.5" required></label><label>Study format<select name="modality"><option value="">Not sure</option><option value="online">Online</option><option value="campus">On campus</option></select></label>
+   </div><input name="programId" type="hidden"><label class="ti-confirm"><input id="ti-confirm" type="checkbox" required>I reviewed the degree and selected requirements. This is a draft plan, not completed coursework.</label>
+   <p class="ti-help">Continue creates a new private draft. Your current plan and saved courses stay as they are. You can edit the requirements before building it.</p>
+   <div class="ti-actions"><button id="ti-continue" class="ti-primary" type="submit">Continue to editable plan</button><button id="ti-download" class="ti-secondary" type="button">Download draft with suggestions</button></div>
+   <p class="ti-help">Downloaded suggestions include their source rows and choice or sequence notes. Importing does not publish or verify a community template.</p>
+   </form>
+  </section>
+ </main><noscript><p class="ti-card">Enable JavaScript to read the spreadsheet locally. Your existing plans have not changed.</p></noscript>
+</body></html>

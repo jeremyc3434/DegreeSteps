@@ -1,0 +1,1818 @@
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+<head><meta http-equiv="X-UA-Compatible" content="IE=11" /><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=10"/><script type='text/javascript'>var _browserisFlight = true;</script><meta name="GENERATOR" content="Microsoft SharePoint" /><meta http-equiv="Content-type" content="text/html; charset=utf-8" /><meta http-equiv="Expires" content="0" />
+	<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@ACEducation" />
+<meta name="twitter:creator" content="@ACEducation" />
+<meta name="twitter:title" content="Introduction to JavaScript" />
+<meta name="twitter:description" content="<div class=ExternalClassF33FB643633246D18E7C421984B10EC7>The course objective is to equip students with a solid understanding of JavaScript programming essentials and their practical implications in web development. By the conclusion of the course, students will have acquired the proficiency to navigate through JavaScript syntax, variables, and coding conventions, laying a robust foundation for further exploration. The curriculum emphasizes hands-on learning, enabling students to set up tailored development environments and effectively handle errors, debug code, and manage events. Additionally, students will develop problem-solving skills through practical applications, ensuring their ability to apply JavaScript concepts confidently in real-world scenarios. Overall, the course aims to empower students with the knowledge and skills necessary to excel in JavaScript programming and contribute effectively to web development projects.</div>" />
+<meta name="twitter:image" content="https://www.acenet.edu/PublishingImages/branding/general-branding/1600x900-ACE-Blue.png?RenditionID=14" />
+<meta property="og:url" content="https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=UPI+Study&cid=97b9b2ff-5a74-ef11-a671-00224808a070&oid=ef9a8446-5e28-ef11-840b-6045bd089f77" />
+<meta property="og:title" content="Introduction to JavaScript" />
+<meta property="og:description" content="<div class=ExternalClassF33FB643633246D18E7C421984B10EC7>The course objective is to equip students with a solid understanding of JavaScript programming essentials and their practical implications in web development. By the conclusion of the course, students will have acquired the proficiency to navigate through JavaScript syntax, variables, and coding conventions, laying a robust foundation for further exploration. The curriculum emphasizes hands-on learning, enabling students to set up tailored development environments and effectively handle errors, debug code, and manage events. Additionally, students will develop problem-solving skills through practical applications, ensuring their ability to apply JavaScript concepts confidently in real-world scenarios. Overall, the course aims to empower students with the knowledge and skills necessary to excel in JavaScript programming and contribute effectively to web development projects.</div>" />
+<meta property="og:image" content="https://www.acenet.edu/PublishingImages/branding/general-branding/1600x900-ACE-Blue.png?RenditionID=14" />
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" /><link rel="shortcut icon" href="/_catalogs/masterpage/ACE/img/favicon.ico?v=1596754199" /><link rel="apple-touch-icon" sizes="180x180" href="/_catalogs/masterpage/ACE/img/apple-touch-icon.png?v=1596754199" /><link rel="icon" type="image/png" sizes="32x32" href="/_catalogs/masterpage/ACE/img/favicon-32x32.png?v=1596754199" /><link rel="icon" type="image/png" sizes="16x16" href="/_catalogs/masterpage/ACE/img/favicon-16x16.png?v=1596754199" /><link rel="mask-icon" color="#00568b" href="/_catalogs/masterpage/ACE/img/safari-pinned-tab.svg?v=1596754199" /><meta name="theme-color" content="#ffffff" /><title>
+	
+	Course
+
+</title><script type="text/javascript">// <![CDATA[ 
+
+var g_SPOffSwitches={};
+// ]]>
+</script>
+<script type="text/javascript" src="/_layouts/15/1033/initstrings.js?rev=PwfqGMCAYeGaq4UXoAzNyA%3D%3DTAG0"></script>
+<script type="text/javascript" src="/_layouts/15/init.js?rev=XxkZ3sAcDPzNvew7IvbzZA%3D%3DTAG0"></script>
+<script type="text/javascript" src="/_catalogs/masterpage/ace/script/libs/minisp.js"></script>
+<script type="text/javascript" src="/_catalogs/masterpage/ace/script/libs/moment.min.js"></script>
+<script type="text/javascript" src="/_catalogs/masterpage/ace/script/libs/moment-timezone-with-data.js"></script>
+<script type="text/javascript" src="/_layouts/15/theming.js?rev=SuLUbbwTXcxFWOWLFUsOkw%3D%3DTAG0"></script>
+<script type="text/javascript" src="/ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvlnn5OTr28kvQHIFdxyuG62vYdYyazwRiEiYoBxpzfPY4TDYt9NcUdOxeCGJwHTCRmHxlKs2uWBp1MWQyyFO0LMBXiP6uzqZuz0_cRqMb3sspokFZwydsgByBGX8Nz9khVBaoc2nFlxtrKY8VAefSSw1&amp;t=ffffffffbec1863d"></script>
+<script type="text/javascript" src="/_layouts/15/blank.js?rev=1TzK%2BcvAq%2Bpak3ckRUYBmA%3D%3DTAG0"></script>
+<script type="text/javascript" src="/ScriptResource.axd?d=dwY9oWetJoJoVpgL6Zq8OPXWh7IfjiR5eHdO_jdqDhRxMmNQUt83CYkiEuh40b7YGKy1uZVx6dTKLoYx-hB-1I-uBwkccOqyt7wL982I5NxkDObsUynVifjWkM_DE9ux3FkzaHGJKhziwJaiQe61kQ5d3LXZfksclqM0Cf_-I141&amp;t=ffffffffbec1863d"></script>
+<script type="text/javascript">RegisterSod("require.js", "\u002f_layouts\u002f15\u002frequire.js?rev=bv3fWJhk0uFGpVwBxnZKNQ\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("strings.js", "\u002f_layouts\u002f15\u002f1033\u002fstrings.js?rev=tob137cgLCsvzDNjZIOCNQ\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("sp.res.resx", "\u002f_layouts\u002f15\u002f1033\u002fsp.res.js?rev=FnWveYddVjlqQYS2ZBOOzA\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("sp.runtime.js", "\u002f_layouts\u002f15\u002fsp.runtime.js?rev=VdcevEIl3BuKyjbMLqi4pw\u00253D\u00253DTAG0");RegisterSodDep("sp.runtime.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("sp.js", "\u002f_layouts\u002f15\u002fsp.js?rev=fneaJUhQSUrm5T93aggx1Q\u00253D\u00253DTAG0");RegisterSodDep("sp.js", "sp.runtime.js");RegisterSodDep("sp.js", "sp.ui.dialog.js");RegisterSodDep("sp.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("sp.init.js", "\u002f_layouts\u002f15\u002fsp.init.js?rev=orKfqZtyaaXcl2TjVXuruQ\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("sp.ui.dialog.js", "\u002f_layouts\u002f15\u002fsp.ui.dialog.js?rev=Mr4n2nObG\u00252FAkt1MW\u00252BZRzEw\u00253D\u00253DTAG0");RegisterSodDep("sp.ui.dialog.js", "sp.init.js");RegisterSodDep("sp.ui.dialog.js", "sp.res.resx");</script>
+<script type="text/javascript">RegisterSod("core.js", "\u002f_layouts\u002f15\u002fcore.js?rev=KWtjGbhWVxc11gAT6ColBQ\u00253D\u00253DTAG0");RegisterSodDep("core.js", "strings.js");</script>
+<script type="text/javascript">RegisterSod("menu.js", "\u002f_layouts\u002f15\u002fmenu.js?rev=x8H3gxPnnNO8LSdMoGAdbw\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("mQuery.js", "\u002f_layouts\u002f15\u002fmquery.js?rev=YtfyujoMfx6O3ztrwEczdg\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("callout.js", "\u002f_layouts\u002f15\u002fcallout.js?rev=liJhJ69R9i4LPi3xBzWVqg\u00253D\u00253DTAG0");RegisterSodDep("callout.js", "strings.js");RegisterSodDep("callout.js", "mQuery.js");RegisterSodDep("callout.js", "core.js");</script>
+<script type="text/javascript">RegisterSod("sp.core.js", "\u002f_layouts\u002f15\u002fsp.core.js?rev=NbLqBVP9giw5L7A1lbdleA\u00253D\u00253DTAG0");RegisterSodDep("sp.core.js", "strings.js");RegisterSodDep("sp.core.js", "sp.init.js");RegisterSodDep("sp.core.js", "core.js");</script>
+<script type="text/javascript">RegisterSod("clienttemplates.js", "\u002f_layouts\u002f15\u002fclienttemplates.js?rev=hykipyrBaiZRHvmDOQbz4g\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("sharing.js", "\u002f_layouts\u002f15\u002fsharing.js?rev=gZpajvvZfvSJv4mPPGgK8Q\u00253D\u00253DTAG0");RegisterSodDep("sharing.js", "strings.js");RegisterSodDep("sharing.js", "mQuery.js");RegisterSodDep("sharing.js", "clienttemplates.js");RegisterSodDep("sharing.js", "core.js");</script>
+<script type="text/javascript">RegisterSod("suitelinks.js", "\u002f_layouts\u002f15\u002fsuitelinks.js?rev=EPKn1gywQg\u00252BLjDFcpIyC2g\u00253D\u00253DTAG0");RegisterSodDep("suitelinks.js", "strings.js");RegisterSodDep("suitelinks.js", "core.js");</script>
+<script type="text/javascript">RegisterSod("clientforms.js", "\u002f_layouts\u002f15\u002fclientforms.js?rev=pzRT2kJbeG8h1YVIzltZaw\u00253D\u00253DTAG0");RegisterSodDep("clientforms.js", "strings.js");RegisterSodDep("clientforms.js", "clienttemplates.js");</script>
+<script type="text/javascript">RegisterSod("autofill.js", "\u002f_layouts\u002f15\u002fautofill.js?rev=AAwXLiQctdaxAmzb8Z\u00252Bynw\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("clientpeoplepicker.js", "\u002f_layouts\u002f15\u002fclientpeoplepicker.js?rev=Oj7Wr5MU\u00252FllmsIXsWt0naQ\u00253D\u00253DTAG0");RegisterSodDep("clientpeoplepicker.js", "strings.js");RegisterSodDep("clientpeoplepicker.js", "autofill.js");</script>
+<script type="text/javascript">RegisterSod("sp.taxonomy.js", "\u002f_layouts\u002f15\u002fsp.taxonomy.js?rev=2MPSrJryU9Tl\u00252BHm6tStI4A\u00253D\u00253DTAG0");RegisterSodDep("sp.taxonomy.js", "sp.js");RegisterSodDep("sp.taxonomy.js", "sp.runtime.js");</script>
+<script type="text/javascript">RegisterSod("ms.rte.js", "\u002f_layouts\u002f15\u002fms.rte.js?rev=wxFnFjlvC2uKYB6Hg\u00252BVJmw\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("sp.ui.rte.js", "\u002f_layouts\u002f15\u002fsp.ui.rte.js?rev=XgdiHVDU2rXdtZxg00XN\u00252Fw\u00253D\u00253DTAG0");RegisterSodDep("sp.ui.rte.js", "sp.core.js");RegisterSodDep("sp.ui.rte.js", "sp.res.resx");RegisterSodDep("sp.ui.rte.js", "ms.rte.js");</script>
+<script type="text/javascript">RegisterSod("scriptresources.resx", "\u002f_layouts\u002f15\u002fScriptResx.ashx?culture=en\u00252Dus\u0026name=ScriptResources\u0026rev=rIpp7zOrKGLrclgN8wx95g\u00253D\u00253D");</script>
+<script type="text/javascript">RegisterSod("scriptforwebtaggingui.js", "\u002f_layouts\u002f15\u002fscriptforwebtaggingui.js?rev=noSiQPhrdnXMB\u00252FDpPLpW3w\u00253D\u00253DTAG0");RegisterSodDep("scriptforwebtaggingui.js", "sp.js");RegisterSodDep("scriptforwebtaggingui.js", "sp.ui.rte.js");RegisterSodDep("scriptforwebtaggingui.js", "scriptresources.resx");</script>
+<script type="text/javascript">RegisterSod("clientrenderer.js", "\u002f_layouts\u002f15\u002fclientrenderer.js?rev=dHQXk17Rz879h6kUidQY3w\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("srch.resources.resx", "\u002f_layouts\u002f15\u002f1033\u002fsrch.resources.js?rev=vZPcBJM2l80oZNzRUCRQ4g\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("search.clientcontrols.js", "\u002f_layouts\u002f15\u002fsearch.clientcontrols.js?rev=0kzWZa2ML4l7a7MHCcE1DA\u00253D\u00253DTAG0");RegisterSodDep("search.clientcontrols.js", "sp.init.js");RegisterSodDep("search.clientcontrols.js", "clientrenderer.js");RegisterSodDep("search.clientcontrols.js", "srch.resources.resx");</script>
+<script type="text/javascript">RegisterSod("sp.search.js", "\u002f_layouts\u002f15\u002fsp.search.js?rev=\u00252BvHrA78L6X1lAlHvn7aiGg\u00253D\u00253DTAG0");RegisterSodDep("sp.search.js", "sp.init.js");RegisterSodDep("sp.search.js", "sp.runtime.js");</script>
+<script type="text/javascript">RegisterSod("ajaxtoolkit.js", "\u002f_layouts\u002f15\u002fajaxtoolkit.js?rev=I3jVxnVkBqeUZ\u00252FWA\u00252BgwTLg\u00253D\u00253DTAG0");RegisterSodDep("ajaxtoolkit.js", "search.clientcontrols.js");</script>
+<script type="text/javascript">RegisterSod("userprofile", "\u002f_layouts\u002f15\u002fsp.userprofiles.js?rev=J0M1pzLkfDXcJflabMvTYA\u00253D\u00253DTAG0");RegisterSodDep("userprofile", "sp.runtime.js");</script>
+<script type="text/javascript">RegisterSod("followingcommon.js", "\u002f_layouts\u002f15\u002ffollowingcommon.js?rev=M2fy99LQMbxS82WnuZO5jQ\u00253D\u00253DTAG0");RegisterSodDep("followingcommon.js", "strings.js");RegisterSodDep("followingcommon.js", "sp.js");RegisterSodDep("followingcommon.js", "userprofile");RegisterSodDep("followingcommon.js", "core.js");RegisterSodDep("followingcommon.js", "mQuery.js");</script>
+<script type="text/javascript">RegisterSod("profilebrowserscriptres.resx", "\u002f_layouts\u002f15\u002f1033\u002fprofilebrowserscriptres.js?rev=qwf69WaVc1mYlJLXqmZmVA\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("sp.ui.mysitecommon.js", "\u002f_layouts\u002f15\u002fsp.ui.mysitecommon.js?rev=vi2FkkN62itBr75inUpDkQ\u00253D\u00253DTAG0");RegisterSodDep("sp.ui.mysitecommon.js", "sp.init.js");RegisterSodDep("sp.ui.mysitecommon.js", "sp.runtime.js");RegisterSodDep("sp.ui.mysitecommon.js", "userprofile");RegisterSodDep("sp.ui.mysitecommon.js", "profilebrowserscriptres.resx");</script>
+<script type="text/javascript">RegisterSod("browserScript", "\u002f_layouts\u002f15\u002fnon_ie.js?rev=NTzMej3rM0mqvQiZYtcxeg\u00253D\u00253DTAG0");RegisterSodDep("browserScript", "strings.js");</script>
+<script type="text/javascript">RegisterSod("inplview", "\u002f_layouts\u002f15\u002finplview.js?rev=BdILV9QqY8lwHpw1wp\u00252BiWw\u00253D\u00253DTAG0");RegisterSodDep("inplview", "strings.js");RegisterSodDep("inplview", "core.js");RegisterSodDep("inplview", "clienttemplates.js");RegisterSodDep("inplview", "sp.js");</script>
+<script type="text/javascript">RegisterSod("datepicker.js", "\u002f_layouts\u002f15\u002fdatepicker.js?rev=eNVsWt1xS4Q0AWSjGw6k\u00252BA\u00253D\u00253DTAG0");RegisterSodDep("datepicker.js", "strings.js");</script>
+<script type="text/javascript">RegisterSod("sp.publishing.resources.resx", "\u002f_layouts\u002f15\u002f1033\u002fsp.publishing.resources.js?rev=DMFFOgImevDyKrjkZ97j\u00252FA\u00253D\u00253DTAG0");</script>
+<script type="text/javascript">RegisterSod("mediaplayer.js", "\u002f_layouts\u002f15\u002fmediaplayer.js?rev=gxqUx8AbAOA\u00252F8xAwIWw7qw\u00253D\u00253DTAG0");RegisterSodDep("mediaplayer.js", "sp.publishing.resources.resx");</script>
+<script type="text/javascript">RegisterSod("dragdrop.js", "\u002f_layouts\u002f15\u002fdragdrop.js?rev=y1D2IOpQ0ZnHNU38eDt38w\u00253D\u00253DTAG0");RegisterSodDep("dragdrop.js", "strings.js");</script>
+<script type="text/javascript">RegisterSod("quicklaunch.js", "\u002f_layouts\u002f15\u002fquicklaunch.js?rev=GGeEBHfDFCLKW78SEpomNw\u00253D\u00253DTAG0");RegisterSodDep("quicklaunch.js", "strings.js");RegisterSodDep("quicklaunch.js", "dragdrop.js");</script>
+<link type="text/xml" rel="alternate" href="/National-Guide/_vti_bin/spsdisco.aspx" />
+    
+
+    
+    <!--[minisp] 
+        <link id="CssLink-6045dd2c6fdf44f0bf0ca425915276be" rel="stylesheet" type="text/css" href="/_layouts/15/1033/styles/Themable/corev15.css?rev=mDUzGfgO2aHnLoh30SeNyw%3D%3DTAG0"/>
+<link id="CssLink-c618806ad8fa4d3f89e237b8f086fcf0" rel="stylesheet" type="text/css" href="/_catalogs/masterpage/ACE/style/ACE.generalcontentsidebar.min.css"/>
+<link id="CssLink-2ee25ceec34745079bf15aec91c24a19" rel="stylesheet" type="text/css" href="/_catalogs/masterpage/ACE/style/ACE.NationalGuideMain.min.css"/>
+<link id="CssLink-ca0dc4b887ce450e8405777b0d478dea" rel="stylesheet" type="text/css" href="/_catalogs/masterpage/ACE/style/ACE.NationalGuideCourse.min.css"/>
+<link id="CssLink-ae23cf1a0d2c4938b57c07495ef23266" rel="stylesheet" type="text/css" href="/Style%20Library/en-US/Themable/Core%20Styles/controls15.css"/>
+<link id="CssLink-81e7991f93ec470dbf57891414019f4a" rel="stylesheet" type="text/css" href="/_layouts/15/1033/styles/WebTaggingUI.css?rev=Xv8grnx1J4kXIwPgtrlP5g%3D%3DTAG0"/>
+<style id="SPThemeHideForms" type="text/css">body {opacity:0 !important}</style>
+    [/minisp]-->
+	
+	<script>minisp('/_catalogs/masterpage/ACE/style/core/');</script>
+	
+    <script>
+      window.supermoment = window.moment;
+    </script>
+    
+    
+
+    
+    <link rel="stylesheet" class="custom-style" href="/_layouts/15/ACE.WebParts/TileTypeColorStylesheet.aspx?v=1542386611" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" /><link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700" rel="stylesheet" />
+    <link rel="stylesheet" class="custom-style" href="/_catalogs/masterpage/ACE/style/SPBP.main.min.css?v=1596754199" />
+<link rel="stylesheet" class="custom-style" href="/_catalogs/masterpage/ACE/style/ACE.main.min.css?v=1596754199" />
+<link rel="stylesheet" class="custom-style" href="/_catalogs/masterpage/ACE/style/ACE.TextEditorStyles.css?v=1596572710" />
+   <link rel="stylesheet" class="custom-style" href="/_catalogs/masterpage/ACE/style/jquery-ui-datepicker.css?v=1543443882" />
+    
+
+    <style>        img[src*="spcommon.png"] {            width: 0;            height: 0;            padding-left: 271px;            padding-top: 268px;            background: url('/_catalogs/masterpage/ACE/img/spcommon-custom.png');        }
+	</style>
+
+    
+    
+    
+
+    
+    
+            
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="/National-Guide/_layouts/15/ACE.NationalGuide.WebParts/TileTypeColorStylesheetNG.aspx"/> 
+
+            
+<script type="text/javascript" src="/Style Library/Protiviti.RequiredMembership/SummaryLinks.js"></script>
+<link rel="stylesheet" type="text/css" href="/Style Library/Protiviti.RequiredMembership/SummaryLinks.css">
+<link rel="canonical" href="https://newprod.acenet.edu:443/National-Guide/Pages/Course.aspx?org=UPI+Study&amp;cid=97b9b2ff-5a74-ef11-a671-00224808a070&amp;oid=ef9a8446-5e28-ef11-840b-6045bd089f77" />
+            
+        
+        <!-- Google Tag Manager -->
+        <script>
+                        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                        })(window,document,'script','dataLayer','GTM-TBJVB8T');
+        </script>
+        <!-- End Google Tag Manager -->
+    
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="23308eca-35bc-4d50-89d3-7ede46921e58" data-blockingmode="auto" type="text/javascript" defer></script>
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBJVB8T"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <form method="post" action="./Course.aspx?org=UPI+Study&amp;cid=97b9b2ff-5a74-ef11-a671-00224808a070&amp;oid=ef9a8446-5e28-ef11-840b-6045bd089f77" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div class="aspNetHidden">
+<input type="hidden" name="_wpcmWpid" id="_wpcmWpid" value="" />
+<input type="hidden" name="wpcmVal" id="wpcmVal" value="" />
+<input type="hidden" name="MSOWebPartPage_PostbackSource" id="MSOWebPartPage_PostbackSource" value="" />
+<input type="hidden" name="MSOTlPn_SelectedWpId" id="MSOTlPn_SelectedWpId" value="" />
+<input type="hidden" name="MSOTlPn_View" id="MSOTlPn_View" value="0" />
+<input type="hidden" name="MSOTlPn_ShowSettings" id="MSOTlPn_ShowSettings" value="False" />
+<input type="hidden" name="MSOGallery_SelectedLibrary" id="MSOGallery_SelectedLibrary" value="" />
+<input type="hidden" name="MSOGallery_FilterString" id="MSOGallery_FilterString" value="" />
+<input type="hidden" name="MSOTlPn_Button" id="MSOTlPn_Button" value="none" />
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__REQUESTDIGEST" id="__REQUESTDIGEST" value="noDigest" />
+<input type="hidden" name="MSOSPWebPartManager_DisplayModeName" id="MSOSPWebPartManager_DisplayModeName" value="Browse" />
+<input type="hidden" name="MSOSPWebPartManager_ExitingDesignMode" id="MSOSPWebPartManager_ExitingDesignMode" value="false" />
+<input type="hidden" name="MSOWebPartPage_Shared" id="MSOWebPartPage_Shared" value="" />
+<input type="hidden" name="MSOLayout_LayoutChanges" id="MSOLayout_LayoutChanges" value="" />
+<input type="hidden" name="MSOLayout_InDesignMode" id="MSOLayout_InDesignMode" value="" />
+<input type="hidden" name="_wpSelected" id="_wpSelected" value="" />
+<input type="hidden" name="_wzSelected" id="_wzSelected" value="" />
+<input type="hidden" name="MSOSPWebPartManager_OldDisplayModeName" id="MSOSPWebPartManager_OldDisplayModeName" value="Browse" />
+<input type="hidden" name="MSOSPWebPartManager_StartWebPartEditingName" id="MSOSPWebPartManager_StartWebPartEditingName" value="false" />
+<input type="hidden" name="MSOSPWebPartManager_EndWebPartEditing" id="MSOSPWebPartManager_EndWebPartEditing" value="false" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZOGXn9kPSCKOHsN98y49SZUuJlcj3si21_4lwPzQX82ga0gwZeA8mQjh1dqENDbGmg2&amp;t=639190689332169432" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+var MSOWebPartPageFormName = 'aspnetForm';
+var g_presenceEnabled = true;
+var g_wsaEnabled = false;
+
+var g_correlationId = '6e5f52a2-69a4-d0bb-b2b8-fb00a93fd1ac';
+var g_wsaQoSEnabled = false;
+var g_wsaQoSDataPoints = [];
+var g_wsaRUMEnabled = false;
+var g_wsaLCID = 1033;
+var g_wsaListTemplateId = 850;
+var g_wsaSiteTemplateId = 'CMSPUBLISHING#0';
+var _spPageContextInfo={"webServerRelativeUrl":"/National-Guide","webAbsoluteUrl":"https://www.acenet.edu/National-Guide","viewId":"","listId":"{443ad49c-12c2-4332-bec0-ab0de898445d}","listPermsMask":{"High":16,"Low":200769},"listUrl":"/National-Guide/Pages","listTitle":"Pages","listBaseTemplate":850,"viewOnlyExperienceEnabled":false,"blockDownloadsExperienceEnabled":false,"idleSessionSignOutEnabled":false,"cdnPrefix":"","siteAbsoluteUrl":"https://www.acenet.edu","siteId":"{3c579ac2-0bb9-42de-b096-70372eeb4d25}","showNGSCDialogForSyncOnTS":false,"supportPoundStorePath":true,"supportPercentStorePath":true,"siteSubscriptionId":null,"CustomMarkupInCalculatedFieldDisabled":true,"AllowCustomMarkupInCalculatedField":false,"isSPO":false,"farmLabel":null,"serverRequestPath":"/National-Guide/Pages/Course.aspx","layoutsUrl":"_layouts/15","webId":"{027b658b-135e-4533-818d-c877dde39237}","webTitle":"ACE National Guide","webTemplate":"39","webTemplateConfiguration":"CMSPUBLISHING#0","webDescription":"","tenantAppVersion":"0","isAppWeb":false,"webLogoUrl":"_layouts/15/images/siteicon.png","webLanguage":1033,"currentLanguage":1033,"currentUICultureName":"en-US","currentCultureName":"en-US","currentCultureLCID":1033,"spDocIntelligence":{"isEnabled":false,"isDocSummarizeEnabled":false,"isDocTranslateEnabled":false},"env":null,"nid":0,"fid":0,"serverTime":"2026-11-25T17:38:59.8451839Z","siteClientTag":"5355$$16.0.19725.20434","crossDomainPhotosEnabled":false,"openInClient":false,"Has2019Era":true,"webUIVersion":15,"webPermMasks":{"High":16,"Low":200769},"pageListId":"{443ad49c-12c2-4332-bec0-ab0de898445d}","pageItemId":8,"pagePermsMask":{"High":16,"Low":200769},"pagePersonalizationScope":1,"userEmail":"","userId":0,"userLoginName":null,"userDisplayName":null,"isAnonymousUser":true,"isAnonymousGuestUser":false,"isEmailAuthenticationGuestUser":false,"isExternalGuestUser":false,"sideBysideToken":"","systemUserKey":null,"alertsEnabled":true,"siteServerRelativeUrl":"/","allowSilverlightPrompt":"True","themeCacheToken":"/National-Guide::1:","themedCssFolderUrl":null,"themedImageFileNames":null,"modernThemingEnabled":true,"isSiteAdmin":false,"ExpFeatures":[480216468,1884350801,1158731092,62197791,538521105,335811073,4194306,34614301,268500996,-1946025984,28445328,-2147475455,134291456,65544,288,950272,1282,808326148,134217873,0,0,-1073217536,545285252,18350656,-467402752,6291457,-2147483644,1074794496,-1728053184,1845537108,622628,4102,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"IsHybridEnabled":false,"SPOnPremFlights":[1635110,1608625,1615140,1574820,1554278,1536594,1451530,1437361,1293572,1281075,1266854,1262861,1263396,1261158,1245315,1242554,1241972,1232868,1227765,1225014,1220075,1218539,1175952,1174945,1165662,1159162,1149960,1149522,1113916,1111397,1101858,1099085,1086764,1080816,1079075,1075954,1073830,1073759,95255,1062921,1055593,1052809,1043614,1041859,1040063,1039112,1036486,1035189,1033993,1030381,1030382,1030364,1030362,1029854,1029586,1029565,1029556,1029555,1028671,1025113,1021288,1021275,1021274,1021272,1020637,1020043,1018275,1018016,1012433,1011886,1010592,1009740,1009585,1008744,1007603,1004459,1003886,1002806,1001164,116041,114176,114166,112973,108499,108186,107054,100994,100425,99885,99722,96075,94920],"InternalValidAuthorities":["myweb.acenet.edu","www.acenet.edu","admin.acenet.edu","acenet.edu","acenet.edu","www.acenet.edu","admin.acenet.edu","newprod.acenet.edu","newprodadmin.acenet.edu"],"CorrelationId":"6e5f52a2-69a4-d0bb-b2b8-fb00a93fd1ac","hasManageWebPermissions":false,"isNoScriptEnabled":false,"groupId":null,"groupHasHomepage":true,"groupHasQuickLaunchConversationsLink":false,"departmentId":null,"hubSiteId":null,"hasPendingWebTemplateExtension":false,"isHubSite":false,"isWebWelcomePage":false,"siteClassification":"","hideSyncButtonOnODB":false,"showNGSCDialogForSyncOnODB":false,"sitePagesEnabled":false,"sitePagesFeatureVersion":0,"suiteNavInfo":{"suiteBarBackground":null,"suiteBarText":null,"suiteNavAccentColor":null,"suiteNavAllowCustom":false,"suiteNavAllowOverwrite":false,"suiteNavBrandingLogoNavigationUrl":null,"suiteNavBrandingLogoTitle":null,"suiteNavBrandingLogoUrl":null,"suiteNavBrandingText":null},"DesignPackageId":"00000000-0000-0000-0000-000000000000","groupType":null,"groupColor":"#d40ac7","siteColor":"#d40ac7","headerEmphasis":0,"navigationInfo":null,"guestsEnabled":false,"MenuData":{"SignInUrl":"/National-Guide/_layouts/15/Authenticate.aspx?Source=%2FNational%2DGuide%2FPages%2FCourse%2Easpx%3Forg%3DUPI%2520Study%26cid%3D97b9b2ff%252D5a74%252Def11%252Da671%252D00224808a070%26oid%3Def9a8446%252D5e28%252Def11%252D840b%252D6045bd089f77"},"RecycleBinItemCount":-1,"PublishingFeatureOn":true,"PreviewFeaturesEnabled":false,"disableAppViews":false,"disableFlows":false,"serverRedirectedUrl":null,"formDigestValue":"0x6CDE4014B9F61B21DE7F0FFED2DB1F98ECE90FEC1DC7690622E2620A48D4A25FC59D3C5AC4B0A05F8667B8B90F29685A676AE3ABE9AE911037305D329AD412D0,25 Nov 2026 17:38:59 -0000","maximumFileSize":15360,"formDigestTimeoutSeconds":1800,"canUserCreateMicrosoftForm":false,"canUserCreateVisioDrawing":true,"readOnlyState":null,"isTenantDevSite":false,"preferUserTimeZone":false,"userTimeZoneData":null,"userTime24":false,"userFirstDayOfWeek":null,"webTimeZoneData":null,"webTime24":false,"webFirstDayOfWeek":null,"isSelfServiceSiteCreationEnabled":null,"alternateWebAppHost":"","aadTenantId":"","aadUserId":"","aadInstanceUrl":"","msGraphEndpointUrl":"https://","allowInfectedDownload":true};_spPageContextInfo.updateFormDigestPageLoaded=new Date();_spPageContextInfo.clientServerTimeDelta=new Date(_spPageContextInfo.serverTime)-new Date();if(typeof(define)=='function'){define('SPPageContextInfo',[],function(){return _spPageContextInfo;});}document.onreadystatechange=fnRemoveAllStatus; function fnRemoveAllStatus(){removeAllStatus(true)};
+                            function DoCallBack(filterText)
+                            {WebForm_DoCallback('ctl00$g_d3e307d4_71eb_4557_84e7_f865cea792a8',filterText,UpdateFilterCallback,0,CallBackError,true)
+                            }
+                            function CallBackError(result, clientsideString)
+                            {                
+                            }
+                        
+function _spNavigateHierarchy(nodeDiv, dataSourceId, dataPath, url, listInContext, type) {
+
+    CoreInvoke('ProcessDefaultNavigateHierarchy', nodeDiv, dataSourceId, dataPath, url, listInContext, type, document.forms.aspnetForm, "", "\u002fNational-Guide\u002fPages\u002fCourse.aspx");
+
+}
+Flighting.ExpFeatures = [480216468,1884350801,1158731092,62197791,538521105,335811073,4194306,34614301,268500996,-1946025984,28445328,-2147475455,134291456,65544,288,950272,1282,808326148,134217873,0,0,-1073217536,545285252,18350656,-467402752,6291457,-2147483644,1074794496,-1728053184,1845537108,622628,4102,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; (function()
+{
+    if(typeof(window.SP) == "undefined") window.SP = {};
+    if(typeof(window.SP.YammerSwitch) == "undefined") window.SP.YammerSwitch = {};
+
+    var ysObj = window.SP.YammerSwitch;
+    ysObj.IsEnabled = false;
+    ysObj.TargetYammerHostName = "www.yammer.com";
+} )(); var _spWebPartComponents = new Object();//]]>
+</script>
+
+<script src="/_layouts/15/blank.js?rev=1TzK%2BcvAq%2Bpak3ckRUYBmA%3D%3DTAG0" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+(function(){
+
+        if (typeof(_spBodyOnLoadFunctions) === 'undefined' || _spBodyOnLoadFunctions === null) {
+            return;
+        }
+        _spBodyOnLoadFunctions.push(function() {
+            SP.SOD.executeFunc('core.js', 'FollowingCallout', function() { FollowingCallout(); });
+        });
+    })();(function(){
+
+        if (typeof(_spBodyOnLoadFunctions) === 'undefined' || _spBodyOnLoadFunctions === null) {
+            return;
+        }
+        _spBodyOnLoadFunctions.push(function() {
+            SP.SOD.executeFunc('core.js', 'FollowingDocument', function() { FollowingDocument(); });
+        });
+    })();if (typeof(DeferWebFormInitCallback) == 'function') DeferWebFormInitCallback();window.SPThemeUtils && SPThemeUtils.RegisterCssReferences([{"Url":"\u002f_layouts\u002f15\u002f1033\u002fstyles\u002fThemable\u002fcorev15.css?rev=mDUzGfgO2aHnLoh30SeNyw\u00253D\u00253DTAG0","OriginalUrl":"\u002f_layouts\u002f15\u002f1033\u002fstyles\u002fThemable\u002fcorev15.css?rev=mDUzGfgO2aHnLoh30SeNyw\u00253D\u00253DTAG0","Id":"CssLink-6045dd2c6fdf44f0bf0ca425915276be","ConditionalExpression":"","After":"","RevealToNonIE":"false"},{"Url":"\u002f_catalogs\u002fmasterpage\u002fACE\u002fstyle\u002fACE.generalcontentsidebar.min.css","OriginalUrl":"\u002f_catalogs\u002fmasterpage\u002fACE\u002fstyle\u002fACE.generalcontentsidebar.min.css","Id":"CssLink-c618806ad8fa4d3f89e237b8f086fcf0","ConditionalExpression":"","After":"","RevealToNonIE":"false"},{"Url":"\u002f_catalogs\u002fmasterpage\u002fACE\u002fstyle\u002fACE.NationalGuideMain.min.css","OriginalUrl":"\u002f_catalogs\u002fmasterpage\u002fACE\u002fstyle\u002fACE.NationalGuideMain.min.css","Id":"CssLink-2ee25ceec34745079bf15aec91c24a19","ConditionalExpression":"","After":"","RevealToNonIE":"false"},{"Url":"\u002f_catalogs\u002fmasterpage\u002fACE\u002fstyle\u002fACE.NationalGuideCourse.min.css","OriginalUrl":"\u002f_catalogs\u002fmasterpage\u002fACE\u002fstyle\u002fACE.NationalGuideCourse.min.css","Id":"CssLink-ca0dc4b887ce450e8405777b0d478dea","ConditionalExpression":"","After":"","RevealToNonIE":"false"},{"Url":"\u002fStyle Library\u002fen-US\u002fThemable\u002fCore Styles\u002fcontrols15.css","OriginalUrl":"\u002fStyle Library\u002fen-US\u002fThemable\u002fCore Styles\u002fcontrols15.css","Id":"CssLink-ae23cf1a0d2c4938b57c07495ef23266","ConditionalExpression":"","After":"","RevealToNonIE":"false"},{"Url":"\u002f_layouts\u002f15\u002f1033\u002fstyles\u002fWebTaggingUI.css?rev=Xv8grnx1J4kXIwPgtrlP5g\u00253D\u00253DTAG0","OriginalUrl":"\u002f_layouts\u002f15\u002f1033\u002fstyles\u002fWebTaggingUI.css?rev=Xv8grnx1J4kXIwPgtrlP5g\u00253D\u00253DTAG0","Id":"CssLink-81e7991f93ec470dbf57891414019f4a","ConditionalExpression":"","After":"System.String[]","RevealToNonIE":"false"}]);
+function WebForm_OnSubmit() {
+UpdateFormDigest('\u002fNational-Guide', 1440000);if (typeof(_spFormOnSubmitWrapper) != 'undefined') {return _spFormOnSubmitWrapper();} else {return true;};
+return true;
+}
+//]]>
+</script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="BAB98CB3" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="OvpYp97tzucT3Zhk0VFdFFbb2CyZ/6fqIX6uvuB9vAE3alFvIlZmWrq8D2yFCZihv7KJiVXWsEKcW8L5CMgVeco8kVSMn3FYnR9mHc9X6FghISdWqBHcHgwRmiZ8KyNHNwZR4pw/VaFrkRZIH289bA==" />
+</div>
+                <div id="imgPrefetch" style="display:none">
+<img src="/_catalogs/masterpage/ACE/img/ACELogo.svg?rev=41" />
+<img src="/_layouts/15/images/spcommon.png?rev=44" />
+</div>
+
+        <noscript><div class='noindex'>You may be trying to access this site from a secured browser on the server. Please enable scripts and reload this page.</div></noscript>
+        
+        
+        <script type="text/javascript">
+            var submitHook = function () { return false; }; theForm._spOldSubmit = theForm.submit; theForm.submit = function () { if (!submitHook()) { this._spOldSubmit(); } };
+        </script>
+        
+        <span id="DeltaSPWebPartManager">
+            
+        </span>
+        
+        <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager', 'aspnetForm', [], [], [], 90, 'ctl00');
+//]]>
+</script>
+
+        
+        <span id="DeltaDelegateControls">
+            
+            
+        </span>
+
+        
+        <div id="TurnOnAccessibility" style="display:none" class="s4-notdlg noindex">
+                <a id="linkTurnOnAcc" title="Turn on more accessible mode" href="#"
+                class="ms-accessible ms-acc-button" onclick="SetIsAccessibilityFeatureEnabled(true);toggleMenuAccessibility('on');UpdateAccessibilityUI();document.getElementById('linkTurnOffAcc').focus();return false;">Turn on more accessible mode</a></div>
+            <div id="TurnOffAccessibility" style="display:none" class="s4-notdlg noindex">
+                <a id="linkTurnOffAcc" title="Turn off more accessible mode" href="#"
+                class="ms-accessible ms-acc-button" onclick="SetIsAccessibilityFeatureEnabled(false);toggleMenuAccessibility('off');UpdateAccessibilityUI();document.getElementById('linkTurnOnAcc').focus();return false;">Turn off more accessible mode</a></div>
+            <div class="s4-notdlg s4-skipribbonshortcut noindex">
+                <a href="javascript:;" title="Skip Ribbon Commands" onclick="document.getElementById('startNavigation').focus();"
+                class="ms-accessible ms-acc-button" accesskey="Y">Skip Ribbon Commands</a></div>
+            <div class="s4-notdlg noindex">
+                <a href="javascript:;" title="Skip to main content" onclick="document.getElementById('mainContent').focus();"
+                class="ms-accessible ms-acc-button">Skip to main content</a></div>
+            <div id="TurnOffAnimation" style="display:none;" class="s4-notdlg noindex">
+                <a id="linkTurnOffAnimation" title="Turn off Animations" href="#"
+                class="ms-accessible ms-acc-button" onclick="ToggleAnimationStatus();return false;">Turn off Animations</a></div>
+            <div id="TurnOnAnimation" style="display:none;" class="s4-notdlg noindex">
+                <a id="linkTurnOnAnimation" title="Turn on Animations" href="#"
+                class="ms-accessible ms-acc-button" onclick="ToggleAnimationStatus();return false;">Turn on Animations</a></div>
+            <a id="HiddenAnchor" href="javascript:;" style="display:none;"></a>
+        
+
+        
+        <div id="notificationArea" class="ms-notif-box"></div>
+                        <div id="DeltaPageStatusBar">
+	
+                            <div id="pageStatusBar"></div>
+                        
+</div>
+        
+        
+        <nav class="top-nav navbar navbar-inverse ms-dialogHidden spbp-nav noindex" role="navigation" id="startNavigation" tabindex="-1">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                
+                <div class="navbar-brand site-title">
+                    <div id="DeltaSiteLogo">
+	
+    <a id="ctl00_onetidProjectPropertyTitleGraphic" class="ms-siteicon-a" href="/"> 
+        <img id="ctl00_onetidHeadbnnr2" class="ms-siteicon-img" name="onetidHeadbnnr0" src="/_catalogs/masterpage/ACE/img/ACELogo.svg?rev=41" alt="ACE National Guide" /> 
+    </a>
+
+</div>
+                </div>
+                
+                <!-- search -->
+                <div class="site-search dropdown">
+                    <a href="#" class="dropdown-toggle" id="dropdownMenuSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                    </a>
+                    <div class="dropdown-menu search-dropdown" aria-labelledby="dropdownMenuSearch">
+                        <div class="search-container">
+                            <div id="DeltaPlaceHolderSearchAreaUtility" class="ms-mpSearchBox ms-floatRight">
+	
+                                
+                                    <div id="searchInputBox">
+                                        <div class="ms-webpart-chrome ms-webpart-chrome-fullWidth ">
+		<div WebPartID="00000000-0000-0000-0000-000000000000" HasPers="true" id="WebPartWPQ1" width="100%" class="ms-WPBody noindex " OnlyForMePart="true" allowDelete="false" style="" ><div componentid="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr" id="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr"><div id="SearchBox" name="Control"><div class="ms-srch-sb ms-srch-sb-border" id="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_sboxdiv"><input type="search" value="Search..." maxlength="2048" title="Search..." id="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_sbox" autocomplete="off" autocorrect="off" onkeypress="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {if (Srch.U.isEnterKey(String.fromCharCode(event.keyCode))) {$find('ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr').search($get('ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_sbox').value);return Srch.U.cancelEvent(event);}})" onkeydown="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {var ctl = $find('ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr');ctl.activateDefaultQuerySuggestionBehavior();})" onfocus="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {var ctl = $find('ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr');ctl.hidePrompt();ctl.setBorder(true);})" onblur="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {var ctl = $find('ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr'); if (ctl){ ctl.showPrompt(); ctl.setBorder(false);}})" class="ms-textSmall ms-srch-sb-prompt ms-helperText" role="combobox" aria-owns="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_AutoCompList" aria-haspopup="true" aria-autocomplete="list" aria-expanded="false" /><a title="Search" role="button" class="ms-srch-sb-searchLink" id="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_SearchLink" onclick="EnsureScriptFunc('Search.ClientControls.js', 'Srch.U', function() {$find('ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr').search($get('ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_sbox').value);})" href="javascript: {}" aria-label="Search"><img src="/_layouts/15/images/searchresultui.png?rev=44#ThemeKey=searchresultui" class="ms-srch-sb-searchImg" id="searchImg" alt="Search" /></a><div class="ms-qSuggest-container ms-shadow" id="AutoCompContainer"><div id="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_AutoCompList" role="listbox" aria-label="Suggestions"></div></div></div></div></div><noscript><div id="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_noscript">It looks like your browser does not have JavaScript enabled. Please turn on JavaScript and try again.</div></noscript><div id="ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1">
+
+		</div><div class="ms-clear"></div></div>
+	</div>
+                                    </div>
+                                
+                            
+</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /search -->
+            </div>
+            <div id="navbar" class="collapse navbar-collapse" aria-expanded="false">
+                <!-- custom sign-in/create profile control-->
+                <div id="ctl00_welcomeControl" __WebPartId="{B9B3299B-0A7C-4CF7-97A5-457D95ECD14D}">
+	
+
+<div class="welcome-control">
+    
+        <div class="nav navbar-nav sign-in"><a id="ctl00_welcomeControl_ctl00_hypSignIn" href="/_layouts/Authenticate.aspx?Source=https%3a%2f%2fwww.acenet.edu%2fNational-Guide%2fPages%2fCourse.aspx%3forg%3dUPI%2bStudy%26cid%3d97b9b2ff-5a74-ef11-a671-00224808a070%26oid%3def9a8446-5e28-ef11-840b-6045bd089f77">Sign In</a></div><div class="nav navbar-nav create-profile"><a href="/Pages/CreateProfile.aspx">Create Profile</a></div>
+    
+
+    
+</div>
+
+
+    <style>
+        .welcome-control { 
+            display:none !important; 
+        }
+    </style>
+
+
+</div>
+                <!-- Custom Megamenu Control Using Folder Structure -->
+                <div id="ctl00_megaMenu" __WebPartId="{FF4468EE-145C-4062-8370-64A52B033EA5}">
+	
+
+<nav class="mega-menu row noindex" role="application">
+    
+            <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_divTopLevel" class="top-level col-12 noindex col-md-3">
+                <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_hypLink" aria-haspopup="true" role="menuitem" href="/Programs-Services">Programs & Services</a>
+                <div class="second-level noindex">
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_divSpotlight" tabindex="0" class="spotlight noindex open-html col-xs-12 col-md-4">
+                        
+                            <div class="spotlight-header noindex">Spotlight</div>
+                            <div class="spotlight-info noindex">
+                                <div class="spotlight-title noindex">Join Us at ACEx2027</div>
+                                <div class="spotlight-subtitle noindex">Registration is now open! Come together with leaders from across higher education to explore what’s working, tackle what’s next, and build new connections in DC, March 2–6.</div>
+                                <div class="spotlight-button noindex"><a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_hypReadMore" class="read-more" href="https://events.acenet.edu/acex2027">Register Today</a></div>
+                            </div>
+                            <div class="spotlight-image noindex"><img alt="ACEX2027 branding image" src="/PublishingImages/branding/ACEx2027/ACEx2027_acenet_spotlight.jpg?RenditionID=12" style="BORDER: 0px solid; "></div>
+                        
+                        
+                            <div class="spotlight-info noindex">
+                                <div class="spotlight-html noindex"><p>​​​​<br></p></div>
+                            </div>
+                        
+                    </div>
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_divLinks" tabindex="0" class="links noindex col-xs-12 col-md-8">
+                            
+                                    <div class="second-level-links noindex">
+                                        
+                                        
+                                            <span class="group-header" tabindex="0">Professional Learning & Communities</span>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl00_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Programs-Services/Pages/ACE-Fellows-Program.aspx">ACE Fellows Program</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl00_rptThirdLevel_ctl02_hypLink" role="menuitem" href="/Programs-Services/Pages/Communities/Council-of-Fellows.aspx">Council of Fellows</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl00_rptThirdLevel_ctl03_hypLink" role="menuitem" href="/Programs-Services/Pages/Communities/ACE-Womens-Network.aspx">ACE Women's Network</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl00_rptThirdLevel_ctl04_hypLink" role="menuitem" href="/Programs-Services/Pages/Communities/Dual-Mission-Institutions.aspx">Dual Mission Institutions</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl00_rptThirdLevel_ctl05_hypLink" role="menuitem" href="/Programs-Services/Pages/Communities/Faith-Based-Colleges-Universities.aspx">ACE Commission on Faith-Based Colleges and Universities</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl01_hypLink" href="/Programs-Services/Pages/Credit-Transcripts/Credit-Transcripts.aspx">Learning Evaluations</a>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl01_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Programs-Services/Pages/Credit-Transcripts/Employers-Training-Providers.aspx">For Employers & Training Providers</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl01_rptThirdLevel_ctl02_hypLink" role="menuitem" href="/Programs-Services/Pages/Credit-Transcripts/Colleges-Universities.aspx">For Colleges & Universities</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl01_rptThirdLevel_ctl03_hypLink" role="menuitem" href="/Programs-Services/Pages/Credit-Transcripts/Students.aspx">For Students</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl01_rptThirdLevel_ctl04_hypLink" role="menuitem" href="/Programs-Services/Pages/Credit-Transcripts/Faculty.aspx">For Faculty Evaluators</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl01_rptThirdLevel_ctl05_hypLink" role="menuitem" href="/National-Guide/Pages/default.aspx">The ACE National Guide</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl01_rptThirdLevel_ctl06_hypLink" role="menuitem" href="/Programs-Services/Pages/Credit-Transcripts/Military-Guide-Online.aspx">The ACE Military Guide</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl02_hypLink" href="https://www.acenet.edu/Events/Pages/ACEx2027.aspx">ACE Experience</a>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl02_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Programs-Services/Pages/Annual-Meeting/ACE-Awards.aspx">Awards</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_rptSecondLevel_ctl02_rptThirdLevel_ctl02_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Advancement/Annual-Meeting-Opportunities.aspx">Sponsorship Opportunities</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                    </div>
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl00_divContactInfo" class="contact-info noindex" tabindex="0" style="display:none;">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        
+            <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_divTopLevel" class="top-level col-12 noindex col-md-3">
+                <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_hypLink" aria-haspopup="true" role="menuitem" href="/Research-Insights">Research & Insights</a>
+                <div class="second-level noindex">
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_divSpotlight" tabindex="0" class="spotlight noindex col-xs-12 col-md-4">
+                        
+                            <div class="spotlight-header noindex">Spotlight</div>
+                            <div class="spotlight-info noindex">
+                                <div class="spotlight-title noindex">The Economic Impact of Higher Education in America</div>
+                                <div class="spotlight-subtitle noindex">See how higher education fuels America’s economy. ACE’s Higher Education Economic Indicators interactive map highlights the local, state, and national impact of colleges and universities nationwide.</div>
+                                <div class="spotlight-button noindex"><a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_hypReadMore" class="read-more" href="/Policy-Advocacy/Pages/National-Engagement/Economic-Impact-Higher-Ed.aspx">Learn More</a></div>
+                            </div>
+                            <div class="spotlight-image noindex"><img alt="Man and woman in hard hats and safety vests" src="/PublishingImages/Photo-Library/econ-indic-lighter.png?RenditionID=12" style="BORDER: 0px solid; "></div>
+                        
+                        
+                    </div>
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_divLinks" tabindex="0" class="links noindex col-xs-12 col-md-8">
+                            
+                                    <div class="second-level-links noindex">
+                                        
+                                        
+                                            <span class="group-header" tabindex="0">Diversity & Inclusion</span>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl00_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Research-Insights/Pages/Race-and-Ethnicity-in-Higher-Education.aspx">Race and Ethnicity in Higher Education</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl00_rptThirdLevel_ctl02_hypLink" role="menuitem" href="/Research-Insights/Pages/Diversity-Inclusion/Minority-Serving-Institutions.aspx">Minority Serving Institutions</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl00_rptThirdLevel_ctl03_hypLink" role="menuitem" href="/Research-Insights/Pages/Diversity-Inclusion/Womens-Leadership.aspx">Women's Leadership</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl00_rptThirdLevel_ctl04_hypLink" role="menuitem" href="/Research-Insights/Pages/Diversity-Inclusion/Equity-Minded-Leadership.aspx">Equity-Minded Leadership </a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl00_rptThirdLevel_ctl05_hypLink" role="menuitem" href="/Research-Insights/Pages/Post-SFFA-Decision-Resources.aspx">Post-SFFA v. Harvard & UNC Decision Resources</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        
+                                        
+                                            <span class="group-header" tabindex="0">Student Support & Success</span>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl01_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Research-Insights/Pages/Student-Support/Student-Mental-Health.aspx">Campus Mental Health & Well-Being</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl01_rptThirdLevel_ctl02_hypLink" role="menuitem" href="/Research-Insights/Pages/Diversity-Inclusion/Mentoring-Programs-Graduate-Pathways.aspx">Broadening Pathways to Graduate Education</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl01_rptThirdLevel_ctl03_hypLink" role="menuitem" href="/Research-Insights/Pages/Student-Support/Student-Parents.aspx">Student-Parents</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl01_rptThirdLevel_ctl04_hypLink" role="menuitem" href="/Research-Insights/Pages/Student-Support/Post-Traditional-Learners.aspx">Post-Traditional Learners</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl01_rptThirdLevel_ctl05_hypLink" role="menuitem" href="/Research-Insights/Pages/Student-Support/Persistence-and-Completion.aspx">Persistence and Completion</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl01_rptThirdLevel_ctl06_hypLink" role="menuitem" href="/Research-Insights/Pages/Student-Support/Effective-Teaching.aspx">Effective Teaching</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        
+                                        
+                                            <span class="group-header" tabindex="0">Internationalization & Global Engagement</span>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl02_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Research-Insights/Pages/Internationalization/Mapping-Internationalization-on-U-S-Campuses.aspx">Mapping Internationalization on US Campuses</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        
+                                        
+                                            <span class="group-header" tabindex="0">Senior Leaders & Teams</span>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl03_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Research-Insights/Pages/Pulse-Point-Surveys.aspx">Pulse Point Surveys</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl03_rptThirdLevel_ctl02_hypLink" role="menuitem" href="/Research-Insights/Pages/American-College-President-Study.aspx">American College President Study</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_rptSecondLevel_ctl03_rptThirdLevel_ctl03_hypLink" role="menuitem" href="/Research-Insights/Pages/Senior-Leaders/Data-Enabled-Leadership.aspx">Data-Enabled Leadership</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                    </div>
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl01_divContactInfo" class="contact-info noindex" tabindex="0" style="display:none;">
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        
+            <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_divTopLevel" class="top-level col-12 noindex col-md-3">
+                <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_hypLink" aria-haspopup="true" role="menuitem" href="/Policy-Advocacy">Policy & Advocacy</a>
+                <div class="second-level noindex">
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_divSpotlight" tabindex="0" class="spotlight noindex col-xs-12 col-md-4">
+                        
+                            <div class="spotlight-header noindex">Spotlight</div>
+                            <div class="spotlight-info noindex">
+                                <div class="spotlight-title noindex">Higher Education Today</div>
+                                <div class="spotlight-subtitle noindex">Perspectives from leaders and experts on the ideas, challenges, and decisions shaping colleges and universities. What’s working. What’s changing. What’s next.</div>
+                                <div class="spotlight-button noindex"><a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_hypReadMore" class="read-more" href="https://www.higheredtoday.org/">See What's New</a></div>
+                            </div>
+                            <div class="spotlight-image noindex"><img alt="Whitman camus picture" src="/PublishingImages/Photo-Library/Whitman_2015_130917_Campus%20Photos2747.jpg?RenditionID=12" style="BORDER: 0px solid; "></div>
+                        
+                        
+                    </div>
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_divLinks" tabindex="0" class="links noindex col-xs-12 col-md-5">
+                            
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl00_hypLink" href="/Policy-Advocacy/Pages/Budget-Appropriations/Budget-Appropriations.aspx">Budget and Appropriations</a>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl00_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Policy-Advocacy/Pages/Budget-Appropriations/Brief-Guide-to-Budget-Appropriations.aspx">A Brief Guide to the Federal Budget and Appropriations Process</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl01_hypLink" href="/Policy-Advocacy/Pages/Campus-Safety/Campus-Safety.aspx">Campus Safety</a>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl01_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Policy-Advocacy/Pages/Campus-Safety/Resources-on-Title-IX-Regulations.aspx">Resources on Title IX and Campus Sexual Assault Regulations</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl02_hypLink" href="/Policy-Advocacy/Pages/Financial-Aid/Financial-Aid.aspx">Federal Financial Aid</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl03_hypLink" href="/Policy-Advocacy/Pages/Other-Issues/Health-Care.aspx">Health Care</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl04_hypLink" href="/Policy-Advocacy/Pages/Immigration/Immigration-and-International-Students.aspx">Immigration and International Students</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl05_hypLink" href="/Policy-Advocacy/Pages/Labor-and-Employment/Labor-and-Employment.aspx">Labor and Employment</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl06_hypLink" href="/Policy-Advocacy/Pages/Law-Courts/Law-Courts.aspx">Law and the Courts</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl07_hypLink" href="/Policy-Advocacy/Pages/National-Engagement/National-Engagement.aspx">National Engagement</a>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl07_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Policy-Advocacy/Pages/National-Engagement/Economic-Impact-Higher-Ed.aspx">The Economic Impact of Higher Education in America</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl08_hypLink" href="/Policy-Advocacy/Pages/Executive-Branch/Presidential-Directives-and-Proposals.aspx">Presidential Directives and Proposals</a>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl08_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Policy-Advocacy/Pages/2025-Trump-Administration-Transition.aspx">Higher Education and The Trump Administration</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl09_hypLink" href="/Policy-Advocacy/Pages/Regulation/Regulation.aspx">Regulation</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl10_hypLink" href="/Policy-Advocacy/Pages/Science-Technology/Science-and-Technology.aspx">Science and Technology</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl11_hypLink" href="/Policy-Advocacy/Pages/Sustainability/Sustainability.aspx">Sustainability</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl12_hypLink" href="/Policy-Advocacy/Pages/Tax-Finance/Tax-and-Finance.aspx">Tax and Finance</a>
+                                        
+                                        
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_rptSecondLevel_ctl13_hypLink" href="/Policy-Advocacy/Pages/Other-Issues/Veterans-Education-GI-Bill.aspx">Veterans, Service Members, and Military Families’ Education Benefits</a>
+                                        
+                                        
+                                    </div>
+                                
+                    </div>
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl02_divContactInfo" tabindex="0" class="contact-info noindex col-xs-12 col-md-3">
+                        
+                        
+                            <div class="contact-html noindex"><p>C​ontact Government Relations<br>202-939-9355<br><a href="/Policy-Advocacy/Pages/GR-Staff.aspx" style="padding-left:0px !important;color:#0f539e !important;">​GRNE Staff List</a></p><p>Contact Public Affairs<br>202-939-9365<br><a href="mailto:HENA@acenet.edu" style="padding-left:0px !important;color:#0f539e !important;">HENA@acenet.edu</a></p><hr /> 
+<span class="ms-rteElement-ButtonLink"><a class="ms-rteElement-ButtonLink" href="/Pages/Advocacy-Documents.aspx">Advocacy Library</a></span><span class="ms-rteElement-ButtonLink"><a href="/Events/Pages/GRNE-Events.aspx">GRNE Events</a></span></div>
+                        
+                    </div>
+                </div>
+            </div>
+        
+            <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_divTopLevel" class="top-level col-12 noindex col-md-3">
+                <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_hypLink" aria-haspopup="true" role="menuitem" href="/Membership-Advancement">Membership & Advancement</a>
+                <div class="second-level noindex">
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_divSpotlight" tabindex="0" class="spotlight noindex col-xs-12 col-md-4">
+                        
+                            <div class="spotlight-header noindex">Spotlight</div>
+                            <div class="spotlight-info noindex">
+                                <div class="spotlight-title noindex">Higher Education Builds America</div>
+                                <div class="spotlight-subtitle noindex">From workforce development to research breakthroughs, higher education drives economic prosperity in every region.</div>
+                                <div class="spotlight-button noindex"><a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_hypReadMore" class="read-more" href="https://highereducationbuildsamerica.org/">Join the momentum</a></div>
+                            </div>
+                            <div class="spotlight-image noindex"><img alt="Higher Ed Builds America branding" src="/PublishingImages/branding/HEBA/heba-spotlight.png" style="BORDER: 0px solid; "></div>
+                        
+                        
+                    </div>
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_divLinks" tabindex="0" class="links noindex col-xs-12 col-md-5">
+                            
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl00_hypLink" href="/Membership-Advancement/Pages/Membership/Membership.aspx">Joining ACE</a>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl00_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Membership/Membership.aspx">Why Join ACE?</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl00_rptThirdLevel_ctl02_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Membership/Membership-Benefits.aspx">Benefits of Membership</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl00_rptThirdLevel_ctl03_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Membership/Member-Spotlights.aspx">Member Spotlights</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        
+                                        
+                                            <span class="group-header" tabindex="0">Membership Services</span>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl01_rptThirdLevel_ctl01_hypLink" role="menuitem" href="https://forms.acenet.edu/postal-mailing-list-order/">Purchase the Mailing List</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl01_rptThirdLevel_ctl02_hypLink" role="menuitem" href="http://www.acenet.edu/pay">Pay Dues</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl01_rptThirdLevel_ctl03_hypLink" role="menuitem" href="https://acememberdirectory.azurewebsites.net/">Member Directory</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl02_hypLink" href="/Membership-Advancement/Pages/Advancement/Support-ACE.aspx">Support ACE</a>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl02_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Advancement/Support-ACE.aspx">Why Give to ACE?</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl02_rptThirdLevel_ctl02_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Advancement/Donate-Now.aspx">Donate Now</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl02_rptThirdLevel_ctl03_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Advancement/Corporate-Engagement.aspx">Corporate Engagement</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl02_rptThirdLevel_ctl04_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Advancement/Affiliate-Member-Insights.aspx">Affiliate Member Insights</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl02_rptThirdLevel_ctl05_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Advancement/Foundation-Support.aspx">Foundation Support</a>
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl02_rptThirdLevel_ctl06_hypLink" role="menuitem" href="https://www.acenet.edu/merch">Store</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                                    <div class="second-level-links noindex">
+                                        
+                                        
+                                            <span class="group-header" tabindex="0">Sponsorship Opportunities</span>
+                                        
+                                        
+                                                <div class="third-level-links noindex" role="menu">
+                                            
+                                                    <a id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_rptSecondLevel_ctl03_rptThirdLevel_ctl01_hypLink" role="menuitem" href="/Membership-Advancement/Pages/Advancement/ACE-Experience-Opportunities.aspx">ACE Experience</a>
+                                            
+                                                </div>
+                                            
+                                    </div>
+                                
+                    </div>
+                    <div id="ctl00_megaMenu_ctl00_rptTopLevel_ctl03_divContactInfo" tabindex="0" class="contact-info noindex col-xs-12 col-md-3">
+                        
+                        
+                            <div class="contact-html noindex"><p>​Contact Membership<br>202-939-9340<br><a href="mailto:membership@acenet.edu" style="padding-left:0px !important;">membership@acenet.edu</a></p><p>​Contact Advancement<br>202-939-9498​<br><a href="mailto:advancement@acenet.edu" style="padding-left:0px !important;">advancement@acenet.edu</a></p><hr />​<span class="ms-rteElement-ButtonLink"><a href="/Membership-Advancement/Pages/Membership/Membership.aspx">JOIN ACE</a>​</span> ​​​ </div>
+                        
+                    </div>
+                </div>
+            </div>
+        
+</nav>
+
+</div>
+                <!-- /Custom Megamenu -->
+                
+                <div class="utility-header-wrap noindex">
+                    <div class="utility-container noindex">
+                        <div class="utility-links noindex">                       	
+                            <div class="ms-webpart-chrome ms-webpart-chrome-fullWidth ">
+	<div WebPartID="00000000-0000-0000-0000-000000000000" HasPers="true" id="WebPartWPQ2" width="100%" class="ms-WPBody noindex " OnlyForMePart="true" allowDelete="false" style="" ><div id="cbqwpctl00_g_d3e307d4_71eb_4557_84e7_f865cea792a8" class="cbq-layout-main"><ul class="dfwp-column dfwp-list" style="width:100%" ><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/News-Room/Pages/default.aspx" title="">News Room</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/Pages/Publications.aspx" title="">Publications</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/Events/Pages/default.aspx" title="">Events</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.higheredtoday.org/" title="">Blog</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/Pages/dotedu/home.aspx" title="">PODCAST</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/About/Pages/default.aspx" title="">About Us</a></div></li></ul></div><div class="ms-clear"></div></div>
+</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+        
+        
+        <div id="ctl00_empAlerts">
+
+</div>
+        
+        <div class="alerts">
+            <span id="ctl00_aceAlertBar"></span>
+        </div>
+        
+        </WebControls:EditModePanel>
+
+        
+        <div id="s4-workspace" class="ms-core-overlay">
+            <div id="s4-bodyContainer">
+                <div class="rollup-header s4-notdlg">
+                    <div class="rollup-header-image">
+                        
+                        
+	
+
+                        
+                    </div>
+                    
+                    <div class="guide-header"></div>
+                    
+                    
+                    
+                    <div class="h2 image-caption">
+                        
+	Course
+
+                    </div>
+                    
+                    <span id="top"></span>
+                </div>
+
+                
+                <div class="row guide-back-container breadcrumb-bar ms-dialogHidden">
+                    <div class=" guide-back-top breadcrumb col-xs-12 col-lg-10 col-lg-offset-1">
+                        <!--<p class="pull-left">
+                            <button type="button" class="offcanvas-toggle visible-xs navbar-toggle" data-toggle="offcanvas">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </p>-->
+                        <span SiteMapProviders="SPSiteMapProvider,SPXmlContentMapProvider" HideInteriorRootNodes="false"><span><a title="​The American Council on Education (ACE) is a membership organization that mobilizes the higher education community to shape effective public policy and foster innovative, high-quality practice. " class="breadcrumbRootNode" href="/Pages/default.aspx">American Council on Education</a></span><span>  </span><span><a class="breadcrumbItem" href="/National-Guide/Pages/default.aspx">ACE National Guide</a></span><span>  </span><span class="breadcrumbItemActive">Course</span></span>
+                    </div>
+                </div>
+                
+               
+                
+                <div class="content-container">
+                    
+                    <div class="go-to-top s4-notdlg">
+                        <a href="#top" id="back-to-top" class="back-to-top" style="display: inline;">Top</a>
+                    </div>
+                    
+                    
+                    
+                    <div class="row content-columns row-offcanvas row-offcanvas-left">
+                        
+
+                        
+                        <aside class="col-sm-3 col-xs-6 sidebar-offcanvas content-sidebar ms-dialogHidden" role="complementary">
+                            
+
+                            
+                            <div id="DeltaPlaceHolderLeftNavBar">
+	
+                                
+                                    
+                                <a id="startNavigation" name="startNavigation" tabIndex="-1"></a>
+                                
+                                
+                                
+                                
+                                
+
+                                    <div class="side-nav">
+                                        
+                                        <div class="nav nav-pills nav-stacked">
+                                            <div id="ctl00_PlaceHolderLeftNavBar_QuickLaunchNavigationManager">
+		
+                                        
+                                        <div id="zz1_V4QuickLaunchMenu" class=" noindex ms-core-listMenu-verticalBox">
+			<ul id="zz2_RootAspMenu" class="root ms-core-listMenu-root static">
+				<li class="static"><span class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Recent</span></span></span><ul class="static">
+					<li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/Lists/ACE Contacts  JBTest/AllItems.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">ACE Contacts - JBTest</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/Lists/HEBA CTAs/AllItems.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">HEBA CTAs</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/Lists/CPL Inventory/AllItems.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">CPL Inventory</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/Lists/Event Format Descriptions/AllItems.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Event Type Descriptions</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/Lists/Document Download Forms/AllItems.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Form-Document Download Forms</span></span></a></li>
+				</ul></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/default.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">ACE National Guide</span></span></a><ul class="static">
+					<li class="static selected"><a class="static selected menu-item ms-core-listMenu-item ms-displayInline ms-core-listMenu-selected ms-navedit-linkNode" href="/National-Guide/Pages/Course.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Course</span><span class="ms-hidden">Currently selected</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Organization.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Organization</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Thank-You.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Thank You</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Sign-Up.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Sign Up</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Seeking-Credit.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Learners: Seeking Credit With the National Guide</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Granting-Credit.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Colleges &amp; Universities: Granting Credit With the National Guide</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Providing-Training.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Training Providers: Providing Training for Credit With the National Guide</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Search.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">National Guide Search</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Search-Organizations.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Search Organizations</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Search-Courses.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Search Courses</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Search-Exams.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Search Exams</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Browse-Organizations.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Browse Organizations</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/CPL-Policies.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Colleges and Universities Supporting ACE Credit Recommendations</span></span></a></li><li class="static"><a class="static menu-item ms-core-listMenu-item ms-displayInline ms-navedit-linkNode" href="/National-Guide/Pages/Institution.aspx"><span class="additional-background ms-navedit-flyoutArrow"><span class="menu-item-text">Institution</span></span></a></li>
+				</ul></li>
+			</ul>
+		</div>
+                                    
+	</div>
+                                    
+                                    
+                                        </div>
+                                        
+
+                                        
+                                        
+                                        
+
+                                        
+                                        
+                                        <div class="ms-core-listMenu-verticalBox">
+                                            <a id="ctl00_PlaceHolderLeftNavBar_PlaceHolderQuickLaunchBottom_idNavLinkViewAll" accesskey="3" title="Site contents" class="ms-core-listMenu-item ms-core-listMenu-heading" href="/National-Guide/_layouts/15/viewlsts.aspx"><span class="ms-splinkbutton-text">Site contents</span></a>
+                                        </div>
+                                        
+                                    
+                                        
+                                    </div>
+                                
+                            
+</div>
+                            
+
+                        </aside>
+                        
+
+                        
+                        <article class="col-xs-12 content-main" role="main">
+
+        
+
+                            <div class="groupactionsarea">
+                                <div id="DeltaPlaceHolderGroupActionsArea" class="ms-floatRight ms-noWrap">
+	
+                                        
+                                    
+</div>
+                            </div>
+
+                            
+
+                            
+
+                            
+                            <div class="page-content" id="mainContent" tabindex="-1">
+                                <div class="row">
+                                    <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                                        
+                                        <h1 class="page-title ms-dialogHidden">
+                                            <span id="DeltaPlaceHolderPageTitleInTitleArea">
+                                            
+		
+	<!--Page Title-->
+	Course
+
+                                        </span>
+                                        </h1>
+                                        
+                                    </div>
+                                </div>
+                                <div id="DeltaPlaceHolderMain">
+	
+                            <a id="mainContent" name="mainContent" tabindex="-1"></a>
+                            
+
+<div class="row">
+	<div class="col-xs-12 col-md-8 col-lg-7 col-lg-offset-1 content">
+		<div class="row section one">
+	    	<div class="col-xs-12 anchor-title">
+	    		<!--section 1 title area -->
+	    		<div class="title">
+					
+				</div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 1 content area wide-->
+	    		<div id="ctl00_PlaceHolderMain_ctl01_label" style='display:none'>Section 1 Content</div><div id="ctl00_PlaceHolderMain_ctl01__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl01_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-left">
+	        	<!--section 1 content area left -->
+	        	<div id="ctl00_PlaceHolderMain_ctl02_label" style='display:none'>Section 1 Content Left</div><div id="ctl00_PlaceHolderMain_ctl02__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl02_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-right">
+	        	<!--section 1 content area right-->
+	        	<div id="ctl00_PlaceHolderMain_ctl03_label" style='display:none'>Section 1 Content Right</div><div id="ctl00_PlaceHolderMain_ctl03__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl03_label"></div>
+	        </div>
+	         <div class="col-xs-12">
+	        	<!--section 1 webpart zone 1 -->
+	        	<div class="ms-webpart-zone ms-fullWidth">
+		<div id="MSOZoneCell_WebPartctl00_ctl69_g_6d9b7243_96b1_40f2_807e_fab43f5578f5" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div WebPartID="6d9b7243-96b1-40f2-807e-fab43f5578f5" HasPers="false" id="WebPartctl00_ctl69_g_6d9b7243_96b1_40f2_807e_fab43f5578f5" width="100%" class="ms-WPBody noindex " allowDelete="false" style="" ><div id="ctl00_ctl69_g_6d9b7243_96b1_40f2_807e_fab43f5578f5">
+					
+
+<script type="text/javascript">
+    function guideSetPageTitle() {
+        if (window.jQuery) {
+            var courseTitle = 'Introduction to JavaScript';
+            var assessmentType = 'Course';
+            $('#DeltaPlaceHolderPageTitleInTitleArea').html(courseTitle);
+            $('.rollup-header .image-caption').html(courseTitle);
+            $('.breadcrumbItemActive').html(courseTitle);
+            $(document).prop('title', 'Introduction to JavaScript');
+
+            $('.row.section').each(function() {
+	            var totalContents = '';
+	            $(this).find('*:not(:has(*)):visible').not('.anchor-title').not('.title').each(function() {
+		            totalContents += $(this).text().trim();
+	            });
+	            
+	            if (!totalContents || totalContents.length == 0) {
+		            $(this).hide();
+	            }
+            });
+
+            $('.row.section.one').find('.anchor-title').find('.title').text(assessmentType + " Summary");
+            $("#stickThis .tab").first().text(assessmentType + " Summary");
+        }
+        else {
+                window.setTimeout('guideSetPageTitle();', 100);
+        }
+    }
+
+    guideSetPageTitle();
+</script>
+
+<div class="summary">
+    <div class="row">
+        <div class="fields col-xs-12">
+            
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">Credit Type:</div>
+                <div class="value col-xs-6 col-sm-8">Course</div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">ACE ID:</div>
+                <div class="value col-xs-6 col-sm-8">UPIS-0013</div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">Version:</div>
+                <div class="value col-xs-6 col-sm-8">1</div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">Organization's ID:</div>
+                <div class="value col-xs-6 col-sm-8">Computer Science 190</div>
+            </div>
+            
+            
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">Organization:</div>
+                <div class="value col-xs-6 col-sm-8"><a id="ctl00_ctl69_g_6d9b7243_96b1_40f2_807e_fab43f5578f5_ctl00_hypOrganization" href="/National-Guide/Pages/Organization.aspx?oid=ef9a8446-5e28-ef11-840b-6045bd089f77">UPI Study</a></div>
+            </div>
+            
+            
+            
+            
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">Location:</div>
+                <div class="value col-xs-6 col-sm-8">Online</div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">Length:</div>
+                <div class="value col-xs-6 col-sm-8">68 Hours</div>
+            </div>
+            
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">Minimum Passing Score:</div>
+                <div class="value col-xs-6 col-sm-8">70</div>
+            </div>
+            
+            <div class="row">
+                <div class="label col-xs-6 col-sm-4">ACE Credit Recommendation Period:</div>
+                <div class="value dates-offered col-xs-6 col-sm-8"><select name="ctl00$ctl69$g_6d9b7243_96b1_40f2_807e_fab43f5578f5$ctl00$ddlDatesOffered" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ctl69$g_6d9b7243_96b1_40f2_807e_fab43f5578f5$ctl00$ddlDatesOffered\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_ctl69_g_6d9b7243_96b1_40f2_807e_fab43f5578f5_ctl00_ddlDatesOffered">
+						<option selected="selected" value="/National-Guide/Pages/Course.aspx?org=UPI+Study&amp;cid=97b9b2ff-5a74-ef11-a671-00224808a070&amp;oid=ef9a8446-5e28-ef11-840b-6045bd089f77">9/1/2024 - 8/31/2027</option>
+
+					</select></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+				</div><div class="ms-clear"></div></div>
+			</div>
+		</div>
+	</div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 1 webpart zone 2 -->
+	        	<menu class="ms-hide">
+		<ie:menuitem id="MSOMenu_Help" iconsrc="/_layouts/15/images/HelpIcon.gif" onmenuclick="MSOWebPartPage_SetNewWindowLocation(MenuWebPart.getAttribute('helpLink'), MenuWebPart.getAttribute('helpMode'))" text="Help" type="option" style="display:none">
+
+		</ie:menuitem>
+	</menu>
+	        </div>
+	         <div class="col-xs-12">
+	        	<!--section 1 webpart zone 3 -->
+	        	
+	        </div>
+        </div>
+		<div class="row section two">
+	        <div class="col-xs-12 anchor-title">
+	    		<!--section 2 title area-->
+	    		<div class="title">
+					Credit Recommendation &amp; Competencies
+				</div>
+	    	</div>
+	        <div class="col-xs-12">
+	        	<!--section 2 content area wide-->
+	    		<div id="ctl00_PlaceHolderMain_ctl05_label" style='display:none'>Section 2 Content</div><div id="ctl00_PlaceHolderMain_ctl05__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl05_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-left">
+	        	<!--section 2 content area left -->
+	        	<div id="ctl00_PlaceHolderMain_ctl06_label" style='display:none'>Section 2 Content Left</div><div id="ctl00_PlaceHolderMain_ctl06__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl06_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-right">
+	        	<!--section 2 content area right -->
+	        	<div id="ctl00_PlaceHolderMain_ctl07_label" style='display:none'>Section 2 Content Right</div><div id="ctl00_PlaceHolderMain_ctl07__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl07_label"></div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 2 webpart zone 1 -->
+	        	<div class="ms-webpart-zone ms-fullWidth">
+		<div id="MSOZoneCell_WebPartctl00_ctl69_g_7140644d_cfe2_467b_b5ed_40f6ba808335" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div WebPartID="7140644d-cfe2-467b-b5ed-40f6ba808335" HasPers="false" id="WebPartctl00_ctl69_g_7140644d_cfe2_467b_b5ed_40f6ba808335" width="100%" class="ms-WPBody noindex " allowDelete="false" style="" ><div id="ctl00_ctl69_g_7140644d_cfe2_467b_b5ed_40f6ba808335">
+					
+        <table class="credit-recommendations">
+            <tr>
+                <th>Level</th>
+                <th>Credits (SH)</th>
+                <th>Subject</th>
+            </tr>
+    
+            <tr>
+                <td>Lower-Division Baccalaureate</td>
+                <td>3</td>
+                <td>Introduction to Web Development</td>
+            </tr>
+    
+        </table>
+    
+
+
+
+				</div><div class="ms-clear"></div></div>
+			</div><div class="ms-PartSpacingVertical"></div>
+		</div><div id="MSOZoneCell_WebPartctl00_ctl69_g_c450b21a_e08f_4fb9_b70b_9482ecce4ee2" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div WebPartID="c450b21a-e08f-4fb9-b70b-9482ecce4ee2" HasPers="false" id="WebPartctl00_ctl69_g_c450b21a_e08f_4fb9_b70b_9482ecce4ee2" width="100%" class="ms-WPBody noindex " allowDelete="false" allowExport="false" style="" ><div id="ctl00_ctl69_g_c450b21a_e08f_4fb9_b70b_9482ecce4ee2">
+					
+
+				</div><div class="ms-clear"></div></div>
+			</div>
+		</div>
+	</div>
+	        </div>
+	          <div class="col-xs-12">
+	        	<!--section 2 webpart zone 2 -->
+	        	
+	        </div>
+  			<div class="col-xs-12">
+	        	<!--section 2 webpart zone 3 -->
+	        	
+	        </div>
+	    </div>
+        <div class="row section three">
+	    	<div class="col-xs-12 anchor-title">
+	    		<!--section 3 title area -->
+	    		<div class="title">
+					Description
+				</div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 3 content area -->
+	    		<div id="ctl00_PlaceHolderMain_ctl09_label" style='display:none'>Section 3 Content</div><div id="ctl00_PlaceHolderMain_ctl09__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl09_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-left">
+	        	<!--section 3 content left -->
+	        	<div id="ctl00_PlaceHolderMain_ctl10_label" style='display:none'>Section 3 Content Left</div><div id="ctl00_PlaceHolderMain_ctl10__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl10_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-right">
+	        	<!--section 3 content right -->
+	        	<div id="ctl00_PlaceHolderMain_ctl11_label" style='display:none'>Section 3 Content Right</div><div id="ctl00_PlaceHolderMain_ctl11__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl11_label"></div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 3 webpart zone 1 -->
+	    		<div class="ms-webpart-zone ms-fullWidth">
+		<div id="MSOZoneCell_WebPartctl00_ctl69_g_a5cc5d35_9462_40a4_b25f_bdf166b75164" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div WebPartID="a5cc5d35-9462-40a4-b25f-bdf166b75164" HasPers="false" id="WebPartctl00_ctl69_g_a5cc5d35_9462_40a4_b25f_bdf166b75164" width="100%" class="ms-WPBody noindex " allowDelete="false" style="" ><div id="ctl00_ctl69_g_a5cc5d35_9462_40a4_b25f_bdf166b75164">
+					
+
+
+
+
+    <h2>Objective:</h2>
+    <div class="objective">
+        <div class="ExternalClassF33FB643633246D18E7C421984B10EC7">The course objective is to equip students with a solid understanding of JavaScript programming essentials and their practical implications in web development. By the conclusion of the course, students will have acquired the proficiency to navigate through JavaScript syntax, variables, and coding conventions, laying a robust foundation for further exploration. The curriculum emphasizes hands-on learning, enabling students to set up tailored development environments and effectively handle errors, debug code, and manage events. Additionally, students will develop problem-solving skills through practical applications, ensuring their ability to apply JavaScript concepts confidently in real-world scenarios. Overall, the course aims to empower students with the knowledge and skills necessary to excel in JavaScript programming and contribute effectively to web development projects.</div>
+    </div>
+
+
+
+    <h2>Learning Outcomes:</h2>
+    
+            <ul class="outcomes">
+        
+                <li>Developing practical skills in setting up a development environment tailored for JavaScript coding, laying a solid foundation for further exploration of JavaScript concepts</li>
+        
+                <li>Mastering JavaScript basics, including pseudocode, syntax, variables, and coding conventions, to plan and execute programs effectively</li>
+        
+                <li>Proficiency in handling errors, debugging techniques, and event handling, ensuring the reliability and robustness of JavaScript applications</li>
+        
+                <li>Enhancing problem-solving abilities through practical applications and exercises, enabling students to apply JavaScript concepts in real-world scenarios with confidence</li>
+        
+            </ul>
+        
+
+
+
+
+    <h2>General Topics:</h2>
+    <div class="general-course-topics">
+        
+                <ul class="topics">
+            
+                    <li>Introduction to JavaScript Programming</li>
+            
+                    <li>Integration of JavaScript with HTML</li>
+            
+                    <li>Fundamentals of JavaScript Programming</li>
+            
+                    <li>Conditional Logic, Arrays, and Iteration in JavaScript</li>
+            
+                    <li>Functions and Date/Time Handling in JavaScript</li>
+            
+                    <li>Utilizing Forms with JavaScript</li>
+            
+                    <li>Understanding the Document Object Model (DOM) with JavaScript</li>
+            
+                    <li>Managing Errors, Debugging, and Handling Events in JavaScript</li>
+            
+                </ul>
+              
+    </div>
+
+
+				</div><div class="ms-clear"></div></div>
+			</div>
+		</div>
+	</div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 3 webpart zone 2 -->
+	    		
+	        </div>
+			<div class="col-xs-12">
+	        	<!--section 3 webpart zone 3 -->
+	    		
+	        </div>
+        </div>
+        <div class="row section four">
+	        <div class="col-xs-12 anchor-title">
+	    		<!--section 4 title area -->
+	    		<div class="title">
+					Instruction &amp; Assessment
+				</div>
+	    	</div>
+	        <div class="col-xs-12">
+	        	<!--section 4 content area wide-->
+		    	<div id="ctl00_PlaceHolderMain_ctl13_label" style='display:none'>Section 4 Content</div><div id="ctl00_PlaceHolderMain_ctl13__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl13_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-left">
+	        	<!--section 4 content area left-->
+	        	<div id="ctl00_PlaceHolderMain_ctl14_label" style='display:none'>Section 4 Content Left</div><div id="ctl00_PlaceHolderMain_ctl14__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl14_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-right">
+	        	<!--section 4 content area right-->
+	        	<div id="ctl00_PlaceHolderMain_ctl15_label" style='display:none'>Section 4 Content Right</div><div id="ctl00_PlaceHolderMain_ctl15__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl15_label"></div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 4 webpart zone 1 -->
+		    	<div class="ms-webpart-zone ms-fullWidth">
+		<div id="MSOZoneCell_WebPartctl00_ctl69_g_dc5b7139_479d_446c_96dd_afe716853e98" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div WebPartID="dc5b7139-479d-446c-96dd-afe716853e98" HasPers="false" id="WebPartctl00_ctl69_g_dc5b7139_479d_446c_96dd_afe716853e98" width="100%" class="ms-WPBody noindex " allowDelete="false" style="" ><div id="ctl00_ctl69_g_dc5b7139_479d_446c_96dd_afe716853e98">
+					
+    <h2>Instructional Strategies:</h2>
+    
+            <ul class="instruction">
+        
+                <li>Computer Based Training</li>
+        
+                <li>Lectures</li>
+        
+                <li>Project-based Instruction</li>
+        
+            </ul>
+        
+
+
+    <h2>Methods of Assessment:</h2>
+    
+            <ul class="assessment">
+        
+                <li>Examinations</li>
+        
+                <li>Other</li>
+        
+                <li>Quizzes</li>
+        
+                <li>Assignment</li>
+        
+            </ul>
+        
+
+
+				</div><div class="ms-clear"></div></div>
+			</div>
+		</div>
+	</div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 4 webpart zone 2 -->
+		    	
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 4 webpart zone 3 -->
+		    	
+	        </div>
+	    </div>
+        <div class="row section five">
+	        <div class="col-xs-12 anchor-title">
+	    		<!--section 5 title area -->
+	    		<div class="title">
+					Supplemental Materials
+				</div>
+	    	</div>
+	        <div class="col-xs-12">
+	        	<!--section 5 content area wide-->
+	        	<div id="ctl00_PlaceHolderMain_ctl17_label" style='display:none'>Section 5 Content</div><div id="ctl00_PlaceHolderMain_ctl17__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl17_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-left">
+	        	<!--section 5 content area left-->
+	        	<div id="ctl00_PlaceHolderMain_ctl18_label" style='display:none'>Section 5 Content Left</div><div id="ctl00_PlaceHolderMain_ctl18__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl18_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-right">
+	        	<!--section 5 content area right-->
+	        	<div id="ctl00_PlaceHolderMain_ctl19_label" style='display:none'>Section 5 Content Right</div><div id="ctl00_PlaceHolderMain_ctl19__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl19_label"></div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 5 webpart zone 1 -->
+		    	<div class="ms-webpart-zone ms-fullWidth">
+		<div id="MSOZoneCell_WebPartctl00_ctl69_g_ab0066ae_001e_4205_b117_a12ad8013da2" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div WebPartID="ab0066ae-001e-4205-b117-a12ad8013da2" HasPers="false" id="WebPartctl00_ctl69_g_ab0066ae_001e_4205_b117_a12ad8013da2" width="100%" class="ms-WPBody noindex " allowDelete="false" style="" ><div id="ctl00_ctl69_g_ab0066ae_001e_4205_b117_a12ad8013da2">
+					
+
+<div class="supplemental-materials">
+    <div class="desc"></div>
+    
+</div>
+
+				</div><div class="ms-clear"></div></div>
+			</div>
+		</div>
+	</div>
+	        </div>
+			<div class="col-xs-12">
+	        	<!--section 5 webpart zone 2 -->
+		    	
+	        </div>
+			<div class="col-xs-12">
+	        	<!--section 5 webpart zone 3 -->
+		    	
+	        </div>
+	    </div>
+        <div class="row section six">
+	        <div class="col-xs-12 anchor-title">
+	    		<!--section 6 title area -->
+	    		<div class="title">
+					Equivalencies</div>
+	    	</div>
+	        <div class="col-xs-12">
+	        	<!--section 6 content area wide-->
+	        	<div id="ctl00_PlaceHolderMain_ctl21_label" style='display:none'>Section 6 Content</div><div id="ctl00_PlaceHolderMain_ctl21__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl21_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-left">
+	        	<!--section 6 content area left-->
+	        	<div id="ctl00_PlaceHolderMain_ctl22_label" style='display:none'>Section 6 Content Left</div><div id="ctl00_PlaceHolderMain_ctl22__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl22_label"></div>
+	        </div>
+	        <div class="col-xs-12 col-sm-6 split-right">
+	        	<!--section 6 content area right-->
+	        	<div id="ctl00_PlaceHolderMain_ctl23_label" style='display:none'>Section 6 Content Right</div><div id="ctl00_PlaceHolderMain_ctl23__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl23_label"></div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--section 6 webpart zone 1-->
+		    	<div class="ms-webpart-zone ms-fullWidth">
+		<div id="MSOZoneCell_WebPartctl00_ctl69_g_61f6ae95_1266_44e7_9c0c_15f53a8a74e1" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div WebPartID="61f6ae95-1266-44e7-9c0c-15f53a8a74e1" HasPers="false" id="WebPartctl00_ctl69_g_61f6ae95_1266_44e7_9c0c_15f53a8a74e1" width="100%" class="ms-WPBody noindex " allowDelete="false" allowExport="false" style="" ><div id="ctl00_ctl69_g_61f6ae95_1266_44e7_9c0c_15f53a8a74e1">
+
+				</div><div class="ms-clear"></div></div>
+			</div>
+		</div>
+	</div>
+	        </div>
+			<div class="col-xs-12">
+	        	<!--section 6 webpart zone 2-->
+		    	
+	        </div>
+			<div class="col-xs-12">
+	        	<!--section 6 webpart zone 3-->
+		    	
+	        </div>
+	    </div>
+    </div>
+    <div class="col-xs-12 col-md-4 col-lg-3 rail">
+	    <div class="row">
+			<div class="col-xs-12 event-buttons">
+	        	<!--button content-->
+	        	<div id="ctl00_PlaceHolderMain_ctl24_label" style='display:none'>Button Content</div><div id="ctl00_PlaceHolderMain_ctl24__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl24_label"></div>
+	        </div>
+	    	<div class="col-xs-12">
+	        	<!--rail content 1-->
+	        	<div id="ctl00_PlaceHolderMain_ctl25_label" style='display:none'>Rail Content 1</div><div id="ctl00_PlaceHolderMain_ctl25__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl25_label"></div>
+	        </div>
+	        <div class="col-xs-12">
+	        	<!--rail zone 1-->
+	            <div class="ms-webpart-zone ms-fullWidth">
+		<div id="MSOZoneCell_WebPartctl00_ctl69_g_00138e79_2ffa_4199_bb2d_13d55b0ebabb" class="s4-wpcell-plain ms-webpartzone-cell ms-webpart-cell-vertical-inline-table ms-webpart-cell-vertical ms-fullWidth ">
+			<div class="ms-webpart-chrome ms-webpart-chrome-vertical ms-webpart-chrome-fullWidth ">
+				<div WebPartID="00138e79-2ffa-4199-bb2d-13d55b0ebabb" HasPers="false" id="WebPartctl00_ctl69_g_00138e79_2ffa_4199_bb2d_13d55b0ebabb" width="100%" class="ms-WPBody noindex " allowDelete="false" style="" ><div id="ctl00_ctl69_g_00138e79_2ffa_4199_bb2d_13d55b0ebabb">
+					
+
+<div class="other-courses">
+    <h2>Other offerings from UPI Study</h2>
+    
+    <div class="view-all">
+        <a id="ctl00_ctl69_g_00138e79_2ffa_4199_bb2d_13d55b0ebabb_ctl00_hypViewAll" href="/National-Guide/Pages/Organization.aspx?oid=ef9a8446-5e28-ef11-840b-6045bd089f77">View All Courses</a>
+    </div>
+    <div class="view-all">
+        <a href="#" onclick="jQuery('.tab.sec-6').click();">College Credit Opportunities</a>
+    </div>
+    
+</div>
+
+				</div><div class="ms-clear"></div></div>
+			</div>
+		</div>
+	</div>
+	        </div> 
+	    </div>
+    </div>
+</div>
+<div class="row wide-bottom">
+	<div class="col-xs-12">
+		<div class="row">
+			<div class="page-content col-xs-12 col-lg-10 col-lg-offset-1">
+				<div id="ctl00_PlaceHolderMain_ctl26_label" style='display:none'>Page Content</div><div id="ctl00_PlaceHolderMain_ctl26__ControlWrapper_RichHtmlField" class="ms-rtestate-field" style="display:inline" aria-labelledby="ctl00_PlaceHolderMain_ctl26_label"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-8 col-lg-7 col-lg-offset-1">
+				<div class="col-inner">
+					
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-lg-3">
+				<div class="col-inner">
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-lg-10 col-lg-offset-1">
+				<div class="col-inner">
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-lg-5 col-lg-offset-1 zone-split-left">
+				<div class="col-inner">
+					
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-lg-5 zone-split-right">
+				<div class="col-inner">
+					
+				</div>
+			</div>
+		</div>
+		<div class="row inset">
+			<div class="col-xs-12 col-sm-4 col-lg-4 zone-split-left">
+				<div class="col-inner">
+					
+				</div>
+			</div>	
+			<div class="col-xs-12 col-sm-4 col-lg-4 zone-split-mid">
+				<div class="col-inner">
+					
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4 col-lg-4 zone-split-right">
+				<div class="col-inner">
+					
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-lg-10 col-lg-offset-1">
+				<div class="col-inner">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-lg-10 col-lg-offset-1">
+		
+	</div>
+</div>
+<div style='display:none' id='hidZone'></div>
+                        
+</div>
+                            </div>
+                            
+
+                        </article>
+                        
+                     </div>
+                    
+                </div>
+                
+
+                
+                <div class="s4-notdlg">
+                    <footer>
+                        <div class="row top-footer s4-notdlg noindex">
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-md-6 tagline">
+                                    <div class="ms-webpart-chrome ms-webpart-chrome-fullWidth ">
+	<div WebPartID="00000000-0000-0000-0000-000000000000" HasPers="true" id="WebPartWPQ3" width="100%" class="ms-WPBody noindex " OnlyForMePart="true" allowDelete="false" style="" ><div id="cbqwpctl00_g_2f874c41_3a6d_4d79_9698_6ddba373377a" class="cbq-layout-main"><ul class="dfwp-column dfwp-list" style="width:100%" ><li class="dfwp-item"><div class="item link-item"><div class="title">ACE's Mission</div><div class="text">ACE leads higher education with a united vision for the future, galvanizing our members to make change. The Council collaborates across the sector to design solutions for today’s challenges, serves the needs of a diverse student population, shapes effective public policy, and promotes a more inclusive future.</div></div></li></ul></div><div class="ms-clear"></div></div>
+</div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8 col-md-3 location">
+                                    <div class="ms-webpart-chrome ms-webpart-chrome-fullWidth ">
+	<div WebPartID="00000000-0000-0000-0000-000000000000" HasPers="true" id="WebPartWPQ4" width="100%" class="ms-WPBody noindex " OnlyForMePart="true" allowDelete="false" style="" ><div id="cbqwpctl00_g_8ea0daf7_7f79_4ef6_8109_836888a157a3" class="cbq-layout-main"><ul class="dfwp-column dfwp-list" style="width:100%" ><li class="dfwp-item"><div class="item link-item"><div class="name">American Council on Education</div><div class="address">One Dupont Circle NW<br>
+Washington, DC 20036<br>
+202-939-9300</div><div class="social"> <a href="https://www.linkedin.com/company/american-council-on-education" aria-label="Linked In"><i aria-hidden class="fab fa-linkedin-in" title="Linked In"></i></a> <a href="https://twitter.com/ACEducation" class="footer-twitter-logo"><img src="/_catalogs/masterpage/ACE/img/x-twitter.png" style="height:18.75px !important; margin-top: -5px;" /></a> <a href="https://www.youtube.com/user/ACEducationTV" aria-label="YouTube"><i aria-hidden class="fab fa-youtube" title="YouTube"></i></a> <a href="https://www.instagram.com/aceducation/" aria-label="Instagram"><i aria-hidden class="fab fa-instagram" title="Instagram"></i></a> <a href="https://bsky.app/profile/aceducation.bsky.social" class="footer-bluesky-logo"><img src="/_catalogs/masterpage/ACE/img/Bluesky_Logo.png" style="height:18.75px !important; margin-top: -5px;" /></a> </div></div></li></ul></div><div class="ms-clear"></div></div>
+</div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-3 higher-education">
+                                    <div class="info">
+                                        <div class="ms-webpart-chrome ms-webpart-chrome-fullWidth ">
+	<div WebPartID="00000000-0000-0000-0000-000000000000" HasPers="true" id="WebPartWPQ5" width="100%" class="ms-WPBody noindex " OnlyForMePart="true" allowDelete="false" style="" ><div id="cbqwpctl00_g_a83552f8_9954_40aa_b90c_429ed4fd114f" class="cbq-layout-main"><ul class="dfwp-column dfwp-list" style="width:100%" ><li class="dfwp-item"><div class="item link-item"><div class="title">Washington Higher Education</div><div class="wordmark"><a href="http://www.whes.org">secretariat</a></div><div class="text">ACE convenes higher education organizations through the Washington Higher Education Secretariat (WHES).</div></div></li></ul></div><div class="ms-clear"></div></div>
+</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row bottom-footer s4-notdlg noindex">
+                            <div class="col-xs-12">               
+                                <div class="col-xs-12 col-sm-8 footer-links">                      
+                                    <div class="ms-webpart-chrome ms-webpart-chrome-fullWidth ">
+	<div WebPartID="00000000-0000-0000-0000-000000000000" HasPers="true" id="WebPartWPQ6" width="100%" class="ms-WPBody noindex " OnlyForMePart="true" allowDelete="false" style="" ><div id="cbqwpctl00_g_b5a11396_8f3f_4bd6_8b36_ed1c4b8f60ae" class="cbq-layout-main"><ul class="dfwp-column dfwp-list" style="width:100%" ><li class="dfwp-item"><div class="item link-item"><a href="https://forms.acenet.edu/contact-us/" title="">Contact Us</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/Pages/Terms-of-Use.aspx" title="">Terms of Use</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/Pages/privacy.aspx" title="">Privacy Policy</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/About/Pages/brand-guidelines.aspx" title="">Brand Guidelines</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://www.acenet.edu/About/Pages/visit.aspx" title="">Visit ACE</a></div></li><li class="dfwp-item"><div class="item link-item"><a href="https://recruiting.ultipro.com/AME1073/JobBoard/3ab22f45-0d00-7f95-def8-c8ca6a23d48f/?q=&amp;o=postedDateDesc" title="">Careers</a></div></li></ul></div><div class="ms-clear"></div></div>
+</div>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 copyright">
+                                    &copy; <script type="text/javascript">document.write(new Date().getFullYear());</script> American Council on Education
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+
+                
+            </div>
+        </div>
+        
+
+        <div id="DeltaFormDigest">
+	
+                        
+                            <script type="text/javascript">//<![CDATA[
+        var formDigestElement = document.getElementsByName('__REQUESTDIGEST')[0];
+        if (!((formDigestElement == null) || (formDigestElement.tagName.toLowerCase() != 'input') || (formDigestElement.type.toLowerCase() != 'hidden') ||
+            (formDigestElement.value == null) || (formDigestElement.value.length <= 0)))
+        {
+            formDigestElement.value = '0x28BE840484FCE8DFE9D34A6FA5F203F5FE97E3AA017D1FE352D85027F4ADC20F5C5E2EA6C1906FB08DBCE182EFB60810B463BEBEEEF24363E154874F24448860,25 Nov 2026 17:39:00 -0000';_spPageContextInfo.updateFormDigestPageLoaded = new Date();
+        }
+        //]]>
+        </script>
+                        
+                    
+</div>
+
+        
+        
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        
+        
+
+        <span id="DeltaHelpPanel">
+                    <div id="helppanelCntdiv" class="ms-Help-PanelContainer">
+                        
+                    </div>
+                </span>
+                <span id="DeltaPageInstrumentation">
+                    
+                </span>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+var _spFormDigestRefreshInterval = 1440000;
+var callBackFrameUrl='/WebResource.axd?d=beToSAE3vdsL1QUQUxjWdT1dNKdaWK8QqZZHnWT1-GR-SsvwmRy2V8zy9gEg2sBVuCHxsD5e12XSaX0qhsiH6g2&t=639190689332169432';
+WebForm_InitCallback();window.SPThemeUtils && SPThemeUtils.ApplyCurrentTheme(true); IsSPSocialSwitchEnabled = function() { return true; };var _fV4UI = true;
+function _RegisterWebPartPageCUI()
+{
+    var initInfo = {editable: false,isEditMode: false,allowWebPartAdder: false,listId: "{443ad49c-12c2-4332-bec0-ab0de898445d}",itemId: 8,recycleBinEnabled: true,enableMinorVersioning: true,enableModeration: true,forceCheckout: true,rootFolderUrl: "\u002fNational-Guide\u002fPages",itemPermissions:{High:16,Low:200769}};
+    SP.Ribbon.WebPartComponent.registerWithPageManager(initInfo);
+    var wpcomp = SP.Ribbon.WebPartComponent.get_instance();
+    var hid;
+    hid = document.getElementById("_wpSelected");
+    if (hid != null)
+    {
+        var wpid = hid.value;
+        if (wpid.length > 0)
+        {
+            var zc = document.getElementById(wpid);
+            if (zc != null)
+                wpcomp.selectWebPart(zc, false);
+        }
+    }
+    hid = document.getElementById("_wzSelected");
+    if (hid != null)
+    {
+        var wzid = hid.value;
+        if (wzid.length > 0)
+        {
+            wpcomp.selectWebPartZone(null, wzid);
+        }
+    }
+};
+function __RegisterWebPartPageCUI() {
+ExecuteOrDelayUntilScriptLoaded(_RegisterWebPartPageCUI, "sp.ribbon.js");}
+_spBodyOnLoadFunctionNames.push("__RegisterWebPartPageCUI");var __wpmExportWarning='This Web Part Page has been personalized. As a result, one or more Web Part properties may contain confidential information. Make sure the properties contain information that is safe for others to read. After exporting this Web Part, view properties in the Web Part description file (.WebPart) by using a text editor such as Microsoft Notepad.';var __wpmCloseProviderWarning='You are about to close this Web Part.  It is currently providing data to other Web Parts, and these connections will be deleted if this Web Part is closed.  To close this Web Part, click OK.  To keep this Web Part, click Cancel.';var __wpmDeleteWarning='You are about to permanently delete this Web Part.  Are you sure you want to do this?  To delete this Web Part, click OK.  To keep this Web Part, click Cancel.';function _cUpdonetidHeadbnnr2(){var myd = null; if (typeof(dataonetidHeadbnnr2) != 'undefined') {myd = dataonetidHeadbnnr2;} var myc = document.getElementById('ctl00_onetidHeadbnnr2');_cUpdconetidHeadbnnr2(myd, myc);}function _cUpdconetidHeadbnnr2(data, ctrl){SiteLogoImagePageUpdate(ctrl, data);}g_spPreFetchKeys.push('sp.core.js');function ctl00_g_d3e307d4_71eb_4557_84e7_f865cea792a8_init() {
+    EnsureScript('mediaplayer.js', 
+        typeof(mediaPlayer) != 'undefined' ? typeof(mediaPlayer.attachToMediaLinks) : 'undefined');
+    ExecuteOrDelayUntilScriptLoaded(
+        function() {
+            if (Silverlight.isInstalled('2.0')) {
+                mediaPlayer.createOverlayPlayer();
+                mediaPlayer.attachToMediaLinks(document.getElementById('cbqwpctl00_g_d3e307d4_71eb_4557_84e7_f865cea792a8'), ["wmv","wma","avi","mpg","mp3","mp4","asf","ogg","ogv","oga","webm"],'');
+            }
+        }, 'mediaplayer.js');
+}
+if (_spBodyOnLoadFunctionNames != null) { _spBodyOnLoadFunctionNames.push('ctl00_g_d3e307d4_71eb_4557_84e7_f865cea792a8_init'); }
+function ctl00_g_2f874c41_3a6d_4d79_9698_6ddba373377a_init() {
+    EnsureScript('mediaplayer.js', 
+        typeof(mediaPlayer) != 'undefined' ? typeof(mediaPlayer.attachToMediaLinks) : 'undefined');
+    ExecuteOrDelayUntilScriptLoaded(
+        function() {
+            if (Silverlight.isInstalled('2.0')) {
+                mediaPlayer.createOverlayPlayer();
+                mediaPlayer.attachToMediaLinks(document.getElementById('cbqwpctl00_g_2f874c41_3a6d_4d79_9698_6ddba373377a'), ["wmv","wma","avi","mpg","mp3","mp4","asf","ogg","ogv","oga","webm"],'');
+            }
+        }, 'mediaplayer.js');
+}
+if (_spBodyOnLoadFunctionNames != null) { _spBodyOnLoadFunctionNames.push('ctl00_g_2f874c41_3a6d_4d79_9698_6ddba373377a_init'); }
+function ctl00_g_8ea0daf7_7f79_4ef6_8109_836888a157a3_init() {
+    EnsureScript('mediaplayer.js', 
+        typeof(mediaPlayer) != 'undefined' ? typeof(mediaPlayer.attachToMediaLinks) : 'undefined');
+    ExecuteOrDelayUntilScriptLoaded(
+        function() {
+            if (Silverlight.isInstalled('2.0')) {
+                mediaPlayer.createOverlayPlayer();
+                mediaPlayer.attachToMediaLinks(document.getElementById('cbqwpctl00_g_8ea0daf7_7f79_4ef6_8109_836888a157a3'), ["wmv","wma","avi","mpg","mp3","mp4","asf","ogg","ogv","oga","webm"],'');
+            }
+        }, 'mediaplayer.js');
+}
+if (_spBodyOnLoadFunctionNames != null) { _spBodyOnLoadFunctionNames.push('ctl00_g_8ea0daf7_7f79_4ef6_8109_836888a157a3_init'); }
+function ctl00_g_a83552f8_9954_40aa_b90c_429ed4fd114f_init() {
+    EnsureScript('mediaplayer.js', 
+        typeof(mediaPlayer) != 'undefined' ? typeof(mediaPlayer.attachToMediaLinks) : 'undefined');
+    ExecuteOrDelayUntilScriptLoaded(
+        function() {
+            if (Silverlight.isInstalled('2.0')) {
+                mediaPlayer.createOverlayPlayer();
+                mediaPlayer.attachToMediaLinks(document.getElementById('cbqwpctl00_g_a83552f8_9954_40aa_b90c_429ed4fd114f'), ["wmv","wma","avi","mpg","mp3","mp4","asf","ogg","ogv","oga","webm"],'');
+            }
+        }, 'mediaplayer.js');
+}
+if (_spBodyOnLoadFunctionNames != null) { _spBodyOnLoadFunctionNames.push('ctl00_g_a83552f8_9954_40aa_b90c_429ed4fd114f_init'); }
+function ctl00_g_b5a11396_8f3f_4bd6_8b36_ed1c4b8f60ae_init() {
+    EnsureScript('mediaplayer.js', 
+        typeof(mediaPlayer) != 'undefined' ? typeof(mediaPlayer.attachToMediaLinks) : 'undefined');
+    ExecuteOrDelayUntilScriptLoaded(
+        function() {
+            if (Silverlight.isInstalled('2.0')) {
+                mediaPlayer.createOverlayPlayer();
+                mediaPlayer.attachToMediaLinks(document.getElementById('cbqwpctl00_g_b5a11396_8f3f_4bd6_8b36_ed1c4b8f60ae'), ["wmv","wma","avi","mpg","mp3","mp4","asf","ogg","ogv","oga","webm"],'');
+            }
+        }, 'mediaplayer.js');
+}
+if (_spBodyOnLoadFunctionNames != null) { _spBodyOnLoadFunctionNames.push('ctl00_g_b5a11396_8f3f_4bd6_8b36_ed1c4b8f60ae_init'); }
+
+            ExecuteOrDelayUntilScriptLoaded(
+                function() 
+                {                    
+                    Srch.ScriptApplicationManager.get_current().states = {"webUILanguageName":"en-US","webDefaultLanguageName":"en-US","QueryDateTimeCulture":1033,"timeZoneOffsetInHours":-5,"contextUrl":"https://www.acenet.edu/National-Guide","contextTitle":"ACE National Guide","supportedLanguages":[{"id":1025,"label":"Arabic"},{"id":1093,"label":"Bangla"},{"id":1026,"label":"Bulgarian"},{"id":1027,"label":"Catalan"},{"id":2052,"label":"Chinese (Simplified)"},{"id":1028,"label":"Chinese (Traditional)"},{"id":1050,"label":"Croatian"},{"id":1029,"label":"Czech"},{"id":1030,"label":"Danish"},{"id":1043,"label":"Dutch"},{"id":1033,"label":"English"},{"id":1035,"label":"Finnish"},{"id":1036,"label":"French"},{"id":1031,"label":"German"},{"id":1032,"label":"Greek"},{"id":1095,"label":"Gujarati"},{"id":1037,"label":"Hebrew"},{"id":1081,"label":"Hindi"},{"id":1038,"label":"Hungarian"},{"id":1039,"label":"Icelandic"},{"id":1057,"label":"Indonesian"},{"id":1040,"label":"Italian"},{"id":1041,"label":"Japanese"},{"id":1099,"label":"Kannada"},{"id":1042,"label":"Korean"},{"id":1062,"label":"Latvian"},{"id":1063,"label":"Lithuanian"},{"id":1086,"label":"Malay"},{"id":1100,"label":"Malayalam"},{"id":1102,"label":"Marathi"},{"id":1044,"label":"Norwegian"},{"id":1045,"label":"Polish"},{"id":1046,"label":"Portuguese (Brazil)"},{"id":2070,"label":"Portuguese (Portugal)"},{"id":1094,"label":"Punjabi"},{"id":1048,"label":"Romanian"},{"id":1049,"label":"Russian"},{"id":3098,"label":"Serbian (Cyrillic)"},{"id":2074,"label":"Serbian (Latin)"},{"id":1051,"label":"Slovak"},{"id":1060,"label":"Slovenian"},{"id":3082,"label":"Spanish (Spain)"},{"id":2058,"label":"Spanish (Mexico)"},{"id":1053,"label":"Swedish"},{"id":1097,"label":"Tamil"},{"id":1098,"label":"Telugu"},{"id":1054,"label":"Thai"},{"id":1055,"label":"Turkish"},{"id":1058,"label":"Ukrainian"},{"id":1056,"label":"Urdu"},{"id":1066,"label":"Vietnamese"}],"navigationNodes":[{"id":0,"name":"Everything","url":"/National-Guide/Pages/Search.aspx","promptString":"Search Everything"},{"id":1,"name":"Organizations","url":"/National-Guide/Pages/Search-Organizations.aspx","promptString":"Search Organizations"},{"id":2,"name":"Courses","url":"/National-Guide/Pages/Search-Courses.aspx","promptString":"Search Courses"},{"id":3,"name":"Exams","url":"/National-Guide/Pages/Search-Exams.aspx","promptString":"Search Exams"}],"webUILanguageDirectory":"en-US","showAdminDetails":false,"defaultPagesListName":"Pages","isSPFSKU":false,"defaultQueryProperties":{"culture":1033,"uiLanguage":1033,"summaryLength":180,"desiredSnippetLength":90,"enableStemming":true,"enablePhonetic":false,"enableNicknames":false,"trimDuplicates":true,"bypassResultTypes":false,"enableInterleaving":true,"enableQueryRules":true,"processBestBets":true,"enableOrderingHitHighlightedProperty":false,"hitHighlightedMultivaluePropertyLimit":-1,"processPersonalFavorites":true}};
+                    Srch.U.trace(null, 'SerializeToClient', 'ScriptApplicationManager state initialized.');
+                }, 'Search.ClientControls.js');var g_clientIdDeltaPlaceHolderMain = "DeltaPlaceHolderMain";
+var g_clientIdDeltaPlaceHolderPageTitleInTitleArea = "DeltaPlaceHolderPageTitleInTitleArea";
+var g_clientIdDeltaPlaceHolderUtilityContent = "DeltaPlaceHolderUtilityContent";
+
+                    ExecuteOrDelayUntilScriptLoaded(
+                        function() 
+                        {
+                            if ($isNull($find('ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr')))
+                            {
+                                var sb = $create(Srch.SearchBox, {"delayLoadTemplateScripts":true,"messages":[],"queryGroupNames":["MasterPage"],"renderTemplateId":"~sitecollection/_catalogs/masterpage/Display Templates/Search/Control_SearchBox_Compact.js","resultsPageAddress":"/Search/Pages/results.aspx","serverInitialRender":true,"showDataErrors":true,"states":{},"tryInplaceQuery":false}, null, null, $get("ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr"));
+                                sb.activate('Search...', 'ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_sbox', 'ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_sboxdiv', 'ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_NavButton', 'ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_AutoCompList', 'ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_NavDropdownList', 'ctl00_PlaceHolderSearchAreaUtility_SmallSearchInputBox1_csr_SearchLink', 'ms-srch-sbprogress', 'ms-srch-sb-prompt ms-helperText');
+                            }
+                        }, 'Search.ClientControls.js');g_QuickLaunchControlIds.push("zz1_V4QuickLaunchMenu");_spBodyOnLoadFunctionNames.push('QuickLaunchInitDroppable'); var g_zz1_V4QuickLaunchMenu = null; function init_zz1_V4QuickLaunchMenu() { if (g_zz1_V4QuickLaunchMenu == null) g_zz1_V4QuickLaunchMenu = $create(SP.UI.AspMenu, null, null, null, $get('zz1_V4QuickLaunchMenu')); } ExecuteOrDelayUntilScriptLoaded(init_zz1_V4QuickLaunchMenu, 'SP.Core.js');
+//]]>
+</script>
+</form>
+
+    <span id="DeltaPlaceHolderUtilityContent">
+        
+    </span>
+    <script type="text/javascript">// <![CDATA[ 
+
+var g_Workspace = "s4-workspace"; // ]]>
+</script>
+
+    
+    <script type="text/javascript" src="/_catalogs/masterpage/ACE/script/SPBP.main.min.js?v=1596754199"></script>
+<script type="text/javascript" src="/_catalogs/masterpage/ACE/script/ACE.main.min.js?v=1596754199"></script>
+<script type="text/javascript" src="/_layouts/15/ScriptResx.ashx?name=sp.res&amp;culture=en-us"></script>
+<script type="text/javascript" src="/_layouts/15/sp.init.js"></script>
+<script type="text/javascript" src="/_layouts/15/sp.ui.dialog.js"></script>
+    <script type="text/javascript" src="/_layouts/15/ACE.WebParts/DocumentFormChecker.js"></script>
+
+    <span id="DeltaPlaceHolderAdditionalPageBody">
+    
+	<script src="/_catalogs/masterpage/ACE/script/ACE.anchors.js" type="text/javascript"></script>
+	<script src="/_catalogs/masterpage/ACE/script/ACE.ng-main.min.js" type="text/javascript"></script>
+
+</span>
+    
+
+    
+</body>
+</html>

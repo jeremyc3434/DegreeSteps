@@ -12,7 +12,7 @@ const Planner=require('./dist/planner.js'),Catalog=require('./dist/program-catal
 const providers=await loadProviders(join(kitsRoot,'providers'));
 const apus=await loadKit(join(kitsRoot,'apus'),{providers}),strayer=await loadKit(join(kitsRoot,'strayer'),{providers});
 const program=(kit,slug)=>kit.programs.find(p=>p.slug===slug);
-const errorsOf=async kit=>(await verifyKit(kit,{asOf:'2026-11-23'})).errors;
+const errorsOf=async kit=>(await verifyKit(kit,{asOf:'2026-11-25'})).errors;
 
 test('slots split into course-sized choices in the school\'s own units; a remainder is the last choice',()=>{
   assert.deepEqual(slotPieces(6,'semester'),[3,3]);assert.deepEqual(slotPieces(3,'semester'),[3]);assert.deepEqual(slotPieces(37,'semester'),[3,3,3,3,3,3,3,3,3,3,3,3,1]);

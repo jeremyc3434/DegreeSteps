@@ -13,7 +13,7 @@ import {draftProgram,API_URL,MODEL} from './scripts/pathway-factory/draft.mjs';
 import {schoolReport} from './scripts/pathway-factory/report.mjs';
 
 const wgu=await readJSON(resolve(root,'content/curricula/wgu.json'));
-const asOf=wgu.checkedOn;
+const asOf='2026-11-25'; // Current provider reviews do not alter WGU's individual evidence dates.
 const optionKey=o=>[o.provider,o.code,o.receivingCode||o.receivingTitle].join('|');
 const optionFacts=o=>canonical({provider:o.provider,code:o.code,receivingCode:o.receivingCode,receivingTitle:o.receivingTitle,credits:o.credits,creditSystem:o.creditSystem,sourceCredits:o.sourceCredits,sourceCreditSystem:o.sourceCreditSystem,evidence:o.evidence,evidenceType:o.evidenceType,sourceIds:o.sourceIds,identitySourceIds:o.identitySourceIds,conditions:o.conditions});
 function assertModelParity(original,compiled){
@@ -49,7 +49,7 @@ test('WGU decomposes into kits and compiles back to the exact same models',()=>{
 test('the WGU kit is the source of truth: it verifies, passes its guards and publishes exactly its two documents',async()=>{
   const kit=await loadKit(join(kitsRoot,'wgu'));
   assert.deepEqual(kit.school.publish?.documents?.map(d=>[d.path,d.sources]),[['content/curricula/wgu.json','own'],['content/curricula/wgu-pathway-kit.json',false]]);
-  const result=await verifyKit(kit,{asOf:kit.school.checkedOn});
+  const result=await verifyKit(kit,{asOf});
   assert.deepEqual(result.errors,[]);
   assert.ok(result.candidates.length>0&&result.candidates.every(c=>c.reason==='out-of-scope'&&c.documentedFor.length),'cross-program reuse stays an unapplied candidate');
   const compiled=compileKit(kit),first=compiled.doc,second=compileKit(await loadKit(join(kitsRoot,'wgu'))).doc;

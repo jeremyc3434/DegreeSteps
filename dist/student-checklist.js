@@ -93,11 +93,15 @@
     if (scope === 'custom-target' || !scope) scope='custom-target-'+hash(namedGoal(p.school||p.schoolChoice||pathway.school)+'|'+namedGoal(p.degree||pathway.title));
     if (!safeKey(scope)) invalid('Choose a valid degree goal before updating its checklist.');
     const scenario=object(state.scenarios?.[scope]),draftScenario=object(draft.state?.scenarios?.[scope]);
+    // A goal conflict can withhold the curriculum while Journey still prepares
+    // its implicit provider defaults. An absent saved provider choice is not a
+    // conflicting three-provider choice. Explicit saved lists remain strict.
+    const preparedDefaults=!program.id&&Array.isArray(draftScenario.providers)&&Array.isArray(draftScenario.mappedProvidersReviewed)?draftScenario.providers:null;
     const effectiveProviders = value => {
       const mapped=[...new Set(list(program.requirements).flatMap(req=>list(req.options).map(option=>option.provider)))].filter(source=>source&&source!=='University');
       // Provider availability is not permission to change saved preferences.
       // Match Journey.prepare for both implicit defaults and explicit choices.
-      const selected=Array.isArray(value.providers)?value.providers:Array.isArray(program.defaultProviders)?program.defaultProviders.filter(source=>mapped.includes(source)):['Sophia','Study.com','CLEP',...mapped];
+      const selected=Array.isArray(value.providers)?value.providers:Array.isArray(program.defaultProviders)?program.defaultProviders.filter(source=>mapped.includes(source)):preparedDefaults||['Sophia','Study.com','CLEP',...mapped];
       return [...new Set(selected)].sort();
     };
     const choices = value => ({providers:effectiveProviders(value),allowConditional:value.allowConditional!==false,useWaivers:value.useWaivers===true,optionSelections:object(value.optionSelections)});

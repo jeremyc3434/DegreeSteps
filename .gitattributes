@@ -6,3 +6,6 @@ content/curricula/snapshots/** -whitespace
 test-support/fixtures/course-import/*.csv -text whitespace=cr-at-eol
 test-support/fixtures/course-import/*.tsv -text -whitespace
 test-support/fixtures/course-import/*.pdf binary
+
+# Academic source hashes require exact bytes, including retained origin HTML.
+content/source-captures/** -text -whitespace

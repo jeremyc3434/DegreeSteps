@@ -3,13 +3,18 @@ import { resolve, relative } from 'node:path';
 import { createHash } from 'node:crypto';
 import { gzipSync } from 'node:zlib';
 import assert from 'node:assert/strict';
+import ProviderOffers from '../dist/provider-offers.js';
 import { execFileSync } from 'node:child_process';
 import { buildCreditSourceDiscovery } from '../server/credit-source-discovery.mjs';
 const root = resolve(import.meta.dirname,'..');
 const output = resolve(root,'outputs/site');
+const studentOffers=JSON.parse(await readFile(resolve(root,'content/monetization/student-offers.json'),'utf8'));ProviderOffers.configure(studentOffers);await writeFile(resolve(root,'dist/data/student-offers.json'),JSON.stringify(studentOffers,null,2)+'\n');
 execFileSync(process.execPath,[resolve(root,'scripts/course-assessment-reviews.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 const types = {html:'text/html; charset=utf-8',js:'application/javascript; charset=utf-8',mjs:'application/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',csv:'text/csv; charset=utf-8',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',txt:'text/plain; charset=utf-8',xml:'application/xml; charset=utf-8',webp:'image/webp',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png'};
 execFileSync(process.execPath,[resolve(root,'scripts/reviewed-course-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/upi-course-catalog.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/tesu-upi-maps.mjs'),'--check-kit'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/wgu-study-expansion.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-current-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-plan-estimate-rates.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-liberty-shared-awards.mjs'),'--check'],{cwd:root,stdio:'inherit'});
@@ -39,6 +44,7 @@ execFileSync(process.execPath,[resolve(root,'scripts/build-plan-library-index.mj
 execFileSync(process.execPath,[resolve(root,'scripts/build-plan-course-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/catalog-plan-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/provider-directory-discovery.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-provider-coverage-report.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-priorities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-school-research-batch.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-coach-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
@@ -122,13 +128,15 @@ await cp(resolve(root,'drizzle'),resolve(output,'drizzle'),{recursive:true});
 // embedding the entire public website in every Worker module.
 const cloudflareOutput=resolve(root,'outputs/cloudflare');
 await rm(cloudflareOutput,{recursive:true,force:true});await mkdir(cloudflareOutput,{recursive:true});
-const nativeAssets=Object.fromEntries(Object.entries(assets).map(([path,asset])=>[path,{path,type:asset.type,etag:asset.etag,external:true}]));
+// The route is already the lookup key; duplicating it in every asset grows the
+// native Worker with the public catalog even though delivery only uses the key.
+const nativeAssets=Object.fromEntries(Object.entries(assets).map(([path,asset])=>[path,{type:asset.type,etag:asset.etag,external:true}]));
 const nativeSource=core+'const assets='+JSON.stringify(nativeAssets)+';\n'+handler;
 await writeFile(resolve(cloudflareOutput,'worker.mjs'),nativeSource);
 await cp(resolve(root,'dist'),resolve(cloudflareOutput,'public'),{recursive:true});
 const module=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 assert.equal(typeof module.default?.fetch,'function');
-for (const path of ['/','/portal.html','/account.html','/degree-audit.html','/resources/','/blog/','/sitemap.xml','/robots.txt','/community.html','/school.html','/request-plan.html','/admin.html','/coverage.html','/data/school-insights.json','/data/community-templates.json','/data/curriculum-registry.json']) {
+for (const path of ['/','/portal.html','/account.html','/degree-audit.html','/template-import.html','/resources/','/blog/','/sitemap.xml','/robots.txt','/community.html','/school.html','/request-plan.html','/admin.html','/coverage.html','/data/school-insights.json','/data/community-templates.json','/data/curriculum-registry.json']) {
   const response=await module.default.fetch(new Request('https://degreepath.test'+path),{},{});assert.equal(response.status,200,path);
 }
 const authStatus=await module.default.fetch(new Request('https://degreepath.test/api/auth/status'),{},{});assert.equal(authStatus.status,200);assert.equal((await authStatus.json()).configured,false);

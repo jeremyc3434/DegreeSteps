@@ -18,7 +18,9 @@ test('TESU current provider review binds an intact live capture and keeps Study.
  assert.equal(policyMeta.status,200);assert.equal(policyMeta.url,providerReview.policySource.url);
  assert.match(policy,/does not guarantee 100% acceptance/);
  const cutoff=text.indexOf('Provisionally Approved');assert.ok(cutoff>0);
- assert.ok(text.indexOf('Study.com')>0&&text.indexOf('Study.com')<cutoff);
+ for(const provider of ['Study.com','University Pathways International'])assert.ok(text.indexOf(provider)>0&&text.indexOf(provider)<cutoff,provider+' is approved');
+ assert.ok(providerReview.approved.includes('UPI Study'));
+ assert.equal(providerReview.directoryNames['UPI Study'],'University Pathways International');
  for(const provider of ['SOPHIA Learning, LLC','StraighterLine','Saylor Academy',"College Board's College-Level Examination Program (CLEP)"])assert.ok(text.normalize('NFKC').replaceAll('’',"'").indexOf(provider)>cutoff,provider+' is provisional');
  assert.equal(providerReview.publicationPromotionAllowed,false);
 });
@@ -32,8 +34,8 @@ test('all five TESU kit models carry source-bound provider reviews and retain co
    if(option.provider==='University')continue;
    assert.equal(option.evidence,'conditional','provider approval never promotes '+option.id);
    assert.equal(option.eligibilityReview.individualApproval,false);
-   assert.equal(option.eligibilityReview.fullyApproved,option.provider==='Study.com');
-   assert.equal(option.eligibilityReview.providerReviewPending,option.provider!=='Study.com');
+   assert.equal(option.eligibilityReview.fullyApproved,providerReview.approved.includes(option.provider));
+   assert.equal(option.eligibilityReview.providerReviewPending,!providerReview.approved.includes(option.provider));
    assert.equal(Object.hasOwn(option.eligibilityReview,'eligibleToStart'),false);
   }
  }

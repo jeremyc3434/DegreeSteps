@@ -11,6 +11,7 @@
  * Listings with an independently reviewed identity (identityReviewId) are left exactly as their review set them.
  * Use --check to verify the catalog is current. */
 import assert from 'node:assert/strict';
+import Providers from '../dist/provider-registry.js';
 import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -18,7 +19,7 @@ import {pathToFileURL} from 'node:url';
 const root=resolve(import.meta.dirname,'..'),catalogPath=resolve(root,'dist/data/course-catalog.json');
 const list=value=>Array.isArray(value)?value:[],text=value=>typeof value==='string'?value.trim():'';
 const key=value=>text(value).normalize('NFKD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
-const providerKey=value=>({sophialearning:'sophia',studycom:'studycom',collegelevelexaminationprogram:'clep'}[key(value)]||key(value));
+const providerKey=value=>Providers.get(value)?Providers.key(value):({sophialearning:'sophia',studycom:'studycom',collegelevelexaminationprogram:'clep'}[key(value)]||key(value));
 const url=value=>{try{const parsed=new URL(text(value));return parsed.protocol==='https:'?parsed.href.toLowerCase().replace(/\/$/,''):'';}catch{return '';}};
 export const SOURCE_ID='plan-course-identities';
 

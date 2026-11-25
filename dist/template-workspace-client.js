@@ -88,9 +88,25 @@ function prepareTemplatePlan(state,template,A,catalog,consent={},research=false)
  if(!draft.metadata.sourceUrl||!draft.metadata.catalog)throw Error('The reviewed template needs its official source and catalog.');
  const existing=list(state.customCurricula).find(entry=>entry.route?.id===id);
  if(existing){const selected=A.commit(state,A.validateEntry(existing),{catalog:A.attach?A.attach(catalog,state):catalog});selected.templateOrigin={title:draft.metadata.title,context:'template:'+(research?'research-':'reviewed-')+template.id,revision:template.revision,pathwayId:existing.route.id};return {state:selected,entry:copy(existing),href:'plan.html',reused:true};}
- const artifact=copy(original),sources=list(artifact.sources),sourceIds=new Map(),sourceById=new Map();
+ const artifact=copy(original),sourcePool=list(artifact.sources),sourceIds=new Map(),sourceById=new Map();
+ const copiedModelFields=['learningFormat','policySourceIds','policyEvidence','residencyPolicy','namedCourseCompletionReview','gradePolicy','transferGradePolicy','upperGroupMinimums','graduationRequirements','policyReview','obligations','overlaps','rulesNotes','prerequisiteNotes','minimumGrade','minGrade','unresolved','creditConversions','paceModel','pricing','pricingNotes','tuitionComparison','curriculumStructureCheckedOn'];
+ if(!sourcePool.length)throw Error('The reviewed template is missing its source references.');
+ for(const source of sourcePool){if(typeof source.id!=='string'||!source.id||sourceById.has(source.id)||!safeURL(source.url))throw Error('A template source reference is invalid.');sourceById.set(source.id,source);}
+ // originalSourceId is the immutable parent-packet label, not a local citation edge.
+ const usedSources=new Set(),sourceReferenceKey=key=>/sourceIds?$/i.test(key)&&!/^originalSourceIds?$/i.test(key);
+ function collectSources(value,key=''){
+  if(sourceReferenceKey(key)){for(const id of Array.isArray(value)?value:[value]){if(typeof id!=='string'||!sourceById.has(id))throw Error('A course choice is missing its reviewed source reference.');usedSources.add(id);}return;}
+  if(key==='sourcePages'){for(const id of Object.keys(value||{})){if(!sourceById.has(id))throw Error('A course evidence page has no source.');usedSources.add(id);}return;}
+  if(Array.isArray(value)){for(const item of value)collectSources(item);return;}
+  if(value&&typeof value==='object')for(const[name,item]of Object.entries(value)){if(['__proto__','prototype','constructor'].includes(name))throw Error('The template contains an unsupported metadata field.');collectSources(item,name);}
+ }
+ collectSources(artifact.requirements.map(req=>({...req,options:list(req.options).filter(option=>option?.selectionRequired!==true)})));
+ for(const field of copiedModelFields)if(artifact[field]!==undefined)collectSources(artifact[field],field);
+ if(Array.isArray(artifact.curriculumSections)&&artifact.curriculumSections.length)collectSources(artifact.curriculumSections);
+ const pendingSources=[...usedSources];for(let index=0;index<pendingSources.length;index++){const before=usedSources.size;collectSources(sourceById.get(pendingSources[index]));if(usedSources.size!==before)for(const id of usedSources)if(!pendingSources.includes(id))pendingSources.push(id);if(usedSources.size>100)throw Error('The reviewed template is missing its source references.');}
+ const sources=sourcePool.filter(source=>usedSources.has(source.id));
  if(!sources.length||sources.length>100)throw Error('The reviewed template is missing its source references.');
- sources.forEach((source,index)=>{if(typeof source.id!=='string'||!source.id||sourceById.has(source.id)||!safeURL(source.url))throw Error('A template source reference is invalid.');sourceById.set(source.id,source);sourceIds.set(source.id,namespace+'-source-'+(index+1));});
+ sources.forEach((source,index)=>sourceIds.set(source.id,namespace+'-source-'+(index+1)));
  const sourceRefs=value=>{if(!Array.isArray(value)||!value.length||value.some(source=>!sourceIds.has(source)))throw Error('A course choice is missing its reviewed source reference.');return value.map(source=>sourceIds.get(source));};
  const reviewedPublication=!research&&template.sourcesReviewed===true&&template.academicReviewed===true;
  const schoolDomain=value=>{const parts=new URL(value).hostname.toLowerCase().split('.'),last=parts.slice(-2).join('.');return /^(?:ac|co|com|edu|org|gov)\.[a-z]{2}$/.test(last)?parts.slice(-3).join('.'):last;},officialDomain=schoolDomain(draft.metadata.sourceUrl);
@@ -111,8 +127,8 @@ function prepareTemplatePlan(state,template,A,catalog,consent={},research=false)
  const dependency=value=>{const mapped=requirementIds.get(value)||codes.get(codeKey(value));if(!mapped)throw Error('A template prerequisite does not identify one exact requirement.');return mapped;};
  function mapped(value,key=''){
   if(['group','sectionId','parentId'].includes(key)&&sectionIds.has(value))return sectionIds.get(value);
-  if(['sourceIds','identitySourceIds','policySourceIds'].includes(key))return Array.isArray(value)&&!value.length&&key!=='sourceIds'?[]:sourceRefs(value);
-  if(key==='sourceId'){if(!sourceIds.has(value))throw Error('A template source reference is missing.');return sourceIds.get(value);}
+  if(sourceReferenceKey(key)&&/sourceIds$/i.test(key))return Array.isArray(value)&&!value.length&&key.toLowerCase()!=='sourceids'?[]:sourceRefs(value);
+  if(sourceReferenceKey(key)&&/sourceId$/i.test(key)){if(!sourceIds.has(value))throw Error('A template source reference is missing.');return sourceIds.get(value);}
   if(key==='sourcePages'){const pages={};for(const [source,page]of Object.entries(value||{})){if(!sourceIds.has(source))throw Error('A course evidence page has no source.');pages[sourceIds.get(source)]=page;}return pages;}
   if(['requirementIds','sharedRequirementIds','prerequisites','capstoneRequirementIds'].includes(key))return list(value).map(dependency);
   if(key==='requirementId')return dependency(value);
@@ -120,9 +136,15 @@ function prepareTemplatePlan(state,template,A,catalog,consent={},research=false)
   if(value&&typeof value==='object'){const out={};for(const [name,item]of Object.entries(value)){if(['__proto__','prototype','constructor'].includes(name))throw Error('The template contains an unsupported metadata field.');out[name]=mapped(item,name);}return out;}
   return value;
  }
+ function mappedSource(value,key=''){
+  if(sourceReferenceKey(key)||key==='sourcePages')return mapped(value,key);
+  if(Array.isArray(value))return value.map(item=>mappedSource(item));
+  if(value&&typeof value==='object'){const out={};for(const[name,item]of Object.entries(value)){if(['__proto__','prototype','constructor'].includes(name))throw Error('The template contains an unsupported metadata field.');out[name]=mappedSource(item,name);}return out;}
+  return value;
+ }
  const rows=draft.rows.map((row,index)=>({...row,...(research&&artifact.requirements[index].selectionRequired===true?{selectionRequired:true}:{}),sourceUrl:safeURL(sourceById.get(artifact.requirements[index].sourceIds[0]).url)||draft.metadata.sourceUrl}));
  const entry=research?A.createResearch(rows,{...draft.metadata,id,templateId:template.id,templateRevision:template.revision}):A.create(rows,{...draft.metadata,id,reviewedByStudent:true}),model=entry.model;
- model.sources.push(...sources.map(source=>({...copy(source),id:sourceIds.get(source.id),evidenceType:source.evidenceType||(research?'ai-researched-source':'reviewed-community-template-source')})));
+ model.sources.push(...sources.map(source=>({...mappedSource(copy(source)),id:sourceIds.get(source.id),evidenceType:source.evidenceType||(research?'ai-researched-source':'reviewed-community-template-source')})));
  const bundles=new Map();
  model.requirements=model.requirements.map((base,index)=>{
   const req=artifact.requirements[index],required=base.institutionalOnly||req.requiredAtUniversity===true||req.institutionalOnly===true,options=list(req.options).filter(option=>option?.selectionRequired!==true);
@@ -149,7 +171,7 @@ function prepareTemplatePlan(state,template,A,catalog,consent={},research=false)
  for(const field of ['institutionMinCredits','externalMaxCredits','alternativeMaxCredits','upperMinCredits','majorMinInstitutionCredits','majorResidencyBasisCredits'])if(artifact[field]!==undefined&&artifact[field]!==null){if(!known(artifact[field])||artifact[field]<0||artifact[field]>model.totalCredits)throw Error('A reviewed degree credit limit is invalid.');model[field]=artifact[field];}
  if(artifact.majorInstitutionFraction!==undefined&&artifact.majorInstitutionFraction!==null){if(!known(artifact.majorInstitutionFraction)||artifact.majorInstitutionFraction<0||artifact.majorInstitutionFraction>1)throw Error('The reviewed major residency fraction is invalid.');model.majorInstitutionFraction=artifact.majorInstitutionFraction;}
  if(artifact.majorInstitutionFraction===0&&artifact.majorResidencyBasisCredits===0){delete model.majorInstitutionFraction;delete model.majorResidencyBasisCredits;if(artifact.majorMinInstitutionCredits===undefined||artifact.majorMinInstitutionCredits===null)model.majorMinInstitutionCredits=0;}
- for(const field of ['learningFormat','policySourceIds','policyEvidence','residencyPolicy','namedCourseCompletionReview','gradePolicy','transferGradePolicy','upperGroupMinimums','graduationRequirements','policyReview','obligations','overlaps','rulesNotes','prerequisiteNotes','minimumGrade','minGrade','unresolved','creditConversions','paceModel','pricing','pricingNotes','tuitionComparison','curriculumStructureCheckedOn'])if(artifact[field]!==undefined)model[field]=mapped(artifact[field],field);
+ for(const field of copiedModelFields)if(artifact[field]!==undefined)model[field]=mapped(artifact[field],field);
  if(Array.isArray(artifact.curriculumSections)&&artifact.curriculumSections.length){model.curriculumSections=artifact.curriculumSections.map(section=>({...mapped(section),id:sectionIds.get(section.id),...(section.parentId?{parentId:sectionIds.get(section.parentId)||section.parentId}: {})}));}
  const providers=[...new Set(model.requirements.flatMap(req=>req.options.map(option=>option.provider)))].filter(provider=>provider!=='University');model.defaultProviders=list(artifact.defaultProviders).length?artifact.defaultProviders.filter(provider=>providers.includes(provider)):providers;
  model.completeExecutablePathway=false;if(research){model.researchTemplate={id:template.id,revision:template.revision,...(template.referenceChoice!=null?{referenceChoice:template.referenceChoice}:{})};model.coverageLabel='AI-researched degree plan · confirmation needed';model.unresolved=[...new Set([...list(model.unresolved),...list(template.planIssues),'Confirm this AI-researched degree plan and transfer placements with the university.'])];model.policyReview=[{field:'aiResearch',status:'unverified',message:'This plan was generated from public degree sources. It has not been reviewed by you or independently approved.'},...list(model.policyReview)];model.auditProvenance={...model.auditProvenance,status:'ai-research',reviewedByStudent:false,independentlyVerified:false};entry.route.courseMapStatus='ai-research';entry.route.summary='Your editable AI-researched degree plan. Unresolved requirements and transfer decisions need confirmation.';}else{model.communityTemplate={id:template.id,revision:template.revision,...(reviewedPublication?{sourcesReviewed:true,academicReviewed:true}:{})};model.personalEvaluationReminder='Your school evaluates your own transcripts, duplicate credit and catalog eligibility. Published course maps do not record an individual credit award.';model.coverageLabel='Reviewed community template · proposed personal plan';entry.route.summary='Your copy of a reviewed community template. Individual university approval is still needed.';}

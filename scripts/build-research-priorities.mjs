@@ -4,10 +4,11 @@ import {resolve,dirname} from 'node:path';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {pathToFileURL} from 'node:url';
+import {assertProviderCoverageReport} from './build-provider-coverage-report.mjs';
 import {assertProviderDiscovery} from './provider-directory-discovery.mjs';
 const require=createRequire(import.meta.url),Catalog=require('../dist/program-catalog.js');
 const root=resolve(import.meta.dirname,'..');
-const paths={programCatalog:'dist/data/program-catalog.json',pathways:'dist/data/pathways.json',registry:'dist/data/curriculum-registry.json',quality:'dist/data/pathway-quality-report.json',schoolInsights:'content/school-insights.json',inventory:'content/research-batches/ace-inventory-2026-11-18.json',providerDiscovery:'dist/data/provider-directory-candidates.json',umpiPrimaryReview:'content/curricula/snapshots/umpi/current-primary-review-2026-11-19.json',tesuExamReview:'content/research-batches/tesu-current-exam-source-audit-2026-11-19.json'};
+const paths={providerCoverage:'dist/data/provider-coverage-report.json',programCatalog:'dist/data/program-catalog.json',pathways:'dist/data/pathways.json',registry:'dist/data/curriculum-registry.json',quality:'dist/data/pathway-quality-report.json',schoolInsights:'content/school-insights.json',inventory:'content/research-batches/ace-inventory-2026-11-18.json',providerDiscovery:'dist/data/provider-directory-candidates.json',umpiPrimaryReview:'content/curricula/snapshots/umpi/current-primary-review-2026-11-19.json',tesuExamReview:'content/research-batches/tesu-current-exam-source-audit-2026-11-19.json'};
 const outputs=['content/research-batches/research-priorities.json','dist/data/research-priorities.json'];
 const list=v=>Array.isArray(v)?v:[],text=v=>typeof v==='string'?v.trim():'',copy=v=>JSON.parse(JSON.stringify(v)),num=v=>typeof v==='number'&&Number.isFinite(v)&&v>=0?v:null;
 const norm=v=>text(v).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
@@ -148,6 +149,7 @@ export function buildResearchPriorities(input){
  // Discovery is a separate, unpublished stage. It never enters the degree catalog,
  // inventory totals, existing school counts, model readiness or transfer-cap logic.
  if(providerDiscovery)out.providerDiscovery=providerDiscovery;
+ if(input.providerCoverage)out.providerCoverage=copy(assertProviderCoverageReport(input.providerCoverage));
  out.revision='research-priorities-v1:'+digest(JSON.stringify(out));return out;
 }
 export async function readInputs(){

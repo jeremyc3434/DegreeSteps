@@ -40,8 +40,10 @@ test('published import status requires both public review flags and an exact cur
   const f=reviewedFixture();delete f.template[flag];const before=JSON.stringify([f.state,f.template]),result=W.prepareReviewedPlan(f.state,f.template,A,pathways,accepted),model=result.entry.model;
   assert(model.requirements.every(row=>row.options.every(option=>option.evidence==='conditional')));assert.equal(model.communityTemplate[flag],undefined);
   assert.equal(model.requirements.length,f.template.artifact.requirements.length);
-  const copiedSources=model.sources.slice(-f.template.artifact.sources.length);
-  f.template.artifact.sources.forEach((source,index)=>{const {id,...facts}=source,{id:copiedId,...copiedFacts}=copiedSources[index];assert.notEqual(copiedId,id);assert.deepEqual(copiedFacts,{...facts,evidenceType:facts.evidenceType||'reviewed-community-template-source'});});
+  const copiedSources=model.sources.filter(source=>source.id.startsWith('ct-'));
+  assert(copiedSources.length>0);assert(copiedSources.length<=f.template.artifact.sources.length);
+  for(const source of copiedSources){const original=f.template.artifact.sources.find(candidate=>candidate.url===source.url&&candidate.title===source.title);assert(original,'Every retained source comes from the original reviewed packet.');const {id,...facts}=original,{id:copiedId,...copiedFacts}=source;assert.notEqual(copiedId,id);assert.deepEqual(copiedFacts,{...facts,evidenceType:facts.evidenceType||'reviewed-community-template-source'});}
+  const copiedIds=new Set(model.sources.map(source=>source.id));for(const row of model.requirements){assert(row.sourceIds.every(id=>copiedIds.has(id)));for(const option of row.options)assert(option.sourceIds.every(id=>copiedIds.has(id)));}
   for(const [index,requirement]of model.requirements.entries()){
    const original=f.template.artifact.requirements[index],options=original.options.filter(option=>!option.selectionRequired);assert.equal(requirement.options.length,options.length);
    for(const [optionIndex,option]of requirement.options.entries()){

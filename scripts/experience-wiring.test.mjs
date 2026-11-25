@@ -28,9 +28,10 @@ test('the complete working plan retains every source control while shared styles
  const before=await readFile(new URL('../dist/plan.html',import.meta.url),'utf8'),result=applyExperience(before,'plan.html');
  const required=['sheet-grid','sheet-task-panel','sheet-home','sheet-dialog','sheet-search'];
  for(const id of required.filter(id=>before.includes('id="'+id+'"')))assert(result.html.includes('id="'+id+'"'));
- assert.deepEqual(result.styles,['ds-tokens.css','brand.css','experience.css','ds-components.css','workspace-design.css','plan-alerts.css','plan-save.css','plan-design.css','ds-overlays.css']);
+ assert.deepEqual(result.styles,['ds-tokens.css','brand.css','experience.css','ds-components.css','workspace-design.css','plan-alerts.css','plan-save.css','provider-offers.css','plan-design.css','ds-overlays.css']);
  assert.equal(css(result.html).at(-1),'/ds-overlays.css');
  assert.equal(css(result.html).filter(path=>path==='/plan-design.css').length,1,'The canonical worksheet design loads once');
+ assert.equal(css(result.html).filter(path=>path==='/provider-offers.css').length,1,'Optional offers load once before the canonical worksheet style.');
  assert.equal(css(result.html).filter(path=>path==='/plan-redesign.css').length,0,'Retired visual layers cannot override the canonical worksheet');
  assert.equal(applyExperience(result.html,'plan.html').html,result.html);
  assert.deepEqual([...before.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(match=>match[1]),[...result.html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)].map(match=>match[1]));

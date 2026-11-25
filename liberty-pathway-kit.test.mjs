@@ -10,6 +10,7 @@ import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 import {migrate,factoryInput,parity,files,electiveCondition} from './scripts/pathway-factory/migrate-liberty.mjs';
 
 const dir=join(kitsRoot,'liberty'),kit=await loadKit(dir),{doc,documents}=compileKit(kit);
+const currentDataAsOf='2026-11-25'; // Evaluation time, not a rewrite of Liberty catalog/source dates.
 const registry=await readJSON(resolve(root,'dist/data/curriculum-registry.json'));
 const guards=(await import('./content/pathway-kits/liberty/guards.mjs')).checks,guard=name=>guards.find(check=>check.name===name);
 const outsideOptions=models=>models.reduce((n,m)=>n+m.requirements.reduce((k,r)=>k+r.options.filter(o=>o.provider!=='University').length,0),0);
@@ -33,7 +34,7 @@ test('compile(kit) reproduces every Liberty registry model exactly: 13 models, f
 });
 
 test('the Liberty kit is the source of truth: it verifies, passes its guards and publishes its four documents exactly',async()=>{
-  const result=await verifyKit(kit,{asOf:kit.school.checkedOn});
+  const result=await verifyKit(kit,{asOf:currentDataAsOf});
   assert.deepEqual(result.errors,[]);
   assert.equal(await runGuards(kit,doc),guards.length);assert.ok(guards.length>=10);
   assert.deepEqual(documents.map(d=>d.path),[...files.map(name=>'content/curricula/'+name+'.json'),'content/curricula/liberty-pathway-kit.json']);
@@ -58,7 +59,7 @@ test('a registry migration preserves all compiled models and canonical authored 
   assert.equal(compiled.models.length,doc.models.length);
   assert.deepEqual(parity(doc.models,compiled.models),[],'every model, requirement, option id and evidence field survives migration');
   assert.deepEqual(parity(fresh.documents.flatMap(document=>document.models),compiled.models),[]);
-  assert.deepEqual((await verifyKit(roundtrip,{asOf:kit.school.checkedOn})).errors,[]);
+  assert.deepEqual((await verifyKit(roundtrip,{asOf:currentDataAsOf})).errors,[]);
   assert.equal(await runGuards(roundtrip,compiled),guards.length);
   const authored=kit.equivalencies.equivalencies.filter(row=>row.authored),rows=new Map(fresh.equivalencies.equivalencies.map(row=>[row.id,row]));
   for(const row of authored){
@@ -183,7 +184,7 @@ test('verification gates explicit placements, modes, inline options, unknown qua
   const clep=k.providers.get('CLEP');delete clep.courses[0].sourceCredits;
   // A newly reviewed ledger may not repeat one source course in a requirement, even though migrated ledgers keep legacy alternatives.
   online.review={status:'reviewed',reviewer:'test',reviewedOn:'2026-11-20'};
-  const result=await verifyKit(k,{asOf:'2026-11-20'}),codes=new Set(result.errors.map(e=>e.code));
+  const result=await verifyKit(k,{asOf:currentDataAsOf}),codes=new Set(result.errors.map(e=>e.code));
   for(const code of ['placement-out-of-scope','inline-option','unknown-mode','placement-candidate','row-units','source-units','source-credits','duplicate-award'])assert.ok(codes.has(code),'expected '+code+' error');
   assert.ok(result.errors.some(e=>e.code==='placement-out-of-scope'&&e.message.includes(onlineOnly.id)),'an online-only award cannot be placed in a campus degree');
   assert.ok(result.errors.some(e=>e.code==='duplicate-award'&&e.message.startsWith('psychology-bs-online')));

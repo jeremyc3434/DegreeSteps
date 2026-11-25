@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-25",
+  "providers": {
+    "Study.com": {
+      "id": "study-com",
+      "hosts": ["study.com", "www.study.com"]
+    }
+  },
+  "offers": [
+    {
+      "id": "study-college-public",
+      "provider": "Study.com",
+      "status": "advertised",
+      "authority": "provider-public",
+      "title": "College Saver offer",
+      "summary": "Study.com advertises 10% off College Saver and College Saver Pro.",
+      "offerUrl": "https://study.com/study-promo-and-coupons.html",
+      "code": null,
+      "sourceUrl": "https://study.com/study-promo-and-coupons.html",
+      "checkedOn": "2026-11-25",
+      "reviewUntil": "2026-12-09",
+      "startsAt": null,
+      "expiresAt": null,
+      "productIds": ["college-saver", "college-saver-pro"],
+      "terms": {
+        "complete": false,
+        "discountPercent": 10,
+        "discountPeriods": null,
+        "billingPeriod": "month",
+        "customerTypes": null,
+        "countries": null,
+        "schools": null,
+        "stackable": null,
+        "renewalPrice": null,
+        "currency": "USD",
+        "feesVerified": false
+      },
+      "notes": "Eligibility, duration and renewal terms are shown by Study.com. This offer is not included in your plan estimate."
+    }
+  ]
+}
