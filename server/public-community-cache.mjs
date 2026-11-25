@@ -1,9 +1,9 @@
 /** A brief edge cache for credential-free public discussion reads only. */
 const PUBLIC_COMMUNITY_TTL_MS = 10000;
 const CACHE_UNTIL = 'X-DegreePath-Public-Cache-Until';
-const CACHE_VERSION = 'discussion-v1';
+const CACHE_VERSION = 'discussion-v2';
 const QUERY_KEYS = {
-  '/api/community/feed': new Set(['context','kind','limit','cursor']),
+  '/api/community/feed': new Set(['context','kind','limit','cursor','source']),
   '/api/community/context': new Set(['context']),
   '/api/community/comments': new Set(['context','limit','cursor'])
 };

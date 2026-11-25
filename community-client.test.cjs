@@ -19,7 +19,7 @@ function load(options = {}) {
     ...(options.root || {})
   };
   Object.defineProperty(root, 'localStorage', { get() { storageReads++; throw new Error('Private local draft storage must not be read automatically'); } });
-  const context = vm.createContext({ window: root, URL, Date, console });
+  const context = vm.createContext({ window: root, URL, URLSearchParams, Date, console });
   vm.runInContext(source, context, { filename: 'community-client.js' });
   return { client: root.DegreeCommunity, calls, events, root, storageReads: () => storageReads };
 }

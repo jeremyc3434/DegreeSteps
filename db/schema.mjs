@@ -24,7 +24,7 @@ export const contextReactions = sqliteTable('community_context_reactions', {
 
 export const comments = sqliteTable('community_comments', {
   id:text('id').primaryKey(),userId:text('user_id').notNull().references(()=>users.id),context:text('context').notNull(),parentId:text('parent_id').references(()=>comments.id),body:text('body').notNull(),createdAt:integer('created_at').notNull(),updatedAt:integer('updated_at').notNull(),deletedAt:integer('deleted_at')
-},t=>[index('community_comments_context').on(t.context,t.deletedAt,t.createdAt,t.id),check('community_comment_context_length',sql`length(${t.context}) BETWEEN 3 AND 180`),check('community_comment_body_length',sql`length(${t.body}) BETWEEN 1 AND 3000`)]);
+},t=>[index('community_comments_context').on(t.context,t.deletedAt,t.createdAt,t.id,t.userId),check('community_comment_context_length',sql`length(${t.context}) BETWEEN 3 AND 180`),check('community_comment_body_length',sql`length(${t.body}) BETWEEN 1 AND 3000`)]);
 
 export const reports = sqliteTable('community_reports', {
   id:text('id').primaryKey(),userId:text('user_id').notNull().references(()=>users.id),targetType:text('target_type').notNull(),targetId:text('target_id').notNull(),reason:text('reason').notNull(),status:text('status').notNull().default('open'),createdAt:integer('created_at').notNull(),reviewedAt:integer('reviewed_at'),reviewedBy:text('reviewed_by').references(()=>users.id)

@@ -8,6 +8,7 @@ import { execFileSync } from 'node:child_process';
 import { buildCreditSourceDiscovery } from '../server/credit-source-discovery.mjs';
 const root = resolve(import.meta.dirname,'..');
 const output = resolve(root,'outputs/site');
+execFileSync(process.execPath,[resolve(root,'scripts/build-community-starters.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 const studentOffers=JSON.parse(await readFile(resolve(root,'content/monetization/student-offers.json'),'utf8'));ProviderOffers.configure(studentOffers);await writeFile(resolve(root,'dist/data/student-offers.json'),JSON.stringify(studentOffers,null,2)+'\n');
 execFileSync(process.execPath,[resolve(root,'scripts/course-assessment-reviews.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 const types = {html:'text/html; charset=utf-8',js:'application/javascript; charset=utf-8',mjs:'application/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',csv:'text/csv; charset=utf-8',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',txt:'text/plain; charset=utf-8',xml:'application/xml; charset=utf-8',webp:'image/webp',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png'};

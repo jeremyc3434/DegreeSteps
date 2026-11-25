@@ -19,6 +19,10 @@ test('school and community queries retain only bounded public context',()=>{
  assert.equal(Return.normalize('/community.html?tab=evil&post=../../admin&context=javascript%3Aalert&template=bad%23id',origin),'/community.html');
  assert.equal(Return.normalize('/courses.html?record=private-record&notes=private',origin),'/courses.html');
 });
+test('community sign-in retains only an allowed discussion-source filter',()=>{
+ for(const source of ['all','students','starters'])assert.equal(Return.normalize('/community.html?tab=feed&source='+source+'&context=school%3Awgu',origin),'/community.html?tab=feed&source='+source+'&context=school%3Awgu');
+ for(const source of ['https://evil.invalid','owner','../admin','starters%00'])assert.equal(Return.normalize('/community.html?tab=feed&source='+source,origin),'/community.html?tab=feed');
+});
 test('recovery resumes its saved safe task but a plain account visit does not revive it',()=>{
  const s=storage({'student-request-draft':'keep this draft'}),now=1000;
  assert.equal(Return.resolve('?returnTo=request-plan.html',s,origin,now),'/request-plan.html');

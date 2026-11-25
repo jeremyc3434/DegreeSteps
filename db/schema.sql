@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS community_comments (
   updated_at INTEGER NOT NULL,
   deleted_at INTEGER
 );
-CREATE INDEX IF NOT EXISTS community_comments_context ON community_comments(context, deleted_at, created_at DESC, id DESC);
+CREATE INDEX IF NOT EXISTS community_comments_context ON community_comments(context, deleted_at, created_at DESC, id DESC, user_id);
 CREATE TABLE IF NOT EXISTS community_reports (
   id TEXT PRIMARY KEY,
   user_id TEXT NOT NULL REFERENCES community_users(id),

@@ -7,9 +7,9 @@ import {handleCommunity} from './community.mjs';
 
 const origin='https://community-scale.example';
 const journal=JSON.parse(readFileSync(new URL('../drizzle/meta/_journal.json',import.meta.url),'utf8'));
-function fixture(t,{populated=false}={}){
+function fixture(t,{populated=false,migrationCount=journal.entries.length}={}){
  const sqlite=new DatabaseSync(':memory:');sqlite.exec('PRAGMA foreign_keys=ON');
- for(const entry of journal.entries)sqlite.exec(readFileSync(new URL('../drizzle/'+entry.tag+'.sql',import.meta.url),'utf8'));
+ for(const entry of journal.entries.slice(0,migrationCount))sqlite.exec(readFileSync(new URL('../drizzle/'+entry.tag+'.sql',import.meta.url),'utf8'));
  t.after(()=>sqlite.close());const statements=[];
  const DB={prepare(sql){assert.doesNotMatch(sql,/\b(?:CREATE|ALTER|DROP)\b/i,'Request paths may not change the schema');const query=sqlite.prepare(sql);return{bind(...args){return{async first(){statements.push({sql,args,method:'first'});return query.get(...args)||null;},async all(){statements.push({sql,args,method:'all'});return{results:query.all(...args)};},async run(){statements.push({sql,args,method:'run'});return{meta:{changes:Number(query.run(...args).changes)}};}};}};},async batch(items){sqlite.exec('BEGIN');try{const results=[];for(const item of items)results.push(await item.run());sqlite.exec('COMMIT');return results;}catch(error){sqlite.exec('ROLLBACK');throw error;}}};
  const env={DB,COMMUNITY_ADMIN_EMAIL:'owner@example.invalid'};
@@ -44,6 +44,52 @@ test('a populated feed aggregates one bounded page in one snapshot with indexed 
  assert.equal(writes(f.statements).length,0);
  for(const row of response.body.items){const n=Number(row.id.slice(1));assert.equal(row.likes,n%3===0?2:1);assert.equal(row.upvotes,1);assert.equal(row.comments,n%2?1:2);assert.equal(row.liked,false);assert.equal(row.upvoted,false);}
  const second=await f.call('/feed?limit=50&cursor='+encodeURIComponent(response.body.cursor));assert.equal(second.status,200);assert.equal(second.body.items.length,50);assert(!second.body.items.some(row=>response.body.items.some(first=>first.id===row.id)));
+});
+
+test('guide classification stays covering and page-bounded without reading comment bodies',async t=>{
+ const f=fixture(t,{populated:true});
+ const user=f.sqlite.prepare('INSERT INTO community_users(id,alias,role,created_at,updated_at) VALUES (?,?,\'member\',1,1)');
+ user.run('ds-guide-planning','DegreeSteps Planning Guide');user.run('ds-guide-transfers','DegreeSteps Transfer Guide');
+ const post=f.sqlite.prepare('INSERT INTO community_posts(id,user_id,context,kind,title,body,created_at,updated_at) VALUES (?,\'ds-guide-planning\',\'school:tesu\',\'question\',\'Prepared planning example\',\'An openly editorial planning example.\',?,?)');
+ const comment=f.sqlite.prepare('INSERT INTO community_comments(id,user_id,context,body,created_at,updated_at,deleted_at) VALUES (?,?,?,?,?,?,?)');
+ f.sqlite.exec('BEGIN');
+ for(let n=0;n<200;n++){const id='guide-'+n;post.run(id,200000+n,200000+n);for(let answer=0;answer<2;answer++)comment.run(id+'-answer-'+answer,'ds-guide-transfers','post:'+id,'Prepared answer outside the selected student page.',200000+n,200000+n,null);}
+ comment.run('guide-kept-one','ds-guide-planning','post:p09999','A'.repeat(2999),300000,300000,null);
+ comment.run('guide-kept-two','ds-guide-transfers','post:p09999','B'.repeat(2999),300001,300001,null);
+ comment.run('guide-removed','ds-guide-planning','post:p09999','Removed editorial answer',300002,300002,300003);
+ comment.run('real-added','alice','post:p09999','A real additional student reply',300004,300004,null);
+ f.sqlite.exec('COMMIT');
+ const response=await f.call('/feed?limit=50');assert.equal(response.status,200);assert.equal(response.body.items.length,50);assert(response.body.items.every(row=>!row.origin));
+ assert.equal(f.statements.length,1,'A full student page does not query unrelated prepared threads');
+ const query=f.statements[0];assert.equal(query.args[0],51);assert.match(query.sql,/post_page AS MATERIALIZED/);
+ const plan=f.sqlite.prepare('EXPLAIN QUERY PLAN '+query.sql).all(...query.args).map(row=>row.detail).join('\n');
+ assert.match(plan,/SEARCH c USING COVERING INDEX community_comments_context .*context=\? AND deleted_at=\?/);
+ assert.doesNotMatch(plan,/SCAN c\b|CORRELATED SCALAR SUBQUERY/);
+ const commentRoot=f.sqlite.prepare("SELECT rootpage FROM sqlite_schema WHERE type='table' AND name='community_comments'").get().rootpage;
+ const indexRoot=f.sqlite.prepare("SELECT rootpage FROM sqlite_schema WHERE type='index' AND name='community_comments_context'").get().rootpage;
+ const instructions=f.sqlite.prepare('EXPLAIN '+query.sql).all(...query.args);
+ assert(instructions.some(row=>row.opcode==='OpenRead'&&row.p2===indexRoot),'SQLite opens the covering comment index');
+ assert(!instructions.some(row=>row.opcode==='OpenRead'&&row.p2===commentRoot),'SQLite never opens the comment table or its large bodies for feed counts');
+ const target=response.body.items.find(row=>row.id==='p09999');assert.equal(target.comments,4);assert.equal(target.guideAnswers,2);assert.equal(target.studentComments,2);
+ assert(response.body.items.filter(row=>row.id!=='p09999').every(row=>row.guideAnswers===0));
+ assert.equal(writes(f.statements).length,0);
+});
+
+test('the covering-index migration preserves existing discussion rows and chronological index prefix',async t=>{
+ const migrationIndex=journal.entries.findIndex(entry=>entry.tag==='0018_community_comment_authors');assert(migrationIndex>=0,'Exercise the appended index-only migration');
+ const migration=journal.entries[migrationIndex],f=fixture(t,{migrationCount:migrationIndex});
+ assert.deepEqual(f.sqlite.prepare("PRAGMA index_info('community_comments_context')").all().map(row=>row.name),['context','deleted_at','created_at','id']);
+ f.sqlite.prepare("INSERT INTO community_users(id,alias,role,created_at,updated_at) VALUES ('ds-guide-planning','DegreeSteps Planning Guide','member',1,1)").run();
+ f.sqlite.prepare("INSERT INTO community_posts(id,user_id,context,kind,title,body,created_at,updated_at) VALUES ('existing-thread','alice','school:tesu','question','An existing thread','Original public text',1,1)").run();
+ const insert=f.sqlite.prepare('INSERT INTO community_comments(id,user_id,context,body,created_at,updated_at,deleted_at) VALUES (?,?,\'post:existing-thread\',?,?,?,?)');
+ insert.run('existing-student','alice','Student text with a newline.\nKeep punctuation & Unicode ✓.',1,1,null);
+ insert.run('existing-guide','ds-guide-planning','Prepared guide answer',2,2,null);
+ insert.run('existing-removed','bob','Removed text stays removed',3,3,4);
+ const before=f.sqlite.prepare('SELECT * FROM community_comments ORDER BY id').all();
+ f.sqlite.exec(readFileSync(new URL('../drizzle/'+migration.tag+'.sql',import.meta.url),'utf8'));
+ assert.deepEqual(f.sqlite.prepare('SELECT * FROM community_comments ORDER BY id').all(),before);
+ assert.deepEqual(f.sqlite.prepare("PRAGMA index_info('community_comments_context')").all().map(row=>row.name),['context','deleted_at','created_at','id','user_id']);
+ const response=await f.call('/posts/existing-thread');assert.equal(response.status,200);assert.equal(response.body.item.comments,2);assert.equal(response.body.item.guideAnswers,1);assert.equal(response.body.item.studentComments,1);
 });
 
 test('returning members and already-bootstrapped owners browse without database writes',async t=>{
