@@ -1,23 +1,20 @@
-.plan-save-dialog { width:min(560px,calc(100% - 32px)); max-height:calc(100dvh - 32px); overflow:auto; padding:28px; border:1px solid #cbd5e1; border-radius:10px; background:#fff; color:#192c43; box-shadow:0 24px 80px rgb(12 28 54 / 20%); font-family:inherit; }
-.plan-save-dialog::backdrop { background:rgb(14 28 49 / 40%); }
-.plan-save-dialog h2 { margin:0 0 16px; font-size:1.75rem; line-height:1.2; letter-spacing:-.025em; }
-.plan-save-dialog p { font-size:1rem; line-height:1.6; color:#455974; margin:12px 0 18px; }
-.plan-save-target { display:grid; gap:6px; padding:18px; margin:18px 0; border:1px solid #dce3ee; border-radius:6px; background:#f7f9fc; font-size:1rem; line-height:1.5; }
-.plan-save-target strong { color:#192c43; font-weight:600; }
-.plan-save-target span { color:#455974; }
+/* Shared native dialog frame, typography and controls: ds-overlays.css. */
+
+.plan-save-target { display:grid; gap:6px; padding:18px; margin:18px 0; border:1px solid var(--ds-border,#d9e1ec); border-radius:6px; background:var(--ds-canvas,#f1f4f9); font-size:1rem; line-height:1.5; }
+.plan-save-target strong { color:var(--ds-ink,#192840); font-weight:600; }
+.plan-save-target span { color:var(--ds-muted,#4e5e74); }
 .plan-save-consent { display:flex; align-items:flex-start; gap:12px; padding:8px 0; font-size:1rem; line-height:1.6; cursor:pointer; }
-.plan-save-consent input { flex:0 0 auto; width:21px; height:21px; margin:3px 0 0; accent-color:#4054f4; }
+.plan-save-consent input { flex:0 0 auto; width:21px; height:21px; margin:3px 0 0; accent-color:var(--ds-cobalt,#3458d4); }
 .plan-save-actions { display:flex; align-items:center; flex-wrap:wrap; gap:12px; margin:18px 0 0; }
-.plan-save-dialog :is(button,a) { font:inherit; font-size:1rem; }
 .plan-save-dialog button { cursor:pointer; }
-.plan-save-dialog :is(.plan-save-primary,.plan-save-secondary) { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:11px 17px; border:1px solid #4054f4; border-radius:6px; line-height:1.5; font-weight:600; }
-.plan-save-dialog .plan-save-primary { background:#4054f4; color:#fff; }
+.plan-save-dialog :is(.plan-save-primary,.plan-save-secondary) { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:11px 17px; border:1px solid var(--ds-cobalt,#3458d4); border-radius:6px; line-height:1.5; font-weight:600; }
+.plan-save-dialog .plan-save-primary { background:var(--ds-cobalt,#3458d4); color:#fff; }
 .plan-save-dialog .plan-save-secondary { color:#334862; border-color:#bac6d7; background:#fff; }
-.plan-save-dialog :is(button,a):focus-visible { outline:3px solid #4054f4; outline-offset:3px; }
+.plan-save-dialog :is(button,a):focus-visible { outline:3px solid var(--ds-cobalt,#3458d4); outline-offset:3px; }
 .plan-save-dialog button:disabled { opacity:.65; cursor:wait; }
 .plan-save-dialog .plan-save-error { color:#a52b29; font-size:.9375rem; line-height:1.6; }
-.plan-save-dialog .plan-save-note { padding:13px 16px; border-left:3px solid #4054f4; background:#eef1ff; font-size:.9375rem; }
+.plan-save-dialog .plan-save-note { padding:13px 16px; border-left:3px solid var(--ds-cobalt,#3458d4); background:var(--ds-soft-blue,#edf2ff); font-size:.9375rem; }
 .plan-save-dialog .plan-save-success { color:#1d654a; font-weight:600; }
 .plan-save-links { display:flex; align-items:center; flex-wrap:wrap; gap:10px 18px; margin-top:12px; }
-.plan-save-dialog a,.plan-save-links button { display:inline-flex; align-items:center; min-height:44px; padding:5px 0; color:#3448d7; text-decoration:underline; text-underline-offset:4px; background:none; border:0; }
-@media(max-width:520px) { .plan-save-dialog { padding:22px; } .plan-save-actions>button { flex:1 1 100%; } }
+.plan-save-dialog a,.plan-save-links button { display:inline-flex; align-items:center; min-height:44px; padding:5px 0; color:var(--ds-cobalt,#3458d4); text-decoration:underline; text-underline-offset:4px; background:none; border:0; }
+@media(max-width:520px) { .plan-save-actions>button { flex:1 1 100%; } }

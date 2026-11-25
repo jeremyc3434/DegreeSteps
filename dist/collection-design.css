@@ -6,8 +6,8 @@ body.dp-app-shell #import-app {
   --collection-muted:var(--ds-muted,#526174);
   --collection-line:var(--ds-border,#d9e1ea);
   --collection-paper:var(--ds-surface,#fff);
-  --collection-canvas:var(--ds-canvas,#f7f9fc);
-  --collection-blue:var(--ds-cobalt,#4054f4);
+  --collection-canvas:var(--ds-canvas,#f1f4f9);
+  --collection-blue:var(--ds-cobalt,#3458d4);
   --collection-navy:var(--ds-route-navy,#142c51);
   color:var(--collection-ink);
   font-size:1rem;
@@ -52,7 +52,7 @@ body.dp-app-shell #courses-app .courses-heading .courses-primary {
   color:#fff!important;
   font-size:1rem;
 }
-body.dp-app-shell #courses-app .courses-heading .courses-primary:hover { background:#3042d9; border-color:#3042d9; }
+body.dp-app-shell #courses-app .courses-heading .courses-primary:hover { background:#2948b4; border-color:#2948b4; }
 body.dp-app-shell #courses-app .courses-heading .courses-primary > [aria-hidden="true"] { display:none; }
 body.dp-app-shell #courses-app .courses-heading :is(a,button):focus-visible { outline-color:var(--collection-blue); }
 body.dp-app-shell #courses-app .courses-tools {
@@ -130,7 +130,7 @@ body.dp-app-shell #courses-app .courses-status { color:var(--collection-muted); 
 body.dp-app-shell #courses-app .courses-results-header button { color:var(--collection-blue); }
 body.dp-app-shell #courses-app .course-list {
   border-color:var(--collection-line);
-  border-radius:12px;
+  border-radius:9px;
   background:var(--collection-paper);
 }
 body.dp-app-shell #courses-app .course-list-head {
@@ -145,7 +145,9 @@ body.dp-app-shell #courses-app .course-row {
   padding-block:16px;
   border-top-color:#e5eaf0;
 }
-body.dp-app-shell #courses-app .course-row:hover { background:#f8faff; }
+body.dp-app-shell #courses-app .course-row:hover { background:#f5f8ff; }
+body.dp-app-shell #courses-app .course-row-personal[data-progress="in-progress"] { background:#fffaf0; box-shadow:inset 3px 0 #b17b13; }
+body.dp-app-shell #courses-app .course-row-personal[data-progress="in-progress"] h2 button { color:#805611; text-decoration-color:#c9a45d; }
 body.dp-app-shell #courses-app .course-row h2 {
   color:var(--collection-ink);
   font-size:1rem;
@@ -153,7 +155,8 @@ body.dp-app-shell #courses-app .course-row h2 {
   line-height:1.5;
 }
 body.dp-app-shell #courses-app .course-row h2 button {
-  color:var(--collection-blue);
+  color:var(--collection-ink);
+  text-decoration-color:#b9c6dc;
   text-decoration:underline;
   text-underline-offset:4px;
 }
@@ -238,7 +241,7 @@ body.dp-app-shell #import-app .import-upload-card {
   min-height:260px;
   padding:28px 24px;
   border-color:#a7b8d1;
-  border-radius:12px;
+  border-radius:9px;
   background:#f8faff;
 }
 body.dp-app-shell #import-app .import-upload-card.is-dragging { border-color:var(--collection-blue); background:var(--ds-soft-blue,#eef1ff); }
@@ -251,7 +254,7 @@ body.dp-app-shell #import-app :is(.import-upload-card,.import-template-card) > p
 body.dp-app-shell #import-app .import-template-card {
   padding:26px;
   border:1px solid var(--collection-line);
-  border-radius:12px;
+  border-radius:9px;
   background:var(--collection-paper);
 }
 body.dp-app-shell #import-app .import-template-card .import-eyebrow { font-size:.875rem; font-weight:550; letter-spacing:0; text-transform:none; }
@@ -307,17 +310,6 @@ body.dp-app-shell #import-app .credit-import-guide :is(p,summary,li) { color:var
 body.dp-app-shell #import-app .credit-template-scroll { max-width:100%; }
 
 /* Native dialogs keep their existing focus, confirmation and recovery logic. */
-body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) {
-  width:min(620px,calc(100vw - 28px));
-  max-height:90dvh;
-  padding:28px;
-  border:1px solid var(--ds-border,#d9e1ea);
-  border-radius:8px;
-  background:var(--ds-surface,#fff);
-  color:var(--ds-navy,#192c43);
-  box-shadow:0 20px 70px rgb(20 44 81 / 18%);
-}
-body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog)::backdrop { background:rgb(14 28 49 / 40%); }
 body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) [hidden] { display:none!important; }
 body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) h2 { font-size:1.65rem; line-height:1.3; letter-spacing:-.025em; }
 body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) :is(p,li) { color:var(--ds-muted,#526174); font-size:1rem; line-height:1.65; }
@@ -328,7 +320,7 @@ body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remov
 body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) .course-dialog-close { min-width:44px; min-height:44px; border-radius:5px; }
 body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) .course-detail-facts > div { grid-template-columns:120px minmax(0,1fr); padding-block:13px; font-size:.9375rem; }
 body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) .course-detail-facts :is(dt,dd) { color:var(--ds-muted,#526174); }
-body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) .course-edit-review { border-radius:7px; background:var(--ds-canvas,#f7f9fc); }
+body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) .course-edit-review { border-radius:7px; background:var(--ds-canvas,#f1f4f9); }
 
 @media(max-width:1100px) {
   body.dp-app-shell #courses-app .course-list-head,
@@ -371,7 +363,6 @@ body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remov
   body.dp-app-shell #import-app .import-file-label { padding-inline:13px; }
   body.dp-app-shell #import-app .import-panel { padding:18px 15px; }
   body.dp-app-shell #import-app .import-action-bar { padding:16px; }
-  body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) { padding:25px 19px; }
   body.dp-app-shell :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) .course-detail-facts > div { grid-template-columns:minmax(0,1fr); gap:5px; }
 }
 @media(pointer:coarse) {
@@ -396,11 +387,11 @@ body.dp-app-shell #courses-app .course-feature-badges { display:flex; flex-wrap:
 body.dp-app-shell #courses-app .course-feature-badges>span { display:inline-flex; align-items:center; min-height:28px; padding:3px 8px; border:1px solid #d3dcf1; border-radius:4px; color:var(--collection-ink); background:#eef1ff; font-size:.875rem; line-height:1.5; font-weight:500; }
 body.dp-app-shell #courses-app .courses-filter-options { max-height:min(70vh,640px); overflow-y:auto; overscroll-behavior:contain; }
 body.dp-app-shell #course-details-dialog .course-feature-evidence { border-block:1px solid #d9e1ea; margin:18px 0; padding:8px 0; }
-body.dp-app-shell #course-details-dialog .course-feature-evidence>summary { min-height:44px; padding:10px 0; color:#4054f4; font-size:1rem; cursor:pointer; }
+body.dp-app-shell #course-details-dialog .course-feature-evidence>summary { min-height:44px; padding:10px 0; color:#3458d4; font-size:1rem; cursor:pointer; }
 body.dp-app-shell #course-details-dialog .course-feature-evidence h3 { font-size:1rem; line-height:1.5; margin:14px 0 6px; }
 body.dp-app-shell #course-details-dialog .course-feature-evidence p,
 body.dp-app-shell #course-details-dialog .course-feature-evidence li { color:#526174; font-size:.9375rem; line-height:1.65; }
 body.dp-app-shell #course-details-dialog .course-feature-evidence .course-feature-checked { font-size:.875rem; }
-body.dp-app-shell #course-details-dialog .course-feature-evidence a { display:inline-block; padding-block:8px; color:#4054f4; text-decoration:underline; text-underline-offset:3px; }
+body.dp-app-shell #course-details-dialog .course-feature-evidence a { display:inline-block; padding-block:8px; color:#3458d4; text-decoration:underline; text-underline-offset:3px; }
 body.dp-app-shell #courses-app .courses-add-actions { display:flex; flex-wrap:wrap; align-items:center; gap:4px 20px; }
 body.dp-app-shell #courses-app #courses-add-manual { min-height:46px; padding:10px 0; color:var(--collection-blue); font-size:.9375rem; font-weight:600; text-decoration:underline; text-underline-offset:4px; }

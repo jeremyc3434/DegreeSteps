@@ -1,4 +1,4 @@
-/** Redesign foundation: one header everywhere, no destination lost, tokens readable. No network. */
+/** Public navigation, persistent student workspace, and readable shared tokens. No network. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,readdirSync} from 'node:fs';
@@ -54,15 +54,61 @@ function shellMarkup({withHeader,search='',page='/plan.html'}){
  return shell.innerHTML;
 }
 
-test('the workspace renders the same header and keeps every former sidebar and tab destination one tap away',()=>{
+test('the workspace has four persistent destinations, with preferences, resources and account always reachable',()=>{
  const markup=shellMarkup({withHeader:true});
- assert.deepEqual(destinations(markup),FIVE);assert.match(markup,/class="ds-header ds-header--app dp-shell-header"/);
- for(const nav of ['plan','programs','community','credits'])assert.match(markup,new RegExp('data-shell-nav="'+nav+'"'),nav);
+ assert.doesNotMatch(markup,/data-ds-header|dp-shell-subnav/,'the app has its own task header rather than stacked website navigation');
+ for(const selector of ['dp-shell-nav','dp-shell-bottom']){
+  const nav=markup.match(new RegExp('<nav class="'+selector+'"[^>]*>([\\s\\S]*?)<\\/nav>'))?.[1];assert(nav,selector);
+  assert.deepEqual([...nav.matchAll(/data-shell-nav="([a-z]+)"/g)].map(m=>m[1]),['plan','credits','programs','community']);
+  assert.equal((nav.match(/aria-current="page"/g)||[]).length,1,'only the actual page is current');
+ }
  const links=hrefs(markup);
- for(const target of ['/plan.html','courses.html?tab=mine','/programs.html','/community.html?tab=feed','portal.html?view=preferences','account.html','library.html','/'])assert(links.has(target),'still linked: '+target);
+ for(const target of ['plan.html','courses.html?tab=mine','programs.html','community.html?tab=feed','portal.html?view=preferences','compare-plans.html','account.html','library.html','/transfer/','/'])assert(links.has(target),'still linked: '+target);
  for(const hook of ['data-shell-account-label','data-shell-account-detail','dp-shell-avatar','dp-shell-save-account','dp-shell-save"','id="dp-shell-page-title"'])assert(markup.includes(hook),hook);
- assert.doesNotMatch(markup,/dp-shell-bottom|dp-shell-sidebar/,'the sidebar and phone tab bar are replaced, not duplicated');
- const fallback=shellMarkup({withHeader:false});for(const nav of ['plan','programs','community','credits'])assert.match(fallback,new RegExp('data-shell-nav="'+nav+'"'),'fallback keeps '+nav);
+ assert.equal((markup.match(/id="dp-shell-page-title"/g)||[]).length,1);
+ assert.equal((markup.match(/data-shell-account-label/g)||[]).length,1,'account identity has one source of presentation');
+ assert.equal(shellMarkup({withHeader:false}),markup,'the app navigation works without a public header dependency');
+ const css=read('dist/app-shell.css');assert.match(css,/--dp-bottom-nav-height:calc\(72px \+ env\(safe-area-inset-bottom/);
+ assert.match(css,/\.dp-shell-bottom \{[^}]*grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+ assert.doesNotMatch(css,/is-onboarding[^}]*display:none/,'onboarding keeps a way back to the student workspace');
+});
+
+test('scratch builders, legacy guided entry and management pages receive the correct workspace context',()=>{
+ for(const [page,title] of [['degree-audit.html','Build my own plan'],['guided.html','Find my degree'],['growth.html','Activity overview'],['coverage.html','Academic coverage']]){
+  const markup=shellMarkup({page:'/'+page,withHeader:false});assert.match(markup,new RegExp('id="dp-shell-page-title">'+title+'<'),page);
+  if(['growth.html','coverage.html'].includes(page))for(const href of ['admin.html','coverage.html','growth.html'])assert(hrefs(markup).has(href),page+' preserves '+href);
+ }
+ const preferences=shellMarkup({page:'/portal.html',search:'?view=preferences',withHeader:false});
+ assert.match(preferences,/href="portal.html\?view=preferences" aria-current="page"/);
+ assert.doesNotMatch(preferences,/href="plan.html" aria-current="page"/);
+});
+
+test('the school policy library has a visible primary heading and legal links without losing the retained policy tools',()=>{
+ const html=read('dist/library.html');
+ const explore=html.match(/<section id="explore">([\s\S]*?)<\/section>/)?.[1];assert(explore);
+ assert.match(explore,/<h1>Explore the possibilities\.<\/h1>/);
+ for(const id of ['search','level','format','sort','count','cards','compare'])assert(explore.includes('id="'+id+'"'),'policy tool '+id+' remains');
+ for(const id of ['workspace','creditform','inventory','summary','tasks','notes'])assert(html.includes('id="'+id+'"'),'retained workspace '+id+' remains');
+ const footer=html.match(/<footer class="dp-legal-footer"[\s\S]*?<\/footer>/)?.[0];assert(footer);
+ for(const href of ['/privacy/','/terms/','/why-its-free/'])assert(hrefs(footer).has(href),'legal link '+href);
+ assert.match(read('dist/app-shell.js'),/#explore \.section-head h1, #explore \.section-head h2/,'heading enhancement supports both the current and earlier markup');
+ assert.match(read('dist/workspace-design.css'),/#explore \.section-head :is\(h1,h2\)/,'both heading versions share the page title style');
+ assert.match(read('dist/app-shell.css'),/footer:not\(\.dp-legal-footer\)/,'legacy library footer hiding leaves legal links visible');
+});
+
+test('the phone More menu closes with Escape, outside click, route selection and a return to desktop',()=>{
+ const handlers=new Map(),documentHandlers=new Map(),mediaHandlers=new Map();let focused=0;
+ const toggle={attrs:{'aria-expanded':'false'},setAttribute(k,v){this.attrs[k]=v;},getAttribute(k){return this.attrs[k];},contains:target=>target==='toggle',focus(){focused++;},addEventListener:(name,fn)=>handlers.set('toggle:'+name,fn)};
+ const menu={hidden:true,contains:target=>target==='menu',addEventListener:(name,fn)=>handlers.set('menu:'+name,fn)};
+ const shell={innerHTML:'',querySelector:s=>s==='.dp-shell-more-toggle'?toggle:s==='#dp-shell-more-menu'?menu:null};
+ const context={URLSearchParams,Date,location:{pathname:'/plan.html',search:''},document:{createElement:()=>shell,body:{prepend(){},classList:{add(){}}},getElementById(){return null;},addEventListener:(name,fn)=>documentHandlers.set(name,fn)},addEventListener(){},matchMedia:()=>({addEventListener:(name,fn)=>mediaHandlers.set(name,fn)})};
+ context.window=context;vm.runInNewContext(read('dist/app-shell.js'),context);
+ const open=()=>{handlers.get('toggle:click')();assert.equal(toggle.attrs['aria-expanded'],'true');assert.equal(menu.hidden,false);};
+ const closed=()=>{assert.equal(toggle.attrs['aria-expanded'],'false');assert.equal(menu.hidden,true);};
+ open();documentHandlers.get('keydown')({key:'Escape'});closed();assert.equal(focused,1,'Escape returns focus to the disclosure button');
+ open();documentHandlers.get('click')({target:'outside'});closed();
+ open();handlers.get('menu:click')({target:{closest:()=>({})}});closed();
+ open();mediaHandlers.get('change')({matches:true});closed();
 });
 
 test('the build loads the header builder before the workspace shell, once, on every rebuild',()=>{
@@ -79,8 +125,11 @@ test('tokens: brand names map onto the new tokens and text colors stay readable'
  const value=name=>tokens.match(new RegExp('--tok-'+name+':(#[0-9a-f]{6})','i'))[1];
  const lum=hex=>hex.replace('#','').match(/../g).map(x=>parseInt(x,16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
  const ratio=(a,b)=>{const [x,y]=[lum(a),lum(b)].sort((p,q)=>q-p);return(x+.05)/(y+.05);};
- for(const fg of ['ink','navy','muted','cobalt','cobalt-hover','success-text','pick-text','error'])for(const bg of ['surface','canvas'])assert(ratio(value(fg),value(bg))>=4.5,fg+' on '+bg+' '+ratio(value(fg),value(bg)).toFixed(2));
+ for(const fg of ['ink','navy','muted','cobalt','cobalt-hover','success-text','pick-text','error'])for(const bg of ['surface','canvas','nav'])assert(ratio(value(fg),value(bg))>=4.5,fg+' on '+bg+' '+ratio(value(fg),value(bg)).toFixed(2));
  assert(ratio(value('cobalt-hover'),value('cobalt-soft'))>=4.5,'chip text on the soft blue');
+ assert(ratio(value('control-border'),value('surface'))>=3,'form boundaries remain visible');
+ assert.match(tokens,/color-scheme:light/);assert.match(tokens,/--tok-cobalt:#3458d4/);assert.match(tokens,/--tok-canvas:#f1f4f9/);assert.match(tokens,/--tok-nav:#e9eef7/);
+ const metadata=JSON.parse(read('dist/brand-tokens.json'));for(const [name,actual] of [['ink',metadata.color.ink],['muted',metadata.color.muted],['canvas',metadata.color.canvas],['nav',metadata.color.navigation],['cobalt',metadata.brand.cobalt],['navy',metadata.brand.navy]])assert.equal(value(name),actual.toLowerCase(),name+' metadata matches rendered tokens');
  for(const name of ['--ds-navy','--ds-cobalt','--ds-ink','--ds-muted','--ds-border','--ds-radius-control','--ds-radius-card'])assert.match(brand,new RegExp(name+':var\\(--tok-'),name+' maps onto a token');
  assert.match(tokens,/prefers-reduced-motion/);
 });

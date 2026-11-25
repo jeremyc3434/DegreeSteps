@@ -3,7 +3,7 @@ body.ds-experience {
   font-family:var(--ds-font);
   color:var(--ds-ink);
   font-size:1rem;
-  line-height:1.6;
+  line-height:1.55;
 }
 body.ds-experience *,body.ds-experience *::before,body.ds-experience *::after { box-sizing:border-box; }
 body.ds-experience [hidden] { display:none!important; }
@@ -46,4 +46,4 @@ body.ds-experience :where([role=alert]) { overflow-wrap:anywhere; }
   body.ds-experience { background:#fff; color:#111; }
   body.ds-experience :where(a,button,input,select,textarea,summary,[tabindex]):focus-visible { outline:none; }
 }
-.outbound-partner-note{display:inline-block;margin-left:.35em;font-size:.8125rem;line-height:1.4;color:#52657c}.outbound-partner-note a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.outbound-partner-note{display:inline-block;margin-left:.35em;font-size:.875rem;line-height:1.45;color:var(--ds-muted,#4e5e74)}.outbound-partner-note a{color:inherit;text-decoration:underline;text-underline-offset:2px}

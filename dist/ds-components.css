@@ -1,10 +1,9 @@
-/* DegreeSteps shared components (redesign foundation). Every rule is scoped to a .ds-* class so existing pages
-   change only where they opt in, plus the one shared header. Tokens: ds-tokens.css. */
+/* Shared light components. Page families compose these roles; the student shell lives in app-shell.css. */
 
 /* ---------- Header ---------- */
 .ds-header { position:relative; z-index:40; background:var(--tok-surface); border-bottom:1px solid var(--tok-border-soft); font-family:var(--tok-font); }
-.ds-header-inner { display:flex; align-items:center; gap:var(--tok-space-4) var(--tok-space-6); flex-wrap:wrap; max-width:var(--tok-content-width); min-height:64px; margin:0 auto; padding:var(--tok-space-2) var(--tok-space-5); box-sizing:border-box; }
-.ds-header .ds-header-brand { display:inline-flex; align-items:baseline; min-height:var(--tok-target); align-items:center; margin-right:auto; color:var(--tok-navy); font-size:22px; font-weight:var(--tok-weight-heavy); letter-spacing:-.03em; line-height:1; text-decoration:none; white-space:nowrap; }
+.ds-header-inner { display:flex; align-items:center; gap:var(--tok-space-4) var(--tok-space-6); flex-wrap:wrap; max-width:var(--tok-content-width); min-height:72px; margin:0 auto; padding:var(--tok-space-2) var(--tok-space-5); box-sizing:border-box; }
+.ds-header .ds-header-brand { display:inline-flex; align-items:baseline; min-height:var(--tok-target); align-items:center; margin-right:auto; color:var(--tok-navy); font-size:25px; font-weight:var(--tok-weight-heavy); letter-spacing:-.03em; line-height:1; text-decoration:none; white-space:nowrap; }
 .ds-header .ds-header-brand .ds-wordmark-steps { color:var(--tok-cobalt); }
 .ds-header-nav { display:flex; align-items:center; flex-wrap:wrap; gap:var(--tok-space-1); }
 .ds-header .ds-header-link { display:inline-flex; align-items:center; min-height:var(--tok-target); padding:0 var(--tok-space-3); border-radius:var(--tok-radius-sm); color:var(--tok-muted); font-size:15px; font-weight:var(--tok-weight-semibold); line-height:1.2; text-decoration:none; white-space:nowrap; }
@@ -12,7 +11,7 @@
 .ds-header .ds-header-link[aria-current="page"] { color:var(--tok-ink); box-shadow:inset 0 -2px 0 var(--tok-cobalt); border-radius:0; }
 .ds-header .ds-header-link--account { color:var(--tok-ink); }
 .ds-header-actions { display:flex; align-items:center; flex-wrap:wrap; gap:var(--tok-space-3); }
-.ds-header-toggle { display:inline-flex; align-items:center; gap:var(--tok-space-2); min-height:var(--tok-target); padding:0 var(--tok-space-3); border:1.5px solid var(--tok-border); border-radius:var(--tok-radius-sm); background:var(--tok-surface); color:var(--tok-ink); font:inherit; font-size:15px; font-weight:var(--tok-weight-semibold); cursor:pointer; }
+.ds-header-toggle { display:inline-flex; align-items:center; gap:var(--tok-space-2); min-height:var(--tok-target); padding:0 var(--tok-space-3); border:1px solid var(--tok-control-border); border-radius:var(--tok-radius-sm); background:var(--tok-surface); color:var(--tok-ink); font:inherit; font-size:15px; font-weight:var(--tok-weight-semibold); cursor:pointer; }
 .ds-header-toggle[hidden] { display:none; }
 .ds-header :is(a,button):focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
 /* Wide screens: one row, no menu button. */
@@ -51,18 +50,18 @@
 /* ---------- Chips ---------- */
 .ds-chip { display:inline-flex; align-items:center; gap:6px; min-height:36px; padding:0 var(--tok-space-3); border:1px solid var(--tok-border); border-radius:var(--tok-radius-pill); background:var(--tok-surface); color:var(--tok-ink); font-family:var(--tok-font); font-size:var(--tok-text-small); font-weight:var(--tok-weight-semibold); line-height:1.2; text-decoration:none; }
 .ds-chip--soft { border-color:transparent; background:var(--tok-cobalt-soft); color:var(--tok-cobalt-hover); }
-.ds-chip--selected, .ds-chip[aria-pressed="true"] { border-color:var(--tok-ink); background:var(--tok-ink); color:#fff; }
-button.ds-chip { cursor:pointer; min-height:var(--tok-target); }
+.ds-chip--selected, .ds-chip[aria-pressed="true"] { border-color:var(--tok-cobalt); background:var(--tok-cobalt); color:#fff; }
+button.ds-chip, a.ds-chip { cursor:pointer; min-height:var(--tok-target); }
 button.ds-chip:focus-visible, a.ds-chip:focus-visible { outline:none; box-shadow:var(--tok-focus-ring); }
 
 /* ---------- Cards and stat tiles ---------- */
-.ds-card { display:flex; flex-direction:column; gap:var(--tok-space-3); padding:var(--tok-space-5); border:1px solid var(--tok-border-soft); border-radius:var(--tok-radius-xl); background:var(--tok-surface); color:var(--tok-ink); font-family:var(--tok-font); }
+.ds-card { display:flex; flex-direction:column; gap:var(--tok-space-3); padding:var(--tok-space-6); border:1px solid var(--tok-border); border-radius:var(--tok-radius-lg); background:var(--tok-surface); color:var(--tok-ink); font-family:var(--tok-font); }
 .ds-card-eyebrow { margin:0; color:var(--tok-muted); font-size:var(--tok-text-xsmall); font-weight:var(--tok-weight-semibold); }
 .ds-card-title { margin:0; color:var(--tok-ink); font-size:var(--tok-text-h3); font-weight:var(--tok-weight-bold); line-height:1.25; }
 .ds-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:var(--tok-space-3); }
 .ds-stat { display:flex; flex-direction:column; gap:2px; padding:var(--tok-space-3); border-radius:var(--tok-radius-sm); background:var(--tok-canvas); }
-.ds-stat-label { color:var(--tok-muted); font-size:12px; font-weight:var(--tok-weight-semibold); }
-.ds-stat-value { color:var(--tok-ink); font-size:18px; font-weight:var(--tok-weight-heavy); line-height:1.2; }
+.ds-stat-label { color:var(--tok-muted); font-size:var(--tok-text-small); font-weight:var(--tok-weight-semibold); }
+.ds-stat-value { color:var(--tok-ink); font-size:24px; font-weight:var(--tok-weight-bold); font-variant-numeric:tabular-nums; line-height:1.2; }
 .ds-stat--accent { background:var(--tok-cobalt-soft); }
 .ds-stat--accent :is(.ds-stat-label,.ds-stat-value) { color:var(--tok-cobalt-hover); }
 
@@ -81,8 +80,8 @@ button.ds-chip:focus-visible, a.ds-chip:focus-visible { outline:none; box-shadow
 .ds-dot--done { background:var(--tok-success); } .ds-dot--less { background:var(--tok-cobalt); } .ds-dot--school { background:var(--tok-school); } .ds-dot--pick { background:var(--tok-pick); }
 
 /* ---------- Row sheet: bottom sheet on phones, side panel on wider screens ---------- */
-.ds-sheet-backdrop { position:fixed; inset:0; z-index:1000; display:flex; align-items:flex-end; justify-content:center; background:rgb(24 34 48 / 45%); }
-.ds-sheet { display:flex; flex-direction:column; width:100%; max-height:88dvh; overflow:hidden; border-radius:var(--tok-radius-xl) var(--tok-radius-xl) 0 0; background:var(--tok-surface); color:var(--tok-ink); font-family:var(--tok-font); box-shadow:var(--tok-shadow-panel); }
+.ds-sheet-backdrop { position:fixed; inset:0; z-index:1000; display:flex; align-items:flex-end; justify-content:center; background:rgb(25 40 64 / 32%); }
+.ds-sheet { display:flex; flex-direction:column; width:100%; max-height:88dvh; overflow:hidden; border-radius:var(--tok-radius-xl) var(--tok-radius-xl) 0 0; background:var(--tok-surface); color:var(--tok-ink); font-family:var(--tok-font); font-size:var(--tok-text-body); line-height:1.55; color-scheme:light; box-shadow:var(--tok-shadow-panel); }
 .ds-sheet-head { display:flex; align-items:flex-start; gap:var(--tok-space-3); padding:var(--tok-space-5) var(--tok-space-5) var(--tok-space-3); border-bottom:1px solid var(--tok-border-soft); }
 .ds-sheet-titles { flex:1; min-width:0; }
 .ds-sheet-title { margin:0; font-size:var(--tok-text-h3); font-weight:var(--tok-weight-bold); line-height:1.25; }
