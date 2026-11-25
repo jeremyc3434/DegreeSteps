@@ -1545,7 +1545,7 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "type": "index",
     "name": "community_comments_context",
     "tbl_name": "community_comments",
-    "sql": "CREATE INDEX `community_comments_context` ON `community_comments` (`context`,`deleted_at`,`created_at`,`id`)"
+    "sql": "CREATE INDEX `community_comments_context` ON `community_comments` (`context`,`deleted_at`,`created_at`,`id`,`user_id`)"
   },
   {
     "type": "index",
