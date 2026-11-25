@@ -43,7 +43,7 @@ function fixture(t){
 test('intentional merge preserves fresh source plans and overlays only the new verified credential tables',t=>{
   const f=fixture(t),before=canonicalJSON(f),result=mergeBootstrapSnapshots(f.base,f.source,f.bootstrap,{...options,expectedBaseSha256:f.base.sha256});
   assert.equal(canonicalJSON(f),before,'Inputs are not mutated');
-  const {snapshot,report}=result;assert.equal(verifySnapshot(snapshot).tableCount,39);assert.equal(snapshot.sourceOrigin,sourceOrigin);assert.equal(snapshot.createdAt,createdAt);
+  const {snapshot,report}=result;assert.equal(verifySnapshot(snapshot).tableCount,57);assert.equal(snapshot.sourceOrigin,sourceOrigin);assert.equal(snapshot.createdAt,createdAt);
   const overlay=new Set(['ai_service_connections','ai_connection_events','ai_connection_rate_limits']);
   for(const item of snapshot.tables)if(!overlay.has(item.name))assert.equal(item.sha256,table(f.source,item.name).sha256,item.name);
   assert.equal(table(snapshot,'ai_service_connections').rows[0].ciphertext,newCipher);
@@ -75,7 +75,7 @@ test('a first managed connection can be promoted when the baseline has no creden
   table(f.bootstrap,'ai_connection_events').rows=[{id:'event-first-connect',service:'anthropic',actor_id:owner,action:'connect',revision:'1',source:'managed',created_at:row.updated_at}];
   table(f.bootstrap,'ai_connection_rate_limits').rows[0].count='1';rehash(f.bootstrap);
   const merged=mergeBootstrapSnapshots(f.base,f.source,f.bootstrap,options).snapshot;
-  assert.equal(verifySnapshot(merged).tableCount,39);assert.equal(table(merged,'ai_service_connections').rows[0].ciphertext,newCipher);
+  assert.equal(verifySnapshot(merged).tableCount,57);assert.equal(table(merged,'ai_service_connections').rows[0].ciphertext,newCipher);
 });
 
 test('rate merging keeps the latest window and preserves source-only and bootstrap-only users',t=>{
@@ -119,7 +119,7 @@ test('source credential changes after the baseline require explicit reconciliati
 test('the credential actor must remain an existing owner in the fresh source snapshot',t=>{
   for(const remove of [false,true]){
     const f=fixture(t),users=table(f.source,'community_users');if(remove)users.rows=[];else users.rows[0].role='member';rehash(f.source);
-    assert.equal(verifySnapshot(f.source).tableCount,39,'The source remains a structurally valid snapshot');
+    assert.equal(verifySnapshot(f.source).tableCount,57,'The source remains a structurally valid snapshot');
     rejection(()=>mergeBootstrapSnapshots(f.base,f.source,f.bootstrap,options));
   }
 });
@@ -147,7 +147,7 @@ test('CLI writes a new private snapshot, prints only a safe receipt and rejects 
   const out=resolve(directory,'merged.json');
   const args=target=>['--base',files.base,'--source',files.source,'--bootstrap',files.bootstrap,'--master-created-at',masterCreatedAt,'--out',target];
   const lines=[],logger=t.mock.method(console,'log',value=>lines.push(String(value)));t.after(()=>logger.mock.restore());
-  await main(args(out));assert.equal((await stat(out)).mode&0o777,0o600);const merged=JSON.parse(await readFile(out,'utf8'));assert.equal(verifySnapshot(merged).tableCount,39);
+  await main(args(out));assert.equal((await stat(out)).mode&0o777,0o600);const merged=JSON.parse(await readFile(out,'utf8'));assert.equal(verifySnapshot(merged).tableCount,57);
   const output=lines.join('\n');for(const secret of [newCipher,oldCipher,owner,'Fresh private notes'])assert(!output.includes(secret));
   await assert.rejects(main(args(out)),undefined,'Existing files are never overwritten');
   for(const forbidden of [resolve(root,'dist/must-not-write-merged-snapshot.json'),resolve(root,'outputs/cloudflare/public/must-not-write-merged-snapshot.json'),resolve(root,'outputs/site/dist/must-not-write-merged-snapshot.json')]){

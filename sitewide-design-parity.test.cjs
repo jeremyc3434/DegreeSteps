@@ -747,7 +747,7 @@ const searchContracts={
   "guides/transfer-credit-for-campus-degrees/index.html": "459c6a26af3a1b5e5dd6cf3c7c8e88702e769fd427de2944eab1cbb3da4cbf1c",
   "how-it-works/index.html": "edd7a9f2f104e5fb46c2eec11bb29455b9ee60f5fac3b037f69f012cd05f5a15",
   "index.html": "1ed8a43655fb2fd14321a31c4bbe42e75225766d0c7b66b7fc8aaecc532cd550",
-  "privacy/index.html": "bf9491a1d3514116fd7f07be2520163bde1a9521fb2309e0abde2dc0ada723ca",
+  "privacy/index.html": "71613ce8b934cf7cf999d2287d08675c59a3a3cde0866216ce8b4b3d7e5620c9",
   "programs.html": "6fba890a79854643b49e71b6c97c930a0602a9f8d7de5979342e3b54212328fc",
   "resources/index.html": "ee01225148edba59fc3e9d8d9bfc4f732232001bd1a17158f0729f7e3006a155",
   "schools/charter-oak-state-college/index.html": "552d70fbce67c607b7324a2c3000d42d79c37e0e2fdf66cd4280f5aaed35cc23",

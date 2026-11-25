@@ -2,6 +2,8 @@
 
 Google Search Console ownership for the `degreesteps.com` Domain property was confirmed by the owner on November 25, 2026. Record this as **owner-reported Google verification**. This is separate from an automated DNS observation and does not connect the Google API. Sitemap submission is pending the owner's confirmation; do not ask them to repeat ownership verification.
 
+The trusted deployment setting `OWNER_GSC_VERIFIED_AT` records the confirmation time in epoch milliseconds. On the first authorized owner's Search Console GET, a valid past timestamp initializes settings only if no record exists, using that verified owner's ID. Later reads preserve existing settings, including subsequent corrections. This initialization is not seeded into schema migrations and cannot be triggered by client fields or query parameters.
+
 ## Search Console and sitemap
 
 The property is `degreesteps.com`, covering its subdomains and protocols. The public sitemap is `https://degreesteps.com/sitemap.xml`. In Search Console, select this property, open **Sitemaps**, enter that complete URL, and select **Submit**. Check the resulting status. Submission does not guarantee indexing or rankings. [Google's sitemap instructions](https://support.google.com/webmasters/answer/7451001?hl=en).

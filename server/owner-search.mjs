@@ -104,6 +104,18 @@ export async function ownerSearchOverview(ctx){
   return{property:{domain:PROPERTY,siteUrl:SITE,sitemapUrl:SITEMAP},connection:{mode:'manual-csv',apiConnected:false,hasData:imports.length>0},verification:settingsView(settings),summary:latest?reportSummary(latest):null,imports:imports.map(importView),limits:{maxCsvBytes:MAX_CSV,maxRows:MAX_ROWS},importMeaning:'Each file is a separate owner-supplied Google export. Only one Date report supplies headline totals; query, page, country, device and overlapping imports are never added together.'};
 }
 function audit(ctx,action,targetId,details){return ctx.audit(action,'search-console',targetId,details);}
+async function initializeOwnershipAttestation(ctx){
+  const raw=ctx.env?.OWNER_GSC_VERIFIED_AT;
+  if(typeof raw!=='string'||!/^\d{13}$/.test(raw))return;
+  const verifiedAt=Number(raw);if(!Number.isSafeInteger(verifiedAt)||verifiedAt<=0||verifiedAt>ctx.now)return;
+  if(await first(ctx.db,'SELECT property FROM owner_search_settings WHERE property=?',PROPERTY))return;
+  // Only the already-authorized owner can apply this operator-supplied record.
+  // A client field, query parameter, DNS observation or student role cannot do it.
+  await ctx.db.batch([
+    stmt(ctx.db,"INSERT INTO owner_search_settings(property,revision,verification_token,dns_status,dns_checked_at,google_ownership_reported,google_ownership_reported_at,sitemap_submitted_reported,sitemap_submitted_reported_at,updated_by,updated_at) VALUES(?,1,NULL,'unchecked',NULL,1,?,0,NULL,?,?) ON CONFLICT(property) DO NOTHING",PROPERTY,verifiedAt,ctx.user.id,ctx.now),
+    audit(ctx,'search.owner-attestation',PROPERTY,{source:'trusted-operator-setting',googleOwnershipReportedAt:verifiedAt})
+  ]);
+}
 async function saveSettings(request,ctx){
   const body=await ctx.readJson(request,8192);fields(ctx,body,['revision','verificationToken','googleOwnershipReported','sitemapSubmittedReported']);
   if(!Number.isSafeInteger(body.revision)||body.revision<0)bad(ctx,'Reload Search Console setup before saving.');
@@ -152,7 +164,7 @@ async function listImports(ctx){
 }
 export async function handleOwnerSearch(request,env,ctx){
   const path=ctx?.url?.pathname||new URL(request.url).pathname;if(path!==PREFIX&&!path.startsWith(PREFIX+'/'))return null;active(ctx);
-  if(path===PREFIX&&request.method==='GET')return ctx.json(await ownerSearchOverview(ctx));
+  if(path===PREFIX&&request.method==='GET'){await initializeOwnershipAttestation(ctx);return ctx.json(await ownerSearchOverview(ctx));}
   if(path===PREFIX+'/settings'&&request.method==='POST')return saveSettings(request,ctx);
   if(path===PREFIX+'/check-dns'&&request.method==='POST')return checkDNS(request,ctx);
   if(path===PREFIX+'/imports'&&request.method==='POST')return importCSV(request,ctx);

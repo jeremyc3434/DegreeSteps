@@ -351,16 +351,3 @@ CREATE TABLE `owner_search_settings` (
 	CONSTRAINT "owner_search_reported_flags" CHECK("owner_search_settings"."google_ownership_reported" IN (0,1) AND "owner_search_settings"."sitemap_submitted_reported" IN (0,1)),
 	CONSTRAINT "owner_search_public_token_length" CHECK("owner_search_settings"."verification_token" IS NULL OR length("owner_search_settings"."verification_token") BETWEEN 35 AND 300)
 );
-
---> statement-breakpoint
--- The owner confirmed Google Domain-property verification in this conversation.
--- This is an owner attestation, not an API connection or an automated DNS check.
--- Sitemap submission was not yet confirmed. Preserve any real saved setup.
-INSERT INTO owner_search_settings
-  (property,revision,verification_token,dns_status,dns_checked_at,
-   google_ownership_reported,google_ownership_reported_at,
-   sitemap_submitted_reported,sitemap_submitted_reported_at,updated_by,updated_at)
-VALUES
-  ('degreesteps.com',1,NULL,'unchecked',NULL,1,1795640336037,0,NULL,
-   'owner-confirmed-in-chat',1795640336037)
-ON CONFLICT(property) DO NOTHING;
