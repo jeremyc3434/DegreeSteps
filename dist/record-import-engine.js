@@ -1,5 +1,5 @@
 /* Local source-record proposals. Parsing never creates a school evaluation. */
-(function(root,factory){'use strict';const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.DegreeRecordImport=api;}(typeof globalThis!=='undefined'?globalThis:this,function(){
+(function(root,factory){'use strict';const api=factory(typeof module==='object'&&module.exports?require('./provider-registry.js'):root.DegreeCreditProviders);if(typeof module==='object'&&module.exports)module.exports=api;else root.DegreeRecordImport=api;}(typeof globalThis!=='undefined'?globalThis:this,function(Providers){
  'use strict';
  const MAX_ROWS=500,MAX_TEXT=1500000,MAX_COLUMNS=80;
  const list=value=>Array.isArray(value)?value:[],text=value=>value==null?'':String(value).trim(),norm=value=>text(value).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
@@ -174,12 +174,12 @@
    }
   }
   const distinct=[...new Map(labels.map(label=>[norm(label),label])).values()];
-  const known={sophia:'Sophia',sophialearning:'Sophia',sophialearningllc:'Sophia',studycom:'Study.com',studycomllc:'Study.com',straighterline:'StraighterLine',straighterlineinc:'StraighterLine',saylor:'Saylor',sayloracademy:'Saylor',saylorfoundation:'Saylor',sayloruniversity:'Saylor',clep:'CLEP'},canonical=value=>own(known,norm(value))?known[norm(value)]:value;
+  const known={sophia:'Sophia',sophialearning:'Sophia',sophialearningllc:'Sophia',studycom:'Study.com',studycomllc:'Study.com',straighterline:'StraighterLine',straighterlineinc:'StraighterLine',saylor:'Saylor',sayloracademy:'Saylor',saylorfoundation:'Saylor',sayloruniversity:'Saylor',clep:'CLEP'},canonical=value=>own(known,norm(value))?known[norm(value)]:Providers?.get(value)?.name||value;
   if(distinct.length>1)return{provider:'',ambiguous:true};
   if(distinct.length===1)return{provider:canonical(distinct[0]),label:distinct[0]};
   // A provider mentioned in a course, footer or transfer section is not the
   // issuer of the whole transcript. Only an actual provider heading qualifies.
-  const branded=headings.map(value=>value.match(/^(Sophia(?:\s+Learning)?|Study\.com|StraighterLine|Saylor(?:\s+(?:Academy|University))?|CLEP)(?:\s+(?:(?:unofficial|official|academic)\s+)?(?:transcript|record)\b.*)?$/i)?.[1]).filter(Boolean);
+  const branded=headings.map(value=>value.match(/^(Sophia(?:\s+Learning)?|Study\.com|UPI\s+Study(?:,?\s+Inc\.?)?|University\s+Pathways\s+International|StraighterLine|Saylor(?:\s+(?:Academy|University))?|CLEP)(?:\s+(?:(?:unofficial|official|academic)\s+)?(?:transcript|record)\b.*)?$/i)?.[1]).filter(Boolean);
   const providers=[...new Set(branded.map(canonical))];
   return{provider:providers.length===1?providers[0]:'',ambiguous:providers.length>1};
  }
@@ -231,9 +231,9 @@
    if((row.source?.isTransfer||row.source?.transferSection)&&!preserved.some(item=>item.code==='receiving-transfer-row'))preserved.push({...issue('receiving-transfer-row','This is a receiving-school transfer award. Upload the original school or provider record.','grade'),origin:'parser'});
    const issues=[...new Map([...preserved,...checked.issues].map(item=>[item.code+'|'+item.field+'|'+item.message,item])).values()];return{...clone(row),id:row.id||'import-row-'+(index+1),record:checked.record,documentKind,issues,selected:row.selected!==false&&!issues.some(item=>item.severity==='error')};});
  }
- const providerKey=value=>({sophialearning:'sophia',studycom:'studycom',collegelevelexaminationprogram:'clep'}[norm(value)]||norm(value));
+ const providerKey=value=>Providers?.get(value)?Providers.key(value):({sophialearning:'sophia',studycom:'studycom',collegelevelexaminationprogram:'clep'}[norm(value)]||norm(value));
  const identity=record=>providerKey(record.provider)+'|'+norm(record.institution)+'|'+(norm(record.code)||'title:'+norm(record.title));
- const detail=record=>stable(Object.fromEntries(fields.map(field=>[field,record[field]==null?'':record[field]])));
+ const detail=record=>stable(Object.fromEntries(fields.map(field=>[field,field==='provider'?providerKey(record.provider):record[field]==null?'':record[field]])));
  function hash(value){let out=2166136261;for(let i=0;i<value.length;i++){out^=value.charCodeAt(i);out=Math.imul(out,16777619);}return(out>>>0).toString(16).padStart(8,'0');}
  function prepareImport(existingLearning,selectedRows){
   if(!Array.isArray(existingLearning)||!Array.isArray(selectedRows)||selectedRows.length>MAX_ROWS)throw new TypeError('Review between 1 and 500 selected course rows.');

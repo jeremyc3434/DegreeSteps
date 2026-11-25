@@ -25,8 +25,8 @@ export function articleAction(article){
 export function sourceAction(source){
  const retired=['onlinedegree','uexcel','aleks'].includes(source?.id)||source?.status==='historical';
  if(retired||source?.id==='military-jst')return {label:retired?'Add my historical courses':'Add my military learning',href:'/import-courses.html',description:'Upload your original records and review the courses before adding them.'};
- const provider=({'study-com':'Study.com','modern-states':'CLEP','sophia':'Sophia','straighterline':'StraighterLine','clep':'CLEP','dsst':'DSST','saylor':'Saylor','coopersmith':'Coopersmith','davar':'Davar','tecep':'TECEP','christian-leaders':'Christian Leaders Institute','asu-ulc':'ASU Universal Learner'})[source?.id]||source?.id;
- const labels={sophia:'Browse Sophia courses','study-com':'Browse Study.com courses',straighterline:'Browse StraighterLine courses',clep:'Browse CLEP exams','modern-states':'Browse CLEP exams',dsst:'Browse DSST exams','asu-ulc':'Browse ASU courses','christian-leaders':'Browse Christian Leaders courses'};
+ const provider=({'study-com':'Study.com','modern-states':'CLEP','sophia':'Sophia','straighterline':'StraighterLine','clep':'CLEP','dsst':'DSST','saylor':'Saylor','coopersmith':'Coopersmith','davar':'Davar','tecep':'TECEP','christian-leaders':'Christian Leaders Institute','asu-ulc':'ASU Universal Learner','upi-study':'UPI Study'})[source?.id]||source?.id;
+ const labels={sophia:'Browse Sophia courses','study-com':'Browse Study.com courses',straighterline:'Browse StraighterLine courses',clep:'Browse CLEP exams','modern-states':'Browse CLEP exams',dsst:'Browse DSST exams','asu-ulc':'Browse ASU courses','christian-leaders':'Browse Christian Leaders courses','upi-study':'Browse UPI Study courses'};
  return {label:labels[source?.id]||'Explore '+String(source?.name||'this source'),href:'/courses.html?provider='+encodeURIComponent(provider||''),description:'See available courses with this provider already selected.'};
 }
 export function renderActionCallout(action,title,description){

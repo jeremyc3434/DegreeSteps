@@ -4,17 +4,18 @@ import {resolve,relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
 
 const dist=resolve(import.meta.dirname,'../dist');
-const workspacePages=new Set(['account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html','start.html']);
+const workspacePages=new Set(['account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html','start.html','template-import.html']);
 const savePages=new Set(['plan.html','portal.html','courses.html','compare-plans.html']);
 const families=new Map([
   ...['portal.html','start.html','programs.html','credits-worth.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html','campuses.html'].map(name=>[name,'discovery']),
-  ...['courses.html','import-courses.html'].map(name=>[name,'collection']),
+  ...['courses.html','import-courses.html','template-import.html'].map(name=>[name,'collection']),
   ['compare-plans.html','comparison'],['community.html','community'],
   ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
 ]);
-const managedStyles=new Set(['ds-tokens.css','ds-components.css','brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-redesign.css','plan-save.css','home-steps.css','plan-alerts.css','ds-overlays.css']);
-const managedScripts=new Set(['site-header.js','growth-metrics.js','plan-save.js','task-calendar.js','coach.js','leads.js','plan-alerts.js']);
+const managedStyles=new Set(['ds-tokens.css','ds-components.css','brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-redesign.css','plan-save.css','home-steps.css','plan-alerts.css','ds-overlays.css','provider-offers.css']);
+const managedScripts=new Set(['site-header.js','growth-metrics.js','plan-save.js','task-calendar.js','coach.js','leads.js','plan-alerts.js','provider-registry.js','provider-offers.js','provider-offer-view.js']);
 // Email plan alerts: the script renders nothing unless /api/alerts is enabled (EMAIL_ALERTS_ENABLED=1).
+const offerPages=new Set(['courses.html','plan.html','portal.html']);
 const alertPages=new Set(['plan.html','account.html']);
 // Degree coach (beta): the script renders nothing unless /api/coach/status reports the coach enabled.
 const coachPages=new Set(['programs.html','portal.html','plan.html','start.html']);
@@ -34,6 +35,7 @@ export function pageExperience(name,source){
   if(alertPages.has(name))styles.push('plan-alerts.css');
   if(family){classes.push('ds-'+family+'-page');styles.push(family+'-design.css');}
   if(savePages.has(name))styles.push('plan-save.css');
+  if(offerPages.has(name))styles.push('provider-offers.css');
   if(name==='plan.html')styles.push('plan-design.css');
   if(name==='index.html'&&publicPage)styles.push('home-steps.css');
   styles.push('ds-overlays.css');
@@ -52,6 +54,10 @@ export function applyExperience(source,name){
   // The voluntary feedback worksheet has no portal or analytics transport.
   // Applying shared visual tokens must not change that privacy boundary.
   const scripts=localFeedback?[]:['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[]),...(coachPages.has(name)?['coach.js']:[]),...(leadsPages.has(name)?['leads.js']:[]),...(alertPages.has(name)?['plan-alerts.js']:[])];
+  // Controlled provider identities load before their synchronous course helpers.
+  const providerConsumer=/<script\b[^>]*\bsrc=["']\/?(?:guide-engine|sheet-state|record-import-engine|course-library-engine|course-plan-view|course-attributes)\.js["'][^>]*>/i;
+  if(providerConsumer.test(next))next=next.replace(providerConsumer,tag=>'<script src="/provider-registry.js" defer></script>'+tag);
+  if(offerPages.has(name)){const consumer=/<script\b[^>]*\bsrc=["']\/?(?:courses|sheet|portal)\.js["'][^>]*>/i;if(consumer.test(next))next=next.replace(consumer,tag=>'<script src="/provider-offers.js" defer></script><script src="/provider-offer-view.js" defer></script>'+tag);}
   // Catalog credit-accounting checks share the planner's source-bound policy validator.
   if(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["']/i.test(next)&&!/<script\b[^>]*\bsrc=["']\/?planner\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["'][^>]*>/i,tag=>'<script src="/planner.js" defer></script>'+tag);
   if(/<script\b[^>]*\bsrc=["']\/?planner\.js["']/i.test(next)){

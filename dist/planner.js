@@ -37,6 +37,7 @@
   const creditSystem = p => p.creditSystem || 'semester';
   const comparableTimingCache = new WeakMap();
   const tuitionAssumptionsCache = new WeakMap();
+  const coursePurchaseReviewCache = new WeakMap();
 
   function normalizedInput(input) {
     const normalized = Object.assign({ completed: [], providers: ['Sophia', 'Study.com', 'CLEP'], priority: 'transfer', allowConditional: false, weeklyHours: 10, universityRate: 0, fees: 0, providerMonths: {}, examBudget: 97, modernStates: false, optionSelections: {} }, input || {});
@@ -675,6 +676,31 @@
     return{valid:true,amount:Math.round(quote.amount*100)/100,includesTaxes:quote.includesTaxes===true,includesExamFees:quote.includesExamFees===true,source,courseKeys:[...quote.courseKeys]};
   }
 
+  // UPI's reviewed standalone purchase is tied to its original source course,
+  // not a universal provider fee, receiving-credit price or membership quote.
+  // This cache is local to the normalized generation input; later generations
+  // cannot inherit a price after their identity or source data changes.
+  function reviewedUPICoursePurchase(program, option, input) {
+    if (!option || option.provider !== 'UPI Study') return null;
+    let cache=coursePurchaseReviewCache.get(input);
+    if(!cache||cache.program!==program){cache={program,options:new WeakMap(),sources:new Map((program.sources||[]).map(source=>[source.id,source]))};coursePurchaseReviewCache.set(input,cache);}
+    if(cache.options.has(option))return cache.options.get(option);
+    const fail=()=>{cache.options.set(option,null);return null;},price=option.costEvidence;
+    const validDay=value=>typeof value==='string'&&/^20\d{2}-\d{2}-\d{2}$/.test(value)&&Number.isFinite(Date.parse(value+'T00:00:00Z'))&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value;
+    const sameVersion=(a,b)=>a!==null&&a!==undefined&&b!==null&&b!==undefined&&String(a)===String(b);
+    const courseURL=value=>{try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password&&['upistudy.com','www.upistudy.com'].includes(u.hostname)?u.href:null;}catch{return null;}};
+    if(option.creditOrigin!=='alternative'||option.costVerified!==true||option.costStatus!=='reviewed-source-course-purchase'||price?.kind!=='upi-standalone-course-purchase-v1'||price.basis!=='per-course'||price.provider!=='UPI Study'||price.currency!=='USD'||!/^UPIS-\d{4}$/.test(option.code||'')||price.code!==option.code||!sameVersion(price.courseVersion,option.courseVersion)||!finite(price.amount)||price.amount<0||!finite(option.cost)||!near(option.cost,price.amount)||!finite(option.sourceCredits)||option.sourceCredits<=0||price.sourceCredits!==option.sourceCredits||price.sourceCreditSystem!==option.sourceCreditSystem||price.sourceCreditSystem!=='semester'||price.recommendationStart!==option.recommendationStart||price.recommendationEnd!==option.recommendationEnd||!validDay(price.checkedOn)||!validDay(price.recommendationStart)||!validDay(price.recommendationEnd)||price.checkedOn<price.recommendationStart||price.checkedOn>price.recommendationEnd||price.includesMembership!==false||price.includesTranscript!==false||price.includesTaxes!==false||!courseURL(price.courseUrl)||courseURL(price.courseUrl)!==courseURL(option.url)||!Array.isArray(price.sourceIds)||!price.sourceIds.length||new Set(price.sourceIds).size!==price.sourceIds.length)return fail();
+    const sources=price.sourceIds.map(id=>cache.sources.get(id));
+    if(sources.some((source,index)=>{
+      if(!source||!(option.sourceIds||[]).includes(price.sourceIds[index])||!validDay(source.checkedOn||source.checked)||String(source.checkedOn||source.checked)<price.checkedOn)return true;
+      try{const u=new URL(source.url);return u.protocol!=='https:'||u.username||u.password||u.port||!['upistudy.com','www.upistudy.com','acenet.edu','www.acenet.edu'].includes(u.hostname);}catch{return true;}
+    }))return fail();
+    const providerSource=sources.find(source=>source.kind==='provider-course'&&(source.roles||[]).includes('pricing')&&courseURL(source.url)===courseURL(option.url));
+    const originalSource=sources.find(source=>{try{const u=new URL(source.url);return source.kind==='ace-course-exhibit'&&u.protocol==='https:'&&!u.username&&!u.password&&(u.hostname==='acenet.edu'||u.hostname.endsWith('.acenet.edu'))&&String(source.title).includes(option.code);}catch{return false;}});
+    if(!providerSource||!originalSource)return fail();
+    const result={amount:price.amount,code:price.code,courseVersion:String(price.courseVersion),source:providerSource.url};cache.options.set(option,result);return result;
+  }
+
   function tuitionAssumptions(program, input) {
     const cached = tuitionAssumptionsCache.get(input);
     if (cached && cached.program === program) return cached.value;
@@ -751,6 +777,15 @@
         const amount=sum(actions,action=>action.option.costEvidence.totalCourseCost),first=actions[0].option.costEvidence;
         providerCosts.push({provider:'ASU Universal Learner',amount,detail:actions.length+' distinct ASU course(s); includes published enrollment and transcript-credit fees.',source:sources.get(first.sourceIds[0]).url,basis:'published-per-course-fees',courseKeys:actions.map(action=>sourceActionKey(action.option)),includesTaxes:false});
         subtotal+=amount;quoted.add('ASU Universal Learner');missing.push('ASU applicable taxes or additional checkout charges');
+      }
+    }
+    if(providers.has('UPI Study')&&!quoted.has('UPI Study')){
+      const actions=futureActions(rows).filter(action=>action.provider==='UPI Study').map(action=>({...action,prices:action.rows.map(row=>reviewedUPICoursePurchase(program,row.option,input))}));
+      const reviewed=actions.length>0&&actions.every(action=>action.prices.every(price=>price&&price.code===action.prices[0]?.code&&price.courseVersion===action.prices[0]?.courseVersion&&near(price.amount,action.prices[0]?.amount)));
+      if(reviewed){
+        const amount=sum(actions,action=>action.prices[0].amount);
+        providerCosts.push({provider:'UPI Study',amount,detail:actions.length+' distinct standalone UPI course purchase(s); eligible memberships or bundles may cost less. Transcript charges and taxes are separate.',source:actions[0].prices[0].source,basis:'published-standalone-course-purchases',courseKeys:actions.map(action=>sourceActionKey(action.rows[0].option)),includesTaxes:false});
+        subtotal+=amount;quoted.add('UPI Study');missing.push('UPI Study transcript charges and applicable taxes are not included in this standalone-course scenario');
       }
     }
     for (const provider of ['Sophia', 'Study.com']) {
@@ -853,7 +888,8 @@
       const code = option && !option.selectionRequired && !row.selectionRequired && !option.receivingCourseRepeatable ? (option.provider === 'University' ? option.code : option.receivingCode) : null;
       return { row, parts: partsFor(row), source, bundle: source && option.bundleId, receiving: typeof code === 'string' && code.trim() ? code.toUpperCase().replace(/[^A-Z0-9]/g, '') : null,
         provider: option && row.status === 'planned' && option.provider !== 'University' ? option.provider : null,
-        action: option && row.status === 'planned' && option.provider !== 'University' ? optionKey(option) : null };
+        action: option && row.status === 'planned' && option.provider !== 'University' ? optionKey(option) : null,
+        purchase: option && row.status === 'planned' ? reviewedUPICoursePurchase(program,option,input) : null };
     };
     const allMenus = menus.map(menu => menu.map(metaFor));
     const maximumBundleLimits = new Map();
@@ -881,7 +917,7 @@
       minimum[depth][part] = minimum[depth + 1][part] + Math.min(...decisions[depth].choices.map(meta => meta.parts[part]));
       maximum[depth][part] = maximum[depth + 1][part] + Math.max(...decisions[depth].choices.map(meta => meta.parts[part]));
     }
-    const current = Array(dimensions).fill(0), sources = new Map(), bundles = new Map(), receiving = new Map(), providers = new Map(), actions = new Map(), actionWeeks = new Map(), exams = new Map();
+    const current = Array(dimensions).fill(0), sources = new Map(), bundles = new Map(), receiving = new Map(), providers = new Map(), actions = new Map(), actionWeeks = new Map(), exams = new Map(), unknownProviderSelections = new Map(), purchases = new Map();
     const knownProviders = new Set(['University', 'Sophia', 'Study.com', 'CLEP', 'DSST']);
     const quotedProvider = provider => input.providerQuotes && typeof input.providerQuotes === 'object' && !Array.isArray(input.providerQuotes) && Object.prototype.hasOwnProperty.call(input.providerQuotes,provider);
     const settings = input.timing || {}, durations = settings.externalWeeks || {}, comparableTiming = input.priority === 'speed' && hasComparableTiming(program, input);
@@ -927,8 +963,15 @@
         // A partial basket may still fit a valid quoted basket. Treat its quote
         // optimistically in the lower bound; the complete cost model validates
         // every quote against the exact remaining actions.
-        if (!knownProviders.has(meta.provider) && !quotedProvider(meta.provider)) unpricedProviders += delta > 0 ? Number(!providers.has(meta.provider)) : -Number(providers.get(meta.provider) === 1);
+        if (!knownProviders.has(meta.provider) && !quotedProvider(meta.provider) && !meta.purchase) {
+          unpricedProviders += delta > 0 ? Number(!unknownProviderSelections.has(meta.provider)) : -Number(unknownProviderSelections.get(meta.provider) === 1);
+          increment(unknownProviderSelections,meta.provider,delta);
+        }
         increment(providers, meta.provider, delta);
+        if(meta.purchase&&!quotedProvider(meta.provider)){
+          const prices=purchases.get(meta.action)||new Map();increment(prices,meta.purchase.amount,delta);
+          if(prices.size)purchases.set(meta.action,prices);else purchases.delete(meta.action);
+        }
         if (meta.provider === 'CLEP') increment(exams, meta.action, delta);
         if (delta > 0 && !actions.has(meta.action)) actionWeeks.set(meta.action, number(durations[meta.provider]));
         increment(actions, meta.action, delta);
@@ -961,6 +1004,10 @@
       let cost = fees + universityLower;
       for (const provider of ['Sophia', 'Study.com']) if (providers.has(provider) && !quotedProvider(provider)) cost += Math.max(1, Math.ceil(number(input.providerMonths && input.providerMonths[provider], 1))) * providerPricing[provider].monthly;
       if (!(input.modernStates && input.voucherConfirmed) && !quotedProvider('CLEP')) cost += exams.size * Math.max(0, number(input.examBudget, providerPricing.CLEP.exam));
+      // An unpriced UPI basket deliberately omits its whole provider charge.
+      // Keep that omission optimistic in bounds, and charge a reviewed shared
+      // course action once rather than once per receiving allocation.
+      if(!unknownProviderSelections.has('UPI Study'))for(const prices of purchases.values())cost+=Math.min(...prices.keys());
       cost = roundLower(cost, 100);
       let score;
       if (input.priority === 'campus') score = snapUp(Math.max(current[0] + low[0], externalMinimum - 0.001)) * 100000 + cost;

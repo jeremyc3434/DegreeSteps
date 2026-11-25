@@ -2,10 +2,10 @@
 (function (root, factory) {
   'use strict';
   const guide = root && root.DegreeGuide || (typeof module === 'object' && module.exports ? require('./guide-engine.js') : null);
-  const api = factory(root, guide);
+  const api = factory(root, guide, root?.DegreeCreditProviders || (typeof module === 'object' && module.exports ? require('./provider-registry.js') : null));
   if (typeof module === 'object' && module.exports) module.exports = api;
   else if (root) root.DegreeSheet = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function (root, Guide) {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (root, Guide, Providers) {
   'use strict';
   const copy = value => value === undefined ? undefined : JSON.parse(JSON.stringify(value));
   const list = value => Array.isArray(value) ? value : [];
@@ -15,7 +15,7 @@
   function programCatalog(program){const exact=catalogYear(program?.catalogYear)||catalogYear(program?.catalog);if(exact)return exact;const match=text(program?.catalog).replace(/[–—]/g,'-').match(/\b(?:19|20|21)\d{2}-(?:19|20|21)\d{2}\b/);return match?catalogYear(match[0]):'';}
   const bounded = (value, max) => text(value).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, '').slice(0,max);
   const normalized = value => text(value).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
-  const providerKey = value => ({sophialearning:'sophia',collegelevelexaminationprogram:'clep',jointservicestranscript:'jst',communitycollegeoftheairforce:'ccaf'}[normalized(value)] || normalized(value));
+  const providerKey = value => Providers?.get(value) ? Providers.key(value) : ({sophialearning:'sophia',collegelevelexaminationprogram:'clep',jointservicestranscript:'jst',communitycollegeoftheairforce:'ccaf',universitypathwaysinternational:'upistudy',upistudyinc:'upistudy'}[normalized(value)] || normalized(value));
   const finite = value => typeof value === 'number' && Number.isFinite(value);
   const commonPlanner = typeof module === 'object' && module.exports ? require('./planner.js') : null;
   function earnedCreditException(program,requirement,option) {
@@ -183,13 +183,15 @@
     if(item.score!==undefined&&item.score!==null&&item.score!==''){item.score=Number(item.score);if(!Number.isFinite(item.score)||item.score<0||item.score>1000)throw new Error('Use the exam score shown on your record.');}
     return item;
   }
-  const identityFields=['provider','code','title','credits','creditSystem','status','completedOn','institution','sourceProgramId','grade','score'];
-  const sameDetails=(a,b)=>identityFields.every(key=>String(a[key]??'')===String(b[key]??''));
+  const identityFields=['provider','code','title','credits','creditSystem','status','completedOn','institution','sourceProgramId','grade','score','courseVersion'];
+  const sameDetails=(a,b)=>identityFields.every(key=>key==='provider'?providerKey(a.provider)===providerKey(b.provider):String(a[key]??'')===String(b[key]??''));
   function updateLearning(state,value,options={}) {
     const existing=list(state.learning).find(item=>item.id===value?.id),item=validateLearning({...object(existing),...object(value)});
-    if(existing&&['provider','code','title'].some(key=>String(existing[key]??'')!==String(item[key]??''))){
+    if(existing&&(providerKey(existing.provider)!==providerKey(item.provider)||['code','title'].some(key=>String(existing[key]??'')!==String(item[key]??'')))){
       for(const key of ['catalogCourseId','codeAliases','sourceListingCode','sourceUrl','sourceCheckedAt','codeBasis','recommendationStatus','mappedCourseIds','mappingStatus','sourceId','providerId','identitySourceIds','sourceProgramId'])delete item[key];
-      if(existing.provider!==item.provider)for(const key of ['institution','creditOrigin','sourceType'])delete item[key];
+      const sourceChanged=providerKey(existing.provider)!==providerKey(item.provider)||normalized(existing.code)!==normalized(item.code)||!normalized(existing.code)&&!normalized(item.code)&&normalized(existing.title)!==normalized(item.title);
+      if(sourceChanged)for(const key of ['courseVersion','recommendationStart','recommendationEnd'])delete item[key];
+      if(providerKey(existing.provider)!==providerKey(item.provider))for(const key of ['institution','creditOrigin','sourceType'])delete item[key];
       item.codeBasis=item.code?'student-record':'not-yet-known';
       item.creditBasis='not-yet-known';
     }

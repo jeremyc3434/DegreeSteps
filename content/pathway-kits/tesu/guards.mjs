@@ -137,16 +137,16 @@ function providerStatusesStaySourceBound(doc){
     assert.equal(review?.checkedOn,providerReview.checkedOn,m.title+': current provider-directory review');
     assert.ok(cites(m,review?.sourceIds),m.title+': provider review cites its retained source');
     for(const r of m.requirements)for(const o of outside(r)){
-      if(![...provisionalProviders,'Study.com'].includes(o.provider))continue;
+      if(![...provisionalProviders,...providerReview.approved].includes(o.provider))continue;
       const eligibility=o.eligibilityReview;
       assert.equal(eligibility?.checkedOn,review.checkedOn,m.title+' '+o.id+': provider status date');
       assert.ok(cites(m,eligibility?.sourceIds),m.title+' '+o.id+': provider status cites its source');
       assert.equal(eligibility.individualApproval,false,m.title+' '+o.id+': provider status is not an individual award');
       assert.equal(Object.hasOwn(eligibility,'eligibleToStart'),false,m.title+' '+o.id+': provider status does not establish enrollment permission');
       assert.equal(eligibility.enrollmentPermission,'not-established-by-provider-status');
-      assert.equal(eligibility.providerReviewPending,o.provider!=='Study.com',m.title+' '+o.id+': provisional review remains pending');
-      if(o.provider==='Study.com'){
-        assert.equal(eligibility.fullyApproved,true,m.title+' '+o.id+': Study.com is an approved provider');
+      assert.equal(eligibility.providerReviewPending,!providerReview.approved.includes(o.provider),m.title+' '+o.id+': provisional review remains pending');
+      if(providerReview.approved.includes(o.provider)){
+        assert.equal(eligibility.fullyApproved,true,m.title+' '+o.id+': '+o.provider+' is an approved provider');
         assert.equal(eligibility.status,'approved-provider-course-mapping-separate');
       }else assert.equal(eligibility.providerReviewPending,true,m.title+' '+o.id+': provisional provider review remains pending');
     }
@@ -180,4 +180,31 @@ function authoredRowsAreGrounded(doc,kit){
     assert.equal(row.evidenceType,'school-submitted-equivalency',row.id+': only TESU-submitted equivalencies are authored institution-wide');
   }
 }
-export const checks=[semesterLedgers,reviewedLedgerShapes,distinctNamedCourses,prerequisitesResolve,residencyAndCaps,gradeMinimums,institutionOnlyStaysAtTESU,awardsFitTheirRequirement,businessCourseCurrency,provisionalProvidersStayRestricted,providerStatusesStaySourceBound,schoolSubmittedMatchesAreExact,authoredRowsAreGrounded];
+/** The first UPI packet contains provider assertions, not independently established university course awards. */
+function upiProviderCandidatesStayBounded(doc){
+  for(const m of doc.models)for(const r of m.requirements)for(const o of outside(r)){
+    if(o.provider!=='UPI Study')continue;
+    const label=m.title+' '+r.id+'/'+o.id,e=o.mappingEvidence;
+    assert.equal(o.evidence,'conditional',label+': UPI receiving evidence stays conditional');
+    assert.equal(o.evidenceType,'provider-published',label+': the UPI table is provider-published');
+    assert.equal(o.mappingResearchClosed,false,label+': the UPI provider table does not close receiving research');
+    assert.equal(o.receivingMapStatus,'provider-published-candidate');assert.equal(o.individualApproval,false);
+    assert.equal(o.creditOrigin,'alternative',label+': UPI counts toward the combined alternative-credit cap');
+    assert.equal(o.sourceType,'alternative');assert.equal(o.sourceCreditSystem,'semester');
+    assert.equal(o.sourceCredits,o.credits,label+': a provider assertion cannot resolve a source/receiving quantity discrepancy');
+    assert.equal(o.minScore,70,label+': the reviewed original ACE course has a 70-point passing standard');
+    assert.equal(o.providerCoursePassingPercent,70,label+': preserve the overall course-completion passing standard');
+    assert.equal(o.passingScoreScope,'overall-course-completion',label+': a course passing standard is not a separate final-exam minimum');
+    assert.ok(cites(m,o.minScoreSourceIds)&&cites(m,o.providerCoursePassingSourceIds),label+': the course passing standard cites its exact recommendation exhibit');
+    assert.equal(e?.schoolName,m.school);assert.equal(e?.provider,'UPI Study');assert.equal(e?.publisher,'UPI Study');
+    assert.equal(e?.claimOrigin,'provider-published');assert.equal(e?.individualApproval,false);
+    assert.equal(e?.receivingCode,o.receivingCode);assert.equal(e?.credits,o.credits);assert.ok(cites(m,e?.sourceIds),label+': UPI receiving claim cites its source');
+    assert.ok(cites(m,o.identitySourceIds)&&cites(m,o.recommendationPeriodSourceIds),label+': original course identity and recommendation period stay separately source-bound');
+    assert.ok(o.conditions.some(text=>/independent TESU receiving-course award has not been established/.test(text)),label+': provider verification is not represented as a university award');
+    assert.equal(o.degreePlacementEvidence?.requirementId,r.id,label+': the exact requirement placement is explicit');
+    assert.ok(cites(m,o.degreePlacementEvidence?.sourceIds),label+': the current degree placement cites its published block');
+    if(r.freeElective){assert.ok(['elective','electives'].includes(r.category));assert.equal(r.group,'free-electives');assert.equal(r.excludeAlreadyUsed,true);assert.equal(o.placementType,'elective');}
+    else assert.equal(o.receivingCode,r.code,label+': a named receiving award cannot fill a different named requirement');
+  }
+}
+export const checks=[semesterLedgers,reviewedLedgerShapes,distinctNamedCourses,prerequisitesResolve,residencyAndCaps,gradeMinimums,institutionOnlyStaysAtTESU,awardsFitTheirRequirement,businessCourseCurrency,provisionalProvidersStayRestricted,providerStatusesStaySourceBound,schoolSubmittedMatchesAreExact,authoredRowsAreGrounded,upiProviderCandidatesStayBounded];

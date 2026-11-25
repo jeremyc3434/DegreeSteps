@@ -12,8 +12,8 @@
   "totalCredits": 110,
   "review": {
     "status": "reviewed",
-    "reviewer": "Claude (pathway factory)",
-    "reviewedOn": "2026-11-23"
+    "reviewer": "Codex (independent Study.com identity and receiving-map review)",
+    "reviewedOn": "2026-11-25"
   },
   "sources": [
     {
@@ -109,7 +109,7 @@
       "capture": "content/source-captures/186d4e3a3fda7a15.txt"
     },
     {
-      "id": "wgu-bsit-study-4424-v240",
+      "id": "wgu-bsit-study-4424-v242",
       "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424",
       "title": "WGU approved Study.com receiving map for BSIT 202608",
       "kind": "university",
@@ -124,15 +124,15 @@
         "catalogYear": "202608"
       },
       "provider": "Study.com",
-      "checked": "2026-11-23",
+      "checked": "2026-11-25",
       "evidenceType": "official-receiving-school-equivalency",
       "programId": 250,
       "catalogTerm": "202608",
       "agreementId": 4424,
-      "agreementRecordVersion": 240,
+      "agreementRecordVersion": 242,
       "published": true,
       "approvalStatus": "APPROVED",
-      "capture": "content/source-captures/3138982ad34dd8f4.txt"
+      "capture": "content/source-captures/fded09837aae8641.txt"
     },
     {
       "id": "wgu-bsit-straighterline-547-v121",
@@ -207,8 +207,8 @@
       "sourceIds": [
         "wgu-bsit-202608-metadata-20261123",
         "wgu-bsit-sophia-7110-v236",
+        "wgu-bsit-study-4424-v242",
         "wgu-bsit-saylor-671-v108",
-        "wgu-bsit-study-4424-v240",
         "wgu-bsit-straighterline-547-v121"
       ]
     }
@@ -221,11 +221,11 @@
     ],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
-      "Outside options come only from WGU's current published partner agreements for BSIT catalog 202608 (program 250), captured 2026-11-23. Approved partner courses without an independently verified provider identity, and awards that need several source courses together, are held out of the plan.",
+      "Outside options come only from WGU's published partner agreements for BSIT catalog 202608 (program 250). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
       "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
       "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
     ],
-    "mappingCheckedOn": "2026-11-23",
+    "mappingCheckedOn": "2026-11-25",
     "pricing": {
       "model": "subscription",
       "amount": 3925,
@@ -453,15 +453,15 @@
       }
     },
     "transferEvidenceReview": {
-      "id": "wgu-current-agreement-ledgers-2026-11-23",
-      "checkedOn": "2026-11-23",
+      "id": "wgu-source-and-agreement-expansion-2026-11-25",
+      "checkedOn": "2026-11-25",
       "programId": 250,
       "catalog": "202608",
       "receivingClaimsReviewed": 45,
-      "sourceIdentitiesReusedByExactProviderCode": 29,
+      "sourceIdentitiesReusedByExactProviderCode": 40,
       "sourceIds": [
         "wgu-bsit-sophia-7110-v236",
-        "wgu-bsit-study-4424-v240",
+        "wgu-bsit-study-4424-v242",
         "wgu-bsit-straighterline-547-v121",
         "wgu-bsit-saylor-671-v108"
       ],
@@ -506,6 +506,7 @@
             "SOPH-0075",
             "SOPH-0082"
           ],
+          "sourceIdentityConflictsHeld": [],
           "multiSourceRequirementsHeld": [],
           "agreementId": 7110,
           "agreementRecordVersion": 236,
@@ -518,27 +519,35 @@
             "SDCM-0013",
             "SDCM-0015",
             "SDCM-0016",
-            "SDCM-0025",
+            "SDCM-0034",
+            "SDCM-0042",
             "SDCM-0047",
             "SDCM-0057",
+            "SDCM-0058",
+            "SDCM-0068",
             "SDCM-0089",
             "SDCM-0142",
             "SDCM-0167",
             "SDCM-0168",
             "SDCM-0185",
+            "SDCM-0212",
+            "SDCM-0213",
+            "SDCM-0219",
+            "SDCM-0240",
+            "SDCM-0249",
+            "SDCM-0253",
+            "SDCM-0255",
+            "SDCM-0259",
             "SDCM-0265"
           ],
-          "selectableReceivingPlacements": 12,
+          "selectableReceivingPlacements": 23,
           "unknownSourceIdentityCodesHeld": [
             "SDCM-0010",
+            "SDCM-0025",
             "SDCM-0032",
             "SDCM-0033",
-            "SDCM-0034",
-            "SDCM-0042",
             "SDCM-0051",
             "SDCM-0056",
-            "SDCM-0058",
-            "SDCM-0068",
             "SDCM-0073",
             "SDCM-0087",
             "SDCM-0088",
@@ -552,26 +561,27 @@
             "SDCM-0188",
             "SDCM-0194",
             "SDCM-0195",
-            "SDCM-0212",
-            "SDCM-0213",
             "SDCM-0218",
-            "SDCM-0219",
             "SDCM-0237",
-            "SDCM-0240",
             "SDCM-0242",
             "SDCM-0243",
             "SDCM-0246",
             "SDCM-0247",
             "SDCM-0248",
-            "SDCM-0249",
-            "SDCM-0253",
-            "SDCM-0255",
-            "SDCM-0258",
-            "SDCM-0259"
+            "SDCM-0258"
+          ],
+          "sourceIdentityConflictsHeld": [
+            {
+              "receivingCode": "C955",
+              "sourceCode": "SDCM-0025",
+              "partnerCourse": "*Statistics 101 (SDCM-0068) or Business 212 (SDCM-0025)",
+              "independentProviderCourse": "Business 103: Introductory Business Law",
+              "reason": "The university row names a different provider course than the independently verified identifier. No correction or equivalency is inferred."
+            }
           ],
           "multiSourceRequirementsHeld": [],
           "agreementId": 4424,
-          "agreementRecordVersion": 240,
+          "agreementRecordVersion": 242,
           "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424"
         },
         "StraighterLine": {
@@ -608,6 +618,7 @@
             "OOSL-0120",
             "OOSL-0123"
           ],
+          "sourceIdentityConflictsHeld": [],
           "multiSourceRequirementsHeld": [],
           "agreementId": 547,
           "agreementRecordVersion": 121,
@@ -629,6 +640,7 @@
           "unknownSourceIdentityCodesHeld": [
             "SAYA-0016"
           ],
+          "sourceIdentityConflictsHeld": [],
           "multiSourceRequirementsHeld": [],
           "agreementId": 671,
           "agreementRecordVersion": 108,
@@ -643,7 +655,7 @@
     "wgu-bsit-202608-metadata-20261123",
     "wgu-bsit-transfer-guidelines-20261123",
     "wgu-bsit-sophia-7110-v236",
-    "wgu-bsit-study-4424-v240",
+    "wgu-bsit-study-4424-v242",
     "wgu-bsit-straighterline-547-v121",
     "wgu-bsit-saylor-671-v108",
     "wgu-undergraduate-institutional-catalog-202611",
@@ -651,14 +663,20 @@
     "wgu-global-sophia--soph-0080-current-provider-2026-11-18",
     "wgu-global-sophia--soph-0080-current-ace-2026-11-18",
     "wgu-global-sophia--soph-0080-current-syllabus-2026-11-18",
+    "study-software-identity-sdcm-0034-2026-11-25",
+    "study-software-identity-sdcm-0255-2026-11-25",
+    "study-software-identity-sdcm-0259-2026-11-25",
+    "study-software-ace-sdcm-0259-v1-2026-11-25",
     "saylor-current-provider-credit-list-20261120",
     "wgu-sophia-business-current",
-    "study-course-sdcm-0025-2026-11",
+    "study-software-identity-sdcm-0068-2026-11-25",
     "straighterline-oosl-0002-current-offering-20261120",
     "straighterline-oosl-0002-ace-exhibit-20261120",
     "study-current-sdcm-0013-2026-11-20",
     "study-current-sdcm-0015-2026-11-20",
     "study-current-sdcm-0016-2026-11-20",
+    "study-software-identity-sdcm-0253-2026-11-25",
+    "study-software-identity-sdcm-0042-2026-11-25",
     "wgu-global-sophia--soph-0006-current-provider-2026-11-18",
     "wgu-global-sophia--soph-0006-current-ace-2026-11-18",
     "wgu-global-sophia--soph-0006-current-syllabus-2026-11-18",
@@ -677,7 +695,14 @@
     "study-current-sdcm-0185-2026-11-20",
     "study-current-sdcm-0057-2026-11-20",
     "study-current-sdcm-0089-2026-11-20",
-    "study-course-sdcm-0265-2026-11"
+    "study-software-identity-sdcm-0213-2026-11-25",
+    "study-software-identity-sdcm-0219-2026-11-25",
+    "study-software-identity-sdcm-0058-2026-11-25",
+    "study-software-identity-sdcm-0212-2026-11-25",
+    "study-software-identity-sdcm-0240-2026-11-25",
+    "study-software-ace-sdcm-0240-v3-2026-11-25",
+    "study-course-sdcm-0265-2026-11",
+    "study-software-identity-sdcm-0249-2026-11-25"
   ],
   "requirements": [
     {"id":"bsit-influential-communication-through-visual-design-and-storytelling","code":"D246","title":"Influential Communication through Visual Design and Storytelling","credits":3,"category":"general","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsit-202608-curriculum-20261123"],"programId":250,"catalogTerm":"202608","ledgerSha256":"617ed3960ca3ab45f14df934713aea4dad74b9eff302754834b0193ff1ae2fce"},"quotes":[{"sourceId":"wgu-bsit-202608-curriculum-20261123","text":"\"courseCode\":\"D246\",\"courseName\":\"Influential Communication through Visual Design and Storytelling\",\"courseDescription\":\"Influential Communication through Visual Design and Storytelling provides learners with foundational visual design and storytelling techniques to influence and create a lasting impression on audiences. Learners will first explore how human behavior is influenced by visuals and when to apply visual techniques to better communicate with audiences. Next, learners will learn techniques for creating compelling stories that create memorable images within the audience\\u0027s mind. Ultimately, learners who master these skills will be well-positioned to apply their visual and storytelling techniques to not only better communicate their thoughts and ideas to an audience, but to also influence or motivate them.\\r\\n\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},

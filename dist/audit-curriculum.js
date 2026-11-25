@@ -62,7 +62,7 @@
   rows=validRows(rows,research);const total=rows.reduce((s,r)=>s+r.credits,0),required=Number(meta.totalCredits),school=text(meta.school,120),title=text(meta.title,200),sourceUrl=https(meta.sourceUrl),level=meta.level,creditSystem=meta.creditSystem||'semester';
   if(!school||!title||!sourceUrl)throw Error('Add the school, degree name, and its official https catalog link.');if(!levels.includes(level)||!units.includes(creditSystem))throw Error('Choose a degree level and credit units.');if(!Number.isFinite(required)||required<=0||required>500||Math.abs(required-total)>0.001)throw Error('The imported rows total '+total+' credits. They must match the degree total you confirm.');if(!research&&meta.reviewedByStudent!==true)throw Error('Review the requirements and confirm the degree total before building.');if(research&&(meta.reviewedByStudent!==false||typeof meta.templateId!=='string'||!meta.templateId||meta.templateId.length>100||!Number.isSafeInteger(meta.templateRevision)||meta.templateRevision<1))throw Error('Choose a saved AI research revision before opening this private plan.');
   const id=identifier(meta.id)?meta.id:'student-audit-'+(globalThis.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10)),sources=[],sourceIds=new Map(),sections=new Map();
-  function source(url){if(sourceIds.has(url))return sourceIds.get(url);const sid=id+'-source-'+(sourceIds.size+1);sourceIds.set(url,sid);sources.push({id:sid,title:research?'Public source for AI-researched requirements — confirmation needed':'Reference URL for student-provided requirements — not independent verification',url,checked:null,evidenceType:'student-provided-reference'});return sid;}
+  function source(url){if(sourceIds.has(url))return sourceIds.get(url);const sid='audit-source-'+(sourceIds.size+1);sourceIds.set(url,sid);sources.push({id:sid,title:research?'Public source for AI-researched requirements — confirmation needed':'Reference URL for student-provided requirements — not independent verification',url,checked:null,evidenceType:'student-provided-reference'});return sid;}
   const requirements=rows.map((r,i)=>{const rid='audit-row-'+(i+1),sourceId=source(r.sourceUrl||sourceUrl),placeholder=!r.code,sectionKey=norm(r.section)||'major';if(!sections.has(sectionKey))sections.set(sectionKey,{id:'audit-section-'+(sections.size+1),title:r.section,requirementIds:[],sourceId});sections.get(sectionKey).requirementIds.push(rid);return{id:rid,...(r.code?{code:r.code}:{}),title:r.title,credits:r.credits,category:category(r.section),upper:r.upperLevel,institutionalOnly:r.requiredAtUniversity,sourceIds:[sourceId],studentProvided:true,...(research&&r.selectionRequired===true?{selectionRequired:true}:{}),options:[{id:'audit-university-'+(i+1),provider:'University',...(r.code?{code:r.code}:{}),title:r.title,credits:r.credits,creditSystem,creditOrigin:'institutional',upper:r.upperLevel,sourceIds:[sourceId],evidence:'conditional',evidenceType:'student-provided-audit',conditions:['This requirement was imported from your file and has not been independently verified. Confirm the catalog, course choice and applicability with the university.'],...(placeholder?{selectionRequired:true}:{})}]};});
   const policyReview=[{field:'auditRequirements',status:'unverified',message:research?'This degree plan was generated from public sources. Its requirements and placements need confirmation.':'These requirements are student-provided. The reference catalog link does not establish that the imported audit is correct.'},{field:'externalMaxCredits',status:'unverified',message:'Confirm the exact degree’s overall transfer limit, major residency and approved credit sources.'},{field:'alternativeMaxCredits',status:'unverified',message:'Confirm limits on ACE, NCCRS and other alternative credits before enrolling.'}];
   const model={id,school,title,level,format:meta.modality==='online'?'Online':meta.modality==='campus'?'Residential':research&&meta.modality==='hybrid'?'Hybrid':'Needs confirmation',creditSystem,totalCredits:required,catalog:text(meta.catalog,80)||'Student-provided; catalog needs confirmation',requirements,sources,curriculumSections:[...sections.values()],coverageLabel:'Student-provided requirements · proposed plan',completeExecutablePathway:false,policyReview,unresolved:['Confirm the imported requirements and catalog with the university.','Imported rows are requirements, not completed or awarded credits.','Outside course equivalencies are included only when separately sourced.'],auditProvenance:{status:research?'ai-research':'student-provided',reviewedByStudent:!research,independentlyVerified:false,referenceUrl:sourceUrl,...(research?{templateId:meta.templateId,templateRevision:meta.templateRevision}:{})},evidenceCheckedOn:null};
@@ -103,9 +103,65 @@
  const degreeBand=level=>/^(?:associate|bachelor)/.test(norm(level))?'undergraduate':/^(?:master|doctor|specialist|graduate)/.test(norm(level))?'graduate':null;
  const alternativeProvider=provider=>['sophia','studycom','clep','dsst','saylor','straighterline','modernstates','davar','coopersmith','aleks','aleksindependentuse','upistudy','csm','seemore','seemorecorestrategiesformathematics'].includes(norm(provider));
  function inheritEquivalencies(model,reviewed){
-  const next=validateModel(model),sources=new Map(next.sources.map(s=>[s.id,s]));
-  for(const r of next.requirements){if(r.institutionalOnly||!r.code)continue;for(const original of list(reviewed)){if(norm(original.school)!==norm(next.school)||(original.creditSystem||'semester')!==next.creditSystem||!degreeBand(original.level)||degreeBand(next.level)!==degreeBand(original.level))continue;for(const req of list(original.requirements)){for(const option of list(req.options)){if(degreeBand(next.level)==='graduate'&&(!option.graduateCredit||!(option.creditOrigin==='institutional'||option.institutionalCredit===true||option.issuerType==='college')||alternativeProvider(option.provider)))continue;if(option.provider==='University'||!['published','conditional'].includes(option.evidence)||option.credits!==r.credits||norm(option.receivingCode||req.code)!==norm(r.code)||r.options.some(o=>o.provider===option.provider&&norm(o.code)===norm(option.code)))continue;const rename=id=>original.id+'--'+id,added=copy(option);added.sourceIds=list(added.sourceIds).map(rename);if(added.identitySourceIds)added.identitySourceIds=list(added.identitySourceIds).map(rename);if(added.codeAliasEvidence)added.codeAliasEvidence=added.codeAliasEvidence.map(e=>({...e,sourceIds:list(e.sourceIds).map(rename)}));added.evidence='conditional';added.conditions=[...list(added.conditions),'Confirm this separately researched course equivalency applies to your student-provided degree requirements and catalog.'];for(const s of list(original.sources))sources.set(rename(s.id),{...copy(s),id:rename(s.id)});r.options.push(added);}}}}
-  next.sources=[...sources.values()];return validateModel(next);
+  const next=validateModel(model),sources=new Map(next.sources.map(s=>[s.id,s])),canonicalSources=new Map(),originModels=list(next.importedSourceModels);let sourceSequence=0,inheritedAny=false;
+  if(next.importedSourceModels!==undefined&&(!Array.isArray(next.importedSourceModels)||originModels.some(id=>typeof id!=='string'||!id||id.length>200)||new Set(originModels).size!==originModels.length))throw Error('The imported source provenance could not be read.');
+  const sourceOrigin=(source,original,id)=>{const previous=source.privateImportOrigin,origin=typeof previous?.model==='string'?previous.model:Number.isInteger(previous?.modelIndex)?list(original.importedSourceModels)[previous.modelIndex]:original.id,identifier=typeof previous?.identifier==='string'?previous.identifier:id;if(typeof origin!=='string'||!origin)throw Error('The imported source provenance could not be read.');let modelIndex=originModels.indexOf(origin);if(modelIndex<0){modelIndex=originModels.length;originModels.push(origin);}return{modelIndex,identifier};};
+  // Keep complete, immutable source evidence once. A source shared across
+  // several degree models is not several independent pieces of evidence.
+  const stable=value=>Array.isArray(value)?value.map(stable):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,stable(value[key])])):value;
+  const sourceKey=value=>{const body={...value};delete body.id;delete body.privateImportOrigin;return JSON.stringify(stable(body));};
+  for(const source of next.sources)canonicalSources.set(sourceKey(source),source.id);
+  // originalSourceId is the immutable parent-packet label, not a local citation edge.
+  const invalidReference=Symbol('invalid-source-reference'),sourceReferenceKey=key=>/sourceIds?$/i.test(key)&&!/^originalSourceIds?$/i.test(key);
+  const references=(value,found=new Set())=>{
+   if(!value||typeof value!=='object')return found;
+   for(const [key,entry]of Object.entries(value)){
+    if(sourceReferenceKey(key)){
+     const many=/sourceIds$/i.test(key);if(many?!Array.isArray(entry):typeof entry!=='string'){found.add(invalidReference);continue;}
+     for(const id of many?entry:[entry])if(typeof id==='string'&&id)found.add(id);else found.add(invalidReference);
+    }else if(key==='sourcePages'){
+     if(!entry||typeof entry!=='object'||Array.isArray(entry)){found.add(invalidReference);continue;}
+     for(const id of Object.keys(entry))if(id)found.add(id);else found.add(invalidReference);for(const page of Object.values(entry))if(page&&typeof page==='object')references(page,found);
+    }else if(entry&&typeof entry==='object')references(entry,found);
+   }
+   return found;
+  };
+  const remap=(value,aliases)=>{
+   if(Array.isArray(value))return value.map(entry=>remap(entry,aliases));if(!value||typeof value!=='object')return value;
+   const out=Object.create(null);
+   for(const[key,entry]of Object.entries(value)){
+    if(sourceReferenceKey(key))out[key]=Array.isArray(entry)?entry.map(id=>aliases.get(id)):aliases.get(entry);
+    else if(key==='sourcePages'){
+     const pages=Object.create(null);for(const[id,page]of Object.entries(entry)){
+      const local=aliases.get(id),mappedPage=remap(page,aliases);
+      if(!Object.prototype.hasOwnProperty.call(pages,local))pages[local]=mappedPage;
+      else if(JSON.stringify(pages[local])!==JSON.stringify(mappedPage)){const values=[...(Array.isArray(pages[local])?pages[local]:[pages[local]]),...(Array.isArray(mappedPage)?mappedPage:[mappedPage])];pages[local]=[...new Map(values.map(item=>[JSON.stringify(item),item])).values()];}
+     }out[key]=pages;
+    }else out[key]=remap(entry,aliases);
+   }
+   return out;
+  };
+  for(const r of next.requirements){
+   if(r.institutionalOnly||!r.code)continue;
+   for(const original of list(reviewed)){
+    if(norm(original.school)!==norm(next.school)||(original.creditSystem||'semester')!==next.creditSystem||!degreeBand(original.level)||degreeBand(next.level)!==degreeBand(original.level))continue;
+    const originalSources=new Map(list(original.sources).map(source=>[source.id,source]));
+    for(const req of list(original.requirements))for(const option of list(req.options)){
+     if(degreeBand(next.level)==='graduate'&&(!option.graduateCredit||!(option.creditOrigin==='institutional'||option.institutionalCredit===true||option.issuerType==='college')||alternativeProvider(option.provider)))continue;
+     if(option.provider==='University'||!['published','conditional'].includes(option.evidence)||option.credits!==r.credits||norm(option.receivingCode||req.code)!==norm(r.code)||r.options.some(o=>o.provider===option.provider&&norm(o.code)===norm(option.code)))continue;
+     const required=references(option),pending=[...required];let missingSource=!Array.isArray(option.sourceIds)||!option.sourceIds.length;
+     // Preserve source dependencies, including page-keyed citations. A partial
+     // source graph must never leave an apparently linked inherited option.
+     for(let i=0;i<pending.length;i++){const source=originalSources.get(pending[i]);if(!source||!https(source.url)){missingSource=true;break;}for(const id of references(source))if(!required.has(id)){required.add(id);pending.push(id);}}
+     if(missingSource)continue;
+     const aliases=new Map();
+     for(const id of required){const source=originalSources.get(id);if(!source)continue;const key=sourceKey(source);let local=canonicalSources.get(key);if(!local){do{local='audit-evidence-'+(++sourceSequence);}while(sources.has(local)||[...aliases.values()].includes(local));canonicalSources.set(key,local);}aliases.set(id,local);}
+     for(const id of required){const source=originalSources.get(id),local=aliases.get(id);if(source&&local&&!sources.has(local))sources.set(local,{...remap(copy(source),aliases),id:local,privateImportOrigin:sourceOrigin(source,original,id)});}
+     const added=remap(copy(option),aliases);added.evidence='conditional';added.conditions=list(added.conditions);r.options.push(added);inheritedAny=true;
+    }
+   }
+  }
+  next.sources=[...sources.values()];if(originModels.length)next.importedSourceModels=originModels;if(inheritedAny)next.unresolved=[...new Set([...list(next.unresolved),'Confirm this separately researched course equivalency applies to your student-provided degree requirements and catalog.'])];return validateModel(next);
  }
  const contextFields={school:120,degree:200,programId:200,level:40,modality:40,creditSystem:40,sourceUrl:1500,catalog:200};
  function contextFor(value={}){

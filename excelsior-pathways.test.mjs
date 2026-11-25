@@ -7,7 +7,8 @@ import {readJSON,loadKit,clone,kitsRoot,root} from './scripts/pathway-factory/li
 import {compileKit,runGuards,serializePublished} from './scripts/pathway-factory/compile.mjs';
 import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 
-const asOf='2026-11-20';
+// Evaluate current shared provider evidence without changing Excelsior's policy dates.
+const asOf='2026-11-25';
 const kit=await loadKit(join(kitsRoot,'excelsior'));
 const {doc}=compileKit(kit);
 const BUS='curriculum-excelsior-bs-business-no-concentration',PSY='curriculum-excelsior-bs-psychology',LA='curriculum-excelsior-bs-liberal-arts-no-concentration';

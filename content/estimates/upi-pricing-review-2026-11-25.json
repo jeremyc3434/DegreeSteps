@@ -1,0 +1,55 @@
+{
+  "kind": "upi-estimate-pricing-review",
+  "version": 1,
+  "checkedOn": "2026-11-25",
+  "sources": [
+    {
+      "id": "upi-published-pricing-2026-11-25",
+      "title": "UPI pricing: population-specific memberships, individual purchases and transcript charges",
+      "url": "https://www.upistudy.com/pages/pricing",
+      "checkedOn": "2026-11-25",
+      "reviewBasis": {
+        "type": "retained-published-population-specific-provider-pricing",
+        "document": "content/estimates/snapshots/upi-pricing-2026-11-25.txt",
+        "sha256": "1d5344f6691357c05c97a02bacee7869573be4e72614304e44bc89946f478e66",
+        "fetchedAt": "2026-11-25T17:34:38.747483+00:00",
+        "rawHtmlSha256": "2e6b523ccf4a2d9741d1cdf2642e4fa67e1322d39d742dfb2d6b9f207ed555db",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "upi-tesu-student-pricing-2026-11-25",
+      "title": "UPI TESU student pricing and direct transcript request alternatives",
+      "url": "https://www.upistudy.com/pages/tesu",
+      "checkedOn": "2026-11-25",
+      "reviewBasis": {
+        "type": "retained-published-population-specific-provider-pricing",
+        "document": "content/estimates/snapshots/upi-tesu-2026-11-25.txt",
+        "sha256": "e461427bf91acb12492a6be776ddaf1798bac753baeaa692a926d8970b9c9242",
+        "fetchedAt": "2026-11-25T17:34:37.817484+00:00",
+        "rawHtmlSha256": "34851d0564953c46a0a263cdcc4a13e4e475b30974690133b573c6b6c094d80b",
+        "httpStatus": 200
+      }
+    }
+  ],
+  "findings": [
+    "General membership is explicitly limited to US citizens, permanent residents, military or partner-university students; eligibility is not inferred from a proposed degree.",
+    "TESU $89 monthly pricing is for TESU students; selecting TESU as a target does not establish current enrollment or pricing eligibility.",
+    "General $250 individual-course and discounted multi-course bundles are presented within international-student pricing. Do not apply a generic $250 course price to every source-course version or learner.",
+    "Provider lists a $20 official transcript request and TESU page also describes $25 unlimited requests. Which transcript route is required and already paid is not established for every learner.",
+    "Exact current provider course pages were independently reviewed. Each activated quote retains its original ACE course identifier, version, credits, recommendation period and separately published paid purchase; quote mismatches remain unpriced.",
+    "Each of 22 exact current course pages independently offers a paid standalone purchase with its ACE identifier and recommendation period. The visible purchase is separate from eligibility-limited US/partner memberships. Only these source-course/version/original-unit quotes are activated; the course-page marketing credit total does not replace independent ACE original credits."
+  ],
+  "numericDefaultActivated": true,
+  "publicationApprovalChanged": false,
+  "billingType": "per-course",
+  "courseQuoteCount": 22,
+  "providerAmountFallback": null,
+  "courseIdentityPacket": {
+    "id": "upi-source-course-identities-2026-11-25",
+    "path": "content/catalog/upi-course-identities-reviewed-2026-11-25.json",
+    "sha256": "06803f74331dbaafbe9eea2a6e62dbae28e5c80c023f19237057463ab7f65c98"
+  },
+  "transcriptFeeAutomaticallyCharged": false,
+  "membershipEligibilityAssumed": false
+}

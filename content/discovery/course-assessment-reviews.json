@@ -448,6 +448,15 @@
       "title": "Enterprise Marketing \u2014 published course assessments",
       "checkedOn": "2026-11-24",
       "quote": "Quizzes are open-note."
+    },
+    {
+      "id": "upi-assessment-integrity-2026-11-25",
+      "url": "https://www.upistudy.com/academic-integrity",
+      "title": "UPI Study academic quality and assessment integrity",
+      "checkedOn": "2026-11-25",
+      "quote": "AI-proctored final examinations",
+      "capture": "content/source-captures/7e89ac14026a7db9.html",
+      "sha256": "7e89ac14026a7db9a2201741df362285f54af40b7b952ef3c85183558952b94d"
     }
   ],
   "reviews": [
@@ -522,6 +531,7 @@
         "SDCM-0001",
         "SDCM-0003",
         "SDCM-0005",
+        "SDCM-0006",
         "SDCM-0007",
         "SDCM-0009",
         "SDCM-0011",
@@ -535,9 +545,11 @@
         "SDCM-0024",
         "SDCM-0025",
         "SDCM-0026",
+        "SDCM-0028",
         "SDCM-0029",
         "SDCM-0032",
         "SDCM-0033",
+        "SDCM-0034",
         "SDCM-0038",
         "SDCM-0039",
         "SDCM-0042",
@@ -551,6 +563,7 @@
         "SDCM-0053",
         "SDCM-0055",
         "SDCM-0057",
+        "SDCM-0058",
         "SDCM-0059",
         "SDCM-0060",
         "SDCM-0064",
@@ -597,13 +610,26 @@
         "SDCM-0185",
         "SDCM-0187",
         "SDCM-0189",
+        "SDCM-0196",
+        "SDCM-0199",
+        "SDCM-0201",
         "SDCM-0207",
         "SDCM-0209",
+        "SDCM-0212",
+        "SDCM-0213",
+        "SDCM-0216",
+        "SDCM-0219",
+        "SDCM-0220",
         "SDCM-0225",
         "SDCM-0236",
+        "SDCM-0240",
         "SDCM-0243",
         "SDCM-0244",
         "SDCM-0245",
+        "SDCM-0249",
+        "SDCM-0253",
+        "SDCM-0255",
+        "SDCM-0259",
         "SDCM-0265"
       ],
       "status": "unmonitored",
@@ -1393,6 +1419,41 @@
       "detail": "The published course uses timed, open-note quizzes. This describes the quiz format; routine monitoring requirements are not established by the source.",
       "sourceIds": [
         "cli-bus-330-assessments-2026"
+      ]
+    },
+    {
+      "id": "upi-current-nonlab-proctored-finals",
+      "provider": "UPI Study",
+      "scope": "provider-policy",
+      "courseCodes": [
+        "UPIS-0003",
+        "UPIS-0004",
+        "UPIS-0005",
+        "UPIS-0006",
+        "UPIS-0007",
+        "UPIS-0008",
+        "UPIS-0009",
+        "UPIS-0010",
+        "UPIS-0011",
+        "UPIS-0012",
+        "UPIS-0013",
+        "UPIS-0014",
+        "UPIS-0015",
+        "UPIS-0016",
+        "UPIS-0017",
+        "UPIS-0018",
+        "UPIS-0019",
+        "UPIS-0020",
+        "UPIS-0024",
+        "UPIS-0025",
+        "UPIS-0026",
+        "UPIS-0027"
+      ],
+      "status": "monitored",
+      "label": "Proctored final exam",
+      "detail": "UPI requires an AI-proctored final examination for these non-laboratory courses and confirms enrollment before the assessment. Lab-only courses have different assessment rules and are not included in this review.",
+      "sourceIds": [
+        "upi-assessment-integrity-2026-11-25"
       ]
     }
   ]

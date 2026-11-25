@@ -10,6 +10,7 @@ import {completeTESUChoices} from './complete-tesu-named-choices.mjs';
 import {applyTESUReceivingMaps} from './add-tesu-school-submitted-maps.mjs';
 import {applyTESUProviderReview} from './tesu-provider-review.mjs';
 import {applyTESUStudyEnglish104} from './tesu-study-english104.mjs';
+import {applyTESUUPIReviewedMaps} from './tesu-upi-maps.mjs';
 
 const root=resolve(import.meta.dirname,'..');
 export const checkedOn='2026-11-11';
@@ -122,7 +123,7 @@ export function supplementModel(input){
   model.completeExecutablePathway=false;
   model.mappingReview={...model.mappingReview,checked:checkedOn,method:'Existing community snapshots retained; bounded live review of official TESU policies, provider-published Business 306/308 matches and ACE source records.',exactCourseOrFreeElectiveCandidateCredits:93,additionalCategoryCandidateCredits:6,uniqueRequirementCandidateCredits:99,combinedAlternativeFeasibleCeiling:90,status:'Conditional research candidates; 99 mapped requirement credits is not a feasible 99-credit alternative plan.',officialSupplement:{id:reviewId,checked:checkedOn,newNamedRequirementCredits:6,newProviderCourses:2,providerPublishedMatches:2,individualUniversityApprovals:0,scope:'MAN-3720 and MAN-3310 only; no new Finance 101, CLEP score or StraighterLine mappings.'}};
   model.officialMappingCheckedOn=checkedOn;
-  return applyTESUProviderReview(applyTESUStudyEnglish104(applyCourseListingIdentities(applyTESUReceivingMaps(completeTESUChoices(model)))));
+  return applyTESUUPIReviewedMaps(applyTESUProviderReview(applyTESUStudyEnglish104(applyCourseListingIdentities(applyTESUReceivingMaps(completeTESUChoices(model))))));
 }
 
 export async function run({check=false}={}){

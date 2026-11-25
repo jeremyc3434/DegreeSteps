@@ -30,10 +30,18 @@ let alertPlanDataSnapshot;
 let academicEvidenceCache;
 // Public versioned build assets only. Never put account data or credentials in this cache.
 let nativePublicAssets;
+let nativeAssetPaths;
 function initializePublicAssets(env){if(env?.ASSETS?.fetch)nativePublicAssets=env.ASSETS;}
 const curriculumPackCache = new Map();
 async function decodeStaticAsset(asset) {
-  if(asset?.external){if(!nativePublicAssets)throw Error('Public asset storage is unavailable');const response=await nativePublicAssets.fetch(new Request('https://assets.degreesteps.internal'+asset.path));if(!response.ok)throw Error('Public build asset is unavailable');return response.text();}
+  if(asset?.external){
+    if(!nativePublicAssets)throw Error('Public asset storage is unavailable');
+    // Native manifests store each route once as the object key. Resolve only
+    // compiled assets; a caller-supplied path cannot select private storage.
+    nativeAssetPaths??=new WeakMap(Object.entries(assets).map(([path,value])=>[value,path]));
+    const path=nativeAssetPaths.get(asset);if(!path)throw Error('Public build asset is unavailable');
+    const response=await nativePublicAssets.fetch(new Request('https://assets.degreesteps.internal'+path));if(!response.ok)throw Error('Public build asset is unavailable');return response.text();
+  }
   if(asset.encoding!=='gzip-base64')return asset.body;
   const bytes=Uint8Array.from(atob(asset.body),character=>character.charCodeAt(0));
   return new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
@@ -481,7 +489,7 @@ export default {
     // The Plan review offer page exists only while PLAN_REVIEW_ENABLED is 1.
     const asset=path.startsWith('/plan-review/')&&env?.PLAN_REVIEW_ENABLED!=='1'?null:assets[path];
     if(!asset)return new Response('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"></head><body><main class="site-container" style="padding:80px 24px"><h1>Let’s find your next step.</h1><p>This page could not be found.</p><p><a href="/">DegreeSteps home</a> · <a href="/resources/">Student resources</a> · <a href="/portal.html">Build my plan</a></p></main></body></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
-    const privatePage=['/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html','/ui-demo.html','/start.html'].includes(path);
+    const privatePage=['/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/template-import.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html','/ui-demo.html','/start.html'].includes(path);
     if(asset.external){
       if(!env.ASSETS?.fetch)return new Response('Public assets are temporarily unavailable',{status:503,headers:{'Cache-Control':'no-store'}});
       const assetURL=new URL(request.url);assetURL.pathname=path;const delivered=await env.ASSETS.fetch(new Request(assetURL,{method:request.method,headers:request.headers}));

@@ -205,7 +205,15 @@ test('hard target and curriculum conflicts come before a taking course and canno
   }
   const target=clone(state);target.profile.goal='teacher';
   const targetDraft=draftFor(target);assert.equal(targetDraft.targetReviewNeeded,true);assert.equal(targetDraft.plan,null);
-  assert.equal(Checklist.build(target,targetDraft).nextTask.id,'review-plan');
+  const targetChecklist=Checklist.build(target,targetDraft);
+  assert.equal(targetChecklist.valid,true,'Prepared provider defaults do not turn a saved degree conflict into an unselected goal.');
+  assert.equal(targetChecklist.error,'');assert.equal(targetChecklist.nextTask.id,'review-plan');
+  assert.equal(targetChecklist.nextTask.href,'portal.html?view=edit');assert.equal(targetChecklist.nextTask.canSetStatus,false);
+  assert.throws(()=>set(target,targetDraft,'review-plan','done'),/existing progress form/,'A career conflict cannot be dismissed as a completed review.');
+  const explicitProviders=clone(target);explicitProviders.scenarios[tesu.id]={providers:['Sophia']};
+  assert.equal(Checklist.build(explicitProviders,targetDraft).valid,false,'Actual explicit provider changes still invalidate a stale draft.');
+  const explicitChoice=clone(target);explicitChoice.scenarios[tesu.id]={optionSelections:{enc1010:'clep-composition-enc1010'}};
+  assert.equal(Checklist.build(explicitChoice,targetDraft).valid,false,'An implicit provider default cannot conceal a changed pinned course.');
 });
 
 test('an unresolved original-record decision precedes taking without making ordinary school tasks block coursework',()=>{

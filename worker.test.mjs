@@ -31,7 +31,7 @@ const evidencePath=target=>'/api/community/evidence?'+new URLSearchParams(target
 const sourceEvidenceTarget=payload=>({kind:'course',programId:payload.model.id,requirementId:payload.model.requirements[0].id,courseId:payload.model.requirements[0].options[1].id,catalogYear:'2026-2027'});
 test('public routes serve real HTML while app/account routes stay outside search',async()=>{
  for(const path of ['/','/resources/','/blog/','/guides/']){const r=await worker.fetch(new Request(origin+path),{},{});assert.equal(r.status,200,path);assert.match(await r.text(),/<main/);}
- for(const path of ['/portal.html','/plan.html','/account.html','/degree-audit.html']){const r=await worker.fetch(new Request(origin+path),{},{});assert.equal(r.status,200,path);assert.match(r.headers.get('X-Robots-Tag'),/noindex/);assert.equal(r.headers.get('Cache-Control'),'no-store');}
+ for(const path of ['/portal.html','/plan.html','/account.html','/degree-audit.html','/template-import.html']){const r=await worker.fetch(new Request(origin+path),{},{});assert.equal(r.status,200,path);assert.match(r.headers.get('X-Robots-Tag'),/noindex/);assert.equal(r.headers.get('Cache-Control'),'no-store');}
  const homepage=await(await worker.fetch(new Request(origin+'/'),{},{})).text();assert(!homepage.includes('id="portal-question-title"'));assert(homepage.includes('Build my plan'));
  const sitemap=await worker.fetch(new Request(origin+'/sitemap.xml'),{},{});assert.match(sitemap.headers.get('Content-Type'),/xml/);
 });

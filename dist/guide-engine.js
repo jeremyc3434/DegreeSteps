@@ -1,10 +1,10 @@
 /* DegreeSteps's preloaded guidance rules. No network or AI service is used. */
 (function (root, factory) {
   'use strict';
-  const api = factory(typeof module === 'object' && module.exports ? require('./planner.js') : root.DegreePlanner);
+  const api = factory(typeof module === 'object' && module.exports ? require('./planner.js') : root.DegreePlanner, typeof module === 'object' && module.exports ? require('./provider-registry.js') : root.DegreeCreditProviders);
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.DegreeGuide = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function (Planner) {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (Planner, Providers) {
   'use strict';
   const list = value => Array.isArray(value) ? value : [];
   const text = value => typeof value === 'string' ? value.trim() : '';
@@ -13,8 +13,8 @@
   const choose = (value, allowed, fallback) => allowed.includes(value) ? value : fallback;
   const amount = value => value !== '' && value !== null && value !== undefined && Number.isFinite(Number(value)) && Number(value) >= 0 ? Number(value) : null;
   const level = value => ({ "bachelor's": 'bachelor', 'bachelors': 'bachelor', "master's": 'master', 'masters': 'master', doctoral: 'doctorate' }[text(value).toLowerCase()] || text(value).toLowerCase());
-  const providerKey = value => ({ sophialearning: 'sophia', studycom: 'studycom', collegelevelexaminationprogram: 'clep', jointservicestranscript: 'jst', communitycollegeoftheairforce: 'ccaf' }[key(value)] || key(value));
-  const plannerProvider = value => ({ sophia: 'Sophia', studycom: 'Study.com', clep: 'CLEP', dsst: 'DSST', straighterline: 'StraighterLine', saylor: 'Saylor', university: 'University', college: 'College', othercollege: 'College', communitycollege: 'Community college', fouryearcollege: 'Four-year college', institutionaltransfer: 'Institutional transfer' }[providerKey(value)] || text(value));
+  const providerKey = value => Providers?.get(value) ? Providers.key(value) : ({ sophialearning: 'sophia', studycom: 'studycom', collegelevelexaminationprogram: 'clep', jointservicestranscript: 'jst', communitycollegeoftheairforce: 'ccaf', universitypathwaysinternational:'upistudy', upistudyinc:'upistudy' }[key(value)] || key(value));
+  const plannerProvider = value => ({ sophia: 'Sophia', studycom: 'Study.com', clep: 'CLEP', dsst: 'DSST', straighterline: 'StraighterLine', saylor: 'Saylor', university: 'University', college: 'College', othercollege: 'College', communitycollege: 'Community college', fouryearcollege: 'Four-year college', institutionaltransfer: 'Institutional transfer' }[providerKey(value)] || Providers?.get(value)?.name || text(value));
   const unique = values => [...new Set(values.filter(Boolean))];
   const validDay = value => typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&Number.isFinite(Date.parse(value+'T00:00:00Z'))&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value;
   const service = profile => ['active', 'veteran', 'reserve'].includes(profile.militaryStatus);

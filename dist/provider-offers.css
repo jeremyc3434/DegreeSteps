@@ -1,0 +1,13 @@
+/* Optional provider savings appear beside an already selected course source. */
+.provider-offer { display:grid; gap:.4rem; padding:1rem; margin:.75rem 0 0; border:1px solid var(--ds-border,#d9e1ec); border-radius:8px; background:var(--ds-soft-blue,#edf2ff); color:var(--ds-ink,#192840); font-size:1rem; line-height:1.55; }
+.provider-offer-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem 1rem; }
+.provider-offer strong { font-size:1rem; font-weight:650; }
+.provider-offer p { margin:0; }
+.provider-offer-note { color:var(--ds-muted,#4e5e74); font-size:.875rem; line-height:1.55; }
+.provider-offer a,.provider-offer-inline a { display:inline-flex; align-items:center; min-height:44px; color:var(--ds-cobalt,#3458d4); font-size:1rem; font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+.provider-offer a:focus-visible,.provider-offer-inline a:focus-visible { outline:3px solid var(--ds-cobalt,#3458d4); outline-offset:3px; border-radius:2px; }
+.provider-offer-inline { display:inline-flex; align-items:center; flex-wrap:wrap; gap:.2rem .65rem; max-width:100%; font-size:1rem; line-height:1.5; }
+.provider-offer-inline .provider-offer-note { display:inline; }
+@media(max-width:520px) { .provider-offer-header { align-items:flex-start; } .provider-offer-header>a { flex:1 1 100%; } }
+
+.provider-offer-slot:empty{display:none}

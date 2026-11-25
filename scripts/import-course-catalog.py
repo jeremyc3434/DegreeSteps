@@ -7,6 +7,7 @@ from html.parser import HTMLParser
 from urllib.parse import urljoin,urlsplit,urlunsplit
 ROOT=Path(__file__).resolve().parent.parent
 SOURCES=[{'id':'sophia','provider':'Sophia','url':'https://www.sophia.org/online-courses/all-courses/','minimum':70},{'id':'straighterline','provider':'StraighterLine','url':'https://www.straighterline.com/online-college-courses/','minimum':45},{'id':'clep','provider':'CLEP','url':'https://clep.collegeboard.org/clep-exams','minimum':30}]
+LEGACY_PROVIDER_IDS={'Study.com':'study','Sophia':'sophia','CLEP':'clep','StraighterLine':'straighterline'}
 def clean(s):return ' '.join(html.unescape(re.sub('<[^>]+>',' ',s)).replace('\u200b','').split())
 def key(s):return re.sub('[^a-z0-9]','',s.lower())
 class Links(HTMLParser):
@@ -50,11 +51,17 @@ def parse(source,raw):
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--cache-dir',default='/tmp/degreepath-course-sources');ap.add_argument('--fetch',action='store_true');args=ap.parse_args();cache=Path(args.cache_dir);cache.mkdir(parents=True,exist_ok=True);now=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds')
+ target=ROOT/'dist/data/course-catalog.json';prior_bytes=target.read_bytes()if target.exists()else None;previous=json.loads(prior_bytes)if prior_bytes is not None else{'courses':[],'sources':[]}
+ refreshed={key(source['provider'])for source in SOURCES}
+ # A three-directory refresh does not retire courses from unrefreshed sources.
+ retained=[json.loads(json.dumps(course))for course in previous.get('courses',[])if key(course.get('provider',''))not in refreshed]
  models=[json.loads((ROOT/('dist/data/'+n+'.json')).read_text())for n in ['tesu','liberty','liberty-criminal-justice-residential','liberty-criminal-justice-online']];known={}
  for m in models:
   for req in m['requirements']:
    for o in req['options']:
-    if o['provider']=='University':continue
+    # New providers enter through their own reviewed source adapters. A degree
+    # option cannot invent a generic provider ID, source quantity or price.
+    if o['provider']not in LEGACY_PROVIDER_IDS:continue
     k=(key(o['provider']),key(o['title']));entry=known.setdefault(k,{'provider':o['provider'],'title':o['title'],'code':o.get('code')or o['id'],'aliases':set(),'credits':o.get('bundleCredits')or o.get('sourceCredits')or o['credits'],'url':o.get('url'),'mapped':set()});entry['aliases'].update(o.get('codeAliases',[]));entry['mapped'].add(m['id']+':'+req['id'])
  courses={};manifest=[]
  def add(provider,pid,title,url,credits,source,checked,basis='provider-directory',knownEntry=None):
@@ -77,18 +84,29 @@ def main():
   manifest.append({**source,'checkedAt':checked,'count':len(rows),'status':'imported','scope':'Source-linked provider directory entries. Credit recommendations and individual degree applicability require review.','contentHash':'sha256:'+hashlib.sha256(raw).hexdigest()})
  added={}
  for k,o in known.items():
-  if k in courses or any(key(c['provider'])==key(o['provider'])and c['mappingCode']==o['code']for c in courses.values()):continue
-  pid={'Study.com':'study','Sophia':'sophia','CLEP':'clep','StraighterLine':'straighterline'}[o['provider']];sid=pid+'-mapped';add(o['provider'],pid,o['title'],o['url'],None,sid,now,'curated-course-map',o);added[sid]=added.get(sid,0)+1
+  pool=[*courses.values(),*retained]
+  if k in courses or any(key(c['provider'])==key(o['provider'])and(key(c['title'])==key(o['title'])or c.get('mappingCode')==o['code']or c.get('code')==o['code'])for c in pool):continue
+  pid=LEGACY_PROVIDER_IDS[o['provider']];sid=pid+'-mapped';add(o['provider'],pid,o['title'],o['url'],None,sid,now,'curated-course-map',o);added[sid]=added.get(sid,0)+1
  for sid,count in added.items():
   provider=next(c['provider']for c in courses.values()if c['sourceId']==sid);url={'Study.com':'https://study.com/college/online-college-courses.html','Sophia':'https://www.sophia.org/online-courses/','CLEP':'https://clep.collegeboard.org/clep-exams','StraighterLine':'https://www.straighterline.com/online-college-courses/'}[provider];manifest.append({'id':sid,'provider':provider,'url':url,'checkedAt':now,'count':count,'status':'mapping-reference','scope':'Exact source-course references in the existing degree maps; current availability and recommendation dates still require provider review.'})
+ manifest_ids={source['id']for source in manifest}
+ for source in previous.get('sources',[]):
+  if source.get('id')not in manifest_ids:manifest.append(source);manifest_ids.add(source.get('id'))
  refs=json.loads((ROOT/'dist/data/credit-sources.json').read_text())
  for source in refs.get('sources',[]):
   if not source.get('url') or any(key(s['provider'])==key(source.get('name',''))for s in manifest):continue
   manifest.append({'id':'directory-'+source['id'],'provider':source['name'],'url':source['url'],'checkedAt':refs.get('checkedOn',now),'count':0,'status':'directory-link','scope':'Provider research directory; individual courses are not imported in this snapshot.'})
- data={'version':1,'checkedAt':min(s['checkedAt']for s in manifest if s['status']=='imported'),'importedAt':now,'scope':'Official Sophia, StraighterLine and CLEP directories, plus reviewed course references including Study.com. This is a scoped catalog, not every course from every provider. Links to additional credit sources remain available. Listings do not confer credit or guarantee ACE/NCCRS recommendation or school acceptance.','sources':manifest,'courses':sorted(courses.values(),key=lambda c:(c['provider'],c['title']))}
- target=ROOT/'dist/data/course-catalog.json'
- if target.exists():
-  old=json.loads(target.read_text())
-  if len(data['courses'])<len(old['courses'])*.8:raise ValueError('Catalog dropped more than 20%; review parser before replacing snapshot')
- temp=target.with_suffix('.json.tmp');temp.write_text(json.dumps(data,ensure_ascii=False,separators=(',',':'))+'\n');temp.replace(target);subprocess.run(['node',str(ROOT/'scripts/reviewed-course-identities.mjs')],check=True);(ROOT/'content/catalog/course-sources.json').write_text(json.dumps({'version':1,'sources':manifest},ensure_ascii=False,indent=2)+'\n');print(json.dumps({'courses':len(data['courses']),'sources':[{'provider':s['provider'],'count':s['count'],'status':s['status']}for s in manifest if s['count']]}))
+ data={'version':1,'checkedAt':min(s['checkedAt']for s in manifest if s['status']=='imported'),'importedAt':now,'scope':'Official Sophia, StraighterLine and CLEP directory refresh, plus retained reviewed source courses and course references. This is a scoped catalog, not every course from every provider. Listings do not confer credit or guarantee school acceptance.','sources':manifest,'courses':sorted([*courses.values(),*retained],key=lambda c:(c['provider'],c['title']))}
+ if len(data['courses'])<len(previous.get('courses',[]))*.8:raise ValueError('Catalog dropped more than 20%; review parser before replacing snapshot')
+ temp=target.with_suffix('.json.tmp');temp.write_text(json.dumps(data,ensure_ascii=False,separators=(',',':'))+'\n');temp.replace(target)
+ try:
+  subprocess.run(['node',str(ROOT/'scripts/reviewed-course-identities.mjs')],check=True)
+  subprocess.run(['node',str(ROOT/'scripts/upi-course-catalog.mjs')],check=True)
+ except BaseException:
+  # A changed identity or failed source review must retain the last usable
+  # snapshot rather than leaving the partially refreshed directory installed.
+  if prior_bytes is None:target.unlink(missing_ok=True)
+  else:temp.write_bytes(prior_bytes);temp.replace(target)
+  raise
+ final=json.loads(target.read_text());(ROOT/'content/catalog/course-sources.json').write_text(json.dumps({'version':1,'sources':final['sources']},ensure_ascii=False,indent=2)+'\n');print(json.dumps({'courses':len(final['courses']),'sources':[{'provider':s['provider'],'count':s['count'],'status':s['status']}for s in final['sources']if s.get('count')]}))
 if __name__=='__main__':main()

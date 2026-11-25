@@ -1,12 +1,12 @@
 /* Reviewed learning features describe a course offering, never a school award. */
-(function(root,factory){const common=typeof module==='object'&&module.exports,api=factory(common?require('./course-assessment.js'):root.DegreeCourseAssessment,common?require('./course-library-engine.js'):root.DegreeCourseLibrary);if(common)module.exports=api;else root.DegreeCourseAttributes=api;}(typeof globalThis!=='undefined'?globalThis:this,function(Assessment,Library){
+(function(root,factory){const common=typeof module==='object'&&module.exports,api=factory(common?require('./course-assessment.js'):root.DegreeCourseAssessment,common?require('./course-library-engine.js'):root.DegreeCourseLibrary,common?require('./provider-registry.js'):root.DegreeCreditProviders);if(common)module.exports=api;else root.DegreeCourseAttributes=api;}(typeof globalThis!=='undefined'?globalThis:this,function(Assessment,Library,Providers){
  'use strict';
- const list=v=>Array.isArray(v)?v:[],norm=v=>String(v||'').toLowerCase().replace(/[^a-z0-9]/g,''),provider=v=>({sophialearning:'sophia',study:'studycom'}[norm(v)]||norm(v));
+ const list=v=>Array.isArray(v)?v:[],norm=v=>String(v||'').toLowerCase().replace(/[^a-z0-9]/g,''),provider=v=>Providers?.get(v)?Providers.key(v):({sophialearning:'sophia',study:'studycom'}[norm(v)]||norm(v));
  const day=v=>typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&Number.isFinite(Date.parse(v+'T00:00:00Z'))&&new Date(v+'T00:00:00Z').toISOString().slice(0,10)===v;
  const url=v=>{try{const u=new URL(v);return u.protocol==='https:'&&!u.username&&!u.password?u.href:'';}catch{return'';}};
  const fresh=(value,now)=>day(value)&&day(now)&&value<=now&&(Date.parse(now)-Date.parse(value))/86400000<=90;
  const checked=record=>[record?.checkedOn,record?.checkedAt,record?.checked].map(value=>typeof value==='string'?value.slice(0,10):'').find(day)||'';
- const courseURL=(value,name)=>{try{const u=new URL(value),host=({sophia:'sophia.org',studycom:'study.com',straighterline:'straighterline.com',saylor:'saylor.org',clep:'collegeboard.org',dsst:'getcollegecredit.com',christianleadersinstitute:'christianleaders.org'})[provider(name)];if(!host||u.protocol!=='https:'||u.username||u.password||!(u.hostname===host||u.hostname.endsWith('.'+host))||u.pathname==='/')return '';u.hash='';u.pathname=u.pathname.replace(/\/+$/,'');return u.href;}catch{return '';}};
+ const courseURL=(value,name)=>{if(Providers){const allowed=Providers.trustedURL(value,name);if(!allowed)return '';const u=new URL(allowed);if(u.pathname==='/')return '';u.hash='';u.pathname=u.pathname.replace(/\/+$/,'');return u.href;}try{const u=new URL(value),host=({sophia:'sophia.org',studycom:'study.com',straighterline:'straighterline.com',saylor:'saylor.org',clep:'collegeboard.org',dsst:'getcollegecredit.com',christianleadersinstitute:'christianleaders.org'})[provider(name)];if(!host||u.protocol!=='https:'||u.username||u.password||!(u.hostname===host||u.hostname.endsWith('.'+host))||u.pathname==='/')return '';u.hash='';u.pathname=u.pathname.replace(/\/+$/,'');return u.href;}catch{return '';}};
  function assessmentIdentityFor(course,now){
   const identity=course?.assessmentIdentity;
   if(identity?.version!==1||provider(identity.provider)!==provider(course.provider)||!identity.code||typeof identity.code!=='string'||identity.code.length>100||!courseURL(identity.courseUrl,course.provider)||courseURL(identity.courseUrl,course.provider)!==courseURL(course.url,course.provider)||!fresh(identity.checkedOn,now)||!list(identity.sources).length||!identity.sources.every(source=>url(source.url)&&fresh(source.checkedOn,now)))return null;
@@ -29,7 +29,8 @@
   const inherited=new Map(),overrides=list(data?.courses).filter(row=>list(row.courseIds).includes(course.id)&&provider(row.provider)===provider(course.provider));
   const validEvidence=record=>day(record.checkedOn)&&record.checkedOn<=now&&(Date.parse(now)-Date.parse(record.checkedOn))/86400000<=90&&list(record.sources).length&&list(record.sources).every(source=>url(source.url));
   const currentVersion=row=>{
-   if(row.version&&course.recommendationVersion&&String(row.version)!==String(course.recommendationVersion))return false;
+   const versions=[course.courseVersion,course.recommendationVersion].filter(value=>value!==undefined&&value!==null&&value!=='');
+   if(row.version&&versions.some(version=>String(row.version)!==String(version)))return false;
    if(row.recommendationStart&&course.recommendationStart&&row.recommendationStart!==course.recommendationStart)return false;
    if(row.recommendationEnd&&course.recommendationEnd&&row.recommendationEnd!==course.recommendationEnd)return false;
    return (!row.recommendationStart||day(row.recommendationStart)&&row.recommendationStart<=now)&&(!row.recommendationEnd||day(row.recommendationEnd)&&row.recommendationEnd>=now)&&course.activeOffering!==false;

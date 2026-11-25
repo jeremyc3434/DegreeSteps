@@ -5,6 +5,7 @@
  * table, and the registry's selectionRequired:false bookkeeping is ignored) and every named option the importer created. */
 import assert from 'node:assert/strict';
 import {applyTESUProviderReview} from './tesu-provider-review.mjs';
+import {applyTESUUPIProviderDefaults} from './tesu-upi-defaults.mjs';
 
 /** Narrative fields a later evidence review may reword without changing the reviewed ledger. */
 export const narrativeFields=Object.freeze(['rulesNotes','unresolved','coverageLabel','pricingNotes','sources']);
@@ -18,7 +19,7 @@ export function assertKitLedger(published,built,label){
   // Provider governance is maintained independently of the archived curriculum
   // facts. Compare against its exact current source-bound metadata; do not
   // discard this field or refresh the academic snapshot to make parity pass.
-  const kit=published.models[0],reviewed=applyTESUProviderReview(structuredClone(built.models[0]));
+  const kit=published.models[0],reviewed=applyTESUUPIProviderDefaults(applyTESUProviderReview(structuredClone(built.models[0])));
   // The registry keeps only section members that are requirements of the degree (Liberal Studies' importer listed a
   // phi1300 section member that is not one of its 40 requirements); the published ledger is compared on that basis.
   const ids=new Set(reviewed.requirements.map(row=>row.id));

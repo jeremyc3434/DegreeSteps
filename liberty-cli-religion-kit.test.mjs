@@ -9,6 +9,7 @@ import Planner from './dist/planner.js';
 import {assessPathwayQuality} from './scripts/pathway-quality.mjs';
 
 const review=await readLibertyCLIReligionReview(),kit=await loadKit(join(kitsRoot,'liberty'));
+const currentDataAsOf='2026-11-25'; // Independent provider reviews are newer than this CLI award packet.
 const {doc}=compileKit(kit),awardIds=new Set(review.awards.map(award=>award.id));
 const rows=kit.equivalencies.equivalencies.filter(row=>awardIds.has(row.optionId));
 const rowIds=new Set(rows.map(row=>row.id));
@@ -79,16 +80,16 @@ test('CLI source quantities, transcript eligibility and receiving quantities rem
 });
 
 test('Factory gates still reject excess awards, institution-only placements and unpublished candidates',async()=>{
-  assert.deepEqual((await verifyKit(kit,{asOf:review.checkedOn})).errors,[]);
+  assert.deepEqual((await verifyKit(kit,{asOf:currentDataAsOf})).errors,[]);
   await runGuards(kit,doc);
   const make=()=>structuredClone(kit);
   const target=copy=>copy.programs.find(program=>program.slug==='religion-aa-online').requirements.find(requirement=>requirement.code==='BIBL 105');
   const universityOnly=make();target(universityOnly).institutionalOnly=true;
-  assert((await verifyKit(universityOnly,{asOf:review.checkedOn})).errors.some(error=>error.code==='institutional-only-option'));
+  assert((await verifyKit(universityOnly,{asOf:currentDataAsOf})).errors.some(error=>error.code==='institutional-only-option'));
   const excess=make();target(excess).credits=1;
-  assert((await verifyKit(excess,{asOf:review.checkedOn})).errors.some(error=>error.code==='over-award'));
+  assert((await verifyKit(excess,{asOf:currentDataAsOf})).errors.some(error=>error.code==='over-award'));
   const unpublished=make();unpublished.equivalencies.equivalencies.find(row=>rowIds.has(row.id)).status='candidate';
-  assert((await verifyKit(unpublished,{asOf:review.checkedOn})).errors.some(error=>error.code==='placement-candidate'));
+  assert((await verifyKit(unpublished,{asOf:currentDataAsOf})).errors.some(error=>error.code==='placement-candidate'));
   for(const program of kit.programs)for(const requirement of program.requirements)for(const placement of list(requirement.optionRows).map(parsePlacement))if(rowIds.has(placement.row))assert.equal(rows.find(row=>row.id===placement.row).receivingCode,requirement.code);
 });
 
@@ -101,13 +102,13 @@ test('the two existing publication-ready canonical Liberty baselines remain read
     const providers=[...new Set(model.requirements.flatMap(requirement=>requirement.options.map(option=>option.provider)))].filter(provider=>provider!=='University');
     const plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000});
     assert.equal(plan.validation.academicCountsValid,true,id);
-    const quality=assessPathwayQuality({model,plan,asOf:review.checkedOn});
+    const quality=assessPathwayQuality({model,plan,asOf:currentDataAsOf});
     assert.equal(quality.publication.ready,true,id+': '+JSON.stringify(quality.findings.filter(finding=>finding.blocking)));
     assert(!plan.rows.some(row=>isReligionOption(row.option||{})),id+' retains its reviewed baseline choices');
     const requirement=model.requirements.find(requirement=>requirement.code==='THEO 104');
     const selected=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000,optionSelections:{[requirement.id]:'liberty-cli-the-101-to-theo-104'}});
     assert.equal(selected.rows.find(row=>row.requirementId===requirement.id).option.id,'liberty-cli-the-101-to-theo-104','an explicit student choice overrides the retained baseline');
-    const selectedQuality=assessPathwayQuality({model,plan:selected,asOf:review.checkedOn});
+    const selectedQuality=assessPathwayQuality({model,plan:selected,asOf:currentDataAsOf});
     assert.equal(selectedQuality.publication.ready,false,'selecting an unapproved conditional award preserves the publication gate');
     assert(selectedQuality.findings.some(finding=>finding.blocking&&finding.code==='conditional-award'));
   }
