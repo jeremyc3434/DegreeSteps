@@ -62,8 +62,9 @@ test('switching every provider to affiliate changes only provider link markup on
   Outbound.configure(allAffiliate);const partnered=plans.map(plan=>renderPublicPlan(plan,plans)),partneredHub=renderPublicPlanHub(plans);
   assert.equal(partneredHub,hub,'The plan library hub and its order do not depend on partners');
   for(let i=0;i<plans.length;i++){
-   assert.notEqual(partnered[i],plain[i],'An affiliate setting is visible on '+plans[i].id);
-   assert.deepEqual(rowsOf(partnered[i]),rowsOf(plain[i]),plans[i].id);assert(rowsOf(plain[i]).length>10);
+   // Pages without any provider course link (all outside matches unlinked, or none yet) have nothing to label.
+   if(/data-outbound-provider=/.test(plain[i]))assert.notEqual(partnered[i],plain[i],'An affiliate setting is visible on '+plans[i].id);
+   assert.deepEqual(rowsOf(partnered[i]),rowsOf(plain[i]),plans[i].id);assert.equal(rowsOf(plain[i]).length,plans[i].view.sections.flatMap(function all(section){return [...(section.entries||[]),...(section.children||[]).flatMap(all)];}).length,plans[i].id);
    assert.equal(visible(partnered[i]),visible(plain[i]),plans[i].id);
    assert.equal((partnered[i].match(/rel="sponsored noopener"/g)||[]).length,(partnered[i].match(/class="outbound-partner-note"/g)||[]).length,'Every partner link is labelled');
   }

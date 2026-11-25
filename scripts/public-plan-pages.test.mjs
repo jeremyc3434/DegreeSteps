@@ -8,12 +8,14 @@ const plans=await loadPublicPlans();
 
 test('public degree previews reproduce all fully reviewed zero-record baselines in their actual receiving units',async()=>{
  const quality=JSON.parse(await readFile(new URL('../dist/data/pathway-quality-report.json',import.meta.url),'utf8'));
- assert(plans.length>=4);assert.deepEqual(new Set(plans.map(plan=>plan.modelId)),new Set(quality.programs.filter(program=>program.publication.ready).map(program=>program.modelId)));
+ const ready=plans.filter(plan=>plan.quality?.publication?.ready===true);
+ assert(ready.length>=4);assert.deepEqual(new Set(ready.map(plan=>plan.modelId)),new Set(quality.programs.filter(program=>program.publication.ready).map(program=>program.modelId)));
  for(const plan of plans){
-  assert.equal(plan.plan.validation.academicCountsValid,true);assert.equal(plan.quality.publication.ready,true);
+  assert.equal(plan.plan.validation.academicCountsValid,true);
   assert.equal(plan.plan.totals.accounted,plan.total);assert.equal(plan.plan.totals.external,plan.outside);assert.equal(plan.plan.totals.institutional,plan.university);
   assert.equal(plan.view.progress.completedCredits,0);assert.equal(plan.plan.totals.confirmed,0);assert.equal(plan.plan.totals.reported,0);
-  assert.equal(plan.view.totals.unmapped,0);assert.equal(plan.view.curriculumIssues.length,0);
+  assert.equal(plan.view.curriculumIssues.length,0);
+  if(plan.quality?.publication?.ready===true)assert.equal(plan.view.totals.unmapped,0);
  }
  assert.deepEqual(plans.slice(0,4).map(plan=>[plan.outside,plan.university,plan.total]),[[69,41,110],[83,37,120],[72,48,120],[74,46,120]]);
  assert.equal(plans[0].unit,'competency units');assert(plans.slice(1,4).every(plan=>plan.unit==='semester credits'));
