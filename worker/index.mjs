@@ -22,6 +22,7 @@ import { handleCoach, pruneCoach } from '../server/coach.mjs';
 import { handleLeads, pruneLeads, isLeadsPath } from '../server/leads.mjs';
 import { assets } from './assets.generated.mjs';
 import { loadOwnerModule } from './owner.generated.mjs';
+import {faviconLinks} from '../server/site-icons.mjs';
 
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
 let academicCoverageSnapshot, baselineSnapshot;
@@ -527,7 +528,7 @@ export default {
     if(!assets[path] && assets[path+'/index.html'] && !(path==='/plan-review'&&env?.PLAN_REVIEW_ENABLED!=='1'))return Response.redirect(target.origin+target.pathname+'/'+target.search,308);
     // The Plan review offer page exists only while PLAN_REVIEW_ENABLED is 1.
     const asset=path.startsWith('/plan-review/')&&env?.PLAN_REVIEW_ENABLED!=='1'?null:assets[path];
-    if(!asset)return new Response('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"></head><body><main class="site-container" style="padding:80px 24px"><h1>Let’s find your next step.</h1><p>This page could not be found.</p><p><a href="/">DegreeSteps home</a> · <a href="/resources/">Student resources</a> · <a href="/portal.html">Build my plan</a></p></main></body></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
+    if(!asset)return new Response('<!doctype html><html lang="en"><head>'+faviconLinks+'<meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"></head><body><main class="site-container" style="padding:80px 24px"><h1>Let’s find your next step.</h1><p>This page could not be found.</p><p><a href="/">DegreeSteps home</a> · <a href="/resources/">Student resources</a> · <a href="/portal.html">Build my plan</a></p></main></body></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
     const privatePage=['/owner.html','/help.html','/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/template-import.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html','/ui-demo.html','/start.html'].includes(path);
     if(asset.external){
       if(!env.ASSETS?.fetch)return new Response('Public assets are temporarily unavailable',{status:503,headers:{'Cache-Control':'no-store'}});

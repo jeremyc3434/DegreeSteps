@@ -2,6 +2,7 @@
 import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {resolve,relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
+import {faviconLinks} from '../server/site-icons.mjs';
 
 const dist=resolve(import.meta.dirname,'../dist');
 const workspacePages=new Set(['owner.html','help.html','account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html','start.html','template-import.html']);
@@ -48,6 +49,7 @@ export function applyExperience(source,name){
   const privateConsole=name==='owner.html';
   if(!/<\/head>/i.test(source)||!/<body\b/i.test(source))throw Error('A complete HTML document is required: '+name);
   let next=source.replace(/<head\b[\s\S]*?<\/head>/i,head=>head.replace(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>\s*<\/script>/gi,(tag,src)=>managedScripts.has(src.replace(/^\//,'').split('?')[0])?'':tag).replace(/<link\b[^>]*>/gi,tag=>{
+    if(/\brel=["'](?:icon|shortcut icon|apple-touch-icon)["']/i.test(tag))return '';
     if(!/\brel=["']stylesheet["']/i.test(tag))return tag;
     const href=tag.match(/\bhref=["']([^"']+)["']/i)?.[1];
     return href&&managedStyles.has(href.replace(/^\//,'').split('?')[0])?'':tag;
@@ -73,7 +75,7 @@ export function applyExperience(source,name){
   // Reachable workspace tools share the same navigation, including pages that previously omitted it.
   if(selected.workspace&&!['owner.html','audit.html','guided.html'].includes(name)&&!shellTag.test(next))next=next.replace(/<\/head>/i,'<script src="/app-shell.js" defer></script></head>');
   if(!localFeedback&&!privateConsole){if(shellTag.test(next))next=next.replace(shellTag,tag=>'<script src="/site-header.js" defer></script>'+tag);else scripts.unshift('site-header.js');}
-  next=next.replace(/<\/head>/i,selected.styles.map(name=>'<link rel="stylesheet" href="/'+name+'">').join('')+scripts.map(name=>'<script src="/'+name+'" defer></script>').join('')+'</head>');
+  next=next.replace(/<\/head>/i,faviconLinks+selected.styles.map(name=>'<link rel="stylesheet" href="/'+name+'">').join('')+scripts.map(name=>'<script src="/'+name+'" defer></script>').join('')+'</head>');
   next=next.replace(/<body\b([^>]*)>/i,(tag,attributes)=>{
     const match=attributes.match(/\bclass=(["'])(.*?)\1/i);
     const existing=match?match[2].split(/\s+/).filter(value=>value&&!managedClasses.has(value)):[];
