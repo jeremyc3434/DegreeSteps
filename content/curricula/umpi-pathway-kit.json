@@ -1,0 +1,667 @@
+{
+  "version": 1,
+  "checkedOn": "2026-11-25",
+  "sources": [
+    {
+      "id": "umpi-maol-current-academic-map-2026-11-25",
+      "title": "UMPI current official Master of Arts in Organizational Leadership academic map",
+      "url": "https://www.umpi.edu/academics/academic-maps/maol/",
+      "checkedOn": "2026-11-25",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "program-identity",
+        "pace"
+      ],
+      "scope": "The live official map identifies all twelve OLS courses, their three domains, 36 total credits, and YourPace delivery. It does not identify a catalog edition or print a per-course credit column.",
+      "capture": "content/source-captures/e90374c6b9c039af.txt",
+      "sourceContentHash": "sha256:e90374c6b9c039af28684ee4d471212a789e1fd08ca4babb3ef8aa2ed030247e",
+      "sha256": "e90374c6b9c039af28684ee4d471212a789e1fd08ca4babb3ef8aa2ed030247e"
+    },
+    {
+      "id": "umpi-maol-board-proposal-2019-reviewed-2026-11-25",
+      "title": "University of Maine System Board academic affairs materials: UMPI MAOL proposal, October 2019",
+      "url": "https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2019/11/MtgMat-ASA-103019-rev102519.pdf#pages=129",
+      "checkedOn": "2026-11-25",
+      "documentPeriod": "2019",
+      "kind": "university-system",
+      "roles": [
+        "curriculum-credit-quantity"
+      ],
+      "location": "Section IV.A, printed page 9 / PDF page 129",
+      "scope": "Dated original MAOL program proposal expressly assigns three credits to each of twelve competencies. Its twelve titles and three domains were crosschecked against the current official academic map; no current catalog edition is inferred from this historical document.",
+      "capture": "content/source-captures/f45d820a370774e6.txt",
+      "sourceContentHash": "sha256:f45d820a370774e61c0ea6fab4826d2187e9f11fd47fb144345d553901b5da80",
+      "sha256": "f45d820a370774e61c0ea6fab4826d2187e9f11fd47fb144345d553901b5da80",
+      "documentSha256": "d755c737780962021a54ce6d214eccacaeacffc6b7e6920cbd544cae651673c2",
+      "captureTransport": "Full official PDF reconstructed from validated HTTP byte ranges; extracted PDF page129 only."
+    },
+    {
+      "id": "umpi-maol-current-program-2026-11-25",
+      "title": "UMPI current YourPace Master of Arts in Organizational Leadership program, admissions, graduate transfer policy and pricing",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/organizational-leadership/",
+      "checkedOn": "2026-11-25",
+      "kind": "university",
+      "roles": [
+        "program-identity",
+        "transfer-policy",
+        "admissions",
+        "pricing",
+        "pace"
+      ],
+      "scope": "MAOL YourPace only. Six appropriate accredited graduate credits with B or better may transfer. The page supplies a $2,450 session rate and current graduate admission requirements, rather than an undergraduate ACE allowance or a guaranteed degree total.",
+      "capture": "content/source-captures/a1b2500b6f89526e.txt",
+      "sourceContentHash": "sha256:a1b2500b6f89526e079c5774690c606c283c510a2af998454f09a2ae47c94208",
+      "sha256": "a1b2500b6f89526e079c5774690c606c283c510a2af998454f09a2ae47c94208"
+    },
+    {
+      "id": "umpi-yourpace-current-faq-2026-11-25",
+      "title": "UMPI current YourPace FAQ: graduate degree total, session length and assessment proficiency",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "checkedOn": "2026-11-25",
+      "kind": "university",
+      "roles": [
+        "curriculum-total",
+        "assessment-policy",
+        "pace"
+      ],
+      "scope": "The graduate-specific answer confirms 36 credits. YourPace sessions last eight weeks and the final assessment minimum is 80. Undergraduate 30/12/9 residency language is not applied to this master's.",
+      "capture": "content/source-captures/dcdb80a8ff024f38.txt",
+      "sourceContentHash": "sha256:dcdb80a8ff024f3831fec2492e0807af14101a1df822fc054399596bd0365eef",
+      "sha256": "dcdb80a8ff024f3831fec2492e0807af14101a1df822fc054399596bd0365eef"
+    }
+  ],
+  "models": [
+    {
+      "format": "Online",
+      "modalities": [
+        "online"
+      ],
+      "paceModel": "competency-subscription",
+      "learningFormat": "YourPace",
+      "id": "curriculum-umpi-maol-yourpace",
+      "routeIds": [
+        "umpi-maol",
+        "umpi-catalog-22746d64f0509cd3"
+      ],
+      "school": "University of Maine at Presque Isle",
+      "title": "Master of Arts in Organizational Leadership (MAOL) — YourPace",
+      "level": "master",
+      "catalog": "Current official MAOL academic map (reviewed 2026-11-25)",
+      "totalCredits": 36,
+      "creditSystem": "semester",
+      "coverage": "complete",
+      "completeExecutablePathway": true,
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current official MAOL academic map (reviewed 2026-11-25)",
+        "sourceUrl": "https://www.umpi.edu/academics/academic-maps/maol/",
+        "checkedOn": "2026-11-25",
+        "basis": "Current official MAOL academic map and current YourPace offering, crosschecked against the dated University of Maine System proposal's per-competency quantities. No catalog academic year is asserted."
+      },
+      "sourceIds": [
+        "umpi-maol-current-academic-map-2026-11-25",
+        "umpi-maol-board-proposal-2019-reviewed-2026-11-25",
+        "umpi-maol-current-program-2026-11-25",
+        "umpi-yourpace-current-faq-2026-11-25"
+      ],
+      "institutionMinCredits": 30,
+      "externalMaxCredits": 6,
+      "policySourceIds": [
+        "umpi-maol-current-program-2026-11-25",
+        "umpi-yourpace-current-faq-2026-11-25"
+      ],
+      "policyEvidence": {
+        "externalMaxCredits": {
+          "value": 6,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "umpi-maol-current-program-2026-11-25"
+          ],
+          "note": "At most six appropriate graduate credits from an accredited institution, with grade B or better and an official transcript. This model proposes no particular incoming award."
+        },
+        "institutionMinCredits": {
+          "value": 30,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-current-program-2026-11-25"
+          ],
+          "basis": "36 required credits less no more than six applicable graduate transfer credits. This arithmetic floor does not import undergraduate major/minor residency rules."
+        },
+        "assessmentPassingPercent": {
+          "value": 80,
+          "sourceIds": [
+            "umpi-yourpace-current-faq-2026-11-25"
+          ],
+          "scope": "Final assessment proficiency threshold; not a statement that an 80 percent course result is a B transfer grade or a 3.0 graduation GPA."
+        }
+      },
+      "transferPolicyReview": {
+        "id": "umpi-maol-graduate-transfer-review-2026-11-25",
+        "status": "verified",
+        "checkedOn": "2026-11-25",
+        "sourceIds": [
+          "umpi-maol-current-program-2026-11-25"
+        ],
+        "scope": "Current MAOL accredited graduate transfer allowance only; no undergraduate or ACE provider credit is proposed."
+      },
+      "curriculumReview": {
+        "id": "umpi-maol-current-map-and-board-credit-review-2026-11-25",
+        "checkedOn": "2026-11-25",
+        "sourceIds": [
+          "umpi-maol-current-academic-map-2026-11-25",
+          "umpi-maol-board-proposal-2019-reviewed-2026-11-25",
+          "umpi-yourpace-current-faq-2026-11-25"
+        ],
+        "basis": "The current official map names exactly twelve OLS courses and 36 credits, corroborated by the current graduate FAQ. The dated 2019 University of Maine System proposal gives each competency three credits and the same twelve titles in the same three domains. The historical document remains identified as 2019."
+      },
+      "admissionRequirements": [
+        {
+          "message": "Have a conferred bachelor's degree from an accredited U.S. institution or an equivalent international institution and submit official transcripts and other required application documents.",
+          "sourceIds": [
+            "umpi-maol-current-program-2026-11-25"
+          ]
+        },
+        {
+          "message": "Applicants below the published 3.0 GPA guideline must submit the required personal statement; UMPI makes the individual admission decision.",
+          "sourceIds": [
+            "umpi-maol-current-program-2026-11-25"
+          ]
+        }
+      ],
+      "pricing": {
+        "model": "subscription",
+        "amount": 2450,
+        "currency": "USD",
+        "period": "8 weeks",
+        "sourceUrl": "https://www.umpi.edu/yourpace/academic_programs/organizational-leadership/",
+        "sourceIds": [
+          "umpi-maol-current-program-2026-11-25"
+        ],
+        "checkedOn": "2026-11-25",
+        "notes": [
+          "Published MAOL tuition per eight-week YourPace session. The number of paid sessions and applicable personal charges remain scenario inputs; the promotional one-year amount is not a guaranteed degree total."
+        ]
+      },
+      "pacePolicy": {
+        "sessionWeeks": 8,
+        "sourceIds": [
+          "umpi-maol-current-academic-map-2026-11-25",
+          "umpi-maol-current-program-2026-11-25",
+          "umpi-yourpace-current-faq-2026-11-25"
+        ],
+        "basis": "Online asynchronous competency-based YourPace progression in eight-week sessions. Enrollment and actual course order are assigned through the university; no fixed completion duration or unrestricted simultaneous course load is promised."
+      },
+      "rulesNotes": [
+        "The baseline names all twelve required UMPI OLS courses, each three semester credits, and plans all 36 credits at UMPI.",
+        "The six-credit graduate transfer ceiling is separate from any undergraduate CPL/ACE policy. No Sophia, Study.com, StraighterLine, CLEP or other undergraduate alternative award is supplied here.",
+        "The current public academic map supplies course identities and domains. The dated official Board proposal supplies explicit per-competency quantities; its 2019 date is retained.",
+        "Three domains contain four three-credit courses each; OLS 650 is Domain 2's capstone and appears once.",
+        "UMPI controls enrollment and the issued degree progress report. This ledger does not promise a fixed course sequence, a specific session load, or a completion time."
+      ],
+      "unresolved": [
+        {
+          "message": "Submit the graduate application and original official records, and meet UMPI's individual graduate admission requirements.",
+          "status": "personal-task",
+          "owner": "student",
+          "sourceIds": [
+            "umpi-maol-current-program-2026-11-25"
+          ]
+        },
+        {
+          "message": "Follow the university's assigned enrollment plan and earn at least 80 on each required final assessment.",
+          "status": "personal-task",
+          "owner": "student",
+          "sourceIds": [
+            "umpi-yourpace-current-faq-2026-11-25"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "umpi-maol-current-academic-map-2026-11-25",
+          "title": "UMPI current official Master of Arts in Organizational Leadership academic map",
+          "url": "https://www.umpi.edu/academics/academic-maps/maol/",
+          "checkedOn": "2026-11-25",
+          "kind": "university",
+          "roles": [
+            "curriculum",
+            "program-identity",
+            "pace"
+          ],
+          "scope": "The live official map identifies all twelve OLS courses, their three domains, 36 total credits, and YourPace delivery. It does not identify a catalog edition or print a per-course credit column.",
+          "capture": "content/source-captures/e90374c6b9c039af.txt",
+          "sourceContentHash": "sha256:e90374c6b9c039af28684ee4d471212a789e1fd08ca4babb3ef8aa2ed030247e",
+          "sha256": "e90374c6b9c039af28684ee4d471212a789e1fd08ca4babb3ef8aa2ed030247e"
+        },
+        {
+          "id": "umpi-maol-board-proposal-2019-reviewed-2026-11-25",
+          "title": "University of Maine System Board academic affairs materials: UMPI MAOL proposal, October 2019",
+          "url": "https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2019/11/MtgMat-ASA-103019-rev102519.pdf#pages=129",
+          "checkedOn": "2026-11-25",
+          "documentPeriod": "2019",
+          "kind": "university-system",
+          "roles": [
+            "curriculum-credit-quantity"
+          ],
+          "location": "Section IV.A, printed page 9 / PDF page 129",
+          "scope": "Dated original MAOL program proposal expressly assigns three credits to each of twelve competencies. Its twelve titles and three domains were crosschecked against the current official academic map; no current catalog edition is inferred from this historical document.",
+          "capture": "content/source-captures/f45d820a370774e6.txt",
+          "sourceContentHash": "sha256:f45d820a370774e61c0ea6fab4826d2187e9f11fd47fb144345d553901b5da80",
+          "sha256": "f45d820a370774e61c0ea6fab4826d2187e9f11fd47fb144345d553901b5da80",
+          "documentSha256": "d755c737780962021a54ce6d214eccacaeacffc6b7e6920cbd544cae651673c2",
+          "captureTransport": "Full official PDF reconstructed from validated HTTP byte ranges; extracted PDF page129 only."
+        },
+        {
+          "id": "umpi-maol-current-program-2026-11-25",
+          "title": "UMPI current YourPace Master of Arts in Organizational Leadership program, admissions, graduate transfer policy and pricing",
+          "url": "https://www.umpi.edu/yourpace/academic_programs/organizational-leadership/",
+          "checkedOn": "2026-11-25",
+          "kind": "university",
+          "roles": [
+            "program-identity",
+            "transfer-policy",
+            "admissions",
+            "pricing",
+            "pace"
+          ],
+          "scope": "MAOL YourPace only. Six appropriate accredited graduate credits with B or better may transfer. The page supplies a $2,450 session rate and current graduate admission requirements, rather than an undergraduate ACE allowance or a guaranteed degree total.",
+          "capture": "content/source-captures/a1b2500b6f89526e.txt",
+          "sourceContentHash": "sha256:a1b2500b6f89526e079c5774690c606c283c510a2af998454f09a2ae47c94208",
+          "sha256": "a1b2500b6f89526e079c5774690c606c283c510a2af998454f09a2ae47c94208"
+        },
+        {
+          "id": "umpi-yourpace-current-faq-2026-11-25",
+          "title": "UMPI current YourPace FAQ: graduate degree total, session length and assessment proficiency",
+          "url": "https://www.umpi.edu/yourpace/faqs/",
+          "checkedOn": "2026-11-25",
+          "kind": "university",
+          "roles": [
+            "curriculum-total",
+            "assessment-policy",
+            "pace"
+          ],
+          "scope": "The graduate-specific answer confirms 36 credits. YourPace sessions last eight weeks and the final assessment minimum is 80. Undergraduate 30/12/9 residency language is not applied to this master's.",
+          "capture": "content/source-captures/dcdb80a8ff024f38.txt",
+          "sourceContentHash": "sha256:dcdb80a8ff024f3831fec2492e0807af14101a1df822fc054399596bd0365eef",
+          "sha256": "dcdb80a8ff024f3831fec2492e0807af14101a1df822fc054399596bd0365eef"
+        }
+      ],
+      "requirements": [
+        {
+          "id": "ols-500",
+          "code": "OLS 500",
+          "title": "Research Methods: Data-Driven Decision Making and Planning",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-1",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-500",
+              "provider": "University",
+              "code": "OLS 500",
+              "title": "Research Methods: Data-Driven Decision Making and Planning",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-510",
+          "code": "OLS 510",
+          "title": "Foundations of Organizational Leadership",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-1",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-510",
+              "provider": "University",
+              "code": "OLS 510",
+              "title": "Foundations of Organizational Leadership",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-520",
+          "code": "OLS 520",
+          "title": "Democracy and Ethical Leadership in Decision Making",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-1",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-520",
+              "provider": "University",
+              "code": "OLS 520",
+              "title": "Democracy and Ethical Leadership in Decision Making",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-530",
+          "code": "OLS 530",
+          "title": "Globalization and Diversity",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-1",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-530",
+              "provider": "University",
+              "code": "OLS 530",
+              "title": "Globalization and Diversity",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-540",
+          "code": "OLS 540",
+          "title": "Organizational Theory and Behavior",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-2",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-540",
+              "provider": "University",
+              "code": "OLS 540",
+              "title": "Organizational Theory and Behavior",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-550",
+          "code": "OLS 550",
+          "title": "Team Leadership and Collaboration",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-2",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-550",
+              "provider": "University",
+              "code": "OLS 550",
+              "title": "Team Leadership and Collaboration",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-600",
+          "code": "OLS 600",
+          "title": "Leading Organizational Change",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-2",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-600",
+              "provider": "University",
+              "code": "OLS 600",
+              "title": "Leading Organizational Change",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-610",
+          "code": "OLS 610",
+          "title": "Leadership and Business Operations",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-3",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-610",
+              "provider": "University",
+              "code": "OLS 610",
+              "title": "Leadership and Business Operations",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-620",
+          "code": "OLS 620",
+          "title": "Strategic Communication",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-3",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-620",
+              "provider": "University",
+              "code": "OLS 620",
+              "title": "Strategic Communication",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-630",
+          "code": "OLS 630",
+          "title": "Conflict and Negotiation",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-3",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-630",
+              "provider": "University",
+              "code": "OLS 630",
+              "title": "Conflict and Negotiation",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-640",
+          "code": "OLS 640",
+          "title": "Leadership and Innovation",
+          "credits": 3,
+          "category": "major",
+          "group": "domain-3",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-640",
+              "provider": "University",
+              "code": "OLS 640",
+              "title": "Leadership and Innovation",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        },
+        {
+          "id": "ols-650",
+          "code": "OLS 650",
+          "title": "Organizational Leadership Capstone",
+          "credits": 3,
+          "category": "capstone",
+          "group": "domain-2",
+          "institutionalOnly": false,
+          "sourceIds": [
+            "umpi-maol-current-academic-map-2026-11-25",
+            "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+          ],
+          "options": [
+            {
+              "id": "university-ols-650",
+              "provider": "University",
+              "code": "OLS 650",
+              "title": "Organizational Leadership Capstone",
+              "credits": 3,
+              "upper": false,
+              "creditSystem": "semester",
+              "creditOrigin": "institutional",
+              "sourceIds": [
+                "umpi-maol-current-academic-map-2026-11-25",
+                "umpi-maol-board-proposal-2019-reviewed-2026-11-25"
+              ],
+              "evidence": "published",
+              "url": "https://www.umpi.edu/academics/academic-maps/maol/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -23,7 +23,11 @@
     "factory:report": "node scripts/pathway-factory/report.mjs",
     "factory:draft": "node scripts/pathway-factory/draft.mjs",
     "factory:capture": "node scripts/pathway-factory/capture.mjs",
-    "factory:publish": "node scripts/pathway-factory/compile.mjs --publish"
+    "factory:publish": "node scripts/pathway-factory/compile.mjs --publish",
+    "factory:queue": "node scripts/build-plan-expansion-queue.mjs",
+    "factory:queue:check": "node scripts/build-plan-expansion-queue.mjs --check",
+    "factory:refresh": "node scripts/refresh-plan-factory.mjs",
+    "factory:refresh:check": "node scripts/refresh-plan-factory.mjs --check"
   },
   "devDependencies": {
     "drizzle-kit": "0.31.10",

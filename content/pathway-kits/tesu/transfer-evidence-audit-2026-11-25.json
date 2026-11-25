@@ -1,0 +1,53 @@
+{
+  "kind": "tesu-current-transfer-evidence-audit",
+  "version": 1,
+  "checkedOn": "2026-11-25",
+  "publicationPromotionAllowed": false,
+  "reviewedExistingPrograms": 5,
+  "newCompiledPrograms": 0,
+  "sources": [
+    {
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+      "capture": "content/source-captures/a74f15e6a1bbeeda.txt",
+      "sha256": "a74f15e6a1bbeeda3c2a6f5e2290a221ca8a07bef0ba902c209a074fe8a30ac0",
+      "status": 200,
+      "scope": "Provider status only. Study.com and University Pathways International are approved. CLEP and Sophia are provisionally approved with review pending. Neither heading establishes a particular receiving-course award or individual enrollment permission."
+    },
+    {
+      "url": "https://www.tesu.edu/student-resources/transfer-credits/index.php",
+      "capture": "content/source-captures/c555972f320e0526.txt",
+      "sha256": "c555972f320e052606e7e988d05319e5f3328409705250a073f1b5cbed80d009",
+      "status": 200,
+      "scope": "General transfer guidance does not create an exact university-course equivalency or establish placement in an individual degree. Institutional-origin credit remains distinct from ACE/NCCRS recommendations and from TESU residency."
+    },
+    {
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/exam-programs/clep-college-level-examination-program/listing-of-clep-exams",
+      "status": 404,
+      "scope": "Root direct capture failed. The same child path without /en and with a trailing slash also returned 404 through the web connector. Search-index excerpts contain exam awards and future expirations, but a current primary receiving table was not recovered. No indexed CLEP claim is promoted or added to the kit."
+    }
+  ],
+  "findings": [
+    {
+      "id": "clep-current-university-award-table",
+      "status": "needs-current-primary-table",
+      "detail": "The policy-versus-provider-directory question from the November 19 audit remains unresolved at the course level. A source-bound specific course resolution could be evaluated after recovery of an active university table; no global provider hold is removed from a cached search result."
+    },
+    {
+      "id": "clep-original-and-receiving-quantities",
+      "status": "preserve-distinct-claims",
+      "detail": "A College Board C-level score recommendation is not a university-published numeric minimum. A receiving-table expiration is not an ACE recommendation start or version. Multi-course awards require proper bundle allocation rather than duplicate original courses."
+    },
+    {
+      "id": "upi-liberal-studies-allocation",
+      "status": "implemented-conditional-allocation",
+      "review": "content/pathway-kits/tesu/upi-liberal-arts-review-2026-11-25.json",
+      "detail": "45 source-bound placements reuse the existing reviewed discipline and receiving-level rules. A scoped fresh solver comparison expands the feasible conditional outside basket from 75 to 84 credits while preserving academic counts and policy completeness. It does not close university receiving-award research."
+    },
+    {
+      "id": "additional-business-degrees",
+      "status": "factual-research-only",
+      "review": "content/pathway-kits/tesu/business-expansion-review-2026-11-25.json",
+      "detail": "Current official degree captures and named major-course/prerequisite facts were retained for Marketing, Human Resources/Organizational Management and Operations Management. They were not compiled into additional unready public program shells. The Operations OPM-4110 prerequisite discrepancy remains explicit."
+    }
+  ]
+}

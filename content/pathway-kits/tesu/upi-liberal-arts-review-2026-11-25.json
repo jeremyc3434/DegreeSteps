@@ -1,0 +1,45 @@
+{
+  "kind": "tesu-liberal-studies-upi-allocation-review",
+  "version": 1,
+  "checkedOn": "2026-11-25",
+  "modelId": "curriculum-tesu-ba-liberal-studies",
+  "publicationPromotionAllowed": false,
+  "scope": "Degree allocation only. The UPI receiving-course assertions remain conditional provider-published candidates, not independent university receiving awards or an individual credit award.",
+  "sourceIds": [
+    "tesu-liberal-studies-current-2026-11-18",
+    "tesu-liberal-studies-taxonomy-2026-11-18",
+    "tesu-upi-provider-table-2026-11-25"
+  ],
+  "sourceCapture": "content/source-captures/tesu-upi-provider-map-2026-11-25-c3ff7527f9c8.txt",
+  "method": "Reuse the existing reviewed 120-credit General Option A curriculum, university discipline taxonomy and receiving-level limits. A UPI candidate is placed only when its exact named TESU receiving code is in that taxonomy, its receiving level fits that requirement, and the candidate's separately reviewed original and receiving quantities both equal three semester credits. The allocator retains the subject-distribution, maximum introductory credits, upper-level area, residency, alternative-credit and nonduplication constraints.",
+  "newAreaPlacements": 45,
+  "eligible2000LevelReceivingCourses": [
+    {"receivingCode": "ECO-2700", "receivingTitle": "Business & Economic Statistics", "credits": 3, "subject": "economics"},
+    {"receivingCode": "COS-2050", "receivingTitle": "Python Programming", "credits": 3, "subject": "computer-science"},
+    {"receivingCode": "ENG-2010", "receivingTitle": "Technical Writing", "credits": 3, "subject": "english", "sourceUpper": true, "receivingUpper": false}
+  ],
+  "preservedConstraints": {
+    "degreeCredits": 120,
+    "standardTESUCourseResidency": 15,
+    "combinedAlternativeMaximum": 90,
+    "upperLevelAreaMinimum": 18,
+    "maximum1000LevelAreaCredits": 6,
+    "minimumLiberalArtsSubjects": 2,
+    "requiredInstitutionalCourses": ["SOS-1100", "LIB-4950"]
+  },
+  "solverComparison": {
+    "method": "The same scoped fresh baseline and University fallbacks, all modeled providers enabled, allowConditional true, transfer priority, no learner records, optimizationNodeBudget 12000. Only the 45 new Liberal Studies area placements differ.",
+    "before": {"outsideCredits": 75, "alternativeCredits": 75, "TESUCredits": 45},
+    "after": {"outsideCredits": 84, "alternativeCredits": 84, "TESUCredits": 36, "receivingUpperCredits": 21, "academicCountsValid": true, "policyChecksComplete": true},
+    "additionalOutsideCredits": 9,
+    "selectedNewAreaCourses": ["ECO-2700", "COS-2050", "ENG-2010"],
+    "interpretation": "A feasible conditional research scenario, not a guaranteed transfer basket, price, completion time, or publication-ready pathway. Every original UPI course counts once and remains alternative-origin credit."
+  },
+  "negativeChecks": [
+    "A 1000-level receiving course cannot fill a 2000-level requirement.",
+    "A 2000-level receiving course cannot fill upper-level area capacity, even when its original ACE recommendation is upper division.",
+    "Business, JavaScript and Information Technology codes absent from the reviewed university liberal-arts taxonomy are excluded from the area.",
+    "A missing taxonomy source, changed discipline restriction, institution-only row or different school/program/catalog cannot authorize placement.",
+    "Provider approval, receiving-course evidence and individual credit awards remain separate."
+  ]
+}

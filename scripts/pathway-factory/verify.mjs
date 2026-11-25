@@ -4,7 +4,7 @@
  */
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
-import {list,dateOnly,today,sourceDate,sourceRefs,normalizeText,sha256,creditSystems,inScope,matchRequirement,rowStatus,programUnits,parsePlacement,sourceIndex,loadKit,kitDirs,resolveKitDir,knownRouteIds,parseArgs,isMain,root,exists,slotKinds} from './lib.mjs';
+import {list,dateOnly,today,sourceDate,sourceRefs,normalizeText,sha256,creditSystems,inScope,matchRequirement,rowStatus,programUnits,parsePlacement,sourceIndex,loadKit,kitDirs,resolveKitDir,knownRouteIds,parseArgs,isMain,root,exists,slotKinds,courseCodeKey} from './lib.mjs';
 
 const EPS=1e-6;
 const near=(a,b)=>Math.abs(a-b)<EPS;
@@ -32,6 +32,10 @@ export function quotedClaims(kit){
   for(const[name,policy]of Object.entries(kit.school.policies||{}))take(policy,'school.json','policy '+name);
   for(const row of list(kit.equivalencies.equivalencies))take(row,'equivalencies.json','equivalency '+row.id,scopedProgramSources(kit,row));
   for(const rule of list(kit.equivalencies.slotPlacements))take(rule,'equivalencies.json','slot placement '+rule.id);
+  for(const pool of list(kit.school.institutionChoicePools)){
+    take(pool,'school.json','institution choice pool '+pool.id);
+    for(const course of list(pool.courses))take(course,'school.json','institution choice '+pool.id+'/'+course.code);
+  }
   for(const program of kit.programs){
     take(program,program.file,'program '+program.slug);
     for(const[name,policy]of Object.entries(program.policies||{}))take(policy,program.file,'policy '+name);
@@ -70,6 +74,28 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
     if(course.sourceCredits===null){if(course.sourceCreditSystem!=null)error(provider.file,'source-units',`${provider.provider} ${course.code} records unknown sourceCredits (null) but a sourceCreditSystem.`);continue;}
     if(!(course.sourceCredits>0))error(provider.file,'source-credits',`${provider.provider} ${course.code} has no positive original sourceCredits (use null only when the evidence establishes none).`);
     if(!creditSystems.includes(course.sourceCreditSystem))error(provider.file,'source-units',`${provider.provider} ${course.code} needs sourceCreditSystem (${creditSystems.join('/')}); units are never assumed.`);
+  }
+  // Opt-in named university choice pools. A school-wide label or a provider
+  // table is not enough: scope, eligible requirements and primary quotes are
+  // reviewed explicitly. Transfer options continue using their own map gates.
+  const poolIds=new Set(),schoolSources=new Map(list(school.sources).map(source=>[source.id,source]));
+  for(const pool of list(school.institutionChoicePools)){
+    const label='institution choice pool '+(pool.id||'(missing)');
+    if(!pool.id||poolIds.has(pool.id))error('school.json','choice-pool-id',label+': use one unique ID.');poolIds.add(pool.id);
+    if(pool.review?.status!=='reviewed'||!dateOnly(pool.review?.checkedOn)||pool.review.checkedOn>asOf)error('school.json','choice-pool-review',label+': an explicit, dated review is required.');
+    if(pool.scope?.all===true||!['programs','catalogs','levels','modalities'].every(key=>list(pool.scope?.[key]).length))error('school.json','choice-pool-scope',label+': list exact programs, catalogs, levels and delivery formats.');
+    if(!list(pool.scope?.programs).every(slug=>slugs.has(slug)))error('school.json','choice-pool-scope',label+': unknown program.');
+    if(!list(pool.slotKinds).length||!pool.slotKinds.every(kind=>slotKinds.includes(kind))||!list(pool.requirementIds).length)error('school.json','choice-pool-placement',label+': reviewed slot kinds and requirement IDs are required.');
+    const grounded=claim=>list(claim.sourceIds).length>0&&list(claim.quotes).length>0&&claim.sourceIds.every(id=>schoolSources.get(id)?.kind==='university'&&schoolSources.get(id)?.capture);
+    if(!grounded(pool))error('school.json','choice-pool-source',label+': cite captured receiving-university eligibility evidence.');
+    const codes=new Set();if(!list(pool.courses).length)error('school.json','choice-pool-empty',label+': add exact named courses.');
+    for(const course of list(pool.courses)){
+      const key=courseCodeKey(course.code);
+      if(!key||!String(course.title||'').trim()||codes.has(key)||course.provider!==undefined&&course.provider!=='University'||course.creditOrigin!==undefined&&course.creditOrigin!=='institutional'||!Number.isFinite(course.credits)||course.credits<=0||!creditSystems.includes(course.creditSystem)||typeof course.upper!=='boolean'||!grounded(course))error('school.json','choice-pool-course',label+': courses need unique codes, titles, positive original university credits/units, level and captured primary quotes.');
+      const text=normalizeText(list(course.quotes).map(quote=>quote?.text||'').join(' ')),quantities=[...text.matchAll(/(?:^|[^a-z0-9.])(\d+(?:\.\d+)?)(?=$|[^a-z0-9.])/g)].map(match=>Number(match[1]));
+      if(!key||!courseCodeKey(text).includes(key)||!normalizeText(course.title)||!text.includes(normalizeText(course.title))||!Number.isFinite(course.credits)||!quantities.includes(course.credits))error('school.json','choice-pool-course-quote',label+': quote the course code, title and original university credit quantity for '+course.code+'.');
+      codes.add(key);
+    }
   }
   const library=kit.equivalencies.conditionLibrary||{},modes=kit.equivalencies.placementModes||{};
   for(const[id,mode]of Object.entries(modes))for(const c of list(mode.appendConditionIds))if(typeof library[c]!=='string')error('equivalencies.json','unknown-condition',`placement mode ${id}: unknown condition ${c}.`);
@@ -128,8 +154,13 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
         if(!String(r.slot?.label||'').trim())error(file,'slot-label',`${r.id}: a slot needs the label its source prints.`);
         if(r.code)error(file,'slot-code',`${r.id}: a slot has no single receiving course code.`);
         if(r.institutionalOnly)error(file,'slot-institutional',`${r.id}: a slot cannot be institutionalOnly.`);
-        if(list(r.institutionOptions).length||r.optionRows!==undefined)error(file,'slot-options',`${r.id}: slot options come only from slotPlacements rules.`);
+        if(list(r.institutionOptions).length||r.optionRows!==undefined)error(file,'slot-options',`${r.id}: slot options come only from slotPlacements rules or reviewed institution choice pools.`);
         if(!list(r.quotes).length||!list(r.sourceIds).length)error(file,'slot-quote',`${r.id}: a slot must be quoted from its captured source.`);
+        for(const id of list(r.slot.institutionChoicePoolIds)){
+          const pool=list(school.institutionChoicePools).find(pool=>pool.id===id);
+          if(!pool||!['programs','catalogs','levels','modalities'].every(key=>list(pool.scope?.[key]).length)||!inScope(pool,program,kit)||!list(pool.requirementIds).includes(r.id)||!list(pool.slotKinds).includes(r.slot.kind))error(file,'choice-pool-placement',`${r.id}: choice pool ${id} is not reviewed for this program, catalog, format and requirement.`);
+        }
+        if(new Set(list(r.slot.institutionChoicePoolIds)).size!==list(r.slot.institutionChoicePoolIds).length)error(file,'choice-pool-placement',`${r.id}: a choice pool is listed twice.`);
       }
     }
     for(const ref of sourceRefs(program))if(!known.has(ref.id))error(file,'unknown-source',`Unknown source id ${ref.id} at ${ref.path}.`);

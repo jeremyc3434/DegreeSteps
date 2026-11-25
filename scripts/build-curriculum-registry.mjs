@@ -21,6 +21,7 @@ import {applyLibertySharedPolicyResolutions} from './liberty-shared-policies.mjs
 import {compileScopedResearchNotices} from './pathway-quality.mjs';
 import {addGCUTransferOptions} from './add-gcu-transfer-options.mjs';
 import {addGCUInstitutionalOptions} from './add-gcu-institutional-options.mjs';
+import {reviewedInstitutionFallback} from './pathway-factory/lib.mjs';
 const require=createRequire(import.meta.url),root=resolve(import.meta.dirname,'..');
 const Catalog=require('../dist/program-catalog.js');
 const Planner=require('../dist/planner.js');
@@ -102,7 +103,8 @@ function compile(raw,document){
         assert(row.sourceIds.length,'Requirement needs a curriculum source: '+model.id+':'+row.id);
         row.options.push(generated={id:'university-'+slug(row.id),provider:'University',title:row.title,...(row.code?{code:row.code}:{}),credits:row.credits,upper:Boolean(row.upper),creditSystem:model.creditSystem||'semester',creditOrigin:'institutional',sourceIds:[...row.sourceIds],evidence:'published',...(row.selectionRequired?{selectionRequired:true,conditions:['Choose a specific course allowed by this published requirement.']}:{})});
       }
-      if((!factory||row.selectionRequired)&&(row.options.some(o=>o.provider!=='University'&&o.code)||row.selectionRequired&&row.options.some(o=>o.code&&!o.selectionRequired)))row.selectionRequired=false;
+      const namedSelection=factory?reviewedInstitutionFallback(row,model.creditSystem||'semester',{originalSelectionRequired:req.selectionRequired}):row.options.some(o=>o.code&&!o.selectionRequired);
+      if((!factory||row.selectionRequired)&&(row.options.some(o=>o.provider!=='University'&&o.code)||row.selectionRequired&&namedSelection))row.selectionRequired=false;
       // Factory documents already carry their options' final conditions; only the generated institutional option gets the grade notice.
       if(row.minimumGrade)for(const option of factory?row.options.filter(o=>o===generated):row.options)option.conditions=[...list(option.conditions),'This requirement needs a grade of '+row.minimumGrade+' or higher; confirm the school’s treatment of pass grades.'];
       requirements.push(row);

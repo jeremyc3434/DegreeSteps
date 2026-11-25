@@ -3497,6 +3497,37 @@
       "published": true,
       "approvalStatus": "APPROVED",
       "sha256": "bcb2781564d893c4c27ad26ae59b02a118506a9bb8fed739a0e3fd96d365f5ae"
+    },
+    {
+      "id": "shared-sophia--soph-0065-current-ace-2026-11-18",
+      "kind": "ace",
+      "title": "ACE SOPH-0065 version 2 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "316c6fd1fbfc0b216e8c2da17faadd025aefa9238ed08cfc39ae1ebd54a0077a",
+      "roles": [
+        "provider-identity",
+        "recommendation-period"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "wgu-global-sophia--soph-0065-current-ace-2026-11-18",
+      "upstreamOriginalSourceId": "soph-0065-current-ace-2026-11-18",
+      "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json"
+    },
+    {
+      "id": "shared-sophia--sophia-ace-composition-i-period-2026-11-19",
+      "kind": "ace",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+      "checkedOn": "2026-11-19",
+      "scope": "ACE indexed course row supplies English Composition I recommendation period.",
+      "roles": [
+        "recommendation-period"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "wgu-global-sophia--sophia-ace-composition-i-period-2026-11-19",
+      "upstreamOriginalSourceId": "sophia-ace-composition-i-period-2026-11-19",
+      "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json"
     }
   ],
   "models": [
@@ -4593,6 +4624,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -4605,6 +4642,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D270",
@@ -5349,6 +5395,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "aceId": "SOPH-0065",
+              "providerCourseCode": "PHIL1005",
+              "codeAliases": [
+                "PHIL1005"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -5361,6 +5413,16 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 2,
+              "recommendationStart": "2025-10-01",
+              "recommendationEnd": "2028-09-30",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--soph-0065-current-ace-2026-11-18"
+              ],
+              "identityCheckedOn": "2026-11-18",
+              "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+              "providerCoursePassingPercent": 70,
+              "providerCourseEffectiveDates": "October 2025 - Present",
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D265",
@@ -13522,6 +13584,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "aceId": "SOPH-0065",
+              "providerCourseCode": "PHIL1005",
+              "codeAliases": [
+                "PHIL1005"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -13534,6 +13602,16 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 2,
+              "recommendationStart": "2025-10-01",
+              "recommendationEnd": "2028-09-30",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--soph-0065-current-ace-2026-11-18"
+              ],
+              "identityCheckedOn": "2026-11-18",
+              "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+              "providerCoursePassingPercent": 70,
+              "providerCourseEffectiveDates": "October 2025 - Present",
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D265",
@@ -13693,6 +13771,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -13705,6 +13789,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D270",
@@ -18388,6 +18481,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "aceId": "SOPH-0065",
+              "providerCourseCode": "PHIL1005",
+              "codeAliases": [
+                "PHIL1005"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -18400,6 +18499,16 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 2,
+              "recommendationStart": "2025-10-01",
+              "recommendationEnd": "2028-09-30",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--soph-0065-current-ace-2026-11-18"
+              ],
+              "identityCheckedOn": "2026-11-18",
+              "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+              "providerCoursePassingPercent": 70,
+              "providerCourseEffectiveDates": "October 2025 - Present",
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D265",
@@ -18904,6 +19013,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -18916,6 +19031,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D269",
@@ -23172,6 +23296,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "aceId": "SOPH-0065",
+              "providerCourseCode": "PHIL1005",
+              "codeAliases": [
+                "PHIL1005"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -23184,6 +23314,16 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 2,
+              "recommendationStart": "2025-10-01",
+              "recommendationEnd": "2028-09-30",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--soph-0065-current-ace-2026-11-18"
+              ],
+              "identityCheckedOn": "2026-11-18",
+              "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+              "providerCoursePassingPercent": 70,
+              "providerCourseEffectiveDates": "October 2025 - Present",
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D265",
@@ -23769,6 +23909,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -23781,6 +23927,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D270",
@@ -30513,6 +30668,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "aceId": "SOPH-0065",
+              "providerCourseCode": "PHIL1005",
+              "codeAliases": [
+                "PHIL1005"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -30525,6 +30686,16 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 2,
+              "recommendationStart": "2025-10-01",
+              "recommendationEnd": "2028-09-30",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--soph-0065-current-ace-2026-11-18"
+              ],
+              "identityCheckedOn": "2026-11-18",
+              "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+              "providerCoursePassingPercent": 70,
+              "providerCourseEffectiveDates": "October 2025 - Present",
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D265",
@@ -32444,6 +32615,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -32456,6 +32633,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D269",
@@ -34403,6 +34589,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -34415,6 +34607,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D270",
@@ -36822,6 +37023,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "aceId": "SOPH-0065",
+              "providerCourseCode": "PHIL1005",
+              "codeAliases": [
+                "PHIL1005"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -36834,6 +37041,16 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 2,
+              "recommendationStart": "2025-10-01",
+              "recommendationEnd": "2028-09-30",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--soph-0065-current-ace-2026-11-18"
+              ],
+              "identityCheckedOn": "2026-11-18",
+              "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+              "providerCoursePassingPercent": 70,
+              "providerCourseEffectiveDates": "October 2025 - Present",
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D265",
@@ -38707,6 +38924,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -38719,6 +38942,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D270",
@@ -43222,6 +43454,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "aceId": "SOPH-0065",
+              "providerCourseCode": "PHIL1005",
+              "codeAliases": [
+                "PHIL1005"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -43234,6 +43472,16 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 2,
+              "recommendationStart": "2025-10-01",
+              "recommendationEnd": "2028-09-30",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--soph-0065-current-ace-2026-11-18"
+              ],
+              "identityCheckedOn": "2026-11-18",
+              "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+              "providerCoursePassingPercent": 70,
+              "providerCourseEffectiveDates": "October 2025 - Present",
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D265",
@@ -44792,6 +45040,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -44804,6 +45058,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D270",
@@ -50025,6 +50288,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+              "aceId": "SOPH-0065",
+              "providerCourseCode": "PHIL1005",
+              "codeAliases": [
+                "PHIL1005"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -50037,6 +50306,16 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 2,
+              "recommendationStart": "2025-10-01",
+              "recommendationEnd": "2028-09-30",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--soph-0065-current-ace-2026-11-18"
+              ],
+              "identityCheckedOn": "2026-11-18",
+              "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+              "providerCoursePassingPercent": 70,
+              "providerCourseEffectiveDates": "October 2025 - Present",
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D265",
@@ -50898,6 +51177,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
+              "codeAliases": [
+                "ENG1001"
+              ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "wgu-sophia-business-current"
               ],
@@ -50910,6 +51195,15 @@
                 ]
               },
               "sourceCreditBasis": "Original source semester credits are independently retained from the provider page or current linked syllabus; they are not copied from the WGU CU award.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "competency-unit",
               "receivingCode": "D269",

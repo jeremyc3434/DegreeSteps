@@ -1,0 +1,907 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "data-analytics-bs",
+  "modelId": "curriculum-wgu-bs-data-analytics-reviewed",
+  "routeIds": [
+    "wgu-bs-data-analytics-reviewed"
+  ],
+  "title": "Data Analytics – B.S.",
+  "level": "bachelor",
+  "catalog": "202309",
+  "totalCredits": 122,
+  "review": {
+    "status": "reviewed",
+    "reviewer": "Codex (exact Data Analytics curriculum, policy and receiving-agreement review)",
+    "reviewedOn": "2026-11-25"
+  },
+  "sources": [
+    {
+      "id": "wgu-bsda-202309-curriculum-20261125",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSDA%3B202309",
+      "title": "Bachelor of Science, Data Analytics 202309 complete named CU ledger",
+      "kind": "university",
+      "checked": "2026-11-25",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 92,
+        "programCode": "BSDA",
+        "catalogYear": "202309",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "retrieval": "Unauthenticated public program-data API GET, captured; every receiving requirement reviewed.",
+      "capture": "content/source-captures/ffd84576aa5c5171.txt"
+    },
+    {
+      "id": "wgu-bsda-202309-metadata-20261125",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/IT",
+      "title": "BS Data Analytics (Catalog 09-2023) current public academic record and transfer notes",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-25",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 92,
+        "programCode": "BSDA",
+        "catalogYear": "202309",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "publicRecordId": 92,
+      "publicRecordVersion": 12,
+      "inactiveProgram": 0,
+      "approvalStatus": "Approved",
+      "retrieval": "Unauthenticated public academic API GET, captured.",
+      "capture": "content/source-captures/c0f1e682efb3df5c.txt",
+      "notes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    {
+      "id": "wgu-bsda-transfer-guidelines-20261125",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=92",
+      "title": "BSDA 202309 transfer guidelines: transfer areas and nontransferable courses",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-25",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 92,
+        "programCode": "BSDA",
+        "catalogYear": "202309",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "capture": "content/source-captures/b600792dabaccf81.txt"
+    },
+    {
+      "id": "wgu-bsda-sophia-7110-v236",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110",
+      "title": "WGU approved Sophia receiving map for BSDA 202309",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Data Analytics – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202309"
+      },
+      "provider": "Sophia",
+      "checked": "2026-11-25",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 92,
+      "catalogTerm": "202309",
+      "agreementId": 7110,
+      "agreementRecordVersion": 236,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/186d4e3a3fda7a15.txt"
+    },
+    {
+      "id": "wgu-bsda-study-4424-v242",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424",
+      "title": "WGU approved Study.com receiving map for BSDA 202309",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Data Analytics – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202309"
+      },
+      "provider": "Study.com",
+      "checked": "2026-11-25",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 92,
+      "catalogTerm": "202309",
+      "agreementId": 4424,
+      "agreementRecordVersion": 242,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/fded09837aae8641.txt"
+    },
+    {
+      "id": "wgu-bsda-straighterline-547-v121",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547",
+      "title": "WGU approved StraighterLine receiving map for BSDA 202309",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Data Analytics – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202309"
+      },
+      "provider": "StraighterLine",
+      "checked": "2026-11-25",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 92,
+      "catalogTerm": "202309",
+      "agreementId": 547,
+      "agreementRecordVersion": 121,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/6abe5f3197b69344.txt"
+    },
+    {
+      "id": "wgu-bsda-saylor-671-v108",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671",
+      "title": "WGU approved Saylor receiving map for BSDA 202309",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Data Analytics – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202309"
+      },
+      "provider": "Saylor",
+      "checked": "2026-11-25",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 92,
+      "catalogTerm": "202309",
+      "agreementId": 671,
+      "agreementRecordVersion": 108,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/4a1ca634549e22a4.txt"
+    },
+    {
+      "id": "wgu-bsda-program-page-20261125",
+      "title": "WGU Data Analytics: six-month tuition, resource fee, online format and admission routes",
+      "url": "https://www.wgu.edu/online-it-degrees/data-analytics-bachelors-program.html",
+      "kind": "university",
+      "roles": [
+        "pricing",
+        "admissions"
+      ],
+      "checked": "2026-11-25",
+      "capture": "content/source-captures/1936532318815fe6.txt",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Data Analytics – B.S.",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202309"
+      }
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "wgu-bsda-202309-metadata-20261125",
+      "text": "\"id\":92,\"pamsProgramCode\":\"BSDA\",\"programName\":\"BS Data Analytics (Catalog 09-2023)\""
+    }
+  ],
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 91.5,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "WGU publishes that transfer courses may not be used to fulfill more than one course of study; every option placed in more than one requirement carries the single-award condition.",
+      "sourceIds": [
+        "wgu-bsda-202309-metadata-20261125",
+        "wgu-bsda-sophia-7110-v236",
+        "wgu-bsda-study-4424-v242",
+        "wgu-bsda-saylor-671-v108",
+        "wgu-bsda-straighterline-547-v121"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
+      {
+        "owner": "student",
+        "status": "personal-task",
+        "message": "Confirm personal admission and catalog eligibility. WGU requires a high school diploma or equivalent plus one published readiness route: qualifying college GPA, an accredited prior degree, a transferable IT certification, qualifying high school GPA, or prior IT coursework at the required level.",
+        "sourceIds": [
+          "wgu-bsda-program-page-20261125"
+        ]
+      }
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Outside options come only from WGU's published partner agreements for BSDA catalog 202309 (program 92). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
+      "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+    ],
+    "mappingCheckedOn": "2026-11-25",
+    "pricing": {
+      "model": "subscription",
+      "amount": 4125,
+      "tuitionPerTerm": 3925,
+      "resourceFeePerTerm": 200,
+      "includesResourceFee": true,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-it-degrees/data-analytics-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bsda-program-page-20261125"
+      ],
+      "checkedOn": "2026-11-25",
+      "notes": [
+        "Published six-month tuition and mandatory resource fee. Provider charges and any other applicable fees remain separate; this is not a quoted total degree cost."
+      ]
+    },
+    "externalMaxCredits": 91.5,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-undergraduate-residency-policy-23797-20260918",
+      "wgu-bsda-202309-metadata-20261125",
+      "wgu-bsda-202309-curriculum-20261125"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 91.5,
+        "fraction": 0.75,
+        "basisCredits": 122,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 91.5,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bsda-202309-curriculum-20261125"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 42-course, 122-CU BSDA 202309 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "residencyPolicy": {
+      "type": "institution-fraction-with-capstone-exclusion",
+      "creditScope": "active-program",
+      "creditSystem": "competency-unit",
+      "fraction": 0.25,
+      "capstoneRequirementIds": [
+        "bsda-data-analytics-capstone"
+      ],
+      "capstoneCredits": 4,
+      "sourceIds": [
+        "wgu-undergraduate-residency-policy-23797-20260918",
+        "wgu-bsda-202309-curriculum-20261125",
+        "wgu-bsda-transfer-guidelines-20261125"
+      ],
+      "interpretationStatus": "verified-additional-capstone",
+      "calculatedMinimumInstitutionCUs": 34.5,
+      "primaryPolicySections": [
+        "IV.2",
+        "IV.3.a",
+        "IV.3.b.i"
+      ],
+      "conservativeSufficientCondition": {
+        "minimumNonCapstoneInstitutionCUs": 30.5,
+        "basisCredits": 122,
+        "derivation": "25% of active undergraduate degree CUs earned directly in that WGU program, in addition to required capstone CUs."
+      },
+      "capstoneEvidence": "D502 Data Analytics Capstone is the program's only course named as a capstone in the current ledger and is listed as Non-Transferable in the program's transfer guidelines.",
+      "notes": [
+        "Only passed CUs earned within the active WGU program count toward this rule. Prior WGU or other outside credit is not automatically counted as active-program residency."
+      ]
+    },
+    "policyCheckedOn": "2026-11-25",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 92,
+      "programCode": "BSDA",
+      "catalog": "202309",
+      "recordVersion": 12,
+      "ledgerSha256": "7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806",
+      "sourceIds": [
+        "wgu-bsda-202309-metadata-20261125",
+        "wgu-bsda-202309-curriculum-20261125"
+      ],
+      "checkedOn": "2026-11-25",
+      "outsideEquivalenciesReviewed": true
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bsda-core-data-analytics",
+        "parentId": "core",
+        "title": "Data Analytics",
+        "credits": 4,
+        "requirementIds": [
+          "bsda-introduction-to-analytics",
+          "bsda-data-and-information-governance"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 41,
+        "requirementIds": [
+          "bsda-health-fitness-and-wellness",
+          "bsda-applied-algebra",
+          "bsda-introduction-to-physical-and-human-geography",
+          "bsda-design-thinking-for-business",
+          "bsda-composition-writing-with-a-strategy",
+          "bsda-introduction-to-communication-connecting-with-others",
+          "bsda-ethics-in-technology",
+          "bsda-natural-science-lab",
+          "bsda-influential-communication-through-visual-design-and-storytelling",
+          "bsda-introduction-to-systems-thinking",
+          "bsda-discrete-math-logic",
+          "bsda-discrete-math-functions-and-relations",
+          "bsda-american-politics-and-the-us-constitution",
+          "bsda-critical-thinking-reason-and-evidence",
+          "bsda-applied-probability-and-statistics"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-business-core",
+        "parentId": "core",
+        "title": "Business Core",
+        "credits": 3,
+        "requirementIds": [
+          "bsda-fundamentals-of-spreadsheets-and-data-presentations"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-scripting-and-programming",
+        "parentId": "core",
+        "title": "Scripting and Programming",
+        "credits": 6,
+        "requirementIds": [
+          "bsda-scripting-and-programming-foundations",
+          "bsda-introduction-to-programming-in-python"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-business-of-it",
+        "parentId": "core",
+        "title": "Business of IT",
+        "credits": 7,
+        "requirementIds": [
+          "bsda-it-leadership-foundations",
+          "bsda-business-of-it-project-management"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-data-management",
+        "parentId": "core",
+        "title": "Data Management",
+        "credits": 10,
+        "requirementIds": [
+          "bsda-data-management-foundations",
+          "bsda-data-management-applications",
+          "bsda-advanced-data-management"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-software",
+        "parentId": "core",
+        "title": "Software",
+        "credits": 6,
+        "requirementIds": [
+          "bsda-hardware-and-operating-systems-essentials",
+          "bsda-scripting-and-programming-applications"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-web-development",
+        "parentId": "core",
+        "title": "Web Development",
+        "credits": 3,
+        "requirementIds": [
+          "bsda-web-development-foundations"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-full-stack-engineering",
+        "parentId": "core",
+        "title": "Full Stack Engineering",
+        "credits": 1,
+        "requirementIds": [
+          "bsda-version-control"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-network-and-security",
+        "parentId": "core",
+        "title": "Network and Security",
+        "credits": 3,
+        "requirementIds": [
+          "bsda-network-and-security-foundations"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-information-technology-management",
+        "parentId": "core",
+        "title": "Information Technology Management",
+        "credits": 3,
+        "requirementIds": [
+          "bsda-cloud-foundations"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-data-science",
+        "parentId": "core",
+        "title": "Data Science",
+        "credits": 24,
+        "requirementIds": [
+          "bsda-data-analytics-applications",
+          "bsda-big-data-foundations",
+          "bsda-introduction-to-data-science",
+          "bsda-data-wrangling",
+          "bsda-data-analysis-with-r",
+          "bsda-machine-learning",
+          "bsda-data-visualization",
+          "bsda-machine-learning-devops"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-computer-science",
+        "parentId": "core",
+        "title": "Computer Science",
+        "credits": 4,
+        "requirementIds": [
+          "bsda-data-structures-and-algorithms-i"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-core-business-management",
+        "parentId": "core",
+        "title": "Business Management",
+        "credits": 3,
+        "requirementIds": [
+          "bsda-change-management"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bsda-capstone-capstone",
+        "parentId": "capstone",
+        "title": "Capstone",
+        "credits": 4,
+        "requirementIds": [
+          "bsda-data-analytics-capstone"
+        ],
+        "sourceId": "wgu-bsda-202309-curriculum-20261125"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {},
+      "recencySourceIds": [
+        "wgu-bsda-202309-metadata-20261125"
+      ],
+      "publishedNotes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-bsda-exact-program-review-2026-11-25",
+      "checkedOn": "2026-11-25",
+      "programId": 92,
+      "catalog": "202309",
+      "receivingClaimsReviewed": 59,
+      "sourceIdentitiesReusedByExactProviderCode": 54,
+      "sourceIds": [
+        "wgu-bsda-sophia-7110-v236",
+        "wgu-bsda-study-4424-v242",
+        "wgu-bsda-straighterline-547-v121",
+        "wgu-bsda-saylor-671-v108"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 19,
+          "approvedSourceCodeCount": 38,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0005",
+            "SOPH-0011",
+            "SOPH-0012",
+            "SOPH-0013",
+            "SOPH-0015",
+            "SOPH-0022",
+            "SOPH-0025",
+            "SOPH-0030",
+            "SOPH-0051",
+            "SOPH-0054",
+            "SOPH-0062",
+            "SOPH-0065",
+            "SOPH-0080",
+            "SOPH-0083",
+            "SOPH-0091"
+          ],
+          "selectableReceivingPlacements": 16,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0001",
+            "SOPH-0009",
+            "SOPH-0024",
+            "SOPH-0034",
+            "SOPH-0043",
+            "SOPH-0047",
+            "SOPH-0048",
+            "SOPH-0049",
+            "SOPH-0050",
+            "SOPH-0058",
+            "SOPH-0059",
+            "SOPH-0060",
+            "SOPH-0063",
+            "SOPH-0067",
+            "SOPH-0068",
+            "SOPH-0069",
+            "SOPH-0070",
+            "SOPH-0071",
+            "SOPH-0072",
+            "SOPH-0075",
+            "SOPH-0082",
+            "SOPH-0090",
+            "SOPH-0096"
+          ],
+          "sourceIdentityConflictsHeld": [],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7110,
+          "agreementRecordVersion": 236,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 21,
+          "approvedSourceCodeCount": 81,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0006",
+            "SDCM-0009",
+            "SDCM-0013",
+            "SDCM-0015",
+            "SDCM-0016",
+            "SDCM-0017",
+            "SDCM-0034",
+            "SDCM-0042",
+            "SDCM-0052",
+            "SDCM-0057",
+            "SDCM-0068",
+            "SDCM-0089",
+            "SDCM-0199",
+            "SDCM-0210",
+            "SDCM-0212",
+            "SDCM-0213",
+            "SDCM-0216",
+            "SDCM-0218",
+            "SDCM-0219",
+            "SDCM-0240",
+            "SDCM-0249",
+            "SDCM-0253",
+            "SDCM-0255",
+            "SDCM-0259",
+            "SDCM-0265"
+          ],
+          "selectableReceivingPlacements": 29,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0011",
+            "SDCM-0012",
+            "SDCM-0018",
+            "SDCM-0019",
+            "SDCM-0020",
+            "SDCM-0021",
+            "SDCM-0025",
+            "SDCM-0032",
+            "SDCM-0033",
+            "SDCM-0038",
+            "SDCM-0039",
+            "SDCM-0040",
+            "SDCM-0041",
+            "SDCM-0043",
+            "SDCM-0044",
+            "SDCM-0045",
+            "SDCM-0048",
+            "SDCM-0053",
+            "SDCM-0055",
+            "SDCM-0060",
+            "SDCM-0065",
+            "SDCM-0066",
+            "SDCM-0067",
+            "SDCM-0069",
+            "SDCM-0073",
+            "SDCM-0122",
+            "SDCM-0133",
+            "SDCM-0134",
+            "SDCM-0135",
+            "SDCM-0140",
+            "SDCM-0154",
+            "SDCM-0155",
+            "SDCM-0156",
+            "SDCM-0157",
+            "SDCM-0158",
+            "SDCM-0159",
+            "SDCM-0164",
+            "SDCM-0178",
+            "SDCM-0179",
+            "SDCM-0180",
+            "SDCM-0181",
+            "SDCM-0182",
+            "SDCM-0184",
+            "SDCM-0186",
+            "SDCM-0188",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0198",
+            "SDCM-0214",
+            "SDCM-0242",
+            "SDCM-0243",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0248",
+            "SDCM-0252",
+            "SDCM-0258"
+          ],
+          "sourceIdentityConflictsHeld": [
+            {
+              "receivingCode": "C955",
+              "sourceCode": "SDCM-0025",
+              "partnerCourse": "*Statistics 101 (SDCM-0068) or Business 212 (SDCM-0025)",
+              "independentProviderCourse": "Business 103: Introductory Business Law",
+              "reason": "The university row names a different provider course than the independently verified identifier. No correction or equivalency is inferred."
+            }
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4424,
+          "agreementRecordVersion": 242,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 12,
+          "approvedSourceCodeCount": 39,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "OOSL-0002"
+          ],
+          "selectableReceivingPlacements": 1,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0003",
+            "OOSL-0004",
+            "OOSL-0005",
+            "OOSL-0006",
+            "OOSL-0007",
+            "OOSL-0008",
+            "OOSL-0011",
+            "OOSL-0012",
+            "OOSL-0014",
+            "OOSL-0016",
+            "OOSL-0018",
+            "OOSL-0019",
+            "OOSL-0027",
+            "OOSL-0034",
+            "OOSL-0035",
+            "OOSL-0039",
+            "OOSL-0040",
+            "OOSL-0042",
+            "OOSL-0043",
+            "OOSL-0044",
+            "OOSL-0046",
+            "OOSL-0051",
+            "OOSL-0052",
+            "OOSL-0059",
+            "OOSL-0063",
+            "OOSL-0070",
+            "OOSL-0083",
+            "OOSL-0084",
+            "OOSL-0085",
+            "OOSL-0086",
+            "OOSL-0092",
+            "OOSL-0107",
+            "OOSL-0115",
+            "OOSL-0119",
+            "OOSL-0120",
+            "OOSL-0127",
+            "OOSL-0128",
+            "OOSL-0129"
+          ],
+          "sourceIdentityConflictsHeld": [],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 547,
+          "agreementRecordVersion": 121,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 7,
+          "approvedSourceCodeCount": 11,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0005",
+            "SAYA-0006",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037",
+            "SAYA-0039",
+            "SAYA-0044",
+            "SAYA-0045"
+          ],
+          "selectableReceivingPlacements": 8,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0007",
+            "SAYA-0010",
+            "SAYA-0016"
+          ],
+          "sourceIdentityConflictsHeld": [],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 671,
+          "agreementRecordVersion": 108,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false
+    }
+  },
+  "modelSourceIds": [
+    "wgu-bsda-202309-curriculum-20261125",
+    "wgu-bsda-202309-metadata-20261125",
+    "wgu-bsda-transfer-guidelines-20261125",
+    "wgu-bsda-sophia-7110-v236",
+    "wgu-bsda-study-4424-v242",
+    "wgu-bsda-straighterline-547-v121",
+    "wgu-bsda-saylor-671-v108",
+    "wgu-bsda-program-page-20261125",
+    "wgu-undergraduate-institutional-catalog-202611",
+    "wgu-undergraduate-residency-policy-23797-20260918",
+    "wgu-global-sophia--soph-0080-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-syllabus-2026-11-18",
+    "study-software-identity-sdcm-0034-2026-11-25",
+    "study-software-identity-sdcm-0255-2026-11-25",
+    "study-software-identity-sdcm-0259-2026-11-25",
+    "study-software-ace-sdcm-0259-v1-2026-11-25",
+    "saylor-current-provider-credit-list-20261120",
+    "wgu-sophia-business-current",
+    "study-software-identity-sdcm-0068-2026-11-25",
+    "straighterline-oosl-0002-current-offering-20261120",
+    "straighterline-oosl-0002-ace-exhibit-20261120",
+    "study-current-sdcm-0013-2026-11-20",
+    "study-current-sdcm-0015-2026-11-20",
+    "study-current-sdcm-0016-2026-11-20",
+    "study-software-identity-sdcm-0253-2026-11-25",
+    "study-software-identity-sdcm-0042-2026-11-25",
+    "study-software-identity-sdcm-0017-2026-11-25",
+    "shared-sophia--soph-0065-current-provider-2026-11-18",
+    "shared-sophia--soph-0065-current-ace-2026-11-18",
+    "shared-sophia--soph-0065-current-syllabus-2026-11-18",
+    "study-current-sdcm-0052-2026-11-20",
+    "shared-sophia--gcu-soph-0015-ace-2026-11-19",
+    "shared-sophia--gcu-soph-0015-provider-syllabus-2026-11-19",
+    "shared-sophia--sophia-ace-composition-i-period-2026-11-19",
+    "shared-sophia--gcu-soph-0030-ace-2026-11-19",
+    "shared-sophia--sophia-ace-current-organization-2026-11-19",
+    "study-current-sdcm-0057-2026-11-20",
+    "study-current-sdcm-0089-2026-11-20",
+    "study-software-identity-sdcm-0249-2026-11-25",
+    "wgu-bsda-independent-soph-0062-20261125",
+    "wgu-bsda-java-current-syllabus-20261125",
+    "study-software-identity-sdcm-0199-2026-11-25",
+    "study-software-identity-sdcm-0216-2026-11-25",
+    "study-software-identity-sdcm-0213-2026-11-25",
+    "study-software-identity-sdcm-0219-2026-11-25",
+    "study-course-sdcm-0265-2026-11",
+    "sophia-soph-0083-current-offer",
+    "sophia-soph-0083-current-offer-syllabus",
+    "study-software-identity-sdcm-0006-2026-11-25",
+    "study-course-sdcm-0009-2026-11",
+    "wgu-bsda-independent-sdcm-0210-20261125",
+    "study-software-identity-sdcm-0212-2026-11-25",
+    "study-software-identity-sdcm-0240-2026-11-25",
+    "study-software-ace-sdcm-0240-v3-2026-11-25",
+    "wgu-bsda-independent-sdcm-0218-20261125",
+    "sophia-soph-0091-current-offer",
+    "sophia-soph-0091-current-offer-syllabus"
+  ],
+  "requirements": [
+    {"id":"bsda-introduction-to-analytics","code":"D491","title":"Introduction to Analytics","credits":2,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-analytics","curriculumAreaEvidence":{"areaOfStudy":"Data Analytics","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D491\",\"courseName\":\"Introduction to Analytics\",\"courseDescription\":\"Analytics is the creative use of data and statistical modeling to tell a compelling story that not only drives strategic action, but also results in business value. Introduction to Analytics examines data analytics as a discipline and the various roles and functions within the field. You will expand your knowledge about what analytics is and develop a basic understanding of statistics, analysis, problem solving, and programming concepts.\",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Data Analytics\""}]},
+    {"id":"bsda-health-fitness-and-wellness","code":"C458","title":"Health, Fitness, and Wellness","credits":4,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"C458\",\"courseName\":\"Health, Fitness, and Wellness\",\"courseDescription\":\"Health, Fitness, and Wellness focuses on the importance and foundations of good health and physical fitness, particularly for children and adolescents. This course addresses health, nutrition, and fitness, and substance use and abuse.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-fundamentals-of-spreadsheets-and-data-presentations","code":"D388","title":"Fundamentals of Spreadsheets and Data Presentations","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D388\",\"courseName\":\"Fundamentals of Spreadsheets and Data Presentations\",\"courseDescription\":\"Fundamentals of Spreadsheets and Data Presentations offers learners an overview of the use of spreadsheet functions and methods for presenting data within spreadsheets. Learners will have the opportunity to explore features and uses of MS Excel and apply the tools to situations they may encounter while studying in their program. They will also be introduced to real world uses and tools to collect, organize and present data.  \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Core\""}]},
+    {"id":"bsda-scripting-and-programming-foundations","code":"D278","title":"Scripting and Programming - Foundations","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"scripting-and-programming","curriculumAreaEvidence":{"areaOfStudy":"Scripting and Programming","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D278\",\"courseName\":\"Scripting and Programming - Foundations\",\"courseDescription\":\"Scripting and Programming - Foundations introduces programming basics such as variables, data types, flow control, and design concepts. The course is language-agnostic in nature, ending in a survey of languages, and introduces the distinction between interpreted and compiled languages. Learners will gain skills in identifying scripts for computer program requirements and in using fundamental programming elements as part of common computer programming tasks. Learners will also gain an understanding of the logic and outcome of simple algorithms.   \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Scripting and Programming\""}]},
+    {"id":"bsda-it-leadership-foundations","code":"D370","title":"IT Leadership Foundations","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D370\",\"courseName\":\"IT Leadership Foundations\",\"courseDescription\":\"IT Leadership Foundations is an introductory course that provides students with an overview of organizational structures, communication, and leadership styles specific to information technology in organizations. It also introduces students to some of the power skills that help make successful IT professionals, including time management, problem solving, and emotional intelligence. Students in this course explore their own strengths and passions in relation to the field. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business of IT\""}]},
+    {"id":"bsda-applied-algebra","code":"C957","title":"Applied Algebra","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"C957\",\"courseName\":\"Applied Algebra\",\"courseDescription\":\"Applied Algebra is designed to help you develop competence in working with functions, the algebra of functions, and using some applied properties of functions. You will start learning about how we can apply different kinds of functions to relevant, real-life examples. From there, the algebra of several families of functions will be explored, including linear, polynomial, exponential, and logistic functions. You will also learn about relevant, applicable mathematical properties of each family of functions, including rate of change, concavity, maximizing/minimizing, and asymptotes. These properties will be used to solve problems related to your major and make sense of everyday living problems. Students should complete Applied Probability and Statistics or its equivalent prior to engaging in Applied Algebra.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-introduction-to-physical-and-human-geography","code":"D199","title":"Introduction to Physical and Human Geography","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D199\",\"courseName\":\"Introduction to Physical and Human Geography\",\"courseDescription\":\"This is Introduction to Physical and Human Geography, a three-module course that addresses the question of what geography really is in today\\u0027s complex world; how migration affects—and has been affected by—geography; and one of the biggest present problems related to geography: climate change. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to, with the goal of demonstrating proficiency in the five competencies covered in the final assessment. If you have no prior knowledge of this material, you can expect to spend 30–40 hours on the course content. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-introduction-to-programming-in-python","code":"D335","title":"Introduction to Programming in Python","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"scripting-and-programming","curriculumAreaEvidence":{"areaOfStudy":"Scripting and Programming","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D335\",\"courseName\":\"Introduction to Programming in Python\",\"courseDescription\":\"Introduction to Programming in Python introduces skills in creating Python scripts with basic programming concepts. Learners will be able to create control flow with functions and loops, and to implement code with packages, modules, and libraries.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Scripting and Programming\""}]},
+    {"id":"bsda-design-thinking-for-business","code":"D428","title":"Design Thinking for Business","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D428\",\"courseName\":\"Design Thinking for Business\",\"courseDescription\":\"Design Thinking for Business examines the design thinking methodology for solving complex problems. This course introduces students to design thinking as a human-centered approach to problem-solving and innovation that draws upon empathy and creativity to develop solutions to complex problems. Students will explore the principles and stages of design thinking and analyze the use of design thinking in developing solutions through real-world scenarios.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-composition-writing-with-a-strategy","code":"D269","title":"Composition: Writing with a Strategy","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D269\",\"courseName\":\"Composition: Writing with a Strategy\",\"courseDescription\":\"Welcome to Composition: Writing with a Strategy! In this course, you will focus on three main topics: understanding purpose, context, and audience, writing strategies and techniques, and editing and revising.  In addition, the first section, will offer review on core elements of the writing process, cross-cultural communication, as well as working with words and common standards and practices. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the seven competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-introduction-to-communication-connecting-with-others","code":"D268","title":"Introduction to Communication: Connecting with Others","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D268\",\"courseName\":\"Introduction to Communication: Connecting with Others\",\"courseDescription\":\"Welcome to Introduction to Communication: Connecting with Others! It may seem like common knowledge that communication skills are important, and that communicating with others is inescapable in our everyday lives. While this may appear simplistic, the study of communication is actually complex, dynamic, and multifaceted. Strong communication skills are invaluable to strengthening a multitude of aspects of life. Specifically, this course will focus on communication in the professional setting, and present material from multiple vantage points, including communicating with others in a variety of contexts, across situations, and with diverse populations. Upon completion, you will have a deeper understanding of both your own and others’ communication behaviors, and a toolbox of effective behaviors to enhance your experience in the workplace.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-data-management-foundations","code":"D426","title":"Data Management - Foundations","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-management","curriculumAreaEvidence":{"areaOfStudy":"Data Management","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D426\",\"courseName\":\"Data Management - Foundations\",\"courseDescription\":\"Data Management Foundations offers an introduction in creating conceptual, logical and physical data models.  Students gain skills in creating databases and tables in SQL-enabled database management systems, as well as skills in normalizing databases. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Data Management\""}]},
+    {"id":"bsda-data-management-applications","code":"D427","title":"Data Management - Applications","credits":4,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-management","curriculumAreaEvidence":{"areaOfStudy":"Data Management","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D427\",\"courseName\":\"Data Management - Applications\",\"courseDescription\":\"Data Management - Applications covers conceptual data modeling and introduces MySQL. Students will learn how to create simple to complex SELECT queries, including subqueries and joins, and how to use SQL to update and delete data. Topics covered in this course include exposure to MySQL; creating and modifying databases, tables, views, foreign keys and primary keys (FKs and PKs), and indexes; populating tables; and developing simple Select-From-Where (SFW) queries to complex 3+ table join queries. The following course is a prerequisite: Data Management - Foundations.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Data Management\""}]},
+    {"id":"bsda-ethics-in-technology","code":"D333","title":"Ethics in Technology","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D333\",\"courseName\":\"Ethics in Technology\",\"courseDescription\":\"Ethics in Technology examines the ethical considerations of technology use in the 21st century and introduces students to a decision-making process informed by ethical frameworks. Students will study specific cases related to important topics such as surveillance, social media, hacking, data manipulation, plagiarism and piracy, artificial intelligence, responsible innovation, and the digital divide. This course has no prerequisites.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-natural-science-lab","code":"C683","title":"Natural Science Lab","credits":2,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"C683\",\"courseName\":\"Natural Science Lab\",\"courseDescription\":\"This course provides students an introduction to using the scientific method and engaging in scientific research to reach conclusions about the natural world. Students will design and carry out an experiment in the natural sciences to investigate a hypothesis by gathering quantitative data. They will also research a specific topic in the natural sciences using academic sources and draw conclusions from their findings.\",\"competencyUnits\":\"2\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-advanced-data-management","code":"D326","title":"Advanced Data Management","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-management","curriculumAreaEvidence":{"areaOfStudy":"Data Management","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D326\",\"courseName\":\"Advanced Data Management\",\"courseDescription\":\"Advanced Data Management enables learners to extract and analyze raw data. Skillful data management allows organizations to discover and explore data in ways that uncover trends, issues, and their root causes. In turn, businesses are better equipped to capitalize on opportunities and more accurately plan for the future. As organizations continue to extract larger and more detailed volumes of data, the need is rapidly growing for IT professionals who possess data management skills. The skills gained in this course include performing advanced relational data modeling as well as designing data marts, lakes, and warehouses. This course will empower learners with the skills to build business logic at the database layer to employ more stability and higher data-processing speeds. Learners will gain the ability to automate common tasks to summarize and integrate data as they prepare it for analysis. Data Management - Foundations is a prerequisite for this course.   \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Data Management\""}]},
+    {"id":"bsda-hardware-and-operating-systems-essentials","code":"D386","title":"Hardware and Operating Systems Essentials","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D386\",\"courseName\":\"Hardware and Operating Systems Essentials\",\"courseDescription\":\"Hardware and Operating Systems prepares learners for concepts in software engineering by providing a foundation of understanding in computer architecture, the history of computing architectures, and operating systems. Additional topics covered include hardware and software stacks and how to choose appropriate hardware and software solutions to meet both functional and non-functional business requirements.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsda-web-development-foundations","code":"D276","title":"Web Development Foundations","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"web-development","curriculumAreaEvidence":{"areaOfStudy":"Web Development","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D276\",\"courseName\":\"Web Development Foundations\",\"courseDescription\":\"Welcome to Web Development Foundations! In this course you will learn about web design and development using HTML and CSS. This course employs the zyBooks learning platform which contains all the necessary reading materials, knowledge checks, and hands-on activities to prepare you for the course assessment. For the best understanding of the course content, complete each chapter. There are no prerequisites. Competency will be demonstrated with a performance assessment. \\n\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Web Development\""}]},
+    {"id":"bsda-version-control","code":"D197","title":"Version Control","credits":1,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"full-stack-engineering","curriculumAreaEvidence":{"areaOfStudy":"Full Stack Engineering","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D197\",\"courseName\":\"Version Control\",\"courseDescription\":\"Version control is critical to maintaining software and enabling scalability solutions. A best practice for any programming project that requires multiple files uses version control. Version control enables teams to have collaborative workflows and enhances the software development lifecycle.  This course introduces students to the basics of publishing, retrieving, branching, and cloning.  There are no prerequisites for this course.\",\"competencyUnits\":\"1\",\"areaOfStudy\":\"Full Stack Engineering\""}]},
+    {"id":"bsda-influential-communication-through-visual-design-and-storytelling","code":"D246","title":"Influential Communication through Visual Design and Storytelling","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D246\",\"courseName\":\"Influential Communication through Visual Design and Storytelling\",\"courseDescription\":\"Influential Communication through Visual Design and Storytelling provides learners with foundational visual design and storytelling techniques to influence and create a lasting impression on audiences. Learners will first explore how human behavior is influenced by visuals and when to apply visual techniques to better communicate with audiences. Next, learners will learn techniques for creating compelling stories that create memorable images within the audience\\u0027s mind. Ultimately, learners who master these skills will be well-positioned to apply their visual and storytelling techniques to not only better communicate their thoughts and ideas to an audience, but to also influence or motivate them.\\r\\n\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-network-and-security-foundations","code":"D315","title":"Network and Security - Foundations","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"network-and-security","curriculumAreaEvidence":{"areaOfStudy":"Network and Security","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D315\",\"courseName\":\"Network and Security - Foundations\",\"courseDescription\":\"Network and Security - Foundations introduces learners to the basic network systems and concepts related to networking technologies. Learners will gain skills in applying network security concepts for business continuity, data access, and confidentiality, and in identifying solutions for compliance with security guidance.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Network and Security\""}]},
+    {"id":"bsda-cloud-foundations","code":"D282","title":"Cloud Foundations","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"information-technology-management","curriculumAreaEvidence":{"areaOfStudy":"Information Technology Management","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D282\",\"courseName\":\"Cloud Foundations\",\"courseDescription\":\"Cloud Foundations introduces learners to real-world issues and practical solutions to cloud computing. This course covers the business value of cloud computing, examining cloud types, the steps to successful cloud adoption, and the effect cloud adoption has on IT service management, as well as the risks and consequences of implementing cloud solutions. This course prepares learners for the AWS Certified Practitioner certification exam. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Information Technology Management\""}]},
+    {"id":"bsda-introduction-to-systems-thinking","code":"D372","title":"Introduction to Systems Thinking","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D372\",\"courseName\":\"Introduction to Systems Thinking\",\"courseDescription\":\"Introduction to Systems Thinking provides learners with the skills required to engage in a holistic systems-based approach to analyzing complex problems and solutions. This course introduces the foundational concepts and principles of systems thinking and provides opportunities to use a systems thinking approach to analyze and evaluate real-world case studies. The course will culminate with using systems thinking to develop a solution to an authentic complex problem. This course has no prerequisites, but general education math (C955 or C957) is preferred. Because the course is self-paced, learners may move through the material as quickly or as slowly as needed, with the goal of demonstrating proficiency in the five competencies covered in the final assessment. If learners have no prior knowledge of this material, they can expect to spend 30 to 40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-data-and-information-governance","code":"D494","title":"Data and Information Governance","credits":2,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-analytics","curriculumAreaEvidence":{"areaOfStudy":"Data Analytics","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D494\",\"courseName\":\"Data and Information Governance\",\"courseDescription\":\"Data and Information Governance provides learners with the knowledge that establishing rules of engagement, policies, procedures, and data stewardship is essential to exercising organizational control over—and extracting maximum value from—its data assets. Good data governance helps an organization lower costs, create efficiencies, and achieve its strategic goals and objectives. Data governance provides a framework for properly managing information across the entire data lifecycle and establishes strategies in support of disaster recovery and continuity of operations. This course will prepare IT professionals to assist their organization in the definition and implementation of best practices related to the planning and implementation of managed systems that meet business, technical, security, auditing, disaster recovery, and business continuity requirements.\",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Data Analytics\""}]},
+    {"id":"bsda-data-analytics-applications","code":"D492","title":"Data Analytics - Applications","credits":4,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-science","curriculumAreaEvidence":{"areaOfStudy":"Data Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D492\",\"courseName\":\"Data Analytics - Applications\",\"courseDescription\":\"Data Analytics - Applications covers advanced concepts across the various phases of the data product lifecycle. You will learn to choose and apply appropriate techniques for data management and data manipulation, statistical analysis, visualization, and data governance concepts to satisfy business needs.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Data Science\""}]},
+    {"id":"bsda-scripting-and-programming-applications","code":"D493","title":"Scripting and Programming - Applications","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D493\",\"courseName\":\"Scripting and Programming - Applications\",\"courseDescription\":\"Scripting and Programming - Applications for undergraduates explores the various aspects of the Python programming language by examining its syntax, the development environment, and tools and techniques to solve some real-world problems. Introduction to Programming in Python is a prerequisite for this course. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
+    {"id":"bsda-data-structures-and-algorithms-i","code":"C949","title":"Data Structures and Algorithms I","credits":4,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"C949\",\"courseName\":\"Data Structures and Algorithms I\",\"courseDescription\":\"Data Structures and Algorithms I covers the fundamentals of dynamic data structures, such as bags, lists, stacks, queues, trees, and hash tables with their associated algorithms. This course discusses object-oriented design and abstract data types as design paradigms. The course emphasizes problem-solving and techniques for designing efficient, maintainable software applications. Students will implement simple applications using the techniques learned.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Computer Science\""}]},
+    {"id":"bsda-change-management","code":"C721","title":"Change Management","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"C721\",\"courseName\":\"Change Management\",\"courseDescription\":\"Change Management provides an understanding of change and an overview of successfully managing change using various methods and tools. Emphasizing change theories and various best practices, this course covers how to recognize and implement change using an array of other effective strategies, including those related to innovation and leadership. Other topics include approaches to change, diagnosing and planning for change, implementing change, and sustaining change.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business Management\""}]},
+    {"id":"bsda-discrete-math-logic","code":"D420","title":"Discrete Math: Logic","credits":1,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D420\",\"courseName\":\"Discrete Math: Logic\",\"courseDescription\":\"Discrete Math-Logic is designed to help students develop competence in the use of logic and proofs and Boolean Algebra and Boolean functions. Applied Probability and Statistics and Applied Algebra are prerequisites for this course.\",\"competencyUnits\":\"1\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-discrete-math-functions-and-relations","code":"D421","title":"Discrete Math: Functions and Relations","credits":1,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D421\",\"courseName\":\"Discrete Math: Functions and Relations\",\"courseDescription\":\"Discrete Math: Functions and Relations is designed to help students develop competence in the use of abstract discrete structures fundamental to systems networking. In particular, this course will introduce students to set theory, finite sequences, series, and relations. Discrete Math: Logic, Applied Probability and Statistics, and Applied Algebra are prerequisites for this course.\",\"competencyUnits\":\"1\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-american-politics-and-the-us-constitution","code":"C963","title":"American Politics and the US Constitution","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"C963\",\"courseName\":\"American Politics and the US Constitution\",\"courseDescription\":\"American Politics and the U.S. Constitution examines the evolution of representative government in the United States and the changing interpretations of the civil rights and civil liberties protected by the Constitution. This course will give candidates an understanding of the powers of the branches of the federal government, the continual tensions inherent in a federal system, the shifting relationship between state and federal governments, and the interactions between elected officials and the ever-changing electorate. This course will focus on such topics as the role of a free press in a democracy, the impact of changing demographics on American politics, and the debates over and expansion of civil rights. Upon completion of the course, candidates should be able to explain the basic functions of the federal government, describe the forces that shape American policy and politics, and be better prepared to participate in America’s civic institutions. This course has no prerequisite. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-business-of-it-project-management","code":"D324","title":"Business of IT - Project Management","credits":4,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D324\",\"courseName\":\"Business of IT - Project Management\",\"courseDescription\":\"In this course, students will build on industry standard concepts, techniques, and processes to develop a comprehensive foundation for project management activities. During a project\\u0027s life cycle, students will develop the critical skills necessary to initiate, plan, execute, monitor, control, and close a project. Students will apply best practices in areas such as scope management, resource allocation, project planning, project scheduling, quality control, risk management, performance measurement, and project reporting. This course prepares students for the following certification exam: CompTIA Project+.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Business of IT\""}]},
+    {"id":"bsda-big-data-foundations","code":"D495","title":"Big Data Foundations","credits":4,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-science","curriculumAreaEvidence":{"areaOfStudy":"Data Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D495\",\"courseName\":\"Big Data Foundations\",\"courseDescription\":\"Big Data Foundations provides an in-depth introduction to big data concepts, terminology, and applications. You will learn the risks and challenges of working with extremely large data sets. The course introduces tools and techniques for working with big data. The course covers selection criteria for relational and non-relational data architectures and cloud-native data storage concepts. It also provides a historical perspective on the evolution of big data storage approaches. Data warehousing, data lakes, and data lakehouses are introduced, and design principles for each are explained. Learners design aspects of big data architecture and big data processing to address given business requirements.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Data Science\""}]},
+    {"id":"bsda-introduction-to-data-science","code":"D496","title":"Introduction to Data Science","credits":4,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-science","curriculumAreaEvidence":{"areaOfStudy":"Data Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D496\",\"courseName\":\"Introduction to Data Science\",\"courseDescription\":\"Introduction to Data Science introduces the data analysis process and common statistical techniques necessary for the analysis of data. Students will ask questions that can be solved with a given data set, set up experiments, use statistics and data wrangling to test hypotheses, find ways to speed up their data analysis code, make their data set easier to access, and communicate their findings.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Data Science\""}]},
+    {"id":"bsda-data-wrangling","code":"D497","title":"Data Wrangling","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-science","curriculumAreaEvidence":{"areaOfStudy":"Data Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D497\",\"courseName\":\"Data Wrangling\",\"courseDescription\":\"Data Wrangling elaborates on concepts covered in Introduction to Data Science, helping to develop skills crucial to the field of data science and analysis. It explores how to wrangle data from diverse sources and shape it to enable data-driven applications—a common activity in many data scientists\\u0027 routine. Topics covered include gathering and extracting data from widely-used data formats, assessing the quality of data, and exploring best practices for data cleaning. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Data Science\""}]},
+    {"id":"bsda-data-analysis-with-r","code":"D498","title":"Data Analysis with R","credits":2,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-science","curriculumAreaEvidence":{"areaOfStudy":"Data Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D498\",\"courseName\":\"Data Analysis with R\",\"courseDescription\":\"Data Analysis with R focuses on exploratory data analysis (EDA) utilizing R. EDA is an approach for summarizing and visualizing the important characteristics of a data set. In this course you will develop skills in R programming to acquire and load data sets, create appropriate statistical summaries of data, and create data visualizations to help uncover and communicate insights about data using R. \",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Data Science\""}]},
+    {"id":"bsda-machine-learning","code":"D499","title":"Machine Learning","credits":3,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-science","curriculumAreaEvidence":{"areaOfStudy":"Data Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D499\",\"courseName\":\"Machine Learning\",\"courseDescription\":\"Machine Learning presents the end-to-end process of investigating data through a machine learning lens. Topics covered include: supervised and unsupervised learning algorithms, features that best represent data, commonly-used machine learning algorithms, and methods for evaluating the performance of machine learning algorithms.  \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Data Science\""}]},
+    {"id":"bsda-data-visualization","code":"D500","title":"Data Visualization","credits":2,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-science","curriculumAreaEvidence":{"areaOfStudy":"Data Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D500\",\"courseName\":\"Data Visualization\",\"courseDescription\":\"Data Visualization covers the application of design principles, human perception, color theory, and effective storytelling in the context of data visualization. It addresses presenting data to others and advancing technology with visualization tools enabling data scientists to share their findings and support organizational decision-making processes. Additionally, this course focuses on how to visually encode and present data to an audience. \",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Data Science\""}]},
+    {"id":"bsda-machine-learning-devops","code":"D501","title":"Machine Learning DevOps","credits":2,"category":"core","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"data-science","curriculumAreaEvidence":{"areaOfStudy":"Data Science","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D501\",\"courseName\":\"Machine Learning DevOps\",\"courseDescription\":\"Machine Learning DevOps focuses on the software engineering fundamentals needed to successfully streamline the deployment of data and machine learning models in a production-level environment. Students will build the DevOps skills required to automate the various aspects and stages of machine learning model building and monitoring over time.\",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Data Science\""}]},
+    {"id":"bsda-data-analytics-capstone","code":"D502","title":"Data Analytics Capstone","credits":4,"category":"capstone","sourceIds":["wgu-bsda-202309-curriculum-20261125","wgu-bsda-transfer-guidelines-20261125"],"institutionalOnly":true,"group":"capstone","curriculumAreaEvidence":{"areaOfStudy":"Capstone","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D502\",\"courseName\":\"Data Analytics Capstone\",\"courseDescription\":\"The Data Analytics Undergraduate Capstone challenges students to demonstrate competencies supporting all BSDA program outcomes. Students will identify an organizational need, plan and develop a data analytics product to serve that need, and document the process in a project proposal and data project report. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Capstone\""},{"sourceId":"wgu-bsda-transfer-guidelines-20261125","text":"\"PAMS_bannerCode\":\"D502\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsda-critical-thinking-reason-and-evidence","code":"D265","title":"Critical Thinking: Reason and Evidence","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"D265\",\"courseName\":\"Critical Thinking: Reason and Evidence\",\"courseDescription\":\"In this course you will learn key critical thinking concepts and how to apply them in the analysis and evaluation of reasons and evidence. The course examines the basic components of an argument, the credibility of evidence sources, the impact of bias, and how to construct an argument that provides good support for a claim. The course consists of an introduction and four major sections. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the four competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bsda-applied-probability-and-statistics","code":"C955","title":"Applied Probability and Statistics","credits":3,"category":"general","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsda-202309-curriculum-20261125"],"programId":92,"catalogTerm":"202309","ledgerSha256":"7ba1776dd9a50a0531998abceebc3e4d948948086f62c8495873236f91e0e806"},"quotes":[{"sourceId":"wgu-bsda-202309-curriculum-20261125","text":"\"courseCode\":\"C955\",\"courseName\":\"Applied Probability and Statistics\",\"courseDescription\":\"Applied Probability and Statistics is designed to help students develop competence in the fundamental concepts of basic statistics including: introductory algebra and graphing; descriptive statistics; regression and correlation; and probability. Statistical data and probability are often used in everyday life, science, business, information technology, and educational settings to make informed decisions about the validity of studies and the effect of data on decisions. This course discusses what constitutes sound research design and how to appropriately model phenomena using statistical data. Additionally, the content covers simple probability calculations, based on events that occur in the business and IT industries. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]}
+  ]
+}

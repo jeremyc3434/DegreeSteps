@@ -1,0 +1,647 @@
+{
+  "version": 1,
+  "id": "wgu-shared-sophia-five-course-promotion-proposal-20261125",
+  "checkedOn": "2026-11-25",
+  "status": "superseded-by-applied-global-source-namespace-review",
+  "reason": "Five source definitions already independently verified in the18-course Sophia bundle remain unverified in the shared provider kit. Make those original facts reusable across exact receiving maps.",
+  "sourceBundle": "content/reuse/wgu-sophia-provider-identities.json",
+  "promotedCodes": [
+    "SOPH-0015",
+    "SOPH-0021",
+    "SOPH-0030",
+    "SOPH-0041",
+    "SOPH-0065"
+  ],
+  "patches": [
+    {
+      "code": "SOPH-0015",
+      "before": {
+        "code": "SOPH-0015",
+        "title": "English Composition I",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/"
+      },
+      "after": {
+        "code": "SOPH-0015",
+        "title": "English Composition I",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+        "aceId": "SOPH-0015",
+        "providerCourseCode": "ENG1001",
+        "codeAliases": [
+          "ENG1001"
+        ],
+        "sourceUpper": false,
+        "identitySourceIds": [
+          "wgu-global-sophia--gcu-soph-0015-ace-2026-11-19",
+          "wgu-global-sophia--gcu-soph-0015-provider-syllabus-2026-11-19"
+        ],
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "wgu-global-sophia--gcu-soph-0015-ace-2026-11-19",
+            "wgu-global-sophia--gcu-soph-0015-provider-syllabus-2026-11-19"
+          ]
+        },
+        "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+        "courseVersion": 4,
+        "recommendationStart": "2024-04-01",
+        "recommendationEnd": "2027-03-31",
+        "recommendationPeriodSourceIds": [
+          "wgu-global-sophia--sophia-ace-composition-i-period-2026-11-19"
+        ],
+        "identityCheckedOn": "2026-11-19",
+        "identityReviewId": "gcu-sophia-review-2026-11-19",
+        "providerCoursePassingPercent": 70
+      }
+    },
+    {
+      "code": "SOPH-0021",
+      "before": {
+        "code": "SOPH-0021",
+        "title": "Developing Effective Teams",
+        "sourceCredits": 1,
+        "sourceCreditSystem": "semester"
+      },
+      "after": {
+        "code": "SOPH-0021",
+        "title": "Developing Effective Teams",
+        "sourceCredits": 1,
+        "sourceCreditSystem": "semester",
+        "aceId": "SOPH-0021",
+        "providerCourseCode": "BUS1200",
+        "codeAliases": [
+          "BUS1200"
+        ],
+        "sourceUpper": false,
+        "url": "https://www.sophia.org/online-courses/career-success/developing-effective-teams/",
+        "identitySourceIds": [
+          "wgu-global-sophia--soph-0021-current-provider-2026-11-18",
+          "wgu-global-sophia--soph-0021-current-ace-2026-11-18",
+          "wgu-global-sophia--soph-0021-current-syllabus-2026-11-18"
+        ],
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 1,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "wgu-global-sophia--soph-0021-current-provider-2026-11-18",
+            "wgu-global-sophia--soph-0021-current-ace-2026-11-18",
+            "wgu-global-sophia--soph-0021-current-syllabus-2026-11-18"
+          ]
+        },
+        "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+        "courseVersion": 4,
+        "recommendationStart": "2024-10-01",
+        "recommendationEnd": "2027-09-30",
+        "recommendationPeriodSourceIds": [
+          "wgu-global-sophia--soph-0021-current-ace-2026-11-18"
+        ],
+        "identityCheckedOn": "2026-11-18",
+        "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+        "providerCoursePassingPercent": 70,
+        "providerCourseEffectiveDates": "October 2024 - Present"
+      }
+    },
+    {
+      "code": "SOPH-0030",
+      "before": {
+        "code": "SOPH-0030",
+        "title": "English Composition II",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-ii/"
+      },
+      "after": {
+        "code": "SOPH-0030",
+        "title": "English Composition II",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-ii/",
+        "aceId": "SOPH-0030",
+        "providerCourseCode": "ENG1002",
+        "codeAliases": [
+          "ENG1002"
+        ],
+        "sourceUpper": false,
+        "identitySourceIds": [
+          "wgu-global-sophia--gcu-soph-0030-ace-2026-11-19"
+        ],
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "wgu-global-sophia--gcu-soph-0030-ace-2026-11-19"
+          ]
+        },
+        "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+        "courseVersion": 3,
+        "recommendationStart": "2025-11-01",
+        "recommendationEnd": "2028-10-31",
+        "recommendationPeriodSourceIds": [
+          "wgu-global-sophia--sophia-ace-current-organization-2026-11-19"
+        ],
+        "identityCheckedOn": "2026-11-19",
+        "identityReviewId": "gcu-sophia-review-2026-11-19",
+        "providerCoursePassingPercent": 70
+      }
+    },
+    {
+      "code": "SOPH-0041",
+      "before": {
+        "code": "SOPH-0041",
+        "title": "IT Career Exploration",
+        "sourceCredits": 1,
+        "sourceCreditSystem": "semester"
+      },
+      "after": {
+        "code": "SOPH-0041",
+        "title": "IT Career Exploration",
+        "sourceCredits": 1,
+        "sourceCreditSystem": "semester",
+        "aceId": "SOPH-0041",
+        "providerCourseCode": "CS1003",
+        "codeAliases": [
+          "CS1003"
+        ],
+        "sourceUpper": false,
+        "url": "https://www.sophia.org/online-courses/career-success/it-career-exploration/",
+        "identitySourceIds": [
+          "wgu-global-sophia--soph-0041-current-provider-2026-11-18",
+          "wgu-global-sophia--soph-0041-current-ace-2026-11-18",
+          "wgu-global-sophia--soph-0041-current-syllabus-2026-11-18"
+        ],
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 1,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "wgu-global-sophia--soph-0041-current-provider-2026-11-18",
+            "wgu-global-sophia--soph-0041-current-ace-2026-11-18",
+            "wgu-global-sophia--soph-0041-current-syllabus-2026-11-18"
+          ]
+        },
+        "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+        "courseVersion": 3,
+        "recommendationStart": "2026-07-01",
+        "recommendationEnd": "2029-06-30",
+        "recommendationPeriodSourceIds": [
+          "wgu-global-sophia--soph-0041-current-ace-2026-11-18"
+        ],
+        "identityCheckedOn": "2026-11-18",
+        "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+        "providerCoursePassingPercent": 70,
+        "providerCourseEffectiveDates": "July 2026 – Present"
+      }
+    },
+    {
+      "code": "SOPH-0065",
+      "before": {
+        "code": "SOPH-0065",
+        "title": "Critical Thinking",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/"
+      },
+      "after": {
+        "code": "SOPH-0065",
+        "title": "Critical Thinking",
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "aceId": "SOPH-0065",
+        "providerCourseCode": "PHIL1005",
+        "codeAliases": [
+          "PHIL1005"
+        ],
+        "sourceUpper": false,
+        "identitySourceIds": [
+          "wgu-global-sophia--soph-0065-current-provider-2026-11-18",
+          "wgu-global-sophia--soph-0065-current-ace-2026-11-18",
+          "wgu-global-sophia--soph-0065-current-syllabus-2026-11-18"
+        ],
+        "sourceCreditStatus": "verified",
+        "sourceCreditVerification": {
+          "credits": 3,
+          "creditSystem": "semester",
+          "sourceIds": [
+            "wgu-global-sophia--soph-0065-current-provider-2026-11-18",
+            "wgu-global-sophia--soph-0065-current-ace-2026-11-18",
+            "wgu-global-sophia--soph-0065-current-syllabus-2026-11-18"
+          ]
+        },
+        "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+        "courseVersion": 2,
+        "recommendationStart": "2025-10-01",
+        "recommendationEnd": "2028-09-30",
+        "recommendationPeriodSourceIds": [
+          "wgu-global-sophia--soph-0065-current-ace-2026-11-18"
+        ],
+        "identityCheckedOn": "2026-11-18",
+        "identityReviewId": "sophia-liberty-baseline-identities-2026-11-18",
+        "providerCoursePassingPercent": 70,
+        "providerCourseEffectiveDates": "October 2025 - Present"
+      }
+    }
+  ],
+  "sourcesToAppend": [
+    {
+      "id": "wgu-global-sophia--gcu-soph-0015-ace-2026-11-19",
+      "kind": "ace",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+      "checkedOn": "2026-11-19",
+      "scope": "Exact ACE course ID, version, organization code, 3 semester credits and source division.",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "gcu-soph-0015-ace-2026-11-19"
+    },
+    {
+      "id": "wgu-global-sophia--gcu-soph-0015-provider-syllabus-2026-11-19",
+      "kind": "provider",
+      "url": "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+      "checkedOn": "2026-11-19",
+      "locator": "Page 1: organization code, effective month, exact ACE ID, source semester quantity and division.",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "gcu-soph-0015-provider-syllabus-2026-11-19"
+    },
+    {
+      "id": "wgu-global-sophia--gcu-soph-0030-ace-2026-11-19",
+      "kind": "ace",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+      "checkedOn": "2026-11-19",
+      "scope": "Exact ACE course ID, version, organization code, 3 semester credits and source division.",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "gcu-soph-0030-ace-2026-11-19"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0021-current-ace-2026-11-18",
+      "kind": "ace",
+      "title": "ACE SOPH-0021 version 4 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e852597e-bc1d-ef11-840a-6045bd04c00b&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "4806b70a69ad5620b76a4de350d7d5d0d6984dcfd4767e622380162632cca40d",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0021-current-ace-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0021-current-provider-2026-11-18",
+      "kind": "provider",
+      "title": "Sophia current Developing Effective Teams offering",
+      "url": "https://www.sophia.org/online-courses/career-success/developing-effective-teams/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "a6c631ed1223c9c110104f6817c09d9636c426b031bc2db358399b6391570b92",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0021-current-provider-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0021-current-syllabus-2026-11-18",
+      "kind": "provider",
+      "title": "Sophia Developing Effective Teams current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/281/syllabus_pdf/931f81250d1999d6060bfc38e664eb48.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "6765270400f3ab068e0914919862419e376825a28b3a5d5a9d665e81e2fb6e9d",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0021-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0041-current-ace-2026-11-18",
+      "kind": "ace",
+      "title": "ACE SOPH-0041 version 3 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=add1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "1f413ec812961947f403800e963390133d30a066809ddda7fd603cf7d7e0edbc",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0041-current-ace-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0041-current-provider-2026-11-18",
+      "kind": "provider",
+      "title": "Sophia current IT Career Exploration offering",
+      "url": "https://www.sophia.org/online-courses/career-success/it-career-exploration/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "6db1823b41ecf939b00946b5f317eba4a8a5dd660518254eef18065728a467aa",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0041-current-provider-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0041-current-syllabus-2026-11-18",
+      "kind": "provider",
+      "title": "Sophia IT Career Exploration current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/344/syllabus_pdf/b31bce7db21c4c54b9bf64d680e4f109.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "fbc99906b5e70b7184f4e435f01113f65dd347048f1b5f64ab640d724dab51f0",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0041-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0065-current-ace-2026-11-18",
+      "kind": "ace",
+      "title": "ACE SOPH-0065 version 2 identity and source credits",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw ACE course record captured and read: exact ACE ID/version/source semester quantity and matching current recommendation-period dropdown option.",
+      "sha256": "316c6fd1fbfc0b216e8c2da17faadd025aefa9238ed08cfc39ae1ebd54a0077a",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0065-current-ace-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0065-current-provider-2026-11-18",
+      "kind": "provider",
+      "title": "Sophia current Critical Thinking offering",
+      "url": "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+      "checkedOn": "2026-11-18",
+      "retrieval": "Raw public body captured; exact provider/ACE course identity and source semester quantity independently read.",
+      "sha256": "e568b55c2bd06b1590bc8f45797a15dcca1e44e5ceffff6a9fe7697bfee6d8cc",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0065-current-provider-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--soph-0065-current-syllabus-2026-11-18",
+      "kind": "provider",
+      "title": "Sophia Critical Thinking current provider-linked syllabus",
+      "url": "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+      "checkedOn": "2026-11-18",
+      "sourcePage": 1,
+      "sha256": "b7cb9b0fa15fcae900ad8e3ee2f157a7812fee6c4bd9f0bc78985358ff9ab2a8",
+      "retrieval": "Raw PDF captured and local first-page text independently read for exact provider code, ACE ID, original semester quantity, effective-date wording and passing score.",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "soph-0065-current-syllabus-2026-11-18"
+    },
+    {
+      "id": "wgu-global-sophia--sophia-ace-composition-i-period-2026-11-19",
+      "kind": "ace",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+      "checkedOn": "2026-11-19",
+      "scope": "ACE indexed course row supplies English Composition I recommendation period.",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "sophia-ace-composition-i-period-2026-11-19"
+    },
+    {
+      "id": "wgu-global-sophia--sophia-ace-current-organization-2026-11-19",
+      "kind": "ace",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-19",
+      "scope": "Independent ACE organization listing supplies current recommendation dates for Business Law, Finance, and English Composition II.",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "sophia-ace-current-organization-2026-11-19"
+    }
+  ],
+  "wguSourceOverridesToDeclare": [
+    "wgu-global-sophia--gcu-soph-0015-ace-2026-11-19",
+    "wgu-global-sophia--gcu-soph-0015-provider-syllabus-2026-11-19",
+    "wgu-global-sophia--gcu-soph-0030-ace-2026-11-19",
+    "wgu-global-sophia--soph-0021-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0021-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0021-current-syllabus-2026-11-18",
+    "wgu-global-sophia--soph-0041-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0041-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0041-current-syllabus-2026-11-18",
+    "wgu-global-sophia--soph-0065-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0065-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0065-current-syllabus-2026-11-18",
+    "wgu-global-sophia--sophia-ace-composition-i-period-2026-11-19",
+    "wgu-global-sophia--sophia-ace-current-organization-2026-11-19"
+  ],
+  "changedWguModels": [
+    {
+      "modelId": "curriculum-wgu-catalog-ecceaa488637ac83",
+      "title": "Business Management – B.S.",
+      "catalog": "202605",
+      "totalCUs": 110,
+      "before": {
+        "outsideCUs": 69,
+        "universityCUs": 41,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      },
+      "after": {
+        "outsideCUs": 69,
+        "universityCUs": 41,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      }
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-358f1e10651bf3d8",
+      "title": "Accounting – B.S.",
+      "catalog": "202503",
+      "totalCUs": 121,
+      "before": {
+        "outsideCUs": 72,
+        "universityCUs": 49,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": false,
+        "blockingReasonCodes": [
+          "unresolved-research"
+        ]
+      },
+      "after": {
+        "outsideCUs": 72,
+        "universityCUs": 49,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": false,
+        "blockingReasonCodes": [
+          "unresolved-research"
+        ]
+      }
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-2e49db64c32dfc79",
+      "title": "Human Resource Management – B.S.",
+      "catalog": "202509",
+      "totalCUs": 117,
+      "before": {
+        "outsideCUs": 78,
+        "universityCUs": 39,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      },
+      "after": {
+        "outsideCUs": 78,
+        "universityCUs": 39,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      }
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-689e417cff765fc9",
+      "title": "Marketing – B.S.",
+      "catalog": "202607",
+      "totalCUs": 112,
+      "before": {
+        "outsideCUs": 69,
+        "universityCUs": 43,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      },
+      "after": {
+        "outsideCUs": 69,
+        "universityCUs": 43,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      }
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-d6925a8fbb6e8d9a",
+      "title": "Finance – B.S.",
+      "catalog": "202608",
+      "totalCUs": 121,
+      "before": {
+        "outsideCUs": 78,
+        "universityCUs": 43,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      },
+      "after": {
+        "outsideCUs": 78,
+        "universityCUs": 43,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      }
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-bf14bd14e87ae7aa",
+      "title": "Information Technology Management – B.S.",
+      "catalog": "202609",
+      "totalCUs": 112,
+      "before": {
+        "outsideCUs": 64,
+        "universityCUs": 48,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": false,
+        "blockingReasonCodes": [
+          "unresolved-research"
+        ]
+      },
+      "after": {
+        "outsideCUs": 64,
+        "universityCUs": 48,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": false,
+        "blockingReasonCodes": [
+          "unresolved-research"
+        ]
+      }
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-c023977432f945c3",
+      "title": "User Experience Design – B.S.",
+      "catalog": "202510",
+      "totalCUs": 115,
+      "before": {
+        "outsideCUs": 60,
+        "universityCUs": 55,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      },
+      "after": {
+        "outsideCUs": 60,
+        "universityCUs": 55,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      }
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-f5987d0b65c06f56",
+      "title": "Communications – B.S.",
+      "catalog": "202510",
+      "totalCUs": 115,
+      "before": {
+        "outsideCUs": 60,
+        "universityCUs": 55,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      },
+      "after": {
+        "outsideCUs": 60,
+        "universityCUs": 55,
+        "academicCountsValid": true,
+        "policyChecksComplete": true,
+        "publicationReady": true,
+        "blockingReasonCodes": []
+      }
+    }
+  ],
+  "note": "In-memory WGU comparison with complete institutional fallbacks and the same12,000-node baseline budget. Root must run all-school academic/publication regression before approving this global provider promotion. No conditional receiving award is reclassified by this proposal. The approved implementation uses new globally namespaced source IDs instead of school-source override declarations; see appliedReview.",
+  "appliedReview": "content/pathway-kits/wgu/reviews/shared-sophia-promotion-applied-2026-11-25.json"
+}

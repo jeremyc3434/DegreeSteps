@@ -74,32 +74,42 @@ function placementSources(model,requirement){
   if(model.id==='tesu-general-management'&&list(model.sources).some(source=>source.id==='tesu-gm-current-program-2026-11-17'))return ['tesu-gm-current-program-2026-11-17'];
   return [];
 }
+/** A named receiving course can fill the already reviewed Liberal Studies capacity only when its exact university
+ * code satisfies both the subject taxonomy and that row's receiving-level limits. This establishes allocation only. */
+export function upiLiberalArtsPlacement(model,requirement,mapping){
+  const policy=model?.liberalArtsAllocation,match=String(mapping?.receivingCode||'').match(/^([A-Z]+)-(\d{4})$/),level=match?Number(match[2]):null;
+  if(model?.id!=='curriculum-tesu-ba-liberal-studies'||model.catalog!=='Current undergraduate catalog · checked November 18, 2026'||policy?.kind!=='tesu-liberal-studies-option-a'||policy.maximum1000Credits!==6||policy.minimumSubjects!==2||!list(policy.requirementIds).includes(requirement.id)||requirement.liberalArtsAllocation!==true||requirement.category!=='major'||requirement.group!=='area-of-study'||requirement.institutionalOnly||!match)return false;
+  if(!list(policy.sourceIds).length||!policy.sourceIds.every(id=>list(requirement.sourceIds).includes(id)))return false;
+  if(!Number.isFinite(requirement.minCourseLevel)||!Number.isFinite(requirement.maxCourseLevel)||level<requirement.minCourseLevel||level>requirement.maxCourseLevel||requirement.upperOnly&&level<3000)return false;
+  return Boolean((list(requirement.allowedCoursePrefixes).includes(match[1])&&policy.subjectByPrefix?.[match[1]])||(list(requirement.allowedReceivingCodeExceptions).includes(mapping.receivingCode)&&policy.subjectByReceivingCode?.[mapping.receivingCode]));
+}
 function placementAllowed(model,requirement,mapping){
   if(!modelInScope(model)||requirement.institutionalOnly||requirement.credits!==mapping.receivingCredits)return false;
   if(requirement.freeElective===true){
     if(!['elective','electives'].includes(requirement.category)||requirement.group!=='free-electives'||requirement.excludeAlreadyUsed===false||model.transferPolicyReview?.duplicatesCountOnce!==true)return false;
     return !namedReceivingCodes(model).has(mapping.receivingCode)&&placementSources(model,requirement).length>0;
   }
-  return requirement.code===mapping.receivingCode&&placementSources(model,requirement).length>0;
+  return (requirement.code===mapping.receivingCode||upiLiberalArtsPlacement(model,requirement,mapping))&&placementSources(model,requirement).length>0;
 }
 
 export function upiTESUOption(model,requirement,mapping,course,identityReview=upiCourseReview,review=upiTESUReview){
   if(!placementAllowed(model,requirement,mapping))return null;
   // The source facts are independently reviewed, while the receiving claim stays explicitly conditional.
   const identity=upiKitIdentity(course,identityReview),degreeSourceIds=placementSources(model,requirement),sourceIds=unique([review.sources[0].id,...course.identitySourceIds,...degreeSourceIds,...review.providerApprovalSourceIds]);
-  const elective=requirement.freeElective===true,receivingUpper=/^[A-Z]+-[34]\d{3}$/.test(mapping.receivingCode);
+  const elective=requirement.freeElective===true,liberalArts=upiLiberalArtsPlacement(model,requirement,mapping),receivingUpper=/^[A-Z]+-[34]\d{3}$/.test(mapping.receivingCode);
   return {id:optionId(mapping,course,requirement),provider:'UPI Study',...identity,
     credits:mapping.receivingCredits,creditSystem:'semester',receivingCode:mapping.receivingCode,receivingTitle:mapping.receivingTitle,upper:receivingUpper,
     creditOrigin:'alternative',sourceType:'alternative',evidence:'conditional',evidenceType:'provider-published',
     mappingChecked:review.checkedOn,mappingReviewId:review.id,mappingResearchClosed:false,receivingMapStatus:'provider-published-candidate',individualApproval:false,
     mappingScope:'Provider-published named TESU candidate; an independent university receiving-course award has not been established.',
     mappingEvidence:{schoolName:review.school,provider:'UPI Study',providerCourseCode:identity.code,receivingCode:mapping.receivingCode,credits:mapping.receivingCredits,creditSystem:'semester',sourceIds:[review.sources[0].id],claimOrigin:'provider-published',publisher:'UPI Study',individualApproval:false,providerTransferStatus:mapping.providerTransferStatus,scope:'provider-published-university-course-candidate'},
-    degreePlacementEvidence:{modelId:model.id,schoolName:model.school,programName:model.title,requirementId:requirement.id,receivingCode:mapping.receivingCode,credits:mapping.receivingCredits,creditSystem:'semester',sourceIds:degreeSourceIds,placementType:elective?'elective':'exact-course',scope:elective?'Proposed nonduplicating use in the published unrestricted free-elective block; provider acceptance remains conditional.':'The current degree names this receiving course; provider acceptance remains conditional.'},
-    sourceIds,eligibilityReview:tesuProviderEligibility('UPI Study'),...(elective?{placementType:'elective',allocationType:'free-elective'}:{}),
+    degreePlacementEvidence:{modelId:model.id,schoolName:model.school,programName:model.title,requirementId:requirement.id,receivingCode:mapping.receivingCode,credits:mapping.receivingCredits,creditSystem:'semester',sourceIds:degreeSourceIds,placementType:elective?'elective':liberalArts?'liberal-arts-area':'exact-course',scope:elective?'Proposed nonduplicating use in the published unrestricted free-elective block; provider acceptance remains conditional.':liberalArts?'Proposed allocation under the current Liberal Studies discipline, level, subject-distribution and nonduplication rules; provider acceptance remains conditional.':'The current degree names this receiving course; provider acceptance remains conditional.'},
+    sourceIds,eligibilityReview:tesuProviderEligibility('UPI Study'),...(elective?{placementType:'elective',allocationType:'free-elective'}:liberalArts?{placementType:'major-elective',allocationType:'liberal-arts-area'}:{}),
     conditions:[
       'UPI Study publishes this TESU course match. Its verification label is a provider claim; an independent TESU receiving-course award has not been established.',
       'The completed original course must match its reviewed credit quantity, units and recommendation period. Provider approval is separate from course acceptance and enrollment permission.',
-      ...(elective?['Proposed use in this unrestricted free-elective block must be nonduplicating and fit the current degree.']:[])
+      ...(elective?['Proposed use in this unrestricted free-elective block must be nonduplicating and fit the current degree.']:[]),
+      ...(liberalArts?['Proposed Liberal Studies area allocation must retain the published discipline and receiving-level rules, at least two subjects, no more than six 1000-level credits, 18 upper-level area credits and nonduplication.']:[])
     ]};
 }
 
@@ -131,12 +141,14 @@ export async function writeTESUUPIKit({identityReview=upiCourseReview,review=upi
   const equivalencies=await read('equivalencies.json');
   equivalencies.equivalencies=equivalencies.equivalencies.filter(row=>row.mappingReviewId!==review.id);
   equivalencies.conditionLibrary['tesu-upi-proposed-free-elective']='Proposed use in this unrestricted free-elective block must be nonduplicating and fit the current degree.';
+  equivalencies.conditionLibrary['tesu-upi-proposed-liberal-arts']='Proposed Liberal Studies area allocation must retain the published discipline and receiving-level rules, at least two subjects, no more than six 1000-level credits, 18 upper-level area credits and nonduplication.';
   equivalencies.placementModes['upi-exact-placement']={placementEvidence:{placementType:'exact-course',citeInOption:true}};
   equivalencies.placementModes['upi-elective-placement']={set:{placementType:'elective',allocationType:'free-elective'},appendConditionIds:['tesu-upi-proposed-free-elective'],placementEvidence:{placementType:'elective',citeInOption:true}};
+  equivalencies.placementModes['upi-liberal-arts-placement']={set:{placementType:'major-elective',allocationType:'liberal-arts-area'},appendConditionIds:['tesu-upi-proposed-liberal-arts'],placementEvidence:{placementType:'liberal-arts-area',citeInOption:true}};
   const programs=[],sharedRows=new Map();
   for(const slug of school.programOrder){
     const program=await read('programs/'+slug+'.json');
-    const model={...copy(school.programDefaults),...copy(program.modelFields),id:program.modelId,school:school.name,title:program.title,level:program.level,totalCredits:program.totalCredits,creditSystem:program.creditSystem||school.creditSystem,modalities:program.modalities||program.modelFields.modalities||school.programDefaults.modalities,requirements:program.requirements};
+    const model={...copy(school.programDefaults),...copy(program.modelFields),id:program.modelId,school:school.name,title:program.title,level:program.level,catalog:program.catalog,totalCredits:program.totalCredits,creditSystem:program.creditSystem||school.creditSystem,modalities:program.modalities||program.modelFields.modalities||school.programDefaults.modalities,requirements:program.requirements};
     const programAdded=[];
     for(const requirement of program.requirements){
       requirement.optionRows=requirement.optionRows.filter(entry=>!String(typeof entry==='string'?entry:entry?.row||entry?.optionId||'').startsWith('upi-'));
@@ -152,7 +164,7 @@ export async function writeTESUUPIKit({identityReview=upiCourseReview,review=upi
             scope:{all:true,levels:['bachelor'],modalities:['online'],catalogs:[program.catalog]},
             quotes:[{sourceId:review.sources[0].id,text:mapping.quote}],extra});
         }
-        requirement.optionRows.push({row:rowId,mode:requirement.freeElective?'upi-elective-placement':'upi-exact-placement',optionId:option.id});programAdded.push(option);
+        requirement.optionRows.push({row:rowId,mode:requirement.freeElective?'upi-elective-placement':requirement.liberalArtsAllocation?'upi-liberal-arts-placement':'upi-exact-placement',optionId:option.id});programAdded.push(option);
       }
     }
     const used=unique(programAdded.flatMap(option=>option.sourceIds));

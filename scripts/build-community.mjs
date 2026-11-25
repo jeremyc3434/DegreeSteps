@@ -36,12 +36,17 @@ execFileSync(process.execPath,[resolve(root,'scripts/import-tesu-liberal-studies
 execFileSync(process.execPath,[resolve(root,'scripts/import-gcu-curriculum.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 // WGU programs authored from captured WGU public API records must still match their captures.
 execFileSync(process.execPath,[resolve(root,'scripts/wgu-agreement-ledgers.mjs'),'--check'],{cwd:root,stdio:['ignore','ignore','inherit']});
+// Independent provider identities and each exact WGU agreement batch are reproducible from retained captures.
+for(const script of ['wgu-promote-sophia-identities.mjs','wgu-data-analytics-identities.mjs','wgu-data-analytics.mjs','wgu-cloud-network.mjs']){
+  execFileSync(process.execPath,[resolve(root,'scripts',script),'--check'],{cwd:root,stdio:['ignore','ignore','inherit']});
+}
 // Pathway Factory: published school kits (content/pathway-kits/*/school.json "publish") are the source of their content/curricula documents.
 execFileSync(process.execPath,[resolve(root,'scripts/pathway-factory/compile.mjs'),'--publish','--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-references.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-academic-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-pathway-quality-report.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-plan-expansion-queue.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-plan-library-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-plan-course-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/catalog-plan-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});

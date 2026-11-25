@@ -27,6 +27,16 @@ test('independent provider facts merge idempotently and preserve unrelated facts
   const codes=new Set(packet.courses.map(course=>course.code));for(const course of before.courses)if(!codes.has(course.code))assert.deepEqual(next.courses.find(item=>item.code===course.code),course);
   for(const source of before.sources)assert.deepEqual(next.sources.find(item=>item.id===source.id),source);
 });
+test('an applied Study review composes with separately reviewed appended identities without reordering or weakening its own facts',async()=>{
+  const packet=await loadStudyExpansion(),provider=JSON.parse(await readFile('content/pathway-kits/providers/study-com.json','utf8'));
+  const extension=provider.courses.find(course=>course.code==='SDCM-0218');assert(extension&&extension.sourceCreditStatus==='verified');assert(!packet.courses.some(course=>course.code===extension.code));
+  const installed=applyStudyExpansion(provider,packet);installed.courses.reverse();installed.sources.reverse();
+  const before=structuredClone(installed);assert.deepEqual(applyStudyExpansion(installed,packet),before,'An independent extension and its position must survive --check unchanged');assert.deepEqual(installed,before);
+  const changed=structuredClone(installed),owned=packet.courses[0];changed.courses.find(course=>course.code===owned.code).sourceCredits=999;
+  const repaired=applyStudyExpansion(changed,packet);assert.notDeepEqual(repaired,changed,'The ownership check must still detect changed reviewed original credits');assert.equal(repaired.courses.find(course=>course.code===owned.code).sourceCredits,owned.sourceCredits);assert.deepEqual(repaired.courses.find(course=>course.code===extension.code),extension);
+  for(const collection of ['courses','sources']){const duplicate=structuredClone(installed),ownedRecord=collection==='courses'?duplicate.courses.find(course=>course.code===owned.code):duplicate.sources.find(source=>source.id===packet.sources[0].id);duplicate[collection].push(structuredClone(ownedRecord));assert.throws(()=>applyStudyExpansion(duplicate,packet));}
+  const changedSource=structuredClone(installed);changedSource.sources.find(source=>source.id===packet.sources[0].id).reviewedExtract+=' changed';assert.throws(()=>applyStudyExpansion(changedSource,packet));
+});
 test('a school typo cannot turn independently identified Business Law into Statistics',()=>{
   const row='*Statistics 101 (SDCM-0068) or Business 212 (SDCM-0025)';
   assert.equal(studyIdentityMatchesReceivingLabel({providerCourseCode:'Business 103',title:'Business 103: Introductory Business Law'},row,'SDCM-0025'),false);

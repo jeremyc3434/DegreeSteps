@@ -1,0 +1,823 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "cloud-network-engineering-general-bs",
+  "modelId": "curriculum-wgu-bs-cloud-network-engineering-general-reviewed",
+  "routeIds": [
+    "wgu-bs-cloud-network-engineering-general-reviewed"
+  ],
+  "title": "Cloud and Network Engineering – B.S. (General)",
+  "level": "bachelor",
+  "catalog": "202608",
+  "totalCredits": 109,
+  "review": {
+    "status": "reviewed",
+    "reviewer": "Codex (four exact current Cloud and Network Engineering track ledgers and receiving maps)",
+    "reviewedOn": "2026-11-25"
+  },
+  "sources": [
+    {
+      "id": "wgu-bscne-202608-curriculum-20261125",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSCNE%3B202608",
+      "title": "Bachelor of Science, Cloud and Network Engineering 202608 complete named CU ledger",
+      "kind": "university",
+      "checked": "2026-11-25",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 246,
+        "programCode": "BSCNE",
+        "catalogYear": "202608",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "retrieval": "Unauthenticated public program-data API GET, captured; every receiving requirement reviewed.",
+      "capture": "content/source-captures/6336aac5d6f508d4.txt"
+    },
+    {
+      "id": "wgu-bscne-202608-metadata-20261125",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/IT",
+      "title": "BS Cloud and Network Engineering (Catalog 08-2026) current public academic record and transfer notes",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-25",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 246,
+        "programCode": "BSCNE",
+        "catalogYear": "202608",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "publicRecordId": 246,
+      "publicRecordVersion": 3,
+      "inactiveProgram": 0,
+      "approvalStatus": "Approved",
+      "retrieval": "Unauthenticated public academic API GET, captured.",
+      "capture": "content/source-captures/c0f1e682efb3df5c.txt",
+      "notes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    {
+      "id": "wgu-bscne-transfer-guidelines-20261125",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=246",
+      "title": "BSCNE 202608 transfer guidelines: transfer areas and nontransferable courses",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-25",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 246,
+        "programCode": "BSCNE",
+        "catalogYear": "202608",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "capture": "content/source-captures/13cfc03d9d803f5f.txt"
+    },
+    {
+      "id": "wgu-bscne-sophia-7110-v236",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110",
+      "title": "WGU approved Sophia receiving map for BSCNE 202608",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Cloud and Network Engineering – B.S. (General)",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "provider": "Sophia",
+      "checked": "2026-11-25",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 246,
+      "catalogTerm": "202608",
+      "agreementId": 7110,
+      "agreementRecordVersion": 236,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/186d4e3a3fda7a15.txt"
+    },
+    {
+      "id": "wgu-bscne-study-4424-v242",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424",
+      "title": "WGU approved Study.com receiving map for BSCNE 202608",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Cloud and Network Engineering – B.S. (General)",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "provider": "Study.com",
+      "checked": "2026-11-25",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 246,
+      "catalogTerm": "202608",
+      "agreementId": 4424,
+      "agreementRecordVersion": 242,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/fded09837aae8641.txt"
+    },
+    {
+      "id": "wgu-bscne-straighterline-547-v121",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547",
+      "title": "WGU approved StraighterLine receiving map for BSCNE 202608",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Cloud and Network Engineering – B.S. (General)",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "provider": "StraighterLine",
+      "checked": "2026-11-25",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 246,
+      "catalogTerm": "202608",
+      "agreementId": 547,
+      "agreementRecordVersion": 121,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/6abe5f3197b69344.txt"
+    },
+    {
+      "id": "wgu-bscne-saylor-671-v108",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671",
+      "title": "WGU approved Saylor receiving map for BSCNE 202608",
+      "kind": "university",
+      "roles": [
+        "receiving-map"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Cloud and Network Engineering – B.S. (General)",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "provider": "Saylor",
+      "checked": "2026-11-25",
+      "evidenceType": "official-receiving-school-equivalency",
+      "programId": 246,
+      "catalogTerm": "202608",
+      "agreementId": 671,
+      "agreementRecordVersion": 108,
+      "published": true,
+      "approvalStatus": "APPROVED",
+      "capture": "content/source-captures/4a1ca634549e22a4.txt"
+    },
+    {
+      "id": "wgu-bscne-program-page-20261125",
+      "title": "WGU Cloud and Network Engineering: four explicit tracks, six-month tuition, resource fee, all-online competency pace and admission routes",
+      "url": "https://www.wgu.edu/online-it-degrees/cloud-network-engineering-bachelors-program.html",
+      "kind": "university",
+      "roles": [
+        "pricing",
+        "admissions",
+        "learning-format"
+      ],
+      "checked": "2026-11-25",
+      "capture": "content/source-captures/90cf36a8777cc28b.txt",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programName": "Cloud and Network Engineering – B.S. (General)",
+        "programId": 246,
+        "programCode": "BSCNE",
+        "level": "bachelor",
+        "modality": "online",
+        "catalogYear": "202608"
+      },
+      "reviewedFacts": {
+        "tuitionPerTerm": 3925,
+        "resourceFeePerTerm": 200,
+        "period": "6 months",
+        "allOnline": true,
+        "noLimitOnUnitsPerTerm": true,
+        "track": "General"
+      }
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "wgu-bscne-202608-metadata-20261125",
+      "text": "\"id\":246,\"pamsProgramCode\":\"BSCNE\",\"programName\":\"BS Cloud and Network Engineering (Catalog 08-2026)\""
+    }
+  ],
+  "policies": {
+    "alternativeMaxCredits": {
+      "value": 81.75,
+      "creditSystem": "competency-unit",
+      "sourceIds": [
+        "wgu-undergraduate-institutional-catalog-202611"
+      ]
+    },
+    "oneAwardPerSourceCourse": {
+      "value": true,
+      "basis": "WGU publishes that transfer courses may not be used to fulfill more than one course of study; every option placed in more than one requirement carries the single-award condition.",
+      "sourceIds": [
+        "wgu-bscne-202608-metadata-20261125",
+        "wgu-bscne-saylor-671-v108",
+        "wgu-bscne-sophia-7110-v236",
+        "wgu-bscne-straighterline-547-v121",
+        "wgu-bscne-study-4424-v242"
+      ]
+    }
+  },
+  "modelFields": {
+    "unresolved": [
+      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
+      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
+      {
+        "owner": "student",
+        "status": "personal-task",
+        "message": "Confirm personal admission and catalog eligibility. The published family requirements call for a high school diploma or equivalent plus one readiness route: college coursework with at least2.25GPA, an accredited prior associate or bachelor degree, a transferable IT certification, high school transcripts with at least2.75GPA, or prior IT coursework at300level or higher.",
+        "sourceIds": [
+          "wgu-bscne-program-page-20261125"
+        ]
+      }
+    ],
+    "rulesNotes": [
+      "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
+      "Outside options come only from WGU's published partner agreements for BSCNE catalog 202608 (program 246). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
+      "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+    ],
+    "mappingCheckedOn": "2026-11-25",
+    "pricing": {
+      "model": "subscription",
+      "amount": 4125,
+      "tuitionPerTerm": 3925,
+      "resourceFeePerTerm": 200,
+      "includesResourceFee": true,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-it-degrees/cloud-network-engineering-bachelors-program.html",
+      "sourceIds": [
+        "wgu-bscne-program-page-20261125"
+      ],
+      "checkedOn": "2026-11-25",
+      "notes": [
+        "The official family page separately lists all four named tracks at the same published tuition. The term basket includes the mandatory resource fee; provider charges and other applicable fees remain separate. No complete degree-price or finish-time quote is asserted."
+      ]
+    },
+    "externalMaxCredits": 81.75,
+    "policySourceIds": [
+      "wgu-undergraduate-institutional-catalog-202611",
+      "wgu-undergraduate-residency-policy-23797-20260918",
+      "wgu-bscne-202608-metadata-20261125",
+      "wgu-bscne-202608-curriculum-20261125"
+    ],
+    "policyEvidence": {
+      "externalMaxCredits": {
+        "value": 81.75,
+        "fraction": 0.75,
+        "basisCredits": 109,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs."
+      },
+      "alternativeMaxCredits": {
+        "value": 81.75,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611"
+        ],
+        "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      }
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-undergraduate-institutional-catalog-202611",
+          "wgu-bscne-202608-curriculum-20261125"
+        ],
+        "sourcePages": {
+          "wgu-undergraduate-institutional-catalog-202611": [
+            65
+          ]
+        },
+        "message": "The complete 34-course, 109-CU BSCNE 202608 curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks."
+      }
+    ],
+    "residencyPolicy": {
+      "type": "institution-fraction-with-capstone-exclusion",
+      "creditScope": "active-program",
+      "creditSystem": "competency-unit",
+      "fraction": 0.25,
+      "capstoneRequirementIds": [
+        "bscne-bscne-capstone-project"
+      ],
+      "capstoneCredits": 4,
+      "sourceIds": [
+        "wgu-undergraduate-residency-policy-23797-20260918",
+        "wgu-bscne-202608-curriculum-20261125",
+        "wgu-bscne-transfer-guidelines-20261125"
+      ],
+      "interpretationStatus": "verified-additional-capstone",
+      "calculatedMinimumInstitutionCUs": 31.25,
+      "primaryPolicySections": [
+        "IV.2",
+        "IV.3.a",
+        "IV.3.b.i"
+      ],
+      "conservativeSufficientCondition": {
+        "minimumNonCapstoneInstitutionCUs": 27.25,
+        "basisCredits": 109,
+        "derivation": "25% of active undergraduate degree CUs earned directly in that WGU program, in addition to required capstone CUs."
+      },
+      "capstoneEvidence": "E029 BSCNE Capstone Project is the program's only course named as a capstone in the current ledger and is listed as Non-Transferable in the program's transfer guidelines.",
+      "notes": [
+        "Only passed CUs earned within the active WGU program count toward this rule. Prior WGU or other outside credit is not automatically counted as active-program residency."
+      ]
+    },
+    "policyCheckedOn": "2026-11-25",
+    "curriculumReview": {
+      "status": "current-complete-named-ledger",
+      "programId": 246,
+      "programCode": "BSCNE",
+      "catalog": "202608",
+      "recordVersion": 3,
+      "ledgerSha256": "b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26",
+      "sourceIds": [
+        "wgu-bscne-202608-metadata-20261125",
+        "wgu-bscne-202608-curriculum-20261125"
+      ],
+      "checkedOn": "2026-11-25",
+      "outsideEquivalenciesReviewed": true
+    },
+    "curriculumSections": [
+      {
+        "id": "wgu-bscne-core-it-fundamentals",
+        "parentId": "core",
+        "title": "IT Fundamentals",
+        "credits": 14,
+        "requirementIds": [
+          "bscne-introduction-to-it",
+          "bscne-it-foundations",
+          "bscne-it-applications",
+          "bscne-foundations-of-programming-python"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-business-of-it",
+        "parentId": "core",
+        "title": "Business of IT",
+        "credits": 7,
+        "requirementIds": [
+          "bscne-business-of-it-applications",
+          "bscne-it-leadership-foundations"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-general-general-education",
+        "parentId": "general",
+        "title": "General Education",
+        "credits": 31,
+        "requirementIds": [
+          "bscne-ethics-in-technology",
+          "bscne-technical-communication",
+          "bscne-composition-successful-self-expression",
+          "bscne-integrated-physical-sciences",
+          "bscne-health-fitness-and-wellness",
+          "bscne-applied-probability-and-statistics",
+          "bscne-applied-algebra",
+          "bscne-us-history-stories-of-american-democracy",
+          "bscne-introduction-to-systems-thinking-and-applications",
+          "bscne-influential-communication-through-visual-design-and-storytelling"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-operating-systems",
+        "parentId": "core",
+        "title": "Operating Systems",
+        "credits": 3,
+        "requirementIds": [
+          "bscne-linux-foundations"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-network-and-security",
+        "parentId": "core",
+        "title": "Network and Security",
+        "credits": 10,
+        "requirementIds": [
+          "bscne-network-and-security-foundations",
+          "bscne-network-and-security-applications",
+          "bscne-cloud-applications"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-networks",
+        "parentId": "core",
+        "title": "Networks",
+        "credits": 4,
+        "requirementIds": [
+          "bscne-networks"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-networking",
+        "parentId": "core",
+        "title": "Networking",
+        "credits": 15,
+        "requirementIds": [
+          "bscne-network-analytics-and-troubleshooting",
+          "bscne-telecomm-and-wireless-communications",
+          "bscne-python-for-it-automation",
+          "bscne-software-defined-networking",
+          "bscne-network-automation-and-deployment"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-full-stack-engineering",
+        "parentId": "core",
+        "title": "Full Stack Engineering",
+        "credits": 1,
+        "requirementIds": [
+          "bscne-version-control"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-data-management",
+        "parentId": "core",
+        "title": "Data Management",
+        "credits": 3,
+        "requirementIds": [
+          "bscne-data-management-foundations"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-web-and-cloud-security",
+        "parentId": "core",
+        "title": "Web and Cloud Security",
+        "credits": 7,
+        "requirementIds": [
+          "bscne-cloud-and-network-security-models",
+          "bscne-ai-for-it-automation-and-security"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-cloud-and-virtualization",
+        "parentId": "core",
+        "title": "Cloud and Virtualization",
+        "credits": 3,
+        "requirementIds": [
+          "bscne-virtualization-and-iaas"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-information-technology-management",
+        "parentId": "core",
+        "title": "Information Technology Management",
+        "credits": 3,
+        "requirementIds": [
+          "bscne-internet-of-things-iot-and-infrastructure"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-core-cloud-technologies",
+        "parentId": "core",
+        "title": "Cloud Technologies",
+        "credits": 4,
+        "requirementIds": [
+          "bscne-hybrid-cloud-infrastructure-and-orchestration"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      },
+      {
+        "id": "wgu-bscne-capstone-cloud-and-virtualization",
+        "parentId": "capstone",
+        "title": "Cloud and Virtualization",
+        "credits": 4,
+        "requirementIds": [
+          "bscne-bscne-capstone-project"
+        ],
+        "sourceId": "wgu-bscne-202608-curriculum-20261125"
+      }
+    ],
+    "transferRules": {
+      "courseSpecificRecencyYears": {},
+      "recencySourceIds": [
+        "wgu-bscne-202608-metadata-20261125"
+      ],
+      "publishedNotes": {
+        "notesFinal": "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      }
+    },
+    "transferEvidenceReview": {
+      "id": "wgu-cloud-network-family-2026-11-25",
+      "checkedOn": "2026-11-25",
+      "programId": 246,
+      "catalog": "202608",
+      "receivingClaimsReviewed": 37,
+      "sourceIdentitiesReusedByExactProviderCode": 38,
+      "sourceIds": [
+        "wgu-bscne-sophia-7110-v236",
+        "wgu-bscne-study-4424-v242",
+        "wgu-bscne-straighterline-547-v121",
+        "wgu-bscne-saylor-671-v108"
+      ],
+      "studentCreditsAwarded": 0,
+      "scope": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "providerCoverage": {
+        "Sophia": {
+          "officialReceivingClaimsReviewed": 12,
+          "approvedSourceCodeCount": 27,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SOPH-0002",
+            "SOPH-0005",
+            "SOPH-0015",
+            "SOPH-0016",
+            "SOPH-0022",
+            "SOPH-0025",
+            "SOPH-0030",
+            "SOPH-0054",
+            "SOPH-0056",
+            "SOPH-0080",
+            "SOPH-0083"
+          ],
+          "selectableReceivingPlacements": 11,
+          "unknownSourceIdentityCodesHeld": [
+            "SOPH-0001",
+            "SOPH-0009",
+            "SOPH-0023",
+            "SOPH-0047",
+            "SOPH-0049",
+            "SOPH-0050",
+            "SOPH-0059",
+            "SOPH-0060",
+            "SOPH-0063",
+            "SOPH-0068",
+            "SOPH-0069",
+            "SOPH-0073",
+            "SOPH-0074",
+            "SOPH-0081",
+            "SOPH-0095",
+            "SOPH-0096"
+          ],
+          "sourceIdentityConflictsHeld": [],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 7110,
+          "agreementRecordVersion": 236,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110"
+        },
+        "Study.com": {
+          "officialReceivingClaimsReviewed": 12,
+          "approvedSourceCodeCount": 50,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SDCM-0001",
+            "SDCM-0006",
+            "SDCM-0009",
+            "SDCM-0013",
+            "SDCM-0015",
+            "SDCM-0016",
+            "SDCM-0028",
+            "SDCM-0034",
+            "SDCM-0057",
+            "SDCM-0058",
+            "SDCM-0068",
+            "SDCM-0089",
+            "SDCM-0212",
+            "SDCM-0213",
+            "SDCM-0219",
+            "SDCM-0240",
+            "SDCM-0253",
+            "SDCM-0259",
+            "SDCM-0265"
+          ],
+          "selectableReceivingPlacements": 19,
+          "unknownSourceIdentityCodesHeld": [
+            "SDCM-0002",
+            "SDCM-0003",
+            "SDCM-0004",
+            "SDCM-0005",
+            "SDCM-0010",
+            "SDCM-0012",
+            "SDCM-0022",
+            "SDCM-0023",
+            "SDCM-0025",
+            "SDCM-0029",
+            "SDCM-0031",
+            "SDCM-0032",
+            "SDCM-0033",
+            "SDCM-0035",
+            "SDCM-0039",
+            "SDCM-0053",
+            "SDCM-0062",
+            "SDCM-0101",
+            "SDCM-0102",
+            "SDCM-0138",
+            "SDCM-0155",
+            "SDCM-0165",
+            "SDCM-0174",
+            "SDCM-0188",
+            "SDCM-0189",
+            "SDCM-0194",
+            "SDCM-0195",
+            "SDCM-0242",
+            "SDCM-0246",
+            "SDCM-0247",
+            "SDCM-0258"
+          ],
+          "sourceIdentityConflictsHeld": [
+            {
+              "receivingCode": "C955",
+              "sourceCode": "SDCM-0025",
+              "partnerCourse": "*Statistics 101 (SDCM-0068) or Business 212 (SDCM-0025)",
+              "independentProviderCourse": "Business 103: Introductory Business Law",
+              "reason": "The university row names a different provider course than the independently verified identifier. No correction or equivalency is inferred."
+            }
+          ],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 4424,
+          "agreementRecordVersion": 242,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424"
+        },
+        "StraighterLine": {
+          "officialReceivingClaimsReviewed": 8,
+          "approvedSourceCodeCount": 26,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "OOSL-0002",
+            "OOSL-0015"
+          ],
+          "selectableReceivingPlacements": 2,
+          "unknownSourceIdentityCodesHeld": [
+            "OOSL-0003",
+            "OOSL-0005",
+            "OOSL-0006",
+            "OOSL-0011",
+            "OOSL-0012",
+            "OOSL-0017",
+            "OOSL-0019",
+            "OOSL-0023",
+            "OOSL-0028",
+            "OOSL-0030",
+            "OOSL-0034",
+            "OOSL-0039",
+            "OOSL-0042",
+            "OOSL-0047",
+            "OOSL-0051",
+            "OOSL-0055",
+            "OOSL-0059",
+            "OOSL-0070",
+            "OOSL-0090",
+            "OOSL-0101",
+            "OOSL-0112",
+            "OOSL-0113",
+            "OOSL-0114",
+            "OOSL-0121"
+          ],
+          "sourceIdentityConflictsHeld": [],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 547,
+          "agreementRecordVersion": 121,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547"
+        },
+        "Saylor": {
+          "officialReceivingClaimsReviewed": 5,
+          "approvedSourceCodeCount": 7,
+          "independentlyVerifiedSelectableSourceCodes": [
+            "SAYA-0019",
+            "SAYA-0027",
+            "SAYA-0028",
+            "SAYA-0034",
+            "SAYA-0035",
+            "SAYA-0037"
+          ],
+          "selectableReceivingPlacements": 6,
+          "unknownSourceIdentityCodesHeld": [
+            "SAYA-0016"
+          ],
+          "sourceIdentityConflictsHeld": [],
+          "multiSourceRequirementsHeld": [],
+          "agreementId": 671,
+          "agreementRecordVersion": 108,
+          "sourceUrl": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671"
+        }
+      },
+      "allPossibleSourcesGloballyReviewed": false
+    }
+  },
+  "modelSourceIds": [
+    "wgu-bscne-202608-curriculum-20261125",
+    "wgu-bscne-202608-metadata-20261125",
+    "wgu-bscne-transfer-guidelines-20261125",
+    "wgu-bscne-sophia-7110-v236",
+    "wgu-bscne-study-4424-v242",
+    "wgu-bscne-straighterline-547-v121",
+    "wgu-bscne-saylor-671-v108",
+    "wgu-bscne-program-page-20261125",
+    "wgu-undergraduate-institutional-catalog-202611",
+    "wgu-undergraduate-residency-policy-23797-20260918",
+    "saylor-current-provider-credit-list-20261120",
+    "wgu-sophia-business-current",
+    "straighterline-oosl-0015-course-page-2026-11-20",
+    "ace-study-biology101-v5-2026-11-18",
+    "provider-study-biology101-current-web-2026-11-18",
+    "study-software-identity-sdcm-0028-2026-11-25",
+    "study-software-identity-sdcm-0259-2026-11-25",
+    "study-software-ace-sdcm-0259-v1-2026-11-25",
+    "wgu-global-sophia--soph-0080-current-provider-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-ace-2026-11-18",
+    "wgu-global-sophia--soph-0080-current-syllabus-2026-11-18",
+    "study-software-identity-sdcm-0034-2026-11-25",
+    "study-software-identity-sdcm-0068-2026-11-25",
+    "straighterline-oosl-0002-current-offering-20261120",
+    "straighterline-oosl-0002-ace-exhibit-20261120",
+    "study-current-sdcm-0013-2026-11-20",
+    "study-current-sdcm-0015-2026-11-20",
+    "study-current-sdcm-0016-2026-11-20",
+    "study-software-identity-sdcm-0253-2026-11-25",
+    "shared-sophia--gcu-soph-0015-ace-2026-11-19",
+    "shared-sophia--gcu-soph-0015-provider-syllabus-2026-11-19",
+    "shared-sophia--sophia-ace-composition-i-period-2026-11-19",
+    "shared-sophia--gcu-soph-0030-ace-2026-11-19",
+    "shared-sophia--sophia-ace-current-organization-2026-11-19",
+    "study-current-sdcm-0057-2026-11-20",
+    "study-current-sdcm-0089-2026-11-20",
+    "study-software-identity-sdcm-0213-2026-11-25",
+    "study-software-identity-sdcm-0219-2026-11-25",
+    "study-course-sdcm-0265-2026-11",
+    "study-software-identity-sdcm-0058-2026-11-25",
+    "sophia-soph-0083-current-offer",
+    "sophia-soph-0083-current-offer-syllabus",
+    "study-software-identity-sdcm-0006-2026-11-25",
+    "study-course-sdcm-0009-2026-11",
+    "study-software-identity-sdcm-0212-2026-11-25",
+    "study-software-identity-sdcm-0240-2026-11-25",
+    "study-software-ace-sdcm-0240-v3-2026-11-25"
+  ],
+  "requirements": [
+    {"id":"bscne-introduction-to-it","code":"E004","title":"Introduction to IT","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"E004\",\"courseName\":\"Introduction to IT\",\"courseDescription\":\"Introduction to IT introduces the fundamental concepts, structures, and roles of information technology (IT) within an organization. The course is structured to provide a comprehensive understanding of the various aspects of IT, including networking, database management, cybersecurity, artificial intelligence (AI), and software development. This course also explores the essential components of the typical technology infrastructure for various types of organizations, the role and interaction of each component, and the evolving nature of technology and its implications for business practices. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bscne-business-of-it-applications","code":"D336","title":"Business of IT - Applications","credits":4,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D336\",\"courseName\":\"Business of IT - Applications\",\"courseDescription\":\"Business of IT - Applications examines Information Technology Infrastructure Library (ITIL®) terminology, structure, policies, and concepts. Focusing on the management of information technology (IT) infrastructure, development, and operations, learners will explore the core principles of ITIL practices for service management to prepare them for careers as IT professionals, business managers, and business process owners. This course has no prerequisites.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Business of IT\""}]},
+    {"id":"bscne-ethics-in-technology","code":"D333","title":"Ethics in Technology","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D333\",\"courseName\":\"Ethics in Technology\",\"courseDescription\":\"Ethics in Technology examines the ethical considerations of technology use in the 21st century and introduces students to a decision-making process informed by ethical frameworks. Students will study specific cases related to important topics such as surveillance, social media, hacking, data manipulation, plagiarism and piracy, artificial intelligence, responsible innovation, and the digital divide. This course has no prerequisites.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-technical-communication","code":"D339","title":"Technical Communication","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D339\",\"courseName\":\"Technical Communication\",\"courseDescription\":\"Technical Communication introduces skills in editing professional communications, evaluating the impact of professional etiquette in digital environments, and in creating artifacts that are persuasive, informational, and research-based. The course also introduces skills in delivering multimedia presentations using professional verbal communication skills.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-linux-foundations","code":"D281","title":"Linux Foundations","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"operating-systems","curriculumAreaEvidence":{"areaOfStudy":"Operating Systems","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D281\",\"courseName\":\"Linux Foundations\",\"courseDescription\":\"Linux Foundations prepares learners for the LPI Linux Essentials certification, and is an introduction to Linux as an operating system as well as an introduction to open-source concepts and the basics of the Linux command line. Learners will gain skills in identifying the fundamentals of open-source software and to develop resources for data access and security.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Operating Systems\""}]},
+    {"id":"bscne-it-foundations","code":"D316","title":"IT Foundations","credits":4,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D316\",\"courseName\":\"IT Foundations\",\"courseDescription\":\"IT Foundations provides learners with an understanding of personal computer components and their functions in a desktop system; a knowledge of computer data storage and retrieval; and skills in classifying, installing, configuring, optimizing, upgrading, and troubleshooting printers, laptops, portable devices, operating systems, networks, and system security. This course also gives learners the ability to recommend appropriate tools, diagnostic procedures, preventative maintenance, and troubleshooting techniques for personal computer components in a desktop system; strategies for identifying, preventing, and reporting safety hazards and environmental or human accidents in technological environments; and effective communication skills for interacting with colleagues and clients, including job-related professional behavior. The course prepares learners for the CompTIA A+ Core 1 certification exam.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bscne-composition-successful-self-expression","code":"D270","title":"Composition: Successful Self-Expression","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D270\",\"courseName\":\"Composition: Successful Self-Expression\",\"courseDescription\":\"Welcome to Composition: Successful Self-Expression! In this course, you will focus on four main topics: professional writing for a cross-cultural audience, narrowing research topics and questions, researching for content to support a topic, and referencing research sources. Each section includes learning opportunities through readings, videos, audio, and other relevant resources. Assessment activities with feedback also provide opportunities to check your learning, practice, and show how well you understand course content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to gain proficiency in the seven competencies that will be covered in the final assessment. If you have no prior knowledge or experience, you can expect to spend 30-40 hours on the course content. You will demonstrate competency through a performance assessment. There is no prerequisite for this course and there is no specific technical knowledge needed.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-integrated-physical-sciences","code":"C165","title":"Integrated Physical Sciences","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"C165\",\"courseName\":\"Integrated Physical Sciences\",\"courseDescription\":\"This course provides students with an overview of the basic principles and unifying ideas of the physical sciences: physics, chemistry, and earth sciences. Course materials focus on scientific reasoning and practical, everyday applications of physical science concepts to help students integrate conceptual knowledge with practical skills. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-it-applications","code":"D317","title":"IT Applications","credits":4,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D317\",\"courseName\":\"IT Applications\",\"courseDescription\":\"IT Applications introduces skills in identifying operating systems and their configurations and in implementing security principles across devices and networks. Learners will also gain skills in troubleshooting software, security, and malware issues, and in implementing basic operational procedures in documentation, change management, compliance, and communication. The course will introduce basic disaster recovery and business continuity procedures, scripting basics, and remote access technology solutions.  The course prepares learners for the CompTIA A+ Core 2 certification exam.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bscne-health-fitness-and-wellness","code":"C458","title":"Health, Fitness, and Wellness","credits":4,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"C458\",\"courseName\":\"Health, Fitness, and Wellness\",\"courseDescription\":\"Health, Fitness, and Wellness focuses on the importance and foundations of good health and physical fitness, particularly for children and adolescents. This course addresses health, nutrition, and fitness, and substance use and abuse.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-applied-probability-and-statistics","code":"C955","title":"Applied Probability and Statistics","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"C955\",\"courseName\":\"Applied Probability and Statistics\",\"courseDescription\":\"Applied Probability and Statistics is designed to help students develop competence in the fundamental concepts of basic statistics including: introductory algebra and graphing; descriptive statistics; regression and correlation; and probability. Statistical data and probability are often used in everyday life, science, business, information technology, and educational settings to make informed decisions about the validity of studies and the effect of data on decisions. This course discusses what constitutes sound research design and how to appropriately model phenomena using statistical data. Additionally, the content covers simple probability calculations, based on events that occur in the business and IT industries. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-applied-algebra","code":"C957","title":"Applied Algebra","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"C957\",\"courseName\":\"Applied Algebra\",\"courseDescription\":\"Applied Algebra is designed to help you develop competence in working with functions, the algebra of functions, and using some applied properties of functions. You will start learning about how we can apply different kinds of functions to relevant, real-life examples. From there, the algebra of several families of functions will be explored, including linear, polynomial, exponential, and logistic functions. You will also learn about relevant, applicable mathematical properties of each family of functions, including rate of change, concavity, maximizing/minimizing, and asymptotes. These properties will be used to solve problems related to your major and make sense of everyday living problems. Students should complete Applied Probability and Statistics or its equivalent prior to engaging in Applied Algebra.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-network-and-security-foundations","code":"D315","title":"Network and Security - Foundations","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"network-and-security","curriculumAreaEvidence":{"areaOfStudy":"Network and Security","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D315\",\"courseName\":\"Network and Security - Foundations\",\"courseDescription\":\"Network and Security - Foundations introduces learners to the basic network systems and concepts related to networking technologies. Learners will gain skills in applying network security concepts for business continuity, data access, and confidentiality, and in identifying solutions for compliance with security guidance.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Network and Security\""}]},
+    {"id":"bscne-networks","code":"D325","title":"Networks","credits":4,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"networks","curriculumAreaEvidence":{"areaOfStudy":"Networks","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D325\",\"courseName\":\"Networks\",\"courseDescription\":\"Networks introduces skills in configuring networking components and a network infrastructure. Learners will gain skills in optimizing network operations for availability, performance, and security, and in troubleshooting network issues. The course prepares learners for the CompTIA Network+ certification exam. Network and Security - Foundations is a prerequisite for this course.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Networks\""}]},
+    {"id":"bscne-network-analytics-and-troubleshooting","code":"D412","title":"Network Analytics and Troubleshooting","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"networking","curriculumAreaEvidence":{"areaOfStudy":"Networking","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D412\",\"courseName\":\"Network Analytics and Troubleshooting\",\"courseDescription\":\"Network Analytics and Troubleshooting teaches students to use network monitoring and analytics tools and practices that are common in the workplace in order to troubleshoot and fix complex computer networks. Students will follow a customer service model in identifying, classifying, investigating, and repairing network outages or problems. This course is designed as a hands-on experience where students will implement these techniques in a virtual space in order to produce a secure and functional deployed network.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Networking\""}]},
+    {"id":"bscne-telecomm-and-wireless-communications","code":"D413","title":"Telecomm and Wireless Communications","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"networking","curriculumAreaEvidence":{"areaOfStudy":"Networking","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D413\",\"courseName\":\"Telecomm and Wireless Communications\",\"courseDescription\":\"Telecomm and Wireless Communications explores the science, technologies, and standards that enable wired and wireless data to be transmitted across different media. Topics include data encoding and decoding, and analog and digital transmissions via wired, fiber, wireless, cellular, and satellite technologies.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Networking\""}]},
+    {"id":"bscne-version-control","code":"D197","title":"Version Control","credits":1,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"full-stack-engineering","curriculumAreaEvidence":{"areaOfStudy":"Full Stack Engineering","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D197\",\"courseName\":\"Version Control\",\"courseDescription\":\"Version control is critical to maintaining software and enabling scalability solutions. A best practice for any programming project that requires multiple files uses version control. Version control enables teams to have collaborative workflows and enhances the software development lifecycle.  This course introduces students to the basics of publishing, retrieving, branching, and cloning.  There are no prerequisites for this course.\",\"competencyUnits\":\"1\",\"areaOfStudy\":\"Full Stack Engineering\""}]},
+    {"id":"bscne-foundations-of-programming-python","code":"E010","title":"Foundations of Programming (Python)","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"E010\",\"courseName\":\"Foundations of Programming (Python)\",\"courseDescription\":\"Foundations of Programming (Python) introduces students to the fundamental principles of programming using Python. This course is designed to equip students with the essential skills needed to write, troubleshoot, and debug simple Python programs. Students will explore the syntax and structure of Python, develop an understanding of variables, loops, and conditional statements, and learn to work within different development environments, including integrated development environments (IDEs) and text editors. By the end of the course, students will be able to create functional Python programs, manipulate data structures, and apply debugging techniques across various platforms. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"IT Fundamentals\""}]},
+    {"id":"bscne-python-for-it-automation","code":"D522","title":"Python for IT Automation","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125","wgu-bscne-transfer-guidelines-20261125"],"institutionalOnly":true,"group":"networking","curriculumAreaEvidence":{"areaOfStudy":"Networking","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D522\",\"courseName\":\"Python for IT Automation\",\"courseDescription\":\"Python for IT Automation covers the fundamentals of the Python language and its features to control program flow, inform decisions, and automate IT tasks and processes. The course emphasizes a systematic approach to solving problems and the application of programming logic to administer secure, scalable, and resilient IT networks and systems. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Networking\""},{"sourceId":"wgu-bscne-transfer-guidelines-20261125","text":"\"PAMS_bannerCode\":\"D522\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bscne-software-defined-networking","code":"D415","title":"Software Defined Networking","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"networking","curriculumAreaEvidence":{"areaOfStudy":"Networking","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D415\",\"courseName\":\"Software Defined Networking\",\"courseDescription\":\"Software Defined Networking (SDN) represents one of the fastest growing areas of network engineering. This course instructs learners on the SDN paradigm, which encompasses network automation, intent-based networking, and centralized network control. This course also teaches learners to view networking from a centralized and automated perspective rather than the traditional device-by-device model that is the legacy practice in many networks.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Networking\""}]},
+    {"id":"bscne-network-automation-and-deployment","code":"D417","title":"Network Automation and Deployment","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125","wgu-bscne-transfer-guidelines-20261125"],"institutionalOnly":true,"group":"networking","curriculumAreaEvidence":{"areaOfStudy":"Networking","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D417\",\"courseName\":\"Network Automation and Deployment\",\"courseDescription\":\"Network Automation and Deployment leverages previous experience in networking, scripting, and programming with the SDN paradigm. Students will create programs and scripts that automate network configuration across large networks. This course is designed as a hands-on experience where students will implement these techniques in a virtual space in order to produce a secure and functional deployed network.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Networking\""},{"sourceId":"wgu-bscne-transfer-guidelines-20261125","text":"\"PAMS_bannerCode\":\"D417\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bscne-data-management-foundations","code":"D426","title":"Data Management - Foundations","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"data-management","curriculumAreaEvidence":{"areaOfStudy":"Data Management","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D426\",\"courseName\":\"Data Management - Foundations\",\"courseDescription\":\"Data Management Foundations offers an introduction in creating conceptual, logical and physical data models.  Students gain skills in creating databases and tables in SQL-enabled database management systems, as well as skills in normalizing databases. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Data Management\""}]},
+    {"id":"bscne-network-and-security-applications","code":"D329","title":"Network and Security - Applications","credits":4,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"network-and-security","curriculumAreaEvidence":{"areaOfStudy":"Network and Security","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D329\",\"courseName\":\"Network and Security - Applications\",\"courseDescription\":\"Network and Security - Applications prepares learners for the CompTIA Security+ certification exam. The course introduces learners to skills in identifying threats, attacks, and vulnerabilities to organizational security. The learner will also gain skills in designing security solutions for enterprise infrastructures and architectures, as well as in implementing security solutions across hardware, applications, and network services. Learners will be able to execute operations and incident response with tools, policies, forensics, and mitigation techniques, and to analyze information security controls, governance, risk, and compliance.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Network and Security\""}]},
+    {"id":"bscne-cloud-and-network-security-models","code":"E025","title":"Cloud and Network Security Models","credits":4,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"web-and-cloud-security","curriculumAreaEvidence":{"areaOfStudy":"Web and Cloud Security","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"E025\",\"courseName\":\"Cloud and Network Security Models\",\"courseDescription\":\"Cloud and Network Security Models guides learners through the intricacies of cloud and hybrid network security, covering fundamental principles, emerging threats, cutting-edge tools, advanced defense techniques and best practices for fortifying network security and mitigating risks. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Web and Cloud Security\""}]},
+    {"id":"bscne-ai-for-it-automation-and-security","code":"E026","title":"AI for IT Automation and Security","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"web-and-cloud-security","curriculumAreaEvidence":{"areaOfStudy":"Web and Cloud Security","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"E026\",\"courseName\":\"AI for IT Automation and Security\",\"courseDescription\":\"AI for IT Automation and Security explores the intersection of AI and network security. It emphasizes how AI techniques can enhance security practices, automate tasks, optimize a network, and improve threat detection and response.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Web and Cloud Security\""}]},
+    {"id":"bscne-virtualization-and-iaas","code":"E027","title":"Virtualization and IaaS","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"cloud-and-virtualization","curriculumAreaEvidence":{"areaOfStudy":"Cloud and Virtualization","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"E027\",\"courseName\":\"Virtualization and IaaS\",\"courseDescription\":\"Virtualization and Infrastructure as a Service (IaaS) explores the foundational principles and benefits of virtualization technologies and their application in IaaS environments. This course examines the role of virtualization in modern IT infrastructure, emphasizing its practical implementation and contribution to scalable, efficient, and cost-effective solutions.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Cloud and Virtualization\""}]},
+    {"id":"bscne-cloud-applications","code":"D318","title":"Cloud Applications","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"network-and-security","curriculumAreaEvidence":{"areaOfStudy":"Network and Security","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D318\",\"courseName\":\"Cloud Applications\",\"courseDescription\":\"Cloud Applications prepares learners for the CompTIA Cloud+ certification exam. Learners will gain skills in designing cloud infrastructure and services and in recommending cloud security solutions, policies, and procedures. The course will also introduce skills in deploying cloud solutions for storage, networking, and security, and in managing cloud operations with processes, procedures, and improvements. Learners will also gain skills in troubleshooting cloud services issues in networking, security, and performance.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Network and Security\""}]},
+    {"id":"bscne-internet-of-things-iot-and-infrastructure","code":"D337","title":"Internet of Things (IoT) and Infrastructure","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"information-technology-management","curriculumAreaEvidence":{"areaOfStudy":"Information Technology Management","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D337\",\"courseName\":\"Internet of Things (IoT) and Infrastructure\",\"courseDescription\":\"Internet of Things (IoT) and Infrastructure introduces students to emerging technologies connecting the internet to a variety of physical objects. The course reviews the business requirements for sensors and securely\\r\\nstoring, transmitting, and processing the data they generate. As new use cases emerge, ethical and privacy issues become relevant aspects of business development. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Information Technology Management\""}]},
+    {"id":"bscne-hybrid-cloud-infrastructure-and-orchestration","code":"E028","title":"Hybrid Cloud Infrastructure and Orchestration","credits":4,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125","wgu-bscne-transfer-guidelines-20261125"],"institutionalOnly":true,"group":"cloud-technologies","curriculumAreaEvidence":{"areaOfStudy":"Cloud Technologies","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"E028\",\"courseName\":\"Hybrid Cloud Infrastructure and Orchestration\",\"courseDescription\":\"Hybrid Cloud Infrastructure and Orchestration delves into the design, implementation, and management of hybrid cloud environments. It covers the integration of on-premises infrastructure, private cloud, public cloud, and edge computing to create a hybrid cloud ecosystem.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Cloud Technologies\""},{"sourceId":"wgu-bscne-transfer-guidelines-20261125","text":"\"PAMS_bannerCode\":\"E028\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bscne-us-history-stories-of-american-democracy","code":"D267","title":"US History: Stories of American Democracy","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D267\",\"courseName\":\"US History: Stories of American Democracy\",\"courseDescription\":\"​This course presents a broad survey of U.S. history from early colonization to the mid-twentieth century. The course explores how historical events and major themes in American history have affected diverse populations, influenced changes in policy an established the American definition of democracy.  This course consists of an introduction and five major sections. Each section includes learning opportunities through reading, images, videos, and other relevant resources. Assessment activities with feedback also provide opportunities to practice and check how well you understand the content. Because the course is self-paced, you may move through the material as quickly or as slowly as you need to, with the goal of demonstrating proficiency in the five competencies covered in the final assessment. If you have no prior knowledge of this material, you can expect to spend 30-40 hours on the course content.​ \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-introduction-to-systems-thinking-and-applications","code":"D459","title":"Introduction to Systems Thinking and Applications","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D459\",\"courseName\":\"Introduction to Systems Thinking and Applications\",\"courseDescription\":\"Introduction to Systems Thinking and Applications provides learners with the skills required to engage in a holistic systems-based approach to analyzing complex problems and solutions. This course introduces the foundational concepts and principles of systems thinking and provides opportunities to use a systems thinking approach to analyze and evaluate real-world case studies. The course will culminate with using systems thinking to develop a solution to an authentic complex problem. This course has no prerequisites, but general education math (C955 or C957) is preferred. Because the course is self-paced, learners may move through the material as quickly or as slowly as needed, with the goal of demonstrating proficiency in the five competencies covered in the final assessment. If learners have no prior knowledge of this material, they can expect to spend 30 to 40 hours on the course content.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-influential-communication-through-visual-design-and-storytelling","code":"D246","title":"Influential Communication through Visual Design and Storytelling","credits":3,"category":"general","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D246\",\"courseName\":\"Influential Communication through Visual Design and Storytelling\",\"courseDescription\":\"Influential Communication through Visual Design and Storytelling provides learners with foundational visual design and storytelling techniques to influence and create a lasting impression on audiences. Learners will first explore how human behavior is influenced by visuals and when to apply visual techniques to better communicate with audiences. Next, learners will learn techniques for creating compelling stories that create memorable images within the audience\\u0027s mind. Ultimately, learners who master these skills will be well-positioned to apply their visual and storytelling techniques to not only better communicate their thoughts and ideas to an audience, but to also influence or motivate them.\\r\\n\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
+    {"id":"bscne-it-leadership-foundations","code":"D370","title":"IT Leadership Foundations","credits":3,"category":"core","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"D370\",\"courseName\":\"IT Leadership Foundations\",\"courseDescription\":\"IT Leadership Foundations is an introductory course that provides students with an overview of organizational structures, communication, and leadership styles specific to information technology in organizations. It also introduces students to some of the power skills that help make successful IT professionals, including time management, problem solving, and emotional intelligence. Students in this course explore their own strengths and passions in relation to the field. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business of IT\""}]},
+    {"id":"bscne-bscne-capstone-project","code":"E029","title":"BSCNE Capstone Project","credits":4,"category":"capstone","sourceIds":["wgu-bscne-202608-curriculum-20261125","wgu-bscne-transfer-guidelines-20261125"],"institutionalOnly":true,"group":"cloud-and-virtualization","curriculumAreaEvidence":{"areaOfStudy":"Cloud and Virtualization","sourceIds":["wgu-bscne-202608-curriculum-20261125"],"programId":246,"catalogTerm":"202608","ledgerSha256":"b791484f796bee7e38bd009c4358b9813a127a68e00879136c894d66b1b08d26"},"quotes":[{"sourceId":"wgu-bscne-202608-curriculum-20261125","text":"\"courseCode\":\"E029\",\"courseName\":\"BSCNE Capstone Project\",\"courseDescription\":\"In the BSCNE Capstone Project, students choose from a fixed set of tasks that they might encounter in the workplace. Examples might include configuring network components, applying security policies to a set of cloud resources, or automating a network deployment using orchestration tools. Students will submit their tasks for evaluation in a working, deployed environment where an evaluator can check their results by inspecting configurations or logging into machines or services to test functionality. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Cloud and Virtualization\""},{"sourceId":"wgu-bscne-transfer-guidelines-20261125","text":"\"PAMS_bannerCode\":\"E029\",\"transferArea\":\"Non-Transferable\""}]}
+  ]
+}

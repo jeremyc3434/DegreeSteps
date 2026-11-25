@@ -40,7 +40,18 @@
     "unresolved": [
       "Confirm individual catalog eligibility, major-course residency allocation, course prerequisites, and written transfer evaluation.",
       "Outside-course equivalencies must be sourced separately; a university requirement is not evidence that a particular accelerated course transfers.",
-      "State-specific online general-education requirements may differ; consult the applicable state degree completion plan."
+      "State-specific online general-education requirements may differ; consult the applicable state degree completion plan.",
+      {
+        "id": "liberty-psychology-aa-online-specific-research-hold-2026-11-25",
+        "message": "A 60-credit Psychology A.A. allocation retaining the three-credit UNIV 104 course has not been established. The published sequence totals 60–63 credits; this 60-credit scenario uses an individually approved zero-credit UNIV 104 determination. The catalog allows major foundational courses to overlap general education, but PSYC 101 is a major course here; it cannot replace the separate social-science requirement. No waiver or additional overlap is assumed.",
+        "owner": "DegreeSteps",
+        "status": "unresolved",
+        "field": "requirements",
+        "sourceIds": [
+          "liberty-psychology-aa-online-specific-research-hold-2026-11-25",
+          "liberty-psychology-aa-online-specific-research-hold-2026-11-25-current-degree"
+        ]
+      }
     ],
     "graduationRequirements": [
       {
@@ -298,7 +309,60 @@
     "cli-religion-admissions-2026-11-24",
     "cli-religion-accreditation-2026-11-24",
     "cli-religion-course-catalog-2026-11-24",
-    "cli-religion-the-101-2026-11-24"
+    "cli-religion-the-101-2026-11-24",
+    "liberty-psychology-aa-online-specific-research-hold-2026-11-25",
+    "liberty-psychology-aa-online-specific-research-hold-2026-11-25-current-degree"
+  ],
+  "sources": [
+    {
+      "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf#pages=103,502-503,1163-1164&columns=2",
+      "kind": "university",
+      "checked": "2026-11-25",
+      "retrievedOn": "2026-11-24",
+      "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "capture": "content/source-captures/3dd9948d418f7b5b.txt",
+      "captureSha256": "3dd9948d418f7b5bf37f479a5a39c271a0931736544b069373436f80d29517ff",
+      "sourcePages": [
+        103,
+        502,
+        503,
+        1163,
+        1164
+      ],
+      "reviewMethod": "Selected pages of the retained original official PDF locally extracted and read November 25. Original November 24 retrieval and PDF hash retained; no new retrieval claimed.",
+      "id": "liberty-psychology-aa-online-specific-research-hold-2026-11-25",
+      "title": "Liberty 2026–2027 undergraduate catalog: psychology-aa-online specific unresolved academic constraint",
+      "roles": [
+        "curriculum",
+        "prerequisites",
+        "offering"
+      ]
+    },
+    {
+      "id": "liberty-psychology-aa-online-specific-research-hold-2026-11-25-current-degree",
+      "title": "Psychology A.A. Online current2026–2027 degree plan and60–63-credit sequence, rechecked November25",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/",
+      "kind": "university",
+      "roles": [
+        "curriculum"
+      ],
+      "checked": "2026-11-25",
+      "retrievedOn": "2026-11-25",
+      "capture": "content/source-captures/95e647fd99130295.txt",
+      "captureSha256": "95e647fd991302959dfa1f806bfef9f0c04efec7fc880a1c489831e792f03b5c",
+      "sourceContentHash": "sha256:95e647fd991302959dfa1f806bfef9f0c04efec7fc880a1c489831e792f03b5c",
+      "sourceHashBasis": "normalized-captured-text"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "liberty-psychology-aa-online-specific-research-hold-2026-11-25-current-degree",
+      "text": "Total Hours 60-63"
+    },
+    {
+      "sourceId": "liberty-psychology-aa-online-specific-research-hold-2026-11-25-current-degree",
+      "text": "Major Courses PSYC 101 General Psychology 3"
+    }
   ],
   "requirements": [
     {"id":"engl-101","code":"ENGL 101","title":"Composition and Rhetoric","credits":3,"category":"general","group":"writing","upper":false,"sourceIds":["liberty-psychology-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
