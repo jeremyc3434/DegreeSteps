@@ -1,0 +1,520 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-computer-science",
+  "routeIds": [],
+  "title": "Bachelor of Science - Computer Science",
+  "level": "bachelor",
+  "catalog": "unstated",
+  "totalCredits": 124,
+  "catalogUrl": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/Sy5UPtS5v",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+      "title": "Bachelor of Science - Computer Science catalog page",
+      "url": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/Sy5UPtS5v",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/31daa244fe5a6bb9.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+      "text": "Grand Total Credits:<!-- --> <strong>124</strong>"
+    }
+  ],
+  "gaps": [
+    "No catalog year/term is printed; the capture only shows dateStart 2026-09-02 and catalogActivationDate 2026-06-01.",
+    "The credit unit type (semester vs. quarter) is not explicitly stated; the capture only says 'Total Credits'. Semester was assumed and should be verified.",
+    "No residency or institutional-credit requirement (courses that must be completed at the school) is stated in the capture.",
+    "No minimum overall GPA, upper-division credit minimum, or grade requirements for major courses are stated, except that MATH 150 as a prerequisite to MATH160 requires a minimum grade of C.",
+    "MATH 150 Fundamental Algebra may be needed as a prerequisite for MATH160. It can count as a University elective. Its credits are not stated.",
+    "COMP480 Special Topics in Computer Science is variable credit (1 - 4) within Major Electives.",
+    "Optional focus areas can fulfill the 12-credit Major Electives block: Intelligent Software Systems Engineering, Data Analytics, Web and Mobile Development, Software Development Security, and Cloud Computing. The Web and Mobile Development focus includes COMP486, which is not in the Major Electives list.",
+    "Course prerequisites beyond the MATH 150 note are not included in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-computer-science-eng120",
+      "code": "ENG120",
+      "title": "College Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "ENG120</a> <!-- -->-<!-- --> <!-- -->College Writing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-math160",
+      "code": "MATH160",
+      "title": "College Algebra",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "MATH160</a> <!-- -->-<!-- --> <!-- -->College Algebra"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-social-and-behavioral-sciences-anthropology-geography-history-p-e320019b",
+      "code": "",
+      "title": "Social and Behavioral Sciences (Anthropology, Geography, History, Political Science, Psychology, or Sociology)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "Choose from the Anthropology, Geography, History, Political Science, Psychology, or Sociology disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-science-two-courses-one-with-a-lab-component",
+      "code": "",
+      "title": "Science (two courses, one with a lab component)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "Two courses from the Science discipline. One course must have a lab component."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-humn211",
+      "code": "HUMN211",
+      "title": "Introduction to Critical Ethics",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "HUMN211</a> <!-- -->-<!-- --> <!-- -->Introduction to Critical Ethics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-arts-humanities-elective-art-english-literature-fine-arts-human-e3bb0b1c",
+      "code": "",
+      "title": "Arts & Humanities elective (Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater)",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "Choose from the Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-learning-strategies-pf121-basic-learning-strategies-or-pf321-learning-strategies",
+      "code": "",
+      "title": "Learning Strategies: PF121 Basic Learning Strategies or PF321 Learning Strategies",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "PF121</a> <!-- -->-<!-- --> <!-- -->Basic Learning Strategies"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-communication-spch100-speech-communication-or-comm150-interpersonal-communication",
+      "code": "",
+      "title": "Communication: SPCH100 Speech Communication or COMM150 Interpersonal Communication",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "SPCH100</a> <!-- -->-<!-- --> <!-- -->Speech Communication"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-eng220",
+      "code": "ENG220",
+      "title": "Research Writing: Exploring Professional Identities",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "ENG220</a> <!-- -->-<!-- --> <!-- -->Research Writing: Exploring Professional Identities"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-math215",
+      "code": "MATH215",
+      "title": "Statistical Concepts",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "MATH215</a> <!-- -->-<!-- --> <!-- -->Statistical Concepts"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp111",
+      "code": "COMP111",
+      "title": "Introduction to Computer Science & Object-Oriented Programming",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP111</a> <!-- -->-<!-- --> <!-- -->Introduction to Computer Science"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp201",
+      "code": "COMP201",
+      "title": "Principles of Computer Organization",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP201</a> <!-- -->-<!-- --> <!-- -->Principles of Computer Organization"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp204",
+      "code": "COMP204",
+      "title": "Principles of Computer Networks",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP204</a> <!-- -->-<!-- --> <!-- -->Principles of Computer Networks"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp281",
+      "code": "COMP281",
+      "title": "Database Management Systems",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP281</a> <!-- -->-<!-- --> <!-- -->Database Management Systems"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp294",
+      "code": "COMP294",
+      "title": "Computer Science Practicum I",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP294</a> <!-- -->-<!-- --> <!-- -->Computer Science Practicum I"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp101",
+      "code": "COMP101",
+      "title": "Problem Solving With Computing",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP101</a> <!-- -->-<!-- --> <!-- -->Problem Solving With Computing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-cloud200",
+      "code": "CLOUD200",
+      "title": "Cloud Fundamentals",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "CLOUD200</a> <!-- -->-<!-- --> <!-- -->Cloud Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-cysc200",
+      "code": "CYSC200",
+      "title": "Cybersecurity Fundamentals",
+      "credits": 2,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "CYSC200</a> <!-- -->-<!-- --> <!-- -->Cybersecurity Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-data-structures-i-comp121-object-oriented-data-structures-algor-795586f2",
+      "code": "",
+      "title": "Data Structures I: COMP121 Object-Oriented Data Structures & Algorithms I or COMP511 Foundation Data Struc & Obj Orntd Design",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP121</a> <!-- -->-<!-- --> <!-- -->Object-Oriented Data Structures"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp321",
+      "code": "COMP321",
+      "title": "Application Server Programming",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP321</a> <!-- -->-<!-- --> <!-- -->Application Server Programming"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp323",
+      "code": "COMP323",
+      "title": "Fundamentals of Operating Systems",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP323</a> <!-- -->-<!-- --> <!-- -->Fundamentals of Operating Systems"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp394",
+      "code": "COMP394",
+      "title": "Computer Science Practicum II",
+      "credits": 2,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP394</a> <!-- -->-<!-- --> <!-- -->Computer Science Practicum II"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp495",
+      "code": "COMP495",
+      "title": "Computer Science Practicum Iii/Capstone",
+      "credits": 4,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP495</a> <!-- -->-<!-- --> <!-- -->Computer Science Practicum Iii/Capstone"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-math320",
+      "code": "MATH320",
+      "title": "Discrete Mathematics",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "MATH320</a> <!-- -->-<!-- --> <!-- -->Discrete Mathematics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-comp215",
+      "code": "COMP215",
+      "title": "Programming Language: Principles & Practice",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP215</a> <!-- -->-<!-- --> <!-- -->Programming Language: Principles"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-data-structures-ii-comp311-object-oriented-data-structures-algo-556d4867",
+      "code": "",
+      "title": "Data Structures II: COMP311 Object-Oriented Data Structures & Algorithms II or COMP611 Advanced Data Structures and Programming",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "COMP611</a> <!-- -->-<!-- --> <!-- -->Advanced Data Structures and Programming"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-major-electives-from-the-listed-comp-data-mis-webd-busa-cysc-cloud-courses",
+      "code": "",
+      "title": "Major Electives (from the listed COMP, DATA, MIS, WEBD, BUSA, CYSC, CLOUD courses)",
+      "credits": 12,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "Earn at least <span>12</span> credits from the following:"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-computer-science-university-electives-any-undergraduate-courses-except-developmental-education",
+      "code": "",
+      "title": "University Electives (any undergraduate courses except developmental education)",
+      "credits": 22,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-computer-science-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-computer-science-catalog-2026-11-23",
+          "text": "Any undergraduate courses offered by the University except developmental education courses."
+        }
+      ]
+    }
+  ]
+}

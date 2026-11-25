@@ -1,0 +1,790 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-analytics",
+  "routeIds": [],
+  "title": "Bachelor of Science - Analytics",
+  "level": "bachelor",
+  "catalog": "unstated",
+  "totalCredits": 120,
+  "catalogUrl": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/SyClnQ6ai",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+      "title": "Bachelor of Science - Analytics catalog page",
+      "url": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/SyClnQ6ai",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/e505be660c92fd57.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+      "text": "Grand Total Credits:<!-- --> <strong>120</strong>"
+    }
+  ],
+  "gaps": [
+    "Catalog year/term is not printed as such; the capture only shows dateStart 2026-09-02 and catalogActivationDate 2026-06-01.",
+    "The capture does not name the credit unit (semester vs. quarter); 'semester' is assumed and should be verified.",
+    "Focus Area (24 credits) requires completing only one of three tracks (Applied Data Science, Business Analytics, Healthcare Analytics); all three tracks' courses are listed as concentration items, so only one track's 24 credits should count toward the 120 total.",
+    "Fundamental General Education notes a MATH 150 Fundamental Algebra prerequisite (minimum grade C) for MATH160 that can count as a University elective; it is not listed as a separate requirement.",
+    "Social and Behavioral Sciences, Science, Arts & Humanities, and University Electives blocks list no specific courses; eligible course lists are not in the capture.",
+    "No residency/institutional-credit requirement, minimum GPA, upper-division credit minimum, or transfer credit limits are stated in the capture."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-analytics-eng120",
+      "code": "ENG120",
+      "title": "College Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "College Writing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-math160",
+      "code": "MATH160",
+      "title": "College Algebra",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "College Algebra"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-social-and-behavioral-sciences-6-credits-at-least-two-different-disciplines",
+      "code": "",
+      "title": "Social and Behavioral Sciences (6 credits, at least two different disciplines)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Choose from Anthropology, Economics, Geography, History, Political Science, Psychology, and Sociology."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-science-two-courses-one-with-lab",
+      "code": "",
+      "title": "Science (two courses, one with lab)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Two courses from the Science discipline. One course must have a lab component."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-humn211",
+      "code": "HUMN211",
+      "title": "Introduction to Critical Ethics",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Introduction to Critical Ethics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-arts-humanities-elective",
+      "code": "",
+      "title": "Arts & Humanities elective",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Choose from the Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-pf121-basic-learning-strategies-or-pf321-learning-strategies",
+      "code": "",
+      "title": "PF121 Basic Learning Strategies or PF321 Learning Strategies",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Basic Learning Strategies"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-comm150-interpersonal-communication-or-spch100-speech-communication",
+      "code": "",
+      "title": "COMM150 Interpersonal Communication or SPCH100 Speech Communication",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Interpersonal Communication"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-eng220",
+      "code": "ENG220",
+      "title": "Research Writing: Exploring Professional Identities",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Research Writing: Exploring Professional Identities"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-pf106",
+      "code": "PF106",
+      "title": "Introduction to Spreadsheets",
+      "credits": 1,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Introduction to Spreadsheets"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-math215",
+      "code": "MATH215",
+      "title": "Statistical Concepts",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Statistical Concepts"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-busa200",
+      "code": "BUSA200",
+      "title": "Database Fundamentals",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Database Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-busa250",
+      "code": "BUSA250",
+      "title": "SQL for Business",
+      "credits": 2,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "SQL for Business"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-comp101",
+      "code": "COMP101",
+      "title": "Problem Solving With Computing",
+      "credits": 2,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Problem Solving With Computing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-data300",
+      "code": "DATA300",
+      "title": "Introduction to Analytics",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Introduction to Analytics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-data310",
+      "code": "DATA310",
+      "title": "Data Visualization",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Data Visualization"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-busa350",
+      "code": "BUSA350",
+      "title": "Principles of Analytics Modeling",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Principles of Analytics Modeling"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-data400",
+      "code": "DATA400",
+      "title": "Principles of Machine Learning",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Principles of Machine Learning"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-data450",
+      "code": "DATA450",
+      "title": "Advanced Topics in Analytics",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Advanced Topics in Analytics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-data495",
+      "code": "DATA495",
+      "title": "Analytics Capstone",
+      "credits": 4,
+      "category": "capstone",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Analytics Capstone"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-math254",
+      "code": "MATH254",
+      "title": "Mathematics for Data Analytics",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Mathematics for Data Analytics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-cysc250",
+      "code": "CYSC250",
+      "title": "Cybersecurity for the Professions",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Cybersecurity for the Professions"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-comp204",
+      "code": "COMP204",
+      "title": "Principles of Computer Networks (Applied Data Science focus area)",
+      "credits": 2,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Principles of Computer Networks"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-data250",
+      "code": "DATA250",
+      "title": "Analytics Programming (Applied Data Science focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Analytics Programming"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-data430",
+      "code": "DATA430",
+      "title": "Data Engineering Technologies (Applied Data Science focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Data Engineering Technologies"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-cloud200",
+      "code": "CLOUD200",
+      "title": "Cloud Fundamentals (Applied Data Science focus area)",
+      "credits": 2,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Cloud Fundamentals"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-mis310",
+      "code": "MIS310",
+      "title": "Info Systems Architecture & Technology (Applied Data Science focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Info Systems Architecture"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-itec430",
+      "code": "ITEC430",
+      "title": "Information Technology Project Management (Applied Data Science focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Information Technology Project Management"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-data415",
+      "code": "DATA415",
+      "title": "Data Warehouse Architecture (Applied Data Science focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Data Warehouse Architecture"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-acct202",
+      "code": "ACCT202",
+      "title": "Financial/Managerial Acct for Non-Majors (Business Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Financial/Managerial Acct for Non-Majors"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-econ210",
+      "code": "ECON210",
+      "title": "Introduction to Microeconomics (Business Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Introduction to Microeconomics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-fina301",
+      "code": "FINA301",
+      "title": "Principles of Finance (Business Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Principles of Finance"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-mgmt312",
+      "code": "MGMT312",
+      "title": "Principles of Management (Business Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Principles of Management"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-mktg300",
+      "code": "MKTG300",
+      "title": "Marketing (Business Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Marketing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-bsad305",
+      "code": "BSAD305",
+      "title": "Business and AI (Business Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Business and AI"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-hcm210",
+      "code": "HCM210",
+      "title": "Healthcare Foundations (Healthcare Analytics focus area)",
+      "credits": 2,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Healthcare Foundations"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-him150",
+      "code": "HIM150",
+      "title": "Medical Terminology (Healthcare Analytics focus area)",
+      "credits": 2,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Medical Terminology"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-him200",
+      "code": "HIM200",
+      "title": "Introduction to Health Information Management (Healthcare Analytics focus area)",
+      "credits": 2,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Introduction to Health Information Management"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-him320",
+      "code": "HIM320",
+      "title": "Health Data (Healthcare Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Health Data"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-him350",
+      "code": "HIM350",
+      "title": "Health Informatics (Healthcare Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Health Informatics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-him470",
+      "code": "HIM470",
+      "title": "Health Information Systems (Healthcare Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Health Information Systems"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-him485",
+      "code": "HIM485",
+      "title": "Applications in Health Info Systems (Healthcare Analytics focus area)",
+      "credits": 2,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Applications in Health Info Systems"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-hcm442",
+      "code": "HCM442",
+      "title": "Legal Aspects of Healthcare Management (Healthcare Analytics focus area)",
+      "credits": 4,
+      "category": "concentration",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Legal Aspects of Healthcare Management"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-analytics-university-electives",
+      "code": "",
+      "title": "University Electives",
+      "credits": 17,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-analytics-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-analytics-catalog-2026-11-23",
+          "text": "Any undergraduate courses offered by the University except developmental education courses."
+        }
+      ]
+    }
+  ]
+}

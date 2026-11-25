@@ -1,0 +1,419 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "bachelor-of-science-marketing",
+  "routeIds": [],
+  "title": "Bachelor of Science - Marketing",
+  "level": "bachelor",
+  "catalog": "2026-09-02",
+  "totalCredits": 124,
+  "catalogUrl": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/SkD18FUQ_",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+      "title": "Bachelor of Science - Marketing catalog page",
+      "url": "https://franklin.kuali.co/api/v1/catalog/program/69c3ec4110deb082868ebb54/SkD18FUQ_",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/9695bffbf021b1f3.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+      "text": "Grand Total Credits:<!-- --> <strong>124</strong>"
+    }
+  ],
+  "gaps": [
+    "The capture says only 'credits' and does not state the credit unit type (semester vs. quarter); semester is assumed and should be confirmed.",
+    "No catalog year label is printed; only dateStart 2026-09-02 and catalogActivationDate 2026-06-01 appear.",
+    "No residency or institutional-credit requirement is stated, so no requirement is marked institutionalOnly.",
+    "Minimum GPA, upper-division credit minimums and other graduation policies are not stated.",
+    "The MATH 140 or MATH 150 prerequisite to MATH215 has no printed credit value; the capture says it 'can count as a University Elective'.",
+    "The capture notes that ACCT 215 plus ACCT 225 can fulfill the ACCT202 requirement; the credit values for those courses are not printed.",
+    "Major Electives allow a graduate-level course (e.g. MGMT 707 or MCM 707) per academic policy; the policy details and credits are not stated.",
+    "The Major Elective option list is not itemized in this ledger. Options include MKTG345, MKTG410 (1-4), MKTG415, MKTG435, MKTG450, MKTG480 (1-4), COMM105 (1), COMM107 (1), COMM241 (3), GRPH200, GRPH210, GRPH310, IMD300, IMD450, PBRL325, PBRL445 and MKTG433.",
+    "The specific courses that satisfy the Science, Social and Behavioral Sciences, and Arts & Humanities discipline blocks are not listed."
+  ],
+  "requirements": [
+    {
+      "id": "bachelor-of-science-marketing-eng120",
+      "code": "ENG120",
+      "title": "College Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "College Writing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-math215",
+      "code": "MATH215",
+      "title": "Statistical Concepts",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Statistical Concepts"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-science-two-courses-one-with-lab",
+      "code": "",
+      "title": "Science (two courses, one with lab)",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Two courses from the Science discipline. One course must have a lab component."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-econ220",
+      "code": "ECON220",
+      "title": "Introduction to Macroeconomics",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Introduction to Macroeconomics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-social-and-behavioral-sciences-elective",
+      "code": "",
+      "title": "Social and Behavioral Sciences elective",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Choose from the Anthropology, Geography, History, Political Science, Psychology, or Sociology disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-arts-humanities",
+      "code": "",
+      "title": "Arts & Humanities",
+      "credits": 6,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Choose from the Art, English Literature, Fine Arts, Humanities, Music, Philosophy, Religion or Theater disciplines."
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-learning-strategies-pf121-basic-learning-strategies-or-pf321-learning-strategies",
+      "code": "",
+      "title": "Learning Strategies (PF121 Basic Learning Strategies or PF321 Learning Strategies)",
+      "credits": 2,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Basic Learning Strategies"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-communication-comm150-interpersonal-communication-or-spch100-speech-communication",
+      "code": "",
+      "title": "Communication (COMM150 Interpersonal Communication or SPCH100 Speech Communication)",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Interpersonal Communication"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-eng205",
+      "code": "ENG205",
+      "title": "Business & Professional Writing",
+      "credits": 4,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Business &amp; Professional Writing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-acct202",
+      "code": "ACCT202",
+      "title": "Financial/Managerial Acct for Non-Majors",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Financial/Managerial Acct for Non-Majors"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-bsad220",
+      "code": "BSAD220",
+      "title": "Business Law",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Business Law"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-econ210",
+      "code": "ECON210",
+      "title": "Introduction to Microeconomics",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Introduction to Microeconomics"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-fina301",
+      "code": "FINA301",
+      "title": "Principles of Finance",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Principles of Finance"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-mgmt312",
+      "code": "MGMT312",
+      "title": "Principles of Management",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Principles of Management"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-mktg300",
+      "code": "MKTG300",
+      "title": "Marketing",
+      "credits": 4,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "MKTG300</a> - Marketing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-mktg320",
+      "code": "MKTG320",
+      "title": "Advertising & Promotion",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Advertising &amp; Promotion"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-mktg330",
+      "code": "MKTG330",
+      "title": "Consumer Behavior",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Consumer Behavior"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-mktg332",
+      "code": "MKTG332",
+      "title": "Marketing Research",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Marketing Research"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-mktg340",
+      "code": "MKTG340",
+      "title": "Digital Marketing",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Digital Marketing<!-- -->"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-mktg495",
+      "code": "MKTG495",
+      "title": "Integrated Marketing",
+      "credits": 4,
+      "category": "major",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Integrated Marketing"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-major-electives",
+      "code": "",
+      "title": "Major Electives",
+      "credits": 16,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Major Electives"
+        }
+      ]
+    },
+    {
+      "id": "bachelor-of-science-marketing-university-electives",
+      "code": "",
+      "title": "University Electives",
+      "credits": 28,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "franklin-bachelor-of-science-marketing-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "franklin-bachelor-of-science-marketing-catalog-2026-11-23",
+          "text": "Any undergraduate courses offered by the University except developmental education courses."
+        }
+      ]
+    }
+  ]
+}
