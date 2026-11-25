@@ -2,16 +2,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {pathToFileURL} from 'node:url';
+import {resolve} from 'node:path';
 import {createTrustedDatabase} from './scripts/d1-snapshot.mjs';
 
 const origin='https://leads.synthetic.invalid',uuid='22222222-2222-4222-8222-222222222222',owner='sb-'+uuid;
-const workers=await Promise.all([['Sites','./outputs/site/dist/server/index.js'],['native','./outputs/cloudflare/worker.mjs']].map(async([kind,path])=>({kind,worker:(await import('data:text/javascript;base64,'+readFileSync(new URL(path,import.meta.url)).toString('base64'))).default})));
+const workers=await Promise.all([['Sites','./outputs/site/dist/server/index.js'],['native','./outputs/cloudflare/runtime/worker.mjs']].map(async([kind,path])=>({kind,worker:(await import(pathToFileURL(resolve(import.meta.dirname,path)).href)).default})));
 const plan=Object.keys(JSON.parse(readFileSync(new URL('./dist/data/coach-index.json',import.meta.url),'utf8')).plans)[0];
 function fixture(t,flags={}){
  const sqlite=createTrustedDatabase();t.after(()=>sqlite.close());sqlite.prepare('INSERT INTO community_users(id,alias,role,created_at,updated_at) VALUES(?,?,?,?,?)').run(owner,'Synthetic owner','owner',1,1);
  const calls={auth:0,queries:[]};
  const DB={prepare(sql){calls.queries.push(sql);const statement=sqlite.prepare(sql);return{bind(...values){return{first:async()=>statement.get(...values)||null,all:async()=>({results:statement.all(...values)}),run:async()=>({meta:{changes:Number(statement.run(...values).changes)}})};}};}};
- const env={DB,LEADS_HASH_SALT:'synthetic-worker-leads-salt',PORTAL_SUPABASE_URL:'https://identity.synthetic.invalid',PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_leads_test',...flags,
+ const env={DB,OWNER_CONSOLE_SUBJECT_SHA256:createHash('sha256').update(owner).digest('hex'),LEADS_HASH_SALT:'synthetic-worker-leads-salt',PORTAL_SUPABASE_URL:'https://identity.synthetic.invalid',PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_leads_test',...flags,
   PORTAL_AUTH_FETCH:async url=>{calls.auth++;if(new URL(url).pathname==='/auth/v1/user')return Response.json({id:uuid,email:'owner@example.invalid',email_confirmed_at:'2026-01-01T00:00:00Z'});throw Error('Unexpected synthetic identity request');},
   ASSETS:{async fetch(request){try{return new Response(readFileSync(new URL('./dist'+new URL(request.url).pathname,import.meta.url)));}catch{return new Response('missing',{status:404});}}}};
  t.mock.method(globalThis,'fetch',async()=>{throw Error('No outside calls: nothing is ever sent to a school or payment provider');});

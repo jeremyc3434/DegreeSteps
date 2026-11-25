@@ -26,7 +26,7 @@ function seedTemplate(DB,{id='tpl-'+('1'.repeat(32)),artifact=JSON.stringify({ti
 
 test('fixed registry exactly covers every migration-owned table and column type',t=>{
   const f=fixture(t),expected=Object.values(schema).map(table=>{const value=getTableConfig(table);return{name:value.name,columns:value.columns.map(column=>({name:column.name,type:column.getSQLType()}))};}).sort((a,b)=>a.name<b.name?-1:a.name>b.name?1:0);
-  assert.equal(expected.length,39);assert.deepEqual(D1_SNAPSHOT_TABLES,expected);
+  assert.equal(expected.length,57);assert.deepEqual(D1_SNAPSHOT_TABLES,expected);
   const actual=f.DB.sqlite.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT GLOB 'sqlite_*' ORDER BY name").all().map(row=>row.name);assert.deepEqual(actual,expected.map(table=>table.name));
   for(const table of expected)assert.deepEqual(f.DB.sqlite.prepare('PRAGMA table_info("'+table.name+'")').all().map(column=>({name:column.name,type:column.type.toLowerCase()})),table.columns);
   assert.deepEqual(D1_SNAPSHOT_SCHEMA.map(row=>({...row})),f.DB.sqlite.prepare("SELECT type,name,tbl_name,sql FROM sqlite_master ORDER BY type,name").all().filter(row=>actual.includes(row.tbl_name)&&['table','index','trigger'].includes(row.type)).map(row=>({...row})));
@@ -50,14 +50,21 @@ test('one atomic read batch preserves complete large text, nulls, exact int64 va
   assert(Buffer.byteLength(large)>100000);seedUser(f.DB,'synthetic-user','Synthetic owner',9223372036854775807n);seedTemplate(f.DB,{artifact:large});
   f.DB.sqlite.prepare("INSERT INTO ai_service_connections(id,ciphertext,iv,revision,verified_at,updated_by,created_at,updated_at) VALUES ('anthropic',?, ?,1,1,'synthetic-user',1,2)").run('ciphertext-fixture-'.repeat(4),'a'.repeat(24));
   const before=f.DB.sqlite.prepare('SELECT total_changes() AS n').get().n,result=await call(f.env);assert.equal(result.status,200,JSON.stringify(result.data));
-  assert.equal(f.DB.batches,1);assert.equal(f.DB.prepared.length,3);assert(f.DB.prepared.every(sql=>sql.length<100000),'D1 statement text remains under its documented bound');assert(f.DB.prepared.every(sql=>!(/\bUNION\b/i.test(sql))),'Avoid Cloudflare compound-SELECT limits rather than relying on local SQLite limits');assert.equal(f.DB.sqlite.prepare('SELECT total_changes() AS n').get().n,before);
-  assert.equal(result.data.format,'degreesteps-d1-snapshot');assert.equal(result.data.version,1);assert.equal(result.data.integerEncoding,'decimal-string');assert.equal(result.data.tables.length,39);assert.equal(result.data.sourceOrigin,origin);assert(!Number.isNaN(Date.parse(result.data.createdAt)));
+  assert.equal(f.DB.batches,1);assert.equal(f.DB.prepared.length,3);assert(f.DB.prepared.every(sql=>sql.length<100000),'D1 statement text remains under its documented bound: '+f.DB.prepared.map(sql=>sql.length).join(','));assert(f.DB.prepared.every(sql=>!(/\bUNION\b/i.test(sql))),'Avoid Cloudflare compound-SELECT limits rather than relying on local SQLite limits');assert.equal(f.DB.sqlite.prepare('SELECT total_changes() AS n').get().n,before);
+  assert.equal(result.data.format,'degreesteps-d1-snapshot');assert.equal(result.data.version,1);assert.equal(result.data.integerEncoding,'decimal-string');assert.equal(result.data.tables.length,57);assert.equal(result.data.sourceOrigin,origin);assert(!Number.isNaN(Date.parse(result.data.createdAt)));
   const templates=result.data.tables.find(table=>table.name==='degree_templates');assert.equal(templates.rows[0].artifact_json,large);assert.equal(templates.rows[0].source_url,null);
   assert.equal(result.data.tables.find(table=>table.name==='community_users').rows[0].created_at,'9223372036854775807');assert.equal(result.data.tables.find(table=>table.name==='ai_service_connections').rows[0].ciphertext,'ciphertext-fixture-'.repeat(4));
   assert(result.data.schema.some(row=>row.type==='index'&&row.sql===null));assert(!result.data.schema.some(row=>row.tbl_name==='sqlite_sequence'));
   assert.equal(result.data.schemaSha256,hash(result.data.schema));for(const table of result.data.tables){assert.equal(table.count,table.rows.length);assert.equal(table.sha256,hash(table.rows));}
   assert.equal(result.data.sha256,hash({format:result.data.format,version:result.data.version,integerEncoding:result.data.integerEncoding,schemaSha256:result.data.schemaSha256,tables:result.data.tables.map(({name,columns,count,sha256})=>({name,columns,count,sha256}))}));
   assert.equal(result.response.headers.get('Cache-Control'),'private, no-store');assert.equal(result.response.headers.get('X-Robots-Tag'),'noindex, nofollow');assert.match(result.response.headers.get('Content-Disposition'),/attachment/);assert.equal(result.response.headers.get('Access-Control-Allow-Origin'),null);
+});
+
+test('compact statistics measure the exact exported object bytes for quotes, Unicode, nulls and int64 strings',async t=>{
+  const f=fixture(t);seedUser(f.DB,'bytes-user','Quoted " 🧭',9223372036854775807n);seedTemplate(f.DB,{artifact:JSON.stringify({text:'Quoted " Unicode 🧭 newline\n and slash\\'})});
+  const result=await call(f.env);assert.equal(result.status,200);
+  const stats=f.DB.sqlite.prepare(f.DB.prepared[0]).all(),rows=f.DB.sqlite.prepare(f.DB.prepared[1]).all();
+  for(const stat of stats){const lengths=rows.filter(row=>row.table_name===stat.name).map(row=>Buffer.byteLength(row.row_json));assert.equal(stat.encoded_bytes,lengths.reduce((sum,n)=>sum+n,0),stat.name);assert.equal(stat.max_row_bytes,lengths.length?Math.max(...lengths):0,stat.name);}
 });
 
 test('digests and row ordering do not depend on insertion order, source origin or export timestamp',async t=>{
@@ -125,7 +132,7 @@ test('schema mismatch exposes bounded operator-only DDL metadata without any sto
 
 test('the exact managed Sites migration table is internal while other unknown tables still fail closed',async t=>{
   const f=fixture(t);f.DB.sqlite.exec('CREATE TABLE __appgarden_migrations(id text PRIMARY KEY,metadata text)');f.DB.sqlite.prepare('INSERT INTO __appgarden_migrations(id,metadata) VALUES (?,?)').run('synthetic-platform-migration','INTERNAL PLATFORM METADATA');
-  const result=await call(f.env);assert.equal(result.status,200);assert.equal(result.data.tables.length,39);assert.equal(result.data.schema.length,125);assert(!result.data.tables.some(table=>table.name==='__appgarden_migrations'));assert(!result.data.schema.some(row=>row.name==='__appgarden_migrations'));assert(!JSON.stringify(result.data).includes('INTERNAL PLATFORM METADATA'));
+  const result=await call(f.env);assert.equal(result.status,200);assert.equal(result.data.tables.length,57);assert.equal(result.data.schema.length,200);assert(!result.data.tables.some(table=>table.name==='__appgarden_migrations'));assert(!result.data.schema.some(row=>row.name==='__appgarden_migrations'));assert(!JSON.stringify(result.data).includes('INTERNAL PLATFORM METADATA'));
   f.DB.sqlite.exec('CREATE TABLE __appgarden_other_records(id text)');const unknown=await call(f.env);assert.equal(unknown.status,503);assert.equal(unknown.data.code,'snapshot_schema_mismatch');
 });
 

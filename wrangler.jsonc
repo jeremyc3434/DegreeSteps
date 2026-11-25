@@ -1,13 +1,16 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "degreesteps",
-  "main": "outputs/cloudflare/worker.mjs",
+  "main": "outputs/cloudflare/runtime/worker.mjs",
   "compatibility_date": "2026-11-17",
   // Production resources are owner controlled; traffic remains on the verified hosts until cutover.
   "account_id": "d215df9a813c0d7a292613373dfa9cb0",
   "workers_dev": true,
   "preview_urls": false,
   "build": {"command": "npm run build"},
+  "base_dir": "outputs/cloudflare/runtime",
+  "find_additional_modules": true,
+  "rules": [{"type": "ESModule", "globs": ["owner-business.mjs"], "fallthrough": true}],
   "limits": {"cpu_ms": 60000},
   "observability": {"enabled": true, "head_sampling_rate": 0.1},
   "assets": {
@@ -41,5 +44,5 @@
   },
   // Replays committed outbox messages after a failed send. This is inactive until deployed.
   "triggers": {"crons": ["*/2 * * * *"]},
-  "vars": {"PORTAL_STORAGE_BACKEND": "supabase"}
+  "vars": {"PORTAL_STORAGE_BACKEND": "supabase", "OWNER_GSC_VERIFIED_AT": "1795640336037", "OWNER_CONSOLE_SUBJECT_SHA256": "abfda0af4bb396bea06c688c105a2e40c968ab870448b34b461500b517481123"}
 }

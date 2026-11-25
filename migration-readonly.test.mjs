@@ -6,7 +6,7 @@ import {createHash} from 'node:crypto';
 import {createTrustedDatabase} from './scripts/d1-snapshot.mjs';
 
 const origin='https://migration.synthetic.invalid',user='11111111-1111-4111-8111-111111111111';
-const workers=await Promise.all([['Sites','./outputs/site/dist/server/index.js'],['native','./outputs/cloudflare/worker.mjs']].map(async([kind,path])=>({kind,worker:(await import('data:text/javascript;base64,'+readFileSync(new URL(path,import.meta.url)).toString('base64'))).default})));
+const workers=await Promise.all([['Sites','./outputs/site/dist/server/index.js'],['native','./outputs/cloudflare/runtime/worker.mjs']].map(async([kind,path])=>({kind,worker:(await import(new URL(path,import.meta.url).href)).default})));
 function fixture(t,...flags){
   const flag=flags.length?flags[0]:'1';
   const calls={database:0,provider:0,queue:0,background:0,external:0,assets:0};
@@ -58,7 +58,7 @@ for(const {kind,worker}of workers){
     f.env.OPERATOR_EXPORT_TOKEN_SHA256=createHash('sha256').update(key).digest('hex');f.env.OPERATOR_EXPORT_EXPIRES_AT=new Date(Date.now()+60000).toISOString();f.env.OPERATOR_EXPORT_ORIGIN=origin;
     f.env.DB={prepare(sql){queries.push(sql);assert.match(sql,/^(?:WITH|SELECT)\b/);return{sql};},async batch(statements){sqlite.exec('BEGIN');try{const result=statements.map(statement=>({success:true,results:sqlite.prepare(statement.sql).all()}));sqlite.exec('COMMIT');return result;}catch(error){sqlite.exec('ROLLBACK');throw error;}}};
     const invalid=await worker.fetch(new Request(origin+'/api/operations/snapshot',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'}),f.env,f.ctx);assert.equal(invalid.status,401);assert.equal(queries.length,0);
-    const response=await worker.fetch(new Request(origin+'/api/operations/snapshot',{method:'POST',headers:{'Content-Type':'application/json','X-DegreeSteps-Export-Key':key},body:'{}'}),f.env,f.ctx);assert.equal(response.status,200);const value=await response.json();assert.equal(value.tables.length,39);assert(value.tables.every(table=>table.count===0));assert.equal(queries.length,3);assert.equal(sqlite.prepare('SELECT total_changes() AS n').get().n,0);
+    const response=await worker.fetch(new Request(origin+'/api/operations/snapshot',{method:'POST',headers:{'Content-Type':'application/json','X-DegreeSteps-Export-Key':key},body:'{}'}),f.env,f.ctx);assert.equal(response.status,200);const value=await response.json();assert.equal(value.tables.length,57);assert(value.tables.every(table=>table.count===0));assert.equal(queries.length,3);assert.equal(sqlite.prepare('SELECT total_changes() AS n').get().n,0);
     assert.equal(f.calls.provider,0);assert.equal(f.calls.queue,0);assert.equal(f.calls.external,0);
   });
 

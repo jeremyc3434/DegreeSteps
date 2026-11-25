@@ -3,6 +3,7 @@ import { resolve, relative } from 'node:path';
 import { createHash } from 'node:crypto';
 import { gzipSync } from 'node:zlib';
 import assert from 'node:assert/strict';
+import {build as bundleModules} from 'esbuild';
 import ProviderOffers from '../dist/provider-offers.js';
 import { execFileSync } from 'node:child_process';
 import { buildCreditSourceDiscovery } from '../server/credit-source-discovery.mjs';
@@ -114,12 +115,16 @@ assert(!/^import\s/m.test(collegeApi+templateApi),'Bundle college and template i
 const publicCacheApi=(await readFile(resolve(root,'server/public-community-cache.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(publicCacheApi),'Bundle public cache imports explicitly before building');
 const publicCacheBundle='const {publicCommunityCache}=(()=>{'+publicCacheApi+'\nreturn {publicCommunityCache};})();\n';
-const snapshotRegistry=(await readFile(resolve(root,'db/d1-snapshot-registry.mjs'),'utf8')).replace(/^export\s+(?=const)/gm,'');
-const snapshotApi=(await readFile(resolve(root,'server/operator-snapshot.mjs'),'utf8')).replace(/^import .*;\n/gm,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
-assert(!/^import\s/m.test(snapshotRegistry+snapshotApi),'Bundle operator snapshot imports explicitly before building');
 const handler=(await readFile(resolve(root,'worker/index.mjs'),'utf8')).replace(/^import .*;\n/gm,'');
-const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+snapshotRegistry+'\n'+snapshotApi+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle+'\n'+emailBundle+'\n'+alertsBundle+'\n'+leadsBundle;
-const source=core+'const assets='+JSON.stringify(assets)+';\n'+handler;
+const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle+'\n'+emailBundle+'\n'+alertsBundle+'\n'+leadsBundle;
+// Keep business tooling out of the student entry module. The managed archive
+// remains self-contained; Cloudflare receives an actual lazy ES module.
+const businessBuild={entryPoints:[resolve(root,'server/owner-business.mjs')],bundle:true,platform:'browser',target:'es2022',write:false,legalComments:'none'};
+const businessESM=(await bundleModules({...businessBuild,format:'esm'})).outputFiles[0].text;
+const businessInline=(await bundleModules({...businessBuild,format:'iife',globalName:'OwnerBusinessModule'})).outputFiles[0].text;
+const managedOwnerLoader=businessInline+'\nasync function loadOwnerModule(){return OwnerBusinessModule;}\n';
+const nativeOwnerLoader='async function loadOwnerModule(){return import("./owner-business.mjs");}\n';
+const source=core+managedOwnerLoader+'const assets='+JSON.stringify(assets)+';\n'+handler;
 await rm(output,{recursive:true,force:true});
 await mkdir(resolve(output,'dist/server'),{recursive:true});await mkdir(resolve(output,'.openai'),{recursive:true});
 await writeFile(resolve(output,'dist/server/index.js'),source);
@@ -132,8 +137,11 @@ await rm(cloudflareOutput,{recursive:true,force:true});await mkdir(cloudflareOut
 // The route is already the lookup key; duplicating it in every asset grows the
 // native Worker with the public catalog even though delivery only uses the key.
 const nativeAssets=Object.fromEntries(Object.entries(assets).map(([path,asset])=>[path,{type:asset.type,etag:asset.etag,external:true}]));
-const nativeSource=core+'const assets='+JSON.stringify(nativeAssets)+';\n'+handler;
-await writeFile(resolve(cloudflareOutput,'worker.mjs'),nativeSource);
+const nativeSource=core+nativeOwnerLoader+'const assets='+JSON.stringify(nativeAssets)+';\n'+handler;
+await mkdir(resolve(cloudflareOutput,'runtime'),{recursive:true});
+await writeFile(resolve(cloudflareOutput,'runtime/worker.mjs'),nativeSource);
+await writeFile(resolve(cloudflareOutput,'runtime/owner-business.mjs'),businessESM);
+await writeFile(resolve(cloudflareOutput,'runtime/staging.mjs'),(await readFile(resolve(root,'worker/staging.mjs'),'utf8')).replace("'../outputs/cloudflare/runtime/worker.mjs'","'./worker.mjs'"));
 await cp(resolve(root,'dist'),resolve(cloudflareOutput,'public'),{recursive:true});
 const module=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
 assert.equal(typeof module.default?.fetch,'function');
@@ -147,4 +155,4 @@ for(const path of ['/plan-review/','/plan-review']){const reviewOff=await module
 for(const [path,method]of [['/api/alerts/subscriptions','GET'],['/api/alerts/subscriptions','POST'],['/api/alerts/unsubscribe?token=x','GET'],['/api/alerts/unsubscribe?token=x','POST']]){const alertsOff=await module.default.fetch(new Request('https://degreepath.test'+path,{method}),{},{});assert.equal(alertsOff.status,404,'Email alerts must not exist unless EMAIL_ALERTS_ENABLED is 1: '+method+' '+path);}
 const missingDb=await module.default.fetch(new Request('https://degreepath.test/api/community/session'),{},{});assert.equal(missingDb.status,503);
 const unknownCurriculum=await module.default.fetch(new Request('https://degreepath.test/api/curriculum?program=unknown'),{},{});assert.equal(unknownCurriculum.status,404);
-console.log(JSON.stringify({output,assets:Object.keys(assets).length,workerBytes:Buffer.byteLength(source),nativeWorkerBytes:Buffer.byteLength(nativeSource),checks:'ESM, asset routes, API binding boundary passed'}));
+console.log(JSON.stringify({output,assets:Object.keys(assets).length,workerBytes:Buffer.byteLength(source),nativeWorkerBytes:Buffer.byteLength(nativeSource),ownerModuleBytes:Buffer.byteLength(businessESM),checks:'ESM, asset routes, API binding boundary passed'}));

@@ -15,13 +15,13 @@ import { handleAuth, resolvePortalIdentity } from '../server/auth.mjs';
 import { handleCatalog } from '../server/catalog.mjs';
 import { handleCurriculumDiscovery } from '../server/curriculum-discovery.mjs';
 import { publicCommunityCache } from '../server/public-community-cache.mjs';
-import { handleOperatorSnapshot } from '../server/operator-snapshot.mjs';
 import { handleAcademicCoverage } from '../server/academic-coverage.mjs';
 import { handleGrowthMetrics, pruneGrowthMetrics, recordGrowthEvent } from '../server/growth-metrics.mjs';
 import { handlePlanAlerts, runPlanAlerts, removePlanAlerts } from '../server/plan-alerts.mjs';
 import { handleCoach, pruneCoach } from '../server/coach.mjs';
 import { handleLeads, pruneLeads, isLeadsPath } from '../server/leads.mjs';
 import { assets } from './assets.generated.mjs';
+import { loadOwnerModule } from './owner.generated.mjs';
 
 let programCatalogSnapshot, curriculumRegistrySnapshot, degreeAliasSnapshot, basePathwaysSnapshot, resolvedPlanCatalogSnapshot, researchReferencesSnapshot, creditSourceDiscoverySnapshot;
 let academicCoverageSnapshot, baselineSnapshot;
@@ -325,10 +325,37 @@ async function leadsResponse(request,env,path){
   if(!path.startsWith('/api/admin/'))return handleLeads(request,leadsEnv);
   const identity=await resolvePortalIdentity(request,env);
   if(identity.unavailable)return Response.json({error:'Sign-in is temporarily unavailable. Please try again.',code:'auth_unavailable'},{status:503,headers:{'Cache-Control':'private, no-store','Vary':'Cookie','X-Content-Type-Options':'nosniff','Retry-After':'15'}});
-  const response=await handleLeads(request,{...leadsEnv,PORTAL_USER:identity.user});
+  const privateEnv={...leadsEnv,PORTAL_USER:identity.user};
+  const business=await loadOwnerModule(),denied=await business.authorizeConsoleOwner(request,privateEnv);
+  const response=denied||await handleLeads(request,privateEnv);
   if(!identity.setCookies?.length)return response;
   const headers=new Headers(response.headers);for(const cookie of identity.setCookies)headers.append('Set-Cookie',cookie);
   return new Response(response.body,{status:response.status,headers});
+}
+// These callbacks read immutable public reports or configuration state. No
+// account records, credentials or private student plans enter the asset cache.
+async function ownerPublicReport(kind,env){
+  const read=async path=>{if(!assets[path])throw Error('Public build report unavailable');return JSON.parse(await decodeStaticAsset(assets[path]));};
+  if(kind==='offers')return read('/data/student-offers.json');
+  if(kind==='overview'){
+    const [quality,providers]=await Promise.all([read('/data/pathway-quality-report.json'),read('/data/provider-coverage-report.json')]);
+    return{counts:{'Ready degree plans':quality.summary.publicationReady,'Curriculum models (including research)':quality.summary.models,'Indexed credit providers':providers.summary.indexedProviders,'Indexed course identities':providers.summary.indexedIdentities},publicationReadyPlans:quality.summary.publicationReady,curriculumModels:quality.summary.models,indexedProviders:providers.summary.indexedProviders,directoryProviders:providers.summary.directoryProviders,indexedCourseIdentities:providers.summary.indexedIdentities,asOf:quality.asOf,source:'reviewed-build-reports'};
+  }
+  let aiConfigured=null;try{aiConfigured=(await resolveAIConnection(env,{includeKey:false})).configured;}catch{}
+  const operations={databaseConfigured:!!env.DB,researchQueueConfigured:typeof env.RESEARCH_QUEUE?.send==='function',deadLetterQueueConfigured:typeof env.RESEARCH_DEAD_LETTER_QUEUE?.send==='function',emailAlertsEnabled:env.EMAIL_ALERTS_ENABLED==='1',emailConfigured:!!env.RESEND_API_KEY,aiConfigured,billingBalance:null,providerBalance:null,source:'runtime-configuration'};
+  if(kind==='operations')return operations;
+  if(kind==='settings')return{...operations,publicOrigin:'https://degreesteps.com',studentHelpUrl:'/help.html',sitemapUrl:'https://degreesteps.com/sitemap.xml',authProvider:'supabase'};
+  return null;
+}
+function ownerEnvironment(env,business){return{...env,OWNER_PUBLIC_ORIGIN:'https://degreesteps.com',OWNER_PUBLIC_DATA:kind=>ownerPublicReport(kind,env),OWNER_GET_OFFER_REGISTRY:()=>ownerPublicReport('offers',env),OWNER_OFFER_POLICY:business.ownerOfferPolicy};}
+async function ownerPublicResponse(request,env){
+  const url=new URL(request.url),path=url.pathname;
+  const content=path==='/insights/'||/^\/insights\/[a-z0-9-]+\/$/.test(path)||['/api/content/articles','/api/content/faqs','/data/student-offers.json'].includes(path);
+  if(!content||!['GET','HEAD'].includes(request.method))return null;
+  const json=value=>Response.json(value,{headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}}),fail=(status,message)=>{throw Object.assign(Error(message),{status});};
+  if(!env.DB){if(path==='/data/student-offers.json')return null;return Response.json({error:'Student articles are temporarily unavailable.'},{status:503,headers:{'Cache-Control':'no-store'}});}
+  try{const business=await loadOwnerModule(),privateEnv=ownerEnvironment(env,business),response=await business.publicOwnerContent(request,privateEnv,{db:env.DB,url,now:Date.now(),json,fail,env:privateEnv,publicOrigin:privateEnv.OWNER_PUBLIC_ORIGIN,offerPolicy:business.ownerOfferPolicy,getOfferRegistry:privateEnv.OWNER_GET_OFFER_REGISTRY});return response&&request.method==='HEAD'?new Response(null,{status:response.status,headers:response.headers}):response;}
+  catch{if(path==='/data/student-offers.json')return null;return Response.json({error:'Student articles are temporarily unavailable.'},{status:503,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});}
 }
 // Growth measurement accepts a plan id only when it is in the public plan library index (a small build artifact).
 let growthPlanIdsSnapshot;
@@ -416,8 +443,15 @@ export default {
     }
     if(migrationReadOnly(env)&&(target.pathname==='/api'||target.pathname.startsWith('/api/'))&&!target.pathname.startsWith('/api/auth/')&&!target.pathname.startsWith('/api/operations/'))return migrationReadOnlyResponse(request);
     initializePublicAssets(env);
+    if(['/sitemap.xml','/sitemap-site.xml','/sitemap-insights.xml'].includes(target.pathname)&&env.DB){
+      const business=await loadOwnerModule();return business.handleOwnerSitemap(request,env,{business,readStaticXML:()=>decodeStaticAsset(assets['/sitemap.xml']),publicOrigin:'https://degreesteps.com'});
+    }
+    const publicContent=await ownerPublicResponse(request,env);if(publicContent)return publicContent;
+    if(target.pathname==='/api/support/login-help'){
+      const business=await loadOwnerModule();return business.handleSupport(request,{...env,PORTAL_USER:null});
+    }
     if(target.pathname==='/api/growth/events')return handleGrowthMetrics(request,{...env,GROWTH_PLAN_IDS:growthPlanIds});
-    if(target.pathname.startsWith('/api/operations/'))return await handleOperatorSnapshot(request,env)||Response.json({error:'Not found.'},{status:404,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'}});
+    if(target.pathname.startsWith('/api/operations/'))return await (await loadOwnerModule()).handleOperatorSnapshot(request,env)||Response.json({error:'Not found.'},{status:404,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'}});
     if(target.pathname==='/api/catalog/degree-link'){
       const headers={'Cache-Control':'public, max-age=300','X-Content-Type-Options':'nosniff'};
       if(request.method!=='GET')return Response.json({error:'Use GET to look up a public degree link.'},{status:405,headers:{...headers,Allow:'GET'}});
@@ -448,13 +482,18 @@ export default {
     const transcriptAPI=target.pathname==='/api/portal/transcript-import';
     const coverageAPI=target.pathname==='/api/admin/academic-coverage'||target.pathname.startsWith('/api/admin/academic-coverage/');
     const growthAPI=target.pathname==='/api/admin/growth-summary';
-    if (target.pathname.startsWith('/api/portal/') || target.pathname.startsWith('/api/community/') || templateAPI || collegeAPI || connectionAPI || coverageAPI || growthAPI) {
+    const ownerAPI=target.pathname==='/api/owner'||target.pathname.startsWith('/api/owner/'),supportAPI=target.pathname.startsWith('/api/support/'),adminAPI=target.pathname.startsWith('/api/admin/');
+    if (target.pathname.startsWith('/api/portal/') || target.pathname.startsWith('/api/community/') || templateAPI || collegeAPI || connectionAPI || coverageAPI || growthAPI || ownerAPI || supportAPI || adminAPI) {
       const publicTemplateRead=request.method==='GET'&&(target.pathname==='/api/templates'||/^\/api\/templates\/tpl-[a-z0-9-]{5,80}$/.test(target.pathname));
       const identity = publicTemplateRead ? {configured:true,user:null,setCookies:[]} : await resolvePortalIdentity(request,env);
       if(identity.unavailable)return Response.json({error:'Sign-in is temporarily unavailable. Your saved plans have not changed. Please try again.',code:'auth_unavailable'},{status:503,headers:{'Cache-Control':'private, no-store','Vary':'Cookie','X-Content-Type-Options':'nosniff','Retry-After':'15'}});
       const publicDiscussionCache=await publicCommunityCache(request,identity);
       if(publicDiscussionCache?.hit)return publicDiscussionCache.hit;
       const portalEnv = {...env,PORTAL_USER:identity.user,PORTAL_USER_ACCESS_TOKEN:identity.accessToken,PORTAL_AUTH_REQUIRED:true,PORTAL_AUTH_CONFIGURED:identity.configured,COLLEGE_ACCESS_ENABLED:true,TEMPLATE_FIND_EXISTING:findExistingReadyTemplate,TEMPLATE_RESOLVE_LINK:resolveKnownDegreeLink,TEMPLATE_VALIDATE_ACADEMICS:artifact=>validateAcademicTemplate(artifact,{Planner:TemplateAcademicPlanner}),TEMPLATE_CHECK_PRIVATE_PLAN:checkPrivateResearchPlan};
+      let business,ownerDenied;
+      if(ownerAPI||supportAPI||adminAPI){business=await loadOwnerModule();if(adminAPI)ownerDenied=await business.authorizeConsoleOwner(request,portalEnv);}
+      // Stop before loading research configuration or touching business data.
+      if(ownerDenied){const headers=new Headers(ownerDenied.headers);for(const cookie of identity.setCookies||[])headers.append('Set-Cookie',cookie);return new Response(ownerDenied.body,{status:ownerDenied.status,headers});}
       if(templateAPI)Object.assign(portalEnv,await researchEnvironment(env));
       if(transcriptAPI){try{const connection=await resolveAIConnection(env,{includeKey:false});portalEnv.TRANSCRIPT_AI_CONFIGURED=connection.configured;}catch{portalEnv.TRANSCRIPT_AI_CONFIGURED=false;}if(request.method==='POST')portalEnv.TRANSCRIPT_AI_RESOLVE_KEY=async()=>{const connection=await resolveAIConnection(env,{includeKey:true});return{apiKey:connection.apiKey,model:connection.model};};}
       let routedRequest=request;
@@ -468,7 +507,7 @@ export default {
       // The coverage handler authorizes the platform administrator before
       // invoking this immutable-asset loader. Student and guest traffic do not
       // load the research graph or read administrative review records.
-      const response=growthAPI ? await handleGrowthMetrics(routedRequest,portalEnv) : coverageAPI ? await handleAcademicCoverage(routedRequest,portalEnv,academicCoverageData) : connectionAPI ? await handleAIConnections(routedRequest,portalEnv) : transcriptAPI ? await handleTranscriptImport(routedRequest,portalEnv) : templateAPI ? await handleTemplateResearch(routedRequest,portalEnv,ctx) : collegeAPI ? await handleCollegeAccess(routedRequest,portalEnv) : target.pathname.startsWith('/api/portal/') ? await handlePortal(routedRequest,portalEnv,ctx) : await handleCommunity(routedRequest,portalEnv,ctx);
+      const response=ownerDenied|| (ownerAPI ? await business.handleOwnerConsole(routedRequest,ownerEnvironment(portalEnv,business)) : supportAPI ? await business.handleSupport(routedRequest,portalEnv) : growthAPI ? await handleGrowthMetrics(routedRequest,portalEnv) : coverageAPI ? await handleAcademicCoverage(routedRequest,portalEnv,academicCoverageData) : connectionAPI ? await handleAIConnections(routedRequest,portalEnv) : transcriptAPI ? await handleTranscriptImport(routedRequest,portalEnv) : templateAPI ? await handleTemplateResearch(routedRequest,portalEnv,ctx) : collegeAPI ? await handleCollegeAccess(routedRequest,portalEnv) : adminAPI ? Response.json({error:'Not found.'},{status:404,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex'}}) : target.pathname.startsWith('/api/portal/') ? await handlePortal(routedRequest,portalEnv,ctx) : await handleCommunity(routedRequest,portalEnv,ctx));
       publicDiscussionCache?.store(response,ctx);
       // Deleting a saved plan or all portal data also removes its email alerts (whether or not alerts are on).
       const deletedPlan=request.method==='DELETE'&&response.ok&&identity.user?.id&&target.pathname.match(/^\/api\/portal\/(?:plans\/([^/]+)|profile)$/);
@@ -489,7 +528,7 @@ export default {
     // The Plan review offer page exists only while PLAN_REVIEW_ENABLED is 1.
     const asset=path.startsWith('/plan-review/')&&env?.PLAN_REVIEW_ENABLED!=='1'?null:assets[path];
     if(!asset)return new Response('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"></head><body><main class="site-container" style="padding:80px 24px"><h1>Let’s find your next step.</h1><p>This page could not be found.</p><p><a href="/">DegreeSteps home</a> · <a href="/resources/">Student resources</a> · <a href="/portal.html">Build my plan</a></p></main></body></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
-    const privatePage=['/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/template-import.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html','/ui-demo.html','/start.html'].includes(path);
+    const privatePage=['/owner.html','/help.html','/portal.html','/plan.html','/account.html','/guided.html','/audit.html','/degree-audit.html','/compare-plans.html','/courses.html','/import-courses.html','/template-import.html','/request-plan.html','/admin.html','/coverage.html','/growth.html','/campuses.html','/ui-demo.html','/start.html'].includes(path);
     if(asset.external){
       if(!env.ASSETS?.fetch)return new Response('Public assets are temporarily unavailable',{status:503,headers:{'Cache-Control':'no-store'}});
       const assetURL=new URL(request.url);assetURL.pathname=path;const delivered=await env.ASSETS.fetch(new Request(assetURL,{method:request.method,headers:request.headers}));

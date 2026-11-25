@@ -8,7 +8,7 @@ import {createHash} from 'node:crypto';
 import {LocalD1} from './scripts/benchmark-scale.mjs';
 
 const root=import.meta.dirname,publicRoot=resolve(root,'outputs/cloudflare/public');
-const nativePath=resolve(root,'outputs/cloudflare/worker.mjs');
+const nativePath=resolve(root,'outputs/cloudflare/runtime/worker.mjs');
 const origin='https://native.synthetic.invalid';
 let serial=0;
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.mjs':'application/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.xlsx':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','.webp':'image/webp'};
@@ -145,13 +145,13 @@ test('a guest cannot load the research graph or administrative review database',
 });
 
 test('native coverage loads compact indexes after admin authorization and hydrates only requested evidence',async t=>{
-  const f=await fixture(t,{database:true});let email='student@preview.invalid';
-  Object.assign(f.env,{COMMUNITY_ADMIN_EMAIL:'owner@preview.invalid',PORTAL_SUPABASE_URL:'https://project.supabase.co',PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_mock',PORTAL_AUTH_FETCH:async(url,options)=>{
-    assert(url.endsWith('/user'));assert.equal(options.headers.Authorization,'Bearer coverage-test-access');return Response.json({id:'11111111-1111-4111-8111-111111111111',email,email_confirmed_at:'2026-11-01T00:00:00Z'});
+  const f=await fixture(t,{database:true});let email='student@preview.invalid',verifiedUuid='33333333-3333-4333-8333-333333333333';const ownerUuid='11111111-1111-4111-8111-111111111111';
+  Object.assign(f.env,{OWNER_CONSOLE_SUBJECT_SHA256:createHash('sha256').update('sb-'+ownerUuid).digest('hex'),COMMUNITY_ADMIN_EMAIL:'owner@preview.invalid',PORTAL_SUPABASE_URL:'https://project.supabase.co',PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_mock',PORTAL_AUTH_FETCH:async(url,options)=>{
+    assert(url.endsWith('/user'));assert.equal(options.headers.Authorization,'Bearer coverage-test-access');return Response.json({id:verifiedUuid,email,email_confirmed_at:'2026-11-01T00:00:00Z'});
   }});
   const call=(path,body)=>f.call(path,{method:body?'POST':'GET',headers:{Cookie:'__Host-degreepath_access=coverage-test-access',...(body?{Origin:origin,'Content-Type':'application/json','X-Portal-Request':'1'}:{})},...(body?{body:JSON.stringify(body)}:{})});
   assert.equal((await call('/api/admin/academic-coverage')).status,403);assert.equal(f.assetCalls.length,0,'A student must not load the graph');
-  email='owner@preview.invalid';const summary=await call('/api/admin/academic-coverage');assert.equal(summary.status,200);const status=await summary.json();assert(status.summary.programs>0);assert.equal(status.qualitySummary.models,status.summary.programs);
+  email='owner@preview.invalid';assert.equal((await call('/api/admin/academic-coverage')).status,403,'A matching display email cannot replace the exact pinned subject');verifiedUuid=ownerUuid;const summary=await call('/api/admin/academic-coverage');assert.equal(summary.status,200);const status=await summary.json();assert(status.summary.programs>0);assert.equal(status.qualitySummary.models,status.summary.programs);
   // The overview reads the index and the per-school registry shards (fact and finding summaries), never evidence.
   assert(f.assetCalls.every(call=>['/data/academic-registry.json','/data/pathway-quality-report.json'].includes(call.path)||/^\/data\/academic-registry-shards\/[a-f0-9]{64}\.json$/.test(call.path)),'The overview must not hydrate any evidence');
   assert(f.assetCalls.some(call=>/^\/data\/academic-registry-shards\//.test(call.path)),'The overview reads the registry shards');

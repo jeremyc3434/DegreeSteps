@@ -190,6 +190,212 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   },
   {
+    "name": "business_audit",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "actor_id",
+        "type": "text"
+      },
+      {
+        "name": "action",
+        "type": "text"
+      },
+      {
+        "name": "target_type",
+        "type": "text"
+      },
+      {
+        "name": "target_id",
+        "type": "text"
+      },
+      {
+        "name": "details_json",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "business_connections",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "project_origin",
+        "type": "text"
+      },
+      {
+        "name": "ciphertext",
+        "type": "text"
+      },
+      {
+        "name": "iv",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "verified_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_by",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "business_owner",
+    "columns": [
+      {
+        "name": "singleton",
+        "type": "integer"
+      },
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "source",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "business_owner_limits",
+    "columns": [
+      {
+        "name": "owner_id",
+        "type": "text"
+      },
+      {
+        "name": "action",
+        "type": "text"
+      },
+      {
+        "name": "window_start",
+        "type": "integer"
+      },
+      {
+        "name": "count",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "business_student_directory",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "auth_id",
+        "type": "text"
+      },
+      {
+        "name": "email",
+        "type": "text"
+      },
+      {
+        "name": "email_confirmed",
+        "type": "integer"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "last_sign_in_at",
+        "type": "integer"
+      },
+      {
+        "name": "banned_until",
+        "type": "text"
+      },
+      {
+        "name": "excluded",
+        "type": "integer"
+      },
+      {
+        "name": "generation",
+        "type": "text"
+      },
+      {
+        "name": "synced_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "business_student_sync",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "generation",
+        "type": "text"
+      },
+      {
+        "name": "next_page",
+        "type": "integer"
+      },
+      {
+        "name": "complete",
+        "type": "integer"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "lease_token",
+        "type": "text"
+      },
+      {
+        "name": "lease_until",
+        "type": "integer"
+      },
+      {
+        "name": "started_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      },
+      {
+        "name": "provider_total",
+        "type": "integer"
+      }
+    ]
+  },
+  {
     "name": "coach_questions",
     "columns": [
       {
@@ -1093,6 +1299,523 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   },
   {
+    "name": "owner_content_records",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "type",
+        "type": "text"
+      },
+      {
+        "name": "slug",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "content_json",
+        "type": "text"
+      },
+      {
+        "name": "published_json",
+        "type": "text"
+      },
+      {
+        "name": "reviewed_revision",
+        "type": "integer"
+      },
+      {
+        "name": "published_revision",
+        "type": "integer"
+      },
+      {
+        "name": "reviewed_at",
+        "type": "integer"
+      },
+      {
+        "name": "published_reviewed_at",
+        "type": "integer"
+      },
+      {
+        "name": "published_at",
+        "type": "integer"
+      },
+      {
+        "name": "archived_at",
+        "type": "integer"
+      },
+      {
+        "name": "created_by",
+        "type": "text"
+      },
+      {
+        "name": "updated_by",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "owner_content_versions",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "record_id",
+        "type": "text"
+      },
+      {
+        "name": "type",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "action",
+        "type": "text"
+      },
+      {
+        "name": "content_json",
+        "type": "text"
+      },
+      {
+        "name": "review_note",
+        "type": "text"
+      },
+      {
+        "name": "actor_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "owner_financial_records",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "created_by",
+        "type": "text"
+      },
+      {
+        "name": "updated_by",
+        "type": "text"
+      },
+      {
+        "name": "last_event_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      },
+      {
+        "name": "search_key",
+        "type": "text"
+      },
+      {
+        "name": "source",
+        "type": "text"
+      },
+      {
+        "name": "kind",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "type": "text"
+      },
+      {
+        "name": "amount_minor",
+        "type": "integer"
+      },
+      {
+        "name": "currency",
+        "type": "text"
+      },
+      {
+        "name": "occurred_on",
+        "type": "text"
+      },
+      {
+        "name": "period_start",
+        "type": "text"
+      },
+      {
+        "name": "period_end",
+        "type": "text"
+      },
+      {
+        "name": "counterparty",
+        "type": "text"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "owner_lead_workflows",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "created_by",
+        "type": "text"
+      },
+      {
+        "name": "updated_by",
+        "type": "text"
+      },
+      {
+        "name": "last_event_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      },
+      {
+        "name": "search_key",
+        "type": "text"
+      },
+      {
+        "name": "source_kind",
+        "type": "text"
+      },
+      {
+        "name": "source_id",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "type": "text"
+      },
+      {
+        "name": "notes",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "owner_partners",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "created_by",
+        "type": "text"
+      },
+      {
+        "name": "updated_by",
+        "type": "text"
+      },
+      {
+        "name": "last_event_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      },
+      {
+        "name": "search_key",
+        "type": "text"
+      },
+      {
+        "name": "name",
+        "type": "text"
+      },
+      {
+        "name": "kind",
+        "type": "text"
+      },
+      {
+        "name": "website",
+        "type": "text"
+      },
+      {
+        "name": "contact_name",
+        "type": "text"
+      },
+      {
+        "name": "contact_email",
+        "type": "text"
+      },
+      {
+        "name": "stage",
+        "type": "text"
+      },
+      {
+        "name": "notes",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "owner_search_imports",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "property",
+        "type": "text"
+      },
+      {
+        "name": "fingerprint",
+        "type": "text"
+      },
+      {
+        "name": "file_name",
+        "type": "text"
+      },
+      {
+        "name": "dimension",
+        "type": "text"
+      },
+      {
+        "name": "start_date",
+        "type": "text"
+      },
+      {
+        "name": "end_date",
+        "type": "text"
+      },
+      {
+        "name": "exported_on",
+        "type": "text"
+      },
+      {
+        "name": "search_type",
+        "type": "text"
+      },
+      {
+        "name": "filters",
+        "type": "text"
+      },
+      {
+        "name": "row_count",
+        "type": "integer"
+      },
+      {
+        "name": "rows_json",
+        "type": "text"
+      },
+      {
+        "name": "summary_json",
+        "type": "text"
+      },
+      {
+        "name": "imported_by",
+        "type": "text"
+      },
+      {
+        "name": "imported_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "owner_search_settings",
+    "columns": [
+      {
+        "name": "property",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "verification_token",
+        "type": "text"
+      },
+      {
+        "name": "dns_status",
+        "type": "text"
+      },
+      {
+        "name": "dns_checked_at",
+        "type": "integer"
+      },
+      {
+        "name": "google_ownership_reported",
+        "type": "integer"
+      },
+      {
+        "name": "google_ownership_reported_at",
+        "type": "integer"
+      },
+      {
+        "name": "sitemap_submitted_reported",
+        "type": "integer"
+      },
+      {
+        "name": "sitemap_submitted_reported_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_by",
+        "type": "text"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "owner_tasks",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "created_by",
+        "type": "text"
+      },
+      {
+        "name": "updated_by",
+        "type": "text"
+      },
+      {
+        "name": "last_event_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      },
+      {
+        "name": "search_key",
+        "type": "text"
+      },
+      {
+        "name": "title",
+        "type": "text"
+      },
+      {
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "type": "text"
+      },
+      {
+        "name": "priority",
+        "type": "text"
+      },
+      {
+        "name": "due_on",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "name": "owner_work_events",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "resource",
+        "type": "text"
+      },
+      {
+        "name": "record_id",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "actor_id",
+        "type": "text"
+      },
+      {
+        "name": "action",
+        "type": "text"
+      },
+      {
+        "name": "changed_fields_json",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
     "name": "plan_alert_subscriptions",
     "columns": [
       {
@@ -1352,6 +2075,133 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   },
   {
+    "name": "support_messages",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "ticket_id",
+        "type": "text"
+      },
+      {
+        "name": "ticket_revision",
+        "type": "integer"
+      },
+      {
+        "name": "author_id",
+        "type": "text"
+      },
+      {
+        "name": "author_role",
+        "type": "text"
+      },
+      {
+        "name": "visibility",
+        "type": "text"
+      },
+      {
+        "name": "body",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "support_rate_limits",
+    "columns": [
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "day",
+        "type": "text"
+      },
+      {
+        "name": "kind",
+        "type": "text"
+      },
+      {
+        "name": "count",
+        "type": "integer"
+      }
+    ]
+  },
+  {
+    "name": "support_tickets",
+    "columns": [
+      {
+        "name": "id",
+        "type": "text"
+      },
+      {
+        "name": "revision",
+        "type": "integer"
+      },
+      {
+        "name": "created_by",
+        "type": "text"
+      },
+      {
+        "name": "updated_by",
+        "type": "text"
+      },
+      {
+        "name": "last_event_id",
+        "type": "text"
+      },
+      {
+        "name": "created_at",
+        "type": "integer"
+      },
+      {
+        "name": "updated_at",
+        "type": "integer"
+      },
+      {
+        "name": "search_key",
+        "type": "text"
+      },
+      {
+        "name": "user_id",
+        "type": "text"
+      },
+      {
+        "name": "contact_email",
+        "type": "text"
+      },
+      {
+        "name": "subject",
+        "type": "text"
+      },
+      {
+        "name": "category",
+        "type": "text"
+      },
+      {
+        "name": "status",
+        "type": "text"
+      },
+      {
+        "name": "priority",
+        "type": "text"
+      },
+      {
+        "name": "diagnostics_consent",
+        "type": "integer"
+      },
+      {
+        "name": "diagnostics_json",
+        "type": "text"
+      }
+    ]
+  },
+  {
     "name": "template_requests",
     "columns": [
       {
@@ -1468,6 +2318,7 @@ export const D1_SNAPSHOT_TABLES = Object.freeze([
     ]
   }
 ].map(table=>Object.freeze({...table,columns:Object.freeze(table.columns.map(column=>Object.freeze(column)))})));
+
 export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   {
     "type": "index",
@@ -1498,6 +2349,30 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "ai_connection_events_created",
     "tbl_name": "ai_connection_events",
     "sql": "CREATE INDEX `ai_connection_events_created` ON `ai_connection_events` (`created_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "business_audit_history",
+    "tbl_name": "business_audit",
+    "sql": "CREATE INDEX `business_audit_history` ON `business_audit` (`created_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "business_audit_target",
+    "tbl_name": "business_audit",
+    "sql": "CREATE INDEX `business_audit_target` ON `business_audit` (`target_type`,`target_id`,`created_at`)"
+  },
+  {
+    "type": "index",
+    "name": "business_student_directory_generation",
+    "tbl_name": "business_student_directory",
+    "sql": "CREATE INDEX `business_student_directory_generation` ON `business_student_directory` (`generation`,`excluded`)"
+  },
+  {
+    "type": "index",
+    "name": "business_student_directory_page",
+    "tbl_name": "business_student_directory",
+    "sql": "CREATE INDEX `business_student_directory_page` ON `business_student_directory` (`excluded`,`email`,`id`)"
   },
   {
     "type": "index",
@@ -1675,6 +2550,174 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "index",
+    "name": "owner_content_list",
+    "tbl_name": "owner_content_records",
+    "sql": "CREATE INDEX `owner_content_list` ON `owner_content_records` (`type`,`status`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_content_public",
+    "tbl_name": "owner_content_records",
+    "sql": "CREATE INDEX `owner_content_public` ON `owner_content_records` (`type`,`status`,`published_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_content_type_slug",
+    "tbl_name": "owner_content_records",
+    "sql": "CREATE UNIQUE INDEX `owner_content_type_slug` ON `owner_content_records` (`type`,`slug`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_content_version_record",
+    "tbl_name": "owner_content_versions",
+    "sql": "CREATE INDEX `owner_content_version_record` ON `owner_content_versions` (`record_id`,`created_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_finance_event",
+    "tbl_name": "owner_financial_records",
+    "sql": "CREATE UNIQUE INDEX `owner_finance_event` ON `owner_financial_records` (`last_event_id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_finance_period",
+    "tbl_name": "owner_financial_records",
+    "sql": "CREATE INDEX `owner_finance_period` ON `owner_financial_records` (`occurred_on`,`currency`,`kind`,`status`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_finance_search",
+    "tbl_name": "owner_financial_records",
+    "sql": "CREATE INDEX `owner_finance_search` ON `owner_financial_records` (`search_key`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_finance_status",
+    "tbl_name": "owner_financial_records",
+    "sql": "CREATE INDEX `owner_finance_status` ON `owner_financial_records` (`status`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_finance_updated",
+    "tbl_name": "owner_financial_records",
+    "sql": "CREATE INDEX `owner_finance_updated` ON `owner_financial_records` (`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_lead_original_request",
+    "tbl_name": "owner_lead_workflows",
+    "sql": "CREATE UNIQUE INDEX `owner_lead_original_request` ON `owner_lead_workflows` (`source_kind`,`source_id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_leads_event",
+    "tbl_name": "owner_lead_workflows",
+    "sql": "CREATE UNIQUE INDEX `owner_leads_event` ON `owner_lead_workflows` (`last_event_id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_leads_search",
+    "tbl_name": "owner_lead_workflows",
+    "sql": "CREATE INDEX `owner_leads_search` ON `owner_lead_workflows` (`search_key`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_leads_status",
+    "tbl_name": "owner_lead_workflows",
+    "sql": "CREATE INDEX `owner_leads_status` ON `owner_lead_workflows` (`status`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_leads_updated",
+    "tbl_name": "owner_lead_workflows",
+    "sql": "CREATE INDEX `owner_leads_updated` ON `owner_lead_workflows` (`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_partners_event",
+    "tbl_name": "owner_partners",
+    "sql": "CREATE UNIQUE INDEX `owner_partners_event` ON `owner_partners` (`last_event_id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_partners_search",
+    "tbl_name": "owner_partners",
+    "sql": "CREATE INDEX `owner_partners_search` ON `owner_partners` (`search_key`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_partners_stage",
+    "tbl_name": "owner_partners",
+    "sql": "CREATE INDEX `owner_partners_stage` ON `owner_partners` (`stage`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_partners_updated",
+    "tbl_name": "owner_partners",
+    "sql": "CREATE INDEX `owner_partners_updated` ON `owner_partners` (`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_search_import_dimension",
+    "tbl_name": "owner_search_imports",
+    "sql": "CREATE INDEX `owner_search_import_dimension` ON `owner_search_imports` (`property`,`dimension`,`imported_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_search_import_fingerprint",
+    "tbl_name": "owner_search_imports",
+    "sql": "CREATE UNIQUE INDEX `owner_search_import_fingerprint` ON `owner_search_imports` (`property`,`fingerprint`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_search_import_recent",
+    "tbl_name": "owner_search_imports",
+    "sql": "CREATE INDEX `owner_search_import_recent` ON `owner_search_imports` (`property`,`imported_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_tasks_event",
+    "tbl_name": "owner_tasks",
+    "sql": "CREATE UNIQUE INDEX `owner_tasks_event` ON `owner_tasks` (`last_event_id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_tasks_search",
+    "tbl_name": "owner_tasks",
+    "sql": "CREATE INDEX `owner_tasks_search` ON `owner_tasks` (`search_key`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_tasks_status",
+    "tbl_name": "owner_tasks",
+    "sql": "CREATE INDEX `owner_tasks_status` ON `owner_tasks` (`status`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_tasks_updated",
+    "tbl_name": "owner_tasks",
+    "sql": "CREATE INDEX `owner_tasks_updated` ON `owner_tasks` (`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_work_event_created",
+    "tbl_name": "owner_work_events",
+    "sql": "CREATE INDEX `owner_work_event_created` ON `owner_work_events` (`created_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_work_event_history",
+    "tbl_name": "owner_work_events",
+    "sql": "CREATE INDEX `owner_work_event_history` ON `owner_work_events` (`resource`,`record_id`,`created_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "owner_work_event_revision",
+    "tbl_name": "owner_work_events",
+    "sql": "CREATE UNIQUE INDEX `owner_work_event_revision` ON `owner_work_events` (`resource`,`record_id`,`revision`)"
+  },
+  {
+    "type": "index",
     "name": "plan_alert_owner_plan",
     "tbl_name": "plan_alert_subscriptions",
     "sql": "CREATE UNIQUE INDEX `plan_alert_owner_plan` ON `plan_alert_subscriptions` (`user_id`,`portal_plan_id`)"
@@ -1737,6 +2780,36 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "type": "index",
     "name": "sqlite_autoindex_ai_service_connections_1",
     "tbl_name": "ai_service_connections",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_business_audit_1",
+    "tbl_name": "business_audit",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_business_connections_1",
+    "tbl_name": "business_connections",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_business_owner_limits_1",
+    "tbl_name": "business_owner_limits",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_business_student_directory_1",
+    "tbl_name": "business_student_directory",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_business_student_sync_1",
+    "tbl_name": "business_student_sync",
     "sql": null
   },
   {
@@ -1879,6 +2952,60 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "index",
+    "name": "sqlite_autoindex_owner_content_records_1",
+    "tbl_name": "owner_content_records",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_owner_content_versions_1",
+    "tbl_name": "owner_content_versions",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_owner_financial_records_1",
+    "tbl_name": "owner_financial_records",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_owner_lead_workflows_1",
+    "tbl_name": "owner_lead_workflows",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_owner_partners_1",
+    "tbl_name": "owner_partners",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_owner_search_imports_1",
+    "tbl_name": "owner_search_imports",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_owner_search_settings_1",
+    "tbl_name": "owner_search_settings",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_owner_tasks_1",
+    "tbl_name": "owner_tasks",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_owner_work_events_1",
+    "tbl_name": "owner_work_events",
+    "sql": null
+  },
+  {
+    "type": "index",
     "name": "sqlite_autoindex_plan_alert_subscriptions_1",
     "tbl_name": "plan_alert_subscriptions",
     "sql": null
@@ -1921,6 +3048,24 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "index",
+    "name": "sqlite_autoindex_support_messages_1",
+    "tbl_name": "support_messages",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_support_rate_limits_1",
+    "tbl_name": "support_rate_limits",
+    "sql": null
+  },
+  {
+    "type": "index",
+    "name": "sqlite_autoindex_support_tickets_1",
+    "tbl_name": "support_tickets",
+    "sql": null
+  },
+  {
+    "type": "index",
     "name": "sqlite_autoindex_template_requests_1",
     "tbl_name": "template_requests",
     "sql": null
@@ -1942,6 +3087,54 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "sqlite_autoindex_transcript_import_runs_1",
     "tbl_name": "transcript_import_runs",
     "sql": null
+  },
+  {
+    "type": "index",
+    "name": "support_messages_ticket",
+    "tbl_name": "support_messages",
+    "sql": "CREATE INDEX `support_messages_ticket` ON `support_messages` (`ticket_id`,`ticket_revision`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "support_messages_version",
+    "tbl_name": "support_messages",
+    "sql": "CREATE UNIQUE INDEX `support_messages_version` ON `support_messages` (`ticket_id`,`ticket_revision`)"
+  },
+  {
+    "type": "index",
+    "name": "support_rate_day",
+    "tbl_name": "support_rate_limits",
+    "sql": "CREATE INDEX `support_rate_day` ON `support_rate_limits` (`day`)"
+  },
+  {
+    "type": "index",
+    "name": "support_tickets_event",
+    "tbl_name": "support_tickets",
+    "sql": "CREATE UNIQUE INDEX `support_tickets_event` ON `support_tickets` (`last_event_id`)"
+  },
+  {
+    "type": "index",
+    "name": "support_tickets_search",
+    "tbl_name": "support_tickets",
+    "sql": "CREATE INDEX `support_tickets_search` ON `support_tickets` (`search_key`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "support_tickets_status",
+    "tbl_name": "support_tickets",
+    "sql": "CREATE INDEX `support_tickets_status` ON `support_tickets` (`status`,`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "support_tickets_updated",
+    "tbl_name": "support_tickets",
+    "sql": "CREATE INDEX `support_tickets_updated` ON `support_tickets` (`updated_at`,`id`)"
+  },
+  {
+    "type": "index",
+    "name": "support_tickets_user",
+    "tbl_name": "support_tickets",
+    "sql": "CREATE INDEX `support_tickets_user` ON `support_tickets` (`user_id`,`updated_at`,`id`)"
   },
   {
     "type": "index",
@@ -2014,6 +3207,42 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "ai_service_connections",
     "tbl_name": "ai_service_connections",
     "sql": "CREATE TABLE `ai_service_connections` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`ciphertext` text,\n\t`iv` text,\n\t`revision` integer NOT NULL,\n\t`verified_at` integer,\n\t`updated_by` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"ai_connection_service\" CHECK(\"ai_service_connections\".\"id\" = 'anthropic'),\n\tCONSTRAINT \"ai_connection_revision\" CHECK(\"ai_service_connections\".\"revision\" > 0),\n\tCONSTRAINT \"ai_connection_encrypted_pair\" CHECK((\"ai_service_connections\".\"ciphertext\" IS NULL AND \"ai_service_connections\".\"iv\" IS NULL AND \"ai_service_connections\".\"verified_at\" IS NULL) OR (\"ai_service_connections\".\"ciphertext\" IS NOT NULL AND length(\"ai_service_connections\".\"ciphertext\") BETWEEN 44 AND 5600 AND \"ai_service_connections\".\"iv\" IS NOT NULL AND length(\"ai_service_connections\".\"iv\") = 24 AND \"ai_service_connections\".\"verified_at\" IS NOT NULL))\n)"
+  },
+  {
+    "type": "table",
+    "name": "business_audit",
+    "tbl_name": "business_audit",
+    "sql": "CREATE TABLE `business_audit` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`actor_id` text NOT NULL,\n\t`action` text NOT NULL,\n\t`target_type` text NOT NULL,\n\t`target_id` text NOT NULL,\n\t`details_json` text DEFAULT '{}' NOT NULL,\n\t`created_at` integer NOT NULL,\n\tCONSTRAINT \"business_audit_fields\" CHECK(length(\"business_audit\".\"actor_id\") BETWEEN 1 AND 256 AND length(\"business_audit\".\"action\") BETWEEN 1 AND 80 AND length(\"business_audit\".\"target_type\") BETWEEN 1 AND 60 AND length(\"business_audit\".\"target_id\")<=256),\n\tCONSTRAINT \"business_audit_details\" CHECK(json_valid(\"business_audit\".\"details_json\") AND length(CAST(\"business_audit\".\"details_json\" AS BLOB))<=8192)\n)"
+  },
+  {
+    "type": "table",
+    "name": "business_connections",
+    "tbl_name": "business_connections",
+    "sql": "CREATE TABLE `business_connections` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`project_origin` text NOT NULL,\n\t`ciphertext` text,\n\t`iv` text,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`verified_at` integer,\n\t`updated_by` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"business_connection_id\" CHECK(\"business_connections\".\"id\"='supabase-admin'),\n\tCONSTRAINT \"business_connection_revision\" CHECK(\"business_connections\".\"revision\">0),\n\tCONSTRAINT \"business_connection_encryption\" CHECK((\"business_connections\".\"ciphertext\" IS NULL AND \"business_connections\".\"iv\" IS NULL) OR (length(\"business_connections\".\"ciphertext\") BETWEEN 20 AND 16384 AND length(\"business_connections\".\"iv\")=24))\n)"
+  },
+  {
+    "type": "table",
+    "name": "business_owner",
+    "tbl_name": "business_owner",
+    "sql": "CREATE TABLE `business_owner` (\n\t`singleton` integer PRIMARY KEY DEFAULT 1 NOT NULL,\n\t`user_id` text NOT NULL,\n\t`source` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\tCONSTRAINT \"business_owner_singleton\" CHECK(\"business_owner\".\"singleton\"=1),\n\tCONSTRAINT \"business_owner_id\" CHECK(length(\"business_owner\".\"user_id\") BETWEEN 1 AND 256),\n\tCONSTRAINT \"business_owner_source\" CHECK(\"business_owner\".\"source\"='subject-hash')\n)"
+  },
+  {
+    "type": "table",
+    "name": "business_owner_limits",
+    "tbl_name": "business_owner_limits",
+    "sql": "CREATE TABLE `business_owner_limits` (\n\t`owner_id` text NOT NULL,\n\t`action` text NOT NULL,\n\t`window_start` integer NOT NULL,\n\t`count` integer NOT NULL,\n\tPRIMARY KEY(`owner_id`, `action`),\n\tCONSTRAINT \"business_owner_limit_action\" CHECK(\"business_owner_limits\".\"action\" IN ('connection','directory-sync','directory-read')),\n\tCONSTRAINT \"business_owner_limit_count\" CHECK(\"business_owner_limits\".\"count\">0)\n)"
+  },
+  {
+    "type": "table",
+    "name": "business_student_directory",
+    "tbl_name": "business_student_directory",
+    "sql": "CREATE TABLE `business_student_directory` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`auth_id` text NOT NULL,\n\t`email` text DEFAULT '' NOT NULL,\n\t`email_confirmed` integer DEFAULT 0 NOT NULL,\n\t`created_at` integer,\n\t`last_sign_in_at` integer,\n\t`banned_until` text,\n\t`excluded` integer DEFAULT 0 NOT NULL,\n\t`generation` text NOT NULL,\n\t`synced_at` integer NOT NULL,\n\tCONSTRAINT \"business_student_directory_flags\" CHECK(\"business_student_directory\".\"email_confirmed\" IN (0,1) AND \"business_student_directory\".\"excluded\" IN (0,1)),\n\tCONSTRAINT \"business_student_directory_metadata\" CHECK(length(\"business_student_directory\".\"id\") BETWEEN 1 AND 256 AND length(\"business_student_directory\".\"auth_id\")<=128 AND length(\"business_student_directory\".\"email\")<=254)\n)"
+  },
+  {
+    "type": "table",
+    "name": "business_student_sync",
+    "tbl_name": "business_student_sync",
+    "sql": "CREATE TABLE `business_student_sync` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`generation` text NOT NULL,\n\t`next_page` integer DEFAULT 1 NOT NULL,\n\t`complete` integer DEFAULT 0 NOT NULL,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`lease_token` text,\n\t`lease_until` integer,\n\t`started_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\t`provider_total` integer,\n\tCONSTRAINT \"business_student_sync_id\" CHECK(\"business_student_sync\".\"id\"='supabase-auth'),\n\tCONSTRAINT \"business_student_sync_values\" CHECK(\"business_student_sync\".\"next_page\">0 AND \"business_student_sync\".\"revision\">0 AND \"business_student_sync\".\"complete\" IN (0,1))\n)"
   },
   {
     "type": "table",
@@ -2155,6 +3384,60 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
   },
   {
     "type": "table",
+    "name": "owner_content_records",
+    "tbl_name": "owner_content_records",
+    "sql": "CREATE TABLE `owner_content_records` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`type` text NOT NULL,\n\t`slug` text NOT NULL,\n\t`status` text DEFAULT 'draft' NOT NULL,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`content_json` text NOT NULL,\n\t`published_json` text,\n\t`reviewed_revision` integer,\n\t`published_revision` integer,\n\t`reviewed_at` integer,\n\t`published_reviewed_at` integer,\n\t`published_at` integer,\n\t`archived_at` integer,\n\t`created_by` text NOT NULL,\n\t`updated_by` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"owner_content_type\" CHECK(\"owner_content_records\".\"type\" IN ('articles','faqs','campaigns','offers')),\n\tCONSTRAINT \"owner_content_status\" CHECK(\"owner_content_records\".\"status\" IN ('draft','published','archived')),\n\tCONSTRAINT \"owner_content_revision\" CHECK(\"owner_content_records\".\"revision\">0 AND (\"owner_content_records\".\"reviewed_revision\" IS NULL OR \"owner_content_records\".\"reviewed_revision\"<=\"owner_content_records\".\"revision\") AND (\"owner_content_records\".\"published_revision\" IS NULL OR \"owner_content_records\".\"published_revision\"<=\"owner_content_records\".\"revision\")),\n\tCONSTRAINT \"owner_content_json\" CHECK(json_valid(\"owner_content_records\".\"content_json\") AND length(CAST(\"owner_content_records\".\"content_json\" AS BLOB))<=60000),\n\tCONSTRAINT \"owner_content_public_json\" CHECK(\"owner_content_records\".\"published_json\" IS NULL OR (json_valid(\"owner_content_records\".\"published_json\") AND length(CAST(\"owner_content_records\".\"published_json\" AS BLOB))<=60000))\n)"
+  },
+  {
+    "type": "table",
+    "name": "owner_content_versions",
+    "tbl_name": "owner_content_versions",
+    "sql": "CREATE TABLE `owner_content_versions` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`record_id` text NOT NULL,\n\t`type` text NOT NULL,\n\t`revision` integer NOT NULL,\n\t`action` text NOT NULL,\n\t`content_json` text NOT NULL,\n\t`review_note` text,\n\t`actor_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\tCONSTRAINT \"owner_content_version_action\" CHECK(\"owner_content_versions\".\"action\" IN ('create','edit','review','publish','archive','starter-edit','starter-archive')),\n\tCONSTRAINT \"owner_content_version_json\" CHECK(json_valid(\"owner_content_versions\".\"content_json\") AND length(CAST(\"owner_content_versions\".\"content_json\" AS BLOB))<=60000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "owner_financial_records",
+    "tbl_name": "owner_financial_records",
+    "sql": "CREATE TABLE `owner_financial_records` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`created_by` text NOT NULL,\n\t`updated_by` text NOT NULL,\n\t`last_event_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\t`search_key` text NOT NULL,\n\t`source` text DEFAULT 'manual' NOT NULL,\n\t`kind` text NOT NULL,\n\t`status` text DEFAULT 'pending' NOT NULL,\n\t`amount_minor` integer NOT NULL,\n\t`currency` text NOT NULL,\n\t`occurred_on` text NOT NULL,\n\t`period_start` text DEFAULT '' NOT NULL,\n\t`period_end` text DEFAULT '' NOT NULL,\n\t`counterparty` text DEFAULT '' NOT NULL,\n\t`description` text DEFAULT '' NOT NULL,\n\tCONSTRAINT \"owner_finance_revision\" CHECK(\"owner_financial_records\".\"revision\">0),\n\tCONSTRAINT \"owner_finance_source\" CHECK(\"owner_financial_records\".\"source\"='manual'),\n\tCONSTRAINT \"owner_finance_kind\" CHECK(\"owner_financial_records\".\"kind\" IN ('revenue','expense','invoice')),\n\tCONSTRAINT \"owner_finance_status_values\" CHECK(\"owner_financial_records\".\"status\" IN ('pending','confirmed','void')),\n\tCONSTRAINT \"owner_finance_amount\" CHECK(\"owner_financial_records\".\"amount_minor\" BETWEEN 0 AND 100000000000 AND length(\"owner_financial_records\".\"currency\")=3),\n\tCONSTRAINT \"owner_finance_text\" CHECK(length(\"owner_financial_records\".\"counterparty\")<=200 AND length(\"owner_financial_records\".\"description\")<=4000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "owner_lead_workflows",
+    "tbl_name": "owner_lead_workflows",
+    "sql": "CREATE TABLE `owner_lead_workflows` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`created_by` text NOT NULL,\n\t`updated_by` text NOT NULL,\n\t`last_event_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\t`search_key` text NOT NULL,\n\t`source_kind` text NOT NULL,\n\t`source_id` text NOT NULL,\n\t`status` text DEFAULT 'new' NOT NULL,\n\t`notes` text DEFAULT '' NOT NULL,\n\tCONSTRAINT \"owner_leads_revision\" CHECK(\"owner_lead_workflows\".\"revision\">0),\n\tCONSTRAINT \"owner_leads_source_kind\" CHECK(\"owner_lead_workflows\".\"source_kind\" IN ('school-inquiry','plan-review','college-interest')),\n\tCONSTRAINT \"owner_leads_status_values\" CHECK(\"owner_lead_workflows\".\"status\" IN ('new','reviewing','qualified','shared','closed')),\n\tCONSTRAINT \"owner_leads_notes\" CHECK(length(\"owner_lead_workflows\".\"notes\")<=4000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "owner_partners",
+    "tbl_name": "owner_partners",
+    "sql": "CREATE TABLE `owner_partners` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`created_by` text NOT NULL,\n\t`updated_by` text NOT NULL,\n\t`last_event_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\t`search_key` text NOT NULL,\n\t`name` text NOT NULL,\n\t`kind` text NOT NULL,\n\t`website` text DEFAULT '' NOT NULL,\n\t`contact_name` text DEFAULT '' NOT NULL,\n\t`contact_email` text DEFAULT '' NOT NULL,\n\t`stage` text DEFAULT 'prospect' NOT NULL,\n\t`notes` text DEFAULT '' NOT NULL,\n\tCONSTRAINT \"owner_partners_revision\" CHECK(\"owner_partners\".\"revision\">0),\n\tCONSTRAINT \"owner_partners_name\" CHECK(length(\"owner_partners\".\"name\") BETWEEN 1 AND 200),\n\tCONSTRAINT \"owner_partners_kind\" CHECK(\"owner_partners\".\"kind\" IN ('college','provider','other')),\n\tCONSTRAINT \"owner_partners_stage_values\" CHECK(\"owner_partners\".\"stage\" IN ('prospect','contacted','discussing','active','paused')),\n\tCONSTRAINT \"owner_partners_contact\" CHECK(length(\"owner_partners\".\"website\")<=1500 AND length(\"owner_partners\".\"contact_name\")<=100 AND length(\"owner_partners\".\"contact_email\")<=254 AND length(\"owner_partners\".\"notes\")<=4000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "owner_search_imports",
+    "tbl_name": "owner_search_imports",
+    "sql": "CREATE TABLE `owner_search_imports` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`property` text NOT NULL,\n\t`fingerprint` text NOT NULL,\n\t`file_name` text NOT NULL,\n\t`dimension` text NOT NULL,\n\t`start_date` text NOT NULL,\n\t`end_date` text NOT NULL,\n\t`exported_on` text NOT NULL,\n\t`search_type` text NOT NULL,\n\t`filters` text NOT NULL,\n\t`row_count` integer NOT NULL,\n\t`rows_json` text NOT NULL,\n\t`summary_json` text NOT NULL,\n\t`imported_by` text NOT NULL,\n\t`imported_at` integer NOT NULL,\n\tCONSTRAINT \"owner_search_import_property\" CHECK(\"owner_search_imports\".\"property\"='degreesteps.com'),\n\tCONSTRAINT \"owner_search_import_dimension_kind\" CHECK(\"owner_search_imports\".\"dimension\" IN ('date','query','page','country','device')),\n\tCONSTRAINT \"owner_search_import_row_count\" CHECK(\"owner_search_imports\".\"row_count\" BETWEEN 1 AND 5000),\n\tCONSTRAINT \"owner_search_import_rows\" CHECK(json_valid(\"owner_search_imports\".\"rows_json\") AND json_type(\"owner_search_imports\".\"rows_json\")='array' AND json_array_length(\"owner_search_imports\".\"rows_json\")=\"owner_search_imports\".\"row_count\" AND length(CAST(\"owner_search_imports\".\"rows_json\" AS BLOB))<=1900000),\n\tCONSTRAINT \"owner_search_import_summary\" CHECK(json_valid(\"owner_search_imports\".\"summary_json\") AND length(CAST(\"owner_search_imports\".\"summary_json\" AS BLOB))<=16384),\n\tCONSTRAINT \"owner_search_import_fingerprint_shape\" CHECK(length(\"owner_search_imports\".\"fingerprint\")=64 AND \"owner_search_imports\".\"fingerprint\" NOT GLOB '*[^a-f0-9]*'),\n\tCONSTRAINT \"owner_search_import_origin\" CHECK(length(\"owner_search_imports\".\"imported_by\") BETWEEN 1 AND 256)\n)"
+  },
+  {
+    "type": "table",
+    "name": "owner_search_settings",
+    "tbl_name": "owner_search_settings",
+    "sql": "CREATE TABLE `owner_search_settings` (\n\t`property` text PRIMARY KEY NOT NULL,\n\t`revision` integer NOT NULL,\n\t`verification_token` text,\n\t`dns_status` text DEFAULT 'unchecked' NOT NULL,\n\t`dns_checked_at` integer,\n\t`google_ownership_reported` integer DEFAULT 0 NOT NULL,\n\t`google_ownership_reported_at` integer,\n\t`sitemap_submitted_reported` integer DEFAULT 0 NOT NULL,\n\t`sitemap_submitted_reported_at` integer,\n\t`updated_by` text NOT NULL,\n\t`updated_at` integer NOT NULL,\n\tCONSTRAINT \"owner_search_property\" CHECK(\"owner_search_settings\".\"property\"='degreesteps.com'),\n\tCONSTRAINT \"owner_search_revision\" CHECK(\"owner_search_settings\".\"revision\">0),\n\tCONSTRAINT \"owner_search_dns_status\" CHECK(\"owner_search_settings\".\"dns_status\" IN ('unchecked','present','not-found','check-failed')),\n\tCONSTRAINT \"owner_search_reported_flags\" CHECK(\"owner_search_settings\".\"google_ownership_reported\" IN (0,1) AND \"owner_search_settings\".\"sitemap_submitted_reported\" IN (0,1)),\n\tCONSTRAINT \"owner_search_public_token_length\" CHECK(\"owner_search_settings\".\"verification_token\" IS NULL OR length(\"owner_search_settings\".\"verification_token\") BETWEEN 35 AND 300)\n)"
+  },
+  {
+    "type": "table",
+    "name": "owner_tasks",
+    "tbl_name": "owner_tasks",
+    "sql": "CREATE TABLE `owner_tasks` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`created_by` text NOT NULL,\n\t`updated_by` text NOT NULL,\n\t`last_event_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\t`search_key` text NOT NULL,\n\t`title` text NOT NULL,\n\t`description` text DEFAULT '' NOT NULL,\n\t`status` text DEFAULT 'todo' NOT NULL,\n\t`priority` text DEFAULT 'normal' NOT NULL,\n\t`due_on` text DEFAULT '' NOT NULL,\n\tCONSTRAINT \"owner_tasks_revision\" CHECK(\"owner_tasks\".\"revision\">0),\n\tCONSTRAINT \"owner_tasks_title\" CHECK(length(\"owner_tasks\".\"title\") BETWEEN 1 AND 200),\n\tCONSTRAINT \"owner_tasks_description\" CHECK(length(\"owner_tasks\".\"description\")<=4000),\n\tCONSTRAINT \"owner_tasks_status_values\" CHECK(\"owner_tasks\".\"status\" IN ('todo','doing','waiting','done')),\n\tCONSTRAINT \"owner_tasks_priority\" CHECK(\"owner_tasks\".\"priority\" IN ('low','normal','high'))\n)"
+  },
+  {
+    "type": "table",
+    "name": "owner_work_events",
+    "tbl_name": "owner_work_events",
+    "sql": "CREATE TABLE `owner_work_events` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`resource` text NOT NULL,\n\t`record_id` text NOT NULL,\n\t`revision` integer NOT NULL,\n\t`actor_id` text NOT NULL,\n\t`action` text NOT NULL,\n\t`changed_fields_json` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\tCONSTRAINT \"owner_work_event_revision_value\" CHECK(\"owner_work_events\".\"revision\">0),\n\tCONSTRAINT \"owner_work_event_fields\" CHECK(json_valid(\"owner_work_events\".\"changed_fields_json\") AND json_type(\"owner_work_events\".\"changed_fields_json\")='array' AND length(\"owner_work_events\".\"changed_fields_json\")<=2048)\n)"
+  },
+  {
+    "type": "table",
     "name": "plan_alert_subscriptions",
     "tbl_name": "plan_alert_subscriptions",
     "sql": "CREATE TABLE `plan_alert_subscriptions` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`user_id` text NOT NULL,\n\t`portal_plan_id` text NOT NULL,\n\t`plan_id` text NOT NULL,\n\t`email` text NOT NULL,\n\t`fingerprint` text NOT NULL,\n\t`summary_json` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`confirmed_at` integer NOT NULL,\n\t`last_change_email_at` integer,\n\t`last_reminder_at` integer,\n\tCONSTRAINT \"plan_alert_fingerprint_format\" CHECK(length(\"plan_alert_subscriptions\".\"fingerprint\")=64 AND \"plan_alert_subscriptions\".\"fingerprint\" NOT GLOB '*[^0-9a-f]*'),\n\tCONSTRAINT \"plan_alert_plan_format\" CHECK(length(\"plan_alert_subscriptions\".\"plan_id\") BETWEEN 1 AND 128 AND \"plan_alert_subscriptions\".\"plan_id\" NOT GLOB '*[^a-z0-9-]*'),\n\tCONSTRAINT \"plan_alert_email_length\" CHECK(length(\"plan_alert_subscriptions\".\"email\") BETWEEN 3 AND 254),\n\tCONSTRAINT \"plan_alert_summary_length\" CHECK(length(\"plan_alert_subscriptions\".\"summary_json\") BETWEEN 2 AND 2000)\n)"
@@ -2194,6 +3477,24 @@ export const D1_SNAPSHOT_SCHEMA = Object.freeze([
     "name": "school_inquiries",
     "tbl_name": "school_inquiries",
     "sql": "CREATE TABLE `school_inquiries` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`plan_id` text NOT NULL,\n\t`plan_title` text NOT NULL,\n\t`school` text NOT NULL,\n\t`first_name` text NOT NULL,\n\t`email` text NOT NULL,\n\t`phone` text DEFAULT '' NOT NULL,\n\t`location` text NOT NULL,\n\t`start_timing` text NOT NULL,\n\t`prior_credit` text NOT NULL,\n\t`consent_version` text NOT NULL,\n\t`consent_text` text NOT NULL,\n\tCONSTRAINT \"school_inquiry_plan_format\" CHECK(length(\"school_inquiries\".\"plan_id\") BETWEEN 1 AND 128 AND \"school_inquiries\".\"plan_id\" NOT GLOB '*[^a-z0-9-]*'),\n\tCONSTRAINT \"school_inquiry_text_lengths\" CHECK(length(\"school_inquiries\".\"plan_title\") BETWEEN 1 AND 200 AND length(\"school_inquiries\".\"school\") BETWEEN 1 AND 160 AND length(\"school_inquiries\".\"first_name\") BETWEEN 1 AND 60 AND length(\"school_inquiries\".\"email\") BETWEEN 3 AND 254 AND length(\"school_inquiries\".\"phone\")<=40 AND length(\"school_inquiries\".\"location\") BETWEEN 2 AND 80),\n\tCONSTRAINT \"school_inquiry_start_timing\" CHECK(\"school_inquiries\".\"start_timing\" IN ('this-term','next-6-months','later')),\n\tCONSTRAINT \"school_inquiry_prior_credit\" CHECK(\"school_inquiries\".\"prior_credit\" IN ('yes','no')),\n\tCONSTRAINT \"school_inquiry_consent\" CHECK(length(\"school_inquiries\".\"consent_version\") BETWEEN 1 AND 40 AND length(\"school_inquiries\".\"consent_text\") BETWEEN 20 AND 600)\n)"
+  },
+  {
+    "type": "table",
+    "name": "support_messages",
+    "tbl_name": "support_messages",
+    "sql": "CREATE TABLE `support_messages` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`ticket_id` text NOT NULL,\n\t`ticket_revision` integer NOT NULL,\n\t`author_id` text NOT NULL,\n\t`author_role` text NOT NULL,\n\t`visibility` text DEFAULT 'student' NOT NULL,\n\t`body` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\tFOREIGN KEY (`ticket_id`) REFERENCES `support_tickets`(`id`) ON UPDATE no action ON DELETE no action,\n\tCONSTRAINT \"support_messages_revision\" CHECK(\"support_messages\".\"ticket_revision\">0),\n\tCONSTRAINT \"support_messages_role\" CHECK(\"support_messages\".\"author_role\" IN ('owner','student')),\n\tCONSTRAINT \"support_messages_visibility\" CHECK(\"support_messages\".\"visibility\" IN ('student','internal') AND (\"support_messages\".\"author_role\"!='student' OR \"support_messages\".\"visibility\"='student')),\n\tCONSTRAINT \"support_messages_body\" CHECK(length(\"support_messages\".\"body\") BETWEEN 1 AND 6000)\n)"
+  },
+  {
+    "type": "table",
+    "name": "support_rate_limits",
+    "tbl_name": "support_rate_limits",
+    "sql": "CREATE TABLE `support_rate_limits` (\n\t`user_id` text NOT NULL,\n\t`day` text NOT NULL,\n\t`kind` text NOT NULL,\n\t`count` integer NOT NULL,\n\tPRIMARY KEY(`user_id`, `day`, `kind`),\n\tCONSTRAINT \"support_rate_kind\" CHECK(\"support_rate_limits\".\"kind\" IN ('ticket','message')),\n\tCONSTRAINT \"support_rate_count\" CHECK(\"support_rate_limits\".\"count\">0 AND \"support_rate_limits\".\"count\"<=100)\n)"
+  },
+  {
+    "type": "table",
+    "name": "support_tickets",
+    "tbl_name": "support_tickets",
+    "sql": "CREATE TABLE `support_tickets` (\n\t`id` text PRIMARY KEY NOT NULL,\n\t`revision` integer DEFAULT 1 NOT NULL,\n\t`created_by` text NOT NULL,\n\t`updated_by` text NOT NULL,\n\t`last_event_id` text NOT NULL,\n\t`created_at` integer NOT NULL,\n\t`updated_at` integer NOT NULL,\n\t`search_key` text NOT NULL,\n\t`user_id` text,\n\t`contact_email` text DEFAULT '' NOT NULL,\n\t`subject` text NOT NULL,\n\t`category` text NOT NULL,\n\t`status` text DEFAULT 'open' NOT NULL,\n\t`priority` text DEFAULT 'normal' NOT NULL,\n\t`diagnostics_consent` integer DEFAULT 0 NOT NULL,\n\t`diagnostics_json` text DEFAULT '{}' NOT NULL,\n\tCONSTRAINT \"support_tickets_revision\" CHECK(\"support_tickets\".\"revision\">0),\n\tCONSTRAINT \"support_tickets_subject\" CHECK(length(\"support_tickets\".\"subject\") BETWEEN 1 AND 200),\n\tCONSTRAINT \"support_tickets_category\" CHECK(\"support_tickets\".\"category\" IN ('account','plan','course','bug','other')),\n\tCONSTRAINT \"support_tickets_status_values\" CHECK(\"support_tickets\".\"status\" IN ('open','in-progress','waiting','resolved')),\n\tCONSTRAINT \"support_tickets_priority\" CHECK(\"support_tickets\".\"priority\" IN ('low','normal','high')),\n\tCONSTRAINT \"support_tickets_diagnostics\" CHECK(\"support_tickets\".\"diagnostics_consent\" IN (0,1) AND json_valid(\"support_tickets\".\"diagnostics_json\") AND length(\"support_tickets\".\"diagnostics_json\")<=2048 AND (\"support_tickets\".\"diagnostics_consent\"=1 OR \"support_tickets\".\"diagnostics_json\"='{}'))\n)"
   },
   {
     "type": "table",

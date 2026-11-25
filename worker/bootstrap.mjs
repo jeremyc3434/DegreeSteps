@@ -1,5 +1,5 @@
 /** Temporary owner setup on workers.dev. Never use this entry point for student traffic. */
-import worker from '../outputs/cloudflare/worker.mjs';
+import worker from '../outputs/cloudflare/runtime/worker.mjs';
 
 const authRoutes=new Map([
   ['/api/auth/status','GET'],['/api/auth/session','GET'],

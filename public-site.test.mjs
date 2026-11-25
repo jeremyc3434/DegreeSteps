@@ -5,6 +5,8 @@ import {readFile, stat} from 'node:fs/promises';
 import {resolve, dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import vm from 'node:vm';
+import {createTrustedDatabase} from './scripts/d1-snapshot.mjs';
+import {publicOwnerContent} from './server/owner-content.mjs';
 
 const root=dirname(fileURLToPath(import.meta.url)), dist=resolve(root,'dist');
 const content=JSON.parse(await readFile(resolve(root,'content/public-content.json'),'utf8'));
@@ -149,6 +151,12 @@ test('the sitemap exposes public resources and keeps personal drafts and account
 
 test('public links, stylesheets and scripts resolve to real pages or local assets',async()=>{
   const failures=[];
+  // Reviewed CMS pages are served by the Worker, rather than checked-in HTML.
+  // Exercise that actual route before accepting its links in the static site.
+  const sqlite=createTrustedDatabase(),cmsDB={prepare(sql){return{bind(...values){return{async all(){return{results:sqlite.prepare(sql).all(...values)};},async first(){return sqlite.prepare(sql).get(...values)||null;}};}};}};
+  const cmsURL=new URL('/insights/',siteOrigin);
+  let cmsResponse;
+  try{cmsResponse=await publicOwnerContent(new Request(cmsURL),{},{db:cmsDB,url:cmsURL,publicOrigin:siteOrigin});assert.equal(cmsResponse.status,200);assert.match(cmsResponse.headers.get('Content-Type'),/text\/html/);assert.match(await cmsResponse.text(),/<h1>A clearer next step for your degree\.<\/h1>/);}finally{sqlite.close();}
   for(const {url,html} of pages){
     const tags=html.match(/<(?:a|link|script|img|source)\b[^>]*>/gi)||[];
     for(const tag of tags){
@@ -159,6 +167,7 @@ test('public links, stylesheets and scripts resolve to real pages or local asset
       const raw=attr(tag,/^<(script|img|source)\b/i.test(tag)?'src':'href');if(!raw||/^(mailto:|tel:|data:|javascript:)/i.test(raw))continue;
       let resolved;try{resolved=new URL(raw,url);}catch{failures.push(`${url.pathname}: invalid URL ${raw}`);continue;}
       if(resolved.origin!==siteOrigin)continue;
+      if(resolved.pathname==='/insights/'&&!resolved.hash&&cmsResponse?.status===200)continue;
       let path=targetFile(resolved.pathname);
       if(!(await exists(path))&&!(resolved.pathname.endsWith('/'))&&await exists(resolve(path,'index.html')))path=resolve(path,'index.html');
       if(!(await exists(path))){failures.push(`${url.pathname}: missing ${raw}`);continue;}
