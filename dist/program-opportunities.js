@@ -164,6 +164,42 @@
     if (policy.status === 'case-by-case') return 'School review required';
     return graduate(program) && kind !== 'institutional' ? 'Graduate credit needs confirmation' : 'Needs confirmation';
   }
+  // Facts arrive only after the catalog assembler has bound their exact program,
+  // edition and format. Rendering also fails closed when their evidence is absent.
+  function programRequirements(fit) {
+    const rows = Array.isArray(fit && fit.programRequirements) ? fit.programRequirements : [], result = [], seen = new Set();
+    const kinds = ['admission', 'assessment', 'attendance', 'professional'], scopes = ['school-policy', 'program', 'course'];
+    const identified = value => typeof value === 'string' && /^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(value);
+    const reviewed = value => {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value || ''))) return false;
+      const date = new Date(value + 'T00:00:00Z');
+      return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value;
+    };
+    for (const fact of rows.slice(0, 32)) {
+      if (!fact || !identified(fact.id) || !kinds.includes(fact.kind) || !scopes.includes(fact.scope) || typeof fact.label !== 'string' || !fact.label.trim() || fact.label.length > 180 || typeof fact.detail !== 'string' || !fact.detail.trim() || fact.detail.length > 1600) continue;
+      const sourceIds = Array.isArray(fact.sourceIds) ? [...new Set(fact.sourceIds)] : [];
+      if (!sourceIds.length || sourceIds.some(id => !identified(id))) continue;
+      const sources = sourceIds.map(id => (Array.isArray(fact.sources) ? fact.sources : []).find(source => source && source.id === id && safeURL(source.url) && reviewed(source.checkedOn)));
+      if (sources.some(source => !source)) continue;
+      const label = fact.label.trim(), detail = fact.detail.trim(), identity = fact.kind + ':' + fact.id;
+      const meaning = JSON.stringify([fact.kind, label, detail, sources.map(source => safeURL(source.url)).sort()]);
+      if (seen.has(identity) || seen.has(meaning)) continue;
+      seen.add(identity); seen.add(meaning);
+      result.push({id:fact.id, kind:fact.kind, scope:fact.scope, label, detail, prominent:fact.prominent === true,
+        ...(identified(fact.type) ? {type:fact.type} : {}), sourceIds,
+        sources:sources.map(source => ({id:source.id, url:safeURL(source.url), title:typeof source.title === 'string' && source.title.trim() ? source.title.trim() : 'Official school source', checkedOn:source.checkedOn}))});
+    }
+    return result;
+  }
+  function requirementBadges(fit) {
+    return [...new Set(programRequirements(fit).filter(fact => fact.prominent && fact.scope !== 'school-policy').map(fact => fact.label))];
+  }
+  function requirementsHTML(fit, options) {
+    const facts = programRequirements(fit);
+    if (!facts.length) return '';
+    const compact = options && options.compact === true;
+    return '<details class="program-requirements' + (compact ? ' program-requirements-compact' : '') + '" data-program-requirements><summary>Before you choose</summary><ul class="program-requirement-list">' + facts.map(fact => '<li data-program-requirement="' + escapeHTML(fact.id) + '" data-requirement-kind="' + fact.kind + '" data-requirement-scope="' + fact.scope + '"><p class="program-requirement-heading"><strong>' + escapeHTML(fact.label) + '</strong>' + (fact.scope === 'school-policy' ? '<span class="program-requirement-scope">School policy</span>' : '') + '</p><p class="program-requirement-detail">' + escapeHTML(fact.detail) + '</p><div class="program-requirement-sources">' + fact.sources.map(source => '<a href="' + escapeHTML(source.url) + '" target="_blank" rel="noopener noreferrer" data-source-id="' + escapeHTML(source.id) + '" data-source-checked="' + source.checkedOn + '" title="Reviewed ' + escapeHTML(dateLabel(source.checkedOn)) + '">' + escapeHTML(source.title) + '</a>').join('') + '</div></li>').join('') + '</ul></details>';
+  }
   function detailsHTML(program, school, fitOverride) {
     if (!program) return '';
     const state = availability(program), price = applicablePricing(program, school), fit = fitOverride && typeof fitOverride === 'object' ? fitOverride : fitFacts(program, school);
@@ -179,8 +215,10 @@
       html += row('Degree requirements', program.degreeCredits + ' ' + unit);
     }
     html += '</dl>' + (source || learningSource ? '<span class="program-fact-source">' + (source ? link(source, 'Official program and tuition') : '') + (learningSource && learningSource !== source ? (source ? ' · ' : '') + link(learningSource, 'Learning format source') : '') + '</span>' : '') + '</div>';
-    const attendance=Array.isArray(fit.requirements)?fit.requirements.filter(item=>item&&typeof item.label==='string'&&safeURL(item.url)):[];
+    const reviewedRequirements=programRequirements(fit),reviewedLive=reviewedRequirements.some(fact=>fact.kind==='attendance'&&fact.type==='live-seminars'&&fact.scope!=='school-policy');
+    const attendance=Array.isArray(fit.requirements)?fit.requirements.filter(item=>item&&typeof item.label==='string'&&safeURL(item.url)&&!(reviewedLive&&item.type==='live-seminars')):[];
     if(attendance.length)html+='<div class="program-conditions"><strong>Attendance requirements</strong><ul>'+attendance.map(item=>'<li>'+escapeHTML(item.label)+(item.courseCode?' · '+escapeHTML(item.courseCode):'')+' '+link(item.url,'Course requirement source')+'</li>').join('')+'</ul></div>';
+    html += requirementsHTML(fit);
     const policies = [['institutional', 'College-earned credits'], ['ace', 'ACE courses'], ['nccrs', 'NCCRS courses']].map(([kind, label]) => ({ kind, label, policy: programPolicy(program, school, kind) }));
     html += '<div class="program-policy"><dl>' + policies.map(p => row(p.label, policyLabel(p.policy, p.kind, program))).join('') + '</dl></div>';
     const requirements = items(program.prerequisites);
@@ -204,5 +242,5 @@
     }
     return html;
   }
-  return Object.freeze({ priceText, paceText, fitFacts, fitsFilters, transferPolicyFor:programPolicy, availability, schoolFor, detailsHTML });
+  return Object.freeze({ priceText, paceText, fitFacts, fitsFilters, transferPolicyFor:programPolicy, availability, schoolFor, programRequirements, requirementBadges, requirementsHTML, detailsHTML });
 }));

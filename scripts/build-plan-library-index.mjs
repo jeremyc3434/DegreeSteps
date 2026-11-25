@@ -5,6 +5,7 @@ import {resolve} from 'node:path';
 import assert from 'node:assert/strict';
 import {subjectAreas,subjectsFor} from './subject-areas.mjs';
 import {buildProgramFit} from './program-fit-metadata.mjs';
+import {loadProgramRequirementReviews} from './program-requirements-metadata.mjs';
 
 const root=resolve(import.meta.dirname,'..'),output=resolve(root,'dist/data/plan-library-index.json');
 const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
@@ -54,6 +55,7 @@ if(import.meta.url===`file://${process.argv[1]}`){
   const Planner=require('../dist/planner.js'),Estimate=require('../dist/plan-estimate-engine.js'),Catalog=require('../dist/program-catalog.js');
   const [registry,baselines,rates]=await Promise.all(['dist/data/curriculum-registry.json','dist/data/baseline-index.json','dist/data/plan-estimate-rates.json'].map(read));
   const [pathways,directory,reviews]=await Promise.all(['dist/data/pathways.json','dist/data/program-catalog.json','content/discovery/program-fit-reviews.json'].map(read));
+  const requirementReviews=await loadProgramRequirementReviews(root);
   const catalog=Catalog.attachRegistry(Catalog.merge(pathways,directory),registry);
   const docs=new Map(),estimates={},starts={},timings={},fits={},priced=new Set((rates.providers||[]).map(item=>item.provider));
   for(const baseline of Object.values(baselines.baselines||{})){
@@ -65,7 +67,7 @@ if(import.meta.url===`file://${process.argv[1]}`){
     const plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optionSelections:Object.fromEntries(baseline.rows.map(row=>[row.requirementId,row.optionId])),optimizationNodeBudget:12000});
     if(plan.totals?.external!==baseline.summary.transferCredits)continue;
     const estimate=Estimate.calculate({program:model,plan,rates}),range=estimate?.costs?.knownRange;
-    fits[baseline.pathwayId]=buildProgramFit({model,route:catalog.pathways.find(route=>route.id===baseline.pathwayId)||{},estimate,rates,reviews});
+    fits[baseline.pathwayId]=buildProgramFit({model,route:catalog.pathways.find(route=>route.id===baseline.pathwayId)||{},estimate,rates,reviews,requirementReviews});
     if(!range||!Number.isFinite(range.min)||!Number.isFinite(range.max)||range.min<=0)continue;
     // Study time from the same estimate: outside months and university terms at the engine's default pace assumptions.
     const timing=estimate.timing;

@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "liberty-online-admission-2026-11-24",
+      "url": "https://www.liberty.edu/online/degrees/undergraduate-admission-requirements/",
+      "title": "Online undergraduate admission requirements",
+      "checkedOn": "2026-11-24",
+      "quote": "Students must have a 2.0 or above cumulative GPA for admission in good standing."
+    },
+    {
+      "id": "liberty-resident-admission-2026-11-24",
+      "url": "https://www.liberty.edu/residential/undergraduate/",
+      "title": "Residential undergraduate admission requirements",
+      "checkedOn": "2026-11-24",
+      "quote": "Applications are reviewed on a case-by-case basis, meaning there is no set minimum GPA required for admission as an undergraduate student."
+    },
+    {
+      "id": "liberty-online-attendance-2026-11-24",
+      "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-online-program/",
+      "title": "2026–2027 online academic policies",
+      "checkedOn": "2026-11-24",
+      "quote": "Regular attendance in online courses is expected throughout the length of the term."
+    },
+    {
+      "id": "liberty-resident-attendance-2026-11-24",
+      "url": "https://catalog.liberty.edu/undergraduate/academic-support/academic-information-policies-resident-program/",
+      "title": "2026–2027 residential academic policies",
+      "checkedOn": "2026-11-24",
+      "quote": "In general, regular and punctual attendance in all classes is expected of all students."
+    },
+    {
+      "id": "liberty-hser-course-requirements-2026-11-24",
+      "url": "https://catalog.liberty.edu/undergraduate/courses/hser/",
+      "title": "2026–2027 Human Services course requirements",
+      "checkedOn": "2026-11-24",
+      "quote": "students will participate in a bi-weekly synchronous seminar as well as direct service opportunities in their community."
+    },
+    {
+      "id": "liberty-psyc-course-requirements-2026-11-24",
+      "url": "https://catalog.liberty.edu/undergraduate/courses/psyc/",
+      "title": "2026–2027 Psychology course requirements",
+      "checkedOn": "2026-11-24",
+      "quote": "Senior or Junior Status, 18 credits of PSYC coursework successfully completed"
+    },
+    {
+      "id": "liberty-psychology-professional-2026-11-24",
+      "url": "https://www.liberty.edu/online/behavioral-sciences/bachelors/psychology/",
+      "title": "Online BS in Psychology program information",
+      "checkedOn": "2026-11-24",
+      "quote": "A Bachelor of Science in Psychology is a non-licensure program."
+    },
+    {
+      "id": "liberty-human-services-professional-2026-11-24",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/human-services-major-bs/",
+      "title": "Human Services major professional preparation",
+      "checkedOn": "2026-11-24",
+      "quote": "it is recommended that the student pursue a graduate degree and obtain appropriate licensure."
+    }
+  ],
+  "reviews": [
+    {
+      "id": "liberty-online-entry-and-participation-2026-2027",
+      "modelIds": [
+        "curriculum-liberty-history-bs-online",
+        "curriculum-liberty-healthcare-administration-bs-online",
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-psychology-addictions-online",
+        "curriculum-liberty-human-services-bs-online",
+        "liberty-criminal-justice-online"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-liberty-history-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/history-ba-bs/history-bs-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-healthcare-administration-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-addictions-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/addictions-recovery-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-human-services-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/human-services-major-bs/human-services-online/"
+        },
+        {
+          "modelId": "liberty-criminal-justice-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-online/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "liberty-online-good-standing-gpa",
+          "kind": "admission",
+          "label": "2.0 GPA for good standing",
+          "detail": "Liberty’s general online undergraduate admission policy specifies a cumulative GPA of at least 2.0 for admission in good standing. This is not an automatic admission decision.",
+          "sourceIds": [
+            "liberty-online-admission-2026-11-24"
+          ],
+          "scope": "school-policy",
+          "prominent": false
+        },
+        {
+          "id": "liberty-online-application-records",
+          "kind": "admission",
+          "label": "Education records for admission",
+          "detail": "Official high school or GED records are generally required; qualifying college credits or an associate degree can change that requirement. Unofficial college transcripts with a Transcript Request Form can support initial acceptance; official records are still required.",
+          "sourceIds": [
+            "liberty-online-admission-2026-11-24"
+          ],
+          "scope": "school-policy",
+          "prominent": false
+        },
+        {
+          "id": "liberty-online-first-week-participation",
+          "kind": "attendance",
+          "label": "Participation starts in the first week",
+          "detail": "Online courses require academic participation during the first week of the subterm, such as submitting a graded assignment. Students who do not begin participation can be dropped. This is different from a required live class meeting.",
+          "sourceIds": [
+            "liberty-online-attendance-2026-11-24"
+          ],
+          "scope": "school-policy",
+          "prominent": false
+        }
+      ]
+    },
+    {
+      "id": "liberty-resident-entry-and-participation-2026-2027",
+      "modelIds": [
+        "liberty-business-residential",
+        "liberty-criminal-justice-residential"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "campus",
+      "programBindings": [
+        {
+          "modelId": "liberty-business-residential",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/"
+        },
+        {
+          "modelId": "liberty-criminal-justice-residential",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-bs/criminal-justice-resident/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "liberty-resident-individual-admission",
+          "kind": "admission",
+          "label": "Applications reviewed individually",
+          "detail": "Liberty’s residential undergraduate admissions page states that applications are considered individually, without a fixed minimum admission GPA. This differs from the online good-standing policy.",
+          "sourceIds": [
+            "liberty-resident-admission-2026-11-24"
+          ],
+          "scope": "school-policy",
+          "prominent": false
+        },
+        {
+          "id": "liberty-resident-application-records",
+          "kind": "admission",
+          "label": "Transcripts and Champion Story",
+          "detail": "Residential applicants submit the admission application, applicable education transcripts and a Champion Story. Transfer applicants with an associate degree do not need high school transcripts. Additional documents can be requested individually.",
+          "sourceIds": [
+            "liberty-resident-admission-2026-11-24"
+          ],
+          "scope": "school-policy",
+          "prominent": false
+        },
+        {
+          "id": "liberty-resident-class-attendance",
+          "kind": "attendance",
+          "label": "Regular class attendance",
+          "detail": "Liberty’s residential attendance policy expects regular, punctual class attendance throughout the term. Course schedules and the attendance policy govern the campus portion of this plan.",
+          "sourceIds": [
+            "liberty-resident-attendance-2026-11-24"
+          ],
+          "scope": "school-policy",
+          "prominent": false
+        }
+      ]
+    },
+    {
+      "id": "liberty-human-services-capstone-and-career-2026-2027",
+      "modelIds": [
+        "curriculum-liberty-human-services-bs-online"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-liberty-human-services-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/human-services-major-bs/human-services-online/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "liberty-hser497-live-seminars",
+          "kind": "attendance",
+          "label": "Live capstone seminars",
+          "detail": "The proposed Human Services route uses HSER 497. This capstone includes live seminars every other week.",
+          "sourceIds": [
+            "liberty-hser-course-requirements-2026-11-24"
+          ],
+          "scope": "course",
+          "prominent": true,
+          "type": "live-seminars",
+          "courseCodes": [
+            "HSER 497"
+          ]
+        },
+        {
+          "id": "liberty-hser497-community-service",
+          "kind": "attendance",
+          "label": "Community experience required",
+          "detail": "HSER 497 includes direct-service experience in the student’s community, even though the degree is an online program.",
+          "sourceIds": [
+            "liberty-hser-course-requirements-2026-11-24"
+          ],
+          "scope": "course",
+          "prominent": true,
+          "type": "community-service",
+          "courseCodes": [
+            "HSER 497"
+          ]
+        },
+        {
+          "id": "liberty-hser497-registration-approval",
+          "kind": "admission",
+          "label": "Apply before taking the capstone",
+          "detail": "HSER 497 requires senior standing in the Human Services major, at least a 2.0 overall GPA, its listed prerequisite courses and department approval. Apply for that approval in the preceding semester.",
+          "sourceIds": [
+            "liberty-hser-course-requirements-2026-11-24"
+          ],
+          "scope": "course",
+          "prominent": false,
+          "courseCodes": [
+            "HSER 497"
+          ]
+        },
+        {
+          "id": "liberty-human-services-advanced-practice",
+          "kind": "professional",
+          "label": "Further study for advanced counseling",
+          "detail": "For advanced practice such as mental health counseling or therapy, Liberty recommends graduate study and appropriate licensure. The bachelor’s degree alone is not a state-specific licensing determination.",
+          "sourceIds": [
+            "liberty-human-services-professional-2026-11-24"
+          ],
+          "scope": "program",
+          "prominent": false
+        }
+      ]
+    },
+    {
+      "id": "liberty-psychology-capstone-2026-2027",
+      "modelIds": [
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-psychology-addictions-online"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-liberty-psychology-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/"
+        },
+        {
+          "modelId": "curriculum-liberty-psychology-addictions-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/addictions-recovery-online/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "liberty-psyc491-course-entry",
+          "kind": "admission",
+          "label": "Psychology capstone prerequisites",
+          "detail": "The proposed route selects PSYC 491. Registration requires junior or senior standing, 18 completed PSYC credits, and the listed introductory and research prerequisites with their required grades.",
+          "sourceIds": [
+            "liberty-psyc-course-requirements-2026-11-24"
+          ],
+          "scope": "course",
+          "prominent": false,
+          "courseCodes": [
+            "PSYC 491"
+          ]
+        },
+        {
+          "id": "liberty-psyc491-assessment-format",
+          "kind": "assessment",
+          "label": "Capstone instead of an internship",
+          "detail": "The proposed route uses PSYC 491 as an alternative to the internship. Its course description includes observing clinical work through online meetings and recorded counseling sessions.",
+          "sourceIds": [
+            "liberty-psyc-course-requirements-2026-11-24"
+          ],
+          "scope": "course",
+          "prominent": false,
+          "courseCodes": [
+            "PSYC 491"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liberty-general-psychology-professional-2026-2027",
+      "modelIds": [
+        "curriculum-liberty-psychology-bs-online"
+      ],
+      "catalogYear": "2026-2027",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-liberty-psychology-bs-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "liberty-psychology-nonlicensure",
+          "kind": "professional",
+          "label": "Non-licensure psychology degree",
+          "detail": "Liberty explicitly describes the general online BS in Psychology as a non-licensure program. A bachelor’s degree alone does not qualify someone to practice as a psychologist.",
+          "sourceIds": [
+            "liberty-psychology-professional-2026-11-24"
+          ],
+          "scope": "program",
+          "prominent": true,
+          "type": "non-licensure"
+        }
+      ]
+    }
+  ]
+}

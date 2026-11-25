@@ -20,7 +20,7 @@ function fits(p){
  return(filters.competencyBased!==true||facts.competencyBased===true)&&(filters.selfPaced===undefined||facts.selfPaced===filters.selfPaced)&&(!filters.billing||facts.billing===filters.billing);
 }
 function fitBadges(p){
- const facts=fit(p),requirements=Array.isArray(facts.requirements)?facts.requirements.map(item=>typeof item?.label==='string'?item.label.trim():null):[],labels=[facts.selfPaced===true||facts.selfPaced===false?facts.paceLabel:null,facts.competencyBased===true?'Competency-based (CBE)':null,facts.billing?facts.billingLabel:null,...requirements];
+ const facts=fit(p),requirements=Array.isArray(facts.requirements)?facts.requirements.map(item=>typeof item?.label==='string'?item.label.trim():null):[],labels=[facts.selfPaced===true||facts.selfPaced===false?facts.paceLabel:null,facts.competencyBased===true?'Competency-based (CBE)':null,facts.billing?facts.billingLabel:null,...requirements,...(P.requirementBadges?.(facts)||[])];
  return [...new Set(labels.filter(Boolean))].map(label=>'<span class="pf-badge pf-badge-fit">'+esc(label)+'</span>').join('');
 }
 function tuitionBasis(p){const facts=fit(p);return info(p).estimate&&facts.billing&&facts.tuitionLabel?'<p class="pf-tuition-basis">'+esc(facts.tuitionLabel)+'</p>':'';}

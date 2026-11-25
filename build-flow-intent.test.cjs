@@ -10,7 +10,7 @@ function environment(search=''){
  const element=id=>{if(!elements.has(id))elements.set(id,{id,innerHTML:'',textContent:'',hidden:false,value:'',checked:false,addEventListener(){},querySelector(){return {outerHTML:'<legend>Filter</legend>'};},focus(){}});return elements.get(id);};
  const location={search,pathname:'/portal.html',assigned:'',assign(value){this.assigned=value;}};
  const document={getElementById:element,addEventListener(name,callback){events[name]=callback;},querySelector(){return null;},body:{},activeElement:null};
- const window={document,location,DegreeJourney:Journey,DegreeSheet:Sheet,DegreeGuide:Guide,addEventListener(){},scrollTo(){}};
+ const window={document,location,DegreeJourney:Journey,DegreeSheet:Sheet,DegreeGuide:Guide,DegreeProgramOpportunities:require('./dist/program-opportunities.js'),addEventListener(){},scrollTo(){}};
  const context={window,document,location,URLSearchParams,URL,console,Intl,Map,Set,WeakMap,CSS:{escape:value=>value},history:{replaceState(_a,_b,value){location.assigned=value;}},localStorage:{getItem(){return null;},setItem(){}},DegreeProgramCatalog:Catalog,DegreeGuide:Guide,fetch:async()=>{throw Error('No network in this test');}};
  return {context,elements,events,location};
 }

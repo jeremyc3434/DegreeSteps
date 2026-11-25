@@ -117,7 +117,7 @@ function sorted(list){
 }
 function card(p){
   const s=info(p).start,cost=costText(p),pct=s&&s.total?Math.round(s.outside/s.total*100):0,fmt=(p.modalities||[]).map(m=>formats[m]||m).join(' · ');
-  const f=fit(p),badges=[f.competencyBased===true?'Competency-based (CBE)':'',f.selfPaced===true?'Self-paced':f.selfPaced===false?'Term-based':'',f.billing?f.billingLabel||billingLabels[f.billing]:'',...(f.requirements||[]).map(item=>item.label)].filter(Boolean);
+  const f=fit(p),badges=[...new Set([f.competencyBased===true?'Competency-based (CBE)':'',f.selfPaced===true?'Self-paced':f.selfPaced===false?'Term-based':'',f.billing?f.billingLabel||billingLabels[f.billing]:'',...(f.requirements||[]).map(item=>item.label),...(P.requirementBadges?.(f)||[])].filter(Boolean))];
   return '<article class="start-card" data-plan="'+esc(p.id)+'"><div class="start-card-head"><p class="start-school">'+esc(p.school)+(fmt?' · '+esc(fmt):'')+'</p><h2>'+esc(p.title)+'</h2>'
     +(needsConfirmation(p)?'<span class="start-badge">Needs school confirmation</span>':'')+'</div>'
     +(badges.length?'<ul class="start-fit-badges" aria-label="Program features">'+badges.map(label=>'<li>'+esc(label)+'</li>').join('')+'</ul>':'')
@@ -126,6 +126,7 @@ function card(p){
     +'<div class="start-stat start-stat-accent"><span>Low-cost '+unit(p)+'</span><strong>'+(s?s.outside+' of '+s.total:'—')+'</strong></div></div>'
     +(s?'<div class="start-bar" role="img" aria-label="'+esc(s.outside+' of '+s.total+' '+unit(p)+' can come from low-cost courses')+'"><span style="width:'+pct+'%"></span></div>':'')
     +(s?'<p class="start-college-work"><strong>'+esc(s.university)+'</strong> '+unit(p)+' at the university in this plan</p>':''))
+    +(P.requirementsHTML?.(f,{compact:true})||'')
     +'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="'+esc(personalReady(p)?personalLink(p):creditsUrl(p))+'">'+(personalReady(p)?'Review my plan':'Build this plan')+'</a>'
     +(info(p).page?'<a class="start-text-link" href="'+esc(info(p).page)+'">See every course</a>':'')+'</div></article>';
 }
