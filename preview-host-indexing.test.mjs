@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import worker from './outputs/cloudflare/worker.mjs';
+import worker from './outputs/cloudflare/runtime/worker.mjs';
 
 const env={ASSETS:{async fetch(){return new Response('<!doctype html><title>DegreeSteps fixture</title>',{headers:{'Content-Type':'text/html'}});}}};
 test('the public domain uses one secure hostname and preserves the destination',async()=>{

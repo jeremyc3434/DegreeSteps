@@ -8,6 +8,25 @@
   const returnPath = Return?.resolve(location.search,returnStorage,location.origin) || '/account.html';
   let user = null, items = [], authStatus = {configured:false,providers:[]}, mode = params.get('mode') === 'recovery' ? 'recovery' : 'login', pending = null, conflict = false;
   let actionPending = false, migration = null, migrationNotice = '', accountUnavailable = false, verifiedIdentity = null;
+  let ownerEntry = {userId:null,checked:false,authorized:false}, ownerEntrySequence = 0;
+  async function checkOwnerEntry(identity) {
+    const id = identity?.id;
+    if (!id) {ownerEntrySequence++; ownerEntry = {userId:null,checked:false,authorized:false}; return;}
+    if (ownerEntry.userId !== id) {ownerEntrySequence++; ownerEntry = {userId:id,checked:false,authorized:false};}
+    if (ownerEntry.checked || typeof window.fetch !== 'function') return;
+    ownerEntry.checked = true;
+    const sequence = ++ownerEntrySequence;
+    try {
+      const response = await window.fetch('/api/owner/session',{credentials:'same-origin',cache:'no-store',redirect:'error',headers:{Accept:'application/json'}});
+      const data = response.ok ? await response.json() : null;
+      if (sequence !== ownerEntrySequence || user?.id !== id) return;
+      ownerEntry.authorized = response.ok && data?.authorized === true && data?.owner?.id === id;
+    } catch {if (sequence !== ownerEntrySequence || user?.id !== id) return; ownerEntry.authorized = false;}
+    const link = $('account-owner-console-link');
+    if (link) link.hidden = !ownerEntry.authorized;
+    const entry = $('account-owner-console-entry'); if (entry) entry.hidden = !ownerEntry.authorized;
+  }
+  function ownerConsoleLink() {return '<a id="account-owner-console-link" class="portal-secondary" href="/owner.html"'+(ownerEntry.userId===user?.id&&ownerEntry.authorized?'':' hidden')+'>Owner console →</a>';}
   function migrationItems() {return Array.isArray(migration?.items) ? migration.items : [];}
   async function loadMigration({keepNotice = false} = {}) {
     migration = null; if (!keepNotice) migrationNotice = '';
@@ -101,7 +120,7 @@
     const nextStep = '<div class="portal-actions account-next-step">'+(!personalized&&recent?'<button type="button" class="portal-primary" data-account-next-step data-open-plan="'+esc(recent.id)+'">Continue '+esc(recent.title||recent.degree||'my saved plan')+'</button>':'<a class="portal-primary" data-account-next-step href="'+(personalized?'portal.html':'portal.html?view=setup')+'">'+(personalized?'Continue my plan':'Personalize my recommendations')+'</a>')+'<a class="account-text-button" href="portal.html?view=preferences">My preferences</a></div>';
     const deleteData = pending?.kind === 'delete-data' ? '<form id="account-delete-data-form" class="account-inline-confirm"><p>This permanently removes your saved plans and private portal nickname. It does not delete your sign-in identity, public community posts, or the draft on this device.</p>' + field('confirmation','Type DELETE MY PORTAL DATA','','autocomplete="off" required') + '<p class="account-form-error" role="alert"></p><div class="portal-actions"><button class="portal-secondary account-danger" type="submit">Delete my saved portal data</button>' + button('cancel','Cancel',true) + '</div></form>' : '';
     const clearDevice = pending?.kind === 'clear-device' ? '<div class="account-inline-confirm"><p>This removes the current draft from this browser. Your saved account plans stay in your account. Download a backup first if you need one.</p><div class="portal-actions">' + button('backup','Download backup',true) + button('confirm-clear-device','Remove device draft',true) + button('cancel','Cancel',true) + '</div></div>' : '';
-    return '<div class="account-shell"><div class="account-home-heading"><div class="account-heading-row"><div><span class="portal-kicker">Your private account</span><h1>' + greeting + '</h1></div>' + button('signout','Sign out',true) + '</div><p class="account-lede">' + (personalized || recent ? 'Pick up where you left off.' : 'Tell us what matters to you to find degree paths that fit.') + '</p>' + nextStep + '</div><div class="account-layout"><div>' + migrationPanel() + '<section class="account-panel"><h2>My saved plans</h2><p>Your plans are private. Open one to keep going.</p>' + planList() + '</section>' + restoreReview() + '</div><aside><section class="account-panel"><h2>Save my plan</h2>' + uploadForm() + '</section><section class="account-panel" id="account-alerts" hidden></section><section class="account-panel"><h2>My profile</h2><form id="account-profile-form">' + field('alias','What should we call you?',savedName,'placeholder="'+esc(displayName || 'Your name')+'" minlength="2" maxlength="60" autocomplete="nickname" required') + '<p class="account-form-error" role="alert"></p><button type="submit" class="portal-secondary">Save name</button></form><p class="account-meta">'+(!savedName && displayName ? 'Using your sign-in profile name. You can choose a different name here.' : 'This is your private portal name.')+' Your public community name is managed separately.</p><p class="account-meta">Signing out leaves the draft on this device. On a shared device, remove it below after keeping any backup you need.</p><details class="account-settings"><summary>Privacy and saved data</summary><div class="portal-links"><button type="button" data-action="clear-device">Remove draft from this device</button><button type="button" class="account-danger" data-action="delete-data">Delete my saved portal data</button></div>' + clearDevice + deleteData + '</details></section></aside></div></div>';
+    return '<div class="account-shell"><div class="account-home-heading"><div class="account-heading-row"><div><span class="portal-kicker">Your private account</span><h1>' + greeting + '</h1></div>' + button('signout','Sign out',true) + '</div><p class="account-lede">' + (personalized || recent ? 'Pick up where you left off.' : 'Tell us what matters to you to find degree paths that fit.') + '</p>' + nextStep + '<div id="account-owner-console-entry" class="portal-actions account-owner-entry"'+(ownerEntry.userId===user?.id&&ownerEntry.authorized?'':' hidden')+'>' + ownerConsoleLink() + '</div></div><div class="account-layout"><div>' + migrationPanel() + '<section class="account-panel"><h2>My saved plans</h2><p>Your plans are private. Open one to keep going.</p>' + planList() + '</section>' + restoreReview() + '</div><aside><section class="account-panel"><h2>Save my plan</h2>' + uploadForm() + '</section><section class="account-panel" id="account-alerts" hidden></section><section class="account-panel"><h2>My profile</h2><form id="account-profile-form">' + field('alias','What should we call you?',savedName,'placeholder="'+esc(displayName || 'Your name')+'" minlength="2" maxlength="60" autocomplete="nickname" required') + '<p class="account-form-error" role="alert"></p><button type="submit" class="portal-secondary">Save name</button></form><p class="account-meta">'+(!savedName && displayName ? 'Using your sign-in profile name. You can choose a different name here.' : 'This is your private portal name.')+' Your public community name is managed separately.</p><p class="account-meta">Signing out leaves the draft on this device. On a shared device, remove it below after keeping any backup you need.</p><details class="account-settings"><summary>Privacy and saved data</summary><div class="portal-links"><button type="button" data-action="clear-device">Remove draft from this device</button><button type="button" class="account-danger" data-action="delete-data">Delete my saved portal data</button></div>' + clearDevice + deleteData + '</details></section></aside></div></div>';
   }
   function render(focus = false) {
     $('account-content').innerHTML = accountUnavailable ? recoveryBody() : mode === 'recovery' && authStatus.recovery ? authBody() : user ? dashboard() : authBody();
@@ -126,6 +145,7 @@
       items = Array.isArray(results[0].items) ? results[0].items : [];
     } else {items = []; migration = null; migrationNotice = '';}
     accountUnavailable = false; render();
+    void checkOwnerEntry(user);
   }
   function download(state,name) {
     if (!state) throw new Error('There is no device draft to download yet.');

@@ -3,6 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Script} from 'node:vm';
 import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import bootstrap from './worker/bootstrap.mjs';
 import {LocalD1} from './scripts/benchmark-scale.mjs';
 
@@ -30,7 +31,8 @@ function fixture(t){
   const DB=new LocalD1(),auth=[],ai=[],queues=[],assets=[],outside=[];
   t.after(()=>DB.close());
   for(const [uuid,role]of [[ownerUUID,'owner'],[memberUUID,'member']])DB.sqlite.prepare('INSERT INTO community_users(id,alias,role,created_at,updated_at) VALUES(?,?,?,1,1)').run('sb-'+uuid,'Synthetic '+role,role);
-  const env={DB,PORTAL_SUPABASE_URL:provider,PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_bootstrap_fixture',AI_CONNECTIONS_MASTER_KEY:master,AI_CONNECTIONS_ALLOW_MANAGED:'1',
+  DB.sqlite.prepare("INSERT INTO business_owner(singleton,user_id,source,created_at) VALUES(1,?,'subject-hash',1)").run('sb-'+ownerUUID);
+  const env={DB,PORTAL_SUPABASE_URL:provider,PORTAL_SUPABASE_PUBLISHABLE_KEY:'sb_publishable_bootstrap_fixture',OWNER_CONSOLE_SUBJECT_SHA256:createHash('sha256').update('sb-'+ownerUUID).digest('hex'),AI_CONNECTIONS_MASTER_KEY:master,AI_CONNECTIONS_ALLOW_MANAGED:'1',
     ASSETS:{async fetch(request){assets.push(request.url);throw Error('Bootstrap cannot expose normal assets');}},
     RESEARCH_QUEUE:{async send(value){queues.push(value);throw Error('Bootstrap cannot enqueue research');}},
     PORTAL_AUTH_FETCH:async(url,init={})=>{
@@ -101,7 +103,7 @@ test('the temporary entry point refuses production domains and non-HTTPS request
   assert.equal(f.DB.events.length,0);assert.equal(f.auth.length,0);
 });
 
-test('owner access uses verified Supabase cookies and stored role, never spoofed identity or email bootstrap',async t=>{
+test('owner access requires the exact trusted verified subject, never spoofed identity, email bootstrap or a generic community role',async t=>{
   const f=fixture(t);f.env.COMMUNITY_ADMIN_EMAIL=strangerUUID+'@example.invalid';f.env.PORTAL_USER={id:'sb-'+ownerUUID,email:'owner@example.invalid'};
   const anonymous=await f.call('/api/admin/ai-connection',{headers:{'oai-authenticated-user-id':'sb-'+ownerUUID,'oai-authenticated-user-email':f.env.COMMUNITY_ADMIN_EMAIL}});assert.equal(anonymous.status,401);privacy(anonymous);
   const member=await f.call('/api/admin/ai-connection',{identity:'member'});assert.equal(member.status,403);privacy(member);

@@ -9,7 +9,9 @@ export function inspectProduction(config,{migrationVerified=false}={}){
   const databases=Array.isArray(config.d1_databases)?config.d1_databases:[],db=databases.find(item=>item.binding==='DB');
   if(databases.filter(item=>item.binding==='DB').length!==1||!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(db?.database_id||''))issues.push('Create the account-owned D1 database and set its actual database_id on one DB binding.');
   if(db?.migrations_dir!=='drizzle')issues.push('Keep the DB binding on the reviewed drizzle migration directory.');
-  if(config.main!=='outputs/cloudflare/worker.mjs'||config.assets?.directory!=='./outputs/cloudflare/public')issues.push('Use the separate native Worker and public-only asset build outputs.');
+  if(config.main!=='outputs/cloudflare/runtime/worker.mjs'||config.assets?.directory!=='./outputs/cloudflare/public')issues.push('Use the separate native Worker and public-only asset build outputs.');
+  if(config.base_dir!=='outputs/cloudflare/runtime'||config.find_additional_modules!==true||!config.rules?.some(rule=>rule.type==='ESModule'&&rule.globs?.length===1&&rule.globs[0]==='owner-business.mjs'))issues.push('Keep the reviewed private business module outside the public asset directory and load it lazily.');
+  if(!/^[a-f0-9]{64}$/.test(config.vars?.OWNER_CONSOLE_SUBJECT_SHA256||''))issues.push('Bind the business console to the explicitly verified owner subject hash.');
   if(config.assets?.binding!=='ASSETS'||config.assets?.run_worker_first!==true||config.assets?.html_handling!=='none'||config.assets?.not_found_handling!=='none')issues.push('Keep API, authentication, private-page and exact-route asset handling under the Worker policy.');
   const producers=Array.isArray(config.queues?.producers)?config.queues.producers:[],consumers=Array.isArray(config.queues?.consumers)?config.queues.consumers:[];
   const producer=producers.find(item=>item.binding==='RESEARCH_QUEUE'),deadLetter=producers.find(item=>item.binding==='RESEARCH_DEAD_LETTER_QUEUE'),consumer=consumers.find(item=>item.queue===producer?.queue);
@@ -27,7 +29,7 @@ async function main(){
   // The checked-in JSONC uses whole-line comments only; do not strip URL substrings.
   const raw=await readFile(resolve(root,'wrangler.jsonc'),'utf8'),config=JSON.parse(raw.replace(/^\s*\/\/.*$/gm,''));
   const issues=inspectProduction(config,{migrationVerified:process.env.DEGREESTEPS_DATA_MIGRATION_VERIFIED==='1'});
-  for(const file of ['outputs/cloudflare/worker.mjs','outputs/cloudflare/public/index.html'])try{await stat(resolve(root,file));}catch{issues.push('Run npm run build to produce '+file+'.');}
+  for(const file of ['outputs/cloudflare/runtime/worker.mjs','outputs/cloudflare/runtime/owner-business.mjs','outputs/cloudflare/public/index.html'])try{await stat(resolve(root,file));}catch{issues.push('Run npm run build to produce '+file+'.');}
   if(issues.length){for(const issue of issues)console.error(issue);process.exitCode=1;return;}
   console.log(JSON.stringify({configuration:'ready-for-operator-deployment',capacityCertified:false,reminder:'Verify secrets, provider quotas, restores, staging load and DNS/auth cutover before production traffic.'}));
 }

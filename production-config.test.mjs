@@ -33,3 +33,8 @@ test('the DB binding cannot be duplicated or use an unrelated migration director
   const duplicate=provisioned();duplicate.d1_databases.push({...duplicate.d1_databases[0]});assert(inspectProduction(duplicate,{migrationVerified:true}).some(issue=>issue.includes('one DB binding')));
   const unrelated=provisioned();unrelated.d1_databases[0].migrations_dir='another-app';assert(inspectProduction(unrelated,{migrationVerified:true}).some(issue=>issue.includes('migration directory')));
 });
+
+// Auth configuration must fail closed before a business deployment.
+test('business console keeps explicit owner binding and private lazy module rules',()=>{
+  for(const change of [value=>{delete value.vars.OWNER_CONSOLE_SUBJECT_SHA256;},value=>{value.find_additional_modules=false;},value=>{value.rules=[];},value=>{value.base_dir='outputs/cloudflare/public';}]){const bad=provisioned();change(bad);assert(inspectProduction(bad,{migrationVerified:true}).some(issue=>/owner subject|business module/.test(issue)));}
+});

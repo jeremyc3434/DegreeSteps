@@ -41,17 +41,22 @@ const OperatorSnapshotApi=(()=>{
   function rowExpression(table){return'json_object('+table.columns.flatMap(column=>[literal(column.name),column.type==='integer'?'CAST('+identifier(column.name)+' AS TEXT)':identifier(column.name)]).join(',')+')';}
   function tableStats(table){
     const limit=table.name===AGGREGATE_TABLE?MAX_AGGREGATE_ROWS:MAX_ROWS;
-    const columns=table.columns.map(column=>identifier(column.name)),row=rowExpression(table);
-    const raw=columns.map(column=>'COALESCE(length(CAST('+column+' AS BLOB)),0)').join('+');
-    const invalid=table.columns.map(column=>'('+identifier(column.name)+' IS NOT NULL AND typeof('+identifier(column.name)+')<>'+literal(column.type)+')').join(' OR ');
-    const allowed='row_count<='+limit+' AND raw_bytes<='+MAX_RAW_TABLE_BYTES+' AND bad_types=0';
-    return'(WITH bounded AS NOT MATERIALIZED (SELECT '+columns.join(',')+' FROM '+identifier(table.name)+' LIMIT '+(limit+1)+'), raw AS (SELECT count(*) AS row_count,COALESCE(sum('+raw+'),0) AS raw_bytes,COALESCE(sum(CASE WHEN '+invalid+' THEN 1 ELSE 0 END),0) AS bad_types FROM bounded) SELECT json_object(\'row_count\',row_count,\'raw_bytes\',raw_bytes,\'bad_types\',bad_types,\'encoded_bytes\',CASE WHEN '+allowed+' THEN (SELECT COALESCE(sum(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END,\'max_row_bytes\',CASE WHEN '+allowed+' THEN (SELECT COALESCE(max(length(CAST('+row+' AS BLOB))),0) FROM bounded) ELSE NULL END) FROM raw)';
+    const columns=table.columns.map((column,i)=>'c'+i),projection=table.columns.map((column,i)=>identifier(column.name)+' '+columns[i]);
+    const row='json_array('+table.columns.map((column,i)=>column.type==='integer'?'CAST('+columns[i]+' AS TEXT)':columns[i]).join(',')+')',keyBytes=table.columns.reduce((sum,column)=>sum+JSON.stringify(column.name).length+1,0);
+    const raw=columns.map(column=>'ifnull(length(CAST('+column+' AS BLOB)),0)').join('+');
+    const validTypes=table.columns.map((column,i)=>'typeof('+columns[i]+')IN(\'null\','+literal(column.type)+')').join(' AND ');
+    const allowed='r<='+limit+' AND b<='+MAX_RAW_TABLE_BYTES+' AND t=0';
+    // Array values have the same escaping/null encoding as the exported object.
+    // Add each ASCII JSON key's exact quoted length plus ':' to recover the
+    // object byte count. This avoids repeating long keys in the stats query.
+    // Short aliases keep 57 tables under D1's unchanged 100 KB statement limit.
+    return'(WITH b AS NOT MATERIALIZED (SELECT '+projection.join(',')+' FROM '+identifier(table.name)+' LIMIT '+(limit+1)+'),r AS (SELECT count(*) r,ifnull(sum('+raw+'),0) b,ifnull(sum(CASE WHEN '+validTypes+' THEN 0 ELSE 1 END),0) t FROM b),e AS NOT MATERIALIZED (SELECT length(CAST('+row+' AS BLOB))+'+keyBytes+' n FROM b) SELECT json_array(r,b,t,CASE WHEN '+allowed+' THEN (SELECT ifnull(sum(n),0) FROM e) ELSE NULL END,CASE WHEN '+allowed+' THEN (SELECT ifnull(max(n),0) FROM e) ELSE NULL END) FROM r)';
   }
   // D1 imposes a smaller compound-SELECT limit than local SQLite. A fixed JSON
   // registry and CASE subqueries avoid UNION terms while keeping one read batch.
   const tableNames=literal(JSON.stringify(tables.map(table=>table.name)));
   const fields=['row_count','raw_bytes','bad_types','encoded_bytes','max_row_bytes'];
-  const statsSql='WITH snapshot_statistics AS MATERIALIZED (SELECT value AS name,CASE value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN '+tableStats(table)).join(' ')+' END AS metadata_json FROM json_each('+tableNames+')),snapshot_stats AS (SELECT name,'+fields.map(field=>'json_extract(metadata_json,'+literal('$.'+field)+') AS '+field).join(',')+' FROM snapshot_statistics) ';
+  const statsSql='WITH snapshot_statistics AS MATERIALIZED (SELECT value AS name,CASE value '+tables.map(table=>'WHEN '+literal(table.name)+' THEN '+tableStats(table)).join(' ')+' END AS metadata_json FROM json_each('+tableNames+')),snapshot_stats AS (SELECT name,'+fields.map((field,i)=>'json_extract(metadata_json,'+literal('$['+i+']')+') AS '+field).join(',')+' FROM snapshot_statistics) ';
   const aggregate=literal(AGGREGATE_TABLE),limitRows='CASE WHEN name='+aggregate+' THEN '+MAX_AGGREGATE_ROWS+' ELSE '+MAX_ROWS+' END',limitBytes='CASE WHEN name='+aggregate+' THEN '+MAX_AGGREGATE_BYTES+' ELSE '+MAX_TABLE_BYTES+' END';
   const valid='count(*)='+tables.length+' AND sum(CASE WHEN name='+aggregate+' THEN 0 ELSE row_count END)<='+MAX_TOTAL_ROWS+' AND sum(CASE WHEN name='+aggregate+' THEN row_count ELSE 0 END)<='+MAX_AGGREGATE_ROWS+' AND sum(CASE WHEN name='+aggregate+' THEN 0 ELSE COALESCE(encoded_bytes,'+(MAX_DATA_BYTES+1)+') END)<='+MAX_DATA_BYTES+' AND sum(CASE WHEN name='+aggregate+' THEN COALESCE(encoded_bytes,'+(MAX_AGGREGATE_BYTES+1)+') ELSE 0 END)<='+MAX_AGGREGATE_BYTES+' AND sum(CASE WHEN row_count>('+limitRows+') OR bad_types<>0 OR encoded_bytes IS NULL OR encoded_bytes>('+limitBytes+') OR max_row_bytes>'+MAX_ROW_BYTES+' THEN 1 ELSE 0 END)=0';
   const queries=[

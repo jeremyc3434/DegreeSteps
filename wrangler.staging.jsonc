@@ -2,12 +2,15 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   // Isolated owner-account test deployment. No production domain or data cutover.
   "name": "degreesteps-staging",
-  "main": "worker/staging.mjs",
+  "main": "outputs/cloudflare/runtime/staging.mjs",
   "compatibility_date": "2026-11-17",
   "account_id": "d215df9a813c0d7a292613373dfa9cb0",
   "workers_dev": true,
   "preview_urls": false,
   "build": {"command": "npm run build"},
+  "base_dir": "outputs/cloudflare/runtime",
+  "find_additional_modules": true,
+  "rules": [{"type": "ESModule", "globs": ["owner-business.mjs"], "fallthrough": true}],
   // Keep paid CPU allowances out of the free staging configuration.
   "observability": {"enabled": true, "head_sampling_rate": 0.1},
   "assets": {
@@ -39,5 +42,5 @@
     }]
   },
   // No unattended research dispatch until staging credentials/recovery are verified.
-  "vars": {"PORTAL_STORAGE_BACKEND": "supabase"}
+  "vars": {"PORTAL_STORAGE_BACKEND": "supabase", "OWNER_CONSOLE_SUBJECT_SHA256": "abfda0af4bb396bea06c688c105a2e40c968ab870448b34b461500b517481123"}
 }

@@ -1,5 +1,5 @@
 /** Staging-only entry point. Never use this wrapper for the public production domain. */
-import worker from '../outputs/cloudflare/worker.mjs';
+import worker from '../outputs/cloudflare/runtime/worker.mjs';
 
 function stagingResponse(response) {
   const headers=new Headers(response.headers);

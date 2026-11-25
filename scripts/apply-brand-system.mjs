@@ -4,13 +4,13 @@ import {resolve,relative} from 'node:path';
 import {pathToFileURL} from 'node:url';
 
 const dist=resolve(import.meta.dirname,'../dist');
-const workspacePages=new Set(['account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html','start.html','template-import.html']);
+const workspacePages=new Set(['owner.html','help.html','account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html','start.html','template-import.html']);
 const savePages=new Set(['plan.html','portal.html','courses.html','compare-plans.html']);
 const families=new Map([
   ...['portal.html','start.html','programs.html','credits-worth.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html','campuses.html'].map(name=>[name,'discovery']),
   ...['courses.html','import-courses.html','template-import.html'].map(name=>[name,'collection']),
   ['compare-plans.html','comparison'],['community.html','community'],
-  ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
+  ...['owner.html','help.html','account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
 ]);
 const managedStyles=new Set(['ds-tokens.css','ds-components.css','brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-redesign.css','plan-save.css','home-steps.css','plan-alerts.css','ds-overlays.css','provider-offers.css']);
 const managedScripts=new Set(['site-header.js','growth-metrics.js','plan-save.js','task-calendar.js','coach.js','leads.js','plan-alerts.js','provider-registry.js','provider-offers.js','provider-offer-view.js']);
@@ -45,6 +45,7 @@ export function pageExperience(name,source){
 export function applyExperience(source,name){
   const selected=pageExperience(name,source);
   const localFeedback=name==='student-test.html';
+  const privateConsole=name==='owner.html';
   if(!/<\/head>/i.test(source)||!/<body\b/i.test(source))throw Error('A complete HTML document is required: '+name);
   let next=source.replace(/<head\b[\s\S]*?<\/head>/i,head=>head.replace(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>\s*<\/script>/gi,(tag,src)=>managedScripts.has(src.replace(/^\//,'').split('?')[0])?'':tag).replace(/<link\b[^>]*>/gi,tag=>{
     if(!/\brel=["']stylesheet["']/i.test(tag))return tag;
@@ -53,7 +54,7 @@ export function applyExperience(source,name){
   }));
   // The voluntary feedback worksheet has no portal or analytics transport.
   // Applying shared visual tokens must not change that privacy boundary.
-  const scripts=localFeedback?[]:['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[]),...(coachPages.has(name)?['coach.js']:[]),...(leadsPages.has(name)?['leads.js']:[]),...(alertPages.has(name)?['plan-alerts.js']:[])];
+  const scripts=localFeedback||privateConsole?[]:['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[]),...(coachPages.has(name)?['coach.js']:[]),...(leadsPages.has(name)?['leads.js']:[]),...(alertPages.has(name)?['plan-alerts.js']:[])];
   // Controlled provider identities load before their synchronous course helpers.
   const providerConsumer=/<script\b[^>]*\bsrc=["']\/?(?:guide-engine|sheet-state|record-import-engine|course-library-engine|course-plan-view|course-attributes)\.js["'][^>]*>/i;
   if(providerConsumer.test(next))next=next.replace(providerConsumer,tag=>'<script src="/provider-registry.js" defer></script>'+tag);
@@ -68,9 +69,10 @@ export function applyExperience(source,name){
   // The shared header (site-header.js) must run before the workspace shell that renders it; elsewhere it only enhances.
   next=next.replace(/<script\b[^>]*\bsrc=["']\/?site-header\.js["'][^>]*>\s*<\/script>/gi,'');
   const shellTag=/<script\b[^>]*\bsrc=["']\/?app-shell\.js["'][^>]*>/i;
+  if(privateConsole)next=next.replace(/<script\b[^>]*\bsrc=["']\/?app-shell\.js["'][^>]*>\s*<\/script>/gi,'');
   // Reachable workspace tools share the same navigation, including pages that previously omitted it.
-  if(selected.workspace&&!['audit.html','guided.html'].includes(name)&&!shellTag.test(next))next=next.replace(/<\/head>/i,'<script src="/app-shell.js" defer></script></head>');
-  if(!localFeedback){if(shellTag.test(next))next=next.replace(shellTag,tag=>'<script src="/site-header.js" defer></script>'+tag);else scripts.unshift('site-header.js');}
+  if(selected.workspace&&!['owner.html','audit.html','guided.html'].includes(name)&&!shellTag.test(next))next=next.replace(/<\/head>/i,'<script src="/app-shell.js" defer></script></head>');
+  if(!localFeedback&&!privateConsole){if(shellTag.test(next))next=next.replace(shellTag,tag=>'<script src="/site-header.js" defer></script>'+tag);else scripts.unshift('site-header.js');}
   next=next.replace(/<\/head>/i,selected.styles.map(name=>'<link rel="stylesheet" href="/'+name+'">').join('')+scripts.map(name=>'<script src="/'+name+'" defer></script>').join('')+'</head>');
   next=next.replace(/<body\b([^>]*)>/i,(tag,attributes)=>{
     const match=attributes.match(/\bclass=(["'])(.*?)\1/i);

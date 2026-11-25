@@ -5,7 +5,7 @@ import {readFileSync} from 'node:fs';
 import {createTrustedDatabase} from './scripts/d1-snapshot.mjs';
 
 const origin='https://alerts.synthetic.invalid',uuid='22222222-2222-4222-8222-222222222222',student='sb-'+uuid,KEY='re_worker_test_key_not_real_0001';
-const workers=await Promise.all([['Sites','./outputs/site/dist/server/index.js'],['native','./outputs/cloudflare/worker.mjs']].map(async([kind,path])=>({kind,worker:(await import('data:text/javascript;base64,'+readFileSync(new URL(path,import.meta.url)).toString('base64'))).default})));
+const workers=await Promise.all([['Sites','./outputs/site/dist/server/index.js'],['native','./outputs/cloudflare/runtime/worker.mjs']].map(async([kind,path])=>({kind,worker:(await import('data:text/javascript;base64,'+readFileSync(new URL(path,import.meta.url)).toString('base64'))).default})));
 const index=JSON.parse(readFileSync(new URL('./dist/data/plan-library-index.json',import.meta.url),'utf8')).plans;
 const registry=JSON.parse(readFileSync(new URL('./dist/data/curriculum-registry.json',import.meta.url),'utf8')).models;
 const planId='liberty-business-residential',entry=registry.find(item=>item.id===index[planId].modelId);
