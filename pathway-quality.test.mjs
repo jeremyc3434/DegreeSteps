@@ -41,6 +41,19 @@ test('school scope and exact receiving applicability are not inferred from a pro
  assert(assessPathwayQuality(input).findings.some(finding=>finding.code==='mapping-scope'));
  option.mappingScope='';option.sourceIds=['missing'];input.plan.rows[0].option=copy(option);assert(assessPathwayQuality(input).findings.some(finding=>finding.code==='mapping-evidence'));
 });
+
+test('pending provider review is a research condition, not an assertion that the school forbids enrollment',()=>{
+ const input=fixture(),option=input.model.requirements[0].options[0];
+ option.eligibilityReview={providerReviewPending:true,fullyApproved:false,sourceIds:['map']};input.plan.rows[0].option=copy(option);
+ const result=assessPathwayQuality(input),condition=result.findings.find(item=>item.code==='provider-eligibility');
+ assert.equal(result.publication.ready,false);assert.equal(condition.category,'conditional-policy');assert.equal(condition.blocking,true);
+ assert.match(condition.message,/provider review remains provisional/);assert(!/forbid|prohibit|rejected/i.test(condition.message));
+ option.mappingScope='Same-school receiving-course award researched in another degree; exact degree and format require confirmation.';input.plan.rows[0].option=copy(option);
+ const scope=assessPathwayQuality(input);assert.equal(scope.status,'needs-research');assert(scope.findings.some(item=>item.code==='provider-eligibility'));assert(scope.findings.some(item=>item.code==='mapping-scope'),'A pending provider cannot hide an independently missing course scope.');
+ delete option.mappingScope;
+ delete option.eligibilityReview.providerReviewPending;option.eligibilityReview.fullyApproved=true;option.evidence='conditional';input.plan.rows[0].option=copy(option);
+ assert.equal(assessPathwayQuality(input).publication.ready,false,'Approved provider status cannot establish its course award.');
+});
 test('candidate conditions are scoped to actual baseline choices and findings retain every affected slot',()=>{
  const input=fixture(),optional={...copy(input.model.requirements[0].options[0]),id:'conditional-unused',evidence:'conditional'};input.model.requirements[0].options.push(optional);
  assert.equal(assessPathwayQuality(input).status,'research-ready');assert(classifyModelFindings(input.model,{asOf:input.asOf}).some(finding=>finding.optionIds.includes(optional.id)));

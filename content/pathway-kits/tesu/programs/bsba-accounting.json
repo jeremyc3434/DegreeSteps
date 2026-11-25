@@ -286,7 +286,25 @@
       "Published tuition is a planning basis; books, provider subscriptions and applicable fees are separate."
     ],
     "policyReview": [],
-    "evidenceCheckedOn": "2026-11-18"
+    "evidenceCheckedOn": "2026-11-18",
+    "providerEligibilityReview": {
+      "id": "tesu-provider-policy-review-2026-11-25",
+      "checkedOn": "2026-11-25",
+      "sourceIds": [
+        "tesu-provider-directory-2026-11-25",
+        "tesu-provider-review-policy-2026-11-25"
+      ],
+      "approvedProviders": [
+        "Study.com"
+      ],
+      "provisionalProviders": [
+        "Sophia",
+        "StraighterLine",
+        "Saylor",
+        "CLEP"
+      ],
+      "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
+    }
   },
   "modelSourceIds": [
     "tesu-accounting-current-2026-11-18",
@@ -402,13 +420,18 @@
     "sophia-soph-0005-ace-tesu-equivalency-2026-11-20",
     "sophia-soph-0002-ace-tesu-equivalency-2026-11-20",
     "sophia-soph-0083-ace-tesu-equivalency-2026-11-20",
-    "sophia-soph-0014-ace-tesu-equivalency-2026-11-20"
+    "sophia-soph-0014-ace-tesu-equivalency-2026-11-20",
+    "tesu-provider-directory-2026-11-25",
+    "tesu-provider-review-policy-2026-11-25",
+    "study-tesu-gened-collection-2026-11-25",
+    "tesu-study-english104-ace-current-2026-11-25"
   ],
   "requirements": [
     {"id":"enc1010","code":"ENC-1010","title":"Writing for Success","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
       {"row":"sophia-soph-0015-to-enc-1010-tesu-2026-2027","optionId":"sophia-enc1010-3"},
       "clep-clep-0040-to-enc-1010@requirement-id",
-      "clep-clep-0041-to-enc-1010"
+      "clep-clep-0041-to-enc-1010",
+      "study-com-sdcm-0057-to-enc-1010-current-provider-candidate"
     ]},
     {"id":"enc1020","code":"ENC-1020","title":"Writing for Success II","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","minimumGrade":"C","minimumGradeSourceIds":["tesu-accounting-transfer-2026-11-18","tesu-accounting-grades-2026-11-18","tesu-accounting-business-policy-2026-11-18"],"gradePolicyNote":"C or better in composition, Professional Business Requirements and the Accounting area of study; other general education and electives retain their applicable grade rules.","sourceIds":["tesu-accounting-current-2026-11-18"],"selectionRequired":false,"optionRows":[
       {"row":"sophia-soph-0030-to-enc-1020-tesu-2026-2027","optionId":"sophia-enc1020-2"},

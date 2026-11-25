@@ -1052,8 +1052,8 @@
     else if (name === 'defer-credits') {state.journey.creditsDeferred = true; state.journey.planReviewed = false; state.journey.schoolContacted = false;}
     else if (name === 'review-plan') {state.journey.view = 'home'; page = 'review-plan';}
     else if (name === 'school-review') {state.journey.view = 'home'; page = 'school-review';}
-    else if (name === 'finish-plan-review') {refreshDraft(); state.journey.planReviewed = true; state.journey.reviewedSignature = Journey.draftSignature(state,draft); page = 'home';}
-    else if (name === 'school-contacted') {refreshDraft(); state.journey.schoolContacted = true; state.journey.schoolContactedSignature = Journey.draftSignature(state,draft); page = 'home';}
+    else if (name === 'finish-plan-review') {refreshDraft(); state.journey.planReviewed = true; state.journey.reviewedSignature = Journey.compactReviewSignature ? Journey.compactReviewSignature(Journey.draftSignature(state,draft)) : Journey.draftSignature(state,draft); page = 'home';}
+    else if (name === 'school-contacted') {refreshDraft(); state.journey.schoolContacted = true; state.journey.schoolContactedSignature = Journey.compactReviewSignature ? Journey.compactReviewSignature(Journey.draftSignature(state,draft)) : Journey.draftSignature(state,draft); page = 'home';}
     if(name==='back'){if(state.journey.step==='routes'){await prepareRecommendations();return;}else cancelRecommendations();}
     render();
   }

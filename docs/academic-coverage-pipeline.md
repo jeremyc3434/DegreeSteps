@@ -12,6 +12,14 @@ This release creates a shared research workflow over the existing curriculum mod
 
 See [the quality contract](pathway-quality-contract.md), [school batch capture](school-research-batches.md) and [monthly review](pathway-review-workflow.md).
 
+## Planning-price coverage
+
+The quality report keeps legacy exact-total checks separate from the source-bound planning ranges used by the student worksheet. `estimates.planning` is calculated for the same exact model, catalog, format and selected baseline through `plan-estimate-engine.js`. The coverage workbench shows the known-charge range, price sources, omissions and study assumptions. A partial provider range stays partial; a planning range is never a complete price quote or proof of academic readiness.
+
+The academic assessment date uses the latest genuinely recorded source review, without changing individual course or catalog review dates. Fetch timestamps do not refresh evidence, and future review dates fail validation. Missing course scope remains a separate finding even when provider review is pending.
+
+Academic evidence dates and pricing review dates remain independent. A price-only review does not advance academic source dates or change the publication index. Current selected price sources are required for the reported range. Calendar duration is shown only as an assumption-based range when the estimator establishes a term duration; a campus term count does not imply a promised finish date. These build-time reports contain no private learning records.
+
 ## Runtime boundaries
 
 - The academic registry is public reference data. Account records, uploads, private learning records and reviewer notes are not compiled into it.

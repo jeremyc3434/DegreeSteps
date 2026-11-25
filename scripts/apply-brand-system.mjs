@@ -42,13 +42,16 @@ export function pageExperience(name,source){
 
 export function applyExperience(source,name){
   const selected=pageExperience(name,source);
+  const localFeedback=name==='student-test.html';
   if(!/<\/head>/i.test(source)||!/<body\b/i.test(source))throw Error('A complete HTML document is required: '+name);
   let next=source.replace(/<head\b[\s\S]*?<\/head>/i,head=>head.replace(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>\s*<\/script>/gi,(tag,src)=>managedScripts.has(src.replace(/^\//,'').split('?')[0])?'':tag).replace(/<link\b[^>]*>/gi,tag=>{
     if(!/\brel=["']stylesheet["']/i.test(tag))return tag;
     const href=tag.match(/\bhref=["']([^"']+)["']/i)?.[1];
     return href&&managedStyles.has(href.replace(/^\//,'').split('?')[0])?'':tag;
   }));
-  const scripts=['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[]),...(coachPages.has(name)?['coach.js']:[]),...(leadsPages.has(name)?['leads.js']:[]),...(alertPages.has(name)?['plan-alerts.js']:[])];
+  // The voluntary feedback worksheet has no portal or analytics transport.
+  // Applying shared visual tokens must not change that privacy boundary.
+  const scripts=localFeedback?[]:['growth-metrics.js',...(savePages.has(name)?['plan-save.js']:[]),...(coachPages.has(name)?['coach.js']:[]),...(leadsPages.has(name)?['leads.js']:[]),...(alertPages.has(name)?['plan-alerts.js']:[])];
   // Catalog credit-accounting checks share the planner's source-bound policy validator.
   if(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["']/i.test(next)&&!/<script\b[^>]*\bsrc=["']\/?planner\.js["']/i.test(next))next=next.replace(/<script\b[^>]*\bsrc=["']\/?program-catalog\.js["'][^>]*>/i,tag=>'<script src="/planner.js" defer></script>'+tag);
   if(/<script\b[^>]*\bsrc=["']\/?planner\.js["']/i.test(next)){
@@ -61,7 +64,7 @@ export function applyExperience(source,name){
   const shellTag=/<script\b[^>]*\bsrc=["']\/?app-shell\.js["'][^>]*>/i;
   // Reachable workspace tools share the same navigation, including pages that previously omitted it.
   if(selected.workspace&&!['audit.html','guided.html'].includes(name)&&!shellTag.test(next))next=next.replace(/<\/head>/i,'<script src="/app-shell.js" defer></script></head>');
-  if(shellTag.test(next))next=next.replace(shellTag,tag=>'<script src="/site-header.js" defer></script>'+tag);else scripts.unshift('site-header.js');
+  if(!localFeedback){if(shellTag.test(next))next=next.replace(shellTag,tag=>'<script src="/site-header.js" defer></script>'+tag);else scripts.unshift('site-header.js');}
   next=next.replace(/<\/head>/i,selected.styles.map(name=>'<link rel="stylesheet" href="/'+name+'">').join('')+scripts.map(name=>'<script src="/'+name+'" defer></script>').join('')+'</head>');
   next=next.replace(/<body\b([^>]*)>/i,(tag,attributes)=>{
     const match=attributes.match(/\bclass=(["'])(.*?)\1/i);

@@ -317,11 +317,18 @@ export function validateAcademicRegistryArtifacts({index,shards,registryShards=n
  return index;
 }
 
-export async function readAcademicInputs(base=root){
+export async function readAcademicInputs(base=root,{reviewCutoff=new Date().toISOString().slice(0,10)}={}){
  const registry=JSON.parse(await readFile(resolve(base,'dist/data/curriculum-registry.json'),'utf8'));
  const models=[];
  for(const path of unique(registry.models.map(entry=>entry.path))){assert(typeof path==='string'&&!path.split('/').includes('..'),'Unsafe curriculum model path.');const pack=JSON.parse(await readFile(resolve(base,'dist',path),'utf8'));models.push(...(pack.models||[pack]));}
- const selected=new Set(registry.models.map(entry=>entry.id));return {models:models.filter(model=>selected.has(model.id)),entries:registry.models,asOf:registry.checkedOn};
+ const selected=new Set(registry.models.map(entry=>entry.id)),included=models.filter(model=>selected.has(model.id));
+ // A scoped source review can be newer than its curriculum package. Evaluate
+ // coverage at the latest recorded review without changing any course, catalog
+ // or individual evidence date, or treating a fetch timestamp as a review.
+ const reviewDates=[registry.checkedOn,...included.flatMap(model=>list(model.sources).flatMap(source=>[source.checked,source.checkedOn,source.checkedAt]))].filter(value=>typeof value==='string'&&/^20\d{2}-\d{2}-\d{2}$/.test(value)&&Number.isFinite(Date.parse(value+'T00:00:00Z'))&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value);
+ assertDate(reviewCutoff);
+ assert(!reviewDates.some(value=>value>reviewCutoff),'Academic evidence cannot have a future review date; correct the reviewed source metadata.');
+ return {models:included,entries:registry.models,asOf:reviewDates.sort().at(-1)||registry.checkedOn};
 }
 export async function runAcademicRegistry({base=root,check=false,asOf}={}){
  const input=await readAcademicInputs(base),registry=buildAcademicRegistry({...input,asOf:asOf||input.asOf}),{index,shards,registryShards}=buildAcademicRegistryArtifacts(registry),output=JSON.stringify(index)+'\n',path=resolve(base,academicRegistryPath),evidenceFolder=resolve(base,'dist/data/academic-evidence'),shardFolder=resolve(base,'dist/data/academic-registry-shards');

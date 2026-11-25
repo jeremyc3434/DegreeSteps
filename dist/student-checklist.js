@@ -158,8 +158,8 @@
     const legacyDone=new Set();
     if (Journey?.draftSignature && (journey.planReviewed===true&&!own(items,'review-plan') || journey.schoolContacted===true&&!own(items,'request-school-feedback'))) {
       try {
-        const current=JSON.stringify(academic(JSON.parse(Journey.draftSignature(state,draft))));
-        for (const [id,flag,key] of [['review-plan','planReviewed','reviewedSignature'],['request-school-feedback','schoolContacted','schoolContactedSignature']]) if (journey[flag]===true && typeof journey[key]==='string' && JSON.stringify(academic(JSON.parse(journey[key])))===current) legacyDone.add(id);
+        const full=Journey.draftSignature(state,draft),current=JSON.stringify(academic(JSON.parse(full)));
+        for (const [id,flag,key] of [['review-plan','planReviewed','reviewedSignature'],['request-school-feedback','schoolContacted','schoolContactedSignature']]) if (journey[flag]===true && typeof journey[key]==='string' && (Journey.reviewSignatureMatches?Journey.reviewSignatureMatches(journey[key],full,{academicOnly:true}):JSON.stringify(academic(JSON.parse(journey[key])))===current)) legacyDone.add(id);
       } catch { /* Old or malformed review metadata cannot complete a step. */ }
     }
     function add(id,title,detail,group,href,actionLabel,automatic=false,defaultStatus='todo') {
@@ -258,6 +258,9 @@
     }
     const next=copy(state);
     next.checklist={version:1,plans:{...copy(store.plans),[built.scope]:plan}};
+    if(Journey?.compactReviewSignature&&plain(next.journey))for(const key of ['reviewedSignature','schoolContactedSignature'])if(typeof next.journey[key]==='string'){
+      try{next.journey[key]=Journey.compactReviewSignature(next.journey[key]);}catch{/* Unrecognized legacy metadata stays unchanged. */}
+    }
     if (bytes(next)>MAX_BYTES) invalid('This private workspace is too large to save. Export a backup and remove unused records or tasks before adding more.');
     storeFor(next);
     return next;

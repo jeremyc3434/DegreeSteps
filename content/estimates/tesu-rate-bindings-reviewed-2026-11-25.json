@@ -1,0 +1,63 @@
+{
+  "kind": "tesu-estimate-rate-binding-review",
+  "version": 1,
+  "checkedOn": "2026-11-25",
+  "rateEntryId": "tesu-standard-out-of-state-2026",
+  "modelIds": [
+    "curriculum-tesu-bsba-accounting",
+    "curriculum-tesu-ba-english",
+    "curriculum-tesu-bsba-finance",
+    "curriculum-tesu-ba-liberal-studies",
+    "curriculum-tesu-ba-psychology",
+    "tesu-general-management"
+  ],
+  "population": "Standard out-of-state undergraduate tuition · non-military",
+  "degreeUnits": 120,
+  "creditSystem": "semester",
+  "institutionMinimumUnits": 15,
+  "sourceIds": [
+    "tesu-tuition-2026-11-25",
+    "tesu-fees-2026-11-25"
+  ],
+  "facts": {
+    "effectiveFrom": "2026-08",
+    "standardOutOfStatePerCredit": 584,
+    "standardOutOfStateFlatRatePerTerm": 4652,
+    "flatRateMinimumCredits": 9,
+    "flatRateMaximumCredits": 18,
+    "applicationFee": 50,
+    "graduationAuditFee": 98
+  },
+  "academicBoundary": "This independently dated rate review does not approve provider eligibility, receiving equivalencies, prior-credit awards or the degree models. The selected remaining university courses, not the academic minimum, determine tuition.",
+  "alternativeScenarios": "NJ/Pennsylvania tuition, military or corporate rates, returning/alumni fee waivers, Edison Accelerate, TECEP and PLA are not selected.",
+  "sources": [
+    {
+      "id": "tesu-tuition-2026-11-25",
+      "title": "TESU undergraduate tuition effective August 2026: standard out-of-state rates",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "checkedOn": "2026-11-25",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/estimates/snapshots/tesu-tuition-2026-11-25.txt",
+        "sha256": "f8215234bccdb62d93cf65c75d0c023c57cdeae4764bdfbf96662f6b852a9b1d",
+        "fetchedAt": "2026-11-25T14:55:43.127055+00:00",
+        "rawHtmlSha256": "9ced21150ea4e04886995de92af3faf3ec03279dbc890c52373e57f393239d6e",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "tesu-fees-2026-11-25",
+      "title": "TESU published application and graduation audit fees effective August 2026",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/university-fees/index.php",
+      "checkedOn": "2026-11-25",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/estimates/snapshots/tesu-fees-2026-11-25.txt",
+        "sha256": "3517615a6d418f56de86cb3ba694f5decea5a1104900e8672ae91b45e2748e97",
+        "fetchedAt": "2026-11-25T14:58:48.842452+00:00",
+        "rawHtmlSha256": "c096ec352887aedfc2457f0e9af1c6906769f5766877218c4a44ae68a19ba237",
+        "httpStatus": 200
+      }
+    }
+  ]
+}

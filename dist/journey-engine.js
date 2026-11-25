@@ -518,6 +518,39 @@
       validation:draft?.plan?.validation || null,
       costs:draft?.plan?.costs || null, timing:draft?.plan?.timing || null}));
   }
+  // These receipts detect changes to a student's review. They authenticate
+  // neither a student nor a university credit award. Keep the legacy JSON
+  // signature readable without storing its large course/source payload twice.
+  const reviewEstimateFields=/^(?:costs?|pricing|price|tuition|fees?.*|currency|rate|timing|duration|weeks?|months?|providerMonths|providerWeeks|universityRate.*|sophiaMonths|studyMonths|sophiaWeeks|studyWeeks|clepWeeks|termWeeks|termCredits|concurrency|externalConcurrency|universityTermWeeks|universityCreditsPerTerm|externalWeeks|priority|optimization|savings.*|budget|weeklyHours|deadline|checklist|sheet|view|search|filter|privateNote|studentNote)$/i;
+  function reviewAcademic(value,depth=0){
+    if(depth>20)return null;
+    if(Array.isArray(value))return value.slice(0,500).map(item=>reviewAcademic(item,depth+1));
+    if(value&&typeof value==='object')return Object.fromEntries(Object.keys(value).sort().filter(name=>!reviewEstimateFields.test(name)&&value[name]!==undefined).map(name=>[name,reviewAcademic(value[name],depth+1)]));
+    return value;
+  }
+  function reviewDigest(value){
+    const words=[2166136261,2246822507,3266489909,668265263],primes=[16777619,2246822507,3266489909,668265263];
+    for(let i=0;i<value.length;i++)for(let j=0;j<words.length;j++)words[j]=Math.imul(words[j]^(value.charCodeAt(i)+j+i%251),primes[j]);
+    return 'review-v2:'+words.map(word=>(word>>>0).toString(16).padStart(8,'0')).join('');
+  }
+  function reviewReceiptValue(signature){
+    if(typeof signature!=='string'||signature.length>4000000)return null;
+    try{
+      const value=JSON.parse(signature);
+      if(value?.kind==='degree-review-receipt'&&value.version===2&&Object.keys(value).every(name=>['kind','version','full','academic'].includes(name))&&typeof value.full==='string'&&typeof value.academic==='string'&&/^review-v2:[a-f0-9]{32}$/.test(value.full)&&/^review-v2:[a-f0-9]{32}$/.test(value.academic))return value;
+      if(value?.version!==1||!Array.isArray(value.rows)||value.selectedPathwayId!==undefined&&typeof value.selectedPathwayId!=='string')return null;
+      return {kind:'degree-review-receipt',version:2,full:reviewDigest(signature),academic:reviewDigest(JSON.stringify(reviewAcademic(value)))};
+    }catch{return null;}
+  }
+  function compactReviewSignature(signature){
+    const receipt=reviewReceiptValue(signature);
+    if(!receipt)throw Error('The previous review signature could not be read.');
+    return JSON.stringify(receipt);
+  }
+  function reviewSignatureMatches(saved,current,{academicOnly=false}={}){
+    const left=reviewReceiptValue(saved),right=reviewReceiptValue(current);
+    return Boolean(left&&right&&left[academicOnly?'academic':'full']===right[academicOnly?'academic':'full']);
+  }
   function tasks(state, draft) {
     const j = metadata(state), a = j.answers, p = object(state.profile);
     const target = Boolean(!state.sheet?.isExample && (text(state.selectedPathwayId) || text(p.pathwayId) || text(p.school) && text(p.degree)));
@@ -526,8 +559,8 @@
     const deferred = j.creditsDeferred === true;
     const credits = list(state.learning).some(record=>record.status==='earned') || a.prior === 'none' || j.completed && p.hasPrior === 'none' || deferred;
     const signature = draftSignature(state, draft);
-    const reviewed = j.planReviewed === true && j.reviewedSignature === signature;
-    const contacted = j.schoolContacted === true && j.schoolContactedSignature === signature;
+    const reviewed = j.planReviewed === true && reviewSignatureMatches(j.reviewedSignature,signature);
+    const contacted = j.schoolContacted === true && reviewSignatureMatches(j.schoolContactedSignature,signature);
     const task = (id, title, complete, detail, provisional = false) => ({id, title, complete:Boolean(complete), status:provisional ? 'provisional' : complete ? 'complete' : 'pending', provisional, detail, description:detail});
     return [
       task('choices', 'Choose your degree goal', choices, choices ? 'Your school, degree and purpose are saved.' : 'Choose a route or keep your exact school and degree target.'),
@@ -536,5 +569,5 @@
       task('school', 'Confirm with your school', contacted, contacted ? 'You marked this draft sent to your school. Individual awards still require its official evaluation.' : 'Request the school’s official evaluation and written course approvals. Counts and community reports do not confirm your individual awards.')
     ];
   }
-  return Object.freeze({initialize, questions, applyAnswer, setPriorCredits, selectRoute, recommend, prepare, planningInput, buildDraft, applyAssessmentPreference, draftSignature, tasks});
+  return Object.freeze({initialize, questions, applyAnswer, setPriorCredits, selectRoute, recommend, prepare, planningInput, buildDraft, applyAssessmentPreference, draftSignature, compactReviewSignature, reviewSignatureMatches, tasks});
 }));

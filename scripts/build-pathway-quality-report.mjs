@@ -6,6 +6,7 @@ import {createRequire} from 'node:module';
 import {createHash} from 'node:crypto';
 import {readAcademicInputs} from './build-academic-registry.mjs';
 import {assessPathwayQuality} from './pathway-quality.mjs';
+import {summarizePlanningEstimate} from './planning-estimate-summary.mjs';
 import {requirementsFingerprint} from './review-pathways.mjs';
 import {findResearchReference,checkResearchReference} from '../server/research-references.mjs';
 const require=createRequire(import.meta.url),Planner=require('../dist/planner.js'),Catalog=require('../dist/program-catalog.js');
@@ -17,7 +18,7 @@ function templateSummary(model,entry,plan){
  const sum=predicate=>list(plan.rows).filter(predicate).reduce((total,row)=>total+row.credits,0);
  return {totalCredits:model.totalCredits,requirementCount:list(model.requirements).length,sourceCount:list(model.sources).length,transferCredits:sum(row=>row.option&&row.option.provider!=='University'),universityCredits:sum(row=>row.option?.provider==='University'),upperCredits:sum(row=>row.option?.upper===true),institutionMinCredits:model.institutionMinCredits,externalMaxCredits:model.externalMaxCredits,checkedOn:entry.checkedOn||model.evidenceCheckedOn||null};
 }
-export function compilePathwayArtifacts({models,entries,catalog,registry,references,asOf,inputHashes={},generate=Planner.generate}){
+export function compilePathwayArtifacts({models,entries,catalog,registry,references,asOf,inputHashes={},generate=Planner.generate,planningRates,planningAsOf=asOf}){
  const entryMap=new Map(entries.map(entry=>[entry.id,entry])),programs=[],baselines={};
  for(const original of [...models].sort((a,b)=>a.id.localeCompare(b.id,'en'))){
   const entry=entryMap.get(original.id)||{},originalRoute=list(catalog.pathways).find(route=>route.modelId===original.id)||list(catalog.pathways).find(route=>list(entry.routeIds).includes(route.id));
@@ -27,6 +28,7 @@ export function compilePathwayArtifacts({models,entries,catalog,registry,referen
   let plan,error=null;
   try{plan=generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000});}catch{error='The baseline could not be compiled.';plan={rows:[],validation:{academicCountsValid:false,policyChecksComplete:false}};}
   const quality=assessPathwayQuality({model,plan,route,asOf});
+  if(planningRates)quality.estimates.planning=summarizePlanningEstimate({model,plan,rates:planningRates,asOf:planningAsOf});
   programs.push({...quality,school:model.school,title:model.title,format:model.format,readyTemplate:entry.readyTemplate===true,...(error?{compileError:error}:{})});
   // Preserve the existing degree-link compatibility contract. The independent
   // research-quality report is deliberately not a silent public gate change.
@@ -44,6 +46,7 @@ export function compilePathwayArtifacts({models,entries,catalog,registry,referen
  const counts=(values,select)=>Object.fromEntries(values.map(value=>[value,programs.filter(program=>select(program)===value).length]));
  const report={schemaVersion:1,registryRevision:registry.revision,asOf,scope:'Baseline research coverage. No student credit is awarded by this report.',summary:{models:programs.length,availableTemplates:programs.filter(program=>program.readyTemplate).length,publicationReady:programs.filter(program=>program.publication.ready).length,research:counts(['research-ready','conditional','needs-research','unavailable'],program=>program.status),execution:{personalTaskPrograms:programs.filter(program=>program.execution.personalTasks.length).length},estimates:{cost:counts(['complete-estimate','partial-estimate','not-estimated'],program=>program.estimates.cost.status),timing:counts(['source-supported-scenario','assumption-based-scenario','not-estimated'],program=>program.estimates.timing.status)}},programs};
  const baselineIndex={schemaVersion:1,registryRevision:registry.revision,asOf,plannerHash:inputHashes['/planner.js']||null,inputs:inputHashes,privateRecordsIncluded:false,baselines};
+ if(planningRates)report.summary.estimates.planning={asOf:planningAsOf,availableRanges:programs.filter(program=>program.estimates.planning.available).length,pricedProviderRanges:programs.filter(program=>program.estimates.planning.status==='planning-range').length,partialProviderRanges:programs.filter(program=>program.estimates.planning.status==='partial-range').length,assumptionBasedTimingRanges:programs.filter(program=>program.estimates.planning.timing?.status==='assumption-based-range').length,notEstimated:programs.filter(program=>!program.estimates.planning.available).length};
  baselineIndex.revision='baselines-v1:'+createHash('sha256').update(JSON.stringify(baselineIndex)).digest('hex');
  const publicationIndex={schemaVersion:1,registryRevision:registry.revision,asOf,privateRecordsIncluded:false,plans:programs.filter(program=>program.publication.ready).map(program=>({modelId:program.modelId,publicationReady:true,level:Catalog.publicationLevel(models.find(model=>model.id===program.modelId)?.level||list(catalog.pathways).find(route=>route.modelId===program.modelId)?.level),modelFingerprint:Catalog.publicationModelFingerprint(models.find(model=>model.id===program.modelId),list(catalog.pathways).find(route=>route.modelId===program.modelId)?.level),routeIds:[...new Set(Object.values(baselines).filter(baseline=>baseline.modelId===program.modelId&&baseline.researchStatus==='research-ready').map(baseline=>baseline.pathwayId))]})).filter(plan=>plan.routeIds.length)};
  return {report,baselineIndex,publicationIndex};
@@ -54,7 +57,11 @@ export async function runPathwayArtifacts({base=root,check=false}={}){
  const catalog=Catalog.attachRegistry(Catalog.merge(await read('dist/data/pathways.json'),await read('dist/data/program-catalog.json')),curricula);
  const paths=[...new Set(['planner.js','course-assessment.js','data/academic-registry.json','data/pathways.json','data/program-catalog.json','data/curriculum-registry.json','data/research-references.json',...entries.map(entry=>entry.path)])].sort();
  const inputHashes=Object.fromEntries(await Promise.all(paths.map(async path=>['/'+path,createHash('sha256').update(await readFile(resolve(base,'dist',path))).digest('hex')])));
- const {report,baselineIndex,publicationIndex}=compilePathwayArtifacts({models,entries,catalog,registry,references:await read('dist/data/research-references.json'),asOf,inputHashes});
+ const planningRates=await read('dist/data/plan-estimate-rates.json');
+ // Prices and curricula have separate review cycles. A price-only review must
+ // neither advance academic evidence dates nor look future-dated against them.
+ const planningAsOf=[asOf,planningRates.checkedOn].sort().at(-1);
+ const {report,baselineIndex,publicationIndex}=compilePathwayArtifacts({models,entries,catalog,registry,references:await read('dist/data/research-references.json'),asOf,inputHashes,planningRates,planningAsOf});
  publicationIndex.curriculumFingerprint=Catalog.publicationFingerprint(curricula);
  for(const [path,payload] of [['dist/data/pathway-quality-report.json',report],['dist/data/baseline-index.json',baselineIndex],['dist/data/publication-index.json',publicationIndex]]){
   const serialized=JSON.stringify(payload)+'\n';

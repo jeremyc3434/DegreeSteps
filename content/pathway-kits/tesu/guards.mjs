@@ -3,6 +3,7 @@
  * the reviewed TESU policy supplements those importers inherited (add-tesu-official-mappings.mjs, add-tesu-prerequisites.mjs,
  * complete-tesu-named-choices.mjs). Each check receives the compiled curriculum document and throws on a violation. */
 import assert from 'node:assert/strict';
+import {providerReview} from '../../../scripts/tesu-provider-review.mjs';
 
 const list=v=>Array.isArray(v)?v:[];
 const sum=rows=>rows.reduce((n,r)=>n+r.credits,0);
@@ -117,16 +118,38 @@ function businessCourseCurrency(doc){
   }
 }
 /**
- * TESU's Approved Provider Directory (captured 2026-11-20) lists SOPHIA Learning, StraighterLine and CLEP as Provisionally
+ * TESU's Approved Provider Directory (captured 2026-11-25) lists SOPHIA Learning, StraighterLine, Saylor and CLEP as Provisionally
  * Approved – Review Pending. Every such option keeps that restriction visible: a blocking eligibility review or a condition.
  */
-const provisionalProviders=['Sophia','StraighterLine','CLEP'];
+const provisionalProviders=['Sophia','StraighterLine','Saylor','CLEP'];
 function provisionalProvidersStayRestricted(doc){
   for(const m of doc.models)for(const r of m.requirements)for(const o of outside(r)){
     if(!provisionalProviders.includes(o.provider))continue;
-    const restricted=o.eligibilityReview?o.eligibilityReview.eligibleToStart===false&&o.eligibilityReview.fullyApproved===false&&cites(m,o.eligibilityReview.sourceIds):list(o.conditions).some(text=>/provisional|no established/i.test(text));
+    const restricted=o.eligibilityReview?o.eligibilityReview.providerReviewPending===true&&o.eligibilityReview.fullyApproved===false&&cites(m,o.eligibilityReview.sourceIds):list(o.conditions).some(text=>/provisional|no established/i.test(text));
     assert.ok(restricted,`${m.title} ${r.id}/${o.id}: ${o.provider} is provisionally approved at TESU; the option must keep that restriction`);
     if(o.evidenceType==='school-submitted-equivalency')assert.ok(o.eligibilityReview,`${m.title} ${r.id}/${o.id}: a documented receiving match carries its separate provider eligibility review`);
+  }
+}
+/** Every reviewed provider status is source-bound and distinct from a course award. */
+function providerStatusesStaySourceBound(doc){
+  for(const m of doc.models){
+    const review=m.providerEligibilityReview;
+    assert.equal(review?.checkedOn,providerReview.checkedOn,m.title+': current provider-directory review');
+    assert.ok(cites(m,review?.sourceIds),m.title+': provider review cites its retained source');
+    for(const r of m.requirements)for(const o of outside(r)){
+      if(![...provisionalProviders,'Study.com'].includes(o.provider))continue;
+      const eligibility=o.eligibilityReview;
+      assert.equal(eligibility?.checkedOn,review.checkedOn,m.title+' '+o.id+': provider status date');
+      assert.ok(cites(m,eligibility?.sourceIds),m.title+' '+o.id+': provider status cites its source');
+      assert.equal(eligibility.individualApproval,false,m.title+' '+o.id+': provider status is not an individual award');
+      assert.equal(Object.hasOwn(eligibility,'eligibleToStart'),false,m.title+' '+o.id+': provider status does not establish enrollment permission');
+      assert.equal(eligibility.enrollmentPermission,'not-established-by-provider-status');
+      assert.equal(eligibility.providerReviewPending,o.provider!=='Study.com',m.title+' '+o.id+': provisional review remains pending');
+      if(o.provider==='Study.com'){
+        assert.equal(eligibility.fullyApproved,true,m.title+' '+o.id+': Study.com is an approved provider');
+        assert.equal(eligibility.status,'approved-provider-course-mapping-separate');
+      }else assert.equal(eligibility.providerReviewPending,true,m.title+' '+o.id+': provisional provider review remains pending');
+    }
   }
 }
 /**
@@ -157,4 +180,4 @@ function authoredRowsAreGrounded(doc,kit){
     assert.equal(row.evidenceType,'school-submitted-equivalency',row.id+': only TESU-submitted equivalencies are authored institution-wide');
   }
 }
-export const checks=[semesterLedgers,reviewedLedgerShapes,distinctNamedCourses,prerequisitesResolve,residencyAndCaps,gradeMinimums,institutionOnlyStaysAtTESU,awardsFitTheirRequirement,businessCourseCurrency,provisionalProvidersStayRestricted,schoolSubmittedMatchesAreExact,authoredRowsAreGrounded];
+export const checks=[semesterLedgers,reviewedLedgerShapes,distinctNamedCourses,prerequisitesResolve,residencyAndCaps,gradeMinimums,institutionOnlyStaysAtTESU,awardsFitTheirRequirement,businessCourseCurrency,provisionalProvidersStayRestricted,providerStatusesStaySourceBound,schoolSubmittedMatchesAreExact,authoredRowsAreGrounded];

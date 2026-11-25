@@ -161,12 +161,35 @@
   if(quoted)throw new Error('A quoted CSV value is unfinished.');cells.push(cell);if(cells.some(value=>text(value)))rows.push(cells);if(rows[0]?.[0])rows[0][0]=rows[0][0].replace(/^\uFEFF/,'');return rows;
  }
  const parseCSV=(raw,options={})=>fromRows(csvCells(raw),{...options,format:'csv'});
+ function transcriptIssuer(pages){
+  const labels=[],headings=[];
+  for(const page of pages){
+   const lines=Array.isArray(page?.lines)?page.lines.map(value=>typeof value==='string'?value:text(value?.text||value?.str)):text(page?.text).split(/\r?\n/);
+   for(const line of lines.slice(0,60)){
+    const value=line.trim();
+    if(headerCandidate(value.split(/\t|\s*\|\s*| {2,}/).map(text))||/^[A-Z][A-Z&]{0,9}\s*-?\s*\d{2,5}[A-Z]{0,3}\b/i.test(value)||/^(?:transfer\s+(?:credit|work|courses)|external\s+credit)/i.test(value))break;
+    const match=value.match(/^(?:institution|school|college|university|original institution|course provider|provider|issued by)\s*:\s*(.{2,120})$/i);
+    if(match)labels.push(match[1].trim());
+    headings.push(value);
+   }
+  }
+  const distinct=[...new Map(labels.map(label=>[norm(label),label])).values()];
+  const known={sophia:'Sophia',sophialearning:'Sophia',sophialearningllc:'Sophia',studycom:'Study.com',studycomllc:'Study.com',straighterline:'StraighterLine',straighterlineinc:'StraighterLine',saylor:'Saylor',sayloracademy:'Saylor',saylorfoundation:'Saylor',sayloruniversity:'Saylor',clep:'CLEP'},canonical=value=>own(known,norm(value))?known[norm(value)]:value;
+  if(distinct.length>1)return{provider:'',ambiguous:true};
+  if(distinct.length===1)return{provider:canonical(distinct[0]),label:distinct[0]};
+  // A provider mentioned in a course, footer or transfer section is not the
+  // issuer of the whole transcript. Only an actual provider heading qualifies.
+  const branded=headings.map(value=>value.match(/^(Sophia(?:\s+Learning)?|Study\.com|StraighterLine|Saylor(?:\s+(?:Academy|University))?|CLEP)(?:\s+(?:(?:unofficial|official|academic)\s+)?(?:transcript|record)\b.*)?$/i)?.[1]).filter(Boolean);
+  const providers=[...new Set(branded.map(canonical))];
+  return{provider:providers.length===1?providers[0]:'',ambiguous:providers.length>1};
+ }
  function parseTranscript(input,options={}){
   const pages=typeof input==='string'?[{page:1,text:input}]:list(input).map((page,index)=>typeof page==='string'?{page:index+1,text:page}:page),raw=pages.map(page=>text(page?.text)||list(page?.lines).join('\n')).join('\n');
   if(raw.length>MAX_TEXT)throw new RangeError('Review a transcript section smaller than 1.5 million characters.');
   const documentKind=detectKind(raw,options.documentKind),out=[],issues=[];let ignored=0,partial=0,transferSection=false,term='',unit=null,table=null;
   if(!raw.trim())return batch([],documentKind,[issue('no-readable-text','No native PDF text was found. A scanned or encrypted document needs a different reading method.')],{partialReading:true});
-  const provider=options.provider||(/\bSophia(?:\s+Learning)?\b/i.test(raw)?'Sophia':/\bStudy\.com\b/i.test(raw)?'Study.com':/\bCLEP\b|College.Level Examination/i.test(raw)?'CLEP':'');
+  const issuer=transcriptIssuer(pages),provider=options.provider||issuer.provider;
+  if(issuer.ambiguous&&!options.provider)issues.push(issue('ambiguous-transcript-issuer','More than one original school or provider is labeled. Review the issuer for each course.','provider','warning'));
   const codePattern='([A-Z][A-Z&]{0,9}\\s*-?\\s*\\d{2,5}[A-Z]{0,3})';
   const gradePattern='([ABCDF][+-]?|PASS|P|S|W|WF|I|IP|INCOMPLETE|TR|T)';
   const direct=new RegExp('^\\s*'+codePattern+'\\s+(.+?)\\s+(\\d{1,3}(?:\\.\\d{1,3})?)\\s*'+ '(SH|SCH|QH|CU|CUs)?' +'\\s+'+gradePattern+'\\s*$','i');
@@ -190,7 +213,7 @@
     }
     if(!values||summaryRow(values)){ignored++;continue;}
     if(part)partial++;
-    const source={format:'pdf-text',name:options.sourceName||'',page:Number.isInteger(page.page)?page.page:Number.isInteger(page.pageNumber)?page.pageNumber:p+1,line:line+1,rawLine,term:text(values.term)||term,transferSection,partial:part,headerUnits:table?.headerUnits||unit,explicitSourceCredits:table?.explicitSourceCredits||false,explicitSourceUnits:table?.explicitSourceUnits||false,explicitSourceCode:table?.explicitSourceCode||false};
+    const source={format:'pdf-text',name:options.sourceName||'',page:Number.isInteger(page.page)?page.page:Number.isInteger(page.pageNumber)?page.pageNumber:p+1,line:line+1,rawLine,term:text(values.term)||term,transferSection,partial:part,...(issuer.label&&!options.provider?{issuerLabel:issuer.label}:{}),headerUnits:table?.headerUnits||unit,explicitSourceCredits:table?.explicitSourceCredits||false,explicitSourceUnits:table?.explicitSourceUnits||false,explicitSourceCode:table?.explicitSourceCode||false};
     out.push(makeRow(values,source,{...options,provider,documentKind},out.length));if(out.length>MAX_ROWS)throw new RangeError('Review at most 500 course rows at a time.');
    }
   }

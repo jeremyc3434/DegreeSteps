@@ -308,7 +308,25 @@
       }
     },
     "policyReview": [],
-    "evidenceCheckedOn": "2026-11-18"
+    "evidenceCheckedOn": "2026-11-18",
+    "providerEligibilityReview": {
+      "id": "tesu-provider-policy-review-2026-11-25",
+      "checkedOn": "2026-11-25",
+      "sourceIds": [
+        "tesu-provider-directory-2026-11-25",
+        "tesu-provider-review-policy-2026-11-25"
+      ],
+      "approvedProviders": [
+        "Study.com"
+      ],
+      "provisionalProviders": [
+        "Sophia",
+        "StraighterLine",
+        "Saylor",
+        "CLEP"
+      ],
+      "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
+    }
   },
   "modelSourceIds": [
     "tesu-psychology-current-2026-11-18",
@@ -443,14 +461,19 @@
     "sophia-soph-0011-ace-tesu-equivalency-2026-11-20",
     "sophia-soph-0005-ace-tesu-equivalency-2026-11-20",
     "sophia-soph-0083-ace-tesu-equivalency-2026-11-20",
-    "sophia-soph-0014-ace-tesu-equivalency-2026-11-20"
+    "sophia-soph-0014-ace-tesu-equivalency-2026-11-20",
+    "tesu-provider-directory-2026-11-25",
+    "tesu-provider-review-policy-2026-11-25",
+    "study-tesu-gened-collection-2026-11-25",
+    "tesu-study-english104-ace-current-2026-11-25"
   ],
   "requirements": [
     {"id":"enc1010","code":"ENC-1010","title":"Writing for Success","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"gradePolicyNote":"C or better in English composition. This does not impose the area-of-study grade requirement on unrelated general education.","sourceIds":["tesu-liberal-studies-current-2026-11-18"],"selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-enc1010","provider":"University","code":"ENC-1010","title":"Writing for Success","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-liberal-studies-current-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}},
       {"row":"sophia-soph-0015-to-enc-1010-tesu-2026-2027","optionId":"sophia-enc1010-3"},
       "clep-clep-0040-to-enc-1010@requirement-id",
-      "clep-clep-0041-to-enc-1010"
+      "clep-clep-0041-to-enc-1010",
+      "study-com-sdcm-0057-to-enc-1010-current-provider-candidate"
     ]},
     {"id":"enc1020","code":"ENC-1020","title":"Writing for Success II","credits":3,"category":"general","upper":false,"institutionalOnly":false,"group":"intellectual-practical","subgroup":"intellectual-practical","minimumGrade":"C","minimumGradeSourceIds":["tesu-psychology-transfer-2026-11-18","tesu-psychology-grades-2026-11-18"],"gradePolicyNote":"C or better in English composition. This does not impose the area-of-study grade requirement on unrelated general education.","sourceIds":["tesu-liberal-studies-current-2026-11-18"],"selectionRequired":false,"optionRows":[
       {"inline":{"id":"university-enc1020","provider":"University","code":"ENC-1020","title":"Writing for Success II","credits":3,"upper":false,"creditSystem":"semester","creditOrigin":"institutional","sourceIds":["tesu-liberal-studies-current-2026-11-18"],"evidence":"published","conditions":["This requirement needs a grade of C or higher; confirm the school’s treatment of pass grades."]}},
