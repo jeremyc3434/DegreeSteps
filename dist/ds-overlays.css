@@ -1,0 +1,186 @@
+/* DegreeSteps overlay components. Native dialog/open/hidden and existing focus/close handlers remain authoritative.
+   This is the shared presentation owner for existing dialogs, trays, menus and the optional coach. */
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) {
+  --overlay-ink:var(--ds-ink,#192840);
+  --overlay-muted:var(--ds-muted,#4e5e74);
+  --overlay-blue:var(--ds-cobalt,#3458d4);
+  --overlay-paper:var(--ds-surface,#fff);
+  --overlay-canvas:var(--ds-canvas,#f1f4f9);
+  --overlay-line:var(--ds-border,#d9e1ec);
+  --overlay-control:var(--ds-control-border,#7b899b);
+  box-sizing:border-box;
+  color-scheme:light;
+  width:min(600px,calc(100vw - 32px));
+  max-width:calc(100vw - 32px);
+  max-height:calc(100dvh - 32px);
+  margin:auto;
+  padding:28px;
+  border:1px solid var(--overlay-line);
+  border-radius:10px;
+  background:var(--overlay-paper);
+  color:var(--overlay-ink);
+  font-family:var(--ds-font,Inter,system-ui,-apple-system,"Segoe UI",sans-serif);
+  font-size:1rem;
+  line-height:1.6;
+  overflow:auto;
+  overscroll-behavior:contain;
+  scrollbar-gutter:stable;
+  box-shadow:0 20px 64px rgb(25 40 64 / 16%);
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog)::backdrop {
+  background:rgb(25 40 64 / 30%);
+  backdrop-filter:blur(2px);
+}
+body.ds-experience :is(#program-dialog,#publish-dialog,#learning-dialog,#source-dialog) { width:min(740px,calc(100vw - 32px)); }
+body.ds-experience #thread-dialog { width:min(840px,calc(100vw - 32px)); }
+body.ds-experience :is(#program-switch-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog) { width:min(500px,calc(100vw - 32px)); }
+body.ds-experience #degree-plan-save-dialog { width:min(560px,calc(100vw - 32px)); }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog) {
+  position:fixed;
+  inset:0 0 0 auto;
+  width:min(680px,100vw);
+  max-width:100vw;
+  height:100dvh;
+  max-height:100dvh;
+  margin:0;
+  border:0;
+  border-left:1px solid var(--overlay-line);
+  border-radius:10px 0 0 10px;
+  box-shadow:-16px 0 48px rgb(25 40 64 / 14%);
+}
+body.ds-experience #evidence-dialog { width:min(600px,100vw); }
+/* The guided task URL is a full-page step, while ordinary worksheet detail remains a side tray. */
+body.ds-experience.portal-task-page #sheet-dialog { inset:0; width:min(760px,100vw); margin:0 auto; border:0; border-radius:0; box-shadow:none; }
+body.ds-experience.portal-task-page #sheet-dialog::backdrop { background:var(--ds-canvas,#f1f4f9); backdrop-filter:none; }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(h2,h3) {
+  color:var(--overlay-ink);
+  letter-spacing:-.025em;
+  overflow-wrap:anywhere;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) h2 {
+  margin:0 0 14px;
+  font-size:1.5rem;
+  line-height:1.25;
+  font-weight:650;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) h3 {
+  margin:24px 0 10px;
+  font-size:1.0625rem;
+  line-height:1.4;
+  font-weight:600;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(p,li) {
+  color:var(--overlay-muted);
+  font-size:1rem;
+  line-height:1.65;
+  overflow-wrap:anywhere;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(label,summary,dt,.field-label,.field-hint,.sheet-field,.sheet-field > span:first-child,.course-dialog-hint,.course-details-meta,.evidence-byline) {
+  color:var(--overlay-muted);
+  font-size:.875rem;
+  line-height:1.55;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(small,.source-checked,.course-feature-checked) { font-size:.8125rem; line-height:1.5; }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(summary,button) { min-height:44px; }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]),select,textarea) {
+  box-sizing:border-box;
+  max-width:100%;
+  min-height:46px;
+  border-color:var(--overlay-control);
+  border-radius:6px;
+  background:var(--overlay-paper);
+  color:var(--overlay-ink);
+  font:inherit;
+  font-size:1rem;
+  line-height:1.5;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(textarea) { resize:vertical; }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(input[type="checkbox"],input[type="radio"]) { accent-color:var(--overlay-blue); }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) a {
+  color:var(--overlay-blue);
+  text-underline-offset:4px;
+  overflow-wrap:anywhere;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.button,.pf-button,.courses-primary,.plan-save-primary,.plan-save-secondary,.lead-button,.course-dialog-actions > button,.comparison-dialog-actions > button,.alias-form button,.comment-form button,.report-form button) {
+  min-height:44px;
+  padding:11px 16px;
+  border-radius:6px;
+  font-size:.9375rem;
+  line-height:1.4;
+  white-space:normal;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.button.primary,.pf-button-primary,.courses-primary,.plan-save-primary,.lead-primary,.comparison-dialog-actions > button:last-child) {
+  background:var(--overlay-blue);
+  border-color:var(--overlay-blue);
+  color:#fff;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.dialog-topline,.evidence-topline,.lead-dialog-head,.pf-dialog-heading) {
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin:0 0 20px;
+  padding:0 0 14px;
+  border-bottom:1px solid var(--overlay-line);
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.dialog-close,.course-dialog-close,.pf-dialog-close,.evidence-close,.lead-close,#close-sheet-dialog) {
+  display:inline-grid;
+  place-items:center;
+  flex:none;
+  box-sizing:border-box;
+  width:44px;
+  height:44px;
+  min-width:44px;
+  min-height:44px;
+  padding:8px;
+  border:1px solid var(--overlay-line);
+  border-radius:6px;
+  background:var(--overlay-paper);
+  color:var(--overlay-ink);
+  font-size:24px;
+  line-height:1;
+}
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.dialog-close,.course-dialog-close,.pf-dialog-close,.evidence-close,.lead-close,#close-sheet-dialog):hover { background:var(--overlay-canvas); border-color:var(--overlay-control); }
+body.ds-experience #close-sheet-dialog { position:sticky; top:0; z-index:6; margin:0 0 14px auto; }
+body.ds-experience :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) .course-dialog-close { position:absolute; top:14px; right:14px; }
+body.ds-experience :is(#course-details-dialog,#course-status-dialog,#course-remove-dialog) h2 { padding-right:40px; }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog) :is(.sheet-field,.evidence-field) { gap:7px; margin-block:18px; }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog) :is(.sheet-field > span:first-child,.evidence-field > span) { color:var(--overlay-ink); font-weight:550; }
+body.ds-experience #sheet-dialog .sheet-dialog-footer {
+  position:sticky;
+  bottom:-28px;
+  z-index:5;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px;
+  margin:24px -28px -28px;
+  padding:16px 28px;
+  border-top:1px solid var(--overlay-line);
+  background:var(--overlay-paper);
+}
+body.ds-experience #sheet-dialog .sheet-dialog-footer > .button { margin:0; }
+body.ds-experience #sheet-dialog .sheet-unapplied { display:flex; flex-wrap:wrap; align-items:center; flex-basis:100%; gap:10px 12px; }
+body.ds-experience #sheet-dialog .sheet-unapplied[hidden] { display:none; }
+body.ds-experience #sheet-dialog .sheet-unapplied p { flex-basis:100%; margin:0; color:var(--overlay-ink); font-weight:600; }
+body.ds-experience #sheet-dialog-savings { position:static; margin:0 0 20px; padding-bottom:16px; border-bottom:1px solid var(--overlay-line); background:var(--overlay-paper); }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.sheet-actions,.sheet-comparison-apply,.course-dialog-actions,.pf-dialog-actions,.comparison-dialog-actions,.cw-dialog-actions,.plan-save-actions,.lead-buttons) { gap:12px; flex-wrap:wrap; }
+/* Retain meaningful warning/error treatments; their text must remain readable on the light surface. */
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is([role="alert"],.plan-save-error,.evidence-error,.lead-error,.form-error) { color:var(--ds-error,#b42318); }
+body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.sheet-cost-warning,.sheet-comparison-review,.comparison-warning) { color:var(--ds-warning,#92400e); }
+/* The course filter menu uses the same opaque light surface without changing its positioning or disclosure logic. */
+body.ds-experience .courses-filter-options { color-scheme:light; border-color:var(--ds-border,#d9e1ec); border-radius:8px; background:var(--ds-surface,#fff); color:var(--ds-ink,#192840); box-shadow:0 12px 32px rgb(25 40 64 / 12%); }
+body.ds-experience .courses-filter-options label { color:var(--ds-muted,#4e5e74); font-size:.875rem; min-height:44px; }
+@media (max-width:640px) {
+  body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) { width:calc(100vw - 20px); max-width:calc(100vw - 20px); max-height:calc(100dvh - 20px); padding:20px; border-radius:8px; }
+  body.ds-experience :is(#sheet-dialog,#evidence-dialog) { width:100vw; max-width:100vw; height:100dvh; max-height:100dvh; border-left:0; border-radius:0; }
+  body.ds-experience #sheet-dialog .sheet-dialog-footer { bottom:-20px; margin-inline:-20px; margin-bottom:-20px; padding:14px 20px; }
+  body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) h2 { font-size:1.375rem; }
+  body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.sheet-dialog-footer,.course-dialog-actions,.pf-dialog-actions,.comparison-dialog-actions,.cw-dialog-actions,.plan-save-actions,.lead-buttons) { gap:10px; }
+}
+@media (max-width:380px) {
+  body.ds-experience :is(#program-switch-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#degree-plan-save-dialog,.lead-dialog) :is(.course-dialog-actions,.pf-dialog-actions,.comparison-dialog-actions,.cw-dialog-actions,.plan-save-actions,.lead-buttons) > :is(button,a) { flex:1 1 100%; }
+}
+@media print {
+  body.ds-experience :is(#sheet-dialog,#evidence-dialog,#program-dialog,#program-switch-dialog,#course-details-dialog,#course-status-dialog,#course-remove-dialog,#comparison-save,#comparison-use,#cw-build-dialog,#publish-dialog,#thread-dialog,#learning-dialog,#source-dialog,#degree-plan-save-dialog,.lead-dialog),body.ds-experience .coach-root { display:none!important; }
+}

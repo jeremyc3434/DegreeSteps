@@ -1,25 +1,25 @@
-/* DegreeSteps semantic names. Values come from ds-tokens.css (redesign foundation); the fallbacks keep the
-   November 17, 2026 brand package values for any page that loads brand.css without the tokens. */
+/* DegreeSteps semantic design roles. Keep fallbacks aligned with ds-tokens.css and brand-tokens.json. */
 :root {
-  --ds-navy:var(--tok-navy,#192c43); --ds-cobalt:var(--tok-cobalt,#4054f4); --ds-ink:var(--tok-ink,#182230); --ds-muted:var(--tok-muted,#526174);
-  --ds-cobalt-hover:var(--tok-cobalt-hover,#2c3dd6);
-  --ds-route-navy:#142c51; --ds-route-line:#365173; --ds-route-muted:#c1d0e8; --ds-route-accent:#b2c2ff;
-  --ds-title-tracking:var(--tok-tracking-title,-.02em);
-  --ds-surface:var(--tok-surface,#fff); --ds-canvas:var(--tok-canvas,#f7f9fc); --ds-soft-blue:var(--tok-cobalt-soft,#eef1ff);
-  --ds-border:var(--tok-border,#dfe5ee); --ds-control-border:var(--tok-control-border,#7b899b);
+  color-scheme:light;
+  --ds-navy:var(--tok-navy,#192840); --ds-cobalt:var(--tok-cobalt,#3458d4); --ds-ink:var(--tok-ink,#192840); --ds-muted:var(--tok-muted,#4e5e74);
+  --ds-cobalt-hover:var(--tok-cobalt-hover,#2846b1);
+  --ds-route-navy:var(--tok-hero,#edf2ff); --ds-route-line:var(--tok-border,#d9e1ec); --ds-route-muted:var(--tok-muted,#4e5e74); --ds-route-accent:var(--tok-cobalt,#3458d4);
+  --ds-title-tracking:var(--tok-tracking-title,-.03em);
+  --ds-surface:var(--tok-surface,#fff); --ds-canvas:var(--tok-canvas,#f1f4f9); --ds-nav:var(--tok-nav,#e9eef7); --ds-soft-blue:var(--tok-cobalt-soft,#edf1ff);
+  --ds-border:var(--tok-border,#d9e1ec); --ds-control-border:var(--tok-control-border,#7b899b);
   --ds-success:var(--tok-success-text,#166534); --ds-warning:var(--tok-warning,#92400e); --ds-error:var(--tok-error,#b42318);
   --ds-font:var(--tok-font,Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif);
   --ds-space-1:4px; --ds-space-2:8px; --ds-space-3:12px; --ds-space-4:16px;
   --ds-space-6:24px; --ds-space-8:32px; --ds-space-12:48px; --ds-space-16:64px; --ds-space-24:96px;
-  --ds-radius-control:var(--tok-radius-sm,12px); --ds-radius-card:var(--tok-radius-lg,16px); --ds-content-width:var(--tok-content-width,1200px);
+  --ds-radius-control:var(--tok-radius-sm,8px); --ds-radius-card:var(--tok-radius-lg,12px); --ds-content-width:var(--tok-content-width,1200px);
   --ds-duration-fast:var(--tok-duration-fast,120ms); --ds-duration-normal:var(--tok-duration-normal,180ms);
 }
-body { font-family:var(--ds-font); color:var(--ds-ink); font-size:16px; line-height:1.6; }
+body { font-family:var(--ds-font); color:var(--ds-ink); font-size:16px; line-height:1.55; }
 body.dp-app-shell {
   --dp-ink:var(--ds-navy); --dp-muted:var(--ds-muted); --dp-blue:var(--ds-cobalt); --dp-line:var(--ds-border);
   color:var(--ds-ink); background:var(--ds-canvas);
 }
-/* Temporary text treatment. This does not reproduce or replace the approved raster logo. */
+/* Accessible text wordmark, also used when no raster logo is present. */
 .ds-wordmark { display:inline-flex; align-items:baseline; gap:0; color:var(--ds-navy); font-family:var(--ds-font); font-size:27px; font-weight:750; letter-spacing:-1.2px; line-height:1.2; white-space:nowrap; text-decoration:none; }
 .ds-wordmark-steps { color:var(--ds-cobalt); }
 .ds-wordmark img { display:block; width:100%; height:auto; object-fit:contain; }

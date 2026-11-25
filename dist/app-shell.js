@@ -3,7 +3,7 @@
   'use strict';
   const page = location.pathname.split('/').pop() || 'portal.html';
   const parameters = new URLSearchParams(location.search), task = parameters.get('task'), preferenceView = page === 'portal.html' && parameters.get('view') === 'preferences';
-  const labels = {'start.html':'Build my plan','programs.html':'Find a degree','credits-worth.html':'What are my credits worth?','campuses.html':'Find a campus','growth.html':'Activity overview','courses.html':'My courses','import-courses.html':'Add my courses','compare-plans.html':'Compare plans','portal.html':preferenceView ? 'My preferences' : 'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps','coverage.html':'Academic coverage'};
+  const labels = {'start.html':'Build my plan','guided.html':'Find my degree','degree-audit.html':'Build my own plan','programs.html':'Find a degree','credits-worth.html':'What are my credits worth?','campuses.html':'Find a campus','growth.html':'Activity overview','courses.html':'My courses','import-courses.html':'Add my courses','compare-plans.html':'Compare plans','portal.html':preferenceView ? 'My preferences' : 'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps','coverage.html':'Academic coverage'};
   if (!labels[page]) return;
   const paths = {
     plan:'<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/>',
@@ -13,56 +13,58 @@
     person:'<circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/>',
     arrow:'<path d="M7 17 17 7M7 7h10v10"/>',
     spark:'<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/>',
-    check:'<path d="m5 12 4 4L19 6"/>'
+    check:'<path d="m5 12 4 4L19 6"/>',
+    more:'<path d="M5 6h14M5 12h14M5 18h14"/>'
   };
   const icon = name => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[name]+'</svg>';
   const wordmark = '<span class="ds-wordmark">Degree<span class="ds-wordmark-steps">Steps</span></span>';
-  const active = preferenceView ? 'preferences' : ['courses.html','import-courses.html'].includes(page) ? 'credits' : page === 'community.html' ? 'community' : ['programs.html','credits-worth.html','school.html','request-plan.html','campuses.html'].includes(page) ? 'programs' : page === 'library.html' ? 'explore' : task === 'credits' ? 'credits' : page === 'account.html' ? 'account' : ['admin.html','growth.html'].includes(page) ? 'admin' : 'plan';
+  const active = preferenceView ? 'preferences' : ['courses.html','import-courses.html'].includes(page) ? 'credits' : page === 'community.html' ? 'community' : ['programs.html','credits-worth.html','school.html','request-plan.html','campuses.html','guided.html'].includes(page) ? 'programs' : page === 'library.html' ? 'explore' : task === 'credits' ? 'credits' : page === 'account.html' ? 'account' : ['admin.html','growth.html','coverage.html'].includes(page) ? 'admin' : 'plan';
   const links = [
     {id:'plan',title:'My plan',href:'plan.html',icon:'plan'},
     {id:'credits',title:'My courses',href:'courses.html?tab=mine',icon:'credits'},
     {id:'programs',title:'Find a degree',href:'programs.html',icon:'explore'},
     {id:'community',title:'Community',href:'community.html?tab=feed',icon:'community'}
   ];
-  const nav = mobile => links.map(link => '<a href="'+link.href+'"'+(active === link.id ? ' aria-current="page"' : '')+' data-shell-nav="'+link.id+'">'+icon(link.icon)+'<span>'+link.title+'</span></a>').join('');
+  const nav = () => links.map(link => '<a href="'+link.href+'"'+(active === link.id ? ' aria-current="page"' : '')+' data-shell-nav="'+link.id+'">'+icon(link.icon)+'<span>'+link.title+'</span></a>').join('');
   const shell = document.createElement('div');
   shell.id = 'degree-app-shell';
-  // One header for the whole site (dist/site-header.js), plus a workspace bar for the links that used to live in the
-  // sidebar and bottom tabs. Every former destination stays one tap away.
-  const headerCurrent = {plan:'plan', programs:'degrees', community:'community', account:'account'}[active] || '';
-  const actions = '<div class="dp-shell-header-actions"><a class="dp-shell-save-account" href="account.html#account-save-form" title="Save this plan to your account" hidden>Save plan</a><span class="dp-shell-save" role="status" aria-live="polite" hidden>'+icon('check')+'<span></span></span></div>';
-  const headerHTML = window.DegreeHeader ? window.DegreeHeader.html({surface:'app', current:headerCurrent, className:'dp-shell-header', actions}) : '<header class="ds-header ds-header--app dp-shell-header"><div class="ds-header-inner"><a class="ds-header-brand ds-wordmark" href="/" aria-label="DegreeSteps home">Degree<span class="ds-wordmark-steps">Steps</span></a><nav class="ds-header-nav" aria-label="Main navigation">'+nav(false)+'<a href="/account.html" data-shell-nav="account">Sign in</a></nav>'+actions+'</div></header>';
-  const workspace = '<nav class="dp-shell-subnav" aria-label="Your workspace"><div class="dp-shell-subnav-inner"><div class="dp-shell-page-title" id="dp-shell-page-title">'+labels[page]+'</div><div class="dp-shell-subnav-links"><a href="courses.html?tab=mine"'+(active === 'credits' ? ' aria-current="page"' : '')+' data-shell-nav="credits">My courses</a><a class="dp-shell-website dp-shell-preferences" href="portal.html?view=preferences"'+(preferenceView ? ' aria-current="page"' : '')+'>My preferences</a><a class="dp-shell-website" href="library.html"'+(active === 'explore' ? ' aria-current="page"' : '')+'>Schools & resources</a><a class="dp-shell-account" href="account.html"'+(active === 'account' ? ' aria-current="page"' : '')+'><span class="dp-shell-avatar">'+icon('person')+'</span><span><strong data-shell-account-label>My account</strong><small data-shell-account-detail>Open account settings</small></span></a></div></div></nav>';
-  shell.innerHTML = headerHTML + workspace;
-  const skipLink=document.body.querySelector?.(':scope > a.skip-link, :scope > a.site-skip, :scope > a.sheet-skip');
+  // Workspace navigation stays in the same place on every page. The public website keeps its own header.
+  const managementLinks = active === 'admin' ? '<a class="dp-shell-website" href="admin.html">Manage DegreeSteps</a><a class="dp-shell-website" href="coverage.html">Academic coverage</a><a class="dp-shell-website" href="growth.html">Activity overview</a>' : '';
+  const extraLinks = '<a class="dp-shell-website" href="compare-plans.html"'+(page === 'compare-plans.html' ? ' aria-current="page"' : '')+'>Compare degrees</a><a class="dp-shell-website dp-shell-preferences" href="portal.html?view=preferences"'+(preferenceView ? ' aria-current="page"' : '')+'>My preferences</a><a class="dp-shell-website" href="library.html"'+(active === 'explore' ? ' aria-current="page"' : '')+'>Schools & resources</a><a class="dp-shell-website" href="/transfer/">Transfer guides</a>'+managementLinks+'<a class="dp-shell-website" href="/">Visit website'+icon('arrow')+'</a>';
+  const sidebar = '<aside class="dp-shell-sidebar" aria-label="Student workspace"><a class="dp-shell-brand" href="/" aria-label="DegreeSteps home">'+wordmark+'</a><nav class="dp-shell-nav" aria-label="Your workspace">'+nav()+'</nav><nav class="dp-shell-secondary" aria-label="Plan tools and resources">'+extraLinks+'</nav><div class="dp-shell-sidebar-bottom"><a class="dp-shell-account" href="account.html"'+(active === 'account' ? ' aria-current="page"' : '')+'><span class="dp-shell-avatar">'+icon('person')+'</span><span><strong data-shell-account-label>My account</strong><small data-shell-account-detail>Open account settings</small></span></a></div></aside>';
+  const headerHTML = '<header class="dp-shell-header"><div class="dp-shell-location"><a class="dp-shell-mobile-brand" href="/" aria-label="DegreeSteps home">'+wordmark+'</a><div class="dp-shell-page-title" id="dp-shell-page-title">'+labels[page]+'</div></div><span class="dp-shell-save" role="status" aria-live="polite" hidden>'+icon('check')+'<span></span></span><div class="dp-shell-header-actions"><a class="dp-shell-save-account" href="account.html#account-save-form" title="Save this plan to your account" hidden>Save plan</a><a class="dp-shell-account-button" href="account.html" aria-label="My account">'+icon('person')+'</a><button class="dp-shell-more-toggle" type="button" aria-expanded="false" aria-controls="dp-shell-more-menu">'+icon('more')+'<span>More</span></button></div></header>';
+  const phoneMenu = '<nav class="dp-shell-more-menu" id="dp-shell-more-menu" aria-label="More workspace options" hidden><a class="dp-shell-website" href="account.html">My account</a>'+extraLinks+'</nav>';
+  shell.innerHTML = sidebar + headerHTML + phoneMenu + '<nav class="dp-shell-bottom" aria-label="Your workspace">'+nav()+'</nav>';
+  const skipLink=document.body.querySelector?.(':scope > a:is(.skip-link,.site-skip,.sheet-skip,.growth-skip,.tw-skip,.cv-skip,.campus-skip)');
   if(skipLink&&typeof skipLink.after==='function')skipLink.after(shell);else document.body.prepend(shell);
   document.body.classList.add('dp-app-shell');
-  window.DegreeHeader?.enhance?.(shell.querySelector('[data-ds-header]'));
-  // The header is fixed; page content starts below its measured height (it can wrap on narrow screens). An open
-  // phone menu overlays the page instead of pushing it.
+  // Status text can wrap at larger text sizes. Content always starts below the measured header.
   const headerNode = shell.querySelector('header');
   const syncHeaderHeight = () => {
-    if (!headerNode?.getBoundingClientRect || headerNode.classList?.contains('ds-header--open')) return;
+    if (!headerNode?.getBoundingClientRect) return;
     const height = Math.ceil(headerNode.getBoundingClientRect().height);
     if (height > 0) document.body.style?.setProperty?.('--dp-header-height', height+'px');
   };
   syncHeaderHeight();
   if (typeof ResizeObserver === 'function' && headerNode) new ResizeObserver(syncHeaderHeight).observe(headerNode);
-  // Phones: the workspace links (My courses, My preferences, Schools & resources, account) open with the menu, directly
-  // under it, instead of taking a permanent row above the plan.
-  const workspaceBar = shell.querySelector('.dp-shell-subnav');
-  headerNode?.addEventListener?.('ds-header-menu', event => {
-    const open = Boolean(event.detail?.open);
-    shell.classList?.toggle('dp-shell-menu-open', open);
-    if (workspaceBar?.style) workspaceBar.style.top = open ? Math.ceil(headerNode.getBoundingClientRect().bottom)+'px' : '';
+  // This is a disclosure, not a modal: the four primary destinations remain visible below the page.
+  const moreToggle = shell.querySelector('.dp-shell-more-toggle'), moreMenu = shell.querySelector('#dp-shell-more-menu');
+  const setMoreOpen = open => {
+    if (!moreToggle || !moreMenu) return;
+    moreToggle.setAttribute('aria-expanded',String(open));moreMenu.hidden=!open;
+  };
+  moreToggle?.addEventListener?.('click',() => setMoreOpen(moreToggle.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown',event => {
+    if (event.key === 'Escape' && moreToggle?.getAttribute('aria-expanded') === 'true') {setMoreOpen(false);moreToggle.focus();}
   });
-  workspaceBar?.addEventListener?.('keydown', event => {
-    const toggle = headerNode?.querySelector?.('.ds-header-toggle');
-    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {toggle.click();toggle.focus();}
+  document.addEventListener('click',event => {
+    if (moreToggle?.getAttribute('aria-expanded') === 'true' && !moreToggle.contains(event.target) && !moreMenu.contains(event.target)) setMoreOpen(false);
   });
+  moreMenu?.addEventListener?.('click',event => {if(event.target.closest?.('a'))setMoreOpen(false);});
+  if (typeof matchMedia === 'function') matchMedia('(min-width:901px)').addEventListener?.('change',event => {if(event.matches)setMoreOpen(false);});
   if (page === 'library.html') {
     document.body.classList.add('dp-explore-page');
-    const heading = document.querySelector('#explore .section-head h2');
+    const heading = document.querySelector('#explore .section-head h1, #explore .section-head h2');
     if (heading) heading.textContent = 'Find a school that fits.';
     const eyebrow = document.querySelector('#explore .section-head .eyebrow');
     if (eyebrow) eyebrow.textContent = 'EXPLORE SCHOOLS';

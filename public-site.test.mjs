@@ -32,9 +32,9 @@ test('the public homepage explains the product and offers a clear separate build
   assert(links.some(h=>new URL(h,home.url).pathname==='/account.html'),'A real account entry is available');
   assert(strip(home.html).split(/\s+/).length>=200,'The explanation is crawlable without client rendering');
   const headline=strip(home.html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]||'');
-  assert.match(headline,/^A degree that fits your life\.$/i,'The first message states the outcome');
-  assert.match(strip(home.html.match(/<h2 id="home-steps-title"[^>]*>([\s\S]*?)<\/h2>/i)?.[1]||''),/^The degree you want\. A smarter way there\.$/i,'The example chapter still connects the degree goal to a different route');
-  assert.match(strip(home.html),/Find a faster, more affordable route with flexible courses that can count toward your degree\. Online or on campus\./,'The supporting sentence states the student outcome and course flexibility');
+  assert.match(headline,/^Your degree\. Within reach\.$/i,'The first message states the outcome');
+  assert.match(strip(home.html.match(/<h2 id="home-steps-title"[^>]*>([\s\S]*?)<\/h2>/i)?.[1]||''),/^Liberty University$/i,'The visual example identifies the actual receiving university');
+  assert.match(strip(home.html),/Start with affordable courses\. Finish with a degree from your university\./,'The supporting sentence states the student outcome and course flexibility');
   const chapters=[...home.html.matchAll(/<section\b(?=[^>]*\bdata-home-step(?:\s|>))[^>]*>/gi)];
   assert.deepEqual(chapters.map(chapter=>attr(chapter[0],'id')),['home-step-1','home-step-2','home-step-3'],'The journey has three ordered semantic chapters');
   for(const [chapter] of chapters){

@@ -1,3 +1,4 @@
+/* Shared native dialog frame, typography and controls: ds-overlays.css. */
 /* School contact requests and the Plan review form. Loaded by leads.js only when a feature is on. Uses the shared DegreeSteps tokens. */
 .lead-actions,.lead-dialog,.lead-review-page{--lead-ink:var(--ds-ink,#182230);--lead-muted:var(--ds-muted,#526174);--lead-accent:var(--ds-cobalt,#4054f4);--lead-border:var(--ds-border,#d9e1ea);--lead-control:var(--ds-control-border,#7b899b);--lead-surface:var(--ds-surface,#fff);--lead-soft:var(--ds-soft-blue,#eef1ff);--lead-error:var(--ds-error,#b42318);--lead-radius:var(--ds-radius-card,8px);--lead-radius-control:var(--ds-radius-control,6px)}
 .lead-actions{margin:12px 0;display:grid;gap:8px;max-width:100%}
@@ -6,23 +7,21 @@
 .lead-hint{font-size:14px;color:var(--lead-muted)}
 .lead-review-link{font-size:14px;color:var(--lead-muted)}
 .lead-review-link a{color:var(--lead-accent);text-decoration:underline;text-underline-offset:3px}
-.lead-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 14px;border:1px solid var(--lead-control);border-radius:var(--lead-radius-control);background:var(--lead-surface);color:var(--lead-ink);font:600 15px/1.25 inherit;font-family:inherit;cursor:pointer;max-width:100%;white-space:normal;text-align:center}
+.lead-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 14px;border:1px solid var(--lead-control);border-radius:var(--lead-radius-control);background:var(--lead-surface);color:var(--lead-ink);font:inherit;font-size:.9375rem;font-weight:600;line-height:1.25;cursor:pointer;max-width:100%;white-space:normal;text-align:center}
 .lead-button:hover{border-color:var(--lead-accent)}
 .lead-button:focus-visible,.lead-close:focus-visible,.lead-form :is(input,select,textarea):focus-visible{outline:3px solid var(--lead-accent);outline-offset:2px}
 .lead-button.lead-primary{background:var(--lead-accent);border-color:var(--lead-accent);color:#fff}
 .lead-button[disabled]{opacity:.7;cursor:progress}
-.lead-dialog{width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:20px;border:1px solid var(--lead-border);border-radius:var(--lead-radius);background:var(--lead-surface);color:var(--lead-ink);box-shadow:0 18px 48px rgba(24,34,48,.25);font-family:var(--ds-font,Inter,system-ui,sans-serif)}
-.lead-dialog::backdrop{background:rgba(24,34,48,.45)}
 .lead-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .lead-dialog h2,.lead-review-page h2{margin:0 0 8px;font-size:22px;line-height:1.25}
 .lead-dialog h2:focus,.lead-review-page h2:focus{outline:none}
 .lead-close{flex:none;width:44px;height:44px;border:0;border-radius:var(--lead-radius-control);background:transparent;color:var(--lead-ink);font-size:26px;line-height:1;cursor:pointer}
-.lead-intro,.lead-attached{font-size:15px;color:var(--lead-muted);margin:0 0 12px}
+.lead-intro,.lead-attached{font-size:1rem;color:var(--lead-muted);margin:0 0 12px}
 .lead-attached span{font-weight:600;color:var(--lead-ink)}
 .lead-form{display:grid;gap:4px;min-width:0}
 .lead-form>label,.lead-form legend{font-weight:600;font-size:15px;margin-top:8px}
 .lead-optional{font-weight:400;color:var(--lead-muted)}
-.lead-form :is(input:not([type=radio]):not([type=checkbox]),select,textarea){display:block;width:100%;min-height:44px;margin:0;padding:10px 12px;border:1px solid var(--lead-control);border-radius:var(--lead-radius-control);background:var(--lead-surface);color:var(--lead-ink);font:16px/1.4 inherit;font-family:inherit;box-sizing:border-box}
+.lead-form :is(input:not([type=radio]):not([type=checkbox]),select,textarea){display:block;width:100%;min-height:44px;margin:0;padding:10px 12px;border:1px solid var(--lead-control);border-radius:var(--lead-radius-control);background:var(--lead-surface);color:var(--lead-ink);font:inherit;font-size:1rem;line-height:1.4;box-sizing:border-box}
 .lead-form textarea{min-height:96px;resize:vertical}
 .lead-choices{border:0;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 16px;min-width:0}
 .lead-choices legend{padding:0;margin-bottom:4px;width:100%}
@@ -34,14 +33,14 @@
 .lead-error{margin:8px 0 0;padding:8px 12px;border-radius:var(--lead-radius-control);background:#fef3f2;color:var(--lead-error);font-size:15px}
 .lead-error[hidden],.lead-review-page [hidden]{display:none!important}
 .lead-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.lead-done p{font-size:15px}
+.lead-done p{font-size:1rem}
 .lead-done a,.lead-review-page a{color:var(--lead-accent);text-decoration:underline;text-underline-offset:3px}
 .lead-review-page .lead-form{max-width:560px}
 .lead-review-card{border:1px solid var(--lead-border);border-radius:var(--lead-radius);background:var(--lead-surface);padding:20px;max-width:640px;box-sizing:border-box}
 .lead-review-price{font-size:28px;font-weight:700;margin:0}
 .lead-review-price small{font-size:15px;font-weight:400;color:var(--lead-muted)}
 .lead-review-confirm{font-weight:600}
-@media (max-width:480px){.lead-dialog{padding:16px}.lead-buttons .lead-button{flex:1 1 100%}.lead-review-card{padding:16px}}
+@media (max-width:480px){.lead-buttons .lead-button{flex:1 1 100%}.lead-review-card{padding:16px}}
 #sheet-lead-actions{padding:12px 22px 0}
 #sheet-lead-actions[hidden]{display:none}
 body.course-plan-page #sheet-lead-actions{padding:0}

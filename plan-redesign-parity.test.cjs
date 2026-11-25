@@ -281,6 +281,17 @@ test('applying course preferences returns keyboard focus to the page instead of 
  assert.notEqual(ui.active(),ui.node('body'));assert(ui.active()===ui.node('sheet-status')||ui.active()?.dataset?.action==='options');
 });
 
+test('moving from More into course preferences keeps focus in the open tray and returns to its original opener',async()=>{
+ const ui=mount(),before=JSON.stringify(ui.saved());
+ const opener=ui.button('page-more',{action:'more'});opener.focus();await ui.click(opener);
+ const options=ui.button('more-options',{action:'options'},'sheet-dialog-content');options.focus();
+ const close=ui.button('close-sheet-dialog',{},'sheet-dialog');close.id='close-sheet-dialog';
+ await ui.click(options);
+ assert.equal(options.isConnected,false,'The old menu entry was replaced');assert.equal(ui.active(),close,'The new tray retains a usable keyboard focus target');
+ assert.match(ui.node('sheet-dialog-content').innerHTML,/id="sheet-options-form"/);assert.equal(JSON.stringify(ui.saved()),before);assert.equal(ui.writes.length,0);
+ await ui.cancelDialog();assert.equal(ui.active(),opener,'Closing the nested tray returns to the original page action');
+});
+
 test('a late cost-range response cannot replace another open dialog',async()=>{
  let release;const pending=new Promise(resolve=>release=resolve),ui=mount({fetcher:url=>url==='data/plan-estimate-rates.json'?pending:null});
  ui.api.handleAction('cost-time');await ui.settle();ui.api.handleAction('checks');const checks=ui.node('sheet-dialog-content').innerHTML,before=ui.node('sheet-cost-summary').innerHTML;

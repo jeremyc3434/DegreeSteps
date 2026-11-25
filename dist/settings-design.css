@@ -51,10 +51,10 @@ body.account-page .account-loading { color:var(--settings-muted); font-size:1rem
 
 /* One management route hosts both owner review and authorized college views. */
 body.template-workspace .tw-main { max-width:1440px; width:100%; padding:28px 32px 52px; }
-body.template-workspace .tw-intro { margin:0 0 26px; padding:24px 26px; background:var(--ds-route-navy,#142c51); color:#fff; border-radius:var(--ds-radius-card,8px); }
+body.template-workspace .tw-intro { margin:0 0 26px; padding:24px 26px; background:var(--ds-soft-blue,#edf2ff); color:var(--settings-ink); border-radius:var(--ds-radius-card,8px); }
 body.template-workspace .tw-intro .tw-eyebrow { display:none; }
-body.template-workspace .tw-intro h1 { max-width:36ch; margin:0 0 13px; color:#fff; font-size:clamp(1.8rem,2.5vw,2.2rem); line-height:1.15; letter-spacing:var(--ds-title-tracking,-.03em); font-weight:650; }
-body.template-workspace .tw-intro p { max-width:66ch; color:var(--ds-route-muted,#c1d0e8); font-size:1rem; line-height:1.6; }
+body.template-workspace .tw-intro h1 { max-width:36ch; margin:0 0 13px; color:var(--settings-ink); font-size:clamp(1.8rem,2.5vw,2.2rem); line-height:1.15; letter-spacing:var(--ds-title-tracking,-.03em); font-weight:650; }
+body.template-workspace .tw-intro p { max-width:66ch; color:var(--settings-muted); font-size:1rem; line-height:1.6; }
 body.template-workspace .tw-card { padding:25px; margin-block:22px; background:var(--settings-paper); border-color:var(--settings-line); border-radius:var(--ds-radius-card,8px); box-shadow:none; }
 body.template-workspace .tw-card h2 { font-size:1.4rem; line-height:1.3; letter-spacing:-.025em; font-weight:650; }
 body.template-workspace .tw-card h3 { font-size:1.15rem; line-height:1.4; font-weight:600; }

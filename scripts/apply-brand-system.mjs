@@ -12,7 +12,7 @@ const families=new Map([
   ['compare-plans.html','comparison'],['community.html','community'],
   ...['account.html','admin.html','coverage.html','growth.html'].map(name=>[name,'settings'])
 ]);
-const managedStyles=new Set(['ds-tokens.css','ds-components.css','brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-redesign.css','plan-save.css','home-steps.css','plan-alerts.css']);
+const managedStyles=new Set(['ds-tokens.css','ds-components.css','brand.css','experience.css','workspace-design.css','discovery-design.css','collection-design.css','comparison-design.css','community-design.css','settings-design.css','public-design.css','plan-design.css','plan-redesign.css','plan-save.css','home-steps.css','plan-alerts.css','ds-overlays.css']);
 const managedScripts=new Set(['site-header.js','growth-metrics.js','plan-save.js','task-calendar.js','coach.js','leads.js','plan-alerts.js']);
 // Email plan alerts: the script renders nothing unless /api/alerts is enabled (EMAIL_ALERTS_ENABLED=1).
 const alertPages=new Set(['plan.html','account.html']);
@@ -34,8 +34,9 @@ export function pageExperience(name,source){
   if(alertPages.has(name))styles.push('plan-alerts.css');
   if(family){classes.push('ds-'+family+'-page');styles.push(family+'-design.css');}
   if(savePages.has(name))styles.push('plan-save.css');
-  if(name==='plan.html')styles.push('plan-design.css','plan-redesign.css');
+  if(name==='plan.html')styles.push('plan-design.css');
   if(name==='index.html'&&publicPage)styles.push('home-steps.css');
+  styles.push('ds-overlays.css');
   return {publicPage,workspace,family,styles,classes:[...new Set(classes)]};
 }
 
@@ -58,6 +59,8 @@ export function applyExperience(source,name){
   // The shared header (site-header.js) must run before the workspace shell that renders it; elsewhere it only enhances.
   next=next.replace(/<script\b[^>]*\bsrc=["']\/?site-header\.js["'][^>]*>\s*<\/script>/gi,'');
   const shellTag=/<script\b[^>]*\bsrc=["']\/?app-shell\.js["'][^>]*>/i;
+  // Reachable workspace tools share the same navigation, including pages that previously omitted it.
+  if(selected.workspace&&!['audit.html','guided.html'].includes(name)&&!shellTag.test(next))next=next.replace(/<\/head>/i,'<script src="/app-shell.js" defer></script></head>');
   if(shellTag.test(next))next=next.replace(shellTag,tag=>'<script src="/site-header.js" defer></script>'+tag);else scripts.unshift('site-header.js');
   next=next.replace(/<\/head>/i,selected.styles.map(name=>'<link rel="stylesheet" href="/'+name+'">').join('')+scripts.map(name=>'<script src="/'+name+'" defer></script>').join('')+'</head>');
   next=next.replace(/<body\b([^>]*)>/i,(tag,attributes)=>{
@@ -66,7 +69,7 @@ export function applyExperience(source,name){
     const value=[...new Set([...existing,...selected.classes])].join(' ');
     return '<body'+(match?attributes.replace(match[0],'class="'+value+'"'):attributes+' class="'+value+'"')+'>';
   });
-  next=next.replace(/(<meta\b[^>]*name=["']theme-color["'][^>]*content=)["'][^"']*["']/gi,'$1"#4054f4"');
+  next=next.replace(/(<meta\b[^>]*name=["']theme-color["'][^>]*content=)["'][^"']*["']/gi,'$1"#3458d4"');
   return {html:next,...selected};
 }
 
