@@ -12,7 +12,7 @@ const output = resolve(root,'outputs/site');
 execFileSync(process.execPath,[resolve(root,'scripts/build-community-starters.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 const studentOffers=JSON.parse(await readFile(resolve(root,'content/monetization/student-offers.json'),'utf8'));ProviderOffers.configure(studentOffers);await writeFile(resolve(root,'dist/data/student-offers.json'),JSON.stringify(studentOffers,null,2)+'\n');
 execFileSync(process.execPath,[resolve(root,'scripts/course-assessment-reviews.mjs'),'--check'],{cwd:root,stdio:'inherit'});
-const types = {html:'text/html; charset=utf-8',js:'application/javascript; charset=utf-8',mjs:'application/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',csv:'text/csv; charset=utf-8',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',txt:'text/plain; charset=utf-8',xml:'application/xml; charset=utf-8',webp:'image/webp',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png'};
+const types = {html:'text/html; charset=utf-8',js:'application/javascript; charset=utf-8',mjs:'application/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',ico:'image/vnd.microsoft.icon',csv:'text/csv; charset=utf-8',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',txt:'text/plain; charset=utf-8',xml:'application/xml; charset=utf-8',webp:'image/webp',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png'};
 execFileSync(process.execPath,[resolve(root,'scripts/reviewed-course-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/upi-course-catalog.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/tesu-upi-maps.mjs'),'--check-kit'],{cwd:root,stdio:'inherit'});
@@ -58,7 +58,7 @@ async function walk(path) {
     const full=resolve(path,entry.name);
     if (entry.isDirectory()) {await walk(full);continue;}
     const ext=entry.name.split('.').pop();assert(types[ext],`Unsupported static asset: ${entry.name}`);
-    const bytes=await readFile(full),binary=['webp','jpg','jpeg','png','xlsx'].includes(ext),key='/'+relative(resolve(root,'dist'),full).replaceAll('\\','/');
+    const bytes=await readFile(full),binary=['webp','jpg','jpeg','png','ico','xlsx'].includes(ext),key='/'+relative(resolve(root,'dist'),full).replaceAll('\\','/');
     const gzip=ext==='json'&&bytes.length>1024,compressed=gzip?gzipSync(bytes,{level:9}):null;
     assets[key]={body:gzip?compressed.toString('base64'):bytes.toString(binary?'base64':'utf8'),...(gzip?{encoding:'gzip-base64'}:binary?{encoding:'base64'}:{}),type:types[ext],etag:(gzip?'W/':'')+'"'+createHash('sha256').update(bytes).digest('hex').slice(0,24)+'"'};
   }
@@ -106,7 +106,7 @@ const growthBundle='const {handleGrowthMetrics,pruneGrowthMetrics,recordGrowthEv
 const emailApi=(await readFile(resolve(root,'server/email.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(emailApi),'Bundle email imports explicitly before building');
 const emailBundle='const {sendEmail,emailSettings,validEmailAddress}=(()=>{\n'+emailApi+'\nreturn {sendEmail,emailSettings,validEmailAddress};\n})();\n';
-const alertsApi=(await readFile(resolve(root,'server/plan-alerts.mjs'),'utf8')).replace(/^import \{ sendEmail, emailSettings, validEmailAddress \} from '\.\/email\.mjs';\n/m,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
+const alertsApi=(await readFile(resolve(root,'server/plan-alerts.mjs'),'utf8')).replace(/^import \{ sendEmail, emailSettings, validEmailAddress \} from '\.\/email\.mjs';\n/m,'').replace(/^import \{faviconLinks\} from '\.\/site-icons\.mjs';\n/m,'').replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
 assert(!/^import\s/m.test(alertsApi),'Bundle plan alert imports explicitly before building');
 const alertsBundle='const {handlePlanAlerts,runPlanAlerts,removePlanAlerts}=(()=>{\n'+alertsApi+'\nreturn {handlePlanAlerts,runPlanAlerts,removePlanAlerts};\n})();\n';
 const researchJobs=(await readFile(resolve(root,'server/research-jobs.mjs'),'utf8')).replace(/^export\s+(?=(?:async\s+)?function)/gm,'');
@@ -116,7 +116,8 @@ const publicCacheApi=(await readFile(resolve(root,'server/public-community-cache
 assert(!/^import\s/m.test(publicCacheApi),'Bundle public cache imports explicitly before building');
 const publicCacheBundle='const {publicCommunityCache}=(()=>{'+publicCacheApi+'\nreturn {publicCommunityCache};})();\n';
 const handler=(await readFile(resolve(root,'worker/index.mjs'),'utf8')).replace(/^import .*;\n/gm,'');
-const core=api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle+'\n'+emailBundle+'\n'+alertsBundle+'\n'+leadsBundle;
+const iconMetadata=(await readFile(resolve(root,'server/site-icons.mjs'),'utf8')).replace(/^export\s+(?=const)/gm,'');
+const core=iconMetadata+'\n'+api+'\n'+postgresPortal+'\n'+portal+'\n'+transcriptImport+'\n'+auth+'\n'+catalogApi+'\n'+curriculumBundle+'\n'+collegeApi+'\n'+degreeIdentityApi+'\n'+researchReferencesApi+'\n'+creditSourceDiscoveryApi+'\n'+academicPlannerBundle+programCatalogBundle+academicApi+'\n'+aiConnectionsApiSource+'\n'+researchJobs+'\n'+templateApi+'\n'+publicCacheBundle+'\n'+coverageApi+'\n'+growthBundle+'\n'+coachBundle+'\n'+emailBundle+'\n'+alertsBundle+'\n'+leadsBundle;
 // Keep business tooling out of the student entry module. The managed archive
 // remains self-contained; Cloudflare receives an actual lazy ES module.
 const businessBuild={entryPoints:[resolve(root,'server/owner-business.mjs')],bundle:true,platform:'browser',target:'es2022',write:false,legalComments:'none'};

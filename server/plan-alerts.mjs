@@ -1,4 +1,5 @@
 import { sendEmail, emailSettings, validEmailAddress } from './email.mjs';
+import {faviconLinks} from './site-icons.mjs';
 /** Email plan alerts. Off unless EMAIL_ALERTS_ENABLED=1: every /api/alerts route answers 404 and the scheduled
  * run does nothing. The Worker supplies the verified account (ALERTS_USER), a saved-plan ownership check
  * (ALERTS_PLAN_OWNER) and public plan data (ALERTS_PLAN_DATA); this module never reads a request's identity itself. */
@@ -104,7 +105,7 @@ const DegreePlanAlerts=(()=>{
     return json({deleted:true,id:row.id});
   }
   function page(title,body,status=200){
-    return new Response('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>'+esc(title)+' — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"><style>.alerts-page{max-width:560px;margin:0 auto;padding:56px 16px}.alerts-page button{font:inherit;padding:12px 20px;border-radius:10px;border:0;background:#4054f4;color:#fff;cursor:pointer;min-height:44px}.alerts-page p{line-height:1.55}</style></head><body><main class="alerts-page"><p><a href="/">DegreeSteps</a></p><h1>'+esc(title)+'</h1>'+body+'</main></body></html>',{status,headers:{...baseHeaders,'Content-Type':'text/html; charset=utf-8'}});
+    return new Response('<!doctype html><html lang="en"><head>'+faviconLinks+'<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"><title>'+esc(title)+' — DegreeSteps</title><link rel="stylesheet" href="/site.css"><link rel="stylesheet" href="/brand.css"><style>.alerts-page{max-width:560px;margin:0 auto;padding:56px 16px}.alerts-page button{font:inherit;padding:12px 20px;border-radius:10px;border:0;background:#4054f4;color:#fff;cursor:pointer;min-height:44px}.alerts-page p{line-height:1.55}</style></head><body><main class="alerts-page"><p><a href="/">DegreeSteps</a></p><h1>'+esc(title)+'</h1>'+body+'</main></body></html>',{status,headers:{...baseHeaders,'Content-Type':'text/html; charset=utf-8'}});
   }
   async function byToken(env,token){
     if(typeof token!=='string'||!TOKEN.test(token))return null;
