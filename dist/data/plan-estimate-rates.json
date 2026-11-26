@@ -4330,6 +4330,64 @@
       "notes": [
         "Published tuition and required resources are charged per six-month term. The number of paid terms follows student planning assumptions; no degree total or completion time is guaranteed."
       ]
+    },
+    {
+      "id": "tesu-standard-business-expansion-20261126",
+      "school": "Thomas Edison State University",
+      "modelIds": [
+        "curriculum-tesu-bsba-human-resources-organizational-management",
+        "curriculum-tesu-bsba-marketing",
+        "curriculum-tesu-bs-general-management"
+      ],
+      "catalogs": [
+        "Current undergraduate catalog · checked November 18, 2026"
+      ],
+      "creditSystem": "semester",
+      "modality": "online",
+      "degreeUnits": 120,
+      "institutionMinimumUnits": 15,
+      "populationLabel": "Standard out-of-state undergraduate tuition · non-military",
+      "tuition": {
+        "type": "banded-term",
+        "termRate": 4652,
+        "bandMin": 9,
+        "bandMax": 18,
+        "partTimeRate": 584
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 148,
+      "feeBreakdown": [
+        {
+          "label": "Application fee",
+          "amount": 50,
+          "frequency": "one-time"
+        },
+        {
+          "label": "Graduation audit fee",
+          "amount": 98,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 3,
+        "max": 15,
+        "defaultMin": 9,
+        "defaultMax": 15
+      },
+      "termLabel": "term",
+      "termMonths": null,
+      "sourceIds": [
+        "tesu-tuition-2026-11-25",
+        "tesu-fees-2026-11-25"
+      ],
+      "missing": [],
+      "notes": [
+        "Uses published standard out-of-state undergraduate tuition, effective August 2026. New Jersey/Pennsylvania resident, military, corporate-partner and alumni discounts or waivers are not applied.",
+        "The tuition scenario uses eligible TESU online, Guided Study, Accelerated or e-Pack courses. TECEP and portfolio assessments are billed separately and are not substituted for those courses.",
+        "The selected academic route retains the standard 15-credit TESU course-residency requirement. Edison Accelerate is a separate paid waiver scenario and is not included.",
+        "TESU charges $4,652 for a term of 9–18 eligible credits and $584 per credit below 9. The assumed 9–15 credits per term are a planning scenario; prerequisites, course availability and advisor-approved loads can change the number of billed terms.",
+        "Reuses the existing November 25 published price review for these exact current degree identities; no price-source date or amount was refreshed."
+      ]
     }
   ],
   "unpricedProviders": [

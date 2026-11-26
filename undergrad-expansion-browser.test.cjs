@@ -1,4 +1,4 @@
-/* Public adoption of 13 newly complete plans, using real local assets and
+/* Public adoption of complete expansion plans, using real local assets and
  * synthetic student records. Every external request and all writes are blocked.
  * --fixtures-only validates the exact published choices without Chromium.
  */
@@ -23,7 +23,9 @@ const cases=[
  ['curriculum-wgu-catalog-d734fb4b04eded7c',110,47],
  ['curriculum-wgu-catalog-b2a8a37d4fbedabd',34,0],
  ['curriculum-wgu-catalog-b83ee97289a0732a',35,0,true],
- ['curriculum-wgu-catalog-c4a7efe739d67a5c',36,0]
+ ['curriculum-wgu-catalog-c4a7efe739d67a5c',36,0],
+ ['curriculum-tesu-bsba-human-resources-organizational-management',120,66,true],
+ ['curriculum-tesu-bs-general-management',120,66,true]
 ].map(([modelId,total,outside,mobile=false])=>({modelId,total,outside,mobile}));
 
 function fixture(config){
@@ -49,6 +51,7 @@ function fixture(config){
  const result={...config,route,model,baseline};modelCache.set(model.id,model);return result;
 }
 const fixtures=cases.map(fixture),originalRoute=catalog.pathways.find(route=>route.modelId==='curriculum-liberty-history-bs-online'&&route.readyTemplate);assert(originalRoute,'A returning student starts with an existing ready plan');
+const mobileFlows=fixtures.filter(config=>config.mobile).length,expectedFlows=fixtures.length+mobileFlows;
 function seed(){
  let state=Journey.initialize(Sheet.selectPathway(Sheet.initialize(null,null,catalog),originalRoute),null,catalog);
  Object.assign(state.profile,{goal:'any-degree',field:'any',degreeLevel:'bachelor',modality:'online',classroomImportance:'open',priority:'transfer',proctoringPreference:'open',assessmentPreference:'mixed',hasPrior:'later'});
@@ -72,7 +75,7 @@ function assertAdopted(current,config,original){
 async function run(){
  if(process.argv.includes('--fixtures-only')){
   for(const config of fixtures){const original=seed(),next=Journey.selectRoute(original,config.route,catalog),scenario=Sheet.scenario(next,config.modelId);next.scenarios={...next.scenarios,[config.modelId]:{...scenario,providers:[...new Set([...scenario.providers,...config.baseline.rows.map(row=>row.provider).filter(provider=>provider!=='University')])],optionSelections:Object.fromEntries(config.baseline.rows.map(row=>[row.requirementId,row.optionId]))}};assertAdopted(next,config,original);}
-  console.log('PASS 13 published fixtures: exact credits, original units, sources, published-only choices and raw Journey readiness.');return;
+  console.log('PASS '+fixtures.length+' published fixtures: exact credits, original units, sources, published-only choices and raw Journey readiness.');return;
  }
  const {chromium}=require('playwright'),browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
  const results=[],pageErrors=[],blockedWrites=[],externalRequests=[];let active,activeConfig;
@@ -117,8 +120,8 @@ async function run(){
     throw error;
    }finally{await context.close();active=null;}
   }
-  assert.equal(results.length,16,'All13 desktop and three representative mobile flows execute');assert.equal(pageErrors.length,0,'No uncaught page errors: '+JSON.stringify(pageErrors));
-  await fs.writeFile(path.join(OUT,'report.json'),JSON.stringify({syntheticOnly:true,realAccountWrites:0,externalRequestsDelivered:0,localAssetsOnly:true,publicAdoption:'portal.html?usePlan=<routeId>',registryRevision:publication.registryRevision,asOf:publication.asOf,results,pageErrors,blockedWrites,externalRequests},null,2)+'\n');console.log('PASS 16 public-adoption browser journeys; no real account writes.');
+  assert.equal(results.length,expectedFlows,'All '+fixtures.length+' desktop and '+mobileFlows+' representative mobile flows execute');assert.equal(pageErrors.length,0,'No uncaught page errors: '+JSON.stringify(pageErrors));
+  await fs.writeFile(path.join(OUT,'report.json'),JSON.stringify({syntheticOnly:true,realAccountWrites:0,externalRequestsDelivered:0,localAssetsOnly:true,publicAdoption:'portal.html?usePlan=<routeId>',desktopFlows:fixtures.length,mobileFlows,expectedFlows,registryRevision:publication.registryRevision,asOf:publication.asOf,results,pageErrors,blockedWrites,externalRequests},null,2)+'\n');console.log('PASS '+expectedFlows+' public-adoption browser journeys; no real account writes.');
  }catch(error){
   if(active&&!active.isClosed()){await active.screenshot({path:path.join(OUT,'failure.png'),animations:'disabled'}).catch(()=>{});await fs.writeFile(path.join(OUT,'failure-body.txt'),(await active.locator('body').innerText().catch(()=>'')).slice(0,18000));}
   await fs.writeFile(path.join(OUT,'failure.json'),JSON.stringify({case:activeConfig,message:String(error.message).slice(0,1500),pageErrors,results,blockedWrites},null,2)+'\n');throw error;

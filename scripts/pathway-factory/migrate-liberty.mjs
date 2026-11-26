@@ -265,6 +265,14 @@ export async function migrate({base=root,existingProviders,config=libertyConfig}
     for(const name of (await readdir(join(kitDir,'programs'))).filter(name=>name.endsWith('.json'))){
       const program=await readJSON(join(kitDir,'programs',name));if(reconstructedSlugs.has(program.slug))continue;
       for(const requirement of program.requirements){
+        // An unchanged authored program refers to its canonical mode names,
+        // not a newly factored spelling of an equivalent registry placement.
+        for(const entry of list(requirement.optionRows)){
+          const {mode}=parsePlacement(entry);if(!mode)continue;
+          const definition=existingEquivalencies.placementModes?.[mode];assert(definition,'Authored placement mode is missing: '+mode);
+          const reconstructed=equivalencyDoc.placementModes[mode];assert(reconstructed===undefined||same(reconstructed,definition),'Migration cannot replace canonical placement mode '+mode+' used by authored program '+program.slug);
+          equivalencyDoc.placementModes[mode]=clone(definition);list(definition.appendConditionIds).forEach(preserveCondition);
+        }
         const used=requirement.optionRows
           ? requirement.optionRows.map(entry=>originalRows.get(parsePlacement(entry).row)).filter(Boolean)
           : rowsFor(originalKit,program,requirement);
@@ -278,8 +286,15 @@ export async function migrate({base=root,existingProviders,config=libertyConfig}
           const candidates=equivalencies.filter(candidate=>candidate.provider===row.provider&&candidate.code===row.code);
           const identical=candidate=>same(original,compileOption(reconstructedKit,program,requirement,candidate,program.modalities));
           let reconstructed=candidates.find(candidate=>candidate.id===row.id&&identical(candidate))||candidates.find(identical);
-          if(reconstructed){
-            assert(!requirement.optionRows||reconstructed.id===row.id,'Migration cannot change canonical placement '+row.id+' used by authored program '+program.slug);
+          if(requirement.optionRows&&reconstructed?.id!==row.id){
+            // Equivalent factoring under a different ID cannot update an
+            // authored saved selection. Keep the exact protected award too,
+            // but never overwrite an ID collision or inherit changed provider
+            // identity/period/quantity evidence from the reconstructed registry.
+            assert(!equivalencies.some(candidate=>candidate.id===row.id),'Migration cannot replace canonical award '+row.id+' used by authored program '+program.slug);
+            assert(identical(row),'Migration cannot preserve canonical award '+row.id+' with changed provider facts for authored program '+program.slug);
+            reconstructed=clone(row);equivalencies.push(reconstructed);
+          }else if(reconstructed){
             reconstructed.scope=clone(row.scope);
           }else{
             assert(!equivalencies.some(candidate=>candidate.id===row.id),'Migration cannot replace canonical award '+row.id+' used by authored program '+program.slug);

@@ -23,12 +23,18 @@ test('generic tuition calculators are labelled as illustrations, not plans',()=>
 });
 test('the plan library scope is described once, from the finder’s index',()=>{
  const registry=JSON.parse(read('data/curriculum-registry.json'));
- const catalog=Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(JSON.parse(read('data/pathways.json')),JSON.parse(read('data/program-catalog.json'))),registry),JSON.parse(read('data/publication-index.json')),registry);
+ const publication=JSON.parse(read('data/publication-index.json')),quality=JSON.parse(read('data/pathway-quality-report.json'));
+ const approved=publication.plans.filter(plan=>plan.publicationReady===true),expectedModels=approved.map(plan=>plan.modelId).sort(),byModel=new Map(registry.models.map(model=>[model.id,model]));
+ assert(expectedModels.length>0,'Scope consistency must inspect a nonempty usable plan library');
+ assert.equal(new Set(expectedModels).size,expectedModels.length,'Publication receipts identify one exact academic model each');
+ assert.deepEqual(expectedModels,quality.programs.filter(program=>program.publication.ready).map(program=>program.modelId).sort(),'Public count agrees with independently generated quality decisions');
+ const expectedSchools=[...new Set(expectedModels.map(id=>{const model=byModel.get(id);assert(model,id+' is actually registered');return model.school;}))].sort();
+ const catalog=Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(JSON.parse(read('data/pathways.json')),JSON.parse(read('data/program-catalog.json'))),registry),publication,registry);
  const selectable=Catalog.planLibraryRoutes(catalog,[],index),selectableIds=new Set(selectable.map(plan=>plan.id)),publishedIds=new Set(Catalog.publishedPlans(catalog).map(plan=>plan.id));
  // Public scope comes from actual chooser routes, not the larger research inventory. A researched but held route
  // (currently GCU) must not acquire a public count or link merely because the inventory labels it "reviewed".
  assert.deepEqual(Object.keys(courseIndex.plans).sort(),[...selectableIds].sort());
- assert.equal(courseIndex.selectionPolicy,'publication-ready-models-v1');assert.equal(new Set(Object.values(courseIndex.plans).map(plan=>plan.modelId)).size,selectable.length);assert.equal(selectable.length,43);assert.equal(new Set(selectable.map(plan=>plan.school)).size,4);assert(Object.keys(index.plans).length>selectable.length,'Public filtering cannot delete the admin research inventory');assert(Object.values(index.plans).some(plan=>plan.tier==='confirmation'));
+ assert.equal(courseIndex.selectionPolicy,'publication-ready-models-v1');assert.equal(new Set(Object.values(courseIndex.plans).map(plan=>plan.modelId)).size,selectable.length);assert.deepEqual(selectable.map(plan=>plan.modelId).sort(),expectedModels);assert.deepEqual([...new Set(selectable.map(plan=>plan.school))].sort(),expectedSchools);assert(Object.keys(index.plans).length>selectable.length,'Public filtering cannot delete the admin research inventory');assert(Object.values(index.plans).some(plan=>plan.tier==='confirmation'));
  for(const [id,plan]of Object.entries(index.plans))if(plan.tier==='reviewed'&&!plan.published)assert(!selectableIds.has(id),'An unpublished reviewed inventory entry stays out of the chooser: '+id);
  for(const [id,plan]of Object.entries(courseIndex.plans)){assert.equal(plan.start.tier,'reviewed',id);assert(publishedIds.has(id),'Every route offered publicly passes the publication gate: '+id);assert(selectableIds.has(id),'Each model uses its canonical public route: '+id);}
  const total=selectable.length,schools=new Set(selectable.map(plan=>plan.school)).size,reviewed=selectable.filter(plan=>publishedIds.has(plan.id)).length;

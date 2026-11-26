@@ -48,6 +48,7 @@ test('hub cards lead to full public routes while only full previews declare a me
  const html=renderPublicPlanHub(plans);assert(!html.includes('data-growth-plan='));
  for(const plan of plans)assert(html.includes(plan.path));
  assert.match(html,/Browse available plans/);assert.match(html,/import-courses.html/);
+ const scoped=renderPublicPlanHub(plans,{total:plans.length,schools:new Set(plans.map(plan=>plan.school)).size,reviewed:plans.length});assert.match(scoped,/full degree requirements, university coursework and any documented outside-course options/);assert.doesNotMatch(scoped,/Each includes the full degree requirements, documented outside courses/,'A complete CBE route can legitimately select no outside coursework');
 });
 
 test('public plan prices use their actual selected courses with visible assumptions and no private record awards',async()=>{

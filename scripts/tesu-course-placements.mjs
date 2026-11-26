@@ -6,6 +6,7 @@ import {pathToFileURL} from 'node:url';
 import {loadKit,root,parsePlacement} from './pathway-factory/lib.mjs';
 import {groundedSource,reviewedRows} from './tesu-course-eligibility.mjs';
 import {upiLiberalArtsPlacement} from './tesu-upi-maps.mjs';
+import {assertTESUBusinessBlockEvidence,reviewedTESUBusinessSource} from './tesu-business-blocks.mjs';
 
 export const TESU_PLACEMENT_REVIEW='tesu-exact-course-placements-2026-11-26';
 const CHECKED='2026-11-26',list=v=>Array.isArray(v)?v:[],unique=v=>[...new Set(v)],copy=structuredClone;
@@ -17,6 +18,7 @@ const SOURCES={
  'bsba-accounting':['764a8f7315e2a33b',15],
  'bsba-finance':['5f11d56ce0dd7bc1',15]
 };
+export const TESU_ADDITIONAL_BUSINESS_PROGRAMS=Object.freeze(['bsba-human-resources-organizational-management','bsba-marketing','bs-general-management']);
 const taxonomy={id:'tesu-liberal-taxonomy-placement-2026-11-26',title:'TESU current published discipline course lists and single-use allocation rule',url:'https://www.tesu.edu/degrees-programs/courses/general-education/2021-and-after.php',checked:CHECKED,capture:'content/source-captures/0e6020afa78fc30f.txt',kind:'university',roles:['program-policy','degree-placement']};
 const independentlyListedLiberalCodes=new Set([...((await readFile(resolve(root,taxonomy.capture),'utf8')).matchAll(/\b([A-Z]+-\d{4}):/g))].map(match=>match[1]));
 export const TESU_SUPERSEDED_COPY_RULES=Object.freeze([
@@ -54,10 +56,12 @@ export function placementKind(model,requirement,row){
 const modeId=(program,kind)=>'tesu-reviewed-'+program.slug+'-'+kind;
 export function reviewedRequirementScope(r){return Object.fromEntries(['id','code','credits','category','group','subgroup','institutionalOnly','freeElective','excludeAlreadyUsed','liberalArtsAllocation','minCourseLevel','maxCourseLevel','upperOnly','upper','allowedCoursePrefixes','allowedReceivingCodeExceptions','sourceIds'].filter(key=>Object.hasOwn(r,key)).map(key=>[key,copy(r[key])]));}
 function modelScope(program,model,degree,taxonomyEntry){
- const free=model.requirements.filter(r=>r.freeElective),blockCredits=SOURCES[program.slug][1];
+ const businessAddition=TESU_ADDITIONAL_BUSINESS_PROGRAMS.includes(program.slug);
+ const free=model.requirements.filter(r=>r.freeElective),blockCredits=businessAddition?15:SOURCES[program.slug][1];
  const allocatedFreeCredits=free.reduce((n,r)=>n+r.credits,0),fixedElectiveCredits=program.slug==='bsba-finance'?3:0;
  assert.equal(allocatedFreeCredits+fixedElectiveCredits,blockCredits);assert.equal(model.requirements.filter(r=>r.group==='free-electives').reduce((n,r)=>n+r.credits,0),blockCredits);assert.equal(model.institutionMinCredits,15);assert.equal(model.upperMinCredits,18);assert.equal(model.alternativeMaxCredits,90);
- const quotes=[quote(degree.source,(program.slug.startsWith('bsba-')?'IV':'III')+'. Electives ('+blockCredits+' Credits)',degree.body),quote(degree.source,'TESU accepts credits in transfer from accredited institutions as well as non-collegiate providers.',degree.body)];
+ if(businessAddition)assertTESUBusinessBlockEvidence(degree.body,program.requirements);
+ const quotes=[quote(degree.source,(program.slug.startsWith('bsba-')||businessAddition?'IV':'III')+'. Electives ('+blockCredits+' Credits)',degree.body),quote(degree.source,'TESU accepts credits in transfer from accredited institutions as well as non-collegiate providers.',degree.body)];
  quotes.push(quote(degree.source,'TESU Featured Courses are listed as a guide. Other courses may satisfy the areas',degree.body),quote(degree.source,'D. Scientific Knowledge (6 Credits)',degree.body));
  if(program.slug==='ba-liberal-studies'){
   quotes.push(quote(degree.source,'Option A. Students complete a total of 42 credits of Liberal Studies courses.',degree.body));
@@ -75,14 +79,22 @@ export async function applyTESUCoursePlacements({check=false}={}){
  const sources=new Map(),taxonomyEntry=await groundedSource(taxonomy);sources.set(taxonomyEntry.source.id,taxonomyEntry);
  const models=[],placements=[],supersededLegacyPlacements=[];
  for(const program of kit.programs){
-  const spec=SOURCES[program.slug];assert(spec,'Only the five reviewed current program ledgers are in scope');
-  const oldSource=kit.school.sources.find(s=>s.id===program.modelSourceIds.find(id=>id==='tesu-'+program.slug.replace(/^ba-|^bsba-/,'')+'-current-2026-11-18'));
-  assert(oldSource,program.slug+' current academic source identity');
-  const degree=await groundedSource({id:'tesu-'+program.slug+'-placement-2026-11-26',title:program.title+' — current published elective and degree allocation',url:oldSource.url,checked:CHECKED,capture:'content/source-captures/'+spec[0]+'.txt',kind:'university',roles:['curriculum','degree-placement']});sources.set(degree.source.id,degree);
+  const spec=SOURCES[program.slug],businessAddition=TESU_ADDITIONAL_BUSINESS_PROGRAMS.includes(program.slug);assert(spec||businessAddition,'Only independently reviewed current program ledgers are in scope');
+  let degree;
+  if(businessAddition){
+   const identity=program.modelFields.catalogIdentity,source=kit.school.sources.find(s=>s.id===identity?.sourceId);
+   assert(source&&source.capture===identity.capture&&source.url===identity.sourceUrl&&identity.checkedOn===CHECKED,program.slug+' exact primary degree identity');
+   degree=await reviewedTESUBusinessSource(source);assert.equal(degree.source.sha256,identity.sourceSha256,program.slug+' independently bound primary degree body');
+  }else{
+   const oldSource=kit.school.sources.find(s=>s.id===program.modelSourceIds.find(id=>id==='tesu-'+program.slug.replace(/^ba-|^bsba-/,'')+'-current-2026-11-18'));
+   assert(oldSource,program.slug+' current academic source identity');
+   degree=await groundedSource({id:'tesu-'+program.slug+'-placement-2026-11-26',title:program.title+' — current published elective and degree allocation',url:oldSource.url,checked:CHECKED,capture:'content/source-captures/'+spec[0]+'.txt',kind:'university',roles:['curriculum','degree-placement']});
+  }
+  sources.set(degree.source.id,degree);
   const model=compileProgram(kit,program),scope=modelScope(program,model,degree,taxonomyEntry);models.push(scope);
   for(const kind of ['exact-course','elective','general-category',...(program.slug==='ba-liberal-studies'?['liberal-arts-area']:[])]){
    const typed=kind==='liberal-arts-area'||kind==='general-category';
-   const mode={set:{evidence:'published',coursePlacementReviewId:TESU_PLACEMENT_REVIEW,...(kind==='elective'?{placementType:'elective',allocationType:'free-elective'}:kind==='liberal-arts-area'?{placementType:'major-elective',allocationType:'liberal-arts-area'}:kind==='general-category'?{placementType:'general-elective',allocationType:'general-category'}:{})},placementEvidence:{placementType:kind,extraSourceIds:[degree.source.id,...(typed?[taxonomyEntry.source.id]:[])],citeInOption:true}};
+   const mode={set:{evidence:'published',coursePlacementReviewId:TESU_PLACEMENT_REVIEW,...(kind==='elective'?{placementType:'elective',allocationType:'free-elective'}:kind==='liberal-arts-area'?{placementType:'major-elective',allocationType:'liberal-arts-area'}:kind==='general-category'?{placementType:'general-elective',allocationType:'general-category'}:{})},placementEvidence:{placementType:kind,extraSourceIds:[...(!businessAddition?[degree.source.id]:[]),...(typed?[taxonomyEntry.source.id]:[])],citeInOption:true}};
    kit.equivalencies.placementModes[modeId(program,kind)]=mode;
   }
   for(const requirement of program.requirements){

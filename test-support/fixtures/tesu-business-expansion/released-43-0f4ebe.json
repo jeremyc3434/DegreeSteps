@@ -1,0 +1,612 @@
+{
+  "schemaVersion": 1,
+  "releaseCommit": "0f4ebe6e1e73c3705028f0c21393d08218a0555c",
+  "releaseDate": "2026-11-26",
+  "scope": "Frozen independent preservation oracle for the 43 ready editions released in PR42, before the new TESU business batch. Regeneration must not redefine these expectations. Outside quantities are minimum selected published baseline units, not institutional transfer ceilings or personal credit awards.",
+  "sourceCurriculumFingerprint": "content-v1:8bcce192b354e9f8",
+  "models": [
+    {
+      "modelId": "curriculum-liberty-healthcare-administration-bs-online",
+      "school": "Liberty University",
+      "title": "Healthcare Administration (B.S.) — Online",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 72,
+      "routeIds": [
+        "liberty-catalog-cf514fa45da62116-online"
+      ]
+    },
+    {
+      "modelId": "curriculum-liberty-history-bs-online",
+      "school": "Liberty University",
+      "title": "History (B.S.) — Online",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 69,
+      "routeIds": [
+        "liberty-catalog-5a26b73e7380bcf4-online"
+      ]
+    },
+    {
+      "modelId": "curriculum-liberty-human-services-bs-online",
+      "school": "Liberty University",
+      "title": "Human Services (B.S.) — Online",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 60,
+      "routeIds": [
+        "liberty-catalog-af9ac1098c168c17-online"
+      ]
+    },
+    {
+      "modelId": "curriculum-liberty-interdisciplinary-aa-online",
+      "school": "Liberty University",
+      "title": "Interdisciplinary Studies (A.A.) — Online",
+      "catalog": "2026-2027",
+      "degreeUnits": 60,
+      "creditSystem": "semester",
+      "academicLevel": "associate",
+      "requirementCount": 21,
+      "minimumPublishedOutsideUnits": 39,
+      "routeIds": [
+        "liberty-catalog-efa7a238b81a7729-online"
+      ]
+    },
+    {
+      "modelId": "curriculum-liberty-psychology-addictions-online",
+      "school": "Liberty University",
+      "title": "Psychology (B.S.) — Addictions & Recovery — Online",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 69,
+      "routeIds": [
+        "liberty-catalog-fa62c08cdfa0c990-addictions-recovery-online"
+      ]
+    },
+    {
+      "modelId": "curriculum-liberty-psychology-bs-online",
+      "school": "Liberty University",
+      "title": "Psychology (B.S.) — Online",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 78,
+      "routeIds": [
+        "liberty-catalog-fa62c08cdfa0c990-online"
+      ]
+    },
+    {
+      "modelId": "curriculum-liberty-psychology-bs-residential",
+      "school": "Liberty University",
+      "title": "Psychology (B.S.) — Residential",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 43,
+      "minimumPublishedOutsideUnits": 60,
+      "routeIds": [
+        "liberty-catalog-fa62c08cdfa0c990-residential"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-ba-english",
+      "school": "Thomas Edison State University",
+      "title": "B.A. in English",
+      "catalog": "Current undergraduate catalog · checked November 18, 2026",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 40,
+      "minimumPublishedOutsideUnits": 60,
+      "routeIds": [
+        "tesu-ba-english"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-ba-liberal-studies",
+      "school": "Thomas Edison State University",
+      "title": "B.A. in Humanities — Liberal Studies",
+      "catalog": "Current undergraduate catalog · checked November 18, 2026",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 40,
+      "minimumPublishedOutsideUnits": 72,
+      "routeIds": [
+        "tesu-ba-liberal-studies"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-ba-psychology",
+      "school": "Thomas Edison State University",
+      "title": "B.A. in Psychology",
+      "catalog": "Current undergraduate catalog · checked November 18, 2026",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 40,
+      "minimumPublishedOutsideUnits": 69,
+      "routeIds": [
+        "tesu-ba-psychology"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-bsba-accounting",
+      "school": "Thomas Edison State University",
+      "title": "B.S.B.A. in Accounting",
+      "catalog": "Current undergraduate catalog · checked November 18, 2026",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 40,
+      "minimumPublishedOutsideUnits": 63,
+      "routeIds": [
+        "tesu-bsba-accounting"
+      ]
+    },
+    {
+      "modelId": "curriculum-tesu-bsba-finance",
+      "school": "Thomas Edison State University",
+      "title": "B.S.B.A. in Finance",
+      "catalog": "Current undergraduate catalog · checked November 18, 2026",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 40,
+      "minimumPublishedOutsideUnits": 63,
+      "routeIds": [
+        "tesu-bsba-finance"
+      ]
+    },
+    {
+      "modelId": "curriculum-umpi-maol-yourpace",
+      "school": "University of Maine at Presque Isle",
+      "title": "Master of Arts in Organizational Leadership (MAOL) — YourPace",
+      "catalog": "Current official MAOL academic map (reviewed 2026-11-25)",
+      "degreeUnits": 36,
+      "creditSystem": "semester",
+      "academicLevel": "master",
+      "requirementCount": 12,
+      "minimumPublishedOutsideUnits": 0,
+      "routeIds": [
+        "umpi-catalog-22746d64f0509cd3",
+        "umpi-maol"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-bs-cloud-network-engineering-aws-reviewed",
+      "school": "Western Governors University",
+      "title": "Cloud and Network Engineering – B.S. (Amazon Web Services)",
+      "catalog": "202608",
+      "degreeUnits": 112,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 35,
+      "minimumPublishedOutsideUnits": 34,
+      "routeIds": [
+        "wgu-bs-cloud-network-engineering-aws-reviewed"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-bs-cloud-network-engineering-azure-reviewed",
+      "school": "Western Governors University",
+      "title": "Cloud and Network Engineering – B.S. (Microsoft Azure)",
+      "catalog": "202608",
+      "degreeUnits": 112,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 35,
+      "minimumPublishedOutsideUnits": 34,
+      "routeIds": [
+        "wgu-bs-cloud-network-engineering-azure-reviewed"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-bs-cloud-network-engineering-cisco-reviewed",
+      "school": "Western Governors University",
+      "title": "Cloud and Network Engineering – B.S. (Cisco)",
+      "catalog": "202608",
+      "degreeUnits": 112,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 32,
+      "minimumPublishedOutsideUnits": 34,
+      "routeIds": [
+        "wgu-bs-cloud-network-engineering-cisco-reviewed"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-bs-cloud-network-engineering-general-reviewed",
+      "school": "Western Governors University",
+      "title": "Cloud and Network Engineering – B.S. (General)",
+      "catalog": "202608",
+      "degreeUnits": 109,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 34,
+      "minimumPublishedOutsideUnits": 34,
+      "routeIds": [
+        "wgu-bs-cloud-network-engineering-general-reviewed"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-bs-computer-science-reviewed",
+      "school": "Western Governors University",
+      "title": "Computer Science – B.S.",
+      "catalog": "202611",
+      "degreeUnits": 121,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 51,
+      "routeIds": [
+        "wgu-bs-computer-science-reviewed"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-bs-data-analytics-reviewed",
+      "school": "Western Governors University",
+      "title": "Data Analytics – B.S.",
+      "catalog": "202309",
+      "degreeUnits": 122,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 42,
+      "minimumPublishedOutsideUnits": 62,
+      "routeIds": [
+        "wgu-bs-data-analytics-reviewed"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-19be0ad2d1922f49",
+      "school": "Western Governors University",
+      "title": "Psychology – B.S.",
+      "catalog": "202404",
+      "degreeUnits": 106,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 34,
+      "minimumPublishedOutsideUnits": 37,
+      "routeIds": [
+        "wgu-catalog-19be0ad2d1922f49"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-1d1cb06c2d479685",
+      "school": "Western Governors University",
+      "title": "Public Health – B.S.",
+      "catalog": "202409",
+      "degreeUnits": 104,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 33,
+      "minimumPublishedOutsideUnits": 29,
+      "routeIds": [
+        "wgu-catalog-1d1cb06c2d479685"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-2e49db64c32dfc79",
+      "school": "Western Governors University",
+      "title": "Human Resource Management – B.S.",
+      "catalog": "202509",
+      "degreeUnits": 117,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 78,
+      "routeIds": [
+        "wgu-catalog-2e49db64c32dfc79"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-358f1e10651bf3d8",
+      "school": "Western Governors University",
+      "title": "Accounting – B.S.",
+      "catalog": "202503",
+      "degreeUnits": 121,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 40,
+      "minimumPublishedOutsideUnits": 72,
+      "routeIds": [
+        "wgu-catalog-358f1e10651bf3d8"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-3a9fedcacbfcccae",
+      "school": "Western Governors University",
+      "title": "Software Engineering",
+      "catalog": "202610",
+      "degreeUnits": 120,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 61,
+      "routeIds": [
+        "wgu-catalog-3a9fedcacbfcccae"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-4431e5205a7d441a",
+      "school": "Western Governors University",
+      "title": "Supply Chain and Operations Management – B.S.",
+      "catalog": "202605",
+      "degreeUnits": 110,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 36,
+      "minimumPublishedOutsideUnits": 58,
+      "routeIds": [
+        "wgu-catalog-4431e5205a7d441a"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-689e417cff765fc9",
+      "school": "Western Governors University",
+      "title": "Marketing – B.S.",
+      "catalog": "202607",
+      "degreeUnits": 112,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 37,
+      "minimumPublishedOutsideUnits": 69,
+      "routeIds": [
+        "wgu-catalog-689e417cff765fc9"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-93e0bd6d0c7171ac",
+      "school": "Western Governors University",
+      "title": "Project Management – B.S.",
+      "catalog": "202607",
+      "degreeUnits": 120,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 60,
+      "routeIds": [
+        "wgu-catalog-93e0bd6d0c7171ac"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-94e68cf7b91dec17",
+      "school": "Western Governors University",
+      "title": "Healthcare Administration – B.S.",
+      "catalog": "202509",
+      "degreeUnits": 110,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 34,
+      "minimumPublishedOutsideUnits": 60,
+      "routeIds": [
+        "wgu-catalog-94e68cf7b91dec17"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-995901539a30b649",
+      "school": "Western Governors University",
+      "title": "Health Science – B.S.",
+      "catalog": "202406",
+      "degreeUnits": 91,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 28,
+      "minimumPublishedOutsideUnits": 38,
+      "routeIds": [
+        "wgu-catalog-995901539a30b649"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-a4bbd78b1b3233b7",
+      "school": "Western Governors University",
+      "title": "Cybersecurity and Information Assurance",
+      "catalog": "202610",
+      "degreeUnits": 122,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 37,
+      "minimumPublishedOutsideUnits": 37,
+      "routeIds": [
+        "wgu-catalog-a4bbd78b1b3233b7"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-b2a8a37d4fbedabd",
+      "school": "Western Governors University",
+      "title": "Master of Business Administration (MBA)",
+      "catalog": "201404",
+      "degreeUnits": 34,
+      "creditSystem": "competency-unit",
+      "academicLevel": "master",
+      "requirementCount": 11,
+      "minimumPublishedOutsideUnits": 0,
+      "routeIds": [
+        "wgu-catalog-b2a8a37d4fbedabd"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-b83ee97289a0732a",
+      "school": "Western Governors University",
+      "title": "MBA Information Technology Management",
+      "catalog": "201408",
+      "degreeUnits": 35,
+      "creditSystem": "competency-unit",
+      "academicLevel": "master",
+      "requirementCount": 11,
+      "minimumPublishedOutsideUnits": 0,
+      "routeIds": [
+        "wgu-catalog-b83ee97289a0732a"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-bc26f6f5019c6ee3",
+      "school": "Western Governors University",
+      "title": "Health Information Management – B.S. (from the Leavitt School of Health)",
+      "catalog": "202612",
+      "degreeUnits": 122,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 36,
+      "minimumPublishedOutsideUnits": 28,
+      "routeIds": [
+        "wgu-catalog-bc26f6f5019c6ee3"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-bf14bd14e87ae7aa",
+      "school": "Western Governors University",
+      "title": "Information Technology Management – B.S.",
+      "catalog": "202609",
+      "degreeUnits": 112,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 37,
+      "minimumPublishedOutsideUnits": 64,
+      "routeIds": [
+        "wgu-catalog-bf14bd14e87ae7aa"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-c023977432f945c3",
+      "school": "Western Governors University",
+      "title": "User Experience Design – B.S.",
+      "catalog": "202510",
+      "degreeUnits": 115,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 38,
+      "minimumPublishedOutsideUnits": 60,
+      "routeIds": [
+        "wgu-catalog-c023977432f945c3"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-c4a7efe739d67a5c",
+      "school": "Western Governors University",
+      "title": "MBA Healthcare Administration",
+      "catalog": "202507",
+      "degreeUnits": 36,
+      "creditSystem": "competency-unit",
+      "academicLevel": "master",
+      "requirementCount": 11,
+      "minimumPublishedOutsideUnits": 0,
+      "routeIds": [
+        "wgu-catalog-c4a7efe739d67a5c"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-d6925a8fbb6e8d9a",
+      "school": "Western Governors University",
+      "title": "Finance – B.S.",
+      "catalog": "202608",
+      "degreeUnits": 121,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 40,
+      "minimumPublishedOutsideUnits": 78,
+      "routeIds": [
+        "wgu-catalog-d6925a8fbb6e8d9a"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-d734fb4b04eded7c",
+      "school": "Western Governors University",
+      "title": "Information Technology",
+      "catalog": "202608",
+      "degreeUnits": 110,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 35,
+      "minimumPublishedOutsideUnits": 47,
+      "routeIds": [
+        "wgu-catalog-d734fb4b04eded7c"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-ecceaa488637ac83",
+      "school": "Western Governors University",
+      "title": "Business Management – B.S.",
+      "catalog": "202605",
+      "degreeUnits": 110,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 36,
+      "minimumPublishedOutsideUnits": 69,
+      "routeIds": [
+        "wgu-catalog-ecceaa488637ac83"
+      ]
+    },
+    {
+      "modelId": "curriculum-wgu-catalog-f5987d0b65c06f56",
+      "school": "Western Governors University",
+      "title": "Communications – B.S.",
+      "catalog": "202510",
+      "degreeUnits": 115,
+      "creditSystem": "competency-unit",
+      "academicLevel": "bachelor",
+      "requirementCount": 38,
+      "minimumPublishedOutsideUnits": 60,
+      "routeIds": [
+        "wgu-catalog-f5987d0b65c06f56"
+      ]
+    },
+    {
+      "modelId": "liberty-business-residential",
+      "school": "Liberty University",
+      "title": "B.S. Business Administration & Data Analysis — Interdisciplinary Business",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 44,
+      "minimumPublishedOutsideUnits": 83,
+      "routeIds": [
+        "liberty-business-residential"
+      ]
+    },
+    {
+      "modelId": "liberty-criminal-justice-online",
+      "school": "Liberty University",
+      "title": "B.S. Criminal Justice — General",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 39,
+      "minimumPublishedOutsideUnits": 72,
+      "routeIds": [
+        "liberty-criminal-justice-online"
+      ]
+    },
+    {
+      "modelId": "liberty-criminal-justice-residential",
+      "school": "Liberty University",
+      "title": "B.S. Criminal Justice — General",
+      "catalog": "2026-2027",
+      "degreeUnits": 120,
+      "creditSystem": "semester",
+      "academicLevel": "bachelor",
+      "requirementCount": 44,
+      "minimumPublishedOutsideUnits": 74,
+      "routeIds": [
+        "liberty-criminal-justice-residential"
+      ]
+    }
+  ]
+}

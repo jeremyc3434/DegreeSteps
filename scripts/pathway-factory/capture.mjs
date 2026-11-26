@@ -3,9 +3,10 @@
  * A capture records what a page said when fetched. It never changes a source's checked date or approves a claim.
  * Usage: node scripts/pathway-factory/capture.mjs <url> [--dir content/source-captures]
  */
-import {writeFile,mkdir} from 'node:fs/promises';
+import {writeFile,readFile,mkdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {sha256,capturesRoot,root,parseArgs,isMain} from './lib.mjs';
+import {CONNECTED_WEB_FORMAT,validateConnectedWebCapture} from './connected-web.mjs';
 
 const named={amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",nbsp:' ',ndash:'–',mdash:'—',lsquo:'‘',rsquo:'’',ldquo:'“',rdquo:'”',hellip:'…',middot:'·',bull:'•',copy:'©',reg:'®',trade:'™',rarr:'→',larr:'←',eacute:'é'};
 export function decodeEntities(text){
@@ -162,16 +163,55 @@ export async function fetchPage(url,{fetchImpl=globalThis.fetch,userAgent=USER_A
   if(!pdf&&body&&(/html/i.test(type)||/^\s*</.test(body)))Object.defineProperty(page,'html',{value:body,enumerable:false});
   return page;
 }
-/** Writes a fetched page as <sha256 prefix>.txt plus its JSON sidecar. Returns {path, sidecar, sha256, text, relative}. */
-export async function storeCapture(page,{dir=capturesRoot,now=()=>new Date()}={}){
+const captureWrites=new Map();
+async function readExisting(path){
+  try{return await readFile(path,'utf8');}catch(error){if(error.code==='ENOENT')return null;throw error;}
+}
+/**
+ * The original body and sidecar are immutable. Repeated retrievals of that
+ * exact source get separate receipts; they do not change a claim's review date.
+ * A matching body at another URL needs an explicitly separate capture directory
+ * rather than relabeling evidence that an existing plan may already cite.
+ */
+export async function storeCapture(page,{dir=capturesRoot,now=()=>new Date(),base=root}={}){
+  if(typeof page?.text!=='string'||!/^[a-f0-9]{64}$/.test(page.sha256||'')||sha256(page.text)!==page.sha256)throw Error('Capture text must match its full SHA-256.');
+  const native=page.captureFormat===CONNECTED_WEB_FORMAT?await validateConnectedWebCapture(page,{base}):null;
+  if(!['https:','http:'].includes(new URL(page.url).protocol)||!native&&(!Number.isInteger(page.status)||page.status<200||page.status>=300))throw Error('A capture needs its actual successful HTTP source response or a verified native extraction.');
   const name=page.sha256.slice(0,16);
   await mkdir(dir,{recursive:true});
   const path=join(dir,name+'.txt'),sidecar=join(dir,name+'.json');
-  await writeFile(path,page.text);
   const ranged=page.pages?{pages:page.pages,columns:page.columns,documentSha256:page.documentSha256}:{};
   const excerpt=page.captureFormat?{captureFormat:page.captureFormat,rawResponseSha256:page.rawResponseSha256}:{};
-  await writeFile(sidecar,JSON.stringify({url:page.url,finalUrl:page.finalUrl,fetchedAt:now().toISOString(),sha256:page.sha256,contentType:page.contentType,status:page.status,characters:page.text.length,...ranged,...excerpt},null,2)+'\n');
-  return {path,sidecar,sha256:page.sha256,text:page.text,relative:path.startsWith(root+'/')?path.slice(root.length+1):path};
+  const nativeMetadata=native?{transport:'connected-search-service',originHttpStatus:null,rawBodyCaptured:false,citationRef:native.citationRef,toolResponseReceipt:structuredClone(native.toolResponseReceipt),extraction:structuredClone(native.extraction),nativeCrawlerReported:native.nativeCrawlerReported}:{};
+  const metadata={url:page.url,finalUrl:page.finalUrl,fetchedAt:native?native.observedAt:now().toISOString(),sha256:page.sha256,contentType:page.contentType,status:page.status,characters:page.text.length,...ranged,...excerpt,...nativeMetadata};
+  const relative=path.startsWith(root+'/')?path.slice(root.length+1):path;
+  // Serialize same-process writes. Exclusive file creation also prevents another
+  // process from replacing a snapshot; interrupted/partial pairs fail closed.
+  const previous=captureWrites.get(path)||Promise.resolve();
+  let release;const pending=new Promise(resolve=>{release=resolve;});captureWrites.set(path,pending);
+  await previous;
+  try{
+    const [body,saved]=await Promise.all([readExisting(path),readExisting(sidecar)]);
+    let retrievalReceipt=null;
+    if(body!==null||saved!==null){
+      if(body===null||saved===null)throw Error('An existing capture is incomplete; restore its original evidence before retrying.');
+      const original=JSON.parse(saved);
+      if(sha256(body)!==page.sha256||original.sha256!==page.sha256||body!==page.text)throw Error('Existing capture integrity failed; the original evidence was not overwritten.');
+      if(original.url!==page.url)throw Error('This text is already captured for another URL; use a separate capture directory to retain the new source identity.');
+      const receipt=JSON.stringify({kind:'source-retrieval',version:1,capture:relative,...metadata},null,2)+'\n';
+      const receipts=join(dir,'retrievals',name);await mkdir(receipts,{recursive:true});
+      retrievalReceipt=join(receipts,sha256(receipt)+'.json');
+      const existing=await readExisting(retrievalReceipt);
+      if(existing!==null&&existing!==receipt)throw Error('Retrieval receipt integrity failed.');
+      if(existing===null)await writeFile(retrievalReceipt,receipt,{flag:'wx'});
+    }else{
+      await writeFile(path,page.text,{flag:'wx'});
+      await writeFile(sidecar,JSON.stringify(metadata,null,2)+'\n',{flag:'wx'});
+    }
+    return {path,sidecar,sha256:page.sha256,text:page.text,relative,retrievalReceipt,retrievedAt:metadata.fetchedAt};
+  }finally{
+    release();if(captureWrites.get(path)===pending)captureWrites.delete(path);
+  }
 }
 /** Fetches url, stores text + sidecar, returns {path, sidecar, sha256, text}. fetchImpl and now are injectable for tests. */
 export async function capture(url,{dir=capturesRoot,fetchImpl=globalThis.fetch,now=()=>new Date(),timeoutMs}={}){

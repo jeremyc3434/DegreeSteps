@@ -10,7 +10,10 @@
     "ba-english",
     "bsba-finance",
     "ba-liberal-studies",
-    "ba-psychology"
+    "ba-psychology",
+    "bsba-human-resources-organizational-management",
+    "bsba-marketing",
+    "bs-general-management"
   ],
   "programDefaults": {
     "format": "Online",
@@ -197,6 +200,114 @@
             "creditUnit": "semester",
             "status": "listed",
             "checkedOn": "2026-11-18"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/tesu-human-resources-organizational-management.json",
+        "programs": [
+          "bsba-human-resources-organizational-management"
+        ],
+        "checkedOn": "2026-11-26",
+        "sources": false,
+        "routes": [
+          {
+            "id": "tesu-bsba-human-resources-organizational-management",
+            "title": "B.S.B.A. in Human Resources/Organizational Management",
+            "school": "Thomas Edison State University",
+            "schoolId": "tesu",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-human-resources-organizational-management",
+            "sourceId": "tesu-bsba-human-resources-organizational-management-current-2026-11-26",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/tesu-marketing.json",
+        "programs": [
+          "bsba-marketing"
+        ],
+        "checkedOn": "2026-11-26",
+        "sources": false,
+        "routes": [
+          {
+            "id": "tesu-bsba-marketing",
+            "title": "B.S.B.A. in Marketing",
+            "school": "Thomas Edison State University",
+            "schoolId": "tesu",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-marketing/",
+            "sourceId": "tesu-bsba-marketing-current-2026-11-26",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/tesu-bs-general-management.json",
+        "programs": [
+          "bs-general-management"
+        ],
+        "checkedOn": "2026-11-26",
+        "sources": false,
+        "routes": [
+          {
+            "id": "tesu-bs-general-management",
+            "title": "B.S. in General Management",
+            "school": "Thomas Edison State University",
+            "schoolId": "tesu",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+            "sourceId": "tesu-business-degree-general-management-20261126",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
           }
         ]
       }
@@ -2719,6 +2830,327 @@
       ],
       "captureFormat": "raw-html-recommendation-period-select-excerpt",
       "rawResponseSha256": "2b0e45afe4f299d4de114d5b6bcba33f3ac6656797eee3deae934a700da308fc"
+    },
+    {
+      "id": "tesu-bsba-human-resources-organizational-management-current-2026-11-26",
+      "title": "B.S.B.A. in Human Resources/Organizational Management — current exact curriculum",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-human-resources-organizational-management",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/08ba94f0898450bf.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ],
+      "sha256": "08ba94f0898450bff615e2899b1ec5f90de08bf4cdd947112f9e2d65f6f0fbbd",
+      "sourceContentHash": "08ba94f0898450bff615e2899b1ec5f90de08bf4cdd947112f9e2d65f6f0fbbd"
+    },
+    {
+      "id": "tesu-tuition-2026-11-25",
+      "title": "TESU undergraduate tuition effective August 2026: standard out-of-state rates",
+      "url": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
+      "kind": "university",
+      "roles": [
+        "tuition"
+      ],
+      "checkedOn": "2026-11-25",
+      "capture": "content/estimates/snapshots/tesu-tuition-2026-11-25.txt",
+      "sha256": "f8215234bccdb62d93cf65c75d0c023c57cdeae4764bdfbf96662f6b852a9b1d",
+      "sourceContentHash": "sha256:f8215234bccdb62d93cf65c75d0c023c57cdeae4764bdfbf96662f6b852a9b1d",
+      "reviewBasis": {
+        "type": "retained-published-tuition-and-itemized-fees",
+        "document": "content/estimates/snapshots/tesu-tuition-2026-11-25.txt",
+        "sha256": "f8215234bccdb62d93cf65c75d0c023c57cdeae4764bdfbf96662f6b852a9b1d",
+        "fetchedAt": "2026-11-25T14:55:43.127055+00:00",
+        "rawHtmlSha256": "9ced21150ea4e04886995de92af3faf3ec03279dbc890c52373e57f393239d6e",
+        "httpStatus": 200
+      }
+    },
+    {
+      "id": "tesu-business-course-man-3310-20261126",
+      "title": "TESU current MAN-3310 Human Resources Management",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/3000/man-3310",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/c8826c654bd79af4.txt",
+      "sha256": "c8826c654bd79af4723ade07186cef350dd4af8fc06705c4391930cdfb9100a0",
+      "sourceContentHash": "c8826c654bd79af4723ade07186cef350dd4af8fc06705c4391930cdfb9100a0",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/3000/man-3310"
+      }
+    },
+    {
+      "id": "tesu-business-course-man-3110-20261126",
+      "title": "TESU current MAN-3110 Organizational Behavior",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/3000/man-3110",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/0af88fc64d330717.txt",
+      "sha256": "0af88fc64d330717ddf0ce381078857820ad3eaad698751da3c9dbf4f19fa6af",
+      "sourceContentHash": "0af88fc64d330717ddf0ce381078857820ad3eaad698751da3c9dbf4f19fa6af",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view1",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view1",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/3000/man-3110"
+      }
+    },
+    {
+      "id": "tesu-business-course-psy-3600-20261126",
+      "title": "TESU current PSY-3600 Organizational Theory",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3600",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/4f042444157a03be.txt",
+      "sha256": "4f042444157a03be851562795b0b16aa1c4fc1b0e3d23ae15b55cb0ad4ecdd1d",
+      "sourceContentHash": "4f042444157a03be851562795b0b16aa1c4fc1b0e3d23ae15b55cb0ad4ecdd1d",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view2",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view2",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3600"
+      }
+    },
+    {
+      "id": "tesu-business-course-psy-3630-20261126",
+      "title": "TESU current PSY-3630 Industrial Psychology",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3630",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/24b95e23bc582522.txt",
+      "sha256": "24b95e23bc58252277ffd14705dad15f59b2ac5852c502738e88a049a274e648",
+      "sourceContentHash": "24b95e23bc58252277ffd14705dad15f59b2ac5852c502738e88a049a274e648",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn658view1",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/ee9a7782e9aaea24e89290d8a5003e3763c2f6b459d016fb40944eda8879da17.json",
+        "sha256": "ee9a7782e9aaea24e89290d8a5003e3763c2f6b459d016fb40944eda8879da17",
+        "citationRef": "turn658view1",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/psy-psychology/3000/psy-3630"
+      }
+    },
+    {
+      "id": "tesu-business-course-soc-3620-20261126",
+      "title": "TESU current SOC-3620 Sociology of Work",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/soc-sociology/3000/soc-3620",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/b311e1dbf7f2e9ba.txt",
+      "sha256": "b311e1dbf7f2e9ba328be6ae04903f15a1358d9b3032f6506770d8517005b39d",
+      "sourceContentHash": "b311e1dbf7f2e9ba328be6ae04903f15a1358d9b3032f6506770d8517005b39d",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view3",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view3",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/soc-sociology/3000/soc-3620"
+      }
+    },
+    {
+      "id": "tesu-business-course-man-4250-20261126",
+      "title": "TESU current MAN-4250 Advanced Organizational Management",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/4000/man-4250",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/80e69a622568438a.txt",
+      "sha256": "80e69a622568438a0bf1a73507415339fee73da4c3651d8bb6568dbd1064f2ce",
+      "sourceContentHash": "80e69a622568438a0bf1a73507415339fee73da4c3651d8bb6568dbd1064f2ce",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view4",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view4",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/4000/man-4250"
+      }
+    },
+    {
+      "id": "tesu-bsba-marketing-current-2026-11-26",
+      "title": "B.S.B.A. in Marketing — current exact curriculum",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-marketing/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/60df9ea927fc193a.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ],
+      "sha256": "60df9ea927fc193a23a27b295b9aaaccfc0b20ce7c1b9aa3b3d49c45b4bd6e0c",
+      "sourceContentHash": "60df9ea927fc193a23a27b295b9aaaccfc0b20ce7c1b9aa3b3d49c45b4bd6e0c"
+    },
+    {
+      "id": "tesu-business-course-mkt-4110-20261126",
+      "title": "TESU current MKT-4110 Marketing Research",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/4000/mkt-4110",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/97032bea7d93f761.txt",
+      "sha256": "97032bea7d93f761548d6e2466d55f5d8478ce8bc816df7e7b68ba128f4f0dbb",
+      "sourceContentHash": "97032bea7d93f761548d6e2466d55f5d8478ce8bc816df7e7b68ba128f4f0dbb",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view5",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view5",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/4000/mkt-4110"
+      }
+    },
+    {
+      "id": "tesu-business-course-mkt-4790-20261126",
+      "title": "TESU current MKT-4790 Applied Marketing Practices",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/4000/mkt-4790",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/a5d9675a973b0011.txt",
+      "sha256": "a5d9675a973b0011067c30783dabaab28a8e140dd9136529e57e87bd10736ae5",
+      "sourceContentHash": "a5d9675a973b0011067c30783dabaab28a8e140dd9136529e57e87bd10736ae5",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view6",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view6",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/4000/mkt-4790"
+      }
+    },
+    {
+      "id": "tesu-business-course-mkt-3060-20261126",
+      "title": "TESU current MKT-3060 Creating and Implementing the Electronic Enterprise",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/3000/mkt-3060",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/f4bf9ddd90dbd9b3.txt",
+      "sha256": "f4bf9ddd90dbd9b3ee01532b24d0dba0c056bf931b5bef809b525d5d5b138252",
+      "sourceContentHash": "f4bf9ddd90dbd9b3ee01532b24d0dba0c056bf931b5bef809b525d5d5b138252",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn663view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5759c1da55d03cb562d71da6c0cb6db3bee4bcd47acf7ff070782f8c9c770bf7.json",
+        "sha256": "5759c1da55d03cb562d71da6c0cb6db3bee4bcd47acf7ff070782f8c9c770bf7",
+        "citationRef": "turn663view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/3000/mkt-3060"
+      }
+    },
+    {
+      "id": "tesu-business-course-mkt-3350-20261126",
+      "title": "TESU current MKT-3350 New Product Development and Marketing",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/3000/mkt-3350",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/f7758a89da07f218.txt",
+      "sha256": "f7758a89da07f218123fea5260219125607549b933808a151b4a40cb962484e4",
+      "sourceContentHash": "f7758a89da07f218123fea5260219125607549b933808a151b4a40cb962484e4",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn663view1",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5759c1da55d03cb562d71da6c0cb6db3bee4bcd47acf7ff070782f8c9c770bf7.json",
+        "sha256": "5759c1da55d03cb562d71da6c0cb6db3bee4bcd47acf7ff070782f8c9c770bf7",
+        "citationRef": "turn663view1",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/3000/mkt-3350"
+      }
+    },
+    {
+      "id": "tesu-business-course-mkt-4410-20261126",
+      "title": "TESU current MKT-4410 Marketing with Digital and Social Media",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/4000/mkt-4410",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/2dd55550a2364aae.txt",
+      "sha256": "2dd55550a2364aae34b8a2b83cdcafd9aae688c46bf819e79b7e22f4e98b135d",
+      "sourceContentHash": "2dd55550a2364aae34b8a2b83cdcafd9aae688c46bf819e79b7e22f4e98b135d",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn658view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/ee9a7782e9aaea24e89290d8a5003e3763c2f6b459d016fb40944eda8879da17.json",
+        "sha256": "ee9a7782e9aaea24e89290d8a5003e3763c2f6b459d016fb40944eda8879da17",
+        "citationRef": "turn658view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/4000/mkt-4410"
+      }
+    },
+    {
+      "id": "tesu-business-course-man-4320-20261126",
+      "title": "TESU current MAN-4320 Small Business Management",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/4000/man-432",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/b29f0c67b466a0e1.txt",
+      "sha256": "b29f0c67b466a0e15ccf56fca3ec9bbe35f2bc744a8f18a71747523c29425767",
+      "sourceContentHash": "b29f0c67b466a0e15ccf56fca3ec9bbe35f2bc744a8f18a71747523c29425767",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn665view0",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/60becfbd6f3fa38887b3c219868100fe583cf31fbaffd60007501a811a9e4667.json",
+        "sha256": "60becfbd6f3fa38887b3c219868100fe583cf31fbaffd60007501a811a9e4667",
+        "citationRef": "turn665view0",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/man-management/4000/man-432"
+      }
+    },
+    {
+      "id": "tesu-business-degree-general-management-20261126",
+      "title": "TESU current B.S. in General Management degree requirements",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/175d94db8aea580b.txt",
+      "sha256": "175d94db8aea580bfbf5ef6ef965b8c6b3941ecd4a9b4ff09fb6bba943b93a66",
+      "sourceContentHash": "175d94db8aea580bfbf5ef6ef965b8c6b3941ecd4a9b4ff09fb6bba943b93a66",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn658view2",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/ee9a7782e9aaea24e89290d8a5003e3763c2f6b459d016fb40944eda8879da17.json",
+        "sha256": "ee9a7782e9aaea24e89290d8a5003e3763c2f6b459d016fb40944eda8879da17",
+        "citationRef": "turn658view2",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"
+      }
+    },
+    {
+      "id": "tesu-business-course-fin-3310-20261126",
+      "title": "TESU current FIN-3310 Financial Institutions and Markets",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3310",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/c913adbdb5c8beb9.txt",
+      "sha256": "c913adbdb5c8beb96368cdbae692077777c137d42526406306924e1da79a262e",
+      "sourceContentHash": "c913adbdb5c8beb96368cdbae692077777c137d42526406306924e1da79a262e",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view7",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view7",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3310"
+      }
+    },
+    {
+      "id": "tesu-business-course-fin-3340-20261126",
+      "title": "TESU current FIN-3340 International Finance",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3340",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/8ce4de578739733b.txt",
+      "sha256": "8ce4de578739733bc1ae960e681d96d63994c1556badef81dcb7061a5c047f11",
+      "sourceContentHash": "8ce4de578739733bc1ae960e681d96d63994c1556badef81dcb7061a5c047f11",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn662view8",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5.json",
+        "sha256": "5e04b841abd5a13dd1cfbbb35a1333aeb6253aea9c15a432b977829f6e9912c5",
+        "citationRef": "turn662view8",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/fin-finance/3000/fin-3340"
+      }
     }
   ]
 }

@@ -1,0 +1,125 @@
+{
+  "kind": "tesu-marketing-formal-prerequisite-conflict-review",
+  "version": 1,
+  "id": "tesu-marketing-formal-prerequisite-review-2026-11-26",
+  "checkedOn": "2026-11-26",
+  "school": "Thomas Edison State University",
+  "program": "B.S.B.A. in Marketing",
+  "course": "MKT-4410",
+  "question": "Does current official evidence establish that MKT-3060 satisfies the formal MAR-3060 prerequisite, expressly waive that prerequisite, or authorize a replacement Marketing elective?",
+  "outcome": {
+    "status": "unresolved-formal-prerequisite",
+    "institutionalAliasEstablished": false,
+    "explicitWaiverEstablished": false,
+    "substituteElectiveEstablished": false,
+    "publicationPromotionAllowed": false,
+    "decision": "Retain the original formal MAR-3060 code as unresolved. A selected MKT-3060 course may follow the advisory, but the advisory alone does not close the formal requirement. Hold Marketing readiness unless a different fully source-supported route is established."
+  },
+  "sourceObservations": [
+    {
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mkt-marketing/4000/mkt-4410",
+      "publisher": "Thomas Edison State University current Undergraduate Catalog",
+      "existingCapture": "content/source-captures/2dd55550a2364aae.txt",
+      "formalPrerequisiteQuote": "MAR-3060",
+      "formalPrerequisiteIsHyperlink": false,
+      "advisory": "Separately recommends MKT-3060, MKT-2010 or marketing-management preparation. Its MKT-3060 and MKT-2010 references are linked current courses.",
+      "limit": "The linked advisory and the plain-text formal prerequisite are separate fields. The source does not explicitly declare MAR-3060 an alias of MKT-3060."
+    },
+    {
+      "url": "https://www2.tesu.edu/ucourse.php?CourseCode=MKT-4410&sem=",
+      "publisher": "Thomas Edison State University current course schedule",
+      "finding": "Lists current MKT-4410 study methods and repeats the preparation advisory. It does not explicitly resolve the formal catalog code or waive a prerequisite.",
+      "limit": "A current offering and a schedule page omitting a formal prerequisite do not prove that the formal catalog requirement is satisfied."
+    },
+    {
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-marketing/",
+      "publisher": "Thomas Edison State University current Undergraduate Catalog",
+      "existingCapture": "content/source-captures/60df9ea927fc193a.txt",
+      "requiredAreaCourse": "MKT-4110",
+      "marketingElectiveCredits": 15,
+      "namedMarketingElectives": ["MKT-4790", "MKT-3060", "MKT-3350", "MKT-4410", "MAN-4320"],
+      "finding": "The current table supplies exactly five three-credit Marketing elective courses. No reviewed current degree source explicitly authorizes a sixth named alternative that avoids MKT-4410.",
+      "limit": "Do not add MKT-3100 or another plausible marketing course solely because it exists elsewhere in the university catalog."
+    },
+    {
+      "url": "https://www2.tesu.edu/ucourse.php?CourseCode=MKT-3060&sem=",
+      "publisher": "Thomas Edison State University current course schedule",
+      "finding": "Names the current three-credit MKT-3060 Creating and Implementing the Electronic Enterprise and allows marketing or management classification depending on the program.",
+      "limit": "Cross-disciplinary classification is not a MAR-to-MKT course-prefix or prerequisite crosswalk."
+    }
+  ],
+  "officialSyllabusProvenance": {
+    "catalogLinkedHub": "https://docs.google.com/document/d/1cVcv5khSir0aupxdRokdCYaQHXIj8fXnJ72Z_QOnImQ",
+    "hubTitle": "preview syllabus links_MKT-4410",
+    "retrieval": "Read-only Google Docs connector access to the public documents linked by the university's current catalog page. Native search could read only the JavaScript shell; the connector returned the actual document bodies and linked learning-method syllabi.",
+    "rawOriginBodyCaptured": false,
+    "fullSyllabusBodiesRetained": false,
+    "syllabi": [
+      {
+        "method": "OL",
+        "url": "https://docs.google.com/document/d/18hCt72iDN32PDlNpwUDNOEPO6TG1drokB1AbbTmC2to",
+        "title": "preview syllabus_MKT-4410-OL-nov22",
+        "normalizedBodyTextCharactersInspected": 9842,
+        "prerequisiteBlockFound": false,
+        "MAR3060ReferenceFound": false,
+        "MKT3060ReferenceFound": false,
+        "MKT2010ReferenceFound": false
+      },
+      {
+        "method": "GS",
+        "url": "https://docs.google.com/document/d/1iDWyu1Hk9RmK71miKNQGoTle-UdFD-bswMm8jyw9Ofc",
+        "title": "preview syllabus_MKT-4410-GS-mar26",
+        "normalizedBodyTextCharactersInspected": 9810,
+        "prerequisiteBlockFound": false,
+        "MAR3060ReferenceFound": false,
+        "MKT3060ReferenceFound": false,
+        "MKT2010ReferenceFound": false
+      },
+      {
+        "method": "AC",
+        "url": "https://docs.google.com/document/d/1VL-3WcTabunx1A1b_jGqVP06Z8aGS_NHXCSdn-oT05M",
+        "title": "preview syllabus_MKT-4410-AC-mar26",
+        "normalizedBodyTextCharactersInspected": 37871,
+        "prerequisiteBlockFound": false,
+        "MAR3060ReferenceFound": false,
+        "MKT3060ReferenceFound": false,
+        "MKT2010ReferenceFound": false
+      }
+    ],
+    "commonFinding": "All three previews include the social-media-account advisory, but none explicitly declares no prerequisites, waives MAR-3060 or supplies a MAR/MKT crosswalk.",
+    "limit": "Absence from a preview syllabus is not an explicit waiver of the formal catalog prerequisite. The document-title suffixes are retained as titles, not treated as independently verified effective dates."
+  },
+  "targetedCrosswalkAccessChecks": [
+    {
+      "url": "https://tesu.smartcatalogiq.com/Institutions/Thomas-Edison-State-University/json/Current/Undergraduate-Catalog.json",
+      "outcome": "Current catalog page advertises this JSON path; the connected public web tool reports it inaccessible. No JSON alias data was recovered."
+    },
+    {
+      "url": "https://tesu.smartcatalogiq.com/Institutions/Thomas-Edison-State-University/json/Current/Undergraduate-Catalog-local.json",
+      "outcome": "Current catalog page advertises this localized JSON path; the connected public web tool reports it inaccessible. No JSON alias data was recovered."
+    },
+    {
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mar-marketing/3000/mar-3060",
+      "outcome": "Connected public web tool reports inaccessible; no official redirect or alias was established."
+    },
+    {
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/mar-marketing/300/mar-306",
+      "outcome": "Connected public web tool reports inaccessible; no official redirect or alias was established."
+    },
+    {
+      "url": "https://www2.tesu.edu/ucourse.php?CourseCode=MAR-3060&sem=",
+      "outcome": "Connected public web tool reports inaccessible; no official redirect or alias was established."
+    },
+    {
+      "url": "https://www2.tesu.edu/ucourse.php?CourseCode=MAR-306&sem=",
+      "outcome": "Connected public web tool reports inaccessible; no official redirect or alias was established."
+    }
+  ],
+  "closureEvidenceRequired": [
+    "An official university crosswalk or explicit renumbering/alias statement binding MAR-3060 or MAR-306 to current MKT-3060.",
+    "An explicit current institutional prerequisite correction or waiver applicable to MKT-4410; a missing field in a preview is insufficient.",
+    "An explicitly authorized current Marketing elective alternative with its own complete prerequisite and placement evidence."
+  ],
+  "otherPrograms": "This unresolved Marketing prerequisite does not hold the independently complete HR or General Management routes. It also establishes no OPM-4110 to APS-4020 alias for the separately held Operations route.",
+  "mutations": "Unique research artifact only. No canonical course, alias, degree ledger, eligibility flag, publication gate or generated output was changed."
+}
