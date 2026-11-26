@@ -56,7 +56,8 @@ async function buildExact(page, school, routeId, profile = {}) {
   await page.waitForURL('**/plan.html'); await page.locator('tr.course-plan-row').first().waitFor();
 }
 async function explore(page, profile = {}) {
-  await page.locator('[data-answer=explore]').click();
+  // Help me choose: the quiz comes first; these are the deeper questions that continue from it (no quiz answers here).
+  await page.goto(BASE + 'portal.html?view=preferences&from=quiz');
   await onStep(page, 'purpose');
   await answerProfile(page, profile);
 }

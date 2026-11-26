@@ -10,8 +10,8 @@ async function test(name,fn){await fn();count++;console.log('PASS '+name);}
 async function guided(values){
  const context=await browser.newContext({viewport:{width:1366,height:900}});contexts.push(context);
  const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
- await page.goto(BASE+'portal.html',{waitUntil:'networkidle'});
- await page.locator('[data-answer=explore]').click();
+ // Help me choose: the quiz comes first; these are the deeper questions that continue from it (no quiz answers here).
+ await page.goto(BASE+'portal.html?view=preferences&from=quiz',{waitUntil:'networkidle'});
  for(let guard=0;guard<6;guard++){
   await page.waitForFunction(()=>document.querySelector('#portal-profile-form')||document.querySelector('[data-degree-preview],.portal-empty-result'),null,{timeout:15000});
   const form=page.locator('#portal-profile-form');if(!(await form.count()))break;
