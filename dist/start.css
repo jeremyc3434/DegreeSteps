@@ -113,3 +113,18 @@
 .start-confirm-note strong{color:#8a5a00;font-weight:600}
 a.start-secondary{text-decoration:none;color:var(--tok-ink,#182230)}
 a.start-secondary:hover{border-color:var(--tok-cobalt,#4054f4);color:var(--tok-cobalt,#4054f4)}
+/* Three starting paths: find a degree, use my courses, help me choose. */
+.start-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.start-path{display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:16px;border:1.5px solid #dfe5ee;border-radius:14px;background:#fff;color:var(--tok-ink,#182230);text-decoration:none;transition:border-color var(--tok-duration-fast,120ms)}
+.start-path:hover{border-color:var(--tok-cobalt,#3458d4);color:var(--tok-ink,#182230)}
+.start-path:focus-visible{outline:3px solid var(--tok-cobalt,#3458d4);outline-offset:2px}
+.start-path svg{flex:none;margin-top:1px;color:var(--tok-cobalt,#3458d4)}
+.start-path span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.start-path strong{font-size:16px;font-weight:700;line-height:1.3}
+.start-path small{font-size:14px;line-height:1.4;color:var(--tok-muted,#4e5e74)}
+.start-path[aria-current="true"],.start-path.start-path-on{border-color:var(--tok-cobalt,#3458d4);background:var(--tok-cobalt-soft,#edf1ff)}
+.start-personal-tools[hidden]{display:none}
+.start-answer[hidden]{display:none}
+#start-credits-courses{margin-bottom:4px}
+@media (min-width:1050px){#start-step-degree{grid-template-areas:"progress progress" "title title" "paths paths" "filters count" "filters results" "filters more" "help help"}.start-paths{grid-area:paths}}
+@media (max-width:640px){.start-paths{grid-template-columns:1fr;gap:8px}.start-path{padding:12px 14px;align-items:center}.start-path small{font-size:14px}}

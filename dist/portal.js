@@ -454,9 +454,10 @@
     if(profileFlow()&&profileStepIds.includes(id))return profileBody(id);
     switch (id) {
       case 'start': return (state.journey.completed && p.school && p.degree ? '<div class="portal-current-target"><strong>'+esc(p.degree)+'</strong><p>'+esc(p.school)+'</p>'+button('keep-target','Open my plan',true)+'</div>' : '')+choices([
-        ['explore','Help me choose','Find a degree that fits my goals, time and budget.'],
-        ['target',state.journey.completed?'Change my degree':'I know my degree','Choose my college and degree.'],
-        ['audit','Use my past courses','Upload a transcript or course spreadsheet.']
+        // The same three starting paths as Build my plan (start.html), in the same order and words.
+        ['target',state.journey.completed?'Change my degree':'Find a degree','Search by school, degree or major.'],
+        ['audit','Use my courses',(state.learning||[]).length?'See which degrees fit the courses already in My courses.':'Upload a transcript or spreadsheet. We match it to degrees.'],
+        ['explore','Help me choose','Answer a few questions about your goals, time and budget.']
       ])+'<details class="portal-tip portal-more-starts"><summary>More ways to start</summary><div class="portal-start-browse"><a href="request-plan.html">Paste a degree link</a></div><div class="portal-start-browse"><a href="degree-audit.html">Build my own plan from scratch</a></div><div class="portal-start-browse"><a href="courses.html?tab=browse">Browse transfer courses</a></div></details>';
       case 'school': {
         const schools = [...new Set(availableRoutes().map(r => r.school).filter(Boolean))].sort();
@@ -1004,7 +1005,8 @@
     if(['degree','routes'].includes(id)&&value!=='unknown'){const route=catalog.pathways.find(r=>r.id===value||r.modelId===value);if(route){await previewDegree(route);return;}}
     state=Journey.applyAnswer(state,id,value,catalog);degreePreview=null;
     if(id==='start'&&value==='audit'){
-      state.journey.step='purpose';save();if(saveOK)location.assign('import-courses.html');else showError(Error('Your courses could not be saved.'));return;
+      // Courses already in the shared list are used as they are; an empty list starts with the upload.
+      state.journey.step='purpose';save();if(saveOK)location.assign((state.learning||[]).length?'start.html?sort=fit':'import-courses.html?from=portal');else showError(Error('Your courses could not be saved.'));return;
     }
     if(['school','degree'].includes(id)&&value==='unknown'&&state.journey.profileFlowVersion===1){startProfile('explore');return;}
     if(id==='degree'&&value==='unknown'){state.journey.step='purpose';render();return;}

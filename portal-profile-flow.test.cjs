@@ -111,15 +111,18 @@ test('a first selected degree can resume personalization after its initial draft
 test('the three starting choices keep existing courses and notes while advanced entry points remain optional',async()=>{
  const initial=activeState();initial.journey.step='start';
  const view=fixture({initial}),html=view.api.question('start'),primary=html.split('<details class="portal-tip portal-more-starts">')[0];
- assert.deepEqual([...primary.matchAll(/data-answer="([^"]+)"/g)].map(match=>match[1]),['explore','target','audit']);
+ assert.deepEqual([...primary.matchAll(/data-answer="([^"]+)"/g)].map(match=>match[1]),['target','audit','explore'],'the same order and words as Build my plan: Find a degree, Use my courses, Help me choose');
+ assert.match(primary,/Find a degree|Change my degree/);assert.match(primary,/Use my courses/);assert.match(primary,/Help me choose/);
  assert.match(html,/<details class="portal-tip portal-more-starts"><summary>More ways to start<\/summary>/);
  assert.match(html,/href="request-plan.html"/);assert.match(html,/href="degree-audit.html"/);assert.match(html,/href="courses.html\?tab=browse"/);
  for(const choice of ['explore','target','audit']){
   const f=fixture({initial}),before=f.state();await f.api.answer(choice);
   assert.deepEqual(f.state().learning,before.learning,choice+' keeps the original course collection');
   assert.deepEqual(f.state().sheet.notes,before.sheet.notes,choice+' keeps private notes');
-  if(choice==='audit')assert.equal(f.context.__destination,'import-courses.html');
+  if(choice==='audit')assert.equal(f.context.__destination,'start.html?sort=fit','courses already in My courses are matched to degrees instead of being uploaded again');
   if(choice==='target')assert.equal(f.state().journey.step,'school');
   if(choice==='explore')assert.equal(f.state().journey.profileFlow.mode,'explore');
  }
+ const fresh=activeState();fresh.journey.step='start';fresh.learning=[];const empty=fixture({initial:fresh});await empty.api.answer('audit');
+ assert.equal(empty.context.__destination,'import-courses.html?from=portal','an empty course list starts with the upload');
 });

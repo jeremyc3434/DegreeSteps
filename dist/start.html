@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#3458d4"><title>Build my plan — DegreeSteps</title><meta name="description" content="Pick a degree, add credits you have, and build your plan in three steps."><link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="start.css"><script src="/course-assessment.js" defer></script><script src="/planner.js" defer></script><script src="program-catalog.js" defer></script><script src="program-opportunities.js" defer></script><script src="account-client.js" defer></script><script src="degree-discovery-client.js" defer></script><script src="start.js" defer></script><script src="/site-header.js" defer></script><script src="app-shell.js" defer></script><link rel="stylesheet" href="/program-requirements.css"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" type="image/vnd.microsoft.icon"><link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png"><link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><link rel="stylesheet" href="/ds-overlays.css"><script src="/growth-metrics.js" defer></script><script src="/coach.js" defer></script></head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="theme-color" content="#3458d4"><title>Build my plan — DegreeSteps</title><meta name="description" content="Pick a degree, add credits you have, and build your plan in three steps."><link rel="stylesheet" href="app-shell.css"><link rel="stylesheet" href="start.css"><link rel="stylesheet" href="/my-courses.css"><script src="/course-assessment.js" defer></script><script src="/planner.js" defer></script><script src="program-catalog.js" defer></script><script src="program-opportunities.js" defer></script><script src="account-client.js" defer></script><script src="degree-discovery-client.js" defer></script><script src="my-courses.js" defer></script><script src="start.js" defer></script><script src="/site-header.js" defer></script><script src="app-shell.js" defer></script><link rel="stylesheet" href="/program-requirements.css"><link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" type="image/vnd.microsoft.icon"><link rel="icon" href="/favicon-96x96.png" sizes="96x96" type="image/png"><link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"><link rel="stylesheet" href="/ds-tokens.css"><link rel="stylesheet" href="/brand.css"><link rel="stylesheet" href="/experience.css"><link rel="stylesheet" href="/ds-components.css"><link rel="stylesheet" href="/workspace-design.css"><link rel="stylesheet" href="/discovery-design.css"><link rel="stylesheet" href="/ds-overlays.css"><script src="/growth-metrics.js" defer></script><script src="/coach.js" defer></script></head>
 <body class="start-page ds-experience ds-workspace-page ds-discovery-page">
 <a class="start-skip" href="#start-app">Skip to the plan builder</a>
 <main id="start-app" class="start-app" tabindex="-1">
@@ -7,7 +7,8 @@
   <p id="start-error" class="start-error" role="alert" hidden></p>
   <section id="start-step-degree" class="start-step" hidden aria-labelledby="start-degree-title">
     <div class="start-progress"><p class="start-step-label">Step 1 of 3</p><div class="start-bars" aria-hidden="true"><span class="on"></span><span></span><span></span></div></div>
-    <h1 id="start-degree-title" tabindex="-1">Pick a degree</h1>
+    <h1 id="start-degree-title" tabindex="-1">Start your degree plan</h1>
+    <nav class="start-paths" id="start-paths" aria-label="Three ways to start"><a class="start-path" id="start-path-find" href="#start-q" aria-current="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span><strong>Find a degree</strong><small>Search by school, degree or major.</small></span></a><a class="start-path" id="start-path-courses" href="import-courses.html?from=degrees"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"></path><path d="M4 20.5A2.5 2.5 0 0 1 6.5 18H20v3H6.5A2.5 2.5 0 0 1 4 20.5z"></path><path d="M8 7h8M8 11h6"></path></svg><span><strong>Use my courses</strong><small id="start-path-courses-note">Upload a transcript or spreadsheet. We match it to degrees.</small></span></a><a class="start-path" id="start-quiz-link" href="start.html?step=quiz"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"></path><path d="M12 17h.01"></path><circle cx="12" cy="12" r="9"></circle></svg><span><strong>Help me choose</strong><small>Answer 5 quick questions.</small></span></a></nav>
     <form id="start-filters" class="start-filters" role="search" onsubmit="return false">
       <label for="start-q" class="start-label">What do you want to study?</label>
       <div class="start-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><input id="start-q" type="search" autocomplete="off" placeholder="Psychology, business, a school…"></div>
@@ -33,7 +34,7 @@
     <div id="start-active-filters" class="start-active-filters" aria-label="Active filters"></div>
     <div class="start-personal-tools" id="start-personal-tools">
       <label class="start-check" id="start-personal-label" hidden><input type="checkbox" id="start-personal"><span>Use my courses</span></label>
-      <a id="start-personal-courses" href="import-courses.html?from=degrees">Already taken classes? Add your courses</a>
+      <a id="start-personal-courses" href="courses.html?tab=mine" hidden>My courses</a>
       <p id="start-personal-status" role="status" aria-live="polite" aria-busy="false"></p>
       <button type="button" id="start-personal-retry" class="start-text-link" hidden>Try course matching again</button>
     </div>
@@ -41,9 +42,8 @@
     <div id="start-results" class="start-results"></div>
     <button type="button" id="start-more" class="start-secondary" hidden>Show more degrees</button>
     <div class="start-help">
-      <a href="compare-plans.html?from=courses">Find degrees that fit my courses</a>
-      <a href="start.html?step=quiz" id="start-quiz-link">Not sure? Take the 1-minute quiz</a>
-      <a href="portal.html?view=setup">Answer more questions for tailored picks</a>
+      <a href="compare-plans.html?from=courses">Compare degrees side by side</a>
+      <a href="portal.html?view=preferences">Answer more questions for tailored picks</a>
       <a href="request-plan.html">Degree not listed? Build from a degree link</a>
       <a href="programs.html">Open the full degree finder</a>
     </div>
@@ -53,10 +53,12 @@
     <div class="start-bars" aria-hidden="true"><span class="on"></span><span class="on"></span><span></span></div>
     <p class="start-picked" id="start-picked"></p>
     <h1 id="start-credits-title" tabindex="-1">Have you taken college classes before?</h1>
-    <p class="start-lede">They might count. You can add them later too.</p>
+    <p class="start-lede" id="start-credits-lede">They might count. You can add them later too.</p>
     <form id="start-credits-form" class="start-credits">
+      <div id="start-credits-courses" data-my-courses data-my-courses-from="degrees" data-my-courses-actions="none" hidden></div>
       <fieldset class="start-answers"><legend class="start-sr">Past college credit</legend>
-        <label class="start-answer"><input type="radio" name="prior" value="none" checked><span><strong>No, starting fresh</strong><small>We plan every course.</small></span></label>
+        <label class="start-answer" id="start-prior-have" hidden><input type="radio" name="prior" value="have"><span><strong>Use the courses in My courses</strong><small id="start-prior-have-note">They’re matched to this plan for you.</small></span></label>
+        <label class="start-answer" id="start-prior-none"><input type="radio" name="prior" value="none" checked><span><strong>No, starting fresh</strong><small>We plan every course.</small></span></label>
         <label class="start-answer"><input type="radio" name="prior" value="some"><span><strong>Yes, a few</strong><small>Type them in on the next screen.</small></span></label>
         <label class="start-answer"><input type="radio" name="prior" value="upload"><span><strong>Yes, I have a transcript</strong><small>Upload it and we match the courses.</small></span></label>
       </fieldset>

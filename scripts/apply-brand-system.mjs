@@ -6,7 +6,7 @@ import {faviconLinks} from '../server/site-icons.mjs';
 
 const dist=resolve(import.meta.dirname,'../dist');
 const workspacePages=new Set(['owner.html','help.html','account.html','admin.html','audit.html','campuses.html','community.html','compare-plans.html','courses.html','coverage.html','degree-audit.html','growth.html','guided.html','import-courses.html','library.html','plan.html','portal.html','programs.html','credits-worth.html','request-plan.html','school.html','start.html','template-import.html']);
-const savePages=new Set(['plan.html','portal.html','courses.html','compare-plans.html']);
+const savePages=new Set(['plan.html','portal.html','courses.html','compare-plans.html','import-courses.html','credits-worth.html','degree-audit.html']);
 const families=new Map([
   ...['portal.html','start.html','programs.html','credits-worth.html','request-plan.html','guided.html','audit.html','degree-audit.html','school.html','campuses.html'].map(name=>[name,'discovery']),
   ...['courses.html','import-courses.html','template-import.html'].map(name=>[name,'collection']),
