@@ -1,0 +1,536 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "umass-global",
+  "name": "University of Massachusetts Global",
+  "creditSystem": "semester",
+  "checkedOn": "2026-11-26",
+  "sources": [
+    {
+      "id": "umass-global-sophia-partner-page",
+      "title": "Sophia partner page: Sophia courses that transfer to University of Massachusetts Global",
+      "url": "https://umassglobal.sophia.org/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/3b4bab38a8b67bbe.txt",
+      "tableSha256": "d31f34ac84917020edfbd5a88013908558640bb657d7eb6073a13984dad3ea3d",
+      "kind": "provider",
+      "publisher": "Sophia Learning",
+      "evidenceType": "provider-published-equivalency",
+      "roles": [
+        "transfer-equivalency"
+      ],
+      "scope": "Provider-published course matches for University of Massachusetts Global; University of Massachusetts Global confirms transfer credit when it evaluates the transcript."
+    },
+    {
+      "id": "sophia-soph-0033-current-offer",
+      "kind": "provider",
+      "title": "Sophia current Principles of Finance offering and source semester credits",
+      "url": "https://www.sophia.org/online-courses/business/principles-of-finance/",
+      "checkedOn": "2026-11-17",
+      "retrieval": "full-public-course-page-opened",
+      "checked": "2026-11-17",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "courseCodes": [
+        "SOPH-0033",
+        "BUSI1015"
+      ],
+      "copiedFor": "sophia-partner-import-umassglobal:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "sophia-soph-0033-current-offer-syllabus",
+      "kind": "provider",
+      "title": "Current syllabus linked by Sophia Principles of Finance course page",
+      "url": "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+      "sha256": "65ce55c2e74c5f2da1050652641913788cabe640f3deda2aec8a79ce0b7ce617",
+      "checked": "2026-11-17",
+      "roles": [
+        "provider-identity"
+      ],
+      "provider": "Sophia",
+      "courseCodes": [
+        "SOPH-0033",
+        "BUSI1015"
+      ],
+      "copiedFor": "sophia-partner-import-umassglobal:provider-identity",
+      "copiedFrom": "wgu/school.json"
+    },
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15",
+      "kind": "provider",
+      "provider": "Sophia",
+      "roles": [
+        "provider-identity",
+        "current-offering"
+      ],
+      "sourceContentHash": "sha256:87fc671a0924d31dad7305692d59cc3d68b61791e692a7fcc11f99c879e224f6",
+      "reviewedFact": "Only exact Sophia ACE identities, original source quantities and active offerings are reused. WGU receiving awards are not inherited.",
+      "copiedFor": "sophia-partner-import-umassglobal:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "umass-global-general-education-2026-2027",
+      "title": "UMass Global 2026–2027 catalog: General Education Requirements (credit hour)",
+      "url": "https://catalog.umassglobal.edu/general-education-requirements/general-education-requirements.pdf#pages=1-2&columns=2",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/1a8a8b36ebab3f28.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "policy"
+      ]
+    },
+    {
+      "id": "umass-global-credit-hour-degree-requirements-2026-2027",
+      "title": "UMass Global 2026–2027 catalog: Undergraduate Credit Hour and MyPath Degree Requirements",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/abecd4fa3d29ac6a.txt",
+      "kind": "university",
+      "roles": [
+        "policy",
+        "residency"
+      ]
+    },
+    {
+      "id": "umass-global-credit-for-prior-learning",
+      "title": "UMass Global: Credit for Prior Learning (ACE-recommended learning, Sophia and Study.com)",
+      "url": "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/1602df48618dc216.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ]
+    },
+    {
+      "id": "sophia-soph-0086-current-offer",
+      "kind": "provider",
+      "title": "Sophia current Operations Management offering and source semester credits",
+      "url": "https://www.sophia.org/online-courses/business/operations-management/",
+      "checkedOn": "2026-11-17",
+      "retrieval": "full-public-course-page-opened",
+      "copiedFor": "slot-placements-umass-global:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "sophia-soph-0086-current-offer-syllabus",
+      "kind": "provider",
+      "title": "Current syllabus linked by Sophia Operations Management course page",
+      "url": "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+      "checkedOn": "2026-11-17",
+      "retrieval": "Current provider-linked public PDF captured by root and read from local text extraction; independently checked code/ACE ID/3 semester hours.",
+      "sha256": "d3b6aea422fdd0414cd0b93b34fcf8dea4f7786148f8b843c11ade7a8186e55f",
+      "copiedFor": "slot-placements-umass-global:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "umass-global-undergraduate-credit-hour-policies-2026-2027",
+      "title": "UMass Global 2026–2027 catalog: Undergraduate Credit-Hour and MyPath Academic Policies and Procedures (pp. 1–4)",
+      "url": "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/baf4fdde7c7ba931.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ]
+    }
+  ],
+  "publish": {
+    "compiledBy": "pathway-factory",
+    "compact": true,
+    "documents": [
+      {
+        "path": "content/curricula/umass-global-ba-organizational-leadership.json",
+        "programs": [
+          "ba-organizational-leadership"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "umass-global-ba-organizational-leadership",
+            "title": "Bachelor of Arts in Organizational Leadership (Credit Hour)",
+            "school": "University of Massachusetts Global",
+            "schoolId": "umass-global",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.umassglobal.edu/business-professional-studies/organizational-leadership-ba/organizational-leadership-ba.pdf#pages=1-1&columns=2",
+            "sourceId": "umass-global-ba-organizational-leadership-catalog-2026-11-26",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/umass-global-bachelor-of-business-administration.json",
+        "programs": [
+          "bachelor-of-business-administration"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "umass-global-bachelor-of-business-administration",
+            "title": "Bachelor of Business Administration (Credit Hour)",
+            "school": "University of Massachusetts Global",
+            "schoolId": "umass-global",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.umassglobal.edu/business-professional-studies/business-administration-bba/business-administration-bba.pdf#pages=1-1&columns=2",
+            "sourceId": "umass-global-bachelor-of-business-administration-catalog-2026-11-26",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/umass-global-bs-cybersecurity.json",
+        "programs": [
+          "bs-cybersecurity"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "umass-global-bs-cybersecurity",
+            "title": "Bachelor of Science in Cybersecurity (Credit Hour)",
+            "school": "University of Massachusetts Global",
+            "schoolId": "umass-global",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.umassglobal.edu/arts-sciences/bs-cybersecurity/bs-cybersecurity.pdf#pages=1-1&columns=2",
+            "sourceId": "umass-global-bs-cybersecurity-catalog-2026-11-26",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/umass-global-bs-digital-marketing.json",
+        "programs": [
+          "bs-digital-marketing"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "umass-global-bs-digital-marketing",
+            "title": "Bachelor of Science in Digital Marketing (Credit Hour)",
+            "school": "University of Massachusetts Global",
+            "schoolId": "umass-global",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.umassglobal.edu/business-professional-studies/bsdm-credithour/bsdm-credithour.pdf#pages=1-1&columns=2",
+            "sourceId": "umass-global-bs-digital-marketing-catalog-2026-11-26",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/umass-global-bs-human-resources.json",
+        "programs": [
+          "bs-human-resources"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "umass-global-bs-human-resources",
+            "title": "Bachelor of Science in Human Resources (Credit Hour)",
+            "school": "University of Massachusetts Global",
+            "schoolId": "umass-global",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "business",
+            "fields": [
+              "business"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.umassglobal.edu/business-professional-studies/bachelor-science-human-resources/bachelor-science-human-resources.pdf#pages=1-1&columns=2",
+            "sourceId": "umass-global-bs-human-resources-catalog-2026-11-26",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
+          }
+        ]
+      },
+      {
+        "path": "content/curricula/umass-global-bs-information-technology.json",
+        "programs": [
+          "bs-information-technology"
+        ],
+        "sources": "own",
+        "routes": [
+          {
+            "id": "umass-global-bs-information-technology",
+            "title": "Bachelor of Science in Information Technology (Credit-Hour)",
+            "school": "University of Massachusetts Global",
+            "schoolId": "umass-global",
+            "level": "bachelor",
+            "modalities": [
+              "online"
+            ],
+            "field": "technology",
+            "fields": [
+              "technology"
+            ],
+            "goals": [
+              "any-degree",
+              "career-growth",
+              "change-career"
+            ],
+            "paceModel": "course-term",
+            "url": "https://catalog.umassglobal.edu/business-professional-studies/bs-information-technology/bs-information-technology.pdf#pages=1-1&columns=2",
+            "sourceId": "umass-global-bs-information-technology-catalog-2026-11-26",
+            "degreeCredits": 120,
+            "creditUnit": "semester",
+            "status": "listed",
+            "checkedOn": "2026-11-26"
+          }
+        ]
+      }
+    ]
+  },
+  "programDefaults": {
+    "format": "Online",
+    "modalities": [
+      "online"
+    ],
+    "paceModel": "course-term"
+  },
+  "routes": [
+    {
+      "id": "umass-global-ba-organizational-leadership",
+      "title": "Bachelor of Arts in Organizational Leadership (Credit Hour)",
+      "school": "University of Massachusetts Global",
+      "schoolId": "umass-global",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.umassglobal.edu/business-professional-studies/organizational-leadership-ba/organizational-leadership-ba.pdf#pages=1-1&columns=2",
+      "sourceId": "umass-global-ba-organizational-leadership-catalog-2026-11-26",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-26"
+    },
+    {
+      "id": "umass-global-bachelor-of-business-administration",
+      "title": "Bachelor of Business Administration (Credit Hour)",
+      "school": "University of Massachusetts Global",
+      "schoolId": "umass-global",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.umassglobal.edu/business-professional-studies/business-administration-bba/business-administration-bba.pdf#pages=1-1&columns=2",
+      "sourceId": "umass-global-bachelor-of-business-administration-catalog-2026-11-26",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-26"
+    },
+    {
+      "id": "umass-global-bs-cybersecurity",
+      "title": "Bachelor of Science in Cybersecurity (Credit Hour)",
+      "school": "University of Massachusetts Global",
+      "schoolId": "umass-global",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.umassglobal.edu/arts-sciences/bs-cybersecurity/bs-cybersecurity.pdf#pages=1-1&columns=2",
+      "sourceId": "umass-global-bs-cybersecurity-catalog-2026-11-26",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-26"
+    },
+    {
+      "id": "umass-global-bs-digital-marketing",
+      "title": "Bachelor of Science in Digital Marketing (Credit Hour)",
+      "school": "University of Massachusetts Global",
+      "schoolId": "umass-global",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.umassglobal.edu/business-professional-studies/bsdm-credithour/bsdm-credithour.pdf#pages=1-1&columns=2",
+      "sourceId": "umass-global-bs-digital-marketing-catalog-2026-11-26",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-26"
+    },
+    {
+      "id": "umass-global-bs-human-resources",
+      "title": "Bachelor of Science in Human Resources (Credit Hour)",
+      "school": "University of Massachusetts Global",
+      "schoolId": "umass-global",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "business",
+      "fields": [
+        "business"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.umassglobal.edu/business-professional-studies/bachelor-science-human-resources/bachelor-science-human-resources.pdf#pages=1-1&columns=2",
+      "sourceId": "umass-global-bs-human-resources-catalog-2026-11-26",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-26"
+    },
+    {
+      "id": "umass-global-bs-information-technology",
+      "title": "Bachelor of Science in Information Technology (Credit-Hour)",
+      "school": "University of Massachusetts Global",
+      "schoolId": "umass-global",
+      "level": "bachelor",
+      "modalities": [
+        "online"
+      ],
+      "field": "technology",
+      "fields": [
+        "technology"
+      ],
+      "goals": [
+        "any-degree",
+        "career-growth",
+        "change-career"
+      ],
+      "paceModel": "course-term",
+      "url": "https://catalog.umassglobal.edu/business-professional-studies/bs-information-technology/bs-information-technology.pdf#pages=1-1&columns=2",
+      "sourceId": "umass-global-bs-information-technology-catalog-2026-11-26",
+      "degreeCredits": 120,
+      "creditUnit": "semester",
+      "status": "listed",
+      "checkedOn": "2026-11-26"
+    }
+  ],
+  "programOrder": [
+    "ba-organizational-leadership",
+    "bachelor-of-business-administration",
+    "bs-cybersecurity",
+    "bs-digital-marketing",
+    "bs-human-resources",
+    "bs-information-technology"
+  ]
+}
