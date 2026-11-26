@@ -374,7 +374,8 @@ test('structurally complete draft templates cannot open as ready plans or invent
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology','curriculum-tesu-ba-psychology'],
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/english','curriculum-tesu-ba-english'],
   ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/','curriculum-tesu-ba-liberal-studies'],
-  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','curriculum-liberty-interdisciplinary-aa-online'],
+  // Interdisciplinary A.A. is now ready; Business A.A. still has a sourced placement hold.
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-major-aa/business-aa-online/','curriculum-liberty-business-aa-online'],
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','curriculum-liberty-psychology-aa-online']
  ];
  for(const [url,modelId]of cases){

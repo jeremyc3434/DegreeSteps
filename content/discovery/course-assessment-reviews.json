@@ -457,6 +457,45 @@
       "quote": "AI-proctored final examinations",
       "capture": "content/source-captures/7e89ac14026a7db9.html",
       "sha256": "7e89ac14026a7db9a2201741df362285f54af40b7b952ef3c85183558952b94d"
+    },
+    {
+      "id": "sophia-soph-0062-assessments-2026-11-25",
+      "provider": "Sophia",
+      "courseCodes": ["SOPH-0062", "CS1101"],
+      "url": "https://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf",
+      "title": "Sophia CS1101 / SOPH-0062 current linked Java syllabus and assessments",
+      "checkedOn": "2026-11-25",
+      "quote": "Students must complete 11 Challenges (formative assessments), 3 Milestones (summative assessments), and 1 Touchstone (project-based or written assessments)",
+      "capture": "content/source-captures/2560ef9c778b09f8.txt",
+      "sha256": "2560ef9c778b09f886c081ac54f7e52dd18c991cc70b3a02c857c461e52ea72e",
+      "captureMethod": "origin-pdf-text-extraction",
+      "rawBodyCaptured": false
+    },
+    {
+      "id": "study-sdcm-0210-assessments-2026-11-25",
+      "provider": "Study.com",
+      "courseCodes": ["SDCM-0210", "Math 108"],
+      "url": "https://study.com/academy/course/math-108-discrete-mathematics.html",
+      "title": "Study.com Math 108 / SDCM-0210 original course and grading requirements",
+      "checkedOn": "2026-11-25",
+      "quote": "chapter tests count for two-thirds, the final exam for one-third",
+      "capture": "content/source-captures/24c488feff959261.txt",
+      "sha256": "24c488feff9592613662f7b8e28ee90d114fdb8434f6ae8c3508e366cdb6a7ab",
+      "captureMethod": "native-public-web-rendered-extract",
+      "rawBodyCaptured": false
+    },
+    {
+      "id": "study-sdcm-0218-assessments-2026-11-25",
+      "provider": "Study.com",
+      "courseCodes": ["SDCM-0218", "Computer Science 204"],
+      "url": "https://study.com/academy/course/computer-science-204-database-programming.html",
+      "title": "Study.com Computer Science 204 / SDCM-0218 original course and grading requirements",
+      "checkedOn": "2026-11-25",
+      "quote": "Three hands-on SQL assignments and open-book chapter tests, with no final exam",
+      "capture": "content/source-captures/05ee6505a7b29c3f.txt",
+      "sha256": "05ee6505a7b29c3f93ec41c1ad46a8a80ec9fb22257a63afdc9f8d084217f77c",
+      "captureMethod": "native-public-web-rendered-extract",
+      "rawBodyCaptured": false
     }
   ],
   "reviews": [
@@ -1455,6 +1494,45 @@
       "sourceIds": [
         "upi-assessment-integrity-2026-11-25"
       ]
+    },
+    {
+      "id": "sophia-soph-0062-assessments-2026-11-25",
+      "provider": "Sophia",
+      "scope": "course",
+      "courseCodes": ["SOPH-0062"],
+      "status": "unmonitored",
+      "label": "Challenges, milestones and a project",
+      "detail": "The linked CS1101 / SOPH-0062 syllabus requires 11 Challenges, 3 Milestones and 1 Touchstone. Sophia's current policy describes open-book assessments without proctored exams. Identity verification may still be required; a separate final exam, required lab or exclusively written Touchstone is not established by this syllabus.",
+      "sourceIds": ["sophia-soph-0062-assessments-2026-11-25", "sophia-assessments-2026", "sophia-identity-verification"],
+      "courseIdentity": {"aceId": "SOPH-0062", "providerCourseCode": "CS1101", "sourceCredits": 3, "sourceCreditSystem": "semester", "sourceIds": ["sophia-soph-0062-assessments-2026-11-25"]},
+      "reviewedAssessmentFacts": {"challenges": 11, "milestones": 3, "touchstones": 1, "minimumOverallPercent": 70, "separateFinalExam": null, "requiredLab": null, "exclusivelyWrittenAssessment": null},
+      "reviewMethod": "Bind the current provider-linked original-course syllabus independently from WGU receiving awards, then apply the separately cited current Sophia assessment and identity-verification policies. Unstated course attributes remain unknown."
+    },
+    {
+      "id": "study-sdcm-0210-assessments-2026-11-25",
+      "provider": "Study.com",
+      "scope": "course",
+      "courseCodes": ["SDCM-0210"],
+      "status": "unmonitored",
+      "label": "Open-book chapter tests and final",
+      "detail": "Math 108 / SDCM-0210 grades chapter tests and a final exam. Study.com's current College Saver and College Saver Pro policies describe open-book, unproctored course exams with identity verification before each final. A separate assignment or lab requirement is not established by the captured course evidence.",
+      "sourceIds": ["study-sdcm-0210-assessments-2026-11-25", "study-no-proctor-2026", "study-identity-verification-2026", "study-exam-policies-2026"],
+      "courseIdentity": {"aceId": "SDCM-0210", "providerCourseCode": "Math 108", "sourceCredits": 3, "sourceCreditSystem": "semester", "sourceIds": ["study-sdcm-0210-assessments-2026-11-25"]},
+      "reviewedAssessmentFacts": {"finalExam": true, "minimumOverallPercent": 70, "chapterTestFraction": "2/3", "finalExamFraction": "1/3", "requiredLab": null, "writtenAssignmentRequirement": null},
+      "reviewMethod": "Bind the captured original provider course and its explicit final-exam grading evidence independently from WGU receiving awards; apply the separately cited current provider exam policies without inferring unlisted assessments."
+    },
+    {
+      "id": "study-sdcm-0218-assessments-2026-11-25",
+      "provider": "Study.com",
+      "scope": "course",
+      "courseCodes": ["SDCM-0218"],
+      "status": "unmonitored",
+      "label": "SQL assignments; no final exam",
+      "detail": "Computer Science 204 / SDCM-0218 lists three SQL assignments and open-book chapter tests, with no final exam. Study.com's current course-exam policy describes open-book, unproctored exams. No final-exam identity-verification step or additional lab requirement is inferred for this course.",
+      "sourceIds": ["study-sdcm-0218-assessments-2026-11-25", "study-no-proctor-2026", "study-exam-policies-2026"],
+      "courseIdentity": {"aceId": "SDCM-0218", "providerCourseCode": "Computer Science 204", "sourceCredits": 3, "sourceCreditSystem": "semester", "sourceIds": ["study-sdcm-0218-assessments-2026-11-25"]},
+      "reviewedAssessmentFacts": {"finalExam": false, "sqlAssignments": 3, "minimumOverallPercent": 70, "assignmentFraction": "2/3", "chapterTestFraction": "1/3", "requiredLab": null},
+      "reviewMethod": "Bind the captured original provider course, explicit SQL work and no-final statement independently from WGU receiving awards. Apply the cited general course-exam policy only to the chapter tests; retain unknown lab requirements."
     }
   ]
 }

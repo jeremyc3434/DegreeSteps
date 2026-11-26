@@ -75,6 +75,7 @@ test('malformed, undated, credential-bearing and unbound sources fail validation
     p=>p.reviews[0].facts[0].scope='assumed',
     p=>p.reviews[0].facts[0].kind='eligibility-approved',
     p=>p.reviews[0].catalogYear='2026-2025',
+    p=>p.reviews[0].catalogYear='Current unreviewed academic map',
     p=>p.reviews[0].facts[1].courseCodes=[],
     p=>p.sources[0].quote=Array(26).fill('word').join(' ')
   ];
@@ -109,9 +110,42 @@ test('missing or unrelated research never becomes an absence-of-exams, attendanc
   assert.equal(Object.hasOwn(facts,'eligible'),false);
 });
 
+test('MAOL current-map requirements bind captured graduate evidence and reject changed identity, hash, URL, date or catalog',()=>{
+  const reviewed=read('content/discovery/umpi-program-requirements.json'),registry=read('dist/data/curriculum-registry.json'),entry=registry.models.find(entry=>entry.id==='curriculum-umpi-maol-yourpace');
+  const actual=read('dist/'+entry.path).models.find(model=>model.id===entry.id),before=JSON.stringify({reviewed,actual});
+  assert.doesNotThrow(()=>validateProgramRequirementPacket(reviewed));
+  const facts=assembleProgramRequirements(actual,[reviewed]);
+  assert.deepEqual(facts.map(fact=>fact.id),['umpi-maol-graduate-admission','umpi-maol-final-assessment-threshold']);
+  assert(facts.every(fact=>fact.scope==='program'&&!fact.prominent));assert(!facts.some(fact=>['attendance','professional'].includes(fact.kind)));
+  assert.match(facts[0].detail,/bachelor’s degree/);assert.match(facts[1].detail,/at least 80/);assert.match(facts[1].detail,/does not establish.*whether an assessment is monitored/);
+  for(const source of reviewed.sources){
+    const body=readFileSync(new URL(source.capture,import.meta.url),'utf8');
+    assert.equal(createHash('sha256').update(body).digest('hex'),source.sha256);assert.equal(source.checkedOn,'2026-11-25');assert.equal(source.kind,'university');
+    assert(body.replace(/\s+/g,' ').includes(source.quote.replace(/\s+/g,' ')),source.id+' retains its actual primary quotation');
+  }
+  for(const change of [
+    packet=>packet.reviews[0].catalogIdentity.sourceSha256='0'.repeat(64),
+    packet=>packet.reviews[0].catalogIdentity.sourceUrl='https://www.umpi.edu/unrelated-map/',
+    packet=>packet.reviews[0].catalogIdentity.checkedOn='2026-11-24',
+    packet=>packet.reviews[0].catalogYear='2026-2027'
+  ]){const altered=clone(reviewed);change(altered);assert.throws(()=>validateProgramRequirementPacket(altered));assert.deepEqual(assembleProgramRequirements(actual,[altered]),[]);}
+  const changedLabel=clone(reviewed);changedLabel.reviews[0].catalogIdentity.label='Current unreviewed academic map';assert.deepEqual(assembleProgramRequirements(actual,[changedLabel]),[]);
+  for(const change of [
+    model=>model.catalogIdentity.label='Current unreviewed academic map',
+    model=>model.catalogIdentity.sourceUrl='https://www.umpi.edu/unrelated-map/',
+    model=>model.catalogIdentity.checkedOn='2026-11-24',
+    model=>model.catalogYear='2026-2027',
+    model=>model.sources.find(source=>source.id===reviewed.reviews[0].catalogIdentity.sourceId).sha256='0'.repeat(64),
+    model=>model.sources.find(source=>source.id===reviewed.reviews[0].catalogIdentity.sourceId).kind='provider',
+    model=>model.sources.find(source=>source.id===reviewed.reviews[0].catalogIdentity.sourceId).capture='content/source-captures/unrelated.txt'
+  ]){const altered=clone(actual);change(altered);assert.deepEqual(assembleProgramRequirements(altered,[reviewed]),[]);}
+  assert.equal(JSON.stringify({reviewed,actual}),before);
+});
+
 test('the research loader and actual published program bindings remain source-bound and read-only',async()=>{
   const root=new URL('./',import.meta.url).pathname,packets=await loadProgramRequirementReviews(root);
-  assert(Array.isArray(packets)&&packets.length===2);
+  assert(Array.isArray(packets)&&packets.length>0);
+  assert(packets.some(packet=>packet.reviews.some(review=>review.id==='umpi-maol-graduate-requirements-2026-11-25')));
   packets.forEach(packet=>assert.doesNotThrow(()=>validateProgramRequirementPacket(packet)));
   const registry=read('dist/data/curriculum-registry.json'),publication=read('dist/data/publication-index.json');
   const published=new Set(publication.plans.map(plan=>plan.modelId)),files=new Map(),models=new Map();
@@ -124,7 +158,7 @@ test('the research loader and actual published program bindings remain source-bo
   for(const packet of packets)for(const review of packet.reviews){
     for(const id of review.modelIds){
       assert(published.has(id),id+' is a published program rather than an unreviewed directory listing');
-      const model=models.get(id);assert.equal(edition(model.catalogYear||model.catalog),edition(review.catalogYear));
+      const model=models.get(id);assert.equal(edition(model.catalogYear||model.catalog),edition(review.catalogIdentity?.label||review.catalogYear));
       assert.equal(/^online$/i.test(model.format)?'online':/^(residential|campus|on campus)$/i.test(model.format)?'campus':null,review.modality);
       const binding=review.programBindings.find(binding=>binding.modelId===id);assert(binding&&model.sources.some(source=>source.url===binding.degreeUrl),id+' has its exact degree source');
       for(const fact of review.facts)if(fact.scope==='course')assert(fact.courseCodes.every(value=>model.requirements.some(req=>code(req.code)===code(value))),id+' has every named required course');

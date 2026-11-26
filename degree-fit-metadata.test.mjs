@@ -30,11 +30,25 @@ const fitFor=fixture=>buildProgramFit(fixture);
 const clone=value=>structuredClone(value);
 const legacyIds=['liberty-criminal-justice-online','liberty-criminal-justice-residential'];
 
-test('all 22 published degree editions receive independent, source-bound fit facts',()=>{
-  assert.equal(fixtures.size,22);
+test('all currently published degree editions receive independent, source-bound fit facts',()=>{
+  const publishedIds=new Set(publication.plans.filter(plan=>plan.publicationReady).map(plan=>plan.modelId));
+  assert(fixtures.size>0,'Published fit coverage must inspect a nonempty library');
+  assert.equal(fixtures.size,quality.summary.publicationReady);
+  assert.deepEqual([...fixtures.keys()].sort(),[...publishedIds].sort());
+  assert.deepEqual([...publishedIds].sort(),quality.programs.filter(program=>program.publication.ready).map(program=>program.modelId).sort());
+  const expectedBillingCounts=new Map(),billingByTuitionType={'threshold-credit':'per-credit','per-credit':'per-credit','banded-term':'flat-term','paid-term':'subscription'};
   const fits=[...fixtures.values()].map(fixture=>{
     const {model,route,plan,estimate}=fixture,fit=fitFor(fixture);
     assert.equal(estimate.available,true,model.id+' has its actual, validated billing estimate');
+    const rate=rates.entries.find(entry=>entry.id===estimate.rateEntryId);
+    assert(rate&&rate.modelIds.includes(model.id),model.id+' binds to its independently reviewed rate entry');
+    assert.equal(rate.creditSystem,model.creditSystem);assert.equal(rate.degreeUnits,model.totalCredits);
+    assert.equal(rate.modality,/^online$/i.test(model.format)?'online':'campus');
+    assert(rate.catalogs.some(value=>edition(value)===edition(model.catalogYear||model.catalog)));
+    const expectedBilling=billingByTuitionType[rate.tuition.type];
+    assert(expectedBilling,model.id+' uses a reviewed supported tuition type');
+    assert.equal(fit.billing,expectedBilling,model.id+' billing follows its exact reviewed rate type');
+    expectedBillingCounts.set(expectedBilling,(expectedBillingCounts.get(expectedBilling)||0)+1);
     assert.equal(fit.modelId,model.id);
     assert.equal(fit.catalogYear,edition(model.catalogYear||model.catalog));
     assert.equal(fit.modality,/^online$/i.test(model.format)?'online':'campus');
@@ -50,7 +64,7 @@ test('all 22 published degree editions receive independent, source-bound fit fac
       assert.equal(fit.competencyBased,true);assert.equal(fit.selfPaced,true);assert.equal(fit.billing,'subscription');
       assert.match(fit.paceLabel,/Self-paced/);
       assert.equal(fit.sources.learning.url,new URL(model.paceSourceUrl||route.paceSourceUrl||model.learningSourceUrl||route.learningSourceUrl||route.url||model.url).href);
-      assert.equal(fit.learningReviewId,undefined,'WGU does not inherit a Liberty scheduled-course review');
+      assert.equal(fit.learningReviewId,undefined,'Self-paced programs do not inherit a Liberty scheduled-course review');
     }else{
       assert.equal(model.school,'Liberty University');assert.equal(fit.selfPaced,false);
       assert.equal(fit.competencyBased,null,'A professor deadline is not evidence for or against CBE assessment');
@@ -66,11 +80,10 @@ test('all 22 published degree editions receive independent, source-bound fit fac
     }
     return fit;
   });
-  assert.equal(fits.filter(fit=>fit.competencyBased===true&&fit.selfPaced===true&&fit.billing==='subscription').length,14);
-  assert.equal(fits.filter(fit=>fit.selfPaced===false&&fit.competencyBased===null).length,8);
-  assert.equal(fits.filter(fit=>fit.billing==='per-credit').length,6);
-  assert.equal(fits.filter(fit=>fit.billing==='flat-term').length,2);
-  assert.equal(fits.filter(fit=>fit.billing==='subscription').length,14);
+  const competencyPrograms=[...fixtures.values()].filter(({model})=>model.paceModel==='competency-subscription').length;
+  assert.equal(fits.filter(fit=>fit.competencyBased===true&&fit.selfPaced===true&&fit.billing==='subscription').length,competencyPrograms);
+  assert.equal(fits.filter(fit=>fit.selfPaced===false&&fit.competencyBased===null).length,fixtures.size-competencyPrograms);
+  for(const [billing,count] of expectedBillingCounts)assert.equal(fits.filter(fit=>fit.billing===billing).length,count,billing+' coverage matches the reviewed rate entries');
 });
 
 test('legacy Criminal Justice pricing is acquired only from a valid exact-edition estimate profile',()=>{
@@ -154,7 +167,9 @@ test('discovery metadata preserves academic objects, current publication decisio
   const fits=Object.fromEntries(registry.models.flatMap(model=>model.routeIds.map(id=>[id,{...fit,modelId:model.id,competencyBased:true,selfPaced:true}])));
   const index=buildIndex({registry,quality,fits}),publishedIds=new Set(publication.plans.map(row=>row.modelId));
   assert.deepEqual([...new Set(Object.values(index.plans).filter(row=>row.published).map(row=>row.modelId))].sort(),[...publishedIds].sort());
-  assert.equal(publishedIds.size,22);
+  assert(publishedIds.size>0,'Discovery metadata must inspect a nonempty published library');
+  assert.equal(publishedIds.size,quality.summary.publicationReady);
+  assert.deepEqual([...publishedIds].sort(),quality.programs.filter(program=>program.publication.ready).map(program=>program.modelId).sort());
   assert(Object.values(index.plans).some(row=>row.fit.competencyBased===true&&row.published===false),'A positive filter label cannot promote an unreviewed course plan');
 });
 

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {mkdtemp,rm,readFile,writeFile,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
-import {readJSON,writeJSON,loadKit,clone,canonical,kitsRoot,root} from './scripts/pathway-factory/lib.mjs';
+import {readJSON,writeJSON,loadKit,clone,canonical,kitsRoot,root,sourceRefs} from './scripts/pathway-factory/lib.mjs';
 import {decompose,compareDocs} from './scripts/pathway-factory/migrate-from-model.mjs';
 import {compileKit,runGuards,serializePublished} from './scripts/pathway-factory/compile.mjs';
 import {verifyKit} from './scripts/pathway-factory/verify.mjs';
@@ -58,12 +58,20 @@ test('the WGU kit is the source of truth: it verifies, passes its guards and pub
   for(const {path,doc} of compiled.documents)assert.equal(serializePublished(doc),await readFile(resolve(root,path),'utf8'),path+' is stale; run npm run factory:publish');
   // wgu.json keeps exactly the migrated models and its pinned sources; a fresh decomposition reproduces them.
   const published=compiled.documents.find(d=>d.path==='content/curricula/wgu.json').doc;
-  assert.equal(published.sources.length,215);assert.deepEqual(published.sources.map(s=>s.id),kit.school.publish.sourceOrder);
+  const pinnedSources=kit.school.publish.sourceOrder,publishedIds=published.sources.map(source=>source.id);
+  assert(pinnedSources.length>0);assert.equal(new Set(publishedIds).size,publishedIds.length);assert.deepEqual(publishedIds.slice(0,pinnedSources.length),pinnedSources);
+  const referencedSources=new Set(sourceRefs(published.models).map(reference=>reference.id));
+  for(const source of published.sources.slice(pinnedSources.length)){
+    assert(referencedSources.has(source.id),'An appended source must actually support a published model: '+source.id);
+    const independent=[...kit.providers.values()].flatMap(provider=>provider.sources||[]).find(candidate=>candidate.id===source.id);
+    assert(independent,'Only independent used provider facts may extend the pinned source order');assert.deepEqual(source,independent);
+  }
   const fresh=compileKit(decompose(wgu,{schoolId:'wgu',sourcePath:'content/curricula/wgu.json'})).doc;
   assertModelParity({models:first.models.filter(m=>published.models.some(p=>p.id===m.id))},fresh);
   // The authored document: every model carries exactly its own sources and only program-scoped, agreement-backed rows.
   const authored=compiled.documents.find(d=>d.path==='content/curricula/wgu-pathway-kit.json').doc;
-  assert.equal(authored.models.length,11);assert.equal(authored.sources,undefined);
+  const authoredSlugs=kit.school.publish.documents.find(d=>d.path==='content/curricula/wgu-pathway-kit.json').programs;
+  assert(authoredSlugs.length>0);assert.deepEqual(authored.models.map(model=>model.id).sort(),kit.programs.filter(program=>authoredSlugs.includes(program.slug)).map(program=>program.modelId).sort());assert.equal(authored.sources,undefined);
   for(const model of authored.models){
     const ids=new Set(model.sources.map(s=>s.id));
     for(const r of model.requirements){

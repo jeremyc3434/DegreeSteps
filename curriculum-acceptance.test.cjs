@@ -48,12 +48,32 @@ test('all active source and standalone curricula load once per file and preserve
     ['curriculum-liberty-history-bs-online',{external:69,institutional:51}],
     ['curriculum-liberty-human-services-bs-online',{external:60,institutional:60}],
     ['curriculum-liberty-psychology-addictions-online',{external:69,institutional:51}],
+    ['curriculum-liberty-interdisciplinary-aa-online',{external:39,institutional:21}],
+    ['curriculum-liberty-psychology-bs-residential',{external:60,institutional:60}],
+    ['curriculum-umpi-maol-yourpace',{external:0,institutional:36}],
+    ['curriculum-wgu-bs-data-analytics-reviewed',{external:62,institutional:60}],
+    ['curriculum-wgu-bs-cloud-network-engineering-general-reviewed',{external:34,institutional:75}],
+    ['curriculum-wgu-bs-cloud-network-engineering-aws-reviewed',{external:34,institutional:78}],
+    ['curriculum-wgu-bs-cloud-network-engineering-cisco-reviewed',{external:34,institutional:78}],
+    ['curriculum-wgu-bs-cloud-network-engineering-azure-reviewed',{external:34,institutional:78}],
     ['curriculum-wgu-catalog-2e49db64c32dfc79',{external:78,institutional:39}],
     ['curriculum-wgu-catalog-689e417cff765fc9',{external:69,institutional:43}],
     ['curriculum-wgu-catalog-d6925a8fbb6e8d9a',{external:78,institutional:43}],
     ['curriculum-wgu-catalog-c023977432f945c3',{external:60,institutional:55}],
     ['curriculum-wgu-catalog-f5987d0b65c06f56',{external:60,institutional:55}]
   ]);
+  // These exact new baselines have separately published research outcomes;
+  // their readiness does not grant another model or an unfinished course an award.
+  const quality=require('./dist/data/pathway-quality-report.json');
+  for(const modelId of ['curriculum-liberty-interdisciplinary-aa-online','curriculum-liberty-psychology-bs-residential','curriculum-umpi-maol-yourpace','curriculum-wgu-bs-data-analytics-reviewed','curriculum-wgu-bs-cloud-network-engineering-general-reviewed','curriculum-wgu-bs-cloud-network-engineering-aws-reviewed','curriculum-wgu-bs-cloud-network-engineering-cisco-reviewed','curriculum-wgu-bs-cloud-network-engineering-azure-reviewed']){
+    const outcome=quality.programs.find(program=>program.modelId===modelId),expected=researchedReady.get(modelId);
+    assert(outcome,modelId);assert.equal(outcome.publication.ready,true,modelId);
+    assert.equal(outcome.research.academicCountsValid,true,modelId);
+    assert.equal(outcome.metrics.degreeCredits,expected.external+expected.institutional,modelId);
+    assert.equal(outcome.metrics.publishedOutsideCredits,expected.external,modelId);
+    assert.equal(outcome.metrics.conditionalOutsideCredits,0,modelId);
+    assert.equal(outcome.execution.awardedCreditsInBaseline,0,modelId);
+  }
   const observedReady=[];
   assert.deepEqual(index.models.filter(entry=>entry.path.startsWith('data/curricula/')).map(entry=>entry.id).sort(),sourceModelIds,'Every active researched source model must be registered');
   assert.deepEqual(index.models.filter(entry=>Catalog.modelFiles.includes(entry.path)).map(entry=>entry.id).sort(),standaloneModelIds,'Established standalone curricula must remain registered');

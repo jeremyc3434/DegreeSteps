@@ -52,7 +52,7 @@ export async function buildDataAnalytics({check=false}={}){
   const pageText=await readFile(resolve(root,page.capture),'utf8');
   assert(/3,?925/.test(pageText)&&/200/.test(pageText)&&/6.month term/i.test(pageText),'Review the program-specific six-month tuition and resource fee');
   const sourceId='wgu-bsda-program-page-20261125';
-  const seed={modelId:'curriculum-wgu-bs-data-analytics-reviewed',routeIds:[ROUTE.id],title:ROUTE.title,
+  const seed={modelId:'curriculum-wgu-bs-data-analytics-reviewed',routeIds:[ROUTE.id],title:ROUTE.title,transferNotices:'reviewed-options-with-coverage-caveat',
     modelFields:{pricing:{model:'subscription',amount:4125,tuitionPerTerm:3925,resourceFeePerTerm:200,includesResourceFee:true,period:'6 months',currency:'USD',sourceUrl:page.url,sourceIds:[sourceId],checkedOn:review.checkedOn,notes:['Published six-month tuition and mandatory resource fee. Provider charges and any other applicable fees remain separate; this is not a quoted total degree cost.']}},
     supplementalSources:[{id:sourceId,title:'WGU Data Analytics: six-month tuition, resource fee, online format and admission routes',url:page.url,kind:'university',roles:['pricing','admissions'],checked:review.checkedOn,capture:page.capture,scope:{schoolName:ROUTE.school,programName:ROUTE.title,level:'bachelor',modality:'online',catalogYear:PROGRAM.catalog}}],
     additionalResearchNotices:[{owner:'student',status:'personal-task',message:'Confirm personal admission and catalog eligibility. WGU requires a high school diploma or equivalent plus one published readiness route: qualifying college GPA, an accredited prior degree, a transferable IT certification, qualifying high school GPA, or prior IT coursework at the required level.',sourceIds:[sourceId]}]};
