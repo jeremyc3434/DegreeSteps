@@ -97,12 +97,12 @@ test('ranking: most covered by default, fewest left, lowest known estimate with 
  assert.equal(Worth.rank(rows,{sort:'drop table'}).sort,'covered');
 });
 
-test('evaluateAll loads each curriculum file once per group and reports progress for every indexed plan',async()=>{
+test('evaluateAll loads only canonical publication-ready plans and retains direct access to explicit research scenarios',async()=>{
  await load();
  const subset={...index,plans:Object.fromEntries(PLANS.map(id=>[id,index.plans[id]]))},calls=[],progress=[];
  const results=await Worth.evaluateAll({index:subset,catalog:fixture.catalog,baselines,registry,rates,learning:[english]},{loadModels:async ids=>{calls.push(ids);return fixture.models.filter(model=>ids.includes(model.id));},onResult:(result,done,total)=>progress.push([done,total])});
- assert.equal(results.length,3);assert.deepEqual(progress.map(p=>p[1]),[3,3,3]);assert.deepEqual(progress.map(p=>p[0]).sort(),[1,2,3]);
- assert.equal(calls.flat().length,3);
+ assert.equal(results.length,2);assert.deepEqual(results.map(result=>result.routeId).sort(),PLANS.slice(0,2).sort());assert.deepEqual(progress.map(p=>p[1]),[2,2]);assert.deepEqual(progress.map(p=>p[0]).sort(),[1,2]);
+ assert.equal(calls.flat().length,2);assert.equal(evaluate('excelsior-bs-psychology',[english]).status,'ok','An explicitly requested existing research scenario remains available without becoming a default public recommendation');
  assert(results.every(result=>result.filled===3));
  const failing=await Worth.evaluateAll({index:subset,catalog:fixture.catalog,baselines,registry,rates,learning:[english]},{loadModels:async()=>{throw Error('offline');}});
  assert(failing.every(result=>result.status==='unavailable'),'a file that cannot load marks its plans unavailable rather than zero');

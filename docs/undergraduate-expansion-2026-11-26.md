@@ -60,6 +60,7 @@ See [TESU exact-course reuse review](tesu-exact-course-reuse-2026-11-26.md) for 
 - Discovery facts and filters do not change academic requirements, receiving awards, publication decisions or personal progress. Actual retained bodies and sidecars are checked against their hashes in the focused acceptance tests.
 - Compiled registry entries retain their actual degree level, so associate, bachelor and master filters include the complete matching plan set.
 - The finder, guided setup, comparison picker and worksheet recommendations offer only publication-ready plans, with one choice per academic model. The current public set is 43 plans across four schools. Research drafts stay outside these choices; incoming aliases, existing private plans and deliberately saved comparison versions remain recoverable. Custom degree-link and scratch builders remain accessible.
+- Public course matching uses those same 43 plans and 1,177 source keys. Older research-inclusive compact indexes fall back to the same ready-only full evaluation. The full research inventory and explicit private-plan evaluation remain available.
 - All 299 distinct outside-course identities in ready models have explicit assessment metadata. Unmatched legacy Study.com labels remain unknown and outside reviewed starting plans; current source-backed Sophia choices have their provider assessment policy attached.
 - Shared original CLEP evidence survives older receiving-guide display overrides. The 40 affected Liberty rows keep their receiving awards and conditions while retaining the independent original-credit proof. Already-pinned sources also retain their transitive evidence dependencies.
 - Returning untouched drafts can adopt the exact reviewed starting choices only when their publication receipt, fingerprints and checksum still match. Existing records, explicit choices, notes and progress prevent automatic replacement.
@@ -84,7 +85,7 @@ Focused checks completed before this handoff:
 - `degree-fit-metadata.test.mjs`: seven passing tests covering all currently published editions, independent prices and learning facts, exact source bindings and private-record boundaries.
 - `undergrad-batch-acceptance.test.mjs`: four passing tests preserving the 30 released editions and correct degree-level filters; one explicit skip because no production TESU/UMPI shared named-university-choice pool has been adopted. No coverage for such a production pool is claimed.
 - All 16 public-adoption browser journeys and three returning-plan browser journeys pass against the integrated release data. These use synthetic records, block real account writes, and do not represent real-student usability or real OAuth testing.
-- The local release build passes; the native Worker is below its 1 MiB budget. Source safety checks cover 3,416 tracked files with zero findings.
+- The local release build passes; the native Worker is below its 1 MiB budget. Source safety checks cover 3,418 tracked files with zero findings.
 
 Run authoring, generated-artifact consistency, the complete core suite, browser QA and deployment checks for each release; the pull request and workflow records above contain the final results. Re-run registry, quality, baseline and library generation after any canonical identity or source change; do not update output counts by hand.
 

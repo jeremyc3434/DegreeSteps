@@ -1,8 +1,8 @@
 'use strict';
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const Journey=require('./dist/journey-engine.js'),{loadData}=require('./scripts/audit-student-confirmations.cjs');
+const Journey=require('./dist/journey-engine.js'),Catalog=require('./dist/program-catalog.js'),{loadData}=require('./scripts/audit-student-confirmations.cjs');
 const all=loadData(),ids=['excelsior-bs-psychology','excelsior-bs-business-no-concentration','wgu-catalog-689e417cff765fc9'],gcuId='gcu-bsba-campus';
-const catalog={...all.catalog,pathways:all.catalog.pathways.filter(route=>[...ids,gcuId].includes(route.id))},modelIds=new Set(catalog.pathways.map(route=>route.modelId)),models=all.models.filter(model=>modelIds.has(model.id));
+const subset={...all.catalog,pathways:all.catalog.pathways.filter(route=>[...ids,gcuId].includes(route.id))},publication=require('./dist/data/publication-index.json'),proof={...publication,plans:publication.plans.map(plan=>({...plan,routeIds:plan.routeIds.filter(id=>subset.pathways.some(route=>route.id===id))})).filter(plan=>plan.routeIds.length)},catalog=Catalog.attachPublicationIndex(subset,proof,require('./dist/data/curriculum-registry.json')),modelIds=new Set(catalog.pathways.map(route=>route.modelId)),models=all.models.filter(model=>modelIds.has(model.id));
 const baselines=JSON.parse(fs.readFileSync(path.join(__dirname,'dist/data/baseline-index.json'),'utf8'));
 const KEY='degreepath-guide-v3',copy=value=>JSON.parse(JSON.stringify(value));
 function selected(id=ids[2]){const state=Journey.selectRoute(Journey.initialize(null,null,catalog),catalog.pathways.find(route=>route.id===id),catalog);state.journey={...state.journey,completed:true,intakeCompleted:true,view:'home'};return state;}
@@ -20,16 +20,19 @@ function fixture({stored=null,initial=stored||Journey.initialize(null,null,catal
 
 const scenarioFor=(saved,draft)=>saved.scenarios[draft.program.id];
 const baselineFor=id=>Object.values(baselines.baselines).find(item=>item.pathwayId===id);
+const isPublished=id=>Catalog.publishedPlans(catalog,models).some(route=>route.id===id);
+const existingPrivate=id=>fixture({stored:selected(id)});
 
-test('opening a starting route that uses StraighterLine keeps its published outside-credit total',async()=>{
+test('reviewed public routes and existing private StraighterLine plans retain their selected outside-course totals',async()=>{
+ assert(isPublished(ids[2]),'The fresh WGU route has actual publication approval.');
  for(const id of ids){
-  const f=fixture();assert.equal(await f.api.use(id),true,id);
+  const f=isPublished(id)?fixture():existingPrivate(id);assert.equal(await f.api.use(id),true,id);
   const saved=f.stored(),draft=Journey.buildDraft(saved,catalog,models),baseline=baselineFor(id);
   assert.equal(draft.plan.totals.external,baseline.summary.transferCredits,id+' worksheet total matches the starting route');
   const used=[...new Set(baseline.rows.map(row=>row.provider).filter(p=>p&&p!=='University'))];
   for(const provider of used)assert.ok(scenarioFor(saved,draft).providers.includes(provider),id+' keeps '+provider+' as a course source');
  }
- const f=fixture();await f.api.use('excelsior-bs-psychology');
+ const f=existingPrivate('excelsior-bs-psychology');await f.api.use('excelsior-bs-psychology');
  const saved=f.stored(),draft=Journey.buildDraft(saved,catalog,models);
  assert.ok(scenarioFor(saved,draft).providers.includes('StraighterLine'));assert.equal(draft.plan.totals.external,78);
 });
@@ -44,7 +47,25 @@ test('saved course-source choices are respected rather than silently widened',as
 });
 
 test('opening a plan whose browsing subject differs from its catalog field is not rejected (regression)',async()=>{
- for(const id of ids){const f=fixture();assert.equal(await f.api.use(id),true,id);}
+ for(const id of ids){const f=isPublished(id)?fixture():existingPrivate(id);assert.equal(await f.api.use(id),true,id);}
  const route={...catalog.pathways.find(r=>r.id==='wgu-catalog-689e417cff765fc9'),subjects:['accounting-finance']};
  assert.doesNotThrow(()=>Journey.selectRoute(Journey.initialize(null,null,catalog),route,catalog));
+});
+
+test('unfinished Excelsior plans cannot become new public offers or replace an existing degree',async()=>{
+ for(const id of ids.slice(0,2)){
+  assert.equal(isPublished(id),false,'This negative exercises a genuine unfinished research route.');
+  for(const stored of [null,selected()]){
+   const f=fixture({stored}),before=f.state();await assert.rejects(()=>f.api.use(id),/not available/);
+   assert.deepEqual(f.state(),before);assert.deepEqual(f.stored(),stored);assert.deepEqual(f.requests,[]);assert.equal(f.context.destination,undefined);assert(!f.events.some(event=>event.detail?.event==='plan_started'));
+  }
+ }
+});
+
+test('a concurrent source-preference edit wins while recovering an existing private route',async()=>{
+ const id=ids[0],state=selected(id),modelId=catalog.pathways.find(route=>route.id===id).modelId;
+ state.scenarios[modelId]={providers:['Sophia','Study.com'],privateSetting:'Keep my source choices'};
+ const latest=copy(state);latest.scenarios[modelId].providers=['Sophia'];latest.sheet.notes={private:'Added in another tab'};
+ const f=fixture({stored:state,onBaselineFetch:({write})=>write(latest)});await assert.rejects(()=>f.api.use(id),/course choices changed in another tab/);
+ assert.deepEqual(f.stored(),latest);assert.equal(f.context.destination,undefined);assert(!f.events.some(event=>event.detail?.event==='plan_started'));
 });

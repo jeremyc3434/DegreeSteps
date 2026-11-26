@@ -8,6 +8,7 @@
   Journey:common?require('./journey-engine.js'):root.DegreeJourney,
   Guide:common?require('./guide-engine.js'):root.DegreeGuide,
   Planner:common?require('./planner.js'):root.DegreePlanner,
+  Catalog:common?require('./program-catalog.js'):root.DegreeProgramCatalog,
   Estimate:common?require('./plan-estimate-engine.js'):root.DegreePlanEstimate
  }));
  if(common)module.exports=api;else root.DegreeCreditsWorth=api;
@@ -162,7 +163,7 @@
   * main-thread fallback. deps: {loadModels(ids)=>Promise<models>, pause()=>Promise, cancelled()=>bool, onResult(result,done,total)}.
   */
  async function evaluateAll(input,hooks={}){
-  const {index,catalog,baselines,registry,rates,learning}=input,plans=Object.entries(index?.plans||{}).filter(([,entry])=>(entry?.tier==='confirmation'||entry?.tier==='reviewed'&&entry?.published===true));
+  const {index,catalog,baselines,registry,rates,learning}=input,{Catalog}=dependencies(),plans=(Catalog?.planLibraryRoutes?.(catalog,[],index)||[]).filter(route=>index?.plans?.[route.id]?.modelId===route.modelId).map(route=>[route.id,index.plans[route.id]]);
   const routes=new Map(list(catalog?.pathways).map(route=>[route.id,route])),byModel=new Map(list(registry?.models).map(entry=>[entry.id,entry]));
   const baselineFor=(routeId,modelId)=>Object.values(baselines?.baselines||{}).find(item=>item.pathwayId===routeId&&item.modelId===modelId)||null;
   // Group plans by their curriculum file so each file is fetched once, and results appear as files arrive.
@@ -219,7 +220,7 @@
   return {...copy(plan.start),matches:[],records:Object.fromEntries(completedRecords(learning).map(record=>[record.id,{status:'none'}]))};
  }
  function validCourseIndex(index){
-  return index?.kind==='degreesteps-plan-course-index'&&index.version===1&&Array.isArray(index.keys)&&index.plans&&typeof index.plans==='object'&&Object.values(index.plans).every(plan=>plan&&plan.start&&plan.route&&Array.isArray(plan.keys)&&typeof plan.modelId==='string');
+  return index?.kind==='degreesteps-plan-course-index'&&index.version===1&&index.selectionPolicy==='publication-ready-models-v1'&&Array.isArray(index.keys)&&index.plans&&typeof index.plans==='object'&&new Set(Object.values(index.plans).map(plan=>plan?.modelId)).size===Object.keys(index.plans).length&&Object.values(index.plans).every(plan=>plan&&plan.start&&plan.start.tier==='reviewed'&&plan.route&&plan.route.modelId===plan.modelId&&Array.isArray(plan.keys)&&typeof plan.modelId==='string');
  }
  /**
   * Same results as evaluateAll, but only plans a finished record could touch load their curriculum.

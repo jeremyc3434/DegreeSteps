@@ -28,12 +28,12 @@ test('the plan library scope is described once, from the finder’s index',()=>{
  // Public scope comes from actual chooser routes, not the larger research inventory. A researched but held route
  // (currently GCU) must not acquire a public count or link merely because the inventory labels it "reviewed".
  assert.deepEqual(Object.keys(courseIndex.plans).sort(),[...selectableIds].sort());
+ assert.equal(courseIndex.selectionPolicy,'publication-ready-models-v1');assert.equal(new Set(Object.values(courseIndex.plans).map(plan=>plan.modelId)).size,selectable.length);assert.equal(selectable.length,43);assert.equal(new Set(selectable.map(plan=>plan.school)).size,4);assert(Object.keys(index.plans).length>selectable.length,'Public filtering cannot delete the admin research inventory');assert(Object.values(index.plans).some(plan=>plan.tier==='confirmation'));
  for(const [id,plan]of Object.entries(index.plans))if(plan.tier==='reviewed'&&!plan.published)assert(!selectableIds.has(id),'An unpublished reviewed inventory entry stays out of the chooser: '+id);
- for(const [id,plan]of Object.entries(courseIndex.plans))if(plan.start.tier==='reviewed')assert(publishedIds.has(id),'Every reviewed route offered publicly passes the publication gate: '+id);
+ for(const [id,plan]of Object.entries(courseIndex.plans)){assert.equal(plan.start.tier,'reviewed',id);assert(publishedIds.has(id),'Every route offered publicly passes the publication gate: '+id);assert(selectableIds.has(id),'Each model uses its canonical public route: '+id);}
  const total=selectable.length,schools=new Set(selectable.map(plan=>plan.school)).size,reviewed=selectable.filter(plan=>publishedIds.has(plan.id)).length;
  const hub=text(read('degree-plans/index.html')),compare=text(read('compare/index.html'));
- assert(hub.includes(total+' researched plans at '+schools+' schools: '+reviewed+' reviewed and '+(total-reviewed)+' that still need school confirmation'));
- assert.match(hub,new RegExp('This library lists the \\d+ reviewed plans'));assert(hub.includes('See all '+total+' plans in the plan finder'));assert.doesNotMatch(hub,/complete plans/);
- assert(compare.includes(total+' researched plans at '+schools+' schools'));
- assert.match(read('programs.js'),/' researched plans at '\+schools\.length\+' schools: '/);
+ assert.equal(reviewed,total);assert(hub.includes(total+' complete, reviewed degree plans at '+schools+' schools'));assert(hub.includes('See all '+total+' plans in the plan finder'));assert.doesNotMatch(hub,/that still need school confirmation|including plans still awaiting school confirmation/);
+ assert(compare.includes(total+' complete, reviewed degree plans at '+schools+' schools'));
+ assert.match(read('programs.js'),/' complete, reviewed degree plans at '\+schools\.length/);
 });

@@ -2,12 +2,13 @@
  * protect the rule that comparison cards show the same shared planning estimate as the finder and plan pages. */
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
 const script=fs.readFileSync(require.resolve('./dist/compare-plans.js'),'utf8');
-const Planner=require('./dist/planner.js'),Estimate=require('./dist/plan-estimate-engine.js'),EstimateView=require('./dist/plan-estimate-view.js');
+const Planner=require('./dist/planner.js'),Estimate=require('./dist/plan-estimate-engine.js'),EstimateView=require('./dist/plan-estimate-view.js'),Catalog=require('./dist/program-catalog.js');
 const read=path=>JSON.parse(fs.readFileSync(require.resolve('./dist/'+path),'utf8'));
 const rates=read('data/plan-estimate-rates.json'),index=read('data/plan-library-index.json'),registry=read('data/curriculum-registry.json'),baselines=read('data/baseline-index.json');
+const publishedCatalog=Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(read('data/pathways.json'),read('data/program-catalog.json')),registry),read('data/publication-index.json'),registry);
 function mount(){
  const nodes=new Map(),node=id=>{if(!nodes.has(id))nodes.set(id,{value:'collection',checked:false,textContent:'',hidden:false,innerHTML:''});return nodes.get(id);};
- const context={document:{getElementById:node},window:{DegreePlanComparison:{},DegreeJourney:require('./dist/journey-engine.js'),DegreeChecklist:require('./dist/student-checklist.js'),DegreePlanEstimate:Estimate,DegreePlanEstimateView:EstimateView},location:{search:''},URL,URLSearchParams,Intl,console};
+ const context={document:{getElementById:node},DegreeProgramCatalog:Catalog,window:{DegreePlanComparison:{},DegreeProgramCatalog:Catalog,DegreeJourney:require('./dist/journey-engine.js'),DegreeChecklist:require('./dist/student-checklist.js'),DegreePlanEstimate:Estimate,DegreePlanEstimateView:EstimateView},location:{search:''},URL,URLSearchParams,Intl,console};
  context.DegreeChecklist=context.window.DegreeChecklist;
  context.window.window=context.window;
  const boundary=" document.addEventListener('click'";
@@ -15,7 +16,7 @@ function mount(){
  const journey=script.match(/ const Journey=s=>window\.DegreeJourney\.buildDraft\(s,catalog,models\);/)[0];
  const source=script.slice(0,script.indexOf(boundary))+journey+"window.__ui={bestId,recommendationLabel,costHTML,estimateHTML,nextStepsHTML,card,isSuggestion,setView:value=>view=value,setState:value=>state=value,setRates:value=>estimateRates=value,setData:(routes,ledgers)=>{catalog=routes;models=ledgers;}};}());";
  vm.runInNewContext(source,context,{filename:'compare-plans.js'});
- const ui=context.window.__ui;ui.setRates(rates);ui.setState({profile:{},whatIf:{}});
+ const ui=context.window.__ui;ui.setRates(rates);ui.setState({profile:{},whatIf:{}});ui.setData(publishedCatalog,[]);
  return {ui,priority:value=>node('compare-priority').value=value};
 }
 // The starting route for a published plan, built exactly as the plan library index builds it.
