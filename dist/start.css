@@ -128,3 +128,6 @@ a.start-secondary:hover{border-color:var(--tok-cobalt,#4054f4);color:var(--tok-c
 #start-credits-courses{margin-bottom:4px}
 @media (min-width:1050px){#start-step-degree{grid-template-areas:"progress progress" "title title" "paths paths" "filters count" "filters results" "filters more" "help help"}.start-paths{grid-area:paths}}
 @media (max-width:640px){.start-paths{grid-template-columns:1fr;gap:8px}.start-path{padding:12px 14px;align-items:center}.start-path small{font-size:14px}}
+
+/* Text for screen readers only (the full cost range beside the short one). */
+.screen-reader-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
