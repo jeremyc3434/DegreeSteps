@@ -7,13 +7,13 @@ import {pathToFileURL} from 'node:url';
 import {root,sourceRefs,loadKit,sourceIndex} from './pathway-factory/lib.mjs';
 import {createTESUBusinessBlocks,namedTESUUniversityOption,reviewedTESUBusinessSource,TESU_BUSINESS_CATALOG,TESU_BUSINESS_REVIEW_DATE} from './tesu-business-blocks.mjs';
 import {loadTESUBusinessPriceBasis,buildTESUBusinessTuitionBinding} from './tesu-business-metadata.mjs';
+import {loadProgramManifests,selectProgramManifests} from './pathway-factory/program-manifest.mjs';
 
 const copy=structuredClone,unique=values=>[...new Set(values)],norm=value=>String(value||'').replace(/[\u2018\u2019]/g,"'").replace(/\s+/g,' ').trim();
 const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const serialize=value=>JSON.stringify(value,null,2)+'\n';
-export const TESU_BUSINESS_PROGRAM_SLUGS=Object.freeze(['bsba-human-resources-organizational-management','bsba-marketing']);
-const captures={'bsba-human-resources-organizational-management':'08ba94f0898450bf','bsba-marketing':'60df9ea927fc193a'};
-const coursePath=code=>{const [prefix,number]=code.split('-'),discipline={MAN:'man-management',MKT:'mkt-marketing',PSY:'psy-psychology',SOC:'soc-sociology'}[prefix];assert(discipline,'Only the exact reviewed business-area disciplines are in scope');return '/current/undergraduate-catalog/courses/'+discipline+'/'+number[0]+'000/'+(code==='MAN-4320'?'man-432':code.toLowerCase());};
+const authoringRoster=selectProgramManifests(await loadProgramManifests(),{schoolId:'tesu',stage:'business-major'});
+export const TESU_BUSINESS_PROGRAM_SLUGS=Object.freeze(authoringRoster.map(entry=>entry.slug));
 const codeId=code=>code.toLowerCase().replace('-','');
 
 export function assertTESUBusinessCourseBody(spec,code,body){
@@ -30,17 +30,17 @@ export function assertTESUBusinessCourseBody(spec,code,body){
 }
 
 export async function buildReviewedTESUBusinessProgram(spec,courseIndex){
- assert(TESU_BUSINESS_PROGRAM_SLUGS.includes(spec.slug),'Only exact current HR and Marketing are authored by this stage');
- const meta=await read('content/source-captures/'+captures[spec.slug]+'.json');
+ const manifest=authoringRoster.find(entry=>entry.slug===spec.slug);assert(manifest,'Only explicitly reviewed current business majors are authored by this stage');
+ const capture=manifest.sourceRefs.degree.capture,meta=await read(capture.replace(/\.txt$/,'.json'));
  assert.equal(meta.url,spec.url,spec.slug+': immutable degree capture is bound to the independently reviewed exact primary URL');
- const degree=await reviewedTESUBusinessSource({id:'tesu-'+spec.slug+'-current-2026-11-26',title:spec.title+' — current exact curriculum',url:meta.url,checked:TESU_BUSINESS_REVIEW_DATE,capture:'content/source-captures/'+captures[spec.slug]+'.txt',kind:'university',roles:['curriculum','degree-placement','program-policy']});
+ const degree=await reviewedTESUBusinessSource({id:manifest.sourceRefs.degree.sourceId,title:spec.title+' — current exact curriculum',url:meta.url,checked:TESU_BUSINESS_REVIEW_DATE,capture,kind:'university',roles:['curriculum','degree-placement','program-policy']});
  const {requirements:blocks,modelFields,modelSourceIds,policies}=await createTESUBusinessBlocks({slug:spec.slug,title:spec.title,degreeSource:degree.source,degreeBody:degree.body});
  const sources=[degree.source],area=[];
  const priceBinding=buildTESUBusinessTuitionBinding({modelId:'curriculum-tesu-'+spec.slug,catalogIdentity:modelFields.catalogIdentity},await loadTESUBusinessPriceBasis());
  modelFields.tuitionComparison=priceBinding.tuitionComparison;sources.push(...priceBinding.sources);
  for(const [index,[code,title]]of spec.areaCourses.entries()){
   const entry=courseIndex.courses.find(entry=>entry.code===code);assert(entry?.source,code+': retain the individual primary course body before authoring');
-  const primaryURL=new URL(entry.source.url);assert.equal(primaryURL.hostname,'tesu.smartcatalogiq.com');assert.equal(primaryURL.pathname.replace(/^\/en\//,'/').replace(/\/$/,''),coursePath(code),code+': exact current primary course page, including the published MAN-432 URL alias');
+  const binding=manifest.authoring.courseBindings.find(binding=>binding.code===code);assert(binding,code+': explicit reviewed course source binding');assert.deepEqual(entry.source,binding.source,code+': exact current primary course page and capture, including published URL aliases');assert.equal(entry.credits,binding.credits,code+': exact original university quantity');
   const course=await reviewedTESUBusinessSource(entry.source);assertTESUBusinessCourseBody(spec,code,course.body);sources.push(course.source);
   assert(norm(course.body).includes(norm(code+' '+title)),code+': the retained course body names this exact University course');
   assert.equal(entry.credits,3,code+': reviewed original University quantity');
@@ -93,12 +93,12 @@ export function assertTESUBusinessAcademicParity(actual,expected,knownSourceIds)
 }
 
 export async function authorTESUBusinessPrograms({check=false}={}){
- const priorReview=await read('content/pathway-kits/tesu/business-expansion-review-2026-11-25.json'),courseIndex=await read('content/pathway-kits/tesu/business-course-sources-2026-11-26.json');
+ const courseIndex=await read('content/pathway-kits/tesu/business-course-sources-2026-11-26.json');
  assert.equal(courseIndex.checkedOn,TESU_BUSINESS_REVIEW_DATE);
- const builds=[];for(const slug of TESU_BUSINESS_PROGRAM_SLUGS)builds.push(await buildReviewedTESUBusinessProgram(priorReview.programs.find(p=>p.slug===slug),courseIndex));
+ const builds=[];for(const entry of authoringRoster)builds.push(await buildReviewedTESUBusinessProgram(entry.authoring.spec,courseIndex));
  const school=await read('content/pathway-kits/tesu/school.json');
  for(const build of builds)for(const source of build.sources){const at=school.sources.findIndex(s=>s.id===source.id);if(at<0)school.sources.push(source);else assert.deepEqual(school.sources[at],source,source.id+': immutable primary business source record');}
- for(const {program}of builds){if(!school.programOrder.includes(program.slug))school.programOrder.push(program.slug);const path='content/curricula/tesu-'+program.slug.replace(/^bsba-/,'')+'.json';
+ for(const {program}of builds){if(!school.programOrder.includes(program.slug))school.programOrder.push(program.slug);const path=authoringRoster.find(entry=>entry.slug===program.slug).outputPath;
   const publication={path,programs:[program.slug],checkedOn:TESU_BUSINESS_REVIEW_DATE,sources:false,routes:[{id:program.routeIds[0],title:program.title,school:school.name,schoolId:'tesu',level:'bachelor',modalities:['online'],field:'business',fields:['business'],goals:['any-degree','career-growth','change-career'],paceModel:'course-term',url:program.modelFields.catalogIdentity.sourceUrl,sourceId:program.modelFields.catalogIdentity.sourceId,degreeCredits:120,creditUnit:'semester',status:'listed',checkedOn:TESU_BUSINESS_REVIEW_DATE}]};
   const at=school.publish.documents.findIndex(d=>d.path===path);if(at<0)school.publish.documents.push(publication);else assert.deepEqual(school.publish.documents[at],publication,program.slug+': exact canonical publication declaration');
  }

@@ -26,6 +26,10 @@
     "factory:publish": "node scripts/pathway-factory/compile.mjs --publish",
     "factory:queue": "node scripts/build-plan-expansion-queue.mjs",
     "factory:queue:check": "node scripts/build-plan-expansion-queue.mjs --check",
+    "factory:batch": "node scripts/pathway-factory/batch.mjs",
+    "factory:cohort": "node scripts/pathway-factory/cohort.mjs",
+    "factory:manifests": "node scripts/pathway-factory/program-manifest.mjs --check",
+    "factory:components": "node scripts/pathway-factory/component-drafts.mjs",
     "factory:refresh": "node scripts/refresh-plan-factory.mjs",
     "factory:refresh:check": "node scripts/refresh-plan-factory.mjs --check"
   },

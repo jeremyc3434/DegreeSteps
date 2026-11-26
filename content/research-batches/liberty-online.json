@@ -9,17 +9,18 @@
   },
   "modality": "online",
   "inputAsOf": "2026-11-26",
-  "academicRegistryRevision": "academic-v1:05a13de7931842f440df5a568520a6d6508a249cebd96c6b909748cef606ef07",
+  "academicRegistryRevision": "academic-v1:fc19c0a90b61561fe7d8492f28e5991658c7a97145877d423a4467ba2ff9e826",
   "scope": "All existing Liberty directory parents are included for delivery discovery. Only variants with explicit online modality and an exact program URL are counted as known online programs. Capturing a source does not verify its claims or publish a template.",
   "summary": {
     "directoryCandidates": 387,
     "onlineRouteCandidates": 13,
     "knownOnlinePrograms": 12,
-    "activeCurriculumModels": 11,
+    "activeCurriculumModels": 15,
+    "unlinkedModels": 4,
     "readyTemplates": 11,
-    "uniqueOfficialSources": 445,
+    "uniqueOfficialSources": 450,
     "sharedExactProgramSources": 38,
-    "queuedJobs": 445
+    "queuedJobs": 450
   },
   "programs": [
     {
@@ -12433,6 +12434,113 @@
       }
     }
   ],
+  "unlinkedModels": [
+    {
+      "id": "curriculum-liberty-accounting-aa-online",
+      "title": "Accounting (A.A.) — Online",
+      "modality": "online",
+      "deliveryStatus": "recorded-online",
+      "reason": "exact-route-missing",
+      "recordedRouteIds": [
+        "liberty-catalog-314d0dd99bb3909d"
+      ],
+      "sourceIds": [
+        "source-08e19757bace01a1e96bebc3",
+        "source-0d1c58b09fdbeb0ea52061bd",
+        "source-15c445571afd6930f69a9cad",
+        "source-1dcedc3c44790adce9351094",
+        "source-2a0e1b71711d0224fa2dc1c1",
+        "source-3860e57bf455c35b465ad433",
+        "source-3d24e2bc80d398f916c1af14",
+        "source-46143616cf51f692641e9ccf",
+        "source-637eb33b7ce5b513e4e964c1",
+        "source-6b736bd59ad76a41dd739a3b",
+        "source-a654351a3fc716e769b02d7d",
+        "source-bd7ca66ecaf72b2174ca91cf",
+        "source-bf83ab454f553addedcb042a",
+        "source-c01c1ab8e0b2a78e8ea3de84",
+        "source-ddbe765543824361ca5f4a2c"
+      ]
+    },
+    {
+      "id": "curriculum-liberty-apologetics-aa-online",
+      "title": "Apologetics (A.A.) — Online",
+      "modality": "online",
+      "deliveryStatus": "recorded-online",
+      "reason": "exact-route-missing",
+      "recordedRouteIds": [
+        "liberty-catalog-09af568a433b790e"
+      ],
+      "sourceIds": [
+        "source-08e19757bace01a1e96bebc3",
+        "source-0d1c58b09fdbeb0ea52061bd",
+        "source-15c445571afd6930f69a9cad",
+        "source-1dcedc3c44790adce9351094",
+        "source-2a0e1b71711d0224fa2dc1c1",
+        "source-3860e57bf455c35b465ad433",
+        "source-3d24e2bc80d398f916c1af14",
+        "source-46143616cf51f692641e9ccf",
+        "source-637eb33b7ce5b513e4e964c1",
+        "source-6b736bd59ad76a41dd739a3b",
+        "source-9618568f6650fffed6d53c48",
+        "source-bd7ca66ecaf72b2174ca91cf",
+        "source-bf83ab454f553addedcb042a",
+        "source-c01c1ab8e0b2a78e8ea3de84"
+      ]
+    },
+    {
+      "id": "curriculum-liberty-criminal-justice-aa-online",
+      "title": "Criminal Justice (A.A.) — Online",
+      "modality": "online",
+      "deliveryStatus": "recorded-online",
+      "reason": "exact-route-missing",
+      "recordedRouteIds": [
+        "liberty-catalog-f6de078c6efda116"
+      ],
+      "sourceIds": [
+        "source-08e19757bace01a1e96bebc3",
+        "source-0d1c58b09fdbeb0ea52061bd",
+        "source-15c445571afd6930f69a9cad",
+        "source-1dcedc3c44790adce9351094",
+        "source-2a0e1b71711d0224fa2dc1c1",
+        "source-3860e57bf455c35b465ad433",
+        "source-3d24e2bc80d398f916c1af14",
+        "source-46143616cf51f692641e9ccf",
+        "source-637eb33b7ce5b513e4e964c1",
+        "source-6b736bd59ad76a41dd739a3b",
+        "source-8d73546bb2e854bae3ee7135",
+        "source-bd7ca66ecaf72b2174ca91cf",
+        "source-bf83ab454f553addedcb042a",
+        "source-c01c1ab8e0b2a78e8ea3de84"
+      ]
+    },
+    {
+      "id": "curriculum-liberty-religion-aa-online",
+      "title": "Religion (A.A.) — Online",
+      "modality": "online",
+      "deliveryStatus": "recorded-online",
+      "reason": "exact-route-missing",
+      "recordedRouteIds": [
+        "liberty-catalog-048aa55ff75b7f01"
+      ],
+      "sourceIds": [
+        "source-08e19757bace01a1e96bebc3",
+        "source-0d1c58b09fdbeb0ea52061bd",
+        "source-15c445571afd6930f69a9cad",
+        "source-1dcedc3c44790adce9351094",
+        "source-2a0e1b71711d0224fa2dc1c1",
+        "source-3860e57bf455c35b465ad433",
+        "source-3d24e2bc80d398f916c1af14",
+        "source-46143616cf51f692641e9ccf",
+        "source-5df4f3168f2dd57b9f98084b",
+        "source-637eb33b7ce5b513e4e964c1",
+        "source-6b736bd59ad76a41dd739a3b",
+        "source-bd7ca66ecaf72b2174ca91cf",
+        "source-bf83ab454f553addedcb042a",
+        "source-c01c1ab8e0b2a78e8ea3de84"
+      ]
+    }
+  ],
   "deliveryDiscovery": [
     {
       "id": "liberty-catalog-01803cbd5e719478",
@@ -15968,9 +16076,12 @@
         "liberty-criminal-justice-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -15978,17 +16089,21 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
         "curriculum-liberty-accounting-bs-online:liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
         "curriculum-liberty-accounting-bs-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+        "curriculum-liberty-apologetics-aa-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
         "curriculum-liberty-business-aa-online:liberty-business-aa-online-specific-research-hold-2026-11-25",
         "curriculum-liberty-business-aa-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
         "curriculum-liberty-business-bs-online:liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
         "curriculum-liberty-business-bs-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-health-baseline-catalog-course-review-2026-11-19",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
@@ -16014,10 +16129,12 @@
         "curriculum-liberty-psychology-bs-online:liberty-psych-baseline-catalog-course-review-2026-11-19",
         "curriculum-liberty-psychology-bs-online:liberty-shared-source-2160c6c9c00b58dfeb1e01f0",
         "curriculum-liberty-psychology-bs-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
+        "curriculum-liberty-religion-aa-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18",
         "liberty-criminal-justice-online:liberty-undergraduate-catalog-online-policy-2026-2027-reviewed-2026-11-18"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "program-evidence",
       "affectedExactPrograms": 11,
@@ -16031,6 +16148,7 @@
         "Approved online general education choices, 2026–27",
         "Approved online general-education selections, 2026–27",
         "Liberty approved general-education courses for online programs, 2026–27",
+        "Liberty approved general-education courses for online programs, 2026–27 (captured)",
         "Liberty current online approved general education course list, 2026–2027"
       ],
       "programIds": [
@@ -16047,9 +16165,12 @@
         "liberty-criminal-justice-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -16057,14 +16178,18 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-online-approved-gened-2026-27-captured-2026-11-20",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--gened",
         "curriculum-liberty-accounting-bs-online:liberty-online-approved-gened",
+        "curriculum-liberty-apologetics-aa-online:liberty-online-approved-gened-2026-27-captured-2026-11-20",
         "curriculum-liberty-business-aa-online:liberty-online-approved-gened",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--gened",
         "curriculum-liberty-business-bs-online:liberty-online-approved-gened",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-online-approved-gened-2026-27-captured-2026-11-20",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--gened",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-online-approved-gened",
         "curriculum-liberty-history-bs-online:liberty-criminal-justice-online--gened",
@@ -16080,10 +16205,12 @@
         "curriculum-liberty-psychology-addictions-online:liberty-online-approved-gened",
         "curriculum-liberty-psychology-bs-online:liberty-criminal-justice-online--gened",
         "curriculum-liberty-psychology-bs-online:liberty-online-approved-gened",
+        "curriculum-liberty-religion-aa-online:liberty-online-approved-gened-2026-27-captured-2026-11-20",
         "liberty-criminal-justice-online:gened"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "general-education",
       "affectedExactPrograms": 11,
@@ -16111,9 +16238,12 @@
         "liberty-criminal-justice-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -16121,17 +16251,21 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-cli-religion-calculator-2026-11-24",
         "curriculum-liberty-accounting-bs-online:liberty-cli-calculator-current",
         "curriculum-liberty-accounting-bs-online:liberty-cli-religion-calculator-2026-11-24",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-cli-calculator-current",
+        "curriculum-liberty-apologetics-aa-online:liberty-cli-religion-calculator-2026-11-24",
         "curriculum-liberty-business-aa-online:liberty-cli-calculator-current",
         "curriculum-liberty-business-aa-online:liberty-cli-religion-calculator-2026-11-24",
         "curriculum-liberty-business-bs-online:liberty-cli-calculator-current",
         "curriculum-liberty-business-bs-online:liberty-cli-religion-calculator-2026-11-24",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-cli-calculator-current",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-cli-religion-calculator-2026-11-24",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-cli-calculator-current",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-cli-religion-calculator-2026-11-24",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--liberty-cli-calculator-current",
@@ -16146,11 +16280,13 @@
         "curriculum-liberty-psychology-addictions-online:liberty-criminal-justice-online--liberty-cli-calculator-current",
         "curriculum-liberty-psychology-bs-online:liberty-cli-religion-calculator-2026-11-24",
         "curriculum-liberty-psychology-bs-online:liberty-criminal-justice-online--liberty-cli-calculator-current",
+        "curriculum-liberty-religion-aa-online:liberty-cli-religion-calculator-2026-11-24",
         "liberty-criminal-justice-online:liberty-cli-calculator-current",
         "liberty-criminal-justice-online:liberty-cli-religion-calculator-2026-11-24"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 11,
@@ -16181,9 +16317,12 @@
         "liberty-criminal-justice-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -16191,15 +16330,20 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-official-sophia-online-2026-07",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-cj-online-sophia-selected-awards-2026-11-18",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-official-sophia-online-2026-07",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--sophia",
         "curriculum-liberty-accounting-bs-online:liberty-named-sophia-online-2026-07",
         "curriculum-liberty-accounting-bs-online:liberty-official-sophia-online-2026-07",
         "curriculum-liberty-accounting-bs-online:liberty-online-sophia-guide-full-2026-11-18",
+        "curriculum-liberty-apologetics-aa-online:liberty-criminal-justice-online--liberty-cj-online-sophia-selected-awards-2026-11-18",
+        "curriculum-liberty-apologetics-aa-online:liberty-criminal-justice-online--sophia",
+        "curriculum-liberty-apologetics-aa-online:liberty-official-sophia-online-2026-07",
         "curriculum-liberty-business-aa-online:liberty-official-sophia-online-2026-07",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-cj-online-sophia-selected-awards-2026-11-18",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-official-sophia-online-2026-07",
@@ -16207,6 +16351,10 @@
         "curriculum-liberty-business-bs-online:liberty-named-sophia-online-2026-07",
         "curriculum-liberty-business-bs-online:liberty-official-sophia-online-2026-07",
         "curriculum-liberty-business-bs-online:liberty-online-sophia-guide-full-2026-11-18",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-criminal-justice-online--liberty-cj-online-sophia-selected-awards-2026-11-18",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-criminal-justice-online--liberty-official-sophia-online-2026-07",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-criminal-justice-online--sophia",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-official-sophia-online-2026-07",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--liberty-cj-online-sophia-selected-awards-2026-11-18",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--liberty-official-sophia-online-2026-07",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--sophia",
@@ -16250,12 +16398,16 @@
         "curriculum-liberty-psychology-bs-online:liberty-official-sophia-online-2026-07",
         "curriculum-liberty-psychology-bs-online:liberty-online-sophia-guide-full-2026-11-18",
         "curriculum-liberty-psychology-bs-online:liberty-shared-source-2a390bc39b6c2d0ced2dfd83",
+        "curriculum-liberty-religion-aa-online:liberty-criminal-justice-online--liberty-cj-online-sophia-selected-awards-2026-11-18",
+        "curriculum-liberty-religion-aa-online:liberty-criminal-justice-online--sophia",
+        "curriculum-liberty-religion-aa-online:liberty-official-sophia-online-2026-07",
         "liberty-criminal-justice-online:liberty-cj-online-sophia-selected-awards-2026-11-18",
         "liberty-criminal-justice-online:liberty-official-sophia-online-2026-07",
         "liberty-criminal-justice-online:sophia"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 11,
@@ -16284,9 +16436,12 @@
         "liberty-criminal-justice-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -16294,18 +16449,28 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-named-straighterline-online-2026-04",
+        "curriculum-liberty-accounting-aa-online:liberty-official-straighterline-online-2026-04",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-official-straighterline-online-2026-04",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--straighterline",
         "curriculum-liberty-accounting-bs-online:liberty-named-straighterline-online-2026-04",
         "curriculum-liberty-accounting-bs-online:liberty-official-straighterline-online-2026-04",
+        "curriculum-liberty-apologetics-aa-online:liberty-criminal-justice-online--straighterline",
+        "curriculum-liberty-apologetics-aa-online:liberty-named-straighterline-online-2026-04",
+        "curriculum-liberty-apologetics-aa-online:liberty-official-straighterline-online-2026-04",
         "curriculum-liberty-business-aa-online:liberty-official-straighterline-online-2026-04",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-official-straighterline-online-2026-04",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--straighterline",
         "curriculum-liberty-business-bs-online:liberty-named-straighterline-online-2026-04",
         "curriculum-liberty-business-bs-online:liberty-official-straighterline-online-2026-04",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-criminal-justice-online--liberty-official-straighterline-online-2026-04",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-criminal-justice-online--straighterline",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-named-straighterline-online-2026-04",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-official-straighterline-online-2026-04",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--liberty-official-straighterline-online-2026-04",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--straighterline",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-named-straighterline-online-2026-04",
@@ -16331,11 +16496,15 @@
         "curriculum-liberty-psychology-bs-online:liberty-criminal-justice-online--straighterline",
         "curriculum-liberty-psychology-bs-online:liberty-named-straighterline-online-2026-04",
         "curriculum-liberty-psychology-bs-online:liberty-official-straighterline-online-2026-04",
+        "curriculum-liberty-religion-aa-online:liberty-criminal-justice-online--straighterline",
+        "curriculum-liberty-religion-aa-online:liberty-named-straighterline-online-2026-04",
+        "curriculum-liberty-religion-aa-online:liberty-official-straighterline-online-2026-04",
         "liberty-criminal-justice-online:liberty-official-straighterline-online-2026-04",
         "liberty-criminal-justice-online:straighterline"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 11,
@@ -16366,9 +16535,12 @@
         "liberty-criminal-justice-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -16376,9 +16548,12 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-named-study-com-online-2026-05",
+        "curriculum-liberty-accounting-aa-online:liberty-official-study-com-online-2026-05",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-cj-study-online-named-awards-2026-11-18",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--study",
@@ -16386,6 +16561,8 @@
         "curriculum-liberty-accounting-bs-online:liberty-official-study-com-online-2026-05",
         "curriculum-liberty-accounting-bs-online:liberty-online-study-guide-full-2026-11-18",
         "curriculum-liberty-accounting-bs-online:liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "curriculum-liberty-apologetics-aa-online:liberty-named-study-com-online-2026-05",
+        "curriculum-liberty-apologetics-aa-online:liberty-official-study-com-online-2026-05",
         "curriculum-liberty-business-aa-online:liberty-official-study-com-online-2026-05",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-cj-study-online-named-awards-2026-11-18",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
@@ -16394,6 +16571,9 @@
         "curriculum-liberty-business-bs-online:liberty-official-study-com-online-2026-05",
         "curriculum-liberty-business-bs-online:liberty-online-study-guide-full-2026-11-18",
         "curriculum-liberty-business-bs-online:liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-named-study-com-online-2026-05",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-official-study-com-online-2026-05",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--liberty-cj-study-online-named-awards-2026-11-18",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--liberty-official-study-com-online-2026-05",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--study",
@@ -16438,12 +16618,15 @@
         "curriculum-liberty-psychology-bs-online:liberty-official-study-com-online-2026-05",
         "curriculum-liberty-psychology-bs-online:liberty-online-study-guide-full-2026-11-18",
         "curriculum-liberty-psychology-bs-online:liberty-shared-source-5e9f7058990f651dfb537ed5",
+        "curriculum-liberty-religion-aa-online:liberty-named-study-com-online-2026-05",
+        "curriculum-liberty-religion-aa-online:liberty-official-study-com-online-2026-05",
         "liberty-criminal-justice-online:liberty-cj-study-online-named-awards-2026-11-18",
         "liberty-criminal-justice-online:liberty-official-study-com-online-2026-05",
         "liberty-criminal-justice-online:study"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 11,
@@ -16472,9 +16655,12 @@
         "liberty-criminal-justice-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -16482,14 +16668,19 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+        "curriculum-liberty-accounting-aa-online:liberty-official-clep-online-2025-08",
         "curriculum-liberty-accounting-bs-online:liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--clep",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
         "curriculum-liberty-accounting-bs-online:liberty-criminal-justice-online--liberty-official-clep-online-2025-08",
         "curriculum-liberty-accounting-bs-online:liberty-official-clep-online-2025-08",
+        "curriculum-liberty-apologetics-aa-online:liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+        "curriculum-liberty-apologetics-aa-online:liberty-official-clep-online-2025-08",
         "curriculum-liberty-business-aa-online:liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
         "curriculum-liberty-business-aa-online:liberty-official-clep-online-2025-08",
         "curriculum-liberty-business-bs-online:liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
@@ -16497,6 +16688,8 @@
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
         "curriculum-liberty-business-bs-online:liberty-criminal-justice-online--liberty-official-clep-online-2025-08",
         "curriculum-liberty-business-bs-online:liberty-official-clep-online-2025-08",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-criminal-justice-online--liberty-official-clep-online-2025-08",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-official-clep-online-2025-08",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--clep",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-criminal-justice-online--liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
@@ -16529,12 +16722,15 @@
         "curriculum-liberty-psychology-bs-online:liberty-criminal-justice-online--liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
         "curriculum-liberty-psychology-bs-online:liberty-criminal-justice-online--liberty-official-clep-online-2025-08",
         "curriculum-liberty-psychology-bs-online:liberty-official-clep-online-2025-08",
+        "curriculum-liberty-religion-aa-online:liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
+        "curriculum-liberty-religion-aa-online:liberty-official-clep-online-2025-08",
         "liberty-criminal-justice-online:clep",
         "liberty-criminal-justice-online:liberty-clep-named-guide-2025-08-25-reviewed-2026-11-17",
         "liberty-criminal-justice-online:liberty-official-clep-online-2025-08"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 11,
@@ -16562,21 +16758,28 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-online-tuition-2026-2027-reviewed",
         "curriculum-liberty-accounting-bs-online:liberty-online-tuition-2026-2027-reviewed",
+        "curriculum-liberty-apologetics-aa-online:liberty-online-tuition-2026-2027-reviewed",
         "curriculum-liberty-business-aa-online:liberty-online-tuition-2026-2027-reviewed",
         "curriculum-liberty-business-bs-online:liberty-online-tuition-2026-2027-reviewed",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-online-tuition-2026-2027-reviewed",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-healthcare-online-tuition-2026-2027",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-online-tuition-2026-2027-reviewed",
         "curriculum-liberty-history-bs-online:liberty-history-online-tuition-2026-2027",
@@ -16585,10 +16788,12 @@
         "curriculum-liberty-interdisciplinary-aa-online:liberty-online-tuition-2026-2027-reviewed",
         "curriculum-liberty-psychology-aa-online:liberty-online-tuition-2026-2027-reviewed",
         "curriculum-liberty-psychology-addictions-online:liberty-online-tuition-2026-2027-reviewed",
-        "curriculum-liberty-psychology-bs-online:liberty-online-tuition-2026-2027-reviewed"
+        "curriculum-liberty-psychology-bs-online:liberty-online-tuition-2026-2027-reviewed",
+        "curriculum-liberty-religion-aa-online:liberty-online-tuition-2026-2027-reviewed"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "pricing",
       "affectedExactPrograms": 10,
@@ -16720,31 +16925,40 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-accounting-bs-online:liberty-dsst-linked-2023-online",
+        "curriculum-liberty-apologetics-aa-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-business-aa-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-business-bs-online:liberty-dsst-linked-2023-online",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-history-bs-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-human-services-bs-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-interdisciplinary-aa-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-psychology-aa-online:liberty-dsst-linked-2023-online",
         "curriculum-liberty-psychology-addictions-online:liberty-dsst-linked-2023-online",
-        "curriculum-liberty-psychology-bs-online:liberty-dsst-linked-2023-online"
+        "curriculum-liberty-psychology-bs-online:liberty-dsst-linked-2023-online",
+        "curriculum-liberty-religion-aa-online:liberty-dsst-linked-2023-online"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 10,
@@ -16770,31 +16984,40 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-dsst-2025-online",
         "curriculum-liberty-accounting-bs-online:liberty-dsst-2025-online",
+        "curriculum-liberty-apologetics-aa-online:liberty-dsst-2025-online",
         "curriculum-liberty-business-aa-online:liberty-dsst-2025-online",
         "curriculum-liberty-business-bs-online:liberty-dsst-2025-online",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-dsst-2025-online",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-dsst-2025-online",
         "curriculum-liberty-history-bs-online:liberty-dsst-2025-online",
         "curriculum-liberty-human-services-bs-online:liberty-dsst-2025-online",
         "curriculum-liberty-interdisciplinary-aa-online:liberty-dsst-2025-online",
         "curriculum-liberty-psychology-aa-online:liberty-dsst-2025-online",
         "curriculum-liberty-psychology-addictions-online:liberty-dsst-2025-online",
-        "curriculum-liberty-psychology-bs-online:liberty-dsst-2025-online"
+        "curriculum-liberty-psychology-bs-online:liberty-dsst-2025-online",
+        "curriculum-liberty-religion-aa-online:liberty-dsst-2025-online"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 10,
@@ -16820,31 +17043,40 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-accounting-bs-online:liberty-tuition-fees-2026-2027-reviewed",
+        "curriculum-liberty-apologetics-aa-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-business-aa-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-business-bs-online:liberty-tuition-fees-2026-2027-reviewed",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-history-bs-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-human-services-bs-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-interdisciplinary-aa-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-psychology-aa-online:liberty-tuition-fees-2026-2027-reviewed",
         "curriculum-liberty-psychology-addictions-online:liberty-tuition-fees-2026-2027-reviewed",
-        "curriculum-liberty-psychology-bs-online:liberty-tuition-fees-2026-2027-reviewed"
+        "curriculum-liberty-psychology-bs-online:liberty-tuition-fees-2026-2027-reviewed",
+        "curriculum-liberty-religion-aa-online:liberty-tuition-fees-2026-2027-reviewed"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "pricing",
       "affectedExactPrograms": 10,
@@ -17856,29 +18088,38 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-named-study-com-campus-2026-05",
         "curriculum-liberty-accounting-bs-online:liberty-named-study-com-campus-2026-05",
+        "curriculum-liberty-apologetics-aa-online:liberty-named-study-com-campus-2026-05",
         "curriculum-liberty-business-bs-online:liberty-named-study-com-campus-2026-05",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-named-study-com-campus-2026-05",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-named-study-com-campus-2026-05",
         "curriculum-liberty-history-bs-online:liberty-named-study-com-campus-2026-05",
         "curriculum-liberty-human-services-bs-online:liberty-named-study-com-campus-2026-05",
         "curriculum-liberty-interdisciplinary-aa-online:liberty-named-study-com-campus-2026-05",
         "curriculum-liberty-psychology-aa-online:liberty-named-study-com-campus-2026-05",
         "curriculum-liberty-psychology-addictions-online:liberty-named-study-com-campus-2026-05",
-        "curriculum-liberty-psychology-bs-online:liberty-named-study-com-campus-2026-05"
+        "curriculum-liberty-psychology-bs-online:liberty-named-study-com-campus-2026-05",
+        "curriculum-liberty-religion-aa-online:liberty-named-study-com-campus-2026-05"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 9,
@@ -17990,27 +18231,36 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "modelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
       "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-named-straighterline-campus-2026-04",
         "curriculum-liberty-accounting-bs-online:liberty-named-straighterline-campus-2026-04",
+        "curriculum-liberty-apologetics-aa-online:liberty-named-straighterline-campus-2026-04",
         "curriculum-liberty-business-bs-online:liberty-named-straighterline-campus-2026-04",
+        "curriculum-liberty-criminal-justice-aa-online:liberty-named-straighterline-campus-2026-04",
         "curriculum-liberty-healthcare-administration-bs-online:liberty-named-straighterline-campus-2026-04",
         "curriculum-liberty-history-bs-online:liberty-named-straighterline-campus-2026-04",
         "curriculum-liberty-human-services-bs-online:liberty-named-straighterline-campus-2026-04",
         "curriculum-liberty-interdisciplinary-aa-online:liberty-named-straighterline-campus-2026-04",
         "curriculum-liberty-psychology-addictions-online:liberty-named-straighterline-campus-2026-04",
-        "curriculum-liberty-psychology-bs-online:liberty-named-straighterline-campus-2026-04"
+        "curriculum-liberty-psychology-bs-online:liberty-named-straighterline-campus-2026-04",
+        "curriculum-liberty-religion-aa-online:liberty-named-straighterline-campus-2026-04"
       ],
       "roles": [
-        "model-evidence"
+        "model-evidence",
+        "unlinked-model-evidence"
       ],
       "kind": "receiving-school-transfer-guide",
       "affectedExactPrograms": 8,
@@ -23905,6 +24155,27 @@
       "captureStatus": "not-captured"
     },
     {
+      "id": "source-ddbe765543824361ca5f4a2c",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-major-aa/accounting-aa-online/",
+      "titles": [
+        "Accounting (A.A.) — Online official 2026–27 degree completion plan (captured)"
+      ],
+      "programIds": [],
+      "modelIds": [
+        "curriculum-liberty-accounting-aa-online"
+      ],
+      "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-accounting-aa-online-2026-2027-captured"
+      ],
+      "roles": [
+        "unlinked-model-evidence"
+      ],
+      "kind": "program-evidence",
+      "affectedExactPrograms": 0,
+      "sourceContentHash": null,
+      "captureStatus": "not-captured"
+    },
+    {
       "id": "source-0610d6f6373438cc8e18ad8b",
       "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/",
       "titles": [
@@ -25368,6 +25639,27 @@
       "captureStatus": "not-captured"
     },
     {
+      "id": "source-8d73546bb2e854bae3ee7135",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-aa/criminal-justice-aa-online/",
+      "titles": [
+        "Criminal Justice (A.A.) — Online official 2026–27 degree completion plan (captured)"
+      ],
+      "programIds": [],
+      "modelIds": [
+        "curriculum-liberty-criminal-justice-aa-online"
+      ],
+      "localSourceIds": [
+        "curriculum-liberty-criminal-justice-aa-online:liberty-criminal-justice-aa-online-2026-2027-captured"
+      ],
+      "roles": [
+        "unlinked-model-evidence"
+      ],
+      "kind": "program-evidence",
+      "affectedExactPrograms": 0,
+      "sourceContentHash": null,
+      "captureStatus": "not-captured"
+    },
+    {
       "id": "source-f605df34329a3d5573c19fd2",
       "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/fire-administration-major-bs/",
       "titles": [
@@ -25900,6 +26192,27 @@
       "captureStatus": "not-captured"
     },
     {
+      "id": "source-9618568f6650fffed6d53c48",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/apologetics-major-aa/apologetics-aa/",
+      "titles": [
+        "Apologetics (A.A.) — Online official 2026–27 degree completion plan (captured)"
+      ],
+      "programIds": [],
+      "modelIds": [
+        "curriculum-liberty-apologetics-aa-online"
+      ],
+      "localSourceIds": [
+        "curriculum-liberty-apologetics-aa-online:liberty-apologetics-aa-online-2026-2027-captured"
+      ],
+      "roles": [
+        "unlinked-model-evidence"
+      ],
+      "kind": "program-evidence",
+      "affectedExactPrograms": 0,
+      "sourceContentHash": null,
+      "captureStatus": "not-captured"
+    },
+    {
       "id": "source-36b307c8e9deb24d69fd15bc",
       "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/applied-ministry-major-bs/",
       "titles": [
@@ -26166,6 +26479,27 @@
       "captureStatus": "not-captured"
     },
     {
+      "id": "source-5df4f3168f2dd57b9f98084b",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/religion-major-aa/religion-online/",
+      "titles": [
+        "Religion (A.A.) — Online official 2026–27 degree completion plan (captured)"
+      ],
+      "programIds": [],
+      "modelIds": [
+        "curriculum-liberty-religion-aa-online"
+      ],
+      "localSourceIds": [
+        "curriculum-liberty-religion-aa-online:liberty-religion-aa-online-2026-2027-captured"
+      ],
+      "roles": [
+        "unlinked-model-evidence"
+      ],
+      "kind": "program-evidence",
+      "affectedExactPrograms": 0,
+      "sourceContentHash": null,
+      "captureStatus": "not-captured"
+    },
+    {
       "id": "source-5ac2a2f9e5b87b345c9a1e5c",
       "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/religion-major-bs/",
       "titles": [
@@ -26297,6 +26631,27 @@
       "affectedExactPrograms": 0,
       "sourceContentHash": null,
       "captureStatus": "not-captured"
+    },
+    {
+      "id": "source-a654351a3fc716e769b02d7d",
+      "url": "https://catalog.liberty.edu/undergraduate/courses/acct/",
+      "titles": [
+        "Liberty University 2026–2027 undergraduate course descriptions: Accounting (ACCT) (captured)"
+      ],
+      "programIds": [],
+      "modelIds": [
+        "curriculum-liberty-accounting-aa-online"
+      ],
+      "localSourceIds": [
+        "curriculum-liberty-accounting-aa-online:liberty-acct-courses-2026-2027-captured"
+      ],
+      "roles": [
+        "unlinked-model-evidence"
+      ],
+      "kind": "course-description",
+      "affectedExactPrograms": 0,
+      "sourceContentHash": null,
+      "captureStatus": "not-captured"
     }
   ],
   "jobs": [
@@ -26321,9 +26676,12 @@
         "liberty-criminal-justice-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -26331,8 +26689,10 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:95828ab0ab6c6be795d058fb9a06d0ec329c60550461b05b8a74e26d1eb76e01",
       "status": "queued"
     },
     {
@@ -26356,9 +26716,12 @@
         "liberty-criminal-justice-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -26366,8 +26729,10 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:3a061a7b597f918f2e068fded1353ab5b2692804df81ba340fdf6c7ccc02ff1a",
       "status": "queued"
     },
     {
@@ -26391,9 +26756,12 @@
         "liberty-criminal-justice-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -26401,8 +26769,10 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:52814a18e8eb8e3163df9b578bc93332bf6520db90919b7048c30f0f9938ecd1",
       "status": "queued"
     },
     {
@@ -26426,9 +26796,12 @@
         "liberty-criminal-justice-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -26436,8 +26809,10 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:1338bcc6a6aeb420c2a9896765da5424fb8a9e4625984d437145f5379fcb7949",
       "status": "queued"
     },
     {
@@ -26461,9 +26836,12 @@
         "liberty-criminal-justice-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -26471,8 +26849,10 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:2bdc85e979fe137c525d4f76bf20da909853d0b8049fc0dc68e63c55aa68f145",
       "status": "queued"
     },
     {
@@ -26496,9 +26876,12 @@
         "liberty-criminal-justice-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -26506,8 +26889,10 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:7b63622275e8703910faf16620c32b67667651248722d7d63481d5867cf4fc00",
       "status": "queued"
     },
     {
@@ -26531,9 +26916,12 @@
         "liberty-criminal-justice-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
@@ -26541,8 +26929,10 @@
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:3ad3622aab0ac411931850ee5884f1fa0c70bb6ae4379fd1fdd84d9dba6305eb",
       "status": "queued"
     },
     {
@@ -26565,17 +26955,22 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
+      "inputFingerprint": "sha256:b04192a252bd27c7f8893fa5f0bdcaca279eba19877e5cf6bb70311b48c9a558",
       "status": "queued"
     },
     {
@@ -26598,17 +26993,22 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
+      "inputFingerprint": "sha256:4032d9c0e5d8ef9bfe5676f68a638f60a906508335813b58b698f5048dd7146c",
       "status": "queued"
     },
     {
@@ -26642,6 +27042,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:06d844124c302af39d4c46013e5315d222c1308cfde8cb513529d3a29c61bdb3",
       "status": "queued"
     },
     {
@@ -26675,6 +27076,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:5c6ea88946b2cfc0ec4e6ea95383b1b37b23a7152251b4fa2ad55735f362ff0a",
       "status": "queued"
     },
     {
@@ -26697,17 +27099,22 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
+      "inputFingerprint": "sha256:64500b6394b8770ec2bc05b0da8aba7326e05ee4ceb8cbcc1e6ad501b2b2f2de",
       "status": "queued"
     },
     {
@@ -26730,17 +27137,22 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
+      "inputFingerprint": "sha256:1d5f34aa8b96533be22458d2d96d245cf7858139c48afbf682f618d4e33ff56e",
       "status": "queued"
     },
     {
@@ -26762,16 +27174,21 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
+      "inputFingerprint": "sha256:7c165bb5569e7b112d1dcb587fb835ad93de8c760f9236b162ab87a971f44412",
       "status": "queued"
     },
     {
@@ -26803,6 +27220,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:e0b78636c674021387daf234b989c87c18eddf4c8e66ff6a23fdb2748f872ae7",
       "status": "queued"
     },
     {
@@ -26834,6 +27252,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:a54add93a2c473de2c472f4f913ab1eb64d8226835ec4551b724d4f5b4cbb939",
       "status": "queued"
     },
     {
@@ -26865,6 +27284,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:53a65aa43115255267bb37b606e9a781c074211b5dae5444871b30c09a52b5a9",
       "status": "queued"
     },
     {
@@ -26896,6 +27316,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:d54df2dd64f00cc58605603d0c410051c06989165159af8a08f4ea7f5e0aa2e4",
       "status": "queued"
     },
     {
@@ -26927,6 +27348,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:0f799e838cebcdc82b0bf15da477bc55055202a14b99cdbf48c767b309c0cb9b",
       "status": "queued"
     },
     {
@@ -26958,6 +27380,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:9f6402454b9cf3e31f8a62a3671e94d35d134f0d1fada1dd1ad2b9a009f73aaf",
       "status": "queued"
     },
     {
@@ -26989,6 +27412,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:5c43245818855ba81bd63873a8a5d386b9e7e24ea3bfe86056776eab4755d0a3",
       "status": "queued"
     },
     {
@@ -27020,6 +27444,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:998e3c73bd77df865751c168a0db4cbbb9f2c4c9b462c71642eabcac5b5b66b2",
       "status": "queued"
     },
     {
@@ -27051,6 +27476,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:94737f539bb34aef86422a2521e2e7758a2ab460b1f9524c5d60c4639037c76b",
       "status": "queued"
     },
     {
@@ -27082,6 +27508,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:d6d994ea173baeb58e8729dd0da83194f05c21e349c819177a3dee044bbeb75c",
       "status": "queued"
     },
     {
@@ -27113,6 +27540,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:69dea2b2611c9207a12be111c9bc4655c7f82de0445eb90cef766f85ce5b6a8b",
       "status": "queued"
     },
     {
@@ -27144,6 +27572,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:ad584ca5478e6b4632dc24427e7987c1d1403bdda007bf534c64e50a842fd8bd",
       "status": "queued"
     },
     {
@@ -27175,6 +27604,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:90d58c58762af4c00ca089a0b4e3a6f4d65a876627a58454d9ae3876a3e9fdbb",
       "status": "queued"
     },
     {
@@ -27206,6 +27636,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:c0fde93505f4ddf1c8ceaac4b5a67b5c3022a42f84d57d4a3759e1131b64cd87",
       "status": "queued"
     },
     {
@@ -27237,6 +27668,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:599ee2af64e9ade18bd8fe55d11167bc59409380569b35db0ea0717d60912620",
       "status": "queued"
     },
     {
@@ -27268,6 +27700,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:af6291ac059ff88c79308566f09a21d29d1cb1ed85ec52d03e4d8047e5b585a5",
       "status": "queued"
     },
     {
@@ -27299,6 +27732,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:f9e53e4b4acd490d07822f0bbaa487195de8b512b5d4612ecb610d88d39168d5",
       "status": "queued"
     },
     {
@@ -27330,6 +27764,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:97209857d1aa7e84836667c6afacba40da291fe459d73f5108c3a317e74f936a",
       "status": "queued"
     },
     {
@@ -27361,6 +27796,7 @@
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:6f7b50436dd9daf482e7f590671b42fe2446314af53940ec504ccd63f84ffab1",
       "status": "queued"
     },
     {
@@ -27381,15 +27817,20 @@
         "liberty-catalog-fa62c08cdfa0c990-online"
       ],
       "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online",
         "curriculum-liberty-accounting-bs-online",
+        "curriculum-liberty-apologetics-aa-online",
         "curriculum-liberty-business-bs-online",
+        "curriculum-liberty-criminal-justice-aa-online",
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-addictions-online",
-        "curriculum-liberty-psychology-bs-online"
+        "curriculum-liberty-psychology-bs-online",
+        "curriculum-liberty-religion-aa-online"
       ],
+      "inputFingerprint": "sha256:3a7f570c366e5b66277a7ec9144b4ac7cf8841e2946cc34286f1ba6fb042a59a",
       "status": "queued"
     },
     {
@@ -27419,6 +27860,7 @@
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online"
       ],
+      "inputFingerprint": "sha256:ccd9c9aed6e896d9e52f26aeae1bb7229d029c4f11ce19ecfafd89b8aa554ea2",
       "status": "queued"
     },
     {
@@ -27448,6 +27890,7 @@
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online"
       ],
+      "inputFingerprint": "sha256:73633a3728766994437d17579a32b6eb65ae52991fce2df3c5508aa8ef8790dc",
       "status": "queued"
     },
     {
@@ -27467,6 +27910,7 @@
         "curriculum-liberty-human-services-bs-online",
         "curriculum-liberty-psychology-addictions-online"
       ],
+      "inputFingerprint": "sha256:f2faeacdf10d27b9b3bf2bf36863140830ee1b4b61b950de272026a18e087a4d",
       "status": "queued"
     },
     {
@@ -27483,6 +27927,7 @@
       "affectedModelIds": [
         "liberty-criminal-justice-online"
       ],
+      "inputFingerprint": "sha256:0d5aba9534b3b9ead36c4221c7150126e2821aaa46e683de1165f4b408e032a9",
       "status": "queued"
     },
     {
@@ -27498,6 +27943,7 @@
       "affectedModelIds": [
         "curriculum-liberty-human-services-bs-online"
       ],
+      "inputFingerprint": "sha256:d77168c1a80521ea6f19a0caa73ca750802a543616e94243716eda5510bc73f0",
       "status": "queued"
     },
     {
@@ -27513,6 +27959,7 @@
       "affectedModelIds": [
         "curriculum-liberty-human-services-bs-online"
       ],
+      "inputFingerprint": "sha256:85f20c9381e1fcdf03143d684b474f00fcee2c1e65c6e0e7805012301ea9c2c6",
       "status": "queued"
     },
     {
@@ -27528,6 +27975,7 @@
       "affectedModelIds": [
         "curriculum-liberty-interdisciplinary-aa-online"
       ],
+      "inputFingerprint": "sha256:9952997474feac504db865bc0b7e16ed90dd31dd81e78fe41b0b5a97b0c8cda4",
       "status": "queued"
     },
     {
@@ -27543,6 +27991,7 @@
       "affectedModelIds": [
         "curriculum-liberty-history-bs-online"
       ],
+      "inputFingerprint": "sha256:698a1ab49c65e86ab9f45c4eecf5774c8c93336fe098ae16fff02f548aa284f4",
       "status": "queued"
     },
     {
@@ -27558,6 +28007,7 @@
       "affectedModelIds": [
         "curriculum-liberty-accounting-bs-online"
       ],
+      "inputFingerprint": "sha256:d49962527c05b28a987a6d58981764ca699f92224d086ac59f0186d545870daa",
       "status": "queued"
     },
     {
@@ -27573,6 +28023,7 @@
       "affectedModelIds": [
         "curriculum-liberty-psychology-aa-online"
       ],
+      "inputFingerprint": "sha256:965dbcb15318f36cdc3e4f864809e9215b3875cb5e16b1ae92076e7df8e80586",
       "status": "queued"
     },
     {
@@ -27588,6 +28039,7 @@
       "affectedModelIds": [
         "curriculum-liberty-history-bs-online"
       ],
+      "inputFingerprint": "sha256:4559f2f35f04f5d78bcf1632060f9ce12b26b971424c7eda06f4826911530392",
       "status": "queued"
     },
     {
@@ -27603,6 +28055,7 @@
       "affectedModelIds": [
         "curriculum-liberty-history-bs-online"
       ],
+      "inputFingerprint": "sha256:ecf0ef46ef93b338da82708c0772e79843f972ef3953548efd571fc2beaf716c",
       "status": "queued"
     },
     {
@@ -27618,6 +28071,7 @@
       "affectedModelIds": [
         "curriculum-liberty-history-bs-online"
       ],
+      "inputFingerprint": "sha256:17b8d415848a02b8905eed3795210061bd5fb2fc6d3df4271b54a066f1d09f13",
       "status": "queued"
     },
     {
@@ -27633,6 +28087,7 @@
       "affectedModelIds": [
         "curriculum-liberty-business-bs-online"
       ],
+      "inputFingerprint": "sha256:0365808d7537b8028b3879ee63c73558eda6607e9f1d9c41c09142996d5f6960",
       "status": "queued"
     },
     {
@@ -27648,6 +28103,7 @@
       "affectedModelIds": [
         "curriculum-liberty-history-bs-online"
       ],
+      "inputFingerprint": "sha256:c30f80609662210005a8b1dc102da18f869fa514b81d963fcb12981829e27a88",
       "status": "queued"
     },
     {
@@ -27663,6 +28119,7 @@
       "affectedModelIds": [
         "curriculum-liberty-history-bs-online"
       ],
+      "inputFingerprint": "sha256:b3e0918b6391e1be194dda53de73f7111027dd132a3c5c72f5f632b287a07bde",
       "status": "queued"
     },
     {
@@ -27678,6 +28135,7 @@
       "affectedModelIds": [
         "curriculum-liberty-healthcare-administration-bs-online"
       ],
+      "inputFingerprint": "sha256:434ef1f43f1d3feeb323df9b0ce307f8c5c1deb0b87628d077eed089601d4da5",
       "status": "queued"
     },
     {
@@ -27693,6 +28151,7 @@
       "affectedModelIds": [
         "curriculum-liberty-human-services-bs-online"
       ],
+      "inputFingerprint": "sha256:7df519109a71ca5e75eeb2c6fb4de085a85b411189e276f7a0dddad9ee8ee662",
       "status": "queued"
     },
     {
@@ -27708,6 +28167,7 @@
       "affectedModelIds": [
         "curriculum-liberty-history-bs-online"
       ],
+      "inputFingerprint": "sha256:48c85e4cbfb85d4d2ea6cab0e0acc975dbd116f8ceec06c9d92a267dcbc1967e",
       "status": "queued"
     },
     {
@@ -27723,6 +28183,7 @@
       "affectedModelIds": [
         "curriculum-liberty-psychology-bs-online"
       ],
+      "inputFingerprint": "sha256:6c78d51c06b016ae9727199646e1fcf479db71bc90b119a602f423d4d3a41569",
       "status": "queued"
     },
     {
@@ -27738,6 +28199,7 @@
       "affectedModelIds": [
         "curriculum-liberty-interdisciplinary-aa-online"
       ],
+      "inputFingerprint": "sha256:d1d2d88483e534a2cc44c3593258dd9fc555a179e267aae7b4d4fdd2b4018c14",
       "status": "queued"
     },
     {
@@ -27753,6 +28215,7 @@
       "affectedModelIds": [
         "curriculum-liberty-business-aa-online"
       ],
+      "inputFingerprint": "sha256:dca786238c86bb3e3cc4c46001f7c418b8e1a2f92a693dc9ea845e054904b24e",
       "status": "queued"
     },
     {
@@ -27768,6 +28231,7 @@
       "affectedModelIds": [
         "curriculum-liberty-psychology-addictions-online"
       ],
+      "inputFingerprint": "sha256:53fa765b305063fb06f6a9a127dbedf33a1eff9f2bd2c383b5b82211837de70c",
       "status": "queued"
     },
     {
@@ -27781,6 +28245,7 @@
         "liberty-dba"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a89aeba7f6a86c2c8ec7db15897b686f3e8887415c23e742c1e89a7663b4913f",
       "status": "queued"
     },
     {
@@ -28180,6 +28645,7 @@
         "liberty-catalog-ffecf16d37b96e1b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:26482c842c686b1779f57ea98e614050e8d73e8e89ccf0cae90f45afcde55b61",
       "status": "queued"
     },
     {
@@ -28193,6 +28659,7 @@
         "liberty-catalog-01803cbd5e719478"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:eb0baab19037675e0f7d4597e56a1d5a57712ca53bb6db380caceae37d5ca85a",
       "status": "queued"
     },
     {
@@ -28206,6 +28673,7 @@
         "liberty-catalog-01943c7ef7789941"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:1c7d68af84e694187599d6f70ea326bada47e6a4f1ae4b0f66ece8b53bafb1ad",
       "status": "queued"
     },
     {
@@ -28219,6 +28687,7 @@
         "liberty-catalog-01a9f86dc307651c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:515e96e82bef66be367ff6964df3ad652cc0b754f96bc2c41f9c235c21bf8146",
       "status": "queued"
     },
     {
@@ -28232,6 +28701,7 @@
         "liberty-catalog-01e2d2ebf5e6a5f0"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:89079e08f6be898e70f382ea2ec51a5a6c0b8140637dd53d0b7258f828db8740",
       "status": "queued"
     },
     {
@@ -28245,6 +28715,7 @@
         "liberty-catalog-01e715a07587ac62"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ac8350aa09a945c25a552cc7f648fcb9ceefd8875ef0d0e75829f829cadeff83",
       "status": "queued"
     },
     {
@@ -28258,6 +28729,7 @@
         "liberty-catalog-0236fd0d4e9e2c8b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:47ce1841a12091fc80f4f9f8d93e8b9dbb822978ded8f828542ddb2f1a197595",
       "status": "queued"
     },
     {
@@ -28271,6 +28743,7 @@
         "liberty-catalog-038d5a99095fb937"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3e26f0b5f1b1668a70a77689ac236df6774820dae19f3f63dfacc8dd3cfa98b1",
       "status": "queued"
     },
     {
@@ -28284,6 +28757,7 @@
         "liberty-catalog-03c09843bad5fc69"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d43b57c71e4a98d97b804e84a7619c0ff639653e9fe6d45496e4af0a400c9881",
       "status": "queued"
     },
     {
@@ -28297,6 +28771,7 @@
         "liberty-catalog-048aa55ff75b7f01"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0e4fe201be6d532a91ed90489b1360e610f6832cb45ed30f8f10cec5ae60d72b",
       "status": "queued"
     },
     {
@@ -28310,6 +28785,7 @@
         "liberty-catalog-0508591d47f7c90b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c3b626bf87302d186c2431c1aee829d09b6478c1d6b0b02d4497c5449087637a",
       "status": "queued"
     },
     {
@@ -28323,6 +28799,7 @@
         "liberty-catalog-051bdce0e9cf9f18"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6a97266b51da7fe61cb68ce466be51a1f4533676cd6c992a92f5a56cb32fa840",
       "status": "queued"
     },
     {
@@ -28336,6 +28813,7 @@
         "liberty-catalog-05230159e37ccaf5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8ffe436ef65a15cdd696782922e62dd5d3e5a0a3764d99093079f3b1770a8790",
       "status": "queued"
     },
     {
@@ -28349,6 +28827,7 @@
         "liberty-catalog-056c79024bf92a4d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:7002cb9118894979687c32bd72cd737edb97e6723e201ae7293efa6378f87bec",
       "status": "queued"
     },
     {
@@ -28362,6 +28841,7 @@
         "liberty-catalog-05d0318f335787f6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9771e84220931b6eaf5a67e24958a2bdbe470c43d19e3896f85ce3ad916453ba",
       "status": "queued"
     },
     {
@@ -28375,6 +28855,7 @@
         "liberty-catalog-05f3d1dc3737f868"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:77598875a487e5c0da129d7ab2f277b9b638ea2b128de78ad9b84fc93b32fccb",
       "status": "queued"
     },
     {
@@ -28388,6 +28869,7 @@
         "liberty-catalog-0610d6f6373438cc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bb0d9b1a3582441aec95a0b57eb487affd51ddf710266c9b49358f2eaa8df46d",
       "status": "queued"
     },
     {
@@ -28401,6 +28883,7 @@
         "liberty-catalog-06594e32edab5f9e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6c55f580862e11c9697acaae606d8ac6cb64a1baf0355983cf22f510c814e1a5",
       "status": "queued"
     },
     {
@@ -28414,6 +28897,7 @@
         "liberty-catalog-06cd885cc721c0d3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:53df80a1754e90d19c035a36e91475a365b36035bdc13debb426b582546d85bf",
       "status": "queued"
     },
     {
@@ -28427,6 +28911,7 @@
         "liberty-catalog-07342759555d8233"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c3e4bef0d26a0608b8d3b008d773a6e6d1c61e5c6eb44aa168e82d5ff8a8aca6",
       "status": "queued"
     },
     {
@@ -28440,6 +28925,7 @@
         "liberty-catalog-074df088591df5f0"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:351a889766b4a0d5331da05c6711f9507af791b382ee5721751e59c2be96c885",
       "status": "queued"
     },
     {
@@ -28453,6 +28939,7 @@
         "liberty-catalog-07a44b0434e41044"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:fc466d66b21f7c1b21d82981e35fb86468503b88b81d6eb5dc53bf8cec05c0b1",
       "status": "queued"
     },
     {
@@ -28466,6 +28953,7 @@
         "liberty-catalog-07ed280e5e43f759"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:95e1c2e2c7b6e9037b9bb6952d6433f72463c10c0797b1db2dbe2e74432ca8ed",
       "status": "queued"
     },
     {
@@ -28479,6 +28967,7 @@
         "liberty-catalog-09af568a433b790e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9b30e37cf7890bf670c312b32c45d900c315c0f03269a2380fd7b66840a97cd6",
       "status": "queued"
     },
     {
@@ -28492,6 +28981,7 @@
         "liberty-catalog-0b0c976f77063902"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:596f9278bd981df3ab772b295a40f6e29495e2b98505ddda9ae9a09a9492f8da",
       "status": "queued"
     },
     {
@@ -28505,6 +28995,7 @@
         "liberty-catalog-0c79aedf7db2f7fb"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:da5fa7ed6bff5aca527eae6c379b5587b096bf87d5ee4aa49a50c4836620d926",
       "status": "queued"
     },
     {
@@ -28518,6 +29009,7 @@
         "liberty-catalog-0caa2c4b0c527dc9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:682a12d28cee06c523544a83d3f7deaaf78fb66d577baa31bd91ae5a845da324",
       "status": "queued"
     },
     {
@@ -28531,6 +29023,7 @@
         "liberty-catalog-0cf7ec3104babbd8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:eed17cdc1378f8060f9485e3b3b52f523395c8869b4571e5a073526069a872f0",
       "status": "queued"
     },
     {
@@ -28544,6 +29037,7 @@
         "liberty-catalog-0d169ba763408dd6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:1522a67e6ce0a701a2f1e25f9e3a0ab2c43803f182301f05cd259096e5096142",
       "status": "queued"
     },
     {
@@ -28557,6 +29051,7 @@
         "liberty-catalog-0ed394be0f64e39f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:320f8939458dd9ac70397fdfefdda9371ef0859be1af21e389b648bc97c7e9b3",
       "status": "queued"
     },
     {
@@ -28570,6 +29065,7 @@
         "liberty-catalog-0f020e9f03d8338f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6a4b6fdebfa258e5373408f6baa9d4d8bd3abb36d86bbc257b8ab14e3b5f9058",
       "status": "queued"
     },
     {
@@ -28583,6 +29079,7 @@
         "liberty-catalog-0fd4415e139bca99"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:69346590804bc9c454df3cc1e52b45c4a8da4757f8575e059128031106540b16",
       "status": "queued"
     },
     {
@@ -28596,6 +29093,7 @@
         "liberty-catalog-10473c775a6b5334"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:de01e445f9c3a5e6145d8fa370f5803c3f3518bc21913cc32a3b0cebd6c18a32",
       "status": "queued"
     },
     {
@@ -28609,6 +29107,7 @@
         "liberty-catalog-10d9152f0728d182"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e6f6586e1301b7f0678de089035f9d41f04fd3da8fa1da07f3125dc53f78a3f2",
       "status": "queued"
     },
     {
@@ -28622,6 +29121,7 @@
         "liberty-catalog-11025c47c6532d7f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e9072e8926b5a53a08f041951e93e5b63d54c130d3c8d0c24ea8218225ba7c31",
       "status": "queued"
     },
     {
@@ -28635,6 +29135,7 @@
         "liberty-catalog-118a6b166462a9d8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b8ff4f34682804d111e7cd2f8194b65386d6fb21dc26bb5b3aa6397f76ee08ff",
       "status": "queued"
     },
     {
@@ -28648,6 +29149,7 @@
         "liberty-catalog-11abf92633b84cc0"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:46b483d73fbe922fcd56705628610d81fded30611da0f3148b29597450945aa4",
       "status": "queued"
     },
     {
@@ -28661,6 +29163,7 @@
         "liberty-catalog-122c1a47741dc59e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6b852394e5de2ce8cfdbef74a2fa4088ebe4aaa2bfabf932d43db0ad5ee41534",
       "status": "queued"
     },
     {
@@ -28674,6 +29177,7 @@
         "liberty-catalog-126a582d6a07b5dd"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:050833e036c33ff63cbf37aa3892987588e2b07ed08d848fbb0f6e4fbe5d42af",
       "status": "queued"
     },
     {
@@ -28687,6 +29191,7 @@
         "liberty-catalog-12d33cf4839cfde3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:558a957508208bd8f8b146caf51b8b95bb549121bb12194632f5c76d762aa2f9",
       "status": "queued"
     },
     {
@@ -28700,6 +29205,7 @@
         "liberty-catalog-12efb58f7b078827"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a747161b73ff4f6f9ebc9f82f4d6ed3d893f44e13154b3f644ab3ca8828aa3b9",
       "status": "queued"
     },
     {
@@ -28713,6 +29219,7 @@
         "liberty-catalog-13289f2fe6a26880"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f06d393e7a86cc9f929a7f780d60e4b3f3fbe35f62bfb3160561e5ea1c849800",
       "status": "queued"
     },
     {
@@ -28726,6 +29233,7 @@
         "liberty-catalog-13762276220a5cd8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d6d3f37d45eae6d6d693ce596fb0bf758e635645baa1ff37e5bd438c933fa219",
       "status": "queued"
     },
     {
@@ -28739,6 +29247,7 @@
         "liberty-catalog-1430c5f651279e66"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c8e7d8924b4e90d2d9a0486c0dfaf69dc2179b668e6684f90a41a620fdb8015c",
       "status": "queued"
     },
     {
@@ -28752,6 +29261,7 @@
         "liberty-catalog-1472883e174993a7"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:16e4e0c2d9ed9ea1a1b94522f07af0e4c2b8ca85d155dae6274c9cef6580634a",
       "status": "queued"
     },
     {
@@ -28765,6 +29275,7 @@
         "liberty-catalog-1731cb82d1b3a00a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:803ff8cdabd19b3499e7ff8e674da029139f0c6ffc592b97fc93330f685f66a8",
       "status": "queued"
     },
     {
@@ -28778,6 +29289,7 @@
         "liberty-catalog-17e589541d932ad5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:7cb3b602a36d92c287d24be82cca1ef5c425d5bab57243985605f510d7caa0e7",
       "status": "queued"
     },
     {
@@ -28791,6 +29303,7 @@
         "liberty-catalog-1a3ecaea8834fefc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6ab112a7c66b0241c07414c216a1406a015f62bfb49cce466e2caddfc4121d9f",
       "status": "queued"
     },
     {
@@ -28804,6 +29317,7 @@
         "liberty-catalog-1a5f3b479b8b03b2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:380ec512b07dde7eb930b0024dacd67757989acdf211465cf0eb3da735a84ccc",
       "status": "queued"
     },
     {
@@ -28817,6 +29331,7 @@
         "liberty-catalog-1b9a71b79c1f90e9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b4a82e845c4383ec77bc74bcafc4433a33baa9aee4d8ca65f2dc30e544c29192",
       "status": "queued"
     },
     {
@@ -28830,6 +29345,7 @@
         "liberty-catalog-1cebd15bf9cf9d07"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bcca8997082985a87e8544707046426d494460be9d767dea712e9cd8a5ed3066",
       "status": "queued"
     },
     {
@@ -28843,6 +29359,7 @@
         "liberty-catalog-1d4c76929b531364"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:eacb49d470e2d528dd106cb087d74b0b0cf155be52c73e6846ecbadab6b815e2",
       "status": "queued"
     },
     {
@@ -28856,6 +29373,7 @@
         "liberty-catalog-1d8c5359855eea37"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:49b37557891d632c897d11f980f0d74a16a3e78418114350848491a449d83db5",
       "status": "queued"
     },
     {
@@ -28869,6 +29387,7 @@
         "liberty-catalog-1e244effb875297e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f266050a5b6bf51b1d95345589b091d9007ebc0cbb467435734094d163769b52",
       "status": "queued"
     },
     {
@@ -28882,6 +29401,7 @@
         "liberty-catalog-1e3523281754919b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:fef734223f39ae34f0f6e74ed6a2ead76cf8d374741398068f71df6dd219993c",
       "status": "queued"
     },
     {
@@ -28895,6 +29415,7 @@
         "liberty-catalog-1e38199bc15c5c73"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0b92c248f6745f887506d3b3acfdf52ae17459c37a98002b99018b0d2823b62f",
       "status": "queued"
     },
     {
@@ -28908,6 +29429,7 @@
         "liberty-catalog-1e532524d56ed1a6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2ff746a8c207ebb83360a04ecd34026c1eb3f5c4232d60a33b9d470a725e2768",
       "status": "queued"
     },
     {
@@ -28921,6 +29443,7 @@
         "liberty-catalog-2168b36e4ad0d4c0"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f23115fb08a04f88c91632e7c39b8a32ee3db870303f74220efcc04adcf47669",
       "status": "queued"
     },
     {
@@ -28934,6 +29457,7 @@
         "liberty-catalog-22920348bcbb48c2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:631d49fe9ea301ebf13c09ebaaf5adcbefcab3fcc1d076618c53552e2c4dab70",
       "status": "queued"
     },
     {
@@ -28947,6 +29471,7 @@
         "liberty-catalog-235c7ac6d37c32fb"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:147478c2ac845c64d90e1ece395395c81e97861f2b9eb2c2189625575adf86f6",
       "status": "queued"
     },
     {
@@ -28960,6 +29485,7 @@
         "liberty-catalog-23cf089b8bb5d7ae"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8d50631ea6667f03200991fbc5f8fa5a0f0886742f894291c5efe36004a35719",
       "status": "queued"
     },
     {
@@ -28973,6 +29499,7 @@
         "liberty-catalog-24001a794a73106f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:188680e0974a9cd21d3e6b406d9d2a8bdc8ea04880be2808372e22e1c525cdbc",
       "status": "queued"
     },
     {
@@ -28986,6 +29513,7 @@
         "liberty-catalog-258ee1f1db115562"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2ad4e0ac139e696e6f889922113d22c4bc1cdb9a65aad5ab5771fa90a4892f93",
       "status": "queued"
     },
     {
@@ -28999,6 +29527,7 @@
         "liberty-catalog-25fdd85a8bb5aa55"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:203d78c97ebd500f8f2b0fed95539374e08e57e6e1502febb4999462d6c7a638",
       "status": "queued"
     },
     {
@@ -29012,6 +29541,7 @@
         "liberty-catalog-275ca0bcc01fe5ca"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3fbcafac65a33a6f8353881d4f1a7be7ff014cad2618d0eef97c0ed10f3c1413",
       "status": "queued"
     },
     {
@@ -29025,6 +29555,7 @@
         "liberty-catalog-283055c40402a18f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:5fb798e6c281918f531cb06273d09add377eb332563e2d49bb321e19d066a221",
       "status": "queued"
     },
     {
@@ -29038,6 +29569,7 @@
         "liberty-catalog-28668b6f623168aa"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c877f43dec2ea5d753d246ae33e698126f6aec224846bf36c8db7f9cdae3dc9b",
       "status": "queued"
     },
     {
@@ -29051,6 +29583,7 @@
         "liberty-catalog-286ec2b00bd437c1"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:765a69c5c1841ad7a42cfc0ea2ebfa6887d8a7dfb5eeab459d0b9c1fe6ff0c53",
       "status": "queued"
     },
     {
@@ -29064,6 +29597,7 @@
         "liberty-catalog-2a9564f7e85d805f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:240658597a43ab268dc767aaec57a72f8ba79b5e2fbe304a121319ea01efac21",
       "status": "queued"
     },
     {
@@ -29077,6 +29611,7 @@
         "liberty-catalog-2c9be12c551249c2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f8384653763cd5795c62fe9a41d92691f6f4e82a794690124a19bda8bc425879",
       "status": "queued"
     },
     {
@@ -29090,6 +29625,7 @@
         "liberty-catalog-2d0eed65531e9179"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9643a552a4054354c7364620eab3567136b03913eb9b3cf2c830ad572aa09ca1",
       "status": "queued"
     },
     {
@@ -29103,6 +29639,7 @@
         "liberty-catalog-2d6b9036fb82f77b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:74e9d18e4d87e1d19dd20ed82b5b82a5f93fc6988039d81b00168517f73c429b",
       "status": "queued"
     },
     {
@@ -29116,6 +29653,7 @@
         "liberty-catalog-2d71ba48bf8753ba"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:dd79252b3ba57f756d63794c4ff96d37aa42938a3a6748099d5c25835846da7e",
       "status": "queued"
     },
     {
@@ -29129,6 +29667,7 @@
         "liberty-catalog-2ddc453a489d80dc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ae33bb8b5f3c40e08a762b8825e41c0d7c0a2d4a5d5c5746c65b42fc0ae04159",
       "status": "queued"
     },
     {
@@ -29142,6 +29681,7 @@
         "liberty-catalog-2e8c3bfca69a91cc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c8574af6c6bff615e1c7c09538944b81642f71e77c0a9dfa5c143e99e68b1927",
       "status": "queued"
     },
     {
@@ -29155,6 +29695,7 @@
         "liberty-catalog-2ead9212812dd68c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:562e2927b688f4516e7196226fa09866f005c943810cf267da548a02abf22e56",
       "status": "queued"
     },
     {
@@ -29168,6 +29709,7 @@
         "liberty-catalog-2f1c8fc462ce2719"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:551365b9d582031c6804c2296e0656af967c02257a461afb7dcdaa8a2df5cd1e",
       "status": "queued"
     },
     {
@@ -29181,6 +29723,7 @@
         "liberty-catalog-2fa4b1058647d318"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f4702763bcc6051422435b56c1dc5171c44394795470f99b899077c555bf06f3",
       "status": "queued"
     },
     {
@@ -29194,6 +29737,7 @@
         "liberty-catalog-2ff7e4d46f3d8ff7"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f0e78b4f0077841aa5dfc522c5dad7a71819a364a65a5bdcecf43c40fa61a006",
       "status": "queued"
     },
     {
@@ -29207,6 +29751,7 @@
         "liberty-catalog-2ffbc184fbfbafdd"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:173fabc4accc75571419c49ba780f37b3e6bcae36d0b90cc01ce2d93e574ad95",
       "status": "queued"
     },
     {
@@ -29220,6 +29765,7 @@
         "liberty-catalog-30e14fcb5b68961e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:40de97c029b0c4f470dbbd213ec9459a196cb63af5a92f1a79c26aaa4ac9f8fc",
       "status": "queued"
     },
     {
@@ -29233,6 +29779,7 @@
         "liberty-catalog-314d0dd99bb3909d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:28931a8f8506f94d66508d5f722195db83a5ddec543e7fff619c4e6260ff5c30",
       "status": "queued"
     },
     {
@@ -29246,6 +29793,7 @@
         "liberty-catalog-3341e1818d23215e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0c3af5a0cb552150bf44b5d3cf483134f1c30b4ffa2063c58e2d156783bde6b9",
       "status": "queued"
     },
     {
@@ -29259,6 +29807,7 @@
         "liberty-catalog-336fdc2b63c96be3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:fdc43bad79d9d5076bcf25d8b1fb8c075ea43c2dde698fa712e94609f19ae02d",
       "status": "queued"
     },
     {
@@ -29272,6 +29821,7 @@
         "liberty-catalog-33dfc3afbcc2115c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2a0f1818ed425a0c7db0e73838a5b97fbc0fcb0d450b07e75b116f2ccae2beb4",
       "status": "queued"
     },
     {
@@ -29285,6 +29835,7 @@
         "liberty-catalog-34226d1c92ca9475"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a2cf925bacbcbc0a88a262783d41b6a60e5b81bea0bbade6fb38fa3bd43298b2",
       "status": "queued"
     },
     {
@@ -29298,6 +29849,7 @@
         "liberty-catalog-34cc3a6d03659cc1"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:7b47543754de30f375698efa69d65e4502b8a35d2e5e7bdcaa46bea535baefe1",
       "status": "queued"
     },
     {
@@ -29311,6 +29863,7 @@
         "liberty-catalog-356a7e9cf8994d93"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3cfa1b19de7127a6a284bc51cc18bd1fe4660eda7c4349b8b3fb74f9aa7c94cd",
       "status": "queued"
     },
     {
@@ -29324,6 +29877,7 @@
         "liberty-catalog-36490d1258c361de"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:76dd66468e1cd161695a7155542a1b9d8969b704bc03ce668378d9af3cb8afef",
       "status": "queued"
     },
     {
@@ -29337,6 +29891,7 @@
         "liberty-catalog-36b307c8e9deb24d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:80adb9968345304f9b4b57f36815e4c32aed27c6a8242caa7d16c4f60b19625d",
       "status": "queued"
     },
     {
@@ -29350,6 +29905,7 @@
         "liberty-catalog-37dee074ff800ca8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2c4dbb5fe168d16c99bfd6f246f19580c58ef2f8e0496ed8384293e504683878",
       "status": "queued"
     },
     {
@@ -29363,6 +29919,7 @@
         "liberty-catalog-389e5c84176899e5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:822b188f177c4843149b4f6054d0444091e9c5c50ea5e7fad1fd0111309459ae",
       "status": "queued"
     },
     {
@@ -29376,6 +29933,7 @@
         "liberty-catalog-39479a5f7d924e78"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:799be6f5653a21debfc126119928ffbb9b04860f64d1a7bd7fa505c52cfe183e",
       "status": "queued"
     },
     {
@@ -29389,6 +29947,7 @@
         "liberty-catalog-3977761fa3fdde48"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:86bc82fef6b75997ecc810d7f7e59c0c44d8987297aa2966d86f7f190ab79b78",
       "status": "queued"
     },
     {
@@ -29402,6 +29961,7 @@
         "liberty-catalog-3982498f2958c27c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c2e031409d6ff877c47db4eec11df09ac0ffd479e2cd0c296cc21826f7c8150d",
       "status": "queued"
     },
     {
@@ -29415,6 +29975,7 @@
         "liberty-catalog-39b573a570f7a88e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:75c49f032012f6c201225be3710816c6460f2da6f94903a342ec6618032457a7",
       "status": "queued"
     },
     {
@@ -29428,6 +29989,7 @@
         "liberty-catalog-3a49fc051201ef18"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ebbd47a792533a1cefef894bf1d5a288119af8644783334f46cad4ebd3560d55",
       "status": "queued"
     },
     {
@@ -29441,6 +30003,7 @@
         "liberty-catalog-3a4e9f03e51e05b2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9418ba7671c3914d1b887976cfd5bdfd3525b60bec375139607de2a5ad150b59",
       "status": "queued"
     },
     {
@@ -29454,6 +30017,7 @@
         "liberty-catalog-3a5bbfd5970688c4"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a65531e0b2ef3ad561c7f081d780c3226432c3f1f18fa8183b88db638aa1b871",
       "status": "queued"
     },
     {
@@ -29467,6 +30031,7 @@
         "liberty-catalog-3a74415df0d8695f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:802bc938781b2070819a1ef99513b85de33e4ac83c95c506344b66ba9cc429ee",
       "status": "queued"
     },
     {
@@ -29480,6 +30045,7 @@
         "liberty-catalog-3c4f4078f0c3e209"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9754d2e34759e885027359036687a57d5807d8c3586d8c99feb62be8d445f1d9",
       "status": "queued"
     },
     {
@@ -29493,6 +30059,7 @@
         "liberty-catalog-3d3eab45f21db639"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6528e219298820a581b393f6b86cac9462f0b862da0bd5c588f76a86982ee361",
       "status": "queued"
     },
     {
@@ -29506,6 +30073,7 @@
         "liberty-catalog-3d6292e6aea6bb66"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:94b8401a7c6543cdf7026a635060eab55bc335d6c9bb1b15918433d3cbf6e21d",
       "status": "queued"
     },
     {
@@ -29519,6 +30087,7 @@
         "liberty-catalog-3d90fe1201f819e8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2eefcbbea4e21d762f53a5fbf983c09eabfcd5bb649b18cb377576d00af0c1a4",
       "status": "queued"
     },
     {
@@ -29532,6 +30101,7 @@
         "liberty-catalog-3e50ea7a6026d2b2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:793da5f35fa7302afcbc7af0e45b03623b6da98d2aa96da3e4d189b4a9114d0f",
       "status": "queued"
     },
     {
@@ -29545,6 +30115,7 @@
         "liberty-catalog-3e511c43cfc10e08"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:572bb0860b017e09efab186d4acbe8f3d7a1c727a2de8c21035ff43bd768f4ed",
       "status": "queued"
     },
     {
@@ -29558,6 +30129,7 @@
         "liberty-catalog-3eb296dde82a39b6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:1a987fdca3aed8888aec36a6bb2e539f67a0b52e5f3bea32c1a42b2e10ec5625",
       "status": "queued"
     },
     {
@@ -29571,6 +30143,7 @@
         "liberty-catalog-3efb36d56eb9cd03"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:52229af1e982be110985a7b0cda23f87ed8cd5462abdc7747d44a286e8035e69",
       "status": "queued"
     },
     {
@@ -29584,6 +30157,7 @@
         "liberty-catalog-3f4d1f842f2d0bf2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f3a3643ae55e9a06e59c77bb0d02f062636b2248a2bb36b187c97e916e9dec1b",
       "status": "queued"
     },
     {
@@ -29597,6 +30171,7 @@
         "liberty-catalog-3f7202c0e9173631"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:4dbe3091e2c41eb04aebacb11806025dc34d536fc17270a5dcb4d2dd6841c493",
       "status": "queued"
     },
     {
@@ -29610,6 +30185,7 @@
         "liberty-catalog-40d716e8e80562b2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9056749bc6b5007deac54b4d9dc70876bf37ddadafc4d123ce3be58c1cf6634a",
       "status": "queued"
     },
     {
@@ -29623,6 +30199,7 @@
         "liberty-catalog-41afcf0a0158f7af"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0e6cf77cf3867155a51bfaf1ac0545d4d32dd56e46b7a8b5bc4d2a68f1bf1b88",
       "status": "queued"
     },
     {
@@ -29636,6 +30213,7 @@
         "liberty-catalog-41dc9c1c1c86e941"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d6c37c40293ba274939a77d369c7462c6dc0b6cde24852c3977ba7ff64492033",
       "status": "queued"
     },
     {
@@ -29649,6 +30227,7 @@
         "liberty-catalog-42d6fe5d6e866f72"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a5ed455baf8ee0fea1947946944f5e20a0a5c9f80fff7fc1884c0db01ab018e1",
       "status": "queued"
     },
     {
@@ -29662,6 +30241,7 @@
         "liberty-catalog-4327e3decd403dc6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:dd0b7fc2246cee6b943e23be77b5d67aa43520103de0a98d8de3dd09287c9bb6",
       "status": "queued"
     },
     {
@@ -29675,6 +30255,7 @@
         "liberty-catalog-444766f36e118f74"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:836455fffd505cba5675163f236801387470cb1bab827fbc8882271713f7ed6c",
       "status": "queued"
     },
     {
@@ -29688,6 +30269,7 @@
         "liberty-catalog-462eca52e1d65926"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:19309977f0a2a8ba3ddc567a6e95b7e33395d46daed3275b9e04ff777dd1cf18",
       "status": "queued"
     },
     {
@@ -29701,6 +30283,7 @@
         "liberty-catalog-464e132f0c84a1b0"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bfd5c84b6e98c90f9248b9e7153335bd3196de676eae1392f37b8db810a2cb3c",
       "status": "queued"
     },
     {
@@ -29714,6 +30297,7 @@
         "liberty-catalog-46d6ba8a957744e3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e07022560c45410eaeb75a19aa2e4f6dc94b88cac71e8425310ab2a4a91db20b",
       "status": "queued"
     },
     {
@@ -29727,6 +30311,7 @@
         "liberty-catalog-47566517ec422269"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:85c97b4cc9d2e8eccc536c6b690fb6601959f9a9783f6ac00e11699b08742f7b",
       "status": "queued"
     },
     {
@@ -29740,6 +30325,7 @@
         "liberty-catalog-47a397123e39ec6c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:5a90eb3dde2e5e6f220b59502face0102260abc3fabd8f54c87b086b31dcd7c5",
       "status": "queued"
     },
     {
@@ -29753,6 +30339,7 @@
         "liberty-catalog-49590f70cb5f85ae"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b9aca110d097dd713729484b990d74013ae93bc446f105ca0f3f9a958c04ca18",
       "status": "queued"
     },
     {
@@ -29766,6 +30353,7 @@
         "liberty-catalog-49ebd86d79ae44c5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8377c118aa1fd0d5042788cd3bb4f76acaf6265e0a6bc39cb8db7934f8763030",
       "status": "queued"
     },
     {
@@ -29779,6 +30367,7 @@
         "liberty-catalog-4a0132095b7bf4cd"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:857018edeaaa41234429437aab57731da15b4339c81808534f8111dcbce23cb2",
       "status": "queued"
     },
     {
@@ -29792,6 +30381,7 @@
         "liberty-catalog-4ca122af68439cf1"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2fb3512c8c78f88ffe87a2a6ea8d656b64637fddbb104abd0d86b036aa7b2806",
       "status": "queued"
     },
     {
@@ -29805,6 +30395,7 @@
         "liberty-catalog-4d599e421ab0efb8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:aed3a41555598e27f318733ca7476ce1c48e72d5ba0d7b5db0e727d57a69108c",
       "status": "queued"
     },
     {
@@ -29818,6 +30409,7 @@
         "liberty-catalog-4e3f7532484c164e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a9835bcafa130c5f012361fbccce14465072c7c7ee830eead150c66351cb59df",
       "status": "queued"
     },
     {
@@ -29831,6 +30423,7 @@
         "liberty-catalog-4e522191801f88dc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:56385c6b3062403d80fbde239d068a224f2b725882e0090dd3ce8b34d7ac6daf",
       "status": "queued"
     },
     {
@@ -29844,6 +30437,7 @@
         "liberty-catalog-4e70e84106ed675a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:353281f94d8250b813ca2f4e6a4d9dc884da10f7f238d7ba241ccf6fc70928f5",
       "status": "queued"
     },
     {
@@ -29857,6 +30451,7 @@
         "liberty-catalog-4f6b264501212d2e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:fd656dd5e394d27dfc8648afd1915cd092b9c49e0d8139044199be0efcff5b8d",
       "status": "queued"
     },
     {
@@ -29870,6 +30465,7 @@
         "liberty-catalog-500ec234d9504d90"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:15636bd4d77e60305f85b46f338896b3b2b1d3edb07345d9944e18dc5d4ea49d",
       "status": "queued"
     },
     {
@@ -29883,6 +30479,7 @@
         "liberty-catalog-514ab3aeec3518c7"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:89467ccd743f11f7e1faccc8082a14023524d1da6ca03cb8f876b287366c9403",
       "status": "queued"
     },
     {
@@ -29896,6 +30493,7 @@
         "liberty-catalog-514c0fda0ad226a6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2ca10475468e7d0a32bd211ed68518b5d00ff44cd18d73e9116e928d64fa9b8d",
       "status": "queued"
     },
     {
@@ -29909,6 +30507,7 @@
         "liberty-catalog-525448ab3661a749"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6e7be209fd4afbf8a360396642358478c26dfa5c7b24a060b07903b04ffd39f5",
       "status": "queued"
     },
     {
@@ -29922,6 +30521,7 @@
         "liberty-catalog-52b39771c22916cc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:45f8375bb16067fd2d1c08222dbd23d1c10dc08467b78383200e089bfc42a002",
       "status": "queued"
     },
     {
@@ -29935,6 +30535,7 @@
         "liberty-catalog-52d6e86b0be7e623"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b3019e7191517c0d9c63205eaf345acf402d56a9840efa8701924e79e5052397",
       "status": "queued"
     },
     {
@@ -29948,6 +30549,7 @@
         "liberty-catalog-545eefabb9999205"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e4f133dd6e12d1129abe5e6bd4d4b4956c4e584ed1a1d1168a2c1e262de78e86",
       "status": "queued"
     },
     {
@@ -29961,6 +30563,7 @@
         "liberty-catalog-55cc6c5ac89ef598"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:231ecae2373f8b0e5f9b68989cd64829dfc319b981a114df19544ed896c35a87",
       "status": "queued"
     },
     {
@@ -29974,6 +30577,7 @@
         "liberty-catalog-56292f4fbb29edf5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:018f666e5f6c524fd2a744e3af0ba38616b67c3a70b995fce6471f9328d4dd79",
       "status": "queued"
     },
     {
@@ -29987,6 +30591,7 @@
         "liberty-catalog-56d5fe3c4b0e5544"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a4f575853019f2b574ad8b689e5c9e7b218e6c5c4db87236f2b1cc24b82ae230",
       "status": "queued"
     },
     {
@@ -30000,6 +30605,7 @@
         "liberty-catalog-5743ad3fa0862267"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d035906b485354aa1037d010b8c34a60a8032bcd7c41450fde6887b939b4b3c2",
       "status": "queued"
     },
     {
@@ -30013,6 +30619,7 @@
         "liberty-catalog-57d36920b668f641"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b9b995c2e86e6ce302c257c658c9b20f23547b855099e67bdf52c2ff8c7efc9f",
       "status": "queued"
     },
     {
@@ -30026,6 +30633,7 @@
         "liberty-catalog-5810ec120e56bc25"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d452f59838335ea7c8662d89abad39e03a94fb9a2ee3763108bc70cd43c796e7",
       "status": "queued"
     },
     {
@@ -30039,6 +30647,7 @@
         "liberty-catalog-588a2ebf85318a8d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:888c4570d9686adb9f68ea0452169d57efc53a5b6ea2add74483da3f273eac52",
       "status": "queued"
     },
     {
@@ -30052,6 +30661,7 @@
         "liberty-catalog-592055daaf530b31"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8f9baf31859523ff77354167c2709eea3d8d9ed9f5b8af42b6bb3fd15934c1e4",
       "status": "queued"
     },
     {
@@ -30065,6 +30675,7 @@
         "liberty-catalog-592fd545f1df650b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e8e682bd7e5b4fba6aff523b291dbd7f7f2a0db0d09b4609631ac208009be72a",
       "status": "queued"
     },
     {
@@ -30078,6 +30689,7 @@
         "liberty-catalog-59412952b2f044cf"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3900d9a0abc7c24a595ab9c9af97df59d1bf48edf2ad07551d62eef1d4a5cba9",
       "status": "queued"
     },
     {
@@ -30091,6 +30703,7 @@
         "liberty-catalog-59b0a1138d3e5c0c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:cd0b3bd5e4618adfed62e7a3088979f5eea30fb107041a7e91f43af968aec8ac",
       "status": "queued"
     },
     {
@@ -30104,6 +30717,7 @@
         "liberty-catalog-59e7ace1e1fdc333"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:fe61454050484cc209ccf9cb9bff2fbbde95319077883529a262e8a70cb73cc6",
       "status": "queued"
     },
     {
@@ -30117,6 +30731,7 @@
         "liberty-catalog-5a04ee9641f27b11"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9250d7de337a0a5660fcd2c5298eb54ae807b928c1bd755b0fb15cc6cb4ab340",
       "status": "queued"
     },
     {
@@ -30130,6 +30745,7 @@
         "liberty-catalog-5a26b73e7380bcf4"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:14533ad992159e363160bb502f7633867d9cb17c3489da25cdad234f8bd37b0b",
       "status": "queued"
     },
     {
@@ -30143,6 +30759,7 @@
         "liberty-catalog-5a4c8aa283089a90"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9b8e58088e1bf29ea0886320e4209246feb3172354461c25d4c902567122c90f",
       "status": "queued"
     },
     {
@@ -30156,6 +30773,7 @@
         "liberty-catalog-5ac2a2f9e5b87b34"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:4745237181a9f53dbde368016955d861f1bd4ae613a873ff695b6a7aa4f52369",
       "status": "queued"
     },
     {
@@ -30169,6 +30787,7 @@
         "liberty-catalog-5b03cd540fec52bd"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:827bada7978e3d66e153f59b598ea0bd63040ca6ba58aa33bafd26bab3317bfe",
       "status": "queued"
     },
     {
@@ -30182,6 +30801,7 @@
         "liberty-catalog-5ba3c861a6954bc9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:74e6a2d2ffa863a4d0370c176a37de7c3bb65b67fbe241bc4826356d518b095e",
       "status": "queued"
     },
     {
@@ -30195,6 +30815,7 @@
         "liberty-catalog-5c1941c775aa21f7"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:eb805ec55c6941916930be18e3a19c498c186b581a76a4e82701af5500b54595",
       "status": "queued"
     },
     {
@@ -30208,6 +30829,7 @@
         "liberty-catalog-5cc4405b4506d0ca"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3b9b58c8b6c92a91bda449611d0dcc167e595da9d2a8493a82491e89e50739c2",
       "status": "queued"
     },
     {
@@ -30221,6 +30843,7 @@
         "liberty-catalog-5d34a7f123681e93"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d5a1c8e054be938f746bfbe2ea813c33b0e0191f5df451e67da5f7377cd8e30b",
       "status": "queued"
     },
     {
@@ -30234,6 +30857,7 @@
         "liberty-catalog-5d99fcc340b69d84"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:acc5dcf98a48f1ba474959ace511ce67e3a99ba7a561d1137cbd9928eaf2d603",
       "status": "queued"
     },
     {
@@ -30247,6 +30871,21 @@
         "liberty-catalog-5df236b8d74d663a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:dc678b96661251bd252f8a19e8f774fb826eefbd2560b44781186dea5e436ae7",
+      "status": "queued"
+    },
+    {
+      "id": "capture-source-5df4f3168f2dd57b9f98084b",
+      "stage": "capture-evidence",
+      "sourceId": "source-5df4f3168f2dd57b9f98084b",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/religion-major-aa/religion-online/",
+      "kind": "program-evidence",
+      "priority": 0,
+      "affectedProgramIds": [],
+      "affectedModelIds": [
+        "curriculum-liberty-religion-aa-online"
+      ],
+      "inputFingerprint": "sha256:22cfb526c63bdef923ff18c777b0c31ed0668f6f89b9dd4dbb540b39c1e1137a",
       "status": "queued"
     },
     {
@@ -30260,6 +30899,7 @@
         "liberty-catalog-5e6df7b0f6b9834f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a779961400a1b87927e9a59955dfa81996a5ab5b30e28c07d01fde46fecf00fd",
       "status": "queued"
     },
     {
@@ -30273,6 +30913,7 @@
         "liberty-catalog-5e867b38d2bf7e21"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:85a20a47ae6057012b87bec1c33b6c614bf0ba141997d9033f0c08c729086eac",
       "status": "queued"
     },
     {
@@ -30286,6 +30927,7 @@
         "liberty-catalog-5e8c0ad29502feb9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bbec3bc23b822b6ffb2cfb2dabe6a2a7dbac0c3fdc1bbd48843830fda9c8cec6",
       "status": "queued"
     },
     {
@@ -30299,6 +30941,7 @@
         "liberty-catalog-5fac8aa935c95bf9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0f00aa3a9257a840ca5ae66decc3e27775c8d3a2e407900fd7a71bda40fca40b",
       "status": "queued"
     },
     {
@@ -30312,6 +30955,7 @@
         "liberty-catalog-5ff7c02b896245ea"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bfd3a261377ba6a6f94d4f5bd4148dda2030dea37f97c6fb51071f5710080bc0",
       "status": "queued"
     },
     {
@@ -30325,6 +30969,7 @@
         "liberty-catalog-61a6b7da68751a54"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:5e057126ee496aecdfa95b440608b01dc09dccd4405d041048614a0125c30253",
       "status": "queued"
     },
     {
@@ -30338,6 +30983,7 @@
         "liberty-catalog-624e562f0318bb75"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e6f73c7eca8e4c70ec9ac8611e57d39c170faedf431e09e7d20a1ef734785014",
       "status": "queued"
     },
     {
@@ -30351,6 +30997,7 @@
         "liberty-catalog-630c0186b0e32268"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a5abe5f043802b4e054b94e14a66699b4b56dcfdeff40c10ea3dfc98c5645741",
       "status": "queued"
     },
     {
@@ -30364,6 +31011,7 @@
         "liberty-catalog-6453495170718a61"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:25e84ef34e96957f14abada694989bb0fbb961be3783673ae0302083fb54589e",
       "status": "queued"
     },
     {
@@ -30377,6 +31025,7 @@
         "liberty-catalog-64e1a56aae91ce28"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:5fd1f333626c7f89535ceb3d9286534a010d79ee0f41b0fbb061319d365e9d54",
       "status": "queued"
     },
     {
@@ -30390,6 +31039,7 @@
         "liberty-catalog-64f5363cf56bb1dc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8876b42b88a54394812b61268e9203a8dceb4306b8b715833d6ba4435ba5b703",
       "status": "queued"
     },
     {
@@ -30403,6 +31053,7 @@
         "liberty-catalog-656e567a3cbd5210"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:86bfd82e1098be4db8673a0c2af1970e115b791d6539861a598d6b6c7c51e17c",
       "status": "queued"
     },
     {
@@ -30416,6 +31067,7 @@
         "liberty-catalog-6652cf88788c7cbb"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:857261f9f4f6afa95717ebdf47c491eb9e48bdc6e7ee1ad63d43c96b25bf9a54",
       "status": "queued"
     },
     {
@@ -30429,6 +31081,7 @@
         "liberty-catalog-669c311e7b0e9bb6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:13fde191ed38a1c1946465270bff7b24a6bfc4b5fab69f42f6284743187369a0",
       "status": "queued"
     },
     {
@@ -30442,6 +31095,7 @@
         "liberty-catalog-6725cf7b01320691"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:032f1f2c2da5b142184a1bfa14497cb094b098232f053c17eb78669bbf632748",
       "status": "queued"
     },
     {
@@ -30455,6 +31109,7 @@
         "liberty-catalog-672f40d3cc947cc7"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:09358fb5dceacfc7fd89a1c7ea04cb382f45f709cd9025c0b38dc773df242cf5",
       "status": "queued"
     },
     {
@@ -30468,6 +31123,7 @@
         "liberty-catalog-673e8d0cfd8fc8d3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:4c49a59bc55eb05d92fe0ac9f5f753c7b72e7b87a0e636a2434f36280b3b40c8",
       "status": "queued"
     },
     {
@@ -30481,6 +31137,7 @@
         "liberty-catalog-67416c7e3f44f404"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:595e97f3ca89c989c416a9a4ce9dad5923520ec462397331d1ad9b0ad76ec7f5",
       "status": "queued"
     },
     {
@@ -30494,6 +31151,7 @@
         "liberty-catalog-67759921630eeec7"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:162703cb4f0baa679d1f8d83a244c9d2861745ba206dc71b9b050af1f5685fa3",
       "status": "queued"
     },
     {
@@ -30507,6 +31165,7 @@
         "liberty-catalog-67f4fabf2bb32954"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3e416dfa0ab281adf195cccaa223bfe5c43f15c5a69b924939aeb2d728d92499",
       "status": "queued"
     },
     {
@@ -30520,6 +31179,7 @@
         "liberty-catalog-68962d70402e1fe0"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:584fa7634c4544530b306a1daa402f5f158045db0b6db15671aaff0559f751ba",
       "status": "queued"
     },
     {
@@ -30533,6 +31193,7 @@
         "liberty-catalog-6b0479e57407913b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:528f38430941f99473b60ad3523855ae79557566b57ba4ad67a10340d7b2c6b6",
       "status": "queued"
     },
     {
@@ -30546,6 +31207,7 @@
         "liberty-catalog-6b1a67b42fc25e47"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:04bc644fe5ebac7d8368f5cef90b61cddef4b40c24b39fc08a352f138ef0da9d",
       "status": "queued"
     },
     {
@@ -30559,6 +31221,7 @@
         "liberty-catalog-6ba1a7b1adbd63e4"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:80e19920b7eaa29d9ae44ed37edf9c0cab92b57a75b88a8fea5c140012c30e51",
       "status": "queued"
     },
     {
@@ -30572,6 +31235,7 @@
         "liberty-catalog-6c990f014059d464"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d39151d9cd5f727da02f845493424cd63d4dd9cc7055d48cc2082de20ee78064",
       "status": "queued"
     },
     {
@@ -30585,6 +31249,7 @@
         "liberty-catalog-6f9d75be4262eba9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:dbc43751ac6c55fd292483f6a8450df48ee4f54039e9ddde921fb798a0d8fe4c",
       "status": "queued"
     },
     {
@@ -30598,6 +31263,7 @@
         "liberty-catalog-702e399652b19999"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e142826b367941cfea9df48c1a7b581cf74a0930880b2c45110b67fb20de9122",
       "status": "queued"
     },
     {
@@ -30611,6 +31277,7 @@
         "liberty-catalog-70ab6ccf6b4c9fae"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:5e0f5cfe0ee0d1f1dbbdfcdd414c197f3ef1bcfb165d8307f362054b2b57d75f",
       "status": "queued"
     },
     {
@@ -30624,6 +31291,7 @@
         "liberty-catalog-70b4fa23eff4e958"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d34db738f2f3265561b3b80ff5b08e84035adfa13c1da86e44c6ea86820441b7",
       "status": "queued"
     },
     {
@@ -30637,6 +31305,7 @@
         "liberty-catalog-712570422ca765a6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0e97ca88755bb128def5ecda19b6b0042868d4ef8a55a498908ca234cd0dd9f4",
       "status": "queued"
     },
     {
@@ -30650,6 +31319,7 @@
         "liberty-catalog-71bad98d7c7fc42a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2c364f4c0f8a27686d6b795858c09d82220e25a1d8477f5f45d344c248dfb7d5",
       "status": "queued"
     },
     {
@@ -30663,6 +31333,7 @@
         "liberty-catalog-71c7721fdf93c3b9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3b830122b4994157f5fb1757ff9a69432177b7dfcaa5d4574098f22dba6565cc",
       "status": "queued"
     },
     {
@@ -30676,6 +31347,7 @@
         "liberty-catalog-72b1755889a4336c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:75848c8b79276acb2198f4b7d261a526ed8fb36ce0045314d45f8c3de1d431e0",
       "status": "queued"
     },
     {
@@ -30689,6 +31361,7 @@
         "liberty-catalog-73a2682a850b932b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:550bffffe4042e2ec828328c440f58afdc886e954e5339bed8c5f2ecf3f1a6e4",
       "status": "queued"
     },
     {
@@ -30702,6 +31375,7 @@
         "liberty-catalog-73d3697bed5e810a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a4b4380c7679e7ce0e31b6f880b5c7165f228b5cfb5870dbe35aa31884645fac",
       "status": "queued"
     },
     {
@@ -30715,6 +31389,7 @@
         "liberty-catalog-74325b65e324d7e8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6bfdb1dc411815849802c9284325f94ba93a6f564355b8140fb867b090fe7307",
       "status": "queued"
     },
     {
@@ -30728,6 +31403,7 @@
         "liberty-catalog-74907c206626a43d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:4e1f01ae7fe761e90169b93d56836dbb2ca2e9b628a99d671bdd9a4d6f303de4",
       "status": "queued"
     },
     {
@@ -30741,6 +31417,7 @@
         "liberty-catalog-759bb4681e3c8056"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:edca477c446214171a82988778fe1ed81dfe5be3311bc5785f9f5d51f84e9d43",
       "status": "queued"
     },
     {
@@ -30754,6 +31431,7 @@
         "liberty-catalog-75b148de8b9be3ec"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6a6e96c7d3aec36c8fa26ee3931330140755590250accab981a9bbce1143a39f",
       "status": "queued"
     },
     {
@@ -30767,6 +31445,7 @@
         "liberty-catalog-75ce9ee48bc3b83d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:aab80d9604a2ca04ed88b7a31d1371d005a976cf4d91bcbdedc2cd7005505df5",
       "status": "queued"
     },
     {
@@ -30780,6 +31459,7 @@
         "liberty-catalog-7607c55273368812"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ac884505c5c34cc85c3111c016dae890e9f920ac08dd054a038cf4923aeb8872",
       "status": "queued"
     },
     {
@@ -30793,6 +31473,7 @@
         "liberty-catalog-76e6a5380ac769e6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:95f05cf9f4da504a14c774071758fed0f50b455e5f9e3c2f0adb64653928b32b",
       "status": "queued"
     },
     {
@@ -30806,6 +31487,7 @@
         "liberty-catalog-776c5cf14cb2ddb0"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:87aa4fc47ce606c8d0cd66418bc5c667a065196e159f29bf5755af6d06b2f9d2",
       "status": "queued"
     },
     {
@@ -30819,6 +31501,7 @@
         "liberty-catalog-7800ca47f6c05758"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9b115d7032032bab278cfe2641556f2c50841700ce04764bdf097f8e81963c50",
       "status": "queued"
     },
     {
@@ -30832,6 +31515,7 @@
         "liberty-catalog-784d6cc9eda8d9d2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8f736188623ce703dbe46e9f21075064c4494abc6e8a7c06f78e381ce20c9029",
       "status": "queued"
     },
     {
@@ -30845,6 +31529,7 @@
         "liberty-catalog-78909eb27b69ea4d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:45f030869e716308f983794ff98a2042f118fd525a4f4b0d4e37396a71ef3e1b",
       "status": "queued"
     },
     {
@@ -30858,6 +31543,7 @@
         "liberty-catalog-78ded8701b89208f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9456e3371bec62f318d8821f928428130dd9f7ed45235d64173e09e350eb0fe9",
       "status": "queued"
     },
     {
@@ -30871,6 +31557,7 @@
         "liberty-catalog-78e524bc86813ac8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0d61148eb2a2d3b1ca55614674cec7b491194ea8b2f1a3a3a246db14acda3102",
       "status": "queued"
     },
     {
@@ -30884,6 +31571,7 @@
         "liberty-catalog-78ff78764fffba8e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c0ad347edfc6d66cf8482e5277cfc677ab9dea1f0e6ed6049a5f11bf1bbd720c",
       "status": "queued"
     },
     {
@@ -30897,6 +31585,7 @@
         "liberty-catalog-79ee211b226b70bb"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:7b557a99e3aa6c927b4f3afeca62bfff2f923955fa6f1ebfd4415761788f5a97",
       "status": "queued"
     },
     {
@@ -30910,6 +31599,7 @@
         "liberty-catalog-7a6fef4808d32aed"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:569ed7debdb187ada5f5bd00631772945119f8f5c1a3e6de57f339687aba15a9",
       "status": "queued"
     },
     {
@@ -30923,6 +31613,7 @@
         "liberty-catalog-7aa47b117e82c220"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:81fadf3fa3b3ec89a139bb2171ffc414ed623d2f93aba8a2f5b36b259f320197",
       "status": "queued"
     },
     {
@@ -30936,6 +31627,7 @@
         "liberty-catalog-7b5e54b15c9d1444"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bf53f935b15aae6b81488091fcaf49f4310d63f6ded0cf738ff7ea6b8b5ecb3b",
       "status": "queued"
     },
     {
@@ -30949,6 +31641,7 @@
         "liberty-catalog-7b8697d26f28da3c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bfe940581bcf6dba47b1e192be2609f07e9f77a09faac083e763498f22c3e9e5",
       "status": "queued"
     },
     {
@@ -30962,6 +31655,7 @@
         "liberty-catalog-7c2f2232aa7b0711"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3799de8b884eba41968f1bf4b4db94612a7e24472b037aab68e752f8c31e30e8",
       "status": "queued"
     },
     {
@@ -30975,6 +31669,7 @@
         "liberty-catalog-7f41d6a7447752d8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:04ff9e6400d523abb35c28270f37aeea05141001de08e0693998e1db0beee3ba",
       "status": "queued"
     },
     {
@@ -30988,6 +31683,7 @@
         "liberty-catalog-7f8207bbc3223ce7"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:42622665739ee1fe2f88ab1d9cc59133d5c0775f9ff390e9f3be1f94633ae472",
       "status": "queued"
     },
     {
@@ -31001,6 +31697,7 @@
         "liberty-catalog-82acc85b873c8f57"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0616a4321642f165c21e58ec4fb7548155034e13f63f0ff2782fae6ec9f5a32e",
       "status": "queued"
     },
     {
@@ -31014,6 +31711,7 @@
         "liberty-catalog-839d8966fc2c85df"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9f458c6ae5c1d9738503806b71bfa174bcb85b50609aa0f1ca0793f9f0613bcd",
       "status": "queued"
     },
     {
@@ -31027,6 +31725,7 @@
         "liberty-catalog-83f34c380848d9e1"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:fe12efa06ad654ee46c2993a33b34ff3dc7e64222ddd7a69231fbae99d5c5e5d",
       "status": "queued"
     },
     {
@@ -31040,6 +31739,7 @@
         "liberty-catalog-846ba9402cbe2631"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a9b543241177b2df39bb8f4b0def994c0059e9daed50f8f0437d90f6a6b8bb0c",
       "status": "queued"
     },
     {
@@ -31053,6 +31753,7 @@
         "liberty-catalog-852e25372701f9a4"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:61c6456876777250083f45de3fc19eaf1e1eb6b364fdf8fd3b58e3911f6271c9",
       "status": "queued"
     },
     {
@@ -31066,6 +31767,7 @@
         "liberty-catalog-88f16516d9a51c9a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:094c627d162fe9421d99c121058152feff0dc0a70f86a1c8aba9455b74664f8a",
       "status": "queued"
     },
     {
@@ -31079,6 +31781,7 @@
         "liberty-catalog-89d98b5c0015ec63"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f70262863507612672d45cb6c60113a396ac7b029225b6210a51ba61f0f329f0",
       "status": "queued"
     },
     {
@@ -31092,6 +31795,7 @@
         "liberty-catalog-8a62b0c61f29b563"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:fc78e1f4c2edea495ebb8defaae7a48484fd3d9318ff82b15e7513ac9aab8c48",
       "status": "queued"
     },
     {
@@ -31105,6 +31809,21 @@
         "liberty-catalog-8b71ae9626505e61"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bb458c6d288ce217b9715d26f40806c756b63bd15548321f5bca79709d958ad7",
+      "status": "queued"
+    },
+    {
+      "id": "capture-source-8d73546bb2e854bae3ee7135",
+      "stage": "capture-evidence",
+      "sourceId": "source-8d73546bb2e854bae3ee7135",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/helms-government/criminal-justice-major-aa/criminal-justice-aa-online/",
+      "kind": "program-evidence",
+      "priority": 0,
+      "affectedProgramIds": [],
+      "affectedModelIds": [
+        "curriculum-liberty-criminal-justice-aa-online"
+      ],
+      "inputFingerprint": "sha256:803e79d9838c992b12e42674ec540074a14db05d0c1d22db358d75a451cd4cac",
       "status": "queued"
     },
     {
@@ -31118,6 +31837,7 @@
         "liberty-catalog-8d90a3d58bfd33b3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c3dc174c49a4ef95e43ec3497df611ff05f9407250644983e4b1bf5902753076",
       "status": "queued"
     },
     {
@@ -31131,6 +31851,7 @@
         "liberty-catalog-8e68c86a1e23f235"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e19b47ac779a3c3576736c293625c9a437f4afd5e57625a75c005d50808ed104",
       "status": "queued"
     },
     {
@@ -31144,6 +31865,7 @@
         "liberty-catalog-8ecf2f8ad414c308"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:70b62350f0aef3936dd230f5a80353f750c64400536c4d28ba10b2b565b458ea",
       "status": "queued"
     },
     {
@@ -31157,6 +31879,7 @@
         "liberty-catalog-8fe0bc1f2d9c1e88"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b880e333378a83015cce007a8b53e7111728130f1eb3550df7d6243b212ca20c",
       "status": "queued"
     },
     {
@@ -31170,6 +31893,7 @@
         "liberty-catalog-901d1bb4961d7e75"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:7e8a535c077e24c01bb4edb800ba82fcb82f8c7919484f2346a1dd5307599431",
       "status": "queued"
     },
     {
@@ -31183,6 +31907,7 @@
         "liberty-catalog-903313f3386cfafd"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c39055e819a2f0d1f3a189df48fd78375a3676debebfa78131fdeec0438d0644",
       "status": "queued"
     },
     {
@@ -31196,6 +31921,7 @@
         "liberty-catalog-90dc5ee931491138"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9285eaa262a679c2094d8eed4c9b1b97ffe2e98993d7fcc76342a0bdd760a2f5",
       "status": "queued"
     },
     {
@@ -31209,6 +31935,7 @@
         "liberty-catalog-917803577d378c69"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:834931055e18a1b47da016e4fd8acddffeda3accfd438f0d1d59ae8054197123",
       "status": "queued"
     },
     {
@@ -31222,6 +31949,7 @@
         "liberty-catalog-93477ef1908c62ae"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f4eb85e39054a50c6aa3244313372d0314047cc949c7618154c7844560c01741",
       "status": "queued"
     },
     {
@@ -31235,6 +31963,7 @@
         "liberty-catalog-93946b963331ee67"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:158789ea5cdd20ad293a65fceacc581782c9dbfe29a0aa7a6bb894c31ce5618a",
       "status": "queued"
     },
     {
@@ -31248,6 +31977,7 @@
         "liberty-catalog-93a92949d50815c1"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f0aff65e1505808086d902b53d975beca19ebb74178389eaadca9ab8e4e646f9",
       "status": "queued"
     },
     {
@@ -31261,6 +31991,7 @@
         "liberty-catalog-93b326cf75fb650f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e2b46ef78c539947dd7c2c24724df3e381e6799bc0506f1a10a41dc7853cb225",
       "status": "queued"
     },
     {
@@ -31274,6 +32005,7 @@
         "liberty-catalog-952f8965f497be4b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:66f7e4ad6bab0222d34434398368b1f47edaaa98548dbfca8c493bf34782b39b",
       "status": "queued"
     },
     {
@@ -31287,6 +32019,7 @@
         "liberty-catalog-95b31e32cf432135"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:5a6a9e432e74a0a88d5e1466796113a16b5b4d7e33c3b23f1930de68b8d223a5",
       "status": "queued"
     },
     {
@@ -31300,6 +32033,21 @@
         "liberty-catalog-95f800a0aa5d53fd"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0ef6ea010e66a535480afa3164c110f0ae02e52a2b295837e3788ea743c74094",
+      "status": "queued"
+    },
+    {
+      "id": "capture-source-9618568f6650fffed6d53c48",
+      "stage": "capture-evidence",
+      "sourceId": "source-9618568f6650fffed6d53c48",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/rawlings-divinity/apologetics-major-aa/apologetics-aa/",
+      "kind": "program-evidence",
+      "priority": 0,
+      "affectedProgramIds": [],
+      "affectedModelIds": [
+        "curriculum-liberty-apologetics-aa-online"
+      ],
+      "inputFingerprint": "sha256:3f9ddc2dcdb63efbe6e6f59e98a66d8f00732c91f5b97e72f882850773c4ddb1",
       "status": "queued"
     },
     {
@@ -31313,6 +32061,7 @@
         "liberty-catalog-96a13d1682b033c3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:aaabedf258bb173e3eb53a2ac39b1ea371a4fa16d80d8a447f3ce2c71c528024",
       "status": "queued"
     },
     {
@@ -31326,6 +32075,7 @@
         "liberty-catalog-97096d0fe76bccac"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bbd7f59baac36b48a3cae1c5fb79c34c867c01e3c9b07dd7d682e808d1c1e8c5",
       "status": "queued"
     },
     {
@@ -31339,6 +32089,7 @@
         "liberty-catalog-97b6a6c75c4bae9c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2d42e2aae10359aaebee11caaf5a59c0ee6ec4f12bcf0dae0fa23faf0b36e688",
       "status": "queued"
     },
     {
@@ -31352,6 +32103,7 @@
         "liberty-catalog-991b00a8b1a3ef1c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ece8ba42a5ccbca3a41a8c401341a1a3e9103c956e586e01155abe2fba75fc8a",
       "status": "queued"
     },
     {
@@ -31365,6 +32117,7 @@
         "liberty-catalog-9986c800e58b1255"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2cc2a3729d5b2e5df97c22933687063752a5cfbbc5a13a915ac4bc52c0fb4064",
       "status": "queued"
     },
     {
@@ -31378,6 +32131,7 @@
         "liberty-catalog-9a323acfafe2bb10"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:eabce1aae7a05da76117305f2d8ec5ff83d8f85511e38c5cd1f5f1c002621df8",
       "status": "queued"
     },
     {
@@ -31391,6 +32145,7 @@
         "liberty-catalog-9b44546a37b36a46"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:54b2bf1334d30c5997caa6901d3e2c82c8bb24d0bb8a20852e340d2b8fd7566c",
       "status": "queued"
     },
     {
@@ -31404,6 +32159,7 @@
         "liberty-catalog-9b683f1dcb7cb862"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a536039d18dba4002b5853000aa54dc4a97d43afb0d431c500e5e83497a28a98",
       "status": "queued"
     },
     {
@@ -31417,6 +32173,7 @@
         "liberty-catalog-9ca41ae11d5aebe8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ad932a2ac6e6dc2a2dffa517b4550eb242c4e867fd3bb9816b7680e50f87e4b2",
       "status": "queued"
     },
     {
@@ -31430,6 +32187,7 @@
         "liberty-catalog-9d0780b302b9b1f6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0325db6098aa6afb0c845623848b55619119738fc3f2efeb922a27e22e8ba36e",
       "status": "queued"
     },
     {
@@ -31443,6 +32201,7 @@
         "liberty-catalog-9e6c19aef0a94167"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:74c2d946338524e17fc8e497601fa07d10266138bcfd32a256ba5fc222a34ffb",
       "status": "queued"
     },
     {
@@ -31456,6 +32215,7 @@
         "liberty-catalog-9e7c271d108f8de6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f9c76bca9e6e3f2420fe8f14b9d1f517dee0998053cc14c55c63269ecc374779",
       "status": "queued"
     },
     {
@@ -31469,6 +32229,7 @@
         "liberty-catalog-9f19eaa89e6ade4a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:76750a7bc2c976308d345b759575452a60c5f3d15999f8595947bf8ee2695c18",
       "status": "queued"
     },
     {
@@ -31482,6 +32243,7 @@
         "liberty-catalog-9f700275c25b0364"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:66dd13d21efd472ec3c2d6899adb68ee9801f5e2659faf0d433b99912bbb88ef",
       "status": "queued"
     },
     {
@@ -31495,6 +32257,7 @@
         "liberty-catalog-9faf5674f3357547"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:dccda58e7ee365ab3c47fb3845d7aebac7a28c094a67c2ace39b7e39393a7a91",
       "status": "queued"
     },
     {
@@ -31508,6 +32271,7 @@
         "liberty-catalog-9fc6948ab2f9c005"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3c5afcd536ad76c34bfd672d5b9944f3701f0d3898e912351b0576a72cfbe647",
       "status": "queued"
     },
     {
@@ -31521,6 +32285,7 @@
         "liberty-catalog-9ffc6138f553a70d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:820ab63d4f84e4ec0095eec380de3ea7e75f08534d8db223bd204ae77bf68a2c",
       "status": "queued"
     },
     {
@@ -31534,6 +32299,7 @@
         "liberty-catalog-a044c9e423b1dcd9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ca209d97c0f66ac7609130ec1bac4c1f7d490aa4088668d6adf15261fb2bd810",
       "status": "queued"
     },
     {
@@ -31547,6 +32313,7 @@
         "liberty-catalog-a186ee566e1fb5ee"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3a33eeeff24b52b4a9afb2886c209f11329919e27201d28ec2dbaa22f9bb58a3",
       "status": "queued"
     },
     {
@@ -31560,6 +32327,7 @@
         "liberty-catalog-a25e80c106f6ef7f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6a12d02266b0d1c53bfb1974c912748725b9b0f4bfbe8fb5a3520efa64255cb8",
       "status": "queued"
     },
     {
@@ -31573,6 +32341,7 @@
         "liberty-catalog-a2f469da9fef3963"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a6ca3e2aa1c9ba01f8b13c8333c6f7bb1f74961d021daaae0753eb556bf505dd",
       "status": "queued"
     },
     {
@@ -31586,6 +32355,7 @@
         "liberty-catalog-a2fa0a2eb4c52a2d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f024e08de053d7a30ea0c3f52ee20d72a3fd0a9ff21bfd318842a529813bca3b",
       "status": "queued"
     },
     {
@@ -31599,6 +32369,7 @@
         "liberty-catalog-a379d461e5f9557f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:4f76779be5af13eea12509b25817542916f0054ed05513db2a5a5f8ba2c7377d",
       "status": "queued"
     },
     {
@@ -31612,6 +32383,21 @@
         "liberty-catalog-a3ba24be5ad1d98d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:fda499806b8ad5a54048c75fff46fbd4f8a9ed6300a541ca5173e1fd5f6835fa",
+      "status": "queued"
+    },
+    {
+      "id": "capture-source-a654351a3fc716e769b02d7d",
+      "stage": "capture-evidence",
+      "sourceId": "source-a654351a3fc716e769b02d7d",
+      "url": "https://catalog.liberty.edu/undergraduate/courses/acct/",
+      "kind": "course-description",
+      "priority": 0,
+      "affectedProgramIds": [],
+      "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online"
+      ],
+      "inputFingerprint": "sha256:453d1aa3a7cbbb20bdc6f6d6fb170c94b839378991f3513298e1e5441e4b56a1",
       "status": "queued"
     },
     {
@@ -31625,6 +32411,7 @@
         "liberty-catalog-a68c5894de51a494"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:78da1825edfb766a16d720ad9c4cb9ed2f06ae31c45f7c1ac7eda362a63b98d1",
       "status": "queued"
     },
     {
@@ -31638,6 +32425,7 @@
         "liberty-catalog-a69cf3bdca4cd68f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ff4124e9a09a5deb9edeb3a072361e930310b253b02ee805b2f53b85fb8c55aa",
       "status": "queued"
     },
     {
@@ -31651,6 +32439,7 @@
         "liberty-catalog-a6e40a6c57106007"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8eaea7ed7b216806421a9ba166c98dbae2e5d81e803a61f869391173dc89e991",
       "status": "queued"
     },
     {
@@ -31664,6 +32453,7 @@
         "liberty-catalog-a72c5047f69e7e7c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:12c8e5e7ff2a7539bccf7d3e9c56cd98c909058b966ac53d44aff49eb6bfd368",
       "status": "queued"
     },
     {
@@ -31677,6 +32467,7 @@
         "liberty-catalog-a78cb99f17360d8b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ba02b3194b6a107b75b6b772d36ec8749ee093116fe0364965c41d3c7e55a6f7",
       "status": "queued"
     },
     {
@@ -31690,6 +32481,7 @@
         "liberty-catalog-a800013818aed91c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:36f7c3eccd891b2b77c2ad8660e8aeb436895a191e50fd0008e3b4b2daf6d7a9",
       "status": "queued"
     },
     {
@@ -31703,6 +32495,7 @@
         "liberty-catalog-a8cf08108c28192b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:462b5ab2df2d5a798d3540b38c09054414ad329567c2adb9360cac8e6a6364a2",
       "status": "queued"
     },
     {
@@ -31716,6 +32509,7 @@
         "liberty-catalog-a98a3d169a40e327"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:453e8b5177f0fb5a0af713b36317ac4bba47acac1dd7ea52a149d9312ac999f7",
       "status": "queued"
     },
     {
@@ -31729,6 +32523,7 @@
         "liberty-catalog-a990087e4a8c696f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:59d53226f4e8dfb20f364e65b140c05ecaca3758e26f0156fdb61da6575aafd6",
       "status": "queued"
     },
     {
@@ -31742,6 +32537,7 @@
         "liberty-catalog-a99512cd696e507c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d1031f5bee4782d46d7cd3bd9b8f8a74932279a6fe2a5245ea3fd09bc79484c3",
       "status": "queued"
     },
     {
@@ -31755,6 +32551,7 @@
         "liberty-catalog-a9fa4429e14931d8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a7b3a2974a3710a90b61506b7ea897687a055e3b580eddaed95b7fca88bbcaad",
       "status": "queued"
     },
     {
@@ -31768,6 +32565,7 @@
         "liberty-catalog-ab0867fb0be3f36e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:cc751b32b132272922881ab8d33eae6c59be932453f2dbb51ae1de8a8359b57d",
       "status": "queued"
     },
     {
@@ -31781,6 +32579,7 @@
         "liberty-catalog-aba7dc00c2415779"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:74a0584f72aa4c7f1b5e4e765886ddb489b7145ab34564f9c0b17550fe993298",
       "status": "queued"
     },
     {
@@ -31794,6 +32593,7 @@
         "liberty-catalog-abc594fdabafb3e4"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3c5e933db618e80dc439b9ed5c108efa625c61a79a28ca8f97e417b98c1c0281",
       "status": "queued"
     },
     {
@@ -31807,6 +32607,7 @@
         "liberty-catalog-acbe42ef3bc26205"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:6df6a8687661bd35f03d6df885c46bcb1e749dafdd890ccb32d7299c9064ee8b",
       "status": "queued"
     },
     {
@@ -31820,6 +32621,7 @@
         "liberty-catalog-add869b57a0354f5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:e4df0b4784fa5d43b2360f8d49a57f2485249a9cbefc87a5f49b50bf94c97665",
       "status": "queued"
     },
     {
@@ -31833,6 +32635,7 @@
         "liberty-catalog-ae3d01eba34917f4"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0ae27d8a59a5e91917ba6ff222b41ae35a34640cb6af9e71b03add34ad1ea8ef",
       "status": "queued"
     },
     {
@@ -31846,6 +32649,7 @@
         "liberty-catalog-aed806401639d155"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8656de8147f91276530c490c5e8f815912742f95ad712c81c2881f673c70f914",
       "status": "queued"
     },
     {
@@ -31859,6 +32663,7 @@
         "liberty-catalog-af892e7c831f8a45"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:cd1700c93a8410a62083913290aab8b9bba32d47b368aaf5f55e88e79df11033",
       "status": "queued"
     },
     {
@@ -31872,6 +32677,7 @@
         "liberty-catalog-af8ed8eaf35cf81c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8b334ff1138cc954ba2174edef6f83662b65b79af785e4fcf42c9a1409bc05a9",
       "status": "queued"
     },
     {
@@ -31885,6 +32691,7 @@
         "liberty-catalog-af9ac1098c168c17"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:91541cb361a6fdfb3ecd687a8ca9c283b5a0ed7cb4f917436acf55012831f436",
       "status": "queued"
     },
     {
@@ -31898,6 +32705,7 @@
         "liberty-catalog-afcc81bc9a38b1ce"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9e0625a6929e4f809a45cb3422f51857866eae9e8e1f17fd1e4ecdc137e94c54",
       "status": "queued"
     },
     {
@@ -31911,6 +32719,7 @@
         "liberty-catalog-b0897523a5af9b87"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:de650a7402da35bf3730cb4c9ec67249b0d6a4e9c2f36f7c509a2afed6c931b4",
       "status": "queued"
     },
     {
@@ -31924,6 +32733,7 @@
         "liberty-catalog-b0b167bd63e3e295"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3b79fac7f9fa42b1d7ec47631fab136f63c2ca784b9df80c771dac8bdeb72f63",
       "status": "queued"
     },
     {
@@ -31937,6 +32747,7 @@
         "liberty-catalog-b15c550e9763f4af"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c2f83ff5dacca4bf697de70b7a6ea71a4803feeb61c2a43205a7a141641d6c05",
       "status": "queued"
     },
     {
@@ -31950,6 +32761,7 @@
         "liberty-catalog-b3405f3fd1ab8605"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:bc71e02d2e643ed2763540edb083cb36f06a53c3b5572f9f017a88c3bdcd4c10",
       "status": "queued"
     },
     {
@@ -31963,6 +32775,7 @@
         "liberty-catalog-b3c112301d6a60fa"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c3e2fa9bb67093b4757f35c3101152084bdfd40056a260dc2420cf6507b5bb3c",
       "status": "queued"
     },
     {
@@ -31976,6 +32789,7 @@
         "liberty-catalog-b3ce1bf4833f5b75"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c778efdfbc45c969a93b0bf9259ee4459dbd48f9d5372a440a71897bd84316ac",
       "status": "queued"
     },
     {
@@ -31989,6 +32803,7 @@
         "liberty-catalog-b3d5eb584d0e9aad"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:998db377de4233d9b32d8d7e282f3b2f2a455a1df6ade931f5711134a3a58e83",
       "status": "queued"
     },
     {
@@ -32002,6 +32817,7 @@
         "liberty-catalog-b43648d74a25a7af"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3241224805d5a061c5770b03210b739733fd53649e956044ff7ba5db236dd89d",
       "status": "queued"
     },
     {
@@ -32015,6 +32831,7 @@
         "liberty-catalog-b4b31e4ea1afd7f8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c8ea900db20a19ec72b91ad696a0e5246803a04e435a626ce3957d4e07d74cd0",
       "status": "queued"
     },
     {
@@ -32028,6 +32845,7 @@
         "liberty-catalog-b59ca21789d9747b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:1e1a33ae28bfcb7f5980f34d3d7cac8fc1c04f8126f982853243d9ff1f2f0395",
       "status": "queued"
     },
     {
@@ -32041,6 +32859,7 @@
         "liberty-catalog-b75acef2696a43d9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b65a5c311d25b72f716b0e13120e4229ec37e2be9e1e8220a16e004d0e71cf00",
       "status": "queued"
     },
     {
@@ -32054,6 +32873,7 @@
         "liberty-catalog-b7fe58969b38ab64"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:63eab7057011d3a2bec5a83ade7fc707b201b74fc10f16c39300eba976cbc5bc",
       "status": "queued"
     },
     {
@@ -32067,6 +32887,7 @@
         "liberty-catalog-b8ecfb5804f1766a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9d6f595372a15c4f918ada2a90f796ff63e4f8eccdbf77ed5a630dd482138778",
       "status": "queued"
     },
     {
@@ -32080,6 +32901,7 @@
         "liberty-catalog-b91bcf8aefe51e18"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:aae3f5d3f7e446cf5b666db42b65a0bd8ccc2e0842d6d87ee6a15b58de2fd4df",
       "status": "queued"
     },
     {
@@ -32093,6 +32915,7 @@
         "liberty-catalog-bc54900cdc4d5dcb"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9dc6f60cbb305b88c091dc486669d60be771a5c3be9c368c57669acb24942cb8",
       "status": "queued"
     },
     {
@@ -32106,6 +32929,7 @@
         "liberty-catalog-bc83d6af7a182666"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d72adc3b46372fb9b113e033c9622b67fa81e079c5b2ba87f0223133ef086a69",
       "status": "queued"
     },
     {
@@ -32119,6 +32943,7 @@
         "liberty-catalog-bc83e90075cb5a11"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:25d1829951b10eff71a858954776d94f70e6a932fcde957fae5b6db0f2d0e80b",
       "status": "queued"
     },
     {
@@ -32132,6 +32957,7 @@
         "liberty-catalog-bdfe22e8bd9269f3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b907e386c0696ddd612b9cef28107a328f9273e583ea2a77bf7ca9022dd6d537",
       "status": "queued"
     },
     {
@@ -32145,6 +32971,7 @@
         "liberty-catalog-c0036f9de3cf888a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0ab76c1c7def9fb71f054d7612d36bd0fd4f85e9fbc3c610e7c4f39a7e0cd38d",
       "status": "queued"
     },
     {
@@ -32158,6 +32985,7 @@
         "liberty-catalog-c072f44e0d5afe7b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8b0e1f6eefad7c2b5de010795f4252c59a9379797ae2443206687914c8af7c0f",
       "status": "queued"
     },
     {
@@ -32171,6 +32999,7 @@
         "liberty-catalog-c0b83b6801761e42"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2a89a2ca5080c57f9d2fbb6561aa39ee1326c034055c7c6e905e48e1cdfadf37",
       "status": "queued"
     },
     {
@@ -32184,6 +33013,7 @@
         "liberty-catalog-c0dc280ca058f29a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:7d9b75970e1b6bf2fd764ff8551a856f78df94294870d184eb0c385d30b39be5",
       "status": "queued"
     },
     {
@@ -32197,6 +33027,7 @@
         "liberty-catalog-c1e4aea53b4f2b5a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:8e2ee3248fbaddaa31fa9bdcf1e9e1a68330e85995755908cadeea74b0946c65",
       "status": "queued"
     },
     {
@@ -32210,6 +33041,7 @@
         "liberty-catalog-c27b7c0950009812"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:64798d0de43314a6d03740a4f8204a0f54efbf281890b0a2449e244ef8787c9d",
       "status": "queued"
     },
     {
@@ -32223,6 +33055,7 @@
         "liberty-catalog-c2e939fcabe778c1"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0417542c6c04f9a71da83459a77521ced8956a5fbb0e3c4a3e359f1a26fe3fb0",
       "status": "queued"
     },
     {
@@ -32236,6 +33069,7 @@
         "liberty-catalog-c393da082618bd50"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:7909aa2c7e77e9e773e6b5dbedce04b5774471be44d099edf16cf84870ac2a7d",
       "status": "queued"
     },
     {
@@ -32249,6 +33083,7 @@
         "liberty-catalog-c49c85eceefc5328"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:72a1cea3047438ac00d03cb290304f2cb1591b8b1248b29c3da0b1364cfa1918",
       "status": "queued"
     },
     {
@@ -32262,6 +33097,7 @@
         "liberty-catalog-c4d69453a20db39b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:9bfb3dd4d7f5fe4eec83ecf51263eb91dfff9dcfb3b79e0ffc42cdcb93232de5",
       "status": "queued"
     },
     {
@@ -32275,6 +33111,7 @@
         "liberty-catalog-c69700ff51c40679"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:cae1210d27fe6df7be596393756fd206ebbd72c3638dec8d5b68ad95cde968af",
       "status": "queued"
     },
     {
@@ -32288,6 +33125,7 @@
         "liberty-catalog-c6bc61756985e6ac"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:5f0e9bea2ca427c38f45c8a42bdaf9f159c5525f06bef8d4a867a9390664955e",
       "status": "queued"
     },
     {
@@ -32301,6 +33139,7 @@
         "liberty-catalog-c6ff14f8f52b8549"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:cf917d38e221787e53660607d2f3b6d33078c07fa66dd68cf2ab1473f29c7e5d",
       "status": "queued"
     },
     {
@@ -32314,6 +33153,7 @@
         "liberty-catalog-c8df4d8834411386"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a38fe2d9f2defb114edf81b89b0a25d5996f0ba8e1c0e8f810f8ff1d3d2fb3fd",
       "status": "queued"
     },
     {
@@ -32327,6 +33167,7 @@
         "liberty-catalog-c8e37b1d185d800c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b260d45d9e2bbe8cb53ec5d502dc63169fa3b4d3e62723b21441e3419bd7ed87",
       "status": "queued"
     },
     {
@@ -32340,6 +33181,7 @@
         "liberty-catalog-c9edb6b01c11cc00"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d9513aae4af62dba5378d2806417fb1f8ab5931453a4b807bf28dc9bba14b93e",
       "status": "queued"
     },
     {
@@ -32353,6 +33195,7 @@
         "liberty-catalog-ca1aa987cccc467d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:362c5b223e2750b9be221bdfff646e5512c11b3e9eaa025cca5ed1e86d5d14ce",
       "status": "queued"
     },
     {
@@ -32366,6 +33209,7 @@
         "liberty-catalog-ca42919e9b1e2044"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0f91381712e310f9a4ad96326a3326ec5a369c8b2a1f6bf23017880ab2742652",
       "status": "queued"
     },
     {
@@ -32379,6 +33223,7 @@
         "liberty-catalog-ca9d63f37e9527cd"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:1fe330b04b69f65ab9df1d34554c9b4707e5640f718c260ebbef4f48e1432e3f",
       "status": "queued"
     },
     {
@@ -32392,6 +33237,7 @@
         "liberty-catalog-cbc07e4b55f8880a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:23eab983c26d8afef82c85f574f549a15f6a25da8abdbcd0586292775352c22a",
       "status": "queued"
     },
     {
@@ -32405,6 +33251,7 @@
         "liberty-catalog-cc7c9023f3ce03ae"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d4f75755847e1a3824763b0058ded2cdaeb832896bd264852cbea469d0882db5",
       "status": "queued"
     },
     {
@@ -32418,6 +33265,7 @@
         "liberty-catalog-cccc19d7c5aad4da"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:98a3c464185fe3568887d5571c1652e2751f49dd91bb4a10b2aeee0c124fd571",
       "status": "queued"
     },
     {
@@ -32431,6 +33279,7 @@
         "liberty-catalog-ceec3505e879820c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:99b57bbe9972e1becb0507949038bcfa87ed01f4994ec6ba344bc5d6d569ae83",
       "status": "queued"
     },
     {
@@ -32444,6 +33293,7 @@
         "liberty-catalog-cf514fa45da62116"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a3ed643e97ba18869165c244d01f5cb7d534d9c5742ca3114c3d08df1a4ca795",
       "status": "queued"
     },
     {
@@ -32457,6 +33307,7 @@
         "liberty-catalog-cf9bae1bd2e8237c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:01674c0f6f2cc23cb2efa39e1a6cd890e10c7934107d1cc5d0d4f7b2597dd89d",
       "status": "queued"
     },
     {
@@ -32470,6 +33321,7 @@
         "liberty-catalog-cfc026147bea64bc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:995c2e84e6419b3ea6de091a16d91bbdc6af90d63a544209edec6f8400594517",
       "status": "queued"
     },
     {
@@ -32483,6 +33335,7 @@
         "liberty-catalog-d01784948863a313"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:86bb9059de47ea5964cc11ae4be577931b8e1c9b532f989b2cfcf6a7f074950f",
       "status": "queued"
     },
     {
@@ -32496,6 +33349,7 @@
         "liberty-catalog-d1170ff63874036e"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:94c038d798a73f34183872c4869f1f5d8852b4d4d2b8ad35636af1138abbaae8",
       "status": "queued"
     },
     {
@@ -32509,6 +33363,7 @@
         "liberty-catalog-d158470b74eccf15"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c1f19d3ba62ff1039f07969681a6416e7e23b3bde89c76ab0d98cca348820787",
       "status": "queued"
     },
     {
@@ -32522,6 +33377,7 @@
         "liberty-catalog-d1dceb3f4330dc01"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:42fd89a6e452bec6348b9b48b9df54a879dd29677b7a7da1eae2562f28fd77f0",
       "status": "queued"
     },
     {
@@ -32535,6 +33391,7 @@
         "liberty-catalog-d3b75ca0a4a1f1c9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3feafeaf4e5c8a6413b8c94aae254cfdff7fb94f5ae26cb46574f0b8e296f9cb",
       "status": "queued"
     },
     {
@@ -32548,6 +33405,7 @@
         "liberty-catalog-d4cc63cba41a812a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a8b932bebc59a2e1c95730728bdcee2f2a1083c1e2efc93251adba4c10bbead6",
       "status": "queued"
     },
     {
@@ -32561,6 +33419,7 @@
         "liberty-catalog-d51ce70cf3f7bc51"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:33c14dc6258167a0f74afc3803b9a59939547bdce3bb4c6bd3f5ba07d17812ed",
       "status": "queued"
     },
     {
@@ -32574,6 +33433,7 @@
         "liberty-catalog-d6c9f22804e9646d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:932c479cefc1717185ed5c9f22ee552a2711e135454f75d01ce6de7164eeef8d",
       "status": "queued"
     },
     {
@@ -32587,6 +33447,7 @@
         "liberty-catalog-d7f350a88f4f7e85"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:43efd23d9e389c9a4dfec721622053d7d7fa750fff4249e17a190587bc89d7f8",
       "status": "queued"
     },
     {
@@ -32600,6 +33461,7 @@
         "liberty-catalog-d9815823d612fac8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:322e9d48f5423ad70ef9b149e10586d90ab717a9b8f45765d5b950899be959e2",
       "status": "queued"
     },
     {
@@ -32613,6 +33475,7 @@
         "liberty-catalog-d9877656c2ffef2c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a9732dcdab5ff38e15ee3dd8f3789ac4695ee12e9565bcd8dbd1b03682aeb10f",
       "status": "queued"
     },
     {
@@ -32626,6 +33489,7 @@
         "liberty-catalog-da00217eedd0fe1d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:612c5ad7216b8c5fb8ef7f303e05d4d09587409aafd8f7524ae6425e32d8fc71",
       "status": "queued"
     },
     {
@@ -32639,6 +33503,7 @@
         "liberty-catalog-dc5ef385f78b93be"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:acfdaef826e75f0fa496a0fcd8f5f2cac2c816022a881d6b39392bdcb7c692d1",
       "status": "queued"
     },
     {
@@ -32652,6 +33517,21 @@
         "liberty-catalog-dd3a10cbf18f5d5c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:deea64e5091afa803009bc692f39e8329880c66d644875b2a542c37ecbfec4d1",
+      "status": "queued"
+    },
+    {
+      "id": "capture-source-ddbe765543824361ca5f4a2c",
+      "stage": "capture-evidence",
+      "sourceId": "source-ddbe765543824361ca5f4a2c",
+      "url": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-major-aa/accounting-aa-online/",
+      "kind": "program-evidence",
+      "priority": 0,
+      "affectedProgramIds": [],
+      "affectedModelIds": [
+        "curriculum-liberty-accounting-aa-online"
+      ],
+      "inputFingerprint": "sha256:064d2db9cbf51a77724fd5ab54806c595ed776268b0c5c386564792fb8357ef5",
       "status": "queued"
     },
     {
@@ -32665,6 +33545,7 @@
         "liberty-catalog-ddc5c4c1c4742af8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:cebc553350de60340ad86f75548d1277358bcb4c84b76326181a7c88160e81ba",
       "status": "queued"
     },
     {
@@ -32678,6 +33559,7 @@
         "liberty-catalog-ddc8d9ddb8bff9e9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:46be4cb1f640f9b694c8bb3af08faf3ab69c89c943ba9a1231fe895e404cdd78",
       "status": "queued"
     },
     {
@@ -32691,6 +33573,7 @@
         "liberty-catalog-de44fc5c3c697a57"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:7069a23f40e82af61c4adc6cadeb46a625d87fa6ba2fcea01b958d09c27a88d7",
       "status": "queued"
     },
     {
@@ -32704,6 +33587,7 @@
         "liberty-catalog-e1874bc86ff440b6"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b3c38879681dffdcca27206311d095a84974bb3540ac109331c1f47c3fb73519",
       "status": "queued"
     },
     {
@@ -32717,6 +33601,7 @@
         "liberty-catalog-e3189df156e5b3dc"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d763480726d696c3891fef0894341daa66cb4819acf3bc53c784c5f8f3b466b8",
       "status": "queued"
     },
     {
@@ -32730,6 +33615,7 @@
         "liberty-catalog-e31b738abb43a893"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:2e52da9d446f524792abdb8b3eeb36b7194f911c116d590ccb845a154e22f098",
       "status": "queued"
     },
     {
@@ -32743,6 +33629,7 @@
         "liberty-catalog-e471b6d6513fbf56"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ac0e6a73224f5f0bb417d4030905a195f295f41236e2d46551367e5a695b56ee",
       "status": "queued"
     },
     {
@@ -32756,6 +33643,7 @@
         "liberty-catalog-e4e0f3f5553a37a5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:4f72284e6a37492d7aa5d23f0f9817de48d3eac7f16ecec4528a2f406c844719",
       "status": "queued"
     },
     {
@@ -32769,6 +33657,7 @@
         "liberty-catalog-e5492312d9738d2d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c1d8f25830fa7f8aa0be929b06970e4e82d926762161bad54147ae72260693fb",
       "status": "queued"
     },
     {
@@ -32782,6 +33671,7 @@
         "liberty-catalog-e5f2268514951dfe"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0c3915fc82be275c0ef9cd6c5345e4a29572e256d4390955d9d9759b79ef701b",
       "status": "queued"
     },
     {
@@ -32795,6 +33685,7 @@
         "liberty-catalog-e70be732aa722e1d"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a73020b1e53c784924420f7f1f0c4c916d733eb0aeb6e7e73f4c85f23bbd8294",
       "status": "queued"
     },
     {
@@ -32808,6 +33699,7 @@
         "liberty-catalog-e80bf56c20331eb5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3d0482509f8a2f4af91a27708dff4fbf49d7bc7c1c58ceb8e0c8264dbd846e6a",
       "status": "queued"
     },
     {
@@ -32821,6 +33713,7 @@
         "liberty-catalog-eb6515568ad3ee6a"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:913cb7ebc605ed861debabd5b7bb202da684a81055aae285ddcd7df8a2305ff9",
       "status": "queued"
     },
     {
@@ -32834,6 +33727,7 @@
         "liberty-catalog-ebd6f23bd87c6f71"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:57c35fc4f8ed9da2aabcb0cc7efd52a18c8722ccb62760df6a4db15093632b70",
       "status": "queued"
     },
     {
@@ -32847,6 +33741,7 @@
         "liberty-catalog-ece27372ee346d4b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:eb6985f2b9f209c4522add2e03d4cf7603bac2e990240da0abf59ec82d20eba1",
       "status": "queued"
     },
     {
@@ -32860,6 +33755,7 @@
         "liberty-catalog-eefab04ce65f7c5f"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b8a5b0ba3cd736d24581ff76d91fc0b78d5205a08dba9bf3883699a9682e68ff",
       "status": "queued"
     },
     {
@@ -32873,6 +33769,7 @@
         "liberty-catalog-ef429f169932d9f9"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:a02b303803211bcbf030292d3da7a558d189dde28a281e4880d0329fc948e1a5",
       "status": "queued"
     },
     {
@@ -32886,6 +33783,7 @@
         "liberty-catalog-ef5cd0e4fbc7bb35"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:04ea4a81d54720d8b55ca065a52b8be6ba09fc2b679374c870bcdb17cf566f81",
       "status": "queued"
     },
     {
@@ -32899,6 +33797,7 @@
         "liberty-catalog-ef63562a660d2db7"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3192007a1902e095e3a5de3ab79831b6a11d529724d9025e4eee5f884628df57",
       "status": "queued"
     },
     {
@@ -32912,6 +33811,7 @@
         "liberty-catalog-efa7a238b81a7729"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ed71eea71b81c398806f3b8155069f8c9d1c3e753da48cbae3c0c06099d94ae8",
       "status": "queued"
     },
     {
@@ -32925,6 +33825,7 @@
         "liberty-catalog-f151da9665dde3d3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:308937de5f3965877381f4935d8843e042cfa90a5dd5221cd52e21839a5104bb",
       "status": "queued"
     },
     {
@@ -32938,6 +33839,7 @@
         "liberty-catalog-f184ae9da2bcd966"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:714bfc0b4c3a4649c20f56cd12c0c2e1b66bc23a19bdfaf60aef4330c8aca2ac",
       "status": "queued"
     },
     {
@@ -32951,6 +33853,7 @@
         "liberty-catalog-f44dde2c4076f3e4"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:479b37804c700adb340e1b2aa328abbfa5d96f170ee0c46669bc6c638dfbc491",
       "status": "queued"
     },
     {
@@ -32964,6 +33867,7 @@
         "liberty-catalog-f459b1d4d9a698a8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:01a464fc30aab1c7c61474c0b4d3017f610b6be5a7ff3d0f9e7dcaef17d02472",
       "status": "queued"
     },
     {
@@ -32977,6 +33881,7 @@
         "liberty-catalog-f508f9b32eeaa2f2"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:28ac1767686b1c3d82a219dfcec9c229a0eb58cbb9b1741942c42e8419a55e9a",
       "status": "queued"
     },
     {
@@ -32990,6 +33895,7 @@
         "liberty-catalog-f5a89a811ea8f1c3"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:131c9336a71213f0e66afc3c22fd79221057985332d32683e936d39a4a198b1f",
       "status": "queued"
     },
     {
@@ -33003,6 +33909,7 @@
         "liberty-catalog-f605df34329a3d55"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:0592e78aaf8ad4722aed1be3771093163ec3da0ecf69d575c1ff7ded829db3b4",
       "status": "queued"
     },
     {
@@ -33016,6 +33923,7 @@
         "liberty-catalog-f66f7ad93d9b64ba"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:4f7f005314e7c90d278d7910cffeb5f76399bcd2f20ebcf52049ab6bf8902f6f",
       "status": "queued"
     },
     {
@@ -33029,6 +33937,7 @@
         "liberty-catalog-f6de078c6efda116"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f1cfb7a964cae836d52585dbcd6a0fce4757f5059cb15e4abf89d5e324d5da0c",
       "status": "queued"
     },
     {
@@ -33042,6 +33951,7 @@
         "liberty-catalog-f7947610522f4f63"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:607d297f94b8e6471ddf5e62c54c2e59a7f3b731726d223747199201e41c24e6",
       "status": "queued"
     },
     {
@@ -33055,6 +33965,7 @@
         "liberty-catalog-f815c5607c1a7076"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:b67a878f3fe087cd59217b131bf997a3f7d1c97f76f508005b17ddefe7d12e35",
       "status": "queued"
     },
     {
@@ -33068,6 +33979,7 @@
         "liberty-catalog-fa62c08cdfa0c990"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d7f643dd0f796e89c42380805d0cf453a6c8d658db71976255c763e3c2fd344e",
       "status": "queued"
     },
     {
@@ -33081,6 +33993,7 @@
         "liberty-catalog-faefd3bce9d58ff8"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:727594ea3df3e17330859e212bc6b6cf1a61cbde26530eb63c657988620ee8f7",
       "status": "queued"
     },
     {
@@ -33094,6 +34007,7 @@
         "liberty-catalog-fb348330a74eb88b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:3e975144c04f0906cf4e5c22fcd8ad01f7cc76392046504bebc5858ab8c8a17e",
       "status": "queued"
     },
     {
@@ -33107,6 +34021,7 @@
         "liberty-catalog-fb3ffee3f1d6649c"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:85e76417498529849795b136c15eff452960fd8c90477210792d7d762bffa968",
       "status": "queued"
     },
     {
@@ -33120,6 +34035,7 @@
         "liberty-catalog-fd3bf62de0c9ee14"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:4b05844dd983f625ccd82f9996d992b2290d682a880ed4b88e65c66c50d62d58",
       "status": "queued"
     },
     {
@@ -33133,6 +34049,7 @@
         "liberty-catalog-fd441d746e82e3aa"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:d99277001cf8a07d6cfaf9c40193a4643d9dd6dd9024d9df33a0600c51fa1078",
       "status": "queued"
     },
     {
@@ -33146,6 +34063,7 @@
         "liberty-catalog-fe48ebfcb8e41cfb"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:337c3c3553134ea4606fddfcfc14e1be36194e92a694c8640cf63e9565087e6b",
       "status": "queued"
     },
     {
@@ -33159,6 +34077,7 @@
         "liberty-catalog-fea4f6ce1e8f8b96"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:f386f4b0e9d3d5e8949cd48eed87101bafa51722e3e5fa607a066bbd989b0a22",
       "status": "queued"
     },
     {
@@ -33172,6 +34091,7 @@
         "liberty-catalog-fedf418d3527b4a5"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:04ffdc98443ec4bd2888549061da1a1b3ddb8b161b43a02eae5e6c3eb43e5337",
       "status": "queued"
     },
     {
@@ -33185,6 +34105,7 @@
         "liberty-catalog-ff93fd8bd2a9a484"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:c9b17d3d29bae9e723660495c9919aad1a285ffc1d73a90798040217208fe8e6",
       "status": "queued"
     },
     {
@@ -33198,8 +34119,9 @@
         "liberty-catalog-ffecf16d37b96e1b"
       ],
       "affectedModelIds": [],
+      "inputFingerprint": "sha256:ef1788f05edbee784764cbf7175a68c6c39360bb39a8f1979b43d4693124d6f0",
       "status": "queued"
     }
   ],
-  "revision": "school-batch-v1:a89cfcf96706509e541448256518cfd2cae1fbecfc872b5e2cd5330b4cd99275"
+  "revision": "school-batch-v1:30b976c2c88b51515dbef4e839da3205d8a7ea5d8b4764e1f9b001818f6444bb"
 }

@@ -7,18 +7,14 @@ import {loadKit,root,parsePlacement} from './pathway-factory/lib.mjs';
 import {groundedSource,reviewedRows} from './tesu-course-eligibility.mjs';
 import {upiLiberalArtsPlacement} from './tesu-upi-maps.mjs';
 import {assertTESUBusinessBlockEvidence,reviewedTESUBusinessSource} from './tesu-business-blocks.mjs';
+import {loadProgramManifests,selectProgramManifests} from './pathway-factory/program-manifest.mjs';
 
 export const TESU_PLACEMENT_REVIEW='tesu-exact-course-placements-2026-11-26';
 const CHECKED='2026-11-26',list=v=>Array.isArray(v)?v:[],unique=v=>[...new Set(v)],copy=structuredClone;
 const normalize=v=>String(v||'').replace(/[\u2018\u2019]/g,"'").replace(/\s+/g,' ').trim();
-const SOURCES={
- 'ba-english':['28546876f0d90bf9',30],
- 'ba-liberal-studies':['bf4009c573d00702',30],
- 'ba-psychology':['b7a56abe6f381bdb',30],
- 'bsba-accounting':['764a8f7315e2a33b',15],
- 'bsba-finance':['5f11d56ce0dd7bc1',15]
-};
-export const TESU_ADDITIONAL_BUSINESS_PROGRAMS=Object.freeze(['bsba-human-resources-organizational-management','bsba-marketing','bs-general-management']);
+const placementRoster=selectProgramManifests(await loadProgramManifests(),{schoolId:'tesu',stage:'course-placements'});
+const SOURCES=Object.fromEntries(placementRoster.filter(entry=>entry.placementBasis.kind==='reviewed-receiving-catalog').sort((a,b)=>a.slug.localeCompare(b.slug)).map(entry=>[entry.slug,[entry.placementBasis.capture.split('/').at(-1).replace(/\.txt$/,''),entry.placementBasis.freeElectiveCredits]]));
+export const TESU_ADDITIONAL_BUSINESS_PROGRAMS=Object.freeze(placementRoster.filter(entry=>entry.placementBasis.kind==='reviewed-business-primary').map(entry=>entry.slug));
 const taxonomy={id:'tesu-liberal-taxonomy-placement-2026-11-26',title:'TESU current published discipline course lists and single-use allocation rule',url:'https://www.tesu.edu/degrees-programs/courses/general-education/2021-and-after.php',checked:CHECKED,capture:'content/source-captures/0e6020afa78fc30f.txt',kind:'university',roles:['program-policy','degree-placement']};
 const independentlyListedLiberalCodes=new Set([...((await readFile(resolve(root,taxonomy.capture),'utf8')).matchAll(/\b([A-Z]+-\d{4}):/g))].map(match=>match[1]));
 export const TESU_SUPERSEDED_COPY_RULES=Object.freeze([
