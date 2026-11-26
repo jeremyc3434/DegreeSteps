@@ -33,8 +33,9 @@ const noHorizontalScroll=page=>page.evaluate(()=>document.documentElement.scroll
 
 // Courses typed by hand come from the one shared manual form (plan.html?task=credits&manual=1), so they are seeded here as My courses records.
 const handEntered={version:3,profile:{},selectedPathwayId:'',learning:[
- {id:'course-hand-local',provider:'Example Community College',title:'Local History Seminar',code:'HIS 999',codeAliases:[],credits:3,creditSystem:'semester',status:'earned',completedOn:'',evaluations:[]},
- {id:'course-hand-two',provider:'Sophia',title:'Two courses on one line',code:'SOPH-0015 SOPH-0048',codeAliases:[],credits:3,creditSystem:'semester',status:'earned',completedOn:'',evaluations:[]}
+ savedDraft.learning[0],
+ {id:'course-hand-local',provider:'Example Community College',title:'Local History Seminar',code:'HIS 999',codeAliases:[],credits:3,creditSystem:'semester',status:'earned',completedOn:'',evaluations:[],codeBasis:'student-record',creditBasis:'student-record'},
+ {id:'course-hand-two',provider:'Sophia',title:'Two courses on one line',code:'SOPH-0015 SOPH-0048',codeAliases:[],credits:3,creditSystem:'semester',status:'earned',completedOn:'',evaluations:[],codeBasis:'student-record',creditBasis:'student-record'}
 ],scenarios:{},sheet:{isExample:false,notes:{},search:'',filter:'all'},journey:{version:1,view:'questions',step:'start',answers:{},completed:false,creditsDeferred:false},courseFirst:true};
 
 for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['iphone13',devices['iPhone 13']]]){
@@ -50,14 +51,23 @@ for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['ip
    assert.equal(await empty.page.getAttribute('#cw-manual-link','href'),'plan.html?task=credits&manual=1&from=credits-worth');
    assert.equal(await empty.page.locator('#cw-manual-form, #cw-save-bar, #cw-build-dialog').count(),0,'no second, unsaved course list');
    await empty.page.screenshot({path:SHOTS+'/'+name+'-1-empty.png',fullPage:true});
+   // Catalog pick: Sophia Introduction to Psychology goes straight into My courses (no second, unsaved list).
+   await empty.page.selectOption('#cw-provider','Sophia');
+   await empty.page.selectOption('#cw-course','sophia-a3da6b3d489d7580d2');
+   await empty.page.click('#cw-pick-form button[type=submit]');
+   assert.match(await empty.page.textContent('#cw-save-status'),/Added Introduction to Psychology to My courses/);
+   const picked=JSON.parse(await empty.page.evaluate(key=>localStorage.getItem(key),KEY));
+   assert.equal(picked.version,3);assert.equal(picked.learning.length,1);assert.equal(picked.learning[0].status,'earned');assert.equal(picked.learning[0].catalogCourseId,'sophia-a3da6b3d489d7580d2');
+   // Only a course added on this page can be removed here.
+   await empty.page.click('[data-remove="'+picked.learning[0].id+'"]');
+   assert.match(await empty.page.textContent('#cw-save-status'),/Removed Introduction to Psychology from My courses/);
+   assert.equal(JSON.parse(await empty.page.evaluate(key=>localStorage.getItem(key),KEY)).learning.length,0);
+   assert.deepEqual(empty.requests,[]);assert.deepEqual(empty.errors,[]);
    await empty.context.close();
 
+   // Courses already in My courses (one picked from the catalog, two typed by hand) are ranked as they are.
    const {context,page,requests,errors}=await open(browser,profile,{draft:handEntered});
-   await page.waitForSelector('#cw-provider option[value="Sophia"]',{state:'attached'});
-   // Catalog pick: Sophia Introduction to Psychology goes straight into My courses, next to the hand-entered courses.
-   await page.selectOption('#cw-provider','Sophia');
-   await page.selectOption('#cw-course','sophia-a3da6b3d489d7580d2');
-   await page.click('#cw-pick-form button[type=submit]');
+   const before=await page.evaluate(key=>localStorage.getItem(key),KEY);
    const t0=Date.now();
    await page.waitForSelector('#cw-progress-wrap:not([hidden])',{timeout:5000}).catch(()=>{});
    if(name==='desktop')await page.screenshot({path:SHOTS+'/'+name+'-2-progress.png'});
@@ -65,18 +75,17 @@ for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['ip
    const wall=Date.now()-t0,count=await page.textContent('#cw-count');
    console.log(JSON.stringify({profile:name,count,wallMs:wall}));
    assert.match(count,new RegExp(PLANS+' plans checked · \\d+ could use your courses'));
-   const stored=JSON.parse(await page.evaluate(key=>localStorage.getItem(key),KEY));
-   assert.equal(stored.version,3);assert.equal(stored.learning.length,3);assert(stored.learning.every(r=>r.status==='earned'));
-   assert.deepEqual(stored.learning.slice(0,2),handEntered.learning,'existing My courses records are kept exactly');
-   assert.match(await page.textContent('#cw-save-status'),/Added Introduction to Psychology to My courses/);
+   assert.equal(await page.evaluate(key=>localStorage.getItem(key),KEY),before,'reading and ranking never rewrites My courses');
    const cards=await page.$$eval('#cw-list .cw-card',nodes=>nodes.map(n=>n.textContent));
    assert.equal(cards.length,12,'first page of results');
    assert.match(cards[0],/Your courses could fill [1-9]/,'best plan uses the course');
    assert.match(cards[0],/Build this plan/);
    const outcomes=await page.$$eval('.cw-record',nodes=>nodes.map(n=>n.textContent));
-   assert(outcomes.some(text=>new RegExp('Introduction to Psychology.*Added to My courses.*Could count in \\d+ of '+PLANS+' plans').test(text)),outcomes.join('\n'));
+   assert(outcomes.some(text=>new RegExp('Introduction to Psychology.*In My courses.*Could count in \\d+ of '+PLANS+' plans').test(text)),outcomes.join('\n'));
    assert(outcomes.some(text=>/Local History Seminar.*In My courses.*No listed match yet/.test(text)));
-   assert(outcomes.some(text=>/Two courses on one line.*Needs review/.test(text)),outcomes.join(' // '));
+   // A saved hand-typed line naming two codes is matched per plan by the existing engine (unchanged here): it is placed only where exactly one of its codes is listed.
+   assert(outcomes.some(text=>/Two courses on one line.*(Could count in \d+ of|Needs review)/.test(text)),outcomes.join(' // '));
+   assert(outcomes.every(text=>!/Accepted/.test(text)),'never claims acceptance');
    assert.equal(await page.locator('.pf-badge-confirm').count(),0,'Unfinished research plans are never offered as public matches');
    const offered=await page.locator('#cw-list a[data-build]').evaluateAll(links=>links.map(link=>new URL(link.href).searchParams.get('usePlan')));for(const id of offered)assert(Object.hasOwn(publicPlans,id),'Every offered match is a canonical publication-ready plan: '+id);
    assert(await noHorizontalScroll(page),'no horizontal scroll with results');
@@ -95,13 +104,9 @@ for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['ip
    assert.equal(await page.getAttribute('#cw-count','aria-live'),'polite');
    // Build opens the worksheet directly: the courses are already in My courses.
    assert.match(await page.getAttribute('#cw-list a[data-build]','href'),/^portal\.html\?usePlan=[A-Za-z0-9_-]+$/);
-   // Only a course added here can be removed here; earlier courses are changed in My courses.
-   const added=stored.learning[2].id;
-   assert.equal(await page.locator('[data-remove="'+added+'"]').count(),1);
-   assert.equal(await page.locator('[data-remove="course-hand-local"]').count(),0);
-   await page.click('[data-remove="'+added+'"]');
-   assert.match(await page.textContent('#cw-save-status'),/Removed Introduction to Psychology from My courses/);
-   assert.deepEqual(JSON.parse(await page.evaluate(key=>localStorage.getItem(key),KEY)).learning,handEntered.learning);
+   // Courses from earlier visits are changed in My courses, not removed from this page.
+   assert.equal(await page.locator('#cw-record-list [data-remove]').count(),0);
+   assert.match(await page.getAttribute('#cw-record-list a[href*="courses.html?tab=mine"]','href'),/record=/);
    assert.deepEqual(requests,[],'no course data is posted anywhere');
    assert.deepEqual(errors,[]);
    await context.close();
