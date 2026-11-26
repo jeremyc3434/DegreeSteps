@@ -72,6 +72,22 @@ test('a hand-typed code that names several proposed courses is flagged for revie
  assert.equal(Worth.recordSummary([result],[ambiguous])[0].status,'ambiguous');
 });
 
+test('a hand-typed line with two codes needs review in every plan, including plans that list only one of the codes',async()=>{
+ await load();
+ const record=earned('rec-pair',{provider:'Sophia',code:'SOPH-0015 SOPH-0048',title:'Two courses on one line'});
+ const results=PLANS.map(id=>evaluate(id,[record]));
+ for(const [i,result] of results.entries()){
+  assert.equal(result.status,'ok',PLANS[i]);
+  assert.notEqual(result.records['rec-pair']?.status,'placed',PLANS[i]+': a line naming two courses is never placed');
+  assert.equal(result.filled,0,PLANS[i]);
+ }
+ const flagged=results.filter(result=>result.records['rec-pair']?.status==='ambiguous');
+ assert(flagged.length>0,'at least one real plan lists one of these codes');
+ assert(flagged.every(result=>result.records['rec-pair'].severalCodes===true));
+ const line=Worth.recordSummary(results,[record])[0];
+ assert.equal(line.status,'ambiguous');assert.equal(line.plans,0);assert.equal(line.severalCodes,true);
+});
+
 test('only finished records count, and inputs are never changed',async()=>{
  await load();
  const taking={...english,id:'rec-taking',status:'in-progress'},learning=[taking],before=JSON.stringify({learning,plan:fixture.plans['wgu-catalog-689e417cff765fc9'].model.id});

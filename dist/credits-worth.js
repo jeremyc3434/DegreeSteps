@@ -90,7 +90,7 @@
  function outcomeText(line){
   if(!line)return running?'<span class="cw-outcome cw-outcome-pending">Checking…</span>':'';
   if(line.status==='matched')return '<span class="cw-outcome cw-outcome-match">Could count in '+line.plans+' of '+line.checked+' plan'+(line.checked===1?'':'s')+'</span>';
-  if(line.status==='ambiguous')return '<span class="cw-outcome cw-outcome-review">Needs review: this code matches more than one listed course. Choose it from the list, or enter one exact code.</span>';
+  if(line.status==='ambiguous')return '<span class="cw-outcome cw-outcome-review">'+(line.severalCodes?'Needs review: this line has more than one course code. Enter each course on its own, with its own credits, so each can be checked.':'Needs review: this code matches more than one listed course. Choose it from the list, or enter one exact code.')+'</span>';
   if(line.status==='review')return '<span class="cw-outcome cw-outcome-review">Needs review: '+esc(line.reason)+'</span>';
   return '<span class="cw-outcome cw-outcome-none">No listed match yet. A school transcript evaluation can still review it.</span>';
  }

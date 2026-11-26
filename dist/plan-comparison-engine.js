@@ -145,6 +145,7 @@
   return{status:course.status==='earned'?(confirmed?'confirmed':'reported'):'potential',credits,creditSystem:draft.program.creditSystem||'semester',placementType:elective===credits?'elective':elective?'mixed':'required',requirements:rows.map(x=>({id:x.req.id,title:x.req.title,credits:x.req.credits,creditSystem:draft.program.creditSystem||'semester'})),detail:course.status==='earned'?(confirmed?'Recorded school approval for this exact degree.':'Completed course with a proposed degree match; school confirmation needed.'):'Projected receiving-school credit for this unfinished course, checked independently with your completed courses held fixed. This is not earned credit.'};
  }
  function courseReviewReason(program,record){
+  if(Guide.manualIdentityAmbiguous?.(program,record)&&Guide.manualCodeLineHasSeveralCodes?.(record))return 'This course line has more than one course code. Enter each course on its own, with its own credits, so each can be matched; it needs review until then.';
   if(Guide.manualIdentityAmbiguous?.(program,record))return 'The course code you entered could match more than one '+record.provider+' course in this degree. Check the exact code on your record so it can be matched; it needs review until then.';
   record=Guide.resolveRecordIdentity?.(program,record)||record;
   const exactReason=Guide.courseReviewReason?.(program,record);if(exactReason)return exactReason;

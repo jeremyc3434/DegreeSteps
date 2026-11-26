@@ -114,7 +114,7 @@
     const credits=round(placed.reduce((sum,item)=>sum+(finite(item.credits)?item.credits:finite(plan.rows.find(row=>row.requirementId===item.requirementId)?.credits)?plan.rows.find(row=>row.requirementId===item.requirementId).credits:0),0));
     records[record.id]={status:'placed',credits};
     for(const item of placed){const row=plan.rows.find(r=>r.requirementId===item.requirementId);matches.push({learningId:record.id,requirementId:item.requirementId,requirement:text(row?.title)||text(row?.code)||item.requirementId,credits:finite(row?.credits)?row.credits:0});}
-   }else if(Guide.manualIdentityAmbiguous?.(draft.program,record))records[record.id]={status:'ambiguous'};
+   }else if(Guide.manualIdentityAmbiguous?.(draft.program,record))records[record.id]={status:'ambiguous',severalCodes:Boolean(Guide.manualCodeLineHasSeveralCodes?.(record))};
    else if(reasons.has(record.id))records[record.id]={status:'review',reason:reasons.get(record.id)};
    // The plan lists this exact provider course but did not place it: say so, rather than "no listed match".
    else if(recordKeys(record).some(item=>(listed||(listed=new Set(planKeys(model)))).has(item)))records[record.id]={status:'review',reason:finite(record.credits)&&record.credits>0?'this plan lists this course, but its rules did not place it here (for example a course-level, duplicate or credit-limit rule). Ask the school to evaluate it.':'this plan lists this course, but its credit amount isn’t recorded. Add it as your own course with the credits on your record to check it.'};
@@ -154,7 +154,7 @@
    const placed=outcomes.filter(item=>item.status==='placed').length,ambiguous=outcomes.some(item=>item.status==='ambiguous');
    const reason=outcomes.find(item=>item.status==='review')?.reason||'';
    const status=placed?'matched':ambiguous?'ambiguous':reason?'review':'none';
-   return {id:record.id,provider:record.provider,code:text(record.code),title:record.title,credits:finite(record.credits)?record.credits:null,status,plans:placed,checked:checked.length,reason};
+   return {id:record.id,provider:record.provider,code:text(record.code),title:record.title,credits:finite(record.credits)?record.credits:null,status,plans:placed,checked:checked.length,reason,severalCodes:outcomes.some(item=>item.status==='ambiguous'&&item.severalCodes)};
   });
  }
 

@@ -66,6 +66,25 @@ test('titles alone, other providers and ambiguous codes are not matched and are 
  assert.equal(Guide.manualIdentityAmbiguous(model,manual({title:'SOPH-0015 English Composition I'})),false);
 });
 
+test('one hand-typed line naming two codes never counts toward a plan that lists only one of them',()=>{
+ const model=program(sophia),before=manual({code:'SOPH-0015 SOPH-0048',title:'Two courses on one line'}),record=copy(before);
+ assert.equal(Guide.resolveRecordIdentity(model,record),record,'the listed code is not picked out of the line');
+ assert.equal(Guide.manualIdentityAmbiguous(model,record),true,'shown as Needs review');
+ assert.equal(Guide.manualCodeLineHasSeveralCodes(record),true);
+ assert.equal(Guide.matchInventory(model,[record]).completed.length,0);
+ assert.deepEqual(record,before,'the saved record is unchanged');
+ for(const code of ['SOPH-0048 / SOPH-0015','SOPH 0015, SOPH 0048']){const other=manual({code});assert.equal(Guide.matchInventory(model,[other]).completed.length,0,code);assert.equal(Guide.manualIdentityAmbiguous(model,other),true,code);}
+ // A code and its own listed alias name one course, so that line is still matched.
+ const alias=manual({code:'SOPH-0015 ENG1001'});
+ assert.deepEqual(Guide.matchInventory(model,[alias]).completed.map(item=>item.optionId),['sophia-0015']);assert.equal(Guide.manualIdentityAmbiguous(model,alias),false);
+ // Two codes this degree doesn't list at all stay "no listed match", not "needs review".
+ const unlisted=manual({code:'SOPH-0098 SOPH-0099'});assert.equal(Guide.manualIdentityAmbiguous(model,unlisted),false);assert.equal(Guide.matchInventory(model,[unlisted]).completed.length,0);
+ // One code on its own line still matches as before.
+ assert.equal(Guide.matchInventory(model,[manual({code:'SOPH 0015'})]).completed.length,1);
+ // Catalog-listed courses are never read as hand-typed lines.
+ assert.equal(Guide.manualCodeLineHasSeveralCodes(manual({catalogCourseId:'sophia-listing',code:'SOPH-0015 SOPH-0048'})),false);
+});
+
 // Portal ----------------------------------------------------------------------
 function portalData(){
  const r={id:'campus-degree',modelId:'campus-model',school:'Example University',title:'Psychology BS',level:'bachelor',field:'social-science',fields:['social-science'],modalities:['online'],goals:['any-degree','career-growth','change-career']};
