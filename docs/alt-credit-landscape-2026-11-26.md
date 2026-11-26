@@ -15,7 +15,7 @@ Research batch `content/research-batches/alt-credit-landscape-2026-11-26.json` (
 
 - 125 Sophia partners, 161 StraighterLine partners, 28 Saylor partners; 168 institutions matched to College Scorecard, 132 regionally accredited; 62 directory names left unmatched (listed in the JSON).
 - 36 schools deep-reviewed against official pages (exact quotes in the JSON). DegreeSteps had kits for 20 of the 168 before this batch.
-- Kits added this batch (Sophia partner-page equivalencies, provider-published evidence only): davenport, herzing, indiana-tech, nichols, norwich, post, tiffin, umass-global, upper-iowa, wilmington. No programs yet, so no new student-facing plans.
+- Kits added this batch (Sophia partner-page equivalencies, provider-published evidence only): davenport, herzing, indiana-tech, nichols, norwich, post, tiffin, umass-global, upper-iowa, wilmington. Each kit also cites the school’s captured transfer-policy page. Caps are recorded in the source scope and the research file, not as kit-wide normalized policies, because the published caps are bachelor’s-level (or level-unstated) and kit-wide policies apply to every level; set them per program when programs are drafted. No programs yet, so no new student-facing plans.
 
 ## Top 30 by score
 
