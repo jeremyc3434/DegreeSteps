@@ -55,8 +55,11 @@ for(const [name,learning] of Object.entries(lists)){
 }
 
 test('a single Sophia course loads only the plans that list it',async()=>{
- const {loaded}=await both(lists['one Sophia course']);
- assert(loaded.length>0&&loaded.length<38,String(loaded.length));
+ const {loaded}=await both(lists['one Sophia course']),{models}=await load(),record=lists['one Sophia course'][0],key=value=>String(value||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+ // Independently inspect the actual course identities, not an arbitrary cap
+ // that breaks as more accurately mapped degree programs become available.
+ const expected=models.filter(model=>model.requirements.some(requirement=>(requirement.options||[]).some(option=>['sophia','sophialearning'].includes(key(option.provider))&&([option.code,...option.codeAliases||[]].some(code=>key(code)===key(record.code))||(option.listingIdentityIds||[]).includes(record.catalogCourseId))))).map(model=>model.id).sort();
+ assert(expected.length>0&&expected.length<models.length,'Only programs that list this specific course need a curriculum download');assert.equal(new Set(loaded).size,loaded.length);assert.deepEqual([...loaded].sort(),expected);
 });
 
 test('a stale or malformed index is rejected rather than trusted',async()=>{

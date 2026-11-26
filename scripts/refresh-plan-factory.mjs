@@ -9,6 +9,7 @@ const scripts=[
   ['pathway-factory/compile.mjs',['--publish']],
   ['build-curriculum-registry.mjs',[]],
   ['build-research-references.mjs',[]],
+  ['build-plan-estimate-rates.mjs',[]],
   ['build-academic-registry.mjs',[]],
   ['build-pathway-quality-report.mjs',[]],
   ['build-plan-expansion-queue.mjs',[]],

@@ -82,6 +82,60 @@
       "capture": "content/source-captures/009d0a319f5eb5ef.txt",
       "sha256": "009d0a319f5eb5efdd2a1e064db40a8cf4aa07c66b801755d8643a4f6b61e6a1",
       "quote": "Accelerated courses do not have individual assignment due dates or late-penalty policies."
+    },
+    {
+      "id": "tesu-bsba-human-resources-organizational-management-current-2026-11-26",
+      "title": "B.S.B.A. in Human Resources/Organizational Management — current exact curriculum",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-human-resources-organizational-management",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/08ba94f0898450bf.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ],
+      "sha256": "08ba94f0898450bff615e2899b1ec5f90de08bf4cdd947112f9e2d65f6f0fbbd",
+      "sourceContentHash": "08ba94f0898450bff615e2899b1ec5f90de08bf4cdd947112f9e2d65f6f0fbbd",
+      "checkedOn": "2026-11-26",
+      "quote": "Total Credit Hours: 120"
+    },
+    {
+      "id": "tesu-bsba-marketing-current-2026-11-26",
+      "title": "B.S.B.A. in Marketing — current exact curriculum",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-marketing/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/60df9ea927fc193a.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement",
+        "program-policy"
+      ],
+      "sha256": "60df9ea927fc193a23a27b295b9aaaccfc0b20ce7c1b9aa3b3d49c45b4bd6e0c",
+      "sourceContentHash": "60df9ea927fc193a23a27b295b9aaaccfc0b20ce7c1b9aa3b3d49c45b4bd6e0c",
+      "checkedOn": "2026-11-26",
+      "quote": "Total Credit Hours: 120"
+    },
+    {
+      "id": "tesu-business-degree-general-management-20261126",
+      "title": "TESU current B.S. in General Management degree requirements",
+      "kind": "university",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/175d94db8aea580b.txt",
+      "sha256": "175d94db8aea580bfbf5ef6ef965b8c6b3941ecd4a9b4ff09fb6bba943b93a66",
+      "sourceContentHash": "175d94db8aea580bfbf5ef6ef965b8c6b3941ecd4a9b4ff09fb6bba943b93a66",
+      "captureFormat": "connected-web-rendered-extract",
+      "citationRef": "turn658view2",
+      "toolResponseReceipt": {
+        "path": "content/source-captures/retrievals/ee9a7782e9aaea24e89290d8a5003e3763c2f6b459d016fb40944eda8879da17.json",
+        "sha256": "ee9a7782e9aaea24e89290d8a5003e3763c2f6b459d016fb40944eda8879da17",
+        "citationRef": "turn658view2",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"
+      },
+      "checkedOn": "2026-11-26",
+      "quote": "Total Credit Hours: 120"
     }
   ],
   "reviews": [
@@ -368,6 +422,183 @@
         },
         {
           "id": "tesu-bsba-finance-accelerated-options-20261126",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Four-week course options",
+          "detail": "TESU offers four-week accelerated sections for undergraduate learners as a separate course format. A specific course’s accelerated section and registration dates must be available; this standard online-course baseline does not assume those alternatives or promise a completion date.",
+          "sourceIds": [
+            "tesu-accelerated-course-option-20261126"
+          ],
+          "prominent": false,
+          "type": "accelerated-course-options"
+        }
+      ]
+    },
+    {
+      "id": "tesu-bsba-human-resources-organizational-management-requirements-business-expansion-20261126",
+      "modelIds": [
+        "curriculum-tesu-bsba-human-resources-organizational-management"
+      ],
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current undergraduate catalog · checked November 18, 2026",
+        "sourceId": "tesu-bsba-human-resources-organizational-management-current-2026-11-26",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-human-resources-organizational-management",
+        "checkedOn": "2026-11-26",
+        "sourceSha256": "08ba94f0898450bff615e2899b1ec5f90de08bf4cdd947112f9e2d65f6f0fbbd"
+      },
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-tesu-bsba-human-resources-organizational-management",
+          "degreeUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-human-resources-organizational-management"
+        }
+      ],
+      "facts": [
+        {
+          "id": "tesu-bsba-human-resources-organizational-management-online-participation-business-expansion-20261126",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Online participation expected",
+          "detail": "Standard online university courses follow a course calendar and require academic participation. Access is flexible, but simply viewing a course does not satisfy engagement requirements. This does not establish a live meeting time for a particular course.",
+          "sourceIds": [
+            "tesu-current-course-engagement-20261126"
+          ],
+          "prominent": false,
+          "type": "online-participation"
+        },
+        {
+          "id": "tesu-bsba-human-resources-organizational-management-assessment-formats-vary-business-expansion-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "Online assessment formats vary",
+          "detail": "Standard online university courses can use written assignments, discussions, proctored or nonproctored examinations, or other comprehensive assessments. The exact assessments for an individual university course are not classified here; this does not describe outside providers or every TESU credit-earning method.",
+          "sourceIds": [
+            "tesu-standard-online-assessments-20261126"
+          ],
+          "prominent": false,
+          "type": "assessment-formats-vary"
+        },
+        {
+          "id": "tesu-bsba-human-resources-organizational-management-accelerated-course-options-business-expansion-20261126",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Four-week course options",
+          "detail": "TESU offers four-week accelerated sections for undergraduate learners as a separate course format. A specific course’s accelerated section and registration dates must be available; this standard online-course baseline does not assume those alternatives or promise a completion date.",
+          "sourceIds": [
+            "tesu-accelerated-course-option-20261126"
+          ],
+          "prominent": false,
+          "type": "accelerated-course-options"
+        }
+      ]
+    },
+    {
+      "id": "tesu-bsba-marketing-requirements-business-expansion-20261126",
+      "modelIds": [
+        "curriculum-tesu-bsba-marketing"
+      ],
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current undergraduate catalog · checked November 18, 2026",
+        "sourceId": "tesu-bsba-marketing-current-2026-11-26",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-marketing/",
+        "checkedOn": "2026-11-26",
+        "sourceSha256": "60df9ea927fc193a23a27b295b9aaaccfc0b20ce7c1b9aa3b3d49c45b4bd6e0c"
+      },
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-tesu-bsba-marketing",
+          "degreeUrl": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-marketing/"
+        }
+      ],
+      "facts": [
+        {
+          "id": "tesu-bsba-marketing-online-participation-business-expansion-20261126",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Online participation expected",
+          "detail": "Standard online university courses follow a course calendar and require academic participation. Access is flexible, but simply viewing a course does not satisfy engagement requirements. This does not establish a live meeting time for a particular course.",
+          "sourceIds": [
+            "tesu-current-course-engagement-20261126"
+          ],
+          "prominent": false,
+          "type": "online-participation"
+        },
+        {
+          "id": "tesu-bsba-marketing-assessment-formats-vary-business-expansion-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "Online assessment formats vary",
+          "detail": "Standard online university courses can use written assignments, discussions, proctored or nonproctored examinations, or other comprehensive assessments. The exact assessments for an individual university course are not classified here; this does not describe outside providers or every TESU credit-earning method.",
+          "sourceIds": [
+            "tesu-standard-online-assessments-20261126"
+          ],
+          "prominent": false,
+          "type": "assessment-formats-vary"
+        },
+        {
+          "id": "tesu-bsba-marketing-accelerated-course-options-business-expansion-20261126",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Four-week course options",
+          "detail": "TESU offers four-week accelerated sections for undergraduate learners as a separate course format. A specific course’s accelerated section and registration dates must be available; this standard online-course baseline does not assume those alternatives or promise a completion date.",
+          "sourceIds": [
+            "tesu-accelerated-course-option-20261126"
+          ],
+          "prominent": false,
+          "type": "accelerated-course-options"
+        }
+      ]
+    },
+    {
+      "id": "tesu-bs-general-management-requirements-business-expansion-20261126",
+      "modelIds": [
+        "curriculum-tesu-bs-general-management"
+      ],
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current undergraduate catalog · checked November 18, 2026",
+        "sourceId": "tesu-business-degree-general-management-20261126",
+        "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management",
+        "checkedOn": "2026-11-26",
+        "sourceSha256": "175d94db8aea580bfbf5ef6ef965b8c6b3941ecd4a9b4ff09fb6bba943b93a66"
+      },
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-tesu-bs-general-management",
+          "degreeUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"
+        }
+      ],
+      "facts": [
+        {
+          "id": "tesu-bs-general-management-online-participation-business-expansion-20261126",
+          "kind": "attendance",
+          "scope": "school-policy",
+          "label": "Online participation expected",
+          "detail": "Standard online university courses follow a course calendar and require academic participation. Access is flexible, but simply viewing a course does not satisfy engagement requirements. This does not establish a live meeting time for a particular course.",
+          "sourceIds": [
+            "tesu-current-course-engagement-20261126"
+          ],
+          "prominent": false,
+          "type": "online-participation"
+        },
+        {
+          "id": "tesu-bs-general-management-assessment-formats-vary-business-expansion-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "Online assessment formats vary",
+          "detail": "Standard online university courses can use written assignments, discussions, proctored or nonproctored examinations, or other comprehensive assessments. The exact assessments for an individual university course are not classified here; this does not describe outside providers or every TESU credit-earning method.",
+          "sourceIds": [
+            "tesu-standard-online-assessments-20261126"
+          ],
+          "prominent": false,
+          "type": "assessment-formats-vary"
+        },
+        {
+          "id": "tesu-bs-general-management-accelerated-course-options-business-expansion-20261126",
           "kind": "attendance",
           "scope": "school-policy",
           "label": "Four-week course options",

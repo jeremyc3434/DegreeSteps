@@ -37,6 +37,9 @@ function reviewedCourseEligibility(m,o){
 const ledgers={
   'curriculum-tesu-bsba-accounting':{groups:{'business-core':42,'area-study':18,'free-electives':15}},
   'curriculum-tesu-bsba-finance':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['FIN-3140','FIN-3340','FIN-3820','FIN-3210','FIN-3310','FDR-4400']},
+  'curriculum-tesu-bsba-human-resources-organizational-management':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['MAN-3310','MAN-3110','PSY-3600','PSY-3630','SOC-3620','MAN-4250']},
+  'curriculum-tesu-bsba-marketing':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['MKT-4110','MKT-4790','MKT-3060','MKT-3350','MKT-4410','MAN-4320']},
+  'curriculum-tesu-bs-general-management':{groups:{'business-core':42,'area-of-study':18,'free-electives':15},areaCodes:['MAN-3110','MAN-3310','FIN-3310','FIN-3340','MKT-4110','MKT-4790']},
   'curriculum-tesu-ba-english':{categories:{major:45},free:30,requiredEnglish:['LIT-2050','LIT-2060','LIT-2910','LIT-4600']},
   'curriculum-tesu-ba-psychology':{categories:{major:45},free:30},
   'curriculum-tesu-ba-liberal-studies':{categories:{major:45},free:30}
@@ -126,7 +129,7 @@ function awardsFitTheirRequirement(doc){
 }
 /** Business course currency (importer rule): half the area of study within ten years, the capstone within five. */
 function businessCourseCurrency(doc){
-  for(const id of ['curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance']){
+  for(const id of ['curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance','curriculum-tesu-bsba-human-resources-organizational-management','curriculum-tesu-bsba-marketing','curriculum-tesu-bs-general-management']){
     const m=model(doc,id);if(!m)continue;
     const groups=list(m.existingCreditReview?.groups);
     const area=groups.find(g=>g.maxAgeYears===10),capstone=groups.find(g=>g.id==='business-capstone');

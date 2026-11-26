@@ -10,6 +10,9 @@ import {reviewedTESUCatalogIdentity,reviewedTESUTuitionComparison,withVerifiedTE
 import {applyTESUProviderReview,providerReview} from './scripts/tesu-provider-review.mjs';
 const read=async path=>JSON.parse(await readFile(root+'/'+path,'utf8')),kit=await loadKit(root+'/content/pathway-kits/tesu'),copy=structuredClone;
 const inputs={school:kit.school,equivalencies:kit.equivalencies,programs:kit.programs},project=materializeTESUUPIKit;
+// These five identities were re-reviewed from November 18. New business
+// editions have a first review and a separately dated November 25 price basis.
+const historicalRereviews=['bsba-accounting','ba-english','bsba-finance','ba-liberal-studies','ba-psychology'].map(slug=>{const program=kit.programs.find(program=>program.slug===slug);assert(program,'Retain the historical re-review fixture '+slug);return program;});
 
 test('UPI replay preserves all interleaved reviewed records, catalog provenance and Accounting execution notices',()=>{
  const before=JSON.stringify(inputs),result=project(inputs);assert.equal(JSON.stringify(inputs),before);assert.deepEqual(result.school,inputs.school);assert.deepEqual(result.equivalencies,inputs.equivalencies);
@@ -28,7 +31,7 @@ test('UPI check mode accepts unrelated metadata edits but rejects tampering with
 });
 
 test('the five catalog rereviews require their exact primary capture, date, URL and historical label',()=>{
- for(const program of kit.programs){const model=compileProgram(kit,program),original={kind:'reviewed-current-catalog',label:model.catalog,sourceUrl:model.catalogIdentity.sourceUrl,checkedOn:'2026-11-18'};assert.deepEqual(reviewedTESUCatalogIdentity(model,original),model.catalogIdentity);
+ for(const program of historicalRereviews){const model=compileProgram(kit,program),original={kind:'reviewed-current-catalog',label:model.catalog,sourceUrl:model.catalogIdentity.sourceUrl,checkedOn:'2026-11-18'};assert.deepEqual(reviewedTESUCatalogIdentity(model,original),model.catalogIdentity);
   for(const mutate of [m=>{m.catalogIdentity.checkedOn='2027-01-01';},m=>{m.catalogIdentity.priorCheckedOn='2026-11-19';},m=>{m.catalogIdentity.label='An unreviewed future catalog';},m=>{m.catalogIdentity.sourceSha256='0'.repeat(64);},m=>{m.catalogIdentity.sourceUrl='https://tesu.edu/unrelated';},m=>{m.catalogIdentity.capture='content/source-captures/unretained.txt';},m=>{m.sources.find(s=>s.id===m.catalogIdentity.sourceId).kind='community';},m=>{m.sources.find(s=>s.id===m.catalogIdentity.sourceId).sourceContentHash='0'.repeat(64);},m=>{m.sources.find(s=>s.id===m.catalogIdentity.sourceId).checked='2026-11-25';}]){const changed=copy(model);mutate(changed);assert.throws(()=>reviewedTESUCatalogIdentity(changed,original));}
  }
 });
@@ -40,7 +43,7 @@ test('legacy provider metadata enrichment is backed by the unchanged body and ne
 });
 
 test('tuition comparisons rebind only to the proved fresh catalog while preserving the exact earlier price source and date',()=>{
- for(const program of kit.programs){
+ for(const program of historicalRereviews){
   const model=compileProgram(kit,program),actual=model.tuitionComparison,originalCatalog={kind:'reviewed-current-catalog',label:model.catalog,sourceUrl:model.catalogIdentity.sourceUrl,checkedOn:'2026-11-18'},original={entryId:actual.entryId,sourceUrl:actual.sourceUrl,checkedOn:'2026-11-18',catalogIdentity:originalCatalog,modelId:model.id},historical=model.sources.find(source=>source.id===actual.pricingSourceIds[0]),sources=[copy(historical)],before=JSON.stringify(model);
   assert.deepEqual(reviewedTESUTuitionComparison(model,original,sources),actual);assert.equal(JSON.stringify(model),before);assert.equal(historical.checkedOn||historical.checked,'2026-11-18');
   for(const mutate of [m=>{m.tuitionComparison.entryId='unreviewed-price-entry';},m=>{m.tuitionComparison.sourceUrl='https://tesu.edu/unrelated-price';},m=>{m.tuitionComparison.modelId='another-degree';},m=>{m.tuitionComparison.checkedOn='2027-01-01';},m=>{m.tuitionComparison.pricingSourceCheckedOn='2026-11-26';},m=>{m.tuitionComparison.pricingSourceIds=['another-source'];},m=>{m.tuitionComparison.catalogIdentity.checkedOn='2026-11-18';},m=>{m.tuitionComparison.reviewScope='A new tuition price review';},m=>{m.tuitionComparison.costPerCredit=1;},m=>{m.sources.find(s=>s.id===historical.id).checked='2026-11-26';},m=>{m.sources.find(s=>s.id===historical.id).url='https://tesu.edu/another-price';}]){const changed=copy(model);mutate(changed);assert.throws(()=>reviewedTESUTuitionComparison(changed,original,sources));}
