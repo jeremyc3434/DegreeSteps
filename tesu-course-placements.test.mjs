@@ -5,13 +5,15 @@ import {loadKit,root} from './scripts/pathway-factory/lib.mjs';
 import {compileKit,runGuards} from './scripts/pathway-factory/compile.mjs';
 import {applyTESUCoursePlacements,placementKind,TESU_PLACEMENT_REVIEW,copiedTESUPlacementSuperseded} from './scripts/tesu-course-placements.mjs';
 import {groundedSource} from './scripts/tesu-course-eligibility.mjs';
+import {reviewedTESUBusinessSource} from './scripts/tesu-business-blocks.mjs';
+import {assertTESUPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
 const packet=JSON.parse(await readFile(root+'/content/pathway-kits/tesu/course-placements-review-2026-11-26.json','utf8'));
 const kit=await loadKit(root+'/content/pathway-kits/tesu'),original=compileKit(kit).doc,copy=structuredClone;
 const normalize=v=>String(v).replace(/[\u2018\u2019]/g,"'").replace(/\s+/g,' ').trim();
 
-test('five current degree blocks and Liberal Studies taxonomy have retained university body/hash proof',async()=>{
- assert.equal(packet.models.length,5);assert.equal(packet.placements.length,996);assert.equal(packet.residencyCreditAwarded,0);assert.equal(packet.providerApprovalStatusChanged,false);
- const sources=new Map();for(const source of packet.sources){const entry=await groundedSource(source);assert.equal(source.kind,'university');assert.equal(source.checked,'2026-11-26');assert.equal(entry.source.sha256,packet.sourceHashes[source.id]);sources.set(source.id,entry);}
+test('eight degree blocks retain primary source proof while the original996 placements are preserved',async()=>{
+ assert.equal(packet.models.length,8);assert.equal(packet.placements.length,1297);assertTESUPlacementInventory(original.models);assert.equal(packet.residencyCreditAwarded,0);assert.equal(packet.providerApprovalStatusChanged,false);
+ const sources=new Map();for(const source of packet.sources){const entry=source.captureFormat==='connected-web-rendered-extract'?await reviewedTESUBusinessSource(source):await groundedSource(source);assert.equal(source.kind,'university');assert.equal(source.checked,'2026-11-26');assert.equal(entry.source.sha256,packet.sourceHashes[source.id]);sources.set(source.id,entry);}
  for(const model of packet.models){assert.equal(model.freeElectiveCredits,model.allocatedFreeCredits+model.fixedElectiveCredits);assert.equal(model.institutionMinCredits,15);assert.equal(model.upperMinCredits,18);assert.equal(model.alternativeMaxCredits,90);for(const q of model.quotes)assert(normalize(sources.get(q.sourceId).body).includes(normalize(q.text)));}
  for(const q of packet.classificationQuotes)assert(normalize(sources.get(q.sourceId).body).includes(normalize(q.text)));
  const finance=packet.models.find(m=>m.modelId==='curriculum-tesu-bsba-finance');assert.equal(finance.allocatedFreeCredits,12);assert.equal(finance.fixedElectiveCredits,3);
@@ -44,7 +46,7 @@ test('allocator only offers a separately resolved current university award to el
 });
 
 test('degree-placement authoring is deterministic and check mode makes no changes',async()=>{
- const paths=['content/pathway-kits/tesu/course-placements-review-2026-11-26.json','content/pathway-kits/tesu/equivalencies.json','content/pathway-kits/tesu/school.json',...kit.programs.map(p=>'content/pathway-kits/tesu/programs/'+p.slug+'.json')];const before=await Promise.all(paths.map(p=>readFile(root+'/'+p,'utf8')));const result=await applyTESUCoursePlacements({check:true});assert.equal(result.placements,996);assert.deepEqual(await Promise.all(paths.map(p=>readFile(root+'/'+p,'utf8'))),before);
+ const paths=['content/pathway-kits/tesu/course-placements-review-2026-11-26.json','content/pathway-kits/tesu/equivalencies.json','content/pathway-kits/tesu/school.json',...kit.programs.map(p=>'content/pathway-kits/tesu/programs/'+p.slug+'.json')];const before=await Promise.all(paths.map(p=>readFile(root+'/'+p,'utf8')));const result=await applyTESUCoursePlacements({check:true});assert.equal(result.placements,1297);assert.deepEqual(await Promise.all(paths.map(p=>readFile(root+'/'+p,'utf8'))),before);
 });
 
 test('only20 exact duplicate copied placements are superseded while distinct versions, grades and ineligible scopes stay separate',()=>{

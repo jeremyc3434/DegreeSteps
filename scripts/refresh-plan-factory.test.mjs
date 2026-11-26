@@ -6,13 +6,13 @@ test('refresh compiles reviewed kits before rebuilding all dependent indexes in 
   const calls=[],events=[];let clock=0;
   const report=await refreshFactory({execute:async step=>{calls.push(step);return {status:0};},now:()=>clock+=5,emit:event=>events.push(event)});
   assert.deepEqual(calls.map(step=>step.script),[
-    'scripts/pathway-factory/compile.mjs','scripts/build-curriculum-registry.mjs','scripts/build-research-references.mjs','scripts/build-academic-registry.mjs',
+    'scripts/pathway-factory/compile.mjs','scripts/build-curriculum-registry.mjs','scripts/build-research-references.mjs','scripts/build-plan-estimate-rates.mjs','scripts/build-academic-registry.mjs',
     'scripts/build-pathway-quality-report.mjs','scripts/build-plan-expansion-queue.mjs','scripts/build-plan-library-index.mjs','scripts/build-plan-course-index.mjs',
     'scripts/catalog-plan-identities.mjs','scripts/provider-directory-discovery.mjs','scripts/build-provider-coverage-report.mjs','scripts/build-research-priorities.mjs',
     'scripts/build-school-research-batch.mjs','scripts/build-coach-index.mjs'
   ]);
   assert.deepEqual(calls[0].args,['--publish']);assert(calls.slice(1).every(step=>step.args.length===0));
-  assert.equal(report.status,'passed');assert.equal(report.steps.length,14);assert(report.steps.every(step=>step.durationMs===5));assert.equal(events.at(-1),report);
+  assert.equal(report.status,'passed');assert.equal(report.steps.length,15);assert(report.steps.every(step=>step.durationMs===5));assert.equal(events.at(-1),report);
 });
 
 test('check mode validates every stage without running a write-mode generator',async()=>{
@@ -24,7 +24,7 @@ test('check mode validates every stage without running a write-mode generator',a
 test('plan-only mode never starts a generator, in either write or check mode',async()=>{
   for(const check of [false,true]){
     const report=await refreshFactory({check,planOnly:true,execute:()=>{throw Error('A dry plan must not execute');},emit:()=>{}});
-    assert.equal(report.executedSteps,0);assert.equal(report.commands.length,14);assert.equal(report.planOnly,true);
+    assert.equal(report.executedSteps,0);assert.equal(report.commands.length,15);assert.equal(report.planOnly,true);
     assert.equal(report.commands.every(command=>command.args.includes('--check')),check);
   }
 });
@@ -32,12 +32,20 @@ test('plan-only mode never starts a generator, in either write or check mode',as
 test('failure stops before any downstream index and preserves the failing timing receipt',async()=>{
   for(const failure of [{status:7},{status:null,signal:'SIGTERM'},Error('spawn unavailable')]){
     const calls=[];
-    await assert.rejects(refreshFactory({execute:async step=>{calls.push(step.script);if(calls.length===4){if(failure instanceof Error)throw failure;return failure;}return {status:0};},emit:()=>{}}),error=>{
-      assert.equal(error.report.status,'failed');assert.equal(error.report.steps.length,4);assert.equal(error.report.steps.at(-1).script,'scripts/build-academic-registry.mjs');
+    await assert.rejects(refreshFactory({execute:async step=>{calls.push(step.script);if(step.script==='scripts/build-academic-registry.mjs'){if(failure instanceof Error)throw failure;return failure;}return {status:0};},emit:()=>{}}),error=>{
+      assert.equal(error.report.status,'failed');assert.equal(error.report.steps.length,5);assert.equal(error.report.steps.at(-1).script,'scripts/build-academic-registry.mjs');
       assert.equal(error.report.steps.at(-1).status,'failed');assert(error.report.steps.at(-1).durationMs>=0);return true;
     });
-    assert.equal(calls.length,4);assert(!calls.includes('scripts/build-pathway-quality-report.mjs'));
+    assert.equal(calls.length,5);assert(!calls.includes('scripts/build-pathway-quality-report.mjs'));
   }
+});
+
+test('invalid reviewed prices stop the refresh before it can publish cost-dependent planning indexes',async()=>{
+  const calls=[];
+  await assert.rejects(refreshFactory({execute:async step=>{
+    calls.push(step.script);return {status:step.script==='scripts/build-plan-estimate-rates.mjs'?1:0};
+  },emit:()=>{}}),/stopped at scripts\/build-plan-estimate-rates/);
+  for(const downstream of ['build-academic-registry.mjs','build-pathway-quality-report.mjs','build-plan-library-index.mjs','build-plan-course-index.mjs'])assert(!calls.includes('scripts/'+downstream),downstream+' must not use stale prices');
 });
 
 test('unsupported flags fail explicitly rather than silently starting a write',()=>{

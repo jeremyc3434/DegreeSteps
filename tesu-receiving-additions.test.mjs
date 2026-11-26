@@ -1,4 +1,5 @@
 import test from 'node:test';
+import {assertTESUPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
@@ -31,10 +32,10 @@ test('receiving awards preserve independent original quantities, including1to3,3
  assert(careerPlacements>10);
 });
 
-test('all996 reviewed placements pass the independent runtime exact-course source and selected-period predicate',async()=>{
+test('all1297 reviewed placements preserve the original996 and pass the independent exact-source and selected-period predicate',async()=>{
  const kit=await loadKit(root+'/content/pathway-kits/tesu'),doc=compileKit(kit).doc;let count=0;
  for(const m of doc.models)for(const r of m.requirements)for(const o of r.options)if(o.courseEligibilityResolution){count++;assert.equal(hasReviewedCourseEligibility(m,r,o,{asOf:'2026-11-26'}),true,m.id+'/'+r.id+'/'+o.code);}
- assert.equal(count,996);
+ assert.equal(count,1297);assertTESUPlacementInventory(doc.models);
 });
 
 test('additional receiving-award authoring is idempotent and check mode does not rewrite any source or claim',async()=>{

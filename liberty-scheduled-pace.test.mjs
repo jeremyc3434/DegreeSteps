@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import Catalog from './dist/program-catalog.js';
+import {buildProgramFit} from './scripts/program-fit-metadata.mjs';
 
 const read=async path=>JSON.parse(await readFile(new URL(path,import.meta.url),'utf8'));
 const review=await read('./content/discovery/program-fit-reviews.json');
@@ -22,6 +23,8 @@ const expected=[
 ].sort();
 const libertyReviews=review.reviews.filter(record=>record.id.startsWith('liberty-'));
 const tesuExpected=['curriculum-tesu-ba-english','curriculum-tesu-ba-liberal-studies','curriculum-tesu-ba-psychology','curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance'].sort();
+const tesuBusinessExpected=['curriculum-tesu-bsba-human-resources-organizational-management','curriculum-tesu-bsba-marketing','curriculum-tesu-bs-general-management'].sort();
+const tesuGroups=new Map([['tesu-standard-online-undergraduate-scheduled-reviewed-20261126',tesuExpected],['tesu-business-expansion-standard-online-scheduled-20261126',tesuBusinessExpected]]);
 
 test('scheduled-course discovery evidence stays bound to the exact reviewed Liberty degree editions',async()=>{
  assert.equal(review.schemaVersion,1);
@@ -67,17 +70,24 @@ test('pace review citations are primary, dated, brief, and do not invent raw cap
 
 test('TESU standard scheduled coursework has its own exact program bindings and retained university evidence',async()=>{
  const records=review.reviews.filter(record=>record.id.startsWith('tesu-'));
- assert.equal(records.length,1);
- const record=records[0];assert.deepEqual([...record.modelIds].sort(),tesuExpected);
+ assert.deepEqual(records.map(record=>record.id).sort(),[...tesuGroups.keys()].sort(),'The original five and separately sourced three keep independently scoped reviews');
+ const original=records.find(record=>record.id==='tesu-standard-online-undergraduate-scheduled-reviewed-20261126'),business=records.find(record=>record.id==='tesu-business-expansion-standard-online-scheduled-20261126');
+ assert.deepEqual(business.source,original.source);assert.deepEqual(business.supportingSources,original.supportingSources);assert(original.notes.every(note=>business.notes.includes(note)),'Reusing school policy keeps every original pacing qualification');
+ const published=new Set(publication.plans.map(plan=>plan.modelId));
+ for(const record of records){
+ assert.deepEqual([...record.modelIds].sort(),tesuGroups.get(record.id));
  assert.equal(record.paceModel,'course-term');assert.equal(record.modality,'online');assert.equal(record.baselineFormat,'standard-online-coursework');
  assert.deepEqual(record.programBindings.map(binding=>binding.modelId),record.modelIds);
- const published=new Set(publication.plans.map(plan=>plan.modelId));
  for(const binding of record.programBindings){
-  assert(published.has(binding.modelId),binding.modelId+' remains a published scheduled plan');
+  if(binding.modelId==='curriculum-tesu-bsba-marketing')assert(!published.has(binding.modelId),'A genuine scheduled-course classification does not publish the held Marketing plan');
+  else assert(published.has(binding.modelId),binding.modelId+' remains a published scheduled plan');
   const entry=registry.models.find(entry=>entry.id===binding.modelId);assert(entry);
   const payload=await read('./dist/'+entry.path),model=(payload.models||[payload]).find(model=>model.id===binding.modelId);
   assert.equal(model.school,'Thomas Edison State University');assert.equal(model.level,'bachelor');assert.equal(model.format,'Online');
-  assert.equal(model.catalog,record.catalogYear);assert(model.sources.some(source=>source.url===binding.degreeUrl));
+  assert.equal(model.catalog,record.catalogYear);assert.equal(binding.degreeUrl,model.catalogIdentity.sourceUrl);assert(model.sources.some(source=>source.url===binding.degreeUrl));
+  assert.equal(buildProgramFit({model,reviews:{...review,reviews:[record]}}).learningReviewId,record.id);
+  const other=records.find(candidate=>candidate.id!==record.id);assert.equal(buildProgramFit({model,reviews:{...review,reviews:[other]}}).learningReviewId,undefined,'Neither shared policy review creates a degree/model cross-product');
+  for(const patch of[{catalog:'Unreviewed future TESU catalog'},{format:'Residential'},{id:'tesu-general-management'}])assert.equal(buildProgramFit({model:{...model,...patch},reviews:{...review,reviews:[record]}}).learningReviewId,undefined,'The exact edition, model and online scope remain mandatory');
  }
  for(const source of [record.source,...record.supportingSources]){
   assert(['tesu.smartcatalogiq.com','www.tesu.edu'].includes(new URL(source.url).hostname));
@@ -89,6 +99,7 @@ test('TESU standard scheduled coursework has its own exact program bindings and 
  }
  assert(record.notes.some(note=>/accelerated sections are separate/.test(note)));
  assert(record.notes.some(note=>/week-by-week assignment schedule/.test(note)));
+ }
 });
 
 test('a scheduled course review does not assert unrelated CBE, assessment, or attendance traits',()=>{

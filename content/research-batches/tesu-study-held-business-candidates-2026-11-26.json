@@ -1,0 +1,217 @@
+{
+  "kind": "tesu-study-held-provider-candidate-source-packet",
+  "version": 1,
+  "id": "tesu-study-held-business-candidates-2026-11-26",
+  "checkedOn": "2026-11-26",
+  "scope": "Research for a later batch only. Do not compile new candidates or promote receiving awards in the current business expansion.",
+  "status": "held-research",
+  "publicationPromotionAllowed": false,
+  "newUniversityReceivingAwards": 0,
+  "method": {
+    "captureFormat": "Structured factual extract from connected native public-web results, not raw origin HTML.",
+    "rawBodyCaptured": false,
+    "originHttpStatus": null,
+    "accountCredentialsUsed": false,
+    "sharedRegistriesChanged": false
+  },
+  "sources": [
+    {
+      "id": "study-tesu-hr-guide-rechecked-2026-11-26",
+      "url": "https://study.com/college/thomas-edison-state-university/degrees/tesu-bachelor-of-science-in-business-administration-human-resources-organizational-management.html",
+      "publisher": "Study.com",
+      "evidenceType": "provider-published",
+      "observedRows": [
+        {"providerCourseCode": "Business 306", "receivingTitleClaim": "Human Resources Management", "claimedCredits": 3, "claimedReceivingLevel": "upper"},
+        {"providerCourseCode": "Business 323", "receivingTitleClaim": "Organizational Theory", "claimedCredits": 3, "claimedReceivingLevel": "upper"},
+        {"providerCourseCode": "Business 324", "receivingTitleClaim": "Managerial Comunication", "claimedCredits": 3, "claimedReceivingLevel": "upper"},
+        {"providerCourseCode": "Business 308", "receivingTitleClaim": "International Management", "claimedCredits": 3, "claimedReceivingLevel": "upper"},
+        {"providerCourseCode": "Sociology 305", "receivingTitleClaim": "Sociology of Work", "claimedCredits": 3, "claimedReceivingLevel": "upper"}
+      ],
+      "limit": "The provider table names TESU course titles but does not print receiving codes for these rows. Any suggested code below is joined to an independently named current university requirement; it is not an additional provider or university award fact."
+    },
+    {
+      "id": "study-tesu-marketing-guide-rechecked-2026-11-26",
+      "url": "https://study.com/college/thomas-edison-state-university/degrees/tesu-bachelor-of-science-in-business-administration-marketing.html",
+      "publisher": "Study.com",
+      "evidenceType": "provider-published",
+      "observedRows": [
+        {"providerCourseCode": "Marketing 308", "receivingTitleClaim": "Applied Marketing Practices", "claimedCredits": 3, "claimedReceivingLevel": "upper"},
+        {"providerCourseCode": "Marketing 301", "receivingTitleClaim": "Marketing Research", "claimedCredits": 3, "claimedReceivingLevel": "upper"},
+        {"providerCourseCode": "Business 324", "receivingTitleClaim": "Managerial Comunication", "claimedCredits": 3, "claimedReceivingLevel": "upper"}
+      ],
+      "limit": "Provider-published title-level receiving candidates only. No TESU course award or student approval is established."
+    },
+    {
+      "id": "ace-study-current-org-periods-2026-11-26",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=82099b28-9016-e811-810f-5065f38bf0e1",
+      "publisher": "American Council on Education",
+      "evidenceType": "official-original-recommendation-period",
+      "observedRows": [
+        {"aceId": "SDCM-0071", "providerCourseCode": "Business 306", "recommendationStart": "2026-06-01", "recommendationEnd": "2029-05-31", "recommendedCredits": 3},
+        {"aceId": "SDCM-0119", "providerCourseCode": "Business 323", "recommendationStart": "2026-06-01", "recommendationEnd": "2029-05-31", "recommendedCredits": 3}
+      ],
+      "limit": "The listing supplies source recommendation periods and links the exact exhibits below. It does not provide TESU receiving decisions."
+    },
+    {
+      "id": "ace-study-search-periods-2026-11-26",
+      "url": "https://www.acenet.edu/National-Guide/Pages/default.aspx?k=study.com+AND",
+      "publisher": "American Council on Education",
+      "evidenceType": "official-original-recommendation-period",
+      "retrieval": "Opened the actual ACE public search-results page and followed its links to the exact course exhibits; these facts are not drawn only from third-party search snippets.",
+      "observedRows": [
+        {"aceId": "SDCM-0151", "providerCourseCode": "Marketing 308", "recommendationStart": "2024-04-01", "recommendationEnd": "2027-03-31", "recommendedCredits": 3},
+        {"aceId": "SDCM-0140", "providerCourseCode": "Business 324", "recommendationStart": "2023-11-01", "recommendationEnd": "2027-03-31", "recommendedCredits": 3},
+        {"aceId": "SDCM-0186", "providerCourseCode": "Sociology 305", "recommendationStart": "2024-05-01", "recommendationEnd": "2027-05-31", "recommendedCredits": 3}
+      ],
+      "limit": "The public search results include expired and future records too. Only the exact dated source records above are described as covering the current review day. None is a TESU receiving award."
+    }
+  ],
+  "candidatesWithCurrentOriginalEvidence": [
+    {
+      "provider": "Study.com",
+      "providerCourseCode": "Business 306",
+      "aceId": "SDCM-0071",
+      "courseVersion": 5,
+      "aceExhibitCourseId": "bfff03d6-7b42-f111-88b5-000d3a3063b4",
+      "aceUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=bfff03d6-7b42-f111-88b5-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "minimumPassingScore": 70,
+      "recommendationStart": "2026-06-01",
+      "recommendationEnd": "2029-05-31",
+      "periodSourceId": "ace-study-current-org-periods-2026-11-26",
+      "providerMappingSourceId": "study-tesu-hr-guide-rechecked-2026-11-26",
+      "suggestedRequirementCode": "MAN-3310",
+      "suggestedRequirementTitle": "Human Resources Management",
+      "requirementCodeBasis": "Current university HR/Organizational Management degree names this title and code; retained primary degree review content/pathway-kits/tesu/business-expansion-review-2026-11-25.json.",
+      "receivingEvidence": "conditional-provider-published-title-match",
+      "universityReceivingAwardEstablished": false,
+      "individualApproval": false
+    },
+    {
+      "provider": "Study.com",
+      "providerCourseCode": "Business 323",
+      "aceId": "SDCM-0119",
+      "courseVersion": 4,
+      "aceExhibitCourseId": "600004d6-7b42-f111-88b5-000d3a3063b4",
+      "aceUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=600004d6-7b42-f111-88b5-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "minimumPassingScore": 70,
+      "recommendationStart": "2026-06-01",
+      "recommendationEnd": "2029-05-31",
+      "periodSourceId": "ace-study-current-org-periods-2026-11-26",
+      "providerMappingSourceId": "study-tesu-hr-guide-rechecked-2026-11-26",
+      "suggestedRequirementCode": "PSY-3600",
+      "suggestedRequirementTitle": "Organizational Theory",
+      "requirementCodeBasis": "Current university HR/Organizational Management degree names this title and code; retained primary degree review content/pathway-kits/tesu/business-expansion-review-2026-11-25.json.",
+      "receivingEvidence": "conditional-provider-published-title-match",
+      "universityReceivingAwardEstablished": false,
+      "individualApproval": false
+    },
+    {
+      "provider": "Study.com",
+      "providerCourseCode": "Marketing 308",
+      "aceId": "SDCM-0151",
+      "courseVersion": 3,
+      "aceExhibitCourseId": "37526116-c087-ee11-8179-00224805f697",
+      "aceUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=37526116-c087-ee11-8179-00224805f697&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "minimumPassingScore": 70,
+      "recommendationStart": "2024-04-01",
+      "recommendationEnd": "2027-03-31",
+      "periodSourceId": "ace-study-search-periods-2026-11-26",
+      "providerMappingSourceId": "study-tesu-marketing-guide-rechecked-2026-11-26",
+      "suggestedRequirementCode": "MKT-4790",
+      "suggestedRequirementTitle": "Applied Marketing Practices",
+      "requirementCodeBasis": "Current university Marketing degree names this title and code; retained primary degree review content/pathway-kits/tesu/business-expansion-review-2026-11-25.json.",
+      "receivingEvidence": "conditional-provider-published-title-match",
+      "universityReceivingAwardEstablished": false,
+      "individualApproval": false
+    },
+    {
+      "provider": "Study.com",
+      "providerCourseCode": "Business 324",
+      "aceId": "SDCM-0140",
+      "courseVersion": 3,
+      "aceExhibitCourseId": "9382778e-d10a-ee11-8f6e-00224805fa3a",
+      "aceUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=9382778e-d10a-ee11-8f6e-00224805fa3a&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "minimumPassingScore": 70,
+      "recommendationStart": "2023-11-01",
+      "recommendationEnd": "2027-03-31",
+      "periodSourceId": "ace-study-search-periods-2026-11-26",
+      "providerMappingSourceId": "study-tesu-hr-guide-rechecked-2026-11-26",
+      "suggestedRequirementCode": "MAN-3730",
+      "suggestedRequirementTitle": "Managerial Communication",
+      "requirementCodeBasis": "Current shared university Professional Business Requirements name MAN-3730. The provider table spells its receiving title Managerial Comunication; that spelling is retained in the observed row rather than silently becoming a new university fact.",
+      "receivingEvidence": "conditional-provider-published-title-match",
+      "universityReceivingAwardEstablished": false,
+      "individualApproval": false
+    }
+  ],
+  "stillIncomplete": [
+    {
+      "providerCourseCode": "Business 308",
+      "aceId": "SDCM-0054",
+      "courseVersion": 6,
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "minimumPassingScore": 70,
+      "aceUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5b5554f0-7ff1-f011-8406-6045bd02b4cc&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "providerMappingUrl": "https://study.com/college/thomas-edison-state-university/degrees/tesu-man-3720-international-management-overview-course-equivalency-guide.html",
+      "providerClaimedReceivingCode": "MAN-3720",
+      "providerClaimedReceivingCredits": 3,
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reason": "Exact original recommendation window remains unrecovered. The current provider guide is not a TESU receiving award."
+    },
+    {
+      "providerCourseCode": "Marketing 301",
+      "aceId": "SDCM-0098",
+      "observedCourseVersion": 5,
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": true,
+      "minimumPassingScore": 70,
+      "aceUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=284471d7-546a-ef11-bfe3-00224808a070&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "providerMappingSourceId": "study-tesu-marketing-guide-rechecked-2026-11-26",
+      "suggestedRequirementCode": "MKT-4110",
+      "recommendationStart": null,
+      "recommendationEnd": null,
+      "reason": "The inspected version-5 exhibit establishes source identity/quantity/level but the exact original recommendation window was not recovered; do not describe it as a verified current dated version or a TESU receiving award."
+    }
+  ],
+  "sourceVersusReceivingConflict": {
+    "providerCourseCode": "Sociology 305",
+    "aceId": "SDCM-0186",
+    "courseVersion": 3,
+    "aceUrl": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=0b4839f0-42ba-ee11-a569-00224805fa3a&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+    "sourceCredits": 3,
+    "sourceCreditSystem": "semester",
+    "sourceUpper": false,
+    "providerClaimedReceivingCredits": 3,
+    "providerClaimedReceivingUpper": true,
+    "suggestedRequirementCode": "SOC-3620",
+    "recommendationStart": "2024-05-01",
+    "recommendationEnd": "2027-05-31",
+    "periodSourceId": "ace-study-search-periods-2026-11-26",
+    "providerMappingSourceId": "study-tesu-hr-guide-rechecked-2026-11-26",
+    "decision": "Hold. Preserve the distinct claims. Do not count source lower-division credit as a confirmed upper-division TESU award, or use it to satisfy a source-credit upper-level rule. No university receiving award was recovered."
+  },
+  "conditionsForAnyLaterIntegration": [
+    "Receiving candidates remain conditional, even when their original ACE identity, quantity, level and period are fully documented.",
+    "Use a current primary university program ledger to establish each exact placement. A provider's guide for another degree is not sufficient to infer an unrestricted area-of-study placement.",
+    "Provider passing score70 is an original recommendation fact. Keep TESU minimum grade, source completion record, program currency, transcript channel and any individual evaluation separate.",
+    "Do not copy the guides' one-credit Finance101 or four-credit Statistics101 claims into three-credit university requirements without resolving source and receiving quantities.",
+    "Do not sum candidates across alternatives as a feasible transfer total. Re-run the actual allocation solver in a later authorized integration and retain all caps, residency and duplicate rules.",
+    "The current release intentionally adds no new conditional Study choices from this held packet."
+  ]
+}

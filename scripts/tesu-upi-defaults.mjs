@@ -5,7 +5,10 @@ export const tesuUPIModelIds=Object.freeze([
   'curriculum-tesu-bsba-finance',
   'curriculum-tesu-ba-english',
   'curriculum-tesu-ba-psychology',
-  'curriculum-tesu-ba-liberal-studies'
+  'curriculum-tesu-ba-liberal-studies',
+  'curriculum-tesu-bsba-human-resources-organizational-management',
+  'curriculum-tesu-bsba-marketing',
+  'curriculum-tesu-bs-general-management'
 ]);
 export function applyTESUUPIProviderDefaults(input){
   const model=structuredClone(input);

@@ -14,7 +14,7 @@ const dir=join(kitsRoot,'tesu'),kit=await loadKit(dir),{doc,documents}=compileKi
 const registry=await readJSON(resolve(root,'dist/data/curriculum-registry.json'));
 const guards=(await import('./content/pathway-kits/tesu/guards.mjs')).checks,guard=name=>guards.find(check=>check.name===name);
 
-test('compile(kit) reproduces every TESU registry model exactly: five models, full deep equality',async()=>{
+test('compile(kit) preserves all five originally migrated TESU registry models with full deep equality',async()=>{
   let compared=0;
   for(const name of files){
     const compiled=await readJSON(resolve(root,'dist/data/curricula/'+name+'.json'));
@@ -31,11 +31,11 @@ test('compile(kit) reproduces every TESU registry model exactly: five models, fu
   assert.equal(result.status,0,result.stderr||result.stdout);
 });
 
-test('the TESU kit is the source of truth: it verifies, passes its guards and publishes its five documents exactly',async()=>{
+test('the TESU kit verifies and publishes the five original plus three newly authored degree documents exactly',async()=>{
   const result=await verifyKit(kit,{asOf:'2026-11-26'});
   assert.deepEqual(result.errors,[]);
   assert.equal(await runGuards(kit,doc),guards.length);assert.ok(guards.length>=9);
-  assert.deepEqual(documents.map(d=>d.path),files.map(name=>'content/curricula/'+name+'.json'));
+  assert.deepEqual(documents.map(d=>d.path),[...files.map(name=>'content/curricula/'+name+'.json'),'content/curricula/tesu-human-resources-organizational-management.json','content/curricula/tesu-marketing.json','content/curricula/tesu-bs-general-management.json']);
   for(const {path,doc:published}of documents){
     assert.equal(published.compiledBy,'pathway-factory',path);
     assert.equal(published.routes.length,1,path+' declares its degree route');
@@ -52,6 +52,11 @@ test('the migration tool still decomposes the current registry output into the c
   // since gained authored, source-grounded equivalency rows, so a fresh decomposition is compared on its ledgers and models.
   const fresh=await migrate();
   assert.deepEqual(parity(fresh.documents.flatMap(d=>d.models),doc.models),[]);
+  const migratedSlugs=new Set(fresh.programs.map(program=>program.slug)),roundtrip={...kit,school:fresh.school,equivalencies:fresh.equivalencies,providers:fresh.providers,programs:[...fresh.programs,...kit.programs.filter(program=>!migratedSlugs.has(program.slug))]};
+  const rebuilt=compileKit(roundtrip).doc;
+  assert.equal(rebuilt.models.length,doc.models.length);
+  assert.deepEqual(parity(doc.models,rebuilt.models),[],'Migration also preserves all three separately authored models, exact course evidence and saved option IDs');
+  assert.equal(await runGuards(roundtrip,rebuilt),guards.length);
   for(const program of fresh.programs){
     const committed=kit.programs.find(p=>p.slug===program.slug),strip=p=>p.requirements.map(({optionRows,...r})=>r);
     assert.deepEqual(canonical(strip(program)),canonical(strip(committed)),program.slug+' ledger');

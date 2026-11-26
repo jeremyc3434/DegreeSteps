@@ -5,6 +5,8 @@ import {createHash} from 'node:crypto';
 import {validateProgramRequirementPacket,assembleProgramRequirements,loadProgramRequirementReviews} from './scripts/program-requirements-metadata.mjs';
 import {buildProgramFit} from './scripts/program-fit-metadata.mjs';
 import {buildIndex} from './scripts/build-plan-library-index.mjs';
+import {validateTESUBusinessMetadataModel} from './scripts/tesu-business-metadata.mjs';
+import Catalog from './dist/program-catalog.js';
 
 const clone=value=>structuredClone(value);
 const read=path=>JSON.parse(readFileSync(new URL(path,import.meta.url),'utf8'));
@@ -142,22 +144,26 @@ test('MAOL current-map requirements bind captured graduate evidence and reject c
   assert.equal(JSON.stringify({reviewed,actual}),before);
 });
 
-test('the research loader and actual published program bindings remain source-bound and read-only',async()=>{
+test('the research loader keeps exact registered metadata separate from public plan eligibility and remains read-only',async()=>{
   const root=new URL('./',import.meta.url).pathname,packets=await loadProgramRequirementReviews(root);
   assert(Array.isArray(packets)&&packets.length>0);
   assert(packets.some(packet=>packet.reviews.some(review=>review.id==='umpi-maol-graduate-requirements-2026-11-25')));
   packets.forEach(packet=>assert.doesNotThrow(()=>validateProgramRequirementPacket(packet)));
-  const registry=read('dist/data/curriculum-registry.json'),publication=read('dist/data/publication-index.json');
+  const registry=read('dist/data/curriculum-registry.json'),publication=read('dist/data/publication-index.json'),quality=read('dist/data/pathway-quality-report.json'),researchOnlyId='curriculum-tesu-bsba-marketing';
   const published=new Set(publication.plans.map(plan=>plan.modelId)),files=new Map(),models=new Map();
-  for(const entry of registry.models.filter(entry=>published.has(entry.id))){
+  for(const entry of registry.models.filter(entry=>published.has(entry.id)||entry.id===researchOnlyId)){
     if(!files.has(entry.path))files.set(entry.path,readFileSync(new URL('dist/'+entry.path,import.meta.url)));
     const document=JSON.parse(files.get(entry.path)),actual=(Array.isArray(document)?document:document.models||[document]).find(model=>model.id===entry.id);
     assert(actual,entry.id);models.set(entry.id,actual);
   }
+  const held=models.get(researchOnlyId);assert(held,'The one explicit research-only review has an actual registered curriculum, never a directory shell');assert.doesNotThrow(()=>Catalog.validateModel(held,registry.models.find(entry=>entry.id===researchOnlyId)));assert.equal(held.school,'Thomas Edison State University');assert.equal(held.level,'bachelor');assert.equal(held.format,'Online');assert.equal(held.creditSystem,'semester');assert.equal(held.totalCredits,120);assert.equal(held.requirements.reduce((sum,row)=>sum+row.credits,0),120);await validateTESUBusinessMetadataModel(held);
+  const heldReport=quality.programs.find(program=>program.modelId===researchOnlyId);assert.equal(heldReport.research.completeRequirementLedger,true);assert.equal(heldReport.publication.ready,false);assert(heldReport.findings.some(finding=>finding.blocking&&finding.code==='unresolved-research'&&/MAR-3060/.test(finding.message)),'The specific formal prerequisite remains a blocking academic issue');
+  const catalog=Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(read('dist/data/pathways.json'),read('dist/data/program-catalog.json')),registry),publication,registry);
+  assert(!published.has(researchOnlyId));assert(!Catalog.planLibraryRoutes(catalog).some(route=>route.modelId===researchOnlyId),'Valid contextual metadata does not put the held degree in student search');assert(!Object.values(read('dist/data/plan-course-index.json').plans).some(plan=>plan.modelId===researchOnlyId),'A held degree cannot appear in public course-matching recommendations');
   const before=JSON.stringify({registry,publication,packets,models:[...models]}),fits={};let factCount=0;
   for(const packet of packets)for(const review of packet.reviews){
     for(const id of review.modelIds){
-      assert(published.has(id),id+' is a published program rather than an unreviewed directory listing');
+      if(!published.has(id))assert.equal(id,researchOnlyId,'Only the independently verified, explicitly held Marketing curriculum may carry research-only metadata');
       const model=models.get(id);assert.equal(edition(model.catalogYear||model.catalog),edition(review.catalogIdentity?.label||review.catalogYear));
       assert.equal(/^online$/i.test(model.format)?'online':/^(residential|campus|on campus)$/i.test(model.format)?'campus':null,review.modality);
       const binding=review.programBindings.find(binding=>binding.modelId===id);assert(binding&&model.sources.some(source=>source.url===binding.degreeUrl),id+' has its exact degree source');
@@ -168,12 +174,15 @@ test('the research loader and actual published program bindings remain source-bo
     const facts=assembleProgramRequirements(model,packets);assert(facts.length>0,model.id+' has researched facts');factCount+=facts.length;
     assert(!facts.some(fact=>fact.eligible===true||fact.admitted===true||fact.awardsCredit===true));
     const fit=buildProgramFit({model,requirementReviews:packets});assert.deepEqual(fit.programRequirements,facts,'The shared fit metadata emits the reviewed requirements');
-    for(const routeId of publication.plans.find(plan=>plan.modelId===model.id).routeIds)fits[routeId]=fit;
+    const routeIds=published.has(model.id)?publication.plans.find(plan=>plan.modelId===model.id).routeIds:registry.models.find(entry=>entry.id===researchOnlyId).routeIds;
+    for(const routeId of routeIds)fits[routeId]=fit;
   }
   assert(factCount>=models.size);
-  const index=buildIndex({registry,quality:read('dist/data/pathway-quality-report.json'),fits});
+  const index=buildIndex({registry,quality,fits});
   for(const plan of publication.plans)for(const routeId of plan.routeIds)assert.deepEqual(index.plans[routeId].fit.programRequirements,fits[routeId].programRequirements,'The public discovery index carries the exact reviewed facts');
   assert.deepEqual([...new Set(Object.values(index.plans).filter(plan=>plan.published).map(plan=>plan.modelId))].sort(),[...published].sort(),'Requirements annotations cannot expand publication eligibility');
+  const heldEntries=Object.values(index.plans).filter(plan=>plan.modelId===researchOnlyId);assert.equal(heldEntries.length,registry.models.find(model=>model.id===researchOnlyId).routeIds.length,'The actual research routes and contextual facts remain available without becoming public recommendations');
+  for(const entry of heldEntries){assert.equal(entry.published,false);assert.equal(entry.tier,'confirmation');assert.deepEqual(entry.fit.programRequirements,fits[registry.models.find(model=>model.id===researchOnlyId).routeIds[0]].programRequirements);}
   assert.equal(JSON.stringify({registry,publication,packets,models:[...models]}),before);
   for(const [path,bytes]of files){const current=readFileSync(new URL('dist/'+path,import.meta.url));assert.equal(createHash('sha256').update(current).digest('hex'),createHash('sha256').update(bytes).digest('hex'));}
   assert.deepEqual(read('dist/data/publication-index.json'),publication,'Research annotations cannot promote any program');

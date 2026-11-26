@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {loadKit,root,sourceIndex} from './scripts/pathway-factory/lib.mjs';
 import {compileKit,runGuards} from './scripts/pathway-factory/compile.mjs';
 import {applyTESUCourseEligibility,buildCourseResolution,groundedSource,reviewedRows} from './scripts/tesu-course-eligibility.mjs';
+import {assertTESUPlacementInventory} from './test-support/tesu-placement-inventory.mjs';
 const read=async path=>JSON.parse(await readFile(root+'/'+path,'utf8'));
 const packet=await read('content/pathway-kits/tesu/course-specific-eligibility-review-2026-11-26.json');
 const clone=structuredClone,normalize=value=>String(value).replace(/[\u2018\u2019]/g,"'").replace(/\s+/g,' ').trim();
@@ -22,8 +23,8 @@ test('35 exact course eligibility decisions retain original source dates, real h
  const review=await read('content/pathway-kits/tesu/provider-review-2026-11-25.json');assert.equal(review.checkedOn,'2026-11-25');assert(review.provisional.includes('Sophia'));assert(!review.approved.includes('Sophia'));
 });
 
-test('compiled five-program scope resolves course awards while unrelated providers and elective placements stay independently reviewed',async()=>{
- const kit=await loadKit(root+'/content/pathway-kits/tesu'),doc=compileKit(kit).doc;assert.equal(doc.models.length,5);assert.equal(await runGuards(kit,doc),15);
+test('compiled eight-program scope resolves course awards while preserving the original five and independently reviewed candidates',async()=>{
+ const kit=await loadKit(root+'/content/pathway-kits/tesu'),doc=compileKit(kit).doc;assert.equal(doc.models.length,8);assertTESUPlacementInventory(doc.models);assert.equal(await runGuards(kit,doc),15);
  let resolved=0,heldUPI=0,heldSophia=0;
  for(const model of doc.models)for(const r of model.requirements)for(const o of r.options){
   if(o.courseEligibilityResolution){resolved++;assert.equal(o.eligibilityReview.providerReviewPending,true);assert.equal(o.eligibilityReview.fullyApproved,false);assert.equal(o.mappingEvidence.individualApproval,false);assert.equal(o.courseEligibilityResolution.targetCatalog,model.catalog);assert.equal(o.sourceCreditStatus,'verified');if(o.evidence==='conditional')assert(r.freeElective||r.liberalArtsAllocation);}

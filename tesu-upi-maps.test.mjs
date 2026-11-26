@@ -12,6 +12,8 @@ import {applyTESUUPIProviderDefaults} from './scripts/tesu-upi-defaults.mjs';
 const require=createRequire(import.meta.url),Planner=require('./dist/planner.js'),Guide=require('./dist/guide-engine.js');
 const legacy=JSON.parse(await readFile('dist/data/tesu.json','utf8')),kit=await loadKit(kitsRoot+'/tesu'),{doc}=compileKit(kit),copy=x=>structuredClone(x);
 const models=[...doc.models,applyTESUUPIReviewedMaps(legacy)],pairs=supportedUPIMappings();
+const originalModelIds=['tesu-general-management','curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance','curriculum-tesu-ba-english','curriculum-tesu-ba-psychology','curriculum-tesu-ba-liberal-studies'];
+const newModelIds=['curriculum-tesu-bs-general-management','curriculum-tesu-bsba-human-resources-organizational-management','curriculum-tesu-bsba-marketing'];
 
 test('UPI legal issuer aliases stay consistent across library, import, saved identity and degree matching',()=>{
  const Library=require('./dist/course-library-engine.js'),Import=require('./dist/record-import-engine.js'),Sheet=require('./dist/sheet-state.js');
@@ -33,8 +35,8 @@ test('UPI TESU table is hash-bound provider evidence, distinct from exact curren
  const environment=upiTESUReview.mappings.find(m=>/Environmental Science/.test(m.providerLabel));assert(environment);assert.equal(pairs.some(p=>p.mapping.id===environment.id),false,'One original ACE credit cannot silently become three receiving credits from a provider assertion.');
 });
 
-test('six TESU ledgers gain usable conditional UPI choices with source, cap and placement evidence',async()=>{
- assert.equal(models.length,6);await runGuards(kit,doc);
+test('the original six plus three new TESU ledgers retain conditional UPI choices with source, cap and placement evidence',async()=>{
+ assert.equal(models.length,9);assert.deepEqual(models.map(model=>model.id).sort(),[...originalModelIds,...newModelIds].sort());await runGuards(kit,doc);
  for(const model of models){
   const options=model.requirements.flatMap(row=>row.options.filter(option=>option.provider==='UPI Study').map(option=>({row,option})));
   assert(options.length>0,model.id);assert(model.defaultProviders.includes('UPI Study'));

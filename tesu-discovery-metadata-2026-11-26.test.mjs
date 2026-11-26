@@ -9,6 +9,8 @@ import {loadKit,kitsRoot} from './scripts/pathway-factory/lib.mjs';
 import {compileProgram} from './scripts/pathway-factory/compile.mjs';
 import {validateProgramRequirementPacket,assembleProgramRequirements,loadProgramRequirementReviews} from './scripts/program-requirements-metadata.mjs';
 import {buildProgramFit} from './scripts/program-fit-metadata.mjs';
+import {validateConnectedWebCapture} from './scripts/pathway-factory/connected-web.mjs';
+import {TESU_BUSINESS_METADATA_TARGETS} from './scripts/tesu-business-metadata.mjs';
 import Catalog from './dist/program-catalog.js';
 import Journey from './dist/journey-engine.js';
 import Savings from './dist/savings-engine.js';
@@ -23,19 +25,23 @@ const label='Current undergraduate catalog · checked November 18, 2026';
 const ids=['curriculum-tesu-ba-english','curriculum-tesu-ba-liberal-studies','curriculum-tesu-ba-psychology','curriculum-tesu-bsba-accounting','curriculum-tesu-bsba-finance'];
 const models=ids.map(id=>{const program=kit.programs.find(program=>program.modelId===id);assert(program,id);return compileProgram(kit,program);});
 const clone=value=>structuredClone(value);
+const businessIds=TESU_BUSINESS_METADATA_TARGETS.map(target=>target.modelId),originalSourceIds=new Set(['tesu-ba-english-placement-2026-11-26','tesu-ba-liberal-studies-placement-2026-11-26','tesu-ba-psychology-placement-2026-11-26','tesu-bsba-accounting-placement-2026-11-26','tesu-bsba-finance-placement-2026-11-26','tesu-current-course-engagement-20261126','tesu-standard-online-assessments-20261126','tesu-accelerated-course-option-20261126']);
 
 async function verifyCapture(source){
  const body=await readFile(new URL(source.capture,import.meta.url),'utf8');
  const metadata=await read('./'+source.capture.replace(/\.txt$/,'.json'));
  assert.equal(createHash('sha256').update(body).digest('hex'),source.sha256,source.id+' body hash');
- assert.equal(metadata.sha256,source.sha256);assert.equal(metadata.url,source.url);assert.equal(metadata.status,200);
- assert.equal(metadata.fetchedAt.slice(0,10),'2026-11-26');assert.equal(source.checkedOn,'2026-11-26');assert.equal(source.kind,'university');
- assert(body.includes(source.quote),source.id+' literal primary passage');
+ assert.equal(metadata.sha256,source.sha256);assert.equal(metadata.url,source.url);assert.equal(source.checkedOn,'2026-11-26');assert.equal(source.kind,'university');
+ if(originalSourceIds.has(source.id)||source.id==='tesu-standard-online-structure-20261126'){assert.equal(metadata.status,200);assert.equal(metadata.fetchedAt.slice(0,10),'2026-11-26','The original source and standard-online policy reviews keep their exact retrieval dates');}
+ else{assert(packet.reviews.some(review=>review.modelIds.some(id=>businessIds.includes(id))&&review.catalogIdentity?.sourceId===source.id),'Only an exact new business-degree identity can extend the source scope');assert(metadata.fetchedAt.slice(0,10)<=source.checkedOn,'A new identity review preserves the actual retained retrieval date');
+  if(metadata.captureFormat==='connected-web-rendered-extract'){assert(source.toolResponseReceipt);assert.deepEqual(source.toolResponseReceipt,metadata.toolResponseReceipt);await validateConnectedWebCapture({...metadata,text:body});}else assert.equal(metadata.status,200);
+ }
+ const normalized=value=>String(value).replace(/\s+/g,' ').trim();assert(normalized(body).includes(normalized(source.quote)),source.id+' literal primary passage');
  return body;
 }
 
-test('five TESU current-catalog identities bind a genuine fresh rereview without rewriting their historical edition label',async()=>{
- validateProgramRequirementPacket(packet);assert.deepEqual(packet.reviews.flatMap(review=>review.modelIds).sort(),[...ids].sort());
+test('five prior TESU identities retain their exact rereview while only the three newly sourced business degrees extend discovery',async()=>{
+ validateProgramRequirementPacket(packet);assert.deepEqual(packet.reviews.flatMap(review=>review.modelIds).sort(),[...ids,...businessIds].sort());assert.equal(packet.sources.length,originalSourceIds.size+businessIds.length);for(const id of originalSourceIds)assert(packet.sources.some(source=>source.id===id));
  for(const model of models){
   const identity=model.catalogIdentity,review=packet.reviews.find(review=>review.modelIds.includes(model.id));
   assert.equal(model.catalog,label);assert.equal(identity.label,label);assert.equal(identity.checkedOn,'2026-11-26');assert.equal(identity.priorCheckedOn,'2026-11-18');

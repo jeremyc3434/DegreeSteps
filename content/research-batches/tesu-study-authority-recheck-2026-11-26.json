@@ -1,0 +1,252 @@
+{
+  "kind": "tesu-study-receiving-authority-and-blanket-policy-recheck",
+  "version": 1,
+  "id": "tesu-study-authority-recheck-2026-11-26",
+  "checkedOn": "2026-11-26",
+  "reviewedAt": "2026-11-26T04:40:24Z",
+  "school": "Thomas Edison State University",
+  "purpose": "Search for current university-authoritative Study.com receiving awards, university endorsement of a specific provider equivalency guide, or an explicit policy awarding the original recommended quantity and level as elective/category credit.",
+  "method": {
+    "access": "Public web search/open/click through the connected search service, plus read-only inspection of existing local source captures and conditional options.",
+    "newCaptureFormat": "Structured review of native rendered public-web extracts; not a raw origin response or a full article capture.",
+    "rawBodyCaptured": false,
+    "originHttpStatus": null,
+    "accountCredentialsUsed": false,
+    "universityContactMade": false,
+    "canonicalOrGeneratedModelsChanged": false
+  },
+  "outcome": {
+    "newUniversityAuthoritativeStudyReceivingAwardsEstablished": 0,
+    "newBlanketPolicyDrivenElectiveAwardsEstablished": 0,
+    "existingConditionalOptionsPromoted": 0,
+    "publicationPromotionAllowed": false,
+    "summary": "No additional authoritative Study.com receiving award was established by the public sources reviewed. Keep existing Study.com receiving candidates conditional. This is an evidence limit, not a claim that TESU rejects Study.com or that no private agreement exists."
+  },
+  "sources": [
+    {
+      "id": "tesu-study-approved-provider-recheck-2026-11-26",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php",
+      "publisher": "Thomas Edison State University",
+      "role": "provider-policy",
+      "checkedOn": "2026-11-26",
+      "quote": "The following entities have been Approved as educational providers by Thomas Edison State University:",
+      "facts": {
+        "studyComHeading": "Approved",
+        "studyComOutboundLink": "https://study.com/",
+        "specificTESUStudyEquivalencyGuideLinked": false
+      },
+      "limit": "The linked Study.com homepage establishes provider identity/status. It is not an endorsed, dated TESU receiving-course table."
+    },
+    {
+      "id": "tesu-provider-evaluation-separation-recheck-2026-11-26",
+      "url": "https://www.tesu.edu/admissions/methods-of-earning-credit/educational-provider-review.php",
+      "publisher": "Thomas Edison State University",
+      "role": "provider-policy-versus-course-equivalency",
+      "checkedOn": "2026-11-26",
+      "quote": "Being an “Approved Provider” does not guarantee 100% acceptance of courses or learning experiences by TESU.",
+      "finding": "The published process requires an approved provider to submit syllabi for a separate TESU course-equivalency evaluation.",
+      "limit": "Approval of Study.com as a provider cannot replace evidence of a particular receiving award."
+    },
+    {
+      "id": "tesu-ace-nccrs-policy-recheck-2026-11-26",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/earning-credit-for-professional-training/american-council-on-education-ace-and-national-college-credit-recommendation-service-nccrs",
+      "publisher": "Thomas Edison State University current Undergraduate Catalog",
+      "role": "ace-nccrs-acceptance-policy",
+      "checkedOn": "2026-11-26",
+      "quote": "the University reserves the right to determine which recommendations it will accept.",
+      "facts": {
+        "generalAcceptanceStated": true,
+        "bachelorSingleSourceLimit": 90,
+        "associateSingleSourceLimit": 45,
+        "programApplicationReservedByUniversity": true,
+        "studyComOfficialProviderTranscriptRequired": true
+      },
+      "limit": "The policy neither guarantees every ACE/NCCRS course nor automatically assigns its original credit quantity, original level, an elective award, a GE category or a named receiving course."
+    },
+    {
+      "id": "tesu-transfer-and-level-policy-recheck-2026-11-26",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/methods-of-learning-and-earning-credit/transfer-credit",
+      "publisher": "Thomas Edison State University current Undergraduate Catalog",
+      "role": "transfer-policy-and-scope-boundaries",
+      "checkedOn": "2026-11-26",
+      "quote": "reserves the right to determine the appropriate equivalency and application to a degree program.",
+      "facts": {
+        "combinedACENCCRSBachelorCap": 90,
+        "combinedACENCCRSAssociateCap": 45,
+        "duplicateLearningAppliedOnce": true,
+        "same1000Or2000Versus3000Or4000LevelRuleScope": "Institutionally accredited coursework approved under the TESU Transfer Credit Policy and Guidelines.",
+        "sameLevelRuleExplicitlyAppliesToACEOrNCCRS": false,
+        "articulationAgreementsDetermineReceivingEquivalencies": true
+      },
+      "limit": "The same-level rule expressly concerns institutionally accredited coursework. Do not extend it to Study.com ACE recommendations or infer upper-level TESU credit from an ACE upper-division designation."
+    },
+    {
+      "id": "tesu-business-elective-policy-recheck-2026-11-26",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bachelor-of-science-in-business-administration",
+      "publisher": "Thomas Edison State University current Undergraduate Catalog",
+      "role": "business-degree-free-elective-and-general-education-policy",
+      "checkedOn": "2026-11-26",
+      "quote": "The elective category may be satisfied by almost any college credits. Academic policies should be reviewed for limitation of credits.",
+      "finding": "The page permits broad elective choice and says featured GE courses are examples with other university-approved alternatives. It retains the academic-policy restrictions and links to the GE course-category lists.",
+      "limit": "This describes degree placement for accepted credit. It does not independently award unreviewed Study.com credit, guarantee its source quantity/level, or turn a discipline label into a TESU GE category decision."
+    },
+    {
+      "id": "tesu-study-transcript-scope-recheck-2026-11-26",
+      "url": "https://www.tesu.edu/student-resources/transfer-credits/send-transcripts.php",
+      "publisher": "Thomas Edison State University",
+      "role": "official-document-submission",
+      "checkedOn": "2026-11-26",
+      "quote": "For Study.com, we will not accept the credit from the ACE transcript, only the Study.com transcript is acceptable for credit review.",
+      "finding": "TESU documents a direct transcript agreement with Study.com and StraighterLine.",
+      "limit": "The agreement concerns the official transcript channel. It does not publish a course-equivalency matrix."
+    },
+    {
+      "id": "tesu-ace-institution-inventory-recheck-2026-11-26",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Institution.aspx?iid=df3e7298-e35d-f111-a826-000d3a306e31",
+      "publisher": "American Council on Education, institution-submitted receiving decisions",
+      "role": "receiving-institution-equivalency-inventory",
+      "checkedOn": "2026-11-26",
+      "existingFullInventoryCapture": {
+        "capture": "content/source-captures/ab104478a29373ac.txt",
+        "metadata": "content/source-captures/ab104478a29373ac.json",
+        "sha256": "ab104478a29373ac80992db4a3163fa39ceff996be82a0a9967188183ccfb0b1",
+        "fetchedAt": "2026-11-26T01:10:10.407Z",
+        "catalogLabel": "2026-2027 - Thomas Edison State University v2",
+        "retrieval": "Existing ordinary anonymous public-form page-size-100 capture; no new POST or raw origin capture performed by this review.",
+        "receivingRows": 36,
+        "distinctSophiaExhibitsCountedInRetainedText": 36,
+        "studyComOrSDCMMentionsCountedInRetainedText": 0
+      },
+      "newObservation": "The native web connector again shows the current first ten institutional receiving rows, all SOPH exhibits, and four pages. This review does not treat a first page as a newly fetched full inventory.",
+      "limit": "Absence from this public inventory does not prove that no private TESU/Study.com articulation agreement exists. No Study.com receiving decision was established here."
+    },
+    {
+      "id": "tesu-transfer-agreement-index-recheck-2026-11-26",
+      "url": "https://www.tesu.edu/admissions/transfer-pathways/index.php",
+      "publisher": "Thomas Edison State University",
+      "role": "published-transfer-pathway-index",
+      "checkedOn": "2026-11-26",
+      "finding": "The visible current transfer-pathway index contains named community-college partnerships and does not link to a Study.com equivalency agreement.",
+      "limit": "A limited public index is not evidence that an unlisted private agreement does not exist."
+    }
+  ],
+  "currentACEExhibitsInspected": [
+    {
+      "aceId": "SDCM-0071",
+      "courseVersion": 5,
+      "providerCourseCode": "Business 306",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=bfff03d6-7b42-f111-88b5-000d3a3063b4&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceLevel": "upper-division",
+      "minimumPassingScore": 70,
+      "recommendationStart": "2026-06-01",
+      "recommendationEnd": "2029-05-31",
+      "periodSourceUrl": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=82099b28-9016-e811-810f-5065f38bf0e1",
+      "existingProviderClaimedReceivingCode": "MAN-3310",
+      "universityReceivingCodeEstablishedByThisReview": null,
+      "equivalenciesObservation": "Rendered Equivalencies section has no receiving institution/course rows.",
+      "recommendationPeriodObservation": "The current organization listing explicitly prints the applicable period for SDCM-0071 and links this exact version-5 exhibit. This recheck independently reconfirms the dates already retained elsewhere."
+    },
+    {
+      "aceId": "SDCM-0054",
+      "courseVersion": 6,
+      "providerCourseCode": "Business 308",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=5b5554f0-7ff1-f011-8406-6045bd02b4cc&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceLevel": "upper-division",
+      "minimumPassingScore": 70,
+      "existingProviderClaimedReceivingCode": "MAN-3720",
+      "universityReceivingCodeEstablishedByThisReview": null,
+      "equivalenciesObservation": "Rendered Equivalencies section has no receiving institution/course rows.",
+      "recommendationPeriodObservation": "Rendered page exposes a selector without its option text; the missing exact original recommendation period remains unresolved."
+    },
+    {
+      "aceId": "SDCM-0123",
+      "courseVersion": 4,
+      "providerCourseCode": "Business 303",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=6f34174a-096f-f111-ab0d-000d3a306e31&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceLevel": "upper-division",
+      "sourceSubject": "Management Information Systems",
+      "minimumPassingScore": 70,
+      "recommendationStart": "2026-09-01",
+      "recommendationEnd": "2029-08-31",
+      "periodSourceUrl": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=82099b28-9016-e811-810f-5065f38bf0e1",
+      "universityReceivingCodeEstablishedByThisReview": null,
+      "equivalenciesObservation": "Rendered Equivalencies section has no receiving institution/course rows."
+    },
+    {
+      "aceId": "SDCM-0150",
+      "courseVersion": 4,
+      "providerCourseCode": "Marketing 302",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=4f0322aa-f4a6-f111-b8de-002248082a42&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceLevel": "upper-division",
+      "sourceSubject": "Consumer Behavior",
+      "minimumPassingScore": 70,
+      "recommendationStart": "2026-11-01",
+      "recommendationEnd": "2029-10-31",
+      "periodSourceUrl": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=82099b28-9016-e811-810f-5065f38bf0e1",
+      "universityReceivingCodeEstablishedByThisReview": null,
+      "equivalenciesObservation": "Rendered Equivalencies section has no receiving institution/course rows."
+    },
+    {
+      "aceId": "SDCM-0153",
+      "courseVersion": 4,
+      "providerCourseCode": "Finance 301",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=b5331fb0-f4a6-f111-b8de-002248082a42&oid=82099b28-9016-e811-810f-5065f38bf0e1&org=Study.com%2C+LLC",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceLevel": "upper-division",
+      "sourceSubject": "Corporate Finance",
+      "minimumPassingScore": 70,
+      "recommendationStart": "2026-11-01",
+      "recommendationEnd": "2029-10-31",
+      "periodSourceUrl": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=82099b28-9016-e811-810f-5065f38bf0e1",
+      "universityReceivingCodeEstablishedByThisReview": null,
+      "equivalenciesObservation": "Rendered Equivalencies section has no receiving institution/course rows."
+    }
+  ],
+  "providerPublishedGuideCheck": {
+    "schoolLandingUrl": "https://study.com/college/school/thomas-edison-state-university.html",
+    "generalManagementGuideUrl": "https://study.com/college/thomas-edison-state-university/degrees/tesu-bachelor-of-science-in-general-management.html",
+    "providerSupportUrl": "https://study.com/support/solutions/articles/11000134119-do-study-com-courses-transfer-to-thomas-edison-state-university-",
+    "publisher": "Study.com",
+    "supportPageUpdated": "2026-03-19",
+    "supportPageQuote": "Final transfer decisions are made by TESU.",
+    "receivingAuthority": "Provider-published candidates only; no university-submitted receiving decisions were recovered.",
+    "generalManagementFinance101ClaimedCredits": 1,
+    "currentUniversityFIN3010RequirementCredits": 3,
+    "limit": "The existing source-versus-receiving quantity conflict remains. Do not copy a provider table wholesale or silently fill the two-credit deficit. The provider's general-management page also states a post-enrollment transfer restriction not established by the reviewed university sources; this audit does not adopt that assertion."
+  },
+  "legacyLinks": [
+    {
+      "url": "https://www.tesu.edu/studycom/",
+      "observedOutcome": "The connected public web tool reports404."
+    },
+    {
+      "url": "https://www.tesu.edu/studycom/ba-degree-liberal-studies",
+      "observedOutcome": "The connected public web tool reports inaccessible, without an origin status."
+    },
+    {
+      "url": "https://www.tesu.edu/studycom/bsba-degree-general-management",
+      "observedOutcome": "The connected public web tool reports inaccessible, without an origin status."
+    }
+  ],
+  "searchCoverage": [
+    "University-domain searches for Study.com plus equivalency, equivalencies, course guide, transfer guide, articulation, BSBA, Working Scholars, studycom and PDF variants.",
+    "ACE searches for TESU plus Study.com or SDCM identifiers, the current institution inventory, and current selected upper-division Study exhibits.",
+    "Current university approved-provider and provider-evaluation pages, transfer-pathway index, ACE/NCCRS acceptance policy, transfer-credit policy and business-degree elective policy.",
+    "Provider-specific school guide and support article inspected as secondary evidence, not substituted for the receiving institution."
+  ],
+  "requiredEvidenceToClose": [
+    "A current TESU-published or TESU-submitted course award or an authenticated public articulation appendix naming the Study.com source identity/version, receiving course or explicitly typed elective/category, receiving quantity/level and applicable catalog/period.",
+    "Alternatively, a university policy expressly awarding qualifying original ACE/NCCRS quantities and levels to a defined elective/category under named conditions. The general policies reviewed here do not make that guarantee.",
+    "Retain original course quantity/units, receiving quantity/level, provider approval, recommendation dates, placement, noncollegiate caps, residency and duplicate-learning rules as separate evidence dimensions."
+  ],
+  "studentImpact": "Existing fully supported Sophia receiving awards can continue to drive the current business expansion. DegreeSteps owns the remaining Study.com equivalency research. Personal transcript evaluation remains a distinct student step; this review creates no blanket per-course written-approval homework."
+}

@@ -23,6 +23,11 @@ execFileSync(process.execPath,[resolve(root,'scripts/tesu-course-eligibility.mjs
 execFileSync(process.execPath,[resolve(root,'scripts/tesu-course-placements.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/tesu-receiving-additions.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/tesu-accounting-notices.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+// New business editions and their context must remain reproducible from exact
+// primary bodies, prerequisite reviews and independently dated price evidence.
+for(const script of ['tesu-business-programs.mjs','tesu-general-management-program.mjs','tesu-business-metadata.mjs']){
+  execFileSync(process.execPath,[resolve(root,'scripts',script),'--check'],{cwd:root,stdio:'inherit'});
+}
 execFileSync(process.execPath,[resolve(root,'scripts/wgu-study-expansion.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-current-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-plan-estimate-rates.mjs'),'--check'],{cwd:root,stdio:'inherit'});
