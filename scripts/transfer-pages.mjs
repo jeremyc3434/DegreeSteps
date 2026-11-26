@@ -6,6 +6,8 @@ import {icon} from './public-visuals.mjs';
 import {createRequire} from 'node:module';
 // Rendering only: the course's provider link goes through the shared outbound helper, loaded on first use.
 let OutboundHelper;const outbound=()=>OutboundHelper??=createRequire(import.meta.url)('../dist/outbound.js');
+// The same public-plan rule as every "Build this plan" action and the portal (program-catalog.js canOpenPublicPlan).
+const Catalog=createRequire(import.meta.url)('../dist/program-catalog.js');
 
 const list=value=>Array.isArray(value)?value:[];
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -26,6 +28,8 @@ const officialEvidence=(option,sources)=>option.evidence==='published'&&(/receiv
 export async function loadTransferCourses(dist,{publicPlans=[]}={}){
   const read=async path=>JSON.parse(await readFile(resolve(dist,path),'utf8'));
   const index=await read('data/plan-library-index.json'),registry=await read('data/curriculum-registry.json');
+  const catalog=Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(await read('data/pathways.json'),await read('data/program-catalog.json')),registry),await read('data/publication-index.json'),registry);
+  const openable=Catalog.openablePlanIds(catalog),routes=new Map(list(catalog.pathways).map(route=>[route.id,route]));
   const entries=new Map(registry.models.map(entry=>[entry.id,entry])),docs=new Map(),publicByRoute=new Map(publicPlans.map(plan=>[plan.id,plan]));
   const courses=new Map();
   for(const [routeId,info] of Object.entries(index.plans)){
@@ -33,13 +37,14 @@ export async function loadTransferCourses(dist,{publicPlans=[]}={}){
     if(!docs.has(entry.path))docs.set(entry.path,await read(entry.path));
     const doc=docs.get(entry.path),model=(doc.models||[doc]).find(item=>item.id===info.modelId);if(!model)continue;
     const sources=new Map(list(model.sources).concat(list(doc.sources)).map(source=>[source.id,source]));
-    const planHref=publicByRoute.get(routeId)?.path||'/portal.html?usePlan='+encodeURIComponent(routeId);
+    // A plan the portal won't open yet links to its research request instead of a "not available" page.
+    const canOpen=openable.has(routeId),planHref=canOpen?publicByRoute.get(routeId)?.path||'/portal.html?usePlan='+encodeURIComponent(routeId):Catalog.planRequestHref(routes.get(routeId)||{},{absolute:true});
     for(const req of list(model.requirements))for(const option of list(req.options)){
       if(!option.provider||option.provider==='University'||!option.code||!officialEvidence(option,sources))continue;
       const key=option.provider+'|'+option.code;
       if(!courses.has(key))courses.set(key,{provider:option.provider,code:option.code,title:option.title,url:https(option.url),sourceCredits:option.sourceCredits,sourceCreditSystem:option.sourceCreditSystem,matches:[]});
       const course=courses.get(key),evidence=list(option.sourceIds).map(id=>sources.get(id)).find(source=>https(source?.url));
-      const match={school:model.school,program:model.title,routeId,planHref,tier:info.tier,receivingCode:req.code||option.receivingCode||'',receivingTitle:baseTitle(req.title||option.receivingTitle||''),credits:option.credits,creditSystem:option.creditSystem||model.creditSystem,evidenceUrl:evidence?https(evidence.url):'',evidenceTitle:evidence?.title||'',condition:list(option.conditions)[0]||''};
+      const match={school:model.school,program:model.title,routeId,planHref,canOpen,tier:info.tier,receivingCode:req.code||option.receivingCode||'',receivingTitle:baseTitle(req.title||option.receivingTitle||''),credits:option.credits,creditSystem:option.creditSystem||model.creditSystem,evidenceUrl:evidence?https(evidence.url):'',evidenceTitle:evidence?.title||'',condition:list(option.conditions)[0]||''};
       // One row per plan and requirement: alternative placements of the same course stay separate requirements.
       if(!course.matches.some(m=>m.routeId===routeId&&m.receivingCode===match.receivingCode&&m.receivingTitle===match.receivingTitle))course.matches.push(match);
     }
@@ -57,7 +62,7 @@ export function renderTransferCourse(course){
   const sourceCredits=Number.isFinite(course.sourceCredits)&&course.sourceCreditSystem?unitLabel(course.sourceCredits,course.sourceCreditSystem)+' recommended by the provider':'';
   // One row per plan: a course listed for several requirements can fill only one of them.
   const byPlan=new Map();for(const m of course.matches){if(!byPlan.has(m.routeId))byPlan.set(m.routeId,{...m,requirements:[],evidence:new Map()});const row=byPlan.get(m.routeId);row.requirements.push((m.receivingCode?'<strong>'+esc(m.receivingCode)+'</strong> ':'')+esc(m.receivingTitle));if(m.evidenceUrl&&!row.evidence.has(m.evidenceUrl))row.evidence.set(m.evidenceUrl,m.evidenceTitle);}
-  const rows=[...byPlan.values()].map(m=>'<tr><th scope="row">'+esc(m.school)+'<small>'+esc(m.program)+'</small></th><td data-label="Requirement it fills"><span>'+(m.requirements.length>1?'Can fill one of: '+m.requirements.join('; '):m.requirements[0])+'</span></td><td data-label="Credit awarded">'+esc(unitLabel(m.credits,m.creditSystem))+'</td><td data-label="Plan status">'+(m.tier==='confirmation'?'<span class="transfer-status transfer-status-confirm">Needs school confirmation</span>':'<span class="transfer-status transfer-status-reviewed">Reviewed plan</span>')+'</td><td data-label="Evidence"><span>'+([...m.evidence].map(([url,title])=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(title||'School transfer guidance')+'</a>').join('<br>')||'School transfer guidance')+'</span></td><td data-label="Plan"><a href="'+esc(m.planHref)+'">See the plan'+icon('arrow','ds-link-arrow')+'</a></td></tr>').join('');
+  const rows=[...byPlan.values()].map(m=>'<tr><th scope="row">'+esc(m.school)+'<small>'+esc(m.program)+'</small></th><td data-label="Requirement it fills"><span>'+(m.requirements.length>1?'Can fill one of: '+m.requirements.join('; '):m.requirements[0])+'</span></td><td data-label="Credit awarded">'+esc(unitLabel(m.credits,m.creditSystem))+'</td><td data-label="Plan status">'+(m.tier==='confirmation'?'<span class="transfer-status transfer-status-confirm">Needs school confirmation</span>':m.canOpen===false?'<span class="transfer-status transfer-status-confirm">Not published yet</span>':'<span class="transfer-status transfer-status-reviewed">Reviewed plan</span>')+'</td><td data-label="Evidence"><span>'+([...m.evidence].map(([url,title])=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(title||'School transfer guidance')+'</a>').join('<br>')||'School transfer guidance')+'</span></td><td data-label="Plan"><a href="'+esc(m.planHref)+'"'+(m.canOpen===false?' data-request-plan':'')+'>'+(m.canOpen===false?'Request this plan':'See the plan')+icon('arrow','ds-link-arrow')+'</a></td></tr>').join('');
   const conditions=[...new Set(course.matches.map(m=>m.condition).filter(Boolean))].slice(0,3);
   return '<section class="site-container page-intro ds-rail-intro transfer-intro" data-transfer-course="'+esc(course.provider+'|'+course.code)+'"><div class="ds-rail-copy"><p class="ds-step-kicker">'+esc(course.provider)+' · '+esc(course.code)+'</p><h1>Where '+esc(course.provider)+' '+esc(course.title)+' counts toward a degree</h1><p class="page-lede">'+esc(plural(course.plans,'researched degree plan'))+' at '+esc(andList(course.schools))+' list this course in the school’s published transfer guidance.</p><ul class="transfer-facts">'+(sourceCredits?'<li>'+esc(sourceCredits)+'</li>':'')+(course.url?'<li>'+outbound().link({href:course.url,html:'Course page at '+esc(course.provider),provider:course.provider,rel:'noopener noreferrer'})+'</li>':'')+'</ul></div></section>'+
     '<section class="site-container transfer-matches"><h2>Where it counts</h2><div class="public-plan-table transfer-table" tabindex="0" role="region" aria-label="Schools and degree plans that list this course"><table><thead><tr><th scope="col">School and degree</th><th scope="col">Requirement it fills</th><th scope="col">Credit awarded</th><th scope="col">Plan status</th><th scope="col">Evidence</th><th scope="col"><span class="sr-only">Plan link</span></th></tr></thead><tbody>'+rows+'</tbody></table></div>'+

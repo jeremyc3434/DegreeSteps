@@ -34,7 +34,9 @@
   }
   const availableRoutes = () => typeof DegreeProgramCatalog.planLibraryRoutes==='function'?DegreeProgramCatalog.planLibraryRoutes(catalog,models):[];
   const availableCatalog = () => ({...catalog,pathways:availableRoutes()});
-  const reviewedRoute = route => DegreeProgramCatalog.publishedPlans(catalog,models).some(item=>item.id===route?.id);
+  // The shared public-plan rule (program-catalog.js). Every "Build this plan" action uses the same check, so none
+  // can lead here to "This course plan is not available".
+  const reviewedRoute = route => DegreeProgramCatalog.canOpenPublicPlan(route,catalog,models);
   const privateExistingRoute = route => route&&(!state.sheet?.isExample&&state.selectedPathwayId===route.id||(state.whatIf?.snapshots||[]).some(saved=>saved.pathwayId===route.id)||[...(state.customCurricula||[]),...(state.sourceCurricula||[])].some(saved=>saved.route?.id===route.id));
   async function ensureRouteModels(routes) {
     const list=(Array.isArray(routes)?routes:[routes]).filter(Boolean).flatMap(route=>[route,...DegreeProgramCatalog.variants(route,catalog)]),wanted=list.filter(route=>route.modelId&&!models.some(model=>model.id===route.modelId));

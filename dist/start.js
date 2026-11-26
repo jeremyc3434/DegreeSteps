@@ -8,7 +8,7 @@ const P=window.DegreeProgramOpportunities,params=new URLSearchParams(location.se
 const levels={associate:'Associate',bachelor:'Bachelor’s',master:'Master’s',doctorate:'Doctoral',specialist:'Specialist'};
 const formats={online:'Online',campus:'On campus'};
 const idOK=v=>typeof v==='string'&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(v);
-let catalog,rows=[],index={plans:{},subjects:{}},limit=12;
+let catalog,rows=[],openIds=new Set(),index={plans:{},subjects:{}},limit=12;
 let personalController=null,personalAvailable=false,personalEnabled=false,personalPending=false,personalComplete=false,personalScopeKey='',personalRevision=0,personalError='',personalChecked=0,personalTotal=0,personalResults=new Map();
 const filterDefaults={q:'',subject:'',level:'',format:'',pace:'',billing:'',cbe:false,share:'',budget:'',sort:'cost',confirm:true};
 const filters={...filterDefaults};
@@ -27,6 +27,9 @@ function creditsUrl(p){const next=degreeParams();next.set('step','credits');next
 
 const info=p=>index.plans[p.id]||{tier:'reviewed',subjects:[]};
 const needsConfirmation=p=>info(p).tier==='confirmation';
+// Build only what the portal will open: openIds comes from DegreeProgramCatalog.openablePlanIds, the same rule the portal
+// checks. Any other card gets the honest "Request this plan" action instead of a dead end.
+const canBuild=p=>openIds.has(p.id);
 const fit=p=>{const f=info(p).fit,edition=value=>String(value||'').replace(/[–—]/g,'-');return f&&f.modelId===p.modelId&&(!f.modality||(p.modalities||[]).includes(f.modality))&&(!p.catalog||edition(f.catalogYear)===edition(p.catalog))?f:P.fitFacts?.(p,P.schoolFor(catalog,p))||{};};
 const money=v=>v>=10000?'$'+(Math.round(v/100)/10).toLocaleString('en-US')+'k':new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
 const costText=p=>{const e=info(p).estimate;return e&&Number.isFinite(e.min)&&Number.isFinite(e.max)?(e.min===e.max?money(e.min):money(e.min)+'–'+money(e.max)):'';};
@@ -127,8 +130,10 @@ function card(p){
     +(s?'<div class="start-bar" role="img" aria-label="'+esc(s.outside+' of '+s.total+' '+unit(p)+' can come from low-cost courses')+'"><span style="width:'+pct+'%"></span></div>':'')
     +(s?'<p class="start-college-work"><strong>'+esc(s.university)+'</strong> '+unit(p)+' at the university in this plan</p>':''))
     +(P.requirementsHTML?.(f,{compact:true})||'')
-    +'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="'+esc(personalReady(p)?personalLink(p):creditsUrl(p))+'">'+(personalReady(p)?'Review my plan':'Build this plan')+'</a>'
-    +(info(p).page?'<a class="start-text-link" href="'+esc(info(p).page)+'">See every course</a>':'')+'</div></article>';
+    +(canBuild(p)?'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="'+esc(personalReady(p)?personalLink(p):creditsUrl(p))+'">'+(personalReady(p)?'Review my plan':'Build this plan')+'</a>'
+    +(info(p).page?'<a class="start-text-link" href="'+esc(info(p).page)+'">See every course</a>':'')+'</div>'
+    :'<p class="start-request-note" id="start-request-'+esc(p.id)+'"><strong>Not ready to build yet.</strong> '+esc(info(p).questions?.[0]||'Some of the school’s published rules for this plan are still being confirmed.')+'</p>'
+    +'<div class="start-card-actions"><a class="start-secondary start-request" data-request-plan="'+esc(p.id)+'" aria-describedby="start-request-'+esc(p.id)+'" href="'+esc(DegreeProgramCatalog.planRequestHref(p))+'">Request this plan</a></div>')+'</article>';
 }
 function chipGroup(id,name,options,current){
   const el=$(id);const legend=el.querySelector('legend').outerHTML;
@@ -137,7 +142,7 @@ function chipGroup(id,name,options,current){
 function renderDegree(){
   queuePersonal();
   const list=sorted(rows.filter(matches)),pending=list.filter(needsConfirmation).length;
-  $('start-count').textContent=list.length?list.length+' degree'+(list.length===1?'':'s')+(pending?' · '+pending+' need'+(pending===1?'s':'')+' school confirmation':''):'No degrees match. Try fewer filters.';
+  $('start-count').textContent=list.length?list.length+' degree'+(list.length===1?'':'s')+(pending?' · '+(list.length-pending)+' ready to build · '+pending+' need'+(pending===1?'s':'')+' school confirmation':''):'No degrees match. Try fewer filters.';
   $('start-results').innerHTML=list.slice(0,limit).map(card).join('')||'<div class="start-empty"><p>No degree plan matches these choices yet.</p><button type="button" class="start-secondary" id="start-clear">Clear filters</button> <a href="request-plan.html">Build from a degree link</a></div>';
   $('start-more').hidden=list.length<=limit;
   chipGroup('start-subjects','subject',Object.entries(index.subjects).filter(([id])=>rows.some(p=>(info(p).subjects||[]).includes(id))),filters.subject);
@@ -222,13 +227,20 @@ window.addEventListener('pageshow',event=>{if(event.persisted)refreshPersonal();
   try{const r=await fetch('data/plan-library-index.json');const value=r.ok?await r.json():null;index={plans:value?.plans&&typeof value.plans==='object'?value.plans:{},subjects:value?.subjects&&typeof value.subjects==='object'?value.subjects:{}};}catch{index={plans:{},subjects:{}};}
   catalog=await DegreeProgramCatalog.loadIndex(DegreeProgramCatalog.merge(loaded[0],loaded[1]));
   if(typeof DegreeProgramCatalog.publishedPlans!=='function'||catalog.publicationIndex?.available===false)throw Error('We couldn’t load the degree plans. Reload to try again. Your saved plan is safe.');
-  // The same plan list as the degree finder: reviewed plans plus complete plans that need school confirmation.
-  const published=DegreeProgramCatalog.publishedPlans(catalog).filter(p=>P.availability(p).canChoose),ids=new Set(published.map(p=>p.id));
-  rows=[...published,...(typeof DegreeProgramCatalog.isPlanAvailable==='function'?(catalog.pathways||[]).filter(p=>!ids.has(p.id)&&p.modelId&&index.plans[p.id]?.tier==='confirmation'&&DegreeProgramCatalog.isPlanAvailable(p,catalog)&&P.availability(p).canChoose):[])];
+  // Reviewed plans a student can build (one card per curriculum, as in the degree finder: two catalog links to one
+  // program show once), plus complete plans that still need school confirmation, which can only be requested.
+  openIds=DegreeProgramCatalog.openablePlanIds(catalog);
+  const published=DegreeProgramCatalog.publishedPlans(catalog).filter(p=>P.availability(p).canChoose&&openIds.has(p.id)),ids=new Set(published.map(p=>p.id));
+  const representative=new Map(DegreeProgramCatalog.planLibraryRoutes(catalog).map(p=>[p.modelId,p.id])),perModel=new Map();
+  for(const p of published){const previous=perModel.get(p.modelId);if(!previous||p.id===representative.get(p.modelId)&&previous.id!==p.id)perModel.set(p.modelId,p);}
+  rows=[...perModel.values(),...(typeof DegreeProgramCatalog.isPlanAvailable==='function'?(catalog.pathways||[]).filter(p=>!ids.has(p.id)&&p.modelId&&index.plans[p.id]?.tier==='confirmation'&&DegreeProgramCatalog.isPlanAvailable(p,catalog)&&P.availability(p).canChoose):[])];
   const step=params.get('step');
   // Deep links that name a plan skip straight to step 2.
   const named=idOK(params.get('plan'))?params.get('plan'):idOK(params.get('usePlan'))?params.get('usePlan'):idOK(params.get('program'))?params.get('program'):'';
-  const chosen=named&&rows.find(p=>p.id===named&&(!params.get('school')||p.school===params.get('school')));
+  // A deep link opens step 2 only for a plan the portal will open (any catalog link to it). A plan that still needs
+  // school confirmation is shown on step 1 with its request action instead.
+  const sameSchool=p=>!params.get('school')||p.school===params.get('school');
+  const chosen=named&&published.find(p=>p.id===named&&sameSchool(p)),requested=named&&!chosen&&rows.find(p=>p.id===named&&sameSchool(p));
   if(params.get('q'))filters.q=params.get('q').slice(0,80);
   if(index.subjects[params.get('subject')])filters.subject=params.get('subject');
   if(levels[params.get('level')])filters.level=params.get('level');
@@ -241,11 +253,13 @@ window.addEventListener('pageshow',event=>{if(event.persisted)refreshPersonal();
   if(['fit','cost','outside','time','az'].includes(params.get('sort')))filters.sort=params.get('sort');
   if(params.get('confirm')==='0')filters.confirm=false;
   if(params.get('school'))filters.q=filters.q||params.get('school').slice(0,80);
+  if(requested&&!params.get('q'))filters.q=requested.title.slice(0,80);
   if(window.DegreeDiscoveryClient){try{personalController=window.DegreeDiscoveryClient.create({catalog});personalAvailable=personalController.hasCourses();personalEnabled=personalAvailable&&params.get('fit')!=='0';if(personalEnabled&&!params.has('sort'))filters.sort='fit';if(!personalAvailable&&filters.sort==='fit')filters.sort='cost';}catch{personalError='Your course collection could not be opened. Open My courses to continue.';}}
   if(chosen){openCredits(chosen);return;}
   if(step==='quiz'){renderQuiz();document.title='1-minute quiz — DegreeSteps';show('quiz');return;}
   $('start-q').value=filters.q;
-  if(named&&!chosen)$('start-error').textContent='That degree plan isn’t available right now. Pick another below.',$('start-error').hidden=false;
+  if(requested)$('start-error').textContent='That plan still needs school confirmation, so it can’t be built yet. You can request it below.',$('start-error').hidden=false;
+  else if(named&&!chosen)$('start-error').textContent='That degree plan isn’t available right now. Pick another below.',$('start-error').hidden=false;
   renderDegree();show('degree');
 }catch(error){$('start-loading').hidden=true;$('start-error').hidden=false;$('start-error').textContent=error.message;}})();
 }());
