@@ -116,7 +116,8 @@ function compile(raw,document){
   model.requirements=requirements;model.sources=[...sources.values()];
   if(Array.isArray(model.defaultProviders)&&requirements.some(row=>row.options.some(option=>option.provider==='DSST'&&option.evidence==='published')))model.defaultProviders=[...new Set([...model.defaultProviders,'DSST'])];
   model.policyReview=list(model.policyReview);
-  const documentedResolution=field=>model.policyReview.some(item=>item.field===field&&['verified','confirmed','resolved','not-applicable'].includes(item.status)&&list(item.sourceIds).length&&item.sourceIds.every(id=>sources.has(id)));
+  const reviewedField=field=>model.policyReview.some(item=>item.field===field&&typeof item.question==='string'&&item.question.trim().length>0);// a reviewed open question already states exactly what to ask
+  const documentedResolution=field=>reviewedField(field)||model.policyReview.some(item=>item.field===field&&['verified','confirmed','resolved','not-applicable'].includes(item.status)&&list(item.sourceIds).length&&item.sourceIds.every(id=>sources.has(id)));
   if(!Number.isFinite(model.institutionMinCredits)&&!(model.residencyPolicy&&Planner.institutionResidencyMinimum(model)!==null))model.policyReview.push({field:'institutionMinCredits',status:'unverified',message:'Confirm how many credits must be earned at this university for this exact degree.'});
   if(records.some(r=>r.level==='bachelor')&&!Number.isFinite(model.upperMinCredits)&&!documentedResolution('upperMinCredits'))model.policyReview.push({field:'upperMinCredits',status:'unverified',message:'Confirm the degree’s upper-level credit minimum.'});
   if(requirements.some(r=>r.options.some(o=>o.provider!=='University'))&&!Number.isFinite(model.alternativeMaxCredits)&&!documentedResolution('alternativeMaxCredits'))model.policyReview.push({field:'alternativeMaxCredits',status:'unverified',message:'Confirm the combined limit on alternative credit sources.'});

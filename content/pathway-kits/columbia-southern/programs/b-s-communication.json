@@ -467,6 +467,58 @@
         }
       ],
       "basis": "120 degree credits minus the 30-credit in-residence minimum; no separate transfer ceiling is published."
+    },
+    "alternativeMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+        "columbia-southern-transfer-credit-policy-page-2026-11-26",
+        "columbia-southern-sophia-agreement-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "military and employer courses reviewed by the American Council on Education (ACE)"
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "CSU uses ACE guidelines to determine if training programs, certificates, professional licenses, and/or military training warrant awarding academic credit."
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "will consider experiential learning credit through a Prior Learning Assessment (PLA) review."
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "A minimum of 25% of an associate or bachelor’s degree must be completed at CSU. Transfer credit for experiential learning may not exceed 25% of the degree program."
+        },
+        {
+          "sourceId": "columbia-southern-transfer-credit-policy-page-2026-11-26",
+          "text": "Transfer credit for experiential learning may not exceed 25% of the degree program."
+        },
+        {
+          "sourceId": "columbia-southern-sophia-agreement-2026-11-26",
+          "text": "Credit will be awarded based on current transfer credit policy and the ACE recommendation at the time of completion, which is subject to change."
+        }
+      ],
+      "basis": "CSU lists ACE-reviewed courses, credit by examination and ACE-evaluated training as sources of transfer credit separate from “Experiential or Equivalent Learning”, which its catalog defines as a Prior Learning Assessment (PLA) review. The 25% experiential-learning cap therefore limits PLA credit, not ACE-recommended courses; CSU’s published Sophia agreement awards Sophia credit under the current transfer credit policy. So ACE/NCCRS-recommended credit is limited only by the overall transfer maximum (75% of the degree).",
+      "reviewed": "2026-11-26"
+    },
+    "upperLevelMinimum": {
+      "value": null,
+      "status": "not-established",
+      "sourceIds": [
+        "columbia-southern-b-s-communication-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-b-s-communication-catalog-2026-11-23",
+          "text": "taking into consideration the degree program upper-level requirements."
+        }
+      ],
+      "basis": "The catalog asks students to choose open electives “taking into consideration the degree program upper-level requirements” but publishes no number for them.",
+      "reviewed": "2026-11-26"
     }
   },
   "modelFields": {
@@ -502,6 +554,18 @@
     },
     "coverage": "complete",
     "completeExecutablePathway": false,
-    "coverageLabel": "Complete 120-credit B.S. Communication ledger from Columbia Southern University's current catalog page, including 7 open course choice block(s) (63% of credits) you fill, with outside options from Sophia's published Columbia Southern University partner table."
+    "coverageLabel": "Complete 120-credit B.S. Communication ledger from Columbia Southern University's current catalog page, including 7 open course choice block(s) (63% of credits) you fill, with outside options from Sophia's published Columbia Southern University partner table.",
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "unverified",
+        "message": "The catalog asks students to choose open electives “taking into consideration the degree program upper-level requirements” but publishes no number for them.",
+        "question": "Ask Columbia Southern: how many upper-level (3000- and 4000-level) credits does this degree require? Its catalog refers to “the degree program upper-level requirements” for open electives but doesn’t give a number.",
+        "sourceIds": [
+          "columbia-southern-b-s-communication-catalog-2026-11-23"
+        ],
+        "checkedOn": "2026-11-26"
+      }
+    ]
   }
 }

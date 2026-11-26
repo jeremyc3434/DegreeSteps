@@ -300,7 +300,7 @@ export function classifyModelFindings(model,{asOf,plan}={}){
   const checks=Array.isArray(input)?input:plain(input)?Object.entries(input).map(([field,value])=>plain(value)?{field,...value}:{field,message:value}):typeof input==='string'?[input]:[];
   for(const check of checks){
    if(check==null||check===false||check===true||plain(check)&&['verified','confirmed','resolved','not-applicable'].includes(check.status))continue;
-   add('missing-research','policy-unresolved',typeof check==='string'?check:text(check?.message)||text(check?.notes)||'A degree-specific academic policy needs reviewed evidence.',{field:check?.field||null,sourceIds:list(check?.sourceIds)});
+   add('missing-research','policy-unresolved',typeof check==='string'?check:text(check?.message)||text(check?.notes)||'A degree-specific academic policy needs reviewed evidence.',{field:check?.field||null,sourceIds:list(check?.sourceIds),...(text(check?.question)?{question:text(check.question)}:{})});
   }
  }
  for(const input of list(model?.unresolved)){

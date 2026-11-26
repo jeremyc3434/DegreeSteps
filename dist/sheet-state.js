@@ -443,6 +443,8 @@
     const slotPicks=(Array.isArray(options.slotChoices)?options.slotChoices:[]).map(item=>bounded(text(item),160)).filter(Boolean);
     const rules=[
       [/ACE- or NCCRS/i,()=>'What is the most credit you accept toward this degree from ACE- or NCCRS-evaluated courses and exams (for example Sophia, Study.com or CLEP)?'],
+      [/90-hour limit on experiential/i,()=>'Do ACE-recommended courses (such as Sophia) count toward your 90-hour limit on experiential/prior learning, or only toward the overall transfer maximum?'],
+      [/upper-level/i,()=>'How many upper-level credits does this degree require, and which upper-level courses must I take at '+school+' itself?'],
       [/how many credits must I earn at the school/i,()=>'How many credits do I need to take at '+school+' itself for this degree?'],
       [/time limit/i,()=>'Is there a time limit on how old my transfer credits can be?'],
       [/written transfer evaluation|residency/i,()=>'Could you tell me how many courses in my major I must take at '+school+', and whether I can get an unofficial transfer evaluation before I enroll?'],

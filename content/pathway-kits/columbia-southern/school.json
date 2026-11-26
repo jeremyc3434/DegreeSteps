@@ -74,6 +74,27 @@
       "url": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=25,28,200&columns=2",
       "checked": "2026-11-23",
       "capture": "content/source-captures/ce1320e395ba226d.txt"
+    },
+    {
+      "id": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+      "title": "Columbia Southern University 2026–2028 catalog: Transfer Credit Policy and Sources of Transfer Credit (PDF pp. 24–25)",
+      "url": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/University%20Catalog/university_catalog.pdf#pages=24,25&columns=2",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/538b182f195853fa.txt"
+    },
+    {
+      "id": "columbia-southern-transfer-credit-policy-page-2026-11-26",
+      "title": "Columbia Southern University: Transfer Credit Policy (admissions page)",
+      "url": "https://www.columbiasouthern.edu/admissions/transfer-credit/transfer-credit-policy",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/a3109189bfe71de1.txt"
+    },
+    {
+      "id": "columbia-southern-sophia-agreement-2026-11-26",
+      "title": "Columbia Southern University: Sophia Learning, LLC course equivalency agreement and addendums (published PDF)",
+      "url": "https://www.columbiasouthern.edu/hubfs/Downloads/PDF/Articulation%20Agreements/sophia_mou__2_addendums.pdf",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/5313a2323b198114.txt"
     }
   ],
   "publish": {
@@ -1084,5 +1105,113 @@
     "b-s-occupational-safety-and-health",
     "b-s-organizational-leadership",
     "b-s-psychology"
-  ]
+  ],
+  "policies": {
+    "experientialLearningMax": {
+      "value": 0.25,
+      "scope": "Prior Learning Assessment (experiential learning) credit only; not ACE-recommended courses, exams or training.",
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+        "columbia-southern-transfer-credit-policy-page-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "will consider experiential learning credit through a Prior Learning Assessment (PLA) review."
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "Transfer credit for experiential learning may not exceed 25% of the degree program."
+        },
+        {
+          "sourceId": "columbia-southern-transfer-credit-policy-page-2026-11-26",
+          "text": "Transfer credit for experiential learning may not exceed 25% of the degree program."
+        }
+      ],
+      "checked": "2026-11-26"
+    },
+    "capstoneAtSchool": {
+      "value": true,
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "Capstone courses must be completed at CSU."
+        }
+      ],
+      "basis": "Applied: every captured capstone requirement is institution-only.",
+      "checked": "2026-11-26"
+    },
+    "relevantEquivalentContent": {
+      "value": true,
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "Accepted courses are relevant to the program of study and equivalent in both content and degree level."
+        }
+      ],
+      "checked": "2026-11-26"
+    },
+    "minimumGradeExceptions": {
+      "value": "C",
+      "scope": "A transferred grade of D is not accepted for English Composition or the Mathematics requirement.",
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "Courses with a grade of “D” or above may apply to undergraduate degree requirements unless a minimum grade of “C” is required to satisfy specific program requirements."
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "A grade of “D” is not accepted as transfer credit for the following:"
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "English Composition courses"
+        },
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "Mathematics requirement"
+        }
+      ],
+      "checked": "2026-11-26"
+    },
+    "transferCreditAge": {
+      "value": null,
+      "status": "case-by-case",
+      "sourceIds": [
+        "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26"
+      ],
+      "basis": "No fixed age limit is published; the Academic Program Director reviews older courses.",
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-catalog-2026-2028-transfer-sources-2026-11-26",
+          "text": "Some courses may not be transferrable due to age of credit. In these cases, the Academic Program Director will review the course information to determine transferability."
+        }
+      ],
+      "checked": "2026-11-26"
+    },
+    "directTransferMinimumCredits": {
+      "value": 3,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "columbia-southern-sophia-agreement-2026-11-26"
+      ],
+      "basis": "Sophia courses under 3 semester credits count only as open electives; no 1- or 2-credit course is placed in a named requirement.",
+      "quotes": [
+        {
+          "sourceId": "columbia-southern-sophia-agreement-2026-11-26",
+          "text": "Direct transfer credit for a Major Requirement, Program Electives, and/or General Education course requires the transfer course to be a minimum of 3 semester hours."
+        }
+      ],
+      "checked": "2026-11-26"
+    }
+  }
 }
