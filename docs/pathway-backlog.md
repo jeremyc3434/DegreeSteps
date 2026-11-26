@@ -38,3 +38,7 @@ These were already unpublished before this batch and were not part of it; their 
 - University of Phoenix B.S. Information Technology and B.S. Health Management (Direct Assessment): incomplete ledgers, unbound mapping evidence and open course choices.
 - Old Dominion University Psychology, BS: no exact program identity and 35 open course choices.
 - SNHU B.S. Business Administration and B.S. Data Analytics (General Track): no exact catalog edition and conditional awards.
+
+## Alternative-credit landscape batch 1, 2026-11-26
+
+See `docs/alt-credit-landscape-2026-11-26.md`. Ten kits added with provider-published Sophia equivalencies and, where the school states it explicitly, a normalized transfer cap (Norwich, Indiana Tech, Nichols, Wilmington at 90 semester credits). None has programs yet, so none is in the finder. Queue: school-published tables for UAGC, Capella, Charter Oak, Empire State and CSU Global (after the policy-field workstream merges); Walden, Phoenix, Davenport; then program drafting for the new kits.

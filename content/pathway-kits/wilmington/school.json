@@ -1,0 +1,68 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "wilmington",
+  "name": "Wilmington University",
+  "creditSystem": "semester",
+  "checkedOn": "2026-11-26",
+  "sources": [
+    {
+      "id": "wilmington-sophia-partner-page",
+      "title": "Sophia partner page: Sophia courses that transfer to Wilmington University",
+      "url": "https://wilmu.sophia.org/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/f2da1dd56b90860a.txt",
+      "tableSha256": "4a857ab002c2f6dfe47697c7d2c3baeb8e95df74d931479090ded58fbb2c61f5",
+      "kind": "provider",
+      "publisher": "Sophia Learning",
+      "evidenceType": "provider-published-equivalency",
+      "roles": [
+        "transfer-equivalency"
+      ],
+      "scope": "Provider-published course matches for Wilmington University; Wilmington University confirms transfer credit when it evaluates the transcript."
+    },
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15",
+      "kind": "provider",
+      "provider": "Sophia",
+      "roles": [
+        "provider-identity",
+        "current-offering"
+      ],
+      "sourceContentHash": "sha256:87fc671a0924d31dad7305692d59cc3d68b61791e692a7fcc11f99c879e224f6",
+      "reviewedFact": "Only exact Sophia ACE identities, original source quantities and active offerings are reused. WGU receiving awards are not inherited.",
+      "copiedFor": "sophia-partner-import-wilmu:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "wilmington-transfer",
+      "title": "Wilmington University: transfer students",
+      "url": "https://www.wilmu.edu/admission/transfer.aspx",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/4acd73e69fdac78f.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ]
+    }
+  ],
+  "policies": {
+    "transferMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "wilmington-transfer"
+      ],
+      "quotes": [
+        {
+          "sourceId": "wilmington-transfer",
+          "text": "UP TO 90 UNDERGRADUATE"
+        }
+      ],
+      "basis": "Marketing headline on the official transfer page; the catalog rule (and any ACE/NCCRS sub-cap) is not yet captured."
+    }
+  }
+}
