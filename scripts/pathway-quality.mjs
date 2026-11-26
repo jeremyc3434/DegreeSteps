@@ -276,7 +276,7 @@ export function hasReviewedCourseEligibility(model,requirement,option,{asOf}={})
  if(!policy.some(id=>new URL(sources.get(id).url).pathname==='/student-resources/transfer-credits/send-transcripts.php')||!policy.some(id=>new URL(sources.get(id).url).pathname==='/admissions/methods-of-earning-credit/educational-provider-review.php'))return false;
  return true;
 }
-function mappingFinding(model,requirement,option,{asOf}={}){
+export function mappingFinding(model,requirement,option,{asOf}={}){
  const sources=sourceMap(model),details={requirementIds:[requirement?.id],optionIds:[option?.id],sourceIds:list(option?.sourceIds)};
  if(option?.provider==='University')return null;
  const typedCategory=['general-category','free-elective-category'].includes(option?.allocationType)&&!text(option?.receivingCode);
@@ -395,6 +395,11 @@ function derivedValidationFindings(model,plan,findings){
  return output;
 }
 
+// Course-level findings: a single course row is unsettled (the student picks it, it counts only under a published
+// condition, or its match for this exact degree is not published). They never block building a plan; each row is
+// labelled in the worksheet and the student confirms it with the school. Every other blocking finding is a school-level
+// rule (credit caps, residency, catalog identity, unresolved research, an incomplete or invalid ledger) and blocks.
+export const COURSE_LEVEL_FINDINGS=Object.freeze(['open-course-choice','conditional-award','provider-eligibility','mapping-evidence','mapping-scope','mapping-applicability','mapping-status']);
 export function assessPathwayQuality({model,plan,route,asOf,studentPlan,minimumOutsideFraction=0.5}={}){
  assertDate(asOf);
  if(!finite(minimumOutsideFraction)||minimumOutsideFraction<0||minimumOutsideFraction>1)throw Error('Use a transfer-coverage fraction between zero and one.');
@@ -450,6 +455,7 @@ export function assessPathwayQuality({model,plan,route,asOf,studentPlan,minimumO
  const unavailable=!model||!ledger||!completePlan||plan?.validation?.academicCountsValid!==true;
  const status=unavailable?'unavailable':blockingResearch.length?'needs-research':conditional.length?'conditional':'research-ready';
  const invalidEstimates=findings.filter(item=>item.category==='estimate'&&item.blocking),publicationReady=status==='research-ready'&&acceleration.eligible&&!invalidEstimates.length;
+ const schoolLevel=findings.filter(item=>item.blocking&&!COURSE_LEVEL_FINDINGS.includes(item.code)),buildable=publicationReady||['needs-research','conditional'].includes(status)&&!schoolLevel.length;// a research-ready plan left out of the library (e.g. acceleration not established) stays closed
  const publicTasks=findings.filter(item=>item.category==='student-task').map(({id,code,message,sourceIds,requirementIds,executionRequired})=>({id,code,message,sourceIds,requirementIds,executionRequired:executionRequired===true}));
- return {version:1,asOf,modelId:model?.id||null,status,publication:{ready:publicationReady,reasonCodes:unique([...blockingResearch,...conditional,...invalidEstimates].map(item=>item.code).concat(acceleration.eligible?[]:['acceleration-not-established']))},research:{status,blockingFindings:blockingResearch.length,conditionalFindings:conditional.length,exactProgramIdentity:identified,exactCatalogIdentity:identity,completeRequirementLedger:ledger,completeNamedBaseline:completePlan,academicCountsValid:plan?.validation?.academicCountsValid===true},acceleration,execution:{personalTasks:publicTasks,reportedRecordsCount:list(studentPlan?.rows).filter(row=>row.status==='reported').length,confirmedRecordsCount:list(studentPlan?.rows).filter(row=>row.status==='confirmed').length,awardedCreditsInBaseline:0},estimates,metrics:{degreeCredits:finite(model?.totalCredits)?model.totalCredits:null,feasibleOutsideCredits:completePlan&&plan?.validation?.academicCountsValid===true?outsideCredits:null,outsideFraction:completePlan&&plan?.validation?.academicCountsValid===true?outsideFraction:null,publishedOutsideCredits:sum(outside.filter(row=>row.option.evidence==='published')),conditionalOutsideCredits:sum(outside.filter(row=>row.option.evidence==='conditional'))},findings};
+ return {version:1,asOf,modelId:model?.id||null,status,publication:{ready:publicationReady,buildable,schoolLevelBlockers:unique(schoolLevel.map(item=>item.code)),reasonCodes:unique([...blockingResearch,...conditional,...invalidEstimates].map(item=>item.code).concat(acceleration.eligible?[]:['acceleration-not-established']))},research:{status,blockingFindings:blockingResearch.length,conditionalFindings:conditional.length,exactProgramIdentity:identified,exactCatalogIdentity:identity,completeRequirementLedger:ledger,completeNamedBaseline:completePlan,academicCountsValid:plan?.validation?.academicCountsValid===true},acceleration,execution:{personalTasks:publicTasks,reportedRecordsCount:list(studentPlan?.rows).filter(row=>row.status==='reported').length,confirmedRecordsCount:list(studentPlan?.rows).filter(row=>row.status==='confirmed').length,awardedCreditsInBaseline:0},estimates,metrics:{degreeCredits:finite(model?.totalCredits)?model.totalCredits:null,feasibleOutsideCredits:completePlan&&plan?.validation?.academicCountsValid===true?outsideCredits:null,outsideFraction:completePlan&&plan?.validation?.academicCountsValid===true?outsideFraction:null,publishedOutsideCredits:sum(outside.filter(row=>row.option.evidence==='published')),conditionalOutsideCredits:sum(outside.filter(row=>row.option.evidence==='conditional'))},findings};
 }

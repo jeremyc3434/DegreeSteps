@@ -37,6 +37,8 @@
   // The shared public-plan rule (program-catalog.js). Every "Build this plan" action uses the same check, so none
   // can lead here to "This course plan is not available".
   const reviewedRoute = route => DegreeProgramCatalog.canOpenPublicPlan(route,catalog,models);
+  // Publication-ready plans only (no school confirmation needed); their saved baselines must be quality-ready.
+  const publishedRoute = route => Boolean(route)&&DegreeProgramCatalog.publishedPlans(catalog,models).some(item=>item.id===route.id);
   const privateExistingRoute = route => route&&(!state.sheet?.isExample&&state.selectedPathwayId===route.id||(state.whatIf?.snapshots||[]).some(saved=>saved.pathwayId===route.id)||[...(state.customCurricula||[]),...(state.sourceCurricula||[])].some(saved=>saved.route?.id===route.id));
   async function ensureRouteModels(routes) {
     const list=(Array.isArray(routes)?routes:[routes]).filter(Boolean).flatMap(route=>[route,...DegreeProgramCatalog.variants(route,catalog)]),wanted=list.filter(route=>route.modelId&&!models.some(model=>model.id===route.modelId));
@@ -267,7 +269,7 @@
   const needsConfirmation=route=>planIndex?.plans?.[route?.id]?.tier==='confirmation';
   function planQuestions(route) {
     const entry=planIndex?.plans?.[route?.id];
-    if(reviewedRoute(route)||entry?.tier!=='confirmation'||!Array.isArray(entry.questions))return [];
+    if(publishedRoute(route)||entry?.tier!=='confirmation'||!Array.isArray(entry.questions))return [];
     return entry.questions.slice(0,12).filter(question=>typeof question==='string'&&question.trim()).map(question=>{const text=question.trim().replace(/^ask the school:\s*/i,'');return text.charAt(0).toUpperCase()+text.slice(1);});
   }
   const protectedGoals = ['teacher','lawyer','pilot','health-professional'];
@@ -574,7 +576,7 @@
       const data=await response.json(),baseline=Object.values(data.baselines||{}).find(item=>item.modelId===model.id&&item.pathwayId===route.id);
       if(baseline){
         const ids=Array.isArray(baseline.rows)?baseline.rows.map(row=>row.requirementId):[];
-        if(baseline.summary?.totalCredits!==model.totalCredits||ids.length!==model.requirements.length||new Set(ids).size!==ids.length||model.requirements.some(req=>!ids.includes(req.id))||reviewedRoute(route)&&(baseline.qualityReady!==true||baseline.researchStatus!=='research-ready')){state=beforeState;throw Error('The complete saved course choices are temporarily unavailable. Your existing plan is still saved.');}
+        if(baseline.summary?.totalCredits!==model.totalCredits||ids.length!==model.requirements.length||new Set(ids).size!==ids.length||model.requirements.some(req=>!ids.includes(req.id))||publishedRoute(route)&&(baseline.qualityReady!==true||baseline.researchStatus!=='research-ready')){state=beforeState;throw Error('The complete saved course choices are temporarily unavailable. Your existing plan is still saved.');}
         const gcu=route.id==='gcu-bsba-campus'&&model.id==='curriculum-gcu-bsba-campus',planner=window.DegreePlanner;
         const creditBalance=gcu&&planner?.creditBalancePolicy(model);
         if(gcu&&(!creditBalance||baseline.modality!=='campus'||baseline.rows.some(row=>row.status!=='planned'))){state=beforeState;throw Error('The saved course choices need an updated credit check. Your existing plan is still saved.');}

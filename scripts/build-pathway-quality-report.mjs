@@ -5,7 +5,7 @@ import {pathToFileURL} from 'node:url';
 import {createRequire} from 'node:module';
 import {createHash} from 'node:crypto';
 import {readAcademicInputs} from './build-academic-registry.mjs';
-import {assessPathwayQuality} from './pathway-quality.mjs';
+import {assessPathwayQuality,mappingFinding} from './pathway-quality.mjs';
 import {summarizePlanningEstimate} from './planning-estimate-summary.mjs';
 import {requirementsFingerprint} from './review-pathways.mjs';
 import {findResearchReference,checkResearchReference} from '../server/research-references.mjs';
@@ -72,8 +72,25 @@ export function compilePathwayArtifacts({models,entries,catalog,registry,referen
  const baselineIndex={schemaVersion:1,registryRevision:registry.revision,asOf,plannerHash:inputHashes['/planner.js']||null,inputs:inputHashes,privateRecordsIncluded:false,baselines};
  if(planningRates)report.summary.estimates.planning={asOf:planningAsOf,availableRanges:programs.filter(program=>program.estimates.planning.available).length,pricedProviderRanges:programs.filter(program=>program.estimates.planning.status==='planning-range').length,partialProviderRanges:programs.filter(program=>program.estimates.planning.status==='partial-range').length,assumptionBasedTimingRanges:programs.filter(program=>program.estimates.planning.timing?.status==='assumption-based-range').length,notEstimated:programs.filter(program=>!program.estimates.planning.available).length};
  baselineIndex.revision='baselines-v1:'+createHash('sha256').update(JSON.stringify(baselineIndex)).digest('hex');
- const publicationIndex={schemaVersion:1,registryRevision:registry.revision,asOf,privateRecordsIncluded:false,plans:programs.filter(program=>program.publication.ready).map(program=>({modelId:program.modelId,publicationReady:true,level:Catalog.publicationLevel(models.find(model=>model.id===program.modelId)?.level||list(catalog.pathways).find(route=>route.modelId===program.modelId)?.level),modelFingerprint:Catalog.publicationModelFingerprint(models.find(model=>model.id===program.modelId),list(catalog.pathways).find(route=>route.modelId===program.modelId)?.level),routeIds:[...new Set(Object.values(baselines).filter(baseline=>baseline.modelId===program.modelId&&baseline.researchStatus==='research-ready').map(baseline=>baseline.pathwayId))]})).filter(plan=>plan.routeIds.length)};
- return {report,baselineIndex,publicationIndex};
+ // Publication-ready plans open as reviewed plans (plans). A plan whose only open items are course-level (open choices,
+ // conditional awards, unpublished matches) opens too, as a "Needs school confirmation" plan (confirmationPlans, with
+ // publicationReady:false and buildable:true); each unsettled row is labelled from option-review.json.
+ const buildableOnly=program=>program.publication.ready!==true&&program.publication.buildable===true;
+ const indexEntry=program=>({modelId:program.modelId,publicationReady:program.publication.ready===true,...(buildableOnly(program)?{buildable:true}:{}),level:Catalog.publicationLevel(models.find(model=>model.id===program.modelId)?.level||list(catalog.pathways).find(route=>route.modelId===program.modelId)?.level),modelFingerprint:Catalog.publicationModelFingerprint(models.find(model=>model.id===program.modelId),list(catalog.pathways).find(route=>route.modelId===program.modelId)?.level),routeIds:[...new Set(Object.values(baselines).filter(baseline=>baseline.modelId===program.modelId&&(buildableOnly(program)||baseline.researchStatus==='research-ready')).map(baseline=>baseline.pathwayId))]});
+ const publicationIndex={schemaVersion:1,registryRevision:registry.revision,asOf,privateRecordsIncluded:false,plans:programs.filter(program=>program.publication.ready).map(indexEntry).filter(plan=>plan.routeIds.length),confirmationPlans:programs.filter(buildableOnly).map(indexEntry).filter(plan=>plan.routeIds.length)};
+ // Per-option review for buildable confirmation plans: 'confirm' when the match for this exact degree is not published,
+ // 'conditional' when it counts only under a documented condition. Options not listed are published matches.
+ const optionReview={schemaVersion:1,registryRevision:registry.revision,asOf,models:{}};
+ for(const plan of publicationIndex.confirmationPlans){
+  const model=models.find(item=>item.id===plan.modelId),review={};
+  for(const requirement of list(model?.requirements))for(const option of list(requirement.options)){
+   if(option.provider==='University'||review[option.id])continue;
+   const found=mappingFinding(model,requirement,option,{asOf});
+   if(found&&found.blocking!==false)review[option.id]=['conditional-award','provider-eligibility'].includes(found.code)?'conditional':'confirm';
+  }
+  optionReview.models[plan.modelId]=Object.fromEntries(Object.entries(review).sort(([a],[b])=>a.localeCompare(b)));
+ }
+ return {report,baselineIndex,publicationIndex,optionReview};
 }
 export async function runPathwayArtifacts({base=root,check=false}={}){
  const read=async path=>JSON.parse(await readFile(resolve(base,path),'utf8'));
@@ -85,9 +102,9 @@ export async function runPathwayArtifacts({base=root,check=false}={}){
  // Prices and curricula have separate review cycles. A price-only review must
  // neither advance academic evidence dates nor look future-dated against them.
  const planningAsOf=[asOf,planningRates.checkedOn].sort().at(-1);
- const {report,baselineIndex,publicationIndex}=compilePathwayArtifacts({models,entries,catalog,registry,references:await read('dist/data/research-references.json'),asOf,inputHashes,planningRates,planningAsOf});
+ const {report,baselineIndex,publicationIndex,optionReview}=compilePathwayArtifacts({models,entries,catalog,registry,references:await read('dist/data/research-references.json'),asOf,inputHashes,planningRates,planningAsOf});
  publicationIndex.curriculumFingerprint=Catalog.publicationFingerprint(curricula);
- for(const [path,payload] of [['dist/data/pathway-quality-report.json',report],['dist/data/baseline-index.json',baselineIndex],['dist/data/publication-index.json',publicationIndex]]){
+ for(const [path,payload] of [['dist/data/pathway-quality-report.json',report],['dist/data/baseline-index.json',baselineIndex],['dist/data/publication-index.json',publicationIndex],['dist/data/option-review.json',optionReview]]){
   const serialized=JSON.stringify(payload)+'\n';
   if(check){if(await readFile(resolve(base,path),'utf8')!==serialized)throw Error(path+' is stale. Run node scripts/build-pathway-quality-report.mjs.');}
   else{await mkdir(resolve(base,'dist/data'),{recursive:true});await writeFile(resolve(base,path),serialized);}

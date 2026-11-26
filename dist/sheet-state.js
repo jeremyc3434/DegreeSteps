@@ -349,14 +349,16 @@
   }
   function csvCell(value) { const raw=String(value??'');const safe=/^(?:[\t\r\n]|[\s\uFEFF]*[=+\-@])/.test(raw)?"'"+raw:raw;return '"'+safe.replace(/"/g,'""')+'"'; }
   function safeURL(value) { if(typeof value!=='string'||value.length>2048)return '';try{const url=new URL(value);return ['https:','http:'].includes(url.protocol)&&!url.username&&!url.password&&url.href.length<=2048?url.href:'';}catch(_){return '';} }
-  function exportCSV(program,plan,notes) {
+  function exportCSV(program,plan,notes,review) {
     const rows=[['Requirement','Credits','Provider','Course','Progress','Review','Source']];
     for(const row of list(plan?.rows)){
       const req=list(program?.requirements).find(item=>item.id===row.requirementId),option=row.option||{};
       const unmapped=!['reported','confirmed'].includes(row.status)&&['research-gap','conditional-gap','excluded-source'].includes(row.placementReason);
       const progress={planned:'Planned',reported:'Completed',confirmed:'Completed',unresolved:'Unresolved','in-progress':'In progress',earned:'Completed'}[row.status]||row.status||'Unresolved';
-      const review=row.status==='confirmed'?'School-confirmed placement':row.status==='reported'?'Awaiting school evaluation':list(row.conditions).join(' | ') || (option.evidence==='conditional'?'Conditional mapping; confirm with school':option.id?'Confirm current applicability':'Course selection required');
-      rows.push([req?.categoryLabel||req?.title||row.title||row.requirementId,row.credits??req?.credits??'',unmapped?'':option.provider||'',unmapped?'Transfer course not matched':option.title||'',unmapped?'Unmapped':progress,unmapped?'Course-map gap; university-only coursework is not established':review,unmapped?'':safeURL(option.url)]);
+      // A plan that needs school confirmation labels each row as the worksheet does (course-plan-view.js reviewLabel).
+      const reviewed=!['confirmed','reported'].includes(row.status)&&typeof review==='function'?review(req,option):'';
+      const label=row.status==='confirmed'?'School-confirmed placement':row.status==='reported'?'Awaiting school evaluation':reviewed || list(row.conditions).join(' | ') || (option.evidence==='conditional'?'Conditional mapping; confirm with school':option.id?'Confirm current applicability':'Course selection required');
+      rows.push([req?.categoryLabel||req?.title||row.title||row.requirementId,row.credits??req?.credits??'',unmapped?'':option.provider||'',unmapped?'Transfer course not matched':option.title||'',unmapped?'Unmapped':progress,unmapped?'Course-map gap; university-only coursework is not established':label,unmapped?'':safeURL(option.url)]);
     }
     // Private sheet notes are intentionally absent from the seven-column export.
     return rows.map(row=>row.map(csvCell).join(',')).join('\r\n')+'\r\n';

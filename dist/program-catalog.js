@@ -85,23 +85,32 @@
  function attachPublicationIndex(catalog,index,registry){
   if(index?.schemaVersion!==1||index.privateRecordsIncluded!==false||!/^academic-v1:[a-f0-9]{64}$/.test(index.registryRevision||'')||index.curriculumFingerprint!==publicationFingerprint(registry)||!Array.isArray(index.plans)||index.plans.length>5000)throw Error('The reviewed plan list does not match the current curriculum.');
   const ids=new Set();
+  if(index.confirmationPlans!==undefined&&(!Array.isArray(index.confirmationPlans)||index.confirmationPlans.length>5000))throw Error('The reviewed plan list does not match the current curriculum.');
+  // Confirmation plans fail closed: an entry that does not bind exactly to this catalog is left out (not openable).
+  const binds=plan=>{const entry=array(registry.models).find(item=>item.id===plan?.modelId);return Boolean(entry&&identified(plan.modelId)&&!ids.has(plan.modelId)&&plan.publicationReady===false&&plan.buildable===true&&levels.includes(plan.level)&&/^content-v1:[a-f0-9]{16}$/.test(plan.modelFingerprint||'')&&Array.isArray(plan.routeIds)&&plan.routeIds.length&&new Set(plan.routeIds).size===plan.routeIds.length&&plan.routeIds.every(id=>array(entry.routeIds).includes(id)&&array(catalog.pathways).some(route=>route.id===id&&route.modelId===plan.modelId&&publicationLevel(route.level)===plan.level))&&entry.readyTemplate===true&&entry.coverage==='complete');};
   for(const plan of index.plans){
    const entry=array(registry.models).find(item=>item.id===plan?.modelId);
    if(!entry||!identified(plan.modelId)||ids.has(plan.modelId)||plan.publicationReady!==true||!levels.includes(plan.level)||!/^content-v1:[a-f0-9]{16}$/.test(plan.modelFingerprint||'')||!Array.isArray(plan.routeIds)||!plan.routeIds.length||new Set(plan.routeIds).size!==plan.routeIds.length||plan.routeIds.some(id=>!array(entry.routeIds).includes(id)||!array(catalog.pathways).some(route=>route.id===id&&route.modelId===plan.modelId&&publicationLevel(route.level)===plan.level))||entry.readyTemplate!==true||entry.coverage!=='complete')throw Error('A reviewed plan has an invalid curriculum binding.');
    ids.add(plan.modelId);
   }
-  return {...catalog,publicationIndex:{...copy(index),available:true}};
+  const confirmationPlans=array(index.confirmationPlans).filter(plan=>{const ok=binds(plan);if(ok)ids.add(plan.modelId);return ok;});
+  return {...catalog,publicationIndex:{...copy(index),...(index.confirmationPlans!==undefined?{confirmationPlans:copy(confirmationPlans)}:{}),available:true}};
  }
- function publishedPlans(catalog,models=[]){
+ function publishedPlans(catalog,models=[]){return indexedPlans(catalog,models,entry=>entry?.publicationReady===true,'plans');}
+ // Plans whose only open items are course-level (open choices, conditional awards, unpublished matches): they open
+ // as "Needs school confirmation" plans and every unsettled row is labelled in the worksheet.
+ function confirmationPlans(catalog,models=[]){return indexedPlans(catalog,models,entry=>entry?.publicationReady===false&&entry.buildable===true,'confirmationPlans');}
+ function indexedPlans(catalog,models,accept,list='plans'){
   if(catalog?.publicationIndex?.available!==true)return [];
-  const indexed=new Map(array(catalog.publicationIndex.plans).map(plan=>[plan.modelId,plan])),loaded=new Map(array(models).map(model=>[model.id,model]));
-  return structuralPlans(catalog,models).filter(route=>{const entry=indexed.get(route.modelId),model=loaded.get(route.modelId);return entry?.publicationReady===true&&array(entry.routeIds).includes(route.id)&&publicationLevel(route.level)===entry.level&&(!model||entry.modelFingerprint===publicationModelFingerprint(model,entry.level));});
+  const indexed=new Map(array(catalog.publicationIndex[list]).map(plan=>[plan.modelId,plan])),loaded=new Map(array(models).map(model=>[model.id,model]));
+  return structuralPlans(catalog,models).filter(route=>{const entry=indexed.get(route.modelId),model=loaded.get(route.modelId);return accept(entry)&&array(entry.routeIds).includes(route.id)&&publicationLevel(route.level)===entry.level&&(!model||entry.modelFingerprint===publicationModelFingerprint(model,entry.level));});
  }
  // The one rule every public "Build this plan" action follows, and the same check the portal applies before it opens a
- // plan: the route is a publication-ready plan for its exact curriculum (publishedPlans). A complete plan that still
- // needs school confirmation is not openable; it gets a "Request this plan" action instead (planRequestHref).
+ // plan: the route is a publication-ready plan for its exact curriculum (publishedPlans), or a complete plan whose only
+ // open items are course-level and are labelled row by row (confirmationPlans). A plan blocked by a missing or
+ // conflicting school-level rule is not openable; it gets a "Request this plan" action instead (planRequestHref).
  // openablePlanIds computes the set once for a whole list; canOpenPublicPlan answers for one route.
- function openablePlanIds(catalog,models=[]){return new Set(publishedPlans(catalog,models).map(route=>route.id));}
+ function openablePlanIds(catalog,models=[]){return new Set([...publishedPlans(catalog,models),...confirmationPlans(catalog,models)].map(route=>route.id));}
  function canOpenPublicPlan(route,catalog,models=[]){return Boolean(route&&identified(route.id))&&openablePlanIds(catalog,models).has(route.id);}
  // The existing research request for a degree DegreeSteps can't open yet: request-plan.html with the school's own
  // degree page, so research starts from the official requirements. Without an official https page it opens the
@@ -292,5 +301,5 @@
  }
  function modelsForRoutes(routes,options={}){return loadModels([...new Set(array(Array.isArray(routes)?routes:routes?.pathways).filter(route=>route?.modelId).map(route=>route.modelId))],options);}
  async function load(base,options={}){return loadIndex(merge(base,await jsonFile('data/program-catalog.json',options)),options);}
- return Object.freeze({merge,search,load,field,modelFiles,variants,courseChoiceCounts,modelReadiness,isPlanAvailable,availablePlans,publishedPlans,planLibraryRoutes,openablePlanIds,canOpenPublicPlan,planRequestHref,needsSchoolConfirmation,publicationFingerprint,publicationModelFingerprint,publicationLevel,attachPublicationIndex,planChoiceCount,resolveTarget,rememberPlan,targetIdentity,targetFingerprint,planHistoryId,planSnapshot,attachRegistry,loadIndex,loadModels,modelsForRoutes,validateRegistry,validateModel,discover,validateDiscovery,attachSourceCurricula,sourceModels,rememberDiscovery});
+ return Object.freeze({merge,search,load,field,modelFiles,variants,courseChoiceCounts,modelReadiness,isPlanAvailable,availablePlans,publishedPlans,confirmationPlans,planLibraryRoutes,openablePlanIds,canOpenPublicPlan,planRequestHref,needsSchoolConfirmation,publicationFingerprint,publicationModelFingerprint,publicationLevel,attachPublicationIndex,planChoiceCount,resolveTarget,rememberPlan,targetIdentity,targetFingerprint,planHistoryId,planSnapshot,attachRegistry,loadIndex,loadModels,modelsForRoutes,validateRegistry,validateModel,discover,validateDiscovery,attachSourceCurricula,sourceModels,rememberDiscovery});
 }));

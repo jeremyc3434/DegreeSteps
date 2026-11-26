@@ -511,3 +511,6 @@ body.course-plan-page #sheet-school-check { padding: 0; margin: 0 0 18px; }
 .slot-choice-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
 .slot-community{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:12px}
 @media (max-width:560px){.slot-choice-form{grid-template-columns:minmax(0,1fr)}}
+/* Rows a confirmation plan still has to settle with the school: You choose / Counts if / Confirm with school. */
+body .course-plan-evidence.is-unsettled, body.course-plan-page .course-plan-evidence.is-unsettled { color: #8a5a00; font-weight: 600; text-decoration-color: #d9a441; }
+.sheet-row-review { margin: 8px 0; }
