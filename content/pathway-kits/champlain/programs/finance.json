@@ -606,6 +606,44 @@
         }
       ],
       "basis": "120 degree credits minus the 90-credit transfer ceiling."
+    },
+    "alternativeMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26",
+          "text": "CCO may apply a maximum of 45 credits towards an associate degree and 90 credits towards a bachelor’s degree for any combination of direct transfer credit options (i.e courses from regionally-accredited institutions, and described in Transfer of Credit policy) and the PLA options described above."
+        },
+        {
+          "sourceId": "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26",
+          "text": "Alternative course provides"
+        }
+      ],
+      "basis": "Champlain’s catalog applies one combined maximum (45 associate, 90 bachelor’s) to transfer credit and every PLA option, which include ACE/NCCRS-evaluated alternative course providers. Its only narrower limit is for examination programs such as CLEP or AP (30 associate, 60 bachelor’s), which this plan does not use.",
+      "reviewed": "2026-11-26"
+    },
+    "upperLevelMinimum": {
+      "value": null,
+      "status": "none-published",
+      "sourceIds": [
+        "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26",
+          "text": "Earn at least 120 credit hours, 30 of which must be earned at Champlain College."
+        },
+        {
+          "sourceId": "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26",
+          "text": "Students in bachelor’s degree programs must complete 15 hours of 300-level or higher courses in the major."
+        }
+      ],
+      "basis": "Champlain’s bachelor’s degree requirements set no degree-wide upper-level minimum. Their only upper-level rule is 15 credits of 300-level or higher major courses at Champlain. This plan’s named 300-level or higher major courses with no outside option total 21 credits, so it meets that rule.",
+      "reviewed": "2026-11-26"
     }
   },
   "modelFields": {
@@ -641,6 +679,18 @@
     },
     "coverage": "complete",
     "completeExecutablePathway": false,
-    "coverageLabel": "Complete 120-credit Finance ledger from Champlain College Online's current catalog page, including 7 open course choice block(s) (43% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table."
+    "coverageLabel": "Complete 120-credit Finance ledger from Champlain College Online's current catalog page, including 7 open course choice block(s) (43% of credits) you fill, with outside options from Sophia's published Champlain College Online partner table.",
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "no-degree-wide-upper-level-minimum",
+        "sourceIds": [
+          "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26"
+        ],
+        "checkedOn": "2026-11-26",
+        "message": "Champlain’s bachelor’s degree requirements set no degree-wide upper-level minimum. Their only upper-level rule is 15 credits of 300-level or higher major courses at Champlain. This plan’s named 300-level or higher major courses with no outside option total 21 credits, so it meets that rule."
+      }
+    ]
   }
 }

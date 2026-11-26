@@ -620,6 +620,25 @@
         }
       ],
       "basis": "Sophia credit is ACE-recommended, which the school counts as non-traditional transfer credit."
+    },
+    "upperLevelMinimum": {
+      "value": null,
+      "status": "none-published",
+      "sourceIds": [
+        "apus-apu-catalog-bachelors-programs-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "apus-apu-catalog-bachelors-programs-2026-11-26",
+          "text": "Bachelor degree programs require a minimum of 120 semester hours and a GPA of 2.0 for graduation."
+        },
+        {
+          "sourceId": "apus-apu-catalog-bachelors-programs-2026-11-26",
+          "text": "In most cases, these are comprised of general education, major, and elective requirements."
+        }
+      ],
+      "basis": "APU’s bachelor’s degree requirements set a total and GPA but no degree-wide upper-level minimum; upper-level courses are the named courses in each program’s published curriculum.",
+      "reviewed": "2026-11-26"
     }
   },
   "modelFields": {
@@ -655,6 +674,18 @@
     },
     "coverage": "complete",
     "completeExecutablePathway": false,
-    "coverageLabel": "Complete 120-credit Bachelor of Science in Accounting ledger from American Public University System's current catalog page, including 5 open course choice block(s) (35% of credits) you fill, with outside options from Sophia's published American Public University System partner table."
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Accounting ledger from American Public University System's current catalog page, including 5 open course choice block(s) (35% of credits) you fill, with outside options from Sophia's published American Public University System partner table.",
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "no-degree-wide-upper-level-minimum",
+        "sourceIds": [
+          "apus-apu-catalog-bachelors-programs-2026-11-26"
+        ],
+        "checkedOn": "2026-11-26",
+        "message": "APU’s bachelor’s degree requirements set a total and GPA but no degree-wide upper-level minimum; upper-level courses are the named courses in each program’s published curriculum."
+      }
+    ]
   }
 }

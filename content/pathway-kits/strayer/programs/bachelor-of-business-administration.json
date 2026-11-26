@@ -530,6 +530,44 @@
         }
       ],
       "basis": "180 degree credits minus the 126-credit transfer ceiling."
+    },
+    "alternativeMaxCredits": {
+      "value": 126,
+      "creditSystem": "quarter",
+      "sourceIds": [
+        "strayer-undergraduate-admission-transfer-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "text": "No more than 126 quarter hours of transfer credit from all sources may be applied toward a bachelor’s degree"
+        },
+        {
+          "sourceId": "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "text": "no more than 63 quarter hours of transfer credit from all sources may be applied toward an associate degree"
+        },
+        {
+          "sourceId": "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "text": "Strayer accepts credits from acceptable organizations that have been reviewed by the American Council on Education, National College Credit Recommendation Service"
+        }
+      ],
+      "basis": "Strayer treats ACE- and NCCRS-reviewed credit as transfer credit under its all-sources maximum (126 quarter hours bachelor’s, 63 associate). Its 30% cap applies to credit for life or work experience, a different source.",
+      "reviewed": "2026-11-26"
+    },
+    "upperLevelMinimum": {
+      "value": null,
+      "status": "none-published",
+      "sourceIds": [
+        "strayer-degree-conferral-requirements-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "strayer-degree-conferral-requirements-2026-11-23",
+          "text": "Complete at least 90 quarter credit hours of course work for an associate degree and 180 quarter credit hours of course work for a bachelor’s degree with a minimum cumulative GPA of 2.0."
+        }
+      ],
+      "basis": "Strayer’s degree conferral requirements set the total, GPA and residency for a bachelor’s degree but no degree-wide upper-level minimum.",
+      "reviewed": "2026-11-26"
     }
   },
   "modelFields": {
@@ -567,6 +605,18 @@
     },
     "coverage": "complete",
     "completeExecutablePathway": false,
-    "coverageLabel": "Complete 180-credit Bachelor of Business Administration ledger from Strayer University's current catalog page, including 2 open course choice block(s) (38% of credits) you fill, with outside options from Sophia's published Strayer University partner table."
+    "coverageLabel": "Complete 180-credit Bachelor of Business Administration ledger from Strayer University's current catalog page, including 2 open course choice block(s) (38% of credits) you fill, with outside options from Sophia's published Strayer University partner table.",
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "no-degree-wide-upper-level-minimum",
+        "sourceIds": [
+          "strayer-degree-conferral-requirements-2026-11-23"
+        ],
+        "checkedOn": "2026-11-26",
+        "message": "Strayer’s degree conferral requirements set the total, GPA and residency for a bachelor’s degree but no degree-wide upper-level minimum."
+      }
+    ]
   }
 }

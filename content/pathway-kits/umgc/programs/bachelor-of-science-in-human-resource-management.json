@@ -633,6 +633,53 @@
         }
       ],
       "basis": "120 degree credits minus the 90-credit transfer ceiling. The school also requires 15 upper-level credits at the school; 36 upper-level credits in this program (named courses and upper-level-only choices) have no outside option, so the plan always meets it."
+    },
+    "alternativeMaxCredits": {
+      "value": 90,
+      "creditSystem": "semester",
+      "sourceIds": [
+        "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+        "umgc-catalog-2026-2027-noncollegiate-credit-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "45 credits from all sources combined toward the associate degree"
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-degree-policies-2026-11-23",
+          "text": "90 credits from all sources combined toward the bachelor’s degree"
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-noncollegiate-credit-2026-11-26",
+          "text": "UMGC may accept for credit noncollegiate courses and training"
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-noncollegiate-credit-2026-11-26",
+          "text": "or the National College Credit Recommendation Service (NCCRS, formerly PONSI)."
+        }
+      ],
+      "basis": "UMGC counts ACE- and NCCRS-evaluated noncollegiate courses as an external source of credit, limited by the combined maximum from all external sources (45 associate, 90 bachelor’s). No separate ceiling for ACE/NCCRS credit is published.",
+      "reviewed": "2026-11-26"
+    },
+    "upperLevelMinimum": {
+      "value": null,
+      "status": "none-published",
+      "sourceIds": [
+        "umgc-catalog-2026-2027-bachelor-requirements-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-catalog-2026-2027-bachelor-requirements-2026-11-26",
+          "text": "You must complete a minimum of 120 credits."
+        },
+        {
+          "sourceId": "umgc-catalog-2026-2027-bachelor-requirements-2026-11-26",
+          "text": "At least 15 credits of upper-level coursework (i.e., earned in courses numbered 300 to 499) must be completed at UMGC."
+        }
+      ],
+      "basis": "UMGC’s bachelor’s degree requirements set no degree-wide upper-level minimum. Their only upper-level rule is 15 upper-level credits (courses numbered 300 to 499) completed at UMGC. This plan’s named upper-level courses with no outside option total 33 credits, so it meets that rule.",
+      "reviewed": "2026-11-26"
     }
   },
   "modelFields": {
@@ -678,6 +725,18 @@
     "majorResidencyBasisCredits": 27,
     "coverage": "complete",
     "completeExecutablePathway": false,
-    "coverageLabel": "Complete 120-credit Bachelor of Science in Human Resource Management ledger from University of Maryland Global Campus's current catalog page, including 6 open course choice block(s) (37% of credits) you fill, with outside options from Sophia's published University of Maryland Global Campus partner table."
+    "coverageLabel": "Complete 120-credit Bachelor of Science in Human Resource Management ledger from University of Maryland Global Campus's current catalog page, including 6 open course choice block(s) (37% of credits) you fill, with outside options from Sophia's published University of Maryland Global Campus partner table.",
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "no-degree-wide-upper-level-minimum",
+        "sourceIds": [
+          "umgc-catalog-2026-2027-bachelor-requirements-2026-11-26"
+        ],
+        "checkedOn": "2026-11-26",
+        "message": "UMGC’s bachelor’s degree requirements set no degree-wide upper-level minimum. Their only upper-level rule is 15 upper-level credits (courses numbered 300 to 499) completed at UMGC. This plan’s named upper-level courses with no outside option total 33 credits, so it meets that rule."
+      }
+    ]
   }
 }

@@ -616,5 +616,49 @@
     "bachelor-of-science-in-criminal-justice",
     "bachelor-of-science-in-information-technology",
     "health-services-administration"
-  ]
+  ],
+  "policies": {
+    "lifeWorkExperienceMax": {
+      "value": 0.3,
+      "scope": "Credit for life or work experience only.",
+      "sourceIds": [
+        "strayer-undergraduate-admission-transfer-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "text": "no more than 30% of credit in a student’s degree program may be awarded from life or work experience"
+        }
+      ],
+      "checked": "2026-11-26"
+    },
+    "transferCreditAge": {
+      "value": 10,
+      "unit": "years",
+      "scope": "Accounting and computer-related courses only (except a CIS101 equivalent).",
+      "sourceIds": [
+        "strayer-undergraduate-admission-transfer-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "text": "Credits from courses in accounting and computer-related areas are subject to a 10-year limitation when being evaluated"
+        }
+      ],
+      "checked": "2026-11-26"
+    },
+    "duplicateCredit": {
+      "value": "one-source-only",
+      "sourceIds": [
+        "strayer-undergraduate-admission-transfer-limits-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "strayer-undergraduate-admission-transfer-limits-2026-11-23",
+          "text": "If a student submits transcripts from two institutions or sources that include credit for the same or similar course, credit from only one source will be posted."
+        }
+      ],
+      "checked": "2026-11-26"
+    }
+  }
 }

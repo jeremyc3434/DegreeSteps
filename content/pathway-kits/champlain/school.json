@@ -295,6 +295,20 @@
       "kind": "university",
       "sha256": "5f8b3e7eba182763a267a878b2f7bb451e0dad6c84be93048182ae00f6295b16",
       "sourceContentHash": "5f8b3e7eba182763a267a878b2f7bb451e0dad6c84be93048182ae00f6295b16"
+    },
+    {
+      "id": "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26",
+      "title": "Champlain College Online 2026–2027 Undergraduate Catalog: Academic Information and Policies (PLA credit award guidelines, degree requirements, transfer of credits)",
+      "url": "https://catalog.champlain.edu/content.php?catoid=71&navoid=2026",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/8740d501ede745fb.txt"
+    },
+    {
+      "id": "champlain-prior-learning-credit-2026-11-26",
+      "title": "Champlain College Online: Credit for Prior Learning & Experience",
+      "url": "https://online.champlain.edu/admission/prior-learning-experience-credit",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/1658af3e37e0ffb1.txt"
     }
   ],
   "programDefaults": {
@@ -2790,5 +2804,39 @@
         }
       ]
     }
-  ]
+  ],
+  "policies": {
+    "examinationProgramMax": {
+      "value": {
+        "associate": 30,
+        "bachelor": 60
+      },
+      "creditSystem": "semester",
+      "scope": "Examination programs such as CLEP and AP only.",
+      "sourceIds": [
+        "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-cco-catalog-2026-2027-academic-policies-2026-11-26",
+          "text": "The maximum number of credits that can be earned through any examination program (e.g. CLEP, AP) is 30 for an associate degree and 60 for a bachelor’s degree."
+        }
+      ],
+      "checked": "2026-11-26"
+    },
+    "alternativeCreditBeforeEnrollment": {
+      "value": true,
+      "scope": "Sophia and Study.com credit earned after enrolling at Champlain may not be accepted; finish those courses before you enroll.",
+      "sourceIds": [
+        "champlain-prior-learning-credit-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "champlain-prior-learning-credit-2026-11-26",
+          "text": "Credits earned through sophia.org prior to enrollment at CCO are eligible for transfer, credits earned at sophia.org after enrolling at CCO may not be considered."
+        }
+      ],
+      "checked": "2026-11-26"
+    }
+  }
 }

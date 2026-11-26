@@ -11,7 +11,7 @@ const root=resolve(import.meta.dirname,'..'),output=resolve(root,'dist/data/plan
 const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 
 /** Student-facing questions. School-level findings become one concrete question each; course-level findings are counted. */
-const policyQuestion={alternativeMaxCredits:'Ask the school: what is the most ACE- or NCCRS-recommended credit you accept toward this degree?',externalMaxCredits:'Ask the school: what is the most transfer credit you accept toward this degree?',institutionMinCredits:'Ask the school: how many credits must I earn at the school itself for this degree?'};
+const policyQuestion={alternativeMaxCredits:'Ask the school: what is the most ACE- or NCCRS-recommended credit you accept toward this degree?',externalMaxCredits:'Ask the school: what is the most transfer credit you accept toward this degree?',institutionMinCredits:'Ask the school: how many credits must I earn at the school itself for this degree?',upperMinCredits:'Ask the school: how many upper-level (300- and 400-level) credits does this degree require, and can outside courses count toward them?'};
 const researchQuestion=[
   [/time limit/i,'Ask the school: is there a time limit on how old transfer credit can be? Its published sources disagree.'],
   [/catalog eligibility|written transfer evaluation|residency allocation/i,'Ask the school for a written transfer evaluation that confirms these courses for your catalog year, including any major-course residency rules.'],
@@ -23,7 +23,7 @@ const generic='Some of the school’s published rules for this program are still
 const plural=(n,word)=>n+' '+word+(n===1?'':/(ch|sh|s|x)$/.test(word)?'es':'s');
 export function questionsFor(findings){
   const blocking=findings.filter(f=>f.blocking),out=[];let unmatched=false;
-  for(const f of blocking.filter(f=>f.code==='policy-unresolved'))out.push(policyQuestion[f.field]||generic);
+  for(const f of blocking.filter(f=>f.code==='policy-unresolved'))out.push(f.question||policyQuestion[f.field]||generic);
   for(const f of blocking.filter(f=>f.code==='unresolved-research')){const hit=researchQuestion.find(([re])=>re.test(f.message||''));if(hit)out.push(hit[1]);else unmatched=true;}
   const optionsFor=codes=>new Set(blocking.filter(f=>codes.includes(f.code)).flatMap(f=>f.optionIds?.length?f.optionIds:[f.code+':'+(f.requirementIds||[]).join(',')]));
   const matches=optionsFor(['mapping-scope','mapping-applicability','conditional-award']).size,providers=optionsFor(['provider-eligibility']).size;

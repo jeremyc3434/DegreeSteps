@@ -95,6 +95,20 @@
       "url": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=26,30,35&columns=2",
       "checked": "2026-11-23",
       "capture": "content/source-captures/8b7a594694f8d28f.txt"
+    },
+    {
+      "id": "umgc-catalog-2026-2027-noncollegiate-credit-2026-11-26",
+      "title": "UMGC 2026–2027 catalog: credit from noncollegiate courses and training (PDF p. 20)",
+      "url": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=20&columns=2",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/87a7cb2586ea8967.txt"
+    },
+    {
+      "id": "umgc-catalog-2026-2027-bachelor-requirements-2026-11-26",
+      "title": "UMGC 2026–2027 catalog: bachelor’s degree requirements (PDF pp. 34–35)",
+      "url": "https://www.umgc.edu/content/dam/umgc/documents/upload/catalogs/2026-2027-catalog.pdf#pages=34,35&columns=2",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/c6ed9fdcf1527a8a.txt"
     }
   ],
   "publish": {
@@ -1291,5 +1305,21 @@
     "bachelor-of-science-in-psychology",
     "bachelor-of-science-in-social-science",
     "bachelor-of-science-in-sustainable-value-chain"
-  ]
+  ],
+  "policies": {
+    "gradedCourseworkInMajor": {
+      "value": 0.5,
+      "scope": "At least half the major’s credits must be graded coursework; ACE/NCCRS noncollegiate credit is not graded coursework. Met by the half-major residency rule, because UMGC courses are graded.",
+      "sourceIds": [
+        "umgc-catalog-2026-2027-bachelor-requirements-2026-11-26"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umgc-catalog-2026-2027-bachelor-requirements-2026-11-26",
+          "text": "Credits earned by examination, industry certifications, portfolio assessment, and noncollegiate training do not count as graded coursework."
+        }
+      ],
+      "checked": "2026-11-26"
+    }
+  }
 }

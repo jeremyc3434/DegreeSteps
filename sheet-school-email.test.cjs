@@ -35,3 +35,11 @@ test('emails are addressed to the transfer contact each school publishes, chosen
  const phoenix=Sheet.schoolEmail(index,confirmation[0][0],{school:'University of Phoenix'});assert.match(phoenix.mailto,/^mailto:\?subject=/);assert.match(phoenix.contact.contactPage,/^https:\/\/www\.phoenix\.edu\//);
  assert.equal(Sheet.schoolTransferContact({school:'Unknown U'}),null);
 });
+
+test('reviewed school-specific policy questions become matching asks in the student’s email',()=>{
+ const upper=Sheet.schoolEmail(index,'columbia-southern-b-s-accounting',{school:'Columbia Southern University'});
+ assert(upper.questions.some(q=>/How many upper-level credits does this degree require, and which upper-level courses must I take at Columbia Southern University itself\?/.test(q)),upper.questions.join(' | '));
+ const bellevue=Sheet.schoolEmail(index,'bellevue-bachelor-of-science-in-accounting',{school:'Bellevue University'});
+ assert(bellevue.questions.some(q=>/90-hour limit on experiential\/prior learning/.test(q)),bellevue.questions.join(' | '));
+ for(const [id,plan] of confirmation)assert.doesNotMatch(plan.questions.join(' '),/\bn-recommended\b/,id);
+});
