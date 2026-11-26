@@ -1,0 +1,412 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "mba-information-technology-management",
+  "modelId": "curriculum-wgu-catalog-b83ee97289a0732a",
+  "routeIds": [
+    "wgu-catalog-b83ee97289a0732a"
+  ],
+  "title": "MBA Information Technology Management",
+  "level": "master",
+  "catalog": "201408",
+  "totalCredits": 35,
+  "review": {
+    "status": "reviewed",
+    "reviewer": "DegreeSteps exact institutional-catalog graduate review",
+    "reviewedOn": "2026-11-26"
+  },
+  "sources": [
+    {
+      "id": "wgu-mba-family-mbaitm-program-20261126",
+      "title": "MBA Information Technology Management: current tuition, resources, CBE and admission",
+      "url": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-it-management-program.html",
+      "kind": "university",
+      "roles": [
+        "pricing",
+        "admissions",
+        "pace"
+      ],
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/cb97d614df755c77.txt",
+      "sha256": "cb97d614df755c77897118d948a52b684bca2046033becd3813568f6cb8b9134",
+      "sourceContentHash": "sha256:cb97d614df755c77897118d948a52b684bca2046033becd3813568f6cb8b9134",
+      "originalRetrievedAt": "2026-11-26T00:51:22.906Z",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "level": "master",
+        "modality": "online",
+        "programs": [
+          {
+            "programCode": "MBAITM",
+            "catalog": "201408"
+          }
+        ]
+      }
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "wgu-mba-family-catalog-20261126",
+      "text": "MBAITM 201408 Total CUs: 35"
+    },
+    {
+      "sourceId": "wgu-mba-family-residency-20261126",
+      "text": "For graduate degree programs, students must earn at least 50% of the required Degree Competency Units directly from the program the student is actively pursuing at WGU."
+    },
+    {
+      "sourceId": "wgu-mba-family-residency-20261126",
+      "text": "Residency requires students to complete some portion of the Degree Competency Units (CUs) earned directly within the WGU program the student is actively pursuing, in addition to any required capstone course(s) or clinical(s)."
+    }
+  ],
+  "modelFields": {
+    "coverage": "complete",
+    "completeExecutablePathway": true,
+    "paceSourceUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-it-management-program.html",
+    "institutionMinCredits": 21.5,
+    "externalMaxCredits": 17.5,
+    "policySourceIds": [
+      "wgu-mba-family-catalog-20261126",
+      "wgu-mba-family-capstones-20261126",
+      "wgu-mba-family-residency-20261126"
+    ],
+    "policyEvidence": {
+      "institutionMinCredits": {
+        "value": 21.5,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-mba-family-residency-20261126",
+          "wgu-mba-family-catalog-20261126",
+          "wgu-mba-family-capstones-20261126"
+        ],
+        "derived": true,
+        "calculation": "0.5 * totalCredits + capstoneCredits",
+        "basis": "Conservative policy-derived minimum: 50% of active graduate degree CUs in addition to the named four-CU required capstone. The numeric result is calculated from the two policy clauses and program ledger; it is not a university-printed program minimum."
+      },
+      "externalMaxCredits": {
+        "value": 17.5,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-mba-family-residency-20261126"
+        ],
+        "note": "Necessary ceiling implied by the graduate residency fraction, not a claim that any outside course is accepted. Additional capstone residency is enforced separately."
+      }
+    },
+    "residencyPolicy": {
+      "type": "institution-fraction-with-capstone-exclusion",
+      "creditScope": "active-program",
+      "creditSystem": "competency-unit",
+      "fraction": 0.5,
+      "capstoneRequirementIds": [
+        "mbaitm-mba-information-technology-management-capstone"
+      ],
+      "capstoneCredits": 4,
+      "sourceIds": [
+        "wgu-mba-family-residency-20261126",
+        "wgu-mba-family-catalog-20261126",
+        "wgu-mba-family-capstones-20261126"
+      ],
+      "interpretationStatus": "verified-additional-capstone",
+      "calculatedMinimumInstitutionCUs": 21.5,
+      "primaryPolicySections": [
+        "IV.2",
+        "IV.3.a",
+        "IV.3.b.ii"
+      ],
+      "conservativeSufficientCondition": {
+        "minimumNonCapstoneInstitutionCUs": 17.5,
+        "basisCredits": 35,
+        "derivation": "50% of required graduate degree CUs earned directly in the active program in addition to required capstone CUs."
+      },
+      "capstoneEvidence": "C218 is explicitly named as this program's capstone in the current institutional ledger and capstone course description."
+    },
+    "curriculumReview": {
+      "id": "wgu-mba-family-review-2026-11-26",
+      "checkedOn": "2026-11-26",
+      "programCode": "MBAITM",
+      "catalogTerm": "201408",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126",
+        "wgu-mba-family-capstones-20261126"
+      ],
+      "requirementsComplete": true,
+      "outsideAwardsProposed": 0
+    },
+    "policyReview": [
+      {
+        "field": "upperMinCredits",
+        "status": "resolved",
+        "resolution": "covered-by-complete-named-curriculum",
+        "sourceIds": [
+          "wgu-mba-family-catalog-20261126"
+        ],
+        "message": "The complete named graduate CU ledger is enforced directly; no undergraduate upper-division credit rule is imported."
+      }
+    ],
+    "pricing": {
+      "model": "subscription",
+      "amount": 5050,
+      "tuitionPerTerm": 4850,
+      "resourceFeePerTerm": 200,
+      "includesResourceFee": true,
+      "period": "6 months",
+      "currency": "USD",
+      "sourceUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-it-management-program.html",
+      "sourceIds": [
+        "wgu-mba-family-mbaitm-program-20261126"
+      ],
+      "checkedOn": "2026-11-26",
+      "notes": [
+        "Published tuition and mandatory resources per six-month term. Actual term count and other applicable personal charges are separate; the older one-year promotional amount is not used."
+      ]
+    },
+    "admissionRequirements": [
+      {
+        "message": "Submit official transcripts establishing a bachelor's degree from a recognized, accredited institution. The program does not require the GRE or GMAT.",
+        "sourceIds": [
+          "wgu-mba-family-mbaitm-program-20261126"
+        ]
+      }
+    ],
+    "pacePolicy": {
+      "sourceIds": [
+        "wgu-mba-family-mbaitm-program-20261126"
+      ],
+      "basis": "Fully online competency-based progress; work through courses as mastery is demonstrated with the assigned program mentor. No fixed completion duration is promised."
+    },
+    "rulesNotes": [
+      "All 35 planned CUs are taken in the active WGU graduate program. No undergraduate ACE, alternative-provider or outside graduate-course award is proposed.",
+      "The applicable program catalog 201408 and all eleven course codes are printed in the current November 2026 institutional catalog; the program catalog is not relabeled as 202611.",
+      "Graduate transfer eligibility varies by program. The residency ceiling is a necessary academic constraint and does not establish a particular incoming award.",
+      "The printed standard-path terms describe WGU's standard plan, not a guaranteed completion schedule or a formal prerequisite matrix."
+    ],
+    "unresolved": [
+      {
+        "owner": "student",
+        "status": "personal-task",
+        "message": "Submit the graduate application and official bachelor's transcripts and meet WGU's individual admission requirements.",
+        "sourceIds": [
+          "wgu-mba-family-mbaitm-program-20261126"
+        ]
+      }
+    ],
+    "mappingCheckedOn": "2026-11-26"
+  },
+  "modelSourceIds": [
+    "wgu-mba-family-catalog-20261126",
+    "wgu-mba-family-capstones-20261126",
+    "wgu-mba-family-residency-20261126",
+    "wgu-mba-family-mbaitm-program-20261126"
+  ],
+  "requirements": [
+    {
+      "id": "mbaitm-managing-organizations-and-leading-people",
+      "code": "C200",
+      "title": "Managing Organizations and Leading People",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 1,
+      "publishedCommonCourseNumber": "MGMT 5000",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "MGMT 5000 C200 Managing Organizations and Leading People 3 1"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-it-project-management",
+      "code": "MGT2",
+      "title": "IT Project Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 1,
+      "publishedCommonCourseNumber": "ITM 5000",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "ITM 5000 MGT2 IT Project Management 3 1"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-managing-human-capital",
+      "code": "C202",
+      "title": "Managing Human Capital",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 1,
+      "publishedCommonCourseNumber": "HRM 5010",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "HRM 5010 C202 Managing Human Capital 3 1"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-marketing",
+      "code": "C212",
+      "title": "Marketing",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 2,
+      "publishedCommonCourseNumber": "MKTG 5000",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "MKTG 5000 C212 Marketing 3 2"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-it-strategic-solutions",
+      "code": "MMT2",
+      "title": "IT Strategic Solutions",
+      "credits": 4,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 2,
+      "publishedCommonCourseNumber": "ITM 6000",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "ITM 6000 MMT2 IT Strategic Solutions 4 2"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-accounting-for-decision-makers",
+      "code": "C213",
+      "title": "Accounting for Decision Makers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 2,
+      "publishedCommonCourseNumber": "ACCT 5000",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "ACCT 5000 C213 Accounting for Decision Makers 3 2"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-ethical-leadership",
+      "code": "C206",
+      "title": "Ethical Leadership",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 3,
+      "publishedCommonCourseNumber": "MGMT 6000",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "MGMT 6000 C206 Ethical Leadership 3 3"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-financial-management",
+      "code": "C214",
+      "title": "Financial Management",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 3,
+      "publishedCommonCourseNumber": "FINC 6000",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "FINC 6000 C214 Financial Management 3 3"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-data-driven-decision-making",
+      "code": "C207",
+      "title": "Data-Driven Decision Making",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 3,
+      "publishedCommonCourseNumber": "MGMT 6010",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "MGMT 6010 C207 Data-Driven Decision Making 3 3"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-global-economics-for-managers",
+      "code": "C211",
+      "title": "Global Economics for Managers",
+      "credits": 3,
+      "category": "core",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126"
+      ],
+      "institutionalOnly": false,
+      "standardPathTerm": 4,
+      "publishedCommonCourseNumber": "ECON 5000",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "ECON 5000 C211 Global Economics for Managers 3 4"
+        }
+      ]
+    },
+    {
+      "id": "mbaitm-mba-information-technology-management-capstone",
+      "code": "C218",
+      "title": "MBA, Information Technology Management Capstone",
+      "credits": 4,
+      "category": "capstone",
+      "sourceIds": [
+        "wgu-mba-family-catalog-20261126",
+        "wgu-mba-family-capstones-20261126"
+      ],
+      "institutionalOnly": true,
+      "standardPathTerm": 4,
+      "publishedCommonCourseNumber": "ITM 6900",
+      "quotes": [
+        {
+          "sourceId": "wgu-mba-family-catalog-20261126",
+          "text": "ITM 6900 C218 MBA, Information Technology Management 4 4 Capstone"
+        }
+      ]
+    }
+  ]
+}

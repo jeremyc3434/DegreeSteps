@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {mkdtemp,rm,readFile,writeFile,mkdir} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join,resolve} from 'node:path';
-import {readJSON,writeJSON,loadKit,clone,canonical,kitsRoot,root,sourceRefs} from './scripts/pathway-factory/lib.mjs';
+import {readJSON,writeJSON,loadKit,clone,canonical,kitsRoot,root,sourceRefs,sourceIndex} from './scripts/pathway-factory/lib.mjs';
 import {decompose,compareDocs} from './scripts/pathway-factory/migrate-from-model.mjs';
 import {compileKit,runGuards,serializePublished} from './scripts/pathway-factory/compile.mjs';
 import {verifyKit} from './scripts/pathway-factory/verify.mjs';
@@ -13,7 +13,7 @@ import {draftProgram,API_URL,MODEL} from './scripts/pathway-factory/draft.mjs';
 import {schoolReport} from './scripts/pathway-factory/report.mjs';
 
 const wgu=await readJSON(resolve(root,'content/curricula/wgu.json'));
-const asOf='2026-11-25'; // Current provider reviews do not alter WGU's individual evidence dates.
+const asOf='2026-11-26'; // Covers the latest retained WGU/provider reviews; individual source dates remain unchanged.
 const optionKey=o=>[o.provider,o.code,o.receivingCode||o.receivingTitle].join('|');
 const optionFacts=o=>canonical({provider:o.provider,code:o.code,receivingCode:o.receivingCode,receivingTitle:o.receivingTitle,credits:o.credits,creditSystem:o.creditSystem,sourceCredits:o.sourceCredits,sourceCreditSystem:o.sourceCreditSystem,evidence:o.evidence,evidenceType:o.evidenceType,sourceIds:o.sourceIds,identitySourceIds:o.identitySourceIds,conditions:o.conditions});
 function assertModelParity(original,compiled){
@@ -60,11 +60,20 @@ test('the WGU kit is the source of truth: it verifies, passes its guards and pub
   const published=compiled.documents.find(d=>d.path==='content/curricula/wgu.json').doc;
   const pinnedSources=kit.school.publish.sourceOrder,publishedIds=published.sources.map(source=>source.id);
   assert(pinnedSources.length>0);assert.equal(new Set(publishedIds).size,publishedIds.length);assert.deepEqual(publishedIds.slice(0,pinnedSources.length),pinnedSources);
-  const referencedSources=new Set(sourceRefs(published.models).map(reference=>reference.id));
+  const indexedSources=new Map(sourceIndex(kit));
+  for(const program of kit.programs)for(const [id,entry]of sourceIndex(kit,program))indexedSources.set(id,entry);
+  const citationIds=value=>sourceRefs(value).filter(reference=>!/(?:^|\.)(?:upstream)?originalSourceIds?$/i.test(reference.path)).map(reference=>reference.id);
+  const referencedSources=new Set(),pending=[...citationIds(published.models),...published.sources.slice(0,pinnedSources.length).flatMap(source=>citationIds(source))];
+  for(let cursor=0;cursor<pending.length;cursor++){
+    const id=pending[cursor];if(referencedSources.has(id))continue;
+    referencedSources.add(id);
+    const indexed=indexedSources.get(id);assert(indexed,'A cited dependency must be declared in the kit: '+id);
+    pending.push(...citationIds(indexed.source));
+  }
   for(const source of published.sources.slice(pinnedSources.length)){
-    assert(referencedSources.has(source.id),'An appended source must actually support a published model: '+source.id);
-    const independent=[...kit.providers.values()].flatMap(provider=>provider.sources||[]).find(candidate=>candidate.id===source.id);
-    assert(independent,'Only independent used provider facts may extend the pinned source order');assert.deepEqual(source,independent);
+    assert(referencedSources.has(source.id),'An appended source must support a published model or its evidence dependencies: '+source.id);
+    const indexed=indexedSources.get(source.id);
+    assert(indexed,'Only declared university or provider evidence may extend the pinned source order');assert.deepEqual(source,indexed.source);
   }
   const fresh=compileKit(decompose(wgu,{schoolId:'wgu',sourcePath:'content/curricula/wgu.json'})).doc;
   assertModelParity({models:first.models.filter(m=>published.models.some(p=>p.id===m.id))},fresh);
@@ -75,7 +84,7 @@ test('the WGU kit is the source of truth: it verifies, passes its guards and pub
   for(const model of authored.models){
     const ids=new Set(model.sources.map(s=>s.id));
     for(const r of model.requirements){
-      assert.match(r.code,/^[A-Z]\d{3}$/,model.id+' requirement code');
+      assert.match(r.code,/^(?:[A-Z]\d{3}|[A-Z]{3}\d)$/,model.id+' requirement code');
       for(const o of r.options){
         assert.equal(o.evidence,'published');assert.equal(o.evidenceType,'official-receiving-school-equivalency');assert.equal(o.receivingCode,r.code);assert.equal(o.credits,r.credits);
         assert.equal(o.sourceCreditStatus,'verified',model.id+' '+o.id+' identity');

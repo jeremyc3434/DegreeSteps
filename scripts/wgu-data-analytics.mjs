@@ -13,8 +13,8 @@ export const ROUTE={id:'wgu-bs-data-analytics-reviewed',school:'Western Governor
 const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8'));
 const hash=text=>createHash('sha256').update(text).digest('hex');
 
-export async function validateWguProgramReview(review,{program,reviewId,pageUrl}={}){
-  assert.equal(review.version,1);assert.equal(review.id,reviewId);assert.equal(review.checkedOn,'2026-11-25');
+export async function validateWguProgramReview(review,{program,reviewId,pageUrl,checkedOn='2026-11-25'}={}){
+  assert.equal(review.version,1);assert.equal(review.id,reviewId);assert.equal(review.checkedOn,checkedOn);
   assert.deepEqual(review.program,program);
   assert.equal(review.captures.length,8);assert.equal(new Set(review.captures.map(source=>source.url)).size,8);
   for(const role of ['curriculum','guidelines','metadata','program-page'])assert.equal(review.captures.filter(source=>source.role===role).length,1);

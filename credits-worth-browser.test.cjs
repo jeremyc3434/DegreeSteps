@@ -1,11 +1,12 @@
 /* Browser verification for "What are my credits worth?" (desktop + iPhone 13). Synthetic records only.
- * Needs a running preview: DEGREEPATH_PREVIEW_PORT=8150 node server/dev.mjs. Screenshots: /tmp/claude-0/credits-worth/. */
+ * Mounts actual local assets without a server, external requests or account writes. */
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs');
 const {chromium,devices}=require('playwright');
+const {mountOfflineSite}=require('./test-support/offline-site.cjs');
 const BASE=process.env.CREDITS_WORTH_URL||'http://127.0.0.1:'+(process.env.DEGREEPATH_PREVIEW_PORT||'8150');
 const SHOTS=process.env.CREDITS_WORTH_SHOTS||'/tmp/claude-0/credits-worth';
 // Every published plan in the course index is checked; the count comes from the data, so new plans need no test edit.
-const PLANS=Object.keys(require('./dist/data/plan-course-index.json').plans).length;
+const publicPlans=require('./dist/data/plan-course-index.json').plans,PLANS=Object.keys(publicPlans).length;
 const KEY='degreepath-guide-v3';
 fs.mkdirSync(SHOTS,{recursive:true});
 const savedDraft={version:3,profile:{entry:'explore',degreeLevel:'unsure',hasPrior:'some'},selectedPathwayId:'',learning:[
@@ -13,11 +14,15 @@ const savedDraft={version:3,profile:{entry:'explore',degreeLevel:'unsure',hasPri
  {id:'course-taking',provider:'Sophia',title:'Human Biology',code:'',credits:3,creditSystem:'semester',status:'in-progress',completedOn:'',evaluations:[]}
 ],scenarios:{},sheet:{isExample:false,notes:{},search:'',filter:'all'},journey:{version:1,view:'questions',step:'start',answers:{},completed:false,creditsDeferred:false},courseFirst:true};
 
-async function open(browser,profile,{draft=null}={}){
+async function open(browser,profile,{draft=null,failCourseIndex=false}={}){
  const context=await browser.newContext({...profile,reducedMotion:'reduce'});
+ await mountOfflineSite(context,{origin:new URL(BASE).origin});
+ await context.route('**/*',route=>['GET','HEAD'].includes(route.request().method())?route.fallback():route.fulfill({status:403,json:{error:'Synthetic browser QA blocks every write.'}}));
+ if(failCourseIndex)await context.route('**/data/plan-course-index.json',route=>route.fulfill({status:503,json:{error:'Synthetic compact-index outage exercises the full fallback.'}}));
  if(draft)await context.addInitScript(([key,value])=>{if(!sessionStorage.getItem('seeded')){localStorage.setItem(key,value);sessionStorage.setItem('seeded','1');}},[KEY,JSON.stringify(draft)]);
  const page=await context.newPage(),requests=[],errors=[];
- // The only allowed write is the anonymous aggregate counter for a finished ranking, which carries no course data.
+ // Writes are never delivered. The expected anonymous counter attempt carries
+ // no course data; every other attempted write remains an explicit failure.
  page.on('request',request=>{if(request.method()==='GET')return;if(new URL(request.url()).pathname==='/api/growth/events'&&request.postData()==='{"event":"credits_worth_used","context":"workspace"}')return;requests.push(request.method()+' '+request.url()+' '+(request.postData()||''));});
  page.on('pageerror',error=>errors.push(String(error)));
  await page.goto(BASE+'/credits-worth.html');
@@ -62,7 +67,8 @@ for(const [name,profile] of [['desktop',{viewport:{width:1366,height:900}}],['ip
    assert(outcomes.some(text=>new RegExp('Introduction to Psychology.*Could count in \\d+ of '+PLANS+' plans').test(text)),outcomes.join('\n'));
    assert(outcomes.some(text=>/Local History Seminar.*No listed match yet/.test(text)));
    assert(outcomes.some(text=>/Two courses on one line.*Needs review/.test(text)));
-   assert(await page.$('.pf-badge-confirm'),'confirmation-tier badge is shown');
+   assert.equal(await page.locator('.pf-badge-confirm').count(),0,'Unfinished research plans are never offered as public matches');
+   const offered=await page.locator('#cw-list a[data-build]').evaluateAll(links=>links.map(link=>new URL(link.href).searchParams.get('usePlan')));for(const id of offered)assert(Object.hasOwn(publicPlans,id),'Every offered match is a canonical publication-ready plan: '+id);
    assert(await noHorizontalScroll(page),'no horizontal scroll with results');
    await page.screenshot({path:SHOTS+'/'+name+'-3-ranked.png',fullPage:name==='desktop'});
    if(name==='iphone13'){assert(await page.isVisible('#cw-jump'));await page.click('#cw-jump');await page.waitForTimeout(200);await page.screenshot({path:SHOTS+'/'+name+'-3b-results.png'});await page.$eval('#cw-list .cw-card',n=>n.scrollIntoView());await page.screenshot({path:SHOTS+'/'+name+'-3c-card.png'});}
@@ -119,7 +125,19 @@ test('a saved My courses draft is read without uploading or rewriting it, and un
 test('entry points link to the page',async()=>{
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
  try{
-  const page=await browser.newPage();
+  const {context,page}=await open(browser,{viewport:{width:1366,height:900}});
   for(const path of ['/programs.html','/courses.html','/how-it-works/','/']){await page.goto(BASE+path);assert(await page.$('a[href$="credits-worth.html"]'),path+' links to What are my credits worth?');}
+  await context.close();
+ }finally{await browser.close();}
+});
+
+test('a compact-index outage still recommends only43 canonical ready plans through the real full Worker fallback',async()=>{
+ const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});
+ try{
+  const {context,page,requests,errors}=await open(browser,{viewport:{width:1366,height:900}},{draft:savedDraft,failCourseIndex:true}),before=await page.evaluate(key=>localStorage.getItem(key),KEY);
+  await finished(page);assert.match(await page.textContent('#cw-count'),new RegExp(PLANS+' plans checked'));
+  for(let guard=0;guard<6&&await page.locator('#cw-more:visible').count();guard++)await page.locator('#cw-more').click();
+  const offered=await page.locator('#cw-list a[data-build]').evaluateAll(links=>links.map(link=>new URL(link.href).searchParams.get('usePlan')));assert.equal(offered.length,PLANS);assert.equal(new Set(offered.map(id=>publicPlans[id]?.modelId)).size,PLANS);assert(offered.every(id=>Object.hasOwn(publicPlans,id)));assert.equal(await page.locator('.pf-badge-confirm').count(),0);assert.equal(await page.evaluate(key=>localStorage.getItem(key),KEY),before,'Fallback ranking preserves the exact original course quantities and private draft');assert.deepEqual(requests,[]);assert.deepEqual(errors,[]);
+  await page.screenshot({path:SHOTS+'/desktop-worker-fallback.png',fullPage:true});await context.close();
  }finally{await browser.close();}
 });

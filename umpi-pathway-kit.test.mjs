@@ -7,7 +7,7 @@ import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 import {assessPathwayQuality} from './scripts/pathway-quality.mjs';
 
 const require=createRequire(import.meta.url),Planner=require('./dist/planner.js');
-const asOf='2026-11-25';
+const asOf='2026-11-26';
 const kit=await loadKit('content/pathway-kits/umpi');
 const compiled=()=>compileKit(kit).doc;
 

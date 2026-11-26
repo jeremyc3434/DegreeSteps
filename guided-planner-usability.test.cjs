@@ -75,8 +75,8 @@ function portalData(){
  return {catalog:Catalog.attachPublicationIndex({pathways:[r],curriculumRegistry:registry},publicationIndex,registry),models:[model],route:r};
 }
 const planIndex={subjects:{business:'Business & management',psychology:'Psychology & human services'},plans:{'campus-degree':{tier:'confirmation',subjects:['psychology'],questions:['Ask the school: is there a time limit on how old transfer credit can be?','Ask the school to confirm 2 proposed course matches for this exact program before paying for them.']},other:{tier:'reviewed',subjects:['psychology'],questions:[]}}};
-function portal(){
- const d=portalData(),initial=Journey.initialize(null,null,d.catalog),storage=new Map([['degreepath-guide-v3',JSON.stringify(initial)]]),nodes=new Map(),handlers=new Map();
+function portal({publicationReady=true}={}){
+ const d=portalData();if(!publicationReady)d.catalog.publicationIndex.plans=[];const initial=Journey.initialize(null,null,d.catalog),storage=new Map([['degreepath-guide-v3',JSON.stringify(initial)]]),nodes=new Map(),handlers=new Map();
  const node=id=>{if(!nodes.has(id))nodes.set(id,{id,values:{},innerHTML:'',textContent:'',hidden:false,dataset:{},classList:{toggle(){}},focus(){},querySelector(){return null;},setAttribute(){},insertAdjacentHTML(){}});return nodes.get(id);};
  const context={console,URL,URLSearchParams,Intl,TextEncoder,TextDecoder,document:{getElementById:node,querySelector(){return null;},querySelectorAll(){return[];},addEventListener(type,fn){if(!handlers.has(type))handlers.set(type,[]);handlers.get(type).push(fn);},body:node('body')},location:{pathname:'/portal.html',search:'',assign(){},replace(){}},history:{replaceState(){}},localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},FormData:class extends Map{constructor(form){super(Object.entries(form.values||{}));}getAll(name){const value=this.get(name);return value===undefined?[]:Array.isArray(value)?value:[value];}},CustomEvent:class{},setTimeout(){},clearTimeout(){},dispatchEvent(){},addEventListener(){},scrollTo(){},navigator:{},__fixture:JSON.stringify({state:initial,...d,planIndex})};context.window=context;vm.createContext(context);
  for(const match of fs.readFileSync(path.join(__dirname,'dist/portal.html'),'utf8').matchAll(/<script\b[^>]*\bsrc="([A-Za-z0-9_-]+\.js)"[^>]*>/g)){const source=fs.readFileSync(path.join(__dirname,'dist',match[1]),'utf8');if(source.includes('module.exports'))vm.runInContext(source,context,{filename:match[1]});}
@@ -108,8 +108,8 @@ test('a chosen degree skips the goal question and keeps the saved goal',async()=
  await f.submit({prior:'none',military:'none'});await f.submit({learningPace:'any',campusLocation:'any',campusTime:'any'});await f.submit({priority:'cost',proctoringPreference:'open',assessmentPreference:'mixed'});
  const saved=f.api.state();assert.equal(saved.profile.goal,'career-growth');assert.equal(saved.journey.answers.purpose,'career-growth');assert.equal(saved.journey.intakeCompleted,true);assert.equal(saved.selectedPathwayId,'campus-degree');
 });
-test('plans that need school confirmation carry their questions to the availability screen',()=>{
- const f=portal(),html=f.api.check(f.d.route);
+test('an existing private unfinished plan retains its research questions',()=>{
+ const f=portal({publicationReady:false});f.api.choose();const html=f.api.check(f.d.route);
  assert.match(html,/Before you pay for courses, ask the school:/);
  assert.match(html,/<li>Is there a time limit on how old transfer credit can be\?<\/li>/,'the repeated "Ask the school:" prefix is removed');
  assert.match(html,/<li>Ask the school to confirm 2 proposed course matches/);
@@ -120,8 +120,8 @@ test('the finding status becomes a result summary once results render',()=>{
  f.api.announceFinding();assert.equal(f.node('portal-notice').textContent,'Finding course plans for your choices…');
  const html=f.api.results();f.api.notice();
  assert.equal(f.node('portal-notice').textContent,'Found 1 course plan for your choices.');
- // Plans that need school confirmation are now part of the guided results, labelled with what to ask.
- assert.match(html,/portal-tier-confirm">Needs school confirmation/);assert.match(html,/Before you pay for courses \(2\)/);
+ // A stale confirmation label cannot downgrade a publication-ready result.
+ assert.doesNotMatch(html,/portal-tier-confirm">Needs school confirmation/);assert.doesNotMatch(html,/Before you pay for courses \(2\)/);assert.match(html,/Reviewed plan/);
  state.journey.step='prior';f.api.set(state);f.api.notice();assert.equal(f.node('portal-notice').textContent,'','leaving results clears the summary');
 });
 

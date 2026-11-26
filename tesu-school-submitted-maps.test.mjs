@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import {applyTESUReceivingMaps,validateReceivingReview,reviewPath} from './scripts/add-tesu-school-submitted-maps.mjs';
+import {withVerifiedTESUProviderSourceEnrichment} from './scripts/tesu-source-parity.mjs';
 const require=createRequire(import.meta.url),Planner=require('./dist/planner.js'),Guide=require('./dist/guide-engine.js');
 const model=JSON.parse(await readFile(new URL('./dist/data/tesu.json',import.meta.url),'utf8')),review=JSON.parse(await readFile(new URL('./'+reviewPath,import.meta.url),'utf8')),clone=value=>JSON.parse(JSON.stringify(value));
 const selected=review.mappings.map(mapping=>({mapping,row:model.requirements.find(row=>row.id===mapping.requirementId)})).map(({mapping,row})=>({mapping,row,option:row.options.find(option=>option.provider==='Sophia')}));
@@ -23,7 +24,8 @@ test('source quantities and valid windows stay separate from receiving awards an
  for(const option of model.requirements.flatMap(row=>row.options).filter(option=>option.provider==='CLEP'))assert.equal(option.minScore,null,'No cached CLEP table or genericACE50 score becomes a new current TESU score claim');
 });
 test('receiving supplement is idempotent and rejects wrong degree placements, quantities and unsigned provider approval',()=>{
- assert.deepEqual(applyTESUReceivingMaps(model),model);
+ const expected=withVerifiedTESUProviderSourceEnrichment(model);
+ assert.deepEqual(applyTESUReceivingMaps(model),expected);assert.deepEqual(applyTESUReceivingMaps(applyTESUReceivingMaps(model)),expected);
  for(const mutate of [m=>m.id='another-model',m=>m.creditSystem='quarter',m=>m.requirements.find(row=>row.id==='mat1210').code='MAT-1020',m=>m.requirements.find(row=>row.id==='mat1210').credits=4,m=>m.requirements.find(row=>row.id==='mat1210').institutionalOnly=true]){const bad=clone(model);mutate(bad);assert.throws(()=>applyTESUReceivingMaps(bad));}
  for(const mutate of [d=>d.mappings[0].sourceCredits=4,d=>d.mappings[0].receivingCreditSystem='quarter',d=>d.mappings[0].receivingSourceIds=['unknown'],d=>d.sources.find(source=>source.role?.includes?.('receiving-institution-submitted-equivalency')).url='https://www.acenet.edu.attacker.test/record',d=>d.mappings[0].recommendationStart='2025-02-31',d=>d.providerEligibility.fullyApproved=true,d=>d.providerEligibility.eligibleToStart=true]){const bad=clone(review);mutate(bad);assert.throws(()=>validateReceivingReview(bad));}
 });

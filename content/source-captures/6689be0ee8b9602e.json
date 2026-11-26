@@ -1,0 +1,52 @@
+{
+  "url": "https://mainestreetcs.maine.edu/psc/CSPRDG/EMPLOYEE/SA/c/UM_SA.UM_TRNSFER_GUEST.GBL",
+  "finalUrl": "https://mainestreetcs.maine.edu/psc/CSPRDG/EMPLOYEE/SA/c/UM_SA.UM_TRNSFER_GUEST.GBL",
+  "fetchedAt": "2026-11-26T01:37:41.980Z",
+  "sha256": "6689be0ee8b9602e9a7d47251067476cc72dd0449fb8ac6c4fdf37f3b73d2a46",
+  "contentType": "text/html; rendered PeopleSoft PAGECONTAINER from public XML response",
+  "status": 200,
+  "characters": 63251,
+  "requestMethod": "POST",
+  "retrievalRole": "anonymous-public-guest-transfer-equivalency-query",
+  "rawResponseSha256": "67cf757876cf439acd41c7d98aae76670d04f3311fe6e330137b2e79e73b46b8",
+  "renderedHtml": "content/source-captures/6689be0ee8b9602e.rendered.html",
+  "renderedHtmlSha256": "abbe53844255af9eca25ccb82fd305756b8104a97901c8e931062bdb3a207f7f",
+  "extractionMode": "peoplesoft-public-PAGECONTAINER-v1",
+  "sourceInstitution": "Credly/ACE",
+  "sourceInstitutionId": "1118966",
+  "receivingInstitution": "University of Maine Presque Isle",
+  "studentRecordsIncluded": false,
+  "accountCredentialsUsed": false,
+  "tlsVerificationDisabled": false,
+  "sourceReplay": {
+    "initialUrl": "https://mainestreetcs.maine.edu/psc/CSPRDG/EMPLOYEE/SA/c/UM_SA.UM_TRNSFER_GUEST.GBL",
+    "freshAnonymousCookiesOnly": true,
+    "actions": [
+      {
+        "action": "UM_TRNEQUIV_DRV_UM_CLEAR_PB",
+        "label": "Transfer courses or test credit to the Univ. of Maine System"
+      },
+      {
+        "action": "UM_TRNEQUIV_DRV_UM_SFOE$117$",
+        "set": {
+          "UM_TRNEQUIV_DRV_UM_SFOE": "7"
+        },
+        "label": "University of Maine at Presque Isle"
+      },
+      {
+        "action": "UM_TRSFR1_WRK_SSR_ALPHANUM_C",
+        "label": "C"
+      },
+      {
+        "action": "UM_TRNEQUIV_DRV_EDIT_PB$339",
+        "expectedLabel": "Credly/ACE",
+        "operatorNote": "Find the current Credly/ACE row by displayed label; verify its published action rather than assuming future row339."
+      },
+      {
+        "action": "UM_TRSFR1_WRK_ALL_VALUES",
+        "label": "Show All Subjects"
+      }
+    ]
+  },
+  "automatedGetRefreshSupported": false
+}

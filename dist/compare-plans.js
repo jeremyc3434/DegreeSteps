@@ -7,30 +7,28 @@
  }
  const superseded=error=>['superseded','disposed'].includes(error?.code);
  const pendingDiscoveries=new Map(),discoveryResults=new Map(),sourceSelections=new Map();
- const readyRoutes = () => typeof DegreeProgramCatalog.publishedPlans==='function'?DegreeProgramCatalog.publishedPlans(catalog,models):[];
- // The degree picker lists the same plans as the finder: published plans plus complete plans that
- // still need school confirmation, labelled. Automatic suggestions stay with published plans.
+ const readyRoutes = () => typeof DegreeProgramCatalog.planLibraryRoutes==='function'?DegreeProgramCatalog.planLibraryRoutes(catalog,models):[];
+ // The picker and automatic suggestions share the unique publication-ready set.
  let planIndex=null,discoveryLinkConsumed=false;
  // Discovery links preview one exact published degree without saving comparison choices.
- const linkedRoute=()=>!discoveryLinkConsumed&&params.get('from')==='courses'&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(params.get('degree')||'')?readyRoutes().find(route=>route.id===params.get('degree'))||null:null;
+ const linkedRoute=()=>!discoveryLinkConsumed&&params.get('from')==='courses'&&/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(params.get('degree')||'')?DegreeProgramCatalog.publishedPlans(catalog,models).find(route=>route.id===params.get('degree'))||null:null;
  const linkedFormat=()=>['online','campus'].includes(params.get('format'))&&Boolean(linkedRoute()?.modalities?.includes(params.get('format')));
  function consumeDiscoveryLink(){
   discoveryLinkConsumed=true;
   if(params.has('degree')){params.delete('degree');params.delete('format');try{if(typeof history!=='undefined'&&typeof history.replaceState==='function')history.replaceState(null,'','compare-plans.html'+(params.toString()?'?'+params:'')+(location.hash||''));}catch{/* A blocked history update cannot undo explicit comparison choices. */}}
  }
- const libraryRoutes = () => typeof DegreeProgramCatalog.planLibraryRoutes==='function'?DegreeProgramCatalog.planLibraryRoutes(catalog,models,planIndex):readyRoutes();
- const needsConfirmation = route => Boolean(planIndex&&globalThis.DegreeProgramCatalog?.needsSchoolConfirmation?.(route,planIndex));
+ const libraryRoutes = readyRoutes;
+ const needsConfirmation = route => !DegreeProgramCatalog.publishedPlans(catalog,models).some(published=>published.id===route?.id)&&Boolean(planIndex&&globalThis.DegreeProgramCatalog?.needsSchoolConfirmation?.(route,planIndex));
  function comparisonScopeText(){
-  const reviewed=readyRoutes().length,selectable=libraryRoutes(),confirmation=selectable.filter(needsConfirmation).length;
-  return 'Automatic suggestions use '+reviewed+' reviewed plans. '+selectable.length+' plans are available through Choose or replace a degree'+(confirmation?', including '+confirmation+' labeled Needs school confirmation':'')+'. Published transfer matches and specific conditions appear in each plan.';
+  const reviewed=readyRoutes().length;
+  return 'Choose or compare '+reviewed+' reviewed degree plans. Your current plan and saved versions stay available.';
  }
  function comparisonCatalog(value=state){
-  const ids=new Set([...(value.sheet?.isExample?[]:[value.selectedPathwayId||value.profile?.pathwayId]),...(options().selectedIds||[]).map(id=>id.startsWith('saved:')?(value.whatIf?.snapshots||[]).find(saved=>saved.id===id.slice(6))?.pathwayId:null)].filter(Boolean));
+  const ids=new Set([...(value.sheet?.isExample?[]:[value.selectedPathwayId||value.profile?.pathwayId]),...(options().selectedIds||[]).map(id=>id.startsWith('saved:')?(value.whatIf?.snapshots||[]).find(saved=>saved.id===id.slice(6))?.pathwayId:id.startsWith('route:')?id.slice(6):null)].filter(Boolean));
   // Explicit private/current targets stay recoverable; only complete templates
   // participate in new suggestions and degree-picker choices.
-  // Suggestions come from published plans; a plan needing school confirmation joins only when the student picked it.
-  const picked=new Set((options().selectedIds||[]).filter(id=>id.startsWith('route:')).map(id=>id.slice(6)));
-  const available=[...readyRoutes(),...libraryRoutes().filter(route=>picked.has(route.id)&&needsConfirmation(route))],known=new Set(available.map(route=>route.id));
+  const active=catalog.pathways.find(route=>!value.sheet?.isExample&&route.id===(value.selectedPathwayId||value.profile?.pathwayId));
+  const available=readyRoutes().filter(route=>!active?.modelId||route.modelId!==active.modelId||route.id===active.id),known=new Set(available.map(route=>route.id));
   return {...catalog,pathways:[...available,...catalog.pathways.filter(route=>ids.has(route.id)&&!known.has(route.id))]};
  }
  function attachPrivateCurricula(value){
@@ -61,7 +59,7 @@
   const targets=[state.selectedPathwayId||state.profile?.pathwayId,...selectedIds.map(id=>id.startsWith('route:')?id.slice(6):id.startsWith('saved:')?snapshots.find(saved=>saved.id===id.slice(6))?.pathwayId:null)];
   return [...new Map([...routes,...targets.map(id=>catalog.pathways.find(route=>route.id===id)).filter(Boolean)].map(route=>[route.id,route])).values()];
  }
- const options=()=>{const ready=new Set(libraryRoutes().map(route=>'route:'+route.id)),selected=state.whatIf?.selectedIds?.map(id=>sourceSelections.get(id)||id).filter(id=>id==='current'||id.startsWith('saved:')||ready.has(id)),activeSource=sourceSelections.get('route:'+(state.selectedPathwayId||state.profile?.pathwayId||''));
+ const options=()=>{const recoverable=new Set(catalog.pathways.map(route=>'route:'+route.id)),selected=state.whatIf?.selectedIds?.map(id=>sourceSelections.get(id)||id).filter(id=>id==='current'||id.startsWith('saved:')||recoverable.has(id)),activeSource=sourceSelections.get('route:'+(state.selectedPathwayId||state.profile?.pathwayId||''));
   const linked=linkedRoute(),active=!state.sheet?.isExample&&(state.selectedPathwayId||state.profile?.pathwayId),selectedIds=linked?(linked.id===active?[]:['route:'+linked.id]):activeSource?[...(selected||[]).filter(id=>id!=='current'&&id!==activeSource).slice(0,1),activeSource]:selected;
   return {selectedIds,deferMatrix:true,priority:$('compare-priority').value,includeOtherFormats:$('compare-formats').checked,fromCourses:params.get('from')==='courses'||!state.selectedPathwayId||state.sheet?.isExample===true,candidate};};
  function latest(){const raw=localStorage.getItem(KEY);if(!raw)return DegreeCourseLibrary.initialize(null);let parsed;try{parsed=JSON.parse(raw);}catch{throw Error('Your saved courses could not be read. They have not been replaced. Keep a backup before restoring a plan.');}if(parsed?.version!==3||!parsed.profile||!Array.isArray(parsed.learning))throw Error('Your saved course collection needs recovery. It has not been replaced.');return DegreeCourseLibrary.initialize(parsed);}

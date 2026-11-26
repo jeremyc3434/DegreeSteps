@@ -4,7 +4,7 @@
  */
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
-import {list,dateOnly,today,sourceDate,sourceRefs,normalizeText,sha256,creditSystems,inScope,matchRequirement,rowStatus,programUnits,parsePlacement,sourceIndex,loadKit,kitDirs,resolveKitDir,knownRouteIds,parseArgs,isMain,root,exists,slotKinds,courseCodeKey} from './lib.mjs';
+import {list,dateOnly,today,sourceDate,sourceRefs,normalizeText,sha256,creditSystems,inScope,matchRequirement,rowStatus,programUnits,parsePlacement,sourceIndex,loadKit,kitDirs,resolveKitDir,knownRouteIds,parseArgs,isMain,root,exists,slotKinds,courseCodeKey,mergeProviderIdentity} from './lib.mjs';
 
 const EPS=1e-6;
 const near=(a,b)=>Math.abs(a-b)<EPS;
@@ -227,7 +227,7 @@ export async function verifyKit(kit,{asOf=today(),routeIds,base=root}={}){
   // Provider identities are shared by every kit; check the identity each published row compiles into (shared course + row overrides).
   for(const row of rows.filter(row=>rowStatus(row)==='published')){
     const provider=kit.providers.get(row.provider),course=list(provider?.courses).find(c=>c.code===row.code);if(!course)continue;
-    const identity={...course,...(row.identity||{})};for(const field of list(row.identityOmit))delete identity[field];
+    const identity=mergeProviderIdentity(course,row);
     for(const ref of sourceRefs(identity))if(!ids.has(ref.id))error(provider.file,'unknown-source',`${row.id}: ${row.provider} ${row.code} identity cites unknown source ${ref.id} at ${ref.path.replace(/^\./,'')}.`);
   }
   for(const ref of sourceRefs({policies:school.policies,programDefaults:school.programDefaults}))if(!ids.has(ref.id))error('school.json','unknown-source',`Unknown source id ${ref.id} at ${ref.path}.`);

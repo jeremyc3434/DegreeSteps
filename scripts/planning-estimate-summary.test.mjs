@@ -9,7 +9,7 @@ const read=name=>JSON.parse(readFileSync(new URL('../'+name,import.meta.url),'ut
 function fixture(){
  const registry=read('dist/data/curriculum-registry.json'),entry=registry.models.find(model=>model.id==='liberty-business-residential'),document=read('dist/'+entry.path),model=(document.models||[document]).find(model=>model.id===entry.id),baseline=Object.values(read('dist/data/baseline-index.json').baselines).find(item=>item.modelId===model.id);
  const providers=[...new Set(model.requirements.flatMap(row=>row.options.map(option=>option.provider)).filter(provider=>provider!=='University'))],plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optionSelections:Object.fromEntries(baseline.rows.map(row=>[row.requirementId,row.optionId]))});
- return {model,plan,rates:read('dist/data/plan-estimate-rates.json'),asOf:'2026-11-25',entry,registry};
+ return {model,plan,rates:read('dist/data/plan-estimate-rates.json'),asOf:'2026-11-26',entry,registry};
 }
 test('catalog ranges use the worksheet prices and retain exclusions, sources and assumed pacing',()=>{
  const f=fixture(),before=JSON.stringify(f),result=summarizePlanningEstimate(f);
@@ -43,9 +43,9 @@ test('adding a researched price range does not promote academic publication or t
  assert.deepEqual(after.publicationIndex,before.publicationIndex);assert.deepEqual(after.baselineIndex,before.baselineIndex);
  assert.deepEqual(after.report.programs[0].estimates.cost,before.report.programs[0].estimates.cost);
  assert.equal(after.report.programs[0].estimates.planning.available,true);assert.equal(after.report.summary.estimates.planning.availableRanges,1);
- const newerRates=structuredClone(f.rates);newerRates.checkedOn='2026-11-26';newerRates.sources.find(source=>source.id===after.report.programs[0].estimates.planning.sources[0].id).checkedOn='2026-11-26';
- const priceOnly=compilePathwayArtifacts({...input,planningRates:newerRates,planningAsOf:'2026-11-26'});
- assert.equal(priceOnly.report.asOf,f.asOf);assert.equal(priceOnly.report.summary.estimates.planning.asOf,'2026-11-26');assert.equal(priceOnly.report.programs[0].estimates.planning.available,true);
+ const newerRates=structuredClone(f.rates);newerRates.checkedOn='2026-11-27';newerRates.sources.find(source=>source.id===after.report.programs[0].estimates.planning.sources[0].id).checkedOn='2026-11-27';
+ const priceOnly=compilePathwayArtifacts({...input,planningRates:newerRates,planningAsOf:'2026-11-27'});
+ assert.equal(priceOnly.report.asOf,f.asOf);assert.equal(priceOnly.report.summary.estimates.planning.asOf,'2026-11-27');assert.equal(priceOnly.report.programs[0].estimates.planning.available,true);
  assert.deepEqual(priceOnly.publicationIndex,before.publicationIndex);assert.deepEqual(priceOnly.baselineIndex,before.baselineIndex);
 });
 

@@ -48,10 +48,11 @@ test('the audit examples now match WGU Business Management and many other plans'
   assert.equal(result.records[record.id].status,'placed',title+' is placed in WGU Business Management');
  }
 });
-test('added listings come only from plan data and claim no credit recommendation',()=>{
+test('added listings retain provenance in the wider research inventory without becoming public recommendations',async()=>{
+ const {finderModels,planOptions}=await import('./scripts/catalog-plan-identities.mjs'),researched=planOptions(await finderModels());
  for(const course of catalog.courses.filter(item=>item.sourceId==='plan-course-identities')){
   assert.equal(course.recommendationStatus,'requires-review');assert.equal(course.creditBasis,'plan-course-identity');assert(course.planIdentitySourceIds.length>0,course.id);
-  const used=options.filter(item=>item.option.provider===course.provider&&key(item.option.code)===key(course.code));assert(used.length>0,course.id+' is used by a plan');
+  const used=researched.filter(item=>item.option.provider===course.provider&&key(item.option.code)===key(course.code));assert(used.length>0,course.id+' has actual research-source provenance');
   if(course.credits!==null)assert(used.every(item=>item.option.sourceCredits===course.credits&&item.option.sourceCreditSystem===course.creditSystem),course.id+' credits are the plans’ recorded source credits');
  }
 });

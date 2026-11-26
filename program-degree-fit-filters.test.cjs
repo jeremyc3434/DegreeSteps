@@ -22,7 +22,7 @@ function fixture(search='',{graduate=false,fitOverride={}}={}){
  const routes=definition.map(([id,format])=>({id,school:'Example College',title:id,catalog:'2026-2027',level:id.startsWith('graduate-')?'master':'bachelor',modalities:[format],...(id==='directory-only'?{}:{modelId:'model-'+id}),...(id==='graduate-capped'?{transferPolicy:{maximumCredits:12,creditUnit:'semester',sourceUrl:'https://example.edu/mba/transfer'}}:{}),url:'https://example.edu/'+id}));
  const plans=Object.fromEntries(definition.map(([id,format,competencyBased,selfPaced,billing])=>[id,{modelId:'model-'+id,tier:id==='confirm-sub'?'confirmation':'reviewed',subjects:['business'],questions:id==='confirm-sub'?['Confirm this exact transfer rule.']:[],start:{outside:60,university:60,total:120},fit:{modelId:'model-'+id,catalogYear:'2026-2027',modality:format,competencyBased,selfPaced,billing,paceLabel:selfPaced===null?'Pace needs confirmation':selfPaced?'Self-paced':'Term-based',billingLabel:billing==='subscription'?'Subscription tuition':billing==='per-credit'?'Per credit':null,tuitionLabel:billing==='subscription'?'$2,000 per six-month term':billing==='per-credit'?'$300 per credit':null,...(id==='online-sub'?fitOverride:{})},...(id==='unknown'?{}:{estimate:id==='online-sub'?{min:10000,max:15000}:id==='campus-sub'?{min:5000,max:12000,partial:true,unpriced:['Unknown provider']}:{min:12000,max:25000}})}]));
  const curated=routes.filter(route=>!['directory-only','confirm-sub','unpublished-reviewed'].includes(route.id));
- const catalog={pathways:routes,publicationIndex:{available:true}};
+ const catalog={pathways:routes,publicationIndex:{available:true,plans:curated.map(route=>({modelId:route.modelId,publicationReady:true,routeIds:[route.id]}))}};
  const C={merge:()=>catalog,loadIndex:async()=>catalog,publishedPlans:()=>curated,isPlanAvailable:route=>Boolean(route.modelId),planChoiceCount:()=>0};
  const school={name:'Example College',transferPolicy:{ace:{status:'accepted'},institutional:{status:'accepted'},graduate:{status:'not-accepted'}}};
  const payloads={'data/pathways.json':{},'data/program-catalog.json':{},'data/opportunity-catalog.json':{schools:[school]},'data/credit-sources.json':{sources:[]},'data/plan-library-index.json':{plans,subjects:{business:'Business'}},'data/plan-freshness.json':{plans:{}},'data/baseline-index.json':{baselines:{}}};
@@ -40,7 +40,7 @@ test('format, self-paced, CBE and subscription filters combine without promoting
  assert.deepEqual(f.shown(),['online-sub']);
  assert.match(f.node('program-results').innerHTML,/Competency-based \(CBE\)/);assert.match(f.node('program-results').innerHTML,/Subscription tuition/);
  assert.match(f.node('program-results').innerHTML,/<strong>60<\/strong> at/,'The actual remaining school coursework stays visible');
- f.change('program-confirm',true);assert.deepEqual(f.shown(),['confirm-sub','online-sub']);
+ f.change('program-confirm',true);assert.deepEqual(f.shown(),['online-sub'],'A legacy confirmation toggle cannot expose an unpublished plan');
  assert(!f.node('program-results').innerHTML.includes('data-program="directory-only"'));assert(!f.node('program-results').innerHTML.includes('data-program="unpublished-reviewed"'));
  f.change('program-billing','per-credit');assert.deepEqual(f.shown(),['online-per'],'Self-paced CBE does not require subscription tuition');
 });

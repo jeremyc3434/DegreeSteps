@@ -74,18 +74,19 @@ test('finished or reported UPI coursework is not purchased or charged for a new 
 });
 
 test('a per-course provider cannot gain a generic fallback, stale recommendation or ungrounded quote',()=>{
-  for(const mutate of[
-    row=>row.amount=250,
-    row=>row.courseQuotes=[],
-    row=>row.courseQuotes.push(clone(row.courseQuotes[0])),
-    row=>row.courseQuotes[0].sourceIds=['missing-source'],
-    row=>row.courseQuotes[0].courseVersion=null,
-    row=>row.courseQuotes[0].sourceCredits=null,
-    row=>row.courseQuotes[0].sourceCreditSystem='unknown',
-    row=>row.courseQuotes[0].checkedOn='2026-11-26',
-    row=>row.courseQuotes[0].recommendationEnd='2025-01-01',
-    row=>row.courseQuotes[0].currency='EUR'
-  ]){const copy=clone(rates);mutate(copy.providers.find(row=>row.provider==='UPI Study'));assert.throws(()=>Estimate.assertRates(copy));}
+  const future=new Date(rates.checkedOn+'T00:00:00Z');future.setUTCDate(future.getUTCDate()+1);
+  for(const [label,mutate]of[
+    ['generic fallback',row=>row.amount=250],
+    ['missing exact quotes',row=>row.courseQuotes=[]],
+    ['duplicate identity',row=>row.courseQuotes.push(clone(row.courseQuotes[0]))],
+    ['unbound price source',row=>row.courseQuotes[0].sourceIds=['missing-source']],
+    ['unknown version',row=>row.courseQuotes[0].courseVersion=null],
+    ['unknown original credits',row=>row.courseQuotes[0].sourceCredits=null],
+    ['unknown original units',row=>row.courseQuotes[0].sourceCreditSystem='unknown'],
+    ['future price review',row=>row.courseQuotes[0].checkedOn=future.toISOString().slice(0,10)],
+    ['expired recommendation',row=>row.courseQuotes[0].recommendationEnd='2025-01-01'],
+    ['unreviewed currency',row=>row.courseQuotes[0].currency='EUR']
+  ]){const copy=clone(rates);mutate(copy.providers.find(row=>row.provider==='UPI Study'));assert.throws(()=>Estimate.assertRates(copy),undefined,label);}
 });
 
 test('partial prices are visible and the ordinary qualified estimate never becomes a discount or graduation promise',()=>{

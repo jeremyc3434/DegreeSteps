@@ -7,6 +7,7 @@ import {upiCourseReview,validateUPICourseReview} from './upi-course-catalog.mjs'
 import {providerReview,tesuProviderEligibility,applyTESUProviderReview} from './tesu-provider-review.mjs';
 import {applyTESUUPIProviderDefaults,tesuUPIModelIds} from './tesu-upi-defaults.mjs';
 import {attachUPICoursePurchasePrice} from './upi-course-pricing.mjs';
+import {parsePlacement} from './pathway-factory/lib.mjs';
 const root=resolve(import.meta.dirname,'..'),copy=value=>structuredClone(value),list=value=>Array.isArray(value)?value:[];
 export const upiTESUReview=JSON.parse(await readFile(resolve(root,'content/pathway-kits/tesu/upi-review-2026-11-25.json'),'utf8'));
 const slug=value=>String(value||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -127,19 +128,23 @@ export function applyTESUUPIReviewedMaps(input,identityReview=upiCourseReview,re
   model=applyTESUUPIProviderDefaults(applyTESUProviderReview(model));return model;
 }
 
-/** Materialize shared identity/award rows once; explicit placements bind them to each current ledger. */
-export async function writeTESUUPIKit({identityReview=upiCourseReview,review=upiTESUReview,check=false}={}){
-  const pairs=supportedUPIMappings(identityReview,review),kitDir=resolve(root,'content/pathway-kits/tesu');
-  const read=async name=>JSON.parse(await readFile(resolve(kitDir,name),'utf8'));
-  const write=async (file,value)=>{const text=JSON.stringify(value,null,2)+'\n';if(check)assert.equal(await readFile(file,'utf8'),text,file+' requires the reviewed UPI supplement.');else await writeFile(file,text);};
+/** Replace only this review's records in place. Other authors may interleave
+ * their reviewed placements; replay must not move those records or their facts. */
+function replaceOwned(existing,expected,ownedIds,keyOf){
+  const generated=new Map(expected.map(value=>[keyOf(value),value])),seen=new Set(),out=[];
+  for(const value of existing){const key=keyOf(value);if(!ownedIds.has(key)){out.push(copy(value));continue;}if(generated.has(key)&&!seen.has(key)){out.push(copy(generated.get(key)));seen.add(key);}}
+  for(const value of expected){const key=keyOf(value);if(!seen.has(key)){out.push(copy(value));seen.add(key);}}
+  return out;
+}
+/** Pure projection of this reviewed supplement. Unowned notices, catalog
+ * re-reviews, source fields and other providers' placements are round-tripped. */
+export function materializeTESUUPIKit({school:inputSchool,equivalencies:inputEquivalencies,programs:inputPrograms,identityReview=upiCourseReview,review=upiTESUReview}){
+  const pairs=supportedUPIMappings(identityReview,review),school=copy(inputSchool),equivalencies=copy(inputEquivalencies),authoredPrograms=copy(inputPrograms);
   const provider={kind:'pathway-kit-provider',version:1,provider:'UPI Study',sources:copy(identityReview.sources),courses:identityReview.courses.map(course=>upiKitIdentity(course,identityReview))};
-  await write(resolve(root,'content/pathway-kits/providers/upi-study.json'),provider);
-  const school=await read('school.json');
   if(!school.programDefaults.defaultProviders.includes('UPI Study'))school.programDefaults.defaultProviders.push('UPI Study');
   // The directory body already reviewed on this date also names UPI; retain that source's current review scope.
   for(const source of [providerReview.source,providerReview.policySource,...review.sources]){const index=school.sources.findIndex(existing=>existing.id===source.id);if(index<0)school.sources.push(copy(source));else school.sources[index]=copy(source);}
-  const equivalencies=await read('equivalencies.json');
-  equivalencies.equivalencies=equivalencies.equivalencies.filter(row=>row.mappingReviewId!==review.id);
+  const ownedRowIds=new Set([...equivalencies.equivalencies.filter(row=>row.mappingReviewId===review.id).map(row=>row.id),...pairs.map(({mapping,course})=>mapId(mapping,course))]);
   equivalencies.conditionLibrary['tesu-upi-proposed-free-elective']='Proposed use in this unrestricted free-elective block must be nonduplicating and fit the current degree.';
   equivalencies.conditionLibrary['tesu-upi-proposed-liberal-arts']='Proposed Liberal Studies area allocation must retain the published discipline and receiving-level rules, at least two subjects, no more than six 1000-level credits, 18 upper-level area credits and nonduplication.';
   equivalencies.placementModes['upi-exact-placement']={placementEvidence:{placementType:'exact-course',citeInOption:true}};
@@ -147,11 +152,11 @@ export async function writeTESUUPIKit({identityReview=upiCourseReview,review=upi
   equivalencies.placementModes['upi-liberal-arts-placement']={set:{placementType:'major-elective',allocationType:'liberal-arts-area'},appendConditionIds:['tesu-upi-proposed-liberal-arts'],placementEvidence:{placementType:'liberal-arts-area',citeInOption:true}};
   const programs=[],sharedRows=new Map();
   for(const slug of school.programOrder){
-    const program=await read('programs/'+slug+'.json');
+    const program=authoredPrograms.find(program=>program.slug===slug);assert(program,'The reviewed ledger exists: '+slug);
     const model={...copy(school.programDefaults),...copy(program.modelFields),id:program.modelId,school:school.name,title:program.title,level:program.level,catalog:program.catalog,totalCredits:program.totalCredits,creditSystem:program.creditSystem||school.creditSystem,modalities:program.modalities||program.modelFields.modalities||school.programDefaults.modalities,requirements:program.requirements};
     const programAdded=[];
     for(const requirement of program.requirements){
-      requirement.optionRows=requirement.optionRows.filter(entry=>!String(typeof entry==='string'?entry:entry?.row||entry?.optionId||'').startsWith('upi-'));
+      const placements=[];
       for(const {mapping,course}of pairs){
         const option=upiTESUOption(model,requirement,mapping,course,identityReview,review);if(!option)continue;
         const rowId=mapId(mapping,course);
@@ -164,18 +169,28 @@ export async function writeTESUUPIKit({identityReview=upiCourseReview,review=upi
             scope:{all:true,levels:['bachelor'],modalities:['online'],catalogs:[program.catalog]},
             quotes:[{sourceId:review.sources[0].id,text:mapping.quote}],extra});
         }
-        requirement.optionRows.push({row:rowId,mode:requirement.freeElective?'upi-elective-placement':requirement.liberalArtsAllocation?'upi-liberal-arts-placement':'upi-exact-placement',optionId:option.id});programAdded.push(option);
+        placements.push({row:rowId,mode:requirement.freeElective?'upi-elective-placement':requirement.liberalArtsAllocation?'upi-liberal-arts-placement':'upi-exact-placement',optionId:option.id});programAdded.push(option);
       }
+      requirement.optionRows=replaceOwned(requirement.optionRows,placements,ownedRowIds,entry=>parsePlacement(entry).row);
     }
     const used=unique(programAdded.flatMap(option=>option.sourceIds));
     program.modelSourceIds=unique([...program.modelSourceIds,...used]);
     program.modelFields.providerEligibilityReview=applyTESUProviderReview({school:school.name,sources:[],requirements:[]}).providerEligibilityReview;
     programs.push({program,options:programAdded.length});
-    await write(resolve(kitDir,'programs/'+program.slug+'.json'),program);
   }
-  equivalencies.equivalencies.push(...sharedRows.values());
+  equivalencies.equivalencies=replaceOwned(equivalencies.equivalencies,[...sharedRows.values()],ownedRowIds,row=>row.id);
+  return {provider,school,equivalencies,programs,supportedReceivingCandidates:pairs.length};
+}
+
+/** Materialize shared identity/award rows once; explicit placements bind them to each current ledger. */
+export async function writeTESUUPIKit({identityReview=upiCourseReview,review=upiTESUReview,check=false,base=root}={}){
+  const kitDir=resolve(base,'content/pathway-kits/tesu'),read=async name=>JSON.parse(await readFile(resolve(kitDir,name),'utf8'));
+  const write=async (file,value)=>{const text=JSON.stringify(value,null,2)+'\n';if(check)assert.equal(await readFile(file,'utf8'),text,file+' requires the reviewed UPI supplement.');else await writeFile(file,text);};
+  const schoolInput=await read('school.json'),result=materializeTESUUPIKit({school:schoolInput,equivalencies:await read('equivalencies.json'),programs:await Promise.all(schoolInput.programOrder.map(slug=>read('programs/'+slug+'.json'))),identityReview,review}),{provider,school,equivalencies,programs}=result;
+  await write(resolve(base,'content/pathway-kits/providers/upi-study.json'),provider);
+  for(const {program}of programs)await write(resolve(kitDir,'programs/'+program.slug+'.json'),program);
   await write(resolve(kitDir,'school.json'),school);await write(resolve(kitDir,'equivalencies.json'),equivalencies);
-  return {providerCourses:provider.courses.length,supportedReceivingCandidates:pairs.length,placements:programs.map(({program,options})=>({modelId:program.modelId,options})),check};
+  return {providerCourses:provider.courses.length,supportedReceivingCandidates:result.supportedReceivingCandidates,placements:programs.map(({program,options})=>({modelId:program.modelId,options})),check};
 }
 
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){

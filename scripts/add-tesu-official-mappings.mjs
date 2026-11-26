@@ -11,6 +11,7 @@ import {applyTESUReceivingMaps} from './add-tesu-school-submitted-maps.mjs';
 import {applyTESUProviderReview} from './tesu-provider-review.mjs';
 import {applyTESUStudyEnglish104} from './tesu-study-english104.mjs';
 import {applyTESUUPIReviewedMaps} from './tesu-upi-maps.mjs';
+import {withVerifiedTESUProviderSourceEnrichment} from './tesu-source-parity.mjs';
 
 const root=resolve(import.meta.dirname,'..');
 export const checkedOn='2026-11-11';
@@ -128,7 +129,7 @@ export function supplementModel(input){
 
 export async function run({check=false}={}){
   const file=resolve(root,'dist/data/tesu.json'),original=JSON.parse(await readFile(file,'utf8')),result=supplementModel(original);
-  if(check)assert.deepEqual(original,result,'dist/data/tesu.json requires the reviewed TESU supplement');
+  if(check)assert.deepEqual(withVerifiedTESUProviderSourceEnrichment(original),result,'dist/data/tesu.json requires the reviewed TESU supplement');
   else await writeFile(file,JSON.stringify(result,null,2)+'\n');
   return {check,files:1,newProviderCourses:2,newNamedRequirementCredits:6,candidateRequirementCredits:99,combinedAlternativeFeasibleCeiling:90};
 }

@@ -140,10 +140,10 @@ function compile(raw,document){
   delete model.routeIds;
   Object.assign(model,compileScopedResearchNotices(model,{asOf:sharedAwardBundle.checkedOn}));
   const choices=Catalog.courseChoiceCounts(model);
-  const entry={id:model.id,path:'',routeIds,school:model.school,title:model.title,format:model.format,...choices,readyTemplate:model.coverage==='complete'&&gap<=0&&Catalog.modelReadiness(model).available,degreeCredits:model.totalCredits,creditUnit:model.creditSystem,paceModel:model.paceModel||records.find(r=>r.paceModel)?.paceModel,...(model.pricing?{pricing:clone(model.pricing)}:{}),modalities:[...new Set(records.flatMap(r=>r.modalities||[]))],coverage:model.coverage==='complete'&&gap<=0?'complete':'partial',status:'reviewed',checkedOn:document.checkedOn};
+  const entry={id:model.id,path:'',routeIds,school:model.school,title:model.title,level:model.level,format:model.format,...choices,readyTemplate:model.coverage==='complete'&&gap<=0&&Catalog.modelReadiness(model).available,degreeCredits:model.totalCredits,creditUnit:model.creditSystem,paceModel:model.paceModel||records.find(r=>r.paceModel)?.paceModel,...(model.pricing?{pricing:clone(model.pricing)}:{}),modalities:[...new Set(records.flatMap(r=>r.modalities||[]))],coverage:model.coverage==='complete'&&gap<=0?'complete':'partial',status:'reviewed',checkedOn:document.checkedOn};
   if(model.format&&/^online$/i.test(model.format))entry.modalities=['online'];
   if(model.format&&/^(residential|campus|on campus)$/i.test(model.format))entry.modalities=['campus'];
-  Catalog.validateModel(model,entry);return {model,entry,gap};
+  try{Catalog.validateModel(model,entry);}catch(error){error.message=model.id+': '+error.message;throw error;}return {model,entry,gap};
 }
 async function output(path,value){outputs.set(path,JSON.stringify(value)+'\n');}
 for(const name of (await readdir(folder)).filter(n=>n.endsWith('.json')).sort()){

@@ -37,7 +37,7 @@ self.addEventListener('message',async event=>{
    await Worth.evaluateWithIndex(index,{learning:request.learning},{loadModels,loadRates,cancelled,onResult});
   }else{
    const data=await loadFull();
-   const total=Object.values(data.index.plans||{}).filter(entry=>(entry?.tier==='confirmation'||entry?.tier==='reviewed'&&entry?.published===true)).length;
+   const total=planner().planLibraryRoutes(data.catalog,[],data.index).filter(route=>data.index.plans?.[route.id]?.modelId===route.modelId).length;
    self.postMessage({id:request.id,event:'start',total,subjects:data.index.subjects||{}});
    await Worth.evaluateAll({...data,learning:request.learning},{loadModels,cancelled,onResult});
   }

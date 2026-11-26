@@ -31,7 +31,8 @@ const original=beforeSharedComposition(compiledHealth);
 // optional providers must be explicitly enabled before their awards can enter.
 const baselineProviders=['Sophia','Study.com','StraighterLine','CLEP','DSST'];
 function planFor(model,selections=model.reviewedBaselineChoices?.optionSelections){return Planner.generate(model,{providers:baselineProviders,allowConditional:true,priority:'transfer',completed:[],optionSelections:selections,optimizationNodeBudget:12000});}
-const quality=(model,plan=planFor(model))=>assessPathwayQuality({model,plan,asOf:'2026-11-19'});
+const currentDataAsOf='2026-11-26';
+const quality=(model,plan=planFor(model))=>assessPathwayQuality({model,plan,asOf:currentDataAsOf});
 const option=(model,requirement='free-electives-1',code='SOPH-0022')=>model.requirements.find(row=>row.id===requirement).options.find(option=>option.code===code&&option.mappingResearchClosed===true);
 
 test('the exact healthcare baseline has 120 planned credits, 66 documented outside credits and 54 Liberty credits',()=>{
@@ -167,7 +168,7 @@ test('the Business prerequisite conflict is a platform research hold and cannot 
 test('the final shared-composed healthcare and Psychology outputs preserve complete reviewed routes and original degree quantities',async()=>{
  const compiledPsych=(await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online');
  for(const [model,outside,university]of [[compiledHealth,72,48],[compiledPsych,78,42]]){
-  const before=JSON.stringify(model),plan=planFor(model),report=assessPathwayQuality({model,plan,asOf:'2026-11-20'});
+  const before=JSON.stringify(model),plan=planFor(model),report=assessPathwayQuality({model,plan,asOf:currentDataAsOf});
   assert.equal(report.publication.ready,true);assert.equal(report.research.blockingFindings,0);assert.equal(report.metrics.feasibleOutsideCredits,outside);assert.equal(plan.totals.institutional,university);assert.equal(plan.totals.accounted,120);assert.equal(model.requirements.reduce((sum,row)=>sum+row.credits,0),120);assert.equal(plan.totals.confirmed,0);assert.equal(plan.totals.reported,0);assert.equal(plan.validation.academicCountsValid,true);
   const univ=model.requirements.find(row=>row.id==='univ-104');assert.equal(univ?.credits,3);assert.equal(plan.rows.find(row=>row.requirementId===univ.id)?.option?.provider,'University');if(model.id==='curriculum-liberty-psychology-bs-online')assert.equal(univ.institutionalOnly,true);assert.deepEqual(CoursePlanView.build({program:model,plan,state:{learning:[]},match:{completed:[]}},{}).curriculumIssues,[]);assert.equal(JSON.stringify(model),before);
   if(model.id===compiledHealth.id){
@@ -200,7 +201,7 @@ test('explicitly enabling and selecting a later CLI religion award retains its c
  const compiledPsych=(await read('dist/data/curricula/liberty.json')).models.find(model=>model.id==='curriculum-liberty-psychology-bs-online');
  for(const model of [compiledHealth,compiledPsych]){
   const requirement=model.requirements.find(row=>row.id==='theo-104'),choice=requirement.options.find(option=>option.id==='liberty-cli-the-101-to-theo-104');assert(choice);
-  const plan=Planner.generate(model,{providers:[...baselineProviders,'Christian Leaders Institute'],allowConditional:true,priority:'transfer',completed:[],optionSelections:{...model.reviewedBaselineChoices.optionSelections,'theo-104':choice.id}}),report=assessPathwayQuality({model,plan,asOf:'2026-11-24'});
+  const plan=Planner.generate(model,{providers:[...baselineProviders,'Christian Leaders Institute'],allowConditional:true,priority:'transfer',completed:[],optionSelections:{...model.reviewedBaselineChoices.optionSelections,'theo-104':choice.id}}),report=assessPathwayQuality({model,plan,asOf:currentDataAsOf});
   assert.equal(plan.validation.academicCountsValid,true);assert.equal(plan.rows.find(row=>row.requirementId==='theo-104').option.id,choice.id);
   assert.equal(choice.credits,4);assert.equal(choice.providerListedCreditQuantity,3);assert.equal(choice.sourceCredits,undefined);assert.equal(choice.sourceCreditSystem,undefined);assert.equal(choice.sourceCreditStatus,'unknown');
   assert.equal(report.publication.ready,false);assert(report.findings.some(finding=>finding.code==='conditional-award'&&finding.optionIds.includes(choice.id)&&finding.blocking===true));

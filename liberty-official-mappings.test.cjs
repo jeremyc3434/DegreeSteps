@@ -1,5 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict'),cp=require('node:child_process');
 const document=require('./content/curricula/liberty.json');
+const clepIdentities=require('./content/pathway-kits/providers/clep.json');
 const load=()=>import('./scripts/add-liberty-official-mappings.mjs');
 const row=(model,code)=>model.requirements.find(row=>row.code===code);
 const model=id=>document.models.find(model=>model.id===id);
@@ -11,7 +12,15 @@ test('reviewed exact awards retain modality, identities, credits and guide dates
  assert.equal(published.status,0,'the committed source is reproducible: '+(published.stderr||published.stdout));
  let count=0;
  for(const {model,requirement,option} of officialPlacements(document)){
-  count++;assert.equal(option.mappingReviewId,'liberty-official-2026-11-10');assert.equal(option.credits,requirement.credits);if(option.provider==='CLEP'){assert.equal(option.sourceCredits,undefined);assert.equal(option.sourceCreditSystem,undefined);}else{assert.equal(option.sourceCredits,option.credits);assert.equal(option.sourceCreditSystem,'semester');}assert.equal(option.creditSystem,'semester');assert.equal(option.evidence,'published');assert(option.providerCourseCode);assert(option.conditions.some(note=>/No student award/.test(note)));
+  count++;assert.equal(option.mappingReviewId,'liberty-official-2026-11-10');assert.equal(option.credits,requirement.credits);
+  if(option.provider==='CLEP'){
+   const identity=clepIdentities.courses.find(course=>course.code===option.code);
+   assert(identity&&identity.identityReviewId==='clep-current-independent-identities-2026-11-26','An original quantity needs its separate reviewed ACE identity');
+   assert.equal(option.sourceCredits,identity.sourceCredits);assert.equal(option.sourceCreditSystem,'semester');
+   assert.deepEqual(option.sourceCreditVerification,identity.sourceCreditVerification);
+   for(const id of identity.sourceCreditVerification.sourceIds){assert(option.identitySourceIds.includes(id));const actual=model.sources.find(source=>source.id===id),original=clepIdentities.sources.find(source=>source.id===id);assert(actual&&original);assert.deepEqual(actual,original);assert.equal(actual.kind,'ace');}
+  }else{assert.equal(option.sourceCredits,option.credits);assert.equal(option.sourceCreditSystem,'semester');}
+  assert.equal(option.creditSystem,'semester');assert.equal(option.evidence,'published');assert(option.providerCourseCode);assert(option.conditions.some(note=>/No student award/.test(note)));
   const source=model.sources.find(source=>option.sourceIds.includes(source.id));assert(source);assert.equal(source.guideUpdated,option.guideUpdated);assert.equal(source.checked,'2026-11-10');
   if(option.provider==='CLEP')assert.equal(option.minScore,50);
  }
@@ -49,6 +58,7 @@ test('the real Guide enforces reviewed CLEP scores while source quantities stay 
  const Guide=require('./dist/guide-engine.js'),criminal=require('./dist/data/liberty-criminal-justice-online.json');
  const requirement=row(criminal,'GOVT 220'),clep=requirement.options.find(option=>option.code==='CLEP-0007');
  assert.equal(clep.minScore,50);assert.equal(clep.sourceCredits,undefined);assert.equal(clep.sourceCreditSystem,undefined);
+ const businessAccounting=row(require('./dist/data/liberty.json'),'ACCT 211').options.find(option=>option.code==='CLEP-0039');assert(businessAccounting);assert.equal(businessAccounting.sourceCredits,undefined);assert.equal(businessAccounting.sourceCreditSystem,undefined,'The legacy business importer has no independent original quantity to inherit');
  const record={id:'clep-american-government',provider:'CLEP',code:'CLEP-0007',title:'American Government',status:'earned',credits:3,creditSystem:'semester',evaluations:[]};
  assert.equal(Guide.matchInventory(criminal,[{...record,score:49}]).completed.length,0);
  const accepted=Guide.matchInventory(criminal,[{...record,score:50}]);assert.equal(accepted.completed.length,1);assert.equal(accepted.completed[0].requirementId,requirement.id);assert.equal(accepted.completed[0].status,'reported');

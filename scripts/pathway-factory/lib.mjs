@@ -24,6 +24,32 @@ export const dateOnly=value=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test
 export const today=()=>new Date().toISOString().slice(0,10);
 export const sourceDate=source=>source?.checked??source?.checkedOn;
 
+/**
+ * Merge receiving-row display overrides without losing the evidence for an
+ * inherited, reviewed CLEP original quantity. A legacy receiving guide's lack
+ * of independent exam credits does not negate a later independent ACE review.
+ * Explicit original-fact overrides and omissions always retain their meaning.
+ */
+export function mergeProviderIdentity(course,row){
+  const own=row?.identity||{},omitted=list(row?.identityOmit),identity={...clone(course||{}),...clone(own)};
+  const originalFields=['sourceCredits','sourceCreditSystem','sourceCreditStatus','sourceCreditVerification','sourceUpper','aceId','courseVersion','recommendationStart','recommendationEnd','recommendationPeriodSourceIds','identityReviewId','identityCheckedOn'];
+  const verification=course?.sourceCreditVerification,sourceIds=list(course?.identitySourceIds);
+  const reviewedOriginal=row?.provider==='CLEP'&&course?.code===row?.code&&course?.aceId===row?.code&&/^CLEP-\d{4}$/.test(row?.code||'')&&
+    /^clep-current-independent-identities-\d{4}-\d{2}-\d{2}$/.test(course?.identityReviewId||'')&&
+    course.sourceCreditStatus==='verified'&&Number.isFinite(course.sourceCredits)&&course.sourceCredits>0&&course.sourceCreditSystem==='semester'&&typeof course.sourceCreditBasis==='string'&&course.sourceCreditBasis.trim().length>0&&
+    verification?.credits===course.sourceCredits&&verification?.creditSystem===course.sourceCreditSystem&&list(verification?.sourceIds).length>0&&list(verification.sourceIds).every(id=>sourceIds.includes(id))&&
+    Number.isInteger(course.courseVersion)&&course.courseVersion>0&&dateOnly(course.identityCheckedOn)&&dateOnly(course.recommendationStart)&&dateOnly(course.recommendationEnd)&&course.recommendationStart<=course.identityCheckedOn&&course.identityCheckedOn<=course.recommendationEnd;
+  const unchangedOriginal=originalFields.every(field=>!Object.hasOwn(own,field))&&!omitted.some(field=>[...originalFields,'identitySourceIds','sourceCreditBasis','providerCourseCode'].includes(field))&&
+    (!Object.hasOwn(own,'providerCourseCode')||own.providerCourseCode===course?.providerCourseCode);
+  const legacyBasis=own.sourceCreditBasis===undefined||own.sourceCreditBasis==='Independent CLEP/ACE source-credit quantity not established by the receiving-school guide.';
+  if(reviewedOriginal&&unchangedOriginal&&legacyBasis){
+    identity.identitySourceIds=[...new Set([...list(identity.identitySourceIds),...sourceIds])];
+    identity.sourceCreditBasis=course.sourceCreditBasis;
+  }
+  for(const field of omitted)delete identity[field];
+  return identity;
+}
+
 /** Key-sorted copy used for comparisons and content hashes. */
 export function canonical(value){
   if(Array.isArray(value))return value.map(canonical);

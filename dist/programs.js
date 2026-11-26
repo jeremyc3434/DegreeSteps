@@ -1,4 +1,16 @@
+// A curriculum can have several incoming catalog URLs. The finder offers one
+// card for the actual published model; aliases remain in the planning catalog.
+function degreeStepsPublishedFinderRows(candidates,catalog){
+ const approved=new Map((Array.isArray(catalog?.publicationIndex?.plans)?catalog.publicationIndex.plans:[]).filter(plan=>plan.publicationReady===true).map(plan=>[plan.modelId,plan])),selected=new Map();
+ for(const route of Array.isArray(candidates)?candidates:[]){
+  const proof=approved.get(route?.modelId);if(!proof||!Array.isArray(proof.routeIds)||!proof.routeIds.includes(route.id))continue;
+  const previous=selected.get(route.modelId);if(!previous||route.id===proof.routeIds[0])selected.set(route.modelId,route);
+ }
+ return [...selected.values()];
+}
+if(typeof module==='object'&&module.exports)module.exports={publishedFinderRows:degreeStepsPublishedFinderRows};
 (function(){'use strict';
+if(typeof window==='undefined'||typeof document==='undefined')return;
 const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),norm=v=>String(v||'').toLowerCase(),P=window.DegreeProgramOpportunities;
 let catalog,data,rows=[],limit=30,format='',restoreFocus=null,splits=new Map(),index={plans:{},subjects:{}},freshness={},schools=[];
 let personalClient=null,personalAvailable=false,personalProblem=false,personalPhase='idle',personalScope='',personalTicket=0,personalTimer=null,personalResults=new Map(),personalPublished=new Set(),personalTotal=0;
@@ -11,7 +23,7 @@ const schoolFor=p=>P.schoolFor(data,p),price=p=>fit(p).tuitionLabel||P.priceText
 const info=p=>index.plans[p.id]||{tier:'reviewed',subjects:[],questions:[]},needsConfirmation=p=>info(p).tier==='confirmation',shareOf=p=>{const s=splits.get(p.id);return s?Math.round(s.outside/s.total*100):null;};
 const fit=p=>{const f=info(p).fit,edition=value=>String(value||'').replace(/[–—]/g,'-');return f&&f.modelId===p.modelId&&(!f.modality||(p.modalities||[]).includes(f.modality))&&(!p.catalog||edition(f.catalogYear)===edition(p.catalog))?f:typeof P.fitFacts==='function'?P.fitFacts(p,schoolFor(p)):{};};
 const pace=p=>fit(p).paceLabel||P.paceText(p),isSelf=p=>fit(p).selfPaced===true;
-const fieldIds={q:'program-search',school:'program-school',level:'program-level',subject:'program-subject',pace:'program-pace',billing:'program-billing',cbe:'program-cbe',share:'program-share',credit:'program-credit',budget:'program-budget',confirm:'program-confirm'};
+const fieldIds={q:'program-search',school:'program-school',level:'program-level',subject:'program-subject',pace:'program-pace',billing:'program-billing',cbe:'program-cbe',share:'program-share',credit:'program-credit',budget:'program-budget'};
 const billingNames={'per-credit':'Per credit',subscription:'Subscription tuition','flat-term':'Flat tuition per term',annual:'Annual tuition'};
 function fitFilters(){return{competencyBased:$('program-cbe').checked?true:undefined,selfPaced:$('program-pace').value==='self-paced'?true:$('program-pace').value==='scheduled'?false:undefined,billing:$('program-billing').value||undefined};}
 function fits(p){
@@ -35,7 +47,6 @@ function selectedFilters(){
  const selected=[];
  for(const [key,id]of Object.entries(fieldIds)){
   if(key==='cbe'){if($(id).checked)selected.push([key,'Competency-based (CBE)']);continue;}
-  if(key==='confirm'){if(!$(id).checked)selected.push([key,'Reviewed plans only']);continue;}
   const value=$(id).value;if(!value)continue;
   selected.push([key,key==='q'?'Search: '+value:key==='share'?value+'%+ planned outside credit':key==='budget'?'Planning range up to '+money(Number(value)):key==='billing'?billingNames[value]||value:label(id,value)]);
  }
@@ -46,7 +57,7 @@ function renderFilterState(){
  document.querySelectorAll('[data-preset]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.preset==='self-paced'?$('program-pace').value==='self-paced':button.dataset.preset==='cbe'?$('program-cbe').checked:button.dataset.preset==='subscription'?$('program-billing').value==='subscription':button.dataset.preset===(format||'all'))));
  const selected=selectedFilters(),node=$('program-active-filters');
  node.hidden=!selected.length;node.innerHTML=selected.map(([key,label])=>'<button type="button" class="pf-filter-chip" data-clear-filter="'+esc(key)+'" aria-label="Remove filter: '+esc(label)+'"><span>'+esc(label)+'</span><span aria-hidden="true">×</span></button>').join('')+(selected.length?'<button type="button" class="pf-clear-filters" data-clear-all>Clear filters</button>':'');
- const extra=Number(Boolean($('program-level').value))+Number(Boolean($('program-pace').value))+Number(Boolean($('program-billing').value))+Number($('program-cbe').checked)+Number(Boolean($('program-share').value))+Number(Boolean($('program-credit').value))+Number(Boolean($('program-budget').value))+Number(!$('program-confirm').checked);
+ const extra=Number(Boolean($('program-level').value))+Number(Boolean($('program-pace').value))+Number(Boolean($('program-billing').value))+Number($('program-cbe').checked)+Number(Boolean($('program-share').value))+Number(Boolean($('program-credit').value))+Number(Boolean($('program-budget').value));
  $('program-more-summary').textContent='More filters'+(extra?' ('+extra+')':'');
 }
 function syncUrl(){
@@ -54,7 +65,6 @@ function syncUrl(){
  const params=new URLSearchParams();
  for(const [key,id]of Object.entries(fieldIds)){
   if(key==='cbe'){if($(id).checked)params.set(key,'1');continue;}
-  if(key==='confirm'){if(!$(id).checked)params.set(key,'0');continue;}
   if($(id).value)params.set(key,$(id).value);
  }
  if(format)params.set('format',format);if($('program-sort').value)params.set('sort',$('program-sort').value);if(personalAvailable&&!$('program-personal').checked)params.set('fit','0');
@@ -63,7 +73,7 @@ function syncUrl(){
 function applyUrl(){
  const params=new URLSearchParams(location.search),legacy=params.get('type');
  for(const id of Object.values(fieldIds))if(!['program-cbe','program-confirm'].includes(id))$(id).value='';
- $('program-cbe').checked=params.get('cbe')==='1';$('program-confirm').checked=params.get('confirm')!=='0';$('program-sort').value='';
+ $('program-cbe').checked=params.get('cbe')==='1';$('program-confirm').checked=true;$('program-sort').value='';
  $('program-search').value=(params.get('q')||'').slice(0,80);
  if(schools.includes(params.get('school')))$('program-school').value=params.get('school');
  if(index.subjects[params.get('subject')])$('program-subject').value=params.get('subject');
@@ -76,7 +86,7 @@ function applyUrl(){
  if(['15000','25000','40000'].includes(params.get('budget')))$('program-budget').value=params.get('budget');
  $('program-personal').checked=personalAvailable&&params.get('fit')!=='0';
  if(['outside','cost','az','school'].includes(params.get('sort')))$('program-sort').value=params.get('sort');else if(personalEnabled())$('program-sort').value='fit';
- if($('program-level').value||$('program-pace').value||$('program-billing').value||$('program-cbe').checked||$('program-share').value||$('program-credit').value||$('program-budget').value||!$('program-confirm').checked)$('program-more-filters').open=true;
+ $('program-more-filters').open=Boolean($('program-level').value||$('program-pace').value||$('program-billing').value||$('program-cbe').checked||$('program-share').value||$('program-credit').value||$('program-budget').value);
 }
 const money=v=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v);
 
@@ -166,8 +176,8 @@ function priceHTML(p){
 // Weekly source freshness (data/plan-freshness.json): a neutral note while a cited school page is rechecked. Optional.
 const freshnessNote=p=>{const f=freshness[p.id];if(f?.status!=='rechecking'||!/^\d{4}-\d{2}-\d{2}$/.test(f.since||''))return '';return '<p class="pf-freshness" role="note">Rechecking: the school updated a source page on '+esc(new Intl.DateTimeFormat('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(f.since+'T00:00:00Z')))+'.</p>';};
 const confirmBadge='<span class="pf-badge pf-badge-confirm">Needs school confirmation</span>';
-function matches(p){const subject=$('program-subject').value,minShare=Number($('program-share').value)||0,budget=Number($('program-budget').value)||0,estimate=info(p).estimate;if(subject&&!info(p).subjects.includes(subject))return false;if(minShare&&!((shareOf(p)??-1)>=minShare))return false;if(budget&&!personalEnabled()&&!(estimate&&estimate.partial!==true&&Number.isFinite(estimate.min)&&Number.isFinite(estimate.max)&&estimate.min>=0&&estimate.max>=estimate.min&&estimate.max<=budget))return false;if(!$('program-confirm').checked&&needsConfirmation(p))return false;if(!fits(p))return false;
-const q=norm($('program-search').value).trim(),credit=$('program-credit').value;return(!$('program-school').value||p.school===$('program-school').value)&&(!$('program-level').value||p.level===$('program-level').value)&&(!q||norm([p.school,p.title,p.id,pace(p)].join(' ')).includes(q))&&(!format||p.modalities?.includes(format))&&acceptsCredit(p,credit);}
+function matches(p){const subject=$('program-subject').value,minShare=Number($('program-share').value)||0,budget=Number($('program-budget').value)||0,estimate=info(p).estimate;if(subject&&!info(p).subjects.includes(subject))return false;if(minShare&&!((shareOf(p)??-1)>=minShare))return false;if(budget&&!personalEnabled()&&!(estimate&&estimate.partial!==true&&Number.isFinite(estimate.min)&&Number.isFinite(estimate.max)&&estimate.min>=0&&estimate.max>=estimate.min&&estimate.max<=budget))return false;if(!fits(p))return false;
+const q=norm($('program-search').value).trim(),credit=$('program-credit').value,aliases=(catalog.pathways||[]).filter(route=>route.modelId===p.modelId).flatMap(route=>[route.id,route.title]);return(!$('program-school').value||p.school===$('program-school').value)&&(!$('program-level').value||p.level===$('program-level').value)&&(!q||norm([p.school,p.title,p.id,pace(p),...aliases].join(' ')).includes(q))&&(!format||p.modalities?.includes(format))&&acceptsCredit(p,credit);}
 function render(){
  $('program-college-tip').hidden=$('program-credit').value!=='institutional'||['master','doctorate','specialist'].includes($('program-level').value);
  queuePersonal(rows.filter(matches));personalStatus();
@@ -195,7 +205,7 @@ function activePlan(){
  try{const s=JSON.parse(localStorage.getItem(KEY)||'null'),id=s?.selectedPathwayId||s?.profile?.pathwayId;if(!s||typeof s!=='object'||s.sheet?.isExample||typeof id!=='string'||!id)return null;
   const scenarios=s.scenarios&&typeof s.scenarios==='object'?Object.values(s.scenarios):[];
   const progress=(Array.isArray(s.learning)&&s.learning.length>0)||scenarios.some(x=>x&&typeof x==='object'&&Object.keys(x.optionSelections||{}).length>0);
-  return progress?{id}:null;}catch{return null;}
+  return progress?{id,modelId:catalog.pathways.find(route=>route.id===id)?.modelId}:null;}catch{return null;}
 }
 function confirmSwitch(p,href){
  restoreFocus=document.activeElement;const page=typeof info(p).page==='string'&&/^\/degree-plans\/[a-z0-9-]+\/$/.test(info(p).page)?info(p).page:'';
@@ -204,11 +214,11 @@ function confirmSwitch(p,href){
 }
 document.addEventListener('click',e=>{
  const open=e.target.closest('a.pf-open-plan');
- if(open&&e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey){const p=rows.find(r=>r.id===open.closest('[data-program]')?.dataset.program),active=activePlan();if(!p||!active||active.id===p.id)return;e.preventDefault();confirmSwitch(p,open.getAttribute('href'));return;}
+ if(open&&e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey){const p=rows.find(r=>r.id===open.closest('[data-program]')?.dataset.program),active=activePlan();if(!p||!active||active.id===p.id||active.modelId&&active.modelId===p.modelId)return;e.preventDefault();confirmSwitch(p,open.getAttribute('href'));return;}
  const preview=e.target.closest('button[data-preview-plan]');if(preview){const focus=restoreFocus;$('program-switch-dialog').close();details(preview.dataset.previewPlan);restoreFocus=focus;}
 });
 $('program-switch-dialog').addEventListener('close',()=>{if(!$('program-dialog').open)restoreFocus?.isConnected&&restoreFocus.focus({preventScroll:true});});
-function reset(){for(const id of Object.values(fieldIds))if(!['program-cbe','program-confirm'].includes(id))$(id).value='';$('program-cbe').checked=false;$('program-confirm').checked=true;$('program-sort').value=personalEnabled()?'fit':'';format='';limit=30;render();syncUrl();$('program-search').focus?.();}
+function reset(){for(const id of Object.values(fieldIds))if(!['program-cbe','program-confirm'].includes(id))$(id).value='';$('program-cbe').checked=false;$('program-confirm').checked=true;$('program-more-filters').open=false;$('program-sort').value=personalEnabled()?'fit':'';format='';limit=30;render();syncUrl();$('program-search').focus?.();}
 function removeFilter(name){
  if(name==='format')format='';
  else if(name==='cbe')$('program-cbe').checked=false;
@@ -239,9 +249,10 @@ $('program-dialog').addEventListener('close',()=>restoreFocus?.isConnected&&rest
  $('program-college-tip').querySelector('div').innerHTML=sources.sources.filter(source=>['asu-ulc','tel','cpa-credits','outlier'].includes(source.id)).map(source=>'<p><a href="credit-sources/'+encodeURIComponent(source.id)+'/">'+esc(source.name)+'</a><small>'+esc(source.creditBasis)+'</small></p>').join('');
  catalog=await DegreeProgramCatalog.loadIndex(DegreeProgramCatalog.merge(loaded[0],loaded[1]));
  if(typeof DegreeProgramCatalog.publishedPlans!=='function'||catalog.publicationIndex?.available===false)throw Error('We couldn’t load the reviewed degree plans. Reload to try again. Your saved plan is safe.');
- // Reviewed plans plus complete plans that still need school confirmation (labelled); both open in the planner.
+ // A student chooses only a complete publication-ready plan. Unfinished
+ // research stays in the research workflow rather than becoming a dead end.
  const published=DegreeProgramCatalog.publishedPlans(catalog).filter(p=>P.availability(p).canChoose),publishedIds=new Set(published.map(p=>p.id));personalPublished=publishedIds;
- rows=[...published,...(typeof DegreeProgramCatalog.isPlanAvailable==='function'?(catalog.pathways||[]).filter(p=>!publishedIds.has(p.id)&&p.modelId&&index.plans[p.id]?.tier==='confirmation'&&DegreeProgramCatalog.isPlanAvailable(p,catalog)&&P.availability(p).canChoose):[])];
+ rows=degreeStepsPublishedFinderRows(published,catalog);
  try{const r=await fetch('data/plan-freshness.json');const value=r.ok?await r.json():null;freshness=value?.plans&&typeof value.plans==='object'&&!Array.isArray(value.plans)?value.plans:{};}catch{freshness={};}
  for(const [id,entry]of Object.entries(index.plans)){const s=entry.start;if(Number.isFinite(s?.outside)&&Number.isFinite(s?.university)&&Number.isFinite(s?.total)&&s.total>0)splits.set(id,{outside:s.outside,university:s.university,total:s.total});}
  try{const r=await fetch('data/baseline-index.json');const baselineIndex=r.ok?await r.json():null;for(const b of Object.values(baselineIndex?.baselines||{})){if(splits.has(b.pathwayId))continue;const t=b.summary||{};if(!Number.isFinite(t.transferCredits)||!Number.isFinite(t.universityCredits))continue;splits.set(b.pathwayId,{outside:t.transferCredits,university:t.universityCredits,total:Number.isFinite(t.totalCredits)?t.totalCredits:t.transferCredits+t.universityCredits});}}catch{}
@@ -249,7 +260,7 @@ $('program-dialog').addEventListener('close',()=>restoreFocus?.isConnected&&rest
  schools=[...new Set(rows.map(p=>p.school))].sort();
  $('program-school').innerHTML='<option value="">All schools</option>'+schools.map(s=>'<option value="'+esc(s)+'">'+esc(s)+'</option>').join('');
  setupPersonal();applyUrl();
- $('program-coverage').querySelector('div').innerHTML='<p>'+rows.length+' researched plans at '+schools.length+' schools: '+rows.filter(p=>!needsConfirmation(p)).length+' reviewed and '+rows.filter(needsConfirmation).length+' that need school confirmation. Each includes every degree requirement, researched outside-course matches and required university coursework.</p><p><strong>Reviewed plans</strong> passed every DegreeSteps publication check. <strong>Plans that need school confirmation</strong> are complete, but at least one school rule or course match is not yet confirmed in the school’s published sources; each card names the open question. Your school makes the final decision on transfer credit.</p><p>Need a different degree? <a href="request-plan.html">Build a plan from its degree link</a>.</p>';
+ $('program-coverage').querySelector('div').innerHTML='<p>'+rows.length+' complete, reviewed degree plans at '+schools.length+' schools. Each includes the full requirements, documented outside-course matches and required university coursework.</p><p>Your school records the final transfer-credit award.</p><p>Need a different degree? <a href="request-plan.html">Build a plan from its degree link</a>, or <a href="degree-audit.html">build your own plan</a>.</p>';
  render();
  
 }catch(e){$('program-count').textContent='';$('program-error').hidden=false;$('program-error').textContent=e.message;}})();

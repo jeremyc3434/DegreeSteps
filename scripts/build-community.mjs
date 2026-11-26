@@ -14,8 +14,15 @@ const studentOffers=JSON.parse(await readFile(resolve(root,'content/monetization
 execFileSync(process.execPath,[resolve(root,'scripts/course-assessment-reviews.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 const types = {html:'text/html; charset=utf-8',js:'application/javascript; charset=utf-8',mjs:'application/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml',ico:'image/vnd.microsoft.icon',csv:'text/csv; charset=utf-8',xlsx:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',txt:'text/plain; charset=utf-8',xml:'application/xml; charset=utf-8',webp:'image/webp',jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png'};
 execFileSync(process.execPath,[resolve(root,'scripts/reviewed-course-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/clep-reviewed-provider-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/umpi-transfer-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/umpi-public-receiving.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/upi-course-catalog.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/tesu-upi-maps.mjs'),'--check-kit'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/tesu-course-eligibility.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/tesu-course-placements.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/tesu-receiving-additions.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/tesu-accounting-notices.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/wgu-study-expansion.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/liberty-current-evidence.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-plan-estimate-rates.mjs'),'--check'],{cwd:root,stdio:'inherit'});
@@ -40,6 +47,8 @@ execFileSync(process.execPath,[resolve(root,'scripts/wgu-agreement-ledgers.mjs')
 for(const script of ['wgu-promote-sophia-identities.mjs','wgu-data-analytics-identities.mjs','wgu-data-analytics.mjs','wgu-cloud-network.mjs']){
   execFileSync(process.execPath,[resolve(root,'scripts',script),'--check'],{cwd:root,stdio:['ignore','ignore','inherit']});
 }
+execFileSync(process.execPath,[resolve(root,'scripts/wgu-mba-family.mjs'),'--check'],{cwd:root,stdio:['ignore','ignore','inherit']});
+execFileSync(process.execPath,[resolve(root,'scripts/wgu-current-ledger-residency.mjs'),'--check'],{cwd:root,stdio:['ignore','ignore','inherit']});
 // Pathway Factory: published school kits (content/pathway-kits/*/school.json "publish") are the source of their content/curricula documents.
 execFileSync(process.execPath,[resolve(root,'scripts/pathway-factory/compile.mjs'),'--publish','--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-curriculum-registry.mjs'),'--check'],{cwd:root,stdio:'inherit'});

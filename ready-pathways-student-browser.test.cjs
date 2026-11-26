@@ -111,13 +111,28 @@ async function test(name, fn) {
   for (const width of [390,1440]) {
     await test('find a reviewed degree and build its full worksheet '+width, async()=>{
       const {page} = await open('programs.html',width,{state:null});
-      const card = page.locator('[data-program="'+initialRoute.id+'"]');await card.waitFor({timeout:60000});
+      await page.locator('[data-program]').first().waitFor({timeout:60000});
+      const expectedModels=new Set(eligible.map(route=>route.modelId)),expectedSchools=[...new Set(eligible.map(route=>route.school))].sort();
+      const countText=await page.locator('#program-count').innerText();
+      assert.equal(Number(countText.match(/^\d+/)?.[0]),expectedModels.size,'The finder counts distinct, complete degrees.');
+      assert(!/need.*confirmation/i.test(countText),'Students are not offered research drafts as starting plans.');
+      assert.deepEqual((await page.locator('#program-school option').evaluateAll(options=>options.map(option=>option.value).filter(Boolean))).sort(),expectedSchools,'School choices contain colleges with complete plans.');
+      const shown=await page.locator('[data-program]').evaluateAll(cards=>cards.map(card=>card.dataset.program));
+      const shownModels=shown.map(id=>catalog.pathways.find(route=>route.id===id)?.modelId);
+      assert(shown.every(id=>approved.has(id)),'The finder offers complete published plans without research drafts.');
+      assert(shownModels.every(Boolean)&&new Set(shownModels).size===shownModels.length,'The finder shows one card per degree, preserving aliases as incoming links.');
+      // Students search for a degree; its place in the first page changes as
+      // complete programs are added. A canonical card may use another saved alias.
+      await page.locator('#program-search').fill('History');
+      const aliases=eligible.filter(route=>route.modelId===initialRoute.modelId).map(route=>route.id);
+      const card=page.locator(aliases.map(id=>'[data-program="'+id+'"]').join(',')).first();await card.waitFor({timeout:60000});
+      const chosenId=await card.getAttribute('data-program');
       assert.match(await card.innerText(),/Reviewed plan/);
       await fits(page,'Degree finder');
       await card.locator('a.pf-open-plan').click();
       await completeProfileSteps(page);
       await page.waitForURL('**/plan.html',{timeout:60000});await ready(page);
-      assert.equal((await current(page)).selectedPathwayId,initialRoute.id);
+      assert.equal((await current(page)).selectedPathwayId,chosenId);
       assert.equal((await current(page)).learning.length,0,'A proposed plan does not create earned courses.');
       assert(await page.locator('[data-plan-section]').count()>1 || await page.locator('.course-plan-section').count()>1 || await page.locator('.course-plan-table').count()>1,'Full academic sections remain visible.');
       await fits(page,'New worksheet');await screenshot(page,'new-plan-'+width);

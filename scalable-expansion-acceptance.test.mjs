@@ -149,11 +149,16 @@ test('the five new WGU programs preserve exact program-specific quantities and i
  assert.equal(database.sourceCredits,3);assert.equal(database.credits,4);
 });
 
-test('TESU UPI allocation remains a conditional research scenario after its nine-credit gain',async()=>{
- const id='curriculum-tesu-ba-liberal-studies',report=byId.get(id),model=await modelFor(id);
- assert.equal(report.publication.ready,false);
- assert.equal(report.metrics.degreeCredits,120);assert.equal(report.metrics.feasibleOutsideCredits,84);
- assert(report.metrics.conditionalOutsideCredits>0);
+test('TESU publishes its complete reviewed baseline while preserving UPI allocation as a separate conditional research scenario',async()=>{
+ const id='curriculum-tesu-ba-liberal-studies',report=publishedReady(id,120,72),model=await modelFor(id),baseline=baselines.find(plan=>plan.modelId===id);
+ assert.equal(report.metrics.feasibleOutsideCredits,72);assert.equal(report.metrics.conditionalOutsideCredits,0);
+ const selection=baseline.baselineSelection;
+ assert.equal(selection.selected,'published-only-baseline');assert.equal(selection.conditionalCandidatePreserved,true);
+ assert.equal(selection.conditionalCandidate.publicationReady,false);assert.equal(selection.conditionalCandidate.researchStatus,'needs-research');assert(selection.conditionalCandidate.transferCredits>=84,'The earlier conditional nine-credit gain remains available for research');
+ assert(selection.conditionalCandidate.reasonCodes.includes('conditional-award'));assert(selection.conditionalCandidate.rows.some(row=>row.provider==='UPI Study'));
+ assert.equal(selection.publishedOnlyCandidate.publicationReady,true);assert.equal(selection.publishedOnlyCandidate.allowConditional,false);assert.deepEqual(baseline.rows,selection.publishedOnlyCandidate.rows);
+ assert(!baseline.rows.some(row=>row.provider==='UPI Study'),'An unconfirmed UPI receiving claim cannot enter the reviewed starting plan');
+ for(const selected of baseline.rows){const requirement=model.requirements.find(row=>row.id===selected.requirementId),option=requirement?.options.find(option=>option.id===selected.optionId);assert.equal(option?.evidence,'published',id+' '+selected.requirementId);}
  const candidates=model.requirements.filter(row=>row.liberalArtsAllocation).flatMap(row=>row.options.filter(option=>option.provider==='UPI Study'));
  assert.equal(candidates.length,45);
  for(const option of candidates){

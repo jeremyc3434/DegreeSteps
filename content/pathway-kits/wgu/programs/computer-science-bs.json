@@ -12,8 +12,8 @@
   "totalCredits": 121,
   "review": {
     "status": "reviewed",
-    "reviewer": "Codex (independent Study.com identity and receiving-map review)",
-    "reviewedOn": "2026-11-25"
+    "reviewer": "Codex (source-bound complete current ledger and program-specific residency review)",
+    "reviewedOn": "2026-11-26"
   },
   "sources": [
     {
@@ -186,6 +186,126 @@
       "published": true,
       "approvalStatus": "APPROVED",
       "capture": "content/source-captures/4a1ca634549e22a4.txt"
+    },
+    {
+      "id": "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+      "title": "WGU BSCS 202611: complete named current public academic API ledger",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSCS%3B202611",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/1999836f03e4ba20.txt",
+      "sha256": "1999836f03e4ba20088f9ec9378fa23182ce40bcb67778e942660d6313cdcce9",
+      "sourceContentHash": "sha256:1999836f03e4ba20088f9ec9378fa23182ce40bcb67778e942660d6313cdcce9",
+      "roles": [
+        "curriculum"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 261,
+        "programCode": "BSCS",
+        "catalogYear": "202611",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+    },
+    {
+      "id": "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+      "title": "WGU BSCS 202611: complete current institutional-catalog course table",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=146-147&columns=1",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/e35b7e1889048792.txt",
+      "sha256": "e35b7e18890487926f145a8d48e2b7d6d4bb04c2ea45692b817fa0132275594e",
+      "sourceContentHash": "sha256:e35b7e18890487926f145a8d48e2b7d6d4bb04c2ea45692b817fa0132275594e",
+      "roles": [
+        "curriculum"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 261,
+        "programCode": "BSCS",
+        "catalogYear": "202611",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+    },
+    {
+      "id": "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+      "title": "WGU BSCS 202611: exact current program receiving guidelines",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=261",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/6404c6adab854db6.txt",
+      "sha256": "6404c6adab854db62c699f0abfab2ee89fd7fb4d192a5e220421f32071250bd2",
+      "sourceContentHash": "sha256:6404c6adab854db62c699f0abfab2ee89fd7fb4d192a5e220421f32071250bd2",
+      "roles": [
+        "transfer-guidelines"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 261,
+        "programCode": "BSCS",
+        "catalogYear": "202611",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+    },
+    {
+      "id": "wgu-bscs-202611-residency-policy-reviewed-20261126",
+      "title": "WGU BSCS 202611: active-program undergraduate residency policy",
+      "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+      "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+      "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+      "roles": [
+        "residency-policy"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 261,
+        "programCode": "BSCS",
+        "catalogYear": "202611",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+    },
+    {
+      "id": "wgu-bscs-202611-residency-descriptions-reviewed-20261126",
+      "title": "WGU BSCS 202611: all required course descriptions in the current institutional catalog",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+      "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+      "sourceContentHash": "sha256:73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+      "roles": [
+        "curriculum"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 261,
+        "programCode": "BSCS",
+        "catalogYear": "202611",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
     }
   ],
   "quotes": [
@@ -214,17 +334,14 @@
     }
   },
   "modelFields": {
-    "unresolved": [
-      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
-      "WGU's current BSCS ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
-    ],
+    "unresolved": [],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
       "Outside options come only from WGU's published partner agreements for BSCS catalog 202611 (program 261). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
       "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
       "A course in Calculus I or higher must be taken within the past 5 years.",
-      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements.",
+      "The exact BSCS 202611 required course set is reviewed against its current official catalog table and program receiving guidelines. No separately declared formal capstone occurs in this bounded course set; other editions do not inherit that finding. Any course marked non-transferable still stays at WGU."
     ],
     "mappingCheckedOn": "2026-11-25",
     "pricing": {
@@ -245,7 +362,12 @@
     "policySourceIds": [
       "wgu-undergraduate-institutional-catalog-202611",
       "wgu-bscs-202611-metadata-20261123",
-      "wgu-bscs-202611-curriculum-20261123"
+      "wgu-bscs-202611-curriculum-20261123",
+      "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+      "wgu-bscs-202611-residency-policy-reviewed-20261126",
+      "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+      "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+      "wgu-bscs-202611-residency-descriptions-reviewed-20261126"
     ],
     "policyEvidence": {
       "externalMaxCredits": {
@@ -265,6 +387,20 @@
           "wgu-undergraduate-institutional-catalog-202611"
         ],
         "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      },
+      "institutionMinCredits": {
+        "value": 30.25,
+        "fraction": 0.25,
+        "basisCredits": 121,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+          "wgu-bscs-202611-residency-policy-reviewed-20261126",
+          "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+          "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+          "wgu-bscs-202611-residency-descriptions-reviewed-20261126"
+        ],
+        "note": "The exact current complete ledger and receiving-guideline course set declare no separate formal capstone. All university-required courses remain institutional; this is not a finding about other catalog editions."
       }
     },
     "policyReview": [
@@ -647,6 +783,53 @@
         }
       },
       "allPossibleSourcesGloballyReviewed": false
+    },
+    "institutionMinCredits": 30.25,
+    "completeExecutablePathway": true,
+    "currentLedgerResidencyReview": {
+      "slug": "computer-science-bs",
+      "modelId": "curriculum-wgu-bs-computer-science-reviewed",
+      "status": "reviewed-complete-current-ledger",
+      "reviewedOn": "2026-11-26",
+      "programId": 261,
+      "programCode": "BSCS",
+      "catalog": "202611",
+      "totalCredits": 121,
+      "requirementCount": 39,
+      "courseTupleSha256": "a52eeeda2868d2bf8b02abf275c56d8263813d5b05aaa7f7e28dbaf422055437",
+      "declaredCapstoneCodes": [],
+      "universalityClaim": false,
+      "ledger": {
+        "sourceId": "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+        "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSCS%3B202611",
+        "capture": "content/source-captures/1999836f03e4ba20.txt",
+        "sha256": "1999836f03e4ba20088f9ec9378fa23182ce40bcb67778e942660d6313cdcce9"
+      },
+      "catalogue": {
+        "sourceId": "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+        "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=146-147&columns=1",
+        "capture": "content/source-captures/e35b7e1889048792.txt",
+        "sha256": "e35b7e18890487926f145a8d48e2b7d6d4bb04c2ea45692b817fa0132275594e"
+      },
+      "guidelines": {
+        "sourceId": "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+        "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=261",
+        "capture": "content/source-captures/6404c6adab854db6.txt",
+        "sha256": "6404c6adab854db62c699f0abfab2ee89fd7fb4d192a5e220421f32071250bd2"
+      },
+      "policy": {
+        "sourceId": "wgu-bscs-202611-residency-policy-reviewed-20261126",
+        "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+        "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+        "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5"
+      },
+      "descriptions": {
+        "sourceId": "wgu-bscs-202611-residency-descriptions-reviewed-20261126",
+        "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+        "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+        "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b"
+      },
+      "college": "IT"
     }
   },
   "modelSourceIds": [
@@ -693,12 +876,17 @@
     "study-software-identity-sdcm-0196-2026-11-25",
     "study-software-identity-sdcm-0201-2026-11-25",
     "study-software-identity-sdcm-0249-2026-11-25",
-    "study-software-identity-sdcm-0253-2026-11-25"
+    "study-software-identity-sdcm-0253-2026-11-25",
+    "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+    "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+    "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+    "wgu-bscs-202611-residency-policy-reviewed-20261126",
+    "wgu-bscs-202611-residency-descriptions-reviewed-20261126"
   ],
   "requirements": [
     {"id":"bscs-health-fitness-and-wellness","code":"C458","title":"Health, Fitness, and Wellness","credits":4,"category":"general","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"C458\",\"courseName\":\"Health, Fitness, and Wellness\",\"courseDescription\":\"Health, Fitness, and Wellness focuses on the importance and foundations of good health and physical fitness, particularly for children and adolescents. This course addresses health, nutrition, and fitness, and substance use and abuse.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"General Education\""}]},
     {"id":"bscs-foundations-of-programming-python","code":"E010","title":"Foundations of Programming (Python)","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"it-fundamentals","curriculumAreaEvidence":{"areaOfStudy":"IT Fundamentals","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"E010\",\"courseName\":\"Foundations of Programming (Python)\",\"courseDescription\":\"Foundations of Programming (Python) introduces students to the fundamental principles of programming using Python. This course is designed to equip students with the essential skills needed to write, troubleshoot, and debug simple Python programs. Students will explore the syntax and structure of Python, develop an understanding of variables, loops, and conditional statements, and learn to work within different development environments, including integrated development environments (IDEs) and text editors. By the end of the course, students will be able to create functional Python programs, manipulate data structures, and apply debugging techniques across various platforms. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"IT Fundamentals\""}]},
-    {"id":"bscs-mathematics-for-programmers","code":"E064","title":"Mathematics for Programmers","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"mathematics-content","curriculumAreaEvidence":{"areaOfStudy":"Mathematics Content","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"E064\",\"courseName\":\"Mathematics for Programmers\",\"courseDescription\":\"This course bridges mathematics and programming by using Python to develop mathematical reasoning skills. Students create and evaluate functions to model relationships, analyze and graph algebraic and trigonometric functions, and solve problems that build readiness for calculus and object-oriented programming while using computational tools to explore patterns, precision, and real-world applications.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Mathematics Content\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E064\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bscs-mathematics-for-programmers","code":"E064","title":"Mathematics for Programmers","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123","wgu-bscs-202611-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"mathematics-content","curriculumAreaEvidence":{"areaOfStudy":"Mathematics Content","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"E064\",\"courseName\":\"Mathematics for Programmers\",\"courseDescription\":\"This course bridges mathematics and programming by using Python to develop mathematical reasoning skills. Students create and evaluate functions to model relationships, analyze and graph algebraic and trigonometric functions, and solve problems that build readiness for calculus and object-oriented programming while using computational tools to explore patterns, precision, and real-world applications.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Mathematics Content\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E064\",\"transferArea\":\"Non-Transferable\""},{"sourceId":"wgu-bscs-202611-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"E064\",\"transferArea\":\"Non-Transferable\""}]},
     {"id":"bscs-applied-probability-and-statistics","code":"C955","title":"Applied Probability and Statistics","credits":3,"category":"general","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"C955\",\"courseName\":\"Applied Probability and Statistics\",\"courseDescription\":\"Applied Probability and Statistics is designed to help students develop competence in the fundamental concepts of basic statistics including: introductory algebra and graphing; descriptive statistics; regression and correlation; and probability. Statistical data and probability are often used in everyday life, science, business, information technology, and educational settings to make informed decisions about the validity of studies and the effect of data on decisions. This course discusses what constitutes sound research design and how to appropriately model phenomena using statistical data. Additionally, the content covers simple probability calculations, based on events that occur in the business and IT industries. No prerequisites are required for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
     {"id":"bscs-web-design-fundamentals","code":"E009","title":"Web Design Fundamentals","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"web-development","curriculumAreaEvidence":{"areaOfStudy":"Web Development","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"E009\",\"courseName\":\"Web Design Fundamentals\",\"courseDescription\":\"Web Design Fundamentals provides students with essential web development skills, guiding them through the creation of accessible, responsive, and interactive web pages. This course will enable students to gain hands-on experience in HTML, CSS, and foundational JavaScript. The course will also focus on teaching students how to structure content, apply styling, and add dynamic functionality to enhance user engagement. Emphasizing industry best practices, this course covers key aspects of web accessibility, focusing on WCAG compliance, along with core UX and UI principles to ensure usability for diverse audiences. By the end of the course, students will have a comprehensive toolkit for designing web pages that are not only visually compelling but also technically sound and adaptable to various devices and user needs. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Web Development\""}]},
     {"id":"bscs-calculus-i","code":"C958","title":"Calculus I","credits":4,"category":"general","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"C958\",\"courseName\":\"Calculus I\",\"courseDescription\":\"This course guides candidates to apply theoretical concepts of calculus to real-world situations, demonstrating a developing mathematical mindset. This course focuses on limits, derivatives, integrals, and differential equations; it also prepares students for Discrete Mathematics. Prerequisites may include an entrance exam that assesses pre-calculus skills, or readiness; alternatively, completion of pre-calculus within the past 3 – 5 years.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"General Education\""}],"transferRecencyYears":5,"transferRecencySourceIds":["wgu-bscs-202611-metadata-20261123"]},
@@ -729,11 +917,11 @@
     {"id":"bscs-aws-developer","code":"D321","title":"AWS Developer","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"cloud-and-virtualization","curriculumAreaEvidence":{"areaOfStudy":"Cloud and Virtualization","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D321\",\"courseName\":\"AWS Developer\",\"courseDescription\":\"AWS Developer examines the skills and knowledge needed to effectively implement automated and continuous testing processes for software deployments with cloud solutions. Students will learn to design software with Amazon Web Services (AWS), software development kits (SDKs), and command line interface (CLI), and to implement authentication, encryption, and authorization within an AWS environment. Students will also learn to design cloud service deployments with AWS infrastructure services, platform services, and features. Students will learn skills to monitor automated testing for quality control and to perform root cause analysis on testing or production failures. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Cloud and Virtualization\""}]},
     {"id":"bscs-software-design-and-quality-assurance","code":"D480","title":"Software Design and Quality Assurance","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D480\",\"courseName\":\"Software Design and Quality Assurance\",\"courseDescription\":\"Software Design and Quality Assurance applies a QA focus to every phase of the software development life cycle. This course investigates best practices for quality analysis, quality planning, and testing strategies as they pertain to the everyday practice of software development. Students will come to understand how their work fits into the bigger picture: how QA, testing, and code-writing practices interact within specific process models; the potential impact of new code on existing code or on other applications; the importance of usability and the influence users have on the ultimate success of an application. Students will explore test plans, test cases, unit tests, integration tests, regression tests, usability tests, and test and review tools.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
     {"id":"bscs-data-structures-and-algorithms-i","code":"C949","title":"Data Structures and Algorithms I","credits":4,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"C949\",\"courseName\":\"Data Structures and Algorithms I\",\"courseDescription\":\"Data Structures and Algorithms I covers the fundamentals of dynamic data structures, such as bags, lists, stacks, queues, trees, and hash tables with their associated algorithms. This course discusses object-oriented design and abstract data types as design paradigms. The course emphasizes problem-solving and techniques for designing efficient, maintainable software applications. Students will implement simple applications using the techniques learned.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Computer Science\""}]},
-    {"id":"bscs-data-structures-and-algorithms-ii","code":"C950","title":"Data Structures and Algorithms II","credits":4,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"C950\",\"courseName\":\"Data Structures and Algorithms II\",\"courseDescription\":\"Data Structures and Algorithms II explores the analysis and implementation of high-performance data structures and supporting algorithms, including graphs, hashing, self-adjusting data structures, set representations, and dynamic programming. The course also introduces students to NP-complete problems. The course discusses how to use Python techniques to implement software solutions for problems of memory management and data compression. This course has two prerequisites: Data Structures and Algorithms I and Discrete Math II. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Computer Science\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"C950\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bscs-data-structures-and-algorithms-ii","code":"C950","title":"Data Structures and Algorithms II","credits":4,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123","wgu-bscs-202611-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"C950\",\"courseName\":\"Data Structures and Algorithms II\",\"courseDescription\":\"Data Structures and Algorithms II explores the analysis and implementation of high-performance data structures and supporting algorithms, including graphs, hashing, self-adjusting data structures, set representations, and dynamic programming. The course also introduces students to NP-complete problems. The course discusses how to use Python techniques to implement software solutions for problems of memory management and data compression. This course has two prerequisites: Data Structures and Algorithms I and Discrete Math II. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Computer Science\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"C950\",\"transferArea\":\"Non-Transferable\""},{"sourceId":"wgu-bscs-202611-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"C950\",\"transferArea\":\"Non-Transferable\""}]},
     {"id":"bscs-ethics-in-technology","code":"D333","title":"Ethics in Technology","credits":3,"category":"general","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D333\",\"courseName\":\"Ethics in Technology\",\"courseDescription\":\"Ethics in Technology examines the ethical considerations of technology use in the 21st century and introduces students to a decision-making process informed by ethical frameworks. Students will study specific cases related to important topics such as surveillance, social media, hacking, data manipulation, plagiarism and piracy, artificial intelligence, responsible innovation, and the digital divide. This course has no prerequisites.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
     {"id":"bscs-introduction-to-ai-for-computer-scientists","code":"D429","title":"Introduction to AI for Computer Scientists","credits":2,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"institutionalOnly":false,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D429\",\"courseName\":\"Introduction to AI for Computer Scientists\",\"courseDescription\":\"Introduction to AI for Computer Scientists provides an overview of critical terminology and key concepts for artificial intelligence (AI). The course explores the history and evolution of AI, elements of code, and the process for understanding algorithmic approaches to AI. The course presents topics of bias, ethical issues, and security concerns. Contextualized examples offer students an opportunity to see these concepts in professional scenarios; identifying issues within code, understanding the steps within an AI design, and understanding the different features, limitations, and benefits for a multitude of AI applications.\",\"competencyUnits\":\"2\",\"areaOfStudy\":\"Computer Science\""}]},
-    {"id":"bscs-artificial-intelligence-optimization-for-computer-scientists","code":"D682","title":"Artificial Intelligence Optimization for Computer Scientists","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D682\",\"courseName\":\"Artificial Intelligence Optimization for Computer Scientists\",\"courseDescription\":\"Artificial Intelligence Optimization for Computer Scientists guides students through the implementation and optimization of artificial intelligence (AI) solutions for various applications. Through extensive research, students will explore different AI approaches and determine the most applicable solutions for specific scenarios. Practical, hands-on exercises will enable students to implement and rigorously test AI solutions, thus honing their skills in optimizing AI models for enhanced performance and efficiency. Additionally, this course delves into creating data assumptions and interpretations that are crucial for predictive analytics and future data forecasting. Finally, students will adapt and extend AI solutions to address diverse application scenarios, ensuring their readiness to tackle real-world challenges in AI optimization and deployment. Introduction to Artificial Intelligence for Computer Scientists is a prerequisite to this course. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Computer Science\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D682\",\"transferArea\":\"Non-Transferable\""}]},
-    {"id":"bscs-advanced-ai-and-ml","code":"D683","title":"Advanced AI and ML","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D683\",\"courseName\":\"Advanced AI and ML\",\"courseDescription\":\"Advanced AI and ML provides an opportunity for students to exercise their knowledge and skills in the design and development of artificial intelligence (AI) and machine learning (ML) solutions for real-world business problems. Through a hands-on project, students delve into the design and execution planning stages. The course culminates with the development of a fully functional AI/ ML product.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Computer Science\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D683\",\"transferArea\":\"Non-Transferable\""}]},
-    {"id":"bscs-computer-science-project-development-with-a-team","code":"D687","title":"Computer Science Project Development with a Team","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D687\",\"courseName\":\"Computer Science Project Development with a Team\",\"courseDescription\":\"Computer Science Project Development with a Team has students prepare a prior project for submission to a mock technical and executive leadership team. This course expands on the coding work done in a previous course, asking students to submit three artifacts. The final artifact is a business proposal aimed at convincing stakeholders to implement the project, which includes an executive summary of product requirements directed at the IT audience, as well as a technical report of the fully functional data product intended to solve a real-world problem. Artifacts are evaluated by peer team members prior to submission, and students practice giving, receiving, and integrating feedback into their work process.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Computer Science\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D687\",\"transferArea\":\"Non-Transferable\""}]}
+    {"id":"bscs-artificial-intelligence-optimization-for-computer-scientists","code":"D682","title":"Artificial Intelligence Optimization for Computer Scientists","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123","wgu-bscs-202611-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D682\",\"courseName\":\"Artificial Intelligence Optimization for Computer Scientists\",\"courseDescription\":\"Artificial Intelligence Optimization for Computer Scientists guides students through the implementation and optimization of artificial intelligence (AI) solutions for various applications. Through extensive research, students will explore different AI approaches and determine the most applicable solutions for specific scenarios. Practical, hands-on exercises will enable students to implement and rigorously test AI solutions, thus honing their skills in optimizing AI models for enhanced performance and efficiency. Additionally, this course delves into creating data assumptions and interpretations that are crucial for predictive analytics and future data forecasting. Finally, students will adapt and extend AI solutions to address diverse application scenarios, ensuring their readiness to tackle real-world challenges in AI optimization and deployment. Introduction to Artificial Intelligence for Computer Scientists is a prerequisite to this course. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Computer Science\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D682\",\"transferArea\":\"Non-Transferable\""},{"sourceId":"wgu-bscs-202611-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D682\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bscs-advanced-ai-and-ml","code":"D683","title":"Advanced AI and ML","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123","wgu-bscs-202611-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D683\",\"courseName\":\"Advanced AI and ML\",\"courseDescription\":\"Advanced AI and ML provides an opportunity for students to exercise their knowledge and skills in the design and development of artificial intelligence (AI) and machine learning (ML) solutions for real-world business problems. Through a hands-on project, students delve into the design and execution planning stages. The course culminates with the development of a fully functional AI/ ML product.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Computer Science\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D683\",\"transferArea\":\"Non-Transferable\""},{"sourceId":"wgu-bscs-202611-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D683\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bscs-computer-science-project-development-with-a-team","code":"D687","title":"Computer Science Project Development with a Team","credits":3,"category":"core","sourceIds":["wgu-bscs-202611-curriculum-20261123","wgu-bscs-transfer-guidelines-20261123","wgu-bscs-202611-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"computer-science","curriculumAreaEvidence":{"areaOfStudy":"Computer Science","sourceIds":["wgu-bscs-202611-curriculum-20261123"],"programId":261,"catalogTerm":"202611","ledgerSha256":"c4c12ce01c451ae10c74279dc0ba62f8202aacf38558ca888071d9b4d00969e9"},"quotes":[{"sourceId":"wgu-bscs-202611-curriculum-20261123","text":"\"courseCode\":\"D687\",\"courseName\":\"Computer Science Project Development with a Team\",\"courseDescription\":\"Computer Science Project Development with a Team has students prepare a prior project for submission to a mock technical and executive leadership team. This course expands on the coding work done in a previous course, asking students to submit three artifacts. The final artifact is a business proposal aimed at convincing stakeholders to implement the project, which includes an executive summary of product requirements directed at the IT audience, as well as a technical report of the fully functional data product intended to solve a real-world problem. Artifacts are evaluated by peer team members prior to submission, and students practice giving, receiving, and integrating feedback into their work process.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Computer Science\""},{"sourceId":"wgu-bscs-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"D687\",\"transferArea\":\"Non-Transferable\""},{"sourceId":"wgu-bscs-202611-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D687\",\"transferArea\":\"Non-Transferable\""}]}
   ]
 }

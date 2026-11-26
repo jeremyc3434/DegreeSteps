@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {buildProgramFit} from './scripts/program-fit-metadata.mjs';
 import {buildIndex} from './scripts/build-plan-library-index.mjs';
@@ -66,7 +67,7 @@ test('all currently published degree editions receive independent, source-bound 
       assert.equal(fit.sources.learning.url,new URL(model.paceSourceUrl||route.paceSourceUrl||model.learningSourceUrl||route.learningSourceUrl||route.url||model.url).href);
       assert.equal(fit.learningReviewId,undefined,'Self-paced programs do not inherit a Liberty scheduled-course review');
     }else{
-      assert.equal(model.school,'Liberty University');assert.equal(fit.selfPaced,false);
+      assert(['Liberty University','Thomas Edison State University'].includes(model.school),model.id+' has an independently reviewed course schedule');assert.equal(fit.selfPaced,false);
       assert.equal(fit.competencyBased,null,'A professor deadline is not evidence for or against CBE assessment');
       assert.match(fit.paceLabel,/term schedule/);
       const review=reviews.reviews.find(row=>row.id===fit.learningReviewId);
@@ -77,6 +78,15 @@ test('all currently published degree editions receive independent, source-bound 
       const binding=review.programBindings.find(row=>row.modelId===model.id);
       assert(model.sources.some(source=>source.url===binding.degreeUrl),'The review binds to this actual degree, not its parent directory');
       assert(review.source.quote.trim()&&review.source.reviewMethod.trim(),'The scheduled classification retains its primary quotation and review method');
+      if(model.school==='Thomas Edison State University'){
+        assert.equal(review.baselineFormat,'standard-online-coursework','TESU alternatives keep their separate pacing');
+        assert.equal(review.modality,'online');assert.equal(review.source.kind,'university');
+        const body=readFileSync(new URL(review.source.capture,import.meta.url),'utf8');
+        assert.equal(createHash('sha256').update(body).digest('hex'),review.source.sha256);
+        assert(body.includes(review.source.quote));
+        assert.match(body,/detailed week-by-week assignment schedule/i);
+        assert(review.notes.some(note=>/e-Pack.*TECEP.*accelerated/i.test(note)),'The review does not classify every TESU credit method as scheduled coursework');
+      }else assert.equal(model.school,'Liberty University');
     }
     return fit;
   });

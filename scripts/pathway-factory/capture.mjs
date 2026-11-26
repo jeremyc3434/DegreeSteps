@@ -118,6 +118,23 @@ export async function pdfToText(bytes,{pages=null,columns=1}={}){
   return text+'\n';
 }
 export const USER_AGENT='DegreeSteps-PathwayFactory/1.0 (+source capture)';
+export const ACE_PERIOD_SELECTION_FRAGMENT='#recommendation-period-selection';
+/** Preserve which recommendation period the requested exhibit actually selects.
+ * The full select is retained, rather than treating its first option as active. */
+export function acePeriodSelectionExcerpt(html,url){
+ const address=new URL(url);
+ if(address.hostname!=='www.acenet.edu'||!/^\/National-Guide\/Pages\/Course\.aspx$/i.test(address.pathname)||!address.searchParams.get('cid'))throw Error('ACE period excerpts require an exact public course exhibit URL.');
+ const selects=[...String(html).matchAll(/<select\b[^>]*>([\s\S]*?)<\/select>/gi)].filter(match=>{
+  const options=[...match[1].matchAll(/<option\b([^>]*)>([\s\S]*?)<\/option>/gi)];
+  return options.some(option=>/\d{1,2}\/\d{1,2}\/\d{4}/.test(decodeEntities(option[2])))&&options.some(option=>/(?:^|\s)selected(?:\s|=|$)/i.test(option[1]));
+ });
+ if(selects.length!==1)throw Error('An ACE period capture needs exactly one explicitly selected recommendation-period control.');
+ const selected=[...selects[0][1].matchAll(/<option\b([^>]*)>([\s\S]*?)<\/option>/gi)].filter(option=>/(?:^|\s)selected(?:\s|=|$)/i.test(option[1]));
+ if(selected.length!==1)throw Error('An ACE period control must select exactly one option.');
+ const value=decodeEntities(selected[0][1].match(/\bvalue\s*=\s*["']([^"']*)["']/i)?.[1]||''),target=new URL(value,address);
+ if(target.origin!==address.origin||target.pathname!==address.pathname||target.searchParams.get('cid')!==address.searchParams.get('cid'))throw Error('The selected ACE period must belong to the requested exhibit.');
+ return selects[0][0]+'\n';
+}
 /**
  * Fetches url and converts it to capture text without writing anything. Returns {text, sha256, url, finalUrl, contentType,
  * status}. A non-2xx response throws an Error with .status. timeoutMs (optional) aborts a slow request.
@@ -135,8 +152,11 @@ export async function fetchPage(url,{fetchImpl=globalThis.fetch,userAgent=USER_A
   if(pdf&&!bytes)throw Error('A PDF response must be read as bytes.');
   if(range.pages&&!pdf)throw Error(`#pages applies only to PDFs; ${range.fetchUrl} is not a PDF.`);
   const body=pdf?'':bytes?new TextDecoder().decode(bytes):await response.text();
-  const text=pdf?await pdfToText(bytes,{pages:range.pages,columns:range.columns}):/html/i.test(type)||/^\s*</.test(body)?htmlToText(body):body.replace(/\r\n/g,'\n');
+  const selectedPeriod=parsed.hash===ACE_PERIOD_SELECTION_FRAGMENT;
+  if(selectedPeriod&&(pdf||!(/html/i.test(type)||/^\s*</.test(body))))throw Error('ACE recommendation-period excerpts require an HTML exhibit.');
+  const text=selectedPeriod?acePeriodSelectionExcerpt(body,url):pdf?await pdfToText(bytes,{pages:range.pages,columns:range.columns}):/html/i.test(type)||/^\s*</.test(body)?htmlToText(body):body.replace(/\r\n/g,'\n');
   const page={text,sha256:sha256(text),url,finalUrl:response.url||range.fetchUrl,contentType:type,status:response.status};
+  if(selectedPeriod)Object.assign(page,{captureFormat:'raw-html-recommendation-period-select-excerpt',rawResponseSha256:sha256(body)});
   if(range.pages)Object.assign(page,{pages:range.spec,columns:range.columns,documentSha256:sha256(bytes)});
   // The raw HTML stays off the sidecar; freshness uses it for sources that fingerprint a parsed table (Sophia partner pages).
   if(!pdf&&body&&(/html/i.test(type)||/^\s*</.test(body)))Object.defineProperty(page,'html',{value:body,enumerable:false});
@@ -149,7 +169,8 @@ export async function storeCapture(page,{dir=capturesRoot,now=()=>new Date()}={}
   const path=join(dir,name+'.txt'),sidecar=join(dir,name+'.json');
   await writeFile(path,page.text);
   const ranged=page.pages?{pages:page.pages,columns:page.columns,documentSha256:page.documentSha256}:{};
-  await writeFile(sidecar,JSON.stringify({url:page.url,finalUrl:page.finalUrl,fetchedAt:now().toISOString(),sha256:page.sha256,contentType:page.contentType,status:page.status,characters:page.text.length,...ranged},null,2)+'\n');
+  const excerpt=page.captureFormat?{captureFormat:page.captureFormat,rawResponseSha256:page.rawResponseSha256}:{};
+  await writeFile(sidecar,JSON.stringify({url:page.url,finalUrl:page.finalUrl,fetchedAt:now().toISOString(),sha256:page.sha256,contentType:page.contentType,status:page.status,characters:page.text.length,...ranged,...excerpt},null,2)+'\n');
   return {path,sidecar,sha256:page.sha256,text:page.text,relative:path.startsWith(root+'/')?path.slice(root.length+1):path};
 }
 /** Fetches url, stores text + sidecar, returns {path, sidecar, sha256, text}. fetchImpl and now are injectable for tests. */

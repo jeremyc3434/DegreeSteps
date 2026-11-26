@@ -1,8 +1,8 @@
 {
   "schemaRevision": "provider-coverage-v1",
-  "revision": "provider-coverage-v1:71c453ac432a8ba26590364e8c131f224eab046601da0b51283738c423f7dc5c",
-  "registryRevision": "academic-v1:8a7a8d36156863cb704840b979afa39ac8a84e3828b0e2fe2181d1385a825a34",
-  "asOf": "2026-11-25",
+  "revision": "provider-coverage-v1:166372eff614ac49ecdf143cfba411fb53a2d6c9d1a4dce028df672c35f5b8ce",
+  "registryRevision": "academic-v1:e9faec9ddab803e63f1ff58ba579a7ea3af12a873a76ed4be036ce1b9751fa72",
+  "asOf": "2026-11-26",
   "privateStudentRecordsIncluded": false,
   "runtimeAiCalls": 0,
   "publicationAllowed": false,
@@ -24,8 +24,8 @@
     "providersWithReceivingClaims": 9,
     "providersWithInstitutionSourceBoundAwards": 6,
     "providersUsedInReadyBaselines": 4,
-    "indexedIdentities": 549,
-    "publicationReadyPlans": 30
+    "indexedIdentities": 550,
+    "publicationReadyPlans": 43
   },
   "providers": [
     {
@@ -201,8 +201,8 @@
       "directoryStatus": "not-stated",
       "kind": "credit-examination",
       "stage": "used-in-ready-baseline",
-      "indexedIdentities": 49,
-      "sourceReviewedMappedIdentities": 0,
+      "indexedIdentities": 53,
+      "sourceReviewedMappedIdentities": 19,
       "receivingClaims": {
         "institutionSourceBound": 0,
         "providerPublished": 0,
@@ -217,11 +217,11 @@
       },
       "modelsWithOptions": 26,
       "modelsEnabledByDefault": 16,
-      "publicationReadyAlternativeModels": 10,
+      "publicationReadyAlternativeModels": 15,
       "publicationReadyBaselineModels": 2,
       "assessment": {
-        "knownIndexedIdentities": 21,
-        "unknownIndexedIdentities": 28
+        "knownIndexedIdentities": 36,
+        "unknownIndexedIdentities": 17
       },
       "pricing": {
         "currentSourceBoundProviderRates": 1,
@@ -229,7 +229,6 @@
         "completePriceGuaranteed": false
       },
       "gaps": [
-        "no-source-reviewed-mapped-identities",
         "no-institution-source-bound-awards",
         "assessment-details-incomplete"
       ]
@@ -801,7 +800,7 @@
       },
       "modelsWithOptions": 23,
       "modelsEnabledByDefault": 0,
-      "publicationReadyAlternativeModels": 18,
+      "publicationReadyAlternativeModels": 23,
       "publicationReadyBaselineModels": 1,
       "assessment": {
         "knownIndexedIdentities": 42,
@@ -907,27 +906,27 @@
       "directoryStatus": "not-stated",
       "kind": "alternative-provider",
       "stage": "used-in-ready-baseline",
-      "indexedIdentities": 163,
-      "sourceReviewedMappedIdentities": 68,
+      "indexedIdentities": 160,
+      "sourceReviewedMappedIdentities": 78,
       "receivingClaims": {
-        "institutionSourceBound": 494,
+        "institutionSourceBound": 505,
         "providerPublished": 375,
-        "unresolved": 277,
-        "total": 1146
+        "unresolved": 273,
+        "total": 1153
       },
       "placements": {
-        "institutionSourceBound": 1003,
+        "institutionSourceBound": 1610,
         "providerPublished": 2087,
-        "unresolved": 3412,
-        "total": 6502
+        "unresolved": 3392,
+        "total": 7089
       },
       "modelsWithOptions": 155,
       "modelsEnabledByDefault": 117,
-      "publicationReadyAlternativeModels": 29,
-      "publicationReadyBaselineModels": 29,
+      "publicationReadyAlternativeModels": 39,
+      "publicationReadyBaselineModels": 37,
       "assessment": {
-        "knownIndexedIdentities": 59,
-        "unknownIndexedIdentities": 104
+        "knownIndexedIdentities": 88,
+        "unknownIndexedIdentities": 72
       },
       "pricing": {
         "currentSourceBoundProviderRates": 1,
@@ -961,7 +960,7 @@
       },
       "modelsWithOptions": 40,
       "modelsEnabledByDefault": 13,
-      "publicationReadyAlternativeModels": 23,
+      "publicationReadyAlternativeModels": 27,
       "publicationReadyBaselineModels": 0,
       "assessment": {
         "knownIndexedIdentities": 19,
@@ -1001,11 +1000,11 @@
       },
       "modelsWithOptions": 55,
       "modelsEnabledByDefault": 19,
-      "publicationReadyAlternativeModels": 29,
-      "publicationReadyBaselineModels": 29,
+      "publicationReadyAlternativeModels": 39,
+      "publicationReadyBaselineModels": 34,
       "assessment": {
-        "knownIndexedIdentities": 128,
-        "unknownIndexedIdentities": 17
+        "knownIndexedIdentities": 131,
+        "unknownIndexedIdentities": 14
       },
       "pricing": {
         "currentSourceBoundProviderRates": 1,
@@ -1249,7 +1248,7 @@
       },
       "modelsWithOptions": 6,
       "modelsEnabledByDefault": 6,
-      "publicationReadyAlternativeModels": 0,
+      "publicationReadyAlternativeModels": 5,
       "publicationReadyBaselineModels": 0,
       "assessment": {
         "knownIndexedIdentities": 22,
@@ -1311,11 +1310,11 @@
   ],
   "inputFingerprints": {
     "directory": "36259a33222e57936987fbbfa23e423bbeac5083f803d69974d898cb57b3eaa4",
-    "courseCatalogs": "49b594b9c91761cefc84883904e0154c75d8e10a80fc453854e6726ada08c129",
-    "models": "74375460b4de78d9e3005418f00aa38a32aa5e942d699dcc1b1f156de9645742",
-    "publication": "1980487be56c1381c290594fceb31c475225d5bc16804ec790c0807915cd8323",
-    "baselines": "63804dba2861795c2540579dcc5a1ce0e931b25082d1c8611eabb4d815df22ab",
-    "rates": "f151b92708612b10daa4129408f0c00d20c1e96e50c9cc5adf259cebddd833b7",
-    "assessment": "3c6383f2ae20a7076f8d1fe837d4bc71d526c4ebca893f08837228dd681a30ce"
+    "courseCatalogs": "601011fe4d4e4976063aa811ec7a294d91911051ecba908538e9b26586fd93fc",
+    "models": "2a2a51a6e97df2d346e639548ee44d5e90d1995210ad9ac1d6c62229de031948",
+    "publication": "84acbba0431dee07a009e1fe24ca3a9d68bb986b58e10a183e23e99e72a0ebf4",
+    "baselines": "7f7b4ff83f0a733509fb436af8bfdef425941f7847f4c81aabbd9f879d46ef6a",
+    "rates": "24c4b6adbc96d954e78c00ed77664f55c8159c0397f21d3253726f27a16ba8c8",
+    "assessment": "ac14cdc8e258aee79b3a9caca92b79109590e8ac81283dc9cf5646bc4d6995c6"
   }
 }

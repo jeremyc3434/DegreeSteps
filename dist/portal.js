@@ -32,9 +32,10 @@
   function routeHasMap(route) {
     return DegreeProgramCatalog.isPlanAvailable(route,catalog,models);
   }
-  const availableRoutes = () => typeof DegreeProgramCatalog.publishedPlans==='function'?DegreeProgramCatalog.publishedPlans(catalog,models):[];
+  const availableRoutes = () => typeof DegreeProgramCatalog.planLibraryRoutes==='function'?DegreeProgramCatalog.planLibraryRoutes(catalog,models):[];
   const availableCatalog = () => ({...catalog,pathways:availableRoutes()});
-  const reviewedRoute = route => publicPlanIds.has(route?.id)||availableRoutes().some(item=>item.id===route?.id);
+  const reviewedRoute = route => DegreeProgramCatalog.publishedPlans(catalog,models).some(item=>item.id===route?.id);
+  const privateExistingRoute = route => route&&(!state.sheet?.isExample&&state.selectedPathwayId===route.id||(state.whatIf?.snapshots||[]).some(saved=>saved.pathwayId===route.id)||[...(state.customCurricula||[]),...(state.sourceCurricula||[])].some(saved=>saved.route?.id===route.id));
   async function ensureRouteModels(routes) {
     const list=(Array.isArray(routes)?routes:[routes]).filter(Boolean).flatMap(route=>[route,...DegreeProgramCatalog.variants(route,catalog)]),wanted=list.filter(route=>route.modelId&&!models.some(model=>model.id===route.modelId));
     if(!wanted.length||!DegreeProgramCatalog.modelsForRoutes)return;
@@ -45,6 +46,7 @@
     cancelRecommendations();
     const target={route,sourceRoute:extra.sourceRoute||route,...extra,loading:true};degreePreview=target;render();
     try {
+      if(!reviewedRoute(route)&&!privateExistingRoute(route)){target.loading=false;target.unavailable=true;render();return;}
       if(!routeHasMap(route)){target.loading=false;target.unavailable=true;render();return;}
       await ensureRouteModels(route);
       if(!routeHasMap(route)){target.loading=false;target.unavailable=true;render();return;}
@@ -256,15 +258,14 @@
     const plans=planIndex?.plans;if(!catalog||!plans||typeof plans!=='object'||!Array.isArray(catalog.pathways))return;
     catalog={...catalog,pathways:catalog.pathways.map(route=>{const subjects=plans[route?.id]?.subjects;return Array.isArray(subjects)&&subjects.every(id=>typeof id==='string')&&JSON.stringify(route.subjects)!==JSON.stringify(subjects)?{...route,subjects:[...subjects]}:route;})};
   }
-  // Reviewed plans plus complete plans that still need school confirmation (labelled on each card).
-  // Without the finder index, only reviewed (published) plans are searched.
+  // Guided choices use the same publication-ready model representatives as discovery.
   function guidedRoutes(source,loaded) {
-    return typeof DegreeProgramCatalog.planLibraryRoutes==='function'?DegreeProgramCatalog.planLibraryRoutes(source,loaded,planIndex):DegreeProgramCatalog.publishedPlans(source,loaded);
+    return typeof DegreeProgramCatalog.planLibraryRoutes==='function'?DegreeProgramCatalog.planLibraryRoutes(source,loaded):[];
   }
   const needsConfirmation=route=>planIndex?.plans?.[route?.id]?.tier==='confirmation';
   function planQuestions(route) {
     const entry=planIndex?.plans?.[route?.id];
-    if(entry?.tier!=='confirmation'||!Array.isArray(entry.questions))return [];
+    if(reviewedRoute(route)||entry?.tier!=='confirmation'||!Array.isArray(entry.questions))return [];
     return entry.questions.slice(0,12).filter(question=>typeof question==='string'&&question.trim()).map(question=>{const text=question.trim().replace(/^ask the school:\s*/i,'');return text.charAt(0).toUpperCase()+text.slice(1);});
   }
   const protectedGoals = ['teacher','lawyer','pilot','health-professional'];
@@ -454,7 +455,7 @@
         ['audit','Use my past courses','Upload a transcript or course spreadsheet.']
       ])+'<details class="portal-tip portal-more-starts"><summary>More ways to start</summary><div class="portal-start-browse"><a href="request-plan.html">Paste a degree link</a></div><div class="portal-start-browse"><a href="degree-audit.html">Build my own plan from scratch</a></div><div class="portal-start-browse"><a href="courses.html?tab=browse">Browse transfer courses</a></div></details>';
       case 'school': {
-        const schools = [...new Set(catalog.pathways.filter(r => r.routeType !== 'career-guide').map(r => r.school).filter(Boolean))].sort() /* career guides name a step ("Choose a … provider"), not a school */;
+        const schools = [...new Set(availableRoutes().map(r => r.school).filter(Boolean))].sort();
         return '<form id="portal-question-form">' + field('school','School name',p.school,'list="portal-schools" autocomplete="organization" placeholder="Start typing a school name"') + '<datalist id="portal-schools">' + schools.map(s => '<option value="' + esc(s) + '"></option>').join('') + '</datalist><button class="portal-primary" type="submit">Choose degree</button></form><div class="portal-links"><button type="button" data-answer="unknown">Help me choose a school</button></div>';
       }
       case 'degree': {
@@ -470,7 +471,7 @@
   function renderDegreeOptions(reset=false) {
     const host=$('portal-degree-results');if(!host)return;if(reset)degreeLimit=20;
     const query=key(document.querySelector('#portal-question-form [name="degree"]')?.value),level=$('portal-degree-level').value,format=$('portal-degree-format').value;
-    const all=catalog.pathways.filter(r=>key(r.school)===key(state.profile.school));
+    const all=availableRoutes().filter(r=>key(r.school)===key(state.profile.school));
     const rows=all.filter(r=>(!query||key(r.title).includes(query))&&(!level||r.level===level)&&(!format||format==='unknown'?!format||!r.modalities?.length:r.modalities?.includes(format))).sort((a,b)=>Number(routeHasMap(b))-Number(routeHasMap(a))||a.title.localeCompare(b.title));
     const ready=rows.filter(routeHasMap).length;
     $('portal-degree-count').textContent=rows.length+' degree'+(rows.length===1?'':'s')+' · '+ready+' course plan'+(ready===1?'':'s')+' available';
@@ -545,7 +546,7 @@
   async function usePublicPlan(id,intent=null) {
     if(typeof id!=='string'||!/^[A-Za-z0-9_-]{1,120}$/.test(id))throw Error('Choose a degree plan from the plan library.');
     const route=catalog.pathways.find(item=>item.id===id);
-    if(!route||!routeHasMap(route))throw Error('This course plan is not available. Your existing plan is still saved.');
+    if(!route||!reviewedRoute(route)&&!privateExistingRoute(route)||!routeHasMap(route))throw Error('This course plan is not available. Your existing plan is still saved.');
     await ensureRouteModels(route);
     const previous=selectionState(),beforeState=state;
     state=previous;
@@ -784,8 +785,6 @@
     const personalScores=new Map(orderedIds.map(id=>[id,DegreeGuide.preferenceFit?DegreeGuide.preferenceFit(state.profile,byId.get(id).pathway,byId.get(id).model,catalog.campusFacts).score:0]));
     const personalOrder=state.profile.priority==='balanced'&&(state.profile.learningPace&&state.profile.learningPace!=='any'||state.profile.campusLocation==='near-home'||state.profile.campusInterests?.length)&&[...personalScores.values()].some(score=>score>0);
     if(personalOrder)orderedIds.sort((a,b)=>personalScores.get(b)-personalScores.get(a));
-    // Reviewed plans first; plans that need school confirmation follow, keeping their relative order.
-    orderedIds.sort((a,b)=>Number(needsConfirmation(byId.get(a).pathway))-Number(needsConfirmation(byId.get(b).pathway)));
     const costOrder=state.profile.priority==='cost'&&planIndex?.plans&&typeof planIndex.plans==='object'&&orderedIds.some(id=>planIndex.plans[id])?sharedCostOrder(orderedIds):null;
     if(costOrder)orderedIds.splice(0,orderedIds.length,...costOrder.ordered);
     const cards=orderedIds.map((id,index)=>routeCard(byId.get(id),scenarios.get(id)||candidates.get(id),index>=3));
@@ -802,8 +801,8 @@
   // No researched plan matches: the main action is the existing research request (request-plan.html), for a listed
   // matching degree when the catalog has one, otherwise from any official degree link. No new contact collection.
   function emptyResultHTML() {
-    const planned=new Set(availableRoutes().map(route=>route.id));let unplanned=[];
-    try{unplanned=Journey.recommend({...state,learning:[]},{...catalog,pathways:catalog.pathways.filter(route=>!planned.has(route.id)&&route.routeType!=='career-guide'&&degreeResearchURL(route))},[]).map(result=>result.pathway).slice(0,3);}catch{unplanned=[];}
+    const planned=new Set(availableRoutes().map(route=>route.id)),plannedModels=new Set(availableRoutes().map(route=>route.modelId));let unplanned=[];
+    try{unplanned=Journey.recommend({...state,learning:[]},{...catalog,pathways:catalog.pathways.filter(route=>!planned.has(route.id)&&!plannedModels.has(route.modelId)&&route.routeType!=='career-guide'&&degreeResearchURL(route))},[]).map(result=>result.pathway).slice(0,3);}catch{unplanned=[];}
     const reason=protectedGoals.includes(state.profile.goal)?'No researched plan currently meets this career goal and study format.':unplanned.length?'We list matching degrees, but haven’t researched their transfer-course plans yet.':'None of our researched plans match these choices yet.';
     const research=unplanned.length?'<p>Research one from its official page: we check the college’s requirements and transfer rules, then build a plan you can edit.</p><ul class="portal-research-list">'+unplanned.map(route=>'<li><span><strong>'+esc(route.title)+'</strong> '+esc(route.school)+'</span><a class="portal-primary" href="'+esc(degreeResearchURL(route))+'">Research this degree →</a></li>').join('')+'</ul><p class="portal-research-other"><a href="request-plan.html">Research a different degree from its link →</a></p>':'<p>Paste a college’s official degree page and we’ll check its requirements and transfer rules, then build a plan you can edit.</p><a class="portal-primary" href="request-plan.html">Research a degree from its link →</a>';
     return '<div class="portal-empty-result" data-empty-result><h2>No course plan matches yet.</h2><p>'+esc(reason)+'</p>'+research+'</div>';
@@ -812,9 +811,9 @@
   function finderLink(shown) {
     const field=state.profile.field,label=fieldChoicesFor(field).find(([id])=>id===field)?.[1];
     if(!label||!planIndex?.plans||!(DegreeGuide.subjectIds||[]).includes(field))return '';
-    // Count exactly what the finder will list: published or needs-confirmation plans, at the chosen degree level.
+    // Count the same unique published models shown by the finder and picker.
     const level=['associate','bachelor','master','doctorate'].includes(state.profile.degreeLevel)?state.profile.degreeLevel:'';
-    const total=Object.values(planIndex.plans).filter(plan=>Array.isArray(plan?.subjects)&&plan.subjects.includes(field)&&(plan.published===true||plan.tier==='confirmation')&&(!level||plan.level===level)).length;
+    const total=availableRoutes().filter(route=>{const plan=planIndex.plans[route.id];return Array.isArray(plan?.subjects)&&plan.subjects.includes(field)&&(!level||route.level===level);}).length;
     return total>shown?'<p class="portal-finder-link"><a href="programs.html?subject='+encodeURIComponent(field)+(level?'&level='+level:'')+'">See all '+total+' '+esc(label.toLowerCase())+' plans in the plan finder →</a></p>':'';
   }
   function resultSummary() {

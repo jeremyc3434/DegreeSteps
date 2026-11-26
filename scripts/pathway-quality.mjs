@@ -1,5 +1,7 @@
 /* Catalog research quality. Never awards student credit or runs the optimizer. */
 import {createHash} from 'node:crypto';
+import {readFileSync} from 'node:fs';
+import {resolve} from 'node:path';
 import Planner from '../dist/planner.js';
 
 const list=value=>Array.isArray(value)?value:[];
@@ -71,6 +73,7 @@ function completeNamedBaseline(model,plan){
  });
 }
 const identityAuthorities={
+ CLEP:{domains:['clep.collegeboard.org'],aceOrganizationId:'e9089b28-9016-e811-810f-5065f38bf0e1',acePrefix:'CLEP',names:['clep','collegeboard','collegeboardscollegelevelexaminationprogramclep']},
  Sophia:{domains:['sophia.org'],aceOrganizationId:'76099b28-9016-e811-810f-5065f38bf0e1',acePrefix:'SOPH',names:['sophia','sophialearning','sophialearningllc']},
  'Study.com':{domains:['study.com'],aceOrganizationId:'82099b28-9016-e811-810f-5065f38bf0e1',acePrefix:'SDCM',names:['studycom','studycomllc']},
  StraighterLine:{domains:['straighterline.com'],aceOrganizationId:'80099b28-9016-e811-810f-5065f38bf0e1',acePrefix:'OOSL',names:['straighterline']},
@@ -122,7 +125,7 @@ function reviewedSelectedAwards(model,plan,sources,asOf){
  if(!selected.length)return false;
  return selected.every(({requirement,option})=>{
   const award=option.mappingEvidence,identity=option.sourceCreditVerification,awardIds=list(award?.sourceIds),identityIds=list(option.identitySourceIds);
-  if(mappingFinding(model,requirement,option)||option.evidence!=='published'||option.evidenceType!=='official-receiving-school-equivalency'||!text(option.mappingReviewId)||date(option.mappingChecked)===null||date(option.mappingChecked)>date(asOf)||date(asOf)-date(option.mappingChecked)>=30*day||option.eligibilityReview?.providerReviewPending===true||option.eligibilityReview?.eligibleToStart===false)return false;
+  if(mappingFinding(model,requirement,option,{asOf})||option.evidence!=='published'||option.evidenceType!=='official-receiving-school-equivalency'||!text(option.mappingReviewId)||date(option.mappingChecked)===null||date(option.mappingChecked)>date(asOf)||date(asOf)-date(option.mappingChecked)>=30*day||option.eligibilityReview?.providerReviewPending===true&&!hasReviewedCourseEligibility(model,requirement,option,{asOf})||option.eligibilityReview?.eligibleToStart===false)return false;
   if(award?.schoolName!==model.school||award.programName!==model.title||award.catalogYear!==text(model.catalogYear||model.catalog)||award.level!=='bachelor'||award.modality!=='online'||award.provider!==option.provider||award.providerCourseCode!==option.code||award.receivingCode!==requirement.code||!near(award.credits,option.credits)||award.creditSystem!==model.creditSystem||!bound(sources,awardIds)||!awardIds.every(id=>list(option.sourceIds).includes(id)))return false;
   if(!awardIds.every(id=>{const source=sources.get(id);return officialWgu(source)&&currentSource(source,asOf)&&source.scope?.schoolName===model.school&&source.scope?.programName===model.title&&source.scope?.catalogYear===award.catalogYear&&source.scope?.level==='bachelor'&&source.scope?.modality==='online'&&list(source.roles).includes('receiving-map');}))return false;
   return option.sourceCreditStatus==='verified'&&finite(option.sourceCredits)&&option.sourceCredits>0&&['semester','quarter','competency-unit'].includes(option.sourceCreditSystem)&&near(identity?.credits,option.sourceCredits)&&identity?.creditSystem===option.sourceCreditSystem&&bound(sources,identityIds)&&identityIds.every(id=>!awardIds.includes(id)&&isIndependentProviderIdentitySource(sources.get(id),option,{asOf}))&&bound(sources,identity?.sourceIds)&&identity.sourceIds.every(id=>!awardIds.includes(id)&&isIndependentProviderIdentitySource(sources.get(id),option,{asOf}));
@@ -198,14 +201,89 @@ function reviewedCategoryPlacement(model,requirement,option,sources){
   placement.modelId===model.id&&placement.schoolName===model.school&&placement.catalogYear===model.catalogYear&&placement.modality===format(model.format)&&placement.requirementId===requirement.id&&near(placement.actualAllocatedCredits,option.credits)&&placement.creditSystem===model.creditSystem&&bound(sources,placement.sourceIds)&&
   (placement.placementType==='general-category'&&requirement.category==='general'||placement.placementType==='free-elective-category'&&requirement.freeElective===true);
 }
-function mappingFinding(model,requirement,option){
+const proofText=value=>text(value).normalize('NFKC').replace(/\s+/g,' ');
+const proofCode=value=>text(value).toUpperCase().replace(/[^A-Z0-9]/g,'');
+const proofHash=value=>text(value).replace(/^sha256:/,'');
+function capturedEligibilitySource(source,expected,asOf){
+ if(!currentSource(source,asOf)||!/^[a-f0-9]{64}$/.test(expected||'')||!/^content\/source-captures\/[a-f0-9]{16}\.txt$/.test(source.capture||''))return null;
+ const declared=[source.sha256,source.sourceContentHash].filter(Boolean);
+ if(!declared.length||declared.some(value=>proofHash(value)!==expected))return null;
+ try{
+  const path=resolve(import.meta.dirname,'..',source.capture),body=readFileSync(path,'utf8'),meta=JSON.parse(readFileSync(path.replace(/\.txt$/,'.json'),'utf8'));
+  if(createHash('sha256').update(body).digest('hex')!==expected||meta.sha256!==expected||meta.url!==source.url||!(meta.status>=200&&meta.status<300)||!Number.isFinite(Date.parse(meta.fetchedAt))||Date.parse(meta.fetchedAt)>date(asOf)+day)return null;
+  return proofText(body);
+ }catch{return null;}
+}
+/** Resolve only an exact institution-submitted course award. Generic provider
+ * governance, degree placement and the student's own evaluation stay separate. */
+export function hasReviewedCourseEligibility(model,requirement,option,{asOf}={}){
+ if(date(asOf)===null)return false;
+ const r=option?.courseEligibilityResolution,a=option?.mappingEvidence,e=option?.eligibilityReview,sources=sourceMap(model),catalog=text(model?.catalogYear||model?.catalog);
+ if(model?.school!=='Thomas Edison State University'||model.auditProvenance?.status==='student-provided'||model.creditSystem!=='semester'||!['bachelor','associate'].includes(level(model.level))||!['online','campus'].includes(format(model.format)))return false;
+ if(r?.kind!=='institution-submitted-course-award'||r.status!=='resolved'||!text(r.reviewId)||r.individualApproval!==false||r.providerApprovalStatusUnchanged!==true||r.enrollmentPermission!=='not-established-by-this-course-map'||e?.eligibleToStart===false)return false;
+ if(date(r.checkedOn)===null||date(r.checkedOn)>date(asOf)||date(asOf)-date(r.checkedOn)>=30*day||r.schoolName!==model.school||r.targetCatalog!==catalog||r.provider!==option.provider||r.creditSystem!==model.creditSystem||r.creditOrigin!=='alternative')return false;
+ if(a?.claimOrigin!=='receiving-institution-submitted'||a.publisher!=='American Council on Education'||a.scope!=='university-course-equivalency'||a.individualApproval!==false||option.mappingResearchClosed!==true||option.receivingMapStatus!=='published-school-submitted'||option.evidenceType!=='school-submitted-equivalency')return false;
+ for(const key of ['schoolName','provider','providerCourseCode','providerOrganizationCode','courseVersion','catalogYear','receivingCode','credits','creditSystem','creditOrigin'])if(r[key]!==a[key])return false;
+ if(!/^20\d{2}-20\d{2}$/.test(r.catalogYear)||!Number.isInteger(r.courseVersion)||r.courseVersion<1||!finite(r.credits)||r.credits<=0||!near(r.credits,option.credits)||!/^[A-Z]+-\d{4}$/.test(text(r.receivingCode))||r.receivingCode!==option.receivingCode||proofCode(r.providerCourseCode)!==proofCode(option.aceId||option.code)||r.providerOrganizationCode!==option.providerCourseCode||r.courseVersion!==option.courseVersion)return false;
+ if(option.sourceCreditStatus!=='verified'||!finite(option.sourceCredits)||option.sourceCredits<=0||option.sourceCreditSystem!=='semester'||!near(option.sourceCreditVerification?.credits,option.sourceCredits)||option.sourceCreditVerification?.creditSystem!=='semester')return false;
+ if(r.recommendationStart!==option.recommendationStart||r.recommendationEnd!==option.recommendationEnd||date(r.recommendationStart)===null||date(r.recommendationEnd)===null||date(r.recommendationStart)>date(asOf)||date(r.recommendationEnd)<date(asOf))return false;
+ const ids=list(r.sourceIds),receiving=list(r.receivingSourceIds),policy=list(r.policySourceIds),period=list(r.recommendationSourceIds),quotes=list(r.quotes);
+ if(!receiving.length||policy.length<2||period.length!==1||!ids.length||new Set(ids).size!==ids.length||receiving.some(id=>!ids.includes(id)||!list(a.sourceIds).includes(id))||[...policy,...period].some(id=>!ids.includes(id))||ids.some(id=>!receiving.includes(id)&&!policy.includes(id)&&!period.includes(id))||Object.keys(r.sourceHashes||{}).length!==ids.length)return false;
+ if(!receiving.some(id=>list(option.identitySourceIds).includes(id)&&list(option.recommendationPeriodSourceIds).includes(id)&&list(option.sourceCreditVerification?.sourceIds).includes(id)))return false;
+ const bodies=new Map();
+ for(const id of ids){const source=sources.get(id),body=capturedEligibilitySource(source,r.sourceHashes?.[id],asOf);if(!body)return false;bodies.set(id,body);}
+ // These consecutive labeled fields belong to the original exhibit, not a
+ // receiving-course title or a substring elsewhere in the page. Bind the full
+ // source course/version and organization ID even if every declared copy was
+ // changed together.
+ if(!receiving.some(id=>{
+  const printed=bodies.get(id).match(/(?:^|\s)ACE ID:\s*(\S+)\s+Version:\s*(\d+)\s+Organization['\u2019]s ID:\s*([A-Za-z0-9_-]+)(?:\s+\((?:[Ff]ormerly|[Pp]reviously)\s+[^()]+\))?\s+Organization:/);
+  return printed&&printed[1]===text(option.aceId||option.code)&&Number(printed[2])===r.courseVersion&&printed[3]===r.providerOrganizationCode;
+ }))return false;
+ const printedDate=(body,value)=>{const [year,month,day]=value.split('-');return body.includes(value)||new RegExp('(?:^|[^0-9])0?'+Number(month)+'/0?'+Number(day)+'/'+year+'(?:[^0-9]|$)').test(body);};
+ if(!receiving.some(id=>printedDate(bodies.get(id),r.recommendationStart)&&printedDate(bodies.get(id),r.recommendationEnd)))return false;
+ // Read the original issuer's bounded recommendation table, not the separate
+ // university receiving row. The quantities can legitimately differ.
+ if(!receiving.some(id=>{
+  const section=bodies.get(id).split('Credit Recommendation & Competencies')[1]?.split('Description')[0];
+  if(!section?.includes('Credits (SH)'))return false;
+  const quantities=[...section.matchAll(/(?:Lower-Division|Upper-Division) Baccalaureate\s+(\d+(?:\.\d+)?)/gi)].map(match=>Number(match[1]));
+  return quantities.length>0&&near(quantities.reduce((sum,value)=>sum+value,0),option.sourceCredits);
+ }))return false;
+ const selection=r.recommendationPeriodSelection,periodSource=sources.get(period[0]);
+ if(selection?.kind!=='ace-exact-exhibit-period-option'||selection.sourceId!==period[0]||selection.sourceHash!==r.sourceHashes[period[0]]||selection.sourceUrl!==periodSource.url||selection.courseVersion!==r.courseVersion||selection.recommendationStart!==r.recommendationStart||selection.recommendationEnd!==r.recommendationEnd||date(selection.checkedOn)===null||date(selection.checkedOn)>date(asOf))return false;
+ try{
+  const sourceUrl=new URL(selection.sourceUrl),selectedUrl=new URL(selection.optionValue,sourceUrl),cid=sourceUrl.searchParams.get('cid');
+  if(sourceUrl.hostname!=='www.acenet.edu'||!/^\/National-Guide\/Pages\/Course\.aspx$/i.test(sourceUrl.pathname)||!cid||cid!==selection.courseId||selectedUrl.origin!==sourceUrl.origin||selectedUrl.pathname!==sourceUrl.pathname||selectedUrl.searchParams.get('cid')!==cid||!receiving.some(id=>new URL(sources.get(id).url).searchParams.get('cid')===cid))return false;
+  const excerpt=readFileSync(resolve(import.meta.dirname,'..',periodSource.capture),'utf8'),options=[...excerpt.matchAll(/<option\b([^>]*)>([\s\S]*?)<\/option>/gi)].filter(match=>/(?:^|\s)selected(?:\s|=|$)/i.test(match[1]));
+  if(options.length!==1)return false;
+  const unescape=value=>value.replace(/&amp;/gi,'&').replace(/&quot;/gi,'"').replace(/&#39;|&apos;/gi,"'").replace(/&lt;/gi,'<').replace(/&gt;/gi,'>');
+  const value=unescape(options[0][1].match(/\bvalue\s*=\s*["']([^"']*)["']/i)?.[1]||''),label=proofText(unescape(options[0][2].replace(/<[^>]+>/g,'')));
+  if(value!==selection.optionValue||label!==selection.periodLabel||!printedDate(label,r.recommendationStart)||!printedDate(label,r.recommendationEnd))return false;
+  const meta=JSON.parse(readFileSync(resolve(import.meta.dirname,'..',periodSource.capture.replace(/\.txt$/,'.json')),'utf8'));
+  if(meta.captureFormat!=='raw-html-recommendation-period-select-excerpt'||!/^[a-f0-9]{64}$/.test(meta.rawResponseSha256||''))return false;
+ }catch{return false;}
+ if(quotes.some(q=>!ids.includes(q?.sourceId)||proofText(q.text).length<12||!bodies.get(q.sourceId).includes(proofText(q.text)))||ids.some(id=>!quotes.some(q=>q.sourceId===id)))return false;
+ const receivingQuotes=quotes.filter(q=>receiving.includes(q.sourceId));
+ // The catalog, receiving school, quantity and full code must be one printed
+ // row. Independent occurrences in a larger legitimate quotation do not bind
+ // an unrelated credit quantity to that receiving award.
+ const receivingRow=proofText([r.catalogYear,model.school,String(r.credits),r.receivingCode].join(' '));
+ if(!receivingQuotes.some(q=>(' '+proofText(q.text)+' ').includes(' '+receivingRow+' ')))return false;
+ if(!receivingQuotes.some(q=>proofCode(q.text).includes(proofCode(r.providerCourseCode))&&new RegExp('Version:\\s*'+r.courseVersion+'(?:\\s|$)').test(proofText(q.text))))return false;
+ for(const id of receiving){const source=sources.get(id);try{const url=new URL(source.url);if(url.hostname!=='www.acenet.edu'||!/^\/National-Guide\/Pages\/Course\.aspx$/i.test(url.pathname)||!['ace','accreditor'].includes(source.kind)||!list(source.roles).includes('receiving-institution-submitted-equivalency')||!isIndependentProviderIdentitySource(source,option,{asOf}))return false;}catch{return false;}}
+ for(const id of policy){const source=sources.get(id);try{const url=new URL(source.url);if(!(url.hostname==='tesu.edu'||url.hostname.endsWith('.tesu.edu'))||source.kind!=='university'||!list(source.roles).some(role=>['provider-policy','transfer-policy'].includes(role)))return false;}catch{return false;}}
+ if(!policy.some(id=>new URL(sources.get(id).url).pathname==='/student-resources/transfer-credits/send-transcripts.php')||!policy.some(id=>new URL(sources.get(id).url).pathname==='/admissions/methods-of-earning-credit/educational-provider-review.php'))return false;
+ return true;
+}
+function mappingFinding(model,requirement,option,{asOf}={}){
  const sources=sourceMap(model),details={requirementIds:[requirement?.id],optionIds:[option?.id],sourceIds:list(option?.sourceIds)};
  if(option?.provider==='University')return null;
  const typedCategory=['general-category','free-elective-category'].includes(option?.allocationType)&&!text(option?.receivingCode);
  const receivingIdentity=typedCategory?reviewedCategoryPlacement(model,requirement,option,sources):text(option?.receivingCode||requirement?.code);
  if(!text(option?.code)||!receivingIdentity||!bound(sources,option?.sourceIds))return finding(model,'missing-research','mapping-evidence','An outside course needs its exact source identity, receiving award and usable evidence references.',details);
  const eligibility=option.eligibilityReview,documented=option.mappingResearchClosed===true&&/^published-/.test(option.receivingMapStatus||'');
- if(eligibility?.providerReviewPending===true||eligibility?.eligibleToStart===false)return finding(model,'conditional-policy','provider-eligibility','The provider review remains provisional or unresolved. A receiving-course match and an individual credit award are separate claims.',{...details,sourceIds:[...details.sourceIds,...list(eligibility.sourceIds)],mappingDocumented:documented,evidenceStrength:documented?'documented':'conditional'});
+ if(eligibility?.eligibleToStart===false||eligibility?.providerReviewPending===true&&!hasReviewedCourseEligibility(model,requirement,option,{asOf}))return finding(model,'conditional-policy','provider-eligibility','The provider review remains provisional or unresolved. A receiving-course match and an individual credit award are separate claims.',{...details,sourceIds:[...details.sourceIds,...list(eligibility.sourceIds)],mappingDocumented:documented,evidenceStrength:documented?'documented':'conditional'});
  if(/same.school.*(?:another degree|other degree)|exact degree.*require confirmation|researched in another degree/i.test(option.mappingScope||''))return finding(model,'missing-research','mapping-scope','A receiving match researched for another pathway needs an explicit applicable school, format and catalog scope.',details);
  if(option.evidence==='published')return null;
  if(option.evidence!=='conditional')return finding(model,'missing-research','mapping-status','The outside award has no published or reviewed conditional mapping status.',details);
@@ -253,12 +331,12 @@ export function classifyModelFindings(model,{asOf,plan}={}){
   else add('missing-research','unresolved-research',message,extra);
  }
  for(const {requirement,option} of selectedOptions(model,plan)){
-  const item=mappingFinding(model,requirement,option);if(item)items.push(item);
+  const item=mappingFinding(model,requirement,option,{asOf});if(item)items.push(item);
   // Provider governance cannot conceal a separate missing receiving award or
   // cross-program scope. Inspect that claim independently, without modifying
   // the option or treating its course conditions as cleared.
   if(option?.eligibilityReview?.providerReviewPending===true||option?.eligibilityReview?.eligibleToStart===false){
-   const {eligibilityReview,...award}=option,awardIssue=mappingFinding(model,requirement,award);
+   const {eligibilityReview,...award}=option,awardIssue=mappingFinding(model,requirement,award,{asOf});
    if(awardIssue?.category==='missing-research')items.push(awardIssue);
   }
   if(option?.preapprovalRequired===true)add('student-task','preapproval-required','Obtain the university’s required individual pre-approval before purchasing this course.',{requirementIds:[requirement?.id],optionIds:[option.id],sourceIds:list(option.sourceIds),blocking:false,executionRequired:true});

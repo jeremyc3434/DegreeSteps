@@ -6,16 +6,23 @@ const model=projectRequire('./dist/data/curricula/liberty.json').models.find(mod
 const route=catalog.pathways.find(route=>route.modelId===model.id);
 const listed=projectRequire('./dist/data/curriculum-course-index.json').courses.find(course=>course.provider==='CLEP'&&course.code==='CLEP-0020');
 const pool=projectRequire('./dist/data/course-catalog.json').courses;
-test.beforeEach(context=>context.mock.timers.enable({apis:['Date'],now:new Date('2026-11-17T12:00:00Z')}));
+test.beforeEach(context=>context.mock.timers.enable({apis:['Date'],now:new Date('2026-11-26T12:00:00Z')}));
 function stateFor(status='saved'){
   const state=Journey.selectRoute(Library.saveCourse(Library.initialize(null),listed),route,catalog);
   state.learning[0].status=status;
   state.scenarios[model.id]={providers:['CLEP'],allowConditional:false};
   return state;
 }
+function unknownQuantityStateFor(status='saved'){
+  // A legacy saved record can still lack its original amount after research
+  // adds that fact to today's catalog. Never silently rewrite the user's record.
+  const state=stateFor(status);
+  Object.assign(state.learning[0],{credits:null,creditSystem:null,creditBasis:'not-yet-known'});
+  return state;
+}
 
-test('real source-listed future exam with unknown original amount projects only its published receiving award',()=>{
-  const state=stateFor(),before=JSON.stringify(state),view=Comparison.build(state,catalog,[model],{entries:[]},{selectedIds:['current']});
+test('a legacy saved record with missing original quantity projects only its published receiving award',()=>{
+  const state=unknownQuantityStateFor(),before=JSON.stringify(state),view=Comparison.build(state,catalog,[model],{entries:[]},{selectedIds:['current']});
   const match=Guide.matchCollection(model,state.learning);
   assert.equal(match.placements.length,1);
   assert.equal(match.placements[0].requirementId,'psyc-101');
@@ -31,9 +38,9 @@ test('real source-listed future exam with unknown original amount projects only 
   assert.equal(JSON.stringify(state),before);
 });
 
-test('the same missing-quantity source record remains unsupported when taking or completed',()=>{
+test('a legacy record with missing quantity remains unsupported when taking or completed',()=>{
   for(const status of ['earned','in-progress']){
-    const state=stateFor(status),draft=Journey.buildDraft(state,catalog,[model]);
+    const state=unknownQuantityStateFor(status),draft=Journey.buildDraft(state,catalog,[model]);
     assert.equal(draft.match.completed.length,0);
     assert.equal(draft.collectionMatch.placements.length,0);
     assert.equal(state.learning[0].credits,null);
@@ -42,13 +49,30 @@ test('the same missing-quantity source record remains unsupported when taking or
 });
 
 test('future projection does not match a title, another provider, or a conditional receiving map',()=>{
-  for(const change of [{code:''},{provider:'Unrelated college'}]){
-    const state=stateFor();Object.assign(state.learning[0],change);
+  const titleOnly={code:'',aceId:undefined,providerCourseCode:undefined,mappingCode:undefined,codeAliases:[],sourceListingCode:undefined,catalogCourseId:undefined,codeBasis:'not-yet-known'};
+  for(const change of [titleOnly,{provider:'Unrelated college'}]){
+    const state=unknownQuantityStateFor();Object.assign(state.learning[0],change);
     assert.equal(Guide.matchCollection(model,state.learning).placements.length,0);
   }
   const altered=JSON.parse(JSON.stringify(model)),option=altered.requirements.find(req=>req.id==='psyc-101').options.find(option=>option.provider==='CLEP'&&option.code==='CLEP-0020');
   option.evidence='conditional';
-  assert.equal(Guide.matchCollection(altered,stateFor().learning).placements.length,0);
+  assert.equal(Guide.matchCollection(altered,unknownQuantityStateFor().learning).placements.length,0);
+});
+
+test('a newly saved CLEP record uses independently verified current original credits without awarding completed credit',()=>{
+  const requirement=model.requirements.find(req=>req.id==='psyc-101'),option=requirement.options.find(option=>option.provider==='CLEP'&&option.code==='CLEP-0020');
+  assert.equal(option.sourceCreditStatus,'verified');assert.equal(option.sourceCredits,3);assert.equal(option.sourceCreditSystem,'semester');
+  assert.equal(option.sourceCreditVerification.credits,3);assert.equal(option.sourceCreditVerification.creditSystem,'semester');
+  const receivingIds=new Set(option.sourceIds),identityIds=option.sourceCreditVerification.sourceIds;
+  assert(identityIds.length>0);
+  for(const id of identityIds){const source=model.sources.find(source=>source.id===id);assert(source);assert(!receivingIds.has(id),'Original credits have independent evidence from Liberty’s receiving guide.');assert.equal(new URL(source.url).hostname,'www.acenet.edu');assert.equal(source.kind,'ace');assert(source.roles.includes('source-credit-recommendation'));assert.match(source.sha256,/^[a-f0-9]{64}$/);}
+  assert.equal(listed.credits,3);assert.equal(listed.creditSystem,'semester');
+  const state=stateFor(),before=JSON.stringify(state),match=Guide.matchCollection(model,state.learning);
+  assert.equal(state.learning[0].credits,3);assert.equal(state.learning[0].creditSystem,'semester');assert.equal(match.placements[0]?.credits,3);
+  assert.equal(Guide.matchInventory(model,state.learning).completed.length,0,'Saving an identified course does not mark it finished.');
+  assert.equal(JSON.stringify(state),before);
+  const completed=stateFor('earned'),earned=Guide.matchInventory(model,completed.learning);
+  assert.equal(earned.completed[0]?.requirementId,'psyc-101');assert.equal(earned.completed[0]?.status,'reported','Known original quantity permits a proposed match, never school confirmation.');
 });
 
 test('real saved primary-catalog Sophia courses carry their curated canonical identity into degree matching',()=>{

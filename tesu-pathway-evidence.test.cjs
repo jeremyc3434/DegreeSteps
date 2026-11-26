@@ -9,7 +9,9 @@ function record(candidate,extra={}){return {id:'original-source-record',provider
 function match(records,program=model){const before=clone(records),result=Guide.matchInventory(program,records);assert.deepEqual(records,before,'matching must preserve source records, grades, notes and saved evaluations');return result;}
 
 test('TESU supplement is idempotent and preserves unrelated candidates and original source records',async()=>{
- const {supplementModel,run}=await load();assert.deepEqual(supplementModel(model),model);assert.deepEqual(supplementModel(supplementModel(model)),model);
+ const {supplementModel,run}=await load(),{withVerifiedTESUProviderSourceEnrichment}=await import('./scripts/tesu-source-parity.mjs');
+ const expected=withVerifiedTESUProviderSourceEnrichment(model);
+ assert.deepEqual(supplementModel(model),expected);assert.deepEqual(supplementModel(supplementModel(model)),expected);
  const input=clone(model),unrelated=input.requirements.find(requirement=>requirement.code==='ACC-4010').options;
  input.sources.push({id:'older-unrelated-source',url:'https://example.edu/old-review',checked:'2020-01-01'});
  const result=supplementModel(input);assert.deepEqual(result.requirements.find(requirement=>requirement.code==='ACC-4010').options,unrelated);assert.deepEqual(result.sources.at(-1),input.sources.at(-1));assert.deepEqual(input.requirements.find(requirement=>requirement.code==='ACC-4010').options,unrelated);

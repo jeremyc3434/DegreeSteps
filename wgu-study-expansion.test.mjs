@@ -46,7 +46,7 @@ test('a school typo cannot turn independently identified Business Law into Stati
   assert.equal(studyIdentityMatchesReceivingLabel({providerCourseCode:'Computer Science 107'},'SDCM-0212','SDCM-0212'),true);
 });
 test('current WGU program-scoped awards reuse verified identities while preserving exact ledgers and dated policies',async()=>{
-  const kit=await loadKit('content/pathway-kits/wgu'),verified=await verifyKit(kit,{asOf:'2026-11-25'});assert.deepEqual(verified.errors,[]);
+  const kit=await loadKit('content/pathway-kits/wgu'),verified=await verifyKit(kit,{asOf:'2026-11-26'});assert.deepEqual(verified.errors,[]);
   const {doc}=compileKit(kit);await runGuards(kit,doc);
   const model=doc.models.find(m=>m.id==='curriculum-wgu-catalog-3a9fedcacbfcccae');assert.equal(model.catalog,'202610');assert.equal(model.totalCredits,120);assert.equal(model.requirements.length,39);assert.equal(model.requirements.reduce((n,r)=>n+r.credits,0),120);
   const study=model.requirements.flatMap(row=>row.options.filter(option=>option.provider==='Study.com').map(option=>({row,option})));assert.equal(study.length,27);assert.equal(new Set(study.map(({row})=>row.code)).size,20);

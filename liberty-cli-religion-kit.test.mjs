@@ -9,7 +9,7 @@ import Planner from './dist/planner.js';
 import {assessPathwayQuality} from './scripts/pathway-quality.mjs';
 
 const review=await readLibertyCLIReligionReview(),kit=await loadKit(join(kitsRoot,'liberty'));
-const currentDataAsOf='2026-11-25'; // Independent provider reviews are newer than this CLI award packet.
+const currentDataAsOf='2026-11-26'; // Evaluate current provider evidence without rewriting this older CLI award packet.
 const {doc}=compileKit(kit),awardIds=new Set(review.awards.map(award=>award.id));
 const rows=kit.equivalencies.equivalencies.filter(row=>awardIds.has(row.optionId));
 const rowIds=new Set(rows.map(row=>row.id));

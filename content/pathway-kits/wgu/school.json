@@ -31,7 +31,9 @@
           "cloud-network-engineering-general-bs",
           "cloud-network-engineering-aws-bs",
           "cloud-network-engineering-cisco-bs",
-          "cloud-network-engineering-azure-bs"
+          "cloud-network-engineering-azure-bs",
+          "mba-information-technology-management",
+          "mba-healthcare-administration"
         ],
         "checkedOn": "2026-11-23",
         "sources": false,
@@ -314,7 +316,11 @@
       "wgu-business-bsmgt-sophia-7112-v186",
       "wgu-business-bsmgt-study-4429-v114",
       "wgu-business-bsmgt-straighterline-550-v66",
-      "wgu-business-bsmgt-saylor-668-v78"
+      "wgu-business-bsmgt-saylor-668-v78",
+      "wgu-mba-family-catalog-20261126",
+      "wgu-mba-family-capstones-20261126",
+      "wgu-mba-family-residency-20261126",
+      "wgu-mba-family-mba-program-20261126"
     ],
     "sourceOrderNote": "Document source order is part of each published model fingerprint; keep it stable so saved student plans are not flagged as changed. New sources are appended in compile order. Programs authored from WGU’s current public API publish in content/curricula/wgu-pathway-kit.json, where each model carries exactly its own sources (modelSourceIds)."
   },
@@ -343,7 +349,9 @@
     "cloud-network-engineering-general-bs",
     "cloud-network-engineering-aws-bs",
     "cloud-network-engineering-cisco-bs",
-    "cloud-network-engineering-azure-bs"
+    "cloud-network-engineering-azure-bs",
+    "mba-information-technology-management",
+    "mba-healthcare-administration"
   ],
   "programDefaults": {
     "format": "Online",
@@ -414,6 +422,16 @@
         "online"
       ],
       "url": "https://www.wgu.edu/online-it-degrees/cloud-network-engineering-bachelors-program.html"
+    },
+    {
+      "id": "wgu-catalog-b2a8a37d4fbedabd",
+      "school": "Western Governors University",
+      "title": "Master of Business Administration (MBA)",
+      "level": "master",
+      "modalities": [
+        "online"
+      ],
+      "url": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-program.html"
     }
   ],
   "sources": [
@@ -2934,6 +2952,111 @@
       "published": true,
       "approvalStatus": "APPROVED",
       "sha256": "bcb2781564d893c4c27ad26ae59b02a118506a9bb8fed739a0e3fd96d365f5ae"
+    },
+    {
+      "id": "wgu-mba-family-catalog-20261126",
+      "title": "WGU November 2026 catalog: exact MBA family course ledgers",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+      "kind": "university",
+      "roles": [
+        "curriculum"
+      ],
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/fec4ef5bd32b4e2b.txt",
+      "sha256": "fec4ef5bd32b4e2bf99e07661af324f01cad42050a5ce997727a0c3205690fa2",
+      "sourceContentHash": "sha256:fec4ef5bd32b4e2bf99e07661af324f01cad42050a5ce997727a0c3205690fa2",
+      "originalRetrievedAt": "2026-11-26T00:51:24.415Z",
+      "documentSha256": "3cd41c5e76898570ecb3ce76954c19a56dc9cfbd9b1fbb7c649224be58ffcde5",
+      "pages": "89-91",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "level": "master",
+        "modality": "online",
+        "programs": [
+          {
+            "programCode": "MBA",
+            "catalog": "201404"
+          },
+          {
+            "programCode": "MBAITM",
+            "catalog": "201408"
+          },
+          {
+            "programCode": "MBAHA",
+            "catalog": "202507"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wgu-mba-family-capstones-20261126",
+      "title": "WGU November 2026 catalog: C216, C218 and C219 capstone descriptions",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "residency"
+      ],
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/eee27c214ec1627d.txt",
+      "sha256": "eee27c214ec1627d7c90a1e76478e1e95a7ea18b1a923df7daae2371e9ad8e9e",
+      "sourceContentHash": "sha256:eee27c214ec1627d7c90a1e76478e1e95a7ea18b1a923df7daae2371e9ad8e9e",
+      "originalRetrievedAt": "2026-11-26T00:51:24.616Z",
+      "documentSha256": "3cd41c5e76898570ecb3ce76954c19a56dc9cfbd9b1fbb7c649224be58ffcde5",
+      "pages": "269-270",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "level": "master",
+        "modality": "online",
+        "programs": [
+          {
+            "programCode": "MBA",
+            "catalog": "201404"
+          },
+          {
+            "programCode": "MBAITM",
+            "catalog": "201408"
+          },
+          {
+            "programCode": "MBAHA",
+            "catalog": "202507"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wgu-mba-family-residency-20261126",
+      "title": "WGU Residency Requirements and Credentialing: active-program graduate residency",
+      "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/2-1-11-Residency-Requirements-and-Credentialing/ta-p/23797",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+      "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+      "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+      "originalRetrievedAt": "2026-11-25T23:11:15.097Z",
+      "reviewMethod": "Retained primary policy reread for its graduate scope; original November 25 retrieval timestamp retained.",
+      "scope": {
+        "schoolName": "Western Governors University",
+        "level": "master",
+        "modality": "online",
+        "programs": [
+          {
+            "programCode": "MBA",
+            "catalog": "201404"
+          },
+          {
+            "programCode": "MBAITM",
+            "catalog": "201408"
+          },
+          {
+            "programCode": "MBAHA",
+            "catalog": "202507"
+          }
+        ]
+      }
     }
   ]
 }

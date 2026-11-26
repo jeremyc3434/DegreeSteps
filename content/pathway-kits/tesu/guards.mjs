@@ -3,8 +3,10 @@
  * the reviewed TESU policy supplements those importers inherited (add-tesu-official-mappings.mjs, add-tesu-prerequisites.mjs,
  * complete-tesu-named-choices.mjs). Each check receives the compiled curriculum document and throws on a violation. */
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {providerReview} from '../../../scripts/tesu-provider-review.mjs';
 import {upiLiberalArtsPlacement} from '../../../scripts/tesu-upi-maps.mjs';
+import {placementKind,reviewedRequirementScope} from '../../../scripts/tesu-course-placements.mjs';
 
 const list=v=>Array.isArray(v)?v:[];
 const sum=rows=>rows.reduce((n,r)=>n+r.credits,0);
@@ -14,6 +16,22 @@ const sourceSet=m=>new Set(list(m.sources).map(s=>s.id));
 const cites=(m,ids)=>{const known=sourceSet(m);return list(ids).length>0&&list(ids).every(id=>known.has(id));};
 const credits=(m,predicate)=>sum(m.requirements.filter(predicate));
 const model=(doc,id)=>doc.models.find(m=>m.id===id);
+const courseEligibilityReview=JSON.parse(readFileSync(new URL('./course-specific-eligibility-review-2026-11-26.json',import.meta.url),'utf8'));
+const coursePlacementReview=JSON.parse(readFileSync(new URL('./course-placements-review-2026-11-26.json',import.meta.url),'utf8'));
+function reviewedCourseEligibility(m,o){
+ const resolution=o.courseEligibilityResolution;if(!resolution)return false;
+ const approved=courseEligibilityReview.claims.find(claim=>claim.provider===o.provider&&claim.providerCourseCode===o.code&&claim.receivingCode===o.receivingCode&&claim.courseVersion===o.courseVersion);
+ assert.ok(approved,`${m.title} ${o.id}: exact course eligibility is in the independently source-bound review`);
+ const {rowId,...expected}=approved;assert.deepEqual(resolution,expected,`${m.title} ${o.id}: exact reviewed eligibility claim`);
+ assert.equal(resolution.targetCatalog,m.catalog||m.catalogYear);assert.equal(resolution.credits,o.credits);assert.equal(resolution.creditSystem,o.creditSystem);assert.equal(resolution.creditOrigin,o.creditOrigin);
+ assert.equal(resolution.sourceCredits,o.sourceCredits);assert.equal(resolution.sourceCreditSystem,o.sourceCreditSystem);
+ assert.equal(resolution.schoolName,m.school);assert.equal(resolution.catalogYear,o.mappingEvidence?.catalogYear);
+ assert.equal(resolution.providerOrganizationCode,o.providerCourseCode);assert.equal(resolution.recommendationStart,o.recommendationStart);assert.equal(resolution.recommendationEnd,o.recommendationEnd);
+ assert.equal(o.sourceCreditStatus,'verified');assert.equal(o.mappingResearchClosed,true);assert.equal(o.mappingEvidence?.claimOrigin,'receiving-institution-submitted');
+ for(const id of resolution.sourceIds){const source=m.sources.find(source=>source.id===id);assert.ok(source,`${m.title} ${o.id}: resolution source exists`);assert.equal(source.sha256,resolution.sourceHashes[id]);}
+ assert.equal(o.eligibilityReview?.providerReviewPending,true);assert.equal(o.eligibilityReview?.fullyApproved,false);assert.equal(Object.hasOwn(o.eligibilityReview,'eligibleToStart'),false);
+ return true;
+}
 
 /** Reviewed ledger shapes from the importers: 120 semester credits in 40 named requirements, 45 general-education credits. */
 const ledgers={
@@ -154,7 +172,8 @@ function providerStatusesStaySourceBound(doc){
   }
 }
 /**
- * A TESU-submitted (ACE-published) receiving match names one TESU course for the 2026–2027 catalog. It stays conditional,
+ * A TESU-submitted (ACE-published) receiving match names one TESU course for the 2026–2027 catalog. A separately source-bound
+ * exact course eligibility resolution can support its published use while the generic provider review stays pending. Otherwise it stays conditional,
  * awards exactly that course's credits in the requirement for that course (or a free-elective block), and never claims an
  * individual approval. Copies of the legacy General Management records keep their own (copied) evidence and are not checked here.
  */
@@ -162,14 +181,43 @@ function schoolSubmittedMatchesAreExact(doc){
   for(const m of doc.models)for(const r of m.requirements)for(const o of outside(r)){
     if(o.evidenceType!=='school-submitted-equivalency'||/researched in another degree/i.test(o.mappingScope||''))continue;
     const e=o.mappingEvidence||{};
-    assert.equal(o.evidence,'conditional',`${m.title} ${r.id}/${o.id}: a school-submitted match stays conditional`);
+    if(reviewedCourseEligibility(m,o)){
+      assert.ok(['published','conditional'].includes(o.evidence),`${m.title} ${r.id}/${o.id}: resolved receiving-course evidence is preserved`);
+      if(o.evidence==='conditional')assert.ok(r.freeElective===true||r.liberalArtsAllocation===true,`${m.title} ${r.id}/${o.id}: a separate elective/area placement may remain conditional`);
+    }
+    else assert.equal(o.evidence,'conditional',`${m.title} ${r.id}/${o.id}: an unresolved school-submitted match stays conditional`);
     assert.equal(o.receivingMapStatus,'published-school-submitted');assert.equal(o.mappingResearchClosed,true);
     assert.equal(e.claimOrigin,'receiving-institution-submitted',`${m.title} ${r.id}/${o.id}: claim origin`);
     assert.equal(e.schoolName,'Thomas Edison State University');assert.equal(e.catalogYear,'2026-2027',`${m.title} ${r.id}/${o.id}: the TESU 2026–2027 catalog`);
     assert.equal(e.individualApproval,false);assert.equal(e.receivingCode,o.receivingCode);assert.equal(e.credits,o.credits);
     assert.ok(cites(m,e.sourceIds),`${m.title} ${r.id}/${o.id}: the receiving match cites a model source`);
-    assert.ok(r.code===o.receivingCode||r.freeElective===true&&o.placementType==='elective',`${m.title} ${r.id}/${o.id}: ${o.receivingCode} is placed only in its own requirement or a free-elective block`);
+    assert.ok(r.code===o.receivingCode||r.freeElective===true&&o.placementType==='elective'||r.liberalArtsAllocation===true&&o.coursePlacementReviewId===coursePlacementReview.id&&upiLiberalArtsPlacement(m,r,o)||r.category==='general'&&o.coursePlacementReviewId===coursePlacementReview.id&&o.degreePlacementEvidence?.placementType==='general-category',`${m.title} ${r.id}/${o.id}: ${o.receivingCode} is placed only in its own requirement, free elective or independently reviewed category allocation`);
   }
+}
+/** Degree allocation is a separate reviewed claim: current primary degree proof, exact slot and university award, never residency. */
+function reviewedCurrentCoursePlacements(doc,kit){
+ const rows=new Map(list(kit?.equivalencies?.equivalencies).map(row=>[row.id,row]));
+ for(const m of doc.models){
+  const scope=coursePlacementReview.models.find(review=>review.modelId===m.id);assert.ok(scope,m.title+': this exact current degree is in the placement review');
+  assert.equal(m.catalog,scope.catalog);assert.equal(m.institutionMinCredits,scope.institutionMinCredits);assert.equal(m.upperMinCredits,scope.upperMinCredits);assert.equal(m.alternativeMaxCredits,scope.alternativeMaxCredits);
+  assert.equal(m.transferPolicyReview?.duplicatesCountOnce,true);assert.deepEqual(m.liberalArtsAllocation||null,scope.liberalArtsAllocation);
+  assert.deepEqual(m.requirements.map(reviewedRequirementScope),scope.requirements,m.title+': reviewed degree capacity, disciplines, levels, quantities and source identities');
+  for(const r of m.requirements)for(const o of outside(r)){
+   if(!o.coursePlacementReviewId){if(o.courseEligibilityResolution&&o.evidence==='published'&&(r.freeElective||r.liberalArtsAllocation))assert.fail(m.title+' '+o.id+': published flexible placement needs its independent review');continue;}
+   assert.equal(o.coursePlacementReviewId,coursePlacementReview.id);assert.ok(reviewedCourseEligibility(m,o));
+   const approved=coursePlacementReview.placements.find(p=>p.modelId===m.id&&p.requirementId===r.id&&p.optionId===o.id&&p.providerCourseCode===o.code&&p.receivingCode===o.receivingCode);
+   assert.ok(approved,m.title+' '+r.id+'/'+o.id+': exact reviewed course placement');
+   const row=rows.get(approved.rowId);assert.ok(row);assert.equal(placementKind(m,r,row),approved.placementType);
+   assert.equal(o.provider,approved.provider);assert.equal(o.courseVersion,approved.courseVersion);assert.equal(o.credits,approved.credits);assert.equal(o.creditSystem,approved.creditSystem);assert.equal(o.creditOrigin,approved.creditOrigin);assert.equal(o.upper,approved.receivingUpper);assert.equal(o.evidence,'published');
+   assert.equal(r.institutionalOnly===true,false);assert.equal(o.creditOrigin,'alternative');
+   const proof=o.degreePlacementEvidence;assert.ok(proof);assert.equal(proof.modelId,m.id);assert.equal(proof.requirementId,r.id);assert.equal(proof.receivingCode,o.receivingCode);assert.equal(proof.credits,o.credits);assert.equal(proof.creditSystem,o.creditSystem);assert.equal(proof.placementType,approved.placementType);assert.equal(proof.modality,'online');assert.deepEqual(proof.sourceIds,approved.sourceIds);
+   assert.ok(cites(m,o.sourceIds)&&approved.sourceIds.every(id=>o.sourceIds.includes(id)));
+   for(const id of approved.primarySourceIds){const source=m.sources.find(source=>source.id===id),expected=coursePlacementReview.sources.find(source=>source.id===id);assert.ok(source&&expected);assert.equal(source.kind,'university');assert.equal(source.url,expected.url);assert.equal(source.capture,expected.capture);assert.equal(source.checked,coursePlacementReview.checkedOn);assert.equal(source.sha256,coursePlacementReview.sourceHashes[id]);assert.equal(source.sourceContentHash,coursePlacementReview.sourceHashes[id]);}
+   if(approved.placementType==='elective'){assert.equal(r.freeElective,true);assert.equal(r.excludeAlreadyUsed,true);assert.equal(o.placementType,'elective');assert.equal(o.allocationType,'free-elective');}
+   if(approved.placementType==='liberal-arts-area'){assert.equal(o.placementType,'major-elective');assert.equal(o.allocationType,'liberal-arts-area');assert.ok(upiLiberalArtsPlacement(m,r,o));}
+   if(approved.placementType==='general-category'){assert.equal(o.placementType,'general-elective');assert.equal(o.allocationType,'general-category');assert.equal(r.category,'general');assert.ok(scope.scientificRequirementIds.includes(r.id)&&scope.scientificPermittedReceivingCodes.includes(o.receivingCode));assert.ok(approved.primarySourceIds.includes('tesu-liberal-taxonomy-placement-2026-11-26'));}
+  }
+ }
 }
 /** Institution-wide rows authored in the kit are grounded in a captured TESU-submitted equivalency for their receiving course. */
 function authoredRowsAreGrounded(doc,kit){
@@ -214,4 +262,4 @@ function upiProviderCandidatesStayBounded(doc){
     else assert.equal(o.receivingCode,r.code,label+': a named receiving award cannot fill a different named requirement');
   }
 }
-export const checks=[semesterLedgers,reviewedLedgerShapes,distinctNamedCourses,prerequisitesResolve,residencyAndCaps,gradeMinimums,institutionOnlyStaysAtTESU,awardsFitTheirRequirement,businessCourseCurrency,provisionalProvidersStayRestricted,providerStatusesStaySourceBound,schoolSubmittedMatchesAreExact,authoredRowsAreGrounded,upiProviderCandidatesStayBounded];
+export const checks=[semesterLedgers,reviewedLedgerShapes,distinctNamedCourses,prerequisitesResolve,residencyAndCaps,gradeMinimums,institutionOnlyStaysAtTESU,awardsFitTheirRequirement,businessCourseCurrency,provisionalProvidersStayRestricted,providerStatusesStaySourceBound,schoolSubmittedMatchesAreExact,authoredRowsAreGrounded,upiProviderCandidatesStayBounded,reviewedCurrentCoursePlacements];

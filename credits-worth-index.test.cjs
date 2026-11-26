@@ -9,7 +9,7 @@ let shared;
 async function load(){
  if(shared)return shared;
  const catalog=await Catalog.load(require('./dist/data/pathways.json'),{fetcher});
- const models=await Catalog.loadModels(Object.values(library.plans).map(entry=>entry.modelId),{fetcher,includeLegacy:false});
+ const models=await Catalog.loadModels(Catalog.planLibraryRoutes(catalog,[],library).map(route=>route.modelId),{fetcher,includeLegacy:false});
  return shared={catalog,models};
 }
 const plain=value=>JSON.parse(JSON.stringify(value));
@@ -34,10 +34,9 @@ async function both(learning){
  return {full:new Map(full.map(r=>[r.routeId,plain(r)])),light:new Map(light.map(r=>[r.routeId,plain(r)])),loaded};
 }
 
-test('the index covers every plan in the plan library and is built from the current curricula',async()=>{
- const {models}=await load();
- // The same plans the finder lists: published reviewed plans plus labelled plans awaiting school confirmation.
- assert.deepEqual(Object.keys(courseIndex.plans).sort(),Object.entries(library.plans).filter(([,p])=>p.tier==='confirmation'||p.tier==='reviewed'&&p.published===true).map(([id])=>id).sort());
+test('the public index covers only canonical publication-ready plans while the research inventory remains intact',async()=>{
+ const {catalog,models}=await load(),offered=Catalog.planLibraryRoutes(catalog,[],library);
+ assert.equal(courseIndex.selectionPolicy,'publication-ready-models-v1');assert.deepEqual(Object.keys(courseIndex.plans).sort(),offered.map(route=>route.id).sort());assert.equal(new Set(Object.values(courseIndex.plans).map(plan=>plan.modelId)).size,offered.length);assert(Object.keys(library.plans).length>offered.length,'The full research inventory is retained');assert(Object.values(library.plans).some(plan=>plan.tier==='confirmation'));
  assert.equal(courseIndex.registryRevision,library.registryRevision);
  for(const [routeId,plan] of Object.entries(courseIndex.plans))assert.deepEqual(plan.keys.map(i=>courseIndex.keys[i]),Worth.planKeys(models.find(m=>m.id===plan.modelId)),routeId);
 });
@@ -45,7 +44,7 @@ test('the index covers every plan in the plan library and is built from the curr
 for(const [name,learning] of Object.entries(lists)){
  test('lightweight and full results are identical for all plans: '+name,async()=>{
   const {full,light,loaded}=await both(learning);
-  const finderPlans=Object.values(library.plans).filter(p=>p.tier==='confirmation'||p.tier==='reviewed'&&p.published===true).length;
+  const {catalog}=await load(),finderPlans=Catalog.planLibraryRoutes(catalog,[],library).length;
   assert.equal(full.size,finderPlans);assert.equal(light.size,finderPlans);
   for(const [routeId,result] of full)assert.deepStrictEqual(light.get(routeId),result,name+': '+routeId);
   // Every plan a record actually affected was computed with its curriculum.
@@ -62,5 +61,8 @@ test('a single Sophia course loads only the plans that list it',async()=>{
 
 test('a stale or malformed index is rejected rather than trusted',async()=>{
  assert.equal(Worth.validCourseIndex({...courseIndex,version:2}),false);
+ const old={...courseIndex};delete old.selectionPolicy;assert.equal(Worth.validCourseIndex(old),false,'An older cached research-inclusive index cannot offer unapproved plans');
+ const [id,plan]=Object.entries(courseIndex.plans)[0],duplicate={...courseIndex,plans:{...courseIndex.plans,'duplicate-model-alias':{...plan,route:{...plan.route,id:'duplicate-model-alias'}}}};assert.equal(Worth.validCourseIndex(duplicate),false,'One model cannot be offered as multiple public results');
+ assert.equal(Worth.validCourseIndex({...courseIndex,plans:{[id]:{...plan,start:{...plan.start,tier:'confirmation'}}}}),false,'An unfinished plan cannot re-enter the lightweight path');
  await assert.rejects(Worth.evaluateWithIndex({kind:'x'},{learning:[]},{}));
 });

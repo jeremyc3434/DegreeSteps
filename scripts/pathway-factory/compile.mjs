@@ -2,7 +2,7 @@
 import {resolve} from 'node:path';
 import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
-import {clone,list,slug,sourceRefs,awardFields,inScope,requirementMatcher,rowStatus,programUnits,publishableReview,parsePlacement,sourceIndex,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root,slotPieces,slotUpperOnly,slotRowsFor,institutionChoicesFor,courseCodeKey} from './lib.mjs';
+import {clone,list,slug,sourceRefs,awardFields,inScope,requirementMatcher,rowStatus,programUnits,publishableReview,parsePlacement,sourceIndex,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root,slotPieces,slotUpperOnly,slotRowsFor,institutionChoicesFor,courseCodeKey,mergeProviderIdentity} from './lib.mjs';
 import {verifyKit,formatFindings} from './verify.mjs';
 
 /** Fields that exist only in the kit (grounding/review metadata) and never enter a compiled model. */
@@ -22,8 +22,7 @@ export function compileInstitutionOption(kit,program,choice){
 export function compileOption(kit,program,requirement,row,modalities){
   const provider=kit.providers.get(row.provider),course=list(provider?.courses).find(c=>c.code===row.code);
   if(!course)throw Error(`Unknown provider course ${row.provider} ${row.code} in ${row.id}`);
-  const identity={...clone(course),...clone(row.identity||{})};delete identity.code;
-  for(const field of list(row.identityOmit))delete identity[field];
+  const identity=mergeProviderIdentity(course,row);delete identity.code;
   if(identity.sourceCredits===null){delete identity.sourceCredits;if(identity.sourceCreditSystem==null)delete identity.sourceCreditSystem;}
   const option={id:row.placements?.[program.slug]?.optionId||row.optionId||defaultOptionId(row,requirement),provider:row.provider,code:row.code,...identity};
   for(const field of awardFields)if(row[field]!==undefined)option[field]=clone(row[field]);
@@ -85,7 +84,10 @@ export function compileProgram(kit,program){
   if(policies.alternativeMaxCredits)Object.assign(model,{alternativeMaxCredits:policies.alternativeMaxCredits.value,alternativeCapSourceIds:clone(policies.alternativeMaxCredits.sourceIds)});
   Object.assign(model,clone(program.modelFields||{}));
   // Per-model source lists (modelSourceIds) let a school publish each model with exactly its own sources.
-  if(program.modelSourceIds){const index=sourceIndex(kit,program);model.sources=program.modelSourceIds.map(id=>{const entry=index.get(id);if(!entry)throw Error(`Unknown model source ${id} in ${program.slug}`);return clone(entry.source);});}
+  if(program.modelSourceIds){
+    const index=sourceIndex(kit,program);
+    model.sources=program.modelSourceIds.map(id=>{const entry=index.get(id);if(!entry)throw Error(`Unknown model source ${id} in ${program.slug}`);return clone(entry.source);});
+  }
   const joined=new Map(),match=requirementMatcher(program);
   for(const row of list(kit.equivalencies.equivalencies))if(rowStatus(row)==='published'&&inScope(row,program,kit)){
     const requirement=match(row);if(!requirement)continue;
@@ -99,6 +101,19 @@ export function compileProgram(kit,program){
     compiled.options=requirement.optionRows?placedOptions(kit,program,requirement,model):[...rowsFor(kit,program,requirement,joined).map(row=>compileOption(kit,program,requirement,row,modalities)),...list(requirement.institutionOptions).map(choice=>compileInstitutionOption(kit,program,choice))];
     return compiled;
   });
+  if(program.modelSourceIds){
+    // Shared provider facts can add citations only after all options compile.
+    // Keep the pinned prefix, adding only actually cited evidence/dependencies.
+    const index=sourceIndex(kit,program),included=new Set(model.sources.map(source=>source.id));
+    const citationRefs=value=>sourceRefs(value).filter(reference=>!/(?:^|\.)(?:upstream)?originalSourceIds?$/i.test(reference.path));
+    const {sources:declared,...claims}=model,pending=[...citationRefs(claims),...declared.flatMap(source=>citationRefs(source))].map(reference=>reference.id);
+    for(let cursor=0;cursor<pending.length;cursor++){
+      const id=pending[cursor];if(included.has(id))continue;
+      const entry=index.get(id);if(!entry)throw Error(`Unknown cited model source ${id} in ${program.slug}`);
+      included.add(id);model.sources.push(clone(entry.source));
+      pending.push(...citationRefs(entry.source).map(reference=>reference.id));
+    }
+  }
   return model;
 }
 /** A named university course can appear in only one slot of a program. Maximum

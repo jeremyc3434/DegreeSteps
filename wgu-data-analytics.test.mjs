@@ -30,14 +30,14 @@ test('BSDA curriculum and every receiving agreement belong to exact active progr
 });
 
 test('new Data Analytics plan is complete, deduplicated, within program-specific CU rules and publication-ready',async()=>{
-  const kit=await loadKit('content/pathway-kits/wgu'),verified=await verifyKit(kit,{asOf:'2026-11-25'});assert.deepEqual(verified.errors,[]);
+  const kit=await loadKit('content/pathway-kits/wgu'),verified=await verifyKit(kit,{asOf:'2026-11-26'});assert.deepEqual(verified.errors,[]);
   const {doc,documents}=compileKit(kit);await runGuards(kit,doc);
   const source=doc.models.find(model=>model.id==='curriculum-wgu-bs-data-analytics-reviewed');assert(source);
   const review=await read(REVIEW_PATH);assert.equal(source.catalog,'202309');assert.equal(source.totalCredits,review.totalCredits);assert.equal(source.requirements.length,review.requirements);
   assert.equal(source.requirements.reduce((sum,row)=>sum+row.credits,0),source.totalCredits);assert.equal(source.externalMaxCredits,source.totalCredits*.75);assert.equal(source.alternativeMaxCredits,source.totalCredits*.75);
   assert.equal(source.pricing.amount,4125);assert.equal(source.pricing.amount,source.pricing.tuitionPerTerm+source.pricing.resourceFeePerTerm);
   const compiled=structuredClone(source);for(const row of compiled.requirements)row.options.push({id:'university-'+row.id,provider:'University',code:row.code,title:row.title,credits:row.credits,creditSystem:'competency-unit',creditOrigin:'institutional',sourceIds:row.sourceIds,evidence:'published'});
-  const model=compileScopedResearchNotices(compiled,{asOf:'2026-11-25'}),providers=[...new Set(model.requirements.flatMap(row=>row.options.map(option=>option.provider)))].filter(provider=>provider!=='University');
+  const model=compileScopedResearchNotices(compiled,{asOf:'2026-11-26'}),providers=[...new Set(model.requirements.flatMap(row=>row.options.map(option=>option.provider)))].filter(provider=>provider!=='University');
   const plan=Planner.generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000});
   assert.equal(plan.validation.academicCountsValid,true);assert.equal(plan.validation.policyChecksComplete,true);assert.equal(plan.rows.length,source.requirements.length);
   const outside=plan.rows.filter(row=>row.option.provider!=='University');assert.equal(new Set(outside.map(row=>row.option.provider+':'+row.option.code)).size,outside.length);
@@ -46,7 +46,7 @@ test('new Data Analytics plan is complete, deduplicated, within program-specific
   for(const row of outside){const option=row.option;assert.equal(option.sourceCreditSystem,'semester');assert(option.sourceCredits>0);assert.equal(option.creditSystem,'competency-unit');assert.equal(option.universityMapRecord.programId,92);assert.equal(option.universityMapRecord.catalogTerm,'202309');assert.equal(option.credits,row.credits);}
   const database=model.requirements.find(row=>row.code==='D427').options.find(option=>option.code==='SDCM-0218');assert.equal(database.sourceCredits,3);assert.equal(database.credits,4);
   const discrete=model.requirements.filter(row=>['D420','D421'].includes(row.code)).flatMap(row=>row.options.filter(option=>option.code==='SDCM-0210'));assert.equal(discrete.length,2);for(const option of discrete){assert.equal(option.sourceCredits,3);assert.equal(option.credits,1);}assert.equal(outside.filter(row=>row.option.code==='SDCM-0210').length,1);
-  const quality=assessPathwayQuality({model,plan,route:{...ROUTE,modelId:model.id},asOf:'2026-11-25'});assert.equal(quality.publication.ready,true,JSON.stringify(quality.findings.filter(finding=>finding.blocking)));
+  const quality=assessPathwayQuality({model,plan,route:{...ROUTE,modelId:model.id},asOf:'2026-11-26'});assert.equal(quality.publication.ready,true,JSON.stringify(quality.findings.filter(finding=>finding.blocking)));
   assert(quality.execution.personalTasks.some(task=>/admission/.test(task.message)));
   assert(!model.requirements.find(row=>row.code==='C955').options.some(option=>option.code==='SDCM-0025'),'The known Business212/SDCM0025 conflict remains held in the new program');
   assert(documents.find(document=>document.path==='content/curricula/wgu-pathway-kit.json').doc.models.some(model=>model.id===source.id));
