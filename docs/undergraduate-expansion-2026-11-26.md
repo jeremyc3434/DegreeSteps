@@ -4,7 +4,7 @@
 
 The current generated publication index contains **43 ready degree editions: 30 preserved, five additional TESU undergraduate editions, and eight additional WGU editions**. The WGU additions include five bachelor's programs and three MBA programs. These counts describe complete proposed starting plans that pass the publication gate, not individual student transfer awards or all programs in the discovery directory.
 
-**Final integrated QA and release verification are in progress. This handoff does not establish deployment.** Update this section with the final checks, commit and release destination when that work completes.
+Release and validation evidence is maintained in [pull request 42](https://github.com/jeremyc3434/DegreeSteps/pull/42), its [core checks](https://github.com/jeremyc3434/DegreeSteps/actions/workflows/ci.yml), and the [deployment workflow](https://github.com/jeremyc3434/DegreeSteps/actions/workflows/deploy.yml). The source-data snapshot in this handoff is separate from the deployment status recorded there.
 
 The generated sources of truth are `dist/data/pathway-quality-report.json`, `dist/data/publication-index.json`, `dist/data/baseline-index.json` and `dist/data/plan-library-index.json`. The broader registry contains research-stage programs; its size must not be reported as the count of ready plans.
 
@@ -78,12 +78,14 @@ The new 2026–2027 GEC must be mapped to its governing cohort and actual course
 
 Focused checks completed before this handoff:
 
-- `tesu-discovery-metadata-2026-11-26.test.mjs`: four passing tests, including retained body integrity and mismatched source/catalog/delivery rejection.
+- `tesu-discovery-metadata-2026-11-26.test.mjs`: five passing tests, including retained body integrity, mismatched source/catalog/delivery rejection, and actual Savings/Comparison bindings for all five programs.
 - `wgu-expansion-metadata-2026-11-26.test.mjs`: three passing tests for eight exact rate/requirement bindings and price mismatch rejection.
 - `degree-fit-metadata.test.mjs`: seven passing tests covering all currently published editions, independent prices and learning facts, exact source bindings and private-record boundaries.
-- `undergrad-batch-acceptance.test.mjs`: three passing tests preserving the 30 released editions; one explicit skip because no production TESU/UMPI shared named-university-choice pool has been adopted. No coverage for such a production pool is claimed.
+- `undergrad-batch-acceptance.test.mjs`: four passing tests preserving the 30 released editions and correct degree-level filters; one explicit skip because no production TESU/UMPI shared named-university-choice pool has been adopted. No coverage for such a production pool is claimed.
+- All 16 public-adoption browser journeys and three returning-plan browser journeys pass against the integrated release data. These use synthetic records, block real account writes, and do not represent real-student usability or real OAuth testing.
+- The local release build passes; the native Worker is below its 1 MiB budget. Source safety checks cover 3,416 tracked files with zero findings.
 
-Final authoring, generated-artifact consistency, core regression, browser QA and deployment checks remain the release owner's responsibility. Re-run registry, quality, baseline and library generation after any canonical identity or source change; do not update output counts by hand.
+Run authoring, generated-artifact consistency, the complete core suite, browser QA and deployment checks for each release; the pull request and workflow records above contain the final results. Re-run registry, quality, baseline and library generation after any canonical identity or source change; do not update output counts by hand.
 
 ## Next evidence work
 
