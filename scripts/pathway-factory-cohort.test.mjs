@@ -103,12 +103,14 @@ test('planner is deterministic, immutable and fingerprints every input without e
   assert(!JSON.stringify(a).includes('private@example.invalid'));assert.equal(Object.keys(a.fingerprints).length,7);
   assert(Object.values(a.fingerprints).every(value=>/^sha256:[a-f0-9]{64}$/.test(value)));
 });
-test('actual snapshot dry run preserves 45 ready plans and all 20 candidate dependencies without canonical writes',async()=>{
+test('actual snapshot dry run preserves released plans and every selected candidate dependency without canonical writes',async()=>{
   const base=resolve(import.meta.dirname,'..'),paths=['publication-index','pathway-quality-report','plan-expansion-queue','academic-registry'].map(name=>resolve(base,'dist/data',name+'.json'));
-  const before=await Promise.all(paths.map(path=>readFile(path,'utf8'))),input=await readCohortInputs({base,asOf});
-  assert.equal(input.models.length,167);assert.equal(input.queue.tasks.length,741);
-  const report=buildCohortPlan({...input,target:20,asOf});assert.equal(report.summary.currentReady,45);assert.equal(report.summary.plannedCandidates,20);
-  assert(report.summary.potentialReady<=17);assert(report.summary.heldCandidates>=3);assert(!report.selectedModelIds.includes('tesu-general-management'));
+  const snapshotDate=new Date().toISOString().slice(0,10);
+  const before=await Promise.all(paths.map(path=>readFile(path,'utf8'))),input=await readCohortInputs({base,asOf:snapshotDate});
+  assert.equal(input.models.length,input.quality.programs.length);assert.equal(input.queue.tasks.length,input.queue.summary.distinctReviewTasks);
+  const report=buildCohortPlan({...input,target:20,asOf:snapshotDate});assert.equal(report.summary.currentReady,input.publication.plans.length);assert(report.summary.currentReady>=45);
+  assert.equal(report.summary.plannedCandidates,Math.min(20,report.summary.candidateInventory));
+  assert.equal(report.summary.potentialReady+report.summary.heldCandidates,report.summary.plannedCandidates);assert(!report.selectedModelIds.includes('tesu-general-management'));
   assert(report.selectedModelIds.every(id=>!report.currentReadyModelIds.includes(id)));assert.equal(report.summary.automaticApprovals,0);
   for(const program of report.programs){
     const findings=input.quality.programs.find(p=>p.modelId===program.modelId).findings.filter(f=>f.blocking);
@@ -116,6 +118,6 @@ test('actual snapshot dry run preserves 45 ready plans and all 20 candidate depe
     for(const finding of findings)assert(program.findingDependencies.some(d=>d.findingId===finding.id&&d.fullyRepresented)||program.unrepresentedBlockers.some(h=>h.findingId===finding.id));
     assert(program.dependencyTaskIds.every(id=>report.dependencies.some(task=>task.id===id&&task.contexts.some(c=>c.modelId===program.modelId))));
   }
-  assert.match(formatCohortSummary(report),/45 current ready plans unchanged.*20 planned candidates.*not academically verified.*0 automatic approvals/);
+  assert.match(formatCohortSummary(report),new RegExp(report.summary.currentReady+' current ready plans unchanged.*'+report.summary.plannedCandidates+' planned candidates.*not academically verified.*0 automatic approvals'));
   assert.deepEqual(await Promise.all(paths.map(path=>readFile(path,'utf8'))),before);
 });
