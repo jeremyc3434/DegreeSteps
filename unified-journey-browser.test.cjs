@@ -58,7 +58,8 @@ for(const [name,profile] of profiles)test(name+': three starting paths share one
   await page.goto(BASE+'__preview/signin?user=journey&run='+name+Date.now()+'&return_to=/plan.html');await page.locator('.dp-shell-save-account').waitFor();
   await page.waitForFunction(()=>/Not saved to your account/.test(document.querySelector('.dp-shell-save')?.textContent||''),null,{timeout:15000});
   await page.locator('.dp-shell-save-account').click();await page.locator('#degree-plan-save-dialog[open]').waitFor({timeout:15000});
-  const consent=page.locator('#degree-plan-save-dialog input[type=checkbox]');if(await consent.count())await consent.first().check();
+  await page.locator('#plan-save-form').waitFor({timeout:15000});
+  await page.locator('#plan-save-form input[name=consent]').check();
   await page.locator('#degree-plan-save-dialog .plan-save-primary').click();
   await page.waitForFunction(()=>/Saved to your account/.test(document.getElementById('degree-plan-save-dialog')?.textContent||''),null,{timeout:30000}).catch(async error=>{throw Error('Save dialog: '+(await page.locator('#degree-plan-save-dialog').innerText()).replace(/\s+/g,' ').slice(0,400));});
   await page.keyboard.press('Escape');await page.reload();
