@@ -169,6 +169,8 @@ function renderDegree(){
   const active=[['q',filters.q?'Search: '+filters.q:''],['subject',index.subjects[filters.subject]],['level',levels[filters.level]],['format',formats[filters.format]],['pace',paceLabels[filters.pace]],['billing',billingLabels[filters.billing]],['cbe',filters.cbe?'Competency-based (CBE)':''],['share',filters.share?'At least '+filters.share+'% transfer coursework':''],['budget',filters.budget?'Plan range up to '+money(Number(filters.budget)):'']].filter(([,label])=>label);
   $('start-active-filters').innerHTML=active.map(([key,label])=>'<button type="button" data-clear-filter="'+key+'" aria-label="Remove filter: '+esc(label)+'">'+esc(label)+' <span aria-hidden="true">×</span></button>').join('')+(active.length?'<button type="button" data-clear-all>Clear filters</button>':'');
   const quizLink=degreeParams();quizLink.set('step','quiz');$('start-quiz-link').href='start.html?'+quizLink;
+  // Help me choose, part 2: after the quiz, the deeper portal questions are one optional step away, carrying these answers.
+  if(quizIntent&&$('start-quiz-more')){const more=new URLSearchParams({view:'preferences',from:'quiz'});for(const key of ['subject','level','format'])if(filters[key])more.set(key,filters[key]);if(quizIntent.purpose)more.set('purpose',quizIntent.purpose);if(quizIntent.priority)more.set('priority',quizIntent.priority);$('start-quiz-more-link').href='portal.html?'+more;$('start-quiz-more').hidden=false;}
 }
 function syncUrl(){
   const next=degreeParams();
@@ -238,6 +240,7 @@ for(const key of ['pace','billing','share','budget'])$('start-'+key).addEventLis
 $('start-cbe').addEventListener('change',()=>{filters.cbe=$('start-cbe').checked;limit=12;renderDegree();syncUrl();});
 $('start-personal').addEventListener('change',()=>{personalEnabled=$('start-personal').checked;personalController?.cancel();++personalRevision;personalPending=false;personalComplete=false;personalScopeKey='';personalResults=new Map();personalError='';if(!personalEnabled&&filters.sort==='fit')filters.sort='cost';limit=12;renderDegree();syncUrl();});
 $('start-personal-retry').addEventListener('click',refreshPersonal);
+if(quizIntent){$('start-path-find').removeAttribute?.('aria-current');$('start-quiz-link').setAttribute?.('aria-current','true');}
 $('start-path-find').addEventListener('click',event=>{event.preventDefault();$('start-q').focus();$('start-q').scrollIntoView?.({block:'center'});});
 $('start-path-courses').addEventListener('click',event=>{
   if(!personalAvailable)return;

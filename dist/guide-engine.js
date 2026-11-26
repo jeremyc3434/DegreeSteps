@@ -120,8 +120,17 @@
     if (!options.length||text(item.code)&&options.some(option=>matchesCode(option,item.code))) return null;
     const tokens=codeTokens(text(item.code)?item.code:item.title);
     if (!tokens.length) return null;
-    const identity=sourceIdentities(requirements),hits=options.filter(option=>optionCodeKeys(option).some(code=>tokens.includes(code)));
-    return {hits,identities:new Set(hits.map(option=>identity(provider+':'+key(option.code))))};
+    const identity=sourceIdentities(requirements),hits=options.filter(option=>optionCodeKeys(option).some(code=>tokens.includes(code))),identities=new Set(hits.map(option=>identity(provider+':'+key(option.code))));
+    // One line naming several course codes ("SOPH-0015 SOPH-0048") is one record, not one course. It is matched
+    // only when every code names the same listed course (a code and its alias); otherwise it needs review, even
+    // when this degree lists just one of the codes, because the other code may be the course actually taken.
+    const multiple=tokens.length>1&&hits.length>0&&(identities.size!==1||!tokens.every(token=>hits.some(option=>optionCodeKeys(option).includes(token))));
+    return {hits,identities,multiple};
+  }
+  // True when a hand-entered record names more than one course code in one line.
+  function manualCodeLineHasSeveralCodes(item) {
+    if (!item||text(item.catalogCourseId)) return false;
+    return codeTokens(text(item.code)?item.code:item.title).length>1;
   }
   // A manually entered record (no catalog listing) is matched only when its
   // provider plus a written course code points to exactly one source identity
@@ -129,11 +138,11 @@
   // option; it never awards or confirms credit, and the saved record is unchanged.
   function resolveManualIdentity(program,item) {
     const found=manualCodeHits(program,item);
-    return found&&found.identities.size===1 ? {...item,code:found.hits[0].code,codeBasis:'manual-code-recognized'} : item;
+    return found&&!found.multiple&&found.identities.size===1 ? {...item,code:found.hits[0].code,codeBasis:'manual-code-recognized'} : item;
   }
   function manualIdentityAmbiguous(program,item) {
     const found=manualCodeHits(program,item);
-    return Boolean(found&&found.identities.size>1);
+    return Boolean(found&&(found.multiple||found.identities.size>1));
   }
   function resolveRecordIdentity(program,item) {
     if (!text(item?.catalogCourseId)) return item&&typeof item==='object'?resolveManualIdentity(program,item):item;
@@ -892,5 +901,5 @@
     return { title: route.title || 'Your degree route', summary, tips, nextActions: unique(nextActions).slice(0, 3), milestones, careerNotes: unique(careerNotes), militaryNotes: unique(militaryNotes), ...(modeled ? {researchTasks:copy(list(plan.researchTasks)),personalTasks:copy(list(plan.personalTasks)),resolvedNotes:copy(list(plan.resolvedNotes))} : {}) };
   }
 
-  return Object.freeze({ subjectIds:[...subjectIds], legacyFieldIds:[...legacyFieldIds], subjectMatches, manualIdentityAmbiguous, normalizeProfile, preferenceFit, steps, matchInventory, matchCollection, migrateLegacy, assessTarget, recommend, buildGuidance, catalogCourseCode, courseReviewReason, resolveRecordIdentity });
+  return Object.freeze({ subjectIds:[...subjectIds], legacyFieldIds:[...legacyFieldIds], subjectMatches, manualIdentityAmbiguous, manualCodeLineHasSeveralCodes, normalizeProfile, preferenceFit, steps, matchInventory, matchCollection, migrateLegacy, assessTarget, recommend, buildGuidance, catalogCourseCode, courseReviewReason, resolveRecordIdentity });
 }));

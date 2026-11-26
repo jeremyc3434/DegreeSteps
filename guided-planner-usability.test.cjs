@@ -66,6 +66,25 @@ test('titles alone, other providers and ambiguous codes are not matched and are 
  assert.equal(Guide.manualIdentityAmbiguous(model,manual({title:'SOPH-0015 English Composition I'})),false);
 });
 
+test('one hand-typed line naming two codes never counts toward a plan that lists only one of them',()=>{
+ const model=program(sophia),before=manual({code:'SOPH-0015 SOPH-0048',title:'Two courses on one line'}),record=copy(before);
+ assert.equal(Guide.resolveRecordIdentity(model,record),record,'the listed code is not picked out of the line');
+ assert.equal(Guide.manualIdentityAmbiguous(model,record),true,'shown as Needs review');
+ assert.equal(Guide.manualCodeLineHasSeveralCodes(record),true);
+ assert.equal(Guide.matchInventory(model,[record]).completed.length,0);
+ assert.deepEqual(record,before,'the saved record is unchanged');
+ for(const code of ['SOPH-0048 / SOPH-0015','SOPH 0015, SOPH 0048']){const other=manual({code});assert.equal(Guide.matchInventory(model,[other]).completed.length,0,code);assert.equal(Guide.manualIdentityAmbiguous(model,other),true,code);}
+ // A code and its own listed alias name one course, so that line is still matched.
+ const alias=manual({code:'SOPH-0015 ENG1001'});
+ assert.deepEqual(Guide.matchInventory(model,[alias]).completed.map(item=>item.optionId),['sophia-0015']);assert.equal(Guide.manualIdentityAmbiguous(model,alias),false);
+ // Two codes this degree doesn't list at all stay "no listed match", not "needs review".
+ const unlisted=manual({code:'SOPH-0098 SOPH-0099'});assert.equal(Guide.manualIdentityAmbiguous(model,unlisted),false);assert.equal(Guide.matchInventory(model,[unlisted]).completed.length,0);
+ // One code on its own line still matches as before.
+ assert.equal(Guide.matchInventory(model,[manual({code:'SOPH 0015'})]).completed.length,1);
+ // Catalog-listed courses are never read as hand-typed lines.
+ assert.equal(Guide.manualCodeLineHasSeveralCodes(manual({catalogCourseId:'sophia-listing',code:'SOPH-0015 SOPH-0048'})),false);
+});
+
 // Portal ----------------------------------------------------------------------
 function portalData(){
  const r={id:'campus-degree',modelId:'campus-model',school:'Example University',title:'Psychology BS',level:'bachelor',field:'social-science',fields:['social-science'],modalities:['online'],goals:['any-degree','career-growth','change-career']};
@@ -81,7 +100,7 @@ function portal({publicationReady=true}={}){
  const context={console,URL,URLSearchParams,Intl,TextEncoder,TextDecoder,document:{getElementById:node,querySelector(){return null;},querySelectorAll(){return[];},addEventListener(type,fn){if(!handlers.has(type))handlers.set(type,[]);handlers.get(type).push(fn);},body:node('body')},location:{pathname:'/portal.html',search:'',assign(){},replace(){}},history:{replaceState(){}},localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},FormData:class extends Map{constructor(form){super(Object.entries(form.values||{}));}getAll(name){const value=this.get(name);return value===undefined?[]:Array.isArray(value)?value:[value];}},CustomEvent:class{},setTimeout(){},clearTimeout(){},dispatchEvent(){},addEventListener(){},scrollTo(){},navigator:{},__fixture:JSON.stringify({state:initial,...d,planIndex})};context.window=context;vm.createContext(context);
  for(const match of fs.readFileSync(path.join(__dirname,'dist/portal.html'),'utf8').matchAll(/<script\b[^>]*\bsrc="([A-Za-z0-9_-]+\.js)"[^>]*>/g)){const source=fs.readFileSync(path.join(__dirname,'dist',match[1]),'utf8');if(source.includes('module.exports'))vm.runInContext(source,context,{filename:match[1]});}
  context.fetch=async()=>({ok:false});
- const hooks=`const fixture=JSON.parse(__fixture);state=fixture.state;catalog=fixture.catalog;models=fixture.models;planIndex=fixture.planIndex;attachSubjects();render=function(){save();};prepareRecommendations=async()=>{};window.__t={state:()=>state,set:value=>{state=value;},catalog:()=>catalog,answer,start:startProfile,steps:profileSteps,body:profileBody,fields:fieldChoicesFor,check:schoolCheckHTML,results:recommendationResultsBody,notice:updateResultNotice,announceFinding:()=>{announce(FINDING_NOTICE);resultNotice=FINDING_NOTICE;},card:routeCard,setRates:value=>{estimateRates=value;},choose:()=>{state=Journey.selectRoute(state,fixture.route,catalog);state.journey.profileFlowVersion=1;startProfile('target','degree');}};`;
+ const hooks=`const fixture=JSON.parse(__fixture);state=fixture.state;catalog=fixture.catalog;models=fixture.models;planIndex=fixture.planIndex;attachSubjects();render=function(){save();};prepareRecommendations=async()=>{};window.__t={state:()=>state,continueFromQuiz:query=>startQuizContinuation(new URLSearchParams(query)),set:value=>{state=value;},catalog:()=>catalog,answer,start:startProfile,steps:profileSteps,body:profileBody,fields:fieldChoicesFor,check:schoolCheckHTML,results:recommendationResultsBody,notice:updateResultNotice,announceFinding:()=>{announce(FINDING_NOTICE);resultNotice=FINDING_NOTICE;},card:routeCard,setRates:value=>{estimateRates=value;},choose:()=>{state=Journey.selectRoute(state,fixture.route,catalog);state.journey.profileFlowVersion=1;startProfile('target','degree');}};`;
  vm.runInContext(fs.readFileSync(path.join(__dirname,'dist/portal.js'),'utf8').replace(/  boot\(\);\s*\}\(\)\);\s*$/,hooks+'\n}());'),context,{filename:'portal.js'});
  return {api:context.__t,node,d,async submit(values){const form=node('portal-profile-form');form.values=values;for(const handler of handlers.get('submit')||[])await handler({target:form,preventDefault(){}});}};
 }
@@ -94,7 +113,7 @@ test('the subject question uses the taxonomy labels and keeps a legacy saved val
  assert.deepEqual(copy(f.api.catalog().pathways[0].subjects),['psychology'],'route subjects come from the plan index');
 });
 test('military service is a visible question with service records shown for service members',async()=>{
- const f=portal();await f.api.answer('explore');await f.submit({goal:'any-degree',field:'psychology',degreeLevel:'bachelor'});
+ const f=portal();f.api.continueFromQuiz('');await f.submit({goal:'any-degree',field:'psychology',degreeLevel:'bachelor'});
  assert.equal(f.api.state().profile.field,'psychology');assert.equal(f.api.state().journey.step,'prior');
  const html=f.api.body('prior');
  assert.match(html,/<fieldset class="portal-military-field"><legend>Military service<\/legend>/);assert.doesNotMatch(html,/<details[^>]*><summary>Military/);

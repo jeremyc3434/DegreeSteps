@@ -357,6 +357,33 @@
     state.journey={...state.journey,view:'questions',profileFlow:{version:1,mode,returnStep,values:{},baseTarget:latestStoredPlan()?.selectedPathwayId||''},step:mode==='explore'?'purpose':'prior'};
     persistProfileDraft();render();trackGrowth('guided_started');
   }
+  // The deeper questions after the 1-minute quiz (start.html?step=quiz). The quiz answers fill the goal, subject,
+  // degree, format and priority; every portal question is still asked or shown prefilled, and saves as before.
+  const HELP_ME_CHOOSE='start.html?step=quiz';
+  function quizAnswers(params) {
+    const purpose=params.get('purpose'),subject=params.get('subject'),level=params.get('level'),format=params.get('format'),priority=params.get('priority');
+    return {
+      goal:goalChoices.some(([id])=>id===purpose)&&!protectedGoals.includes(purpose)?purpose:'',licensed:purpose==='licensed-career',
+      field:subject&&fieldChoicesFor('').some(([id])=>id===subject)?subject:'any',
+      degreeLevel:['associate','bachelor','master'].includes(level)?level:'unsure',
+      format:['online','campus'].includes(format)?format:'',
+      priority:['balanced','speed','cost','transfer'].includes(priority)?priority:''
+    };
+  }
+  function startQuizContinuation(params) {
+    const quiz=quizAnswers(params);cancelRecommendations();degreePreview=null;
+    state=Journey.applyAnswer(state,'start','explore',catalog);state.journey.profileFlowVersion=1;
+    const values={purpose:{...(quiz.goal?{goal:quiz.goal}:{}),field:quiz.field,degreeLevel:quiz.degreeLevel}};
+    if(quiz.format)values.format={format:quiz.format};
+    if(quiz.priority)values.priority={priority:quiz.priority};
+    state.journey={...state.journey,view:'questions',profileFlow:{version:1,mode:'explore',returnStep:'routes',values,baseTarget:latestStoredPlan()?.selectedPathwayId||'',fromQuiz:true},step:'purpose'};
+    // A quiz goal answers "What would a degree help you do?", so the continuation opens on past courses and military service.
+    // A licensed career still asks which one (teacher, law, pilot, health), so that step stays first.
+    if(quiz.goal){state=Journey.applyAnswer(state,'purpose',quiz.goal,catalog);state=Journey.applyAnswer(state,'field',quiz.field,catalog);state=Journey.applyAnswer(state,'level',quiz.degreeLevel,catalog);state.journey.step='prior';}
+    state.journey.profileFlow.firstStep=state.journey.step;
+    // The same counter as the portal questionnaire always used: the deeper questions started.
+    persistProfileDraft();render();trackGrowth('guided_started');
+  }
   function restoreProfileDraft(mode) {
     let saved;try{saved=JSON.parse(read(PROFILE_DRAFT_KEY));}catch{return false;}
     const target=latestStoredPlan()?.selectedPathwayId||'';
@@ -393,7 +420,8 @@
       '<details class="portal-tip"><summary>Budget, study time and coursework (optional)</summary><div class="portal-profile-grid"><label class="portal-field"><span>Budget to finish your degree ($)</span><input type="number" name="budget" min="0" max="1000000" step="1" inputmode="numeric" value="'+esc(p.budget??'')+'" placeholder="No limit set"></label><label class="portal-field"><span>Study hours per week</span><input type="number" name="weeklyHours" min="1" max="100" step="1" inputmode="numeric" value="'+esc(p.weeklyHours??'')+'" placeholder="Not sure yet"></label></div>'+chooseField('assessmentPreference','How do you prefer to show what you know?',[['mixed','A mix is fine'],['projects','Projects'],['writing','Written assignments'],['exams','Exams']],p.assessmentPreference||'mixed')+'</details>';
     if(flow.mode==='target'&&id==='prior'&&state.profile.degree)body='<p class="portal-profile-note">Your degree: '+esc(state.profile.degree)+(state.profile.school?' · '+esc(state.profile.school):'')+'</p>'+body;
     const last=id==='priority',label=last?(flow.mode==='preferences'?'Save my preferences':flow.mode==='target'?'Open my course plan':'Find my degree plans'):'Continue';
-    return '<form id="portal-profile-form" class="portal-quick-form" data-profile-step="'+id+'">'+body+'<button class="portal-primary" type="submit">'+label+'</button></form>'+(flow.mode==='preferences'?'<div class="portal-links">'+button('cancel-profile','Back to my plan',true)+'</div>':'');
+    const lead=flow.fromQuiz&&id===flow.firstStep?'<p class="portal-profile-note portal-quiz-lead">We’re using your quiz answers. These questions are optional and make your picks closer. Use Back to change an answer.</p>':'';
+    return lead+'<form id="portal-profile-form" class="portal-quick-form" data-profile-step="'+id+'">'+body+'<button class="portal-primary" type="submit">'+label+'</button></form>'+(flow.mode==='preferences'?'<div class="portal-links">'+button('cancel-profile','Back to my plan',true)+'</div>':'');
   }
   function profileSummaryHTML() {
     if(!state.journey.profileCompleted)return '';
@@ -457,7 +485,7 @@
         // The same three starting paths as Build my plan (start.html), in the same order and words.
         ['target',state.journey.completed?'Change my degree':'Find a degree','Search by school, degree or major.'],
         ['audit','Use my courses',(state.learning||[]).length?'See which degrees fit the courses already in My courses.':'Upload a transcript or spreadsheet. We match it to degrees.'],
-        ['explore','Help me choose','Answer a few questions about your goals, time and budget.']
+        ['explore','Help me choose','Answer 5 quick questions.']
       ])+'<details class="portal-tip portal-more-starts"><summary>More ways to start</summary><div class="portal-start-browse"><a href="request-plan.html">Paste a degree link</a></div><div class="portal-start-browse"><a href="degree-audit.html">Build my own plan from scratch</a></div><div class="portal-start-browse"><a href="courses.html?tab=browse">Browse transfer courses</a></div></details>';
       case 'school': {
         const schools = [...new Set(availableRoutes().map(r => r.school).filter(Boolean))].sort();
@@ -1008,6 +1036,9 @@
       // Courses already in the shared list are used as they are; an empty list starts with the upload.
       state.journey.step='purpose';save();if(saveOK)location.assign((state.learning||[]).length?'start.html?sort=fit':'import-courses.html?from=portal');else showError(Error('Your courses could not be saved.'));return;
     }
+    // "Help me choose" is one flow everywhere: the 1-minute quiz first, then the deeper questions as an optional continuation.
+    if(id==='start'&&value==='explore'){location.assign(HELP_ME_CHOOSE);return;}
+    // "Not sure" after choosing a school keeps that school, so it continues with the questions here.
     if(['school','degree'].includes(id)&&value==='unknown'&&state.journey.profileFlowVersion===1){startProfile('explore');return;}
     if(id==='degree'&&value==='unknown'){state.journey.step='purpose';render();return;}
     if(id==='degree'||id==='routes'){openPlan();return;}
@@ -1217,6 +1248,8 @@
         state.journey={...state.journey,view:'questions',step:'degree',completed:false};
         const selectedProgram=catalog.pathways.find(route=>route.id===params.get('program')&&route.school===school);if(selectedProgram){await previewDegree(selectedProgram);}
         history.replaceState(null,'',location.pathname+'?view=setup');
+      } else if(params.get('view')==='preferences'&&params.get('from')==='quiz'){
+        history.replaceState(null,'',location.pathname+'?view=edit');startQuizContinuation(params);return;
       } else if(params.get('view')==='preferences'){
         if(!restoreProfileDraft('preferences')){
           if(actualSavedTarget(state)){startProfile('preferences','plan');return;}
