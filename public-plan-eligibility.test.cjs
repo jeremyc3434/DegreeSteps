@@ -38,8 +38,12 @@ function portalRules(){
  const rules=context.portalRules;rules.setup(catalog);return rules;
 }
 
-test('the shared rule is the reviewed publication list, one card per curriculum',()=>{
- assert.equal(openable.size,Catalog.publishedPlans(catalog).length);
+test('the shared rule is the publication list: reviewed plans plus plans that only need course rows confirmed',()=>{
+ assert.equal(openable.size,Catalog.publishedPlans(catalog).length+Catalog.confirmationPlans(catalog).length);
+ // A confirmation plan opens only when its blockers are course-level; school-level blockers keep it closed.
+ for(const [id,plan] of Object.entries(library.plans))if(plan.tier==='confirmation')assert.equal(openable.has(id),plan.buildable===true,id);
+ assert.ok(Object.values(library.plans).some(plan=>plan.tier==='confirmation'&&plan.buildable===true),'some plans that need confirmation are buildable');
+ assert.ok(Object.values(library.plans).some(plan=>plan.tier==='confirmation'&&plan.buildable===false&&plan.blockers.length),'plans blocked by a school rule name it');
  assert.equal(new Set(Catalog.planLibraryRoutes(catalog).map(route=>route.modelId)).size,Catalog.planLibraryRoutes(catalog).length);
  for(const route of catalog.pathways)assert.equal(Catalog.canOpenPublicPlan(route,catalog),openable.has(route.id));
  assert.equal(Catalog.canOpenPublicPlan(null,catalog),false);assert.equal(Catalog.canOpenPublicPlan({id:'not-a-plan'},catalog),false);
@@ -47,7 +51,7 @@ test('the shared rule is the reviewed publication list, one card per curriculum'
 
 test('every builder card that offers "Build this plan" opens in the portal; every other card offers "Request this plan"',async()=>{
  const env=await builder(),rows=env.api.rows(),portal=portalRules();
- const confirmation=Object.values(library.plans).filter(plan=>plan.tier==='confirmation').length;
+ const confirmationIds=Object.keys(library.plans).filter(id=>library.plans[id].tier==='confirmation'),confirmation=confirmationIds.length,blocked=confirmationIds.filter(id=>!openable.has(id)).length;
  assert.equal(rows.length,Catalog.planLibraryRoutes(catalog).length+confirmation,'one card per reviewed curriculum plus each plan that needs school confirmation');
  assert.equal(new Set(rows.map(p=>p.id)).size,rows.length);
  let built=0,requested=0;
@@ -55,7 +59,9 @@ test('every builder card that offers "Build this plan" opens in the portal; ever
   const html=env.api.card(p),buildable=openable.has(p.id);
   assert.equal(portal.accepts(p.id),buildable,p.id+': the builder and the portal agree');
   if(buildable){
-   built++;assert.match(html,/data-build-plan=/,p.id);assert.match(html,/>Build this plan</,p.id);assert.doesNotMatch(html,/Request this plan/,p.id);
+   built++;assert.match(html,/data-build-plan=/,p.id);assert.match(html,/>Build this plan</,p.id);assert.doesNotMatch(html,/Request this plan|Not ready to build/,p.id);
+   // A buildable plan that needs school confirmation keeps its badge and says how many rows to check.
+   if(library.plans[p.id]?.tier==='confirmation'){assert.match(html,/Needs school confirmation/,p.id);assert.match(html,/to check with the school/,p.id);}
    const next=new URL(env.api.planUrl(p,'later'),'https://degreesteps.test/');assert.equal(next.pathname,'/portal.html');
    const id=next.searchParams.get('usePlan')||next.searchParams.get('program');assert.ok(portal.accepts(id),p.id+' hands the portal a plan it opens');
   }else{
@@ -65,21 +71,24 @@ test('every builder card that offers "Build this plan" opens in the portal; ever
    assert.equal(url.pathname,'/request-plan.html');if(url.searchParams.get('source'))assert.match(url.searchParams.get('source'),/^https:\/\//);
   }
  }
- assert.equal(built,Catalog.planLibraryRoutes(catalog).length);assert.equal(requested,confirmation);
- assert.match(env.elements.get('start-count').textContent,new RegExp('^'+rows.length+' degrees · '+built+' ready to build · '+requested+' need school confirmation$'));
+ assert.equal(built,rows.length-blocked);assert.equal(requested,blocked);
+ const pending=rows.filter(p=>openable.has(p.id)&&library.plans[p.id]?.tier==='confirmation').length;
+ assert.match(env.elements.get('start-count').textContent,new RegExp('^'+rows.length+' degrees · '+built+' ready to build \\('+pending+' need school confirmation\\) · '+requested+' not ready yet$'));
 });
 
-test('the portal still refuses a plan that is not published, whichever page links to it',async()=>{
- const portal=portalRules(),id=Object.keys(library.plans).find(key=>library.plans[key].tier==='confirmation');
+test('the portal still refuses a plan blocked by a school-level rule, whichever page links to it',async()=>{
+ const portal=portalRules(),id=Object.keys(library.plans).find(key=>library.plans[key].tier==='confirmation'&&!openable.has(key));
  await assert.rejects(portal.usePublicPlan(id),/This course plan is not available/);
 });
 
-test('deep links: an alias opens step 2, a plan that needs confirmation is shown with its request action',async()=>{
+test('deep links: an alias or a buildable confirmation plan opens step 2; a plan blocked by a school rule is shown with its request action',async()=>{
  const aliases=publication.plans.filter(plan=>plan.routeIds.length>1).flatMap(plan=>plan.routeIds);
  assert.ok(aliases.length>=2,'the UMPI program has two incoming catalog links');
  for(const id of aliases){const env=await builder('?plan='+id);assert.equal(env.elements.get('start-step-credits').hidden,false,id+' opens step 2');}
- const pending=Object.keys(library.plans).find(key=>library.plans[key].tier==='confirmation'),env=await builder('?plan='+pending,{notice:/still needs school confirmation/});
- assert.notEqual(env.elements.get('start-step-credits').hidden,false);assert.match(env.elements.get('start-error').textContent,/still needs school confirmation/);
+ const buildable=Object.keys(library.plans).find(key=>library.plans[key].tier==='confirmation'&&openable.has(key));
+ assert.equal((await builder('?plan='+buildable)).elements.get('start-step-credits').hidden,false,buildable+' needs confirmation but opens step 2');
+ const pending=Object.keys(library.plans).find(key=>library.plans[key].tier==='confirmation'&&!openable.has(key)),env=await builder('?plan='+pending,{notice:/isn’t ready to build yet/});
+ assert.notEqual(env.elements.get('start-step-credits').hidden,false);assert.match(env.elements.get('start-error').textContent,/school’s rules for it still has to be confirmed/);
  assert.match(env.elements.get('start-results').innerHTML,new RegExp('data-request-plan="'+pending+'"'));
 });
 
@@ -91,4 +100,11 @@ test('no static page links a plan the portal would refuse',()=>{
   if(!openable.has(id))refused.push(path.relative('dist',page)+' → '+id);
  }
  assert.ok(links>50,'plan links were found');assert.deepEqual(refused,[]);
+});
+
+test('a confirmation entry that does not bind to this catalog fails closed (left out, never openable)',()=>{
+ const entry=publication.confirmationPlans[0],bad={...publication,confirmationPlans:[{...entry,routeIds:['not-a-route']},...publication.confirmationPlans.slice(1)]};
+ const loose=Catalog.attachPublicationIndex(Catalog.attachRegistry(Catalog.merge(data('pathways.json'),data('program-catalog.json')),registry),bad,registry);
+ for(const id of entry.routeIds)assert.equal(Catalog.canOpenPublicPlan({id},loose),false,id);
+ assert.equal(Catalog.openablePlanIds(loose).size,openable.size-entry.routeIds.length);
 });

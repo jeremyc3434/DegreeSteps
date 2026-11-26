@@ -99,6 +99,27 @@
     const ids = unique([...list(option?.sourceIds),...list(row.sourceIds)]).filter(id => !identityOnly.has(id)||receivingClaim(list(program?.sources).find(source=>source.id===id)));
     return ids.map(id => list(program?.sources).find(source => source.id === id)).filter(Boolean);
   }
+  // Plans that open while they need school confirmation label every row honestly. The per-option review comes from
+  // data/option-review.json (globalThis.DegreeOptionReview[modelId]); an option it does not list is a published match.
+  function reviewMap(program) {const all=typeof globalThis!=='undefined'?globalThis.DegreeOptionReview:null;const value=all&&program&&all[program.id];return value&&typeof value==='object'?value:null;}
+  function conditionText(option) {const value=list(option?.conditions).map(text).find(Boolean);if(!value)return '';const clean=value.replace(/[.;:\s]+$/,'');return clean.length>110?clean.slice(0,107).replace(/\s+\S*$/,'')+'…':clean;}
+  function reviewKind(requirement, option, review) {
+    if(Planner&&typeof Planner.openSlotPlaceholder==='function'&&Planner.openSlotPlaceholder(requirement,option))return 'choose';
+    if(!review||!option||!option.id||option.provider==='University')return option&&option.provider==='University'?'settled':null;
+    return review[option.id]==='confirm'?'confirm':review[option.id]==='conditional'?'conditional':'settled';
+  }
+  function reviewLabel(requirement, option, review) {
+    const kind=reviewKind(requirement,option,review);
+    if(kind==='choose')return 'You choose this course';
+    if(!review||!option||option.provider==='University')return '';
+    if(kind==='confirm')return 'Confirm with school';
+    if(kind==='conditional'){
+      // The provider (not the school) publishes this match; the school decides when it evaluates the transcript.
+      if(option.evidenceType==='provider-published-equivalency')return 'Counts if the school confirms this '+text(option.provider)+'-published match for your program';
+      const condition=conditionText(option);return condition?'Counts if: '+condition:'Counts if the school approves it';
+    }
+    return 'Published match for this degree';
+  }
   function mappingEvidence(row, option, sources, group) {
     if (group === 'unmapped') return row.placementReason === 'excluded-source' ? 'Source not included' : row.placementReason === 'conditional-gap' ? 'Conditional match excluded' : 'Course match needed';
     if (group === 'universityRequired') return 'School requirement';
@@ -350,7 +371,7 @@
         ...(creditView.balance && typeof row.nativeRequirementCredits === 'number' ? {nativeRequirementCredits:row.nativeRequirementCredits,creditBalanceDerived:creditView.balance.balanceRequirementIds.includes(row.requirementId)} : {}),
         ...(group === 'unmapped' ? {courseUrl:null,providerUrl:null,providerLinkLabel:''} : links(record || option,provider,courseCatalog)),
         evidenceUrl:source.map(item => safeURL(item.url)).find(Boolean) || (group === 'unmapped' ? null : safeURL(option.url)),
-        evidenceLabel:mappingEvidence(row,option,source,group),
+        evidenceLabel:(group!=='completed'&&!['confirmed','reported'].includes(row.status)&&(group!=='unmapped'||reviewKind(requirement,option,null)==='choose')&&reviewLabel(requirement,option,reviewMap(program)))||mappingEvidence(row,option,source,group),
         conditions:unique([...list(row.conditions),...list(option.conditions),text(row.notes),text(row.prerequisiteNotes),text(requirement?.prerequisiteNotes)]),
         status:group === 'completed' ? row.status : progressState(row,option,program,record,group) === 'in-progress' ? 'in-progress' : row.status,
         progressState:progressState(row,option,program,record,group),
@@ -373,5 +394,5 @@
     const curriculum=curriculumHierarchy(draft,sections(draft,allocations),allocations);
     return {groups,totals,progress:progressLedger(draft),sections:curriculum.sections,curriculumIssues:curriculum.issues};
   }
-  return Object.freeze({build,progress,visibleRows,courseLinks:(course,catalog)=>links(course,course?.provider,catalog)});
+  return Object.freeze({build,progress,visibleRows,reviewKind,reviewLabel,reviewMap,courseLinks:(course,catalog)=>links(course,course?.provider,catalog)});
 }));

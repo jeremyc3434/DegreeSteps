@@ -118,6 +118,12 @@ function sorted(list){
   }[filters.sort]||(()=>0);
   return [...list].sort((a,b)=>by(a,b)||Number(needsConfirmation(a))-Number(needsConfirmation(b))||a.title.localeCompare(b.title)||a.school.localeCompare(b.school));
 }
+// A plan that opens while it needs school confirmation: say how many rows are unsettled and what to ask first.
+function confirmNote(p){
+  const r=info(p).rows,open=r?(r.choose||0)+(r.conditional||0)+(r.confirm||0):0;
+  const detail=r&&open?esc(open+' of '+(open+(r.settled||0))+' courses to check with the school')+(r.settled?' · '+esc(r.settled+' settled'):''):'Some courses need checking with the school';
+  return '<p class="start-confirm-note" id="start-confirm-'+esc(p.id)+'"><strong>'+detail+'.</strong> Each one is labelled in your plan.</p>';
+}
 function card(p){
   const s=info(p).start,cost=costText(p),pct=s&&s.total?Math.round(s.outside/s.total*100):0,fmt=(p.modalities||[]).map(m=>formats[m]||m).join(' · ');
   const f=fit(p),badges=[...new Set([f.competencyBased===true?'Competency-based (CBE)':'',f.selfPaced===true?'Self-paced':f.selfPaced===false?'Term-based':'',f.billing?f.billingLabel||billingLabels[f.billing]:'',...(f.requirements||[]).map(item=>item.label),...(P.requirementBadges?.(f)||[])].filter(Boolean))];
@@ -130,6 +136,7 @@ function card(p){
     +(s?'<div class="start-bar" role="img" aria-label="'+esc(s.outside+' of '+s.total+' '+unit(p)+' can come from low-cost courses')+'"><span style="width:'+pct+'%"></span></div>':'')
     +(s?'<p class="start-college-work"><strong>'+esc(s.university)+'</strong> '+unit(p)+' at the university in this plan</p>':''))
     +(P.requirementsHTML?.(f,{compact:true})||'')
+    +(canBuild(p)&&needsConfirmation(p)?confirmNote(p):'')
     +(canBuild(p)?'<div class="start-card-actions"><a class="start-primary" data-build-plan="'+esc(p.id)+'" href="'+esc(personalReady(p)?personalLink(p):creditsUrl(p))+'">'+(personalReady(p)?'Review my plan':'Build this plan')+'</a>'
     +(info(p).page?'<a class="start-text-link" href="'+esc(info(p).page)+'">See every course</a>':'')+'</div>'
     :'<p class="start-request-note" id="start-request-'+esc(p.id)+'"><strong>Not ready to build yet.</strong> '+esc(info(p).questions?.[0]||'Some of the school’s published rules for this plan are still being confirmed.')+'</p>'
@@ -141,8 +148,9 @@ function chipGroup(id,name,options,current){
 }
 function renderDegree(){
   queuePersonal();
-  const list=sorted(rows.filter(matches)),pending=list.filter(needsConfirmation).length;
-  $('start-count').textContent=list.length?list.length+' degree'+(list.length===1?'':'s')+(pending?' · '+(list.length-pending)+' ready to build · '+pending+' need'+(pending===1?'s':'')+' school confirmation':''):'No degrees match. Try fewer filters.';
+  const list=sorted(rows.filter(matches)),built=list.filter(canBuild).length,pending=list.filter(p=>canBuild(p)&&needsConfirmation(p)).length,blocked=list.length-built;
+  // Plans that need school confirmation are buildable when only course rows are unsettled; the rest wait on a school rule.
+  $('start-count').textContent=list.length?list.length+' degree'+(list.length===1?'':'s')+(pending||blocked?' · '+built+' ready to build'+(pending?' ('+pending+' need'+(pending===1?'s':'')+' school confirmation)':'')+(blocked?' · '+blocked+' not ready yet':''):''):'No degrees match. Try fewer filters.';
   $('start-results').innerHTML=list.slice(0,limit).map(card).join('')||'<div class="start-empty"><p>No degree plan matches these choices yet.</p><button type="button" class="start-secondary" id="start-clear">Clear filters</button> <a href="request-plan.html">Build from a degree link</a></div>';
   $('start-more').hidden=list.length<=limit;
   chipGroup('start-subjects','subject',Object.entries(index.subjects).filter(([id])=>rows.some(p=>(info(p).subjects||[]).includes(id))),filters.subject);
@@ -237,10 +245,10 @@ window.addEventListener('pageshow',event=>{if(event.persisted)refreshPersonal();
   const step=params.get('step');
   // Deep links that name a plan skip straight to step 2.
   const named=idOK(params.get('plan'))?params.get('plan'):idOK(params.get('usePlan'))?params.get('usePlan'):idOK(params.get('program'))?params.get('program'):'';
-  // A deep link opens step 2 only for a plan the portal will open (any catalog link to it). A plan that still needs
-  // school confirmation is shown on step 1 with its request action instead.
+  // A deep link opens step 2 only for a plan the portal will open (any catalog link to it). A plan still blocked by a
+  // school-level rule is shown on step 1 with its request action instead.
   const sameSchool=p=>!params.get('school')||p.school===params.get('school');
-  const chosen=named&&published.find(p=>p.id===named&&sameSchool(p)),requested=named&&!chosen&&rows.find(p=>p.id===named&&sameSchool(p));
+  const chosen=named&&(catalog.pathways||[]).find(p=>p.id===named&&openIds.has(p.id)&&P.availability(p).canChoose&&sameSchool(p)),requested=named&&!chosen&&rows.find(p=>p.id===named&&sameSchool(p));
   if(params.get('q'))filters.q=params.get('q').slice(0,80);
   if(index.subjects[params.get('subject')])filters.subject=params.get('subject');
   if(levels[params.get('level')])filters.level=params.get('level');
@@ -258,7 +266,7 @@ window.addEventListener('pageshow',event=>{if(event.persisted)refreshPersonal();
   if(chosen){openCredits(chosen);return;}
   if(step==='quiz'){renderQuiz();document.title='1-minute quiz — DegreeSteps';show('quiz');return;}
   $('start-q').value=filters.q;
-  if(requested)$('start-error').textContent='That plan still needs school confirmation, so it can’t be built yet. You can request it below.',$('start-error').hidden=false;
+  if(requested)$('start-error').textContent='That plan isn’t ready to build yet: one of the school’s rules for it still has to be confirmed. You can request it below.',$('start-error').hidden=false;
   else if(named&&!chosen)$('start-error').textContent='That degree plan isn’t available right now. Pick another below.',$('start-error').hidden=false;
   renderDegree();show('degree');
 }catch(error){$('start-loading').hidden=true;$('start-error').hidden=false;$('start-error').textContent=error.message;}})();

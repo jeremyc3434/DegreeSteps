@@ -249,9 +249,10 @@ $('program-dialog').addEventListener('close',()=>restoreFocus?.isConnected&&rest
  $('program-college-tip').querySelector('div').innerHTML=sources.sources.filter(source=>['asu-ulc','tel','cpa-credits','outlier'].includes(source.id)).map(source=>'<p><a href="credit-sources/'+encodeURIComponent(source.id)+'/">'+esc(source.name)+'</a><small>'+esc(source.creditBasis)+'</small></p>').join('');
  catalog=await DegreeProgramCatalog.loadIndex(DegreeProgramCatalog.merge(loaded[0],loaded[1]));
  if(typeof DegreeProgramCatalog.publishedPlans!=='function'||catalog.publicationIndex?.available===false)throw Error('We couldn’t load the reviewed degree plans. Reload to try again. Your saved plan is safe.');
- // A student chooses only a complete publication-ready plan. Unfinished
- // research stays in the research workflow rather than becoming a dead end.
- const published=DegreeProgramCatalog.publishedPlans(catalog).filter(p=>P.availability(p).canChoose),publishedIds=new Set(published.map(p=>p.id));personalPublished=publishedIds;
+ // A student chooses only a plan the portal opens (the same sets as DegreeProgramCatalog.openablePlanIds): a
+ // publication-ready plan, or a complete plan whose only open items are course-level and labelled row by row ("Needs
+ // school confirmation"). Plans blocked by a school-level rule stay in the research workflow.
+ const published=[...DegreeProgramCatalog.publishedPlans(catalog),...(typeof DegreeProgramCatalog.confirmationPlans==='function'?DegreeProgramCatalog.confirmationPlans(catalog):[])].filter(p=>P.availability(p).canChoose),publishedIds=new Set(published.map(p=>p.id));personalPublished=publishedIds;
  rows=degreeStepsPublishedFinderRows(published,catalog);
  try{const r=await fetch('data/plan-freshness.json');const value=r.ok?await r.json():null;freshness=value?.plans&&typeof value.plans==='object'&&!Array.isArray(value.plans)?value.plans:{};}catch{freshness={};}
  for(const [id,entry]of Object.entries(index.plans)){const s=entry.start;if(Number.isFinite(s?.outside)&&Number.isFinite(s?.university)&&Number.isFinite(s?.total)&&s.total>0)splits.set(id,{outside:s.outside,university:s.university,total:s.total});}
