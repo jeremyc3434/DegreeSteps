@@ -89,7 +89,21 @@ test('a bounded invalid manifest scan returns a continuation past the rejected s
  const first=await f.call('/api/templates?limit=1',{user:null});assert.equal(first.status,200);assert.deepEqual(first.body.items,[]);assert(first.body.nextCursor);assert.equal(checks,96);
  const second=await f.call('/api/templates?limit=1&cursor='+encodeURIComponent(first.body.nextCursor),{user:null});assert.equal(second.status,200);assert.deepEqual(second.body.items.map(item=>item.id),[valid]);assert.equal(second.body.nextCursor,null);assert.equal(checks,101);
 });
-test('atomic distinct-request quota also protects missing-key queues and leaves no orphan template spam',async t=>{const f=fixture(t),results=await Promise.all(Array.from({length:30},(_,n)=>request(f,{programName:'Distinct degree '+n})));assert.equal(results.filter(r=>r.status===202).length,20);assert.equal(results.filter(r=>r.status===429).length,10);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,20);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM degree_templates').get().n,20);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);const repeated=await request(f,{programName:'Distinct degree 0'});assert.equal(repeated.status,202);assert.equal(repeated.body.reused,true);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,20);});
+test('atomic distinct-request quota also protects missing-key queues and leaves no orphan template spam',async t=>{
+ // Concurrent requests need not finish in input order. Make the first input lose
+ // the quota race so retries cannot accidentally depend on digest scheduling.
+ let releaseFirst,completedOthers=0;const firstMayProceed=new Promise(resolve=>{releaseFirst=resolve;});
+ const f=fixture(t,{TEMPLATE_FIND_EXISTING:async input=>{if(input.programName==='Distinct degree 0')await firstMayProceed;return null;}});
+ const attempts=Array.from({length:30},(_,n)=>({programName:'Distinct degree '+n}));
+ const results=await Promise.all(attempts.map(async(input,n)=>{try{return await request(f,input);}finally{if(n!==0&&++completedOthers===attempts.length-1)releaseFirst();}}));
+ assert.equal(results.filter(r=>r.status===202).length,20);assert.equal(results.filter(r=>r.status===429).length,10);
+ assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,20);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM degree_templates').get().n,20);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);
+ assert.equal(results[0].status,429);
+ const acceptedIndex=results.findIndex(r=>r.status===202),repeated=await request(f,attempts[acceptedIndex]);
+ assert.equal(repeated.status,202);assert.equal(repeated.body.reused,true);assert.equal(repeated.body.template.id,results[acceptedIndex].body.template.id);assert.equal(repeated.body.request.id,results[acceptedIndex].body.request.id);
+ assert.equal((await request(f,attempts[0])).status,429,'A previously rejected distinct request cannot bypass the exhausted quota.');
+ assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,20);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM degree_templates').get().n,20);assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);
+});
 
 test('canonical names preserve international letters and reject punctuation-only identities',async t=>{const f=fixture(t),a=await request(f,{schoolName:'東京大学',programName:'経済学',url:undefined}),b=await request(f,{schoolName:'京都大学',programName:'経済学',url:undefined});assert.equal(a.status,202);assert.equal(b.status,202);assert.notEqual(a.body.template.id,b.body.template.id);assert.equal((await request(f,{schoolName:'---',programName:'...'})).status,400);});
 
