@@ -2380,7 +2380,7 @@
       "url": "https://degreesteps.com/degree-plans/",
       "minimum": 0,
       "checkedAt": null,
-      "count": 137,
+      "count": 138,
       "status": "plan-identities",
       "scope": "Outside courses named in DegreeSteps degree plans, with the provider, course code and source links each plan publishes. Credit recommendations and school acceptance require review."
     }
@@ -4506,7 +4506,9 @@
       "url": "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
       "code": null,
       "mappingCode": null,
-      "codeAliases": [],
+      "codeAliases": [
+        "SOPH-0062"
+      ],
       "credits": null,
       "creditSystem": null,
       "creditBasis": "not-listed",
@@ -4518,7 +4520,12 @@
       "checkedAt": "2026-11-02T20:58:22+00:00",
       "recommendationStatus": "requires-review",
       "mappingStatus": "source-listing",
-      "mappedCourseIds": []
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "wgu-bscs-sophia-7110-v236",
+        "wgu-bsda-independent-soph-0062-20261125",
+        "wgu-bsda-java-current-syllabus-20261125"
+      ]
     },
     {
       "id": "sophia-743ed630451e88abc4",
@@ -14136,6 +14143,36 @@
         "wgu-bspm-study-4429-v114",
         "wgu-bsscom-study-4429-v114",
         "wgu-bsswe-study-4424-v242"
+      ]
+    },
+    {
+      "id": "studycom-plan-sdcm0218",
+      "provider": "Study.com",
+      "providerId": "studycom",
+      "title": "Computer Science 204: Database Programming",
+      "url": "https://study.com/academy/course/computer-science-204-database-programming.html",
+      "code": "SDCM-0218",
+      "mappingCode": "SDCM-0218",
+      "codeAliases": [
+        "Computer Science 204"
+      ],
+      "credits": 3,
+      "creditSystem": "semester",
+      "creditBasis": "plan-course-identity",
+      "subject": null,
+      "assessment": null,
+      "price": null,
+      "priceNote": "Membership and/or course fees apply; check the provider’s current terms.",
+      "sourceId": "plan-course-identities",
+      "checkedAt": null,
+      "recommendationStatus": "requires-review",
+      "mappingStatus": "plan-course-identity",
+      "mappedCourseIds": [],
+      "planIdentitySourceIds": [
+        "wgu-bscs-study-4424-v242",
+        "wgu-bsda-independent-sdcm-0218-20261125",
+        "wgu-bsda-study-4424-v242",
+        "wgu-bsit-study-4424-v242"
       ]
     }
   ]

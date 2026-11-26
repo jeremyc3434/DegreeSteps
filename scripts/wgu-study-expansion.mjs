@@ -49,9 +49,14 @@ export async function loadStudyExpansion(){
 
 export function applyStudyExpansion(provider,packet){
   validateStudyExpansion(packet);assert.equal(provider.provider,'Study.com');const next=structuredClone(provider);
-  for(const source of packet.sources){const i=next.sources.findIndex(item=>item.id===source.id);if(i<0)next.sources.push(structuredClone(source));else assert.deepEqual(next.sources[i],source,'A provider source revision cannot silently change');}
-  for(const course of packet.courses){const i=next.courses.findIndex(item=>item.code===course.code),{provider:_provider,...facts}=course;if(i<0)next.courses.push(structuredClone(facts));else next.courses[i]={...next.courses[i],...structuredClone(facts)};}
-  next.courses.sort((a,b)=>a.code.localeCompare(b.code));return next;
+  for(const source of packet.sources){assert(next.sources.filter(item=>item.id===source.id).length<=1,'A reviewed source must occur exactly once');const i=next.sources.findIndex(item=>item.id===source.id);if(i<0)next.sources.push(structuredClone(source));else assert.deepEqual(next.sources[i],source,'A provider source revision cannot silently change');}
+  for(const course of packet.courses){assert(next.courses.filter(item=>item.code===course.code).length<=1,'A reviewed original course must occur exactly once');const i=next.courses.findIndex(item=>item.code===course.code),{provider:_provider,...facts}=course;if(i<0)next.courses.push(structuredClone(facts));else next.courses[i]={...next.courses[i],...structuredClone(facts)};}
+  // Other independently reviewed batches may append their own courses. Their
+  // position belongs to that batch too: sorting the entire shared library made
+  // an already-applied review fail --check merely because CS204 was appended.
+  // Missing owned records are appended in the packet's stable order; applying
+  // this review again preserves every existing record and array position.
+  return next;
 }
 
 /** A university's label/identifier disagreement is held rather than guessed away. */

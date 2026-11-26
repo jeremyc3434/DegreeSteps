@@ -1,0 +1,102 @@
+{
+  "kind": "tesu-business-pathway-batch-review",
+  "version": 1,
+  "checkedOn": "2026-11-25",
+  "reviewer": "DegreeSteps source review",
+  "method": "Review of the current official TESU degree and individual course pages through the web search connector. Shared general-education, Professional Business Requirements, residency, transfer and grade facts are reused from the reviewed TESU kit only where the new degree independently names the same requirements. No receiving-course approval is inferred from a provider title or the provider's approved status.",
+  "publicationPromotionAllowed": false,
+  "programs": [
+    {
+      "slug": "bsba-marketing",
+      "shortName": "Marketing",
+      "title": "B.S.B.A. in Marketing",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-marketing/",
+      "capture": "content/source-captures/60df9ea927fc193a.txt",
+      "requiredCount": 1,
+      "areaCourses": [
+        ["MKT-4110", "Marketing Research"],
+        ["MKT-4790", "Applied Marketing Practices"],
+        ["MKT-3060", "Creating and Implementing the Electronic Enterprise"],
+        ["MKT-3350", "New Product Development and Marketing"],
+        ["MKT-4410", "Marketing with Digital and Social Media"],
+        ["MAN-4320", "Small Business Management"]
+      ],
+      "prerequisites": {"MKT-4410": ["MKT-3060"]},
+      "prerequisiteNotes": {"MKT-4410": "The formal prerequisite block prints MAR-3060. The same current page links MKT-3060 by its full title in the advisory. This baseline includes that named course before MKT-4410; the original MAR-3060 spelling remains recorded rather than becoming an outside-course equivalency."},
+      "originalPrerequisiteCodes": {"MKT-4410": ["MAR-3060"]},
+      "advisoryNotes": {"MKT-3060": "The university permits this subject to be classified as marketing or management depending on the program. This degree explicitly lists it in the Marketing area of study."},
+      "unresolved": []
+    },
+    {
+      "slug": "bsba-human-resources-organizational-management",
+      "shortName": "Human Resources/Organizational Management",
+      "title": "B.S.B.A. in Human Resources/Organizational Management",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-human-resources-organizational-management",
+      "capture": "content/source-captures/08ba94f0898450bf.txt",
+      "requiredCount": 3,
+      "areaCourses": [
+        ["MAN-3310", "Human Resources Management"],
+        ["MAN-3110", "Organizational Behavior"],
+        ["PSY-3600", "Organizational Theory"],
+        ["PSY-3630", "Industrial Psychology"],
+        ["SOC-3620", "Sociology of Work"],
+        ["MAN-4250", "Advanced Organizational Management"]
+      ],
+      "prerequisites": {"MAN-3310": ["MAN-2100"], "PSY-3630": ["SOC-1010"]},
+      "prerequisiteNotes": {"PSY-3630": "The published prerequisite is PSY-1010 or SOC-1010. The baseline uses SOC-1010 in general education; it does not require both courses."},
+      "originalPrerequisiteCodes": {"PSY-3630": ["PSY-1010 or SOC-1010"]},
+      "advisoryNotes": {
+        "MAN-3110": "The course may be classified as PSY-3610 or MAN-3110 depending on the degree. This degree explicitly requires MAN-3110; a psychology classification is not substituted.",
+        "PSY-3600": "Introductory psychology knowledge is advisory. The proposed free-elective baseline includes PSY-1010 without treating it as a separate formal prerequisite.",
+        "PSY-3630": "The catalog lists e-Pack delivery. This distance-learning University choice does not assert an online section or an outside provider award.",
+        "SOC-3620": "An introductory social-science course is advisory; SOC-1010 is already allocated in the general-education block."
+      },
+      "unresolved": []
+    },
+    {
+      "slug": "bsba-operations-management",
+      "shortName": "Operations Management",
+      "title": "B.S.B.A. in Operations Management",
+      "url": "https://tesu.smartcatalogiq.com/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/operations-management/",
+      "capture": "content/source-captures/05e3cc2635a24240.txt",
+      "requiredCount": 2,
+      "areaCourses": [
+        ["OPM-3010", "Operations Management"],
+        ["APS-4020", "Applied Quality Management"],
+        ["OPM-4150", "Logistics"],
+        ["CIS-3010", "Management Information Systems"],
+        ["MAN-4350", "Project Management"],
+        ["OPM-4200", "Supply Chain Management"]
+      ],
+      "prerequisites": {"OPM-3010": ["STA-2010", "MAN-2100"], "OPM-4150": ["OPM-3010", "CIS-3010"], "OPM-4200": ["OPM-4150"]},
+      "prerequisiteNotes": {"OPM-4200": "The formal prerequisite block requires OPM-4110 and OPM-4150. OPM-4150 is in this ledger. Current completion or a university-approved replacement for OPM-4110 remains unresolved; APS-4020 is not declared equivalent."},
+      "originalPrerequisiteCodes": {"OPM-4200": ["OPM-4110", "OPM-4150"]},
+      "unresolvedPrerequisiteCodes": {"OPM-4200": ["OPM-4110"]},
+      "advisoryNotes": {},
+      "unresolved": ["OPM-4200 formally requires OPM-4110 and OPM-4150. The current degree lists APS-4020, but no current OPM-4110 offering or documented substitution was established. Resolve OPM-4110 or a university-approved area-of-study selection before enrolling in this sequence; APS-4020 is not assumed equivalent."]
+    }
+  ],
+  "sharedCreditDistribution": {"totalCredits": 120, "generalEducation": 45, "professionalBusiness": 42, "areaOfStudy": 18, "freeElectives": 15},
+  "sharedUniversityPolicySourceIds": ["tesu-accounting-business-policy-2026-11-18", "tesu-accounting-residency-2026-11-18", "tesu-accounting-transfer-2026-11-18", "tesu-accounting-alternative-cap-2026-11-18", "tesu-accounting-grades-2026-11-18"],
+  "sharedAwards": "Only published-status institution-wide school-submitted Sophia rows and current independently identified Study.com or UPI provider candidates are reused. Their evidence remains conditional, their original source and receiving quantities remain separate, and provider eligibility restrictions remain attached. Community maps and other-program scopes do not enter the new programs.",
+  "coursePages": {
+    "MKT-4110": "mkt-marketing/4000/mkt-4110",
+    "MKT-4790": "mkt-marketing/4000/mkt-4790",
+    "MKT-3060": "mkt-marketing/3000/mkt-3060",
+    "MKT-3350": "mkt-marketing/3000/mkt-3350",
+    "MKT-4410": "mkt-marketing/4000/mkt-4410",
+    "MAN-4320": "man-management/4000/man-4320",
+    "MAN-3310": "man-management/3000/man-3310",
+    "MAN-3110": "man-management/3000/man-3110",
+    "PSY-3600": "psy-psychology/3000/psy-3600",
+    "PSY-3630": "psy-psychology/3000/psy-3630",
+    "SOC-3620": "soc-sociology/3000/soc-3620",
+    "MAN-4250": "man-management/4000/man-4250",
+    "OPM-3010": "opm-operations-management/3000/opm-3010",
+    "APS-4020": "aps-applied-science-and-technology/4000/aps-4020",
+    "OPM-4150": "opm-operations-management/4000/opm-4150",
+    "CIS-3010": "cis-computer-information-systems/3000/cis-3010",
+    "MAN-4350": "man-management/4000/man-4350",
+    "OPM-4200": "opm-operations-management/4000/opm-4200"
+  }
+}

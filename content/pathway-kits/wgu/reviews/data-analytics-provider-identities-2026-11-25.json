@@ -1,0 +1,223 @@
+{
+  "version": 1,
+  "id": "wgu-data-analytics-independent-identities-2026-11-25",
+  "checkedOn": "2026-11-25",
+  "scope": "Independent original provider identities only. Exact receiving awards remain in the separate university agreement review.",
+  "reusedSophiaBundle": "content/reuse/wgu-sophia-provider-identities.json",
+  "studentCreditsAwarded": 0,
+  "notes": [
+    "Current provider pages establish credits, source level and offering identity. They do not state a dated ACE version/recommendation interval for these reviewed course definitions; no such interval is inferred.",
+    "Math108 is one original source course even where WGU separately lists more than one receiving requirement.",
+    "The current linked Java syllabus identifies SOPH0062 and CS1101, three lower-division semester hours, current course-effective wording and passing score70."
+  ],
+  "sources": [
+    {
+      "id": "wgu-bsda-independent-sdcm-0210-20261125",
+      "provider": "Study.com",
+      "kind": "provider",
+      "title": "Math 108: Discrete Mathematics independent original course identity and semester quantity",
+      "url": "https://study.com/academy/course/math-108-discrete-mathematics.html",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-25",
+      "captureMethod": "native-public-web-rendered-extract",
+      "rawBodyCaptured": false,
+      "extractedTextSha256": "24c488feff9592613662f7b8e28ee90d114fdb8434f6ae8c3508e366cdb6a7ab",
+      "capture": "content/source-captures/24c488feff959261.txt",
+      "courseCodes": [
+        "SDCM-0210",
+        "Math 108"
+      ],
+      "observed": {
+        "aceId": "SDCM-0210",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Online Discrete Math Course for College Credit\n3 lower level credits\nEarn 3 transferable credits in our ACE-recommended Discrete Mathematics course (SDCM-0210), the math foundation of CS.\nStudy.com's Discrete Mathematics course (Math 108) is an online, self-paced way to earn college credit. It's ACE-recommended for 3 transferable semester hours (ACE Course ID: SDCM-0210).\nCredits: 3 transferable, lower-division semester hours, recommended by ACE (Course ID: SDCM-0210)\nPassing grade: 70% or higher on your final course grade (chapter tests count for two-thirds, the final exam for one-third)\nPrerequisites: No prerequisites required for this course\n",
+      "toolReference": "turn554view0"
+    },
+    {
+      "id": "wgu-bsda-independent-sdcm-0218-20261125",
+      "provider": "Study.com",
+      "kind": "provider",
+      "title": "Computer Science 204: Database Programming independent original course identity and semester quantity",
+      "url": "https://study.com/academy/course/computer-science-204-database-programming.html",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-25",
+      "captureMethod": "native-public-web-rendered-extract",
+      "rawBodyCaptured": false,
+      "extractedTextSha256": "05ee6505a7b29c3f93ec41c1ad46a8a80ec9fb22257a63afdc9f8d084217f77c",
+      "capture": "content/source-captures/05ee6505a7b29c3f.txt",
+      "courseCodes": [
+        "SDCM-0218",
+        "Computer Science 204"
+      ],
+      "observed": {
+        "aceId": "SDCM-0218",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Computer Science 204: Database Programming\n3 lower level credits\nEarn 3 transferable credits in our ACE-recommended database programming course (SDCM-0218).\nCredits: 3 transferable, lower-division semester hours, recommended by ACE (Course ID: SDCM-0218)\nGraded work: Three hands-on SQL assignments and open-book chapter tests, with no final exam\nPassing grade: 70% or higher on your final course grade (assignments two-thirds, chapter tests one-third)\nPrerequisites: There are no prerequisites for Database Programming\n",
+      "toolReference": "turn554view1"
+    },
+    {
+      "id": "wgu-bsda-independent-soph-0062-20261125",
+      "provider": "Sophia",
+      "kind": "provider",
+      "title": "Introduction to Java Programming independent original course identity and semester quantity",
+      "url": "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-25",
+      "captureMethod": "native-public-web-rendered-extract",
+      "rawBodyCaptured": false,
+      "extractedTextSha256": "573134540e0a644fb52e28d285e3fc5b2219d057eb6bc64a257b310c6b57a3ef",
+      "capture": "content/source-captures/573134540e0a644f.txt",
+      "courseCodes": [
+        "SOPH-0062",
+        "CS1101"
+      ],
+      "observed": {
+        "aceId": "SOPH-0062",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "reviewedExtract": "Introduction to Java Programming\nTake Introduction to Java Programming at your own pace\nSophia Learning's Introduction to Java Programming is designed to introduce the basics of computer programming from data types, to creating classes, to algorithms and testing.\n3.0\nsemester credits\nhttps://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf\nThis is a pass/fail course. You must complete 11 Challenges (formative assessments), 3 Milestones (summative assessments), and 1 Touchstone (project-based or written assessments) with an overall score of 70% or better.\n",
+      "toolReference": "turn554view2"
+    },
+    {
+      "id": "wgu-bsda-java-current-syllabus-20261125",
+      "provider": "Sophia",
+      "kind": "provider",
+      "title": "Current Sophia-linked Java syllabus: CS1101, SOPH0062, three lower-division semester hours",
+      "url": "https://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation"
+      ],
+      "checkedOn": "2026-11-25",
+      "capture": "content/source-captures/2560ef9c778b09f8.txt",
+      "sha256": "2560ef9c778b09f886c081ac54f7e52dd18c991cc70b3a02c857c461e52ea72e",
+      "captureMethod": "origin-pdf-text-extraction",
+      "rawBodyCaptured": false,
+      "courseCodes": [
+        "SOPH-0062",
+        "CS1101"
+      ],
+      "observed": {
+        "aceId": "SOPH-0062",
+        "offered": true,
+        "sourceCredits": 3,
+        "sourceCreditSystem": "semester",
+        "sourceUpper": false
+      },
+      "providerCourseEffectiveDates": "September 2025 - Present",
+      "retrieval": "The current provider course page links this exact PDF. Root retrieved the official PDF and extracted its text; no recommendation-version dates are invented."
+    }
+  ],
+  "courses": [
+    {
+      "provider": "Study.com",
+      "code": "SDCM-0210",
+      "title": "Math 108: Discrete Mathematics",
+      "providerCourseCode": "Math 108",
+      "codeAliases": [
+        "Math 108"
+      ],
+      "aceId": "SDCM-0210",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "url": "https://study.com/academy/course/math-108-discrete-mathematics.html",
+      "identitySourceIds": [
+        "wgu-bsda-independent-sdcm-0210-20261125"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "wgu-bsda-independent-sdcm-0210-20261125"
+        ]
+      },
+      "sourceCreditBasis": "Current independent original-provider evidence establishes this exact course and original semester-hour quantity. Receiving competency units are separate.",
+      "identityReviewId": "wgu-data-analytics-independent-identities-2026-11-25",
+      "identityCheckedOn": "2026-11-25",
+      "providerCoursePassingPercent": 70
+    },
+    {
+      "provider": "Study.com",
+      "code": "SDCM-0218",
+      "title": "Computer Science 204: Database Programming",
+      "providerCourseCode": "Computer Science 204",
+      "codeAliases": [
+        "Computer Science 204"
+      ],
+      "aceId": "SDCM-0218",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "url": "https://study.com/academy/course/computer-science-204-database-programming.html",
+      "identitySourceIds": [
+        "wgu-bsda-independent-sdcm-0218-20261125"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "wgu-bsda-independent-sdcm-0218-20261125"
+        ]
+      },
+      "sourceCreditBasis": "Current independent original-provider evidence establishes this exact course and original semester-hour quantity. Receiving competency units are separate.",
+      "identityReviewId": "wgu-data-analytics-independent-identities-2026-11-25",
+      "identityCheckedOn": "2026-11-25",
+      "providerCoursePassingPercent": 70
+    },
+    {
+      "provider": "Sophia",
+      "code": "SOPH-0062",
+      "title": "Introduction to Java Programming",
+      "providerCourseCode": "CS1101",
+      "codeAliases": [
+        "CS1101"
+      ],
+      "aceId": "SOPH-0062",
+      "sourceCredits": 3,
+      "sourceCreditSystem": "semester",
+      "sourceUpper": false,
+      "url": "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
+      "identitySourceIds": [
+        "wgu-bsda-independent-soph-0062-20261125",
+        "wgu-bsda-java-current-syllabus-20261125"
+      ],
+      "sourceCreditStatus": "verified",
+      "sourceCreditVerification": {
+        "credits": 3,
+        "creditSystem": "semester",
+        "sourceIds": [
+          "wgu-bsda-independent-soph-0062-20261125",
+          "wgu-bsda-java-current-syllabus-20261125"
+        ]
+      },
+      "sourceCreditBasis": "Current independent original-provider evidence establishes this exact course and original semester-hour quantity. Receiving competency units are separate.",
+      "identityReviewId": "wgu-data-analytics-independent-identities-2026-11-25",
+      "identityCheckedOn": "2026-11-25",
+      "providerCoursePassingPercent": 70,
+      "providerCourseEffectiveDates": "September 2025 - Present"
+    }
+  ]
+}

@@ -699,6 +699,34 @@
       "coursePage": "https://www.sophia.org/online-courses/social-science/us-history-ii/"
     },
     {
+      "id": "shared-sophia--sophia-ace-composition-i-period-2026-11-19",
+      "kind": "ace",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+      "checkedOn": "2026-11-19",
+      "scope": "ACE indexed course row supplies English Composition I recommendation period.",
+      "roles": [
+        "recommendation-period"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "wgu-global-sophia--sophia-ace-composition-i-period-2026-11-19",
+      "upstreamOriginalSourceId": "sophia-ace-composition-i-period-2026-11-19",
+      "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json"
+    },
+    {
+      "id": "shared-sophia--sophia-ace-current-organization-2026-11-19",
+      "kind": "ace",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checkedOn": "2026-11-19",
+      "scope": "Independent ACE organization listing supplies current recommendation dates for Business Law, Finance, and English Composition II.",
+      "roles": [
+        "recommendation-period"
+      ],
+      "provider": "Sophia",
+      "originalSourceId": "wgu-global-sophia--sophia-ace-current-organization-2026-11-19",
+      "upstreamOriginalSourceId": "sophia-ace-current-organization-2026-11-19",
+      "copiedFrom": "content/reuse/wgu-sophia-provider-identities.json"
+    },
+    {
       "id": "straighterline-oosl-0002-ace-exhibit-20261120",
       "title": "ACE National Guide: College Algebra (OOSL-0002), original semester hours and current recommendation",
       "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=e44c3360-2ffb-ee11-a1ff-000d3a5d49ac&oid=80099b28-9016-e811-810f-5065f38bf0e1&org=StraighterLine",
@@ -1553,9 +1581,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
               "codeAliases": [
                 "ENG1001"
               ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "sophia-soph-0015-syllabus-2026-11-20"
               ],
@@ -1567,6 +1598,16 @@
                   "sophia-soph-0015-syllabus-2026-11-20"
                 ]
               },
+              "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "semester",
               "receivingCode": "ENG 101",
@@ -7436,9 +7477,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
               "codeAliases": [
                 "ENG1001"
               ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "sophia-soph-0015-syllabus-2026-11-20"
               ],
@@ -7450,6 +7494,16 @@
                   "sophia-soph-0015-syllabus-2026-11-20"
                 ]
               },
+              "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "semester",
               "receivingCode": "ENG 101",
@@ -7555,9 +7609,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-ii/",
+              "aceId": "SOPH-0030",
+              "providerCourseCode": "ENG1002",
               "codeAliases": [
                 "ENG1002"
               ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "sophia-soph-0030-syllabus-2026-11-20"
               ],
@@ -7569,6 +7626,16 @@
                   "sophia-soph-0030-syllabus-2026-11-20"
                 ]
               },
+              "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+              "courseVersion": 3,
+              "recommendationStart": "2025-11-01",
+              "recommendationEnd": "2028-10-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-current-organization-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "semester",
               "receivingCode": "ENG 102",
@@ -11619,9 +11686,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-i/",
+              "aceId": "SOPH-0015",
+              "providerCourseCode": "ENG1001",
               "codeAliases": [
                 "ENG1001"
               ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "sophia-soph-0015-syllabus-2026-11-20"
               ],
@@ -11633,6 +11703,16 @@
                   "sophia-soph-0015-syllabus-2026-11-20"
                 ]
               },
+              "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+              "courseVersion": 4,
+              "recommendationStart": "2024-04-01",
+              "recommendationEnd": "2027-03-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-composition-i-period-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "semester",
               "receivingCode": "ENG 101",
@@ -11738,9 +11818,12 @@
               "sourceCredits": 3,
               "sourceCreditSystem": "semester",
               "url": "https://www.sophia.org/online-courses/english-and-communication/english-composition-ii/",
+              "aceId": "SOPH-0030",
+              "providerCourseCode": "ENG1002",
               "codeAliases": [
                 "ENG1002"
               ],
+              "sourceUpper": false,
               "identitySourceIds": [
                 "sophia-soph-0030-syllabus-2026-11-20"
               ],
@@ -11752,6 +11835,16 @@
                   "sophia-soph-0030-syllabus-2026-11-20"
                 ]
               },
+              "sourceCreditBasis": "Exact original Sophia/ACE identity and semester quantity from independently reviewed provider or accreditor records; receiving-school mappings are excluded.",
+              "courseVersion": 3,
+              "recommendationStart": "2025-11-01",
+              "recommendationEnd": "2028-10-31",
+              "recommendationPeriodSourceIds": [
+                "shared-sophia--sophia-ace-current-organization-2026-11-19"
+              ],
+              "identityCheckedOn": "2026-11-19",
+              "identityReviewId": "gcu-sophia-review-2026-11-19",
+              "providerCoursePassingPercent": 70,
               "credits": 3,
               "creditSystem": "semester",
               "receivingCode": "ENG 102",

@@ -2,11 +2,11 @@
 import {resolve} from 'node:path';
 import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
-import {clone,list,slug,sourceRefs,awardFields,inScope,matchRequirement,rowStatus,programUnits,publishableReview,parsePlacement,sourceIndex,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root,slotPieces,slotUpperOnly,slotRowsFor} from './lib.mjs';
+import {clone,list,slug,sourceRefs,awardFields,inScope,requirementMatcher,rowStatus,programUnits,publishableReview,parsePlacement,sourceIndex,loadKit,kitDirs,exists,resolveKitDir,writeJSON,parseArgs,isMain,root,slotPieces,slotUpperOnly,slotRowsFor,institutionChoicesFor,courseCodeKey} from './lib.mjs';
 import {verifyKit,formatFindings} from './verify.mjs';
 
 /** Fields that exist only in the kit (grounding/review metadata) and never enter a compiled model. */
-const kitOnlyRequirementFields=['quotes','institutionOptions','optionRows'];
+const kitOnlyRequirementFields=['quotes','institutionOptions','optionRows','namedInstitutionChoicesReviewed'];
 
 export function deriveMappingEvidence(kit,program,row,modalities){
   const map=row.universityMapRecord;
@@ -66,9 +66,11 @@ export function placedOptions(kit,program,requirement,model){
   });
 }
 /** In-scope, published equivalency rows for one requirement, in stable order. */
-export function rowsFor(kit,program,requirement){
+export function rowsFor(kit,program,requirement,joined){
+  if(joined)return joined.get(requirement.id)||[];
+  const match=requirementMatcher(program);
   const order=row=>row.placements?.[program.slug]?.order??Number.MAX_SAFE_INTEGER;
-  return list(kit.equivalencies.equivalencies).filter(row=>rowStatus(row)==='published'&&inScope(row,program,kit)&&matchRequirement(row,program)?.id===requirement.id)
+  return list(kit.equivalencies.equivalencies).filter(row=>rowStatus(row)==='published'&&inScope(row,program,kit)&&match(row)?.id===requirement.id)
     .sort((a,b)=>order(a)-order(b)||a.provider.localeCompare(b.provider)||a.code.localeCompare(b.code)||a.id.localeCompare(b.id));
 }
 export function compileProgram(kit,program){
@@ -84,20 +86,55 @@ export function compileProgram(kit,program){
   Object.assign(model,clone(program.modelFields||{}));
   // Per-model source lists (modelSourceIds) let a school publish each model with exactly its own sources.
   if(program.modelSourceIds){const index=sourceIndex(kit,program);model.sources=program.modelSourceIds.map(id=>{const entry=index.get(id);if(!entry)throw Error(`Unknown model source ${id} in ${program.slug}`);return clone(entry.source);});}
+  const joined=new Map(),match=requirementMatcher(program);
+  for(const row of list(kit.equivalencies.equivalencies))if(rowStatus(row)==='published'&&inScope(row,program,kit)){
+    const requirement=match(row);if(!requirement)continue;
+    const rows=joined.get(requirement.id)||[];rows.push(row);joined.set(requirement.id,rows);
+  }
+  for(const rows of joined.values())rows.sort((a,b)=>(a.placements?.[program.slug]?.order??Number.MAX_SAFE_INTEGER)-(b.placements?.[program.slug]?.order??Number.MAX_SAFE_INTEGER)||a.provider.localeCompare(b.provider)||a.code.localeCompare(b.code)||a.id.localeCompare(b.id));
+  const institutionalChoices=institutionChoiceAssignments(kit,program);
   model.requirements=program.requirements.flatMap(requirement=>{
-    if(requirement.slot)return compileSlot(kit,program,requirement,modalities);
+    if(requirement.slot)return compileSlot(kit,program,requirement,modalities,institutionalChoices.get(requirement.id));
     const compiled=clone(requirement);for(const field of kitOnlyRequirementFields)delete compiled[field];
-    compiled.options=requirement.optionRows?placedOptions(kit,program,requirement,model):[...rowsFor(kit,program,requirement).map(row=>compileOption(kit,program,requirement,row,modalities)),...list(requirement.institutionOptions).map(choice=>compileInstitutionOption(kit,program,choice))];
+    compiled.options=requirement.optionRows?placedOptions(kit,program,requirement,model):[...rowsFor(kit,program,requirement,joined).map(row=>compileOption(kit,program,requirement,row,modalities)),...list(requirement.institutionOptions).map(choice=>compileInstitutionOption(kit,program,choice))];
     return compiled;
   });
   return model;
 }
+/** A named university course can appear in only one slot of a program. Maximum
+ * bipartite matching reserves one fallback per eligible piece where feasible,
+ * including overlapping broad and narrow pools; additional alternatives remain
+ * available once in a slot for which they were explicitly reviewed. */
+function institutionChoiceAssignments(kit,program,requirements=list(program.requirements)){
+  if(!list(kit.school.institutionChoicePools).length)return new Map();
+  const slots=requirements.filter(requirement=>requirement.slot).flatMap(requirement=>slotPieces(requirement.credits,programUnits(kit,program)).map((credits,index)=>({requirement,index,choices:institutionChoicesFor(kit,program,requirement,{credits})})));
+  const courseSlots=new Map(),eligibleSlots=new Map();
+  for(const [index,slot]of slots.entries())for(const course of slot.choices){const code=courseCodeKey(course.code);if(!eligibleSlots.has(code))eligibleSlots.set(code,[]);eligibleSlots.get(code).push({index,course});}
+  const assign=(index,seen)=>{
+    for(const course of slots[index].choices){
+      const code=courseCodeKey(course.code);if(seen.has(code))continue;seen.add(code);
+      if(!courseSlots.has(code)||assign(courseSlots.get(code),seen)){courseSlots.set(code,index);return true;}
+    }
+    return false;
+  };
+  for(let index=0;index<slots.length;index++)assign(index,new Set());
+  const assigned=slots.map(()=>[]),used=new Set(courseSlots.keys());
+  for(const [code,index]of courseSlots)assigned[index].push(eligibleSlots.get(code).find(entry=>entry.index===index).course);
+  for(const [code,eligible]of eligibleSlots){
+    if(used.has(code))continue;
+    const target=eligible.reduce((best,entry)=>assigned[entry.index].length<assigned[best.index].length?entry:best);
+    assigned[target.index].push(target.course);used.add(code);
+  }
+  const out=new Map();for(const [index,slot]of slots.entries()){if(!out.has(slot.requirement.id))out.set(slot.requirement.id,[]);out.get(slot.requirement.id)[slot.index]=assigned[index];}
+  return out;
+}
 /**
- * An open slot compiles to one requirement per course-sized choice. Each choice is an allocation slot (the registry adds
- * the school's "choose a course" placeholder) and carries only the outside awards an explicit slotPlacements rule allows.
+ * An open slot compiles to one requirement per course-sized choice. Outside awards need an explicit slotPlacements
+ * rule; named university fallbacks need a reviewed pool. The registry supplies a placeholder to the remaining choices.
  */
-export function compileSlot(kit,program,requirement,modalities){
+export function compileSlot(kit,program,requirement,modalities,institutionalChoices){
   const units=programUnits(kit,program),pieces=slotPieces(requirement.credits,units),upper=slotUpperOnly(requirement.slot.label||requirement.title);
+  institutionalChoices??=institutionChoiceAssignments(kit,program,[requirement]).get(requirement.id)||[];
   // The choices of one block are interchangeable, so each eligible outside course is offered in exactly one of them
   // (round-robin over the same-sized choices). Every eligible course stays available in the block, a planned set of up
   // to one course per choice always fits, and the published data does not repeat each course once per choice.
@@ -124,6 +161,9 @@ export function compileSlot(kit,program,requirement,modalities){
       if(rule.condition)option.conditions=[...list(option.conditions),rule.condition];
       return option;
     });
+    const choices=institutionalChoices[index]||[];
+    compiled.options.push(...choices.map(choice=>compileInstitutionOption(kit,program,choice)));
+    if(choices.length)compiled.namedInstitutionChoicesReviewed=true;
     return compiled;
   });
 }

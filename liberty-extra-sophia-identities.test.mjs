@@ -13,6 +13,8 @@ const paths={
  activeSources:'content/pathway-kits/wgu/school.json',
  activeSnapshot:'content/curricula/snapshots/wgu/sophia-business-current-web.txt'
 };
+// Preserve the exact input reviewed on November 24 as the active school kit gains new programs.
+const historicalInputs={'content/pathway-kits/wgu/school.json':'content/curricula/snapshots/wgu/school-provider-input-2026-11-24.json'};
 const review=read('content/catalog/liberty-extra-sophia-identities-reviewed-2026-11-24.json');
 const global=read(paths.global),original=read(paths.original),receiving=read(paths.receiving);
 const sources=new Map(review.sources.map(source=>[source.id,source]));
@@ -24,7 +26,7 @@ const expected=[
 ];
 const usDate=iso=>iso.split('-').map(Number).filter((_,index)=>index>0).join('/')+'/'+Number(iso.slice(0,4));
 
-test('local rereview binds unchanged original files and preserves source metadata and dates',()=>{
+test('local rereview binds its immutable inputs and preserves current source metadata and original dates',()=>{
  assert.equal(review.version,1);
  assert.equal(review.id,'liberty-extra-sophia-identities-2026-11-24');
  assert.equal(review.checkedOn,'2026-11-24');
@@ -32,7 +34,7 @@ test('local rereview binds unchanged original files and preserves source metadat
  assert.equal(review.networkRetrievalPerformed,false);
  assert.equal(review.studentCreditsAwarded,0);
  assert.deepEqual(Object.keys(review.inputFingerprints).sort(),[...Object.values(paths),'content/source-captures/c934c7f174a51a06.txt','content/source-captures/c934c7f174a51a06.json'].sort());
- for(const [path,fingerprint] of Object.entries(review.inputFingerprints))assert.equal(hash(path),fingerprint,path);
+ for(const [path,fingerprint] of Object.entries(review.inputFingerprints))assert.equal(hash(historicalInputs[path]||path),fingerprint,path);
  const originals=new Map([...global.sources,...receiving.sources,...read(paths.activeSources).sources].map(source=>[source.id,source]));
  assert.equal(sources.size,review.sources.length);
  for(const source of review.sources){

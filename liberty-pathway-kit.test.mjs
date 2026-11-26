@@ -1,6 +1,7 @@
 /** Liberty on the Pathway Factory: registry parity for all 13 models, publication, guards, scope honesty and the new kit features. */
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {join,resolve} from 'node:path';
 import {readFile} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
@@ -10,6 +11,22 @@ import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 import {migrate,factoryInput,parity,files,electiveCondition} from './scripts/pathway-factory/migrate-liberty.mjs';
 
 const dir=join(kitsRoot,'liberty'),kit=await loadKit(dir),{doc,documents}=compileKit(kit);
+// Only these exact awards gained the reviewed online associate placement on November 25.
+const interdisciplinaryAAAwards=new Set([
+ 'liberty-online-baseline-soph-0016-to-envr-215',
+ 'liberty-online-baseline-soph-0022-to-hius-221',
+ 'liberty-online-baseline-soph-0025-to-hius-222',
+ 'liberty-online-baseline-soph-0027-to-phil-201',
+ 'liberty-online-baseline-soph-0065-to-phil-210',
+ 'liberty-online-baseline-soph-0030-to-engl-102',
+ 'liberty-online-baseline-soph-0015-to-engl-101',
+ 'liberty-online-baseline-soph-0024-to-coms-101',
+ 'liberty-online-baseline-soph-0020-to-ethc-101',
+ 'liberty-online-baseline-soph-0002-to-biol-102',
+ 'liberty-online-baseline-soph-0048-to-psyc-101',
+ 'liberty-online-baseline-soph-0001-to-math-121',
+ 'liberty-online-baseline-sdcm-0047-to-cstu-101'
+]);
 const currentDataAsOf='2026-11-25'; // Evaluation time, not a rewrite of Liberty catalog/source dates.
 const registry=await readJSON(resolve(root,'dist/data/curriculum-registry.json'));
 const guards=(await import('./content/pathway-kits/liberty/guards.mjs')).checks,guard=name=>guards.find(check=>check.name===name);
@@ -74,6 +91,20 @@ test('institution-wide rows are never wider than the data and reuse one award ac
   const rows=kit.equivalencies.equivalencies,wide=rows.filter(row=>row.scope.all);
   const placements=new Map(),rowIndex=new Map(rows.map(row=>[row.id,row])),supersessions=[];
   const reviewedPrograms=['history-bs-online','human-services-bs-online','psychology-addictions-online'];
+  const campusReviewId='liberty-residential-psychology-baseline-2026-11-25';
+  const reviewedCampusSupersessions=[
+    ['sophia-soph-0015-to-engl-101-2','engl-101'],
+    ['sophia-soph-0024-to-coms-101-2','coms-101'],
+    ['sophia-soph-0030-to-engl-102-2','engl-102'],
+    ['sophia-soph-0001-to-math-121-2','math-121'],
+    ['study-com-sdcm-0047-to-cstu-101-2','cstu-101'],
+    ['sophia-soph-0020-to-ethc-101-3','ethc-101'],
+    ['sophia-soph-0009-to-arts-209-5','arts-209'],
+    ['sophia-soph-0002-to-biol-102-3','biol-102'],
+    ['sophia-soph-0048-to-psyc-101-5','psyc-101'],
+    ['sophia-soph-0078-to-psyc-210-6','psyc-210'],
+    ['study-com-sdcm-0043-to-psyc-255-3','psyc-255']
+  ];
   const expectedSupersessions=[
     ['sophia-soph-0015-to-engl-101','engl-101',reviewedPrograms,'published'],
     ['sophia-soph-0024-to-coms-101','coms-101',reviewedPrograms,'published'],
@@ -83,9 +114,10 @@ test('institution-wide rows are never wider than the data and reuse one award ac
     ['study-com-sdcm-0047-to-cstu-101','cstu-101',reviewedPrograms,'published'],
     ['sophia-soph-0022-to-hius-221-8','hius-221',[reviewedPrograms[0]],'conditional'],
     ['sophia-soph-0025-to-hius-222-8','hius-222',[reviewedPrograms[0]],'conditional']
-  ].flatMap(([id,requirement,programs,evidence])=>programs.map(program=>[id+'|'+program+'|'+requirement,evidence]));
+  ].flatMap(([id,requirement,programs,evidence])=>programs.map(program=>[id+'|'+program+'|'+requirement,evidence])).concat(reviewedCampusSupersessions.map(([id,requirement])=>[id+'|psychology-bs-residential|'+requirement,'published']));
   const expected=new Map(expectedSupersessions),masters=rows.filter(row=>row.id.startsWith('liberty-online-baseline-'));
   assert.equal(masters.length,30);
+  assert.deepEqual(masters.filter(row=>row.scope.programs.includes('interdisciplinary-aa-online')).map(row=>row.id).sort(),[...interdisciplinaryAAAwards].sort());
   const packetPaths=['content/catalog/sophia-liberty-baseline-identities-reviewed-2026-11-18.json','content/catalog/liberty-extra-sophia-identities-reviewed-2026-11-24.json','content/curricula/snapshots/liberty/health-upper-provider-identities-2026-11-18-reviewed.json','content/catalog/liberty-psychology-study-identities-reviewed-2026-11-24.json','content/catalog/liberty-core-sophia-identities-reviewed-2026-11-24.json','content/catalog/liberty-core-study-identities-reviewed-2026-11-24.json','content/catalog/liberty-upper-psychology-study-identities-reviewed-2026-11-24.json'];
   const packets=new Map(await Promise.all(packetPaths.map(async path=>[path,await readJSON(resolve(root,path))]))),guide=await readJSON(resolve(root,'content/transfer-awards/snapshots/liberty-online-guide-awards-reviewed-2026-11-18.json'));
   const digest=source=>String(source?.sha256||source?.sourceContentHash||'').replace(/^sha256:/,'');
@@ -107,11 +139,30 @@ test('institution-wide rows are never wider than the data and reuse one award ac
       assert.equal(row.evidence,expected.get(key));
       const replacement=list(req.optionRows).map((entry,index)=>({entry:parsePlacement(entry),index})).find(({entry})=>{
         const candidate=rowIndex.get(entry.row);
-        return masters.includes(candidate)&&candidate.authored===true&&candidate.status==='published'&&inScope(candidate,p,kit)&&candidate.provider===row.provider&&candidate.code===row.code&&candidate.receivingCode===row.receivingCode&&candidate.credits===row.credits&&(candidate.creditSystem||candidate.impliedCreditSystem)===(row.creditSystem||row.impliedCreditSystem);
+        return (masters.includes(candidate)||candidate?.mappingReviewId===campusReviewId)&&candidate.authored===true&&candidate.status==='published'&&inScope(candidate,p,kit)&&candidate.provider===row.provider&&candidate.code===row.code&&candidate.receivingCode===row.receivingCode&&candidate.credits===row.credits&&(candidate.creditSystem||candidate.impliedCreditSystem)===(row.creditSystem||row.impliedCreditSystem);
       });
       assert.ok(replacement,`${row.id} is institution-wide but missing from ${p.slug}/${req.id}`);
       const candidate=rowIndex.get(replacement.entry.row),model=doc.models.find(model=>model.id===p.modelId),compiled=model.requirements.find(value=>value.id===req.id),option=compiled.options[replacement.index],sources=new Map(model.sources.map(source=>[source.id,source]));
-      assert.deepEqual(candidate.scope.programs,reviewedPrograms);assert.deepEqual(candidate.scope.levels,['bachelor']);assert.deepEqual(candidate.scope.modalities,['online']);assert.deepEqual(candidate.scope.catalogs,['2026–2027']);
+      if(candidate.mappingReviewId===campusReviewId){
+        assert.deepEqual(candidate.scope,{programs:['psychology-bs-residential'],levels:['bachelor'],modalities:['campus'],catalogs:['2026–2027']});
+        const stamp=option.residentialPsychologyAwardReview,packet=packets.get(stamp?.originalIdentityReviewPath),course=packet?.courses.find(course=>(course.code||course.aceId)===option.code);
+        assert.ok(stamp&&packet&&course,option.code+' retains a separately reviewed original course');
+        assert.equal(stamp.id,campusReviewId);assert.equal(stamp.checkedOn,'2026-11-25');assert.equal(stamp.campusAwardRowId,row.id);assert.equal(stamp.individualAwardsCreated,0);
+        assert.equal(option.provider,candidate.provider);assert.equal(option.code,candidate.code);assert.equal(option.receivingCode,candidate.receivingCode);assert.equal(option.credits,candidate.credits);assert.equal(option.creditSystem,'semester');
+        assert.equal(option.sourceCredits,course.sourceCredits);assert.equal(option.sourceCreditSystem,course.sourceCreditSystem);assert.equal(option.sourceUpper,course.sourceUpper);assert.equal(String(option.courseVersion),String(course.aceVersion));
+        assert.equal(option.providerCourseCode,course.providerCourseCode);assert.equal(option.recommendationStart,course.recommendationStart);assert.equal(option.recommendationEnd,course.recommendationEnd);
+        assert.equal(option.evidence,'published');assert.equal(option.evidenceType,'official-receiving-school-equivalency');assert.equal(option.mappingResearchClosed,true);assert.equal(option.receivingMapStatus,'published-residential-award-reviewed-placement');
+        assert.equal(option.eligibilityReview.eligibleToStart,true);assert.equal(option.sourceCreditEvidence.status,'reviewed');
+        assert(option.identitySourceIds.length>0&&option.identitySourceIds.every(id=>sources.has(id)&&!option.sourceIds.includes(id)&&['ace','provider','accreditor'].includes(sources.get(id).kind)));
+        assert(option.identitySourceIds.some(id=>sources.get(id).kind==='ace'));assert(option.identitySourceIds.some(id=>sources.get(id).kind==='provider'));
+        const receiving=sources.get(stamp.currentCampusSourceId);assert(receiving);assert.equal(receiving.modality,'campus');assert.equal(receiving.checked,'2026-11-25');assert(receiving.url.startsWith('https://www.liberty.edu/residential/'));assert(option.sourceIds.includes(receiving.id));
+        const body=await readFile(resolve(root,receiving.capture),'utf8');assert.equal(createHash('sha256').update(body).digest('hex'),stamp.currentCampusCaptureSha256);
+        assert(candidate.quotes.some(quote=>quote.sourceId===receiving.id&&body.includes(quote.text)&&quote.text.startsWith(option.code+' ')&&quote.text.includes(' '+option.receivingCode+' ')));
+        const placement=option.degreePlacementEvidence;assert.equal(placement.modelId,model.id);assert.equal(placement.catalogYear,'2026-2027');assert.equal(placement.modality,'campus');assert.equal(placement.requirementId,req.id);assert.equal(placement.receivingCode,row.receivingCode);assert.equal(placement.credits,req.credits);assert.equal(placement.creditSystem,'semester');assert.equal(placement.placementType,'exact-named-requirement');
+        assert.equal(model.reviewedBaselineChoices.optionSelections[req.id],option.id);supersessions.push(key);continue;
+      }
+      const includesAssociate=interdisciplinaryAAAwards.has(candidate.id);
+      assert.deepEqual(candidate.scope.programs,includesAssociate?[...reviewedPrograms,'interdisciplinary-aa-online']:reviewedPrograms);assert.deepEqual(candidate.scope.levels,includesAssociate?['bachelor','associate']:['bachelor']);assert.deepEqual(candidate.scope.modalities,['online']);assert.deepEqual(candidate.scope.catalogs,['2026–2027']);
       assert.equal(option.provider,candidate.provider);assert.equal(option.code,candidate.code);assert.equal(option.receivingCode,candidate.receivingCode);assert.equal(option.credits,candidate.credits);
       assert.equal(option.evidence,'published');assert.equal(option.evidenceType,'official-receiving-school-equivalency');assert.equal(option.mappingResearchClosed,true);assert.match(option.receivingMapStatus,/^published-/);
       const stamp=option.baselineAwardReview,packet=packets.get(stamp?.reviewPath),course=packet?.courses.find(course=>(course.code||course.aceId)===option.code),award=guide.awards.find(award=>award.id===stamp?.receivingAwardId);

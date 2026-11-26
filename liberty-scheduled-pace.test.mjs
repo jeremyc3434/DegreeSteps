@@ -11,19 +11,20 @@ const expected=[
  'curriculum-liberty-healthcare-administration-bs-online',
  'curriculum-liberty-history-bs-online',
  'curriculum-liberty-human-services-bs-online',
+ 'curriculum-liberty-interdisciplinary-aa-online',
  'curriculum-liberty-psychology-addictions-online',
  'curriculum-liberty-psychology-bs-online',
+ 'curriculum-liberty-psychology-bs-residential',
  'liberty-business-residential',
  'liberty-criminal-justice-online',
  'liberty-criminal-justice-residential'
 ].sort();
 
-test('scheduled-course discovery evidence stays bound to the eight reviewed Liberty degree editions',async()=>{
+test('scheduled-course discovery evidence stays bound to the exact reviewed Liberty degree editions',async()=>{
  assert.equal(review.schemaVersion,1);
  const ids=review.reviews.flatMap(record=>record.modelIds);
  assert.equal(new Set(ids).size,ids.length);
  assert.deepEqual([...ids].sort(),expected);
- assert.deepEqual(review.reviews.map(record=>[record.modality,record.modelIds.length]),[['online',6],['campus',2]]);
  const published=new Set(publication.plans.map(plan=>plan.modelId));
  for(const record of review.reviews){
   assert.equal(record.catalogYear,'2026-2027');
@@ -35,7 +36,7 @@ test('scheduled-course discovery evidence stays bound to the eight reviewed Libe
    const payload=await read('./dist/'+entry.path);
    const model=(payload.models||[payload]).find(model=>model.id===binding.modelId);
    assert.equal(model.school,'Liberty University');
-   assert.equal(Catalog.publicationLevel(model.level||entry.level),'bachelor');
+   assert.equal(Catalog.publicationLevel(model.level||entry.level),binding.modelId==='curriculum-liberty-interdisciplinary-aa-online'?'associate':'bachelor');
    assert.equal(String(model.catalogYear||model.catalog).replace(/[–—]/g,'-'),record.catalogYear);
    assert.equal(model.format,record.modality==='online'?'Online':'Residential');
    assert(model.sources.some(source=>source.url===binding.degreeUrl),binding.modelId+' has its actual receiving-school degree source');

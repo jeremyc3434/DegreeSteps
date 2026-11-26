@@ -104,6 +104,11 @@
  const alternativeProvider=provider=>['sophia','studycom','clep','dsst','saylor','straighterline','modernstates','davar','coopersmith','aleks','aleksindependentuse','upistudy','csm','seemore','seemorecorestrategiesformathematics'].includes(norm(provider));
  function inheritEquivalencies(model,reviewed){
   const next=validateModel(model),sources=new Map(next.sources.map(s=>[s.id,s])),canonicalSources=new Map(),originModels=list(next.importedSourceModels);let sourceSequence=0,inheritedAny=false;
+  // Prefer the one exact official ledger before broader conditional candidates.
+  // This retains its program-specific proof when several degrees share a course code.
+  const pool=list(reviewed),ledger=requirements=>list(requirements).map(r=>[norm(r.code),r.credits,Boolean(r.institutionalOnly)]).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b))),targetLedger=JSON.stringify(ledger(next.requirements));
+  const exact=pool.filter(original=>norm(original.school)===norm(next.school)&&(original.creditSystem||'semester')===next.creditSystem&&degreeBand(original.level)===degreeBand(next.level)&&norm(original.title)===norm(next.title)&&String(original.catalog||original.catalogYear||'')===String(next.catalog)&&norm(original.format)===norm(next.format)&&original.totalCredits===next.totalCredits&&JSON.stringify(ledger(original.requirements))===targetLedger);
+  const ordered=exact.length===1?[exact[0],...pool.filter(original=>original!==exact[0])]:pool;
   if(next.importedSourceModels!==undefined&&(!Array.isArray(next.importedSourceModels)||originModels.some(id=>typeof id!=='string'||!id||id.length>200)||new Set(originModels).size!==originModels.length))throw Error('The imported source provenance could not be read.');
   const sourceOrigin=(source,original,id)=>{const previous=source.privateImportOrigin,origin=typeof previous?.model==='string'?previous.model:Number.isInteger(previous?.modelIndex)?list(original.importedSourceModels)[previous.modelIndex]:original.id,identifier=typeof previous?.identifier==='string'?previous.identifier:id;if(typeof origin!=='string'||!origin)throw Error('The imported source provenance could not be read.');let modelIndex=originModels.indexOf(origin);if(modelIndex<0){modelIndex=originModels.length;originModels.push(origin);}return{modelIndex,identifier};};
   // Keep complete, immutable source evidence once. A source shared across
@@ -111,8 +116,9 @@
   const stable=value=>Array.isArray(value)?value.map(stable):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(key=>[key,stable(value[key])])):value;
   const sourceKey=value=>{const body={...value};delete body.id;delete body.privateImportOrigin;return JSON.stringify(stable(body));};
   for(const source of next.sources)canonicalSources.set(sourceKey(source),source.id);
-  // originalSourceId is the immutable parent-packet label, not a local citation edge.
-  const invalidReference=Symbol('invalid-source-reference'),sourceReferenceKey=key=>/sourceIds?$/i.test(key)&&!/^originalSourceIds?$/i.test(key);
+  // Original and upstream-original labels name immutable parent-packet records,
+  // not local citation edges. Real sourceIds and page-keyed citations still close locally.
+  const invalidReference=Symbol('invalid-source-reference'),sourceReferenceKey=key=>/sourceIds?$/i.test(key)&&!/^(?:upstream)?originalSourceIds?$/i.test(key);
   const references=(value,found=new Set())=>{
    if(!value||typeof value!=='object')return found;
    for(const [key,entry]of Object.entries(value)){
@@ -143,7 +149,7 @@
   };
   for(const r of next.requirements){
    if(r.institutionalOnly||!r.code)continue;
-   for(const original of list(reviewed)){
+   for(const original of ordered){
     if(norm(original.school)!==norm(next.school)||(original.creditSystem||'semester')!==next.creditSystem||!degreeBand(original.level)||degreeBand(next.level)!==degreeBand(original.level))continue;
     const originalSources=new Map(list(original.sources).map(source=>[source.id,source]));
     for(const req of list(original.requirements))for(const option of list(req.options)){
@@ -155,7 +161,7 @@
      for(let i=0;i<pending.length;i++){const source=originalSources.get(pending[i]);if(!source||!https(source.url)){missingSource=true;break;}for(const id of references(source))if(!required.has(id)){required.add(id);pending.push(id);}}
      if(missingSource)continue;
      const aliases=new Map();
-     for(const id of required){const source=originalSources.get(id);if(!source)continue;const key=sourceKey(source);let local=canonicalSources.get(key);if(!local){do{local='audit-evidence-'+(++sourceSequence);}while(sources.has(local)||[...aliases.values()].includes(local));canonicalSources.set(key,local);}aliases.set(id,local);}
+     for(const id of required){const source=originalSources.get(id);if(!source)continue;const key=sourceKey(source);let local=canonicalSources.get(key);if(!local){do{local='ae-'+(++sourceSequence);}while(sources.has(local)||[...aliases.values()].includes(local));canonicalSources.set(key,local);}aliases.set(id,local);}
      for(const id of required){const source=originalSources.get(id),local=aliases.get(id);if(source&&local&&!sources.has(local))sources.set(local,{...remap(copy(source),aliases),id:local,privateImportOrigin:sourceOrigin(source,original,id)});}
      const added=remap(copy(option),aliases);added.evidence='conditional';added.conditions=list(added.conditions);r.options.push(added);inheritedAny=true;
     }

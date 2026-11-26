@@ -10,8 +10,23 @@ import {LocalD1} from './scripts/benchmark-scale.mjs';
 const root=import.meta.dirname,publicRoot=resolve(root,'outputs/cloudflare/public');
 const nativePath=resolve(root,'outputs/cloudflare/runtime/worker.mjs');
 const origin='https://native.synthetic.invalid';
-let serial=0;
+// Node retains every distinct ESM URL for the process lifetime. Importing a
+// fresh ?fixture= URL also retains that Worker's parsed public curriculum
+// packs, making this suite grow with every case. Compile the actual native
+// bundle once into a factory instead: each invocation has fresh lexical caches
+// which can be collected after its fixture, including mutated-artifact cases.
+const nativeSource=readFileSync(nativePath,'utf8');
+assert.equal((nativeSource.match(/^export default /gm)||[]).length,1,'The native bundle must have one Worker entry point');
+assert.equal((nativeSource.match(/import\("\.\/owner-business\.mjs"\)/g)||[]).length,1,'Resolve the actual lazy owner module relative to its build');
+assert(!/^import\s/m.test(nativeSource),'The native fixture expects the built self-contained entry module');
+const createNativeWorker=new Function('"use strict";\n'+nativeSource.replace('import("./owner-business.mjs")','import('+JSON.stringify(pathToFileURL(resolve(nativePath,'../owner-business.mjs')).href)+')').replace(/^export default /m,'return '));
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.mjs':'application/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.xlsx':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','.webp':'image/webp'};
+function assertNoReadyShortcut(result,message='This degree must not expose a ready-plan shortcut'){
+  // Compare small scalar types: a stale negative fixture must report a bounded
+  // failure instead of formatting an entire unexpected curriculum graph.
+  assert.equal(typeof result.sourcePlan,'undefined',message+' (sourcePlan)');
+  assert.equal(typeof result.existingPlan,'undefined',message+' (existingPlan)');
+}
 async function fixture(t,{database=false}={}){
   const assetCalls=[],external=[];
   const env={ASSETS:{async fetch(request){
@@ -25,16 +40,19 @@ async function fixture(t,{database=false}={}){
   }},PORTAL_AUTH_FETCH:async()=>{external.push('auth');throw Error('Native fixtures must not contact an identity provider');},AI_CONNECTIONS_FETCH:async()=>{external.push('claude');throw Error('Native fixtures must not contact Claude');}};
   if(database){env.DB=new LocalD1();t.after(()=>env.DB.close());}
   t.mock.method(globalThis,'fetch',async()=>{external.push('global');throw Error('Native fixtures must not perform external HTTP');});
-  const worker=(await import(pathToFileURL(nativePath).href+'?native-test='+serial++)).default;
+  const worker=createNativeWorker();
   const call=(path,options={})=>worker.fetch(new Request(origin+path,options),env,{waitUntil(){}});
   return{worker,env,call,assetCalls,external};
 }
 
-test('the native Worker separates public assets from server code instead of embedding the website',()=>{
+test('the native Worker separates public assets from server code instead of embedding the website',async()=>{
   const native=readFileSync(nativePath),managed=readFileSync(resolve(root,'outputs/site/dist/server/index.js'));
   assert(native.byteLength<1024*1024,'Keep the native module bounded as the public library grows');assert(native.byteLength<managed.byteLength/4);
   const source=native.toString();assert(source.includes('external:true')||source.includes('"external":true'));assert(!source.includes('Add your courses in one upload.</h1>'),'The private workspace document must live in the asset directory');
   assert(readFileSync(resolve(publicRoot,'import-courses.html'),'utf8').includes('Add your courses in one upload.'));
+  // Check the real ESM interface once without populating another public cache.
+  const worker=(await import(pathToFileURL(nativePath).href)).default;
+  for(const entry of ['fetch','queue','scheduled'])assert.equal(typeof worker[entry],'function');
 });
 
 test('native assets preserve the exact public routes, bytes, MIME types, HEAD and revalidation',async t=>{
@@ -64,32 +82,33 @@ test('native public degree resolution loads only the reviewed public build data 
   assert(f.assetCalls.some(call=>call.path==='/data/baseline-index.json'),'Known degrees use the build-time baseline index');
 });
 
-for(const [degreeUrl,modelId,total,outside,university,modality]of [
+for(const [degreeUrl,modelId,total,outside,university,modality,level='bachelor']of [
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/','liberty-business-residential',120,83,37,'campus'],
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/healthcare-administration-major-bs/healthcare-administration-online/','curriculum-liberty-healthcare-administration-bs-online',120,72,48,'online'],
-  ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/','curriculum-liberty-psychology-bs-online',120,78,42,'online']
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-online/','curriculum-liberty-psychology-bs-online',120,78,42,'online'],
+  ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','curriculum-liberty-interdisciplinary-aa-online',60,39,21,'online','associate']
 ])test('native exact Liberty catalog resolution preserves the saved degree and credit split: '+modelId,async t=>{
   const f=await fixture(t),lookup=url=>f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));
   const response=await lookup(degreeUrl);assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,true);
-  const plan=result.sourcePlan;assert(plan,'The native asset-backed lookup must open the existing course plan');assert.equal(plan.model.id,modelId);assert.deepEqual(plan.route.modalities,[modality]);assert.equal(plan.model.catalog.replace(/[–—]/g,'-'),'2026-2027');
+  const plan=result.sourcePlan;assert(plan,'The native asset-backed lookup must open the existing course plan');assert.equal(plan.qualityReady,true);assert.equal(plan.model.id,modelId);assert.equal(plan.model.level,level);assert.equal(plan.route.level,level);assert.deepEqual(plan.route.modalities,[modality]);assert.equal(plan.model.catalog.replace(/[–—]/g,'-'),'2026-2027');
   assert.equal(plan.summary.totalCredits,total);assert.equal(plan.summary.transferCredits,outside);assert.equal(plan.summary.universityCredits,university);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),total);assert(plan.model.sources.some(source=>source.url===degreeUrl));
-  const wrongCatalog=await lookup(degreeUrl+'?catalog=2025-2026');assert.equal(wrongCatalog.status,200);const rejected=await wrongCatalog.json();assert.equal(rejected.sourcePlan,undefined,'A different catalog must not inherit this baseline');assert.equal(rejected.existingPlan,undefined);
+  const wrongCatalog=await lookup(degreeUrl+'?catalog=2025-2026');assert.equal(wrongCatalog.status,200);const rejected=await wrongCatalog.json();assertNoReadyShortcut(rejected,'A different catalog must not inherit this baseline');
   assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'),'The native complete-plan shortcut requires the publication review');assert(f.assetCalls.some(call=>call.path==='/data/baseline-index.json'));assert(f.assetCalls.every(call=>call.path.startsWith('/data/')));assert.deepEqual(f.external,[]);
 });
 
 for(const [degreeUrl,title] of [
- ['https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/','Interdisciplinary Studies'],
+ ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-major-aa/business-aa-online/','Business'],
  ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','Psychology']
 ])test('native unpublished associate curriculum keeps its degree identity without a ready-plan shortcut: '+title,async t=>{
  const f=await fixture(t),response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:degreeUrl}));assert.equal(response.status,200);const result=await response.json();
- assert.equal(result.matched,true);assert.equal(result.target.schoolName,'Liberty University');assert.match(result.target.programName,new RegExp(title,'i'));assert.equal(result.target.level,'associate');assert.equal(result.target.modality,'online');assert.equal(result.target.catalogYear,'2026-2027');assert.equal(result.sourcePlan,undefined);assert.equal(result.existingPlan,undefined);assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'));assert.deepEqual(f.external,[]);
+ assert.equal(result.matched,true);assert.equal(result.target.schoolName,'Liberty University');assert.match(result.target.programName,new RegExp(title,'i'));assert.equal(result.target.level,'associate');assert.equal(result.target.modality,'online');assert.equal(result.target.catalogYear,'2026-2027');assertNoReadyShortcut(result,title+' A.A. retains its publication hold');assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'));assert.deepEqual(f.external,[]);
 });
 
 test('native exact WGU Human Resource Management uses its reviewed CU ledger and publication index',async t=>{
  const f=await fixture(t),url='https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html';
  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json(),plan=result.sourcePlan;assert.equal(result.matched,true);assert(plan);
  assert.equal(plan.model.id,'curriculum-wgu-catalog-2e49db64c32dfc79');assert.equal(plan.model.catalog,'202509');assert.equal(plan.model.creditSystem,'competency-unit');assert.equal(plan.model.totalCredits,117);assert.equal(plan.model.requirements.length,39);assert.equal(plan.model.requirements.reduce((sum,row)=>sum+row.credits,0),117);assert.equal(plan.summary.transferCredits,78);assert.equal(plan.summary.universityCredits,39);assert.deepEqual(plan.route.modalities,['online']);assert(f.assetCalls.some(call=>call.path==='/data/publication-index.json'));assert.deepEqual(f.external,[]);
- const mismatch=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=202605'}));assert.equal((await mismatch.json()).sourcePlan,undefined,'A different program edition must not inherit this CU ledger');
+ const mismatch=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=202605'}));assertNoReadyShortcut(await mismatch.json(),'A different program edition must not inherit this CU ledger');
 });
 
 test('native exact registry-route discovery rejects cross-school, award, parent and ownership mismatches',async t=>{
@@ -107,7 +126,7 @@ test('native exact registry-route discovery rejects cross-school, award, parent 
    if(change==='title')route.title='Psychology (A.A.) — Online';
    return Response.json(index);
   };
-  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,false,change);assert.equal(result.sourcePlan,undefined,change);assert.equal(result.existingPlan,undefined,change);assert.deepEqual(f.external,[]);
+  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const result=await response.json();assert.equal(result.matched,false,change);assertNoReadyShortcut(result,change);assert.deepEqual(f.external,[]);
  }
 });
 
@@ -120,7 +139,7 @@ test('missing, malformed and stale native publication indexes never expose a rea
    if(change==='malformed')return new Response('{invalid');
    const index=JSON.parse(readFileSync(resolve(publicRoot,'data/publication-index.json'),'utf8'));index.curriculumFingerprint='content-v1:'+'0'.repeat(16);return Response.json(index);
   };
-  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:'https://www.liberty.edu/government/bachelors/criminal-justice/'}));assert.equal(response.status,200);const result=await response.json();assert.equal(result.sourcePlan,undefined,change);assert.equal(result.existingPlan,undefined,change);assert.deepEqual(f.external,[]);
+  const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:'https://www.liberty.edu/government/bachelors/criminal-justice/'}));assert.equal(response.status,200);const result=await response.json();assertNoReadyShortcut(result,change);assert.deepEqual(f.external,[]);
  }
 });
 
@@ -134,7 +153,7 @@ test('missing, malformed and mismatched baseline artifacts cannot advertise a ca
     const index=JSON.parse(readFileSync(resolve(publicRoot,'data/baseline-index.json'),'utf8'));index.inputs['/planner.js']='0'.repeat(64);return Response.json(index);
   };
   const response=await f.call('/api/catalog/degree-link?'+new URLSearchParams({url:'https://www.liberty.edu/government/bachelors/criminal-justice/'}));
-  assert.equal(response.status,200,change);const body=await response.json();assert.equal(body.sourcePlan,undefined,change);assert.equal(body.existingPlan,undefined,change);assert.deepEqual(f.external,[]);
+  assert.equal(response.status,200,change);const body=await response.json();assertNoReadyShortcut(body,change);assert.deepEqual(f.external,[]);
  }
 });
 

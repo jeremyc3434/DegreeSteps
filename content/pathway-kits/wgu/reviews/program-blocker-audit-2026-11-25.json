@@ -1,0 +1,526 @@
+{
+  "version": 1,
+  "id": "wgu-program-blocker-audit-2026-11-25",
+  "checkedOn": "2026-11-25",
+  "baselineRevision": "80e1e47",
+  "scope": "Initial twenty modeled WGU degrees; baseline research audit only, no student credit awards.",
+  "method": [
+    "Match each canonical modelId to the existing publication-quality report.",
+    "Retain program-specific ledger/catalog and receiving agreement scope.",
+    "Reuse an independently reviewed provider identity only where this exact program publishes its own receiving award.",
+    "Do not identify a capstone from a final position, project title, similar degree or obsolete guide."
+  ],
+  "summary": {
+    "models": 20,
+    "publicationReady": 14
+  },
+  "programs": [
+    {
+      "slug": "accounting-bs",
+      "modelId": "curriculum-wgu-catalog-358f1e10651bf3d8",
+      "title": "Accounting – B.S.",
+      "catalog": "202503",
+      "totalCUs": 121,
+      "requirementCount": 40,
+      "currentProgramId": 191,
+      "currentProgramCode": "BSACC",
+      "publicationReady": false,
+      "blockingReasonCodes": [
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "capstoneRequirementIds": [],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": [
+        {
+          "code": "policy-unresolved",
+          "field": "institutionMinCredits",
+          "message": "Confirm how many credits must be earned at this university for this exact degree."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "DegreeSteps must review required-capstone applicability for this exact program before calculating its institutional minimum; the overall 75% ceiling is already source-backed."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+        }
+      ]
+    },
+    {
+      "slug": "business-management-bs",
+      "modelId": "curriculum-wgu-catalog-ecceaa488637ac83",
+      "title": "Business Management – B.S.",
+      "catalog": "202605",
+      "totalCUs": 110,
+      "requirementCount": 36,
+      "currentProgramId": null,
+      "currentProgramCode": null,
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bsmgt-business-management-capstone-written-project"
+      ],
+      "exactProgramReceivingReview": null,
+      "blockers": []
+    },
+    {
+      "slug": "communications-bs",
+      "modelId": "curriculum-wgu-catalog-f5987d0b65c06f56",
+      "title": "Communications – B.S.",
+      "catalog": "202510",
+      "totalCUs": 115,
+      "requirementCount": 38,
+      "currentProgramId": 218,
+      "currentProgramCode": "BSC",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bsc-communications-applied-learning-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "computer-science-bs",
+      "modelId": "curriculum-wgu-bs-computer-science-reviewed",
+      "title": "Computer Science – B.S.",
+      "catalog": "202611",
+      "totalCUs": 121,
+      "requirementCount": 39,
+      "currentProgramId": 261,
+      "currentProgramCode": "BSCS",
+      "publicationReady": false,
+      "blockingReasonCodes": [
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "capstoneRequirementIds": [],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": [
+        {
+          "code": "policy-unresolved",
+          "field": "institutionMinCredits",
+          "message": "Confirm how many credits must be earned at this university for this exact degree."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "WGU's current BSCS ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
+        }
+      ]
+    },
+    {
+      "slug": "cybersecurity-and-information-assurance",
+      "modelId": "curriculum-wgu-catalog-a4bbd78b1b3233b7",
+      "title": "Cybersecurity and Information Assurance",
+      "catalog": "202610",
+      "totalCUs": 122,
+      "requirementCount": 37,
+      "currentProgramId": 253,
+      "currentProgramCode": "BSCSIA",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bscsia-cybersecurity-and-information-assurance-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "finance-bs",
+      "modelId": "curriculum-wgu-catalog-d6925a8fbb6e8d9a",
+      "title": "Finance – B.S.",
+      "catalog": "202608",
+      "totalCUs": 121,
+      "requirementCount": 40,
+      "currentProgramId": 245,
+      "currentProgramCode": "BSFIN",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bsfin-finance-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "health-information-management-bs",
+      "modelId": "curriculum-wgu-catalog-bc26f6f5019c6ee3",
+      "title": "Health Information Management – B.S. (from the Leavitt School of Health)",
+      "catalog": "202612",
+      "totalCUs": 122,
+      "requirementCount": 36,
+      "currentProgramId": 262,
+      "currentProgramCode": "BSHIM",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bshim-health-information-management-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "health-science-bs",
+      "modelId": "curriculum-wgu-catalog-995901539a30b649",
+      "title": "Health Science – B.S.",
+      "catalog": "202406",
+      "totalCUs": 91,
+      "requirementCount": 28,
+      "currentProgramId": 167,
+      "currentProgramCode": "BSHS",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bshs-health-sciences-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "healthcare-administration-bs",
+      "modelId": "curriculum-wgu-catalog-94e68cf7b91dec17",
+      "title": "Healthcare Administration – B.S.",
+      "catalog": "202509",
+      "totalCUs": 110,
+      "requirementCount": 34,
+      "currentProgramId": 212,
+      "currentProgramCode": "BSHA",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bsha-healthcare-administration-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "human-resource-management-bs",
+      "modelId": "curriculum-wgu-catalog-2e49db64c32dfc79",
+      "title": "Human Resource Management – B.S.",
+      "catalog": "202509",
+      "totalCUs": 117,
+      "requirementCount": 39,
+      "currentProgramId": 209,
+      "currentProgramCode": "BSHR",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bshr-hrm-capstone"
+      ],
+      "exactProgramReceivingReview": null,
+      "blockers": []
+    },
+    {
+      "slug": "information-technology-management-bs",
+      "modelId": "curriculum-wgu-catalog-bf14bd14e87ae7aa",
+      "title": "Information Technology Management – B.S.",
+      "catalog": "202609",
+      "totalCUs": 112,
+      "requirementCount": 37,
+      "currentProgramId": 252,
+      "currentProgramCode": "BSITM",
+      "publicationReady": false,
+      "blockingReasonCodes": [
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "capstoneRequirementIds": [],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": [
+        {
+          "code": "policy-unresolved",
+          "field": "institutionMinCredits",
+          "message": "Confirm how many credits must be earned at this university for this exact degree."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "DegreeSteps must review required-capstone applicability for this exact program before calculating its institutional minimum; the overall 75% ceiling is already source-backed."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+        }
+      ]
+    },
+    {
+      "slug": "information-technology",
+      "modelId": "curriculum-wgu-catalog-d734fb4b04eded7c",
+      "title": "Information Technology",
+      "catalog": "202608",
+      "totalCUs": 110,
+      "requirementCount": 35,
+      "currentProgramId": 250,
+      "currentProgramCode": "BSIT",
+      "publicationReady": false,
+      "blockingReasonCodes": [
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "capstoneRequirementIds": [],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": [
+        {
+          "code": "policy-unresolved",
+          "field": "institutionMinCredits",
+          "message": "Confirm how many credits must be earned at this university for this exact degree."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "WGU's current BSIT ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
+        }
+      ]
+    },
+    {
+      "slug": "marketing-bs",
+      "modelId": "curriculum-wgu-catalog-689e417cff765fc9",
+      "title": "Marketing – B.S.",
+      "catalog": "202607",
+      "totalCUs": 112,
+      "requirementCount": 37,
+      "currentProgramId": 242,
+      "currentProgramCode": "BSMKT",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bsmkt-marketing-strategy-and-analytics"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "master-of-business-administration",
+      "modelId": "curriculum-wgu-catalog-b2a8a37d4fbedabd",
+      "title": "Master of Business Administration (MBA)",
+      "catalog": "201404",
+      "totalCUs": 34,
+      "requirementCount": 11,
+      "currentProgramId": null,
+      "currentProgramCode": null,
+      "publicationReady": false,
+      "blockingReasonCodes": [
+        "baseline-course-choices",
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "capstoneRequirementIds": [],
+      "exactProgramReceivingReview": null,
+      "blockers": [
+        {
+          "code": "policy-unresolved",
+          "field": "institutionMinCredits",
+          "message": "Confirm how many credits must be earned at this university for this exact degree."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "Confirm the student’s applicable program catalog; the official program-guide version is recorded above."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "WGU course identifiers are not printed in the guide; titles are retained without invented course codes."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "Confirm the required prior degree, applicable graduate transfer policy, admissions eligibility and catalog with WGU."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "No outside transfer pathway is asserted for this graduate degree."
+        },
+        {
+          "code": "baseline-course-choices",
+          "message": "A complete named, solver-checked baseline course plan is required."
+        }
+      ]
+    },
+    {
+      "slug": "project-management-bs",
+      "modelId": "curriculum-wgu-catalog-93e0bd6d0c7171ac",
+      "title": "Project Management – B.S.",
+      "catalog": "202607",
+      "totalCUs": 120,
+      "requirementCount": 39,
+      "currentProgramId": 243,
+      "currentProgramCode": "BSPM",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bspm-applied-project-management-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "psychology-bs",
+      "modelId": "curriculum-wgu-catalog-19be0ad2d1922f49",
+      "title": "Psychology – B.S.",
+      "catalog": "202404",
+      "totalCUs": 106,
+      "requirementCount": 34,
+      "currentProgramId": 147,
+      "currentProgramCode": "BSPSY",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bspsy-capstone-in-psychology"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "public-health-bs",
+      "modelId": "curriculum-wgu-catalog-1d1cb06c2d479685",
+      "title": "Public Health – B.S.",
+      "catalog": "202409",
+      "totalCUs": 104,
+      "requirementCount": 33,
+      "currentProgramId": 168,
+      "currentProgramCode": "BSPH",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bsph-public-health-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "software-engineering",
+      "modelId": "curriculum-wgu-catalog-3a9fedcacbfcccae",
+      "title": "Software Engineering",
+      "catalog": "202610",
+      "totalCUs": 120,
+      "requirementCount": 39,
+      "currentProgramId": 254,
+      "currentProgramCode": "BSSWE",
+      "publicationReady": false,
+      "blockingReasonCodes": [
+        "policy-unresolved",
+        "unresolved-research"
+      ],
+      "capstoneRequirementIds": [],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": [
+        {
+          "code": "policy-unresolved",
+          "field": "institutionMinCredits",
+          "message": "Confirm how many credits must be earned at this university for this exact degree."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
+        },
+        {
+          "code": "unresolved-research",
+          "field": null,
+          "message": "WGU's current BSSWE ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
+        }
+      ]
+    },
+    {
+      "slug": "supply-chain-and-operations-management-bs",
+      "modelId": "curriculum-wgu-catalog-4431e5205a7d441a",
+      "title": "Supply Chain and Operations Management – B.S.",
+      "catalog": "202605",
+      "totalCUs": 110,
+      "requirementCount": 36,
+      "currentProgramId": 239,
+      "currentProgramCode": "BSSCOM",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bsscom-solutions-design-and-visualization-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    },
+    {
+      "slug": "user-experience-design-bs",
+      "modelId": "curriculum-wgu-catalog-c023977432f945c3",
+      "title": "User Experience Design – B.S.",
+      "catalog": "202510",
+      "totalCUs": 115,
+      "requirementCount": 38,
+      "currentProgramId": 217,
+      "currentProgramCode": "BSUXD",
+      "publicationReady": true,
+      "blockingReasonCodes": [],
+      "capstoneRequirementIds": [
+        "bsuxd-design-applied-learning-capstone"
+      ],
+      "exactProgramReceivingReview": "exact-program-receiving-awards-with-independent-shared-provider-identities",
+      "blockers": []
+    }
+  ],
+  "candidateExpansion": {
+    "slug": "data-analytics-bs",
+    "programId": 92,
+    "programCode": "BSDA",
+    "catalog": "202309",
+    "status": "exact-program-plan-complete-targeted-publication-quality-passed",
+    "sourcesAlreadyAvailable": [
+      "content/source-captures/c0f1e682efb3df5c.txt",
+      "content/source-captures/186d4e3a3fda7a15.txt",
+      "content/source-captures/fded09837aae8641.txt",
+      "content/source-captures/6abe5f3197b69344.txt",
+      "content/source-captures/4a1ca634549e22a4.txt"
+    ],
+    "reason": "Exact active program92 exists in the approved current IT metadata and each partner agreement contains program92 receiving rows; independently verified shared courses can be joined only to those exact rows.",
+    "result": {
+      "review": "content/pathway-kits/wgu/reviews/data-analytics-2026-11-25.json",
+      "requirements": 42,
+      "totalCUs": 122,
+      "outsideCUs": 62,
+      "universityCUs": 60,
+      "derivedResidencyMinimumCUs": 34.5,
+      "overallTransferCeilingCUs": 91.5,
+      "publicationReadyInTargetedTest": true
+    }
+  }
+}

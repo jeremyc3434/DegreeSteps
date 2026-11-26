@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedOn": "2026-11-24",
+  "checkedOn": "2026-11-25",
   "scope": "Exact reviewed program editions and delivery formats for discovery filters only. These records do not alter degree requirements, transfer awards, publication decisions, student progress or prices.",
   "reviews": [
     {
@@ -9,6 +9,7 @@
         "curriculum-liberty-healthcare-administration-bs-online",
         "curriculum-liberty-history-bs-online",
         "curriculum-liberty-human-services-bs-online",
+        "curriculum-liberty-interdisciplinary-aa-online",
         "curriculum-liberty-psychology-addictions-online",
         "curriculum-liberty-psychology-bs-online",
         "liberty-criminal-justice-online"
@@ -56,6 +57,10 @@
           "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/human-services-major-bs/human-services-online/"
         },
         {
+          "modelId": "curriculum-liberty-interdisciplinary-aa-online",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/arts-sciences/interdisciplinary-studies-major-aa/interdisciplinary-studies-aa-online/"
+        },
+        {
           "modelId": "curriculum-liberty-psychology-addictions-online",
           "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/addictions-recovery-online/"
         },
@@ -77,6 +82,7 @@
     {
       "id": "liberty-campus-undergraduate-scheduled-2026-27-reviewed-2026-11-24",
       "modelIds": [
+        "curriculum-liberty-psychology-bs-residential",
         "liberty-business-residential",
         "liberty-criminal-justice-residential"
       ],
@@ -103,6 +109,10 @@
       ],
       "programBindings": [
         {
+          "modelId": "curriculum-liberty-psychology-bs-residential",
+          "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-bs/psychology-resident/"
+        },
+        {
           "modelId": "liberty-business-residential",
           "degreeUrl": "https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-administration-data-analysis-major-bs/business-administration-bs-interdisciplinary-business-resident/"
         },
@@ -113,7 +123,7 @@
       ],
       "notes": [
         "Residential lecture courses and intensives have scheduled class periods; no claim is made that every course must be taken face-to-face.",
-        "Only the listed residential business and criminal justice editions are covered.",
+        "Only the listed residential psychology, business and criminal justice editions are covered.",
         "No competency-based status, absence of proctored assessments, guaranteed section availability or complete absence of attendance obligations is inferred."
       ]
     }

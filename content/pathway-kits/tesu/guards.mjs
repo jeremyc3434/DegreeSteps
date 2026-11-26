@@ -4,6 +4,7 @@
  * complete-tesu-named-choices.mjs). Each check receives the compiled curriculum document and throws on a violation. */
 import assert from 'node:assert/strict';
 import {providerReview} from '../../../scripts/tesu-provider-review.mjs';
+import {upiLiberalArtsPlacement} from '../../../scripts/tesu-upi-maps.mjs';
 
 const list=v=>Array.isArray(v)?v:[];
 const sum=rows=>rows.reduce((n,r)=>n+r.credits,0);
@@ -191,6 +192,7 @@ function upiProviderCandidatesStayBounded(doc){
     assert.equal(o.receivingMapStatus,'provider-published-candidate');assert.equal(o.individualApproval,false);
     assert.equal(o.creditOrigin,'alternative',label+': UPI counts toward the combined alternative-credit cap');
     assert.equal(o.sourceType,'alternative');assert.equal(o.sourceCreditSystem,'semester');
+    assert.equal(o.upper,/^[A-Z]+-[34]\d{3}$/.test(o.receivingCode),label+': receiving code establishes receiving level independently from the original recommendation');
     assert.equal(o.sourceCredits,o.credits,label+': a provider assertion cannot resolve a source/receiving quantity discrepancy');
     assert.equal(o.minScore,70,label+': the reviewed original ACE course has a 70-point passing standard');
     assert.equal(o.providerCoursePassingPercent,70,label+': preserve the overall course-completion passing standard');
@@ -204,6 +206,11 @@ function upiProviderCandidatesStayBounded(doc){
     assert.equal(o.degreePlacementEvidence?.requirementId,r.id,label+': the exact requirement placement is explicit');
     assert.ok(cites(m,o.degreePlacementEvidence?.sourceIds),label+': the current degree placement cites its published block');
     if(r.freeElective){assert.ok(['elective','electives'].includes(r.category));assert.equal(r.group,'free-electives');assert.equal(r.excludeAlreadyUsed,true);assert.equal(o.placementType,'elective');}
+    else if(r.liberalArtsAllocation){
+      assert.ok(upiLiberalArtsPlacement(m,r,{receivingCode:o.receivingCode}),label+': liberal-arts allocation must satisfy the sourced discipline and receiving-level restrictions');
+      assert.equal(o.placementType,'major-elective');assert.equal(o.allocationType,'liberal-arts-area');
+      assert.equal(o.degreePlacementEvidence.placementType,'liberal-arts-area');
+    }
     else assert.equal(o.receivingCode,r.code,label+': a named receiving award cannot fill a different named requirement');
   }
 }

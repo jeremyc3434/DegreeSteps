@@ -13,6 +13,8 @@ const paths={
  activeSources:'content/pathway-kits/wgu/school.json',
  activeSnapshot:'content/curricula/snapshots/wgu/sophia-business-current-web.txt'
 };
+// Preserve the exact input reviewed on November 24 as the active school kit gains new programs.
+const historicalInputs={'content/pathway-kits/wgu/school.json':'content/curricula/snapshots/wgu/school-provider-input-2026-11-24.json'};
 const review=read('content/catalog/liberty-core-sophia-identities-reviewed-2026-11-24.json');
 const receiving=read(paths.receiving),original=read(paths.original),global=read(paths.global);
 const sources=new Map(review.sources.map(source=>[source.id,source]));
@@ -53,7 +55,7 @@ test('core Sophia packet fingerprints its independent inputs and preserves origi
  for(const path of [paths.receiving,paths.activeSnapshot])assert(Object.hasOwn(review.inputFingerprints,path),path);
  for(const [path,fingerprint] of Object.entries(review.inputFingerprints)){
   assert.match(fingerprint,/^[a-f0-9]{64}$/);
-  assert.equal(hash(path),fingerprint,path);
+  assert.equal(hash(historicalInputs[path]||path),fingerprint,path);
  }
  const originals=new Map([...global.sources,...receiving.sources,...read(paths.activeSources).sources].map(source=>[source.id,source]));
  for(const source of review.sources){

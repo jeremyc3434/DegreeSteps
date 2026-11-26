@@ -7,7 +7,7 @@ import {loadKit,kitsRoot} from './scripts/pathway-factory/lib.mjs';
 import {compileKit,runGuards} from './scripts/pathway-factory/compile.mjs';
 import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 import {upiCourseReview} from './scripts/upi-course-catalog.mjs';
-import {upiTESUReview,supportedUPIMappings,upiTESUOption,applyTESUUPIReviewedMaps,writeTESUUPIKit} from './scripts/tesu-upi-maps.mjs';
+import {upiTESUReview,supportedUPIMappings,upiTESUOption,upiLiberalArtsPlacement,applyTESUUPIReviewedMaps,writeTESUUPIKit} from './scripts/tesu-upi-maps.mjs';
 import {applyTESUUPIProviderDefaults} from './scripts/tesu-upi-defaults.mjs';
 const require=createRequire(import.meta.url),Planner=require('./dist/planner.js'),Guide=require('./dist/guide-engine.js');
 const legacy=JSON.parse(await readFile('dist/data/tesu.json','utf8')),kit=await loadKit(kitsRoot+'/tesu'),{doc}=compileKit(kit),copy=x=>structuredClone(x);
@@ -46,13 +46,54 @@ test('six TESU ledgers gain usable conditional UPI choices with source, cap and 
    assert(option.minScoreSourceIds.length>0&&option.minScoreSourceIds.every(id=>option.providerCoursePassingSourceIds.includes(id)&&upiCourseReview.sources.some(source=>source.id===id&&source.kind==='ace-course-exhibit')));
    assert.equal(option.eligibilityReview.fullyApproved,true);assert.equal(option.eligibilityReview.providerReviewPending,false);assert.equal(Object.hasOwn(option.eligibilityReview,'eligibleToStart'),false);
    assert(option.sourceIds.every(id=>model.sources.some(source=>source.id===id)));assert.equal(option.degreePlacementEvidence.requirementId,row.id);
-   assert(!row.institutionalOnly);assert(row.freeElective||row.code===option.receivingCode);
+   assert(!row.institutionalOnly);assert(row.freeElective||row.code===option.receivingCode||upiLiberalArtsPlacement(model,row,{receivingCode:option.receivingCode}));
   }
   const exactReceiving=new Set(model.requirements.filter(row=>!row.freeElective).map(row=>row.code));
   assert(options.filter(({row})=>row.freeElective).every(({option})=>!exactReceiving.has(option.receivingCode)),'Elective suggestions do not duplicate a course already named by this degree.');
  }
  assert.deepEqual((await verifyKit(kit,{asOf:'2026-11-25'})).errors,[]);
  await writeTESUUPIKit({check:true});
+});
+
+test('UPI Liberal Studies candidates follow the receiving taxonomy and level limits without promoting provider claims',async()=>{
+ const model=models.find(model=>model.id==='curriculum-tesu-ba-liberal-studies'),intro=model.requirements.find(row=>row.id==='bals-intro-1'),intermediate=model.requirements.find(row=>row.id==='bals-intermediate-1'),upper=model.requirements.find(row=>row.id==='bals-upper-1');
+ const allowed=['COS-2050','ECO-2700','ENG-2010'];
+ for(const code of allowed){
+  const pair=pairs.find(pair=>pair.mapping.receivingCode===code);assert(pair,code);
+  const option=upiTESUOption(model,intermediate,pair.mapping,pair.course);assert(option,code+' fits sourced 2000-level liberal-arts capacity');
+  assert.equal(option.evidence,'conditional');assert.equal(option.mappingResearchClosed,false);assert.equal(option.degreePlacementEvidence.placementType,'liberal-arts-area');
+  assert.equal(option.sourceUpper,pair.course.sourceUpper);assert.equal(option.upper,false,'A source upper-level recommendation cannot change the receiving level.');
+  assert.equal(upiTESUOption(model,upper,pair.mapping,pair.course),null,code+' cannot fill an upper-level area requirement');
+ }
+ const psychology=pairs.find(pair=>pair.mapping.receivingCode==='PSY-1010');assert(upiTESUOption(model,intro,psychology.mapping,psychology.course));assert.equal(upiTESUOption(model,intermediate,psychology.mapping,psychology.course),null,'1000-level psychology cannot fill 2000-level capacity');
+ for(const code of ['ACC-1020','LAW-2010','MKT-2010','FIN-2000','MAN-4310','CAP-2530','TEC-2610']){
+  const pair=pairs.find(pair=>pair.mapping.receivingCode===code);assert(pair);
+  assert.equal(upiTESUOption(model,intro,pair.mapping,pair.course),null,code+' has no established Liberal Studies discipline classification');
+ }
+ const code='COS-2050',pair=pairs.find(pair=>pair.mapping.receivingCode===code);
+ assert.equal(upiTESUOption({...model,catalog:'Unreviewed catalog'},intermediate,pair.mapping,pair.course),null);
+ for(const patch of [{allowedCoursePrefixes:[]},{sourceIds:[]},{minCourseLevel:3000},{maxCourseLevel:1999},{liberalArtsAllocation:false}])assert.equal(upiTESUOption(model,{...intermediate,...patch},pair.mapping,pair.course),null,JSON.stringify(patch));
+ const choices=model.requirements.filter(row=>row.liberalArtsAllocation).flatMap(row=>row.options.filter(option=>option.provider==='UPI Study').map(option=>({row,option})));
+ assert(choices.length>30);assert(choices.every(({row,option})=>upiLiberalArtsPlacement(model,row,{receivingCode:option.receivingCode})));
+ for(const mutate of [o=>o.receivingCode='MAN-4310',o=>o.receivingCode='PSY-1010',o=>o.upper=true,o=>o.degreePlacementEvidence.placementType='elective']){
+  const broken=copy(doc),row=broken.models.find(model=>model.id==='curriculum-tesu-ba-liberal-studies').requirements.find(row=>row.id==='bals-intermediate-1'),option=row.options.find(option=>option.provider==='UPI Study');mutate(option);await assert.rejects(()=>runGuards(kit,broken));
+ }
+});
+
+test('the sourced Liberal Studies allocation expands a nonduplicating feasible outside basket by nine credits',()=>{
+ const after=copy(models.find(model=>model.id==='curriculum-tesu-ba-liberal-studies'));
+ // The registry supplies the named University fallback for requirements whose kit lists only outside options.
+ for(const row of after.requirements)if(!row.options.some(option=>option.provider==='University'))row.options.push({id:'university-'+row.id,provider:'University',code:row.code,title:row.title,credits:row.credits,upper:Boolean(row.upper),creditSystem:'semester',creditOrigin:'institutional',sourceIds:row.sourceIds,evidence:'published'});
+ const before=copy(after);for(const row of before.requirements)if(row.liberalArtsAllocation)row.options=row.options.filter(option=>option.provider!=='UPI Study');
+ const generate=model=>Planner.generate(model,{providers:model.defaultProviders,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000}),oldPlan=generate(before),newPlan=generate(after);
+ assert.equal(oldPlan.totals.external,75);assert.equal(newPlan.totals.external,84);assert.equal(newPlan.totals.alternative,84);assert.equal(newPlan.totals.institutional,36);
+ assert.equal(newPlan.validation.academicCountsValid,true);assert.equal(newPlan.validation.policyChecksComplete,true);
+ const additions=newPlan.rows.filter(row=>row.option?.allocationType==='liberal-arts-area');
+ assert.deepEqual(additions.map(row=>row.option.receivingCode).sort(),['COS-2050','ECO-2700','ENG-2010']);
+ assert(additions.every(row=>row.option.evidence==='conditional'&&row.option.mappingResearchClosed===false));
+ const upperArea=newPlan.rows.filter(row=>after.liberalArtsAllocation.requirementIds.includes(row.requirementId)||row.requirementId===after.liberalArtsAllocation.capstoneRequirementId).filter(row=>row.option?.upper).reduce((sum,row)=>sum+row.credits,0);
+ assert(upperArea>=18);assert(newPlan.totals.alternative<=90);
+ const actions=newPlan.rows.filter(row=>row.option?.provider!=='University').map(row=>row.option.provider+'|'+row.option.code);assert.equal(new Set(actions).size,actions.length,'No original course fills two requirements.');
 });
 
 test('UPI placement never guesses another requirement, restricted block, school or graduate catalog',()=>{

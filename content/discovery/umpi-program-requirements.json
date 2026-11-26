@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "umpi-maol-current-academic-map-2026-11-25",
+      "kind": "university",
+      "url": "https://www.umpi.edu/academics/academic-maps/maol/",
+      "title": "Current official UMPI MAOL academic map",
+      "checkedOn": "2026-11-25",
+      "quote": "12 Competencies: 36 Credits",
+      "capture": "content/source-captures/e90374c6b9c039af.txt",
+      "sha256": "e90374c6b9c039af28684ee4d471212a789e1fd08ca4babb3ef8aa2ed030247e"
+    },
+    {
+      "id": "umpi-maol-current-program-2026-11-25",
+      "kind": "university",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/organizational-leadership/",
+      "title": "Current UMPI MAOL graduate admission requirements",
+      "checkedOn": "2026-11-25",
+      "quote": "a conferred bachelor’s degree from an accredited U.S. institution or an equivalent international institution",
+      "capture": "content/source-captures/a1b2500b6f89526e.txt",
+      "sha256": "a1b2500b6f89526e079c5774690c606c283c510a2af998454f09a2ae47c94208"
+    },
+    {
+      "id": "umpi-yourpace-current-faq-2026-11-25",
+      "kind": "university",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "title": "Current UMPI YourPace final-assessment threshold",
+      "checkedOn": "2026-11-25",
+      "quote": "a minimum score of 80 is required to pass the course.",
+      "capture": "content/source-captures/dcdb80a8ff024f38.txt",
+      "sha256": "dcdb80a8ff024f3831fec2492e0807af14101a1df822fc054399596bd0365eef"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "umpi-maol-graduate-requirements-2026-11-25",
+      "modelIds": ["curriculum-umpi-maol-yourpace"],
+      "catalogIdentity": {
+        "kind": "reviewed-current-catalog",
+        "label": "Current official MAOL academic map (reviewed 2026-11-25)",
+        "sourceId": "umpi-maol-current-academic-map-2026-11-25",
+        "sourceUrl": "https://www.umpi.edu/academics/academic-maps/maol/",
+        "checkedOn": "2026-11-25",
+        "sourceSha256": "e90374c6b9c039af28684ee4d471212a789e1fd08ca4babb3ef8aa2ed030247e"
+      },
+      "modality": "online",
+      "programBindings": [
+        {"modelId": "curriculum-umpi-maol-yourpace", "degreeUrl": "https://www.umpi.edu/yourpace/academic_programs/organizational-leadership/"}
+      ],
+      "facts": [
+        {
+          "id": "umpi-maol-graduate-admission",
+          "kind": "admission",
+          "scope": "program",
+          "label": "Graduate degree and admission records",
+          "detail": "MAOL applicants need a conferred bachelor’s degree from an accredited U.S. institution or an equivalent international institution and the required official records. Applicants below the published 3.0 GPA guideline must provide a personal statement. UMPI makes the individual admission decision.",
+          "sourceIds": ["umpi-maol-current-program-2026-11-25"],
+          "prominent": false
+        },
+        {
+          "id": "umpi-maol-final-assessment-threshold",
+          "kind": "assessment",
+          "scope": "program",
+          "label": "Final-assessment proficiency",
+          "detail": "YourPace requires at least 80 on the required final assessment. This is an assessment threshold; it does not establish a transfer grade, a graduation GPA or whether an assessment is monitored.",
+          "sourceIds": ["umpi-yourpace-current-faq-2026-11-25"],
+          "prominent": false
+        }
+      ]
+    }
+  ]
+}

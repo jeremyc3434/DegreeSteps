@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "id": "wgu-bsda-exact-program-review-2026-11-25",
+  "checkedOn": "2026-11-25",
+  "program": {
+    "slug": "data-analytics-bs",
+    "code": "BSDA",
+    "programId": 92,
+    "catalog": "202309",
+    "college": "IT"
+  },
+  "programRecordVersion": 12,
+  "totalCredits": 122,
+  "requirements": 42,
+  "capstoneCourseCodes": [
+    "D502"
+  ],
+  "captures": [
+    {
+      "role": "curriculum",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSDA%3B202309",
+      "capture": "content/source-captures/ffd84576aa5c5171.txt",
+      "sha256": "ffd84576aa5c51719a9653770cf6c4ca849b6b3618c7f9166b42ba2af3e6b014"
+    },
+    {
+      "role": "guidelines",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=92",
+      "capture": "content/source-captures/b600792dabaccf81.txt",
+      "sha256": "b600792dabaccf81e130c745435fa6977c3811ee45780cc7a59b5e7ad7208f8a"
+    },
+    {
+      "role": "metadata",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program/college/IT",
+      "capture": "content/source-captures/c0f1e682efb3df5c.txt",
+      "sha256": "c0f1e682efb3df5cb0cfad876384cc87ac50b7d0d48963833b0522490392a893"
+    },
+    {
+      "role": "program-page",
+      "url": "https://www.wgu.edu/online-it-degrees/data-analytics-bachelors-program.html",
+      "capture": "content/source-captures/1936532318815fe6.txt",
+      "sha256": "1936532318815fe6567dde7620d6f950083da1fb09261dd356c93dfadf4d83ef"
+    },
+    {
+      "role": "receiving-map",
+      "provider": "Sophia",
+      "agreementId": 7110,
+      "agreementRecordVersion": 236,
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/7110",
+      "capture": "content/source-captures/186d4e3a3fda7a15.txt",
+      "sha256": "186d4e3a3fda7a1507b66792e79edf038eea0a0195b5f9defde9cfaf0d1b0d4f"
+    },
+    {
+      "role": "receiving-map",
+      "provider": "Study.com",
+      "agreementId": 4424,
+      "agreementRecordVersion": 242,
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/4424",
+      "capture": "content/source-captures/fded09837aae8641.txt",
+      "sha256": "fded09837aae8641b4c1125af2f2222635970aeff65f16333b886de8c8fe1bdd"
+    },
+    {
+      "role": "receiving-map",
+      "provider": "StraighterLine",
+      "agreementId": 547,
+      "agreementRecordVersion": 121,
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/547",
+      "capture": "content/source-captures/6abe5f3197b69344.txt",
+      "sha256": "6abe5f3197b6934478805e56be46f65add74a1ea06b63544cd618d92d7b896b0"
+    },
+    {
+      "role": "receiving-map",
+      "provider": "Saylor",
+      "agreementId": 671,
+      "agreementRecordVersion": 108,
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/partner-agreement/671",
+      "capture": "content/source-captures/4a1ca634549e22a4.txt",
+      "sha256": "4a1ca634549e22a4238b5c4a7692e587b6ea3d4198b1ab09b4805ab2df7b0454"
+    }
+  ],
+  "scopeNotes": [
+    "WGU program92 is currently active and Approved in the exact current metadata capture, despite the catalog identifier202309 being older than the review date.",
+    "Every approved provider map is checked for program92 rows and exact receiving codes; college-wide agreement membership alone is insufficient.",
+    "The 122-CU named ledger, capstone D5024CUs and 75% ceiling91.5CUs are program facts; original provider semester quantities remain separate.",
+    "Study.com Business212/SDCM0025 label contradiction remains held. One source course cannot count twice."
+  ]
+}

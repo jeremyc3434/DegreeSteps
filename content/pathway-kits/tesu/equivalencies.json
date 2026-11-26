@@ -117,7 +117,8 @@
     "tesu-ace-claim-soph-0014-bus-1010": "TESU's 2026–2027 catalog equivalency, submitted by the university and published by ACE, lists SOPH-0014 (BUSI1001) version 5 as BUS-1010 Introduction to Business, 3 semester credits. The receiving course is documented for the catalog, not for one TESU degree.",
     "tesu-ace-period-soph-0083": "ACE recommends SOPH-0083 version 2 for 3 upper-division semester credits from 2024-08-01 through 2027-07-31; the completed version and date must fall within that period.",
     "tesu-ace-claim-soph-0083-man-3110": "TESU's 2026–2027 catalog equivalency, submitted by the university and published by ACE, lists SOPH-0083 (BUSI2015) version 2 as MAN-3110 Organizational Behavior, 3 semester credits. The receiving course is documented for the catalog, not for one TESU degree.",
-    "tesu-upi-proposed-free-elective": "Proposed use in this unrestricted free-elective block must be nonduplicating and fit the current degree."
+    "tesu-upi-proposed-free-elective": "Proposed use in this unrestricted free-elective block must be nonduplicating and fit the current degree.",
+    "tesu-upi-proposed-liberal-arts": "Proposed Liberal Studies area allocation must retain the published discipline and receiving-level rules, at least two subjects, no more than six 1000-level credits, 18 upper-level area credits and nonduplication."
   },
   "placementModes": {
     "elective-block": {
@@ -153,6 +154,19 @@
       ],
       "placementEvidence": {
         "placementType": "elective",
+        "citeInOption": true
+      }
+    },
+    "upi-liberal-arts-placement": {
+      "set": {
+        "placementType": "major-elective",
+        "allocationType": "liberal-arts-area"
+      },
+      "appendConditionIds": [
+        "tesu-upi-proposed-liberal-arts"
+      ],
+      "placementEvidence": {
+        "placementType": "liberal-arts-area",
         "citeInOption": true
       }
     }

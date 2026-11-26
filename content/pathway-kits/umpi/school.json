@@ -1,0 +1,93 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "umpi",
+  "name": "University of Maine at Presque Isle",
+  "creditSystem": "semester",
+  "checkedOn": "2026-11-25",
+  "programDefaults": {
+    "format": "Online",
+    "modalities": [
+      "online"
+    ],
+    "paceModel": "competency-subscription",
+    "learningFormat": "YourPace"
+  },
+  "programOrder": [
+    "organizational-leadership-ma-yourpace"
+  ],
+  "publish": {
+    "path": "content/curricula/umpi-pathway-kit.json",
+    "compiledBy": "pathway-factory"
+  },
+  "sources": [
+    {
+      "id": "umpi-maol-current-academic-map-2026-11-25",
+      "title": "UMPI current official Master of Arts in Organizational Leadership academic map",
+      "url": "https://www.umpi.edu/academics/academic-maps/maol/",
+      "checkedOn": "2026-11-25",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "program-identity",
+        "pace"
+      ],
+      "scope": "The live official map identifies all twelve OLS courses, their three domains, 36 total credits, and YourPace delivery. It does not identify a catalog edition or print a per-course credit column.",
+      "capture": "content/source-captures/e90374c6b9c039af.txt",
+      "sourceContentHash": "sha256:e90374c6b9c039af28684ee4d471212a789e1fd08ca4babb3ef8aa2ed030247e",
+      "sha256": "e90374c6b9c039af28684ee4d471212a789e1fd08ca4babb3ef8aa2ed030247e"
+    },
+    {
+      "id": "umpi-maol-board-proposal-2019-reviewed-2026-11-25",
+      "title": "University of Maine System Board academic affairs materials: UMPI MAOL proposal, October 2019",
+      "url": "https://www.maine.edu/board-of-trustees/wp-content/uploads/sites/12/2019/11/MtgMat-ASA-103019-rev102519.pdf#pages=129",
+      "checkedOn": "2026-11-25",
+      "documentPeriod": "2019",
+      "kind": "university-system",
+      "roles": [
+        "curriculum-credit-quantity"
+      ],
+      "location": "Section IV.A, printed page 9 / PDF page 129",
+      "scope": "Dated original MAOL program proposal expressly assigns three credits to each of twelve competencies. Its twelve titles and three domains were crosschecked against the current official academic map; no current catalog edition is inferred from this historical document.",
+      "capture": "content/source-captures/f45d820a370774e6.txt",
+      "sourceContentHash": "sha256:f45d820a370774e61c0ea6fab4826d2187e9f11fd47fb144345d553901b5da80",
+      "sha256": "f45d820a370774e61c0ea6fab4826d2187e9f11fd47fb144345d553901b5da80",
+      "documentSha256": "d755c737780962021a54ce6d214eccacaeacffc6b7e6920cbd544cae651673c2",
+      "captureTransport": "Full official PDF reconstructed from validated HTTP byte ranges; extracted PDF page129 only."
+    },
+    {
+      "id": "umpi-maol-current-program-2026-11-25",
+      "title": "UMPI current YourPace Master of Arts in Organizational Leadership program, admissions, graduate transfer policy and pricing",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/organizational-leadership/",
+      "checkedOn": "2026-11-25",
+      "kind": "university",
+      "roles": [
+        "program-identity",
+        "transfer-policy",
+        "admissions",
+        "pricing",
+        "pace"
+      ],
+      "scope": "MAOL YourPace only. Six appropriate accredited graduate credits with B or better may transfer. The page supplies a $2,450 session rate and current graduate admission requirements, rather than an undergraduate ACE allowance or a guaranteed degree total.",
+      "capture": "content/source-captures/a1b2500b6f89526e.txt",
+      "sourceContentHash": "sha256:a1b2500b6f89526e079c5774690c606c283c510a2af998454f09a2ae47c94208",
+      "sha256": "a1b2500b6f89526e079c5774690c606c283c510a2af998454f09a2ae47c94208"
+    },
+    {
+      "id": "umpi-yourpace-current-faq-2026-11-25",
+      "title": "UMPI current YourPace FAQ: graduate degree total, session length and assessment proficiency",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "checkedOn": "2026-11-25",
+      "kind": "university",
+      "roles": [
+        "curriculum-total",
+        "assessment-policy",
+        "pace"
+      ],
+      "scope": "The graduate-specific answer confirms 36 credits. YourPace sessions last eight weeks and the final assessment minimum is 80. Undergraduate 30/12/9 residency language is not applied to this master's.",
+      "capture": "content/source-captures/dcdb80a8ff024f38.txt",
+      "sourceContentHash": "sha256:dcdb80a8ff024f3831fec2492e0807af14101a1df822fc054399596bd0365eef",
+      "sha256": "dcdb80a8ff024f3831fec2492e0807af14101a1df822fc054399596bd0365eef"
+    }
+  ]
+}

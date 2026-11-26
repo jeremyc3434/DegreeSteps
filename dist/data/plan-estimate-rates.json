@@ -1437,6 +1437,30 @@
       "bytes": 511100,
       "captureFormat": "raw-html",
       "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "id": "wgu-data-analytics-tuition-current-2026-11-25",
+      "title": "WGU current data-analytics tuition and six-month resource fee",
+      "url": "https://www.wgu.edu/online-it-degrees/data-analytics-bachelors-program.html",
+      "checkedOn": "2026-11-25",
+      "capture": "content/source-captures/1936532318815fe6.txt",
+      "sha256": "1936532318815fe6567dde7620d6f950083da1fb09261dd356c93dfadf4d83ef"
+    },
+    {
+      "id": "wgu-cloud-network-tuition-current-2026-11-25",
+      "title": "WGU current cloud-network tuition and six-month resource fee",
+      "url": "https://www.wgu.edu/online-it-degrees/cloud-network-engineering-bachelors-program.html",
+      "checkedOn": "2026-11-25",
+      "capture": "content/source-captures/90cf36a8777cc28b.txt",
+      "sha256": "90cf36a8777cc28bbd31882fb3f1eeb48182d9f5f9db40ce72b1ea3fc74b6305"
+    },
+    {
+      "id": "umpi-maol-tuition-current-2026-11-25",
+      "title": "UMPI MAOL flat tuition per eight-week session; no application fee or hidden fees",
+      "url": "https://www.umpi.edu/yourpace/academic_programs/organizational-leadership/",
+      "checkedOn": "2026-11-25",
+      "capture": "content/source-captures/a1b2500b6f89526e.txt",
+      "sha256": "a1b2500b6f89526e079c5774690c606c283c510a2af998454f09a2ae47c94208"
     }
   ],
   "providers": [
@@ -1881,7 +1905,8 @@
       "id": "liberty-campus-2026-27",
       "modelIds": [
         "liberty-business-residential",
-        "liberty-criminal-justice-residential"
+        "liberty-criminal-justice-residential",
+        "curriculum-liberty-psychology-bs-residential"
       ],
       "school": "Liberty University",
       "modality": "campus",
@@ -3484,6 +3509,338 @@
         "The tuition scenario uses eligible TESU online, Guided Study, Accelerated or e-Pack courses. TECEP and portfolio assessments are billed separately and are not substituted for those courses.",
         "The selected academic route retains the standard 15-credit TESU course-residency requirement. Edison Accelerate is a separate paid waiver scenario and is not included.",
         "TESU charges $4,652 for a term of 9–18 eligible credits and $584 per credit below 9. The assumed 9–15 credits per term are a planning scenario; prerequisites, course availability and advisor-approved loads can change the number of billed terms."
+      ]
+    },
+    {
+      "id": "liberty-interdisciplinary-aa-2026-27",
+      "modelIds": [
+        "curriculum-liberty-interdisciplinary-aa-online"
+      ],
+      "school": "Liberty University",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 60,
+      "catalogs": [
+        "2026-2027"
+      ],
+      "tuition": {
+        "type": "threshold-credit",
+        "fullTimeRate": 410,
+        "partTimeRate": 475,
+        "fullTimeMin": 12
+      },
+      "feesPerTerm": 349,
+      "oneTimeFees": 100,
+      "feeBreakdown": [
+        {
+          "label": "Technology fee",
+          "amount": 349,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Degree completion application",
+          "amount": 100,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 1,
+        "max": 18,
+        "defaultMin": 12,
+        "defaultMax": 18
+      },
+      "termLabel": "semester",
+      "termMonths": null,
+      "sourceIds": [
+        "liberty-online-tuition-fees"
+      ],
+      "missing": []
+    },
+    {
+      "id": "wgu-data-analytics-bs-current-2026-11-25",
+      "modelIds": [
+        "curriculum-wgu-bs-data-analytics-reviewed"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 122,
+      "catalogs": [
+        "202309"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3925,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-data-analytics-tuition-current-2026-11-25",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-cloud-network-engineering-aws-bs-current-2026-11-25",
+      "modelIds": [
+        "curriculum-wgu-bs-cloud-network-engineering-aws-reviewed"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 112,
+      "catalogs": [
+        "202608"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3925,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-cloud-network-tuition-current-2026-11-25",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-cloud-network-engineering-azure-bs-current-2026-11-25",
+      "modelIds": [
+        "curriculum-wgu-bs-cloud-network-engineering-azure-reviewed"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 112,
+      "catalogs": [
+        "202608"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3925,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-cloud-network-tuition-current-2026-11-25",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-cloud-network-engineering-cisco-bs-current-2026-11-25",
+      "modelIds": [
+        "curriculum-wgu-bs-cloud-network-engineering-cisco-reviewed"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 112,
+      "catalogs": [
+        "202608"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3925,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-cloud-network-tuition-current-2026-11-25",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "wgu-cloud-network-engineering-general-bs-current-2026-11-25",
+      "modelIds": [
+        "curriculum-wgu-bs-cloud-network-engineering-general-reviewed"
+      ],
+      "school": "Western Governors University",
+      "modality": "online",
+      "creditSystem": "competency-unit",
+      "degreeUnits": 109,
+      "catalogs": [
+        "202608"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 3925,
+        "defaultBeforeTerms": 8,
+        "defaultAfterTerms": 3
+      },
+      "feesPerTerm": 200,
+      "oneTimeFees": 65,
+      "feeBreakdown": [
+        {
+          "label": "E-books and resources",
+          "amount": 200,
+          "frequency": "per-term"
+        },
+        {
+          "label": "Application fee before any waiver",
+          "amount": 65,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 12,
+        "max": 60,
+        "defaultMin": 12,
+        "defaultMax": 24
+      },
+      "termLabel": "6-month term",
+      "termMonths": 6,
+      "sourceIds": [
+        "wgu-cloud-network-tuition-current-2026-11-25",
+        "wgu-november-catalog"
+      ],
+      "missing": [
+        "Application fee waivers, optional supplies and any additional program or testing charges are not assumed."
+      ]
+    },
+    {
+      "id": "umpi-maol-yourpace-current-2026-11-25",
+      "modelIds": [
+        "curriculum-umpi-maol-yourpace"
+      ],
+      "school": "University of Maine at Presque Isle",
+      "modality": "online",
+      "creditSystem": "semester",
+      "degreeUnits": 36,
+      "catalogs": [
+        "Current official MAOL academic map (reviewed 2026-11-25)"
+      ],
+      "tuition": {
+        "type": "paid-term",
+        "termRate": 2450,
+        "defaultBeforeTerms": 6,
+        "defaultAfterTerms": 6
+      },
+      "feesPerTerm": 0,
+      "oneTimeFees": 0,
+      "feeBreakdown": [
+        {
+          "label": "Application fee (published as no fee)",
+          "amount": 0,
+          "frequency": "one-time"
+        }
+      ],
+      "pace": {
+        "min": 3,
+        "max": 36,
+        "defaultMin": 6,
+        "defaultMax": 12
+      },
+      "termLabel": "8-week YourPace session",
+      "termMonths": null,
+      "termWeeks": 8,
+      "sourceIds": [
+        "umpi-maol-tuition-current-2026-11-25"
+      ],
+      "missing": [
+        "External transcript or international credential-evaluation charges, when applicable."
+      ],
+      "notes": [
+        "Current MAOL page states no hidden fees or additional textbook costs. Tuition is $2,450 per eight-week session, not a guaranteed degree total.",
+        "The completion rate and paid-session count are student scenarios; UMPI controls the actual degree progress report and enrollment sequence. Calendar-month conversion is not assumed for an eight-week billing session."
       ]
     }
   ],

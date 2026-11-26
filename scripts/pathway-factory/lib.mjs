@@ -116,6 +116,24 @@ export function parsePlacement(entry){
 }
 /** Course-code join key: uppercase letters and digits only, so "MGMT 110", "MGMT-110" and "mgmt.110" compare equal. */
 export const courseCodeKey=code=>typeof code==='string'?code.toUpperCase().replace(/[^A-Z0-9]/g,''):'';
+/** One immutable join context per compilation. No process-wide cache: a later
+ * review or edited requirement list always gets a fresh index. */
+export function requirementMatcher(program){
+  const ids=new Map(),exact=new Map(),normalized=new Map(),titles=new Map();
+  for(const requirement of list(program.requirements)){
+    if(!ids.has(requirement.id))ids.set(requirement.id,requirement);
+    if(requirement.code){
+      if(!exact.has(requirement.code))exact.set(requirement.code,requirement);
+      const key=courseCodeKey(requirement.code),rows=normalized.get(key)||[];rows.push(requirement);normalized.set(key,rows);
+    }else{const key=normalizeText(requirement.title);if(!titles.has(key))titles.set(key,requirement);}
+  }
+  return row=>{
+    const placed=row.placements?.[program.slug]?.requirementId;
+    if(placed)return ids.get(placed)||null;
+    if(row.receivingCode){if(exact.has(row.receivingCode))return exact.get(row.receivingCode);const key=courseCodeKey(row.receivingCode),rows=key?normalized.get(key):null;return rows?.length===1?rows[0]:null;}
+    return row.receivingTitle?titles.get(normalizeText(row.receivingTitle))||null:null;
+  };
+}
 /** The receiving requirement an equivalency row joins to: an explicit placement, else exact code, else a unique
  *  normalized-code match (punctuation and spacing differ between a school's catalog and a provider's table), else exact title. */
 export function matchRequirement(row,program){
@@ -187,4 +205,33 @@ export function slotRowsFor(kit,program,requirement,{credits=requirement.credits
     }
   }
   return out.sort((a,b)=>a.row.provider.localeCompare(b.row.provider)||a.row.code.localeCompare(b.row.code)||a.row.id.localeCompare(b.row.id));
+}
+
+/** Named receiving-school choices are reusable only through an explicitly
+ * reviewed school/catalog/program/requirement pool. They are never transfer
+ * awards, and a matching label alone grants no eligibility. */
+export function institutionChoicesFor(kit,program,requirement,{credits=requirement.credits}={}){
+  if(!requirement.slot)return [];
+  const ids=list(requirement.slot.institutionChoicePoolIds),units=programUnits(kit,program),out=[];
+  const fixed=new Set(list(program.requirements).filter(row=>row!==requirement).flatMap(row=>[row.code,...list(row.allowedCourseCodes)]).map(courseCodeKey).filter(Boolean));
+  const upper=requirement.upper||requirement.upperOnly||slotUpperOnly(requirement.slot.label||requirement.title);
+  const sources=new Map(list(kit.school.sources).map(source=>[source.id,source]));
+  const grounded=claim=>list(claim?.sourceIds).length>0&&list(claim?.quotes).length>0&&claim.sourceIds.every(id=>sources.get(id)?.kind==='university'&&sources.get(id)?.capture)&&claim.quotes.every(quote=>claim.sourceIds.includes(quote?.sourceId)&&normalizeText(quote?.text));
+  for(const pool of list(kit.school.institutionChoicePools)){
+    if(!ids.includes(pool?.id)||pool.review?.status!=='reviewed'||!dateOnly(pool.review?.checkedOn)||pool.scope?.all===true||!['programs','catalogs','levels','modalities'].every(key=>list(pool.scope?.[key]).length)||!inScope(pool,program,kit)||!list(pool.requirementIds).includes(requirement.id)||!list(pool.slotKinds).includes(requirement.slot.kind)||!grounded(pool))continue;
+    for(const course of list(pool.courses)){
+      if(!courseCodeKey(course?.code)||!String(course.title||'').trim()||course.provider!==undefined&&course.provider!=='University'||course.creditOrigin!==undefined&&course.creditOrigin!=='institutional'||!Number.isFinite(course.credits)||course.credits<=0||typeof course.upper!=='boolean'||!grounded(course)||course.creditSystem!==units||Math.abs(course.credits-credits)>1e-9||upper&&!course.upper||fixed.has(courseCodeKey(course.code)))continue;
+      if(!out.some(row=>courseCodeKey(row.code)===courseCodeKey(course.code)))out.push({...clone(course),choicePoolId:pool.id});
+    }
+  }
+  return out;
+}
+
+/** New allocation slots require the factory's reviewed pool opt-in. Existing
+ * factory requirements retain an explicitly resolved named institutional choice
+ * from their canonical ledger; the registry passes its original selection flag
+ * before resetting bucket allocations. Neither path accepts a placeholder. */
+export function reviewedInstitutionFallback(requirement,units,{originalSelectionRequired}={}){
+  const reviewed=requirement.allocationSlot===true?requirement.namedInstitutionChoicesReviewed===true:originalSelectionRequired===false;
+  return reviewed&&!requirement.researchGap&&list(requirement.options).some(option=>option.provider==='University'&&courseCodeKey(option.code)&&String(option.title||'').trim()&&option.creditOrigin==='institutional'&&option.evidence==='published'&&option.selectionRequired!==true&&Number.isFinite(option.credits)&&option.credits===requirement.credits&&option.creditSystem===units&&list(option.sourceIds).length>0&&(!requirement.upper&&!requirement.upperOnly||option.upper===true));
 }

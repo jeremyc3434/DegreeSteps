@@ -27,6 +27,22 @@ const priorReady=[
 ];
 const paths=['content/catalog/sophia-liberty-baseline-identities-reviewed-2026-11-18.json','content/catalog/liberty-extra-sophia-identities-reviewed-2026-11-24.json','content/curricula/snapshots/liberty/health-upper-provider-identities-2026-11-18-reviewed.json','content/catalog/liberty-psychology-study-identities-reviewed-2026-11-24.json','content/catalog/liberty-core-sophia-identities-reviewed-2026-11-24.json','content/catalog/liberty-core-study-identities-reviewed-2026-11-24.json','content/catalog/liberty-upper-psychology-study-identities-reviewed-2026-11-24.json'];
 const documents=await Promise.all(paths.map(read)),guide=await read('content/transfer-awards/snapshots/liberty-online-guide-awards-reviewed-2026-11-18.json'),kit=await loadKit('content/pathway-kits/liberty');
+// Only these exact awards gained the reviewed online associate placement on November 25.
+const interdisciplinaryAAAwards=new Set([
+ 'liberty-online-baseline-soph-0016-to-envr-215',
+ 'liberty-online-baseline-soph-0022-to-hius-221',
+ 'liberty-online-baseline-soph-0025-to-hius-222',
+ 'liberty-online-baseline-soph-0027-to-phil-201',
+ 'liberty-online-baseline-soph-0065-to-phil-210',
+ 'liberty-online-baseline-soph-0030-to-engl-102',
+ 'liberty-online-baseline-soph-0015-to-engl-101',
+ 'liberty-online-baseline-soph-0024-to-coms-101',
+ 'liberty-online-baseline-soph-0020-to-ethc-101',
+ 'liberty-online-baseline-soph-0002-to-biol-102',
+ 'liberty-online-baseline-soph-0048-to-psyc-101',
+ 'liberty-online-baseline-soph-0001-to-math-121',
+ 'liberty-online-baseline-sdcm-0047-to-cstu-101'
+]);
 const asOf='2026-11-24',programs=['history-bs-online','human-services-bs-online','psychology-addictions-online'];
 const facts=new Map(documents.flatMap((d,index)=>d.courses.filter(c=>c.sourceCredits===3).map(c=>{
  const code=c.code||c.aceId,provider=c.provider||(code.startsWith('SOPH-')?'Sophia':'Study.com');
@@ -78,12 +94,14 @@ test('30 reusable awards across seven packets bind independent original facts to
 });
 test('reusable awards stay inside their reviewed programs, online format and catalog',()=>{
  const compiled=compileKit(kit).doc.models;
+ assert.deepEqual(rows.filter(row=>row.scope.programs.includes('interdisciplinary-aa-online')).map(row=>row.id).sort(),[...interdisciplinaryAAAwards].sort());
  for(const row of rows){
-  assert.notEqual(row.scope.all,true);assert.deepEqual(row.scope.programs,programs);assert.deepEqual(row.scope.levels,['bachelor']);assert.deepEqual(row.scope.modalities,['online']);assert.deepEqual(row.scope.catalogs,['2026–2027']);
-  for(const slug of programs){
+  const includesAssociate=interdisciplinaryAAAwards.has(row.id),reviewedPrograms=includesAssociate?[...programs,'interdisciplinary-aa-online']:programs;
+  assert.notEqual(row.scope.all,true);assert.deepEqual(row.scope.programs,reviewedPrograms);assert.deepEqual(row.scope.levels,includesAssociate?['bachelor','associate']:['bachelor']);assert.deepEqual(row.scope.modalities,['online']);assert.deepEqual(row.scope.catalogs,['2026–2027']);
+  for(const slug of reviewedPrograms){
    const p=kit.programs.find(p=>p.slug===slug),model=compiled.find(model=>model.id===p.modelId);
-   assert(inScope(row,p,kit));assert.equal(p.level,'bachelor');assert.deepEqual(p.modalities,['online']);assert.equal(catalog(p.catalog),'2026-2027');
-   assert.equal(model.school,'Liberty University');assert.equal(model.level,'bachelor');assert.equal(model.format,'Online');assert.deepEqual(model.modalities,['online']);assert.equal(catalog(model.catalogYear||model.catalog),'2026-2027');assert.equal(model.creditSystem,'semester');
+   assert(inScope(row,p,kit));assert.equal(p.level,slug==='interdisciplinary-aa-online'?'associate':'bachelor');assert.deepEqual(p.modalities,['online']);assert.equal(catalog(p.catalog),'2026-2027');
+   assert.equal(model.school,'Liberty University');assert.equal(model.level,p.level);assert.equal(model.format,'Online');assert.deepEqual(model.modalities,['online']);assert.equal(catalog(model.catalogYear||model.catalog),'2026-2027');assert.equal(model.creditSystem,'semester');
   }
   const p=kit.programs.find(p=>p.slug===programs[0]);
   for(const patch of [{slug:'unreviewed-program'},{slug:'psychology-bs-online'},{level:'master'},{modalities:['campus']},{catalog:'2027–2028'}])assert.equal(inScope(row,{...p,...patch},kit),false,row.id+' rejects '+JSON.stringify(patch));

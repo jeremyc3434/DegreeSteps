@@ -62,7 +62,9 @@ test('switching every provider to affiliate changes only provider link markup on
   Outbound.configure(allAffiliate);const partnered=plans.map(plan=>renderPublicPlan(plan,plans)),partneredHub=renderPublicPlanHub(plans);
   assert.equal(partneredHub,hub,'The plan library hub and its order do not depend on partners');
   for(let i=0;i<plans.length;i++){
-   assert.notEqual(partnered[i],plain[i],'An affiliate setting is visible on '+plans[i].id);
+   const hasPartnerCourse=plans[i].plan.rows.some(row=>row.option&&row.option.provider!=='University'&&Outbound.PROVIDERS.includes(row.option.provider));
+   if(hasPartnerCourse)assert.notEqual(partnered[i],plain[i],'An affiliate setting is visible on '+plans[i].id);
+   else assert.equal(partnered[i],plain[i],'A university-only route cannot acquire a provider promotion: '+plans[i].id);
    assert.deepEqual(rowsOf(partnered[i]),rowsOf(plain[i]),plans[i].id);assert(rowsOf(plain[i]).length>10);
    assert.equal(visible(partnered[i]),visible(plain[i]),plans[i].id);
    assert.equal((partnered[i].match(/rel="sponsored noopener"/g)||[]).length,(partnered[i].match(/class="outbound-partner-note"/g)||[]).length,'Every partner link is labelled');

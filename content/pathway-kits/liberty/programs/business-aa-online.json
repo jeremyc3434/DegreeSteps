@@ -40,7 +40,17 @@
     "unresolved": [
       "Confirm individual catalog eligibility, major-course residency allocation, course prerequisites, and written transfer evaluation.",
       "Outside-course equivalencies must be sourced separately; a university requirement is not evidence that a particular accelerated course transfers.",
-      "State-specific online general-education requirements may differ; consult the applicable state degree completion plan."
+      "State-specific online general-education requirements may differ; consult the applicable state degree completion plan.",
+      {
+        "id": "liberty-business-aa-online-specific-research-hold-2026-11-25",
+        "message": "DegreeSteps must resolve the same published prerequisite and delivery conflict for this Business A.A. online route: required BUSI 301 has BUSI 105 as its prerequisite, and the current catalog offers BUSI 105 residentially only. An official online offering, approved substitution or exact eligible transfer award is still needed; no exemption is assumed.",
+        "owner": "DegreeSteps",
+        "status": "unresolved",
+        "field": "prerequisites",
+        "sourceIds": [
+          "liberty-business-aa-online-specific-research-hold-2026-11-25"
+        ]
+      }
     ],
     "graduationRequirements": [
       {
@@ -289,7 +299,34 @@
     "cli-religion-admissions-2026-11-24",
     "cli-religion-accreditation-2026-11-24",
     "cli-religion-course-catalog-2026-11-24",
-    "cli-religion-the-101-2026-11-24"
+    "cli-religion-the-101-2026-11-24",
+    "liberty-business-aa-online-specific-research-hold-2026-11-25"
+  ],
+  "sources": [
+    {
+      "url": "https://catalog.liberty.edu/pdf/LibertyUniversity2026-2027UndergraduateCatalog.pdf#pages=103,502-503,1163-1164&columns=2",
+      "kind": "university",
+      "checked": "2026-11-25",
+      "retrievedOn": "2026-11-24",
+      "sha256": "a6a7a1146399add3e20dbf4a13a80d5c17dc409cc06cfc4a510ba0995c8f85de",
+      "capture": "content/source-captures/3dd9948d418f7b5b.txt",
+      "captureSha256": "3dd9948d418f7b5bf37f479a5a39c271a0931736544b069373436f80d29517ff",
+      "sourcePages": [
+        103,
+        502,
+        503,
+        1163,
+        1164
+      ],
+      "reviewMethod": "Selected pages of the retained original official PDF locally extracted and read November 25. Original November 24 retrieval and PDF hash retained; no new retrieval claimed.",
+      "id": "liberty-business-aa-online-specific-research-hold-2026-11-25",
+      "title": "Liberty 2026–2027 undergraduate catalog: business-aa-online specific unresolved academic constraint",
+      "roles": [
+        "curriculum",
+        "prerequisites",
+        "offering"
+      ]
+    }
   ],
   "requirements": [
     {"id":"engl-101","code":"ENGL 101","title":"Composition and Rhetoric","credits":3,"category":"general","group":"writing","upper":false,"sourceIds":["liberty-business-aa-online-2026","liberty-online-approved-gened"],"allocationBasis":"Proposed course choice from the official online approved general-education list; degree-specific restrictions still apply.","selectionRequired":false,"optionRows":[
