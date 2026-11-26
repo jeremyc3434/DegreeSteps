@@ -17,7 +17,7 @@ function fixture({initial,stored,extraStorage={},dataset}={}){
  const context={console,URL,URLSearchParams,Intl,TextEncoder,TextDecoder,document:{getElementById:node,querySelector(){return null;},querySelectorAll(){return[];},addEventListener(type,fn){if(!handlers.has(type))handlers.set(type,[]);handlers.get(type).push(fn);},body:node('body')},location:{pathname:'/portal.html',search:'',assign(value){context.__destination=value;},replace(value){context.__destination=value;}},history:{replaceState(){}},localStorage:{getItem:key=>storage.get(key)||null,setItem:(key,value)=>storage.set(key,value),removeItem:key=>storage.delete(key)},FormData:class extends Map{constructor(form){super(Object.entries(form.values||{}));}getAll(name){const value=this.get(name);return value===undefined?[]:Array.isArray(value)?value:[value];}},CustomEvent:class{},setTimeout(){},clearTimeout(){},dispatchEvent(){},addEventListener(){},scrollTo(){},navigator:{},__fixture:JSON.stringify({state:initial,stored,...d})};context.window=context;vm.createContext(context);
  for(const match of fs.readFileSync(path.join(__dirname,'dist/portal.html'),'utf8').matchAll(/<script\b[^>]*\bsrc="([A-Za-z0-9_-]+\.js)"[^>]*>/g)){const source=fs.readFileSync(path.join(__dirname,'dist',match[1]),'utf8');if(source.includes('module.exports'))vm.runInContext(source,context,{filename:match[1]});}
  context.fetch=async()=>({ok:true,json:async()=>({templates:[{id:'example-template',pathwayId:'campus-degree',title:'Example campus plan',strategy:'balanced'}]})});
- const source=fs.readFileSync(path.join(__dirname,'dist/portal.js'),'utf8'),hooks=`const fixture=JSON.parse(__fixture);state=fixture.state;catalog=fixture.catalog;models=fixture.models;activePlanState=actualSavedTarget(fixture.stored)?clone(fixture.stored):null;render=function(){save();};prepareRecommendations=async()=>{window.__prepared=(window.__prepared||0)+1;};window.__profile={state:()=>state,updatedCourses:()=>profileCourseChoicesUpdated,answer,action,start:startProfile,body:profileBody,question:questionBody,summary:profileSummaryHTML,resume:restoreProfileDraft,publicRoute:()=>openPublicRoute(new URLSearchParams('template=example-template')),choose:()=>{state=Journey.selectRoute(state,fixture.route,catalog);state.journey.profileFlowVersion=1;startProfile('target','degree');}};`;
+ const source=fs.readFileSync(path.join(__dirname,'dist/portal.js'),'utf8'),hooks=`const fixture=JSON.parse(__fixture);state=fixture.state;catalog=fixture.catalog;models=fixture.models;activePlanState=actualSavedTarget(fixture.stored)?clone(fixture.stored):null;render=function(){save();};prepareRecommendations=async()=>{window.__prepared=(window.__prepared||0)+1;};window.__profile={state:()=>state,continueFromQuiz:query=>startQuizContinuation(new URLSearchParams(query)),updatedCourses:()=>profileCourseChoicesUpdated,answer,action,start:startProfile,body:profileBody,question:questionBody,summary:profileSummaryHTML,resume:restoreProfileDraft,publicRoute:()=>openPublicRoute(new URLSearchParams('template=example-template')),choose:()=>{state=Journey.selectRoute(state,fixture.route,catalog);state.journey.profileFlowVersion=1;startProfile('target','degree');}};`;
  vm.runInContext(source.replace(/  boot\(\);\s*\}\(\)\);\s*$/,hooks+'\n}());'),context,{filename:'portal.js'});
  return{api:context.__profile,node,context,state:()=>copy(context.__profile.state()),stored:()=>JSON.parse(storage.get(KEY)),storage:()=>Object.fromEntries(storage),replaceStored:value=>storage.set(KEY,JSON.stringify(value)),async submit(values){const form=node('portal-profile-form');form.values=values;for(const handler of handlers.get('submit')||[])await handler({target:form,preventDefault(){}});},async edit(values,type='change'){const form=node('portal-profile-form');form.values=values;for(const handler of handlers.get(type)||[])await handler({target:{closest:()=>form,matches:()=>false}});}};
 }
@@ -26,7 +26,7 @@ function selectedValue(html,name){
  const options=html.match(new RegExp('<select name="'+name+'">([\\s\\S]*?)<\\/select>'))?.[1];assert(options,'The existing preference is available in the form: '+name);
  const values=[...options.matchAll(/<option value="([^"]*)"([^>]*)>/g)];assert(values.length);return(values.find(match=>/\bselected\b/.test(match[2]))||values[0])[1];
 }
-async function exploreToPriorities(f){await f.api.answer('explore');await f.submit(goal);await f.submit({prior:'none',military:'none'});await f.submit(online);assert.equal(f.state().journey.step,'priority');}
+async function exploreToPriorities(f){f.api.continueFromQuiz('');await f.submit(goal);await f.submit({prior:'none',military:'none'});await f.submit(online);assert.equal(f.state().journey.step,'priority');}
 test('the monitored-exam choice is visible before optional details and clearly scoped to outside courses',async()=>{
  const f=fixture();await exploreToPriorities(f);const html=f.api.body('priority'),optional=html.indexOf('<details class="portal-tip">'),preference=html.indexOf('name="proctoringPreference"');
  assert(preference>=0&&preference<optional,'A student can see the exam preference without opening optional details');
@@ -51,14 +51,14 @@ test('an existing assessment choice remains editable after Back and reload while
  await next.submit(edits);const result=next.stored();assert.equal(result.profile.proctoringPreference,'open');assert.equal(result.profile.assessmentPreference,'exams');assert.equal(result.profile.priority,'speed');assert.equal(result.profile.modality,'campus');assert.equal(result.selectedPathwayId,initial.selectedPathwayId);assert.deepEqual(result.learning,initial.learning);assert.deepEqual(result.scenarios,initial.scenarios);assert.deepEqual(result.sheet.notes,initial.sheet.notes);assert.doesNotMatch(next.api.summary(),/without monitored exams/);
 });
 test('exploration asks existing coursework and military context before personalized results',async()=>{
- const f=fixture();await f.api.answer('explore');assert.equal(f.state().journey.step,'purpose');assert.match(f.api.body('purpose'),/What would a degree help you do/);assert.doesNotMatch(f.api.body('purpose'),/name="(?:priority|format|prior)"/);
+ const f=fixture();f.api.continueFromQuiz('');assert.equal(f.state().journey.step,'purpose');assert.match(f.api.body('purpose'),/What would a degree help you do/);assert.doesNotMatch(f.api.body('purpose'),/name="(?:priority|format|prior)"/);
  await f.submit(goal);assert.equal(f.state().journey.step,'prior');assert.equal(f.context.__prepared,undefined);assert.doesNotMatch(f.api.body('prior'),/type="file"/);
  await f.submit(prior);assert.equal(f.state().profile.militaryStatus,'veteran');assert.equal(f.state().profile.hasPrior,'some');assert.equal(f.state().journey.step,'format');assert.equal(f.context.__prepared,undefined);
  await f.submit(online);assert.equal(f.state().journey.step,'priority');await f.submit(priority);
  const state=f.state();assert.equal(state.journey.step,'routes');assert.equal(state.journey.profileCompleted,true);assert.equal(state.journey.intakeCompleted,true);assert.equal(state.profile.budget,6000);assert.equal(state.profile.weeklyHours,12);assert.equal(state.profile.proctoringPreference,'avoid');assert.equal(f.context.__prepared,1);assert.deepEqual(state.learning,[]);assert.match(f.api.summary(),/Prefer self-paced courses/);assert.match(f.api.summary(),/Prefer outside courses without monitored exams/);assert.doesNotMatch(f.api.summary(),/Prefer no proctored exams/);
 });
 test('online students skip campus fields while campus choices are retained across Back and reload',async()=>{
- const f=fixture();await f.api.answer('explore');await f.submit(goal);await f.submit(prior);await f.edit(online);await f.submit(online);assert.match(f.api.body('format'),/id="portal-profile-campus" hidden/);
+ const f=fixture();f.api.continueFromQuiz('');await f.submit(goal);await f.submit(prior);await f.edit(online);await f.submit(online);assert.match(f.api.body('format'),/id="portal-profile-campus" hidden/);
  await f.api.action('back');assert.equal(f.state().journey.step,'format');assert.equal(f.state().profile.learningPace,'self-paced');
  const campus={format:'campus',learningPace:'any',campusLocation:'near-home',homeState:'VA',campusInterests:['sports','housing'],campusTime:'two-years'};await f.edit(campus);await f.submit(campus);
  const saved=f.stored(),next=fixture({initial:Journey.initialize(saved,null,data().catalog),stored:saved,extraStorage:f.storage()});assert.equal(next.api.resume(),true);assert.equal(next.state().journey.step,'priority');await next.api.action('back');assert.deepEqual(next.state().profile.campusInterests,['sports','housing']);assert.match(next.api.body('format'),/value="VA" selected/);assert.match(next.api.body('format'),/name="campusInterests" value="sports" checked/);assert.match(next.api.body('format'),/Your degree requirements determine the semesters you need/);
@@ -121,8 +121,39 @@ test('the three starting choices keep existing courses and notes while advanced 
   assert.deepEqual(f.state().sheet.notes,before.sheet.notes,choice+' keeps private notes');
   if(choice==='audit')assert.equal(f.context.__destination,'start.html?sort=fit','courses already in My courses are matched to degrees instead of being uploaded again');
   if(choice==='target')assert.equal(f.state().journey.step,'school');
-  if(choice==='explore')assert.equal(f.state().journey.profileFlow.mode,'explore');
+  if(choice==='explore')assert.equal(f.context.__destination,'start.html?step=quiz','Help me choose is the same flow as Build my plan: the quiz first');
  }
  const fresh=activeState();fresh.journey.step='start';fresh.learning=[];const empty=fixture({initial:fresh});await empty.api.answer('audit');
  assert.equal(empty.context.__destination,'import-courses.html?from=portal','an empty course list starts with the upload');
+});
+
+// Help me choose is one flow: the 1-minute quiz (start.html?step=quiz), then these questions as an optional continuation.
+test('the continuation after the quiz keeps its answers and still asks every portal question, saving the same data',async()=>{
+ const initial=activeState(),f=fixture({initial}),before=f.state();
+ f.api.continueFromQuiz('purpose=career-growth&subject=business&level=bachelor&format=online&priority=speed');
+ let state=f.state();
+ assert.equal(state.journey.step,'prior','a quiz goal answers the first question, so past courses and military service come next');
+ assert.equal(state.journey.profileFlow.mode,'explore');assert.equal(state.journey.profileFlow.fromQuiz,true);
+ assert.equal(state.profile.goal,'career-growth');assert.equal(state.profile.field,'business');assert.equal(state.profile.degreeLevel,'bachelor');
+ assert.equal(state.selectedPathwayId,'','exploring never picks a degree for the student');
+ assert.deepEqual(state.learning,before.learning,'My courses are kept');assert.deepEqual(state.sheet.notes,before.sheet.notes,'private notes are kept');
+ assert.match(f.api.body('purpose'),/name="goal"/,'Back still reaches the goal question');
+ assert.match(f.api.body('prior'),/name="prior"/);assert.match(f.api.body('prior'),/name="military"/);
+ await f.submit(prior);state=f.state();assert.equal(state.journey.step,'format');assert.equal(state.profile.militaryStatus,'veteran');assert.equal(state.profile.hasPrior,'some');
+ assert.equal(selectedValue(f.api.body('format'),'format'),'online','the quiz format is preselected');
+ await f.submit(online);assert.equal(f.state().journey.step,'priority');
+ assert.equal(selectedValue(f.api.body('priority'),'priority'),'speed','the quiz priority is preselected');
+ await f.submit(priority);state=f.state();
+ assert.equal(state.journey.step,'routes');assert.equal(state.journey.profileCompleted,true);
+ assert.equal(state.profile.budget,6000);assert.equal(state.profile.weeklyHours,12);assert.equal(state.profile.proctoringPreference,'avoid');assert.equal(state.profile.priority,'cost');
+ assert.equal(f.context.__prepared,1,'matching runs once, at the end');
+});
+test('the quiz continuation asks which licensed career, ignores unknown values and resumes after reload',async()=>{
+ const f=fixture();f.api.continueFromQuiz('purpose=licensed-career&subject=not-a-subject&level=phd&format=moon&priority=fast');
+ const state=f.state();assert.equal(state.journey.step,'purpose','a licensed career still asks which one');
+ assert.match(f.api.body('purpose'),/value="teacher"/);
+ assert.equal(selectedValue(f.api.body('purpose'),'field'),'any');assert.equal(selectedValue(f.api.body('purpose'),'degreeLevel'),'unsure');
+ await f.submit({goal:'teacher',field:'any',degreeLevel:'bachelor'});assert.equal(f.state().journey.step,'prior');
+ const saved=f.stored(),next=fixture({initial:Journey.initialize(saved,null,data().catalog),stored:saved,extraStorage:f.storage()});
+ assert.equal(next.api.resume(),true);assert.equal(next.state().journey.step,'prior');assert.equal(next.state().journey.profileFlow.fromQuiz,true);
 });

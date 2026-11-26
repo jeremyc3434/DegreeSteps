@@ -1037,7 +1037,9 @@
       state.journey.step='purpose';save();if(saveOK)location.assign((state.learning||[]).length?'start.html?sort=fit':'import-courses.html?from=portal');else showError(Error('Your courses could not be saved.'));return;
     }
     // "Help me choose" is one flow everywhere: the 1-minute quiz first, then the deeper questions as an optional continuation.
-    if(id==='start'&&value==='explore'||['school','degree'].includes(id)&&value==='unknown'&&state.journey.profileFlowVersion===1){location.assign(HELP_ME_CHOOSE);return;}
+    if(id==='start'&&value==='explore'){location.assign(HELP_ME_CHOOSE);return;}
+    // "Not sure" after choosing a school keeps that school, so it continues with the questions here.
+    if(['school','degree'].includes(id)&&value==='unknown'&&state.journey.profileFlowVersion===1){startProfile('explore');return;}
     if(id==='degree'&&value==='unknown'){state.journey.step='purpose';render();return;}
     if(id==='degree'||id==='routes'){openPlan();return;}
     if(id==='start'){trackGrowth('guided_started');state.journey.profileFlowVersion=1;if(value==='explore'){startProfile('explore');return;}state.journey.step=value==='target'?'school':'purpose';}

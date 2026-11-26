@@ -67,6 +67,17 @@ for(const [name,profile] of profiles)test(name+': three starting paths share one
   // Portal offers the same three paths; Help me choose keeps its longer questions.
   await page.goto(BASE+'portal.html?view=edit');await page.locator('[data-answer="explore"]').waitFor();
   assert.deepEqual(await page.locator('.portal-choices [data-answer]').evaluateAll(nodes=>nodes.map(node=>node.dataset.answer)),['target','audit','explore']);
+  // Help me choose: the portal entry opens the same 1-minute quiz, then the deeper questions continue as an option.
+  await page.locator('[data-answer="explore"]').click();await page.waitForURL(/start\.html\?step=quiz/);
+  for(let i=0;i<5;i++){await page.locator('[data-quiz-answer]').first().click();await page.waitForTimeout(150);}
+  await page.locator('#start-quiz-more:not([hidden])').waitFor();
+  assert.equal(await page.locator('.start-path[aria-current="true"] strong').innerText(),'Help me choose');
+  assert.match(await page.locator('#start-quiz-more-link').getAttribute('href'),/^portal\.html\?view=preferences&from=quiz&/);
+  assert(await wide(),'no horizontal scroll on the quiz results');
+  await page.locator('#start-quiz-more-link').click();await page.waitForURL(/portal\.html/);await page.locator('#portal-profile-form').waitFor();
+  assert.equal(await page.locator('#portal-profile-form').getAttribute('data-profile-step'),'prior','past courses and military service come right after the quiz');
+  assert.match(await page.locator('.portal-quiz-lead').innerText(),/optional/);
+  assert.equal((await learning()).length,6,'the continuation keeps every course');
   assert.deepEqual(errors,[]);
   await context.close();
  }finally{await browser.close();}
