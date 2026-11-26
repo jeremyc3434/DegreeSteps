@@ -1,5 +1,9 @@
 # Pathway Factory
 
+For multi-school cohort planning, durable capture jobs, shared source-component
+drafts, and the reviewed program-manifest pilot, use the
+[bulk production workflow](bulk-pathway-production.md).
+
 The Pathway Factory is a normalized, source-grounded way to author curriculum models. It sits **beside** the existing pipeline: it does not change `content/curricula/*.json`, `scripts/build-curriculum-registry.mjs` or the published model list. Its compiler emits documents in the existing curriculum model schema, and a round-trip test proves it reproduces `content/curricula/wgu.json` exactly.
 
 Why: a legacy model repeats each provider course's identity, mapping record, conditions and evidence inside every option of every requirement (`wgu.json`: 689 options, 95 distinct provider courses, 23 distinct condition texts). Each new program or school needed its own importer. A kit writes each fact once and the compiler joins them.

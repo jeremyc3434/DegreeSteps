@@ -1,4 +1,4 @@
-/** Exact discovery/price bindings for the next three TESU business degrees.
+/** Exact discovery/price bindings for the reviewed TESU business-family roster.
  * Reuses retained school policies and prices without refreshing their dates.
  * --write changes metadata JSON only; canonical authoring remains with the
  * program owner through buildTESUBusinessTuitionBinding(). No publication flag.
@@ -11,18 +11,15 @@ import {root,isMain} from './pathway-factory/lib.mjs';
 import {validateConnectedWebCapture} from './pathway-factory/connected-web.mjs';
 import {validateProgramRequirementPacket} from './program-requirements-metadata.mjs';
 import Estimate from '../dist/plan-estimate-engine.js';
+import {loadProgramManifests,selectProgramManifests} from './pathway-factory/program-manifest.mjs';
 
-export const TESU_BUSINESS_METADATA_TARGETS=Object.freeze([
- {slug:'bsba-human-resources-organizational-management',modelId:'curriculum-tesu-bsba-human-resources-organizational-management',routeId:'tesu-bsba-human-resources-organizational-management',title:'B.S.B.A. in Human Resources/Organizational Management',degreePath:'/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-human-resources-organizational-management'},
- {slug:'bsba-marketing',modelId:'curriculum-tesu-bsba-marketing',routeId:'tesu-bsba-marketing',title:'B.S.B.A. in Marketing',degreePath:'/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-marketing'},
- {slug:'bs-general-management',modelId:'curriculum-tesu-bs-general-management',routeId:'tesu-bs-general-management',title:'B.S. in General Management',degreePath:'/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management'}
-]);
+export const TESU_BUSINESS_METADATA_TARGETS=Object.freeze(selectProgramManifests(await loadProgramManifests(),{schoolId:'tesu',stage:'business-metadata'}).map(entry=>Object.freeze({slug:entry.slug,modelId:entry.modelId,routeId:entry.routeIds[0],title:entry.title,degreePath:entry.metadataBasis.degreePath})));
 export const TESU_BUSINESS_CATALOG_LABEL='Current undergraduate catalog · checked November 18, 2026';
 export const TESU_BUSINESS_RATE_ID='tesu-standard-business-expansion-20261126';
 const read=async path=>JSON.parse(await readFile(resolve(root,path),'utf8')),copy=structuredClone,list=v=>Array.isArray(v)?v:[],hash=v=>createHash('sha256').update(v).digest('hex');
 const normalized=v=>String(v||'').replace(/\s+/g,' ').trim(),wordkey=v=>normalized(v).toLowerCase().replace(/[^a-z0-9]/g,''),date=v=>{try{return typeof v==='string'&&/^20\d{2}-\d{2}-\d{2}$/.test(v)&&new Date(v+'T00:00:00Z').toISOString().slice(0,10)===v;}catch{return false;}};
 const idFor=program=>program.modelId||program.id;
-const targetFor=id=>{const target=TESU_BUSINESS_METADATA_TARGETS.find(target=>target.modelId===id);assert(target,'Only the three separately authored business models are in this metadata scope');return target;};
+const targetFor=id=>{const target=TESU_BUSINESS_METADATA_TARGETS.find(target=>target.modelId===id);assert(target,'Only manifest-listed separately authored business models are in this metadata scope');return target;};
 const paths={fit:'content/discovery/program-fit-reviews.json',requirements:'content/discovery/tesu-program-requirements.json',rates:'content/estimates/plan-estimate-rates.json'};
 
 export async function loadTESUBusinessPriceBasis(rates){
@@ -71,7 +68,7 @@ export async function validateTESUBusinessMetadataModel(model,{asOf='2026-11-26'
 }
 
 export async function buildTESUBusinessMetadata({models,fitReviews,requirements,rates,asOf='2026-11-26'}){
- assert.equal(models.length,3,'All three exact authored models are required before shared metadata is written');assert.equal(new Set(models.map(idFor)).size,3);validateProgramRequirementPacket(requirements);const basis=await loadTESUBusinessPriceBasis(rates),nextFit=copy(fitReviews),nextRequirements=copy(requirements),nextRates=copy(rates);
+ assert.equal(models.length,TESU_BUSINESS_METADATA_TARGETS.length,'All exact manifest models are required before shared metadata is written');assert.equal(new Set(models.map(idFor)).size,TESU_BUSINESS_METADATA_TARGETS.length);validateProgramRequirementPacket(requirements);const basis=await loadTESUBusinessPriceBasis(rates),nextFit=copy(fitReviews),nextRequirements=copy(requirements),nextRates=copy(rates);
  const template=fitReviews.reviews.find(review=>review.id==='tesu-standard-online-undergraduate-scheduled-reviewed-20261126'),context=requirements.reviews.find(review=>review.modelIds.includes('curriculum-tesu-bsba-accounting'));assert(template&&context);assert.equal(template.catalogYear,TESU_BUSINESS_CATALOG_LABEL);assert.equal(template.paceModel,'course-term');assert.equal(template.baselineFormat,'standard-online-coursework');
  for(const source of [template.source,...template.supportingSources])await capturedSource(source,{checkedOn:asOf});
  const resolutions=[];
