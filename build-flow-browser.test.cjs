@@ -7,7 +7,8 @@ const S=require('./dist/sheet-state.js'),J=require('./dist/journey-engine.js'),C
 const BASE=(process.env.DEGREEPATH_TEST_URL||'http://127.0.0.1:8133/').replace(/\/?$/,'/'),KEY='degreepath-guide-v3';
 const catalog=C.attachRegistry(C.merge(require('./dist/data/pathways.json'),require('./dist/data/program-catalog.json')),require('./dist/data/curriculum-registry.json'));
 const seed=id=>J.initialize(S.selectPathway(S.initialize(null,null,catalog),catalog.pathways.find(route=>route.id===id)),null,catalog);
-const PLAN='apus-bachelor-of-arts-in-psychology';
+// A published plan the portal opens (the builder offers "Build this plan" only for these; see builder-every-card-browser).
+const PLAN='wgu-catalog-19be0ad2d1922f49';
 let browser,count=0;const contexts=[];
 async function test(name,fn){await fn();count++;console.log('PASS '+name);}
 async function open(width,path,{plan=null,state=null}={}){
@@ -64,7 +65,8 @@ const stored=page=>page.evaluate(key=>localStorage.getItem(key),KEY);
       await page.locator('[data-filter="level"][data-value=""]').click();
       await page.locator('#start-sort').selectOption('outside');
       assert.match(page.url(),/sort=outside/);
-      await cards.first().getByRole('link',{name:'Build this plan'}).click();
+      // Only plans the portal opens offer "Build this plan"; the others offer "Request this plan" (see builder-every-card-browser).
+      await page.locator('.start-card [data-build-plan]').first().click();
       await page.locator('#start-step-credits:not([hidden])').waitFor();
       assert.match(await page.locator('#start-step-credits .start-step-label').innerText(),/Step 2 of 3/);
       assert.equal(await stored(page),null,'choosing a degree writes nothing until the plan opens');
@@ -96,7 +98,7 @@ const stored=page=>page.evaluate(key=>localStorage.getItem(key),KEY);
   await test('step 2: Skip records "later" and the military line opens the military preferences',async()=>{
     const {page}=await open(390,'start.html?step=credits&plan='+PLAN);
     await page.locator('#start-step-credits:not([hidden])').waitFor({timeout:30000});
-    assert.match(await page.locator('#start-credits-skip').getAttribute('href'),/usePlan=apus-bachelor-of-arts-in-psychology&then=later/);
+    assert.match(await page.locator('#start-credits-skip').getAttribute('href'),new RegExp('usePlan='+PLAN+'&then=later'));
     await page.locator('#start-military').click();
     await page.waitForURL(/plan\.html\?task=preferences/,{timeout:60000});
     await page.locator('#sheet-dialog[open]').waitFor({timeout:30000});
@@ -104,7 +106,7 @@ const stored=page=>page.evaluate(key=>localStorage.getItem(key),KEY);
   });
 
   await test('deep links that name a plan skip to step 2; an unknown plan falls back to step 1 with a note',async()=>{
-    for(const path of ['start.html?usePlan='+PLAN,'start.html?school='+encodeURIComponent('American Public University System')+'&program='+PLAN+'&format=online']){
+    for(const path of ['start.html?usePlan='+PLAN,'start.html?school='+encodeURIComponent('Western Governors University')+'&program='+PLAN+'&format=online']){
       const {page}=await open(390,path);await page.locator('#start-step-credits:not([hidden])').waitFor({timeout:30000});
     }
     const {page}=await open(390,'start.html?plan=not-a-real-plan');
@@ -138,13 +140,13 @@ const stored=page=>page.evaluate(key=>localStorage.getItem(key),KEY);
     assert.match(await page.locator('#start-quiz-card').innerText(),/confirm licensure with the school/);
   });
 
-  await test('partial course prices remain clearly incomplete on the card and credits step',async()=>{
+  await test('partial course prices remain clearly incomplete on the card, which offers a request until the plan is published',async()=>{
     const {page,errors}=await open(390,'start.html?q=Excelsior');
     await page.locator('#start-step-degree:not([hidden])').waitFor({timeout:30000});
     const cards=page.locator('.start-card');assert.equal(await cards.count(),3);
-    for(const card of await cards.all()){assert.match(await card.innerText(),/Known charges so far/);assert.match(await card.innerText(),/StraighterLine prices not included/);assert.doesNotMatch(await card.innerText(),/Est\. cost/);}
-    await cards.first().getByRole('link',{name:'Build this plan'}).click();await page.locator('#start-step-credits:not([hidden])').waitFor();
-    assert.match(await page.locator('#start-picked').innerText(),/Known charges so far/);assert.match(await page.locator('#start-picked').innerText(),/StraighterLine prices not included/);assert.equal(await overflow(page),0);assert.deepEqual(errors,[]);
+    // These Excelsior plans still need school confirmation: they show their known charges and offer a request, not a build.
+    for(const card of await cards.all()){assert.match(await card.innerText(),/Known charges so far/);assert.match(await card.innerText(),/StraighterLine prices not included/);assert.doesNotMatch(await card.innerText(),/Est\. cost/);assert.equal(await card.getByRole('link',{name:'Build this plan'}).count(),0);assert.match(await card.getByRole('link',{name:'Request this plan'}).getAttribute('href'),/^request-plan\.html\?/);}
+    assert.equal(await overflow(page),0);assert.deepEqual(errors,[]);
   });
 
   await test('explicit quiz intent survives a credits-step reload and keeps the original course collection',async()=>{

@@ -97,6 +97,22 @@
   const indexed=new Map(array(catalog.publicationIndex.plans).map(plan=>[plan.modelId,plan])),loaded=new Map(array(models).map(model=>[model.id,model]));
   return structuralPlans(catalog,models).filter(route=>{const entry=indexed.get(route.modelId),model=loaded.get(route.modelId);return entry?.publicationReady===true&&array(entry.routeIds).includes(route.id)&&publicationLevel(route.level)===entry.level&&(!model||entry.modelFingerprint===publicationModelFingerprint(model,entry.level));});
  }
+ // The one rule every public "Build this plan" action follows, and the same check the portal applies before it opens a
+ // plan: the route is a publication-ready plan for its exact curriculum (publishedPlans). A complete plan that still
+ // needs school confirmation is not openable; it gets a "Request this plan" action instead (planRequestHref).
+ // openablePlanIds computes the set once for a whole list; canOpenPublicPlan answers for one route.
+ function openablePlanIds(catalog,models=[]){return new Set(publishedPlans(catalog,models).map(route=>route.id));}
+ function canOpenPublicPlan(route,catalog,models=[]){return Boolean(route&&identified(route.id))&&openablePlanIds(catalog,models).has(route.id);}
+ // The existing research request for a degree DegreeSteps can't open yet: request-plan.html with the school's own
+ // degree page, so research starts from the official requirements. Without an official https page it opens the
+ // same request form for that school.
+ function planRequestHref(route,{absolute=false}={}){
+  const official=[route?.url,...array(route?.sources).map(source=>source?.url)].find(url=>{try{const value=new URL(url);return value.protocol==='https:'&&!value.username&&!value.password&&!/degreeforum|reddit|study\.com|sophia\.org/.test(value.hostname);}catch{return false;}});
+  const query=new URLSearchParams();if(official)query.set('source',new URL(official).href);else if(present(route?.school))query.set('school',String(route.school).trim().slice(0,120));
+  // The format note on that form asks the student to paste a link, so it is only sent when no official link is known.
+  const formats=array(route?.modalities).filter(mode=>['online','campus'].includes(mode));if(!official&&formats.length===1)query.set('format',formats[0]);
+  return (absolute?'/':'')+'request-plan.html'+(query.toString()?'?'+query:'');
+ }
  // Public discovery offers one representative per publication-ready model.
  // Keep publishedPlans alias-aware for exact links and existing private drafts.
  function needsSchoolConfirmation(route,planIndex){return planIndex?.plans?.[route?.id]?.tier==='confirmation';}
@@ -276,5 +292,5 @@
  }
  function modelsForRoutes(routes,options={}){return loadModels([...new Set(array(Array.isArray(routes)?routes:routes?.pathways).filter(route=>route?.modelId).map(route=>route.modelId))],options);}
  async function load(base,options={}){return loadIndex(merge(base,await jsonFile('data/program-catalog.json',options)),options);}
- return Object.freeze({merge,search,load,field,modelFiles,variants,courseChoiceCounts,modelReadiness,isPlanAvailable,availablePlans,publishedPlans,planLibraryRoutes,needsSchoolConfirmation,publicationFingerprint,publicationModelFingerprint,publicationLevel,attachPublicationIndex,planChoiceCount,resolveTarget,rememberPlan,targetIdentity,targetFingerprint,planHistoryId,planSnapshot,attachRegistry,loadIndex,loadModels,modelsForRoutes,validateRegistry,validateModel,discover,validateDiscovery,attachSourceCurricula,sourceModels,rememberDiscovery});
+ return Object.freeze({merge,search,load,field,modelFiles,variants,courseChoiceCounts,modelReadiness,isPlanAvailable,availablePlans,publishedPlans,planLibraryRoutes,openablePlanIds,canOpenPublicPlan,planRequestHref,needsSchoolConfirmation,publicationFingerprint,publicationModelFingerprint,publicationLevel,attachPublicationIndex,planChoiceCount,resolveTarget,rememberPlan,targetIdentity,targetFingerprint,planHistoryId,planSnapshot,attachRegistry,loadIndex,loadModels,modelsForRoutes,validateRegistry,validateModel,discover,validateDiscovery,attachSourceCurricula,sourceModels,rememberDiscovery});
 }));
