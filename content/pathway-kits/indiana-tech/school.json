@@ -1,0 +1,53 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "indiana-tech",
+  "name": "Indiana Institute of Technology",
+  "creditSystem": "semester",
+  "checkedOn": "2026-11-26",
+  "sources": [
+    {
+      "id": "indiana-tech-sophia-partner-page",
+      "title": "Sophia partner page: Sophia courses that transfer to Indiana Institute of Technology",
+      "url": "https://indianatech.sophia.org/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/1ff3f6235aadd9b7.txt",
+      "tableSha256": "103880263a4e09ba9b4ed4213a503cfb015f5bf920d56fd345db9b7daedc1d7b",
+      "kind": "provider",
+      "publisher": "Sophia Learning",
+      "evidenceType": "provider-published-equivalency",
+      "roles": [
+        "transfer-equivalency"
+      ],
+      "scope": "Provider-published course matches for Indiana Institute of Technology; Indiana Institute of Technology confirms transfer credit when it evaluates the transcript."
+    },
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15",
+      "kind": "provider",
+      "provider": "Sophia",
+      "roles": [
+        "provider-identity",
+        "current-offering"
+      ],
+      "sourceContentHash": "sha256:87fc671a0924d31dad7305692d59cc3d68b61791e692a7fcc11f99c879e224f6",
+      "reviewedFact": "Only exact Sophia ACE identities, original source quantities and active offerings are reused. WGU receiving awards are not inherited.",
+      "copiedFor": "sophia-partner-import-indianatech:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "indiana-tech-transfer-students",
+      "title": "Indiana Tech: transfer students",
+      "url": "https://indianatech.edu/admissions/transfer-students/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/27dd6036b1188299.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "scope": "Bachelor’s degrees: no more than 90 credit hours transferred. Apply at program level on bachelor’s programs."
+    }
+  ]
+}

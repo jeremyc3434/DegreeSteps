@@ -1,0 +1,53 @@
+{
+  "kind": "pathway-kit-school",
+  "version": 1,
+  "id": "nichols",
+  "name": "Nichols College",
+  "creditSystem": "semester",
+  "checkedOn": "2026-11-26",
+  "sources": [
+    {
+      "id": "nichols-sophia-partner-page",
+      "title": "Sophia partner page: Sophia courses that transfer to Nichols College",
+      "url": "https://nicholscollege.sophia.org/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/4874a3b846effc71.txt",
+      "tableSha256": "005a43ed2248b12787bcbac486e25e8c2dc738d854ad39b1facc98d5adf2742b",
+      "kind": "provider",
+      "publisher": "Sophia Learning",
+      "evidenceType": "provider-published-equivalency",
+      "roles": [
+        "transfer-equivalency"
+      ],
+      "scope": "Provider-published course matches for Nichols College; Nichols College confirms transfer credit when it evaluates the transcript."
+    },
+    {
+      "id": "wgu-sophia-business-current",
+      "title": "Sophia WGU business current partnership table and March2026 change notice",
+      "url": "https://wgucollegeofbusiness.sophia.org/",
+      "checked": "2026-11-15",
+      "kind": "provider",
+      "provider": "Sophia",
+      "roles": [
+        "provider-identity",
+        "current-offering"
+      ],
+      "sourceContentHash": "sha256:87fc671a0924d31dad7305692d59cc3d68b61791e692a7fcc11f99c879e224f6",
+      "reviewedFact": "Only exact Sophia ACE identities, original source quantities and active offerings are reused. WGU receiving awards are not inherited.",
+      "copiedFor": "sophia-partner-import-nicholscollege:provider-identity",
+      "copiedFrom": "liberty/school.json"
+    },
+    {
+      "id": "nichols-transfer-students",
+      "title": "Nichols College: transfer admission",
+      "url": "https://www.nichols.edu/admission/transfer/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/e89f6edda9d724bb.txt",
+      "kind": "university",
+      "roles": [
+        "policy"
+      ],
+      "scope": "Up to 90 transfer credits; DANTES/CLEP max 30. Level not stated; apply at program level after confirming associate limits."
+    }
+  ]
+}
