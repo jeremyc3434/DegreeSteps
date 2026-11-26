@@ -11,6 +11,8 @@ The generated publication index has **45 complete starting plans: the previous 4
 
 Both editions have 40 named requirement rows and a complete published-only starting selection. Source review establishes proposed course applicability; it does not report a student's completion or grant personal transfer credit. These outside-credit totals describe the current supported selections, not a proof that every possible optimization has been exhausted.
 
+The worksheet labels a published, source-bound school-submitted award as **School-submitted mapping**. It no longer adds a misleading conditional-research label to that reviewed mapping. Legacy conditional matches retain their warning, and the grade, original-version, transcript and provider-policy conditions remain in the evidence details. This presentation change neither approves a provider nor grants a student credit.
+
 The new General Management route is `tesu-bs-general-management`. Its named major courses span Management, Finance and Marketing. This satisfies the current three-discipline selection rule without adding the Accounting course whose prerequisite would consume a free-elective slot. The old `tesu-general-management` model and its legacy data path remain available for existing private plans; saved plans are not silently migrated.
 
 ## Reusable structure and evidence
