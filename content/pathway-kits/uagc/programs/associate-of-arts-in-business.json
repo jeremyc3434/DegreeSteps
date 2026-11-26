@@ -1,0 +1,368 @@
+{
+  "kind": "pathway-kit-program",
+  "version": 1,
+  "slug": "associate-of-arts-in-business",
+  "routeIds": [],
+  "title": "Associate of Arts in Business",
+  "level": "associate",
+  "catalog": "2026-2027 ACADEMIC CATALOG",
+  "totalCredits": 67,
+  "catalogUrl": "https://uagcmedia.static.arizona.edu/Catalog/2026-2027_UAGC_Academic_Catalog.pdf#pages=133-134&columns=2",
+  "status": "draft",
+  "review": {
+    "status": "draft",
+    "draftedBy": "claude-opus-5-5",
+    "draftedOn": "2026-11-23"
+  },
+  "sources": [
+    {
+      "id": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+      "title": "Associate of Arts in Business catalog page",
+      "url": "https://uagcmedia.static.arizona.edu/Catalog/2026-2027_UAGC_Academic_Catalog.pdf#pages=133-134&columns=2",
+      "checked": "2026-11-23",
+      "capture": "content/source-captures/0a86008ddbd58100.txt"
+    }
+  ],
+  "quotes": [
+    {
+      "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+      "text": "Total number of credits required: 67 credits"
+    }
+  ],
+  "gaps": [
+    "The capture says only \"credits\" and never names the unit type (semester or quarter). Semester is assumed and needs confirmation.",
+    "The elective block is printed as 16 credits. GEN 101 is listed as \"Entry Point Course ... (Elective)\" and counts toward electives, so the open elective line is recorded as 13 credits (16 - 3). This keeps the ledger at the printed total of 67 credits.",
+    "Global Campus Foundations is printed as 33 credits. Nine listed Foundations courses (27 credits) plus ECO 204 (Social Scientist Perspective) and BUS 340 (Interdisciplinary Oral Communication) from the core make up the 33. These two core courses are recorded only under core to avoid double counting (\"6 credits from the core may also satisfy Global Campus Foundations requirements\").",
+    "No specific elective courses are named for the 13 remaining elective credits.",
+    "Residency: \"At least 18 credits earned toward the Associate of Arts degree must be completed at the University of Arizona Global Campus.\" No specific course is designated as institution-only, so no requirement is flagged institutionalOnly.",
+    "The capture states \"Additional prerequisite courses may be required\" but does not identify them for this program, apart from ENG 122 requiring ENG 121 or equivalent.",
+    "The capture states that courses may be substituted to satisfy specific Global Campus Foundations requirements, but it does not list the allowable substitutions.",
+    "The GEN 104 and TEC 100 substitution rules in the capture apply to bachelor students or named bachelor programs. Their applicability to this associate program is not stated.",
+    "Minimum cumulative GPA of 2.00 is required. Other grade minimums for individual courses are not stated."
+  ],
+  "requirements": [
+    {
+      "id": "associate-of-arts-in-business-gen-101",
+      "code": "GEN 101",
+      "title": "Developing Skills and Strategies for Success",
+      "credits": 3,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "Entry Point Course GEN 101 Developing Skills and"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-gen-102",
+      "code": "GEN 102",
+      "title": "Digital Fluency for Life and The Workplace",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "GEN 102 Digital Fluency for Life"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-eng-121",
+      "code": "ENG 121",
+      "title": "English Composition I",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "ENG 121 English Composition I"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-gen-103",
+      "code": "GEN 103",
+      "title": "Information Literacy",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "GEN 103 Information Literacy (3"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-eng-122",
+      "code": "ENG 122",
+      "title": "English Composition II",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "ENG 122 English Composition II"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-psy-101",
+      "code": "PSY 101",
+      "title": "Introduction to Psychology",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "PSY 101 Introduction to"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-his-206",
+      "code": "HIS 206",
+      "title": "United States History II",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "HIS 206 United States History II"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-pol-202",
+      "code": "POL 202",
+      "title": "The American Republic: Principles, Ideals, Institutions, and Society",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "POL 202 The American Republic:"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-sci-205",
+      "code": "SCI 205",
+      "title": "Introduction to Environmental Sustainability",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "SCI 205 Introduction to Environmental Sustainability (3"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-mat-222",
+      "code": "MAT 222",
+      "title": "Intermediate Algebra",
+      "credits": 3,
+      "category": "general-education",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "MAT 222 Intermediate Algebra"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-bus-119",
+      "code": "BUS 119",
+      "title": "Principles of Personal and Organizational Leadership",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "BUS 119 Principles of Personal and Organizational"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-bus-201",
+      "code": "BUS 201",
+      "title": "Principles of Management",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "BUS 201 Principles of Management (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-acc-201",
+      "code": "ACC 201",
+      "title": "Principles of Financial Accounting",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "ACC 201 Principles of Financial Accounting (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-eco-204",
+      "code": "ECO 204",
+      "title": "Principles of Microeconomics",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "ECO 204 Principles of Microeconomics (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-bus-250",
+      "code": "BUS 250",
+      "title": "Corporate and Social Responsibility",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "BUS 250 Corporate and Social Responsibility (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-bus-340",
+      "code": "BUS 340",
+      "title": "Business Communications",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "BUS 340 Business Communications (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-bus-303",
+      "code": "BUS 303",
+      "title": "Human Resource Management",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "BUS 303 Human Resource Management (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-bus-330",
+      "code": "BUS 330",
+      "title": "Principles of Marketing",
+      "credits": 3,
+      "category": "core",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "BUS 330 Principles of Marketing (3 credits)"
+        }
+      ]
+    },
+    {
+      "id": "associate-of-arts-in-business-elective-requirements-remaining-after-gen-101",
+      "code": "",
+      "title": "Elective Requirements (remaining after GEN 101)",
+      "credits": 13,
+      "category": "elective",
+      "institutionalOnly": false,
+      "sourceIds": [
+        "uagc-associate-of-arts-in-business-catalog-2026-11-23"
+      ],
+      "quotes": [
+        {
+          "sourceId": "uagc-associate-of-arts-in-business-catalog-2026-11-23",
+          "text": "Elective Requirements: 16 credits"
+        }
+      ]
+    }
+  ]
+}
