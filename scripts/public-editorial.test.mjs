@@ -44,3 +44,13 @@ test('public course filters and subscription scenarios work without reading or u
  months.value='not-a-number';months.input();assert.match(result.textContent,/Enter a monthly fee/);
  assert.equal(monthly.disabled,false);
 });
+
+test('the authors index lists every author page and public contact uses the DegreeSteps domain',async()=>{
+ const read=path=>readFile(new URL('../dist/'+path,import.meta.url),'utf8');
+ const index=await read('authors/index.html');
+ assert.match(index,/<link rel="canonical" href="https:\/\/degreesteps\.com\/authors\/">/);
+ for(const author of content.authors)assert(index.includes('href="'+authorPath(author)+'"'),author.id);
+ for(const author of content.authors)assert.match(await read(authorPath(author).slice(1)+'index.html'),/<a href="\/authors\/">Research and authors<\/a>/);
+ for(const page of ['about','privacy','terms','authors']){const html=await read(page+'/index.html');assert.doesNotMatch(html,/@gmail\.com/i,page);assert.match(html,/href="mailto:[a-z]+@degreesteps\.com"/,page);}
+ assert.match(await read('sitemap.xml'),/<loc>https:\/\/degreesteps\.com\/authors\/<\/loc>/);
+});

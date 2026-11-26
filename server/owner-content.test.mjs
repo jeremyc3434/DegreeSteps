@@ -107,11 +107,16 @@ test('content namespace delegates unrelated owner routes and requires the centra
  await assert.rejects(()=>handleOwnerContent(request,f.env,{...f.context(request.url),ownerAuthorized:false}),error=>error.status===403);
 });
 
+test('an empty insights index stays out of search results and points to existing guides',async t=>{
+ const f=fixture(t),response=await f.publicCall('/insights/'),html=await response.text();assert.equal(response.status,200);
+ assert.match(html,/<meta name="robots" content="noindex, follow">/);assert.match(html,/href="\/guides\/"/);assert.match(html,/New guides will appear here after review/);
+});
+
 test('public insights index lists only published snapshots and sitemap selects bounded metadata',async t=>{
  const f=fixture(t),one=await f.create('articles',article({title:'First reviewed guide'}));await f.publish('articles',one);
  await f.create('articles',article({slug:'private-draft-guide',title:'A private draft must stay private'}));
  const second=await f.create('articles',article({slug:'second-published-guide',title:'Second reviewed guide'}));await f.publish('articles',second);
- const response=await f.publicCall('/insights/?limit=1'),html=await response.text();assert.equal(response.status,200);assert.match(html,/href="https:\/\/degreesteps.com\/insights\/"/);assert.match(html,/href="\/blog\/"/);assert.match(html,/href="\/resources\/"/);assert.doesNotMatch(html,/A private draft/);assert.match(html,/More guides/);
+ const response=await f.publicCall('/insights/?limit=1'),html=await response.text();assert.equal(response.status,200);assert.match(html,/href="https:\/\/degreesteps.com\/insights\/"/);assert.match(html,/href="\/blog\/"/);assert.match(html,/href="\/resources\/"/);assert.doesNotMatch(html,/A private draft/);assert.match(html,/More guides/);assert.doesNotMatch(html,/noindex/);
  const next=html.match(/href="(\/insights\/\?cursor=[^"]+)"/)[1];assert.equal((await f.publicCall(next)).status,200);
  const queries=[],db={...f.DB,prepare(sql){queries.push(sql);return f.DB.prepare(sql);}};
  const page=await ownerContentSitemap({...f.context('https://degreesteps.com'),db},{limit:1});assert.equal(page.items.length,1);assert.ok(page.cursor);assert.match(queries[0],/^SELECT id,type,slug,published_at FROM/);assert.doesNotMatch(queries[0],/SELECT \*/);
