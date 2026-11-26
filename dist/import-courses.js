@@ -2,9 +2,11 @@
 (function(){
  'use strict';
  const Engine=window.DegreeRecordImport,Workflow=window.DegreeCourseImportWorkflow,Files=window.DegreeRecordFileReader,$=id=>document.getElementById(id);
- const from=(()=>{try{const value=new URL(window.location.href).searchParams.get('from');return ['plan','compare','courses','credits-worth'].includes(value)?value:'';}catch{return '';}})();
+ const from=(()=>{try{const value=new URL(window.location.href).searchParams.get('from');return ['plan','compare','courses','credits-worth','degrees','programs','portal'].includes(value)?value:'';}catch{return '';}})();
  const hasPlan=value=>Boolean(value?.selectedPathwayId||value?.profile?.pathwayId)&&!value?.sheet?.isExample;
- function updateBack(){const back=$('import-back');if(!back)return;back.href=from==='credits-worth'?'credits-worth.html':from==='compare'?'compare-plans.html':from==='plan'&&hasPlan(saved)?'plan.html':'courses.html?tab=mine';back.textContent=from==='credits-worth'?'Degree matches':from==='compare'?'My degree comparisons':from==='plan'&&hasPlan(saved)?'My plan':'My courses';}
+ // The degree finder (start.html, programs.html) and the portal's "Use my courses" path come back to the finder, ranked by these courses.
+ const finder=from==='degrees'||from==='portal'?'start.html':from==='programs'?'programs.html':'';
+ function updateBack(){const back=$('import-back');if(back){back.href=from==='credits-worth'?'credits-worth.html':from==='compare'?'compare-plans.html':finder||(from==='plan'&&hasPlan(saved)?'plan.html':'courses.html?tab=mine');back.textContent=from==='credits-worth'?'Degree matches':from==='compare'?'My degree comparisons':finder?'Find a degree':from==='plan'&&hasPlan(saved)?'My plan':'My courses';}const manual=$('import-manual-link');if(manual)manual.href='plan.html?task=credits&manual=1&from='+(['credits-worth','degrees','programs'].includes(from)?from:'courses');}
  const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
  const unitOptions=[['','Not listed'],['semester','Semester credits'],['quarter','Quarter credits'],['competency-unit','Competency units']],statusOptions=[['','Choose progress'],['earned','Finished'],['in-progress','Taking now'],['planned','Not started'],['saved','Considering']];
  let files=[],rows=[],saved=null,baseline='',epoch=0,busy=false,aiStatus=null,finished=false,rowRenderRevision=0;
@@ -48,8 +50,8 @@
   if(['provider','creditSystem','status'].some(field=>eligible.filter(row=>!row.record[field]).length>1))$('import-batch-details').open=true;
  }
  function successLinks(){
-  const plan=hasPlan(saved),creditsWorth=from==='credits-worth',returnToPlan=plan&&!creditsWorth&&from!=='compare'&&from!=='courses';
-  $('import-next').href=creditsWorth?'credits-worth.html':returnToPlan?'plan.html':'compare-plans.html?from=courses';
+  const plan=hasPlan(saved),creditsWorth=from==='credits-worth',returnToPlan=plan&&!creditsWorth&&!finder&&from!=='compare'&&from!=='courses';
+  $('import-next').href=creditsWorth?'credits-worth.html':finder||(returnToPlan?'plan.html':'compare-plans.html?from=courses');
   $('import-next').textContent=creditsWorth?'See degree matches for my credits':returnToPlan?'See my updated plan':from==='compare'?'Compare degrees with my courses':'Find degrees for my courses';
   const alternative=$('import-alternative');alternative.hidden=!plan&&!creditsWorth;alternative.href=returnToPlan||creditsWorth?'compare-plans.html?from=courses':'plan.html';alternative.textContent=returnToPlan||creditsWorth?'Compare degrees with my courses':'See my updated plan';
  }

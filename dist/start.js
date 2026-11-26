@@ -66,10 +66,18 @@ const personalReady=p=>{const result=personalFor(p);return result?.available===t
 const personalRange=p=>{const value=personalReady(p)?.estimate,range=value?.costs?.knownRange;return value?.available===true&&range&&Number.isFinite(range.min)&&Number.isFinite(range.max)&&range.min>=0&&range.max>=range.min?{...range,partial:value.partial===true||value.status==='partial-range'}:null;};
 function matches(p){if(!matchesBasic(p))return false;if(personalEnabled&&filters.budget&&personalComplete){const range=personalRange(p);return Boolean(range&&!range.partial&&range.max<=Number(filters.budget));}return true;}
 function discoveryProfile(){return{field:filters.subject||'any',degreeLevel:filters.level||'unsure',modality:filters.format||'any',classroomImportance:filters.format==='campus'?'essential':'open'};}
+// The three starting paths. "Use my courses" uploads first when the shared course list is empty, and ranks the
+// degrees below by that list once it has courses, so nobody enters their courses twice.
+function courseCount(){try{return window.DegreeMyCourses?.read().learning.length||0;}catch{return 0;}}
+function pathStatus(){
+  const card=$('start-path-courses'),note=$('start-path-courses-note'),count=courseCount(),label=count+' course'+(count===1?'':'s');if(!card||!note)return;
+  card.href=personalAvailable?'#start-count':'import-courses.html?from=degrees';card.classList?.toggle('start-path-on',personalAvailable&&personalEnabled);
+  note.textContent=personalAvailable?(personalEnabled?'Degrees below are ranked by your '+label+'.':'Rank the degrees below by your '+label+'.'):'Upload a transcript or spreadsheet. We match it to degrees.';
+}
 function personalStatus(){
   $('start-personal-label').hidden=!personalAvailable;$('start-personal').checked=personalEnabled;$('start-sort-fit').hidden=!personalAvailable;
-  $('start-personal-courses').textContent=personalAvailable?'My courses':'Already taken classes? Add your courses';
-  $('start-personal-courses').href=personalAvailable?'courses.html?tab=mine':'import-courses.html?from=degrees';
+  $('start-personal-courses').hidden=!personalAvailable;$('start-personal-tools').hidden=!personalAvailable&&!personalError;
+  pathStatus();
   const status=$('start-personal-status');status.setAttribute('aria-busy',String(personalPending));
   $('start-personal-retry').hidden=!personalError;
   status.textContent=personalError||(!personalEnabled?'':personalPending?'Matching your courses with '+personalTotal+' ready plans… '+personalChecked+' checked.':personalComplete?'Your courses checked against '+personalTotal+' ready plan'+(personalTotal===1?'':'s')+'. Finished and unfinished coursework stay separate.':'');
@@ -180,7 +188,13 @@ function openCredits(p){
   $('start-credits-back').href='start.html'+(degreeParams().toString()?'?'+degreeParams():'');
   $('start-credits-skip').href=planUrl(p,'later');
   $('start-military').href=planUrl(p,'military');
-  $('start-credits-form').onsubmit=event=>{event.preventDefault();const choice=new FormData(event.target).get('prior');location.assign(planUrl(p,['none','some','upload'].includes(choice)?choice:'none'));};
+  // Courses already in My courses are used as they are: the student is not asked to enter them again.
+  const count=courseCount(),have=$('start-prior-have');have.hidden=!count;$('start-credits-courses').hidden=!count;
+  let records=[];try{records=window.DegreeMyCourses?.read().learning||[];}catch{}
+  // "Starting fresh" would contradict finished or current courses the student has already recorded.
+  $('start-prior-none').hidden=records.some(record=>['earned','in-progress'].includes(record.status));
+  if(count){have.querySelector('input').checked=true;$('start-prior-have-note').textContent='Your '+count+' course'+(count===1?' is':'s are')+' matched to this plan for you.';$('start-credits-title').textContent='Your courses come with you';const label=(value,title,note)=>{const node=document.querySelector('input[name=prior][value="'+value+'"]')?.closest('label');if(node){node.querySelector('strong').textContent=title;node.querySelector('small').textContent=note;}};label('some','Add more by hand','Type them in on the next screen.');label('upload','Upload more courses','Add a transcript or spreadsheet and review it first.');$('start-credits-lede').textContent='Add more if you have them. You can change them any time.';}
+  $('start-credits-form').onsubmit=event=>{event.preventDefault();const choice=new FormData(event.target).get('prior');location.assign(planUrl(p,choice==='have'?'':['none','some','upload'].includes(choice)?choice:'none'));};
   document.title='Credits you have — DegreeSteps';
   show('credits');
 }
@@ -224,6 +238,13 @@ for(const key of ['pace','billing','share','budget'])$('start-'+key).addEventLis
 $('start-cbe').addEventListener('change',()=>{filters.cbe=$('start-cbe').checked;limit=12;renderDegree();syncUrl();});
 $('start-personal').addEventListener('change',()=>{personalEnabled=$('start-personal').checked;personalController?.cancel();++personalRevision;personalPending=false;personalComplete=false;personalScopeKey='';personalResults=new Map();personalError='';if(!personalEnabled&&filters.sort==='fit')filters.sort='cost';limit=12;renderDegree();syncUrl();});
 $('start-personal-retry').addEventListener('click',refreshPersonal);
+$('start-path-find').addEventListener('click',event=>{event.preventDefault();$('start-q').focus();$('start-q').scrollIntoView?.({block:'center'});});
+$('start-path-courses').addEventListener('click',event=>{
+  if(!personalAvailable)return;
+  event.preventDefault();
+  if(!personalEnabled){$('start-personal').checked=true;$('start-personal').dispatchEvent(new Event('change'));if($('start-sort-fit')&&!$('start-sort-fit').hidden){filters.sort='fit';renderDegree();syncUrl();}}
+  $('start-count').scrollIntoView?.({block:'start'});
+});
 window.addEventListener('storage',event=>{if(event.key==='degreepath-guide-v3'||event.key===null)refreshPersonal();});
 window.addEventListener('degreepath:plan-saved',refreshPersonal);
 window.addEventListener('degreepath:save',refreshPersonal);

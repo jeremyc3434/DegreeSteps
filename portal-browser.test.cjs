@@ -80,8 +80,8 @@ function savedTarget(pathId, overrides = {}) {
     assert.equal((await page.locator('#portal-question-title').innerText()).trim(), 'Build your course plan.');
     assert.equal(await page.locator('.portal-choice').count(), 3);
     assert(await page.getByRole('button', {name:/^Help me choose/}).isVisible());
-    assert(await page.getByRole('button', {name:/^I know my degree/}).isVisible());
-    assert(await page.getByRole('button', {name:/^Use my past courses/}).isVisible());
+    assert(await page.getByRole('button', {name:/^Find a degree/}).isVisible());
+    assert(await page.getByRole('button', {name:/^Use my courses/}).isVisible());
     await page.locator('.portal-more-starts>summary').click();
     assert(await page.getByRole('link', {name:'Browse transfer courses', exact:true}).isVisible());
     assert.equal(await page.locator('#sheet-grid').count(), 0);

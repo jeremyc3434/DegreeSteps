@@ -7,7 +7,8 @@
 }(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
   'use strict';
   const KEY = 'degreesteps-plan-save-intent-v1', TTL = 60 * 60 * 1000;
-  const pages = new Set(['/plan.html','/portal.html','/courses.html','/compare-plans.html']);
+  // Every page that changes the one device draft (plan + My courses) offers the same account save.
+  const pages = new Set(['/plan.html','/portal.html','/courses.html','/compare-plans.html','/credits-worth.html','/degree-audit.html']);
   const esc = value => String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let dialog = null, opener = null, model = null, revision = 0, initialized = false;
   function storage() {try {return root.sessionStorage;} catch {return null;}}

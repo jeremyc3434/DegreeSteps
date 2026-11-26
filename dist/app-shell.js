@@ -2,6 +2,8 @@
 (function () {
   'use strict';
   const page = location.pathname.split('/').pop() || 'portal.html';
+  // The pages that change the one device draft (plan + My courses) all show the same account save action and status.
+  const SAVE_PAGES = ['plan.html','portal.html','courses.html','compare-plans.html','import-courses.html','credits-worth.html','degree-audit.html'];
   const parameters = new URLSearchParams(location.search), task = parameters.get('task'), preferenceView = page === 'portal.html' && parameters.get('view') === 'preferences';
   const labels = {'start.html':'Build my plan','guided.html':'Find my degree','degree-audit.html':'Build my own plan','programs.html':'Find a degree','credits-worth.html':'What are my credits worth?','campuses.html':'Find a campus','growth.html':'Activity overview','courses.html':'My courses','import-courses.html':'Add my courses','template-import.html':'Import a degree spreadsheet','compare-plans.html':'Compare plans','portal.html':preferenceView ? 'My preferences' : 'My plan','plan.html':task === 'credits' ? 'My courses' : 'My plan','library.html':'Explore','community.html':'Community','account.html':'My account','school.html':'School insights','request-plan.html':'Build from a degree link','admin.html':'Manage DegreeSteps','coverage.html':'Academic coverage','help.html':'Help & support'};
   if (!labels[page]) return;
@@ -75,11 +77,12 @@
     if (typeof title === 'string' && title.trim()) document.getElementById('dp-shell-page-title').textContent = title.slice(0,80);
   }
   let signedIn=false, accountUser=null, accountIdentityKnown=false, accountStorageAvailable=true, savePresentationId=0, localSaveAvailable=true;
-  function accountSaveAction() {const link=shell.querySelector('.dp-shell-save-account'),draft=window.DegreeAccount?.deviceDraft?.(),meaningful=Boolean(draft&&(draft.learning?.length||!draft.sheet?.isExample&&(draft.selectedPathwayId||draft.profile?.pathwayId)));if(link){link.hidden=!['plan.html','portal.html','courses.html','compare-plans.html'].includes(page)||!meaningful;link.href='#';link.setAttribute?.('data-open-plan-save','');link.textContent='Save plan';link.title='Save this plan to your account';}return meaningful;}
+  function accountSaveAction() {const link=shell.querySelector('.dp-shell-save-account'),draft=window.DegreeAccount?.deviceDraft?.(),meaningful=Boolean(draft&&(draft.learning?.length||!draft.sheet?.isExample&&(draft.selectedPathwayId||draft.profile?.pathwayId)));if(link){link.hidden=!SAVE_PAGES.includes(page)||!meaningful;link.href='#';link.setAttribute?.('data-open-plan-save','');link.textContent='Save plan';link.title='Save this plan to your account';}return meaningful;}
   async function savePresentation() {
     const request=++savePresentationId,meaningful=accountSaveAction(),target=shell.querySelector('.dp-shell-save'),link=shell.querySelector('.dp-shell-save-account');
     if(!target)return;
-    if(!meaningful){target.hidden=true;return;}
+    // The account status sits beside the Save action, so it shows only on the pages that offer it.
+    if(!meaningful||!SAVE_PAGES.includes(page)){target.hidden=true;return;}
     let state={label:signedIn?'Not saved to your account':'Sign in to save',action:'Save plan',kind:'unsaved'};
     try {if(window.DegreeAccount?.saveState)state=await window.DegreeAccount.saveState(accountUser);}catch{}
     if(!accountIdentityKnown)state={kind:'unknown',label:'Check sign-in to save',action:'Save plan'};
