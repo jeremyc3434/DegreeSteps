@@ -1024,11 +1024,10 @@ if(typeof module==='object'&&module['exports'])module['exports']={reviewedBaseli
     clearImportPreview();
     location.assign('import-courses.html?from='+(['courses','compare'].includes(query.get('from'))?query.get('from'):'plan'));
   }
-  const readyPlanRoutes=()=>DegreeProgramCatalog.publishedPlans?.(catalog,models)||[];
-  // Change degree lists the same plans as the finder: published plans plus complete plans that still
-  // need school confirmation (labelled). Without the plan index only published plans are listed.
-  // Preference-based recommendations (readyPlanCatalog) stay with published plans.
-  const changeDegreeRoutes=()=>DegreeProgramCatalog.planLibraryRoutes?.(catalog,models,planIndex)||readyPlanRoutes();
+  const readyPlanRoutes=()=>DegreeProgramCatalog.planLibraryRoutes?.(catalog,models)||[];
+  // New degree choices and recommendations share one reviewed route per model.
+  // Existing private targets remain open independently of this public list.
+  const changeDegreeRoutes=readyPlanRoutes;
   const needsConfirmation=route=>Boolean(DegreeProgramCatalog.needsSchoolConfirmation?.(route,planIndex));
   const confirmBadge='<span class="portal-tier-badge portal-tier-confirm">Needs school confirmation</span>';
   const readyPlanCatalog=()=>({...catalog,pathways:readyPlanRoutes()});

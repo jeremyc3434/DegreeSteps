@@ -1,5 +1,5 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const {loadData}=require('./scripts/audit-student-confirmations.cjs'),Journey=require('./dist/journey-engine.js'),Checklist=require('./dist/student-checklist.js'),data=loadData(),KEY='degreepath-guide-v3';
+const {loadData}=require('./scripts/audit-student-confirmations.cjs'),Journey=require('./dist/journey-engine.js'),Checklist=require('./dist/student-checklist.js'),Catalog=require('./dist/program-catalog.js'),loaded=loadData(),data={...loaded,catalog:Catalog.attachPublicationIndex(loaded.catalog,require('./dist/data/publication-index.json'),require('./dist/data/curriculum-registry.json'))},KEY='degreepath-guide-v3';
 const copy=x=>JSON.parse(JSON.stringify(x));
 function fixture({learning=[],intakeCompleted=false}={}){
  const route=data.catalog.pathways.find(r=>r.id==='wgu-catalog-ecceaa488637ac83');let initial=Journey.selectRoute(Journey.initialize(null,null,data.catalog),route,data.catalog);initial.learning=copy(learning);initial.journey.intakeCompleted=intakeCompleted;initial.journey.view='questions';initial.journey.step='degree';

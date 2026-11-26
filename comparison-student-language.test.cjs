@@ -43,11 +43,11 @@ test('unmatched disclosure uses a course count and disappears when every course 
  const matched=scenario('wgu-catalog-ecceaa488637ac83',[{id:'placed',provider:'Sophia',code:'SOPH-0015',title:'English Composition I',credits:3,creditSystem:'semester',status:'earned',evaluations:[]}]);
  assert.equal(matched.scenario.summary.fitBreakdown.needsReviewCount,0);assert.doesNotMatch(render(matched.view,matched.scenario),/data-course-review/);
 });
-test('comparison scope distinguishes reviewed suggestions from manually selectable plans without expanding either set',()=>{
+test('comparison scope uses one reviewed plan set for suggestions and picker choices',()=>{
  const Catalog=require('./dist/program-catalog.js'),registry=require('./dist/data/curriculum-registry.json'),publication=require('./dist/data/publication-index.json'),index=require('./dist/data/plan-library-index.json');
  const catalog=Catalog.attachPublicationIndex(data.catalog,publication,registry),before=JSON.stringify(catalog),reviewed=Catalog.publishedPlans(catalog),selectable=Catalog.planLibraryRoutes(catalog,[],index),confirmation=selectable.filter(route=>Catalog.needsSchoolConfirmation(route,index));
- assert(selectable.length>reviewed.length,'The fixture includes manually selectable plans outside automatic suggestions');
- const scope=renderer().scope(catalog,index);assert(scope.startsWith('Automatic suggestions use '+reviewed.length+' reviewed plans.'));assert(scope.includes(selectable.length+' plans are available through Choose or replace a degree'));assert(scope.includes(confirmation.length+' labeled Needs school confirmation'));
+ assert.equal(selectable.length,catalog.publicationIndex.plans.length);assert.equal(new Set(selectable.map(route=>route.modelId)).size,selectable.length);assert(selectable.length<=reviewed.length,'Published aliases do not create additional degree choices.');assert.equal(confirmation.length,0);
+ const scope=renderer().scope(catalog,index);assert(scope.startsWith('Choose or compare '+selectable.length+' reviewed degree plans.'));assert(scope.includes('Your current plan and saved versions stay available.'));assert(!scope.includes('Needs school confirmation'));
  assert.equal(JSON.stringify(catalog),before);assert.deepEqual(Catalog.publishedPlans(catalog).map(route=>route.id),reviewed.map(route=>route.id));
 });
 

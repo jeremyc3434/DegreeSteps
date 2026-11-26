@@ -97,14 +97,17 @@
   const indexed=new Map(array(catalog.publicationIndex.plans).map(plan=>[plan.modelId,plan])),loaded=new Map(array(models).map(model=>[model.id,model]));
   return structuralPlans(catalog,models).filter(route=>{const entry=indexed.get(route.modelId),model=loaded.get(route.modelId);return entry?.publicationReady===true&&array(entry.routeIds).includes(route.id)&&publicationLevel(route.level)===entry.level&&(!model||entry.modelFingerprint===publicationModelFingerprint(model,entry.level));});
  }
- // One plan list everywhere: published plans first, then complete plans that the plan index
- // (data/plan-library-index.json) marks tier "confirmation". Callers label those "Needs school
- // confirmation". Without the index only published plans are listed.
+ // Public discovery offers one representative per publication-ready model.
+ // Keep publishedPlans alias-aware for exact links and existing private drafts.
  function needsSchoolConfirmation(route,planIndex){return planIndex?.plans?.[route?.id]?.tier==='confirmation';}
  function planLibraryRoutes(catalog,models=[],planIndex=null){
-  const published=publishedPlans(catalog,models),ids=new Set(published.map(route=>route.id)),plans=planIndex?.plans;
-  if(!plans||typeof plans!=='object')return published;
-  return [...published,...array(catalog?.pathways).filter(route=>route?.modelId&&!ids.has(route.id)&&needsSchoolConfirmation(route,planIndex)&&isPlanAvailable(route,catalog,models))];
+  const published=publishedPlans(catalog,models),byId=new Map(published.map(route=>[route.id,route])),seen=new Set(),representatives=[];
+  for(const proof of array(catalog?.publicationIndex?.plans)){
+   if(seen.has(proof.modelId))continue;
+   const route=array(proof.routeIds).map(id=>byId.get(id)).find(route=>route?.modelId===proof.modelId);
+   if(route){seen.add(proof.modelId);representatives.push(route);}
+  }
+  return representatives;
  }
  function planChoiceCount(route,catalog,models=[]){
   const model=array(models).find(item=>item.id===route?.modelId);if(model){const readiness=modelReadiness(model);return readiness.available?readiness.openCourseChoices:null;}
