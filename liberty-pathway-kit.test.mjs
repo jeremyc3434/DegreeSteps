@@ -27,7 +27,7 @@ const interdisciplinaryAAAwards=new Set([
  'liberty-online-baseline-soph-0001-to-math-121',
  'liberty-online-baseline-sdcm-0047-to-cstu-101'
 ]);
-const currentDataAsOf='2026-11-25'; // Evaluation time, not a rewrite of Liberty catalog/source dates.
+const currentDataAsOf='2026-11-26'; // Evaluation time, not a rewrite of Liberty catalog/source dates.
 const registry=await readJSON(resolve(root,'dist/data/curriculum-registry.json'));
 const guards=(await import('./content/pathway-kits/liberty/guards.mjs')).checks,guard=name=>guards.find(check=>check.name===name);
 const outsideOptions=models=>models.reduce((n,m)=>n+m.requirements.reduce((k,r)=>k+r.options.filter(o=>o.provider!=='University').length,0),0);

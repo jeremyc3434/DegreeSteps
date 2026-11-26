@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {join,resolve} from 'node:path';
 import {readFile} from 'node:fs/promises';
 import {spawnSync} from 'node:child_process';
-import {loadKit,kitsRoot,readJSON,root,canonical,clone,list,inScope,matchRequirement,parsePlacement,normalizeText} from './scripts/pathway-factory/lib.mjs';
+import {loadKit,kitsRoot,readJSON,root,canonical,clone,list,inScope,matchRequirement,parsePlacement,normalizeText,sourceIndex} from './scripts/pathway-factory/lib.mjs';
 import {compileKit,runGuards,serializePublished} from './scripts/pathway-factory/compile.mjs';
 import {verifyKit} from './scripts/pathway-factory/verify.mjs';
 import {factoryInput} from './scripts/pathway-factory/migrate-liberty.mjs';
@@ -32,7 +32,7 @@ test('compile(kit) reproduces every TESU registry model exactly: five models, fu
 });
 
 test('the TESU kit is the source of truth: it verifies, passes its guards and publishes its five documents exactly',async()=>{
-  const result=await verifyKit(kit,{asOf:'2026-11-25'});
+  const result=await verifyKit(kit,{asOf:'2026-11-26'});
   assert.deepEqual(result.errors,[]);
   assert.equal(await runGuards(kit,doc),guards.length);assert.ok(guards.length>=9);
   assert.deepEqual(documents.map(d=>d.path),files.map(name=>'content/curricula/'+name+'.json'));
@@ -61,11 +61,11 @@ test('the migration tool still decomposes the current registry output into the c
 
 test('TESU-submitted equivalencies replace copied same-school Sophia awards with grounded institution-wide rows',async()=>{
   const authored=kit.equivalencies.equivalencies.filter(row=>row.authored),sophia=kit.providers.get('Sophia');
-  assert.equal(authored.length,22);
+  assert.equal(authored.length,35);
   for(const row of authored){
-    assert.equal(row.provider,'Sophia');assert.equal(row.evidence,'conditional');assert.equal(row.extra.eligibilityReview.providerReviewPending,true);
+    assert.equal(row.provider,'Sophia');assert.equal(row.evidence,'published');assert.equal(row.extra.courseEligibilityResolution.status,'resolved');assert.equal(row.extra.courseEligibilityResolution.checkedOn,'2026-11-26');assert.equal(row.extra.eligibilityReview.providerReviewPending,true);assert.equal(row.extra.eligibilityReview.fullyApproved,false);
     assert.deepEqual(row.scope,{all:true,levels:['bachelor'],modalities:['online'],catalogs:[kit.programs[0].catalog]});
-    const source=sophia.sources.find(s=>s.id===row.sourceIds[0]),sidecar=await readJSON(resolve(root,source.capture.replace(/\.txt$/,'.json')));
+    const source=sourceIndex(kit,kit.programs[0]).get(row.sourceIds[0])?.source,sidecar=await readJSON(resolve(root,source.capture.replace(/\.txt$/,'.json')));
     assert.equal(sidecar.url,source.url,row.id+' capture is the cited ACE page');
     const text=normalizeText(await readFile(resolve(root,source.capture),'utf8'));
     assert.ok(text.includes(normalizeText(`2026-2027 Thomas Edison State University ${row.credits} ${row.receivingCode} ${row.receivingTitle}`)),row.id+' TESU equivalency is in its capture');
@@ -85,16 +85,14 @@ test('TESU-submitted equivalencies replace copied same-school Sophia awards with
   // A quote that is not in its capture is a hard verification error.
   const broken=clone(kit);broken.providers=kit.providers;broken.dir=kit.dir;
   broken.equivalencies.equivalencies.find(row=>row.authored).quotes[1].text='2026-2027 Thomas Edison State University 6 MAT-9999 Invented Course';
-  assert.ok((await verifyKit(broken,{asOf:'2026-11-25'})).errors.some(e=>e.code==='quote-not-found'));
+  assert.ok((await verifyKit(broken,{asOf:'2026-11-26'})).errors.some(e=>e.code==='quote-not-found'));
 });
 
 test('the retired importers still build exactly the ledger the kit publishes',async()=>{
   for(const name of files){
-    const result=spawnSync(process.execPath,['scripts/import-'+name+'.mjs','--check'],{cwd:root,encoding:'utf8',timeout:60000});
-    assert.equal(result.status,0,name+': '+(result.stderr||result.stdout));
-    assert.equal(JSON.parse(result.stdout).newProviderEquivalencies,0);
-    const write=spawnSync(process.execPath,['scripts/import-'+name+'.mjs'],{cwd:root,encoding:'utf8',timeout:60000});
-    assert.notEqual(write.status,0,name+' no longer writes content/curricula');assert.match(write.stderr,/Retired/);
+    const importer=await import('./scripts/import-'+name+'.mjs'),result=await importer.run({check:true});
+    assert.equal(result.newProviderEquivalencies,0);
+    await assert.rejects(importer.run(),/Retired/,name+' no longer writes content/curricula');
   }
 });
 
@@ -140,7 +138,7 @@ test('TESU guards reject academic regressions in a compiled document',()=>{
     ['provisionalProvidersStayRestricted',d=>{aceOption(d).eligibilityReview.providerReviewPending=false;}],
     ['provisionalProvidersStayRestricted',d=>{const o=req(d,'SOC-1010').options.find(o=>o.provider==='Sophia');delete o.eligibilityReview;o.conditions=o.conditions.filter(c=>!/provisional|no established/i.test(c));}],
     ['schoolSubmittedMatchesAreExact',d=>{aceOption(d).mappingEvidence.catalogYear='2025-2026';}],
-    ['schoolSubmittedMatchesAreExact',d=>{aceOption(d).evidence='published';}],
+    ['schoolSubmittedMatchesAreExact',d=>{const option=aceOption(d);delete option.courseEligibilityResolution;option.evidence='published';}],
     ['schoolSubmittedMatchesAreExact',d=>{req(d,'ENC-1010').options.unshift(clone(aceOption(d)));}]
   ];
   for(const [name,mutate]of cases){

@@ -12,8 +12,8 @@
   "totalCredits": 120,
   "review": {
     "status": "reviewed",
-    "reviewer": "Codex (independent Study.com identity and receiving-map review)",
-    "reviewedOn": "2026-11-25"
+    "reviewer": "Codex (source-bound complete current ledger and program-specific residency review)",
+    "reviewedOn": "2026-11-26"
   },
   "sources": [
     {
@@ -185,6 +185,126 @@
       "published": true,
       "approvalStatus": "APPROVED",
       "capture": "content/source-captures/4a1ca634549e22a4.txt"
+    },
+    {
+      "id": "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+      "title": "WGU BSSWE 202610: complete named current public academic API ledger",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSSWE%3B202610",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/feb99ac6d6246ddb.txt",
+      "sha256": "feb99ac6d6246ddbf3fd847a57783d87bbdd282cb46f07ee0ab1182e728f48ef",
+      "sourceContentHash": "sha256:feb99ac6d6246ddbf3fd847a57783d87bbdd282cb46f07ee0ab1182e728f48ef",
+      "roles": [
+        "curriculum"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalogYear": "202610",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+    },
+    {
+      "id": "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+      "title": "WGU BSSWE 202610: complete current institutional-catalog course table",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=158-159&columns=1",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/2f0f1e69b0eae73d.txt",
+      "sha256": "2f0f1e69b0eae73d882c5821dee57da15248805356a6c9b4639d0fc4396d65c3",
+      "sourceContentHash": "sha256:2f0f1e69b0eae73d882c5821dee57da15248805356a6c9b4639d0fc4396d65c3",
+      "roles": [
+        "curriculum"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalogYear": "202610",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+    },
+    {
+      "id": "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+      "title": "WGU BSSWE 202610: exact current program receiving guidelines",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=254",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/a3cf27f14ebf7a99.txt",
+      "sha256": "a3cf27f14ebf7a99f68e49d129d63159783998c6b6613c291c0a9fc54f082007",
+      "sourceContentHash": "sha256:a3cf27f14ebf7a99f68e49d129d63159783998c6b6613c291c0a9fc54f082007",
+      "roles": [
+        "transfer-guidelines"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalogYear": "202610",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+    },
+    {
+      "id": "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+      "title": "WGU BSSWE 202610: active-program undergraduate residency policy",
+      "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+      "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+      "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+      "roles": [
+        "residency-policy"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalogYear": "202610",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+    },
+    {
+      "id": "wgu-bsswe-202610-residency-descriptions-reviewed-20261126",
+      "title": "WGU BSSWE 202610: all required course descriptions in the current institutional catalog",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+      "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+      "sourceContentHash": "sha256:73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+      "roles": [
+        "curriculum"
+      ],
+      "scope": {
+        "schoolName": "Western Governors University",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalogYear": "202610",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
     }
   ],
   "quotes": [
@@ -214,16 +334,13 @@
     }
   },
   "modelFields": {
-    "unresolved": [
-      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
-      "WGU's current BSSWE ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
-    ],
+    "unresolved": [],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
       "Outside options come only from WGU's published partner agreements for BSSWE catalog 202610 (program 254). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
       "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
-      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements.",
+      "The exact BSSWE 202610 required course set is reviewed against its current official catalog table and program receiving guidelines. No separately declared formal capstone occurs in this bounded course set; other editions do not inherit that finding. Any course marked non-transferable still stays at WGU."
     ],
     "mappingCheckedOn": "2026-11-25",
     "pricing": {
@@ -244,7 +361,12 @@
     "policySourceIds": [
       "wgu-undergraduate-institutional-catalog-202611",
       "wgu-bsswe-202610-metadata-20261123",
-      "wgu-bsswe-202610-curriculum-20261123"
+      "wgu-bsswe-202610-curriculum-20261123",
+      "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+      "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+      "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+      "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+      "wgu-bsswe-202610-residency-descriptions-reviewed-20261126"
     ],
     "policyEvidence": {
       "externalMaxCredits": {
@@ -264,6 +386,20 @@
           "wgu-undergraduate-institutional-catalog-202611"
         ],
         "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      },
+      "institutionMinCredits": {
+        "value": 30,
+        "fraction": 0.25,
+        "basisCredits": 120,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+          "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+          "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+          "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+          "wgu-bsswe-202610-residency-descriptions-reviewed-20261126"
+        ],
+        "note": "The exact current complete ledger and receiving-guideline course set declare no separate formal capstone. All university-required courses remain institutional; this is not a finding about other catalog editions."
       }
     },
     "policyReview": [
@@ -727,6 +863,53 @@
         }
       },
       "allPossibleSourcesGloballyReviewed": false
+    },
+    "institutionMinCredits": 30,
+    "completeExecutablePathway": true,
+    "currentLedgerResidencyReview": {
+      "slug": "software-engineering",
+      "modelId": "curriculum-wgu-catalog-3a9fedcacbfcccae",
+      "status": "reviewed-complete-current-ledger",
+      "reviewedOn": "2026-11-26",
+      "programId": 254,
+      "programCode": "BSSWE",
+      "catalog": "202610",
+      "totalCredits": 120,
+      "requirementCount": 39,
+      "courseTupleSha256": "046c8b5101202a0f5d21c23dff94f069d50580d1b44d0c33713d37f967d3e6b6",
+      "declaredCapstoneCodes": [],
+      "universalityClaim": false,
+      "ledger": {
+        "sourceId": "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+        "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSSWE%3B202610",
+        "capture": "content/source-captures/feb99ac6d6246ddb.txt",
+        "sha256": "feb99ac6d6246ddbf3fd847a57783d87bbdd282cb46f07ee0ab1182e728f48ef"
+      },
+      "catalogue": {
+        "sourceId": "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+        "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=158-159&columns=1",
+        "capture": "content/source-captures/2f0f1e69b0eae73d.txt",
+        "sha256": "2f0f1e69b0eae73d882c5821dee57da15248805356a6c9b4639d0fc4396d65c3"
+      },
+      "guidelines": {
+        "sourceId": "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+        "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=254",
+        "capture": "content/source-captures/a3cf27f14ebf7a99.txt",
+        "sha256": "a3cf27f14ebf7a99f68e49d129d63159783998c6b6613c291c0a9fc54f082007"
+      },
+      "policy": {
+        "sourceId": "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+        "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+        "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+        "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5"
+      },
+      "descriptions": {
+        "sourceId": "wgu-bsswe-202610-residency-descriptions-reviewed-20261126",
+        "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+        "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+        "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b"
+      },
+      "college": "IT"
     }
   },
   "modelSourceIds": [
@@ -780,10 +963,15 @@
     "study-software-identity-sdcm-0216-2026-11-25",
     "study-current-sdcm-0016-2026-11-20",
     "study-course-sdcm-0265-2026-11",
-    "study-software-identity-sdcm-0253-2026-11-25"
+    "study-software-identity-sdcm-0253-2026-11-25",
+    "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+    "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+    "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+    "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+    "wgu-bsswe-202610-residency-descriptions-reviewed-20261126"
   ],
   "requirements": [
-    {"id":"bsswe-mathematics-for-programmers","code":"E064","title":"Mathematics for Programmers","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"mathematics-content","curriculumAreaEvidence":{"areaOfStudy":"Mathematics Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E064\",\"courseName\":\"Mathematics for Programmers\",\"courseDescription\":\"This course bridges mathematics and programming by using Python to develop mathematical reasoning skills. Students create and evaluate functions to model relationships, analyze and graph algebraic and trigonometric functions, and solve problems that build readiness for calculus and object-oriented programming while using computational tools to explore patterns, precision, and real-world applications.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Mathematics Content\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E064\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsswe-mathematics-for-programmers","code":"E064","title":"Mathematics for Programmers","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123","wgu-bsswe-202610-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"mathematics-content","curriculumAreaEvidence":{"areaOfStudy":"Mathematics Content","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E064\",\"courseName\":\"Mathematics for Programmers\",\"courseDescription\":\"This course bridges mathematics and programming by using Python to develop mathematical reasoning skills. Students create and evaluate functions to model relationships, analyze and graph algebraic and trigonometric functions, and solve problems that build readiness for calculus and object-oriented programming while using computational tools to explore patterns, precision, and real-world applications.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Mathematics Content\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E064\",\"transferArea\":\"Non-Transferable\""},{"sourceId":"wgu-bsswe-202610-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"E064\",\"transferArea\":\"Non-Transferable\""}]},
     {"id":"bsswe-web-development-foundations","code":"D276","title":"Web Development Foundations","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"web-development","curriculumAreaEvidence":{"areaOfStudy":"Web Development","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D276\",\"courseName\":\"Web Development Foundations\",\"courseDescription\":\"Welcome to Web Development Foundations! In this course you will learn about web design and development using HTML and CSS. This course employs the zyBooks learning platform which contains all the necessary reading materials, knowledge checks, and hands-on activities to prepare you for the course assessment. For the best understanding of the course content, complete each chapter. There are no prerequisites. Competency will be demonstrated with a performance assessment. \\n\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Web Development\""}]},
     {"id":"bsswe-it-leadership-foundations","code":"D370","title":"IT Leadership Foundations","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"business-of-it","curriculumAreaEvidence":{"areaOfStudy":"Business of IT","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D370\",\"courseName\":\"IT Leadership Foundations\",\"courseDescription\":\"IT Leadership Foundations is an introductory course that provides students with an overview of organizational structures, communication, and leadership styles specific to information technology in organizations. It also introduces students to some of the power skills that help make successful IT professionals, including time management, problem solving, and emotional intelligence. Students in this course explore their own strengths and passions in relation to the field. There are no prerequisites for this course.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Business of IT\""}]},
     {"id":"bsswe-object-oriented-programming-in-python","code":"E066","title":"Object Oriented Programming in Python","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"programming","curriculumAreaEvidence":{"areaOfStudy":"Programming","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E066\",\"courseName\":\"Object Oriented Programming in Python\",\"courseDescription\":\"This course bridges foundational programming skills to advanced object-oriented concepts, empowering learners to design and implement robust, scalable applications. It emphasizes the core pillars of object-oriented programming such as inheritance, composition, encapsulation, abstraction, and polymorphism while introducing data structure fundamentals. Learners will define and extend class hierarchies, apply method overriding, work with polymorphic collections, and traverse data structures using iterative and recursive techniques. Through practical problem-solving, the course reinforces code reusability and equips learners to apply object-oriented principles for efficient, maintainable solutions.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Programming\""}]},
@@ -819,8 +1007,8 @@
     {"id":"bsswe-software-security-and-testing","code":"D385","title":"Software Security and Testing","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D385\",\"courseName\":\"Software Security and Testing\",\"courseDescription\":\"This course prepares you to recognize security vulnerabilities in software, to plan interventions to address security vulnerabilities where they exist, and to develop and test these interventions. The course covers topics in Web security, permissions, and identity security; debugging; log file analysis; API security; and encryption and cryptography concepts.  \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
     {"id":"bsswe-software-design-and-quality-assurance","code":"D480","title":"Software Design and Quality Assurance","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D480\",\"courseName\":\"Software Design and Quality Assurance\",\"courseDescription\":\"Software Design and Quality Assurance applies a QA focus to every phase of the software development life cycle. This course investigates best practices for quality analysis, quality planning, and testing strategies as they pertain to the everyday practice of software development. Students will come to understand how their work fits into the bigger picture: how QA, testing, and code-writing practices interact within specific process models; the potential impact of new code on existing code or on other applications; the importance of usability and the influence users have on the ultimate success of an application. Students will explore test plans, test cases, unit tests, integration tests, regression tests, usability tests, and test and review tools.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""}]},
     {"id":"bsswe-american-politics-and-the-us-constitution","code":"C963","title":"American Politics and the US Constitution","credits":3,"category":"general","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"C963\",\"courseName\":\"American Politics and the US Constitution\",\"courseDescription\":\"American Politics and the U.S. Constitution examines the evolution of representative government in the United States and the changing interpretations of the civil rights and civil liberties protected by the Constitution. This course will give candidates an understanding of the powers of the branches of the federal government, the continual tensions inherent in a federal system, the shifting relationship between state and federal governments, and the interactions between elected officials and the ever-changing electorate. This course will focus on such topics as the role of a free press in a democracy, the impact of changing demographics on American politics, and the debates over and expansion of civil rights. Upon completion of the course, candidates should be able to explain the basic functions of the federal government, describe the forces that shape American policy and politics, and be better prepared to participate in America’s civic institutions. This course has no prerequisite. \",\"competencyUnits\":\"3\",\"areaOfStudy\":\"General Education\""}]},
-    {"id":"bsswe-special-topics-in-software-engineering-and-ai","code":"E075","title":"Special Topics in Software Engineering and AI","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E075\",\"courseName\":\"Special Topics in Software Engineering and AI\",\"courseDescription\":\"This course explores modern topics, challenges, and emerging solutions in software engineering and artificial intelligence. Students analyze contemporary frameworks, methodologies, and technologies, and apply them to solve real-world problems.\\n\\nThrough applied projects, learners design and develop software solutions, evaluate the use of emerging technologies, and assess technical, ethical, and professional implications. The course culminates in a completed application that demonstrates the ability to analyze, design, and implement a modern software solution.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E075\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsswe-special-topics-in-software-engineering-and-ai","code":"E075","title":"Special Topics in Software Engineering and AI","credits":3,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123","wgu-bsswe-202610-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"software","curriculumAreaEvidence":{"areaOfStudy":"Software","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E075\",\"courseName\":\"Special Topics in Software Engineering and AI\",\"courseDescription\":\"This course explores modern topics, challenges, and emerging solutions in software engineering and artificial intelligence. Students analyze contemporary frameworks, methodologies, and technologies, and apply them to solve real-world problems.\\n\\nThrough applied projects, learners design and develop software solutions, evaluate the use of emerging technologies, and assess technical, ethical, and professional implications. The course culminates in a completed application that demonstrates the ability to analyze, design, and implement a modern software solution.\",\"competencyUnits\":\"3\",\"areaOfStudy\":\"Software\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E075\",\"transferArea\":\"Non-Transferable\""},{"sourceId":"wgu-bsswe-202610-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"E075\",\"transferArea\":\"Non-Transferable\""}]},
     {"id":"bsswe-software-engineering","code":"D284","title":"Software Engineering","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"institutionalOnly":false,"group":"information-technology-management","curriculumAreaEvidence":{"areaOfStudy":"Information Technology Management","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"D284\",\"courseName\":\"Software Engineering\",\"courseDescription\":\"Software Engineering introduces the concepts of software engineering to students who have completed the core courses in programming and project management. The principles build on previously acquired concepts, switching the emphasis from programming simple routines to engineering robust and scalable software solutions. This course does not cover programming, but it provides an overview of software engineering processes and their challenging nature, focusing on the need for a disciplined approach to software engineering. A generic process framework provides the groundwork for formal process models. Prescriptive process models such as the Waterfall Model and Agile Development are included. This course also introduces the elements and phases of software engineering, including requirements engineering, design concepts, and software quality. There are no prerequisites for this course. \",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Information Technology Management\""}]},
-    {"id":"bsswe-applied-software-engineering","code":"E076","title":"Applied Software Engineering","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123"],"institutionalOnly":true,"group":"software-applications","curriculumAreaEvidence":{"areaOfStudy":"Software Applications","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E076\",\"courseName\":\"Applied Software Engineering\",\"courseDescription\":\"Applied Software Engineering demonstrates full‑stack software solutions by producing comprehensive documentation and building functional applications that integrate front‑end, back‑end, and supporting services. It executes unit testing, revises software based on test outcomes, and documents all updates to ensure accuracy and quality. The course also deploys software applications to a cloud platform, using scripts and containers to deliver consistent, reliable performance across environments.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Software Applications\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E076\",\"transferArea\":\"Non-Transferable\""}]}
+    {"id":"bsswe-applied-software-engineering","code":"E076","title":"Applied Software Engineering","credits":4,"category":"core","sourceIds":["wgu-bsswe-202610-curriculum-20261123","wgu-bsswe-transfer-guidelines-20261123","wgu-bsswe-202610-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"software-applications","curriculumAreaEvidence":{"areaOfStudy":"Software Applications","sourceIds":["wgu-bsswe-202610-curriculum-20261123"],"programId":254,"catalogTerm":"202610","ledgerSha256":"15bf27e7b121d6fefe69609d6f680d73bc2bdb8d766ce5593db898c9846d6c78"},"quotes":[{"sourceId":"wgu-bsswe-202610-curriculum-20261123","text":"\"courseCode\":\"E076\",\"courseName\":\"Applied Software Engineering\",\"courseDescription\":\"Applied Software Engineering demonstrates full‑stack software solutions by producing comprehensive documentation and building functional applications that integrate front‑end, back‑end, and supporting services. It executes unit testing, revises software based on test outcomes, and documents all updates to ensure accuracy and quality. The course also deploys software applications to a cloud platform, using scripts and containers to deliver consistent, reliable performance across environments.\",\"competencyUnits\":\"4\",\"areaOfStudy\":\"Software Applications\""},{"sourceId":"wgu-bsswe-transfer-guidelines-20261123","text":"\"PAMS_bannerCode\":\"E076\",\"transferArea\":\"Non-Transferable\""},{"sourceId":"wgu-bsswe-202610-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"E076\",\"transferArea\":\"Non-Transferable\""}]}
   ]
 }

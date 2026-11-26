@@ -8,6 +8,7 @@ import {readLibertyCLIReligionReview,validateLibertyCLIReligionAwards,applicable
 
 const read=async path=>JSON.parse(await readFile(new URL(path,import.meta.url),'utf8'));
 const review=await readLibertyCLIReligionReview(),raw=await read(review.calculatorRequest.sourceSnapshot),clone=structuredClone;
+const currentDataAsOf='2026-11-26';
 const awardIds=new Set(review.awards.map(award=>award.id));
 const scope={school:'Liberty University',level:'bachelor',catalogYear:'2026-2027',modality:'campus',creditSystem:'semester',receivingCode:'BIBL 105',credits:2};
 const fixture=(patch={})=>({id:'synthetic-religion',school:'Liberty University',level:'bachelor',catalogYear:'2026-2027',format:'Residential',creditSystem:'semester',totalCredits:2,institutionMinCredits:0,externalMaxCredits:2,defaultProviders:['Sophia'],sources:[{id:'synthetic-degree',url:'https://catalog.liberty.edu/undergraduate/'}],requirements:[{id:'bibl-105',code:'BIBL 105',credits:2,category:'general',options:[{id:'university-bibl-105',provider:'University',code:'BIBL 105',credits:2,creditSystem:'semester',evidence:'published',sourceIds:['synthetic-degree']}]}],...patch});
@@ -66,7 +67,7 @@ test('three documented legacy baselines stay ready when optional CLI religion ch
  for(const [file,outside,institutional,upper,basis,count]of [
   ['liberty.json',83,37,39,66,5],['liberty-criminal-justice-online.json',72,48,30,45,1],['liberty-criminal-justice-residential.json',74,46,30,45,5]
  ]){
-  const original=await read('dist/data/'+file),model=addLibertyCLIReligionOptions(original,review),plan=generate(model),report=assessPathwayQuality({model,plan,asOf:review.checkedOn});
+  const original=await read('dist/data/'+file),model=addLibertyCLIReligionOptions(original,review),plan=generate(model),report=assessPathwayQuality({model,plan,asOf:currentDataAsOf});
   assert.deepEqual(model.defaultProviders,original.defaultProviders);assert.equal(model.majorResidencyBasisCredits,basis);assert.equal(model.majorInstitutionFraction,.25);
   assert.equal(model.institutionMinCredits,30);assert.equal(model.externalMaxCredits,90);assert.equal(model.upperMinCredits,30);
   assert.equal(model.requirements.flatMap(row=>row.options).filter(option=>awardIds.has(option.id)).length,count);
@@ -77,7 +78,7 @@ test('three documented legacy baselines stay ready when optional CLI religion ch
   const selected=generate(model,{optionSelections:{[religion.id]:option.id}});
   assert.equal(selected.rows.find(row=>row.requirementId===religion.id).option.id,option.id,'The reviewed starting route must allow the student to choose an optional alternative.');
   assert.equal(selected.validation.academicCountsValid,true);assert.equal(selected.totals.institutional,institutional-religion.credits);assert.equal(selected.totals.alternative,plan.totals.alternative,'CLI institutional transfer is not ACE/exam credit.');
-  assert.equal(assessPathwayQuality({model,plan:selected,asOf:review.checkedOn}).publication.ready,false,'Optional conditional religion is not silently enrollment-ready.');
+  assert.equal(assessPathwayQuality({model,plan:selected,asOf:currentDataAsOf}).publication.ready,false,'Optional conditional religion is not silently enrollment-ready.');
  }
 });
 
@@ -116,6 +117,6 @@ test('explicit religion scenarios improve all five ready Liberty routes within r
    assert.equal(row.option.creditOrigin,'institutional');
    assert.equal(row.option.evidence,'conditional');
   }
-  assert.equal(assessPathwayQuality({model,plan,asOf:review.checkedOn}).publication.ready,false,'A feasible scenario is not an approved personal transfer award.');
+  assert.equal(assessPathwayQuality({model,plan,asOf:currentDataAsOf}).publication.ready,false,'A feasible scenario is not an approved personal transfer award.');
  }
 });

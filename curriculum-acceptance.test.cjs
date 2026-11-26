@@ -60,11 +60,23 @@ test('all active source and standalone curricula load once per file and preserve
     ['curriculum-wgu-catalog-689e417cff765fc9',{external:69,institutional:43}],
     ['curriculum-wgu-catalog-d6925a8fbb6e8d9a',{external:78,institutional:43}],
     ['curriculum-wgu-catalog-c023977432f945c3',{external:60,institutional:55}],
-    ['curriculum-wgu-catalog-f5987d0b65c06f56',{external:60,institutional:55}]
+    ['curriculum-wgu-catalog-f5987d0b65c06f56',{external:60,institutional:55}],
+    ['curriculum-wgu-catalog-358f1e10651bf3d8',{external:72,institutional:49}],
+    ['curriculum-wgu-catalog-bf14bd14e87ae7aa',{external:64,institutional:48}],
+    ['curriculum-wgu-bs-computer-science-reviewed',{external:51,institutional:70}],
+    ['curriculum-wgu-catalog-3a9fedcacbfcccae',{external:61,institutional:59}],
+    ['curriculum-wgu-catalog-d734fb4b04eded7c',{external:47,institutional:63}],
+    ['curriculum-wgu-catalog-b2a8a37d4fbedabd',{external:0,institutional:34}],
+    ['curriculum-wgu-catalog-b83ee97289a0732a',{external:0,institutional:35}],
+    ['curriculum-wgu-catalog-c4a7efe739d67a5c',{external:0,institutional:36}]
   ]);
   // These exact new baselines have separately published research outcomes;
   // their readiness does not grant another model or an unfinished course an award.
   const quality=require('./dist/data/pathway-quality-report.json');
+  const wguBounded=require('./content/pathway-kits/wgu/reviews/current-ledger-residency-2026-11-26.json'),wguMBA=require('./content/pathway-kits/wgu/reviews/mba-family-2026-11-26.json');
+  const addedWGU=[...wguBounded.programs.map(program=>program.modelId),'curriculum-wgu-catalog-b2a8a37d4fbedabd','curriculum-wgu-catalog-b83ee97289a0732a','curriculum-wgu-catalog-c4a7efe739d67a5c'];
+  assert.equal(addedWGU.length,8);assert.equal(wguMBA.programs.length,3);
+  for(const modelId of addedWGU){const expected=researchedReady.get(modelId),outcome=quality.programs.find(program=>program.modelId===modelId);assert(expected&&outcome,modelId+' exact reviewed WGU expansion');assert.equal(outcome.publication.ready,true,modelId);assert.equal(outcome.metrics.degreeCredits,expected.external+expected.institutional,modelId);assert.equal(outcome.metrics.publishedOutsideCredits,expected.external,modelId);assert.equal(outcome.metrics.conditionalOutsideCredits,0,modelId);assert.equal(outcome.execution.awardedCreditsInBaseline,0,modelId);}
   for(const modelId of ['curriculum-liberty-interdisciplinary-aa-online','curriculum-liberty-psychology-bs-residential','curriculum-umpi-maol-yourpace','curriculum-wgu-bs-data-analytics-reviewed','curriculum-wgu-bs-cloud-network-engineering-general-reviewed','curriculum-wgu-bs-cloud-network-engineering-aws-reviewed','curriculum-wgu-bs-cloud-network-engineering-cisco-reviewed','curriculum-wgu-bs-cloud-network-engineering-azure-reviewed']){
     const outcome=quality.programs.find(program=>program.modelId===modelId),expected=researchedReady.get(modelId);
     assert(outcome,modelId);assert.equal(outcome.publication.ready,true,modelId);

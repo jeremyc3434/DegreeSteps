@@ -18,6 +18,15 @@ function templateSummary(model,entry,plan){
  const sum=predicate=>list(plan.rows).filter(predicate).reduce((total,row)=>total+row.credits,0);
  return {totalCredits:model.totalCredits,requirementCount:list(model.requirements).length,sourceCount:list(model.sources).length,transferCredits:sum(row=>row.option&&row.option.provider!=='University'),universityCredits:sum(row=>row.option?.provider==='University'),upperCredits:sum(row=>row.option?.upper===true),institutionMinCredits:model.institutionMinCredits,externalMaxCredits:model.externalMaxCredits,checkedOn:entry.checkedOn||model.evidenceCheckedOn||null};
 }
+const conditionalMappingCodes=new Set(['conditional-award','provider-eligibility','mapping-evidence','mapping-status','mapping-scope','mapping-applicability','validation-conditional_mapping']);
+function hasSelectedConditionalMappingHold(plan,quality){
+ const conditional=list(plan.rows).filter(row=>row.option&&row.option.provider!=='University'&&row.option.evidence==='conditional');
+ return list(quality.findings).some(finding=>finding.blocking&&conditionalMappingCodes.has(finding.code)&&conditional.some(row=>(list(finding.optionIds).length?finding.optionIds.includes(row.option.id):list(finding.requirementIds).includes(row.requirementId))&&(!list(finding.requirementIds).length||finding.requirementIds.includes(row.requirementId))));
+}
+function candidateReceipt(model,entry,plan,quality){
+ const {transferCredits,universityCredits}=templateSummary(model,entry,plan);
+ return {publicationReady:quality.publication.ready,researchStatus:quality.status,reasonCodes:quality.publication.reasonCodes,transferCredits,universityCredits,rows:list(plan.rows).map(row=>({requirementId:row.requirementId,optionId:row.option?.id??null,provider:row.option?.provider??null,code:row.option?.code??null,credits:row.credits,status:'planned'}))};
+}
 export function compilePathwayArtifacts({models,entries,catalog,registry,references,asOf,inputHashes={},generate=Planner.generate,planningRates,planningAsOf=asOf}){
  const entryMap=new Map(entries.map(entry=>[entry.id,entry])),programs=[],baselines={};
  for(const original of [...models].sort((a,b)=>a.id.localeCompare(b.id,'en'))){
@@ -25,11 +34,26 @@ export function compilePathwayArtifacts({models,entries,catalog,registry,referen
   const level=entry.level||original.level||originalRoute?.level,mode=modality(original),model={...original,...(level?{level}:{})};
   const route=originalRoute?{...originalRoute,modelId:model.id,level,modalities:mode?[mode]:list(originalRoute.modalities),readyTemplate:entry.readyTemplate===true}:undefined;
   const providers=[...new Set(list(model.requirements).flatMap(row=>list(row.options).map(option=>option.provider)))].filter(provider=>provider&&provider!=='University');
-  let plan,error=null;
-  try{plan=generate(model,{providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000});}catch{error='The baseline could not be compiled.';plan={rows:[],validation:{academicCountsValid:false,policyChecksComplete:false}};}
-  const quality=assessPathwayQuality({model,plan,route,asOf});
+  let plan,error=null,baselineSelection;
+  const preferences={providers,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000};
+  try{plan=generate(model,preferences);}catch{error='The baseline could not be compiled.';plan={rows:[],validation:{academicCountsValid:false,policyChecksComplete:false}};}
+  let quality=assessPathwayQuality({model,plan,route,asOf});
+  // An additional unreviewed option must not hide a complete reviewed route.
+  // Keep the normal optimizer result unless a selected conditional mapping
+  // holds it back, then try once without those candidates. No gate is relaxed:
+  // the alternative must pass the same complete publication assessment.
+  if(!quality.publication.ready&&hasSelectedConditionalMappingHold(plan,quality)){
+   baselineSelection={policy:'publication-ready-fallback-v1',selected:'conditional-research-candidate',conditionalCandidatePreserved:true,conditionalCandidate:{allowConditional:true,...candidateReceipt(model,entry,plan,quality)}};
+   let alternative;
+   try{alternative=generate(model,{...preferences,allowConditional:false});}catch{baselineSelection.publishedOnlyCandidate={allowConditional:false,publicationReady:false,compileError:'The published-only baseline could not be compiled.'};}
+   if(alternative){
+    const alternativeQuality=assessPathwayQuality({model,plan:alternative,route,asOf});
+    baselineSelection.publishedOnlyCandidate={allowConditional:false,...candidateReceipt(model,entry,alternative,alternativeQuality)};
+    if(alternativeQuality.publication.ready){plan=alternative;quality=alternativeQuality;baselineSelection.selected='published-only-baseline';}
+   }
+  }
   if(planningRates)quality.estimates.planning=summarizePlanningEstimate({model,plan,rates:planningRates,asOf:planningAsOf});
-  programs.push({...quality,school:model.school,title:model.title,format:model.format,readyTemplate:entry.readyTemplate===true,...(error?{compileError:error}:{})});
+  programs.push({...quality,school:model.school,title:model.title,format:model.format,readyTemplate:entry.readyTemplate===true,...(baselineSelection?{baselineSelection}:{}),...(error?{compileError:error}:{})});
   // Preserve the existing degree-link compatibility contract. The independent
   // research-quality report is deliberately not a silent public gate change.
   const balancePolicy=Planner.creditBalancePolicy?.(model),inactiveBalance=row=>Boolean(balancePolicy?.balanceRequirementIds.includes(row.requirementId)&&row.creditBalanceDerived===true&&row.credits===0&&row.option===null);
@@ -40,7 +64,7 @@ export function compilePathwayArtifacts({models,entries,catalog,registry,referen
    const reference=targetRoute.url?findResearchReference(references,targetRoute.url,{includeStaleChoiceIdentity:true,now:Date.parse(asOf+'T00:00:00Z')}):null;
    if(reference&&checkResearchReference({...model,schoolName:model.school,programName:model.title,modality:format,catalogYear:catalogYear(model)},reference).length)continue;
    const key=baselineKey(model.id,pathwayId,format);
-   baselines[key]={modelId:model.id,pathwayId,modality:format,academicFingerprint:requirementsFingerprint(model),qualityReady:true,summary:templateSummary(model,entry,plan),rows:list(plan.rows).map(row=>({requirementId:row.requirementId,optionId:row.option?.id??null,provider:row.option?.provider??null,code:row.option?.code??null,credits:row.credits,status:'planned'})),validation:{academicCountsValid:true,policyChecksComplete:plan.validation.policyChecksComplete===true},researchStatus:quality.status};
+   baselines[key]={modelId:model.id,pathwayId,modality:format,academicFingerprint:requirementsFingerprint(model),qualityReady:true,summary:templateSummary(model,entry,plan),rows:list(plan.rows).map(row=>({requirementId:row.requirementId,optionId:row.option?.id??null,provider:row.option?.provider??null,code:row.option?.code??null,credits:row.credits,status:'planned'})),validation:{academicCountsValid:true,policyChecksComplete:plan.validation.policyChecksComplete===true},researchStatus:quality.status,...(baselineSelection?{baselineSelection}:{})};
   }
  }
  const counts=(values,select)=>Object.fromEntries(values.map(value=>[value,programs.filter(program=>select(program)===value).length]));

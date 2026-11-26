@@ -1,0 +1,64 @@
+{
+  "kind": "tesu-accounting-execution-notice-review",
+  "version": 1,
+  "id": "tesu-accounting-execution-notices-2026-11-26",
+  "checkedOn": "2026-11-26",
+  "modelId": "curriculum-tesu-bsba-accounting",
+  "catalog": "Current undergraduate catalog · checked November 18, 2026",
+  "scope": "Only the four exact historical scope/execution/estimate messages are reclassified. Unrecognized notices, provider-specific conditions and unresolved academic policy fields remain blockers.",
+  "academicFactsChanged": false,
+  "receivingAwardsAdded": 0,
+  "originalMessages": {
+    "personal": "Individual catalog eligibility, state CPA eligibility, course currency and registration availability depend on the student; this plan does not make a licensure or admissions decision.",
+    "retained": "Existing receiving-school transfer candidates retain their original provider/version/format restrictions. No additional provider award is inferred from a matching course title.",
+    "residency": "The standard nonmilitary residency route is modeled. Military enrollment, foreign-credit rules and Edison Accelerate require a separately evaluated scenario.",
+    "pricing": "Published tuition is a planning basis; books, provider subscriptions and applicable fees are separate."
+  },
+  "notices": {
+    "personal": {
+      "id": "tesu-accounting-personal-eligibility",
+      "reviewId": "tesu-accounting-execution-notices-2026-11-26",
+      "checkedOn": "2026-11-26",
+      "status": "personal-task",
+      "owner": "student",
+      "message": "Use the catalog for your enrollment and have TESU evaluate any previous business courses. If you plan to become a CPA, check your state’s exam and licensing requirements.",
+      "sourceIds": [
+        "tesu-bsba-accounting-placement-2026-11-26",
+        "tesu-accounting-business-policy-2026-11-18",
+        "tesu-transcript-course-eligibility-2026-11-26"
+      ]
+    },
+    "retained": {
+      "id": "tesu-accounting-retained-transfer-scope",
+      "reviewId": "tesu-accounting-execution-notices-2026-11-26",
+      "checkedOn": "2026-11-26",
+      "status": "resolved",
+      "owner": "DegreeSteps",
+      "message": "Existing receiving-school transfer candidates retain their original provider/version/format restrictions. No additional provider award is inferred from a matching course title.",
+      "sourceIds": [
+        "tesu-provider-review-policy-2026-11-25",
+        "tesu-transcript-course-eligibility-2026-11-26"
+      ]
+    },
+    "residency": {
+      "id": "tesu-accounting-personal-residency-route",
+      "reviewId": "tesu-accounting-execution-notices-2026-11-26",
+      "checkedOn": "2026-11-26",
+      "status": "personal-task",
+      "owner": "student",
+      "message": "If you use military benefits, foreign credits or Edison Accelerate, choose the route that applies to your situation.",
+      "sourceIds": [
+        "tesu-accounting-residency-2026-11-18"
+      ]
+    }
+  },
+  "pricingNotes": [
+    "Published tuition is a planning basis; books, provider subscriptions and applicable fees are separate."
+  ],
+  "primaryEvidence": {
+    "sourceId": "tesu-bsba-accounting-placement-2026-11-26",
+    "capture": "content/source-captures/764a8f7315e2a33b.txt",
+    "sha256": "764a8f7315e2a33bf38a3f3df86ac52669680cb431c4a966b9bccbcd625c38fc",
+    "quote": "Students should contact their state board of accountancy for specific details concerning CPA examination requirements."
+  }
+}

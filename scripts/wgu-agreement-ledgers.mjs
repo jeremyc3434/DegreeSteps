@@ -16,8 +16,9 @@ import {readFile,writeFile,readdir} from 'node:fs/promises';
 import {resolve,join} from 'node:path';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
-import {stringifyKit,slug,isMain,root} from './pathway-factory/lib.mjs';
+import {stringifyKit,slug,isMain,root,list} from './pathway-factory/lib.mjs';
 import {loadStudyExpansion,applyStudyExpansion,studyIdentityMatchesReceivingLabel} from './wgu-study-expansion.mjs';
+import {applyReviewedResidency} from './wgu-current-ledger-residency.mjs';
 
 export const REVIEW={id:'wgu-current-agreement-ledgers-2026-11-23',checkedOn:'2026-11-23',reviewer:'Claude (pathway factory)'};
 const API='https://marketing-api-gateway.wgu.edu/partner/v1/public/';
@@ -140,11 +141,28 @@ export async function buildPrograms({check=false,configs=PROGRAMS,review=REVIEW,
       areaRows.push({code,title,credits:cu,areaOfStudy:area});
     }
     const hash=ledgerHash(areaRows);
-    const capstones=courses.filter(c=>/capstone/i.test(c.courseName)&&nontransferable.has(c.courseCode));
+    const reviewedCapstones=new Map();
+    if(existing.reviewedCapstoneCourses!==undefined)assert(Array.isArray(existing.reviewedCapstoneCourses),'Reviewed capstone roles must be explicit records');
+    for(const proof of existing.reviewedCapstoneCourses||[]){
+      assert.equal(proof.programId,config.programId);assert.equal(proof.programCode,config.code);assert.equal(proof.catalogTerm,config.catalog);
+      const course=courses.find(row=>row.courseCode===proof.code);
+      assert(course&&clean(course.courseName)===clean(proof.title),'A role review must name the exact current course');
+      assert(nontransferable.has(proof.code),'A required capstone must remain a university-only course');
+      assert(!reviewedCapstones.has(proof.code),'A declared capstone is counted once');
+      const source=list(existing.supplementalSources).find(source=>source.id===proof.sourceId);
+      assert(source?.kind==='university'&&new URL(source.url).hostname==='www.wgu.edu'&&source.capture,'A capstone role requires captured primary university evidence');
+      assert(source.scope?.programId===config.programId&&source.scope?.programCode===config.code&&source.scope?.catalogYear===config.catalog,'A capstone role does not propagate to a different program or catalog');
+      const text=await readFile(resolve(root,source.capture),'utf8'),digest=createHash('sha256').update(text).digest('hex');
+      assert.equal(digest,proof.sourceSha256);assert.equal(String(source.sourceContentHash||source.sha256).replace(/^sha256:/,''),digest);
+      assert(typeof proof.quote==='string'&&text.includes(proof.quote)&&proof.quote.includes(proof.code)&&plain(proof.quote).includes(clean(course.courseName))&&/\bcapstone course\b/i.test(proof.quote),'The university must explicitly designate the named course as a capstone');
+      reviewedCapstones.set(proof.code,proof);
+    }
+    const capstones=courses.filter(c=>(/capstone/i.test(c.courseName)||reviewedCapstones.has(c.courseCode))&&nontransferable.has(c.courseCode));
     for(const c of courses){
       const code=c.courseCode,title=clean(c.courseName),area=clean(c.areaOfStudy),cu=credits(c.competencyUnits),fixed=nontransferable.has(code),capstone=capstones.length===1&&capstones[0].courseCode===code;
       const req={id:`${lower}-${slug(title)}`,code,title,credits:cu,category:capstone?'capstone':area==='General Education'?'general':'core',sourceIds:[src.ledger.id,...(fixed?[src.guidelines.id]:[])],institutionalOnly:fixed,group:slug(area),curriculumAreaEvidence:{areaOfStudy:area,sourceIds:[src.ledger.id],programId:config.programId,catalogTerm:config.catalog,ledgerSha256:hash},quotes:[{sourceId:src.ledger.id,text:rawRecord(ledgerCap.text,`"courseCode":"${code}","courseName":`,'"areaOfStudy":')}]};
       if(fixed)req.quotes.push({sourceId:src.guidelines.id,text:rawRecord(guideCap.text,`"PAMS_bannerCode":"${code}","transferArea":"Non-Transferable"`)});
+      const designation=reviewedCapstones.get(code);if(designation){req.sourceIds.push(designation.sourceId);req.quotes.push({sourceId:designation.sourceId,text:designation.quote});}
       requirements.push(req);
     }
     assert.equal(new Set(requirements.map(r=>r.id)).size,requirements.length,config.code+': requirement ids must be unique');
@@ -215,7 +233,7 @@ export async function buildPrograms({check=false,configs=PROGRAMS,review=REVIEW,
       policySourceIds:['wgu-undergraduate-institutional-catalog-202611',...(capstone?['wgu-undergraduate-residency-policy-23797-20260918']:[]),src.metadata.id,src.ledger.id],
       policyEvidence:{externalMaxCredits:{value:ceiling,fraction:0.75,basisCredits:total,creditSystem:'competency-unit',sourceIds:['wgu-undergraduate-institutional-catalog-202611'],note:'Overall university ceiling. Exact receiving-course approval and required WGU coursework may allow fewer outside CUs.'},alternativeMaxCredits:{value:ceiling,creditSystem:'competency-unit',sourceIds:['wgu-undergraduate-institutional-catalog-202611'],note:'Alternative credit shares the overall ceiling; this is not approval of any provider or outside course.'}},
       policyReview:[{field:'upperMinCredits',status:'resolved',resolution:'covered-by-complete-named-curriculum',sourceIds:['wgu-undergraduate-institutional-catalog-202611',src.ledger.id],sourcePages:{'wgu-undergraduate-institutional-catalog-202611':[65]},message:`The complete ${requirements.length}-course, ${total}-CU ${config.code} ${config.catalog} curriculum is enforced through its current named receiving requirements. A separate semester upper-level aggregate is not assumed; outside-course approvals and required institutional work remain separate checks.`}],
-      ...(capstone?{residencyPolicy:{type:'institution-fraction-with-capstone-exclusion',creditScope:'active-program',creditSystem:'competency-unit',fraction:0.25,capstoneRequirementIds:[capstone.id],capstoneCredits:capstone.credits,sourceIds:['wgu-undergraduate-residency-policy-23797-20260918',src.ledger.id,src.guidelines.id],interpretationStatus:'verified-additional-capstone',calculatedMinimumInstitutionCUs:total*0.25+capstone.credits,primaryPolicySections:['IV.2','IV.3.a','IV.3.b.i'],conservativeSufficientCondition:{minimumNonCapstoneInstitutionCUs:total*0.25,basisCredits:total,derivation:'25% of active undergraduate degree CUs earned directly in that WGU program, in addition to required capstone CUs.'},capstoneEvidence:`${capstone.code} ${capstone.title} is the program's only course named as a capstone in the current ledger and is listed as Non-Transferable in the program's transfer guidelines.`,notes:['Only passed CUs earned within the active WGU program count toward this rule. Prior WGU or other outside credit is not automatically counted as active-program residency.']}}:{}),
+      ...(capstone?{residencyPolicy:{type:'institution-fraction-with-capstone-exclusion',creditScope:'active-program',creditSystem:'competency-unit',fraction:0.25,capstoneRequirementIds:[capstone.id],capstoneCredits:capstone.credits,sourceIds:['wgu-undergraduate-residency-policy-23797-20260918',src.ledger.id,src.guidelines.id,...(reviewedCapstones.has(capstone.code)?[reviewedCapstones.get(capstone.code).sourceId]:[])],interpretationStatus:'verified-additional-capstone',calculatedMinimumInstitutionCUs:total*0.25+capstone.credits,primaryPolicySections:['IV.2','IV.3.a','IV.3.b.i'],conservativeSufficientCondition:{minimumNonCapstoneInstitutionCUs:total*0.25,basisCredits:total,derivation:'25% of active undergraduate degree CUs earned directly in that WGU program, in addition to required capstone CUs.'},capstoneEvidence:reviewedCapstones.has(capstone.code)?`${capstone.code} ${capstone.title} is explicitly designated a capstone by its captured current university course description and is Non-Transferable in the exact program guidelines.`:`${capstone.code} ${capstone.title} is the program's only course named as a capstone in the current ledger and is listed as Non-Transferable in the program's transfer guidelines.`,notes:['Only passed CUs earned within the active WGU program count toward this rule. Prior WGU or other outside credit is not automatically counted as active-program residency.']}}:{}),
       policyCheckedOn:review.checkedOn,
       curriculumReview:{status:'current-complete-named-ledger',programId:config.programId,programCode:config.code,catalog:config.catalog,recordVersion:record.recordVersion,ledgerSha256:hash,sourceIds:[src.metadata.id,src.ledger.id],checkedOn:review.checkedOn,outsideEquivalenciesReviewed:true},
       curriculumSections:sections,
@@ -257,6 +275,7 @@ export async function buildPrograms({check=false,configs=PROGRAMS,review=REVIEW,
     for(const row of rows.filter(r=>r.scope.programs.includes(program.slug))){const course=identity(row.provider,row.code);for(const key of Object.keys(course))if(/SourceIds$/.test(key))identityIds.push(...course[key]);for(const id of course.sourceCreditVerification?.sourceIds||[])identityIds.push(id);}
     program.modelSourceIds=[...new Set([...own,...sharedSourceIds,...identityIds])];
   }
+  for(const entry of programs)entry.program=await applyReviewedResidency(entry.program);
   const outputs=new Map([[join(kitDir,'equivalencies.json'),stringifyKit(nextEquivalencies,['equivalencies'])+'\n'],...programs.map(({program})=>[join(kitDir,'programs',program.slug+'.json'),stringifyKit(program,['requirements'])+'\n'])]);
   let stale=[];
   for(const [path,text] of outputs){

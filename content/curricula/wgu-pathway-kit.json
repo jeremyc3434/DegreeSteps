@@ -29504,7 +29504,7 @@
         "online"
       ],
       "coverage": "complete",
-      "completeExecutablePathway": false,
+      "completeExecutablePathway": true,
       "paceModel": "competency-subscription",
       "id": "curriculum-wgu-catalog-3a9fedcacbfcccae",
       "routeIds": [
@@ -29520,16 +29520,13 @@
       "alternativeCapSourceIds": [
         "wgu-undergraduate-institutional-catalog-202611"
       ],
-      "unresolved": [
-        "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-        "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
-        "WGU's current BSSWE ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
-      ],
+      "unresolved": [],
       "rulesNotes": [
         "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
         "Outside options come only from WGU's published partner agreements for BSSWE catalog 202610 (program 254). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
         "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
-        "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+        "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements.",
+        "The exact BSSWE 202610 required course set is reviewed against its current official catalog table and program receiving guidelines. No separately declared formal capstone occurs in this bounded course set; other editions do not inherit that finding. Any course marked non-transferable still stays at WGU."
       ],
       "mappingCheckedOn": "2026-11-25",
       "pricing": {
@@ -29550,7 +29547,12 @@
       "policySourceIds": [
         "wgu-undergraduate-institutional-catalog-202611",
         "wgu-bsswe-202610-metadata-20261123",
-        "wgu-bsswe-202610-curriculum-20261123"
+        "wgu-bsswe-202610-curriculum-20261123",
+        "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+        "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+        "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+        "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+        "wgu-bsswe-202610-residency-descriptions-reviewed-20261126"
       ],
       "policyEvidence": {
         "externalMaxCredits": {
@@ -29570,6 +29572,20 @@
             "wgu-undergraduate-institutional-catalog-202611"
           ],
           "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+        },
+        "institutionMinCredits": {
+          "value": 30,
+          "fraction": 0.25,
+          "basisCredits": 120,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+            "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+            "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+            "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+            "wgu-bsswe-202610-residency-descriptions-reviewed-20261126"
+          ],
+          "note": "The exact current complete ledger and receiving-guideline course set declare no separate formal capstone. All university-required courses remain institutional; this is not a finding about other catalog editions."
         }
       },
       "policyReview": [
@@ -30033,6 +30049,52 @@
           }
         },
         "allPossibleSourcesGloballyReviewed": false
+      },
+      "institutionMinCredits": 30,
+      "currentLedgerResidencyReview": {
+        "slug": "software-engineering",
+        "modelId": "curriculum-wgu-catalog-3a9fedcacbfcccae",
+        "status": "reviewed-complete-current-ledger",
+        "reviewedOn": "2026-11-26",
+        "programId": 254,
+        "programCode": "BSSWE",
+        "catalog": "202610",
+        "totalCredits": 120,
+        "requirementCount": 39,
+        "courseTupleSha256": "046c8b5101202a0f5d21c23dff94f069d50580d1b44d0c33713d37f967d3e6b6",
+        "declaredCapstoneCodes": [],
+        "universalityClaim": false,
+        "ledger": {
+          "sourceId": "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSSWE%3B202610",
+          "capture": "content/source-captures/feb99ac6d6246ddb.txt",
+          "sha256": "feb99ac6d6246ddbf3fd847a57783d87bbdd282cb46f07ee0ab1182e728f48ef"
+        },
+        "catalogue": {
+          "sourceId": "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=158-159&columns=1",
+          "capture": "content/source-captures/2f0f1e69b0eae73d.txt",
+          "sha256": "2f0f1e69b0eae73d882c5821dee57da15248805356a6c9b4639d0fc4396d65c3"
+        },
+        "guidelines": {
+          "sourceId": "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=254",
+          "capture": "content/source-captures/a3cf27f14ebf7a99.txt",
+          "sha256": "a3cf27f14ebf7a99f68e49d129d63159783998c6b6613c291c0a9fc54f082007"
+        },
+        "policy": {
+          "sourceId": "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+          "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+          "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+          "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5"
+        },
+        "descriptions": {
+          "sourceId": "wgu-bsswe-202610-residency-descriptions-reviewed-20261126",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+          "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+          "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b"
+        },
+        "college": "IT"
       },
       "sources": [
         {
@@ -31143,6 +31205,126 @@
             "sourceUpper": true
           },
           "reviewedExtract": "【turn486search0】 [wordlim: 200] Crawled: 2 months ago; Earn 3 transferable credits with our online Math 301: Linear Algebra (SDCM-0253) course featuring engaging video lessons, self-paced learning, and instructor support. ... Find your school on Study.com's partner college list to see how this course transfers to your school.\nEarn 3 transferable credits with our online Math 301: Linear Algebra (SDCM-0253) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nMath 301: Linear Algebra is an online mathematics course for college credit. The course transfers in for 3 semester hours as an upper-division course at most colleges and universities. Course features include:"
+        },
+        {
+          "id": "wgu-bsswe-202610-residency-ledger-reviewed-20261126",
+          "title": "WGU BSSWE 202610: complete named current public academic API ledger",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSSWE%3B202610",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/feb99ac6d6246ddb.txt",
+          "sha256": "feb99ac6d6246ddbf3fd847a57783d87bbdd282cb46f07ee0ab1182e728f48ef",
+          "sourceContentHash": "sha256:feb99ac6d6246ddbf3fd847a57783d87bbdd282cb46f07ee0ab1182e728f48ef",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 254,
+            "programCode": "BSSWE",
+            "catalogYear": "202610",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bsswe-202610-residency-catalogue-reviewed-20261126",
+          "title": "WGU BSSWE 202610: complete current institutional-catalog course table",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=158-159&columns=1",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/2f0f1e69b0eae73d.txt",
+          "sha256": "2f0f1e69b0eae73d882c5821dee57da15248805356a6c9b4639d0fc4396d65c3",
+          "sourceContentHash": "sha256:2f0f1e69b0eae73d882c5821dee57da15248805356a6c9b4639d0fc4396d65c3",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 254,
+            "programCode": "BSSWE",
+            "catalogYear": "202610",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bsswe-202610-residency-guidelines-reviewed-20261126",
+          "title": "WGU BSSWE 202610: exact current program receiving guidelines",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=254",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/a3cf27f14ebf7a99.txt",
+          "sha256": "a3cf27f14ebf7a99f68e49d129d63159783998c6b6613c291c0a9fc54f082007",
+          "sourceContentHash": "sha256:a3cf27f14ebf7a99f68e49d129d63159783998c6b6613c291c0a9fc54f082007",
+          "roles": [
+            "transfer-guidelines"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 254,
+            "programCode": "BSSWE",
+            "catalogYear": "202610",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bsswe-202610-residency-policy-reviewed-20261126",
+          "title": "WGU BSSWE 202610: active-program undergraduate residency policy",
+          "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+          "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "roles": [
+            "residency-policy"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 254,
+            "programCode": "BSSWE",
+            "catalogYear": "202610",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bsswe-202610-residency-descriptions-reviewed-20261126",
+          "title": "WGU BSSWE 202610: all required course descriptions in the current institutional catalog",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+          "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+          "sourceContentHash": "sha256:73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 254,
+            "programCode": "BSSWE",
+            "catalogYear": "202610",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
         }
       ],
       "requirements": [
@@ -31154,7 +31336,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bsswe-202610-curriculum-20261123",
-            "wgu-bsswe-transfer-guidelines-20261123"
+            "wgu-bsswe-transfer-guidelines-20261123",
+            "wgu-bsswe-202610-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "mathematics-content",
@@ -35709,7 +35892,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bsswe-202610-curriculum-20261123",
-            "wgu-bsswe-transfer-guidelines-20261123"
+            "wgu-bsswe-transfer-guidelines-20261123",
+            "wgu-bsswe-202610-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "software",
@@ -35833,7 +36017,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bsswe-202610-curriculum-20261123",
-            "wgu-bsswe-transfer-guidelines-20261123"
+            "wgu-bsswe-transfer-guidelines-20261123",
+            "wgu-bsswe-202610-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "software-applications",
@@ -35856,7 +36041,7 @@
         "online"
       ],
       "coverage": "complete",
-      "completeExecutablePathway": false,
+      "completeExecutablePathway": true,
       "paceModel": "competency-subscription",
       "id": "curriculum-wgu-catalog-d734fb4b04eded7c",
       "routeIds": [
@@ -35872,16 +36057,13 @@
       "alternativeCapSourceIds": [
         "wgu-undergraduate-institutional-catalog-202611"
       ],
-      "unresolved": [
-        "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-        "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
-        "WGU's current BSIT ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
-      ],
+      "unresolved": [],
       "rulesNotes": [
         "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
         "Outside options come only from WGU's published partner agreements for BSIT catalog 202608 (program 250). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
         "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
-        "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+        "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements.",
+        "The exact BSIT 202608 required course set is reviewed against its current official catalog table and program receiving guidelines. No separately declared formal capstone occurs in this bounded course set; other editions do not inherit that finding. Any course marked non-transferable still stays at WGU."
       ],
       "mappingCheckedOn": "2026-11-25",
       "pricing": {
@@ -35902,7 +36084,12 @@
       "policySourceIds": [
         "wgu-undergraduate-institutional-catalog-202611",
         "wgu-bsit-202608-metadata-20261123",
-        "wgu-bsit-202608-curriculum-20261123"
+        "wgu-bsit-202608-curriculum-20261123",
+        "wgu-bsit-202608-residency-catalogue-reviewed-20261126",
+        "wgu-bsit-202608-residency-policy-reviewed-20261126",
+        "wgu-bsit-202608-residency-ledger-reviewed-20261126",
+        "wgu-bsit-202608-residency-guidelines-reviewed-20261126",
+        "wgu-bsit-202608-residency-descriptions-reviewed-20261126"
       ],
       "policyEvidence": {
         "externalMaxCredits": {
@@ -35922,6 +36109,20 @@
             "wgu-undergraduate-institutional-catalog-202611"
           ],
           "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+        },
+        "institutionMinCredits": {
+          "value": 27.5,
+          "fraction": 0.25,
+          "basisCredits": 110,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "wgu-bsit-202608-residency-catalogue-reviewed-20261126",
+            "wgu-bsit-202608-residency-policy-reviewed-20261126",
+            "wgu-bsit-202608-residency-ledger-reviewed-20261126",
+            "wgu-bsit-202608-residency-guidelines-reviewed-20261126",
+            "wgu-bsit-202608-residency-descriptions-reviewed-20261126"
+          ],
+          "note": "The exact current complete ledger and receiving-guideline course set declare no separate formal capstone. All university-required courses remain institutional; this is not a finding about other catalog editions."
         }
       },
       "policyReview": [
@@ -36306,6 +36507,53 @@
           }
         },
         "allPossibleSourcesGloballyReviewed": false
+      },
+      "institutionMinCredits": 27.5,
+      "currentLedgerResidencyReview": {
+        "slug": "information-technology",
+        "modelId": "curriculum-wgu-catalog-d734fb4b04eded7c",
+        "status": "reviewed-complete-current-ledger",
+        "reviewedOn": "2026-11-26",
+        "programId": 250,
+        "programCode": "BSIT",
+        "college": "IT",
+        "catalog": "202608",
+        "totalCredits": 110,
+        "requirementCount": 35,
+        "courseTupleSha256": "a14db7ba089955b5817581b503d5369011d6cbf72dbc1e1a35ceb515aebae161",
+        "declaredCapstoneCodes": [],
+        "universalityClaim": false,
+        "ledger": {
+          "sourceId": "wgu-bsit-202608-residency-ledger-reviewed-20261126",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSIT%3B202608",
+          "capture": "content/source-captures/53209f34db8e7d5a.txt",
+          "sha256": "53209f34db8e7d5a9826619ad329113e3b2647d48676a73fa1793ec8e80755ea"
+        },
+        "catalogue": {
+          "sourceId": "wgu-bsit-202608-residency-catalogue-reviewed-20261126",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSIT.pdf",
+          "capture": "content/source-captures/92e7f77958c7936c.txt",
+          "sha256": "92e7f77958c7936c8dd1dd1d4908bf30ec2fe4b1e43500de3882986cb4f62f3d",
+          "mode": "guide-title-table"
+        },
+        "guidelines": {
+          "sourceId": "wgu-bsit-202608-residency-guidelines-reviewed-20261126",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=250",
+          "capture": "content/source-captures/03c73bc3a14c946f.txt",
+          "sha256": "03c73bc3a14c946f7d2ae71025f7932cd5f6dbf609c8e3c2355c86d4df00d3d1"
+        },
+        "policy": {
+          "sourceId": "wgu-bsit-202608-residency-policy-reviewed-20261126",
+          "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+          "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+          "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5"
+        },
+        "descriptions": {
+          "sourceId": "wgu-bsit-202608-residency-descriptions-reviewed-20261126",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+          "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+          "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b"
+        }
       },
       "sources": [
         {
@@ -37555,6 +37803,126 @@
             "sourceUpper": false
           },
           "reviewedExtract": "【turn486search1】 [wordlim: 200] Crawled: 2 months ago; Earn 3 transferable credits with our online Computer Science 104: Intro to Web Development (SDCM-0249) course featuring expert instruction on the fundamentals of web development, self-paced learning, and engaging online lessons. ... Find your school on Study.com's partner college list to see how this course transfers to your school.\nEarn 3 transferable credits with our online Computer Science 104: Intro to Web Development (SDCM-0249) course featuring expert instruction on the fundamentals of web development, self-paced learning, and engaging online lessons. Start anytime and transfer to 2,000+ colleges.\nComputer Science 104: Intro to Web Development is an online computer science course for college credit. The course transfers in for 3 semester hours as a lower-division course at most colleges and universities. Course features include:"
+        },
+        {
+          "id": "wgu-bsit-202608-residency-ledger-reviewed-20261126",
+          "title": "WGU BSIT 202608: complete named current public academic API ledger",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSIT%3B202608",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/53209f34db8e7d5a.txt",
+          "sha256": "53209f34db8e7d5a9826619ad329113e3b2647d48676a73fa1793ec8e80755ea",
+          "sourceContentHash": "sha256:53209f34db8e7d5a9826619ad329113e3b2647d48676a73fa1793ec8e80755ea",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 250,
+            "programCode": "BSIT",
+            "catalogYear": "202608",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bsit-202608-residency-catalogue-reviewed-20261126",
+          "title": "WGU BSIT 202608: complete current institutional-catalog course table",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/program-guides/information-technology/BSIT.pdf",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/92e7f77958c7936c.txt",
+          "sha256": "92e7f77958c7936c8dd1dd1d4908bf30ec2fe4b1e43500de3882986cb4f62f3d",
+          "sourceContentHash": "sha256:92e7f77958c7936c8dd1dd1d4908bf30ec2fe4b1e43500de3882986cb4f62f3d",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 250,
+            "programCode": "BSIT",
+            "catalogYear": "202608",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bsit-202608-residency-guidelines-reviewed-20261126",
+          "title": "WGU BSIT 202608: exact current program receiving guidelines",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=250",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/03c73bc3a14c946f.txt",
+          "sha256": "03c73bc3a14c946f7d2ae71025f7932cd5f6dbf609c8e3c2355c86d4df00d3d1",
+          "sourceContentHash": "sha256:03c73bc3a14c946f7d2ae71025f7932cd5f6dbf609c8e3c2355c86d4df00d3d1",
+          "roles": [
+            "transfer-guidelines"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 250,
+            "programCode": "BSIT",
+            "catalogYear": "202608",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bsit-202608-residency-policy-reviewed-20261126",
+          "title": "WGU BSIT 202608: active-program undergraduate residency policy",
+          "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+          "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "roles": [
+            "residency-policy"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 250,
+            "programCode": "BSIT",
+            "catalogYear": "202608",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bsit-202608-residency-descriptions-reviewed-20261126",
+          "title": "WGU BSIT 202608: all required course descriptions in the current institutional catalog",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+          "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+          "sourceContentHash": "sha256:73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 250,
+            "programCode": "BSIT",
+            "catalogYear": "202608",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
         }
       ],
       "requirements": [
@@ -39057,7 +39425,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bsit-202608-curriculum-20261123",
-            "wgu-bsit-transfer-guidelines-20261123"
+            "wgu-bsit-transfer-guidelines-20261123",
+            "wgu-bsit-202608-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "it-fundamentals",
@@ -41808,7 +42177,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bsit-202608-curriculum-20261123",
-            "wgu-bsit-transfer-guidelines-20261123"
+            "wgu-bsit-transfer-guidelines-20261123",
+            "wgu-bsit-202608-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "networking",
@@ -41831,7 +42201,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bsit-202608-curriculum-20261123",
-            "wgu-bsit-transfer-guidelines-20261123"
+            "wgu-bsit-transfer-guidelines-20261123",
+            "wgu-bsit-202608-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "it-fundamentals",
@@ -50649,7 +51020,7 @@
         "online"
       ],
       "coverage": "complete",
-      "completeExecutablePathway": false,
+      "completeExecutablePathway": true,
       "paceModel": "competency-subscription",
       "id": "curriculum-wgu-bs-computer-science-reviewed",
       "routeIds": [
@@ -50665,17 +51036,14 @@
       "alternativeCapSourceIds": [
         "wgu-undergraduate-institutional-catalog-202611"
       ],
-      "unresolved": [
-        "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-        "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research.",
-        "WGU's current BSCS ledger names no capstone course, so the institutional residency floor (25% of active-program CUs plus any required capstone) cannot be computed from published sources. Confirm the minimum WGU coursework for this program with WGU."
-      ],
+      "unresolved": [],
       "rulesNotes": [
         "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
         "Outside options come only from WGU's published partner agreements for BSCS catalog 202611 (program 261). Each cited agreement retains its own capture and review date. Approved courses without an independent provider identity, contradictory course labels, and awards needing several source courses together are held out of the plan.",
         "General education is labeled only where WGU’s current program record names the area of study General Education. Remaining named courses stay in core requirements.",
         "A course in Calculus I or higher must be taken within the past 5 years.",
-        "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+        "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify each program's prerequisites and transferable IT Certifications by going to the General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements.",
+        "The exact BSCS 202611 required course set is reviewed against its current official catalog table and program receiving guidelines. No separately declared formal capstone occurs in this bounded course set; other editions do not inherit that finding. Any course marked non-transferable still stays at WGU."
       ],
       "mappingCheckedOn": "2026-11-25",
       "pricing": {
@@ -50696,7 +51064,12 @@
       "policySourceIds": [
         "wgu-undergraduate-institutional-catalog-202611",
         "wgu-bscs-202611-metadata-20261123",
-        "wgu-bscs-202611-curriculum-20261123"
+        "wgu-bscs-202611-curriculum-20261123",
+        "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+        "wgu-bscs-202611-residency-policy-reviewed-20261126",
+        "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+        "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+        "wgu-bscs-202611-residency-descriptions-reviewed-20261126"
       ],
       "policyEvidence": {
         "externalMaxCredits": {
@@ -50716,6 +51089,20 @@
             "wgu-undergraduate-institutional-catalog-202611"
           ],
           "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+        },
+        "institutionMinCredits": {
+          "value": 30.25,
+          "fraction": 0.25,
+          "basisCredits": 121,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+            "wgu-bscs-202611-residency-policy-reviewed-20261126",
+            "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+            "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+            "wgu-bscs-202611-residency-descriptions-reviewed-20261126"
+          ],
+          "note": "The exact current complete ledger and receiving-guideline course set declare no separate formal capstone. All university-required courses remain institutional; this is not a finding about other catalog editions."
         }
       },
       "policyReview": [
@@ -51098,6 +51485,52 @@
           }
         },
         "allPossibleSourcesGloballyReviewed": false
+      },
+      "institutionMinCredits": 30.25,
+      "currentLedgerResidencyReview": {
+        "slug": "computer-science-bs",
+        "modelId": "curriculum-wgu-bs-computer-science-reviewed",
+        "status": "reviewed-complete-current-ledger",
+        "reviewedOn": "2026-11-26",
+        "programId": 261,
+        "programCode": "BSCS",
+        "catalog": "202611",
+        "totalCredits": 121,
+        "requirementCount": 39,
+        "courseTupleSha256": "a52eeeda2868d2bf8b02abf275c56d8263813d5b05aaa7f7e28dbaf422055437",
+        "declaredCapstoneCodes": [],
+        "universalityClaim": false,
+        "ledger": {
+          "sourceId": "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSCS%3B202611",
+          "capture": "content/source-captures/1999836f03e4ba20.txt",
+          "sha256": "1999836f03e4ba20088f9ec9378fa23182ce40bcb67778e942660d6313cdcce9"
+        },
+        "catalogue": {
+          "sourceId": "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=146-147&columns=1",
+          "capture": "content/source-captures/e35b7e1889048792.txt",
+          "sha256": "e35b7e18890487926f145a8d48e2b7d6d4bb04c2ea45692b817fa0132275594e"
+        },
+        "guidelines": {
+          "sourceId": "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=261",
+          "capture": "content/source-captures/6404c6adab854db6.txt",
+          "sha256": "6404c6adab854db62c699f0abfab2ee89fd7fb4d192a5e220421f32071250bd2"
+        },
+        "policy": {
+          "sourceId": "wgu-bscs-202611-residency-policy-reviewed-20261126",
+          "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+          "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+          "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5"
+        },
+        "descriptions": {
+          "sourceId": "wgu-bscs-202611-residency-descriptions-reviewed-20261126",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+          "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+          "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b"
+        },
+        "college": "IT"
       },
       "sources": [
         {
@@ -52086,6 +52519,126 @@
             "sourceUpper": true
           },
           "reviewedExtract": "【turn486search0】 [wordlim: 200] Crawled: 2 months ago; Earn 3 transferable credits with our online Math 301: Linear Algebra (SDCM-0253) course featuring engaging video lessons, self-paced learning, and instructor support. ... Find your school on Study.com's partner college list to see how this course transfers to your school.\nEarn 3 transferable credits with our online Math 301: Linear Algebra (SDCM-0253) course featuring engaging video lessons, self-paced learning, and instructor support. Start anytime and transfer to 2,000+ colleges.\nMath 301: Linear Algebra is an online mathematics course for college credit. The course transfers in for 3 semester hours as an upper-division course at most colleges and universities. Course features include:"
+        },
+        {
+          "id": "wgu-bscs-202611-residency-ledger-reviewed-20261126",
+          "title": "WGU BSCS 202611: complete named current public academic API ledger",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSCS%3B202611",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/1999836f03e4ba20.txt",
+          "sha256": "1999836f03e4ba20088f9ec9378fa23182ce40bcb67778e942660d6313cdcce9",
+          "sourceContentHash": "sha256:1999836f03e4ba20088f9ec9378fa23182ce40bcb67778e942660d6313cdcce9",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 261,
+            "programCode": "BSCS",
+            "catalogYear": "202611",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bscs-202611-residency-catalogue-reviewed-20261126",
+          "title": "WGU BSCS 202611: complete current institutional-catalog course table",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=146-147&columns=1",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/e35b7e1889048792.txt",
+          "sha256": "e35b7e18890487926f145a8d48e2b7d6d4bb04c2ea45692b817fa0132275594e",
+          "sourceContentHash": "sha256:e35b7e18890487926f145a8d48e2b7d6d4bb04c2ea45692b817fa0132275594e",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 261,
+            "programCode": "BSCS",
+            "catalogYear": "202611",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bscs-202611-residency-guidelines-reviewed-20261126",
+          "title": "WGU BSCS 202611: exact current program receiving guidelines",
+          "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=261",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/6404c6adab854db6.txt",
+          "sha256": "6404c6adab854db62c699f0abfab2ee89fd7fb4d192a5e220421f32071250bd2",
+          "sourceContentHash": "sha256:6404c6adab854db62c699f0abfab2ee89fd7fb4d192a5e220421f32071250bd2",
+          "roles": [
+            "transfer-guidelines"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 261,
+            "programCode": "BSCS",
+            "catalogYear": "202611",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bscs-202611-residency-policy-reviewed-20261126",
+          "title": "WGU BSCS 202611: active-program undergraduate residency policy",
+          "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+          "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "roles": [
+            "residency-policy"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 261,
+            "programCode": "BSCS",
+            "catalogYear": "202611",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
+        },
+        {
+          "id": "wgu-bscs-202611-residency-descriptions-reviewed-20261126",
+          "title": "WGU BSCS 202611: all required course descriptions in the current institutional catalog",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+          "kind": "university",
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+          "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+          "sourceContentHash": "sha256:73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+          "roles": [
+            "curriculum"
+          ],
+          "scope": {
+            "schoolName": "Western Governors University",
+            "programId": 261,
+            "programCode": "BSCS",
+            "catalogYear": "202611",
+            "level": "bachelor",
+            "modality": "online",
+            "creditSystem": "competency-unit"
+          },
+          "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+          "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
         }
       ],
       "requirements": [
@@ -52310,7 +52863,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bscs-202611-curriculum-20261123",
-            "wgu-bscs-transfer-guidelines-20261123"
+            "wgu-bscs-transfer-guidelines-20261123",
+            "wgu-bscs-202611-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "mathematics-content",
@@ -55076,7 +55630,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bscs-202611-curriculum-20261123",
-            "wgu-bscs-transfer-guidelines-20261123"
+            "wgu-bscs-transfer-guidelines-20261123",
+            "wgu-bscs-202611-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "computer-science",
@@ -55217,7 +55772,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bscs-202611-curriculum-20261123",
-            "wgu-bscs-transfer-guidelines-20261123"
+            "wgu-bscs-transfer-guidelines-20261123",
+            "wgu-bscs-202611-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "computer-science",
@@ -55240,7 +55796,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bscs-202611-curriculum-20261123",
-            "wgu-bscs-transfer-guidelines-20261123"
+            "wgu-bscs-transfer-guidelines-20261123",
+            "wgu-bscs-202611-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "computer-science",
@@ -55263,7 +55820,8 @@
           "category": "core",
           "sourceIds": [
             "wgu-bscs-202611-curriculum-20261123",
-            "wgu-bscs-transfer-guidelines-20261123"
+            "wgu-bscs-transfer-guidelines-20261123",
+            "wgu-bscs-202611-residency-guidelines-reviewed-20261126"
           ],
           "institutionalOnly": true,
           "group": "computer-science",
@@ -88158,6 +88716,884 @@
             "catalogTerm": "202608",
             "ledgerSha256": "731089d8d3cd791f6ce7b2673b67c3cc4ce9a3e888e8268b56cd4c9eac038ea0"
           },
+          "options": []
+        }
+      ]
+    },
+    {
+      "format": "Online",
+      "modalities": [
+        "online"
+      ],
+      "coverage": "complete",
+      "completeExecutablePathway": true,
+      "paceModel": "competency-subscription",
+      "id": "curriculum-wgu-catalog-b83ee97289a0732a",
+      "routeIds": [
+        "wgu-catalog-b83ee97289a0732a"
+      ],
+      "school": "Western Governors University",
+      "title": "MBA Information Technology Management",
+      "level": "master",
+      "catalog": "201408",
+      "totalCredits": 35,
+      "creditSystem": "competency-unit",
+      "paceSourceUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-it-management-program.html",
+      "institutionMinCredits": 21.5,
+      "externalMaxCredits": 17.5,
+      "policySourceIds": [
+        "wgu-mba-family-catalog-20261126",
+        "wgu-mba-family-capstones-20261126",
+        "wgu-mba-family-residency-20261126"
+      ],
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 21.5,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "wgu-mba-family-residency-20261126",
+            "wgu-mba-family-catalog-20261126",
+            "wgu-mba-family-capstones-20261126"
+          ],
+          "derived": true,
+          "calculation": "0.5 * totalCredits + capstoneCredits",
+          "basis": "Conservative policy-derived minimum: 50% of active graduate degree CUs in addition to the named four-CU required capstone. The numeric result is calculated from the two policy clauses and program ledger; it is not a university-printed program minimum."
+        },
+        "externalMaxCredits": {
+          "value": 17.5,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "wgu-mba-family-residency-20261126"
+          ],
+          "note": "Necessary ceiling implied by the graduate residency fraction, not a claim that any outside course is accepted. Additional capstone residency is enforced separately."
+        }
+      },
+      "residencyPolicy": {
+        "type": "institution-fraction-with-capstone-exclusion",
+        "creditScope": "active-program",
+        "creditSystem": "competency-unit",
+        "fraction": 0.5,
+        "capstoneRequirementIds": [
+          "mbaitm-mba-information-technology-management-capstone"
+        ],
+        "capstoneCredits": 4,
+        "sourceIds": [
+          "wgu-mba-family-residency-20261126",
+          "wgu-mba-family-catalog-20261126",
+          "wgu-mba-family-capstones-20261126"
+        ],
+        "interpretationStatus": "verified-additional-capstone",
+        "calculatedMinimumInstitutionCUs": 21.5,
+        "primaryPolicySections": [
+          "IV.2",
+          "IV.3.a",
+          "IV.3.b.ii"
+        ],
+        "conservativeSufficientCondition": {
+          "minimumNonCapstoneInstitutionCUs": 17.5,
+          "basisCredits": 35,
+          "derivation": "50% of required graduate degree CUs earned directly in the active program in addition to required capstone CUs."
+        },
+        "capstoneEvidence": "C218 is explicitly named as this program's capstone in the current institutional ledger and capstone course description."
+      },
+      "curriculumReview": {
+        "id": "wgu-mba-family-review-2026-11-26",
+        "checkedOn": "2026-11-26",
+        "programCode": "MBAITM",
+        "catalogTerm": "201408",
+        "sourceIds": [
+          "wgu-mba-family-catalog-20261126",
+          "wgu-mba-family-capstones-20261126"
+        ],
+        "requirementsComplete": true,
+        "outsideAwardsProposed": 0
+      },
+      "policyReview": [
+        {
+          "field": "upperMinCredits",
+          "status": "resolved",
+          "resolution": "covered-by-complete-named-curriculum",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "message": "The complete named graduate CU ledger is enforced directly; no undergraduate upper-division credit rule is imported."
+        }
+      ],
+      "pricing": {
+        "model": "subscription",
+        "amount": 5050,
+        "tuitionPerTerm": 4850,
+        "resourceFeePerTerm": 200,
+        "includesResourceFee": true,
+        "period": "6 months",
+        "currency": "USD",
+        "sourceUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-it-management-program.html",
+        "sourceIds": [
+          "wgu-mba-family-mbaitm-program-20261126"
+        ],
+        "checkedOn": "2026-11-26",
+        "notes": [
+          "Published tuition and mandatory resources per six-month term. Actual term count and other applicable personal charges are separate; the older one-year promotional amount is not used."
+        ]
+      },
+      "admissionRequirements": [
+        {
+          "message": "Submit official transcripts establishing a bachelor's degree from a recognized, accredited institution. The program does not require the GRE or GMAT.",
+          "sourceIds": [
+            "wgu-mba-family-mbaitm-program-20261126"
+          ]
+        }
+      ],
+      "pacePolicy": {
+        "sourceIds": [
+          "wgu-mba-family-mbaitm-program-20261126"
+        ],
+        "basis": "Fully online competency-based progress; work through courses as mastery is demonstrated with the assigned program mentor. No fixed completion duration is promised."
+      },
+      "rulesNotes": [
+        "All 35 planned CUs are taken in the active WGU graduate program. No undergraduate ACE, alternative-provider or outside graduate-course award is proposed.",
+        "The applicable program catalog 201408 and all eleven course codes are printed in the current November 2026 institutional catalog; the program catalog is not relabeled as 202611.",
+        "Graduate transfer eligibility varies by program. The residency ceiling is a necessary academic constraint and does not establish a particular incoming award.",
+        "The printed standard-path terms describe WGU's standard plan, not a guaranteed completion schedule or a formal prerequisite matrix."
+      ],
+      "unresolved": [
+        {
+          "owner": "student",
+          "status": "personal-task",
+          "message": "Submit the graduate application and official bachelor's transcripts and meet WGU's individual admission requirements.",
+          "sourceIds": [
+            "wgu-mba-family-mbaitm-program-20261126"
+          ]
+        }
+      ],
+      "mappingCheckedOn": "2026-11-26",
+      "sources": [
+        {
+          "id": "wgu-mba-family-catalog-20261126",
+          "title": "WGU November 2026 catalog: exact MBA family course ledgers",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+          "kind": "university",
+          "roles": [
+            "curriculum"
+          ],
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/fec4ef5bd32b4e2b.txt",
+          "sha256": "fec4ef5bd32b4e2bf99e07661af324f01cad42050a5ce997727a0c3205690fa2",
+          "sourceContentHash": "sha256:fec4ef5bd32b4e2bf99e07661af324f01cad42050a5ce997727a0c3205690fa2",
+          "originalRetrievedAt": "2026-11-26T00:51:24.415Z",
+          "documentSha256": "3cd41c5e76898570ecb3ce76954c19a56dc9cfbd9b1fbb7c649224be58ffcde5",
+          "pages": "89-91",
+          "scope": {
+            "schoolName": "Western Governors University",
+            "level": "master",
+            "modality": "online",
+            "programs": [
+              {
+                "programCode": "MBA",
+                "catalog": "201404"
+              },
+              {
+                "programCode": "MBAITM",
+                "catalog": "201408"
+              },
+              {
+                "programCode": "MBAHA",
+                "catalog": "202507"
+              }
+            ]
+          }
+        },
+        {
+          "id": "wgu-mba-family-capstones-20261126",
+          "title": "WGU November 2026 catalog: C216, C218 and C219 capstone descriptions",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+          "kind": "university",
+          "roles": [
+            "curriculum",
+            "residency"
+          ],
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/eee27c214ec1627d.txt",
+          "sha256": "eee27c214ec1627d7c90a1e76478e1e95a7ea18b1a923df7daae2371e9ad8e9e",
+          "sourceContentHash": "sha256:eee27c214ec1627d7c90a1e76478e1e95a7ea18b1a923df7daae2371e9ad8e9e",
+          "originalRetrievedAt": "2026-11-26T00:51:24.616Z",
+          "documentSha256": "3cd41c5e76898570ecb3ce76954c19a56dc9cfbd9b1fbb7c649224be58ffcde5",
+          "pages": "269-270",
+          "scope": {
+            "schoolName": "Western Governors University",
+            "level": "master",
+            "modality": "online",
+            "programs": [
+              {
+                "programCode": "MBA",
+                "catalog": "201404"
+              },
+              {
+                "programCode": "MBAITM",
+                "catalog": "201408"
+              },
+              {
+                "programCode": "MBAHA",
+                "catalog": "202507"
+              }
+            ]
+          }
+        },
+        {
+          "id": "wgu-mba-family-residency-20261126",
+          "title": "WGU Residency Requirements and Credentialing: active-program graduate residency",
+          "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/2-1-11-Residency-Requirements-and-Credentialing/ta-p/23797",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+          "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "originalRetrievedAt": "2026-11-25T23:11:15.097Z",
+          "reviewMethod": "Retained primary policy reread for its graduate scope; original November 25 retrieval timestamp retained.",
+          "scope": {
+            "schoolName": "Western Governors University",
+            "level": "master",
+            "modality": "online",
+            "programs": [
+              {
+                "programCode": "MBA",
+                "catalog": "201404"
+              },
+              {
+                "programCode": "MBAITM",
+                "catalog": "201408"
+              },
+              {
+                "programCode": "MBAHA",
+                "catalog": "202507"
+              }
+            ]
+          }
+        },
+        {
+          "id": "wgu-mba-family-mbaitm-program-20261126",
+          "title": "MBA Information Technology Management: current tuition, resources, CBE and admission",
+          "url": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-it-management-program.html",
+          "kind": "university",
+          "roles": [
+            "pricing",
+            "admissions",
+            "pace"
+          ],
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/cb97d614df755c77.txt",
+          "sha256": "cb97d614df755c77897118d948a52b684bca2046033becd3813568f6cb8b9134",
+          "sourceContentHash": "sha256:cb97d614df755c77897118d948a52b684bca2046033becd3813568f6cb8b9134",
+          "originalRetrievedAt": "2026-11-26T00:51:22.906Z",
+          "scope": {
+            "schoolName": "Western Governors University",
+            "level": "master",
+            "modality": "online",
+            "programs": [
+              {
+                "programCode": "MBAITM",
+                "catalog": "201408"
+              }
+            ]
+          }
+        }
+      ],
+      "requirements": [
+        {
+          "id": "mbaitm-managing-organizations-and-leading-people",
+          "code": "C200",
+          "title": "Managing Organizations and Leading People",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 1,
+          "publishedCommonCourseNumber": "MGMT 5000",
+          "options": []
+        },
+        {
+          "id": "mbaitm-it-project-management",
+          "code": "MGT2",
+          "title": "IT Project Management",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 1,
+          "publishedCommonCourseNumber": "ITM 5000",
+          "options": []
+        },
+        {
+          "id": "mbaitm-managing-human-capital",
+          "code": "C202",
+          "title": "Managing Human Capital",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 1,
+          "publishedCommonCourseNumber": "HRM 5010",
+          "options": []
+        },
+        {
+          "id": "mbaitm-marketing",
+          "code": "C212",
+          "title": "Marketing",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 2,
+          "publishedCommonCourseNumber": "MKTG 5000",
+          "options": []
+        },
+        {
+          "id": "mbaitm-it-strategic-solutions",
+          "code": "MMT2",
+          "title": "IT Strategic Solutions",
+          "credits": 4,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 2,
+          "publishedCommonCourseNumber": "ITM 6000",
+          "options": []
+        },
+        {
+          "id": "mbaitm-accounting-for-decision-makers",
+          "code": "C213",
+          "title": "Accounting for Decision Makers",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 2,
+          "publishedCommonCourseNumber": "ACCT 5000",
+          "options": []
+        },
+        {
+          "id": "mbaitm-ethical-leadership",
+          "code": "C206",
+          "title": "Ethical Leadership",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 3,
+          "publishedCommonCourseNumber": "MGMT 6000",
+          "options": []
+        },
+        {
+          "id": "mbaitm-financial-management",
+          "code": "C214",
+          "title": "Financial Management",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 3,
+          "publishedCommonCourseNumber": "FINC 6000",
+          "options": []
+        },
+        {
+          "id": "mbaitm-data-driven-decision-making",
+          "code": "C207",
+          "title": "Data-Driven Decision Making",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 3,
+          "publishedCommonCourseNumber": "MGMT 6010",
+          "options": []
+        },
+        {
+          "id": "mbaitm-global-economics-for-managers",
+          "code": "C211",
+          "title": "Global Economics for Managers",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 4,
+          "publishedCommonCourseNumber": "ECON 5000",
+          "options": []
+        },
+        {
+          "id": "mbaitm-mba-information-technology-management-capstone",
+          "code": "C218",
+          "title": "MBA, Information Technology Management Capstone",
+          "credits": 4,
+          "category": "capstone",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126",
+            "wgu-mba-family-capstones-20261126"
+          ],
+          "institutionalOnly": true,
+          "standardPathTerm": 4,
+          "publishedCommonCourseNumber": "ITM 6900",
+          "options": []
+        }
+      ]
+    },
+    {
+      "format": "Online",
+      "modalities": [
+        "online"
+      ],
+      "coverage": "complete",
+      "completeExecutablePathway": true,
+      "paceModel": "competency-subscription",
+      "id": "curriculum-wgu-catalog-c4a7efe739d67a5c",
+      "routeIds": [
+        "wgu-catalog-c4a7efe739d67a5c"
+      ],
+      "school": "Western Governors University",
+      "title": "MBA Healthcare Administration",
+      "level": "master",
+      "catalog": "202507",
+      "totalCredits": 36,
+      "creditSystem": "competency-unit",
+      "paceSourceUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-healthcare-administration-program.html",
+      "institutionMinCredits": 22,
+      "externalMaxCredits": 18,
+      "policySourceIds": [
+        "wgu-mba-family-catalog-20261126",
+        "wgu-mba-family-capstones-20261126",
+        "wgu-mba-family-residency-20261126"
+      ],
+      "policyEvidence": {
+        "institutionMinCredits": {
+          "value": 22,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "wgu-mba-family-residency-20261126",
+            "wgu-mba-family-catalog-20261126",
+            "wgu-mba-family-capstones-20261126"
+          ],
+          "derived": true,
+          "calculation": "0.5 * totalCredits + capstoneCredits",
+          "basis": "Conservative policy-derived minimum: 50% of active graduate degree CUs in addition to the named four-CU required capstone. The numeric result is calculated from the two policy clauses and program ledger; it is not a university-printed program minimum."
+        },
+        "externalMaxCredits": {
+          "value": 18,
+          "creditSystem": "competency-unit",
+          "sourceIds": [
+            "wgu-mba-family-residency-20261126"
+          ],
+          "note": "Necessary ceiling implied by the graduate residency fraction, not a claim that any outside course is accepted. Additional capstone residency is enforced separately."
+        }
+      },
+      "residencyPolicy": {
+        "type": "institution-fraction-with-capstone-exclusion",
+        "creditScope": "active-program",
+        "creditSystem": "competency-unit",
+        "fraction": 0.5,
+        "capstoneRequirementIds": [
+          "mbaha-mba-healthcare-management-capstone"
+        ],
+        "capstoneCredits": 4,
+        "sourceIds": [
+          "wgu-mba-family-residency-20261126",
+          "wgu-mba-family-catalog-20261126",
+          "wgu-mba-family-capstones-20261126"
+        ],
+        "interpretationStatus": "verified-additional-capstone",
+        "calculatedMinimumInstitutionCUs": 22,
+        "primaryPolicySections": [
+          "IV.2",
+          "IV.3.a",
+          "IV.3.b.ii"
+        ],
+        "conservativeSufficientCondition": {
+          "minimumNonCapstoneInstitutionCUs": 18,
+          "basisCredits": 36,
+          "derivation": "50% of required graduate degree CUs earned directly in the active program in addition to required capstone CUs."
+        },
+        "capstoneEvidence": "C219 is explicitly named as this program's capstone in the current institutional ledger and capstone course description."
+      },
+      "curriculumReview": {
+        "id": "wgu-mba-family-review-2026-11-26",
+        "checkedOn": "2026-11-26",
+        "programCode": "MBAHA",
+        "catalogTerm": "202507",
+        "sourceIds": [
+          "wgu-mba-family-catalog-20261126",
+          "wgu-mba-family-capstones-20261126"
+        ],
+        "requirementsComplete": true,
+        "outsideAwardsProposed": 0
+      },
+      "policyReview": [
+        {
+          "field": "upperMinCredits",
+          "status": "resolved",
+          "resolution": "covered-by-complete-named-curriculum",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "message": "The complete named graduate CU ledger is enforced directly; no undergraduate upper-division credit rule is imported."
+        }
+      ],
+      "pricing": {
+        "model": "subscription",
+        "amount": 5050,
+        "tuitionPerTerm": 4850,
+        "resourceFeePerTerm": 200,
+        "includesResourceFee": true,
+        "period": "6 months",
+        "currency": "USD",
+        "sourceUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-healthcare-administration-program.html",
+        "sourceIds": [
+          "wgu-mba-family-mbaha-program-20261126"
+        ],
+        "checkedOn": "2026-11-26",
+        "notes": [
+          "Published tuition and mandatory resources per six-month term. Actual term count and other applicable personal charges are separate; the older one-year promotional amount is not used."
+        ]
+      },
+      "admissionRequirements": [
+        {
+          "message": "Submit official transcripts establishing a bachelor's degree from a recognized, accredited institution. The program does not require the GRE or GMAT.",
+          "sourceIds": [
+            "wgu-mba-family-mbaha-program-20261126"
+          ]
+        }
+      ],
+      "pacePolicy": {
+        "sourceIds": [
+          "wgu-mba-family-mbaha-program-20261126"
+        ],
+        "basis": "Fully online competency-based progress; work through courses as mastery is demonstrated with the assigned program mentor. No fixed completion duration is promised."
+      },
+      "rulesNotes": [
+        "All 36 planned CUs are taken in the active WGU graduate program. No undergraduate ACE, alternative-provider or outside graduate-course award is proposed.",
+        "The applicable program catalog 202507 and all eleven course codes are printed in the current November 2026 institutional catalog; the program catalog is not relabeled as 202611.",
+        "Graduate transfer eligibility varies by program. The residency ceiling is a necessary academic constraint and does not establish a particular incoming award.",
+        "The printed standard-path terms describe WGU's standard plan, not a guaranteed completion schedule or a formal prerequisite matrix."
+      ],
+      "unresolved": [
+        {
+          "owner": "student",
+          "status": "personal-task",
+          "message": "Submit the graduate application and official bachelor's transcripts and meet WGU's individual admission requirements.",
+          "sourceIds": [
+            "wgu-mba-family-mbaha-program-20261126"
+          ]
+        }
+      ],
+      "mappingCheckedOn": "2026-11-26",
+      "sources": [
+        {
+          "id": "wgu-mba-family-catalog-20261126",
+          "title": "WGU November 2026 catalog: exact MBA family course ledgers",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+          "kind": "university",
+          "roles": [
+            "curriculum"
+          ],
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/fec4ef5bd32b4e2b.txt",
+          "sha256": "fec4ef5bd32b4e2bf99e07661af324f01cad42050a5ce997727a0c3205690fa2",
+          "sourceContentHash": "sha256:fec4ef5bd32b4e2bf99e07661af324f01cad42050a5ce997727a0c3205690fa2",
+          "originalRetrievedAt": "2026-11-26T00:51:24.415Z",
+          "documentSha256": "3cd41c5e76898570ecb3ce76954c19a56dc9cfbd9b1fbb7c649224be58ffcde5",
+          "pages": "89-91",
+          "scope": {
+            "schoolName": "Western Governors University",
+            "level": "master",
+            "modality": "online",
+            "programs": [
+              {
+                "programCode": "MBA",
+                "catalog": "201404"
+              },
+              {
+                "programCode": "MBAITM",
+                "catalog": "201408"
+              },
+              {
+                "programCode": "MBAHA",
+                "catalog": "202507"
+              }
+            ]
+          }
+        },
+        {
+          "id": "wgu-mba-family-capstones-20261126",
+          "title": "WGU November 2026 catalog: C216, C218 and C219 capstone descriptions",
+          "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf",
+          "kind": "university",
+          "roles": [
+            "curriculum",
+            "residency"
+          ],
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/eee27c214ec1627d.txt",
+          "sha256": "eee27c214ec1627d7c90a1e76478e1e95a7ea18b1a923df7daae2371e9ad8e9e",
+          "sourceContentHash": "sha256:eee27c214ec1627d7c90a1e76478e1e95a7ea18b1a923df7daae2371e9ad8e9e",
+          "originalRetrievedAt": "2026-11-26T00:51:24.616Z",
+          "documentSha256": "3cd41c5e76898570ecb3ce76954c19a56dc9cfbd9b1fbb7c649224be58ffcde5",
+          "pages": "269-270",
+          "scope": {
+            "schoolName": "Western Governors University",
+            "level": "master",
+            "modality": "online",
+            "programs": [
+              {
+                "programCode": "MBA",
+                "catalog": "201404"
+              },
+              {
+                "programCode": "MBAITM",
+                "catalog": "201408"
+              },
+              {
+                "programCode": "MBAHA",
+                "catalog": "202507"
+              }
+            ]
+          }
+        },
+        {
+          "id": "wgu-mba-family-residency-20261126",
+          "title": "WGU Residency Requirements and Credentialing: active-program graduate residency",
+          "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/2-1-11-Residency-Requirements-and-Credentialing/ta-p/23797",
+          "kind": "university",
+          "roles": [
+            "policy"
+          ],
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+          "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+          "originalRetrievedAt": "2026-11-25T23:11:15.097Z",
+          "reviewMethod": "Retained primary policy reread for its graduate scope; original November 25 retrieval timestamp retained.",
+          "scope": {
+            "schoolName": "Western Governors University",
+            "level": "master",
+            "modality": "online",
+            "programs": [
+              {
+                "programCode": "MBA",
+                "catalog": "201404"
+              },
+              {
+                "programCode": "MBAITM",
+                "catalog": "201408"
+              },
+              {
+                "programCode": "MBAHA",
+                "catalog": "202507"
+              }
+            ]
+          }
+        },
+        {
+          "id": "wgu-mba-family-mbaha-program-20261126",
+          "title": "MBA Healthcare Administration: current tuition, resources, CBE and admission",
+          "url": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-healthcare-administration-program.html",
+          "kind": "university",
+          "roles": [
+            "pricing",
+            "admissions",
+            "pace"
+          ],
+          "checked": "2026-11-26",
+          "capture": "content/source-captures/32731087fcd70232.txt",
+          "sha256": "32731087fcd70232626feed924b2766bc320a845cf230cd84af0d0aa206587e9",
+          "sourceContentHash": "sha256:32731087fcd70232626feed924b2766bc320a845cf230cd84af0d0aa206587e9",
+          "originalRetrievedAt": "2026-11-26T00:51:22.965Z",
+          "scope": {
+            "schoolName": "Western Governors University",
+            "level": "master",
+            "modality": "online",
+            "programs": [
+              {
+                "programCode": "MBAHA",
+                "catalog": "202507"
+              }
+            ]
+          }
+        }
+      ],
+      "requirements": [
+        {
+          "id": "mbaha-managing-organizations-and-leading-people",
+          "code": "C200",
+          "title": "Managing Organizations and Leading People",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 1,
+          "publishedCommonCourseNumber": "MGMT 5000",
+          "options": []
+        },
+        {
+          "id": "mbaha-operations-management",
+          "code": "C215",
+          "title": "Operations Management",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 1,
+          "publishedCommonCourseNumber": "MGMT 6020",
+          "options": []
+        },
+        {
+          "id": "mbaha-accreditation-audit",
+          "code": "AFT2",
+          "title": "Accreditation Audit",
+          "credits": 4,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 1,
+          "publishedCommonCourseNumber": "HCM 5000",
+          "options": []
+        },
+        {
+          "id": "mbaha-accounting-for-decision-makers",
+          "code": "C213",
+          "title": "Accounting for Decision Makers",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 2,
+          "publishedCommonCourseNumber": "ACCT 5000",
+          "options": []
+        },
+        {
+          "id": "mbaha-financial-management",
+          "code": "C214",
+          "title": "Financial Management",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 2,
+          "publishedCommonCourseNumber": "FINC 6000",
+          "options": []
+        },
+        {
+          "id": "mbaha-ethical-leadership",
+          "code": "C206",
+          "title": "Ethical Leadership",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 2,
+          "publishedCommonCourseNumber": "MGMT 6000",
+          "options": []
+        },
+        {
+          "id": "mbaha-data-driven-decision-making",
+          "code": "C207",
+          "title": "Data-Driven Decision Making",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 3,
+          "publishedCommonCourseNumber": "MGMT 6010",
+          "options": []
+        },
+        {
+          "id": "mbaha-marketing",
+          "code": "C212",
+          "title": "Marketing",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 3,
+          "publishedCommonCourseNumber": "MKTG 5000",
+          "options": []
+        },
+        {
+          "id": "mbaha-service-line-development",
+          "code": "AMT2",
+          "title": "Service Line Development",
+          "credits": 4,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 3,
+          "publishedCommonCourseNumber": "HCM 6000",
+          "options": []
+        },
+        {
+          "id": "mbaha-global-economics-for-managers",
+          "code": "C211",
+          "title": "Global Economics for Managers",
+          "credits": 3,
+          "category": "core",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126"
+          ],
+          "institutionalOnly": false,
+          "standardPathTerm": 4,
+          "publishedCommonCourseNumber": "ECON 5000",
+          "options": []
+        },
+        {
+          "id": "mbaha-mba-healthcare-management-capstone",
+          "code": "C219",
+          "title": "MBA, Healthcare Management Capstone",
+          "credits": 4,
+          "category": "capstone",
+          "sourceIds": [
+            "wgu-mba-family-catalog-20261126",
+            "wgu-mba-family-capstones-20261126"
+          ],
+          "institutionalOnly": true,
+          "standardPathTerm": 4,
+          "publishedCommonCourseNumber": "HCM 6900",
           "options": []
         }
       ]

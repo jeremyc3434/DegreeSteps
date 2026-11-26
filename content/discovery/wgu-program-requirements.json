@@ -56,6 +56,36 @@
       "title": "WGU B.S. Cybersecurity and Information Assurance admission alternatives and ABET statement",
       "checkedOn": "2026-11-24",
       "quote": "demonstrate program readiness through one of the following"
+    },
+    {
+      "id": "wgu-mba-business-administration-admissions-20261126",
+      "kind": "university",
+      "url": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-program.html",
+      "title": "WGU MBA Business Administration prior-degree and entry-test requirements",
+      "checkedOn": "2026-11-26",
+      "quote": "bachelor’s degree from a recognized, accredited institution.\nNOTE: You do not need to take the GRE or GMAT",
+      "capture": "content/source-captures/b484222cf858a3a9.txt",
+      "sha256": "b484222cf858a3a9d6749048902e4faf2fc7ae5ff1ebeeec305b7c095c70551a"
+    },
+    {
+      "id": "wgu-mba-it-management-admissions-20261126",
+      "kind": "university",
+      "url": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-it-management-program.html",
+      "title": "WGU MBA Information Technology Management prior-degree and entry-test requirements",
+      "checkedOn": "2026-11-26",
+      "quote": "bachelor’s degree from a recognized, accredited institution.\nNOTE: You do not need to take the GRE or GMAT",
+      "capture": "content/source-captures/cb97d614df755c77.txt",
+      "sha256": "cb97d614df755c77897118d948a52b684bca2046033becd3813568f6cb8b9134"
+    },
+    {
+      "id": "wgu-mba-healthcare-administration-admissions-20261126",
+      "kind": "university",
+      "url": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-healthcare-administration-program.html",
+      "title": "WGU MBA Healthcare Administration prior-degree and entry-test requirements",
+      "checkedOn": "2026-11-26",
+      "quote": "bachelor’s degree from a recognized, accredited institution.\nNOTE: You do not need to take the GRE or GMAT",
+      "capture": "content/source-captures/32731087fcd70232.txt",
+      "sha256": "32731087fcd70232626feed924b2766bc320a845cf230cd84af0d0aa206587e9"
     }
   ],
   "reviews": [
@@ -784,6 +814,302 @@
       "facts": [
         {
           "id": "wgu-cloud-network-engineering-azure-bs-assessments",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "WGU assessments",
+          "detail": "WGU uses remotely proctored exams and other assessments; requirements vary.",
+          "sourceIds": [
+            "wgu-assessment-policy-20261124"
+          ],
+          "prominent": false,
+          "type": "proctored-assessments"
+        }
+      ]
+    },
+    {
+      "id": "wgu-mba-business-administration-requirements-20261126",
+      "modelIds": [
+        "curriculum-wgu-catalog-b2a8a37d4fbedabd"
+      ],
+      "catalogYear": "201404",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-wgu-catalog-b2a8a37d4fbedabd",
+          "degreeUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-program.html"
+        }
+      ],
+      "facts": [
+        {
+          "id": "wgu-mba-business-administration-assessments-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "WGU assessments",
+          "detail": "WGU uses remotely proctored exams and other assessments; requirements vary.",
+          "sourceIds": [
+            "wgu-assessment-policy-20261124"
+          ],
+          "prominent": false,
+          "type": "proctored-assessments"
+        },
+        {
+          "id": "wgu-mba-business-administration-prior-degree-20261126",
+          "kind": "admission",
+          "scope": "program",
+          "label": "Bachelor’s degree required",
+          "detail": "Submit transcripts verifying a bachelor’s degree from a recognized, accredited institution. WGU evaluates individual admission.",
+          "sourceIds": [
+            "wgu-mba-business-administration-admissions-20261126"
+          ],
+          "prominent": true,
+          "type": "prior-degree"
+        },
+        {
+          "id": "wgu-mba-business-administration-no-gre-gmat-20261126",
+          "kind": "admission",
+          "scope": "program",
+          "label": "GRE/GMAT not required for admission",
+          "detail": "This MBA program does not require the GRE or GMAT for admission. This entry-test policy does not describe the assessments in its university courses.",
+          "sourceIds": [
+            "wgu-mba-business-administration-admissions-20261126"
+          ],
+          "prominent": true,
+          "type": "no-gre-gmat"
+        }
+      ]
+    },
+    {
+      "id": "wgu-mba-it-management-requirements-20261126",
+      "modelIds": [
+        "curriculum-wgu-catalog-b83ee97289a0732a"
+      ],
+      "catalogYear": "201408",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-wgu-catalog-b83ee97289a0732a",
+          "degreeUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-it-management-program.html"
+        }
+      ],
+      "facts": [
+        {
+          "id": "wgu-mba-it-management-assessments-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "WGU assessments",
+          "detail": "WGU uses remotely proctored exams and other assessments; requirements vary.",
+          "sourceIds": [
+            "wgu-assessment-policy-20261124"
+          ],
+          "prominent": false,
+          "type": "proctored-assessments"
+        },
+        {
+          "id": "wgu-mba-it-management-prior-degree-20261126",
+          "kind": "admission",
+          "scope": "program",
+          "label": "Bachelor’s degree required",
+          "detail": "Submit transcripts verifying a bachelor’s degree from a recognized, accredited institution. WGU evaluates individual admission.",
+          "sourceIds": [
+            "wgu-mba-it-management-admissions-20261126"
+          ],
+          "prominent": true,
+          "type": "prior-degree"
+        },
+        {
+          "id": "wgu-mba-it-management-no-gre-gmat-20261126",
+          "kind": "admission",
+          "scope": "program",
+          "label": "GRE/GMAT not required for admission",
+          "detail": "This MBA program does not require the GRE or GMAT for admission. This entry-test policy does not describe the assessments in its university courses.",
+          "sourceIds": [
+            "wgu-mba-it-management-admissions-20261126"
+          ],
+          "prominent": true,
+          "type": "no-gre-gmat"
+        }
+      ]
+    },
+    {
+      "id": "wgu-mba-healthcare-administration-requirements-20261126",
+      "modelIds": [
+        "curriculum-wgu-catalog-c4a7efe739d67a5c"
+      ],
+      "catalogYear": "202507",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-wgu-catalog-c4a7efe739d67a5c",
+          "degreeUrl": "https://www.wgu.edu/online-business-degrees/mba-masters-business-administration-healthcare-administration-program.html"
+        }
+      ],
+      "facts": [
+        {
+          "id": "wgu-mba-healthcare-administration-assessments-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "WGU assessments",
+          "detail": "WGU uses remotely proctored exams and other assessments; requirements vary.",
+          "sourceIds": [
+            "wgu-assessment-policy-20261124"
+          ],
+          "prominent": false,
+          "type": "proctored-assessments"
+        },
+        {
+          "id": "wgu-mba-healthcare-administration-prior-degree-20261126",
+          "kind": "admission",
+          "scope": "program",
+          "label": "Bachelor’s degree required",
+          "detail": "Submit transcripts verifying a bachelor’s degree from a recognized, accredited institution. WGU evaluates individual admission.",
+          "sourceIds": [
+            "wgu-mba-healthcare-administration-admissions-20261126"
+          ],
+          "prominent": true,
+          "type": "prior-degree"
+        },
+        {
+          "id": "wgu-mba-healthcare-administration-no-gre-gmat-20261126",
+          "kind": "admission",
+          "scope": "program",
+          "label": "GRE/GMAT not required for admission",
+          "detail": "This MBA program does not require the GRE or GMAT for admission. This entry-test policy does not describe the assessments in its university courses.",
+          "sourceIds": [
+            "wgu-mba-healthcare-administration-admissions-20261126"
+          ],
+          "prominent": true,
+          "type": "no-gre-gmat"
+        }
+      ]
+    },
+    {
+      "id": "wgu-accounting-requirements-20261126",
+      "modelIds": [
+        "curriculum-wgu-catalog-358f1e10651bf3d8"
+      ],
+      "catalogYear": "202503",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-wgu-catalog-358f1e10651bf3d8",
+          "degreeUrl": "https://www.wgu.edu/online-business-degrees/accounting-bachelors-program.html"
+        }
+      ],
+      "facts": [
+        {
+          "id": "wgu-accounting-assessments-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "WGU assessments",
+          "detail": "WGU uses remotely proctored exams and other assessments; requirements vary.",
+          "sourceIds": [
+            "wgu-assessment-policy-20261124"
+          ],
+          "prominent": false,
+          "type": "proctored-assessments"
+        }
+      ]
+    },
+    {
+      "id": "wgu-it-management-requirements-20261126",
+      "modelIds": [
+        "curriculum-wgu-catalog-bf14bd14e87ae7aa"
+      ],
+      "catalogYear": "202609",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-wgu-catalog-bf14bd14e87ae7aa",
+          "degreeUrl": "https://www.wgu.edu/online-business-degrees/it-information-technology-management-bachelors-program.html"
+        }
+      ],
+      "facts": [
+        {
+          "id": "wgu-it-management-assessments-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "WGU assessments",
+          "detail": "WGU uses remotely proctored exams and other assessments; requirements vary.",
+          "sourceIds": [
+            "wgu-assessment-policy-20261124"
+          ],
+          "prominent": false,
+          "type": "proctored-assessments"
+        }
+      ]
+    },
+    {
+      "id": "wgu-computer-science-requirements-20261126",
+      "modelIds": [
+        "curriculum-wgu-bs-computer-science-reviewed"
+      ],
+      "catalogYear": "202611",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-wgu-bs-computer-science-reviewed",
+          "degreeUrl": "https://www.wgu.edu/online-it-degrees/computer-science.html"
+        }
+      ],
+      "facts": [
+        {
+          "id": "wgu-computer-science-assessments-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "WGU assessments",
+          "detail": "WGU uses remotely proctored exams and other assessments; requirements vary.",
+          "sourceIds": [
+            "wgu-assessment-policy-20261124"
+          ],
+          "prominent": false,
+          "type": "proctored-assessments"
+        }
+      ]
+    },
+    {
+      "id": "wgu-information-technology-requirements-20261126",
+      "modelIds": [
+        "curriculum-wgu-catalog-d734fb4b04eded7c"
+      ],
+      "catalogYear": "202608",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-wgu-catalog-d734fb4b04eded7c",
+          "degreeUrl": "https://www.wgu.edu/online-it-degrees/information-technology-bachelors-program.html"
+        }
+      ],
+      "facts": [
+        {
+          "id": "wgu-information-technology-assessments-20261126",
+          "kind": "assessment",
+          "scope": "school-policy",
+          "label": "WGU assessments",
+          "detail": "WGU uses remotely proctored exams and other assessments; requirements vary.",
+          "sourceIds": [
+            "wgu-assessment-policy-20261124"
+          ],
+          "prominent": false,
+          "type": "proctored-assessments"
+        }
+      ]
+    },
+    {
+      "id": "wgu-software-engineering-requirements-20261126",
+      "modelIds": [
+        "curriculum-wgu-catalog-3a9fedcacbfcccae"
+      ],
+      "catalogYear": "202610",
+      "modality": "online",
+      "programBindings": [
+        {
+          "modelId": "curriculum-wgu-catalog-3a9fedcacbfcccae",
+          "degreeUrl": "https://www.wgu.edu/online-it-degrees/software-engineering-bachelors-program.html"
+        }
+      ],
+      "facts": [
+        {
+          "id": "wgu-software-engineering-assessments-20261126",
           "kind": "assessment",
           "scope": "school-policy",
           "label": "WGU assessments",

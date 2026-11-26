@@ -1,5 +1,7 @@
 # TESU pathway evidence review — November 25, 2026
 
+Subsequent review: [November 26 exact-course reuse](tesu-exact-course-reuse-2026-11-26.md) adds separately source-bound institution-submitted course decisions and degree placements without promoting Sophia's generic provider status. The historical November 25 findings below retain their original scope and dates.
+
 The six current TESU degree ledgers are not six publication-ready transfer plans. This recheck creates **zero newly school-verified receiving awards and zero publication promotions**. It updates a real, school-published provider-status fact across the five factory degree models and the legacy General Management model.
 
 The live [TESU Approved Provider Directory](https://www.tesu.edu/admissions/methods-of-earning-credit/provider-directory.php), captured November 25, still lists Study.com as approved. Sophia, StraighterLine, Saylor Academy and CLEP appear under Provisionally Approved – Review Pending. The retained text, capture hash, real fetch time and structured review are committed at `content/source-captures/c8006b53ea7a4598.*` and `content/pathway-kits/tesu/provider-review-2026-11-25.json`.

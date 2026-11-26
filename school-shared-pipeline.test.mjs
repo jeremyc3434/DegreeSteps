@@ -8,6 +8,9 @@ import Catalog from './dist/program-catalog.js';
 import Journey from './dist/journey-engine.js';
 import Sheet from './dist/sheet-state.js';
 import {composeSharedAwards} from './scripts/shared-award-composition.mjs';
+import {loadKit} from './scripts/pathway-factory/lib.mjs';
+import {compileKit,runGuards} from './scripts/pathway-factory/compile.mjs';
+import {validateResidencyReview} from './scripts/wgu-current-ledger-residency.mjs';
 
 const read=path=>JSON.parse(readFileSync(new URL(path,import.meta.url),'utf8'));
 const registry=read('./dist/data/curriculum-registry.json'),quality=read('./dist/data/pathway-quality-report.json'),baselines=read('./dist/data/baseline-index.json');
@@ -71,13 +74,17 @@ test('four real WGU programs open as complete ready course plans with unique ori
  }
 });
 
-test('shared receiving facts do not clear the Accounting and IT Management residency exceptions',()=>{
+test('Accounting and IT Management need their exact current-ledger residency proofs in addition to shared receiving facts',async()=>{
+ const kit=await loadKit('content/pathway-kits/wgu'),compiled=compileKit(kit).doc,reviewed=read('./content/pathway-kits/wgu/reviews/current-ledger-residency-2026-11-26.json');assert.equal(await runGuards(kit,compiled),7);
  for(const code of ['BSACC','BSITM']){
   const review=wguBatch.programs.find(program=>program.programCode===code),model=modelFor(review.modelId),result=quality.programs.find(program=>program.modelId===model.id);
-  assert(model.requirements.some(row=>row.options.some(option=>option.evidence==='published'&&option.universityMapRecord?.programId===review.programId)),'The shared batch supplies real awards before the remaining exception is resolved');
-  assert.equal(result.publication.ready,false);assert(result.findings.some(finding=>finding.blocking&&finding.code==='policy-unresolved'&&finding.field==='institutionMinCredits'));
-  assert(model.unresolved.some(note=>/required.capstone applicability/.test(typeof note==='string'?note:note.message)));
-  assert(!Catalog.publishedPlans(catalog,[model]).some(route=>route.modelId===model.id));
+  assert(model.requirements.some(row=>row.options.some(option=>option.evidence==='published'&&option.universityMapRecord?.programId===review.programId)),'The shared batch still supplies separately evidenced receiving awards');
+  const proof=reviewed.programs.find(program=>program.modelId===model.id),authored=kit.programs.find(program=>program.modelId===model.id);assert(proof&&authored);await validateResidencyReview(authored,proof);assert.deepEqual(model.currentLedgerResidencyReview,proof);assert.equal(proof.status,'reviewed-complete-current-ledger');assert.equal(proof.programCode,code);assert.equal(proof.catalog,model.catalog);assert.equal(proof.universalityClaim,false);assert.deepEqual(proof.declaredCapstoneCodes,[]);assert.equal(model.residencyPolicy,undefined);assert.equal(model.institutionMinCredits,model.totalCredits*.25);
+  assert.equal(result.publication.ready,true);assert(Catalog.publishedPlans(catalog,[model]).some(route=>route.modelId===model.id));
+  for(const kind of ['ledger','catalogue','guidelines','descriptions','policy']){const evidence=proof[kind],source=model.sources.find(source=>source.id===evidence.sourceId);assert(source&&source.capture===evidence.capture&&source.url===evidence.url);assert.equal(createHash('sha256').update(readFileSync(source.capture,'utf8')).digest('hex'),evidence.sha256);}
+  for(const mutate of [m=>delete m.currentLedgerResidencyReview,m=>m.currentLedgerResidencyReview.catalog='202001',m=>m.currentLedgerResidencyReview.courseTupleSha256='0'.repeat(64)]){const broken=structuredClone(compiled);mutate(broken.models.find(candidate=>candidate.id===model.id));await assert.rejects(()=>runGuards(kit,broken),'Shared receiving awards cannot replace the missing or mismatched program-specific policy proof');}
+  const receivingOnly=structuredClone(compiled),unclosed=receivingOnly.models.find(candidate=>candidate.id===model.id),awards=JSON.stringify(unclosed.requirements);delete unclosed.currentLedgerResidencyReview;delete unclosed.institutionMinCredits;delete unclosed.policyEvidence.institutionMinCredits;assert.equal(JSON.stringify(unclosed.requirements),awards,'Removing policy closure leaves every shared receiving fact in place');await assert.rejects(()=>runGuards(kit,receivingOnly),'Published receiving awards alone cannot pass the source publication guards without the exact residency review');
+  const route=catalog.pathways.find(route=>route.modelId===model.id),state=Journey.initialize(Sheet.selectPathway(Sheet.initialize(null,null,catalog),route),null,catalog),plan=Journey.buildDraft(state,catalog,[model]).plan;assert.equal(plan.readiness,'review-ready');assert.equal(plan.totals.accounted,model.totalCredits);assert.equal(plan.totals.confirmed,0);assert.equal(plan.totals.reported,0);assert.equal(plan.coverage.conditionalExternalCredits,0);
  }
 });
 

@@ -1,6 +1,70 @@
 /* DegreeSteps's local worksheet. Catalog facts remain separate from a student's choices. */
+// Pure, bounded recovery for an untouched legacy draft whose reviewed route
+// now has a published-only starting baseline. Storage and account writes stay
+// with the worksheet; a failed or stale check simply preserves the old draft.
+async function degreeStepsReviewedBaselineState({state,catalog,model,pathway,index,readIndex,readAsset,Planner,Catalog,Sheet,Journey,asOf=new Date().toISOString().slice(0,10),subtle=globalThis.crypto?.subtle}) {
+  const list=value=>Array.isArray(value)?value:[],object=value=>value&&typeof value==='object'&&!Array.isArray(value)?value:{},own=(value,key)=>Object.hasOwn(object(value),key);
+  const nonempty=value=>Array.isArray(value)?value.length>0:value&&typeof value==='object'?Object.keys(value).length>0:Boolean(value);
+  const date=value=>typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value?Date.parse(value+'T00:00:00Z'):null;
+  try {
+    if(!state||state.version!==3||!Array.isArray(state.learning)||state.learning.length||!model||!pathway||pathway.modelId!==model.id||state.selectedPathwayId!==pathway.id||!subtle||typeof readAsset!=='function')return null;
+    const snapshot=JSON.stringify(state),scenario=object(state.scenarios?.[model.id]);
+    // An empty choice object alone is harmless. Any saved scenario settings,
+    // versions, imported models, course picks or progress belong to the student.
+    if(Object.keys(object(state.scenarios)).some(key=>key!==model.id)||Object.keys(scenario).some(key=>key!=='optionSelections')||own(scenario,'optionSelections')&&nonempty(scenario.optionSelections)||Object.keys(object(state.sheet?.slotChoices)).length)return null;
+    if(['baseline','whatIf','templateOrigin','legacyImported','sourceCurricula','customCurricula','auditDrafts','auditCurricula','discoveredCurricula','importedCurricula','courseProgress','savings'].some(key=>nonempty(state[key]))||nonempty(state.sheet?.courseProgress))return null;
+    if(!['',undefined,'open'].includes(state.profile?.proctoringPreference)||!['',undefined,'mixed'].includes(state.profile?.assessmentPreference)||['speed','cost'].includes(state.profile?.priority))return null;
+    if(state.profile?.modality&&state.profile.modality!=='any'&&!list(pathway.modalities).includes(state.profile.modality)||state.profile?.classroomImportance==='essential'&&!list(pathway.modalities).includes('campus'))return null;
+    const publication=catalog?.publicationIndex,level=Catalog.publicationLevel(model.level||pathway.level),published=list(publication?.plans).find(entry=>entry.modelId===model.id&&entry.publicationReady===true&&entry.level===level&&list(entry.routeIds).includes(pathway.id));
+    const fingerprint=Catalog.publicationModelFingerprint(model,level);
+    if(publication?.available!==true||!published||published.modelFingerprint!==fingerprint||!Catalog.publishedPlans(catalog,[model]).some(route=>route.id===pathway.id))return null;
+    if(!index&&typeof readIndex==='function')index=await readIndex();
+    if(index?.schemaVersion!==1||index.privateRecordsIncluded!==false||!/^academic-v1:[a-f0-9]{64}$/.test(index.registryRevision||'')||index.registryRevision!==publication.registryRevision||index.asOf!==publication.asOf||date(index.asOf)===null||date(asOf)===null||date(index.asOf)>date(asOf)||date(asOf)-date(index.asOf)>=30*86400000)return null;
+    const baseline=Object.values(object(index.baselines)).find(entry=>entry.modelId===model.id&&entry.pathwayId===pathway.id);
+    if(!baseline||baseline.baselineSelection?.selected!=='published-only-baseline'||baseline.baselineSelection.publishedOnlyCandidate?.publicationReady!==true||baseline.qualityReady!==true||baseline.researchStatus!=='research-ready'||baseline.validation?.academicCountsValid!==true||baseline.validation?.policyChecksComplete!==true||!list(pathway.modalities).includes(baseline.modality)||model.degreeCreditBalancePolicy?.enabled===true)return null;
+    if(JSON.stringify(baseline.rows)!==JSON.stringify(baseline.baselineSelection.publishedOnlyCandidate.rows))return null;
+    const hash=async text=>Array.from(new Uint8Array(await subtle.digest('SHA-256',new TextEncoder().encode(text))),byte=>byte.toString(16).padStart(2,'0')).join('');
+    const {revision,...body}=index;
+    if(revision!=='baselines-v1:'+await hash(JSON.stringify(body)))return null;
+    // Same academic fingerprint as the build review. Review-date changes alone
+    // do not create a new curriculum, but catalog/credit/course changes do.
+    const ignored=new Set(['checked','checkedOn','checkedAt','reviewedOn','reviewedAt','evidenceChecked','evidenceCheckedOn','evidenceCheckedAt','mappingChecked','mappingCheckedOn','mappingCheckedAt','retrievedAt','updatedAt']);
+    const stable=value=>Array.isArray(value)?value.map(stable):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).filter(key=>!ignored.has(key)).sort().map(key=>[key,stable(value[key])])):value;
+    const normalized={...model,...(level?{level}:{})},facts={};
+    for(const key of ['id','school','title','level','format','modalities','catalog','catalogYear','catalogIdentity','creditSystem','totalCredits','institutionMinCredits','alternativeMaxCredits','externalMaxCredits','upperMinCredits','majorMinInstitutionCredits','majorInstitutionFraction','majorResidencyBasisCredits','majorResidencyMinCredits','majorResidencyFraction','majorResidencyBasis','upperGroupMinimums','residencyPolicy','appliedTransferWaiver','liberalArtsAllocation','courseCreditExclusions','gradePolicy','transferGradePolicy','transferRules','transferPolicyReview','existingCreditReview','policyEvidence','requirements','overlaps','graduationRequirements','pricing','publishedFees'])if(normalized[key]!==undefined)facts[key]=normalized[key];
+    const identity=normalized.catalogIdentity,checked=date(identity?.checkedOn),https=value=>{try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password?url.href:null;}catch{return null;}},sourceUrl=https(identity?.sourceUrl);
+    if(identity?.kind==='reviewed-current-catalog'&&typeof identity.label==='string'&&identity.label.trim()&&identity.label===normalized.catalog&&checked!==null&&sourceUrl&&list(model.sources).some(source=>https(source.url)===sourceUrl&&[source.checked,source.checkedOn,source.checkedAt].some(value=>date(value)===checked))){facts.catalog={kind:'reviewed-current-catalog',sourceUrl};facts.catalogIdentity={kind:'reviewed-current-catalog',sourceUrl};}
+    if(baseline.academicFingerprint!==await hash(JSON.stringify(stable(facts))))return null;
+    // Validate only this route's relevant compiled inputs. Fetching the entire
+    // six-megabyte research registry would add no course-level safety here.
+    const inputs=object(index.inputs),paths=['/planner.js','/course-assessment.js','/data/curriculum-registry.json'];
+    if(index.plannerHash!==inputs['/planner.js'])return null;
+    const assets=await Promise.all(paths.map(async path=>{if(!/^[a-f0-9]{64}$/.test(inputs[path]||''))throw Error('Missing baseline input');const text=await readAsset(path);if(typeof text!=='string'||await hash(text)!==inputs[path])throw Error('Stale baseline input');return text;}));
+    const registry=JSON.parse(assets[2]),entry=list(registry.models).find(item=>item.id===model.id&&list(item.routeIds).includes(pathway.id));
+    if(!entry||typeof entry.path!=='string'||!/^data\/[A-Za-z0-9_./-]+\.json$/.test(entry.path)||entry.path.split('/').includes('..')||publication.curriculumFingerprint!==Catalog.publicationFingerprint(registry))return null;
+    const modelPath='/'+entry.path;
+    if(!/^[a-f0-9]{64}$/.test(inputs[modelPath]||''))return null;
+    const modelText=await readAsset(modelPath);
+    if(typeof modelText!=='string'||await hash(modelText)!==inputs[modelPath])return null;
+    const pack=JSON.parse(modelText),current=list(pack.models||[pack]).find(item=>item.id===model.id);
+    if(!current||Catalog.publicationModelFingerprint(current,level)!==fingerprint)return null;
+    const rows=list(baseline.rows),requirements=list(model.requirements),selections={},providers=new Set(),sources=new Set(list(model.sources).map(source=>source.id));
+    if(baseline.summary?.totalCredits!==model.totalCredits||rows.length!==requirements.length||new Set(rows.map(row=>row.requirementId)).size!==rows.length)return null;
+    for(const row of rows){
+      const requirement=requirements.find(item=>item.id===row.requirementId),option=list(requirement?.options).find(item=>item.id===row.optionId&&item.provider===row.provider&&item.code===row.code&&item.credits===row.credits);
+      if(row.status!=='planned'||!requirement||!option||row.credits!==requirement.credits||row.selectionRequired||option.selectionRequired||!list(option.sourceIds).length||!option.sourceIds.every(id=>sources.has(id))||!Planner.assessmentAllowsOption(model,option,{proctoringPreference:state.profile?.proctoringPreference},requirement.id))return null;
+      selections[requirement.id]=option.id;if(option.provider!=='University')providers.add(option.provider);
+    }
+    const next={...state,scenarios:{...object(state.scenarios),[model.id]:{...scenario,providers:[...new Set([...Sheet.scenario(state,model.id).providers,...providers])],optionSelections:selections}}},draft=Journey.buildDraft(next,catalog,[model]),plan=draft.plan;
+    if(draft.targetReviewNeeded||draft.program?.id!==model.id||draft.pathway?.id!==pathway.id||!plan||plan.validation?.academicCountsValid!==true||plan.validation?.policyChecksComplete!==true||plan.totals?.reported!==0||plan.totals?.confirmed!==0||plan.totals?.external!==baseline.summary.transferCredits||plan.totals?.institutional!==baseline.summary.universityCredits||plan.totals?.accounted!==model.totalCredits||list(plan.rows).length!==rows.length)return null;
+    if(!rows.every(row=>{const actual=plan.rows.find(item=>item.requirementId===row.requirementId);return actual?.status==='planned'&&actual.credits===row.credits&&actual.option?.id===row.optionId&&actual.option?.provider===row.provider&&actual.option?.code===row.code;}))return null;
+    return JSON.stringify(state)===snapshot?next:null;
+  } catch {return null;}
+}
+if(typeof module==='object'&&module['exports'])module['exports']={reviewedBaselineState:degreeStepsReviewedBaselineState};
 (function () {
   'use strict';
+  if(typeof window==='undefined'||typeof document==='undefined')return;
   const $ = id => document.getElementById(id), Sheet = window.DegreeSheet, Guide = window.DegreeGuide, Planner = window.DegreePlanner, Journey = window.DegreeJourney;
   const KEY = 'degreepath-guide-v3';
   const query = new URLSearchParams(location.search), task = ['credits','cost-time','checks','next','download','preferences','ask-school'].includes(query.get('task')) ? query.get('task') : '';
@@ -1134,7 +1198,14 @@
     void window.DegreeProviderOfferView?.load();
     try {const response=await fetch('data/pathways.json');if(!response.ok)throw Error('Could not load the preloaded degree research.');catalog=await response.json();try{catalog=await DegreeProgramCatalog.load(catalog);}catch{/* Exact free-text targets remain available when directory is unavailable. */}models=DegreeProgramCatalog.loadModels?await DegreeProgramCatalog.loadModels([]):await Promise.all(DegreeProgramCatalog.modelFiles.map(async url=>{const r=await fetch(url);if(!r.ok)throw Error('Could not load the preloaded degree research.');return r.json();}));try{const r=await fetch('data/credit-sources.json');if(r.ok){const data=await r.json();sources=data.sources||[];sourceChecked=data.checkedOn||'';}}catch{/* core worksheet still works without optional source catalog */}
       try{const r=await fetch('data/course-catalog.json');if(r.ok)courseCatalog=await r.json();}catch{/* Provider directories remain available when exact course links cannot load. */}
-      const raw=savedRaw();let stored;if(raw!==null){try{stored=JSON.parse(raw);}catch{throw Error('Your saved plan could not be read. It has not been replaced.');}if(stored?.version!==3||!stored.profile||typeof stored.profile!=='object'||Array.isArray(stored.profile)||!Array.isArray(stored.learning))throw Error('Your saved plan needs recovery. It has not been replaced.');}storageBaseline=raw;attachPrivateCurricula(stored);state=Journey.initialize(raw,read('degreepath-pathway-v2'),catalog);await ensureRouteModels(catalog.pathways.find(route=>route.id===(state.selectedPathwayId||state.profile?.pathwayId)));await communityEntry();if(savedRaw()!==storageBaseline&&!await refreshSavedPlan())return;const hasTarget=Boolean(state.selectedPathwayId||state.profile.pathwayId||state.profile.school&&state.profile.degree);if(!hasTarget&&task!=='credits'){save();location.replace('portal.html');return;}render();const changedCourses=query.get('coursesUpdated');if(changedCourses&&/^(?:[1-9]\d?|1\d{2}|200)$/.test(changedCourses)){const count=Number(changedCourses);announce('Preferences applied. '+count+' future course choice'+(count===1?' was':'s were')+' updated. Your completed courses and current enrollments are kept.');}void loadPlanIndex();if(task){const back=query.get('from')==='courses'?'Back to My courses':query.get('from')==='compare'&&task==='cost-time'?'Back to comparisons':'Back to my plan';$('close-sheet-dialog').textContent='← '+back;$('close-sheet-dialog').setAttribute('aria-label',back);handleAction(task);}else if(query.get('share')==='1')share();else if(query.has('compare'))compareCourses(query.get('compare'));else if(query.has('course'))rowDialog(query.get('course'));
+      const raw=savedRaw();let stored;if(raw!==null){try{stored=JSON.parse(raw);}catch{throw Error('Your saved plan could not be read. It has not been replaced.');}if(stored?.version!==3||!stored.profile||typeof stored.profile!=='object'||Array.isArray(stored.profile)||!Array.isArray(stored.learning))throw Error('Your saved plan needs recovery. It has not been replaced.');}storageBaseline=raw;attachPrivateCurricula(stored);state=Journey.initialize(raw,read('degreepath-pathway-v2'),catalog);await ensureRouteModels(catalog.pathways.find(route=>route.id===(state.selectedPathwayId||state.profile?.pathwayId)));await communityEntry();if(savedRaw()!==storageBaseline&&!await refreshSavedPlan())return;
+      if(raw!==null&&!task&&!query.has('template')&&!query.has('shared')&&!state.learning.length){
+        const previous=state,route=catalog.pathways.find(item=>item.id===state.selectedPathwayId),model=models.find(item=>item.id===route?.modelId);
+        const seeded=await degreeStepsReviewedBaselineState({state:previous,catalog,model,pathway:route,readIndex:loadBaselineIndex,Planner,Catalog:DegreeProgramCatalog,Sheet,Journey,readAsset:async path=>{const response=await fetch(path.slice(1),{signal:AbortSignal.timeout(8000)});if(!response.ok)throw Error('Starting route unavailable');return response.text();}});
+        if(seeded&&state===previous&&savedRaw()===storageBaseline)state=seeded;
+        if(savedRaw()!==storageBaseline&&!await refreshSavedPlan())return;
+      }
+      const hasTarget=Boolean(state.selectedPathwayId||state.profile.pathwayId||state.profile.school&&state.profile.degree);if(!hasTarget&&task!=='credits'){save();location.replace('portal.html');return;}render();const changedCourses=query.get('coursesUpdated');if(changedCourses&&/^(?:[1-9]\d?|1\d{2}|200)$/.test(changedCourses)){const count=Number(changedCourses);announce('Preferences applied. '+count+' future course choice'+(count===1?' was':'s were')+' updated. Your completed courses and current enrollments are kept.');}void loadPlanIndex();if(task){const back=query.get('from')==='courses'?'Back to My courses':query.get('from')==='compare'&&task==='cost-time'?'Back to comparisons':'Back to my plan';$('close-sheet-dialog').textContent='← '+back;$('close-sheet-dialog').setAttribute('aria-label',back);handleAction(task);}else if(query.get('share')==='1')share();else if(query.has('compare'))compareCourses(query.get('compare'));else if(query.has('course'))rowDialog(query.get('course'));
     }catch(e){$('sheet-loading').hidden=true;$('sheet-error').hidden=false;$('sheet-error').textContent=e.message+' Reload to try again. Your saved records have not been deleted.';console.error(e);}
   }
   boot();

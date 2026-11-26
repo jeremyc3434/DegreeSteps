@@ -23,7 +23,11 @@
       "kind": "reviewed-current-catalog",
       "label": "Current undergraduate catalog · checked November 18, 2026",
       "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/",
-      "checkedOn": "2026-11-18"
+      "checkedOn": "2026-11-26",
+      "priorCheckedOn": "2026-11-18",
+      "sourceId": "tesu-ba-liberal-studies-placement-2026-11-26",
+      "sourceSha256": "bf4009c573d007020eb91c464ea4af2de0d7af780254596e532f8587e3daccc4",
+      "capture": "content/source-captures/bf4009c573d00702.txt"
     },
     "upperGroupMinimums": [
       {
@@ -132,14 +136,23 @@
     "tuitionComparison": {
       "entryId": "tesu-standard",
       "sourceUrl": "https://www.tesu.edu/tuition-financial-aid/tuition-fees/undergraduate.php",
-      "checkedOn": "2026-11-18",
+      "checkedOn": "2026-11-26",
       "catalogIdentity": {
         "kind": "reviewed-current-catalog",
         "label": "Current undergraduate catalog · checked November 18, 2026",
         "sourceUrl": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/",
-        "checkedOn": "2026-11-18"
+        "checkedOn": "2026-11-26",
+        "priorCheckedOn": "2026-11-18",
+        "sourceId": "tesu-ba-liberal-studies-placement-2026-11-26",
+        "sourceSha256": "bf4009c573d007020eb91c464ea4af2de0d7af780254596e532f8587e3daccc4",
+        "capture": "content/source-captures/bf4009c573d00702.txt"
       },
-      "modelId": "curriculum-tesu-ba-liberal-studies"
+      "modelId": "curriculum-tesu-ba-liberal-studies",
+      "pricingSourceCheckedOn": "2026-11-18",
+      "pricingSourceIds": [
+        "tesu-psychology-tuition-2026-11-18"
+      ],
+      "reviewScope": "The November 26 review binds the existing tuition comparison to the exact re-reviewed current catalog. Tuition source review dates and prices are retained; no new price review is claimed."
     },
     "policyEvidence": {
       "institutionMinCredits": {
@@ -327,7 +340,10 @@
         "CLEP"
       ],
       "scope": "Provider review status only, independent of receiving-course equivalencies, exact degree placement, source recommendation periods and an individual student credit award. Provider review status establishes neither student enrollment permission nor a prohibition."
-    }
+    },
+    "sourceIds": [
+      "tesu-ba-liberal-studies-placement-2026-11-26"
+    ]
   },
   "modelSourceIds": [
     "tesu-psychology-current-2026-11-18",
@@ -513,7 +529,61 @@
     "upi-ace-upis-0006-2026-11-25",
     "upi-provider-upis-0006-2026-11-25",
     "upi-ace-upis-0004-2026-11-25",
-    "upi-provider-upis-0004-2026-11-25"
+    "upi-provider-upis-0004-2026-11-25",
+    "tesu-transcript-course-eligibility-2026-11-26",
+    "tesu-ba-liberal-studies-placement-2026-11-26",
+    "tesu-liberal-taxonomy-placement-2026-11-26",
+    "sophia-soph-0084-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0055-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0069-ace-tesu-equivalency-2026-11-20",
+    "tesu-soph-0032-exact-period-option-2026-11-26",
+    "tesu-soph-0001-exact-period-option-2026-11-26",
+    "tesu-soph-0084-exact-period-option-2026-11-26",
+    "tesu-soph-0065-exact-period-option-2026-11-26",
+    "tesu-soph-0015-exact-period-option-2026-11-26",
+    "tesu-soph-0030-exact-period-option-2026-11-26",
+    "tesu-soph-0010-exact-period-option-2026-11-26",
+    "tesu-soph-0055-exact-period-option-2026-11-26",
+    "tesu-soph-0023-exact-period-option-2026-11-26",
+    "tesu-soph-0005-exact-period-option-2026-11-26",
+    "tesu-soph-0012-exact-period-option-2026-11-26",
+    "tesu-soph-0011-exact-period-option-2026-11-26",
+    "tesu-soph-0069-exact-period-option-2026-11-26",
+    "tesu-soph-0054-exact-period-option-2026-11-26",
+    "tesu-soph-0024-exact-period-option-2026-11-26",
+    "tesu-soph-0071-exact-period-option-2026-11-26",
+    "tesu-soph-0022-exact-period-option-2026-11-26",
+    "tesu-soph-0025-exact-period-option-2026-11-26",
+    "tesu-soph-0049-exact-period-option-2026-11-26",
+    "tesu-soph-0002-exact-period-option-2026-11-26",
+    "tesu-soph-0014-exact-period-option-2026-11-26",
+    "tesu-soph-0083-exact-period-option-2026-11-26",
+    "tesu-soph-0047-ace-receiving-2026-11-26",
+    "tesu-soph-0047-exact-period-option-2026-11-26",
+    "tesu-soph-0057-ace-receiving-2026-11-26",
+    "tesu-soph-0057-exact-period-option-2026-11-26",
+    "tesu-soph-0058-ace-receiving-2026-11-26",
+    "tesu-soph-0058-exact-period-option-2026-11-26",
+    "tesu-soph-0060-ace-receiving-2026-11-26",
+    "tesu-soph-0060-exact-period-option-2026-11-26",
+    "tesu-soph-0062-ace-receiving-2026-11-26",
+    "tesu-soph-0062-exact-period-option-2026-11-26",
+    "tesu-soph-0064-ace-receiving-2026-11-26",
+    "tesu-soph-0064-exact-period-option-2026-11-26",
+    "tesu-soph-0066-ace-receiving-2026-11-26",
+    "tesu-soph-0066-exact-period-option-2026-11-26",
+    "tesu-soph-0086-ace-receiving-2026-11-26",
+    "tesu-soph-0086-exact-period-option-2026-11-26",
+    "tesu-soph-0090-ace-receiving-2026-11-26",
+    "tesu-soph-0090-exact-period-option-2026-11-26",
+    "tesu-soph-0092-ace-receiving-2026-11-26",
+    "tesu-soph-0092-exact-period-option-2026-11-26",
+    "tesu-soph-0096-ace-receiving-2026-11-26",
+    "tesu-soph-0096-exact-period-option-2026-11-26",
+    "tesu-soph-0061-ace-receiving-2026-11-26",
+    "tesu-soph-0061-exact-period-option-2026-11-26",
+    "tesu-soph-0094-ace-receiving-2026-11-26",
+    "tesu-soph-0094-exact-period-option-2026-11-26"
   ],
   "requirements": [
     {
@@ -556,13 +626,14 @@
             ]
           }
         },
-        {
-          "row": "sophia-soph-0015-to-enc-1010-tesu-2026-2027",
-          "optionId": "sophia-enc1010-3"
-        },
         "clep-clep-0040-to-enc-1010@requirement-id",
         "clep-clep-0041-to-enc-1010",
-        "study-com-sdcm-0057-to-enc-1010-current-provider-candidate"
+        "study-com-sdcm-0057-to-enc-1010-current-provider-candidate",
+        {
+          "row": "sophia-soph-0015-to-enc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-exact-course",
+          "optionId": "sophia-enc1010-3"
+        }
       ]
     },
     {
@@ -605,12 +676,17 @@
             ]
           }
         },
+        "clep-clep-0040-to-enc-1020@requirement-id",
         {
           "row": "sophia-soph-0030-to-enc-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-exact-course",
           "optionId": "sophia-enc1020-2"
         },
-        "clep-clep-0040-to-enc-1020@requirement-id",
-        "sophia-soph-0049-to-enc-1020-tesu-2026-2027"
+        {
+          "row": "sophia-soph-0049-to-enc-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-exact-course",
+          "optionId": "sophia-soph-0049-enc-1020-tesu-2026-2027"
+        }
       ]
     },
     {
@@ -646,6 +722,7 @@
         },
         {
           "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-exact-course",
           "optionId": "sophia-com2090-1"
         }
       ]
@@ -681,11 +758,12 @@
             "evidence": "published"
           }
         },
+        "clep-clep-0013-to-mat-1210",
         {
           "row": "sophia-soph-0001-to-mat-1210-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-exact-course",
           "optionId": "soph-0001"
-        },
-        "clep-clep-0013-to-mat-1210"
+        }
       ]
     },
     {
@@ -823,11 +901,12 @@
             "evidence": "published"
           }
         },
+        "clep-clep-0007-to-pos-1100",
         {
           "row": "sophia-soph-0071-to-pos-1100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-exact-course",
           "optionId": "sophia-pos1100-2"
-        },
-        "clep-clep-0007-to-pos-1100"
+        }
       ]
     },
     {
@@ -895,11 +974,12 @@
             "evidence": "published"
           }
         },
+        "clep-clep-0008-to-his-1130",
         {
           "row": "sophia-soph-0022-to-his-1130-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-exact-course",
           "optionId": "sophia-his1130-2"
-        },
-        "clep-clep-0008-to-his-1130"
+        }
       ]
     },
     {
@@ -967,11 +1047,12 @@
             "evidence": "published"
           }
         },
+        "clep-clep-0009-to-his-1140",
         {
           "row": "sophia-soph-0025-to-his-1140-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-exact-course",
           "optionId": "sophia-his1140-2"
-        },
-        "clep-clep-0009-to-his-1140"
+        }
       ]
     },
     {
@@ -1046,7 +1127,16 @@
             "evidence": "published"
           }
         },
-        "sophia-human-biology-to-bio-1010"
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-general-category",
+          "optionId": "sophia-soph-0023-cis-1070-tesu-2026-2027-eas1010"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-general-category",
+          "optionId": "sophia-soph-0002-bio-1010-tesu-2026-2027-eas1010"
+        }
       ]
     },
     {
@@ -1087,7 +1177,17 @@
             "evidence": "published"
           }
         },
-        "sophia-introduction-to-nutrition-to-nut-1010"
+        "sophia-introduction-to-nutrition-to-nut-1010",
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-general-category",
+          "optionId": "sophia-soph-0023-cis-1070-tesu-2026-2027-bio2080"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-general-category",
+          "optionId": "sophia-soph-0002-bio-1010-tesu-2026-2027-bio2080"
+        }
       ]
     },
     {
@@ -1182,12 +1282,8 @@
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
         "sophia-critical-thinking-to-phi-1300-2@elective-placement",
-        "sophia-human-biology-to-bio-1010-2@elective-placement",
-        "sophia-macroeconomics-to-eco-1110-3@elective-placement",
         "clep-clep-0027-to-eco-1110-3@elective-placement",
-        "sophia-microeconomics-to-eco-1120-3@elective-placement",
         "clep-clep-0030-to-eco-1120-3@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-introduction-to-ethics-to-phi-1800-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-introduction-to-ethics-to-phi-1800-6@elective-placement",
@@ -1255,6 +1351,96 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0001-to-mat-1210-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0001-mat-1210-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0023-cis-1070-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0012-eco-1110-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0011-eco-1120-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0071-to-pos-1100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0071-pos-1100-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0022-to-his-1130-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0022-his-1130-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0025-to-his-1140-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0025-his-1140-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0002-bio-1010-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-bals-intro-1"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-bals-intro-1"
         }
       ]
     },
@@ -1351,12 +1537,8 @@
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
         "sophia-critical-thinking-to-phi-1300-2@elective-placement",
-        "sophia-human-biology-to-bio-1010-2@elective-placement",
-        "sophia-macroeconomics-to-eco-1110-3@elective-placement",
         "clep-clep-0027-to-eco-1110-3@elective-placement",
-        "sophia-microeconomics-to-eco-1120-3@elective-placement",
         "clep-clep-0030-to-eco-1120-3@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-introduction-to-ethics-to-phi-1800-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-introduction-to-ethics-to-phi-1800-6@elective-placement",
@@ -1424,6 +1606,96 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0001-to-mat-1210-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0001-mat-1210-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0023-cis-1070-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0012-eco-1110-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0011-eco-1120-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0071-to-pos-1100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0071-pos-1100-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0022-to-his-1130-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0022-his-1130-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0025-to-his-1140-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0025-his-1140-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0002-bio-1010-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-bals-intro-2"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-bals-intro-2"
         }
       ]
     },
@@ -1517,7 +1789,6 @@
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-6@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-7@elective-placement",
@@ -1536,6 +1807,26 @@
           "row": "upi-upis-0014-to-eng-2010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0014-to-eng-2010-provider-2026-11-25-bals-intermediate-1"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intermediate-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intermediate-1"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intermediate-1"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intermediate-1"
         }
       ]
     },
@@ -1630,7 +1921,6 @@
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-6@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-7@elective-placement",
@@ -1649,6 +1939,26 @@
           "row": "upi-upis-0014-to-eng-2010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0014-to-eng-2010-provider-2026-11-25-bals-intermediate-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intermediate-2"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intermediate-2"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intermediate-2"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intermediate-2"
         }
       ]
     },
@@ -1742,7 +2052,6 @@
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-6@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-7@elective-placement",
@@ -1761,6 +2070,26 @@
           "row": "upi-upis-0014-to-eng-2010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0014-to-eng-2010-provider-2026-11-25-bals-intermediate-3"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intermediate-3"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intermediate-3"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intermediate-3"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intermediate-3"
         }
       ]
     },
@@ -1855,7 +2184,6 @@
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-6@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-7@elective-placement",
@@ -1874,6 +2202,26 @@
           "row": "upi-upis-0014-to-eng-2010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0014-to-eng-2010-provider-2026-11-25-bals-intermediate-4"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intermediate-4"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intermediate-4"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intermediate-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intermediate-4"
         }
       ]
     },
@@ -1968,7 +2316,6 @@
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-6@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-7@elective-placement",
@@ -1987,6 +2334,26 @@
           "row": "upi-upis-0014-to-eng-2010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0014-to-eng-2010-provider-2026-11-25-bals-intermediate-5"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intermediate-5"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intermediate-5"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intermediate-5"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intermediate-5"
         }
       ]
     },
@@ -2080,7 +2447,6 @@
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-6@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-7@elective-placement",
@@ -2099,6 +2465,26 @@
           "row": "upi-upis-0014-to-eng-2010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0014-to-eng-2010-provider-2026-11-25-bals-intermediate-6"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intermediate-6"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intermediate-6"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intermediate-6"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intermediate-6"
         }
       ]
     },
@@ -2193,7 +2579,6 @@
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
         "sophia-organizational-behavior-to-man-3110-2@elective-placement",
-        "sophia-introduction-to-statistics-to-sta-2010-3@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-5@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-6@elective-placement",
         "sophia-ancient-greek-philosophers-to-phi-2260-7@elective-placement",
@@ -2212,6 +2597,26 @@
           "row": "upi-upis-0014-to-eng-2010-provider-2026-11-25",
           "mode": "upi-liberal-arts-placement",
           "optionId": "upi-upis-0014-to-eng-2010-provider-2026-11-25-bals-intermediate-7"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-bals-intermediate-7"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0005-sta-2010-tesu-2026-2027-bals-intermediate-7"
+        },
+        {
+          "row": "sophia-soph-0024-to-com-2090-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0024-com-2090-tesu-2026-2027-bals-intermediate-7"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-intermediate-7"
         }
       ]
     },
@@ -2304,7 +2709,12 @@
         },
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
-        "sophia-organizational-behavior-to-man-3110-2@elective-placement"
+        "sophia-organizational-behavior-to-man-3110-2@elective-placement",
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-upper-1"
+        }
       ]
     },
     {
@@ -2396,7 +2806,12 @@
         },
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
-        "sophia-organizational-behavior-to-man-3110-2@elective-placement"
+        "sophia-organizational-behavior-to-man-3110-2@elective-placement",
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-upper-2"
+        }
       ]
     },
     {
@@ -2488,7 +2903,12 @@
         },
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
-        "sophia-organizational-behavior-to-man-3110-2@elective-placement"
+        "sophia-organizational-behavior-to-man-3110-2@elective-placement",
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-upper-3"
+        }
       ]
     },
     {
@@ -2580,7 +3000,12 @@
         },
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
-        "sophia-organizational-behavior-to-man-3110-2@elective-placement"
+        "sophia-organizational-behavior-to-man-3110-2@elective-placement",
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-upper-4"
+        }
       ]
     },
     {
@@ -2673,7 +3098,12 @@
         },
         "study-com-business-324-to-man-3730-2@elective-placement",
         "study-com-business-307-to-man-3110-2@elective-placement",
-        "sophia-organizational-behavior-to-man-3110-2@elective-placement"
+        "sophia-organizational-behavior-to-man-3110-2@elective-placement",
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-liberal-arts-area",
+          "optionId": "sophia-soph-0083-man-3110-tesu-2026-2027-bals-upper-5"
+        }
       ]
     },
     {
@@ -2754,60 +3184,15 @@
             "url": "https://www2.tesu.edu/ucourse.php?CourseCode=ART-1000&sem="
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -2816,17 +3201,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -2938,6 +3313,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-art1000"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-art1000"
         }
       ]
     },
@@ -2976,60 +3476,15 @@
             "url": "https://www2.tesu.edu/ucourse.php?CourseCode=ANT-1010&sem="
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -3038,17 +3493,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -3160,6 +3605,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-ant1010"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-ant1010"
         }
       ]
     },
@@ -3197,60 +3767,15 @@
             ]
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -3259,17 +3784,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -3381,6 +3896,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-eco1120"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-eco1120"
         }
       ]
     },
@@ -3419,60 +4059,15 @@
             "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/bus-business/1000/bus-1010"
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -3481,17 +4076,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -3603,6 +4188,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-bus1010"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-bus1010"
         }
       ]
     },
@@ -3641,60 +4351,15 @@
             "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -3703,17 +4368,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -3825,6 +4480,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-cis1070"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-cis1070"
         }
       ]
     },
@@ -3867,60 +4647,15 @@
             "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/acc-accounting/1000/acc-1010"
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -3929,17 +4664,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -4051,6 +4776,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-acc1010"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-acc1010"
         }
       ]
     },
@@ -4089,60 +4939,15 @@
             "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -4151,17 +4956,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -4273,6 +5068,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-law2010"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-law2010"
         }
       ]
     },
@@ -4311,60 +5231,15 @@
             "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -4373,17 +5248,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -4495,6 +5360,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-man2100"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-man2100"
         }
       ]
     },
@@ -4533,60 +5523,15 @@
             "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bs-in-general-management"
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -4595,17 +5540,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -4717,6 +5652,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-mkt2010"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-mkt2010"
         }
       ]
     },
@@ -4755,60 +5815,15 @@
             "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/courses/hum-humanities/1000/hum-1030"
           }
         },
-        {
-          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-phi1300-1"
-        },
-        {
-          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eas1010-1"
-        },
         "sophia-introduction-to-nutrition-to-nut-1010@elective-block",
-        {
-          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "soph-0010"
-        },
         "clep-clep-0039-to-acc-1010-2@elective-block",
         "study-com-accounting-102-to-acc-1020-2@elective-block",
         "sophia-managerial-accounting-to-acc-1020-2@elective-block",
-        {
-          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-cis1070-1"
-        },
-        {
-          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-law2010-2"
-        },
         "clep-clep-0025-to-law-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man2100-2"
-        },
         "clep-clep-0028-to-man-2100-2@elective-block",
         "clep-clep-0029-to-mkt-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1110-2"
-        },
         "clep-clep-0027-to-eco-1110-2@elective-block",
-        {
-          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-eco1120-2"
-        },
         "clep-clep-0030-to-eco-1120-2@elective-block",
-        {
-          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-sta2010-1"
-        },
         "study-com-business-324-to-man-3730-3@elective-block",
         "study-com-sdcm-0054-to-man-3720-2@elective-block",
         "study-com-accounting-303-to-acc-3030-2@elective-block",
@@ -4817,17 +5832,7 @@
         "study-com-finance-302-to-fin-3340@elective-block",
         "study-com-sdcm-0071-to-man-3310@elective-block",
         "study-com-business-307-to-man-3110@elective-block",
-        {
-          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-man3110-1"
-        },
         "study-com-accounting-201-to-acc-2010-2@elective-block",
-        {
-          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
-          "mode": "elective-block",
-          "optionId": "sophia-elective2-4"
-        },
         "sophia-project-management-to-man-2350@elective-block",
         "sophia-introduction-to-ethics-to-phi-1800@elective-block",
         "sophia-ancient-greek-philosophers-to-phi-2260@elective-block",
@@ -4939,6 +5944,131 @@
           "row": "upi-upis-0004-to-phi-1010-provider-2026-11-25",
           "mode": "upi-elective-placement",
           "optionId": "upi-upis-0004-to-phi-1010-provider-2026-11-25-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0032-to-law-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-law2010-2"
+        },
+        {
+          "row": "sophia-soph-0084-to-soc-2910-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0084-soc-2910-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0065-to-phi-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-phi1300-1"
+        },
+        {
+          "row": "sophia-soph-0010-to-acc-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "soph-0010"
+        },
+        {
+          "row": "sophia-soph-0055-to-mat-1050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0055-mat-1050-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0023-to-cis-1070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-cis1070-1"
+        },
+        {
+          "row": "sophia-soph-0005-to-sta-2010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-sta2010-1"
+        },
+        {
+          "row": "sophia-soph-0012-to-eco-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1110-2"
+        },
+        {
+          "row": "sophia-soph-0011-to-eco-1120-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eco1120-2"
+        },
+        {
+          "row": "sophia-soph-0069-to-mat-1290-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0069-mat-1290-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0054-to-man-2100-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man2100-2"
+        },
+        {
+          "row": "sophia-soph-0002-to-bio-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-eas1010-1"
+        },
+        {
+          "row": "sophia-soph-0014-to-bus-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-elective2-4"
+        },
+        {
+          "row": "sophia-soph-0083-to-man-3110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-man3110-1"
+        },
+        {
+          "row": "sophia-soph-0047-to-its-1300-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0047-its-1300-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0057-to-spa-1010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0057-spa-1010-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0058-to-its-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0058-its-1500-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0062-to-cos-1110-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0062-cos-1110-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0064-to-spa-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0064-spa-1020-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0066-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0066-sos-1500-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0086-to-opm-3010-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0086-opm-3010-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0090-to-crj-1020-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0090-crj-1020-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0092-to-hcm-3070-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0092-hcm-3070-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0096-to-ldr-3050-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0096-ldr-3050-tesu-2026-2027-free-hum1030"
+        },
+        {
+          "row": "sophia-soph-0061-to-sos-1500-tesu-2026-2027",
+          "mode": "tesu-reviewed-ba-liberal-studies-elective",
+          "optionId": "sophia-soph-0061-sos-1500-tesu-2026-2027-free-hum1030"
         }
       ]
     }

@@ -35,11 +35,16 @@ for(const id of review.modelIds)test('source-bound remaining-cost range for exac
  assert.match(View.render(result),/Standard out-of-state undergraduate tuition · non-military/);assert.match(View.render(result,{compact:true}),/Standard out-of-state/);
  assert.match(View.render(result),/terms/);assert.equal(JSON.stringify(f),before,'Price calculation does not change academic approvals, course allocations or progress');
 });
-test('TESU bills the actual thirty remaining university credits, not its fifteen-credit residency minimum',()=>{
- const f=fixture(),result=Estimate.calculate(f);assert.equal(result.counts.remainingUniversityUnits,30);
- assert.deepEqual(result.costs.universityTuition,{min:9304,max:15708});assert.deepEqual(result.timing.universityTerms,{min:2,max:4});
+test('TESU bills the published named university coursework beyond its fifteen-credit residency minimum',()=>{
+ const f=fixture(),result=Estimate.calculate(f),baseline=Object.values(baselines.baselines).find(row=>row.modelId===f.program.id),universityRows=f.plan.rows.filter(row=>row.option.provider==='University');
+ assert.equal(baseline.researchStatus,'research-ready');assert.equal(baseline.summary.transferCredits,63);assert.equal(baseline.summary.universityCredits,57);
+ assert.equal(universityRows.reduce((sum,row)=>sum+row.credits,0),57);assert(universityRows.every(row=>row.option.code&&!row.option.selectionRequired&&baseline.rows.some(pin=>pin.requirementId===row.requirementId&&pin.optionId===row.option.id&&pin.credits===row.credits)));
+ assert.equal(f.program.institutionMinCredits,15);assert.equal(result.counts.remainingUniversityUnits,57);
+ // At the reviewed9–15 credit loads: four full-price terms is the minimum;
+ // six9-credit terms plus one3-credit part-time term is the maximum.
+ assert.deepEqual(result.costs.universityTuition,{min:4*4652,max:6*4652+3*584});assert.deepEqual(result.timing.universityTerms,{min:4,max:7});
  const perCredit=Estimate.calculate({...f,assumptions:{universityUnitsPerTermMin:3,universityUnitsPerTermMax:3}});
- assert.deepEqual(perCredit.costs.universityTuition,{min:30*584,max:30*584});assert.deepEqual(perCredit.timing.universityTerms,{min:10,max:10});
+ assert.deepEqual(perCredit.costs.universityTuition,{min:57*584,max:57*584});assert.deepEqual(perCredit.timing.universityTerms,{min:19,max:19});
  assert.deepEqual(perCredit.costs.universityFees,{min:148,max:148});
 });
 test('TESU completed coursework reduces both new tuition and provider purchases without claiming a school award',()=>{
@@ -48,7 +53,7 @@ test('TESU completed coursework reduces both new tuition and provider purchases 
  assert.equal(after.available,true,after.reason);assert.equal(after.counts.remainingUniversityUnits,before.counts.remainingUniversityUnits-university.credits);
  assert.equal(after.counts.remainingOutsideCourses,before.counts.remainingOutsideCourses-1);assert.equal(after.counts.finishedUnits,university.credits+outside.credits);
  const fixed=Estimate.calculate({...f,assumptions:{universityUnitsPerTermMin:3,universityUnitsPerTermMax:3}});
- assert.equal(fixed.costs.universityTuition.min,(30-university.credits)*584);
+ assert.equal(fixed.costs.universityTuition.min,(before.counts.remainingUniversityUnits-university.credits)*584);
  assert(after.notes.some(n=>/school acceptance of reported credit remains separate/.test(n)));
 });
 test('a different TESU residency scenario or degree edition cannot inherit the standard-residency quote',()=>{

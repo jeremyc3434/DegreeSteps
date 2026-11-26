@@ -31,7 +31,7 @@ test('Interdisciplinary A.A. retains the printed UNIV course and 20-credit elect
 });
 
 test('the fresh named baseline has 39 published outside credits and six Liberty major credits without student-earned awards',()=>{
- const model=modelFor(),plan=planFor(model),quality=assessPathwayQuality({model,plan,asOf:'2026-11-25'});
+ const model=modelFor(),plan=planFor(model),quality=assessPathwayQuality({model,plan,asOf:'2026-11-26'});
  assert.equal(quality.publication.ready,true,JSON.stringify(quality.findings));assert.equal(quality.research.blockingFindings,0);assert.equal(quality.research.conditionalFindings,0);
  assert.equal(plan.totals.accounted,60);assert.equal(plan.totals.external,39);assert.equal(plan.totals.institutional,21);assert.equal(plan.totals.majorInstitutional,6);assert.equal(plan.validation.academicCountsValid,true);assert.equal(plan.validation.policyChecksComplete,true);assert.deepEqual(plan.validation.errors,[]);
  assert.equal(plan.totals.confirmed,0);assert.equal(plan.totals.reported,0);assert(plan.rows.every(row=>row.status==='planned'));
@@ -57,8 +57,8 @@ test('the retained original PDF capture grounds the actual program, credits, res
 test('a conditional CLI selection and newly discovered research remain blockers; review application is idempotent',()=>{
  const model=modelFor(),row=model.requirements.find(row=>row.id==='theo-104'),cli=row.options.find(option=>option.provider==='Christian Leaders Institute');assert(cli);assert.equal(cli.evidence,'conditional');assert.equal(cli.sourceCredits,undefined);assert.equal(cli.providerListedCreditQuantity,3);
  const selections={...model.reviewedBaselineChoices.optionSelections,'theo-104':cli.id},plan=Planner.generate(model,{providers:['Sophia','Study.com','Christian Leaders Institute'],allowConditional:true,completed:[],priority:'transfer',optionSelections:selections});
- assert.equal(assessPathwayQuality({model,plan,asOf:'2026-11-25'}).publication.ready,false);assert.equal(cli.credits,4);
- const changed=clone({...kit,providers:undefined});changed.providers=kit.providers;changed.programs.find(program=>program.slug===canonical.slug).modelFields.unresolved.push('A new degree-specific rule requires research.');const reviewed=reviewInterdisciplinaryAA(changed),updated=modelFor(reviewed);assert.equal(assessPathwayQuality({model:updated,plan:planFor(updated),asOf:'2026-11-25'}).publication.ready,false);
+ assert.equal(assessPathwayQuality({model,plan,asOf:'2026-11-26'}).publication.ready,false);assert.equal(cli.credits,4);
+ const changed=clone({...kit,providers:undefined});changed.providers=kit.providers;changed.programs.find(program=>program.slug===canonical.slug).modelFields.unresolved.push('A new degree-specific rule requires research.');const reviewed=reviewInterdisciplinaryAA(changed),updated=modelFor(reviewed);assert.equal(assessPathwayQuality({model:updated,plan:planFor(updated),asOf:'2026-11-26'}).publication.ready,false);
  const repeated=reviewInterdisciplinaryAA(kit);assert.deepEqual(repeated.programs.find(program=>program.slug===canonical.slug),canonical);assert.deepEqual(repeated.equivalencies,kit.equivalencies);
 });
 

@@ -5,7 +5,7 @@ import {inspectDraft,inspectPriorityPathways,priorityCandidates} from './scripts
 const require=createRequire(import.meta.url),Catalog=require('./dist/program-catalog.js'),Journey=require('./dist/journey-engine.js'),Planner=require('./dist/planner.js'),model=require('./dist/data/liberty.json');
 function realDraft(){const catalog=require('./dist/data/pathways.json'),route=catalog.pathways.find(route=>route.modelId===model.id);return Journey.buildDraft(Journey.selectRoute(Journey.initialize(null,null,catalog),route,catalog),catalog,[model]);}
 test('one actual solver route per priority school reports blockers instead of equating listings with finished plans',async()=>{
-  const report=await inspectPriorityPathways({asOf:'2026-11-17'});
+  const report=await inspectPriorityPathways({asOf:'2026-11-26'});
   assert.equal(report.pathways.length,4);assert.deepEqual(report.pathways.map(row=>row.school),priorityCandidates.map(row=>row.school));assert.equal(report.summary.schoolApprovedPlans,0);
   for(const row of report.pathways){
     if(row.status==='directory-only'){assert.equal(row.modelId,null);assert.equal(row.proposedPlanFullySpecified,false);assert.equal(row.costs.total,null);assert.equal(row.timing.weeks,null);continue;}

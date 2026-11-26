@@ -79,6 +79,6 @@ export function assembleProgramRequirements(model,packets=[]){
 }
 
 export async function loadProgramRequirementReviews(root=resolve(import.meta.dirname,'..')){
-  const names=['liberty-program-requirements.json','wgu-program-requirements.json','umpi-program-requirements.json'];
+  const names=['liberty-program-requirements.json','wgu-program-requirements.json','umpi-program-requirements.json','tesu-program-requirements.json'];
   return Promise.all(names.map(async name=>validateProgramRequirementPacket(JSON.parse(await readFile(resolve(root,'content/discovery',name),'utf8')))));
 }

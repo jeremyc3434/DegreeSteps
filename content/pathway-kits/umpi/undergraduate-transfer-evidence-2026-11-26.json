@@ -1,0 +1,754 @@
+{
+  "version": 1,
+  "id": "umpi-undergraduate-transfer-evidence-2026-11-26",
+  "checkedOn": "2026-11-26",
+  "schoolId": "umpi",
+  "status": "receiving-evidence-reviewed-program-applicability-open",
+  "publicationAllowed": false,
+  "automaticApprovals": 0,
+  "degreePlansCreated": 0,
+  "sources": [
+    {
+      "id": "umpi-current-cpl-policy-20261126",
+      "url": "https://www.umpi.edu/academics/credit-for-prior-learning/",
+      "kind": "university",
+      "publisher": "University of Maine at Presque Isle",
+      "roles": [
+        "credit-policy"
+      ],
+      "capture": "content/source-captures/efd09c53daa3c7ab.txt",
+      "sha256": "efd09c53daa3c7ab2681960878d17166163e8d8d6a694c373c1f298613a4f416",
+      "checkedOn": "2026-11-26",
+      "reviewedOn": "2026-11-26"
+    },
+    {
+      "id": "umpi-current-ace-cpl-policy-20261126",
+      "url": "https://www.umpi.edu/academics/credit-for-prior-learning/ace/",
+      "kind": "university",
+      "publisher": "University of Maine at Presque Isle",
+      "roles": [
+        "credit-policy"
+      ],
+      "capture": "content/source-captures/caf4cdebcf6395c9.txt",
+      "sha256": "caf4cdebcf6395c9b12db7d6d6cd7302b3ac0fddc6485404fbf384dbd61941a0",
+      "checkedOn": "2026-11-26",
+      "reviewedOn": "2026-11-26"
+    },
+    {
+      "id": "umpi-current-transfer-policy-20261126",
+      "url": "https://www.umpi.edu/offices/student-records/transfer-credits/",
+      "kind": "university",
+      "publisher": "University of Maine at Presque Isle",
+      "roles": [
+        "transfer-policy"
+      ],
+      "capture": "content/source-captures/401dcc039f07b563.txt",
+      "sha256": "401dcc039f07b563e52b075e7b4e846dec91746c94361eca9c506bf43fb64d34",
+      "checkedOn": "2026-11-26",
+      "reviewedOn": "2026-11-26"
+    },
+    {
+      "id": "umpi-current-linked-clep-page-20261126",
+      "url": "https://www.umpi.edu/offices/testing-services/clep/",
+      "kind": "university",
+      "publisher": "University of Maine at Presque Isle",
+      "roles": [
+        "receiving-guide-link"
+      ],
+      "capture": "content/source-captures/4669a7eddfa954c6.txt",
+      "sha256": "4669a7eddfa954c6ba815f1e7856405ef22bebdb29be301f44b98ea11f6aea6e",
+      "checkedOn": "2026-11-26",
+      "reviewedOn": "2026-11-26"
+    },
+    {
+      "id": "umpi-linked-clep-award-table-20261126",
+      "url": "https://mycampus.maine.edu/c/document_library/get_file?groupId=223854&uuid=5b90d446-d584-4906-86df-7d04f6799581",
+      "kind": "university",
+      "publisher": "University of Maine at Presque Isle",
+      "roles": [
+        "receiving-course-awards"
+      ],
+      "capture": "content/source-captures/db7f4ad89ab5b3ce.txt",
+      "sha256": "db7f4ad89ab5b3ce05300490ae4a4eab3b536070b4a896d9dcc89e491796319f",
+      "checkedOn": "2026-11-26",
+      "reviewedOn": "2026-11-26",
+      "documentPeriod": null,
+      "scope": "Undated university receiving table linked by the current official CLEP page. A current link is not an inferred catalog edition or YourPace-specific placement."
+    },
+    {
+      "id": "umpi-yourpace-faq-retained-20261125",
+      "url": "https://www.umpi.edu/yourpace/faqs/",
+      "kind": "university",
+      "publisher": "University of Maine at Presque Isle",
+      "roles": [
+        "residency-policy"
+      ],
+      "capture": "content/source-captures/dcdb80a8ff024f38.txt",
+      "sha256": "dcdb80a8ff024f3831fec2492e0807af14101a1df822fc054399596bd0365eef",
+      "checkedOn": "2026-11-25",
+      "reviewedOn": "2026-11-26"
+    }
+  ],
+  "policyFacts": [
+    {
+      "id": "published-general-bachelor-cpl-cap",
+      "value": 30,
+      "creditSystem": "semester",
+      "scope": "Published general CPL policy; current YourPace alternative-course classification or catalog exception remains unresolved.",
+      "applicationResolved": false,
+      "quotes": [
+        {
+          "sourceId": "umpi-current-cpl-policy-20261126",
+          "text": "Students in Bachelor’s degree programs may earn a maximum of 30 credits."
+        },
+        {
+          "sourceId": "umpi-current-cpl-policy-20261126",
+          "text": "the combination of all forms of Credit for Prior Learning cannot exceed a total of 15 credits of an Associate’s degree and 30 credits of a Bachelor’s degree."
+        }
+      ]
+    },
+    {
+      "id": "ace-classified-as-cpl-on-current-page",
+      "value": true,
+      "scope": "The current general ACE page directs official ACE records to CPL/PLA consideration. It does not state a YourPace-specific quantitative exception.",
+      "quotes": [
+        {
+          "sourceId": "umpi-current-ace-cpl-policy-20261126",
+          "text": "submit an official ACE transcript to the UMPI Registrar’s Office for Credit for Prior Learning Assessment (CPL) consideration."
+        }
+      ]
+    },
+    {
+      "id": "published-bachelor-institutional-residency",
+      "value": 30,
+      "creditSystem": "semester",
+      "quotes": [
+        {
+          "sourceId": "umpi-yourpace-faq-retained-20261125",
+          "text": "Students must complete at least 30 credit hours through UMPI. At least 12 of these credits must be in the major, and at least 9 of those 12 credits must be at the upper level (300-level or above)."
+        }
+      ]
+    },
+    {
+      "id": "outside-credit-floor-is-program-dependent",
+      "scope": "The arithmetic outside ceiling is degree total minus the applicable institutional minimum; a 120-credit degree and a 90-credit applied degree must not inherit the same numeric ceiling.",
+      "value": null,
+      "quotes": [
+        {
+          "sourceId": "umpi-yourpace-faq-retained-20261125",
+          "text": "Transfer credits are evaluated to determine how they apply toward your chosen program and degree requirements."
+        }
+      ]
+    }
+  ],
+  "receivingAwards": [
+    {
+      "id": "umpi-clep-clep-0003",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0003",
+      "sourceExamTitle": "Humanities",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [],
+      "receivingCategory": "General Elective Credit",
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Humanities 3 General Elective Credit 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0004",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0004",
+      "sourceExamTitle": "College Mathematics",
+      "receivingCredits": 6,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [],
+      "receivingCategory": "Math Elective",
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "College Mathematics 6 Math Elective 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0007",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0007",
+      "sourceExamTitle": "American Government",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "POS 101"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "American Government 3 POS101 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0008",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0008",
+      "sourceExamTitle": "History of the United States I: Early Colonization to 1877",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "HTY 161"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "U. S. History I 3 HTY161 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0009",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0009",
+      "sourceExamTitle": "History of the United States II: 1865 to the Present",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "HTY 162"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "U. S. History II 3 HTY162 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0011",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0011",
+      "sourceExamTitle": "Analyzing and Interpreting Literature",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "ENG 151"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Analysis & Interpretation of 3 ENG 151 50 Literature"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0013",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0013",
+      "sourceExamTitle": "College Algebra",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "MAT 117"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "College Algebra 3 MAT117 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0020",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0020",
+      "sourceExamTitle": "Introductory Psychology",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "PSY 100"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Introductory Psychology 3 PSY100 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0021",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0021",
+      "sourceExamTitle": "Human Growth and Development",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "PSY 205"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Human Growth & Development 3 PSY205 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0025",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0025",
+      "sourceExamTitle": "Introductory Business Law",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "BUS 350"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Introductory Business Law 3 BUS350 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0026",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0026",
+      "sourceExamTitle": "Introductory Sociology",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "SOC 100"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Introduction to Sociology 3 SOC100 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0027",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0027",
+      "sourceExamTitle": "Principles of Macroeconomics",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "ECO 207"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Principles of Macroeconomics 3 ECO207 50"
+        }
+      ],
+      "sameReceivingCourseGroup": "UMPI:ECO207",
+      "duplicateCreditNote": "Macroeconomics and Microeconomics both name ECO207. This does not authorize two separate ECO207 degree awards."
+    },
+    {
+      "id": "umpi-clep-clep-0028",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0028",
+      "sourceExamTitle": "Principles of Management",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [],
+      "receivingCategory": "Business Elective",
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Principles of Management 3 Business Elective 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0029",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0029",
+      "sourceExamTitle": "Principles of Marketing",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "BUS 330"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Principles of Marketing 3 BUS330 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0030",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0030",
+      "sourceExamTitle": "Principles of Microeconomics",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "ECO 207"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Principles of Microeconomics 3 ECO207 50"
+        }
+      ],
+      "sameReceivingCourseGroup": "UMPI:ECO207",
+      "duplicateCreditNote": "Macroeconomics and Microeconomics both name ECO207. This does not authorize two separate ECO207 degree awards."
+    },
+    {
+      "id": "umpi-clep-clep-0038",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0038",
+      "sourceExamTitle": "Calculus",
+      "receivingCredits": 4,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "MAT 131"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Calculus 4 MAT131 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0039",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0039",
+      "sourceExamTitle": "Financial Accounting",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "BUS 150"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Financial Accounting 3 BUS150 50"
+        }
+      ]
+    },
+    {
+      "id": "umpi-clep-clep-0040",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0040",
+      "sourceExamTitle": "College Composition",
+      "receivingCredits": 6,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "ENG 101",
+        "ENG 121"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "College Composition 6 ENG 101 and ENG 121 50"
+        }
+      ],
+      "allocationNote": "The published six-credit award names ENG101 and ENG121 together; no per-course split or new GLO placement is inferred."
+    },
+    {
+      "id": "umpi-clep-clep-0041",
+      "provider": "CLEP",
+      "sourceCourseCode": "CLEP-0041",
+      "sourceExamTitle": "College Composition Modular",
+      "receivingCredits": 3,
+      "receivingCreditSystem": "semester",
+      "receivingCourseCodes": [
+        "ENG 101"
+      ],
+      "minScore": 50,
+      "universityPublishedAward": true,
+      "tableScope": "UMPI current-linked undated CLEP table",
+      "catalog": null,
+      "programs": [],
+      "degreePlacements": [],
+      "individualApproval": false,
+      "originalSourceCredits": null,
+      "originalSourceCreditSystem": null,
+      "originalQuantityEvidence": "Separate current original-provider evidence is required; the university receiving amount is not original credit proof.",
+      "sourceIds": [
+        "umpi-linked-clep-award-table-20261126"
+      ],
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "College Composition Modular 3 ENG 101 50"
+        }
+      ]
+    }
+  ],
+  "restrictions": [
+    {
+      "id": "education-certification-clep-section-a",
+      "maximumCredits": 6,
+      "creditSystem": "semester",
+      "minimumScore": 60,
+      "scope": "Education majors pursuing teacher certification; Section A.",
+      "quotes": [
+        {
+          "sourceId": "umpi-linked-clep-award-table-20261126",
+          "text": "Education majors pursuing teacher certification should be aware that the State Department of Education (MDOE) has stated that “a maximum of six semester hours of Section A may be met through CLEP Exam(s) with a minimum score of 60 on subject exams."
+        }
+      ]
+    },
+    {
+      "id": "selected-exams-not-guaranteed-requirements",
+      "scope": "An administered or accepted exam is not automatic satisfaction of every general-education or major requirement.",
+      "quotes": [
+        {
+          "sourceId": "umpi-current-linked-clep-page-20261126",
+          "text": "UMPI accepts only selected CLEP exams."
+        },
+        {
+          "sourceId": "umpi-current-linked-clep-page-20261126",
+          "text": "Not all CLEP examinations fulfill General Education and/or academic requirements."
+        }
+      ]
+    }
+  ],
+  "remainingGates": [
+    "Retrieve current governing catalog and resolve evaluated alternative-course versus general CPL scope.",
+    "Bind current exact degree and GEC course requirements separately.",
+    "Bind independent original provider identities, recommendation versions, periods, credits and units.",
+    "Check multi-course and duplicate-learning awards before allocation."
+  ]
+}

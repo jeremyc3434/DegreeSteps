@@ -368,12 +368,9 @@ test('invalid month-coded catalog versions are rejected before creating research
 test('structurally complete draft templates cannot open as ready plans or invent mutable catalog years',async t=>{
  const done=noNetwork(t),{call,sqlite}=fixture(t),quality=JSON.parse(readFileSync(new URL('./dist/data/pathway-quality-report.json',import.meta.url),'utf8')),registry=JSON.parse(readFileSync(new URL('./dist/data/curriculum-registry.json',import.meta.url),'utf8'));
  const cases=[
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/','curriculum-tesu-bsba-accounting'],
+  // A genuinely held mutable catalog still cannot invent a year-specific target.
+  ['https://catalog.apus.edu/apu/academic-programs/bachelors/bachelor-science-accounting/','curriculum-apus-bachelor-of-science-in-accounting'],
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/accounting-data-analysis-major-bs/accounting-data-analysis-bs-online/','curriculum-liberty-accounting-bs-online'],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-finance/','curriculum-tesu-bsba-finance'],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology','curriculum-tesu-ba-psychology'],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/english','curriculum-tesu-ba-english'],
-  ['https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/','curriculum-tesu-ba-liberal-studies'],
   // Interdisciplinary A.A. is now ready; Business A.A. still has a sourced placement hold.
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/business/business-major-aa/business-aa-online/','curriculum-liberty-business-aa-online'],
   ['https://catalog.liberty.edu/undergraduate/colleges-schools/behavioral-sciences/psychology-major-aa/psychology-online/','curriculum-liberty-psychology-aa-online']
@@ -388,6 +385,13 @@ test('structurally complete draft templates cannot open as ready plans or invent
   const anotherEdition=await call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=2025-2026'}));assert.equal((await anotherEdition.json()).sourcePlan,undefined);
  }
  assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,cases.length);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);done();
+});
+test('the newly reviewed TESU current catalog reuses its exact published Accounting plan without inventing a catalog year',async t=>{
+ const done=noNetwork(t),{call,sqlite}=fixture(t),url='https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/',response=await call('/api/catalog/degree-link?'+new URLSearchParams({url}));assert.equal(response.status,200);const data=await response.json(),plan=data.sourcePlan;
+ assert.equal(data.matched,true);assert.equal(plan?.qualityReady,true);assert.equal(plan.model.id,'curriculum-tesu-bsba-accounting');assert.equal(plan.model.catalogIdentity.kind,'reviewed-current-catalog');assert.equal(plan.model.catalog,plan.model.catalogIdentity.label);assert.equal(plan.model.catalogYear,null);assert.equal(plan.model.catalogIdentity.sourceUrl,url);assert.equal(plan.summary.totalCredits,120);assert.equal(plan.summary.transferCredits,63);assert.equal(plan.summary.universityCredits,57);assert.equal(plan.model.requirements.length,40);
+ assert(plan.model.requirements.some(requirement=>requirement.options.some(option=>option.coursePlacementReviewId==='tesu-exact-course-placements-2026-11-26'&&option.courseEligibilityResolution?.status==='resolved'&&option.courseEligibilityResolution.individualApproval===false)),'The ready current-catalog lookup retains its exact reviewed receiving and degree-placement proofs');
+ const reuse=await call('/api/templates/requests',{method:'POST',signedIn:true,body:{url,startResearch:true}});assert.equal(reuse.status,200);const reused=await reuse.json();assert.equal(reused.reused,true);assert.equal(reused.sourcePlan.model.id,plan.model.id);assert.equal(reused.sourcePlan.model.catalog,plan.model.catalog);assert.equal(reused.sourcePlan.model.catalogYear,null);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_requests').get().n,0);assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM template_research_runs').get().n,0);
+ const differentEdition=await call('/api/catalog/degree-link?'+new URLSearchParams({url:url+'?catalog=2025-2026'}));assert.equal((await differentEdition.json()).sourcePlan,undefined);done();
 });
 test('the newly published WGU human resource plan reuses its exact 117-CU baseline without AI',async t=>{
  const done=noNetwork(t),{call,sqlite}=fixture(t),url='https://www.wgu.edu/online-business-degrees/human-resources-bachelors-program.html';

@@ -51,7 +51,7 @@ test('six TESU ledgers gain usable conditional UPI choices with source, cap and 
   const exactReceiving=new Set(model.requirements.filter(row=>!row.freeElective).map(row=>row.code));
   assert(options.filter(({row})=>row.freeElective).every(({option})=>!exactReceiving.has(option.receivingCode)),'Elective suggestions do not duplicate a course already named by this degree.');
  }
- assert.deepEqual((await verifyKit(kit,{asOf:'2026-11-25'})).errors,[]);
+ assert.deepEqual((await verifyKit(kit,{asOf:'2026-11-26'})).errors,[]);
  await writeTESUUPIKit({check:true});
 });
 
@@ -80,16 +80,19 @@ test('UPI Liberal Studies candidates follow the receiving taxonomy and level lim
  }
 });
 
-test('the sourced Liberal Studies allocation expands a nonduplicating feasible outside basket by nine credits',()=>{
+test('the sourced Liberal Studies allocation still expands a nonduplicating basket alongside newer published awards',()=>{
  const after=copy(models.find(model=>model.id==='curriculum-tesu-ba-liberal-studies'));
  // The registry supplies the named University fallback for requirements whose kit lists only outside options.
  for(const row of after.requirements)if(!row.options.some(option=>option.provider==='University'))row.options.push({id:'university-'+row.id,provider:'University',code:row.code,title:row.title,credits:row.credits,upper:Boolean(row.upper),creditSystem:'semester',creditOrigin:'institutional',sourceIds:row.sourceIds,evidence:'published'});
  const before=copy(after);for(const row of before.requirements)if(row.liberalArtsAllocation)row.options=row.options.filter(option=>option.provider!=='UPI Study');
  const generate=model=>Planner.generate(model,{providers:model.defaultProviders,allowConditional:true,priority:'transfer',completed:[],optimizationNodeBudget:12000}),oldPlan=generate(before),newPlan=generate(after);
- assert.equal(oldPlan.totals.external,75);assert.equal(newPlan.totals.external,84);assert.equal(newPlan.totals.alternative,84);assert.equal(newPlan.totals.institutional,36);
+ // New institution-submitted Sophia choices increase the pre-UPI basket. The
+ // provider-only choices still add six feasible credits without replacing a
+ // published receiving award or inflating the 90-credit alternative ceiling.
+ assert.equal(oldPlan.totals.external,81);assert.equal(newPlan.totals.external,87);assert.equal(newPlan.totals.alternative,87);assert.equal(newPlan.totals.institutional,33);
  assert.equal(newPlan.validation.academicCountsValid,true);assert.equal(newPlan.validation.policyChecksComplete,true);
- const additions=newPlan.rows.filter(row=>row.option?.allocationType==='liberal-arts-area');
- assert.deepEqual(additions.map(row=>row.option.receivingCode).sort(),['COS-2050','ECO-2700','ENG-2010']);
+ const additions=newPlan.rows.filter(row=>row.option?.provider==='UPI Study'&&row.option?.allocationType==='liberal-arts-area');
+ assert.deepEqual(additions.map(row=>row.option.receivingCode).sort(),['COS-2050','ECO-2700']);
  assert(additions.every(row=>row.option.evidence==='conditional'&&row.option.mappingResearchClosed===false));
  const upperArea=newPlan.rows.filter(row=>after.liberalArtsAllocation.requirementIds.includes(row.requirementId)||row.requirementId===after.liberalArtsAllocation.capstoneRequirementId).filter(row=>row.option?.upper).reduce((sum,row)=>sum+row.credits,0);
  assert(upperArea>=18);assert(newPlan.totals.alternative<=90);

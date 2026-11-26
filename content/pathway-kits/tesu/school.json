@@ -204,7 +204,29 @@
   },
   "sourceOverrides": [
     "sophia-soph-0083-current-offer",
-    "sophia-soph-0083-current-offer-syllabus"
+    "sophia-soph-0083-current-offer-syllabus",
+    "sophia-soph-0032-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0001-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0084-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0065-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0015-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0030-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0010-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0055-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0023-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0005-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0012-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0011-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0069-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0054-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0024-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0071-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0022-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0025-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0049-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0002-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0014-ace-tesu-equivalency-2026-11-20",
+    "sophia-soph-0083-ace-tesu-equivalency-2026-11-20"
   ],
   "sources": [
     {
@@ -1454,7 +1476,13 @@
       "checked": "2026-11-25",
       "capture": "content/source-captures/c8006b53ea7a4598.txt",
       "evidenceType": "official-university-policy",
-      "scope": "Provider approval status only. Study.com and University Pathways International (UPI Study) are approved; Sophia, StraighterLine, Saylor Academy and CLEP remain provisionally approved — review pending. No course equivalency or individual credit award is created."
+      "scope": "Provider approval status only. Study.com and University Pathways International (UPI Study) are approved; Sophia, StraighterLine, Saylor Academy and CLEP remain provisionally approved — review pending. No course equivalency or individual credit award is created.",
+      "sha256": "c8006b53ea7a4598d0fae68e450bada9e9b81bb225a271144b7fb3f6592f5a81",
+      "sourceContentHash": "c8006b53ea7a4598d0fae68e450bada9e9b81bb225a271144b7fb3f6592f5a81",
+      "kind": "university",
+      "roles": [
+        "provider-policy"
+      ]
     },
     {
       "id": "tesu-provider-review-policy-2026-11-25",
@@ -1463,7 +1491,13 @@
       "checked": "2026-11-25",
       "capture": "content/source-captures/3d731765e918fb1e.txt",
       "evidenceType": "official-university-policy",
-      "scope": "Provider approval is followed by separate course-equivalency evaluation and does not guarantee acceptance of every course. The policy does not establish student enrollment permission or a ban for provisional providers."
+      "scope": "Provider approval is followed by separate course-equivalency evaluation and does not guarantee acceptance of every course. The policy does not establish student enrollment permission or a ban for provisional providers.",
+      "sha256": "3d731765e918fb1e7fddeb5c8c81d210734b4297a0ef6f70e0805aea9f62a013",
+      "sourceContentHash": "3d731765e918fb1e7fddeb5c8c81d210734b4297a0ef6f70e0805aea9f62a013",
+      "kind": "university",
+      "roles": [
+        "provider-policy"
+      ]
     },
     {
       "id": "study-tesu-gened-collection-2026-11-25",
@@ -1493,6 +1527,1198 @@
       "capture": "content/source-captures/tesu-upi-provider-map-2026-11-25-c3ff7527f9c8.txt",
       "evidenceType": "provider-published",
       "scope": "UPI-published exact receiving-course candidates. Provider claims of TESU verification are retained as claims, not independently established university receiving awards."
+    },
+    {
+      "id": "tesu-transcript-course-eligibility-2026-11-26",
+      "title": "TESU official transcript instructions distinguish source evaluation from university course awards",
+      "url": "https://www.tesu.edu/student-resources/transfer-credits/send-transcripts.php",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/3a196002fa16af8d.txt",
+      "kind": "university",
+      "roles": [
+        "transfer-policy",
+        "provider-policy"
+      ],
+      "sha256": "3a196002fa16af8de22f1a3c8b67c1a517cf0ff9acb0b0f87842faedddaf9386",
+      "sourceContentHash": "3a196002fa16af8de22f1a3c8b67c1a517cf0ff9acb0b0f87842faedddaf9386"
+    },
+    {
+      "id": "sophia-soph-0032-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Business Law (SOPH-0032) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=62dbf498-3001-f111-8406-000d3a352c61&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/f10552aecc2e9631.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "f10552aecc2e9631d3c90be2dbe5daecb297c5901507f9dbe4dd1b4e3e6fefc4",
+      "sourceContentHash": "f10552aecc2e9631d3c90be2dbe5daecb297c5901507f9dbe4dd1b4e3e6fefc4"
+    },
+    {
+      "id": "sophia-soph-0001-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia College Algebra (SOPH-0001) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=f56ec0dc-e1be-ef11-b8e8-000d3a3ad719&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/d6cd86c61775dc37.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "d6cd86c61775dc3796f842e9292ce8317915e84282a2abe2d7337192c7c5ddfc",
+      "sourceContentHash": "d6cd86c61775dc3796f842e9292ce8317915e84282a2abe2d7337192c7c5ddfc"
+    },
+    {
+      "id": "sophia-soph-0084-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Criminology (SOPH-0084) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=bb257d69-f542-ef11-840a-6045bd089f77&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/1b395ab92867d4e1.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "1b395ab92867d4e16b62e947ac704faeb3f35355ff9920cf507e9133fd6e38ca",
+      "sourceContentHash": "1b395ab92867d4e16b62e947ac704faeb3f35355ff9920cf507e9133fd6e38ca"
+    },
+    {
+      "id": "sophia-soph-0065-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Critical Thinking (SOPH-0065) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/056a0cf1940396e5.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "056a0cf1940396e50eb833580e06127fcb6fa955eb936ca28f108a667b92bfe7",
+      "sourceContentHash": "056a0cf1940396e50eb833580e06127fcb6fa955eb936ca28f108a667b92bfe7"
+    },
+    {
+      "id": "sophia-soph-0015-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia English Composition I (SOPH-0015) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/11632c8a48430bbe.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "11632c8a48430bbe235d6a452836a01f28aacdc3d6f80aa55298c3e7c674242f",
+      "sourceContentHash": "11632c8a48430bbe235d6a452836a01f28aacdc3d6f80aa55298c3e7c674242f"
+    },
+    {
+      "id": "sophia-soph-0030-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia English Composition II (SOPH-0030) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/274c2429d9f8b5a1.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "274c2429d9f8b5a1110cc99eda259667c4b4a8e9819a06136d1144194f49416e",
+      "sourceContentHash": "274c2429d9f8b5a1110cc99eda259667c4b4a8e9819a06136d1144194f49416e"
+    },
+    {
+      "id": "sophia-soph-0010-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Financial Accounting (SOPH-0010) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=8d77efdd-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/819c56b54828a523.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "819c56b54828a52324031b201913ee00191ea61dcbbf4086b2df77a961dd90a2",
+      "sourceContentHash": "819c56b54828a52324031b201913ee00191ea61dcbbf4086b2df77a961dd90a2"
+    },
+    {
+      "id": "sophia-soph-0055-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Introduction to College Mathematics (SOPH-0055) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=fff93e45-594b-ef11-a317-6045bd089f77&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/c44eb09e4b2a980e.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "c44eb09e4b2a980e4e01b30ab69d58a4677075c91ab4ef91c8b1c0da03e52b5c",
+      "sourceContentHash": "c44eb09e4b2a980e4e01b30ab69d58a4677075c91ab4ef91c8b1c0da03e52b5c"
+    },
+    {
+      "id": "sophia-soph-0023-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Introduction to Information Technology (SOPH-0023) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=c0f0f08f-6fea-f011-8406-6045bd0a298d&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/22822263c44159a5.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "22822263c44159a5feba447530c927a04f215d09524eebbef0494de78ccd091d",
+      "sourceContentHash": "22822263c44159a5feba447530c927a04f215d09524eebbef0494de78ccd091d"
+    },
+    {
+      "id": "sophia-soph-0005-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Introduction to Statistics (SOPH-0005) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=fb3a799a-b00b-ef11-9f89-6045bd089f77&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/7d9ddc434bcf5c0f.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "7d9ddc434bcf5c0fccdf503fc1b161ffaf4b4af2defef355f7153556b3ed71fc",
+      "sourceContentHash": "7d9ddc434bcf5c0fccdf503fc1b161ffaf4b4af2defef355f7153556b3ed71fc"
+    },
+    {
+      "id": "sophia-soph-0012-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Macroeconomics (SOPH-0012) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=28a6a70f-f137-f011-8c4e-6045bd0a807d&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/e3304555989fc6fb.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "e3304555989fc6fb64c3f40d271becf72e427bfa44930fa5f63dff088a46f871",
+      "sourceContentHash": "e3304555989fc6fb64c3f40d271becf72e427bfa44930fa5f63dff088a46f871"
+    },
+    {
+      "id": "sophia-soph-0011-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Microeconomics (SOPH-0011) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=08357410-f137-f011-8c4e-6045bd0a9dd8&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/cdf4986c681d4f4e.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "cdf4986c681d4f4ea39c79df1f9064ed640788f5a2e618e4b96445268790150c",
+      "sourceContentHash": "cdf4986c681d4f4ea39c79df1f9064ed640788f5a2e618e4b96445268790150c"
+    },
+    {
+      "id": "sophia-soph-0069-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Precalculus (SOPH-0069) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=b32d9a23-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/7623eac2c314d7a5.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "7623eac2c314d7a5495fa0e4489359a4178cc286af97459544f4122397787cd8",
+      "sourceContentHash": "7623eac2c314d7a5495fa0e4489359a4178cc286af97459544f4122397787cd8"
+    },
+    {
+      "id": "sophia-soph-0054-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Principles of Management (SOPH-0054) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=02fcdb79-bc1d-ef11-840a-00224805f993&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/f18e7b460331ccf5.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "f18e7b460331ccf539e4e9f2c3c3a6cd3063a466cfd71feeb4101b3755fe2b11",
+      "sourceContentHash": "f18e7b460331ccf539e4e9f2c3c3a6cd3063a466cfd71feeb4101b3755fe2b11"
+    },
+    {
+      "id": "sophia-soph-0024-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Public Speaking (SOPH-0024) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=00952ba0-0a23-f111-8341-000d3a3063b4&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/fab9edb38527cfd3.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "fab9edb38527cfd30462b5ba8d94d1cde2e5473943e10607a195e7ac3b2db821",
+      "sourceContentHash": "fab9edb38527cfd30462b5ba8d94d1cde2e5473943e10607a195e7ac3b2db821"
+    },
+    {
+      "id": "sophia-soph-0071-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia U.S. Government (SOPH-0071) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=0e952ba0-0a23-f111-8341-000d3a3063b4&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/6723727f139f4f5a.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "6723727f139f4f5ad7f82399b32295daf32583e2e2c593391bad5a452e064793",
+      "sourceContentHash": "6723727f139f4f5ad7f82399b32295daf32583e2e2c593391bad5a452e064793"
+    },
+    {
+      "id": "sophia-soph-0022-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia U.S. History I (SOPH-0022) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/32f29df6aaae704d.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "32f29df6aaae704d7ff902092e1758cdf2babda6f78a3c3a2c84a51c490938b9",
+      "sourceContentHash": "32f29df6aaae704d7ff902092e1758cdf2babda6f78a3c3a2c84a51c490938b9"
+    },
+    {
+      "id": "sophia-soph-0025-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia U.S. History II (SOPH-0025) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=ded1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/32cf6fe51c29f6d0.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "32cf6fe51c29f6d08f64a653f1b6e9a73ed82fd73738bbebd0c68a72ce50501f",
+      "sourceContentHash": "32cf6fe51c29f6d08f64a653f1b6e9a73ed82fd73738bbebd0c68a72ce50501f"
+    },
+    {
+      "id": "sophia-soph-0049-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Workplace Writing II (SOPH-0049) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=d5d7e252-b58b-ee11-8179-00224805f697&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/c71589879f43b509.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "c71589879f43b509b9d15257f4973df7a8b524515ef8a185cdcef765f0d35c22",
+      "sourceContentHash": "c71589879f43b509b9d15257f4973df7a8b524515ef8a185cdcef765f0d35c22"
+    },
+    {
+      "id": "sophia-soph-0002-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Human Biology (SOPH-0002) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=e5bde18a-e3df-ef11-8eea-6045bd00cf86&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/8a99ebd2c0314741.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "8a99ebd2c03147412a1765d903701cf814f1ba777806d49d59486206efe142eb",
+      "sourceContentHash": "8a99ebd2c03147412a1765d903701cf814f1ba777806d49d59486206efe142eb"
+    },
+    {
+      "id": "sophia-soph-0014-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Introduction to Business (SOPH-0014) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=545bf095-6fea-f011-8406-6045bd0a298d&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/24ca88193edfe781.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "24ca88193edfe781a036beb028994f03bfad0c51bf42e760ca6188dfb5bbd037",
+      "sourceContentHash": "24ca88193edfe781a036beb028994f03bfad0c51bf42e760ca6188dfb5bbd037"
+    },
+    {
+      "id": "sophia-soph-0083-ace-tesu-equivalency-2026-11-20",
+      "title": "ACE National Guide: Sophia Organizational Behavior (SOPH-0083) exhibit with TESU's 2026–2027 institution-submitted equivalency",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA+Learning%2C+LLC&cid=93b3b04c-594b-ef11-a317-6045bd04c00b&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-20",
+      "capture": "content/source-captures/4fdf9c152f0d2717.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "provider": "Sophia",
+      "sha256": "4fdf9c152f0d2717f72059ac232226de2ceb838945b6b09a7be5339684dc5c08",
+      "sourceContentHash": "4fdf9c152f0d2717f72059ac232226de2ceb838945b6b09a7be5339684dc5c08"
+    },
+    {
+      "id": "tesu-liberal-taxonomy-placement-2026-11-26",
+      "title": "TESU current published discipline course lists and single-use allocation rule",
+      "url": "https://www.tesu.edu/degrees-programs/courses/general-education/2021-and-after.php",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/0e6020afa78fc30f.txt",
+      "kind": "university",
+      "roles": [
+        "program-policy",
+        "degree-placement"
+      ],
+      "sha256": "0e6020afa78fc30fb105d26e90b903fa0c3adbc55f4b557719db48d2df195c17",
+      "sourceContentHash": "0e6020afa78fc30fb105d26e90b903fa0c3adbc55f4b557719db48d2df195c17"
+    },
+    {
+      "id": "tesu-ba-english-placement-2026-11-26",
+      "title": "B.A. in English — current published elective and degree allocation",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/english",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/28546876f0d90bf9.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement"
+      ],
+      "sha256": "28546876f0d90bf966ea4f928804f70222106f05247cc4ad9ec8fad42a0d64ff",
+      "sourceContentHash": "28546876f0d90bf966ea4f928804f70222106f05247cc4ad9ec8fad42a0d64ff"
+    },
+    {
+      "id": "tesu-ba-liberal-studies-placement-2026-11-26",
+      "title": "B.A. in Humanities — Liberal Studies — current published elective and degree allocation",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-humanities-disciplines/liberal-studies/liberal-studies/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/bf4009c573d00702.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement"
+      ],
+      "sha256": "bf4009c573d007020eb91c464ea4af2de0d7af780254596e532f8587e3daccc4",
+      "sourceContentHash": "bf4009c573d007020eb91c464ea4af2de0d7af780254596e532f8587e3daccc4"
+    },
+    {
+      "id": "tesu-ba-psychology-placement-2026-11-26",
+      "title": "B.A. in Psychology — current published elective and degree allocation",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-arts-programs/bachelor-of-arts-in-psychology",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/b7a56abe6f381bdb.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement"
+      ],
+      "sha256": "b7a56abe6f381bdb7f26b383e72c3f587a6410c66ad118123888a39a014d1064",
+      "sourceContentHash": "b7a56abe6f381bdb7f26b383e72c3f587a6410c66ad118123888a39a014d1064"
+    },
+    {
+      "id": "tesu-bsba-accounting-placement-2026-11-26",
+      "title": "B.S.B.A. in Accounting — current published elective and degree allocation",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-accounting/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/764a8f7315e2a33b.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement"
+      ],
+      "sha256": "764a8f7315e2a33bf38a3f3df86ac52669680cb431c4a966b9bccbcd625c38fc",
+      "sourceContentHash": "764a8f7315e2a33bf38a3f3df86ac52669680cb431c4a966b9bccbcd625c38fc"
+    },
+    {
+      "id": "tesu-bsba-finance-placement-2026-11-26",
+      "title": "B.S.B.A. in Finance — current published elective and degree allocation",
+      "url": "https://tesu.smartcatalogiq.com/en/current/undergraduate-catalog/degree-programs-and-certificates/bachelor-of-science-in-business-administration/bsba-in-finance/",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/5f11d56ce0dd7bc1.txt",
+      "kind": "university",
+      "roles": [
+        "curriculum",
+        "degree-placement"
+      ],
+      "sha256": "5f11d56ce0dd7bc19cf82eb6aee4ec060f7ba3fdb4d645176c3c3f94df89abcb",
+      "sourceContentHash": "5f11d56ce0dd7bc19cf82eb6aee4ec060f7ba3fdb4d645176c3c3f94df89abcb"
+    },
+    {
+      "id": "tesu-soph-0047-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0047 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=0e050d86-bc1d-ef11-840a-00224805f993&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/c8c58141ab565779.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "c8c58141ab56577927e2a4dc3344e937b01a11d250989732ac65b0b96ace6e20",
+      "sourceContentHash": "c8c58141ab56577927e2a4dc3344e937b01a11d250989732ac65b0b96ace6e20"
+    },
+    {
+      "id": "tesu-soph-0057-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0057 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=76d5e3a5-15a8-ef11-8a69-000d3a59670b&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/8eada61aabc7435b.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "8eada61aabc7435bb5b1f1874998c40bb1b4f6d58817192b5fc32d5a52dbcaf6",
+      "sourceContentHash": "8eada61aabc7435bb5b1f1874998c40bb1b4f6d58817192b5fc32d5a52dbcaf6"
+    },
+    {
+      "id": "tesu-soph-0058-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0058 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=d8cb1ea8-15a8-ef11-8a69-000d3a3ad719&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/21ef4d2418b7f83b.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "21ef4d2418b7f83b703c9933cf36d1b86c7e17a916d61af6845fe4689a9b714b",
+      "sourceContentHash": "21ef4d2418b7f83b703c9933cf36d1b86c7e17a916d61af6845fe4689a9b714b"
+    },
+    {
+      "id": "tesu-soph-0060-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0060 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=536e3c95-e3df-ef11-8ee9-6045bd06f314&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/b1afee9733098eca.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "b1afee9733098eca34192526de1b5b75a3aad2fdbb68cf702118b25aa9c131c7",
+      "sourceContentHash": "b1afee9733098eca34192526de1b5b75a3aad2fdbb68cf702118b25aa9c131c7"
+    },
+    {
+      "id": "tesu-soph-0061-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0061 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=49885de4-19f9-ef11-9341-6045bd06f314&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/e980d03f58814f1b.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "e980d03f58814f1b06089980ebd6bc0157024ac8ce2087b2b004e13fd4af650b",
+      "sourceContentHash": "e980d03f58814f1b06089980ebd6bc0157024ac8ce2087b2b004e13fd4af650b"
+    },
+    {
+      "id": "tesu-soph-0062-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0062 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=c9c0e7e3-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/00cfb01e18ed81b2.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "00cfb01e18ed81b2a19659412e5e9766ca86f52812fb744ba8ea09c76c1cb49b",
+      "sourceContentHash": "00cfb01e18ed81b2a19659412e5e9766ca86f52812fb744ba8ea09c76c1cb49b"
+    },
+    {
+      "id": "tesu-soph-0064-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0064 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=e28f0715-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/0ad977804979b4fd.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "0ad977804979b4fdde4436f3bbfb393678fa85d831af3e1d56ebc634e6e25e87",
+      "sourceContentHash": "0ad977804979b4fdde4436f3bbfb393678fa85d831af3e1d56ebc634e6e25e87"
+    },
+    {
+      "id": "tesu-soph-0066-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0066 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=39885de4-19f9-ef11-9341-6045bd06f314&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/d2929b78c5676118.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "d2929b78c5676118e57f97a8496b69f721ccbeff5e57c3faff6837009b23b084",
+      "sourceContentHash": "d2929b78c5676118e57f97a8496b69f721ccbeff5e57c3faff6837009b23b084"
+    },
+    {
+      "id": "tesu-soph-0079-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0079 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=aee1f791-b88b-ee11-8179-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/289e9cb499a7f41f.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "289e9cb499a7f41fa763696e4a1c53d3761bd962c8c88d40cfdc1a92cd65725c",
+      "sourceContentHash": "289e9cb499a7f41fa763696e4a1c53d3761bd962c8c88d40cfdc1a92cd65725c"
+    },
+    {
+      "id": "tesu-soph-0086-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0086 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=b8a91ca2-15a8-ef11-8a6a-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/bc02a71690c2b242.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "bc02a71690c2b242c0c0afe419f26adefa6ecdb3d9f41d927e7ea9221fa5e430",
+      "sourceContentHash": "bc02a71690c2b242c0c0afe419f26adefa6ecdb3d9f41d927e7ea9221fa5e430"
+    },
+    {
+      "id": "tesu-soph-0090-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0090 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=0d77efdd-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/eb76986207c5f45e.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "eb76986207c5f45e1e3d1a2028527e777eba93db9f1b26ce9e40cabc30ec0583",
+      "sourceContentHash": "eb76986207c5f45e1e3d1a2028527e777eba93db9f1b26ce9e40cabc30ec0583"
+    },
+    {
+      "id": "tesu-soph-0092-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0092 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=c08f0715-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/04bc8fa9e3e4fc86.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "04bc8fa9e3e4fc86e4bba57c32e1bc57717d53e4418936c030a7297b8b3efca5",
+      "sourceContentHash": "04bc8fa9e3e4fc86e4bba57c32e1bc57717d53e4418936c030a7297b8b3efca5"
+    },
+    {
+      "id": "tesu-soph-0094-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0094 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=3ee9bb73-60d0-f011-bbd3-6045bd062b6a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/d236d08623c50b8d.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "d236d08623c50b8d46258f7778f7ec0e7451a70db5e5c7cabecbe30aa48c526c",
+      "sourceContentHash": "d236d08623c50b8d46258f7778f7ec0e7451a70db5e5c7cabecbe30aa48c526c"
+    },
+    {
+      "id": "tesu-soph-0096-ace-receiving-2026-11-26",
+      "title": "ACE current original SOPH-0096 and institution-submitted TESU receiving award",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=7edfa970-e83f-f111-88b4-000d3a371a7a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/005027b953720976.txt",
+      "kind": "ace",
+      "roles": [
+        "provider-identity",
+        "source-credit-recommendation",
+        "recommendation-period",
+        "receiving-institution-submitted-equivalency"
+      ],
+      "sha256": "005027b953720976a82819a916d103fb5516eb1808fe72b4577944fe878dd823",
+      "sourceContentHash": "005027b953720976a82819a916d103fb5516eb1808fe72b4577944fe878dd823"
+    },
+    {
+      "id": "tesu-soph-0001-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0001 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=f56ec0dc-e1be-ef11-b8e8-000d3a3ad719&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/3abb6de4700bbe87.txt",
+      "sha256": "3abb6de4700bbe87782db3da5a61d9d58b5763e7cab77e1cf8719c3f6fc09f83",
+      "sourceContentHash": "3abb6de4700bbe87782db3da5a61d9d58b5763e7cab77e1cf8719c3f6fc09f83",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "c7ab53e4e30eb097bdbd2c5c3ab0a76ae00ea32f98e55738bb34cbe84b6627c8"
+    },
+    {
+      "id": "tesu-soph-0002-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0002 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=e5bde18a-e3df-ef11-8eea-6045bd00cf86&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/be4fb7516558e627.txt",
+      "sha256": "be4fb7516558e627427fb3e165d0ce637a164bde04dd3ac61542a51532fa8dff",
+      "sourceContentHash": "be4fb7516558e627427fb3e165d0ce637a164bde04dd3ac61542a51532fa8dff",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "3393f79f6877228e7d5f5bdd9a2614f53787f1a27d1826118b7dc5dbaae0838c"
+    },
+    {
+      "id": "tesu-soph-0005-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0005 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=fb3a799a-b00b-ef11-9f89-6045bd089f77&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/0860780fd546d9b9.txt",
+      "sha256": "0860780fd546d9b99cacb1cd9d4d067ebe2ccf6fdf4c9d6b8e715ecfa235358e",
+      "sourceContentHash": "0860780fd546d9b99cacb1cd9d4d067ebe2ccf6fdf4c9d6b8e715ecfa235358e",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "b128db5eedaa82834d5d1cdd7531e7139ff40da5a8c18cd13aea329e163c1882"
+    },
+    {
+      "id": "tesu-soph-0010-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0010 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=8d77efdd-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/e940018f0db2cf75.txt",
+      "sha256": "e940018f0db2cf7543a64c8a5c45adea02756287df7cc41d0e982c7ede7cff74",
+      "sourceContentHash": "e940018f0db2cf7543a64c8a5c45adea02756287df7cc41d0e982c7ede7cff74",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "56ec15d6b1ec45346b5477cd2f5bc60bd8e183b3ab1fda4eb1b12506c279e21f"
+    },
+    {
+      "id": "tesu-soph-0011-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0011 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=08357410-f137-f011-8c4e-6045bd0a9dd8&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/1f15667a3f2418f2.txt",
+      "sha256": "1f15667a3f2418f28c4449df9aa11dd8d85fdac3a92e98ec092bec100acab144",
+      "sourceContentHash": "1f15667a3f2418f28c4449df9aa11dd8d85fdac3a92e98ec092bec100acab144",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "61c5156e85c8ac970b429e75b8a218d819a178b34967cc188bc0e7dee776b1b1"
+    },
+    {
+      "id": "tesu-soph-0012-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0012 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=28a6a70f-f137-f011-8c4e-6045bd0a807d&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/b9e001eb360b402e.txt",
+      "sha256": "b9e001eb360b402e8c468aaa12d06cdaf2c102245ee16940ef903dd9458da98a",
+      "sourceContentHash": "b9e001eb360b402e8c468aaa12d06cdaf2c102245ee16940ef903dd9458da98a",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "006b23475f9683d5b48998142f8f3233c69bc447e75ddc0d93aeb0a93578d126"
+    },
+    {
+      "id": "tesu-soph-0014-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0014 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=545bf095-6fea-f011-8406-6045bd0a298d&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/fe7ac32e91d14713.txt",
+      "sha256": "fe7ac32e91d14713d148d57433d1af8774ccd199587092b81a044c0a0ff9bbd2",
+      "sourceContentHash": "fe7ac32e91d14713d148d57433d1af8774ccd199587092b81a044c0a0ff9bbd2",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "84ff1ad172c67b16ac383c31297d47e369b6ae92ed69729fa3ae410289826bd7"
+    },
+    {
+      "id": "tesu-soph-0015-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0015 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/bb6c269bdb08c88d.txt",
+      "sha256": "bb6c269bdb08c88d61448622e8b3ca597e6c49276589e12c1241b9425e8eb12c",
+      "sourceContentHash": "bb6c269bdb08c88d61448622e8b3ca597e6c49276589e12c1241b9425e8eb12c",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "b5e1b0dc0df7923752e407b5a1fde61dd670f85a7fa5733f0d358dd100d56cea"
+    },
+    {
+      "id": "tesu-soph-0022-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0022 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=ccd1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/2a8f368df4bf89c3.txt",
+      "sha256": "2a8f368df4bf89c3f964d4f99d566b8668100765c1d9b92e8486f31800941ef6",
+      "sourceContentHash": "2a8f368df4bf89c3f964d4f99d566b8668100765c1d9b92e8486f31800941ef6",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "af2f8317e739224c837f79a913648d5d63614df7fc63c52b19cb56bc7d00644e"
+    },
+    {
+      "id": "tesu-soph-0023-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0023 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=c0f0f08f-6fea-f011-8406-6045bd0a298d&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/8ba6ee9417328c50.txt",
+      "sha256": "8ba6ee9417328c50784ec6c88eb8b0d780781c4ecc10b31b60eb8b35cf721919",
+      "sourceContentHash": "8ba6ee9417328c50784ec6c88eb8b0d780781c4ecc10b31b60eb8b35cf721919",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "1fc5a50c323f34a8bcffc0d9161a1329f0d313ef9cb493398e7825294bb8d2b6"
+    },
+    {
+      "id": "tesu-soph-0024-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0024 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=00952ba0-0a23-f111-8341-000d3a3063b4&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/19eb6b3da4b42113.txt",
+      "sha256": "19eb6b3da4b421133212666063dd077043a98465b85736d57f8f3430ec680d05",
+      "sourceContentHash": "19eb6b3da4b421133212666063dd077043a98465b85736d57f8f3430ec680d05",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "b332f99bf4fa1ee844be93fbb4c05c78f0e991ed69504827069df4a7288cd166"
+    },
+    {
+      "id": "tesu-soph-0025-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0025 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=ded1f3a2-5713-f111-8406-000d3a306e31&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/ea7dde242ec03997.txt",
+      "sha256": "ea7dde242ec03997d2d7ba1aaad990c41fa3440a1fb82f64e92730003bb651e3",
+      "sourceContentHash": "ea7dde242ec03997d2d7ba1aaad990c41fa3440a1fb82f64e92730003bb651e3",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "732f9231ca97c66d3f02965ec4d11897bb38b59290fecdec26a3021ae3a2d2ee"
+    },
+    {
+      "id": "tesu-soph-0030-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0030 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/44252adfeddac9c3.txt",
+      "sha256": "44252adfeddac9c372acae2b21533fce1b6c22f17151d397c001b935b76aff94",
+      "sourceContentHash": "44252adfeddac9c372acae2b21533fce1b6c22f17151d397c001b935b76aff94",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "246ec52f84479a04ba54483375c8b3fa50fc7b73d6cff4c7c360704c8e2ae35a"
+    },
+    {
+      "id": "tesu-soph-0032-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0032 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=62dbf498-3001-f111-8406-000d3a352c61&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/7d57927dd99c10c9.txt",
+      "sha256": "7d57927dd99c10c9ab57fb67b2febd434504f690d5ed6647e2f724d1a6217b01",
+      "sourceContentHash": "7d57927dd99c10c9ab57fb67b2febd434504f690d5ed6647e2f724d1a6217b01",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "dc90d38b929a44add78343e2a57fd5d88c1d071913027a6326994ff53fe8aa4a"
+    },
+    {
+      "id": "tesu-soph-0047-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0047 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=0e050d86-bc1d-ef11-840a-00224805f993&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/6db9a5f1c4c3e760.txt",
+      "sha256": "6db9a5f1c4c3e7606288d25be16b1cdd4b356879cd158a7b6203530baf358e98",
+      "sourceContentHash": "6db9a5f1c4c3e7606288d25be16b1cdd4b356879cd158a7b6203530baf358e98",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "66a33c49f74cd3efcf44f36f936d2b5597da6af6473227894ef3eb647d00a73d"
+    },
+    {
+      "id": "tesu-soph-0049-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0049 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=d5d7e252-b58b-ee11-8179-00224805f697&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/da86e2f6c96d8b98.txt",
+      "sha256": "da86e2f6c96d8b9812ba28b169d90d187efe3098e315e0b1098b2096eefd2d33",
+      "sourceContentHash": "da86e2f6c96d8b9812ba28b169d90d187efe3098e315e0b1098b2096eefd2d33",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "ee66182466a76f3325011ffd7b579057bdd70bcefe9dc49a80d065e517cf903a"
+    },
+    {
+      "id": "tesu-soph-0054-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0054 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=02fcdb79-bc1d-ef11-840a-00224805f993&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/402e0f23a4c64cba.txt",
+      "sha256": "402e0f23a4c64cba54372786da0756e31fcdb18202bb1adbf34157cf77fa3bf4",
+      "sourceContentHash": "402e0f23a4c64cba54372786da0756e31fcdb18202bb1adbf34157cf77fa3bf4",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "a13a7c06427b244bbeb2dfb5e230c3296605f9b77eaaec24234f1cf6e7e646fe"
+    },
+    {
+      "id": "tesu-soph-0055-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0055 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=fff93e45-594b-ef11-a317-6045bd089f77&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/882f539cec105b73.txt",
+      "sha256": "882f539cec105b73b759102713270e26573acf6df8c3e95ee06b827db1a6d23f",
+      "sourceContentHash": "882f539cec105b73b759102713270e26573acf6df8c3e95ee06b827db1a6d23f",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "fea8dd212610dcdfc413a7c01cadad33b65529b41510d40b4723f3b40db35421"
+    },
+    {
+      "id": "tesu-soph-0057-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0057 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=76d5e3a5-15a8-ef11-8a69-000d3a59670b&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/19c6ee3654bbe3bf.txt",
+      "sha256": "19c6ee3654bbe3bfab5216133eed401baac2561c85e92b0e3e0f716bdd33fba2",
+      "sourceContentHash": "19c6ee3654bbe3bfab5216133eed401baac2561c85e92b0e3e0f716bdd33fba2",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "cd5f6dad65623d3899de8f5e4df0f20739cd1f24cd66cbc8455445056c9ac2d2"
+    },
+    {
+      "id": "tesu-soph-0058-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0058 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=d8cb1ea8-15a8-ef11-8a69-000d3a3ad719&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/0c25e0312bac3689.txt",
+      "sha256": "0c25e0312bac36895e4b1fe7baa47f5d015e22939c0f4343d357e5fb4f05671b",
+      "sourceContentHash": "0c25e0312bac36895e4b1fe7baa47f5d015e22939c0f4343d357e5fb4f05671b",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "1eca13a41f8e3f94567d37bea744308acab69de6ab9148fdde2383f4a522249c"
+    },
+    {
+      "id": "tesu-soph-0060-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0060 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=536e3c95-e3df-ef11-8ee9-6045bd06f314&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/611badcf329553c6.txt",
+      "sha256": "611badcf329553c6d388fe29dd88e117b397ca7040b4909ab3fb40ec465b54b8",
+      "sourceContentHash": "611badcf329553c6d388fe29dd88e117b397ca7040b4909ab3fb40ec465b54b8",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "9b127ec20806b5e17f9ce63507eb86df0848cb3406a91c9cce275d4ba560c6aa"
+    },
+    {
+      "id": "tesu-soph-0061-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0061 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=49885de4-19f9-ef11-9341-6045bd06f314&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/ce29eac9d439c1aa.txt",
+      "sha256": "ce29eac9d439c1aa5b38586850f4c13985ba0a9913127069efd424ab63632e72",
+      "sourceContentHash": "ce29eac9d439c1aa5b38586850f4c13985ba0a9913127069efd424ab63632e72",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "55d8fb49ec8d3a395acf8b22388eaf68defed8947e8e9d2101f8f89680c17adf"
+    },
+    {
+      "id": "tesu-soph-0062-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0062 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=c9c0e7e3-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/a47070c4ef068265.txt",
+      "sha256": "a47070c4ef0682658b13108466b78f047b9264c241ecef58ea468e06f1ac8946",
+      "sourceContentHash": "a47070c4ef0682658b13108466b78f047b9264c241ecef58ea468e06f1ac8946",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "389c4dff799d4ff602f8eaf1cfe1e9be0a4ba20076891abe29d89883606bee22"
+    },
+    {
+      "id": "tesu-soph-0064-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0064 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=e28f0715-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/ff1819d620df02c6.txt",
+      "sha256": "ff1819d620df02c60095cecf34732290150515d7e1276069e761c7c1f7fed625",
+      "sourceContentHash": "ff1819d620df02c60095cecf34732290150515d7e1276069e761c7c1f7fed625",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "9f32265282c62bdb64fa32184d4bb78025b9192cad8ddfd9154b0eb1dc0cd89b"
+    },
+    {
+      "id": "tesu-soph-0065-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0065 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/f7941180039066c5.txt",
+      "sha256": "f7941180039066c5cc92a47182e899376c87f4980f741e9060f2965cdb95dd2a",
+      "sourceContentHash": "f7941180039066c5cc92a47182e899376c87f4980f741e9060f2965cdb95dd2a",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "f46ff51e235539373c7ae194894762e77c42bac0c5c3ff6a3dc60e1ba2859436"
+    },
+    {
+      "id": "tesu-soph-0066-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0066 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=39885de4-19f9-ef11-9341-6045bd06f314&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/748434f119e69adb.txt",
+      "sha256": "748434f119e69adb69ca4e58f034dff95ad8f63923e18dd6c226dbd595fa824a",
+      "sourceContentHash": "748434f119e69adb69ca4e58f034dff95ad8f63923e18dd6c226dbd595fa824a",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "4f5692024bf308b0811d4ebcc33f53112fd35c04d76d2195f5cff4fc78d2e0ee"
+    },
+    {
+      "id": "tesu-soph-0069-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0069 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=b32d9a23-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/a105b2545c02ff81.txt",
+      "sha256": "a105b2545c02ff81d9c2cca6e40ff4b968ea43e9893c7a8dee72fea5f79e088c",
+      "sourceContentHash": "a105b2545c02ff81d9c2cca6e40ff4b968ea43e9893c7a8dee72fea5f79e088c",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "0c85555a3e74038dfd9cd8cc24a11fe6a40e17c005955c024a9c030f1c5b28b8"
+    },
+    {
+      "id": "tesu-soph-0071-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0071 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=0e952ba0-0a23-f111-8341-000d3a3063b4&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/9d75cb78643d8ffc.txt",
+      "sha256": "9d75cb78643d8ffca815a478a91190dad2184fceb12d37ad76a6e51182104b0d",
+      "sourceContentHash": "9d75cb78643d8ffca815a478a91190dad2184fceb12d37ad76a6e51182104b0d",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "b138d31100a53ba10d1220ad6c61037c9d5d51734c586d8315f8379196461467"
+    },
+    {
+      "id": "tesu-soph-0079-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0079 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=aee1f791-b88b-ee11-8179-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/9a4390730a7c72d4.txt",
+      "sha256": "9a4390730a7c72d4d0b7e8b8b96a8fc6767ac4d57df4df0e5d49f5fb86bef3a9",
+      "sourceContentHash": "9a4390730a7c72d4d0b7e8b8b96a8fc6767ac4d57df4df0e5d49f5fb86bef3a9",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "12dc72f8780b385bc7a65320abc7c4ce49b01c9035b9ff49c29e318b45018587"
+    },
+    {
+      "id": "tesu-soph-0083-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0083 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=93b3b04c-594b-ef11-a317-6045bd04c00b&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/5e1432a0565a4feb.txt",
+      "sha256": "5e1432a0565a4feb3d1fbffa57cf184b4b76606083ff3b9021d5c67cff31bade",
+      "sourceContentHash": "5e1432a0565a4feb3d1fbffa57cf184b4b76606083ff3b9021d5c67cff31bade",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "6795d92ec7ba3aacffbb0727ea1b381cd4e403af1add214116f96e53c17bdec7"
+    },
+    {
+      "id": "tesu-soph-0084-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0084 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=bb257d69-f542-ef11-840a-6045bd089f77&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/0cf7c51602398136.txt",
+      "sha256": "0cf7c516023981362c5a358e74fd9c346c5fac3f5553b69d0c2881db7be524c0",
+      "sourceContentHash": "0cf7c516023981362c5a358e74fd9c346c5fac3f5553b69d0c2881db7be524c0",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "2a76968a22755c1cbb6b55f82d3c4f10461d814534f3ad6647394a467c6dd6a4"
+    },
+    {
+      "id": "tesu-soph-0086-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0086 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=b8a91ca2-15a8-ef11-8a6a-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/e036075faf88b13e.txt",
+      "sha256": "e036075faf88b13e2a10453411243b1e051fba2cae82e477176cce9748b37a03",
+      "sourceContentHash": "e036075faf88b13e2a10453411243b1e051fba2cae82e477176cce9748b37a03",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "18a333ee2614021091e33679f50de721335c42adf95777cf5c8f2e1f557c74a3"
+    },
+    {
+      "id": "tesu-soph-0090-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0090 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=0d77efdd-a005-f011-bae1-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/9ebc4a46d7d4a21b.txt",
+      "sha256": "9ebc4a46d7d4a21b32d14809aa7645e9d414b98d8d8ec5b5b13a90e1aadf68d4",
+      "sourceContentHash": "9ebc4a46d7d4a21b32d14809aa7645e9d414b98d8d8ec5b5b13a90e1aadf68d4",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "da2bbaef6230bf4ddec42ac36bc4b2f3243ec481bd0a39d27fb211a0c05eac53"
+    },
+    {
+      "id": "tesu-soph-0092-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0092 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=c08f0715-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/0e0ea61ec2d4ba96.txt",
+      "sha256": "0e0ea61ec2d4ba967a4b16c27cc13f6cc92ebc1e25365adb69e50c2c2fe7b433",
+      "sourceContentHash": "0e0ea61ec2d4ba967a4b16c27cc13f6cc92ebc1e25365adb69e50c2c2fe7b433",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "c66d191d425ea62d872130f52ee6691306631bad45f5739a5e249a3df19b0b70"
+    },
+    {
+      "id": "tesu-soph-0094-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0094 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=3ee9bb73-60d0-f011-bbd3-6045bd062b6a&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/06e265d4835c5bd1.txt",
+      "sha256": "06e265d4835c5bd1e0adc12f001271c2e4c9b0027747569ffb6c300b5d207fc3",
+      "sourceContentHash": "06e265d4835c5bd1e0adc12f001271c2e4c9b0027747569ffb6c300b5d207fc3",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "9ababac6f5e5251d2979d4ed7bd990f5b2cfb83f1a17e09cdb72b1465312013a"
+    },
+    {
+      "id": "tesu-soph-0096-exact-period-option-2026-11-26",
+      "title": "ACE SOPH-0096 exact recommendation-period select markup (complete select excerpt)",
+      "url": "https://www.acenet.edu/National-Guide/Pages/Course.aspx?org=SOPHIA%20Learning,%20LLC&cid=7edfa970-e83f-f111-88b4-000d3a371a7a&oid=76099b28-9016-e811-810f-5065f38bf0e1#recommendation-period-selection",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/add17bd31d4103c5.txt",
+      "sha256": "add17bd31d4103c55aea28364028e9806b4adafd66d24c368ce156cb7a2cec8e",
+      "sourceContentHash": "add17bd31d4103c55aea28364028e9806b4adafd66d24c368ce156cb7a2cec8e",
+      "kind": "ace",
+      "roles": [
+        "recommendation-period"
+      ],
+      "captureFormat": "raw-html-recommendation-period-select-excerpt",
+      "rawResponseSha256": "2b0e45afe4f299d4de114d5b6bcba33f3ac6656797eee3deae934a700da308fc"
     }
   ]
 }

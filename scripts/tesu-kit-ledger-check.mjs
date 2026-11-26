@@ -6,6 +6,7 @@
 import assert from 'node:assert/strict';
 import {applyTESUProviderReview} from './tesu-provider-review.mjs';
 import {applyTESUUPIProviderDefaults} from './tesu-upi-defaults.mjs';
+import {reviewedTESUCatalogIdentity,reviewedTESUTuitionComparison} from './tesu-source-parity.mjs';
 
 /** Narrative fields a later evidence review may reword without changing the reviewed ledger. */
 export const narrativeFields=Object.freeze(['rulesNotes','unresolved','coverageLabel','pricingNotes','sources']);
@@ -20,6 +21,9 @@ export function assertKitLedger(published,built,label){
   // facts. Compare against its exact current source-bound metadata; do not
   // discard this field or refresh the academic snapshot to make parity pass.
   const kit=published.models[0],reviewed=applyTESUUPIProviderDefaults(applyTESUProviderReview(structuredClone(built.models[0])));
+  reviewed.catalogIdentity=reviewedTESUCatalogIdentity(kit,reviewed.catalogIdentity);
+  if(reviewed.catalogIdentity.sourceId)reviewed.sourceIds=[...new Set([...(reviewed.sourceIds||[]),reviewed.catalogIdentity.sourceId])];
+  reviewed.tuitionComparison=reviewedTESUTuitionComparison(kit,reviewed.tuitionComparison,built.models[0].sources);
   // The registry keeps only section members that are requirements of the degree (Liberal Studies' importer listed a
   // phi1300 section member that is not one of its 40 requirements); the published ledger is compared on that basis.
   const ids=new Set(reviewed.requirements.map(row=>row.id));

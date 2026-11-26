@@ -104,7 +104,7 @@ test('the actual default optimizer produces a complete78+39 HR route without rep
  assert.equal(plan.rows.length,39);assert(plan.rows.every(row=>row.status==='planned'&&row.option?.evidence==='published'&&row.option.code));
  const actions=plan.rows.filter(row=>row.option.provider!=='University').map(row=>row.option.provider+':'+row.option.code);assert.equal(new Set(actions).size,actions.length);
  assert.equal(plan.rows.find(row=>row.code==='D360').option.provider,'University');
- const quality=assessPathwayQuality({model,plan,asOf:doc.checkedOn});assert.equal(quality.publication.ready,true);assert.equal(quality.research.blockingFindings,0);assert.equal(quality.research.conditionalFindings,0);
+ const quality=assessPathwayQuality({model,plan,asOf:'2026-11-26'});assert.equal(quality.publication.ready,true);assert.equal(quality.research.blockingFindings,0);assert.equal(quality.research.conditionalFindings,0);
  const noStudy=Planner.generate(model,{providers:['Sophia'],allowConditional:false,priority:'transfer',nodeBudget:12000});assert(noStudy.rows.every(row=>row.option.provider!=='Study.com'));assert.equal(noStudy.validation.academicCountsValid,true);
 });
 

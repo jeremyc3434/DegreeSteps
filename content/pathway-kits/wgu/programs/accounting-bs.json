@@ -11,9 +11,10 @@
   "catalog": "202503",
   "totalCredits": 121,
   "review": {
-    "status": "migrated",
+    "status": "reviewed",
     "source": "content/curricula/wgu.json",
-    "reviewedOn": "2026-11-20"
+    "reviewedOn": "2026-11-26",
+    "reviewer": "Codex (source-bound complete current ledger and program-specific residency review)"
   },
   "policies": {
     "alternativeMaxCredits": {
@@ -35,16 +36,13 @@
     }
   },
   "modelFields": {
-    "unresolved": [
-      "These are the complete named standard-path courses in the cited WGU guide. Current individual transfer approval and receiving level remain unresolved on each outside option.",
-      "DegreeSteps must review required-capstone applicability for this exact program before calculating its institutional minimum; the overall 75% ceiling is already source-backed.",
-      "University courses without an outside option are not proof that no transfer exists. Additional approved provider matches require further current program-specific research."
-    ],
+    "unresolved": [],
     "rulesNotes": [
       "The standard-path course values are WGU competency units. Source semester credits, where published, remain separately attached to outside-course options.",
       "Sophia partnership table lists a75% ceiling for combined nontraditional training and credit-by-exam, and identifies postMarch2026 upper-division restrictions. Individual academic residency may require more WGU work.",
       "General education is labeled only where the retained official guide identifies the course under that heading. Remaining named courses stay in core requirements; provider subject labels are not treated as university degree categories.",
-      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements."
+      "Certifications were not factored in for transfer but can be transferred if applicable, passed, and documented. All certifications and IT-specific courses must have been completed within the past five years to be considered for transfer. Verify certifications for each program by going to General Transfer Guidelines . This evaluation is based upon current transfer policies and is not guaranteed in perpetuity. Please contact your Enrollment Counselor if your start date is more than 30 days from the date of this evaluation to determine if any updates to transfer policies have occurred that will change the results of your evaluation. Competency units are based on semester units for transfer. Transfer courses may not be used to fulfill more than one course of study. Students must complete at least 25% of the required undergraduate degree competency units through residency requirements.",
+      "The exact BSACC 202503 required course set is reviewed against its current official catalog table and program receiving guidelines. No separately declared formal capstone occurs in this bounded course set; other editions do not inherit that finding. Any course marked non-transferable still stays at WGU."
     ],
     "mappingCheckedOn": "2026-11-20",
     "pricing": {
@@ -66,7 +64,12 @@
       "wgu-undergraduate-institutional-catalog-202611",
       "wgu-undergraduate-residency-policy-23797-20260918",
       "wgu-bu-bsacc-202503-metadata-reviewed-20261117",
-      "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
+      "wgu-bu-bsacc-202503-curriculum-reviewed-20261117",
+      "wgu-bsacc-202503-residency-catalogue-reviewed-20261126",
+      "wgu-bsacc-202503-residency-policy-reviewed-20261126",
+      "wgu-bsacc-202503-residency-ledger-reviewed-20261126",
+      "wgu-bsacc-202503-residency-guidelines-reviewed-20261126",
+      "wgu-bsacc-202503-residency-descriptions-reviewed-20261126"
     ],
     "policyEvidence": {
       "externalMaxCredits": {
@@ -86,6 +89,20 @@
           "wgu-undergraduate-institutional-catalog-202611"
         ],
         "note": "Alternative credit shares the overall ceiling; this is not approval of any provider or outside course."
+      },
+      "institutionMinCredits": {
+        "value": 30.25,
+        "fraction": 0.25,
+        "basisCredits": 121,
+        "creditSystem": "competency-unit",
+        "sourceIds": [
+          "wgu-bsacc-202503-residency-catalogue-reviewed-20261126",
+          "wgu-bsacc-202503-residency-policy-reviewed-20261126",
+          "wgu-bsacc-202503-residency-ledger-reviewed-20261126",
+          "wgu-bsacc-202503-residency-guidelines-reviewed-20261126",
+          "wgu-bsacc-202503-residency-descriptions-reviewed-20261126"
+        ],
+        "note": "The exact current complete ledger and receiving-guideline course set declare no separate formal capstone. All university-required courses remain institutional; this is not a finding about other catalog editions."
       }
     },
     "policyReview": [
@@ -612,888 +629,217 @@
       },
       "allPossibleSourcesGloballyReviewed": false,
       "retiredInvalidSingleCourseOptions": []
+    },
+    "institutionMinCredits": 30.25,
+    "completeExecutablePathway": true,
+    "currentLedgerResidencyReview": {
+      "slug": "accounting-bs",
+      "modelId": "curriculum-wgu-catalog-358f1e10651bf3d8",
+      "status": "reviewed-complete-current-ledger",
+      "reviewedOn": "2026-11-26",
+      "programId": 191,
+      "programCode": "BSACC",
+      "catalog": "202503",
+      "totalCredits": 121,
+      "requirementCount": 40,
+      "courseTupleSha256": "8c217577e51dd236b4c0b9093bb39c6a5f49c4758362f9a326766c2a346d4172",
+      "declaredCapstoneCodes": [],
+      "universalityClaim": false,
+      "ledger": {
+        "sourceId": "wgu-bsacc-202503-residency-ledger-reviewed-20261126",
+        "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSACC%3B202503",
+        "capture": "content/source-captures/539fdb46618d6453.txt",
+        "sha256": "539fdb46618d6453bab26da5106bc9c0937d3a492a12c4e46a6693a1d2439d97"
+      },
+      "catalogue": {
+        "sourceId": "wgu-bsacc-202503-residency-catalogue-reviewed-20261126",
+        "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=67-68&columns=1",
+        "capture": "content/source-captures/07bf8d8150e3d992.txt",
+        "sha256": "07bf8d8150e3d9920908e376a906f312c06b16d604502312bb30a5000b1872b6"
+      },
+      "guidelines": {
+        "sourceId": "wgu-bsacc-202503-residency-guidelines-reviewed-20261126",
+        "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=191",
+        "capture": "content/source-captures/09c9ab69a5aa9e78.txt",
+        "sha256": "09c9ab69a5aa9e7851494d4698bb812385cb0fde1946fa19254a810b0d41e325"
+      },
+      "policy": {
+        "sourceId": "wgu-bsacc-202503-residency-policy-reviewed-20261126",
+        "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+        "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+        "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5"
+      },
+      "descriptions": {
+        "sourceId": "wgu-bsacc-202503-residency-descriptions-reviewed-20261126",
+        "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+        "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+        "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b"
+      },
+      "college": "BU"
     }
   },
   "requirements": [
+    {"id":"bsacc-organizational-behavior","code":"C715","title":"Organizational Behavior","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-fundamentals-for-success-in-business","code":"D072","title":"Fundamentals for Success in Business","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-principles-of-financial-and-managerial-accounting","code":"D196","title":"Principles of Financial and Managerial Accounting","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-composition-successful-self-expression","code":"D270","title":"Composition: Successful Self-Expression","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-emotional-and-cultural-intelligence","code":"D082","title":"Emotional and Cultural Intelligence","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-applied-probability-and-statistics","code":"C955","title":"Applied Probability and Statistics","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-critical-thinking-reason-and-evidence","code":"D265","title":"Critical Thinking: Reason and Evidence","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-business-ethics","code":"C717","title":"Business Ethics","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"C717\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-global-arts-and-humanities","code":"D198","title":"Global Arts and Humanities","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-financial-accounting","code":"D102","title":"Financial Accounting","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D102\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-applied-algebra","code":"C957","title":"Applied Algebra","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-principles-of-management","code":"C483","title":"Principles of Management","credits":4,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-fundamentals-of-spreadsheets-and-data-presentations","code":"D388","title":"Fundamentals of Spreadsheets and Data Presentations","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-taxation-i","code":"C237","title":"Taxation I","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-innovative-and-strategic-thinking","code":"D081","title":"Innovative and Strategic Thinking","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-quantitative-analysis-for-business","code":"C723","title":"Quantitative Analysis For Business","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-introduction-to-communication-connecting-with-others","code":"D268","title":"Introduction to Communication: Connecting with Others","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-business-environment-applications-i-business-structures-and-legal-environment","code":"D078","title":"Business Environment Applications I: Business Structures and Legal Environment","credits":2,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-finance-skills-for-managers","code":"D076","title":"Finance Skills for Managers","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-health-fitness-and-wellness","code":"C458","title":"Health, Fitness, and Wellness","credits":4,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-us-history-stories-of-american-democracy","code":"D267","title":"US History: Stories of American Democracy","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-cost-and-managerial-accounting","code":"D101","title":"Cost and Managerial Accounting","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D101\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-business-law-for-accountants","code":"D216","title":"Business Law for Accountants","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D216\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-values-based-leadership","code":"D253","title":"Values-Based Leadership","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D253\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-business-communication","code":"C716","title":"Business Communication","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-principles-of-economics","code":"D089","title":"Principles of Economics","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-intermediate-accounting-i","code":"D103","title":"Intermediate Accounting I","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D103\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-introduction-to-sociology","code":"C273","title":"Introduction to Sociology","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-concepts-in-marketing-sales-and-customer-contact","code":"D077","title":"Concepts in Marketing, Sales, and Customer Contact","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-intermediate-accounting-ii","code":"D104","title":"Intermediate Accounting II","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D104\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-accounting-information-systems","code":"D217","title":"Accounting Information Systems","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D217\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-integrated-physical-sciences","code":"C165","title":"Integrated Physical Sciences","credits":3,"category":"general","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"general-education","curriculumAreaEvidence":{"areaOfStudy":"General Education","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-operations-and-supply-chain-management","code":"C720","title":"Operations and Supply Chain Management","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-intermediate-accounting-iii","code":"D105","title":"Intermediate Accounting III","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D105\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-change-management","code":"C721","title":"Change Management","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"C721\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-project-management","code":"C722","title":"Project Management","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-management","curriculumAreaEvidence":{"areaOfStudy":"Business Management","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-business-environment-applications-ii-process-logistics-and-operations","code":"D079","title":"Business Environment Applications II: Process, Logistics, and Operations","credits":2,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-business-simulation","code":"D361","title":"Business Simulation","credits":4,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D361\",\"transferArea\":\"Non-Transferable\""}]},
+    {"id":"bsacc-managing-in-a-global-business-environment","code":"D080","title":"Managing in a Global Business Environment","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"institutionalOnly":false,"group":"business-core","curriculumAreaEvidence":{"areaOfStudy":"Business Core","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"}},
+    {"id":"bsacc-auditing","code":"D215","title":"Auditing","credits":3,"category":"core","sourceIds":["wgu-bsacc-guide","wgu-bu-bsacc-202503-curriculum-reviewed-20261117","wgu-bsacc-202503-residency-guidelines-reviewed-20261126"],"institutionalOnly":true,"group":"accounting","curriculumAreaEvidence":{"areaOfStudy":"Accounting","sourceIds":["wgu-bu-bsacc-202503-curriculum-reviewed-20261117"],"programId":191,"catalogTerm":"202503","ledgerSha256":"546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"},"quotes":[{"sourceId":"wgu-bsacc-202503-residency-guidelines-reviewed-20261126","text":"\"PAMS_bannerCode\":\"D215\",\"transferArea\":\"Non-Transferable\""}]}
+  ],
+  "sources": [
     {
-      "id": "bsacc-organizational-behavior",
-      "code": "C715",
-      "title": "Organizational Behavior",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
+      "id": "wgu-bsacc-202503-residency-ledger-reviewed-20261126",
+      "title": "WGU BSACC 202503: complete named current public academic API ledger",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/program-data?pamsCodes=BSACC%3B202503",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/539fdb46618d6453.txt",
+      "sha256": "539fdb46618d6453bab26da5106bc9c0937d3a492a12c4e46a6693a1d2439d97",
+      "sourceContentHash": "sha256:539fdb46618d6453bab26da5106bc9c0937d3a492a12c4e46a6693a1d2439d97",
+      "roles": [
+        "curriculum"
       ],
-      "institutionalOnly": false,
-      "group": "business-management",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Management",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
+      "scope": {
+        "schoolName": "Western Governors University",
         "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
+        "programCode": "BSACC",
+        "catalogYear": "202503",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
     },
     {
-      "id": "bsacc-fundamentals-for-success-in-business",
-      "code": "D072",
-      "title": "Fundamentals for Success in Business",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
+      "id": "wgu-bsacc-202503-residency-catalogue-reviewed-20261126",
+      "title": "WGU BSACC 202503: complete current institutional-catalog course table",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=67-68&columns=1",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/07bf8d8150e3d992.txt",
+      "sha256": "07bf8d8150e3d9920908e376a906f312c06b16d604502312bb30a5000b1872b6",
+      "sourceContentHash": "sha256:07bf8d8150e3d9920908e376a906f312c06b16d604502312bb30a5000b1872b6",
+      "roles": [
+        "curriculum"
       ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
+      "scope": {
+        "schoolName": "Western Governors University",
         "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
+        "programCode": "BSACC",
+        "catalogYear": "202503",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
     },
     {
-      "id": "bsacc-principles-of-financial-and-managerial-accounting",
-      "code": "D196",
-      "title": "Principles of Financial and Managerial Accounting",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
+      "id": "wgu-bsacc-202503-residency-guidelines-reviewed-20261126",
+      "title": "WGU BSACC 202503: exact current program receiving guidelines",
+      "url": "https://marketing-api-gateway.wgu.edu/partner/v1/public/transfer-guidelines/programs?programsCode=191",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/09c9ab69a5aa9e78.txt",
+      "sha256": "09c9ab69a5aa9e7851494d4698bb812385cb0fde1946fa19254a810b0d41e325",
+      "sourceContentHash": "sha256:09c9ab69a5aa9e7851494d4698bb812385cb0fde1946fa19254a810b0d41e325",
+      "roles": [
+        "transfer-guidelines"
       ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
+      "scope": {
+        "schoolName": "Western Governors University",
         "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
+        "programCode": "BSACC",
+        "catalogYear": "202503",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
     },
     {
-      "id": "bsacc-composition-successful-self-expression",
-      "code": "D270",
-      "title": "Composition: Successful Self-Expression",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
+      "id": "wgu-bsacc-202503-residency-policy-reviewed-20261126",
+      "title": "WGU BSACC 202503: active-program undergraduate residency policy",
+      "url": "https://cm.wgu.edu/t5/WGU-Student-Policy-Handbook/Transfer-Credit/ta-p/23797",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/6b16dfcc2ae041d6.txt",
+      "sha256": "6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+      "sourceContentHash": "sha256:6b16dfcc2ae041d617820db0691891157060f40fc59d90a2ae13e967979c37e5",
+      "roles": [
+        "residency-policy"
       ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
+      "scope": {
+        "schoolName": "Western Governors University",
         "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
+        "programCode": "BSACC",
+        "catalogYear": "202503",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
     },
     {
-      "id": "bsacc-emotional-and-cultural-intelligence",
-      "code": "D082",
-      "title": "Emotional and Cultural Intelligence",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
+      "id": "wgu-bsacc-202503-residency-descriptions-reviewed-20261126",
+      "title": "WGU BSACC 202503: all required course descriptions in the current institutional catalog",
+      "url": "https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/WGU%20Institutional%20Catalog%20-%20November%202026.pdf#pages=268-337&columns=2",
+      "kind": "university",
+      "checked": "2026-11-26",
+      "capture": "content/source-captures/73c91ce6b6ff663f.txt",
+      "sha256": "73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+      "sourceContentHash": "sha256:73c91ce6b6ff663fff7a2f31ee0eef439fd526b33f32681d50bca7481fcf568b",
+      "roles": [
+        "curriculum"
       ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
+      "scope": {
+        "schoolName": "Western Governors University",
         "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-applied-probability-and-statistics",
-      "code": "C955",
-      "title": "Applied Probability and Statistics",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-critical-thinking-reason-and-evidence",
-      "code": "D265",
-      "title": "Critical Thinking: Reason and Evidence",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-business-ethics",
-      "code": "C717",
-      "title": "Business Ethics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-management",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Management",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-global-arts-and-humanities",
-      "code": "D198",
-      "title": "Global Arts and Humanities",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-financial-accounting",
-      "code": "D102",
-      "title": "Financial Accounting",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-applied-algebra",
-      "code": "C957",
-      "title": "Applied Algebra",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-principles-of-management",
-      "code": "C483",
-      "title": "Principles of Management",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-fundamentals-of-spreadsheets-and-data-presentations",
-      "code": "D388",
-      "title": "Fundamentals of Spreadsheets and Data Presentations",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-taxation-i",
-      "code": "C237",
-      "title": "Taxation I",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-innovative-and-strategic-thinking",
-      "code": "D081",
-      "title": "Innovative and Strategic Thinking",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-quantitative-analysis-for-business",
-      "code": "C723",
-      "title": "Quantitative Analysis For Business",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-management",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Management",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-introduction-to-communication-connecting-with-others",
-      "code": "D268",
-      "title": "Introduction to Communication: Connecting with Others",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-business-environment-applications-i-business-structures-and-legal-environment",
-      "code": "D078",
-      "title": "Business Environment Applications I: Business Structures and Legal Environment",
-      "credits": 2,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-finance-skills-for-managers",
-      "code": "D076",
-      "title": "Finance Skills for Managers",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-health-fitness-and-wellness",
-      "code": "C458",
-      "title": "Health, Fitness, and Wellness",
-      "credits": 4,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-us-history-stories-of-american-democracy",
-      "code": "D267",
-      "title": "US History: Stories of American Democracy",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-cost-and-managerial-accounting",
-      "code": "D101",
-      "title": "Cost and Managerial Accounting",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-business-law-for-accountants",
-      "code": "D216",
-      "title": "Business Law for Accountants",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-values-based-leadership",
-      "code": "D253",
-      "title": "Values-Based Leadership",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-management",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Management",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-business-communication",
-      "code": "C716",
-      "title": "Business Communication",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-management",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Management",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-principles-of-economics",
-      "code": "D089",
-      "title": "Principles of Economics",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-intermediate-accounting-i",
-      "code": "D103",
-      "title": "Intermediate Accounting I",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-introduction-to-sociology",
-      "code": "C273",
-      "title": "Introduction to Sociology",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-concepts-in-marketing-sales-and-customer-contact",
-      "code": "D077",
-      "title": "Concepts in Marketing, Sales, and Customer Contact",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-intermediate-accounting-ii",
-      "code": "D104",
-      "title": "Intermediate Accounting II",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-accounting-information-systems",
-      "code": "D217",
-      "title": "Accounting Information Systems",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-integrated-physical-sciences",
-      "code": "C165",
-      "title": "Integrated Physical Sciences",
-      "credits": 3,
-      "category": "general",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "general-education",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "General Education",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-operations-and-supply-chain-management",
-      "code": "C720",
-      "title": "Operations and Supply Chain Management",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-management",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Management",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-intermediate-accounting-iii",
-      "code": "D105",
-      "title": "Intermediate Accounting III",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-change-management",
-      "code": "C721",
-      "title": "Change Management",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-management",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Management",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-project-management",
-      "code": "C722",
-      "title": "Project Management",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-management",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Management",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-business-environment-applications-ii-process-logistics-and-operations",
-      "code": "D079",
-      "title": "Business Environment Applications II: Process, Logistics, and Operations",
-      "credits": 2,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-business-simulation",
-      "code": "D361",
-      "title": "Business Simulation",
-      "credits": 4,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-managing-in-a-global-business-environment",
-      "code": "D080",
-      "title": "Managing in a Global Business Environment",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "business-core",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Business Core",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
-    },
-    {
-      "id": "bsacc-auditing",
-      "code": "D215",
-      "title": "Auditing",
-      "credits": 3,
-      "category": "core",
-      "sourceIds": [
-        "wgu-bsacc-guide",
-        "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-      ],
-      "institutionalOnly": false,
-      "group": "accounting",
-      "curriculumAreaEvidence": {
-        "areaOfStudy": "Accounting",
-        "sourceIds": [
-          "wgu-bu-bsacc-202503-curriculum-reviewed-20261117"
-        ],
-        "programId": 191,
-        "catalogTerm": "202503",
-        "ledgerSha256": "546df2fb2f20df9ab9cba466d358b3e6e32abe24f523024438c757ae18d01d67"
-      }
+        "programCode": "BSACC",
+        "catalogYear": "202503",
+        "level": "bachelor",
+        "modality": "online",
+        "creditSystem": "competency-unit"
+      },
+      "reviewMethod": "Exact current code/title/CU table, full required course descriptions, complete API course set and exact program receiving-guideline code set reviewed together; empty declared capstone set applies only to this edition.",
+      "retrieval": "Retained university evidence reviewed locally; its original network retrieval timestamp remains in the immutable sidecar."
     }
   ]
 }
