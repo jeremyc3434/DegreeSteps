@@ -1,28 +1,28 @@
 {
   "schemaRevision": "research-priorities-v1",
-  "revision": "research-priorities-v1:7d6ef1d2d481040a9b05f47941ff497daa05da7b1ce0b8def52fb8b154dda7ca",
+  "revision": "research-priorities-v1:069153f478af8ff3f5e7a6a17efe83b5fea60f15644bcf57635fe689afdb1152",
   "asOf": "2026-11-26",
   "inputFingerprints": {
     "inventory": "5641a61bc3ad2f827256cb7c64f05d9e91e5d46720938a1033ab2eb1800c60b4",
-    "models": "b0601b0120f4b9a8819db50c2688b9d3bb5400e1e699917acd10214569eb50ce",
+    "models": "09169b7bb2bb0bb0cd1f067d8bd4a822b4a788a86fe522551a37b3228dae953f",
     "pathways": "724ccdc082fc8c4659451d1e3e3c7b85df95e4c1a026e50bad5c7d87c8a6e1f2",
     "programCatalog": "d46e34eb28c79ac3484bb39af59ca245a509492c3e13db9563784e1d0f5de862",
-    "providerCoverage": "a28a591aeb48114d53e6291bfa8728d288fe665a4be8d868479f1acd68e737c5",
+    "providerCoverage": "80d450bed0f05564d91329a5f7a2d329b79a27e6c861ae1d8f0d0d15762b7b1a",
     "providerDiscovery": "3071f4db1055a48686b22f38dc16872f870026bb93941c5f8486214298eda90c",
-    "quality": "cce29d4830bb9d22a45583d307ccc9f15e6b50d06a932dade308554da9daf791",
-    "registry": "ce4dda4e3c39ea11b6eac9c035143c116e01fe8c2d2e01a5cc6f97bf10c28a43",
+    "quality": "9a62b0dbd1873a65475bfae56db2b9fc6fdf9e211c7060c4e523d0a0f30128fd",
+    "registry": "02d0afcb52fa25b09e92279ea36ff1b9be432d1465b9e3e0fef8a606e502629a",
     "schoolInsights": "9b84b9db33a9014067bc7c797cf5d9aa4f3914bf64afda474c9bd92f872f6df6",
     "tesuExamReview": "5d9b52d81bbe4375dc9d1ad7acd2e8d1c00bf62e59b79bd4a303cbaf2505fb0e",
     "umpiPrimaryReview": "c2345e5b07e6db37f4876b2c17180e9a220aff6676f31b5dbebc99c2baaf184c"
   },
-  "academicRegistryRevision": "academic-v1:d06de3dffcac7df1dcdc18b82cfbea95b4c1096d917387ccf5beff39efcd513d",
+  "academicRegistryRevision": "academic-v1:029720a6c322db7339de113b0b1b51f8f4727681edcce85a63dc3d508a9ba34b",
   "scope": "Cross-school research prioritization from the existing directory, exact model registry, recorded publication checks and sourced policy channels. This static backlog does not publish a degree map, grant student credit, establish popularity or start a research job.",
   "summary": {
     "schools": 27,
-    "programs": 1769,
+    "programs": 1775,
     "directoryPrograms": 1633,
-    "modelPrograms": 168,
-    "availableTemplates": 162,
+    "modelPrograms": 174,
+    "availableTemplates": 168,
     "publicationReady": 45,
     "unmappedPrograms": 1589,
     "inventoryCandidates": 95,
@@ -53,7 +53,7 @@
       "reason": "A school publishes accepted or case-by-case alternative-credit information, but degree mappings or publication review remain incomplete. Acceptance is not a degree placement.",
       "order": 1,
       "schoolCount": 7,
-      "programCount": 131,
+      "programCount": 137,
       "inventoryCandidateCount": 0
     },
     {
@@ -917,7 +917,8 @@
         "online"
       ],
       "paceModels": [
-        "competency-subscription"
+        "competency-subscription",
+        "course-term"
       ],
       "transferEvidence": {
         "institutional": {
@@ -978,6 +979,12 @@
         "https://www.umassglobal.edu/tuition-and-aid/tuition"
       ],
       "programIds": [
+        "umass-global-ba-organizational-leadership",
+        "umass-global-bachelor-of-business-administration",
+        "umass-global-bs-cybersecurity",
+        "umass-global-bs-digital-marketing",
+        "umass-global-bs-human-resources",
+        "umass-global-bs-information-technology",
         "umass-mypath-aa-general-business",
         "umass-mypath-bba",
         "umass-mypath-bs-information-technology",
@@ -986,12 +993,12 @@
       ],
       "coverage": {
         "directoryPrograms": 5,
-        "programCount": 5,
-        "models": 0,
-        "availableTemplates": 0,
+        "programCount": 11,
+        "models": 6,
+        "availableTemplates": 6,
         "publicationReady": 0,
         "unmappedPrograms": 5,
-        "needsResearchPrograms": 0
+        "needsResearchPrograms": 6
       },
       "groupId": "alternative-credit-map-gap",
       "nextActions": [
@@ -1004,6 +1011,11 @@
           "id": "map-directory-gaps",
           "label": "Build exact degree maps for 5 directory or curated program entries without models.",
           "kind": "map-directory-gaps"
+        },
+        {
+          "id": "resolve-existing-models",
+          "label": "Resolve remaining evidence and publication findings in 6 modeled program entries.",
+          "kind": "resolve-existing-models"
         }
       ]
     },
@@ -15426,6 +15438,193 @@
       "limitsAreNotCoursePlacements": true
     },
     {
+      "id": "umass-global-ba-organizational-leadership",
+      "parentId": null,
+      "schoolId": "umass-global",
+      "title": "Bachelor of Arts in Organizational Leadership (Credit Hour)",
+      "level": "bachelor",
+      "catalog": "University of Massachusetts Global current catalog page for Bachelor of Arts in Organizational Leadership (Credit Hour), checked 2026-11-26",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-umass-global-ba-organizational-leadership",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": 90,
+        "totalLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2"
+        ],
+        "alternativeLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        ]
+      },
+      "evidenceUrls": [
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2",
+        "https://catalog.umassglobal.edu/business-professional-studies/organizational-leadership-ba/organizational-leadership-ba.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/general-education-requirements/general-education-requirements.pdf#pages=1-2&columns=2",
+        "https://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/294/syllabus_pdf/894b07fa5579ca85384628f65e21e136.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/321/syllabus_pdf/59dc0dc2010795cc5c60abb424d98053.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umassglobal.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/human-resource-management/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/organizational-behavior/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+        "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umass-global-bachelor-of-business-administration",
+      "parentId": null,
+      "schoolId": "umass-global",
+      "title": "Bachelor of Business Administration (Credit Hour)",
+      "level": "bachelor",
+      "catalog": "University of Massachusetts Global current catalog page for Bachelor of Business Administration (Credit Hour), checked 2026-11-26",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-umass-global-bachelor-of-business-administration",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": 90,
+        "totalLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2"
+        ],
+        "alternativeLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        ]
+      },
+      "evidenceUrls": [
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2",
+        "https://catalog.umassglobal.edu/business-professional-studies/business-administration-bba/business-administration-bba.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/general-education-requirements/general-education-requirements.pdf#pages=1-2&columns=2",
+        "https://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+        "https://cdn2.sophia.org/spcc_courses/263/syllabus_pdf/cc5238219db5a8116938ff45dcec4978.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/294/syllabus_pdf/894b07fa5579ca85384628f65e21e136.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/312/syllabus_pdf/10ada4557389a58f37cbe0bc64ec9dbb.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://cdn2.sophia.org/spcc_courses/371/syllabus_pdf/b3c167afe478bfd26406918cf802904a.pdf",
+        "https://umassglobal.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/human-resource-management/",
+        "https://www.sophia.org/online-courses/business/managerial-accounting/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/organizational-behavior/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+        "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
       "id": "umass-mypath-bba",
       "parentId": null,
       "schoolId": "umass-global",
@@ -15465,6 +15664,364 @@
           "id": "map-transfer-options",
           "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
           "kind": "map-transfer-options"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umass-global-bs-cybersecurity",
+      "parentId": null,
+      "schoolId": "umass-global",
+      "title": "Bachelor of Science in Cybersecurity (Credit Hour)",
+      "level": "bachelor",
+      "catalog": "University of Massachusetts Global current catalog page for Bachelor of Science in Cybersecurity (Credit Hour), checked 2026-11-26",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-umass-global-bs-cybersecurity",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "conditional-award",
+        "mapping-evidence",
+        "open-course-choice"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": 90,
+        "totalLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2"
+        ],
+        "alternativeLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        ]
+      },
+      "evidenceUrls": [
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2",
+        "https://catalog.umassglobal.edu/arts-sciences/bs-cybersecurity/bs-cybersecurity.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/general-education-requirements/general-education-requirements.pdf#pages=1-2&columns=2",
+        "https://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/294/syllabus_pdf/894b07fa5579ca85384628f65e21e136.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/321/syllabus_pdf/59dc0dc2010795cc5c60abb424d98053.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umassglobal.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/human-resource-management/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+        "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, conditional-award, mapping-evidence, open-course-choice.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umass-global-bs-digital-marketing",
+      "parentId": null,
+      "schoolId": "umass-global",
+      "title": "Bachelor of Science in Digital Marketing (Credit Hour)",
+      "level": "bachelor",
+      "catalog": "University of Massachusetts Global current catalog page for Bachelor of Science in Digital Marketing (Credit Hour), checked 2026-11-26",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-umass-global-bs-digital-marketing",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "mapping-evidence",
+        "open-course-choice"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": 90,
+        "totalLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2"
+        ],
+        "alternativeLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        ]
+      },
+      "evidenceUrls": [
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2",
+        "https://catalog.umassglobal.edu/business-professional-studies/bsdm-credithour/bsdm-credithour.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/general-education-requirements/general-education-requirements.pdf#pages=1-2&columns=2",
+        "https://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/294/syllabus_pdf/894b07fa5579ca85384628f65e21e136.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umassglobal.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/human-resource-management/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+        "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: mapping-evidence, open-course-choice.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umass-global-bs-human-resources",
+      "parentId": null,
+      "schoolId": "umass-global",
+      "title": "Bachelor of Science in Human Resources (Credit Hour)",
+      "level": "bachelor",
+      "catalog": "University of Massachusetts Global current catalog page for Bachelor of Science in Human Resources (Credit Hour), checked 2026-11-26",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-umass-global-bs-human-resources",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": 90,
+        "totalLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2"
+        ],
+        "alternativeLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        ]
+      },
+      "evidenceUrls": [
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2",
+        "https://catalog.umassglobal.edu/business-professional-studies/bachelor-science-human-resources/bachelor-science-human-resources.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/general-education-requirements/general-education-requirements.pdf#pages=1-2&columns=2",
+        "https://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/294/syllabus_pdf/894b07fa5579ca85384628f65e21e136.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umassglobal.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/human-resource-management/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+        "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice.",
+          "kind": "resolve-model-findings"
+        }
+      ],
+      "limitsAreNotCoursePlacements": true
+    },
+    {
+      "id": "umass-global-bs-information-technology",
+      "parentId": null,
+      "schoolId": "umass-global",
+      "title": "Bachelor of Science in Information Technology (Credit-Hour)",
+      "level": "bachelor",
+      "catalog": "University of Massachusetts Global current catalog page for Bachelor of Science in Information Technology (Credit-Hour), checked 2026-11-26",
+      "modalities": [
+        "online"
+      ],
+      "sourceStatus": "existing-degree-model",
+      "coverageStatus": "available-proposed-template",
+      "groupId": "alternative-credit-map-gap",
+      "modelId": "curriculum-umass-global-bs-information-technology",
+      "availableTemplate": true,
+      "publicationReady": false,
+      "publicationReasonCodes": [
+        "acceleration-not-established",
+        "mapping-evidence",
+        "open-course-choice"
+      ],
+      "programPolicy": {
+        "scope": "Exact degree model only; not a school-wide acceptance claim.",
+        "degreeQuantity": 120,
+        "unit": "semester",
+        "totalTransferMaximum": 90,
+        "alternativeCreditMaximum": 90,
+        "totalLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2"
+        ],
+        "alternativeLimitSourceUrls": [
+          "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+          "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+        ]
+      },
+      "evidenceUrls": [
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduate-credit-hour-degree-requirement/undergraduate-credit-hour-degree-requirement.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/academic-policies-procedures/undergraduatecredit-hourandmypathpolicies/undergraduatecredit-hourandmypathpolicies.pdf#pages=1-4&columns=2",
+        "https://catalog.umassglobal.edu/business-professional-studies/bs-information-technology/bs-information-technology.pdf#pages=1-1&columns=2",
+        "https://catalog.umassglobal.edu/general-education-requirements/general-education-requirements.pdf#pages=1-2&columns=2",
+        "https://cdn2.sophia.org/spcc_courses/231/syllabus_pdf/f8789831cad6f8796990dabcd19d5da0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/256/syllabus_pdf/6773a1d89b78c003184c7a1d6da17705.pdf",
+        "https://cdn2.sophia.org/spcc_courses/266/syllabus_pdf/1024f60d257da0d5a876eec56516600b.pdf",
+        "https://cdn2.sophia.org/spcc_courses/267/syllabus_pdf/602ea557335a1b602722effbc692628a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/270/syllabus_pdf/88a60251b597479a35a6ea5a8cc5e005.pdf",
+        "https://cdn2.sophia.org/spcc_courses/283/syllabus_pdf/5845534b35f4ff8e1b521c0dbee6143d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/289/syllabus_pdf/65e53b85a6f63e6e17f38692cdca063d.pdf",
+        "https://cdn2.sophia.org/spcc_courses/294/syllabus_pdf/894b07fa5579ca85384628f65e21e136.pdf",
+        "https://cdn2.sophia.org/spcc_courses/295/syllabus_pdf/b885384fd1fca0a56e76b2f0065cde6a.pdf",
+        "https://cdn2.sophia.org/spcc_courses/304/syllabus_pdf/2f6d8ec75f264abcf395d416b21a5bb0.pdf",
+        "https://cdn2.sophia.org/spcc_courses/321/syllabus_pdf/59dc0dc2010795cc5c60abb424d98053.pdf",
+        "https://cdn2.sophia.org/spcc_courses/347/syllabus_pdf/4d60798f81f5bbbfd5d9f3eea0205ac9.pdf",
+        "https://umassglobal.sophia.org/",
+        "https://wgucollegeofbusiness.sophia.org/",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=3c12d02f-fa71-f011-bec3-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=447a204a-f9c4-ee11-9079-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=7fae248f-7dd5-ee11-9079-000d3a5cb302&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=897fa92d-849e-ee11-be37-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=90281669-d25b-ee11-be6f-00224805fa3a&oid=76099b28-9016-e811-810f-5065f38bf0e1&org=SOPHIA+Learning%2C+LLC",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=fcba050f-f137-f011-8c4e-002248094d08&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Course.aspx?cid=ff2dbbd7-e1be-ef11-b8e9-6045bd043849&oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?k=SOPH-0015",
+        "https://www.acenet.edu/National-Guide/Pages/Organization.aspx?oid=76099b28-9016-e811-810f-5065f38bf0e1",
+        "https://www.sophia.org/online-courses/business/business-data-analytics/",
+        "https://www.sophia.org/online-courses/business/human-resource-management/",
+        "https://www.sophia.org/online-courses/business/operations-management/",
+        "https://www.sophia.org/online-courses/business/principles-of-finance/",
+        "https://www.sophia.org/online-courses/computer-science-and-it/introduction-to-java-programming/",
+        "https://www.sophia.org/online-courses/humanities/ancient-greek-philosophers/",
+        "https://www.sophia.org/online-courses/humanities/art-history-i/",
+        "https://www.sophia.org/online-courses/humanities/art-history-ii/",
+        "https://www.sophia.org/online-courses/humanities/critical-thinking/",
+        "https://www.sophia.org/online-courses/science/health-fitness-and-wellness/",
+        "https://www.umassglobal.edu/admissions/transfer-center/credit-prior-learning"
+      ],
+      "nextActions": [
+        {
+          "id": "map-transfer-options",
+          "label": "Map eligible original courses to named requirements; apply source caps, residency, major and upper-level rules.",
+          "kind": "map-transfer-options"
+        },
+        {
+          "id": "resolve-model-findings",
+          "label": "Resolve this model’s recorded publication findings: acceleration-not-established, mapping-evidence, open-course-choice.",
+          "kind": "resolve-model-findings"
         }
       ],
       "limitsAreNotCoursePlacements": true
@@ -111541,8 +112098,8 @@
   },
   "providerCoverage": {
     "schemaRevision": "provider-coverage-v1",
-    "revision": "provider-coverage-v1:e82d4b7b24d5b94a32fed162cc748f4d6b8a5e0b0166f8b3bb5af74f899f64bc",
-    "registryRevision": "academic-v1:d06de3dffcac7df1dcdc18b82cfbea95b4c1096d917387ccf5beff39efcd513d",
+    "revision": "provider-coverage-v1:65a0bac7f7294fc6f299946c9fdc2591f0583dbbf65a50434ee4c5d41dfd5365",
+    "registryRevision": "academic-v1:029720a6c322db7339de113b0b1b51f8f4727681edcce85a63dc3d508a9ba34b",
     "asOf": "2026-11-26",
     "privateStudentRecordsIncluded": false,
     "runtimeAiCalls": 0,
@@ -112451,18 +113008,18 @@
         "sourceReviewedMappedIdentities": 78,
         "receivingClaims": {
           "institutionSourceBound": 505,
-          "providerPublished": 375,
+          "providerPublished": 412,
           "unresolved": 273,
-          "total": 1153
+          "total": 1190
         },
         "placements": {
           "institutionSourceBound": 1911,
-          "providerPublished": 2087,
+          "providerPublished": 2367,
           "unresolved": 3392,
-          "total": 7390
+          "total": 7670
         },
-        "modelsWithOptions": 158,
-        "modelsEnabledByDefault": 120,
+        "modelsWithOptions": 164,
+        "modelsEnabledByDefault": 126,
         "publicationReadyAlternativeModels": 41,
         "publicationReadyBaselineModels": 39,
         "assessment": {
@@ -112851,10 +113408,10 @@
     ],
     "inputFingerprints": {
       "directory": "36259a33222e57936987fbbfa23e423bbeac5083f803d69974d898cb57b3eaa4",
-      "courseCatalogs": "b3464673f13085989335959f6c2fd9644b0d247d101090dff73ea50f610769b2",
-      "models": "f696eedf839106e5878e094d0164c88b56d0a6e2cc8d7da94fed48bb3bec4075",
-      "publication": "49c6d6be47f84cdfb0fa42403e45a1a365abdf7cc8b818a322b50c9f9ba751a1",
-      "baselines": "e6babaf9fe91de3fdbea1d19e79f87ad3cab3cb20150662c4315ed470b19c39e",
+      "courseCatalogs": "1386d6398d2a0a8d79a5676e95a117b49d6f966952203a10daeec80cc79e7a9d",
+      "models": "bb525c316c2001004003c5d61782f13d552f3f47c8f51f3e71df8a74e9fe399b",
+      "publication": "549285ac989590e43239e0e6042b5e7418c87095db5a9abdbabf16be6ecbc293",
+      "baselines": "849e4fa1d7ba3864b62b95c2d3b122a71702e146052e580056a24f552f2de4f6",
       "rates": "a7306e3f501a1675cc55f589cc162e21d236fd6215584b30f318519b21236cf1",
       "assessment": "ac14cdc8e258aee79b3a9caca92b79109590e8ac81283dc9cf5646bc4d6995c6"
     }
