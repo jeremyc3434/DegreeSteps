@@ -157,3 +157,21 @@ test('the quiz continuation asks which licensed career, ignores unknown values a
  const saved=f.stored(),next=fixture({initial:Journey.initialize(saved,null,data().catalog),stored:saved,extraStorage:f.storage()});
  assert.equal(next.api.resume(),true);assert.equal(next.state().journey.step,'prior');assert.equal(next.state().journey.profileFlow.fromQuiz,true);
 });
+test('a licensed-career quiz answer is never replaced by the generic "Earn a degree" goal',async()=>{
+ // Without a career, the goal question offers only the licensed careers, with none preselected.
+ const ask=fixture();ask.api.continueFromQuiz('purpose=licensed-career&level=bachelor');
+ const body=ask.api.body('purpose');
+ assert.doesNotMatch(body,/value="any-degree"/,'no generic goal to fall back to');
+ for(const career of ['teacher','lawyer','pilot','health-professional'])assert.match(body,new RegExp('value="'+career+'"'));
+ assert.equal(selectedValue(body.replace('<select required ','<select '),'goal'),'','no career is chosen for the student');assert.match(body,/<select required name="goal">/);
+ assert.match(body,/<div id="portal-profile-subject" hidden>/,'a licensed career does not ask for a subject');
+ // With the career from the quiz, it is carried into the profile and the journey, and the next question is past courses.
+ const f=fixture();f.api.continueFromQuiz('purpose=licensed-career&career=teacher&level=bachelor&format=online&priority=cost');
+ const state=f.state();
+ assert.equal(state.journey.step,'prior');assert.equal(state.profile.goal,'teacher');
+ assert.equal(state.journey.answers.purpose,'licensed-career');assert.equal(state.journey.answers.career,'teacher');
+ assert.equal(selectedValue(f.api.body('purpose'),'goal'),'teacher','Back shows the career, not "Earn a degree"');
+ // An unknown career is ignored, so the career question is asked again.
+ const unknown=fixture();unknown.api.continueFromQuiz('purpose=licensed-career&career=astronaut');
+ assert.equal(unknown.state().journey.step,'purpose');assert.equal(selectedValue(unknown.api.body('purpose').replace('<select required ','<select '),'goal'),'');
+});

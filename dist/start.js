@@ -14,12 +14,19 @@ const filterDefaults={q:'',subject:'',level:'',format:'',pace:'',billing:'',cbe:
 const filters={...filterDefaults};
 const paceLabels={'self-paced':'Self-paced',scheduled:'Term-based'},billingLabels={'per-credit':'Per credit',subscription:'Subscription','flat-term':'Flat price per term',annual:'Annual tuition'};
 const purposes={any:'any-degree',grow:'career-growth',change:'change-career',licensed:'licensed-career'},priorities={cost:'cost',outside:'transfer',time:'speed'};
+// The licensed careers DegreeSteps asks about, with the same names as the deeper questions (portal.js goalChoices).
+const careers=[['teacher','Become a teacher'],['lawyer','Prepare for law'],['pilot','Become a pilot'],['health-professional','Enter a health profession']];
+const careerGoals={teacher:'becoming a teacher',lawyer:'preparing for law',pilot:'becoming a pilot','health-professional':'entering a health profession'};
 const quizIntent=params.get('from')==='quiz'?{
   purpose:Object.values(purposes).includes(params.get('purpose'))?params.get('purpose'):'',
-  priority:['balanced','speed','cost','transfer'].includes(params.get('priority'))?params.get('priority'):''
+  priority:['balanced','speed','cost','transfer'].includes(params.get('priority'))?params.get('priority'):'',
+  career:params.get('purpose')==='licensed-career'&&careers.some(([id])=>id===params.get('career'))?params.get('career'):''
 }:null;
+// A licensed-career answer is kept: only plans researched for that career are shown, never general degrees as substitutes.
+const licensedIntent=quizIntent?.purpose==='licensed-career';
+const careerPlan=p=>Boolean(quizIntent?.career)&&Array.isArray(p.goals)&&p.goals.includes(quizIntent.career);
 function intentParams(next){
-  if(quizIntent&&(quizIntent.purpose||quizIntent.priority)){next.set('from','quiz');if(quizIntent.purpose)next.set('purpose',quizIntent.purpose);if(quizIntent.priority)next.set('priority',quizIntent.priority);}
+  if(quizIntent&&(quizIntent.purpose||quizIntent.priority)){next.set('from','quiz');if(quizIntent.purpose)next.set('purpose',quizIntent.purpose);if(quizIntent.priority)next.set('priority',quizIntent.priority);if(quizIntent.career)next.set('career',quizIntent.career);}
   return next;
 }
 function degreeParams(){const next=new URLSearchParams();for(const key of ['q','subject','level','format','pace','billing','share','budget'])if(filters[key])next.set(key,filters[key]);if(filters.cbe)next.set('cbe','1');if(personalAvailable)next.set('fit',personalEnabled?'1':'0');if(filters.sort!=='cost')next.set('sort',filters.sort);if(!filters.confirm)next.set('confirm','0');return intentParams(next);}
@@ -50,6 +57,7 @@ function planUrl(p,then){
 }
 
 function matchesBasic(p){
+  if(licensedIntent&&!careerPlan(p))return false;
   if(filters.subject&&!(info(p).subjects||[]).includes(filters.subject))return false;
   if(filters.level&&p.level!==filters.level)return false;
   if(filters.format&&!(p.modalities||[]).includes(filters.format))return false;
@@ -150,6 +158,17 @@ function card(p){
     :'<p class="start-request-note" id="start-request-'+esc(p.id)+'"><strong>Not ready to build yet.</strong> '+esc(info(p).questions?.[0]||'Some of the school’s published rules for this plan are still being confirmed.')+'</p>'
     +'<div class="start-card-actions"><a class="start-secondary start-request" data-request-plan="'+esc(p.id)+'" aria-describedby="start-request-'+esc(p.id)+'" href="'+esc(DegreeProgramCatalog.planRequestHref(p))+'">Request this plan</a></div>')+'</article>';
 }
+// Help me choose with a licensed-career answer: plans researched for that career only, with the licensure caveat. When
+// none exists yet the honest answer is a research request, not general degrees presented as a substitute.
+function licensedHTML(list){
+  const goal=careerGoals[quizIntent.career]||'',caveat='Licensed careers have requirements a general degree doesn’t meet on its own, such as a state-approved program, a licensing exam or a certificate.';
+  if(list.length)return '<div class="start-licensed" data-licensed-career="'+esc(quizIntent.career)+'" role="note"><p><strong>Plans researched for '+esc(goal)+'.</strong> '+esc(caveat)+' Confirm the requirements with the school and your state’s licensing board.</p></div>'+list.slice(0,limit).map(card).join('');
+  const quiz=degreeParams();quiz.delete('purpose');quiz.delete('career');quiz.set('step','quiz');
+  return '<section class="start-licensed start-licensed-empty" data-licensed-career="'+esc(quizIntent.career||'unknown')+'" aria-labelledby="start-licensed-title"><h2 id="start-licensed-title">'+(goal?'We haven’t researched a plan for '+esc(goal)+' yet.':'Which licensed career are you working toward?')+'</h2>'
+    +'<p>'+esc(caveat)+' So we don’t show general degrees as a substitute.</p>'
+    +(goal?'<p>Send us the official page of a program you’re considering. We’ll check its requirements and transfer rules, then build a plan you can edit.</p><div class="start-card-actions"><a class="start-primary" data-licensed-request href="request-plan.html">Request research for a program</a><a class="start-text-link" href="start.html?'+esc(quiz)+'">Retake the quiz</a></div>':'<div class="start-card-actions"><a class="start-primary" href="start.html?'+esc(quiz)+'">Retake the quiz</a></div>')
+    +'</section>';
+}
 function chipGroup(id,name,options,current){
   const el=$(id);const legend=el.querySelector('legend').outerHTML;
   el.innerHTML=legend+[['','All'],...options].map(([value,label])=>'<button type="button" class="start-chip" data-filter="'+name+'" data-value="'+esc(value)+'" aria-pressed="'+String(value===current)+'">'+esc(label)+'</button>').join('');
@@ -159,7 +178,9 @@ function renderDegree(){
   const list=sorted(rows.filter(matches)),built=list.filter(canBuild).length,pending=list.filter(p=>canBuild(p)&&needsConfirmation(p)).length,blocked=list.length-built;
   // Plans that need school confirmation are buildable when only course rows are unsettled; the rest wait on a school rule.
   $('start-count').textContent=list.length?list.length+' degree'+(list.length===1?'':'s')+(pending||blocked?' · '+built+' ready to build'+(pending?' ('+pending+' need'+(pending===1?'s':'')+' school confirmation)':'')+(blocked?' · '+blocked+' not ready yet':''):''):'No degrees match. Try fewer filters.';
-  $('start-results').innerHTML=list.slice(0,limit).map(card).join('')||'<div class="start-empty"><p>No degree plan matches these choices yet.</p><button type="button" class="start-secondary" id="start-clear">Clear filters</button> <a href="request-plan.html">Build from a degree link</a></div>';
+  $('start-results').innerHTML=licensedIntent?licensedHTML(list):list.slice(0,limit).map(card).join('')||'<div class="start-empty"><p>No degree plan matches these choices yet.</p><button type="button" class="start-secondary" id="start-clear">Clear filters</button> <a href="request-plan.html">Build from a degree link</a></div>';
+  // With no plan researched for the chosen career there is nothing to filter, so the filters and count step aside.
+  const licensedEmpty=licensedIntent&&!list.length;$('start-filters').hidden=licensedEmpty;$('start-active-filters').hidden=licensedEmpty;$('start-count').hidden=licensedEmpty;
   $('start-more').hidden=list.length<=limit;
   chipGroup('start-subjects','subject',Object.entries(index.subjects).filter(([id])=>rows.some(p=>(info(p).subjects||[]).includes(id))),filters.subject);
   chipGroup('start-levels','level',Object.entries(levels).filter(([id])=>rows.some(p=>p.level===id)),filters.level);
@@ -170,7 +191,7 @@ function renderDegree(){
   $('start-active-filters').innerHTML=active.map(([key,label])=>'<button type="button" data-clear-filter="'+key+'" aria-label="Remove filter: '+esc(label)+'">'+esc(label)+' <span aria-hidden="true">×</span></button>').join('')+(active.length?'<button type="button" data-clear-all>Clear filters</button>':'');
   const quizLink=degreeParams();quizLink.set('step','quiz');$('start-quiz-link').href='start.html?'+quizLink;
   // Help me choose, part 2: after the quiz, the deeper portal questions are one optional step away, carrying these answers.
-  if(quizIntent&&$('start-quiz-more')){const more=new URLSearchParams({view:'preferences',from:'quiz'});for(const key of ['subject','level','format'])if(filters[key])more.set(key,filters[key]);if(quizIntent.purpose)more.set('purpose',quizIntent.purpose);if(quizIntent.priority)more.set('priority',quizIntent.priority);$('start-quiz-more-link').href='portal.html?'+more;$('start-quiz-more').hidden=false;}
+  if(quizIntent&&$('start-quiz-more')){const more=new URLSearchParams({view:'preferences',from:'quiz'});for(const key of ['subject','level','format'])if(filters[key])more.set(key,filters[key]);if(quizIntent.purpose)more.set('purpose',quizIntent.purpose);if(quizIntent.priority)more.set('priority',quizIntent.priority);if(quizIntent.career)more.set('career',quizIntent.career);$('start-quiz-more-link').href='portal.html?'+more;$('start-quiz-more').hidden=licensedIntent&&!list.length;}
 }
 function syncUrl(){
   const next=degreeParams();
@@ -203,22 +224,26 @@ function openCredits(p){
 
 // The 1-minute quiz: one question per card. It ends on step 1 with matching filters.
 const quiz=[
-  {id:'purpose',q:'Why do you want a degree?',options:[['any','A degree that opens doors'],['grow','Grow in my current career'],['change','Change careers'],['licensed','A licensed career (teacher, nurse, counselor…)']]},
+  {id:'purpose',q:'Why do you want a degree?',options:[['any','A degree that opens doors'],['grow','Grow in my current career'],['change','Change careers'],['licensed','A licensed career (teacher, law, pilot, health)']]},
   {id:'level',q:'Which degree?',options:[['associate','Associate (about 2 years)'],['bachelor','Bachelor’s (about 4 years)'],['master','Master’s'],['','Not sure yet']]},
   {id:'subject',q:'What do you want to study?',options:[]},
   {id:'format',q:'How do you want to learn?',options:[['online','Online'],['campus','On campus'],['','Either']]},
   {id:'sort',q:'What matters most?',options:[['cost','Lowest cost'],['outside','Most credits for less'],['time','Finish sooner']]}
 ];
 let quizAt=0;const answers={};
+// A licensed-career answer replaces "What do you want to study?" with which career, so the quiz stays five questions.
+const careerQuestion={id:'career',q:'Which licensed career?',options:careers};
+const quizItem=()=>quiz[quizAt].id==='subject'&&answers.purpose==='licensed'?careerQuestion:quiz[quizAt];
 function renderQuiz(){
-  const item=quiz[quizAt];if(item.id==='subject')item.options=[...Object.entries(index.subjects).filter(([id])=>rows.some(p=>(info(p).subjects||[]).includes(id))),['','Not sure yet']];
+  const item=quizItem();if(item.id==='subject')item.options=[...Object.entries(index.subjects).filter(([id])=>rows.some(p=>(info(p).subjects||[]).includes(id))),['','Not sure yet']];
   $('start-quiz-count').textContent='Question '+(quizAt+1)+' of '+quiz.length;
   $('start-quiz-back').hidden=quizAt===0;
-  const note=item.id==='level'&&answers.purpose==='licensed'?'<p class="start-note" role="note">Licensed careers need a program your state approves. Use a plan as a start and confirm licensure with the school.</p>':'';
+  const note=item.id==='career'?'<p class="start-note" role="note">Licensed careers need more than a general degree, such as a state-approved program, an exam or a certificate. We show only plans researched for the career you choose.</p>':'';
   $('start-quiz-card').innerHTML='<h2 id="start-quiz-question">'+esc(item.q)+'</h2>'+note+'<div class="start-quiz-options" role="group" aria-labelledby="start-quiz-question">'+item.options.map(([value,label])=>'<button type="button" class="start-answer-button" data-quiz-answer="'+esc(value)+'">'+esc(label)+'</button>').join('')+'</div>';
 }
 function finishQuiz(){
-  const next=degreeParams();for(const key of ['level','subject','format'])if(answers[key])next.set(key,answers[key]);else next.delete(key);if(answers.sort&&answers.sort!=='cost')next.set('sort',answers.sort);else next.delete('sort');next.set('from','quiz');if(purposes[answers.purpose])next.set('purpose',purposes[answers.purpose]);if(priorities[answers.sort])next.set('priority',priorities[answers.sort]);
+  const licensed=answers.purpose==='licensed';
+  const next=degreeParams();for(const key of ['level','subject','format'])if(answers[key]&&!(key==='subject'&&licensed))next.set(key,answers[key]);else next.delete(key);next.delete('career');if(licensed&&answers.career)next.set('career',answers.career);if(answers.sort&&answers.sort!=='cost')next.set('sort',answers.sort);else next.delete('sort');next.set('from','quiz');if(purposes[answers.purpose])next.set('purpose',purposes[answers.purpose]);if(priorities[answers.sort])next.set('priority',priorities[answers.sort]);
   location.assign('start.html?'+next);
 }
 
@@ -230,7 +255,7 @@ document.addEventListener('click',event=>{
   if(event.target.id==='start-more'){limit+=12;renderDegree();return;}
   if(event.target.id==='start-clear'){Object.assign(filters,filterDefaults);$('start-q').value='';renderDegree();syncUrl();return;}
   const answer=event.target.closest?.('[data-quiz-answer]');
-  if(answer){answers[quiz[quizAt].id]=answer.dataset.quizAnswer;if(quizAt<quiz.length-1){quizAt++;renderQuiz();$('start-quiz-question')?.setAttribute('tabindex','-1');$('start-quiz-question')?.focus();}else finishQuiz();return;}
+  if(answer){const id=quizItem().id;answers[id]=answer.dataset.quizAnswer;if(id==='purpose'){if(answers.purpose==='licensed')delete answers.subject;else delete answers.career;}if(quizAt<quiz.length-1){quizAt++;renderQuiz();$('start-quiz-question')?.setAttribute('tabindex','-1');$('start-quiz-question')?.focus();}else finishQuiz();return;}
   if(event.target.id==='start-quiz-back'){event.preventDefault();if(quizAt>0){quizAt--;renderQuiz();}return;}
 });
 $('start-q').addEventListener('input',()=>{filters.q=$('start-q').value;limit=12;renderDegree();syncUrl();});

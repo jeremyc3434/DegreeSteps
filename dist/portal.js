@@ -364,6 +364,7 @@
     const purpose=params.get('purpose'),subject=params.get('subject'),level=params.get('level'),format=params.get('format'),priority=params.get('priority');
     return {
       goal:goalChoices.some(([id])=>id===purpose)&&!protectedGoals.includes(purpose)?purpose:'',licensed:purpose==='licensed-career',
+      career:purpose==='licensed-career'&&protectedGoals.includes(params.get('career'))?params.get('career'):'',
       field:subject&&fieldChoicesFor('').some(([id])=>id===subject)?subject:'any',
       degreeLevel:['associate','bachelor','master'].includes(level)?level:'unsure',
       format:['online','campus'].includes(format)?format:'',
@@ -373,13 +374,16 @@
   function startQuizContinuation(params) {
     const quiz=quizAnswers(params);cancelRecommendations();degreePreview=null;
     state=Journey.applyAnswer(state,'start','explore',catalog);state.journey.profileFlowVersion=1;
-    const values={purpose:{...(quiz.goal?{goal:quiz.goal}:{}),field:quiz.field,degreeLevel:quiz.degreeLevel}};
+    // A licensed-career answer keeps its career (teacher, law, pilot, health); it never falls back to "Earn a degree".
+    const goal=quiz.licensed?quiz.career:quiz.goal;
+    const values={purpose:{...(goal?{goal}:{}),field:quiz.licensed?'any':quiz.field,degreeLevel:quiz.degreeLevel}};
     if(quiz.format)values.format={format:quiz.format};
     if(quiz.priority)values.priority={priority:quiz.priority};
-    state.journey={...state.journey,view:'questions',profileFlow:{version:1,mode:'explore',returnStep:'routes',values,baseTarget:latestStoredPlan()?.selectedPathwayId||'',fromQuiz:true},step:'purpose'};
+    state.journey={...state.journey,view:'questions',profileFlow:{version:1,mode:'explore',returnStep:'routes',values,baseTarget:latestStoredPlan()?.selectedPathwayId||'',fromQuiz:true,...(quiz.licensed?{licensed:true}:{})},step:'purpose'};
     // A quiz goal answers "What would a degree help you do?", so the continuation opens on past courses and military service.
     // A licensed career still asks which one (teacher, law, pilot, health), so that step stays first.
     if(quiz.goal){state=Journey.applyAnswer(state,'purpose',quiz.goal,catalog);state=Journey.applyAnswer(state,'field',quiz.field,catalog);state=Journey.applyAnswer(state,'level',quiz.degreeLevel,catalog);state.journey.step='prior';}
+    else if(quiz.licensed&&quiz.career){state=Journey.applyAnswer(state,'purpose','licensed-career',catalog);state=Journey.applyAnswer(state,'career',quiz.career,catalog);state=Journey.applyAnswer(state,'field','any',catalog);state=Journey.applyAnswer(state,'level',quiz.degreeLevel,catalog);state.journey.step='prior';}
     state.journey.profileFlow.firstStep=state.journey.step;
     // The same counter as the portal questionnaire always used: the deeper questions started.
     persistProfileDraft();render();trackGrowth('guided_started');
@@ -407,7 +411,8 @@
   function profileBody(id) {
     const p=profileValues(id),flow=profileFlow(),locked=flow.mode==='preferences'||flow.mode==='target';
     let body='';
-    if(id==='purpose')body=chooseField('goal','What would a degree help you do?',goalChoices,p.goal)+(!locked?chooseField('field','What would you like to study?',fieldChoicesFor(p.field),p.field||'any')+chooseField('degreeLevel','Which degree are you considering?',[['unsure','Help me choose'],['associate','Associate'],['bachelor','Bachelor’s'],['master','Master’s'],['doctorate','Doctoral'],['specialist','Specialist']],p.degreeLevel||'unsure'):'<p class="portal-profile-note">'+esc(state.profile.degree)+' · '+esc(state.profile.school)+'</p>');
+    const licensedOnly=flow.licensed&&id==='purpose'&&!protectedGoals.includes(p.goal);
+    if(id==='purpose')body=(licensedOnly?chooseField('goal','Which licensed career are you working toward?',[['','Choose a career'],...goalChoices.filter(([goal])=>protectedGoals.includes(goal))],'').replace('<select ','<select required '):chooseField('goal','What would a degree help you do?',goalChoices,p.goal))+(!locked?'<div id="portal-profile-subject"'+(licensedOnly||protectedGoals.includes(p.goal)?' hidden':'')+'>'+chooseField('field','What would you like to study?',fieldChoicesFor(p.field),p.field||'any')+'</div>'+chooseField('degreeLevel','Which degree are you considering?',[['unsure','Help me choose'],['associate','Associate'],['bachelor','Bachelor’s'],['master','Master’s'],['doctorate','Doctoral'],['specialist','Specialist']],p.degreeLevel||'unsure'):'<p class="portal-profile-note">'+esc(state.profile.degree)+' · '+esc(state.profile.school)+'</p>');
     if(id==='prior')body='<p class="portal-intro">We can use what you have already learned. Course records can wait.</p>'+chooseField('prior','Have you finished any college courses?',[['unknown','I’ll add my courses later'],['none','No, I’m starting from zero'],['some','Yes, courses or exam credits'],['degree','Yes, I already have a degree']],p.prior||p.hasPrior||'unknown')+militaryFieldHTML(p.military||p.militaryStatus||'none',p.militaryRecords||'not-sure','portal-profile-military-records');
     if(id==='format'){
       const format=p.format||(p.classroomImportance==='preferred'?'some-classroom':p.modality||'any'),campus=format!=='online';
@@ -695,7 +700,7 @@
     return '<article class="portal-readiness-card"><span class="portal-readiness-label">'+(mapped?'Transfer-course plan':unsupported?'Course plan not available':'Check your preferences')+'</span><h2>'+esc(title)+'</h2><p class="portal-target-school">'+esc(school)+'</p>'+programFacts+schoolCheckHTML(route,target.route)+(mapped?leadActionsHTML(route):'')+formatNote+'<p>'+esc(note)+'</p>'+(source?'<a href="'+esc(source.url)+'" target="_blank" rel="noopener">Official degree information ↗</a>':'')+'<div class="portal-actions">'+actions+'</div></article><div class="portal-links">'+button('degree-search','Choose another degree',true)+'</div>';
   }
   document.addEventListener('input',event=>{if(event.target.matches('#portal-question-form [name="degree"]'))renderDegreeOptions(true);});
-  document.addEventListener('change',event=>{if(['portal-degree-level','portal-degree-format'].includes(event.target.id))renderDegreeOptions(true);if(event.target.matches('#portal-explore-form [name=goal]'))$('portal-subject-field').hidden=protectedGoals.includes(event.target.value);});
+  document.addEventListener('change',event=>{if(['portal-degree-level','portal-degree-format'].includes(event.target.id))renderDegreeOptions(true);if(event.target.matches('#portal-explore-form [name=goal]'))$('portal-subject-field').hidden=protectedGoals.includes(event.target.value);if(event.target.matches('#portal-profile-form [name=goal]')&&$('portal-profile-subject'))$('portal-profile-subject').hidden=!event.target.value||protectedGoals.includes(event.target.value);});
   const knownEstimate=value=>typeof value==='number'&&Number.isFinite(value)&&value>=0;
   const dollars=value=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(value);
   function publishedRate(program) {
