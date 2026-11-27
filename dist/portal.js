@@ -317,17 +317,21 @@
       '<div'+(recordsId?' id="'+recordsId+'"':'')+(recordsId&&!serving?' hidden':'')+'>'+chooseField('militaryRecords','Your service education record',[['not-sure','Help me identify my record'],['jst','Joint Services Transcript (JST)'],['ccaf','CCAF / Air University'],['other','Another service record']],records)+'</div>'+
       '<p class="portal-hint">Military training can count toward a degree. We’ll include your service records and benefits guidance in your plan.</p></fieldset>';
   }
-  function learnerGuidance(stage) {
-    return ({enrolled:'Bring your current official degree audit. Get written approval for outside courses before you pay. <a href="degree-audit.html">Add my degree requirements</a> · <a href="/guides/transfer-credit-after-enrolling/">How transfer works while enrolled</a>',returning:'Your older college courses may still count. Each program’s rules determine what applies. <a href="import-courses.html?from=portal">Upload my courses</a> · <a href="/blog/do-old-college-credits-still-count/">How older credits can help</a>','high-school':'For dual-enrollment courses, use the transcript from the college that issued the credit. A high-school report card alone does not establish college credit. <a href="courses.html?tab=browse">Explore courses before college</a> · <a href="/guides/earn-college-credit-in-high-school/">Plan a high-school head start</a>',new:'You can explore course options before choosing what to take. Check the degree placement and any age or admission requirements before paying.'})[stage]||'';
+  function learnerGuidance(stage,p={}) {
+    const params=new URLSearchParams();
+    if(p.currentSchool)params.set('school',String(p.currentSchool).trim().slice(0,120));
+    if(p.currentProgram)params.set('degree',String(p.currentProgram).trim().slice(0,160));
+    const auditHref='degree-audit.html'+(params.size?'?'+params.toString():'');
+    return ({enrolled:'Bring your current official degree audit. Get written approval for outside courses before you pay. <a href="'+esc(auditHref)+'">Add my degree requirements</a> · <a href="/guides/transfer-credit-after-enrolling/">How transfer works while enrolled</a>',returning:'Your older college courses may still count. Each program’s rules determine what applies. <a href="import-courses.html?from=portal">Upload my courses</a> · <a href="/blog/do-old-college-credits-still-count/">How older credits can help</a>','high-school':'For dual-enrollment courses, use the transcript from the college that issued the credit. A high-school report card alone does not establish college credit. <a href="courses.html?tab=browse">Explore courses before college</a> · <a href="/guides/earn-college-credit-in-high-school/">Plan a high-school head start</a>',new:'You can explore course options before choosing what to take. Check the degree placement and any age or admission requirements before paying.'})[stage]||'';
   }
   function learnerContextHTML(p) {
-    const stage=p.learnerStage||'',guidance=learnerGuidance(stage);
+    const stage=p.learnerStage||'',guidance=learnerGuidance(stage,p);
     return chooseField('learnerStage','Where are you starting? (optional)',[['','Choose if you’d like'],['new','Starting college'],['enrolled','Already enrolled in college'],['returning','Returning after time away'],['high-school','In high school'],['unsure','Not sure yet']],stage)+
       '<div id="portal-learner-enrolled"'+(stage==='enrolled'?'':' hidden')+'><label class="portal-field"><span>Your current college (optional)</span><input name="currentSchool" maxlength="120" value="'+esc(p.currentSchool||'')+'" autocomplete="organization"></label><label class="portal-field"><span>Your current degree or major (optional)</span><input name="currentProgram" maxlength="160" value="'+esc(p.currentProgram||'')+'"></label>'+chooseField('planningIntent','What would you like to do?',[['unsure','Not sure yet'],['finish-current','Finish my current degree'],['compare','Compare other degrees']],p.planningIntent||'unsure')+'<p class="portal-hint">These notes do not change your selected school or degree.</p></div>'+
       '<p id="portal-learner-guidance" class="portal-hint" aria-live="polite"'+(guidance?'':' hidden')+'>'+guidance+'</p>';
   }
   function updateLearnerContextFields(form) {
-    const values=new FormData(form),stage=values.get('learnerStage'),enrolled=$('portal-learner-enrolled'),guidance=$('portal-learner-guidance'),html=learnerGuidance(stage);
+    const values=new FormData(form),stage=values.get('learnerStage'),enrolled=$('portal-learner-enrolled'),guidance=$('portal-learner-guidance'),html=learnerGuidance(stage,{currentSchool:values.get('currentSchool'),currentProgram:values.get('currentProgram')});
     if(enrolled)enrolled.hidden=stage!=='enrolled';if(guidance){guidance.innerHTML=html;guidance.hidden=!html;}
   }
   function applyLearnerContext(profile,values) {

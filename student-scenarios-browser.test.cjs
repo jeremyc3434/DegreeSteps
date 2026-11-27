@@ -257,8 +257,8 @@ async function checklistTask(page,id){
     assert.equal(await page.locator('#audit-import-form input[name="school"]').inputValue(),'University of Massachusetts Global');assert.equal(await page.locator('#audit-import-form input[name="title"]').inputValue(),'Business Administration MyPath — enrolled 2024');
     const accepted=await page.locator('#audit-file').getAttribute('accept');assert.match(accepted,/\.csv/,'Requirements workspace supports its stated spreadsheet format.');assert.doesNotMatch(accepted,/\.pdf/i,'The requirements workspace must not promise PDF parsing.');
     await page.reload({waitUntil:'domcontentloaded'});await page.locator('#audit-import-form').waitFor();state=await stored(page);noTarget(state);assert.equal(state.profile.currentSchool,'University of Massachusetts Global');assert.equal(state.profile.planningIntent,'finish-current');assert.deepEqual(state.learning,[]);
-    await openPrior(page,origin);await clickLocal(page,page.locator('#portal-learner-guidance a[href="degree-audit.html"]'),origin);
-    await page.locator('h1:visible').waitFor();state=await stored(page);noTarget(state);assert.equal(state.profile.currentProgram,'Business Administration MyPath — enrolled 2024');assert.deepEqual(state.learning,[]);
+    await openPrior(page,origin);await clickLocal(page,page.locator('#portal-learner-guidance a[href^="degree-audit.html"]'),origin);
+    await page.locator('#audit-import-form').waitFor();assert.equal(await page.locator('#audit-import-form input[name="school"]').inputValue(),'University of Massachusetts Global');assert.equal(await page.locator('#audit-import-form input[name="title"]').inputValue(),'Business Administration MyPath — enrolled 2024');state=await stored(page);noTarget(state);assert.equal(state.profile.currentProgram,'Business Administration MyPath — enrolled 2024');assert.deepEqual(state.learning,[]);
    });
 
    const returning=copy(fixtures.returning.state),original=fixtures.returning.original;
