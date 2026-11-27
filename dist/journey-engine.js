@@ -358,7 +358,7 @@
       universityRate:quotedRate || publishedRate || 0, universityRateBasis:quotedRate ? 'student-quote' : publishedRate ? 'published-program-price' : 'unknown',
       universityRateSourceUrl:!quotedRate && publishedRate ? published.sourceUrl || '' : '', fees:Math.max(0, number(s.fees)),
       providerMonths:{...object(s.providerMonths), Sophia:estimate('sophiaMonths', s.providerMonths?.Sophia) || 1, 'Study.com':estimate('studyMonths', s.providerMonths?.['Study.com']) || 1},
-      optionSelections:copy(object(s.optionSelections)),
+      optionSelections:copy(object(s.optionSelections)), suggestedChoices:copy(object(s.suggestedChoices)),
       timing:{...object(s.timing), externalWeeks, externalConcurrency:estimate('concurrency', s.timing?.externalConcurrency) || 1, universityTermWeeks:estimate('termWeeks', s.timing?.universityTermWeeks), universityCreditsPerTerm:estimate('termCredits', s.timing?.universityCreditsPerTerm)}};
   }
   function supportsAssignment(program,input){

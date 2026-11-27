@@ -1183,24 +1183,30 @@
   }
 
   function reviewedDefaults(program,input) {
-    const review=program.reviewedBaselineChoices,own=(value,key)=>Object.prototype.hasOwnProperty.call(value,key);
+    const own=(value,key)=>Object.prototype.hasOwnProperty.call(value,key);
     const edition=value=>String(value||'').replace(/[–—]/g,'-');
-    if(!review||review.version!==1||review.modelId!==program.id||review.format!==program.format||review.creditSystem!==creditSystem(program)||review.totalCredits!==program.totalCredits||edition(review.catalogYear)!==edition(program.catalogYear||program.catalog)||!review.reviewId||!/^20\d{2}-\d{2}-\d{2}$/.test(review.checkedOn||'')||!Array.isArray(review.sourceIds)||!review.sourceIds.length||review.sourceIds.some(id=>!(program.sources||[]).some(source=>source.id===id))||!review.optionSelections||typeof review.optionSelections!=='object'||Array.isArray(review.optionSelections)||input.optionSelections==null||typeof input.optionSelections!=='object'||Array.isArray(input.optionSelections))return {};
-    const entries=Object.entries(review.optionSelections),requirements=program.requirements||[];
-    if(entries.some(([id,optionId])=>typeof optionId!=='string'||!requirements.some(requirement=>requirement.id===id&&(requirement.options||[]).some(option=>option.id===optionId))))return {};
+    if(input.optionSelections==null||typeof input.optionSelections!=='object'||Array.isArray(input.optionSelections))return {};
     const done=new Set((input.completed||[]).filter(item=>['reported','confirmed'].includes(item.status)).map(item=>item.requirementId)),defaults={};
-    for(const [id,optionId] of entries)if(!own(input.optionSelections,id)&&!done.has(id)&&availableOptions(program,id,input).some(option=>option.id===optionId&&!option.selectionRequired))defaults[id]=optionId;
+    for(const review of [program.reviewedBaselineChoices,input.suggestedChoices]){
+      if(!review||review.version!==1||review.modelId!==program.id||review.format!==program.format||review.creditSystem!==creditSystem(program)||review.totalCredits!==program.totalCredits||edition(review.catalogYear)!==edition(program.catalogYear||program.catalog)||!review.reviewId||!/^20\d{2}-\d{2}-\d{2}$/.test(review.checkedOn||'')||!Array.isArray(review.sourceIds)||!review.sourceIds.length||review.sourceIds.some(id=>!(program.sources||[]).some(source=>source.id===id))||!review.optionSelections||typeof review.optionSelections!=='object'||Array.isArray(review.optionSelections))continue;
+      const entries=Object.entries(review.optionSelections),requirements=program.requirements||[];
+      if(entries.some(([id,optionId])=>typeof optionId!=='string'||!requirements.some(requirement=>requirement.id===id&&(requirement.options||[]).some(option=>option.id===optionId))))continue;
+      for(const [id,optionId] of entries)if(!own(input.optionSelections,id)&&!done.has(id)&&availableOptions(program,id,input).some(option=>option.id===optionId&&!option.selectionRequired))defaults[id]=optionId;
+    }
     return defaults;
   }
   function generate(program, inputValue, withoutReviewedDefaults=false) {
     const input = normalizedInput(inputValue), setupIssues = [], warnings = [], requirements = program.requirements || [];
+    let reviewedCandidate = null;
     if(!withoutReviewedDefaults){
       const defaults=reviewedDefaults(program,input);
       if(Object.keys(defaults).length){
-        const candidate=generate(program,{...input,optionSelections:{...defaults,...input.optionSelections}},true);
-        // A researched starting choice is a default, never a restriction on
-        // personal records, enabled providers or a student's own selections.
-        if(candidate.validation?.academicCountsValid&&!candidate.setupIssues.some(issue=>['invalid_selection','selection_conflict'].includes(issue.code)))return candidate;
+        const candidate=generate(program,{...input,optionSelections:{...defaults,...input.optionSelections},optimizationNodeBudget:0},true);
+        // A reviewed route supplies a feasible incumbent and wins exact ties.
+        // Only the student's explicit choices and records constrain the real
+        // search below; a preset must not hide a better supported alternative
+        // or claim optimality merely because its own options were pinned.
+        if(candidate.validation?.academicCountsValid&&!candidate.setupIssues.some(issue=>['invalid_selection','selection_conflict'].includes(issue.code)))reviewedCandidate=candidate;
       }
     }
     const balance = creditBalancePolicy(program), normalizedRows = new WeakMap();
@@ -1212,8 +1218,18 @@
     // Eligibility is fixed for this generation. Preserve original option and
     // requirement identities: published IDs need not be unique in a draft.
     const eligibleOptions = new WeakMap();
+    const namedReviewedStarter = reviewedCandidate && reviewedCandidate.rows.every(row => !row.selectionRequired);
+    const reviewedResearchComplete = reviewedCandidate?.validation?.valid === true;
     const optionsForRequirement = requirement => {
-      if (!eligibleOptions.has(requirement)) eligibleOptions.set(requirement, optionsFor(program, requirement, input));
+      if (!eligibleOptions.has(requirement)) {
+        // An unnamed placeholder is still available for incomplete drafts, but
+        // cannot improve an executable reviewed route by omitting its course.
+        // Likewise, a named fallback with an unresolved selected-course policy
+        // cannot displace a source-complete route merely by appearing faster.
+        eligibleOptions.set(requirement, optionsFor(program, requirement, input).filter(option =>
+          (!namedReviewedStarter || !option.selectionRequired) &&
+          (!reviewedResearchComplete || !unresolvedItems(program,[makeRow(requirement,option,'planned',program,balance)]).errors.length)));
+      }
       return eligibleOptions.get(requirement);
     };
     // Scenario choices use exactly the same evidence and source eligibility as
@@ -1301,7 +1317,7 @@
       if(!greedyScores.has(rows))greedyScores.set(rows,candidateScore(program,normalize(rows),input,input.priority));
       return greedyScores.get(rows);
     };
-    let best = base, bestScore = greedyScore(base);
+    let best = reviewedCandidate ? reviewedCandidate.rows : base, bestScore = greedyScore(best);
     let bestAcademicValid = !usableErrors(best).length;
     for (const allowed of strategies) {
       let rows = base.map(row => Object.assign({}, row));

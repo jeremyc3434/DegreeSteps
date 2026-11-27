@@ -75,6 +75,7 @@ execFileSync(process.execPath,[resolve(root,'scripts/build-plan-course-index.mjs
 execFileSync(process.execPath,[resolve(root,'scripts/catalog-plan-identities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/provider-directory-discovery.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-provider-coverage-report.mjs'),'--check'],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,[resolve(root,'scripts/build-transfer-maximization-report.mjs'),'--check','--fail-on-improvement'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-research-priorities.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-school-research-batch.mjs'),'--check'],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,[resolve(root,'scripts/build-coach-index.mjs'),'--check'],{cwd:root,stdio:'inherit'});
